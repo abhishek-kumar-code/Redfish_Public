@@ -18,21 +18,22 @@
       <EntityType Name="ManagerAccount" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This schema defines a user account to be used in conjunction with a manager.  This will affect the SPMA service connection if this manager is responsible for the SPMA service."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent resources that represent the user accounts for the manager."/>
-        <Property Name="UserName" Type="Edm.String" Nullable="false">
-          <Annotation Term="OData.Description" String="This property contains the user name for the account."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the user name for this account."/>
-        </Property>
         <Property Name="Password" Type="Edm.String">
           <Annotation Term="OData.Description" String="This property is used with a PATCH or PUT to write the password for the account.  This property is null on a GET."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the password for this account.  The value shall be null for GET requests."/>
         </Property>
+        <Property Name="UserName" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Description" String="This property contains the user name for the account."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the user name for this account."/>
+        </Property>
         <Property Name="Links" Type="ManagerAccount.Links" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The links object contains the links to other resources that are related to this resource."/>
         </Property>
       </EntityType>
 
       <ComplexType Name="Links">
-        <NavigationProperty Name="Oem" Type="Resource.Oem" />
+        <Property Name="Oem" Type="Resource.Oem"/>
       </ComplexType>
 
     </Schema>

@@ -30,7 +30,7 @@
           <Annotation Term="OData.Description" String="This is for setting HTTP headers, such as authorization information.  This object will be null on a GET."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain an object consisting of the names and values of of HTTP header to be included with every event POST to the Listener Destination.  This property shall be null on a GET."/>
         </Property>
-        <Property Name="EventTypes" Type="Collection(Event.EventType)">
+        <Property Name="EventTypes" Type="Collection(Event.EventType)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This property shall contain the types of events that shall be sent to the desination."/>
         </Property>
@@ -44,7 +44,7 @@
           <Annotation Term="OData.Description" String="The time unit used to measure the subscription time of this listener destination.  This is the units for TTLCount and is used to express the subscription lifetime of the listener destination."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the units of the expressed TTLCount."/>
         </Property>
-        <Property Name="Context" Type="Edm.String">
+        <Property Name="Context" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Description" String="A client-supplied string that is stored with the listener destination subscription."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain a client supplied context that will remain with the connection through the connections lifetime."/>
         </Property>
@@ -53,14 +53,14 @@
           <Annotation Term="OData.Description" String="The protocol type of the listener connection."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the protocol type that the event will use for sending the event to the destination.  A value of SPMA shall be used to indicate that the event type shall adhere to that defined in the SPMA specification."/>
         </Property>
-        <Property Name="Links" Type="ListenerDestination.Links">
+        <Property Name="Links" Type="ListenerDestination.Links" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The links object contains the links to other resources that are related to this resource."/>
         </Property>
       </EntityType>
 
       <ComplexType Name="Links">
-        <NavigationProperty Name="Oem" Type="Resource.Oem" />
+        <Property Name="Oem" Type="Resource.Oem"/>
       </ComplexType>
 
       <ComplexType Name="HttpHeaderProperty">
@@ -76,17 +76,17 @@
       </ComplexType>
 
       <EnumType Name="ListenerDestinationProtocol">
-        <Member Name="SPMA" />
+        <Member Name="SPMA"/>
       </EnumType>
 
       <EnumType Name="TTLUnits">
-        <Member Name="seconds" >
+        <Member Name="seconds">
           <Annotation Term="OData.Description" String="Time to Live (TTL) in Seconds"/>
         </Member>
-        <Member Name="minutes" >
+        <Member Name="minutes">
           <Annotation Term="OData.Description" String="Time to Live (TTL) in Minutes"/>
         </Member>
-        <Member Name="days" >
+        <Member Name="days">
           <Annotation Term="OData.Description" String="Time to Live (TTL) in Days"/>
         </Member>
       </EnumType>

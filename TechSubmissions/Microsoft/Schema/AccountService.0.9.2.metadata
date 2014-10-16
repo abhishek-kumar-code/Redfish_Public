@@ -11,6 +11,9 @@
   <edmx:Reference Uri="http://dmtf.org/schema/v1/Resource">
     <edmx:Include Namespace="Resource.0.9.2" Alias="Resource"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://dmtf.org/schema/v1/ManagerAccount">
+    <edmx:Include Namespace="ManagerAccount.0.9.2" Alias="ManagerAccount"/>
+  </edmx:Reference>
   
   <edmx:DataServices>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AccountService.0.9.2" Alias="AccountService">
@@ -20,6 +23,7 @@
         <Annotation Term="OData.Description" String="This is the schema definition for the Account Service.  It represents the properties for the service itself and has links to the actual list of accounts."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a management account service for an SPMA implementation."/>
         <Property Name="AuthFailureLoggingThreshold" Type="Edm.Int64" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/ReadWrite"/>
           <Annotation Term="OData.Description" String="This is the number of authorization failures that need to occur before the failure attempt is logged to the manager log."/>
           <Annotation Term="OData.LongDescription" String="This property shall reference the threshold for when an authorization failure is logged.  This represents a modulo function value, thus the failure shall be logged every nth occurrence where n represents the value of this property."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
@@ -30,17 +34,18 @@
           <Annotation Term="OData.LongDescription" String="This property shall reference the minimum password length that the implementation will allow a password to be set to."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
         </Property>
-        <Property Name="Links" Type="Accounts.Links" Nullable="false">
+        <Property Name="Links" Type="AccountService.Links" Nullable="false">
           <Annotation Term="OData.Description" String="The links object contains the links to other resources that are related to this resource."/>
         </Property>        
       </EntityType>
 
       <ComplexType Name="Links">
         <NavigationProperty Name="Accounts" Type="Collection(ManagerAccount.ManagerAccount)">
-          <Annotation Term="OData.Description" String="The value of this property shall be a collection of ManagerAccount references."/>
-          <Annotation Term="DMTF.ExpandReferences"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="Link to a collection of ManagerAccounts"/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the link to a collection of ManagerAccounts."/>
         </NavigationProperty>
-        <NavigationProperty Name="Oem" Type="Resource.Oem" />
+        <Property Name="Oem" Type="Resource.Oem"/>
       </ComplexType>
       
     </Schema>

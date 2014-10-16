@@ -33,12 +33,14 @@
         "HealthRollUp": "OK"
     },
     "Boot": {},
-    "Links" : {
+    "Links": {
+        "Chassis@odata.navigationLink": "/rest/v1/Systems/2/Chassis",
         "Chassis": [
             {
                 "@odata.id": "/rest/v1/Chassis/Enc1/Blades/1"
             }
         ],
+        "ManagedBy@odata.navigationLink": "/rest/v1/Systems/2/ManagedBy",
         "ManagedBy": [
             {
                 "@odata.id": "/rest/v1/Managers/1"

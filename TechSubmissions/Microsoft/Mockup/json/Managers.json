@@ -45,12 +45,14 @@
                     "VersionString": "1.40 pass 5+ (debug build Jul 26 2013 16:46:33)"
                 }
             },
-            "Links" : {
+            "Links": {
+                "MangagerForServers@odata.navigationLink": "/rest/v1/Managers/1/ManagerForServers",
                 "ManagerForServers": [
                     {
                         "@odata.id": "/rest/v1/Systems/2"
                     }
                 ],
+                "NetworkService@odata.navigationLink": "/rest/v1/Managers/1/NetworkService",
                 "NetworkService": {
                     "@odata.id": "/rest/v1/Managers/1/NetworkService"
                 },
@@ -91,12 +93,14 @@
                 },
                 "ActiveCorrelatableIDs": []
             },
-            "Links" : {
+            "Links": {
+                "ManagerForServers@odata.navigationLink": "/rest/v1/Managers/2/ManagerForServers",
                 "ManagerForServers": [
                     {
                         "@odata.id": "/rest/v1/Systems/2"
                     }
                 ],
+                "ManagerForChassis@odata.navigationLink": "/rest/v1/Managers/2/ManagerForChassis",
                 "ManagerForChassis": [
                     {
                         "@odata.id": "/rest/v1/Chassis/Enc1"
@@ -125,19 +129,6 @@
             "Name": "Manager for Enclosure Secondary",
             "Modified": "2012-03-07T14:44",
             "ManagerType": "EnclosureManager",
-            "Links": {
-                "ManagerForServers": [
-                    {
-                        "@odata.id": "/rest/v1/Systems/2"
-                    }
-                ],
-                "ManagerForChassis": [
-                    {
-                        "@odata.id": "/rest/v1/Chassis/Enc1"
-                    }
-                ],
-                "Oem": {}
-            },
             "Description": "Administrator",
             "UUID": "00000000-0000-0000-0000-000000000000",
             "Model": "OEM's Manager Model",
@@ -154,6 +145,21 @@
                     "Health": "OK"
                 },
                 "ActiveCorrelatableIDs": []
+            },
+            "Links": {
+                "ManagerForServers@odata.navigationLink": "/rest/v1/Managers/3/ManagerForServers",
+                "ManagerForServers": [
+                    {
+                        "@odata.id": "/rest/v1/Systems/2"
+                    }
+                ],
+                "ManagerForChassis@odata.navigationLink": "/rest/v1/Managers/3/ManagerForChassis",
+                "ManagerForChassis": [
+                    {
+                        "@odata.id": "/rest/v1/Chassis/Enc1"
+                    }
+                ],
+                "Oem": {}
             },
             "Actions": {
                 "http://dmtf.org/schema/v1/Managers#Manager.1.0.0.Reset": {

@@ -19,7 +19,7 @@
       <EntityType Name="Event" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition for Events.  It represents the properties for the events themselves and not subscriptions or any other resource."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent an event for an SPMA implementation."/>
-        <Property Name="Events" Type="Collection(Events.EventRecordWithContext)">
+        <Property Name="Events" Type="Collection(Event.EventRecordWithContext)" Nullable="false">
           <Annotation Term="OData.Description" String="Each event in this array has a set of properties that describe the event.  Since this is an array, more than one event can be sent simultaneously."/>
           <Annotation Term="DMTF.Required"/>
         </Property>
@@ -27,19 +27,19 @@
 
       <!-- This is the types of Events that can be subscribed to. -->
       <EnumType Name="EventType" IsFlags="true">
-        <Member Name="StatusChange" >
+        <Member Name="StatusChange">
           <Annotation Term="OData.Description" String="The status of this resource has changed"/>
         </Member>
-        <Member Name="ResourceUpdated" >
+        <Member Name="ResourceUpdated">
           <Annotation Term="OData.Description" String="The value of this resource has been updated"/>
         </Member>
-        <Member Name="ResourceAdded" >
+        <Member Name="ResourceAdded">
           <Annotation Term="OData.Description" String="A resource has been added"/>
         </Member>
-        <Member Name="ResourceRemoved" >
+        <Member Name="ResourceRemoved">
           <Annotation Term="OData.Description" String="A resource has been removed"/>
         </Member>
-        <Member Name="Alert" >
+        <Member Name="Alert">
           <Annotation Term="OData.Description" String="A condition exists which requires attention"/>
         </Member>
       </EnumType>
@@ -61,12 +61,12 @@
           <Annotation Term="OData.Description" String="This is time the event occurred."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the time the event occurred where the value shall be consistent with the SPMA service time that is also used for the values of the Modified property."/>
         </Property>
-        <Property Name="Severity" Type="Edm.String">
+        <Property Name="Severity" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is the severity of the event."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the severity of the event, as defined in the Status section of the SPMA specificaiton."/>
         </Property>
-        <Property Name="Message" Type="Edm.String">
+        <Property Name="Message" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is the human readable message, if provided."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain an optional human readable message."/>
@@ -78,7 +78,7 @@
           <Annotation Term="Validation.Pattern" String="^[A-Za-z0-9]+\\.\\d+\\.\\d+.[A-Za-z0-9.]+$"/>
           <Annotation Term="DMTF.Required"/>
         </Property>
-        <Property Name="MessageArgs" Type="Collection(Edm.String)">
+        <Property Name="MessageArgs" Type="Collection(Edm.String)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This array of message arguments are substituted for the arguments in the message when looked up in the message registry."/>
           <Annotation Term="OData.LongDescription" String="This property has the same semantics as the MessageArgs property in the Event schema for SPMA."/>
@@ -91,12 +91,12 @@
       </ComplexType>
 
       <ComplexType Name="EventRecordWithContext" BaseType="Event.EventRecord">
-        <Property Name="Context" Type="Edm.String">
+        <Property Name="Context" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="A context can be supplied at subscription time.  This property is the context value supplied by the subscriber."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain a client supplied context for the ListnerDestination to which this event is being sent."/>
         </Property>
-        <Property Name="Oem" Type="Resource.Oem"/>
+        <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
       </ComplexType>
 
     </Schema>

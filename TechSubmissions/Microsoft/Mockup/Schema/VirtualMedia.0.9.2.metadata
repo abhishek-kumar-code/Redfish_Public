@@ -26,7 +26,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this string shall be an URI.  A null value indicated no image connection."/>
           <Annotation Term="OData.IsUrl"/>
         </Property>
-        <Property Name="MediaTypes" Type="VirtualMedia.MediaType">
+        <Property Name="MediaTypes" Type="Collection(VirtualMedia.MediaType)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is the media types supported as virtual media."/>
           <Annotation Term="OData.LongDescription" String="The values of this array shall be the supported media types for this connection."/>
@@ -50,29 +50,29 @@
 
       <!-- These are all supported media types. -->
       <EnumType Name="MediaType">
-        <Member Name="CD" >
+        <Member Name="CD">
           <Annotation Term="OData.Description" String="A CD-ROM format (ISO) image"/>
         </Member>
-        <Member Name="Floppy" >
+        <Member Name="Floppy">
           <Annotation Term="OData.Description" String="A floppy disk image"/>
         </Member>
-        <Member Name="USBStick" >
+        <Member Name="USBStick">
           <Annotation Term="OData.Description" String="An emulation of a USB storage device"/>
         </Member>
-        <Member Name="DVD" >
+        <Member Name="DVD">
           <Annotation Term="OData.Description" String="A DVD-ROM format image"/>
         </Member>
       </EnumType>
 
       <!-- These are all supported types of connection for virtual media. -->
       <EnumType Name="ConnectedVia">
-        <Member Name="NotConnected" >
+        <Member Name="NotConnected">
           <Annotation Term="OData.Description" String="No current connection"/>
         </Member>
-        <Member Name="URI" >
+        <Member Name="URI">
           <Annotation Term="OData.Description" String="Connected to a URI location"/>
         </Member>
-        <Member Name="Applet" >
+        <Member Name="Applet">
           <Annotation Term="OData.Description" String="Connected to a client application"/>
         </Member>
       </EnumType>

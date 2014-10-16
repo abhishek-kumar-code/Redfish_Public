@@ -198,7 +198,9 @@ pre .tex .formula {
 
 <ul>
 <li>TOC Here (Do Not Remove)</li>
-</ul><h2>
+</ul>
+
+<h2>
 <a name="user-content-what-is-the-scalable-platforms-management-api-spma" class="anchor" href="#what-is-the-scalable-platforms-management-api-spma" aria-hidden="true"><span class="octicon octicon-link"></span></a>What is the Scalable Platforms Management API (SPMA)?</h2>
 
 <p>SPMA is a management standard using a data model representation inside of a hypermedia RESTful interface.  The model is expressed in terms of a standard, machine-readable Schema, with the payload of the messages being expressed in JSON.  Since it is a hypermedia API, it is capable of representing a variety of implementations via a consistent interface.  It has mechanisms for managing data center resources, handling events, long lived tasks and discovery as well.</p>
@@ -225,14 +227,18 @@ pre .tex .formula {
 
 <ul>
 <li><a href="http://fredonfire.com/wp-content/uploads/2011/10/Chart-Protocol-Usage-by-Web-APIs.png">Most Popular Protocols used by Web APIs</a></li>
-</ul><p>REST semantics are easily mapped to HTTP/HTTPS.  Thus, it can be easily understood by most system administrators, has a well known security model and network configuration settings for its support are understood.  It is being taught in High Schools and Jr Colleges.  As a result, the education requirements for understanding its use a greatly reduced.  Open source implementations of web servers abound and programming language support is ubiquitous.</p>
+</ul>
+
+<p>REST semantics are easily mapped to HTTP/HTTPS.  Thus, it can be easily understood by most system administrators, has a well known security model and network configuration settings for its support are understood.  It is being taught in High Schools and Jr Colleges.  As a result, the education requirements for understanding its use a greatly reduced.  Open source implementations of web servers abound and programming language support is ubiquitous.</p>
 
 <p>JSON is rapidly becoming the modern data format.  It is inherently human readable, is more concise than XML, has a plethora of modern language support and is the most rapidly growing dat format for web service APIs.  It has one additional advantage for embedded manageability environments.  Most BMCs already support a web server and managing a server through a browser is common.  This is usually done via a Java script driven interface.  By choosing JSON, the web browser can use the data from an SPMA service directly in the web browser, ensuring that the data through the browser and the programmatic interface is uniform in semantics and value.</p>
 
 <ul>
 <li><a href="http://static.squarespace.com/static/51361f2fe4b0f24e710af7ae/t/52dc3638e4b0d99728f927ae/1390163522743/codeeval2014.jpg">Most Popular Coding Languages 2014</a></li>
 <li><a href="http://www.programmableweb.com/wp-content/data-formats2.jpg">Data Formats used in New APIs</a></li>
-</ul><p>But following RESTful practices and formatting results as JSON alone are not enough. There are nearly as many RESTful interfaces as there are applications, and they all differ in the resources they expose, the headers and query options available, and how results are represented. Similarly, while JSON provides an easy-to read representation, semantics of common properties such as id, type, links, etc. are imposed through naming conventions that vary from service to service.</p>
+</ul>
+
+<p>But following RESTful practices and formatting results as JSON alone are not enough. There are nearly as many RESTful interfaces as there are applications, and they all differ in the resources they expose, the headers and query options available, and how results are represented. Similarly, while JSON provides an easy-to read representation, semantics of common properties such as id, type, links, etc. are imposed through naming conventions that vary from service to service.</p>
 
 <p>OData defines a set of common RESTful conventions which, if adopted, provides for interoperability between APIs.</p>
 
@@ -263,7 +269,9 @@ pre .tex .formula {
 <li>Access the public mock-up.  There is a web server running JSON at xxx.xxxx.com.  You can point your browser to it and access the data.</li>
 <li>Copy the data to your web server.  You can access the GitHub repository and copy all of the files under the Mock-up directory to your local hard drive and place them under the /rest/v1 directory that your server uses for serving up HTML pages.  And example of this would be downloading nginx, setting it up to return JSON format and then loading the mock-up files in the html directory.</li>
 <li>Run the emulator.  You can download the emulator from the GitHub repository and follow the instructions in its Readme to start the emulator.</li>
-</ul><h3>
+</ul>
+
+<h3>
 <a name="user-content-root" class="anchor" href="#root" aria-hidden="true"><span class="octicon octicon-link"></span></a>Root</h3>
 
 <p>SPMA is a hypermedia API.  That means that you get to all the resources through URLs returned from other resources.  But there is one well-known URL so that every implementation has a common starting point.  That URI is "/rest/v1" for version 1 of the SPMA interface.  </p>
@@ -400,7 +408,9 @@ information may not be available or providing it may be complex.</li>
 <li>Grouping.  CorrelatableIDs, unlike hrefs, do not have a "direction" and
 are not one-to-one pointers.  They can be used to group resources simply by
 using the same string.</li>
-</ul><p>Unlike hrefs, CorrelatableIDs do not have standard property names.  This is because
+</ul>
+
+<p>Unlike hrefs, CorrelatableIDs do not have standard property names.  This is because
 a resource may need to communicate more than one grouping via CID.</p>
 
 <p>Href references are preferred over CorrelatableIDs.</p>
@@ -442,9 +452,13 @@ a resource may need to communicate more than one grouping via CID.</p>
 <li>Generate a new ETag</li>
 <li>PATCH the modified resource including the If-Match header containing the last known ETag.</li>
 <li><p>If the supplied ETag no longer matches the object (something has changed since the read), the service will return 304 Not Modified.  The client should recover by repeating these steps.</p></li>
-</ol><ul>
+</ol>
+
+<ul>
 <li>Clients <em>should</em> include an ETag when updating Setting Data to enable Providers to more efficiently detect changes and to prevent multi-client race conditions.</li>
-</ul><h3>
+</ul>
+
+<h3>
 <a name="user-content-updating-resources" class="anchor" href="#updating-resources" aria-hidden="true"><span class="octicon octicon-link"></span></a>Updating Resources</h3>
 
 <p>The simple GET, PUT/PATCH method is a model where the client may GET the current configuration and PUT or PATCH a new desired configuration to the same resource URI.  The success of a PUT or PATCH is determined by the HTTP status code and response body.</p>
@@ -559,4 +573,5 @@ a custom action might be sending a test event or clearing a log.</p>
 <a name="user-content-chassis-within-chassis" class="anchor" href="#chassis-within-chassis" aria-hidden="true"><span class="octicon octicon-link"></span></a>Chassis within Chassis</h3>
 
 <h3>
-<a name="user-content-subscribing-to-events" class="anchor" href="#subscribing-to-events" aria-hidden="true"><span class="octicon octicon-link"></span></a>Subscribing to Events</h3></div>   </body> </html>
+<a name="user-content-subscribing-to-events" class="anchor" href="#subscribing-to-events" aria-hidden="true"><span class="octicon octicon-link"></span></a>Subscribing to Events</h3>
+</div>   </body> </html>

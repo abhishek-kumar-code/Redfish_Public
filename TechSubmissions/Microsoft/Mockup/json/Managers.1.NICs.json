@@ -1,7 +1,7 @@
 {
     "@odata.context": "/rest/v1/$metadata#Managers/1/EthernetNICs(*,links/Settings($ref),links/NetworkServices($ref))",
     "@odata.count": 1,
-    "value" : [
+    "value": [
         {
             "@odata.id": "/rest/v1/Managers/1/EthernetNICs/1",
             "@odata.type": "http://localhost:9080/dmtf.org/schema/v1/EthernetNetworkInterface#EthernetNetworkInterface.1.0.0.EthernetNetworkInterface",
@@ -67,12 +67,14 @@
                 ]
             },
             "Links": {
+                "Settings@odata.navigationLink":"/rest/v1/Chassis/1/Settings",
                 "Settings": {
-                    "href": "/rest/v1/Managers/1/NICs/1/SD"
+                    "@odata.id": "/rest/v1/Managers/1/NICs/1/SD"
                 },
+                "NetworkServices@odata.navigationLink":"/rest/v1/Chassis/1/NetworkServices",
                 "NetworkServices": [
                     {
-                        "href": "/rest/v1/Managers/1/NetworkService"
+                        "@odata.id": "/rest/v1/Managers/1/NetworkService"
                     }
                 ],
                 "Oem": {}

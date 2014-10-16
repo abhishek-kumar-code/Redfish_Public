@@ -18,8 +18,9 @@
             "http://localhost:9080/dmtf.org/schema/v1/LogService#LogService.1.0.0.ClearLog": {
                 "target": "/rest/v1/Systems/1/Logs/Log1/Actions/LogService.1.0.0.ClearLog"
             },
-            "Links" : {
-                "Entries" : [
+            "Links": {
+                "Entries@odata.navigationLink": "/rest/v1/Systems/1/Logs/Log1/Entries",
+                "Entries": [
                     {
                         "@odata.id": "/rest/v1/Systems/1/Logs/Log1/Entries/1"
                     },

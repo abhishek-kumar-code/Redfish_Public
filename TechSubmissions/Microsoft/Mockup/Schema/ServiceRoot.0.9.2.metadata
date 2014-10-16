@@ -26,8 +26,8 @@
   <edmx:Reference Uri="http://dmtf.org/schema/v1/TaskService">
     <edmx:Include Namespace="TaskService.0.9.2" Alias="TaskService"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://dmtf.org/schema/v1/Sessions">
-    <edmx:Include Namespace="Sessions.0.9.2" Alias="Sessions"/>
+  <edmx:Reference Uri="http://dmtf.org/schema/v1/Session">
+    <edmx:Include Namespace="Session.0.9.2" Alias="Session"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/Messages">
     <edmx:Include Namespace="Messages.0.9.2" Alias="Messages"/>
@@ -49,11 +49,11 @@
           <Annotation Term="OData.Description" String="The current time as reported by the owner of this SPMA Service"/>
           <Annotation Term="OData.LongDescription" String="The value of this string shall represent the time of the SPMA service. "/>
         </Property>
-        <Property Name="ServiceVersion" Type="Edm.String">
+        <Property Name="ServiceVersion" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The version of the SPMA service"/>
           <Annotation Term="OData.LongDescription" String="The value of this string shall represent the version of the SPMA service.  The format of this string shall be of the format majorversion.minorversion.errata in compliance with Protocol Version section of the SPMA specification. "/>
-          <Annotation Term="Validation.Pattern" String="^\\d+\\.\\d+\\.\\d+$" />
+          <Annotation Term="Validation.Pattern" String="^\\d+\\.\\d+\\.\\d+$"/>
         </Property>
         <Property Name="UUID" Type="ServiceRoot.UUID">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
@@ -61,6 +61,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this string shall represent the id of the SPMA service instance.  The format of this string shall be a 32-byte value in the form 8-4-4-4-12.  This value shall be an exact match of the UUID value returned in a 200OK from an SSDP M-SEARCH request during discovery."/>
         </Property>
         <Property Name="Links" Type="ServiceRoot.ServiceRootLinks" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The links object contains the links to other resources that are related to this resource."/>
           <Annotation Term="DMTF.Required"/>
         </Property>
@@ -105,7 +106,7 @@
       </ComplexType>
 
       <TypeDefinition Name="UUID" UnderlyingType="Edm.String">
-        <Annotation Term="Validation.Pattern" String="([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})" />
+        <Annotation Term="Validation.Pattern" String="([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})"/>
       </TypeDefinition>
 
     </Schema>

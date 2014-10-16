@@ -23,7 +23,7 @@
             "LowerThresholdFatal": 0,
             "MinimumValue": 0,
             "MaximumValue": 200,
-            "Context": "Intake",
+            "PhysicalContext": "Intake",
             "CorrelatableID": "ReferenceToAPotentialThingLikeAProcessor"
         }
     ],

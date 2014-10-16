@@ -20,27 +20,33 @@
                 "Health": "OK"
             },
             "Links": {
+                "ComputerSystems@odata.navigationLink": "/rest/v1/Chassis/1/ComputerSystems",
                 "ComputerSystems": [
                     {
                         "@odata.id": "/rest/v1/Systems/1"
                     }
                 ],
-                "ContainedBy" : {
+                "ContainedBy@odata.navigationLink": "/rest/v1/Chassis/1/ContainedBy",
+                "ContainedBy": {
                     "@odata.id": "/rest/v1/Chassis/Rack1"
                 },
-                "ManagedBy" : [
+                "ManagedBy@odata.navigationLink": "/rest/v1/Chassis/1/ManagedBy",
+                "ManagedBy": [
                     {
                         "@odata.id": "/rest/v1/Managers/1"
                     }
                 ],
+                "ThermalMetrics@odata.navigationLink": "/rest/v1/Chassis/1/ThermalMetrics",
                 "ThermalMetrics":
                 {
                     "@odata.id": "/rest/v1/Chassis/1/ThermalMetrics"
                 },
+                "PowerMetrics@odata.navigationLink": "/rest/v1/Chassis/1/PowerMetrics",
                 "PowerMetrics":
                 {
                     "@odata.id": "/rest/v1/Chassis/1/PowerMetrics"
                 },
+                "MiscMetrics@odata.navigationLink": "/rest/v1/Chassis/1/MiscMetrics",
                 "MiscMetrics":
                 {
                     "@odata.id": "/rest/v1/Chassis/1/MiscMetrics"
@@ -65,16 +71,19 @@
                 "State": "Enabled",
                 "Health": "OK"
             },
-            "Links" : {
+            "Links": {
+                "ComputerSystems@odata.navigationLink": "/rest/v1/Chassis/Enc1/ComputerSystems",
                 "ComputerSystems": [
                     {
                         "@odata.id": "/rest/v1/Systems/1"
                     }
                 ],
-                "ContainedBy" : {
+                "ContainedBy@odata.navigationLink": "/rest/v1/Chassis/Enc1/ContainedBy",
+                "ContainedBy": {
                     "@odata.id": "/rest/v1/Chassis/Rack1"
                 },
-                "ManagedBy" : [
+                "ManagedBy@odata.navigationLink": "/rest/v1/Chassis/Enc1/ManagedBy",
+                "ManagedBy": [
                     {
                         "@odata.id": "/rest/v1/Managers/2"
                     },
@@ -82,19 +91,23 @@
                         "@odata.id": "/rest/v1/Managers/3"
                     }
                 ],
+                "Contains@odata.navigationLink": "/rest/v1/Chassis/Enc1/Contains",
                 "Contains": [
                     {
-                        "@odata.id": "Chassis/Enc1/Blades"
+                        "@odata.id": "/rest/v1/Chassis/Enc1/Blades"
                     }
                 ],
+                "ThermalMetrics@odata.navigationLink": "/rest/v1/Chassis/Enc1/ThermalMetrics",
                 "ThermalMetrics":
                 {
                     "@odata.id": "/rest/v1/Chassis/Enc1/ThermalMetrics"
                 },
+                "PowerMetrics@odata.navigationLink": "/rest/v1/Chassis/Enc1/PowerMetrics",
                 "PowerMetrics":
                 {
                     "@odata.id": "/rest/v1/Chassis/Enc1/PowerMetrics"
                 },
+                "MiscMetrics@odata.navigationLink": "/rest/v1/Chassis/Enc1/MiscMetrics",
                 "MiscMetrics":
                 {
                     "@odata.id": "/rest/v1/Chassis/Enc1/MiscMetrics"
@@ -118,18 +131,19 @@
             "Version": "",
             "PartNumber": "",
             "AssetTag": "CustomerWritableThingy",
-            "Links" : {
+            "Links": {
+                "Contains@odata.navigationLink": "/rest/v1/Chassis/Rack1/Contains",
                 "Contains": [
                     {
-                        "@odata.id": "Chassis/1"
+                        "@odata.id": "/rest/v1/Chassis/1"
                     },
                     {
-                        "@odata.id": "Chassis/Enc1"
+                        "@odata.id": "/rest/v1/Chassis/Enc1"
                     }
                 ],
                 "Oem": {}
             }
         }
     ],
-    "@odata.nextLink": "Chassis?&$skip=3"
+    "@odata.nextLink": "/rest/v1/Chassis?&$skip=3"
 }

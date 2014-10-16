@@ -46,7 +46,7 @@
             "PrivacyPassphrase": "write-only string"
         }
     ],
-    "Actions" : {
+    "Actions": {
         "http://dmtf.org/schema/v1/SnmpService#SnmpService.1.0.0.SendSNMPTestAlert": {
             "target": "Systems/1/Actions/SnmpService.1.0.0.SendSNMPTestAlert"
         },

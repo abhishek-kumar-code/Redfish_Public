@@ -190,217 +190,416 @@ pre .tex .formula {
 </script>   </head>   <body class="normal">     <div id="wrapper"><h1>
 <a name="user-content-scalable-platforms-management-api" class="anchor" href="#scalable-platforms-management-api" aria-hidden="true"><span class="octicon octicon-link"></span></a>Scalable Platforms Management API</h1>
 
-<p><strong>Version 0.92a</strong></p>
+<p><strong>Version 0.92.1</strong></p>
 
-<p><strong>September 29, 2014</strong></p>
+<p><strong>October 12, 2014</strong></p>
 
-<pre><code>Implementation of certain elements of this specification may be subject to patent rights,
-including provisional patent rights (herein "patent rights"). The authors and their respective companies (we)
-makes no representations to users of the standard as to the existence of such rights, and is not responsible 
-to recognize, disclose, or identify any or all such patent right, owners or claimants, nor for any incomplete
-or inaccurate identification or disclosure of such rights, owners or claimants. We shall have no liability to
-any party, in any manner or circumstance, under any legal theory whatsoever, for failure to recognize, 
-disclose, or identify any such patent rights, or for such party's reliance on the specification or incorporation
-thereof in its product, protocols or testing procedures. We shall have no liability to any party implementing
-such specification, whether such implementation is foreseeable or not, nor to any patent owner or claimant, and
-shall have no liability or responsibility for costs or losses incurred if a specification is withdrawn or modified
-after publication, and shall be indemnified and held harmless by any party implementing the specification from any
-and all claims of infringement by a patent owner for such implementations.
+<pre><code>DMTF is a not-for-profit association of industry members dedicated to promoting enterprise 
+and systems management and interoperability. Members and non-members may reproduce DMTF 
+specifications and documents, provided that correct attribution is given. As DMTF 
+specifications may be revised from time to time, the particular version and release date 
+should always be noted. 
 
-We provide this specification "as is" without any warranty of any kind, whether express or implied, including,
-but not limited to, any implied warranties of ownership, merchantability, fitness for a particular purpose, title
-and noninfringement. This specification is subject to change without notice.
+Implementation of certain elements of this standard or proposed standard may be subject 
+to third party patent rights, including provisional patent rights (herein "patent rights"). 
+DMTF makes no representations to users of the standard as to the existence of such rights, 
+and is not responsible to recognize, disclose, or identify any or all such third party patent 
+right, owners or claimants, nor for any incomplete or inaccurate identification or disclosure 
+of such rights, owners or claimants. DMTF shall have no liability to any party, in any manner 
+or circumstance, under any legal theory whatsoever, for failure to recognize, disclose, or 
+identify any such third party patent rights, or for such party’s reliance on the standard or 
+incorporation thereof in its product, protocols or testing procedures. DMTF shall have no 
+liability to any party implementing such standard, whether such implementation is foreseeable 
+or not, nor to any patent owner or claimant, and shall have no liability or responsibility 
+for costs or losses incurred if a standard is withdrawn or modified after publication, and 
+shall be indemnified and held harmless by any party implementing the standard from any and 
+all claims of infringement by a patent owner for such 28 implementations.
+
+For information about patents held by third-parties which have notified the DMTF that, in 
+their opinion, such patent may relate to or impact implementations of DMTF standards, 
+visit http://www.dmtf.org/about/policies/disclosures.php. 
 </code></pre>
 
 <ul>
-<li>1. Abstract</li>
-<li>2. Acknowledgments</li>
-<li>3. Introduction</li>
-<li> 3.1. References</li>
-<li> 3.2. Terminology</li>
-<li> 3.3. Acronyms and Abbreviations</li>
-<li> 3.4. Conformance Terminology</li>
-<li>4. Overview</li>
-<li> 4.1. Principal Goals &amp; Scope</li>
-<li>  4.1.1. REST based</li>
-<li>  4.1.2. Follow OData Conventions</li>
-<li>  4.1.3. Model Oriented</li>
-<li>  4.1.4. Separation of Protocol from Data Model</li>
-<li>  4.1.5. Hypermedia API Service Endpoint</li>
-<li>  4.1.6. Scope</li>
-<li>  4.1.7. Limitations</li>
-<li>4.2. Service Elements</li>
-<li>  4.2.1. Synchronous and Asynchronous Operation Support</li>
-<li>  4.2.2. Eventing Mechanism</li>
-<li>  4.2.3. Actions</li>
-<li>  4.2.4. Discovery</li>
-<li>  4.2.5. Device support (Serial Console, KVM-IP, Command Shell, Virtual Media)</li>
-<li>4.3. Security Intro</li>
-<li>5. Protocol Details</li>
-<li> 5.1. Use of HTTP</li>
-<li>  5.1.1. URIs</li>
-<li>  5.1.2. HTTP Methods</li>
-<li>  5.1.3. HTTP Redirect</li>
-<li>  5.1.4. Media Types</li>
-<li>  5.1.5. ETags</li>
-<li> 5.2. Protocol Version</li>
-<li> 5.3. Requests</li>
-<li>  5.3.1. Request Headers</li>
-<li>  5.3.2. Read Requests (GET)</li>
-<li>   5.3.2.1. Service Root Request</li>
-<li>   5.3.2.2. Metadata Document Request</li>
-<li>   5.3.2.3. Service Document Request</li>
-<li>   5.3.2.4. Resource Retrieval Requests</li>
-<li>    5.3.2.4.1. Query Parameters</li>
-<li>    5.3.2.4.2. Retrieving Collections</li>
-<li>  5.3.3. HEAD</li>
-<li>  5.3.4. Data Modification Requests</li>
-<li>   5.3.4.1. Update (PATCH)</li>
-<li>   5.3.4.2. Replace (PUT)</li>
-<li>   5.3.4.3. Create (POST)</li>
-<li>   5.3.4.4. Delete (DELETE)</li>
-<li>   5.3.4.5. Actions (POST)</li>
-<li> 5.4. Responses</li>
-<li>  5.4.1. Response Headers</li>
-<li>  5.4.2. Status Codes</li>
-<li>  5.4.3. Metadata Responses</li>
-<li>   5.4.3.1. Service Metadata</li>
-<li>   5.4.3.2. Referencing OEM Extensions</li>
-<li>   5.4.3.3. Annotations</li>
-<li>  5.4.4. Resource Responses</li>
-<li>   5.4.4.1. Context Property</li>
-<li>    5.4.4.1.1. Select List</li>
-<li>   5.4.4.2. Resource Identifier Property</li>
-<li>   5.4.4.3. Type Property</li>
-<li>   5.4.4.4. ETag Property</li>
-<li>   5.4.4.5. Primitive Properties</li>
-<li>    5.4.4.5.1. DateTime Values</li>
-<li>   5.4.4.6. Structured Properties</li>
-<li>   5.4.4.7. Collection Properties</li>
-<li>   5.4.4.8. Actions Property</li>
-<li>    5.4.4.8.1. Action Representation</li>
-<li>    5.4.4.8.2. Allowable Values</li>
-<li>   5.4.4.9. Links Property</li>
-<li>    5.4.4.9.1. Reference to a Single Related Resource</li>
-<li>    5.4.4.9.2. Array of References to Related Resources</li>
-<li>    5.4.4.9.3. Reference to a Collection of Related Resources</li>
-<li>   5.4.4.10. OEM Property</li>
-<li>   5.4.4.11. Inline Error Property</li>
-<li>    5.4.4.11.1. Object Errors</li>
-<li>    5.4.4.11.2. Property Errors</li>
-<li>   5.4.4.12. Additional Annotations</li>
-<li>  5.4.5. Resource Collections</li>
-<li>   5.4.5.1. Context Property</li>
-<li>   5.4.5.2. Resource Count Property</li>
-<li>   5.4.5.3. Resource Members Property</li>
-<li>   5.4.5.4. Partial Results</li>
-<li>   5.4.5.5. Additional Annotations</li>
-<li>  5.4.6. Extended Error Handling</li>
-<li>6. Data Model &amp; Schema</li>
-<li> 6.1. Type Identifiers</li>
-<li> 6.2. Common Naming Conventions</li>
-<li> 6.3. Localization Considerations</li>
-<li> 6.4. Schema Definition</li>
-<li>  6.4.1. Common Annotations</li>
-<li>   6.4.1.1. Description</li>
-<li>   6.4.1.2. Specification</li>
-<li>  6.4.2. Schema Documents</li>
-<li>   6.4.2.1. Referencing other Schemas</li>
-<li>   6.4.2.2. Namespace Definitions</li>
-<li>  6.4.3. Resource Type Definitions</li>
-<li>  6.4.4. Resource Properties</li>
-<li>   6.4.4.1. Property Types</li>
-<li>    6.4.4.1.1. Primitive Types</li>
-<li>    6.4.4.1.2. Structured Types</li>
-<li>    6.4.4.1.3. Enums</li>
-<li>    6.4.4.1.4. Collections</li>
-<li>   6.4.4.2. Non-Nullable properties</li>
-<li>   6.4.4.3. Read-only properties</li>
-<li>   6.4.4.4. Required Properties</li>
-<li>   6.4.4.5. Units of Measure</li>
-<li>   6.4.4.6. Language-Dependent Property Values</li>
-<li>  6.4.5. Reference Properties</li>
-<li>   6.4.5.1. Expanded References</li>
-<li>  6.4.6. Resource Actions</li>
-<li>  6.4.7. Resource Extensibility</li>
-<li>   6.4.7.1. Property Extensions</li>
-<li>   6.4.7.2. Custom Actions</li>
-<li>   6.4.7.3. Custom Annotations</li>
-<li> 6.5. Common SPMA Resource Properties</li>
-<li>  6.5.1. Id</li>
-<li>  6.5.2. Name</li>
-<li>  6.5.3. Description</li>
-<li>  6.5.4. Created</li>
-<li>  6.5.5. Modified</li>
-<li>  6.5.6. Status</li>
-<li>  6.5.7. Links</li>
-<li>  6.5.8. Actions</li>
-<li>  6.5.9. OEM</li>
-<li>  6.5.10. Settings</li>
-<li>  6.5.11. SettingsResult</li>
-<li>  6.5.12. CorrelatableID</li>
-<li>  6.5.13. Other common properties</li>
-<li> 6.6. SPMA Resources</li>
-<li>  6.6.1. Current Configuration</li>
-<li>  6.6.2. Settings</li>
-<li>  6.6.3. Services</li>
-<li>  6.6.4. Registry</li>
-<li>  6.6.5. Schema Variations</li>
-<li>7. Service Details</li>
-<li> 7.1. Eventing</li>
-<li>  7.1.1. Event Message Subscription</li>
-<li>  7.1.2. Event Message Objects</li>
-<li>  7.1.3. Subscription Cleanup</li>
-<li> 7.2. Asynchronous Operations</li>
-<li> 7.3. Timestamp Management</li>
-<li> 7.4. Resource Tree Stability</li>
-<li> 7.5. Discovery</li>
-<li>  7.5.1. UPnP Compatibility</li>
-<li>  7.5.2. USN Format</li>
-<li>  7.5.3. M-SEARCH Response</li>
-<li>  7.5.4. Notify, Alive, and Shutdown messages</li>
-<li>8. Security</li>
-<li> 8.1. Goals</li>
-<li> 8.2. Protocols</li>
-<li>  8.2.1. Discovery</li>
-<li>  8.2.2. Transport</li>
-<li>   8.2.2.1. TLS</li>
-<li>   8.2.2.2. Cipher suites</li>
-<li>   8.2.2.3. Certificates</li>
-<li>  8.2.3. FIPS/Common Criteria Compliance</li>
-<li> 8.3. Sensitive Data</li>
-<li> 8.4. Authentication</li>
-<li>  8.4.1. HTTP Header Security</li>
-<li>   8.4.1.1. HTTP Redirect</li>
-<li>  8.4.2. Extended Error Handling</li>
-<li>  8.4.3. HTTP Header Authentication</li>
-<li>   8.4.3.1. BASIC authentication</li>
-<li>   8.4.3.2. Digest authentication</li>
-<li>   8.4.3.3. Negotiate</li>
-<li>   8.4.3.4. Request / Message Level Authentication</li>
-<li>   8.4.3.5. Certificate based authentication?</li>
-<li>  8.4.4. Session Management</li>
-<li>   8.4.4.1. Session Lifecycle Management</li>
-<li>   8.4.4.2. Login Sessions</li>
-<li>   8.4.4.3. Login</li>
-<li>   8.4.4.4. Logout</li>
-<li>   8.4.4.5. X-Auth-Token HTTP Header</li>
-<li>  8.4.5. AccountService</li>
-<li>  8.4.6. Async Tasks</li>
-<li>  8.4.7. Event Subscriptions</li>
-<li>  8.4.8. Privilege Model / Authorization</li>
-<li>   8.4.8.1. Profiles and Roles</li>
-<li>  8.4.9. Role Based Privilege</li>
-<li> 8.5. Data Model Validation</li>
-<li>  8.5.1. Schema</li>
-<li> 8.6. Logging</li>
-<li>  8.6.1. Required data for security log entries</li>
-<li>  8.6.2. Completeness of Logging</li>
-<li>  8.6.3. Content of Audit Logs</li>
-<li>9. Appendix A</li>
-<li> 9.1. Known attack vector mitigation</li>
-<li>10. Appendix B: Notes</li>
-</ul><h2>
+<li>1. <a href="#user-content-abstract">Abstract</a>
+</li>
+<li>2. <a href="#user-content-acknowledgments">Acknowledgments</a>
+</li>
+<li>3. <a href="#user-content-introduction">Introduction</a>
+</li>
+<li> 3.1. <a href="#user-content-references">References</a>
+</li>
+<li> 3.2. <a href="#user-content-terminology">Terminology</a>
+</li>
+<li> 3.3. <a href="#user-content-acronyms-and-abbreviations">Acronyms and Abbreviations</a>
+</li>
+<li> 3.4. <a href="#user-content-conformance-terminology">Conformance Terminology</a>
+</li>
+<li>4. <a href="#user-content-overview">Overview</a>
+</li>
+<li> 4.1. <a href="#user-content-principle-goals--scope">Principal Goals &amp; Scope</a>
+</li>
+<li>  4.1.1. <a href="#user-content-rest-based">REST based</a>
+</li>
+<li>  4.1.2. <a href="#user-content-follow-odata-conventions">Follow OData Conventions</a>
+</li>
+<li>  4.1.3. <a href="#user-content-model-oriented">Model Oriented</a>
+</li>
+<li>  4.1.4. <a href="#user-content-separation-of-protocol-from-data-model">Separation of Protocol from Data Model</a>
+</li>
+<li>  4.1.5. <a href="#user-content-hypermedia-api-service-endpoint">Hypermedia API Service Endpoint</a>
+</li>
+<li>  4.1.6. <a href="#user-content-scope">Scope</a>
+</li>
+<li>  4.1.7. <a href="#user-content-limitations">Limitations</a>
+</li>
+<li>4.2. <a href="#user-content-service-elements">Service Elements</a>
+</li>
+<li>  4.2.1. <a href="#user-content-synchronous-and-asynchronous-operation-support">Synchronous and Asynchronous Operation Support</a>
+</li>
+<li>  4.2.2. <a href="#user-content-eventing-mechanism">Eventing Mechanism</a>
+</li>
+<li>  4.2.3. <a href="#user-content-actions">Actions</a>
+</li>
+<li>  4.2.4. <a href="#user-content-discovery">Discovery</a>
+</li>
+<li>  4.2.5. <a href="#user-content-device-support-serial-console-kvm-ip-command-shell-virtual-media">Device support (Serial Console, KVM-IP, Command Shell, Virtual Media)</a>
+</li>
+<li>4.3. <a href="#user-content-security-intro">Security Intro</a>
+</li>
+<li>5. <a href="#user-content-protocol-details">Protocol Details</a>
+</li>
+<li> 5.1. <a href="#user-content-use-of-http">Use of HTTP</a>
+</li>
+<li>  5.1.1. <a href="#user-content-uris">URIs</a>
+</li>
+<li>  5.1.2. <a href="#user-content-http-methods">HTTP Methods</a>
+</li>
+<li>  5.1.3. <a href="#user-content-http-redirect">HTTP Redirect</a>
+</li>
+<li>  5.1.4. <a href="#user-content-media-types">Media Types</a>
+</li>
+<li>  5.1.5. <a href="#user-content-etags">ETags</a>
+</li>
+<li> 5.2. <a href="#user-content-protocol-version">Protocol Version</a>
+</li>
+<li> 5.3. <a href="#user-content-requests">Requests</a>
+</li>
+<li>  5.3.1. <a href="#user-content-request-headers">Request Headers</a>
+</li>
+<li>  5.3.2. <a href="#user-content-read-requests-get">Read Requests (GET)</a>
+</li>
+<li>   5.3.2.1. <a href="#user-content-service-root-request">Service Root Request</a>
+</li>
+<li>   5.3.2.2. <a href="#user-content-metadata-document-request">Metadata Document Request</a>
+</li>
+<li>   5.3.2.3. <a href="#user-content-service-document-request">Service Document Request</a>
+</li>
+<li>   5.3.2.4. <a href="#user-content-resource-retrieval-requests">Resource Retrieval Requests</a>
+</li>
+<li>    5.3.2.4.1. <a href="#user-content-query-parameters">Query Parameters</a>
+</li>
+<li>    5.3.2.4.2. <a href="#user-content-retrieving-collections">Retrieving Collections</a>
+</li>
+<li>  5.3.3. <a href="#user-content-head">HEAD</a>
+</li>
+<li>  5.3.4. <a href="#user-content-data-modification-requests">Data Modification Requests</a>
+</li>
+<li>   5.3.4.1. <a href="#user-content-update-patch">Update (PATCH)</a>
+</li>
+<li>   5.3.4.2. <a href="#user-content-replace-put">Replace (PUT)</a>
+</li>
+<li>   5.3.4.3. <a href="#user-content-replace-post">Create (POST)</a>
+</li>
+<li>   5.3.4.4. <a href="#user-content-delete-delete">Delete (DELETE)</a>
+</li>
+<li>   5.3.4.5. <a href="#user-content-actions-post">Actions (POST)</a>
+</li>
+<li> 5.4. <a href="#user-content-responses">Responses</a>
+</li>
+<li>  5.4.1. <a href="#user-content-response-headers">Response Headers</a>
+</li>
+<li>  5.4.2. <a href="#user-content-status-codes">Status Codes</a>
+</li>
+<li>  5.4.3. <a href="#user-content-metadata-responses">Metadata Responses</a>
+</li>
+<li>   5.4.3.1. <a href="#user-content-service-metadata">Service Metadata</a>
+</li>
+<li>   5.4.3.2. <a href="#user-content-referencing-oem-extensions">Referencing OEM Extensions</a>
+</li>
+<li>   5.4.3.3. <a href="#user-content-annotations">Annotations</a>
+</li>
+<li>  5.4.4. <a href="#user-content-resource-responses">Resource Responses</a>
+</li>
+<li>   5.4.4.1. <a href="#user-content-context-property">Context Property</a>
+</li>
+<li>    5.4.4.1.1. <a href="#user-content-select-list">Select List</a>
+</li>
+<li>   5.4.4.2. <a href="#user-content-resource-identifier-property">Resource Identifier Property</a>
+</li>
+<li>   5.4.4.3. <a href="#user-content-type-property">Type Property</a>
+</li>
+<li>   5.4.4.4. <a href="#user-content-etag-property">ETag Property</a>
+</li>
+<li>   5.4.4.5. <a href="#user-content-primitive-properties">Primitive Properties</a>
+</li>
+<li>    5.4.4.5.1. <a href="#user-content-datetime-values">DateTime Values</a>
+</li>
+<li>   5.4.4.6. <a href="#user-content-structures-properties">Structured Properties</a>
+</li>
+<li>   5.4.4.7. <a href="#user-content-collection-properties">Collection Properties</a>
+</li>
+<li>   5.4.4.8. <a href="#user-content-actions-property">Actions Property</a>
+</li>
+<li>    5.4.4.8.1. <a href="#user-content-action-representation">Action Representation</a>
+</li>
+<li>    5.4.4.8.2. <a href="#user-content-allowable-values">Allowable Values</a>
+</li>
+<li>   5.4.4.9. <a href="#user-content-links-property">Links Property</a>
+</li>
+<li>    5.4.4.9.1. <a href="#user-content-navigation-link-to-related-resources">Navigation Link to Related Resources</a>
+</li>
+<li>    5.4.4.9.2. <a href="#user-content-reference-to-a-single-related-resource">Reference to a Single Related Resource</a>
+</li>
+<li>    5.4.4.9.3. <a href="#user-content-array-of-references-to-related-resources">Array of References to Related Resources</a>
+</li>
+<li>   5.4.4.10. <a href="#user-content-oem-property">OEM Property</a>
+</li>
+<li>   5.4.4.11. <a href="#user-content-inline-error-property">Inline Error Property</a>
+</li>
+<li>    5.4.4.11.1. <a href="#user-content-object-errors">Object Errors</a>
+</li>
+<li>    5.4.4.11.2. <a href="#user-content-property-errors">Property Errors</a>
+</li>
+<li>   5.4.4.12. <a href="#user-content-additional-annotations">Additional Annotations</a>
+</li>
+<li>  5.4.5. <a href="#user-content-resource-collections">Resource Collections</a>
+</li>
+<li>   5.4.5.1. <a href="#user-content-context-property">Context Property</a>
+</li>
+<li>   5.4.5.2. <a href="#user-content-resource-count-property">Resource Count Property</a>
+</li>
+<li>   5.4.5.3. <a href="#user-content-resource-members-property">Resource Members Property</a>
+</li>
+<li>   5.4.5.4. <a href="#user-content-partial-results">Partial Results</a>
+</li>
+<li>   5.4.5.5. <a href="#user-content-additional-annotations">Additional Annotations</a>
+</li>
+<li>  5.4.6. <a href="#user-content-extended-error-handling">Extended Error Handling</a>
+</li>
+<li>6. <a href="#user-content-data-model--schema">Data Model &amp; Schema</a>
+</li>
+<li> 6.1. <a href="#user-content-type-identifiers">Type Identifiers</a>
+</li>
+<li> 6.2. <a href="#user-content-common-naming-conventions">Common Naming Conventions</a>
+</li>
+<li> 6.3. <a href="#user-content-localization-considerations">Localization Considerations</a>
+</li>
+<li> 6.4. <a href="#user-content-schema-definition">Schema Definition</a>
+</li>
+<li>  6.4.1. <a href="#user-content-common-annotations">Common Annotations</a>
+</li>
+<li>   6.4.1.1. <a href="#user-content-description">Description</a>
+</li>
+<li>   6.4.1.2. <a href="#user-content-specification">Specification</a>
+</li>
+<li>  6.4.2. <a href="#user-content-schema-documents">Schema Documents</a>
+</li>
+<li>   6.4.2.1. <a href="#user-content-referencing-other-schemas">Referencing other Schemas</a>
+</li>
+<li>   6.4.2.2. <a href="#user-content-namespace-definitions">Namespace Definitions</a>
+</li>
+<li>  6.4.3. <a href="#user-content-resource-type-definitions">Resource Type Definitions</a>
+</li>
+<li>  6.4.4. <a href="#user-content-resource-properties">Resource Properties</a>
+</li>
+<li>   6.4.4.1. <a href="#user-content-property-types">Property Types</a>
+</li>
+<li>    6.4.4.1.1. <a href="#user-content-primitive-types">Primitive Types</a>
+</li>
+<li>    6.4.4.1.2. <a href="#user-content-structured-types">Structured Types</a>
+</li>
+<li>    6.4.4.1.3. <a href="#user-content-enums">Enums</a>
+</li>
+<li>    6.4.4.1.4. <a href="#user-content-collections">Collections</a>
+</li>
+<li>   6.4.4.2. <a href="#user-content-non-nullable-properties">Non-Nullable properties</a>
+</li>
+<li>   6.4.4.3. <a href="#user-content-read-only-properties">Read-only properties</a>
+</li>
+<li>   6.4.4.4. <a href="#user-content-required-properties">Required Properties</a>
+</li>
+<li>   6.4.4.5. <a href="#user-content-units-of-measure">Units of Measure</a>
+</li>
+<li>   6.4.4.6. <a href="#user-content-language-dependent-property-values">Language-Dependent Property Values</a>
+</li>
+<li>  6.4.5. <a href="#user-content-reference-properties">Reference Properties</a>
+</li>
+<li>   6.4.5.1. <a href="#user-content-expanded-references">Expanded References</a>
+</li>
+<li>  6.4.6. <a href="#user-content-resource-actions">Resource Actions</a>
+</li>
+<li>  6.4.7. <a href="#user-content-resource-extensibility">Resource Extensibility</a>
+</li>
+<li>   6.4.7.1. <a href="#user-content-property-extensions">Property Extensions</a>
+</li>
+<li>   6.4.7.2. <a href="#user-content-custom-actions">Custom Actions</a>
+</li>
+<li>   6.4.7.3. <a href="#user-content-custom-annotations">Custom Annotations</a>
+</li>
+<li> 6.5. <a href="#user-content-common-spma-resource-properties">Common SPMA Resource Properties</a>
+</li>
+<li>  6.5.1. <a href="#user-content-id">Id</a>
+</li>
+<li>  6.5.2. <a href="#user-content-name">Name</a>
+</li>
+<li>  6.5.3. <a href="#user-content-description">Description</a>
+</li>
+<li>  6.5.4. <a href="#user-content-created">Created</a>
+</li>
+<li>  6.5.5. <a href="#user-content-modified">Modified</a>
+</li>
+<li>  6.5.6. <a href="#user-content-status">Status</a>
+</li>
+<li>  6.5.7. <a href="#user-content-links">Links</a>
+</li>
+<li>  6.5.8. <a href="#user-content-actions">Actions</a>
+</li>
+<li>  6.5.9. <a href="#user-content-oem">OEM</a>
+</li>
+<li>  6.5.10. <a href="#user-content-settings">Settings</a>
+</li>
+<li>  6.5.11. <a href="#user-content-settingsresult">SettingsResult</a>
+</li>
+<li>  6.5.12. <a href="#user-content-correlatableid">CorrelatableID</a>
+</li>
+<li>  6.5.13. <a href="#user-content-other-common-properties">Other common properties</a>
+</li>
+<li> 6.6. <a href="#user-content-spma-resources">SPMA Resources</a>
+</li>
+<li>  6.6.1. <a href="#user-content-current-configuration">Current Configuration</a>
+</li>
+<li>  6.6.2. <a href="#user-content-settings">Settings</a>
+</li>
+<li>  6.6.3. <a href="#user-content-services">Services</a>
+</li>
+<li>  6.6.4. <a href="#user-content-registry">Registry</a>
+</li>
+<li>  6.6.5. <a href="#user-content-schema-variations">Schema Variations</a>
+</li>
+<li>7. <a href="#user-content-service-details">Service Details</a>
+</li>
+<li> 7.1. <a href="#user-content-eventing">Eventing</a>
+</li>
+<li>  7.1.1. <a href="#user-content-event-message-subscription">Event Message Subscription</a>
+</li>
+<li>  7.1.2. <a href="#user-content-event-message-objects">Event Message Objects</a>
+</li>
+<li>  7.1.3. <a href="#user-content-subscription-cleanup">Subscription Cleanup</a>
+</li>
+<li> 7.2. <a href="#user-content-asynchronous-operations">Asynchronous Operations</a>
+</li>
+<li> 7.3. <a href="#user-content-timestamp-management">Timestamp Management</a>
+</li>
+<li> 7.4. <a href="#user-content-resource-tree-stability">Resource Tree Stability</a>
+</li>
+<li> 7.5. <a href="#user-content-discovery">Discovery</a>
+</li>
+<li>  7.5.1. <a href="#user-content-upnpcompatibility">UPnP Compatibility</a>
+</li>
+<li>  7.5.2. <a href="#user-content-usn-format">USN Format</a>
+</li>
+<li>  7.5.3. <a href="#user-content-m-search-response">M-SEARCH Response</a>
+</li>
+<li>  7.5.4. <a href="#user-content-notify-alive-and-shutdown-messages">Notify, Alive, and Shutdown messages</a>
+</li>
+<li>8. <a href="#user-content-security">Security</a>
+</li>
+<li> 8.1. <a href="#user-content-goals">Goals</a>
+</li>
+<li> 8.2. <a href="#user-content-protocols">Protocols</a>
+</li>
+<li>  8.2.1. <a href="#user-content-discovery">Discovery</a>
+</li>
+<li>  8.2.2. <a href="#user-content-transport">Transport</a>
+</li>
+<li>   8.2.2.1. <a href="#user-content-tls">TLS</a>
+</li>
+<li>   8.2.2.2. <a href="#user-content-cipher-suites">Cipher suites</a>
+</li>
+<li>   8.2.2.3. <a href="#user-content-certificates">Certificates</a>
+</li>
+<li>  8.2.3. <a href="#user-content-fips-common-criteria-compliance">FIPS/Common Criteria Compliance</a>
+</li>
+<li> 8.3. <a href="#user-content-sensitive-data">Sensitive Data</a>
+</li>
+<li> 8.4. <a href="#user-content-authentication">Authentication</a>
+</li>
+<li>  8.4.1. <a href="#user-content-http-header-security">HTTP Header Security</a>
+</li>
+<li>   8.4.1.1. <a href="#user-content-http-redirect">HTTP Redirect</a>
+</li>
+<li>  8.4.2. <a href="#user-content-extende-error-handling">Extended Error Handling</a>
+</li>
+<li>  8.4.3. <a href="#user-content-http-header-authentication">HTTP Header Authentication</a>
+</li>
+<li>   8.4.3.1. <a href="#user-content-basic-authentication">BASIC authentication</a>
+</li>
+<li>   8.4.3.2. <a href="#user-content-digest-authentication">Digest authentication</a>
+</li>
+<li>   8.4.3.3. <a href="#user-content-negotiate">Negotiate</a>
+</li>
+<li>   8.4.3.4. <a href="#user-content-request--message-level-authentication">Request / Message Level Authentication</a>
+</li>
+<li>   8.4.3.5. <a href="#user-content-certificate-based-authentication">Certificate based authentication?</a>
+</li>
+<li>  8.4.4. <a href="#user-content-session-management">Session Management</a>
+</li>
+<li>   8.4.4.1. <a href="#user-content-session-lifecycle-management">Session Lifecycle Management</a>
+</li>
+<li>   8.4.4.2. <a href="#user-content-login-sessions">Login Sessions</a>
+</li>
+<li>   8.4.4.3. <a href="#user-content-login">Login</a>
+</li>
+<li>   8.4.4.4. <a href="#user-content-logout">Logout</a>
+</li>
+<li>   8.4.4.5. <a href="#user-content-x-auth-token-http-header">X-Auth-Token HTTP Header</a>
+</li>
+<li>  8.4.5. <a href="#user-content-accountservice">AccountService</a>
+</li>
+<li>  8.4.6. <a href="#user-content-async-tasks">Async Tasks</a>
+</li>
+<li>  8.4.7. <a href="#user-content-event-subscriptions">Event Subscriptions</a>
+</li>
+<li>  8.4.8. <a href="#user-content-privilege-model--authorization">Privilege Model / Authorization</a>
+</li>
+<li>   8.4.8.1. <a href="#user-content-profiles-and-roles">Profiles and Roles</a>
+</li>
+<li>  8.4.9. <a href="#user-content-role-based-privilege">Role Based Privilege</a>
+</li>
+<li> 8.5. <a href="#user-content-data-model-validation">Data Model Validation</a>
+</li>
+<li>  8.5.1. <a href="#user-content-schema">Schema</a>
+</li>
+<li> 8.6. <a href="#user-content-logging">Logging</a>
+</li>
+<li>  8.6.1. <a href="#user-content-required-data-for-security-log-entries">Required data for security log entries</a>
+</li>
+<li>  8.6.2. <a href="#user-content-completeness-of-logging">Completeness of Logging</a>
+</li>
+<li>  8.6.3. <a href="#user-content-content-of-audit-logs">Content of Audit Logs</a>
+</li>
+<li>9. <a href="#user-content-appendix-a">Appendix A</a>
+</li>
+<li> 9.1. <a href="#user-content-known-attack-vector-mitigation">Known attack vector mitigation</a>
+</li>
+<li>10. <a href="#user-content-appendx-b-notes">Appendix B: Notes</a>
+</li>
+<li>11. <a href="#user-content-appendix-c-summary-of-changes-from-091">Appendix C: Summary of Changes</a>
+</li>
+</ul>
+
+<h2>
 <a name="user-content-abstract" class="anchor" href="#abstract" aria-hidden="true"><span class="octicon octicon-link"></span></a>Abstract</h2>
 
 <p>The Scalable Platforms Management API (SPMA) is a new interface that uses RESTful interface semantics to access data defined in model format to perform out of band systems management.  It is suitable for a wide range of servers, from stand-alone servers to rack mount and bladed environments but scales equally well for large scale cloud environments.</p>
@@ -452,14 +651,18 @@ and noninfringement. This specification is subject to change without notice.
 <li>Redfish Schema, Specification and Schema
 <a href="http://www.RedfishSpecification.org" title="http://www.RedfishSpecification.org">http://www.RedfishSpecification.org</a>
 </li>
-</ul><h3>
+</ul>
+
+<h3>
 <a name="user-content-terminology" class="anchor" href="#terminology" aria-hidden="true"><span class="octicon octicon-link"></span></a>Terminology</h3>
 
 <table>
-<thead><tr>
+<thead>
+<tr>
 <th>Term</th>
 <th>Definition</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td>Collection</td>
@@ -506,14 +709,18 @@ and noninfringement. This specification is subject to change without notice.
 <td>The act of connecting to an error service in order to receive events.</td>
 </tr>
 </tbody>
-</table><h3>
+</table>
+
+<h3>
 <a name="user-content-acronyms-and-abbreviations" class="anchor" href="#acronyms-and-abbreviations" aria-hidden="true"><span class="octicon octicon-link"></span></a>Acronyms and Abbreviations</h3>
 
 <table>
-<thead><tr>
+<thead>
+<tr>
 <th>Term</th>
 <th>Definition</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td>CSRF</td>
@@ -552,7 +759,9 @@ and noninfringement. This specification is subject to change without notice.
 <td>Cross-Site Scripting</td>
 </tr>
 </tbody>
-</table><h3>
+</table>
+
+<h3>
 <a name="user-content-conformance-terminology" class="anchor" href="#conformance-terminology" aria-hidden="true"><span class="octicon octicon-link"></span></a>Conformance Terminology</h3>
 
 <p>The terms defined in this section are used throughout the document to indicate how certain behaviors conform or do not conform to this specification.  Consult ISO/IEC Directives, Part 2, Rules for the structure and drafting of International Standards for details.</p>
@@ -560,10 +769,12 @@ and noninfringement. This specification is subject to change without notice.
 <p>For the purposes of this document, the following terms and definitions apply. </p>
 
 <table>
-<thead><tr>
+<thead>
+<tr>
 <th>Term</th>
 <th>Usage</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td>can</td>
@@ -610,7 +821,9 @@ and noninfringement. This specification is subject to change without notice.
 <td>indicates that a certain possibility or course of action is deprecated but not prohibited</td>
 </tr>
 </tbody>
-</table><h2>
+</table>
+
+<h2>
 <a name="user-content-overview" class="anchor" href="#overview" aria-hidden="true"><span class="octicon octicon-link"></span></a>Overview</h2>
 
 <p>The Scalable Platform Management API (SMPA) is a management standard using a data model representation inside of a hypermedia RESTful interface.  The model is exposed in terms of an interoperable OData Schema, with the payload of the messages being expressed in JSON following OData JSON conventions. The schema includes annotations to facilitate automatic translation of the schema to JSON Schema. Because it is based on REST, SPMA is easier to use and implement than many other solutions.  Since it is model oriented, it is capable of expressing the relationships between components in modern systems as well as the semantics of the services and components within them.  It is also easily extensible.  By using a hypermedia approach to REST, SPMA can express a large variety of systems from multiple vendors.  By requiring JSON representation, a wide variety of resources can be created in a denormalized fashion not only to improve scalability, but the payload can be easily interpreted by most programming environments as well as being relatively intuitive for a human examining the data.  The ability to externally host the Schema definition of the resources in a machine-readable format allows the meta data to be associated with the data without encumbering SPMA services with the meta data, thus enabling more advanced client scenarios as found in many data center and cloud environments.    </p>
@@ -634,7 +847,9 @@ and noninfringement. This specification is subject to change without notice.
 <li>Data definitions as obvious in context as possible</li>
 <li>Opaque view of implementation architecture</li>
 <li>"Top 10" customer needs are focus of first round schema definition.</li>
-</ul><h4>
+</ul>
+
+<h4>
 <a name="user-content-rest-based" class="anchor" href="#rest-based" aria-hidden="true"><span class="octicon octicon-link"></span></a>REST based</h4>
 
 <p>This document defines a RESTful interface. Many service applications are exposed RESTful interfaces. </p>
@@ -652,7 +867,9 @@ and noninfringement. This specification is subject to change without notice.
 <li>It is equally applicable to software application space as it is for embedded environments thus enabling convergence and sharing of code of components within the management ecosystem.</li>
 <li>It is schema agnostic so adapts well to any modeling language.</li>
 <li>By using it, SPMA can leverage existing security &amp; discovery mechanisms in the industry. </li>
-</ul><h4>
+</ul>
+
+<h4>
 <a name="user-content-follow-odata-conventions" class="anchor" href="#follow-odata-conventions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Follow OData Conventions</h4>
 
 <p>With the popularity of RESTful APIs, there are nearly as many RESTful interfaces as there are applications. While following REST patterns helps promote good practices, due to design differences between the many RESTful APIs there is no interoperability between them.</p>
@@ -706,7 +923,7 @@ and noninfringement. This specification is subject to change without notice.
 
 <p>While the majority of operations in this architecture are synchronous in nature, some operations can take a long time to execute, more time than a client typically wants to wait. For this reason, some operations can be asynchronous at the discretion of the service. The request portion of an asynchronous operation is no different from the request portion of a synchronous operation.</p>
 
-<p>The use of HTTP Response codes enable a client to determine if the operation was completed synchronously or asynchronously.  For more information see the section on <a href="#task">Tasks</a>.</p>
+<p>The use of HTTP Response codes enable a client to determine if the operation was completed synchronously or asynchronously.  For more information see the section on <a href="#user-content-task">Tasks</a>.</p>
 
 <h4>
 <a name="user-content-eventing-mechanism" class="anchor" href="#eventing-mechanism" aria-hidden="true"><span class="octicon octicon-link"></span></a>Eventing Mechanism</h4>
@@ -717,23 +934,23 @@ and noninfringement. This specification is subject to change without notice.
 
 <p>Events originate from a specific resource. Not all resources are able to generate events. Those resources capable of generating events might not generate any events unless a client is listening for them. A client expresses interest in receiving events by sending a "subscribe" message to the resource. A subscribe message is sent using HTTP POST to the Event Subscriptions collection.</p>
 
-<p>The Section on <a href="#eventing">Eventing</a> further in this specification discusses the details of the eventing mechanism.</p>
+<p>The Section on <a href="#user-content-eventing">Eventing</a> further in this specification discusses the details of the eventing mechanism.</p>
 
 <h4>
 <a name="user-content-actions" class="anchor" href="#actions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Actions</h4>
 
-<p>Operations can be divided into two sets: intrinsic and extrinsic.  Intrinsic operations, often referred to as CRUD, are mapped to <a href="#methods">HTTP methods</a>.  The protocol also has the ability to support extrinsic operations -- those operations that do not map easily to CRUD.  Examples of extrinsic would be items that collectively would be better performed if done as a set (for scalability, ease of interface, server side semantic preservation or similar reasons) or operations that have no natural mapping to CRUD operations. Examples are software update or system reset.  A software update could be seen as three possible operations: transfer the image to be updated to the system, get the system to load the image and activate the image.  It is possible to combine these operations into one single action.  A system reset could be modeled as an update to state, but semantically the client is actually requesting a state change and not simply changing the value in the state.</p>
+<p>Operations can be divided into two sets: intrinsic and extrinsic.  Intrinsic operations, often referred to as CRUD, are mapped to <a href="#user-content-methods">HTTP methods</a>.  The protocol also has the ability to support extrinsic operations -- those operations that do not map easily to CRUD.  Examples of extrinsic would be items that collectively would be better performed if done as a set (for scalability, ease of interface, server side semantic preservation or similar reasons) or operations that have no natural mapping to CRUD operations. Examples are software update or system reset.  A software update could be seen as three possible operations: transfer the image to be updated to the system, get the system to load the image and activate the image.  It is possible to combine these operations into one single action.  A system reset could be modeled as an update to state, but semantically the client is actually requesting a state change and not simply changing the value in the state.</p>
 
 <p>In SPMA, these extrinsic operations are called <strong>actions</strong> and are discussed in detail in different parts of this specification.</p>
 
-<p>The SPMA Schema defines certain standard actions associated with <a href="*common-spma-resources">common SPM resources</a>.  For these standard actions, the SPMA Schema contains the normative language on the behavior of the action.  OEM extensions are also allowed to the <a href="#schema-extensibility">schema</a>, including defining <a href="*custom-actions">actions</a> for existing resources.</p>
+<p>The SPMA Schema defines certain standard actions associated with <a href="#user-content-common-spma-resources">common SPM resources</a>.  For these standard actions, the SPMA Schema contains the normative language on the behavior of the action.  OEM extensions are also allowed to the <a href="#user-content-schema-extensibility">schema</a>, including defining <a href="#user-content-custom-actions">actions</a> for existing resources.</p>
 
 <h4>
 <a name="user-content-discovery" class="anchor" href="#discovery" aria-hidden="true"><span class="octicon octicon-link"></span></a>Discovery</h4>
 
 <p>While the service itself is at a well-known URI, the service host must be discovered. SPMA, like UPnP, uses SSDP for discovery. SSDP is supported in a wide variety of devices, such as printers.  It is simple, lightweight, IPv6 capable and suitable for implementation in embedded environments. </p>
 
-<p>For more information, see the section on <a href="#discovery-1">Discovery</a></p>
+<p>For more information, see the section on <a href="#user-content-discovery-1">Discovery</a></p>
 
 <h4>
 <a name="user-content-device-support-serial-console-kvm-ip-command-shell-virtual-media" class="anchor" href="#device-support-serial-console-kvm-ip-command-shell-virtual-media" aria-hidden="true"><span class="octicon octicon-link"></span></a>Device support (Serial Console, KVM-IP, Command Shell, Virtual Media)</h4>
@@ -756,17 +973,17 @@ and noninfringement. This specification is subject to change without notice.
 
 <p>The SPMA protocol is designed around a web service based interface model, and designed for network and interaction efficiency for both user interface (UI) and automation usage. The interface is specifically designed around the REST pattern semantics.</p>
 
-<p><a href="#http-methods">HTTP methods</a> are used by the SPMA protocol for common CRUD (Create, Read, Update, Delete) operations and to retrieve header information.</p>
+<p><a href="#user-content-http-methods">HTTP methods</a> are used by the SPMA protocol for common CRUD (Create, Read, Update, Delete) operations and to retrieve header information.</p>
 
-<p><a href="#actions">Actions</a> are used for expanding operations beyond CRUD type operations, but should be limited in use.</p>
+<p><a href="#user-content-actions">Actions</a> are used for expanding operations beyond CRUD type operations, but should be limited in use.</p>
 
-<p><a href="#media-types">Media types</a> are used to negotiate the type of data that is being sent in the body of a message. </p>
+<p><a href="#user-content-media-types">Media types</a> are used to negotiate the type of data that is being sent in the body of a message. </p>
 
-<p><a href="#status-codes">HTTP status codes</a> are used to indicate the server's attempt at processing the request.  <a href="#extended-error-handling">Extended error handling</a> is used to return more information than the HTTP error code provides.</p>
+<p><a href="#user-content-status-codes">HTTP status codes</a> are used to indicate the server's attempt at processing the request.  <a href="#user-content-extended-error-handling">Extended error handling</a> is used to return more information than the HTTP error code provides.</p>
 
-<p>The ability to send secure messages is important; the <a href="#security">Security</a> section of this document describes specific TLS requirements.</p>
+<p>The ability to send secure messages is important; the <a href="#user-content-security">Security</a> section of this document describes specific TLS requirements.</p>
 
-<p>Some operations may take longer than required for synchronous return semantics. Consequently, deterministic <a href="#synchronous-and-asynchronous-operation-support">asynchronous semantic</a> are included in the architecture.</p>
+<p>Some operations may take longer than required for synchronous return semantics. Consequently, deterministic <a href="#user-content-synchronous-and-asynchronous-operation-support">asynchronous semantic</a> are included in the architecture.</p>
 
 <h3>
 <a name="user-content-use-of-http" class="anchor" href="#use-of-http" aria-hidden="true"><span class="octicon octicon-link"></span></a>Use of HTTP</h3>
@@ -775,7 +992,9 @@ and noninfringement. This specification is subject to change without notice.
 
 <ul>
 <li>An SPMA interface shall be exposed through a web service endpoint implemented using Hypertext Transfer Protocols, version 1.1 (RFC 2616).</li>
-</ul><h4>
+</ul>
+
+<h4>
 <a name="user-content-uris" class="anchor" href="#uris" aria-hidden="true"><span class="octicon octicon-link"></span></a>URIs</h4>
 
 <p>A URI is used to identify a resource, including the base service and all SPMA resources.</p>
@@ -783,11 +1002,15 @@ and noninfringement. This specification is subject to change without notice.
 <ul>
 <li>A URI shall be a unique identifier to a resource.</li>
 <li>A URI shall be treated by the client as opaque, and thus should not be attempted to be understood or deconstructed by the client</li>
-</ul><p>To begin operations, a client must know the URI for a resource.</p>
+</ul>
+
+<p>To begin operations, a client must know the URI for a resource.</p>
 
 <ul>
 <li>Dereferencing the URI of a resource (via a GET operation) shall yield a representation for the resource containing resource attributes, and links to associated resources.</li>
-</ul><p>The base resource URI is well known and is based on the protocol version.  Discovering the URIs to additional resources is done through observing the associated resource links returned in previous responses. This type of API that is consumed by navigating URIs returned by the service is known as a Hypermedia API.</p>
+</ul>
+
+<p>The base resource URI is well known and is based on the protocol version.  Discovering the URIs to additional resources is done through observing the associated resource links returned in previous responses. This type of API that is consumed by navigating URIs returned by the service is known as a Hypermedia API.</p>
 
 <p>The URI is the primary unique identifier of resources.  SPMA considers 3 parts of the URI as described in RFC3986. </p>
 
@@ -802,18 +1025,22 @@ and noninfringement. This specification is subject to change without notice.
 <li>The first portion is the service path (<a href="https://mgmr.vendor.com">https://mgmr.vendor.com</a>).</li>
 <li>The second portion is the base resource and version (/rest/v1).</li>
 <li>The third portion is the unique resource path (System/1).</li>
-</ul><p>The scheme and authority portions of the URI <em>shall not</em> be considered part of the unique <em>identifier</em> of the resource. This is due to redirection capabilities and local operations which may result in the variability of the connection portion.  The remainder of the URI (the service and resource paths) is what <em>uniquely identifies</em> the resource, and this is what is returned in all SPMA payloads.  </p>
+</ul>
+
+<p>The scheme and authority portions of the URI <em>shall not</em> be considered part of the unique <em>identifier</em> of the resource. This is due to redirection capabilities and local operations which may result in the variability of the connection portion.  The remainder of the URI (the service and resource paths) is what <em>uniquely identifies</em> the resource, and this is what is returned in all SPMA payloads.  </p>
 
 <ul>
 <li>The unique identifier portion of a URI <em>shall</em> be unique within the implementation.</li>
-</ul><p>For example, a POST may return the following URI in the Location header of the response (indicating the new resource created by the POST):</p>
+</ul>
+
+<p>For example, a POST may return the following URI in the Location header of the response (indicating the new resource created by the POST):</p>
 
 <pre><code>Example: /rest/v1/System/2
 </code></pre>
 
 <p>Assuming the client is connecting through an appliance named "mgmt.vendor.com", the full URI needed to access this new resource is <a href="https://mgmt.vendor.com/rest/v1/System/2">https://mgmt.vendor.com/rest/v1/System/2</a>.</p>
 
-<p>URIs, as described in RFC3986, may also contain a query (?query) and a frag (#frag) components.  Queries are addressed in the section <a href="#query-parameters">Query Parameters</a>.  Fragments (frag) shall be ignored by the server when used as the URI for submitting an operation. Frags shall not be used in a reference in a links section. Frags may be used in places like <a href="#type-property">type references</a>, <a href="#correlatableidreferences">CorrelatableIDs</a> and <a href="#events">Events</a>. Clients should expect to parse out the fragment portion for Types and Events, but CorrelatableIDs shall be treated as opaque.  When a Frag is used, it shall be of JSONPointer format according to RFC6901.</p>
+<p>URIs, as described in RFC3986, may also contain a query (?query) and a frag (#user-content-frag) components.  Queries are addressed in the section <a href="#user-content-query-parameters">Query Parameters</a>.  Fragments (frag) shall be ignored by the server when used as the URI for submitting an operation. Frags shall not be used in a reference in a links section. Frags may be used in places like <a href="#user-content-type-property">type references</a>, <a href="#user-content-correlatableidreferences">CorrelatableIDs</a> and <a href="#user-content-events">Events</a>. Clients should expect to parse out the fragment portion for Types and Events, but CorrelatableIDs shall be treated as opaque.  When a Frag is used, it shall be of JSONPointer format according to RFC6901.</p>
 
 <h4>
 <a name="user-content-http-methods" class="anchor" href="#http-methods" aria-hidden="true"><span class="octicon octicon-link"></span></a>HTTP Methods</h4>
@@ -821,11 +1048,13 @@ and noninfringement. This specification is subject to change without notice.
 <p>An attractive feature of the RESTful interface is the very limited number of operations which are supported. The following table describes the general mapping of operations to HTTP methods.  If the value in the column entitled "required" has the value "yes" then the HTTP method shall be supported by an SPMA interface.</p>
 
 <table>
-<thead><tr>
+<thead>
+<tr>
 <th>HTTP Method</th>
 <th>Interface Semantic</th>
 <th>Required</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td>POST</td>
@@ -858,7 +1087,9 @@ and noninfringement. This specification is subject to change without notice.
 <td>No</td>
 </tr>
 </tbody>
-</table><p>Other HTTP methods are not allowed and shall receive a <a href="#status-405">405</a> response.</p>
+</table>
+
+<p>Other HTTP methods are not allowed and shall receive a <a href="#user-content-status-405">405</a> response.</p>
 
 <h4>
 <a name="user-content-http-redirect" class="anchor" href="#http-redirect" aria-hidden="true"><span class="octicon octicon-link"></span></a>HTTP Redirect</h4>
@@ -867,7 +1098,9 @@ and noninfringement. This specification is subject to change without notice.
 
 <ul>
 <li>All SPMA Clients shall correctly handle HTTP redirect. </li>
-</ul><p>NOTE: Refer to the <a href="#security">Security</a> section for security implications of HTTP Redirect</p>
+</ul>
+
+<p>NOTE: Refer to the <a href="#user-content-security">Security</a> section for security implications of HTTP Redirect</p>
 
 <h4>
 <a name="user-content-media-types" class="anchor" href="#media-types" aria-hidden="true"><span class="octicon octicon-link"></span></a>Media Types</h4>
@@ -880,7 +1113,9 @@ and noninfringement. This specification is subject to change without notice.
 
 <ul>
 <li>SPMA services <em>shall</em> make every resource available in a representation based on JSON, as specified in <a href="http://www.ietf.org/rfc/rfc4627.txt">RFC4627</a>. Receivers shall not reject a message because it is encoded in JSON, and shall offer at least one response representation based on JSON. An implementation may offer additional representations using non-JSON media types.</li>
-</ul><p>Responses to GET requests may be compressed.  Clients shall be prepared to accept a Content-Encoding of gzip in a Response to a GET. </p>
+</ul>
+
+<p>Responses to GET requests may be compressed.  Clients shall be prepared to accept a Content-Encoding of gzip in a Response to a GET. </p>
 
 <h4>
 <a name="user-content-etags" class="anchor" href="#etags" aria-hidden="true"><span class="octicon octicon-link"></span></a>ETags</h4>
@@ -888,15 +1123,19 @@ and noninfringement. This specification is subject to change without notice.
 <p>In order to reduce the cases of unnecessary RESTful accesses to resources, the SPMA Service should support associating a separate ETag with each resource.</p>
 
 <ul>
-<li>Implementations should support returning <a href="#etag-property">ETag properties</a> for each resource.</li>
-</ul><p>The ETag is generated and provided as part of the resource payload because the service is in the best position to know if the new version of the object is different enough to be considered substantial. There are two types of ETags: weak and strong.</p>
+<li>Implementations should support returning <a href="#user-content-etag-property">ETag properties</a> for each resource.</li>
+</ul>
+
+<p>The ETag is generated and provided as part of the resource payload because the service is in the best position to know if the new version of the object is different enough to be considered substantial. There are two types of ETags: weak and strong.</p>
 
 <ul>
 <li>Weak model -- only "important" portions of the object are included in formulation of the ETag.  For instance, meta-data such as a last modified time should not be included in the ETag generation. The "important" properties that determine ETag change include writable settings and changeable attributes such as UUID, FRU data, serial numbers, etc.</li>
 <li>Strong model -- all portions of the object are included in the formulation of the ETag. </li>
-</ul><p>This specification does not mandate a particular algorithm for creating the ETag, but ETags should be highly collision-free.  An ETag could be a hash, a generation ID, a time stamp or some other value that changes when the underlying object changes.</p>
+</ul>
 
-<p>NOTE: Refer to the <a href="#security">Security</a> section for security implications of ETags</p>
+<p>This specification does not mandate a particular algorithm for creating the ETag, but ETags should be highly collision-free.  An ETag could be a hash, a generation ID, a time stamp or some other value that changes when the underlying object changes.</p>
+
+<p>NOTE: Refer to the <a href="#user-content-security">Security</a> section for security implications of ETags</p>
 
 <p>If a client PUTs or PATCHes a resource, it should include an ETag in the HTTP If-Match/If-None-Match header from a previous GET.</p>
 
@@ -905,7 +1144,9 @@ and noninfringement. This specification is subject to change without notice.
 <ul>
 <li>An SPMA Service should return the ETag header on client PUT/POST/PATCH</li>
 <li>An SPMA Service should return the ETag header on a GET of an individual resource</li>
-</ul><p>The format of the ETag header is:</p>
+</ul>
+
+<p>The format of the ETag header is:</p>
 
 <pre><code>ETag W/"&lt;string&gt;"
 </code></pre>
@@ -913,7 +1154,7 @@ and noninfringement. This specification is subject to change without notice.
 <h3>
 <a name="user-content-protocol-version" class="anchor" href="#protocol-version" aria-hidden="true"><span class="octicon octicon-link"></span></a>Protocol Version</h3>
 
-<p>The Version of the SPMA Protocol supported by this specification is Version 1.0.  Note that the protocol version is separate from the version of the resources or the version of the schema supported by them.  Changes to the resources are noted via ETags.  The schema version for a resource type is defined in the namespace of resource's <a href="*type-identifiers">type URI</a> returned in the <a href="#@odata.type">type</a> property of the resource.</p>
+<p>The Version of the SPMA Protocol supported by this specification is Version 1.0.  Note that the protocol version is separate from the version of the resources or the version of the schema supported by them.  Changes to the resources are noted via ETags.  The schema version for a resource type is defined in the namespace of resource's <a href="#user-content-type-identifiers">type URI</a> returned in the <a href="#user-content-@odata.type">type</a> property of the resource.</p>
 
 <p>Each version of the SPMA protocol is strongly typed.  This is accomplished using the URI of the SPMA service in combination with the resource obtained at that URI, called the ServiceRoot. The URI version subcomponent of the URI is string of the form: </p>
 
@@ -928,7 +1169,9 @@ and noninfringement. This specification is subject to change without notice.
 <em>MinorVersion</em> = integer:  a minor update.  New functionality may have been added but nothing removed. Compatibility will be preserved with previous  minorversions.</li>
 <li>
 <em>Errata</em> = integer: something in the prior version was broken and needed to be fixed.</li>
-</ul><p>While the major version is represented in the URI, the major version, minor version and errata versions are represented in the Version property of the ServiceRoot resource, as defined in the Schema for that resource.</p>
+</ul>
+
+<p>While the major version is represented in the URI, the major version, minor version and errata versions are represented in the Version property of the ServiceRoot resource, as defined in the Schema for that resource.</p>
 
 <p>The root URI for SPMA protocol version 1 shall be "/rest/v1".</p>
 
@@ -948,13 +1191,17 @@ and noninfringement. This specification is subject to change without notice.
 <li>SPMA services <em>shall</em> understand and be able to process the headers in the following table as defined by the HTTP 1.1 specification if the value in the Required column is set to "yes" .</li>
 <li>SPMA services <em>should</em> understand and be able to process the headers in the following tables as defined by the HTTP 1.1 specification if the value in the Required column is set to "no".<br>
 </li>
-</ul><table>
-<thead><tr>
+</ul>
+
+<table>
+<thead>
+<tr>
 <th>Header</th>
 <th>Required</th>
 <th>Supported Values</th>
 <th>Description</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td>Accept</td>
@@ -984,7 +1231,7 @@ and noninfringement. This specification is subject to change without notice.
 <td>Content-Length</td>
 <td>No</td>
 <td><a href="http://pretty-rfc.herokuapp.com/RFC2616#header.content-length">RFC 2616, Section 14.3</a></td>
-<td>Describes the size of the message body. An optional means of indicating size of the body uses Transfer-Encoding: chunked, which does not use the Content-Length header. If a service does not support Transfer-Encoding and needs Content-Length instead, the service will respond with status code <a href="#status-411">411</a>.</td>
+<td>Describes the size of the message body. An optional means of indicating size of the body uses Transfer-Encoding: chunked, which does not use the Content-Length header. If a service does not support Transfer-Encoding and needs Content-Length instead, the service will respond with status code <a href="#user-content-status-411">411</a>.</td>
 </tr>
 <tr>
 <td>Max-OData-Version</td>
@@ -1002,7 +1249,7 @@ and noninfringement. This specification is subject to change without notice.
 <td>Authorization</td>
 <td>No</td>
 <td><a href="http://pretty-rfc.herokuapp.com/RFC2617#basic-authentication-scheme">RFC 2617, Section 2</a></td>
-<td>See <a href="#basic-auth">Basic Authorization</a>
+<td>See <a href="#user-content-basic-auth">Basic Authorization</a>
 </td>
 </tr>
 <tr>
@@ -1037,46 +1284,60 @@ and noninfringement. This specification is subject to change without notice.
 </tr>
 <tr>
 <td>If-Match</td>
-<td>No <a href="#if-match-note-1"><sup>1</sup></a>
+<td>No <a href="#user-content-if-match-note-1"><sup>1</sup></a>
 </td>
 <td><a href="http://pretty-rfc.herokuapp.com/RFC2616#header.max-forwards">RFC 2616, Section 14.31</a></td>
-<td>The service will attempt to update the resource only if the current ETag for the resource matches the ETag passed in this HTTP header. If the ETag specified in this header does not match the resource's current ETag, status code <a href="#status-412">412</a> will be returned.</td>
+<td>The service will attempt to update the resource only if the current ETag for the resource matches the ETag passed in this HTTP header. If the ETag specified in this header does not match the resource's current ETag, status code <a href="#user-content-status-412">412</a> will be returned.</td>
 </tr>
 <tr>
 <td>If-None-Match</td>
 <td>No</td>
 <td><a href="http://pretty-rfc.herokuapp.com/RFC2616#header.max-forwards">RFC 2616, Section 14.31</a></td>
-<td>If this HTTP header is present, the service will only return the requested resource if the current ETag of that resource does not match the ETag sent in this header.  If the ETag specified in this header matches the resource's current ETag, the status code returned from the GET will be <a href="#status-304">304</a>.</td>
+<td>If this HTTP header is present, the service will only return the requested resource if the current ETag of that resource does not match the ETag sent in this header.  If the ETag specified in this header matches the resource's current ETag, the status code returned from the GET will be <a href="#user-content-status-304">304</a>.</td>
 </tr>
 </tbody>
-</table><ul>
+</table>
+
+<ul>
 <li>SPMA services <em>shall</em> understand and be able to process the headers in the following table as defined by this specification if the value in the Required column is set to "yes" .</li>
-</ul><table>
-<thead><tr>
+</ul>
+
+<table>
+<thead>
+<tr>
 <th>Header</th>
 <th>Required</th>
 <th>Supported Values</th>
 <th>Description</th>
-</tr></thead>
-<tbody><tr>
+</tr>
+</thead>
+<tbody>
+<tr>
 <td>X-Auth-Token</td>
 <td>Yes</td>
 <td>Opaque encoded octet strings</td>
 <td>Used for bearer authentication of user sessions. The token value <em>shall</em> be indistinguishable from random.</td>
-</tr></tbody>
-</table><ul>
+</tr>
+</tbody>
+</table>
+
+<ul>
 <li>
 <a name="user-content-if-match-note-1" aria-hidden="true"><em>1</em></a> If-Match <em>shall</em> be supported for Atomic requests on AccountService objects</li>
-</ul><h4>
+</ul>
+
+<h4>
 <a name="user-content-read-requests-get" class="anchor" href="#read-requests-get" aria-hidden="true"><span class="octicon octicon-link"></span></a>Read Requests (GET)</h4>
 
-<p>The GET method is used to retrieve a representation of a resource.  That representation can either be a single resource or a collection. The service will return the representation using one of the media types specified in the Accept header, subject to requirements in the Media Types section <a href="#media-types">Media Types</a>. If the Accept header is not present, the service will return the resources representations as application/json.</p>
+<p>The GET method is used to retrieve a representation of a resource.  That representation can either be a single resource or a collection. The service will return the representation using one of the media types specified in the Accept header, subject to requirements in the Media Types section <a href="#user-content-media-types">Media Types</a>. If the Accept header is not present, the service will return the resources representations as application/json.</p>
 
 <ul>
 <li>The HTTP GET method shall be used to retrieve a resource without causing any side effects.</li>
 <li>The service shall ignore the content of the body on a GET.</li>
 <li>The GET operation shall be idempotent in the absence of outside changes to the resource.</li>
-</ul><h5>
+</ul>
+
+<h5>
 <a name="user-content-service-root-request" class="anchor" href="#service-root-request" aria-hidden="true"><span class="octicon octicon-link"></span></a>Service Root Request</h5>
 
 <p>The root URL for SPMA version 1 services shall be "/rest/v1".</p>
@@ -1088,7 +1349,7 @@ and noninfringement. This specification is subject to change without notice.
 <h5>
 <a name="user-content-metadata-document-request" class="anchor" href="#metadata-document-request" aria-hidden="true"><span class="octicon octicon-link"></span></a>Metadata Document Request</h5>
 
-<p>SPMA services shall expose a <a href="*schema-definition">metadata document</a> describing the service at the /rest/v1/$metadata resource. This metadata document describes the resources and collections available at the root, as well as annotations and OEM-specific types exposed by the service.</p>
+<p>SPMA services shall expose a <a href="#user-content-schema-definition">metadata document</a> describing the service at the /rest/v1/$metadata resource. This metadata document describes the resources and collections available at the root, as well as annotations and OEM-specific types exposed by the service.</p>
 
 <p>In the interest of keeping the root metadata document small, this root metadata document will typically reference external schema documents for service-specific annotations and OEM-specific types.</p>
 
@@ -1108,11 +1369,13 @@ and noninfringement. This specification is subject to change without notice.
 <p>When the resource addressed is a collection, the client can use the following paging query options to specify that a subset of the members be returned.   </p>
 
 <table>
-<thead><tr>
+<thead>
+<tr>
 <th>Attribute</th>
 <th>Description</th>
 <th>Example</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td>$skip</td>
@@ -1125,22 +1388,28 @@ and noninfringement. This specification is subject to change without notice.
 <td>http://collection?$top=30</td>
 </tr>
 </tbody>
-</table><ul>
+</table>
+
+<ul>
 <li>Services should support the $top and $skip query parameters. </li>
-<li>Implementation shall return the 501, Not Implemented, status code for any query parameters starting with "$" that are not supported, and should return an <a href="*extended-error-handling">extended error</a> indicating the requested query parameter(s) not supported for this resource.</li>
+<li>Implementation shall return the 501, Not Implemented, status code for any query parameters starting with "$" that are not supported, and should return an <a href="#user-content-extended-error-handling">extended error</a> indicating the requested query parameter(s) not supported for this resource.</li>
 <li>Implementations shall ignore unknown or unsupported query parameters that do not begin with "$".</li>
-</ul><h6>
+</ul>
+
+<h6>
 <a name="user-content-retrieving-collections" class="anchor" href="#retrieving-collections" aria-hidden="true"><span class="octicon octicon-link"></span></a>Retrieving Collections</h6>
 
-<p>Retrieving a collection is done by sending the HTTP GET method to the URI for the collection. The response will be a <a href="#resource-collections">resource collection representation</a> that includes the collection's attributes as well as the list of the members of the collection. A subset of the members can be returned using <a href="#query-parameters">client paging query parameters</a>.</p>
+<p>Retrieving a collection is done by sending the HTTP GET method to the URI for the collection. The response will be a <a href="#user-content-resource-collections">resource collection representation</a> that includes the collection's attributes as well as the list of the members of the collection. A subset of the members can be returned using <a href="#user-content-query-parameters">client paging query parameters</a>.</p>
 
 <p>No requirements are placed on implementations to return a consistent set of members when a series of requests using paging query parameters are made over time to obtain the entire set of members. It is possible that this could result in missed or duplicate elements being retrieved if multiple GETs are used to retrieve a collection using paging.</p>
 
 <ul>
 <li>Clients shall not make assumptions about the URIs for the resource members of a collection.</li>
-<li>Retrieved collections should always include the <a href="#resource-count-property">count</a> property to specify the total number of members in the collection.</li>
-<li>If only a portion of the collection is returned due to client-specified paging query parameters or services returning <a href="#partial-results">partial results</a>, then the total number of resources across all pages shall be returned in the count property.</li>
-</ul><h4>
+<li>Retrieved collections should always include the <a href="#user-content-resource-count-property">count</a> property to specify the total number of members in the collection.</li>
+<li>If only a portion of the collection is returned due to client-specified paging query parameters or services returning <a href="#user-content-partial-results">partial results</a>, then the total number of resources across all pages shall be returned in the count property.</li>
+</ul>
+
+<h4>
 <a name="user-content-head" class="anchor" href="#head" aria-hidden="true"><span class="octicon octicon-link"></span></a>HEAD</h4>
 
 <p>The HEAD method differs from the GET method in that it MUST NOT return message body information.  However, all of the same meta information and status codes in the HTTP headers will be returned as though a GET method were processed, including authorization checks.</p>
@@ -1151,7 +1420,9 @@ and noninfringement. This specification is subject to change without notice.
 <li>Services may support the HEAD method in order to verify resource accessibility</li>
 <li>Services shall not support any other use of the HEAD method.</li>
 <li>The HEAD method shall be idempotent in the absence of outside changes to the resource.</li>
-</ul><h4>
+</ul>
+
+<h4>
 <a name="user-content-data-modification-requests" class="anchor" href="#data-modification-requests" aria-hidden="true"><span class="octicon octicon-link"></span></a>Data Modification Requests</h4>
 
 <h5>
@@ -1160,12 +1431,14 @@ and noninfringement. This specification is subject to change without notice.
 <p>The PATCH method is the preferred method used to perform updates on pre-existing resources.  Changes to the resource are sent in the request body. Properties not specified in the request body are not directly changed by the PATCH request.  The response is either empty or a representation of the resource after the update was done. The implementation may reject the update operation on certain fields based on its own policies and, if so, shall not apply any of the update requested.  Updates to resources are idempotent.</p>
 
 <ul>
-<li>Services shall support the PATCH method to update a resource. If the resource can never be updated, status code <a href="#status-405">405</a> shall be returned.</li>
+<li>Services shall support the PATCH method to update a resource. If the resource can never be updated, status code <a href="#user-content-status-405">405</a> shall be returned.</li>
 <li>Services may return a representation of the resource after any server-side transformations in the body of the response.</li>
-<li>If a property in the request can never be updated, such as when a property is read only, a status code of <a href="#status-200">200</a> shall be returned along with a representation of the resource containing an <a href="*inline-error-propert">annotation</a> specifying the non-updatabl property. In this success case, other properties may be updated in the resource. </li>
-<li>Services should return status code <a href="#status-405">405</a> if the client specifies a PATCH request against a collection.</li>
+<li>If a property in the request can never be updated, such as when a property is read only, a status code of <a href="#user-content-status-200">200</a> shall be returned along with a representation of the resource containing an <a href="#user-content-inline-error-propert">annotation</a> specifying the non-updatabl property. In this success case, other properties may be updated in the resource. </li>
+<li>Services should return status code <a href="#user-content-status-405">405</a> if the client specifies a PATCH request against a collection.</li>
 <li>The PATCH operation should be idempotent in the absence of outside changes to the resource provided it is used with ETags to prevent subsequent PATCH attempts. Note that the ETAG value should change as the result of this operation.</li>
-</ul><p>OData markup (<a href="*resource-identifier-property">resource identifiers</a>, <a href="type-property">type</a>, <a href="*etag-property">etag</a> and <a href="links-property">links</a>) are ignored on Update.</p>
+</ul>
+
+<p>OData markup (<a href="#user-content-resource-identifier-property">resource identifiers</a>, <a href="type-property">type</a>, <a href="#user-content-etag-property">etag</a> and <a href="links-property">links</a>) are ignored on Update.</p>
 
 <h5>
 <a name="user-content-replace-put" class="anchor" href="#replace-put" aria-hidden="true"><span class="octicon octicon-link"></span></a>Replace (PUT)</h5>
@@ -1173,19 +1446,23 @@ and noninfringement. This specification is subject to change without notice.
 <p>The PUT method is used to completely replace a resource.  Properties omitted from the request body are reset to their default value.</p>
 
 <ul>
-<li>Services may support the PUT method to replace a resource in whole.  If a service does not implement this method, status code <a href="#status-405">405</a> shall be returned. </li>
+<li>Services may support the PUT method to replace a resource in whole.  If a service does not implement this method, status code <a href="#user-content-status-405">405</a> shall be returned. </li>
 <li>Services may return a representation of the resource after any server-side transformations in the body of the response.</li>
-<li>Services should return status code <a href="#status-405">405</a> if the client specifies a PUT request against a collection.</li>
+<li>Services should return status code <a href="#user-content-status-405">405</a> if the client specifies a PUT request against a collection.</li>
 <li>The PUT operation should be idempotent in the absence of outside changes to the resource, with the possible exception that ETAG values may change as the result of this operation.</li>
-</ul><h5>
+</ul>
+
+<h5>
 <a name="user-content-create-post" class="anchor" href="#create-post" aria-hidden="true"><span class="octicon octicon-link"></span></a>Create (POST)</h5>
 
 <p>The POST method is used to create new resources. The POST request is submitted to the resource collection in which the new resource is to belong.</p>
 
 <ul>
-<li>Services shall support the POST method for creating resources. If the resource does not offer anything to be created, a status code <a href="#status-405">405</a> shall be returned.</li>
+<li>Services shall support the POST method for creating resources. If the resource does not offer anything to be created, a status code <a href="#user-content-status-405">405</a> shall be returned.</li>
 <li>The POST operation shall not be idempotent.</li>
-</ul><p>The body of the create request contains a representation of the object to be created. The service can ignore any service controlled attributes (e.g. id), forcing those attributes to be overridden by the service. The service shall set the Location header to the URI of the newly created resource. The response to a successful create request shall be 201 (Created), with no response body, or 200 (Ok) with a response body containing the representation of the newly created resource.</p>
+</ul>
+
+<p>The body of the create request contains a representation of the object to be created. The service can ignore any service controlled attributes (e.g. id), forcing those attributes to be overridden by the service. The service shall set the Location header to the URI of the newly created resource. The response to a successful create request shall be 201 (Created), with no response body, or 200 (Ok) with a response body containing the representation of the newly created resource.</p>
 
 <h5>
 <a name="user-content-delete-delete" class="anchor" href="#delete-delete" aria-hidden="true"><span class="octicon octicon-link"></span></a>Delete (DELETE)</h5>
@@ -1193,11 +1470,13 @@ and noninfringement. This specification is subject to change without notice.
 <p>The DELETE method is used to remove a resource.</p>
 
 <ul>
-<li>Services shall support the DELETE method for resources that can be deleted. If the resource can never be deleted, status code <a href="#status-405">405</a> shall be returned.</li>
+<li>Services shall support the DELETE method for resources that can be deleted. If the resource can never be deleted, status code <a href="#user-content-status-405">405</a> shall be returned.</li>
 <li>Services may return a representation of the just deleted resource in the response body.</li>
-<li>Services should return status code <a href="#status-405">405</a> if the client specifies a DELETE request against a collection.</li>
+<li>Services should return status code <a href="#user-content-status-405">405</a> if the client specifies a DELETE request against a collection.</li>
 <li>The DELETE operation shall not be not idempotent.</li>
-</ul><h5>
+</ul>
+
+<h5>
 <a name="user-content-actions-post" class="anchor" href="#actions-post" aria-hidden="true"><span class="octicon octicon-link"></span></a>Actions (POST)</h5>
 
 <p>The POST method is used to initiate potentially non-idempotent operations on the object (such as Actions).</p>
@@ -1205,7 +1484,9 @@ and noninfringement. This specification is subject to change without notice.
 <ul>
 <li>Services shall support the POST method for sending actions.</li>
 <li>The POST operation may not be idempotent.</li>
-</ul><p>Custom actions are requested on a resource by sending the HTTP POST method to the URI of the action. By convention, the URI of an action is of the form:</p>
+</ul>
+
+<p>Custom actions are requested on a resource by sending the HTTP POST method to the URI of the action. By convention, the URI of an action is of the form:</p>
 
 <p><em>ResourceUri</em>/Actions/<em>QualifiedActionMame</em></p>
 
@@ -1217,9 +1498,11 @@ and noninfringement. This specification is subject to change without notice.
 <li>Actions is the name of the property containing the actions for a resource</li>
 <li>
 <em>QualifiedActionName</em> is the namespace qualified name of the action. </li>
-</ul><p>The first parameter of a bound function is the resource on which the action is being invoked. The remaining parameters are represented as name/value pairs in the body of the request.</p>
+</ul>
 
-<p>Clients can query a resource directly to determine the <a href="#actions-property">actions</a> that are available as well as <a href="#allowable-values">valid parameter values</a> for those actions.  Some parameter information may require the client to examine the schema corresponding to the resource. </p>
+<p>The first parameter of a bound function is the resource on which the action is being invoked. The remaining parameters are represented as name/value pairs in the body of the request.</p>
+
+<p>Clients can query a resource directly to determine the <a href="#user-content-actions-property">actions</a> that are available as well as <a href="#user-content-allowable-values">valid parameter values</a> for those actions.  Some parameter information may require the client to examine the schema corresponding to the resource. </p>
 
 <p>For instance, if a schema document <code>http://dmtf.org/schema/v1/ComputerSystem</code> defines a Reset action, in the <code>ComputerSystem.1.0.0</code> namespace, bound to the <code>ComputerSystem.Actions</code> type, such as this example:</p>
 
@@ -1233,7 +1516,7 @@ and noninfringement. This specification is subject to change without notice.
 <span class="nt">&lt;/Schema&gt;</span>
 </pre></div>
 
-<p>And a ComputerSystem resource contains an <a href="#actions-property">Actions</a> property such as this:</p>
+<p>And a ComputerSystem resource contains an <a href="#user-content-actions-property">Actions</a> property such as this:</p>
 
 <div class="highlight highlight-json"><pre><span class="s2">"Actions"</span><span class="err">:</span> <span class="p">{</span>
     <span class="nt">"http://dmtf.org/schema/v1/ComputerSystem#ComputerSystem.1.0.0.Reset"</span><span class="p">:</span> <span class="p">{</span>
@@ -1275,13 +1558,17 @@ and noninfringement. This specification is subject to change without notice.
 <li>SPMA services <em>should</em> be able to return the headers in the following tables as defined by the HTTP 1.1 specification if the value in the Required column is set to "no".<br>
 </li>
 <li>SPMA clients shall be able to understand and be able to process all of the headers in the following table as defined by the HTTP 1.1. specification.</li>
-</ul><table>
-<thead><tr>
+</ul>
+
+<table>
+<thead>
+<tr>
 <th>Header</th>
 <th>Required</th>
 <th>Supported Values</th>
 <th>Description</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td>OData-Version</td>
@@ -1305,11 +1592,11 @@ and noninfringement. This specification is subject to change without notice.
 <td>Content-Length</td>
 <td>No</td>
 <td><a href="http://pretty-rfc.herokuapp.com/RFC2616#header.content-length">RFC 2616, Section 14.3</a></td>
-<td>Describes the size of the message body. An optional means of indicating size of the body uses Transfer-Encoding: chunked, which does not use the Content-Length header. If a service does not support Transfer-Encoding and needs Content-Length instead, the service will respond with status code <a href="#status-411">411</a>.</td>
+<td>Describes the size of the message body. An optional means of indicating size of the body uses Transfer-Encoding: chunked, which does not use the Content-Length header. If a service does not support Transfer-Encoding and needs Content-Length instead, the service will respond with status code <a href="#user-content-status-411">411</a>.</td>
 </tr>
 <tr>
 <td>ETag</td>
-<td>No<a href="#etag-note-1"><sup>1</sup></a>
+<td>No<a href="#user-content-etag-note-1"><sup>1</sup></a>
 </td>
 <td><a href="http://pretty-rfc.herokuapp.com/RFC2616#header.etag">RFC 2616, Section 14.19</a></td>
 <td>An identifier for a specific version of a resource, often a message digest.</td>
@@ -1322,7 +1609,7 @@ and noninfringement. This specification is subject to change without notice.
 </tr>
 <tr>
 <td>Location</td>
-<td>No<a href="#auth-header-note-1"><sup>2</sup></a>
+<td>No<a href="#user-content-auth-header-note-1"><sup>2</sup></a>
 </td>
 <td><a href="http://pretty-rfc.herokuapp.com/RFC2616#header.location">RFC 2616, Section 14.30</a></td>
 <td>Indicates a URI that can be used to request a representation of the resource.  Shall be returned if a new resource was created.</td>
@@ -1370,27 +1657,39 @@ and noninfringement. This specification is subject to change without notice.
 <td>Required for Basic and other optional authentication mechanisms. See the [Security][#Security] section for details.</td>
 </tr>
 </tbody>
-</table><ul>
+</table>
+
+<ul>
 <li>SPMA services <em>shall</em> understand and be able to process the headers in the following table as defined by this specification if the value in the Required column is set to "yes".</li>
-</ul><table>
-<thead><tr>
+</ul>
+
+<table>
+<thead>
+<tr>
 <th>Header</th>
 <th>Required</th>
 <th>Supported Values</th>
 <th>Description</th>
-</tr></thead>
-<tbody><tr>
+</tr>
+</thead>
+<tbody>
+<tr>
 <td>X-Auth-Token</td>
 <td>Yes</td>
 <td>Opaque encoded octet strings</td>
 <td>Used for bearer authentication of user sessions. The token value <em>shall</em> be indistinguishable from random.</td>
-</tr></tbody>
-</table><ul>
+</tr>
+</tbody>
+</table>
+
+<ul>
 <li>
 <a name="user-content-etag-note-1" aria-hidden="true"><em>1</em></a> Etags <em>shall</em> be included on Account objects</li>
 <li>
 <a name="user-content-auth-header-note-1" aria-hidden="true"><em>2</em></a> Location and X-Auth-Token <em>shall</em> be included on responses which create user sessions.</li>
-</ul><h4>
+</ul>
+
+<h4>
 <a name="user-content-status-codes" class="anchor" href="#status-codes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Status Codes</h4>
 
 <p>HTTP defines status codes that can be returned in response messages. </p>
@@ -1399,11 +1698,15 @@ and noninfringement. This specification is subject to change without notice.
 <li>Clients shall understand and be able to process the status codes in the   following table as defined by the HTTP 1.1 specification and constrained by   additional requirements defined by this specification. Services shall   respond with these status codes as appropriate.</li>
 <li>Exceptions from operations shall be mapped to HTTP status codes.</li>
 <li>SPMA services should not return the status code 100. Using the HTTP protocol for a multi-pass data transfer should be avoided, except upload of extremely large data.</li>
-</ul><table>
-<thead><tr>
+</ul>
+
+<table>
+<thead>
+<tr>
 <th>HTTP Error Code</th>
 <th>Description</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td>
@@ -1443,7 +1746,7 @@ and noninfringement. This specification is subject to change without notice.
 <tr>
 <td>
 <a name="user-content-status-400" aria-hidden="true"></a>400 Bad Request</td>
-<td>The request could not be processed because it contains missing or invalid information (such as validation error on an input field, a missing required value, and so on). An extended error shall be returned in the response body, as defined in section <a href="#extended-error-handling">Extended Error Handling</a>.</td>
+<td>The request could not be processed because it contains missing or invalid information (such as validation error on an input field, a missing required value, and so on). An extended error shall be returned in the response body, as defined in section <a href="#user-content-extended-error-handling">Extended Error Handling</a>.</td>
 </tr>
 <tr>
 <td>
@@ -1498,7 +1801,7 @@ and noninfringement. This specification is subject to change without notice.
 <tr>
 <td>
 <a name="user-content-status-500" aria-hidden="true"></a>500 Internal Server Error</td>
-<td>The server encountered an unexpected condition that prevented it from fulfilling the request. An extended error shall be returned in the response body, as defined in section <a href="#extended-error-handling">Extended Error Handling</a>.</td>
+<td>The server encountered an unexpected condition that prevented it from fulfilling the request. An extended error shall be returned in the response body, as defined in section <a href="#user-content-extended-error-handling">Extended Error Handling</a>.</td>
 </tr>
 <tr>
 <td>
@@ -1511,7 +1814,9 @@ and noninfringement. This specification is subject to change without notice.
 <td>The server is currently unable to handle the request due to temporary overloading or maintenance of the server.</td>
 </tr>
 </tbody>
-</table><h4>
+</table>
+
+<h4>
 <a name="user-content-metadata-responses" class="anchor" href="#metadata-responses" aria-hidden="true"><span class="octicon octicon-link"></span></a>Metadata Responses</h4>
 
 <h5>
@@ -1587,7 +1892,7 @@ and noninfringement. This specification is subject to change without notice.
 
 <p>The context URL for a resource that exists within a collection is of the form:</p>
 
-<p><em>MetadataUrl</em>.#<em>Collection</em>[(<em>Selectlist</em>)]/$entity </p>
+<p><em>MetadataUrl</em>.#<em>Collection</em>[(#user-content-Selectlist*)]/$entity </p>
 
 <p>Where: </p>
 
@@ -1597,10 +1902,12 @@ and noninfringement. This specification is subject to change without notice.
 <li>
 <em>Collection</em> = the collection resource. For contained resources this includes the path from the root collection or singleton resource to the containment property.</li>
 <li>
-<em>Selectlist</em> = comma-separated <a href="*select-list">list of properties</a> included in the response if the response includes a subset of properties defined for the represented resources.</li>
-</ul><p>The context URL for a resource that is a top-level singleton resource is of the form:</p>
+<em>Selectlist</em> = comma-separated <a href="#user-content-select-list">list of properties</a> included in the response if the response includes a subset of properties defined for the represented resources.</li>
+</ul>
 
-<p><em>MetadataUrl</em>.#<em>SingletonName</em>[(<em>Selectlist</em>)]</p>
+<p>The context URL for a resource that is a top-level singleton resource is of the form:</p>
+
+<p><em>MetadataUrl</em>.#<em>SingletonName</em>[(#user-content-Selectlist*)]</p>
 
 <p>Where: </p>
 
@@ -1610,23 +1917,25 @@ and noninfringement. This specification is subject to change without notice.
 <li>
 <em>SingletonName</em> = the name of the top-level singleton resource</li>
 <li>
-<em>Selectlist</em> = comma-separated <a href="*select-list">list of properties</a> included in the response if the response includes a subset of properties defined for the represented resources.</li>
-</ul><h6>
+<em>Selectlist</em> = comma-separated <a href="#user-content-select-list">list of properties</a> included in the response if the response includes a subset of properties defined for the represented resources.</li>
+</ul>
+
+<h6>
 <a name="user-content-select-list" class="anchor" href="#select-list" aria-hidden="true"><span class="octicon octicon-link"></span></a>Select List</h6>
 
-<p>If a response contains a subset of the properties defined in the schema for a type, then the context URL shall specify the subset of properties included. An asterix (*) can be used to specify "all structural properties" for a given resource.</p>
+<p>If a response contains a subset of the properties defined in the schema for a type, then the context URL shall specify the subset of properties included. An asterix (#user-content-) can be used to specify "all structural properties" for a given resource.</p>
 
-<p>Expanded navigation properties shall be included in the select list if the result includes a subset of the properties defined for the expanded resource. If only the reference to the expanded resource is included, such as for navigation properties annotated with <a href="#expand-references">ExpandReferences</a>, $ref is used.</p>
+<p>Expanded navigation properties shall be included in the select list if the result includes a subset of the properties defined for the expanded resource. If only the reference to the expanded resource is included, such as for navigation properties annotated with <a href="#user-content-expand-references">ExpandReferences</a>, $ref is used.</p>
 
 <p>For example, the following context URL specifies that the result contains a single resource from the Systems collection, including all structural properties along with the references to related chassis and managers:</p>
 
-<div class="highlight highlight-json"><pre><span class="s2">"@odata.context"</span><span class="err">:</span><span class="s2">"/rest/v1/$metadata#Systems(*,Links/Chassis($ref),Links/ManagedBy($ref))/$entity"</span><span class="err">,</span> 
+<div class="highlight highlight-json"><pre><span class="s2">"@odata.context"</span><span class="err">:</span><span class="s2">"/rest/v1/$metadata#Systems(#user-content-,Links/Chassis($ref),Links/ManagedBy($ref))/$entity"</span><span class="err">,</span> 
 </pre></div>
 
 <h5>
 <a name="user-content-resource-identifier-property" class="anchor" href="#resource-identifier-property" aria-hidden="true"><span class="octicon octicon-link"></span></a>Resource Identifier Property</h5>
 
-<p>Resources in a response shall include a unique identifier property named "@odata.id". The value of the identifier property shall be the <a href="#URIs">unique identifier</a> for the resource.</p>
+<p>Resources in a response shall include a unique identifier property named "@odata.id". The value of the identifier property shall be the <a href="#user-content-URIs">unique identifier</a> for the resource.</p>
 
 <p>Resource Identifiers shall be represented in JSON payloads as full uri paths relative to the schema portion of the uri. That is, they shall always start with "/rest/".</p>
 
@@ -1648,12 +1957,14 @@ and noninfringement. This specification is subject to change without notice.
 <em>Namespace</em> = The full namespace name of the schema in which the type is defined. This shall not use an alias name for the namespace. </li>
 <li>
 <em>TypeName</em> = The name of the type of the resource.</li>
-</ul><p>The client may issue a GET request to this URL using a content type of <code>application/xml</code> in order to retrieve a document containing the <a href="*resource-definition">definition of the resource</a>.</p>
+</ul>
+
+<p>The client may issue a GET request to this URL using a content type of <code>application/xml</code> in order to retrieve a document containing the <a href="#user-content-resource-definition">definition of the resource</a>.</p>
 
 <h5>
 <a name="user-content-etag-property" class="anchor" href="#etag-property" aria-hidden="true"><span class="octicon octicon-link"></span></a>ETag Property</h5>
 
-<p>ETags provide the ability to conditionally retrieve or update a resource. Resources should include an ETag property named "@odata.etag". The value of the ETag property is the <a href="#etags">Etag</a> for a resource.</p>
+<p>ETags provide the ability to conditionally retrieve or update a resource. Resources should include an ETag property named "@odata.etag". The value of the ETag property is the <a href="#user-content-etags">Etag</a> for a resource.</p>
 
 <h5>
 <a name="user-content-primitive-properties" class="anchor" href="#primitive-properties" aria-hidden="true"><span class="octicon octicon-link"></span></a>Primitive Properties</h5>
@@ -1670,7 +1981,7 @@ and noninfringement. This specification is subject to change without notice.
 <h5>
 <a name="user-content-structured-properties" class="anchor" href="#structured-properties" aria-hidden="true"><span class="octicon octicon-link"></span></a>Structured Properties</h5>
 
-<p>Structured properties, defined as <a href="*structured-properties">complex types</a>, are returned as JSON objects. The type of the JSON object specified in schema definition of the property containing the structured value.</p>
+<p>Structured properties, defined as <a href="#user-content-structured-properties">complex types</a>, are returned as JSON objects. The type of the JSON object specified in schema definition of the property containing the structured value.</p>
 
 <h5>
 <a name="user-content-collection-properties" class="anchor" href="#collection-properties" aria-hidden="true"><span class="octicon octicon-link"></span></a>Collection Properties</h5>
@@ -1700,11 +2011,13 @@ and noninfringement. This specification is subject to change without notice.
 <em>Namespace</em> = The full namespace name (not alias) of the schema in which the action is defined </li>
 <li>
 <em>ActionName</em> = The name of the action</li>
-</ul><p>The client may issue a GET request to this URL using a content type of <code>application/xml</code> in order to retrieve the schema document containing the <a href="*resource-actions">definition of the action</a>.</p>
+</ul>
+
+<p>The client may issue a GET request to this URL using a content type of <code>application/xml</code> in order to retrieve the schema document containing the <a href="#user-content-resource-actions">definition of the action</a>.</p>
 
 <p>The value of the property is a JSON object containing a property named "target" whose value is a relative or absolute URL used to invoke the action.</p>
 
-<p>The property representing the available action may be annotated with the <a href="#allowable-values">AllowableValues</a> annotation in order to specify the list of allowable values for a particular parameter.</p>
+<p>The property representing the available action may be annotated with the <a href="#user-content-allowable-values">AllowableValues</a> annotation in order to specify the list of allowable values for a particular parameter.</p>
 
 <p>For instance, if the resource has a property that defines a Rest action, defined in the ComputerSystem.1.0.0 namespace, such as this:</p>
 
@@ -1733,23 +2046,31 @@ and noninfringement. This specification is subject to change without notice.
 <h5>
 <a name="user-content-links-property" class="anchor" href="#links-property" aria-hidden="true"><span class="octicon octicon-link"></span></a>Links Property</h5>
 
-<p>References to other resources are represented by the links property on the resource. The links property shall be named "Links" and each link shall be represented by a nested property whose name is the name of the link and whose value is one of three forms:</p>
+<p><a href="#user-content-reference-properties">References</a> to other resources are represented by the links property on the resource. </p>
 
-<ul>
-<li>A <a href="#reference-to-a-single-related-resource">reference to a single related resource</a>
-</li>
-<li>An <a href="array-of-references-to-related-resources">array of references to related resources</a>
-</li>
-<li>A <a href="#reference-to-a-collection-of-related-resources">reference to a collection of related resources</a>
-</li>
-</ul><h6>
-<a name="user-content-reference-to-a-single-related-resource" class="anchor" href="#reference-to-a-single-related-resource" aria-hidden="true"><span class="octicon octicon-link"></span></a>Reference to a Single Related Resource</h6>
+<p>The links property shall be named "Links" and shall contain a <a href="#user-content-navigation-link-to-related-resources">navigation link</a> for navigating each relationship. In addition, certain references may be <a href="#user-content-expanded-references">expanded inline</a> to provide the <a href="#user-content-resource-identifier-property">dereferenceable ids</a> of each related resource as either a <a href="#user-content-reference-to-a-single-related-resource">single related resource id</a> or an <a href="#user-content-array-of-references-to-related-resources">array of related resource ids</a>.</p>
 
-<p>A reference to a single resource is returned as a JSON object containing a single <a href="#resource-identifier-property">resource-identifier-property</a> whose value is the uri of the referenced resource.</p>
+<p>The links property shall also include an <a href="#user-content-oem-property">Oem property</a> for navigating vendor-specific links.</p>
+
+<h6>
+<a name="user-content-navigation-link-to-related-resources" class="anchor" href="#navigation-link-to-related-resources" aria-hidden="true"><span class="octicon octicon-link"></span></a>Navigation Link to Related Resources</h6>
+
+<p>The URL to navigate from one resource to a related resource, or a collection of related resources, is represented as a navigation link. A navigation link is represented as a JSON property whose name is the name of the relationship followed by "@odata.navigationLink". The string value of this property is a URL to retrieve the related resource(s).</p>
 
 <div class="highlight highlight-json"><pre><span class="s2">"Links"</span> <span class="err">:</span> <span class="p">{</span>
-    <span class="nt">"ComputerSystem"</span> <span class="p">:</span> <span class="p">{</span> 
-        <span class="nt">"@odata.id"</span><span class="p">:</span><span class="s2">"/rest/v1/Systems/1"</span>
+    <span class="nt">"ComputerSystems@odata.navigationLink"</span><span class="p">:</span> <span class="s2">"/rest/v1/Chassis/1/Systems"</span>
+<span class="p">}</span>
+</pre></div>
+
+<h6>
+<a name="user-content-reference-to-a-single-related-resource" class="anchor" href="#reference-to-a-single-related-resource" aria-hidden="true"><span class="octicon octicon-link"></span></a>Reference to a Single Related Resource</h6>
+
+<p>An <a href="#user-content-expanded-references">expanded reference</a> to a single resource is returned as a JSON object containing a single <a href="#user-content-resource-identifier-property">resource-identifier-property</a> whose name is the name of the relationship and whose value is the uri of the referenced resource.</p>
+
+<div class="highlight highlight-json"><pre><span class="s2">"Links"</span> <span class="err">:</span> <span class="p">{</span>
+    <span class="nt">"ManagedBy@odata.navigationLink"</span><span class="p">:</span> <span class="s2">"/rest/v1/Chassis/1/ManagedBy"</span>
+    <span class="s2">"ManagedBy"</span><span class="p">:</span> <span class="p">{</span> 
+        <span class="nt">"@odata.id"</span><span class="p">:</span><span class="s2">"/rest/v1/Chassis/Encl1"</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -1757,36 +2078,24 @@ and noninfringement. This specification is subject to change without notice.
 <h6>
 <a name="user-content-array-of-references-to-related-resources" class="anchor" href="#array-of-references-to-related-resources" aria-hidden="true"><span class="octicon octicon-link"></span></a>Array of References to Related Resources</h6>
 
-<p>An array of references to related resources is returned as an array of JSON objects, each containing a single <a href="#resource-identifier-property">resource-identifier-property</a> whose value is the uri of the referenced resource.</p>
+<p>An <a href="#user-content-expanded-references">expanded array of references</a> to related resources is returned as an array of JSON objects whose name is the name of the relationship. Each member of the array is a JSON object containing a single <a href="#user-content-resource-identifier-property">resource-identifier-property</a> whose value is the uri of the referenced resource.</p>
 
 <div class="highlight highlight-json"><pre><span class="s2">"Links"</span> <span class="err">:</span> <span class="p">{</span>
-    <span class="nt">"ComputerSystems"</span> <span class="p">:</span> <span class="p">[</span>
+    <span class="nt">"Contains@odata.navigationLink"</span><span class="p">:</span> <span class="s2">"/rest/v1/Chassis/Rack1/Contains"</span>
+    <span class="s2">"Contains"</span> <span class="p">:</span> <span class="p">[</span>
         <span class="p">{</span>
-            <span class="nt">"@odata.id"</span><span class="p">:</span><span class="s2">"/rest/v1/Systems/1"</span>
+            <span class="nt">"@odata.id"</span><span class="p">:</span><span class="s2">"/rest/v1/Chassis/1"</span>
         <span class="p">},</span>
         <span class="p">{</span>
-            <span class="nt">"@odata.id"</span><span class="p">:</span><span class="s2">"/rest/v1/Systems/2"</span>
+            <span class="nt">"@odata.id"</span><span class="p">:</span><span class="s2">"/rest/v1/Chassis/Encl1"</span>
         <span class="p">}</span>
 <span class="err">}</span>
 </pre></div>
 
-<h6>
-<a name="user-content-reference-to-a-collection-of-related-resources" class="anchor" href="#reference-to-a-collection-of-related-resources" aria-hidden="true"><span class="octicon octicon-link"></span></a>Reference to a Collection of Related Resources</h6>
-
-<p>A reference to a collection of related resources is represented as a navigation link. A navigation link is represented as a JSON property whose name is the name of the navigation property followed by "@odata.navigationLink". The string value of this property is a URL to retrieve the related resource(s).</p>
-
-<div class="highlight highlight-json"><pre><span class="s2">"Links"</span> <span class="err">:</span> <span class="p">{</span>
-    <span class="nt">"ComputerSystems@odata.navigationLink"</span> <span class="p">:</span> 
-                    <span class="s2">"@odata.id"</span><span class="p">:</span><span class="s2">"/rest/v1/systems"</span>
-<span class="p">}</span>
-</pre></div>
-
-<p>By convention, the URL for a reference to a collection of resources is the resource identifier for the containing resource followed by a segment containing the name of the navigation property.</p>
-
 <h5>
 <a name="user-content-oem-property" class="anchor" href="#oem-property" aria-hidden="true"><span class="octicon octicon-link"></span></a>OEM Property</h5>
 
-<p>OEM-specific properties are nested under an <a href="#property-extensions">OEM property</a>. The name of the OEM property shall be "OEM" and it's value shall be a JSON object whose properties represent OEM extensions.</p>
+<p>OEM-specific properties are nested under an <a href="#user-content-property-extensions">OEM property</a>. The name of the OEM property shall be "OEM" and it's value shall be a JSON object whose properties represent OEM extensions.</p>
 
 <p>For example:</p>
 
@@ -1809,12 +2118,12 @@ and noninfringement. This specification is subject to change without notice.
 <span class="p">}</span>
 </pre></div>
 
-<p>Contents of the Oem object must be valid JSON and must have a <a href="#type-property">type property</a> per this specification. Any other requirements, validation or contents are beyond the scope of this specification.</p>
+<p>Contents of the Oem object must be valid JSON and must have a <a href="#user-content-type-property">type property</a> per this specification. Any other requirements, validation or contents are beyond the scope of this specification.</p>
 
 <h5>
 <a name="user-content-inline-error-property" class="anchor" href="#inline-error-property" aria-hidden="true"><span class="octicon octicon-link"></span></a>Inline Error Property</h5>
 
-<p>Response objects may include inline-error information, for example properties that are not able to be updated. This error information is represented as an annotation applied to <a href="#property-errors">a specific property</a> of the JSON response or an <a href="*object-errors">entire JSON object</a>.</p>
+<p>Response objects may include inline-error information, for example properties that are not able to be updated. This error information is represented as an annotation applied to <a href="#user-content-property-errors">a specific property</a> of the JSON response or an <a href="#user-content-object-errors">entire JSON object</a>.</p>
 
 <h6>
 <a name="user-content-object-errors" class="anchor" href="#object-errors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Object Errors</h6>
@@ -1830,7 +2139,7 @@ and noninfringement. This specification is subject to change without notice.
 <span class="p">}</span>
 </pre></div>
 
-<p>The value of the property is an <a href="#extended-error-handling">extended error object</a>.</p>
+<p>The value of the property is an <a href="#user-content-extended-error-handling">extended error object</a>.</p>
 
 <h6>
 <a name="user-content-property-errors" class="anchor" href="#property-errors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Property Errors</h6>
@@ -1846,7 +2155,7 @@ and noninfringement. This specification is subject to change without notice.
 <span class="p">}</span>
 </pre></div>
 
-<p>The value of the property is an <a href="#extended-error-handling">extended error object</a>.</p>
+<p>The value of the property is an <a href="#user-content-extended-error-handling">extended error object</a>.</p>
 
 <h5>
 <a name="user-content-additional-annotations" class="anchor" href="#additional-annotations" aria-hidden="true"><span class="octicon octicon-link"></span></a>Additional Annotations</h5>
@@ -1861,15 +2170,17 @@ and noninfringement. This specification is subject to change without notice.
 <li>
 <em>PropertyName</em> = the name of the property being annotated. If omitted, the annotation applies to the entire resource.</li>
 <li>
-<em>Namespace</em> = the name or alias of the namespace where the annotation term is defined. This namespace must be referenced by the <a href="*service-metadata">metadata document</a> specified in the <a href="*context-property">context url</a> of the request.</li>
+<em>Namespace</em> = the name or alias of the namespace where the annotation term is defined. This namespace must be referenced by the <a href="#user-content-service-metadata">metadata document</a> specified in the <a href="#user-content-context-property">context url</a> of the request.</li>
 <li>
 <em>TermName</em> = the name of the annotation term being applied to the resource or property of the resource.</li>
-</ul><p>The client can get the definition of the annotation from the the <a href="*service-metadata">service metadata</a>, or may ignore the annotation entirely, but should not fail reading the resource due to unrecognized annotations, including new annotations defined within the DMTF namespace.</p>
+</ul>
+
+<p>The client can get the definition of the annotation from the the <a href="#user-content-service-metadata">service metadata</a>, or may ignore the annotation entirely, but should not fail reading the resource due to unrecognized annotations, including new annotations defined within the DMTF namespace.</p>
 
 <h4>
 <a name="user-content-resource-collections" class="anchor" href="#resource-collections" aria-hidden="true"><span class="octicon octicon-link"></span></a>Resource Collections</h4>
 
-<p>Resource collections are returned as a JSON object. The JSON object includes a <a href="#context-property">context</a>, <a href="#resource-count-property">resource count</a>, and array of <a href="#resource-members-property">values</a>, and may include a <a href="#partial-results">next link</a> for partial results.</p>
+<p>Resource collections are returned as a JSON object. The JSON object includes a <a href="#user-content-context-property">context</a>, <a href="#user-content-resource-count-property">resource count</a>, and array of <a href="#user-content-resource-members-property">values</a>, and may include a <a href="#user-content-partial-results">next link</a> for partial results.</p>
 
 <h5>
 <a name="user-content-context-property-1" class="anchor" href="#context-property-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Context Property</h5>
@@ -1878,7 +2189,7 @@ and noninfringement. This specification is subject to change without notice.
 
 <p>The context URL for a resource collection is of the form:</p>
 
-<p><em>MetadataUrl</em>.#<em>Collection</em>[(<em>SelectList</em>)] </p>
+<p><em>MetadataUrl</em>.#<em>Collection</em>[(#user-content-SelectList*)] </p>
 
 <p>Where: </p>
 
@@ -1888,11 +2199,13 @@ and noninfringement. This specification is subject to change without notice.
 <li>
 <em>Collection</em> = the collection resource. For contained resources this includes the path from the root collection or singleton resource to the containment property.</li>
 <li>
-<em>SelectList</em> = comma-separated <a href="*select-list">list of properties</a> included in the response if the response includes a subset of properties defined for the represented resources.</li>
-</ul><h5>
+<em>SelectList</em> = comma-separated <a href="#user-content-select-list">list of properties</a> included in the response if the response includes a subset of properties defined for the represented resources.</li>
+</ul>
+
+<h5>
 <a name="user-content-resource-count-property" class="anchor" href="#resource-count-property" aria-hidden="true"><span class="octicon octicon-link"></span></a>Resource Count Property</h5>
 
-<p>The total number of resources available in the collection is represented through the count property. The count property shall be named "@odata.count" and its value shall be an integer representing the total number of records in the result. This count is not affected by the $top or $skip <a href="#query-parameters">query parameters</a>.</p>
+<p>The total number of resources available in the collection is represented through the count property. The count property shall be named "@odata.count" and its value shall be an integer representing the total number of records in the result. This count is not affected by the $top or $skip <a href="#user-content-query-parameters">query parameters</a>.</p>
 
 <h5>
 <a name="user-content-resource-members-property" class="anchor" href="#resource-members-property" aria-hidden="true"><span class="octicon octicon-link"></span></a>Resource Members Property</h5>
@@ -1904,7 +2217,7 @@ and noninfringement. This specification is subject to change without notice.
 
 <p>The service may return large collections of resources in multiple partial responses. For partial responses the service includes a next link property named "@odata.nextLink". The value of the next link property shall be an opaque URL that the client can use to retrieve the next set of resources. The next link is only returned if the number of resources requested is greater than the number of resources returned.</p>
 
-<p>The value of the <a href="*resource-count-property">count property</a> represents the total number of resources available if the client enumerates all pages of the collection.</p>
+<p>The value of the <a href="#user-content-resource-count-property">count property</a> represents the total number of resources available if the client enumerates all pages of the collection.</p>
 
 <h5>
 <a name="user-content-additional-annotations-1" class="anchor" href="#additional-annotations-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Additional Annotations</h5>
@@ -1917,10 +2230,12 @@ and noninfringement. This specification is subject to change without notice.
 
 <ul>
 <li>
-<em>Namespace</em> = the name or alias of the namespace where the annotation term is defined. This namespace shall be referenced by the <a href="*service-metadata">metadata document</a> specified in the <a href="*context-property">context url</a> of the request.</li>
+<em>Namespace</em> = the name or alias of the namespace where the annotation term is defined. This namespace shall be referenced by the <a href="#user-content-service-metadata">metadata document</a> specified in the <a href="#user-content-context-property">context url</a> of the request.</li>
 <li>
 <em>TermName</em> = the name of the annotation term being applied to the resource collection.</li>
-</ul><p>The client can get the definition of the annotation from the the <a href="*service-metadata">service metadata</a>, or may ignore the annotation entirely, but should not fail reading the response due to unrecognized annotations, including new annotations defined within the DMTF namespace.</p>
+</ul>
+
+<p>The client can get the definition of the annotation from the the <a href="#user-content-service-metadata">service metadata</a>, or may ignore the annotation entirely, but should not fail reading the response due to unrecognized annotations, including new annotations defined within the DMTF namespace.</p>
 
 <h4>
 <a name="user-content-extended-error-handling" class="anchor" href="#extended-error-handling" aria-hidden="true"><span class="octicon octicon-link"></span></a>Extended Error Handling</h4>
@@ -1933,15 +2248,19 @@ and noninfringement. This specification is subject to change without notice.
 <li>Services shall return the extended error resource as described in this specification in the response body when a status code of 400 or 500 is returned.</li>
 <li>Services should return the extended error resource as described in this specification in the response body when a status code 400 or greater is returned.</li>
 <li>Extended error messages MUST NOT provide privileged info when authentication failures occur</li>
-</ul><p>NOTE: Refer to the <a href="#security">Security</a> section for security implications of extended errors</p>
+</ul>
+
+<p>NOTE: Refer to the <a href="#user-content-security">Security</a> section for security implications of extended errors</p>
 
 <p>Extended error information is returned as a JSON object with a single property named "error". The value of this property shall be a JSON object with the following properties.</p>
 
 <table>
-<thead><tr>
+<thead>
+<tr>
 <th>Attribute</th>
 <th>Description</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td>code</td>
@@ -1968,7 +2287,9 @@ and noninfringement. This specification is subject to change without notice.
 <td>An optional string describing recommended action(s) to take to resolve the error. The Resolution attribute is an annotation specified in the DMTF namespace and shall be prefixed with the alias "Error".</td>
 </tr>
 </tbody>
-</table><div class="highlight highlight-json"><pre><span class="p">{</span>
+</table>
+
+<div class="highlight highlight-json"><pre><span class="p">{</span>
   <span class="nt">"error"</span><span class="p">:</span> <span class="p">{</span>
     <span class="nt">"code"</span><span class="p">:</span> <span class="s2">"Base.1.0.MessageKey"</span><span class="p">,</span>
     <span class="nt">"message"</span><span class="p">:</span> <span class="s2">"Human readable string"</span><span class="p">,</span>
@@ -2008,7 +2329,9 @@ and noninfringement. This specification is subject to change without notice.
 <li>
 <em>MessageKey</em> is a human-readable key into the registry. The message key shall be Pascal-cased and shall not include spaces, periods or special chars.<br>
 </li>
-</ul><p>The client can use the error code to search the message registry for the corresponding message.</p>
+</ul>
+
+<p>The client can use the error code to search the message registry for the corresponding message.</p>
 
 <p>The message registry approach has advantages for internationalization (since the registry can be translated easily) and light weight implementation (since large strings need not be included with the implementation).</p>
 
@@ -2018,8 +2341,10 @@ and noninfringement. This specification is subject to change without notice.
 <p>One of the key tenants of the SPMA interface is the separation of protocol and data model.  This section describes common data model, resource, and SPMA Schema requirements.</p>
 
 <ul>
-<li>Each resource shall be strongly typed according to a <a href="*resource-type-definition">resource type definition</a>. The type shall be defined in a <a href="*schema-documents">schema document</a> and identified by a unique <a href="*type-identifier">type identifier</a>.</li>
-</ul><h3>
+<li>Each resource shall be strongly typed according to a <a href="#user-content-resource-type-definition">resource type definition</a>. The type shall be defined in a <a href="#user-content-schema-documents">schema document</a> and identified by a unique <a href="#user-content-type-identifier">type identifier</a>.</li>
+</ul>
+
+<h3>
 <a name="user-content-type-identifiers" class="anchor" href="#type-identifiers" aria-hidden="true"><span class="octicon octicon-link"></span></a>Type Identifiers</h3>
 
 <p>Types are identified by a <em>Type URI</em>. The URI for a type is of the form:</p>
@@ -2035,7 +2360,9 @@ and noninfringement. This specification is subject to change without notice.
 <em>Namespace</em> = the namespace in which the type is defined </li>
 <li>
 <em>TypeName</em> = the name of the type</li>
-</ul><p>The schema URI for types defined by this specification is the schema root URI "<a href="http://dmtf.org/schema/v1/">http://dmtf.org/schema/v1/</a>", followed by the <a href="*resource-type-definitions">resource type</a> name. For <a href="*structured-types">structured (complex) types</a>, <a href="*enums">enumerations</a>, and <a href="*resource-actions">actions</a>, this is generally the name of the containing resource type.</p>
+</ul>
+
+<p>The schema URI for types defined by this specification is the schema root URI "<a href="http://dmtf.org/schema/v1/">http://dmtf.org/schema/v1/</a>", followed by the <a href="#user-content-resource-type-definitions">resource type</a> name. For <a href="#user-content-structured-types">structured (complex) types</a>, <a href="#user-content-enums">enumerations</a>, and <a href="#user-content-resource-actions">actions</a>, this is generally the name of the containing resource type.</p>
 
 <p>The namespace for types defined by this specification is of the form:</p>
 
@@ -2052,9 +2379,11 @@ and noninfringement. This specification is subject to change without notice.
 <em>MinorVersion</em> = integer: a minor update. New properties may have been added but nothing removed. Compatibility will be preserved with previous minorversions. </li>
 <li>
 <em>Errata</em> = integer: something in the prior version was broken and needed to be fixed.</li>
-</ul><p>An example of a valid type namespace might be "System.1.0.0". </p>
+</ul>
 
-<p>NOTE: Refer to the <a href="#security">Security</a> section for security implications of Data Model &amp; Schema</p>
+<p>An example of a valid type namespace might be "System.1.0.0". </p>
+
+<p>NOTE: Refer to the <a href="#user-content-security">Security</a> section for security implications of Data Model &amp; Schema</p>
 
 <h3>
 <a name="user-content-common-naming-conventions" class="anchor" href="#common-naming-conventions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Common Naming Conventions</h3>
@@ -2068,13 +2397,17 @@ and noninfringement. This specification is subject to change without notice.
 <li>No underscores are used. </li>
 <li>Both characters are capitalized for two-character acronyms (eg IPAddress, RemoteIP)</li>
 <li>Only the first character of acronyms with three or more characters is capitalized, except the first word of a Pascal-cased identifier (eg Wwn, VirtualWwn)</li>
-</ul><p>Exceptions are allowed for the following cases:</p>
+</ul>
+
+<p>Exceptions are allowed for the following cases:</p>
 
 <ul>
 <li>Well-known technology names like "iSCSI"</li>
 <li>Product names like "iLO"</li>
 <li>Well-known abbreviations or acronyms</li>
-</ul><p>For attributes that have units, or other special meaning, the unit identifier should be appended to the name. The current list includes:</p>
+</ul>
+
+<p>For attributes that have units, or other special meaning, the unit identifier should be appended to the name. The current list includes:</p>
 
 <ul>
 <li>Bandwidth (Mbps), (eg PortSpeedMbps)</li>
@@ -2083,24 +2416,26 @@ and noninfringement. This specification is subject to change without notice.
 <li>Counts of items (Count), (eg ProcessorCount, FanCount)</li>
 <li>The State of a resource (State) (eg PowerState.)</li>
 <li>State values where "work" is being done end in (ing) (eg Applying, Clearing)</li>
-</ul><h3>
+</ul>
+
+<h3>
 <a name="user-content-localization-considerations" class="anchor" href="#localization-considerations" aria-hidden="true"><span class="octicon octicon-link"></span></a>Localization Considerations</h3>
 
 <p>The SPMA architecture supports localized strings but does not impose any specific requirement for localization upon services.  However, current market forces seem to require localization as necessary (e.g. schemas).</p>
 
 <p>Schema-supplied display strings may be localized as necessary, but a Schema file may only contain one language.  Alternate language schemas may be published and available to SPMA clients, but need not be provided via the SPMA schema store. </p>
 
-<p>Property names defined within an SPMA schema are never localized. User-supplied string-valued property values such as an asset tag may be localized. Localizable string valued properties should annotated with the <a href="#language-dependent-property-values">IsLanguageDependent annotation term</a>.</p>
+<p>Property names defined within an SPMA schema are never localized. User-supplied string-valued property values such as an asset tag may be localized. Localizable string valued properties should annotated with the <a href="#user-content-language-dependent-property-values">IsLanguageDependent annotation term</a>.</p>
 
 <h3>
 <a name="user-content-schema-definition" class="anchor" href="#schema-definition" aria-hidden="true"><span class="octicon octicon-link"></span></a>Schema Definition</h3>
 
-<p>Individual resources and their dependent types and actions are defined within a <a href="*schema-documents">schema document</a>.</p>
+<p>Individual resources and their dependent types and actions are defined within a <a href="#user-content-schema-documents">schema document</a>.</p>
 
 <h4>
 <a name="user-content-common-annotations" class="anchor" href="#common-annotations" aria-hidden="true"><span class="octicon octicon-link"></span></a>Common Annotations</h4>
 
-<p>All SPMA types and properties shall include <a href="*description">description</a> and <a href="*long-description">specification</a> annotations. </p>
+<p>All SPMA types and properties shall include <a href="#user-content-description">description</a> and <a href="#user-content-long-description">specification</a> annotations. </p>
 
 <h5>
 <a name="user-content-description" class="anchor" href="#description" aria-hidden="true"><span class="octicon octicon-link"></span></a>Description</h5>
@@ -2157,7 +2492,7 @@ and noninfringement. This specification is subject to change without notice.
 
 <p>Resource types are defined within a namespace. The namespace is declared through a <code>Schema</code> element. </p>
 
-<p>The Schema element is a child of the <code>DataServices</code> element, which is a child of the <a href="*schema-documents">Edmx</a> element.</p>
+<p>The Schema element is a child of the <code>DataServices</code> element, which is a child of the <a href="#user-content-schema-documents">Edmx</a> element.</p>
 
 <div class="highlight highlight-xml"><pre>  <span class="nt">&lt;edmx:DataServices&gt;</span>
     <span class="nt">&lt;Schema</span> <span class="na">xmlns=</span><span class="s">"http://docs.oasis-open.org/odata/ns/edm"</span> <span class="na">Namespace=</span><span class="s">"MyTypes.1.0.0"</span> <span class="na">Alias=</span><span class="s">"MyTypes"</span><span class="nt">&gt;</span>
@@ -2171,11 +2506,11 @@ and noninfringement. This specification is subject to change without notice.
 <h4>
 <a name="user-content-resource-type-definitions" class="anchor" href="#resource-type-definitions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Resource Type Definitions</h4>
 
-<p>Resource types are defined within a <a href="*namespace-definitions">namespace</a> using <code>EntityType</code> elements. The <code>Name</code> attribute specifies the name of the resource and the <code>BaseType</code> specifies the base type, if any.</p>
+<p>Resource types are defined within a <a href="#user-content-namespace-definitions">namespace</a> using <code>EntityType</code> elements. The <code>Name</code> attribute specifies the name of the resource and the <code>BaseType</code> specifies the base type, if any.</p>
 
 <p>SPMA resources derive from a common Resource base type named "Resource" in the Resource.1.0.0 namespace. </p>
 
-<p>The EntityType contains the <a href="*resource-properties">property</a> and <a href="*reference-properties">navigation property</a> elements that define the structure of the resource, as well as annotations describing the resource.</p>
+<p>The EntityType contains the <a href="#user-content-resource-properties">property</a> and <a href="#user-content-reference-properties">navigation property</a> elements that define the structure of the resource, as well as annotations describing the resource.</p>
 
 <div class="highlight highlight-xml"><pre>      <span class="nt">&lt;EntityType</span> <span class="na">Name=</span><span class="s">"TypeA"</span> <span class="na">BaseType=</span><span class="s">"Resource.Resource"</span><span class="nt">&gt;</span>
         <span class="nt">&lt;Annotation</span> <span class="na">Term=</span><span class="s">"Core.Description"</span> <span class="na">String=</span><span class="s">"This is the description of TypeA."</span><span class="nt">/&gt;</span>
@@ -2186,12 +2521,12 @@ and noninfringement. This specification is subject to change without notice.
       <span class="nt">&lt;/EntityType&gt;</span>
 </pre></div>
 
-<p>All resources shall include <a href="*description">description</a> and <a href="*long-description">specificaiton</a> annotations. </p>
+<p>All resources shall include <a href="#user-content-description">description</a> and <a href="#user-content-long-description">specificaiton</a> annotations. </p>
 
 <h4>
 <a name="user-content-resource-properties" class="anchor" href="#resource-properties" aria-hidden="true"><span class="octicon octicon-link"></span></a>Resource Properties</h4>
 
-<p>Structural properties of the resource are described using the <code>Property</code> element. The <code>Name</code> attribute specifies the name of the property, and the <a href="*property-types"><code>Type</code></a> its type.</p>
+<p>Structural properties of the resource are described using the <code>Property</code> element. The <code>Name</code> attribute specifies the name of the property, and the <a href="#user-content-property-types"><code>Type</code></a> its type.</p>
 
 <div class="highlight highlight-xml"><pre>        <span class="nt">&lt;Property</span> <span class="na">Name=</span><span class="s">"Property1"</span> <span class="na">Type=</span><span class="s">"Edm.String"</span> <span class="na">Nullable=</span><span class="s">"false"</span><span class="nt">&gt;</span>
           <span class="nt">&lt;Annotation</span> <span class="na">Term=</span><span class="s">"OData.Permissions"</span> <span class="na">EnumMember=</span><span class="s">"OData.Permissions/Read"</span><span class="nt">/&gt;</span>
@@ -2200,20 +2535,20 @@ and noninfringement. This specification is subject to change without notice.
         <span class="nt">&lt;/Property&gt;</span>
 </pre></div>
 
-<p>All properties shall include <a href="*description">description</a> and <a href="*long-description">specification</a> annotations. </p>
+<p>All properties shall include <a href="#user-content-description">description</a> and <a href="#user-content-long-description">specification</a> annotations. </p>
 
-<p>Properties that must have a non-nullable value are annotated with the <a href="*non-nullable-properties">nullable attribute</a>. </p>
+<p>Properties that must have a non-nullable value are annotated with the <a href="#user-content-non-nullable-properties">nullable attribute</a>. </p>
 
-<p>Properties that are required to be implemented by all services are annotated with the <a href="*required-properties">required annotation</a>. </p>
+<p>Properties that are required to be implemented by all services are annotated with the <a href="#user-content-required-properties">required annotation</a>. </p>
 
-<p>Properties that are read-only are annotated with the <a href="*read-only-properties">read-only annotation</a>.</p>
+<p>Properties that are read-only are annotated with the <a href="#user-content-read-only-properties">read-only annotation</a>.</p>
 
-<p>Properties that have units associated with them can be annotated with the <a href="*units-of-measure">units annotation</a></p>
+<p>Properties that have units associated with them can be annotated with the <a href="#user-content-units-of-measure">units annotation</a></p>
 
 <h5>
 <a name="user-content-property-types" class="anchor" href="#property-types" aria-hidden="true"><span class="octicon octicon-link"></span></a>Property Types</h5>
 
-<p>Type type of a property is specified by the <code>Type</code> attribute. The value of the type attribute may be a <a href="*primitive-types">primitive type</a>, a <a href="*structured-types">structured type</a>, an <a href="*enums">enumeration type</a> or a <a href="*collections">collection</a> of primitive, structured or enumeration types.</p>
+<p>Type type of a property is specified by the <code>Type</code> attribute. The value of the type attribute may be a <a href="#user-content-primitive-types">primitive type</a>, a <a href="#user-content-structured-types">structured type</a>, an <a href="#user-content-enums">enumeration type</a> or a <a href="#user-content-collections">collection</a> of primitive, structured or enumeration types.</p>
 
 <h6>
 <a name="user-content-primitive-types" class="anchor" href="#primitive-types" aria-hidden="true"><span class="octicon octicon-link"></span></a>Primitive Types</h6>
@@ -2223,10 +2558,12 @@ and noninfringement. This specification is subject to change without notice.
 <p>SPMA services support the following primitive types:</p>
 
 <table>
-<thead><tr>
+<thead>
+<tr>
 <th>Type</th>
 <th>Meaning</th>
-</tr></thead>
+</tr>
+</thead>
 <tbody>
 <tr>
 <td>Edm.Boolean</td>
@@ -2257,10 +2594,12 @@ and noninfringement. This specification is subject to change without notice.
 <td>Sequence of UTF-8 characters</td>
 </tr>
 </tbody>
-</table><h6>
+</table>
+
+<h6>
 <a name="user-content-structured-types" class="anchor" href="#structured-types" aria-hidden="true"><span class="octicon octicon-link"></span></a>Structured Types</h6>
 
-<p>Structured types are defined within a <a href="*namespace-definitions">namespace</a> using <code>ComplexType</code> elements. The <code>Name</code> attribute of the complex type specifies the name of the structured type. Complex types can include a <code>BaseType</code> attribute to specifies the base type, if any.</p>
+<p>Structured types are defined within a <a href="#user-content-namespace-definitions">namespace</a> using <code>ComplexType</code> elements. The <code>Name</code> attribute of the complex type specifies the name of the structured type. Complex types can include a <code>BaseType</code> attribute to specifies the base type, if any.</p>
 
 <p>Structured types may be reused across different properties of different resource types.</p>
 
@@ -2273,14 +2612,14 @@ and noninfringement. This specification is subject to change without notice.
       <span class="nt">&lt;/ComplexType&gt;</span>
 </pre></div>
 
-<p>Structured types can contain <a href="*resource-properties">properties</a>, <a href="*reference-properties">navigation properties</a> and annotations.</p>
+<p>Structured types can contain <a href="#user-content-resource-properties">properties</a>, <a href="#user-content-reference-properties">navigation properties</a> and annotations.</p>
 
-<p>Structured types shall include <a href="*description">description</a> and <a href="*longdescription">specification</a> annotations. </p>
+<p>Structured types shall include <a href="#user-content-description">description</a> and <a href="#user-content-longdescription">specification</a> annotations. </p>
 
 <h6>
 <a name="user-content-enums" class="anchor" href="#enums" aria-hidden="true"><span class="octicon octicon-link"></span></a>Enums</h6>
 
-<p>Enumeration types are defined within a <a href="*namespace-definitions">namespace</a> using <code>EnumType</code> elements. The <code>Name</code> attribute of the enumeration type specifies the name of the enumeration type. </p>
+<p>Enumeration types are defined within a <a href="#user-content-namespace-definitions">namespace</a> using <code>EnumType</code> elements. The <code>Name</code> attribute of the enumeration type specifies the name of the enumeration type. </p>
 
 <p>Enumeration types may be reused across different properties of different resource types.</p>
 
@@ -2298,18 +2637,18 @@ and noninfringement. This specification is subject to change without notice.
       <span class="nt">&lt;/EnumType&gt;</span>
 </pre></div>
 
-<p>Enumeration Types shall include <a href="*description">description</a> and <a href="*longdescription">specification</a> annotations. </p>
+<p>Enumeration Types shall include <a href="#user-content-description">description</a> and <a href="#user-content-longdescription">specification</a> annotations. </p>
 
-<p>Enumeration Members shall include <a href="*description">description</a> annotations. </p>
+<p>Enumeration Members shall include <a href="#user-content-description">description</a> annotations. </p>
 
 <h6>
 <a name="user-content-collections" class="anchor" href="#collections" aria-hidden="true"><span class="octicon octicon-link"></span></a>Collections</h6>
 
-<p>The <a href="*property-types">type</a> attribute may specify a collection of <a href="*primitive-types">primitive</a>, <a href="*structured-types">structured</a> or <a href="*enums">enumeration</a> types.</p>
+<p>The <a href="#user-content-property-types">type</a> attribute may specify a collection of <a href="#user-content-primitive-types">primitive</a>, <a href="#user-content-structured-types">structured</a> or <a href="#user-content-enums">enumeration</a> types.</p>
 
 <p>The value of the type attribute for a collection-valued property is of the form:</p>
 
-<p>Collection(<em>NamespaceQualifiedTypeName</em>)</p>
+<p>Collection(#user-content-NamespaceQualifiedTypeName*)</p>
 
 <p>where <em>NamespaceQualifiedTypeName</em> is the namespace qualified name of the primitive, structured, or enumeration type.</p>
 
@@ -2346,7 +2685,7 @@ and noninfringement. This specification is subject to change without notice.
 <h5>
 <a name="user-content-units-of-measure" class="anchor" href="#units-of-measure" aria-hidden="true"><span class="octicon octicon-link"></span></a>Units of Measure</h5>
 
-<p>In addition to following <a href="*common%20naming-conventions">naming conventions</a>, properties representing units of measure shall be annotated with the Units annotation term in order to specify the units of measurement for the property.</p>
+<p>In addition to following <a href="#user-content-common%20naming-conventions">naming conventions</a>, properties representing units of measure shall be annotated with the Units annotation term in order to specify the units of measurement for the property.</p>
 
 <div class="highlight highlight-xml"><pre>        <span class="nt">&lt;Annotation</span> <span class="na">Term=</span><span class="s">"OData.Measures.Units"</span> <span class="na">String=</span><span class="s">"Watts"</span><span class="nt">/&gt;</span>
 </pre></div>
@@ -2368,13 +2707,13 @@ and noninfringement. This specification is subject to change without notice.
 <h4>
 <a name="user-content-reference-properties" class="anchor" href="#reference-properties" aria-hidden="true"><span class="octicon octicon-link"></span></a>Reference Properties</h4>
 
-<p>Properties that reference other resources are represented as navigation properties. The <code>NavigationProperty</code> element specifies the <code>Name</code> and namespace-qualified <a href="*property-types"><code>Type</code></a> of the related resource(s).</p>
+<p>Properties that reference other resources are represented as navigation properties. The <code>NavigationProperty</code> element specifies the <code>Name</code> and namespace-qualified <a href="#user-content-property-types"><code>Type</code></a> of the related resource(s).</p>
 
 <p>If the property references a single type, the value of the type attribute is the namespace-qualified name of the related resource type.</p>
 
 <p>If the property references a collection of resources, the value of the type attribute is of the form:</p>
 
-<p>Collection(<em>NamespaceQualifiedTypeName</em>)</p>
+<p>Collection(#user-content-NamespaceQualifiedTypeName*)</p>
 
 <p>where NamespaceQualifiedTypeName is the namespace qualified name of the type of related resources.</p>
 
@@ -2385,14 +2724,14 @@ and noninfringement. This specification is subject to change without notice.
       <span class="nt">&lt;/NavigationProperty&gt;</span>
 </pre></div>
 
-<p>All navigation properties shall include <a href="description">description</a> and <a href="longdescription">specification</a> annotations. </p>
+<p>All navigation properties shall include <a href="#user-content-description">description</a> and <a href="#user-content-longdescription">specification</a> annotations. </p>
 
 <h5>
 <a name="user-content-expanded-references" class="anchor" href="#expanded-references" aria-hidden="true"><span class="octicon octicon-link"></span></a>Expanded References</h5>
 
-<p>Navigation links may be represented in a JSON payload as a single URL that can be used to navigate from the containing resource to the related resource(s), or as the <a href="*resource-identifier-property">ids</a> of the related resource(s).</p>
+<p>Navigation links may be represented in a JSON payload as a single URL that can be used to navigate from the containing resource to the related resource(s), or as the <a href="#user-content-resource-identifier-property">ids</a> of the related resource(s).</p>
 
-<p>By default, navigation links are represented as a single URL that represents the resource <a href="*reference-to-a-collection-of-related-resources">relative to the containing resource</a>. The ExpandReferences annotation term can be applied to a navigation property in order to specify that the default behavior for the service is to expand the references for the <a href="#reference-to-a-single-related-resource">related resource</a> or <a href="#array-of-references-to-related-resources">collection of resources</a> in responses.</p>
+<p>By default, navigation links are represented as a single URL that represents the resource <a href="#user-content-reference-to-a-collection-of-related-resources">relative to the containing resource</a>. The ExpandReferences annotation term can be applied to a navigation property in order to specify that the default behavior for the service is to expand the references for the <a href="#user-content-reference-to-a-single-related-resource">related resource</a> or <a href="#user-content-array-of-references-to-related-resources">collection of resources</a> in responses.</p>
 
 <div class="highlight highlight-xml"><pre>        <span class="nt">&lt;Annotation</span> <span class="na">Term=</span><span class="s">"DMTF.ExpandReferences"</span><span class="nt">/&gt;</span>
 </pre></div>
@@ -2407,7 +2746,7 @@ and noninfringement. This specification is subject to change without notice.
 <div class="highlight highlight-xml"><pre>      <span class="nt">&lt;Property</span> <span class="na">Name=</span><span class="s">"Actions"</span> <span class="na">Type=</span><span class="s">"MyType.MyTypeActions</span><span class="nt">&gt;</span>
 </pre></div>
 
-<p>The type of the Actions property is a <a href="*structured-types">structured type</a> with a single OEM property whose type is a structured type with no defined properties.</p>
+<p>The type of the Actions property is a <a href="#user-content-structured-types">structured type</a> with a single OEM property whose type is a structured type with no defined properties.</p>
 
 <div class="highlight highlight-xml"><pre>  <span class="nt">&lt;ComplexType</span> <span class="na">Name=</span><span class="s">"MyTypeActions"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;Property</span> <span class="na">Name=</span><span class="s">"OEM"</span> <span class="na">Type=</span><span class="s">"MyTypeOEMActions"</span><span class="nt">/&gt;</span>
@@ -2416,11 +2755,11 @@ and noninfringement. This specification is subject to change without notice.
   <span class="nt">&lt;ComplexType</span> <span class="na">Name=</span><span class="s">"MyTypeOEMActions"</span><span class="nt">/&gt;</span>
 </pre></div>
 
-<p>Individual actions are defined within a <a href="*namespace-definitions">namespace</a> using <code>Action</code> elements. The <code>Name</code> attribute of the action specifies the name of the action. The <code>Isbound</code> attribute specifies that the action is bound to (appears as a member of) a resource or structured type.</p>
+<p>Individual actions are defined within a <a href="#user-content-namespace-definitions">namespace</a> using <code>Action</code> elements. The <code>Name</code> attribute of the action specifies the name of the action. The <code>Isbound</code> attribute specifies that the action is bound to (appears as a member of) a resource or structured type.</p>
 
-<p>The Action element contains one or more <code>Parameter</code> elements that specify the <code>Name</code> and <a href="*property-types"><code>Type</code></a> of each parameter. </p>
+<p>The Action element contains one or more <code>Parameter</code> elements that specify the <code>Name</code> and <a href="#user-content-property-types"><code>Type</code></a> of each parameter. </p>
 
-<p>The first parameter is called the "binding parameter" and specifies the resource or <a href="*structural-types">structrual type</a> that the action appears as a member of (the type of the Actions property on the resource). The remaining Parameter elements describe additional parameters to be passed to the action.</p>
+<p>The first parameter is called the "binding parameter" and specifies the resource or <a href="#user-content-structural-types">structrual type</a> that the action appears as a member of (the type of the Actions property on the resource). The remaining Parameter elements describe additional parameters to be passed to the action.</p>
 
 <div class="highlight highlight-xml"><pre>  <span class="nt">&lt;Action</span> <span class="na">Name=</span><span class="s">"MyAction"</span> <span class="na">Isbound=</span><span class="s">"true"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;Parameter</span> <span class="na">Name=</span><span class="s">"Thing"</span> <span class="na">Type=</span><span class="s">"MyType.MyTypeActions"</span><span class="nt">/&gt;</span>
@@ -2438,7 +2777,7 @@ and noninfringement. This specification is subject to change without notice.
 <h5>
 <a name="user-content-property-extensions" class="anchor" href="#property-extensions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Property Extensions</h5>
 
-<p>Resources contain a property called <a href="#oem-property">"Oem"</a> whose value is an empty "OEM" <a href="*sructured-type">complex type</a> defined for the resource. </p>
+<p>Resources contain a property called <a href="#user-content-oem-property">"Oem"</a> whose value is an empty "OEM" <a href="#user-content-sructured-type">complex type</a> defined for the resource. </p>
 
 <div class="highlight highlight-xml"><pre>  <span class="nt">&lt;ComplexType</span> <span class="na">Name=</span><span class="s">"MyType.OEMType"</span><span class="nt">/&gt;</span>
 </pre></div>
@@ -2467,7 +2806,7 @@ and noninfringement. This specification is subject to change without notice.
 <h5>
 <a name="user-content-custom-actions" class="anchor" href="#custom-actions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Custom Actions</h5>
 
-<p>OEM-specific actions can be defined by defining actions bound to the OEM property of the <a href="*resource-actions">resource's Actions</a> property type.</p>
+<p>OEM-specific actions can be defined by defining actions bound to the OEM property of the <a href="#user-content-resource-actions">resource's Actions</a> property type.</p>
 
 <div class="highlight highlight-xml"><pre>
   <span class="nt">&lt;Action</span> <span class="na">Name=</span><span class="s">"Ping"</span> <span class="na">Isbound=</span><span class="s">"true"</span><span class="nt">&gt;</span>
@@ -2477,7 +2816,7 @@ and noninfringement. This specification is subject to change without notice.
 <span class="nt">&lt;/Schema&gt;</span>
 </pre></div>
 
-<p>Such bound actions appear in the JSON payload as properties of the Oem type, nested under an <a href="#actions-property">Actions property</a>.</p>
+<p>Such bound actions appear in the JSON payload as properties of the Oem type, nested under an <a href="#user-content-actions-property">Actions property</a>.</p>
 
 <div class="highlight highlight-json"><pre><span class="s2">"Actions"</span><span class="err">:</span> <span class="p">{</span>
     <span class="nt">"OEM"</span><span class="p">:</span> <span class="p">{</span>
@@ -2501,7 +2840,7 @@ and noninfringement. This specification is subject to change without notice.
 
 <p>Services can apply annotations to existing resources where those resources don't already define a value for the annotation. Services cannot change the value of an annotation applied as part of the resource definition.  </p>
 
-<p>Because <a href="#annotations">service annotations</a> may applied to existing resource definitions, they are generally specified in a service-specific metadata document referenced by the <a href="#service-metadata">service metadata</a>.</p>
+<p>Because <a href="#user-content-annotations">service annotations</a> may applied to existing resource definitions, they are generally specified in a service-specific metadata document referenced by the <a href="#user-content-service-metadata">service metadata</a>.</p>
 
 <h3>
 <a name="user-content-common-spma-resource-properties" class="anchor" href="#common-spma-resource-properties" aria-hidden="true"><span class="octicon octicon-link"></span></a>Common SPMA Resource Properties</h3>
@@ -2528,12 +2867,12 @@ and noninfringement. This specification is subject to change without notice.
 <h4>
 <a name="user-content-created" class="anchor" href="#created" aria-hidden="true"><span class="octicon octicon-link"></span></a>Created</h4>
 
-<p>The Created property contains the time stamp equal to the last time the SPMA service created this resource.  The format of this property shall be the <a href="#standard-timestamp-format">Standard Timestamp Format</a>. </p>
+<p>The Created property contains the time stamp equal to the last time the SPMA service created this resource.  The format of this property shall be the <a href="#user-content-standard-timestamp-format">Standard Timestamp Format</a>. </p>
 
 <h4>
 <a name="user-content-modified" class="anchor" href="#modified" aria-hidden="true"><span class="octicon octicon-link"></span></a>Modified</h4>
 
-<p>The Modified property contains the time stamp equal to the last time the SPMA service modified this resource. The format of this property shall be the <a href="#standard-timestamp-format">Standard Timestamp Format</a>. </p>
+<p>The Modified property contains the time stamp equal to the last time the SPMA service modified this resource. The format of this property shall be the <a href="#user-content-standard-timestamp-format">Standard Timestamp Format</a>. </p>
 
 <h4>
 <a name="user-content-status" class="anchor" href="#status" aria-hidden="true"><span class="octicon octicon-link"></span></a>Status</h4>
@@ -2545,22 +2884,22 @@ and noninfringement. This specification is subject to change without notice.
 <h4>
 <a name="user-content-links" class="anchor" href="#links" aria-hidden="true"><span class="octicon octicon-link"></span></a>Links</h4>
 
-<p>The <a href="#links-property">Links property</a> represents the links associated with the resource, as defined by that resources schema definition. All navigation properties defined for a resource shall be nested under the links property.</p>
+<p>The <a href="#user-content-links-property">Links property</a> represents the links associated with the resource, as defined by that resources schema definition. All navigation properties defined for a resource shall be nested under the links property.</p>
 
 <h4>
 <a name="user-content-actions-1" class="anchor" href="#actions-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Actions</h4>
 
-<p>The <a href="#actions-property">Actions property</a> contains the actions supported by a resource. </p>
+<p>The <a href="#user-content-actions-property">Actions property</a> contains the actions supported by a resource. </p>
 
 <h4>
 <a name="user-content-oem" class="anchor" href="#oem" aria-hidden="true"><span class="octicon octicon-link"></span></a>OEM</h4>
 
-<p>The <a href="#oem-property">OEM property</a> is used for OEM extensions as defined in <a href="*schema-extensibility">Schema Extensibility</a>. </p>
+<p>The <a href="#user-content-oem-property">OEM property</a> is used for OEM extensions as defined in <a href="#user-content-schema-extensibility">Schema Extensibility</a>. </p>
 
 <h4>
 <a name="user-content-settings" class="anchor" href="#settings" aria-hidden="true"><span class="octicon octicon-link"></span></a>Settings</h4>
 
-<p>The Settings property contains a URI that the client can use to PUT properties or PATCH property changes for resources that are not directly <a href="#update-patch">updatable</a>. </p>
+<p>The Settings property contains a URI that the client can use to PUT properties or PATCH property changes for resources that are not directly <a href="#user-content-update-patch">updatable</a>. </p>
 
 <p>If the resource itself is read only but has a partner Setting resource, this is used to make changes at some point in the future to the resource.  </p>
 
@@ -2575,7 +2914,9 @@ and noninfringement. This specification is subject to change without notice.
 <li>Time of the attempted application</li>
 <li>ETag of the Setting Data object that was applied</li>
 <li>SPMA Extended Error Information containing status information </li>
-</ul><h4>
+</ul>
+
+<h4>
 <a name="user-content-correlatableid" class="anchor" href="#correlatableid" aria-hidden="true"><span class="octicon octicon-link"></span></a>CorrelatableID</h4>
 
 <p>Because of SPMA's open extensible architecture, and a design tenant that objects do not have to know how to locate each other via URI references, SPMA defines the "CorrelatableID" property. </p>
@@ -2605,7 +2946,9 @@ and noninfringement. This specification is subject to change without notice.
 <li>IPv4Address </li>
 <li>IPv6Address if scalar, however better to consider a list in the resource model with address and type.</li>
 <li>DnsName " (vs current <em>thing</em> name ) """ Need to ensure can address the attribute properly.  Note "Name" is a reserved property.</li>
-</ul><h3>
+</ul>
+
+<h3>
 <a name="user-content-spma-resources" class="anchor" href="#spma-resources" aria-hidden="true"><span class="octicon octicon-link"></span></a>SPMA Resources</h3>
 
 <p>Collectively known as the SPMA Schema, the set of resource descriptions contains normative requirements on implementations conforming to this specification. </p>
@@ -2647,7 +2990,9 @@ and noninfringement. This specification is subject to change without notice.
 <li>Static, Read-Only JSON encoded information for Event and Message Registries</li>
 </ul>
 </li>
-</ul><h4>
+</ul>
+
+<h4>
 <a name="user-content-current-configuration" class="anchor" href="#current-configuration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Current Configuration</h4>
 
 <p>Current Configuration resources represent the service's knowledge of the current state and configuration of the resource.  This may be directly updatable with a PATCH or it may be read-only by the client and the client must PATCH to a separate Setting resource.</p>
@@ -2676,11 +3021,15 @@ and noninfringement. This specification is subject to change without notice.
 <li>All SPMA services must support attempts to set unsupported configuration elements in the Setting Data by marking them as exceptions in the Setting Data Apply status structure, but not failing the entire configuration operation.</li>
 <li>The support of a specific property in a resource is signaled by the presence of that property in the Current Configuration object.  If the element is missing from Current Configuration, the client may assume the element is not supported on that resource.</li>
 <li>For ENUM configuration items that may have variation in allowable values, a special read-only capabilities element will be added to Current Configuration which specifies limits to the element.  This is an override for the schema only to be used when necessary.</li>
-</ul><p>Providers may split the schema resources into separate files such as Schema + String Registry, each with a separate URI and different Content-Encoding.</p>
+</ul>
+
+<p>Providers may split the schema resources into separate files such as Schema + String Registry, each with a separate URI and different Content-Encoding.</p>
 
 <ul>
 <li>Resources <em>may</em> communicate omissions from the published schema via the Current Configuration object if applicable.</li>
-</ul><h2>
+</ul>
+
+<h2>
 <a name="user-content-service-details" class="anchor" href="#service-details" aria-hidden="true"><span class="octicon octicon-link"></span></a>Service Details</h2>
 
 <h3>
@@ -2696,13 +3045,15 @@ and noninfringement. This specification is subject to change without notice.
 <li>Services shall respond to a successful subscription with HTTP status 201 and set the HTTP Location header to the address of a new subscription resource.</li>
 <li>Clients shall terminate a subscription by sending an HTTP DELETE message to the URI of the subscription resource.</li>
 <li>Services may terminate a subscription by sending a special "subscription terminated" event as the last message. Future requests to the associated subscription resource will respond with HTTP status 404.</li>
-</ul><p>There are two types of events generated in an SPMA service - life cycle and alert.  </p>
+</ul>
+
+<p>There are two types of events generated in an SPMA service - life cycle and alert.  </p>
 
 <p>Life cycle events happen when resources are created, modified or destroyed.  Not every modification of a resource will result in a event - this is similar to when ETags are changed and implementations may not send an alert for every resource change. For instance, if an event was sent for every Ethernet packet received or every time a sensor changed 1 degree, this could result in more events than fits a scalable interface. This event usually indicates the resource that changed as well as, optionally, any attributes that changed. </p>
 
 <p>Alert events happen when a resource needs to indicate an event of some significance.  This may be either directly or indirectly pertaining to the resource.  This style of event usually adopts a message registry approach similar to extended error handling in that a MessageID will be included.  Examples of this kind of event are when a chassis is opened, button is pushed, cable is unplugged or threshold exceeded.  These events usually do not correspond well to life cycle type events hence they have their own category.</p>
 
-<p>NOTE: Refer to the <a href="#security">Security</a> section for security implications of Eventing</p>
+<p>NOTE: Refer to the <a href="#user-content-security">Security</a> section for security implications of Eventing</p>
 
 <h4>
 <a name="user-content-event-message-subscription" class="anchor" href="#event-message-subscription" aria-hidden="true"><span class="octicon octicon-link"></span></a>Event Message Subscription</h4>
@@ -2736,7 +3087,9 @@ and noninfringement. This specification is subject to change without notice.
 <li>
 <em>MessageKey</em> is a human-readable key into the registry. The message key shall be Pascal-cased and shall not include spaces, periods or special chars.<br>
 </li>
-</ul><h4>
+</ul>
+
+<h4>
 <a name="user-content-subscription-cleanup" class="anchor" href="#subscription-cleanup" aria-hidden="true"><span class="octicon octicon-link"></span></a>Subscription Cleanup</h4>
 
 <p>To unsubscribe from the messages associated with this subscription, the client simply sends an HTTP DELETE request to the subscription resource URI.</p>
@@ -2746,7 +3099,9 @@ and noninfringement. This specification is subject to change without notice.
 <ul>
 <li><p>The client supplied a URL and the service received an error POSTing to the client-supplied URL (client-url  field of the subscription) some service-defined number of consecutive times.</p></li>
 <li><p>The client did not supply a URL and the amount of time specified in the subscription-timeout field has elapsed since the last time the subscription URL was polled.  In order to prevent disconnection, the client service should perform a GET on the subscription URI less than the period specified in the timeout interval. A GET on a subscription URI shall reset the timeout counter for that subscription.</p></li>
-</ul><h3>
+</ul>
+
+<h3>
 <a name="user-content-asynchronous-operations" class="anchor" href="#asynchronous-operations" aria-hidden="true"><span class="octicon octicon-link"></span></a>Asynchronous Operations</h3>
 
 <p>Services that support asynchronous operations will implement the Task service &amp; Task resource.</p>
@@ -2767,7 +3122,7 @@ and noninfringement. This specification is subject to change without notice.
 
 <p>Once the operation has completed, the status monitor shall return a status code of OK (200) and include in the body of the response a mime message containing the results of the initial operation, as if it had completed synchronously.</p>
 
-<p>The client can continue to get information about the status by directly querying the Task resource using the <a href="*resource-identifier">resource identifier</a> returned in the body of the 202 (Accepted) response.</p>
+<p>The client can continue to get information about the status by directly querying the Task resource using the <a href="#user-content-resource-identifier">resource identifier</a> returned in the body of the 202 (Accepted) response.</p>
 
 <ul>
 <li>Services that support asynchronous operations shall implement the Task resource</li>
@@ -2780,11 +3135,13 @@ have been used to return a synchronous response.</li>
 <li>GET requests to either the Task monitor or the Task Resource shall return the current status of the operation without blocking.</li>
 <li>Operations using HTTP GET, PUT, PATCH should always be synchronous. </li>
 <li>Clients shall be prepared to handle both synchronous and asynchronous responses for requests using HTTP DELETE and HTTP POST methods.</li>
-</ul><h3>
+</ul>
+
+<h3>
 <a name="user-content-timestamp-management" class="anchor" href="#timestamp-management" aria-hidden="true"><span class="octicon octicon-link"></span></a>Timestamp Management</h3>
 
 <p>The SPMA Service should support a resource that contains the current service time.  The property should be located in the "/rest" resource, called
-"Time" and should be an SPMA compliant <a href="*datetime-values">time string</a>.</p>
+"Time" and should be an SPMA compliant <a href="#user-content-datetime-values">time string</a>.</p>
 
 <div class="highlight highlight-json"><pre><span class="p">{</span>
      <span class="err">...</span>
@@ -2795,7 +3152,9 @@ have been used to return a synchronous response.</li>
 
 <ul>
 <li>Services should support a Time property at "/rest/v1/Time"</li>
-</ul><h3>
+</ul>
+
+<h3>
 <a name="user-content-resource-tree-stability" class="anchor" href="#resource-tree-stability" aria-hidden="true"><span class="octicon octicon-link"></span></a>Resource Tree Stability</h3>
 
 <p>The Resource Tree must be consistent on a single service across device reboot and A/C power cycle, and must withstand a reasonable amount of configuration change (e.g. adding an adapter to a server). The resource Tree on one service may not be consistent across instances of devices.  The client must walk the data model and discover resources to interact with them.
@@ -2804,7 +3163,9 @@ It is possible that some resources will remain very stable from system to system
 <ul>
 <li>A Resource Tree should remain stable across Service restarts and minor device configuration changes</li>
 <li>A Resource Tree shall not be expected by the client to be consistent between instances of services</li>
-</ul><h3>
+</ul>
+
+<h3>
 <a name="user-content-discovery-1" class="anchor" href="#discovery-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Discovery</h3>
 
 <p>Automatic discovery of managed devices supporting the Scalable Platform Management API is accomplished using the Simple Service Discovery Protocol (SSDP).  This protocol allows for network-efficient discovery without resorting to ping-sweeps, router table searches, or restrictive DNS naming schemes.  Use of SSDP is optional, and if implemented, shall allow the user to disable the protocol through the 'Manager Network Service' resource.  </p>
@@ -2890,7 +3251,9 @@ EXT:
 <li>CURL compatibility</li>
 <li>Automated clients</li>
 <li>Embedded Service Processors</li>
-</ul><h3>
+</ul>
+
+<h3>
 <a name="user-content-protocols" class="anchor" href="#protocols" aria-hidden="true"><span class="octicon octicon-link"></span></a>Protocols</h3>
 
 <h4>
@@ -2906,7 +3269,7 @@ EXT:
 
 <p>Implementations shall support TLS v1.1 or later</p>
 
-<p>Implementations shall only use compliant TLS connections to transport <a href="#sensitive-data">Sensitive Data</a>. Including to any third party authentication services or clients.</p>
+<p>Implementations shall only use compliant TLS connections to transport <a href="#user-content-sensitive-data">Sensitive Data</a>. Including to any third party authentication services or clients.</p>
 
 <h5>
 <a name="user-content-cipher-suites" class="anchor" href="#cipher-suites" aria-hidden="true"><span class="octicon octicon-link"></span></a>Cipher suites</h5>
@@ -2954,7 +3317,9 @@ EXT:
 <li>Critical Security Parameters (CSPs) as defined below</li>
 </ul>
 </li>
-</ul><p>Critical Security Parameters : 
+</ul>
+
+<p>Critical Security Parameters : 
 Security-related information (e.g., cryptographic keys, authentication data such as passwords and PINs) appearing in plaintext or otherwise unprotected form and whose disclosure or modification can compromise the security of a cryptographic module or the security of the information protected by the module.</p>
 
 <p>REF: <a href="http://csrc.nist.gov/publications/fips/fips140-1/fips1401.pdf">http://csrc.nist.gov/publications/fips/fips140-1/fips1401.pdf</a> - This is used only as a source for the definition of CSPs. No additional requirements for compatibility with the FIPS standard should be inferred.</p>
@@ -2995,7 +3360,9 @@ Security-related information (e.g., cryptographic keys, authentication data such
     - Specific actions which happen automatically when failure events occur
     - Time since last failed authentication attempt </p>
 </li>
-</ul><h4>
+</ul>
+
+<h4>
 <a name="user-content-http-header-security" class="anchor" href="#http-header-security" aria-hidden="true"><span class="octicon octicon-link"></span></a>HTTP Header Security</h4>
 
 <ul>
@@ -3016,31 +3383,39 @@ Security-related information (e.g., cryptographic keys, authentication data such
 <li>The root object which is needed to identify the device and service locations</li>
 </ul>
 </li>
-<li>Unauthenticated REST operation results shall not contain <a href="#sensitive-data">Sensitive Data</a>.</li>
+<li>Unauthenticated REST operation results shall not contain <a href="#user-content-sensitive-data">Sensitive Data</a>.</li>
 <li><p>External services linked via extref references are not part of this spec, and may have other security requirements.</p></li>
 <li><p>CORS headers are not recommended. Vendors may choose to implement them.</p></li>
-</ul><h5>
+</ul>
+
+<h5>
 <a name="user-content-http-redirect-1" class="anchor" href="#http-redirect-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>HTTP Redirect</h5>
 
 <ul>
 <li>When there is a HTTP Redirect the privilege requirements for the target resource shall be enforced<br>
 </li>
-</ul><h4>
+</ul>
+
+<h4>
 <a name="user-content-extended-error-handling-1" class="anchor" href="#extended-error-handling-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Extended Error Handling</h4>
 
 <ul>
-<li>Authentication shall occur when <a href="#sensitive-data">Sensitive Data</a> is present in any part of the REST object.</li>
+<li>Authentication shall occur when <a href="#user-content-sensitive-data">Sensitive Data</a> is present in any part of the REST object.</li>
 <li>Extended error messages shall NOT provide privileged info when authentication failures occur</li>
-</ul><h4>
+</ul>
+
+<h4>
 <a name="user-content-http-header-authentication" class="anchor" href="#http-header-authentication" aria-hidden="true"><span class="octicon octicon-link"></span></a>HTTP Header Authentication</h4>
 
 <ul>
 <li>HTTP Headers for authentication shall be processed before other headers that may affect the response, i.e.: etag, If-Modified, etc.</li>
 <li>HTTP Cookies shall NOT be used to authenticate any activity i.e.: GET, POST, PUT/PATCH, and DELETE.</li>
-</ul><h5>
+</ul>
+
+<h5>
 <a name="user-content-basic-authentication" class="anchor" href="#basic-authentication" aria-hidden="true"><span class="octicon octicon-link"></span></a>BASIC authentication</h5>
 
-<p>HTTP BASIC authentication as defined by RFC 2617 <a href="#References">References</a> shall be supported, and shall only use compliant TLS connections to transport the data between any third party authentication service and clients.</p>
+<p>HTTP BASIC authentication as defined by RFC 2617 <a href="#user-content-References">References</a> shall be supported, and shall only use compliant TLS connections to transport the data between any third party authentication service and clients.</p>
 
 <h5>
 <a name="user-content-digest-authentication" class="anchor" href="#digest-authentication" aria-hidden="true"><span class="octicon octicon-link"></span></a>Digest authentication</h5>
@@ -3073,7 +3448,9 @@ includes orphaned session timeout and number of simultaneous open sessions.</p>
 
 <ul>
 <li><strong>An SPMA Service <em>shall</em> provide login sessions compliant with this specification.</strong></li>
-</ul><h5>
+</ul>
+
+<h5>
 <a name="user-content-login-sessions" class="anchor" href="#login-sessions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Login Sessions</h5>
 
 <p>For functionality requiring multiple SPMA operations, a standard Login session is specified.  The URI used for session management is specified in the /rest object with the property "Sessions".</p>
@@ -3139,16 +3516,18 @@ X-Auth-Token: &lt;token string&gt;
 <li>Implementations should NOT support infinite session times.</li>
 </ul>
 </li>
-</ul><h4>
+</ul>
+
+<h4>
 <a name="user-content-accountservice" class="anchor" href="#accountservice" aria-hidden="true"><span class="octicon octicon-link"></span></a>AccountService</h4>
 
 <ul>
 <li>User passwords should be stored with one-way encryption techniques.</li>
 <li>Implementations may support exporting user accounts with passwords, but shall do so using encryption methods to protect them.</li>
-<li>The root REST object should be available unauthenticated, but shall not contain any <a href="#sensitive-data">Sensitive Data</a>.
+<li>The root REST object should be available unauthenticated, but shall not contain any <a href="#user-content-sensitive-data">Sensitive Data</a>.
 
 <ul>
-<li>Authentication shall occur when <a href="#sensitive-data">Sensitive Data</a> is present in the root REST object.</li>
+<li>Authentication shall occur when <a href="#user-content-sensitive-data">Sensitive Data</a> is present in the root REST object.</li>
 </ul>
 </li>
 <li>User accounts shall support ETags and shall support atomic operations
@@ -3159,19 +3538,25 @@ X-Auth-Token: &lt;token string&gt;
 </li>
 <li>User Management activity is atomic</li>
 <li>Extended error messages shall NOT provide privileged info when authentication failures occur</li>
-</ul><h4>
+</ul>
+
+<h4>
 <a name="user-content-async-tasks" class="anchor" href="#async-tasks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Async Tasks</h4>
 
 <ul>
 <li>Irrespective of which users/ privileged context was used to start an async task the information in the status object shall be used to enforce the privilege(s) required to access that object. </li>
-</ul><h4>
+</ul>
+
+<h4>
 <a name="user-content-event-subscriptions" class="anchor" href="#event-subscriptions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Event Subscriptions</h4>
 
 <ul>
 <li><p>The SPMA device shall check the privilege of the subscriber before pushing event data object to the destination </p></li>
-<li><p>The SPMA device shall encrypt event data when there is <a href="#sensitive-data">Sensitive Data</a> in the event data object before pushing it</p></li>
+<li><p>The SPMA device shall encrypt event data when there is <a href="#user-content-sensitive-data">Sensitive Data</a> in the event data object before pushing it</p></li>
 <li><p>The SPMA device may verify the destination for identity purposes before pushing event data object to the Destination </p></li>
-</ul><h4>
+</ul>
+
+<h4>
 <a name="user-content-privilege-model--authorization" class="anchor" href="#privilege-model--authorization" aria-hidden="true"><span class="octicon octicon-link"></span></a>Privilege Model / Authorization</h4>
 
 <ul>
@@ -3265,7 +3650,9 @@ OR</li>
 </li>
 </ul>
 </li>
-</ul><h5>
+</ul>
+
+<h5>
 <a name="user-content-profiles-and-roles" class="anchor" href="#profiles-and-roles" aria-hidden="true"><span class="octicon octicon-link"></span></a>Profiles and Roles</h5>
 
 <ul>
@@ -3309,7 +3696,9 @@ OR</li>
 <li>shall allow SPMA user to define custom roles</li>
 <li>should allow SPMA user to name custom roles to enable reuse in user context</li>
 <li>may implement a set of OEM roles</li>
-</ul><h4>
+</ul>
+
+<h4>
 <a name="user-content-role-based-privilege" class="anchor" href="#role-based-privilege" aria-hidden="true"><span class="octicon octicon-link"></span></a>Role Based Privilege</h4>
 
 <p>An SPMA service may contain resources that require separated privileges.
@@ -3321,7 +3710,9 @@ upon user privileges.</p>
 based upon role-based privileges</strong></li>
 <li><strong>An SPMA service <em>may</em> limit individual resource access by SPMA clients
 based upon specific user account information (future -- not defined yet)</strong></li>
-</ul><h3>
+</ul>
+
+<h3>
 <a name="user-content-data-model-validation" class="anchor" href="#data-model-validation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Data Model Validation</h3>
 
 <h4>
@@ -3354,7 +3745,7 @@ based upon specific user account information (future -- not defined yet)</strong
 <p>Implementations shall log authentication requests including failures. 
 Authentication login/logout log entries shall contain a user identifier that can be used to uniquely identify the client and a time stamp.</p>
 
-<p>Logs shall include detailed privileged info, but shall NOT include the <a href="#sensitive-data">Sensitive Data</a> outside a privileged user or a privileged security context.</p>
+<p>Logs shall include detailed privileged info, but shall NOT include the <a href="#user-content-sensitive-data">Sensitive Data</a> outside a privileged user or a privileged security context.</p>
 
 <h4>
 <a name="user-content-completeness-of-logging" class="anchor" href="#completeness-of-logging" aria-hidden="true"><span class="octicon octicon-link"></span></a>Completeness of Logging</h4>
@@ -3378,7 +3769,9 @@ Authentication login/logout log entries shall contain a user identifier that can
 </ul>
 </li>
 <li>Rejection of idempotent actions due to security reasons shall be logged</li>
-</ul><h4>
+</ul>
+
+<h4>
 <a name="user-content-content-of-audit-logs" class="anchor" href="#content-of-audit-logs" aria-hidden="true"><span class="octicon octicon-link"></span></a>Content of Audit Logs</h4>
 
 <p>Details : Need to generate events for the following</p>
@@ -3394,14 +3787,18 @@ Authentication login/logout log entries shall contain a user identifier that can
 <li>information about accessing the system interfaces of the SPMA compliant-devices</li>
 <li>network addresses and protocols (e.g. workstation IP address and protocol used for access)</li>
 <li>activation and de-activation of protection measures</li>
-</ol><p>The file where the events are written, one or more messages per event should at least have the following information :</p>
+</ol>
+
+<p>The file where the events are written, one or more messages per event should at least have the following information :</p>
 
 <ul>
 <li>User ID</li>
 <li>Date, time </li>
 <li>Event type</li>
 <li>Event description</li>
-</ul><h2>
+</ul>
+
+<h2>
 <a name="user-content-appendix-a" class="anchor" href="#appendix-a" aria-hidden="true"><span class="octicon octicon-link"></span></a>Appendix A</h2>
 
 <h3>
@@ -3420,7 +3817,9 @@ Authentication login/logout log entries shall contain a user identifier that can
 <li>Protocol stripping</li>
 <li>Cipher attacks</li>
 <li>Offline attacks</li>
-</ul><h2>
+</ul>
+
+<h2>
 <a name="user-content-appendix-b-notes" class="anchor" href="#appendix-b-notes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Appendix B: Notes</h2>
 
 <p>Security Token used in sessions with Keep-alive connections is the value in the
@@ -3439,4 +3838,152 @@ Perhaps we go with this in version.next.</em></p>
 -Rights are at a URL level, not per property.
 -what is the right set of primitive types to support?
 -do extended errors have single resolution string or array of recommended actions strings (difference in spec versus markdown)?
--Sessions - what do they return?</p></div>   </body> </html>
+-Sessions - what do they return?</p>
+
+<h2>
+<a name="user-content-appendix-c-summary-of-changes1" class="anchor" href="#appendix-c-summary-of-changes1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Appendix C: Summary of Changes1</h2>
+
+<p>The following table summarizes changes between various versions of the specification:</p>
+
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.91.1</td>
+<td>2014-09-30</td>
+<td>Initial Redfish 0.91.1 Contribution</td>
+</tr>
+<tr>
+<td>0.92</td>
+<td>2014-09-30</td>
+<td>* Changed the name and references to "Scalable Platform Management API" throughout</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>* Reorganized content to reduce redundancy and increase locality of information for producers and consumers</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>* Added examples for result and schema payloads</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>* Aligned with common paging query options</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>* Added annotation and fleshed out Inline Error information</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>* Inlined Schema Definition constructs and examples</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>* Aligned with common OData conventions and syntax for shared models</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>* Leveraged existing mechanisms for extensibility, namespacing, external model annotation</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>* Adopted common modeling elements for actions</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>* Adopted common model attributes and annotations for readonly, language dependence, and units of measure</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>* Defined annotations for required, allowable values, expandreferences,</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>* Defined support for JSON Schema generation for compatible tools and validation</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>* Adopted common property naming conventions for id, type, etag, links, count and partial results</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>* Separated TaskResource in body from Location header in Async to align with common async patterns</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>* Fleshed out examples for vendor extensibility</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>* Fleshed out examples for core and vendor-extended actions</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>* Changed casing of "Links" to match property naming conventions</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>* Fixed issues with LogService and TaskService in mockup to give them collections of Events/Tasks rather than  arrays of collections of Events/Tasks</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>* Added examples of vendor extensions to Mockup</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>* Updated mockup to support additional metadata requests</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>* Added sample JavaScript client</td>
+</tr>
+<tr>
+<td>0.92.1</td>
+<td>2014-10-12</td>
+<td>* Revised Links section</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>* Fixed hot links throughout</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>* Added Summary of Changes</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>* Various fixes/cleanup of mockup and schema files</td>
+</tr>
+</tbody>
+</table>
+</div>   </body> </html>

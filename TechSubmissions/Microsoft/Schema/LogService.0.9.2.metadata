@@ -33,17 +33,18 @@
           <Annotation Term="OData.Description" String="The overwrite policy for this service that takes place when the log is full."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the policy of the log service when the MaxNumberOfRecords has been reached. Unknown indicates the log overwrite policy is unknown. WrapsWhenFull indicates that the log overwrites its entries with new entries when the log has reached its maximum capacity. NeverOverwrites indicates that the log never overwrites its entries by the new entries and ceases logging when the limit has been reached."/>
         </Property>
+        <Property Name="Links" Type="LogService.Links" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="The links object contains the links to other resources that are related to this resource."/>
+        </Property>
         <Property Name="Actions" Type="LogService.Actions" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The Actions object contains the available custom actions on this resource."/>
         </Property>
-        <Property Name="Links" Type="LogService.Links">
-          <Annotation Term="OData.Description" String="The links object contains the links to other resources that are related to this resource."/>
-        </Property>
       </EntityType>
 
       <ComplexType Name="Actions">
-        <Property Name="Oem" Type="LogService.OemActions"/>
+        <Property Name="Oem" Type="LogService.OemActions" Nullable="false"/>
       </ComplexType>
       <ComplexType Name="OemActions"/>
       
@@ -52,9 +53,8 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="References to the log entry collection."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall reference a collection of LogEntry resources."/>
-          <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="Oem" Type="Resource.Oem" />
+        <Property Name="Oem" Type="Resource.Oem"/>
       </ComplexType>
 
       <EnumType Name="OverWritePolicy">

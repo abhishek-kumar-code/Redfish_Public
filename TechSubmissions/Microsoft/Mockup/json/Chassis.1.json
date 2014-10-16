@@ -17,27 +17,33 @@
         "Health": "OK"
     },
     "Links": {
+        "ComputerSystems@odata.navigationLink":"/rest/v1/Chassis/1/ComputerSystems",
         "ComputerSystems": [
             {
                 "@odata.id": "/rest/v1/Systems/1"
             }
         ],
-        "ContainedBy" : {
+        "ContainedBy@odata.navigationLink":"/rest/v1/Chassis/1/ContainedBy",
+        "ContainedBy": {
             "@odata.id": "/rest/v1/Chassis/Rack1"
         },
-        "ManagedBy" : [
+        "ManagedBy@odata.navigationLink":"/rest/v1/Chassis/1/ManagedBy",
+        "ManagedBy": [
             {
                 "@odata.id": "/rest/v1/Managers/1"
             }
         ],
+        "ThermalMetrics@odata.navigationLink":"/rest/v1/Chassis/1/ThermalMetrics",
         "ThermalMetrics":
         {
             "@odata.id": "/rest/v1/Chassis/1/ThermalMetrics"
         },
+        "PowerMetrics@odata.navigationLink":"/rest/v1/Chassis/1/PowerMetrics",
         "PowerMetrics":
         {
             "@odata.id": "/rest/v1/Chassis/1/PowerMetrics"
         },
+        "MiscMetrics@odata.navigationLink":"/rest/v1/Chassis/1/MiscMetrics",
         "MiscMetrics":
         {
             "@odata.id": "/rest/v1/Chassis/1/MiscMetrics"

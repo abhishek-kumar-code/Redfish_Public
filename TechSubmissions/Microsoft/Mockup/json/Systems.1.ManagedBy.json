@@ -45,12 +45,14 @@
                     "VersionString": "1.40 pass 5+ (debug build Jul 26 2013 16:46:33)"
                 }
             },
-            "Links" : {
+            "Links": {
+                "ManagerForServers@odata.navigationLink": "/rest/v1/Managers/1/ManagerForServers",
                 "ManagerForServers": [
                     {
                         "@odata.id": "/rest/v1/Systems/2"
                     }
                 ],
+                "NetworkService@odata.navigationLink": "/rest/v1/Managers/1/NetworkService",
                 "NetworkService": {
                     "@odata.id": "/rest/v1/Managers/1/NetworkService"
                 },
@@ -59,7 +61,7 @@
                 "VirtualMedia@odata.navigationLink": "/rest/v1/Managers/1/VirtualMedia",
                 "Oem": {}
             },
-            "Actions" : {
+            "Actions": {
                 "http://dmtf.org/schema/v1/Managers#Manager.1.0.0.Reset": {
                     "target": "/rest/v1/Managers/1/Actions/Manager.1.0.0.Reset"
                 },

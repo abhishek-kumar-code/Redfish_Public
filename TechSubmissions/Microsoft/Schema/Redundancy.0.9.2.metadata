@@ -18,12 +18,17 @@
       <ComplexType Name="Redundancy">
         <Annotation Term="OData.Description" String="This is the redundancy definition to be used in other resource schemas."/>
         <Annotation Term="OData.LongDescription" String="This object represents the Redundancy element property.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification.  The value of this string shall be of the format for the reserved word *Redundancy*"/>
-        <Property Name="Name" Type="Resource.Name"/>
-        <Property Name="Oem" Type="Resource.Oem"/>
+        <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
         <Property Name="ActiveCorrelatableIDs" Type="Collection(Edm.String)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Contains any CorrelatableIDs that represents components of this reduncancy set."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain CorrelattableIDs that are components of this redundancy set.  The correlatableID values can be JSON Pointers or UEFI identifiers, for example."/>
+          <Annotation Term="DMTF.Required"/>
+        </Property>
+        <Property Name="Name" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description"  String="The name of the resource or array element."/>
+          <Annotation Term="OData.LongDescription" String="This object represents the Name property.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification. The value of this string shall be of the format for the reserved word *Name*."/>
           <Annotation Term="DMTF.Required"/>
         </Property>
         <Property Name="Mode" Type="Collection(Redundancy.RedundancyMode)">

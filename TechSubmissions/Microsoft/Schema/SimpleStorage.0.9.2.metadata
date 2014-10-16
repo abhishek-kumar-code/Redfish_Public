@@ -19,15 +19,21 @@
           <Annotation Term="OData.Description" String="The UEFI device path used to access this storage controller."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the UEFI device path used to identify and locate the specific storage controller"/>
         </Property>
-        <Property Name="Devices" Type="Collection(SimpleStorage.Device)">
+        <Property Name="Devices" Type="Collection(SimpleStorage.Device)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="A list of storage devices associated with this resource"/>
         </Property>
       </EntityType>
 
       <ComplexType Name="Device">
-        <Property Name="Oem" Type="Resource.Oem"/>
-        <Property Name="Name" Type="Resource.Name"/>
+        <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
+        <!-- Redfish schema has Description but Mockup payload has Name -->
+        <Property Name="Name" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description"  String="The name of the resource or array element."/>
+          <Annotation Term="OData.LongDescription" String="This object represents the Name property.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification. The value of this string shall be of the format for the reserved word *Name*."/>
+          <Annotation Term="DMTF.Required"/>
+        </Property>
         <Property Name="Status" Type="Resource.Status"/>
         <Property Name="Manufacturer" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>

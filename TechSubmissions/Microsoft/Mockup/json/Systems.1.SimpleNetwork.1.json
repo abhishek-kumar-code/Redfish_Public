@@ -37,7 +37,7 @@
             "FQDN": "myserver.mycorp.com"
         }
     ],
-    "Links" : {
+    "Links": {
         "VLANs@odata.navigationLink": "Systems/1/SimpleNetwork/1/VLANs",
         "Oem": {}
     }

@@ -73,7 +73,7 @@
           <Annotation Term="OData.Description" String="The values of this property shall be any arguments for the message."/>
           <Annotation Term="OData.LongDescription" String="This contains message arguments to be substituted into the message included or in the message looked up via a registry."/>
         </Property>
-        <Property Name="Links" Type="LogEntry.Links">
+        <Property Name="Links" Type="LogEntry.Links" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The links object contains the links to other resources that are related to this resource."/>
         </Property>
@@ -84,22 +84,23 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is the URI of the resource that caused the log entry"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an href that references the resource for which the log is associated."/>
+          <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="Oem" Type="Resource.Oem" />
+        <Property Name="Oem" Type="Resource.Oem"/>
       </ComplexType>
 
       <!-- This is the severity of the log entry. -->
       <EnumType Name="EventSeverity">
-        <Member Name="OK" />
-        <Member Name="Warning" />
-        <Member Name="Critical" />
+        <Member Name="OK"/>
+        <Member Name="Warning"/>
+        <Member Name="Critical"/>
       </EnumType>
 
       <!-- This is the type of log entry. -->
       <EnumType Name="LogEntryType">
-        <Member Name="Event" />
-        <Member Name="SEL" />
-        <Member Name="Oem" />
+        <Member Name="Event"/>
+        <Member Name="SEL"/>
+        <Member Name="Oem"/>
       </EnumType>
 
       <!-- This is the type of log entry. -->

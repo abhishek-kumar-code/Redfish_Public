@@ -4,9 +4,7 @@
 
 This document is intended to explain the rationale and reasoning behind some of the architectural decisions in the Scalable Platform Management API Architecture
 
-**Table Of Contents**
-
-- TOC Here (Do Not Remove)
+* TOC Placeholder
 
 ## Why a new Interface?
 * Market shifting to scale-out solutions

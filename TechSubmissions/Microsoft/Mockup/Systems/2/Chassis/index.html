@@ -21,15 +21,18 @@
                 "State": "Enabled",
                 "Health": "OK"
             },
-            "Links" : {
+            "Links": {
+                "ComputerSystems@odata.navigationLink": "/rest/v1/Chassis/Enc1/Blades/1/ComputerSystems",
                 "ComputerSystems": [
                     {
                         "@odata.id": "Systems/2"
                     }
                 ],
+                "ContainedBy@odata.navigationLink": "/rest/v1/Chassis/Enc1/Blades/1/ContainedBy",
                 "ContainedBy": {
                     "@odata.id": "Chassis/Enc1"
                 },
+                "ManagedBy@odata.navigationLink": "/rest/v1/Chassis/Enc1/Blades/1/ManagedBy",
                 "ManagedBy": [
                     {
                         "@odata.id": "Managers/2"

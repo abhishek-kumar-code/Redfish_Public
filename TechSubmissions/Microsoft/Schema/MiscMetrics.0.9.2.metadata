@@ -19,16 +19,21 @@
       <EntityType Name="MiscMetrics" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition for the Miscellaneous Metrics resource.  It represents any sensors or metrics that are not thermal or power related.  Examples of these are intrusion detection and various alarms."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent the miscellaneous metrics resources for an SPMA implementation."/>
-        <Property Name="Intrusion" Type="Collection(MiscMetrics.Intrusion)">
+        <Property Name="Intrusion" Type="Collection(MiscMetrics.Intrusion)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
         </Property>
-        <Property Name="Misc" Type="Collection(MiscMetrics.MiscellaneousMetrics)">
+        <Property Name="Misc" Type="Collection(MiscMetrics.MiscellaneousMetrics)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
         </Property>
       </EntityType>
 
       <ComplexType Name="Metric">
-        <Property Name="Name" Type="Resource.Name"/>
+        <Property Name="Name" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description"  String="The name of the resource or array element."/>
+          <Annotation Term="OData.LongDescription" String="This object represents the Name property.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification. The value of this string shall be of the format for the reserved word *Name*."/>
+          <Annotation Term="DMTF.Required"/>
+        </Property>
         <Property Name="Number" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The sensor's number, if available."/>
@@ -56,7 +61,7 @@
       </EnumType>
 
       <ComplexType Name="MiscellaneousMetrics" BaseType="MiscMetrics.Metric">
-        <Property Name="SensorType" Type="MiscMetrics.MiscellaneousSensorType">
+        <Property Name="SensorType" Type="MiscMetrics.MiscellaneousSensorType" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The type of sensor"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the enumerated type of Misc sensor described by this instance"/>

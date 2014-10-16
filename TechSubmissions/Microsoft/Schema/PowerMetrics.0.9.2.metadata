@@ -64,14 +64,14 @@
           <Annotation Term="Validation.Minimum" Int="0"/>
           <Annotation Term="OData.Measures.Unit" String="Watts"/>
         </Property>
-        <Property Name="PowerConsumptionMetrics" Type="PowerMetrics.PowerMetric">
+        <Property Name="PowerMetrics" Type="PowerMetrics.PowerMetric" Nullable="false">
           <Annotation Term="OData.Description" String="This object contains power consumption measurements for this system or device."/>
           <Annotation Term="OData.LongDescription" String="This object shall contain power consumption metrics for the associated resource."/>
         </Property>
-        <Property Name="PowerLimit" Type="PowerMetrics.PowerLimit">
+        <Property Name="PowerLimit" Type="PowerMetrics.PowerLimit" Nullable="false">
           <Annotation Term="OData.Description" String="This object contains power limit status and configuration information for the chassis"/>
         </Property>
-        <Property Name="PowerSupplies" Type="Collection(PowerMetrics.PowerSupply)">
+        <Property Name="PowerSupplies" Type="Collection(PowerMetrics.PowerSupply)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Details of the power supplies associated with this system or device"/>
         </Property>
@@ -120,7 +120,7 @@
           <Annotation Term="OData.Measures.Unit" String="Watts"/>
           <Annotation Term="Validation.Minimum" Int="0"/>
         </Property>
-        <Property Name="LimitException" Type="Power.PowerLimitException">
+        <Property Name="LimitException" Type="PowerMetrics.PowerLimitException">
           <Annotation Term="OData.Description" String="The action that is taken if the power cannot be maintained below the LimitInWatts"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the action to be taken if the resource power consumption can not be limited below the specified limit after several correction time periods."/>
         </Property>
@@ -136,39 +136,41 @@
       </ComplexType>
 
       <EnumType Name="PowerLimitException">
-        <Member Name="NoAction" >
+        <Member Name="NoAction">
           <Annotation Term="OData.Description" String="Take no action when the limit is exceeded"/>
         </Member>
-        <Member Name="HardPowerOff" >
+        <Member Name="HardPowerOff">
           <Annotation Term="OData.Description" String="Turn the power off immediately when the limit is exceeded"/>
         </Member>
-        <Member Name="LogEventOnly" >
+        <Member Name="LogEventOnly">
           <Annotation Term="OData.Description" String="Log an event when the limit is exceeded, but take no further action"/>
         </Member>
-        <Member Name="Oem" />
+        <Member Name="Oem">
+          <Annotation Term="OData.Description" String="Take an OEM-defined action."/>
+        </Member>
       </EnumType>
 
       <ComplexType Name="PowerSupply">
         <Annotation Term="OData.Description" String="Details of the power supplies associated with this system or device"/>
         <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+        <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
         <Property Name="Name" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The name of the Power Supply"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain a descriptive name for the associated power supply."/>
         </Property>
-        <Property Name="Oem" Type="Resource.Oem"/>
         <Property Name="CorrelatableID" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The Correlatable ID for this Power Supply"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the unique Correlatable ID assigned to this power supply."/>
         </Property>
-        <Property Name="Status" Type="Resource.Status"/>
-        <Property Name="PowerSupplyType" Type="Power.PowerSupplyType">
+        <Property Name="Status" Type="Resource.Status" Nullable="false"/>
+        <Property Name="PowerSupplyType" Type="PowerMetrics.PowerSupplyType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The Power Supply type (AC or DC)"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the input power type (AC or DC) of the associated power supply."/>
         </Property>
-        <Property Name="LineInputVoltageType" Type="Power.LineInputVoltageType">
+        <Property Name="LineInputVoltageType" Type="PowerMetrics.LineInputVoltageType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The line voltage type supported as an input to this Power Supply"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the type of input line voltage supported by the associated power supply"/>
@@ -221,34 +223,34 @@
       </ComplexType>
 
       <EnumType Name="PowerSupplyType">
-        <Member Name="Unknown" >
+        <Member Name="Unknown">
           <Annotation Term="OData.Description" String="The power supply type cannot be determined"/>
         </Member>
-        <Member Name="AC" >
+        <Member Name="AC">
           <Annotation Term="OData.Description" String="Alternating Current (AC) power supply"/>
         </Member>
-        <Member Name="DC" >
+        <Member Name="DC">
           <Annotation Term="OData.Description" String="Direct Current (DC) power supply"/>
         </Member>
       </EnumType>
 
       <EnumType Name="LineInputVoltageType">
-        <Member Name="Unknown" >
+        <Member Name="Unknown">
           <Annotation Term="OData.Description" String="The power supply line input voltage type cannot be determined"/>
         </Member>
-        <Member Name="ACLowLine" >
+        <Member Name="ACLowLine">
           <Annotation Term="OData.Description" String="100-127V AC input"/>
         </Member>
-        <Member Name="ACMidLine" >
+        <Member Name="ACMidLine">
           <Annotation Term="OData.Description" String="200-240V AC input"/>
         </Member>
-        <Member Name="ACHighLine" >
+        <Member Name="ACHighLine">
           <Annotation Term="OData.Description" String="277V AC input"/>
         </Member>
-        <Member Name="DCNeg48V" >
+        <Member Name="DCNeg48V">
           <Annotation Term="OData.Description" String="-48V DC input"/>
         </Member>
-        <Member Name="DC480V" >
+        <Member Name="DC480V">
           <Annotation Term="OData.Description" String="High Voltage DC input (380V)"/>
         </Member>
       </EnumType>

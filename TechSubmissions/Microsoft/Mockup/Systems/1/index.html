@@ -73,16 +73,18 @@
             "HealthRollUp": "OK"
         }
     },
-    "Links" : {
-        "Chassis" : [
-            {"@odata.id": "/rest/v1/Systems/1/Chassis/1"}
+    "Links": {
+        "Chassis@odata.navigationLink": "/rest/v1/Systems/1/Chassis",
+        "Chassis": [
+            {"@odata.id": "/rest/v1/Chassis/1"}
         ],
-        "ManagedBy" : [
-            {"@odata.id": "/rest/v1/Systems/1/Managers/1"}
+        "ManagedBy@odata.navigationLink": "/rest/v1/Systems/1/ManagedBy",
+        "ManagedBy": [
+            {"@odata.id": "/rest/v1/Managers/1"}
         ],
-        "SimpleNetwork@odata.navigationLink" : "/rest/v1/Systems/1/SimpleNetwork",
-        "SimpleStorage@odata.navigationLink" : "/rest/v1/Systems/1/SimpleStorage",
-        "LogService@odata.navigationLink" : "/rest/v1/Systems/1/Logs",
+        "SimpleNetwork@odata.navigationLink": "/rest/v1/Systems/1/SimpleNetwork",
+        "SimpleStorage@odata.navigationLink": "/rest/v1/Systems/1/SimpleStorage",
+        "LogService@odata.navigationLink": "/rest/v1/Systems/1/Logs",
         "Oem": {}
     },
     "Actions": {

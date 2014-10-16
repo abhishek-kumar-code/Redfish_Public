@@ -7,11 +7,13 @@
     "Modified": "2012-03-07T14:44",
     "ManagerType": "EnclosureManager",
     "Links": {
+        "ManagerForServers@odata.navigationLink":"/rest/v1/Managers/3/ManagerForServers",
         "ManagerForServers": [
             {
                 "@odata.id": "/rest/v1/Systems/2"
             }
         ],
+        "ManagerForChassis@odata.navigationLink":"/rest/v1/Managers/3/ManagerForChassis",
         "ManagerForChassis": [
             {
                 "@odata.id": "/rest/v1/Chassis/Enc1"

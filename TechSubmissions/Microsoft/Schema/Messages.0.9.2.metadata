@@ -41,7 +41,6 @@
           <Annotation Term="DMTF.Required"/>
         </Property>
         <Property Name="Messages" Nullable="false" Type="Collection(Messages.MessageProperty)">
-          <!-- TODO model pattern properties -->
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The pattern property indicates that a free-form string is the unique identifier for the message within the registry."/>
           <Annotation Term="OData.LongDescription" String="The pattern property shall represent the suffix to be used in the MessageID and shall be unique within this message registry."/>
@@ -84,7 +83,7 @@
           <Annotation Term="OData.Description" String="The number of arguments to be expected to be passed in as MessageArgs for this message."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the number of MessageArgs that are expected to be substituted in the Message in the locations within the Message marked by %&lt;integer&gt;."/>
           <Annotation Term="DMTF.Required"/>
-          <Annotation Term="Validation.Minimum" Int="0" />
+          <Annotation Term="Validation.Minimum" Int="0"/>
         </Property>
         <Property Name="ParamTypes" Nullable="true" Type="Collection(Messages.ParamType)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
@@ -100,42 +99,42 @@
       </ComplexType>
 
       <EnumType Name="ParamType">
-        <Member Name="string" />
-        <Member Name="number" />
+        <Member Name="string"/>
+        <Member Name="number"/>
       </EnumType>
 
       <ComplexType Name="SettingsMessage">
-        <Property Name="Message" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="This is the human readable message, if provided."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain an optional human readable message."/>
-        </Property>
         <Property Name="MessageId" Nullable="false" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is the key for this message which can be used to look up the message in a message registry."/>
           <Annotation Term="OData.LongDescription" String="This property shall be a key into message registry as described in the SPMA specification."/>
           <Annotation Term="DMTF.Required"/>
-          <Annotation Term="Validation.Pattern" String="^[A-Za-z0-9]+\\.\\d+\\.\\d+.[A-Za-z0-9.]+$" />
+          <Annotation Term="Validation.Pattern" String="^[A-Za-z0-9]+\\.\\d+\\.\\d+.[A-Za-z0-9.]+$"/>
         </Property>
-        <Property Name="MessageArgs" Nullable="true" Type="Collection(Edm.String)">
+        <Property Name="MessageArgs" Nullable="false" Type="Collection(Edm.String)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This array of message arguments are substituted for the arguments in the message when looked up in the message registry."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the message substitution arguments for the specific message referenced by the MessageID and shall only be included if the MessageID is present."/>
+        </Property>
+        <Property Name="Message" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="This is the human readable message, if provided."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain an optional human readable message."/>
+        </Property>
+        <Property Name="PropertiesInError" Nullable="false" Type="Collection(Edm.String)" >
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="This is an array of properties in the request body that caused the errors."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain an array of property names in error, if appropriate for the message."/>
         </Property>
         <Property Name="Severity" Nullable="false" Type="Resource.Health">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is the severity of the errors."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the severity of the error, as defined in the SPMA specificaiton."/>
         </Property>
-        <Property Name="Resolution" Nullable="true" Type="Edm.String">
+        <Property Name="Resolution" Nullable="false" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Used to provide suggestions on how to resolve the situation that caused the error."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain an override of the Resolution of the message in message registry, if present."/>
-        </Property>
-        <Property Name="PropertiesInError" Nullable="true" Type="Collection(Edm.String)" >
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="This is an array of properties in the request body that caused the errors."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain an array of property names in error, if appropriate for the message."/>
         </Property>
       </ComplexType>
 
