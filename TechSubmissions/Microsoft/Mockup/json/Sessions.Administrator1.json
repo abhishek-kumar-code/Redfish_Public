@@ -1,0 +1,11 @@
+{
+    "@odata.context": "/rest/v1/$metadata/Sessions/$entity",
+    "@odata.id": "/rest/v1/Sessions/Administrator1",
+    "@odata.type": "http://dmtf.org/schema/v1/Session#Session.1.0.0.Session",
+    "Id": "Administrator1",
+    "Name": "User Session",
+    "Description": "Manager User Session",
+    "Modified": "2013-01-31T23:45:08+00:00",
+    "UserName": "Administrator",
+    "Oem": {}
+}

@@ -1,0 +1,61 @@
+{
+    "@odata.context": "/rest/v1/$metadata#Managers/1/NetworkService(*,links/SNMPService($ref))/$entity",
+    "@odata.id": "/rest/v1/Managers/1/NetworkService",
+    "@odata.type": "http://dmtf.org/schema/v1/ManagerNetworkService#ManagerNetworkService.1.0.0.ManagerNetworkService",
+    "Id": "NetworkService",
+    "Name": "Manager Network Service",
+    "Modified": "2014-03-07T14:44",
+    "Description": "Manager Network Service Status",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "HostName": "mymanager",
+    "FQDN": "mymanager.mydomain.com",
+    "HTTP": {
+        "Enabled": true,
+        "Port": 80
+    },
+    "HTTPS": {
+        "Enabled": true,
+        "Port": 443
+    },
+    "IPMI": {
+        "Enabled": true,
+        "Port": 623
+    },
+    "SSH": {
+        "Enabled": true,
+        "Port": 22
+    },
+    "SNMP": {
+    	"Enabled": true,
+    	"Port": 161
+    },
+    "VirtualMedia": {
+        "Enabled": true,
+        "Port": 17988
+    },
+    "SSDP": {
+        "Enabled": true,
+        "Port": 1900,
+        "NotifyMulticastIntervalSeconds": 600,
+        "NotifyTTL": 5,
+        "NotifyIPv6Scope": "Site"
+    },
+    "Telnet": {
+        "Enabled": true,
+        "Port": 23
+    },
+    "KVMIP": {
+	"Enabled": true,
+	"Port": 5288
+    },
+    "Links": {
+        "SNMPService": {
+            "@odata.id": "/rest/v1/Managers/1/SNMPService"
+        },
+        "Oem": {}
+    },
+    "Oem": {}
+}

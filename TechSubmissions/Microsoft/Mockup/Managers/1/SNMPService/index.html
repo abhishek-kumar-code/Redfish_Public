@@ -1,0 +1,55 @@
+{
+    "@odata.context": "/rest/v1/$metadata#Managers/1/SNMPService/$entity",
+    "@odata.id": "/rest/v1/Managers/1/SNMPService",
+    "@odata.type": "http://dmtf.org/schema/v1/SnmpService#SnmpService.1.0.0.SnmpService",
+    "Id": "SNMPService",
+    "Name": "SNMP Service",
+    "Modified": "2012-03-07T14:44",
+    "Description": "SNMP Service Status",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "Mode": "Agentless",
+    "Location": "string",
+    "Contact": "string",
+    "Role": "string",
+    "RoleDetail": "string",
+    "ReadCommunities": [
+        ".NOTES:  PATCH to edit, include null element to skip",
+        "snmp read community string 1",
+        "snmp read community string 2",
+        "snmp read community string 3"
+    ],
+    "TrapCommunities": [
+        ".NOTES:  PATCH to edit, include null element to skip",
+        "snmp trap community string 1",
+        "snmp trap community string 2",
+        "snmp trap community string 3"
+    ],
+    "AlertDestinations": [
+        ".NOTES:  PATCH to edit, include null element to skip",
+        "snmp alert destination string 1",
+        "snmp alert destination string 2",
+        "snmp alert destination string 3"
+    ],
+    "TrapSourceHostname": "Manager",
+    "AlertsEnabled": true,
+    "SNMPv1Traps": true,
+    "SNMPv3EngineID": "string",
+    "Users": [
+        {
+            "SecurityName": "string",
+            "AuthProtocol": "MD5",
+            "AuthPassphrase": "write-only string",
+            "PrivacyProtocol": "DES",
+            "PrivacyPassphrase": "write-only string"
+        }
+    ],
+    "Actions" : {
+        "http://dmtf.org/schema/v1/SnmpService#SnmpService.1.0.0.SendSNMPTestAlert": {
+            "target": "Systems/1/Actions/SnmpService.1.0.0.SendSNMPTestAlert"
+        },
+        "Oem": {}
+    }
+}

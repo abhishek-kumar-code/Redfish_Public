@@ -1,0 +1,19 @@
+{
+    "Name": "Virtual Media Services",
+    "Modified": "2012-03-07T14:44",
+    "Type": "Collection.0.91.0",
+    "MemberType": "VirtualMedia.1",
+    "Description": "iLO Virtual Media Services Settings",
+    "Total": 2,
+    "links": {
+        "Member": [
+            {
+                "href": "/rest/v1/Managers/1/VM1/Floppy1"
+            },
+            {
+                "href": "/rest/v1/Managers/1/VM1/CD1"
+            }
+        ]
+    },
+    "Oem": {}
+}

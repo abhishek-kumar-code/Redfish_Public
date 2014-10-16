@@ -1,0 +1,44 @@
+{
+    "Name": "Enclosure With Blades Example - This enclosure is in a rack and this enclosure has one blade.  It also is managed by a redundant pair of managers which also manage the blade.",
+    "Modified": "2013-03-07T14:44",
+    "Type": "Chassis.0.91.0",
+    "ChassisType": "Enclosure",
+    "links": {
+        "ThermalMetrics": {
+            "href": "/rest/v1/Chassis/Enc1/ThermalMetrics"
+        },
+        "PowerMetrics": {
+            "href": "/rest/v1/Chassis/Enc1/PowerMetrics"
+        },
+        "MiscMetrics": {
+            "href": "/rest/v1/Chassis/Enc1/MiscMetrics"
+        },
+        "Contains": [
+            {
+                "href": "/rest/v1/Chassis/Enc1/Blades"
+            }
+        ],
+        "ContainedBy": {
+            "href": "/rest/v1/Chassis/Rack1"
+        },
+        "ManagedBy": [
+            {
+                "href": "/rest/v1/Managers/2"
+            },
+            {
+                "href": "/rest/v1/Managers/3"
+            }
+        ],
+        "Oem": {}
+    },
+    "Manufacturer": "ManufacturerName",
+    "Model": "ProductModelName",
+    "SKU": "",
+    "SerialNumber": "2M220100SL",
+    "PartNumber": "",
+    "AssetTag": "CustomerWritableThingy",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    }
+}

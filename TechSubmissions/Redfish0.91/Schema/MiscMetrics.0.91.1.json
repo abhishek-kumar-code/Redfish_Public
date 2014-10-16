@@ -1,0 +1,161 @@
+{
+    "$schema": "http://www.redfishspecification.org/schema",
+    "title": "MiscMetrics.0.91.1",
+    "type": "object",
+    "additionalProperties": false,
+    "description": "This is the schema definition for the Miscellaneous Metrics resource.  It represents any sensors or metrics that are not thermal or power related.  Examples of these are intrusion detection and various alarms.",
+    "specification": "This resource shall be used to represent the miscellaneous metrics resources for a Redfish implementation.",
+    "properties": {
+        "Oem": {
+            "$ref": "Oem.0.91.0.json#"
+        },
+        "Name": {
+            "$ref": "Name.0.91.0.json#"
+        },
+        "Modified": {
+            "$ref": "Modified.0.91.0.json#"
+        },
+        "Type": {
+            "$ref": "Type.0.91.0.json#"
+        },
+        "Description": {
+            "$ref": "Description.0.91.0.json#"
+        },
+        "Intrusion": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "Name": {
+                        "$ref": "Name.0.91.0.json#"
+                    },
+                    "SensorType": {
+                        "type": "string",
+                        "description": "The type of sensor",
+                        "enum": [
+                            "Physical(Chassis) Security",
+                            "Platform Security Violation Attempt"
+                        ],
+                        "readonly": true,
+                        "specification": "This property shall contain the enumerated type of Intrusion sensor described by this instance"
+                    },
+                    "Number": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "description": "The sensor's number, if available.",
+                        "readonly": true,
+                        "specification": "The value of this property shall be the EntityInstance from IPMI spec if sensor is consistent with IPMI's SEL, otherwise it is implementation specific."
+                    },
+                    "Status": {
+                        "$ref": "Status.0.91.0.json#"
+                    },
+                    "CurrentReading": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "description": "Current value of the metric or sensor.",
+                        "readonly": true,
+                        "specification": "The value of this property shall be the current reading of the metric or sensor."
+                    }
+                }
+            },
+            "readonly": true
+        },
+        "Misc": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "Name": {
+                        "$ref": "Name.0.91.0.json#"
+                    },
+                    "SensorType": {
+                        "type": "string",
+                        "description": "The type of sensor",
+                        "enum": [
+                            "Other Units-based Sensor",
+                            "Memory",
+                            "Drive Slot/Bay",
+                            "POST Memory Resize",
+                            "System Firmware Progress",
+                            "Event Logging Disabled",
+                            "System Event",
+                            "Critical Interrupt",
+                            "Button/Switch",
+                            "Module/Board",
+                            "Microcontroller/Coprocessor",
+                            "Add-in Card",
+                            "Chassis",
+                            "ChipSet",
+                            "Other FRU",
+                            "Cable/Interconnect",
+                            "Terminator",
+                            "SystemBoot/Restart",
+                            "Boot Error",
+                            "BaseOSBoot/InstallationStatus",
+                            "OS Stop/Shutdown",
+                            "Slot/Connector",
+                            "System ACPI PowerState",
+                            "Watchdog",
+                            "Platform Alert",
+                            "Entity Presence",
+                            "Monitor ASIC/IC",
+                            "LAN",
+                            "Management Subsystem Health",
+                            "Session Audit",
+                            "Version Change",
+                            "FRUState",
+                            "Humidity",
+                            "Water"
+                        ],
+                        "readonly": true,
+                        "specification": "This property shall contain the enumerated type of Misc sensor described by this instance"
+                    },
+                    "Number": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "description": "The sensor's number, if available.",
+                        "readonly": true,
+                        "specification": "The value of this property shall be the EntityInstance from IPMI spec if sensor is consistent with IPMI's SEL, otherwise it is implementation specific."
+                    },
+                    "Status": {
+                        "$ref": "Status.0.91.0.json#"
+                    },
+                    "CurrentReading": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "description": "Current value of the metric or sensor.",
+                        "readonly": true,
+                        "specification": "The value of this property shall be the current reading of the metric or sensor."
+                    }
+                }
+            },
+            "readonly": true
+        },
+        "links": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "self": {
+                    "$ref": "href.0.91.0.json#",
+                    "description": "This is the URI of this resource.",
+                    "specification": "The value of this property shall reference the URI of this resource."
+                }
+            },
+            "description": "The links array contains the links to other resources that are related to this resource."
+        }
+    },
+    "required": [
+        "Type"
+    ],
+    "copyright": "Copyright 2013-2014 Avocent Corporation. Copyright 2014 Dell Inc. Copyright 2013-2014 Hewlett-Packard Development Company, L.P. Copyright 2014 Intel Corporation."
+}

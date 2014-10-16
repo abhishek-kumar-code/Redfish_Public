@@ -1,0 +1,59 @@
+{
+    "@odata.context": "/rest/v1/$metadata#Systems(*,links/Chassis($ref),links/ManagedBy($ref))", 
+    "@odata.count": 1,
+    "value": [
+        {
+            "@odata.id": "/rest/v1/Systems/2",
+            "@odata.type": "http://dmtf.org/schema/v1/ComputerSystem#ComputerSystem.1.0.0.ComputerSystem",
+            "Id": "2",
+            "Name": "My Computer System",
+            "Modified": "2012-03-07T14:44",
+            "SystemType": "Physical",
+            "AssetTag": "free form asset tag",
+            "Manufacturer": "Manufacturer Name",
+            "Model": "Model Name",
+            "SKU": "",
+            "SerialNumber": "2M220100SL",
+            "Version": "",
+            "PartNumber": "",
+            "Description": "Description of server",
+            "IndicatorLED": "Lit",
+            "VirtualSerialNumber": null,
+            "UUID": "00000000-0000-0000-0000-000000000000 - need common format - need common schema callout?",
+            "HostCorrelation": {
+                "IPAddress": [
+                    "192.168.2.40"
+                ],
+                "HostMACAddress": [
+                    "AA:BB:CC:DD:EE:FF"
+                ],
+                "HostName": "hostname",
+                "HostFQDN": "host.domain"
+            },
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK",
+                "HealthRollUp": "OK"
+            },
+            "Boot": {},
+            "Links" : {
+                "Chassis": [
+                    {
+                        "@odata.id": "/rest/v1/Chassis/Enc1/Blades/1"
+                    }
+                ],
+                "ManagedBy": [
+                    {
+                        "@odata.id": "/rest/v1/Managers/1"
+                    }
+                ],
+                "SimpleNetwork@odata.navigationLink": "/rest/v1/Systems/2/SimpleNetwork",
+                "SimpleStorage@odata.navigationLink": "/rest/v1/Systems/2/SimpleStorage",
+                "LogService@odata.navigationLink": "/rest/v1/Systems/2/Logs",
+                "Oem": {}
+            },
+            "Oem": {}
+        }
+    ],
+    "@odata.nextLink": "Systems?$skip=2"
+}

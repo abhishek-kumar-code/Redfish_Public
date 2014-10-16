@@ -1,0 +1,238 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>Scalable Plaform Management API Shutdown Sample</title>
+<style type="text/css">
+body {
+    background: #B0B3B2;
+    color: #444444;
+    font-family: Verdana;
+    font-size: 100%;
+}
+
+</style>
+</head>
+<body>
+
+<h1>Scalable Plaform Management API Shutdown Sample</h1>
+<table>
+    <tr><td>This sample demonstrates the use of the Scalable Platform Management API to query the state of all Chassis</td></tr>
+    <tr><td>and shut down Systems within Chassis (recursively) with temperatures outside of critical limits.</td></tr>
+    <tr><td></td></tr>
+    <tr><td></td></tr>
+</table>
+
+<label>Enter Root URL for Service:</label>
+<input id="requestUri" value="http://localhost:9080/rest/v1/" size="100"/>
+<button id="getButton" onclick="run()">Run</button>
+<div id="resultsArea">
+</div>
+
+<script type="text/javascript">
+
+    ///////////////////////
+    // defined constants
+    //////////////////////
+
+    const ResetAction = "http://dmtf.org/schema/v1/ComputerSystem#ComputerSystem.1.0.0.Reset";
+    const odataLink = "@odata.navigationLink";
+    const odataRef = "@odata.id";
+    const allowableValues = "@DMTF.AllowableValues";
+
+    //////////////////////
+    // global variables
+    //////////////////////
+
+    var base;
+    var output = document.getElementById("resultsArea");
+
+    //////////////////////
+    // application logic
+    //////////////////////
+
+    // main
+    function run() {
+        base = requestUri.value;
+        if(base.substring(base.length-1,base.length)!="\/")
+            base += "/";
+        rows = "";
+        getServiceRoot();
+    }
+
+    //Get the Service Root
+    function getServiceRoot() {
+        //get the ServiceRoot and pass to getChassis
+        getJSON(base, getChassis);
+    }
+
+    //Get the Chassis from the Service Root
+    function getChassis(serviceRoot) {
+        //Get the URL to retrieve Chassis from the ServiceRoot
+        uri = getLink(serviceRoot, "Chassis");
+        //Get the list of Chassis and pass to getThermalMetrics
+        getJSON(uri, getThermalMetrics)
+    }
+
+    //Get the URL to retrive Thermal Metrics from a collection of Chassis
+    function getThermalMetrics(ChassisList) {
+        //for each chassis
+        for (index in ChassisList.value)
+        {
+            var chassis = ChassisList.value[index];
+            //get the ref to the thermal metrics
+            uri = getRef(chassis.Links.ThermalMetrics);
+            //get the temperatures
+            getJSON(uri, function (ThermalMetric) {
+                for (index in ThermalMetric.Temperatures) {
+                    var temp = ThermalMetric.Temperatures[index];
+                    if (temp.CurrentReading > temp.UpperThresholdCritical) {
+                        writeLine("WARNING!!!! Chassis: " + getRef(chassis) + ", Critical High Temperature : " + temp.CurrentReading);
+                    } else if (temp.CurrentReading < temp.LowerThresholdCritical) {
+                        writeLine("WARNING!!!! Chassis: " + getRef(chassis) + ", Critical Low Temperature : " + temp.CurrentReading);
+                    } else return;
+                    //shut down chassis
+                    shutDownChassis(chassis);
+                    }
+                }
+            );
+        }
+    }
+    
+    function shutDownChassis(chassis) {
+        //Shut down each contained Chassis
+        var contained = chassis.Links.Contains;
+        //for each chassis
+        for (iChassis in contained) {
+            //Get reference of chassis
+            uri = getRef(contained[iChassis]);
+            //get the chassis and pass to shutDownChassis
+            getJSON(uri, shutDownChassis);
+        }
+
+        //Shut down each computer system in this chassis
+        var computerSystems = chassis.Links.ComputerSystems;
+        //for each system
+        for (iComputer in computerSystems) {
+            //Get reference of ComputerSystem
+            uri = getRef(computerSystems[iComputer]);
+            //get the computer system and pass to shutDownSystem
+            getJSON(uri, shutDownSystem);
+        }
+    }
+
+    //Function to shut down a computer system
+    function shutDownSystem(computerSystem) {
+        var resetType;
+        //get the Reset action and post params to it
+        var action = computerSystem.Actions[ResetAction];
+        //make sure forceoff is allowable value
+        var allowableValues = getAllowableValues(action,"ResetType");
+        if(allowableValues.indexOf("ForceOff")!=-1)
+            resetType="ForceOff";
+        else
+            resetType="PushPowerButton";
+        var params = { "ResetType": resetType };
+        postJSON(action.target, params);
+    }
+    
+    //////////////////////
+    // Helper Functions
+    //////////////////////
+
+    //Helper function to get a Ref from a JSON object
+    function getRef(value) {
+        return value[odataRef];
+    }
+
+    //Helper function to get a link from an object
+    function getLink(value, name) {
+        return value.Links[name + odataLink];
+    }
+
+    //Helper function to get allowable values for an Action
+    function getAllowableValues(action,paramName)    {
+        return action[paramName+allowableValues];
+    }
+
+    //Helper Function to resolve a relative URL
+    function resolveUri(uri) {
+        var skip = "http://".length;
+        if (uri.indexOf("http:") != 0) {
+            if (uri[0] != '\/')
+                return base.substring(0, base.length - 1) + '\/' + uri;
+            else
+                return base.substring(0, base.substring(skip, base.length - skip).indexOf('\/') + skip) + uri;
+        }
+        else
+            return uri;
+    }
+
+
+    //Helper Function to Write a line of text
+    function writeLine(value) {
+        rows += '<tr><td>' + value + '</td></tr>';
+        output.innerHTML = '<table>' + rows + '</table>';
+    }
+
+    //////////////////////
+    //Protocol Functions
+    //////////////////////
+
+    //Helper function to execute a URI and return JSON payload
+    function getJSON(uri, callback) {
+        uri = resolveUri(uri);
+        var req = createRequest();
+        req.onreadystatechange = function () {
+            if (req.readyState != 4) return;
+            if (req.status >= 400) {
+                document.write('Error Calling:' + req.requestUri.toString() + " Error code: " + req.status);
+                return;
+            }
+            callback(JSON.parse(req.responseText));
+        }
+        req.open("GET", uri, true);
+        req.send();
+        writeLine("Sending GET Request to:" + resolveUri(uri));
+    }
+
+    //Helper function to POST a JSON body with no callback
+    function postJSON(uri, value) {
+        postJSON(uri, value, null);
+    }
+
+    //Helper function to POST a JSON body to a URI
+    function postJSON(uri, value, callback) {
+        uri = resolveUri(uri);
+        var req = createRequest();
+        var body = JSON.stringify(value, null, '  ');
+        req.onreadystatechange = function () {
+            if (req.readyState != 4) return;
+            else if (req.status == 200)
+                callback(JSON.parse(req.responseText));
+            else
+                writeLine('Received Response Code:' + req.status);
+        }
+        req.open("POST", uri, true);
+        req.setRequestHeader("Content-type", "application/json");
+        req.setRequestHeader("Content-length", body.length);
+        req.setRequestHeader("Connection", "close");
+        writeLine('Posting to: ' + uri);
+        writeLine('With body: ' + body);
+        req.send(body);
+    }
+
+    //Helper Function to Create a Request
+    function createRequest() {
+        var result = null;
+        if (window.XMLHttpRequest) {
+            result = new XMLHttpRequest();
+        }
+        else if (window.ActiveXObject) {
+            result = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        return result;
+    }
+
+</script>
+</body>
+</html>

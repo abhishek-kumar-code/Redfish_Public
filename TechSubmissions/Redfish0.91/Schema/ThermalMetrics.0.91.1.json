@@ -1,0 +1,328 @@
+{
+    "$schema": "http://www.redfishspecification.org/schema",
+    "title": "ThermalMetrics.0.91.1",
+    "type": "object",
+    "additionalProperties": false,
+    "description": "This is the schema definition for the Thermal Metrics.  It represents the properties for Temperature and Cooling.",
+    "specification": "This resource shall be used to represent a thermal metrics resource for a Redfish implementation.",
+    "properties": {
+        "Oem": {
+            "$ref": "Oem.0.91.0.json#"
+        },
+        "Name": {
+            "$ref": "Name.0.91.0.json#"
+        },
+        "Modified": {
+            "$ref": "Modified.0.91.0.json#"
+        },
+        "Type": {
+            "$ref": "Type.0.91.0.json#"
+        },
+        "Description": {
+            "$ref": "Description.0.91.0.json#"
+        },
+        "Status": {
+            "$ref": "Status.0.91.0.json#"
+        },
+        "Temperatures": {
+            "type": "array",
+            "description": "This is the definition for temperature sensors.",
+            "specification": "These properties shall be the definition for temperature sensors for a Redfish implementation.",
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "Oem": {
+                        "$ref": "Oem.0.91.0.json#"
+                    },
+                    "Name": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "description": "Temperature sensor name.",
+                        "readonly": true,
+                        "specification": "The value of this property shall be the name of the temperature sensor."
+                    },
+                    "Number": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "description": "A numerical identifier to represent the temperature sensor",
+                        "readonly": true,
+                        "specification": "The value of this property shall be a numerical identifier for this temperature sensor that is unique within this resource. "
+                    },
+                    "Status": {
+                        "$ref": "Status.0.91.0.json#"
+                    },
+                    "Units": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "enum": [
+                            "Celsius",
+                            "Fahrenheit"
+                        ],
+                        "description": "The temperature sensor's units.",
+                        "readonly": true,
+                        "specification": "The value of this property shall be the units that the temperature sensor in which the CurrentReading is measured."
+                    },
+                    "CurrentReading": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "description": "Temperature",
+                        "readonly": true,
+                        "specification": "The value of this property shall be the current value of the temperature sensor's reading."
+                    },
+                    "UpperThresholdNonCritical": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "description": "Above normal range",
+                        "readonly": true,
+                        "specification": "The value of this property shall indicate the CurrentReading is above the normal range but is not critical."
+                    },
+                    "UpperThresholdCritical": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "description": "Above normal range but not yet fatal.",
+                        "readonly": true,
+                        "specification": "The value of this property shall indicate the CurrentReading is above the normal range but is not yet fatal."
+                    },
+                    "UpperThresholdFatal": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "description": "Above normal range and is fatal",
+                        "readonly": true,
+                        "specification": "The value of this property shall indicate the CurrentReading is above the normal range and is fatal."
+                    },
+                    "LowerThresholdNonCritical": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "description": "Below normal range",
+                        "readonly": true,
+                        "specification": "The value of this property shall indicate the CurrentReading is below the normal range but is not critical."
+                    },
+                    "LowerThresholdCritical": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "description": "Below normal range but not yet fatal.",
+                        "readonly": true,
+                        "specification": "The value of this property shall indicate the CurrentReading is below the normal range but is not yet fatal."
+                    },
+                    "LowerThresholdFatal": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "description": "Below normal range and is fatal",
+                        "readonly": true,
+                        "specification": "The value of this property shall indicate the CurrentReading is below the normal range and is fatal."
+                    },
+                    "MinimumValue": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "description": "Minimum value for CurrentReading",
+                        "readonly": true,
+                        "specification": "The value of this property shall indicate the lowest possible value for CurrentReading."
+                    },
+                    "MaximumValue": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "description": "Maximum value for CurrentReading",
+                        "readonly": true,
+                        "specification": "The value of this property shall indicate the lowest possible value for CurrentReading."
+                    },
+                    "PhysicalContext": {
+                        "$ref": "PhysicalContext.0.91.0.json#"
+                    },
+                    "CorrelatableID": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "description": "The CorrelatableID for this temperature sensor",
+                        "correlatableID": true,
+                        "specification": "The value of this property shall be the CorrelatableID for this temperature sensor and shall adhere to the semantics for CorrelatableID as defined in the Redfish specification."
+                    }
+                }
+            },
+            "readonly": true
+        },
+        "Fans": {
+            "type": "array",
+            "description": "This is the definition for fans.",
+            "specification": "These properties shall be the definition for fans for a Redfish implementation.",
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "Oem": {
+                        "$ref": "Oem.0.91.0.json#"
+                    },
+                    "FanName": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "description": "Name of the fan.",
+                        "readonly": true,
+                        "specification": "The value of this property shall be the name of the fan."
+                    },
+                    "PhysicalContext": {
+                        "$ref": "PhysicalContext.0.91.0.json#"
+                    },
+                    "CorrelatableID": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "description": "The CorrelatableID for this fan",
+                        "correlatableID": true,
+                        "specification": "The value of this property shall be the CorrelatableID for this temperature sensor and shall adhere to the semantics for CorrelatableID as defined in the Redfish specification."
+                    },
+                    "Status": {
+                        "$ref": "Status.0.91.0.json#"
+                    },
+                    "Units": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "enum": [
+                            "RPM",
+                            "Percent"
+                        ],
+                        "description": "Units for the CurrentReading.",
+                        "readonly": true,
+                        "specification": "The value of this property shall be the units that the CurrentReading is measured in."
+                    },
+                    "CurrentReading": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "description": "Current fan speed",
+                        "readonly": true,
+                        "specification": "The value of this property shall be the current value of the fan sensor's reading."
+                    },
+                    "UpperThresholdNonCritical": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "description": "Above normal range",
+                        "readonly": true,
+                        "specification": "The value of this property shall indicate the CurrentReading is above the normal range but is not critical."
+                    },
+                    "UpperThresholdCritical": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "description": "Above normal range but not yet fatal.",
+                        "readonly": true,
+                        "specification": "The value of this property shall indicate the CurrentReading is above the normal range but is not yet fatal."
+                    },
+                    "UpperThresholdFatal": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "description": "Above normal range and is fatal",
+                        "readonly": true,
+                        "specification": "The value of this property shall indicate the CurrentReading is above the normal range and is fatal."
+                    },
+                    "LowerThresholdNonCritical": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "description": "Below normal range",
+                        "readonly": true,
+                        "specification": "The value of this property shall indicate the CurrentReading is below the normal range but is not critical."
+                    },
+                    "LowerThresholdCritical": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "description": "Below normal range but not yet fatal.",
+                        "readonly": true,
+                        "specification": "The value of this property shall indicate the CurrentReading is below the normal range but is not yet fatal."
+                    },
+                    "LowerThresholdFatal": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "description": "Below normal range and is fatal",
+                        "readonly": true,
+                        "specification": "The value of this property shall indicate the CurrentReading is below the normal range and is fatal."
+                    },
+                    "MinimumValue": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "description": "Minimum value for CurrentReading",
+                        "readonly": true,
+                        "specification": "The value of this property shall indicate the lowest possible value for CurrentReading."
+                    },
+                    "MaximumValue": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "description": "Maximum value for CurrentReading",
+                        "readonly": true,
+                        "specification": "The value of this property shall indicate the lowest possible value for CurrentReading."
+                    }
+                }
+            },
+            "readonly": true
+        },
+        "Redundancy": {
+            "type": "array",
+            "items": {
+                "$ref": "Redundancy.0.91.0.json#"
+            },
+            "description": "This structure is used to show redundancy for fans.  The use of CorrelatableIDs will reference the members of the redundancy groups.",
+            "specification": "The values of the properties in this array shall be used to show redundancy for fans and other elements in this resource.  The use of CorrelatableIDs within these arrays shall reference the members of the redundancy groups.",
+            "readonly": true
+        },
+        "links": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "self": {
+                    "$ref": "href.0.91.0.json#",
+                    "description": "This is the URI of this resource.",
+                    "specification": "The value of this property shall reference the URI of this resource."
+                }
+            },
+            "description": "The object contains references to other resources."
+        }
+    },
+    "required": [
+        "Type"
+    ],
+    "copyright": "Copyright 2013-2014 Avocent Corporation. Copyright 2014 Dell Inc. Copyright 2013-2014 Hewlett-Packard Development Company, L.P. Copyright 2014 Intel Corporation."
+}

@@ -1,0 +1,20 @@
+{
+    "error": {
+    "code": "Base.1.0.MessageKey",
+    "message": "Human readable string",
+    "details": [
+      {
+       "code": "Base.1.0.MessageKey",
+       "target": "property1",
+       "message": "property1 string"
+      },
+      {
+       "code": "Base.1.0.MessageKey",
+       "target": "property2",
+       "message": "property2 string"
+      }
+    ],
+    "@Error.severity": "Error",
+    "@Error.resolution": "Optional resolution string"
+  }
+}

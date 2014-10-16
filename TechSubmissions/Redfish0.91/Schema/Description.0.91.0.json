@@ -1,0 +1,11 @@
+{
+    "type": [
+        "string",
+        "null"
+    ],
+    "$schema": "http://www.redfishspecification.org/schema",
+    "description": "Provides a description of this resource and is used for commonality in the schema definitions.",
+    "readonly": true,
+    "specification": "This object represents the Description property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification at www.redfishspecification.org>.",
+    "copyright": "Copyright 2013-2014 Avocent Corporation. Copyright 2014 Dell Inc. Copyright 2013-2014 Hewlett-Packard Development Company, L.P. Copyright 2014 Intel Corporation."
+}

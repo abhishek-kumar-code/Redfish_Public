@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Redfish v0.8</title>
+    <link rel="icon" href="data:;base64,=">
+    <script src="/json-ptr-0.1.1.min.js"></script>
+    <script>
+      var resource;
+
+      var hashchange = function(e) {
+        var ptr = e.target.location.hash.substring(1);
+        ptr = JsonPointer.create(ptr);
+        ptr = prettyprint(ptr.get(resource));
+        document.getElementById('json').innerHTML = ptr;
+      }
+
+      window.addEventListener('hashchange', hashchange, false);
+
+      var prettyprint = function(data) {
+        return JSON.stringify(data, null, 2)
+        .replace(/&/g, '&amp;')
+        .replace(/"/g, '&quot;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/(&quot;(?:extref|href|frag)&quot;: &quot;)([\w\/\.\d:]+)(&quot;)/gim, function(_, $1, $2, $3) {
+          var link = /(extref|href)/.test($1) ? $2 : '#' + $2
+          return $1 + '<a href="' + link + '">' + $2 + '</a>' + $3;
+        });
+      }
+
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', window.location.pathname, true);
+      xhr.setRequestHeader('Accept', 'application/json');
+      xhr.onload = function(err) {
+        switch (this.status) {
+          case 200:
+            resource = JSON.parse(this.response);
+            hashchange({target: window});
+            break;
+          case 500:
+            document.getElementById('json').innerHTML = this.response;
+            break;
+        }
+      }
+      xhr.send();
+    </script>
+  </head>
+  <body>
+    <pre><code id="json"></code></pre>
+  </body>
+</html>
