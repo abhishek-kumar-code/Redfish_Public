@@ -1,0 +1,208 @@
+#dmtf {
+  .logo {
+    background: data-uri('./dmtf-logo.png') no-repeat right center;
+    height: 63px;
+  }
+
+  .preamble {
+    text-align: right;
+    font-weight: bold;
+  }
+
+  h1 {
+    border: none;
+    margin-top: 5em;
+    margin-bottom: 2em;
+  }
+
+  .wip {
+    margin-bottom: 2em;
+  }
+
+  &[data-status="Work in Progress"] {
+    .wip {
+      padding: 0.5em;
+      font-weight: normal;
+      text-align: left;
+      border: 2px ridge #eee;
+      display: block !important;
+    }
+  }
+
+  .wip {
+    display: none;
+  }
+
+  .document {
+    font-weight: bold;
+  }
+
+  .copyright {
+    page-break-before: always;
+    border: 1px solid #333;
+    padding: .5em;
+
+    & p:first-child {
+      margin-top: 0;
+    }
+
+    & p:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+#toc-header {
+  text-align: center;
+}
+
+#toc {
+  padding-left: 0;
+}
+
+#toc, #toc ul {
+  list-style-type: none;
+}
+
+#wrapper {
+  display: table-row-group;
+}
+
+body {
+  border-collapse: collapse;
+  font-size: 13px;
+  line-height: 1.4;
+  word-wrap: break-word;
+  color: #333;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  margin-top: 1em;
+  margin-bottom: 16px;
+}
+
+h1 {
+  font-size: 2.25em;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 1.75em;
+  line-height: 1.225;
+}
+
+h1, h2 {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.3em;
+}
+
+h3 {
+  font-size: 1.5em;
+}
+
+h4 {
+  font-size: 1.25em;
+}
+
+h5 {
+  font-size: 1em;
+}
+
+h6 {
+  font-size: 1em;
+  color: #777;
+}
+
+table {
+  word-break: normal;
+  border-spacing: 0;
+  border-collapse: collapse;
+
+  tr {
+    border-top: 1px solid #ccc;
+
+    &:nth-child(2n) {
+      background-color: #f8f8f8;
+    }
+  }
+
+  th, td {
+    padding: 6px 13px;
+    border: 1px solid #ddd;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: #4183c4;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+pre {
+  word-wrap: normal;
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+  @page {
+    h1, h2, h3, h4, h5, h6 {
+      page-break-after: avoid;
+    }
+
+    &:first {
+      #footer {
+        display: none !important;
+      }
+    }
+  }
+
+
+@media print {
+  #toc-header, #toc + h2 {
+    page-break-before: always;
+  }
+
+  #header {
+    display: table-header-group;
+    height: 4em;
+
+    &:before {
+      content: 'DSP ' attr(data-doc-number);
+    }
+
+    &:after {
+      float: right;
+      content: attr(data-doc-title);
+    }
+  }
+
+  #footer {
+    text-align: center;
+    display: table-footer-group;
+    height: 4em; // I wish this would work
+
+    div {
+      border-top: .1em solid #444;
+      height: 4em;
+      margin-top: 3em;
+      &:before {
+        float: left;
+        content: "Version " attr(data-doc-version);
+      }
+
+      &:after {
+        float: right;
+        counter-increment: page;
+        content: counter(page);
+      }
+    }
+  }
+}
