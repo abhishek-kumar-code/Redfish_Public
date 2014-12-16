@@ -1,0 +1,115 @@
+{
+    "Name": "My Computer System",
+    "Modified": "2012-03-07T14:44",
+    "Type": "ComputerSystem.0.91.0",
+    "SystemType": "Physical",
+    "links": {
+        "Chassis": [
+            {
+                "href": "/rest/v1/Chassis/1"
+            }
+        ],
+        "ManagedBy": [
+            {
+                "href": "/rest/v1/Managers/1"
+            }
+        ],
+        "SimpleNetwork": {
+            "href": "/rest/v1/Systems/1/SimpleNetwork"
+        },
+        "SimpleStorage": {
+            "href": "/rest/v1/Systems/1/SimpleStorage"
+        },
+        "LogService": {
+            "href": "/rest/v1/Systems/1/Logs"
+        }
+    },
+    "AssetTag": "free form asset tag",
+    "Manufacturer": "Manufacturer Name",
+    "Model": "Model Name",
+    "SKU": "",
+    "SerialNumber": "2M220100SL",
+    "Version": "",
+    "PartNumber": "",
+    "Description": "Description of server",
+    "VirtualSerialNumber": null,
+    "UUID": "00000000-0000-0000-0000-000000000000 - need common format - need common schema callout?",
+    "HostCorrelation": {
+        "IPAddress": [
+            "192.168.10.1"
+        ],
+        "HostMACAddress": [
+            "AA:BB:CC:DD:EE:FF"
+        ],
+        "HostName": "hostname",
+        "HostFQDN": "host.domain"
+    },
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK",
+        "HealthRollUp": "OK"
+    },
+    "BIOSPOSTCode": 42,
+    "IndicatorLED": "Off",
+    "Power": "On",
+    "Boot": {
+        "BootSourceOverrideEnabled": "Once",
+        "BootSourceOverrideTarget": "Pxe",
+        "BootSourceOverrideSupported": [
+            "None",
+            "Pxe",
+            "Floppy",
+            "Cd",
+            "Usb",
+            "Hdd",
+            "BiosSetup",
+            "Utilities",
+            "Diags",
+            "UefiTarget"
+        ],
+        "UefiTargetBootSourceOverride": "uefi device path"
+    },
+    "Oem": {},
+    "Bios": {
+        "Current": {
+            "VersionString": "P79 v1.00 (09/20/2013)"
+        }
+    },
+    "Processors": {
+        "Count": 8,
+        "ProcessorFamily": "Multi-Core Intel(R) Xeon(R) processor 7xxx Series",
+        "Status": {
+            "State": "Enabled",
+            "Health": "OK",
+            "HealthRollUp": "OK"
+        }
+    },
+    "Memory": {
+        "TotalSystemMemoryGB": 16,
+        "Status": {
+            "State": "Enabled",
+            "Health": "OK",
+            "HealthRollUp": "OK"
+        }
+    },
+    "AvailableActions": [
+        {
+            "Action": "Reset",
+            "Capabilities": [
+                {
+                    "PropertyName": "ResetType",
+                    "AllowableValues": [
+                        "On",
+                        "ForceOff",
+                        "GracefulRestart",
+                        "ForceRestart",
+                        "Nmi",
+                        "GracefulRestart",
+                        "ForceOn",
+                        "PushPowerButton"
+                    ]
+                }
+            ]
+        }
+    ]
+}

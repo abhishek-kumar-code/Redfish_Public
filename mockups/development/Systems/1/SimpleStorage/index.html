@@ -1,0 +1,62 @@
+{
+    "Name": "Storage",
+    "Modified": "2013-07-22T14:44+0000",
+    "Type": "Collection.0.91.0",
+    "MemberType": "SimpleStorage.1",
+    "Total": 1,
+    "Description": "Storage Controller Collection",
+    "links": {
+        "Member": [
+            {
+                "frag": "/Items/0"
+            }
+        ],
+        "Oem": {}
+    },
+    "Items": [
+        {
+            "Name": "Simple Storage Controller",
+            "Modified": "2013-07-22T14:44+0000",
+            "Type": "SimpleStorage.0.91.0",
+            "Description": "System SATA",
+            "UEFIDevicePath": "UEFI Device Path",
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK",
+                "HealthRollUp": "Degraded"
+            },
+            "Devices": [
+                {
+                    "Name": "Drive 1",
+                    "Manufacturer": "ACME",
+                    "Model": "X3344-2000TB",
+                    "Status": {
+                        "State": "Enabled",
+                        "Health": "OK"
+                    }
+                },
+                {
+                    "Name": "Drive 2",
+                    "Manufacturer": "SuperDuperSSD",
+                    "Model": "Lightspeed Ultra Megamax 200",
+                    "Status": {
+                        "State": "Enabled",
+                        "Health": "Degraded"
+                    }
+                },
+                {
+                    "Name": "Drive 3",
+                    "Status": {
+                        "State": "Absent"
+                    }
+                },
+                {
+                    "Name": "Drive 4",
+                    "Status": {
+                        "State": "Absent"
+                    }
+                }
+            ]
+        }
+    ]
+}

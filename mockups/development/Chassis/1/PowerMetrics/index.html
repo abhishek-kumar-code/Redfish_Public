@@ -1,0 +1,92 @@
+{
+    "Name": "Power",
+    "Modified": "2013-07-22T14:44+00:00",
+    "Type": "PowerMetrics.0.91.0",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "PowerConsumedWatts": 8000,
+    "PowerRequestedWatts": 8500,
+    "PowerAvailableWatts": 8500,
+    "PowerCapacityWatts": 10000,
+    "PowerAllocatedWatts": 8500,
+    "PowerMetrics": {
+        "IntervalInMin": 30,
+        "MinConsumedWatts": 7500,
+        "MaxConsumedWatts": 8200,
+        "AverageConsumedWatts": 8000
+    },
+    "PowerLimit": {
+        "LimitInWatts": 9000,
+        "LimitException": "LogEventOnly",
+        "CorrectionInMs": 42,
+        "CorrelatableID": [
+            "/rest/v1/Systems/1#Processor"
+        ]
+    },
+    "PowerSupplies": [
+        {
+            "Name": "Power Supply Bay 1",
+            "CorrelatableID": "/rest/v1/Chassis/1/PS1",
+            "Status": {
+                "State": "Enabled",
+                "Health": "Warning"
+            },
+            "Oem": {},
+            "PowerSupplyType": "DC",
+            "LineInputVoltageType": "DCNeg48V",
+            "LineInputVoltage": -48,
+            "PowerCapacityWatts": 400,
+            "LastPowerOutputWatts": 192,
+            "Model": "499253-B21",
+            "FirmwareVersion": "1.00",
+            "SerialNumber": "1z0000001",
+            "PartNumber": "1z0000001A3a",
+            "SparePartNumber": "0000001A3a"
+        },
+        {
+            "Name": "Power Supply Bay 2",
+            "CorrelatableID": "/rest/v1/Chassis/1/PS2",
+            "Status": {
+                "State": "Disabled",
+                "Health": "Warning"
+            },
+            "Oem": {},
+            "PowerSupplyType": "AC",
+            "LineInputVoltageType": "ACMidLine",
+            "LineInputVoltage": 220,
+            "PowerCapacityWatts": 400,
+            "LastPowerOutputWatts": 190,
+            "Model": "499253-B21",
+            "FirmwareVersion": "1.00",
+            "SerialNumber": "1z0000001",
+            "PartNumber": "1z0000001A3a",
+            "SparePartNumber": "0000001A3a"
+        },
+        {
+            "Name": "Power Supply Bay 3",
+            "CorrelatableID": "/rest/v1/Chassis/1/PS3",
+            "Status": {
+                "State": "Absent"
+            }
+        }
+    ],
+    "Redundancy": [
+        {
+            "Mode": "Failover",
+            "Name": "PowerSupply Redundancy Group 1",
+            "MaxNumSupported": 2,
+            "MinNumNeeded": 1,
+            "ActiveCorrelatableIDs": [
+                "/rest/v1/Chassis/1/PS1",
+                "/rest/v1/Chassis/1/PS2"
+            ],
+            "Status": {
+                "State": "Offline",
+                "Health": "OK"
+            }
+        }
+    ],
+    "Oem": {}
+}

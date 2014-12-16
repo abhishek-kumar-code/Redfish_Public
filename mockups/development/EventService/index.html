@@ -1,0 +1,70 @@
+{
+    "Name": "Event Service",
+    "Modified": "2013-03-07T14:44",
+    "Type": "EventService.0.91.0",
+    "Oem": {},
+    "links": {
+        "Subscriptions": {
+            "href": "/rest/v1/EventService/EventSubscriptions"
+        },
+        "Oem": {}
+    },
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "DeliveryRetryAttempts": 3,
+    "DeliveryRetryIntervalInSeconds": 60,
+    "SubscriptionRemovalAction": "Remove",
+    "SubscriptionRemovalTimeIntervalInMinutes": 60,
+    "EventTypesForSubscription": [
+        "StatusChange",
+        "ResourceUpdated",
+        "ResourceAdded",
+        "ResourceRemoved",
+        "Alert"
+    ],
+    "AvailableActions": [
+        {
+            "Action": "SubmitTestEvent",
+            "Capabilities": [
+                {
+                    "PropertyName": "EventType",
+                    "AllowableValues": [
+                        "StatusChange",
+                        "ResourceUpdated",
+                        "ResourceAdded",
+                        "ResourceRemoved",
+                        "Alert"
+                    ]
+                },
+                {
+                    "PropertyName": "EventID"
+                },
+                {
+                    "PropertyName": "EventTimeStamp"
+                },
+                {
+                    "PropertyName": "Severity",
+                    "AllowableValues": [
+                        "OK",
+                        "Warning",
+                        "Critical"
+                    ]
+                },
+                {
+                    "PropertyName": "Message"
+                },
+                {
+                    "PropertyName": "MessageID"
+                },
+                {
+                    "PropertyName": "MessageArgs"
+                },
+                {
+                    "PropertyName": "OriginOfCondition"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,42 @@
+{
+    "Name": "Manager for Enclosure Secondary",
+    "Modified": "2012-03-07T14:44",
+    "Type": "Manager.0.91.0",
+    "ManagerType": "EnclosureManager",
+    "links": {
+        "ManagerForServers": [
+            {
+                "href": "/rest/v1/Systems/2"
+            }
+        ],
+        "ManagerForChassis": [
+            {
+                "href": "/rest/v1/Chassis/Enc1"
+            }
+        ],
+        "Oem": {}
+    },
+    "Description": "Administrator",
+    "UUID": "00000000-0000-0000-0000-000000000000",
+    "Model": "OEM's Manager Model",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "Redundancy": {
+        "Mode": "Failover",
+        "MaxNumSupported": 2,
+        "MinNumNeeded": 1,
+        "Status": {
+            "State": "Offline",
+            "Health": "OK"
+        },
+        "ActiveCorrelatableIDs": []
+    },
+    "Oem": {},
+    "AvailableActions": [
+        {
+            "Action": "Reset"
+        }
+    ]
+}
