@@ -1,40 +1,40 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?><!-- Copyright 2014 Distributed Management Task Force, Inc. (DMTF). All rights reserved.--> 
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
 
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/DMTFExtensions">
-    <edmx:Include Namespace="DMTFExtensions.0.9.2" Alias="DMTF"/>
-    <edmx:Include Namespace="Validation.0.9.2" Alias="Validation"/>
+    <edmx:Include Namespace="DMTFExtensions.0.94.0" Alias="DMTF"/>
+    <edmx:Include Namespace="Validation.0.94.0" Alias="Validation"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/EventService">
-    <edmx:Include Namespace="EventService.0.9.2" Alias="EventService"/>
+    <edmx:Include Namespace="EventService.0.94.0" Alias="EventService"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/AccountService">
-    <edmx:Include Namespace="AccountService.0.9.2" Alias="AccountService"/>
+    <edmx:Include Namespace="AccountService.0.94.0" Alias="AccountService"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/ComputerSystem">
-    <edmx:Include Namespace="ComputerSystem.0.9.2" Alias="ComputerSystem"/>
+    <edmx:Include Namespace="ComputerSystem.0.94.0" Alias="ComputerSystem"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/Chassis">
-    <edmx:Include Namespace="Chassis.0.9.2" Alias="Chassis"/>
+    <edmx:Include Namespace="Chassis.0.94.0" Alias="Chassis"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/Manager">
-    <edmx:Include Namespace="Managers.0.9.2" Alias="Manager"/>
+    <edmx:Include Namespace="Managers.0.94.0" Alias="Manager"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/TaskService">
-    <edmx:Include Namespace="TaskService.0.9.2" Alias="TaskService"/>
+    <edmx:Include Namespace="TaskService.0.94.0" Alias="TaskService"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/Session">
-    <edmx:Include Namespace="Session.0.9.2" Alias="Session"/>
+    <edmx:Include Namespace="Session.0.94.0" Alias="Session"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/Messages">
-    <edmx:Include Namespace="Messages.0.9.2" Alias="Messages"/>
+    <edmx:Include Namespace="Messages.0.94.0" Alias="Messages"/>
   </edmx:Reference>
 
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ServiceRoot.0.9.2" Alias="ServiceRoot">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ServiceRoot.0.94.0" Alias="ServiceRoot">
 
       <EntityContainer Name="ServiceContainer">
         <Singleton Name="Service" Type="ServiceRoot.ServiceRoot"/>
@@ -68,17 +68,17 @@
       </EntityType>
 
       <ComplexType Name="ServiceRootLinks">
-        <NavigationProperty Name="Systems" Type="Collection(ComputerSystem.ComputerSystem)">
+        <NavigationProperty Name="Systems" Type="ComputerSystem.ComputerSystemCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a link to a collection of Systems."/>
           <Annotation Term="OData.LongDescription" String="This object shall only contain a reference to a collection of resources that comply to the Systems schema.  The last segment of the path shall be 'Systems'."/>
         </NavigationProperty>
-        <NavigationProperty Name="Chassis" Type="Collection(Chassis.Chassis)">
+        <NavigationProperty Name="Chassis" Type="Chassis.ChassisCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a link to a collection of Chassis."/>
           <Annotation Term="OData.LongDescription" String="This object shall only contain a reference to a collection of resources that comply to the Chassis schema. The last segment of the path shall be 'Chassis'."/>
         </NavigationProperty>
-        <NavigationProperty Name="Managers" Type="Collection(Manager.Manager)">
+        <NavigationProperty Name="Managers" Type="Manager.ManagerCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a link to a collection of Managers."/>
           <Annotation Term="OData.LongDescription" String="This object shall only contain a reference to a collection of resources that comply to the Managers schema.  The last segment of the path shall be 'Managers'."/>
@@ -87,6 +87,11 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a link to the Task Service."/>
           <Annotation Term="OData.LongDescription" String="The classes structure shall only contain a reference to a resource that complies to the TaskService schema.  The last segment of the path shall be 'Tasks'"/>
+        </NavigationProperty>
+        <NavigationProperty Name="Sessions" Type="Collection(Session.Sessions)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="This is a link to the Collection of Sessions."/>
+          <Annotation Term="OData.LongDescription" String="This object shall only contain a reference to a collection of resources that comply to the Session schema.  The last segment of the path shall be 'Sessions'."/>
         </NavigationProperty>
         <NavigationProperty Name="AccountService" Type="AccountService.AccountService">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
