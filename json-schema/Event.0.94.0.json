@@ -1,6 +1,6 @@
 {
     "$schema": "http://www.redfishspecification.org/schema",
-    "title": "Event.0.91.0",
+    "title": "Event.0.94.0",
     "type": "object",
     "additionalProperties": false,
     "description": "This is the schema definition for Events.  It represents the properties for the events themselves and not subscriptions or any other resource.",
