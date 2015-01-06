@@ -1,6 +1,6 @@
 {
     "$schema": "http://www.redfishspecification.org/schema",
-    "title": "SimpleStorage.0.91.0",
+    "title": "SimpleStorage.0.94.0",
     "type": "object",
     "additionalProperties": false,
     "description": "This is the schema definition for the Simple Storage resource.  It represents the properties of a storage controller and its directly-attached devices.",
