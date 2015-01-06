@@ -1,6 +1,6 @@
 {
     "$schema": "http://www.redfishspecification.org/schema",
-    "title": "Session.0.91.0",
+    "title": "Session.0.94.0",
     "type": "object",
     "additionalProperties": false,
     "description": "This is the schema definition for the Session resource.  It represents the properties for the session with a Redfish Service.",
