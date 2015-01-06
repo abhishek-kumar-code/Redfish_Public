@@ -1,6 +1,6 @@
 {
     "$schema": "http://www.redfishspecification.org/schema",
-    "title": "PowerMetrics.0.91.1",
+    "title": "PowerMetrics.0.94.0",
     "type": "object",
     "additionalProperties": false,
     "description": "This is the schema definition for the Power Metrics.  It represents the properties for Power Consumption and Power Limiting.",
