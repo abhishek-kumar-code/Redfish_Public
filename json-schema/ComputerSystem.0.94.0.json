@@ -1,6 +1,6 @@
 {
     "$schema": "http://www.redfishspecification.org/schema",
-    "title": "ComputerSystem.0.91.0",
+    "title": "ComputerSystem.0.94.0",
     "type": "object",
     "additionalProperties": false,
     "description": "This schema defines a computer system and its respective properties.  A computer system represents a machine (physical or virtual) and the local resources such as memory, cpu and other devices that can be accessed from that machine.",
