@@ -1,6 +1,6 @@
 {
     "$schema": "http://www.redfishspecification.org/schema",
-    "title": "ThermalMetrics.0.91.1",
+    "title": "ThermalMetrics.0.94.0",
     "type": "object",
     "additionalProperties": false,
     "description": "This is the schema definition for the Thermal Metrics.  It represents the properties for Temperature and Cooling.",
