@@ -1,6 +1,6 @@
 {
     "$schema": "http://www.redfishspecification.org/schema",
-    "title": "SchemaFile.0.91.0",
+    "title": "SchemaFile.0.94.0",
     "type": "object",
     "additionalProperties": false,
     "description": "This is the schema definition for the Schema File locator resource.  ",
