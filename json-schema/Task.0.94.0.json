@@ -1,6 +1,6 @@
 {
     "$schema": "http://www.redfishspecification.org/schema",
-    "title": "Task.0.91.0",
+    "title": "Task.0.94.0",
     "type": "object",
     "additionalProperties": false,
     "description": "This is the schema definition for a Task resource. ",
