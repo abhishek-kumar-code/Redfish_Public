@@ -1,6 +1,6 @@
 {
     "$schema": "http://www.redfishspecification.org/schema",
-    "title": "Collection.0.91.0",
+    "title": "Collection.0.94.0",
     "type": "object",
     "description": "This schema defines the base Collection object used throughout the data model.  A Collection is a group of one or more resources, all of the same MemberType.",
     "additionalProperties": false,
