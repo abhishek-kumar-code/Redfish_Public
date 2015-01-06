@@ -1,6 +1,6 @@
 {
     "$schema": "http://www.redfishspecification.org/schema",
-    "title": "ListenerDestination.0.91.0",
+    "title": "ListenerDestination.0.94.0",
     "type": "object",
     "additionalProperties": false,
     "description": "This resource shall be used to represent a destination for events that have been subscribed to by a client.",
