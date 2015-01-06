@@ -1,6 +1,6 @@
 {
     "$schema": "http://www.redfishspecification.org/schema",
-    "title": "Manager.0.91.0",
+    "title": "Manager.0.94.0",
     "type": "object",
     "additionalProperties": false,
     "description": "This is the schema definition for a Manager.  Examples of managers are BMCs, Enclosure Managers, Management Controllers and other subsystems assigned managability functions.",
