@@ -1,20 +1,11 @@
 {
+    "@odata.context": "/rest/v1/$metadata#Systems(*,Links/Chassis/$ref,Links/ManagedBy/$ref,Links/SimpleNetwork/$ref,Links/SimpleStorage/$ref,Links/LogService/$ref)/$entity",
+    "@odata.id": "/rest/v1/Systems/2",
+    "@odata.type": "#ComputerSystem.0.94.0.ComputerSystem",
+    "Id": "2",
     "Name": "My Computer System",
     "Modified": "2012-03-07T14:44",
-    "Type": "ComputerSystem.0.91.0",
     "SystemType": "Physical",
-    "links": {
-        "Chassis": [
-            {
-                "href": "/rest/v1/Chassis/Enc1/Blades/1"
-            }
-        ],
-        "ManagedBy": [
-            {
-                "href": "/rest/v1/Managers/1"
-            }
-        ]
-    },
     "AssetTag": "free form asset tag",
     "Manufacturer": "Manufacturer Name",
     "Model": "Model Name",
@@ -42,5 +33,18 @@
         "HealthRollUp": "OK"
     },
     "Boot": {},
+    "Links": {
+        "Chassis": [
+            {
+                "@odata.id": "/rest/v1/Chassis/Enc1/Blades/1"
+            }
+        ],
+        "ManagedBy": [
+            {
+                "@odata.id": "/rest/v1/Managers/1"
+            }
+        ],
+        "Oem": {}
+    },
     "Oem": {}
 }

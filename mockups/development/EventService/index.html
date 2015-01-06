@@ -1,14 +1,10 @@
 {
+    "@odata.context": "/rest/v1/$metadata#EventService",
+    "@odata.id": "/rest/v1/EventService",
+    "@odata.type": "#EventService.0.94.0.EventService",
+    "Id": "EventService",
     "Name": "Event Service",
     "Modified": "2013-03-07T14:44",
-    "Type": "EventService.0.91.0",
-    "Oem": {},
-    "links": {
-        "Subscriptions": {
-            "href": "/rest/v1/EventService/EventSubscriptions"
-        },
-        "Oem": {}
-    },
     "Status": {
         "State": "Enabled",
         "Health": "OK"
@@ -24,47 +20,24 @@
         "ResourceRemoved",
         "Alert"
     ],
-    "AvailableActions": [
-        {
-            "Action": "SubmitTestEvent",
-            "Capabilities": [
-                {
-                    "PropertyName": "EventType",
-                    "AllowableValues": [
-                        "StatusChange",
-                        "ResourceUpdated",
-                        "ResourceAdded",
-                        "ResourceRemoved",
-                        "Alert"
-                    ]
-                },
-                {
-                    "PropertyName": "EventID"
-                },
-                {
-                    "PropertyName": "EventTimeStamp"
-                },
-                {
-                    "PropertyName": "Severity",
-                    "AllowableValues": [
-                        "OK",
-                        "Warning",
-                        "Critical"
-                    ]
-                },
-                {
-                    "PropertyName": "Message"
-                },
-                {
-                    "PropertyName": "MessageID"
-                },
-                {
-                    "PropertyName": "MessageArgs"
-                },
-                {
-                    "PropertyName": "OriginOfCondition"
-                }
-            ]
-        }
-    ]
+    "Links": {
+        "Subscriptions": {
+            "@odata.id": "/rest/v1/EventService/Subscriptions"
+        },
+        "Oem": {}
+    },
+    "Actions": {
+        "#EventService.SendTestEvent": {
+              "target": "/rest/v1/EventService/Actions/EventService.0.94.0.SendTestEvent",
+              "EventType@DMTF.AllowableValues": [
+                  "StatusChange",
+                  "ResourceUpdated",
+                  "ResourceAdded",
+                  "ResourceRemoved",
+                  "Alert"
+              ]
+        },
+        "Oem": {}
+    },
+    "Oem": {}
 }

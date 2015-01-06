@@ -1,62 +1,15 @@
 {
-    "Name": "Storage",
-    "Modified": "2013-07-22T14:44+0000",
-    "Type": "Collection.0.91.0",
-    "MemberType": "SimpleStorage.1",
-    "Total": 1,
-    "Description": "Storage Controller Collection",
-    "links": {
-        "Member": [
+    "@odata.context": "/rest/v1/$metadata#Systems/1/SimpleStorage(*,Links/Members/$ref)",
+    "@odata.type": "#SimpleStorage.0.94.0.SimpleStorageCollection",
+    "Name": "Simple Storage Collection",
+    "Modified": "2012-03-07T14:44",
+    "MemberType": "#SimpleStorage.0.94.0.SimpleStorage",
+    "Links": {
+        "Members@odata.count":1,
+        "Members": [
             {
-                "frag": "/Items/0"
+               "@odata.id": "/rest/v1/Systems/1/SimpleStorage/1"
             }
-        ],
-        "Oem": {}
-    },
-    "Items": [
-        {
-            "Name": "Simple Storage Controller",
-            "Modified": "2013-07-22T14:44+0000",
-            "Type": "SimpleStorage.0.91.0",
-            "Description": "System SATA",
-            "UEFIDevicePath": "UEFI Device Path",
-            "Status": {
-                "State": "Enabled",
-                "Health": "OK",
-                "HealthRollUp": "Degraded"
-            },
-            "Devices": [
-                {
-                    "Name": "Drive 1",
-                    "Manufacturer": "ACME",
-                    "Model": "X3344-2000TB",
-                    "Status": {
-                        "State": "Enabled",
-                        "Health": "OK"
-                    }
-                },
-                {
-                    "Name": "Drive 2",
-                    "Manufacturer": "SuperDuperSSD",
-                    "Model": "Lightspeed Ultra Megamax 200",
-                    "Status": {
-                        "State": "Enabled",
-                        "Health": "Degraded"
-                    }
-                },
-                {
-                    "Name": "Drive 3",
-                    "Status": {
-                        "State": "Absent"
-                    }
-                },
-                {
-                    "Name": "Drive 4",
-                    "Status": {
-                        "State": "Absent"
-                    }
-                }
-            ]
-        }
-    ]
+        ]
+    }
 }

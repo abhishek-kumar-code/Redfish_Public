@@ -1,32 +1,15 @@
 {
-    "Name": "Accounts",
-    "Modified": "2036-09-11T14:17:21+00:00",
-    "Type": "Collection.0.91.0",
-    "MemberType": "ManagerAccount.1",
-    "Description": "Manager Accounts",
-    "Total": 1,
-    "links": {
-        "Member": [
+    "@odata.context": "/rest/v1/$metadata#AccountService/Accounts(*,Links/Members/$ref",
+    "@odata.type": "#ManagerAccount.0.94.0.ManagerAccountCollection",
+    "Name": "Accounts Collection",
+    "Modified": "2012-03-07T14:44",
+    "MemberType": "#ManagerAccount.0.94.0.ManagerAccount",
+    "Links": {
+        "Members@odata.count": 1,
+        "Members": [
             {
-                "frag": "/Items/0"
+                "@odata.id": "/rest/v1/AccountService/Accounts/1"
             }
-        ],
-        "Oem": {}
-    },
-    "Items": [
-        {
-            "Description": "User Account",
-            "Modified": "2036-09-11T17:03:55+00:00",
-            "Name": "User Account",
-            "Oem": {},
-            "Password": null,
-            "Type": "ManagerAccount.0.91.0",
-            "UserName": "Administrator",
-            "links": {
-                "self": {
-                    "href": "/rest/v1/AccountService/Accounts/1"
-                }
-            }
-        }
-    ]
+        ]
+    }
 }

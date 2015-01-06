@@ -1,40 +1,54 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?><!-- Copyright 2014 Distributed Management Task Force, Inc. (DMTF). All rights reserved.--> 
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
   
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/DMTFExtensions">
-    <edmx:Include Namespace="DMTFExtensions.0.9.2" Alias="DMTF"/>
-    <edmx:Include Namespace="Validation.0.9.2" Alias="Validation"/>
+    <edmx:Include Namespace="DMTFExtensions.0.94.0" Alias="DMTF"/>
+    <edmx:Include Namespace="Validation.0.94.0" Alias="Validation"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/Resource">
-    <edmx:Include Namespace="Resource.0.9.2" Alias="Resource"/>
+    <edmx:Include Namespace="Resource.0.94.0" Alias="Resource"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/Chassis">
-    <edmx:Include Namespace="Chassis.0.9.2" Alias="Chassis"/>
+    <edmx:Include Namespace="Chassis.0.94.0" Alias="Chassis"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/LogService">
-    <edmx:Include Namespace="LogService.0.9.2" Alias="LogService"/>
+    <edmx:Include Namespace="LogService.0.94.0" Alias="LogService"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/EthernetNetworkInterface">
-    <edmx:Include Namespace="EthernetNetworkInterface.0.9.2" Alias="EthernetNetworkInterface"/>
+    <edmx:Include Namespace="EthernetNetworkInterface.0.94.0" Alias="EthernetNetworkInterface"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/SimpleStorage">
-    <edmx:Include Namespace="SimpleStorage.0.9.2" Alias="SimpleStorage"/>
+    <edmx:Include Namespace="SimpleStorage.0.94.0" Alias="SimpleStorage"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/ManagerAccount">
-    <edmx:Include Namespace="ManagerAccount.0.9.2" Alias="ManagerAccount"/>
+    <edmx:Include Namespace="ManagerAccount.0.94.0" Alias="ManagerAccount"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/Firmware">
-    <edmx:Include Namespace="Firmware.0.9.2" Alias="Firmware"/>
+    <edmx:Include Namespace="Firmware.0.94.0" Alias="Firmware"/>
   </edmx:Reference>
 
   <edmx:DataServices>
 
     <!-- This schema defines a computer system and its respective properties.-->
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.0.9.2" Alias="ComputerSystem">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.0.94.0" Alias="ComputerSystem">
 
+      <EntityType Name="ComputerSystemCollection" BaseType="Resource.ResourceCollection">
+        <Property Name="Links" Type="ComputerSystem.Members">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="Contains links to other resources that are related to this resource."/>
+        </Property>
+      </EntityType>
+
+      <ComplexType Name="Members">
+        <NavigationProperty Name="Members" Type="Collection(ComputerSystem.ComputerSystem)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
+        </NavigationProperty>
+      </ComplexType>
+      
       <EntityType Name="ComputerSystem" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This schema defines a computer system and its respective properties.  A computer system represents a machine (physical or virtual) and the local resources such as memory, cpu and other devices that can be accessed from that machine."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent resources that represent a computing system in the SPMA specification."/>
@@ -126,6 +140,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The Actions object contains the available custom actions on this resource."/>
         </Property>
+        <Property Name="Status" Type="Resource.Status"/>
       </EntityType>
 
       <ComplexType Name="Links">

@@ -1,7 +1,10 @@
 {
+    "@odata.context": "/rest/v1/$metadata#Systems/1/Logs/Log1/Entries(*,Links/OrginOfCondition/$ref)/$entity",
+    "@odata.id": "/rest/v1/Systems/1/Logs/Log1/Entries/1",
+    "@odata.type": "#LogEntry.0.94.0.LogEntry",
+    "Id": "1",
     "Name": "Log Entry 1",
     "Modified": "2012-03-07T14:44",
-    "Type": "LogEntry.0.91.0",
     "EntryType": "SEL",
     "OemRecordFormat": "CompanyX",
     "RecordId": 1,
@@ -15,13 +18,11 @@
     "MessageArgs": [
         "ArrayOfMessageArgs"
     ],
-    "links": {
-        "self": {
-            "href": "/rest/v1/Systems/1/Logs/Log1/Entries/1"
-        },
+    "Links": {
         "OriginOfCondition": {
-            "href": "/rest/v1/Chassis/1/ThermalMetrics#Temperatures/0"
-        }
+            "@odata.id": "/rest/v1/Chassis/1/ThermalMetrics/Temperatures/0"
+        },
+        "Oem": {}
     },
     "Oem": {}
 }

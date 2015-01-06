@@ -1,17 +1,20 @@
 {
+    "@odata.context": "/rest/v1/$metadata#Managers(*,Links/ManagerForServers/$ref,Links/ManagerForChassis/$ref,Links/NetworkService/$ref,Links/EthernetNICs/$ref,Links/SerialInterfaces/$ref,Links/Logs/$ref,Links/VirtualMedia/$ref)/$entity",
+    "@odata.id": "/rest/v1/Managers/3",
+    "@odata.type": "#Managers.0.94.0.Manager",
+    "Id": "3",
     "Name": "Manager for Enclosure Secondary",
     "Modified": "2012-03-07T14:44",
-    "Type": "Manager.0.91.0",
     "ManagerType": "EnclosureManager",
-    "links": {
+    "Links": {
         "ManagerForServers": [
             {
-                "href": "/rest/v1/Systems/2"
+                "@odata.id": "/rest/v1/Systems/2"
             }
         ],
         "ManagerForChassis": [
             {
-                "href": "/rest/v1/Chassis/Enc1"
+                "@odata.id": "/rest/v1/Chassis/Enc1"
             }
         ],
         "Oem": {}
@@ -33,10 +36,11 @@
         },
         "ActiveCorrelatableIDs": []
     },
-    "Oem": {},
-    "AvailableActions": [
-        {
-            "Action": "Reset"
-        }
-    ]
+    "Actions": {
+        "#Manager.Reset": {
+            "target": "/rest/v1/Managers/3/Actions/Manager.Reset"
+        },
+        "Oem": {}
+    },
+    "Oem": {}
 }

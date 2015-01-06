@@ -1,33 +1,11 @@
 {
+    "@odata.context": "/rest/v1/$metadata#Chassis(*,Links/ComputerSystems/$ref,Links/ContainedBy/$ref,Links/ManagedBy/$ref,Links/ThermalMetrics/$ref,Links/PowerMetrics/$ref,Links/MiscMetrics/$ref)/$entity",
+    "@odata.id": "/rest/v1/Chassis/1",
+    "@odata.type": "#Chassis.0.94.0.Chassis",
+    "Id": "1",
     "Name": "Computer System Chassis",
     "Modified": "2013-03-07T14:44",
-    "Type": "Chassis.0.91.0",
     "ChassisType": "RackMount",
-    "links": {
-        "ComputerSystems": [
-            {
-                "href": "/rest/v1/Systems/1"
-            }
-        ],
-        "ThermalMetrics": {
-            "href": "/rest/v1/Chassis/1/ThermalMetrics"
-        },
-        "PowerMetrics": {
-            "href": "/rest/v1/Chassis/1/PowerMetrics"
-        },
-        "MiscMetrics": {
-            "href": "/rest/v1/Chassis/1/MiscMetrics"
-        },
-        "ContainedBy": {
-            "href": "/rest/v1/Chassis/Rack1"
-        },
-        "ManagedBy": [
-            {
-                "href": "/rest/v1/Managers/1"
-            }
-        ],
-        "Oem": {}
-    },
     "Manufacturer": "ManufacturerName",
     "Model": "ProductModelName",
     "SKU": "",
@@ -37,6 +15,31 @@
     "Status": {
         "State": "Enabled",
         "Health": "OK"
+    },
+    "Links": {
+        "ComputerSystems": [
+            {
+                "@odata.id": "/rest/v1/Systems/1"
+            }
+        ],
+        "ContainedBy": {
+            "@odata.id": "/rest/v1/Chassis/Rack1"
+        },
+        "ManagedBy": [
+            {
+                "@odata.id": "/rest/v1/Managers/1"
+            }
+        ],
+        "ThermalMetrics": {
+            "@odata.id": "/rest/v1/Chassis/1/ThermalMetrics"
+        },
+        "PowerMetrics": {
+            "@odata.id": "/rest/v1/Chassis/1/PowerMetrics"
+        },
+        "MiscMetrics": {
+            "@odata.id": "/rest/v1/Chassis/1/MiscMetrics"
+        },
+        "Oem": {}
     },
     "Oem": {}
 }

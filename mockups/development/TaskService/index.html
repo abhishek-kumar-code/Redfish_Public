@@ -1,7 +1,10 @@
 {
+    "@odata.context": "/rest/v1/$metadata/TaskService",
+    "@odata.id": "/rest/v1/TaskService",
+    "@odata.type": "#TaskService.0.94.0.TaskService",
+    "Id": "TaskService",
     "Name": "Tasks Service",
     "Modified": "2012-03-07T14:44",
-    "Type": "TaskService.0.91.0",
     "MaxNumberOfTasks": 10,
     "OverWritePolicy": "Never",
     "LifeCycleEventOnTaskStateChange": true,
@@ -9,14 +12,11 @@
         "State": "Enabled",
         "Health": "OK"
     },
-    "Oem": {},
-    "links": {
-        "Tasks": [
-            {
-                "id": "1",
-                "frag": "/Items/0",
-                "href": "/rest/v1/TaskService/Tasks"
-            }
-        ]
-    }
+    "Links": {
+        "Tasks": {
+            "@odata.id": "/rest/v1/TaskService/Tasks"
+        },
+        "Oem": {}
+    },
+    "Oem": {}
 }

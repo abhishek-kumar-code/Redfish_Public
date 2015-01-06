@@ -1,6 +1,9 @@
 {
+    "@odata.context": "/rest/v1/$metadata#Managers/1/EthernetNICs(*,Links/Settings/$ref,Links/NetworkServices/$ref)/$entity",
+    "@odata.id": "/rest/v1/Managers/1/EthernetNICs/1",
+    "@odata.type": "#EthernetNetworkInterface.0.94.0.EthernetNetworkInterface",
+    "Id": "1",
     "Name": "Manager NIC",
-    "Type": "EthernetNetworkInterface.0.91.0",
     "Modified": "2013-07-22T14:44",
     "Description": "Management Network Interface",
     "Status": {
@@ -54,13 +57,13 @@
     "NameServers": [
         "TheNameServer"
     ],
-    "links": {
+    "Links": {
         "Settings": {
-            "href": "/rest/v1/Managers/1/NICs/1/SD"
+            "@odata.id": "/rest/v1/Managers/1/NICs/1/SD"
         },
         "NetworkServices": [
             {
-                "href": "/rest/v1/Managers/1/NetworkService"
+                "@odata.id": "/rest/v1/Managers/1/NetworkService"
             }
         ]
     },

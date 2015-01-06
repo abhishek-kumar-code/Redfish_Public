@@ -1,30 +1,11 @@
 {
+    "@odata.context": "/rest/v1/$metadata#Managers(*,Links/ManagerForServers/$ref,Links/ManagerForChassis/$ref,Links/NetworkService/$ref,Links/EthernetNICs/$ref,Links/SerialInterfaces/$ref,Links/Logs/$ref,Links/VirtualMedia/$ref)/$entity",
+    "@odata.id": "/rest/v1/Managers/1",
+    "@odata.type": "#Managers.0.94.0.Manager",
+    "Id": "1",
     "Name": "Manager",
     "Modified": "2012-03-07T14:44",
-    "Type": "Manager.0.91.0",
     "ManagerType": "BMC",
-    "links": {
-        "ManagerForServers": [
-            {
-                "href": "/rest/v1/Systems/2"
-            }
-        ],
-        "EthernetNICs": {
-            "href": "/rest/v1/Managers/1/NICs"
-        },
-        "NetworkService": {
-            "href": "/rest/v1/Managers/1/NetworkService"
-        },
-        "SerialInterfaces": {
-            "href": "/rest/v1/Managers/1/SerialInterfaces"
-        },
-        "Logs": {
-            "href": "/rest/v1/Managers/1/Logs"
-        },
-        "VirtualMedia": {
-            "href": "/rest/v1/Managers/1/VM1"
-        }
-    },
     "Description": "BMC",
     "UUID": "00000000-0000-0000-0000-000000000000",
     "Model": "Joo Janta 200",
@@ -61,10 +42,34 @@
             "VersionString": "1.40 pass 5+ (debug build Jul 26 2013 16:46:33)"
         }
     },
-    "Oem": {},
-    "AvailableActions": [
-        {
-            "Action": "Reset"
-        }
-    ]
+    "Links": {
+        "ManagerForServers": [
+            {
+                "@odata.id": "/rest/v1/Systems/2"
+            }
+        ],
+        "NetworkService": {
+            "@odata.id": "/rest/v1/Managers/1/NetworkService"
+        },
+        "EthernetNICs": {
+            "@odata.id": "/rest/v1/Managers/1/EthernetNICs"
+        },
+        "SerialInterfaces": {
+            "@odata.id": "/rest/v1/Managers/1/SerialInterfaces"
+        },
+        "Logs": {
+            "@odata.id": "/rest/v1/Managers/1/Logs"
+        },
+        "VirtualMedia": {
+            "@odata.id": "/rest/v1/Managers/1/VM1"
+        },
+        "Oem": {}
+    },
+    "Actions": {
+        "#Manager.Reset": {
+            "target": "/rest/v1/Managers/1/Actions/Manager.Reset"
+        },
+        "Oem": {}
+    },
+    "Oem": {}
 }

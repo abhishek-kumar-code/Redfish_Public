@@ -1,37 +1,16 @@
 {
+    "@odata.context": "/rest/v1/$metadata#Sessions(*,Links/Members/$ref",
+    "@odata.type": "#Session.0.94.0.SessionCollection",
+    "Name": "Session Collection",
     "Description": "Manager User Sessions",
     "Modified": "2013-01-31T23:45:08+00:00",
-    "Name": "Sessions",
-    "Type": "Collection.0.91.0",
-    "MemberType": "Session.1",
-    "Total": 1,
-    "Oem": {},
-    "Items": [
-        {
-            "Type": "Session.0.91.0",
-            "Description": "Manager User Session",
-            "Modified": "2036-09-11T14:17:24+00:00",
-            "Name": "User Session",
-            "Oem": {},
-            "UserName": "Administrator",
-            "links": {
-                "self": {
-                    "href": "/rest/v1/Sessions/Administrator1"
-                }
-            }
-        }
-    ],
-    "links": {
-        "Member": [
+    "MemberType": "#Session.0.94.0.Session",
+    "Links": {
+        "Members@odata.count": 1,
+        "Members": [
             {
-                "id": "Administrator1",
-                "frag": "/Items/0",
-                "href": "/rest/v1/Sessions/Administrator1"
+                "@odata.id": "/rest/v1/Sessions/Administrator1"
             }
-        ],
-        "NextPage": {
-            "page": 2,
-            "count": 10
-        }
+        ]
     }
 }

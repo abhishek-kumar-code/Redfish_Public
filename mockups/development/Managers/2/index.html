@@ -1,21 +1,11 @@
 {
+    "@odata.context": "/rest/v1/$metadata#Managers(*,Links/ManagerForServers/$ref,Links/ManagerForChassis/$ref,Links/NetworkService/$ref,Links/EthernetNICs/$ref,Links/SerialInterfaces/$ref,Links/Logs/$ref,Links/VirtualMedia/$ref)/$entity",
+    "@odata.id": "/rest/v1/Managers/2",
+    "@odata.type": "#Managers.0.94.0.Manager",
+    "Id": "2",
     "Name": "Manager For Enclosure Primary",
     "Modified": "2012-03-07T14:44",
-    "Type": "Manager.0.91.0",
     "ManagerType": "EnclosureManager",
-    "links": {
-        "ManagerForServers": [
-            {
-                "href": "/rest/v1/Systems/2"
-            }
-        ],
-        "ManagerForChassis": [
-            {
-                "href": "/rest/v1/Chassis/Enc1"
-            }
-        ],
-        "Oem": {}
-    },
     "Description": "Administrator",
     "UUID": "00000000-0000-0000-0000-000000000000",
     "Model": "OEM's Manager Model",
@@ -33,16 +23,30 @@
         },
         "ActiveCorrelatableIDs": []
     },
-    "Oem": {},
-    "AvailableActions": [
-        {
-            "Action": "Reset"
+    "Links": {
+        "ManagerForServers": [
+            {
+                "@odata.id": "/rest/v1/Systems/2"
+            }
+        ],
+        "ManagerForChassis": [
+            {
+                "@odata.id": "/rest/v1/Chassis/Enc1"
+            }
+        ],
+        "Oem": {}
+    },
+    "Actions": {
+        "#Manager.Reset": {
+            "target": "/rest/v1/Managers/2/Actions/Manager.Reset"
         },
-        {
-            "Action": "ForceFailover"
+        "#Manager.0.94.0.ForceFailover": {
+            "target": "/rest/v1/Managers/2/Actions/Manager.ForceFailover"
         },
-        {
-            "Action": "ModifyRedundancySet"
-        }
-    ]
+        "#Manager.0.94.0.ModifyRedundancySet": {
+            "target": "/rest/v1/Managers/2/Actions/Manager.ModifyRedundancySet"
+        },
+        "Oem": {}
+    },
+    "Oem": {}
 }
