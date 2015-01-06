@@ -1,6 +1,6 @@
 {
     "$schema": "http://www.redfishspecification.org/schema",
-    "title": "MiscMetrics.0.91.1",
+    "title": "MiscMetrics.0.94.0",
     "type": "object",
     "additionalProperties": false,
     "description": "This is the schema definition for the Miscellaneous Metrics resource.  It represents any sensors or metrics that are not thermal or power related.  Examples of these are intrusion detection and various alarms.",
