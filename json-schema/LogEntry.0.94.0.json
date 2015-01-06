@@ -1,6 +1,6 @@
 {
     "$schema": "http://www.redfishspecification.org/schema",
-    "title": "LogEntry.0.91.0",
+    "title": "LogEntry.0.94.0",
     "type": "object",
     "additionalProperties": false,
     "description": "This resource represents the log record format for logs.  It is designed to be used for SEL logs from IPMI as well as Event Logs and OEM specific logs.  The EntryType field indicates the type of log and there are other properties dependent on it's value.",
