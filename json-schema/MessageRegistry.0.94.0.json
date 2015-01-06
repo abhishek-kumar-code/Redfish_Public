@@ -1,6 +1,6 @@
 {
     "$schema": "http://www.redfishspecification.org/schema",
-    "title": "MessageRegistry.0.91.0",
+    "title": "MessageRegistry.0.94.0",
     "type": "object",
     "additionalProperties": false,
     "description": "This is the schema definition for all Message Registries.  It represents the properties for the registries themselves.  The MessageID is formed per the Redfish specification.  It consists of the RegistryPrefix concatenated with the version concatenated with the unique identifier for the message registry entry.",
