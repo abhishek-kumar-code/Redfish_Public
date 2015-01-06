@@ -1,0 +1,124 @@
+{
+    "$schema": "http://www.redfishspecification.org/schema",
+    "title": "ListenerDestination.0.94.0",
+    "type": "object",
+    "additionalProperties": false,
+    "description": "This resource shall be used to represent a destination for events that have been subscribed to by a client.",
+    "properties": {
+        "Oem": {
+            "$ref": "Oem.0.91.0.json#"
+        },
+        "Name": {
+            "$ref": "Name.0.91.0.json#"
+        },
+        "Modified": {
+            "$ref": "Modified.0.91.0.json#"
+        },
+        "Type": {
+            "$ref": "Type.0.91.0.json#"
+        },
+        "Description": {
+            "$ref": "Description.0.91.0.json#"
+        },
+        "Destination": {
+            "type": "string",
+            "format": "uri",
+            "description": "The URI of the destination listener service.",
+            "readonly": true,
+            "specification": "This property shall contain a URI to the destination where the events will be sent."
+        },
+        "HttpHeaders": {
+            "type": [
+                "object",
+                "null"
+            ],
+            "description": "This is for setting HTTP headers, such as authorization information.  This object will be null on a GET.",
+            "specification": "This property shall contain an object consisting of the names and values of of HTTP header to be included with every event POST to the Listener Destination.  This property shall be null on a GET.",
+            "patternProperties": {
+                "^[^:\\s]+$": {
+                    "type": "string",
+                    "description": "The value of the HTTP header.  The header name is the property name."
+                }
+            }
+        },
+        "EventTypes": {
+            "type": "array",
+            "items": {
+                "type": "string",
+                "enum": [
+                    "StatusChange",
+                    "ResourceUpdated",
+                    "ResourceAdded",
+                    "ResourceRemoved",
+                    "Alert"
+                ]
+            },
+            "description": "This property shall contain the types of events that shall be sent to the desination.",
+            "enumDescriptions": {
+                "StatusChange": "The status of this resource has changed",
+                "ResourceUpdated": "The value of this resource has been updated",
+                "ResourceAdded": "A resource has been added",
+                "ResourceRemoved": "A resource has been removed",
+                "Alert": "A condition exists which requires attention"
+            },
+            "readonly": true
+        },
+        "TTLCount": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 999999,
+            "description": "The number of TTLUnits until this listener destination subscription expires.  It may be renewed prior to expire to reset the Time to Live counter.  The value 999999 is reserved to mean a perpetual subscription.",
+            "readonly": false,
+            "specification": "This property shall contain the Time To Live Count.  A value of 999999 shall indicate that this is a persistent connection."
+        },
+        "TTLUnits": {
+            "type": "string",
+            "description": "The time unit used to measure the subscription time of this listener destination.  This is the units for TTLCount and is used to express the subscription lifetime of the listener destination.",
+            "enum": [
+                "seconds",
+                "minutes",
+                "days"
+            ],
+            "enumDescriptions": {
+                "seconds": "Time to Live (TTL) in Seconds",
+                "minutes": "Time to Live (TTL) in Minutes",
+                "days": "Time to Live (TTL) in Days"
+            },
+            "readonly": false,
+            "specification": "This property shall contain the units of the expressed TTLCount."
+        },
+        "Context": {
+            "type": "string",
+            "description": "A client-supplied string that is stored with the listener destination subscription.",
+            "readonly": false,
+            "specification": "This property shall contain a client supplied context that will remain with the connection through the connections lifetime."
+        },
+        "Protocol": {
+            "type": "string",
+            "description": "The protocol type of the listener connection.",
+            "enum": [
+                "Redfish"
+            ],
+            "readonly": true,
+            "specification": "This property shall contain the protocol type that the event will use for sending the event to the destination.  A value of Redfish shall be used to indicate that the event type shall adhere to that defined in the Redfish specification."
+        },
+        "links": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "self": {
+                    "$ref": "href.0.91.0.json#",
+                    "description": "This property shall contain the href to this resource."
+                },
+                "Oem": {
+                    "$ref": "Oem.0.91.0.json#"
+                }
+            },
+            "description": "The links array contains the links to other resources that are related to this resource."
+        }
+    },
+    "required": [
+        "Type"
+    ],
+    "copyright": "Copyright 2013-2014 Avocent Corporation. Copyright 2014 Dell Inc. Copyright 2013-2014 Hewlett-Packard Development Company, L.P. Copyright 2014 Intel Corporation."
+}

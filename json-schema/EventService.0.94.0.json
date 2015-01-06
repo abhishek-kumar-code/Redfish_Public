@@ -1,0 +1,311 @@
+{
+    "$schema": "http://www.redfishspecification.org/schema",
+    "title": "EventService.0.94.0",
+    "type": "object",
+    "additionalProperties": false,
+    "description": "This is the schema definition for the Event Service.  It represents the properties for the service itself and has links to the actual list of subscriptions.",
+    "specification": "This resource shall be used to represent an eventing service for a Redfish implementation.",
+    "properties": {
+        "Oem": {
+            "$ref": "Oem.0.91.0.json#"
+        },
+        "Name": {
+            "$ref": "Name.0.91.0.json#"
+        },
+        "Modified": {
+            "$ref": "Modified.0.91.0.json#"
+        },
+        "Type": {
+            "$ref": "Type.0.91.0.json#"
+        },
+        "Description": {
+            "$ref": "Description.0.91.0.json#"
+        },
+        "links": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "Subscriptions": {
+                    "$ref": "href.0.91.0.json#",
+                    "description": "This is a reference to a collection of ListenerDestination resources.",
+                    "specification": "The value of this property shall reference a resource of type Collection with a MemberType of ListenerDestination.",
+                    "readonly": true
+                },
+                "Oem": {
+                    "$ref": "Oem.0.91.0.json#"
+                },
+                "self": {
+                    "$ref": "href.0.91.0.json#",
+                    "description": "This is the URI of this resource.",
+                    "specification": "The value of this property shall reference the URI of this resource."
+                }
+            },
+            "description": "The object contains references to other resources."
+        },
+        "Status": {
+            "$ref": "Status.0.91.0.json#"
+        },
+        "DeliveryRetryAttempts": {
+            "type": "integer",
+            "description": "This is the number of attempts an event posting is retried before the subscription is terminated.",
+            "readonly": true,
+            "specification": "The value of this property shall be the number of retrys attempted for any given event to the subscription destination before the subscription is terminated."
+        },
+        "DeliveryRetryIntervalInSeconds": {
+            "type": "integer",
+            "description": "This represents the number of seconds between retry attempts for sending any given Event",
+            "readonly": true,
+            "specification": "The value of this property shall be the interval in seconds between the retry attempts for any given event to the subscription destination. "
+        },
+        "SubscriptionRemovalAction": {
+            "type": "string",
+            "description": "This property indicates what the service will do to an event subscription after the number of delivery retry attempts has been exhausted.",
+            "enum": [
+                "Remove",
+                "Disable",
+                "Ignore"
+            ],
+            "enumDescriptions": {
+                "Remove": "Remove the subscription",
+                "Disable": "Disable the subscription",
+                "Ignore": "Ignore the condition"
+            },
+            "readonly": true,
+            "specification": "The value of this property shall be the action the service takes for subscriptions that have the number failed event deliveries equal to the value of DeliveryRetryAttempts fail without any successful event deliveries in between the failed deliveries. 'Remove' defines the subscription is to be removed. 'Disable' indicates that subscription removal process is not being enforced but no further events will be sent to this destination. 'Ignore' indicates that the removal action is temporarily not enforced and further events will be sent to this destination. "
+        },
+        "SubscriptionRemovalTimeIntervalInMinutes": {
+            "type": "integer",
+            "description": "This is the minimum amount of time after the failed events that the service will wait before doing the SubscriptionRemovalAction.",
+            "readonly": true,
+            "specification": "The value of this property shall be minimum time to allow for failed event deliveries without any successful event deliveries in between before the SubscriptionRemovalAction goes into effect."
+        },
+        "EventTypesForSubscription": {
+            "type": "array",
+            "description": "This is the types of Events that can be subscribed to.",
+            "specification": "The value of this property shall be the types of events that subscriptions can subscribe to.  The semantics associated with the enumerations values are defined in the Redfish specification.",
+            "readonly": true,
+            "items": {
+                "type": "string",
+                "enum": [
+                    "StatusChange",
+                    "ResourceUpdated",
+                    "ResourceAdded",
+                    "ResourceRemoved",
+                    "Alert"
+                ],
+                "enumDescriptions": {
+                    "StatusChange": "The status of this resource has changed",
+                    "ResourceUpdated": "The value of this resource has been updated",
+                    "ResourceAdded": "A resource has been added",
+                    "ResourceRemoved": "A resource has been removed",
+                    "Alert": "A condition exists which requires attention"
+                }
+            }
+        },
+        "AvailableActions": {
+            "type": "array",
+            "additionalItems": false,
+            "uniqueItems": true,
+            "items": {
+                "anyOf": [
+                    {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                            "Action": {
+                                "type": "string",
+                                "enum": [
+                                    "SubmitTestEvent"
+                                ],
+                                "specification": "This defines the name of the custom action supported when used in conjunction with a POST operation to this resource. When issued, this operation will perform a reset of the manager.",
+                                "description": "The SubmitTestEvent action causes a test event to be added to the event service.  This message should then be sent to any appropriate ListenerDestination targets.",
+                                "readonly": true
+                            },
+                            "Capabilities": {
+                                "type": "array",
+                                "items": [
+                                    {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "PropertyName": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "EventType"
+                                                ],
+                                                "description": "This is the type of event to be added.",
+                                                "readonly": true,
+                                                "specification": "This defines the property name for which the following allowable values apply."
+                                            },
+                                            "AllowableValues": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "StatusChange",
+                                                        "ResourceUpdated",
+                                                        "ResourceAdded",
+                                                        "ResourceRemoved",
+                                                        "Alert"
+                                                    ]
+                                                },
+                                                "enumDescriptions": {
+                                                    "StatusChange": "The status of this resource has changed",
+                                                    "ResourceUpdated": "The value of this resource has been updated",
+                                                    "ResourceAdded": "A resource has been added",
+                                                    "ResourceRemoved": "A resource has been removed",
+                                                    "Alert": "A condition exists which requires attention"
+                                                },
+                                                "description": "This array defines the supported values for this property on this resource.",
+                                                "specification": "This arrays shall show the possible event types for the event service.",
+                                                "readonly": true
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "PropertyName": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "EventID"
+                                                ],
+                                                "description": "This is the ID of event to be added.",
+                                                "readonly": true,
+                                                "specification": "This property has the same semantics as the EventID property in the Event schema for Redfish."
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "PropertyName": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "EventTimestamp"
+                                                ],
+                                                "format": "date-time",
+                                                "description": "This is the time stamp of event to be added.",
+                                                "readonly": true,
+                                                "specification": "This property has the same semantics as the EventTimeStamp property in the Event schema for Redfish."
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "PropertyName": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "Severity"
+                                                ],
+                                                "description": "This is the Severity of event to be added.",
+                                                "readonly": true,
+                                                "specification": "This property has the same semantics as the Severity property in the Event schema for Redfish."
+                                            },
+                                            "AllowableValues": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "OK",
+                                                        "Warning",
+                                                        "Critical"
+                                                    ]
+                                                },
+                                                "description": "This array defines the supported values for this property on this resource.",
+                                                "specification": "This arrays shall show the possible severities as defined in the Event schema for Redfish.",
+                                                "readonly": true
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "PropertyName": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "Message"
+                                                ],
+                                                "description": "This is the ID of event to be added.",
+                                                "readonly": true,
+                                                "specification": "This property has the same semantics as the Message property in the Event schema for Redfish."
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "PropertyName": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "MessageID"
+                                                ],
+                                                "description": "This is the ID of event to be added.",
+                                                "readonly": true,
+                                                "specification": "This property has the same semantics as the MessageID property in the Event schema for Redfish."
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "PropertyName": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "MessageArgs"
+                                                ],
+                                                "description": "This is the ID of event to be added.",
+                                                "readonly": true,
+                                                "specification": "This property has the same semantics as the MessageArgs property in the Event schema for Redfish."
+                                            },
+                                            "AllowableValues": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "string"
+                                                },
+                                                "description": "This array defines the supported values for this property on this resource.",
+                                                "specification": "This arrays shall show the possible severities as defined in the Event schema for Redfish.",
+                                                "readonly": true
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "type": "object",
+                                        "additionalProperties": false,
+                                        "properties": {
+                                            "PropertyName": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "OriginOfCondition"
+                                                ],
+                                                "description": "This is the ID of event to be added.",
+                                                "readonly": true,
+                                                "specification": "This property has the same semantics as the OriginOfCondition property in the Event schema for Redfish."
+                                            }
+                                        }
+                                    }
+                                ],
+                                "description": "This array item defines the allowable values supported for this custom action on this resource.",
+                                "readonly": true
+                            }
+                        },
+                        "description": "This array item defines an available custom action on this resource.",
+                        "readonly": true
+                    }
+                ]
+            }
+        }
+    },
+    "required": [
+        "Name",
+        "Type"
+    ],
+    "copyright": "Copyright 2013-2014 Avocent Corporation. Copyright 2014 Dell Inc. Copyright 2013-2014 Hewlett-Packard Development Company, L.P. Copyright 2014 Intel Corporation."
+}

@@ -1,0 +1,104 @@
+{
+    "$schema": "http://www.redfishspecification.org/schema",
+    "title": "LogService.0.94.0",
+    "type": "object",
+    "additionalProperties": false,
+    "description": "This resource represents the log service for the resource or service to which it is associated.",
+    "specification": "This resource shall be used to represent a log service for a Redfish implementation.",
+    "properties": {
+        "Oem": {
+            "$ref": "Oem.0.91.0.json#"
+        },
+        "Name": {
+            "$ref": "Name.0.91.0.json#"
+        },
+        "Modified": {
+            "$ref": "Modified.0.91.0.json#"
+        },
+        "Type": {
+            "$ref": "Type.0.91.0.json#"
+        },
+        "Description": {
+            "$ref": "Description.0.91.0.json#"
+        },
+        "MaxNumberOfRecords": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "The maximum number of log entries this service can have.",
+            "readonly": true,
+            "specification": "The value of this property shall be the maximum numbers of LogEntry resources in the Entries collection for this service."
+        },
+        "OverWritePolicy": {
+            "type": "string",
+            "enum": [
+                "Unknown",
+                "WrapsWhenFull",
+                "NeverOverwrites"
+            ],
+            "description": "The overwrite policy for this service that takes place when the log is full.",
+            "enumDescriptions": {
+                "Unknown": "The overwrite policy is not known or is undefined",
+                "WrapsWhenFull": "When full, new entries to the Log will overwrite previous entries",
+                "NeverOverwrites": "When full, new entries to the Log will be discarded"
+            },
+            "readonly": true,
+            "specification": "The value of this property shall indicate the policy of the log service when the MaxNumberOfRecords has been reached. Unknown indicates the log overwrite policy is unknown. WrapsWhenFull indicates that the log overwrites its entries with new entries when the log has reached its maximum capacity. NeverOverwrites indicates that the log never overwrites its entries by the new entries and ceases logging when the limit has been reached."
+        },
+        "Status": {
+            "$ref": "Status.0.91.0.json#"
+        },
+        "links": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "Entries": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "href.0.91.0.json#"
+                    },
+                    "description": "References to the log entry collection.",
+                    "specification": "The value of this property shall reference a resource of type Collection with a MemberType of LogEntry.",
+                    "readonly": true
+                },
+                "self": {
+                    "$ref": "href.0.91.0.json#",
+                    "description": "This is the URI of this resource.",
+                    "specification": "The value of this property shall reference the URI of this resource."
+                },
+                "Oem": {
+                    "$ref": "Oem.0.91.0.json#"
+                }
+            },
+            "description": "The links array contains the links to other resources that are related to this resource."
+        },
+        "AvailableActions": {
+            "type": "array",
+            "additionalItems": false,
+            "uniqueItems": true,
+            "items": {
+                "anyOf": [
+                    {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                            "Action": {
+                                "type": "string",
+                                "enum": [
+                                    "ClearLog"
+                                ],
+                                "description": "Clears the log of all entries",
+                                "readonly": true,
+                                "specification": "The Clearlog action shall DELETE all of the members of the LogEntry collection for this log service."
+                            }
+                        }
+                    }
+                ]
+            },
+            "description": "The list of actions the service supports."
+        }
+    },
+    "required": [
+        "Type"
+    ],
+    "copyright": "Copyright 2013-2014 Avocent Corporation. Copyright 2014 Dell Inc. Copyright 2013-2014 Hewlett-Packard Development Company, L.P. Copyright 2014 Intel Corporation."
+}
