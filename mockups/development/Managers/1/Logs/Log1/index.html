@@ -1,7 +1,10 @@
 {
+    "@odata.context": "/rest/v1/$metadata#Managers/1/Logs(*,links/Entries/$ref)/$entity",
+    "@odata.id": "/rest/v1/Managers/1/Logs/Log1",
+    "@odata.type": "http://localhost:9080/dmtf.org/schema/v1/LogService#LogService.0.94.0.LogService",
+    "Id": "Log1",
     "Name": "System Log Service",
     "Modified": "2012-03-07T14:44",
-    "Type": "LogService.0.91.0",
     "MaxNumberOfRecords": 1000,
     "OverWritePolicy": "WrapsWhenFull",
     "Status": {
@@ -9,19 +12,21 @@
         "Health": "OK"
     },
     "Oem": {},
-    "links": {
+    "Actions": {
+        #LogService.ClearLog": {
+            "target": "/rest/v1/Managers/1/Logs/Log1/Actions/LogService.0.94.0.Reset"
+        },
+        "Oem": {}
+    },
+    "Links": {
         "Entries": [
             {
-                "id": "1",
-                "frag": "/Items/0",
-                "href": "/rest/v1/Managers/1/Logs/Log1/Entries"
+                "@odata.id": "/rest/v1/Managers/1/Logs/Log1/Entries/1"
+            },
+            {
+                "@odata.id": "/rest/v1/Managers/1/Logs/Log1/Entries/2"
             }
         ],
         "Oem": {}
-    },
-    "AvailableActions": [
-        {
-            "Action": "ClearLog"
-        }
-    ]
+    }
 }

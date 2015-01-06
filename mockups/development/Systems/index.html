@@ -1,23 +1,18 @@
 {
+    "@odata.context": "/rest/v1/$metadata#Systems(*,Links/Members/$ref)", 
+    "@odata.type": "#ComputerSystem.0.94.0.ComputerSystemCollection",
     "Name": "Computer System Collection",
     "Modified": "2012-03-07T14:44",
-    "Type": "Collection.0.91.0",
-    "MemberType": "ComputerSystem.1",
-    "Total": 2,
-    "links": {
-        "Member": [
+    "MemberType": "#ComputerSystem.0.94.0.ComputerSystem",
+    "Links": {
+        "Members@odata.count":2,
+        "Members": [
             {
-                "href": "/rest/v1/Systems/1"
+                "@odata.id": "/rest/v1/Systems/1"
             },
             {
-                "href": "/rest/v1/Systems/2"
+                "@odata.id": "/rest/v1/Systems/2"
             }
-        ],
-        "NextPage": {
-            "page": 2,
-            "count": 10
-        },
-        "Oem": {}
-    },
-    "Oem": {}
+        ]
+    }
 }

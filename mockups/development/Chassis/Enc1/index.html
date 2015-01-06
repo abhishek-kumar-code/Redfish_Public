@@ -1,36 +1,11 @@
 {
+    "@odata.context": "/rest/v1/$metadata#Chassis(*,Links/ComputerSystems/$ref,Links/ContainedBy/$ref,Links/ManagedBy/$ref,Links/Contains/$ref,Links/ThermalMetrics/$ref,Links/PowerMetrics/$ref,Links/MiscMetrics/$ref)/$entity",
+    "@odata.id": "/rest/v1/Chassis/Enc1",
+    "@odata.type": "#Chassis.0.94.0.Chassis",
+    "Id": "Enc1",
     "Name": "Enclosure With Blades Example - This enclosure is in a rack and this enclosure has one blade.  It also is managed by a redundant pair of managers which also manage the blade.",
-    "Modified": "2013-03-07T14:44",
-    "Type": "Chassis.0.91.0",
+    "Modified": "2013-03-07T14:45",
     "ChassisType": "Enclosure",
-    "links": {
-        "ThermalMetrics": {
-            "href": "/rest/v1/Chassis/Enc1/ThermalMetrics"
-        },
-        "PowerMetrics": {
-            "href": "/rest/v1/Chassis/Enc1/PowerMetrics"
-        },
-        "MiscMetrics": {
-            "href": "/rest/v1/Chassis/Enc1/MiscMetrics"
-        },
-        "Contains": [
-            {
-                "href": "/rest/v1/Chassis/Enc1/Blades"
-            }
-        ],
-        "ContainedBy": {
-            "href": "/rest/v1/Chassis/Rack1"
-        },
-        "ManagedBy": [
-            {
-                "href": "/rest/v1/Managers/2"
-            },
-            {
-                "href": "/rest/v1/Managers/3"
-            }
-        ],
-        "Oem": {}
-    },
     "Manufacturer": "ManufacturerName",
     "Model": "ProductModelName",
     "SKU": "",
@@ -40,5 +15,33 @@
     "Status": {
         "State": "Enabled",
         "Health": "OK"
+    },
+    "Links": {
+        "ContainedBy": {
+            "@odata.id": "/rest/v1/Chassis/Rack1"
+        },
+        "ManagedBy": [
+            {
+                "@odata.id": "/rest/v1/Managers/2"
+            },
+            {
+                "@odata.id": "/rest/v1/Managers/3"
+            }
+        ],
+        "Contains": [
+            {
+                "@odata.id": "/rest/v1/Chassis/Enc1/Blades"
+            }
+        ],
+        "ThermalMetrics": {
+            "@odata.id": "/rest/v1/Chassis/Enc1/ThermalMetrics"
+        },
+        "PowerMetrics": {
+            "@odata.id": "/rest/v1/Chassis/Enc1/PowerMetrics"
+        },
+        "MiscMetrics": {
+            "@odata.id": "/rest/v1/Chassis/Enc1/MiscMetrics"
+        },
+        "Oem": {}
     }
 }

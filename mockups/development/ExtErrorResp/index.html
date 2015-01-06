@@ -1,21 +1,20 @@
 {
-    "Name": "Extended Error Information",
-    "Modified": "2013-01-31T23:45:04+00:00",
-    "Type": "ExtendedError.0.91.0",
-    "Messages": [
-        {
-            "MessageID": "Base.1.0.MessageKey",
-            "MessageArgs": [
-                "arg1 string",
-                "arg1 string"
-            ],
-            "Message": "Human readable string",
-            "PropertiesInError": [
-                "property1 string",
-                "property2 string"
-            ],
-            "Severity": "Error",
-            "Resolution": "optional resolution string"
-        }
-    ]
+    "error": {
+    "code": "Base.1.0.MessageKey",
+    "message": "Human readable string",
+    "details": [
+      {
+       "code": "Base.1.0.MessageKey",
+       "target": "property1",
+       "message": "property1 string"
+      },
+      {
+       "code": "Base.1.0.MessageKey",
+       "target": "property2",
+       "message": "property2 string"
+      }
+    ],
+    "@Error.severity": "Error",
+    "@Error.resolution": "Optional resolution string"
+  }
 }

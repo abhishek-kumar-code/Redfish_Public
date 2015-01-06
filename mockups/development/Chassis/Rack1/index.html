@@ -1,7 +1,10 @@
 {
+    "@odata.context": "/rest/v1/$metadata#Chassis(*,Links/ComputerSystems/$ref,Links/ContainedBy/$ref,Links/ManagedBy/$ref,Links/Contains/$ref,Links/ThermalMetrics/$ref,Links/PowerMetrics/$ref,Links/MiscMetrics/$ref)/$entity",
+    "@odata.id": "/rest/v1/Chassis/Rack1",
+    "@odata.type": "#Chassis.0.94.0.Chassis",
+    "Id": "Rack1",
     "Name": "Application Rack",
     "Modified": "2036-09-11T14:17:24+00:00",
-    "Type": "Chassis.0.91.0",
     "ChassisType": "Rack",
     "Oem": {},
     "Description": "User Rack Row 1, Rack 3, Rack47",
@@ -12,14 +15,15 @@
     "Version": "",
     "PartNumber": "",
     "AssetTag": "CustomerWritableThingy",
-    "links": {
+    "Links": {
         "Contains": [
             {
-                "href": "/rest/v1/Chassis/1"
+                "@odata.id": "/rest/v1/Chassis/1"
             },
             {
-                "href": "/rest/v1/Chassis/Enc1"
+                "@odata.id": "/rest/v1/Chassis/Enc1"
             }
-        ]
+        ],
+        "Oem": {}
     }
-}
+ }

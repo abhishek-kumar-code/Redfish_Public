@@ -1,7 +1,10 @@
 {
+    "@odata.context": "/rest/v1/$metadata#Systems/1/Logs(*,Links/Entries/$ref)/$entity",
+    "@odata.id": "/rest/v1/Systems/1/Logs/Log1",
+    "@odata.type": "#LogService.0.94.0.LogService",
+    "Id": "Log1",
     "Name": "System Log Service",
     "Modified": "2012-03-07T14:44",
-    "Type": "LogService.0.91.0",
     "MaxNumberOfRecords": 1000,
     "OverWritePolicy": "WrapsWhenFull",
     "Status": {
@@ -9,18 +12,21 @@
         "Health": "OK"
     },
     "Oem": {},
-    "links": {
+    "Actions": {
+        "#LogService.ClearLog": {
+            "target": "/rest/v1/Systems/1/Logs/Log1/Actions/LogService.Reset"
+        },
+        "Oem": {}
+    },
+    "Links": {
         "Entries": [
             {
-                "id": "1",
-                "frag": "/Items/0",
-                "href": "/rest/v1/Systems/1/Logs/Log1/Entries"
+                "@odata.id": "/rest/v1/Systems/1/Logs/Log1/Entries/1"
+            },
+            {
+                "@odata.id": "/rest/v1/Systems/1/Logs/Log1/Entries/2"
             }
-        ]
-    },
-    "AvailableActions": [
-        {
-            "Action": "ClearLog"
-        }
-    ]
+        ],
+        "Oem": {}
+    }
 }

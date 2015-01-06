@@ -1,7 +1,10 @@
 {
+    "@odata.context": "/rest/v1/$metadata#Managers/1/Logs/Log1/Entries(*,links/OrginOfCondition/$ref)/$entity",
+    "@odata.id": "/rest/v1/Managers/1/Logs/Log1/Entries/1",
+    "@odata.type": "http://localhost:9080/dmtf.org/schema/v1/LogEntry#LogEntry.0.94.0.LogEntry",
+    "Id": "1",
     "Name": "Log Entry 1",
     "Modified": "2012-03-07T14:44",
-    "Type": "LogEntry.0.91.0",
     "EntryType": "Event | SEL | OEM",
     "OEMRecordFormat": "HP",
     "RecordId": 1,
@@ -15,12 +18,9 @@
     "MessageArgs": [
         "ArrayOfMessageArgs"
     ],
-    "links": {
-        "self": {
-            "href": "/rest/v1/Systems/1/Logs/Log1/Entries/1"
-        },
-        "Resource": {
-            "href": "/rest/v1/Chassis/1/ThermalMetrics"
+    "Links": {
+        "OriginOfCondition": {
+            "@odata.id": "/rest/v1/Chassis/1/ThermalMetrics"
         },
         "Oem": {}
     },
