@@ -1,6 +1,6 @@
 {
     "$schema": "http://www.redfishspecification.org/schema",
-    "title": "TaskService.0.91.0",
+    "title": "TaskService.0.94.0",
     "type": "object",
     "additionalProperties": false,
     "description": "This is the schema definition for the Task Service.  It represents the properties for the service itself and has links to the actual list of tasks.",
