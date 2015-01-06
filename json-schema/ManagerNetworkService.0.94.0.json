@@ -1,6 +1,6 @@
 {
     "$schema": "http://www.redfishspecification.org/schema",
-    "title": "ManagerNetworkService.0.91.0",
+    "title": "ManagerNetworkService.0.94.0",
     "type": "object",
     "additionalProperties": false,
     "description": "This resource is used to obtain or modify the network services managed by this manager.",
