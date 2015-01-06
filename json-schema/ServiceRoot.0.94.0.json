@@ -1,6 +1,6 @@
 {
     "$schema": "http://www.redfishspecification.org/schema",
-    "title": "ServiceRoot.0.91.0",
+    "title": "ServiceRoot.0.94.0",
     "type": "object",
     "additionalProperties": false,
     "description": "This object represents the root Redfish service.",
