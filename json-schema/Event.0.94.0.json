@@ -1,0 +1,124 @@
+{
+    "$schema": "http://www.redfishspecification.org/schema",
+    "title": "Event.0.94.0",
+    "type": "object",
+    "additionalProperties": false,
+    "description": "This is the schema definition for Events.  It represents the properties for the events themselves and not subscriptions or any other resource.",
+    "specification": "This resource shall be used to represent an event for a Redfish implementation.",
+    "properties": {
+        "Oem": {
+            "$ref": "Oem.0.91.0.json#"
+        },
+        "Name": {
+            "$ref": "Name.0.91.0.json#"
+        },
+        "Type": {
+            "$ref": "Type.0.91.0.json#"
+        },
+        "Events": {
+            "type": "array",
+            "item": {
+                "type": "object",
+                "properties": {
+                    "EventType": {
+                        "type": "string",
+                        "enum": [
+                            "StatusChange",
+                            "ResourceUpdated",
+                            "ResourceAdded",
+                            "ResourceRemoved",
+                            "Alert"
+                        ],
+                        "description": "This indicates the type of event sent, according to the definitions in the EventService.",
+                        "enumDescriptions": {
+                            "StatusChange": "The status of this resource has changed",
+                            "ResourceUpdated": "The value of this resource has been updated",
+                            "ResourceAdded": "A resource has been added",
+                            "ResourceRemoved": "A resource has been removed",
+                            "Alert": "A condition exists which requires attention"
+                        },
+                        "readonly": true,
+                        "specification": "The value of this property shall indicate the type of event as defined in the EventService schema."
+                    },
+                    "EventID": {
+                        "type": "string",
+                        "description": "This is a unique instance identifier of an event.",
+                        "readonly": true,
+                        "specification": "The value of this property shall indicate a unique identifier for the event, the format of which is implementation dependent."
+                    },
+                    "EventTimestamp": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "This is time the event occurred.",
+                        "readonly": true,
+                        "specification": "The value of this property shall indicate the time the event occurred where the value shall be consistent with the Redfish service time that is also used for the values of the Modified property."
+                    },
+                    "Severity": {
+                        "type": "string",
+                        "enum": [
+                            "OK",
+                            "Warning",
+                            "Critical"
+                        ],
+                        "enumDescriptions": {
+                            "OK": "Normal",
+                            "Warning": "A condition exists that requires attention",
+                            "Critical": "A critical condition exists that requires immediate attention"
+                        },
+                        "description": "This is the severity of the event.",
+                        "readonly": true,
+                        "specification": "The value of this property shall be the severity of the event, as defined in the Status section of the Redfish specificaiton."
+                    },
+                    "Message": {
+                        "type": "string",
+                        "description": "This is the human readable message, if provided.",
+                        "readonly": true,
+                        "specification": "This property shall contain an optional human readable message."
+                    },
+                    "MessageID": {
+                        "type": "string",
+                        "description": "This is the key for this message which can be used to look up the message in a message registry.",
+                        "pattern": "^[A-Za-z0-9]+\\.\\d+\\.\\d+.[A-Za-z0-9.]+$",
+                        "readonly": true,
+                        "specification": "This property shall be a key into message registry as described in the Redfish specification."
+                    },
+                    "MessageArgs": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "readonly": true,
+                        "description": "This array of message arguments are substituted for the arguments in the message when looked up in the message registry.",
+                        "specification": "This property shall contain the message substitution arguments for the specific message referenced by the MessageID and shall only be included if the MessageID is present."
+                    },
+                    "OriginOfCondition": {
+                        "type": "string",
+                        "readonly": true,
+                        "description": "This indicates the resource that originated the condition that caused the event to be generated.",
+                        "specification": "The value of this property shall contain the URI of the resource that caused the event to be generated."
+                    },
+                    "Context": {
+                        "type": "string",
+                        "description": "A context can be supplied at subscription time.  This property is the context value supplied by the subscriber.",
+                        "readonly": true,
+                        "specification": "This property shall contain a client supplied context for the ListnerDestination to which this event is being sent."
+                    },
+                    "Oem": {
+                        "$ref": "Oem.0.91.0.json#"
+                    }
+                },
+                "required": [
+                    "EventType",
+                    "MessageID"
+                ],
+                "description": "Each event in this array has a set of properties that describe the event.  Since this is an array, more than one event can be sent simultaneously."
+            }
+        }
+    },
+    "required": [
+        "Name",
+        "Type",
+        "Events"
+    ],
+    "copyright": "Copyright 2013-2014 Avocent Corporation. Copyright 2014 Dell Inc. Copyright 2013-2014 Hewlett-Packard Development Company, L.P. Copyright 2014 Intel Corporation."
+}

@@ -1,0 +1,227 @@
+{
+    "$schema": "http://www.redfishspecification.org/schema",
+    "title": "Chassis.0.94.0",
+    "type": "object",
+    "additionalProperties": false,
+    "description": "This is the schema definition for the Chassis resource.  It represents the properties for physical components for any system.  This one object is intended to represent racks, rackmount servers, blades, standalone, modular systems, enclosures, and all other containers.  The non-cpu/device centric parts of the schema are all accessed either directly or indirectly through this resource.",
+    "specification": "This resource shall be used to represent a chassis or other physical enclosure for a Redfish implementation.",
+    "properties": {
+        "Oem": {
+            "$ref": "Oem.0.91.0.json#"
+        },
+        "Name": {
+            "$ref": "Name.0.91.0.json#"
+        },
+        "Modified": {
+            "$ref": "Modified.0.91.0.json#"
+        },
+        "Type": {
+            "$ref": "Type.0.91.0.json#"
+        },
+        "Status": {
+            "$ref": "Status.0.91.0.json#"
+        },
+        "ChassisType": {
+            "type": "string",
+            "enum": [
+                "Rack",
+                "Blade",
+                "Enclosure",
+                "StandAlone",
+                "RackMount",
+                "Card",
+                "Cartridge",
+                "Row",
+                "Pod",
+                "Expansion",
+                "Sidecar",
+                "Zone",
+                "Sled",
+                "Shelf",
+                "Other"
+            ],
+            "description": "The physical form factor of this resource.",
+            "enumDescriptions": {
+                "Rack": "An equipment rack, typically a 19-inch wide freestanding unit",
+                "Blade": "An enclosed or semi-enclosed, typically vertically-oriented, system chassis which must be plugged into a multi-system chassis to function normally",
+                "Enclosure": "A generic term for a chassis that does not fit any other description",
+                "StandAlone": "A single, free-standing system, commonly called a tower or desktop chassis",
+                "RackMount": "A single system chassis designed specifically for mounting in an equipment rack",
+                "Card": "A loose device or circuit board intended to be installed in a system or other enclosure",
+                "Cartridge": "A small self-contained system intended to be plugged into a multi-system chassis",
+                "Row": "A collection of equipment racks",
+                "Pod": "A collection of equipment racks in a large, likely transportable, container",
+                "Expansion": "A chassis which expands the capabilities or capacity of another chassis",
+                "Sidecar": "A chassis that mates mechanically with another chassis to expand its capabilities or capacity",
+                "Zone": "A logical division or portion of a physical chassis that contains multiple devices or systems that cannot be physically separated",
+                "Sled": "An enclosed or semi-enclosed, system chassis which must be plugged into a multi-system chassis to function normally similar to a blade type chassis.",
+                "Shelf": "An enclosed or semi-enclosed, typically horizontally-oriented, system chassis which must be plugged into a multi-system chassis to function normally",
+                "Other": "A chassis that does not fit any of these definitions"
+            },
+            "readonly": true,
+            "specification": "ChassisType shall indicate the physical form factor for the type of chassis."
+        },
+        "Description": {
+            "$ref": "Description.0.91.0.json#"
+        },
+        "Manufacturer": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "description": "The manufacturer of this chassis",
+            "readonly": true,
+            "specification": "The value of this property shall be the name of the organization responsible for producing the chassis. This organization might be the entity from whom the chassis is purchased, but this is not necessarily true."
+        },
+        "Model": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "description": "The model number for the chassis",
+            "readonly": true,
+            "specification": "The value of this property shall be the name by which the manufacturer generally refers to the chassis."
+        },
+        "SKU": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "description": "The SKU for this chassis",
+            "readonly": true,
+            "specification": "The value of this property shall be the stock-keeping unit number for this chassis."
+        },
+        "SerialNumber": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "description": "The serial number for this chassis",
+            "readonly": true,
+            "specification": "The value of this property shall be a manufacturer-allocated number used to identify the chassis."
+        },
+        "Version": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "description": "The version of this chassis",
+            "readonly": true,
+            "specification": "The value of this property shall be a string that indicates the producers or manufacturer's version of the chassis."
+        },
+        "PartNumber": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "description": "The part number of this chassis",
+            "readonly": true,
+            "specification": "The value of this property shall be a part number assigned by the organization that is responsible for producing or manufacturing the chassis."
+        },
+        "AssetTag": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "description": "A user assigned asset tag for this chassis",
+            "readonly": false,
+            "specification": "The value of this property shall be an identifying string used to track the chassis for inventory purposes."
+        },
+        "IndicatorLED": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "description": "The indicator LED for the chassis, used to identify the chassis.  This LED can be manipulated by the user.",
+            "enum": [
+                "Unknown",
+                "Lit",
+                "Blinking",
+                "Off"
+            ],
+            "enumDescriptions": {
+                "Unknown": "The state of the Indicator LED cannot be determined",
+                "Lit": "The Indicator LED is lit",
+                "Blinking": "The Indicator LED is blinking",
+                "Off": "The Indicator LED is off"
+            },
+            "readonly": false,
+            "specification": "This value of this property shall contain the indicator light state for the indicator light associated with this system."
+        },
+        "links": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "Oem": {
+                    "$ref": "Oem.0.91.0.json#"
+                },
+                "LogService": {
+                    "$ref": "href.0.91.0.json#",
+                    "description": "A reference to the logs for this chassis.",
+                    "specification": "The value of this property shall reference a resource of type Collection with a MemberType of LogService.",
+                    "readonly": true
+                },
+                "ComputerSystems": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "href.0.91.0.json#"
+                    },
+                    "description": "An array of references to the computer systems contained in this chassis.  This will only reference ComputerSystems that are directly and wholly contained in this chassis.",
+                    "specification": "The value of this property shall be a reference to the resource that this physical container is associated with and shall reference a resource of type ComputerSystem.  If a ComputerSystem is also referenced in a Chassis that is referenced in a Contains link from this resource, that ComputerSystem shall not be referenced in this Chassis.",
+                    "readonly": true
+                },
+                "ManagedBy": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "href.0.91.0.json#"
+                    },
+                    "description": "An array of references to the managers contained in this chassis.",
+                    "specification": "The value of this property shall be a reference to the resource that manages this chassis and shall reference a resource of type Manager.",
+                    "readonly": true
+                },
+                "ThermalMetrics": {
+                    "$ref": "href.0.91.0.json#",
+                    "description": "A reference to the thermal metrics (fans, cooling, sensors) for this chassis.",
+                    "specification": "The value of this property shall be a reference to the resource that represents the thermal characteristics of this chassis and shall be of type ThermalMetrics.",
+                    "readonly": true
+                },
+                "PowerMetrics": {
+                    "$ref": "href.0.91.0.json#",
+                    "description": "A reference to the thermal metrics (power supplies, power policies, sensors) for this chassis.",
+                    "specification": "The value of this property shall be a reference to the resource that represents the power characteristics of this chassis and shall be of type PowerMetrics.",
+                    "readonly": true
+                },
+                "MiscMetrics": {
+                    "$ref": "href.0.91.0.json#",
+                    "description": "A reference to the various other metrics (presence, etc.) for this chassis.",
+                    "specification": "The value of this property shall be a reference to the resource that represents the non-power & non-thermal characteristics of this chassis and shall be of type MiscMetrics.",
+                    "readonly": true
+                },
+                "ContainedBy": {
+                    "$ref": "href.0.91.0.json#",
+                    "description": "A reference to the chassis that this chassis is contained by.",
+                    "specification": "The value of this property shall be a reference to the resource that represents the chassis that contains this chassis and shall be of type Chassis.",
+                    "readonly": true
+                },
+                "Contains": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "href.0.91.0.json#"
+                    },
+                    "description": "An array of references to any other chassis that this chassis has in it.",
+                    "specification": "The value of this property shall be a reference to the resource that represents the chassis that this chassis contains and shall be of type Chassis or another Collection.",
+                    "readonly": true
+                },
+                "self": {
+                    "$ref": "href.0.91.0.json#"
+                }
+            },
+            "description": "Contains the links to other resources that are related to this resource."
+        }
+    },
+    "required": [
+        "Type",
+        "ChassisType"
+    ],
+    "copyright": "Copyright 2013-2014 Avocent Corporation. Copyright 2014 Dell Inc. Copyright 2013-2014 Hewlett-Packard Development Company, L.P. Copyright 2014 Intel Corporation."
+}

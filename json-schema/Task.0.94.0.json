@@ -1,0 +1,105 @@
+{
+    "$schema": "http://www.redfishspecification.org/schema",
+    "title": "Task.0.94.0",
+    "type": "object",
+    "additionalProperties": false,
+    "description": "This is the schema definition for a Task resource. ",
+    "specification": "This resource shall be used to represent a task for a Redfish implementation.",
+    "properties": {
+        "Oem": {
+            "$ref": "Oem.0.91.0.json#"
+        },
+        "Name": {
+            "$ref": "Name.0.91.0.json#"
+        },
+        "Modified": {
+            "$ref": "Modified.0.91.0.json#"
+        },
+        "Type": {
+            "$ref": "Type.0.91.0.json#"
+        },
+        "Description": {
+            "$ref": "Description.0.91.0.json#"
+        },
+        "TaskState": {
+            "type": "string",
+            "description": "The state of the task.",
+            "readonly": true,
+            "enum": [
+                "New",
+                "Starting",
+                "Running",
+                "Suspended",
+                "Interrupted",
+                "Pending",
+                "Stopping",
+                "Completed",
+                "Killed",
+                "Exception",
+                "Service"
+            ],
+            "enumDescriptions": {
+                "New": "A new task",
+                "Starting": "Task is starting",
+                "Running": "Task is running normally",
+                "Suspended": "Task has been suspended",
+                "Interrupted": "Task has been interrupted",
+                "Pending": "Task is pending and has not started",
+                "Stopping": "Task is in the process of stopping",
+                "Completed": "Task has completed",
+                "Killed": "Task was terminated",
+                "Exception": "Task has stopped due to an exception condition",
+                "Service": "Task is running as a service"
+            },
+            "specification": "The value of this property shall indicate the state of the task.  New shall be used to indicate that the task is a new task which has just been instantiated and is in the initial state and indicates it has never been started.  Starting shall be used to indicate that the task is moving from the New, Suspended, or Service states into the Running state.  Running shall be used to indicate that the Task is running.  Suspended shall be used to indicate  that the Task is stopped (e.g., by a user), but can be restarted in a seamless manner.  Interrupted shall be used to indicate  that the Task was interrupted (e.g., by a server crash) in the middle of processing, and the user should either re-run/restart the Task.  Pending shall be used to indicate  that the Task has been queued and will be scheduled for processing as soon as resources are available to handle the request.  Stopping shall be used to indicate that the Task is in the process of moving to a Completed, Killed, or Exception state.  Completed shall be used to indicate that the task has completed normally.  Killed shall be used to indicate  that the task has been stopped by a Kill state change request (non-graceful shutdown).  Exception shall be used to indicate  that the Task is in an abnormal state that might be indicative of an error condition.  Service shall be used to indicate that the Task is in a state that supports problem discovery, or resolution, or both.  This state is used when a corrective action is possible. "
+        },
+        "StartTime": {
+            "type": "string",
+            "description": "The date-time stamp that the task was last started.",
+            "readonly": true,
+            "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
+            "format": "date-time",
+            "specification": "The value of this property shall indicate the time the task was started."
+        },
+        "EndTime": {
+            "type": "string",
+            "description": "The date-time stamp that the task was last completed.",
+            "readonly": true,
+            "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
+            "format": "date-time",
+            "specification": "The value of this property shall indicate the time the task was completed."
+        },
+        "TaskStatus": {
+            "type": "string",
+            "readonly": true,
+            "enum": [
+                "OK",
+                "Warning",
+                "Critical"
+            ],
+            "enumDescriptions": {
+                "OK": "Normal",
+                "Warning": "A condition exists that requires attention",
+                "Critical": "A critical condition exists that requires immediate attention"
+            },
+            "description": "This is the completion status of the task.",
+            "specification": "The value of this property shall be the completion status of the task, as defined in the Status section of the Redfish specification and shall not be set until the task has completed."
+        },
+        "links": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "self": {
+                    "$ref": "href.0.91.0.json#",
+                    "description": "This is the URI of this resource.",
+                    "specification": "The value of this property shall reference the URI of this resource."
+                }
+            },
+            "description": "The object contains references to other resources."
+        }
+    },
+    "required": [
+        "Type"
+    ],
+    "copyright": "Copyright 2013-2014 Avocent Corporation. Copyright 2014 Dell Inc. Copyright 2013-2014 Hewlett-Packard Development Company, L.P. Copyright 2014 Intel Corporation."
+}
