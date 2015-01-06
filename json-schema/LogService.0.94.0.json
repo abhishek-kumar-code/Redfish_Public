@@ -1,6 +1,6 @@
 {
     "$schema": "http://www.redfishspecification.org/schema",
-    "title": "LogService.0.91.0",
+    "title": "LogService.0.94.0",
     "type": "object",
     "additionalProperties": false,
     "description": "This resource represents the log service for the resource or service to which it is associated.",
