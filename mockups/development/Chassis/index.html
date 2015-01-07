@@ -1,9 +1,9 @@
 {
-    "@odata.context": "/rest/v1/$metadata#Chassis(*,Links/Members/$ref)",
+    "@odata.context": "/rest/v1/$metadata#Chassis",
+    "@odata.id": "/rest/v1/Chassis",
     "@odata.type": "#Chassis.0.94.0.ChassisCollection",
     "Name": "Chassis Collection",
     "Modified": "2013-03-07T14:44",
-    "MemberType": "#Chassis.0.94.0.Chassis",
     "Links": {
         "Members@odata.count": 3,
         "Members": [
@@ -14,6 +14,6 @@
                 "@odata.id": "/rest/v1/Chassis/Enc1"
             }
         ],
-        "Members@odata.nextLink": "/rest/v1/Chassis/Page2"
+        "Members@odata.nextLink": "/rest/v1/Chassis/Page2/$ref"
     }
 }

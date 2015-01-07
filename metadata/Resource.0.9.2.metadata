@@ -59,11 +59,6 @@
           <Annotation Term="OData.LongDescription" String="This object represents the Name property.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification. The value of this string shall be of the format for the reserved word *Name*."/>
           <Annotation Term="DMTF.Required"/>
         </Property>
-        <Property Name="MemberType" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="This property has the type of members in this collections. All of the members of a collection have the same value for their Type property, thus they are all the same kind of resource."/>
-          <Annotation Term="OData.LongDescription" String="This property shall represent the value of the Type property of the collection member, including only major version number."/>
-        </Property>
         <Property Name="Modified" Type="Edm.DateTimeOffset" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The date-time stamp that the object was last modified."/>

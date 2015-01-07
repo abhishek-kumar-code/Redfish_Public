@@ -12,7 +12,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="VirtualMedia.0.94.0" Alias="VirtualMedia">
 
       <!-- This is the schema definition for the Virtual Media Service. -->
-      <EntityType Name="VirtualMedia" BaseType="Resource.ResourceCollection">
+      <EntityType Name="VirtualMediaCollection" BaseType="Resource.ResourceCollection">
         <Property Name="Links" Type="VirtualMedia.Members">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Contains links to other resources that are related to this resource."/>

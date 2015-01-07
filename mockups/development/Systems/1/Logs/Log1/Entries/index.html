@@ -1,50 +1,62 @@
 {
-    "Name": "System Log Service",
-    "Modified": "2012-03-07T14:44",
-    "Type": "Collection.0.91.0",
-    "MemberType": "LogEntry.1",
-    "Total": 1,
-    "Description": "Log Entries for Log 1",
-    "Items": [
+    "@odata.context": "/rest/v1/$metadata#Systems/Links/Members/1/Links/Logs/Links/Members/Log1/Links/Entries",
+    "@odata.count": 2,
+    "value": [
         {
+            "@odata.id": "/rest/v1/Systems/1/Logs/Log1/Entries/1",
+            "@odata.type": "#LogEntry.0.94.0.LogEntry",
+            "Id": "1",
             "Name": "Log Entry 1",
             "Modified": "2012-03-07T14:44",
-            "Type": "LogEntry.0.91.0",
-            "EntryType": "Event | SEL | OEM",
-            "OEMRecordFormat": "HP",
+            "EntryType": "SEL",
+            "OemRecordFormat": "CompanyX",
             "RecordId": 1,
-            "Severity": "Degraded/Warning",
+            "Severity": "Critical",
             "Created": "2012-03-07T14:44",
-            "EntryCode": "Enum of Assert | Deassert | values from table 42-1 and 42-2.  Really only for SEL",
-            "SensorType": "For SEL.  Table 42-3 from IPMI Spec, same as in Metrics objects.  ",
-            "Number": "EntityInstance from IPMI spec for SEL, count of events for Event, OEM Specific for OEM, ",
+            "EntryCode": "Assert",
+            "SensorType": "Temperature",
+            "Number": 1,
             "Message": "Message for Event, Description for SEL, OEM depends",
-            "MessageID": "Base.1.0.Success type for Event, EventData for SEL, OEM depends",
+            "MessageID": "Event.1.0.TempAssert",
             "MessageArgs": [
                 "ArrayOfMessageArgs"
             ],
-            "links": {
-                "self": {
-                    "href": "/rest/v1/Systems/1/Logs/Log1/Entries/1"
+            "Links": {
+                "OriginOfCondition": {
+                    "@odata.id": "/rest/v1/Chassis/1/ThermalMetrics"
                 },
-                "Resource": {
-                    "href": "/rest/v1/Chassis/1/ThermalMetrics"
-                }
-            }
+                "Oem": {}
+            },
+            "Oem": {}
+        },
+        {
+            "@odata.context": "/rest/v1/$metadata#Systems/Links/Members/1/Links/Logs/Links/Members/Log1/Links/Entries/$entity",
+            "@odata.id": "/rest/v1/Systems/1/Logs/Log1/Entries/2",
+            "@odata.type": "#LogEntry.0.94.0.LogEntry",
+            "Id": "2",
+            "Name": "Log Entry 2",
+            "Modified": "2012-03-07T14:45",
+            "EntryType": "SEL",
+            "OEMRecordFormat": "CompanyX",
+            "RecordId": 2,
+            "Severity": "Critical",
+            "Created": "2012-03-07T14:45",
+            "EntryCode": "Assert",
+            "SensorType": "Temperature",
+            "Number": 2,
+            "Message": "Message for Event, Description for SEL, OEM depends",
+            "MessageID": "Event.1.0.TempAssert",
+            "MessageArgs": [
+                "ArrayOfMessageArgs"
+            ],
+            "Links": {
+                "OriginOfCondition": {
+                    "@odata.id": "/rest/v1/Chassis/1/ThermalMetrics/Temperatures/0"
+                },
+                "Oem": {}
+            },
+            "Oem": {}
         }
     ],
-    "links": {
-        "Member": [
-            {
-                "id": "1",
-                "frag": "/Items/0",
-                "href": "/rest/v1/Systems/1/Logs/Log1/Entries/1"
-            }
-        ],
-        "Oem": {},
-        "NextPage": {
-            "page": 2,
-            "count": 10
-        }
-    }
+    "@odata.nextLink": "/rest/v1/Systems/1/Logs/Log1/Entries?$skiptoken=2"
 }
