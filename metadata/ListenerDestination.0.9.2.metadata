@@ -31,6 +31,7 @@
         <NavigationProperty Name="Members" Type="Collection(ListenerDestination.ListenerDestination)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Contains the members of this collection."/>
+          <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
       </ComplexType>
       

@@ -46,6 +46,7 @@
         <NavigationProperty Name="Members" Type="Collection(ComputerSystem.ComputerSystem)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Contains the members of this collection."/>
+          <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
       </ComplexType>
       
@@ -165,11 +166,13 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="A reference to the storage devices associated with this system"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of SimpleStorages."/>
+          <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
         <NavigationProperty Name="LogService" Type="Collection(LogService.LogService)" ContainsTarget="true">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="A reference to the Log Service associated with this system"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of LogServices."/>
+          <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
         <Property Name="Oem" Type="Resource.Oem"/>
       </ComplexType>

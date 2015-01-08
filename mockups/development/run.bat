@@ -1,1 +1,1 @@
-"%~dp0..\release\node.exe" "%~dp0server.js"
+"%~dp0node.exe" "%~dp0server.js"

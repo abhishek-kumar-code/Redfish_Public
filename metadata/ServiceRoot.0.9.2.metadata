@@ -72,41 +72,49 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a link to a collection of Systems."/>
           <Annotation Term="OData.LongDescription" String="This object shall only contain a reference to a collection of resources that comply to the Systems schema.  The last segment of the path shall be 'Systems'."/>
+          <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
         <NavigationProperty Name="Chassis" Type="Chassis.ChassisCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a link to a collection of Chassis."/>
           <Annotation Term="OData.LongDescription" String="This object shall only contain a reference to a collection of resources that comply to the Chassis schema. The last segment of the path shall be 'Chassis'."/>
+          <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
         <NavigationProperty Name="Managers" Type="Manager.ManagerCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a link to a collection of Managers."/>
           <Annotation Term="OData.LongDescription" String="This object shall only contain a reference to a collection of resources that comply to the Managers schema.  The last segment of the path shall be 'Managers'."/>
+          <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
         <NavigationProperty Name="Tasks" Type="Collection(TaskService.TaskService)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a link to the Task Service."/>
           <Annotation Term="OData.LongDescription" String="The classes structure shall only contain a reference to a resource that complies to the TaskService schema.  The last segment of the path shall be 'Tasks'"/>
+          <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
         <NavigationProperty Name="Sessions" Type="Collection(Session.Sessions)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a link to the Collection of Sessions."/>
           <Annotation Term="OData.LongDescription" String="This object shall only contain a reference to a collection of resources that comply to the Session schema.  The last segment of the path shall be 'Sessions'."/>
+          <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
         <NavigationProperty Name="AccountService" Type="AccountService.AccountService">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a link to the Account Service."/>
           <Annotation Term="OData.LongDescription" String="The classes structure shall only contain a reference to a resource that complies to the AccountService schema.  The last segment of the path shall be 'AccountService'"/>
+          <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
         <NavigationProperty Name="EventService" Type="EventService.EventService">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a link to the EventService."/>
           <Annotation Term="OData.LongDescription" String="The classes structure shall only contain a reference to a resource that complies to the EventService schema.  The last segment of the path shall be 'EventService'."/>
+          <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
         <NavigationProperty Name="Registries" Type="Collection(Messages.MessageRegistry)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a link to a collection of Registries."/>
           <Annotation Term="OData.LongDescription" String="This object shall only contain a reference to a collection of resources that comply to the SchemaFile schema where the files are Registries.  The last segment of the path shall be 'Registries'."/>
+          <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
       </ComplexType>
 

@@ -16,8 +16,8 @@
       <Term Name="Required" Type="Edm.Boolean" DefaultValue="True">
         <Annotation Term="OData.Description" String="The term specifies that a property is required to be supported by services. Properties not annotated as required are optional."/>
       </Term>
-      <Term Name="InlineError" Type="Edm.Entity">
-        <Annotation Term="OData.Description" String="This term specifies in-line error information associated with a resource or property in a response payload."/>
+      <Term Name="InlineStatus" Type="Edm.Entity">
+        <Annotation Term="OData.Description" String="This term specifies in-line status information associated with a resource or property in a response payload."/>
       </Term>
       <Term Name="ExpandReferences" Type="Edm.Boolean" DefaultValue="True">
         <Annotation Term="OData.Description" String="The term can be applied to a navigation property in order to specify that the default behavior for the service is to expand the references for the [related resource](#reference-to-a-single-related-resource) or [collection of resources](#array-of-references-to-related-resources) in responses"/>
