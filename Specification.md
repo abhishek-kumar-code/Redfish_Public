@@ -1,258 +1,291 @@
-# Scalable Platforms Management API
+![](http://www.dmtf.org/sites/all/themes/blueprint/images/header/dmtf.png)
 
-**Version 0.92.1**
+Document Identifier: DSP0266
 
-**October 12, 2014**
-    
-	DMTF is a not-for-profit association of industry members dedicated to promoting enterprise 
-	and systems management and interoperability. Members and non-members may reproduce DMTF 
-	specifications and documents, provided that correct attribution is given. As DMTF 
-	specifications may be revised from time to time, the particular version and release date 
-	should always be noted. 
+Date: 2015-1-7
 
-	Implementation of certain elements of this standard or proposed standard may be subject 
-	to third party patent rights, including provisional patent rights (herein "patent rights"). 
-	DMTF makes no representations to users of the standard as to the existence of such rights, 
-	and is not responsible to recognize, disclose, or identify any or all such third party patent 
-	right, owners or claimants, nor for any incomplete or inaccurate identification or disclosure 
-	of such rights, owners or claimants. DMTF shall have no liability to any party, in any manner 
-	or circumstance, under any legal theory whatsoever, for failure to recognize, disclose, or 
-	identify any such third party patent rights, or for such party’s reliance on the standard or 
-	incorporation thereof in its product, protocols or testing procedures. DMTF shall have no 
-	liability to any party implementing such standard, whether such implementation is foreseeable 
-	or not, nor to any patent owner or claimant, and shall have no liability or responsibility 
-	for costs or losses incurred if a standard is withdrawn or modified after publication, and 
-	shall be indemnified and held harmless by any party implementing the standard from any and 
-	all claims of infringement by a patent owner for such 28 implementations.
+Version: 0.94.0
 
-	For information about patents held by third-parties which have notified the DMTF that, in 
-	their opinion, such patent may relate to or impact implementations of DMTF standards, 
-	visit http://www.dmtf.org/about/policies/disclosures.php. 
+# Scalable Platform Management API
 
-- 1. [Abstract](#user-content-abstract)
-- 2. [Acknowledgments](#user-content-acknowledgments)
-- 3. [Introduction](#user-content-introduction)
--  3.1. [References](#user-content-references)
--  3.2. [Terminology](#user-content-terminology)
--  3.3. [Acronyms and Abbreviations](#user-content-acronyms-and-abbreviations)
--  3.4. [Conformance Terminology](#user-content-conformance-terminology)
-- 4. [Overview](#user-content-overview)
--  4.1. [Principal Goals & Scope](#user-content-principle-goals--scope)
--   4.1.1. [REST based](#user-content-rest-based)
--   4.1.2. [Follow OData Conventions](#user-content-follow-odata-conventions)
--   4.1.3. [Model Oriented](#user-content-model-oriented)
--   4.1.4. [Separation of Protocol from Data Model](#user-content-separation-of-protocol-from-data-model)
--   4.1.5. [Hypermedia API Service Endpoint](#user-content-hypermedia-api-service-endpoint)
--   4.1.6. [Scope](#user-content-scope)
--   4.1.7. [Limitations](#user-content-limitations)
-- 4.2. [Service Elements](#user-content-service-elements)
--   4.2.1. [Synchronous and Asynchronous Operation Support](#user-content-synchronous-and-asynchronous-operation-support)
--   4.2.2. [Eventing Mechanism](#user-content-eventing-mechanism)
--   4.2.3. [Actions](#user-content-actions)
--   4.2.4. [Discovery](#user-content-discovery)
--   4.2.5. [Device support (Serial Console, KVM-IP, Command Shell, Virtual Media)](#user-content-device-support-serial-console-kvm-ip-command-shell-virtual-media)
-- 4.3. [Security Intro](#user-content-security-intro)
-- 5. [Protocol Details](#user-content-protocol-details)
--  5.1. [Use of HTTP](#user-content-use-of-http)
--   5.1.1. [URIs](#user-content-uris)
--   5.1.2. [HTTP Methods](#user-content-http-methods)
--   5.1.3. [HTTP Redirect](#user-content-http-redirect)
--   5.1.4. [Media Types](#user-content-media-types)
--   5.1.5. [ETags](#user-content-etags)
--  5.2. [Protocol Version](#user-content-protocol-version)
--  5.3. [Requests](#user-content-requests)
--   5.3.1. [Request Headers](#user-content-request-headers)
--   5.3.2. [Read Requests (GET)](#user-content-read-requests-get)
--    5.3.2.1. [Service Root Request](#user-content-service-root-request)
--    5.3.2.2. [Metadata Document Request](#user-content-metadata-document-request)
--    5.3.2.3. [Service Document Request](#user-content-service-document-request)
--    5.3.2.4. [Resource Retrieval Requests](#user-content-resource-retrieval-requests)
--     5.3.2.4.1. [Query Parameters](#user-content-query-parameters)
--     5.3.2.4.2. [Retrieving Collections](#user-content-retrieving-collections)
--   5.3.3. [HEAD](#user-content-head)
--   5.3.4. [Data Modification Requests](#user-content-data-modification-requests)
--    5.3.4.1. [Update (PATCH)](#user-content-update-patch)
--    5.3.4.2. [Replace (PUT)](#user-content-replace-put)
--    5.3.4.3. [Create (POST)](#user-content-replace-post)
--    5.3.4.4. [Delete (DELETE)](#user-content-delete-delete)
--    5.3.4.5. [Actions (POST)](#user-content-actions-post)
--  5.4. [Responses](#user-content-responses)
--   5.4.1. [Response Headers](#user-content-response-headers)
--   5.4.2. [Status Codes](#user-content-status-codes)
--   5.4.3. [Metadata Responses](#user-content-metadata-responses)
--    5.4.3.1. [Service Metadata](#user-content-service-metadata)
--    5.4.3.2. [Referencing OEM Extensions](#user-content-referencing-oem-extensions)
--    5.4.3.3. [Annotations](#user-content-annotations)
--   5.4.4. [Resource Responses](#user-content-resource-responses)
--    5.4.4.1. [Context Property](#user-content-context-property)
--     5.4.4.1.1. [Select List](#user-content-select-list)
--    5.4.4.2. [Resource Identifier Property](#user-content-resource-identifier-property)
--    5.4.4.3. [Type Property](#user-content-type-property)
--    5.4.4.4. [ETag Property](#user-content-etag-property)
--    5.4.4.5. [Primitive Properties](#user-content-primitive-properties)
--     5.4.4.5.1. [DateTime Values](#user-content-datetime-values)
--    5.4.4.6. [Structured Properties](#user-content-structures-properties)
--    5.4.4.7. [Collection Properties](#user-content-collection-properties)
--    5.4.4.8. [Actions Property](#user-content-actions-property)
--     5.4.4.8.1. [Action Representation](#user-content-action-representation)
--     5.4.4.8.2. [Allowable Values](#user-content-allowable-values)
--    5.4.4.9. [Links Property](#user-content-links-property)
--     5.4.4.9.1. [Navigation Link to Related Resources](#user-content-navigation-link-to-related-resources)
--     5.4.4.9.2. [Reference to a Single Related Resource](#user-content-reference-to-a-single-related-resource)
--     5.4.4.9.3. [Array of References to Related Resources](#user-content-array-of-references-to-related-resources)
--    5.4.4.10. [OEM Property](#user-content-oem-property)
--    5.4.4.11. [Inline Error Property](#user-content-inline-error-property)
--     5.4.4.11.1. [Object Errors](#user-content-object-errors)
--     5.4.4.11.2. [Property Errors](#user-content-property-errors)
--    5.4.4.12. [Additional Annotations](#user-content-additional-annotations)
--   5.4.5. [Resource Collections](#user-content-resource-collections)
--    5.4.5.1. [Context Property](#user-content-context-property)
--    5.4.5.2. [Resource Count Property](#user-content-resource-count-property)
--    5.4.5.3. [Resource Members Property](#user-content-resource-members-property)
--    5.4.5.4. [Partial Results](#user-content-partial-results)
--    5.4.5.5. [Additional Annotations](#user-content-additional-annotations)
--   5.4.6. [Extended Error Handling](#user-content-extended-error-handling)
-- 6. [Data Model & Schema](#user-content-data-model--schema)
--  6.1. [Type Identifiers](#user-content-type-identifiers)
--  6.2. [Common Naming Conventions](#user-content-common-naming-conventions)
--  6.3. [Localization Considerations](#user-content-localization-considerations)
--  6.4. [Schema Definition](#user-content-schema-definition)
--   6.4.1. [Common Annotations](#user-content-common-annotations)
--    6.4.1.1. [Description](#user-content-description)
--    6.4.1.2. [Specification](#user-content-specification)
--   6.4.2. [Schema Documents](#user-content-schema-documents)
--    6.4.2.1. [Referencing other Schemas](#user-content-referencing-other-schemas)
--    6.4.2.2. [Namespace Definitions](#user-content-namespace-definitions)
--   6.4.3. [Resource Type Definitions](#user-content-resource-type-definitions)
--   6.4.4. [Resource Properties](#user-content-resource-properties)
--    6.4.4.1. [Property Types](#user-content-property-types)
--     6.4.4.1.1. [Primitive Types](#user-content-primitive-types)
--     6.4.4.1.2. [Structured Types](#user-content-structured-types)
--     6.4.4.1.3. [Enums](#user-content-enums)
--     6.4.4.1.4. [Collections](#user-content-collections)
--    6.4.4.2. [Non-Nullable properties](#user-content-non-nullable-properties)
--    6.4.4.3. [Read-only properties](#user-content-read-only-properties)
--    6.4.4.4. [Required Properties](#user-content-required-properties)
--    6.4.4.5. [Units of Measure](#user-content-units-of-measure)
--    6.4.4.6. [Language-Dependent Property Values](#user-content-language-dependent-property-values)
--   6.4.5. [Reference Properties](#user-content-reference-properties)
--    6.4.5.1. [Expanded References](#user-content-expanded-references)
--   6.4.6. [Resource Actions](#user-content-resource-actions)
--   6.4.7. [Resource Extensibility](#user-content-resource-extensibility)
--    6.4.7.1. [Property Extensions](#user-content-property-extensions)
--    6.4.7.2. [Custom Actions](#user-content-custom-actions)
--    6.4.7.3. [Custom Annotations](#user-content-custom-annotations)
--  6.5. [Common SPMA Resource Properties](#user-content-common-spma-resource-properties)
--   6.5.1. [Id](#user-content-id)
--   6.5.2. [Name](#user-content-name)
--   6.5.3. [Description](#user-content-description)
--   6.5.4. [Created](#user-content-created)
--   6.5.5. [Modified](#user-content-modified)
--   6.5.6. [Status](#user-content-status)
--   6.5.7. [Links](#user-content-links)
--   6.5.8. [Actions](#user-content-actions)
--   6.5.9. [OEM](#user-content-oem)
--   6.5.10. [Settings](#user-content-settings)
--   6.5.11. [SettingsResult](#user-content-settingsresult)
--   6.5.12. [CorrelatableID](#user-content-correlatableid)
--   6.5.13. [Other common properties](#user-content-other-common-properties)
--  6.6. [SPMA Resources](#user-content-spma-resources)
--   6.6.1. [Current Configuration](#user-content-current-configuration)
--   6.6.2. [Settings](#user-content-settings)
--   6.6.3. [Services](#user-content-services)
--   6.6.4. [Registry](#user-content-registry)
--   6.6.5. [Schema Variations](#user-content-schema-variations)
-- 7. [Service Details](#user-content-service-details)
--  7.1. [Eventing](#user-content-eventing)
--   7.1.1. [Event Message Subscription](#user-content-event-message-subscription)
--   7.1.2. [Event Message Objects](#user-content-event-message-objects)
--   7.1.3. [Subscription Cleanup](#user-content-subscription-cleanup)
--  7.2. [Asynchronous Operations](#user-content-asynchronous-operations)
--  7.3. [Timestamp Management](#user-content-timestamp-management)
--  7.4. [Resource Tree Stability](#user-content-resource-tree-stability)
--  7.5. [Discovery](#user-content-discovery)
--   7.5.1. [UPnP Compatibility](#user-content-upnpcompatibility)
--   7.5.2. [USN Format](#user-content-usn-format)
--   7.5.3. [M-SEARCH Response](#user-content-m-search-response)
--   7.5.4. [Notify, Alive, and Shutdown messages](#user-content-notify-alive-and-shutdown-messages)
-- 8. [Security](#user-content-security)
--  8.1. [Goals](#user-content-goals)
--  8.2. [Protocols](#user-content-protocols)
--   8.2.1. [Discovery](#user-content-discovery)
--   8.2.2. [Transport](#user-content-transport)
--    8.2.2.1. [TLS](#user-content-tls)
--    8.2.2.2. [Cipher suites](#user-content-cipher-suites)
--    8.2.2.3. [Certificates](#user-content-certificates)
--   8.2.3. [FIPS/Common Criteria Compliance](#user-content-fips-common-criteria-compliance)
--  8.3. [Sensitive Data](#user-content-sensitive-data)
--  8.4. [Authentication](#user-content-authentication)
--   8.4.1. [HTTP Header Security](#user-content-http-header-security)
--    8.4.1.1. [HTTP Redirect](#user-content-http-redirect)
--   8.4.2. [Extended Error Handling](#user-content-extende-error-handling)
--   8.4.3. [HTTP Header Authentication](#user-content-http-header-authentication)
--    8.4.3.1. [BASIC authentication](#user-content-basic-authentication)
--    8.4.3.2. [Digest authentication](#user-content-digest-authentication)
--    8.4.3.3. [Negotiate](#user-content-negotiate)
--    8.4.3.4. [Request / Message Level Authentication](#user-content-request--message-level-authentication)
--    8.4.3.5. [Certificate based authentication?](#user-content-certificate-based-authentication)
--   8.4.4. [Session Management](#user-content-session-management)
--    8.4.4.1. [Session Lifecycle Management](#user-content-session-lifecycle-management)
--    8.4.4.2. [Login Sessions](#user-content-login-sessions)
--    8.4.4.3. [Login](#user-content-login)
--    8.4.4.4. [Logout](#user-content-logout)
--    8.4.4.5. [X-Auth-Token HTTP Header](#user-content-x-auth-token-http-header)
--   8.4.5. [AccountService](#user-content-accountservice)
--   8.4.6. [Async Tasks](#user-content-async-tasks)
--   8.4.7. [Event Subscriptions](#user-content-event-subscriptions)
--   8.4.8. [Privilege Model / Authorization](#user-content-privilege-model--authorization)
--    8.4.8.1. [Profiles and Roles](#user-content-profiles-and-roles)
--   8.4.9. [Role Based Privilege](#user-content-role-based-privilege)
--  8.5. [Data Model Validation](#user-content-data-model-validation)
--   8.5.1. [Schema](#user-content-schema)
--  8.6. [Logging](#user-content-logging)
--   8.6.1. [Required data for security log entries](#user-content-required-data-for-security-log-entries)
--   8.6.2. [Completeness of Logging](#user-content-completeness-of-logging)
--   8.6.3. [Content of Audit Logs](#user-content-content-of-audit-logs)
-- 9. [Appendix A](#user-content-appendix-a)
--  9.1. [Known attack vector mitigation](#user-content-known-attack-vector-mitigation)
-- 10. [Appendix B: Notes](#user-content-appendx-b-notes)
-- 11. [Appendix C: Summary of Changes](#user-content-appendix-c-summary-of-changes)
+	IMPORTANT: This document is not a standard. It does not necessarily reflect the views of the 
+	DMTF or all of its members. Because this document is a Work in Progress, it may still change, 
+	perhaps profoundly. This document is available for public review and comment until superceded.
+
+	Provide any comments through the DMTF Feedback Portal: http://www.dmtf.org/standards/feedback
+
+Document Type: DMTF Standard
+
+Document Status: Work In Progress - Not a DMTF Standard - DMTF Confidential
+
+Document Language: en-US
+
+	Copyright Notice
+	
+	Copyright © 2014 Distributed Management Task Force, Inc. (DMTF). All rights reserved.
+
+DMTF is a not-for-profit association of industry members dedicated to promoting enterprise and systems management and interoperability. Members and non-members may reproduce DMTF specifications and documents, provided that correct attribution is given. As DMTF specifications may be revised from time to time, the particular version and release date should always be noted.
+
+Implementation of certain elements of this standard or proposed standard may be subject to third party patent rights, including provisional patent rights (herein "patent rights"). DMTF makes no representations to users of the standard as to the existence of such rights, and is not responsible to recognize, disclose, or identify any or all such third party patent right, owners or claimants, nor for any incomplete or inaccurate identification or disclosure of such rights, owners or claimants. DMTF shall have no liability to any party, in any manner or circumstance, under any legal theory whatsoever, for failure to recognize, disclose, or identify any such third party patent rights, or for such party's reliance on the standard or incorporation thereof in its product, protocols or testing procedures. DMTF shall have no liability to any party implementing such standard, whether such implementation is foreseeable or not, nor to any patent owner or claimant, and shall have no liability or responsibility for costs or losses incurred if a standard is withdrawn or modified after publication, and shall be indemnified and held harmless by any party implementing the standard from any and all claims of infringement by a patent owner for such implementations.
+
+For information about patents held by third-parties which have notified the DMTF that, in their opinion, such patent may relate to or impact implementations of DMTF standards, visit http://www.dmtf.org/about/policies/disclosures.php.
+
+CONTENTS
+
+- 1. [Scope](#user-content-scope)
+- 2. [Normative References](#user-content-normative-references)
+- 3. [Terms and Definitions](#user-content-terms-and-definitions)
+- 4. [Symbols and Abbreviated Terms](#symbols-and-abbreviated-terms)
+- 5. [Overview](#user-content-overview)
+  - 5.1. [Principal Goals & Scope](#user-content-principle-goals--scope)
+  	- 5.1.1. [REST based](#user-content-rest-based)
+  	- 5.1.2. [Follow OData Conventions](#user-content-follow-odata-conventions)
+  	- 5.1.3. [Model Oriented](#user-content-model-oriented)
+  	- 5.1.4. [Separation of Protocol from Data Model](#user-content-separation-of-protocol-from-data-model)
+  	- 5.1.5. [Hypermedia API Service Endpoint](#user-content-hypermedia-api-service-endpoint)
+  	- 5.1.6. [Scope](#user-content-scope)
+  	- 5.1.7. [Limitations](#user-content-limitations)
+  - 5.2. [Service Elements](#user-content-service-elements)
+  	- 5.2.1. [Synchronous and Asynchronous Operation Support](#user-content-synchronous-and-asynchronous-operation-support)
+    - 5.2.2. [Eventing Mechanism](#user-content-eventing-mechanism)
+    - 5.2.3. [Actions](#user-content-actions)
+    - 5.2.4. [Discovery](#user-content-discovery)
+    - 5.2.5. [Device support (Serial Console, KVM-IP, Command Shell, Virtual Media)](#user-content-device-support-serial-console-kvm-ip-command-shell-virtual-media)
+  - 5.3. [Security Intro](#user-content-security-intro)
+- 6. [Protocol Details](#user-content-protocol-details)
+  - 6.1. [Use of HTTP](#user-content-use-of-http)
+  	- 6.1.1. [URIs](#user-content-uris)
+    - 6.1.2. [HTTP Methods](#user-content-http-methods)
+    - 6.1.3. [HTTP Redirect](#user-content-http-redirect)
+    - 6.1.4. [Media Types](#user-content-media-types)
+    - 6.1.5. [ETags](#user-content-etags)
+  - 6.2. [Protocol Version](#user-content-protocol-version)
+  - 6.3. [Requests](#user-content-requests)
+    - 6.3.1. [Request Headers](#user-content-request-headers)
+    - 6.3.2. [Read Requests (GET)](#user-content-read-requests-get)
+      - 6.3.2.1. [Service Root Request](#user-content-service-root-request)
+      - 6.3.2.2. [Metadata Document Request](#user-content-metadata-document-request)
+      - 6.3.2.3. [Service Document Request](#user-content-service-document-request)
+      - 6.3.2.4. [Resource Retrieval Requests](#user-content-resource-retrieval-requests)
+        - 6.3.2.4.1. [Query Parameters](#user-content-query-parameters)
+        - 6.3.2.4.2. [Retrieving Collections](#user-content-retrieving-collections)
+     - 6.3.3. [HEAD](#user-content-head)
+     - 6.3.4. [Data Modification Requests](#user-content-data-modification-requests)
+        - 6.3.4.1. [Update (PATCH)](#user-content-update-patch)
+        - 6.3.4.2. [Replace (PUT)](#user-content-replace-put)
+        - 6.3.4.3. [Create (POST)](#user-content-replace-post)
+        - 6.3.4.4. [Delete (DELETE)](#user-content-delete-delete)
+        - 6.3.4.5. [Actions (POST)](#user-content-actions-post)
+  - 6.4. [Responses](#user-content-responses)
+    - 6.4.1. [Response Headers](#user-content-response-headers)
+    - 6.4.2. [Status Codes](#user-content-status-codes)
+    - 6.4.3. [Metadata Responses](#user-content-metadata-responses)
+      - 6.4.3.1. [Service Metadata](#user-content-service-metadata)
+      - 6.4.3.2. [Referencing OEM Extensions](#user-content-referencing-oem-extensions)
+      - 6.4.3.3. [Annotations](#user-content-annotations)
+    - 6.4.4. [Resource Responses](#user-content-resource-responses)
+      - 6.4.4.1. [Context Property](#user-content-context-property)
+        - 6.4.4.1.1. [Select List](#user-content-select-list)
+      - 6.4.4.2. [Resource Identifier Property](#user-content-resource-identifier-property)
+      - 6.4.4.3. [Type Property](#user-content-type-property)
+      - 6.4.4.4. [ETag Property](#user-content-etag-property)
+      - 6.4.4.5. [Primitive Properties](#user-content-primitive-properties)
+        - 6.4.4.5.1. [DateTime Values](#user-content-datetime-values)
+      - 6.4.4.6. [Structured Properties](#user-content-structures-properties)
+      - 6.4.4.7. [Collection Properties](#user-content-collection-properties)
+      - 6.4.4.8. [Actions Property](#user-content-actions-property)
+        - 6.4.4.8.1. [Action Representation](#user-content-action-representation)
+        - 6.4.4.8.2. [Allowable Values](#user-content-allowable-values)
+      - 6.4.4.9. [Links Property](#user-content-links-property)
+        - 6.4.4.9.1. [Navigation Link to Related Resources](#user-content-navigation-link-to-related-resources)
+        - 6.4.4.9.2. [Reference to a Single Related Resource](#user-content-reference-to-a-single-related-resource)
+        - 6.4.4.9.3. [Array of References to Related Resources](#user-content-array-of-references-to-related-resources)
+      - 6.4.4.10. [OEM Property](#user-content-oem-property)
+      - 6.4.4.11. [Inline Error Property](#user-content-inline-error-property)
+        - 6.4.4.11.1. [Object Errors](#user-content-object-errors)
+        - 6.4.4.11.2. [Property Errors](#user-content-property-errors)
+      - 6.4.4.12. [Additional Annotations](#user-content-additional-annotations)
+    - 6.4.5. [Resource Collections](#user-content-resource-collections)
+      - 6.4.5.1. [Context Property](#user-content-context-property)
+      - 6.4.5.2. [Resource Count Property](#user-content-resource-count-property)
+      - 6.4.5.3. [Resource Members Property](#user-content-resource-members-property)
+      - 6.4.5.4. [Partial Results](#user-content-partial-results)
+      - 6.4.5.5. [Additional Annotations](#user-content-additional-annotations)
+   	- 6.4.6. [Extended Error Handling](#user-content-extended-error-handling)
+  - 7. [Data Model & Schema](#user-content-data-model--schema)
+    - 7.1. [Type Identifiers](#user-content-type-identifiers)
+      - 7.1.1 [Type Identifiers in JSON](#type-identifiers-in-json)
+    - 7.2. [Common Naming Conventions](#user-content-common-naming-conventions)
+    - 7.3. [Localization Considerations](#user-content-localization-considerations)
+    - 7.4. [Schema Definition](#user-content-schema-definition)
+      - 7.4.1. [Common Annotations](#user-content-common-annotations)
+        - 7.4.1.1. [Description](#user-content-description)
+        - 7.4.1.2. [Specification](#user-content-specification)
+      - 7.4.2. [Schema Documents](#user-content-schema-documents)
+        - 7.4.2.1. [Referencing other Schemas](#user-content-referencing-other-schemas)
+        - 7.4.2.2. [Namespace Definitions](#user-content-namespace-definitions)
+      - 7.4.3. [Resource Type Definitions](#user-content-resource-type-definitions)
+      - 7.4.4. [Resource Properties](#user-content-resource-properties)
+        - 7.4.4.1. [Property Types](#user-content-property-types)
+          - 7.4.4.1.1. [Primitive Types](#user-content-primitive-types)
+          - 7.4.4.1.2. [Structured Types](#user-content-structured-types)
+          - 7.4.4.1.3. [Enums](#user-content-enums)
+          - 7.4.4.1.4. [Collections](#user-content-collections)
+        - 7.4.4.2. [Non-Nullable properties](#user-content-non-nullable-properties)
+        - 7.4.4.3. [Read-only properties](#user-content-read-only-properties)
+        - 7.4.4.4. [Required Properties](#user-content-required-properties)
+        - 7.4.4.5. [Units of Measure](#user-content-units-of-measure)
+        - 7.4.4.6. [Language-Dependent Property Values](#user-content-language-dependent-property-values)
+      - 7.4.5. [Reference Properties](#user-content-reference-properties)
+        - 7.4.5.1. [Expanded References](#user-content-expanded-references)
+      - 7.4.6. [Resource Actions](#user-content-resource-actions)
+      - 7.4.7. [Resource Extensibility](#user-content-resource-extensibility)
+        - 7.4.7.1. [Property Extensions](#user-content-property-extensions)
+        - 7.4.7.2. [Custom Actions](#user-content-custom-actions)
+        - 7.4.7.3. [Custom Annotations](#user-content-custom-annotations)
+   - 7.5. [Common SPMA Resource Properties](#user-content-common-spma-resource-properties)
+     - 7.5.1. [Id](#user-content-id)
+     - 7.5.2. [Name](#user-content-name)
+     - 7.5.3. [Description](#user-content-description)
+     - 7.5.4. [Created](#user-content-created)
+     - 7.5.5. [Modified](#user-content-modified)
+     - 7.5.6. [Status](#user-content-status)
+     - 7.5.7. [Links](#user-content-links)
+     - 7.5.8. [Actions](#user-content-actions)
+     - 7.5.9. [OEM](#user-content-oem)
+     - 7.5.10. [Settings](#user-content-settings)
+     - 7.5.11. [SettingsResult](#user-content-settingsresult)
+     - 7.5.12. [CorrelatableID](#user-content-correlatableid)
+     - 7.5.13. [Other common properties](#user-content-other-common-properties)
+   - 7.6. [SPMA Resources](#user-content-spma-resources)
+     - 7.6.1. [Current Configuration](#user-content-current-configuration)
+     - 7.6.2. [Settings](#user-content-settings)
+     - 7.6.3. [Services](#user-content-services)
+     - 7.6.4. [Registry](#user-content-registry)
+     - 7.6.5. [Schema Variations](#user-content-schema-variations)
+- 8. [Service Details](#user-content-service-details)
+  - 8.1. [Eventing](#user-content-eventing)
+    - 8.1.1. [Event Message Subscription](#user-content-event-message-subscription)
+    - 8.1.2. [Event Message Objects](#user-content-event-message-objects)
+    - 8.1.3. [Subscription Cleanup](#user-content-subscription-cleanup)
+  - 8.2. [Asynchronous Operations](#user-content-asynchronous-operations)
+  - 8.3. [Timestamp Management](#user-content-timestamp-management)
+  - 8.4. [Resource Tree Stability](#user-content-resource-tree-stability)
+  - 8.5. [Discovery](#user-content-discovery)
+    - 8.5.1. [UPnP Compatibility](#user-content-upnpcompatibility)
+    - 8.5.2. [USN Format](#user-content-usn-format)
+    - 8.5.3. [M-SEARCH Response](#user-content-m-search-response)
+    - 8.5.4. [Notify, Alive, and Shutdown messages](#user-content-notify-alive-and-shutdown-messages)
+- 9. [Security](#user-content-security)
+  - 9.1. [Goals](#user-content-goals)
+  - 9.2. [Protocols](#user-content-protocols)
+    - 9.2.1. [Discovery](#user-content-discovery)
+    - 9.2.2. [Transport](#user-content-transport)
+      - 9.2.2.1. [TLS](#user-content-tls)
+      - 9.2.2.2. [Cipher suites](#user-content-cipher-suites)
+      - 9.2.2.3. [Certificates](#user-content-certificates)
+    - 9.2.3. [FIPS/Common Criteria Compliance](#user-content-fips-common-criteria-compliance)
+   - 9.3. [Sensitive Data](#user-content-sensitive-data)
+   - 9.4. [Authentication](#user-content-authentication)
+     - 9.4.1. [HTTP Header Security](#user-content-http-header-security)
+       - 9.4.1.1. [HTTP Redirect](#user-content-http-redirect)
+     - 9.4.2. [Extended Error Handling](#user-content-extende-error-handling)
+     - 9.4.3. [HTTP Header Authentication](#user-content-http-header-authentication)
+       - 9.4.3.1. [BASIC authentication](#user-content-basic-authentication)
+       - 9.4.3.2. [Digest authentication](#user-content-digest-authentication)
+       - 9.4.3.3. [Negotiate](#user-content-negotiate)
+       - 9.4.3.4. [Request / Message Level Authentication](#user-content-request--message-level-authentication)
+       - 9.4.3.5. [Certificate based authentication?](#user-content-certificate-based-authentication)
+     - 9.4.4. [Session Management](#user-content-session-management)
+       - 9.4.4.1. [Session Lifecycle Management](#user-content-session-lifecycle-management)
+       - 9.4.4.2. [Login Sessions](#user-content-login-sessions)
+       - 9.4.4.3. [Login](#user-content-login)
+       - 9.4.4.4. [Logout](#user-content-logout)
+       - 9.4.4.5. [X-Auth-Token HTTP Header](#user-content-x-auth-token-http-header)
+     - 9.4.5. [AccountService](#user-content-accountservice)
+     - 9.4.6. [Async Tasks](#user-content-async-tasks)
+     - 9.4.7. [Event Subscriptions](#user-content-event-subscriptions)
+     - 9.4.8. [Privilege Model / Authorization](#user-content-privilege-model--authorization)
+       - 9.4.8.1. [Profiles and Roles](#user-content-profiles-and-roles)
+     - 9.4.9. [Role Based Privilege](#user-content-role-based-privilege)
+   - 9.5. [Data Model Validation](#user-content-data-model-validation)
+     - 9.5.1. [Schema](#user-content-schema)
+   - 9.6. [Logging](#user-content-logging)
+     - 9.6.1. [Required data for security log entries](#user-content-required-data-for-security-log-entries)
+     - 9.6.2. [Completeness of Logging](#user-content-completeness-of-logging)
+     - 9.6.3. [Content of Audit Logs](#user-content-content-of-audit-logs)
+  - [ANNEX A](#user-content-annex-a-informative)
+    - [Known attack vector mitigation](#user-content-known-attack-vector-mitigation) 
+  - [ANNEX B](#user-content-annex-b-informative)
+    - [Notes](#user-content-notes)
+  - [ANNEX C](#user-content-annex-c-informative)
+    - [Change Log](#user-content-change-log)
 
 
-## Abstract
+# Foreword
 
+The Scalable Platform Management API was prepared by the Scalable Platform Management Forum.
+
+DMTF is a not-for-profit association of industry members dedicated to promoting enterprise and systems management and interoperability. For information about the DMTF, see http://www.dmtf.org.
+
+# Acknowledgments
+
+The DMTF acknowledges the following individuals for their contributions to this document:
+* Jeff Autor - Hewlett-Packard Company
+* David Brockhaus - Emerson Network Power
+* P Chandrasekhar - Dell Inc
+* Chris Davenport - Hewlett-Packard Company
+* Gamma Dean - Emerson Network Power
+* Mike Garrett - ISS iLO Firmware
+* Steve Geffin - Emerson Network Power
+* Jon Hass - Dell Inc
+* Jeff Hilland - Hewlett-Packard Company
+* Chris Hoffman - Emerson Network Power
+* John Leung - Intel Corporation
+* Michael Pizzo - Microsoft Corporation
+* Jim Shelton - Emerson Network Power
+* Tom Slaight - Intel Corporation
+* Donnie Sturgeon - Emerson Network Power
+* Pawel Szymanski - Intel Corporation
+* Paul Vancil - Dell Inc
+
+## Scope
 The Scalable Platforms Management API (SPMA) is a new interface that uses RESTful interface semantics to access data defined in model format to perform out of band systems management.  It is suitable for a wide range of servers, from stand-alone servers to rack mount and bladed environments but scales equally well for large scale cloud environments.
-
-## Acknowledgments
-
-This document is an iteration of the excellent work done by the following people in defining a base Refish specification: Jeff Hilland, Mike Garrett, Jeff Autor, Chris Davenport, David Brockhaus, Chris Hoffman, Jim Shelton, Donnie Sturgeon, Steve Geffin, Jon Hass, Paul Vancil, Gamma Dean, P Chandrasekhar.
-
-## Introduction
 
 There are several out of band systems management standards (defacto and de jour) available in the industry.  They all either vary widely in implementation, were developed for single server embedded environments or have their roots in antiquated software modeling constructs.  There is no single industry standard that is simple to use, based on emerging programming standards, embedded friendly and capable of meeting large scale data center & cloud needs.
 
-### References
+## Normative References
 
-* IETF RFC 2616, R. Fielding et al., HTTP/1.1, [http://www.ietf.org/rfc/rfc2616.txt](http://www.ietf.org/rfc/rfc2616.txt "http://www.ietf.org/rfc/rfc2616.txt")
-* IETF RFC 2617  J. Franks et al., HTTP Authentication: Basic and Digest Access Authentication, [http://www.ietf.org/rfc/rfc2617.txt](http://www.ietf.org/rfc/rfc2617.txt "http://www.ietf.org/rfc/rfc2617.txt")
-* IETF RFC 3986  T. Berners-Lee et al, Uniform Resource Identifier (URI): Generic Syntax, [http://www.ietf.org/rfc/rfc3986.txt](http://www.ietf.org/rfc/rfc3986.txt "http://www.ietf.org/rfc/rfc3986.txt")
-* IETF RFC 4627, D. Crockford, The application/json Media Type for JavaScript Object Notation (JSON), [http://www.ietf.org/rfc/rfc4627.txt](http://www.ietf.org/rfc/rfc4627.txt "http://www.ietf.org/rfc/rfc4627.txt")
-* IETF RFC 5988, M. Nottingham, Web linking, [http://www.ietf.org/rfc/rfc5988.txt](http://www.ietf.org/rfc/rfc5988.txt "http://www.ietf.org/rfc/rfc5988.txt")
-* IETF RFC 6901, P. Bryan, Ed. et al, JavaScript Object Notation (JSON) Pointer, [http://www.ietf.org/rfc/rfc6901.txt](http://www.ietf.org/rfc/rfc6901.txt "http://www.ietf.org/rfc/rfc6901.txt")
-* IETF RFC 6906, E. Wilde, The 'profile' Link Relation Type, [http://www.ietf.org/rfc/rfc6906.txt](http://www.ietf.org/rfc/rfc6906.txt "http://www.ietf.org/rfc/rfc6906.txt")
-* ISO/IEC Directives, Part 2, Rules for the structure and drafting of International Standards, [http://isotc.iso.org/livelink/livelink.exe?func=ll&objId=4230456&objAction=browse&sort=subtypeH](http://isotc.iso.org/livelink/livelink.exe?func=ll&objId=4230456&objAction=browse&sort=subtypeH "http://isotc.iso.org/livelink/livelink.exe?func=ll&objId=4230456&objAction=browse&sort=subtypeH")
-* JSON Schema, Core Definitions and Terminology, Draft 4
+The following referenced documents are indispensable for the application of this document. For dated or versioned references, only the edition cited (including any corrigenda or DMTF update versions) applies. For references without a date or version, the latest published edition of the referenced document (including any corrigenda or DMTF update versions) applies.
+
+* <a name="RFC2616">IETF RFC 2616</a>, R. Fielding et al., HTTP/1.1, [http://www.ietf.org/rfc/rfc2616.txt](http://www.ietf.org/rfc/rfc2616.txt "http://www.ietf.org/rfc/rfc2616.txt")
+* <a name="RFC2617">IETF RFC 2617</a>  J. Franks et al., HTTP Authentication: Basic and Digest Access Authentication, [http://www.ietf.org/rfc/rfc2617.txt](http://www.ietf.org/rfc/rfc2617.txt "http://www.ietf.org/rfc/rfc2617.txt")
+* <a name="RFC3986">IETF RFC 3986</a>  T. Berners-Lee et al, Uniform Resource Identifier (URI): Generic Syntax, [http://www.ietf.org/rfc/rfc3986.txt](http://www.ietf.org/rfc/rfc3986.txt "http://www.ietf.org/rfc/rfc3986.txt")
+* <a name="RFC4627">IETF RFC 4627</a>, D. Crockford, The application/json Media Type for JavaScript Object Notation (JSON), [http://www.ietf.org/rfc/rfc4627.txt](http://www.ietf.org/rfc/rfc4627.txt "http://www.ietf.org/rfc/rfc4627.txt")
+* <a name="RFC5988">IETF RFC 5988</a>, M. Nottingham, Web linking, [http://www.ietf.org/rfc/rfc5988.txt](http://www.ietf.org/rfc/rfc5988.txt "http://www.ietf.org/rfc/rfc5988.txt")
+* <a name="RFC6901">IETF RFC 6901</a>, P. Bryan, Ed. et al, JavaScript Object Notation (JSON) Pointer, [http://www.ietf.org/rfc/rfc6901.txt](http://www.ietf.org/rfc/rfc6901.txt "http://www.ietf.org/rfc/rfc6901.txt")
+* <a name="RFC6909">IETF RFC 6906</a>, E. Wilde, The 'profile' Link Relation Type, [http://www.ietf.org/rfc/rfc6906.txt](http://www.ietf.org/rfc/rfc6906.txt "http://www.ietf.org/rfc/rfc6906.txt")
+* <a name="Directives">ISO/IEC Directives</a>, Part 2, Rules for the structure and drafting of International Standards, [http://isotc.iso.org/livelink/livelink.exe?func=ll&objId=4230456&objAction=browse&sort=subtypeH](http://isotc.iso.org/livelink/livelink.exe?func=ll&objId=4230456&objAction=browse&sort=subtypeH "http://isotc.iso.org/livelink/livelink.exe?func=ll&objId=4230456&objAction=browse&sort=subtypeH")
+* <a name="JSONSchema-Core">JSON Schema, Core Definitions and Terminology, Draft 4</a>
 [http://tools.ietf.org/html/draft-zyp-json-schema-04.txt](http://tools.ietf.org/html/draft-zyp-json-schema-04.txt "http://tools.ietf.org/html/draft-zyp-json-schema-04.txt")
-* JSON Schema, Interactive and Non-Interactive Validation, Draft 4
+* <a name="JSONSchema-Validation">JSON Schema, Interactive and Non-Interactive Validation, Draft 4</a>
 [http://tools.ietf.org/html/draft-fge-json-schema-validation-00.txt](http://tools.ietf.org/html/draft-fge-json-schema-validation-00.txt "http://tools.ietf.org/html/draft-fge-json-schema-validation-00.txt")
-*	OData Version 4.0 Part 1: Protocol. 24 February 2014. [http://docs.oasis-open.org/odata/odata/v4.0/os/odata-v4.0-part1-protocol.html]("http://docs.oasis-open.org/odata/odata/v4.0/os/odata-v4.0-part1-protocol.html])
-*	OData Version 4.0 Part 2: URL Conventions. 24 February 2014. [http://docs.oasis-open.org/odata/odata/v4.0/os/odata-v4.0-part2-url-conventions.html]("http://docs.oasis-open.org/odata/odata/v4.0/os/odata-v4.0-part2-url-conventions.html")
-*	OData Version 4.0 Part 3: Common Schema Definition Language (CSDL). 24 February 2014. [http://docs.oasis-open.org/odata/odata/v4.0/os/odata-v4.0-part3-csdl.html]("http://docs.oasis-open.org/odata/odata/v4.0/os/odata-v4.0-part3-csdl.html")
-*	OData Version 4.0: Units of Measure Vocabulary. 24 February 2014. [http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml]("http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml")
-* Redfish Schema, Specification and Schema
-[http://www.RedfishSpecification.org](http://www.RedfishSpecification.org "http://www.RedfishSpecification.org")
+* <a name="OData-Protocol">OData Version 4.0 Part 1: Protocol</a>. 24 February 2014. [http://docs.oasis-open.org/odata/odata/v4.0/os/odata-v4.0-part1-protocol.html]("http://docs.oasis-open.org/odata/odata/v4.0/os/odata-v4.0-part1-protocol.html])
+* <a name="OData-URLConventions">OData Version 4.0 Part 2: URL Conventions</a>. 24 February 2014. [http://docs.oasis-open.org/odata/odata/v4.0/os/odata-v4.0-part2-url-conventions.html]("http://docs.oasis-open.org/odata/odata/v4.0/os/odata-v4.0-part2-url-conventions.html")
+* <a name="OData-CSDL">OData Version 4.0 Part 3: Common Schema Definition Language (CSDL)</a>. 24 February 2014. [http://docs.oasis-open.org/odata/odata/v4.0/os/odata-v4.0-part3-csdl.html]("http://docs.oasis-open.org/odata/odata/v4.0/os/odata-v4.0-part3-csdl.html")
+* <a name="OData-JSON">OData Version 4.0 JSON Format</a>. 24 February 2014. [http://docs.oasis-open.org/odata/odata-json-format/v4.0/os/odata-json-format-v4.0-os.html]("http://docs.oasis-open.org/odata/odata-json-format/v4.0/os/odata-json-format-v4.0-os.html")
+* <a name="OData-UnitsOfMeasure">OData Version 4.0: Units of Measure Vocabulary</a>. 24 February 2014. [http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml]("http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml")
 
-### Terminology
+## Terms and Definitions
+In this document, some terms have a specific meaning beyond the normal English meaning. Those terms are defined in this clause.
+
+The terms "shall" ("required"), "shall not", "should" ("recommended"), "should not" ("not recommended"), "may", "need not" ("not required"), "can" and "cannot" in this document are to be interpreted as described in ISO/IEC Directives, Part 2, Annex H. The terms in parenthesis are alternatives for the preceding term, for use in exceptional cases when the preceding term cannot be used for linguistic reasons. Note that ISO/IEC Directives, Part 2, Annex H specifies additional alternatives. Occurrences of such additional alternatives shall be interpreted in their normal English meaning.
+
+The terms "clause", "subclause", "paragraph", and "annex" in this document are to be interpreted as described in ISO/IEC Directives, Part 2, Clause 5.
+
+The terms "normative" and "informative" in this document are to be interpreted as described in ISO/IEC Directives, Part 2, Clause 3. In this document, clauses, subclauses, or annexes labeled "(informative)" do not contain normative content. Notes and examples are always informative elements.
+
+The following additional terms are used in this document.
 
 | Term           | Definition                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | ---            | ---                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
@@ -268,7 +301,9 @@ There are several out of band systems management standards (defacto and de jour)
 | Response       | A message from a Server to a Client in response to a request message.  It consists of a status line, response headers, an empty line and an optional message body.                                                                                                                                                                                                                                                                                                                              |
 | Subscription   | The act of connecting to an error service in order to receive events.                                                                                                                                                                                                                                                                                                                                                                                                                           |
 
-### Acronyms and Abbreviations
+## Symbols and Abbreviated Terms
+
+The following additional abbreviations are used in this document.
 
 | Term   | Definition                                          |
 | ---    | ---                                                 |
@@ -281,26 +316,6 @@ There are several out of band systems management standards (defacto and de jour)
 | NIC    | Network Interface Card                              |
 | PCI    | Peripheral Component Interconnect                   |
 | XSS    | Cross-Site Scripting                                |
-
-### Conformance Terminology
-
-The terms defined in this section are used throughout the document to indicate how certain behaviors conform or do not conform to this specification.  Consult ISO/IEC Directives, Part 2, Rules for the structure and drafting of International Standards for details.
-
-For the purposes of this document, the following terms and definitions apply. 
-
-| Term | Usage
-| --- | --- 
-| can | used for statements of possibility and capability, whether material, physical, or causal 
-| cannot | used for statements of possibility and capability, whether material, physical, or causal 
-| conditional | indicates requirements to be followed strictly in order to conform to the document when the specified conditions are met 
-| mandatory | indicates requirements to be followed strictly in order to conform to the document and from which no deviation is permitted 
-| may | indicates a course of action permissible within the limits of the document 
-| need not | indicates a course of action permissible within the limits of the document 
-| optional | indicates a course of action permissible within the limits of the document 
-| shall | indicates requirements to be followed strictly in order to conform to the document and from which no deviation is permitted
-| shall not | indicates requirements to be followed in order to conform to the document and from which no deviation is permitted
-| should | indicates that among several possibilities, one is recommended as particularly suitable, without mentioning or excluding others, or that a certain course of action is preferred but not necessarily required 
-| should not | indicates that a certain possibility or course of action is deprecated but not prohibited 
 
 ## Overview
 
@@ -422,7 +437,7 @@ The challenge with security in a remote interface that is programmatic is to ens
 
 ## Protocol Details
 
-The Scalable Platform Management API is based on REST and follows OData conventions for interoperability, as defined in [OData-Protocol], JSON payloads, as defined in [OData-JSON], and a machine-readable representation of schema, as defined in [OData-Schema]. The schemas include annotations to enable direct translation to JSON Schema for validation and consumption by tools supporting JSON Schema. Following these common standards and conventions increases interoperability and enables leveraging of existing tool chains.
+The Scalable Platform Management API is based on REST and follows OData conventions for interoperability, as defined in [OData-Protocol](#user-content-OData-Protocol), JSON payloads, as defined in [OData-JSON](#user-content-OData-JSON), and a machine-readable representation of schema, as defined in [OData-Schema](#user-content-OData-CSDL). The schemas include annotations to enable direct translation to JSON Schema for validation and consumption by tools supporting JSON Schema. Following these common standards and conventions increases interoperability and enables leveraging of existing tool chains.
  
 SPMA conforms to the OData minimal conformance level for clients consuming minimal metadata.
 
@@ -446,7 +461,7 @@ Some operations may take longer than required for synchronous return semantics. 
 	
 HTTP is ideally suited to a RESTful interface. This section describes how HTTP is used in the SPMA interface and what constraints are added on top of HTTP to assure interoperability of SPMA compliant implementations.
 
-* An SPMA interface shall be exposed through a web service endpoint implemented using Hypertext Transfer Protocols, version 1.1 (RFC 2616).
+* An SPMA interface shall be exposed through a web service endpoint implemented using Hypertext Transfer Protocols, version 1.1 ([RFC2616](#user-content-RFC2616)).
 
 #### URIs
 
@@ -461,17 +476,17 @@ To begin operations, a client must know the URI for a resource.
 
 The base resource URI is well known and is based on the protocol version.  Discovering the URIs to additional resources is done through observing the associated resource links returned in previous responses. This type of API that is consumed by navigating URIs returned by the service is known as a Hypermedia API.
 
-The URI is the primary unique identifier of resources.  SPMA considers 3 parts of the URI as described in RFC3986. 
+The URI is the primary unique identifier of resources.  SPMA considers 3 parts of the URI as described in [RFC3986](#user-content-RFC3986). 
 
 The first part includes the scheme and authority portions of the URI. The second part includes the root service and version.  The third part is a unique resource identifier.
 
 For example, in the following URL:
 
-    Example: https://mgmt.vendor.com/rest/v1/System/1
+    Example: https://mgmt.vendor.com/rest/v1/Systems/1
 
 * The first portion is the service path (https://mgmr.vendor.com).
 * The second portion is the base resource and version (/rest/v1).
-* The third portion is the unique resource path (System/1).
+* The third portion is the unique resource path (Systems/1).
 
 The scheme and authority portions of the URI _shall not_ be considered part of the unique _identifier_ of the resource. This is due to redirection capabilities and local operations which may result in the variability of the connection portion.  The remainder of the URI (the service and resource paths) is what _uniquely identifies_ the resource, and this is what is returned in all SPMA payloads.  
 
@@ -479,11 +494,11 @@ The scheme and authority portions of the URI _shall not_ be considered part of t
 
 For example, a POST may return the following URI in the Location header of the response (indicating the new resource created by the POST):
 
-    Example: /rest/v1/System/2
+    Example: /rest/v1/Systems/2
 
-Assuming the client is connecting through an appliance named "mgmt.vendor.com", the full URI needed to access this new resource is https://mgmt.vendor.com/rest/v1/System/2.
+Assuming the client is connecting through an appliance named "mgmt.vendor.com", the full URI needed to access this new resource is https://mgmt.vendor.com/rest/v1/Systems/2.
 
-URIs, as described in RFC3986, may also contain a query (?query) and a frag (#user-content-frag) components.  Queries are addressed in the section [Query Parameters](#user-content-query-parameters).  Fragments (frag) shall be ignored by the server when used as the URI for submitting an operation. Frags shall not be used in a reference in a links section. Frags may be used in places like [type references](#user-content-type-property), [CorrelatableIDs](#user-content-correlatableidreferences) and [Events](#user-content-events). Clients should expect to parse out the fragment portion for Types and Events, but CorrelatableIDs shall be treated as opaque.  When a Frag is used, it shall be of JSONPointer format according to RFC6901.
+URIs, as described in [RFC3986](#user-content-RFC3986), may also contain a query (?query) and a frag (#frag) components.  Queries are addressed in the section [Query Parameters](#user-content-query-parameters).  Fragments (frag) shall be ignored by the server when used as the URI for submitting an operation. Frags shall not be used in a reference in a links section. Frags may be used in places like [type references](#user-content-type-property), [CorrelatableIDs](#user-content-correlatableidreferences) and [Events](#user-content-events). Clients should expect to parse out the fragment portion for Types and Events, but CorrelatableIDs shall be treated as opaque.  When a Frag is used, it shall be of JSONPointer format according to [RFC6901](#user-content-RFC6901).
 
 #### HTTP Methods
 
@@ -516,9 +531,7 @@ In HTTP messages the media type is specified in the Content-Type header. A clien
 
 In order to provide a common base for interoperability, all resources will be made available using the JSON media type "application/json".
 
-* SPMA services _shall_ make every resource available in a representation based on JSON, as specified in [RFC4627][]. Receivers shall not reject a message because it is encoded in JSON, and shall offer at least one response representation based on JSON. An implementation may offer additional representations using non-JSON media types.
-
-[RFC4627]: http://www.ietf.org/rfc/rfc4627.txt
+* SPMA services _shall_ make every resource available in a representation based on JSON, as specified in [RFC4627](#user-content-RFC4627). Receivers shall not reject a message because it is encoded in JSON, and shall offer at least one response representation based on JSON. An implementation may offer additional representations using non-JSON media types.
 
 Responses to GET requests may be compressed.  Clients shall be prepared to accept a Content-Encoding of gzip in a Response to a GET. 
 
@@ -627,7 +640,7 @@ The GET method is used to retrieve a representation of a resource.  That represe
 
 The root URL for SPMA version 1 services shall be "/rest/v1".
 
-Additionally, the latest supported SPMA service shall be aliased at "/rest". In this case the endpoint at "/rest/v1" may be an HTTP redirect to "/rest"
+Additionally, the latest supported SPMA service shall be aliased at "/rest". In this case the endpoint at "/rest" may be an HTTP redirect to "/rest/v1".
 
 The root URL for the service returns a RootService resource as defined by this specification.
 
@@ -641,7 +654,7 @@ SPMA resources are always referenced externally, using the canonical URI defined
 
 ##### Service Document Request
 
-SPMA services shall expose an OData service document, as defined in [OData-JSON], at the /rest/v1/ServiceDocument resource. This service document provides a standard format for enumerating the resources exposed by the service, enables a hypermedia-driven OData client to navigate to the resources of the service.
+SPMA services shall expose an OData service document, as defined in [OData-JSON](#user-content-OData-JSON), at the /rest/v1/odata resource. This service document provides a standard format for enumerating the resources exposed by the service, enabling a hypermedia-driven OData client to navigate to the resources of the service.
 
 ##### Resource Retrieval Requests
 
@@ -728,18 +741,18 @@ The POST method is used to initiate potentially non-idempotent operations on the
 
 Custom actions are requested on a resource by sending the HTTP POST method to the URI of the action. By convention, the URI of an action is of the form:
 
- *ResourceUri*/Actions/*QualifiedActionMame*
+ *ResourceUri*/Actions/*QualifiedActionName*
 
 where
 * *ResourceUri* is the URL of the resource which supports invoking the action,
 * Actions is the name of the property containing the actions for a resource
-* *QualifiedActionName* is the namespace qualified name of the action. 
+* *QualifiedActionName* is the name of the action qualified by the namespace alias. 
 
 The first parameter of a bound function is the resource on which the action is being invoked. The remaining parameters are represented as name/value pairs in the body of the request.
 
 Clients can query a resource directly to determine the [actions](#user-content-actions-property) that are available as well as [valid parameter values](#user-content-allowable-values) for those actions.  Some parameter information may require the client to examine the schema corresponding to the resource. 
 
-For instance, if a schema document `http://dmtf.org/schema/v1/ComputerSystem` defines a Reset action, in the `ComputerSystem.1.0.0` namespace, bound to the `ComputerSystem.Actions` type, such as this example:
+For instance, if a schema document `http://dmtf.org/schema/v1/ComputerSystem` defines a Reset action, in the `ComputerSystem.1.0.0` namespace, with the alias "ComputerSystem", bound to the `ComputerSystem.Actions` type, such as this example:
 
 ~~~xml
 <Schema Name="ComputerSystem.1.0.0" Alias="ComputerSystem">
@@ -752,11 +765,11 @@ For instance, if a schema document `http://dmtf.org/schema/v1/ComputerSystem` de
 </Schema>
 ~~~
 
-And a ComputerSystem resource contains an [Actions](#user-content-actions-property) property such as this:
+And a computer system resource contains an [Actions](#user-content-actions-property) property such as this:
 
 ~~~json
 "Actions": {
-    "http://dmtf.org/schema/v1/ComputerSystem#ComputerSystem.1.0.0.Reset": {
+    "#ComputerSystem.Reset": {
         "target":"/rest/v1/Systems/1/Actions/ComputerSystem.Reset",
         "ResetType@DMTF.AllowableValues": [
             "On",
@@ -866,7 +879,7 @@ HTTP defines status codes that can be returned in response messages.
 #### Metadata Responses
 
 ##### Service Metadata
-The service metadata describes top-level resources of the service according to [OData-Schema]. The schema is represented as an XML document with a root element named "Edmx", defined in the http://docs.oasis-open.org/odata/ns/edmx" namespace, and with an OData Version attribute equal to "4.0".
+The service metadata describes top-level resources of the service according to [OData-Schema](#user-content-OData-CSDL). The schema is represented as an XML document with a root element named "Edmx", defined in the http://docs.oasis-open.org/odata/ns/edmx" namespace, and with an OData Version attribute equal to "4.0".
 
 ~~~xml
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
@@ -874,11 +887,18 @@ The service metadata describes top-level resources of the service according to [
 </edmx:Edmx>
 ~~~
 
-The service metadata shall include the "ServiceRoot.1.0.0" and "DMTFExtensions.1.0.0" namespaces. The "ServiceRoot.1.0.0" namespace shall be aliased with "ServiceRoot" and the "DMTFExtensions.1.0.0" namespace shall be aliased with "DMTF".
+The service metadata shall include the namespaces for each of the DMTF resource types, along with the "DMTFExtensions.1.0.0" namespace. These references may use the standard Uri for the hosted schema definitions (i.e., on http://dmtf.org/schema) or a Url to a local version of the schema that shall be identical to the hosted version. The namespace shall be aliased with the version-independent namespace name.
 
 ~~~xml
 <edmx:Reference Uri="http://dmtf.org/schema/v1/ServiceRoot.1.0.0">
 	<edmx:Include Namespace="ServiceRoot.1.0.0" Alias="ServiceRoot"/>
+</edmx:Reference>
+<edmx:Reference Uri="http://dmtf.org/schema/v1/AccountService.0.94.0">
+  <edmx:Include Namespace="AccountService.0.94.0" Alias="AccountService"/>
+</edmx:Reference>
+...
+<edmx:Reference Uri="http://dmtf.org/schema/v1/VirtualMedia.0.94.0">
+  <edmx:Include Namespace="VirtualMedia.0.94.0" Alias="VirtualMedia"/>
 </edmx:Reference>
 <edmx:Reference Uri="http://dmtf.org/schema/v1/Extensions">
 	<edmx:Include Namespace="DMTFExtensions.1.0.0" Alias="DMTF"/>
@@ -928,11 +948,11 @@ The annotation file itself specifies the Target schema element being annotated, 
 
 #### Resource Responses
 
-Resources are returned as JSON payloads, using the mime time `application/json`.
+Resources are returned as JSON payloads, using the mime type `application/json`.
 
 ##### Context Property
 
-Responses that represent a single resource shall contain a context property named "@odata.context" describing the source of the payload. The value of the context property shall be the context URL that describes the resources according to [OData-Protocol].
+Responses that represent a single resource shall contain a context property named "@odata.context" describing the source of the payload. The value of the context property shall be the context URL that describes the resource according to [OData-Protocol](#user-content-OData-Protocol).
 	
 The context URL for a resource that exists within a collection is of the form:
 
@@ -954,21 +974,21 @@ Where:
 
 ###### Select List
 
-If a response contains a subset of the properties defined in the schema for a type, then the context URL shall specify the subset of properties included. An asterix (#user-content-) can be used to specify "all structural properties" for a given resource.
+If a response contains a subset of the properties defined in the schema for a type, then the context URL shall specify the subset of properties included. An asterix (*) can be used to specify "all structural properties" for a given resource.
 
-Expanded navigation properties shall be included in the select list if the result includes a subset of the properties defined for the expanded resource. If only the reference to the expanded resource is included, such as for navigation properties annotated with [ExpandReferences](#user-content-expand-references), $ref is used.
+Expanded navigation properties shall be included in the select list if the result includes a subset of the properties defined for the expanded resource.
 
-For example, the following context URL specifies that the result contains a single resource from the Systems collection, including all structural properties along with the references to related chassis and managers:
+For example, the following context URL specifies that the result contains a single resource from the Members collection nested under the Links property of the Systems resource:
 
 ~~~json
-"@odata.context":"/rest/v1/$metadata#Systems(#user-content-,Links/Chassis($ref),Links/ManagedBy($ref))/$entity", 
+"@odata.context":"/rest/v1/$metadata#Systems/Links/Members/$entity", 
 ~~~ 
 
 ##### Resource Identifier Property
 
 Resources in a response shall include a unique identifier property named "@odata.id". The value of the identifier property shall be the [unique identifier](#user-content-URIs) for the resource.
 
-Resource Identifiers shall be represented in JSON payloads as full uri paths relative to the schema portion of the uri. That is, they shall always start with "/rest/".
+Resource Identifiers shall be represented in JSON payloads as uri paths relative to the schema portion of the uri. That is, they shall always start with "/rest/".
 	
 The resource identifier is the canonical URL for the resource and can be used to retrieve or edit the resource, as appropriate.
 
@@ -976,11 +996,10 @@ The resource identifier is the canonical URL for the resource and can be used to
 
 All resources in a response shall include a type property named "@odata.type". The value of the type property shall be an absolute URL that specifies the type of the resource and shall be of the form:
 
- *SchemaUri*#*Namespace*.*TypeName*
+ **#*Namespace*.*TypeName*
  
 Where: 
-* *SchemaUri* = The uri of the schema document containing the type definition. For types defined within the SPMA specification, this will be "http://dmtf.org/schema/v1", followed by the resource type name.
-* *Namespace* = The full namespace name of the schema in which the type is defined. This shall not use an alias name for the namespace. 
+* *Namespace* = The full namespace name of the schema in which the type is defined. For SPMA resources this will be the versioned namespace name. 
 * *TypeName* = The name of the type of the resource.
 	
 The client may issue a GET request to this URL using a content type of `application/xml` in order to retrieve a document containing the [definition of the resource](#user-content-resource-definition).
@@ -1001,7 +1020,7 @@ DateTime values are returned as JSON strings according to the ISO 8601 "extended
 
 ##### Structured Properties
 
-Structured properties, defined as [complex types](#user-content-structured-properties), are returned as JSON objects. The type of the JSON object specified in schema definition of the property containing the structured value.
+Structured properties, defined as [complex types](#user-content-structured-properties), are returned as JSON objects. The type of the JSON object is specified in schema definition of the property containing the structured value.
 
 ##### Collection Properties
 
@@ -1017,11 +1036,10 @@ Available actions for a resource are represented as individual properties nested
 
 Actions are represented by a property nested under "Actions" whose name is the unique URI that identifies the action. This URI shall be of the form:
 
- *SchemaUri*#*Namespace*.*ActionName*
+  **#*NamespaceAlias*.*ActionName*
  
 Where: 
-* *SchemaUri* = Uri of the schema document containing the action definition. For types defined within the SPMA specification, this will be "http://dmtf.org/schema/v1/" plus the name of the resource on which the action is defined.
-* *Namespace* = The full namespace name (not alias) of the schema in which the action is defined 
+* *NamespaceAlias* = The namespace alias used in the reference to the schema in which the action is defined. For SPMA resources this shall be the version-independent namespace alias. 
 * *ActionName* = The name of the action
 
 The client may issue a GET request to this URL using a content type of `application/xml` in order to retrieve the schema document containing the [definition of the action](#user-content-resource-actions).
@@ -1030,18 +1048,16 @@ The value of the property is a JSON object containing a property named "target" 
 
 The property representing the available action may be annotated with the [AllowableValues](#user-content-allowable-values) annotation in order to specify the list of allowable values for a particular parameter.
 
-For instance, if the resource has a property that defines a Rest action, defined in the ComputerSystem.1.0.0 namespace, such as this:
+For example, the following property represents the Reset action, defined in the ComputerSystem.1.0.0 namespace (aliased with the version-independent "ComputerSystem"):
 
 ~~~json
-{
-	"http://dmtf.org/schema/v1/ComputerSystem#ComputerSystem.1.0.0.Reset": {
-	    "target":"/rest/v1/Systems/1/Actions/ComputerSystem.1.0.0.Reset",
-	    "ResetType@DMTF.AllowableValues": ["On","Off", "Reset"]
-    }
-}
+	"#ComputerSystem.Reset": {
+    	"target":"/rest/v1/Systems/1/Actions/ComputerSystem.Reset",
+	   	 "ResetType@DMTF.AllowableValues": ["On","Off", "Reset"]
+   	}
 ~~~
 
-Then the client could invoke a POST request to /rest/v1/Systems/1/Actions/ComputerSystem.1.0.0.Reset with the following body:
+Given this, the client could invoke a POST request to /rest/v1/Systems/1/Actions/ComputerSystem.Reset with the following body:
 
 ~~~json
 {
@@ -1059,27 +1075,16 @@ The set of allowable values is specified by including a property whose name is t
 
 [References](#user-content-reference-properties) to other resources are represented by the links property on the resource. 
 
-The links property shall be named "Links" and shall contain a [navigation link](#user-content-navigation-link-to-related-resources) for navigating each relationship. In addition, certain references may be [expanded inline](#user-content-expanded-references) to provide the [dereferenceable ids](#user-content-resource-identifier-property) of each related resource as either a [single related resource id](#user-content-reference-to-a-single-related-resource) or an [array of related resource ids](#user-content-array-of-references-to-related-resources).
+The links property shall be named "Links" and shall contain a property for each navigation property defined in the schema for that type. For single-valued navigation properties, the value of the property shall be the [single related resource id](#user-content-reference-to-a-single-related-resource). For collection-valued navigation properties, the value of the property shall be the [array of related resource ids](#user-content-array-of-references-to-related-resources).
 
 The links property shall also include an [Oem property](#user-content-oem-property) for navigating vendor-specific links.
  
-###### Navigation Link to Related Resources
-
-The URL to navigate from one resource to a related resource, or a collection of related resources, is represented as a navigation link. A navigation link is represented as a JSON property whose name is the name of the relationship followed by "@odata.navigationLink". The string value of this property is a URL to retrieve the related resource(s).
-
-~~~json
-"Links" : {
-	"ComputerSystems@odata.navigationLink": "/rest/v1/Chassis/1/Systems"
-}
-~~~
-
 ###### Reference to a Single Related Resource
 
-An [expanded reference](#user-content-expanded-references) to a single resource is returned as a JSON object containing a single [resource-identifier-property](#user-content-resource-identifier-property) whose name is the name of the relationship and whose value is the uri of the referenced resource.
+A reference to a single resource is returned as a JSON object containing a single [resource-identifier-property](#user-content-resource-identifier-property) whose name is the name of the relationship and whose value is the uri of the referenced resource.
 
 ~~~json
 "Links" : {
-	"ManagedBy@odata.navigationLink": "/rest/v1/Chassis/1/ManagedBy"
 	"ManagedBy": { 
 		"@odata.id":"/rest/v1/Chassis/Encl1"
 	}
@@ -1088,11 +1093,10 @@ An [expanded reference](#user-content-expanded-references) to a single resource 
 
 ###### Array of References to Related Resources
 
-An [expanded array of references](#user-content-expanded-references) to related resources is returned as an array of JSON objects whose name is the name of the relationship. Each member of the array is a JSON object containing a single [resource-identifier-property](#user-content-resource-identifier-property) whose value is the uri of the referenced resource.
+A reference to a collection of zero ore more related resources is returned as an array of JSON objects whose name is the name of the relationship. Each member of the array is a JSON object containing a single [resource-identifier-property](#user-content-resource-identifier-property) whose value is the uri of the referenced resource.
 
 ~~~json
 "Links" : {
-	"Contains@odata.navigationLink": "/rest/v1/Chassis/Rack1/Contains"
 	"Contains" : [
 		{
 			"@odata.id":"/rest/v1/Chassis/1"
@@ -1105,7 +1109,7 @@ An [expanded array of references](#user-content-expanded-references) to related 
 
 ##### OEM Property
 
-OEM-specific properties are nested under an [OEM property](#user-content-property-extensions). The name of the OEM property shall be "OEM" and it's value shall be a JSON object whose properties represent OEM extensions.
+OEM-specific properties are nested under an [OEM property](#user-content-property-extensions). The name of the OEM property shall be "Oem" and it's value shall be a JSON object whose properties represent OEM extensions.
 
 For example:
 
@@ -1130,17 +1134,17 @@ For example:
 ```
 Contents of the Oem object must be valid JSON and must have a [type property](#user-content-type-property) per this specification. Any other requirements, validation or contents are beyond the scope of this specification.
 
-##### Inline Error Property
+##### Inline Status Property
 
-Response objects may include inline-error information, for example properties that are not able to be updated. This error information is represented as an annotation applied to [a specific property](#user-content-property-errors) of the JSON response or an [entire JSON object](#user-content-object-errors).
+Response objects may include inline status information, for example properties that are not able to be updated. This information is represented as an annotation applied to [a specific property](#user-content-property-status) of the JSON response or an [entire JSON object](#user-content-object-status).
 
-###### Object Errors
+###### Object Status
 
-A JSON object can be annotated with "@DMTF.InlineError" in order to specify object-level error information. 
+A JSON object can be annotated with "@DMTF.InlineStatus" in order to specify object-level status information. 
 
 ~~~json
 {
-	"@DMTF.InlineError" : {
+	"@DMTF.InlineStatus" : {
 	    "code": "400",
 	    "message": "Object cannot currently be updated"
 	},
@@ -1150,14 +1154,14 @@ A JSON object can be annotated with "@DMTF.InlineError" in order to specify obje
 
 The value of the property is an [extended error object](#user-content-extended-error-handling).
 
-###### Property Errors
+###### Property Status
 
-An individual property within a JSON object can be annotated with error information using "@DMTF.InlineError", prepended with the name of the property. 
+An individual property within a JSON object can be annotated with status information using "@DMTF.InlineStatus", prepended with the name of the property.
 
 ~~~json
 {
 	"IndicatorLED":"On",
-	"IndicatorLED@DMTF.InlineError" : {
+	"IndicatorLED@DMTF.InlineStatus" : {
 	    "code": "400",
 	    "message": "[Red] is not a valid value"
 	}
@@ -1185,14 +1189,14 @@ The client can get the definition of the annotation from the the [service metada
 Resource collections are returned as a JSON object. The JSON object includes a [context](#user-content-context-property), [resource count](#user-content-resource-count-property), and array of [values](#user-content-resource-members-property), and may include a [next link](#user-content-partial-results) for partial results.
 
 #####	Context Property
-Responses that represent a collection of resources shall contain a context property named "@odata.context" describing the source of the payload. The value of the context property shall be the context URL that describes the resources according to [OData-Protocol].
+Responses that represent a collection of resources shall contain a context property named "@odata.context" describing the source of the payload. The value of the context property shall be the context URL that describes the resources according to [OData-Protocol](#user-content-OData-Protocol).
 
 The context URL for a resource collection is of the form:
 
  *MetadataUrl*.#*Collection*[(#user-content-SelectList*)] 
 
 Where: 
-* *MetadatauUl* = the metadata url of the service (/rest/v1/$metadata)
+* *MetadataUrl* = the metadata url of the service (/rest/v1/$metadata)
 * *Collection* = the collection resource. For contained resources this includes the path from the root collection or singleton resource to the containment property.
 * *SelectList* = comma-separated [list of properties](#user-content-select-list) included in the response if the response includes a subset of properties defined for the represented resources.
 
@@ -1294,30 +1298,34 @@ One of the key tenants of the SPMA interface is the separation of protocol and d
 
 ### Type Identifiers
 
-Types are identified by a *Type URI*. The URI for a type is of the form:
+Types are identified by a *Type URI*. The full URI for a type is of the form:
 
- *SchemaUri*#*Namespace*.*TypeName* 
+ **#*Namespace*.*TypeName* 
 
 where: 
 
-* *SchemaUri* = Uri of the schema document defining the type
-* *Namespace* = the namespace in which the type is defined 
+* *Namespace* = the full name or alias of the namespace in which the type is defined 
 * *TypeName* = the name of the type
 
-The schema URI for types defined by this specification is the schema root URI "http://dmtf.org/schema/v1/", followed by the [resource type](#user-content-resource-type-definitions) name. For [structured (complex) types](#user-content-structured-types), [enumerations](#user-content-enums), and [actions](#user-content-resource-actions), this is generally the name of the containing resource type.
-
-The namespace for types defined by this specification is of the form:
+The full namespace for types defined by this specification is of the form:
 
  *ResourceTypeName*.*MajorVersion*.*MinorVersion*.*Errata*
 
 where 
 
-* *Resourcetypename* = the name of the resourcetype. For structural types, enumerations, and actions, this is generally the name of the containing resource type. 
+* *ResourceTypeName* = the name of the resource type. For [structured (complex) types](#user-content-structured-types), [enumerations](#user-content-enums), and [actions](#user-content-resource-actions), this is generally the name of the containing resource type. 
 * *MajorVersion* = integer: something in the class changed in a backward incompatible way.
 * *MinorVersion* = integer: a minor update. New properties may have been added but nothing removed. Compatibility will be preserved with previous minorversions. 
 * *Errata* = integer: something in the prior version was broken and needed to be fixed.
 
 An example of a valid type namespace might be "System.1.0.0". 
+
+#### Type Identifiers in JSON
+Types used within a JSON payload shall be defined in, or referenced, by the [service metadata](#service-metadata).
+ 
+Resource types defined by this specification shall be referenced in JSON documents using the full (versioned) namespace name. 
+
+Non-resource types (for example enumerations, complex types, and actions) shall be referenced in JSON documents using the version-independent namespace alias defined in the [service metadata](#service-metadata).
 
 NOTE: Refer to the [Security](#user-content-security) section for security implications of Data Model & Schema
 
@@ -1358,7 +1366,7 @@ Individual resources and their dependent types and actions are defined within a 
 
 #### Common Annotations
 
-All SPMA types and properties shall include [description](#user-content-description) and [specification](#user-content-long-description) annotations. 
+All SPMA types and properties shall include [description](#user-content-description) and [long description](#user-content-long-description) annotations. 
 
 ##### Description
 
@@ -1366,7 +1374,7 @@ The Description annotation can be applied to any type, property, action or param
 
 The `Description` annotation is defined in http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Core.V1.xml.
 
-##### Specification
+##### Long Description
 
 The LongDescription annotation term can be applied to any type, property, action or parameter in order to provide a formal specification of the schema element.
 
@@ -1374,7 +1382,7 @@ The `LongDescription` annotation term is defined in http://docs.oasis-open.org/o
 
 #### Schema Documents
 
-Individual resources are defined as entity types within a schema document according to [OData-Schema]. The representation may include annotations to facilitate automatic generation of JSON Schema capable of validating JSON payloads.
+Individual resources are defined as entity types within a schema document according to [OData-Schema](#user-content-OData-CSDL). The representation may include annotations to facilitate automatic generation of JSON Schema capable of validating JSON payloads.
 
 The outer element of the schema document shall be the `Edmx` element, and shall have a `Version` attribute with a value of "4.0".
 
@@ -1388,9 +1396,9 @@ The outer element of the schema document shall be the `Edmx` element, and shall 
 
 Schemas may reference types defined in other schema documents by including a `Reference` element. 
 
-The reference element specifies the `URI` of the schema document describing the referenced type and has one or more child `Include` elements that specify the `Namespace` attribute containing the types to be referenced, along with an optional `Alias` attribute for that namespace.
+The reference element specifies the `Uri` of the schema document describing the referenced type and has one or more child `Include` elements that specify the `Namespace` attribute containing the types to be referenced, along with an optional `Alias` attribute for that namespace.
 
-Type definitions generally reference the OData and DMTF namespaces for common type annotation terms, and resource type definitions reference the DMTF Resource.1.0.0 namespace for base types. Schemas that include measures such as temperature, speed, or dimensions generally include the OData Measures namespace. 
+Type definitions generally reference the OData and DMTF namespaces for common type annotation terms, and resource type definitions reference the DMTF Resource.1.0.0 namespace for base types. Schemas that include measures such as temperature, speed, or dimensions generally include the [OData Measures namespace](#user-content-OData-Measures). 
 
 ~~~xml
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
@@ -1410,7 +1418,7 @@ Type definitions generally reference the OData and DMTF namespaces for common ty
 
 ##### Namespace Definitions
 
-Resource types are defined within a namespace. The namespace is declared through a `Schema` element. 
+Resource types are defined within a namespace. The namespace is defined through a `Schema` element that contains attributes for declaring the `Namespace` and local `Alias` for the schema. 
 
 The Schema element is a child of the `DataServices` element, which is a child of the [Edmx](#user-content-schema-documents) element.
 
@@ -1428,9 +1436,9 @@ The Schema element is a child of the `DataServices` element, which is a child of
 
 Resource types are defined within a [namespace](#user-content-namespace-definitions) using `EntityType` elements. The `Name` attribute specifies the name of the resource and the `BaseType` specifies the base type, if any.
 
-SPMA resources derive from a common Resource base type named "Resource" in the Resource.1.0.0 namespace. 
+SPMA resources derive from a common Resource base type named "Resource" in the Resource.0.94.0 namespace. 
 
-The EntityType contains the [property](#user-content-resource-properties) and [navigation property](#user-content-reference-properties) elements that define the structure of the resource, as well as annotations describing the resource.
+The EntityType contains the [property](#user-content-resource-properties) and [navigation property](#user-content-reference-properties) elements that define the resource, as well as annotations describing the resource.
 
 ~~~xml
       <EntityType Name="TypeA" BaseType="Resource.Resource">
@@ -1442,27 +1450,28 @@ The EntityType contains the [property](#user-content-resource-properties) and [n
       </EntityType>
 ~~~
 
-All resources shall include [description](#user-content-description) and [specificaiton](#user-content-long-description) annotations. 
+All resources shall include [Description](#user-content-description) and [LongDescription](#user-content-long-description) annotations. 
 
 #### Resource Properties
 
-Structural properties of the resource are described using the `Property` element. The `Name` attribute specifies the name of the property, and the [`Type`](#user-content-property-types) its type.
+Structural properties of the resource are defined using the `Property` element. The `Name` attribute specifies the name of the property, and the [`Type`](#user-content-property-types) its type. 
+Properties that must have a non-nullable value include the [nullable attribute](#user-content-non-nullable-properties) with a value of "false". 
 
 ~~~xml
         <Property Name="Property1" Type="Edm.String" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="Core.Description" String="This is a property of TypeA."/>
           <Annotation Term="Core.LongDescription" String="This is the specification of Property1."/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="DMTF.Required"/>
+          <Annotation Term="OData.Measures.Units" String="Watts"/>
         </Property>
 ~~~
 
-All properties shall include [description](#user-content-description) and [specification](#user-content-long-description) annotations. 
+All properties shall include [Description](#user-content-description) and [LongDescription](#user-content-long-description) annotations. 
 
-Properties that must have a non-nullable value are annotated with the [nullable attribute](#user-content-non-nullable-properties). 
+Properties that are read-only are annotated with the [Permissions annotation](#user-content-read-only-properties) with a value of `ODataPermissions/Read`.
 
 Properties that are required to be implemented by all services are annotated with the [required annotation](#user-content-required-properties). 
-
-Properties that are read-only are annotated with the [read-only annotation](#user-content-read-only-properties).
 
 Properties that have units associated with them can be annotated with the [units annotation](#user-content-units-of-measure)
 
@@ -1504,7 +1513,7 @@ Structured types may be reused across different properties of different resource
 
 Structured types can contain [properties](#user-content-resource-properties), [navigation properties](#user-content-reference-properties) and annotations.
 
-Structured types shall include [description](#user-content-description) and [specification](#user-content-longdescription) annotations. 
+Structured types shall include [Description](#user-content-description) and [LongDescription](#user-content-longdescription) annotations. 
 
 ###### Enums
 
@@ -1528,9 +1537,9 @@ EnumType elements contain `Member` elements that define the members of the enume
       </EnumType>
 ~~~
 
-Enumeration Types shall include [description](#user-content-description) and [specification](#user-content-longdescription) annotations. 
+Enumeration Types shall include [Description](#user-content-description) and [LongDescription](#user-content-longdescription) annotations. 
 
-Enumeration Members shall include [description](#user-content-description) annotations. 
+Enumeration Members shall include [Description](#user-content-description) annotations. 
 
 ###### Collections
 
@@ -1538,13 +1547,13 @@ The [type](#user-content-property-types) attribute may specify a collection of [
 
 The value of the type attribute for a collection-valued property is of the form:
 
- Collection(#user-content-NamespaceQualifiedTypeName*)
+ Collection(*NamespaceQualifiedTypeName*)
 
-where *NamespaceQualifiedTypeName* is the namespace qualified name of the primitive, structured, or enumeration type.
+where *NamespaceQualifiedTypeName* is the namespace or alias qualified name of the primitive, structured, or enumeration type.
 
 ##### Non-Nullable properties
 
-Properties may include the Nullable attribute with a value of false to specify that the cannot contain null values. A property with a nullable attribute with a value of true, or no nullable attribute, can accept null values. 
+Properties may include the Nullable attribute with a value of false to specify that the property cannot contain null values. A property with a nullable attribute with a value of `"true"`, or no nullable attribute, can accept null values. 
 
 ~~~xml
       <Property Name="Property1" Type="Edm.String" Nullable="false">
@@ -1552,7 +1561,7 @@ Properties may include the Nullable attribute with a value of false to specify t
 
 ##### Read-only properties
 
-The Permissions annotation term can be applied to a property in order to specify that it is read-only.
+The Permissions annotation term can be applied to a property with the value of `OData.Permissions/Read` in order to specify that it is read-only.
 
 ~~~xml
 	    <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
@@ -1570,7 +1579,7 @@ If an implementation supports a property, it shall always provide a value for th
 		<Annotation Term="DMTF.Required"/>
 ~~~
 
-The `Required` annotation term is defined in http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml.
+The `Required` annotation term is defined in http://dmtf.org/schema/V1/DMTFExtensions.
 
 ##### Units of Measure
 
@@ -1581,6 +1590,8 @@ In addition to following [naming conventions](#user-content-common naming-conven
 ~~~
 
 The `Units` annotation term is defined in http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml.
+
+The string values for the Units of Measure annotation shall be taken from **TODO**.
 
 ##### Language-Dependent Property Values
 
@@ -1596,54 +1607,60 @@ The `IsLanguageDependent` annotation term is defined in http://docs.oasis-open.o
 
 #### Reference Properties
 
-Properties that reference other resources are represented as navigation properties. The `NavigationProperty` element specifies the `Name` and namespace-qualified [`Type`](#user-content-property-types) of the related resource(s).
+Properties that reference other resources are represented as navigation properties. The `NavigationProperty` element specifies the `Name` and namespace (or alias) qualified [`Type`](#user-content-property-types) of the related resource(s).
 
-If the property references a single type, the value of the type attribute is the namespace-qualified name of the related resource type.
-
-If the property references a collection of resources, the value of the type attribute is of the form:
-
- Collection(#user-content-NamespaceQualifiedTypeName*)
-
-where NamespaceQualifiedTypeName is the namespace qualified name of the type of related resources.
+If the property references a single type, the value of the type attribute is the namespace (or alias) qualified name of the related resource type.
 
 ~~~xml
-      <NavigationProperty Name="RelatedType" Type="Collection(MyTypes.TypeB)">
-        <Annotation Term="Core.Description" String="This property references a related resource or collection."/>
+      <NavigationProperty Name="RelatedType" Type="MyTypes.TypeB">
+        <Annotation Term="Core.Description" String="This property references a related resource."/>
         <Annotation Term="Core.LongDescription" String="This is the specification of the related property."/>
 		<Annotation Term="DMTF.ExpandReferences"/>
       </NavigationProperty>
 ~~~
 
-All navigation properties shall include [description](#user-content-description) and [specification](#user-content-longdescription) annotations. 
+If the property references a collection of resources, the value of the type attribute is of the form:
+
+ Collection(NamespaceQualifiedTypeName)
+
+where NamespaceQualifiedTypeName is the namespace (or alias) qualified name of the type of related resources.
+
+~~~xml
+      <NavigationProperty Name="RelatedType" Type="Collection(MyTypes.TypeB)">
+        <Annotation Term="Core.Description" String="This property represents a collection of related resources."/>
+        <Annotation Term="Core.LongDescription" String="This is the specification of the related property."/>
+		<Annotation Term="DMTF.ExpandReferences"/>
+      </NavigationProperty>
+~~~
+
+All navigation properties shall include [Description](#user-content-description) and [LongDescription](#user-content-longdescription) annotations. 
 
 ##### Expanded References
 
-Navigation links may be represented in a JSON payload as a single URL that can be used to navigate from the containing resource to the related resource(s), or as the [ids](#user-content-resource-identifier-property) of the related resource(s).
-
-By default, navigation links are represented as a single URL that represents the resource [relative to the containing resource](#user-content-reference-to-a-collection-of-related-resources). The ExpandReferences annotation term can be applied to a navigation property in order to specify that the default behavior for the service is to expand the references for the [related resource](#user-content-reference-to-a-single-related-resource) or [collection of resources](#user-content-array-of-references-to-related-resources) in responses.
+Navigation properties in an SPMA JSON payload are expanded to include the [related resource id](#user-content-reference-to-a-single-related-resource) or [collection of related resource ids](#user-content-array-of-references-to-related-resources). This behavior is expressed using the ExpandReferences annotation.
 
 ~~~xml
 		<Annotation Term="DMTF.ExpandReferences"/>
 ~~~
 
-The `ExpandReferences` annotation term is defined in http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml.
+The `ExpandReferences` annotation term is defined in http://dmtf.org/schema/V1/DMTFExtensions.
 
 #### Resource Actions
 
 Actions are grouped under a property named "Actions". 
 
 ~~~xml
-	  <Property Name="Actions" Type="MyType.MyTypeActions>
+	  <Property Name="Actions" Type="MyType.Actions>
 ~~~
 
 The type of the Actions property is a [structured type](#user-content-structured-types) with a single OEM property whose type is a structured type with no defined properties.
 
 ~~~xml
-  <ComplexType Name="MyTypeActions">
-	<Property Name="OEM" Type="MyTypeOEMActions"/>
+  <ComplexType Name="Actions">
+	<Property Name="OEM" Type="MyType.OEMActions"/>
   </ComplexType>
 
-  <ComplexType Name="MyTypeOEMActions"/>
+  <ComplexType Name="OEMActions"/>
 ~~~
 
 Individual actions are defined within a [namespace](#user-content-namespace-definitions) using `Action` elements. The `Name` attribute of the action specifies the name of the action. The `Isbound` attribute specifies that the action is bound to (appears as a member of) a resource or structured type.
@@ -1654,14 +1671,14 @@ The first parameter is called the "binding parameter" and specifies the resource
 
 ~~~xml
   <Action Name="MyAction" Isbound="true">
-    <Parameter Name="Thing" Type="MyType.MyTypeActions"/>
+    <Parameter Name="Thing" Type="MyType.Actions"/>
     <Parameter Name="Parameter1" Type="Edm.Boolen"/>
   </Action>
 ~~~
 
 #### Resource Extensibility
 
-Vendors can define extensions for common SPMA resources using the OEM property on resources, links, and actions. 
+Vendors can define additional [properties](#user-content-Property-Extensions), links, and [actions](#user-content-Custom-Actions) for common SPMA resources using the OEM property on resources, links, and actions. 
 
 While the information and semantics of these extensions are outside of the standard, the schema representing the data, the resource itself, and the semantics around the protocol shall conform to the requirements in this specification.
 
@@ -1676,7 +1693,7 @@ Resources contain a property called ["Oem"](#user-content-oem-property) whose va
 Vendor-specific information is defined in OEM-specific complex types. 
 
 ~~~xml
-<Schema Name="extensions.v.v.v" Alias="acme">
+<Schema Name="acme.v.v.v" Alias="acme">
 
   <ComplexType Name="acmetype">
     <Property Name="AcmeSpecificProperty" Type="Edm.String"/>
@@ -1690,7 +1707,7 @@ The OEM-specific types are exposed as dynamic properties of the root "OEM" type 
 ```json
 "Oem": {
 	"Acme": {
-		"@odata.type": "http://acme.com/schema/extensions.v.v.v#acme.acmetype",
+		"@odata.type": "acme.v.v.v#acme.acmetype",
 		"AcmeSpecificProperty": "value"
 	}
 }
@@ -1703,7 +1720,7 @@ OEM-specific actions can be defined by defining actions bound to the OEM propert
 ~~~xml
 
   <Action Name="Ping" Isbound="true">
-    <Parameter Name="acmetype" Type="MyType.MyTypeOEMActions"/>
+    <Parameter Name="acmetype" Type="MyType.OEMActions"/>
   </Action>
 
 </Schema>
@@ -1714,11 +1731,8 @@ Such bound actions appear in the JSON payload as properties of the Oem type, nes
 ```json
 "Actions": {
 	"OEM": {
-		"@odata.type": "http://acme.com/schema/extensions.v.v.v#acme.acmetype",
-		"AcmeSpecificProperty": "value",
-		"Actions" : {
-			"http://acme.com/schema/extensions.v.v.v#acme.Ping": {
-			    "target":"/rest/v1/Systems/1/OEM/Actions/acme.Ping"
+		"acme.v.v.v#acme.Ping": {
+			    "target":"/rest/v1/Systems/1/Actions/OEM/acme.Ping"
 		    }
 		}
 	}
@@ -1732,13 +1746,13 @@ Services may apply annotations to resources in order to provide service-specific
 
 Services can apply annotations to existing resources where those resources don't already define a value for the annotation. Services cannot change the value of an annotation applied as part of the resource definition.  
 
-Because [service annotations](#user-content-annotations) may applied to existing resource definitions, they are generally specified in a service-specific metadata document referenced by the [service metadata](#user-content-service-metadata).
+Because [service annotations](#user-content-annotations) may be applied to existing resource definitions, they are generally specified in a service-specific metadata document referenced by the [service metadata](#user-content-service-metadata).
 
 ### Common SPMA Resource Properties
 
 This section contains a set of common properties across all SPMA resources. The property names in this section shall not be used for any other purpose, even if they are not implemented in a particular resource.
 
-Common properties are defined in a the base Resource.1.0.0.Resource schema.
+Common properties are defined in a the base Resource.0.94.0.Resource schema.
 
 #### Id
 
@@ -1752,10 +1766,6 @@ The Name property is used to convey a human readable moniker for the resource.  
 
 The Description property is used to convey a human readable description of the resource.  The type of the Description property shall be string.
 
-#### Created
-
-The Created property contains the time stamp equal to the last time the SPMA service created this resource.  The format of this property shall be the [Standard Timestamp Format](#user-content-standard-timestamp-format). 
-
 #### Modified
 
 The Modified property contains the time stamp equal to the last time the SPMA service modified this resource. The format of this property shall be the [Standard Timestamp Format](#user-content-standard-timestamp-format). 
@@ -1764,7 +1774,7 @@ The Modified property contains the time stamp equal to the last time the SPMA se
 
 The Status property represents the status of a resource. 
 
-All SPMA resources contain a common status property. By having a common status object, clients can depend on consistent semantics. The Status object is capable of indicating the current intended state, the state the resource has been requested to change to, the current actual state and any problem affecting the current state of the resource.
+The value of the status property is a common status object type as defined by this specification. By having a common representation of status, clients can depend on consistent semantics. The Status object is capable of indicating the current intended state, the state the resource has been requested to change to, the current actual state and any problem affecting the current state of the resource.
 
 #### Links
 
@@ -2149,7 +2159,7 @@ REF: http://csrc.nist.gov/publications/fips/fips140-1/fips1401.pdf - This is use
 * HTTP Cookies shall NOT be used to authenticate any activity i.e.: GET, POST, PUT/PATCH, and DELETE.
 
 ##### BASIC authentication
-HTTP BASIC authentication as defined by RFC 2617 [References](#user-content-References) shall be supported, and shall only use compliant TLS connections to transport the data between any third party authentication service and clients.
+HTTP BASIC authentication as defined by [RFC2617](#user-content-RFC2617) shall be supported, and shall only use compliant TLS connections to transport the data between any third party authentication service and clients.
 
 ##### Digest authentication
 Implementations may support HTTP Digest authentication mechanism 
@@ -2403,10 +2413,9 @@ The file where the events are written, one or more messages per event should at 
 * Event type
 * Event description
 
+## ANNEX A (informative)
 
-## Appendix A
-
-### Known attack vector mitigation
+# Known attack vector mitigation
 - XSS
   * Cross-Origin headers are not recommended. Vendors may choose to implement them, but anticipated customer usage does not provide a strong reason to implement in light of the potential for security problems.
 - Replay
@@ -2416,7 +2425,9 @@ The file where the events are written, one or more messages per event should at 
 - Cipher attacks
 - Offline attacks
 
-## Appendix B: Notes
+## ANNEX B (informative)
+
+# Notes
 
 Security Token used in sessions with Keep-alive connections is the value in the
 Authorization request header.  Need to explain how this gets returned from the
@@ -2436,34 +2447,10 @@ Issues:
 -do extended errors have single resolution string or array of recommended actions strings (difference in spec versus markdown)?
 -Sessions - what do they return?
 
-## Appendix C: Summary of Changes
-The following table summarizes changes between various versions of the specification:
+## ANNEX C (informative) 
+
+# Change Log
 
 | Version | Date | Description
 | --- | --- | ---
-| 0.91.1 | 2014-09-30 | Initial Redfish 0.91.1 Contribution
-| 0.92   | 2014-09-30 | * Changed the name and references to "Scalable Platform Management API" throughout
-| | | * Reorganized content to reduce redundancy and increase locality of information for producers and consumers
-| | | * Added examples for result and schema payloads
-| | | * Aligned with common paging query options
-| | | * Added annotation and fleshed out Inline Error information
-| | | * Inlined Schema Definition constructs and examples
-| | | * Aligned with common OData conventions and syntax for shared models 
-| | | * Leveraged existing mechanisms for extensibility, namespacing, external model annotation
-| | | * Adopted common modeling elements for actions 
-| | | * Adopted common model attributes and annotations for readonly, language dependence, and units of measure
-| | | * Defined annotations for required, allowable values, expandreferences, 
-| | | * Defined support for JSON Schema generation for compatible tools and validation
-| | | * Adopted common property naming conventions for id, type, etag, links, count and partial results 
-| | | * Separated TaskResource in body from Location header in Async to align with common async patterns
-| | | * Fleshed out examples for vendor extensibility
-| | | * Fleshed out examples for core and vendor-extended actions
-| | | * Changed casing of "Links" to match property naming conventions
-| | | * Fixed issues with LogService and TaskService in mockup to give them collections of Events/Tasks rather than  arrays of collections of Events/Tasks
-| | | * Added examples of vendor extensions to Mockup
-| | | * Updated mockup to support additional metadata requests
-| | | * Added sample JavaScript client
-| 0.92.1 | 2014-10-12 | * Revised Links section
-| | | * Fixed hot links throughout
-| | | * Added Summary of Changes
-| | | * Various fixes/cleanup of mockup and schema files
+

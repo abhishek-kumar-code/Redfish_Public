@@ -30,6 +30,7 @@
         <NavigationProperty Name="Members" Type="Collection(LogService.LogService)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Contains the members of this collection."/>
+          <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
       </ComplexType>
 
@@ -68,6 +69,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="References to the log entry collection."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall reference a collection of LogEntry resources."/>
+          <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
         <Property Name="Oem" Type="Resource.Oem"/>
       </ComplexType>

@@ -40,6 +40,7 @@
         <NavigationProperty Name="Members" Type="Collection(EthernetNetworkInterface.EthernetNetworkInterface)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Contains the members of this collection."/>
+          <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
       </ComplexType>
 
@@ -83,6 +84,21 @@
           <Annotation Term="OData.Description" String="This is the MAC Frame size in bytes."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the Ethernet (MAC) frame size in bytes."/>
         </Property>
+        <Property Name="HostName" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="This is the DNS Host Name, without any domain information."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be host name for this interface."/>
+        </Property>
+        <Property Name="FQDN" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="This is the complete, fully qualified domain name obtained by DNS for this interface."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the fully qualified domain name for this interface."/>
+        </Property>
+        <Property Name="MaxIPv6StaticAddresses" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="This indicates the maximum number of Static IPv6 addresses that can be configured on this interface."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the number of array items supported by IPv6StaticAddresses."/>
+        </Property>
         <Property Name="VLANEnable" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This indicates if VLANs are enabled.  If this NIC supports more than one VLAN, this property will not be present and the client should look for VLANs collection in the link section of this resource."/>
@@ -93,25 +109,18 @@
           <Annotation Term="OData.Description" String="This indicates the VLAN identifier for this NIC.  This property is only present if VLANEnable is used and the NIC only supports a single VLAN."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be used to indicate the VLAN identifier for this interface.  If this interface supports more than one VLAN, the VLANId property shall not be present and the VLANS collection link shall be present instead."/>
         </Property>
-        <!-- TODO: Not Defined in redfish 0.91.1 schema, but it appears in the 0.91.1 mockup -->
-        <Property Name="IPv6First" Type="Edm.Boolean"/> 
+        <Property Name="IPv4Addresses" Type="Collection(IPAddresses.IPV4Address)" Nullable="false" >
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="This array of objects is used to represent the IPv4 connection characteristics for this interface."/>
+        </Property>
         <Property Name="IPv6AddressPolicyTable" Type="Collection(EthernetNetworkInterface.IPv6AddressPolicyEntry)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This array of objects represents the RFC3484 Address Selection Policy Table."/>
           <Annotation Term="OData.LongDescription" String="This array represents the Address Selection Policy Table as defined in RFC3484."/>
         </Property>
-        <Property Name="IPv4Addresses" Type="Collection(IPAddresses.IPV4Address)" Nullable="false" >
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="This array of objects is used to represent the IPv4 connection characteristics for this interface."/>
-        </Property>
         <Property Name="IPv6Addresses" Type="Collection(IPAddresses.IPV6Address)" Nullable="false" >
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This array of objects enumerates all of the currently assigned IPv6 addresses on this interface."/>
-        </Property>
-        <Property Name="MaxIPv6StaticAddresses" Type="Edm.Int64">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="This indicates the maximum number of Static IPv6 addresses that can be configured on this interface."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the number of array items supported by IPv6StaticAddresses."/>
         </Property>
         <Property Name="IPv6StaticAddresses" Type="Collection(IPAddresses.IPV6StaticAddress)" Nullable="false" >
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
@@ -127,16 +136,6 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the DNS name servers for this interface."/>
         </Property>
-        <Property Name="HostName" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="This is the DNS Host Name, without any domain information."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be host name for this interface."/>
-        </Property>
-        <Property Name="FQDN" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="This is the complete, fully qualified domain name obtained by DNS for this interface."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the fully qualified domain name for this interface."/>
-        </Property>
         <Property Name="SettingsResult" Type="Resource.SettingsResult" Nullable="false">
           <Annotation Term="OData.Description" String="If there is a link to Settings, this property has the results of the last application of those settings to this NIC."/>
           <Annotation Term="OData.LongDescription" String="If using separate Settings, these properties shall report the result of applying settings."/>
@@ -145,7 +144,6 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This object contains the links to other resources that are related to this resource."/>
         </Property>
-        <Property Name="Status" Type="Resource.Status"/>
       </EntityType>
 
       <ComplexType Name="Links">
@@ -164,6 +162,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a reference to a collection of VLANs and is only used if the NIC supports more than one VLAN."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall reference a collection of VLAN resources.  If this property is used, the VLANEnabled and VLANId property shall not be used."/>
+          <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
         <Property Name="Oem" Type="Resource.Oem"/>
       </ComplexType>
