@@ -1,38 +1,36 @@
 {
+    "@odata.context": "/rest/v1/$metadata#ServiceRoot",
+    "@odata.id": "/rest/v1",
+    "@odata.type": "#ServiceRoot.0.94.0.ServiceRoot",
+    "Id": "RootService",
     "Name": "Root Service",
     "Modified": "2013-01-31T23:45:04+00:00",
-    "Type": "ServiceRoot.0.91.0",
     "Time": "2013-01-31T23:45:04+00:00",
-    "ServiceVersion": "0.91.0",
+    "ServiceVersion": "0.94.0",
     "UUID": "00000000-0000-0000-0000-000000000000",
-    "links": {
+    "Links": {
         "Systems": {
-            "href": "/rest/v1/Systems"
+            "@odata.id": "/rest/v1/Systems"
         },
         "Chassis": {
-            "href": "/rest/v1/Chassis"
+            "@odata.id": "/rest/v1/Chassis"
         },
         "Managers": {
-            "href": "/rest/v1/Managers"
-        },
-        "Schemas": {
-            "href": "/rest/v1/Schemas"
-        },
-        "Registries": {
-            "href": "/rest/v1/Registries"
+            "@odata.id": "/rest/v1/Managers"
         },
         "Tasks": {
-            "href": "/rest/v1/TaskService"
-        },
-        "AccountService": {
-            "href": "/rest/v1/AccountService"
+            "@odata.id": "/rest/v1/TaskService"
         },
         "Sessions": {
-            "href": "/rest/v1/Sessions"
+            "@odata.id": "/rest/v1/Sessions"
+        },
+        "AccountService": {
+            "@odata.id": "/rest/v1/AccountService"
         },
         "EventService": {
-            "href": "/rest/v1/EventService"
-        }
+            "@odata.id": "/rest/v1/EventService"
+        },
+        "Oem": {}
     },
     "Oem": {}
 }
