@@ -1,0 +1,436 @@
+{
+"$schema": "http://www.redfishspecification.org/schema",
+"ThermalMetrics":{
+    "title": "ThermalMetrics.0.94.0",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "@odata.context": {
+            "type": "string"
+        },
+        "@odata.id": {
+            "type": "string",
+            "format": "uri",
+            "description": "A reference to a resource"
+        },
+        "@odata.type": {
+            "type": "string"
+        },
+        "Id": {
+            "type": "string"
+        },
+        "Description": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "readonly": true,
+            "description": "Provides a description of this resource and is used for commonality  in the schema definitions.",
+            "specification": "This object represents the Description property.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification."
+        },
+        "Name": {
+            "type": "string",
+            "readonly": true,
+            "description": "The name of the resource or array element.",
+            "specification": "This object represents the Name property.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification. The value of this string shall be of the format for the reserved word *Name*."
+        },
+        "Modified": {
+            "type": "string",
+            "readonly": true,
+            "description": "The date-time stamp that the object was last modified.",
+            "specification": "This object represents the Modified property.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification. The value of this string shall be of the format for the reserved word *Modified*."
+        },
+        "Oem": {
+            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem",
+            "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+            "specification": "The value of this string shall be of the format for the reserved word *Oem*."
+        },
+        "Temperatures": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "Oem": {
+                        "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem"
+                    },
+                    "Name": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "readonly": true,
+                        "description": "Temperature sensor name.",
+                        "specification": "The value of this property shall be the name of the temperature sensor."
+                    },
+                    "Number": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "readonly": true,
+                        "description": "A numerical identifier to represent the temperature sensor",
+                        "specification": "The value of this property shall be a numerical identifier for this temperature sensor that is unique within this resource. "
+                    },
+                    "Status": {
+                        "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Status"
+                    },
+                    "Units": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "enum": [
+                            "Celsius",
+                            "Fahrenheit"
+                        ],
+                        "readonly": true,
+                        "description": "The temperature sensor's units.",
+                        "specification": "The value of this property shall be the units that the temperature sensor in which the CurrentReading is measured."
+                    },
+                    "CurrentReading": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "readonly": true,
+                        "description": "Temperature",
+                        "specification": "The value of this property shall be the current value of the temperature sensor's reading."
+                    },
+                    "UpperThresholdNonCritical": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "readonly": true,
+                        "description": "Above normal range",
+                        "specification": "The value of this property shall indicate the CurrentReading is above the normal range but is not critical."
+                    },
+                    "UpperThresholdCritical": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "readonly": true,
+                        "description": "Above normal range but not yet fatal.",
+                        "specification": "The value of this property shall indicate the CurrentReading is above the normal range but is not yet fatal."
+                    },
+                    "UpperThresholdFatal": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "readonly": true,
+                        "description": "Above normal range and is fatal",
+                        "specification": "The value of this property shall indicate the CurrentReading is above the normal range and is fatal."
+                    },
+                    "LowerThresholdNonCritical": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "readonly": true,
+                        "description": "Below normal range",
+                        "specification": "The value of this property shall indicate the CurrentReading is below the normal range but is not critical."
+                    },
+                    "LowerThresholdCritical": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "readonly": true,
+                        "description": "Below normal range but not yet fatal.",
+                        "specification": "The value of this property shall indicate the CurrentReading is below the normal range but is not yet fatal."
+                    },
+                    "LowerThresholdFatal": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "readonly": true,
+                        "description": "Below normal range and is fatal",
+                        "specification": "The value of this property shall indicate the CurrentReading is below the normal range and is fatal."
+                    },
+                    "MinimumValue": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "readonly": true,
+                        "description": "Minimum value for CurrentReading",
+                        "specification": "The value of this property shall indicate the lowest possible value for CurrentReading."
+                    },
+                    "MaximumValue": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "readonly": true,
+                        "description": "Maximum value for CurrentReading",
+                        "specification": "The value of this property shall indicate the lowest possible value for CurrentReading."
+                    },
+                    "PhysicalContext": {
+                        "type": "string",
+                        "enum": [
+                            "Room",
+                            "Intake",
+                            "Exhaust",
+                            "Front",
+                            "Back",
+                            "Upper",
+                            "Lower",
+                            "CPU",
+                            "GPU",
+                            "Backplane",
+                            "SystemBoard",
+                            "PowerSupply",
+                            "VoltageRegulator",
+                            "StorageDevice",
+                            "NetworkingDevice",
+                            "ComputeBay",
+                            "StorageBay",
+                            "NetworkBay",
+                            "ExpansionBay",
+                            "PowerSupplyBay"
+                        ],
+                        "enumDescriptions": {
+                            "Room": "The room",
+                            "Intake": "The intake point of the chassis",
+                            "Exhaust": "The exhaust point of the chassis",
+                            "Front": "The front of the chassis",
+                            "Back": "The back of the chassis",
+                            "Upper": "The upper portion of the chassis",
+                            "Lower": "The lower portion of the chassis",
+                            "CPU": "A Processor (CPU)",
+                            "GPU": "A Graphics Processor (GPU)",
+                            "Backplane": "A backplane within the chassis",
+                            "SystemBoard": "The system board (PCB)",
+                            "PowerSupply": "A power supply",
+                            "VoltageRegulator": "A voltage regulator device",
+                            "StorageDevice": "A storage device",
+                            "NetworkingDevice": "A networking device",
+                            "ComputeBay": "Within a compute bay",
+                            "StorageBay": "Within a storage bay",
+                            "NetworkBay": "Within a networking bay",
+                            "ExpansionBay": "Within an expansion bay",
+                            "PowerSupplyBay": "Within a power supply bay"
+                        },
+                        "readonly": true,
+                        "description": "Describes the area or device to which this temperature measurement applies.",
+                        "specification": "The value of this property shall be a description of the affected device or region within the chassis to which this temperature measurement applies."
+                    },
+                    "CorrelatableID": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "readonly": true,
+                        "description": "The CorrelatableID for this temperature sensor",
+                        "specification": "The value of this property shall be the CorrelatableID for this temperature sensor and shall adhere to the semantics for CorrelatableID as defined in the SPMA specification."
+                    }
+                }
+            },
+            "readonly": true,
+            "description": "This is the definition for temperature sensors.",
+            "specification": "These properties shall be the definition for temperature sensors for an SPMA implementation."
+        },
+        "Fans": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "Oem": {
+                        "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem"
+                    },
+                    "FanName": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "readonly": true,
+                        "description": "Name of the fan",
+                        "specification": "The value of this property shall be the name of the fan."
+                    },
+                    "PhysicalContext": {
+                        "type": "string",
+                        "enum": [
+                            "Room",
+                            "Intake",
+                            "Exhaust",
+                            "Front",
+                            "Back",
+                            "Upper",
+                            "Lower",
+                            "CPU",
+                            "GPU",
+                            "Backplane",
+                            "SystemBoard",
+                            "PowerSupply",
+                            "VoltageRegulator",
+                            "StorageDevice",
+                            "NetworkingDevice",
+                            "ComputeBay",
+                            "StorageBay",
+                            "NetworkBay",
+                            "ExpansionBay",
+                            "PowerSupplyBay"
+                        ],
+                        "enumDescriptions": {
+                            "Room": "The room",
+                            "Intake": "The intake point of the chassis",
+                            "Exhaust": "The exhaust point of the chassis",
+                            "Front": "The front of the chassis",
+                            "Back": "The back of the chassis",
+                            "Upper": "The upper portion of the chassis",
+                            "Lower": "The lower portion of the chassis",
+                            "CPU": "A Processor (CPU)",
+                            "GPU": "A Graphics Processor (GPU)",
+                            "Backplane": "A backplane within the chassis",
+                            "SystemBoard": "The system board (PCB)",
+                            "PowerSupply": "A power supply",
+                            "VoltageRegulator": "A voltage regulator device",
+                            "StorageDevice": "A storage device",
+                            "NetworkingDevice": "A networking device",
+                            "ComputeBay": "Within a compute bay",
+                            "StorageBay": "Within a storage bay",
+                            "NetworkBay": "Within a networking bay",
+                            "ExpansionBay": "Within an expansion bay",
+                            "PowerSupplyBay": "Within a power supply bay"
+                        },
+                        "readonly": true,
+                        "description": "Describes the area or device associated with this fan.",
+                        "specification": "The value of this property shall be a description of the affected device or region within the chassis to which this fan is associated."
+                    },
+                    "CorrelatableID": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "readonly": true,
+                        "description": "The CorrelatableID for this fan",
+                        "specification": "The value of this property shall be the CorrelatableID for this temperature sensor and shall adhere to the semantics for CorrelatableID as defined in the Redfish specification."
+                    },
+                    "Status": {
+                        "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Status"
+                    },
+                    "Units": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "enum": [
+                            "RPM",
+                            "Percent"
+                        ],
+                        "readonly": true,
+                        "description": "Units for the CurrentReading",
+                        "specification": "The value of this property shall be the units that the CurrentReading is measured in."
+                    },
+                    "CurrentReading": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "readonly": true,
+                        "description": "Current fan speed",
+                        "specification": "The value of this property shall be the current value of the fan sensor's reading."
+                    },
+                    "UpperThresholdNonCritical": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "readonly": true,
+                        "description": "Above normal range",
+                        "specification": "The value of this property shall indicate the CurrentReading is above the normal range but is not critical."
+                    },
+                    "UpperThresholdCritical": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "readonly": true,
+                        "description": "Above normal range but not yet fatal",
+                        "specification": "The value of this property shall indicate the CurrentReading is above the normal range but is not yet fatal."
+                    },
+                    "UpperThresholdFatal": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "readonly": true,
+                        "description": "Above normal range and is fatal",
+                        "specification": "The value of this property shall indicate the CurrentReading is above the normal range and is fatal."
+                    },
+                    "LowerThresholdNonCritical": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "readonly": true,
+                        "description": "Below normal range",
+                        "specification": "The value of this property shall indicate the CurrentReading is below the normal range but is not critical."
+                    },
+                    "LowerThresholdCritical": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "readonly": true,
+                        "description": "Below normal range but not yet fatal",
+                        "specification": "The value of this property shall indicate the CurrentReading is below the normal range but is not yet fatal."
+                    },
+                    "LowerThresholdFatal": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "readonly": true,
+                        "description": "Below normal range and is fatal",
+                        "specification": "The value of this property shall indicate the CurrentReading is below the normal range and is fatal."
+                    },
+                    "MinimumValue": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "readonly": true,
+                        "description": "Minimum value for CurrentReading",
+                        "specification": "The value of this property shall indicate the lowest possible value for CurrentReading."
+                    },
+                    "MaximumValue": {
+                        "type": [
+                            "integer",
+                            "null"
+                        ],
+                        "readonly": true,
+                        "description": "Maximum value for CurrentReading",
+                        "specification": "The value of this property shall indicate the lowest possible value for CurrentReading."
+                    }
+                }
+            },
+            "readonly": true,
+            "description": "This is the definition for fans.",
+            "specification": "These properties shall be the definition for fans for an SPMA implementation."
+        },
+        "Redundancy": {
+            "type": "array",
+            "items": {
+                "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Redundancy#Redundancy"
+            },
+            "readonly": true,
+            "description": "This structure is used to show redundancy for fans.  The use of CorrelatableIDs will reference the members of the redundancy groups.",
+            "specification": "The values of the properties in this array shall be used to show redundancy for fans and other elements in this resource.  The use of CorrelatableIDs within these arrays shall reference the members of the redundancy groups."
+        },
+        "Status": {
+            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Status"
+        }
+    },
+    "required": [
+        "Name"
+    ],
+    "description": "This is the schema definition for the Thermal Metrics.  It represents the properties for Temperature and Cooling.",
+    "specification": "This resource shall be used to represent a thermal metrics resource for an SPMA implementation."
+}
+}

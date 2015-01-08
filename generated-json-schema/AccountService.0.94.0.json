@@ -1,0 +1,84 @@
+{
+"$schema": "http://www.redfishspecification.org/schema",
+"AccountService":{
+    "title": "AccountService.0.94.0",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "@odata.context": {
+            "type": "string"
+        },
+        "@odata.id": {
+            "type": "string",
+            "format": "uri",
+            "description": "A reference to a resource"
+        },
+        "@odata.type": {
+            "type": "string"
+        },
+        "Id": {
+            "type": "string"
+        },
+        "Description": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "readonly": true,
+            "description": "Provides a description of this resource and is used for commonality  in the schema definitions.",
+            "specification": "This object represents the Description property.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification."
+        },
+        "Name": {
+            "type": "string",
+            "readonly": true,
+            "description": "The name of the resource or array element.",
+            "specification": "This object represents the Name property.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification. The value of this string shall be of the format for the reserved word *Name*."
+        },
+        "Modified": {
+            "type": "string",
+            "readonly": true,
+            "description": "The date-time stamp that the object was last modified.",
+            "specification": "This object represents the Modified property.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification. The value of this string shall be of the format for the reserved word *Modified*."
+        },
+        "Oem": {
+            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem",
+            "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+            "specification": "The value of this string shall be of the format for the reserved word *Oem*."
+        },
+        "AuthFailureLoggingThreshold": {
+            "type": "integer",
+            "readonly": false,
+            "description": "This is the number of authorization failures that need to occur before the failure attempt is logged to the manager log.",
+            "specification": "This property shall reference the threshold for when an authorization failure is logged.  This represents a modulo function value, thus the failure shall be logged every nth occurrence where n represents the value of this property."
+        },
+        "MinPasswordLength": {
+            "type": "integer",
+            "readonly": true,
+            "description": "This is the minumum password length for this service.",
+            "specification": "This property shall reference the minimum password length that the implementation will allow a password to be set to."
+        },
+        "Links": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "Oem": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem"
+                },
+                "Accounts@odata.navigationLink": {
+                    "type": "string",
+                    "format": "uri",
+                    "readonly": true,
+                    "description": "Link to a collection of ManagerAccounts",
+                    "specification": "This property shall contain the link to a collection of ManagerAccounts."
+                }
+            },
+            "description": "The links object contains the links to other resources that are related to this resource."
+        }
+    },
+    "required": [
+        "Name"
+    ],
+    "description": "This is the schema definition for the Account Service.  It represents the properties for the service itself and has links to the actual list of accounts.",
+    "specification": "This resource shall be used to represent a management account service for an SPMA implementation."
+}
+}
