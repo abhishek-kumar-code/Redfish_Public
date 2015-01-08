@@ -1,0 +1,145 @@
+{
+"$schema": "http://www.redfishspecification.org/schema",
+"Event":{
+    "title": "Event.0.94.0",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "@odata.context": {
+            "type": "string"
+        },
+        "@odata.id": {
+            "type": "string",
+            "format": "uri",
+            "description": "A reference to a resource"
+        },
+        "@odata.type": {
+            "type": "string"
+        },
+        "Id": {
+            "type": "string"
+        },
+        "Description": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "readonly": true,
+            "description": "Provides a description of this resource and is used for commonality  in the schema definitions.",
+            "specification": "This object represents the Description property.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification."
+        },
+        "Name": {
+            "type": "string",
+            "readonly": true,
+            "description": "The name of the resource or array element.",
+            "specification": "This object represents the Name property.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification. The value of this string shall be of the format for the reserved word *Name*."
+        },
+        "Modified": {
+            "type": "string",
+            "readonly": true,
+            "description": "The date-time stamp that the object was last modified.",
+            "specification": "This object represents the Modified property.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification. The value of this string shall be of the format for the reserved word *Modified*."
+        },
+        "Oem": {
+            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem",
+            "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+            "specification": "The value of this string shall be of the format for the reserved word *Oem*."
+        },
+        "Events": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "EventType": {
+                        "type": "string",
+                        "enum": [
+                            "StatusChange",
+                            "ResourceUpdated",
+                            "ResourceAdded",
+                            "ResourceRemoved",
+                            "Alert"
+                        ],
+                        "enumDescriptions": {
+                            "StatusChange": "The status of this resource has changed",
+                            "ResourceUpdated": "The value of this resource has been updated",
+                            "ResourceAdded": "A resource has been added",
+                            "ResourceRemoved": "A resource has been removed",
+                            "Alert": "A condition exists which requires attention"
+                        },
+                        "readonly": true,
+                        "description": "This indicates the type of event sent, according to the definitions in the EventService.",
+                        "specification": "The value of this property shall indicate the type of event as defined in the EventService schema."
+                    },
+                    "EventID": {
+                        "type": "string",
+                        "readonly": true,
+                        "description": "This is a unique instance identifier of an event.",
+                        "specification": "The value of this property shall indicate a unique identifier for the event, the format of which is implementation dependent."
+                    },
+                    "EventTimestamp": {
+                        "type": "string",
+                        "readonly": true,
+                        "description": "This is time the event occurred.",
+                        "specification": "The value of this property shall indicate the time the event occurred where the value shall be consistent with the SPMA service time that is also used for the values of the Modified property."
+                    },
+                    "Severity": {
+                        "type": "string",
+                        "readonly": true,
+                        "description": "This is the severity of the event.",
+                        "specification": "The value of this property shall be the severity of the event, as defined in the Status section of the SPMA specificaiton."
+                    },
+                    "Message": {
+                        "type": "string",
+                        "readonly": true,
+                        "description": "This is the human readable message, if provided.",
+                        "specification": "This property shall contain an optional human readable message."
+                    },
+                    "MessageID": {
+                        "type": "string",
+                        "readonly": true,
+                        "description": "This is the key for this message which can be used to look up the message in a message registry.",
+                        "specification": "This property shall be a key into message registry as described in the SPMA specification.",
+                        "pattern": "^[A-Za-z0-9]+\\.\\d+\\.\\d+.[A-Za-z0-9.]+$"
+                    },
+                    "MessageArgs": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "readonly": true,
+                        "description": "This array of message arguments are substituted for the arguments in the message when looked up in the message registry.",
+                        "specification": "This property has the same semantics as the MessageArgs property in the Event schema for SPMA."
+                    },
+                    "OriginOfCondition": {
+                        "type": "string",
+                        "readonly": true,
+                        "description": "This indicates the resource that originated the condition that caused the event to be generated.",
+                        "specification": "The value of this property shall contain the URI of the resource that caused the event to be generated."
+                    },
+                    "Context": {
+                        "type": "string",
+                        "readonly": true,
+                        "description": "A context can be supplied at subscription time.  This property is the context value supplied by the subscriber.",
+                        "specification": "This property shall contain a client supplied context for the ListnerDestination to which this event is being sent."
+                    },
+                    "Oem": {
+                        "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem"
+                    }
+                },
+                "required": [
+                    "EventType",
+                    "MessageID"
+                ]
+            },
+            "description": "Each event in this array has a set of properties that describe the event.  Since this is an array, more than one event can be sent simultaneously."
+        }
+    },
+    "required": [
+        "Name",
+        "Events"
+    ],
+    "description": "This is the schema definition for Events.  It represents the properties for the events themselves and not subscriptions or any other resource.",
+    "specification": "This resource shall be used to represent an event for an SPMA implementation."
+}
+}
