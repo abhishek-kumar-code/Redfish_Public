@@ -276,6 +276,7 @@ The following referenced documents are indispensable for the application of this
 * <a name="OData-Protocol">OData Version 4.0 Part 1: Protocol</a>. 24 February 2014. [http://docs.oasis-open.org/odata/odata/v4.0/os/odata-v4.0-part1-protocol.html]("http://docs.oasis-open.org/odata/odata/v4.0/os/odata-v4.0-part1-protocol.html])
 * <a name="OData-URLConventions">OData Version 4.0 Part 2: URL Conventions</a>. 24 February 2014. [http://docs.oasis-open.org/odata/odata/v4.0/os/odata-v4.0-part2-url-conventions.html]("http://docs.oasis-open.org/odata/odata/v4.0/os/odata-v4.0-part2-url-conventions.html")
 * <a name="OData-CSDL">OData Version 4.0 Part 3: Common Schema Definition Language (CSDL)</a>. 24 February 2014. [http://docs.oasis-open.org/odata/odata/v4.0/os/odata-v4.0-part3-csdl.html]("http://docs.oasis-open.org/odata/odata/v4.0/os/odata-v4.0-part3-csdl.html")
+* <a name="OData-UnitsOfMeasure">OData Version 4.0: Core Vocabulary</a>. 24 February 2014. [http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Core.V1.xml]("http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Core.V1.xml")
 * <a name="OData-JSON">OData Version 4.0 JSON Format</a>. 24 February 2014. [http://docs.oasis-open.org/odata/odata-json-format/v4.0/os/odata-json-format-v4.0-os.html]("http://docs.oasis-open.org/odata/odata-json-format/v4.0/os/odata-json-format-v4.0-os.html")
 * <a name="OData-UnitsOfMeasure">OData Version 4.0: Units of Measure Vocabulary</a>. 24 February 2014. [http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml]("http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml")
 
@@ -442,7 +443,7 @@ The challenge with security in a remote interface that is programmatic is to ens
 
 The Scalable Platform Management API is based on REST and follows OData conventions for interoperability, as defined in [OData-Protocol](#user-content-OData-Protocol), JSON payloads, as defined in [OData-JSON](#user-content-OData-JSON), and a machine-readable representation of schema, as defined in [OData-Schema](#user-content-OData-CSDL). The schemas include annotations to enable direct translation to JSON Schema for validation and consumption by tools supporting JSON Schema. Following these common standards and conventions increases interoperability and enables leveraging of existing tool chains.
  
-SPMA conforms to the OData minimal conformance level for clients consuming minimal metadata.
+SPMA follows to the OData minimal conformance level for clients consuming minimal metadata.
 
 Throughout this document, we refer to SPMA as having a protocol mapped to a data model.  More accurately, HTTP is the application protocol that will be used to transport the messages and TCP/IP is the transport protocol. The RESTful interface is a mapping to the message protocol.  For simplicity though, we will refer to the RESTful mapping to HTTP, TCP/IP and other protocol, transport and messaging layer aspects as the SPMA protocol. 
 
@@ -475,7 +476,7 @@ A URI is used to identify a resource, including the base service and all SPMA re
 
 To begin operations, a client must know the URI for a resource.
 
-* Dereferencing the URI of a resource (via a GET operation) shall yield a representation for the resource containing resource attributes, and links to associated resources.
+* Performing a GET operation yields a representation of the resource containing resource attributes and links to associated resources.
 
 The base resource URI is well known and is based on the protocol version.  Discovering the URIs to additional resources is done through observing the associated resource links returned in previous responses. This type of API that is consumed by navigating URIs returned by the service is known as a Hypermedia API.
 
@@ -487,13 +488,13 @@ For example, in the following URL:
 
     Example: https://mgmt.vendor.com/rest/v1/Systems/1
 
-* The first portion is the service path (https://mgmr.vendor.com).
-* The second portion is the base resource and version (/rest/v1).
-* The third portion is the unique resource path (Systems/1).
+* The first part is the scheme and authority portion (https://mgmr.vendor.com).
+* The second part is the root service and version (/rest/v1).
+* The third part is the unique resource path (Systems/1).
 
-The scheme and authority portions of the URI _shall not_ be considered part of the unique _identifier_ of the resource. This is due to redirection capabilities and local operations which may result in the variability of the connection portion.  The remainder of the URI (the service and resource paths) is what _uniquely identifies_ the resource, and this is what is returned in all SPMA payloads.  
+The scheme and authority part of the URI _shall not_ be considered part of the unique _identifier_ of the resource. This is due to redirection capabilities and local operations which may result in the variability of the connection portion.  The remainder of the URI (the service and resource paths) is what _uniquely identifies_ the resource, and this is what is returned in all SPMA payloads.  
 
-* The unique identifier portion of a URI _shall_ be unique within the implementation.
+* The unique identifier part of a URI _shall_ be unique within the implementation.
 
 For example, a POST may return the following URI in the Location header of the response (indicating the new resource created by the POST):
 
@@ -501,7 +502,7 @@ For example, a POST may return the following URI in the Location header of the r
 
 Assuming the client is connecting through an appliance named "mgmt.vendor.com", the full URI needed to access this new resource is https://mgmt.vendor.com/rest/v1/Systems/2.
 
-URIs, as described in [RFC3986](#user-content-RFC3986), may also contain a query (?query) and a frag (#frag) components.  Queries are addressed in the section [Query Parameters](#user-content-query-parameters).  Fragments (frag) shall be ignored by the server when used as the URI for submitting an operation. Frags shall not be used in a reference in a links section. Frags may be used in places like [type references](#user-content-type-property), [CorrelatableIDs](#user-content-correlatableidreferences) and [Events](#user-content-events). Clients should expect to parse out the fragment portion for Types and Events, but CorrelatableIDs shall be treated as opaque.  When a Frag is used, it shall be of JSONPointer format according to [RFC6901](#user-content-RFC6901).
+URIs, as described in [RFC3986](#user-content-RFC3986), may also contain a query (?query) and a frag (#frag) components.  Queries are addressed in the section [Query Parameters](#user-content-query-parameters).  Fragments (frag) shall be ignored by the server when used as the URI for submitting an operation. 
 
 #### HTTP Methods
 
@@ -543,6 +544,7 @@ Responses to GET requests may be compressed.  Clients shall be prepared to accep
 In order to reduce the cases of unnecessary RESTful accesses to resources, the SPMA Service should support associating a separate ETag with each resource.
   
 * Implementations should support returning [ETag properties](#user-content-etag-property) for each resource.
+* Implementations should support returning ETag headers for each response that represents a single resource.  Implementations shall support returning ETag headers for certain requests and responses as listed in the [Security](#user-content-security) section.
 
 The ETag is generated and provided as part of the resource payload because the service is in the best position to know if the new version of the object is different enough to be considered substantial. There are two types of ETags: weak and strong.
 
@@ -550,8 +552,6 @@ The ETag is generated and provided as part of the resource payload because the s
 * Strong model -- all portions of the object are included in the formulation of the ETag. 
 
 This specification does not mandate a particular algorithm for creating the ETag, but ETags should be highly collision-free.  An ETag could be a hash, a generation ID, a time stamp or some other value that changes when the underlying object changes.
-
-NOTE: Refer to the [Security](#user-content-security) section for security implications of ETags
 
 If a client PUTs or PATCHes a resource, it should include an ETag in the HTTP If-Match/If-None-Match header from a previous GET.
 
@@ -566,9 +566,13 @@ The format of the ETag header is:
 
 ### Protocol Version
 
-The Version of the SPMA Protocol supported by this specification is Version 1.0.  Note that the protocol version is separate from the version of the resources or the version of the schema supported by them.  Changes to the resources are noted via ETags.  The schema version for a resource type is defined in the namespace of resource's [type URI](#user-content-type-identifiers) returned in the [type](#user-content-@odata.type) property of the resource.
+The Version of the SPMA Protocol supported by this specification is Version 1.0.  Note that the protocol version is separate from the version of the resources or the version of the schema supported by them.
 
-Each version of the SPMA protocol is strongly typed.  This is accomplished using the URI of the SPMA service in combination with the resource obtained at that URI, called the ServiceRoot. The URI version subcomponent of the URI is string of the form: 
+Each version of the SPMA protocol is strongly typed.  This is accomplished using the URI of the SPMA service in combination with the resource obtained at that URI, called the ServiceRoot. 
+
+The root URI for SPMA protocol version 1 shall be "/rest/v1".
+
+While the major version of the protocol is represented in the URI, the major version, minor version and errata version of the protocol are represented in the Version property of the ServiceRoot resource, as defined in the Schema for that resource.  The protocol version is a string of the form: 
 
 *MajorVersion*.*MinorVersion*.*Errata*
 
@@ -577,10 +581,6 @@ Each version of the SPMA protocol is strongly typed.  This is accomplished using
 * *MajorVersion* = integer:  something in the class changed in a backward incompatible way.
 * *MinorVersion* = integer:  a minor update.  New functionality may have been added but nothing removed. Compatibility will be preserved with previous  minorversions.
 * *Errata* = integer: something in the prior version was broken and needed to be fixed.
-
-While the major version is represented in the URI, the major version, minor version and errata versions are represented in the Version property of the ServiceRoot resource, as defined in the Schema for that resource.
-
-The root URI for SPMA protocol version 1 shall be "/rest/v1".
 
 Any resource discovered through links found by accessing the root service or any service or resource referenced using references from the root service shall conform to the same version of the protocol supported by the root service. 
 
