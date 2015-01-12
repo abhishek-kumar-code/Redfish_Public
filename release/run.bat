@@ -17,6 +17,7 @@ goto :run
 
 :git_missing
 echo Install git from http://www.git-scm.com/download/win
+echo Make sure to install git such that it is available from cmd prompts.
 pause
 goto :eof
 
