@@ -2,7 +2,7 @@
 
 Document Identifier: DSP0266
 
-Date: 2015-1-7
+Date: 2015-1-12
 
 Version: 0.94.0
 
@@ -22,7 +22,7 @@ Document Language: en-US
 
 	Copyright Notice
 	
-	Copyright © 2014 Distributed Management Task Force, Inc. (DMTF). All rights reserved.
+	Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.
 
 DMTF is a not-for-profit association of industry members dedicated to promoting enterprise and systems management and interoperability. Members and non-members may reproduce DMTF specifications and documents, provided that correct attribution is given. As DMTF specifications may be revised from time to time, the particular version and release date should always be noted.
 
@@ -224,7 +224,7 @@ CONTENTS
 
 # Foreword
 
-The Scalable Platform Management API was prepared by the Scalable Platform Management Forum.
+The Scalable Platform Management API was prepared by the Scalable Platform Management Forum of the DMTF.
 
 DMTF is a not-for-profit association of industry members dedicated to promoting enterprise and systems management and interoperability. For information about the DMTF, see http://www.dmtf.org.
 
@@ -302,7 +302,7 @@ The following additional terms are used in this document.
 | Resource       | A Resource is addressable by a URI and is able to receive and process messages. A Resource can be either an individual entity, or a collection that acts as a container for several other entities.                                                                                                                                                                                                                                                                                             |
 | Resource Tree  | A Resource Tree is a tree structure of JSON encoded resources accessible via a well-known starting URI.  A client may discover the resources available on an SPMA Service by following the resource links from the base of the tree. <br>**NOTE** for SPMA client implementation:  Although the resources are a tree, the references between resources may result in graph instead of a tree.  Clients traversing the resource tree must contain logic to avoid infinite loops.      |
 | Response       | A message from a Server to a Client in response to a request message.  It consists of a status line, response headers, an empty line and an optional message body.                                                                                                                                                                                                                                                                                                                              |
-| Subscription   | The act of connecting to an error service in order to receive events.                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| Subscription   | The act of connecting to an event service in order to receive events.                                                                                                                                                                                                                                                                                                                                                                                                                           |
 
 ## Symbols and Abbreviated Terms
 
@@ -322,7 +322,7 @@ The following additional abbreviations are used in this document.
 
 ## Overview
 
-The Scalable Platform Management API (SMPA) is a management standard using a data model representation inside of a hypermedia RESTful interface.  The model is exposed in terms of an interoperable OData Schema, with the payload of the messages being expressed in JSON following OData JSON conventions. The schema includes annotations to facilitate automatic translation of the schema to JSON Schema. Because it is based on REST, SPMA is easier to use and implement than many other solutions.  Since it is model oriented, it is capable of expressing the relationships between components in modern systems as well as the semantics of the services and components within them.  It is also easily extensible.  By using a hypermedia approach to REST, SPMA can express a large variety of systems from multiple vendors.  By requiring JSON representation, a wide variety of resources can be created in a denormalized fashion not only to improve scalability, but the payload can be easily interpreted by most programming environments as well as being relatively intuitive for a human examining the data.  The ability to externally host the Schema definition of the resources in a machine-readable format allows the meta data to be associated with the data without encumbering SPMA services with the meta data, thus enabling more advanced client scenarios as found in many data center and cloud environments.    
+The Scalable Platform Management API (SMPA) is a management standard using a data model representation inside of a hypermedia RESTful interface.  Because it is based on REST, SPMA is easier to use and implement than many other solutions.  Since it is model oriented, it is capable of expressing the relationships between components in modern systems as well as the semantics of the services and components within them.  It is also easily extensible.  By using a hypermedia approach to REST, SPMA can express a large variety of systems from multiple vendors.  By requiring JSON representation, a wide variety of resources can be created in a denormalized fashion not only to improve scalability, but the payload can be easily interpreted by most programming environments as well as being relatively intuitive for a human examining the data.  The model is exposed in terms of an interoperable OData Schema, with the payload of the messages being expressed in JSON following OData JSON conventions. The schema (available in both XML and JSON formats) includes annotations to facilitate automatic translation of the schema to JSON Schema. The ability to externally host the Schema definition of the resources in a machine-readable format allows the meta data to be associated with the data without encumbering SPMA services with the meta data, thus enabling more advanced client scenarios as found in many data center and cloud environments.    
 
 ### Principal Goals & Scope
 
@@ -340,7 +340,7 @@ The following design tenets govern the design of the Scalable Platform Managemen
 * Functionality must be usable by non-computer-science professionals
 * Data definitions as obvious in context as possible
 * Opaque view of implementation architecture
-* "Top 10" customer needs are focus of first round schema definition.
+* "Top 10" end user needs are focus of first round schema definition.
 
 #### REST based
 
@@ -390,7 +390,7 @@ Specifically, this document is intended to enable an open, industry-standard sol
 
 #### Limitations
 
-SPMA does not guarantee that client software will never need to be updated to accommodate new types of devices.  System optimization for an application will always require architectural oversight.  However, SPMA does attempt to minimize instances of forced upgrades to clients using Schemas, strict versioning and forward compatibility rules and through separation of the protocol from the data model.
+SPMA does not guarantee that client software will never need to be updated.  Examples that may require updates include accommodation of new types of systems or their components, data model updates, and so on.  System optimization for an application will always require architectural oversight.  However, SPMA does attempt to minimize instances of forced upgrades to clients using Schemas, strict versioning and forward compatibility rules and through separation of the protocol from the data model.
 
 SPMA does not enable a client to read a Resource Tree and write it to another SPMA Service.  This is not possible as it is a hypermedia API. Only the root object has a well known URI. The resource topology reflects the topology of the system and devices it represents.  Consequently, different server or device types will result in differently shaped resource trees, potentially even for identical systems from the same manufacturer. 
 
