@@ -444,7 +444,7 @@ The challenge with security in a remote interface that is programmatic is to ens
 
 The Scalable Platform Management API is based on REST and follows OData conventions for interoperability, as defined in [OData-Protocol](#user-content-OData-Protocol), JSON payloads, as defined in [OData-JSON](#user-content-OData-JSON), and a machine-readable representation of schema, as defined in [OData-Schema](#user-content-OData-CSDL). The schemas include annotations to enable direct translation to JSON Schema for validation and consumption by tools supporting JSON Schema. Following these common standards and conventions increases interoperability and enables leveraging of existing tool chains.
  
-SPMA follows to the OData minimal conformance level for clients consuming minimal metadata.
+SPMA follows the OData minimal conformance level for clients consuming minimal metadata.
 
 Throughout this document, we refer to SPMA as having a protocol mapped to a data model.  More accurately, HTTP is the application protocol that will be used to transport the messages and TCP/IP is the transport protocol. The RESTful interface is a mapping to the message protocol.  For simplicity though, we will refer to the RESTful mapping to HTTP, TCP/IP and other protocol, transport and messaging layer aspects as the SPMA protocol. 
 
@@ -477,7 +477,7 @@ A URI is used to identify a resource, including the base service and all SPMA re
 
 To begin operations, a client must know the URI for a resource.
 
-* Performing a GET operation yields a representation of the resource containing resource attributes and links to associated resources.
+* Performing a GET operation yields a representation of the resource containing properties and links to associated resources.
 
 The base resource URI is well known and is based on the protocol version.  Discovering the URIs to additional resources is done through observing the associated resource links returned in previous responses. This type of API that is consumed by navigating URIs returned by the service is known as a Hypermedia API.
 
@@ -567,11 +567,11 @@ The format of the ETag header is:
 
 ### Protocol Version
 
-The Version of the SPMA Protocol supported by this specification is Version 1.0.  Note that the protocol version is separate from the version of the resources or the version of the schema supported by them.
+The protocol version is separate from the version of the resources or the version of the schema supported by them.
 
 Each version of the SPMA protocol is strongly typed.  This is accomplished using the URI of the SPMA service in combination with the resource obtained at that URI, called the ServiceRoot. 
 
-The root URI for SPMA protocol version 1 shall be "/rest/v1".
+The root URI for this version of the SPMA protocol shall be "/rest/v1".
 
 While the major version of the protocol is represented in the URI, the major version, minor version and errata version of the protocol are represented in the Version property of the ServiceRoot resource, as defined in the Schema for that resource.  The protocol version is a string of the form: 
 
