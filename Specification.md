@@ -233,7 +233,7 @@ DMTF is a not-for-profit association of industry members dedicated to promoting 
 The DMTF acknowledges the following individuals for their contributions to this document:
 * Jeff Autor - Hewlett-Packard Company
 * David Brockhaus - Emerson Network Power
-* Richard Bruner - VMware Inc.
+* Richard Brunner - VMware Inc.
 * P Chandrasekhar - Dell Inc
 * Chris Davenport - Hewlett-Packard Company
 * Gamma Dean - Emerson Network Power
@@ -246,6 +246,7 @@ The DMTF acknowledges the following individuals for their contributions to this 
 * John Leung - Intel Corporation
 * Michael Pizzo - Microsoft Corporation
 * Irina Salvan - Microsoft Corporation
+* Hemal Shah - Broadcom Corporation
 * Jim Shelton - Emerson Network Power
 * Tom Slaight - Intel Corporation
 * Donnie Sturgeon - Emerson Network Power
