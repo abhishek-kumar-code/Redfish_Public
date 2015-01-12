@@ -735,7 +735,7 @@ The DELETE method is used to remove a resource.
 
 ##### Actions (POST)
 
-The POST method is used to initiate potentially non-idempotent operations on the object (such as Actions).
+The POST method is used to initiate operations on the object (such as Actions).
 
  * Services shall support the POST method for sending actions.
  * The POST operation may not be idempotent.
@@ -778,7 +778,6 @@ And a computer system resource contains an [Actions](#user-content-actions-prope
             "GracefulRestart",
             "ForceRestart",
             "Nmi",
-            "GracefulRestart",
             "ForceOn",
             "PushPowerButton"
         ]
@@ -878,7 +877,7 @@ HTTP defines status codes that can be returned in response messages.
 #### Metadata Responses
 
 ##### Service Metadata
-The service metadata describes top-level resources of the service according to [OData-Schema](#user-content-OData-CSDL). The schema is represented as an XML document with a root element named "Edmx", defined in the http://docs.oasis-open.org/odata/ns/edmx" namespace, and with an OData Version attribute equal to "4.0".
+The service metadata describes top-level resources of the service according to [OData-Schema](#user-content-OData-CSDL). The SPMA Service Metadata is represented as a CSDL XML document with a root element named "Edmx", defined in the http://docs.oasis-open.org/odata/ns/edmx" namespace, and with an OData Version attribute equal to "4.0".
 
 ~~~xml
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
@@ -886,7 +885,7 @@ The service metadata describes top-level resources of the service according to [
 </edmx:Edmx>
 ~~~
 
-The service metadata shall include the namespaces for each of the DMTF resource types, along with the "DMTFExtensions.1.0.0" namespace. These references may use the standard Uri for the hosted schema definitions (i.e., on http://dmtf.org/schema) or a Url to a local version of the schema that shall be identical to the hosted version. The namespace shall be aliased with the version-independent namespace name.
+The service metadata shall include the namespaces for each of the DMTF resource types, along with the "DMTFExtensions.0.94.0" namespace. These references may use the standard Uri for the hosted schema definitions (i.e., on http://dmtf.org/schema) or a Url to a local version of the schema that shall be identical to the hosted version. The namespace shall be aliased with the version-independent namespace name.
 
 ~~~xml
 <edmx:Reference Uri="http://dmtf.org/schema/v1/ServiceRoot.1.0.0">
@@ -947,7 +946,7 @@ The annotation file itself specifies the Target schema element being annotated, 
 
 #### Resource Responses
 
-Resources are returned as JSON payloads, using the mime type `application/json`.
+Resources are returned as JSON payloads, using the MIME type `application/json`.
 
 ##### Context Property
 
@@ -1013,9 +1012,9 @@ Primitive properties are returned as JSON values.
 
 ###### DateTime Values
 
-DateTime values are returned as JSON strings according to the ISO 8601 "extended" format: 
+DateTime values shall be returned as JSON strings according to the ISO 8601 "extended" format: 
 
- *YYYY*-*MM*-*DD* T *hh*:*mm*:*ss*[.*SSS*]> (Z | (+ | - ) *hh*:*mm*)
+ *YYYY*-*MM*-*DD* T *hh*:*mm*:*ss*[.*SSS*] (Z | (+ | - ) *hh*:*mm*)
 
 ##### Structured Properties
 
@@ -1103,6 +1102,7 @@ A reference to a collection of zero ore more related resources is returned as an
 		{
 			"@odata.id":"/rest/v1/Chassis/Encl1"
 		}
+	]
 }
 ~~~
 
@@ -1649,7 +1649,7 @@ The `ExpandReferences` annotation term is defined in http://dmtf.org/schema/V1/D
 Actions are grouped under a property named "Actions". 
 
 ~~~xml
-	  <Property Name="Actions" Type="MyType.Actions>
+	  <Property Name="Actions" Type="MyType.Actions">
 ~~~
 
 The type of the Actions property is a [structured type](#user-content-structured-types) with a single OEM property whose type is a structured type with no defined properties.
@@ -1813,22 +1813,6 @@ If a provider must communicate location or association information and does not 
 
 For example, a NIC in a PCI slot communicates its PCI location by including a "CorrelatableID" with a value consisting of its UEFI device path.  PCI slots also have a UEFI device path.  This match establishes their association.
                                                                                                                                          
-#### Other common properties
-
-The following common properties should be used when appropriate.  Other semantics are defined for these properties in the common section of the SPMA Schema.
-* SerialNumber
-* Model
-* PartNumber
-* FirmwareVersion
-* Uuid (standard RFC format)
-* Mac (MAC address standard output format, ##:##:##:##:##:##)
-* Wwn, VirtualWwn (world wide name and" virtual wwn, use standard output format, ##:##:##:##:##:## )
-* VirtualSerialNumber
-* VirtualUuid
-* PowerState
-* IPv4Address 
-* IPv6Address if scalar, however better to consider a list in the resource model with address and type.
-* DnsName " (vs current *thing* name ) """ Need to ensure can address the attribute properly.  Note "Name" is a reserved property.
 
 ### SPMA Resources
 
@@ -2086,10 +2070,7 @@ References to RFCs -
 	 http://tools.ietf.org/html/rfc5288
 	 
 ##### Certificates
-Implementations shall support replacement of the default certificate if one is provided, with a certificate having at least a 4096 bit rsa key and sha512-rsa signature.
-
-#### FIPS/Common Criteria Compliance
-Implementations which satisfy FIPS and Common Criteria requirements should be considered compliant with this specification.
+Implementations shall support replacement of the default certificate if one is provided, with a certificate having at least a 4096 bit RSA key and sha512-rsa signature.
 
 ### Sensitive Data
 
@@ -2100,7 +2081,7 @@ Implementations which satisfy FIPS and Common Criteria requirements should be co
 	- Password Complexity Requirements
 	- Critical Security Parameters (CSPs) as defined below
 
-Critical Security Parameters : 
+Critical Security Parameters (CSP): 
 Security-related information (e.g., cryptographic keys, authentication data such as passwords and PINs) appearing in plaintext or otherwise unprotected form and whose disclosure or modification can compromise the security of a cryptographic module or the security of the information protected by the module.
 	
 REF: http://csrc.nist.gov/publications/fips/fips140-1/fips1401.pdf - This is used only as a source for the definition of CSPs. No additional requirements for compatibility with the FIPS standard should be inferred.
@@ -2109,7 +2090,7 @@ REF: http://csrc.nist.gov/publications/fips/fips140-1/fips1401.pdf - This is use
 
 * Default Credentials 
 
-	Vendors should NOT implement default credentials for any account installed on the spec compliant device, with a well known password.
+	Services should NOT implement default credentials for any account installed on the spec compliant device, with a well known password.
 
 * Password Complexity
 	
@@ -2143,7 +2124,7 @@ REF: http://csrc.nist.gov/publications/fips/fips140-1/fips1401.pdf - This is use
 * Unauthenticated REST operation results shall not contain [Sensitive Data](#user-content-sensitive-data).
 * External services linked via extref references are not part of this spec, and may have other security requirements.
 	
-* CORS headers are not recommended. Vendors may choose to implement them.
+* CORS headers are not recommended. Services may choose to implement them.
 
 ##### HTTP Redirect
 
@@ -2189,7 +2170,7 @@ For functionality requiring multiple SPMA operations, a standard Login session i
 {
     ...
     "Sessions": {
-        "href": "/rest/Sessions"
+        "@odata.id": "/rest/v1/Sessions"
     },
     ...
 }
@@ -2279,9 +2260,9 @@ Implementations shall only use compliant TLS connections to transport the data b
     * Assigning privileges to users, either local to the SPMA device or users / user groups from the directory services infrastructure like AD/ LDAP
       * Assign privileges individually (Users created by cherry-picking privileges)
         OR
-      * Assign privileges via pre-defined roles (Roles required by SPMA spec or OEM vendor implementation)
+      * Assign privileges via pre-defined roles (Roles required by SPMA spec or OEM implementation)
         OR
-      * Assign privileges via custom roles (Customer admin defined roles which can be reused)
+      * Assign privileges via custom roles (End user admin defined roles which can be reused)
 
 
 * Implementations shall enforce the same privilege model for ETag related activity as is enforced for the data being represented by the ETag. For example, when activity requiring privileged access to read data item represented by ETag requires the same privileged access to read the ETag.
@@ -2289,7 +2270,7 @@ Implementations shall only use compliant TLS connections to transport the data b
 * Privileges
   * shall implement a set of pre-defined privileges
     - Login
-    - Configure BMC
+    - Configure Manager
     - Configure Users
       - NOTE: The Login privilege is automatically assigned to all users
 
@@ -2412,41 +2393,8 @@ The file where the events are written, one or more messages per event should at 
 * Event type
 * Event description
 
-## ANNEX A (informative)
 
-# Known attack vector mitigation
-- XSS
-  * Cross-Origin headers are not recommended. Vendors may choose to implement them, but anticipated customer usage does not provide a strong reason to implement in light of the potential for security problems.
-- Replay
-- CSRF
-- MITM
-- Protocol stripping
-- Cipher attacks
-- Offline attacks
-
-## ANNEX B (informative)
-
-# Notes
-
-Security Token used in sessions with Keep-alive connections is the value in the
-Authorization request header.  Need to explain how this gets returned from the
-first session.
-
-_Directory Service Integration (AD/LDAP) needs to be accommodated at some point.
-Perhaps we go with this in version.next._
-
-Editorial ToDos:
--alphabetize lists/tables
--define/test links
--add to abbreviations: -ipmi, ssdp (others?)
-
-Issues:
--Rights are at a URL level, not per property.
--what is the right set of primitive types to support?
--do extended errors have single resolution string or array of recommended actions strings (difference in spec versus markdown)?
--Sessions - what do they return?
-
-## ANNEX C (informative) 
+## ANNEX A (informative) 
 
 # Change Log
 
