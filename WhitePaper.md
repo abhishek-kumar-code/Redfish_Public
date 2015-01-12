@@ -1,12 +1,14 @@
-#Scalable Platforms Management API White Paper
-
-**Version 0.92a**
-
-The goal of this white paper is to explain how to use the Scalable Platorms Management API (SPMA).  It assumes the reader has access to the Specification, Schema and Mockup as well as a web browser. 
-
-**Table Of Contents**
-
-- TOC Here (Do Not Remove)
+---
+DocTitle: Scalable Platforms Managment API White Paper
+DocNumber: XXXX
+DocType: Whitepaper
+DocVersion: '0.94.0'
+DocStatus: Work in Progress
+DocConfidentiality: – Not a DMTF Standard – DMTF Confidential
+expiration: '2014-10-31'
+released: false
+copyright: '2014-2015'
+---
 
 ## What is the Scalable Platforms Management API (SPMA)?
 
