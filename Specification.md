@@ -1109,7 +1109,7 @@ A reference to a collection of zero ore more related resources is returned as an
 
 ##### OEM Property
 
-OEM-specific properties are nested under an [OEM property](#user-content-property-extensions). The name of the OEM property shall be "Oem" and it's value shall be a JSON object whose properties represent OEM extensions.
+OEM-specific properties are nested under an [OEM property](#user-content-property-extensions). The name of the OEM property shall be "Oem" and its value shall be a JSON object whose properties represent OEM extensions.
 
 For example:
 
