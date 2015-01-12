@@ -542,10 +542,10 @@ The first parameter of a bound function is the resource on which the action is b
 
 Clients can query a resource directly to determine the [actions](#user-content-actions-property) that are available as well as [valid parameter values](#user-content-allowable-values) for those actions.  Some parameter information may require the client to examine the schema corresponding to the resource. 
 
-For instance, if a schema document `http://dmtf.org/schema/v1/ComputerSystem` defines a Reset action, in the `ComputerSystem.1.0.0` namespace, with the alias "ComputerSystem", bound to the `ComputerSystem.Actions` type, such as this example:
+For instance, if a schema document `http://dmtf.org/schema/v1/ComputerSystem` defines a Reset action, in the `ComputerSystem.<%= DocVersion %>` namespace, with the alias "ComputerSystem", bound to the `ComputerSystem.Actions` type, such as this example:
 
 ~~~xml
-<Schema Name="ComputerSystem.1.0.0" Alias="ComputerSystem">
+<Schema Name="ComputerSystem.<%= DocVersion %>" Alias="ComputerSystem">
 ...
   <Action Name="Reset" Isbound="true">
     <Parameter Name="ComputerSystem" Type="ComputerSystem.Actions"/>
@@ -674,25 +674,25 @@ The service metadata describes top-level resources of the service according to [
 </edmx:Edmx>
 ~~~
 
-The service metadata shall include the namespaces for each of the DMTF resource types, along with the "DMTFExtensions.0.94.0" namespace. These references may use the standard Uri for the hosted schema definitions (i.e., on http://dmtf.org/schema) or a Url to a local version of the schema that shall be identical to the hosted version. The namespace shall be aliased with the version-independent namespace name.
+The service metadata shall include the namespaces for each of the DMTF resource types, along with the "DMTFExtensions.<%= DocVersion %>" namespace. These references may use the standard Uri for the hosted schema definitions (i.e., on http://dmtf.org/schema) or a Url to a local version of the schema that shall be identical to the hosted version. The namespace shall be aliased with the version-independent namespace name.
 
 ~~~xml
-<edmx:Reference Uri="http://dmtf.org/schema/v1/ServiceRoot.1.0.0">
-	<edmx:Include Namespace="ServiceRoot.1.0.0" Alias="ServiceRoot"/>
+<edmx:Reference Uri="http://dmtf.org/schema/v1/ServiceRoot.<%= DocVersion %>">
+	<edmx:Include Namespace="ServiceRoot.<%= DocVersion %>" Alias="ServiceRoot"/>
 </edmx:Reference>
-<edmx:Reference Uri="http://dmtf.org/schema/v1/AccountService.0.94.0">
-  <edmx:Include Namespace="AccountService.0.94.0" Alias="AccountService"/>
+<edmx:Reference Uri="http://dmtf.org/schema/v1/AccountService.<%= DocVersion %>">
+  <edmx:Include Namespace="AccountService.<%= DocVersion %>" Alias="AccountService"/>
 </edmx:Reference>
 ...
-<edmx:Reference Uri="http://dmtf.org/schema/v1/VirtualMedia.0.94.0">
-  <edmx:Include Namespace="VirtualMedia.0.94.0" Alias="VirtualMedia"/>
+<edmx:Reference Uri="http://dmtf.org/schema/v1/VirtualMedia.<%= DocVersion %>">
+  <edmx:Include Namespace="VirtualMedia.<%= DocVersion %>" Alias="VirtualMedia"/>
 </edmx:Reference>
 <edmx:Reference Uri="http://dmtf.org/schema/v1/Extensions">
-	<edmx:Include Namespace="DMTFExtensions.1.0.0" Alias="DMTF"/>
+	<edmx:Include Namespace="DMTFExtensions.<%= DocVersion %>" Alias="DMTF"/>
 </edmx:Reference>
 ~~~
 
-The service metadata shall include an entity container that defines the top level resource and collections. This entity container shall extend the ServiceContainer defined in the ServiceRoot.1.0.0 schema and may include additional resources or collections.
+The service metadata shall include an entity container that defines the top level resource and collections. This entity container shall extend the ServiceContainer defined in the ServiceRoot.<%= DocVersion %> schema and may include additional resources or collections.
 
 ~~~xml
 <edmx:DataServices>
@@ -716,7 +716,7 @@ The service can annotate sets, types, actions and parameters with SPMA-defined o
 
 ~~~xml
 <edmx:Reference Uri="http://service/metadata/Service.Annotations">
-	<edmx:IncludeAnnotations TermNamespace="Annotations.1.0.0" Alias="Annotations"/>
+	<edmx:IncludeAnnotations TermNamespace="Annotations.<%= DocVersion %>" Alias="Annotations"/>
 </edmx:Reference>
 ~~~
 	
@@ -835,7 +835,7 @@ The value of the property is a JSON object containing a property named "target" 
 
 The property representing the available action may be annotated with the [AllowableValues](#user-content-allowable-values) annotation in order to specify the list of allowable values for a particular parameter.
 
-For example, the following property represents the Reset action, defined in the ComputerSystem.1.0.0 namespace (aliased with the version-independent "ComputerSystem"):
+For example, the following property represents the Reset action, defined in the ComputerSystem.<%= DocVersion %> namespace (aliased with the version-independent "ComputerSystem"):
 
 ~~~json
 	"#ComputerSystem.Reset": {
@@ -1041,16 +1041,16 @@ Extended error information is returned as a JSON object with a single property n
 ~~~json
 {
   "error": {
-    "code": "Base.1.0.MessageKey",
+    "code": "Base.<%= DocVersion.replace(/\.[^\.]+$/, '') %>.MessageKey",
     "message": "Human readable string",
     "details": [
       {
-       "code": "Base.1.0.MessageKey",
+       "code": "Base.<%= DocVersion.replace(/\.[^\.]+$/, '') %>.MessageKey",
        "target": "property1",
        "message": "property1 string"
       },
       {
-       "code": "Base.1.0.MessageKey",
+       "code": "Base.<%= DocVersion.replace(/\.[^\.]+$/, '') %>.MessageKey",
        "target": "property2",
        "message": "property2 string"
       }
@@ -1106,7 +1106,7 @@ where
 * *MinorVersion* = integer: a minor update. New properties may have been added but nothing removed. Compatibility will be preserved with previous minorversions. 
 * *Errata* = integer: something in the prior version was broken and needed to be fixed.
 
-An example of a valid type namespace might be "System.1.0.0". 
+An example of a valid type namespace might be "System.<%= DocVersion %>". 
 
 #### Type Identifiers in JSON
 Types used within a JSON payload shall be defined in, or referenced, by the [service metadata](#service-metadata).
@@ -1186,7 +1186,7 @@ Schemas may reference types defined in other schema documents by including a `Re
 
 The reference element specifies the `Uri` of the schema document describing the referenced type and has one or more child `Include` elements that specify the `Namespace` attribute containing the types to be referenced, along with an optional `Alias` attribute for that namespace.
 
-Type definitions generally reference the OData and DMTF namespaces for common type annotation terms, and resource type definitions reference the DMTF Resource.1.0.0 namespace for base types. Schemas that include measures such as temperature, speed, or dimensions generally include the [OData Measures namespace](#user-content-OData-Measures). 
+Type definitions generally reference the OData and DMTF namespaces for common type annotation terms, and resource type definitions reference the DMTF Resource.<%= DocVersion %> namespace for base types. Schemas that include measures such as temperature, speed, or dimensions generally include the [OData Measures namespace](#user-content-OData-Measures). 
 
 ~~~xml
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
@@ -1197,10 +1197,10 @@ Type definitions generally reference the OData and DMTF namespaces for common ty
     <edmx:Include Namespace="Org.OData.Measures.V1" Alias="OData.Measures"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/Extensions">
-	<edmx:Include Namespace="DMTFExtensions.1.0.0" Alias="DMTF"/>
+	<edmx:Include Namespace="DMTFExtensions.<%= DocVersion %>" Alias="DMTF"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/Resource">
-    <edmx:Include Namespace="Resource.1.0.0" Alias="Resource"/>
+    <edmx:Include Namespace="Resource.<%= DocVersion %>" Alias="Resource"/>
   </edmx:Reference>
 ~~~
 
@@ -1212,7 +1212,7 @@ The Schema element is a child of the `DataServices` element, which is a child of
 
 ~~~xml
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MyTypes.1.0.0" Alias="MyTypes">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MyTypes.<%= DocVersion %>" Alias="MyTypes">
 
       <!-- Type definitions go here -->
 
@@ -1224,7 +1224,7 @@ The Schema element is a child of the `DataServices` element, which is a child of
 
 Resource types are defined within a [namespace](#user-content-namespace-definitions) using `EntityType` elements. The `Name` attribute specifies the name of the resource and the `BaseType` specifies the base type, if any.
 
-SPMA resources derive from a common Resource base type named "Resource" in the Resource.0.94.0 namespace. 
+SPMA resources derive from a common Resource base type named "Resource" in the Resource.<%= DocVersion %> namespace. 
 
 The EntityType contains the [property](#user-content-resource-properties) and [navigation property](#user-content-reference-properties) elements that define the resource, as well as annotations describing the resource.
 
@@ -1540,7 +1540,7 @@ Because [service annotations](#user-content-annotations) may be applied to exist
 
 This section contains a set of common properties across all SPMA resources. The property names in this section shall not be used for any other purpose, even if they are not implemented in a particular resource.
 
-Common properties are defined in a the base Resource.0.94.0.Resource schema.
+Common properties are defined in a the base Resource.<%= DocVersion %>.Resource schema.
 
 #### Id
 
