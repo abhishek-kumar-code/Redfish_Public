@@ -27,14 +27,14 @@ For information about patents held by third-parties which have notified the DMTF
 # Scalable Platforms Management API Mockup Readme 
 The following files are part of the Scalable Platforms Management API development effort
 
-* SPMA.md - this files is the main Scalable Platforms Management API Specification
-* Whitepaper.md - this is intended to be a non-normative document helping those new to SPMA understand how to interact with the SPMA service and understand common functions and tasks
-* FAQ.md - this file contains some of the reasoning behind decisions made in the development of SPMA.
-* Readme.md - this document.
+* Specification.md - this files is the main Scalable Platforms Management API Specification
+* Whitepaper.md - this is intended to be a non-normative document helping those new to SPMA understand how to interact with the SPMA service and understand common functions and tasks.
+* Readme2043.md - this document.
+* Readme8010.md - Schema Readme
 
-The following directories are part of the Scalable Platforms Management API development effort
-* Mockup - this is a mockup that can be used as sample of output from GETs from an SPMA service.  Informative in nature, it was used to develop the schema.  A person can set up an NGINX or similar server and configure it to output JSON format and then use this directory for demonstration purposes.
-* Mockup/Schema - this contains the SPMA Schema definitions.  These files are normative in nature and are normatively reference by the SPMA Specification.
+These other components are part of the Scalable Platforms Management API development effort
+* Mockup (DSP2043) - this is a mockup that can be used as sample of output from GETs from an SPMA service.  Informative in nature, it was used to develop the schema.  A person can set up an NGINX or similar server and configure it to output JSON format and then use this directory for demonstration purposes.
+* Schema - this contains the SPMA Schema definitions.  These files are normative in nature and are normatively reference by the SPMA Specification.  There are two Schema formats - CSDL (OData Conceptual Schema Definition Language format which is in XML) and JSON Schema.  These Schema defintions should be functionally equivalent, thus specifying the schema in two different languages.
 
 # Interacting with the Mockup #
 ## Setting up and accessing the Mockup ###
