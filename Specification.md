@@ -54,6 +54,7 @@ The following referenced documents are indispensable for the application of this
 * <a name="RFC2617">IETF RFC 2617</a>  J. Franks et al., HTTP Authentication: Basic and Digest Access Authentication, [http://www.ietf.org/rfc/rfc2617.txt](http://www.ietf.org/rfc/rfc2617.txt "http://www.ietf.org/rfc/rfc2617.txt")
 * <a name="RFC3986">IETF RFC 3986</a>  T. Berners-Lee et al, Uniform Resource Identifier (URI): Generic Syntax, [http://www.ietf.org/rfc/rfc3986.txt](http://www.ietf.org/rfc/rfc3986.txt "http://www.ietf.org/rfc/rfc3986.txt")
 * <a name="RFC4627">IETF RFC 4627</a>, D. Crockford, The application/json Media Type for JavaScript Object Notation (JSON), [http://www.ietf.org/rfc/rfc4627.txt](http://www.ietf.org/rfc/rfc4627.txt "http://www.ietf.org/rfc/rfc4627.txt")
+* <a name="RFC5789">IETF RFC 4627</a>, L. Dusseault et al, PATCH method for HTTP, [http://www.ietf.org/rfc/rfc5789.txt](http://www.ietf.org/rfc/rfc5789.txt "http://www.ietf.org/rfc/rfc5789.txt")
 * <a name="RFC5988">IETF RFC 5988</a>, M. Nottingham, Web linking, [http://www.ietf.org/rfc/rfc5988.txt](http://www.ietf.org/rfc/rfc5988.txt "http://www.ietf.org/rfc/rfc5988.txt")
 * <a name="RFC6901">IETF RFC 6901</a>, P. Bryan, Ed. et al, JavaScript Object Notation (JSON) Pointer, [http://www.ietf.org/rfc/rfc6901.txt](http://www.ietf.org/rfc/rfc6901.txt "http://www.ietf.org/rfc/rfc6901.txt")
 * <a name="RFC6909">IETF RFC 6906</a>, E. Wilde, The 'profile' Link Relation Type, [http://www.ietf.org/rfc/rfc6906.txt](http://www.ietf.org/rfc/rfc6906.txt "http://www.ietf.org/rfc/rfc6906.txt")
@@ -87,6 +88,7 @@ The following additional terms are used in this document.
 | Event          | A record that corresponds to an individual alert.                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | Message        | A complete request or response, formatted in HTTP/HTPS.  The protocol, based on REST, is a request/response protocol where every Request should result in a Response.                                                                                                                                                                                                                                                                                                                           |
 | Operation      | The HTTP request methods which map generic CRUD (Create, Read, Update Delete) operation.  These are POST, GET, PUT/PATCH, HEAD and DELETE.                                                                                                                                                                                                                                                                                                                                                      |
+| OData          | The Open Data Protocol, as defined in [OData-Protocol](#user-content-OData-Protocol).                                                                                                                                                                                                                                                                                                                                                      |
 | SPMA Schema    | The Schema definitions for SPMA resources.  It is defined according to OData Schema notation that can be directly translated to a JSON Schema representation.                                                                                                                                                                                                                                                                                                                                                                                                           |
 | Request        | A message from a Client to a Server.  It consists of a request line (which includes the Operation), request headers, an empty line and an optional message body.                                                                                                                                                                                                                                                                                                                                |
 | Resource       | A Resource is addressable by a URI and is able to receive and process messages. A Resource can be either an individual entity, or a collection that acts as a container for several other entities.                                                                                                                                                                                                                                                                                             |
@@ -281,9 +283,9 @@ For example, in the following URL:
 * The second part is the root service and version (/rest/v1).
 * The third part is the unique resource path (Systems/1).
 
-The scheme and authority part of the URI _shall not_ be considered part of the unique _identifier_ of the resource. This is due to redirection capabilities and local operations which may result in the variability of the connection portion.  The remainder of the URI (the service and resource paths) is what _uniquely identifies_ the resource, and this is what is returned in all SPMA payloads.  
+The scheme and authority part of the URI shall not be considered part of the unique _identifier_ of the resource. This is due to redirection capabilities and local operations which may result in the variability of the connection portion.  The remainder of the URI (the service and resource paths) is what _uniquely identifies_ the resource, and this is what is returned in all SPMA payloads.  
 
-* The unique identifier part of a URI _shall_ be unique within the implementation.
+* The unique identifier part of a URI shall be unique within the implementation.
 
 For example, a POST may return the following URI in the Location header of the response (indicating the new resource created by the POST):
 
@@ -324,7 +326,7 @@ In HTTP messages the media type is specified in the Content-Type header. A clien
 
 In order to provide a common base for interoperability, all resources will be made available using the JSON media type "application/json".
 
-* SPMA services _shall_ make every resource available in a representation based on JSON, as specified in [RFC4627](#user-content-RFC4627). Receivers shall not reject a message because it is encoded in JSON, and shall offer at least one response representation based on JSON. An implementation may offer additional representations using non-JSON media types.
+* SPMA services shall make every resource available in a representation based on JSON, as specified in [RFC4627](#user-content-RFC4627). Receivers shall not reject a message because it is encoded in JSON, and shall offer at least one response representation based on JSON. An implementation may offer additional representations using non-JSON media types.
 
 Responses to GET requests may be compressed.  Clients shall be prepared to accept a Content-Encoding of gzip in a Response to a GET. 
 
@@ -381,9 +383,9 @@ This section describes the requests that can be sent to SPMA services.
 
 HTTP defines headers that can be used in request messages. The following table defines those headers and their requirements for SPMA services.
 
-* SPMA services _shall_ understand and be able to process the headers in the following table as defined by the HTTP 1.1 specification if the value in the Required column is set to "Yes".
-* SPMA services _shall_ understand and be able to process the headers in the following table as defined by the HTTP 1.1 specification if the value in the Required column is set to "Conditional" under the conditions noted in the description.
-* SPMA services _should_ understand and be able to process the headers in the following tables as defined by the HTTP 1.1 specification if the value in the Required column is set to "No".  
+* SPMA services shall understand and be able to process the headers in the following table as defined by the HTTP 1.1 specification if the value in the Required column is set to "Yes".
+* SPMA services shall understand and be able to process the headers in the following table as defined by the HTTP 1.1 specification if the value in the Required column is set to "Conditional" under the conditions noted in the description.
+* SPMA services should understand and be able to process the headers in the following tables as defined by the HTTP 1.1 specification if the value in the Required column is set to "No".  
 
 | Header          | Required    | Supported Values                      | Description                                                                                                                                                                                                                                                                                                             |
 | --------        | ---         | -----------------                     | ------------                                                                                                                                                                                                                                                                                                            |
@@ -403,11 +405,11 @@ HTTP defines headers that can be used in request messages. The following table d
 | If-Match        | Conditional | [RFC 2616, Section 14.31][2616-14.31] | If-Match shall be supported for Atomic requests on AccountService objects.  If-Match shall be supported on requests for resources for which the service returns ETags.
 | If-None-Match   | No          | [RFC 2616, Section 14.31][2616-14.31] | If this HTTP header is present, the service will only return the requested resource if the current ETag of that resource does not match the ETag sent in this header.  If the ETag specified in this header matches the resource's current ETag, the status code returned from the GET will be [304](#user-content-status-304).
 
-* SPMA services _shall_ understand and be able to process the headers in the following table as defined by this specification if the value in the Required column is set to "yes" .
+* SPMA services shall understand and be able to process the headers in the following table as defined by this specification if the value in the Required column is set to "yes" .
 
 | Header          | Required    | Supported Values                      | Description                                                                                                                                                                                                                                                                                                             |
 | --------        | ---         | -----------------                     | ------------                                                                                                                                                                                                                                                                                                            |
-| X-Auth-Token    | Yes         | Opaque encoded octet strings          | Used for bearer authentication of user sessions. The token value _shall_ be indistinguishable from random.                                                                                                                                                                                                
+| X-Auth-Token    | Yes         | Opaque encoded octet strings          | Used for bearer authentication of user sessions. The token value shall be indistinguishable from random.                                                                                                                                                                                                
 
 [2616-14.1]: http://pretty-rfc.herokuapp.com/RFC2616#header.accept
 [2616-14.4]: http://pretty-rfc.herokuapp.com/RFC2616#header.accept-language
@@ -489,7 +491,7 @@ The PATCH method is the preferred method used to perform updates on pre-existing
 
 * Services shall support the PATCH method to update a resource. If the resource can never be updated, status code [405](#user-content-status-405) shall be returned.
 * Services may return a representation of the resource after any server-side transformations in the body of the response.
-* If a property in the request can never be updated, such as when a property is read only, a status code of [200](#user-content-status-200) shall be returned along with a representation of the resource containing an [annotation](#user-content-inline-error-propert) specifying the non-updatabl property. In this success case, other properties may be updated in the resource. 
+* If a property in the request can never be updated, such as when a property is read only, a status code of [200](#user-content-status-200) shall be returned along with a representation of the resource containing an [annotation](#user-content-extended-information) specifying the non-updatabl property. In this success case, other properties may be updated in the resource. 
 * Services should return status code [405](#user-content-status-405) if the client specifies a PATCH request against a collection.
 * The PATCH operation should be idempotent in the absence of outside changes to the resource provided it is used with ETags to prevent subsequent PATCH attempts. Note that the ETAG value should change as the result of this operation.
 
@@ -591,8 +593,8 @@ This section describes response requirements for SPMA services.
 
 HTTP defines headers that can be used in response messages.  The following table defines those headers and their requirements for SPMA services.
 
-* SPMA services _shall_ be able to return the headers in the following table as defined by the HTTP 1.1 specification if the value in the Required column is set to "yes" .
-* SPMA services _should_ be able to return the headers in the following tables as defined by the HTTP 1.1 specification if the value in the Required column is set to "no".  
+* SPMA services shall be able to return the headers in the following table as defined by the HTTP 1.1 specification if the value in the Required column is set to "yes" .
+* SPMA services should be able to return the headers in the following tables as defined by the HTTP 1.1 specification if the value in the Required column is set to "no".  
 * SPMA clients shall be able to understand and be able to process all of the headers in the following table as defined by the HTTP 1.1. specification.
 
 | Header                      | Required | Supported Values                      | Description                                                                                                                                                                                                                                                                                                             |
@@ -601,9 +603,9 @@ HTTP defines headers that can be used in response messages.  The following table
 | Content-Type                | Yes      | [RFC 2616, Section 14.17][2616-14.17] | Describes the type of representation used in the message body. `application/json` shall be supported. `charset=utf-8` shall be supported.                                                                                                                                                                                   |
 | Content-Encoding            | No       | [RFC 2616, Section 14.17][2616-14.17] | Describes the encoding that has been performed on the media type                                                                                                                                                                                                                                                        |
 | Content-Length              | No       | [RFC 2616, Section 14.3][2616-14.3]   | Describes the size of the message body. An optional means of indicating size of the body uses Transfer-Encoding: chunked, which does not use the Content-Length header. If a service does not support Transfer-Encoding and needs Content-Length instead, the service will respond with status code [411](#user-content-status-411). |
-| ETag                        | Conditional | [RFC 2616, Section 14.19][2616-14.19] | An identifier for a specific version of a resource, often a message digest.   Etags _shall_ be included on Account objects.                                                                                                                                                                                                                                             |
+| ETag                        | Conditional | [RFC 2616, Section 14.19][2616-14.19] | An identifier for a specific version of a resource, often a message digest.   Etags shall be included on Account objects.                                                                                                                                                                                                                                             |
 | Server                      | Yes      | [RFC 2616, Section 14.38][2616-14.38] | Required to describe a product token and its version. Multiple product tokens may be listed.                                                                                                                                                                                                                            |
-| Location                    | Conditional  | [RFC 2616, Section 14.30][2616-14.30] | Indicates a URI that can be used to request a representation of the resource.  Shall be returned if a new resource was created.  Location and X-Auth-Token _shall_ be included on responses which create user sessions.                                                                                                                                                                                         |
+| Location                    | Conditional  | [RFC 2616, Section 14.30][2616-14.30] | Indicates a URI that can be used to request a representation of the resource.  Shall be returned if a new resource was created.  Location and X-Auth-Token shall be included on responses which create user sessions.                                                                                                                                                                                         |
 | Cache-Control               | Yes       | [RFC 2616, Section 14.9][2616-14.9]   | This header shall be supported and is meant to indicate whether a response can be cached or not.                                                                                                                                    |
 | Via                         | No       | [RFC 2616, Section 14.45][2616-14.45] | Indicates network hierarchy and recognizes message loops. Each pass inserts its own VIA.                                                                                                                                                                                                                                |
 | Max-Forwards                | No       | [RFC 2616, Section 14.31][2616-14.31] | Limits gateway and proxy hops. Prevents messages from remaining in the network indefinitely.                                                                                                                                                                                                                            |
@@ -613,12 +615,12 @@ HTTP defines headers that can be used in response messages.  The following table
 | WWW-Authenticate            | Yes      | [RFC 2617][2617]                      | Required for Basic and other optional authentication mechanisms. See the [Security][#Security] section for details.                                                                                                                                                                                                     |
 
 
-* SPMA services _shall_ understand and be able to process the headers in the following table as defined by this specification if the value in the Required column is set to "yes".
+* SPMA services shall understand and be able to process the headers in the following table as defined by this specification if the value in the Required column is set to "yes".
 
 
 | Header       | Required  | Supported Values             | Description                                                                                                |
 | --------     | ---       | -----------------            | ------------                                                                                               |
-| X-Auth-Token | Yes       | Opaque encoded octet strings | Used for bearer authentication of user sessions. The token value _shall_ be indistinguishable from random. |
+| X-Auth-Token | Yes       | Opaque encoded octet strings | Used for bearer authentication of user sessions. The token value shall be indistinguishable from random. |
 
 
 [2616-14.3]: http://pretty-rfc.herokuapp.com/RFC2616#header.content-length
@@ -811,7 +813,11 @@ Structured properties, defined as [complex types](#user-content-structured-prope
 
 ##### Collection Properties
 
-Collection properties are returned as JSON arrays, where each element of the array is a JSON object whose type is specified in the schema document describing the containing type.
+Collection-valued properties are returned as JSON arrays, where each element of the array is a JSON object whose type is specified in the schema document describing the containing type.
+
+Collection-valued properties may contain a subset of the members of the full collection. In this case, the collection-valued property shall be annotated with a next link property. The property representing the next link shall be a peer of the collection-valued property, with the name of the collection-valued property suffixed with "@odata.nextLink". The value of the next link property shall be an opaque URL that the client can use to retrieve the next set of collection members. The next link property shall only be present if the number of resources requested is greater than the number of resources returned.
+
+Collection-valued properties may be annotated with a count. The property representing the count is a peer of the collection-valued property, with the name of the collection-valued property suffixed with "@odata.count". The value of the count is the total number of members available in the collection.
 
 Collection-valued properties shall not be null. Empty collections shall be returned in JSON as an empty array.
 
@@ -922,41 +928,67 @@ For example:
 ```
 Contents of the Oem object must be valid JSON and must have a [type property](#user-content-type-property) per this specification. Any other requirements, validation or contents are beyond the scope of this specification.
 
-##### Inline Status Property
+##### Extended Information
 
-Response objects may include inline status information, for example properties that are not able to be updated. This information is represented as an annotation applied to [a specific property](#user-content-property-status) of the JSON response or an [entire JSON object](#user-content-object-status).
+Response objects may include extended information, for example properties that are not able to be updated. This information is represented as an annotation applied to [a specific property](#user-content-extended-property-information) of the JSON response or an [entire JSON object](#user-content-extended-object-information).
 
-###### Object Status
+###### Extended Object Information
 
-A JSON object can be annotated with "@DMTF.InlineStatus" in order to specify object-level status information. 
-
-~~~json
-{
-	"@DMTF.InlineStatus" : {
-	    "code": "400",
-	    "message": "Object cannot currently be updated"
-	},
-	"IndicatorLED":"On"
-}
-~~~
-
-The value of the property is an [extended error object](#user-content-extended-error-handling).
-
-###### Property Status
-
-An individual property within a JSON object can be annotated with status information using "@DMTF.InlineStatus", prepended with the name of the property.
+A JSON object can be annotated with "@DMTF.ExtendedInfo" in order to specify object-level status information. 
 
 ~~~json
 {
-	"IndicatorLED":"On",
-	"IndicatorLED@DMTF.InlineStatus" : {
-	    "code": "400",
-	    "message": "[Red] is not a valid value"
+    "@odata.context": "/rest/v1/$metadata/Sessions/Links/Members/$entity",
+    "@odata.id": "/rest/v1/Sessions/Administrator1",
+    "@odata.type": "#Session.<%= DocVersion.replace(/\.[^\.]+$/, '') %>.Session",
+    "Id": "Administrator1",
+    "Name": "User Session",
+    "Description": "Manager User Session",
+    "Modified": "2013-01-31T23:45:08+00:00",
+    "UserName": "Administrator",
+    "Oem": {},
+	"@DMTF.ExtendedInfo" : {
+         "code": "Base.<%= DocVersion.replace(/\.[^\.]+$/, '') %>.ResourceCannotBeDeleted",
+         "message": "The delete request failed because the resource requested cannot be deleted",
+         "@message.severity": "Critical",
+         "@message.resolution": "Do not attempt to delete a non-deletable resource."
 	}
 }
 ~~~
 
-The value of the property is an [extended error object](#user-content-extended-error-handling).
+The value of the property is an [extended information object](#user-content-extended-error-handling).
+
+###### Extended Property Information
+
+An individual property within a JSON object can be annotated with extended information using "@DMTF.ExtendedInfo", prepended with the name of the property.
+
+~~~json
+{
+    "@odata.context": "/rest/v1/$metadata/Sessions/Links/Members/$entity",
+    "@odata.id": "/rest/v1/Sessions/Administrator1",
+    "@odata.type": "#Session.<%= DocVersion.replace(/\.[^\.]+$/, '') %>.Session",
+    "Id": "Administrator1",
+    "Name": "User Session",
+    "Description": "Manager User Session",
+    "Modified": "2013-01-31T23:45:08+00:00",
+    "UserName": "Administrator",
+	"UserName@DMTF.ExtendedInfo" : {
+         "code": "Base.<%= DocVersion.replace(/\.[^\.]+$/, '') %>.PropertyNotWriteable",
+         "target": "UserName",
+         "message": "The property %1 is a read only property and cannot be assigned a value",
+         "message.parameters": [
+            {
+                "UserName"
+            },
+        ]
+        "@message.severity": "Warning",
+        "@message.resolution": "Remove the property from the request body and resubmit the request if the operation failed"
+	},
+    "Oem": {}
+}
+~~~
+
+The value of the property is an [extended information object](#user-content-extended-error-handling).
 
 ##### Additional Annotations
 
@@ -997,8 +1029,9 @@ The total number of resources available in the collection is represented through
 The members of the collection of resources are returned as a JSON array. The name of the property representing the members of the collection shall be "value".
 
 ##### Partial Results
+Responses representing a single resource shall not be broken into multiple results.
 
-The service may return large collections of resources in multiple partial responses. For partial responses the service includes a next link property named "@odata.nextLink". The value of the next link property shall be an opaque URL that the client can use to retrieve the next set of resources. The next link is only returned if the number of resources requested is greater than the number of resources returned.
+Collections of resources, or resource ids, may be returned in multiple partial responses. For partial collections the service includes a next link property named "@odata.nextLink". The value of the next link property shall be an opaque URL that the client can use to retrieve the next set of resources. The next link shall only be returned if the number of resources requested is greater than the number of resources returned.
 
 The value of the [count property](#user-content-resource-count-property) represents the total number of resources available if the client enumerates all pages of the collection.
 
@@ -1035,29 +1068,43 @@ Extended error information is returned as a JSON object with a single property n
 | message            | A human readable error message indicating the semantics associated with the error. 
 | target             | An optional string defining the target of the particular error.                                                        |
 | details            | An optional array of JSON objects with code, message, target, severity, and resolution properties, providing more detailed information about the error.  
-| Error.severity    | An optional string representing the severity of the error. The Severity attribute is an annotation specified in the DMTF namespace and shall be prefixed with the alias "Error".
-| Error.resolution  | An optional string describing recommended action(s) to take to resolve the error. The Resolution attribute is an annotation specified in the DMTF namespace and shall be prefixed with the alias "Error".
+| message.parameters | An optional array of strings representing the substitution parameter values for the message. The Severity attribute is an annotation specified in the DMTF namespace and shall be prefixed with the alias "message".
+| message.severity    | An optional string representing the severity of the error. The Severity attribute is an annotation specified in the DMTF namespace and shall be prefixed with the alias "message".
+| message.resolution  | An optional string describing recommended action(s) to take to resolve the error. The Resolution attribute is an annotation specified in the DMTF namespace and shall be prefixed with the alias "message".
 
 ~~~json
 {
-  "error": {
-    "code": "Base.<%= DocVersion.replace(/\.[^\.]+$/, '') %>.MessageKey",
-    "message": "Human readable string",
-    "details": [
-      {
-       "code": "Base.<%= DocVersion.replace(/\.[^\.]+$/, '') %>.MessageKey",
-       "target": "property1",
-       "message": "property1 string"
-      },
-      {
-       "code": "Base.<%= DocVersion.replace(/\.[^\.]+$/, '') %>.MessageKey",
-       "target": "property2",
-       "message": "property2 string"
-      }
-    ],
-    "@Error.severity": "Error",
-    "@Error.resolution": "optional resolution string"
-  }
+    "error": {
+        "code": "400",
+        "message": "The update operation failed.",
+        "details": [
+            {
+                "code": "Base.<%= DocVersion.replace(/\.[^\.]+$/, '') %>.PropertyValueNotInList",
+                "target": "IndicatorLED",
+                "message": "The value %1 for the property %2 is not in the list of acceptable values",
+                "@message.parameters": [
+                    {
+                        "RED",
+                        "IndicatorLED"
+                    }
+                ],
+                "@message.severity": "Warning",
+                "@message.resolution": "Remove the property from the request body and resubmit the request if the operation failed"
+            },
+            {
+                "code": "Base.<%= DocVersion.replace(/\.[^\.]+$/, '') %>.PropertyNotWriteable",
+                "target": "SKU",
+                "message": "The property %1 is a read only property and cannot be assigned a value",
+                "@message.parameters": [
+                    {
+                        "SKU"
+                    }
+                ],
+                "@message.severity": "Warning",
+                "@message.resolution": "Remove the property from the request body and resubmit the request if the operation failed"
+            }
+        ]
+    }
 }
 ~~~
 
@@ -1650,7 +1697,7 @@ There are cases when deviations from the published schema are necessary.  An exa
 
 Providers may split the schema resources into separate files such as Schema + String Registry, each with a separate URI and different Content-Encoding.
 
-* Resources _may_ communicate omissions from the published schema via the Current Configuration object if applicable.
+* Resources may communicate omissions from the published schema via the Current Configuration object if applicable.
 
 ##Service Details
 
@@ -1949,7 +1996,7 @@ Implementations should support certificate based authentication.
 Session management is left to the implementation of the SPMA Service.  This
 includes orphaned session timeout and number of simultaneous open sessions.
 
-* **An SPMA Service _shall_ provide login sessions compliant with this specification.**
+* **An SPMA Service shall provide login sessions compliant with this specification.**
 
 ##### Login Sessions
 
@@ -2115,9 +2162,9 @@ An SPMA service may contain resources that require separated privileges.
 An SPMA service may limit REST operations against specific resources based
 upon user privileges.
 
-* **An SPMA service _may_ limit individual resource access by SPMA clients
+* **An SPMA service may limit individual resource access by SPMA clients
   based upon role-based privileges**
-* **An SPMA service _may_ limit individual resource access by SPMA clients
+* **An SPMA service may limit individual resource access by SPMA clients
   based upon specific user account information (future -- not defined yet)**
 
 
@@ -2187,6 +2234,6 @@ The file where the events are written, one or more messages per event should at 
 
 # Change Log
 
-| Version | Date     | Description
-| 0.94.0  | 2015-9-1 | Initial merge of 0.91 and 0.92 versions 
+| Version | Date      | Description
+| 0.94.0  | 2015-13-1 | Initial merge of 0.91 and 0.92 versions 
 

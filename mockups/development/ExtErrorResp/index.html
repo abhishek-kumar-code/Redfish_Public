@@ -1,20 +1,33 @@
 {
     "error": {
-    "code": "Base.1.0.MessageKey",
-    "message": "Human readable string",
-    "details": [
-      {
-       "code": "Base.1.0.MessageKey",
-       "target": "property1",
-       "message": "property1 string"
-      },
-      {
-       "code": "Base.1.0.MessageKey",
-       "target": "property2",
-       "message": "property2 string"
-      }
-    ],
-    "@Error.severity": "Error",
-    "@Error.resolution": "Optional resolution string"
-  }
+        "code": "400",
+        "message": "The update operation failed.",
+        "details": [
+            {
+                "code": "Base.1.0.PropertyValueNotInList",
+                "target": "IndicatorLED",
+                "message": "The value %1 for the property %2 is not in the list of acceptable values",
+                "@message.parameters": [
+                    {
+                        "RED",
+                        "IndicatorLED"
+                    }
+                ],
+                "@message.severity": "Warning",
+                "@message.resolution": "Remove the property from the request body and resubmit the request if the operation failed"
+            },
+            {
+                "code": "Base.1.0.PropertyNotWriteable",
+                "target": "SKU",
+                "message": "The property %1 is a read only property and cannot be assigned a value",
+                "@message.parameters": [
+                    {
+                        "SKU"
+                    }
+                ],
+                "@message.severity": "Warning",
+                "@message.resolution": "Remove the property from the request body and resubmit the request if the operation failed"
+            }
+        ]
+    }
 }
