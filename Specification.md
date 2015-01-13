@@ -322,11 +322,12 @@ Some resources may be available in more than one type of representation. The typ
 
 In HTTP messages the media type is specified in the Content-Type header. A client can tell a service that it wants the response to be sent using certain media types by setting the HTTP Accept header to a list of the acceptable media types.
 
-In order to provide a common base for interoperability, all resources will be made available using the JSON media type "application/json".
-
+* All resources shall be made available using the JSON media type
+  "application/json".
 * SPMA services shall make every resource available in a representation based on JSON, as specified in [RFC4627](#user-content-RFC4627). Receivers shall not reject a message because it is encoded in JSON, and shall offer at least one response representation based on JSON. An implementation may offer additional representations using non-JSON media types.
+* Responses to GET requests may be compressed.  Clients shall be prepared to accept a Content-Encoding of gzip in a Response to a GET.
 
-Responses to GET requests may be compressed.  Clients shall be prepared to accept a Content-Encoding of gzip in a Response to a GET. 
+
 
 #### ETags
 
