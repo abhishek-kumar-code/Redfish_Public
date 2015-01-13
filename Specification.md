@@ -143,7 +143,6 @@ There are several reasons to define a RESTful interface:
 * It is on a trajectory to become a prevalent access method in the industry.
 * It is easy to learn and easy to document.
 * There are a number of toolkits & development environments that can be used for REST.
-* The embedded footprint (both memory and cpu) is less than for other   interfaces.
 * It supports data model semantics and maps easily to the common CRUD operations.
 * It fits with our design principle of simplicity.
 * It is equally applicable to software application space as it is for embedded environments thus enabling convergence and sharing of code of components within the management ecosystem.
