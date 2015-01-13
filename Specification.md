@@ -876,6 +876,7 @@ The links property shall also include an [Oem property](#user-content-oem-proper
 A reference to a single resource is returned as a JSON object containing a single [resource-identifier-property](#user-content-resource-identifier-property) whose name is the name of the relationship and whose value is the uri of the referenced resource.
 
 ~~~json
+{
 "Links" : {
 	"ManagedBy": { 
 		"@odata.id":"/rest/v1/Chassis/Encl1"
@@ -888,6 +889,7 @@ A reference to a single resource is returned as a JSON object containing a singl
 A reference to a collection of zero ore more related resources is returned as an array of JSON objects whose name is the name of the relationship. Each member of the array is a JSON object containing a single [resource-identifier-property](#user-content-resource-identifier-property) whose value is the uri of the referenced resource.
 
 ~~~json
+{
 "Links" : {
 	"Contains" : [
 		{
@@ -917,7 +919,7 @@ For example:
     "Acme:Type2": {
       "@odata.type": "http://acme.com/schema/extensions.v.v.v#acme.acmetype2",
       "AcmeSpecificProperty2": "value"
-    }
+    },
     "EID:232": {
       "@odata.type": "http://eid.org/schemas/eid232.v.v.v",
       "EnterpriseSpecificProperty": "value"
