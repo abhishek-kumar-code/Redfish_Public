@@ -1,230 +1,18 @@
-![](http://www.dmtf.org/sites/all/themes/blueprint/images/header/dmtf.png)
-
-Document Identifier: DSP0266
-
-Date: 2015-1-7
-
-Version: 0.94.0
-
-# Scalable Platform Management API
-
-	IMPORTANT: This document is not a standard. It does not necessarily reflect the views of the 
-	DMTF or all of its members. Because this document is a Work in Progress, it may still change, 
-	perhaps profoundly. This document is available for public review and comment until superceded.
-
-	Provide any comments through the DMTF Feedback Portal: http://www.dmtf.org/standards/feedback
-
-Document Type: DMTF Standard
-
-Document Status: Work In Progress - Not a DMTF Standard - DMTF Confidential
-
-Document Language: en-US
-
-	Copyright Notice
-	
-	Copyright © 2014 Distributed Management Task Force, Inc. (DMTF). All rights reserved.
-
-DMTF is a not-for-profit association of industry members dedicated to promoting enterprise and systems management and interoperability. Members and non-members may reproduce DMTF specifications and documents, provided that correct attribution is given. As DMTF specifications may be revised from time to time, the particular version and release date should always be noted.
-
-Implementation of certain elements of this standard or proposed standard may be subject to third party patent rights, including provisional patent rights (herein "patent rights"). DMTF makes no representations to users of the standard as to the existence of such rights, and is not responsible to recognize, disclose, or identify any or all such third party patent right, owners or claimants, nor for any incomplete or inaccurate identification or disclosure of such rights, owners or claimants. DMTF shall have no liability to any party, in any manner or circumstance, under any legal theory whatsoever, for failure to recognize, disclose, or identify any such third party patent rights, or for such party's reliance on the standard or incorporation thereof in its product, protocols or testing procedures. DMTF shall have no liability to any party implementing such standard, whether such implementation is foreseeable or not, nor to any patent owner or claimant, and shall have no liability or responsibility for costs or losses incurred if a standard is withdrawn or modified after publication, and shall be indemnified and held harmless by any party implementing the standard from any and all claims of infringement by a patent owner for such implementations.
-
-For information about patents held by third-parties which have notified the DMTF that, in their opinion, such patent may relate to or impact implementations of DMTF standards, visit http://www.dmtf.org/about/policies/disclosures.php.
-
-CONTENTS
-
-- 1. [Scope](#user-content-scope)
-- 2. [Normative References](#user-content-normative-references)
-- 3. [Terms and Definitions](#user-content-terms-and-definitions)
-- 4. [Symbols and Abbreviated Terms](#symbols-and-abbreviated-terms)
-- 5. [Overview](#user-content-overview)
-  - 5.1. [Principal Goals & Scope](#user-content-principle-goals--scope)
-  	- 5.1.1. [REST based](#user-content-rest-based)
-  	- 5.1.2. [Follow OData Conventions](#user-content-follow-odata-conventions)
-  	- 5.1.3. [Model Oriented](#user-content-model-oriented)
-  	- 5.1.4. [Separation of Protocol from Data Model](#user-content-separation-of-protocol-from-data-model)
-  	- 5.1.5. [Hypermedia API Service Endpoint](#user-content-hypermedia-api-service-endpoint)
-  	- 5.1.6. [Scope](#user-content-scope)
-  	- 5.1.7. [Limitations](#user-content-limitations)
-  - 5.2. [Service Elements](#user-content-service-elements)
-  	- 5.2.1. [Synchronous and Asynchronous Operation Support](#user-content-synchronous-and-asynchronous-operation-support)
-    - 5.2.2. [Eventing Mechanism](#user-content-eventing-mechanism)
-    - 5.2.3. [Actions](#user-content-actions)
-    - 5.2.4. [Discovery](#user-content-discovery)
-    - 5.2.5. [Device support (Serial Console, KVM-IP, Command Shell, Virtual Media)](#user-content-device-support-serial-console-kvm-ip-command-shell-virtual-media)
-  - 5.3. [Security Intro](#user-content-security-intro)
-- 6. [Protocol Details](#user-content-protocol-details)
-  - 6.1. [Use of HTTP](#user-content-use-of-http)
-  	- 6.1.1. [URIs](#user-content-uris)
-    - 6.1.2. [HTTP Methods](#user-content-http-methods)
-    - 6.1.3. [HTTP Redirect](#user-content-http-redirect)
-    - 6.1.4. [Media Types](#user-content-media-types)
-    - 6.1.5. [ETags](#user-content-etags)
-  - 6.2. [Protocol Version](#user-content-protocol-version)
-  - 6.3. [Requests](#user-content-requests)
-    - 6.3.1. [Request Headers](#user-content-request-headers)
-    - 6.3.2. [Read Requests (GET)](#user-content-read-requests-get)
-      - 6.3.2.1. [Service Root Request](#user-content-service-root-request)
-      - 6.3.2.2. [Metadata Document Request](#user-content-metadata-document-request)
-      - 6.3.2.3. [Service Document Request](#user-content-service-document-request)
-      - 6.3.2.4. [Resource Retrieval Requests](#user-content-resource-retrieval-requests)
-        - 6.3.2.4.1. [Query Parameters](#user-content-query-parameters)
-        - 6.3.2.4.2. [Retrieving Collections](#user-content-retrieving-collections)
-     - 6.3.3. [HEAD](#user-content-head)
-     - 6.3.4. [Data Modification Requests](#user-content-data-modification-requests)
-        - 6.3.4.1. [Update (PATCH)](#user-content-update-patch)
-        - 6.3.4.2. [Replace (PUT)](#user-content-replace-put)
-        - 6.3.4.3. [Create (POST)](#user-content-replace-post)
-        - 6.3.4.4. [Delete (DELETE)](#user-content-delete-delete)
-        - 6.3.4.5. [Actions (POST)](#user-content-actions-post)
-  - 6.4. [Responses](#user-content-responses)
-    - 6.4.1. [Response Headers](#user-content-response-headers)
-    - 6.4.2. [Status Codes](#user-content-status-codes)
-    - 6.4.3. [Metadata Responses](#user-content-metadata-responses)
-      - 6.4.3.1. [Service Metadata](#user-content-service-metadata)
-      - 6.4.3.2. [Referencing OEM Extensions](#user-content-referencing-oem-extensions)
-      - 6.4.3.3. [Annotations](#user-content-annotations)
-    - 6.4.4. [Resource Responses](#user-content-resource-responses)
-      - 6.4.4.1. [Context Property](#user-content-context-property)
-        - 6.4.4.1.1. [Select List](#user-content-select-list)
-      - 6.4.4.2. [Resource Identifier Property](#user-content-resource-identifier-property)
-      - 6.4.4.3. [Type Property](#user-content-type-property)
-      - 6.4.4.4. [ETag Property](#user-content-etag-property)
-      - 6.4.4.5. [Primitive Properties](#user-content-primitive-properties)
-        - 6.4.4.5.1. [DateTime Values](#user-content-datetime-values)
-      - 6.4.4.6. [Structured Properties](#user-content-structures-properties)
-      - 6.4.4.7. [Collection Properties](#user-content-collection-properties)
-      - 6.4.4.8. [Actions Property](#user-content-actions-property)
-        - 6.4.4.8.1. [Action Representation](#user-content-action-representation)
-        - 6.4.4.8.2. [Allowable Values](#user-content-allowable-values)
-      - 6.4.4.9. [Links Property](#user-content-links-property)
-        - 6.4.4.9.1. [Navigation Link to Related Resources](#user-content-navigation-link-to-related-resources)
-        - 6.4.4.9.2. [Reference to a Single Related Resource](#user-content-reference-to-a-single-related-resource)
-        - 6.4.4.9.3. [Array of References to Related Resources](#user-content-array-of-references-to-related-resources)
-      - 6.4.4.10. [OEM Property](#user-content-oem-property)
-      - 6.4.4.11. [Inline Error Property](#user-content-inline-error-property)
-        - 6.4.4.11.1. [Object Errors](#user-content-object-errors)
-        - 6.4.4.11.2. [Property Errors](#user-content-property-errors)
-      - 6.4.4.12. [Additional Annotations](#user-content-additional-annotations)
-    - 6.4.5. [Resource Collections](#user-content-resource-collections)
-      - 6.4.5.1. [Context Property](#user-content-context-property)
-      - 6.4.5.2. [Resource Count Property](#user-content-resource-count-property)
-      - 6.4.5.3. [Resource Members Property](#user-content-resource-members-property)
-      - 6.4.5.4. [Partial Results](#user-content-partial-results)
-      - 6.4.5.5. [Additional Annotations](#user-content-additional-annotations)
-   	- 6.4.6. [Extended Error Handling](#user-content-extended-error-handling)
-  - 7. [Data Model & Schema](#user-content-data-model--schema)
-    - 7.1. [Type Identifiers](#user-content-type-identifiers)
-      - 7.1.1 [Type Identifiers in JSON](#type-identifiers-in-json)
-    - 7.2. [Common Naming Conventions](#user-content-common-naming-conventions)
-    - 7.3. [Localization Considerations](#user-content-localization-considerations)
-    - 7.4. [Schema Definition](#user-content-schema-definition)
-      - 7.4.1. [Common Annotations](#user-content-common-annotations)
-        - 7.4.1.1. [Description](#user-content-description)
-        - 7.4.1.2. [Specification](#user-content-specification)
-      - 7.4.2. [Schema Documents](#user-content-schema-documents)
-        - 7.4.2.1. [Referencing other Schemas](#user-content-referencing-other-schemas)
-        - 7.4.2.2. [Namespace Definitions](#user-content-namespace-definitions)
-      - 7.4.3. [Resource Type Definitions](#user-content-resource-type-definitions)
-      - 7.4.4. [Resource Properties](#user-content-resource-properties)
-        - 7.4.4.1. [Property Types](#user-content-property-types)
-          - 7.4.4.1.1. [Primitive Types](#user-content-primitive-types)
-          - 7.4.4.1.2. [Structured Types](#user-content-structured-types)
-          - 7.4.4.1.3. [Enums](#user-content-enums)
-          - 7.4.4.1.4. [Collections](#user-content-collections)
-        - 7.4.4.2. [Non-Nullable properties](#user-content-non-nullable-properties)
-        - 7.4.4.3. [Read-only properties](#user-content-read-only-properties)
-        - 7.4.4.4. [Required Properties](#user-content-required-properties)
-        - 7.4.4.5. [Units of Measure](#user-content-units-of-measure)
-        - 7.4.4.6. [Language-Dependent Property Values](#user-content-language-dependent-property-values)
-      - 7.4.5. [Reference Properties](#user-content-reference-properties)
-        - 7.4.5.1. [Expanded References](#user-content-expanded-references)
-      - 7.4.6. [Resource Actions](#user-content-resource-actions)
-      - 7.4.7. [Resource Extensibility](#user-content-resource-extensibility)
-        - 7.4.7.1. [Property Extensions](#user-content-property-extensions)
-        - 7.4.7.2. [Custom Actions](#user-content-custom-actions)
-        - 7.4.7.3. [Custom Annotations](#user-content-custom-annotations)
-   - 7.5. [Common SPMA Resource Properties](#user-content-common-spma-resource-properties)
-     - 7.5.1. [Id](#user-content-id)
-     - 7.5.2. [Name](#user-content-name)
-     - 7.5.3. [Description](#user-content-description)
-     - 7.5.4. [Created](#user-content-created)
-     - 7.5.5. [Modified](#user-content-modified)
-     - 7.5.6. [Status](#user-content-status)
-     - 7.5.7. [Links](#user-content-links)
-     - 7.5.8. [Actions](#user-content-actions)
-     - 7.5.9. [OEM](#user-content-oem)
-     - 7.5.10. [Settings](#user-content-settings)
-     - 7.5.11. [SettingsResult](#user-content-settingsresult)
-     - 7.5.12. [CorrelatableID](#user-content-correlatableid)
-     - 7.5.13. [Other common properties](#user-content-other-common-properties)
-   - 7.6. [SPMA Resources](#user-content-spma-resources)
-     - 7.6.1. [Current Configuration](#user-content-current-configuration)
-     - 7.6.2. [Settings](#user-content-settings)
-     - 7.6.3. [Services](#user-content-services)
-     - 7.6.4. [Registry](#user-content-registry)
-     - 7.6.5. [Schema Variations](#user-content-schema-variations)
-- 8. [Service Details](#user-content-service-details)
-  - 8.1. [Eventing](#user-content-eventing)
-    - 8.1.1. [Event Message Subscription](#user-content-event-message-subscription)
-    - 8.1.2. [Event Message Objects](#user-content-event-message-objects)
-    - 8.1.3. [Subscription Cleanup](#user-content-subscription-cleanup)
-  - 8.2. [Asynchronous Operations](#user-content-asynchronous-operations)
-  - 8.3. [Timestamp Management](#user-content-timestamp-management)
-  - 8.4. [Resource Tree Stability](#user-content-resource-tree-stability)
-  - 8.5. [Discovery](#user-content-discovery)
-    - 8.5.1. [UPnP Compatibility](#user-content-upnpcompatibility)
-    - 8.5.2. [USN Format](#user-content-usn-format)
-    - 8.5.3. [M-SEARCH Response](#user-content-m-search-response)
-    - 8.5.4. [Notify, Alive, and Shutdown messages](#user-content-notify-alive-and-shutdown-messages)
-- 9. [Security](#user-content-security)
-  - 9.1. [Goals](#user-content-goals)
-  - 9.2. [Protocols](#user-content-protocols)
-    - 9.2.1. [Discovery](#user-content-discovery)
-    - 9.2.2. [Transport](#user-content-transport)
-      - 9.2.2.1. [TLS](#user-content-tls)
-      - 9.2.2.2. [Cipher suites](#user-content-cipher-suites)
-      - 9.2.2.3. [Certificates](#user-content-certificates)
-    - 9.2.3. [FIPS/Common Criteria Compliance](#user-content-fips-common-criteria-compliance)
-   - 9.3. [Sensitive Data](#user-content-sensitive-data)
-   - 9.4. [Authentication](#user-content-authentication)
-     - 9.4.1. [HTTP Header Security](#user-content-http-header-security)
-       - 9.4.1.1. [HTTP Redirect](#user-content-http-redirect)
-     - 9.4.2. [Extended Error Handling](#user-content-extende-error-handling)
-     - 9.4.3. [HTTP Header Authentication](#user-content-http-header-authentication)
-       - 9.4.3.1. [BASIC authentication](#user-content-basic-authentication)
-       - 9.4.3.2. [Digest authentication](#user-content-digest-authentication)
-       - 9.4.3.3. [Negotiate](#user-content-negotiate)
-       - 9.4.3.4. [Request / Message Level Authentication](#user-content-request--message-level-authentication)
-       - 9.4.3.5. [Certificate based authentication?](#user-content-certificate-based-authentication)
-     - 9.4.4. [Session Management](#user-content-session-management)
-       - 9.4.4.1. [Session Lifecycle Management](#user-content-session-lifecycle-management)
-       - 9.4.4.2. [Login Sessions](#user-content-login-sessions)
-       - 9.4.4.3. [Login](#user-content-login)
-       - 9.4.4.4. [Logout](#user-content-logout)
-       - 9.4.4.5. [X-Auth-Token HTTP Header](#user-content-x-auth-token-http-header)
-     - 9.4.5. [AccountService](#user-content-accountservice)
-     - 9.4.6. [Async Tasks](#user-content-async-tasks)
-     - 9.4.7. [Event Subscriptions](#user-content-event-subscriptions)
-     - 9.4.8. [Privilege Model / Authorization](#user-content-privilege-model--authorization)
-       - 9.4.8.1. [Profiles and Roles](#user-content-profiles-and-roles)
-     - 9.4.9. [Role Based Privilege](#user-content-role-based-privilege)
-   - 9.5. [Data Model Validation](#user-content-data-model-validation)
-     - 9.5.1. [Schema](#user-content-schema)
-   - 9.6. [Logging](#user-content-logging)
-     - 9.6.1. [Required data for security log entries](#user-content-required-data-for-security-log-entries)
-     - 9.6.2. [Completeness of Logging](#user-content-completeness-of-logging)
-     - 9.6.3. [Content of Audit Logs](#user-content-content-of-audit-logs)
-  - [ANNEX A](#user-content-annex-a-informative)
-    - [Known attack vector mitigation](#user-content-known-attack-vector-mitigation) 
-  - [ANNEX B](#user-content-annex-b-informative)
-    - [Notes](#user-content-notes)
-  - [ANNEX C](#user-content-annex-c-informative)
-    - [Change Log](#user-content-change-log)
-
+---
+DocTitle: Scalable Platforms Management API Specification
+DocNumber: '0266'
+DocType: Specification
+DocVersion: '0.94.0'
+DocStatus: Work in Progress
+DocConfidentiality: – Not a DMTF Standard – DMTF Confidential
+expiration: '2014-10-31'
+released: false
+copyright: '2014-2015'
+---
 
 # Foreword
 
-The Scalable Platform Management API was prepared by the Scalable Platform Management Forum.
+The Scalable Platform Management API was prepared by the Scalable Platform Management Forum of the DMTF.
 
 DMTF is a not-for-profit association of industry members dedicated to promoting enterprise and systems management and interoperability. For information about the DMTF, see http://www.dmtf.org.
 
@@ -233,16 +21,20 @@ DMTF is a not-for-profit association of industry members dedicated to promoting 
 The DMTF acknowledges the following individuals for their contributions to this document:
 * Jeff Autor - Hewlett-Packard Company
 * David Brockhaus - Emerson Network Power
+* Richard Brunner - VMware Inc.
 * P Chandrasekhar - Dell Inc
 * Chris Davenport - Hewlett-Packard Company
 * Gamma Dean - Emerson Network Power
-* Mike Garrett - ISS iLO Firmware
+* Wassim Fayed - Microsoft Corporation
+* Mike Garrett - Hewlett-Packard Company
 * Steve Geffin - Emerson Network Power
 * Jon Hass - Dell Inc
 * Jeff Hilland - Hewlett-Packard Company
 * Chris Hoffman - Emerson Network Power
 * John Leung - Intel Corporation
 * Michael Pizzo - Microsoft Corporation
+* Irina Salvan - Microsoft Corporation
+* Hemal Shah - Broadcom Corporation
 * Jim Shelton - Emerson Network Power
 * Tom Slaight - Intel Corporation
 * Donnie Sturgeon - Emerson Network Power
@@ -273,6 +65,7 @@ The following referenced documents are indispensable for the application of this
 * <a name="OData-Protocol">OData Version 4.0 Part 1: Protocol</a>. 24 February 2014. [http://docs.oasis-open.org/odata/odata/v4.0/os/odata-v4.0-part1-protocol.html]("http://docs.oasis-open.org/odata/odata/v4.0/os/odata-v4.0-part1-protocol.html])
 * <a name="OData-URLConventions">OData Version 4.0 Part 2: URL Conventions</a>. 24 February 2014. [http://docs.oasis-open.org/odata/odata/v4.0/os/odata-v4.0-part2-url-conventions.html]("http://docs.oasis-open.org/odata/odata/v4.0/os/odata-v4.0-part2-url-conventions.html")
 * <a name="OData-CSDL">OData Version 4.0 Part 3: Common Schema Definition Language (CSDL)</a>. 24 February 2014. [http://docs.oasis-open.org/odata/odata/v4.0/os/odata-v4.0-part3-csdl.html]("http://docs.oasis-open.org/odata/odata/v4.0/os/odata-v4.0-part3-csdl.html")
+* <a name="OData-Core">OData Version 4.0: Core Vocabulary</a>. 24 February 2014. [http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Core.V1.xml]("http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Core.V1.xml")
 * <a name="OData-JSON">OData Version 4.0 JSON Format</a>. 24 February 2014. [http://docs.oasis-open.org/odata/odata-json-format/v4.0/os/odata-json-format-v4.0-os.html]("http://docs.oasis-open.org/odata/odata-json-format/v4.0/os/odata-json-format-v4.0-os.html")
 * <a name="OData-UnitsOfMeasure">OData Version 4.0: Units of Measure Vocabulary</a>. 24 February 2014. [http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml]("http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml")
 
@@ -299,7 +92,7 @@ The following additional terms are used in this document.
 | Resource       | A Resource is addressable by a URI and is able to receive and process messages. A Resource can be either an individual entity, or a collection that acts as a container for several other entities.                                                                                                                                                                                                                                                                                             |
 | Resource Tree  | A Resource Tree is a tree structure of JSON encoded resources accessible via a well-known starting URI.  A client may discover the resources available on an SPMA Service by following the resource links from the base of the tree. <br>**NOTE** for SPMA client implementation:  Although the resources are a tree, the references between resources may result in graph instead of a tree.  Clients traversing the resource tree must contain logic to avoid infinite loops.      |
 | Response       | A message from a Server to a Client in response to a request message.  It consists of a status line, response headers, an empty line and an optional message body.                                                                                                                                                                                                                                                                                                                              |
-| Subscription   | The act of connecting to an error service in order to receive events.                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| Subscription   | The act of connecting to an event service in order to receive events.                                                                                                                                                                                                                                                                                                                                                                                                                           |
 
 ## Symbols and Abbreviated Terms
 
@@ -319,7 +112,7 @@ The following additional abbreviations are used in this document.
 
 ## Overview
 
-The Scalable Platform Management API (SMPA) is a management standard using a data model representation inside of a hypermedia RESTful interface.  The model is exposed in terms of an interoperable OData Schema, with the payload of the messages being expressed in JSON following OData JSON conventions. The schema includes annotations to facilitate automatic translation of the schema to JSON Schema. Because it is based on REST, SPMA is easier to use and implement than many other solutions.  Since it is model oriented, it is capable of expressing the relationships between components in modern systems as well as the semantics of the services and components within them.  It is also easily extensible.  By using a hypermedia approach to REST, SPMA can express a large variety of systems from multiple vendors.  By requiring JSON representation, a wide variety of resources can be created in a denormalized fashion not only to improve scalability, but the payload can be easily interpreted by most programming environments as well as being relatively intuitive for a human examining the data.  The ability to externally host the Schema definition of the resources in a machine-readable format allows the meta data to be associated with the data without encumbering SPMA services with the meta data, thus enabling more advanced client scenarios as found in many data center and cloud environments.    
+The Scalable Platform Management API (SPMA) is a management standard using a data model representation inside of a hypermedia RESTful interface.  Because it is based on REST, SPMA is easier to use and implement than many other solutions.  Since it is model oriented, it is capable of expressing the relationships between components in modern systems as well as the semantics of the services and components within them.  It is also easily extensible.  By using a hypermedia approach to REST, SPMA can express a large variety of systems from multiple vendors.  By requiring JSON representation, a wide variety of resources can be created in a denormalized fashion not only to improve scalability, but the payload can be easily interpreted by most programming environments as well as being relatively intuitive for a human examining the data.  The model is exposed in terms of an interoperable OData Schema, with the payload of the messages being expressed in JSON following OData JSON conventions. The schema (available in both XML and JSON formats) includes annotations to facilitate automatic translation of the schema to JSON Schema. The ability to externally host the Schema definition of the resources in a machine-readable format allows the meta data to be associated with the data without encumbering SPMA services with the meta data, thus enabling more advanced client scenarios as found in many data center and cloud environments.    
 
 ### Principal Goals & Scope
 
@@ -337,7 +130,7 @@ The following design tenets govern the design of the Scalable Platform Managemen
 * Functionality must be usable by non-computer-science professionals
 * Data definitions as obvious in context as possible
 * Opaque view of implementation architecture
-* "Top 10" customer needs are focus of first round schema definition.
+* "Top 10" end user needs are focus of first round schema definition.
 
 #### REST based
 
@@ -387,7 +180,7 @@ Specifically, this document is intended to enable an open, industry-standard sol
 
 #### Limitations
 
-SPMA does not guarantee that client software will never need to be updated to accommodate new types of devices.  System optimization for an application will always require architectural oversight.  However, SPMA does attempt to minimize instances of forced upgrades to clients using Schemas, strict versioning and forward compatibility rules and through separation of the protocol from the data model.
+SPMA does not guarantee that client software will never need to be updated.  Examples that may require updates include accommodation of new types of systems or their components, data model updates, and so on.  System optimization for an application will always require architectural oversight.  However, SPMA does attempt to minimize instances of forced upgrades to clients using Schemas, strict versioning and forward compatibility rules and through separation of the protocol from the data model.
 
 SPMA does not enable a client to read a Resource Tree and write it to another SPMA Service.  This is not possible as it is a hypermedia API. Only the root object has a well known URI. The resource topology reflects the topology of the system and devices it represents.  Consequently, different server or device types will result in differently shaped resource trees, potentially even for identical systems from the same manufacturer. 
 
@@ -407,31 +200,31 @@ The use of HTTP Response codes enable a client to determine if the operation was
 
 In some situations it is useful for a service to provide messages to clients that fall outside the normal request/response paradigm. These messages, called events, are used by the service to asynchronously notify the client of some significant state change or error condition, usually of a time critical nature.
 
-Only one style of eventing is supported by this specification - push style eventing. In push style eventing, when the server detects the need to send an event, it uses an HTTP POST to push the event message to the client.  Clients subscribe to the eventing service to enable reception of events. 
+Only one style of eventing is currently defined by this specification - push style eventing. In push style eventing, when the server detects the need to send an event, it uses an HTTP POST to push the event message to the client.  Clients subscribe to the eventing service to enable reception of events. 
 
-Events originate from a specific resource. Not all resources are able to generate events. Those resources capable of generating events might not generate any events unless a client is listening for them. A client expresses interest in receiving events by sending a "subscribe" message to the resource. A subscribe message is sent using HTTP POST to the Event Subscriptions collection.
+Events originate from a specific resource. Not all resources are able to generate events. Those resources capable of generating events might not generate any events unless a client is listening for them. A client expresses interest in receiving events by sending a "subscribe" message to the Event Service. A subscribe message is sent using HTTP POST to the Event Subscriptions collection.
 
 The Section on [Eventing](#user-content-eventing) further in this specification discusses the details of the eventing mechanism.
 
 #### Actions
 
-Operations can be divided into two sets: intrinsic and extrinsic.  Intrinsic operations, often referred to as CRUD, are mapped to [HTTP methods](#user-content-methods).  The protocol also has the ability to support extrinsic operations -- those operations that do not map easily to CRUD.  Examples of extrinsic would be items that collectively would be better performed if done as a set (for scalability, ease of interface, server side semantic preservation or similar reasons) or operations that have no natural mapping to CRUD operations. Examples are software update or system reset.  A software update could be seen as three possible operations: transfer the image to be updated to the system, get the system to load the image and activate the image.  It is possible to combine these operations into one single action.  A system reset could be modeled as an update to state, but semantically the client is actually requesting a state change and not simply changing the value in the state.
+Operations can be divided into two sets: intrinsic and extrinsic.  Intrinsic operations, often referred to as CRUD, are mapped to [HTTP methods](#user-content-methods).  The protocol also has the ability to support extrinsic operations -- those operations that do not map easily to CRUD.  Examples of extrinsic would be items that collectively would be better performed if done as a set (for scalability, ease of interface, server side semantic preservation or similar reasons) or operations that have no natural mapping to CRUD operations. One examples is system reset.  It is possible to combine multiple operations into a single action.  A system reset could be modeled as an update to state, but semantically the client is actually requesting a state change and not simply changing the value in the state.
 
 In SPMA, these extrinsic operations are called **actions** and are discussed in detail in different parts of this specification.
 
 The SPMA Schema defines certain standard actions associated with [common SPM resources](#user-content-common-spma-resources).  For these standard actions, the SPMA Schema contains the normative language on the behavior of the action.  OEM extensions are also allowed to the [schema](#user-content-schema-extensibility), including defining [actions](#user-content-custom-actions) for existing resources.
 
-#### Discovery
+#### Service Entry Point Discovery
 
-While the service itself is at a well-known URI, the service host must be discovered. SPMA, like UPnP, uses SSDP for discovery. SSDP is supported in a wide variety of devices, such as printers.  It is simple, lightweight, IPv6 capable and suitable for implementation in embedded environments. 
+While the service itself is at a well-known URI, the service host must be discovered. SPMA, like UPnP, uses SSDP for discovery. SSDP is supported in a wide variety of devices, such as printers.  It is simple, lightweight, IPv6 capable and suitable for implementation in embedded environments.  SPMA is investigating additional service entry point discovery (e.g. DHCP-based) approaches.
 
 For more information, see the section on [Discovery](#user-content-discovery-1)
 
-#### Device support (Serial Console, KVM-IP, Command Shell, Virtual Media)
+#### Remote Access Support
 
-A wide variety of devices and services are supported in this architecture.  Critical to out-of-band environments are mechanisms to support Serial Console access, Keyboard Video and Mouse (KVM-IP), Command Shell (i.e. Command Line interface) and remote Virtual Media.  Support for Serial Console, Command Shell, KVM-IP and Virtual Media are all encompassed in this standard and are expressed in the Schema.  This standard does not define the protocols or access mechanisms for accessing those devices and services.  The schema provides for the representation and configuration of those services, establishment of connections to enable those services and the operational status of those services.  However, the protocols themselves are outside the scope of this standard.
+A wide variety of remote access and redirection services are supported in this architecture.  Critical to out-of-band environments are mechanisms to support Serial Console access, Keyboard Video and Mouse (KVM-IP), Command Shell (i.e. Command Line interface) and remote Virtual Media.  Support for Serial Console, Command Shell, KVM-IP and Virtual Media are all encompassed in this standard and are expressed in the SPMA Schema.  This standard does not define the protocols or access mechanisms for accessing those devices and services.  The SPMA Schema provides for the representation and configuration of those services, establishment of connections to enable those services and the operational status of those services.  However, the specification of the protocols themselves are outside the scope of this specification.
 
-### Security Intro
+### Security
 
 The challenge with security in a remote interface that is programmatic is to ensure both the interfaces used to interact with SPMA and the data being exchanged are secured. This means designing the proper security control mechanisms around the interfaces and securing the channels used to exchange the data. As part of this, specific behaviors are to be put in place including defining and using a minimum levels of encryption for communication channels etc.
 
@@ -439,7 +232,7 @@ The challenge with security in a remote interface that is programmatic is to ens
 
 The Scalable Platform Management API is based on REST and follows OData conventions for interoperability, as defined in [OData-Protocol](#user-content-OData-Protocol), JSON payloads, as defined in [OData-JSON](#user-content-OData-JSON), and a machine-readable representation of schema, as defined in [OData-Schema](#user-content-OData-CSDL). The schemas include annotations to enable direct translation to JSON Schema for validation and consumption by tools supporting JSON Schema. Following these common standards and conventions increases interoperability and enables leveraging of existing tool chains.
  
-SPMA conforms to the OData minimal conformance level for clients consuming minimal metadata.
+SPMA follows the OData minimal conformance level for clients consuming minimal metadata.
 
 Throughout this document, we refer to SPMA as having a protocol mapped to a data model.  More accurately, HTTP is the application protocol that will be used to transport the messages and TCP/IP is the transport protocol. The RESTful interface is a mapping to the message protocol.  For simplicity though, we will refer to the RESTful mapping to HTTP, TCP/IP and other protocol, transport and messaging layer aspects as the SPMA protocol. 
 
@@ -472,7 +265,7 @@ A URI is used to identify a resource, including the base service and all SPMA re
 
 To begin operations, a client must know the URI for a resource.
 
-* Dereferencing the URI of a resource (via a GET operation) shall yield a representation for the resource containing resource attributes, and links to associated resources.
+* Performing a GET operation yields a representation of the resource containing properties and links to associated resources.
 
 The base resource URI is well known and is based on the protocol version.  Discovering the URIs to additional resources is done through observing the associated resource links returned in previous responses. This type of API that is consumed by navigating URIs returned by the service is known as a Hypermedia API.
 
@@ -484,13 +277,13 @@ For example, in the following URL:
 
     Example: https://mgmt.vendor.com/rest/v1/Systems/1
 
-* The first portion is the service path (https://mgmr.vendor.com).
-* The second portion is the base resource and version (/rest/v1).
-* The third portion is the unique resource path (Systems/1).
+* The first part is the scheme and authority portion (https://mgmr.vendor.com).
+* The second part is the root service and version (/rest/v1).
+* The third part is the unique resource path (Systems/1).
 
-The scheme and authority portions of the URI _shall not_ be considered part of the unique _identifier_ of the resource. This is due to redirection capabilities and local operations which may result in the variability of the connection portion.  The remainder of the URI (the service and resource paths) is what _uniquely identifies_ the resource, and this is what is returned in all SPMA payloads.  
+The scheme and authority part of the URI _shall not_ be considered part of the unique _identifier_ of the resource. This is due to redirection capabilities and local operations which may result in the variability of the connection portion.  The remainder of the URI (the service and resource paths) is what _uniquely identifies_ the resource, and this is what is returned in all SPMA payloads.  
 
-* The unique identifier portion of a URI _shall_ be unique within the implementation.
+* The unique identifier part of a URI _shall_ be unique within the implementation.
 
 For example, a POST may return the following URI in the Location header of the response (indicating the new resource created by the POST):
 
@@ -498,7 +291,7 @@ For example, a POST may return the following URI in the Location header of the r
 
 Assuming the client is connecting through an appliance named "mgmt.vendor.com", the full URI needed to access this new resource is https://mgmt.vendor.com/rest/v1/Systems/2.
 
-URIs, as described in [RFC3986](#user-content-RFC3986), may also contain a query (?query) and a frag (#frag) components.  Queries are addressed in the section [Query Parameters](#user-content-query-parameters).  Fragments (frag) shall be ignored by the server when used as the URI for submitting an operation. Frags shall not be used in a reference in a links section. Frags may be used in places like [type references](#user-content-type-property), [CorrelatableIDs](#user-content-correlatableidreferences) and [Events](#user-content-events). Clients should expect to parse out the fragment portion for Types and Events, but CorrelatableIDs shall be treated as opaque.  When a Frag is used, it shall be of JSONPointer format according to [RFC6901](#user-content-RFC6901).
+URIs, as described in [RFC3986](#user-content-RFC3986), may also contain a query (?query) and a frag (#frag) components.  Queries are addressed in the section [Query Parameters](#user-content-query-parameters).  Fragments (frag) shall be ignored by the server when used as the URI for submitting an operation. 
 
 #### HTTP Methods
 
@@ -540,6 +333,7 @@ Responses to GET requests may be compressed.  Clients shall be prepared to accep
 In order to reduce the cases of unnecessary RESTful accesses to resources, the SPMA Service should support associating a separate ETag with each resource.
   
 * Implementations should support returning [ETag properties](#user-content-etag-property) for each resource.
+* Implementations should support returning ETag headers for each response that represents a single resource.  Implementations shall support returning ETag headers for certain requests and responses as listed in the [Security](#user-content-security) section.
 
 The ETag is generated and provided as part of the resource payload because the service is in the best position to know if the new version of the object is different enough to be considered substantial. There are two types of ETags: weak and strong.
 
@@ -547,8 +341,6 @@ The ETag is generated and provided as part of the resource payload because the s
 * Strong model -- all portions of the object are included in the formulation of the ETag. 
 
 This specification does not mandate a particular algorithm for creating the ETag, but ETags should be highly collision-free.  An ETag could be a hash, a generation ID, a time stamp or some other value that changes when the underlying object changes.
-
-NOTE: Refer to the [Security](#user-content-security) section for security implications of ETags
 
 If a client PUTs or PATCHes a resource, it should include an ETag in the HTTP If-Match/If-None-Match header from a previous GET.
 
@@ -563,9 +355,13 @@ The format of the ETag header is:
 
 ### Protocol Version
 
-The Version of the SPMA Protocol supported by this specification is Version 1.0.  Note that the protocol version is separate from the version of the resources or the version of the schema supported by them.  Changes to the resources are noted via ETags.  The schema version for a resource type is defined in the namespace of resource's [type URI](#user-content-type-identifiers) returned in the [type](#user-content-@odata.type) property of the resource.
+The protocol version is separate from the version of the resources or the version of the schema supported by them.
 
-Each version of the SPMA protocol is strongly typed.  This is accomplished using the URI of the SPMA service in combination with the resource obtained at that URI, called the ServiceRoot. The URI version subcomponent of the URI is string of the form: 
+Each version of the SPMA protocol is strongly typed.  This is accomplished using the URI of the SPMA service in combination with the resource obtained at that URI, called the ServiceRoot. 
+
+The root URI for this version of the SPMA protocol shall be "/rest/v1".
+
+While the major version of the protocol is represented in the URI, the major version, minor version and errata version of the protocol are represented in the Version property of the ServiceRoot resource, as defined in the Schema for that resource.  The protocol version is a string of the form: 
 
 *MajorVersion*.*MinorVersion*.*Errata*
 
@@ -574,10 +370,6 @@ Each version of the SPMA protocol is strongly typed.  This is accomplished using
 * *MajorVersion* = integer:  something in the class changed in a backward incompatible way.
 * *MinorVersion* = integer:  a minor update.  New functionality may have been added but nothing removed. Compatibility will be preserved with previous  minorversions.
 * *Errata* = integer: something in the prior version was broken and needed to be fixed.
-
-While the major version is represented in the URI, the major version, minor version and errata versions are represented in the Version property of the ServiceRoot resource, as defined in the Schema for that resource.
-
-The root URI for SPMA protocol version 1 shall be "/rest/v1".
 
 Any resource discovered through links found by accessing the root service or any service or resource referenced using references from the root service shall conform to the same version of the protocol supported by the root service. 
 
@@ -589,8 +381,9 @@ This section describes the requests that can be sent to SPMA services.
 
 HTTP defines headers that can be used in request messages. The following table defines those headers and their requirements for SPMA services.
 
-* SPMA services _shall_ understand and be able to process the headers in the following table as defined by the HTTP 1.1 specification if the value in the Required column is set to "yes" .
-* SPMA services _should_ understand and be able to process the headers in the following tables as defined by the HTTP 1.1 specification if the value in the Required column is set to "no".  
+* SPMA services _shall_ understand and be able to process the headers in the following table as defined by the HTTP 1.1 specification if the value in the Required column is set to "Yes".
+* SPMA services _shall_ understand and be able to process the headers in the following table as defined by the HTTP 1.1 specification if the value in the Required column is set to "Conditional" under the conditions noted in the description.
+* SPMA services _should_ understand and be able to process the headers in the following tables as defined by the HTTP 1.1 specification if the value in the Required column is set to "No".  
 
 | Header          | Required    | Supported Values                      | Description                                                                                                                                                                                                                                                                                                             |
 | --------        | ---         | -----------------                     | ------------                                                                                                                                                                                                                                                                                                            |
@@ -600,24 +393,21 @@ HTTP defines headers that can be used in request messages. The following table d
 | Content-Type    | Conditional | [RFC 2616, Section 14.17][2616-14.17] | Describes the type of representation used in the message body.  `charset=utf-8` shall be supported for requests that have a body.  Shall be required if there is a request body.                                                                                                                                                                                                                                                         
 | Content-Length  | No          | [RFC 2616, Section 14.3][2616-14.3]   | Describes the size of the message body. An optional means of indicating size of the body uses Transfer-Encoding: chunked, which does not use the Content-Length header. If a service does not support Transfer-Encoding and needs Content-Length instead, the service will respond with status code [411](#user-content-status-411). |
 | Max-OData-Version	  | No |	4.0	                                | Indicates the maximum version of OData that an odata-aware client understands |
-| OData-Version	  | Conditional |	4.0	                                | Required for requests containing a JSON body to specify the version of OData JSON conventions that the request body conforms to. |
-| Authorization   | No          | [RFC 2617, Section 2][2617-2]         | See [Basic Authorization](#user-content-basic-auth)                                                                                                                                                                                                                                                                                  
+| OData-Version	  | Yes |	4.0	                                | If provided, services shall reject requests which specify an unsupported OData version. |
+| Authorization   | Conditional          | [RFC 2617, Section 2][2617-2]         | Required for [Basic Authorization](#user-content-basic-auth)                                                                                                                                                                                                                                                                                  
 | User-Agent      | Yes         | [RFC 2616, Section 14.43][2616-14.43] | Required for tracing product tokens and their version.  Multiple product tokens may be listed.                                                                                                                                                                                                                          
 | Host            | Yes         | [RFC 2616, Section 14.23][2616-14.23] | Required to allow support of multiple origin hosts at a single IP address.                                                                                                                                                                                                                                              
 | Origin          | Yes         | [W3C CORS, Section 5.7][cors-5.7]     | Used to allow web applications to consume SPMA service while preventing CSRF attacks.                                                                                                                                                                                                                                
 | Via             | No          | [RFC 2616, Section 14.45][2616-14.45] | Indicates network hierarchy and recognizes message loops. Each pass inserts its own VIA.                                                                                                                                                                                                                                
 | Max-Forwards    | No          | [RFC 2616, Section 14.31][2616-14.31] | Limits gateway and proxy hops. Prevents messages from remaining in the network indefinitely.                                                                                                                                                                                                                        |
-| If-Match        | No [<sup>1</sup>](#user-content-if-match-note-1)       | [RFC 2616, Section 14.31][2616-14.31] | The service will attempt to update the resource only if the current ETag for the resource matches the ETag passed in this HTTP header. If the ETag specified in this header does not match the resource's current ETag, status code [412](#user-content-status-412) will be returned.
+| If-Match        | Conditional | [RFC 2616, Section 14.31][2616-14.31] | If-Match shall be supported for Atomic requests on AccountService objects.  If-Match shall be supported on requests for resources for which the service returns ETags.
 | If-None-Match   | No          | [RFC 2616, Section 14.31][2616-14.31] | If this HTTP header is present, the service will only return the requested resource if the current ETag of that resource does not match the ETag sent in this header.  If the ETag specified in this header matches the resource's current ETag, the status code returned from the GET will be [304](#user-content-status-304).
 
 * SPMA services _shall_ understand and be able to process the headers in the following table as defined by this specification if the value in the Required column is set to "yes" .
 
 | Header          | Required    | Supported Values                      | Description                                                                                                                                                                                                                                                                                                             |
 | --------        | ---         | -----------------                     | ------------                                                                                                                                                                                                                                                                                                            |
-| X-Auth-Token    | Yes         | Opaque encoded octet strings          | Used for bearer authentication of user sessions. The token value _shall_ be indistinguishable from random.                                                                                                                                                                                                             |
-
-* <a name="if-match-note-1">_1_</a> If-Match _shall_ be supported for Atomic requests on AccountService objects
-
+| X-Auth-Token    | Yes         | Opaque encoded octet strings          | Used for bearer authentication of user sessions. The token value _shall_ be indistinguishable from random.                                                                                                                                                                                                
 
 [2616-14.1]: http://pretty-rfc.herokuapp.com/RFC2616#header.accept
 [2616-14.4]: http://pretty-rfc.herokuapp.com/RFC2616#header.accept-language
@@ -734,7 +524,7 @@ The DELETE method is used to remove a resource.
 
 ##### Actions (POST)
 
-The POST method is used to initiate potentially non-idempotent operations on the object (such as Actions).
+The POST method is used to initiate operations on the object (such as Actions).
 
  * Services shall support the POST method for sending actions.
  * The POST operation may not be idempotent.
@@ -752,10 +542,10 @@ The first parameter of a bound function is the resource on which the action is b
 
 Clients can query a resource directly to determine the [actions](#user-content-actions-property) that are available as well as [valid parameter values](#user-content-allowable-values) for those actions.  Some parameter information may require the client to examine the schema corresponding to the resource. 
 
-For instance, if a schema document `http://dmtf.org/schema/v1/ComputerSystem` defines a Reset action, in the `ComputerSystem.1.0.0` namespace, with the alias "ComputerSystem", bound to the `ComputerSystem.Actions` type, such as this example:
+For instance, if a schema document `http://dmtf.org/schema/v1/ComputerSystem` defines a Reset action, in the `ComputerSystem.<%= DocVersion %>` namespace, with the alias "ComputerSystem", bound to the `ComputerSystem.Actions` type, such as this example:
 
 ~~~xml
-<Schema Name="ComputerSystem.1.0.0" Alias="ComputerSystem">
+<Schema Name="ComputerSystem.<%= DocVersion %>" Alias="ComputerSystem">
 ...
   <Action Name="Reset" Isbound="true">
     <Parameter Name="ComputerSystem" Type="ComputerSystem.Actions"/>
@@ -777,7 +567,6 @@ And a computer system resource contains an [Actions](#user-content-actions-prope
             "GracefulRestart",
             "ForceRestart",
             "Nmi",
-            "GracefulRestart",
             "ForceOn",
             "PushPowerButton"
         ]
@@ -812,9 +601,9 @@ HTTP defines headers that can be used in response messages.  The following table
 | Content-Type                | Yes      | [RFC 2616, Section 14.17][2616-14.17] | Describes the type of representation used in the message body. `application/json` shall be supported. `charset=utf-8` shall be supported.                                                                                                                                                                                   |
 | Content-Encoding            | No       | [RFC 2616, Section 14.17][2616-14.17] | Describes the encoding that has been performed on the media type                                                                                                                                                                                                                                                        |
 | Content-Length              | No       | [RFC 2616, Section 14.3][2616-14.3]   | Describes the size of the message body. An optional means of indicating size of the body uses Transfer-Encoding: chunked, which does not use the Content-Length header. If a service does not support Transfer-Encoding and needs Content-Length instead, the service will respond with status code [411](#user-content-status-411). |
-| ETag                        | No[<sup>1</sup>](#user-content-etag-note-1)       | [RFC 2616, Section 14.19][2616-14.19] | An identifier for a specific version of a resource, often a message digest.                                                                                                                                                                                                                                             |
+| ETag                        | Conditional | [RFC 2616, Section 14.19][2616-14.19] | An identifier for a specific version of a resource, often a message digest.   Etags _shall_ be included on Account objects.                                                                                                                                                                                                                                             |
 | Server                      | Yes      | [RFC 2616, Section 14.38][2616-14.38] | Required to describe a product token and its version. Multiple product tokens may be listed.                                                                                                                                                                                                                            |
-| Location                    | No[<sup>2</sup>](#user-content-auth-header-note-1)       | [RFC 2616, Section 14.30][2616-14.30] | Indicates a URI that can be used to request a representation of the resource.  Shall be returned if a new resource was created.                                                                                                                                                                                         |
+| Location                    | Conditional  | [RFC 2616, Section 14.30][2616-14.30] | Indicates a URI that can be used to request a representation of the resource.  Shall be returned if a new resource was created.  Location and X-Auth-Token _shall_ be included on responses which create user sessions.                                                                                                                                                                                         |
 | Cache-Control               | Yes       | [RFC 2616, Section 14.9][2616-14.9]   | This header shall be supported and is meant to indicate whether a response can be cached or not.                                                                                                                                    |
 | Via                         | No       | [RFC 2616, Section 14.45][2616-14.45] | Indicates network hierarchy and recognizes message loops. Each pass inserts its own VIA.                                                                                                                                                                                                                                |
 | Max-Forwards                | No       | [RFC 2616, Section 14.31][2616-14.31] | Limits gateway and proxy hops. Prevents messages from remaining in the network indefinitely.                                                                                                                                                                                                                            |
@@ -831,8 +620,6 @@ HTTP defines headers that can be used in response messages.  The following table
 | --------     | ---       | -----------------            | ------------                                                                                               |
 | X-Auth-Token | Yes       | Opaque encoded octet strings | Used for bearer authentication of user sessions. The token value _shall_ be indistinguishable from random. |
 
-* <a name="etag-note-1">_1_</a> Etags _shall_ be included on Account objects
-* <a name="auth-header-note-1">_2_</a> Location and X-Auth-Token _shall_ be included on responses which create user sessions.
 
 [2616-14.3]: http://pretty-rfc.herokuapp.com/RFC2616#header.content-length
 [2616-14.9]: http://pretty-rfc.herokuapp.com/RFC2616#header.cache-control
@@ -879,7 +666,7 @@ HTTP defines status codes that can be returned in response messages.
 #### Metadata Responses
 
 ##### Service Metadata
-The service metadata describes top-level resources of the service according to [OData-Schema](#user-content-OData-CSDL). The schema is represented as an XML document with a root element named "Edmx", defined in the http://docs.oasis-open.org/odata/ns/edmx" namespace, and with an OData Version attribute equal to "4.0".
+The service metadata describes top-level resources of the service according to [OData-Schema](#user-content-OData-CSDL). The SPMA Service Metadata is represented as a CSDL XML document with a root element named "Edmx", defined in the http://docs.oasis-open.org/odata/ns/edmx" namespace, and with an OData Version attribute equal to "4.0".
 
 ~~~xml
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
@@ -887,25 +674,25 @@ The service metadata describes top-level resources of the service according to [
 </edmx:Edmx>
 ~~~
 
-The service metadata shall include the namespaces for each of the DMTF resource types, along with the "DMTFExtensions.1.0.0" namespace. These references may use the standard Uri for the hosted schema definitions (i.e., on http://dmtf.org/schema) or a Url to a local version of the schema that shall be identical to the hosted version. The namespace shall be aliased with the version-independent namespace name.
+The service metadata shall include the namespaces for each of the DMTF resource types, along with the "DMTFExtensions.<%= DocVersion %>" namespace. These references may use the standard Uri for the hosted schema definitions (i.e., on http://dmtf.org/schema) or a Url to a local version of the schema that shall be identical to the hosted version. The namespace shall be aliased with the version-independent namespace name.
 
 ~~~xml
-<edmx:Reference Uri="http://dmtf.org/schema/v1/ServiceRoot.1.0.0">
-	<edmx:Include Namespace="ServiceRoot.1.0.0" Alias="ServiceRoot"/>
+<edmx:Reference Uri="http://dmtf.org/schema/v1/ServiceRoot.<%= DocVersion %>">
+	<edmx:Include Namespace="ServiceRoot.<%= DocVersion %>" Alias="ServiceRoot"/>
 </edmx:Reference>
-<edmx:Reference Uri="http://dmtf.org/schema/v1/AccountService.0.94.0">
-  <edmx:Include Namespace="AccountService.0.94.0" Alias="AccountService"/>
+<edmx:Reference Uri="http://dmtf.org/schema/v1/AccountService.<%= DocVersion %>">
+  <edmx:Include Namespace="AccountService.<%= DocVersion %>" Alias="AccountService"/>
 </edmx:Reference>
 ...
-<edmx:Reference Uri="http://dmtf.org/schema/v1/VirtualMedia.0.94.0">
-  <edmx:Include Namespace="VirtualMedia.0.94.0" Alias="VirtualMedia"/>
+<edmx:Reference Uri="http://dmtf.org/schema/v1/VirtualMedia.<%= DocVersion %>">
+  <edmx:Include Namespace="VirtualMedia.<%= DocVersion %>" Alias="VirtualMedia"/>
 </edmx:Reference>
 <edmx:Reference Uri="http://dmtf.org/schema/v1/Extensions">
-	<edmx:Include Namespace="DMTFExtensions.1.0.0" Alias="DMTF"/>
+	<edmx:Include Namespace="DMTFExtensions.<%= DocVersion %>" Alias="DMTF"/>
 </edmx:Reference>
 ~~~
 
-The service metadata shall include an entity container that defines the top level resource and collections. This entity container shall extend the ServiceContainer defined in the ServiceRoot.1.0.0 schema and may include additional resources or collections.
+The service metadata shall include an entity container that defines the top level resource and collections. This entity container shall extend the ServiceContainer defined in the ServiceRoot.<%= DocVersion %> schema and may include additional resources or collections.
 
 ~~~xml
 <edmx:DataServices>
@@ -929,7 +716,7 @@ The service can annotate sets, types, actions and parameters with SPMA-defined o
 
 ~~~xml
 <edmx:Reference Uri="http://service/metadata/Service.Annotations">
-	<edmx:IncludeAnnotations TermNamespace="Annotations.1.0.0" Alias="Annotations"/>
+	<edmx:IncludeAnnotations TermNamespace="Annotations.<%= DocVersion %>" Alias="Annotations"/>
 </edmx:Reference>
 ~~~
 	
@@ -948,7 +735,7 @@ The annotation file itself specifies the Target schema element being annotated, 
 
 #### Resource Responses
 
-Resources are returned as JSON payloads, using the mime type `application/json`.
+Resources are returned as JSON payloads, using the MIME type `application/json`.
 
 ##### Context Property
 
@@ -1014,9 +801,9 @@ Primitive properties are returned as JSON values.
 
 ###### DateTime Values
 
-DateTime values are returned as JSON strings according to the ISO 8601 "extended" format: 
+DateTime values shall be returned as JSON strings according to the ISO 8601 "extended" format: 
 
- *YYYY*-*MM*-*DD* T *hh*:*mm*:*ss*[.*SSS*]> (Z | (+ | - ) *hh*:*mm*)
+ *YYYY*-*MM*-*DD* T *hh*:*mm*:*ss*[.*SSS*] (Z | (+ | - ) *hh*:*mm*)
 
 ##### Structured Properties
 
@@ -1048,7 +835,7 @@ The value of the property is a JSON object containing a property named "target" 
 
 The property representing the available action may be annotated with the [AllowableValues](#user-content-allowable-values) annotation in order to specify the list of allowable values for a particular parameter.
 
-For example, the following property represents the Reset action, defined in the ComputerSystem.1.0.0 namespace (aliased with the version-independent "ComputerSystem"):
+For example, the following property represents the Reset action, defined in the ComputerSystem.<%= DocVersion %> namespace (aliased with the version-independent "ComputerSystem"):
 
 ~~~json
 	"#ComputerSystem.Reset": {
@@ -1104,12 +891,13 @@ A reference to a collection of zero ore more related resources is returned as an
 		{
 			"@odata.id":"/rest/v1/Chassis/Encl1"
 		}
+	]
 }
 ~~~
 
 ##### OEM Property
 
-OEM-specific properties are nested under an [OEM property](#user-content-property-extensions). The name of the OEM property shall be "Oem" and it's value shall be a JSON object whose properties represent OEM extensions.
+OEM-specific properties are nested under an [OEM property](#user-content-property-extensions). The name of the OEM property shall be "Oem" and its value shall be a JSON object whose properties represent OEM extensions.
 
 For example:
 
@@ -1253,16 +1041,16 @@ Extended error information is returned as a JSON object with a single property n
 ~~~json
 {
   "error": {
-    "code": "Base.1.0.MessageKey",
+    "code": "Base.<%= DocVersion.replace(/\.[^\.]+$/, '') %>.MessageKey",
     "message": "Human readable string",
     "details": [
       {
-       "code": "Base.1.0.MessageKey",
+       "code": "Base.<%= DocVersion.replace(/\.[^\.]+$/, '') %>.MessageKey",
        "target": "property1",
        "message": "property1 string"
       },
       {
-       "code": "Base.1.0.MessageKey",
+       "code": "Base.<%= DocVersion.replace(/\.[^\.]+$/, '') %>.MessageKey",
        "target": "property2",
        "message": "property2 string"
       }
@@ -1318,7 +1106,7 @@ where
 * *MinorVersion* = integer: a minor update. New properties may have been added but nothing removed. Compatibility will be preserved with previous minorversions. 
 * *Errata* = integer: something in the prior version was broken and needed to be fixed.
 
-An example of a valid type namespace might be "System.1.0.0". 
+An example of a valid type namespace might be "System.<%= DocVersion %>". 
 
 #### Type Identifiers in JSON
 Types used within a JSON payload shall be defined in, or referenced, by the [service metadata](#service-metadata).
@@ -1398,7 +1186,7 @@ Schemas may reference types defined in other schema documents by including a `Re
 
 The reference element specifies the `Uri` of the schema document describing the referenced type and has one or more child `Include` elements that specify the `Namespace` attribute containing the types to be referenced, along with an optional `Alias` attribute for that namespace.
 
-Type definitions generally reference the OData and DMTF namespaces for common type annotation terms, and resource type definitions reference the DMTF Resource.1.0.0 namespace for base types. Schemas that include measures such as temperature, speed, or dimensions generally include the [OData Measures namespace](#user-content-OData-Measures). 
+Type definitions generally reference the OData and DMTF namespaces for common type annotation terms, and resource type definitions reference the DMTF Resource.<%= DocVersion %> namespace for base types. Schemas that include measures such as temperature, speed, or dimensions generally include the [OData Measures namespace](#user-content-OData-Measures). 
 
 ~~~xml
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
@@ -1409,10 +1197,10 @@ Type definitions generally reference the OData and DMTF namespaces for common ty
     <edmx:Include Namespace="Org.OData.Measures.V1" Alias="OData.Measures"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/Extensions">
-	<edmx:Include Namespace="DMTFExtensions.1.0.0" Alias="DMTF"/>
+	<edmx:Include Namespace="DMTFExtensions.<%= DocVersion %>" Alias="DMTF"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/Resource">
-    <edmx:Include Namespace="Resource.1.0.0" Alias="Resource"/>
+    <edmx:Include Namespace="Resource.<%= DocVersion %>" Alias="Resource"/>
   </edmx:Reference>
 ~~~
 
@@ -1424,7 +1212,7 @@ The Schema element is a child of the `DataServices` element, which is a child of
 
 ~~~xml
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MyTypes.1.0.0" Alias="MyTypes">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MyTypes.<%= DocVersion %>" Alias="MyTypes">
 
       <!-- Type definitions go here -->
 
@@ -1436,7 +1224,7 @@ The Schema element is a child of the `DataServices` element, which is a child of
 
 Resource types are defined within a [namespace](#user-content-namespace-definitions) using `EntityType` elements. The `Name` attribute specifies the name of the resource and the `BaseType` specifies the base type, if any.
 
-SPMA resources derive from a common Resource base type named "Resource" in the Resource.0.94.0 namespace. 
+SPMA resources derive from a common Resource base type named "Resource" in the Resource.<%= DocVersion %> namespace. 
 
 The EntityType contains the [property](#user-content-resource-properties) and [navigation property](#user-content-reference-properties) elements that define the resource, as well as annotations describing the resource.
 
@@ -1650,7 +1438,7 @@ The `ExpandReferences` annotation term is defined in http://dmtf.org/schema/V1/D
 Actions are grouped under a property named "Actions". 
 
 ~~~xml
-	  <Property Name="Actions" Type="MyType.Actions>
+	  <Property Name="Actions" Type="MyType.Actions">
 ~~~
 
 The type of the Actions property is a [structured type](#user-content-structured-types) with a single OEM property whose type is a structured type with no defined properties.
@@ -1752,7 +1540,7 @@ Because [service annotations](#user-content-annotations) may be applied to exist
 
 This section contains a set of common properties across all SPMA resources. The property names in this section shall not be used for any other purpose, even if they are not implemented in a particular resource.
 
-Common properties are defined in a the base Resource.0.94.0.Resource schema.
+Common properties are defined in a the base Resource.<%= DocVersion %>.Resource schema.
 
 #### Id
 
@@ -1814,22 +1602,6 @@ If a provider must communicate location or association information and does not 
 
 For example, a NIC in a PCI slot communicates its PCI location by including a "CorrelatableID" with a value consisting of its UEFI device path.  PCI slots also have a UEFI device path.  This match establishes their association.
                                                                                                                                          
-#### Other common properties
-
-The following common properties should be used when appropriate.  Other semantics are defined for these properties in the common section of the SPMA Schema.
-* SerialNumber
-* Model
-* PartNumber
-* FirmwareVersion
-* Uuid (standard RFC format)
-* Mac (MAC address standard output format, ##:##:##:##:##:##)
-* Wwn, VirtualWwn (world wide name and" virtual wwn, use standard output format, ##:##:##:##:##:## )
-* VirtualSerialNumber
-* VirtualUuid
-* PowerState
-* IPv4Address 
-* IPv6Address if scalar, however better to consider a list in the resource model with address and type.
-* DnsName " (vs current *thing* name ) """ Need to ensure can address the attribute properly.  Note "Name" is a reserved property.
 
 ### SPMA Resources
 
@@ -2087,10 +1859,7 @@ References to RFCs -
 	 http://tools.ietf.org/html/rfc5288
 	 
 ##### Certificates
-Implementations shall support replacement of the default certificate if one is provided, with a certificate having at least a 4096 bit rsa key and sha512-rsa signature.
-
-#### FIPS/Common Criteria Compliance
-Implementations which satisfy FIPS and Common Criteria requirements should be considered compliant with this specification.
+Implementations shall support replacement of the default certificate if one is provided, with a certificate having at least a 4096 bit RSA key and sha512-rsa signature.
 
 ### Sensitive Data
 
@@ -2101,7 +1870,7 @@ Implementations which satisfy FIPS and Common Criteria requirements should be co
 	- Password Complexity Requirements
 	- Critical Security Parameters (CSPs) as defined below
 
-Critical Security Parameters : 
+Critical Security Parameters (CSP): 
 Security-related information (e.g., cryptographic keys, authentication data such as passwords and PINs) appearing in plaintext or otherwise unprotected form and whose disclosure or modification can compromise the security of a cryptographic module or the security of the information protected by the module.
 	
 REF: http://csrc.nist.gov/publications/fips/fips140-1/fips1401.pdf - This is used only as a source for the definition of CSPs. No additional requirements for compatibility with the FIPS standard should be inferred.
@@ -2110,7 +1879,7 @@ REF: http://csrc.nist.gov/publications/fips/fips140-1/fips1401.pdf - This is use
 
 * Default Credentials 
 
-	Vendors should NOT implement default credentials for any account installed on the spec compliant device, with a well known password.
+	Services should NOT implement default credentials for any account installed on the spec compliant device, with a well known password.
 
 * Password Complexity
 	
@@ -2144,7 +1913,7 @@ REF: http://csrc.nist.gov/publications/fips/fips140-1/fips1401.pdf - This is use
 * Unauthenticated REST operation results shall not contain [Sensitive Data](#user-content-sensitive-data).
 * External services linked via extref references are not part of this spec, and may have other security requirements.
 	
-* CORS headers are not recommended. Vendors may choose to implement them.
+* CORS headers are not recommended. Services may choose to implement them.
 
 ##### HTTP Redirect
 
@@ -2190,7 +1959,7 @@ For functionality requiring multiple SPMA operations, a standard Login session i
 {
     ...
     "Sessions": {
-        "href": "/rest/Sessions"
+        "@odata.id": "/rest/v1/Sessions"
     },
     ...
 }
@@ -2280,9 +2049,9 @@ Implementations shall only use compliant TLS connections to transport the data b
     * Assigning privileges to users, either local to the SPMA device or users / user groups from the directory services infrastructure like AD/ LDAP
       * Assign privileges individually (Users created by cherry-picking privileges)
         OR
-      * Assign privileges via pre-defined roles (Roles required by SPMA spec or OEM vendor implementation)
+      * Assign privileges via pre-defined roles (Roles required by SPMA spec or OEM implementation)
         OR
-      * Assign privileges via custom roles (Customer admin defined roles which can be reused)
+      * Assign privileges via custom roles (End user admin defined roles which can be reused)
 
 
 * Implementations shall enforce the same privilege model for ETag related activity as is enforced for the data being represented by the ETag. For example, when activity requiring privileged access to read data item represented by ETag requires the same privileged access to read the ETag.
@@ -2290,7 +2059,7 @@ Implementations shall only use compliant TLS connections to transport the data b
 * Privileges
   * shall implement a set of pre-defined privileges
     - Login
-    - Configure BMC
+    - Configure Manager
     - Configure Users
       - NOTE: The Login privilege is automatically assigned to all users
 
@@ -2413,41 +2182,8 @@ The file where the events are written, one or more messages per event should at 
 * Event type
 * Event description
 
-## ANNEX A (informative)
 
-# Known attack vector mitigation
-- XSS
-  * Cross-Origin headers are not recommended. Vendors may choose to implement them, but anticipated customer usage does not provide a strong reason to implement in light of the potential for security problems.
-- Replay
-- CSRF
-- MITM
-- Protocol stripping
-- Cipher attacks
-- Offline attacks
-
-## ANNEX B (informative)
-
-# Notes
-
-Security Token used in sessions with Keep-alive connections is the value in the
-Authorization request header.  Need to explain how this gets returned from the
-first session.
-
-_Directory Service Integration (AD/LDAP) needs to be accommodated at some point.
-Perhaps we go with this in version.next._
-
-Editorial ToDos:
--alphabetize lists/tables
--define/test links
--add to abbreviations: -ipmi, ssdp (others?)
-
-Issues:
--Rights are at a URL level, not per property.
--what is the right set of primitive types to support?
--do extended errors have single resolution string or array of recommended actions strings (difference in spec versus markdown)?
--Sessions - what do they return?
-
-## ANNEX C (informative) 
+## ANNEX A (informative) 
 
 # Change Log
 
