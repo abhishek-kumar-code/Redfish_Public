@@ -1,117 +1,99 @@
 {
-"$schema": "http://www.redfishspecification.org/schema",
-"definitions":{
-"Resource":{
-    "title": "Resource.0.94.0",
-    "type": "object",
-    "additionalProperties": false,
-    "properties": {
-        "@odata.context": {
-            "type": "string"
-        },
-        "@odata.id": {
-            "type": "string",
-            "format": "uri",
-            "description": "A reference to a resource"
-        },
-        "@odata.type": {
-            "type": "string"
-        },
-        "Id": {
-            "type": "string"
-        },
-        "Description": {
-            "type": [
-                "string",
-                "null"
-            ],
-            "readonly": true,
-            "description": "Provides a description of this resource and is used for commonality  in the schema definitions.",
-            "specification": "This object represents the Description property.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification."
-        },
-        "Name": {
-            "type": "string",
-            "readonly": true,
-            "description": "The name of the resource or array element.",
-            "specification": "This object represents the Name property.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification. The value of this string shall be of the format for the reserved word *Name*."
-        },
-        "Modified": {
-            "type": "string",
-            "readonly": true,
-            "description": "The date-time stamp that the object was last modified.",
-            "specification": "This object represents the Modified property.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification. The value of this string shall be of the format for the reserved word *Modified*."
-        },
-        "Oem": {
-            "type": [
-                "object",
-                "null"
-            ],
+    "$schema": "http://www.redfishspecification.org/schema",
+    "definitions":{
+        "Resource":{
+            "title": "Resource.0.94.0",
+            "type": "object",
             "additionalProperties": false,
             "properties": {
+                "@odata.context": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataContext"
+                },
+                "@odata.id": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
+                },
+                "@odata.type": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataType"
+                },
+                "Id": {
+                    "type": "string"
+                },
+                "Description": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Provides a description of this resource and is used for commonality  in the schema definitions.",
+                    "specification": "This object represents the Description property.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification."
+                },
+                "Name": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "The name of the resource or array element.",
+                    "specification": "This object represents the Name property.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification. The value of this string shall be of the format for the reserved word *Name*."
+                },
+                "Modified": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "The date-time stamp that the object was last modified.",
+                    "specification": "This object represents the Modified property.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification. The value of this string shall be of the format for the reserved word *Modified*."
+                },
+                "Oem": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
 
+                    },
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "specification": "The value of this string shall be of the format for the reserved word *Oem*."
+                }
             },
-            "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
-            "specification": "The value of this string shall be of the format for the reserved word *Oem*."
-        }
-    },
-    "required": [
-        "Name"
-    ]
+            "required": [
+                "Name"
+            ]        
 },
-"ResourceCollection":{
-    "title": "Resource.0.94.0",
-    "type": "object",
-    "additionalProperties": false,
-    "properties": {
-        "@odata.context": {
-            "type": "string"
-        },
-        "@odata.id": {
-            "type": "string",
-            "format": "uri",
-            "description": "A reference to a resource"
-        },
-        "@odata.type": {
-            "type": "string"
-        },
-        "Description": {
-            "type": [
-                "string",
-                "null"
-            ],
-            "readonly": true,
-            "description": "Provides a description of this resource and is used for commonality  in the schema definitions.",
-            "specification": "This object represents the Description property.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification."
-        },
-        "Name": {
-            "type": "string",
-            "readonly": true,
-            "description": "The name of the resource or array element.",
-            "specification": "This object represents the Name property.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification. The value of this string shall be of the format for the reserved word *Name*."
-        },
-        "Modified": {
-            "type": "string",
-            "readonly": true,
-            "description": "The date-time stamp that the object was last modified.",
-            "specification": "This object represents the Modified property.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification. The value of this string shall be of the format for the reserved word *Modified*."
-        },
-        "Oem": {
-            "type": [
-                "object",
-                "null"
-            ],
+        "ResourceCollection":{
+            "title": "Resource.0.94.0",
+            "type": "object",
             "additionalProperties": false,
             "properties": {
+                "@odata.context": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataContext"
+                },
+                "@odata.id": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
+                },
+                "@odata.type": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataType"
+                },
+                "Description": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Description"
+                },
+                "Name": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Name"
+                },
+                "Modified": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Modified"
+                },
+                "Oem": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
 
-            },
-            "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
-            "specification": "The value of this string shall be of the format for the reserved word *Oem*."
-        }
-    },
-    "required": [
-        "Name"
-    ]
+                    },
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "specification": "The value of this string shall be of the format for the reserved word *Oem*."
+                }
+            }        
 }
-}
+    }
 
 }
+
