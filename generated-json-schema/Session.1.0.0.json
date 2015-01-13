@@ -30,7 +30,7 @@
                 "Oem": {
                     "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem",
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
-                    "specification": "The value of this string shall be of the format for the reserved word *Oem*."
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "UserName": {
                     "type": [
@@ -65,7 +65,7 @@
                         "Members": {
                             "type": "array",
                             "properties": {
-                                "odataId" :{
+                                "@odata.id" :{
                                     "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
                                 }
                             },

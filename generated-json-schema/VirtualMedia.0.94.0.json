@@ -30,7 +30,7 @@
                 "Oem": {
                     "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem",
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
-                    "specification": "The value of this string shall be of the format for the reserved word *Oem*."
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "ImageName": {
                     "type": [
@@ -39,7 +39,7 @@
                     ],
                     "readonly": true,
                     "description": "The current image name",
-                    "specification": "The value of this property shall be the name of the image. "
+                    "longDescription": "The value of this property shall be the name of the image. "
                 },
                 "Image": {
                     "type": [
@@ -48,7 +48,7 @@
                     ],
                     "readonly": true,
                     "description": "A URI providing the location of the selected image",
-                    "specification": "The value of this string shall be an URI.  A null value indicated no image connection."
+                    "longDescription": "The value of this string shall be an URI.  A null value indicated no image connection."
                 },
                 "MediaTypes": {
                     "type": "array",
@@ -69,7 +69,7 @@
                     },
                     "readonly": true,
                     "description": "This is the media types supported as virtual media.",
-                    "specification": "The values of this array shall be the supported media types for this connection."
+                    "longDescription": "The values of this array shall be the supported media types for this connection."
                 },
                 "ConnectedVia": {
                     "type": [
@@ -88,7 +88,7 @@
                     },
                     "readonly": true,
                     "description": "Current virtual media connection methods",
-                    "specification": "The value of this property shall indicate the current connection method from a client to the virtual media represented by this resource.  A value of NotConnected shall indicate no connection is present.  A value of URI shall indicate that a remote connection via a URI reference type is being used. "
+                    "longDescription": "The value of this property shall indicate the current connection method from a client to the virtual media represented by this resource.  A value of NotConnected shall indicate no connection is present.  A value of URI shall indicate that a remote connection via a URI reference type is being used. "
                 },
                 "Inserted": {
                     "type": [
@@ -97,7 +97,7 @@
                     ],
                     "readonly": true,
                     "description": "Indicates if virtual media is inserted in the virtual device.",
-                    "specification": "The value of this property shall be used to indicate if media is present in the virtual media device.  This is usually only applicable to remoting of devices and not for image virtual media usage. "
+                    "longDescription": "The value of this property shall be used to indicate if media is present in the virtual media device.  This is usually only applicable to remoting of devices and not for image virtual media usage. "
                 },
                 "WriteProtected": {
                     "type": [
@@ -106,11 +106,11 @@
                     ],
                     "readonly": true,
                     "description": "Indicates the media is write protected.",
-                    "specification": "The value of this property shall be used to indicate if the remote device media prevents writing to that media. "
+                    "longDescription": "The value of this property shall be used to indicate if the remote device media prevents writing to that media. "
                 }
             },
             "description": "This is the schema definition for the Virtual Media Service.",
-            "specification": "This resource shall be used to represent a virtual media service for an SPMA implementation."        
+            "longDescription": "This resource shall be used to represent a virtual media service for an SPMA implementation."        
 },
         "VirtualMediaCollection":{
             "title": "VirtualMedia.0.94.0",
@@ -138,7 +138,7 @@
                 "Oem": {
                     "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem",
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
-                    "specification": "The value of this string shall be of the format for the reserved word *Oem*."
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Links": {
                     "type": [
@@ -150,7 +150,7 @@
                         "Members": {
                             "type": "array",
                             "properties": {
-                                "odataId" :{
+                                "@odata.id" :{
                                     "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
                                 }
                             },

@@ -18,7 +18,7 @@
                     },
                     "readonly": true,
                     "description": "Contains any CorrelatableIDs that represents components of this reduncancy set.",
-                    "specification": "The value of this property shall contain CorrelattableIDs that are components of this redundancy set.  The correlatableID values can be JSON Pointers or UEFI identifiers, for example."
+                    "longDescription": "The value of this property shall contain CorrelattableIDs that are components of this redundancy set.  The correlatableID values can be JSON Pointers or UEFI identifiers, for example."
                 },
                 "Name": {
                     "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Name"
@@ -47,7 +47,7 @@
                     },
                     "readonly": true,
                     "description": "This is the redundancy mode of the group.",
-                    "specification": "The value of this property shall contain the information about the redundancy mode of this manager.  Failover shall indicate a master/slave type arrangement where status indicates the role of this manager.  N+1 indicates an arrangement where the redundancy set needs MaxNumSupported-1 number of resources in order to be redundant.  Load Balanced indicates all members are active. However, there functionality is not independent of each other. Their functioning is determined by some sort of load balancing algorithm. Sparing is implied (i.e. each member can be a spare for the other(s). Sparing indicates that all members are active and are aware of each others. However, their functionality is independent until failover. Each member can be a spare for the other(s). Limited Sparing indicates that all members are active, and they may or may not be aware of each and they are not spares for each other."
+                    "longDescription": "The value of this property shall contain the information about the redundancy mode of this manager.  Failover shall indicate a master/slave type arrangement where status indicates the role of this manager.  N+1 indicates an arrangement where the redundancy set needs MaxNumSupported-1 number of resources in order to be redundant.  Load Balanced indicates all members are active. However, there functionality is not independent of each other. Their functioning is determined by some sort of load balancing algorithm. Sparing is implied (i.e. each member can be a spare for the other(s). Sparing indicates that all members are active and are aware of each others. However, their functionality is independent until failover. Each member can be a spare for the other(s). Limited Sparing indicates that all members are active, and they may or may not be aware of each and they are not spares for each other."
                 },
                 "MaxNumSupported": {
                     "type": [
@@ -56,7 +56,7 @@
                     ],
                     "readonly": true,
                     "description": "This is the maximum number of members allowable for this particular managers redundancy, including this manager.",
-                    "specification": "The value of this property shall contain the maximum number of members allowed in the redundancy group."
+                    "longDescription": "The value of this property shall contain the maximum number of members allowed in the redundancy group."
                 },
                 "MinNumNeeded": {
                     "type": [
@@ -65,7 +65,7 @@
                     ],
                     "readonly": true,
                     "description": "This is the minumum number of managers needed for this manager to be redundant.",
-                    "specification": "The value of this property shall contain the maximum number of members allowed in the redundancy group for the current redundancy mode to still be fault tolerant."
+                    "longDescription": "The value of this property shall contain the maximum number of members allowed in the redundancy group for the current redundancy mode to still be fault tolerant."
                 },
                 "Status": {
                     "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Status"
@@ -82,7 +82,7 @@
                 "Status"
             ],
             "description": "This is the redundancy definition to be used in other resource schemas.",
-            "specification": "This object represents the Redundancy element property.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification.  The value of this string shall be of the format for the reserved word *Redundancy*"    
+            "longDescription": "This object represents the Redundancy element property.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification.  The value of this string shall be of the format for the reserved word *Redundancy*"    
 }
     }
 

@@ -1,3 +1,4 @@
+Content-type: application/json
 {
     "$schema": "http://www.redfishspecification.org/schema",
     "definitions":{
@@ -27,7 +28,7 @@
                 "Oem": {
                     "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem",
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
-                    "specification": "The value of this string shall be of the format for the reserved word *Oem*."
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Links": {
                     "type": [
@@ -39,7 +40,7 @@
                         "Members": {
                             "type": "array",
                             "properties": {
-                                "odataId" :{
+                                "@odata.id" :{
                                     "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
                                 }
                             },
@@ -81,13 +82,13 @@
                 "Oem": {
                     "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem",
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
-                    "specification": "The value of this string shall be of the format for the reserved word *Oem*."
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "MaxNumberOfRecords": {
                     "type": "integer",
                     "readonly": true,
                     "description": "The maximum number of log entries this service can have.",
-                    "specification": "The value of this property shall be the maximum numbers of LogEntry resources in the Entries collection for this service."
+                    "longDescription": "The value of this property shall be the maximum numbers of LogEntry resources in the Entries collection for this service."
                 },
                 "OverWritePolicy": {
                     "type": "string",
@@ -103,7 +104,7 @@
                     },
                     "readonly": true,
                     "description": "The overwrite policy for this service that takes place when the log is full.",
-                    "specification": "The value of this property shall indicate the policy of the log service when the MaxNumberOfRecords has been reached. Unknown indicates the log overwrite policy is unknown. WrapsWhenFull indicates that the log overwrites its entries with new entries when the log has reached its maximum capacity. NeverOverwrites indicates that the log never overwrites its entries by the new entries and ceases logging when the limit has been reached."
+                    "longDescription": "The value of this property shall indicate the policy of the log service when the MaxNumberOfRecords has been reached. Unknown indicates the log overwrite policy is unknown. WrapsWhenFull indicates that the log overwrites its entries with new entries when the log has reached its maximum capacity. NeverOverwrites indicates that the log never overwrites its entries by the new entries and ceases logging when the limit has been reached."
                 },
                 "Links": {
                     "type": "object",
@@ -115,13 +116,13 @@
                         "Entries": {
                             "type": "array",
                             "properties": {
-                                "odataId" :{
+                                "@odata.id" :{
                                     "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
                                 }
                             },
                             "readonly": true,
                             "description": "References to the log entry collection.",
-                            "specification": "The value of this property shall reference a collection of LogEntry resources."
+                            "longDescription": "The value of this property shall reference a collection of LogEntry resources."
                         }
                     },
                     "readonly": true,
@@ -147,7 +148,7 @@
                 }
             },
             "description": "This resource represents the log service for the resource or service to which it is associated.",
-            "specification": "This resource shall be used to represent a log service for an SPMA implementation."        
+            "longDescription": "This resource shall be used to represent a log service for an SPMA implementation."        
 }
     }
 

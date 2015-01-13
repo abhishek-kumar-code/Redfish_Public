@@ -3,5 +3,6 @@
     "type": "string",
     "format": "uri",
     "readonly": true,
-    "specification": "The value of this property shall be an absolute URL that specifies the type of the resource and it shall be of the form defined in the SPMF specification."
+    "longDescription": "The value of this property shall be an absolute URL that specifies the type of the resource and it shall be of the form defined in the SPMF specification."
 }
+
