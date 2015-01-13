@@ -152,9 +152,27 @@ pre {
   border-radius: 3px;
 }
 
+#footer, #last-footer-fix {
+  display: none;
+}
+
 @media print {
   #toc-header, #toc + h2 {
     page-break-before: always;
+    break-before: page;
+  }
+
+  #last-footer-fix {
+    display: block !important;
+    break-before: page;
+    text-align: center;
+
+    &:after {
+      height: 81em;
+      line-height: 81em;
+      font-weight: bold;
+      content: "This page intentionally left blank";
+    }
   }
 
   #header {
@@ -173,7 +191,7 @@ pre {
 
   #footer {
     text-align: center;
-    display: table-footer-group;
+    display: table-footer-group !important;
 
     div {
       border-top: .1em solid #444;
