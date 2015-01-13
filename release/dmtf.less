@@ -152,9 +152,34 @@ pre {
   border-radius: 3px;
 }
 
+#footer, #last-footer-fix {
+  display: none;
+}
+
 @media print {
-  #toc-header, #toc + h2 {
+  #toc-header, #toc ~ h2 {
     page-break-before: always;
+    break-before: page;
+  }
+
+  #toc ~ h2 ~ h2 {
+    page-break-before: auto;
+    break-before: auto;
+  }
+
+  #last-footer-fix {
+    display: block !important;
+    page-break-before: always;
+    break-before: page;
+    text-align: center;
+    line-height: 37em;
+    height: 37em;
+    border: none;
+
+    &:after {
+      font-weight: bold;
+      content: "This page intentionally left blank";
+    }
   }
 
   #header {
@@ -173,7 +198,7 @@ pre {
 
   #footer {
     text-align: center;
-    display: table-footer-group;
+    display: table-footer-group !important;
 
     div {
       border-top: .1em solid #444;

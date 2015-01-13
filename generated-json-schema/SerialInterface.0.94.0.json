@@ -102,7 +102,7 @@
                 }
             },
             "description": "This schema defines an asynchronous serial interface resource.",
-            "specification": "This resource shall be used to represent serial resources as part of the Redfish specification."        
+            "longDescription": "This resource shall be used to represent serial resources as part of the Redfish specification."        
 },
         "SerialInterfaceCollection":{
             "title": "SerialInterface.0.94.0",
@@ -128,7 +128,7 @@
                         "Members": {
                             "type": "array",
                             "properties": {
-                                "odataId" :{
+                                "@odata.id" :{
                                     "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
                                 }
                             },

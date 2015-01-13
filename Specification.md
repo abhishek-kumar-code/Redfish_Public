@@ -5,7 +5,7 @@ DocType: Specification
 DocVersion: '0.94.0'
 DocStatus: Work in Progress
 DocConfidentiality: – Not a DMTF Standard – DMTF Confidential
-expiration: '2014-10-31'
+expiration: '2015-07-24'
 released: false
 copyright: '2014-2015'
 ---
@@ -2235,6 +2235,7 @@ The file where the events are written, one or more messages per event should at 
 
 # Change Log
 
-| Version | Date      | Description
-| 0.94.0  | 2015-13-1 | Initial merge of 0.91 and 0.92 versions 
+| Version | Date      | Description                             |
+| ---     | ---       | ---                                     |
+| 0.94.0  | 2015-13-1 | Initial merge of 0.91 and 0.92 versions |
 

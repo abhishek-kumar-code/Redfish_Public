@@ -24,13 +24,13 @@
                         "Settings": {
                             "type": "object",
                             "properties": {
-                                "odataId" :{
+                                "@odata.id" :{
                                     "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
                                 }
                             },
                             "readonly": true,
                             "description": "This is a reference to the settings for this manager if this resource has a separate object used to change the current settings of this manager.",
-                            "specification": "If this resource is not PATCHable, this is the link to PATCHable Settings for the resource.  This reference shall be to a resource of Type ManagerNetworkService."
+                            "longDescription": "If this resource is not PATCHable, this is the link to PATCHable Settings for the resource.  This reference shall be to a resource of Type ManagerNetworkService."
                         }
                     },
                     "readonly": true,
@@ -43,7 +43,7 @@
                     ],
                     "readonly": true,
                     "description": "This is the host name for this manager obtained by DNS without any of the domain information added on",
-                    "specification": "The value of this property shall contain the host name without any domain information."
+                    "longDescription": "The value of this property shall contain the host name without any domain information."
                 },
                 "FQDN": {
                     "type": [
@@ -52,7 +52,7 @@
                     ],
                     "readonly": true,
                     "description": "This is the fully qualified domain name for the manager obtained by DNS including the host name and top-level domain name.",
-                    "specification": "The value of this property shall contain the fully qualified domain name for the manager."
+                    "longDescription": "The value of this property shall contain the fully qualified domain name for the manager."
                 },
                 "SessionTimeoutMinutes": {
                     "type": [
@@ -61,7 +61,7 @@
                     ],
                     "readonly": true,
                     "description": "Indicates the Session Timeout for SPMA Sessions.",
-                    "specification": "This object is used for all protocol session timeouts for the manager. This includes the SPMA service if this Manager is responsible for that service."
+                    "longDescription": "This object is used for all protocol session timeouts for the manager. This includes the SPMA service if this Manager is responsible for that service."
                 },
                 "HTTP": {
                     "type": "object",
@@ -73,7 +73,7 @@
                                 "null"
                             ],
                             "description": "Indicates if the protocol is enabled or disabled",
-                            "specification": "The value of this property shall contain the enabled status of the protocol.  The value shall be true if enabled and false if disabled."
+                            "longDescription": "The value of this property shall contain the enabled status of the protocol.  The value shall be true if enabled and false if disabled."
                         },
                         "Port": {
                             "type": [
@@ -81,7 +81,7 @@
                                 "null"
                             ],
                             "description": "Indicates the protocol port.",
-                            "specification": "The value of this property shall contain the port assigned for the protocol."
+                            "longDescription": "The value of this property shall contain the port assigned for the protocol."
                         }
                     },
                     "readonly": true,
@@ -97,7 +97,7 @@
                                 "null"
                             ],
                             "description": "Indicates if the protocol is enabled or disabled",
-                            "specification": "The value of this property shall contain the enabled status of the protocol.  The value shall be true if enabled and false if disabled."
+                            "longDescription": "The value of this property shall contain the enabled status of the protocol.  The value shall be true if enabled and false if disabled."
                         },
                         "Port": {
                             "type": [
@@ -105,7 +105,7 @@
                                 "null"
                             ],
                             "description": "Indicates the protocol port.",
-                            "specification": "The value of this property shall contain the port assigned for the protocol."
+                            "longDescription": "The value of this property shall contain the port assigned for the protocol."
                         }
                     },
                     "readonly": true,
@@ -121,7 +121,7 @@
                                 "null"
                             ],
                             "description": "Indicates if the protocol is enabled or disabled",
-                            "specification": "The value of this property shall contain the enabled status of the protocol.  The value shall be true if enabled and false if disabled."
+                            "longDescription": "The value of this property shall contain the enabled status of the protocol.  The value shall be true if enabled and false if disabled."
                         },
                         "Port": {
                             "type": [
@@ -129,7 +129,7 @@
                                 "null"
                             ],
                             "description": "Indicates the protocol port.",
-                            "specification": "The value of this property shall contain the port assigned for the protocol."
+                            "longDescription": "The value of this property shall contain the port assigned for the protocol."
                         }
                     },
                     "readonly": true,
@@ -145,7 +145,7 @@
                                 "null"
                             ],
                             "description": "Indicates if the protocol is enabled or disabled",
-                            "specification": "The value of this property shall contain the enabled status of the protocol.  The value shall be true if enabled and false if disabled."
+                            "longDescription": "The value of this property shall contain the enabled status of the protocol.  The value shall be true if enabled and false if disabled."
                         },
                         "Port": {
                             "type": [
@@ -153,7 +153,7 @@
                                 "null"
                             ],
                             "description": "Indicates the protocol port.",
-                            "specification": "The value of this property shall contain the port assigned for the protocol."
+                            "longDescription": "The value of this property shall contain the port assigned for the protocol."
                         }
                     },
                     "readonly": true,
@@ -169,7 +169,7 @@
                                 "null"
                             ],
                             "description": "Indicates if the protocol is enabled or disabled",
-                            "specification": "The value of this property shall contain the enabled status of the protocol.  The value shall be true if enabled and false if disabled."
+                            "longDescription": "The value of this property shall contain the enabled status of the protocol.  The value shall be true if enabled and false if disabled."
                         },
                         "Port": {
                             "type": [
@@ -177,7 +177,7 @@
                                 "null"
                             ],
                             "description": "Indicates the protocol port.",
-                            "specification": "The value of this property shall contain the port assigned for the protocol."
+                            "longDescription": "The value of this property shall contain the port assigned for the protocol."
                         }
                     },
                     "readonly": true,
@@ -193,7 +193,7 @@
                                 "null"
                             ],
                             "description": "Indicates how often the Multicast is done from this service for SSDP.",
-                            "specification": "The value of this property shall contain the time interval, in seconds, between transmissions of the multicast NOTIFY ALIVE message.  A setting of 0 seconds shall disable this functionality.  The recommended value is 600 seconds."
+                            "longDescription": "The value of this property shall contain the time interval, in seconds, between transmissions of the multicast NOTIFY ALIVE message.  A setting of 0 seconds shall disable this functionality.  The recommended value is 600 seconds."
                         },
                         "NotifyTTL": {
                             "type": [
@@ -201,7 +201,7 @@
                                 "null"
                             ],
                             "description": "Indicates the time to live hop count for SSDPs Notify messages.",
-                            "specification": "The value of this property shall contain the Time-To-Live hop count used for multicast NOTIFY messages.  The recommended value is 5."
+                            "longDescription": "The value of this property shall contain the Time-To-Live hop count used for multicast NOTIFY messages.  The recommended value is 5."
                         },
                         "NotifyIPv6Scope": {
                             "type": [
@@ -219,7 +219,7 @@
                                 "Organization": "SSDP Notify messages are sent to addresses in the IPv6 Local Organization scope"
                             },
                             "description": "Indicates the scope for the IPv6 Notify messages for SSDP.",
-                            "specification": "The value of this property shall contain the IPv6 scope used for multicast NOTIFY messages.  The valid enumerations are a subset of the available IPv6 Scope types."
+                            "longDescription": "The value of this property shall contain the IPv6 scope used for multicast NOTIFY messages.  The valid enumerations are a subset of the available IPv6 Scope types."
                         }
                     },
                     "readonly": true,
@@ -235,7 +235,7 @@
                                 "null"
                             ],
                             "description": "Indicates if the protocol is enabled or disabled",
-                            "specification": "The value of this property shall contain the enabled status of the protocol.  The value shall be true if enabled and false if disabled."
+                            "longDescription": "The value of this property shall contain the enabled status of the protocol.  The value shall be true if enabled and false if disabled."
                         },
                         "Port": {
                             "type": [
@@ -243,7 +243,7 @@
                                 "null"
                             ],
                             "description": "Indicates the protocol port.",
-                            "specification": "The value of this property shall contain the port assigned for the protocol."
+                            "longDescription": "The value of this property shall contain the port assigned for the protocol."
                         }
                     },
                     "readonly": true,
@@ -259,7 +259,7 @@
                                 "null"
                             ],
                             "description": "Indicates if the protocol is enabled or disabled",
-                            "specification": "The value of this property shall contain the enabled status of the protocol.  The value shall be true if enabled and false if disabled."
+                            "longDescription": "The value of this property shall contain the enabled status of the protocol.  The value shall be true if enabled and false if disabled."
                         },
                         "Port": {
                             "type": [
@@ -267,7 +267,7 @@
                                 "null"
                             ],
                             "description": "Indicates the protocol port.",
-                            "specification": "The value of this property shall contain the port assigned for the protocol."
+                            "longDescription": "The value of this property shall contain the port assigned for the protocol."
                         }
                     },
                     "readonly": true,
@@ -283,7 +283,7 @@
                                 "null"
                             ],
                             "description": "Indicates if the protocol is enabled or disabled",
-                            "specification": "The value of this property shall contain the enabled status of the protocol.  The value shall be true if enabled and false if disabled."
+                            "longDescription": "The value of this property shall contain the enabled status of the protocol.  The value shall be true if enabled and false if disabled."
                         },
                         "Port": {
                             "type": [
@@ -291,7 +291,7 @@
                                 "null"
                             ],
                             "description": "Indicates the protocol port.",
-                            "specification": "The value of this property shall contain the port assigned for the protocol."
+                            "longDescription": "The value of this property shall contain the port assigned for the protocol."
                         }
                     },
                     "readonly": true,
@@ -302,7 +302,7 @@
                 }
             },
             "description": "This resource is used to obtain or modify the network services managed by a given manager.",
-            "specification": "This object shall be used to represent the network service settings for the manager."        
+            "longDescription": "This object shall be used to represent the network service settings for the manager."        
 }
 }
 

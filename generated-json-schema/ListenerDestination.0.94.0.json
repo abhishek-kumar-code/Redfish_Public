@@ -1,7 +1,57 @@
-Content-type: application/json
 {
     "$schema": "http://www.redfishspecification.org/schema",
     "definitions":{
+        "ListenerDestinationCollection":{
+            "title": "ListenerDestination.0.94.0",
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataContext"
+                },
+                "@odata.id": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
+                },
+                "@odata.type": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataType"
+                },
+                "Description": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Description"
+                },
+                "Name": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Name"
+                },
+                "Modified": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Modified"
+                },
+                "Oem": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem",
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+                },
+                "Links": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                        "Members": {
+                            "type": "array",
+                            "properties": {
+                                "@odata.id" :{
+                                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
+                                }
+                            },
+                            "readonly": true,
+                            "description": "Contains the members of this collection."
+                        }
+                    },
+                    "readonly": true,
+                    "description": "Contains links to other resources that are related to this resource."
+                }
+            }        
+},
         "ListenerDestination":{
             "title": "ListenerDestination.0.94.0",
             "type": "object",
@@ -31,13 +81,13 @@ Content-type: application/json
                 "Oem": {
                     "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem",
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
-                    "specification": "The value of this string shall be of the format for the reserved word *Oem*."
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Destination": {
                     "type": "string",
                     "readonly": true,
                     "description": "The URI of the destination listener service.",
-                    "specification": "This property shall contain a URI to the destination where the events will be sent."
+                    "longDescription": "This property shall contain a URI to the destination where the events will be sent."
                 },
                 "HttpHeaders": {
                     "type": "array",
@@ -57,7 +107,7 @@ Content-type: application/json
                         "description": "The value of the HTTP header is the property value.  The header name is the property name."
                     },
                     "description": "This is for setting HTTP headers, such as authorization information.  This object will be null on a GET.",
-                    "specification": "This property shall contain an object consisting of the names and values of of HTTP header to be included with every event POST to the Listener Destination.  This property shall be null on a GET."
+                    "longDescription": "This property shall contain an object consisting of the names and values of of HTTP header to be included with every event POST to the Listener Destination.  This property shall be null on a GET."
                 },
                 "EventTypes": {
                     "type": "array",
@@ -84,7 +134,7 @@ Content-type: application/json
                 "TTLCount": {
                     "type": "integer",
                     "description": "The number of TTLUnits until this listener destination subscription expires.  It may be renewed prior to expire to reset the Time to Live counter.  The value 999999 is reserved to mean a perpetual subscription.",
-                    "specification": "This property shall contain the Time To Live Count.  A value of 999999 shall indicate that this is a persistent connection."
+                    "longDescription": "This property shall contain the Time To Live Count.  A value of 999999 shall indicate that this is a persistent connection."
                 },
                 "TTLUnits": {
                     "type": "string",
@@ -99,12 +149,12 @@ Content-type: application/json
                         "days": "Time to Live (TTL) in Days"
                     },
                     "description": "The time unit used to measure the subscription time of this listener destination.  This is the units for TTLCount and is used to express the subscription lifetime of the listener destination.",
-                    "specification": "This property shall contain the units of the expressed TTLCount."
+                    "longDescription": "This property shall contain the units of the expressed TTLCount."
                 },
                 "Context": {
                     "type": "string",
                     "description": "A client-supplied string that is stored with the listener destination subscription.",
-                    "specification": "This property shall contain a client supplied context that will remain with the connection through the connections lifetime."
+                    "longDescription": "This property shall contain a client supplied context that will remain with the connection through the connections lifetime."
                 },
                 "Protocol": {
                     "type": "string",
@@ -113,7 +163,7 @@ Content-type: application/json
                     ],
                     "readonly": true,
                     "description": "The protocol type of the listener connection.",
-                    "specification": "This property shall contain the protocol type that the event will use for sending the event to the destination.  A value of SPMA shall be used to indicate that the event type shall adhere to that defined in the SPMA specification."
+                    "longDescription": "This property shall contain the protocol type that the event will use for sending the event to the destination.  A value of SPMA shall be used to indicate that the event type shall adhere to that defined in the SPMA specification."
                 },
                 "Links": {
                     "type": "object",
@@ -125,57 +175,6 @@ Content-type: application/json
                     },
                     "readonly": true,
                     "description": "The links object contains the links to other resources that are related to this resource."
-                }
-            }        
-},
-        "ListenerDestinationCollection":{
-            "title": "ListenerDestination.0.94.0",
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "@odata.context": {
-                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataContext"
-                },
-                "@odata.id": {
-                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
-                },
-                "@odata.type": {
-                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataType"
-                },
-                "Description": {
-                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Description"
-                },
-                "Name": {
-                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Name"
-                },
-                "Modified": {
-                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Modified"
-                },
-                "Oem": {
-                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem",
-                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
-                    "specification": "The value of this string shall be of the format for the reserved word *Oem*."
-                },
-                "Links": {
-                    "type": [
-                        "object",
-                        "null"
-                    ],
-                    "additionalProperties": false,
-                    "properties": {
-                        "Members": {
-                            "type": "array",
-                            "properties": {
-                                "odataId" :{
-                                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
-                                }
-                            },
-                            "readonly": true,
-                            "description": "Contains the members of this collection."
-                        }
-                    },
-                    "readonly": true,
-                    "description": "Contains links to other resources that are related to this resource."
                 }
             }        
 }
