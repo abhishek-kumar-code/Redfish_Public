@@ -188,7 +188,7 @@ SPMA does not enable a client to read a Resource Tree and write it to another SP
 
 Additionally, not all SPMA resources are simple read/write resources.  Implementations may follow other interaction patterns discussed later.  As an example, user credentials or certificates cannot simply be read from one service and transplanted to another.  Another example is the use of Setting Data instead of writing to the same resource that was read from.
 
-There is no raw/pass-thru interface as part of the standard.  This standard only represents the out-of-band access method.
+There is no raw/pass-thru interface as part of the standard.
 
 ### Service Elements
 
