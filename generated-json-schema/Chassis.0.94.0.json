@@ -1,315 +1,320 @@
 {
-"$schema": "http://www.redfishspecification.org/schema",
-"definitions":{
-"Chassis":{
-    "title": "Chassis.0.94.0",
-    "type": "object",
-    "additionalProperties": false,
-    "properties": {
-        "@odata.context": {
-            "type": "string"
-        },
-        "@odata.id": {
-            "type": "string",
-            "format": "uri",
-            "description": "A reference to a resource"
-        },
-        "@odata.type": {
-            "type": "string"
-        },
-        "Id": {
-            "type": "string"
-        },
-        "Description": {
-            "type": [
-                "string",
-                "null"
-            ],
-            "readonly": true,
-            "description": "Provides a description of this resource and is used for commonality  in the schema definitions.",
-            "specification": "This object represents the Description property.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification."
-        },
-        "Name": {
-            "type": "string",
-            "readonly": true,
-            "description": "The name of the resource or array element.",
-            "specification": "This object represents the Name property.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification. The value of this string shall be of the format for the reserved word *Name*."
-        },
-        "Modified": {
-            "type": "string",
-            "readonly": true,
-            "description": "The date-time stamp that the object was last modified.",
-            "specification": "This object represents the Modified property.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification. The value of this string shall be of the format for the reserved word *Modified*."
-        },
-        "Oem": {
-            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem",
-            "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
-            "specification": "The value of this string shall be of the format for the reserved word *Oem*."
-        },
-        "ChassisType": {
-            "type": "string",
-            "enum": [
-                "Rack",
-                "Blade",
-                "Enclosure",
-                "StandAlone",
-                "RackMount",
-                "Card",
-                "Cartridge",
-                "Row",
-                "Pod",
-                "Expansion",
-                "Sidecar",
-                "Zone",
-                "Sled",
-                "Shelf",
-                "Other"
-            ],
-            "enumDescriptions": {
-                "Rack": "An equipment rack, typically a 19-inch wide freestanding unit",
-                "Blade": "An enclosed or semi-enclosed, typically vertically-oriented, system chassis which must be plugged into a multi-system chassis to function normally",
-                "Enclosure": "A generic term for a chassis that does not fit any other description",
-                "StandAlone": "A single, free-standing system, commonly called a tower or desktop chassis",
-                "RackMount": "A single system chassis designed specifically for mounting in an equipment rack",
-                "Card": "A loose device or circuit board intended to be installed in a system or other enclosure",
-                "Cartridge": "A small self-contained system intended to be plugged into a multi-system chassis",
-                "Row": "A collection of equipment racks",
-                "Pod": "A collection of equipment racks in a large, likely transportable, container",
-                "Expansion": "A chassis which expands the capabilities or capacity of another chassis",
-                "Sidecar": "A chassis that mates mechanically with another chassis to expand its capabilities or capacity",
-                "Zone": "A logical division or portion of a physical chassis that contains multiple devices or systems that cannot be physically separated",
-                "Sled": "An enclosed or semi-enclosed, system chassis which must be plugged into a multi-system chassis to function normally similar to a blade type chassis.",
-                "Shelf": "An enclosed or semi-enclosed, typically horizontally-oriented, system chassis which must be plugged into a multi-system chassis to function normally",
-                "Other": "A chassis that does not fit any of these definitions"
-            },
-            "readonly": true,
-            "description": "This property indicates the type of physical form factor of this resource.",
-            "specification": "ChassisType shall indicate the physical form factor for the type of chassis."
-        },
-        "Manufacturer": {
-            "type": [
-                "string",
-                "null"
-            ],
-            "readonly": true,
-            "description": "This is the manufacturer of this chassis.",
-            "specification": "The value of this property shall be the name of the organization responsible for producing the chassis. This organization might be the entity from whom the chassis is purchased, but this is not necessarily true."
-        },
-        "Model": {
-            "type": [
-                "string",
-                "null"
-            ],
-            "readonly": true,
-            "description": "This is the model number for the chassis.",
-            "specification": "The value of this property shall be the name by which the manufacturer generally refers to the chassis."
-        },
-        "SKU": {
-            "type": [
-                "string",
-                "null"
-            ],
-            "readonly": true,
-            "description": "This is the SKU for this chassis.",
-            "specification": "The value of this property shall be the stock-keeping unit number for this chassis."
-        },
-        "SerialNumber": {
-            "type": [
-                "string",
-                "null"
-            ],
-            "readonly": true,
-            "description": "This is the serial number for this chassis.",
-            "specification": "The value of this property shall be a manufacturer-allocated number used to identify the chassis."
-        },
-        "Version": {
-            "type": [
-                "string",
-                "null"
-            ],
-            "readonly": true,
-            "description": "This is the version of this chassis.",
-            "specification": "The value of this property shall be a string that indicates the producers or manufacturer's version of the chassis."
-        },
-        "PartNumber": {
-            "type": [
-                "string",
-                "null"
-            ],
-            "readonly": true,
-            "description": "This is the part number of this chassis.",
-            "specification": "The value of this property shall be a part number assigned by the organization that is responsible for producing or manufacturing the chassis."
-        },
-        "AssetTag": {
-            "type": [
-                "string",
-                "null"
-            ],
-            "description": "This is a user assigned asset tag for this chassis.",
-            "specification": "The value of this property shall be an identifying string used to track the chassis for inventory purposes."
-        },
-        "IndicatorLED": {
-            "type": [
-                "string",
-                "null"
-            ],
-            "enum": [
-                "Unknown",
-                "Lit",
-                "Blinking",
-                "Off"
-            ],
-            "enumDescriptions": {
-                "Unknown": "The state of the Indicator LED cannot be determined.",
-                "Lit": "The Indicator LED is lit.",
-                "Blinking": "The Indicator LED is blinking.",
-                "Off": "The Indicator LED is off."
-            },
-            "description": "This is the indicator LED for the chassis, used to identify the chassis.  This LED can be manipulated by the user.",
-            "specification": "This value of this property shall contain the indicator light state for the indicator light associated with this system."
-        },
-        "Links": {
+    "$schema": "http://www.redfishspecification.org/schema",
+    "definitions":{
+        "ChassisCollection":{
+            "title": "Chassis.0.94.0",
             "type": "object",
             "additionalProperties": false,
             "properties": {
+                "@odata.context": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataContext"
+                },
+                "@odata.id": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
+                },
+                "@odata.type": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataType"
+                },
+                "Description": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Description"
+                },
+                "Name": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Name"
+                },
+                "Modified": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Modified"
+                },
                 "Oem": {
-                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem"
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem",
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "specification": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
-                "LogService@odata.navigationLink": {
-                    "type": "string",
-                    "format": "uri",
+                "Links": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                        "Members": {
+                            "type": "array",
+                            "properties": {
+                                "odataId" :{
+                                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
+                                }
+                            },
+                            "readonly": true,
+                            "description": "Contains the members of this collection."
+                        }
+                    },
                     "readonly": true,
-                    "description": "A reference to the logs for this chassis.",
-                    "specification": "The value of this property shall be a link to a collection LogServices."
-                },
-                "ComputerSystems@odata.navigationLink": {
-                    "type": "string",
-                    "format": "uri",
-                    "readonly": true,
-                    "description": "An array of references to the computer systems contained in this chassis.  This will only reference ComputerSystems that are directly and wholly contained in this chassis.",
-                    "specification": "The value of this property shall be a reference to the resource that this physical container is associated with and shall reference a resource of type ComputerSystem.  If a ComputerSystem is also referenced in a Chassis that is referenced in a Contains link from this resource, that ComputerSystem shall not be referenced in this Chassis."
-                },
-                "ManagedBy@odata.navigationLink": {
-                    "type": "string",
-                    "format": "uri",
-                    "readonly": true,
-                    "description": "An array of references to the managers contained in this chassis.",
-                    "specification": "The value of this property shall be a reference to the resource that manages this chassis and shall reference a resource of type Manager."
-                },
-                "ThermalMetrics@odata.navigationLink": {
-                    "type": "string",
-                    "format": "uri",
-                    "readonly": true,
-                    "description": "A reference to the thermal metrics (fans, cooling, sensors) for this chassis.",
-                    "specification": "The value of this property shall be a reference to the resource that represents the thermal characteristics of this chassis and shall be of type ThermalMetrics."
-                },
-                "PowerMetrics@odata.navigationLink": {
-                    "type": "string",
-                    "format": "uri",
-                    "readonly": true,
-                    "description": "A reference to the power metrics (power supplies, power policies, sensors) for this chassis.",
-                    "specification": "The value of this property shall be a reference to the resource that represents the power characteristics of this chassis and shall be of type PowerMetrics."
-                },
-                "MiscMetrics@odata.navigationLink": {
-                    "type": "string",
-                    "format": "uri",
-                    "readonly": true,
-                    "description": "A reference to the various other metrics (presence, etc.) for this chassis.",
-                    "specification": "The value of this property shall be a reference to the resource that represents the non-power and non-thermal characteristics of this chassis and shall be of type MiscMetrics."
-                },
-                "ContainedBy@odata.navigationLink": {
-                    "type": "string",
-                    "format": "uri",
-                    "readonly": true,
-                    "description": "A reference to the chassis that this chassis is contained by.",
-                    "specification": "The value of this property shall be a reference to the resource that represents the chassis that contains this chassis and shall be of type Chassis."
-                },
-                "Contains@odata.navigationLink": {
-                    "type": "string",
-                    "format": "uri",
-                    "readonly": true,
-                    "description": "An array of references to any other chassis that this chassis has in it.",
-                    "specification": "The value of this property shall be a reference to the resource that represents the chassis that this chassis contains and shall be of type Chassis or another Collection."
+                    "description": "Contains links to other resources that are related to this resource."
                 }
-            },
-            "readonly": true,
-            "description": "The links object contains the links to other resources that are related to this resource."
-        },
-        "Status": {
-            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Status"
-        }
-    },
-    "required": [
-        "Name",
-        "ChassisType"
-    ],
-    "description": "This is the schema definition for the Chassis resource.  It represents the properties for physical components for any system.  This one object is intended to represent racks, rackmount servers, blades, standalone, modular systems, enclosures, and all other containers.  The non-cpu/device centric parts of the schema are all accessed either directly or indirectly through this resource.",
-    "specification": "This resource shall be used to represent a chassis or other physical enclosure for an SPMA implementation."
+            }        
 },
-"ChassisCollection":{
-    "title": "Chassis.0.94.0",
-    "type": "object",
-    "additionalProperties": false,
-    "properties": {
-        "@odata.context": {
-            "type": "string"
-        },
-        "@odata.id": {
-            "type": "string",
-            "format": "uri",
-            "description": "A reference to a resource"
-        },
-        "@odata.type": {
-            "type": "string"
-        },
-        "Description": {
-            "type": [
-                "string",
-                "null"
-            ],
-            "readonly": true,
-            "description": "Provides a description of this resource and is used for commonality  in the schema definitions.",
-            "specification": "This object represents the Description property.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification."
-        },
-        "Name": {
-            "type": "string",
-            "readonly": true,
-            "description": "The name of the resource or array element.",
-            "specification": "This object represents the Name property.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification. The value of this string shall be of the format for the reserved word *Name*."
-        },
-        "Modified": {
-            "type": "string",
-            "readonly": true,
-            "description": "The date-time stamp that the object was last modified.",
-            "specification": "This object represents the Modified property.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification. The value of this string shall be of the format for the reserved word *Modified*."
-        },
-        "Oem": {
-            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem",
-            "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
-            "specification": "The value of this string shall be of the format for the reserved word *Oem*."
-        },
-        "Links": {
-            "type": [
-                "object",
-                "null"
-            ],
+        "Chassis":{
+            "title": "Chassis.0.94.0",
+            "type": "object",
             "additionalProperties": false,
             "properties": {
-                "Members@odata.navigationLink": {
+                "@odata.context": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataContext"
+                },
+                "@odata.id": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
+                },
+                "@odata.type": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataType"
+                },
+                "Id": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Id"
+                },
+                "Description": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Description"
+                },
+                "Name": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Name"
+                },
+                "Modified": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Modified"
+                },
+                "Oem": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem",
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "specification": "The value of this string shall be of the format for the reserved word *Oem*."
+                },
+                "ChassisType": {
                     "type": "string",
-                    "format": "uri",
+                    "enum": [
+                        "Rack",
+                        "Blade",
+                        "Enclosure",
+                        "StandAlone",
+                        "RackMount",
+                        "Card",
+                        "Cartridge",
+                        "Row",
+                        "Pod",
+                        "Expansion",
+                        "Sidecar",
+                        "Zone",
+                        "Sled",
+                        "Shelf",
+                        "Other"
+                    ],
+                    "enumDescriptions": {
+                        "Rack": "An equipment rack, typically a 19-inch wide freestanding unit",
+                        "Blade": "An enclosed or semi-enclosed, typically vertically-oriented, system chassis which must be plugged into a multi-system chassis to function normally",
+                        "Enclosure": "A generic term for a chassis that does not fit any other description",
+                        "StandAlone": "A single, free-standing system, commonly called a tower or desktop chassis",
+                        "RackMount": "A single system chassis designed specifically for mounting in an equipment rack",
+                        "Card": "A loose device or circuit board intended to be installed in a system or other enclosure",
+                        "Cartridge": "A small self-contained system intended to be plugged into a multi-system chassis",
+                        "Row": "A collection of equipment racks",
+                        "Pod": "A collection of equipment racks in a large, likely transportable, container",
+                        "Expansion": "A chassis which expands the capabilities or capacity of another chassis",
+                        "Sidecar": "A chassis that mates mechanically with another chassis to expand its capabilities or capacity",
+                        "Zone": "A logical division or portion of a physical chassis that contains multiple devices or systems that cannot be physically separated",
+                        "Sled": "An enclosed or semi-enclosed, system chassis which must be plugged into a multi-system chassis to function normally similar to a blade type chassis.",
+                        "Shelf": "An enclosed or semi-enclosed, typically horizontally-oriented, system chassis which must be plugged into a multi-system chassis to function normally",
+                        "Other": "A chassis that does not fit any of these definitions"
+                    },
                     "readonly": true,
-                    "description": "Contains the members of this collection."
+                    "description": "This property indicates the type of physical form factor of this resource.",
+                    "specification": "ChassisType shall indicate the physical form factor for the type of chassis."
+                },
+                "Manufacturer": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "This is the manufacturer of this chassis.",
+                    "specification": "The value of this property shall be the name of the organization responsible for producing the chassis. This organization might be the entity from whom the chassis is purchased, but this is not necessarily true."
+                },
+                "Model": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "This is the model number for the chassis.",
+                    "specification": "The value of this property shall be the name by which the manufacturer generally refers to the chassis."
+                },
+                "SKU": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "This is the SKU for this chassis.",
+                    "specification": "The value of this property shall be the stock-keeping unit number for this chassis."
+                },
+                "SerialNumber": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "This is the serial number for this chassis.",
+                    "specification": "The value of this property shall be a manufacturer-allocated number used to identify the chassis."
+                },
+                "Version": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "This is the version of this chassis.",
+                    "specification": "The value of this property shall be a string that indicates the producers or manufacturer's version of the chassis."
+                },
+                "PartNumber": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "This is the part number of this chassis.",
+                    "specification": "The value of this property shall be a part number assigned by the organization that is responsible for producing or manufacturing the chassis."
+                },
+                "AssetTag": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "This is a user assigned asset tag for this chassis.",
+                    "specification": "The value of this property shall be an identifying string used to track the chassis for inventory purposes."
+                },
+                "IndicatorLED": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "enum": [
+                        "Unknown",
+                        "Lit",
+                        "Blinking",
+                        "Off"
+                    ],
+                    "enumDescriptions": {
+                        "Unknown": "The state of the Indicator LED cannot be determined.",
+                        "Lit": "The Indicator LED is lit.",
+                        "Blinking": "The Indicator LED is blinking.",
+                        "Off": "The Indicator LED is off."
+                    },
+                    "description": "This is the indicator LED for the chassis, used to identify the chassis.  This LED can be manipulated by the user.",
+                    "specification": "This value of this property shall contain the indicator light state for the indicator light associated with this system."
+                },
+                "Links": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "Oem": {
+                            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem"
+                        },
+                        "LogService": {
+                            "type": "object",
+                            "properties": {
+                                "odataId" :{
+                                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
+                                }
+                            },
+                            "readonly": true,
+                            "description": "A reference to the logs for this chassis.",
+                            "specification": "The value of this property shall be a link to a collection LogServices."
+                        },
+                        "ComputerSystems": {
+                            "type": "array",
+                            "properties": {
+                                "odataId" :{
+                                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
+                                }
+                            },
+                            "readonly": true,
+                            "description": "An array of references to the computer systems contained in this chassis.  This will only reference ComputerSystems that are directly and wholly contained in this chassis.",
+                            "specification": "The value of this property shall be a reference to the resource that this physical container is associated with and shall reference a resource of type ComputerSystem.  If a ComputerSystem is also referenced in a Chassis that is referenced in a Contains link from this resource, that ComputerSystem shall not be referenced in this Chassis."
+                        },
+                        "ManagedBy": {
+                            "type": "array",
+                            "properties": {
+                                "odataId" :{
+                                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
+                                }
+                            },
+                            "readonly": true,
+                            "description": "An array of references to the managers contained in this chassis.",
+                            "specification": "The value of this property shall be a reference to the resource that manages this chassis and shall reference a resource of type Manager."
+                        },
+                        "ThermalMetrics": {
+                            "type": "object",
+                            "properties": {
+                                "odataId" :{
+                                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
+                                }
+                            },
+                            "readonly": true,
+                            "description": "A reference to the thermal metrics (fans, cooling, sensors) for this chassis.",
+                            "specification": "The value of this property shall be a reference to the resource that represents the thermal characteristics of this chassis and shall be of type ThermalMetrics."
+                        },
+                        "PowerMetrics": {
+                            "type": "object",
+                            "properties": {
+                                "odataId" :{
+                                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
+                                }
+                            },
+                            "readonly": true,
+                            "description": "A reference to the power metrics (power supplies, power policies, sensors) for this chassis.",
+                            "specification": "The value of this property shall be a reference to the resource that represents the power characteristics of this chassis and shall be of type PowerMetrics."
+                        },
+                        "MiscMetrics": {
+                            "type": "object",
+                            "properties": {
+                                "odataId" :{
+                                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
+                                }
+                            },
+                            "readonly": true,
+                            "description": "A reference to the various other metrics (presence, etc.) for this chassis.",
+                            "specification": "The value of this property shall be a reference to the resource that represents the non-power and non-thermal characteristics of this chassis and shall be of type MiscMetrics."
+                        },
+                        "ContainedBy": {
+                            "type": "object",
+                            "properties": {
+                                "odataId" :{
+                                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
+                                }
+                            },
+                            "readonly": true,
+                            "description": "A reference to the chassis that this chassis is contained by.",
+                            "specification": "The value of this property shall be a reference to the resource that represents the chassis that contains this chassis and shall be of type Chassis."
+                        },
+                        "Contains": {
+                            "type": "array",
+                            "properties": {
+                                "odataId" :{
+                                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
+                                }
+                            },
+                            "readonly": true,
+                            "description": "An array of references to any other chassis that this chassis has in it.",
+                            "specification": "The value of this property shall be a reference to the resource that represents the chassis that this chassis contains and shall be of type Chassis or another Collection."
+                        }
+                    },
+                    "readonly": true,
+                    "description": "The links object contains the links to other resources that are related to this resource."
+                },
+                "Status": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Status"
                 }
             },
-            "readonly": true,
-            "description": "Contains links to other resources that are related to this resource."
-        }
-    },
-    "required": [
-        "Name"
-    ]
+            "required": [
+                "ChassisType"
+            ],
+            "description": "This is the schema definition for the Chassis resource.  It represents the properties for physical components for any system.  This one object is intended to represent racks, rackmount servers, blades, standalone, modular systems, enclosures, and all other containers.  The non-cpu/device centric parts of the schema are all accessed either directly or indirectly through this resource.",
+            "specification": "This resource shall be used to represent a chassis or other physical enclosure for an SPMA implementation."        
 }
-}
+    }
 
 }
+

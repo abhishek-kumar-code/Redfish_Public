@@ -1,32 +1,8 @@
 {
-"$schema": "http://www.redfishspecification.org/schema",
-"definitions":{
-"FWVersion":{
-    "type": "object",
-    "additionalProperties": false,
-    "properties": {
-        "VersionString": {
-            "type": [
-                "string",
-                "null"
-            ],
-            "readonly": true,
-            "description": "This string represents the version of the firmware image.",
-            "specification": "This property shall represent the manufacturer version of the firmware image."
-        }
-    },
-    "readonly": true,
-    "description": "This object contains information about the version of a firmware image."
-},
-"FirmwareRevision":{
-    "type": "object",
-    "additionalProperties": false,
-    "properties": {
-        "Current": {
-            "type": [
-                "object",
-                "null"
-            ],
+    "$schema": "http://www.redfishspecification.org/schema",
+    "definitions":{
+    "FWVersion":{
+            "type": "object",
             "additionalProperties": false,
             "properties": {
                 "VersionString": {
@@ -40,15 +16,40 @@
                 }
             },
             "readonly": true,
-            "description": "This object contains information about the version of a firmware image."
-        }
-    },
-    "required": [
-        "Current"
-    ],
-    "description": "This is the schema definition for the Firmware Version.  It is used as part of other schema.",
-    "specification": "This resource shall be used to represent the version of firmware for an SPMA implementation."
+            "description": "This object contains information about the version of a firmware image."    
+},
+    "FirmwareRevision":{
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "Current": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                        "VersionString": {
+                            "type": [
+                                "string",
+                                "null"
+                            ],
+                            "readonly": true,
+                            "description": "This string represents the version of the firmware image.",
+                            "specification": "This property shall represent the manufacturer version of the firmware image."
+                        }
+                    },
+                    "readonly": true,
+                    "description": "This object contains information about the version of a firmware image."
+                }
+            },
+            "required": [
+                "Current"
+            ],
+            "description": "This is the schema definition for the Firmware Version.  It is used as part of other schema.",
+            "specification": "This resource shall be used to represent the version of firmware for an SPMA implementation."    
 }
-}
+    }
 
 }
+

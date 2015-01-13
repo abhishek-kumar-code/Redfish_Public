@@ -1,0 +1,142 @@
+{
+    "$schema": "http://www.redfishspecification.org/schema",
+    "definitions":{
+        "SimpleStorageCollection":{
+            "title": "SimpleStorage.0.94.0",
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataContext"
+                },
+                "@odata.id": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
+                },
+                "@odata.type": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataType"
+                },
+                "Description": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Description"
+                },
+                "Name": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Name"
+                },
+                "Modified": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Modified"
+                },
+                "Oem": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem",
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "specification": "The value of this string shall be of the format for the reserved word *Oem*."
+                },
+                "Links": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                        "Members": {
+                            "type": "array",
+                            "properties": {
+                                "odataId" :{
+                                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
+                                }
+                            },
+                            "readonly": true,
+                            "description": "Contains the members of this collection."
+                        }
+                    },
+                    "readonly": true,
+                    "description": "Contains links to other resources that are related to this resource."
+                }
+            }        
+},
+        "SimpleStorage":{
+            "title": "SimpleStorage.0.94.0",
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataContext"
+                },
+                "@odata.id": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
+                },
+                "@odata.type": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataType"
+                },
+                "Id": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Id"
+                },
+                "Description": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Description"
+                },
+                "Name": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Name"
+                },
+                "Modified": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Modified"
+                },
+                "Oem": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem",
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "specification": "The value of this string shall be of the format for the reserved word *Oem*."
+                },
+                "UefiDevicePath": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The UEFI device path used to access this storage controller.",
+                    "specification": "This property shall contain the UEFI device path used to identify and locate the specific storage controller"
+                },
+                "Devices": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                            "Oem": {
+                                "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem"
+                            },
+                            "Name": {
+                                "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Name"
+                            },
+                            "Status": {
+                                "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Status"
+                            },
+                            "Manufacturer": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ],
+                                "readonly": true,
+                                "description": "The name of the manufacturer of this device",
+                                "specification": "This property shall indicate the name of the manufacturer of this storage device."
+                            },
+                            "Model": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ],
+                                "readonly": true,
+                                "description": "The product model number of this device",
+                                "specification": "This property shall indicate the model information as provided by the manufacturer of this storage device."
+                            }
+                        }
+                    },
+                    "readonly": true,
+                    "description": "A list of storage devices associated with this resource"
+                },
+                "Status": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Status"
+                }
+            },
+            "description": "This is the schema definition for the Simple Storage resource.  It represents the properties of a storage controller and its directly-attached devices."        
+}
+    }
+
+}
+

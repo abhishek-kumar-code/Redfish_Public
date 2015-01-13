@@ -107,7 +107,7 @@ The following additional abbreviations are used in this document.
 | HTTPS  | Hypertext Transfer Protocol over TLS                |
 | IP     | Internet Protocol                                   |
 | JSON   | JavaScript Object Notation                          |
-| KVM    | Keyboard, Video, Mouse                              |
+| KVM-IP | Keyboard, Video, Mouse redirection over IP          |
 | NIC    | Network Interface Card                              |
 | PCI    | Peripheral Component Interconnect                   |
 | XSS    | Cross-Site Scripting                                |
@@ -132,7 +132,6 @@ The following design tenets govern the design of the Scalable Platform Managemen
 * Functionality must be usable by non-computer-science professionals
 * Data definitions as obvious in context as possible
 * Opaque view of implementation architecture
-* "Top 10" end user needs are focus of first round schema definition.
 
 #### REST based
 
@@ -143,7 +142,6 @@ There are several reasons to define a RESTful interface:
 * It is on a trajectory to become a prevalent access method in the industry.
 * It is easy to learn and easy to document.
 * There are a number of toolkits & development environments that can be used for REST.
-* The embedded footprint (both memory and cpu) is less than for other   interfaces.
 * It supports data model semantics and maps easily to the common CRUD operations.
 * It fits with our design principle of simplicity.
 * It is equally applicable to software application space as it is for embedded environments thus enabling convergence and sharing of code of components within the management ecosystem.
@@ -188,7 +186,7 @@ SPMA does not enable a client to read a Resource Tree and write it to another SP
 
 Additionally, not all SPMA resources are simple read/write resources.  Implementations may follow other interaction patterns discussed later.  As an example, user credentials or certificates cannot simply be read from one service and transplanted to another.  Another example is the use of Setting Data instead of writing to the same resource that was read from.
 
-There is no raw/pass-thru interface as part of the standard.  This standard only represents the out-of-band access method.
+There is no raw/pass-thru interface as part of the standard.
 
 ### Service Elements
 
@@ -224,7 +222,7 @@ For more information, see the section on [Discovery](#user-content-discovery-1)
 
 #### Remote Access Support
 
-A wide variety of remote access and redirection services are supported in this architecture.  Critical to out-of-band environments are mechanisms to support Serial Console access, Keyboard Video and Mouse (KVM-IP), Command Shell (i.e. Command Line interface) and remote Virtual Media.  Support for Serial Console, Command Shell, KVM-IP and Virtual Media are all encompassed in this standard and are expressed in the SPMA Schema.  This standard does not define the protocols or access mechanisms for accessing those devices and services.  The SPMA Schema provides for the representation and configuration of those services, establishment of connections to enable those services and the operational status of those services.  However, the specification of the protocols themselves are outside the scope of this specification.
+A wide variety of remote access and redirection services are supported in this architecture.  Critical to out-of-band environments are mechanisms to support Serial Console access, Keyboard Video and Mouse re-direction (KVM-IP), Command Shell (i.e. Command Line interface) and remote Virtual Media.  Support for Serial Console, Command Shell, KVM-IP and Virtual Media are all encompassed in this standard and are expressed in the SPMA Schema.  This standard does not define the protocols or access mechanisms for accessing those devices and services.  The SPMA Schema provides for the representation and configuration of those services, establishment of connections to enable those services and the operational status of those services.  However, the specification of the protocols themselves are outside the scope of this specification.
 
 ### Security
 
@@ -324,11 +322,12 @@ Some resources may be available in more than one type of representation. The typ
 
 In HTTP messages the media type is specified in the Content-Type header. A client can tell a service that it wants the response to be sent using certain media types by setting the HTTP Accept header to a list of the acceptable media types.
 
-In order to provide a common base for interoperability, all resources will be made available using the JSON media type "application/json".
-
+* All resources shall be made available using the JSON media type
+  "application/json".
 * SPMA services shall make every resource available in a representation based on JSON, as specified in [RFC4627](#user-content-RFC4627). Receivers shall not reject a message because it is encoded in JSON, and shall offer at least one response representation based on JSON. An implementation may offer additional representations using non-JSON media types.
+* Responses to GET requests may be compressed.  Clients shall be prepared to accept a Content-Encoding of gzip in a Response to a GET.
 
-Responses to GET requests may be compressed.  Clients shall be prepared to accept a Content-Encoding of gzip in a Response to a GET. 
+
 
 #### ETags
 
@@ -877,6 +876,7 @@ The links property shall also include an [Oem property](#user-content-oem-proper
 A reference to a single resource is returned as a JSON object containing a single [resource-identifier-property](#user-content-resource-identifier-property) whose name is the name of the relationship and whose value is the uri of the referenced resource.
 
 ~~~json
+{
 "Links" : {
 	"ManagedBy": { 
 		"@odata.id":"/rest/v1/Chassis/Encl1"
@@ -889,6 +889,7 @@ A reference to a single resource is returned as a JSON object containing a singl
 A reference to a collection of zero ore more related resources is returned as an array of JSON objects whose name is the name of the relationship. Each member of the array is a JSON object containing a single [resource-identifier-property](#user-content-resource-identifier-property) whose value is the uri of the referenced resource.
 
 ~~~json
+{
 "Links" : {
 	"Contains" : [
 		{
@@ -918,7 +919,7 @@ For example:
     "Acme:Type2": {
       "@odata.type": "http://acme.com/schema/extensions.v.v.v#acme.acmetype2",
       "AcmeSpecificProperty2": "value"
-    }
+    },
     "EID:232": {
       "@odata.type": "http://eid.org/schemas/eid232.v.v.v",
       "EnterpriseSpecificProperty": "value"

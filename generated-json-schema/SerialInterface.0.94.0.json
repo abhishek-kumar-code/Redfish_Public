@@ -1,146 +1,147 @@
 {
-"$schema": "http://www.redfishspecification.org/schema",
-"definitions":{
-"SerialInterfaceCollection":{
-    "title": "SerialInterface.0.94.0",
-    "type": "object",
-    "additionalProperties": false,
-    "properties": {
-        "@odata.context": {
-            "type": "string"
-        },
-        "@odata.id": {
-            "type": "string",
-            "format": "uri",
-            "description": "A reference to a resource"
-        },
-        "@odata.type": {
-            "type": "string"
-        },
-        "Links": {
-            "type": [
-                "object",
-                "null"
-            ],
+    "$schema": "http://www.redfishspecification.org/schema",
+    "definitions":{
+        "SerialInterface":{
+            "title": "SerialInterface.0.94.0",
+            "type": "object",
             "additionalProperties": false,
             "properties": {
-                "Members@odata.navigationLink": {
+                "@odata.context": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataContext"
+                },
+                "@odata.id": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
+                },
+                "@odata.type": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataType"
+                },
+                "SignalType": {
                     "type": "string",
-                    "format": "uri",
-                    "readonly": true,
-                    "description": "Contains the members of this collection."
+                    "enum": [
+                        "Rs232",
+                        "Rs485"
+                    ],
+                    "description": "The type of signal used for the communication connection - RS232 or RS485.",
+                    "description": "This property shall indicate the type of serial signalling that will be utilized for the serial connection."
+                },
+                "BitRate": {
+                    "type": "string",
+                    "enum": [
+                        "1200",
+                        "2400",
+                        "4800",
+                        "9600",
+                        "19200",
+                        "38400",
+                        "57600",
+                        "115200",
+                        "230400"
+                    ],
+                    "description": "The receive and transmit rate of data flow, typically in bits-per-second (bps), over the serial connection.",
+                    "description": "This property shall indicate the transmit and receive speed of the serial connection."
+                },
+                "Parity": {
+                    "type": "string",
+                    "enum": [
+                        "None",
+                        "Even",
+                        "Odd",
+                        "Mark",
+                        "Space"
+                    ],
+                    "description": "The type of parity used by the sender and receiver in order to detect errors over the serial connection.",
+                    "description": "This property shall indicate parity information for a serial connection."
+                },
+                "DataBits": {
+                    "type": "string",
+                    "enum": [
+                        "5",
+                        "6",
+                        "7",
+                        "8"
+                    ],
+                    "description": "The number of data bits that will follow the start bit over the serial connection.",
+                    "description": "This property shall indicate number of data bits for the serial connection."
+                },
+                "StopBits": {
+                    "type": "string",
+                    "enum": [
+                        "1",
+                        "2"
+                    ],
+                    "description": "The period of time before the next start bit is transmitted.",
+                    "description": "This property shall indicate the stop bits for the serial connection."
+                },
+                "FlowControl": {
+                    "type": "string",
+                    "enum": [
+                        "None",
+                        "Software",
+                        "Hardware"
+                    ],
+                    "enumDescriptions": {
+                        "None": "No flow control imposed",
+                        "Software": "XON/XOFF in-band flow control imposed",
+                        "Hardware": "Out of band flow control imposed"
+                    },
+                    "description": "The type of flow control, if any, that will be imposed on the serial connection.",
+                    "description": "This property shall indicate the flow control mechanism for the serial connection."
+                },
+                "PinOut": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "enum": [
+                        "Cisco",
+                        "Cyclades",
+                        "Digi"
+                    ],
+                    "description": "The physical pin configuration needed for a serial connector.",
+                    "description": "This property shall indicate the physical pin out for the serial connection."
                 }
             },
-            "readonly": true,
-            "description": "Contains links to other resources that are related to this resource."
-        }
-    }
+            "description": "This schema defines an asynchronous serial interface resource.",
+            "specification": "This resource shall be used to represent serial resources as part of the Redfish specification."        
 },
-"SerialInterface":{
-    "title": "SerialInterface.0.94.0",
-    "type": "object",
-    "additionalProperties": false,
-    "properties": {
-        "@odata.context": {
-            "type": "string"
-        },
-        "@odata.id": {
-            "type": "string",
-            "format": "uri",
-            "description": "A reference to a resource"
-        },
-        "@odata.type": {
-            "type": "string"
-        },
-        "SignalType": {
-            "type": "string",
-            "enum": [
-                "Rs232",
-                "Rs485"
-            ],
-            "description": "The type of signal used for the communication connection - RS232 or RS485.",
-            "description": "This property shall indicate the type of serial signalling that will be utilized for the serial connection."
-        },
-        "BitRate": {
-            "type": "string",
-            "enum": [
-                "1200",
-                "2400",
-                "4800",
-                "9600",
-                "19200",
-                "38400",
-                "57600",
-                "115200",
-                "230400"
-            ],
-            "description": "The receive and transmit rate of data flow, typically in bits-per-second (bps), over the serial connection.",
-            "description": "This property shall indicate the transmit and receive speed of the serial connection."
-        },
-        "Parity": {
-            "type": "string",
-            "enum": [
-                "None",
-                "Even",
-                "Odd",
-                "Mark",
-                "Space"
-            ],
-            "description": "The type of parity used by the sender and receiver in order to detect errors over the serial connection.",
-            "description": "This property shall indicate parity information for a serial connection."
-        },
-        "DataBits": {
-            "type": "string",
-            "enum": [
-                "5",
-                "6",
-                "7",
-                "8"
-            ],
-            "description": "The number of data bits that will follow the start bit over the serial connection.",
-            "description": "This property shall indicate number of data bits for the serial connection."
-        },
-        "StopBits": {
-            "type": "string",
-            "enum": [
-                "1",
-                "2"
-            ],
-            "description": "The period of time before the next start bit is transmitted.",
-            "description": "This property shall indicate the stop bits for the serial connection."
-        },
-        "FlowControl": {
-            "type": "string",
-            "enum": [
-                "None",
-                "Software",
-                "Hardware"
-            ],
-            "enumDescriptions": {
-                "None": "No flow control imposed",
-                "Software": "XON/XOFF in-band flow control imposed",
-                "Hardware": "Out of band flow control imposed"
-            },
-            "description": "The type of flow control, if any, that will be imposed on the serial connection.",
-            "description": "This property shall indicate the flow control mechanism for the serial connection."
-        },
-        "PinOut": {
-            "type": [
-                "string",
-                "null"
-            ],
-            "enum": [
-                "Cisco",
-                "Cyclades",
-                "Digi"
-            ],
-            "description": "The physical pin configuration needed for a serial connector.",
-            "description": "This property shall indicate the physical pin out for the serial connection."
-        }
-    },
-    "description": "This schema defines an asynchronous serial interface resource.",
-    "specification": "This resource shall be used to represent serial resources as part of the Redfish specification."
+        "SerialInterfaceCollection":{
+            "title": "SerialInterface.0.94.0",
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataContext"
+                },
+                "@odata.id": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
+                },
+                "@odata.type": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataType"
+                },
+                "Links": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                        "Members": {
+                            "type": "array",
+                            "properties": {
+                                "odataId" :{
+                                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
+                                }
+                            },
+                            "readonly": true,
+                            "description": "Contains the members of this collection."
+                        }
+                    },
+                    "readonly": true,
+                    "description": "Contains links to other resources that are related to this resource."
+                }
+            }        
 }
-}
+    }
 
 }
+

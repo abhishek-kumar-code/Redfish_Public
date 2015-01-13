@@ -1,99 +1,87 @@
 {
-"$schema": "http://www.redfishspecification.org/schema",
-"TaskService":{
-    "title": "TaskService.0.94.0",
-    "type": "object",
-    "additionalProperties": false,
-    "properties": {
-        "@odata.context": {
-            "type": "string"
-        },
-        "@odata.id": {
-            "type": "string",
-            "format": "uri",
-            "description": "A reference to a resource"
-        },
-        "@odata.type": {
-            "type": "string"
-        },
-        "Id": {
-            "type": "string"
-        },
-        "Description": {
-            "type": [
-                "string",
-                "null"
-            ],
-            "readonly": true,
-            "description": "Provides a description of this resource and is used for commonality  in the schema definitions.",
-            "specification": "This object represents the Description property.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification."
-        },
-        "Name": {
-            "type": "string",
-            "readonly": true,
-            "description": "The name of the resource or array element.",
-            "specification": "This object represents the Name property.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification. The value of this string shall be of the format for the reserved word *Name*."
-        },
-        "Modified": {
-            "type": "string",
-            "readonly": true,
-            "description": "The date-time stamp that the object was last modified.",
-            "specification": "This object represents the Modified property.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification. The value of this string shall be of the format for the reserved word *Modified*."
-        },
-        "Oem": {
-            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem",
-            "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
-            "specification": "The value of this string shall be of the format for the reserved word *Oem*."
-        },
-        "MaxNumberOfTasks": {
-            "type": "integer",
-            "readonly": true,
-            "description": "The maximum number of tasks this service can track.",
-            "specification": "The value of this property shall indicate the maximum number of tasks that this service can support."
-        },
-        "CompletedTaskOverWritePolicy": {
-            "type": "string",
-            "enum": [
-                "Manual",
-                "Oldest"
-            ],
-            "enumDescriptions": {
-                "Manual": "Completed tasks are not automatically overwritten",
-                "Oldest": "Oldest completed tasks are overwritten"
-            },
-            "readonly": true,
-            "description": "Overwrite policy of completed tasks",
-            "specification": "The value of this property shall indicate if completed tasks are overwritten should the task service need to track more tasks but the MaxNumberOfTasks has been reached.  Never indicates that the service never overwrites entries by new entries thus causing attempts to spawn tasks to fail.  Oldest indicates that the services overwrites the oldest completed task with a new task when the service has reached its maximum capacity."
-        },
-        "LifeCycleEventOnTaskStateChange": {
-            "type": "boolean",
-            "readonly": true,
-            "description": "Send an Event upon Task State Change.",
-            "specification": "The value of this property, if set to true, shall indicate that the service shall send a LifeCycle event to ListenerDestinations registered for such events upon change of task state."
-        },
-        "Links": {
+    "$schema": "http://www.redfishspecification.org/schema",
+        "TaskService":{
+            "title": "TaskService.0.94.0",
             "type": "object",
             "additionalProperties": false,
             "properties": {
-                "Tasks@odata.navigationLink": {
-                    "type": "string",
-                    "format": "uri",
+                "@odata.context": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataContext"
+                },
+                "@odata.id": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
+                },
+                "@odata.type": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataType"
+                },
+                "Id": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Id"
+                },
+                "Description": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Description"
+                },
+                "Name": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Name"
+                },
+                "Modified": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Modified"
+                },
+                "Oem": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem",
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "specification": "The value of this string shall be of the format for the reserved word *Oem*."
+                },
+                "MaxNumberOfTasks": {
+                    "type": "integer",
                     "readonly": true,
-                    "description": "References to the Tasks collection.",
-                    "specification": "The value of this property shall be a link to a collection of Tasks."
+                    "description": "The maximum number of tasks this service can track.",
+                    "specification": "The value of this property shall indicate the maximum number of tasks that this service can support."
+                },
+                "CompletedTaskOverWritePolicy": {
+                    "type": "string",
+                    "enum": [
+                        "Manual",
+                        "Oldest"
+                    ],
+                    "enumDescriptions": {
+                        "Manual": "Completed tasks are not automatically overwritten",
+                        "Oldest": "Oldest completed tasks are overwritten"
+                    },
+                    "readonly": true,
+                    "description": "Overwrite policy of completed tasks",
+                    "specification": "The value of this property shall indicate if completed tasks are overwritten should the task service need to track more tasks but the MaxNumberOfTasks has been reached.  Never indicates that the service never overwrites entries by new entries thus causing attempts to spawn tasks to fail.  Oldest indicates that the services overwrites the oldest completed task with a new task when the service has reached its maximum capacity."
+                },
+                "LifeCycleEventOnTaskStateChange": {
+                    "type": "boolean",
+                    "readonly": true,
+                    "description": "Send an Event upon Task State Change.",
+                    "specification": "The value of this property, if set to true, shall indicate that the service shall send a LifeCycle event to ListenerDestinations registered for such events upon change of task state."
+                },
+                "Links": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "Tasks": {
+                            "type": "array",
+                            "properties": {
+                                "odataId" :{
+                                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
+                                }
+                            },
+                            "readonly": true,
+                            "description": "References to the Tasks collection.",
+                            "specification": "The value of this property shall be a link to a collection of Tasks."
+                        }
+                    },
+                    "readonly": true,
+                    "description": "The links object contains the links to other resources that are related to this resource."
+                },
+                "Status": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Status"
                 }
             },
-            "readonly": true,
-            "description": "The links object contains the links to other resources that are related to this resource."
-        },
-        "Status": {
-            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Status"
-        }
-    },
-    "required": [
-        "Name"
-    ],
-    "description": "This is the schema definition for the Task Service.  It represents the properties for the service itself and has links to the actual list of tasks.",
-    "specification": "This resource shall be used to represent a task service for an SPMA implementation."
+            "description": "This is the schema definition for the Task Service.  It represents the properties for the service itself and has links to the actual list of tasks.",
+            "specification": "This resource shall be used to represent a task service for an SPMA implementation."        
 }
 }
+
