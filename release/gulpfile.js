@@ -20,7 +20,7 @@ var documentDefaults = {
 }
 
 gulp.task('default', ['css', 'js'], function() {
-  gulp.src(['../Specification.md', '../WhitePaper.md'])
+  gulp.src(['../README*.md', '../Specification.md', '../WhitePaper.md'])
     .pipe(data(function(file, cb) {
       var content = fm(String(file.contents))
       var data = content.attributes

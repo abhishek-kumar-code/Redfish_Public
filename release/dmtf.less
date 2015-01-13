@@ -157,19 +157,26 @@ pre {
 }
 
 @media print {
-  #toc-header, #toc + h2 {
+  #toc-header, #toc ~ h2 {
     page-break-before: always;
     break-before: page;
   }
 
+  #toc ~ h2 ~ h2 {
+    page-break-before: auto;
+    break-before: auto;
+  }
+
   #last-footer-fix {
     display: block !important;
+    page-break-before: always;
     break-before: page;
     text-align: center;
+    line-height: 37em;
+    height: 37em;
+    border: none;
 
     &:after {
-      height: 81em;
-      line-height: 81em;
       font-weight: bold;
       content: "This page intentionally left blank";
     }
