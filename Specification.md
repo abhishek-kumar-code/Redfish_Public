@@ -107,7 +107,7 @@ The following additional abbreviations are used in this document.
 | HTTPS  | Hypertext Transfer Protocol over TLS                |
 | IP     | Internet Protocol                                   |
 | JSON   | JavaScript Object Notation                          |
-| KVM    | Keyboard, Video, Mouse                              |
+| KVM-IP | Keyboard, Video, Mouse redirection over IP          |
 | NIC    | Network Interface Card                              |
 | PCI    | Peripheral Component Interconnect                   |
 | XSS    | Cross-Site Scripting                                |
@@ -224,7 +224,7 @@ For more information, see the section on [Discovery](#user-content-discovery-1)
 
 #### Remote Access Support
 
-A wide variety of remote access and redirection services are supported in this architecture.  Critical to out-of-band environments are mechanisms to support Serial Console access, Keyboard Video and Mouse (KVM-IP), Command Shell (i.e. Command Line interface) and remote Virtual Media.  Support for Serial Console, Command Shell, KVM-IP and Virtual Media are all encompassed in this standard and are expressed in the SPMA Schema.  This standard does not define the protocols or access mechanisms for accessing those devices and services.  The SPMA Schema provides for the representation and configuration of those services, establishment of connections to enable those services and the operational status of those services.  However, the specification of the protocols themselves are outside the scope of this specification.
+A wide variety of remote access and redirection services are supported in this architecture.  Critical to out-of-band environments are mechanisms to support Serial Console access, Keyboard Video and Mouse re-direction (KVM-IP), Command Shell (i.e. Command Line interface) and remote Virtual Media.  Support for Serial Console, Command Shell, KVM-IP and Virtual Media are all encompassed in this standard and are expressed in the SPMA Schema.  This standard does not define the protocols or access mechanisms for accessing those devices and services.  The SPMA Schema provides for the representation and configuration of those services, establishment of connections to enable those services and the operational status of those services.  However, the specification of the protocols themselves are outside the scope of this specification.
 
 ### Security
 
