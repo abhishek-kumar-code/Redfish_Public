@@ -1,98 +1,84 @@
 {
-"$schema": "http://www.redfishspecification.org/schema",
-"definitions":{
-"Session":{
-    "title": "Session.1.0.0",
-    "type": "object",
-    "additionalProperties": false,
-    "properties": {
-        "@odata.context": {
-            "type": "string"
-        },
-        "@odata.id": {
-            "type": "string",
-            "format": "uri",
-            "description": "A reference to a resource"
-        },
-        "@odata.type": {
-            "type": "string"
-        },
-        "Id": {
-            "type": "string"
-        },
-        "Description": {
-            "type": [
-                "string",
-                "null"
-            ],
-            "readonly": true,
-            "description": "Provides a description of this resource and is used for commonality  in the schema definitions.",
-            "specification": "This object represents the Description property.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification."
-        },
-        "Name": {
-            "type": "string",
-            "readonly": true,
-            "description": "The name of the resource or array element.",
-            "specification": "This object represents the Name property.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification. The value of this string shall be of the format for the reserved word *Name*."
-        },
-        "Modified": {
-            "type": "string",
-            "readonly": true,
-            "description": "The date-time stamp that the object was last modified.",
-            "specification": "This object represents the Modified property.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification. The value of this string shall be of the format for the reserved word *Modified*."
-        },
-        "Oem": {
-            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem",
-            "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
-            "specification": "The value of this string shall be of the format for the reserved word *Oem*."
-        },
-        "UserName": {
-            "type": [
-                "string",
-                "null"
-            ],
-            "readonly": true
-        }
-    },
-    "required": [
-        "Name"
-    ]
-},
-"SessionCollection":{
-    "title": "Session.1.0.0",
-    "type": "object",
-    "additionalProperties": false,
-    "properties": {
-        "@odata.context": {
-            "type": "string"
-        },
-        "@odata.id": {
-            "type": "string",
-            "format": "uri",
-            "description": "A reference to a resource"
-        },
-        "@odata.type": {
-            "type": "string"
-        },
-        "Links": {
-            "type": [
-                "object",
-                "null"
-            ],
+    "$schema": "http://www.redfishspecification.org/schema",
+    "definitions":{
+        "Session":{
+            "title": "Session.1.0.0",
+            "type": "object",
             "additionalProperties": false,
             "properties": {
-                "Members@odata.navigationLink": {
-                    "type": "string",
-                    "format": "uri",
-                    "readonly": true,
-                    "description": "Contains the members of this collection."
+                "@odata.context": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataContext"
+                },
+                "@odata.id": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
+                },
+                "@odata.type": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataType"
+                },
+                "Id": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Id"
+                },
+                "Description": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Description"
+                },
+                "Name": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Name"
+                },
+                "Modified": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Modified"
+                },
+                "Oem": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem",
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "specification": "The value of this string shall be of the format for the reserved word *Oem*."
+                },
+                "UserName": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true
                 }
-            },
-            "readonly": true,
-            "description": "Contains links to other resources that are related to this resource."
-        }
+            }        
+},
+        "SessionCollection":{
+            "title": "Session.1.0.0",
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataContext"
+                },
+                "@odata.id": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
+                },
+                "@odata.type": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataType"
+                },
+                "Links": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                        "Members": {
+                            "type": "array",
+                            "properties": {
+                                "odataId" :{
+                                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
+                                }
+                            },
+                            "readonly": true,
+                            "description": "Contains the members of this collection."
+                        }
+                    },
+                    "readonly": true,
+                    "description": "Contains links to other resources that are related to this resource."
+                }
+            }        
+}
     }
-}
-}
 
 }
+

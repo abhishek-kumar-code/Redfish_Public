@@ -1,97 +1,83 @@
 {
-"$schema": "http://www.redfishspecification.org/schema",
-"MessageRegistry":{
-    "title": "Messages.0.94.0",
-    "type": "object",
-    "additionalProperties": false,
-    "properties": {
-        "@odata.context": {
-            "type": "string"
-        },
-        "@odata.id": {
-            "type": "string",
-            "format": "uri",
-            "description": "A reference to a resource"
-        },
-        "@odata.type": {
-            "type": "string"
-        },
-        "Id": {
-            "type": "string"
-        },
-        "Description": {
-            "type": [
-                "string",
-                "null"
-            ],
-            "readonly": true,
-            "description": "Provides a description of this resource and is used for commonality  in the schema definitions.",
-            "specification": "This object represents the Description property.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification."
-        },
-        "Name": {
-            "type": "string",
-            "readonly": true,
-            "description": "The name of the resource or array element.",
-            "specification": "This object represents the Name property.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification. The value of this string shall be of the format for the reserved word *Name*."
-        },
-        "Modified": {
-            "type": "string",
-            "readonly": true,
-            "description": "The date-time stamp that the object was last modified.",
-            "specification": "This object represents the Modified property.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification. The value of this string shall be of the format for the reserved word *Modified*."
-        },
-        "Oem": {
-            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem",
-            "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
-            "specification": "The value of this string shall be of the format for the reserved word *Oem*."
-        },
-        "Language": {
-            "type": "string",
-            "readonly": true,
-            "description": "This is the RFC 5646 compliant language code for the registry.",
-            "specification": "The value of this property shall be a string consisting of an RFC 5646 language code"
-        },
-        "RegistryPrefix": {
-            "type": "string",
-            "readonly": true,
-            "description": "This is the single word prefix used to form a messageID structure.",
-            "specification": "The value of this property shall be the prefix used in messageIDs which uniquely identifies all of the messages in this registry as belonging to this registry."
-        },
-        "Version": {
-            "type": "string",
-            "readonly": true,
-            "description": "This is the message registry version which is used in the middle portion of a messageID.",
-            "specification": "The value of this property shall be the version of this message registry.   The format of this string shall be of the format majorversion.minorversion.errata in compliance with Protocol Version section of the SPMA specification"
-        },
-        "OwningEntity": {
-            "type": "string",
-            "readonly": true,
-            "description": "This is the organization or company that publishes this registry.",
-            "specification": "The value of this property shall be a string that represents the publisher of this registry."
-        },
-        "Messages": {
-            "type": "array",
-            "items": {
-                "type": "object",
-                "additionalProperties": false,
-                "properties": {
+    "$schema": "http://www.redfishspecification.org/schema",
+        "MessageRegistry":{
+            "title": "Messages.0.94.0",
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataContext"
+                },
+                "@odata.id": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
+                },
+                "@odata.type": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataType"
+                },
+                "Id": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Id"
+                },
+                "Description": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Description"
+                },
+                "Name": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Name"
+                },
+                "Modified": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Modified"
+                },
+                "Oem": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem",
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "specification": "The value of this string shall be of the format for the reserved word *Oem*."
+                },
+                "Language": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "This is the RFC 5646 compliant language code for the registry.",
+                    "specification": "The value of this property shall be a string consisting of an RFC 5646 language code"
+                },
+                "RegistryPrefix": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "This is the single word prefix used to form a messageID structure.",
+                    "specification": "The value of this property shall be the prefix used in messageIDs which uniquely identifies all of the messages in this registry as belonging to this registry."
+                },
+                "Version": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "This is the message registry version which is used in the middle portion of a messageID.",
+                    "specification": "The value of this property shall be the version of this message registry.   The format of this string shall be of the format majorversion.minorversion.errata in compliance with Protocol Version section of the SPMA specification"
+                },
+                "OwningEntity": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "This is the organization or company that publishes this registry.",
+                    "specification": "The value of this property shall be a string that represents the publisher of this registry."
+                },
+                "Messages": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
 
+                        }
+                    },
+                    "readonly": true,
+                    "description": "The pattern property indicates that a free-form string is the unique identifier for the message within the registry.",
+                    "specification": "The pattern property shall represent the suffix to be used in the MessageID and shall be unique within this message registry."
                 }
             },
-            "readonly": true,
-            "description": "The pattern property indicates that a free-form string is the unique identifier for the message within the registry.",
-            "specification": "The pattern property shall represent the suffix to be used in the MessageID and shall be unique within this message registry."
-        }
-    },
-    "required": [
-        "Name",
-        "Language",
-        "RegistryPrefix",
-        "Version",
-        "OwningEntity",
-        "Messages"
-    ],
-    "description": "This is the schema definition for all Message Registries.  It represents the properties for the registries themselves.  The MessageID is formed per the SPMA specification.  It consists of the RegistryPrefix concatenated with the version concatenated with the unique identifier for the message registry entry.",
-    "specification": "This resource shall be used to represent a message registry for an SPMA implementation."
+            "required": [
+                "Language",
+                "RegistryPrefix",
+                "Version",
+                "OwningEntity",
+                "Messages"
+            ],
+            "description": "This is the schema definition for all Message Registries.  It represents the properties for the registries themselves.  The MessageID is formed per the SPMA specification.  It consists of the RegistryPrefix concatenated with the version concatenated with the unique identifier for the message registry entry.",
+            "specification": "This resource shall be used to represent a message registry for an SPMA implementation."        
 }
 }
+

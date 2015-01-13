@@ -1,8 +1,8 @@
 {
     "$schema": "http://www.redfishspecification.org/schema",
     "definitions":{
-        "ManagerAccountCollection":{
-            "title": "ManagerAccount.0.94.0",
+        "SimpleStorageCollection":{
+            "title": "SimpleStorage.0.94.0",
             "type": "object",
             "additionalProperties": false,
             "properties": {
@@ -52,8 +52,8 @@
                 }
             }        
 },
-        "ManagerAccount":{
-            "title": "ManagerAccount.0.94.0",
+        "SimpleStorage":{
+            "title": "SimpleStorage.0.94.0",
             "type": "object",
             "additionalProperties": false,
             "properties": {
@@ -83,33 +83,58 @@
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
                     "specification": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
-                "Password": {
+                "UefiDevicePath": {
                     "type": [
                         "string",
                         "null"
                     ],
-                    "description": "This property is used with a PATCH or PUT to write the password for the account.  This property is null on a GET.",
-                    "specification": "The value of this property shall be the password for this account.  The value shall be null for GET requests."
+                    "readonly": true,
+                    "description": "The UEFI device path used to access this storage controller.",
+                    "specification": "This property shall contain the UEFI device path used to identify and locate the specific storage controller"
                 },
-                "UserName": {
-                    "type": "string",
-                    "description": "This property contains the user name for the account.",
-                    "specification": "The value of this property shall be the user name for this account."
-                },
-                "Links": {
-                    "type": "object",
-                    "additionalProperties": false,
-                    "properties": {
-                        "Oem": {
-                            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem"
+                "Devices": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                            "Oem": {
+                                "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem"
+                            },
+                            "Name": {
+                                "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Name"
+                            },
+                            "Status": {
+                                "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Status"
+                            },
+                            "Manufacturer": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ],
+                                "readonly": true,
+                                "description": "The name of the manufacturer of this device",
+                                "specification": "This property shall indicate the name of the manufacturer of this storage device."
+                            },
+                            "Model": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ],
+                                "readonly": true,
+                                "description": "The product model number of this device",
+                                "specification": "This property shall indicate the model information as provided by the manufacturer of this storage device."
+                            }
                         }
                     },
                     "readonly": true,
-                    "description": "The links object contains the links to other resources that are related to this resource."
+                    "description": "A list of storage devices associated with this resource"
+                },
+                "Status": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Status"
                 }
             },
-            "description": "This schema defines a user account to be used in conjunction with a manager.  This will affect the SPMA service connection if this manager is responsible for the SPMA service.",
-            "specification": "This resource shall be used to represent resources that represent the user accounts for the manager."        
+            "description": "This is the schema definition for the Simple Storage resource.  It represents the properties of a storage controller and its directly-attached devices."        
 }
     }
 

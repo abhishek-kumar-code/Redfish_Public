@@ -1,151 +1,139 @@
 {
-"$schema": "http://www.redfishspecification.org/schema",
-"EventService":{
-    "title": "EventService.0.94.0",
-    "type": "object",
-    "additionalProperties": false,
-    "properties": {
-        "@odata.context": {
-            "type": "string"
-        },
-        "@odata.id": {
-            "type": "string",
-            "format": "uri",
-            "description": "A reference to a resource"
-        },
-        "@odata.type": {
-            "type": "string"
-        },
-        "Id": {
-            "type": "string"
-        },
-        "Description": {
-            "type": [
-                "string",
-                "null"
-            ],
-            "readonly": true,
-            "description": "Provides a description of this resource and is used for commonality  in the schema definitions.",
-            "specification": "This object represents the Description property.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification."
-        },
-        "Name": {
-            "type": "string",
-            "readonly": true,
-            "description": "The name of the resource or array element.",
-            "specification": "This object represents the Name property.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification. The value of this string shall be of the format for the reserved word *Name*."
-        },
-        "Modified": {
-            "type": "string",
-            "readonly": true,
-            "description": "The date-time stamp that the object was last modified.",
-            "specification": "This object represents the Modified property.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification. The value of this string shall be of the format for the reserved word *Modified*."
-        },
-        "Oem": {
-            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem",
-            "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
-            "specification": "The value of this string shall be of the format for the reserved word *Oem*."
-        },
-        "Links": {
+    "$schema": "http://www.redfishspecification.org/schema",
+        "EventService":{
+            "title": "EventService.0.94.0",
             "type": "object",
             "additionalProperties": false,
             "properties": {
-                "Oem": {
-                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem"
+                "@odata.context": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataContext"
                 },
-                "Subscriptions@odata.navigationLink": {
-                    "type": "string",
-                    "format": "uri",
-                    "readonly": true,
-                    "description": "This is a reference to a collection of ListenerDestination resources.",
-                    "specification": "The value of this property shall be a link to a collection of ListenerDestinations."
-                }
-            },
-            "readonly": true,
-            "description": "This object contains the links to other resources that are related to this resource."
-        },
-        "DeliveryRetryAttempts": {
-            "type": "integer",
-            "readonly": true,
-            "description": "This is the number of attempts an event posting is retried before the subscription is terminated.",
-            "specification": "The value of this property shall be the number of retrys attempted for any given event to the subscription destination before the subscription is terminated."
-        },
-        "DeliveryRetryIntervalInSeconds": {
-            "type": "integer",
-            "readonly": true,
-            "description": "This represents the number of seconds between retry attempts for sending any given Event",
-            "specification": "The value of this property shall be the interval in seconds between the retry attempts for any given event to the subscription destination."
-        },
-        "SubscriptionRemovalAction": {
-            "type": "string",
-            "enum": [
-                "Remove",
-                "Disable",
-                "Ignore"
-            ],
-            "enumDescriptions": {
-                "Remove": "Remove the subscription",
-                "Disable": "Disable the subscription",
-                "Ignore": "Ignore the condition"
-            },
-            "readonly": true,
-            "description": "This property indicates what the service will do to an event subscription after the number of delivery retry attempts has been exhausted.",
-            "specification": "The value of this property shall be the action the service takes for subscriptions that have the number failed event deliveries equal to the value of DeliveryRetryAttempts fail without any successful event deliveries in between the failed deliveries. 'Remove' defines the subscription is to be removed. 'Disable' indicates that subscription removal process is not being enforced but no further events will be sent to this destination. 'Ignore' indicates that the removal action is temporarily not enforced and further events will be sent to this destination."
-        },
-        "SubscriptionRemovalTimeIntervalInMinutes": {
-            "type": "integer",
-            "readonly": true,
-            "description": "This is the minimum amount of time after the failed events that the service will wait before doing the SubscriptionRemovalAction.",
-            "specification": "The value of this property shall contain the universal unique identifier number for the system."
-        },
-        "EventTypesForSubscription": {
-            "type": "array",
-            "items": {
-                "type": "string",
-                "enum": [
-                    "StatusChange",
-                    "ResourceUpdated",
-                    "ResourceAdded",
-                    "ResourceRemoved",
-                    "Alert"
-                ],
-                "enumDescriptions": {
-                    "StatusChange": "The status of this resource has changed",
-                    "ResourceUpdated": "The value of this resource has been updated",
-                    "ResourceAdded": "A resource has been added",
-                    "ResourceRemoved": "A resource has been removed",
-                    "Alert": "A condition exists which requires attention"
-                }
-            },
-            "readonly": true,
-            "description": "This is the types of Events that can be subscribed to.",
-            "specification": "The value of this property shall be the types of events that subscriptions can subscribe to.  The semantics associated with the enumerations values are defined in the SPMA specification."
-        },
-        "Actions": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
+                "@odata.id": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
+                },
+                "@odata.type": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataType"
+                },
+                "Id": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Id"
+                },
+                "Description": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Description"
+                },
+                "Name": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Name"
+                },
+                "Modified": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Modified"
+                },
                 "Oem": {
-                    "type": [
-                        "object",
-                        "null"
-                    ],
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem",
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "specification": "The value of this string shall be of the format for the reserved word *Oem*."
+                },
+                "Links": {
+                    "type": "object",
                     "additionalProperties": false,
                     "properties": {
+                        "Oem": {
+                            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem"
+                        },
+                        "Subscriptions": {
+                            "type": "array",
+                            "properties": {
+                                "odataId" :{
+                                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
+                                }
+                            },
+                            "readonly": true,
+                            "description": "This is a reference to a collection of ListenerDestination resources.",
+                            "specification": "The value of this property shall be a link to a collection of ListenerDestinations."
+                        }
+                    },
+                    "readonly": true,
+                    "description": "This object contains the links to other resources that are related to this resource."
+                },
+                "DeliveryRetryAttempts": {
+                    "type": "integer",
+                    "readonly": true,
+                    "description": "This is the number of attempts an event posting is retried before the subscription is terminated.",
+                    "specification": "The value of this property shall be the number of retrys attempted for any given event to the subscription destination before the subscription is terminated."
+                },
+                "DeliveryRetryIntervalInSeconds": {
+                    "type": "integer",
+                    "readonly": true,
+                    "description": "This represents the number of seconds between retry attempts for sending any given Event",
+                    "specification": "The value of this property shall be the interval in seconds between the retry attempts for any given event to the subscription destination."
+                },
+                "SubscriptionRemovalAction": {
+                    "type": "string",
+                    "enum": [
+                        "Remove",
+                        "Disable",
+                        "Ignore"
+                    ],
+                    "enumDescriptions": {
+                        "Remove": "Remove the subscription",
+                        "Disable": "Disable the subscription",
+                        "Ignore": "Ignore the condition"
+                    },
+                    "readonly": true,
+                    "description": "This property indicates what the service will do to an event subscription after the number of delivery retry attempts has been exhausted.",
+                    "specification": "The value of this property shall be the action the service takes for subscriptions that have the number failed event deliveries equal to the value of DeliveryRetryAttempts fail without any successful event deliveries in between the failed deliveries. 'Remove' defines the subscription is to be removed. 'Disable' indicates that subscription removal process is not being enforced but no further events will be sent to this destination. 'Ignore' indicates that the removal action is temporarily not enforced and further events will be sent to this destination."
+                },
+                "SubscriptionRemovalTimeIntervalInMinutes": {
+                    "type": "integer",
+                    "readonly": true,
+                    "description": "This is the minimum amount of time after the failed events that the service will wait before doing the SubscriptionRemovalAction.",
+                    "specification": "The value of this property shall contain the universal unique identifier number for the system."
+                },
+                "EventTypesForSubscription": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "StatusChange",
+                            "ResourceUpdated",
+                            "ResourceAdded",
+                            "ResourceRemoved",
+                            "Alert"
+                        ],
+                        "enumDescriptions": {
+                            "StatusChange": "The status of this resource has changed",
+                            "ResourceUpdated": "The value of this resource has been updated",
+                            "ResourceAdded": "A resource has been added",
+                            "ResourceRemoved": "A resource has been removed",
+                            "Alert": "A condition exists which requires attention"
+                        }
+                    },
+                    "readonly": true,
+                    "description": "This is the types of Events that can be subscribed to.",
+                    "specification": "The value of this property shall be the types of events that subscriptions can subscribe to.  The semantics associated with the enumerations values are defined in the SPMA specification."
+                },
+                "Actions": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "Oem": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "additionalProperties": false,
+                            "properties": {
 
-                    }
+                            }
+                        }
+                    },
+                    "readonly": true,
+                    "description": "The Actions object contains the available custom actions on this resource."
+                },
+                "Status": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Status"
                 }
             },
-            "readonly": true,
-            "description": "The Actions object contains the available custom actions on this resource."
-        },
-        "Status": {
-            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Status"
-        }
-    },
-    "required": [
-        "Name"
-    ],
-    "description": "This is the schema definition for the Event Service.  It represents the properties for the service itself and has links to the actual list of subscriptions.",
-    "specification": "This resource shall be used to represent an eventing service in the SPMA specification."
+            "description": "This is the schema definition for the Event Service.  It represents the properties for the service itself and has links to the actual list of subscriptions.",
+            "specification": "This resource shall be used to represent an eventing service in the SPMA specification."        
 }
 }
+
