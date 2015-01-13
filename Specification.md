@@ -132,7 +132,6 @@ The following design tenets govern the design of the Scalable Platform Managemen
 * Functionality must be usable by non-computer-science professionals
 * Data definitions as obvious in context as possible
 * Opaque view of implementation architecture
-* "Top 10" end user needs are focus of first round schema definition.
 
 #### REST based
 
