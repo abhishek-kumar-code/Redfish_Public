@@ -34,7 +34,7 @@ The following files are part of the Scalable Platforms Management API developmen
 
 These other components are part of the Scalable Platforms Management API development effort
 * Mockup (DSP2043) - this is a mockup that can be used as sample of output from GETs from an SPMA service.  Informative in nature, it was used to develop the schema.  A person can set up an NGINX or similar server and configure it to output JSON format and then use this directory for demonstration purposes.
-* Schema - this contains the SPMA Schema definitions.  These files are normative in nature and are normatively reference by the SPMA Specification.  There are two Schema formats - CSDL (OData Conceptual Schema Definition Language format which is in XML) and JSON Schema.  These Schema defintions should be functionally equivalent, thus specifying the schema in two different languages.
+* Schema - this contains the SPMA Schema definitions.  These files are normative in nature and are normatively reference by the SPMA Specification.  There are two Schema formats - CSDL (OData Common Schema Definition Language format which is in XML) and JSON Schema.  These Schema defintions should be functionally equivalent, thus specifying the schema in two different languages.
 
 # Interacting with the Mockup #
 ## Setting up and accessing the Mockup ###
