@@ -940,7 +940,7 @@ A JSON object can be annotated with "@DMTF.ExtendedInfo" in order to specify obj
 {
     "@odata.context": "/rest/v1/$metadata/Sessions/Links/Members/$entity",
     "@odata.id": "/rest/v1/Sessions/Administrator1",
-    "@odata.type": "#Session.<%= DocVersion.replace(/\.[^\.]+$/, '') %>.Session",
+    "@odata.type": "#Session.<%= DocVersion %>.Session",
     "Id": "Administrator1",
     "Name": "User Session",
     "Description": "Manager User Session",
@@ -966,7 +966,7 @@ An individual property within a JSON object can be annotated with extended infor
 {
     "@odata.context": "/rest/v1/$metadata/Sessions/Links/Members/$entity",
     "@odata.id": "/rest/v1/Sessions/Administrator1",
-    "@odata.type": "#Session.<%= DocVersion.replace(/\.[^\.]+$/, '') %>.Session",
+    "@odata.type": "#Session.<%= DocVersion %>.Session",
     "Id": "Administrator1",
     "Name": "User Session",
     "Description": "Manager User Session",
