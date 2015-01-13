@@ -17,7 +17,7 @@ You can view the markup either directly or through a webserver.
 If you are viewing the files directly either through GitHub or a browser, you can get the html files to load in your browser.  If you are viewing it in your browser, then make sure you have a JSON viewer loaded as it will help make the mockup more user friendly.
 
 ### Via Webserver ###
-Double click `run.bat` inside the Mockup folder to start a local server accessible at [http://localhost:9080/rest/v1](http://localhost:9080/rest/v1).  It will look almost like a real service from the GET perspective (the headers will not be the same).
+Install [NodeJS](http://nodejs.org) first; this will act as the webserver. Double click `run.bat` inside the Mockup folder to start a local server accessible at [http://localhost:9080/rest/v1](http://localhost:9080/rest/v1).  It will look almost like a real service from the GET perspective (the headers will not be the same).
 
 Keep in mind that this is a mockup, not a prototype.  But you can do GETs on it and see JSON so it’s as real on the READ side as any prototype (except for ETags and some of the headers).  If you get a plug-in for Chrome or Opera that does REST (there are some free ones out there) or a JSON decoder for pages, you will improve the experience.  The plug-ins let expand and collapse structures making it very easy to interact with.
 
