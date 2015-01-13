@@ -1,57 +1,6 @@
 {
     "$schema": "http://www.redfishspecification.org/schema",
     "definitions":{
-        "ManagerAccountCollection":{
-            "title": "ManagerAccount.0.94.0",
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "@odata.context": {
-                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataContext"
-                },
-                "@odata.id": {
-                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
-                },
-                "@odata.type": {
-                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataType"
-                },
-                "Description": {
-                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Description"
-                },
-                "Name": {
-                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Name"
-                },
-                "Modified": {
-                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Modified"
-                },
-                "Oem": {
-                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem",
-                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
-                    "specification": "The value of this string shall be of the format for the reserved word *Oem*."
-                },
-                "Links": {
-                    "type": [
-                        "object",
-                        "null"
-                    ],
-                    "additionalProperties": false,
-                    "properties": {
-                        "Members": {
-                            "type": "array",
-                            "properties": {
-                                "odataId" :{
-                                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
-                                }
-                            },
-                            "readonly": true,
-                            "description": "Contains the members of this collection."
-                        }
-                    },
-                    "readonly": true,
-                    "description": "Contains links to other resources that are related to this resource."
-                }
-            }        
-},
         "ManagerAccount":{
             "title": "ManagerAccount.0.94.0",
             "type": "object",
@@ -81,7 +30,7 @@
                 "Oem": {
                     "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem",
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
-                    "specification": "The value of this string shall be of the format for the reserved word *Oem*."
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Password": {
                     "type": [
@@ -89,12 +38,12 @@
                         "null"
                     ],
                     "description": "This property is used with a PATCH or PUT to write the password for the account.  This property is null on a GET.",
-                    "specification": "The value of this property shall be the password for this account.  The value shall be null for GET requests."
+                    "longDescription": "The value of this property shall be the password for this account.  The value shall be null for GET requests."
                 },
                 "UserName": {
                     "type": "string",
                     "description": "This property contains the user name for the account.",
-                    "specification": "The value of this property shall be the user name for this account."
+                    "longDescription": "The value of this property shall be the user name for this account."
                 },
                 "Links": {
                     "type": "object",
@@ -109,7 +58,58 @@
                 }
             },
             "description": "This schema defines a user account to be used in conjunction with a manager.  This will affect the SPMA service connection if this manager is responsible for the SPMA service.",
-            "specification": "This resource shall be used to represent resources that represent the user accounts for the manager."        
+            "longDescription": "This resource shall be used to represent resources that represent the user accounts for the manager."        
+},
+        "ManagerAccountCollection":{
+            "title": "ManagerAccount.0.94.0",
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataContext"
+                },
+                "@odata.id": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
+                },
+                "@odata.type": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataType"
+                },
+                "Description": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Description"
+                },
+                "Name": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Name"
+                },
+                "Modified": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Modified"
+                },
+                "Oem": {
+                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem",
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+                },
+                "Links": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                        "Members": {
+                            "type": "array",
+                            "properties": {
+                                "@odata.id" :{
+                                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
+                                }
+                            },
+                            "readonly": true,
+                            "description": "Contains the members of this collection."
+                        }
+                    },
+                    "readonly": true,
+                    "description": "Contains links to other resources that are related to this resource."
+                }
+            }        
 }
     }
 

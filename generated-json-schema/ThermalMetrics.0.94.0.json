@@ -29,7 +29,7 @@
                 "Oem": {
                     "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem",
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
-                    "specification": "The value of this string shall be of the format for the reserved word *Oem*."
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Temperatures": {
                     "type": "array",
@@ -50,7 +50,7 @@
                                 ],
                                 "readonly": true,
                                 "description": "A numerical identifier to represent the temperature sensor",
-                                "specification": "The value of this property shall be a numerical identifier for this temperature sensor that is unique within this resource. "
+                                "longDescription": "The value of this property shall be a numerical identifier for this temperature sensor that is unique within this resource. "
                             },
                             "Status": {
                                 "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Status"
@@ -66,7 +66,7 @@
                                 ],
                                 "readonly": true,
                                 "description": "The temperature sensor's units.",
-                                "specification": "The value of this property shall be the units that the temperature sensor in which the CurrentReading is measured."
+                                "longDescription": "The value of this property shall be the units that the temperature sensor in which the CurrentReading is measured."
                             },
                             "CurrentReading": {
                                 "type": [
@@ -75,7 +75,7 @@
                                 ],
                                 "readonly": true,
                                 "description": "Temperature",
-                                "specification": "The value of this property shall be the current value of the temperature sensor's reading."
+                                "longDescription": "The value of this property shall be the current value of the temperature sensor's reading."
                             },
                             "UpperThresholdNonCritical": {
                                 "type": [
@@ -84,7 +84,7 @@
                                 ],
                                 "readonly": true,
                                 "description": "Above normal range",
-                                "specification": "The value of this property shall indicate the CurrentReading is above the normal range but is not critical."
+                                "longDescription": "The value of this property shall indicate the CurrentReading is above the normal range but is not critical."
                             },
                             "UpperThresholdCritical": {
                                 "type": [
@@ -93,7 +93,7 @@
                                 ],
                                 "readonly": true,
                                 "description": "Above normal range but not yet fatal.",
-                                "specification": "The value of this property shall indicate the CurrentReading is above the normal range but is not yet fatal."
+                                "longDescription": "The value of this property shall indicate the CurrentReading is above the normal range but is not yet fatal."
                             },
                             "UpperThresholdFatal": {
                                 "type": [
@@ -102,7 +102,7 @@
                                 ],
                                 "readonly": true,
                                 "description": "Above normal range and is fatal",
-                                "specification": "The value of this property shall indicate the CurrentReading is above the normal range and is fatal."
+                                "longDescription": "The value of this property shall indicate the CurrentReading is above the normal range and is fatal."
                             },
                             "LowerThresholdNonCritical": {
                                 "type": [
@@ -111,7 +111,7 @@
                                 ],
                                 "readonly": true,
                                 "description": "Below normal range",
-                                "specification": "The value of this property shall indicate the CurrentReading is below the normal range but is not critical."
+                                "longDescription": "The value of this property shall indicate the CurrentReading is below the normal range but is not critical."
                             },
                             "LowerThresholdCritical": {
                                 "type": [
@@ -120,7 +120,7 @@
                                 ],
                                 "readonly": true,
                                 "description": "Below normal range but not yet fatal.",
-                                "specification": "The value of this property shall indicate the CurrentReading is below the normal range but is not yet fatal."
+                                "longDescription": "The value of this property shall indicate the CurrentReading is below the normal range but is not yet fatal."
                             },
                             "LowerThresholdFatal": {
                                 "type": [
@@ -129,7 +129,7 @@
                                 ],
                                 "readonly": true,
                                 "description": "Below normal range and is fatal",
-                                "specification": "The value of this property shall indicate the CurrentReading is below the normal range and is fatal."
+                                "longDescription": "The value of this property shall indicate the CurrentReading is below the normal range and is fatal."
                             },
                             "MinimumValue": {
                                 "type": [
@@ -138,7 +138,7 @@
                                 ],
                                 "readonly": true,
                                 "description": "Minimum value for CurrentReading",
-                                "specification": "The value of this property shall indicate the lowest possible value for CurrentReading."
+                                "longDescription": "The value of this property shall indicate the lowest possible value for CurrentReading."
                             },
                             "MaximumValue": {
                                 "type": [
@@ -147,7 +147,7 @@
                                 ],
                                 "readonly": true,
                                 "description": "Maximum value for CurrentReading",
-                                "specification": "The value of this property shall indicate the lowest possible value for CurrentReading."
+                                "longDescription": "The value of this property shall indicate the lowest possible value for CurrentReading."
                             },
                             "PhysicalContext": {
                                 "type": "string",
@@ -197,7 +197,7 @@
                                 },
                                 "readonly": true,
                                 "description": "Describes the area or device to which this temperature measurement applies.",
-                                "specification": "The value of this property shall be a description of the affected device or region within the chassis to which this temperature measurement applies."
+                                "longDescription": "The value of this property shall be a description of the affected device or region within the chassis to which this temperature measurement applies."
                             },
                             "CorrelatableID": {
                                 "type": [
@@ -206,13 +206,13 @@
                                 ],
                                 "readonly": true,
                                 "description": "The CorrelatableID for this temperature sensor",
-                                "specification": "The value of this property shall be the CorrelatableID for this temperature sensor and shall adhere to the semantics for CorrelatableID as defined in the SPMA specification."
+                                "longDescription": "The value of this property shall be the CorrelatableID for this temperature sensor and shall adhere to the semantics for CorrelatableID as defined in the SPMA specification."
                             }
                         }
                     },
                     "readonly": true,
                     "description": "This is the definition for temperature sensors.",
-                    "specification": "These properties shall be the definition for temperature sensors for an SPMA implementation."
+                    "longDescription": "These properties shall be the definition for temperature sensors for an SPMA implementation."
                 },
                 "Fans": {
                     "type": "array",
@@ -230,7 +230,7 @@
                                 ],
                                 "readonly": true,
                                 "description": "Name of the fan",
-                                "specification": "The value of this property shall be the name of the fan."
+                                "longDescription": "The value of this property shall be the name of the fan."
                             },
                             "PhysicalContext": {
                                 "type": "string",
@@ -280,7 +280,7 @@
                                 },
                                 "readonly": true,
                                 "description": "Describes the area or device associated with this fan.",
-                                "specification": "The value of this property shall be a description of the affected device or region within the chassis to which this fan is associated."
+                                "longDescription": "The value of this property shall be a description of the affected device or region within the chassis to which this fan is associated."
                             },
                             "CorrelatableID": {
                                 "type": [
@@ -289,7 +289,7 @@
                                 ],
                                 "readonly": true,
                                 "description": "The CorrelatableID for this fan",
-                                "specification": "The value of this property shall be the CorrelatableID for this temperature sensor and shall adhere to the semantics for CorrelatableID as defined in the Redfish specification."
+                                "longDescription": "The value of this property shall be the CorrelatableID for this temperature sensor and shall adhere to the semantics for CorrelatableID as defined in the Redfish specification."
                             },
                             "Status": {
                                 "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Status"
@@ -305,7 +305,7 @@
                                 ],
                                 "readonly": true,
                                 "description": "Units for the CurrentReading",
-                                "specification": "The value of this property shall be the units that the CurrentReading is measured in."
+                                "longDescription": "The value of this property shall be the units that the CurrentReading is measured in."
                             },
                             "CurrentReading": {
                                 "type": [
@@ -314,7 +314,7 @@
                                 ],
                                 "readonly": true,
                                 "description": "Current fan speed",
-                                "specification": "The value of this property shall be the current value of the fan sensor's reading."
+                                "longDescription": "The value of this property shall be the current value of the fan sensor's reading."
                             },
                             "UpperThresholdNonCritical": {
                                 "type": [
@@ -323,7 +323,7 @@
                                 ],
                                 "readonly": true,
                                 "description": "Above normal range",
-                                "specification": "The value of this property shall indicate the CurrentReading is above the normal range but is not critical."
+                                "longDescription": "The value of this property shall indicate the CurrentReading is above the normal range but is not critical."
                             },
                             "UpperThresholdCritical": {
                                 "type": [
@@ -332,7 +332,7 @@
                                 ],
                                 "readonly": true,
                                 "description": "Above normal range but not yet fatal",
-                                "specification": "The value of this property shall indicate the CurrentReading is above the normal range but is not yet fatal."
+                                "longDescription": "The value of this property shall indicate the CurrentReading is above the normal range but is not yet fatal."
                             },
                             "UpperThresholdFatal": {
                                 "type": [
@@ -341,7 +341,7 @@
                                 ],
                                 "readonly": true,
                                 "description": "Above normal range and is fatal",
-                                "specification": "The value of this property shall indicate the CurrentReading is above the normal range and is fatal."
+                                "longDescription": "The value of this property shall indicate the CurrentReading is above the normal range and is fatal."
                             },
                             "LowerThresholdNonCritical": {
                                 "type": [
@@ -350,7 +350,7 @@
                                 ],
                                 "readonly": true,
                                 "description": "Below normal range",
-                                "specification": "The value of this property shall indicate the CurrentReading is below the normal range but is not critical."
+                                "longDescription": "The value of this property shall indicate the CurrentReading is below the normal range but is not critical."
                             },
                             "LowerThresholdCritical": {
                                 "type": [
@@ -359,7 +359,7 @@
                                 ],
                                 "readonly": true,
                                 "description": "Below normal range but not yet fatal",
-                                "specification": "The value of this property shall indicate the CurrentReading is below the normal range but is not yet fatal."
+                                "longDescription": "The value of this property shall indicate the CurrentReading is below the normal range but is not yet fatal."
                             },
                             "LowerThresholdFatal": {
                                 "type": [
@@ -368,7 +368,7 @@
                                 ],
                                 "readonly": true,
                                 "description": "Below normal range and is fatal",
-                                "specification": "The value of this property shall indicate the CurrentReading is below the normal range and is fatal."
+                                "longDescription": "The value of this property shall indicate the CurrentReading is below the normal range and is fatal."
                             },
                             "MinimumValue": {
                                 "type": [
@@ -377,7 +377,7 @@
                                 ],
                                 "readonly": true,
                                 "description": "Minimum value for CurrentReading",
-                                "specification": "The value of this property shall indicate the lowest possible value for CurrentReading."
+                                "longDescription": "The value of this property shall indicate the lowest possible value for CurrentReading."
                             },
                             "MaximumValue": {
                                 "type": [
@@ -386,13 +386,13 @@
                                 ],
                                 "readonly": true,
                                 "description": "Maximum value for CurrentReading",
-                                "specification": "The value of this property shall indicate the lowest possible value for CurrentReading."
+                                "longDescription": "The value of this property shall indicate the lowest possible value for CurrentReading."
                             }
                         }
                     },
                     "readonly": true,
                     "description": "This is the definition for fans.",
-                    "specification": "These properties shall be the definition for fans for an SPMA implementation."
+                    "longDescription": "These properties shall be the definition for fans for an SPMA implementation."
                 },
                 "Redundancy": {
                     "type": "array",
@@ -401,14 +401,14 @@
                     },
                     "readonly": true,
                     "description": "This structure is used to show redundancy for fans.  The use of CorrelatableIDs will reference the members of the redundancy groups.",
-                    "specification": "The values of the properties in this array shall be used to show redundancy for fans and other elements in this resource.  The use of CorrelatableIDs within these arrays shall reference the members of the redundancy groups."
+                    "longDescription": "The values of the properties in this array shall be used to show redundancy for fans and other elements in this resource.  The use of CorrelatableIDs within these arrays shall reference the members of the redundancy groups."
                 },
                 "Status": {
                     "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Status"
                 }
             },
             "description": "This is the schema definition for the Thermal Metrics.  It represents the properties for Temperature and Cooling.",
-            "specification": "This resource shall be used to represent a thermal metrics resource for an SPMA implementation."        
+            "longDescription": "This resource shall be used to represent a thermal metrics resource for an SPMA implementation."        
 }
 }
 

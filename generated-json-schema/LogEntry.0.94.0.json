@@ -29,13 +29,13 @@
                 "Oem": {
                     "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem",
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
-                    "specification": "The value of this string shall be of the format for the reserved word *Oem*."
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "RecordId": {
                     "type": "integer",
                     "readonly": true,
                     "description": "The identifier for the log entry",
-                    "specification": "This property shall represent a unique identifier of the resource within the parent collection of LogEntry types."
+                    "longDescription": "This property shall represent a unique identifier of the resource within the parent collection of LogEntry types."
                 },
                 "Severity": {
                     "type": "string",
@@ -46,7 +46,7 @@
                     ],
                     "readonly": true,
                     "description": "This is the severity of the log entry.",
-                    "specification": "The value of this property shall be the severity of the condition resulting in the log entry, as defined in the Status section of the SPMA specificaiton."
+                    "longDescription": "The value of this property shall be the severity of the condition resulting in the log entry, as defined in the Status section of the SPMA specificaiton."
                 },
                 "Created": {
                     "type": "string",
@@ -62,13 +62,13 @@
                     ],
                     "readonly": true,
                     "description": "his is the type of log entry.",
-                    "specification": "This property shall represent the type of LogEntry.  If the resource represents an IPMI SEL log entry, the value shall be SEL.  If the resource represents an Event log, the value shall be Event.  If the resource represents an OEM log format, the value shall be Oem."
+                    "longDescription": "This property shall represent the type of LogEntry.  If the resource represents an IPMI SEL log entry, the value shall be SEL.  If the resource represents an Event log, the value shall be Event.  If the resource represents an OEM log format, the value shall be Oem."
                 },
                 "OemRecordFormat": {
                     "type": "string",
                     "readonly": true,
                     "description": "If the entry type is Oem, this will contain more information about the record format from the Oem.",
-                    "specification": "The value of this property shall represent the OEM specific format of the Entry.  This property shall be required if the value of EntryType is Oem"
+                    "longDescription": "The value of this property shall represent the OEM specific format of the Entry.  This property shall be required if the value of EntryType is Oem"
                 },
                 "EntryCode": {
                     "type": "string",
@@ -135,7 +135,7 @@
                     ],
                     "readonly": true,
                     "description": "If the EntryType is SEL, this will have the entry code for the log entry.",
-                    "specification": "This property shall be present if the EntryType value is SEL.  These enumerations are the values from table 42-1 and 42-2 of the IPMI specification"
+                    "longDescription": "This property shall be present if the EntryType value is SEL.  These enumerations are the values from table 42-1 and 42-2 of the IPMI specification"
                 },
                 "SensorType": {
                     "type": "string",
@@ -186,25 +186,25 @@
                     ],
                     "readonly": true,
                     "description": "If the EntryType is SEL, this will have the sensor type that the log entry pertains to.",
-                    "specification": "This property shall be present if the EntryType value is SEL."
+                    "longDescription": "This property shall be present if the EntryType value is SEL."
                 },
                 "Number": {
                     "type": "string",
                     "readonly": true,
                     "description": "This property decodes from EntryType:  If it is SEL, it is the sensor number; if Event then the count of events.  Otherwise, it is Oem specific.",
-                    "specification": "The value of this property shall be the EntityInstance from IPMI spec if EntryType is SEL, the count of events if EntryType is Event and OEM Specific if the EntryType is OEM."
+                    "longDescription": "The value of this property shall be the EntityInstance from IPMI spec if EntryType is SEL, the count of events if EntryType is Event and OEM Specific if the EntryType is OEM."
                 },
                 "Message": {
                     "type": "string",
                     "readonly": true,
                     "description": "This property decodes from EntryType:  If it is Event then it is a message string.  Otherwise, it is SEL or Oem specific.  In most cases, this will be the actual Log Entry.",
-                    "specification": "The value of this property shall be the Message property of the event if the EntryType is Event, the Description if EntryType is SEL and OEM Specific if the EntryType is OEM."
+                    "longDescription": "The value of this property shall be the Message property of the event if the EntryType is Event, the Description if EntryType is SEL and OEM Specific if the EntryType is OEM."
                 },
                 "MessageId": {
                     "type": "integer",
                     "readonly": true,
                     "description": "This property decodes from EntryType:  If it is Event then it is a message id.  Otherwise, it is SEL or Oem specific.  This value is only used for registries - for more information, see the specification.",
-                    "specification": "The value of this property shall the MessageID property of the event if the EntryType is Event, the EventData if EntryType is SEL and OEM Specific if the EntryType is OEM.  The format of this property shall be as defined in the SPMA specification."
+                    "longDescription": "The value of this property shall the MessageID property of the event if the EntryType is Event, the EventData if EntryType is SEL and OEM Specific if the EntryType is OEM.  The format of this property shall be as defined in the SPMA specification."
                 },
                 "MessageArgs": {
                     "type": "array",
@@ -216,7 +216,7 @@
                     },
                     "readonly": true,
                     "description": "The values of this property shall be any arguments for the message.",
-                    "specification": "This contains message arguments to be substituted into the message included or in the message looked up via a registry."
+                    "longDescription": "This contains message arguments to be substituted into the message included or in the message looked up via a registry."
                 },
                 "Links": {
                     "type": "object",
@@ -228,13 +228,13 @@
                         "OriginOfCondition": {
                             "type": "object",
                             "properties": {
-                                "odataId" :{
+                                "@odata.id" :{
                                     "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
                                 }
                             },
                             "readonly": true,
                             "description": "This is the URI of the resource that caused the log entry",
-                            "specification": "The value of this property shall be an href that references the resource for which the log is associated."
+                            "longDescription": "The value of this property shall be an href that references the resource for which the log is associated."
                         }
                     },
                     "readonly": true,
@@ -246,7 +246,7 @@
                 "EntryType"
             ],
             "description": "This resource represents the log record format for logs.  It is designed to be used for SEL logs from IPMI as well as Event Logs and OEM specific logs.  The EntryType field indicates the type of log and there are other properties dependent on it's value.",
-            "specification": "This resource shall represent the log format for log services in an SPMA implementation."        
+            "longDescription": "This resource shall represent the log format for log services in an SPMA implementation."        
 }
 }
 

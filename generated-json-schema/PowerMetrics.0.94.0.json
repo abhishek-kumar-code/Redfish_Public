@@ -29,7 +29,7 @@
                 "Oem": {
                     "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem",
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
-                    "specification": "The value of this string shall be of the format for the reserved word *Oem*."
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "PowerConsumedWatts": {
                     "type": [
@@ -38,7 +38,7 @@
                     ],
                     "readonly": true,
                     "description": "The actual power being consumed by the chassis.",
-                    "specification": "The value of this property shall represent the actual power being consumed (in Watts) by the chassis."
+                    "longDescription": "The value of this property shall represent the actual power being consumed (in Watts) by the chassis."
                 },
                 "PowerRequestedWatts": {
                     "type": [
@@ -47,7 +47,7 @@
                     ],
                     "readonly": true,
                     "description": "The potential power that the chassis resources are requesting which may be higher than the current level being consumed since requested power includes budget that the chassis resource wants for future use.",
-                    "specification": "The value of this property shall represent the amount of power (in Watts) that the chassis resource is currently requesting be budgeted to it for future use."
+                    "longDescription": "The value of this property shall represent the amount of power (in Watts) that the chassis resource is currently requesting be budgeted to it for future use."
                 },
                 "PowerAvailableWatts": {
                     "type": [
@@ -56,7 +56,7 @@
                     ],
                     "readonly": true,
                     "description": "The amount of power not already budgeted and therefore available for additional allocation. (powerCapacity - powerAllocated).  This indicates how much reserve power capacity is left.",
-                    "specification": "The value of this property shall represent the amount of power capacity (in Watts) not already allocated and shall equal PowerCapacityWatts - PowerAllocatedWatts."
+                    "longDescription": "The value of this property shall represent the amount of power capacity (in Watts) not already allocated and shall equal PowerCapacityWatts - PowerAllocatedWatts."
                 },
                 "PowerCapacityWatts": {
                     "type": [
@@ -65,7 +65,7 @@
                     ],
                     "readonly": true,
                     "description": "The total amount of power available to the chassis for allocation. This may the power supply capacity, or power budget assigned to the chassis from an up-stream chassis.",
-                    "specification": "The value of this property shall represent the total power capacity that is available for allocation to the chassis resources."
+                    "longDescription": "The value of this property shall represent the total power capacity that is available for allocation to the chassis resources."
                 },
                 "PowerAllocatedWatts": {
                     "type": [
@@ -74,7 +74,7 @@
                     ],
                     "readonly": true,
                     "description": "The total amount of power that has been allocated (or budegeted)to  chassis resources.",
-                    "specification": "The value of this property shall represent the total power currently allocated to chassis resources."
+                    "longDescription": "The value of this property shall represent the total power currently allocated to chassis resources."
                 },
                 "PowerMetrics": {
                     "type": "object",
@@ -87,7 +87,7 @@
                             ],
                             "readonly": true,
                             "description": "The time interval (or window) in which the PowerMetrics are measured over.",
-                            "specification": "The value of this property shall represent the minimum power level in watts that occured within the last IntervalInMin minutes."
+                            "longDescription": "The value of this property shall represent the minimum power level in watts that occured within the last IntervalInMin minutes."
                         },
                         "MinConsumedWatts": {
                             "type": [
@@ -96,7 +96,7 @@
                             ],
                             "readonly": true,
                             "description": "The lowest power consumption level over the measurement window (the last IntervalInMin minutes).",
-                            "specification": "The value of this property shall represent the minimum power level in watts that occured within the last IntervalInMin minutes."
+                            "longDescription": "The value of this property shall represent the minimum power level in watts that occured within the last IntervalInMin minutes."
                         },
                         "MaxConsumedWatts": {
                             "type": [
@@ -105,7 +105,7 @@
                             ],
                             "readonly": true,
                             "description": "The highest power consumption level that has occured over the measurement window (the last IntervalInMin minutes).",
-                            "specification": "The value of this property shall represent the maximum power level in watts that occured within the last IntervalInMin minutes."
+                            "longDescription": "The value of this property shall represent the maximum power level in watts that occured within the last IntervalInMin minutes."
                         },
                         "AverageConsumedWatts": {
                             "type": [
@@ -114,11 +114,11 @@
                             ],
                             "readonly": true,
                             "description": "The average power level over the measurement window (the last IntervalInMin minutes).",
-                            "specification": "The value of this property shall represent the average power level that occured averaged over the last IntervalInMin minutes."
+                            "longDescription": "The value of this property shall represent the average power level that occured averaged over the last IntervalInMin minutes."
                         }
                     },
                     "description": "This object contains power consumption measurements for this system or device.",
-                    "specification": "This object shall contain power consumption metrics for the associated resource."
+                    "longDescription": "This object shall contain power consumption metrics for the associated resource."
                 },
                 "PowerLimit": {
                     "type": "object",
@@ -130,7 +130,7 @@
                                 "null"
                             ],
                             "description": "The Power limit in watts. Set to null to disable power capping.",
-                            "specification": "The value of this property shall represent the power cap limit in watts for the resource.  If set to null, power capping shall be disabled."
+                            "longDescription": "The value of this property shall represent the power cap limit in watts for the resource.  If set to null, power capping shall be disabled."
                         },
                         "LimitException": {
                             "type": [
@@ -150,7 +150,7 @@
                                 "Oem": "Take an OEM-defined action."
                             },
                             "description": "The action that is taken if the power cannot be maintained below the LimitInWatts",
-                            "specification": "The value of this property shall represent the action to be taken if the resource power consumption can not be limited below the specified limit after several correction time periods."
+                            "longDescription": "The value of this property shall represent the action to be taken if the resource power consumption can not be limited below the specified limit after several correction time periods."
                         },
                         "CorrectionInMs": {
                             "type": [
@@ -158,7 +158,7 @@
                                 "null"
                             ],
                             "description": "The time required for the limiting process to reduce power consumption to below the limit.",
-                            "specification": "The value of this property shall represent the time interval in ms required for the limiting process to react and reduce the power consumption below the limit."
+                            "longDescription": "The value of this property shall represent the time interval in ms required for the limiting process to react and reduce the power consumption below the limit."
                         },
                         "CorrelatableID": {
                             "type": "array",
@@ -169,7 +169,7 @@
                                 ]
                             },
                             "description": "The Correlatable ID(s) associated with this Power Limit",
-                            "specification": "The value of this property shall be an array of opaque strings containing pointers to the resource that is being limited."
+                            "longDescription": "The value of this property shall be an array of opaque strings containing pointers to the resource that is being limited."
                         }
                     },
                     "description": "This object contains power limit status and configuration information for the chassis"
@@ -193,7 +193,7 @@
                                 ],
                                 "readonly": true,
                                 "description": "The Correlatable ID for this Power Supply",
-                                "specification": "This property shall contain the unique Correlatable ID assigned to this power supply."
+                                "longDescription": "This property shall contain the unique Correlatable ID assigned to this power supply."
                             },
                             "Status": {
                                 "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Status"
@@ -215,7 +215,7 @@
                                 },
                                 "readonly": true,
                                 "description": "The Power Supply type (AC or DC)",
-                                "specification": "This property shall contain the input power type (AC or DC) of the associated power supply."
+                                "longDescription": "This property shall contain the input power type (AC or DC) of the associated power supply."
                             },
                             "LineInputVoltageType": {
                                 "type": [
@@ -240,7 +240,7 @@
                                 },
                                 "readonly": true,
                                 "description": "The line voltage type supported as an input to this Power Supply",
-                                "specification": "This property shall contain the type of input line voltage supported by the associated power supply"
+                                "longDescription": "This property shall contain the type of input line voltage supported by the associated power supply"
                             },
                             "LineInputVoltage": {
                                 "type": [
@@ -249,7 +249,7 @@
                                 ],
                                 "readonly": true,
                                 "description": "The line input voltage at which the Power Supply is operating",
-                                "specification": "This property shall contain the value in Watts of the line input voltage (measured or configured for) that the power supply has been configured to operate with or is currently receiving."
+                                "longDescription": "This property shall contain the value in Watts of the line input voltage (measured or configured for) that the power supply has been configured to operate with or is currently receiving."
                             },
                             "PowerCapacityWatts": {
                                 "type": [
@@ -258,7 +258,7 @@
                                 ],
                                 "readonly": true,
                                 "description": "The maximum capacity of this Power Supply",
-                                "specification": "This property shall contiain the maximum amount of power, in Watts, that the associated power supply is rated to deliver."
+                                "longDescription": "This property shall contiain the maximum amount of power, in Watts, that the associated power supply is rated to deliver."
                             },
                             "LastPowerOutputWatts": {
                                 "type": [
@@ -267,7 +267,7 @@
                                 ],
                                 "readonly": true,
                                 "description": "The average power output of this Power Supply",
-                                "specification": "This property shall contain the average power output, measured in Watts, of the associated power supply."
+                                "longDescription": "This property shall contain the average power output, measured in Watts, of the associated power supply."
                             },
                             "Model": {
                                 "type": [
@@ -276,7 +276,7 @@
                                 ],
                                 "readonly": true,
                                 "description": "The model number of this Power Supply",
-                                "specification": "This property shall contain the model information as defined by the manufacturer for the associated power supply."
+                                "longDescription": "This property shall contain the model information as defined by the manufacturer for the associated power supply."
                             },
                             "FirmwareVersion": {
                                 "type": [
@@ -285,7 +285,7 @@
                                 ],
                                 "readonly": true,
                                 "description": "The firmware version of this Power Supply",
-                                "specification": "This property shall contain the firwmare version as defined by the manufacturer for the associated power supply."
+                                "longDescription": "This property shall contain the firwmare version as defined by the manufacturer for the associated power supply."
                             },
                             "SerialNumber": {
                                 "type": [
@@ -294,7 +294,7 @@
                                 ],
                                 "readonly": true,
                                 "description": "The serial number of this Power Supply",
-                                "specification": "This property shall contain the serial number as defined by the manufacturer for the associated power supply."
+                                "longDescription": "This property shall contain the serial number as defined by the manufacturer for the associated power supply."
                             },
                             "PartNumber": {
                                 "type": [
@@ -303,7 +303,7 @@
                                 ],
                                 "readonly": true,
                                 "description": "The part number of this Power Supply",
-                                "specification": "This property shall contain the part number as defined by the manufacturer for the associated power supply."
+                                "longDescription": "This property shall contain the part number as defined by the manufacturer for the associated power supply."
                             },
                             "SparePartNumber": {
                                 "type": [
@@ -312,7 +312,7 @@
                                 ],
                                 "readonly": true,
                                 "description": "The spare part number of this Power Supply",
-                                "specification": "This property shall contain the spare or replacement part number as defined by the manufacturer for the associated power supply."
+                                "longDescription": "This property shall contain the spare or replacement part number as defined by the manufacturer for the associated power supply."
                             }
                         },
                         "description": "Details of the power supplies associated with this system or device",
@@ -334,7 +334,7 @@
                 }
             },
             "description": "This is the schema definition for the Power Metrics.  It represents the properties for Power Consumption and Power Limiting.",
-            "specification": "This resource shall be used to represent a power metrics resource for an SPMA implementation."        
+            "longDescription": "This resource shall be used to represent a power metrics resource for an SPMA implementation."        
 }
 }
 

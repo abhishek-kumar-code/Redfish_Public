@@ -29,7 +29,7 @@
                 "Oem": {
                     "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem",
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
-                    "specification": "The value of this string shall be of the format for the reserved word *Oem*."
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Intrusion": {
                     "type": "array",
@@ -47,7 +47,7 @@
                                 ],
                                 "readonly": true,
                                 "description": "The sensor's number, if available.",
-                                "specification": "The value of this property shall be the EntityInstance from IPMI spec if sensor is consistent with IPMI's SEL, otherwise it is implementation specific."
+                                "longDescription": "The value of this property shall be the EntityInstance from IPMI spec if sensor is consistent with IPMI's SEL, otherwise it is implementation specific."
                             },
                             "Status": {
                                 "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Status"
@@ -59,7 +59,7 @@
                                 ],
                                 "readonly": true,
                                 "description": "Current value of the metric or sensor.",
-                                "specification": "The value of this property shall be the current reading of the metric or sensor."
+                                "longDescription": "The value of this property shall be the current reading of the metric or sensor."
                             },
                             "SensorType": {
                                 "type": "string",
@@ -69,7 +69,7 @@
                                 ],
                                 "readonly": true,
                                 "description": "The type of sensor",
-                                "specification": "This property shall contain the enumerated type of Intrusion sensor described by this instance."
+                                "longDescription": "This property shall contain the enumerated type of Intrusion sensor described by this instance."
                             }
                         }
                     },
@@ -91,7 +91,7 @@
                                 ],
                                 "readonly": true,
                                 "description": "The sensor's number, if available.",
-                                "specification": "The value of this property shall be the EntityInstance from IPMI spec if sensor is consistent with IPMI's SEL, otherwise it is implementation specific."
+                                "longDescription": "The value of this property shall be the EntityInstance from IPMI spec if sensor is consistent with IPMI's SEL, otherwise it is implementation specific."
                             },
                             "Status": {
                                 "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Status"
@@ -103,7 +103,7 @@
                                 ],
                                 "readonly": true,
                                 "description": "Current value of the metric or sensor.",
-                                "specification": "The value of this property shall be the current reading of the metric or sensor."
+                                "longDescription": "The value of this property shall be the current reading of the metric or sensor."
                             },
                             "SensorType": {
                                 "type": "string",
@@ -145,7 +145,7 @@
                                 ],
                                 "readonly": true,
                                 "description": "The type of sensor",
-                                "specification": "This property shall contain the enumerated type of Misc sensor described by this instance"
+                                "longDescription": "This property shall contain the enumerated type of Misc sensor described by this instance"
                             }
                         }
                     },
@@ -153,7 +153,7 @@
                 }
             },
             "description": "This is the schema definition for the Miscellaneous Metrics resource.  It represents any sensors or metrics that are not thermal or power related.  Examples of these are intrusion detection and various alarms.",
-            "specification": "This resource shall be used to represent the miscellaneous metrics resources for an SPMA implementation."        
+            "longDescription": "This resource shall be used to represent the miscellaneous metrics resources for an SPMA implementation."        
 }
 }
 

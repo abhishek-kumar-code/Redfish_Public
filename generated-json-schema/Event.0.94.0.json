@@ -29,7 +29,7 @@
                 "Oem": {
                     "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem",
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
-                    "specification": "The value of this string shall be of the format for the reserved word *Oem*."
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Events": {
                     "type": "array",
@@ -55,37 +55,37 @@
                                 },
                                 "readonly": true,
                                 "description": "This indicates the type of event sent, according to the definitions in the EventService.",
-                                "specification": "The value of this property shall indicate the type of event as defined in the EventService schema."
+                                "longDescription": "The value of this property shall indicate the type of event as defined in the EventService schema."
                             },
                             "EventID": {
                                 "type": "string",
                                 "readonly": true,
                                 "description": "This is a unique instance identifier of an event.",
-                                "specification": "The value of this property shall indicate a unique identifier for the event, the format of which is implementation dependent."
+                                "longDescription": "The value of this property shall indicate a unique identifier for the event, the format of which is implementation dependent."
                             },
                             "EventTimestamp": {
                                 "type": "string",
                                 "readonly": true,
                                 "description": "This is time the event occurred.",
-                                "specification": "The value of this property shall indicate the time the event occurred where the value shall be consistent with the SPMA service time that is also used for the values of the Modified property."
+                                "longDescription": "The value of this property shall indicate the time the event occurred where the value shall be consistent with the SPMA service time that is also used for the values of the Modified property."
                             },
                             "Severity": {
                                 "type": "string",
                                 "readonly": true,
                                 "description": "This is the severity of the event.",
-                                "specification": "The value of this property shall be the severity of the event, as defined in the Status section of the SPMA specificaiton."
+                                "longDescription": "The value of this property shall be the severity of the event, as defined in the Status section of the SPMA specificaiton."
                             },
                             "Message": {
                                 "type": "string",
                                 "readonly": true,
                                 "description": "This is the human readable message, if provided.",
-                                "specification": "This property shall contain an optional human readable message."
+                                "longDescription": "This property shall contain an optional human readable message."
                             },
                             "MessageID": {
                                 "type": "string",
                                 "readonly": true,
                                 "description": "This is the key for this message which can be used to look up the message in a message registry.",
-                                "specification": "This property shall be a key into message registry as described in the SPMA specification.",
+                                "longDescription": "This property shall be a key into message registry as described in the SPMA specification.",
                                 "pattern": "^[A-Za-z0-9]+\\.\\d+\\.\\d+.[A-Za-z0-9.]+$"
                             },
                             "MessageArgs": {
@@ -95,19 +95,19 @@
                                 },
                                 "readonly": true,
                                 "description": "This array of message arguments are substituted for the arguments in the message when looked up in the message registry.",
-                                "specification": "This property has the same semantics as the MessageArgs property in the Event schema for SPMA."
+                                "longDescription": "This property has the same semantics as the MessageArgs property in the Event schema for SPMA."
                             },
                             "OriginOfCondition": {
                                 "type": "string",
                                 "readonly": true,
                                 "description": "This indicates the resource that originated the condition that caused the event to be generated.",
-                                "specification": "The value of this property shall contain the URI of the resource that caused the event to be generated."
+                                "longDescription": "The value of this property shall contain the URI of the resource that caused the event to be generated."
                             },
                             "Context": {
                                 "type": "string",
                                 "readonly": true,
                                 "description": "A context can be supplied at subscription time.  This property is the context value supplied by the subscriber.",
-                                "specification": "This property shall contain a client supplied context for the ListnerDestination to which this event is being sent."
+                                "longDescription": "This property shall contain a client supplied context for the ListnerDestination to which this event is being sent."
                             },
                             "Oem": {
                                 "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem"
@@ -125,7 +125,7 @@
                 "Events"
             ],
             "description": "This is the schema definition for Events.  It represents the properties for the events themselves and not subscriptions or any other resource.",
-            "specification": "This resource shall be used to represent an event for an SPMA implementation."        
+            "longDescription": "This resource shall be used to represent an event for an SPMA implementation."        
 }
 }
 

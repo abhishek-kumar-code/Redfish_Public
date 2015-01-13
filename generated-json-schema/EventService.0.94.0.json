@@ -29,7 +29,7 @@
                 "Oem": {
                     "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem",
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
-                    "specification": "The value of this string shall be of the format for the reserved word *Oem*."
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Links": {
                     "type": "object",
@@ -41,13 +41,13 @@
                         "Subscriptions": {
                             "type": "array",
                             "properties": {
-                                "odataId" :{
+                                "@odata.id" :{
                                     "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
                                 }
                             },
                             "readonly": true,
                             "description": "This is a reference to a collection of ListenerDestination resources.",
-                            "specification": "The value of this property shall be a link to a collection of ListenerDestinations."
+                            "longDescription": "The value of this property shall be a link to a collection of ListenerDestinations."
                         }
                     },
                     "readonly": true,
@@ -57,13 +57,13 @@
                     "type": "integer",
                     "readonly": true,
                     "description": "This is the number of attempts an event posting is retried before the subscription is terminated.",
-                    "specification": "The value of this property shall be the number of retrys attempted for any given event to the subscription destination before the subscription is terminated."
+                    "longDescription": "The value of this property shall be the number of retrys attempted for any given event to the subscription destination before the subscription is terminated."
                 },
                 "DeliveryRetryIntervalInSeconds": {
                     "type": "integer",
                     "readonly": true,
                     "description": "This represents the number of seconds between retry attempts for sending any given Event",
-                    "specification": "The value of this property shall be the interval in seconds between the retry attempts for any given event to the subscription destination."
+                    "longDescription": "The value of this property shall be the interval in seconds between the retry attempts for any given event to the subscription destination."
                 },
                 "SubscriptionRemovalAction": {
                     "type": "string",
@@ -79,13 +79,13 @@
                     },
                     "readonly": true,
                     "description": "This property indicates what the service will do to an event subscription after the number of delivery retry attempts has been exhausted.",
-                    "specification": "The value of this property shall be the action the service takes for subscriptions that have the number failed event deliveries equal to the value of DeliveryRetryAttempts fail without any successful event deliveries in between the failed deliveries. 'Remove' defines the subscription is to be removed. 'Disable' indicates that subscription removal process is not being enforced but no further events will be sent to this destination. 'Ignore' indicates that the removal action is temporarily not enforced and further events will be sent to this destination."
+                    "longDescription": "The value of this property shall be the action the service takes for subscriptions that have the number failed event deliveries equal to the value of DeliveryRetryAttempts fail without any successful event deliveries in between the failed deliveries. 'Remove' defines the subscription is to be removed. 'Disable' indicates that subscription removal process is not being enforced but no further events will be sent to this destination. 'Ignore' indicates that the removal action is temporarily not enforced and further events will be sent to this destination."
                 },
                 "SubscriptionRemovalTimeIntervalInMinutes": {
                     "type": "integer",
                     "readonly": true,
                     "description": "This is the minimum amount of time after the failed events that the service will wait before doing the SubscriptionRemovalAction.",
-                    "specification": "The value of this property shall contain the universal unique identifier number for the system."
+                    "longDescription": "The value of this property shall contain the universal unique identifier number for the system."
                 },
                 "EventTypesForSubscription": {
                     "type": "array",
@@ -108,7 +108,7 @@
                     },
                     "readonly": true,
                     "description": "This is the types of Events that can be subscribed to.",
-                    "specification": "The value of this property shall be the types of events that subscriptions can subscribe to.  The semantics associated with the enumerations values are defined in the SPMA specification."
+                    "longDescription": "The value of this property shall be the types of events that subscriptions can subscribe to.  The semantics associated with the enumerations values are defined in the SPMA specification."
                 },
                 "Actions": {
                     "type": "object",
@@ -133,7 +133,7 @@
                 }
             },
             "description": "This is the schema definition for the Event Service.  It represents the properties for the service itself and has links to the actual list of subscriptions.",
-            "specification": "This resource shall be used to represent an eventing service in the SPMA specification."        
+            "longDescription": "This resource shall be used to represent an eventing service in the SPMA specification."        
 }
 }
 
