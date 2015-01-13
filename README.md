@@ -1,4 +1,30 @@
-# Scalable Platforms Management API Readme #
+Document Identifier: DSP2043
+
+Date: 2014-10-28
+
+Version: 0.94.0a
+
+SPMF Mockup (README)
+
+IMPORTANT: This document is not a standard. It does not necessarily reflect the views of the 
+DMTF or all of its members. Because this document is a Work in Progress, it may still change, 
+perhaps profoundly. This document is available for public review and comment until superceded.
+Provide any comments through the DMTF Feedback Portal: http://www.dmtf.org/standards/feedback
+Document Type: Implementation Response Mockup (Informational)
+
+Document Status: Work In Progress - Not a DMTF Standard
+
+Document Language: en-US
+
+Copyright Notice
+Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.
+DMTF is a not-for-profit association of industry members dedicated to promoting enterprise and systems management and interoperability. Members and non-members may reproduce DMTF specifications and documents, provided that correct attribution is given. As DMTF specifications may be revised from time to time, the particular version and release date should always be noted.
+
+Implementation of certain elements of this standard or proposed standard may be subject to third party patent rights, including provisional patent rights (herein "patent rights"). DMTF makes no representations to users of the standard as to the existence of such rights, and is not responsible to recognize, disclose, or identify any or all such third party patent right, owners or claimants, nor for any incomplete or inaccurate identification or disclosure of such rights, owners or claimants. DMTF shall have no liability to any party, in any manner or circumstance, under any legal theory whatsoever, for failure to recognize, disclose, or identify any such third party patent rights, or for such party's reliance on the standard or incorporation thereof in its product, protocols or testing procedures. DMTF shall have no liability to any party implementing such standard, whether such implementation is foreseeable or not, nor to any patent owner or claimant, and shall have no liability or responsibility for costs or losses incurred if a standard is withdrawn or modified after publication, and shall be indemnified and held harmless by any party implementing the standard from any and all claims of infringement by a patent owner for such implementations.
+
+For information about patents held by third-parties which have notified the DMTF that, in their opinion, such patent may relate to or impact implementations of DMTF standards, visit http://www.dmtf.org/about/policies/disclosures.php.
+
+# Scalable Platforms Management API Mockup Readme 
 The following files are part of the Scalable Platforms Management API development effort
 
 * SPMA.md - this files is the main Scalable Platforms Management API Specification
