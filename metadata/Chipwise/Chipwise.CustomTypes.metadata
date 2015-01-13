@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?><!-- Copyright 2014 Distributed Management Task Force, Inc. (DMTF). All rights reserved.--> 
+﻿<?xml version="1.0" encoding="UTF-8"?><!-- Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.--> 
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
 
   <edmx:DataServices>

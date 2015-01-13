@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><!-- Copyright 2014 Distributed Management Task Force, Inc. (DMTF). All rights reserved.--> 
+<?xml version="1.0" encoding="UTF-8"?><!-- Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.--> 
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
 
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
@@ -16,8 +16,8 @@
       <Term Name="Required" Type="Edm.Boolean" DefaultValue="True">
         <Annotation Term="OData.Description" String="The term specifies that a property is required to be supported by services. Properties not annotated as required are optional."/>
       </Term>
-      <Term Name="InlineStatus" Type="Edm.Entity">
-        <Annotation Term="OData.Description" String="This term specifies in-line status information associated with a resource or property in a response payload."/>
+      <Term Name="ExtendedInfo" Type="Edm.Entity">
+        <Annotation Term="OData.Description" String="This term specifies extended information associated with a resource or property in a response payload."/>
       </Term>
       <Term Name="ExpandReferences" Type="Edm.Boolean" DefaultValue="True">
         <Annotation Term="OData.Description" String="The term can be applied to a navigation property in order to specify that the default behavior for the service is to expand the references for the [related resource](#reference-to-a-single-related-resource) or [collection of resources](#array-of-references-to-related-resources) in responses"/>
