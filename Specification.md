@@ -5,7 +5,7 @@ DocType: Specification
 DocVersion: '0.94.0'
 DocStatus: Work in Progress
 DocConfidentiality: – Not a DMTF Standard – DMTF Confidential
-expiration: '2014-10-31'
+expiration: '2015-07-24'
 released: false
 copyright: '2014-2015'
 ---
