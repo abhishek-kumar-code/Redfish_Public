@@ -300,7 +300,7 @@ window.onhashchange = scrollToHash;
           <div class="logo"></div>
           <p>Document Number: DSP0266</p>
           <p>Date: 2015-01-13</p>
-          <p>Version: 0.94.0</p>
+          <p>Version: 0.94.0a</p>
           
         </div>
         <h1>Scalable Platforms Management API Specification</h1>
@@ -943,8 +943,8 @@ window.onhashchange = scrollToHash;
 </ul>
 <p>The first parameter of a bound function is the resource on which the action is being invoked. The remaining parameters are represented as name/value pairs in the body of the request.</p>
 <p>Clients can query a resource directly to determine the <a href="#user-content-actions-property">actions</a> that are available as well as <a href="#user-content-allowable-values">valid parameter values</a> for those actions.  Some parameter information may require the client to examine the schema corresponding to the resource. </p>
-<p>For instance, if a schema document <code>http://dmtf.org/schema/v1/ComputerSystem</code> defines a Reset action, in the <code>ComputerSystem.0.94.0</code> namespace, with the alias &quot;ComputerSystem&quot;, bound to the <code>ComputerSystem.Actions</code> type, such as this example:</p>
-<pre><code class="lang-xml">&lt;Schema Name=&quot;ComputerSystem.0.94.0&quot; Alias=&quot;ComputerSystem&quot;&gt;
+<p>For instance, if a schema document <code>http://dmtf.org/schema/v1/ComputerSystem</code> defines a Reset action, in the <code>ComputerSystem.0.94.0a</code> namespace, with the alias &quot;ComputerSystem&quot;, bound to the <code>ComputerSystem.Actions</code> type, such as this example:</p>
+<pre><code class="lang-xml">&lt;Schema Name=&quot;ComputerSystem.0.94.0a&quot; Alias=&quot;ComputerSystem&quot;&gt;
 ...
   &lt;Action Name=&quot;Reset&quot; Isbound=&quot;true&quot;&gt;
     &lt;Parameter Name=&quot;ComputerSystem&quot; Type=&quot;ComputerSystem.Actions&quot;/&gt;
@@ -1209,22 +1209,22 @@ window.onhashchange = scrollToHash;
  &lt;!-- edmx:Reference and edmx:Schema elements go here --&gt;
 &lt;/edmx:Edmx&gt;
 </code></pre>
-<p>The service metadata shall include the namespaces for each of the DMTF resource types, along with the &quot;DMTFExtensions.0.94.0&quot; namespace. These references may use the standard Uri for the hosted schema definitions (i.e., on <a href="http://dmtf.org/schema">http://dmtf.org/schema</a>) or a Url to a local version of the schema that shall be identical to the hosted version. The namespace shall be aliased with the version-independent namespace name.</p>
-<pre><code class="lang-xml">&lt;edmx:Reference Uri=&quot;http://dmtf.org/schema/v1/ServiceRoot.0.94.0&quot;&gt;
-    &lt;edmx:Include Namespace=&quot;ServiceRoot.0.94.0&quot; Alias=&quot;ServiceRoot&quot;/&gt;
+<p>The service metadata shall include the namespaces for each of the DMTF resource types, along with the &quot;DMTFExtensions.0.94.0a&quot; namespace. These references may use the standard Uri for the hosted schema definitions (i.e., on <a href="http://dmtf.org/schema">http://dmtf.org/schema</a>) or a Url to a local version of the schema that shall be identical to the hosted version. The namespace shall be aliased with the version-independent namespace name.</p>
+<pre><code class="lang-xml">&lt;edmx:Reference Uri=&quot;http://dmtf.org/schema/v1/ServiceRoot.0.94.0a&quot;&gt;
+    &lt;edmx:Include Namespace=&quot;ServiceRoot.0.94.0a&quot; Alias=&quot;ServiceRoot&quot;/&gt;
 &lt;/edmx:Reference&gt;
-&lt;edmx:Reference Uri=&quot;http://dmtf.org/schema/v1/AccountService.0.94.0&quot;&gt;
-  &lt;edmx:Include Namespace=&quot;AccountService.0.94.0&quot; Alias=&quot;AccountService&quot;/&gt;
+&lt;edmx:Reference Uri=&quot;http://dmtf.org/schema/v1/AccountService.0.94.0a&quot;&gt;
+  &lt;edmx:Include Namespace=&quot;AccountService.0.94.0a&quot; Alias=&quot;AccountService&quot;/&gt;
 &lt;/edmx:Reference&gt;
 ...
-&lt;edmx:Reference Uri=&quot;http://dmtf.org/schema/v1/VirtualMedia.0.94.0&quot;&gt;
-  &lt;edmx:Include Namespace=&quot;VirtualMedia.0.94.0&quot; Alias=&quot;VirtualMedia&quot;/&gt;
+&lt;edmx:Reference Uri=&quot;http://dmtf.org/schema/v1/VirtualMedia.0.94.0a&quot;&gt;
+  &lt;edmx:Include Namespace=&quot;VirtualMedia.0.94.0a&quot; Alias=&quot;VirtualMedia&quot;/&gt;
 &lt;/edmx:Reference&gt;
 &lt;edmx:Reference Uri=&quot;http://dmtf.org/schema/v1/Extensions&quot;&gt;
-    &lt;edmx:Include Namespace=&quot;DMTFExtensions.0.94.0&quot; Alias=&quot;DMTF&quot;/&gt;
+    &lt;edmx:Include Namespace=&quot;DMTFExtensions.0.94.0a&quot; Alias=&quot;DMTF&quot;/&gt;
 &lt;/edmx:Reference&gt;
 </code></pre>
-<p>The service metadata shall include an entity container that defines the top level resource and collections. This entity container shall extend the ServiceContainer defined in the ServiceRoot.0.94.0 schema and may include additional resources or collections.</p>
+<p>The service metadata shall include an entity container that defines the top level resource and collections. This entity container shall extend the ServiceContainer defined in the ServiceRoot.0.94.0a schema and may include additional resources or collections.</p>
 <pre><code class="lang-xml">&lt;edmx:DataServices&gt;
     &lt;Schema xmlns=&quot;http://docs.oasis-open.org/odata/ns/edm&quot; Namespace=&quot;Service&quot;&gt;
       &lt;EntityContainer Name=&quot;Service&quot; Extends=&quot;ServiceRoot.ServiceContainer&quot;/&gt;
@@ -1240,7 +1240,7 @@ window.onhashchange = scrollToHash;
 <h5 id="annotations">Annotations</h5>
 <p>The service can annotate sets, types, actions and parameters with SPMA-defined or custom annotation terms. These annotations are typically in a separate Annotations file referenced from the service metadata document using the IncludeAnnotations directive. The alias of the namespace containing system annotations shall be &quot;Annotations&quot;.</p>
 <pre><code class="lang-xml">&lt;edmx:Reference Uri=&quot;http://service/metadata/Service.Annotations&quot;&gt;
-    &lt;edmx:IncludeAnnotations TermNamespace=&quot;Annotations.0.94.0&quot; Alias=&quot;Annotations&quot;/&gt;
+    &lt;edmx:IncludeAnnotations TermNamespace=&quot;Annotations.0.94.0a&quot; Alias=&quot;Annotations&quot;/&gt;
 &lt;/edmx:Reference&gt;
 </code></pre>
 <p>The annotation file itself specifies the Target schema element being annotated, the Term being applied, and the value of the term:</p>
@@ -1319,7 +1319,7 @@ window.onhashchange = scrollToHash;
 <p>The client may issue a GET request to this URL using a content type of <code>application/xml</code> in order to retrieve the schema document containing the <a href="#user-content-resource-actions">definition of the action</a>.</p>
 <p>The value of the property is a JSON object containing a property named &quot;target&quot; whose value is a relative or absolute URL used to invoke the action.</p>
 <p>The property representing the available action may be annotated with the <a href="#user-content-allowable-values">AllowableValues</a> annotation in order to specify the list of allowable values for a particular parameter.</p>
-<p>For example, the following property represents the Reset action, defined in the ComputerSystem.0.94.0 namespace (aliased with the version-independent &quot;ComputerSystem&quot;):</p>
+<p>For example, the following property represents the Reset action, defined in the ComputerSystem.0.94.0a namespace (aliased with the version-independent &quot;ComputerSystem&quot;):</p>
 <pre><code class="lang-json">    &quot;#ComputerSystem.Reset&quot;: {
         &quot;target&quot;:&quot;/rest/v1/Systems/1/Actions/ComputerSystem.Reset&quot;,
             &quot;ResetType@DMTF.AllowableValues&quot;: [&quot;On&quot;,&quot;Off&quot;, &quot;Reset&quot;]
@@ -1389,7 +1389,7 @@ window.onhashchange = scrollToHash;
 <pre><code class="lang-json">{
     &quot;@odata.context&quot;: &quot;/rest/v1/$metadata/Sessions/Links/Members/$entity&quot;,
     &quot;@odata.id&quot;: &quot;/rest/v1/Sessions/Administrator1&quot;,
-    &quot;@odata.type&quot;: &quot;#Session.0.94.0.Session&quot;,
+    &quot;@odata.type&quot;: &quot;#Session.0.94.0a.Session&quot;,
     &quot;Id&quot;: &quot;Administrator1&quot;,
     &quot;Name&quot;: &quot;User Session&quot;,
     &quot;Description&quot;: &quot;Manager User Session&quot;,
@@ -1410,7 +1410,7 @@ window.onhashchange = scrollToHash;
 <pre><code class="lang-json">{
     &quot;@odata.context&quot;: &quot;/rest/v1/$metadata/Sessions/Links/Members/$entity&quot;,
     &quot;@odata.id&quot;: &quot;/rest/v1/Sessions/Administrator1&quot;,
-    &quot;@odata.type&quot;: &quot;#Session.0.94.0.Session&quot;,
+    &quot;@odata.type&quot;: &quot;#Session.0.94.0a.Session&quot;,
     &quot;Id&quot;: &quot;Administrator1&quot;,
     &quot;Name&quot;: &quot;User Session&quot;,
     &quot;Description&quot;: &quot;Manager User Session&quot;,
@@ -1587,7 +1587,7 @@ window.onhashchange = scrollToHash;
 <li><em>MinorVersion</em> = integer: a minor update. New properties may have been added but nothing removed. Compatibility will be preserved with previous minorversions. </li>
 <li><em>Errata</em> = integer: something in the prior version was broken and needed to be fixed.</li>
 </ul>
-<p>An example of a valid type namespace might be &quot;System.0.94.0&quot;. </p>
+<p>An example of a valid type namespace might be &quot;System.0.94.0a&quot;. </p>
 <h4 id="type-identifiers-in-json">Type Identifiers in JSON</h4>
 <p>Types used within a JSON payload shall be defined in, or referenced, by the <a href="#service-metadata">service metadata</a>.</p>
 <p>Resource types defined by this specification shall be referenced in JSON documents using the full (versioned) namespace name. </p>
@@ -1641,7 +1641,7 @@ window.onhashchange = scrollToHash;
 <h5 id="referencing-other-schemas">Referencing other Schemas</h5>
 <p>Schemas may reference types defined in other schema documents by including a <code>Reference</code> element. </p>
 <p>The reference element specifies the <code>Uri</code> of the schema document describing the referenced type and has one or more child <code>Include</code> elements that specify the <code>Namespace</code> attribute containing the types to be referenced, along with an optional <code>Alias</code> attribute for that namespace.</p>
-<p>Type definitions generally reference the OData and DMTF namespaces for common type annotation terms, and resource type definitions reference the DMTF Resource.0.94.0 namespace for base types. Schemas that include measures such as temperature, speed, or dimensions generally include the <a href="#user-content-OData-Measures">OData Measures namespace</a>. </p>
+<p>Type definitions generally reference the OData and DMTF namespaces for common type annotation terms, and resource type definitions reference the DMTF Resource.0.94.0a namespace for base types. Schemas that include measures such as temperature, speed, or dimensions generally include the <a href="#user-content-OData-Measures">OData Measures namespace</a>. </p>
 <pre><code class="lang-xml">  &lt;edmx:Reference Uri=&quot;http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml&quot;&gt;
     &lt;edmx:Include Namespace=&quot;Org.OData.Core.V1&quot; Alias=&quot;OData&quot;/&gt;
   &lt;/edmx:Reference&gt;
@@ -1650,17 +1650,17 @@ window.onhashchange = scrollToHash;
     &lt;edmx:Include Namespace=&quot;Org.OData.Measures.V1&quot; Alias=&quot;OData.Measures&quot;/&gt;
   &lt;/edmx:Reference&gt;
   &lt;edmx:Reference Uri=&quot;http://dmtf.org/schema/v1/Extensions&quot;&gt;
-    &lt;edmx:Include Namespace=&quot;DMTFExtensions.0.94.0&quot; Alias=&quot;DMTF&quot;/&gt;
+    &lt;edmx:Include Namespace=&quot;DMTFExtensions.0.94.0a&quot; Alias=&quot;DMTF&quot;/&gt;
   &lt;/edmx:Reference&gt;
   &lt;edmx:Reference Uri=&quot;http://dmtf.org/schema/v1/Resource&quot;&gt;
-    &lt;edmx:Include Namespace=&quot;Resource.0.94.0&quot; Alias=&quot;Resource&quot;/&gt;
+    &lt;edmx:Include Namespace=&quot;Resource.0.94.0a&quot; Alias=&quot;Resource&quot;/&gt;
   &lt;/edmx:Reference&gt;
 </code></pre>
 <h5 id="namespace-definitions">Namespace Definitions</h5>
 <p>Resource types are defined within a namespace. The namespace is defined through a <code>Schema</code> element that contains attributes for declaring the <code>Namespace</code> and local <code>Alias</code> for the schema. </p>
 <p>The Schema element is a child of the <code>DataServices</code> element, which is a child of the <a href="#user-content-schema-documents">Edmx</a> element.</p>
 <pre><code class="lang-xml">  &lt;edmx:DataServices&gt;
-    &lt;Schema xmlns=&quot;http://docs.oasis-open.org/odata/ns/edm&quot; Namespace=&quot;MyTypes.0.94.0&quot; Alias=&quot;MyTypes&quot;&gt;
+    &lt;Schema xmlns=&quot;http://docs.oasis-open.org/odata/ns/edm&quot; Namespace=&quot;MyTypes.0.94.0a&quot; Alias=&quot;MyTypes&quot;&gt;
 
       &lt;!-- Type definitions go here --&gt;
 
@@ -1669,7 +1669,7 @@ window.onhashchange = scrollToHash;
 </code></pre>
 <h4 id="resource-type-definitions">Resource Type Definitions</h4>
 <p>Resource types are defined within a <a href="#user-content-namespace-definitions">namespace</a> using <code>EntityType</code> elements. The <code>Name</code> attribute specifies the name of the resource and the <code>BaseType</code> specifies the base type, if any.</p>
-<p>SPMA resources derive from a common Resource base type named &quot;Resource&quot; in the Resource.0.94.0 namespace. </p>
+<p>SPMA resources derive from a common Resource base type named &quot;Resource&quot; in the Resource.0.94.0a namespace. </p>
 <p>The EntityType contains the <a href="#user-content-resource-properties">property</a> and <a href="#user-content-reference-properties">navigation property</a> elements that define the resource, as well as annotations describing the resource.</p>
 <pre><code class="lang-xml">      &lt;EntityType Name=&quot;TypeA&quot; BaseType=&quot;Resource.Resource&quot;&gt;
         &lt;Annotation Term=&quot;Core.Description&quot; String=&quot;This is the description of TypeA.&quot;/&gt;
@@ -1893,7 +1893,7 @@ Properties that must have a non-nullable value include the <a href="#user-conten
 <p>Because <a href="#user-content-annotations">service annotations</a> may be applied to existing resource definitions, they are generally specified in a service-specific metadata document referenced by the <a href="#user-content-service-metadata">service metadata</a>.</p>
 <h3 id="common-spma-resource-properties">Common SPMA Resource Properties</h3>
 <p>This section contains a set of common properties across all SPMA resources. The property names in this section shall not be used for any other purpose, even if they are not implemented in a particular resource.</p>
-<p>Common properties are defined in a the base Resource.0.94.0.Resource schema.</p>
+<p>Common properties are defined in a the base Resource.0.94.0a.Resource schema.</p>
 <h4 id="id">Id</h4>
 <p>The Id property of a resource identifies the resource within a collection.</p>
 <h4 id="name">Name</h4>
@@ -2485,6 +2485,6 @@ Authentication login/logout log entries shall contain a user identifier that can
 
         <h2 id="last-footer-fix"></h2>
       </div>
-      <div id="footer"><div data-doc-version="0.94.0">Work in Progress – Not a DMTF Standard – DMTF Confidential</div></div>
+      <div id="footer"><div data-doc-version="0.94.0a">Work in Progress – Not a DMTF Standard – DMTF Confidential</div></div>
     </body>
   </html>
