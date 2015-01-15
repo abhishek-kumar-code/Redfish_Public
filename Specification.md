@@ -1084,10 +1084,8 @@ Extended error information is returned as a JSON object with a single property n
                 "target": "IndicatorLED",
                 "message": "The value %1 for the property %2 is not in the list of acceptable values",
                 "@message.parameters": [
-                    {
-                        "RED",
-                        "IndicatorLED"
-                    }
+                    "RED",
+                    "IndicatorLED"
                 ],
                 "@message.severity": "Warning",
                 "@message.resolution": "Remove the property from the request body and resubmit the request if the operation failed"
@@ -1097,9 +1095,7 @@ Extended error information is returned as a JSON object with a single property n
                 "target": "SKU",
                 "message": "The property %1 is a read only property and cannot be assigned a value",
                 "@message.parameters": [
-                    {
-                        "SKU"
-                    }
+                    "SKU"
                 ],
                 "@message.severity": "Warning",
                 "@message.resolution": "Remove the property from the request body and resubmit the request if the operation failed"
