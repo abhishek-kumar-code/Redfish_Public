@@ -2,7 +2,7 @@
 DocTitle: Scalable Platforms Management API Specification
 DocNumber: '0266'
 DocType: Specification
-DocVersion: '0.94.0'
+DocVersion: '0.95.0'
 DocStatus: Work in Progress
 DocConfidentiality: – Not a DMTF Standard – DMTF Confidential
 expiration: '2015-07-24'
@@ -88,7 +88,7 @@ The following additional terms are used in this document.
 | Event          | A record that corresponds to an individual alert.                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | Message        | A complete request or response, formatted in HTTP/HTPS.  The protocol, based on REST, is a request/response protocol where every Request should result in a Response.                                                                                                                                                                                                                                                                                                                           |
 | Operation      | The HTTP request methods which map generic CRUD (Create, Read, Update Delete) operation.  These are POST, GET, PUT/PATCH, HEAD and DELETE.                                                                                                                                                                                                                                                                                                                                                      |
-| OData          | The Open Data Protocol, as defined in [OData-Protocol](#user-content-OData-Protocol).                                                                                                                                                                                                                                                                                                                                                      |
+| OData          | The Open Data Protocol, as defined in [OData-Protocol](#OData-Protocol).                                                                                                                                                                                                                                                                                                                                                      |
 | SPMA Schema    | The Schema definitions for SPMA resources.  It is defined according to OData Schema notation that can be directly translated to a JSON Schema representation.                                                                                                                                                                                                                                                                                                                                                                                                           |
 | Request        | A message from a Client to a Server.  It consists of a request line (which includes the Operation), request headers, an empty line and an optional message body.                                                                                                                                                                                                                                                                                                                                |
 | Resource       | A Resource is addressable by a URI and is able to receive and process messages. A Resource can be either an individual entity, or a collection that acts as a container for several other entities.                                                                                                                                                                                                                                                                                             |
@@ -437,15 +437,11 @@ The root URL for the service returns a RootService resource as defined by this s
 
 ##### Metadata Document Request
 
-SPMA services shall expose a [metadata document](#user-content-schema-definition) describing the service at the /rest/v1/$metadata resource. This metadata document describes the resources and collections available at the root, as well as annotations and OEM-specific types exposed by the service.
+SPMA services shall expose a [metadata document](#user-content-service-metadata) describing the service at the "/rest/v1/$metadata" resource. This metadata document describes the resources and collections available at the root, and references additional metadata documents describing the full set of resource types exposed by the service.
 
-In the interest of keeping the root metadata document small, this root metadata document will typically reference external schema documents for service-specific annotations and OEM-specific types.
+##### OData Service Document Request
 
-SPMA resources are always referenced externally, using the canonical URI defined for each SPMA resource definition.
-
-##### Service Document Request
-
-SPMA services shall expose an OData service document, as defined in [OData-JSON](#user-content-OData-JSON), at the /rest/v1/odata resource. This service document provides a standard format for enumerating the resources exposed by the service, enabling a hypermedia-driven OData client to navigate to the resources of the service.
+SPMA services shall expose an [OData Service Document](#user-content-odata-service-document), at the "/rest/v1/odata" resource. This service document provides a standard format for enumerating the resources exposed by the service, enabling generic hypermedia-driven OData clients to navigate to the resources of the service.
 
 ##### Resource Retrieval Requests
 
@@ -586,7 +582,11 @@ POST /rest/v1/Systems/1/Actions/ComputerSystem.Reset
 
 ### Responses
 
-This section describes response requirements for SPMA services.
+SPA defines four types of responses:
+* [Metadata Responses](#user-content-metadata-responses) - Describe the resources and types exposed by the service to generic clients.
+* [Resource Responses](#user-content-resource-responses) - JSON representation of an individual resource.
+* [Resource Collection Responses](#user-content-resource-collections) - JSON representation of a collections of resources.
+* [Error Responses](#user-content-error-responses) - Top level JSON response providing additional information in the case of an HTTP error.
 
 #### Response Headers
 
@@ -703,7 +703,7 @@ The service metadata shall include an entity container that defines the top leve
 </edmx:DataServices>
 ~~~
 
-##### Referencing OEM Extensions
+###### Referencing OEM Extensions
 The metadata document may reference additional schema documents describing OEM-specific extensions used by the ServiceRoot, for example custom types for additional collections.
 
 ~~~xml
@@ -712,7 +712,7 @@ The metadata document may reference additional schema documents describing OEM-s
 </edmx:Reference>
 ~~~
 
-##### Annotations
+###### Annotations
 The service can annotate sets, types, actions and parameters with SPMA-defined or custom annotation terms. These annotations are typically in a separate Annotations file referenced from the service metadata document using the IncludeAnnotations directive. The alias of the namespace containing system annotations shall be "Annotations".
 
 ~~~xml
@@ -733,6 +733,44 @@ The annotation file itself specifies the Target schema element being annotated, 
   </Annotation>
 </Annotations>
 ~~~
+
+##### OData Service Document
+The OData Service Document serves as a top-level entry point for generic OData clients.
+
+~~~json
+{
+    "@odata.context": "/rest/v1/$metadata",
+    "value": [
+        {
+            "name": "Service",
+            "kind": "Singleton",
+            "url": "/rest/v1"
+        },
+        {
+            "name": "Systems",
+            "kind": "Singleton",
+            "url": "/rest/v1/Systems"
+        },
+        {
+            "name": "Chassis",
+            "kind": "Singleton",
+            "url": "/rest/v1/Chassis"
+        },
+        {
+            "name": "Managers",
+            "kind": "Singleton",
+            "url": "/rest/v1/Managers"
+        },
+		...
+    ]
+}
+~~~ 
+
+The OData Service Document shall have a context property named "@odata.context" with a value of "/rest/v1/$metadata". This context tells a generic OData client how to find the [service metadata](#user-content-user-metadata) describing the types exposed by the service.
+
+The OData Service Document shall include a property named "value" whose value is a JSON array containing an entry for the [service root](#user-content-service-root-request) and each resource that is a direct child of the service root.
+
+Each entry shall include a "name" property whose value is a user-friendly name of the resource, a "kind" property, whose value is "Singleton" for individual resources (including collection resources) or "EntitySet" for top-level resource collections, and a "url" property whose value is the relative URL for the top-level resource.
 
 #### Resource Responses
 
