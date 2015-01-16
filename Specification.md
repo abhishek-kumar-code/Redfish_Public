@@ -526,13 +526,13 @@ The POST method is used to initiate operations on the object (such as Actions).
  * Services shall support the POST method for sending actions.
  * The POST operation may not be idempotent.
 
-Custom actions are requested on a resource by sending the HTTP POST method to the URI of the action. By convention, the URI of an action is of the form:
+Custom actions are requested on a resource by sending the HTTP POST method to the URI of the action. If the [actions property](#actions-property) within a resource does not specify a target property, then the URI of an action shall be of the form:
 
  *ResourceUri*/Actions/*QualifiedActionName*
 
 where
-* *ResourceUri* is the URL of the resource which supports invoking the action,
-* Actions is the name of the property containing the actions for a resource
+* *ResourceUri* is the URL of the resource which supports invoking the action.
+* "Actions" is the name of the property containing the actions for a resource, as defined by this specification.
 * *QualifiedActionName* is the name of the action qualified by the namespace alias. 
 
 The first parameter of a bound function is the resource on which the action is being invoked. The remaining parameters are represented as name/value pairs in the body of the request.
@@ -545,7 +545,7 @@ For instance, if a schema document `http://dmtf.org/schema/v1/ComputerSystem` de
 <Schema Name="ComputerSystem.<%= DocVersion %>" Alias="ComputerSystem">
 ...
   <Action Name="Reset" Isbound="true">
-    <Parameter Name="ComputerSystem" Type="ComputerSystem.Actions"/>
+    <Parameter Name="Resource" Type="ComputerSystem.Actions"/>
     <Parameter Name="ResetType" Type="ComputerSystem.ResetType"/>
   </Action>
 ...
@@ -636,7 +636,7 @@ HTTP defines headers that can be used in response messages.  The following table
 
 HTTP defines status codes that can be returned in response messages. 
 
-Where the HTTP status code does indicates a failure, the response body contains an [extended error resource](#error-response) to provide the client more meaningful and deterministic error semantics. 
+Where the HTTP status code indicates a failure, the response body contains an [extended error resource](#error-responses) to provide the client more meaningful and deterministic error semantics. 
 
 * Services shall return the extended error resource as described in this specification in the response body when a status code of 400 or 500 is returned.
 * Services should return the extended error resource as described in this specification in the response body when a status code 400 or greater is returned.
