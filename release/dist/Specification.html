@@ -203,7 +203,7 @@ window.onload = function() {
   tags = ((function() {
     var _i, _results;
     _results = [];
-    for (i = _i = 2; _i <= 5; i = ++_i) {
+    for (i = _i = 2; _i <= 6; i = ++_i) {
       _results.push("h" + i);
     }
     return _results;
@@ -214,14 +214,14 @@ window.onload = function() {
   levelMap = (function() {
     var _i, _results;
     _results = [];
-    for (i = _i = 2; _i <= 5; i = ++_i) {
+    for (i = _i = 2; _i <= 6; i = ++_i) {
       _results.push("H" + i);
     }
     return _results;
   })();
   counter = new function() {
     var _i;
-    for (i = _i = 2; _i <= 5; i = ++_i) {
+    for (i = _i = 2; _i <= 6; i = ++_i) {
       this["H" + i] = 0;
     }
     return this;
@@ -299,8 +299,8 @@ window.onhashchange = scrollToHash;
         <div class="preamble">
           <div class="logo"></div>
           <p>Document Number: DSP0266</p>
-          <p>Date: 2015-01-13</p>
-          <p>Version: 0.94.0a</p>
+          <p>Date: 2015-01-16</p>
+          <p>Version: 0.95.0</p>
           
         </div>
         <h1>Scalable Platforms Management API Specification</h1>
@@ -415,7 +415,7 @@ window.onhashchange = scrollToHash;
 </tr>
 <tr>
 <td>OData</td>
-<td>The Open Data Protocol, as defined in <a href="#user-content-OData-Protocol">OData-Protocol</a>.</td>
+<td>The Open Data Protocol, as defined in <a href="#OData-Protocol">OData-Protocol</a>.</td>
 </tr>
 <tr>
 <td>SPMA Schema</td>
@@ -545,38 +545,38 @@ window.onhashchange = scrollToHash;
 <h3 id="service-elements">Service Elements</h3>
 <h4 id="synchronous-and-asynchronous-operation-support">Synchronous and Asynchronous Operation Support</h4>
 <p>While the majority of operations in this architecture are synchronous in nature, some operations can take a long time to execute, more time than a client typically wants to wait. For this reason, some operations can be asynchronous at the discretion of the service. The request portion of an asynchronous operation is no different from the request portion of a synchronous operation.</p>
-<p>The use of HTTP Response codes enable a client to determine if the operation was completed synchronously or asynchronously.  For more information see the section on <a href="#user-content-task">Tasks</a>.</p>
+<p>The use of HTTP Response codes enable a client to determine if the operation was completed synchronously or asynchronously.  For more information see the section on <a href="#task">Tasks</a>.</p>
 <h4 id="eventing-mechanism">Eventing Mechanism</h4>
 <p>In some situations it is useful for a service to provide messages to clients that fall outside the normal request/response paradigm. These messages, called events, are used by the service to asynchronously notify the client of some significant state change or error condition, usually of a time critical nature.</p>
 <p>Only one style of eventing is currently defined by this specification - push style eventing. In push style eventing, when the server detects the need to send an event, it uses an HTTP POST to push the event message to the client.  Clients subscribe to the eventing service to enable reception of events. </p>
 <p>Events originate from a specific resource. Not all resources are able to generate events. Those resources capable of generating events might not generate any events unless a client is listening for them. A client expresses interest in receiving events by sending a &quot;subscribe&quot; message to the Event Service. A subscribe message is sent using HTTP POST to the Event Subscriptions collection.</p>
-<p>The Section on <a href="#user-content-eventing">Eventing</a> further in this specification discusses the details of the eventing mechanism.</p>
+<p>The Section on <a href="#eventing">Eventing</a> further in this specification discusses the details of the eventing mechanism.</p>
 <h4 id="actions">Actions</h4>
-<p>Operations can be divided into two sets: intrinsic and extrinsic.  Intrinsic operations, often referred to as CRUD, are mapped to <a href="#user-content-methods">HTTP methods</a>.  The protocol also has the ability to support extrinsic operations -- those operations that do not map easily to CRUD.  Examples of extrinsic would be items that collectively would be better performed if done as a set (for scalability, ease of interface, server side semantic preservation or similar reasons) or operations that have no natural mapping to CRUD operations. One examples is system reset.  It is possible to combine multiple operations into a single action.  A system reset could be modeled as an update to state, but semantically the client is actually requesting a state change and not simply changing the value in the state.</p>
+<p>Operations can be divided into two sets: intrinsic and extrinsic.  Intrinsic operations, often referred to as CRUD, are mapped to <a href="#methods">HTTP methods</a>.  The protocol also has the ability to support extrinsic operations -- those operations that do not map easily to CRUD.  Examples of extrinsic would be items that collectively would be better performed if done as a set (for scalability, ease of interface, server side semantic preservation or similar reasons) or operations that have no natural mapping to CRUD operations. One examples is system reset.  It is possible to combine multiple operations into a single action.  A system reset could be modeled as an update to state, but semantically the client is actually requesting a state change and not simply changing the value in the state.</p>
 <p>In SPMA, these extrinsic operations are called <strong>actions</strong> and are discussed in detail in different parts of this specification.</p>
-<p>The SPMA Schema defines certain standard actions associated with <a href="#user-content-common-spma-resources">common SPM resources</a>.  For these standard actions, the SPMA Schema contains the normative language on the behavior of the action.  OEM extensions are also allowed to the <a href="#user-content-schema-extensibility">schema</a>, including defining <a href="#user-content-custom-actions">actions</a> for existing resources.</p>
+<p>The SPMA Schema defines certain standard actions associated with <a href="#common-spma-resources">common SPM resources</a>.  For these standard actions, the SPMA Schema contains the normative language on the behavior of the action.  OEM extensions are also allowed to the <a href="#schema-extensibility">schema</a>, including defining <a href="#custom-actions">actions</a> for existing resources.</p>
 <h4 id="service-entry-point-discovery">Service Entry Point Discovery</h4>
 <p>While the service itself is at a well-known URI, the service host must be discovered. SPMA, like UPnP, uses SSDP for discovery. SSDP is supported in a wide variety of devices, such as printers.  It is simple, lightweight, IPv6 capable and suitable for implementation in embedded environments.  SPMA is investigating additional service entry point discovery (e.g. DHCP-based) approaches.</p>
-<p>For more information, see the section on <a href="#user-content-discovery-1">Discovery</a></p>
+<p>For more information, see the section on <a href="#discovery-1">Discovery</a></p>
 <h4 id="remote-access-support">Remote Access Support</h4>
 <p>A wide variety of remote access and redirection services are supported in this architecture.  Critical to out-of-band environments are mechanisms to support Serial Console access, Keyboard Video and Mouse re-direction (KVM-IP), Command Shell (i.e. Command Line interface) and remote Virtual Media.  Support for Serial Console, Command Shell, KVM-IP and Virtual Media are all encompassed in this standard and are expressed in the SPMA Schema.  This standard does not define the protocols or access mechanisms for accessing those devices and services.  The SPMA Schema provides for the representation and configuration of those services, establishment of connections to enable those services and the operational status of those services.  However, the specification of the protocols themselves are outside the scope of this specification.</p>
 <h3 id="security">Security</h3>
 <p>The challenge with security in a remote interface that is programmatic is to ensure both the interfaces used to interact with SPMA and the data being exchanged are secured. This means designing the proper security control mechanisms around the interfaces and securing the channels used to exchange the data. As part of this, specific behaviors are to be put in place including defining and using a minimum levels of encryption for communication channels etc.</p>
 <h2 id="protocol-details">Protocol Details</h2>
-<p>The Scalable Platform Management API is based on REST and follows OData conventions for interoperability, as defined in <a href="#user-content-OData-Protocol">OData-Protocol</a>, JSON payloads, as defined in <a href="#user-content-OData-JSON">OData-JSON</a>, and a machine-readable representation of schema, as defined in <a href="#user-content-OData-CSDL">OData-Schema</a>. The schemas include annotations to enable direct translation to JSON Schema for validation and consumption by tools supporting JSON Schema. Following these common standards and conventions increases interoperability and enables leveraging of existing tool chains.</p>
+<p>The Scalable Platform Management API is based on REST and follows OData conventions for interoperability, as defined in <a href="#OData-Protocol">OData-Protocol</a>, JSON payloads, as defined in <a href="#OData-JSON">OData-JSON</a>, and a machine-readable representation of schema, as defined in <a href="#OData-CSDL">OData-Schema</a>. The schemas include annotations to enable direct translation to JSON Schema for validation and consumption by tools supporting JSON Schema. Following these common standards and conventions increases interoperability and enables leveraging of existing tool chains.</p>
 <p>SPMA follows the OData minimal conformance level for clients consuming minimal metadata.</p>
 <p>Throughout this document, we refer to SPMA as having a protocol mapped to a data model.  More accurately, HTTP is the application protocol that will be used to transport the messages and TCP/IP is the transport protocol. The RESTful interface is a mapping to the message protocol.  For simplicity though, we will refer to the RESTful mapping to HTTP, TCP/IP and other protocol, transport and messaging layer aspects as the SPMA protocol. </p>
 <p>The SPMA protocol is designed around a web service based interface model, and designed for network and interaction efficiency for both user interface (UI) and automation usage. The interface is specifically designed around the REST pattern semantics.</p>
-<p><a href="#user-content-http-methods">HTTP methods</a> are used by the SPMA protocol for common CRUD (Create, Read, Update, Delete) operations and to retrieve header information.</p>
-<p><a href="#user-content-actions">Actions</a> are used for expanding operations beyond CRUD type operations, but should be limited in use.</p>
-<p><a href="#user-content-media-types">Media types</a> are used to negotiate the type of data that is being sent in the body of a message. </p>
-<p><a href="#user-content-status-codes">HTTP status codes</a> are used to indicate the server&#39;s attempt at processing the request.  <a href="#user-content-extended-error-handling">Extended error handling</a> is used to return more information than the HTTP error code provides.</p>
-<p>The ability to send secure messages is important; the <a href="#user-content-security">Security</a> section of this document describes specific TLS requirements.</p>
-<p>Some operations may take longer than required for synchronous return semantics. Consequently, deterministic <a href="#user-content-synchronous-and-asynchronous-operation-support">asynchronous semantic</a> are included in the architecture.</p>
+<p><a href="#http-methods">HTTP methods</a> are used by the SPMA protocol for common CRUD (Create, Read, Update, Delete) operations and to retrieve header information.</p>
+<p><a href="#actions">Actions</a> are used for expanding operations beyond CRUD type operations, but should be limited in use.</p>
+<p><a href="#media-types">Media types</a> are used to negotiate the type of data that is being sent in the body of a message. </p>
+<p><a href="#status-codes">HTTP status codes</a> are used to indicate the server&#39;s attempt at processing the request.  <a href="#error-response">Extended error handling</a> is used to return more information than the HTTP error code provides.</p>
+<p>The ability to send secure messages is important; the <a href="#security">Security</a> section of this document describes specific TLS requirements.</p>
+<p>Some operations may take longer than required for synchronous return semantics. Consequently, deterministic <a href="#synchronous-and-asynchronous-operation-support">asynchronous semantic</a> are included in the architecture.</p>
 <h3 id="use-of-http">Use of HTTP</h3>
 <p>HTTP is ideally suited to a RESTful interface. This section describes how HTTP is used in the SPMA interface and what constraints are added on top of HTTP to assure interoperability of SPMA compliant implementations.</p>
 <ul>
-<li>An SPMA interface shall be exposed through a web service endpoint implemented using Hypertext Transfer Protocols, version 1.1 (<a href="#user-content-RFC2616">RFC2616</a>).</li>
+<li>An SPMA interface shall be exposed through a web service endpoint implemented using Hypertext Transfer Protocols, version 1.1 (<a href="#RFC2616">RFC2616</a>).</li>
 </ul>
 <h4 id="uris">URIs</h4>
 <p>A URI is used to identify a resource, including the base service and all SPMA resources.</p>
@@ -589,7 +589,7 @@ window.onhashchange = scrollToHash;
 <li>Performing a GET operation yields a representation of the resource containing properties and links to associated resources.</li>
 </ul>
 <p>The base resource URI is well known and is based on the protocol version.  Discovering the URIs to additional resources is done through observing the associated resource links returned in previous responses. This type of API that is consumed by navigating URIs returned by the service is known as a Hypermedia API.</p>
-<p>The URI is the primary unique identifier of resources.  SPMA considers 3 parts of the URI as described in <a href="#user-content-RFC3986">RFC3986</a>. </p>
+<p>The URI is the primary unique identifier of resources.  SPMA considers 3 parts of the URI as described in <a href="#RFC3986">RFC3986</a>. </p>
 <p>The first part includes the scheme and authority portions of the URI. The second part includes the root service and version.  The third part is a unique resource identifier.</p>
 <p>For example, in the following URL:</p>
 <pre><code>Example: https://mgmt.vendor.com/rest/v1/Systems/1
@@ -605,7 +605,7 @@ window.onhashchange = scrollToHash;
 <p>For example, a POST may return the following URI in the Location header of the response (indicating the new resource created by the POST):</p>
 <pre><code>Example: /rest/v1/Systems/2
 </code></pre><p>Assuming the client is connecting through an appliance named &quot;mgmt.vendor.com&quot;, the full URI needed to access this new resource is <a href="https://mgmt.vendor.com/rest/v1/Systems/2">https://mgmt.vendor.com/rest/v1/Systems/2</a>.</p>
-<p>URIs, as described in <a href="#user-content-RFC3986">RFC3986</a>, may also contain a query (?query) and a frag (#frag) components.  Queries are addressed in the section <a href="#user-content-query-parameters">Query Parameters</a>.  Fragments (frag) shall be ignored by the server when used as the URI for submitting an operation. </p>
+<p>URIs, as described in <a href="#RFC3986">RFC3986</a>, may also contain a query (?query) and a frag (#frag) components.  Queries are addressed in the section <a href="#query-parameters">Query Parameters</a>.  Fragments (frag) shall be ignored by the server when used as the URI for submitting an operation. </p>
 <h4 id="http-methods">HTTP Methods</h4>
 <p>An attractive feature of the RESTful interface is the very limited number of operations which are supported. The following table describes the general mapping of operations to HTTP methods.  If the value in the column entitled &quot;required&quot; has the value &quot;yes&quot; then the HTTP method shall be supported by an SPMA interface.</p>
 <table>
@@ -649,27 +649,31 @@ window.onhashchange = scrollToHash;
 </tr>
 </tbody>
 </table>
-<p>Other HTTP methods are not allowed and shall receive a <a href="#user-content-status-405">405</a> response.</p>
+<p>Other HTTP methods are not allowed and shall receive a <a href="#status-405">405</a> response.</p>
 <h4 id="http-redirect">HTTP Redirect</h4>
 <p>HTTP redirect allows a service to redirect a request to another URL. Among other things, this enables SPMA resources to alias areas of the data model.</p>
 <ul>
 <li>All SPMA Clients shall correctly handle HTTP redirect. </li>
 </ul>
-<p>NOTE: Refer to the <a href="#user-content-security">Security</a> section for security implications of HTTP Redirect</p>
+<p>NOTE: Refer to the <a href="#security">Security</a> section for security implications of HTTP Redirect</p>
 <h4 id="media-types">Media Types</h4>
 <p>Some resources may be available in more than one type of representation. The type of representation is indicated by the media type. </p>
 <p>In HTTP messages the media type is specified in the Content-Type header. A client can tell a service that it wants the response to be sent using certain media types by setting the HTTP Accept header to a list of the acceptable media types.</p>
 <ul>
 <li>All resources shall be made available using the JSON media type
 &quot;application/json&quot;.</li>
-<li>SPMA services shall make every resource available in a representation based on JSON, as specified in <a href="#user-content-RFC4627">RFC4627</a>. Receivers shall not reject a message because it is encoded in JSON, and shall offer at least one response representation based on JSON. An implementation may offer additional representations using non-JSON media types.</li>
-<li>Responses to GET requests may be compressed.  Clients shall be prepared to accept a Content-Encoding of gzip in a Response to a GET.</li>
+<li>SPMA services shall make every resource available in a representation based on JSON, as specified in <a href="#RFC4627">RFC4627</a>. Receivers shall not reject a message because it is encoded in JSON, and shall offer at least one response representation based on JSON. An implementation may offer additional representations using non-JSON media types.</li>
+</ul>
+<p>Clients may request compression by specifying an <a href="#request-headers">Accept-Encoding header</a> in the request. </p>
+<ul>
+<li>Responses to GET requests shall only be compressed if requested by the client. </li>
+<li>Services should support gzip compression when requested by the client.</li>
 </ul>
 <h4 id="etags">ETags</h4>
 <p>In order to reduce the cases of unnecessary RESTful accesses to resources, the SPMA Service should support associating a separate ETag with each resource.</p>
 <ul>
-<li>Implementations should support returning <a href="#user-content-etag-property">ETag properties</a> for each resource.</li>
-<li>Implementations should support returning ETag headers for each response that represents a single resource.  Implementations shall support returning ETag headers for certain requests and responses as listed in the <a href="#user-content-security">Security</a> section.</li>
+<li>Implementations should support returning <a href="#etag-property">ETag properties</a> for each resource.</li>
+<li>Implementations should support returning ETag headers for each response that represents a single resource.  Implementations shall support returning ETag headers for certain requests and responses as listed in the <a href="#security">Security</a> section.</li>
 </ul>
 <p>The ETag is generated and provided as part of the resource payload because the service is in the best position to know if the new version of the object is different enough to be considered substantial. There are two types of ETags: weak and strong.</p>
 <ul>
@@ -745,7 +749,7 @@ window.onhashchange = scrollToHash;
 <td>Content-Length</td>
 <td>No</td>
 <td><a href="http://pretty-rfc.herokuapp.com/RFC2616#header.content-length">RFC 2616, Section 14.3</a></td>
-<td>Describes the size of the message body. An optional means of indicating size of the body uses Transfer-Encoding: chunked, which does not use the Content-Length header. If a service does not support Transfer-Encoding and needs Content-Length instead, the service will respond with status code <a href="#user-content-status-411">411</a>.</td>
+<td>Describes the size of the message body. An optional means of indicating size of the body uses Transfer-Encoding: chunked, which does not use the Content-Length header. If a service does not support Transfer-Encoding and needs Content-Length instead, the service will respond with status code <a href="#status-411">411</a>.</td>
 </tr>
 <tr>
 <td>Max-OData-Version</td>
@@ -763,7 +767,7 @@ window.onhashchange = scrollToHash;
 <td>Authorization</td>
 <td>Conditional</td>
 <td><a href="http://pretty-rfc.herokuapp.com/RFC2617#basic-authentication-scheme">RFC 2617, Section 2</a></td>
-<td>Required for <a href="#user-content-basic-auth">Basic Authorization</a>                                                                                                                                                                                                                                                                                  </td>
+<td>Required for <a href="#basic-auth">Basic Authorization</a>                                                                                                                                                                                                                                                                                  </td>
 </tr>
 <tr>
 <td>User-Agent</td>
@@ -805,7 +809,7 @@ window.onhashchange = scrollToHash;
 <td>If-None-Match</td>
 <td>No</td>
 <td><a href="http://pretty-rfc.herokuapp.com/RFC2616#header.max-forwards">RFC 2616, Section 14.31</a></td>
-<td>If this HTTP header is present, the service will only return the requested resource if the current ETag of that resource does not match the ETag sent in this header.  If the ETag specified in this header matches the resource&#39;s current ETag, the status code returned from the GET will be <a href="#user-content-status-304">304</a>.</td>
+<td>If this HTTP header is present, the service will only return the requested resource if the current ETag of that resource does not match the ETag sent in this header.  If the ETag specified in this header matches the resource&#39;s current ETag, the status code returned from the GET will be <a href="#status-304">304</a>.</td>
 </tr>
 </tbody>
 </table>
@@ -831,7 +835,7 @@ window.onhashchange = scrollToHash;
 </tbody>
 </table>
 <h4 id="read-requests-get-">Read Requests (GET)</h4>
-<p>The GET method is used to retrieve a representation of a resource.  That representation can either be a single resource or a collection. The service will return the representation using one of the media types specified in the Accept header, subject to requirements in the Media Types section <a href="#user-content-media-types">Media Types</a>. If the Accept header is not present, the service will return the resources representations as application/json.</p>
+<p>The GET method is used to retrieve a representation of a resource.  That representation can either be a single resource or a collection. The service will return the representation using one of the media types specified in the Accept header, subject to requirements in the Media Types section <a href="#media-types">Media Types</a>. If the Accept header is not present, the service will return the resources representations as application/json.</p>
 <ul>
 <li>The HTTP GET method shall be used to retrieve a resource without causing any side effects.</li>
 <li>The service shall ignore the content of the body on a GET.</li>
@@ -842,11 +846,9 @@ window.onhashchange = scrollToHash;
 <p>Additionally, the latest supported SPMA service shall be aliased at &quot;/rest&quot;. In this case the endpoint at &quot;/rest&quot; may be an HTTP redirect to &quot;/rest/v1&quot;.</p>
 <p>The root URL for the service returns a RootService resource as defined by this specification.</p>
 <h5 id="metadata-document-request">Metadata Document Request</h5>
-<p>SPMA services shall expose a <a href="#user-content-schema-definition">metadata document</a> describing the service at the /rest/v1/$metadata resource. This metadata document describes the resources and collections available at the root, as well as annotations and OEM-specific types exposed by the service.</p>
-<p>In the interest of keeping the root metadata document small, this root metadata document will typically reference external schema documents for service-specific annotations and OEM-specific types.</p>
-<p>SPMA resources are always referenced externally, using the canonical URI defined for each SPMA resource definition.</p>
-<h5 id="service-document-request">Service Document Request</h5>
-<p>SPMA services shall expose an OData service document, as defined in <a href="#user-content-OData-JSON">OData-JSON</a>, at the /rest/v1/odata resource. This service document provides a standard format for enumerating the resources exposed by the service, enabling a hypermedia-driven OData client to navigate to the resources of the service.</p>
+<p>SPMA services shall expose a <a href="#service-metadata">metadata document</a> describing the service at the &quot;/rest/v1/$metadata&quot; resource. This metadata document describes the resources and collections available at the root, and references additional metadata documents describing the full set of resource types exposed by the service.</p>
+<h5 id="odata-service-document-request">OData Service Document Request</h5>
+<p>SPMA services shall expose an <a href="#odata-service-document">OData Service Document</a>, at the &quot;/rest/v1/odata&quot; resource. This service document provides a standard format for enumerating the resources exposed by the service, enabling generic hypermedia-driven OData clients to navigate to the resources of the service.</p>
 <h5 id="resource-retrieval-requests">Resource Retrieval Requests</h5>
 <h6 id="query-parameters">Query Parameters</h6>
 <p>When the resource addressed is a collection, the client can use the following paging query options to specify that a subset of the members be returned.   </p>
@@ -873,16 +875,16 @@ window.onhashchange = scrollToHash;
 </table>
 <ul>
 <li>Services should support the $top and $skip query parameters. </li>
-<li>Implementation shall return the 501, Not Implemented, status code for any query parameters starting with &quot;$&quot; that are not supported, and should return an <a href="#user-content-extended-error-handling">extended error</a> indicating the requested query parameter(s) not supported for this resource.</li>
+<li>Implementation shall return the 501, Not Implemented, status code for any query parameters starting with &quot;$&quot; that are not supported, and should return an <a href="#error-response">extended error</a> indicating the requested query parameter(s) not supported for this resource.</li>
 <li>Implementations shall ignore unknown or unsupported query parameters that do not begin with &quot;$&quot;.</li>
 </ul>
 <h6 id="retrieving-collections">Retrieving Collections</h6>
-<p>Retrieving a collection is done by sending the HTTP GET method to the URI for the collection. The response will be a <a href="#user-content-resource-collections">resource collection representation</a> that includes the collection&#39;s attributes as well as the list of the members of the collection. A subset of the members can be returned using <a href="#user-content-query-parameters">client paging query parameters</a>.</p>
+<p>Retrieving a collection is done by sending the HTTP GET method to the URI for the collection. The response will be a <a href="#resource-collections">resource collection representation</a> that includes the collection&#39;s attributes as well as the list of the members of the collection. A subset of the members can be returned using <a href="#query-parameters">client paging query parameters</a>.</p>
 <p>No requirements are placed on implementations to return a consistent set of members when a series of requests using paging query parameters are made over time to obtain the entire set of members. It is possible that this could result in missed or duplicate elements being retrieved if multiple GETs are used to retrieve a collection using paging.</p>
 <ul>
 <li>Clients shall not make assumptions about the URIs for the resource members of a collection.</li>
-<li>Retrieved collections should always include the <a href="#user-content-resource-count-property">count</a> property to specify the total number of members in the collection.</li>
-<li>If only a portion of the collection is returned due to client-specified paging query parameters or services returning <a href="#user-content-partial-results">partial results</a>, then the total number of resources across all pages shall be returned in the count property.</li>
+<li>Retrieved collections should always include the <a href="#resource-count-property">count</a> property to specify the total number of members in the collection.</li>
+<li>If only a portion of the collection is returned due to client-specified paging query parameters or services returning <a href="#partial-results">partial results</a>, then the total number of resources across all pages shall be returned in the count property.</li>
 </ul>
 <h4 id="head">HEAD</h4>
 <p>The HEAD method differs from the GET method in that it MUST NOT return message body information.  However, all of the same meta information and status codes in the HTTP headers will be returned as though a GET method were processed, including authorization checks.</p>
@@ -897,34 +899,34 @@ window.onhashchange = scrollToHash;
 <h5 id="update-patch-">Update (PATCH)</h5>
 <p>The PATCH method is the preferred method used to perform updates on pre-existing resources.  Changes to the resource are sent in the request body. Properties not specified in the request body are not directly changed by the PATCH request.  The response is either empty or a representation of the resource after the update was done. The implementation may reject the update operation on certain fields based on its own policies and, if so, shall not apply any of the update requested.  Updates to resources are idempotent.</p>
 <ul>
-<li>Services shall support the PATCH method to update a resource. If the resource can never be updated, status code <a href="#user-content-status-405">405</a> shall be returned.</li>
+<li>Services shall support the PATCH method to update a resource. If the resource can never be updated, status code <a href="#status-405">405</a> shall be returned.</li>
 <li>Services may return a representation of the resource after any server-side transformations in the body of the response.</li>
-<li>If a property in the request can never be updated, such as when a property is read only, a status code of <a href="#user-content-status-200">200</a> shall be returned along with a representation of the resource containing an <a href="#user-content-extended-information">annotation</a> specifying the non-updatabl property. In this success case, other properties may be updated in the resource. </li>
-<li>Services should return status code <a href="#user-content-status-405">405</a> if the client specifies a PATCH request against a collection.</li>
+<li>If a property in the request can never be updated, such as when a property is read only, a status code of <a href="#status-200">200</a> shall be returned along with a representation of the resource containing an <a href="#extended-information">annotation</a> specifying the non-updatabl property. In this success case, other properties may be updated in the resource. </li>
+<li>Services should return status code <a href="#status-405">405</a> if the client specifies a PATCH request against a collection.</li>
 <li>The PATCH operation should be idempotent in the absence of outside changes to the resource provided it is used with ETags to prevent subsequent PATCH attempts. Note that the ETAG value should change as the result of this operation.</li>
 </ul>
-<p>OData markup (<a href="#user-content-resource-identifier-property">resource identifiers</a>, <a href="type-property">type</a>, <a href="#user-content-etag-property">etag</a> and <a href="links-property">links</a>) are ignored on Update.</p>
+<p>OData markup (<a href="#resource-identifier-property">resource identifiers</a>, <a href="type-property">type</a>, <a href="#etag-property">etag</a> and <a href="links-property">links</a>) are ignored on Update.</p>
 <h5 id="replace-put-">Replace (PUT)</h5>
 <p>The PUT method is used to completely replace a resource.  Properties omitted from the request body are reset to their default value.</p>
 <ul>
-<li>Services may support the PUT method to replace a resource in whole.  If a service does not implement this method, status code <a href="#user-content-status-405">405</a> shall be returned. </li>
+<li>Services may support the PUT method to replace a resource in whole.  If a service does not implement this method, status code <a href="#status-405">405</a> shall be returned. </li>
 <li>Services may return a representation of the resource after any server-side transformations in the body of the response.</li>
-<li>Services should return status code <a href="#user-content-status-405">405</a> if the client specifies a PUT request against a collection.</li>
+<li>Services should return status code <a href="#status-405">405</a> if the client specifies a PUT request against a collection.</li>
 <li>The PUT operation should be idempotent in the absence of outside changes to the resource, with the possible exception that ETAG values may change as the result of this operation.</li>
 </ul>
 <h5 id="create-post-">Create (POST)</h5>
 <p>The POST method is used to create new resources. The POST request is submitted to the resource collection in which the new resource is to belong.</p>
 <ul>
-<li>Services shall support the POST method for creating resources. If the resource does not offer anything to be created, a status code <a href="#user-content-status-405">405</a> shall be returned.</li>
+<li>Services shall support the POST method for creating resources. If the resource does not offer anything to be created, a status code <a href="#status-405">405</a> shall be returned.</li>
 <li>The POST operation shall not be idempotent.</li>
 </ul>
 <p>The body of the create request contains a representation of the object to be created. The service can ignore any service controlled attributes (e.g. id), forcing those attributes to be overridden by the service. The service shall set the Location header to the URI of the newly created resource. The response to a successful create request shall be 201 (Created), with no response body, or 200 (Ok) with a response body containing the representation of the newly created resource.</p>
 <h5 id="delete-delete-">Delete (DELETE)</h5>
 <p>The DELETE method is used to remove a resource.</p>
 <ul>
-<li>Services shall support the DELETE method for resources that can be deleted. If the resource can never be deleted, status code <a href="#user-content-status-405">405</a> shall be returned.</li>
+<li>Services shall support the DELETE method for resources that can be deleted. If the resource can never be deleted, status code <a href="#status-405">405</a> shall be returned.</li>
 <li>Services may return a representation of the just deleted resource in the response body.</li>
-<li>Services should return status code <a href="#user-content-status-405">405</a> if the client specifies a DELETE request against a collection.</li>
+<li>Services should return status code <a href="#status-405">405</a> if the client specifies a DELETE request against a collection.</li>
 <li>The DELETE operation shall not be not idempotent.</li>
 </ul>
 <h5 id="actions-post-">Actions (POST)</h5>
@@ -933,27 +935,27 @@ window.onhashchange = scrollToHash;
 <li>Services shall support the POST method for sending actions.</li>
 <li>The POST operation may not be idempotent.</li>
 </ul>
-<p>Custom actions are requested on a resource by sending the HTTP POST method to the URI of the action. By convention, the URI of an action is of the form:</p>
+<p>Custom actions are requested on a resource by sending the HTTP POST method to the URI of the action. If the <a href="#actions-property">actions property</a> within a resource does not specify a target property, then the URI of an action shall be of the form:</p>
 <p> <em>ResourceUri</em>/Actions/<em>QualifiedActionName</em></p>
 <p>where</p>
 <ul>
-<li><em>ResourceUri</em> is the URL of the resource which supports invoking the action,</li>
-<li>Actions is the name of the property containing the actions for a resource</li>
+<li><em>ResourceUri</em> is the URL of the resource which supports invoking the action.</li>
+<li>&quot;Actions&quot; is the name of the property containing the actions for a resource, as defined by this specification.</li>
 <li><em>QualifiedActionName</em> is the name of the action qualified by the namespace alias. </li>
 </ul>
 <p>The first parameter of a bound function is the resource on which the action is being invoked. The remaining parameters are represented as name/value pairs in the body of the request.</p>
-<p>Clients can query a resource directly to determine the <a href="#user-content-actions-property">actions</a> that are available as well as <a href="#user-content-allowable-values">valid parameter values</a> for those actions.  Some parameter information may require the client to examine the schema corresponding to the resource. </p>
-<p>For instance, if a schema document <code>http://dmtf.org/schema/v1/ComputerSystem</code> defines a Reset action, in the <code>ComputerSystem.0.94.0a</code> namespace, with the alias &quot;ComputerSystem&quot;, bound to the <code>ComputerSystem.Actions</code> type, such as this example:</p>
-<pre><code class="lang-xml">&lt;Schema Name=&quot;ComputerSystem.0.94.0a&quot; Alias=&quot;ComputerSystem&quot;&gt;
+<p>Clients can query a resource directly to determine the <a href="#actions-property">actions</a> that are available as well as <a href="#allowable-values">valid parameter values</a> for those actions.  Some parameter information may require the client to examine the schema corresponding to the resource. </p>
+<p>For instance, if a schema document <code>http://dmtf.org/schema/v1/ComputerSystem</code> defines a Reset action, in the <code>ComputerSystem.0.95.0</code> namespace, with the alias &quot;ComputerSystem&quot;, bound to the <code>ComputerSystem.Actions</code> type, such as this example:</p>
+<pre><code class="lang-xml">&lt;Schema Name=&quot;ComputerSystem.0.95.0&quot; Alias=&quot;ComputerSystem&quot;&gt;
 ...
   &lt;Action Name=&quot;Reset&quot; Isbound=&quot;true&quot;&gt;
-    &lt;Parameter Name=&quot;ComputerSystem&quot; Type=&quot;ComputerSystem.Actions&quot;/&gt;
+    &lt;Parameter Name=&quot;Resource&quot; Type=&quot;ComputerSystem.Actions&quot;/&gt;
     &lt;Parameter Name=&quot;ResetType&quot; Type=&quot;ComputerSystem.ResetType&quot;/&gt;
   &lt;/Action&gt;
 ...
 &lt;/Schema&gt;
 </code></pre>
-<p>And a computer system resource contains an <a href="#user-content-actions-property">Actions</a> property such as this:</p>
+<p>And a computer system resource contains an <a href="#actions-property">Actions</a> property such as this:</p>
 <pre><code class="lang-json">&quot;Actions&quot;: {
     &quot;#ComputerSystem.Reset&quot;: {
         &quot;target&quot;:&quot;/rest/v1/Systems/1/Actions/ComputerSystem.Reset&quot;,
@@ -976,7 +978,13 @@ window.onhashchange = scrollToHash;
 }
 </code></pre>
 <h3 id="responses">Responses</h3>
-<p>This section describes response requirements for SPMA services.</p>
+<p>SPA defines four types of responses:</p>
+<ul>
+<li><a href="#metadata-responses">Metadata Responses</a> - Describe the resources and types exposed by the service to generic clients.</li>
+<li><a href="#resource-responses">Resource Responses</a> - JSON representation of an individual resource.</li>
+<li><a href="#resource-collections">Resource Collection Responses</a> - JSON representation of a collections of resources.</li>
+<li><a href="#error-responses">Error Responses</a> - Top level JSON response providing additional information in the case of an HTTP error.</li>
+</ul>
 <h4 id="response-headers">Response Headers</h4>
 <p>HTTP defines headers that can be used in response messages.  The following table defines those headers and their requirements for SPMA services.</p>
 <ul>
@@ -1016,7 +1024,7 @@ window.onhashchange = scrollToHash;
 <td>Content-Length</td>
 <td>No</td>
 <td><a href="http://pretty-rfc.herokuapp.com/RFC2616#header.content-length">RFC 2616, Section 14.3</a></td>
-<td>Describes the size of the message body. An optional means of indicating size of the body uses Transfer-Encoding: chunked, which does not use the Content-Length header. If a service does not support Transfer-Encoding and needs Content-Length instead, the service will respond with status code <a href="#user-content-status-411">411</a>.</td>
+<td>Describes the size of the message body. An optional means of indicating size of the body uses Transfer-Encoding: chunked, which does not use the Content-Length header. If a service does not support Transfer-Encoding and needs Content-Length instead, the service will respond with status code <a href="#status-411">411</a>.</td>
 </tr>
 <tr>
 <td>ETag</td>
@@ -1103,15 +1111,24 @@ window.onhashchange = scrollToHash;
 </table>
 <h4 id="status-codes">Status Codes</h4>
 <p>HTTP defines status codes that can be returned in response messages. </p>
+<p>Where the HTTP status code indicates a failure, the response body contains an <a href="#error-responses">extended error resource</a> to provide the client more meaningful and deterministic error semantics. </p>
 <ul>
-<li>Clients shall understand and be able to process the status codes in the   following table as defined by the HTTP 1.1 specification and constrained by   additional requirements defined by this specification. Services shall   respond with these status codes as appropriate.</li>
+<li>Services shall return the extended error resource as described in this specification in the response body when a status code of 400 or 500 is returned.</li>
+<li>Services should return the extended error resource as described in this specification in the response body when a status code 400 or greater is returned.</li>
+<li>Extended error messages MUST NOT provide privileged info when authentication failures occur</li>
+</ul>
+<p>NOTE: Refer to the <a href="#security">Security</a> section for security implications of extended errors</p>
+<p>The following table lists some of the common HTTP status codes. Other codes may be returned by the service as appropriate. See the Description column for a description of the status code and additional requirements imposed by this specification.</p>
+<ul>
+<li>Clients shall understand and be able to process the status codes in the following table as defined by the HTTP 1.1 specification and constrained by additional requirements defined by this specification. </li>
+<li>Services shall respond with these status codes as appropriate.</li>
 <li>Exceptions from operations shall be mapped to HTTP status codes.</li>
 <li>SPMA services should not return the status code 100. Using the HTTP protocol for a multi-pass data transfer should be avoided, except upload of extremely large data.</li>
 </ul>
 <table>
 <thead>
 <tr>
-<th>HTTP Error Code</th>
+<th>HTTP Status Code</th>
 <th>Description</th>
 </tr>
 </thead>
@@ -1146,7 +1163,7 @@ window.onhashchange = scrollToHash;
 </tr>
 <tr>
 <td><a name="status-400"></a>400 Bad Request</td>
-<td>The request could not be processed because it contains missing or invalid information (such as validation error on an input field, a missing required value, and so on). An extended error shall be returned in the response body, as defined in section <a href="#user-content-extended-error-handling">Extended Error Handling</a>.</td>
+<td>The request could not be processed because it contains missing or invalid information (such as validation error on an input field, a missing required value, and so on). An extended error shall be returned in the response body, as defined in section <a href="#error-response">Extended Error Handling</a>.</td>
 </tr>
 <tr>
 <td><a name="status-401"></a>401 Unauthorized</td>
@@ -1190,7 +1207,7 @@ window.onhashchange = scrollToHash;
 </tr>
 <tr>
 <td><a name="status-500"></a>500 Internal Server Error</td>
-<td>The server encountered an unexpected condition that prevented it from fulfilling the request. An extended error shall be returned in the response body, as defined in section <a href="#user-content-extended-error-handling">Extended Error Handling</a>.</td>
+<td>The server encountered an unexpected condition that prevented it from fulfilling the request. An extended error shall be returned in the response body, as defined in section <a href="#error-response">Extended Error Handling</a>.</td>
 </tr>
 <tr>
 <td><a name="status-501"></a>501 Not Implemented</td>
@@ -1204,43 +1221,43 @@ window.onhashchange = scrollToHash;
 </table>
 <h4 id="metadata-responses">Metadata Responses</h4>
 <h5 id="service-metadata">Service Metadata</h5>
-<p>The service metadata describes top-level resources of the service according to <a href="#user-content-OData-CSDL">OData-Schema</a>. The SPMA Service Metadata is represented as a CSDL XML document with a root element named &quot;Edmx&quot;, defined in the <a href="http://docs.oasis-open.org/odata/ns/edmx">http://docs.oasis-open.org/odata/ns/edmx</a>&quot; namespace, and with an OData Version attribute equal to &quot;4.0&quot;.</p>
+<p>The service metadata describes top-level resources and resource types of the service according to <a href="#OData-CSDL">OData-Schema</a>. The SPMA Service Metadata is represented as a CSDL XML document with a root element named &quot;Edmx&quot;, defined in the <a href="http://docs.oasis-open.org/odata/ns/edmx">http://docs.oasis-open.org/odata/ns/edmx</a>&quot; namespace, and with an OData Version attribute equal to &quot;4.0&quot;.</p>
 <pre><code class="lang-xml">&lt;edmx:Edmx xmlns:edmx=&quot;http://docs.oasis-open.org/odata/ns/edmx&quot; Version=&quot;4.0&quot;&gt;
  &lt;!-- edmx:Reference and edmx:Schema elements go here --&gt;
 &lt;/edmx:Edmx&gt;
 </code></pre>
-<p>The service metadata shall include the namespaces for each of the DMTF resource types, along with the &quot;DMTFExtensions.0.94.0a&quot; namespace. These references may use the standard Uri for the hosted schema definitions (i.e., on <a href="http://dmtf.org/schema">http://dmtf.org/schema</a>) or a Url to a local version of the schema that shall be identical to the hosted version. The namespace shall be aliased with the version-independent namespace name.</p>
-<pre><code class="lang-xml">&lt;edmx:Reference Uri=&quot;http://dmtf.org/schema/v1/ServiceRoot.0.94.0a&quot;&gt;
-    &lt;edmx:Include Namespace=&quot;ServiceRoot.0.94.0a&quot; Alias=&quot;ServiceRoot&quot;/&gt;
+<p>The service metadata shall include the namespaces for each of the DMTF resource types, along with the &quot;DMTFExtensions.0.95.0&quot; namespace. These references may use the standard Uri for the hosted schema definitions (i.e., on <a href="http://dmtf.org/schema">http://dmtf.org/schema</a>) or a Url to a local version of the schema that shall be identical to the hosted version. The namespace shall be aliased with the version-independent namespace name.</p>
+<pre><code class="lang-xml">&lt;edmx:Reference Uri=&quot;http://dmtf.org/schema/v1/ServiceRoot.0.95.0&quot;&gt;
+    &lt;edmx:Include Namespace=&quot;ServiceRoot.0.95.0&quot; Alias=&quot;ServiceRoot&quot;/&gt;
 &lt;/edmx:Reference&gt;
-&lt;edmx:Reference Uri=&quot;http://dmtf.org/schema/v1/AccountService.0.94.0a&quot;&gt;
-  &lt;edmx:Include Namespace=&quot;AccountService.0.94.0a&quot; Alias=&quot;AccountService&quot;/&gt;
+&lt;edmx:Reference Uri=&quot;http://dmtf.org/schema/v1/AccountService.0.95.0&quot;&gt;
+  &lt;edmx:Include Namespace=&quot;AccountService.0.95.0&quot; Alias=&quot;AccountService&quot;/&gt;
 &lt;/edmx:Reference&gt;
 ...
-&lt;edmx:Reference Uri=&quot;http://dmtf.org/schema/v1/VirtualMedia.0.94.0a&quot;&gt;
-  &lt;edmx:Include Namespace=&quot;VirtualMedia.0.94.0a&quot; Alias=&quot;VirtualMedia&quot;/&gt;
+&lt;edmx:Reference Uri=&quot;http://dmtf.org/schema/v1/VirtualMedia.0.95.0&quot;&gt;
+  &lt;edmx:Include Namespace=&quot;VirtualMedia.0.95.0&quot; Alias=&quot;VirtualMedia&quot;/&gt;
 &lt;/edmx:Reference&gt;
 &lt;edmx:Reference Uri=&quot;http://dmtf.org/schema/v1/Extensions&quot;&gt;
-    &lt;edmx:Include Namespace=&quot;DMTFExtensions.0.94.0a&quot; Alias=&quot;DMTF&quot;/&gt;
+    &lt;edmx:Include Namespace=&quot;DMTFExtensions.0.95.0&quot; Alias=&quot;DMTF&quot;/&gt;
 &lt;/edmx:Reference&gt;
 </code></pre>
-<p>The service metadata shall include an entity container that defines the top level resource and collections. This entity container shall extend the ServiceContainer defined in the ServiceRoot.0.94.0a schema and may include additional resources or collections.</p>
+<p>The service metadata shall include an entity container that defines the top level resource and collections. This entity container shall extend the ServiceContainer defined in the ServiceRoot.0.95.0 schema and may include additional resources or collections.</p>
 <pre><code class="lang-xml">&lt;edmx:DataServices&gt;
     &lt;Schema xmlns=&quot;http://docs.oasis-open.org/odata/ns/edm&quot; Namespace=&quot;Service&quot;&gt;
       &lt;EntityContainer Name=&quot;Service&quot; Extends=&quot;ServiceRoot.ServiceContainer&quot;/&gt;
     &lt;/Schema&gt;
 &lt;/edmx:DataServices&gt;
 </code></pre>
-<h5 id="referencing-oem-extensions">Referencing OEM Extensions</h5>
+<h6 id="referencing-oem-extensions">Referencing OEM Extensions</h6>
 <p>The metadata document may reference additional schema documents describing OEM-specific extensions used by the ServiceRoot, for example custom types for additional collections.</p>
 <pre><code class="lang-xml">&lt;edmx:Reference Uri=&quot;http://contoso.org/Schema/CustomTypes&quot;&gt;
     &lt;edmx:Include Namespace=&quot;CustomTypes&quot; Alias=&quot;Contoso&quot;/&gt;
 &lt;/edmx:Reference&gt;
 </code></pre>
-<h5 id="annotations">Annotations</h5>
+<h6 id="annotations">Annotations</h6>
 <p>The service can annotate sets, types, actions and parameters with SPMA-defined or custom annotation terms. These annotations are typically in a separate Annotations file referenced from the service metadata document using the IncludeAnnotations directive. The alias of the namespace containing system annotations shall be &quot;Annotations&quot;.</p>
 <pre><code class="lang-xml">&lt;edmx:Reference Uri=&quot;http://service/metadata/Service.Annotations&quot;&gt;
-    &lt;edmx:IncludeAnnotations TermNamespace=&quot;Annotations.0.94.0a&quot; Alias=&quot;Annotations&quot;/&gt;
+    &lt;edmx:IncludeAnnotations TermNamespace=&quot;Annotations.0.95.0&quot; Alias=&quot;Annotations&quot;/&gt;
 &lt;/edmx:Reference&gt;
 </code></pre>
 <p>The annotation file itself specifies the Target schema element being annotated, the Term being applied, and the value of the term:</p>
@@ -1253,25 +1270,58 @@ window.onhashchange = scrollToHash;
   &lt;/Annotation&gt;
 &lt;/Annotations&gt;
 </code></pre>
+<h5 id="odata-service-document">OData Service Document</h5>
+<p>The OData Service Document serves as a top-level entry point for generic OData clients.</p>
+<pre><code class="lang-json">{
+    &quot;@odata.context&quot;: &quot;/rest/v1/$metadata&quot;,
+    &quot;value&quot;: [
+        {
+            &quot;name&quot;: &quot;Service&quot;,
+            &quot;kind&quot;: &quot;Singleton&quot;,
+            &quot;url&quot;: &quot;/rest/v1&quot;
+        },
+        {
+            &quot;name&quot;: &quot;Systems&quot;,
+            &quot;kind&quot;: &quot;Singleton&quot;,
+            &quot;url&quot;: &quot;/rest/v1/Systems&quot;
+        },
+        {
+            &quot;name&quot;: &quot;Chassis&quot;,
+            &quot;kind&quot;: &quot;Singleton&quot;,
+            &quot;url&quot;: &quot;/rest/v1/Chassis&quot;
+        },
+        {
+            &quot;name&quot;: &quot;Managers&quot;,
+            &quot;kind&quot;: &quot;Singleton&quot;,
+            &quot;url&quot;: &quot;/rest/v1/Managers&quot;
+        },
+        ...
+    ]
+}
+</code></pre>
+<p>The OData Service Document shall be a returned as a JSON object, using the MIME type <code>application/json</code>.</p>
+<p>The JSON object shall contain a context property named &quot;@odata.context&quot; with a value of &quot;/rest/v1/$metadata&quot;. This context tells a generic OData client how to find the <a href="#service-metadata">service metadata</a> describing the types exposed by the service.</p>
+<p>The JSON object shall include a property named &quot;value&quot; whose value is a JSON array containing an entry for the <a href="#service-root-request">service root</a> and each resource that is a direct child of the service root.</p>
+<p>Each entry shall be represented as a JSON object and shall include a &quot;name&quot; property whose value is a user-friendly name of the resource, a &quot;kind&quot; property whose value is &quot;Singleton&quot; for individual resources (including collection resources) or &quot;EntitySet&quot; for top-level resource collections, and a &quot;url&quot; property whose value is the relative URL for the top-level resource.</p>
 <h4 id="resource-responses">Resource Responses</h4>
 <p>Resources are returned as JSON payloads, using the MIME type <code>application/json</code>.</p>
 <h5 id="context-property">Context Property</h5>
-<p>Responses that represent a single resource shall contain a context property named &quot;@odata.context&quot; describing the source of the payload. The value of the context property shall be the context URL that describes the resource according to <a href="#user-content-OData-Protocol">OData-Protocol</a>.</p>
+<p>Responses that represent a single resource shall contain a context property named &quot;@odata.context&quot; describing the source of the payload. The value of the context property shall be the context URL that describes the resource according to <a href="#OData-Protocol">OData-Protocol</a>.</p>
 <p>The context URL for a resource that exists within a collection is of the form:</p>
-<p> <em>MetadataUrl</em>.#<em>Collection</em>[(#user-content-Selectlist*)]/$entity </p>
+<p> <em>MetadataUrl</em>.#<em>Collection</em>[(<em>Selectlist</em>)]/$entity </p>
 <p>Where: </p>
 <ul>
 <li><em>MetadataUrl</em> = the metadata url of the service (/rest/v1/$metadata)</li>
 <li><em>Collection</em> = the collection resource. For contained resources this includes the path from the root collection or singleton resource to the containment property.</li>
-<li><em>Selectlist</em> = comma-separated <a href="#user-content-select-list">list of properties</a> included in the response if the response includes a subset of properties defined for the represented resources.</li>
+<li><em>Selectlist</em> = comma-separated <a href="#select-list">list of properties</a> included in the response if the response includes a subset of properties defined for the represented resources.</li>
 </ul>
 <p>The context URL for a resource that is a top-level singleton resource is of the form:</p>
-<p> <em>MetadataUrl</em>.#<em>SingletonName</em>[(#user-content-Selectlist*)]</p>
+<p> <em>MetadataUrl</em>.#<em>SingletonName</em>[(<em>Selectlist</em>)]</p>
 <p>Where: </p>
 <ul>
 <li><em>MetadataUrl</em> = the metadata url of the service (/rest/v1/$metadata)</li>
 <li><em>SingletonName</em> = the name of the top-level singleton resource</li>
-<li><em>Selectlist</em> = comma-separated <a href="#user-content-select-list">list of properties</a> included in the response if the response includes a subset of properties defined for the represented resources.</li>
+<li><em>Selectlist</em> = comma-separated <a href="#select-list">list of properties</a> included in the response if the response includes a subset of properties defined for the represented resources.</li>
 </ul>
 <h6 id="select-list">Select List</h6>
 <p>If a response contains a subset of the properties defined in the schema for a type, then the context URL shall specify the subset of properties included. An asterix (*) can be used to specify &quot;all structural properties&quot; for a given resource.</p>
@@ -1280,7 +1330,7 @@ window.onhashchange = scrollToHash;
 <pre><code class="lang-json">&quot;@odata.context&quot;:&quot;/rest/v1/$metadata#Systems/Links/Members/$entity&quot;,
 </code></pre>
 <h5 id="resource-identifier-property">Resource Identifier Property</h5>
-<p>Resources in a response shall include a unique identifier property named &quot;@odata.id&quot;. The value of the identifier property shall be the <a href="#user-content-URIs">unique identifier</a> for the resource.</p>
+<p>Resources in a response shall include a unique identifier property named &quot;@odata.id&quot;. The value of the identifier property shall be the <a href="#URIs">unique identifier</a> for the resource.</p>
 <p>Resource Identifiers shall be represented in JSON payloads as uri paths relative to the schema portion of the uri. That is, they shall always start with &quot;/rest/&quot;.</p>
 <p>The resource identifier is the canonical URL for the resource and can be used to retrieve or edit the resource, as appropriate.</p>
 <h5 id="type-property">Type Property</h5>
@@ -1291,16 +1341,16 @@ window.onhashchange = scrollToHash;
 <li><em>Namespace</em> = The full namespace name of the schema in which the type is defined. For SPMA resources this will be the versioned namespace name. </li>
 <li><em>TypeName</em> = The name of the type of the resource.</li>
 </ul>
-<p>The client may issue a GET request to this URL using a content type of <code>application/xml</code> in order to retrieve a document containing the <a href="#user-content-resource-definition">definition of the resource</a>.</p>
+<p>The client may issue a GET request to this URL using a content type of <code>application/xml</code> in order to retrieve a document containing the <a href="#resource-definition">definition of the resource</a>.</p>
 <h5 id="etag-property">ETag Property</h5>
-<p>ETags provide the ability to conditionally retrieve or update a resource. Resources should include an ETag property named &quot;@odata.etag&quot;. The value of the ETag property is the <a href="#user-content-etags">Etag</a> for a resource.</p>
+<p>ETags provide the ability to conditionally retrieve or update a resource. Resources should include an ETag property named &quot;@odata.etag&quot;. The value of the ETag property is the <a href="#etags">Etag</a> for a resource.</p>
 <h5 id="primitive-properties">Primitive Properties</h5>
 <p>Primitive properties are returned as JSON values. </p>
 <h6 id="datetime-values">DateTime Values</h6>
 <p>DateTime values shall be returned as JSON strings according to the ISO 8601 &quot;extended&quot; format: </p>
 <p> <em>YYYY</em>-<em>MM</em>-<em>DD</em> T <em>hh</em>:<em>mm</em>:<em>ss</em>[.<em>SSS</em>] (Z | (+ | - ) <em>hh</em>:<em>mm</em>)</p>
 <h5 id="structured-properties">Structured Properties</h5>
-<p>Structured properties, defined as <a href="#user-content-structured-properties">complex types</a>, are returned as JSON objects. The type of the JSON object is specified in schema definition of the property containing the structured value.</p>
+<p>Structured properties, defined as <a href="#structured-types">complex types</a> or <a href="#expand-resources">expanded</a> <a href="#resource-type-definitions">resource types</a>, are returned as JSON objects. The type of the JSON object is specified in schema definition of the property containing the structured value.</p>
 <h5 id="collection-properties">Collection Properties</h5>
 <p>Collection-valued properties are returned as JSON arrays, where each element of the array is a JSON object whose type is specified in the schema document describing the containing type.</p>
 <p>Collection-valued properties may contain a subset of the members of the full collection. In this case, the collection-valued property shall be annotated with a next link property. The property representing the next link shall be a peer of the collection-valued property, with the name of the collection-valued property suffixed with &quot;@odata.nextLink&quot;. The value of the next link property shall be an opaque URL that the client can use to retrieve the next set of collection members. The next link property shall only be present if the number of resources requested is greater than the number of resources returned.</p>
@@ -1316,10 +1366,10 @@ window.onhashchange = scrollToHash;
 <li><em>NamespaceAlias</em> = The namespace alias used in the reference to the schema in which the action is defined. For SPMA resources this shall be the version-independent namespace alias. </li>
 <li><em>ActionName</em> = The name of the action</li>
 </ul>
-<p>The client may issue a GET request to this URL using a content type of <code>application/xml</code> in order to retrieve the schema document containing the <a href="#user-content-resource-actions">definition of the action</a>.</p>
+<p>The client may issue a GET request to this URL using a content type of <code>application/xml</code> in order to retrieve the schema document containing the <a href="#resource-actions">definition of the action</a>.</p>
 <p>The value of the property is a JSON object containing a property named &quot;target&quot; whose value is a relative or absolute URL used to invoke the action.</p>
-<p>The property representing the available action may be annotated with the <a href="#user-content-allowable-values">AllowableValues</a> annotation in order to specify the list of allowable values for a particular parameter.</p>
-<p>For example, the following property represents the Reset action, defined in the ComputerSystem.0.94.0a namespace (aliased with the version-independent &quot;ComputerSystem&quot;):</p>
+<p>The property representing the available action may be annotated with the <a href="#allowable-values">AllowableValues</a> annotation in order to specify the list of allowable values for a particular parameter.</p>
+<p>For example, the following property represents the Reset action, defined in the ComputerSystem.0.95.0 namespace (aliased with the version-independent &quot;ComputerSystem&quot;):</p>
 <pre><code class="lang-json">    &quot;#ComputerSystem.Reset&quot;: {
         &quot;target&quot;:&quot;/rest/v1/Systems/1/Actions/ComputerSystem.Reset&quot;,
             &quot;ResetType@DMTF.AllowableValues&quot;: [&quot;On&quot;,&quot;Off&quot;, &quot;Reset&quot;]
@@ -1334,11 +1384,11 @@ window.onhashchange = scrollToHash;
 <p>The property representing the action may be annotated with the &quot;AllowableValues&quot; annotation in order to specify the list of allowable values for a particular parameter. </p>
 <p>The set of allowable values is specified by including a property whose name is the name of the parameter followed by &quot;@DMTF.AllowableValues&quot;, and whose value is a comma separated list of strings representing the allowable values for the parameter.</p>
 <h5 id="links-property">Links Property</h5>
-<p><a href="#user-content-reference-properties">References</a> to other resources are represented by the links property on the resource. </p>
-<p>The links property shall be named &quot;Links&quot; and shall contain a property for each navigation property defined in the schema for that type. For single-valued navigation properties, the value of the property shall be the <a href="#user-content-reference-to-a-single-related-resource">single related resource id</a>. For collection-valued navigation properties, the value of the property shall be the <a href="#user-content-array-of-references-to-related-resources">array of related resource ids</a>.</p>
-<p>The links property shall also include an <a href="#user-content-oem-property">Oem property</a> for navigating vendor-specific links.</p>
+<p><a href="#reference-properties">References</a> to other resources are represented by the links property on the resource. </p>
+<p>The links property shall be named &quot;Links&quot; and shall contain a property for each navigation property defined in the schema for that type. For single-valued navigation properties, the value of the property shall be the <a href="#reference-to-a-single-related-resource">single related resource id</a>. For collection-valued navigation properties, the value of the property shall be the <a href="#array-of-references-to-related-resources">array of related resource ids</a>.</p>
+<p>The links property shall also include an <a href="#oem-property">Oem property</a> for navigating vendor-specific links.</p>
 <h6 id="reference-to-a-single-related-resource">Reference to a Single Related Resource</h6>
-<p>A reference to a single resource is returned as a JSON object containing a single <a href="#user-content-resource-identifier-property">resource-identifier-property</a> whose name is the name of the relationship and whose value is the uri of the referenced resource.</p>
+<p>A reference to a single resource is returned as a JSON object containing a single <a href="#resource-identifier-property">resource-identifier-property</a> whose name is the name of the relationship and whose value is the uri of the referenced resource.</p>
 <pre><code class="lang-json">{
 &quot;Links&quot; : {
     &quot;ManagedBy&quot;: { 
@@ -1347,7 +1397,7 @@ window.onhashchange = scrollToHash;
 }
 </code></pre>
 <h6 id="array-of-references-to-related-resources">Array of References to Related Resources</h6>
-<p>A reference to a collection of zero ore more related resources is returned as an array of JSON objects whose name is the name of the relationship. Each member of the array is a JSON object containing a single <a href="#user-content-resource-identifier-property">resource-identifier-property</a> whose value is the uri of the referenced resource.</p>
+<p>A reference to a collection of zero ore more related resources is returned as an array of JSON objects whose name is the name of the relationship. Each member of the array is a JSON object containing a single <a href="#resource-identifier-property">resource-identifier-property</a> whose value is the uri of the referenced resource.</p>
 <pre><code class="lang-json">{
 &quot;Links&quot; : {
     &quot;Contains&quot; : [
@@ -1361,7 +1411,7 @@ window.onhashchange = scrollToHash;
 }
 </code></pre>
 <h5 id="oem-property">OEM Property</h5>
-<p>OEM-specific properties are nested under an <a href="#user-content-property-extensions">OEM property</a>. The name of the OEM property shall be &quot;Oem&quot; and its value shall be a JSON object whose properties represent OEM extensions.</p>
+<p>OEM-specific properties are nested under an <a href="#property-extensions">OEM property</a>. The name of the OEM property shall be &quot;Oem&quot; and its value shall be a JSON object whose properties represent OEM extensions.</p>
 <p>For example:</p>
 <pre><code class="lang-json">{
   &quot;StandardProperty&quot;: &quot;value&quot;,
@@ -1381,15 +1431,15 @@ window.onhashchange = scrollToHash;
   }
 }
 </code></pre>
-<p>Contents of the Oem object must be valid JSON and must have a <a href="#user-content-type-property">type property</a> per this specification. Any other requirements, validation or contents are beyond the scope of this specification.</p>
+<p>Contents of the Oem object must be valid JSON and must have a <a href="#type-property">type property</a> per this specification. Any other requirements, validation or contents are beyond the scope of this specification.</p>
 <h5 id="extended-information">Extended Information</h5>
-<p>Response objects may include extended information, for example properties that are not able to be updated. This information is represented as an annotation applied to <a href="#user-content-extended-property-information">a specific property</a> of the JSON response or an <a href="#user-content-extended-object-information">entire JSON object</a>.</p>
+<p>Response objects may include extended information, for example properties that are not able to be updated. This information is represented as an annotation applied to <a href="#extended-property-information">a specific property</a> of the JSON response or an <a href="#extended-object-information">entire JSON object</a>.</p>
 <h6 id="extended-object-information">Extended Object Information</h6>
 <p>A JSON object can be annotated with &quot;@DMTF.ExtendedInfo&quot; in order to specify object-level status information. </p>
 <pre><code class="lang-json">{
     &quot;@odata.context&quot;: &quot;/rest/v1/$metadata/Sessions/Links/Members/$entity&quot;,
     &quot;@odata.id&quot;: &quot;/rest/v1/Sessions/Administrator1&quot;,
-    &quot;@odata.type&quot;: &quot;#Session.0.94.0a.Session&quot;,
+    &quot;@odata.type&quot;: &quot;#Session.0.95.0.Session&quot;,
     &quot;Id&quot;: &quot;Administrator1&quot;,
     &quot;Name&quot;: &quot;User Session&quot;,
     &quot;Description&quot;: &quot;Manager User Session&quot;,
@@ -1397,27 +1447,27 @@ window.onhashchange = scrollToHash;
     &quot;UserName&quot;: &quot;Administrator&quot;,
     &quot;Oem&quot;: {},
     &quot;@DMTF.ExtendedInfo&quot; : {
-         &quot;code&quot;: &quot;Base.0.94.ResourceCannotBeDeleted&quot;,
+         &quot;code&quot;: &quot;Base.0.95.ResourceCannotBeDeleted&quot;,
          &quot;message&quot;: &quot;The delete request failed because the resource requested cannot be deleted&quot;,
          &quot;@message.severity&quot;: &quot;Critical&quot;,
          &quot;@message.resolution&quot;: &quot;Do not attempt to delete a non-deletable resource.&quot;
     }
 }
 </code></pre>
-<p>The value of the property is an <a href="#user-content-extended-error-handling">extended information object</a>.</p>
+<p>The value of the property is an <a href="#extended-information-object">extended information object</a>.</p>
 <h6 id="extended-property-information">Extended Property Information</h6>
 <p>An individual property within a JSON object can be annotated with extended information using &quot;@DMTF.ExtendedInfo&quot;, prepended with the name of the property.</p>
 <pre><code class="lang-json">{
     &quot;@odata.context&quot;: &quot;/rest/v1/$metadata/Sessions/Links/Members/$entity&quot;,
     &quot;@odata.id&quot;: &quot;/rest/v1/Sessions/Administrator1&quot;,
-    &quot;@odata.type&quot;: &quot;#Session.0.94.0a.Session&quot;,
+    &quot;@odata.type&quot;: &quot;#Session.0.95.0.Session&quot;,
     &quot;Id&quot;: &quot;Administrator1&quot;,
     &quot;Name&quot;: &quot;User Session&quot;,
     &quot;Description&quot;: &quot;Manager User Session&quot;,
     &quot;Modified&quot;: &quot;2013-01-31T23:45:08+00:00&quot;,
     &quot;UserName&quot;: &quot;Administrator&quot;,
     &quot;UserName@DMTF.ExtendedInfo&quot; : {
-         &quot;code&quot;: &quot;Base.0.94.PropertyNotWriteable&quot;,
+         &quot;code&quot;: &quot;Base.0.95.PropertyNotWriteable&quot;,
          &quot;target&quot;: &quot;UserName&quot;,
          &quot;message&quot;: &quot;The property %1 is a read only property and cannot be assigned a value&quot;,
          &quot;message.parameters&quot;: [
@@ -1431,60 +1481,56 @@ window.onhashchange = scrollToHash;
     &quot;Oem&quot;: {}
 }
 </code></pre>
-<p>The value of the property is an <a href="#user-content-extended-error-handling">extended information object</a>.</p>
+<p>The value of the property is an <a href="#extended-information-object">extended information object</a>.</p>
 <h5 id="additional-annotations">Additional Annotations</h5>
 <p>A resource representation in JSON may include additional annotations represented as properties whose name is of the form:</p>
 <p> [<em>PropertyName</em>]@<em>Namespace</em>.<em>TermName</em></p>
 <p>where</p>
 <ul>
 <li><em>PropertyName</em> = the name of the property being annotated. If omitted, the annotation applies to the entire resource.</li>
-<li><em>Namespace</em> = the name or alias of the namespace where the annotation term is defined. This namespace must be referenced by the <a href="#user-content-service-metadata">metadata document</a> specified in the <a href="#user-content-context-property">context url</a> of the request.</li>
+<li><em>Namespace</em> = the name or alias of the namespace where the annotation term is defined. This namespace must be referenced by the <a href="#service-metadata">metadata document</a> specified in the <a href="#context-property">context url</a> of the request.</li>
 <li><em>TermName</em> = the name of the annotation term being applied to the resource or property of the resource.</li>
 </ul>
-<p>The client can get the definition of the annotation from the the <a href="#user-content-service-metadata">service metadata</a>, or may ignore the annotation entirely, but should not fail reading the resource due to unrecognized annotations, including new annotations defined within the DMTF namespace.</p>
+<p>The client can get the definition of the annotation from the the <a href="#service-metadata">service metadata</a>, or may ignore the annotation entirely, but should not fail reading the resource due to unrecognized annotations, including new annotations defined within the DMTF namespace.</p>
 <h4 id="resource-collections">Resource Collections</h4>
-<p>Resource collections are returned as a JSON object. The JSON object includes a <a href="#user-content-context-property">context</a>, <a href="#user-content-resource-count-property">resource count</a>, and array of <a href="#user-content-resource-members-property">values</a>, and may include a <a href="#user-content-partial-results">next link</a> for partial results.</p>
+<p>Resource collections are returned as a JSON object. The JSON object includes a <a href="#context-property">context</a>, <a href="#resource-count-property">resource count</a>, and array of <a href="#resource-members-property">values</a>, and may include a <a href="#partial-results">next link</a> for partial results.</p>
 <h5 id="context-property">Context Property</h5>
-<p>Responses that represent a collection of resources shall contain a context property named &quot;@odata.context&quot; describing the source of the payload. The value of the context property shall be the context URL that describes the resources according to <a href="#user-content-OData-Protocol">OData-Protocol</a>.</p>
+<p>Responses that represent a collection of resources shall contain a context property named &quot;@odata.context&quot; describing the source of the payload. The value of the context property shall be the context URL that describes the resources according to <a href="#OData-Protocol">OData-Protocol</a>.</p>
 <p>The context URL for a resource collection is of the form:</p>
-<p> <em>MetadataUrl</em>.#<em>Collection</em>[(#user-content-SelectList*)] </p>
+<p> <em>MetadataUrl</em>.#<em>Collection</em>[(<em>SelectList</em>)] </p>
 <p>Where: </p>
 <ul>
 <li><em>MetadataUrl</em> = the metadata url of the service (/rest/v1/$metadata)</li>
 <li><em>Collection</em> = the collection resource. For contained resources this includes the path from the root collection or singleton resource to the containment property.</li>
-<li><em>SelectList</em> = comma-separated <a href="#user-content-select-list">list of properties</a> included in the response if the response includes a subset of properties defined for the represented resources.</li>
+<li><em>SelectList</em> = comma-separated <a href="#select-list">list of properties</a> included in the response if the response includes a subset of properties defined for the represented resources.</li>
 </ul>
 <h5 id="resource-count-property">Resource Count Property</h5>
-<p>The total number of resources available in the collection is represented through the count property. The count property shall be named &quot;@odata.count&quot; and its value shall be an integer representing the total number of records in the result. This count is not affected by the $top or $skip <a href="#user-content-query-parameters">query parameters</a>.</p>
+<p>The total number of resources available in the collection is represented through the count property. The count property shall be named &quot;@odata.count&quot; and its value shall be an integer representing the total number of records in the result. This count is not affected by the $top or $skip <a href="#query-parameters">query parameters</a>.</p>
 <h5 id="resource-members-property">Resource Members Property</h5>
 <p>The members of the collection of resources are returned as a JSON array. The name of the property representing the members of the collection shall be &quot;value&quot;.</p>
 <h5 id="partial-results">Partial Results</h5>
 <p>Responses representing a single resource shall not be broken into multiple results.</p>
 <p>Collections of resources, or resource ids, may be returned in multiple partial responses. For partial collections the service includes a next link property named &quot;@odata.nextLink&quot;. The value of the next link property shall be an opaque URL that the client can use to retrieve the next set of resources. The next link shall only be returned if the number of resources requested is greater than the number of resources returned.</p>
-<p>The value of the <a href="#user-content-resource-count-property">count property</a> represents the total number of resources available if the client enumerates all pages of the collection.</p>
+<p>The value of the <a href="#resource-count-property">count property</a> represents the total number of resources available if the client enumerates all pages of the collection.</p>
 <h5 id="additional-annotations">Additional Annotations</h5>
 <p>A JSON object representing a collection of resources may include additional annotations represented as properties whose name is of the form:</p>
 <p> @<em>Namespace</em>.<em>TermName</em></p>
 <p>where</p>
 <ul>
-<li><em>Namespace</em> = the name or alias of the namespace where the annotation term is defined. This namespace shall be referenced by the <a href="#user-content-service-metadata">metadata document</a> specified in the <a href="#user-content-context-property">context url</a> of the request.</li>
+<li><em>Namespace</em> = the name or alias of the namespace where the annotation term is defined. This namespace shall be referenced by the <a href="#service-metadata">metadata document</a> specified in the <a href="#context-property">context url</a> of the request.</li>
 <li><em>TermName</em> = the name of the annotation term being applied to the resource collection.</li>
 </ul>
-<p>The client can get the definition of the annotation from the the <a href="#user-content-service-metadata">service metadata</a>, or may ignore the annotation entirely, but should not fail reading the response due to unrecognized annotations, including new annotations defined within the DMTF namespace.</p>
-<h4 id="extended-error-handling">Extended Error Handling</h4>
-<p>HTTP response status codes alone often do not provide enough information to enable deterministic error semantics. For example, if a client does a PATCH and some of the properties do not match while others are not supported, simply returning an HTTP status code of 400 does not tell the client which values were in error.</p>
-<p>Extended errors provide the client more meaningful and deterministic error semantics.  </p>
-<ul>
-<li>Services shall return the extended error resource as described in this specification in the response body when a status code of 400 or 500 is returned.</li>
-<li>Services should return the extended error resource as described in this specification in the response body when a status code 400 or greater is returned.</li>
-<li>Extended error messages MUST NOT provide privileged info when authentication failures occur</li>
-</ul>
-<p>NOTE: Refer to the <a href="#user-content-security">Security</a> section for security implications of extended errors</p>
-<p>Extended error information is returned as a JSON object with a single property named &quot;error&quot;. The value of this property shall be a JSON object with the following properties.</p>
+<p>The client can get the definition of the annotation from the the <a href="#service-metadata">service metadata</a>, or may ignore the annotation entirely, but should not fail reading the response due to unrecognized annotations, including new annotations defined within the DMTF namespace.</p>
+<h4 id="error-responses">Error Responses</h4>
+<p>HTTP response status codes alone often do not provide enough information to enable deterministic error semantics. For example, if a client does a PATCH and some of the properties do not match while others are not supported, simply returning an HTTP status code of 400 does not tell the client which values were in error. Error responses provide the client more meaningful and deterministic error semantics. </p>
+<p>Error responses are defined by an extended error resource, represented as a single JSON object with a property named &quot;error&quot;. The value of this property shall be an <a href="#extended-information-object">extended information object</a>.</p>
+<h5 id="extended-information-object">Extended Information Object</h5>
+<p>Extended Information Objects provide additional information about an <a href="#extended-object-information">object</a>, <a href="#extended-property-information">property</a>, or <a href="#error-responses">error response</a>. </p>
+<p>Extended information is represented as a JSON object with the following properties:</p>
 <table>
 <thead>
 <tr>
-<th>Attribute</th>
+<th>Property</th>
 <th>Description</th>
 </tr>
 </thead>
@@ -1525,26 +1571,22 @@ window.onhashchange = scrollToHash;
         &quot;message&quot;: &quot;The update operation failed.&quot;,
         &quot;details&quot;: [
             {
-                &quot;code&quot;: &quot;Base.0.94.PropertyValueNotInList&quot;,
+                &quot;code&quot;: &quot;Base.0.95.PropertyValueNotInList&quot;,
                 &quot;target&quot;: &quot;IndicatorLED&quot;,
                 &quot;message&quot;: &quot;The value %1 for the property %2 is not in the list of acceptable values&quot;,
                 &quot;@message.parameters&quot;: [
-                    {
-                        &quot;RED&quot;,
-                        &quot;IndicatorLED&quot;
-                    }
+                    &quot;RED&quot;,
+                    &quot;IndicatorLED&quot;
                 ],
                 &quot;@message.severity&quot;: &quot;Warning&quot;,
                 &quot;@message.resolution&quot;: &quot;Remove the property from the request body and resubmit the request if the operation failed&quot;
             },
             {
-                &quot;code&quot;: &quot;Base.0.94.PropertyNotWriteable&quot;,
+                &quot;code&quot;: &quot;Base.0.95.PropertyNotWriteable&quot;,
                 &quot;target&quot;: &quot;SKU&quot;,
                 &quot;message&quot;: &quot;The property %1 is a read only property and cannot be assigned a value&quot;,
                 &quot;@message.parameters&quot;: [
-                    {
-                        &quot;SKU&quot;
-                    }
+                    &quot;SKU&quot;
                 ],
                 &quot;@message.severity&quot;: &quot;Warning&quot;,
                 &quot;@message.resolution&quot;: &quot;Remove the property from the request body and resubmit the request if the operation failed&quot;
@@ -1568,7 +1610,7 @@ window.onhashchange = scrollToHash;
 <h2 id="data-model-schema">Data Model &amp; Schema</h2>
 <p>One of the key tenants of the SPMA interface is the separation of protocol and data model.  This section describes common data model, resource, and SPMA Schema requirements.</p>
 <ul>
-<li>Each resource shall be strongly typed according to a <a href="#user-content-resource-type-definition">resource type definition</a>. The type shall be defined in a <a href="#user-content-schema-documents">schema document</a> and identified by a unique <a href="#user-content-type-identifier">type identifier</a>.</li>
+<li>Each resource shall be strongly typed according to a <a href="#resource-type-definition">resource type definition</a>. The type shall be defined in a <a href="#schema-documents">schema document</a> and identified by a unique <a href="#type-identifier">type identifier</a>.</li>
 </ul>
 <h3 id="type-identifiers">Type Identifiers</h3>
 <p>Types are identified by a <em>Type URI</em>. The full URI for a type is of the form:</p>
@@ -1582,17 +1624,17 @@ window.onhashchange = scrollToHash;
 <p> <em>ResourceTypeName</em>.<em>MajorVersion</em>.<em>MinorVersion</em>.<em>Errata</em></p>
 <p>where </p>
 <ul>
-<li><em>ResourceTypeName</em> = the name of the resource type. For <a href="#user-content-structured-types">structured (complex) types</a>, <a href="#user-content-enums">enumerations</a>, and <a href="#user-content-resource-actions">actions</a>, this is generally the name of the containing resource type. </li>
+<li><em>ResourceTypeName</em> = the name of the resource type. For <a href="#structured-types">structured (complex) types</a>, <a href="#enums">enumerations</a>, and <a href="#resource-actions">actions</a>, this is generally the name of the containing resource type. </li>
 <li><em>MajorVersion</em> = integer: something in the class changed in a backward incompatible way.</li>
 <li><em>MinorVersion</em> = integer: a minor update. New properties may have been added but nothing removed. Compatibility will be preserved with previous minorversions. </li>
 <li><em>Errata</em> = integer: something in the prior version was broken and needed to be fixed.</li>
 </ul>
-<p>An example of a valid type namespace might be &quot;System.0.94.0a&quot;. </p>
+<p>An example of a valid type namespace might be &quot;System.0.95.0&quot;. </p>
 <h4 id="type-identifiers-in-json">Type Identifiers in JSON</h4>
 <p>Types used within a JSON payload shall be defined in, or referenced, by the <a href="#service-metadata">service metadata</a>.</p>
 <p>Resource types defined by this specification shall be referenced in JSON documents using the full (versioned) namespace name. </p>
 <p>Non-resource types (for example enumerations, complex types, and actions) shall be referenced in JSON documents using the version-independent namespace alias defined in the <a href="#service-metadata">service metadata</a>.</p>
-<p>NOTE: Refer to the <a href="#user-content-security">Security</a> section for security implications of Data Model &amp; Schema</p>
+<p>NOTE: Refer to the <a href="#security">Security</a> section for security implications of Data Model &amp; Schema</p>
 <h3 id="common-naming-conventions">Common Naming Conventions</h3>
 <p>The SPMA interface is intended to be easily readable and intuitive.  Thus, consistency helps the consumer who is unfamiliar with a newly discovered property understand its use.  While this is no substitute for the normative information in the specification and schema, the following rules help with readability and client usage. </p>
 <p>Resource Name, Property Names, and constants such as Enumerations shall be Pascal-cased</p>
@@ -1620,11 +1662,11 @@ window.onhashchange = scrollToHash;
 <h3 id="localization-considerations">Localization Considerations</h3>
 <p>The SPMA architecture supports localized strings but does not impose any specific requirement for localization upon services.  However, current market forces seem to require localization as necessary (e.g. schemas).</p>
 <p>Schema-supplied display strings may be localized as necessary, but a Schema file may only contain one language.  Alternate language schemas may be published and available to SPMA clients, but need not be provided via the SPMA schema store. </p>
-<p>Property names defined within an SPMA schema are never localized. User-supplied string-valued property values such as an asset tag may be localized. Localizable string valued properties should annotated with the <a href="#user-content-language-dependent-property-values">IsLanguageDependent annotation term</a>.</p>
+<p>Property names defined within an SPMA schema are never localized. User-supplied string-valued property values such as an asset tag may be localized. Localizable string valued properties should annotated with the <a href="#language-dependent-property-values">IsLanguageDependent annotation term</a>.</p>
 <h3 id="schema-definition">Schema Definition</h3>
-<p>Individual resources and their dependent types and actions are defined within a <a href="#user-content-schema-documents">schema document</a>.</p>
+<p>Individual resources and their dependent types and actions are defined within a <a href="#schema-documents">schema document</a>.</p>
 <h4 id="common-annotations">Common Annotations</h4>
-<p>All SPMA types and properties shall include <a href="#user-content-description">description</a> and <a href="#user-content-long-description">long description</a> annotations. </p>
+<p>All SPMA types and properties shall include <a href="#description">description</a> and <a href="#long-description">long description</a> annotations. </p>
 <h5 id="description">Description</h5>
 <p>The Description annotation can be applied to any type, property, action or parameter in order to provide a human-readable description of the schema element.</p>
 <p>The <code>Description</code> annotation is defined in <a href="http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Core.V1.xml">http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Core.V1.xml</a>.</p>
@@ -1632,7 +1674,7 @@ window.onhashchange = scrollToHash;
 <p>The LongDescription annotation term can be applied to any type, property, action or parameter in order to provide a formal specification of the schema element.</p>
 <p>The <code>LongDescription</code> annotation term is defined in <a href="http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Core.V1.xml">http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Core.V1.xml</a>.</p>
 <h4 id="schema-documents">Schema Documents</h4>
-<p>Individual resources are defined as entity types within a schema document according to <a href="#user-content-OData-CSDL">OData-Schema</a>. The representation may include annotations to facilitate automatic generation of JSON Schema capable of validating JSON payloads.</p>
+<p>Individual resources are defined as entity types within a schema document according to <a href="#OData-CSDL">OData-Schema</a>. The representation may include annotations to facilitate automatic generation of JSON Schema capable of validating JSON payloads.</p>
 <p>The outer element of the schema document shall be the <code>Edmx</code> element, and shall have a <code>Version</code> attribute with a value of &quot;4.0&quot;.</p>
 <pre><code class="lang-xml">&lt;edmx:Edmx xmlns:edmx=&quot;http://docs.oasis-open.org/odata/ns/edmx&quot; Version=&quot;4.0&quot;&gt;
  &lt;!-- edmx:Reference and edmx:DataService elements go here --&gt;
@@ -1641,7 +1683,7 @@ window.onhashchange = scrollToHash;
 <h5 id="referencing-other-schemas">Referencing other Schemas</h5>
 <p>Schemas may reference types defined in other schema documents by including a <code>Reference</code> element. </p>
 <p>The reference element specifies the <code>Uri</code> of the schema document describing the referenced type and has one or more child <code>Include</code> elements that specify the <code>Namespace</code> attribute containing the types to be referenced, along with an optional <code>Alias</code> attribute for that namespace.</p>
-<p>Type definitions generally reference the OData and DMTF namespaces for common type annotation terms, and resource type definitions reference the DMTF Resource.0.94.0a namespace for base types. Schemas that include measures such as temperature, speed, or dimensions generally include the <a href="#user-content-OData-Measures">OData Measures namespace</a>. </p>
+<p>Type definitions generally reference the OData and DMTF namespaces for common type annotation terms, and resource type definitions reference the DMTF Resource.0.95.0 namespace for base types. Schemas that include measures such as temperature, speed, or dimensions generally include the <a href="#OData-Measures">OData Measures namespace</a>. </p>
 <pre><code class="lang-xml">  &lt;edmx:Reference Uri=&quot;http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml&quot;&gt;
     &lt;edmx:Include Namespace=&quot;Org.OData.Core.V1&quot; Alias=&quot;OData&quot;/&gt;
   &lt;/edmx:Reference&gt;
@@ -1650,17 +1692,17 @@ window.onhashchange = scrollToHash;
     &lt;edmx:Include Namespace=&quot;Org.OData.Measures.V1&quot; Alias=&quot;OData.Measures&quot;/&gt;
   &lt;/edmx:Reference&gt;
   &lt;edmx:Reference Uri=&quot;http://dmtf.org/schema/v1/Extensions&quot;&gt;
-    &lt;edmx:Include Namespace=&quot;DMTFExtensions.0.94.0a&quot; Alias=&quot;DMTF&quot;/&gt;
+    &lt;edmx:Include Namespace=&quot;DMTFExtensions.0.95.0&quot; Alias=&quot;DMTF&quot;/&gt;
   &lt;/edmx:Reference&gt;
   &lt;edmx:Reference Uri=&quot;http://dmtf.org/schema/v1/Resource&quot;&gt;
-    &lt;edmx:Include Namespace=&quot;Resource.0.94.0a&quot; Alias=&quot;Resource&quot;/&gt;
+    &lt;edmx:Include Namespace=&quot;Resource.0.95.0&quot; Alias=&quot;Resource&quot;/&gt;
   &lt;/edmx:Reference&gt;
 </code></pre>
 <h5 id="namespace-definitions">Namespace Definitions</h5>
 <p>Resource types are defined within a namespace. The namespace is defined through a <code>Schema</code> element that contains attributes for declaring the <code>Namespace</code> and local <code>Alias</code> for the schema. </p>
-<p>The Schema element is a child of the <code>DataServices</code> element, which is a child of the <a href="#user-content-schema-documents">Edmx</a> element.</p>
+<p>The Schema element is a child of the <code>DataServices</code> element, which is a child of the <a href="#schema-documents">Edmx</a> element.</p>
 <pre><code class="lang-xml">  &lt;edmx:DataServices&gt;
-    &lt;Schema xmlns=&quot;http://docs.oasis-open.org/odata/ns/edm&quot; Namespace=&quot;MyTypes.0.94.0a&quot; Alias=&quot;MyTypes&quot;&gt;
+    &lt;Schema xmlns=&quot;http://docs.oasis-open.org/odata/ns/edm&quot; Namespace=&quot;MyTypes.0.95.0&quot; Alias=&quot;MyTypes&quot;&gt;
 
       &lt;!-- Type definitions go here --&gt;
 
@@ -1668,9 +1710,9 @@ window.onhashchange = scrollToHash;
   &lt;/edmx:DataServices&gt;
 </code></pre>
 <h4 id="resource-type-definitions">Resource Type Definitions</h4>
-<p>Resource types are defined within a <a href="#user-content-namespace-definitions">namespace</a> using <code>EntityType</code> elements. The <code>Name</code> attribute specifies the name of the resource and the <code>BaseType</code> specifies the base type, if any.</p>
-<p>SPMA resources derive from a common Resource base type named &quot;Resource&quot; in the Resource.0.94.0a namespace. </p>
-<p>The EntityType contains the <a href="#user-content-resource-properties">property</a> and <a href="#user-content-reference-properties">navigation property</a> elements that define the resource, as well as annotations describing the resource.</p>
+<p>Resource types are defined within a <a href="#namespace-definitions">namespace</a> using <code>EntityType</code> elements. The <code>Name</code> attribute specifies the name of the resource and the <code>BaseType</code> specifies the base type, if any.</p>
+<p>SPMA resources derive from a common Resource base type named &quot;Resource&quot; in the Resource.0.95.0 namespace. </p>
+<p>The EntityType contains the <a href="#resource-properties">property</a> and <a href="#reference-properties">navigation property</a> elements that define the resource, as well as annotations describing the resource.</p>
 <pre><code class="lang-xml">      &lt;EntityType Name=&quot;TypeA&quot; BaseType=&quot;Resource.Resource&quot;&gt;
         &lt;Annotation Term=&quot;Core.Description&quot; String=&quot;This is the description of TypeA.&quot;/&gt;
         &lt;Annotation Term=&quot;Core.LongDescription&quot; String=&quot;This is the specification of TypeA.&quot;/&gt;
@@ -1679,10 +1721,10 @@ window.onhashchange = scrollToHash;
 
       &lt;/EntityType&gt;
 </code></pre>
-<p>All resources shall include <a href="#user-content-description">Description</a> and <a href="#user-content-long-description">LongDescription</a> annotations. </p>
+<p>All resources shall include <a href="#description">Description</a> and <a href="#long-description">LongDescription</a> annotations. </p>
 <h4 id="resource-properties">Resource Properties</h4>
-<p>Structural properties of the resource are defined using the <code>Property</code> element. The <code>Name</code> attribute specifies the name of the property, and the <a href="#user-content-property-types"><code>Type</code></a> its type. 
-Properties that must have a non-nullable value include the <a href="#user-content-non-nullable-properties">nullable attribute</a> with a value of &quot;false&quot;. </p>
+<p>Structural properties of the resource are defined using the <code>Property</code> element. The <code>Name</code> attribute specifies the name of the property, and the <a href="#property-types"><code>Type</code></a> its type. 
+Properties that must have a non-nullable value include the <a href="#non-nullable-properties">nullable attribute</a> with a value of &quot;false&quot;. </p>
 <pre><code class="lang-xml">        &lt;Property Name=&quot;Property1&quot; Type=&quot;Edm.String&quot; Nullable=&quot;false&quot;&gt;
           &lt;Annotation Term=&quot;Core.Description&quot; String=&quot;This is a property of TypeA.&quot;/&gt;
           &lt;Annotation Term=&quot;Core.LongDescription&quot; String=&quot;This is the specification of Property1.&quot;/&gt;
@@ -1691,12 +1733,12 @@ Properties that must have a non-nullable value include the <a href="#user-conten
           &lt;Annotation Term=&quot;OData.Measures.Units&quot; String=&quot;Watts&quot;/&gt;
         &lt;/Property&gt;
 </code></pre>
-<p>All properties shall include <a href="#user-content-description">Description</a> and <a href="#user-content-long-description">LongDescription</a> annotations. </p>
-<p>Properties that are read-only are annotated with the <a href="#user-content-read-only-properties">Permissions annotation</a> with a value of <code>ODataPermissions/Read</code>.</p>
-<p>Properties that are required to be implemented by all services are annotated with the <a href="#user-content-required-properties">required annotation</a>. </p>
-<p>Properties that have units associated with them can be annotated with the <a href="#user-content-units-of-measure">units annotation</a></p>
+<p>All properties shall include <a href="#description">Description</a> and <a href="#long-description">LongDescription</a> annotations. </p>
+<p>Properties that are read-only are annotated with the <a href="#read-only-properties">Permissions annotation</a> with a value of <code>ODataPermissions/Read</code>.</p>
+<p>Properties that are required to be implemented by all services are annotated with the <a href="#required-properties">required annotation</a>. </p>
+<p>Properties that have units associated with them can be annotated with the <a href="#units-of-measure">units annotation</a></p>
 <h5 id="property-types">Property Types</h5>
-<p>Type type of a property is specified by the <code>Type</code> attribute. The value of the type attribute may be a <a href="#user-content-primitive-types">primitive type</a>, a <a href="#user-content-structured-types">structured type</a>, an <a href="#user-content-enums">enumeration type</a> or a <a href="#user-content-collections">collection</a> of primitive, structured or enumeration types.</p>
+<p>Type type of a property is specified by the <code>Type</code> attribute. The value of the type attribute may be a <a href="#primitive-types">primitive type</a>, a <a href="#structured-types">structured type</a>, an <a href="#enums">enumeration type</a> or a <a href="#collections">collection</a> of primitive, structured or enumeration types.</p>
 <h6 id="primitive-types">Primitive Types</h6>
 <p>Primitive types are prefixed with the &quot;Edm&quot; namespace prefix. </p>
 <p>SPMA services support the following primitive types:</p>
@@ -1739,7 +1781,7 @@ Properties that must have a non-nullable value include the <a href="#user-conten
 </tbody>
 </table>
 <h6 id="structured-types">Structured Types</h6>
-<p>Structured types are defined within a <a href="#user-content-namespace-definitions">namespace</a> using <code>ComplexType</code> elements. The <code>Name</code> attribute of the complex type specifies the name of the structured type. Complex types can include a <code>BaseType</code> attribute to specifies the base type, if any.</p>
+<p>Structured types are defined within a <a href="#namespace-definitions">namespace</a> using <code>ComplexType</code> elements. The <code>Name</code> attribute of the complex type specifies the name of the structured type. Complex types can include a <code>BaseType</code> attribute to specifies the base type, if any.</p>
 <p>Structured types may be reused across different properties of different resource types.</p>
 <pre><code class="lang-xml">      &lt;ComplexType Name=&quot;PropertyTypeA&quot;&gt;
         &lt;Annotation Term=&quot;Core.Description&quot; String=&quot;This is type used to describe a structured property.&quot;/&gt;
@@ -1749,10 +1791,10 @@ Properties that must have a non-nullable value include the <a href="#user-conten
 
       &lt;/ComplexType&gt;
 </code></pre>
-<p>Structured types can contain <a href="#user-content-resource-properties">properties</a>, <a href="#user-content-reference-properties">navigation properties</a> and annotations.</p>
-<p>Structured types shall include <a href="#user-content-description">Description</a> and <a href="#user-content-longdescription">LongDescription</a> annotations. </p>
+<p>Structured types can contain <a href="#resource-properties">properties</a>, <a href="#reference-properties">navigation properties</a> and annotations.</p>
+<p>Structured types shall include <a href="#description">Description</a> and <a href="#longdescription">LongDescription</a> annotations. </p>
 <h6 id="enums">Enums</h6>
-<p>Enumeration types are defined within a <a href="#user-content-namespace-definitions">namespace</a> using <code>EnumType</code> elements. The <code>Name</code> attribute of the enumeration type specifies the name of the enumeration type. </p>
+<p>Enumeration types are defined within a <a href="#namespace-definitions">namespace</a> using <code>EnumType</code> elements. The <code>Name</code> attribute of the enumeration type specifies the name of the enumeration type. </p>
 <p>Enumeration types may be reused across different properties of different resource types.</p>
 <p>EnumType elements contain <code>Member</code> elements that define the members of the enumeration. The Member elements contain a <code>Name</code> attribute that specifies the string value of the member name. </p>
 <pre><code class="lang-xml">      &lt;EnumType Name=&quot;EnumTypeA&quot;&gt;
@@ -1766,10 +1808,10 @@ Properties that must have a non-nullable value include the <a href="#user-conten
         &lt;/Member&gt;
       &lt;/EnumType&gt;
 </code></pre>
-<p>Enumeration Types shall include <a href="#user-content-description">Description</a> and <a href="#user-content-longdescription">LongDescription</a> annotations. </p>
-<p>Enumeration Members shall include <a href="#user-content-description">Description</a> annotations. </p>
+<p>Enumeration Types shall include <a href="#description">Description</a> and <a href="#longdescription">LongDescription</a> annotations. </p>
+<p>Enumeration Members shall include <a href="#description">Description</a> annotations. </p>
 <h6 id="collections">Collections</h6>
-<p>The <a href="#user-content-property-types">type</a> attribute may specify a collection of <a href="#user-content-primitive-types">primitive</a>, <a href="#user-content-structured-types">structured</a> or <a href="#user-content-enums">enumeration</a> types.</p>
+<p>The <a href="#property-types">type</a> attribute may specify a collection of <a href="#primitive-types">primitive</a>, <a href="#structured-types">structured</a> or <a href="#enums">enumeration</a> types.</p>
 <p>The value of the type attribute for a collection-valued property is of the form:</p>
 <p> Collection(<em>NamespaceQualifiedTypeName</em>)</p>
 <p>where <em>NamespaceQualifiedTypeName</em> is the namespace or alias qualified name of the primitive, structured, or enumeration type.</p>
@@ -1789,7 +1831,7 @@ Properties that must have a non-nullable value include the <a href="#user-conten
 </code></pre>
 <p>The <code>Required</code> annotation term is defined in <a href="http://dmtf.org/schema/V1/DMTFExtensions">http://dmtf.org/schema/V1/DMTFExtensions</a>.</p>
 <h5 id="units-of-measure">Units of Measure</h5>
-<p>In addition to following <a href="#user-content-common naming-conventions">naming conventions</a>, properties representing units of measure shall be annotated with the Units annotation term in order to specify the units of measurement for the property.</p>
+<p>In addition to following <a href="#common naming-conventions">naming conventions</a>, properties representing units of measure shall be annotated with the Units annotation term in order to specify the units of measurement for the property.</p>
 <pre><code class="lang-xml">        &lt;Annotation Term=&quot;OData.Measures.Units&quot; String=&quot;Watts&quot;/&gt;
 </code></pre>
 <p>The <code>Units</code> annotation term is defined in <a href="http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml">http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml</a>.</p>
@@ -1801,7 +1843,7 @@ Properties that must have a non-nullable value include the <a href="#user-conten
 </code></pre>
 <p>The <code>IsLanguageDependent</code> annotation term is defined in <a href="http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Core.V1.xml">http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Core.V1.xml</a>.</p>
 <h4 id="reference-properties">Reference Properties</h4>
-<p>Properties that reference other resources are represented as navigation properties. The <code>NavigationProperty</code> element specifies the <code>Name</code> and namespace (or alias) qualified <a href="#user-content-property-types"><code>Type</code></a> of the related resource(s).</p>
+<p>Properties that reference other resources are represented as navigation properties. The <code>NavigationProperty</code> element specifies the <code>Name</code> and namespace (or alias) qualified <a href="#property-types"><code>Type</code></a> of the related resource(s).</p>
 <p>If the property references a single type, the value of the type attribute is the namespace (or alias) qualified name of the related resource type.</p>
 <pre><code class="lang-xml">      &lt;NavigationProperty Name=&quot;RelatedType&quot; Type=&quot;MyTypes.TypeB&quot;&gt;
         &lt;Annotation Term=&quot;Core.Description&quot; String=&quot;This property references a related resource.&quot;/&gt;
@@ -1818,36 +1860,41 @@ Properties that must have a non-nullable value include the <a href="#user-conten
         &lt;Annotation Term=&quot;DMTF.ExpandReferences&quot;/&gt;
       &lt;/NavigationProperty&gt;
 </code></pre>
-<p>All navigation properties shall include <a href="#user-content-description">Description</a> and <a href="#user-content-longdescription">LongDescription</a> annotations. </p>
+<p>All navigation properties shall include <a href="#description">Description</a> and <a href="#longdescription">LongDescription</a> annotations. </p>
 <h5 id="expanded-references">Expanded References</h5>
-<p>Navigation properties in an SPMA JSON payload are expanded to include the <a href="#user-content-reference-to-a-single-related-resource">related resource id</a> or <a href="#user-content-array-of-references-to-related-resources">collection of related resource ids</a>. This behavior is expressed using the ExpandReferences annotation.</p>
+<p>Navigation properties in an SPMA JSON payload are expanded to include the <a href="#reference-to-a-single-related-resource">related resource id</a> or <a href="#array-of-references-to-related-resources">collection of related resource ids</a>. This behavior is expressed using the ExpandReferences annotation.</p>
 <pre><code class="lang-xml">        &lt;Annotation Term=&quot;DMTF.ExpandReferences&quot;/&gt;
 </code></pre>
 <p>The <code>ExpandReferences</code> annotation term is defined in <a href="http://dmtf.org/schema/V1/DMTFExtensions">http://dmtf.org/schema/V1/DMTFExtensions</a>.</p>
+<h5 id="expanded-resources">Expanded Resources</h5>
+<p>This term can be applied to a navigation property in order to specify that the default behavior for the service is to expand the related <a href="#structured-properties">resource</a> or <a href="#collection-properties">collection of resources</a> in responses.</p>
+<pre><code class="lang-xml">        &lt;Annotation Term=&quot;DMTF.ExpandResources&quot;/&gt;
+</code></pre>
+<p>The <code>ExpandResources</code> annotation term is defined in <a href="http://dmtf.org/schema/V1/DMTFExtensions">http://dmtf.org/schema/V1/DMTFExtensions</a>.</p>
 <h4 id="resource-actions">Resource Actions</h4>
 <p>Actions are grouped under a property named &quot;Actions&quot;. </p>
 <pre><code class="lang-xml">      &lt;Property Name=&quot;Actions&quot; Type=&quot;MyType.Actions&quot;&gt;
 </code></pre>
-<p>The type of the Actions property is a <a href="#user-content-structured-types">structured type</a> with a single OEM property whose type is a structured type with no defined properties.</p>
+<p>The type of the Actions property is a <a href="#structured-types">structured type</a> with a single OEM property whose type is a structured type with no defined properties.</p>
 <pre><code class="lang-xml">  &lt;ComplexType Name=&quot;Actions&quot;&gt;
     &lt;Property Name=&quot;OEM&quot; Type=&quot;MyType.OEMActions&quot;/&gt;
   &lt;/ComplexType&gt;
 
   &lt;ComplexType Name=&quot;OEMActions&quot;/&gt;
 </code></pre>
-<p>Individual actions are defined within a <a href="#user-content-namespace-definitions">namespace</a> using <code>Action</code> elements. The <code>Name</code> attribute of the action specifies the name of the action. The <code>Isbound</code> attribute specifies that the action is bound to (appears as a member of) a resource or structured type.</p>
-<p>The Action element contains one or more <code>Parameter</code> elements that specify the <code>Name</code> and <a href="#user-content-property-types"><code>Type</code></a> of each parameter. </p>
-<p>The first parameter is called the &quot;binding parameter&quot; and specifies the resource or <a href="#user-content-structural-types">structrual type</a> that the action appears as a member of (the type of the Actions property on the resource). The remaining Parameter elements describe additional parameters to be passed to the action.</p>
+<p>Individual actions are defined within a <a href="#namespace-definitions">namespace</a> using <code>Action</code> elements. The <code>Name</code> attribute of the action specifies the name of the action. The <code>Isbound</code> attribute specifies that the action is bound to (appears as a member of) a resource or structured type.</p>
+<p>The Action element contains one or more <code>Parameter</code> elements that specify the <code>Name</code> and <a href="#property-types"><code>Type</code></a> of each parameter. </p>
+<p>The first parameter is called the &quot;binding parameter&quot; and specifies the resource or <a href="#structural-types">structrual type</a> that the action appears as a member of (the type of the Actions property on the resource). The remaining Parameter elements describe additional parameters to be passed to the action.</p>
 <pre><code class="lang-xml">  &lt;Action Name=&quot;MyAction&quot; Isbound=&quot;true&quot;&gt;
     &lt;Parameter Name=&quot;Thing&quot; Type=&quot;MyType.Actions&quot;/&gt;
     &lt;Parameter Name=&quot;Parameter1&quot; Type=&quot;Edm.Boolen&quot;/&gt;
   &lt;/Action&gt;
 </code></pre>
 <h4 id="resource-extensibility">Resource Extensibility</h4>
-<p>Vendors can define additional <a href="#user-content-Property-Extensions">properties</a>, links, and <a href="#user-content-Custom-Actions">actions</a> for common SPMA resources using the OEM property on resources, links, and actions. </p>
+<p>Vendors can define additional <a href="#Property-Extensions">properties</a>, links, and <a href="#Custom-Actions">actions</a> for common SPMA resources using the OEM property on resources, links, and actions. </p>
 <p>While the information and semantics of these extensions are outside of the standard, the schema representing the data, the resource itself, and the semantics around the protocol shall conform to the requirements in this specification.</p>
 <h5 id="property-extensions">Property Extensions</h5>
-<p>Resources contain a property called <a href="#user-content-oem-property">&quot;Oem&quot;</a> whose value is an empty &quot;OEM&quot; <a href="#user-content-sructured-type">complex type</a> defined for the resource. </p>
+<p>Resources contain a property called <a href="#oem-property">&quot;Oem&quot;</a> whose value is an empty &quot;OEM&quot; <a href="#sructured-type">complex type</a> defined for the resource. </p>
 <pre><code class="lang-xml">  &lt;ComplexType Name=&quot;MyType.OEMType&quot;/&gt;
 </code></pre>
 <p>Vendor-specific information is defined in OEM-specific complex types. </p>
@@ -1868,7 +1915,7 @@ Properties that must have a non-nullable value include the <a href="#user-conten
 }
 </code></pre>
 <h5 id="custom-actions">Custom Actions</h5>
-<p>OEM-specific actions can be defined by defining actions bound to the OEM property of the <a href="#user-content-resource-actions">resource&#39;s Actions</a> property type.</p>
+<p>OEM-specific actions can be defined by defining actions bound to the OEM property of the <a href="#resource-actions">resource&#39;s Actions</a> property type.</p>
 <pre><code class="lang-xml">
   &lt;Action Name=&quot;Ping&quot; Isbound=&quot;true&quot;&gt;
     &lt;Parameter Name=&quot;acmetype&quot; Type=&quot;MyType.OEMActions&quot;/&gt;
@@ -1876,7 +1923,7 @@ Properties that must have a non-nullable value include the <a href="#user-conten
 
 &lt;/Schema&gt;
 </code></pre>
-<p>Such bound actions appear in the JSON payload as properties of the Oem type, nested under an <a href="#user-content-actions-property">Actions property</a>.</p>
+<p>Such bound actions appear in the JSON payload as properties of the Oem type, nested under an <a href="#actions-property">Actions property</a>.</p>
 <pre><code class="lang-json">&quot;Actions&quot;: {
     &quot;OEM&quot;: {
         &quot;acme.v.v.v#acme.Ping&quot;: {
@@ -1890,10 +1937,10 @@ Properties that must have a non-nullable value include the <a href="#user-conten
 <p>This specification defines a set of common annotations for extending the definition of resource types used by SPMA. In addition, services may define custom annotations.</p>
 <p>Services may apply annotations to resources in order to provide service-specific information about the type, such as whether the service supports modifications of particular properties.</p>
 <p>Services can apply annotations to existing resources where those resources don&#39;t already define a value for the annotation. Services cannot change the value of an annotation applied as part of the resource definition.  </p>
-<p>Because <a href="#user-content-annotations">service annotations</a> may be applied to existing resource definitions, they are generally specified in a service-specific metadata document referenced by the <a href="#user-content-service-metadata">service metadata</a>.</p>
+<p>Because <a href="#annotations">service annotations</a> may be applied to existing resource definitions, they are generally specified in a service-specific metadata document referenced by the <a href="#service-metadata">service metadata</a>.</p>
 <h3 id="common-spma-resource-properties">Common SPMA Resource Properties</h3>
 <p>This section contains a set of common properties across all SPMA resources. The property names in this section shall not be used for any other purpose, even if they are not implemented in a particular resource.</p>
-<p>Common properties are defined in a the base Resource.0.94.0a.Resource schema.</p>
+<p>Common properties are defined in a the base Resource.0.95.0.Resource schema.</p>
 <h4 id="id">Id</h4>
 <p>The Id property of a resource identifies the resource within a collection.</p>
 <h4 id="name">Name</h4>
@@ -1901,18 +1948,18 @@ Properties that must have a non-nullable value include the <a href="#user-conten
 <h4 id="description">Description</h4>
 <p>The Description property is used to convey a human readable description of the resource.  The type of the Description property shall be string.</p>
 <h4 id="modified">Modified</h4>
-<p>The Modified property contains the time stamp equal to the last time the SPMA service modified this resource. The format of this property shall be the <a href="#user-content-standard-timestamp-format">Standard Timestamp Format</a>. </p>
+<p>The Modified property contains the time stamp equal to the last time the SPMA service modified this resource. The format of this property shall be the <a href="#standard-timestamp-format">Standard Timestamp Format</a>. </p>
 <h4 id="status">Status</h4>
 <p>The Status property represents the status of a resource. </p>
 <p>The value of the status property is a common status object type as defined by this specification. By having a common representation of status, clients can depend on consistent semantics. The Status object is capable of indicating the current intended state, the state the resource has been requested to change to, the current actual state and any problem affecting the current state of the resource.</p>
 <h4 id="links">Links</h4>
-<p>The <a href="#user-content-links-property">Links property</a> represents the links associated with the resource, as defined by that resources schema definition. All navigation properties defined for a resource shall be nested under the links property.</p>
+<p>The <a href="#links-property">Links property</a> represents the links associated with the resource, as defined by that resources schema definition. All navigation properties defined for a resource shall be nested under the links property.</p>
 <h4 id="actions">Actions</h4>
-<p>The <a href="#user-content-actions-property">Actions property</a> contains the actions supported by a resource. </p>
+<p>The <a href="#actions-property">Actions property</a> contains the actions supported by a resource. </p>
 <h4 id="oem">OEM</h4>
-<p>The <a href="#user-content-oem-property">OEM property</a> is used for OEM extensions as defined in <a href="#user-content-schema-extensibility">Schema Extensibility</a>. </p>
+<p>The <a href="#oem-property">OEM property</a> is used for OEM extensions as defined in <a href="#schema-extensibility">Schema Extensibility</a>. </p>
 <h4 id="settings">Settings</h4>
-<p>The Settings property contains a URI that the client can use to PUT properties or PATCH property changes for resources that are not directly <a href="#user-content-update-patch">updatable</a>. </p>
+<p>The Settings property contains a URI that the client can use to PUT properties or PATCH property changes for resources that are not directly <a href="#update-patch">updatable</a>. </p>
 <p>If the resource itself is read only but has a partner Setting resource, this is used to make changes at some point in the future to the resource.  </p>
 <h4 id="settingsresult">SettingsResult</h4>
 <p>The SettingsResult property represents the result of the last Setting Data.</p>
@@ -1989,7 +2036,7 @@ Properties that must have a non-nullable value include the <a href="#user-conten
 <p>There are two types of events generated in an SPMA service - life cycle and alert.  </p>
 <p>Life cycle events happen when resources are created, modified or destroyed.  Not every modification of a resource will result in a event - this is similar to when ETags are changed and implementations may not send an alert for every resource change. For instance, if an event was sent for every Ethernet packet received or every time a sensor changed 1 degree, this could result in more events than fits a scalable interface. This event usually indicates the resource that changed as well as, optionally, any attributes that changed. </p>
 <p>Alert events happen when a resource needs to indicate an event of some significance.  This may be either directly or indirectly pertaining to the resource.  This style of event usually adopts a message registry approach similar to extended error handling in that a MessageID will be included.  Examples of this kind of event are when a chassis is opened, button is pushed, cable is unplugged or threshold exceeded.  These events usually do not correspond well to life cycle type events hence they have their own category.</p>
-<p>NOTE: Refer to the <a href="#user-content-security">Security</a> section for security implications of Eventing</p>
+<p>NOTE: Refer to the <a href="#security">Security</a> section for security implications of Eventing</p>
 <h4 id="event-message-subscription">Event Message Subscription</h4>
 <p>The client locates the eventing service through traversing the SPMA service interface.  When the eventing service has been discovered, clients subscribe to messages by sending a HTTP POST to the URL of the collection for subscriptions in the Eventing Service for which they are requesting events. This should be found off of the root service as described in the schema for that service.  </p>
 <p>The specific syntax of the subscription body is found in the SPMA Schema. </p>
@@ -2025,7 +2072,7 @@ Properties that must have a non-nullable value include the <a href="#user-conten
 <p>The response body of a 202 (Accepted) should contain an instance of the Task resource describing the state of the task.</p>
 <p>As long as the operation is in process, the service shall continue to return a status code of 202 (Accepted) when querying the status monitor returned in the location header.</p>
 <p>Once the operation has completed, the status monitor shall return a status code of OK (200) and include in the body of the response a mime message containing the results of the initial operation, as if it had completed synchronously.</p>
-<p>The client can continue to get information about the status by directly querying the Task resource using the <a href="#user-content-resource-identifier">resource identifier</a> returned in the body of the 202 (Accepted) response.</p>
+<p>The client can continue to get information about the status by directly querying the Task resource using the <a href="#resource-identifier">resource identifier</a> returned in the body of the 202 (Accepted) response.</p>
 <ul>
 <li>Services that support asynchronous operations shall implement the Task resource</li>
 <li>The response to an asynchronous operation shall return a status code of 202 (Accepted)
@@ -2040,7 +2087,7 @@ have been used to return a synchronous response.</li>
 </ul>
 <h3 id="timestamp-management">Timestamp Management</h3>
 <p>The SPMA Service should support a resource that contains the current service time.  The property should be located in the &quot;/rest&quot; resource, called
-&quot;Time&quot; and should be an SPMA compliant <a href="#user-content-datetime-values">time string</a>.</p>
+&quot;Time&quot; and should be an SPMA compliant <a href="#datetime-values">time string</a>.</p>
 <pre><code class="lang-json">{
      ...
      &quot;Time&quot;: &quot;2012-03-07T14:44.30-05:00&quot;,
@@ -2117,7 +2164,7 @@ EXT:
 <p><strong>TODO</strong>: communication requirements for SPMA peers - clients or other servers.</p>
 <h5 id="tls">TLS</h5>
 <p>Implementations shall support TLS v1.1 or later</p>
-<p>Implementations shall only use compliant TLS connections to transport <a href="#user-content-sensitive-data">Sensitive Data</a>. Including to any third party authentication services or clients.</p>
+<p>Implementations shall only use compliant TLS connections to transport <a href="#sensitive-data">Sensitive Data</a>. Including to any third party authentication services or clients.</p>
 <h5 id="cipher-suites">Cipher suites</h5>
 <p>Implementations should support AES-256 based ciphers from the TLS suites.</p>
 <p>SPMA implementations should consider supporting ciphers similar to below which enable authentication and identification without use of trusted certificates.</p>
@@ -2182,7 +2229,7 @@ Security-related information (e.g., cryptographic keys, authentication data such
 <li>The root object which is needed to identify the device and service locations</li>
 </ul>
 </li>
-<li>Unauthenticated REST operation results shall not contain <a href="#user-content-sensitive-data">Sensitive Data</a>.</li>
+<li>Unauthenticated REST operation results shall not contain <a href="#sensitive-data">Sensitive Data</a>.</li>
 <li><p>External services linked via extref references are not part of this spec, and may have other security requirements.</p>
 </li>
 <li><p>CORS headers are not recommended. Services may choose to implement them.</p>
@@ -2194,7 +2241,7 @@ Security-related information (e.g., cryptographic keys, authentication data such
 </ul>
 <h4 id="extended-error-handling">Extended Error Handling</h4>
 <ul>
-<li>Authentication shall occur when <a href="#user-content-sensitive-data">Sensitive Data</a> is present in any part of the REST object.</li>
+<li>Authentication shall occur when <a href="#sensitive-data">Sensitive Data</a> is present in any part of the REST object.</li>
 <li>Extended error messages shall NOT provide privileged info when authentication failures occur</li>
 </ul>
 <h4 id="http-header-authentication">HTTP Header Authentication</h4>
@@ -2203,7 +2250,7 @@ Security-related information (e.g., cryptographic keys, authentication data such
 <li>HTTP Cookies shall NOT be used to authenticate any activity i.e.: GET, POST, PUT/PATCH, and DELETE.</li>
 </ul>
 <h5 id="basic-authentication">BASIC authentication</h5>
-<p>HTTP BASIC authentication as defined by <a href="#user-content-RFC2617">RFC2617</a> shall be supported, and shall only use compliant TLS connections to transport the data between any third party authentication service and clients.</p>
+<p>HTTP BASIC authentication as defined by <a href="#RFC2617">RFC2617</a> shall be supported, and shall only use compliant TLS connections to transport the data between any third party authentication service and clients.</p>
 <h5 id="digest-authentication">Digest authentication</h5>
 <p>Implementations may support HTTP Digest authentication mechanism </p>
 <h5 id="negotiate">Negotiate</h5>
@@ -2268,8 +2315,8 @@ X-Auth-Token: &lt;token string&gt;
 <ul>
 <li>User passwords should be stored with one-way encryption techniques.</li>
 <li>Implementations may support exporting user accounts with passwords, but shall do so using encryption methods to protect them.</li>
-<li>The root REST object should be available unauthenticated, but shall not contain any <a href="#user-content-sensitive-data">Sensitive Data</a>.<ul>
-<li>Authentication shall occur when <a href="#user-content-sensitive-data">Sensitive Data</a> is present in the root REST object.</li>
+<li>The root REST object should be available unauthenticated, but shall not contain any <a href="#sensitive-data">Sensitive Data</a>.<ul>
+<li>Authentication shall occur when <a href="#sensitive-data">Sensitive Data</a> is present in the root REST object.</li>
 </ul>
 </li>
 <li>User accounts shall support ETags and shall support atomic operations<ul>
@@ -2287,7 +2334,7 @@ X-Auth-Token: &lt;token string&gt;
 <ul>
 <li><p>The SPMA device shall check the privilege of the subscriber before pushing event data object to the destination </p>
 </li>
-<li><p>The SPMA device shall encrypt event data when there is <a href="#user-content-sensitive-data">Sensitive Data</a> in the event data object before pushing it</p>
+<li><p>The SPMA device shall encrypt event data when there is <a href="#sensitive-data">Sensitive Data</a> in the event data object before pushing it</p>
 </li>
 <li><p>The SPMA device may verify the destination for identity purposes before pushing event data object to the Destination </p>
 </li>
@@ -2428,7 +2475,7 @@ based upon specific user account information (future -- not defined yet)</strong
 <h4 id="required-data-for-security-log-entries">Required data for security log entries</h4>
 <p>Implementations shall log authentication requests including failures. 
 Authentication login/logout log entries shall contain a user identifier that can be used to uniquely identify the client and a time stamp.</p>
-<p>Logs shall include detailed privileged info, but shall NOT include the <a href="#user-content-sensitive-data">Sensitive Data</a> outside a privileged user or a privileged security context.</p>
+<p>Logs shall include detailed privileged info, but shall NOT include the <a href="#sensitive-data">Sensitive Data</a> outside a privileged user or a privileged security context.</p>
 <h4 id="completeness-of-logging">Completeness of Logging</h4>
 <ul>
 <li>Every entity from the originator of the RESTful service call, through every intermediary, to the very last entity in the call chain, log an entry in their audit log for the call activity triggered/ taken/ ... This means same as any RESTful service call, the audit log entry will &#39;be complete&#39; for the activity performed within said entity.<ul>
@@ -2465,7 +2512,7 @@ Authentication login/logout log entries shall contain a user identifier that can
 <li>Event description</li>
 </ul>
 <h2 id="annex-a-informative-">ANNEX A (informative)</h2>
-<h1 id="change-log">Change Log</h1>
+<h3 id="change-log">Change Log</h3>
 <table>
 <thead>
 <tr>
@@ -2485,6 +2532,6 @@ Authentication login/logout log entries shall contain a user identifier that can
 
         <h2 id="last-footer-fix"></h2>
       </div>
-      <div id="footer"><div data-doc-version="0.94.0a">Work in Progress – Not a DMTF Standard – DMTF Confidential</div></div>
+      <div id="footer"><div data-doc-version="0.95.0">Work in Progress – Not a DMTF Standard – DMTF Confidential</div></div>
     </body>
   </html>
