@@ -325,9 +325,10 @@ In HTTP messages the media type is specified in the Content-Type header. A clien
 * All resources shall be made available using the JSON media type
   "application/json".
 * SPMA services shall make every resource available in a representation based on JSON, as specified in [RFC4627](#RFC4627). Receivers shall not reject a message because it is encoded in JSON, and shall offer at least one response representation based on JSON. An implementation may offer additional representations using non-JSON media types.
-* Responses to GET requests may be compressed.  Clients shall be prepared to accept a Content-Encoding of gzip in a Response to a GET.
 
-
+Clients may request compression by specifying an [Accept-Encoding header](#request-headers) in the request. 
+* Responses to GET requests shall only be compressed if requested by the client. 
+* Services should support gzip compression when requested by the client.
 
 #### ETags
 
@@ -2286,9 +2287,8 @@ The file where the events are written, one or more messages per event should at 
 
 ## ANNEX A (informative) 
 
-# Change Log
+### Change Log
 
 | Version | Date      | Description                             |
 | ---     | ---       | ---                                     |
 | 0.94.0  | 2015-13-1 | Initial merge of 0.91 and 0.92 versions |
-
