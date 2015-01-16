@@ -808,7 +808,7 @@ DateTime values shall be returned as JSON strings according to the ISO 8601 "ext
 
 ##### Structured Properties
 
-Structured properties, defined as [complex types](#user-content-structured-properties), are returned as JSON objects. The type of the JSON object is specified in schema definition of the property containing the structured value.
+Structured properties, defined as [complex types](#user-content-structured-types) or [expanded](#user-content-expand-resources) [resource types](#user-content-resource-type-definitions), are returned as JSON objects. The type of the JSON object is specified in schema definition of the property containing the structured value.
 
 ##### Collection Properties
 
@@ -1476,6 +1476,16 @@ Navigation properties in an SPMA JSON payload are expanded to include the [relat
 ~~~
 
 The `ExpandReferences` annotation term is defined in http://dmtf.org/schema/V1/DMTFExtensions.
+
+##### Expanded Resources
+
+This term can be applied to a navigation property in order to specify that the default behavior for the service is to expand the related [resource](#user-content-structured-properties) or [collection of resources](#user-content-collection-properties) in responses.
+
+~~~xml
+		<Annotation Term="DMTF.ExpandResources"/>
+~~~
+
+The `ExpandResources` annotation term is defined in http://dmtf.org/schema/V1/DMTFExtensions.
 
 #### Resource Actions
 
