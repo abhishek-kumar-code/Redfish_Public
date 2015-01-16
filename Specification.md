@@ -244,7 +244,7 @@ The SPMA protocol is designed around a web service based interface model, and de
 
 [Media types](#media-types) are used to negotiate the type of data that is being sent in the body of a message. 
 
-[HTTP status codes](#status-codes) are used to indicate the server's attempt at processing the request.  [Extended error handling](#extended-error-handling) is used to return more information than the HTTP error code provides.
+[HTTP status codes](#status-codes) are used to indicate the server's attempt at processing the request.  [Extended error handling](#error-response) is used to return more information than the HTTP error code provides.
 
 The ability to send secure messages is important; the [Security](#security) section of this document describes specific TLS requirements.
 
@@ -455,7 +455,7 @@ When the resource addressed is a collection, the client can use the following pa
 | $top     | Integer indicating the number of collection members to include in the response. The minimum value for this parameter is 1.  The default behavior is to return all members.          | http://collection?$top=30 |
 
 * Services should support the $top and $skip query parameters. 
-* Implementation shall return the 501, Not Implemented, status code for any query parameters starting with "$" that are not supported, and should return an [extended error](#extended-error-handling) indicating the requested query parameter(s) not supported for this resource.
+* Implementation shall return the 501, Not Implemented, status code for any query parameters starting with "$" that are not supported, and should return an [extended error](#error-response) indicating the requested query parameter(s) not supported for this resource.
 * Implementations shall ignore unknown or unsupported query parameters that do not begin with "$".
 
 ###### Retrieving Collections
@@ -636,11 +636,21 @@ HTTP defines headers that can be used in response messages.  The following table
 
 HTTP defines status codes that can be returned in response messages. 
 
-* Clients shall understand and be able to process the status codes in the   following table as defined by the HTTP 1.1 specification and constrained by   additional requirements defined by this specification. Services shall   respond with these status codes as appropriate.
+Where the HTTP status code does indicates a failure, the response body contains an [extended error resource](#error-response) to provide the client more meaningful and deterministic error semantics. 
+
+* Services shall return the extended error resource as described in this specification in the response body when a status code of 400 or 500 is returned.
+* Services should return the extended error resource as described in this specification in the response body when a status code 400 or greater is returned.
+* Extended error messages MUST NOT provide privileged info when authentication failures occur
+
+NOTE: Refer to the [Security](#security) section for security implications of extended errors
+
+The following table lists some of the common HTTP status codes. Other codes may be returned by the service as appropriate. See the Description column for a description of the status code and additional requirements imposed by this specification.
+* Clients shall understand and be able to process the status codes in the following table as defined by the HTTP 1.1 specification and constrained by additional requirements defined by this specification. 
+* Services shall respond with these status codes as appropriate.
 * Exceptions from operations shall be mapped to HTTP status codes.
 * SPMA services should not return the status code 100. Using the HTTP protocol for a multi-pass data transfer should be avoided, except upload of extremely large data.
 
-| HTTP Error Code                                              | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| HTTP Status Code                                             | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | ---                                                          | ---                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | <a name="status-200"></a>200 OK                              | The request was successfully completed and includes a representation in its body.                                                                                                                                                                                                                                                                                                                                                                                                      |
 | <a name="status-201"></a>201 Created                         | A request that created a new resource completed successfully. The Location header is set to the canonical URI for the newly created resource. A representation of the newly created resource may be included in the message body.  The Location header shall be set to the URI of the newly created resource.                                                                                                                                                                                                                                                    |
@@ -649,7 +659,7 @@ HTTP defines status codes that can be returned in response messages.
 | <a name="status-301"></a>301 Moved Permanently               | The requested resource resides under a different URI                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | <a name="status-302"></a>302 Found                           | The requested resource resides temporarily under a different URI.                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | <a name="status-304"></a>304 Not Modified                    | The service has performed a conditional GET request where access is allowed, but the resource content has not changed. Conditional requests are initiated using the headers If-Modified-Since and/or If-None-Match (see HTTP 1.1, sections 14.25 and 14.26) to save network bandwidth if there is no change.                                                                                                                                                                           |
-| <a name="status-400"></a>400 Bad Request                     | The request could not be processed because it contains missing or invalid information (such as validation error on an input field, a missing required value, and so on). An extended error shall be returned in the response body, as defined in section [Extended Error Handling](#extended-error-handling).                                                                                                                                                                                                                                                                                                           |
+| <a name="status-400"></a>400 Bad Request                     | The request could not be processed because it contains missing or invalid information (such as validation error on an input field, a missing required value, and so on). An extended error shall be returned in the response body, as defined in section [Extended Error Handling](#error-response).                                                                                                                                                                                                                                                                                                           |
 | <a name="status-401"></a>401 Unauthorized                    | The authentication credentials included with this request are missing or invalid.                                                                                                                                                                                                                                                                                                                                                                                                      |
 | <a name="status-403"></a>403 Forbidden                       | The server recognized the credentials in the request, but those credentials do not possess authorization to perform this request.                                                                                                                                                                                                                                                                                                                                                      |
 | <a name="status-404"></a>404 Not Found                       | The request specified a URI of a resource that does not exist.                                                                                                                                                                                                                                                                                                                                                                                                                         |
@@ -660,14 +670,14 @@ HTTP defines status codes that can be returned in response messages.
 | <a name="status-411"></a>411 Length Required                 | The request did not specify the length of its content using the Content-Length header (perhaps Transfer-Encoding: chunked was used instead). The addressed resource requires the Content-Length header.                                                                                                                                                                                                                                                                                |
 | <a name="status-412"></a>412 Precondition Failed             | Precondition (If Match or If Not Modified ) check failed.                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | <a name="status-415"></a>415 Unsupported Media Type          | The request specifies a Content-Type for the body that is not supported.                                                                                                                                                                                                                                                                                                                                                                                                               |
-| <a name="status-500"></a>500 Internal Server Error           | The server encountered an unexpected condition that prevented it from fulfilling the request. An extended error shall be returned in the response body, as defined in section [Extended Error Handling](#extended-error-handling).                                                                                                                                                                                                                                                                                                                                                                                            |
+| <a name="status-500"></a>500 Internal Server Error           | The server encountered an unexpected condition that prevented it from fulfilling the request. An extended error shall be returned in the response body, as defined in section [Extended Error Handling](#error-response).                                                                                                                                                                                                                                                                                                                                                                                            |
 | <a name="status-501"></a>501 Not Implemented                 | The server does not (currently) support the functionality required to fulfill the request.  This is the appropriate response when the server does not recognize the request method and is not capable of supporting the method for any resource.                                                                                                                                                                                                                                                                                                                                                                                             |
 | <a name="status-503"></a>503 Service Unavailable             | The server is currently unable to handle the request due to temporary overloading or maintenance of the server.                                                                                                                                                                                                                                                                                                                                                                        |
 
 #### Metadata Responses
 
 ##### Service Metadata
-The service metadata describes top-level resources of the service according to [OData-Schema](#OData-CSDL). The SPMA Service Metadata is represented as a CSDL XML document with a root element named "Edmx", defined in the http://docs.oasis-open.org/odata/ns/edmx" namespace, and with an OData Version attribute equal to "4.0".
+The service metadata describes top-level resources and resource types of the service according to [OData-Schema](#OData-CSDL). The SPMA Service Metadata is represented as a CSDL XML document with a root element named "Edmx", defined in the http://docs.oasis-open.org/odata/ns/edmx" namespace, and with an OData Version attribute equal to "4.0".
 
 ~~~xml
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
@@ -766,11 +776,13 @@ The OData Service Document serves as a top-level entry point for generic OData c
 }
 ~~~ 
 
-The OData Service Document shall have a context property named "@odata.context" with a value of "/rest/v1/$metadata". This context tells a generic OData client how to find the [service metadata](#service-metadata) describing the types exposed by the service.
+The OData Service Document shall be a returned as a JSON object, using the MIME type `application/json`.
 
-The OData Service Document shall include a property named "value" whose value is a JSON array containing an entry for the [service root](#service-root-request) and each resource that is a direct child of the service root.
+The JSON object shall contain a context property named "@odata.context" with a value of "/rest/v1/$metadata". This context tells a generic OData client how to find the [service metadata](#service-metadata) describing the types exposed by the service.
 
-Each entry shall include a "name" property whose value is a user-friendly name of the resource, a "kind" property, whose value is "Singleton" for individual resources (including collection resources) or "EntitySet" for top-level resource collections, and a "url" property whose value is the relative URL for the top-level resource.
+The JSON object shall include a property named "value" whose value is a JSON array containing an entry for the [service root](#service-root-request) and each resource that is a direct child of the service root.
+
+Each entry shall be represented as a JSON object and shall include a "name" property whose value is a user-friendly name of the resource, a "kind" property whose value is "Singleton" for individual resources (including collection resources) or "EntitySet" for top-level resource collections, and a "url" property whose value is the relative URL for the top-level resource.
 
 #### Resource Responses
 
@@ -995,7 +1007,7 @@ A JSON object can be annotated with "@DMTF.ExtendedInfo" in order to specify obj
 }
 ~~~
 
-The value of the property is an [extended information object](#extended-error-handling).
+The value of the property is an [extended information object](#extended-information-object).
 
 ###### Extended Property Information
 
@@ -1027,7 +1039,7 @@ An individual property within a JSON object can be annotated with extended infor
 }
 ~~~
 
-The value of the property is an [extended information object](#extended-error-handling).
+The value of the property is an [extended information object](#extended-information-object).
 
 ##### Additional Annotations
 
@@ -1087,21 +1099,18 @@ where
 
 The client can get the definition of the annotation from the the [service metadata](#service-metadata), or may ignore the annotation entirely, but should not fail reading the response due to unrecognized annotations, including new annotations defined within the DMTF namespace.
 
-#### Extended Error Handling
+#### Error Responses
 
-HTTP response status codes alone often do not provide enough information to enable deterministic error semantics. For example, if a client does a PATCH and some of the properties do not match while others are not supported, simply returning an HTTP status code of 400 does not tell the client which values were in error.
+HTTP response status codes alone often do not provide enough information to enable deterministic error semantics. For example, if a client does a PATCH and some of the properties do not match while others are not supported, simply returning an HTTP status code of 400 does not tell the client which values were in error. Error responses provide the client more meaningful and deterministic error semantics. 
 
-Extended errors provide the client more meaningful and deterministic error semantics.  
+Error responses are defined by an extended error resource, represented as a single JSON object with a property named "error". The value of this property shall be an [extended information object](#extended-information-object).
 
-* Services shall return the extended error resource as described in this specification in the response body when a status code of 400 or 500 is returned.
-* Services should return the extended error resource as described in this specification in the response body when a status code 400 or greater is returned.
-* Extended error messages MUST NOT provide privileged info when authentication failures occur
+##### Extended Information Object
+Extended Information Objects provide additional information about an [object](#extended-object-information), [property](#extended-property-information), or [error response](#error-responses). 
 
-NOTE: Refer to the [Security](#security) section for security implications of extended errors
+Extended information is represented as a JSON object with the following properties:
 
-Extended error information is returned as a JSON object with a single property named "error". The value of this property shall be a JSON object with the following properties.
-
-| Attribute          | Description                                                                                                                                                                            |
+| Property           | Description                                                                                                                                                                            |
 | ---                | ---                                                                                                                                                                                    |
 | code               | String indicating a specific error or message (not to be confused with the HTTP status code). This code can be used to access a detailed message from a message registry.              |
 | message            | A human readable error message indicating the semantics associated with the error. 
