@@ -20,10 +20,13 @@
         <Annotation Term="OData.Description" String="This term specifies extended information associated with a resource or property in a response payload."/>
       </Term>
       <Term Name="ExpandReferences" Type="Edm.Boolean" DefaultValue="True">
-        <Annotation Term="OData.Description" String="The term can be applied to a navigation property in order to specify that the default behavior for the service is to expand the references for the [related resource](#reference-to-a-single-related-resource) or [collection of resources](#array-of-references-to-related-resources) in responses"/>
+        <Annotation Term="OData.Description" String="The term can be applied to a navigation property in order to specify that the default behavior for the service is to expand the references for the related resource or collection of resources in responses."/>
+      </Term>
+      <Term Name="ExpandResources" Type="Edm.Boolean" DefaultValue="True">
+        <Annotation Term="OData.Description" String="The term can be applied to a navigation property in order to specify that the default behavior for the service is to expand the related resource or collection of resources in responses."/>
       </Term>
       <Term Name="IPv6Format" Type="Edm.Boolean" DefaultValue="true">
-        <Annotation Term="OData.Description" String="The term can be applied to a property or parameter in order to specify that IPv6 addressing rules apply to that property or parameter"/>
+        <Annotation Term="OData.Description" String="The term can be applied to a property or parameter in order to specify that IPv6 addressing rules apply to that property or parameter."/>
       </Term>
       <Term Name="DynamicPropertyPatterns" Type="Collection(Extensions.PropertyPattern)"/>
 

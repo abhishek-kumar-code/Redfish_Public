@@ -2,7 +2,7 @@
 DocTitle: Scalable Platforms Management API Specification
 DocNumber: '0266'
 DocType: Specification
-DocVersion: '0.94.0'
+DocVersion: '0.95.0'
 DocStatus: Work in Progress
 DocConfidentiality: – Not a DMTF Standard – DMTF Confidential
 expiration: '2015-07-24'
@@ -88,7 +88,7 @@ The following additional terms are used in this document.
 | Event          | A record that corresponds to an individual alert.                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | Message        | A complete request or response, formatted in HTTP/HTPS.  The protocol, based on REST, is a request/response protocol where every Request should result in a Response.                                                                                                                                                                                                                                                                                                                           |
 | Operation      | The HTTP request methods which map generic CRUD (Create, Read, Update Delete) operation.  These are POST, GET, PUT/PATCH, HEAD and DELETE.                                                                                                                                                                                                                                                                                                                                                      |
-| OData          | The Open Data Protocol, as defined in [OData-Protocol](#user-content-OData-Protocol).                                                                                                                                                                                                                                                                                                                                                      |
+| OData          | The Open Data Protocol, as defined in [OData-Protocol](#OData-Protocol).                                                                                                                                                                                                                                                                                                                                                      |
 | SPMA Schema    | The Schema definitions for SPMA resources.  It is defined according to OData Schema notation that can be directly translated to a JSON Schema representation.                                                                                                                                                                                                                                                                                                                                                                                                           |
 | Request        | A message from a Client to a Server.  It consists of a request line (which includes the Operation), request headers, an empty line and an optional message body.                                                                                                                                                                                                                                                                                                                                |
 | Resource       | A Resource is addressable by a URI and is able to receive and process messages. A Resource can be either an individual entity, or a collection that acts as a container for several other entities.                                                                                                                                                                                                                                                                                             |
@@ -194,7 +194,7 @@ There is no raw/pass-thru interface as part of the standard.
 
 While the majority of operations in this architecture are synchronous in nature, some operations can take a long time to execute, more time than a client typically wants to wait. For this reason, some operations can be asynchronous at the discretion of the service. The request portion of an asynchronous operation is no different from the request portion of a synchronous operation.
 
-The use of HTTP Response codes enable a client to determine if the operation was completed synchronously or asynchronously.  For more information see the section on [Tasks](#user-content-task).
+The use of HTTP Response codes enable a client to determine if the operation was completed synchronously or asynchronously.  For more information see the section on [Tasks](#task).
 
 #### Eventing Mechanism
 
@@ -204,21 +204,21 @@ Only one style of eventing is currently defined by this specification - push sty
 
 Events originate from a specific resource. Not all resources are able to generate events. Those resources capable of generating events might not generate any events unless a client is listening for them. A client expresses interest in receiving events by sending a "subscribe" message to the Event Service. A subscribe message is sent using HTTP POST to the Event Subscriptions collection.
 
-The Section on [Eventing](#user-content-eventing) further in this specification discusses the details of the eventing mechanism.
+The Section on [Eventing](#eventing) further in this specification discusses the details of the eventing mechanism.
 
 #### Actions
 
-Operations can be divided into two sets: intrinsic and extrinsic.  Intrinsic operations, often referred to as CRUD, are mapped to [HTTP methods](#user-content-methods).  The protocol also has the ability to support extrinsic operations -- those operations that do not map easily to CRUD.  Examples of extrinsic would be items that collectively would be better performed if done as a set (for scalability, ease of interface, server side semantic preservation or similar reasons) or operations that have no natural mapping to CRUD operations. One examples is system reset.  It is possible to combine multiple operations into a single action.  A system reset could be modeled as an update to state, but semantically the client is actually requesting a state change and not simply changing the value in the state.
+Operations can be divided into two sets: intrinsic and extrinsic.  Intrinsic operations, often referred to as CRUD, are mapped to [HTTP methods](#methods).  The protocol also has the ability to support extrinsic operations -- those operations that do not map easily to CRUD.  Examples of extrinsic would be items that collectively would be better performed if done as a set (for scalability, ease of interface, server side semantic preservation or similar reasons) or operations that have no natural mapping to CRUD operations. One examples is system reset.  It is possible to combine multiple operations into a single action.  A system reset could be modeled as an update to state, but semantically the client is actually requesting a state change and not simply changing the value in the state.
 
 In SPMA, these extrinsic operations are called **actions** and are discussed in detail in different parts of this specification.
 
-The SPMA Schema defines certain standard actions associated with [common SPM resources](#user-content-common-spma-resources).  For these standard actions, the SPMA Schema contains the normative language on the behavior of the action.  OEM extensions are also allowed to the [schema](#user-content-schema-extensibility), including defining [actions](#user-content-custom-actions) for existing resources.
+The SPMA Schema defines certain standard actions associated with [common SPM resources](#common-spma-resources).  For these standard actions, the SPMA Schema contains the normative language on the behavior of the action.  OEM extensions are also allowed to the [schema](#schema-extensibility), including defining [actions](#custom-actions) for existing resources.
 
 #### Service Entry Point Discovery
 
 While the service itself is at a well-known URI, the service host must be discovered. SPMA, like UPnP, uses SSDP for discovery. SSDP is supported in a wide variety of devices, such as printers.  It is simple, lightweight, IPv6 capable and suitable for implementation in embedded environments.  SPMA is investigating additional service entry point discovery (e.g. DHCP-based) approaches.
 
-For more information, see the section on [Discovery](#user-content-discovery-1)
+For more information, see the section on [Discovery](#discovery-1)
 
 #### Remote Access Support
 
@@ -230,7 +230,7 @@ The challenge with security in a remote interface that is programmatic is to ens
 
 ## Protocol Details
 
-The Scalable Platform Management API is based on REST and follows OData conventions for interoperability, as defined in [OData-Protocol](#user-content-OData-Protocol), JSON payloads, as defined in [OData-JSON](#user-content-OData-JSON), and a machine-readable representation of schema, as defined in [OData-Schema](#user-content-OData-CSDL). The schemas include annotations to enable direct translation to JSON Schema for validation and consumption by tools supporting JSON Schema. Following these common standards and conventions increases interoperability and enables leveraging of existing tool chains.
+The Scalable Platform Management API is based on REST and follows OData conventions for interoperability, as defined in [OData-Protocol](#OData-Protocol), JSON payloads, as defined in [OData-JSON](#OData-JSON), and a machine-readable representation of schema, as defined in [OData-Schema](#OData-CSDL). The schemas include annotations to enable direct translation to JSON Schema for validation and consumption by tools supporting JSON Schema. Following these common standards and conventions increases interoperability and enables leveraging of existing tool chains.
  
 SPMA follows the OData minimal conformance level for clients consuming minimal metadata.
 
@@ -238,23 +238,23 @@ Throughout this document, we refer to SPMA as having a protocol mapped to a data
 
 The SPMA protocol is designed around a web service based interface model, and designed for network and interaction efficiency for both user interface (UI) and automation usage. The interface is specifically designed around the REST pattern semantics.
 
-[HTTP methods](#user-content-http-methods) are used by the SPMA protocol for common CRUD (Create, Read, Update, Delete) operations and to retrieve header information.
+[HTTP methods](#http-methods) are used by the SPMA protocol for common CRUD (Create, Read, Update, Delete) operations and to retrieve header information.
 
-[Actions](#user-content-actions) are used for expanding operations beyond CRUD type operations, but should be limited in use.
+[Actions](#actions) are used for expanding operations beyond CRUD type operations, but should be limited in use.
 
-[Media types](#user-content-media-types) are used to negotiate the type of data that is being sent in the body of a message. 
+[Media types](#media-types) are used to negotiate the type of data that is being sent in the body of a message. 
 
-[HTTP status codes](#user-content-status-codes) are used to indicate the server's attempt at processing the request.  [Extended error handling](#user-content-extended-error-handling) is used to return more information than the HTTP error code provides.
+[HTTP status codes](#status-codes) are used to indicate the server's attempt at processing the request.  [Extended error handling](#error-response) is used to return more information than the HTTP error code provides.
 
-The ability to send secure messages is important; the [Security](#user-content-security) section of this document describes specific TLS requirements.
+The ability to send secure messages is important; the [Security](#security) section of this document describes specific TLS requirements.
 
-Some operations may take longer than required for synchronous return semantics. Consequently, deterministic [asynchronous semantic](#user-content-synchronous-and-asynchronous-operation-support) are included in the architecture.
+Some operations may take longer than required for synchronous return semantics. Consequently, deterministic [asynchronous semantic](#synchronous-and-asynchronous-operation-support) are included in the architecture.
 
 ### Use of HTTP
 	
 HTTP is ideally suited to a RESTful interface. This section describes how HTTP is used in the SPMA interface and what constraints are added on top of HTTP to assure interoperability of SPMA compliant implementations.
 
-* An SPMA interface shall be exposed through a web service endpoint implemented using Hypertext Transfer Protocols, version 1.1 ([RFC2616](#user-content-RFC2616)).
+* An SPMA interface shall be exposed through a web service endpoint implemented using Hypertext Transfer Protocols, version 1.1 ([RFC2616](#RFC2616)).
 
 #### URIs
 
@@ -269,7 +269,7 @@ To begin operations, a client must know the URI for a resource.
 
 The base resource URI is well known and is based on the protocol version.  Discovering the URIs to additional resources is done through observing the associated resource links returned in previous responses. This type of API that is consumed by navigating URIs returned by the service is known as a Hypermedia API.
 
-The URI is the primary unique identifier of resources.  SPMA considers 3 parts of the URI as described in [RFC3986](#user-content-RFC3986). 
+The URI is the primary unique identifier of resources.  SPMA considers 3 parts of the URI as described in [RFC3986](#RFC3986). 
 
 The first part includes the scheme and authority portions of the URI. The second part includes the root service and version.  The third part is a unique resource identifier.
 
@@ -291,7 +291,7 @@ For example, a POST may return the following URI in the Location header of the r
 
 Assuming the client is connecting through an appliance named "mgmt.vendor.com", the full URI needed to access this new resource is https://mgmt.vendor.com/rest/v1/Systems/2.
 
-URIs, as described in [RFC3986](#user-content-RFC3986), may also contain a query (?query) and a frag (#frag) components.  Queries are addressed in the section [Query Parameters](#user-content-query-parameters).  Fragments (frag) shall be ignored by the server when used as the URI for submitting an operation. 
+URIs, as described in [RFC3986](#RFC3986), may also contain a query (?query) and a frag (#frag) components.  Queries are addressed in the section [Query Parameters](#query-parameters).  Fragments (frag) shall be ignored by the server when used as the URI for submitting an operation. 
 
 #### HTTP Methods
 
@@ -306,7 +306,7 @@ An attractive feature of the RESTful interface is the very limited number of ope
 | DELETE      | Object delete                            | Yes       |
 | HEAD        | Object or Collection header retrieval    | No        |
 
-Other HTTP methods are not allowed and shall receive a [405](#user-content-status-405) response.
+Other HTTP methods are not allowed and shall receive a [405](#status-405) response.
 
 #### HTTP Redirect
 
@@ -314,7 +314,7 @@ HTTP redirect allows a service to redirect a request to another URL. Among other
 
 * All SPMA Clients shall correctly handle HTTP redirect. 
 
-NOTE: Refer to the [Security](#user-content-security) section for security implications of HTTP Redirect
+NOTE: Refer to the [Security](#security) section for security implications of HTTP Redirect
 
 #### Media Types
 
@@ -324,17 +324,18 @@ In HTTP messages the media type is specified in the Content-Type header. A clien
 
 * All resources shall be made available using the JSON media type
   "application/json".
-* SPMA services shall make every resource available in a representation based on JSON, as specified in [RFC4627](#user-content-RFC4627). Receivers shall not reject a message because it is encoded in JSON, and shall offer at least one response representation based on JSON. An implementation may offer additional representations using non-JSON media types.
-* Responses to GET requests may be compressed.  Clients shall be prepared to accept a Content-Encoding of gzip in a Response to a GET.
+* SPMA services shall make every resource available in a representation based on JSON, as specified in [RFC4627](#RFC4627). Receivers shall not reject a message because it is encoded in JSON, and shall offer at least one response representation based on JSON. An implementation may offer additional representations using non-JSON media types.
 
-
+Clients may request compression by specifying an [Accept-Encoding header](#request-headers) in the request. 
+* Responses to GET requests shall only be compressed if requested by the client. 
+* Services should support gzip compression when requested by the client.
 
 #### ETags
 
 In order to reduce the cases of unnecessary RESTful accesses to resources, the SPMA Service should support associating a separate ETag with each resource.
   
-* Implementations should support returning [ETag properties](#user-content-etag-property) for each resource.
-* Implementations should support returning ETag headers for each response that represents a single resource.  Implementations shall support returning ETag headers for certain requests and responses as listed in the [Security](#user-content-security) section.
+* Implementations should support returning [ETag properties](#etag-property) for each resource.
+* Implementations should support returning ETag headers for each response that represents a single resource.  Implementations shall support returning ETag headers for certain requests and responses as listed in the [Security](#security) section.
 
 The ETag is generated and provided as part of the resource payload because the service is in the best position to know if the new version of the object is different enough to be considered substantial. There are two types of ETags: weak and strong.
 
@@ -392,17 +393,17 @@ HTTP defines headers that can be used in request messages. The following table d
 | Accept-Encoding | Yes         | [RFC 2616, Section 14.4][2616-14.4]   | Indicates if gzip encoding can be handled by the client
 | Accept-Language | No          | [RFC 2616, Section 14.4][2616-14.4]   | This header is used to indicate the language(s) requested in the response. If this header is not specified, the appliance default locale will be used.                                                                                                                                                              
 | Content-Type    | Conditional | [RFC 2616, Section 14.17][2616-14.17] | Describes the type of representation used in the message body.  `charset=utf-8` shall be supported for requests that have a body.  Shall be required if there is a request body.                                                                                                                                                                                                                                                         
-| Content-Length  | No          | [RFC 2616, Section 14.3][2616-14.3]   | Describes the size of the message body. An optional means of indicating size of the body uses Transfer-Encoding: chunked, which does not use the Content-Length header. If a service does not support Transfer-Encoding and needs Content-Length instead, the service will respond with status code [411](#user-content-status-411). |
+| Content-Length  | No          | [RFC 2616, Section 14.3][2616-14.3]   | Describes the size of the message body. An optional means of indicating size of the body uses Transfer-Encoding: chunked, which does not use the Content-Length header. If a service does not support Transfer-Encoding and needs Content-Length instead, the service will respond with status code [411](#status-411). |
 | Max-OData-Version	  | No |	4.0	                                | Indicates the maximum version of OData that an odata-aware client understands |
 | OData-Version	  | Yes |	4.0	                                | If provided, services shall reject requests which specify an unsupported OData version. |
-| Authorization   | Conditional          | [RFC 2617, Section 2][2617-2]         | Required for [Basic Authorization](#user-content-basic-auth)                                                                                                                                                                                                                                                                                  
+| Authorization   | Conditional          | [RFC 2617, Section 2][2617-2]         | Required for [Basic Authorization](#basic-auth)                                                                                                                                                                                                                                                                                  
 | User-Agent      | Yes         | [RFC 2616, Section 14.43][2616-14.43] | Required for tracing product tokens and their version.  Multiple product tokens may be listed.                                                                                                                                                                                                                          
 | Host            | Yes         | [RFC 2616, Section 14.23][2616-14.23] | Required to allow support of multiple origin hosts at a single IP address.                                                                                                                                                                                                                                              
 | Origin          | Yes         | [W3C CORS, Section 5.7][cors-5.7]     | Used to allow web applications to consume SPMA service while preventing CSRF attacks.                                                                                                                                                                                                                                
 | Via             | No          | [RFC 2616, Section 14.45][2616-14.45] | Indicates network hierarchy and recognizes message loops. Each pass inserts its own VIA.                                                                                                                                                                                                                                
 | Max-Forwards    | No          | [RFC 2616, Section 14.31][2616-14.31] | Limits gateway and proxy hops. Prevents messages from remaining in the network indefinitely.                                                                                                                                                                                                                        |
 | If-Match        | Conditional | [RFC 2616, Section 14.31][2616-14.31] | If-Match shall be supported for Atomic requests on AccountService objects.  If-Match shall be supported on requests for resources for which the service returns ETags.
-| If-None-Match   | No          | [RFC 2616, Section 14.31][2616-14.31] | If this HTTP header is present, the service will only return the requested resource if the current ETag of that resource does not match the ETag sent in this header.  If the ETag specified in this header matches the resource's current ETag, the status code returned from the GET will be [304](#user-content-status-304).
+| If-None-Match   | No          | [RFC 2616, Section 14.31][2616-14.31] | If this HTTP header is present, the service will only return the requested resource if the current ETag of that resource does not match the ETag sent in this header.  If the ETag specified in this header matches the resource's current ETag, the status code returned from the GET will be [304](#status-304).
 
 * SPMA services shall understand and be able to process the headers in the following table as defined by this specification if the value in the Required column is set to "yes" .
 
@@ -421,7 +422,7 @@ HTTP defines headers that can be used in request messages. The following table d
 
 #### Read Requests (GET)
 
-The GET method is used to retrieve a representation of a resource.  That representation can either be a single resource or a collection. The service will return the representation using one of the media types specified in the Accept header, subject to requirements in the Media Types section [Media Types](#user-content-media-types). If the Accept header is not present, the service will return the resources representations as application/json.
+The GET method is used to retrieve a representation of a resource.  That representation can either be a single resource or a collection. The service will return the representation using one of the media types specified in the Accept header, subject to requirements in the Media Types section [Media Types](#media-types). If the Accept header is not present, the service will return the resources representations as application/json.
 
 * The HTTP GET method shall be used to retrieve a resource without causing any side effects.
 * The service shall ignore the content of the body on a GET.
@@ -437,15 +438,11 @@ The root URL for the service returns a RootService resource as defined by this s
 
 ##### Metadata Document Request
 
-SPMA services shall expose a [metadata document](#user-content-schema-definition) describing the service at the /rest/v1/$metadata resource. This metadata document describes the resources and collections available at the root, as well as annotations and OEM-specific types exposed by the service.
+SPMA services shall expose a [metadata document](#service-metadata) describing the service at the "/rest/v1/$metadata" resource. This metadata document describes the resources and collections available at the root, and references additional metadata documents describing the full set of resource types exposed by the service.
 
-In the interest of keeping the root metadata document small, this root metadata document will typically reference external schema documents for service-specific annotations and OEM-specific types.
+##### OData Service Document Request
 
-SPMA resources are always referenced externally, using the canonical URI defined for each SPMA resource definition.
-
-##### Service Document Request
-
-SPMA services shall expose an OData service document, as defined in [OData-JSON](#user-content-OData-JSON), at the /rest/v1/odata resource. This service document provides a standard format for enumerating the resources exposed by the service, enabling a hypermedia-driven OData client to navigate to the resources of the service.
+SPMA services shall expose an [OData Service Document](#odata-service-document), at the "/rest/v1/odata" resource. This service document provides a standard format for enumerating the resources exposed by the service, enabling generic hypermedia-driven OData clients to navigate to the resources of the service.
 
 ##### Resource Retrieval Requests
 
@@ -459,18 +456,18 @@ When the resource addressed is a collection, the client can use the following pa
 | $top     | Integer indicating the number of collection members to include in the response. The minimum value for this parameter is 1.  The default behavior is to return all members.          | http://collection?$top=30 |
 
 * Services should support the $top and $skip query parameters. 
-* Implementation shall return the 501, Not Implemented, status code for any query parameters starting with "$" that are not supported, and should return an [extended error](#user-content-extended-error-handling) indicating the requested query parameter(s) not supported for this resource.
+* Implementation shall return the 501, Not Implemented, status code for any query parameters starting with "$" that are not supported, and should return an [extended error](#error-response) indicating the requested query parameter(s) not supported for this resource.
 * Implementations shall ignore unknown or unsupported query parameters that do not begin with "$".
 
 ###### Retrieving Collections
 
-Retrieving a collection is done by sending the HTTP GET method to the URI for the collection. The response will be a [resource collection representation](#user-content-resource-collections) that includes the collection's attributes as well as the list of the members of the collection. A subset of the members can be returned using [client paging query parameters](#user-content-query-parameters).
+Retrieving a collection is done by sending the HTTP GET method to the URI for the collection. The response will be a [resource collection representation](#resource-collections) that includes the collection's attributes as well as the list of the members of the collection. A subset of the members can be returned using [client paging query parameters](#query-parameters).
 
 No requirements are placed on implementations to return a consistent set of members when a series of requests using paging query parameters are made over time to obtain the entire set of members. It is possible that this could result in missed or duplicate elements being retrieved if multiple GETs are used to retrieve a collection using paging.
 
 * Clients shall not make assumptions about the URIs for the resource members of a collection.
-* Retrieved collections should always include the [count](#user-content-resource-count-property) property to specify the total number of members in the collection.
-* If only a portion of the collection is returned due to client-specified paging query parameters or services returning [partial results](#user-content-partial-results), then the total number of resources across all pages shall be returned in the count property.
+* Retrieved collections should always include the [count](#resource-count-property) property to specify the total number of members in the collection.
+* If only a portion of the collection is returned due to client-specified paging query parameters or services returning [partial results](#partial-results), then the total number of resources across all pages shall be returned in the count property.
 
 #### HEAD
 
@@ -488,28 +485,28 @@ The HEAD method differs from the GET method in that it MUST NOT return message b
 
 The PATCH method is the preferred method used to perform updates on pre-existing resources.  Changes to the resource are sent in the request body. Properties not specified in the request body are not directly changed by the PATCH request.  The response is either empty or a representation of the resource after the update was done. The implementation may reject the update operation on certain fields based on its own policies and, if so, shall not apply any of the update requested.  Updates to resources are idempotent.
 
-* Services shall support the PATCH method to update a resource. If the resource can never be updated, status code [405](#user-content-status-405) shall be returned.
+* Services shall support the PATCH method to update a resource. If the resource can never be updated, status code [405](#status-405) shall be returned.
 * Services may return a representation of the resource after any server-side transformations in the body of the response.
-* If a property in the request can never be updated, such as when a property is read only, a status code of [200](#user-content-status-200) shall be returned along with a representation of the resource containing an [annotation](#user-content-extended-information) specifying the non-updatabl property. In this success case, other properties may be updated in the resource. 
-* Services should return status code [405](#user-content-status-405) if the client specifies a PATCH request against a collection.
+* If a property in the request can never be updated, such as when a property is read only, a status code of [200](#status-200) shall be returned along with a representation of the resource containing an [annotation](#extended-information) specifying the non-updatabl property. In this success case, other properties may be updated in the resource. 
+* Services should return status code [405](#status-405) if the client specifies a PATCH request against a collection.
 * The PATCH operation should be idempotent in the absence of outside changes to the resource provided it is used with ETags to prevent subsequent PATCH attempts. Note that the ETAG value should change as the result of this operation.
 
-OData markup ([resource identifiers](#user-content-resource-identifier-property), [type](type-property), [etag](#user-content-etag-property) and [links](links-property)) are ignored on Update.
+OData markup ([resource identifiers](#resource-identifier-property), [type](type-property), [etag](#etag-property) and [links](links-property)) are ignored on Update.
 
 ##### Replace (PUT)
 
 The PUT method is used to completely replace a resource.  Properties omitted from the request body are reset to their default value.
 
-* Services may support the PUT method to replace a resource in whole.  If a service does not implement this method, status code [405](#user-content-status-405) shall be returned. 
+* Services may support the PUT method to replace a resource in whole.  If a service does not implement this method, status code [405](#status-405) shall be returned. 
 * Services may return a representation of the resource after any server-side transformations in the body of the response.
-* Services should return status code [405](#user-content-status-405) if the client specifies a PUT request against a collection.
+* Services should return status code [405](#status-405) if the client specifies a PUT request against a collection.
 * The PUT operation should be idempotent in the absence of outside changes to the resource, with the possible exception that ETAG values may change as the result of this operation.
 
 ##### Create (POST)
 
 The POST method is used to create new resources. The POST request is submitted to the resource collection in which the new resource is to belong.
 
-* Services shall support the POST method for creating resources. If the resource does not offer anything to be created, a status code [405](#user-content-status-405) shall be returned.
+* Services shall support the POST method for creating resources. If the resource does not offer anything to be created, a status code [405](#status-405) shall be returned.
 * The POST operation shall not be idempotent.
 
 The body of the create request contains a representation of the object to be created. The service can ignore any service controlled attributes (e.g. id), forcing those attributes to be overridden by the service. The service shall set the Location header to the URI of the newly created resource. The response to a successful create request shall be 201 (Created), with no response body, or 200 (Ok) with a response body containing the representation of the newly created resource.
@@ -518,9 +515,9 @@ The body of the create request contains a representation of the object to be cre
 
 The DELETE method is used to remove a resource.
 
-* Services shall support the DELETE method for resources that can be deleted. If the resource can never be deleted, status code [405](#user-content-status-405) shall be returned.
+* Services shall support the DELETE method for resources that can be deleted. If the resource can never be deleted, status code [405](#status-405) shall be returned.
 * Services may return a representation of the just deleted resource in the response body.
-* Services should return status code [405](#user-content-status-405) if the client specifies a DELETE request against a collection.
+* Services should return status code [405](#status-405) if the client specifies a DELETE request against a collection.
 * The DELETE operation shall not be not idempotent.
 
 ##### Actions (POST)
@@ -530,18 +527,18 @@ The POST method is used to initiate operations on the object (such as Actions).
  * Services shall support the POST method for sending actions.
  * The POST operation may not be idempotent.
 
-Custom actions are requested on a resource by sending the HTTP POST method to the URI of the action. By convention, the URI of an action is of the form:
+Custom actions are requested on a resource by sending the HTTP POST method to the URI of the action. If the [actions property](#actions-property) within a resource does not specify a target property, then the URI of an action shall be of the form:
 
  *ResourceUri*/Actions/*QualifiedActionName*
 
 where
-* *ResourceUri* is the URL of the resource which supports invoking the action,
-* Actions is the name of the property containing the actions for a resource
+* *ResourceUri* is the URL of the resource which supports invoking the action.
+* "Actions" is the name of the property containing the actions for a resource, as defined by this specification.
 * *QualifiedActionName* is the name of the action qualified by the namespace alias. 
 
 The first parameter of a bound function is the resource on which the action is being invoked. The remaining parameters are represented as name/value pairs in the body of the request.
 
-Clients can query a resource directly to determine the [actions](#user-content-actions-property) that are available as well as [valid parameter values](#user-content-allowable-values) for those actions.  Some parameter information may require the client to examine the schema corresponding to the resource. 
+Clients can query a resource directly to determine the [actions](#actions-property) that are available as well as [valid parameter values](#allowable-values) for those actions.  Some parameter information may require the client to examine the schema corresponding to the resource. 
 
 For instance, if a schema document `http://dmtf.org/schema/v1/ComputerSystem` defines a Reset action, in the `ComputerSystem.<%= DocVersion %>` namespace, with the alias "ComputerSystem", bound to the `ComputerSystem.Actions` type, such as this example:
 
@@ -549,14 +546,14 @@ For instance, if a schema document `http://dmtf.org/schema/v1/ComputerSystem` de
 <Schema Name="ComputerSystem.<%= DocVersion %>" Alias="ComputerSystem">
 ...
   <Action Name="Reset" Isbound="true">
-    <Parameter Name="ComputerSystem" Type="ComputerSystem.Actions"/>
+    <Parameter Name="Resource" Type="ComputerSystem.Actions"/>
     <Parameter Name="ResetType" Type="ComputerSystem.ResetType"/>
   </Action>
 ...
 </Schema>
 ~~~
 
-And a computer system resource contains an [Actions](#user-content-actions-property) property such as this:
+And a computer system resource contains an [Actions](#actions-property) property such as this:
 
 ~~~json
 "Actions": {
@@ -586,7 +583,11 @@ POST /rest/v1/Systems/1/Actions/ComputerSystem.Reset
 
 ### Responses
 
-This section describes response requirements for SPMA services.
+SPA defines four types of responses:
+* [Metadata Responses](#metadata-responses) - Describe the resources and types exposed by the service to generic clients.
+* [Resource Responses](#resource-responses) - JSON representation of an individual resource.
+* [Resource Collection Responses](#resource-collections) - JSON representation of a collections of resources.
+* [Error Responses](#error-responses) - Top level JSON response providing additional information in the case of an HTTP error.
 
 #### Response Headers
 
@@ -601,7 +602,7 @@ HTTP defines headers that can be used in response messages.  The following table
 | OData-Version	              | Yes	     | 4.0                                   | Describes the OData version of the payload that the response conforms to.
 | Content-Type                | Yes      | [RFC 2616, Section 14.17][2616-14.17] | Describes the type of representation used in the message body. `application/json` shall be supported. `charset=utf-8` shall be supported.                                                                                                                                                                                   |
 | Content-Encoding            | No       | [RFC 2616, Section 14.17][2616-14.17] | Describes the encoding that has been performed on the media type                                                                                                                                                                                                                                                        |
-| Content-Length              | No       | [RFC 2616, Section 14.3][2616-14.3]   | Describes the size of the message body. An optional means of indicating size of the body uses Transfer-Encoding: chunked, which does not use the Content-Length header. If a service does not support Transfer-Encoding and needs Content-Length instead, the service will respond with status code [411](#user-content-status-411). |
+| Content-Length              | No       | [RFC 2616, Section 14.3][2616-14.3]   | Describes the size of the message body. An optional means of indicating size of the body uses Transfer-Encoding: chunked, which does not use the Content-Length header. If a service does not support Transfer-Encoding and needs Content-Length instead, the service will respond with status code [411](#status-411). |
 | ETag                        | Conditional | [RFC 2616, Section 14.19][2616-14.19] | An identifier for a specific version of a resource, often a message digest.   Etags shall be included on Account objects.                                                                                                                                                                                                                                             |
 | Server                      | Yes      | [RFC 2616, Section 14.38][2616-14.38] | Required to describe a product token and its version. Multiple product tokens may be listed.                                                                                                                                                                                                                            |
 | Location                    | Conditional  | [RFC 2616, Section 14.30][2616-14.30] | Indicates a URI that can be used to request a representation of the resource.  Shall be returned if a new resource was created.  Location and X-Auth-Token shall be included on responses which create user sessions.                                                                                                                                                                                         |
@@ -636,11 +637,21 @@ HTTP defines headers that can be used in response messages.  The following table
 
 HTTP defines status codes that can be returned in response messages. 
 
-* Clients shall understand and be able to process the status codes in the   following table as defined by the HTTP 1.1 specification and constrained by   additional requirements defined by this specification. Services shall   respond with these status codes as appropriate.
+Where the HTTP status code indicates a failure, the response body contains an [extended error resource](#error-responses) to provide the client more meaningful and deterministic error semantics. 
+
+* Services shall return the extended error resource as described in this specification in the response body when a status code of 400 or 500 is returned.
+* Services should return the extended error resource as described in this specification in the response body when a status code 400 or greater is returned.
+* Extended error messages MUST NOT provide privileged info when authentication failures occur
+
+NOTE: Refer to the [Security](#security) section for security implications of extended errors
+
+The following table lists some of the common HTTP status codes. Other codes may be returned by the service as appropriate. See the Description column for a description of the status code and additional requirements imposed by this specification.
+* Clients shall understand and be able to process the status codes in the following table as defined by the HTTP 1.1 specification and constrained by additional requirements defined by this specification. 
+* Services shall respond with these status codes as appropriate.
 * Exceptions from operations shall be mapped to HTTP status codes.
 * SPMA services should not return the status code 100. Using the HTTP protocol for a multi-pass data transfer should be avoided, except upload of extremely large data.
 
-| HTTP Error Code                                              | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| HTTP Status Code                                             | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | ---                                                          | ---                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | <a name="status-200"></a>200 OK                              | The request was successfully completed and includes a representation in its body.                                                                                                                                                                                                                                                                                                                                                                                                      |
 | <a name="status-201"></a>201 Created                         | A request that created a new resource completed successfully. The Location header is set to the canonical URI for the newly created resource. A representation of the newly created resource may be included in the message body.  The Location header shall be set to the URI of the newly created resource.                                                                                                                                                                                                                                                    |
@@ -649,7 +660,7 @@ HTTP defines status codes that can be returned in response messages.
 | <a name="status-301"></a>301 Moved Permanently               | The requested resource resides under a different URI                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | <a name="status-302"></a>302 Found                           | The requested resource resides temporarily under a different URI.                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | <a name="status-304"></a>304 Not Modified                    | The service has performed a conditional GET request where access is allowed, but the resource content has not changed. Conditional requests are initiated using the headers If-Modified-Since and/or If-None-Match (see HTTP 1.1, sections 14.25 and 14.26) to save network bandwidth if there is no change.                                                                                                                                                                           |
-| <a name="status-400"></a>400 Bad Request                     | The request could not be processed because it contains missing or invalid information (such as validation error on an input field, a missing required value, and so on). An extended error shall be returned in the response body, as defined in section [Extended Error Handling](#user-content-extended-error-handling).                                                                                                                                                                                                                                                                                                           |
+| <a name="status-400"></a>400 Bad Request                     | The request could not be processed because it contains missing or invalid information (such as validation error on an input field, a missing required value, and so on). An extended error shall be returned in the response body, as defined in section [Extended Error Handling](#error-response).                                                                                                                                                                                                                                                                                                           |
 | <a name="status-401"></a>401 Unauthorized                    | The authentication credentials included with this request are missing or invalid.                                                                                                                                                                                                                                                                                                                                                                                                      |
 | <a name="status-403"></a>403 Forbidden                       | The server recognized the credentials in the request, but those credentials do not possess authorization to perform this request.                                                                                                                                                                                                                                                                                                                                                      |
 | <a name="status-404"></a>404 Not Found                       | The request specified a URI of a resource that does not exist.                                                                                                                                                                                                                                                                                                                                                                                                                         |
@@ -660,14 +671,14 @@ HTTP defines status codes that can be returned in response messages.
 | <a name="status-411"></a>411 Length Required                 | The request did not specify the length of its content using the Content-Length header (perhaps Transfer-Encoding: chunked was used instead). The addressed resource requires the Content-Length header.                                                                                                                                                                                                                                                                                |
 | <a name="status-412"></a>412 Precondition Failed             | Precondition (If Match or If Not Modified ) check failed.                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | <a name="status-415"></a>415 Unsupported Media Type          | The request specifies a Content-Type for the body that is not supported.                                                                                                                                                                                                                                                                                                                                                                                                               |
-| <a name="status-500"></a>500 Internal Server Error           | The server encountered an unexpected condition that prevented it from fulfilling the request. An extended error shall be returned in the response body, as defined in section [Extended Error Handling](#user-content-extended-error-handling).                                                                                                                                                                                                                                                                                                                                                                                            |
+| <a name="status-500"></a>500 Internal Server Error           | The server encountered an unexpected condition that prevented it from fulfilling the request. An extended error shall be returned in the response body, as defined in section [Extended Error Handling](#error-response).                                                                                                                                                                                                                                                                                                                                                                                            |
 | <a name="status-501"></a>501 Not Implemented                 | The server does not (currently) support the functionality required to fulfill the request.  This is the appropriate response when the server does not recognize the request method and is not capable of supporting the method for any resource.                                                                                                                                                                                                                                                                                                                                                                                             |
 | <a name="status-503"></a>503 Service Unavailable             | The server is currently unable to handle the request due to temporary overloading or maintenance of the server.                                                                                                                                                                                                                                                                                                                                                                        |
 
 #### Metadata Responses
 
 ##### Service Metadata
-The service metadata describes top-level resources of the service according to [OData-Schema](#user-content-OData-CSDL). The SPMA Service Metadata is represented as a CSDL XML document with a root element named "Edmx", defined in the http://docs.oasis-open.org/odata/ns/edmx" namespace, and with an OData Version attribute equal to "4.0".
+The service metadata describes top-level resources and resource types of the service according to [OData-Schema](#OData-CSDL). The SPMA Service Metadata is represented as a CSDL XML document with a root element named "Edmx", defined in the http://docs.oasis-open.org/odata/ns/edmx" namespace, and with an OData Version attribute equal to "4.0".
 
 ~~~xml
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
@@ -703,7 +714,7 @@ The service metadata shall include an entity container that defines the top leve
 </edmx:DataServices>
 ~~~
 
-##### Referencing OEM Extensions
+###### Referencing OEM Extensions
 The metadata document may reference additional schema documents describing OEM-specific extensions used by the ServiceRoot, for example custom types for additional collections.
 
 ~~~xml
@@ -712,7 +723,7 @@ The metadata document may reference additional schema documents describing OEM-s
 </edmx:Reference>
 ~~~
 
-##### Annotations
+###### Annotations
 The service can annotate sets, types, actions and parameters with SPMA-defined or custom annotation terms. These annotations are typically in a separate Annotations file referenced from the service metadata document using the IncludeAnnotations directive. The alias of the namespace containing system annotations shall be "Annotations".
 
 ~~~xml
@@ -734,31 +745,71 @@ The annotation file itself specifies the Target schema element being annotated, 
 </Annotations>
 ~~~
 
+##### OData Service Document
+The OData Service Document serves as a top-level entry point for generic OData clients.
+
+~~~json
+{
+    "@odata.context": "/rest/v1/$metadata",
+    "value": [
+        {
+            "name": "Service",
+            "kind": "Singleton",
+            "url": "/rest/v1"
+        },
+        {
+            "name": "Systems",
+            "kind": "Singleton",
+            "url": "/rest/v1/Systems"
+        },
+        {
+            "name": "Chassis",
+            "kind": "Singleton",
+            "url": "/rest/v1/Chassis"
+        },
+        {
+            "name": "Managers",
+            "kind": "Singleton",
+            "url": "/rest/v1/Managers"
+        },
+		...
+    ]
+}
+~~~ 
+
+The OData Service Document shall be a returned as a JSON object, using the MIME type `application/json`.
+
+The JSON object shall contain a context property named "@odata.context" with a value of "/rest/v1/$metadata". This context tells a generic OData client how to find the [service metadata](#service-metadata) describing the types exposed by the service.
+
+The JSON object shall include a property named "value" whose value is a JSON array containing an entry for the [service root](#service-root-request) and each resource that is a direct child of the service root.
+
+Each entry shall be represented as a JSON object and shall include a "name" property whose value is a user-friendly name of the resource, a "kind" property whose value is "Singleton" for individual resources (including collection resources) or "EntitySet" for top-level resource collections, and a "url" property whose value is the relative URL for the top-level resource.
+
 #### Resource Responses
 
 Resources are returned as JSON payloads, using the MIME type `application/json`.
 
 ##### Context Property
 
-Responses that represent a single resource shall contain a context property named "@odata.context" describing the source of the payload. The value of the context property shall be the context URL that describes the resource according to [OData-Protocol](#user-content-OData-Protocol).
+Responses that represent a single resource shall contain a context property named "@odata.context" describing the source of the payload. The value of the context property shall be the context URL that describes the resource according to [OData-Protocol](#OData-Protocol).
 	
 The context URL for a resource that exists within a collection is of the form:
 
- *MetadataUrl*.#*Collection*[(#user-content-Selectlist*)]/$entity 
+ *MetadataUrl*.#*Collection*[(*Selectlist*)]/$entity 
 
 Where: 
 * *MetadataUrl* = the metadata url of the service (/rest/v1/$metadata)
 * *Collection* = the collection resource. For contained resources this includes the path from the root collection or singleton resource to the containment property.
-* *Selectlist* = comma-separated [list of properties](#user-content-select-list) included in the response if the response includes a subset of properties defined for the represented resources.
+* *Selectlist* = comma-separated [list of properties](#select-list) included in the response if the response includes a subset of properties defined for the represented resources.
 
 The context URL for a resource that is a top-level singleton resource is of the form:
 
- *MetadataUrl*.#*SingletonName*[(#user-content-Selectlist*)]
+ *MetadataUrl*.#*SingletonName*[(*Selectlist*)]
 
 Where: 
 * *MetadataUrl* = the metadata url of the service (/rest/v1/$metadata)
 * *SingletonName* = the name of the top-level singleton resource
-* *Selectlist* = comma-separated [list of properties](#user-content-select-list) included in the response if the response includes a subset of properties defined for the represented resources.
+* *Selectlist* = comma-separated [list of properties](#select-list) included in the response if the response includes a subset of properties defined for the represented resources.
 
 ###### Select List
 
@@ -774,7 +825,7 @@ For example, the following context URL specifies that the result contains a sing
 
 ##### Resource Identifier Property
 
-Resources in a response shall include a unique identifier property named "@odata.id". The value of the identifier property shall be the [unique identifier](#user-content-URIs) for the resource.
+Resources in a response shall include a unique identifier property named "@odata.id". The value of the identifier property shall be the [unique identifier](#URIs) for the resource.
 
 Resource Identifiers shall be represented in JSON payloads as uri paths relative to the schema portion of the uri. That is, they shall always start with "/rest/".
 	
@@ -790,11 +841,11 @@ Where:
 * *Namespace* = The full namespace name of the schema in which the type is defined. For SPMA resources this will be the versioned namespace name. 
 * *TypeName* = The name of the type of the resource.
 	
-The client may issue a GET request to this URL using a content type of `application/xml` in order to retrieve a document containing the [definition of the resource](#user-content-resource-definition).
+The client may issue a GET request to this URL using a content type of `application/xml` in order to retrieve a document containing the [definition of the resource](#resource-definition).
 
 ##### ETag Property
 
-ETags provide the ability to conditionally retrieve or update a resource. Resources should include an ETag property named "@odata.etag". The value of the ETag property is the [Etag](#user-content-etags) for a resource.
+ETags provide the ability to conditionally retrieve or update a resource. Resources should include an ETag property named "@odata.etag". The value of the ETag property is the [Etag](#etags) for a resource.
 
 ##### Primitive Properties
 
@@ -808,7 +859,7 @@ DateTime values shall be returned as JSON strings according to the ISO 8601 "ext
 
 ##### Structured Properties
 
-Structured properties, defined as [complex types](#user-content-structured-properties), are returned as JSON objects. The type of the JSON object is specified in schema definition of the property containing the structured value.
+Structured properties, defined as [complex types](#structured-types) or [expanded](#expand-resources) [resource types](#resource-type-definitions), are returned as JSON objects. The type of the JSON object is specified in schema definition of the property containing the structured value.
 
 ##### Collection Properties
 
@@ -834,11 +885,11 @@ Where:
 * *NamespaceAlias* = The namespace alias used in the reference to the schema in which the action is defined. For SPMA resources this shall be the version-independent namespace alias. 
 * *ActionName* = The name of the action
 
-The client may issue a GET request to this URL using a content type of `application/xml` in order to retrieve the schema document containing the [definition of the action](#user-content-resource-actions).
+The client may issue a GET request to this URL using a content type of `application/xml` in order to retrieve the schema document containing the [definition of the action](#resource-actions).
 
 The value of the property is a JSON object containing a property named "target" whose value is a relative or absolute URL used to invoke the action.
 
-The property representing the available action may be annotated with the [AllowableValues](#user-content-allowable-values) annotation in order to specify the list of allowable values for a particular parameter.
+The property representing the available action may be annotated with the [AllowableValues](#allowable-values) annotation in order to specify the list of allowable values for a particular parameter.
 
 For example, the following property represents the Reset action, defined in the ComputerSystem.<%= DocVersion %> namespace (aliased with the version-independent "ComputerSystem"):
 
@@ -865,15 +916,15 @@ The set of allowable values is specified by including a property whose name is t
 
 ##### Links Property
 
-[References](#user-content-reference-properties) to other resources are represented by the links property on the resource. 
+[References](#reference-properties) to other resources are represented by the links property on the resource. 
 
-The links property shall be named "Links" and shall contain a property for each navigation property defined in the schema for that type. For single-valued navigation properties, the value of the property shall be the [single related resource id](#user-content-reference-to-a-single-related-resource). For collection-valued navigation properties, the value of the property shall be the [array of related resource ids](#user-content-array-of-references-to-related-resources).
+The links property shall be named "Links" and shall contain a property for each navigation property defined in the schema for that type. For single-valued navigation properties, the value of the property shall be the [single related resource id](#reference-to-a-single-related-resource). For collection-valued navigation properties, the value of the property shall be the [array of related resource ids](#array-of-references-to-related-resources).
 
-The links property shall also include an [Oem property](#user-content-oem-property) for navigating vendor-specific links.
+The links property shall also include an [Oem property](#oem-property) for navigating vendor-specific links.
  
 ###### Reference to a Single Related Resource
 
-A reference to a single resource is returned as a JSON object containing a single [resource-identifier-property](#user-content-resource-identifier-property) whose name is the name of the relationship and whose value is the uri of the referenced resource.
+A reference to a single resource is returned as a JSON object containing a single [resource-identifier-property](#resource-identifier-property) whose name is the name of the relationship and whose value is the uri of the referenced resource.
 
 ~~~json
 {
@@ -886,7 +937,7 @@ A reference to a single resource is returned as a JSON object containing a singl
 
 ###### Array of References to Related Resources
 
-A reference to a collection of zero ore more related resources is returned as an array of JSON objects whose name is the name of the relationship. Each member of the array is a JSON object containing a single [resource-identifier-property](#user-content-resource-identifier-property) whose value is the uri of the referenced resource.
+A reference to a collection of zero ore more related resources is returned as an array of JSON objects whose name is the name of the relationship. Each member of the array is a JSON object containing a single [resource-identifier-property](#resource-identifier-property) whose value is the uri of the referenced resource.
 
 ~~~json
 {
@@ -904,7 +955,7 @@ A reference to a collection of zero ore more related resources is returned as an
 
 ##### OEM Property
 
-OEM-specific properties are nested under an [OEM property](#user-content-property-extensions). The name of the OEM property shall be "Oem" and its value shall be a JSON object whose properties represent OEM extensions.
+OEM-specific properties are nested under an [OEM property](#property-extensions). The name of the OEM property shall be "Oem" and its value shall be a JSON object whose properties represent OEM extensions.
 
 For example:
 
@@ -927,11 +978,11 @@ For example:
   }
 }
 ```
-Contents of the Oem object must be valid JSON and must have a [type property](#user-content-type-property) per this specification. Any other requirements, validation or contents are beyond the scope of this specification.
+Contents of the Oem object must be valid JSON and must have a [type property](#type-property) per this specification. Any other requirements, validation or contents are beyond the scope of this specification.
 
 ##### Extended Information
 
-Response objects may include extended information, for example properties that are not able to be updated. This information is represented as an annotation applied to [a specific property](#user-content-extended-property-information) of the JSON response or an [entire JSON object](#user-content-extended-object-information).
+Response objects may include extended information, for example properties that are not able to be updated. This information is represented as an annotation applied to [a specific property](#extended-property-information) of the JSON response or an [entire JSON object](#extended-object-information).
 
 ###### Extended Object Information
 
@@ -957,7 +1008,7 @@ A JSON object can be annotated with "@DMTF.ExtendedInfo" in order to specify obj
 }
 ~~~
 
-The value of the property is an [extended information object](#user-content-extended-error-handling).
+The value of the property is an [extended information object](#extended-information-object).
 
 ###### Extended Property Information
 
@@ -989,7 +1040,7 @@ An individual property within a JSON object can be annotated with extended infor
 }
 ~~~
 
-The value of the property is an [extended information object](#user-content-extended-error-handling).
+The value of the property is an [extended information object](#extended-information-object).
 
 ##### Additional Annotations
 
@@ -1000,30 +1051,30 @@ A resource representation in JSON may include additional annotations represented
 where
 
 * *PropertyName* = the name of the property being annotated. If omitted, the annotation applies to the entire resource.
-* *Namespace* = the name or alias of the namespace where the annotation term is defined. This namespace must be referenced by the [metadata document](#user-content-service-metadata) specified in the [context url](#user-content-context-property) of the request.
+* *Namespace* = the name or alias of the namespace where the annotation term is defined. This namespace must be referenced by the [metadata document](#service-metadata) specified in the [context url](#context-property) of the request.
 * *TermName* = the name of the annotation term being applied to the resource or property of the resource.
 
-The client can get the definition of the annotation from the the [service metadata](#user-content-service-metadata), or may ignore the annotation entirely, but should not fail reading the resource due to unrecognized annotations, including new annotations defined within the DMTF namespace.
+The client can get the definition of the annotation from the the [service metadata](#service-metadata), or may ignore the annotation entirely, but should not fail reading the resource due to unrecognized annotations, including new annotations defined within the DMTF namespace.
 
 #### Resource Collections
 
-Resource collections are returned as a JSON object. The JSON object includes a [context](#user-content-context-property), [resource count](#user-content-resource-count-property), and array of [values](#user-content-resource-members-property), and may include a [next link](#user-content-partial-results) for partial results.
+Resource collections are returned as a JSON object. The JSON object includes a [context](#context-property), [resource count](#resource-count-property), and array of [values](#resource-members-property), and may include a [next link](#partial-results) for partial results.
 
 #####	Context Property
-Responses that represent a collection of resources shall contain a context property named "@odata.context" describing the source of the payload. The value of the context property shall be the context URL that describes the resources according to [OData-Protocol](#user-content-OData-Protocol).
+Responses that represent a collection of resources shall contain a context property named "@odata.context" describing the source of the payload. The value of the context property shall be the context URL that describes the resources according to [OData-Protocol](#OData-Protocol).
 
 The context URL for a resource collection is of the form:
 
- *MetadataUrl*.#*Collection*[(#user-content-SelectList*)] 
+ *MetadataUrl*.#*Collection*[(*SelectList*)] 
 
 Where: 
 * *MetadataUrl* = the metadata url of the service (/rest/v1/$metadata)
 * *Collection* = the collection resource. For contained resources this includes the path from the root collection or singleton resource to the containment property.
-* *SelectList* = comma-separated [list of properties](#user-content-select-list) included in the response if the response includes a subset of properties defined for the represented resources.
+* *SelectList* = comma-separated [list of properties](#select-list) included in the response if the response includes a subset of properties defined for the represented resources.
 
 ##### Resource Count Property
 
-The total number of resources available in the collection is represented through the count property. The count property shall be named "@odata.count" and its value shall be an integer representing the total number of records in the result. This count is not affected by the $top or $skip [query parameters](#user-content-query-parameters).
+The total number of resources available in the collection is represented through the count property. The count property shall be named "@odata.count" and its value shall be an integer representing the total number of records in the result. This count is not affected by the $top or $skip [query parameters](#query-parameters).
 
 ##### Resource Members Property
 
@@ -1034,7 +1085,7 @@ Responses representing a single resource shall not be broken into multiple resul
 
 Collections of resources, or resource ids, may be returned in multiple partial responses. For partial collections the service includes a next link property named "@odata.nextLink". The value of the next link property shall be an opaque URL that the client can use to retrieve the next set of resources. The next link shall only be returned if the number of resources requested is greater than the number of resources returned.
 
-The value of the [count property](#user-content-resource-count-property) represents the total number of resources available if the client enumerates all pages of the collection.
+The value of the [count property](#resource-count-property) represents the total number of resources available if the client enumerates all pages of the collection.
 
 ##### Additional Annotations
 
@@ -1044,26 +1095,23 @@ A JSON object representing a collection of resources may include additional anno
 
 where
 
-* *Namespace* = the name or alias of the namespace where the annotation term is defined. This namespace shall be referenced by the [metadata document](#user-content-service-metadata) specified in the [context url](#user-content-context-property) of the request.
+* *Namespace* = the name or alias of the namespace where the annotation term is defined. This namespace shall be referenced by the [metadata document](#service-metadata) specified in the [context url](#context-property) of the request.
 * *TermName* = the name of the annotation term being applied to the resource collection.
 
-The client can get the definition of the annotation from the the [service metadata](#user-content-service-metadata), or may ignore the annotation entirely, but should not fail reading the response due to unrecognized annotations, including new annotations defined within the DMTF namespace.
+The client can get the definition of the annotation from the the [service metadata](#service-metadata), or may ignore the annotation entirely, but should not fail reading the response due to unrecognized annotations, including new annotations defined within the DMTF namespace.
 
-#### Extended Error Handling
+#### Error Responses
 
-HTTP response status codes alone often do not provide enough information to enable deterministic error semantics. For example, if a client does a PATCH and some of the properties do not match while others are not supported, simply returning an HTTP status code of 400 does not tell the client which values were in error.
+HTTP response status codes alone often do not provide enough information to enable deterministic error semantics. For example, if a client does a PATCH and some of the properties do not match while others are not supported, simply returning an HTTP status code of 400 does not tell the client which values were in error. Error responses provide the client more meaningful and deterministic error semantics. 
 
-Extended errors provide the client more meaningful and deterministic error semantics.  
+Error responses are defined by an extended error resource, represented as a single JSON object with a property named "error". The value of this property shall be an [extended information object](#extended-information-object).
 
-* Services shall return the extended error resource as described in this specification in the response body when a status code of 400 or 500 is returned.
-* Services should return the extended error resource as described in this specification in the response body when a status code 400 or greater is returned.
-* Extended error messages MUST NOT provide privileged info when authentication failures occur
+##### Extended Information Object
+Extended Information Objects provide additional information about an [object](#extended-object-information), [property](#extended-property-information), or [error response](#error-responses). 
 
-NOTE: Refer to the [Security](#user-content-security) section for security implications of extended errors
+Extended information is represented as a JSON object with the following properties:
 
-Extended error information is returned as a JSON object with a single property named "error". The value of this property shall be a JSON object with the following properties.
-
-| Attribute          | Description                                                                                                                                                                            |
+| Property           | Description                                                                                                                                                                            |
 | ---                | ---                                                                                                                                                                                    |
 | code               | String indicating a specific error or message (not to be confused with the HTTP status code). This code can be used to access a detailed message from a message registry.              |
 | message            | A human readable error message indicating the semantics associated with the error. 
@@ -1084,10 +1132,8 @@ Extended error information is returned as a JSON object with a single property n
                 "target": "IndicatorLED",
                 "message": "The value %1 for the property %2 is not in the list of acceptable values",
                 "@message.parameters": [
-                    {
-                        "RED",
-                        "IndicatorLED"
-                    }
+                    "RED",
+                    "IndicatorLED"
                 ],
                 "@message.severity": "Warning",
                 "@message.resolution": "Remove the property from the request body and resubmit the request if the operation failed"
@@ -1097,9 +1143,7 @@ Extended error information is returned as a JSON object with a single property n
                 "target": "SKU",
                 "message": "The property %1 is a read only property and cannot be assigned a value",
                 "@message.parameters": [
-                    {
-                        "SKU"
-                    }
+                    "SKU"
                 ],
                 "@message.severity": "Warning",
                 "@message.resolution": "Remove the property from the request body and resubmit the request if the operation failed"
@@ -1130,7 +1174,7 @@ The message registry approach has advantages for internationalization (since the
 
 One of the key tenants of the SPMA interface is the separation of protocol and data model.  This section describes common data model, resource, and SPMA Schema requirements.
 
-* Each resource shall be strongly typed according to a [resource type definition](#user-content-resource-type-definition). The type shall be defined in a [schema document](#user-content-schema-documents) and identified by a unique [type identifier](#user-content-type-identifier).
+* Each resource shall be strongly typed according to a [resource type definition](#resource-type-definition). The type shall be defined in a [schema document](#schema-documents) and identified by a unique [type identifier](#type-identifier).
 
 ### Type Identifiers
 
@@ -1149,7 +1193,7 @@ The full namespace for types defined by this specification is of the form:
 
 where 
 
-* *ResourceTypeName* = the name of the resource type. For [structured (complex) types](#user-content-structured-types), [enumerations](#user-content-enums), and [actions](#user-content-resource-actions), this is generally the name of the containing resource type. 
+* *ResourceTypeName* = the name of the resource type. For [structured (complex) types](#structured-types), [enumerations](#enums), and [actions](#resource-actions), this is generally the name of the containing resource type. 
 * *MajorVersion* = integer: something in the class changed in a backward incompatible way.
 * *MinorVersion* = integer: a minor update. New properties may have been added but nothing removed. Compatibility will be preserved with previous minorversions. 
 * *Errata* = integer: something in the prior version was broken and needed to be fixed.
@@ -1163,7 +1207,7 @@ Resource types defined by this specification shall be referenced in JSON documen
 
 Non-resource types (for example enumerations, complex types, and actions) shall be referenced in JSON documents using the version-independent namespace alias defined in the [service metadata](#service-metadata).
 
-NOTE: Refer to the [Security](#user-content-security) section for security implications of Data Model & Schema
+NOTE: Refer to the [Security](#security) section for security implications of Data Model & Schema
 
 ### Common Naming Conventions
 
@@ -1194,15 +1238,15 @@ The SPMA architecture supports localized strings but does not impose any specifi
 
 Schema-supplied display strings may be localized as necessary, but a Schema file may only contain one language.  Alternate language schemas may be published and available to SPMA clients, but need not be provided via the SPMA schema store. 
 
-Property names defined within an SPMA schema are never localized. User-supplied string-valued property values such as an asset tag may be localized. Localizable string valued properties should annotated with the [IsLanguageDependent annotation term](#user-content-language-dependent-property-values).
+Property names defined within an SPMA schema are never localized. User-supplied string-valued property values such as an asset tag may be localized. Localizable string valued properties should annotated with the [IsLanguageDependent annotation term](#language-dependent-property-values).
 
 ### Schema Definition
 
-Individual resources and their dependent types and actions are defined within a [schema document](#user-content-schema-documents).
+Individual resources and their dependent types and actions are defined within a [schema document](#schema-documents).
 
 #### Common Annotations
 
-All SPMA types and properties shall include [description](#user-content-description) and [long description](#user-content-long-description) annotations. 
+All SPMA types and properties shall include [description](#description) and [long description](#long-description) annotations. 
 
 ##### Description
 
@@ -1218,7 +1262,7 @@ The `LongDescription` annotation term is defined in http://docs.oasis-open.org/o
 
 #### Schema Documents
 
-Individual resources are defined as entity types within a schema document according to [OData-Schema](#user-content-OData-CSDL). The representation may include annotations to facilitate automatic generation of JSON Schema capable of validating JSON payloads.
+Individual resources are defined as entity types within a schema document according to [OData-Schema](#OData-CSDL). The representation may include annotations to facilitate automatic generation of JSON Schema capable of validating JSON payloads.
 
 The outer element of the schema document shall be the `Edmx` element, and shall have a `Version` attribute with a value of "4.0".
 
@@ -1234,7 +1278,7 @@ Schemas may reference types defined in other schema documents by including a `Re
 
 The reference element specifies the `Uri` of the schema document describing the referenced type and has one or more child `Include` elements that specify the `Namespace` attribute containing the types to be referenced, along with an optional `Alias` attribute for that namespace.
 
-Type definitions generally reference the OData and DMTF namespaces for common type annotation terms, and resource type definitions reference the DMTF Resource.<%= DocVersion %> namespace for base types. Schemas that include measures such as temperature, speed, or dimensions generally include the [OData Measures namespace](#user-content-OData-Measures). 
+Type definitions generally reference the OData and DMTF namespaces for common type annotation terms, and resource type definitions reference the DMTF Resource.<%= DocVersion %> namespace for base types. Schemas that include measures such as temperature, speed, or dimensions generally include the [OData Measures namespace](#OData-Measures). 
 
 ~~~xml
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
@@ -1256,7 +1300,7 @@ Type definitions generally reference the OData and DMTF namespaces for common ty
 
 Resource types are defined within a namespace. The namespace is defined through a `Schema` element that contains attributes for declaring the `Namespace` and local `Alias` for the schema. 
 
-The Schema element is a child of the `DataServices` element, which is a child of the [Edmx](#user-content-schema-documents) element.
+The Schema element is a child of the `DataServices` element, which is a child of the [Edmx](#schema-documents) element.
 
 ~~~xml
   <edmx:DataServices>
@@ -1270,11 +1314,11 @@ The Schema element is a child of the `DataServices` element, which is a child of
 
 #### Resource Type Definitions
 
-Resource types are defined within a [namespace](#user-content-namespace-definitions) using `EntityType` elements. The `Name` attribute specifies the name of the resource and the `BaseType` specifies the base type, if any.
+Resource types are defined within a [namespace](#namespace-definitions) using `EntityType` elements. The `Name` attribute specifies the name of the resource and the `BaseType` specifies the base type, if any.
 
 SPMA resources derive from a common Resource base type named "Resource" in the Resource.<%= DocVersion %> namespace. 
 
-The EntityType contains the [property](#user-content-resource-properties) and [navigation property](#user-content-reference-properties) elements that define the resource, as well as annotations describing the resource.
+The EntityType contains the [property](#resource-properties) and [navigation property](#reference-properties) elements that define the resource, as well as annotations describing the resource.
 
 ~~~xml
       <EntityType Name="TypeA" BaseType="Resource.Resource">
@@ -1286,12 +1330,12 @@ The EntityType contains the [property](#user-content-resource-properties) and [n
       </EntityType>
 ~~~
 
-All resources shall include [Description](#user-content-description) and [LongDescription](#user-content-long-description) annotations. 
+All resources shall include [Description](#description) and [LongDescription](#long-description) annotations. 
 
 #### Resource Properties
 
-Structural properties of the resource are defined using the `Property` element. The `Name` attribute specifies the name of the property, and the [`Type`](#user-content-property-types) its type. 
-Properties that must have a non-nullable value include the [nullable attribute](#user-content-non-nullable-properties) with a value of "false". 
+Structural properties of the resource are defined using the `Property` element. The `Name` attribute specifies the name of the property, and the [`Type`](#property-types) its type. 
+Properties that must have a non-nullable value include the [nullable attribute](#non-nullable-properties) with a value of "false". 
 
 ~~~xml
         <Property Name="Property1" Type="Edm.String" Nullable="false">
@@ -1303,17 +1347,17 @@ Properties that must have a non-nullable value include the [nullable attribute](
         </Property>
 ~~~
 
-All properties shall include [Description](#user-content-description) and [LongDescription](#user-content-long-description) annotations. 
+All properties shall include [Description](#description) and [LongDescription](#long-description) annotations. 
 
-Properties that are read-only are annotated with the [Permissions annotation](#user-content-read-only-properties) with a value of `ODataPermissions/Read`.
+Properties that are read-only are annotated with the [Permissions annotation](#read-only-properties) with a value of `ODataPermissions/Read`.
 
-Properties that are required to be implemented by all services are annotated with the [required annotation](#user-content-required-properties). 
+Properties that are required to be implemented by all services are annotated with the [required annotation](#required-properties). 
 
-Properties that have units associated with them can be annotated with the [units annotation](#user-content-units-of-measure)
+Properties that have units associated with them can be annotated with the [units annotation](#units-of-measure)
 
 ##### Property Types
 
-Type type of a property is specified by the `Type` attribute. The value of the type attribute may be a [primitive type](#user-content-primitive-types), a [structured type](#user-content-structured-types), an [enumeration type](#user-content-enums) or a [collection](#user-content-collections) of primitive, structured or enumeration types.
+Type type of a property is specified by the `Type` attribute. The value of the type attribute may be a [primitive type](#primitive-types), a [structured type](#structured-types), an [enumeration type](#enums) or a [collection](#collections) of primitive, structured or enumeration types.
 
 ###### Primitive Types
 
@@ -1333,7 +1377,7 @@ SPMA services support the following primitive types:
 
 ###### Structured Types
 
-Structured types are defined within a [namespace](#user-content-namespace-definitions) using `ComplexType` elements. The `Name` attribute of the complex type specifies the name of the structured type. Complex types can include a `BaseType` attribute to specifies the base type, if any.
+Structured types are defined within a [namespace](#namespace-definitions) using `ComplexType` elements. The `Name` attribute of the complex type specifies the name of the structured type. Complex types can include a `BaseType` attribute to specifies the base type, if any.
 
 Structured types may be reused across different properties of different resource types.
 
@@ -1347,13 +1391,13 @@ Structured types may be reused across different properties of different resource
       </ComplexType>
 ~~~
 
-Structured types can contain [properties](#user-content-resource-properties), [navigation properties](#user-content-reference-properties) and annotations.
+Structured types can contain [properties](#resource-properties), [navigation properties](#reference-properties) and annotations.
 
-Structured types shall include [Description](#user-content-description) and [LongDescription](#user-content-longdescription) annotations. 
+Structured types shall include [Description](#description) and [LongDescription](#longdescription) annotations. 
 
 ###### Enums
 
-Enumeration types are defined within a [namespace](#user-content-namespace-definitions) using `EnumType` elements. The `Name` attribute of the enumeration type specifies the name of the enumeration type. 
+Enumeration types are defined within a [namespace](#namespace-definitions) using `EnumType` elements. The `Name` attribute of the enumeration type specifies the name of the enumeration type. 
 
 Enumeration types may be reused across different properties of different resource types.
 
@@ -1373,13 +1417,13 @@ EnumType elements contain `Member` elements that define the members of the enume
       </EnumType>
 ~~~
 
-Enumeration Types shall include [Description](#user-content-description) and [LongDescription](#user-content-longdescription) annotations. 
+Enumeration Types shall include [Description](#description) and [LongDescription](#longdescription) annotations. 
 
-Enumeration Members shall include [Description](#user-content-description) annotations. 
+Enumeration Members shall include [Description](#description) annotations. 
 
 ###### Collections
 
-The [type](#user-content-property-types) attribute may specify a collection of [primitive](#user-content-primitive-types), [structured](#user-content-structured-types) or [enumeration](#user-content-enums) types.
+The [type](#property-types) attribute may specify a collection of [primitive](#primitive-types), [structured](#structured-types) or [enumeration](#enums) types.
 
 The value of the type attribute for a collection-valued property is of the form:
 
@@ -1419,7 +1463,7 @@ The `Required` annotation term is defined in http://dmtf.org/schema/V1/DMTFExten
 
 ##### Units of Measure
 
-In addition to following [naming conventions](#user-content-common naming-conventions), properties representing units of measure shall be annotated with the Units annotation term in order to specify the units of measurement for the property.
+In addition to following [naming conventions](#common naming-conventions), properties representing units of measure shall be annotated with the Units annotation term in order to specify the units of measurement for the property.
 
 ~~~xml
 	    <Annotation Term="OData.Measures.Units" String="Watts"/>
@@ -1443,7 +1487,7 @@ The `IsLanguageDependent` annotation term is defined in http://docs.oasis-open.o
 
 #### Reference Properties
 
-Properties that reference other resources are represented as navigation properties. The `NavigationProperty` element specifies the `Name` and namespace (or alias) qualified [`Type`](#user-content-property-types) of the related resource(s).
+Properties that reference other resources are represented as navigation properties. The `NavigationProperty` element specifies the `Name` and namespace (or alias) qualified [`Type`](#property-types) of the related resource(s).
 
 If the property references a single type, the value of the type attribute is the namespace (or alias) qualified name of the related resource type.
 
@@ -1469,17 +1513,27 @@ where NamespaceQualifiedTypeName is the namespace (or alias) qualified name of t
       </NavigationProperty>
 ~~~
 
-All navigation properties shall include [Description](#user-content-description) and [LongDescription](#user-content-longdescription) annotations. 
+All navigation properties shall include [Description](#description) and [LongDescription](#longdescription) annotations. 
 
 ##### Expanded References
 
-Navigation properties in an SPMA JSON payload are expanded to include the [related resource id](#user-content-reference-to-a-single-related-resource) or [collection of related resource ids](#user-content-array-of-references-to-related-resources). This behavior is expressed using the ExpandReferences annotation.
+Navigation properties in an SPMA JSON payload are expanded to include the [related resource id](#reference-to-a-single-related-resource) or [collection of related resource ids](#array-of-references-to-related-resources). This behavior is expressed using the ExpandReferences annotation.
 
 ~~~xml
 		<Annotation Term="DMTF.ExpandReferences"/>
 ~~~
 
 The `ExpandReferences` annotation term is defined in http://dmtf.org/schema/V1/DMTFExtensions.
+
+##### Expanded Resources
+
+This term can be applied to a navigation property in order to specify that the default behavior for the service is to expand the related [resource](#structured-properties) or [collection of resources](#collection-properties) in responses.
+
+~~~xml
+		<Annotation Term="DMTF.ExpandResources"/>
+~~~
+
+The `ExpandResources` annotation term is defined in http://dmtf.org/schema/V1/DMTFExtensions.
 
 #### Resource Actions
 
@@ -1489,7 +1543,7 @@ Actions are grouped under a property named "Actions".
 	  <Property Name="Actions" Type="MyType.Actions">
 ~~~
 
-The type of the Actions property is a [structured type](#user-content-structured-types) with a single OEM property whose type is a structured type with no defined properties.
+The type of the Actions property is a [structured type](#structured-types) with a single OEM property whose type is a structured type with no defined properties.
 
 ~~~xml
   <ComplexType Name="Actions">
@@ -1499,11 +1553,11 @@ The type of the Actions property is a [structured type](#user-content-structured
   <ComplexType Name="OEMActions"/>
 ~~~
 
-Individual actions are defined within a [namespace](#user-content-namespace-definitions) using `Action` elements. The `Name` attribute of the action specifies the name of the action. The `Isbound` attribute specifies that the action is bound to (appears as a member of) a resource or structured type.
+Individual actions are defined within a [namespace](#namespace-definitions) using `Action` elements. The `Name` attribute of the action specifies the name of the action. The `Isbound` attribute specifies that the action is bound to (appears as a member of) a resource or structured type.
 
-The Action element contains one or more `Parameter` elements that specify the `Name` and [`Type`](#user-content-property-types) of each parameter. 
+The Action element contains one or more `Parameter` elements that specify the `Name` and [`Type`](#property-types) of each parameter. 
 
-The first parameter is called the "binding parameter" and specifies the resource or [structrual type](#user-content-structural-types) that the action appears as a member of (the type of the Actions property on the resource). The remaining Parameter elements describe additional parameters to be passed to the action.
+The first parameter is called the "binding parameter" and specifies the resource or [structrual type](#structural-types) that the action appears as a member of (the type of the Actions property on the resource). The remaining Parameter elements describe additional parameters to be passed to the action.
 
 ~~~xml
   <Action Name="MyAction" Isbound="true">
@@ -1514,13 +1568,13 @@ The first parameter is called the "binding parameter" and specifies the resource
 
 #### Resource Extensibility
 
-Vendors can define additional [properties](#user-content-Property-Extensions), links, and [actions](#user-content-Custom-Actions) for common SPMA resources using the OEM property on resources, links, and actions. 
+Vendors can define additional [properties](#Property-Extensions), links, and [actions](#Custom-Actions) for common SPMA resources using the OEM property on resources, links, and actions. 
 
 While the information and semantics of these extensions are outside of the standard, the schema representing the data, the resource itself, and the semantics around the protocol shall conform to the requirements in this specification.
 
 ##### Property Extensions 
 
-Resources contain a property called ["Oem"](#user-content-oem-property) whose value is an empty "OEM" [complex type](#user-content-sructured-type) defined for the resource. 
+Resources contain a property called ["Oem"](#oem-property) whose value is an empty "OEM" [complex type](#sructured-type) defined for the resource. 
 
 ~~~xml
   <ComplexType Name="MyType.OEMType"/>
@@ -1551,7 +1605,7 @@ The OEM-specific types are exposed as dynamic properties of the root "OEM" type 
 
 ##### Custom Actions
 
-OEM-specific actions can be defined by defining actions bound to the OEM property of the [resource's Actions](#user-content-resource-actions) property type.
+OEM-specific actions can be defined by defining actions bound to the OEM property of the [resource's Actions](#resource-actions) property type.
 
 ~~~xml
 
@@ -1562,7 +1616,7 @@ OEM-specific actions can be defined by defining actions bound to the OEM propert
 </Schema>
 ~~~
 
-Such bound actions appear in the JSON payload as properties of the Oem type, nested under an [Actions property](#user-content-actions-property).
+Such bound actions appear in the JSON payload as properties of the Oem type, nested under an [Actions property](#actions-property).
 
 ```json
 "Actions": {
@@ -1582,7 +1636,7 @@ Services may apply annotations to resources in order to provide service-specific
 
 Services can apply annotations to existing resources where those resources don't already define a value for the annotation. Services cannot change the value of an annotation applied as part of the resource definition.  
 
-Because [service annotations](#user-content-annotations) may be applied to existing resource definitions, they are generally specified in a service-specific metadata document referenced by the [service metadata](#user-content-service-metadata).
+Because [service annotations](#annotations) may be applied to existing resource definitions, they are generally specified in a service-specific metadata document referenced by the [service metadata](#service-metadata).
 
 ### Common SPMA Resource Properties
 
@@ -1604,7 +1658,7 @@ The Description property is used to convey a human readable description of the r
 
 #### Modified
 
-The Modified property contains the time stamp equal to the last time the SPMA service modified this resource. The format of this property shall be the [Standard Timestamp Format](#user-content-standard-timestamp-format). 
+The Modified property contains the time stamp equal to the last time the SPMA service modified this resource. The format of this property shall be the [Standard Timestamp Format](#standard-timestamp-format). 
                                                                                                                                                                       
 #### Status
 
@@ -1614,19 +1668,19 @@ The value of the status property is a common status object type as defined by th
 
 #### Links
 
-The [Links property](#user-content-links-property) represents the links associated with the resource, as defined by that resources schema definition. All navigation properties defined for a resource shall be nested under the links property.
+The [Links property](#links-property) represents the links associated with the resource, as defined by that resources schema definition. All navigation properties defined for a resource shall be nested under the links property.
                                                                                                                                                                        
 #### Actions
 
-The [Actions property](#user-content-actions-property) contains the actions supported by a resource. 
+The [Actions property](#actions-property) contains the actions supported by a resource. 
 
 #### OEM
 
-The [OEM property](#user-content-oem-property) is used for OEM extensions as defined in [Schema Extensibility](#user-content-schema-extensibility). 
+The [OEM property](#oem-property) is used for OEM extensions as defined in [Schema Extensibility](#schema-extensibility). 
 
 #### Settings
 
-The Settings property contains a URI that the client can use to PUT properties or PATCH property changes for resources that are not directly [updatable](#user-content-update-patch). 
+The Settings property contains a URI that the client can use to PUT properties or PATCH property changes for resources that are not directly [updatable](#update-patch). 
 
 If the resource itself is read only but has a partner Setting resource, this is used to make changes at some point in the future to the resource.  
 
@@ -1720,7 +1774,7 @@ Life cycle events happen when resources are created, modified or destroyed.  Not
 
 Alert events happen when a resource needs to indicate an event of some significance.  This may be either directly or indirectly pertaining to the resource.  This style of event usually adopts a message registry approach similar to extended error handling in that a MessageID will be included.  Examples of this kind of event are when a chassis is opened, button is pushed, cable is unplugged or threshold exceeded.  These events usually do not correspond well to life cycle type events hence they have their own category.
 
-NOTE: Refer to the [Security](#user-content-security) section for security implications of Eventing
+NOTE: Refer to the [Security](#security) section for security implications of Eventing
 
 #### Event Message Subscription
 
@@ -1777,7 +1831,7 @@ As long as the operation is in process, the service shall continue to return a s
 
 Once the operation has completed, the status monitor shall return a status code of OK (200) and include in the body of the response a mime message containing the results of the initial operation, as if it had completed synchronously.
 
-The client can continue to get information about the status by directly querying the Task resource using the [resource identifier](#user-content-resource-identifier) returned in the body of the 202 (Accepted) response.
+The client can continue to get information about the status by directly querying the Task resource using the [resource identifier](#resource-identifier) returned in the body of the 202 (Accepted) response.
 
 * Services that support asynchronous operations shall implement the Task resource
 * The response to an asynchronous operation shall return a status code of 202 (Accepted)
@@ -1793,7 +1847,7 @@ The client can continue to get information about the status by directly querying
 ### Timestamp Management
 
 The SPMA Service should support a resource that contains the current service time.  The property should be located in the "/rest" resource, called
-"Time" and should be an SPMA compliant [time string](#user-content-datetime-values).
+"Time" and should be an SPMA compliant [time string](#datetime-values).
 
 ```json
 {
@@ -1886,7 +1940,7 @@ SPMA devices may implement the additional SSDP messages defined by UPnP to annou
 ##### TLS
 Implementations shall support TLS v1.1 or later
 
-Implementations shall only use compliant TLS connections to transport [Sensitive Data](#user-content-sensitive-data). Including to any third party authentication services or clients.
+Implementations shall only use compliant TLS connections to transport [Sensitive Data](#sensitive-data). Including to any third party authentication services or clients.
 
 ##### Cipher suites
 Implementations should support AES-256 based ciphers from the TLS suites.
@@ -1958,7 +2012,7 @@ REF: http://csrc.nist.gov/publications/fips/fips140-1/fips1401.pdf - This is use
 	* Extended error messages shall NOT provide privileged info when authentication failures occur
 * REST objects shall not be available unauthenticated, except for
   * The root object which is needed to identify the device and service locations
-* Unauthenticated REST operation results shall not contain [Sensitive Data](#user-content-sensitive-data).
+* Unauthenticated REST operation results shall not contain [Sensitive Data](#sensitive-data).
 * External services linked via extref references are not part of this spec, and may have other security requirements.
 	
 * CORS headers are not recommended. Services may choose to implement them.
@@ -1968,7 +2022,7 @@ REF: http://csrc.nist.gov/publications/fips/fips140-1/fips1401.pdf - This is use
 * When there is a HTTP Redirect the privilege requirements for the target resource shall be enforced  
   
 #### Extended Error Handling
-  * Authentication shall occur when [Sensitive Data](#user-content-sensitive-data) is present in any part of the REST object.
+  * Authentication shall occur when [Sensitive Data](#sensitive-data) is present in any part of the REST object.
   * Extended error messages shall NOT provide privileged info when authentication failures occur
 
 #### HTTP Header Authentication
@@ -1976,7 +2030,7 @@ REF: http://csrc.nist.gov/publications/fips/fips140-1/fips1401.pdf - This is use
 * HTTP Cookies shall NOT be used to authenticate any activity i.e.: GET, POST, PUT/PATCH, and DELETE.
 
 ##### BASIC authentication
-HTTP BASIC authentication as defined by [RFC2617](#user-content-RFC2617) shall be supported, and shall only use compliant TLS connections to transport the data between any third party authentication service and clients.
+HTTP BASIC authentication as defined by [RFC2617](#RFC2617) shall be supported, and shall only use compliant TLS connections to transport the data between any third party authentication service and clients.
 
 ##### Digest authentication
 Implementations may support HTTP Digest authentication mechanism 
@@ -2061,8 +2115,8 @@ Implementations shall only use compliant TLS connections to transport the data b
 
 * User passwords should be stored with one-way encryption techniques.
 * Implementations may support exporting user accounts with passwords, but shall do so using encryption methods to protect them.
-* The root REST object should be available unauthenticated, but shall not contain any [Sensitive Data](#user-content-sensitive-data).
-  * Authentication shall occur when [Sensitive Data](#user-content-sensitive-data) is present in the root REST object.
+* The root REST object should be available unauthenticated, but shall not contain any [Sensitive Data](#sensitive-data).
+  * Authentication shall occur when [Sensitive Data](#sensitive-data) is present in the root REST object.
 * User accounts shall support ETags and shall support atomic operations
   * Implementations may reject requests which do not include an ETag
 * User Management activity is atomic
@@ -2076,7 +2130,7 @@ Implementations shall only use compliant TLS connections to transport the data b
 
 * The SPMA device shall check the privilege of the subscriber before pushing event data object to the destination 
 
-* The SPMA device shall encrypt event data when there is [Sensitive Data](#user-content-sensitive-data) in the event data object before pushing it
+* The SPMA device shall encrypt event data when there is [Sensitive Data](#sensitive-data) in the event data object before pushing it
 
 * The SPMA device may verify the destination for identity purposes before pushing event data object to the Destination 
 
@@ -2198,7 +2252,7 @@ Custom Actions - Privilege model shall be applied consistently to both the body 
 Implementations shall log authentication requests including failures. 
 Authentication login/logout log entries shall contain a user identifier that can be used to uniquely identify the client and a time stamp.
 
-Logs shall include detailed privileged info, but shall NOT include the [Sensitive Data](#user-content-sensitive-data) outside a privileged user or a privileged security context.
+Logs shall include detailed privileged info, but shall NOT include the [Sensitive Data](#sensitive-data) outside a privileged user or a privileged security context.
 
 #### Completeness of Logging
 
@@ -2233,9 +2287,8 @@ The file where the events are written, one or more messages per event should at 
 
 ## ANNEX A (informative) 
 
-# Change Log
+### Change Log
 
 | Version | Date      | Description                             |
 | ---     | ---       | ---                                     |
 | 0.94.0  | 2015-13-1 | Initial merge of 0.91 and 0.92 versions |
-

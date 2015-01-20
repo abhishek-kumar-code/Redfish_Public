@@ -1,7 +1,12 @@
 {
     "@odata.context": "/rest/v1/$metadata#Systems/Links/Members/1/Links/Logs/Links/Members/Log1/Links/Entries",
-    "@odata.count": 2,
-    "value": [
+    "@odata.id": "/rest/v1/Systems/1/Logs/Members/Log1/Entries",
+    "@odata.type": "#LogEntry.0.94.0.LogEntryCollection",
+    "Name": "Log Service Collection",
+    "Modified": "2012-03-07T14:44",
+    "Description": "Collection of Logs for this System",
+    "members@odata.count": 2,
+    "members": [
         {
             "@odata.id": "/rest/v1/Systems/1/Logs/Log1/Entries/1",
             "@odata.type": "#LogEntry.0.94.0.LogEntry",
@@ -30,7 +35,6 @@
             "Oem": {}
         },
         {
-            "@odata.context": "/rest/v1/$metadata#Systems/Links/Members/1/Links/Logs/Links/Members/Log1/Links/Entries/$entity",
             "@odata.id": "/rest/v1/Systems/1/Logs/Log1/Entries/2",
             "@odata.type": "#LogEntry.0.94.0.LogEntry",
             "Id": "2",
@@ -51,7 +55,7 @@
             ],
             "Links": {
                 "OriginOfCondition": {
-                    "@odata.id": "/rest/v1/Chassis/1/ThermalMetrics/Temperatures/0"
+                    "@odata.id": "/rest/v1/Chassis/1/ThermalMetrics"
                 },
                 "Oem": {}
             },

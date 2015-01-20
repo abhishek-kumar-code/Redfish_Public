@@ -1,11 +1,11 @@
 window.onload = ->
   $ = document.querySelectorAll.bind(document)
-  tags = ("h#{i}" for i in [2..5]).join(', ')
+  tags = ("h#{i}" for i in [2..6]).join(', ')
   tags = $ tags
   currentLevel = 0
   toc = []
-  levelMap = ("H#{i}" for i in [2..5])
-  counter = (new -> @["H#{i}"] = 0 for i in [2..5]; @)
+  levelMap = ("H#{i}" for i in [2..6])
+  counter = (new -> @["H#{i}"] = 0 for i in [2..6]; @)
   ul = oldToc = $('#toc')[0]
 
   createItem = (href, txt) ->
