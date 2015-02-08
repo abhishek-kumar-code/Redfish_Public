@@ -132,15 +132,6 @@
             "readonly": true,
             "specification": "The value of this property shall contain the serial number for the system."
         },
-        "Version": {
-            "type": [
-                "string",
-                "null"
-            ],
-            "description": "The version of this system as defined by the manufacturer.",
-            "readonly": true,
-            "specification": "The value of this property shall contain the manufacturer's designated version for the system."
-        },
         "PartNumber": {
             "type": [
                 "string",
@@ -152,15 +143,6 @@
         },
         "Description": {
             "$ref": "Description.0.91.0.json#"
-        },
-        "VirtualSerialNumber": {
-            "readonly": true,
-            "type": [
-                "string",
-                "null"
-            ],
-            "description": "The virtual serial number for this system",
-            "specification": "The value of this property shall contain the virtual serial number for the system."
         },
         "UUID": {
             "type": [
@@ -222,15 +204,6 @@
         },
         "Status": {
             "$ref": "Status.0.91.0.json#"
-        },
-        "BIOSPOSTCode": {
-            "type": [
-                "integer",
-                "null"
-            ],
-            "description": "This is the BIOS Power on Self Test code from the last system boot.",
-            "readonly": true,
-            "specification": "The value of this property shall contain the BIOS Power On Self Test code."
         },
         "IndicatorLED": {
             "type": [
