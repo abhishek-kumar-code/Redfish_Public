@@ -41,9 +41,13 @@
           <Annotation Term="OData.Description" String="This property contains the user name for the account."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the user name for this account."/>
         </Property>
-        <Property Name="Locked" Type="Edm.Boolean" Nullable="false" DefaultValue="true">
-          <Annotation Term="OData.Description" String="When set to true, this property locks the account so that the user cannot login."/>
-          <Annotation Term="OData.LongDescription" String="This property shall lock (if set to true) or unlock (if set to false) account."/>
+        <Property Name="Locked" Type="Edm.Boolean" Nullable="false" DefaultValue="false">
+          <Annotation Term="OData.Description" String="This property indicates that the account has been auto-locked by the account service because the lockout threshold has been exceeded.  When set to true, the account is locked. A user admin can write the property to false to manually unlock, or the account service will unlock it once the lockout duration period has passed."/>
+          <Annotation Term="OData.LongDescription" String="This property (when set to true) shall indicate that the account service has automatically locked the account due to the accountLockoutThreshold having been exceeded. If set to true, the account is locked.  If set to false, the account is not locked.  A user admin shall be able to write a false to the property to clear the lockout condition, prior to the lockout duration period."/>
+        </Property>
+        <Property Name="Enabled" Type="Edm.Boolean" Nullable="false" DefaultValue="true">
+          <Annotation Term="OData.Description" String="This property is used by a User Administrator to disable an account w/o having to delet the user information.  When set to true, the user can login.  When set to false, the account is administratively disabled and the user cannot login."/>
+          <Annotation Term="OData.LongDescription" String="This property shall enable (if set to true) or disable (if set to false) the account for future logins. The value of Enable over-rides the locked property."/>
         </Property>
         <Property Name="Links" Type="ManagerAccount.Links" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
