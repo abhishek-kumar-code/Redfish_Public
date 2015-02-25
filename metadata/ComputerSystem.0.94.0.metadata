@@ -248,11 +248,7 @@
         <Property Name="BootSourceOverrideTarget" Type="ComputerSystem.BootSource">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/ReadWrite"/>
           <Annotation Term="OData.Description" String="The current boot source to be used at next boot instead of the normal boot device, if BootSourceOverrideEnabled is true."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the source to boot the system from, overriding the normal boot order.  The value of this property shall be one of the values in the BootSourceOverrideSupported of this resource."/>
-        </Property>
-        <Property Name="BootSourceOverrideSupported" Type="Collection(ComputerSystem.BootSourceSupported)">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.LongDescription" String="The values of this array shall be properties that shall contain the sources from which this system can be booted, overriding the normal boot order. Pxe indicates to PXE boot from the primary NIC; Floppy, Cd, Usb, Hdd indicates to boot from their devices respectively.  BiosSetup indicates to boot into the native BIOS screen setup.  Utilities &amp; Diags indicates to boot from the local utilities or diags partitions and UefiTarget indicates to boot from the UEFI device path found in UefiTargetBootSourceOverride."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the source to boot the system from, overriding the normal boot order.  The valid values for this property are specified through the DMTF.AllowableValues annotation."/>
         </Property>
         <Property Name="BootSourceOverrideEnabled" Type="ComputerSystem.BootSourceOverrideEnabled">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/ReadWrite"/>
