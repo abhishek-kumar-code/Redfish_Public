@@ -92,7 +92,7 @@
           <Annotation Term="OData.LongDescription" String="The classes structure shall only contain a reference to a resource that complies to the TaskService schema.  The last segment of the path shall be 'Tasks'"/>
           <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="SessionsService" Type="SessionService.SessionServic">
+        <NavigationProperty Name="SessionService" Type="SessionService.SessionService">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a link to the Sessions Service."/>
           <Annotation Term="OData.LongDescription" String="The classes structure shall only contain a reference to a resource that complies to the SessionService schema.  The last segment of the path shall be 'SessionService'."/>
