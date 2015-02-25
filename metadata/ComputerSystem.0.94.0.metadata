@@ -304,43 +304,6 @@
         </Member>
       </EnumType>
 
-      <!-- This enumeration has the same members as BootSource enumeration, but different definition for the members -->
-      <EnumType Name="BootSourceSupported">
-        <Member Name="None">
-          <Annotation Term="OData.Description" String="This system does not support any Boot Source Override targets"/>
-        </Member>
-        <Member Name="Pxe">
-          <Annotation Term="OData.Description" String="This system supports PXE as a Boot Source Override target"/>
-        </Member>
-        <Member Name="Floppy">
-          <Annotation Term="OData.Description" String="This system supports a Floppy disk as a Boot Source Override target"/>
-        </Member>
-        <Member Name="Cd">
-          <Annotation Term="OData.Description" String="This system supports a CD/DVD disc as a Boot Source Override target"/>
-        </Member>
-        <Member Name="Usb">
-          <Annotation Term="OData.Description" String="This system supports a USB device as a Boot Source Override target"/>
-        </Member>
-        <Member Name="Hdd">
-          <Annotation Term="OData.Description" String="This system supports a hard disk as a Boot Source Override target"/>
-        </Member>
-        <Member Name="BiosSetup">
-          <Annotation Term="OData.Description" String="This system supports BIOS Setup as a Boot Source Override target"/>
-        </Member>
-        <Member Name="Utilities">
-          <Annotation Term="OData.Description" String="This system supports the manufacturer's Utilities program(s) as a Boot Source Override target"/>
-        </Member>
-        <Member Name="Diags">
-          <Annotation Term="OData.Description" String="This system supports the manufacturer's Diagnostics program as a Boot Source Override target"/>
-        </Member>
-        <Member Name="UefiShell">
-          <Annotation Term="OData.Description" String="This system supports the UEFI Shell as a Boot Source Override target"/>
-        </Member>
-        <Member Name="UefiTarget">
-          <Annotation Term="OData.Description" String="This system supports a UEFI Device, specified in the UefiTargetBootSourceOverride property, as a Boot Source Override target"/>
-        </Member>
-      </EnumType>
-
       <EnumType Name="BootSourceOverrideEnabled">
         <Member Name="Disabled">
           <Annotation Term="OData.Description" String="The system will boot as normal"/>
