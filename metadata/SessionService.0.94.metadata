@@ -30,10 +30,13 @@
           <Annotation Term="Validation.Minimum" Int="30"/>
           <Annotation Term="Validation.Maximum" Int="86400"/>
         </Property>
+        <Property Name="Links" Type="SessionService.Links" Nullable="false">
+          <Annotation Term="OData.Description" String="The links object contains the links to other resources that are related to this resource."/>
+        </Property>        
       </EntityType>
 
       <ComplexType Name="Links">
-        <NavigationProperty Name="Sessions" Type="Collection(Sessions.Session)">
+        <NavigationProperty Name="Sessions" Type="Session.SessionCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Link to a collection of Sessions"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the link to a collection of Sessions."/>
