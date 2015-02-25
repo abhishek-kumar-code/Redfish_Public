@@ -30,8 +30,6 @@
           <Annotation Term="Validation.Minimum" Int="30"/>
           <Annotation Term="Validation.Maximum" Int="86400"/>
         </Property>
-
-
       </EntityType>
 
       <ComplexType Name="Links">
