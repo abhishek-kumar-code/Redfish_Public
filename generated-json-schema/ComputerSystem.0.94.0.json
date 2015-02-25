@@ -354,7 +354,7 @@
                             },
                             "readonly": false,
                             "description": "The current boot source to be used at next boot instead of the normal boot device, if BootSourceOverrideEnabled is true.",
-                            "longDescription": "The value of this property shall contain the source to boot the system from, overriding the normal boot order.  The valid values for this property shall be specified through the DMTF.AllowableValues annotation."
+                            "longDescription": "The value of this property shall contain the source to boot the system from, overriding the normal boot order.  The valid values for this property are specified through the DMTF.AllowableValues annotation."
                         },
                         "BootSourceOverrideEnabled": {
                             "type": [
