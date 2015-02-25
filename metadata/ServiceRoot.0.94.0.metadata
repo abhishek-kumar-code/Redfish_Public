@@ -26,8 +26,8 @@
   <edmx:Reference Uri="http://dmtf.org/schema/v1/TaskService">
     <edmx:Include Namespace="TaskService.0.94.0" Alias="TaskService"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://dmtf.org/schema/v1/Session">
-    <edmx:Include Namespace="Session.0.94.0" Alias="Session"/>
+  <edmx:Reference Uri="http://dmtf.org/schema/v1/SessionService">
+    <edmx:Include Namespace="Session.0.94.0" Alias="SessionService"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/Messages">
     <edmx:Include Namespace="Messages.0.94.0" Alias="Messages"/>
@@ -92,10 +92,10 @@
           <Annotation Term="OData.LongDescription" String="The classes structure shall only contain a reference to a resource that complies to the TaskService schema.  The last segment of the path shall be 'Tasks'"/>
           <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="Sessions" Type="Collection(Session.Sessions)">
+        <NavigationProperty Name="SessionsService" Type="SessionService.SessionServic">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="This is a link to the Collection of Sessions."/>
-          <Annotation Term="OData.LongDescription" String="This object shall only contain a reference to a collection of resources that comply to the Session schema.  The last segment of the path shall be 'Sessions'."/>
+          <Annotation Term="OData.Description" String="This is a link to the Sessions Service."/>
+          <Annotation Term="OData.LongDescription" String="The classes structure shall only contain a reference to a resource that complies to the SessionService schema.  The last segment of the path shall be 'SessionService'."/>
           <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
         <NavigationProperty Name="AccountService" Type="AccountService.AccountService">
