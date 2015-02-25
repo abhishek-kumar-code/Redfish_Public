@@ -2060,8 +2060,8 @@ For functionality requiring multiple SPMA operations, a standard Login session i
 ```json
 {
     ...
-    "SessionSerevice": {
-        "@odata.id": "/rest/v1/SessionSerevice"
+    "SessionService": {
+        "@odata.id": "/rest/v1/SessionService"
     },
     ...
 }

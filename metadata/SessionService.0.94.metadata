@@ -17,7 +17,7 @@
   </edmx:Reference>
   
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SessionSerevice.0.94.0" Alias="SessionSerevice">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SessionService.0.94.0" Alias="SessionService">
 
       <!-- This schema defines a Session service and its respective properties. -->
       <EntityType Name="SessionService" BaseType="Resource.Resource">
@@ -26,7 +26,7 @@
         <Property Name="SessionTimeout" Type="Edm.Int64" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/ReadWrite"/>
           <Annotation Term="OData.Description" String="This is the number of seconds of inactivity that a session may have before the session service closes the session due to inactivity."/>
-          <Annotation Term="OData.LongDescription" String="This property shall reference the threshold of time in seconds between requests or responses for a specific session at which point the session service shall close the session due to inactivity."/>
+          <Annotation Term="OData.LongDescription" String="This property shall reference the threshold of time in seconds between requests on a specific session at which point the session service shall close the session due to inactivity."/>
           <Annotation Term="Validation.Minimum" Int="30"/>
           <Annotation Term="Validation.Maximum" Int="86400"/>
         </Property>
