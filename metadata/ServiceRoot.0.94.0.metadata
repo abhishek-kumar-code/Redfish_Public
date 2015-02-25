@@ -27,7 +27,7 @@
     <edmx:Include Namespace="TaskService.0.94.0" Alias="TaskService"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/SessionService">
-    <edmx:Include Namespace="Session.0.94.0" Alias="SessionService"/>
+    <edmx:Include Namespace="SessionService.0.94.0" Alias="SessionService"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/Messages">
     <edmx:Include Namespace="Messages.0.94.0" Alias="Messages"/>
