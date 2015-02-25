@@ -299,15 +299,6 @@
                     "description": "Describes the state of the Boot Source Override feature",
                     "specification": "The value of this property shall be Once if this is a one time boot override and Continuous if this selection should remain active until cancelled."
                 },
-                "UefiTargetBootSourceOverrideSupported": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "An arrary of the valid UEFI targets available to the Boot Source Override feature. These values can be used in conjunction with BootSourceOverrideTarget (set to UefiTarget) and UefiTargetBootSourceOverride to select a specifc UEFI device for booting.",
-                    "specification": "The values of this array shall be properties that shall contain the UEFI boot target sources from which this system can be booted, overriding the normal boot order.  BootSourceOverrideEnabled = Continuous is not supported for Uefi Boot Source Override as this setting is defined in UEFI as a one time boot only.",
-                    "readonly": true
-                },
                 "UefiTargetBootSourceOverride": {
                     "type": [
                         "string",
@@ -315,7 +306,7 @@
                     ],
                     "description": "This property is the Uefi Device Path of the device to boot from when BootSourceOverrideSupported is UefiTarget.",
                     "readonly": false,
-                    "specification": "The value of this property shall be the UEFI device path of the override boot target.  The value of this property is only valid if BootSourceOverride is equal to the value UefiTarget."
+                    "specification": "The value of this property shall be the UEFI device path of the override boot target.  The valid values for this property are specified through the DMTF.AllowableValues annotation. BootSourceOverrideEnabled = Continuous is not supported for Uefi Boot Source Override as this setting is defined in UEFI as a one time boot only."
                 }
             },
             "description": "This object contains the boot information for the current resource."
