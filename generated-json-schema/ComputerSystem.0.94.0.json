@@ -214,16 +214,7 @@
                     "description": "The serial number for this system.",
                     "longDescription": "The value of this property shall contain the serial number for the system."
                 },
-                "Version": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "readonly": true,
-                    "description": "The version of this system as defined by the manufacturer.",
-                    "longDescription": "The value of this property shall contain the manufacturer's designated version for the system."
-                },
-                "PartNumber": {
+                 "PartNumber": {
                     "type": [
                         "string",
                         "null"
@@ -231,15 +222,6 @@
                     "readonly": true,
                     "description": "The part number for this system according to the manufacturer.",
                     "longDescription": "The value of this property shall contain the part number for the system."
-                },
-                "VirtualSerialNumber": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "readonly": true,
-                    "description": "The virtual serial number for this system",
-                    "longDescription": "The value of this property shall contain the virtual serial number for the system."
                 },
                 "UUID": {
                     "type": [
@@ -298,15 +280,6 @@
                         }
                     },
                     "description": "This object shall contain operating environment reference information to correlate the system information with the host operating environment information to assist clients with correlating the two access points."
-                },
-                "BIOSPOSTCode": {
-                    "type": [
-                        "integer",
-                        "null"
-                    ],
-                    "readonly": true,
-                    "description": "This is the BIOS Power on Self Test code from the last system boot.",
-                    "longDescription": "The value of this property shall contain the BIOS Power On Self Test code."
                 },
                 "IndicatorLED": {
                     "type": [
