@@ -2056,13 +2056,13 @@ includes orphaned session timeout and number of simultaneous open sessions.
 
 ##### Login Sessions
 
-For functionality requiring multiple SPMA operations, a standard Login session is specified.  The URI used for session management is specified in the /rest object with the property "Sessions".
+For functionality requiring multiple SPMA operations, a standard Login session is specified.  The URI used for session management is specified in the /rest object with the property "SessionService".
 
 ```json
 {
     ...
-    "Sessions": {
-        "@odata.id": "/rest/v1/Sessions"
+    "SessionService": {
+        "@odata.id": "/rest/v1/SessionService"
     },
     ...
 }
@@ -2070,7 +2070,7 @@ For functionality requiring multiple SPMA operations, a standard Login session i
 
 ##### Login
 
-A session is created by an HTTP POST to the Sessions resource, including the following POST body:
+A session is created by an HTTP POST to the SessionService/Sessions resource, including the following POST body:
 
 ```json
 {
@@ -2087,14 +2087,14 @@ The return JSON body includes a representation of the newly created session obje
     <operation> <uri> HTTP/1.1
     <header>
     <header>
-    Location: "/rest/v1/Sessions/Administrator1"
+    Location: "/rest/v1/SessionService/Sessions/Administrator1"
     X-Auth-Token: <token string>
     <header>
 
     {
-        "@odata.context": "/rest/v1/$metadata#Sessions",
-        "@odata.id": "/rest/v1/Sessions/Administrator1",
-	    "UserName": "<username>"
+        "@odata.context": "/rest/v1/$metadata#SessionService/Links/Sessions/$entity",
+        "@odata.id": "/rest/v1/SessionService/Sessions/Administrator1",
+	"UserName": "<username>"
     } 
 
 ##### Logout
