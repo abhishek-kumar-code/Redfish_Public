@@ -357,7 +357,7 @@
             },
             "description": "This object contains the boot information for the current resource."
         },
-        "BIOSVersion": {
+        "BiosVersion": {
             "type": [ 
                 "string",
                 "null"
