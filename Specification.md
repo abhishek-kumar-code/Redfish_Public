@@ -2069,7 +2069,7 @@ For functionality requiring multiple SPMA operations, a standard Login session i
 
 ##### Login
 
-A session is created by an HTTP POST to the SessionService resource, including the following POST body:
+A session is created by an HTTP POST to the SessionService/Sessions resource, including the following POST body:
 
 ```json
 {
@@ -2091,9 +2091,9 @@ The return JSON body includes a representation of the newly created session obje
     <header>
 
     {
-        "@odata.context": "/rest/v1/$metadata#SessionService",
+        "@odata.context": "/rest/v1/$metadata#SessionService/Links/Sessions/$entity",
         "@odata.id": "/rest/v1/SessionService/Sessions/Administrator1",
-	    "UserName": "<username>"
+	"UserName": "<username>"
     } 
 
 ##### Logout
