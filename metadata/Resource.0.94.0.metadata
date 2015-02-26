@@ -14,14 +14,40 @@
   <edmx:DataServices>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.0.94.0" Alias="Resource">
 
+      <!--Base entity type for array members-->
+      <EntityType Name="Item" Abstract="true">
+        <Annotation Term="OData.Description" String="This is the base type for resources and referenceable members."/>
+      </EntityType>
+
+        <!--Base entity type for array members-->
+      <EntityType Name="ReferenceableMember" BaseType="Resource.Item" Abstract="true">
+        <Annotation Term="OData.Description" String="This is the base type for addressable members of an array."/>
+        <Annotation Term="OData.LongDescription" String="Array members can be referenced using the value returned in the @odata.id property which may or may not be a dereferenceable URL."/>
+        <Key>
+          <PropertyRef Name="MemberId"/>
+        </Key>
+        <Property Name="MemberId" Nullable="false" Type="Edm.String">
+          <Annotation Term="OData.Description" String="This is the identifier for the member within the collection."/>
+          <Annotation Term="OData.LongDescription" String="The value of this string shall uniquely identify the member within the collection."/>
+        </Property>
+        <Property Name="Oem" Type="Resource.Oem">
+          <Annotation Term="OData.Description" String="This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections."/>
+          <Annotation Term="OData.LongDescription" String="The value of this string shall be of the format for the reserved word *Oem*."/>
+        </Property>
+      </EntityType>
+
       <!--Base entity type for all resources-->
-      <EntityType Name="Resource" Abstract="true">
+      <EntityType Name="Resource" BaseType="Resource.Item" Abstract="true">
         <Key>
           <PropertyRef Name="Id"/>
         </Key>
-        <Property Name="Id" Nullable="false" Type="Edm.String"/>
-        <Property Name="Description" Type="Edm.String">
+        <Property Name="Id" Nullable="false" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="Uniquely identifies the resource within the collection of like resources."/>
+          <Annotation Term="OData.LongDescription" String="This property represents an identifier for the resource.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification."/>
+        </Property>
+        <Property Name="Description" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/ReadWrite"/>
           <Annotation Term="OData.Description" String="Provides a description of this resource and is used for commonality  in the schema definitions."/>
           <Annotation Term="OData.LongDescription" String="This object represents the Description property.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification."/>
         </Property>
@@ -40,7 +66,6 @@
           <Annotation Term="OData.Description" String="This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections."/>
           <Annotation Term="OData.LongDescription" String="The value of this string shall be of the format for the reserved word *Oem*."/>
         </Property>
-
       </EntityType>
 
       <!--Base entity type for all resource collection objects-->

@@ -1,12 +1,14 @@
 {
-    "@odata.context": "/rest/v1/$metadata#Chassis/Links/Members/1/Links/ThermalMetrics/$entity",
-    "@odata.id": "/rest/v1/Chassis/1/ThermalMetrics",
-    "@odata.type": "#ThermalMetrics.0.94.0.ThermalMetrics",
-    "Id": "ThermalMetrics",
-    "Name": "Thermal Metrics",
+    "@odata.context": "/rest/v1/$metadata#Chassis/Links/Members/1/Links/Thermal/$entity",
+    "@odata.id": "/rest/v1/Chassis/1/Thermal",
+    "@odata.type": "#Thermal.0.94.0.Thermal",
+    "Id": "Thermal",
+    "Name": "Thermal",
     "Modified": "2013-07-22T14:44+00:00",
     "Temperatures": [
         {
+            "@odata.id": "/rest/v1/Chassis/1/Thermal#Temperatures/1",
+            "MemberID": "1",
             "Name": "Sensor ID String",
             "Number": 42,
             "Status": {
@@ -24,13 +26,16 @@
             "MinimumValue": 0,
             "MaximumValue": 200,
             "PhysicalContext": "CPU",
-            "CorrelatableID": "ReferenceToAPotentialThingLikeAProcessor"
+            "RelatedTo": [
+                {"@odata.id": "/rest/v1/Systems/1#Processors/1" }
+            ]
         }
     ],
     "Fans": [
         {
+            "@odata.id": "/rest/v1/Chassis/1/Thermal#Fans/1",
+            "MemberID": "1",
             "FanName": "BaseBoard System Fan",
-            "CorrelatableID": "Chassis/1/Fan1",
             "PhysicalContext": "Backplane",
             "Status": {
                 "State": "Enabled",
@@ -45,11 +50,21 @@
             "LowerThresholdCritical": 5,
             "LowerThresholdFatal": 42,
             "MinimumValue": 0,
-            "MaximumValue": 5000
+            "MaximumValue": 5000,
+            "Temperatures" : [ 
+                {"@odata.id": "/rest/v1/Chassis/1/Thermal#Temperatures/1"}
+            ],
+            "Redundancy" : [ 
+                {"@odata.id": "/rest/v1/Chassis/1/Thermal#Redundancy/1"}
+            ],
+            "RelatedTo" : [
+                {"@odata.id": "/rest/v1/Systems/1#Processors/1" }
+            ] 
         },
         {
+            "@odata.id": "/rest/v1/Chassis/1/Thermal#Fans/2",
+            "MemberID": "2",
             "FanName": "BaseBoard System Fan Backup",
-            "CorrelatableID": "Chassis/1/Fan2",
             "PhysicalContext": "Backplane",
             "Status": {
                 "State": "Enabled",
@@ -64,15 +79,26 @@
             "LowerThresholdCritical": 5,
             "LowerThresholdFatal": 42,
             "MinimumValue": 0,
-            "MaximumValue": 5000
-        }
+            "MaximumValue": 5000,
+            "Temperatures" : [
+                {"@odata.id": "/rest/v1/Chassis/1/Thermal#Temperatures/1"}
+            ],
+            "Redundancy" : [
+                {"@odata.id": "/rest/v1/Chassis/1/Power#Redundancy/1"}
+            ],
+            "RelatedTo" : [
+                {"@odata.id": "/rest/v1/Systems/1#Processors/1" }
+            ] 
+       }
     ],
     "Redundancy": [
         {
+            "@odata.id": "/rest/v1/Chassis/1/Thermal#Redundancy/1",
+            "MemberID": "1",
             "Name": "BaseBoard System Fans",
-            "ActiveCorrelatableIDs": [
-                "/rest/v1/Chassis/1/Fan1",
-                "/rest/v1/Chassis/1/Fan2"
+            "RedundancySet": [
+                { "@odata.id": "/rest/v1/Chassis/1/Thermal#Fans/1" },
+                { "@odata.id": "/rest/v1/Chassis/1/Thermal#Fans/2" }
             ],
             "Mode": "N+1",
             "Status": {

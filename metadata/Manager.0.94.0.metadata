@@ -88,12 +88,14 @@
         <Property Name="GraphicalConsole" Type="Manager.GraphicalConsole">
           <Annotation Term="OData.Description" String="The value of this property shall contain the information about the Graphical Console (KVM-IP) service of this manager."/>
         </Property>
-        <Property Name="Redundancy" Type="Redundancy.Redundancy" Nullable="false"/>
         <Property Name="Actions" Type="Manager.Actions" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The Actions object contains the available custom actions on this resource."/>
         </Property>
         <Property Name="Status" Type="Resource.Status"/>
+        <NavigationProperty Name="Redundancy" Type="Redundancy.Redundancy" Nullable="false">
+          <Annotation Term="DMTF.ExpandReferences"/>
+        </NavigationProperty>
       </EntityType>
 
       <ComplexType Name="Actions">
