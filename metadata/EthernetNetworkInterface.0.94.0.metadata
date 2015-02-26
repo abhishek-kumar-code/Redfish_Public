@@ -62,11 +62,6 @@
           <Annotation Term="OData.Description" String="This is the currently assigned MAC address for this NIC."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the effective current MAC Address of this interface.  If an assignable MAC address is not supported, this is a read only alias of the FactoryMacAddress."/>
         </Property>
-        <Property Name="LinkTechnology" Type="EthernetNetworkInterface.LinkTechnology">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="This is link technology, such as Ethernet, for this NIC."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the technology of the interface."/>
-        </Property>
         <Property Name="SpeedMBps" Type="Edm.Int64">
           <Annotation Term="Measures.Unit" Edm.String="MBps"/>
           <Annotation Term="OData.Description" String="This is the current speed in MBps of this NIC."/>
