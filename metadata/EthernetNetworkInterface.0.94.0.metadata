@@ -161,13 +161,6 @@
         </NavigationProperty>
         <Property Name="Oem" Type="Resource.Oem"/>
       </ComplexType>
-      
-      <!-- This is link technology, such as Ethernet, for NIC. -->
-      <EnumType Name="LinkTechnology">
-        <Member Name="Ethernet">
-          <Annotation Term="OData.Description" String="An Ethernet interface"/>
-        </Member>
-      </EnumType>
 
       <!--Strongly typed property for MacAddress-->
       <TypeDefinition Name="MacAddress" UnderlyingType="Edm.String">
