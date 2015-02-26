@@ -15,31 +15,33 @@
   </edmx:Reference>
   
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ThermalMetrics.0.94.0" Alias="ThermalMetrics">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Thermal.0.94.0" Alias="Thermal">
 
       <!-- This is the schema definition for the Thermal Metrics.  It represents the properties for Temperature and Cooling. -->
-      <EntityType Name="ThermalMetrics" BaseType="Resource.Resource">
-        <Annotation Term="OData.Description" String="This is the schema definition for the Thermal Metrics.  It represents the properties for Temperature and Cooling."/>
+      <EntityType Name="Thermal" BaseType="Resource.Resource">
+        <Annotation Term="OData.Description" String="This is the schema definition for the Thermal properties.  It represents the properties for Temperature and Cooling."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a thermal metrics resource for an SPMA implementation."/>
-        <Property Name="Temperatures" Type="Collection(ThermalMetrics.Temperature)" Nullable="false">
+        <NavigationProperty Name="Temperatures" Type="Collection(Thermal.Temperature)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is the definition for temperature sensors."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for temperature sensors for an SPMA implementation."/>
-        </Property>
-        <Property Name="Fans" Type="Collection(ThermalMetrics.Fan)" Nullable="false">
+        </NavigationProperty>
+        <NavigationProperty Name="Fans" Type="Collection(Thermal.Fan)" Nullable="false" ContainsTarget="True">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is the definition for fans."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for fans for an SPMA implementation."/>
-        </Property>
-        <Property Name="Redundancy" Type="Collection(Redundancy.Redundancy)" Nullable="false">
+          <Annotation Term="DMTF.ExpandResources"/>
+        </NavigationProperty>
+        <NavigationProperty Name="Redundancy" Type="Collection(Redundancy.Redundancy)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="This structure is used to show redundancy for fans.  The use of CorrelatableIDs will reference the members of the redundancy groups."/>
-          <Annotation Term="OData.LongDescription" String="The values of the properties in this array shall be used to show redundancy for fans and other elements in this resource.  The use of CorrelatableIDs within these arrays shall reference the members of the redundancy groups."/>
-        </Property>
+          <Annotation Term="OData.Description" String="This structure is used to show redundancy for fans.  The Component ids will reference the members of the redundancy groups."/>
+          <Annotation Term="OData.LongDescription" String="The values of the properties in this array shall be used to show redundancy for fans and other elements in this resource.  The use of IDs within these arrays shall reference the members of the redundancy groups."/>
+          <Annotation Term="DMTF.ExpandReferences"/>
+        </NavigationProperty>
         <Property Name="Status" Type="Resource.Status"/>
       </EntityType>
 
-      <ComplexType Name="Temperature">
+      <EntityType Name="Temperature" BaseType="Resource.ReferenceableMember">
         <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
         <Property Name="Name" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
@@ -52,7 +54,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a numerical identifier for this temperature sensor that is unique within this resource. "/>
         </Property>
         <Property Name="Status" Type="Resource.Status" Nullable="false"/>
-        <Property Name="Units" Type="ThermalMetrics.TemperatureUnit">
+        <Property Name="Units" Type="Thermal.TemperatureUnit">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The temperature sensor's units."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the units that the temperature sensor in which the CurrentReading is measured."/>
@@ -102,17 +104,18 @@
           <Annotation Term="OData.Description" String="Maximum value for CurrentReading"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the lowest possible value for CurrentReading."/>
         </Property>
-        <Property Name="PhysicalContext" Type="ThermalMetrics.PhysicalContext" Nullable="false">
+        <Property Name="PhysicalContext" Type="Thermal.PhysicalContext" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Describes the area or device to which this temperature measurement applies."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a description of the affected device or region within the chassis to which this temperature measurement applies."/>
         </Property>
-        <Property Name="CorrelatableID" Type="Edm.String">
+        <NavigationProperty Name="RelatedTo" Type="Collection(Resource.Item)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="The CorrelatableID for this temperature sensor"/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the CorrelatableID for this temperature sensor and shall adhere to the semantics for CorrelatableID as defined in the SPMA specification."/>
-        </Property>
-      </ComplexType>
+          <Annotation Term="OData.Description" String="Describes the areas or devices to which this temperature measurement applies."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall the array of IDs of areas or devices to which this temperature measurement applies."/>
+          <Annotation Term="DMTF.ExpandReferences"/>
+        </NavigationProperty>
+      </EntityType>
 
       <EnumType Name="TemperatureUnit">
         <Member Name="Celsius"/>
@@ -182,25 +185,19 @@
         </Member>
       </EnumType>
 
-      <ComplexType Name="Fan">
-        <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
+      <EntityType Name="Fan" BaseType="Resource.ReferenceableMember">
         <Property Name="FanName" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Name of the fan"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the name of the fan."/>
         </Property>
-        <Property Name="PhysicalContext" Type="ThermalMetrics.PhysicalContext" Nullable="false">
+        <Property Name="PhysicalContext" Type="Thermal.PhysicalContext" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Describes the area or device associated with this fan."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a description of the affected device or region within the chassis to which this fan is associated."/>
         </Property>
-        <Property Name="CorrelatableID" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="The CorrelatableID for this fan"/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the CorrelatableID for this temperature sensor and shall adhere to the semantics for CorrelatableID as defined in the Redfish specification."/>
-        </Property>
         <Property Name="Status" Type="Resource.Status" Nullable="false"/>
-        <Property Name="Units" Type="ThermalMetrics.FanUnits">
+        <Property Name="Units" Type="Thermal.FanUnits">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Units for the CurrentReading"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the units that the CurrentReading is measured in."/>
@@ -250,7 +247,24 @@
           <Annotation Term="OData.Description" String="Maximum value for CurrentReading"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the lowest possible value for CurrentReading."/>
         </Property>
-      </ComplexType>
+        <NavigationProperty Name="Temperatures" Type="Collection(Thermal.Temperature)" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="The ID(s) of the temperatures regulated by this fan."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of IDs containing pointers to the temperatures regulated by this fan."/>
+          <Annotation Term="DMTF.ExpandReferences"/>
+        </NavigationProperty>
+        <NavigationProperty Name="RelatedTo" Type="Collection(Resource.Item)" Nullable="false">
+          <Annotation Term="OData.Description" String="The ID(s) of the resources serviced with this fan"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of IDs containing pointers to the resource that are being serviced by this fan."/>
+          <Annotation Term="DMTF.ExpandReferences"/>
+        </NavigationProperty>
+        <NavigationProperty Name="Redundancy" Type="Collection(Redundancy.Redundancy)" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="This structure is used to show redundancy for fans.  The Component ids will reference the members of the redundancy groups."/>
+          <Annotation Term="OData.LongDescription" String="The values of the properties in this array shall be used to show redundancy for fans and other elements in this resource.  The use of IDs within these arrays shall reference the members of the redundancy groups."/>
+          <Annotation Term="DMTF.ExpandReferences"/>
+        </NavigationProperty>
+      </EntityType>
 
       <EnumType Name="FanUnits">
         <Member Name="RPM"/>

@@ -13,14 +13,11 @@
   <edmx:Reference Uri="http://dmtf.org/schema/v1/LogService">
     <edmx:Include Namespace="LogService.0.94.0" Alias="LogService"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://dmtf.org/schema/v1/ThermalMetrics">
-    <edmx:Include Namespace="ThermalMetrics.0.94.0" Alias="ThermalMetrics"/>
+  <edmx:Reference Uri="http://dmtf.org/schema/v1/Thermal">
+    <edmx:Include Namespace="Thermal.0.94.0" Alias="Thermal"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://dmtf.org/schema/v1/PowerMetrics">
-    <edmx:Include Namespace="PowerMetrics.0.94.0" Alias="PowerMetrics"/>
-  </edmx:Reference>
-  <edmx:Reference Uri="http://dmtf.org/schema/v1/MiscMetrics">
-    <edmx:Include Namespace="MiscMetrics.0.94.0" Alias="MiscMetrics"/>
+  <edmx:Reference Uri="http://dmtf.org/schema/v1/Power">
+    <edmx:Include Namespace="Power.0.94.0" Alias="Power"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/ManagerAccount">
     <edmx:Include Namespace="ManagerAccount.0.94.0" Alias="ManagerAccount"/>
@@ -122,22 +119,16 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resource that manages this chassis and shall reference a resource of type Manager."/>
           <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="ThermalMetrics" Type="ThermalMetrics.ThermalMetrics" ContainsTarget="true">
+        <NavigationProperty Name="Thermal" Type="Thermal.Thermal" ContainsTarget="true">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="A reference to the thermal metrics (fans, cooling, sensors) for this chassis."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resource that represents the thermal characteristics of this chassis and shall be of type ThermalMetrics."/>
+          <Annotation Term="OData.Description" String="A reference to the thermal properties (fans, cooling, sensors) for this chassis."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resource that represents the thermal characteristics of this chassis and shall be of type Thermal."/>
           <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="PowerMetrics" Type="PowerMetrics.PowerMetrics" ContainsTarget="true">
+        <NavigationProperty Name="Power" Type="Power.Power" ContainsTarget="true">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="A reference to the power metrics (power supplies, power policies, sensors) for this chassis."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resource that represents the power characteristics of this chassis and shall be of type PowerMetrics."/>
-          <Annotation Term="DMTF.ExpandReferences"/>
-        </NavigationProperty>
-        <NavigationProperty Name="MiscMetrics" Type="MiscMetrics.MiscMetrics" ContainsTarget="true">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="A reference to the various other metrics (presence, etc.) for this chassis."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resource that represents the non-power and non-thermal characteristics of this chassis and shall be of type MiscMetrics."/>
+          <Annotation Term="OData.Description" String="A reference to the power properties (power supplies, power policies, sensors) for this chassis."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resource that represents the power characteristics of this chassis and shall be of type Power."/>
           <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
         <NavigationProperty Name="ContainedBy" Type="Chassis.Chassis">

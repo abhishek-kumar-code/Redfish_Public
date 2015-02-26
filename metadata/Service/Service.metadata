@@ -46,11 +46,8 @@
   <edmx:Reference Uri="http://dmtf.org/schema/v1/Messages.0.94.0">
     <edmx:Include Namespace="Messages.0.94.0" Alias="Messages"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://dmtf.org/schema/v1/MiscMetrics.0.94.0">
-    <edmx:Include Namespace="MiscMetrics.0.94.0" Alias="MiscMetrics"/>
-  </edmx:Reference>
-  <edmx:Reference Uri="http://dmtf.org/schema/v1/PowerMetrics.0.94.0">
-    <edmx:Include Namespace="PowerMetrics.0.94.0" Alias="PowerMetrics"/>
+  <edmx:Reference Uri="http://dmtf.org/schema/v1/Power.0.94.0">
+    <edmx:Include Namespace="Power.0.94.0" Alias="Power"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/Redundancy.0.94.0">
     <edmx:Include Namespace="Redundancy.0.94.0" Alias="Redundancy"/>
@@ -70,8 +67,8 @@
   <edmx:Reference Uri="http://dmtf.org/schema/v1/TaskService.0.94.0">
     <edmx:Include Namespace="TaskService.0.94.0" Alias="TaskService"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://dmtf.org/schema/v1/ThermalMetrics.0.94.0">
-    <edmx:Include Namespace="ThermalMetrics.0.94.0" Alias="ThermalMetrics"/>
+  <edmx:Reference Uri="http://dmtf.org/schema/v1/Thermal.0.94.0">
+    <edmx:Include Namespace="Thermal.0.94.0" Alias="Thermal"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/VirtualMedia.0.94.0">
     <edmx:Include Namespace="VirtualMedia.0.94.0" Alias="VirtualMedia"/>

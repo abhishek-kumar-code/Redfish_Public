@@ -15,16 +15,9 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Redundancy.0.94.0" Alias="Redundancy">
 
-      <ComplexType Name="Redundancy">
+      <EntityType Name="Redundancy" BaseType="Resource.ReferenceableMember">
         <Annotation Term="OData.Description" String="This is the redundancy definition to be used in other resource schemas."/>
         <Annotation Term="OData.LongDescription" String="This object represents the Redundancy element property.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification.  The value of this string shall be of the format for the reserved word *Redundancy*"/>
-        <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
-        <Property Name="ActiveCorrelatableIDs" Type="Collection(Edm.String)">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="Contains any CorrelatableIDs that represents components of this reduncancy set."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall contain CorrelattableIDs that are components of this redundancy set.  The correlatableID values can be JSON Pointers or UEFI identifiers, for example."/>
-          <Annotation Term="DMTF.Required"/>
-        </Property>
         <Property Name="Name" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description"  String="The name of the resource or array element."/>
@@ -52,8 +45,14 @@
         <Property Name="Status" Nullable="false" Type="Resource.Status">
           <Annotation Term="DMTF.Required"/>
         </Property>
-        <Property Name="Status" Type="Resource.Status"/>
-      </ComplexType>
+        <NavigationProperty Name="RedundancySet" Type="Collection(Resource.Item)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="Contains any ids that represent components of this reduncancy set."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the ids of components that are part of this redundancy set. The id values may or may not be dereferenceable."/>
+          <Annotation Term="DMTF.ExpandReferences"/>
+          <Annotation Term="DMTF.Required"/>
+        </NavigationProperty>
+      </EntityType>
 
       <EnumType Name="RedundancyMode">
         <Member Name="Failover">

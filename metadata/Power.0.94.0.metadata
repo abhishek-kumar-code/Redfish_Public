@@ -23,10 +23,10 @@
     
   <edmx:DataServices>
 
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="PowerMetrics.0.94.0" Alias="PowerMetrics">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.0.94.0" Alias="Power">
 
       <!-- This is the schema definition for the Power Metrics and its respective properties -->
-      <EntityType Name="PowerMetrics" BaseType="Resource.Resource">
+      <EntityType Name="Power" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition for the Power Metrics.  It represents the properties for Power Consumption and Power Limiting."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a power metrics resource for an SPMA implementation."/>
         <Property Name="PowerConsumedWatts" Type="Edm.Int64">
@@ -64,25 +64,27 @@
           <Annotation Term="Validation.Minimum" Int="0"/>
           <Annotation Term="OData.Measures.Unit" String="Watts"/>
         </Property>
-        <Property Name="PowerMetrics" Type="PowerMetrics.PowerMetric" Nullable="false">
-          <Annotation Term="OData.Description" String="This object contains power consumption measurements for this system or device."/>
-          <Annotation Term="OData.LongDescription" String="This object shall contain power consumption metrics for the associated resource."/>
-        </Property>
-        <Property Name="PowerLimit" Type="PowerMetrics.PowerLimit" Nullable="false">
+        <Property Name="PowerLimit" Type="Power.PowerLimit" Nullable="false">
           <Annotation Term="OData.Description" String="This object contains power limit status and configuration information for the chassis"/>
         </Property>
-        <Property Name="PowerSupplies" Type="Collection(PowerMetrics.PowerSupply)" Nullable="false">
+        <NavigationProperty Name="PowerMetrics" Type="Collection(Power.PowerMetric)" Nullable="false">
+          <Annotation Term="OData.Description" String="This object contains an array of power consumption measurements for this system or device."/>
+          <Annotation Term="OData.LongDescription" String="This object shall contain an array of power consumption metrics for the associated resource."/>
+          <Annotation Term="DMTF.ExpandResources"/>
+        </NavigationProperty>
+        <NavigationProperty Name="PowerSupplies" Type="Collection(Power.PowerSupply)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Details of the power supplies associated with this system or device"/>
-        </Property>
-        <Property Name="Redundancy" Type="Collection(Redundancy.Redundancy)">
+        </NavigationProperty>
+        <NavigationProperty Name="Redundancy" Type="Collection(Redundancy.Redundancy)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Redundancy information for the power subsystem of this system or device"/>
-        </Property>
+          <Annotation Term="DMTF.ExpandReferences"/>
+        </NavigationProperty>
         <Property Name="Status" Type="Resource.Status"/>
       </EntityType>
 
-      <ComplexType Name="PowerMetric">
+      <EntityType Name="PowerMetric" BaseType="Resource.ReferenceableMember">
         <Property Name="IntervalInMin" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The time interval (or window) in which the PowerMetrics are measured over."/>
@@ -111,7 +113,7 @@
           <Annotation Term="OData.Measures.Unit" String="Watts"/>
           <Annotation Term="Validation.Minimum" Int="0"/>
         </Property>
-      </ComplexType>
+      </EntityType>
 
       <ComplexType Name="PowerLimit">
         <Annotation Term="OData.Description" String="This object contains power limit status and configuration information for the chassis."/>
@@ -121,7 +123,7 @@
           <Annotation Term="OData.Measures.Unit" String="Watts"/>
           <Annotation Term="Validation.Minimum" Int="0"/>
         </Property>
-        <Property Name="LimitException" Type="PowerMetrics.PowerLimitException">
+        <Property Name="LimitException" Type="Power.PowerLimitException">
           <Annotation Term="OData.Description" String="The action that is taken if the power cannot be maintained below the LimitInWatts"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the action to be taken if the resource power consumption can not be limited below the specified limit after several correction time periods."/>
         </Property>
@@ -130,10 +132,11 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the time interval in ms required for the limiting process to react and reduce the power consumption below the limit."/>
           <Annotation Term="OData.Measures.Unit" String="Ms"/>
         </Property>
-        <Property Name="CorrelatableID" Type="Collection(Edm.String)">
-          <Annotation Term="OData.Description" String="The Correlatable ID(s) associated with this Power Limit"/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of opaque strings containing pointers to the resource that is being limited."/>
-        </Property>
+        <NavigationProperty Name="RelatedTo" Type="Collection(Resource.Item)" Nullable="false">
+          <Annotation Term="OData.Description" String="The ID(s) of the resources associated with this Power Limit"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of IDs containing pointers to the resource that is being limited."/>
+          <Annotation Term="DMTF.ExpandReferences"/>
+        </NavigationProperty>
       </ComplexType>
 
       <EnumType Name="PowerLimitException">
@@ -151,27 +154,19 @@
         </Member>
       </EnumType>
 
-      <ComplexType Name="PowerSupply">
-        <Annotation Term="OData.Description" String="Details of the power supplies associated with this system or device"/>
-        <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-        <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
+      <EntityType Name="PowerSupply" BaseType="Resource.ReferenceableMember">
+        <Annotation Term="OData.Description" String="Details of a power supplies associated with this system or device"/>
         <Property Name="Name" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The name of the Power Supply"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain a descriptive name for the associated power supply."/>
         </Property>
-        <Property Name="CorrelatableID" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="The Correlatable ID for this Power Supply"/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain the unique Correlatable ID assigned to this power supply."/>
-        </Property>
-        <Property Name="Status" Type="Resource.Status" Nullable="false"/>
-        <Property Name="PowerSupplyType" Type="PowerMetrics.PowerSupplyType">
+        <Property Name="PowerSupplyType" Type="Power.PowerSupplyType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The Power Supply type (AC or DC)"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the input power type (AC or DC) of the associated power supply."/>
         </Property>
-        <Property Name="LineInputVoltageType" Type="PowerMetrics.LineInputVoltageType">
+        <Property Name="LineInputVoltageType" Type="Power.LineInputVoltageType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The line voltage type supported as an input to this Power Supply"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the type of input line voltage supported by the associated power supply"/>
@@ -221,7 +216,19 @@
           <Annotation Term="OData.Description" String="The spare part number of this Power Supply"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the spare or replacement part number as defined by the manufacturer for the associated power supply."/>
         </Property>
-      </ComplexType>
+        <Property Name="Status" Type="Resource.Status" Nullable="false"/>
+        <NavigationProperty Name="RelatedTo" Type="Collection(Resource.Item)" Nullable="false">
+          <Annotation Term="OData.Description" String="The ID(s) of the resources associated with this Power Limit"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of IDs containing pointers to the resource that is being limited."/>
+          <Annotation Term="DMTF.ExpandReferences"/>
+        </NavigationProperty>
+        <NavigationProperty Name="Redundancy" Type="Collection(Redundancy.Redundancy)" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="This structure is used to show redundancy for fans.  The Component ids will reference the members of the redundancy groups."/>
+          <Annotation Term="OData.LongDescription" String="The values of the properties in this array shall be used to show redundancy for fans and other elements in this resource.  The use of IDs within these arrays shall reference the members of the redundancy groups."/>
+          <Annotation Term="DMTF.ExpandReferences"/>
+        </NavigationProperty>
+      </EntityType>
 
       <EnumType Name="PowerSupplyType">
         <Member Name="Unknown">
