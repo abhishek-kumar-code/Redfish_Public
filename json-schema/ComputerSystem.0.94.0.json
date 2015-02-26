@@ -357,22 +357,16 @@
             },
             "description": "This object contains the boot information for the current resource."
         },
-        "Bios": {
-            "type": "object",
-            "additionalProperties": false,
-            "patternProperties": {
-                "\\.[A-Za-z0-9]+$": {
-                    "description": "allow any property to begin with a '.' (for model development only as an annotation)"
-                }
-            },
-            "properties": {
-                "Current": {
-                    "$ref": "FwRev.0.91.0.json#/definitions/FWVersion"
-                }
-            },
-            "description": "This object provides information about the System BIOS."
+        "BIOSVersion": {
+            "type": [ 
+                "string",
+                "null"
+            ],
+            "description": "The version of the system BIOS or primary system firmware.",
+            "readonly": true,
+            "specification": "The value of this property shall be the version string of the currently installed and running BIOS (for x86 systems).  For other systems, the value may contain a version string representing the primary system firmware."
         },
-        "Processors": {
+        "ProcessorSummary": {
             "type": "object",
             "additionalProperties": false,
             "properties": {
@@ -386,14 +380,14 @@
                     "readonly": true,
                     "specification": "This property shall contain the number of central processors in the system."
                 },
-                "ProcessorFamily": {
+                "Model": {
                     "type": [
                         "string",
                         "null"
                     ],
-                    "description": "The processor family for the processor in this system.",
+                    "description": "The processor model for the primary or majority of processors in this system.",
                     "readonly": true,
-                    "specification": "This property shall contain the processor family for the central processors in the system, per the description in Table 22 of the SMBIOS Specification DSP0134 2.8 or later."
+                    "specification": "This property shall contain the processor model for the central processors in the system, per the description in Table 22 of the SMBIOS Specification DSP0134 2.8 or later."
                 },
                 "Status": {
                     "$ref": "Status.0.91.0.json#"
@@ -401,7 +395,7 @@
             },
             "description": "This object describes the central processors of the system in general detail."
         },
-        "Memory": {
+        "MemorySummary": {
             "type": "object",
             "additionalProperties": false,
             "properties": {
