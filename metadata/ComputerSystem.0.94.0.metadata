@@ -87,20 +87,10 @@
           <Annotation Term="OData.Description" String="The serial number for this system."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the serial number for the system."/>
         </Property>
-        <Property Name="Version" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="The version of this system as defined by the manufacturer."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the manufacturer's designated version for the system."/>
-        </Property>
         <Property Name="PartNumber" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The part number for this system according to the manufacturer."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the part number for the system."/>
-        </Property>
-        <Property Name="VirtualSerialNumber" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="The virtual serial number for this system"/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the virtual serial number for the system."/>
         </Property>
         <Property Name="UUID" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
@@ -109,11 +99,6 @@
         </Property>
         <Property Name="HostCorrelation" Type="ComputerSystem.HostCorrelation"  Nullable="false">
           <Annotation Term="OData.Description" String="This object shall contain operating environment reference information to correlate the system information with the host operating environment information to assist clients with correlating the two access points."/>
-        </Property>
-        <Property Name="BIOSPOSTCode" Type="Edm.Int64">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="This is the BIOS Power on Self Test code from the last system boot."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the BIOS Power On Self Test code."/>
         </Property>
         <Property Name="IndicatorLED" Type="ComputerSystem.IndicatorLED">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/ReadWrite"/>
