@@ -5,7 +5,7 @@ DocType: Specification
 DocVersion: '0.95.0'
 DocStatus: Work in Progress
 DocConfidentiality: – Not a DMTF Standard – DMTF Confidential
-expiration: '2015-07-24'
+expiration: '2015-08-24'
 released: false
 copyright: '2014-2015'
 ---
@@ -32,6 +32,7 @@ The DMTF acknowledges the following individuals for their contributions to this 
 * Jeff Hilland - Hewlett-Packard Company
 * Chris Hoffman - Emerson Network Power
 * John Leung - Intel Corporation
+* Milena Natanov - Microsoft Corporation
 * Michael Pizzo - Microsoft Corporation
 * Irina Salvan - Microsoft Corporation
 * Hemal Shah - Broadcom Corporation
@@ -991,9 +992,9 @@ A JSON object can be annotated with "@DMTF.ExtendedInfo" in order to specify obj
 
 ~~~json
 {
-    "@odata.context": "/rest/v1/$metadata/Sessions/Links/Members/$entity",
-    "@odata.id": "/rest/v1/Sessions/Administrator1",
-    "@odata.type": "#Session.<%= DocVersion %>.Session",
+    "@odata.context": "/rest/v1/$metadata#SessionService/Links/Sessions/Links/Members/$entity",
+    "@odata.id": "/rest/v1/SessionService/Sessions/Administrator1",
+    "@odata.type": "#Session.0.94.0.Session",
     "Id": "Administrator1",
     "Name": "User Session",
     "Description": "Manager User Session",
@@ -1694,17 +1695,6 @@ The value of the SettingsResult property is a JSON object containing the results
 * Time of the attempted application
 * ETag of the Setting Data object that was applied
 * SPMA Extended Error Information containing status information 
-
-#### CorrelatableID
-
-Because of SPMA's open extensible architecture, and a design tenant that objects do not have to know how to locate each other via URI references, SPMA defines the "CorrelatableID" property. 
-
-CorrelatableID is used as a reference en lieu of a URI in some circumstances and schema.  It is similar to a weak key, in that resources that relate to each other contain the same CorrelatableID value. 
-
-If a provider must communicate location or association information and does not have enough information to include a URI reference, it should include a "CorrelatableID" property or Schema qualifier instead.  The string used as the value can be matched by the client against others to determine association.
-
-For example, a NIC in a PCI slot communicates its PCI location by including a "CorrelatableID" with a value consisting of its UEFI device path.  PCI slots also have a UEFI device path.  This match establishes their association.
-                                                                                                                                         
 
 ### SPMA Resources
 
