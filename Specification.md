@@ -276,10 +276,10 @@ The first part includes the scheme and authority portions of the URI. The second
 
 For example, in the following URL:
 
-    Example: https://mgmt.vendor.com/rest/v1/Systems/1
+    Example: https://mgmt.vendor.com/redfish/v1/Systems/1
 
 * The first part is the scheme and authority portion (https://mgmr.vendor.com).
-* The second part is the root service and version (/rest/v1).
+* The second part is the root service and version (/redfish/v1).
 * The third part is the unique resource path (Systems/1).
 
 The scheme and authority part of the URI shall not be considered part of the unique _identifier_ of the resource. This is due to redirection capabilities and local operations which may result in the variability of the connection portion.  The remainder of the URI (the service and resource paths) is what _uniquely identifies_ the resource, and this is what is returned in all SPMA payloads.  
@@ -288,9 +288,9 @@ The scheme and authority part of the URI shall not be considered part of the uni
 
 For example, a POST may return the following URI in the Location header of the response (indicating the new resource created by the POST):
 
-    Example: /rest/v1/Systems/2
+    Example: /redfish/v1/Systems/2
 
-Assuming the client is connecting through an appliance named "mgmt.vendor.com", the full URI needed to access this new resource is https://mgmt.vendor.com/rest/v1/Systems/2.
+Assuming the client is connecting through an appliance named "mgmt.vendor.com", the full URI needed to access this new resource is https://mgmt.vendor.com/redfish/v1/Systems/2.
 
 URIs, as described in [RFC3986](#RFC3986), may also contain a query (?query) and a frag (#frag) components.  Queries are addressed in the section [Query Parameters](#query-parameters).  Fragments (frag) shall be ignored by the server when used as the URI for submitting an operation. 
 
@@ -362,7 +362,7 @@ The protocol version is separate from the version of the resources or the versio
 
 Each version of the SPMA protocol is strongly typed.  This is accomplished using the URI of the SPMA service in combination with the resource obtained at that URI, called the ServiceRoot. 
 
-The root URI for this version of the SPMA protocol shall be "/rest/v1".
+The root URI for this version of the SPMA protocol shall be "/redfish/v1".
 
 While the major version of the protocol is represented in the URI, the major version, minor version and errata version of the protocol are represented in the Version property of the ServiceRoot resource, as defined in the Schema for that resource.  The protocol version is a string of the form: 
 
@@ -431,19 +431,19 @@ The GET method is used to retrieve a representation of a resource.  That represe
   
 ##### Service Root Request
 
-The root URL for SPMA version 1 services shall be "/rest/v1".
+The root URL for SPMA version 1 services shall be "/redfish/v1".
 
-Additionally, the latest supported SPMA service shall be aliased at "/rest". In this case the endpoint at "/rest" may be an HTTP redirect to "/rest/v1".
+Additionally, the latest supported SPMA service shall be aliased at "/redfish". In this case the endpoint at "/redfish" may be an HTTP redirect to "/redfish/v1".
 
 The root URL for the service returns a RootService resource as defined by this specification.
 
 ##### Metadata Document Request
 
-SPMA services shall expose a [metadata document](#service-metadata) describing the service at the "/rest/v1/$metadata" resource. This metadata document describes the resources and collections available at the root, and references additional metadata documents describing the full set of resource types exposed by the service.
+SPMA services shall expose a [metadata document](#service-metadata) describing the service at the "/redfish/v1/$metadata" resource. This metadata document describes the resources and collections available at the root, and references additional metadata documents describing the full set of resource types exposed by the service.
 
 ##### OData Service Document Request
 
-SPMA services shall expose an [OData Service Document](#odata-service-document), at the "/rest/v1/odata" resource. This service document provides a standard format for enumerating the resources exposed by the service, enabling generic hypermedia-driven OData clients to navigate to the resources of the service.
+SPMA services shall expose an [OData Service Document](#odata-service-document), at the "/redfish/v1/odata" resource. This service document provides a standard format for enumerating the resources exposed by the service, enabling generic hypermedia-driven OData clients to navigate to the resources of the service.
 
 ##### Resource Retrieval Requests
 
@@ -559,7 +559,7 @@ And a computer system resource contains an [Actions](#actions-property) property
 ~~~json
 "Actions": {
     "#ComputerSystem.Reset": {
-        "target":"/rest/v1/Systems/1/Actions/ComputerSystem.Reset",
+        "target":"/redfish/v1/Systems/1/Actions/ComputerSystem.Reset",
         "ResetType@DMTF.AllowableValues": [
             "On",
             "ForceOff",
@@ -576,7 +576,7 @@ And a computer system resource contains an [Actions](#actions-property) property
 Then the following would represent a possible request for the Action:
 
 ~~~json
-POST /rest/v1/Systems/1/Actions/ComputerSystem.Reset
+POST /redfish/v1/Systems/1/Actions/ComputerSystem.Reset
 {
     "ResetType": "On"
 }
@@ -752,27 +752,27 @@ The OData Service Document serves as a top-level entry point for generic OData c
 
 ~~~json
 {
-    "@odata.context": "/rest/v1/$metadata",
+    "@odata.context": "/redfish/v1/$metadata",
     "value": [
         {
             "name": "Service",
             "kind": "Singleton",
-            "url": "/rest/v1"
+            "url": "/redfish/v1"
         },
         {
             "name": "Systems",
             "kind": "Singleton",
-            "url": "/rest/v1/Systems"
+            "url": "/redfish/v1/Systems"
         },
         {
             "name": "Chassis",
             "kind": "Singleton",
-            "url": "/rest/v1/Chassis"
+            "url": "/redfish/v1/Chassis"
         },
         {
             "name": "Managers",
             "kind": "Singleton",
-            "url": "/rest/v1/Managers"
+            "url": "/redfish/v1/Managers"
         },
 		...
     ]
@@ -781,7 +781,7 @@ The OData Service Document serves as a top-level entry point for generic OData c
 
 The OData Service Document shall be a returned as a JSON object, using the MIME type `application/json`.
 
-The JSON object shall contain a context property named "@odata.context" with a value of "/rest/v1/$metadata". This context tells a generic OData client how to find the [service metadata](#service-metadata) describing the types exposed by the service.
+The JSON object shall contain a context property named "@odata.context" with a value of "/redfish/v1/$metadata". This context tells a generic OData client how to find the [service metadata](#service-metadata) describing the types exposed by the service.
 
 The JSON object shall include a property named "value" whose value is a JSON array containing an entry for the [service root](#service-root-request) and each resource that is a direct child of the service root.
 
@@ -800,7 +800,7 @@ The context URL for a resource that exists within a collection is of the form:
  *MetadataUrl*.#*Collection*[(*Selectlist*)]/$entity 
 
 Where: 
-* *MetadataUrl* = the metadata url of the service (/rest/v1/$metadata)
+* *MetadataUrl* = the metadata url of the service (/redfish/v1/$metadata)
 * *Collection* = the collection resource. For contained resources this includes the path from the root collection or singleton resource to the containment property.
 * *Selectlist* = comma-separated [list of properties](#select-list) included in the response if the response includes a subset of properties defined for the represented resources.
 
@@ -809,7 +809,7 @@ The context URL for a resource that is a top-level singleton resource is of the 
  *MetadataUrl*.#*SingletonName*[(*Selectlist*)]
 
 Where: 
-* *MetadataUrl* = the metadata url of the service (/rest/v1/$metadata)
+* *MetadataUrl* = the metadata url of the service (/redfish/v1/$metadata)
 * *SingletonName* = the name of the top-level singleton resource
 * *Selectlist* = comma-separated [list of properties](#select-list) included in the response if the response includes a subset of properties defined for the represented resources.
 
@@ -822,14 +822,14 @@ Expanded navigation properties shall be included in the select list if the resul
 For example, the following context URL specifies that the result contains a single resource from the Members collection nested under the Links property of the Systems resource:
 
 ~~~json
-"@odata.context":"/rest/v1/$metadata#Systems/Links/Members/$entity", 
+"@odata.context":"/redfish/v1/$metadata#Systems/Links/Members/$entity", 
 ~~~ 
 
 ##### Resource Identifier Property
 
 Resources in a response shall include a unique identifier property named "@odata.id". The value of the identifier property shall be the [unique identifier](#URIs) for the resource.
 
-Resource Identifiers shall be represented in JSON payloads as uri paths relative to the schema portion of the uri. That is, they shall always start with "/rest/".
+Resource Identifiers shall be represented in JSON payloads as uri paths relative to the schema portion of the uri. That is, they shall always start with "/redfish/".
 	
 The resource identifier is the canonical URL for the resource and can be used to retrieve or edit the resource, as appropriate.
 
@@ -897,12 +897,12 @@ For example, the following property represents the Reset action, defined in the 
 
 ~~~json
 	"#ComputerSystem.Reset": {
-    	"target":"/rest/v1/Systems/1/Actions/ComputerSystem.Reset",
+    	"target":"/redfish/v1/Systems/1/Actions/ComputerSystem.Reset",
 	   	 "ResetType@DMTF.AllowableValues": ["On","Off", "Reset"]
    	}
 ~~~
 
-Given this, the client could invoke a POST request to /rest/v1/Systems/1/Actions/ComputerSystem.Reset with the following body:
+Given this, the client could invoke a POST request to /redfish/v1/Systems/1/Actions/ComputerSystem.Reset with the following body:
 
 ~~~json
 {
@@ -932,7 +932,7 @@ A reference to a single resource is returned as a JSON object containing a singl
 {
 "Links" : {
 	"ManagedBy": { 
-		"@odata.id":"/rest/v1/Chassis/Encl1"
+		"@odata.id":"/redfish/v1/Chassis/Encl1"
 	}
 }
 ~~~
@@ -946,10 +946,10 @@ A reference to a collection of zero ore more related resources is returned as an
 "Links" : {
 	"Contains" : [
 		{
-			"@odata.id":"/rest/v1/Chassis/1"
+			"@odata.id":"/redfish/v1/Chassis/1"
 		},
 		{
-			"@odata.id":"/rest/v1/Chassis/Encl1"
+			"@odata.id":"/redfish/v1/Chassis/Encl1"
 		}
 	]
 }
@@ -992,8 +992,8 @@ A JSON object can be annotated with "@DMTF.ExtendedInfo" in order to specify obj
 
 ~~~json
 {
-    "@odata.context": "/rest/v1/$metadata#SessionService/Links/Sessions/Links/Members/$entity",
-    "@odata.id": "/rest/v1/SessionService/Sessions/Administrator1",
+    "@odata.context": "/redfish/v1/$metadata#SessionService/Links/Sessions/Links/Members/$entity",
+    "@odata.id": "/redfish/v1/SessionService/Sessions/Administrator1",
     "@odata.type": "#Session.0.94.0.Session",
     "Id": "Administrator1",
     "Name": "User Session",
@@ -1018,8 +1018,8 @@ An individual property within a JSON object can be annotated with extended infor
 
 ~~~json
 {
-    "@odata.context": "/rest/v1/$metadata/Sessions/Links/Members/$entity",
-    "@odata.id": "/rest/v1/Sessions/Administrator1",
+    "@odata.context": "/redfish/v1/$metadata/Sessions/Links/Members/$entity",
+    "@odata.id": "/redfish/v1/Sessions/Administrator1",
     "@odata.type": "#Session.<%= DocVersion %>.Session",
     "Id": "Administrator1",
     "Name": "User Session",
@@ -1070,7 +1070,7 @@ The context URL for a resource collection is of the form:
  *MetadataUrl*.#*Collection*[(*SelectList*)] 
 
 Where: 
-* *MetadataUrl* = the metadata url of the service (/rest/v1/$metadata)
+* *MetadataUrl* = the metadata url of the service (/redfish/v1/$metadata)
 * *Collection* = the collection resource. For contained resources this includes the path from the root collection or singleton resource to the containment property.
 * *SelectList* = comma-separated [list of properties](#select-list) included in the response if the response includes a subset of properties defined for the represented resources.
 
@@ -1624,7 +1624,7 @@ Such bound actions appear in the JSON payload as properties of the Oem type, nes
 "Actions": {
 	"OEM": {
 		"acme.v.v.v#acme.Ping": {
-			    "target":"/rest/v1/Systems/1/Actions/OEM/acme.Ping"
+			    "target":"/redfish/v1/Systems/1/Actions/OEM/acme.Ping"
 		    }
 		}
 	}
@@ -1837,7 +1837,7 @@ The client can continue to get information about the status by directly querying
 
 ### Timestamp Management
 
-The SPMA Service should support a resource that contains the current service time.  The property should be located in the "/rest" resource, called
+The SPMA Service should support a resource that contains the current service time.  The property should be located in the "/redfish" resource, called
 "Time" and should be an SPMA compliant [time string](#datetime-values).
 
 ```json
@@ -1848,7 +1848,7 @@ The SPMA Service should support a resource that contains the current service tim
 }
 ```
 
-* Services should support a Time property at "/rest/v1/Time"
+* Services should support a Time property at "/redfish/v1/Time"
 
 ### Resource Tree Stability
 
@@ -2046,13 +2046,13 @@ includes orphaned session timeout and number of simultaneous open sessions.
 
 ##### Login Sessions
 
-For functionality requiring multiple SPMA operations, a standard Login session is specified.  The URI used for session management is specified in the /rest object with the property "SessionService".
+For functionality requiring multiple SPMA operations, a standard Login session is specified.  The URI used for session management is specified in the /redfish resource with the property "SessionService".
 
 ```json
 {
     ...
     "SessionService": {
-        "@odata.id": "/rest/v1/SessionService"
+        "@odata.id": "/redfish/v1/SessionService"
     },
     ...
 }
@@ -2077,13 +2077,13 @@ The return JSON body includes a representation of the newly created session obje
     <operation> <uri> HTTP/1.1
     <header>
     <header>
-    Location: "/rest/v1/SessionService/Sessions/Administrator1"
+    Location: "/redfish/v1/SessionService/Sessions/Administrator1"
     X-Auth-Token: <token string>
     <header>
 
     {
-        "@odata.context": "/rest/v1/$metadata#SessionService/Links/Sessions/$entity",
-        "@odata.id": "/rest/v1/SessionService/Sessions/Administrator1",
+        "@odata.context": "/redfish/v1/$metadata#SessionService/Links/Sessions/$entity",
+        "@odata.id": "/redfish/v1/SessionService/Sessions/Administrator1",
 	"UserName": "<username>"
     } 
 
@@ -2283,3 +2283,4 @@ The file where the events are written, one or more messages per event should at 
 | Version | Date      | Description                             |
 | ---     | ---       | ---                                     |
 | 0.94.0  | 2015-13-1 | Initial merge of 0.91 and 0.92 versions |
+| 0.95.0  | 2015-3-3  | Near-final Chassis and ComputerSystem schemas. Introduction of referenceable (array) members and use for power metrics, thermal metrics. Introduction of SessionService. Added JSONSchemaFile to OData metadata, mockups. Miscellaneous clean-up. |

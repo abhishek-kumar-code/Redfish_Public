@@ -78,7 +78,7 @@ var staticFile = function(req, res, pathname) {
 }
 
 var mockupFile = function(req, res, pathname) {
-  var file = pathname.match(/\/rest\/v1\/(.*)$/)[1];
+  var file = pathname.match(/\/redfish\/v1\/(.*)$/)[1];
   fs.readFile(path.join(__dirname, file, 'index.html'), 'utf8', function(err, data) {
     if (err) {
       return notFound(req, res);
@@ -110,7 +110,7 @@ var server = http.createServer(function (req, res) {
     return redirect(req, res, '/redfish/v1/');
   }
 
-  if (!/\/rest\/v1\//.test(url.pathname)) {
+  if (!/\/redfish\/v1\//.test(url.pathname)) {
     return staticFile(req, res, url.pathname);
   }
 
