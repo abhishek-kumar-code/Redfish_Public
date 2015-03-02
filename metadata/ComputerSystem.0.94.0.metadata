@@ -113,8 +113,9 @@
         <Property Name="Boot" Type="ComputerSystem.Boot"  Nullable="false">
           <Annotation Term="OData.Description" String="This object contains the boot information for the current resource."/>
         </Property>
-        <Property Name="Bios" Type="ComputerSystem.Bios"  Nullable="false">
-          <Annotation Term="OData.Description" String="This object provides information about the System BIOS."/>
+        <Property Name="BiosVersion" Type="Edm.String">
+          <Annotation Term="OData.Description" String="The version of the system BIOS or primary system firmware."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the version string of the currently installed and running BIOS (for x86 systems).  For other systems, the value may contain a version string representing the primary system firmware."/>
         </Property>
         <Property Name="Processors" Type="ComputerSystem.Processors"  Nullable="false">
           <Annotation Term="OData.Description" String="This object describes the central processors of the system in general detail."/>
@@ -356,18 +357,6 @@
           <Annotation Term="OData.Description" String="The system will boot to the target specified in the BootSourceOverrideTarget until this property is set to Disabled."/>
         </Member>
       </EnumType>
-
-      <ComplexType Name="Bios">
-        <Annotation Term="DMTF.DynamicPropertyPatterns">
-          <Collection>
-            <Record>
-              <PropertyValue Property="Pattern" String="\\.[A-Za-z0-9]+$"/>
-              <PropertyValue Property="Type" String="Edm.String"/>
-            </Record>
-          </Collection>
-        </Annotation>
-        <Property Name="Current" Type="Firmware.FWVersion" Nullable="false"/>
-      </ComplexType>
 
       <ComplexType Name="Processors">
         <Property Name="Count" Type="Edm.Int64">
