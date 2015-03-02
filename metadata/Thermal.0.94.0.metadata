@@ -20,16 +20,16 @@
       <!-- This is the schema definition for the Thermal Metrics.  It represents the properties for Temperature and Cooling. -->
       <EntityType Name="Thermal" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition for the Thermal properties.  It represents the properties for Temperature and Cooling."/>
-        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a thermal metrics resource for an SPMA implementation."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a thermal metrics resource for a Redfish implementation."/>
         <NavigationProperty Name="Temperatures" Type="Collection(Thermal.Temperature)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is the definition for temperature sensors."/>
-          <Annotation Term="OData.LongDescription" String="These properties shall be the definition for temperature sensors for an SPMA implementation."/>
+          <Annotation Term="OData.LongDescription" String="These properties shall be the definition for temperature sensors for a Redfish implementation."/>
         </NavigationProperty>
         <NavigationProperty Name="Fans" Type="Collection(Thermal.Fan)" Nullable="false" ContainsTarget="True">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is the definition for fans."/>
-          <Annotation Term="OData.LongDescription" String="These properties shall be the definition for fans for an SPMA implementation."/>
+          <Annotation Term="OData.LongDescription" String="These properties shall be the definition for fans for a Redfish implementation."/>
           <Annotation Term="DMTF.ExpandResources"/>
         </NavigationProperty>
         <NavigationProperty Name="Redundancy" Type="Collection(Redundancy.Redundancy)" Nullable="false">

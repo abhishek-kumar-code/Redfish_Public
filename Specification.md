@@ -12,7 +12,7 @@ copyright: '2014-2015'
 
 # Foreword
 
-The Scalable Platform Management API was prepared by the Scalable Platform Management Forum of the DMTF.
+The Redfish Scalable Platform Management API ("Redfish") was prepared by the Scalable Platform Management Forum of the DMTF.
 
 DMTF is a not-for-profit association of industry members dedicated to promoting enterprise and systems management and interoperability. For information about the DMTF, see http://www.dmtf.org.
 
@@ -43,7 +43,7 @@ The DMTF acknowledges the following individuals for their contributions to this 
 * Paul Vancil - Dell Inc
 
 ## Scope
-The Scalable Platforms Management API (SPMA) is a new interface that uses RESTful interface semantics to access data defined in model format to perform out of band systems management.  It is suitable for a wide range of servers, from stand-alone servers to rack mount and bladed environments but scales equally well for large scale cloud environments.
+The Redfish Scalable Platforms Management API ("Redfish") is a new interface that uses RESTful interface semantics to access data defined in model format to perform out of band systems management.  It is suitable for a wide range of servers, from stand-alone servers to rack mount and bladed environments but scales equally well for large scale cloud environments.
 
 There are several out of band systems management standards (defacto and de jour) available in the industry.  They all either vary widely in implementation, were developed for single server embedded environments or have their roots in antiquated software modeling constructs.  There is no single industry standard that is simple to use, based on emerging programming standards, embedded friendly and capable of meeting large scale data center & cloud needs.
 
@@ -90,10 +90,10 @@ The following additional terms are used in this document.
 | Message        | A complete request or response, formatted in HTTP/HTPS.  The protocol, based on REST, is a request/response protocol where every Request should result in a Response.                                                                                                                                                                                                                                                                                                                           |
 | Operation      | The HTTP request methods which map generic CRUD (Create, Read, Update Delete) operation.  These are POST, GET, PUT/PATCH, HEAD and DELETE.                                                                                                                                                                                                                                                                                                                                                      |
 | OData          | The Open Data Protocol, as defined in [OData-Protocol](#OData-Protocol).                                                                                                                                                                                                                                                                                                                                                      |
-| SPMA Schema    | The Schema definitions for SPMA resources.  It is defined according to OData Schema notation that can be directly translated to a JSON Schema representation.                                                                                                                                                                                                                                                                                                                                                                                                           |
+| Redfish Schema    | The Schema definitions for Redfish resources.  It is defined according to OData Schema notation that can be directly translated to a JSON Schema representation.                                                                                                                                                                                                                                                                                                                                                                                                           |
 | Request        | A message from a Client to a Server.  It consists of a request line (which includes the Operation), request headers, an empty line and an optional message body.                                                                                                                                                                                                                                                                                                                                |
 | Resource       | A Resource is addressable by a URI and is able to receive and process messages. A Resource can be either an individual entity, or a collection that acts as a container for several other entities.                                                                                                                                                                                                                                                                                             |
-| Resource Tree  | A Resource Tree is a tree structure of JSON encoded resources accessible via a well-known starting URI.  A client may discover the resources available on an SPMA Service by following the resource links from the base of the tree. <br>**NOTE** for SPMA client implementation:  Although the resources are a tree, the references between resources may result in graph instead of a tree.  Clients traversing the resource tree must contain logic to avoid infinite loops.      |
+| Resource Tree  | A Resource Tree is a tree structure of JSON encoded resources accessible via a well-known starting URI.  A client may discover the resources available on a Redfish Service by following the resource links from the base of the tree. <br>**NOTE** for Redfish client implementation:  Although the resources are a tree, the references between resources may result in graph instead of a tree.  Clients traversing the resource tree must contain logic to avoid infinite loops.      |
 | Response       | A message from a Server to a Client in response to a request message.  It consists of a status line, response headers, an empty line and an optional message body.                                                                                                                                                                                                                                                                                                                              |
 | Subscription   | The act of connecting to an event service in order to receive events.                                                                                                                                                                                                                                                                                                                                                                                                                           |
 
@@ -115,13 +115,13 @@ The following additional abbreviations are used in this document.
 
 ## Overview
 
-The Scalable Platform Management API (SPMA) is a management standard using a data model representation inside of a hypermedia RESTful interface.  Because it is based on REST, SPMA is easier to use and implement than many other solutions.  Since it is model oriented, it is capable of expressing the relationships between components in modern systems as well as the semantics of the services and components within them.  It is also easily extensible.  By using a hypermedia approach to REST, SPMA can express a large variety of systems from multiple vendors.  By requiring JSON representation, a wide variety of resources can be created in a denormalized fashion not only to improve scalability, but the payload can be easily interpreted by most programming environments as well as being relatively intuitive for a human examining the data.  The model is exposed in terms of an interoperable OData Schema, with the payload of the messages being expressed in JSON following OData JSON conventions. The schema (available in both XML and JSON formats) includes annotations to facilitate automatic translation of the schema to JSON Schema. The ability to externally host the Schema definition of the resources in a machine-readable format allows the meta data to be associated with the data without encumbering SPMA services with the meta data, thus enabling more advanced client scenarios as found in many data center and cloud environments.    
+The Redfish Scalable Platform Management API ("Redfish") is a management standard using a data model representation inside of a hypermedia RESTful interface.  Because it is based on REST, Redfish is easier to use and implement than many other solutions.  Since it is model oriented, it is capable of expressing the relationships between components in modern systems as well as the semantics of the services and components within them.  It is also easily extensible.  By using a hypermedia approach to REST, Redfish can express a large variety of systems from multiple vendors.  By requiring JSON representation, a wide variety of resources can be created in a denormalized fashion not only to improve scalability, but the payload can be easily interpreted by most programming environments as well as being relatively intuitive for a human examining the data.  The model is exposed in terms of an interoperable OData Schema, with the payload of the messages being expressed in JSON following OData JSON conventions. The schema (available in both XML and JSON formats) includes annotations to facilitate automatic translation of the schema to JSON Schema. The ability to externally host the Schema definition of the resources in a machine-readable format allows the meta data to be associated with the data without encumbering Redfish services with the meta data, thus enabling more advanced client scenarios as found in many data center and cloud environments.    
 
 ### Principal Goals & Scope
 
-There are many principles and goals of SPMA as an architecture, a protocol and a data representation.  It is intended that this architecture support a wide variety of systems found in service today - from stand alone machines to racks of equipment found in cloud service environment. Extensibility is a key goal, as is forward compatibility and deterministic behavior.  Leveraging the protocols and standards widely accepted and used in environments today is a key strategy to achieve these goals.  Simplicity to the extent possible is another goal, achieved by making as few operations and as few instances as possible in the model. Matching the programming environments that are being widely adopted today is another goal. 
+There are many principles and goals of Redfish as an architecture, a protocol and a data representation.  It is intended that this architecture support a wide variety of systems found in service today - from stand alone machines to racks of equipment found in cloud service environment. Extensibility is a key goal, as is forward compatibility and deterministic behavior.  Leveraging the protocols and standards widely accepted and used in environments today is a key strategy to achieve these goals.  Simplicity to the extent possible is another goal, achieved by making as few operations and as few instances as possible in the model. Matching the programming environments that are being widely adopted today is another goal. 
 
-The following design tenets govern the design of the Scalable Platform Management API, with the key goals elaborated below:
+The following design tenets govern the design of the Redfish Scalable Platform Management API, with the key goals elaborated below:
 
 * RESTful interface using a JSON payload and entity data model
 * Separation of protocol from data model, allowing them to be revised independently
@@ -147,7 +147,7 @@ There are several reasons to define a RESTful interface:
 * It fits with our design principle of simplicity.
 * It is equally applicable to software application space as it is for embedded environments thus enabling convergence and sharing of code of components within the management ecosystem.
 * It is schema agnostic so adapts well to any modeling language.
-* By using it, SPMA can leverage existing security & discovery mechanisms in the industry. 
+* By using it, Redfish can leverage existing security & discovery mechanisms in the industry. 
 
 #### Follow OData Conventions
 
@@ -155,13 +155,13 @@ With the popularity of RESTful APIs, there are nearly as many RESTful interfaces
 
 OData defines a set of common RESTful conventions and markup which, if adopted, provides for interoperability between APIs.
 
-Adopting OData conventions for describing schema, url conventions, and naming and structure of common properties in a JSON payload, not only encapsulate best practices for RESTful APIs but further enables SPMA services to be consumed by a growing ecosystem of generic client libraries, applications, and tools.
+Adopting OData conventions for describing schema, url conventions, and naming and structure of common properties in a JSON payload, not only encapsulate best practices for RESTful APIs but further enables Redfish services to be consumed by a growing ecosystem of generic client libraries, applications, and tools.
 
 #### Model Oriented
 
 Bitwise prior solutions (like IPMI) have difficulty showing relationships.  Model orientation solves this.  But current models that have evolved over time have become extremely complex, requiring many IOs to gather information.  For that reason, as well as the complexity of their protocols and operations, they have received little implementation attention.  Some have their roots in modeling multiple domains (printers, switches, software, etc).  Additionally the expression of meta data in those models have only been adopted by niche markets.   
 
-The SPMA model is built for managing systems. All resources are defined in OData Schema and represented in JSON format. OData is an industry standard that encapsulates best practices for RESTful services and provides interoperability across services of different types. JSON is being widely adopted in multiple disciplines and has a large number of tools and programming languages that accelerate development when adopting these approaches. 
+The Redfish model is built for managing systems. All resources are defined in OData Schema and represented in JSON format. OData is an industry standard that encapsulates best practices for RESTful services and provides interoperability across services of different types. JSON is being widely adopted in multiple disciplines and has a large number of tools and programming languages that accelerate development when adopting these approaches. 
 
 #### Separation of Protocol from Data Model
 
@@ -169,7 +169,7 @@ The protocol operations are specified independently of the data model.  The prot
 
 #### Hypermedia API Service Endpoint
 
-Like other hypermedia APIs, SPMA has a single service endpoint URI and all other resources are accessible via opaque URIs referenced from the root.  Any resource discovered through links found by accessing the root service or any service or resource referenced using references from the root service will conform to the same version of the protocol supported by the root service. 
+Like other hypermedia APIs, Redfish has a single service endpoint URI and all other resources are accessible via opaque URIs referenced from the root.  Any resource discovered through links found by accessing the root service or any service or resource referenced using references from the root service will conform to the same version of the protocol supported by the root service. 
 
 Note that the ServiceRoot Schema places requirements on the last segment of the path for the URIs discoverable through the service root. 
 
@@ -181,11 +181,11 @@ Specifically, this document is intended to enable an open, industry-standard sol
 
 #### Limitations
 
-SPMA does not guarantee that client software will never need to be updated.  Examples that may require updates include accommodation of new types of systems or their components, data model updates, and so on.  System optimization for an application will always require architectural oversight.  However, SPMA does attempt to minimize instances of forced upgrades to clients using Schemas, strict versioning and forward compatibility rules and through separation of the protocol from the data model.
+Redfish does not guarantee that client software will never need to be updated.  Examples that may require updates include accommodation of new types of systems or their components, data model updates, and so on.  System optimization for an application will always require architectural oversight.  However, Redfish does attempt to minimize instances of forced upgrades to clients using Schemas, strict versioning and forward compatibility rules and through separation of the protocol from the data model.
 
-SPMA does not enable a client to read a Resource Tree and write it to another SPMA Service.  This is not possible as it is a hypermedia API. Only the root object has a well known URI. The resource topology reflects the topology of the system and devices it represents.  Consequently, different server or device types will result in differently shaped resource trees, potentially even for identical systems from the same manufacturer. 
+Redfish does not enable a client to read a Resource Tree and write it to another Redfish Service.  This is not possible as it is a hypermedia API. Only the root object has a well known URI. The resource topology reflects the topology of the system and devices it represents.  Consequently, different server or device types will result in differently shaped resource trees, potentially even for identical systems from the same manufacturer. 
 
-Additionally, not all SPMA resources are simple read/write resources.  Implementations may follow other interaction patterns discussed later.  As an example, user credentials or certificates cannot simply be read from one service and transplanted to another.  Another example is the use of Setting Data instead of writing to the same resource that was read from.
+Additionally, not all Redfish resources are simple read/write resources.  Implementations may follow other interaction patterns discussed later.  As an example, user credentials or certificates cannot simply be read from one service and transplanted to another.  Another example is the use of Setting Data instead of writing to the same resource that was read from.
 
 There is no raw/pass-thru interface as part of the standard.
 
@@ -211,35 +211,35 @@ The Section on [Eventing](#eventing) further in this specification discusses the
 
 Operations can be divided into two sets: intrinsic and extrinsic.  Intrinsic operations, often referred to as CRUD, are mapped to [HTTP methods](#methods).  The protocol also has the ability to support extrinsic operations -- those operations that do not map easily to CRUD.  Examples of extrinsic would be items that collectively would be better performed if done as a set (for scalability, ease of interface, server side semantic preservation or similar reasons) or operations that have no natural mapping to CRUD operations. One examples is system reset.  It is possible to combine multiple operations into a single action.  A system reset could be modeled as an update to state, but semantically the client is actually requesting a state change and not simply changing the value in the state.
 
-In SPMA, these extrinsic operations are called **actions** and are discussed in detail in different parts of this specification.
+In Redfish, these extrinsic operations are called **actions** and are discussed in detail in different parts of this specification.
 
-The SPMA Schema defines certain standard actions associated with [common SPM resources](#common-spma-resources).  For these standard actions, the SPMA Schema contains the normative language on the behavior of the action.  OEM extensions are also allowed to the [schema](#schema-extensibility), including defining [actions](#custom-actions) for existing resources.
+The Redfish Schema defines certain standard actions associated with [common SPM resources](#common-Redfish-resources).  For these standard actions, the Redfish Schema contains the normative language on the behavior of the action.  OEM extensions are also allowed to the [schema](#schema-extensibility), including defining [actions](#custom-actions) for existing resources.
 
 #### Service Entry Point Discovery
 
-While the service itself is at a well-known URI, the service host must be discovered. SPMA, like UPnP, uses SSDP for discovery. SSDP is supported in a wide variety of devices, such as printers.  It is simple, lightweight, IPv6 capable and suitable for implementation in embedded environments.  SPMA is investigating additional service entry point discovery (e.g. DHCP-based) approaches.
+While the service itself is at a well-known URI, the service host must be discovered. Redfish, like UPnP, uses SSDP for discovery. SSDP is supported in a wide variety of devices, such as printers.  It is simple, lightweight, IPv6 capable and suitable for implementation in embedded environments.  Redfish is investigating additional service entry point discovery (e.g. DHCP-based) approaches.
 
 For more information, see the section on [Discovery](#discovery-1)
 
 #### Remote Access Support
 
-A wide variety of remote access and redirection services are supported in this architecture.  Critical to out-of-band environments are mechanisms to support Serial Console access, Keyboard Video and Mouse re-direction (KVM-IP), Command Shell (i.e. Command Line interface) and remote Virtual Media.  Support for Serial Console, Command Shell, KVM-IP and Virtual Media are all encompassed in this standard and are expressed in the SPMA Schema.  This standard does not define the protocols or access mechanisms for accessing those devices and services.  The SPMA Schema provides for the representation and configuration of those services, establishment of connections to enable those services and the operational status of those services.  However, the specification of the protocols themselves are outside the scope of this specification.
+A wide variety of remote access and redirection services are supported in this architecture.  Critical to out-of-band environments are mechanisms to support Serial Console access, Keyboard Video and Mouse re-direction (KVM-IP), Command Shell (i.e. Command Line interface) and remote Virtual Media.  Support for Serial Console, Command Shell, KVM-IP and Virtual Media are all encompassed in this standard and are expressed in the Redfish Schema.  This standard does not define the protocols or access mechanisms for accessing those devices and services.  The Redfish Schema provides for the representation and configuration of those services, establishment of connections to enable those services and the operational status of those services.  However, the specification of the protocols themselves are outside the scope of this specification.
 
 ### Security
 
-The challenge with security in a remote interface that is programmatic is to ensure both the interfaces used to interact with SPMA and the data being exchanged are secured. This means designing the proper security control mechanisms around the interfaces and securing the channels used to exchange the data. As part of this, specific behaviors are to be put in place including defining and using a minimum levels of encryption for communication channels etc.
+The challenge with security in a remote interface that is programmatic is to ensure both the interfaces used to interact with Redfish and the data being exchanged are secured. This means designing the proper security control mechanisms around the interfaces and securing the channels used to exchange the data. As part of this, specific behaviors are to be put in place including defining and using a minimum levels of encryption for communication channels etc.
 
 ## Protocol Details
 
-The Scalable Platform Management API is based on REST and follows OData conventions for interoperability, as defined in [OData-Protocol](#OData-Protocol), JSON payloads, as defined in [OData-JSON](#OData-JSON), and a machine-readable representation of schema, as defined in [OData-Schema](#OData-CSDL). The schemas include annotations to enable direct translation to JSON Schema for validation and consumption by tools supporting JSON Schema. Following these common standards and conventions increases interoperability and enables leveraging of existing tool chains.
+The Redfish Scalable Platform Management API is based on REST and follows OData conventions for interoperability, as defined in [OData-Protocol](#OData-Protocol), JSON payloads, as defined in [OData-JSON](#OData-JSON), and a machine-readable representation of schema, as defined in [OData-Schema](#OData-CSDL). The schemas include annotations to enable direct translation to JSON Schema for validation and consumption by tools supporting JSON Schema. Following these common standards and conventions increases interoperability and enables leveraging of existing tool chains.
  
-SPMA follows the OData minimal conformance level for clients consuming minimal metadata.
+Redfish follows the OData minimal conformance level for clients consuming minimal metadata.
 
-Throughout this document, we refer to SPMA as having a protocol mapped to a data model.  More accurately, HTTP is the application protocol that will be used to transport the messages and TCP/IP is the transport protocol. The RESTful interface is a mapping to the message protocol.  For simplicity though, we will refer to the RESTful mapping to HTTP, TCP/IP and other protocol, transport and messaging layer aspects as the SPMA protocol. 
+Throughout this document, we refer to Redfish as having a protocol mapped to a data model.  More accurately, HTTP is the application protocol that will be used to transport the messages and TCP/IP is the transport protocol. The RESTful interface is a mapping to the message protocol.  For simplicity though, we will refer to the RESTful mapping to HTTP, TCP/IP and other protocol, transport and messaging layer aspects as the Redfish protocol. 
 
-The SPMA protocol is designed around a web service based interface model, and designed for network and interaction efficiency for both user interface (UI) and automation usage. The interface is specifically designed around the REST pattern semantics.
+The Redfish protocol is designed around a web service based interface model, and designed for network and interaction efficiency for both user interface (UI) and automation usage. The interface is specifically designed around the REST pattern semantics.
 
-[HTTP methods](#http-methods) are used by the SPMA protocol for common CRUD (Create, Read, Update, Delete) operations and to retrieve header information.
+[HTTP methods](#http-methods) are used by the Redfish protocol for common CRUD (Create, Read, Update, Delete) operations and to retrieve header information.
 
 [Actions](#actions) are used for expanding operations beyond CRUD type operations, but should be limited in use.
 
@@ -253,13 +253,13 @@ Some operations may take longer than required for synchronous return semantics. 
 
 ### Use of HTTP
 	
-HTTP is ideally suited to a RESTful interface. This section describes how HTTP is used in the SPMA interface and what constraints are added on top of HTTP to assure interoperability of SPMA compliant implementations.
+HTTP is ideally suited to a RESTful interface. This section describes how HTTP is used in the Redfish interface and what constraints are added on top of HTTP to assure interoperability of Redfish compliant implementations.
 
-* An SPMA interface shall be exposed through a web service endpoint implemented using Hypertext Transfer Protocols, version 1.1 ([RFC2616](#RFC2616)).
+* A Redfish interface shall be exposed through a web service endpoint implemented using Hypertext Transfer Protocols, version 1.1 ([RFC2616](#RFC2616)).
 
 #### URIs
 
-A URI is used to identify a resource, including the base service and all SPMA resources.
+A URI is used to identify a resource, including the base service and all Redfish resources.
 
 * A URI shall be a unique identifier to a resource.
 * A URI shall be treated by the client as opaque, and thus should not be attempted to be understood or deconstructed by the client
@@ -270,7 +270,7 @@ To begin operations, a client must know the URI for a resource.
 
 The base resource URI is well known and is based on the protocol version.  Discovering the URIs to additional resources is done through observing the associated resource links returned in previous responses. This type of API that is consumed by navigating URIs returned by the service is known as a Hypermedia API.
 
-The URI is the primary unique identifier of resources.  SPMA considers 3 parts of the URI as described in [RFC3986](#RFC3986). 
+The URI is the primary unique identifier of resources.  Redfish considers 3 parts of the URI as described in [RFC3986](#RFC3986). 
 
 The first part includes the scheme and authority portions of the URI. The second part includes the root service and version.  The third part is a unique resource identifier.
 
@@ -282,7 +282,7 @@ For example, in the following URL:
 * The second part is the root service and version (/redfish/v1).
 * The third part is the unique resource path (Systems/1).
 
-The scheme and authority part of the URI shall not be considered part of the unique _identifier_ of the resource. This is due to redirection capabilities and local operations which may result in the variability of the connection portion.  The remainder of the URI (the service and resource paths) is what _uniquely identifies_ the resource, and this is what is returned in all SPMA payloads.  
+The scheme and authority part of the URI shall not be considered part of the unique _identifier_ of the resource. This is due to redirection capabilities and local operations which may result in the variability of the connection portion.  The remainder of the URI (the service and resource paths) is what _uniquely identifies_ the resource, and this is what is returned in all Redfish payloads.  
 
 * The unique identifier part of a URI shall be unique within the implementation.
 
@@ -296,7 +296,7 @@ URIs, as described in [RFC3986](#RFC3986), may also contain a query (?query) and
 
 #### HTTP Methods
 
-An attractive feature of the RESTful interface is the very limited number of operations which are supported. The following table describes the general mapping of operations to HTTP methods.  If the value in the column entitled "required" has the value "yes" then the HTTP method shall be supported by an SPMA interface.
+An attractive feature of the RESTful interface is the very limited number of operations which are supported. The following table describes the general mapping of operations to HTTP methods.  If the value in the column entitled "required" has the value "yes" then the HTTP method shall be supported by a Redfish interface.
 
 | HTTP Method | Interface Semantic                       | Required  |
 | ---         | ---                                      | ---       |
@@ -311,9 +311,9 @@ Other HTTP methods are not allowed and shall receive a [405](#status-405) respon
 
 #### HTTP Redirect
 
-HTTP redirect allows a service to redirect a request to another URL. Among other things, this enables SPMA resources to alias areas of the data model.
+HTTP redirect allows a service to redirect a request to another URL. Among other things, this enables Redfish resources to alias areas of the data model.
 
-* All SPMA Clients shall correctly handle HTTP redirect. 
+* All Redfish Clients shall correctly handle HTTP redirect. 
 
 NOTE: Refer to the [Security](#security) section for security implications of HTTP Redirect
 
@@ -325,7 +325,7 @@ In HTTP messages the media type is specified in the Content-Type header. A clien
 
 * All resources shall be made available using the JSON media type
   "application/json".
-* SPMA services shall make every resource available in a representation based on JSON, as specified in [RFC4627](#RFC4627). Receivers shall not reject a message because it is encoded in JSON, and shall offer at least one response representation based on JSON. An implementation may offer additional representations using non-JSON media types.
+* Redfish services shall make every resource available in a representation based on JSON, as specified in [RFC4627](#RFC4627). Receivers shall not reject a message because it is encoded in JSON, and shall offer at least one response representation based on JSON. An implementation may offer additional representations using non-JSON media types.
 
 Clients may request compression by specifying an [Accept-Encoding header](#request-headers) in the request. 
 * Responses to GET requests shall only be compressed if requested by the client. 
@@ -333,7 +333,7 @@ Clients may request compression by specifying an [Accept-Encoding header](#reque
 
 #### ETags
 
-In order to reduce the cases of unnecessary RESTful accesses to resources, the SPMA Service should support associating a separate ETag with each resource.
+In order to reduce the cases of unnecessary RESTful accesses to resources, the Redfish Service should support associating a separate ETag with each resource.
   
 * Implementations should support returning [ETag properties](#etag-property) for each resource.
 * Implementations should support returning ETag headers for each response that represents a single resource.  Implementations shall support returning ETag headers for certain requests and responses as listed in the [Security](#security) section.
@@ -349,8 +349,8 @@ If a client PUTs or PATCHes a resource, it should include an ETag in the HTTP If
 
 In addition to returning the ETag property on each resource,
 
-* An SPMA Service should return the ETag header on client PUT/POST/PATCH
-* An SPMA Service should return the ETag header on a GET of an individual resource
+* A Redfish Service should return the ETag header on client PUT/POST/PATCH
+* A Redfish Service should return the ETag header on a GET of an individual resource
 
 The format of the ETag header is:
 
@@ -360,9 +360,9 @@ The format of the ETag header is:
 
 The protocol version is separate from the version of the resources or the version of the schema supported by them.
 
-Each version of the SPMA protocol is strongly typed.  This is accomplished using the URI of the SPMA service in combination with the resource obtained at that URI, called the ServiceRoot. 
+Each version of the Redfish protocol is strongly typed.  This is accomplished using the URI of the Redfish service in combination with the resource obtained at that URI, called the ServiceRoot. 
 
-The root URI for this version of the SPMA protocol shall be "/redfish/v1".
+The root URI for this version of the Redfish protocol shall be "/redfish/v1".
 
 While the major version of the protocol is represented in the URI, the major version, minor version and errata version of the protocol are represented in the Version property of the ServiceRoot resource, as defined in the Schema for that resource.  The protocol version is a string of the form: 
 
@@ -378,15 +378,15 @@ Any resource discovered through links found by accessing the root service or any
 
 ### Requests
 
-This section describes the requests that can be sent to SPMA services.
+This section describes the requests that can be sent to Redfish services.
 
 #### Request Headers
 
-HTTP defines headers that can be used in request messages. The following table defines those headers and their requirements for SPMA services.
+HTTP defines headers that can be used in request messages. The following table defines those headers and their requirements for Redfish services.
 
-* SPMA services shall understand and be able to process the headers in the following table as defined by the HTTP 1.1 specification if the value in the Required column is set to "Yes".
-* SPMA services shall understand and be able to process the headers in the following table as defined by the HTTP 1.1 specification if the value in the Required column is set to "Conditional" under the conditions noted in the description.
-* SPMA services should understand and be able to process the headers in the following tables as defined by the HTTP 1.1 specification if the value in the Required column is set to "No".  
+* Redfish services shall understand and be able to process the headers in the following table as defined by the HTTP 1.1 specification if the value in the Required column is set to "Yes".
+* Redfish services shall understand and be able to process the headers in the following table as defined by the HTTP 1.1 specification if the value in the Required column is set to "Conditional" under the conditions noted in the description.
+* Redfish services should understand and be able to process the headers in the following tables as defined by the HTTP 1.1 specification if the value in the Required column is set to "No".  
 
 | Header          | Required    | Supported Values                      | Description                                                                                                                                                                                                                                                                                                             |
 | --------        | ---         | -----------------                     | ------------                                                                                                                                                                                                                                                                                                            |
@@ -400,13 +400,13 @@ HTTP defines headers that can be used in request messages. The following table d
 | Authorization   | Conditional          | [RFC 2617, Section 2][2617-2]         | Required for [Basic Authorization](#basic-auth)                                                                                                                                                                                                                                                                                  
 | User-Agent      | Yes         | [RFC 2616, Section 14.43][2616-14.43] | Required for tracing product tokens and their version.  Multiple product tokens may be listed.                                                                                                                                                                                                                          
 | Host            | Yes         | [RFC 2616, Section 14.23][2616-14.23] | Required to allow support of multiple origin hosts at a single IP address.                                                                                                                                                                                                                                              
-| Origin          | Yes         | [W3C CORS, Section 5.7][cors-5.7]     | Used to allow web applications to consume SPMA service while preventing CSRF attacks.                                                                                                                                                                                                                                
+| Origin          | Yes         | [W3C CORS, Section 5.7][cors-5.7]     | Used to allow web applications to consume Redfish service while preventing CSRF attacks.                                                                                                                                                                                                                                
 | Via             | No          | [RFC 2616, Section 14.45][2616-14.45] | Indicates network hierarchy and recognizes message loops. Each pass inserts its own VIA.                                                                                                                                                                                                                                
 | Max-Forwards    | No          | [RFC 2616, Section 14.31][2616-14.31] | Limits gateway and proxy hops. Prevents messages from remaining in the network indefinitely.                                                                                                                                                                                                                        |
 | If-Match        | Conditional | [RFC 2616, Section 14.31][2616-14.31] | If-Match shall be supported for Atomic requests on AccountService objects.  If-Match shall be supported on requests for resources for which the service returns ETags.
 | If-None-Match   | No          | [RFC 2616, Section 14.31][2616-14.31] | If this HTTP header is present, the service will only return the requested resource if the current ETag of that resource does not match the ETag sent in this header.  If the ETag specified in this header matches the resource's current ETag, the status code returned from the GET will be [304](#status-304).
 
-* SPMA services shall understand and be able to process the headers in the following table as defined by this specification if the value in the Required column is set to "yes" .
+* Redfish services shall understand and be able to process the headers in the following table as defined by this specification if the value in the Required column is set to "yes" .
 
 | Header          | Required    | Supported Values                      | Description                                                                                                                                                                                                                                                                                                             |
 | --------        | ---         | -----------------                     | ------------                                                                                                                                                                                                                                                                                                            |
@@ -431,19 +431,19 @@ The GET method is used to retrieve a representation of a resource.  That represe
   
 ##### Service Root Request
 
-The root URL for SPMA version 1 services shall be "/redfish/v1".
+The root URL for Redfish version 1 services shall be "/redfish/v1".
 
-Additionally, the latest supported SPMA service shall be aliased at "/redfish". In this case the endpoint at "/redfish" may be an HTTP redirect to "/redfish/v1".
+Additionally, the latest supported Redfish service shall be aliased at "/redfish". In this case the endpoint at "/redfish" may be an HTTP redirect to "/redfish/v1".
 
 The root URL for the service returns a RootService resource as defined by this specification.
 
 ##### Metadata Document Request
 
-SPMA services shall expose a [metadata document](#service-metadata) describing the service at the "/redfish/v1/$metadata" resource. This metadata document describes the resources and collections available at the root, and references additional metadata documents describing the full set of resource types exposed by the service.
+Redfish services shall expose a [metadata document](#service-metadata) describing the service at the "/redfish/v1/$metadata" resource. This metadata document describes the resources and collections available at the root, and references additional metadata documents describing the full set of resource types exposed by the service.
 
 ##### OData Service Document Request
 
-SPMA services shall expose an [OData Service Document](#odata-service-document), at the "/redfish/v1/odata" resource. This service document provides a standard format for enumerating the resources exposed by the service, enabling generic hypermedia-driven OData clients to navigate to the resources of the service.
+Redfish services shall expose an [OData Service Document](#odata-service-document), at the "/redfish/v1/odata" resource. This service document provides a standard format for enumerating the resources exposed by the service, enabling generic hypermedia-driven OData clients to navigate to the resources of the service.
 
 ##### Resource Retrieval Requests
 
@@ -592,11 +592,11 @@ SPA defines four types of responses:
 
 #### Response Headers
 
-HTTP defines headers that can be used in response messages.  The following table defines those headers and their requirements for SPMA services.
+HTTP defines headers that can be used in response messages.  The following table defines those headers and their requirements for Redfish services.
 
-* SPMA services shall be able to return the headers in the following table as defined by the HTTP 1.1 specification if the value in the Required column is set to "yes" .
-* SPMA services should be able to return the headers in the following tables as defined by the HTTP 1.1 specification if the value in the Required column is set to "no".  
-* SPMA clients shall be able to understand and be able to process all of the headers in the following table as defined by the HTTP 1.1. specification.
+* Redfish services shall be able to return the headers in the following table as defined by the HTTP 1.1 specification if the value in the Required column is set to "yes" .
+* Redfish services should be able to return the headers in the following tables as defined by the HTTP 1.1 specification if the value in the Required column is set to "no".  
+* Redfish clients shall be able to understand and be able to process all of the headers in the following table as defined by the HTTP 1.1. specification.
 
 | Header                      | Required | Supported Values                      | Description                                                                                                                                                                                                                                                                                                             |
 | --------                    | ---      | -----------------                     | ------------                                                                                                                                                                                                                                                                                                            |
@@ -616,7 +616,7 @@ HTTP defines headers that can be used in response messages.  The following table
 | WWW-Authenticate            | Yes      | [RFC 2617][2617]                      | Required for Basic and other optional authentication mechanisms. See the [Security][#Security] section for details.                                                                                                                                                                                                     |
 
 
-* SPMA services shall understand and be able to process the headers in the following table as defined by this specification if the value in the Required column is set to "yes".
+* Redfish services shall understand and be able to process the headers in the following table as defined by this specification if the value in the Required column is set to "yes".
 
 
 | Header       | Required  | Supported Values             | Description                                                                                                |
@@ -650,7 +650,7 @@ The following table lists some of the common HTTP status codes. Other codes may 
 * Clients shall understand and be able to process the status codes in the following table as defined by the HTTP 1.1 specification and constrained by additional requirements defined by this specification. 
 * Services shall respond with these status codes as appropriate.
 * Exceptions from operations shall be mapped to HTTP status codes.
-* SPMA services should not return the status code 100. Using the HTTP protocol for a multi-pass data transfer should be avoided, except upload of extremely large data.
+* Redfish services should not return the status code 100. Using the HTTP protocol for a multi-pass data transfer should be avoided, except upload of extremely large data.
 
 | HTTP Status Code                                             | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | ---                                                          | ---                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
@@ -680,7 +680,7 @@ The following table lists some of the common HTTP status codes. Other codes may 
 Metadata describes resources, collections, capabilities and service-dependent behavior to generic consumers, including OData client tools and applications with no specific understanding of this specification. Clients are not required to request metadata if they already have sufficient understanding of the target service; for example, to request and interpret a JSON representation of a resource defined in this specification. 
 
 ##### Service Metadata
-The service metadata describes top-level resources and resource types of the service according to [OData-Schema](#OData-CSDL). The SPMA Service Metadata is represented as an XML document with a root element named "Edmx", defined in the http://docs.oasis-open.org/odata/ns/edmx" namespace, and with an OData Version attribute equal to "4.0".
+The service metadata describes top-level resources and resource types of the service according to [OData-Schema](#OData-CSDL). The Redfish Service Metadata is represented as an XML document with a root element named "Edmx", defined in the http://docs.oasis-open.org/odata/ns/edmx" namespace, and with an OData Version attribute equal to "4.0".
 
 ~~~xml
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
@@ -726,7 +726,7 @@ The metadata document may reference additional schema documents describing OEM-s
 ~~~
 
 ###### Annotations
-The service can annotate sets, types, actions and parameters with SPMA-defined or custom annotation terms. These annotations are typically in a separate Annotations file referenced from the service metadata document using the IncludeAnnotations directive. The alias of the namespace containing system annotations shall be "Annotations".
+The service can annotate sets, types, actions and parameters with Redfish-defined or custom annotation terms. These annotations are typically in a separate Annotations file referenced from the service metadata document using the IncludeAnnotations directive. The alias of the namespace containing system annotations shall be "Annotations".
 
 ~~~xml
 <edmx:Reference Uri="http://service/metadata/Service.Annotations">
@@ -840,7 +840,7 @@ All resources in a response shall include a type property named "@odata.type". T
  **#*Namespace*.*TypeName*
  
 Where: 
-* *Namespace* = The full namespace name of the schema in which the type is defined. For SPMA resources this will be the versioned namespace name. 
+* *Namespace* = The full namespace name of the schema in which the type is defined. For Redfish resources this will be the versioned namespace name. 
 * *TypeName* = The name of the type of the resource.
 	
 The client may issue a GET request to this URL using a content type of `application/xml` in order to retrieve a document containing the [definition of the resource](#resource-definition).
@@ -884,7 +884,7 @@ Actions are represented by a property nested under "Actions" whose name is the u
   **#*NamespaceAlias*.*ActionName*
  
 Where: 
-* *NamespaceAlias* = The namespace alias used in the reference to the schema in which the action is defined. For SPMA resources this shall be the version-independent namespace alias. 
+* *NamespaceAlias* = The namespace alias used in the reference to the schema in which the action is defined. For Redfish resources this shall be the version-independent namespace alias. 
 * *ActionName* = The name of the action
 
 The client may issue a GET request to this URL using a content type of `application/xml` in order to retrieve the schema document containing the [definition of the action](#resource-actions).
@@ -1174,7 +1174,7 @@ The message registry approach has advantages for internationalization (since the
 
 ## Data Model & Schema
 
-One of the key tenants of the SPMA interface is the separation of protocol and data model.  This section describes common data model, resource, and SPMA Schema requirements.
+One of the key tenants of the Redfish interface is the separation of protocol and data model.  This section describes common data model, resource, and Redfish Schema requirements.
 
 * Each resource shall be strongly typed according to a [resource type definition](#resource-type-definition). The type shall be defined in a [schema document](#schema-documents) and identified by a unique [type identifier](#type-identifier).
 
@@ -1213,7 +1213,7 @@ NOTE: Refer to the [Security](#security) section for security implications of Da
 
 ### Common Naming Conventions
 
-The SPMA interface is intended to be easily readable and intuitive.  Thus, consistency helps the consumer who is unfamiliar with a newly discovered property understand its use.  While this is no substitute for the normative information in the specification and schema, the following rules help with readability and client usage. 
+The Redfish interface is intended to be easily readable and intuitive.  Thus, consistency helps the consumer who is unfamiliar with a newly discovered property understand its use.  While this is no substitute for the normative information in the specification and schema, the following rules help with readability and client usage. 
 
 Resource Name, Property Names, and constants such as Enumerations shall be Pascal-cased
 * The first letter of each word shall be upper case with spaces between words shall be removed  (eg PowerState, SerialNumber.)
@@ -1236,11 +1236,11 @@ For attributes that have units, or other special meaning, the unit identifier sh
 
 ### Localization Considerations
 
-The SPMA architecture supports localized strings but does not impose any specific requirement for localization upon services.  However, current market forces seem to require localization as necessary (e.g. schemas).
+The Redfish architecture supports localized strings but does not impose any specific requirement for localization upon services.  However, current market forces seem to require localization as necessary (e.g. schemas).
 
-Schema-supplied display strings may be localized as necessary, but a Schema file may only contain one language.  Alternate language schemas may be published and available to SPMA clients, but need not be provided via the SPMA schema store. 
+Schema-supplied display strings may be localized as necessary, but a Schema file may only contain one language.  Alternate language schemas may be published and available to Redfish clients, but need not be provided via the Redfish schema store. 
 
-Property names defined within an SPMA schema are never localized. User-supplied string-valued property values such as an asset tag may be localized. Localizable string valued properties should annotated with the [IsLanguageDependent annotation term](#language-dependent-property-values).
+Property names defined within a Redfish schema are never localized. User-supplied string-valued property values such as an asset tag may be localized. Localizable string valued properties should annotated with the [IsLanguageDependent annotation term](#language-dependent-property-values).
 
 ### Schema Definition
 
@@ -1248,7 +1248,7 @@ Individual resources and their dependent types and actions are defined within a 
 
 #### Common Annotations
 
-All SPMA types and properties shall include [description](#description) and [long description](#long-description) annotations. 
+All Redfish types and properties shall include [description](#description) and [long description](#long-description) annotations. 
 
 ##### Description
 
@@ -1318,7 +1318,7 @@ The Schema element is a child of the `DataServices` element, which is a child of
 
 Resource types are defined within a [namespace](#namespace-definitions) using `EntityType` elements. The `Name` attribute specifies the name of the resource and the `BaseType` specifies the base type, if any.
 
-SPMA resources derive from a common Resource base type named "Resource" in the Resource.<%= DocVersion %> namespace. 
+Redfish resources derive from a common Resource base type named "Resource" in the Resource.<%= DocVersion %> namespace. 
 
 The EntityType contains the [property](#resource-properties) and [navigation property](#reference-properties) elements that define the resource, as well as annotations describing the resource.
 
@@ -1365,7 +1365,7 @@ Type type of a property is specified by the `Type` attribute. The value of the t
 
 Primitive types are prefixed with the "Edm" namespace prefix. 
 
-SPMA services support the following primitive types:
+Redfish services support the following primitive types:
 
 | Type               | Meaning                                                               |
 | ---                | ---                                                                   |
@@ -1519,7 +1519,7 @@ All navigation properties shall include [Description](#description) and [LongDes
 
 ##### Expanded References
 
-Navigation properties in an SPMA JSON payload are expanded to include the [related resource id](#reference-to-a-single-related-resource) or [collection of related resource ids](#array-of-references-to-related-resources). This behavior is expressed using the ExpandReferences annotation.
+Navigation properties in a Redfish JSON payload are expanded to include the [related resource id](#reference-to-a-single-related-resource) or [collection of related resource ids](#array-of-references-to-related-resources). This behavior is expressed using the ExpandReferences annotation.
 
 ~~~xml
 		<Annotation Term="DMTF.ExpandReferences"/>
@@ -1570,7 +1570,7 @@ The first parameter is called the "binding parameter" and specifies the resource
 
 #### Resource Extensibility
 
-Vendors can define additional [properties](#Property-Extensions), links, and [actions](#Custom-Actions) for common SPMA resources using the OEM property on resources, links, and actions. 
+Vendors can define additional [properties](#Property-Extensions), links, and [actions](#Custom-Actions) for common Redfish resources using the OEM property on resources, links, and actions. 
 
 While the information and semantics of these extensions are outside of the standard, the schema representing the data, the resource itself, and the semantics around the protocol shall conform to the requirements in this specification.
 
@@ -1632,7 +1632,7 @@ Such bound actions appear in the JSON payload as properties of the Oem type, nes
 ```
 ##### Custom Annotations
 
-This specification defines a set of common annotations for extending the definition of resource types used by SPMA. In addition, services may define custom annotations.
+This specification defines a set of common annotations for extending the definition of resource types used by Redfish. In addition, services may define custom annotations.
 
 Services may apply annotations to resources in order to provide service-specific information about the type, such as whether the service supports modifications of particular properties.
 
@@ -1640,9 +1640,9 @@ Services can apply annotations to existing resources where those resources don't
 
 Because [service annotations](#annotations) may be applied to existing resource definitions, they are generally specified in a service-specific metadata document referenced by the [service metadata](#service-metadata).
 
-### Common SPMA Resource Properties
+### Common Redfish Resource Properties
 
-This section contains a set of common properties across all SPMA resources. The property names in this section shall not be used for any other purpose, even if they are not implemented in a particular resource.
+This section contains a set of common properties across all Redfish resources. The property names in this section shall not be used for any other purpose, even if they are not implemented in a particular resource.
 
 Common properties are defined in a the base Resource.<%= DocVersion %>.Resource schema.
 
@@ -1660,7 +1660,7 @@ The Description property is used to convey a human readable description of the r
 
 #### Modified
 
-The Modified property contains the time stamp equal to the last time the SPMA service modified this resource. The format of this property shall be the [Standard Timestamp Format](#standard-timestamp-format). 
+The Modified property contains the time stamp equal to the last time the Redfish service modified this resource. The format of this property shall be the [Standard Timestamp Format](#standard-timestamp-format). 
                                                                                                                                                                       
 #### Status
 
@@ -1694,13 +1694,13 @@ The value of the SettingsResult property is a JSON object containing the results
 
 * Time of the attempted application
 * ETag of the Setting Data object that was applied
-* SPMA Extended Error Information containing status information 
+* Redfish Extended Error Information containing status information 
 
-### SPMA Resources
+### Redfish Resources
 
-Collectively known as the SPMA Schema, the set of resource descriptions contains normative requirements on implementations conforming to this specification. 
+Collectively known as the Redfish Schema, the set of resource descriptions contains normative requirements on implementations conforming to this specification. 
 
-SPMA Resources are one of several general kinds:
+Redfish Resources are one of several general kinds:
 
 * Root Service Resource
   * Contains the mapping of a particular service instance to applicable subtending resources.
@@ -1723,21 +1723,21 @@ Current Configuration resources represent the service's knowledge of the current
 
 #### Settings
 
-Setting resources represent the future state and configuration of the resource.  This property is always paired with a Current Configuration object.  Where the Current Configuration object represents the current state, the settings resource represents the future intended state.  The state of the resource is changed either directly, such as with a POST of an action or PUT of a reset or indirectly, such as when a user reboots a machine outside of the SPMA service.  
+Setting resources represent the future state and configuration of the resource.  This property is always paired with a Current Configuration object.  Where the Current Configuration object represents the current state, the settings resource represents the future intended state.  The state of the resource is changed either directly, such as with a POST of an action or PUT of a reset or indirectly, such as when a user reboots a machine outside of the Redfish service.  
 
 #### Services
 
-Service resources represent components of the SPMA Service itself as well as dependent resources.  While the complete list is discoverable only by traversing the SPMA Service tree, the list includes services like the Eventing service, Task management and Session management.
+Service resources represent components of the Redfish Service itself as well as dependent resources.  While the complete list is discoverable only by traversing the Redfish Service tree, the list includes services like the Eventing service, Task management and Session management.
 
 #### Registry
 
-Registry resources are those resources that assist the client in interpreting SPMA resources beyond the Schema definitions.  Examples of registries include Message Registries, Event Registries and enumeration registries, such as those used for BIOS.  In registries, a identifier is used to retrieve more information about a given resource, event, message or other item.  This can include other properties, property restrictions and the like.  Registries are themselves resources.
+Registry resources are those resources that assist the client in interpreting Redfish resources beyond the Schema definitions.  Examples of registries include Message Registries, Event Registries and enumeration registries, such as those used for BIOS.  In registries, a identifier is used to retrieve more information about a given resource, event, message or other item.  This can include other properties, property restrictions and the like.  Registries are themselves resources.
 
 #### Schema Variations
 
-There are cases when deviations from the published schema are necessary.  An example is BIOS where different servers may have minor variations in available configuration settings.  A provider may build a single schema that is a superset of the individual implementations.  In order to support these variations, SPMA supports omitting parameters defined in the class schema in the current configuration object.  The following rules apply:
+There are cases when deviations from the published schema are necessary.  An example is BIOS where different servers may have minor variations in available configuration settings.  A provider may build a single schema that is a superset of the individual implementations.  In order to support these variations, Redfish supports omitting parameters defined in the class schema in the current configuration object.  The following rules apply:
 
-* All SPMA services must support attempts to set unsupported configuration elements in the Setting Data by marking them as exceptions in the Setting Data Apply status structure, but not failing the entire configuration operation.
+* All Redfish services must support attempts to set unsupported configuration elements in the Setting Data by marking them as exceptions in the Setting Data Apply status structure, but not failing the entire configuration operation.
 * The support of a specific property in a resource is signaled by the presence of that property in the Current Configuration object.  If the element is missing from Current Configuration, the client may assume the element is not supported on that resource.
 * For ENUM configuration items that may have variation in allowable values, a special read-only capabilities element will be added to Current Configuration which specifies limits to the element.  This is an override for the schema only to be used when necessary.
 
@@ -1751,7 +1751,7 @@ Providers may split the schema resources into separate files such as Schema + St
 
 This section covers the REST-based mechanism for subscribing to and receiving event messages.
 
-The SPMA service requires a client to subscribe to receive events. Clients perform a subscription by sending a HTTP POST message to the URI of the subscription resource. This request includes the URI where the client expects events to be sent.  The SPMA service will then, when an event is triggered within the service, send an event to that URI.   
+The Redfish service requires a client to subscribe to receive events. Clients perform a subscription by sending a HTTP POST message to the URI of the subscription resource. This request includes the URI where the client expects events to be sent.  The Redfish service will then, when an event is triggered within the service, send an event to that URI.   
 
 * Services shall support "push" style eventing for all resources capable   of sending events.
 * Services shall not "push" events (using HTTP POST) unless the client has previously sent a subscribe message to the resource responsible for sending the events. A successful subscribe request will cause a subscription object to be created. Either the client or the service can terminate the event stream at any time.
@@ -1759,7 +1759,7 @@ The SPMA service requires a client to subscribe to receive events. Clients perfo
 * Clients shall terminate a subscription by sending an HTTP DELETE message to the URI of the subscription resource.
 * Services may terminate a subscription by sending a special "subscription terminated" event as the last message. Future requests to the associated subscription resource will respond with HTTP status 404.
 
-There are two types of events generated in an SPMA service - life cycle and alert.  
+There are two types of events generated in a Redfish service - life cycle and alert.  
 
 Life cycle events happen when resources are created, modified or destroyed.  Not every modification of a resource will result in a event - this is similar to when ETags are changed and implementations may not send an alert for every resource change. For instance, if an event was sent for every Ethernet packet received or every time a sensor changed 1 degree, this could result in more events than fits a scalable interface. This event usually indicates the resource that changed as well as, optionally, any attributes that changed. 
 
@@ -1769,15 +1769,15 @@ NOTE: Refer to the [Security](#security) section for security implications of Ev
 
 #### Event Message Subscription
 
-The client locates the eventing service through traversing the SPMA service interface.  When the eventing service has been discovered, clients subscribe to messages by sending a HTTP POST to the URL of the collection for subscriptions in the Eventing Service for which they are requesting events. This should be found off of the root service as described in the schema for that service.  
+The client locates the eventing service through traversing the Redfish service interface.  When the eventing service has been discovered, clients subscribe to messages by sending a HTTP POST to the URL of the collection for subscriptions in the Eventing Service for which they are requesting events. This should be found off of the root service as described in the schema for that service.  
 
-The specific syntax of the subscription body is found in the SPMA Schema. 
+The specific syntax of the subscription body is found in the Redfish Schema. 
 
 On success, the "subscribe" action shall return with HTTP status 201 (CREATED) and the Location header in the response shall contain a URI giving the location of the newly created "subscription" resource. The body of the response, if any, shall contain a representation of the subscription resource. Sending an HTTP GET to the subscription resource shall return the configuration of the subscription. 
 
 #### Event Message Objects
 
-Event message objects POSTed to the specified client endpoint shall contain the properties as described in the SPMA Event Schema.
+Event message objects POSTed to the specified client endpoint shall contain the properties as described in the Redfish Event Schema.
 
 This event message structure supports a message registry.  In a message registry approach there is a message registry that has a list or array of MessageIDs in a well known format.  These MessageIDs are terse in nature and thus they are much smaller than actual messages, making them suitable for embedded environments.  In the registry, there is also a message.  The message itself can have arguments as well as default values for Severity and RecommendedActions.
 
@@ -1808,9 +1808,9 @@ Services that support asynchronous operations will implement the Task service & 
 
 The Task service is used to describe the service that handles tasks.  It contains a collection of zero or more task resources. The Task resource is used to describe a long running operation that is spawned when a request will take longer than a few seconds, such as when a service is instantiated. Clients will poll the URI of the task resource to determine when the operation has completed and if it was successful.
 
-The Task structure in the SPMA Schema contains the exact structure of a Task.  The type of information it contains are start time, end time, task state, task status, response (completion codes) as well as potential links to sub-tasks that were spawned.
+The Task structure in the Redfish Schema contains the exact structure of a Task.  The type of information it contains are start time, end time, task state, task status, response (completion codes) as well as potential links to sub-tasks that were spawned.
 
-Each task has a number of possible states.  The exact states and their semantics are defined in the Task resource of the SPMA Schema.  
+Each task has a number of possible states.  The exact states and their semantics are defined in the Task resource of the Redfish Schema.  
 
 When a client issues a request for a long-running operation, the service returns a status of 202 (Accepted). 
 
@@ -1837,8 +1837,8 @@ The client can continue to get information about the status by directly querying
 
 ### Timestamp Management
 
-The SPMA Service should support a resource that contains the current service time.  The property should be located in the "/redfish" resource, called
-"Time" and should be an SPMA compliant [time string](#datetime-values).
+The Redfish Service should support a resource that contains the current service time.  The property should be located in the "/redfish" resource, called
+"Time" and should be a Redfish compliant [time string](#datetime-values).
 
 ```json
 {
@@ -1860,9 +1860,9 @@ It is possible that some resources will remain very stable from system to system
 
 ### Discovery
 
-Automatic discovery of managed devices supporting the Scalable Platform Management API is accomplished using the Simple Service Discovery Protocol (SSDP).  This protocol allows for network-efficient discovery without resorting to ping-sweeps, router table searches, or restrictive DNS naming schemes.  Use of SSDP is optional, and if implemented, shall allow the user to disable the protocol through the 'Manager Network Service' resource.  
+Automatic discovery of managed devices supporting the Redfish Scalable Platform Management API is accomplished using the Simple Service Discovery Protocol (SSDP).  This protocol allows for network-efficient discovery without resorting to ping-sweeps, router table searches, or restrictive DNS naming schemes.  Use of SSDP is optional, and if implemented, shall allow the user to disable the protocol through the 'Manager Network Service' resource.  
 
-As the objective of discovery is for cilent software to locate SPMA-compliant managed devices, the primary SSDP functionality incorporated is the M-SEARCH query.  SPMA also follows the SSDP extensions and naming used by UPnP where applicable, such that SPMA-compliant systems can also implement UPnP without conflict.
+As the objective of discovery is for cilent software to locate Redfish-compliant managed devices, the primary SSDP functionality incorporated is the M-SEARCH query.  Redfish also follows the SSDP extensions and naming used by UPnP where applicable, such that Redfish-compliant systems can also implement UPnP without conflict.
 
 #### UPnP Compatibility
 
@@ -1870,30 +1870,30 @@ For compatibility with general purpose SSDP client software, primarily UPnP, TCP
 
 #### USN Format
 
-The UUID supplied in the USN field shall equal the UUID returned for the Manager implementing the SPMA service.  If there are multiple / redundant managers, the UUID shall remain static regardless of redundancy failover.  The Unique ID shall be in the canonical UUID format, followed by '::spmaspecification-org' 
+The UUID supplied in the USN field shall equal the UUID returned for the Manager implementing the Redfish service.  If there are multiple / redundant managers, the UUID shall remain static regardless of redundancy failover.  The Unique ID shall be in the canonical UUID format, followed by '::dtmf-org' 
  
 #### M-SEARCH Response
 
-The managed device must respond to M-SEARCH queries searching for Search Target (ST) of the SPMA Service from clients with the AL pointing to the SPMA service root URI.  SPMA device shall also respond to M-SEARCH queries for Search Target type of "ssdp:all".
+The managed device must respond to M-SEARCH queries searching for Search Target (ST) of the Redfish Service from clients with the AL pointing to the Redfish service root URI.  Redfish device shall also respond to M-SEARCH queries for Search Target type of "ssdp:all".
 
-SPMA Service root Search Target (ST):   URN:spmaspecification-org:service:spma-rest:1
+Redfish Service root Search Target (ST):   URN:dmtf-org:service:redfish-rest:1
 
-The URN in the reply shall use a service name of 'spma-rest:' followed by the major version of the SPMA specification.  If the minor version of the SPMA Specification to which the service conforms is a non-zero value, and that version is backwards-compatible with previous minor revisions, then that minor version shall be appended, preceeded with a colon.  For example, a service conforming to an SPMA specification version "1.4" would reply with a service of "spma-rest:1:4".
+The URN in the reply shall use a service name of 'redfish-rest:' followed by the major version of the Redfish specification.  If the minor version of the Redfish Specification to which the service conforms is a non-zero value, and that version is backwards-compatible with previous minor revisions, then that minor version shall be appended, preceeded with a colon.  For example, a service conforming to a Redfish specification version "1.4" would reply with a service of "redfish-rest:1:4".
 
 An example response to an M-SEARCH multicast or unicast query shall follow the format shown below.  Fields in brackets are placeholds for device-specific values.  
 
 ```
 HTTP/1.1 200 OK
 CACHE-CONTROL:<seconds, at least 1800>
-ST:urn:spmaspecification-org:service:spma-rest:1
-USN:uuid:<UUID of Manager>::urn:spmaspecification-org:service:spma-rest:1
-AL:<URL of SPMA service root>
+ST:urn:dmtf-org:service:redfish-rest:1
+USN:uuid:<UUID of Manager>::urn:dmtf-org:service:rest-rest:1
+AL:<URL of Redfish service root>
 EXT:
 ```
 
 #### Notify, Alive, and Shutdown messages
 
-SPMA devices may implement the additional SSDP messages defined by UPnP to announce their availability to software.  This capability, if implemented, must allow the end user to disable the traffic separately from the M-SEARCH response functionality.  This allows users to utilize the discovery functionality with minimal amounts of network traffic generated.  
+Redfish devices may implement the additional SSDP messages defined by UPnP to announce their availability to software.  This capability, if implemented, must allow the end user to disable the traffic separately from the M-SEARCH response functionality.  This allows users to utilize the discovery functionality with minimal amounts of network traffic generated.  
 
 ## Security
 
@@ -1906,14 +1906,14 @@ SPMA devices may implement the additional SSDP messages defined by UPnP to annou
 		- Network Settings
 		- Storage Settings
 		- Logs
-	- SPMA Service Configuration
+	- Redfish Service Configuration
 		- Account Management
 		- Network Settings
 		- Logs
 	- Firmware versions
 	- OEM vendor-specific features and functionality
 
-- Permission/ authorization  model shall be consistent between instances of SPMA compliant devices
+- Permission/ authorization  model shall be consistent between instances of Redfish compliant devices
 	- Define a minimum baseline for the permission/ authorization model
 - Infrastructure Authentication
 - CURL compatibility
@@ -1926,7 +1926,7 @@ SPMA devices may implement the additional SSDP messages defined by UPnP to annou
 #### Discovery
 
 #### Transport
-**TODO**: communication requirements for SPMA peers - clients or other servers.
+**TODO**: communication requirements for Redfish peers - clients or other servers.
 
 ##### TLS
 Implementations shall support TLS v1.1 or later
@@ -1936,7 +1936,7 @@ Implementations shall only use compliant TLS connections to transport [Sensitive
 ##### Cipher suites
 Implementations should support AES-256 based ciphers from the TLS suites.
 
-SPMA implementations should consider supporting ciphers similar to below which enable authentication and identification without use of trusted certificates.
+Redfish implementations should consider supporting ciphers similar to below which enable authentication and identification without use of trusted certificates.
 
 	 TLS_PSK_WITH_AES_256_GCM_SHA384        
      TLS_DHE_PSK_WITH_AES_256_GCM_SHA384    
@@ -1976,21 +1976,21 @@ REF: http://csrc.nist.gov/publications/fips/fips140-1/fips1401.pdf - This is use
 
 * Password Complexity
 	
-	An SPMA device shall support a set of configurable password complexity rules, should include length, character set
+	A Redfish device shall support a set of configurable password complexity rules, should include length, character set
 	
-	When an authentication failure occurs an SPMA device shall NOT provide password complexity requirements to the user
+	When an authentication failure occurs a Redfish device shall NOT provide password complexity requirements to the user
 	
 * Account Lockout
 
-	An SPMA implementations should revoke login privilege after a configurable number of authentication failures
+	A Redfish implementations should revoke login privilege after a configurable number of authentication failures
 
 * Authentication Failure Delays
 	
-	An SPMA device shall implement progressive authentication attempt  
+	A Redfish device shall implement progressive authentication attempt  
 
 * Authentication Failure Policy
 
-	An SPMA device shall implement configurable options to manage login behavior when user authentication failures occur
+	A Redfish device shall implement configurable options to manage login behavior when user authentication failures occur
 		- Number of failures
 		- Time between failures
 		- Increments between progressive delays
@@ -2039,14 +2039,14 @@ Implementations should support certificate based authentication.
 
 ##### Session Lifecycle Management
 
-Session management is left to the implementation of the SPMA Service.  This
+Session management is left to the implementation of the Redfish Service.  This
 includes orphaned session timeout and number of simultaneous open sessions.
 
-* **An SPMA Service shall provide login sessions compliant with this specification.**
+* **A Redfish Service shall provide login sessions compliant with this specification.**
 
 ##### Login Sessions
 
-For functionality requiring multiple SPMA operations, a standard Login session is specified.  The URI used for session management is specified in the /redfish resource with the property "SessionService".
+For functionality requiring multiple Redfish operations, a standard Login session is specified.  The URI used for session management is specified in the /redfish resource with the property "SessionService".
 
 ```json
 {
@@ -2119,30 +2119,30 @@ Implementations shall only use compliant TLS connections to transport the data b
 
 #### Event Subscriptions
 
-* The SPMA device shall check the privilege of the subscriber before pushing event data object to the destination 
+* The Redfish device shall check the privilege of the subscriber before pushing event data object to the destination 
 
-* The SPMA device shall encrypt event data when there is [Sensitive Data](#sensitive-data) in the event data object before pushing it
+* The Redfish device shall encrypt event data when there is [Sensitive Data](#sensitive-data) in the event data object before pushing it
 
-* The SPMA device may verify the destination for identity purposes before pushing event data object to the Destination 
+* The Redfish device may verify the destination for identity purposes before pushing event data object to the Destination 
 
 #### Privilege Model / Authorization
 
 * The Authorization subsystem has the following components to it 
-  - Profiles - A Profile is a collection of Roles from the Authorization perspective (NOTE: Profiles per SPMA constitute more than Roles. REF: See section ... for more info.)
+  - Profiles - A Profile is a collection of Roles from the Authorization perspective (NOTE: Profiles per Redfish constitute more than Roles. REF: See section ... for more info.)
   - Roles - A Role is a collection of Privileges
   - Privileges - A Privileges is a permission to perform a specific action/ activity
     - NOTE: Specific sets of privileges can be assigned to a user without using/ modifying/ creating/ leveraging pre-canned roles
-* When a Profile like a System Profile is implemented all the required Roles per SPMA which constitute that Profile shall be implemented
+* When a Profile like a System Profile is implemented all the required Roles per Redfish which constitute that Profile shall be implemented
   - System Administrator and System Operator are 2 Roles are which are required to be implemented in the System Profile
-  - System Administrator - The user with this role monitors and configures the system and / or the SPMA device
-* When a Role like a System Operator is implemented all Privileges required per SPMA which constitute that Role are required to be implemented
-  - The Power Control privilege is required to be implemented per SPMA
+  - System Administrator - The user with this role monitors and configures the system and / or the Redfish device
+* When a Role like a System Operator is implemented all Privileges required per Redfish which constitute that Role are required to be implemented
+  - The Power Control privilege is required to be implemented per Redfish
 
 * User Management 
-    * Assigning privileges to users, either local to the SPMA device or users / user groups from the directory services infrastructure like AD/ LDAP
+    * Assigning privileges to users, either local to the Redfish device or users / user groups from the directory services infrastructure like AD/ LDAP
       * Assign privileges individually (Users created by cherry-picking privileges)
         OR
-      * Assign privileges via pre-defined roles (Roles required by SPMA spec or OEM implementation)
+      * Assign privileges via pre-defined roles (Roles required by Redfish spec or OEM implementation)
         OR
       * Assign privileges via custom roles (End user admin defined roles which can be reused)
 
@@ -2172,9 +2172,9 @@ Implementations shall only use compliant TLS connections to transport the data b
 
 ##### Profiles and Roles
 
-* shall implement a set of pre-defined roles based on profiles implemented by the SPMA device
+* shall implement a set of pre-defined roles based on profiles implemented by the Redfish device
 * System Profile
-  1) System Administrator - Monitor and configures the system and the SPMA device
+  1) System Administrator - Monitor and configures the system and the Redfish device
     - Configure BMC
     - Configure Users
     - Power Control
@@ -2198,19 +2198,19 @@ Implementations shall only use compliant TLS connections to transport the data b
 * NOTE: All OEM privileges that modify objects and/ or ohject extensions in a Profile, shall be assigned to the Administrator Role in that Profile.
 
 * Pre-defined roles shall NOT be modifiable with respect to privileges assigned
-* shall allow SPMA user to define custom roles
-* should allow SPMA user to name custom roles to enable reuse in user context
+* shall allow Redfish user to define custom roles
+* should allow Redfish user to name custom roles to enable reuse in user context
 * may implement a set of OEM roles
 
 #### Role Based Privilege
 
-An SPMA service may contain resources that require separated privileges.
-An SPMA service may limit REST operations against specific resources based
+A Redfish service may contain resources that require separated privileges.
+A Redfish service may limit REST operations against specific resources based
 upon user privileges.
 
-* **An SPMA service may limit individual resource access by SPMA clients
+* **A Redfish service may limit individual resource access by Redfish clients
   based upon role-based privileges**
-* **An SPMA service may limit individual resource access by SPMA clients
+* **A Redfish service may limit individual resource access by Redfish clients
   based upon specific user account information (future -- not defined yet)**
 
 
@@ -2263,8 +2263,8 @@ Details : Need to generate events for the following
 3. successful and rejected connections to nodes and other resource access attempts
 4. details about the modification of user accounts
 5. all changes to the system configuration,
-6. information about the use of built-in utilities running in SPMA compliant-devices(e.g. low-level diagnostic tools),
-7. information about accessing the system interfaces of the SPMA compliant-devices
+6. information about the use of built-in utilities running in Redfish compliant-devices(e.g. low-level diagnostic tools),
+7. information about accessing the system interfaces of the Redfish compliant-devices
 8. network addresses and protocols (e.g. workstation IP address and protocol used for access)
 9. activation and de-activation of protection measures
 

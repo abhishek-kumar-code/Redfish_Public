@@ -48,7 +48,7 @@
       
       <EntityType Name="Chassis" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition for the Chassis resource.  It represents the properties for physical components for any system.  This one object is intended to represent racks, rackmount servers, blades, standalone, modular systems, enclosures, and all other containers.  The non-cpu/device centric parts of the schema are all accessed either directly or indirectly through this resource."/>
-        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a chassis or other physical enclosure for an SPMA implementation."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a chassis or other physical enclosure for a Redfish implementation."/>
         <Property Name="ChassisType" Nullable="false" Type="Chassis.ChassisType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This property indicates the type of physical form factor of this resource."/>

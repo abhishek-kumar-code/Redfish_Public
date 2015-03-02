@@ -28,7 +28,7 @@
       <!-- This is the schema definition for the Power Metrics and its respective properties -->
       <EntityType Name="Power" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition for the Power Metrics.  It represents the properties for Power Consumption and Power Limiting."/>
-        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a power metrics resource for an SPMA implementation."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a power metrics resource for a Redfish implementation."/>
         <Property Name="PowerConsumedWatts" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The actual power being consumed by the chassis."/>

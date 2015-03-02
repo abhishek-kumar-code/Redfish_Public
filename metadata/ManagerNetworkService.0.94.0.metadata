@@ -39,8 +39,8 @@
         </Property>
         <Property Name="SessionTimeoutMinutes" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="Indicates the Session Timeout for SPMA Sessions."/>
-          <Annotation Term="OData.LongDescription" String="This object is used for all protocol session timeouts for the manager. This includes the SPMA service if this Manager is responsible for that service."/>
+          <Annotation Term="OData.Description" String="Indicates the Session Timeout for Redfish Sessions."/>
+          <Annotation Term="OData.LongDescription" String="This object is used for all protocol session timeouts for the manager. This includes the Redfish service if this Manager is responsible for that service."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
         </Property>
         <Property Name="HTTP" Type="NetworkService.Protocol" Nullable="false">
@@ -65,7 +65,7 @@
         </Property>
         <Property Name="SSDP" Type="NetworkService.SSDProtocol" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="This object is used for the SSDP protocol settings for the manager.  Simple Service Discovery Protocol (SSDP) is for network discovery of devices supporting the SPMA service. The default value of the Port property shall be 1900 for compatibility with established client implementations."/>
+          <Annotation Term="OData.Description" String="This object is used for the SSDP protocol settings for the manager.  Simple Service Discovery Protocol (SSDP) is for network discovery of devices supporting the Redfish service. The default value of the Port property shall be 1900 for compatibility with established client implementations."/>
         </Property>
         <Property Name="IPMI" Type="NetworkService.Protocol" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>

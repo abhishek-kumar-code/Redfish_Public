@@ -23,11 +23,11 @@
       
       <EntityType Name="LogEntry" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This resource represents the log record format for logs.  It is designed to be used for SEL logs from IPMI as well as Event Logs and OEM specific logs.  The EntryType field indicates the type of log and there are other properties dependent on it's value."/>
-        <Annotation Term="OData.LongDescription" String="This resource shall represent the log format for log services in an SPMA implementation."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall represent the log format for log services in a Redfish implementation."/>
         <Property Name="Severity" Type="LogEntry.EventSeverity" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is the severity of the log entry."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the severity of the condition resulting in the log entry, as defined in the Status section of the SPMA specificaiton."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the severity of the condition resulting in the log entry, as defined in the Status section of the Redfish specificaiton."/>
         </Property>
         <Property Name="Created" Type="Edm.DateTimeOffset" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
@@ -67,7 +67,7 @@
         <Property Name="MessageId" Type="Edm.Int64" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This property decodes from EntryType:  If it is Event then it is a message id.  Otherwise, it is SEL or Oem specific.  This value is only used for registries - for more information, see the specification."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall the MessageID property of the event if the EntryType is Event, the EventData if EntryType is SEL and OEM Specific if the EntryType is OEM.  The format of this property shall be as defined in the SPMA specification."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall the MessageID property of the event if the EntryType is Event, the EventData if EntryType is SEL and OEM Specific if the EntryType is OEM.  The format of this property shall be as defined in the Redfish specification."/>
         </Property>
         <Property Name="MessageArgs" Type="Collection(Edm.String)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>

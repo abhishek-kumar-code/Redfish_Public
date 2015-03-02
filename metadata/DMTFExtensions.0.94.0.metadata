@@ -7,7 +7,7 @@
 
   <edmx:DataServices>
 
-    <!--These terms extend the schema language for SPMA-specific information-->
+    <!--These terms extend the schema language for Redfish-specific information-->
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm"  Namespace="DMTFExtensions.0.95.0" Alias="Extensions">
 
       <Term Name="AllowableValues" Type="Collection(Edm.String)">

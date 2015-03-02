@@ -14,7 +14,7 @@
       <!-- This is the schema definition for the Firmware Version. -->
       <ComplexType Name="FirmwareRevision">
         <Annotation Term="OData.Description" String="This is the schema definition for the Firmware Version.  It is used as part of other schema."/>
-        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent the version of firmware for an SPMA implementation."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent the version of firmware for a Redfish implementation."/>
         <Property Name="Current" Type="Firmware.FWVersion">
           <Annotation Term="DMTF.Required"/>
         </Property>

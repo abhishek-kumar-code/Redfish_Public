@@ -22,7 +22,7 @@
       <!-- This schema defines an account service and its respective properties. -->
       <EntityType Name="AccountService" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition for the Account Service.  It represents the properties for the service itself and has links to the actual list of accounts."/>
-        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a management account service for an SPMA implementation."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a management account service for a Redfish implementation."/>
         <Property Name="AuthFailureLoggingThreshold" Type="Edm.Int64" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/ReadWrite"/>
           <Annotation Term="OData.Description" String="This is the number of authorization failures that need to occur before the failure attempt is logged to the manager log."/>

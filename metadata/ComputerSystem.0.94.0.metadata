@@ -52,7 +52,7 @@
       
       <EntityType Name="ComputerSystem" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This schema defines a computer system and its respective properties.  A computer system represents a machine (physical or virtual) and the local resources such as memory, cpu and other devices that can be accessed from that machine."/>
-        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent resources that represent a computing system in the SPMA specification."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent resources that represent a computing system in the Redfish specification."/>
         <Property Name="SystemType" Type="ComputerSystem.SystemType" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The type of computer system represented by this resource."/>

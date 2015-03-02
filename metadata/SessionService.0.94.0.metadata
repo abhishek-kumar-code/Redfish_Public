@@ -22,7 +22,7 @@
       <!-- This schema defines a Session service and its respective properties. -->
       <EntityType Name="SessionService" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition for the Session Service.  It represents the properties for the service itself and has links to the actual list of sessions."/>
-        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent the Session Service Properties for an SPMA implementation."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent the Session Service Properties for a Redfish implementation."/>
         <Property Name="SessionTimeout" Type="Edm.Int64" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/ReadWrite"/>
           <Annotation Term="OData.Description" String="This is the number of seconds of inactivity that a session may have before the session service closes the session due to inactivity."/>

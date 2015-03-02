@@ -46,7 +46,7 @@
 
       <EntityType Name="EthernetNetworkInterface" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This schema defines a simple ethernet NIC resource."/>
-        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent NIC resources as part of the SPMA specification."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent NIC resources as part of the Redfish specification."/>
         <Property Name="UEFIDevicePath" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is the UEFI device path for this NIC."/>

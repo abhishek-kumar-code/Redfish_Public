@@ -58,7 +58,7 @@
       
       <EntityType Name="Manager" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition for a Manager.  Examples of managers are BMCs, Enclosure Managers, Management Controllers and other subsystems assigned managability functions."/>
-        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a management subsystem for an SPMA implementation."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a management subsystem for a Redfish implementation."/>
         <Property Name="ManagerType" Type="Manager.ManagerType" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This property represents the type of manager that this resource represents."/>
