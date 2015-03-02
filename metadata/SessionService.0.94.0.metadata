@@ -6,18 +6,18 @@
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/DMTFExtensions">
-    <edmx:Include Namespace="DMTFExtensions.0.94.0" Alias="DMTF"/>
-    <edmx:Include Namespace="Validation.0.94.0" Alias="Validation"/>
+    <edmx:Include Namespace="DMTFExtensions.0.95.0" Alias="DMTF"/>
+    <edmx:Include Namespace="Validation.0.95.0" Alias="Validation"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/Resource">
-    <edmx:Include Namespace="Resource.0.94.0" Alias="Resource"/>
+    <edmx:Include Namespace="Resource.0.95.0" Alias="Resource"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/Session">
-    <edmx:Include Namespace="Session.0.94.0" Alias="Session"/>
+    <edmx:Include Namespace="Session.0.95.0" Alias="Session"/>
   </edmx:Reference>
   
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SessionService.0.94.0" Alias="SessionService">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SessionService.0.95.0" Alias="SessionService">
 
       <!-- This schema defines a Session service and its respective properties. -->
       <EntityType Name="SessionService" BaseType="Resource.Resource">

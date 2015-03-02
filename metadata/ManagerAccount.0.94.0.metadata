@@ -5,14 +5,14 @@
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/DMTFExtensions">
-    <edmx:Include Namespace="DMTFExtensions.0.94.0" Alias="DMTF"/>
+    <edmx:Include Namespace="DMTFExtensions.0.95.0" Alias="DMTF"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/Resource">
-    <edmx:Include Namespace="Resource.0.94.0" Alias="Resource"/>
+    <edmx:Include Namespace="Resource.0.95.0" Alias="Resource"/>
   </edmx:Reference>
   
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ManagerAccount.0.94.0" Alias="ManagerAccount">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ManagerAccount.0.95.0" Alias="ManagerAccount">
       
       <!-- This schema defines a user account and its respective properties. -->
       <EntityType Name="ManagerAccountCollection" BaseType="Resource.ResourceCollection">

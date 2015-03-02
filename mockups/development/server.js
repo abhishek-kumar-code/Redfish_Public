@@ -106,8 +106,8 @@ var mockupFile = function(req, res, pathname) {
 
 var server = http.createServer(function (req, res) {
   var url = parse(req.url);
-  if (url.pathname === '/rest/v1') {
-    return redirect(req, res, '/rest/v1/');
+  if (url.pathname === '/redfish/v1') {
+    return redirect(req, res, '/redfish/v1/');
   }
 
   if (!/\/rest\/v1\//.test(url.pathname)) {

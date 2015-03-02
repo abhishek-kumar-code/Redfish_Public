@@ -1,7 +1,7 @@
 {
-    "@odata.context": "/rest/v1/$metadata#Systems/Links/Members/$entity", 
-    "@odata.id": "/rest/v1/Systems/1",
-    "@odata.type": "#ComputerSystem.0.94.0.ComputerSystem",
+    "@odata.context": "/redfish/v1/$metadata#Systems/Links/Members/$entity", 
+    "@odata.id": "/redfish/v1/Systems/1",
+    "@odata.type": "#ComputerSystem.0.95.0.ComputerSystem",
     "Id": "1",
     "Name": "My Computer System",
     "Modified": "2012-03-07T14:44",
@@ -69,26 +69,26 @@
     "Links": {
         "Chassis": [
             {
-                "@odata.id": "/rest/v1/Chassis/1"
+                "@odata.id": "/redfish/v1/Chassis/1"
             }
         ],
         "ManagedBy": [
-            {"@odata.id": "/rest/v1/Managers/1"}
+            {"@odata.id": "/redfish/v1/Managers/1"}
         ],
         "SimpleNetwork": {
-            "@odata.id": "/rest/v1/Systems/1/SimpleNetwork"
+            "@odata.id": "/redfish/v1/Systems/1/SimpleNetwork"
         },
         "SimpleStorage": {
-            "@odata.id": "/rest/v1/Systems/1/SimpleStorage"
+            "@odata.id": "/redfish/v1/Systems/1/SimpleStorage"
         },
         "LogService": {
-            "@odata.id": "/rest/v1/Systems/1/Logs"
+            "@odata.id": "/redfish/v1/Systems/1/Logs"
         },
         "Oem": {}
     },
     "Actions": {
         "#ComputerSystem.Reset": {
-            "target": "/rest/v1/Systems/1/Actions/ComputerSystem.Reset",
+            "target": "/redfish/v1/Systems/1/Actions/ComputerSystem.Reset",
             "ResetType@DMTF.AllowableValues": [
                 "On",
                 "ForceOff",
@@ -102,7 +102,7 @@
         },
         "Oem": {
             "http://Contoso.com/Schema/CustomTypes#Contoso.Reset": {
-                "target": "/rest/v1/Systems/1/OEM/Contoso/Actions/Contoso.Reset"
+                "target": "/redfish/v1/Systems/1/OEM/Contoso/Actions/Contoso.Reset"
             }
         }
     },

@@ -5,18 +5,18 @@
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/DMTFExtensions">
-    <edmx:Include Namespace="DMTFExtensions.0.94.0" Alias="DMTF"/>
-    <edmx:Include Namespace="Validation.0.94.0" Alias="Validation"/>
+    <edmx:Include Namespace="DMTFExtensions.0.95.0" Alias="DMTF"/>
+    <edmx:Include Namespace="Validation.0.95.0" Alias="Validation"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/Resource">
-    <edmx:Include Namespace="Resource.0.94.0" Alias="Resource"/>
+    <edmx:Include Namespace="Resource.0.95.0" Alias="Resource"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/Task">
-    <edmx:Include Namespace="Tasks.0.94.0" Alias="Tasks"/>
+    <edmx:Include Namespace="Tasks.0.95.0" Alias="Tasks"/>
   </edmx:Reference>
 
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="TaskService.0.94.0" Alias="TaskService">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="TaskService.0.95.0" Alias="TaskService">
 
       <!-- This is the schema definition for a Task resource. -->
       <EntityType Name="TaskService" BaseType="Resource.Resource">

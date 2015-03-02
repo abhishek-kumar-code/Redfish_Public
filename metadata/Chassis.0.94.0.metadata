@@ -5,30 +5,30 @@
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/DMTFExtensions">
-    <edmx:Include Namespace="DMTFExtensions.0.94.0" Alias="DMTF"/>
+    <edmx:Include Namespace="DMTFExtensions.0.95.0" Alias="DMTF"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/Resource">
-    <edmx:Include Namespace="Resource.0.94.0" Alias="Resource"/>
+    <edmx:Include Namespace="Resource.0.95.0" Alias="Resource"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/LogService">
-    <edmx:Include Namespace="LogService.0.94.0" Alias="LogService"/>
+    <edmx:Include Namespace="LogService.0.95.0" Alias="LogService"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/Thermal">
-    <edmx:Include Namespace="Thermal.0.94.0" Alias="Thermal"/>
+    <edmx:Include Namespace="Thermal.0.95.0" Alias="Thermal"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/Power">
-    <edmx:Include Namespace="Power.0.94.0" Alias="Power"/>
+    <edmx:Include Namespace="Power.0.95.0" Alias="Power"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/ManagerAccount">
-    <edmx:Include Namespace="ManagerAccount.0.94.0" Alias="ManagerAccount"/>
+    <edmx:Include Namespace="ManagerAccount.0.95.0" Alias="ManagerAccount"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/ComputerSystem">
-    <edmx:Include Namespace="ComputerSystem.0.94.0" Alias="ComputerSystem"/>
+    <edmx:Include Namespace="ComputerSystem.0.95.0" Alias="ComputerSystem"/>
   </edmx:Reference>
   
   <edmx:DataServices>
 
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.0.94.0" Alias="Chassis">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.0.95.0" Alias="Chassis">
 
       <!-- This schema defines a computer system and its respective properties. -->
       <EntityType Name="ChassisCollection" BaseType="Resource.ResourceCollection">

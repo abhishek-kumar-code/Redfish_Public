@@ -5,39 +5,39 @@
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/DMTFExtensions">
-    <edmx:Include Namespace="DMTFExtensions.0.94.0" Alias="DMTF"/>
-    <edmx:Include Namespace="Validation.0.94.0" Alias="Validation"/>
+    <edmx:Include Namespace="DMTFExtensions.0.95.0" Alias="DMTF"/>
+    <edmx:Include Namespace="Validation.0.95.0" Alias="Validation"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/Resource">
-    <edmx:Include Namespace="Resource.0.94.0" Alias="Resource"/>
+    <edmx:Include Namespace="Resource.0.95.0" Alias="Resource"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/ComputerSystem">
-    <edmx:Include Namespace="ComputerSystem.0.94.0" Alias="ComputerSystem"/>
+    <edmx:Include Namespace="ComputerSystem.0.95.0" Alias="ComputerSystem"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/Chassis">
-    <edmx:Include Namespace="Chassis.0.94.0" Alias="Chassis"/>
+    <edmx:Include Namespace="Chassis.0.95.0" Alias="Chassis"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/EthernetNetworkInterface">
-    <edmx:Include Namespace="EthernetNetworkInterface.0.94.0" Alias="EthernetNetworkInterface"/>
+    <edmx:Include Namespace="EthernetNetworkInterface.0.95.0" Alias="EthernetNetworkInterface"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/ManagerNetworkService">
-    <edmx:Include Namespace="NetworkService.0.94.0" Alias="NetworkService"/>
+    <edmx:Include Namespace="NetworkService.0.95.0" Alias="NetworkService"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/LogService">
-    <edmx:Include Namespace="LogService.0.94.0" Alias="LogService"/>
+    <edmx:Include Namespace="LogService.0.95.0" Alias="LogService"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/VirtualMedia">
-    <edmx:Include Namespace="VirtualMedia.0.94.0" Alias="VirtualMedia"/>
+    <edmx:Include Namespace="VirtualMedia.0.95.0" Alias="VirtualMedia"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/SerialInterface">
-    <edmx:Include Namespace="SerialInterface.0.94.0" Alias="SerialInterface"/>
+    <edmx:Include Namespace="SerialInterface.0.95.0" Alias="SerialInterface"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/Firmware">
-    <edmx:Include Namespace="Firmware.0.94.0" Alias="Firmware"/>
+    <edmx:Include Namespace="Firmware.0.95.0" Alias="Firmware"/>
   </edmx:Reference>
 
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.0.94.0" Alias="Manager">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.0.95.0" Alias="Manager">
 
       <!-- This is the schema definition for a Manager and its respective properties -->
 

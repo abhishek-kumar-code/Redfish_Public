@@ -8,7 +8,7 @@
   <edmx:DataServices>
 
     <!--These terms extend the schema language for SPMA-specific information-->
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm"  Namespace="DMTFExtensions.0.94.0" Alias="Extensions">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm"  Namespace="DMTFExtensions.0.95.0" Alias="Extensions">
 
       <Term Name="AllowableValues" Type="Collection(Edm.String)">
         <Annotation Term="OData.Description" String="The set of allowable values for a parameter."/>
@@ -42,7 +42,7 @@
     </Schema>
     
     <!--These terms are used for validating a property value-->
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm"  Namespace="Validation.0.94.0">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm"  Namespace="Validation.0.95.0">
 
       <Term Name="Pattern" Type="Edm.String">
         <Annotation Term="OData.Description" String="The pattern that a string property or parameter must match."/>

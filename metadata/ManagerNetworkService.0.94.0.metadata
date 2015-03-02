@@ -5,19 +5,19 @@
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/DMTFExtensions">
-    <edmx:Include Namespace="DMTFExtensions.0.94.0" Alias="DMTF"/>
-    <edmx:Include Namespace="Validation.0.94.0" Alias="Validation"/>
+    <edmx:Include Namespace="DMTFExtensions.0.95.0" Alias="DMTF"/>
+    <edmx:Include Namespace="Validation.0.95.0" Alias="Validation"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Measures.V1.xml">
     <edmx:Include Namespace="Org.OData.Measures.V1" Alias="OData.Measures"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/Resource">
-    <edmx:Include Namespace="Resource.0.94.0" Alias="Resource"/>
+    <edmx:Include Namespace="Resource.0.95.0" Alias="Resource"/>
   </edmx:Reference>
 
     
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkService.0.94.0" Alias="NetworkService">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkService.0.95.0" Alias="NetworkService">
 
       <!-- This schema defines a network service and its respective properties -->
       <EntityType Name="ManagerNetworkService">

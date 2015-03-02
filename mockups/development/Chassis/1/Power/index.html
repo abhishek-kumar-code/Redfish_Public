@@ -1,7 +1,7 @@
 {
-    "@odata.context": "/rest/v1/$metadata#Chassis/Links/Members/1/Links/Power/$entity",
-    "@odata.id": "/rest/v1/Chassis/1/Power",
-    "@odata.type": "#Power.0.94.0.Power",
+    "@odata.context": "/redfish/v1/$metadata#Chassis/Links/Members/1/Links/Power/$entity",
+    "@odata.id": "/redfish/v1/Chassis/1/Power",
+    "@odata.type": "#Power.0.95.0.Power",
     "Id": "Power",
     "Name": "Power",
     "Modified": "2013-07-22T14:44+00:00",
@@ -11,7 +11,7 @@
     },
     "PowerMetrics": [
         {
-            "@odata.id": "/rest/v1/Chassis/1/Power#PowerMetrics/1",
+            "@odata.id": "/redfish/v1/Chassis/1/Power#PowerMetrics/1",
             "MemberID": "1",
             "PowerConsumedWatts": 8000,
             "PowerRequestedWatts": 8500,
@@ -29,14 +29,14 @@
                 "LimitException": "LogEventOnly",
                 "CorrectionInMs": 42,
                 "RelatedTo": [ 
-                    {"@odata.id": "/rest/v1/Systems/1#Processor"}
+                    {"@odata.id": "/redfish/v1/Systems/1#Processor"}
                 ]
             }
         }
     ],
     "PowerSupplies": [
         {
-            "@odata.id": "/rest/v1/Chassis/1/Power#PowerSupplies/1",
+            "@odata.id": "/redfish/v1/Chassis/1/Power#PowerSupplies/1",
             "MemberID": "1",
             "Name": "Power Supply Bay 1",
             "Status": {
@@ -55,14 +55,14 @@
             "PartNumber": "1z0000001A3a",
             "SparePartNumber": "0000001A3a",
             "RelatedTo": [
-                "@odata.id": "/rest/v1/Chassis/1",
+                "@odata.id": "/redfish/v1/Chassis/1",
             ],
             "Redundancy": [
-                "@odata.id": "/rest/v1/Chassis/1/Power#Redundancy/1"
+                "@odata.id": "/redfish/v1/Chassis/1/Power#Redundancy/1"
             ]
         },
         {
-            "@odata.id": "/rest/v1/Chassis/1/Power#PowerSupplies/2",
+            "@odata.id": "/redfish/v1/Chassis/1/Power#PowerSupplies/2",
             "MemberID": "2",
             "Name": "Power Supply Bay 2",
             "Status": {
@@ -81,14 +81,14 @@
             "PartNumber": "1z0000001A3a",
             "SparePartNumber": "0000001A3a",
             "RelatedTo": [
-                "@odata.id": "/rest/v1/Chassis/1",
+                "@odata.id": "/redfish/v1/Chassis/1",
             ],
             "Redundancy": [
-                "@odata.id": "/rest/v1/Chassis/1/Power#Redundancy/1"
+                "@odata.id": "/redfish/v1/Chassis/1/Power#Redundancy/1"
             ]
         },
         {
-            "@odata.id": "/rest/v1/Chassis/1/Power#PowerSupplies/3",
+            "@odata.id": "/redfish/v1/Chassis/1/Power#PowerSupplies/3",
             "MemberID": "3",
             "Name": "Power Supply Bay 3",
             "Status": {
@@ -98,15 +98,15 @@
     ],
     "Redundancy": [
         {
-            "@odata.id": "/rest/v1/Chassis/1/Power#Redundancy/1",
+            "@odata.id": "/redfish/v1/Chassis/1/Power#Redundancy/1",
             "MemberID": "1",
             "Name": "PowerSupply Redundancy Group 1",
             "Mode": "Failover",
             "MaxNumSupported": 2,
             "MinNumNeeded": 1,
             "RedundancySet": [
-                {"@odata.id": "/rest/v1/Chassis/1/Power#PowerSupplies/1" },
-                {"@odata.id": "/rest/v1/Chassis/1/Power#PowerSupplies/2" }
+                {"@odata.id": "/redfish/v1/Chassis/1/Power#PowerSupplies/1" },
+                {"@odata.id": "/redfish/v1/Chassis/1/Power#PowerSupplies/2" }
             ],
             "Status": {
                 "State": "Offline",
