@@ -33,7 +33,7 @@ If you are viewing the files directly either through GitHub or a browser, you ca
 
 ### Via Webserver ###
 
-Install [NodeJS](http://nodejs.org) first; this will act as the webserver. Double click `run.bat` inside the Mockup folder to start a local server accessible at [http://localhost:9080/rest/v1](http://localhost:9080/rest/v1).  It will look almost like a real service from the GET perspective (the headers will not be the same).
+Install [NodeJS](http://nodejs.org) first; this will act as the webserver. Double click `run.bat` inside the Mockup folder to start a local server accessible at [http://localhost:9080/redfish/v1](http://localhost:9080/redfish/v1).  It will look almost like a real service from the GET perspective (the headers will not be the same).
 
 Keep in mind that this is a mockup, not a prototype.  But you can do GETs on it and see JSON so it’s as real on the READ side as any prototype (except for ETags and some of the headers).  If you get a plug-in for Chrome or Opera that does REST (there are some free ones out there) or a JSON decoder for pages, you will improve the experience.  The plug-ins let expand and collapse structures making it very easy to interact with.
 
@@ -43,22 +43,22 @@ Every URI represents a resource.  This could be a service, a collection, an elem
 
 The resource format is defined by a Schema.  Each resource has a specific format that is specified in the Redfish Schema that the client can use to determine the semantics about the resource (though we try to make things as intuitive as possible).  The Schema is defined in OData's Schema format.
 
-All properties in the resource are intended to be used as JavaScript variables.  This should accelerate adoption and allow JavaScript web pages and enabled apps to use the data directly.  URIs are persistent across reboots but clients are expected to start at /rest/v1 and do discovery of the URIs from there.  This is known as a "hypermedia API" approach.  Don't fixate on the URIs as URIs can be different between implementations.  Current state objects can be separate from desired state objects.
+All properties in the resource are intended to be used as JavaScript variables.  This should accelerate adoption and allow JavaScript web pages and enabled apps to use the data directly.  URIs are persistent across reboots but clients are expected to start at /redfish/v1 and do discovery of the URIs from there.  This is known as a "hypermedia API" approach.  Don't fixate on the URIs as URIs can be different between implementations.  Current state objects can be separate from desired state objects.
 The section below works better if you are actually doing the GETs
 
 ### Starting: ###
 
-All clients start at the base /rest/v1 object.  Many items are broken down in arrays of references for scalable environments.  Links to other resources are in the "links" section.  You can see links to Systems, managers, the physical Chassis as well as services like Eventing, Tasks, Schema (meta data)). (Note – discovery of service endpoints will be done using UPNP’s SSDP but that’s not in the mockup).
+All clients start at the base /redfish/v1 object.  Many items are broken down in arrays of references for scalable environments.  Links to other resources are in the "links" section.  You can see links to Systems, managers, the physical Chassis as well as services like Eventing, Tasks, Schema (meta data)). (Note – discovery of service endpoints will be done using UPNP’s SSDP but that’s not in the mockup).
 
 ### Versioning: ###
 
-Redfish has two kinds of versioning - the version of the protocol and the version of the resource schema.  The version of the protocol is in the URI - that's why you should start at /rest/v1.  It means you are accessing version one of the protocol.  Version 1 is the only one available now, but we needed to accommodate potential future versions.
+Redfish has two kinds of versioning - the version of the protocol and the version of the resource schema.  The version of the protocol is in the URI - that's why you should start at /redfish/v1.  It means you are accessing version one of the protocol.  Version 1 is the only one available now, but we needed to accommodate potential future versions.
 
 Each resource has a resource type definition. Resource types are defined in versioned namespaces. Each resource instance has the type represented using the OData type annotation "@odata.type". The value of the type annotation is the URI of the resourcce type, including the versioned namespace.  So when you see "@odata.type" : "#ServiceRoot.1.0.0.ServiceRoot", you are dealing with a resource that adheres to the ServiceRoot type definition, defined in 1.0.0 version of the ServiceRoot schema.  The corresponding schema file would be located at /schema/v1/ServiceRoot in the Redfish schema repository. So the full URI for the type would be "/schem/v1/ServiceRoot#ServiceRoot.1.0.0.ServiceRoot. The schema file may contain other types used by in the resource type definition (for example, structured types and enums), which would have the same resource path but the fragment would describe a different type definition, typically within the same namespace.
 
 ### References ###
 
-When you see the links section, it will have a set of references to other resources in it.  URIs are either absolute or relative.  Absolute ones won’t have the IP address but will start with /rest/v1.  If you have a plug in like the Chrome Advanced REST client, you can click on this to fill in the URI for your next GET.
+When you see the links section, it will have a set of references to other resources in it.  URIs are either absolute or relative.  Absolute ones won’t have the IP address but will start with /redfish/v1.  If you have a plug in like the Chrome Advanced REST client, you can click on this to fill in the URI for your next GET.
 
 ### Main Objects ###
 
