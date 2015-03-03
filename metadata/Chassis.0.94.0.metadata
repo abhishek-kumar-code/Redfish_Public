@@ -140,7 +140,7 @@
         <NavigationProperty Name="Contains" Type="Collection(Chassis.Chassis)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="An array of references to any other chassis that this chassis has in it."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resource that represents the chassis that this chassis contains and shall be of type Chassis or another Collection."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resource that represents the chassis that this chassis contains and shall be of type Chassis."/>
           <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
         <Property Name="Oem" Type="Resource.Oem"/>
