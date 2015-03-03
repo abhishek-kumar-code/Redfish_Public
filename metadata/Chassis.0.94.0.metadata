@@ -19,8 +19,8 @@
   <edmx:Reference Uri="http://dmtf.org/schema/v1/Power">
     <edmx:Include Namespace="Power.0.95.0" Alias="Power"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://dmtf.org/schema/v1/ManagerAccount">
-    <edmx:Include Namespace="ManagerAccount.0.95.0" Alias="ManagerAccount"/>
+  <edmx:Reference Uri="http://dmtf.org/schema/v1/Manager">
+    <edmx:Include Namespace="Manager.0.95.0" Alias="Manager"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/ComputerSystem">
     <edmx:Include Namespace="ComputerSystem.0.95.0" Alias="ComputerSystem"/>
@@ -113,7 +113,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resource that this physical container is associated with and shall reference a resource of type ComputerSystem.  If a ComputerSystem is also referenced in a Chassis that is referenced in a Contains link from this resource, that ComputerSystem shall not be referenced in this Chassis."/>
           <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="ManagedBy" Type="Collection(ManagerAccount.ManagerAccount)">
+        <NavigationProperty Name="ManagedBy" Type="Collection(Manager.Manager)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the managers contained in this chassis."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resource that manages this chassis and shall reference a resource of type Manager."/>
