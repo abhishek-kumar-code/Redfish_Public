@@ -113,13 +113,14 @@
         <Property Name="Boot" Type="ComputerSystem.Boot"  Nullable="false">
           <Annotation Term="OData.Description" String="This object contains the boot information for the current resource."/>
         </Property>
-        <Property Name="Bios" Type="ComputerSystem.Bios"  Nullable="false">
-          <Annotation Term="OData.Description" String="This object provides information about the System BIOS."/>
+        <Property Name="BiosVersion" Type="Edm.String">
+          <Annotation Term="OData.Description" String="The version of the system BIOS or primary system firmware."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the version string of the currently installed and running BIOS (for x86 systems).  For other systems, the value may contain a version string representing the primary system firmware."/>
         </Property>
-        <Property Name="Processors" Type="ComputerSystem.Processors"  Nullable="false">
+        <Property Name="ProcessorSummary" Type="ComputerSystem.ProcessorSummary"  Nullable="false">
           <Annotation Term="OData.Description" String="This object describes the central processors of the system in general detail."/>
         </Property>
-        <Property Name="Memory" Type="ComputerSystem.Memory"  Nullable="false">
+        <Property Name="MemorySummary" Type="ComputerSystem.MemorySummary"  Nullable="false">
           <Annotation Term="OData.Description" String="This object describes the central memory of the system in general detail."/>
         </Property>
         <Property Name="Actions" Type="ComputerSystem.Actions" Nullable="false">
@@ -311,29 +312,17 @@
         </Member>
       </EnumType>
 
-      <ComplexType Name="Bios">
-        <Annotation Term="DMTF.DynamicPropertyPatterns">
-          <Collection>
-            <Record>
-              <PropertyValue Property="Pattern" String="\\.[A-Za-z0-9]+$"/>
-              <PropertyValue Property="Type" String="Edm.String"/>
-            </Record>
-          </Collection>
-        </Annotation>
-        <Property Name="Current" Type="Firmware.FWVersion" Nullable="false"/>
-      </ComplexType>
-
-      <ComplexType Name="Processors">
+      <ComplexType Name="ProcessorSummary">
         <Property Name="Count" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The number of processors in the system."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the number of central processors in the system."/>
           <Annotation Term="Validation.Minimum" Int="0" />
         </Property>
-        <Property Name="ProcessorFamily" Type="Edm.String">
+        <Property Name="Model" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="The processor family for the processor in this system."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain the processor family for the central processors in the system, per the description in Table 22 of the SMBIOS Specification DSP0134 2.8 or later."/>
+          <Annotation Term="OData.Description" String="The processor model for the primary or majority of processors in this system."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the processor model for the central processors in the system, per the description in Table 22 of the SMBIOS Specification DSP0134 2.8 or later."/>
         </Property>
         <Property Name="Status" Type="Resource.Status"  Nullable="false"/>
         <Annotation Term="OData.Description" String="This object describes the central processors of the system in general detail."/>
