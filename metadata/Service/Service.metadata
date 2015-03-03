@@ -22,6 +22,9 @@
   <edmx:Reference Uri="http://dmtf.org/schema/v1/EventService.0.95.0">
     <edmx:Include Namespace="EventService.0.95.0" Alias="EventService"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://dmtf.org/schema/v1/Firmware.0.95.0">
+    <edmx:Include Namespace="Firmware.0.95.0" Alias="Firmware"/>
+  </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/IPAddresses.0.95.0">
     <edmx:Include Namespace="IPAddresses.0.95.0" Alias="IPAddresses"/>
   </edmx:Reference>
@@ -58,6 +61,9 @@
   <edmx:Reference Uri="http://dmtf.org/schema/v1/Session.0.95.0">
     <edmx:Include Namespace="Session.0.95.0" Alias="Session"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://dmtf.org/schema/v1/SessionService.0.95.0">
+    <edmx:Include Namespace="SessionService.0.95.0" Alias="SessionService"/>
+  </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/SimpleStorage.0.95.0">
     <edmx:Include Namespace="SimpleStorage.0.95.0" Alias="SimpleStorage"/>
   </edmx:Reference>
@@ -73,7 +79,6 @@
   <edmx:Reference Uri="http://dmtf.org/schema/v1/VirtualMedia.0.95.0">
     <edmx:Include Namespace="VirtualMedia.0.95.0" Alias="VirtualMedia"/>
   </edmx:Reference>
-
   <edmx:Reference Uri="http://dmtf.org/schema/v1/DMTFExtensions">
     <edmx:Include Namespace="DMTFExtensions.0.95.0" Alias="DMTF"/>
   </edmx:Reference>
@@ -89,7 +94,7 @@
   <edmx:Reference Uri="/redfish/v1/schema/Service.Annotations">
     <edmx:IncludeAnnotations TermNamespace="Annotations" Alias="Annotations"/>
   </edmx:Reference> 
-  
+
   <edmx:DataServices>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Service">
       <EntityContainer Name="Service" Extends="ServiceRoot.ServiceContainer">
