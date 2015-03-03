@@ -5,60 +5,60 @@
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/DMTFExtensions">
-    <edmx:Include Namespace="DMTFExtensions.0.94.0" Alias="DMTF"/>
-    <edmx:Include Namespace="Validation.0.94.0" Alias="Validation"/>
+    <edmx:Include Namespace="DMTFExtensions.0.95.0" Alias="DMTF"/>
+    <edmx:Include Namespace="Validation.0.95.0" Alias="Validation"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/EventService">
-    <edmx:Include Namespace="EventService.0.94.0" Alias="EventService"/>
+    <edmx:Include Namespace="EventService.0.95.0" Alias="EventService"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/AccountService">
-    <edmx:Include Namespace="AccountService.0.94.0" Alias="AccountService"/>
+    <edmx:Include Namespace="AccountService.0.95.0" Alias="AccountService"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/ComputerSystem">
-    <edmx:Include Namespace="ComputerSystem.0.94.0" Alias="ComputerSystem"/>
+    <edmx:Include Namespace="ComputerSystem.0.95.0" Alias="ComputerSystem"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/Chassis">
-    <edmx:Include Namespace="Chassis.0.94.0" Alias="Chassis"/>
+    <edmx:Include Namespace="Chassis.0.95.0" Alias="Chassis"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/Manager">
-    <edmx:Include Namespace="Managers.0.94.0" Alias="Manager"/>
+    <edmx:Include Namespace="Managers.0.95.0" Alias="Manager"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/TaskService">
-    <edmx:Include Namespace="TaskService.0.94.0" Alias="TaskService"/>
+    <edmx:Include Namespace="TaskService.0.95.0" Alias="TaskService"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/SessionService">
-    <edmx:Include Namespace="SessionService.0.94.0" Alias="SessionService"/>
+    <edmx:Include Namespace="SessionService.0.95.0" Alias="SessionService"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/Messages">
-    <edmx:Include Namespace="Messages.0.94.0" Alias="Messages"/>
+    <edmx:Include Namespace="Messages.0.95.0" Alias="Messages"/>
   </edmx:Reference>
 
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ServiceRoot.0.94.0" Alias="ServiceRoot">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ServiceRoot.0.95.0" Alias="ServiceRoot">
 
       <EntityContainer Name="ServiceContainer">
         <Singleton Name="Service" Type="ServiceRoot.ServiceRoot"/>
       </EntityContainer>
 
-      <!-- This object contains top-level properties of the SPMA service. -->
+      <!-- This object contains top-level properties of the Redfish service. -->
       <EntityType Name="ServiceRoot" BaseType="Resource.Resource">
-        <Annotation Term="OData.Description" String="This object represents the root SPMA service."/>
-        <Annotation Term="OData.LongDescription" String="This object represents the root SPMA service.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification."/>
+        <Annotation Term="OData.Description" String="This object represents the root Redfish service."/>
+        <Annotation Term="OData.LongDescription" String="This object represents the root Redfish service.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
         <Property Name="Time" Type="Edm.DateTimeOffset">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="The current time as reported by the owner of this SPMA Service"/>
-          <Annotation Term="OData.LongDescription" String="The value of this string shall represent the time of the SPMA service. "/>
+          <Annotation Term="OData.Description" String="The current time as reported by the owner of this Redfish Service"/>
+          <Annotation Term="OData.LongDescription" String="The value of this string shall represent the time of the Redfish service. "/>
         </Property>
         <Property Name="ServiceVersion" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="The version of the SPMA service"/>
-          <Annotation Term="OData.LongDescription" String="The value of this string shall represent the version of the SPMA service.  The format of this string shall be of the format majorversion.minorversion.errata in compliance with Protocol Version section of the SPMA specification. "/>
+          <Annotation Term="OData.Description" String="The version of the Redfish service"/>
+          <Annotation Term="OData.LongDescription" String="The value of this string shall represent the version of the Redfish service.  The format of this string shall be of the format majorversion.minorversion.errata in compliance with Protocol Version section of the Redfish specification. "/>
           <Annotation Term="Validation.Pattern" String="^\\d+\\.\\d+\\.\\d+$"/>
         </Property>
         <Property Name="UUID" Type="ServiceRoot.UUID">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Unique identifier for a service instance.  This value should be an exact match of the UUID value returned in a 200OK from an SSDP M-SEARCH request during discovery."/>
-          <Annotation Term="OData.LongDescription" String="The value of this string shall represent the id of the SPMA service instance.  The format of this string shall be a 32-byte value in the form 8-4-4-4-12.  This value shall be an exact match of the UUID value returned in a 200OK from an SSDP M-SEARCH request during discovery."/>
+          <Annotation Term="OData.LongDescription" String="The value of this string shall represent the id of the Redfish service instance.  The format of this string shall be a 32-byte value in the form 8-4-4-4-12.  This value shall be an exact match of the UUID value returned in a 200OK from an SSDP M-SEARCH request during discovery."/>
         </Property>
         <Property Name="Links" Type="ServiceRoot.ServiceRootLinks" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>

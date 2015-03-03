@@ -5,11 +5,11 @@
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/Resource">
-    <edmx:Include Namespace="Resource.0.94.0" Alias="Resource"/>
+    <edmx:Include Namespace="Resource.0.95.0" Alias="Resource"/>
   </edmx:Reference>
 
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="VirtualMedia.0.94.0" Alias="VirtualMedia">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="VirtualMedia.0.95.0" Alias="VirtualMedia">
 
       <!-- This is the schema definition for the Virtual Media Service. -->
       <EntityType Name="VirtualMediaCollection" BaseType="Resource.ResourceCollection">
@@ -29,7 +29,7 @@
 
       <EntityType Name="VirtualMedia" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition for the Virtual Media Service."/>
-        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a virtual media service for an SPMA implementation."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a virtual media service for a Redfish implementation."/>
         <Property Name="ImageName" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The current image name"/>

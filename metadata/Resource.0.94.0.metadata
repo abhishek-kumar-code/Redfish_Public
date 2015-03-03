@@ -5,14 +5,14 @@
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/DMTFExtensions">
-    <edmx:Include Namespace="DMTFExtensions.0.94.0" Alias="DMTF"/>
+    <edmx:Include Namespace="DMTFExtensions.0.95.0" Alias="DMTF"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/Messages">
-    <edmx:Include Namespace="Messages.0.94.0" Alias="Messages"/>
+    <edmx:Include Namespace="Messages.0.95.0" Alias="Messages"/>
   </edmx:Reference>
 
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.0.94.0" Alias="Resource">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.0.95.0" Alias="Resource">
 
       <!--Base entity type for array members-->
       <EntityType Name="Item" Abstract="true">
@@ -44,23 +44,23 @@
         <Property Name="Id" Nullable="false" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Uniquely identifies the resource within the collection of like resources."/>
-          <Annotation Term="OData.LongDescription" String="This property represents an identifier for the resource.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification."/>
+          <Annotation Term="OData.LongDescription" String="This property represents an identifier for the resource.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
         </Property>
         <Property Name="Description" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/ReadWrite"/>
           <Annotation Term="OData.Description" String="Provides a description of this resource and is used for commonality  in the schema definitions."/>
-          <Annotation Term="OData.LongDescription" String="This object represents the Description property.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification."/>
+          <Annotation Term="OData.LongDescription" String="This object represents the Description property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
         </Property>
         <Property Name="Name" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description"  String="The name of the resource or array element."/>
-          <Annotation Term="OData.LongDescription" String="This object represents the Name property.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification. The value of this string shall be of the format for the reserved word *Name*."/>
+          <Annotation Term="OData.LongDescription" String="This object represents the Name property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification. The value of this string shall be of the format for the reserved word *Name*."/>
           <Annotation Term="DMTF.Required"/>
         </Property>
         <Property Name="Modified" Type="Edm.DateTimeOffset" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The date-time stamp that the object was last modified."/>
-          <Annotation Term="OData.LongDescription" String="This object represents the Modified property.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification. The value of this string shall be of the format for the reserved word *Modified*."/>
+          <Annotation Term="OData.LongDescription" String="This object represents the Modified property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification. The value of this string shall be of the format for the reserved word *Modified*."/>
         </Property>
         <Property Name="Oem" Type="Resource.Oem">
           <Annotation Term="OData.Description" String="This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections."/>
@@ -76,18 +76,18 @@
         <Property Name="Description" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Provides a description of this resource and is used for commonality  in the schema definitions."/>
-          <Annotation Term="OData.LongDescription" String="This object represents the Description property.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification."/>
+          <Annotation Term="OData.LongDescription" String="This object represents the Description property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
         </Property>
         <Property Name="Name" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description"  String="The name of the resource or array element."/>
-          <Annotation Term="OData.LongDescription" String="This object represents the Name property.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification. The value of this string shall be of the format for the reserved word *Name*."/>
+          <Annotation Term="OData.LongDescription" String="This object represents the Name property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification. The value of this string shall be of the format for the reserved word *Name*."/>
           <Annotation Term="DMTF.Required"/>
         </Property>
         <Property Name="Modified" Type="Edm.DateTimeOffset" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The date-time stamp that the object was last modified."/>
-          <Annotation Term="OData.LongDescription" String="This object represents the Modified property.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification. The value of this string shall be of the format for the reserved word *Modified*."/>
+          <Annotation Term="OData.LongDescription" String="This object represents the Modified property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification. The value of this string shall be of the format for the reserved word *Modified*."/>
         </Property>
         <Property Name="Oem" Type="Resource.Oem">
           <Annotation Term="OData.Description" String="This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections."/>
@@ -98,7 +98,7 @@
       <!--Complex type that serves as a "property bag" for OEM properties-->
       <ComplexType Name="Oem">
         <Annotation Term="OData.Description" String="Oem extension object."/>
-        <Annotation Term="OData.LongDescription" String="This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the SPMA specification."/>
+        <Annotation Term="OData.LongDescription" String="This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
       </ComplexType>
 
       <!--This object represents the standard status structure for resources.-->
@@ -111,12 +111,12 @@
         <Property Name="HealthRollup" Type="Resource.Health">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This represents the overall health state from the view of this resource."/>
-          <Annotation Term="OData.LongDescription" String="This property shall represent the HealthState of the resource and its dependent resources.  The values shall conform to those defined in the SPMA specification."/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the HealthState of the resource and its dependent resources.  The values shall conform to those defined in the Redfish specification."/>
         </Property>
         <Property Name="Health" Type="Resource.Health">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This represents the health state of this resource in the absence of its dependent resources."/>
-          <Annotation Term="OData.LongDescription" String="This property shall represent the HealthState of the resource without considering its dependent resources. The values shall conform to those defined in the SPMA specification."/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the HealthState of the resource without considering its dependent resources. The values shall conform to those defined in the Redfish specification."/>
         </Property>
         <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
       </ComplexType>
@@ -160,7 +160,7 @@
         <Annotation Term="OData.IsUrl"/>
       </TypeDefinition>
 
-      <!-- This represents the objects used for Settings in the SPMA specification. -->
+      <!-- This represents the objects used for Settings in the Redfish specification. -->
       <ComplexType Name="Settings">
         <Property Name="href" Type="Resource.SettingsRef"  Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
@@ -169,7 +169,7 @@
         </Property>
       </ComplexType>
 
-      <!-- This represents the objects used for SettingsResult in the SPMA specification. -->
+      <!-- This represents the objects used for SettingsResult in the Redfish specification. -->
       <ComplexType Name="SettingsResult">
         <Property Name="Operation" Type="Resource.SettingsOperation"  Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>

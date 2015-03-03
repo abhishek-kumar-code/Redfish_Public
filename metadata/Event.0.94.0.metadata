@@ -5,20 +5,20 @@
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/DMTFExtensions">
-    <edmx:Include Namespace="DMTFExtensions.0.94.0" Alias="DMTF"/>
-    <edmx:Include Namespace="Validation.0.94.0" Alias="Validation"/>
+    <edmx:Include Namespace="DMTFExtensions.0.95.0" Alias="DMTF"/>
+    <edmx:Include Namespace="Validation.0.95.0" Alias="Validation"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/Resource">
-    <edmx:Include Namespace="Resource.0.94.0" Alias="Resource"/>
+    <edmx:Include Namespace="Resource.0.95.0" Alias="Resource"/>
   </edmx:Reference>
   
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Event.0.94.0" Alias="Event">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Event.0.95.0" Alias="Event">
 
       <!-- This schema defines an event and its respective properties. -->
       <EntityType Name="Event" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition for Events.  It represents the properties for the events themselves and not subscriptions or any other resource."/>
-        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent an event for an SPMA implementation."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent an event for a Redfish implementation."/>
         <Property Name="Events" Type="Collection(Event.EventRecordWithContext)" Nullable="false">
           <Annotation Term="OData.Description" String="Each event in this array has a set of properties that describe the event.  Since this is an array, more than one event can be sent simultaneously."/>
           <Annotation Term="DMTF.Required"/>
@@ -59,12 +59,12 @@
         <Property Name="EventTimestamp" Type="Edm.DateTimeOffset" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is time the event occurred."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the time the event occurred where the value shall be consistent with the SPMA service time that is also used for the values of the Modified property."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the time the event occurred where the value shall be consistent with the Redfish service time that is also used for the values of the Modified property."/>
         </Property>
         <Property Name="Severity" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is the severity of the event."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the severity of the event, as defined in the Status section of the SPMA specificaiton."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the severity of the event, as defined in the Status section of the Redfish specificaiton."/>
         </Property>
         <Property Name="Message" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
@@ -74,14 +74,14 @@
         <Property Name="MessageID" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is the key for this message which can be used to look up the message in a message registry."/>
-          <Annotation Term="OData.LongDescription" String="This property shall be a key into message registry as described in the SPMA specification."/>
+          <Annotation Term="OData.LongDescription" String="This property shall be a key into message registry as described in the Redfish specification."/>
           <Annotation Term="Validation.Pattern" String="^[A-Za-z0-9]+\\.\\d+\\.\\d+.[A-Za-z0-9.]+$"/>
           <Annotation Term="DMTF.Required"/>
         </Property>
         <Property Name="MessageArgs" Type="Collection(Edm.String)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This array of message arguments are substituted for the arguments in the message when looked up in the message registry."/>
-          <Annotation Term="OData.LongDescription" String="This property has the same semantics as the MessageArgs property in the Event schema for SPMA."/>
+          <Annotation Term="OData.LongDescription" String="This property has the same semantics as the MessageArgs property in the Event schema for Redfish."/>
         </Property>
         <Property Name="OriginOfCondition" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>

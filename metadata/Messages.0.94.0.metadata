@@ -2,20 +2,20 @@
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
 
   <edmx:Reference Uri="http://dmtf.org/schema/v1/DMTFExtensions">
-    <edmx:Include Namespace="DMTFExtensions.0.94.0" Alias="DMTF"/>
-    <edmx:Include Namespace="Validation.0.94.0" Alias="Validation"/>
+    <edmx:Include Namespace="DMTFExtensions.0.95.0" Alias="DMTF"/>
+    <edmx:Include Namespace="Validation.0.95.0" Alias="Validation"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/Resource">
-    <edmx:Include Namespace="Resource.0.94.0" Alias="Resource"/>
+    <edmx:Include Namespace="Resource.0.95.0" Alias="Resource"/>
   </edmx:Reference>
   
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Messages.0.94.0" Alias="Messages">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Messages.0.95.0" Alias="Messages">
 
       <!--This schema defines a MessageRegistry and its respective properties. -->
       <EntityType Name="MessageRegistry" BaseType="Resource.Resource">
-        <Annotation Term="OData.Description" String="This is the schema definition for all Message Registries.  It represents the properties for the registries themselves.  The MessageID is formed per the SPMA specification.  It consists of the RegistryPrefix concatenated with the version concatenated with the unique identifier for the message registry entry."/>
-        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a message registry for an SPMA implementation."/>
+        <Annotation Term="OData.Description" String="This is the schema definition for all Message Registries.  It represents the properties for the registries themselves.  The MessageID is formed per the Redfish specification.  It consists of the RegistryPrefix concatenated with the version concatenated with the unique identifier for the message registry entry."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a message registry for a Redfish implementation."/>
         <Property Name="Language" Nullable="false" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is the RFC 5646 compliant language code for the registry."/>
@@ -31,7 +31,7 @@
         <Property Name="Version" Nullable="false" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is the message registry version which is used in the middle portion of a messageID."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the version of this message registry.   The format of this string shall be of the format majorversion.minorversion.errata in compliance with Protocol Version section of the SPMA specification"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the version of this message registry.   The format of this string shall be of the format majorversion.minorversion.errata in compliance with Protocol Version section of the Redfish specification"/>
           <Annotation Term="DMTF.Required"/>
         </Property>
         <Property Name="OwningEntity" Nullable="false" Type="Edm.String">
@@ -63,7 +63,7 @@
         <Property Name="Description" Nullable="false" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a short description of how and when this message is to be used."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate how and when this message is returned by the SPMA service."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate how and when this message is returned by the Redfish service."/>
           <Annotation Term="DMTF.Required"/>
         </Property>
         <Property Name="Message" Nullable="false" Type="Edm.String">
@@ -75,7 +75,7 @@
         <Property Name="Severity" Nullable="false" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is the severity of the message."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the severity of the condition resulting in the message, as defined in the Status section of the SPMA specification."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the severity of the condition resulting in the message, as defined in the Status section of the Redfish specification."/>
           <Annotation Term="DMTF.Required"/>
         </Property>
         <Property Name="NumberOfArgs" Nullable="false" Type="Edm.Int64">
@@ -107,7 +107,7 @@
         <Property Name="MessageId" Nullable="false" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is the key for this message which can be used to look up the message in a message registry."/>
-          <Annotation Term="OData.LongDescription" String="This property shall be a key into message registry as described in the SPMA specification."/>
+          <Annotation Term="OData.LongDescription" String="This property shall be a key into message registry as described in the Redfish specification."/>
           <Annotation Term="DMTF.Required"/>
           <Annotation Term="Validation.Pattern" String="^[A-Za-z0-9]+\\.\\d+\\.\\d+.[A-Za-z0-9.]+$"/>
         </Property>
@@ -129,7 +129,7 @@
         <Property Name="Severity" Nullable="false" Type="Resource.Health">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is the severity of the errors."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the severity of the error, as defined in the SPMA specificaiton."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the severity of the error, as defined in the Redfish specificaiton."/>
         </Property>
         <Property Name="Resolution" Nullable="false" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>

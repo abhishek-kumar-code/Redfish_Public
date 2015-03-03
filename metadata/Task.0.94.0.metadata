@@ -5,14 +5,14 @@
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/DMTFExtensions">
-    <edmx:Include Namespace="DMTFExtensions.0.94.0" Alias="DMTF"/>
+    <edmx:Include Namespace="DMTFExtensions.0.95.0" Alias="DMTF"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/Resource">
-    <edmx:Include Namespace="Resource.0.94.0" Alias="Resource"/>
+    <edmx:Include Namespace="Resource.0.95.0" Alias="Resource"/>
   </edmx:Reference>
   
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Tasks.0.94.0" Alias="Tasks">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Tasks.0.95.0" Alias="Tasks">
 
       <!-- This is the schema definition for a Task resource. -->
       <EntityType Name="TaskCollection" BaseType="Resource.ResourceCollection">
@@ -32,7 +32,7 @@
 
       <EntityType Name="Task" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition for a Task resource."/>
-        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a task for an SPMA implementation."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a task for a Redfish implementation."/>
         <Property Name="TaskState" Type="Tasks.TaskState" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The state of the task."/>
@@ -51,7 +51,7 @@
         <Property Name="TaskStatus" Type="Resource.Health" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is the completion status of the task."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the completion status of the task, as defined in the Status section of the SPMA specification and shall not be set until the task has completed."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the completion status of the task, as defined in the Status section of the Redfish specification and shall not be set until the task has completed."/>
         </Property>
       </EntityType>
 

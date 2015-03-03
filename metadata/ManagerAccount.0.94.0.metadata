@@ -5,14 +5,14 @@
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/DMTFExtensions">
-    <edmx:Include Namespace="DMTFExtensions.0.94.0" Alias="DMTF"/>
+    <edmx:Include Namespace="DMTFExtensions.0.95.0" Alias="DMTF"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/Resource">
-    <edmx:Include Namespace="Resource.0.94.0" Alias="Resource"/>
+    <edmx:Include Namespace="Resource.0.95.0" Alias="Resource"/>
   </edmx:Reference>
   
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ManagerAccount.0.94.0" Alias="ManagerAccount">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ManagerAccount.0.95.0" Alias="ManagerAccount">
       
       <!-- This schema defines a user account and its respective properties. -->
       <EntityType Name="ManagerAccountCollection" BaseType="Resource.ResourceCollection">
@@ -31,7 +31,7 @@
       </ComplexType>
       
       <EntityType Name="ManagerAccount" BaseType="Resource.Resource">
-        <Annotation Term="OData.Description" String="This schema defines a user account to be used in conjunction with a manager.  This will affect the SPMA service connection if this manager is responsible for the SPMA service."/>
+        <Annotation Term="OData.Description" String="This schema defines a user account to be used in conjunction with a manager.  This will affect the Redfish service connection if this manager is responsible for the Redfish service."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent resources that represent the user accounts for the manager."/>
         <Property Name="Password" Type="Edm.String">
           <Annotation Term="OData.Description" String="This property is used with a PATCH or PUT to write the password for the account.  This property is null on a GET."/>

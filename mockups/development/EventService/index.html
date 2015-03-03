@@ -1,7 +1,7 @@
 {
-    "@odata.context": "/rest/v1/$metadata#EventService",
-    "@odata.id": "/rest/v1/EventService",
-    "@odata.type": "#EventService.0.94.0.EventService",
+    "@odata.context": "/redfish/v1/$metadata#EventService",
+    "@odata.id": "/redfish/v1/EventService",
+    "@odata.type": "#EventService.0.95.0.EventService",
     "Id": "EventService",
     "Name": "Event Service",
     "Modified": "2013-03-07T14:44",
@@ -22,13 +22,13 @@
     ],
     "Links": {
         "Subscriptions": {
-            "@odata.id": "/rest/v1/EventService/Subscriptions"
+            "@odata.id": "/redfish/v1/EventService/Subscriptions"
         },
         "Oem": {}
     },
     "Actions": {
         "#EventService.SendTestEvent": {
-              "target": "/rest/v1/EventService/Actions/EventService.SendTestEvent",
+              "target": "/redfish/v1/EventService/Actions/EventService.SendTestEvent",
               "EventType@DMTF.AllowableValues": [
                   "StatusChange",
                   "ResourceUpdated",
