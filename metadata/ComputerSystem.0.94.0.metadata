@@ -113,13 +113,14 @@
         <Property Name="Boot" Type="ComputerSystem.Boot"  Nullable="false">
           <Annotation Term="OData.Description" String="This object contains the boot information for the current resource."/>
         </Property>
-        <Property Name="Bios" Type="ComputerSystem.Bios"  Nullable="false">
-          <Annotation Term="OData.Description" String="This object provides information about the System BIOS."/>
+        <Property Name="BiosVersion" Type="Edm.String">
+          <Annotation Term="OData.Description" String="The version of the system BIOS or primary system firmware."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the version string of the currently installed and running BIOS (for x86 systems).  For other systems, the value may contain a version string representing the primary system firmware."/>
         </Property>
-        <Property Name="Processors" Type="ComputerSystem.Processors"  Nullable="false">
+        <Property Name="ProcessorSummary" Type="ComputerSystem.ProcessorSummary"  Nullable="false">
           <Annotation Term="OData.Description" String="This object describes the central processors of the system in general detail."/>
         </Property>
-        <Property Name="Memory" Type="ComputerSystem.Memory"  Nullable="false">
+        <Property Name="MemorySummary" Type="ComputerSystem.MemorySummary"  Nullable="false">
           <Annotation Term="OData.Description" String="This object describes the central memory of the system in general detail."/>
         </Property>
         <Property Name="Actions" Type="ComputerSystem.Actions" Nullable="false">
@@ -248,26 +249,17 @@
         <Property Name="BootSourceOverrideTarget" Type="ComputerSystem.BootSource">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/ReadWrite"/>
           <Annotation Term="OData.Description" String="The current boot source to be used at next boot instead of the normal boot device, if BootSourceOverrideEnabled is true."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the source to boot the system from, overriding the normal boot order.  The value of this property shall be one of the values in the BootSourceOverrideSupported of this resource."/>
-        </Property>
-        <Property Name="BootSourceOverrideSupported" Type="Collection(ComputerSystem.BootSourceSupported)">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.LongDescription" String="The values of this array shall be properties that shall contain the sources from which this system can be booted, overriding the normal boot order. Pxe indicates to PXE boot from the primary NIC; Floppy, Cd, Usb, Hdd indicates to boot from their devices respectively.  BiosSetup indicates to boot into the native BIOS screen setup.  Utilities &amp; Diags indicates to boot from the local utilities or diags partitions and UefiTarget indicates to boot from the UEFI device path found in UefiTargetBootSourceOverride."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the source to boot the system from, overriding the normal boot order.  The valid values for this property are specified through the DMTF.AllowableValues annotation. Pxe indicates to PXE boot from the primary NIC; Floppy, Cd, Usb, Hdd indicates to boot from their devices respectively.  BiosSetup indicates to boot into the native BIOS screen setup.  Utilities and Diags indicate to boot from the local utilities or diags partitions and UefiTarget indicates to boot from the UEFI device path found in UefiTargetBootSourceOverride."/>
         </Property>
         <Property Name="BootSourceOverrideEnabled" Type="ComputerSystem.BootSourceOverrideEnabled">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/ReadWrite"/>
           <Annotation Term="OData.Description" String="Describes the state of the Boot Source Override feature"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be Once if this is a one time boot override and Continuous if this selection should remain active until cancelled."/>
         </Property>
-        <Property Name="UefiTargetBootSourceOverrideSupported" Type="Collection(Edm.String)" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="An arrary of the valid UEFI targets available to the Boot Source Override feature. These values can be used in conjunction with BootSourceOverrideTarget (set to UefiTarget) and UefiTargetBootSourceOverride to select a specifc UEFI device for booting."/>
-          <Annotation Term="OData.LongDescription" String="The values of this array shall be properties that shall contain the UEFI boot target sources from which this system can be booted, overriding the normal boot order.  BootSourceOverrideEnabled = Continuous is not supported for Uefi Boot Source Override as this setting is defined in UEFI as a one time boot only."/>
-        </Property>
         <Property Name="UefiTargetBootSourceOverride" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/ReadWrite"/>
           <Annotation Term="OData.Description" String="This property is the Uefi Device Path of the device to boot from when BootSourceOverrideSupported is UefiTarget."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the UEFI device path of the override boot target.  The value of this property is only valid if BootSourceOverride is equal to the value UefiTarget."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the UEFI device path of the override boot target.  The valid values for this property are specified through the DMTF.AllowableValues annotation. BootSourceOverrideEnabled = Continuous is not supported for Uefi Boot Source Override as this setting is defined in UEFI as a one time boot only."/>
         </Property>
         <Annotation Term="OData.Description" String="This object contains the boot information for the current resource."/>
       </ComplexType>
@@ -308,43 +300,6 @@
         </Member>
       </EnumType>
 
-      <!-- This enumeration has the same members as BootSource enumeration, but different definition for the members -->
-      <EnumType Name="BootSourceSupported">
-        <Member Name="None">
-          <Annotation Term="OData.Description" String="This system does not support any Boot Source Override targets"/>
-        </Member>
-        <Member Name="Pxe">
-          <Annotation Term="OData.Description" String="This system supports PXE as a Boot Source Override target"/>
-        </Member>
-        <Member Name="Floppy">
-          <Annotation Term="OData.Description" String="This system supports a Floppy disk as a Boot Source Override target"/>
-        </Member>
-        <Member Name="Cd">
-          <Annotation Term="OData.Description" String="This system supports a CD/DVD disc as a Boot Source Override target"/>
-        </Member>
-        <Member Name="Usb">
-          <Annotation Term="OData.Description" String="This system supports a USB device as a Boot Source Override target"/>
-        </Member>
-        <Member Name="Hdd">
-          <Annotation Term="OData.Description" String="This system supports a hard disk as a Boot Source Override target"/>
-        </Member>
-        <Member Name="BiosSetup">
-          <Annotation Term="OData.Description" String="This system supports BIOS Setup as a Boot Source Override target"/>
-        </Member>
-        <Member Name="Utilities">
-          <Annotation Term="OData.Description" String="This system supports the manufacturer's Utilities program(s) as a Boot Source Override target"/>
-        </Member>
-        <Member Name="Diags">
-          <Annotation Term="OData.Description" String="This system supports the manufacturer's Diagnostics program as a Boot Source Override target"/>
-        </Member>
-        <Member Name="UefiShell">
-          <Annotation Term="OData.Description" String="This system supports the UEFI Shell as a Boot Source Override target"/>
-        </Member>
-        <Member Name="UefiTarget">
-          <Annotation Term="OData.Description" String="This system supports a UEFI Device, specified in the UefiTargetBootSourceOverride property, as a Boot Source Override target"/>
-        </Member>
-      </EnumType>
-
       <EnumType Name="BootSourceOverrideEnabled">
         <Member Name="Disabled">
           <Annotation Term="OData.Description" String="The system will boot as normal"/>
@@ -357,29 +312,17 @@
         </Member>
       </EnumType>
 
-      <ComplexType Name="Bios">
-        <Annotation Term="DMTF.DynamicPropertyPatterns">
-          <Collection>
-            <Record>
-              <PropertyValue Property="Pattern" String="\\.[A-Za-z0-9]+$"/>
-              <PropertyValue Property="Type" String="Edm.String"/>
-            </Record>
-          </Collection>
-        </Annotation>
-        <Property Name="Current" Type="Firmware.FWVersion" Nullable="false"/>
-      </ComplexType>
-
-      <ComplexType Name="Processors">
+      <ComplexType Name="ProcessorSummary">
         <Property Name="Count" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The number of processors in the system."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the number of central processors in the system."/>
           <Annotation Term="Validation.Minimum" Int="0" />
         </Property>
-        <Property Name="ProcessorFamily" Type="Edm.String">
+        <Property Name="Model" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="The processor family for the processor in this system."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain the processor family for the central processors in the system, per the description in Table 22 of the SMBIOS Specification DSP0134 2.8 or later."/>
+          <Annotation Term="OData.Description" String="The processor model for the primary or majority of processors in this system."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the processor model for the central processors in the system, per the description in Table 22 of the SMBIOS Specification DSP0134 2.8 or later."/>
         </Property>
         <Property Name="Status" Type="Resource.Status"  Nullable="false"/>
         <Annotation Term="OData.Description" String="This object describes the central processors of the system in general detail."/>
