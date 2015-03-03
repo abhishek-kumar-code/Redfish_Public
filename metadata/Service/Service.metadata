@@ -22,11 +22,15 @@
   <edmx:Reference Uri="http://dmtf.org/schema/v1/EventService.0.95.0">
     <edmx:Include Namespace="EventService.0.95.0" Alias="EventService"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://dmtf.org/schema/v1/Firmware.0.95.0">
+    <edmx:Include Namespace="Firmware.0.95.0" Alias="Firmware"/>
+  </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/IPAddresses.0.95.0">
     <edmx:Include Namespace="IPAddresses.0.95.0" Alias="IPAddresses"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/ListenerDestination.0.95.0">
     <edmx:Include Namespace="ListenerDestination.0.95.0" Alias="ListenerDestination"/>
+  </edmx:Reference>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/LogEntry.0.95.0">
     <edmx:Include Namespace="LogEntry.0.95.0" Alias="LogEntry"/>
@@ -58,8 +62,12 @@
   <edmx:Reference Uri="http://dmtf.org/schema/v1/Session.0.95.0">
     <edmx:Include Namespace="Session.0.95.0" Alias="Session"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://dmtf.org/schema/v1/SessionService.0.95.0">
+    <edmx:Include Namespace="SessionService.0.95.0" Alias="SessionService"/>
+  </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/SimpleStorage.0.95.0">
     <edmx:Include Namespace="SimpleStorage.0.95.0" Alias="SimpleStorage"/>
+  </edmx:Reference>
   </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/Task.0.95.0">
     <edmx:Include Namespace="Task.0.95.0" Alias="Task"/>
