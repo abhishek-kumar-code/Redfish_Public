@@ -1,8 +1,8 @@
 {
     "$schema": "http://www.redfishspecification.org/schema",
     "definitions":{
-        "EthernetNetworkInterface":{
-            "title": "EthernetNetworkInterface.0.94.0",
+        "EthernetNetworkInterface":{ 
+            "title": "EthernetNetworkInterface.0.95.0",
             "type": "object",
             "additionalProperties": false,
             "properties": {
@@ -62,21 +62,6 @@
                     "pattern": "^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$",
                     "description": "This is the currently assigned MAC address for this NIC.",
                     "longDescription": "The value of this property shall be the effective current MAC Address of this interface.  If an assignable MAC address is not supported, this is a read only alias of the FactoryMacAddress."
-                },
-                "LinkTechnology": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "enum": [
-                        "Ethernet"
-                    ],
-                    "enumDescriptions": {
-                        "Ethernet": "An Ethernet interface"
-                    },
-                    "readonly": true,
-                    "description": "This is link technology, such as Ethernet, for this NIC.",
-                    "longDescription": "The value of this property shall be the technology of the interface."
                 },
                 "SpeedMBps": {
                     "type": [
@@ -282,60 +267,60 @@
                 }
             },
             "description": "This schema defines a simple ethernet NIC resource.",
-            "longDescription": "This resource shall be used to represent NIC resources as part of the SPMA specification."        
+            "longDescription": "This resource shall be used to represent NIC resources as part of the Redfish specification."                
 },
-        "EthernetNetworkInterfaeCollection":{
-            "title": "EthernetNetworkInterface.0.94.0",
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "@odata.context": {
-                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataContext"
-                },
-                "@odata.id": {
-                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
-                },
-                "@odata.type": {
-                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataType"
-                },
-                "Description": {
-                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Description"
-                },
-                "Name": {
-                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Name"
-                },
-                "Modified": {
-                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Modified"
-                },
-                "Oem": {
-                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem",
-                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
-                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
-                },
-                "Links": {
-                    "type": [
-                        "object",
-                        "null"
-                    ],
+                "EthernetNetworkInterfaceCollection":{ 
+                    "title": "EthernetNetworkInterface.0.95.0",
+                    "type": "object",
                     "additionalProperties": false,
                     "properties": {
-                        "Members": {
-                            "type": "array",
+                        "@odata.context": {
+                            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataContext"
+                        },
+                        "@odata.id": {
+                            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
+                        },
+                        "@odata.type": {
+                            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataType"
+                        },
+                        "Description": {
+                            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Description"
+                        },
+                        "Name": {
+                            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Name"
+                        },
+                        "Modified": {
+                            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Modified"
+                        },
+                        "Oem": {
+                            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem",
+                            "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                            "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+                        },
+                        "Links": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "additionalProperties": false,
                             "properties": {
-                                "@odata.id" :{
-                                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
+                                "Members": {
+                                    "type": "array",
+                                    "properties": {
+                                        "@odata.id" :{
+                                            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
+                                        }
+                                    },
+                                    "readonly": true,
+                                    "description": "Contains the members of this collection."
                                 }
                             },
                             "readonly": true,
-                            "description": "Contains the members of this collection."
+                            "description": "Contains links to other resources that are related to this resource."
                         }
-                    },
-                    "readonly": true,
-                    "description": "Contains links to other resources that are related to this resource."
-                }
-            }        
+                    }                        
 }
-    }
+                    }
 
 }
 

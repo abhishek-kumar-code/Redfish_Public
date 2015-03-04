@@ -30,7 +30,7 @@
                 "Current"
             ],
             "description": "This is the schema definition for the Firmware Version.  It is used as part of other schema.",
-            "longDescription": "This resource shall be used to represent the version of firmware for an SPMA implementation."    
+            "longDescription": "This resource shall be used to represent the version of firmware for a Redfish implementation."    
 },
     "FWVersion":{
             "type": "object",

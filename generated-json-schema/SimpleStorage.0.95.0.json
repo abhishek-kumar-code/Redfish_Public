@@ -1,59 +1,8 @@
 {
     "$schema": "http://www.redfishspecification.org/schema",
     "definitions":{
-        "SimpleStorageCollection":{
-            "title": "SimpleStorage.0.94.0",
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "@odata.context": {
-                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataContext"
-                },
-                "@odata.id": {
-                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
-                },
-                "@odata.type": {
-                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataType"
-                },
-                "Description": {
-                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Description"
-                },
-                "Name": {
-                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Name"
-                },
-                "Modified": {
-                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Modified"
-                },
-                "Oem": {
-                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem",
-                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
-                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
-                },
-                "Links": {
-                    "type": [
-                        "object",
-                        "null"
-                    ],
-                    "additionalProperties": false,
-                    "properties": {
-                        "Members": {
-                            "type": "array",
-                            "properties": {
-                                "@odata.id" :{
-                                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
-                                }
-                            },
-                            "readonly": true,
-                            "description": "Contains the members of this collection."
-                        }
-                    },
-                    "readonly": true,
-                    "description": "Contains links to other resources that are related to this resource."
-                }
-            }        
-},
-        "SimpleStorage":{
-            "title": "SimpleStorage.0.94.0",
+        "SimpleStorage":{ 
+            "title": "SimpleStorage.0.95.0",
             "type": "object",
             "additionalProperties": false,
             "properties": {
@@ -134,9 +83,60 @@
                     "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Status"
                 }
             },
-            "description": "This is the schema definition for the Simple Storage resource.  It represents the properties of a storage controller and its directly-attached devices."        
+            "description": "This is the schema definition for the Simple Storage resource.  It represents the properties of a storage controller and its directly-attached devices."                
+},
+                "SimpleStorageCollection":{ 
+                    "title": "SimpleStorage.0.95.0",
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "@odata.context": {
+                            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataContext"
+                        },
+                        "@odata.id": {
+                            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
+                        },
+                        "@odata.type": {
+                            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataType"
+                        },
+                        "Description": {
+                            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Description"
+                        },
+                        "Name": {
+                            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Name"
+                        },
+                        "Modified": {
+                            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Modified"
+                        },
+                        "Oem": {
+                            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem",
+                            "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                            "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+                        },
+                        "Links": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "additionalProperties": false,
+                            "properties": {
+                                "Members": {
+                                    "type": "array",
+                                    "properties": {
+                                        "@odata.id" :{
+                                            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
+                                        }
+                                    },
+                                    "readonly": true,
+                                    "description": "Contains the members of this collection."
+                                }
+                            },
+                            "readonly": true,
+                            "description": "Contains links to other resources that are related to this resource."
+                        }
+                    }                        
 }
-    }
+                    }
 
 }
 
