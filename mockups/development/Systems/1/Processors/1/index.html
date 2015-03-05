@@ -4,19 +4,22 @@
     "@odata.type": "#Processor.0.95.0.Processor",
     "Id": "1",
     "Socket": "CPU 1",
-    "ProcessorType": < { "CPU", "GPU", "FPGA", "DSP", "ACL", "OEM" }>,
+    "ProcessorType": < { "CPU", "GPU", "FPGA", "DSP", "ACL", "OEM" }>, #ACL=accelerator
     "ProcessorArchitecture": <CIM_ ProcessorArchitecture >,
     "InstructionSet": < Modern subset of CIM_ InstructionSet enum {"x86", "x64", "ARM", "MIPS", etc.} >,
-    "Manufacturer": "Intel(R) Corporation",
+    "Manufacturer": "Intel(R) Corporation", # proposed string
     "Model": "Multi-Core Intel(R) Xeon(R) processor 7xxx Series",
-    "CPUID": "< raw: hex value, family: numeric family, model: numeric model, stepping: numeric>",
-    "Stepping": "2",
+    "CPUID": "< raw: hex value, family: numeric family, model: numeric model, stepping: numeric, microcodeVer>",
+    # eg:     "0x3343533E32DA...."   12bytes on x86
+    #   propose adding cpuVendor (cpu-defined enums) for SW
+    #  nested object with raw, family, model...
+    #  "Stepping": "2",
     "MaxSpeedMHz": 3700
     "TotalCores": 8,
     "EnabledCores": 4,
-    "TotalThreads": 4,
+    "TotalThreads": 4,   # ref SMBIOS for def
     "EnabledThreads": 2,
-    "MicrocodeVersion": <hex string>,
+    # "MicrocodeVersion": <hex string>,
     "Status": {
     	"State": "Enabled",
     	"Health": "OK"
@@ -48,9 +51,11 @@
    - CacheSizes" ...
    - Cores[]  array 
    - MicrocodePatch array
-   - Links{} for performanceMetrics,...
+   - Links{} for performanceMetrics,...temps...
    - PCH details
    - NVDIMM placement
+   -instruction set extensions
+   -array for big features like GPU, crypto, etc
 }
 
 
