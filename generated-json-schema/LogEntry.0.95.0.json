@@ -1,7 +1,8 @@
 {
     "$schema": "http://www.redfishspecification.org/schema",
-        "LogEntry":{
-            "title": "LogEntry.0.94.0",
+    "definitions":{
+        "LogEntry":{ 
+            "title": "LogEntry.0.95.0",
             "type": "object",
             "additionalProperties": false,
             "properties": {
@@ -31,12 +32,6 @@
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
-                "RecordId": {
-                    "type": "integer",
-                    "readonly": true,
-                    "description": "The identifier for the log entry",
-                    "longDescription": "This property shall represent a unique identifier of the resource within the parent collection of LogEntry types."
-                },
                 "Severity": {
                     "type": "string",
                     "enum": [
@@ -46,7 +41,7 @@
                     ],
                     "readonly": true,
                     "description": "This is the severity of the log entry.",
-                    "longDescription": "The value of this property shall be the severity of the condition resulting in the log entry, as defined in the Status section of the SPMA specificaiton."
+                    "longDescription": "The value of this property shall be the severity of the condition resulting in the log entry, as defined in the Status section of the Redfish specificaiton."
                 },
                 "Created": {
                     "type": "string",
@@ -204,7 +199,7 @@
                     "type": "integer",
                     "readonly": true,
                     "description": "This property decodes from EntryType:  If it is Event then it is a message id.  Otherwise, it is SEL or Oem specific.  This value is only used for registries - for more information, see the specification.",
-                    "longDescription": "The value of this property shall the MessageID property of the event if the EntryType is Event, the EventData if EntryType is SEL and OEM Specific if the EntryType is OEM.  The format of this property shall be as defined in the SPMA specification."
+                    "longDescription": "The value of this property shall the MessageID property of the event if the EntryType is Event, the EventData if EntryType is SEL and OEM Specific if the EntryType is OEM.  The format of this property shall be as defined in the Redfish specification."
                 },
                 "MessageArgs": {
                     "type": "array",
@@ -242,11 +237,52 @@
                 }
             },
             "required": [
-                "RecordId",
                 "EntryType"
             ],
             "description": "This resource represents the log record format for logs.  It is designed to be used for SEL logs from IPMI as well as Event Logs and OEM specific logs.  The EntryType field indicates the type of log and there are other properties dependent on it's value.",
-            "longDescription": "This resource shall represent the log format for log services in an SPMA implementation."        
+            "longDescription": "This resource shall represent the log format for log services in a Redfish implementation."                
+},
+                "LogEntryCollection":{ 
+                    "title": "LogEntry.0.95.0",
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "@odata.context": {
+                            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataContext"
+                        },
+                        "@odata.id": {
+                            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
+                        },
+                        "@odata.type": {
+                            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataType"
+                        },
+                        "Description": {
+                            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Description"
+                        },
+                        "Name": {
+                            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Name"
+                        },
+                        "Modified": {
+                            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Modified"
+                        },
+                        "Oem": {
+                            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem",
+                            "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                            "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+                        },
+                        "Members": {
+                            "type": "array",
+                            "properties": {
+                                "@odata.id" :{
+                                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
+                                }
+                            },
+                            "readonly": true,
+                            "description": "Contains the members of this collection."
+                        }
+                    }                        
 }
+                    }
+
 }
 

@@ -1,59 +1,8 @@
 {
     "$schema": "http://www.redfishspecification.org/schema",
     "definitions":{
-        "TaskCollection":{
-            "title": "Tasks.0.94.0",
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "@odata.context": {
-                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataContext"
-                },
-                "@odata.id": {
-                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
-                },
-                "@odata.type": {
-                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataType"
-                },
-                "Description": {
-                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Description"
-                },
-                "Name": {
-                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Name"
-                },
-                "Modified": {
-                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Modified"
-                },
-                "Oem": {
-                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem",
-                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
-                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
-                },
-                "Links": {
-                    "type": [
-                        "object",
-                        "null"
-                    ],
-                    "additionalProperties": false,
-                    "properties": {
-                        "Members": {
-                            "type": "array",
-                            "properties": {
-                                "@odata.id" :{
-                                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
-                                }
-                            },
-                            "readonly": true,
-                            "description": "Contains the members of this collection."
-                        }
-                    },
-                    "readonly": true,
-                    "description": "Contains links to other resources that are related to this resource."
-                }
-            }        
-},
-        "Task":{
-            "title": "Tasks.0.94.0",
+        "Task":{ 
+            "title": "Tasks.0.95.0",
             "type": "object",
             "additionalProperties": false,
             "properties": {
@@ -141,13 +90,64 @@
                     },
                     "readonly": true,
                     "description": "This is the completion status of the task.",
-                    "longDescription": "The value of this property shall be the completion status of the task, as defined in the Status section of the SPMA specification and shall not be set until the task has completed."
+                    "longDescription": "The value of this property shall be the completion status of the task, as defined in the Status section of the Redfish specification and shall not be set until the task has completed."
                 }
             },
             "description": "This is the schema definition for a Task resource.",
-            "longDescription": "This resource shall be used to represent a task for an SPMA implementation."        
+            "longDescription": "This resource shall be used to represent a task for a Redfish implementation."                
+},
+                "TaskCollection":{ 
+                    "title": "Tasks.0.95.0",
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "@odata.context": {
+                            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataContext"
+                        },
+                        "@odata.id": {
+                            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
+                        },
+                        "@odata.type": {
+                            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataType"
+                        },
+                        "Description": {
+                            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Description"
+                        },
+                        "Name": {
+                            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Name"
+                        },
+                        "Modified": {
+                            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Modified"
+                        },
+                        "Oem": {
+                            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem",
+                            "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                            "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+                        },
+                        "Links": {
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "additionalProperties": false,
+                            "properties": {
+                                "Members": {
+                                    "type": "array",
+                                    "properties": {
+                                        "@odata.id" :{
+                                            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
+                                        }
+                                    },
+                                    "readonly": true,
+                                    "description": "Contains the members of this collection."
+                                }
+                            },
+                            "readonly": true,
+                            "description": "Contains links to other resources that are related to this resource."
+                        }
+                    }                        
 }
-    }
+                    }
 
 }
 
