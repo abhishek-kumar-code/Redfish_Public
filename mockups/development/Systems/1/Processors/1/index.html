@@ -1,0 +1,56 @@
+{
+    "@odata.context": "/redfish/v1/$metadata#Systems/Links/Members/1/Processors/Links/Members/$entity",
+    "@odata.id": "/redfish/v1/Systems/1/Processors/1",
+    "@odata.type": "#Processor.0.95.0.Processor",
+    "Id": "1",
+    "Socket": "CPU 1",
+    "ProcessorType": < { "CPU", "GPU", "FPGA", "DSP", "ACL", "OEM" }>,
+    "ProcessorArchitecture": <CIM_ ProcessorArchitecture >,
+    "InstructionSet": < Modern subset of CIM_ InstructionSet enum {"x86", "x64", "ARM", "MIPS", etc.} >,
+    "Manufacturer": "Intel(R) Corporation",
+    "Model": "Multi-Core Intel(R) Xeon(R) processor 7xxx Series",
+    "CPUID": "< raw: hex value, family: numeric family, model: numeric model, stepping: numeric>",
+    "Stepping": "2",
+    "MaxSpeedMHz": 3700
+    "TotalCores": 8,
+    "EnabledCores": 4,
+    "TotalThreads": 4,
+    "EnabledThreads": 2,
+    "MicrocodeVersion": <hex string>,
+    "Status": {
+    	"State": "Enabled",
+    	"Health": "OK"
+    }
+} 
+
+
+##     OR Optionally, the minimal set that Rich indicated was useful
+
+{
+    "@odata.context": "/redfish/v1/$metadata#Systems/Links/Members/1/Processors/Links/Members/$entity",
+    "@odata.id": "/redfish/v1/Systems/1/Processors/1",
+    "@odata.type": "#Processor.0.95.0.Processor",
+    "Id": "1",
+    "Model": "Multi-Core Intel(R) Xeon(R) processor 7xxx Series",
+    "CPUID": "< raw: hex value, family: numeric family, model: numeric model, stepping: numeric>",
+    "Status": {
+    	"State": "Enabled",
+    	"Health": "OK"
+    }
+
+} 
+
+
+
+##     AND in both options, for v1.1, consider adding
+
+   - FeatureFlags: an array of N 32-bit hex values
+   - CacheSizes" ...
+   - Cores[]  array 
+   - MicrocodePatch array
+   - Links{} for performanceMetrics,...
+   - PCH details
+   - NVDIMM placement
+}
+
+
