@@ -328,7 +328,7 @@
         <Annotation Term="OData.Description" String="This object describes the central processors of the system in general detail."/>
       </ComplexType>
 
-      <ComplexType Name="Memory">
+      <ComplexType Name="MemorySummary">
         <Property Name="TotalSystemMemoryGB" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is the total amount of memory in the system measured in GB."/>
