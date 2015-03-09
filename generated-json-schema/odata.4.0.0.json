@@ -13,7 +13,7 @@
 			"format": "uri",
 			"readonly": true,
 			"longDescription": "The value of this property shall be the unique identifier for the resource and it shall be of the form defined in the SPMF specification."
-		}
+		},
 
 		"type":{
 			"type": "string",

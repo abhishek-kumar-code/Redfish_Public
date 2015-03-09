@@ -92,7 +92,7 @@
     <edmx:Include Namespace="CustomTypes" Alias="Chipwise"/>
   </edmx:Reference>
   <edmx:Reference Uri="/redfish/v1/schema/Service.Annotations">
-    <edmx:IncludeAnnotations TermNamespace="Annotations" Alias="Annotations"/>
+    <edmx:IncludeAnnotations TermNamespace="Annotations"/>
   </edmx:Reference> 
 
   <edmx:DataServices>
