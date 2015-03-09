@@ -1,12 +1,12 @@
 {
-    "$schema": "http://www.redfishspecification.org/schema",
+    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.0.95.0",
     "definitions":{
     "IPV4Address":{
             "type": "object",
             "additionalProperties": false,
             "properties": {
                 "Oem": {
-                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem"
+                    "$ref": "Resource.0.95.0#Oem"
                 },
                 "Address": {
                     "type": [
@@ -53,13 +53,13 @@
                     "longDescription": "The value of this property shall be the IPv4 default gateway address for this interface. If DHCPv4 is enabled on the interface and is configured to set the IPv4 default gateway address, this property becomes read-only."
                 }
             }    
-},
+	},
     "IPV6StaticAddress":{
             "type": "object",
             "additionalProperties": false,
             "properties": {
                 "Oem": {
-                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem"
+                    "$ref": "Resource.0.95.0#Oem"
                 },
                 "Address": {
                     "type": [
@@ -84,13 +84,13 @@
                 "PrefixLength"
             ],
             "description": "This object represents a single IPv6 static address to be assigned on a network interface."    
-},
+	},
     "IPV6Address":{
             "type": "object",
             "additionalProperties": false,
             "properties": {
                 "Oem": {
-                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem"
+                    "$ref": "Resource.0.95.0#Oem"
                 },
                 "Address": {
                     "type": [
@@ -150,8 +150,6 @@
                     "longDescription": "Preferred and Deprecated states follow the definitions given RFC4862 Section 5.5.4. An address is in the Tentative state while undergoing Duplicate Address Detection (DAD) per RFC4862 Section 5.4.  The Failed state indicates a Static addresses which did not pass DAD.  A Static address in the Failed state is not in use on the network stack, and corrective action will be needed to remedy this condition."
                 }
             }    
-}
+		}
     }
-
 }
-

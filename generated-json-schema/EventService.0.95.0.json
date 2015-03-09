@@ -1,47 +1,47 @@
 {
-    "$schema": "http://www.redfishspecification.org/schema",
+    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.0.95.0",
     "title": "EventService.0.95.0",
     "type": "object",
     "additionalProperties": false,
     "properties": {
-        "@odata.context": {
-            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataContext"
-        },
+		"@odata.context": {
+            "$ref": "odata.4.0.0#context"
+		},
         "@odata.id": {
-            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
-        },
-        "@odata.type": {
-            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataType"
-        },
-        "Id": {
-            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Id"
-        },
-        "Description": {
-            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Description"
-        },
-        "Name": {
-            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Name"
-        },
-        "Modified": {
-            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Modified"
-        },
-        "Oem": {
-            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem",
-            "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
-            "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
-        },
+			"$ref": "odata.4.0.0#id"
+		},
+		"@odata.type": {
+			"$ref": "odata.4.0.0#type"
+		},
+		"Id": {
+			"$ref": "Resource.0.95.0#Id"
+		},
+		"Description": {
+			"$ref": "Resource.0.95.0#Description"
+		},
+		"Name": {
+			"$ref": "Resource.0.95.0#Name"
+		},
+		"Modified": {
+			"$ref": "Resource.0.95.0#Modified"
+		},
+		"Oem": {
+			"$ref": "Resource.0.95.0#Oem",
+			"description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+			"longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+		},
         "Links": {
             "type": "object",
             "additionalProperties": false,
             "properties": {
                 "Oem": {
-                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem"
+                    "$ref": "Resource.0.95.0#Oem"
                 },
                 "Subscriptions": {
                     "type": "array",
                     "properties": {
                         "@odata.id" :{
-                            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
+                            "$ref": "odata.4.0.0#id"
                         }
                     },
                     "readonly": true,
@@ -128,7 +128,7 @@
             "description": "The Actions object contains the available custom actions on this resource."
         },
         "Status": {
-            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Status"
+            "$ref": "Resource.0.95.0#Status"
         }
     },
     "description": "This is the schema definition for the Event Service.  It represents the properties for the service itself and has links to the actual list of subscriptions.",

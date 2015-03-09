@@ -1,6 +1,6 @@
 {
-    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.0.95.0",
-	"title": "Session.0.95.0",
+   "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.0.95.0",
+   "title": "ManagerAccountCollection.0.95.0",
 	"type": "object",
 	"additionalProperties": false,
 	"properties": {
@@ -13,11 +13,8 @@
 		"@odata.type": {
 			"$ref": "odata.4.0.0#type"
 		},
-		"Id": {
-			"$ref": "Resource.0.95.0#Id"
-		},
 		"Description": {
-			"$ref": "Resource.0.95.0#Description"
+		"$ref": "Resource.0.95.0#Description"
 		},
 		"Name": {
 			"$ref": "Resource.0.95.0#Name"
@@ -30,12 +27,26 @@
 			"description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
 			"longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
 		},
-		"UserName": {
+		"Links": {
 			"type": [
-				"string",
+				"object",
 				"null"
 			],
-			"readonly": true
+			"additionalProperties": false,
+			"properties": {
+				"Members": {
+					"type": "array",
+					"properties": {
+						"@odata.id" :{
+							"$ref": "odata.4.0.0#id"
+						}
+					},
+					"readonly": true,
+					"description": "Contains the members of this collection."
+				}
+			},
+			"readonly": true,
+			"description": "Contains links to other resources that are related to this resource."
 		}
-	}                        
+	}                
 }

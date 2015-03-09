@@ -1,30 +1,30 @@
 {
-    "$schema": "http://www.redfishspecification.org/schema",
+    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.0.95.0",
     "title": "NetworkService.0.95.0",
     "type": "object",
     "additionalProperties": false,
     "properties": {
-        "@odata.context": {
-            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataContext"
-        },
-        "@odata.id": {
-            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
-        },
-        "@odata.type": {
-            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataType"
-        },
+		"@odata.context": {
+			"$ref": "odata.4.0.0#context"
+		},
+		"@odata.id": {
+			"$ref": "odata.4.0.0#id"
+		},
+		"@odata.type": {
+			"$ref": "odata.4.0.0#type"
+		},
         "Links": {
             "type": "object",
             "additionalProperties": false,
             "properties": {
                 "Oem": {
-                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem"
+                    "$ref": "Resource.0.95.0#Oem"
                 },
                 "Settings": {
                     "type": "object",
                     "properties": {
                         "@odata.id" :{
-                            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
+                            "$ref": "odata.4.0.0#id"
                         }
                     },
                     "readonly": true,
@@ -297,7 +297,7 @@
             "description": "This object is used for the KVM-IP (Keyboard, Video, Mouse) protocol settings for the manager. The value of the Port property shall contain the TCP port assigned for SSH usage.  The default value shall be 22 for compatibility with established client implementations."
         },
         "Status": {
-            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Status"
+            "$ref": "Resource.0.95.0#Status" 
         }
     },
     "description": "This resource is used to obtain or modify the network services managed by a given manager.",
