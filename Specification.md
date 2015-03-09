@@ -541,7 +541,7 @@ The first parameter of a bound function is the resource on which the action is b
 
 Clients can query a resource directly to determine the [actions](#actions-property) that are available as well as [valid parameter values](#allowable-values) for those actions.  Some parameter information may require the client to examine the schema corresponding to the resource. 
 
-For instance, if a schema document `http://dmtf.org/schema/v1/ComputerSystem` defines a Reset action, in the `ComputerSystem.<%= DocVersion %>` namespace, with the alias "ComputerSystem", bound to the `ComputerSystem.Actions` type, such as this example:
+For instance, if a schema document `http://schemas.dmtf.org/redfish/v1/ComputerSystem.<%= DocVersion %>` defines a Reset action, in the `ComputerSystem.<%= DocVersion %>` namespace, with the alias "ComputerSystem", bound to the `ComputerSystem.Actions` type, such as this example:
 
 ~~~xml
 <Schema Name="ComputerSystem.<%= DocVersion %>" Alias="ComputerSystem">
@@ -691,17 +691,17 @@ The service metadata describes top-level resources and resource types of the ser
 The service metadata shall include the namespaces for each of the DMTF resource types, along with the "DMTFExtensions.<%= DocVersion %>" namespace. These references may use the standard Uri for the hosted schema definitions (i.e., on http://dmtf.org/schema) or a Url to a local version of the schema that shall be identical to the hosted version. The namespace shall be aliased with the version-independent namespace name.
 
 ~~~xml
-<edmx:Reference Uri="http://dmtf.org/schema/v1/ServiceRoot.<%= DocVersion %>">
+<edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ServiceRoot.<%= DocVersion %>">
 	<edmx:Include Namespace="ServiceRoot.<%= DocVersion %>" Alias="ServiceRoot"/>
 </edmx:Reference>
-<edmx:Reference Uri="http://dmtf.org/schema/v1/AccountService.<%= DocVersion %>">
+<edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/AccountService.<%= DocVersion %>">
   <edmx:Include Namespace="AccountService.<%= DocVersion %>" Alias="AccountService"/>
 </edmx:Reference>
 ...
-<edmx:Reference Uri="http://dmtf.org/schema/v1/VirtualMedia.<%= DocVersion %>">
+<edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/VirtualMedia.<%= DocVersion %>">
   <edmx:Include Namespace="VirtualMedia.<%= DocVersion %>" Alias="VirtualMedia"/>
 </edmx:Reference>
-<edmx:Reference Uri="http://dmtf.org/schema/v1/Extensions">
+<edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/DMTFExtensions.<%= DocVersion %>">
 	<edmx:Include Namespace="DMTFExtensions.<%= DocVersion %>" Alias="DMTF"/>
 </edmx:Reference>
 ~~~
@@ -1290,10 +1290,10 @@ Type definitions generally reference the OData and DMTF namespaces for common ty
     Uri="http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml">
     <edmx:Include Namespace="Org.OData.Measures.V1" Alias="OData.Measures"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://dmtf.org/schema/v1/Extensions">
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Extensions.<%= DocVersion %>">
 	<edmx:Include Namespace="DMTFExtensions.<%= DocVersion %>" Alias="DMTF"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://dmtf.org/schema/v1/Resource">
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.<%= DocVersion %>">
     <edmx:Include Namespace="Resource.<%= DocVersion %>" Alias="Resource"/>
   </edmx:Reference>
 ~~~
@@ -1461,7 +1461,7 @@ If an implementation supports a property, it shall always provide a value for th
 		<Annotation Term="DMTF.Required"/>
 ~~~
 
-The `Required` annotation term is defined in http://dmtf.org/schema/V1/DMTFExtensions.
+The `Required` annotation term is defined in http://schemas.dmtf.org/redfish/v1/DMTFExtensions.<%= DocVersion %>.
 
 ##### Units of Measure
 
@@ -1525,7 +1525,7 @@ Navigation properties in a Redfish JSON payload are expanded to include the [rel
 		<Annotation Term="DMTF.ExpandReferences"/>
 ~~~
 
-The `ExpandReferences` annotation term is defined in http://dmtf.org/schema/V1/DMTFExtensions.
+The `ExpandReferences` annotation term is defined in http://schemas.dmtf.org/redfish/v1/DMTFExtensions.<%= DocVersion %>.
 
 ##### Expanded Resources
 
@@ -1535,7 +1535,7 @@ This term can be applied to a navigation property in order to specify that the d
 		<Annotation Term="DMTF.ExpandResources"/>
 ~~~
 
-The `ExpandResources` annotation term is defined in http://dmtf.org/schema/V1/DMTFExtensions.
+The `ExpandResources` annotation term is defined in http://schemas.dmtf.org/redfish/v1/DMTFExtensions.<%= DocVersion %>.
 
 #### Resource Actions
 

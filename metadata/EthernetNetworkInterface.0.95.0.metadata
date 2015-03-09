@@ -4,24 +4,24 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://dmtf.org/schema/v1/DMTFExtensions">
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/DMTFExtensions.0.95.0">
     <edmx:Include Namespace="DMTFExtensions.0.95.0" Alias="DMTF"/>
     <edmx:Include Namespace="Validation.0.95.0" Alias="Validation"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://dmtf.org/schema/v1/Resource">
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.0.95.0">
     <edmx:Include Namespace="Resource.0.95.0" Alias="Resource"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Measures.V1.xml">
     <edmx:Include Namespace="Org.OData.Measures.v1" Alias="Measures"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://dmtf.org/schema/v1/IPAddresses">
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/IPAddresses.0.95.0">
     <edmx:Include Namespace="IPAddresses.0.95.0" Alias="IPAddresses"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://dmtf.org/schema/v1/ManagerNetworkService">
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ManagerNetworkService.0.95.0">
     <edmx:Include Namespace="NetworkService.0.95.0" Alias="NetworkService"/>
   </edmx:Reference>
   <!-- TODO: Not Defined in redfish 0.91.1 schema-->
-  <edmx:Reference Uri="http://dmtf.org/schema/v1/VLanNetworkInterface">
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/VLanNetworkInterface.0.95.0">
     <edmx:Include Namespace="VLanNetworkInterface.0.95.0" Alias="VLanNetworkInterface"/>
   </edmx:Reference>
   
