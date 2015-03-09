@@ -38,6 +38,13 @@
 
       <EntityContainer Name="ServiceContainer">
         <Singleton Name="Service" Type="ServiceRoot.ServiceRoot"/>
+        <Singleton Name="Systems" Type="ComputerSystem.SystemCollection"/>
+        <Singleton Name="Chassis" Type="Chassis.ChassisCollection"/>
+        <Singleton Name="Managers" Type="Manager.ManagerCollection"/>
+        <Singleton Name="TaskService" Type="TaskService.TaskService"/>
+        <Singleton Name="AccountService" Type="AccountService.AccountService"/>
+        <Singleton Name="SessionService" Type="SessionService.SessionService"/>
+        <Singleton Name="EventService" Type="EventService.EventService"/>
       </EntityContainer>
 
       <!-- This object contains top-level properties of the Redfish service. -->
