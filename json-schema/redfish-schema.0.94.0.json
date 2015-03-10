@@ -13,7 +13,7 @@
             "type": "boolean",
             "description": "This property designates a property to be readonly when set to true."
         },
-        "specification": {
+        "longDescription": {
             "type": "string",
             "description": "This attribute contains normative language relating to the Redfish Sprecification and documentation."
         },
@@ -24,10 +24,6 @@
         "enumDescriptions": {
           "type": "object",
           "description": "This attribute contains informative language related to the enumeration values of the property."
-        },
-        "correlatableID": {
-            "type": "boolean",
-            "description": "This attribute indicates that the property is a correlatable ID as defined in the Redfish Specification."
         }
     },
     "property": {
