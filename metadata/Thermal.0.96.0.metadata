@@ -4,18 +4,18 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/DMTFExtensions.0.95.0">
-    <edmx:Include Namespace="DMTFExtensions.0.95.0" Alias="DMTF"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/DMTFExtensions.0.96.0">
+    <edmx:Include Namespace="DMTFExtensions.0.96.0" Alias="DMTF"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.0.95.0">
-    <edmx:Include Namespace="Resource.0.95.0" Alias="Resource"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.0.96.0">
+    <edmx:Include Namespace="Resource.0.96.0" Alias="Resource"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Redundancy.0.95.0">
-    <edmx:Include Namespace="Redundancy.0.95.0" Alias="Redundancy"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Redundancy.0.96.0">
+    <edmx:Include Namespace="Redundancy.0.96.0" Alias="Redundancy"/>
   </edmx:Reference>
   
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Thermal.0.95.0" Alias="Thermal">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Thermal.0.96.0" Alias="Thermal">
 
       <!-- This is the schema definition for the Thermal Metrics.  It represents the properties for Temperature and Cooling. -->
       <EntityType Name="Thermal" BaseType="Resource.Resource">
