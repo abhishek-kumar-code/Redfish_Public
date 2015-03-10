@@ -1,0 +1,38 @@
+{
+    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.0.95.0",
+	"title": "SerialInterfaceCollection.0.95.0",
+	"type": "object",
+	"additionalProperties": false,
+	"properties": {
+		"@odata.context": {
+			"$ref": "odata.4.0.0#context"
+		},
+		"@odata.id": {
+			"$ref": "odata.4.0.0#id"
+		},
+		"@odata.type": {
+			"$ref": "odata.4.0.0#type"
+		},
+		"Links": {
+			"type": [
+				"object",
+				"null"
+			],
+			"additionalProperties": false,
+			"properties": {
+				"Members": {
+					"type": "array",
+					"properties": {
+						"@odata.id" :{
+							"$ref": "odata.4.0.0#id"
+						}
+					},
+					"readonly": true,
+					"description": "Contains the members of this collection."
+				}
+			},
+			"readonly": true,
+			"description": "Contains links to other resources that are related to this resource."
+		}
+	}
+}

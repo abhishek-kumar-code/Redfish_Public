@@ -1,127 +1,70 @@
 {
-    "$schema": "http://www.redfishspecification.org/schema",
-    "definitions":{
-        "ManagerAccountCollection":{ 
-            "title": "ManagerAccount.0.95.0",
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "@odata.context": {
-                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataContext"
-                },
-                "@odata.id": {
-                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
-                },
-                "@odata.type": {
-                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataType"
-                },
-                "Description": {
-                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Description"
-                },
-                "Name": {
-                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Name"
-                },
-                "Modified": {
-                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Modified"
-                },
-                "Oem": {
-                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem",
-                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
-                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
-                },
-                "Links": {
-                    "type": [
-                        "object",
-                        "null"
-                    ],
-                    "additionalProperties": false,
-                    "properties": {
-                        "Members": {
-                            "type": "array",
-                            "properties": {
-                                "@odata.id" :{
-                                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
-                                }
-                            },
-                            "readonly": true,
-                            "description": "Contains the members of this collection."
-                        }
-                    },
-                    "readonly": true,
-                    "description": "Contains links to other resources that are related to this resource."
-                }
-            }                
-},
-                "ManagerAccount":{ 
-                    "title": "ManagerAccount.0.95.0",
-                    "type": "object",
-                    "additionalProperties": false,
-                    "properties": {
-                        "@odata.context": {
-                            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataContext"
-                        },
-                        "@odata.id": {
-                            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
-                        },
-                        "@odata.type": {
-                            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataType"
-                        },
-                        "Id": {
-                            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Id"
-                        },
-                        "Description": {
-                            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Description"
-                        },
-                        "Name": {
-                            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Name"
-                        },
-                        "Modified": {
-                            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Modified"
-                        },
-                        "Oem": {
-                            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem",
-                            "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
-                            "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
-                        },
-                        "Password": {
-                            "type": [
-                                "string",
-                                "null"
-                            ],
-                            "description": "This property is used with a PATCH or PUT to write the password for the account.  This property is null on a GET.",
-                            "longDescription": "The value of this property shall be the password for this account.  The value shall be null for GET requests."
-                        },
-                        "UserName": {
-                            "type": "string",
-                            "description": "This property contains the user name for the account.",
-                            "longDescription": "The value of this property shall be the user name for this account."
-                        },
-                        "Locked": {
-                            "type": "boolean",
-                            "description": "This property indicates that the account has been auto-locked by the account service because the lockout threshold has been exceeded.  When set to true, the account is locked. A user admin can write the property to false to manually unlock, or the account service will unlock it once the lockout duration period has passed.",
-                            "longDescription": "This property (when set to true) shall indicate that the account service has automatically locked the account due to the accountLockoutThreshold having been exceeded. If set to true, the account is locked.  If set to false, the account is not locked.  A user admin shall be able to write a false to the property to clear the lockout condition, prior to the lockout duration period."
-                        },
-                        "Enabled": {
-                            "type": "boolean",
-                            "description": "This property is used by a User Administrator to disable an account w/o having to delet the user information.  When set to true, the user can login.  When set to false, the account is administratively disabled and the user cannot login.",
-                            "longDescription": "This property shall enable (if set to true) or disable (if set to false) the account for future logins. The value of Enable over-rides the locked property."
-                        },
-                        "Links": {
-                            "type": "object",
-                            "additionalProperties": false,
-                            "properties": {
-                                "Oem": {
-                                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem"
-                                }
-                            },
-                            "readonly": true,
-                            "description": "The links object contains the links to other resources that are related to this resource."
-                        }
-                    },
-                    "description": "This schema defines a user account to be used in conjunction with a manager.  This will affect the Redfish service connection if this manager is responsible for the Redfish service.",
-                    "longDescription": "This resource shall be used to represent resources that represent the user accounts for the manager."                        
+    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.0.95.0",
+    "title": "ManagerAccount.0.95.0",
+	"type": "object",
+	"additionalProperties": false,
+	"properties": {
+		"@odata.context": {
+			"$ref": "odata.4.0.0#context"
+		},
+		"@odata.id": {
+			"$ref": "odata.4.0.0#id"
+		},
+		"@odata.type": {
+			"$ref": "odata.4.0.0#type"
+		},
+		"Id": {
+			"$ref": "Resource.0.95.0#Id"
+		},
+		"Description": {
+			"$ref": "Resource.0.95.0#Description"
+		},
+		"Name": {
+			"$ref": "Resource.0.95.0#Name"
+		},
+		"Modified": {
+			"$ref": "Resource.0.95.0#Modified"
+		},
+		"Oem": {
+			"$ref": "Resource.0.95.0#Oem",
+			"description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+			"longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+		},
+		"Password": {
+			"type": [
+				"string",
+				"null"
+			],
+			"description": "This property is used with a PATCH or PUT to write the password for the account.  This property is null on a GET.",
+			"longDescription": "The value of this property shall be the password for this account.  The value shall be null for GET requests."
+		},
+		"UserName": {
+			"type": "string",
+			"description": "This property contains the user name for the account.",
+			"longDescription": "The value of this property shall be the user name for this account."
+		},
+		"Locked": {
+			"type": "boolean",
+			"description": "This property indicates that the account has been auto-locked by the account service because the lockout threshold has been exceeded.  When set to true, the account is locked. A user admin can write the property to false to manually unlock, or the account service will unlock it once the lockout duration period has passed.",
+			"longDescription": "This property (when set to true) shall indicate that the account service has automatically locked the account due to the accountLockoutThreshold having been exceeded. If set to true, the account is locked.  If set to false, the account is not locked.  A user admin shall be able to write a false to the property to clear the lockout condition, prior to the lockout duration period."
+		},
+		"Enabled": {
+			"type": "boolean",
+			"description": "This property is used by a User Administrator to disable an account w/o having to delet the user information.  When set to true, the user can login.  When set to false, the account is administratively disabled and the user cannot login.",
+			"longDescription": "This property shall enable (if set to true) or disable (if set to false) the account for future logins. The value of Enable over-rides the locked property."
+		},
+		"Links": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"Oem": {
+					"$ref": "Resource.0.95.0#Oem"
+				}
+			},
+			"readonly": true,
+			"description": "The links object contains the links to other resources that are related to this resource."
+		}
+	},
+	"description": "This schema defines a user account to be used in conjunction with a manager.  This will affect the Redfish service connection if this manager is responsible for the Redfish service.",
+	"longDescription": "This resource shall be used to represent resources that represent the user accounts for the manager."                        
 }
-                    }
-
-}
-

@@ -4,19 +4,19 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://dmtf.org/schema/v1/DMTFExtensions">
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/DMTFExtensions.0.95.0">
     <edmx:Include Namespace="DMTFExtensions.0.95.0" Alias="DMTF"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Measures.V1.xml">
     <edmx:Include Namespace="Org.OData.Measures.V1" Alias="OData.Measures"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://dmtf.org/schema/v1/Resource">
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.0.95.0">
     <edmx:Include Namespace="Resource.0.95.0" Alias="Resource"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://dmtf.org/schema/v1/Event">
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Event.0.95.0">
     <edmx:Include Namespace="Event.0.95.0" Alias="Event"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://dmtf.org/schema/v1/ListenerDestination">
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ListenerDestination.0.95.0">
     <edmx:Include Namespace="ListenerDestination.0.95.0" Alias="ListenerDestination"/>
   </edmx:Reference>
 

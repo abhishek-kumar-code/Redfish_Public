@@ -4,32 +4,32 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://dmtf.org/schema/v1/DMTFExtensions">
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/DMTFExtensions.0.95.0">
     <edmx:Include Namespace="DMTFExtensions.0.95.0" Alias="DMTF"/>
     <edmx:Include Namespace="Validation.0.95.0" Alias="Validation"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://dmtf.org/schema/v1/EventService">
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/EventService.0.95.0">
     <edmx:Include Namespace="EventService.0.95.0" Alias="EventService"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://dmtf.org/schema/v1/AccountService">
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/AccountService.0.95.0">
     <edmx:Include Namespace="AccountService.0.95.0" Alias="AccountService"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://dmtf.org/schema/v1/ComputerSystem">
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ComputerSystem.0.95.0">
     <edmx:Include Namespace="ComputerSystem.0.95.0" Alias="ComputerSystem"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://dmtf.org/schema/v1/Chassis">
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Chassis.0.95.0">
     <edmx:Include Namespace="Chassis.0.95.0" Alias="Chassis"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://dmtf.org/schema/v1/Manager">
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Manager.0.95.0">
     <edmx:Include Namespace="Managers.0.95.0" Alias="Manager"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://dmtf.org/schema/v1/TaskService">
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/TaskService.0.95.0">
     <edmx:Include Namespace="TaskService.0.95.0" Alias="TaskService"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://dmtf.org/schema/v1/SessionService">
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/SessionService.0.95.0">
     <edmx:Include Namespace="SessionService.0.95.0" Alias="SessionService"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://dmtf.org/schema/v1/Messages">
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Messages.0.95.0">
     <edmx:Include Namespace="Messages.0.95.0" Alias="Messages"/>
   </edmx:Reference>
 
@@ -38,6 +38,13 @@
 
       <EntityContainer Name="ServiceContainer">
         <Singleton Name="Service" Type="ServiceRoot.ServiceRoot"/>
+        <Singleton Name="Systems" Type="ComputerSystem.SystemCollection"/>
+        <Singleton Name="Chassis" Type="Chassis.ChassisCollection"/>
+        <Singleton Name="Managers" Type="Manager.ManagerCollection"/>
+        <Singleton Name="TaskService" Type="TaskService.TaskService"/>
+        <Singleton Name="AccountService" Type="AccountService.AccountService"/>
+        <Singleton Name="SessionService" Type="SessionService.SessionService"/>
+        <Singleton Name="EventService" Type="EventService.EventService"/>
       </EntityContainer>
 
       <!-- This object contains top-level properties of the Redfish service. -->

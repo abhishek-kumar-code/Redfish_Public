@@ -1,35 +1,35 @@
 {
-    "$schema": "http://www.redfishspecification.org/schema",
+    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.0.95.0",
     "title": "Messages.0.95.0",
     "type": "object",
     "additionalProperties": false,
     "properties": {
-        "@odata.context": {
-            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataContext"
-        },
-        "@odata.id": {
-            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
-        },
-        "@odata.type": {
-            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataType"
-        },
-        "Id": {
-            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Id"
-        },
-        "Description": {
-            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Description"
-        },
-        "Name": {
-            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Name"
-        },
-        "Modified": {
-            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Modified"
-        },
-        "Oem": {
-            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem",
-            "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
-            "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
-        },
+		"@odata.context": {
+			"$ref": "odata.4.0.0#context"
+		},
+		"@odata.id": {
+			"$ref": "odata.4.0.0#id"
+		},
+		"@odata.type": {
+			"$ref": "odata.4.0.0#type"
+		},
+		"Id": {
+			"$ref": "Resource.0.95.0#Id"
+		},
+		"Description": {
+			"$ref": "Resource.0.95.0#Description"
+		},
+		"Name": {
+			"$ref": "Resource.0.95.0#Name"
+		},
+		"Modified": {
+			"$ref": "Resource.0.95.0#Modified"
+		},
+		"Oem": {
+			"$ref": "Resource.0.95.0#Oem",
+			"description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+			"longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+		},
         "Language": {
             "type": "string",
             "readonly": true,
@@ -68,7 +68,7 @@
                     "additionalProperties": false,
                     "properties": {
                         "Description": {
-                            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Description"
+                            "$ref": "Resource.0.95.0#Description"
                         },
                         "Message": {
                             "type": "string",
@@ -133,4 +133,3 @@
     "description": "This is the schema definition for all Message Registries.  It represents the properties for the registries themselves.  The MessageID is formed per the Redfish specification.  It consists of the RegistryPrefix concatenated with the version concatenated with the unique identifier for the message registry entry.",
     "longDescription": "This resource shall be used to represent a message registry for a Redfish implementation."
 }
-

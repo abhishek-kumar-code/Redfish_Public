@@ -1,7 +1,7 @@
 {
-    "$schema": "http://www.redfishspecification.org/schema",
+    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.0.95.0",
     "definitions":{
-    "FirmwareRevision":{
+		"FirmwareRevision":{
             "type": "object",
             "additionalProperties": false,
             "properties": {
@@ -31,8 +31,8 @@
             ],
             "description": "This is the schema definition for the Firmware Version.  It is used as part of other schema.",
             "longDescription": "This resource shall be used to represent the version of firmware for a Redfish implementation."    
-},
-    "FWVersion":{
+		},
+		"FWVersion":{
             "type": "object",
             "additionalProperties": false,
             "properties": {
@@ -48,8 +48,7 @@
             },
             "readonly": true,
             "description": "This object contains information about the version of a firmware image."    
-}
+		}
     }
-
 }
 

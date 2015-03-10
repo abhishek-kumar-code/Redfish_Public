@@ -1,32 +1,32 @@
 {
-    "$schema": "http://www.redfishspecification.org/schema",
+    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.0.95.0",
     "title": "AccountService.0.95.0",
     "type": "object",
     "additionalProperties": false,
     "properties": {
         "@odata.context": {
-            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataContext"
+            "$ref": "odata.4.0.0#context"
         },
         "@odata.id": {
-            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
+            "$ref": "odata.4.0.0#id"
         },
         "@odata.type": {
-            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataType"
+            "$ref": "odata.4.0.0#type"
         },
         "Id": {
-            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Id"
+            "$ref": "Resource.0.95.0#Id"
         },
         "Description": {
-            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Description"
+            "$ref": "Resource.0.95.0#Description"
         },
         "Name": {
-            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Name"
+            "$ref": "Resource.0.95.0#Name"
         },
         "Modified": {
-            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Modified"
+            "$ref": "Resource.0.95.0#Modified"
         },
         "Oem": {
-            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem",
+            "$ref": "Resource.0.95.0#Oem",
             "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
             "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
         },
@@ -71,13 +71,13 @@
             "additionalProperties": false,
             "properties": {
                 "Oem": {
-                    "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/Resource#Oem"
+                    "$ref": "Resource.0.95.0#Oem"
                 },
                 "Accounts": {
                     "type": "object",
                     "properties": {
                         "@odata.id" :{
-                            "$ref": "http://localhost:9080/rest/v1/dmtf.org/schema/v1/odataId"
+                            "$ref": "odata.4.0.0#id"
                         }
                     },
                     "readonly": true,
