@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?><!-- Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.--> 
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
 
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/DMTFExtensions.0.95.0">
-    <edmx:Include Namespace="DMTFExtensions.0.95.0" Alias="DMTF"/>
-    <edmx:Include Namespace="Validation.0.95.0" Alias="Validation"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/DMTFExtensions.0.96.0">
+    <edmx:Include Namespace="DMTFExtensions.0.96.0" Alias="DMTF"/>
+    <edmx:Include Namespace="Validation.0.96.0" Alias="Validation"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.0.95.0">
-    <edmx:Include Namespace="Resource.0.95.0" Alias="Resource"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.0.96.0">
+    <edmx:Include Namespace="Resource.0.96.0" Alias="Resource"/>
   </edmx:Reference>
   
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Messages.0.95.0" Alias="Messages">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Messages.0.96.0" Alias="Messages">
 
       <!--This schema defines a MessageRegistry and its respective properties. -->
       <EntityType Name="MessageRegistry" BaseType="Resource.Resource">

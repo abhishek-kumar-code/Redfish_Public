@@ -4,12 +4,12 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/DMTFExtensions.0.95.0">
-    <edmx:Include Namespace="DMTFExtensions.0.95.0" Alias="DMTF"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/DMTFExtensions.0.96.0">
+    <edmx:Include Namespace="DMTFExtensions.0.96.0" Alias="DMTF"/>
   </edmx:Reference>
   
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SerialInterface.0.95.0" Alias="SerialInterface">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SerialInterface.0.96.0" Alias="SerialInterface">
 
       <!-- This is the schema definition for the Serial Interface. -->
       <EntityType Name="SerialInterfaceCollection" BaseType="Resource.SerialInterfaceCollection">

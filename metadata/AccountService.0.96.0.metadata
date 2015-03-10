@@ -5,19 +5,19 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/DMTFExtensions.0.95.0">
-    <edmx:Include Namespace="DMTFExtensions.0.95.0" Alias="DMTF"/>
-    <edmx:Include Namespace="Validation.0.95.0" Alias="Validation"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/DMTFExtensions.0.96.0">
+    <edmx:Include Namespace="DMTFExtensions.0.96.0" Alias="DMTF"/>
+    <edmx:Include Namespace="Validation.0.96.0" Alias="Validation"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.0.95.0">
-    <edmx:Include Namespace="Resource.0.95.0" Alias="Resource"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.0.96.0">
+    <edmx:Include Namespace="Resource.0.96.0" Alias="Resource"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ManagerAccount.0.95.0">
-    <edmx:Include Namespace="ManagerAccount.0.95.0" Alias="ManagerAccount"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ManagerAccount.0.96.0">
+    <edmx:Include Namespace="ManagerAccount.0.96.0" Alias="ManagerAccount"/>
   </edmx:Reference>
   
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AccountService.0.95.0" Alias="AccountService">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AccountService.0.96.0" Alias="AccountService">
 
       <!-- This schema defines an account service and its respective properties. -->
       <EntityType Name="AccountService" BaseType="Resource.Resource">

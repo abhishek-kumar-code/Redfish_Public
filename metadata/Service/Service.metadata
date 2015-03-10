@@ -1,89 +1,89 @@
 <?xml version="1.0" encoding="UTF-8"?><!-- Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.--> 
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
 
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ServiceRoot.0.95.0">
-    <edmx:Include Namespace="ServiceRoot.0.95.0" Alias="ServiceRoot"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ServiceRoot.0.96.0">
+    <edmx:Include Namespace="ServiceRoot.0.96.0" Alias="ServiceRoot"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/AccountService.0.95.0">
-    <edmx:Include Namespace="AccountService.0.95.0" Alias="AccountService"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/AccountService.0.96.0">
+    <edmx:Include Namespace="AccountService.0.96.0" Alias="AccountService"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Chassis.0.95.0">
-    <edmx:Include Namespace="Chassis.0.95.0" Alias="Chassis"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Chassis.0.96.0">
+    <edmx:Include Namespace="Chassis.0.96.0" Alias="Chassis"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ComputerSystem.0.95.0">
-    <edmx:Include Namespace="ComputerSystem.0.95.0" Alias="ComputerSystem"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ComputerSystem.0.96.0">
+    <edmx:Include Namespace="ComputerSystem.0.96.0" Alias="ComputerSystem"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/EhternetNetworkInterface.0.95.0">
-    <edmx:Include Namespace="EhternetNetworkInterface.0.95.0" Alias="EhternetNetworkInterface"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/EhternetNetworkInterface.0.96.0">
+    <edmx:Include Namespace="EhternetNetworkInterface.0.96.0" Alias="EhternetNetworkInterface"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Event.0.95.0">
-    <edmx:Include Namespace="Event.0.95.0" Alias="Event"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Event.0.96.0">
+    <edmx:Include Namespace="Event.0.96.0" Alias="Event"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/EventService.0.95.0">
-    <edmx:Include Namespace="EventService.0.95.0" Alias="EventService"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/EventService.0.96.0">
+    <edmx:Include Namespace="EventService.0.96.0" Alias="EventService"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Firmware.0.95.0">
-    <edmx:Include Namespace="Firmware.0.95.0" Alias="Firmware"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Firmware.0.96.0">
+    <edmx:Include Namespace="Firmware.0.96.0" Alias="Firmware"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/IPAddresses.0.95.0">
-    <edmx:Include Namespace="IPAddresses.0.95.0" Alias="IPAddresses"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/IPAddresses.0.96.0">
+    <edmx:Include Namespace="IPAddresses.0.96.0" Alias="IPAddresses"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ListenerDestination.0.95.0">
-    <edmx:Include Namespace="ListenerDestination.0.95.0" Alias="ListenerDestination"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ListenerDestination.0.96.0">
+    <edmx:Include Namespace="ListenerDestination.0.96.0" Alias="ListenerDestination"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/LogEntry.0.95.0">
-    <edmx:Include Namespace="LogEntry.0.95.0" Alias="LogEntry"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/LogEntry.0.96.0">
+    <edmx:Include Namespace="LogEntry.0.96.0" Alias="LogEntry"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/LogService.0.95.0">
-    <edmx:Include Namespace="LogService.0.95.0" Alias="LogService"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/LogService.0.96.0">
+    <edmx:Include Namespace="LogService.0.96.0" Alias="LogService"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Manager.0.95.0">
-    <edmx:Include Namespace="Manager.0.95.0" Alias="Manager"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Manager.0.96.0">
+    <edmx:Include Namespace="Manager.0.96.0" Alias="Manager"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ManagerAccount.0.95.0">
-    <edmx:Include Namespace="ManagerAccount.0.95.0" Alias="ManagerAccount"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ManagerAccount.0.96.0">
+    <edmx:Include Namespace="ManagerAccount.0.96.0" Alias="ManagerAccount"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ManagerNetworkService.0.95.0">
-    <edmx:Include Namespace="ManagerNetworkService.0.95.0" Alias="ManagerNetworkService"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ManagerNetworkService.0.96.0">
+    <edmx:Include Namespace="ManagerNetworkService.0.96.0" Alias="ManagerNetworkService"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Messages.0.95.0">
-    <edmx:Include Namespace="Messages.0.95.0" Alias="Messages"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Messages.0.96.0">
+    <edmx:Include Namespace="Messages.0.96.0" Alias="Messages"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Power.0.95.0">
-    <edmx:Include Namespace="Power.0.95.0" Alias="Power"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Power.0.96.0">
+    <edmx:Include Namespace="Power.0.96.0" Alias="Power"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Redundancy.0.95.0">
-    <edmx:Include Namespace="Redundancy.0.95.0" Alias="Redundancy"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Redundancy.0.96.0">
+    <edmx:Include Namespace="Redundancy.0.96.0" Alias="Redundancy"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/SerialInterface.0.95.0">
-    <edmx:Include Namespace="SerialInterface.0.95.0" Alias="SerialInterface"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/SerialInterface.0.96.0">
+    <edmx:Include Namespace="SerialInterface.0.96.0" Alias="SerialInterface"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Session.0.95.0">
-    <edmx:Include Namespace="Session.0.95.0" Alias="Session"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Session.0.96.0">
+    <edmx:Include Namespace="Session.0.96.0" Alias="Session"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/SessionService.0.95.0">
-    <edmx:Include Namespace="SessionService.0.95.0" Alias="SessionService"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/SessionService.0.96.0">
+    <edmx:Include Namespace="SessionService.0.96.0" Alias="SessionService"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/SimpleStorage.0.95.0">
-    <edmx:Include Namespace="SimpleStorage.0.95.0" Alias="SimpleStorage"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/SimpleStorage.0.96.0">
+    <edmx:Include Namespace="SimpleStorage.0.96.0" Alias="SimpleStorage"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Task.0.95.0">
-    <edmx:Include Namespace="Task.0.95.0" Alias="Task"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Task.0.96.0">
+    <edmx:Include Namespace="Task.0.96.0" Alias="Task"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/TaskService.0.95.0">
-    <edmx:Include Namespace="TaskService.0.95.0" Alias="TaskService"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/TaskService.0.96.0">
+    <edmx:Include Namespace="TaskService.0.96.0" Alias="TaskService"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Thermal.0.95.0">
-    <edmx:Include Namespace="Thermal.0.95.0" Alias="Thermal"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Thermal.0.96.0">
+    <edmx:Include Namespace="Thermal.0.96.0" Alias="Thermal"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/VirtualMedia.0.95.0">
-    <edmx:Include Namespace="VirtualMedia.0.95.0" Alias="VirtualMedia"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/VirtualMedia.0.96.0">
+    <edmx:Include Namespace="VirtualMedia.0.96.0" Alias="VirtualMedia"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/DMTFExtensions.0.95.0">
-    <edmx:Include Namespace="DMTFExtensions.0.95.0" Alias="DMTF"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/DMTFExtensions.0.96.0">
+    <edmx:Include Namespace="DMTFExtensions.0.96.0" Alias="DMTF"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Errors.0.95.0">
-    <edmx:Include Namespace="Errors.0.95.0" Alias="Error"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Errors.0.96.0">
+    <edmx:Include Namespace="Errors.0.96.0" Alias="Error"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://Contoso.com/Schema/CustomTypes">
     <edmx:Include Namespace="CustomTypes" Alias="Contoso"/>
