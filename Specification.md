@@ -2,7 +2,7 @@
 DocTitle: Scalable Platforms Management API Specification
 DocNumber: '0266'
 DocType: Specification
-DocVersion: '0.95.0'
+DocVersion: '0.96.0'
 DocStatus: Work in Progress
 DocConfidentiality: – Not a DMTF Standard – DMTF Confidential
 expiration: '2015-08-24'
@@ -2283,4 +2283,4 @@ The file where the events are written, one or more messages per event should at 
 | Version | Date      | Description                             |
 | ---     | ---       | ---                                     |
 | 0.94.0  | 2015-13-1 | Initial merge of 0.91 and 0.92 versions |
-| 0.95.0  | 2015-3-3  | Near-final Chassis and ComputerSystem schemas. Introduction of referenceable (array) members and use for power metrics, thermal metrics. Introduction of SessionService. Added JSONSchemaFile to OData metadata, mockups. Miscellaneous clean-up. |
+| 0.96.0  | 2015-3-3  | Near-final Chassis and ComputerSystem schemas. Introduction of referenceable (array) members and use for power metrics, thermal metrics. Introduction of SessionService. Added JSONSchemaFile to OData metadata, mockups. Miscellaneous clean-up. |
