@@ -52,7 +52,10 @@
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Power.0.96.0">
     <edmx:Include Namespace="Power.0.96.0" Alias="Power"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Processor">
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Redundancy.0.96.0">
+    <edmx:Include Namespace="Redundancy.0.96.0" Alias="Redundancy"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Processor.0.96.0">
     <edmx:Include Namespace="Processor.0.96.0" Alias="Processor"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/SerialInterface.0.96.0">
