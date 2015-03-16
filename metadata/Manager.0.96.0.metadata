@@ -117,7 +117,7 @@
           <Annotation Term="OData.LongDescription" String="This is a reference to a collection of ListenerDestination resources."/>
           <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="EthernetNICs" Type="Collection(EthernetNetworkInterface.EthernetNetworkInterface)">
+        <NavigationProperty Name="EthernetInterfaces" Type="Collection(EthernetNetworkInterface.EthernetNetworkInterface)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a reference to a collection of NICs that this manager uses for network communication.  It is here that clients will find NIC configuration options and settings."/>
           <Annotation Term="OData.LongDescription" String="This is a reference to a collection of ListenerDestination resources."/>
