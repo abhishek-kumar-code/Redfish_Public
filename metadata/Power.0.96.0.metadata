@@ -36,7 +36,6 @@
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for power control (power reading and limiting) for a Redfish implementation."/>
         </NavigationProperty>
 
-
         <NavigationProperty Name="Voltages" Type="Collection(Power.Voltage)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is the definition for voltage sensors."/>
@@ -54,9 +53,10 @@
           <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
 
-        <Property Name="Status" Type="Resource.Status"/>
+        <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
 
       </EntityType>
+
       <EntityType Name="PowerControlType" BaseType="Resource.ReferenceableMember">
         <Property Name="Name" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
@@ -110,11 +110,11 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of IDs containing pointers to the resource that is being limited."/>
           <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
-
+        <Property Name="Status" Type="Resource.Status" Nullable="false"/>
         <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
         </Property>
-
       </EntityType>
+
       <EntityType Name="PowerMetric" BaseType="Resource.ReferenceableMember">
         <Property Name="IntervalInMin" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
