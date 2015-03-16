@@ -1,0 +1,54 @@
+{
+    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.0.95.0",
+    "definitions":{
+		"FirmwareRevision":{
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "Current": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                        "VersionString": {
+                            "type": [
+                                "string",
+                                "null"
+                            ],
+                            "readonly": true,
+                            "description": "This string represents the version of the firmware image.",
+                            "longDescription": "This property shall represent the manufacturer version of the firmware image."
+                        }
+                    },
+                    "readonly": true,
+                    "description": "This object contains information about the version of a firmware image."
+                }
+            },
+            "required": [
+                "Current"
+            ],
+            "description": "This is the schema definition for the Firmware Version.  It is used as part of other schema.",
+            "longDescription": "This resource shall be used to represent the version of firmware for a Redfish implementation."    
+		},
+		"FWVersion":{
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "VersionString": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "This string represents the version of the firmware image.",
+                    "longDescription": "This property shall represent the manufacturer version of the firmware image."
+                }
+            },
+            "readonly": true,
+            "description": "This object contains information about the version of a firmware image."    
+		}
+    }
+}
+

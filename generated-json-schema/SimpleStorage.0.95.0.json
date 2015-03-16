@@ -1,0 +1,85 @@
+{
+    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.0.95.0",
+	"title": "SimpleStorage.0.95.0",
+	"type": "object",
+	"additionalProperties": false,
+	"properties": {
+		"@odata.context": {
+			"$ref": "odata.4.0.0#context"
+		},
+		"@odata.id": {
+			"$ref": "odata.4.0.0#id"
+		},
+		"@odata.type": {
+			"$ref": "odata.4.0.0#type"
+		},
+		"Id": {
+			"$ref": "Resource.0.95.0#Id"
+		},
+		"Description": {
+			"$ref": "Resource.0.95.0#Description"
+		},
+		"Name": {
+			"$ref": "Resource.0.95.0#Name"
+		},
+		"Modified": {
+			"$ref": "Resource.0.95.0#Modified"
+		},
+		"Oem": {
+			"$ref": "Resource.0.95.0#Oem",
+			"description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+			"longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+		},
+		"UefiDevicePath": {
+			"type": [
+				"string",
+				"null"
+			],
+			"readonly": true,
+			"description": "The UEFI device path used to access this storage controller.",
+			"longDescription": "This property shall contain the UEFI device path used to identify and locate the specific storage controller"
+		},
+		"Devices": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"additionalProperties": false,
+				"properties": {
+					"Oem": {
+						"$ref": "Resource.0.95.0#Oem"
+					},
+					"Name": {
+						"$ref": "Resource.0.95.0#Name"
+					},
+					"Status": {
+						"$ref": "Resource.0.95.0#Status"
+					},
+					"Manufacturer": {
+						"type": [
+							"string",
+							"null"
+						],
+						"readonly": true,
+						"description": "The name of the manufacturer of this device",
+						"longDescription": "This property shall indicate the name of the manufacturer of this storage device."
+					},
+					"Model": {
+						"type": [
+							"string",
+							"null"
+						],
+						"readonly": true,
+						"description": "The product model number of this device",
+						"longDescription": "This property shall indicate the model information as provided by the manufacturer of this storage device."
+					}
+				}
+			},
+			"readonly": true,
+			"description": "A list of storage devices associated with this resource"
+		},
+		"Status": {
+			"$ref": "Resource.0.95.0#Status"
+		}
+	},
+	"description": "This is the schema definition for the Simple Storage resource.  It represents the properties of a storage controller and its directly-attached devices."                
+}

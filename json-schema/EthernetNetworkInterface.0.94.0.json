@@ -53,21 +53,6 @@
             "readonly": false,
             "specification": "The value of this property shall be the effective current MAC Address of this interface.  If an assignable MAC address is not supported, this is a read only alias of the FactoryMacAddress."
         },
-        "LinkTechnology": {
-            "type": [
-                "string",
-                "null"
-            ],
-            "enum": [
-                "Ethernet"
-            ],
-            "description": "This is link technology, such as Ethernet, for this NIC.",
-            "enumDescriptions": {
-                "Ethernet": "An Ethernet interface"
-            },
-            "readonly": true,
-            "specification": "The value of this property shall be the technology of the interface."
-        },
         "SpeedMbps": {
             "type": [
                 "integer",

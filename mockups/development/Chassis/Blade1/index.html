@@ -1,0 +1,50 @@
+{
+    "@odata.context": "/redfish/v1/$metadata#Chassis/Links/Members/entity",
+    "@odata.id": "/redfish/v1/Chassis/Blade1",
+    "@odata.type": "#Chassis.0.95.0.Chassis",
+    "Id": "Blade1",
+    "Name": "Blade example of a blade in an 2-blade enclosure in a rack.  This blade has a manager that is also the enclosure manager and that manager is part of a redundancy pair.",
+    "Modified": "2036-09-11T14:17:24+00:00",
+    "ChassisType": "Blade",
+    "Description": "Blade 1",
+    "Manufacturer": "ContessoCompany",
+    "Model": "BladeModelNumber",
+    "SKU": "",
+    "SerialNumber": "USE135ES65",
+    "Version": "",
+    "PartNumber": "",
+    "AssetTag": "CustomerWritableThingy",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "Links": {
+        "ComputerSystems": [
+            {
+                "@odata.id": "/redfish/v1/Systems/2"
+            }
+        ],
+        "ContainedBy": {
+            "@odata.id": "/redfish/v1/Chassis/Enc1"
+        },
+        "ManagedBy": [
+            {
+                "@odata.id": "/redfish/v1/Managers/2"
+            },
+            {
+                "@odata.id": "/redfish/v1/Managers/3"
+            }
+        ],
+        "PoweredBy": [
+            {
+                "@odata.id": "/redfish/v1/Chassis/Enc1"
+            }
+        ],
+        "CooledBy": [
+            {
+                "@odata.id": "/redfish/v1/Chassis/Enc1"
+            }
+        ],
+        "Oem": {}
+    }
+}

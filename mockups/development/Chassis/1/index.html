@@ -1,7 +1,7 @@
 {
-    "@odata.context": "/rest/v1/$metadata#Chassis/Links/Members/$entity",
-    "@odata.id": "/rest/v1/Chassis/1",
-    "@odata.type": "#Chassis.0.94.0.Chassis",
+    "@odata.context": "/redfish/v1/$metadata#Chassis/Links/Members/$entity",
+    "@odata.id": "/redfish/v1/Chassis/1",
+    "@odata.type": "#Chassis.0.96.0.Chassis",
     "Id": "1",
     "Name": "Computer System Chassis",
     "Modified": "2013-03-07T14:44",
@@ -19,25 +19,22 @@
     "Links": {
         "ComputerSystems": [
             {
-                "@odata.id": "/rest/v1/Systems/1"
+                "@odata.id": "/redfish/v1/Systems/1"
             }
         ],
         "ContainedBy": {
-            "@odata.id": "/rest/v1/Chassis/Rack1"
+            "@odata.id": "/redfish/v1/Chassis/Rack1"
         },
         "ManagedBy": [
             {
-                "@odata.id": "/rest/v1/Managers/1"
+                "@odata.id": "/redfish/v1/Managers/1"
             }
         ],
-        "ThermalMetrics": {
-            "@odata.id": "/rest/v1/Chassis/1/ThermalMetrics"
+        "Thermal": {
+            "@odata.id": "/redfish/v1/Chassis/1/Thermal"
         },
-        "PowerMetrics": {
-            "@odata.id": "/rest/v1/Chassis/1/PowerMetrics"
-        },
-        "MiscMetrics": {
-            "@odata.id": "/rest/v1/Chassis/1/MiscMetrics"
+        "Power": {
+            "@odata.id": "/redfish/v1/Chassis/1/Power"
         },
         "Oem": {}
     },

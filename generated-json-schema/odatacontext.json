@@ -1,8 +1,0 @@
-{
-    "$schema": "http://www.redfishspecification.org/schema",
-    "type": "string",
-    "format": "uri",
-    "readonly": true,
-    "longDescription": "The value of this property shall be the context URL that describes the resource according to OData-Protocol and shall be of the form defined in the SPMF specification."
-}
-

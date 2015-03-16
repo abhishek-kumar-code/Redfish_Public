@@ -1,7 +1,7 @@
 {
-    "@odata.context": "/rest/v1/$metadata#Managers/Links/Members/$entity",
-    "@odata.id": "/rest/v1/Managers/2",
-    "@odata.type": "#Managers.0.94.0.Manager",
+    "@odata.context": "/redfish/v1/$metadata#Managers/Links/Members/$entity",
+    "@odata.id": "/redfish/v1/Managers/2",
+    "@odata.type": "#Managers.0.96.0.Manager",
     "Id": "2",
     "Name": "Manager For Enclosure Primary",
     "Modified": "2012-03-07T14:44",
@@ -14,6 +14,8 @@
         "Health": "OK"
     },
     "Redundancy": {
+        "@odata.id": "/redfish/v1/Managers/2#Redundancy",
+        "MemberID": "Redundancy",
         "Mode": "Failover",
         "MaxNumSupported": 2,
         "MinNumNeeded": 1,
@@ -21,30 +23,30 @@
             "State": "Enabled",
             "Health": "OK"
         },
-        "ActiveCorrelatableIDs": []
+        "RedundancySet": []
     },
     "Links": {
         "ManagerForServers": [
             {
-                "@odata.id": "/rest/v1/Systems/2"
+                "@odata.id": "/redfish/v1/Systems/2"
             }
         ],
         "ManagerForChassis": [
             {
-                "@odata.id": "/rest/v1/Chassis/Enc1"
+                "@odata.id": "/redfish/v1/Chassis/Enc1"
             }
         ],
         "Oem": {}
     },
     "Actions": {
         "#Manager.Reset": {
-            "target": "/rest/v1/Managers/2/Actions/Manager.Reset"
+            "target": "/redfish/v1/Managers/2/Actions/Manager.Reset"
         },
-        "#Manager.0.94.0.ForceFailover": {
-            "target": "/rest/v1/Managers/2/Actions/Manager.ForceFailover"
+        "#Manager.0.96.0.ForceFailover": {
+            "target": "/redfish/v1/Managers/2/Actions/Manager.ForceFailover"
         },
-        "#Manager.0.94.0.ModifyRedundancySet": {
-            "target": "/rest/v1/Managers/2/Actions/Manager.ModifyRedundancySet"
+        "#Manager.0.96.0.ModifyRedundancySet": {
+            "target": "/redfish/v1/Managers/2/Actions/Manager.ModifyRedundancySet"
         },
         "Oem": {}
     },

@@ -1,0 +1,41 @@
+{
+    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.0.95.0",
+	"title": "Session.0.95.0",
+	"type": "object",
+	"additionalProperties": false,
+	"properties": {
+		"@odata.context": {
+			"$ref": "odata.4.0.0#context"
+		},
+		"@odata.id": {
+			"$ref": "odata.4.0.0#id"
+		},
+		"@odata.type": {
+			"$ref": "odata.4.0.0#type"
+		},
+		"Id": {
+			"$ref": "Resource.0.95.0#Id"
+		},
+		"Description": {
+			"$ref": "Resource.0.95.0#Description"
+		},
+		"Name": {
+			"$ref": "Resource.0.95.0#Name"
+		},
+		"Modified": {
+			"$ref": "Resource.0.95.0#Modified"
+		},
+		"Oem": {
+			"$ref": "Resource.0.95.0#Oem",
+			"description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+			"longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+		},
+		"UserName": {
+			"type": [
+				"string",
+				"null"
+			],
+			"readonly": true
+		}
+	}                        
+}

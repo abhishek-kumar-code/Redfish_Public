@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?><!-- Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.--> 
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:DataServices>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Messages.0.96.0" Alias="message">
+
+      <Term Name="parameters" Type="Collection(Edm.String)"/>
+      <Term Name="severity" Type="Edm.String"/>
+      <Term Name="resolution" Type="Edm.String"/>
+
+    </Schema>
+    
+  </edmx:DataServices>
+</edmx:Edmx>
+
