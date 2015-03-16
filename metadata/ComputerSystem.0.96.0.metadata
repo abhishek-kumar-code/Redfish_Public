@@ -29,9 +29,6 @@
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Processor.0.96.0">
     <edmx:Include Namespace="Processor.0.96.0" Alias="Processor"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Firmware.0.96.0">
-    <edmx:Include Namespace="Firmware.0.96.0" Alias="Firmware"/>
-  </edmx:Reference>
 
   <edmx:DataServices>
 

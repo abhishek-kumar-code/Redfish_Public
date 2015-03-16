@@ -32,9 +32,6 @@
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/SerialInterface.0.96.0">
     <edmx:Include Namespace="SerialInterface.0.96.0" Alias="SerialInterface"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Firmware.0.96.0">
-    <edmx:Include Namespace="Firmware.0.96.0" Alias="Firmware"/>
-  </edmx:Reference>
 
   <edmx:DataServices>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.0.96.0" Alias="Manager">
@@ -78,7 +75,11 @@
           <Annotation Term="OData.Description" String="The model information of this Manager as defined by the manufacturer"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the information about how the manufacturer references this manager."/>
         </Property>
-        <Property Name="Firmware" Type="Firmware.FirmwareRevision" Nullable="false"/>
+        <Property Name="FirmwareVersion" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="The firmware version of this Manager"/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the firwmare version as defined by the manufacturer for the associated manager."/>
+        </Property>
         <Property Name="SerialConsole" Type="Manager.SerialConsole" Nullable="false">
           <Annotation Term="OData.Description" String="The value of this property shall contain the information about the Serial Console service of this manager."/>
         </Property>
@@ -190,6 +191,9 @@
         </Member>
         <Member Name="BMC">
           <Annotation Term="OData.Description" String="A controller which provides management functions for a single computer system"/>
+        </Member>
+        <Member Name="RackManager">
+          <Annotation Term="OData.Description" String="A controller which provides management functions for a whole or part of a rack"/>
         </Member>
       </EnumType>
 

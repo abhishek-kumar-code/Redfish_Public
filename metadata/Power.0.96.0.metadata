@@ -17,9 +17,6 @@
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Redundancy.0.96.0">
     <edmx:Include Namespace="Redundancy.0.96.0" Alias="Redundancy"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Firmware.0.96.0">
-    <edmx:Include Namespace="Firmware.0.96.0" Alias="Firmware"/>
-  </edmx:Reference>
     
   <edmx:DataServices>
 
