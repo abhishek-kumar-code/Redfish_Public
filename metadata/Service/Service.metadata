@@ -52,6 +52,9 @@
   <edmx:Reference Uri="http://dmtf.org/schema/v1/PowerMetrics.0.94.0">
     <edmx:Include Namespace="PowerMetrics.0.94.0" Alias="PowerMetrics"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Processor">
+    <edmx:Include Namespace="Processor.0.96.0" Alias="Processor"/>
+  </edmx:Reference>
   <edmx:Reference Uri="http://dmtf.org/schema/v1/Redundancy.0.94.0">
     <edmx:Include Namespace="Redundancy.0.94.0" Alias="Redundancy"/>
   </edmx:Reference>
