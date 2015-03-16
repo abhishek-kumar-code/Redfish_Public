@@ -9,10 +9,11 @@
         "State": "Enabled",
         "Health": "OK"
     },
-    "PowerMetrics": [
+    "PowerControl": [
         {
-            "@odata.id": "/redfish/v1/Chassis/1/Power#PowerMetrics/1",
+            "@odata.id": "/redfish/v1/Chassis/1/Power#PowerControl/1",
             "MemberID": "1",
+	    "Name": "System Power Control",
             "PowerConsumedWatts": 8000,
             "PowerRequestedWatts": 8500,
             "PowerAvailableWatts": 8500,
@@ -27,11 +28,64 @@
             "PowerLimit": {
                 "LimitInWatts": 9000,
                 "LimitException": "LogEventOnly",
-                "CorrectionInMs": 42,
-                "RelatedTo": [ 
-                    {"@odata.id": "/redfish/v1/Systems/1#Processor"}
-                ]
-            }
+                "CorrectionInMs": 42
+	    },
+            "RelatedResource": [ 
+                {"@odata.id": "/redfish/v1/Systems/1"},
+                {"@odata.id": "/redfish/v1/Chassis/1"},
+                {"@odata.id": "/redfish/v1/Systems/1#Processors"}
+            ],
+	    "Oem": {}
+        }
+    ],
+    "Voltages": [
+        {
+            "@odata.id": "/redfish/v1/Encl/1/Power#Voltages/1",
+            "MemberID": "1",
+            "Name": "VRM1 Voltage",
+            "Number": 11,
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK"
+            },
+            "Units": "Volts",
+            "CurrentReading": 12,
+            "UpperThresholdNonCritical": 12.5,
+            "UpperThresholdCritical": 13,
+            "UpperThresholdFatal": 15,
+            "LowerThresholdNonCritical": 11.5,
+            "LowerThresholdCritical": 11,
+            "LowerThresholdFatal": 10,
+            "MinimumValue": 0,
+            "MaximumValue": 20,
+            "PhysicalContext": "Voltage Regulator",
+            "RelatedResource": [
+                {"@odata.id": "/redfish/v1/Systems/1" },
+                {"@odata.id": "/redfish/v1/Chassis/1" }
+            ]
+        },
+        {
+            "@odata.id": "/redfish/v1/Encl/1/Power#Voltages/2",
+            "MemberID": "2",
+            "Name": "VRM2 Voltage",
+            "Number": 12,
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK"
+            },
+            "Units": "Volts",
+            "CurrentReading": 5,
+            "UpperThresholdNonCritical": 5.5,
+            "UpperThresholdCritical": 7,
+            "LowerThresholdNonCritical": 4.75,
+            "LowerThresholdCritical": 4.5,
+            "MinimumValue": 0,
+            "MaximumValue": 20,
+            "PhysicalContext": "Voltage Regulator",
+            "RelatedResource": [
+                {"@odata.id": "/redfish/v1/Systems/1" },
+                {"@odata.id": "/redfish/v1/Chassis/1" }
+            ]
         }
     ],
     "PowerSupplies": [
@@ -54,7 +108,7 @@
             "SerialNumber": "1z0000001",
             "PartNumber": "1z0000001A3a",
             "SparePartNumber": "0000001A3a",
-            "RelatedTo": [
+            "RelatedResource": [
                 "@odata.id": "/redfish/v1/Chassis/1",
             ],
             "Redundancy": [
@@ -80,7 +134,7 @@
             "SerialNumber": "1z0000001",
             "PartNumber": "1z0000001A3a",
             "SparePartNumber": "0000001A3a",
-            "RelatedTo": [
+            "RelatedResource": [
                 "@odata.id": "/redfish/v1/Chassis/1",
             ],
             "Redundancy": [

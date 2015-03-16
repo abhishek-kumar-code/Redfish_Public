@@ -29,6 +29,41 @@
       <EntityType Name="Power" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition for the Power Metrics.  It represents the properties for Power Consumption and Power Limiting."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a power metrics resource for a Redfish implementation."/>
+
+        <NavigationProperty Name="PowerControl" Type="Collection(Power.PowerControlType)" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="This is the definition for power control function (power reading/limiting)."/>
+          <Annotation Term="OData.LongDescription" String="These properties shall be the definition for power control (power reading and limiting) for a Redfish implementation."/>
+        </NavigationProperty>
+
+
+        <NavigationProperty Name="Voltages" Type="Collection(Power.Voltage)" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="This is the definition for voltage sensors."/>
+          <Annotation Term="OData.LongDescription" String="These properties shall be the definition for voltage sensors for a Redfish implementation."/>
+        </NavigationProperty>
+
+        <NavigationProperty Name="PowerSupplies" Type="Collection(Power.PowerSupply)" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="Details of the power supplies associated with this system or device"/>
+        </NavigationProperty>
+
+        <NavigationProperty Name="Redundancy" Type="Collection(Redundancy.Redundancy)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="Redundancy information for the power subsystem of this system or device"/>
+          <Annotation Term="DMTF.ExpandReferences"/>
+        </NavigationProperty>
+
+        <Property Name="Status" Type="Resource.Status"/>
+
+      </EntityType>
+      <EntityType Name="PowerControlType" BaseType="Resource.ReferenceableMember">
+        <Property Name="Name" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="Power Control Function name."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the name of the Voltage sensor."/>
+        </Property>
+
         <Property Name="PowerConsumedWatts" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The actual power being consumed by the chassis."/>
@@ -64,26 +99,22 @@
           <Annotation Term="Validation.Minimum" Int="0"/>
           <Annotation Term="OData.Measures.Unit" String="Watts"/>
         </Property>
-        <Property Name="PowerLimit" Type="Power.PowerLimit" Nullable="false">
+        <NavigationProperty Name="PowerMetrics" Type="Power.PowerMetric" Nullable="false">
+          <Annotation Term="OData.Description" String="This object contains power metrics for power readings (interval, min/max/ave power consumption for the chassis."/>
+        </NavigationProperty>
+        <NavigationProperty Name="PowerLimit" Type="Power.PowerLimitType" Nullable="false">
           <Annotation Term="OData.Description" String="This object contains power limit status and configuration information for the chassis"/>
-        </Property>
-        <NavigationProperty Name="PowerMetrics" Type="Collection(Power.PowerMetric)" Nullable="false">
-          <Annotation Term="OData.Description" String="This object contains an array of power consumption measurements for this system or device."/>
-          <Annotation Term="OData.LongDescription" String="This object shall contain an array of power consumption metrics for the associated resource."/>
-          <Annotation Term="DMTF.ExpandResources"/>
         </NavigationProperty>
-        <NavigationProperty Name="PowerSupplies" Type="Collection(Power.PowerSupply)" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="Details of the power supplies associated with this system or device"/>
-        </NavigationProperty>
-        <NavigationProperty Name="Redundancy" Type="Collection(Redundancy.Redundancy)">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="Redundancy information for the power subsystem of this system or device"/>
+        <NavigationProperty Name="RelatedResource" Type="Collection(Resource.Item)" Nullable="false">
+          <Annotation Term="OData.Description" String="The ID(s) of the resources associated with this Power Limit"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of IDs containing pointers to the resource that is being limited."/>
           <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
-        <Property Name="Status" Type="Resource.Status"/>
-      </EntityType>
 
+        <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
+        </Property>
+
+      </EntityType>
       <EntityType Name="PowerMetric" BaseType="Resource.ReferenceableMember">
         <Property Name="IntervalInMin" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
@@ -115,7 +146,7 @@
         </Property>
       </EntityType>
 
-      <ComplexType Name="PowerLimit">
+      <ComplexType Name="PowerLimitType">
         <Annotation Term="OData.Description" String="This object contains power limit status and configuration information for the chassis."/>
         <Property Name="LimitInWatts" Type="Edm.Int64">
           <Annotation Term="OData.Description" String="The Power limit in watts. Set to null to disable power capping."/>
@@ -132,11 +163,6 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the time interval in ms required for the limiting process to react and reduce the power consumption below the limit."/>
           <Annotation Term="OData.Measures.Unit" String="Ms"/>
         </Property>
-        <NavigationProperty Name="RelatedTo" Type="Collection(Resource.Item)" Nullable="false">
-          <Annotation Term="OData.Description" String="The ID(s) of the resources associated with this Power Limit"/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of IDs containing pointers to the resource that is being limited."/>
-          <Annotation Term="DMTF.ExpandReferences"/>
-        </NavigationProperty>
       </ComplexType>
 
       <EnumType Name="PowerLimitException">
@@ -151,6 +177,106 @@
         </Member>
         <Member Name="Oem">
           <Annotation Term="OData.Description" String="Take an OEM-defined action."/>
+        </Member>
+      </EnumType>
+
+
+      <EntityType Name="Voltage" BaseType="Resource.ReferenceableMember">
+        <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
+        <Property Name="Name" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="Voltage sensor name."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the name of the Voltage sensor."/>
+        </Property>
+        <Property Name="Number" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="A numerical identifier to represent the voltage sensor"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a numerical identifier for this voltage sensor that is unique within this resource. "/>
+        </Property>
+        <Property Name="Status" Type="Resource.Status" Nullable="false"/>
+        <Property Name="Units" Type="Power.VoltageUnit">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="The voltage sensor's units."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the units that the voltage sensor in which the CurrentReading is measured."/>
+        </Property>
+        <Property Name="CurrentReading" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="The current value of the voltage sensor."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the current value of the voltage sensor's reading."/>
+        </Property>
+        <Property Name="UpperThresholdNonCritical" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="Above normal range"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the CurrentReading is above the normal range but is not critical."/>
+        </Property>
+        <Property Name="UpperThresholdCritical" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="Above normal range but not yet fatal."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the CurrentReading is above the normal range but is not yet fatal."/>
+        </Property>
+        <Property Name="UpperThresholdFatal" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="Above normal range and is fatal"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the CurrentReading is above the normal range and is fatal."/>
+        </Property>
+        <Property Name="LowerThresholdNonCritical" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="Below normal range"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the CurrentReading is below the normal range but is not critical."/>
+        </Property>
+        <Property Name="LowerThresholdCritical" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="Below normal range but not yet fatal."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the CurrentReading is below the normal range but is not yet fatal."/>
+        </Property>
+        <Property Name="LowerThresholdFatal" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="Below normal range and is fatal"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the CurrentReading is below the normal range and is fatal."/>
+        </Property>
+        <Property Name="MinimumValue" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="Minimum value for CurrentReading"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the lowest possible value for CurrentReading."/>
+        </Property>
+        <Property Name="MaximumValue" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="Maximum value for CurrentReading"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the lowest possible value for CurrentReading."/>
+        </Property>
+        <Property Name="PhysicalContext" Type="Thermal.VoltagePhysicalContext" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="Describes the area or device to which this voltage measurement applies."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a description of the affected device or region within the chassis to which this voltage measurement applies."/>
+        </Property>
+        <NavigationProperty Name="RelatedResource" Type="Collection(Resource.Item)" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="Describes the areas or devices to which this voltage measurement applies."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall the array of IDs of areas or devices to which this voltage measurement applies."/>
+          <Annotation Term="DMTF.ExpandReferences"/>
+        </NavigationProperty>
+      </EntityType>
+
+      <EnumType Name="VoltageUnit">
+        <Member Name="Volts"/>
+        <Member Name="MiliVolts"/>
+      </EnumType>
+
+      <EnumType Name="VoltagePhysicalContext">
+        <Member Name="SystemBoardVReg">
+          <Annotation Term="OData.Description" String="Voltage Regulator on Board"/>
+        </Member>
+        <Member Name="InputRail">
+          <Annotation Term="OData.Description" String="An input voltage rail coming into the chassis"/>
+        </Member>
+        <Member Name="OuputRail">
+          <Annotation Term="OData.Description" String="An output voltage rail leaving the chassis"/>
+        </Member>
+        <Member Name="Backplane">
+          <Annotation Term="OData.Description" String="A backplane within the chassis"/>
+        </Member>
+        <Member Name="PowerSupplyLineInput">
+          <Annotation Term="OData.Description" String="The Line Input Voltage to the Power Supply"/>
         </Member>
       </EnumType>
 
@@ -217,7 +343,7 @@
           <Annotation Term="OData.LongDescription" String="This property shall contain the spare or replacement part number as defined by the manufacturer for the associated power supply."/>
         </Property>
         <Property Name="Status" Type="Resource.Status" Nullable="false"/>
-        <NavigationProperty Name="RelatedTo" Type="Collection(Resource.Item)" Nullable="false">
+        <NavigationProperty Name="RelatedResource" Type="Collection(Resource.Item)" Nullable="false">
           <Annotation Term="OData.Description" String="The ID(s) of the resources associated with this Power Limit"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of IDs containing pointers to the resource that is being limited."/>
           <Annotation Term="DMTF.ExpandReferences"/>
@@ -266,3 +392,4 @@
     </Schema>
   </edmx:DataServices>
 </edmx:Edmx>
+

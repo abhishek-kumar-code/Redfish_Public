@@ -9,14 +9,14 @@
         {
             "@odata.id": "/redfish/v1/Encl/1/Thermal#Temperatures/1",
             "MemberID": "1",
-            "Name": "Sensor ID String",
+            "Name": "Chassis Intake Temp",
             "Number": 42,
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
             },
             "Units": "Celsius",
-            "CurrentReading": 45,
+            "CurrentReading": 25,
             "UpperThresholdNonCritical": 30,
             "UpperThresholdCritical": 40,
             "UpperThresholdFatal": 50,
@@ -26,8 +26,11 @@
             "MinimumValue": 0,
             "MaximumValue": 200,
             "PhysicalContext": "Intake",
-            "RelatedTo": [
-                {"@odata.id": "/redfish/v1/Systems/2#Processors/1" }
+            "RelatedResource": [
+                {"@odata.id": "/redfish/v1/Systems/2" },
+                {"@odata.id": "/redfish/v1/Chassis/Enc1" },
+                {"@odata.id": "/redfish/v1/Chassis/Blade1" },
+                {"@odata.id": "/redfish/v1/Chassis/Blade2" }
             ]
         }
     ],
@@ -50,14 +53,12 @@
             "LowerThresholdFatal": 42,
             "MinimumValue": 0,
             "MaximumValue": 5000,
-            "Temperatures" : [
-                {"@odata.id": "/redfish/v1/Chassis/Enc1/Thermal#Temperatures/1"}
-            ],
             "Redundancy" : [
                 {"@odata.id": "/redfish/v1/Chassis/Enc1/Thermal#Redundancy/1"}
             ],
-            "RelatedTo" : [
-                {"@odata.id": "/redfish/v1/Systems/2#Processors/1" }
+            "RelatedResource" : [
+                {"@odata.id": "/redfish/v1/Systems/2" },
+                {"@odata.id": "/redfish/v1/Chassis/Enc1" }
             ] 
         },
         {
@@ -78,14 +79,12 @@
             "LowerThresholdFatal": 42,
             "MinimumValue": 0,
             "MaximumValue": 5000,
-            "Temperatures" : [
-                {"@odata.id": "/redfish/v1/Chassis/Enc1/Thermal#Temperatures/1"}
-            ],
             "Redundancy" : [
                 {"@odata.id": "/redfish/v1/Chassis/Enc1/Thermal#Redundancy/1"}
             ],
-            "RelatedTo" : [
-                {"@odata.id": "/redfish/v1/Systems/2#Processors/1" }
+            "RelatedResource" : [
+                {"@odata.id": "/redfish/v1/Systems/2" },
+                {"@odata.id": "/redfish/v1/Chassis/Enc1" }
             ] 
         }
     ],

@@ -9,7 +9,7 @@
         {
             "@odata.id": "/redfish/v1/Chassis/1/Thermal#Temperatures/1",
             "MemberID": "1",
-            "Name": "Sensor ID String",
+            "Name": "CPU1 Temp",
             "Number": 42,
             "Status": {
                 "State": "Enabled",
@@ -26,8 +26,57 @@
             "MinimumValue": 0,
             "MaximumValue": 200,
             "PhysicalContext": "CPU",
-            "RelatedTo": [
+            "RelatedResource": [
                 {"@odata.id": "/redfish/v1/Systems/1#Processors/1" }
+            ]
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/1/Thermal#Temperatures/1",
+            "MemberID": "2",
+            "Name": "CPU2 Temp",
+            "Number": 43,
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK"
+            },
+            "Units": "Celsius",
+            "CurrentReading": 21,
+            "UpperThresholdNonCritical": 42,
+            "UpperThresholdCritical": 42,
+            "UpperThresholdFatal": 42,
+            "LowerThresholdNonCritical": 42,
+            "LowerThresholdCritical": 5,
+            "LowerThresholdFatal": 42,
+            "MinimumValue": 0,
+            "MaximumValue": 200,
+            "PhysicalContext": "CPU",
+            "RelatedResource": [
+                {"@odata.id": "/redfish/v1/Systems/1#Processors/2" }
+            ]
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/1/Thermal#Temperatures/1",
+            "MemberID": "3",
+            "Name": "Chassis Intake Temp",
+            "Number": 44,
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK"
+            },
+            "Units": "Celsius",
+            "CurrentReading": 25,
+            "UpperThresholdNonCritical": 30,
+            "UpperThresholdCritical": 40,
+            "UpperThresholdFatal": 50,
+            "LowerThresholdNonCritical": 10,
+            "LowerThresholdCritical": 5,
+            "LowerThresholdFatal": 0,
+            "MinimumValue": 0,
+            "MaximumValue": 200,
+            "PhysicalContext": "Intake",
+            "RelatedResource": [
+                {"@odata.id": "/redfish/v1/Chassis/1" },
+                {"@odata.id": "/redfish/v1/Systems/1" }
             ]
         }
     ],
@@ -51,14 +100,12 @@
             "LowerThresholdFatal": 42,
             "MinimumValue": 0,
             "MaximumValue": 5000,
-            "Temperatures" : [ 
-                {"@odata.id": "/redfish/v1/Chassis/1/Thermal#Temperatures/1"}
-            ],
             "Redundancy" : [ 
                 {"@odata.id": "/redfish/v1/Chassis/1/Thermal#Redundancy/1"}
             ],
-            "RelatedTo" : [
-                {"@odata.id": "/redfish/v1/Systems/1#Processors/1" }
+            "RelatedResource" : [
+                {"@odata.id": "/redfish/v1/Systems/1" },
+                {"@odata.id": "/redfish/v1/Chassis/1" }
             ] 
         },
         {
@@ -80,14 +127,12 @@
             "LowerThresholdFatal": 42,
             "MinimumValue": 0,
             "MaximumValue": 5000,
-            "Temperatures" : [
-                {"@odata.id": "/redfish/v1/Chassis/1/Thermal#Temperatures/1"}
-            ],
             "Redundancy" : [
                 {"@odata.id": "/redfish/v1/Chassis/1/Power#Redundancy/1"}
             ],
-            "RelatedTo" : [
-                {"@odata.id": "/redfish/v1/Systems/1#Processors/1" }
+            "RelatedResource" : [
+                {"@odata.id": "/redfish/v1/Systems/1" },
+                {"@odata.id": "/redfish/v1/Chassis/1" }
             ] 
        }
     ],

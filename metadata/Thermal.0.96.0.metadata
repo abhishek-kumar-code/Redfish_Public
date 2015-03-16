@@ -109,7 +109,7 @@
           <Annotation Term="OData.Description" String="Describes the area or device to which this temperature measurement applies."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a description of the affected device or region within the chassis to which this temperature measurement applies."/>
         </Property>
-        <NavigationProperty Name="RelatedTo" Type="Collection(Resource.Item)" Nullable="false">
+        <NavigationProperty Name="RelatedResource" Type="Collection(Resource.Item)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Describes the areas or devices to which this temperature measurement applies."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall the array of IDs of areas or devices to which this temperature measurement applies."/>
@@ -247,13 +247,7 @@
           <Annotation Term="OData.Description" String="Maximum value for CurrentReading"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the lowest possible value for CurrentReading."/>
         </Property>
-        <NavigationProperty Name="Temperatures" Type="Collection(Thermal.Temperature)" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="The ID(s) of the temperatures regulated by this fan."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of IDs containing pointers to the temperatures regulated by this fan."/>
-          <Annotation Term="DMTF.ExpandReferences"/>
-        </NavigationProperty>
-        <NavigationProperty Name="RelatedTo" Type="Collection(Resource.Item)" Nullable="false">
+        <NavigationProperty Name="RelatedResource" Type="Collection(Resource.Item)" Nullable="false">
           <Annotation Term="OData.Description" String="The ID(s) of the resources serviced with this fan"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of IDs containing pointers to the resource that are being serviced by this fan."/>
           <Annotation Term="DMTF.ExpandReferences"/>
