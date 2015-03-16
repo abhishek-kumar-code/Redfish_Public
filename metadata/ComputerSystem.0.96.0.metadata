@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?><!-- Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.--> 
+<?xml version="1.0" encoding="UTF-8"?><!-- Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.-->
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
-  
+
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
@@ -26,6 +26,9 @@
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ManagerAccount.0.96.0">
     <edmx:Include Namespace="ManagerAccount.0.96.0" Alias="ManagerAccount"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Processor.0.96.0">
+    <edmx:Include Namespace="Processor.0.96.0" Alias="Processor"/>
+  </edmx:Reference>
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Firmware.0.96.0">
     <edmx:Include Namespace="Firmware.0.96.0" Alias="Firmware"/>
   </edmx:Reference>
@@ -49,7 +52,7 @@
           <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
       </ComplexType>
-      
+
       <EntityType Name="ComputerSystem" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This schema defines a computer system and its respective properties.  A computer system represents a machine (physical or virtual) and the local resources such as memory, cpu and other devices that can be accessed from that machine."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent resources that represent a computing system in the Redfish specification."/>
@@ -137,6 +140,12 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall reference a resource of type Chassis that represents the physical container associated with this resource."/>
           <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
+        <NavigationProperty Name="Processors" Type="Processor.ProcessorCollection" ContainsTarget="true">
+           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+           <Annotation Term="OData.Description" String="A reference to the collection of Processors associated with this system"/>
+           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a processor collection."/>
+           <Annotation Term="DMTF.ExpandReferences"/>
+        </NavigationProperty>
         <NavigationProperty Name="ManagedBy" Type="Collection(ManagerAccount.ManagerAccount)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the Managers responsible for this system"/>
@@ -215,7 +224,7 @@
           <Annotation Term="OData.Description" String="Simulate the pressing of the physical power button on this system"/>
         </Member>
       </EnumType>
-        
+
       <EnumType Name="SystemType">
         <Member Name="Physical">
           <Annotation Term="OData.Description" String="A computer system"/>
