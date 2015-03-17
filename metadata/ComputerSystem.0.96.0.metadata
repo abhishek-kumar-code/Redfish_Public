@@ -29,9 +29,6 @@
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Processor.0.96.0">
     <edmx:Include Namespace="Processor.0.96.0" Alias="Processor"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Firmware.0.96.0">
-    <edmx:Include Namespace="Firmware.0.96.0" Alias="Firmware"/>
-  </edmx:Reference>
 
   <edmx:DataServices>
 
@@ -152,7 +149,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall reference a resource of type manager that represents the resource with management responsibility for this resource."/>
           <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="SimpleNetwork" Type="Collection(EthernetNetworkInterface.EthernetNetworkInterface)" ContainsTarget="true">
+        <NavigationProperty Name="EthernetInterfaces" Type="Collection(EthernetNetworkInterface.EthernetNetworkInterface)" ContainsTarget="true">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="A reference to the Ethernet interfaces associated with this system"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of EthernetNetworkInterfaces."/>
