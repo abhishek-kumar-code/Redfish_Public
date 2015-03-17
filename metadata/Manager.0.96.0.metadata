@@ -80,7 +80,7 @@
           <Annotation Term="OData.Description" String="The current DateTime (with offset) for the manager, used to set or read time."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the current DateTime value for the manager, with offset from UTC, in Redfish Timestamp format."/>
         </Property>
-        <Property Name="LocalOffset" Type="Edm.String">
+        <Property Name="DateTimeLocalOffset" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/ReadWrite"/>
           <Annotation Term="OData.Description" String="The time offset from UTC that the DateTime property is set to in format: +06:00 ."/>
           <Annotation Term="OData.LongDescription" String="The value is property shall represent the offset from UTC time that the current value of DataTime property contains."/>
