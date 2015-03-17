@@ -17,8 +17,8 @@
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Chassis.0.96.0">
     <edmx:Include Namespace="Chassis.0.96.0" Alias="Chassis"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/EthernetNetworkInterface.0.96.0">
-    <edmx:Include Namespace="EthernetNetworkInterface.0.96.0" Alias="EthernetNetworkInterface"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/EthernetInterface.0.96.0">
+    <edmx:Include Namespace="EthernetInterface.0.96.0" Alias="EthernetInterface"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ManagerNetworkProtocol.0.96.0">
     <edmx:Include Namespace="ManagerNetworkProtocol.0.96.0" Alias="ManagerNetworkProtocol"/>
@@ -128,7 +128,7 @@
           <Annotation Term="OData.LongDescription" String="This is a reference to a collection of ListenerDestination resources."/>
           <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="EthernetInterfaces" Type="Collection(EthernetNetworkInterface.EthernetNetworkInterface)">
+        <NavigationProperty Name="EthernetInterfaces" Type="Collection(EthernetInterface.EthernetInterface)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a reference to a collection of NICs that this manager uses for network communication.  It is here that clients will find NIC configuration options and settings."/>
           <Annotation Term="OData.LongDescription" String="This is a reference to a collection of ListenerDestination resources."/>
