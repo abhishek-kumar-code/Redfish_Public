@@ -5,14 +5,11 @@
     "Id": "Power",
     "Name": "Power",
     "Modified": "2013-07-22T14:44+00:00",
-    "Status": {
-        "State": "Enabled",
-        "Health": "OK"
-    },
-    "PowerMetrics": [
+    "PowerControl": [
         {
-            "@odata.id": "/redfish/v1/Chassis/Enc1/Power#PowerMetrics/1",
+            "@odata.id": "/redfish/v1/Chassis/Enc1/Power#PowerControl/1",
             "MemberID": "1",
+	    "Name": "Chassis Power Control",
             "PowerConsumedWatts": 8000,
             "PowerRequestedWatts": 8500,
             "PowerAvailableWatts": 1500,
@@ -21,11 +18,16 @@
             "PowerLimit": {
                 "LimitInWatts": 9000,
                 "LimitException": "NoAction",
-                "CorrectionInMs": 2000,
-                "RelatedTo": [
-                    {"@odata.id": "/redfish/v1/Systems/2#Processor"}
-                ]
-            }
+                "CorrectionInMs": 2000
+	    },
+            "RelatedItem": [
+                 {"@odata.id": "/redfish/v1/Chassis/Enc1"}
+            ],
+	    "Status": {
+	        "State": "Enabled",
+	        "Health": "OK"
+	    },
+	    "Oem": {}
         }
     ],
     "PowerSupplies": [
@@ -37,6 +39,7 @@
                 "State": "Disabled",
                 "Health": "Warning"
             },
+	    "Oem": {},
             "PowerSupplyType": "AC",
             "LineInputVoltage": 48,
             "PowerCapacityWatts": 400,
@@ -46,11 +49,11 @@
             "SerialNumber": "1z0000001",
             "PartNumber": "1z0000001A3a",
             "SparePartNumber": "0000001A3a",
-            "RelatedTo": [
-                "@odata.id": "/redfish/v1/Chassis/Enc1",
+            "RelatedItem": [
+              { "@odata.id": "/redfish/v1/Chassis/Enc1" }
             ],
             "Redundancy": [
-                "@odata.id": "/redfish/v1/Chassis/Enc1/Power#Redundancy/1"
+              { "@odata.id": "/redfish/v1/Chassis/Enc1/Power#Redundancy/1" }
             ]
         },
         {
@@ -61,6 +64,7 @@
                 "State": "Disabled",
                 "Health": "Warning"
             },
+	    "Oem": {},
             "PowerSupplyType": "AC",
             "LineInputVoltage": 48,
             "PowerCapacityWatts": 400,
@@ -70,11 +74,11 @@
             "SerialNumber": "1z0000001",
             "PartNumber": "1z0000001A3a",
             "SparePartNumber": "0000001A3a",
-            "RelatedTo": [
-                "@odata.id": "/redfish/v1/Chassis/Enc1",
+            "RelatedItem": [
+              { "@odata.id": "/redfish/v1/Chassis/Enc1" }
             ],
             "Redundancy": [
-                "@odata.id": "/redfish/v1/Chassis/Enc1/Power#Redundancy/1"
+              { "@odata.id": "/redfish/v1/Chassis/Enc1/Power#Redundancy/1" }
             ]
         },
         {
@@ -103,5 +107,6 @@
                 "Health": "OK"
             }
         }
-    ]
+    ],
+    "Oem": {}
 }
