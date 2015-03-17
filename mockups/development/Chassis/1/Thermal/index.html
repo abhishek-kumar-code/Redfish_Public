@@ -7,10 +7,33 @@
     "Modified": "2013-07-22T14:44+00:00",
     "Temperatures": [
         {
-            "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Temperatures/1",
+            "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Temperatures/0",
             "MemberID": "1",
             "Name": "CPU1 Temp",
             "Number": 42,
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK"
+            },
+            "ReadingCelcius": 21,
+            "UpperThresholdNonCriticalCelcius": 42,
+            "UpperThresholdCriticalCelcius": 42,
+            "UpperThresholdFatalCelcius": 42,
+            "LowerThresholdNonCriticalCelcius": 42,
+            "LowerThresholdCriticalCelcius": 5,
+            "LowerThresholdFatalCelcius": 42,
+            "MinReadingRangeCelcius": 0,
+            "MaxReadingRangeCelcius": 200,
+            "PhysicalContext": "CPU",
+            "RelatedItem": [
+                {"@odata.id": "/redfish/v1/Systems/1#/Processors/0" }
+            ]
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Temperatures/1",
+            "MemberID": "2",
+            "Name": "CPU2 Temp",
+            "Number": 43,
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
@@ -31,29 +54,6 @@
         },
         {
             "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Temperatures/2",
-            "MemberID": "2",
-            "Name": "CPU2 Temp",
-            "Number": 43,
-            "Status": {
-                "State": "Enabled",
-                "Health": "OK"
-            },
-            "ReadingCelcius": 21,
-            "UpperThresholdNonCriticalCelcius": 42,
-            "UpperThresholdCriticalCelcius": 42,
-            "UpperThresholdFatalCelcius": 42,
-            "LowerThresholdNonCriticalCelcius": 42,
-            "LowerThresholdCriticalCelcius": 5,
-            "LowerThresholdFatalCelcius": 42,
-            "MinReadingRangeCelcius": 0,
-            "MaxReadingRangeCelcius": 200,
-            "PhysicalContext": "CPU",
-            "RelatedItem": [
-                {"@odata.id": "/redfish/v1/Systems/1#/Processors/2" }
-            ]
-        },
-        {
-            "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Temperatures/3",
             "MemberID": "3",
             "Name": "Chassis Intake Temp",
             "Number": 44,
@@ -79,7 +79,7 @@
     ],
     "Fans": [
         {
-            "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Fans/1",
+            "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Fans/0",
             "MemberID": "1",
             "FanName": "BaseBoard System Fan",
             "PhysicalContext": "Backplane",
@@ -97,7 +97,7 @@
             "MinReadingRangeRPMs: 0,
             "MaxReadingRangeRPMs: 5000,
             "Redundancy" : [ 
-                {"@odata.id": "/redfish/v1/Chassis/1/Thermal#/Redundancy/1"}
+                {"@odata.id": "/redfish/v1/Chassis/1/Thermal#/Redundancy/0"}
             ],
             "RelatedItem" : [
                 {"@odata.id": "/redfish/v1/Systems/1" },
@@ -105,7 +105,7 @@
             ] 
         },
         {
-            "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Fans/2",
+            "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Fans/1",
             "MemberID": "2",
             "FanName": "BaseBoard System Fan Backup",
             "PhysicalContext": "Backplane",
@@ -123,7 +123,7 @@
             "MinReadingRangeRPMs: 0,
             "MaxReadingRangeRPMs: 5000,
             "Redundancy" : [
-                {"@odata.id": "/redfish/v1/Chassis/1/Power#/Redundancy/1"}
+                {"@odata.id": "/redfish/v1/Chassis/1/Power#/Redundancy/0"}
             ],
             "RelatedItem" : [
                 {"@odata.id": "/redfish/v1/Systems/1" },
@@ -133,12 +133,12 @@
     ],
     "Redundancy": [
         {
-            "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Redundancy/1",
+            "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Redundancy/0",
             "MemberID": "1",
             "Name": "BaseBoard System Fans",
             "RedundancySet": [
-                { "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Fans/1" },
-                { "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Fans/2" }
+                { "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Fans/0" },
+                { "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Fans/1" }
             ],
             "Mode": "N+1",
             "Status": {
