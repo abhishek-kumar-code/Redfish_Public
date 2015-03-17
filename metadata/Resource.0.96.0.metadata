@@ -155,6 +155,31 @@
           <Annotation Term="OData.Description" String="A critical condition exists that requires immediate attention"/>
         </Member>
       </EnumType>
+      
+      <!--Common RestType parameter values for Reset Action-->
+      <EnumType Name="ResetType">
+        <Member Name="On">
+          <Annotation Term="OData.Description" String="Turn the system on"/>
+        </Member>
+        <Member Name="ForceOff">
+          <Annotation Term="OData.Description" String="Turn the system off immediately (non-graceful) shutdown"/>
+        </Member>
+        <Member Name="GracefulRestart">
+          <Annotation Term="OData.Description" String="Perform a graceful system shutdown followed by a restart of the system"/>
+        </Member>
+        <Member Name="ForceRestart">
+          <Annotation Term="OData.Description" String="Perform an immediate (non-graceful) shutdown, followed by a restart of the system"/>
+        </Member>
+        <Member Name="Nmi">
+          <Annotation Term="OData.Description" String="Generate a Non-Maskable Interrupt to cause an immediate system halt"/>
+        </Member>
+        <Member Name="ForceOn">
+          <Annotation Term="OData.Description" String="Turn the system on immediately"/>
+        </Member>
+        <Member Name="PushPowerButton">
+          <Annotation Term="OData.Description" String="Simulate the pressing of the physical power button on this system"/>
+        </Member>
+      </EnumType>
 
       <TypeDefinition Name="SettingsRef" UnderlyingType="Edm.String">
         <Annotation Term="OData.IsUrl"/>

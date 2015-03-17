@@ -97,6 +97,10 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The links object contains the links to other resources that are related to this resource."/>
         </Property>
+        <Property Name="Actions" Type="Chassis.Actions" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="The Actions object contains the available custom actions on this resource."/>
+        </Property>
         <Property Name="Status" Type="Resource.Status"/>
       </EntityType>
 
@@ -158,6 +162,22 @@
         <Property Name="Oem" Type="Resource.Oem"/>
       </ComplexType>
 
+      <ComplexType Name="Actions">
+        <Property Name="Oem" Type="Chassis.OemActions"/>
+      </ComplexType>
+      <ComplexType Name="OemActions"/>
+
+      <!-- The reset action restarts the Chassis.-->
+      <Action Name="Reset" Isbound="true">
+        <Parameter Name="Chassis" Type="Chassis.Actions"/>
+        <Parameter Name="ResetType" Type="Resource.ResetType">
+          <Annotation Term="OData.Description" String="This is the type of reset to be performed."/>
+          <Annotation Term="OData.LongDescription" String="This defines the property name for the action."/>
+        </Parameter>
+        <Annotation Term="OData.Description" String="This action is used to reset the system."/>
+        <Annotation Term="OData.LongDescription" String="This defines the name of the custom action supported on this resource."/>
+      </Action>
+      
       <!-- These are all supported Chassis types. -->
       <EnumType Name="ChassisType">
         <Member Name="Rack">
