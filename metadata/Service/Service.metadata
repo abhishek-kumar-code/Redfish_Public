@@ -40,8 +40,8 @@
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ManagerAccount.0.96.0">
     <edmx:Include Namespace="ManagerAccount.0.96.0" Alias="ManagerAccount"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ManagerNetworkService.0.96.0">
-    <edmx:Include Namespace="ManagerNetworkService.0.96.0" Alias="ManagerNetworkService"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ManagerNetworkProtocol.0.96.0">
+    <edmx:Include Namespace="ManagerNetworkProtocol.0.96.0" Alias="ManagerNetworkProtocol"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Messages.0.96.0">
     <edmx:Include Namespace="Messages.0.96.0" Alias="Messages"/>

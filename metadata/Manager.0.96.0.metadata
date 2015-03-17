@@ -20,8 +20,8 @@
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/EthernetNetworkInterface.0.96.0">
     <edmx:Include Namespace="EthernetNetworkInterface.0.96.0" Alias="EthernetNetworkInterface"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ManagerNetworkService.0.96.0">
-    <edmx:Include Namespace="NetworkService.0.96.0" Alias="NetworkService"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ManagerNetworkProtocol.0.96.0">
+    <edmx:Include Namespace="ManagerNetworkProtocol.0.96.0" Alias="ManagerNetworkProtocol"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/LogService.0.96.0">
     <edmx:Include Namespace="LogService.0.96.0" Alias="LogService"/>
@@ -140,10 +140,10 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of SerialInterfaces which are for the use of this manager."/>
           <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="NetworkService" Type="NetworkService.ManagerNetworkService">
+        <NavigationProperty Name="NetworkProtocol" Type="ManagerNetworkProtocol.ManagerNetworkProtocol">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a reference to the network services and their settings that the manager controls.  It is here that clients will find network configuration options as well as network services."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall contain a reference to a resource of type ManagerNetworkService which represents the network services for this manager."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain a reference to a resource of type ManagerNetworkProtocol which represents the network services for this manager."/>
           <Annotation Term="DMTF.ExpandReferences"/>
           <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>

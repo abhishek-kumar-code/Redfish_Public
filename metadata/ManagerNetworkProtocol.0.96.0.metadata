@@ -17,13 +17,13 @@
 
     
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkService.0.96.0" Alias="NetworkService">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ManagerNetworkProtocol.0.96.0" Alias="NetworkProtocol">
 
       <!-- This schema defines a network service and its respective properties -->
-      <EntityType Name="ManagerNetworkService">
+      <EntityType Name="ManagerNetworkProtocol">
         <Annotation Term="OData.Description" String="This resource is used to obtain or modify the network services managed by a given manager."/>
         <Annotation Term="OData.LongDescription" String="This object shall be used to represent the network service settings for the manager."/>
-        <Property Name="Links" Type="NetworkService.Links" Nullable="false">
+        <Property Name="Links" Type="NetworkProtocol.Links" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This object contains the links to other resources that are related to this resource."/>
         </Property>
@@ -37,39 +37,39 @@
           <Annotation Term="OData.Description" String="This is the fully qualified domain name for the manager obtained by DNS including the host name and top-level domain name."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the fully qualified domain name for the manager."/>
         </Property>
-        <Property Name="HTTP" Type="NetworkService.Protocol" Nullable="false">
+        <Property Name="HTTP" Type="NetworkProtocol.Protocol" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This object is used for the HTTP protocol settings for the manager. The default value of the Port property shall be 80 for compatibility with established client implementations."/>
         </Property>
-        <Property Name="HTTPS" Type="NetworkService.Protocol" Nullable="false">
+        <Property Name="HTTPS" Type="NetworkProtocol.Protocol" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This object is used for the HTTPS/SSL settings for the manager. The default value of the Port property shall be 443 for compatibility with established client implementations."/>
         </Property>
-        <Property Name="SNMP" Type="NetworkService.Protocol" Nullable="false">
+        <Property Name="SNMP" Type="NetworkProtocol.Protocol" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This object is used for the SNMP protocol settings for the manager. The default value of the Port property shall be 161 for compatibility with established client implementations."/>
         </Property>
-        <Property Name="VirtualMedia" Type="NetworkService.Protocol" Nullable="false">
+        <Property Name="VirtualMedia" Type="NetworkProtocol.Protocol" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This object is used for the Virtual Media protocol settings for the manager. The value of the Port property shall contain the TCP port assigned for Virtual Media usage."/>
         </Property>
-        <Property Name="Telnet" Type="NetworkService.Protocol" Nullable="false">
+        <Property Name="Telnet" Type="NetworkProtocol.Protocol" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This object is used for the Telnet protocol settings for the manager. The default value of the Port property shall be 23 for compatibility with established client implementations."/>
         </Property>
-        <Property Name="SSDP" Type="NetworkService.SSDProtocol" Nullable="false">
+        <Property Name="SSDP" Type="NetworkProtocol.SSDProtocol" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This object is used for the SSDP protocol settings for the manager.  Simple Service Discovery Protocol (SSDP) is for network discovery of devices supporting the Redfish service. The default value of the Port property shall be 1900 for compatibility with established client implementations."/>
         </Property>
-        <Property Name="IPMI" Type="NetworkService.Protocol" Nullable="false">
+        <Property Name="IPMI" Type="NetworkProtocol.Protocol" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This object is used for the IPMI over LAN protocol settings for the manager. The default value of the Port property shall be 623 for compatibility with established client implementations."/>
         </Property>
-        <Property Name="SSH" Type="NetworkService.Protocol" Nullable="false">
+        <Property Name="SSH" Type="NetworkProtocol.Protocol" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This object is used for the SSH protocol settings for the manager. The default value of the Port property shall be 22 for compatibility with established client implementations."/>
         </Property>
-        <Property Name="KVMIP" Type="NetworkService.Protocol" Nullable="false">
+        <Property Name="KVMIP" Type="NetworkProtocol.Protocol" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This object is used for the KVM-IP (Keyboard, Video, Mouse) protocol settings for the manager. The value of the Port property shall contain the TCP port assigned for SSH usage.  The default value shall be 22 for compatibility with established client implementations."/>
         </Property>
@@ -80,7 +80,7 @@
         <NavigationProperty Name="Settings" Type="Resource.Settings">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a reference to the settings for this manager if this resource has a separate object used to change the current settings of this manager."/>
-          <Annotation Term="OData.LongDescription" String="If this resource is not PATCHable, this is the link to PATCHable Settings for the resource.  This reference shall be to a resource of Type ManagerNetworkService."/>
+          <Annotation Term="OData.LongDescription" String="If this resource is not PATCHable, this is the link to PATCHable Settings for the resource.  This reference shall be to a resource of Type ManagerNetworkProtocol."/>
           <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
         <Property Name="Oem" Type="Resource.Oem"/>
@@ -110,7 +110,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the Time-To-Live hop count used for multicast NOTIFY messages.  The recommended value is 5."/>
           <Annotation Term="Validation.Minimum" Int="1"/>
         </Property>
-        <Property Name="NotifyIPv6Scope" Type="NetworkService.NotifyIPv6Scope">
+        <Property Name="NotifyIPv6Scope" Type="NetworkProtocol.NotifyIPv6Scope">
           <Annotation Term="OData.Description" String="Indicates the scope for the IPv6 Notify messages for SSDP."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the IPv6 scope used for multicast NOTIFY messages.  The valid enumerations are a subset of the available IPv6 Scope types."/>
         </Property>

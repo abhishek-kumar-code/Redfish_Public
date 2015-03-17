@@ -17,7 +17,7 @@
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/IPAddresses.0.96.0">
     <edmx:Include Namespace="IPAddresses.0.96.0" Alias="IPAddresses"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ManagerNetworkService.0.96.0">
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ManagerNetworkProtocol.0.96.0">
     <edmx:Include Namespace="NetworkService.0.96.0" Alias="NetworkService"/>
   </edmx:Reference>
   <!-- TODO: Not Defined in redfish 0.91.1 schema-->
@@ -147,7 +147,7 @@
           <Annotation Term="OData.LongDescription" String="If network settings are not dynamically settable (e.g. a reset required that doesn't happen automatically), this value shall be used to reference a separately PATCHable representation of this data to be used for configuration purposes."/>
           <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="NetworkServices" Type="Collection(NetworkService.ManagerNetworkService)">
+        <NavigationProperty Name="NetworkServices" Type="Collection(NetworkService.ManagerNetworkProtocol)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Since there are settings that apply to more than one NIC, those are contained in the Network Services resource.  This is the reference to that resource."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall reference a link to the Network Services resource."/>
