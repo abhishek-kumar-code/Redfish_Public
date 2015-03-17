@@ -163,7 +163,7 @@
       </ComplexType>
 
       <ComplexType Name="Actions">
-        <Property Name="Oem" Type="ComputerSystem.OemActions"/>
+        <Property Name="Oem" Type="Chassis.OemActions"/>
       </ComplexType>
       <ComplexType Name="OemActions"/>
 
