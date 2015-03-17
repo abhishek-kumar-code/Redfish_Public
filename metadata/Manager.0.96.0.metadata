@@ -104,6 +104,17 @@
       </ComplexType>
       <ComplexType Name="OemActions"/>
 
+      <!-- The reset action restarts the Manager-->
+      <Action Name="Reset" Isbound="true">
+        <Parameter Name="Manager" Type="Manager.Actions"/>
+        <Parameter Name="ResetType" Type="Resource.ResetType">
+          <Annotation Term="OData.Description" String="This is the type of reset to be performed."/>
+          <Annotation Term="OData.LongDescription" String="This defines the property name for the action."/>
+        </Parameter>
+        <Annotation Term="OData.Description" String="This action is used to reset the system."/>
+        <Annotation Term="OData.LongDescription" String="This defines the name of the custom action supported on this resource."/>
+      </Action>
+      
       <ComplexType Name="Links">
         <NavigationProperty Name="ManagerForServers" Type="Collection(ComputerSystem.ComputerSystem)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>

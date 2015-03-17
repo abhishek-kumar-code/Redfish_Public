@@ -187,40 +187,15 @@
       <ComplexType Name="OemActions"/>
 
       <!-- The reset action resets/reboots the ComputerSystem.-->
-      <!-- Invocation pattern: /redfish/v1/ComputerSystems/1/Actions/ComputerSystem.Reset-->
       <Action Name="Reset" Isbound="true">
         <Parameter Name="ComputerSystem" Type="ComputerSystem.Actions"/>
-        <Parameter Name="ResetType" Type="ComputerSystem.ResetType">
+        <Parameter Name="ResetType" Type="Resource.ResetType">
           <Annotation Term="OData.Description" String="This is the type of reset to be performed."/>
           <Annotation Term="OData.LongDescription" String="This defines the property name for the action."/>
         </Parameter>
         <Annotation Term="OData.Description" String="This action is used to reset the system."/>
         <Annotation Term="OData.LongDescription" String="This defines the name of the custom action supported on this resource."/>
       </Action>
-
-      <EnumType Name="ResetType">
-        <Member Name="On">
-          <Annotation Term="OData.Description" String="Turn the system on"/>
-        </Member>
-        <Member Name="ForceOff">
-          <Annotation Term="OData.Description" String="Turn the system off immediately (non-graceful) shutdown"/>
-        </Member>
-        <Member Name="GracefulRestart">
-          <Annotation Term="OData.Description" String="Perform a graceful system shutdown followed by a restart of the system"/>
-        </Member>
-        <Member Name="ForceRestart">
-          <Annotation Term="OData.Description" String="Perform an immediate (non-graceful) shutdown, followed by a restart of the system"/>
-        </Member>
-        <Member Name="Nmi">
-          <Annotation Term="OData.Description" String="Generate a Non-Maskable Interrupt to cause an immediate system halt"/>
-        </Member>
-        <Member Name="ForceOn">
-          <Annotation Term="OData.Description" String="Turn the system on immediately"/>
-        </Member>
-        <Member Name="PushPowerButton">
-          <Annotation Term="OData.Description" String="Simulate the pressing of the physical power button on this system"/>
-        </Member>
-      </EnumType>
 
       <EnumType Name="SystemType">
         <Member Name="Physical">
