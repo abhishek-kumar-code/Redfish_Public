@@ -7,7 +7,7 @@
     "Modified": "2013-07-22T14:44+00:00",
     "PowerControl": [
         {
-            "@odata.id": "/redfish/v1/Chassis/1/Power#PowerControl/1",
+            "@odata.id": "/redfish/v1/Chassis/1/Power#/PowerControl/1",
             "MemberID": "1",
 	    "Name": "System Power Control",
             "PowerConsumedWatts": 8000,
@@ -29,7 +29,7 @@
             "RelatedItem": [ 
                 {"@odata.id": "/redfish/v1/Systems/1"},
                 {"@odata.id": "/redfish/v1/Chassis/1"},
-                {"@odata.id": "/redfish/v1/Systems/1#Processors"}
+                {"@odata.id": "/redfish/v1/Systems/1#/Processors"}
             ],
     	    "Status": {
 	        "State": "Enabled",
@@ -40,7 +40,7 @@
     ],
     "Voltages": [
         {
-            "@odata.id": "/redfish/v1/Encl/1/Power#Voltages/1",
+            "@odata.id": "/redfish/v1/Encl/1/Power#/Voltages/1",
             "MemberID": "1",
             "Name": "VRM1 Voltage",
             "Number": 11,
@@ -64,7 +64,7 @@
             ]
         },
         {
-            "@odata.id": "/redfish/v1/Encl/1/Power#Voltages/2",
+            "@odata.id": "/redfish/v1/Encl/1/Power#/Voltages/2",
             "MemberID": "2",
             "Name": "VRM2 Voltage",
             "Number": 12,
@@ -89,7 +89,7 @@
     ],
     "PowerSupplies": [
         {
-            "@odata.id": "/redfish/v1/Chassis/1/Power#PowerSupplies/1",
+            "@odata.id": "/redfish/v1/Chassis/1/Power#/PowerSupplies/1",
             "MemberID": "1",
             "Name": "Power Supply Bay 1",
             "Status": {
@@ -111,11 +111,11 @@
               { "@odata.id": "/redfish/v1/Chassis/1" }
             ],
             "Redundancy": [
-              { "@odata.id": "/redfish/v1/Chassis/1/Power#Redundancy/1" }
+              { "@odata.id": "/redfish/v1/Chassis/1/Power#/Redundancy/1" }
             ]
         },
         {
-            "@odata.id": "/redfish/v1/Chassis/1/Power#PowerSupplies/2",
+            "@odata.id": "/redfish/v1/Chassis/1/Power#/PowerSupplies/2",
             "MemberID": "2",
             "Name": "Power Supply Bay 2",
             "Status": {
@@ -137,11 +137,11 @@
               { "@odata.id": "/redfish/v1/Chassis/1" }
             ],
             "Redundancy": [
-              { "@odata.id": "/redfish/v1/Chassis/1/Power#Redundancy/1" }
+              { "@odata.id": "/redfish/v1/Chassis/1/Power#/Redundancy/1" }
             ]
         },
         {
-            "@odata.id": "/redfish/v1/Chassis/1/Power#PowerSupplies/3",
+            "@odata.id": "/redfish/v1/Chassis/1/Power#/PowerSupplies/3",
             "MemberID": "3",
             "Name": "Power Supply Bay 3",
             "Status": {
@@ -151,15 +151,15 @@
     ],
     "Redundancy": [
         {
-            "@odata.id": "/redfish/v1/Chassis/1/Power#Redundancy/1",
+            "@odata.id": "/redfish/v1/Chassis/1/Power#/Redundancy/1",
             "MemberID": "1",
             "Name": "PowerSupply Redundancy Group 1",
             "Mode": "Failover",
             "MaxNumSupported": 2,
             "MinNumNeeded": 1,
             "RedundancySet": [
-                { "@odata.id": "/redfish/v1/Chassis/1/Power#PowerSupplies/1" },
-                { "@odata.id": "/redfish/v1/Chassis/1/Power#PowerSupplies/2" }
+                { "@odata.id": "/redfish/v1/Chassis/1/Power#/PowerSupplies/1" },
+                { "@odata.id": "/redfish/v1/Chassis/1/Power#/PowerSupplies/2" }
             ],
             "Status": {
                 "State": "Offline",
