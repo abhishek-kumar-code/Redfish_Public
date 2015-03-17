@@ -154,16 +154,19 @@
 	 
 	   <!-- This is Processor Instruction Set, a subset of CIM_InstructionSet -->
 	   <EnumType Name="InstructionSet">
-	     <Member Name="x86-64">
-          <Annotation Term="OData.Description" String="x86 64=bit"/>
+	      <Member Name="x86">
+	         <Annotation Term="OData.Description" String="x86 32-bit"/>
+	      </Member>
+	      <Member Name="x86-64">
+          <Annotation Term="OData.Description" String="x86 64-bit"/>
         </Member>
 		<Member Name="IA-64">
 		  <Annotation Term="OData.Description" String="Intel IA-64"/>
 		</Member>
-        <Member Name="ARM32">
+        <Member Name="ARM-A32">
           <Annotation Term="OData.Description" String="ARM 32-bit"/>
         </Member>
-        <Member Name="ARM64">
+        <Member Name="ARM-A64">
           <Annotation Term="OData.Description" String="ARM 64-bit"/>
         </Member>
 		<Member Name="MIPS32">
