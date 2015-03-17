@@ -182,7 +182,6 @@
         </Member>
       </EnumType>
 
-xg99
       <EntityType Name="Voltage" BaseType="Resource.ReferenceableMember">
         <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
         <Property Name="Name" Type="Edm.String">
