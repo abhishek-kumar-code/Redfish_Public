@@ -125,7 +125,6 @@
                <Annotation Term="OData.Description" String="An OEM-defined Processing Unit" />
             </Member>
          </EnumType>
-         <!-- This is Processor Architecture, a subset of CIM_ProcessorArchitecture -->
          <EnumType Name="ProcessorArchitecture">
             <Member Name="x86">
                <Annotation Term="OData.Description" String="x86 or x86-64" />
@@ -143,7 +142,6 @@
                <Annotation Term="OData.Description" String="OEM-defined" />
             </Member>
          </EnumType>
-         <!-- This is Processor Instruction Set, a subset of CIM_InstructionSet -->
          <EnumType Name="InstructionSet">
             <Member Name="x86">
                <Annotation Term="OData.Description" String="x86 32-bit" />
