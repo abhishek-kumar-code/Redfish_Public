@@ -4,67 +4,24 @@
     "@odata.type": "#Processor.0.96.0.Processor",
     "Id": "1",
     "Socket": "CPU 1",
-    "ProcessorType": < { "CPU", "GPU", "FPGA", "DSP", "ACL", "OEM" }>, #ACL=accelerator
-    "ProcessorArchitecture": <CIM_ ProcessorArchitecture >,
-    "InstructionSet": < Modern subset of CIM_ InstructionSet enum {"x86", "x64", "ARM", "MIPS", etc.} >,
-    "Manufacturer": "Intel(R) Corporation", # proposed string
+    "ProcessorType": "CPU",
+    "ProcessorArchitecture": "x86",
+    "InstructionSet": "x86-64",
+    "Manufacturer": "Intel(R) Corporation",
     "Model": "Multi-Core Intel(R) Xeon(R) processor 7xxx Series",
-             ## See note 2
-    "CPUID": "< raw: hex value, family: numeric family, model: numeric model, stepping: numeric, microcodeVer: numeric, vendorID: ascii>",
-             ## See note 1 below
-             ## ?? Is cpuid an array of values or a list of properties. I hope properties. 
-             ## So I can reference CPUID.family in the ODATA info
-    "MaxSpeedMHz": 3700
+	"ProcessorID": {
+		"VendorID": "GenuineIntel",
+		"IdentificationRegisters": "34AC34DC8901274A",
+		"EffectiveFamily": "42",
+		"EffectiveModel": "661",
+		"Step": "1",
+		"MicrocodeInfo": "429943"
+	},
+    "MaxSpeedMHz": 3700,
     "TotalCores": 8,
-    "EnabledCores": 4,
-    "TotalThreads": 4,   # This must be the total number of threads that the CPU can support
-                         # ref SMBIOS for def ?? does SMBIOS give totalthreads or enabled threads?
-                         # ?? concern is that if Hyperthreading is disabled.
-    "EnabledThreads": 2,
+    "TotalThreads": 16,
     "Status": {
     	"State": "Enabled",
     	"Health": "OK"
     }
 } 
-
-# Note 1 on CPUID, how to construct the fields for x86
-#    raw          = cpuid.1.eax[31:0]
-#    family       = ((cpuid.1.eax & 0x0ff00000) >> 20) + ((cpuid.1.eax  & 0x00000f00) >> 8);
-#    model        = ((cpuid.1.eax & 0x000f0000) >> 12) + ((cpuid.1.eax  & 0x000000f0) >> 4);
-#    step         = (cpuid->eax & 0xf); 
-#    microcodeVer = MSR.0x8B[63:0]
-#    vendorID: is a 12-byte ascii string, where byte 0 is the first character of the string
-#              k=0;
-#              foreach reg (cpuid.0.ebx, cpuid.0.edx, cpuid.0.ecx){
-#                      k++;
-#                      for (i=0; i<=3; i++) { vendorID[ byte(k*4 + i) ] = reg[byte(i)]; }
-#              }
-
-# Note 2 on how to calculate the Model field for x86
-#    Model: is a 48-byte ascii string, where byte 0 is the first character of the string
-#              k=0;
-#              foreach leaf (cpuid.8000_0002, cpuid.8000_0003, cpuid.8000_0004) {
-#                  foreach reg (leaf.eax, leaf.ebx, leaf.ecx, leaf.edx){
-#                      k++;
-#                      for (i=0; i<=3; i++) { Model[ byte(k*4 + i) ] = reg[byte(i)]; }
-#                  }
-#              }
-
-
-
-
-
-##     AND in both options, for v1.1, consider adding
-
-   - FeatureFlags: an array of N 32-bit hex values
-   - CacheSizes" ...
-   - Cores[]  array 
-   - MicrocodePatch array
-   - Links{} for performanceMetrics,...temps...
-   - PCH details
-   - NVDIMM placement
-   -instruction set extensions
-   -array for big features like GPU, crypto, etc
-
-
-
