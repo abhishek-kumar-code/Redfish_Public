@@ -147,7 +147,7 @@
           <Annotation Term="OData.LongDescription" String="If network settings are not dynamically settable (e.g. a reset required that doesn't happen automatically), this value shall be used to reference a separately PATCHable representation of this data to be used for configuration purposes."/>
           <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="VLANs" Type="Collection(EthernetInterface.VLAN)">
+        <NavigationProperty Name="VLANs" Type="Collection(EthernetInterface.VLANMember)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a reference to a collection of VLANs and is only used if the NIC supports more than one VLAN."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall reference a collection of VLAN resources.  If this property is used, the VLANEnabled and VLANId property shall not be used."/>
@@ -161,7 +161,7 @@
         <Annotation Term="Validation.Pattern" String="^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$"/>
       </TypeDefinition>
 
-      <!--Complex type representing a VLAN-->
+      <!--Complex type representing properties of a single VLAN-->
       <ComplexType Name="VLAN">
         <Property Name="VLANEnable" Type="Edm.Boolean">
           <Annotation Term="OData.Description" String="This indicates if this VLAN is enabled."/>
@@ -173,6 +173,19 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be used to indicate the VLAN identifier for this VLAN."/>
         </Property>
       </ComplexType>
+
+      <!--Entity type representing properties of a VLAN within a collection-->
+      <EntityType Name="VLANMember" BaseType="Resource.ReferenceableMember">
+        <Property Name="VLANEnable" Type="Edm.Boolean">
+          <Annotation Term="OData.Description" String="This indicates if this VLAN is enabled."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be used to indicate if this VLAN is enabled for this interface."/>
+        </Property>
+        <Property Name="VLANId" Type="EthernetInterface.VLanId">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="This indicates the VLAN identifier for this VLAN."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be used to indicate the VLAN identifier for this VLAN."/>
+        </Property>
+      </EntityType>
 
       <!--Strongly typed property for VLANId-->
       <TypeDefinition Name="VLanId" UnderlyingType="Edm.Int64">
