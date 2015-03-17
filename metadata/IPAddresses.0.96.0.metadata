@@ -65,20 +65,35 @@
 
       <!-- This indicates how the address was determined. -->
       <EnumType Name="IPv4AddressOrigin">
+        <Member Name="Static">
+          <Annotation Term="OData.Description" String="A static address as configured by the user"/>
+        </Member>
         <Member Name="DHCP">
           <Annotation Term="OData.Description" String="Address is provided by a DHCP service"/>
         </Member>
-        <Member Name="Static">
-          <Annotation Term="OData.Description" String="A static address as configured by the user"/>
+        <Member Name="BOOTP">
+          <Annotation Term="OData.Description" String="TODO"/>
+        </Member>
+        <Member Name="IPv4LinkLocal">
+          <Annotation Term="OData.Description" String="TODO"/>
         </Member>
       </EnumType>
 
       <EnumType Name="IPv6AddressOrigin">
-        <Member Name="DHCP">
-          <Annotation Term="OData.Description" String="Address is provided by a DHCP service"/>
-        </Member>
         <Member Name="Static">
           <Annotation Term="OData.Description" String="A static address as configured by the user"/>
+        </Member>
+        <Member Name="DHCPv6">
+          <Annotation Term="OData.Description" String="Address is provided by a DHCP service"/>
+        </Member>
+        <Member Name="IPv6AutoConfig">
+          <Annotation Term="OData.Description" String="TODO"/>
+        </Member>
+        <Member Name="Stateless">
+          <Annotation Term="OData.Description" String="TODO"/>
+        </Member>
+        <Member Name="LinkLocal">
+          <Annotation Term="OData.Description" String="TODO"/>
         </Member>
         <Member Name="SLAAC">
           <Annotation Term="OData.Description" String="Address is provided by a Stateless Address AutoConfiguration (SLAAC) service"/>

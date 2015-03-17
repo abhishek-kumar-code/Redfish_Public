@@ -26,25 +26,25 @@
   </edmx:Reference>
   
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EthernetNetworkInterface.0.96.0" Alias="EthernetNetworkInterface">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EthernetInterface.0.96.0" Alias="EthernetInterface">
 
       <!--This schema defines a computer system and its respective properties. -->
       <EntityType Name="EthernetNetworkInterfaeCollection" BaseType="Resource.ResourceCollection">
-        <Property Name="Links" Type="EthernetNetworkInterface.Members">
+        <Property Name="Links" Type="EthernetInterface.Members">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Contains links to other resources that are related to this resource."/>
         </Property>
       </EntityType>
 
       <ComplexType Name="Members">
-        <NavigationProperty Name="Members" Type="Collection(EthernetNetworkInterface.EthernetNetworkInterface)">
+        <NavigationProperty Name="Members" Type="Collection(EthernetInterface.EthernetInterface)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Contains the members of this collection."/>
           <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
       </ComplexType>
 
-      <EntityType Name="EthernetNetworkInterface" BaseType="Resource.Resource">
+      <EntityType Name="EthernetInterface" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This schema defines a simple ethernet NIC resource."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent NIC resources as part of the Redfish specification."/>
         <Property Name="UEFIDevicePath" Type="Edm.String">
@@ -52,40 +52,46 @@
           <Annotation Term="OData.Description" String="This is the UEFI device path for this NIC."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the UEFI device path of this interface."/>
         </Property>
+        <Property Name="SubnetPrefixLength" Type="Edm.Int32">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the length of the Subnet prefix."/>
+        </Property>
         <Property Name="Status" Type="Resource.Status"/>
-        <Property Name="FactoryMacAddress" Type="EthernetNetworkInterface.MacAddress">
+        <Property Name="InterfaceEnabled" Type="Edm.Boolean">
+          <Annotation Term="OData.Description" String="This indicates whether this interface is enabled."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this interface is enabled."/>
+        </Property>
+        <Property Name="PermanentMACAddress" Type="EthernetInterface.MacAddress">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is the MAC address assigned to this NIC at the factory."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the Permanent MAC Address of this interface."/>
         </Property>
-        <Property Name="MacAddress" Type="EthernetNetworkInterface.MacAddress">
-          <Annotation Term="OData.Description" String="This is the currently assigned MAC address for this NIC."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the effective current MAC Address of this interface.  If an assignable MAC address is not supported, this is a read only alias of the FactoryMacAddress."/>
+        <Property Name="MacAddress" Type="EthernetInterface.MacAddress">
+          <Annotation Term="OData.Description" String="This is the MAC address of the logical port interface."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the effective current MAC Address of this interface.  If an assignable MAC address is not supported, this is a read only alias of the PermanentMACAddress."/>
         </Property>
         <Property Name="SpeedMBps" Type="Edm.Int64">
           <Annotation Term="Measures.Unit" Edm.String="MBps"/>
           <Annotation Term="OData.Description" String="This is the current speed in MBps of this NIC."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the link speed of the interface in Mbps."/>
         </Property>
-        <Property Name="Autosense" Type="Edm.Boolean">
+        <Property Name="AutoNeg" Type="Edm.Boolean">
           <Annotation Term="OData.Description" String="This indicates if the speed and duplex is automatically configured by the NIC."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be true of autosense of speed and duplex is enabled and false if it is disabled."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be true of AutoNeg of speed and duplex is enabled and false if it is disabled."/>
         </Property>
         <Property Name="FullDuplex" Type="Edm.Boolean">
           <Annotation Term="OData.Description" String="This indicates if the NIC is in Full Duplex mode or not."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the connection duplex status."/>
         </Property>
-        <Property Name="FrameSize" Type="Edm.Int64">
-          <Annotation Term="OData.Description" String="This is the MAC Frame size in bytes."/>
+        <Property Name="MTUSize" Type="Edm.Int64">
+          <Annotation Term="OData.Description" String="This is the currently configured MTU size in bytes on this Ethernet interface."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the Ethernet (MAC) frame size in bytes."/>
         </Property>
         <Property Name="HostName" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is the DNS Host Name, without any domain information."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be host name for this interface."/>
         </Property>
         <Property Name="FQDN" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is the complete, fully qualified domain name obtained by DNS for this interface."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the fully qualified domain name for this interface."/>
         </Property>
@@ -94,22 +100,16 @@
           <Annotation Term="OData.Description" String="This indicates the maximum number of Static IPv6 addresses that can be configured on this interface."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the number of array items supported by IPv6StaticAddresses."/>
         </Property>
-        <Property Name="VLANEnable" Type="Edm.Boolean">
+        <Property Name="VLAN" Type="EthernetInterface.VLAN">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="This indicates if VLANs are enabled.  If this NIC supports more than one VLAN, this property will not be present and the client should look for VLANs collection in the link section of this resource."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be used to indicate if the VLAN is enabled for this interface.  If this interface supports more than one VLAN, the VLANEnable property shall not be present and the VLANS collection link shall be present instead."/>
-        </Property>
-        <Property Name="VLANId" Type="EthernetNetworkInterface.VLanId">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="This indicates the VLAN identifier for this NIC.  This property is only present if VLANEnable is used and the NIC only supports a single VLAN."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be used to indicate the VLAN identifier for this interface.  If this interface supports more than one VLAN, the VLANId property shall not be present and the VLANS collection link shall be present instead."/>
+          <Annotation Term="OData.Description" String="If this Network Interface supports more than one VLAN, this property will not be present and the client should look for VLANs collection in the link section of this resource."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the VLAN for this interface.  If this interface supports more than one VLAN, the VLAN property shall not be present and the VLANS collection link shall be present instead."/>
         </Property>
         <Property Name="IPv4Addresses" Type="Collection(IPAddresses.IPV4Address)" Nullable="false" >
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This array of objects is used to represent the IPv4 connection characteristics for this interface."/>
         </Property>
-        <Property Name="IPv6AddressPolicyTable" Type="Collection(EthernetNetworkInterface.IPv6AddressPolicyEntry)" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+        <Property Name="IPv6AddressPolicyTable" Type="Collection(EthernetInterface.IPv6AddressPolicyEntry)" Nullable="false">
           <Annotation Term="OData.Description" String="This array of objects represents the RFC3484 Address Selection Policy Table."/>
           <Annotation Term="OData.LongDescription" String="This array represents the Address Selection Policy Table as defined in RFC3484."/>
         </Property>
@@ -135,7 +135,7 @@
           <Annotation Term="OData.Description" String="If there is a link to Settings, this property has the results of the last application of those settings to this NIC."/>
           <Annotation Term="OData.LongDescription" String="If using separate Settings, these properties shall report the result of applying settings."/>
         </Property>
-        <Property Name="Links" Type="EthernetNetworkInterface.Links" Nullable="false">
+        <Property Name="Links" Type="EthernetInterface.Links" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This object contains the links to other resources that are related to this resource."/>
         </Property>
@@ -147,13 +147,7 @@
           <Annotation Term="OData.LongDescription" String="If network settings are not dynamically settable (e.g. a reset required that doesn't happen automatically), this value shall be used to reference a separately PATCHable representation of this data to be used for configuration purposes."/>
           <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="NetworkServices" Type="Collection(NetworkService.ManagerNetworkProtocol)">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="Since there are settings that apply to more than one NIC, those are contained in the Network Services resource.  This is the reference to that resource."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall reference a link to the Network Services resource."/>
-          <Annotation Term="DMTF.ExpandReferences"/>
-        </NavigationProperty>
-        <NavigationProperty Name="VLANs" Type="Collection(VLanNetworkInterface.VLANNetworkInterface)">
+        <NavigationProperty Name="VLANs" Type="Collection(EthernetInterface.VLANMember)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a reference to a collection of VLANs and is only used if the NIC supports more than one VLAN."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall reference a collection of VLAN resources.  If this property is used, the VLANEnabled and VLANId property shall not be used."/>
@@ -166,6 +160,32 @@
       <TypeDefinition Name="MacAddress" UnderlyingType="Edm.String">
         <Annotation Term="Validation.Pattern" String="^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$"/>
       </TypeDefinition>
+
+      <!--Complex type representing properties of a single VLAN-->
+      <ComplexType Name="VLAN">
+        <Property Name="VLANEnable" Type="Edm.Boolean">
+          <Annotation Term="OData.Description" String="This indicates if this VLAN is enabled."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be used to indicate if this VLAN is enabled for this interface."/>
+        </Property>
+        <Property Name="VLANId" Type="EthernetInterface.VLanId">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="This indicates the VLAN identifier for this VLAN."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be used to indicate the VLAN identifier for this VLAN."/>
+        </Property>
+      </ComplexType>
+
+      <!--Entity type representing properties of a VLAN within a collection-->
+      <EntityType Name="VLANMember" BaseType="Resource.ReferenceableMember">
+        <Property Name="VLANEnable" Type="Edm.Boolean">
+          <Annotation Term="OData.Description" String="This indicates if this VLAN is enabled."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be used to indicate if this VLAN is enabled for this interface."/>
+        </Property>
+        <Property Name="VLANId" Type="EthernetInterface.VLanId">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="This indicates the VLAN identifier for this VLAN."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be used to indicate the VLAN identifier for this VLAN."/>
+        </Property>
+      </EntityType>
 
       <!--Strongly typed property for VLANId-->
       <TypeDefinition Name="VLanId" UnderlyingType="Edm.Int64">
