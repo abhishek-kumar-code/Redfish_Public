@@ -26,7 +26,7 @@
                 "LimitException": "LogEventOnly",
                 "CorrectionInMs": 42
 	    },
-            "RelatedResource": [ 
+            "RelatedItem": [ 
                 {"@odata.id": "/redfish/v1/Systems/1"},
                 {"@odata.id": "/redfish/v1/Chassis/1"},
                 {"@odata.id": "/redfish/v1/Systems/1#Processors"}
@@ -48,18 +48,17 @@
                 "State": "Enabled",
                 "Health": "OK"
             },
-            "Units": "Volts",
-            "CurrentReading": 12,
-            "UpperThresholdNonCritical": 12.5,
-            "UpperThresholdCritical": 13,
-            "UpperThresholdFatal": 15,
-            "LowerThresholdNonCritical": 11.5,
-            "LowerThresholdCritical": 11,
-            "LowerThresholdFatal": 10,
-            "MinimumValue": 0,
-            "MaximumValue": 20,
+            "ReadingVolts": 12,
+            "UpperThresholdNonCriticalVolts": 12.5,
+            "UpperThresholdCriticalVolts": 13,
+            "UpperThresholdFatalVolts": 15,
+            "LowerThresholdNonCriticalVolts": 11.5,
+            "LowerThresholdCriticalVolts": 11,
+            "LowerThresholdFatalVolts": 10,
+            "MinReadingRangeVolts": 0,
+            "MaxReadingRangeVolts": 20,
             "PhysicalContext": "Voltage Regulator",
-            "RelatedResource": [
+            "RelatedItem": [
                 {"@odata.id": "/redfish/v1/Systems/1" },
                 {"@odata.id": "/redfish/v1/Chassis/1" }
             ]
@@ -74,15 +73,15 @@
                 "Health": "OK"
             },
             "Units": "Volts",
-            "CurrentReading": 5,
-            "UpperThresholdNonCritical": 5.5,
-            "UpperThresholdCritical": 7,
-            "LowerThresholdNonCritical": 4.75,
-            "LowerThresholdCritical": 4.5,
-            "MinimumValue": 0,
-            "MaximumValue": 20,
+            "ReadingVolts": 5,
+            "UpperThresholdNonCriticalVolts": 5.5,
+            "UpperThresholdCriticalVolts": 7,
+            "LowerThresholdNonCriticalVolts": 4.75,
+            "LowerThresholdCriticalVolts": 4.5,
+            "MinReadingRangeVolts": 0,
+            "MaxReadingRangeVolts": 20,
             "PhysicalContext": "Voltage Regulator",
-            "RelatedResource": [
+            "RelatedItem": [
                 {"@odata.id": "/redfish/v1/Systems/1" },
                 {"@odata.id": "/redfish/v1/Chassis/1" }
             ]
@@ -108,7 +107,7 @@
             "SerialNumber": "1z0000001",
             "PartNumber": "1z0000001A3a",
             "SparePartNumber": "0000001A3a",
-            "RelatedResource": [
+            "RelatedItem": [
                 "@odata.id": "/redfish/v1/Chassis/1",
             ],
             "Redundancy": [
@@ -134,7 +133,7 @@
             "SerialNumber": "1z0000001",
             "PartNumber": "1z0000001A3a",
             "SparePartNumber": "0000001A3a",
-            "RelatedResource": [
+            "RelatedItem": [
                 "@odata.id": "/redfish/v1/Chassis/1",
             ],
             "Redundancy": [

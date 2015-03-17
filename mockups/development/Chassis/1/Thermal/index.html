@@ -15,23 +15,22 @@
                 "State": "Enabled",
                 "Health": "OK"
             },
-            "Units": "Celsius",
-            "CurrentReading": 21,
-            "UpperThresholdNonCritical": 42,
-            "UpperThresholdCritical": 42,
-            "UpperThresholdFatal": 42,
-            "LowerThresholdNonCritical": 42,
-            "LowerThresholdCritical": 5,
-            "LowerThresholdFatal": 42,
-            "MinimumValue": 0,
-            "MaximumValue": 200,
+            "ReadingCelcius": 21,
+            "UpperThresholdNonCriticalCelcius": 42,
+            "UpperThresholdCriticalCelcius": 42,
+            "UpperThresholdFatalCelcius": 42,
+            "LowerThresholdNonCriticalCelcius": 42,
+            "LowerThresholdCriticalCelcius": 5,
+            "LowerThresholdFatalCelcius": 42,
+            "MinReadingRangeCelcius": 0,
+            "MaxReadingRangeCelcius": 200,
             "PhysicalContext": "CPU",
-            "RelatedResource": [
+            "RelatedItem": [
                 {"@odata.id": "/redfish/v1/Systems/1#Processors/1" }
             ]
         },
         {
-            "@odata.id": "/redfish/v1/Chassis/1/Thermal#Temperatures/1",
+            "@odata.id": "/redfish/v1/Chassis/1/Thermal#Temperatures/2",
             "MemberID": "2",
             "Name": "CPU2 Temp",
             "Number": 43,
@@ -39,23 +38,22 @@
                 "State": "Enabled",
                 "Health": "OK"
             },
-            "Units": "Celsius",
-            "CurrentReading": 21,
-            "UpperThresholdNonCritical": 42,
-            "UpperThresholdCritical": 42,
-            "UpperThresholdFatal": 42,
-            "LowerThresholdNonCritical": 42,
-            "LowerThresholdCritical": 5,
-            "LowerThresholdFatal": 42,
-            "MinimumValue": 0,
-            "MaximumValue": 200,
+            "ReadingCelcius": 21,
+            "UpperThresholdNonCriticalCelcius": 42,
+            "UpperThresholdCriticalCelcius": 42,
+            "UpperThresholdFatalCelcius": 42,
+            "LowerThresholdNonCriticalCelcius": 42,
+            "LowerThresholdCriticalCelcius": 5,
+            "LowerThresholdFatalCelcius": 42,
+            "MinReadingRangeCelcius": 0,
+            "MaxReadingRangeCelcius": 200,
             "PhysicalContext": "CPU",
-            "RelatedResource": [
+            "RelatedItem": [
                 {"@odata.id": "/redfish/v1/Systems/1#Processors/2" }
             ]
         },
         {
-            "@odata.id": "/redfish/v1/Chassis/1/Thermal#Temperatures/1",
+            "@odata.id": "/redfish/v1/Chassis/1/Thermal#Temperatures/3",
             "MemberID": "3",
             "Name": "Chassis Intake Temp",
             "Number": 44,
@@ -63,18 +61,17 @@
                 "State": "Enabled",
                 "Health": "OK"
             },
-            "Units": "Celsius",
-            "CurrentReading": 25,
-            "UpperThresholdNonCritical": 30,
-            "UpperThresholdCritical": 40,
-            "UpperThresholdFatal": 50,
-            "LowerThresholdNonCritical": 10,
-            "LowerThresholdCritical": 5,
-            "LowerThresholdFatal": 0,
-            "MinimumValue": 0,
-            "MaximumValue": 200,
+            "ReadingCelciusCelcius": 25,
+            "UpperThresholdNonCriticalCelcius": 30,
+            "UpperThresholdCriticalCelcius": 40,
+            "UpperThresholdFatalCelcius": 50,
+            "LowerThresholdNonCriticalCelcius": 10,
+            "LowerThresholdCriticalCelcius": 5,
+            "LowerThresholdFatalCelcius": 0,
+            "MinReadingRangeCelcius": 0,
+            "MaxReadingRangeCelcius": 200,
             "PhysicalContext": "Intake",
-            "RelatedResource": [
+            "RelatedItem": [
                 {"@odata.id": "/redfish/v1/Chassis/1" },
                 {"@odata.id": "/redfish/v1/Systems/1" }
             ]
@@ -90,20 +87,19 @@
                 "State": "Enabled",
                 "Health": "OK"
             },
-            "Units": "RPM",
-            "CurrentReading": 2100,
-            "UpperThresholdNonCritical": 42,
-            "UpperThresholdCritical": 4200,
-            "UpperThresholdFatal": 42,
-            "LowerThresholdNonCritical": 42,
-            "LowerThresholdCritical": 5,
-            "LowerThresholdFatal": 42,
-            "MinimumValue": 0,
-            "MaximumValue": 5000,
+            "ReadingRPMs": 2100,
+            "UpperThresholdNonCriticalRPMs: 42,
+            "UpperThresholdCriticalRPMs: 4200,
+            "UpperThresholdFatalRPMs: 42,
+            "LowerThresholdNonCriticalRPMs: 42,
+            "LowerThresholdCriticalRPMs: 5,
+            "LowerThresholdFatalRPMs: 42,
+            "MinReadingRangeRPMs: 0,
+            "MaxReadingRangeRPMs: 5000,
             "Redundancy" : [ 
                 {"@odata.id": "/redfish/v1/Chassis/1/Thermal#Redundancy/1"}
             ],
-            "RelatedResource" : [
+            "RelatedItem" : [
                 {"@odata.id": "/redfish/v1/Systems/1" },
                 {"@odata.id": "/redfish/v1/Chassis/1" }
             ] 
@@ -117,20 +113,19 @@
                 "State": "Enabled",
                 "Health": "OK"
             },
-            "Units": "RPM",
-            "CurrentReading": 2100,
-            "UpperThresholdNonCritical": 42,
-            "UpperThresholdCritical": 4200,
-            "UpperThresholdFatal": 42,
-            "LowerThresholdNonCritical": 42,
-            "LowerThresholdCritical": 5,
-            "LowerThresholdFatal": 42,
-            "MinimumValue": 0,
-            "MaximumValue": 5000,
+            "ReadingRPMs": 2100,
+            "UpperThresholdNonCriticalRPMs: 42,
+            "UpperThresholdCriticalRPMs: 4200,
+            "UpperThresholdFatalRPMs: 42,
+            "LowerThresholdNonCriticalRPMs: 42,
+            "LowerThresholdCriticalRPMs: 5,
+            "LowerThresholdFatalRPMs: 42,
+            "MinReadingRangeRPMs: 0,
+            "MaxReadingRangeRPMs: 5000,
             "Redundancy" : [
                 {"@odata.id": "/redfish/v1/Chassis/1/Power#Redundancy/1"}
             ],
-            "RelatedResource" : [
+            "RelatedItem" : [
                 {"@odata.id": "/redfish/v1/Systems/1" },
                 {"@odata.id": "/redfish/v1/Chassis/1" }
             ] 
