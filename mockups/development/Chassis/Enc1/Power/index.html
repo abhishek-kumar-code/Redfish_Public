@@ -7,7 +7,7 @@
     "Modified": "2013-07-22T14:44+00:00",
     "PowerControl": [
         {
-            "@odata.id": "/redfish/v1/Chassis/Enc1/Power#PowerControl/1",
+            "@odata.id": "/redfish/v1/Chassis/Enc1/Power#/PowerControl/1",
             "MemberID": "1",
 	    "Name": "Chassis Power Control",
             "PowerConsumedWatts": 8000,
@@ -32,7 +32,7 @@
     ],
     "PowerSupplies": [
         {
-            "@odata.id": "/redfish/v1/Chassis/Enc1/Power#PowerSupplies/1",
+            "@odata.id": "/redfish/v1/Chassis/Enc1/Power#/PowerSupplies/1",
             "MemberID": "1",
             "Name": "Power Supply Bay 1",
             "Status": {
@@ -53,7 +53,7 @@
               { "@odata.id": "/redfish/v1/Chassis/Enc1" }
             ],
             "Redundancy": [
-              { "@odata.id": "/redfish/v1/Chassis/Enc1/Power#Redundancy/1" }
+              { "@odata.id": "/redfish/v1/Chassis/Enc1/Power#/Redundancy/1" }
             ]
         },
         {
@@ -78,11 +78,11 @@
               { "@odata.id": "/redfish/v1/Chassis/Enc1" }
             ],
             "Redundancy": [
-              { "@odata.id": "/redfish/v1/Chassis/Enc1/Power#Redundancy/1" }
+              { "@odata.id": "/redfish/v1/Chassis/Enc1/Power#/Redundancy/1" }
             ]
         },
         {
-            "@odata.id": "/redfish/v1/Chassis/Enc1/Power#PowerSupplies/3",
+            "@odata.id": "/redfish/v1/Chassis/Enc1/Power#/PowerSupplies/3",
             "MemberID": "3",
             "Name": "Power Supply Bay 3",
             "Status": {
@@ -92,15 +92,15 @@
     ],
     "Redundancy": [
         {
-            "@odata.id": "/redfish/v1/Chassis/Enc1/Power#Redundancy/1",
+            "@odata.id": "/redfish/v1/Chassis/Enc1/Power#/Redundancy/1",
             "MemberID": "1",
             "Name": "PowerSupply Redundancy Group 1",
             "Mode": "Failover",
             "MaxNumSupported": 2,
             "MinNumNeeded": 1,
             "RedundancySet": [
-                { "@odata.id": "/redfish/v1/Chassis/Enc1/Power#PowerSupplies/1" },
-                { "@odata.id": "/redfish/v1/Chassis/Enc1/Power#PowerSupplies/2" }
+                { "@odata.id": "/redfish/v1/Chassis/Enc1/Power#/PowerSupplies/1" },
+                { "@odata.id": "/redfish/v1/Chassis/Enc1/Power#/PowerSupplies/2" }
             ],
             "Status": {
                 "State": "Offline",
