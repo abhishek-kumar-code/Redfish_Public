@@ -88,7 +88,7 @@ The following additional terms are used in this document.
 | CRUD           | Basic intrinsic operations used by any interface: Create, Read, Update and Delete.                                                                                                                                                                                                                                                                                                                                                                                                              |
 | Event          | A record that corresponds to an individual alert.                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | Message        | A complete request or response, formatted in HTTP/HTPS.  The protocol, based on REST, is a request/response protocol where every Request should result in a Response.                                                                                                                                                                                                                                                                                                                           |
-| Operation      | The HTTP request methods which map generic CRUD (Create, Read, Update Delete) operation.  These are POST, GET, PUT/PATCH, HEAD and DELETE.                                                                                                                                                                                                                                                                                                                                                      |
+| Operation      | The HTTP request methods which map generic CRUD operations.  These are POST, GET, PUT/PATCH, HEAD and DELETE.                                                                                                                                                                                                                                                                                                                                                      |
 | OData          | The Open Data Protocol, as defined in [OData-Protocol](#OData-Protocol).                                                                                                                                                                                                                                                                                                                                                      |
 | Redfish Schema    | The Schema definitions for Redfish resources.  It is defined according to OData Schema notation that can be directly translated to a JSON Schema representation.                                                                                                                                                                                                                                                                                                                                                                                                           |
 | Request        | A message from a Client to a Server.  It consists of a request line (which includes the Operation), request headers, an empty line and an optional message body.                                                                                                                                                                                                                                                                                                                                |
@@ -227,7 +227,7 @@ A wide variety of remote access and redirection services are supported in this a
 
 ### Security
 
-The challenge with security in a remote interface that is programmatic is to ensure both the interfaces used to interact with Redfish and the data being exchanged are secured. This means designing the proper security control mechanisms around the interfaces and securing the channels used to exchange the data. As part of this, specific behaviors are to be put in place including defining and using a minimum levels of encryption for communication channels etc.
+The challenge with security in a remote interface that is programmatic is to ensure both the interfaces used to interact with Redfish and the data being exchanged are secured. This means designing the proper security control mechanisms around the interfaces and securing the channels used to exchange the data. As part of this, specific behaviors are to be put in place including defining and using minimum levels of encryption for communication channels etc.
 
 ## Protocol Details
 
@@ -239,7 +239,7 @@ Throughout this document, we refer to Redfish as having a protocol mapped to a d
 
 The Redfish protocol is designed around a web service based interface model, and designed for network and interaction efficiency for both user interface (UI) and automation usage. The interface is specifically designed around the REST pattern semantics.
 
-[HTTP methods](#http-methods) are used by the Redfish protocol for common CRUD (Create, Read, Update, Delete) operations and to retrieve header information.
+[HTTP methods](#http-methods) are used by the Redfish protocol for common CRUD operations and to retrieve header information.
 
 [Actions](#actions) are used for expanding operations beyond CRUD type operations, but should be limited in use.
 
@@ -488,7 +488,7 @@ The PATCH method is the preferred method used to perform updates on pre-existing
 
 * Services shall support the PATCH method to update a resource. If the resource can never be updated, status code [405](#status-405) shall be returned.
 * Services may return a representation of the resource after any server-side transformations in the body of the response.
-* If a property in the request can never be updated, such as when a property is read only, a status code of [200](#status-200) shall be returned along with a representation of the resource containing an [annotation](#extended-information) specifying the non-updatabl property. In this success case, other properties may be updated in the resource. 
+* If a property in the request can never be updated, such as when a property is read only, a status code of [200](#status-200) shall be returned along with a representation of the resource containing an [annotation](#extended-information) specifying the non-updatable property. In this success case, other properties may be updated in the resource. 
 * Services should return status code [405](#status-405) if the client specifies a PATCH request against a collection.
 * The PATCH operation should be idempotent in the absence of outside changes to the resource provided it is used with ETags to prevent subsequent PATCH attempts. Note that the ETAG value should change as the result of this operation.
 
@@ -584,7 +584,7 @@ POST /redfish/v1/Systems/1/Actions/ComputerSystem.Reset
 
 ### Responses
 
-SPA defines four types of responses:
+Redfish defines four types of responses:
 * [Metadata Responses](#metadata-responses) - Describe the resources and types exposed by the service to generic clients.
 * [Resource Responses](#resource-responses) - JSON representation of an individual resource.
 * [Resource Collection Responses](#resource-collections) - JSON representation of a collections of resources.
@@ -939,7 +939,7 @@ A reference to a single resource is returned as a JSON object containing a singl
 
 ###### Array of References to Related Resources
 
-A reference to a collection of zero ore more related resources is returned as an array of JSON objects whose name is the name of the relationship. Each member of the array is a JSON object containing a single [resource-identifier-property](#resource-identifier-property) whose value is the uri of the referenced resource.
+A reference to a collection of zero or more related resources is returned as an array of JSON objects whose name is the name of the relationship. Each member of the array is a JSON object containing a single [resource-identifier-property](#resource-identifier-property) whose value is the uri of the referenced resource.
 
 ~~~json
 {
@@ -1240,7 +1240,7 @@ The Redfish architecture supports localized strings but does not impose any spec
 
 Schema-supplied display strings may be localized as necessary, but a Schema file may only contain one language.  Alternate language schemas may be published and available to Redfish clients, but need not be provided via the Redfish schema store. 
 
-Property names defined within a Redfish schema are never localized. User-supplied string-valued property values such as an asset tag may be localized. Localizable string valued properties should annotated with the [IsLanguageDependent annotation term](#language-dependent-property-values).
+Property names defined within a Redfish schema are never localized. User-supplied string-valued property values such as an asset tag may be localized. Localizable string valued properties should be annotated with the [IsLanguageDependent annotation term](#language-dependent-property-values).
 
 ### Schema Definition
 
@@ -1644,7 +1644,7 @@ Because [service annotations](#annotations) may be applied to existing resource 
 
 This section contains a set of common properties across all Redfish resources. The property names in this section shall not be used for any other purpose, even if they are not implemented in a particular resource.
 
-Common properties are defined in a the base Resource.<%= DocVersion %>.Resource schema.
+Common properties are defined in the base Resource.<%= DocVersion %>.Resource schema.
 
 #### Id
 
@@ -1761,7 +1761,7 @@ The Redfish service requires a client to subscribe to receive events. Clients pe
 
 There are two types of events generated in a Redfish service - life cycle and alert.  
 
-Life cycle events happen when resources are created, modified or destroyed.  Not every modification of a resource will result in a event - this is similar to when ETags are changed and implementations may not send an alert for every resource change. For instance, if an event was sent for every Ethernet packet received or every time a sensor changed 1 degree, this could result in more events than fits a scalable interface. This event usually indicates the resource that changed as well as, optionally, any attributes that changed. 
+Life cycle events happen when resources are created, modified or destroyed.  Not every modification of a resource will result in an event - this is similar to when ETags are changed and implementations may not send an event for every resource change. For instance, if an event was sent for every Ethernet packet received or every time a sensor changed 1 degree, this could result in more events than fits a scalable interface. This event usually indicates the resource that changed as well as, optionally, any attributes that changed. 
 
 Alert events happen when a resource needs to indicate an event of some significance.  This may be either directly or indirectly pertaining to the resource.  This style of event usually adopts a message registry approach similar to extended error handling in that a MessageID will be included.  Examples of this kind of event are when a chassis is opened, button is pushed, cable is unplugged or threshold exceeded.  These events usually do not correspond well to life cycle type events hence they have their own category.
 
