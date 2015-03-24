@@ -8,25 +8,25 @@
             "$ref": "odata.4.0.0#context"
         },
         "@odata.id": {
-            "$ref": "odata.4.0.0#id"
+            "$ref": "odata.4.0.0.json#id"
         },
         "@odata.type": {
-            "$ref": "odata.4.0.0#type"
+            "$ref": "odata.4.0.0.json#type"
         },
         "Id": {
-            "$ref": "Resource.0.96.0#Id"
+            "$ref": "Resource.0.96.0.json#Id"
         },
         "Description": {
-            "$ref": "Resource.0.96.0#Description"
+            "$ref": "Resource.0.96.0.json#Description"
         },
         "Name": {
-            "$ref": "Resource.0.96.0#Name"
+            "$ref": "Resource.0.96.0.json#Name"
         },
         "Modified": {
-            "$ref": "Resource.0.96.0#Modified"
+            "$ref": "Resource.0.96.0.json#Modified"
         },
         "Oem": {
-            "$ref": "Resource.0.96.0.0.96.0#Oem",
+            "$ref": "Resource.0.96.0.json#Oem",
             "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
             "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
         },
@@ -117,7 +117,7 @@
             "longDescription": "This property shall contain the string which identifies the instruction set of the processor contained in this socket."
         },
         "Status": {
-            "$ref": "Resource.0.96.0.0.96.0#Status"
+            "$ref": "Resource.0.96.0.json#Status"
         },
         "Manufacturer": {
             "type": [
@@ -137,60 +137,67 @@
             "description": "The product model number of this device",
             "longDescription": "This property shall indicate the model information as provided by the manufacturer of this processor."
         },
-        "VendorID": {
-            "type": [
-                "string",
-                "null"
-            ],
-            "readonly": true,
-            "description": "The Vendor Identification for this processor",
-            "longDescription": "This property shall indicate the Vendor Identification string information as provided by the manufacturer of this processor."
-        },
-        "IdentificationRegisters": {
-            "type": [
-                "string",
-                "null"
-            ],
-            "readonly": true,
-            "description": "The contents of the Identification Registers (CPUID) for this processor",
-            "longDescription": "This property shall include the raw CPUID instruction output as provided by the manufacturer of this processor."
-        },
-        "EffectiveFamily": {
-            "type": [
-                "string",
-                "null"
-            ],
-            "readonly": true,
-            "description": "The effective Family for this processor",
-            "longDescription": "This property shall indicate the effective Family information as provided by the manufacturer of this processor."
-        },
-        "EffectiveModel": {
-            "type": [
-                "string",
-                "null"
-            ],
-            "readonly": true,
-            "description": "The effective Model for this processor",
-            "longDescription": "This property shall indicate the effective Model information as provided by the manufacturer of this processor."
-        },
-        "Step": {
-            "type": [
-                "string",
-                "null"
-            ],
-            "readonly": true,
-            "description": "The Step value for this processor",
-            "longDescription": "This property shall indicate the Step or revision string information as provided by the manufacturer of this processor."
-        },
-        "MicrocodeInfo": {
-            "type": [
-                "string",
-                "null"
-            ],
-            "readonly": true,
-            "description": "The Microcode Information for this processor",
-            "longDescription": "This property shall indicate the Microcode Information as provided by the manufacturer of this processor."
-        },
+		"ProcessorID": {
+			"type": "object",
+			"additionalProperties": false,
+			"properties": {
+				"VendorID": {
+					"type": [
+						"string",
+						"null"
+					],
+					"readonly": true,
+					"description": "The Vendor Identification for this processor",
+					"longDescription": "This property shall indicate the Vendor Identification string information as provided by the manufacturer of this processor."
+				},
+				"IdentificationRegisters": {
+					"type": [
+						"string",
+						"null"
+					],
+					"readonly": true,
+					"description": "The contents of the Identification Registers (CPUID) for this processor",
+					"longDescription": "This property shall include the raw CPUID instruction output as provided by the manufacturer of this processor."
+				},
+				"EffectiveFamily": {
+					"type": [
+						"string",
+						"null"
+					],
+					"readonly": true,
+					"description": "The effective Family for this processor",
+					"longDescription": "This property shall indicate the effective Family information as provided by the manufacturer of this processor."
+				},
+				"EffectiveModel": {
+					"type": [
+						"string",
+						"null"
+					],
+					"readonly": true,
+					"description": "The effective Model for this processor",
+					"longDescription": "This property shall indicate the effective Model information as provided by the manufacturer of this processor."
+				},
+				"Step": {
+					"type": [
+						"string",
+						"null"
+					],
+					"readonly": true,
+					"description": "The Step value for this processor",
+					"longDescription": "This property shall indicate the Step or revision string information as provided by the manufacturer of this processor."
+				},
+				"MicrocodeInfo": {
+					"type": [
+						"string",
+						"null"
+					],
+					"readonly": true,
+					"description": "The Microcode Information for this processor",
+					"longDescription": "This property shall indicate the Microcode Information as provided by the manufacturer of this processor."
+				}
+			},
+			"description": "This object contains identification information for this processor."
+		},
         "MaxSpeedMHz": {
             "type": [
                 "integer",
