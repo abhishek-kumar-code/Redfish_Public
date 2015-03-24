@@ -914,7 +914,7 @@ Given this, the client could invoke a POST request to /redfish/v1/Systems/1/Acti
 
 The property representing the action may be annotated with the "AllowableValues" annotation in order to specify the list of allowable values for a particular parameter. 
 
-The set of allowable values is specified by including a property whose name is the name of the parameter followed by "@DMTF.AllowableValues", and whose value is a comma separated list of strings representing the allowable values for the parameter.
+The set of allowable values is specified by including a property whose name is the name of the parameter followed by "@DMTF.AllowableValues", and whose value is a JSON array of strings representing the allowable values for the parameter.
 
 ##### Links Property
 
