@@ -8,8 +8,8 @@
     "PowerControl": [
         {
             "@odata.id": "/redfish/v1/Chassis/Enc1/Power#/PowerControl/0",
-            "MemberID": "1",
-	    "Name": "Chassis Power Control",
+            "MemberID": "0",
+	        "Name": "Chassis Power Control",
             "PowerConsumedWatts": 8000,
             "PowerRequestedWatts": 8500,
             "PowerAvailableWatts": 1500,
@@ -33,13 +33,13 @@
     "PowerSupplies": [
         {
             "@odata.id": "/redfish/v1/Chassis/Enc1/Power#/PowerSupplies/0",
-            "MemberID": "1",
+            "MemberID": "0",
             "Name": "Power Supply Bay 1",
             "Status": {
                 "State": "Disabled",
                 "Health": "Warning"
             },
-	    "Oem": {},
+	        "Oem": {},
             "PowerSupplyType": "AC",
             "LineInputVoltage": 48,
             "PowerCapacityWatts": 400,
@@ -57,14 +57,14 @@
             ]
         },
         {
-            "@odata.id": "/redfish/v1/Chassis/Enc1/Power",
-            "MemberID": "2",
+            "@odata.id": "/redfish/v1/Chassis/Enc1/Power#/PowerSupplies/1",
+            "MemberID": "1",
             "Name": "Power Supply Bay 2",
             "Status": {
                 "State": "Disabled",
                 "Health": "Warning"
             },
-	    "Oem": {},
+	        "Oem": {},
             "PowerSupplyType": "AC",
             "LineInputVoltage": 48,
             "PowerCapacityWatts": 400,
@@ -83,7 +83,7 @@
         },
         {
             "@odata.id": "/redfish/v1/Chassis/Enc1/Power#/PowerSupplies/2",
-            "MemberID": "3",
+            "MemberID": "2",
             "Name": "Power Supply Bay 3",
             "Status": {
                 "State": "Absent"
@@ -93,7 +93,7 @@
     "Redundancy": [
         {
             "@odata.id": "/redfish/v1/Chassis/Enc1/Power#/Redundancy/0",
-            "MemberID": "1",
+            "MemberID": "0",
             "Name": "PowerSupply Redundancy Group 1",
             "Mode": "Failover",
             "MaxNumSupported": 2,

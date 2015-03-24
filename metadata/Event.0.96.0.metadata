@@ -19,10 +19,11 @@
       <EntityType Name="Event" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition for Events.  It represents the properties for the events themselves and not subscriptions or any other resource."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent an event for a Redfish implementation."/>
-        <Property Name="Events" Type="Collection(Event.EventRecordWithContext)" Nullable="false">
+        <NavigationProperty Name="Events" Type="Collection(Event.EventRecordWithContext)" Nullable="false">
           <Annotation Term="OData.Description" String="Each event in this array has a set of properties that describe the event.  Since this is an array, more than one event can be sent simultaneously."/>
           <Annotation Term="DMTF.Required"/>
-        </Property>
+          <Annotation Term="DMTF.ExpandResources"/>
+        </NavigationProperty>
       </EntityType>
 
       <!-- This is the types of Events that can be subscribed to. -->
@@ -44,7 +45,7 @@
         </Member>
       </EnumType>
 
-      <ComplexType Name="EventRecord">
+      <EntityType Name="EventRecord">
         <Property Name="EventType" Type="Event.EventType" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This indicates the type of event sent, according to the definitions in the EventService."/>
@@ -83,21 +84,21 @@
           <Annotation Term="OData.Description" String="This array of message arguments are substituted for the arguments in the message when looked up in the message registry."/>
           <Annotation Term="OData.LongDescription" String="This property has the same semantics as the MessageArgs property in the Event schema for Redfish."/>
         </Property>
-        <Property Name="OriginOfCondition" Type="Edm.String" Nullable="false">
+        <NavigationProperty Name="OriginOfCondition" Type="Resource.Item" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This indicates the resource that originated the condition that caused the event to be generated."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the URI of the resource that caused the event to be generated."/>
-        </Property>
-      </ComplexType>
+        </NavigationProperty>
+      </EntityType>
 
-      <ComplexType Name="EventRecordWithContext" BaseType="Event.EventRecord">
+      <EntityType Name="EventRecordWithContext" BaseType="Event.EventRecord">
         <Property Name="Context" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="A context can be supplied at subscription time.  This property is the context value supplied by the subscriber."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain a client supplied context for the ListnerDestination to which this event is being sent."/>
         </Property>
         <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
-      </ComplexType>
+      </EntityType>
 
     </Schema>
   </edmx:DataServices>
