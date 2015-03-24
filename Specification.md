@@ -467,7 +467,7 @@ Retrieving a collection is done by sending the HTTP GET method to the URI for th
 No requirements are placed on implementations to return a consistent set of members when a series of requests using paging query parameters are made over time to obtain the entire set of members. It is possible that this could result in missed or duplicate elements being retrieved if multiple GETs are used to retrieve a collection using paging.
 
 * Clients shall not make assumptions about the URIs for the resource members of a collection.
-* Retrieved collections should always include the [count](#resource-count-property) property to specify the total number of members in the collection.
+* Retrieved collections shall always include the [count](#resource-count-property) property to specify the total number of members in the collection.
 * If only a portion of the collection is returned due to client-specified paging query parameters or services returning [partial results](#partial-results), then the total number of resources across all pages shall be returned in the count property.
 
 #### HEAD
@@ -869,7 +869,7 @@ Collection-valued properties are returned as JSON arrays, where each element of 
 
 Collection-valued properties may contain a subset of the members of the full collection. In this case, the collection-valued property shall be annotated with a next link property. The property representing the next link shall be a peer of the collection-valued property, with the name of the collection-valued property suffixed with "@odata.nextLink". The value of the next link property shall be an opaque URL that the client can use to retrieve the next set of collection members. The next link property shall only be present if the number of resources requested is greater than the number of resources returned.
 
-Collection-valued properties may be annotated with a count. The property representing the count is a peer of the collection-valued property, with the name of the collection-valued property suffixed with "@odata.count". The value of the count is the total number of members available in the collection.
+Collection-valued properties shall be annotated with a count. The property representing the count is a peer of the collection-valued property, with the name of the collection-valued property suffixed with "@odata.count". The value of the count is the total number of members available in the collection.
 
 Collection-valued properties shall not be null. Empty collections shall be returned in JSON as an empty array.
 
@@ -1060,7 +1060,7 @@ The client can get the definition of the annotation from the the [service metada
 
 #### Resource Collections
 
-Resource collections are returned as a JSON object. The JSON object includes a [context](#context-property), [resource count](#resource-count-property), and array of [values](#resource-members-property), and may include a [next link](#partial-results) for partial results.
+Resource collections are returned as a JSON object. The JSON object shall include a [context](#context-property), [resource count](#resource-count-property), and array of [values](#resource-members-property), and may include a [next link](#partial-results) for partial results.
 
 #####	Context Property
 Responses that represent a collection of resources shall contain a context property named "@odata.context" describing the source of the payload. The value of the context property shall be the context URL that describes the resources according to [OData-Protocol](#OData-Protocol).
