@@ -1835,21 +1835,6 @@ The client can continue to get information about the status by directly querying
 * Operations using HTTP GET, PUT, PATCH should always be synchronous. 
 * Clients shall be prepared to handle both synchronous and asynchronous responses for requests using HTTP DELETE and HTTP POST methods.
 
-### Timestamp Management
-
-The Redfish Service should support a resource that contains the current service time.  The property should be located in the "/redfish" resource, called
-"Time" and should be a Redfish compliant [time string](#datetime-values).
-
-```json
-{
-     ...
-     "Time": "2012-03-07T14:44.30-05:00",
-     ...
-}
-```
-
-* Services should support a Time property at "/redfish/v1/Time"
-
 ### Resource Tree Stability
 
 The Resource Tree must be consistent on a single service across device reboot and A/C power cycle, and must withstand a reasonable amount of configuration change (e.g. adding an adapter to a server). The resource Tree on one service may not be consistent across instances of devices.  The client must walk the data model and discover resources to interact with them.
