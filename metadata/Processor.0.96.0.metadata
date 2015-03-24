@@ -45,6 +45,9 @@
                <Annotation Term="OData.Description" String="The instruction set of the processor" />
                <Annotation Term="OData.LongDescription" String="This property shall contain the string which identifies the instruction set of the processor contained in this socket." />
             </Property>
+			<Property Name="ProcessorID" Type="ComputerSystem.ProcessorID"  Nullable="false">
+				<Annotation Term="OData.Description" String="This object contains the identification information for the current resource."/>
+			</Property>
             <Property Name="Status" Type="Resource.Status" />
             <Property Name="Manufacturer" Type="Edm.String">
                <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
@@ -56,8 +59,26 @@
                <Annotation Term="OData.Description" String="The product model number of this device" />
                <Annotation Term="OData.LongDescription" String="This property shall indicate the model information as provided by the manufacturer of this processor." />
             </Property>
-            <ComplexType Name="ProcessorID">
-               <Property Name="VendorID" Type="Edm.String">
+ 
+            <Property Name="MaxSpeedMHz" Type="Edm.Int64">
+               <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+               <Annotation Term="OData.Description" String="The maximum clock speed of the processor" />
+               <Annotation Term="OData.LongDescription" String="This property shall indicate the maximum rated clock speed of the processor in MHz." />
+            </Property>
+            <Property Name="TotalCores" Type="Edm.Int64">
+               <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+               <Annotation Term="OData.Description" String="The total number of cores contained in this processor" />
+               <Annotation Term="OData.LongDescription" String="This property shall indicate the total count of independent processor cores contained within this processor." />
+            </Property>
+            <Property Name="TotalThreads" Type="Edm.Int64">
+               <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+               <Annotation Term="OData.Description" String="The total number of execution threads supported by this processor" />
+               <Annotation Term="OData.LongDescription" String="This property shall indicate the total count of independent execution threads supported by this processor." />
+            </Property>
+         </EntityType>
+		 
+		 <ComplexType Name="ProcessorID">
+            <Property Name="VendorID" Type="Edm.String">
                   <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
                   <Annotation Term="OData.Description" String="The Vendor Identification for this processor" />
                   <Annotation Term="OData.LongDescription" String="This property shall indicate the Vendor Identification string information as provided by the manufacturer of this processor." />
@@ -88,22 +109,7 @@
                   <Annotation Term="OData.LongDescription" String="This property shall indicate the Microcode Information as provided by the manufacturer of this processor." />
                </Property>
             </ComplexType>
-            <Property Name="MaxSpeedMHz" Type="Edm.Int64">
-               <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
-               <Annotation Term="OData.Description" String="The maximum clock speed of the processor" />
-               <Annotation Term="OData.LongDescription" String="This property shall indicate the maximum rated clock speed of the processor in MHz." />
-            </Property>
-            <Property Name="TotalCores" Type="Edm.Int64">
-               <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
-               <Annotation Term="OData.Description" String="The total number of cores contained in this processor" />
-               <Annotation Term="OData.LongDescription" String="This property shall indicate the total count of independent processor cores contained within this processor." />
-            </Property>
-            <Property Name="TotalThreads" Type="Edm.Int64">
-               <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
-               <Annotation Term="OData.Description" String="The total number of execution threads supported by this processor" />
-               <Annotation Term="OData.LongDescription" String="This property shall indicate the total count of independent execution threads supported by this processor." />
-            </Property>
-         </EntityType>
+			
          <!-- This is Processor Types -->
          <EnumType Name="ProcessorType">
             <Member Name="CPU">
