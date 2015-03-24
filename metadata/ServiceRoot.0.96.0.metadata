@@ -51,11 +51,6 @@
       <EntityType Name="ServiceRoot" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This object represents the root Redfish service."/>
         <Annotation Term="OData.LongDescription" String="This object represents the root Redfish service.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
-        <Property Name="Time" Type="Edm.DateTimeOffset">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="The current time as reported by the owner of this Redfish Service"/>
-          <Annotation Term="OData.LongDescription" String="The value of this string shall represent the time of the Redfish service. "/>
-        </Property>
         <Property Name="ServiceVersion" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The version of the Redfish service"/>
