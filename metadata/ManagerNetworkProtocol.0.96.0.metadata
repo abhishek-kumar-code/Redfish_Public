@@ -29,7 +29,7 @@
         </Property>
         <Property Name="HostName" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="This is the host name for this manager obtained by DNS without any of the domain information added on"/>
+          <Annotation Term="OData.Description" String="The DNS Host Name of this manager, without any domain information"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the host name without any domain information."/>
         </Property>
         <Property Name="FQDN" Type="Edm.String">
