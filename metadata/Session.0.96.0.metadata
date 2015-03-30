@@ -16,7 +16,7 @@
 
       <!-- This is the schema definition for the Session resource.  It represents the properties for the session with a Redfish Service. -->
 
-      <EntityType Name="SessionCollection" BaseType="Resource.SessionCollection">
+      <EntityType Name="SessionCollection" BaseType="Resource.ResourceCollection">
         <Property Name="Links" Type="Session.Members">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Contains links to other resources that are related to this resource."/>
