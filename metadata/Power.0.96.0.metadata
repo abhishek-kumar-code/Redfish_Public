@@ -316,27 +316,27 @@
         </Property>
         <Property Name="Model" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="The model number of this Power Supply"/>
+          <Annotation Term="OData.Description" String="The model number for this Power Supply"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the model information as defined by the manufacturer for the associated power supply."/>
         </Property>
         <Property Name="FirmwareVersion" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="The firmware version of this Power Supply"/>
+          <Annotation Term="OData.Description" String="The firmware version for this Power Supply"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the firwmare version as defined by the manufacturer for the associated power supply."/>
         </Property>
         <Property Name="SerialNumber" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="The serial number of this Power Supply"/>
+          <Annotation Term="OData.Description" String="The serial number for this Power Supply"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the serial number as defined by the manufacturer for the associated power supply."/>
         </Property>
         <Property Name="PartNumber" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="The part number of this Power Supply"/>
+          <Annotation Term="OData.Description" String="The part number for this Power Supply"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the part number as defined by the manufacturer for the associated power supply."/>
         </Property>
         <Property Name="SparePartNumber" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="The spare part number of this Power Supply"/>
+          <Annotation Term="OData.Description" String="The spare part number for this Power Supply"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the spare or replacement part number as defined by the manufacturer for the associated power supply."/>
         </Property>
         <Property Name="Status" Type="Resource.Status" Nullable="false"/>
