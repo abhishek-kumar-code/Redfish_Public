@@ -47,9 +47,9 @@
       <EntityType Name="EthernetInterface" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This schema defines a simple ethernet NIC resource."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent NIC resources as part of the Redfish specification."/>
-        <Property Name="UEFIDevicePath" Type="Edm.String">
+        <Property Name="UefiDevicePath" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="This is the UEFI device path for this NIC."/>
+          <Annotation Term="OData.Description" String="The UEFI device path for this NIC"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the UEFI device path of this interface."/>
         </Property>
         <Property Name="SubnetPrefixLength" Type="Edm.Int32">
@@ -88,7 +88,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the Ethernet (MAC) frame size in bytes."/>
         </Property>
         <Property Name="HostName" Type="Edm.String">
-          <Annotation Term="OData.Description" String="This is the DNS Host Name, without any domain information."/>
+          <Annotation Term="OData.Description" String="The DNS Host Name, without any domain information"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be host name for this interface."/>
         </Property>
         <Property Name="FQDN" Type="Edm.String">
