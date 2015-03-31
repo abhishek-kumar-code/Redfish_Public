@@ -63,35 +63,35 @@
           <Annotation Term="OData.Description" String="Power Control Function name."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the name of the Voltage sensor."/>
         </Property>
-        <Property Name="PowerConsumedWatts" Type="Edm.Int64">
+        <Property Name="PowerConsumedWatts" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The actual power being consumed by the chassis."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual power being consumed (in Watts) by the chassis."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
           <Annotation Term="OData.Measures.Unit" String="Watts"/>
         </Property>
-        <Property Name="PowerRequestedWatts" Type="Edm.Int64">
+        <Property Name="PowerRequestedWatts" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The potential power that the chassis resources are requesting which may be higher than the current level being consumed since requested power includes budget that the chassis resource wants for future use."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the amount of power (in Watts) that the chassis resource is currently requesting be budgeted to it for future use."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
           <Annotation Term="OData.Measures.Unit" String="Watts"/>
         </Property>
-        <Property Name="PowerAvailableWatts" Type="Edm.Int64">
+        <Property Name="PowerAvailableWatts" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The amount of power not already budgeted and therefore available for additional allocation. (powerCapacity - powerAllocated).  This indicates how much reserve power capacity is left."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the amount of power capacity (in Watts) not already allocated and shall equal PowerCapacityWatts - PowerAllocatedWatts."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
           <Annotation Term="OData.Measures.Unit" String="Watts"/>
         </Property>
-        <Property Name="PowerCapacityWatts" Type="Edm.Int64">
+        <Property Name="PowerCapacityWatts" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The total amount of power available to the chassis for allocation. This may the power supply capacity, or power budget assigned to the chassis from an up-stream chassis."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the total power capacity that is available for allocation to the chassis resources."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
           <Annotation Term="OData.Measures.Unit" String="Watts"/>
         </Property>
-        <Property Name="PowerAllocatedWatts" Type="Edm.Int64">
+        <Property Name="PowerAllocatedWatts" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The total amount of power that has been allocated (or budegeted)to  chassis resources."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the total power currently allocated to chassis resources."/>
@@ -122,21 +122,21 @@
           <Annotation Term="OData.Measures.Units" String="Minutes"/>
           <Annotation Term="Validation.Minimum" Int="0"/>
         </Property>
-        <Property Name="MinConsumedWatts" Type="Edm.Int64">
+        <Property Name="MinConsumedWatts" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The lowest power consumption level over the measurement window (the last IntervalInMin minutes)."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the minimum power level in watts that occured within the last IntervalInMin minutes."/>
           <Annotation Term="OData.Measures.Unit" String="Watts"/>
           <Annotation Term="Validation.Minimum" Int="0"/>
         </Property>
-        <Property Name="MaxConsumedWatts" Type="Edm.Int64">
+        <Property Name="MaxConsumedWatts" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The highest power consumption level that has occured over the measurement window (the last IntervalInMin minutes)."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the maximum power level in watts that occured within the last IntervalInMin minutes."/>
           <Annotation Term="OData.Measures.Unit" String="Watts"/>
           <Annotation Term="Validation.Minimum" Int="0"/>
         </Property>
-        <Property Name="AverageConsumedWatts" Type="Edm.Int64">
+        <Property Name="AverageConsumedWatts" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The average power level over the measurement window (the last IntervalInMin minutes)."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the average power level that occured averaged over the last IntervalInMin minutes."/>
@@ -147,7 +147,7 @@
 
       <ComplexType Name="PowerLimitType">
         <Annotation Term="OData.Description" String="This object contains power limit status and configuration information for the chassis."/>
-        <Property Name="LimitInWatts" Type="Edm.Int64">
+        <Property Name="LimitInWatts" Type="Edm.Decimal">
           <Annotation Term="OData.Description" String="The Power limit in watts. Set to null to disable power capping."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the power cap limit in watts for the resource.  If set to null, power capping shall be disabled."/>
           <Annotation Term="OData.Measures.Unit" String="Watts"/>
@@ -294,20 +294,20 @@
           <Annotation Term="OData.Description" String="The line voltage type supported as an input to this Power Supply"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the type of input line voltage supported by the associated power supply"/>
         </Property>
-        <Property Name="LineInputVoltage" Type="Edm.Int64">
+        <Property Name="LineInputVoltage" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The line input voltage at which the Power Supply is operating"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the value in Watts of the line input voltage (measured or configured for) that the power supply has been configured to operate with or is currently receiving."/>
           <Annotation Term="OData.Measures.Units" String="Volts"/>
         </Property>
-        <Property Name="PowerCapacityWatts" Type="Edm.Int64">
+        <Property Name="PowerCapacityWatts" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The maximum capacity of this Power Supply"/>
           <Annotation Term="OData.LongDescription" String="This property shall contiain the maximum amount of power, in Watts, that the associated power supply is rated to deliver."/>
           <Annotation Term="OData.Measures.Unit" String="Watts"/>
           <Annotation Term="Validation.Minimum" Int="0"/>
         </Property>
-        <Property Name="LastPowerOutputWatts" Type="Edm.Int64">
+        <Property Name="LastPowerOutputWatts" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The average power output of this Power Supply"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the average power output, measured in Watts, of the associated power supply."/>
