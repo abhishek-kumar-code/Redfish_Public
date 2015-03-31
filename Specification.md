@@ -95,7 +95,7 @@ The following additional terms are used in this document.
 | Resource       | A Resource is addressable by a URI and is able to receive and process messages. A Resource can be either an individual entity, or a collection that acts as a container for several other entities.                                                                                                                                                                                                                                                                                             |
 | Resource Tree  | A Resource Tree is a tree structure of JSON encoded resources accessible via a well-known starting URI.  A client may discover the resources available on a Redfish Service by following the resource links from the base of the tree. <br>**NOTE** for Redfish client implementation:  Although the resources are a tree, the references between resources may result in graph instead of a tree.  Clients traversing the resource tree must contain logic to avoid infinite loops.      |
 | Response       | A message from a Server to a Client in response to a request message.  It consists of a status line, response headers, an empty line and an optional message body.                                                                                                                                                                                                                                                                                                                              |
-| Subscription   | The act of connecting to an event service in order to receive events.                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| Subscription   | A configuration setting in the event service that specifies where to send events.                                                                                                                                                                                                                                                                                                                                                                                                                           |
 
 ## Symbols and Abbreviated Terms
 
@@ -201,9 +201,9 @@ The use of HTTP Response codes enable a client to determine if the operation was
 
 In some situations it is useful for a service to provide messages to clients that fall outside the normal request/response paradigm. These messages, called events, are used by the service to asynchronously notify the client of some significant state change or error condition, usually of a time critical nature.
 
-Only one style of eventing is currently defined by this specification - push style eventing. In push style eventing, when the server detects the need to send an event, it uses an HTTP POST to push the event message to the client.  Clients subscribe to the eventing service to enable reception of events. 
+Only one style of eventing is currently defined by this specification - push style eventing. In push style eventing, when the server detects the need to send an event, it uses an HTTP POST to push the event message to the client.  Clients can subscribe to the eventing service to enable reception of events by creating a ListenerDestination subscription entry in the Event Service, or an administrator can create subscriptions as part of the Redfish service configuration.  All subscriptions are persistent configuration settings. 
 
-Events originate from a specific resource. Not all resources are able to generate events. Those resources capable of generating events might not generate any events unless a client is listening for them. A client expresses interest in receiving events by sending a "subscribe" message to the Event Service. A subscribe message is sent using HTTP POST to the Event Subscriptions collection.
+Events originate from a specific resource. Not all resources are able to generate events. Those resources capable of generating events might not generate any events unless a subscription has been created to listen for the event. An administrator or client creates a subscription by sending a "subscribe" message to the Event Service. A subscribe message is sent using HTTP POST to the Event Subscriptions collection.
 
 The Section on [Eventing](#eventing) further in this specification discusses the details of the eventing mechanism.
 
@@ -1751,11 +1751,11 @@ Providers may split the schema resources into separate files such as Schema + St
 
 This section covers the REST-based mechanism for subscribing to and receiving event messages.
 
-The Redfish service requires a client to subscribe to receive events. Clients perform a subscription by sending a HTTP POST message to the URI of the subscription resource. This request includes the URI where the client expects events to be sent.  The Redfish service will then, when an event is triggered within the service, send an event to that URI.   
+The Redfish service requires a client or administrator to create subscriptions to receive events. A subscription is created when an administrator sends an HTTP POST message to the URI of the subscription resource. This request includes the URI where an event-receiver client expects events to be sent, as well as the type of events to be sent.  The Redfish service will then, when an event is triggered within the service, send an event to that URI.   
 
-* Services shall support "push" style eventing for all resources capable   of sending events.
-* Services shall not "push" events (using HTTP POST) unless the client has previously sent a subscribe message to the resource responsible for sending the events. A successful subscribe request will cause a subscription object to be created. Either the client or the service can terminate the event stream at any time.
-* Services shall respond to a successful subscription with HTTP status 201 and set the HTTP Location header to the address of a new subscription resource.
+* Services shall support "push" style eventing for all resources capable of sending events.
+* Services shall not "push" events (using HTTP POST) unless an event subscription has been created. Either the client or the service can terminate the event stream at any time by deleting the subscription.  The service may delete a subscription if the number of delivery errors exceeds pre-configured thresholds.
+* Services shall respond to a successful subscription with HTTP status 201 and set the HTTP Location header to the address of a new subscription resource.  Subscriptions are persistent and will remain across event service restarts.
 * Clients shall terminate a subscription by sending an HTTP DELETE message to the URI of the subscription resource.
 * Services may terminate a subscription by sending a special "subscription terminated" event as the last message. Future requests to the associated subscription resource will respond with HTTP status 404.
 
@@ -1794,13 +1794,12 @@ where
 
 #### Subscription Cleanup
 
-To unsubscribe from the messages associated with this subscription, the client simply sends an HTTP DELETE request to the subscription resource URI.
+To unsubscribe from the messages associated with this subscription, the client or administrator simply sends an HTTP DELETE request to the subscription resource URI.
 
-In order to avoid "orphan" subscriptions (subscriptions not cleaned up by the client, e.g., in the case the client has died or simply forgets to delete a subscription), subscriptions will be automatically deleted by the server under the following circumstances:
+In order to avoid "orphan" subscriptions (subscriptions not cleaned up by the client, e.g., in the case the client has died or simply forgets to delete a subscription), the event service can be configured to automatically delete subscriptions under the following circumstances:
 
-* The client supplied a URL and the service received an error POSTing to the client-supplied URL (client-url  field of the subscription) some service-defined number of consecutive times.
+* The service received an error POSTing to the configured event destination URL (client-url  field of the subscription) some service-defined number of consecutive times within a configurable time window.  See the properties defined in the EventService schema for details.
 
-* The client did not supply a URL and the amount of time specified in the subscription-timeout field has elapsed since the last time the subscription URL was polled.  In order to prevent disconnection, the client service should perform a GET on the subscription URI less than the period specified in the timeout interval. A GET on a subscription URI shall reset the timeout counter for that subscription.
 
 ### Asynchronous Operations
 

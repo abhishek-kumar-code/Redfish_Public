@@ -42,17 +42,6 @@
           <Annotation Term="OData.Description" String="This represents the number of seconds between retry attempts for sending any given Event"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the interval in seconds between the retry attempts for any given event to the subscription destination."/>
         </Property>
-        <Property Name="SubscriptionRemovalAction" Type="EventService.SubscriptionRemovalAction" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="This property indicates what the service will do to an event subscription after the number of delivery retry attempts has been exhausted."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the action the service takes for subscriptions that have the number failed event deliveries equal to the value of DeliveryRetryAttempts fail without any successful event deliveries in between the failed deliveries. 'Remove' defines the subscription is to be removed. 'Disable' indicates that subscription removal process is not being enforced but no further events will be sent to this destination. 'Ignore' indicates that the removal action is temporarily not enforced and further events will be sent to this destination."/>
-        </Property>
-        <Property Name="SubscriptionRemovalTimeIntervalInMinutes" Type="Edm.Int64" Nullable="false">
-          <Annotation Term="OData.Measures.Units" String="Minutes"/>
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="This is the minimum amount of time after the failed events that the service will wait before doing the SubscriptionRemovalAction."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the universal unique identifier number for the system."/>
-        </Property>
         <Property Name="EventTypesForSubscription" Type="Collection(Event.EventType)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is the types of Events that can be subscribed to."/>
@@ -71,10 +60,10 @@
       <ComplexType Name="OemActions"/>
 
       <ComplexType Name="Links">
-        <NavigationProperty Name="Subscriptions" Type="Collection(ListenerDestination.ListenerDestination)" ContainsTarget="true">
+        <NavigationProperty Name="Subscriptions" Type="ListenerDestination.ListenerDestinationCollection"
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a reference to a collection of ListenerDestination resources."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of ListenerDestinations."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the link to a collection of ListenerDestination resources."/>
           <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
         <Property Name="Oem" Type="Resource.Oem"/>
@@ -120,18 +109,6 @@
         </Parameter>
       </Action>
       
-      <!-- Subscription removal action indicates what the service will do to an event subscription after the number of delivery retry attempts has been exhausted. -->
-      <EnumType Name="SubscriptionRemovalAction">
-        <Member Name="Remove">
-          <Annotation Term="OData.Description" String="Remove the subscription"/>
-        </Member>
-        <Member Name="Disable">
-          <Annotation Term="OData.Description" String="Disable the subscription"/>
-        </Member>
-        <Member Name="Ignore">
-          <Annotation Term="OData.Description" String="Ignore the condition"/>
-        </Member>
-      </EnumType>
 
     </Schema>
   </edmx:DataServices>
