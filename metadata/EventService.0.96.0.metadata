@@ -109,18 +109,6 @@
         </Parameter>
       </Action>
       
-      <!-- Subscription removal action indicates what the service will do to an event subscription after the number of delivery retry attempts has been exhausted. -->
-      <EnumType Name="SubscriptionRemovalAction">
-        <Member Name="Remove">
-          <Annotation Term="OData.Description" String="Remove the subscription"/>
-        </Member>
-        <Member Name="Disable">
-          <Annotation Term="OData.Description" String="Disable the subscription"/>
-        </Member>
-        <Member Name="Ignore">
-          <Annotation Term="OData.Description" String="Ignore the condition"/>
-        </Member>
-      </EnumType>
 
     </Schema>
   </edmx:DataServices>
