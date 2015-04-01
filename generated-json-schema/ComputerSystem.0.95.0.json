@@ -249,7 +249,7 @@
 			"description": "The state of the indicator LED.",
 			"longDescription": "The value of this property shall contain the indicator light state for the indicator light associated with this system."
 		},
-		"Power": {
+		"PowerState": {
 			"type": [
 				"string",
 				"null"
