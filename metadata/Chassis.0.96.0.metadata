@@ -222,6 +222,15 @@
         <Member Name="Shelf">
           <Annotation Term="OData.Description" String="An enclosed or semi-enclosed, typically horizontally-oriented, system chassis which must be plugged into a multi-system chassis to function normally"/>
         </Member>
+        <Member Name="Drawer">
+          <Annotation Term="OData.Description" String="An enclosed or semi-enclosed, typically horizontally-oriented, system chassis which must be plugged into a multi-system chassis to function normally"/>
+        </Member>
+        <Member Name="Module">
+          <Annotation Term="OData.Description" String="A small, typically removable, chassis or card which contains devices for a particular subsystem or function"/>
+        </Member>
+        <Member Name="Component">
+           <Annotation Term="OData.Description" String="A small chassis, card, or device which contains devices for a particular subsystem or function"/>
+        </Member>
         <Member Name="Other">
           <Annotation Term="OData.Description" String="A chassis that does not fit any of these definitions"/>
         </Member>
