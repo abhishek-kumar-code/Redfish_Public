@@ -30,6 +30,10 @@
       <EntityType Name="SerialInterface" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This schema defines an asynchronous serial interface resource."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent serial resources as part of the Redfish specification."/>
+        <Property Name="InterfaceEnabled" Type="Edm.Boolean">
+          <Annotation Term="OData.Description" String="This indicates whether this interface is enabled."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this interface is enabled."/>
+        </Property>
         <Property Name="SignalType" Type="SerialInterface.SignalType" Nullable="false">
           <Annotation Term="OData.Description" String="The type of signal used for the communication connection - RS232 or RS485."/>
           <Annotation Term="OData.Description" String="This property shall indicate the type of serial signalling that will be utilized for the serial connection."/>
