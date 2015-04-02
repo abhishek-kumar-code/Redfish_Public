@@ -4,13 +4,13 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://dmtf.org/schema/v1/DMTFExtensions">
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/DMTFExtensions.0.96.0">
     <edmx:Include Namespace="DMTFExtensions.0.96.0" Alias="DMTF"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://dmtf.org/schema/v1/Resource">
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.0.96.0">
     <edmx:Include Namespace="Resource.0.96.0" Alias="Resource"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://dmtf.org/schema/v1/Privileges">
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Privileges.0.96.0">
     <edmx:Include Namespace="Privileges.0.96.0" Alias="Privileges"/>
   </edmx:Reference>
   
@@ -41,14 +41,16 @@
           <Annotation Term="OData.Description" String="This property is used to indicate if the Role is one of the Redfish Predefined Roles vs a Custom role."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate if the role is a predefined role. ."/>
         </Property>
-
+	  </EntityType>
+	  
     <ComplexType Name="Links">
       <NavigationProperty Name="Privileges" Type="Collection(Privileges.Privileges)">
         <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
         <Annotation Term="OData.Description" String="An array of refrences to the privileges that this role includes."/>
         <Annotation Term="OData.LongDescription" String="The value of this property shall reference a property of type Privilege that represents ohe privileges that this role includes."/>
-
+	 </NavigationProperty>
+	</ComplexType>
+	
     </Schema>
   </edmx:DataServices>
 </edmx:Edmx>
-
