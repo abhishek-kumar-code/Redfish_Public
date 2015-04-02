@@ -64,37 +64,37 @@
         </Property>
         <Property Name="AssetTag" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/ReadWrite"/>
-          <Annotation Term="OData.Description" String="This is a user definable tag that can be used to track this computer system for inventory or other client purposes."/>
+          <Annotation Term="OData.Description" String="The user definable tag that can be used to track this computer system for inventory or other client purposes"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the value of the asset tag of the system."/>
         </Property>
         <Property Name="Manufacturer" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="This is the manufacturer or OEM of this computer system."/>
+          <Annotation Term="OData.Description" String="The manufacturer or OEM of this system."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain a value that represents the manufacturer of the system."/>
         </Property>
         <Property Name="Model" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="This is the model information that the manufacturer refers to this comptuer system as."/>
+          <Annotation Term="OData.Description" String="The model number for this system"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the information about how the manufacturer references this system."/>
         </Property>
         <Property Name="SKU" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="The manufacturers SKU for this system."/>
+          <Annotation Term="OData.Description" String="The manufacturer SKU for this system"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the Stock Keeping Unit (SKU) for the system."/>
         </Property>
         <Property Name="SerialNumber" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="The serial number for this system."/>
+          <Annotation Term="OData.Description" String="The serial number for this system"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the serial number for the system."/>
         </Property>
         <Property Name="PartNumber" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="The part number for this system according to the manufacturer."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the part number for the system."/>
+          <Annotation Term="OData.Description" String="The part number for this system"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the part number for the system as defined by the manufacturer."/>
         </Property>
         <Property Name="UUID" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="The universal unique identifier for this system."/>
+          <Annotation Term="OData.Description" String="The universal unique identifier (UUID) for this system"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the universal unique identifier number for the system."/>
         </Property>
         <Property Name="HostCorrelation" Type="ComputerSystem.HostCorrelation"  Nullable="false">
@@ -102,12 +102,12 @@
         </Property>
         <Property Name="IndicatorLED" Type="ComputerSystem.IndicatorLED">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/ReadWrite"/>
-          <Annotation Term="OData.Description" String="The state of the indicator LED."/>
+          <Annotation Term="OData.Description" String="The state of the indicator LED, used to identify the system"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the indicator light state for the indicator light associated with this system."/>
         </Property>
         <Property Name="Power" Type="ComputerSystem.PowerState">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="This is the current power state of the system."/>
+          <Annotation Term="OData.Description" String="This is the current power state of the system"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the power state of the system."/>
         </Property>
         <Property Name="Boot" Type="ComputerSystem.Boot"  Nullable="false">
@@ -190,7 +190,7 @@
       <Action Name="Reset" Isbound="true">
         <Parameter Name="ComputerSystem" Type="ComputerSystem.Actions"/>
         <Parameter Name="ResetType" Type="Resource.ResetType">
-          <Annotation Term="OData.Description" String="This is the type of reset to be performed."/>
+          <Annotation Term="OData.Description" String="The type of reset to be performed"/>
           <Annotation Term="OData.LongDescription" String="This defines the property name for the action."/>
         </Parameter>
         <Annotation Term="OData.Description" String="This action is used to reset the system."/>
@@ -346,8 +346,8 @@
         </Property>
         <Property Name="HostName" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="The Host Name of this system"/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the host name without any domain information."/>
+          <Annotation Term="OData.Description" String="The DNS Host Name of this system, without any domain information"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the DNS host name without any domain information."/>
         </Property>
         <Property Name="HostFQDN" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>

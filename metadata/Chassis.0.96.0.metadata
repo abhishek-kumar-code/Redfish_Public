@@ -72,7 +72,7 @@
         </Property>
         <Property Name="SerialNumber" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="This is the serial number for this chassis."/>
+          <Annotation Term="OData.Description" String="The serial number for this chassis."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a manufacturer-allocated number used to identify the chassis."/>
         </Property>
         <Property Name="Version" Type="Edm.String">
@@ -82,15 +82,15 @@
         </Property>
         <Property Name="PartNumber" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="This is the part number of this chassis."/>
+          <Annotation Term="OData.Description" String="The part number for this chassis."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a part number assigned by the organization that is responsible for producing or manufacturing the chassis."/>
         </Property>
         <Property Name="AssetTag" Type="Edm.String">
-          <Annotation Term="OData.Description" String="This is a user assigned asset tag for this chassis."/>
+          <Annotation Term="OData.Description" String="The user assigned asset tag for this chassis."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an identifying string used to track the chassis for inventory purposes."/>
         </Property>
         <Property Name="IndicatorLED" Type="Chassis.IndicatorLED">
-          <Annotation Term="OData.Description" String="This is the indicator LED for the chassis, used to identify the chassis.  This LED can be manipulated by the user."/>
+          <Annotation Term="OData.Description" String="The state of the indicator LED, used to identify the chassis."/>
           <Annotation Term="OData.LongDescription" String="This value of this property shall contain the indicator light state for the indicator light associated with this system."/>
         </Property>
         <Property Name="Links" Type="Chassis.Links" Nullable="false">
