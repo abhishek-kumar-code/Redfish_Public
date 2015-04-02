@@ -75,11 +75,6 @@
           <Annotation Term="OData.Description" String="The serial number for this chassis."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a manufacturer-allocated number used to identify the chassis."/>
         </Property>
-        <Property Name="Version" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="This is the version of this chassis."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a string that indicates the producers or manufacturer's version of the chassis."/>
-        </Property>
         <Property Name="PartNumber" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The part number for this chassis."/>
