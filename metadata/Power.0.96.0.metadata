@@ -111,7 +111,6 @@
         </NavigationProperty>
         <Property Name="Status" Type="Resource.Status" Nullable="false"/>
         <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
-        </Property>
       </EntityType>
 
       <EntityType Name="PowerMetric" BaseType="Resource.ReferenceableMember">
