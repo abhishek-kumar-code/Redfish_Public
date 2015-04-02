@@ -139,13 +139,13 @@
           <Annotation Term="OData.LongDescription" String="This is a reference to a collection of ListenerDestination resources."/>
           <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="EthernetInterfaces" Type="Collection(EthernetInterface.EthernetInterface)">
+        <NavigationProperty Name="EthernetInterfaces" Type="EthernetInterface.EthernetInterfaceCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a reference to a collection of NICs that this manager uses for network communication.  It is here that clients will find NIC configuration options and settings."/>
           <Annotation Term="OData.LongDescription" String="This is a reference to a collection of ListenerDestination resources."/>
           <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="SerialInterfaces" Type="Collection(SerialInterface.SerialInterface)">
+        <NavigationProperty Name="SerialInterfaces" Type="SerialInterface.SerialInterfaceCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a reference to a collection of serial interfaces that this manager uses for serial and console communication.  It is here that clients will find serial configuration options and settings."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of SerialInterfaces which are for the use of this manager."/>
@@ -158,13 +158,13 @@
           <Annotation Term="DMTF.ExpandReferences"/>
           <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="Logs" Type="Collection(LogService.LogService)">
+        <NavigationProperty Name="LogServices" Type="LogService.LogServiceCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a reference to a collection of Logs used by the manager."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain a reference to a collection of LogService which are for the use of this manager."/>
           <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="VirtualMedia" Type="Collection(VirtualMedia.VirtualMedia)">
+        <NavigationProperty Name="VirtualMedia" Type="VirtualMedia.VirtualMediaCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a reference to the virtual media services for this particular manager."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain a reference to a collection of VirtualMedia which are for the use of this manager."/>
