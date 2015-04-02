@@ -51,7 +51,7 @@
       <EntityType Name="ServiceRoot" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This object represents the root Redfish service."/>
         <Annotation Term="OData.LongDescription" String="This object represents the root Redfish service.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
-        <Property Name="ServiceVersion" Type="Edm.String" Nullable="false">
+        <Property Name="RedfishVersion" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The version of the Redfish service"/>
           <Annotation Term="OData.LongDescription" String="The value of this string shall represent the version of the Redfish service.  The format of this string shall be of the format majorversion.minorversion.errata in compliance with Protocol Version section of the Redfish specification. "/>

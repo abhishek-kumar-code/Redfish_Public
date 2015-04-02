@@ -186,7 +186,7 @@
           <Annotation Term="OData.Description" String="Voltage sensor name."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the name of the Voltage sensor."/>
         </Property>
-        <Property Name="Number" Type="Edm.Int64">
+        <Property Name="SensorNumber" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="A numerical identifier to represent the voltage sensor"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a numerical identifier for this voltage sensor that is unique within this resource. "/>
@@ -198,52 +198,52 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the current value of the voltage sensor's reading."/>
           <Annotation Term="OData.Measures.Units" String="Volts"/>
         </Property>
-        <Property Name="UpperThresholdNonCriticalVolts" Type="Edm.Decimal">
+        <Property Name="UpperThresholdNonCritical" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Above normal range"/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the CurrentReading is above the normal range but is not critical."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the CurrentReading is above the normal range but is not critical. Units shall use the same units as the related ReadingVolts propoerty."/>
           <Annotation Term="OData.Measures.Units" String="Volts"/>
         </Property>
-        <Property Name="UpperThresholdCriticalVolts" Type="Edm.Decimal">
+        <Property Name="UpperThresholdCritical" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Above normal range but not yet fatal."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the CurrentReading is above the normal range but is not yet fatal."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the CurrentReading is above the normal range but is not yet fatal. Units shall use the same units as the related ReadingVolts propoerty."/>
           <Annotation Term="OData.Measures.Units" String="Volts"/>
         </Property>
-        <Property Name="UpperThresholdFatalVolts" Type="Edm.Decimal">
+        <Property Name="UpperThresholdFatal" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Above normal range and is fatal"/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the CurrentReading is above the normal range and is fatal."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the CurrentReading is above the normal range and is fatal. Units shall use the same units as the related ReadingVolts propoerty."/>
           <Annotation Term="OData.Measures.Units" String="Volts"/>
         </Property>
-        <Property Name="LowerThresholdNonCriticalVolts" Type="Edm.Decimal">
+        <Property Name="LowerThresholdNonCritical" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Below normal range"/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the CurrentReading is below the normal range but is not critical."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the CurrentReading is below the normal range but is not critical. Units shall use the same units as the related ReadingVolts propoerty."/>
           <Annotation Term="OData.Measures.Units" String="Volts"/>
         </Property>
-        <Property Name="LowerThresholdCriticalVolts" Type="Edm.Decimal">
+        <Property Name="LowerThresholdCritical" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Below normal range but not yet fatal."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the CurrentReading is below the normal range but is not yet fatal."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the CurrentReading is below the normal range but is not yet fatal. Units shall use the same units as the related ReadingVolts propoerty."/>
           <Annotation Term="OData.Measures.Units" String="Volts"/>
         </Property>
-        <Property Name="LowerThresholdFatalVolts" Type="Edm.Decimal">
+        <Property Name="LowerThresholdFatal" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Below normal range and is fatal"/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the CurrentReading is below the normal range and is fatal."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the CurrentReading is below the normal range and is fatal. Units shall use the same units as the related ReadingVolts propoerty."/>
           <Annotation Term="OData.Measures.Units" String="Volts"/>
         </Property>
-        <Property Name="MinReadingRangeVolts" Type="Edm.Decimal">
+        <Property Name="MinReadingRange" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Minimum value for CurrentReading"/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the lowest possible value for CurrentReading."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the lowest possible value for CurrentReading. Units shall use the same units as the related ReadingVolts propoerty."/>
           <Annotation Term="OData.Measures.Units" String="Volts"/>
         </Property>
-        <Property Name="MaxReadingRangeVolts" Type="Edm.Decimal">
+        <Property Name="MaxReadingRange" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Maximum value for CurrentReading"/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the lowest possible value for CurrentReading."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the lowest possible value for CurrentReading. Units shall use the same units as the related ReadingVolts propoerty."/>
           <Annotation Term="OData.Measures.Units" String="Volts"/>
         </Property>
         <Property Name="PhysicalContext" Type="Thermal.VoltagePhysicalContext" Nullable="false">

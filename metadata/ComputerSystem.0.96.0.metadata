@@ -105,7 +105,7 @@
           <Annotation Term="OData.Description" String="The state of the indicator LED, used to identify the system"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the indicator light state for the indicator light associated with this system."/>
         </Property>
-        <Property Name="Power" Type="ComputerSystem.PowerState">
+        <Property Name="PowerState" Type="ComputerSystem.PowerState">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is the current power state of the system"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the power state of the system."/>
