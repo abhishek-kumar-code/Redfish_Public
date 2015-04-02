@@ -28,7 +28,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the prefix used in messageIDs which uniquely identifies all of the messages in this registry as belonging to this registry."/>
           <Annotation Term="DMTF.Required"/>
         </Property>
-        <Property Name="Version" Nullable="false" Type="Edm.String">
+        <Property Name="RegistryVersion" Nullable="false" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is the message registry version which is used in the middle portion of a messageID."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the version of this message registry.   The format of this string shall be of the format majorversion.minorversion.errata in compliance with Protocol Version section of the Redfish specification"/>
