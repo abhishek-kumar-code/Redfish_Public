@@ -1,6 +1,6 @@
 {
-    "@odata.context": "/redfish/v1/$metadata#Systems/Links/Members/1/LogService/Links/Members/$entity",
-    "@odata.id": "/redfish/v1/Systems/1/Logs/Log1",
+    "@odata.context": "/redfish/v1/$metadata#Systems/Links/Members/1/LogServices/Links/Members/$entity",
+    "@odata.id": "/redfish/v1/Systems/1/LogServices/Log1",
     "@odata.type": "#LogService.0.96.0.LogService",
     "Id": "Log1",
     "Name": "System Log Service",
@@ -14,13 +14,13 @@
     "Oem": {},
     "Actions": {
         "#LogService.ClearLog": {
-            "target": "/redfish/v1/Systems/1/Logs/Log1/Actions/LogService.Reset"
+            "target": "/redfish/v1/Systems/1/LogServices/Log1/Actions/LogService.Reset"
         },
         "Oem": {}
     },
     "Links": {
         "Entries": {
-            "@odata.id": "/redfish/v1/Systems/1/Logs/Log1/Entries"
+            "@odata.id": "/redfish/v1/Systems/1/LogServices/Log1/Entries"
         },
         "Oem": {}
     }

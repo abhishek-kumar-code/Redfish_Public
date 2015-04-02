@@ -105,7 +105,7 @@
       </EntityType>
 
       <ComplexType Name="Links">
-        <NavigationProperty Name="LogService" Type="LogService.LogService">
+        <NavigationProperty Name="LogServices" Type="LogService.LogServiceCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="A reference to the logs for this chassis."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection LogServices."/>
