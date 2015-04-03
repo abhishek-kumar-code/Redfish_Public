@@ -4,13 +4,13 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://dmtf.org/schema/v1/DMTFExtensions">
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/DMTFExtensions.0.96.0">
     <edmx:Include Namespace="DMTFExtensions.0.96.0" Alias="DMTF"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://dmtf.org/schema/v1/Resource">
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.0.96.0">
     <edmx:Include Namespace="Resource.0.96.0" Alias="Resource"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://dmtf.org/schema/v1/Privileges">
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Privileges.0.96.0">
     <edmx:Include Namespace="Privileges.0.96.0" Alias="Privileges"/>
   </edmx:Reference>
   
@@ -55,4 +55,3 @@
     </Schema>
   </edmx:DataServices>
 </edmx:Edmx>
-
