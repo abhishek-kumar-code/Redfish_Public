@@ -223,7 +223,7 @@
           <Annotation Term="OData.Description" String="An enclosed or semi-enclosed, typically horizontally-oriented, system chassis which must be plugged into a multi-system chassis to function normally"/>
         </Member>
         <Member Name="Drawer">
-          <Annotation Term="OData.Description" String="An enclosed or semi-enclosed, typically horizontally-oriented, system chassis which must be plugged into a multi-system chassis to function normally"/>
+          <Annotation Term="OData.Description" String="An enclosed or semi-enclosed, typically horizontally-oriented, system chassis which may be slid into a multi-system chassis."/>
         </Member>
         <Member Name="Module">
           <Annotation Term="OData.Description" String="A small, typically removable, chassis or card which contains devices for a particular subsystem or function"/>
