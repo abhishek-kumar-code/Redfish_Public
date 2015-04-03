@@ -1,6 +1,6 @@
 {
-    "@odata.context": "/redfish/v1/$metadata#Managers/Links/Members/1/Links/Logs/Links/Members/Log1/Links/Entries",
-    "@odata.id": "/redfish/v1/Managers/1/Logs/Members/Log1/Entries",
+    "@odata.context": "/redfish/v1/$metadata#Systems/Links/Members/1/Links/LogServices/Links/Members/Log1/Links/Entries",
+    "@odata.id": "/redfish/v1/Systems/1/LogServices/Log1/Entries",
     "@odata.type": "#LogEntry.0.96.0.LogEntryCollection",
     "Name": "Log Service Collection",
     "Modified": "2012-03-07T14:44",
@@ -8,13 +8,14 @@
     "members@odata.count": 2,
     "members": [
         {
-            "@odata.id": "/redfish/v1/Managers/1/Logs/Log1/Entries/1",
+            "@odata.id": "/redfish/v1/Systems/1/LogServices/Log1/Entries/1",
             "@odata.type": "#LogEntry.0.96.0.LogEntry",
             "Id": "1",
             "Name": "Log Entry 1",
             "Modified": "2012-03-07T14:44",
             "EntryType": "SEL",
-            "OEMRecordFormat": "CompanyX",
+            "OemRecordFormat": "CompanyX",
+            "RecordId": 1,
             "Severity": "Critical",
             "Created": "2012-03-07T14:44",
             "EntryCode": "Assert",
@@ -34,13 +35,14 @@
             "Oem": {}
         },
         {
-            "@odata.id": "/redfish/v1/Managers/1/Logs/Log1/Entries/2",
+            "@odata.id": "/redfish/v1/Systems/1/LogServices/Log1/Entries/2",
             "@odata.type": "#LogEntry.0.96.0.LogEntry",
             "Id": "2",
             "Name": "Log Entry 2",
             "Modified": "2012-03-07T14:45",
             "EntryType": "SEL",
             "OEMRecordFormat": "CompanyX",
+            "RecordId": 2,
             "Severity": "Critical",
             "Created": "2012-03-07T14:45",
             "EntryCode": "Assert",
@@ -60,5 +62,5 @@
             "Oem": {}
         }
     ],
-    "@odata.nextLink": "/redfish/v1/Managers/1/Logs/Log1/Entries?$skiptoken=2"
+    "@odata.nextLink": "/redfish/v1/Systems/1/LogServices/Log1/Entries?$skiptoken=2"
 }
