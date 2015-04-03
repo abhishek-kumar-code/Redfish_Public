@@ -1,9 +1,9 @@
 {
-    "@odata.context": "/redfish/v1/$metadata#Managers/Links/Members/1/Links/NICs/Links/Members/$entity",
-    "@odata.id": "/redfish/v1/Managers/1/NICs/1",
+    "@odata.context": "/redfish/v1/$metadata#Managers/Links/Members/1/Links/EthernetInterfaces/Links/Members/$entity",
+    "@odata.id": "/redfish/v1/Managers/1/EthernetInterfaces/1",
     "@odata.type": "#EthernetNetworkInterface.0.96.0.EthernetNetworkInterface",
     "Id": "1",
-    "Name": "Manager NIC",
+    "Name": "Manager Ethernet Interface",
     "Modified": "2013-07-22T14:44",
     "Description": "Management Network Interface",
     "Status": {
@@ -20,8 +20,10 @@
     "HostName": "MyHostName",
     "FQDN": "MyHostName.MyDomainName.com",
     "MaxIPv6StaticAddresses": 1,
-    "VLANEnable": true,
-    "VLANId": 101,
+    "VLAN": {
+        "VLANEnable": true,
+        "VLANId": 101
+    },
     "IPv4Addresses": [
         {
             "Address": "192.168.0.10",
@@ -59,7 +61,7 @@
     ],
     "Links": {
         "Settings": {
-            "@odata.id": "/redfish/v1/Managers/1/NICs/1/SD"
+            "@odata.id": "/redfish/v1/Managers/1/EthernetInterfaces/1/SD"
         },
         "NetworkServices": [
             {
