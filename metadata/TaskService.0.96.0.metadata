@@ -33,6 +33,11 @@
           <Annotation Term="OData.Description" String="Overwrite policy of completed tasks"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate if completed tasks are overwritten should the task service need to track more tasks but the MaxNumberOfTasks has been reached.  Never indicates that the service never overwrites entries by new entries thus causing attempts to spawn tasks to fail.  Oldest indicates that the services overwrites the oldest completed task with a new task when the service has reached its maximum capacity."/>
         </Property>
+        <Property Name="DateTime" Type="Edm.DateTimeOffset">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="The current DateTime (with offset) setting that the task service is using."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the current DateTime value for the TaskService, with offset from UTC, in Redfish Timestamp format."/>
+        </Property>
         <Property Name="LifeCycleEventOnTaskStateChange" Type="Edm.Boolean" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Send an Event upon Task State Change."/>
