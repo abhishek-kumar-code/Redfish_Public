@@ -65,6 +65,11 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This object contains the links to other resources that are related to this resource."/>
         </Property>
+        <Property Name="ServiceEntryPoint" Type="Edm.Boolean" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="Indicates that this Manager provides a Redfish Service Entry Point"/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate whether this manager provides a Redfish Service Entry Point.  The value shall be true if the Manager provides a Redfish Service Entry point, and false otherwise."/>
+        </Property>  
         <Property Name="UUID" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The Universal Unique Identifier (UUID) for this Manager"/>
