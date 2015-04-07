@@ -92,6 +92,7 @@
         </Member>
         <Member Name="Oem">
           <Annotation Term="OData.Description" String="Connected via an OEM-defined method"/>
+        </Member>
       </EnumType>
 
     </Schema>
