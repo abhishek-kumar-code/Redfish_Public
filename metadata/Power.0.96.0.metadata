@@ -245,7 +245,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the lowest possible value for CurrentReading. Units shall use the same units as the related ReadingVolts propoerty."/>
           <Annotation Term="OData.Measures.Units" String="Volts"/>
         </Property>
-        <Property Name="PhysicalContext" Type="Thermal.VoltagePhysicalContext" Nullable="false">
+        <Property Name="PhysicalContext" Type="Resource.PhysicalContext" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Describes the area or device to which this voltage measurement applies."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a description of the affected device or region within the chassis to which this voltage measurement applies."/>
@@ -257,24 +257,6 @@
           <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
       </EntityType>
-
-      <EnumType Name="VoltagePhysicalContext">
-        <Member Name="SystemBoardVReg">
-          <Annotation Term="OData.Description" String="Voltage Regulator on Board"/>
-        </Member>
-        <Member Name="InputRail">
-          <Annotation Term="OData.Description" String="An input voltage rail coming into the chassis"/>
-        </Member>
-        <Member Name="OuputRail">
-          <Annotation Term="OData.Description" String="An output voltage rail leaving the chassis"/>
-        </Member>
-        <Member Name="Backplane">
-          <Annotation Term="OData.Description" String="A backplane within the chassis"/>
-        </Member>
-        <Member Name="PowerSupplyLineInput">
-          <Annotation Term="OData.Description" String="The Line Input Voltage to the Power Supply"/>
-        </Member>
-      </EnumType>
 
       <EntityType Name="PowerSupply" BaseType="Resource.ReferenceableMember">
         <Annotation Term="OData.Description" String="Details of a power supplies associated with this system or device"/>
