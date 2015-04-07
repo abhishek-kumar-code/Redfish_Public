@@ -90,6 +90,8 @@
         <Member Name="Applet">
           <Annotation Term="OData.Description" String="Connected to a client application"/>
         </Member>
+        <Member Name="Oem">
+          <Annotation Term="OData.Description" String="Connected via an OEM-defined method"/>
       </EnumType>
 
     </Schema>
