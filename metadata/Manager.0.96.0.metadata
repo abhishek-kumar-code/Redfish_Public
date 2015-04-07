@@ -32,6 +32,9 @@
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/SerialInterface.0.96.0">
     <edmx:Include Namespace="SerialInterface.0.96.0" Alias="SerialInterface"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Redundancy.0.96.0">
+    <edmx:Include Namespace="Redundancy.0.96.0" Alias="Redundancy"/>
+  </edmx:Reference>
 
   <edmx:DataServices>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.0.96.0" Alias="Manager">
@@ -105,7 +108,9 @@
           <Annotation Term="OData.Description" String="The Actions object contains the available custom actions on this resource."/>
         </Property>
         <Property Name="Status" Type="Resource.Status"/>
-        <NavigationProperty Name="Redundancy" Type="Redundancy.Redundancy" Nullable="false">
+        <NavigationProperty Name="Redundancy" Type="Collection(Redundancy.Redundancy)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="Redundancy information for the managers of this system"/>
           <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
       </EntityType>
