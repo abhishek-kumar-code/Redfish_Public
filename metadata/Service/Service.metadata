@@ -16,6 +16,9 @@
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/EhternetNetworkInterface.0.96.0">
     <edmx:Include Namespace="EhternetNetworkInterface.0.96.0" Alias="EhternetNetworkInterface"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/VLanNetworkInterface.0.96.0">
+    <edmx:Include Namespace="VLanNetworkInterface.0.96.0" Alias="VLanNetworkInterface"/>
+  </edmx:Reference>  
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Event.0.96.0">
     <edmx:Include Namespace="Event.0.96.0" Alias="Event"/>
   </edmx:Reference>
