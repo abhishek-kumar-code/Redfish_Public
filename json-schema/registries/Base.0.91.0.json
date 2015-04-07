@@ -431,6 +431,16 @@
                 "String"
             ],
             "Resolution": "Wait for the indicated retry duration and retry the operation."
+        },
+        "InvalidIndex": {
+            "Description": "The Index is not valid.", 
+            "Message": "The Index %1 is not a valid offset into the array.",
+            "Severity": "Warning",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "Number"
+            ],
+            "Resolution": "Verify the index value provided is within the bounds of the array."
         }
     }
 }
