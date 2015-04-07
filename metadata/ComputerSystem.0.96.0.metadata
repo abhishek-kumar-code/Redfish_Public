@@ -322,14 +322,14 @@
       </ComplexType>
 
       <ComplexType Name="MemorySummary">
-        <Property Name="TotalSystemMemoryGB" Type="Edm.Int64">
+        <Property Name="TotalSystemMemoryGiB" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="This is the total amount of memory in the system measured in GB."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain the amount of total system general purpose memory as measured in gigabytes."/>
+          <Annotation Term="OData.Description" String="This is the total amount of memory in the system measured in GiB."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the amount of system general purpose volatile (RAM) memory as measured in gibibytes."/>
           <Annotation Term="Validation.Minimum" Int="0" />
         </Property>
         <Property Name="Status" Type="Resource.Status"  Nullable="false"/>
-        <Annotation Term="OData.Description" String="This object describes the central memory of the system in general detail."/>
+        <Annotation Term="OData.Description" String="This object describes the memory of the system in general detail."/>
       </ComplexType>
 
       <!--Consider aligning with IPAddresses?-->
