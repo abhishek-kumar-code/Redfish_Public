@@ -1,0 +1,64 @@
+{
+    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.0.96.0",
+    "title": "SchemaFile.0.96.0",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "@odata.context": {
+            "$ref": "odata.4.0.0.json#context"
+        },
+        "@odata.id": {
+            "$ref": "odata.4.0.0.json#id"
+        },
+        "@odata.type": {
+            "$ref": "odata.4.0.0.json#type"
+        },
+        "Id": {
+            "$ref": "Resource.0.96.0.json#Id"
+        },
+        "Description": {
+            "$ref": "Resource.0.96.0.json#Description"
+        },
+        "Name": {
+            "$ref": "Resource.0.96.0.json#Name"
+        },
+        "Modified": {
+            "$ref": "Resource.0.96.0.json#Modified"
+        },
+        "Oem": {
+            "$ref": "Resource.0.96.0.json#Oem",
+            "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+            "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+        },
+        "Languages": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "readonly": true,
+            "description": "Language codes for the schemas available.",
+            "longDescription": "The value of this property shall be a string consisting of an RFC 5646 language code."
+        },
+        "Schema": {
+            "type": "string",
+            "readonly": true,
+            "description": "The type name this schema describes.",
+            "longDescription": "The value of this property shall be the value of the Type property for that schema and shall conform to the syntax specified in the Redfish specification for the Type property."
+        },
+        "Location": {
+            "type": "array",
+            "items": {
+                "ERROR": "type JsonSchema.Location unrecognized."
+            },
+            "readonly": true,
+            "description": "Location information for this schema file."
+        }
+    },
+    "required": [
+        "Languages",
+        "Schema",
+        "Location"
+    ],
+    "description": "This is the schema definition for the Schema File locator resource.",
+    "longDescription": "This resource shall be used to represent the Schema File locator resource for a Redfish implementation."
+}

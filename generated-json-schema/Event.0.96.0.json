@@ -1,8 +1,8 @@
 {
     "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.0.96.0",
-    "title": "ProcessorCollection.0.96.0",
+    "title": "Event.0.96.0",
     "type": "object",
-    "additionalProperties": true,
+    "additionalProperties": false,
     "properties": {
         "@odata.context": {
             "$ref": "odata.4.0.0.json#context"
@@ -12,6 +12,9 @@
         },
         "@odata.type": {
             "$ref": "odata.4.0.0.json#type"
+        },
+        "Id": {
+            "$ref": "Resource.0.96.0.json#Id"
         },
         "Description": {
             "$ref": "Resource.0.96.0.json#Description"
@@ -27,26 +30,19 @@
             "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
             "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
         },
-        "Links": {
-            "type": [
-                "object",
-                "null"
-            ],
-            "additionalProperties": false,
+        "Events": {
+            "type": "array",
             "properties": {
-                "Members": {
-                    "type": "array",
-                    "properties": {
-                        "@odata.id" :{
-                            "$ref": "odata.4.0.0.json#Id"
-                        }
-                    },
-                    "readonly": true,
-                    "description": "Contains the members of this collection."
+                "@odata.id" :{
+                    "$ref": "odata.4.0.0.json#Id"
                 }
             },
-            "readonly": true,
-            "description": "Contains links to other resources that are related to this resource."
+            "description": "Each event in this array has a set of properties that describe the event.  Since this is an array, more than one event can be sent simultaneously."
         }
-    }
+    },
+    "required": [
+        "Events"
+    ],
+    "description": "This is the schema definition for Events.  It represents the properties for the events themselves and not subscriptions or any other resource.",
+    "longDescription": "This resource shall be used to represent an event for a Redfish implementation."
 }

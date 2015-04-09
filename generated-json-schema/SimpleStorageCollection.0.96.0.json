@@ -1,6 +1,6 @@
 {
     "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.0.96.0",
-    "title": "ProcessorCollection.0.96.0",
+    "title": "SimpleStorageCollection.0.96.0",
     "type": "object",
     "additionalProperties": true,
     "properties": {

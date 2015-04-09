@@ -1,0 +1,59 @@
+{
+    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.0.96.0",
+    "title": "Resource.0.96.0",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "@odata.context": {
+            "$ref": "odata.4.0.0.json#context"
+        },
+        "@odata.id": {
+            "$ref": "odata.4.0.0.json#id"
+        },
+        "@odata.type": {
+            "$ref": "odata.4.0.0.json#type"
+        },
+        "Id": {
+            "type": "string",
+            "readonly": true,
+            "description": "Uniquely identifies the resource within the collection of like resources.",
+            "longDescription": "This property represents an identifier for the resource.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
+        },
+        "Description": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "readonly": true,
+            "description": "Provides a description of this resource and is used for commonality  in the schema definitions.",
+            "longDescription": "This object represents the Description property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
+        },
+        "Name": {
+            "type": "string",
+            "readonly": true,
+            "description": "The name of the resource or array element.",
+            "longDescription": "This object represents the Name property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification. The value of this string shall be of the format for the reserved word *Name*."
+        },
+        "Modified": {
+            "type": "string",
+            "readonly": true,
+            "description": "The date-time stamp that the object was last modified.",
+            "longDescription": "This object represents the Modified property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification. The value of this string shall be of the format for the reserved word *Modified*."
+        },
+        "Oem": {
+            "type": [
+                "object",
+                "null"
+            ],
+            "additionalProperties": false,
+            "properties": {
+
+            },
+            "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+            "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+        }
+    },
+    "required": [
+        "Name"
+    ]
+}
