@@ -54,7 +54,7 @@
           <Annotation Term="OData.Description" String="If the EntryType is SEL, this will have the sensor type that the log entry pertains to."/>
           <Annotation Term="OData.LongDescription" String="This property shall be present if the EntryType value is SEL."/>
         </Property>
-        <Property Name="SensorNumber" Type="Edm.String" Nullable="false">
+        <Property Name="SensorNumber" Type="Edm.Int64" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This property decodes from EntryType:  If it is SEL, it is the sensor number; if Event then the count of events.  Otherwise, it is Oem specific."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the EntityInstance from IPMI spec if EntryType is SEL, the count of events if EntryType is Event and OEM Specific if the EntryType is OEM."/>
