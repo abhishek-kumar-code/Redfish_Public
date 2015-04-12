@@ -1,11 +1,11 @@
 {
-    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.0.95.0",
+    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.0.96.0",
     "title": "Processor.0.96.0",
     "type": "object",
     "additionalProperties": false,
     "properties": {
         "@odata.context": {
-            "$ref": "odata.4.0.0#context"
+            "$ref": "odata.4.0.0.json#context"
         },
         "@odata.id": {
             "$ref": "odata.4.0.0.json#id"
@@ -116,6 +116,10 @@
             "description": "The instruction set of the processor",
             "longDescription": "This property shall contain the string which identifies the instruction set of the processor contained in this socket."
         },
+        "ProcessorID": {
+            "ERROR": "type ComputerSystem.ProcessorID unrecognized.",
+            "description": "This object contains the identification information for the current resource."
+        },
         "Status": {
             "$ref": "Resource.0.96.0.json#Status"
         },
@@ -137,67 +141,6 @@
             "description": "The product model number of this device",
             "longDescription": "This property shall indicate the model information as provided by the manufacturer of this processor."
         },
-		"ProcessorID": {
-			"type": "object",
-			"additionalProperties": false,
-			"properties": {
-				"VendorID": {
-					"type": [
-						"string",
-						"null"
-					],
-					"readonly": true,
-					"description": "The Vendor Identification for this processor",
-					"longDescription": "This property shall indicate the Vendor Identification string information as provided by the manufacturer of this processor."
-				},
-				"IdentificationRegisters": {
-					"type": [
-						"string",
-						"null"
-					],
-					"readonly": true,
-					"description": "The contents of the Identification Registers (CPUID) for this processor",
-					"longDescription": "This property shall include the raw CPUID instruction output as provided by the manufacturer of this processor."
-				},
-				"EffectiveFamily": {
-					"type": [
-						"string",
-						"null"
-					],
-					"readonly": true,
-					"description": "The effective Family for this processor",
-					"longDescription": "This property shall indicate the effective Family information as provided by the manufacturer of this processor."
-				},
-				"EffectiveModel": {
-					"type": [
-						"string",
-						"null"
-					],
-					"readonly": true,
-					"description": "The effective Model for this processor",
-					"longDescription": "This property shall indicate the effective Model information as provided by the manufacturer of this processor."
-				},
-				"Step": {
-					"type": [
-						"string",
-						"null"
-					],
-					"readonly": true,
-					"description": "The Step value for this processor",
-					"longDescription": "This property shall indicate the Step or revision string information as provided by the manufacturer of this processor."
-				},
-				"MicrocodeInfo": {
-					"type": [
-						"string",
-						"null"
-					],
-					"readonly": true,
-					"description": "The Microcode Information for this processor",
-					"longDescription": "This property shall indicate the Microcode Information as provided by the manufacturer of this processor."
-				}
-			},
-			"description": "This object contains identification information for this processor."
-		},
         "MaxSpeedMHz": {
             "type": [
                 "integer",

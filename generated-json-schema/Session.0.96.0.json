@@ -1,8 +1,8 @@
 {
     "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.0.96.0",
-    "title": "ProcessorCollection.0.96.0",
+    "title": "Session.0.96.0",
     "type": "object",
-    "additionalProperties": true,
+    "additionalProperties": false,
     "properties": {
         "@odata.context": {
             "$ref": "odata.4.0.0.json#context"
@@ -12,6 +12,9 @@
         },
         "@odata.type": {
             "$ref": "odata.4.0.0.json#type"
+        },
+        "Id": {
+            "$ref": "Resource.0.96.0.json#Id"
         },
         "Description": {
             "$ref": "Resource.0.96.0.json#Description"
@@ -27,26 +30,12 @@
             "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
             "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
         },
-        "Links": {
+        "UserName": {
             "type": [
-                "object",
+                "string",
                 "null"
             ],
-            "additionalProperties": false,
-            "properties": {
-                "Members": {
-                    "type": "array",
-                    "properties": {
-                        "@odata.id" :{
-                            "$ref": "odata.4.0.0.json#Id"
-                        }
-                    },
-                    "readonly": true,
-                    "description": "Contains the members of this collection."
-                }
-            },
-            "readonly": true,
-            "description": "Contains links to other resources that are related to this resource."
+            "readonly": true
         }
     }
 }

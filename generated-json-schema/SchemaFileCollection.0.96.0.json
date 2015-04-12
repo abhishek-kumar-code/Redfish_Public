@@ -1,6 +1,6 @@
 {
     "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.0.96.0",
-    "title": "ProcessorCollection.0.96.0",
+    "title": "SchemaFileCollection.0.96.0",
     "type": "object",
     "additionalProperties": true,
     "properties": {
@@ -28,23 +28,7 @@
             "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
         },
         "Links": {
-            "type": [
-                "object",
-                "null"
-            ],
-            "additionalProperties": false,
-            "properties": {
-                "Members": {
-                    "type": "array",
-                    "properties": {
-                        "@odata.id" :{
-                            "$ref": "odata.4.0.0.json#Id"
-                        }
-                    },
-                    "readonly": true,
-                    "description": "Contains the members of this collection."
-                }
-            },
+            "ERROR": "type JsonSchema.Members unrecognized.",
             "readonly": true,
             "description": "Contains links to other resources that are related to this resource."
         }
