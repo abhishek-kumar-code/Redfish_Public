@@ -381,7 +381,15 @@ While the major version of the protocol is represented in the URI, the major ver
 * *MinorVersion* = integer:  a minor update.  New functionality may have been added but nothing removed. Compatibility will be preserved with previous  minorversions.
 * *Errata* = integer: something in the prior version was broken and needed to be fixed.
 
-Any resource discovered through links found by accessing the root service or any service or resource referenced using references from the root service shall conform to the same version of the protocol supported by the root service. 
+Any resource discovered through links found by accessing the root service or any service or resource referenced using references from the root service shall conform to the same version of the protocol supported by the root service.
+
+A GET on the resource "/redfish" shall return the following body:
+
+~~~json
+	{
+	"v1": "/redfish/v1"
+	}
+~~~
 
 ### Requests
 
