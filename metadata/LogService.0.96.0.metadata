@@ -48,6 +48,17 @@
           <Annotation Term="OData.Description" String="The overwrite policy for this service that takes place when the log is full."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the policy of the log service when the MaxNumberOfRecords has been reached. Unknown indicates the log overwrite policy is unknown. WrapsWhenFull indicates that the log overwrites its entries with new entries when the log has reached its maximum capacity. NeverOverwrites indicates that the log never overwrites its entries by the new entries and ceases logging when the limit has been reached."/>
         </Property>
+        <Property Name="DateTime" Type="Edm.DateTimeOffset">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The current DateTime (with offset) for the log service, used to set or read time."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the current DateTime value that the log service is using, with offset from UTC, in Redfish Timestamp format."/>
+        </Property>
+        <Property Name="DateTimeLocalOffset" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The time offset from UTC that the DateTime property is set to in format: +06:00 ."/>
+          <Annotation Term="OData.LongDescription" String="The value is property shall represent the offset from UTC time that the current value of DataTime property contains."/>
+          <Annotation Term="Validation.Pattern" String="([-+][0-1][0-9]:[0-5][0-9])"/>
+        </Property>
         <Property Name="Links" Type="LogService.Links" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The links object contains the links to other resources that are related to this resource."/>
