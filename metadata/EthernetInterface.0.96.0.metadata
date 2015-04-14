@@ -52,7 +52,6 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the UEFI device path of this interface."/>
         </Property>
         <Property Name="SubnetPrefixLength" Type="Edm.Int32">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the length of the Subnet prefix."/>
         </Property>
         <Property Name="Status" Type="Resource.Status"/>
