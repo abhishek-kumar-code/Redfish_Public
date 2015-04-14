@@ -1740,6 +1740,14 @@ Service resources represent components of the Redfish Service itself as well as 
 
 Registry resources are those resources that assist the client in interpreting Redfish resources beyond the Schema definitions.  Examples of registries include Message Registries, Event Registries and enumeration registries, such as those used for BIOS.  In registries, a identifier is used to retrieve more information about a given resource, event, message or other item.  This can include other properties, property restrictions and the like.  Registries are themselves resources.
 
+### Special Resource Situations
+
+There are some situations that arise with certain kinds of resources that need to exhibit common semantic behavior.
+
+#### Absent Resources
+
+Resources may be either absent or their state unknown at the time a client requests information about that resource.  For removed resources where the URI is expected to remain constant (such as when a fan is removed), the Resource should represent the State property of the Status object as "Absent".  In this circumstance, any required or supported properties for which there is no known value shall be represented as null.
+
 #### Schema Variations
 
 There are cases when deviations from the published schema are necessary.  An example is BIOS where different servers may have minor variations in available configuration settings.  A provider may build a single schema that is a superset of the individual implementations.  In order to support these variations, Redfish supports omitting parameters defined in the class schema in the current configuration object.  The following rules apply:
