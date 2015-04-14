@@ -110,6 +110,7 @@ The following additional abbreviations are used in this document.
 
 | Term   | Definition                                          |
 | ---    | ---                                                 |
+| CRUD   | Create, Replace, Update and Delete                  |
 | CSRF   | Cross-Site Request Forgery                          |
 | HTTP   | Hypertext Transfer Protocol                         |
 | HTTPS  | Hypertext Transfer Protocol over TLS                |
@@ -118,6 +119,8 @@ The following additional abbreviations are used in this document.
 | KVM-IP | Keyboard, Video, Mouse redirection over IP          |
 | NIC    | Network Interface Card                              |
 | PCI    | Peripheral Component Interconnect                   |
+| PCIe   | PCI Express                                         |
+| TCP    | Transmission Control Protocol                       |
 | XSS    | Cross-Site Scripting                                |
 
 ## Overview
@@ -220,7 +223,7 @@ Operations can be divided into two sets: intrinsic and extrinsic.  Intrinsic ope
 
 In Redfish, these extrinsic operations are called **actions** and are discussed in detail in different parts of this specification.
 
-The Redfish Schema defines certain standard actions associated with [common SPM resources](#common-Redfish-resources).  For these standard actions, the Redfish Schema contains the normative language on the behavior of the action.  OEM extensions are also allowed to the [schema](#schema-extensibility), including defining [actions](#custom-actions) for existing resources.
+The Redfish Schema defines certain standard actions associated with [common Redfish resources](#common-Redfish-resources).  For these standard actions, the Redfish Schema contains the normative language on the behavior of the action.  OEM extensions are also allowed to the [schema](#schema-extensibility), including defining [actions](#custom-actions) for existing resources.
 
 #### Service Entry Point Discovery
 
