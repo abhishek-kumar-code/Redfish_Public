@@ -69,9 +69,9 @@
           <Annotation Term="OData.Description" String="This is the MAC address of the logical port interface."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the effective current MAC Address of this interface.  If an assignable MAC address is not supported, this is a read only alias of the PermanentMACAddress."/>
         </Property>
-        <Property Name="SpeedMBps" Type="Edm.Int64">
+        <Property Name="SpeedMbps" Type="Edm.Int64">
           <Annotation Term="Measures.Unit" Edm.String="MBps"/>
-          <Annotation Term="OData.Description" String="This is the current speed in MBps of this NIC."/>
+          <Annotation Term="OData.Description" String="This is the current speed in Mbps of this NIC."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the link speed of the interface in Mbps."/>
         </Property>
         <Property Name="AutoNeg" Type="Edm.Boolean">

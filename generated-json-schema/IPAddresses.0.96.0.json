@@ -2,7 +2,7 @@
     "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.0.96.0",
     "title": "IPAddresses",
     "definitions":{
-    "IPV6StaticAddress":{
+    "IPv6StaticAddress":{
             "type": "object",
             "additionalProperties": false,
             "properties": {
@@ -33,7 +33,7 @@
             ],
             "description": "This object represents a single IPv6 static address to be assigned on a network interface."    
 },
-    "IPV4Address":{
+    "IPv4Address":{
             "type": "object",
             "additionalProperties": false,
             "properties": {
@@ -90,7 +90,7 @@
                 }
             }    
 },
-    "IPV6Address":{
+    "IPv6Address":{
             "type": "object",
             "additionalProperties": false,
             "properties": {
