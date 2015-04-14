@@ -10,12 +10,8 @@
         <Member Name="Login"/>
         <Member Name="ConfigureManager"/>
         <Member Name="ConfigureUsers" />
-        <Member Name="ConfigureDevices" />
-        <Member Name="ClearLogs" />
-        <Member Name="PowerControl" />
-        <Member Name="RemoteConsole" />
-        <Member Name="RemoteMedia"/>
-        <Member Name="Diagnostics" />
+        <Member Name="ConfigureSelf" />
+        <Member Name="ConfigureDevice" />
       </Enumeration>
       
       <Term Name="ReadPrivileges" Type="Privileges.PrivilegeType">
