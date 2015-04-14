@@ -1,6 +1,6 @@
 {
-    "@odata.context": "schemas.dmtf.org/redfish/v1/$metadata#Registries",
-    "@odata.id": "schemas.dmtf.org/redfish/v1/Base.0.96.0",
+    "@odata.context": "http://schemas.dmtf.org/redfish/v1/$metadata#MessageRegistry",
+    "@odata.id": "http://schemas.dmtf.org/redfish/v1/Base.0.96.0",
     "@odata.type": "#MessageRegistry.0.96.0",
     "Id": "Base.0.96.0",
     "Name": "Base Message Registry",
