@@ -103,7 +103,7 @@
           <Annotation Term="OData.Description" String="If this Network Interface supports more than one VLAN, this property will not be present and the client should look for VLANs collection in the link section of this resource."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the VLAN for this interface.  If this interface supports more than one VLAN, the VLAN property shall not be present and the VLANS collection link shall be present instead."/>
         </Property>
-        <Property Name="IPv4Addresses" Type="Collection(IPAddresses.IPV4Address)" Nullable="false" >
+        <Property Name="IPv4Addresses" Type="Collection(IPAddresses.IPv4Address)" Nullable="false" >
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This array of objects is used to represent the IPv4 connection characteristics for this interface."/>
         </Property>
@@ -111,11 +111,11 @@
           <Annotation Term="OData.Description" String="This array of objects represents the RFC3484 Address Selection Policy Table."/>
           <Annotation Term="OData.LongDescription" String="This array represents the Address Selection Policy Table as defined in RFC3484."/>
         </Property>
-        <Property Name="IPv6Addresses" Type="Collection(IPAddresses.IPV6Address)" Nullable="false" >
+        <Property Name="IPv6Addresses" Type="Collection(IPAddresses.IPv6Address)" Nullable="false" >
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This array of objects enumerates all of the currently assigned IPv6 addresses on this interface."/>
         </Property>
-        <Property Name="IPv6StaticAddresses" Type="Collection(IPAddresses.IPV6StaticAddress)" Nullable="false" >
+        <Property Name="IPv6StaticAddresses" Type="Collection(IPAddresses.IPv6StaticAddress)" Nullable="false" >
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This array of objects represents all of the IPv6 static addresses to be assigned on this interface."/>
         </Property>
