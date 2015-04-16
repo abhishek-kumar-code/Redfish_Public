@@ -22,9 +22,6 @@
         "Name": {
             "$ref": "Resource.0.96.0.json#Name"
         },
-        "Modified": {
-            "$ref": "Resource.0.96.0.json#Modified"
-        },
         "Oem": {
             "$ref": "Resource.0.96.0.json#Oem",
             "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
@@ -36,13 +33,15 @@
                 "ManagementController",
                 "EnclosureManager",
                 "BMC",
-                "RackManager"
+                "RackManager",
+                "AuxiliaryController"
             ],
             "enumDescriptions": {
                 "ManagementController": "A controller used primarily to monitor or manage the operation of a device or system",
                 "EnclosureManager": "A controller which provides management functions for a chassis or group of devices or systems",
                 "BMC": "A controller which provides management functions for a single computer system",
-                "RackManager": "A controller which provides management functions for a whole or part of a rack"
+                "RackManager": "A controller which provides management functions for a whole or part of a rack",
+                "AuxiliaryController": "A controller which provides management functions for a particular subsystem or group of devices"
             },
             "readonly": true,
             "description": "This property represents the type of manager that this resource represents.",
@@ -78,7 +77,7 @@
                     "longDescription": "This is a reference to a collection of ListenerDestination resources."
                 },
                 "EthernetInterfaces": {
-                    "type": "array",
+                    "type": "object",
                     "properties": {
                         "@odata.id" :{
                             "$ref": "odata.4.0.0.json#Id"
@@ -89,7 +88,7 @@
                     "longDescription": "This is a reference to a collection of ListenerDestination resources."
                 },
                 "SerialInterfaces": {
-                    "type": "array",
+                    "type": "object",
                     "properties": {
                         "@odata.id" :{
                             "$ref": "odata.4.0.0.json#Id"
@@ -110,8 +109,8 @@
                     "description": "This is a reference to the network services and their settings that the manager controls.  It is here that clients will find network configuration options as well as network services.",
                     "longDescription": "The value of this property shall contain a reference to a resource of type ManagerNetworkProtocol which represents the network services for this manager."
                 },
-                "Logs": {
-                    "type": "array",
+                "LogServices": {
+                    "type": "object",
                     "properties": {
                         "@odata.id" :{
                             "$ref": "odata.4.0.0.json#Id"
@@ -122,7 +121,7 @@
                     "longDescription": "The value of this property shall contain a reference to a collection of LogService which are for the use of this manager."
                 },
                 "VirtualMedia": {
-                    "type": "array",
+                    "type": "object",
                     "properties": {
                         "@odata.id" :{
                             "$ref": "odata.4.0.0.json#Id"
@@ -135,6 +134,12 @@
             },
             "readonly": true,
             "description": "This object contains the links to other resources that are related to this resource."
+        },
+        "ServiceEntryPointUUID": {
+            "type": "string",
+            "readonly": true,
+            "description": "The UUID of the Redfish Service Entry Point provided by this manager",
+            "longDescription": "This property shall contain the UUID of the Redfish Service Entry Point provided by this manager.  This property shall not be present if this manager does not provide a Redfish Service Entry Point."
         },
         "UUID": {
             "type": [
@@ -346,6 +351,20 @@
                         }
                     }
                 },
+                "#Manager.Reset": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "title": {
+                            "type": "string",
+                            "description": "Friendly action name"
+                        },
+                        "target": {
+                            "type": "string",
+                            "description": "Link to invoke action"
+                        }
+                    }
+                },
                 "#Manager.ForceFailover": {
                     "type": "object",
                     "additionalProperties": false,
@@ -369,20 +388,6 @@
                             "description": "This array defines the supported values for this property on this resource.  In this case, a valid reference is supported."
                         }
                     }
-                },
-                "#Manager.Reset": {
-                    "type": "object",
-                    "additionalProperties": false,
-                    "properties": {
-                        "title": {
-                            "type": "string",
-                            "description": "Friendly action name"
-                        },
-                        "target": {
-                            "type": "string",
-                            "description": "Link to invoke action"
-                        }
-                    }
                 }
             },
             "readonly": true,
@@ -392,12 +397,32 @@
             "$ref": "Resource.0.96.0.json#Status"
         },
         "Redundancy": {
-            "type": "object",
+            "type": "array",
             "properties": {
                 "@odata.id" :{
                     "$ref": "odata.4.0.0.json#Id"
                 }
-            }
+            },
+            "readonly": true,
+            "description": "Redundancy information for the managers of this system"
+        },
+        "ManagerService": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "Enabled": {
+                    "type": "boolean",
+                    "description": "Indicates if the service is enabled for this manager.",
+                    "longDescription": "The value of this property shall contain the enabled status of the protocol used for the service.  The value shall be true if enabled and false if disabled."
+                },
+                "MaxConcurrentSessions": {
+                    "type": "integer",
+                    "readonly": true,
+                    "description": "Indicates the maximum number of service sessions, regardless of protocol, this manager is able to support.",
+                    "longDescription": "The value of this property shall contain the maximum number of concurrent service sessions supported by the implementation."
+                }
+            },
+            "description": "Used for describing services like Serial Console, Command Shell or Graphical Console"
         }
     },
     "description": "This is the schema definition for a Manager.  Examples of managers are BMCs, Enclosure Managers, Management Controllers and other subsystems assigned managability functions.",

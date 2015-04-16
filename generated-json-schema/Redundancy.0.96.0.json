@@ -27,26 +27,23 @@
             "$ref": "Resource.0.96.0.json#Name"
         },
         "Mode": {
-            "type": "array",
-            "items": {
-                "type": [
-                    "string",
-                    "null"
-                ],
-                "enum": [
-                    "Failover",
-                    "N+1",
-                    "LoadBalanced",
-                    "Sparing",
-                    "LimitedSparing"
-                ],
-                "enumDescriptions": {
-                    "Failover": "Failure of the primary unit will cause a secondary unit to take over the functions of the primary unit",
-                    "N+1": "Multiple units are available such that the system can continue normal operation if one unit fails",
-                    "LoadBalanced": "Multiple units are available such that the system will continue operation at a reduced capacity if one unit fails",
-                    "Sparing": "A spare unit is available to take over the function of a failed unit",
-                    "LimitedSparing": "A spare unit is available to take over the function of a failed unit, but may require intervention to facilitate the transition"
-                }
+            "type": [
+                "string",
+                "null"
+            ],
+            "enum": [
+                "Failover",
+                "N+1",
+                "LoadBalanced",
+                "Sparing",
+                "LimitedSparing"
+            ],
+            "enumDescriptions": {
+                "Failover": "Failure of the primary unit will cause a secondary unit to take over the functions of the primary unit",
+                "N+1": "Multiple units are available such that the system can continue normal operation if one unit fails",
+                "LoadBalanced": "Multiple units are available such that the system will continue operation at a reduced capacity if one unit fails",
+                "Sparing": "A spare unit is available to take over the function of a failed unit",
+                "LimitedSparing": "A spare unit is available to take over the function of a failed unit, but may require intervention to facilitate the transition"
             },
             "readonly": true,
             "description": "This is the redundancy mode of the group.",

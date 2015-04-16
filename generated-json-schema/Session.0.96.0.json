@@ -22,9 +22,6 @@
         "Name": {
             "$ref": "Resource.0.96.0.json#Name"
         },
-        "Modified": {
-            "$ref": "Resource.0.96.0.json#Modified"
-        },
         "Oem": {
             "$ref": "Resource.0.96.0.json#Oem",
             "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",

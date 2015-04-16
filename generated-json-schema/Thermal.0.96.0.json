@@ -22,9 +22,6 @@
         "Name": {
             "$ref": "Resource.0.96.0.json#Name"
         },
-        "Modified": {
-            "$ref": "Resource.0.96.0.json#Modified"
-        },
         "Oem": {
             "$ref": "Resource.0.96.0.json#Oem",
             "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
@@ -64,7 +61,7 @@
                     "Name": {
                         "$ref": "Resource.0.96.0.json#Name"
                     },
-                    "Number": {
+                    "SensorNumber": {
                         "type": [
                             "integer",
                             "null"
@@ -85,77 +82,77 @@
                         "description": "Temperature",
                         "longDescription": "The value of this property shall be the current value of the temperature sensor's reading."
                     },
-                    "UpperThresholdNonCriticalCelsius": {
+                    "UpperThresholdNonCritical": {
                         "type": [
                             "string",
                             "null"
                         ],
                         "readonly": true,
                         "description": "Above normal range",
-                        "longDescription": "The value of this property shall indicate the ReadingCelsius is above the normal range but is not critical."
+                        "longDescription": "The value of this property shall indicate the ReadingCelsius is above the normal range but is not critical. The units shall be the same units as the related ReadingCelsius propoerty."
                     },
-                    "UpperThresholdCriticalCelsius": {
+                    "UpperThresholdCritical": {
                         "type": [
                             "string",
                             "null"
                         ],
                         "readonly": true,
                         "description": "Above normal range but not yet fatal.",
-                        "longDescription": "The value of this property shall indicate the ReadingCelsius is above the normal range but is not yet fatal."
+                        "longDescription": "The value of this property shall indicate the ReadingCelsius is above the normal range but is not yet fatal. The units shall be the same units as the related ReadingCelsius propoerty."
                     },
-                    "UpperThresholdFatalCelsius": {
+                    "UpperThresholdFatal": {
                         "type": [
                             "string",
                             "null"
                         ],
                         "readonly": true,
                         "description": "Above normal range and is fatal",
-                        "longDescription": "The value of this property shall indicate the ReadingCelsius is above the normal range and is fatal."
+                        "longDescription": "The value of this property shall indicate the ReadingCelsius is above the normal range and is fatal. The units shall be the same units as the related ReadingCelsius propoerty."
                     },
-                    "LowerThresholdNonCriticalCelsius": {
+                    "LowerThresholdNonCritical": {
                         "type": [
                             "string",
                             "null"
                         ],
                         "readonly": true,
                         "description": "Below normal range",
-                        "longDescription": "The value of this property shall indicate the ReadingCelsius is below the normal range but is not critical."
+                        "longDescription": "The value of this property shall indicate the ReadingCelsius is below the normal range but is not critical. The units shall be the same units as the related ReadingCelsius propoerty."
                     },
-                    "LowerThresholdCriticalCelsius": {
+                    "LowerThresholdCritical": {
                         "type": [
                             "string",
                             "null"
                         ],
                         "readonly": true,
                         "description": "Below normal range but not yet fatal.",
-                        "longDescription": "The value of this property shall indicate the ReadingCelsius is below the normal range but is not yet fatal."
+                        "longDescription": "The value of this property shall indicate the ReadingCelsius is below the normal range but is not yet fatal. The units shall be the same units as the related ReadingCelsius propoerty."
                     },
-                    "LowerThresholdFatalCelsius": {
+                    "LowerThresholdFatal": {
                         "type": [
                             "string",
                             "null"
                         ],
                         "readonly": true,
                         "description": "Below normal range and is fatal",
-                        "longDescription": "The value of this property shall indicate the ReadingCelsius is below the normal range and is fatal."
+                        "longDescription": "The value of this property shall indicate the ReadingCelsius is below the normal range and is fatal. The units shall be the same units as the related ReadingCelsius propoerty."
                     },
-                    "MinReadingRangeTempCelsius": {
+                    "MinReadingRangeTemp": {
                         "type": [
                             "string",
                             "null"
                         ],
                         "readonly": true,
                         "description": "Minimum value for ReadingCelsius",
-                        "longDescription": "The value of this property shall indicate the lowest possible value for ReadingCelsius."
+                        "longDescription": "The value of this property shall indicate the lowest possible value for ReadingCelsius. The units shall be the same units as the related ReadingCelsius propoerty."
                     },
-                    "MaxReadingRangeTempCelsius": {
+                    "MaxReadingRangeTemp": {
                         "type": [
                             "string",
                             "null"
                         ],
                         "readonly": true,
                         "description": "Maximum value for ReadingCelsius",
-                        "longDescription": "The value of this property shall indicate the lowest possible value for ReadingCelsius."
+                        "longDescription": "The value of this property shall indicate the lowest possible value for ReadingCelsius. The units shall be the same units as the related ReadingCelsius propoerty."
                     },
                     "PhysicalContext": {
                         "type": "string",
@@ -320,77 +317,77 @@
                         "description": "Current fan speed in RPM",
                         "longDescription": "The value of this property shall be the current value of the fan sensor's reading."
                     },
-                    "UpperThresholdNonCriticalRPM": {
+                    "UpperThresholdNonCritical": {
                         "type": [
                             "integer",
                             "null"
                         ],
                         "readonly": true,
                         "description": "Above normal range",
-                        "longDescription": "The value of this property shall indicate the ReadingRPM is above the normal range but is not critical."
+                        "longDescription": "The value of this property shall indicate the ReadingRPM is above the normal range but is not critical. The units shall be the same units as the related ReadingRPM propoerty."
                     },
-                    "UpperThresholdCriticalRPM": {
+                    "UpperThresholdCritical": {
                         "type": [
                             "integer",
                             "null"
                         ],
                         "readonly": true,
                         "description": "Above normal range but not yet fatal",
-                        "longDescription": "The value of this property shall indicate the ReadingRPM is above the normal range but is not yet fatal."
+                        "longDescription": "The value of this property shall indicate the ReadingRPM is above the normal range but is not yet fatal. The units shall be the same units as the related ReadingRPM propoerty."
                     },
-                    "UpperThresholdFatalRPM": {
+                    "UpperThresholdFatal": {
                         "type": [
                             "integer",
                             "null"
                         ],
                         "readonly": true,
                         "description": "Above normal range and is fatal",
-                        "longDescription": "The value of this property shall indicate the ReadingRPM is above the normal range and is fatal."
+                        "longDescription": "The value of this property shall indicate the ReadingRPM is above the normal range and is fatal. The units shall be the same units as the related ReadingRPM propoerty."
                     },
-                    "LowerThresholdNonCriticalRPM": {
+                    "LowerThresholdNonCritical": {
                         "type": [
                             "integer",
                             "null"
                         ],
                         "readonly": true,
                         "description": "Below normal range",
-                        "longDescription": "The value of this property shall indicate the ReadingRPM is below the normal range but is not critical."
+                        "longDescription": "The value of this property shall indicate the ReadingRPM is below the normal range but is not critical. The units shall be the same units as the related ReadingRPM propoerty."
                     },
-                    "LowerThresholdCriticalRPM": {
+                    "LowerThresholdCritical": {
                         "type": [
                             "integer",
                             "null"
                         ],
                         "readonly": true,
                         "description": "Below normal range but not yet fatal",
-                        "longDescription": "The value of this property shall indicate the ReadingRPM is below the normal range but is not yet fatal."
+                        "longDescription": "The value of this property shall indicate the ReadingRPM is below the normal range but is not yet fatal. The units shall be the same units as the related ReadingRPM propoerty."
                     },
-                    "LowerThresholdFatalRPM": {
+                    "LowerThresholdFatal": {
                         "type": [
                             "integer",
                             "null"
                         ],
                         "readonly": true,
                         "description": "Below normal range and is fatal",
-                        "longDescription": "The value of this property shall indicate the ReadingRPM is below the normal range and is fatal."
+                        "longDescription": "The value of this property shall indicate the ReadingRPM is below the normal range and is fatal. The units shall be the same units as the related ReadingRPM propoerty."
                     },
-                    "MinReadingRangeRPM": {
+                    "MinReadingRange": {
                         "type": [
                             "integer",
                             "null"
                         ],
                         "readonly": true,
                         "description": "Minimum value for ReadingRPM",
-                        "longDescription": "The value of this property shall indicate the lowest possible value for ReadingRPM."
+                        "longDescription": "The value of this property shall indicate the lowest possible value for ReadingRPM. The units shall be the same units as the related ReadingRPM propoerty."
                     },
-                    "MaxReadingRangeRPM": {
+                    "MaxReadingRange": {
                         "type": [
                             "integer",
                             "null"
                         ],
                         "readonly": true,
                         "description": "Maximum value for ReadingRPM",
-                        "longDescription": "The value of this property shall indicate the lowest possible value for ReadingRPM."
+                        "longDescription": "The value of this property shall indicate the lowest possible value for ReadingRPM. The units shall be the same units as the related ReadingRPM propoerty."
                     },
                     "RelatedItem": {
                         "type": "array",

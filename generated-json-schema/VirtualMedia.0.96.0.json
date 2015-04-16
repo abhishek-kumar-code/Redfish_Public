@@ -22,9 +22,6 @@
         "Name": {
             "$ref": "Resource.0.96.0.json#Name"
         },
-        "Modified": {
-            "$ref": "Resource.0.96.0.json#Modified"
-        },
         "Oem": {
             "$ref": "Resource.0.96.0.json#Oem",
             "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
@@ -77,12 +74,14 @@
             "enum": [
                 "NotConnected",
                 "URI",
-                "Applet"
+                "Applet",
+                "Oem"
             ],
             "enumDescriptions": {
                 "NotConnected": "No current connection",
                 "URI": "Connected to a URI location",
-                "Applet": "Connected to a client application"
+                "Applet": "Connected to a client application",
+                "Oem": "Connected via an OEM-defined method"
             },
             "readonly": true,
             "description": "Current virtual media connection methods",

@@ -12,7 +12,8 @@
         },
         "@odata.type": {
             "$ref": "odata.4.0.0.json#type"
-        }
+        },
+
     },
     "description": "This is the base type for resources and referenceable members."
 }
