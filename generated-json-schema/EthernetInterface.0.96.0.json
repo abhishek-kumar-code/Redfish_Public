@@ -166,7 +166,7 @@
         "IPv4Addresses": {
             "type": "array",
             "items": {
-                "$ref": "IPAddresses.0.96.0.json#IPV4Address"
+                "$ref": "IPAddresses.0.96.0.json#IPv4Address"
             },
             "readonly": true,
             "description": "This array of objects is used to represent the IPv4 connection characteristics for this interface."
@@ -206,7 +206,7 @@
         "IPv6Addresses": {
             "type": "array",
             "items": {
-                "$ref": "IPAddresses.0.96.0.json#IPV6Address"
+                "$ref": "IPAddresses.0.96.0.json#IPv6Address"
             },
             "readonly": true,
             "description": "This array of objects enumerates all of the currently assigned IPv6 addresses on this interface."
@@ -214,7 +214,7 @@
         "IPv6StaticAddresses": {
             "type": "array",
             "items": {
-                "$ref": "IPAddresses.0.96.0.json#IPV6StaticAddress"
+                "$ref": "IPAddresses.0.96.0.json#IPv6StaticAddress"
             },
             "readonly": true,
             "description": "This array of objects represents all of the IPv6 static addresses to be assigned on this interface."
