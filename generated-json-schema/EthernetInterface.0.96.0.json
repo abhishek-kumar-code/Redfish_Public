@@ -131,7 +131,30 @@
             "longDescription": "The value of this property shall indicate the number of array items supported by IPv6StaticAddresses."
         },
         "VLAN": {
-            "ERROR": "type VLanNetworkInterface.VLAN unrecognized.",
+            "type": [
+                "object",
+                "null"
+            ],
+            "additionalProperties": false,
+            "properties": {
+                "VLANEnable": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "description": "This indicates if this VLAN is enabled.",
+                    "longDescription": "The value of this property shall be used to indicate if this VLAN is enabled for this interface."
+                },
+                "VLANId": {
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "This indicates the VLAN identifier for this VLAN.",
+                    "longDescription": "The value of this property shall be used to indicate the VLAN identifier for this VLAN."
+                }
+            },
             "readonly": true,
             "description": "If this Network Interface supports more than one VLAN, this property will not be present and the client should look for VLANs collection in the link section of this resource.",
             "longDescription": "The value of this property shall be the VLAN for this interface.  If this interface supports more than one VLAN, the VLAN property shall not be present and the VLANS collection link shall be present instead."
@@ -139,7 +162,7 @@
         "IPv4Addresses": {
             "type": "array",
             "items": {
-                "ERROR": "type IPAddresses.IPV4Address unrecognized."
+                "$ref": "IPAddresses.0.96.0.json#IPv4Address"
             },
             "readonly": true,
             "description": "This array of objects is used to represent the IPv4 connection characteristics for this interface."
@@ -179,7 +202,7 @@
         "IPv6Addresses": {
             "type": "array",
             "items": {
-                "ERROR": "type IPAddresses.IPV6Address unrecognized."
+                "$ref": "IPAddresses.0.96.0.json#IPv6Address"
             },
             "readonly": true,
             "description": "This array of objects enumerates all of the currently assigned IPv6 addresses on this interface."
@@ -187,7 +210,7 @@
         "IPv6StaticAddresses": {
             "type": "array",
             "items": {
-                "ERROR": "type IPAddresses.IPV6StaticAddress unrecognized."
+                "$ref": "IPAddresses.0.96.0.json#IPv6StaticAddress"
             },
             "readonly": true,
             "description": "This array of objects represents all of the IPv6 static addresses to be assigned on this interface."
@@ -200,7 +223,7 @@
             "readonly": true,
             "description": "This is the IPv6 default gateway address that is currently in use on this interface.",
             "longDescription": "The value of this property shall be the current IPv6 default gateway address that is in use on this interface."
-        },
+        },		
         "NameServers": {
             "type": "array",
             "items": {
