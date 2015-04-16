@@ -97,8 +97,9 @@
           <Annotation Term="OData.Description" String="The universal unique identifier (UUID) for this system"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the universal unique identifier number for the system."/>
         </Property>
-        <Property Name="HostCorrelation" Type="ComputerSystem.HostCorrelation"  Nullable="false">
-          <Annotation Term="OData.Description" String="This object shall contain operating environment reference information to correlate the system information with the host operating environment information to assist clients with correlating the two access points."/>
+        <Property Name="HostName" Type="Edm.String">
+          <Annotation Term="OData.Description" String="The DNS Host Name, without any domain information"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the host name for this system, as reported by the operating system or hypervisor."/>
         </Property>
         <Property Name="IndicatorLED" Type="ComputerSystem.IndicatorLED">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/ReadWrite"/>
@@ -330,36 +331,6 @@
         <Property Name="Status" Type="Resource.Status"  Nullable="false"/>
         <Annotation Term="OData.Description" String="This object describes the memory of the system in general detail."/>
       </ComplexType>
-
-      <!--Consider aligning with IPAddresses?-->
-      <ComplexType Name="HostCorrelation">
-        <Property Name="IPAddress" Type="Collection(ComputerSystem.IPAddress)">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="The IP address(es) associated with this system"/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall contain an array of IP addresses in a format as defined in RFC5737 or RFC5952."/>
-        </Property>
-        <Property Name="HostMACAddress" Type="Collection(ComputerSystem.MacAddress)">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="The network MAC address(es) associated with this system"/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall contain an array of MAC addresses in MAC-48 identifier format."/>
-        </Property>
-        <Property Name="HostName" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="The DNS Host Name of this system, without any domain information"/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the DNS host name without any domain information."/>
-        </Property>
-        <Property Name="HostFQDN" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="The Fully Qualified Domain Name (FQDN) of this system"/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the fully qualified domain name for the host"/>
-        </Property>
-      </ComplexType>
-
-      <!--Strongly typed property for IPAddress-->
-      <TypeDefinition Name="IPAddress" UnderlyingType="Edm.String"/>
-
-      <!--Strongly typed property for MacAddress-->
-      <TypeDefinition Name="MacAddress" UnderlyingType="Edm.String"/>
 
     </Schema>
   </edmx:DataServices>

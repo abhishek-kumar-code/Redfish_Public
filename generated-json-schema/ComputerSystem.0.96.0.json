@@ -212,54 +212,14 @@
             "description": "The universal unique identifier (UUID) for this system",
             "longDescription": "The value of this property shall contain the universal unique identifier number for the system."
         },
-        "HostCorrelation": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "IPAddress": {
-                    "type": "array",
-                    "items": {
-                        "type": [
-                            "string",
-                            "null"
-                        ]
-                    },
-                    "readonly": true,
-                    "description": "The IP address(es) associated with this system",
-                    "longDescription": "The value of this property shall contain an array of IP addresses in a format as defined in RFC5737 or RFC5952."
-                },
-                "HostMACAddress": {
-                    "type": "array",
-                    "items": {
-                        "type": [
-                            "string",
-                            "null"
-                        ]
-                    },
-                    "readonly": true,
-                    "description": "The network MAC address(es) associated with this system",
-                    "longDescription": "The value of this property shall contain an array of MAC addresses in MAC-48 identifier format."
-                },
-                "HostName": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "readonly": true,
-                    "description": "The DNS Host Name of this system, without any domain information",
-                    "longDescription": "The value of this property shall contain the DNS host name without any domain information."
-                },
-                "HostFQDN": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "readonly": true,
-                    "description": "The Fully Qualified Domain Name (FQDN) of this system",
-                    "longDescription": "The value of this property shall contain the fully qualified domain name for the host"
-                }
-            },
-            "description": "This object shall contain operating environment reference information to correlate the system information with the host operating environment information to assist clients with correlating the two access points."
+        "HostName": {
+            "type": [
+                "string",
+                "null"
+            ],
+        "readonly": true,
+        "description": "The DNS Host Name of this system, without any domain information",
+        "longDescription": "The value of this property shall contain the DNS host name without any domain information."
         },
         "IndicatorLED": {
             "type": [
