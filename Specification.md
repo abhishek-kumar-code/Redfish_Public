@@ -1363,7 +1363,7 @@ Properties that must have a non-nullable value include the [nullable attribute](
           <Annotation Term="Core.LongDescription" String="This is the specification of Property1."/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="DMTF.Required"/>
-          <Annotation Term="OData.Measures.Units" String="Watts"/>
+          <Annotation Term="OData.Measures.Unit" String="Watts"/>
         </Property>
 ~~~
 
@@ -1486,10 +1486,10 @@ The `Required` annotation term is defined in http://schemas.dmtf.org/redfish/v1/
 In addition to following [naming conventions](#common naming-conventions), properties representing units of measure shall be annotated with the Units annotation term in order to specify the units of measurement for the property.
 
 ~~~xml
-	    <Annotation Term="OData.Measures.Units" String="Watts"/>
+	    <Annotation Term="OData.Measures.Unit" String="Watts"/>
 ~~~
 
-The `Units` annotation term is defined in http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml.
+The `Unit` annotation term is defined in http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml.
 
 The string values for the Units of Measure annotation shall be taken from **TODO**.
 
