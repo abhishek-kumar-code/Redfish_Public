@@ -76,14 +76,13 @@
         <Property Name="Status" Type="Resource.Status"/>
       </EntityType>
 
-      <ComplexType Name="Links">
+      <ComplexType Name="Links" BaseType="Resource.Links">
         <NavigationProperty Name="Settings" Type="Resource.Settings">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a reference to the settings for this manager if this resource has a separate object used to change the current settings of this manager."/>
           <Annotation Term="OData.LongDescription" String="If this resource is not PATCHable, this is the link to PATCHable Settings for the resource.  This reference shall be to a resource of Type ManagerNetworkProtocol."/>
           <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
-        <Property Name="Oem" Type="Resource.Oem"/>
       </ComplexType>
 
       <ComplexType Name="Protocol">

@@ -121,7 +121,7 @@
       </EntityType>
 
       <ComplexType Name="Actions">
-        <Property Name="Oem" Type="Manager.OemActions" Nullable="false"/>
+        <Property Name="Oem" Type="Manager.OemActions"/>
       </ComplexType>
       <ComplexType Name="OemActions"/>
 
@@ -136,7 +136,7 @@
         <Annotation Term="OData.LongDescription" String="This defines the name of the custom action supported on this resource."/>
       </Action>
       
-      <ComplexType Name="Links">
+      <ComplexType Name="Links" BaseType="Resource.Links">
         <NavigationProperty Name="ManagerForServers" Type="Collection(ComputerSystem.ComputerSystem)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This property is an array of references to the systems that this manager has control over."/>
@@ -180,7 +180,6 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain a reference to a collection of VirtualMedia which are for the use of this manager."/>
           <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
-        <Property Name="Oem" Type="Resource.Oem"/>
       </ComplexType>
 
       <!-- The reset action resets/reboots the manager.-->

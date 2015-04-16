@@ -94,7 +94,6 @@
           <Annotation Term="OData.Description" String="This indicates the resource that originated the condition that caused the event to be generated."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the URI of the resource that caused the event to be generated."/>
         </NavigationProperty>
-        <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
       </EntityType>
 
     </Schema>

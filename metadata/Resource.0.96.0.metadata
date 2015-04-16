@@ -14,9 +14,21 @@
   <edmx:DataServices>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.0.96.0" Alias="Resource">
 
+      <!--Base Complex type for Links properties-->
+      <ComplexType Name="Links">
+        <ComplexType Name="Oem">
+          <Annotation Term="OData.Description" String="Oem extension object."/>
+          <Annotation Term="OData.LongDescription" String="This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
+        </ComplexType>
+      </ComplexType>
+      
       <!--Base entity type for array members-->
       <EntityType Name="Item" Abstract="true">
         <Annotation Term="OData.Description" String="This is the base type for resources and referenceable members."/>
+        <Property Name="Oem" Type="Resource.Oem">
+          <Annotation Term="OData.Description" String="This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections."/>
+          <Annotation Term="OData.LongDescription" String="The value of this string shall be of the format for the reserved word *Oem*."/>
+        </Property>
       </EntityType>
 
         <!--Base entity type for array members-->
@@ -29,10 +41,6 @@
         <Property Name="MemberId" Nullable="false" Type="Edm.String">
           <Annotation Term="OData.Description" String="This is the identifier for the member within the collection."/>
           <Annotation Term="OData.LongDescription" String="The value of this string shall uniquely identify the member within the collection."/>
-        </Property>
-        <Property Name="Oem" Type="Resource.Oem">
-          <Annotation Term="OData.Description" String="This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections."/>
-          <Annotation Term="OData.LongDescription" String="The value of this string shall be of the format for the reserved word *Oem*."/>
         </Property>
       </EntityType>
 
@@ -56,10 +64,6 @@
           <Annotation Term="OData.Description"  String="The name of the resource or array element."/>
           <Annotation Term="OData.LongDescription" String="This object represents the Name property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification. The value of this string shall be of the format for the reserved word *Name*."/>
           <Annotation Term="DMTF.Required"/>
-        </Property>
-        <Property Name="Oem" Type="Resource.Oem">
-          <Annotation Term="OData.Description" String="This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections."/>
-          <Annotation Term="OData.LongDescription" String="The value of this string shall be of the format for the reserved word *Oem*."/>
         </Property>
       </EntityType>
 

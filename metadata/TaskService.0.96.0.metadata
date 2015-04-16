@@ -50,7 +50,7 @@
         <Property Name="Status" Type="Resource.Status"/>
       </EntityType>
 
-      <ComplexType Name="Links">
+      <ComplexType Name="Links" BaseType="Resource.Links">
         <NavigationProperty Name="Tasks" Type="Collection(Tasks.Task)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="References to the Tasks collection."/>

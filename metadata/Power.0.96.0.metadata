@@ -53,8 +53,6 @@
           <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
 
-        <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
-
       </EntityType>
 
       <EntityType Name="PowerControlType" BaseType="Resource.ReferenceableMember">
@@ -110,7 +108,6 @@
           <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
         <Property Name="Status" Type="Resource.Status" Nullable="false"/>
-        <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
       </EntityType>
 
       <EntityType Name="PowerMetric" BaseType="Resource.ReferenceableMember">
@@ -179,7 +176,6 @@
       </EnumType>
 
       <EntityType Name="Voltage" BaseType="Resource.ReferenceableMember">
-        <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
         <Property Name="Name" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Voltage sensor name."/>
