@@ -22,15 +22,12 @@
         "Name": {
             "$ref": "Resource.0.96.0.json#Name"
         },
-        "Modified": {
-            "$ref": "Resource.0.96.0.json#Modified"
-        },
         "Oem": {
             "$ref": "Resource.0.96.0.json#Oem",
             "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
             "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
         },
-        "ServiceVersion": {
+        "RedfishVersion": {
             "type": "string",
             "readonly": true,
             "description": "The version of the Redfish service",
@@ -85,7 +82,7 @@
                     "longDescription": "This object shall only contain a reference to a collection of resources that comply to the Managers schema.  The last segment of the path shall be 'Managers'."
                 },
                 "Tasks": {
-                    "type": "array",
+                    "type": "object",
                     "properties": {
                         "@odata.id" :{
                             "$ref": "odata.4.0.0.json#Id"
@@ -129,7 +126,7 @@
                     "longDescription": "The classes structure shall only contain a reference to a resource that complies to the EventService schema.  The last segment of the path shall be 'EventService'."
                 },
                 "Registries": {
-                    "type": "array",
+                    "type": "object",
                     "properties": {
                         "@odata.id" :{
                             "$ref": "odata.4.0.0.json#Id"
@@ -139,16 +136,16 @@
                     "description": "This is a link to a collection of Registries.",
                     "longDescription": "This object shall only contain a reference to a collection of resources that comply to the SchemaFile schema where the files are Registries.  The last segment of the path shall be 'Registries'."
                 },
-                "JSONSchema": {
-                    "type": "array",
+                "JsonSchemas": {
+                    "type": "object",
                     "properties": {
                         "@odata.id" :{
                             "$ref": "odata.4.0.0.json#Id"
                         }
                     },
                     "readonly": true,
-                    "description": "This is a link to a collection of Registries.",
-                    "longDescription": "This object shall only contain a reference to a collection of resources that comply to the SchemaFile schema where the files are Registries.  The last segment of the path shall be 'Registries'."
+                    "description": "This is a link to a collection of Json-Schema files.",
+                    "longDescription": "This object shall only contain a reference to a collection of resources that comply to the SchemaFile schema where the files are Json-Schema files.  The last segment of the path shall be 'JsonSchemas'."
                 }
             },
             "readonly": true,

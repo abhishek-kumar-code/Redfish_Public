@@ -22,9 +22,6 @@
         "Name": {
             "$ref": "Resource.0.96.0.json#Name"
         },
-        "Modified": {
-            "$ref": "Resource.0.96.0.json#Modified"
-        },
         "Oem": {
             "$ref": "Resource.0.96.0.json#Oem",
             "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
@@ -47,6 +44,9 @@
                 "Zone",
                 "Sled",
                 "Shelf",
+                "Drawer",
+                "Module",
+                "Component",
                 "Other"
             ],
             "enumDescriptions": {
@@ -64,6 +64,9 @@
                 "Zone": "A logical division or portion of a physical chassis that contains multiple devices or systems that cannot be physically separated",
                 "Sled": "An enclosed or semi-enclosed, system chassis which must be plugged into a multi-system chassis to function normally similar to a blade type chassis.",
                 "Shelf": "An enclosed or semi-enclosed, typically horizontally-oriented, system chassis which must be plugged into a multi-system chassis to function normally",
+                "Drawer": "An enclosed or semi-enclosed, typically horizontally-oriented, system chassis which may be slid into a multi-system chassis.",
+                "Module": "A small, typically removable, chassis or card which contains devices for a particular subsystem or function",
+                "Component": "A small chassis, card, or device which contains devices for a particular subsystem or function",
                 "Other": "A chassis that does not fit any of these definitions"
             },
             "readonly": true,
@@ -105,15 +108,6 @@
             "readonly": true,
             "description": "The serial number for this chassis.",
             "longDescription": "The value of this property shall be a manufacturer-allocated number used to identify the chassis."
-        },
-        "Version": {
-            "type": [
-                "string",
-                "null"
-            ],
-            "readonly": true,
-            "description": "This is the version of this chassis.",
-            "longDescription": "The value of this property shall be a string that indicates the producers or manufacturer's version of the chassis."
         },
         "PartNumber": {
             "type": [
@@ -159,7 +153,7 @@
                 "Oem": {
                     "$ref": "Resource.0.96.0.json#Oem"
                 },
-                "LogService": {
+                "LogServices": {
                     "type": "object",
                     "properties": {
                         "@odata.id" :{

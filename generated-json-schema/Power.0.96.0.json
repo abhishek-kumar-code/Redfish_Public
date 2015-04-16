@@ -22,9 +22,6 @@
         "Name": {
             "$ref": "Resource.0.96.0.json#Name"
         },
-        "Modified": {
-            "$ref": "Resource.0.96.0.json#Modified"
-        },
         "Oem": {
             "$ref": "Resource.0.96.0.json#Oem",
             "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
@@ -230,7 +227,7 @@
                     "Name": {
                         "$ref": "Resource.0.96.0.json#Name"
                     },
-                    "Number": {
+                    "SensorNumber": {
                         "type": [
                             "integer",
                             "null"
@@ -251,80 +248,124 @@
                         "description": "The current value of the voltage sensor.",
                         "longDescription": "The value of this property shall be the current value of the voltage sensor's reading."
                     },
-                    "UpperThresholdNonCriticalVolts": {
+                    "UpperThresholdNonCritical": {
                         "type": [
                             "string",
                             "null"
                         ],
                         "readonly": true,
                         "description": "Above normal range",
-                        "longDescription": "The value of this property shall indicate the CurrentReading is above the normal range but is not critical."
+                        "longDescription": "The value of this property shall indicate the CurrentReading is above the normal range but is not critical. Units shall use the same units as the related ReadingVolts propoerty."
                     },
-                    "UpperThresholdCriticalVolts": {
+                    "UpperThresholdCritical": {
                         "type": [
                             "string",
                             "null"
                         ],
                         "readonly": true,
                         "description": "Above normal range but not yet fatal.",
-                        "longDescription": "The value of this property shall indicate the CurrentReading is above the normal range but is not yet fatal."
+                        "longDescription": "The value of this property shall indicate the CurrentReading is above the normal range but is not yet fatal. Units shall use the same units as the related ReadingVolts propoerty."
                     },
-                    "UpperThresholdFatalVolts": {
+                    "UpperThresholdFatal": {
                         "type": [
                             "string",
                             "null"
                         ],
                         "readonly": true,
                         "description": "Above normal range and is fatal",
-                        "longDescription": "The value of this property shall indicate the CurrentReading is above the normal range and is fatal."
+                        "longDescription": "The value of this property shall indicate the CurrentReading is above the normal range and is fatal. Units shall use the same units as the related ReadingVolts propoerty."
                     },
-                    "LowerThresholdNonCriticalVolts": {
+                    "LowerThresholdNonCritical": {
                         "type": [
                             "string",
                             "null"
                         ],
                         "readonly": true,
                         "description": "Below normal range",
-                        "longDescription": "The value of this property shall indicate the CurrentReading is below the normal range but is not critical."
+                        "longDescription": "The value of this property shall indicate the CurrentReading is below the normal range but is not critical. Units shall use the same units as the related ReadingVolts propoerty."
                     },
-                    "LowerThresholdCriticalVolts": {
+                    "LowerThresholdCritical": {
                         "type": [
                             "string",
                             "null"
                         ],
                         "readonly": true,
                         "description": "Below normal range but not yet fatal.",
-                        "longDescription": "The value of this property shall indicate the CurrentReading is below the normal range but is not yet fatal."
+                        "longDescription": "The value of this property shall indicate the CurrentReading is below the normal range but is not yet fatal. Units shall use the same units as the related ReadingVolts propoerty."
                     },
-                    "LowerThresholdFatalVolts": {
+                    "LowerThresholdFatal": {
                         "type": [
                             "string",
                             "null"
                         ],
                         "readonly": true,
                         "description": "Below normal range and is fatal",
-                        "longDescription": "The value of this property shall indicate the CurrentReading is below the normal range and is fatal."
+                        "longDescription": "The value of this property shall indicate the CurrentReading is below the normal range and is fatal. Units shall use the same units as the related ReadingVolts propoerty."
                     },
-                    "MinReadingRangeVolts": {
+                    "MinReadingRange": {
                         "type": [
                             "string",
                             "null"
                         ],
                         "readonly": true,
                         "description": "Minimum value for CurrentReading",
-                        "longDescription": "The value of this property shall indicate the lowest possible value for CurrentReading."
+                        "longDescription": "The value of this property shall indicate the lowest possible value for CurrentReading. Units shall use the same units as the related ReadingVolts propoerty."
                     },
-                    "MaxReadingRangeVolts": {
+                    "MaxReadingRange": {
                         "type": [
                             "string",
                             "null"
                         ],
                         "readonly": true,
                         "description": "Maximum value for CurrentReading",
-                        "longDescription": "The value of this property shall indicate the lowest possible value for CurrentReading."
+                        "longDescription": "The value of this property shall indicate the lowest possible value for CurrentReading. Units shall use the same units as the related ReadingVolts propoerty."
                     },
                     "PhysicalContext": {
-                        "ERROR": "type Thermal.VoltagePhysicalContext unrecognized.",
+                        "type": "string",
+                        "enum": [
+                            "Room",
+                            "Intake",
+                            "Exhaust",
+                            "Front",
+                            "Back",
+                            "Upper",
+                            "Lower",
+                            "CPU",
+                            "GPU",
+                            "Backplane",
+                            "SystemBoard",
+                            "PowerSupply",
+                            "VoltageRegulator",
+                            "StorageDevice",
+                            "NetworkingDevice",
+                            "ComputeBay",
+                            "StorageBay",
+                            "NetworkBay",
+                            "ExpansionBay",
+                            "PowerSupplyBay"
+                        ],
+                        "enumDescriptions": {
+                            "Room": "The room",
+                            "Intake": "The intake point of the chassis",
+                            "Exhaust": "The exhaust point of the chassis",
+                            "Front": "The front of the chassis",
+                            "Back": "The back of the chassis",
+                            "Upper": "The upper portion of the chassis",
+                            "Lower": "The lower portion of the chassis",
+                            "CPU": "A Processor (CPU)",
+                            "GPU": "A Graphics Processor (GPU)",
+                            "Backplane": "A backplane within the chassis",
+                            "SystemBoard": "The system board (PCB)",
+                            "PowerSupply": "A power supply",
+                            "VoltageRegulator": "A voltage regulator device",
+                            "StorageDevice": "A storage device",
+                            "NetworkingDevice": "A networking device",
+                            "ComputeBay": "Within a compute bay",
+                            "StorageBay": "Within a storage bay",
+                            "NetworkBay": "Within a networking bay",
+                            "ExpansionBay": "Within an expansion bay",
+                            "PowerSupplyBay": "Within a power supply bay"
+                        },
                         "readonly": true,
                         "description": "Describes the area or device to which this voltage measurement applies.",
                         "longDescription": "The value of this property shall be a description of the affected device or region within the chassis to which this voltage measurement applies."

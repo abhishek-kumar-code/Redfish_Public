@@ -22,9 +22,6 @@
         "Name": {
             "$ref": "Resource.0.96.0.json#Name"
         },
-        "Modified": {
-            "$ref": "Resource.0.96.0.json#Modified"
-        },
         "Oem": {
             "$ref": "Resource.0.96.0.json#Oem",
             "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
@@ -44,7 +41,6 @@
                 "integer",
                 "null"
             ],
-            "readonly": true,
             "longDescription": "The value of this property shall be the length of the Subnet prefix."
         },
         "Status": {
@@ -227,7 +223,7 @@
             "readonly": true,
             "description": "This is the IPv6 default gateway address that is currently in use on this interface.",
             "longDescription": "The value of this property shall be the current IPv6 default gateway address that is in use on this interface."
-        },
+        },		
         "NameServers": {
             "type": "array",
             "items": {
@@ -262,7 +258,7 @@
                     "longDescription": "If network settings are not dynamically settable (e.g. a reset required that doesn't happen automatically), this value shall be used to reference a separately PATCHable representation of this data to be used for configuration purposes."
                 },
                 "VLANs": {
-                    "type": "array",
+                    "type": "object",
                     "properties": {
                         "@odata.id" :{
                             "$ref": "odata.4.0.0.json#Id"

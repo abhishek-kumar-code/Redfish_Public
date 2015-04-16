@@ -22,9 +22,6 @@
         "Name": {
             "$ref": "Resource.0.96.0.json#Name"
         },
-        "Modified": {
-            "$ref": "Resource.0.96.0.json#Modified"
-        },
         "Oem": {
             "$ref": "Resource.0.96.0.json#Oem",
             "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
@@ -51,6 +48,25 @@
             "readonly": true,
             "description": "The overwrite policy for this service that takes place when the log is full.",
             "longDescription": "The value of this property shall indicate the policy of the log service when the MaxNumberOfRecords has been reached. Unknown indicates the log overwrite policy is unknown. WrapsWhenFull indicates that the log overwrites its entries with new entries when the log has reached its maximum capacity. NeverOverwrites indicates that the log never overwrites its entries by the new entries and ceases logging when the limit has been reached."
+        },
+        "DateTime": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "readonly": false,
+            "description": "The current DateTime (with offset) for the log service, used to set or read time.",
+            "longDescription": "The value of this property shall represent the current DateTime value that the log service is using, with offset from UTC, in Redfish Timestamp format."
+        },
+        "DateTimeLocalOffset": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "readonly": false,
+            "description": "The time offset from UTC that the DateTime property is set to in format: +06:00 .",
+            "longDescription": "The value is property shall represent the offset from UTC time that the current value of DataTime property contains.",
+            "pattern": "([-+][0-1][0-9]:[0-5][0-9])"
         },
         "Links": {
             "type": "object",

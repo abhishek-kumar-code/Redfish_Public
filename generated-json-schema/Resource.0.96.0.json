@@ -67,18 +67,6 @@
                 "PushPowerButton": "Simulate the pressing of the physical power button on this system"
             }
         },
-        "Settings": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "href": {
-                    "type": "string",
-                    "readonly": true,
-                    "description": "Reference to the resource the client may PUT/PATCH to in order to change this resource.",
-                    "longDescription": "The value of this property shall be the URI of the resource to which a client must do a PUT or PATCh in order to modify this resource."
-                }
-            }
-        },
         "SettingsResult": {
             "type": "object",
             "additionalProperties": false,
@@ -194,6 +182,65 @@
                     },
                     "description": "Oem extension object.",
                     "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
+                }
+            }
+        },
+        "PhysicalContext": {
+            "type": "string",
+            "enum": [
+                "Room",
+                "Intake",
+                "Exhaust",
+                "Front",
+                "Back",
+                "Upper",
+                "Lower",
+                "CPU",
+                "GPU",
+                "Backplane",
+                "SystemBoard",
+                "PowerSupply",
+                "VoltageRegulator",
+                "StorageDevice",
+                "NetworkingDevice",
+                "ComputeBay",
+                "StorageBay",
+                "NetworkBay",
+                "ExpansionBay",
+                "PowerSupplyBay"
+            ],
+            "enumDescriptions": {
+                "Room": "The room",
+                "Intake": "The intake point of the chassis",
+                "Exhaust": "The exhaust point of the chassis",
+                "Front": "The front of the chassis",
+                "Back": "The back of the chassis",
+                "Upper": "The upper portion of the chassis",
+                "Lower": "The lower portion of the chassis",
+                "CPU": "A Processor (CPU)",
+                "GPU": "A Graphics Processor (GPU)",
+                "Backplane": "A backplane within the chassis",
+                "SystemBoard": "The system board (PCB)",
+                "PowerSupply": "A power supply",
+                "VoltageRegulator": "A voltage regulator device",
+                "StorageDevice": "A storage device",
+                "NetworkingDevice": "A networking device",
+                "ComputeBay": "Within a compute bay",
+                "StorageBay": "Within a storage bay",
+                "NetworkBay": "Within a networking bay",
+                "ExpansionBay": "Within an expansion bay",
+                "PowerSupplyBay": "Within a power supply bay"
+            }
+        },
+        "Settings": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "href": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "Reference to the resource the client may PUT/PATCH to in order to change this resource.",
+                    "longDescription": "The value of this property shall be the URI of the resource to which a client must do a PUT or PATCh in order to modify this resource."
                 }
             }
         }
