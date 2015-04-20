@@ -103,6 +103,7 @@
         <Member Name="number"/>
       </EnumType>
 
+      <!--Todo: can we get rid of this, and just use ExtendedInfo?-->
       <ComplexType Name="SettingsMessage">
         <Property Name="MessageId" Nullable="false" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
