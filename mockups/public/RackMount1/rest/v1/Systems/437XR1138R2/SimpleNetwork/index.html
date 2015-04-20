@@ -1,8 +1,8 @@
 {
+    "@odata.context": "/redfish/v1/$metadata#Systems/437XR1138R2/SimpleNetwork",
+    "@odata.id": "/redfish/v1/Systems/437XR1138R2/SimpleNetwork",
+    "@odata.type": "#EthernetNetworkInterface.0.96.0.EthernetNetworkInterfaceCollection",
     "Name": "NIC Collection",
-    "Modified": "2014-09-03T04:44+000",
-    "Type": "Collection.0.91.0",
-    "MemberType": "EthernetNetworkInterface.1",
     "Total": 1,
     "Description": "Simple Network Collection",
     "links": {
@@ -15,8 +15,6 @@
     "Items": [
         {
             "Name": "Ethernet Network Interface",
-            "Modified": "2013-09-03T04:44+0000",
-            "Type": "EthernetNetworkInterface.0.91.0",
             "Description": "System NIC 1",
             "Status": {
                 "State": "Enabled",
@@ -25,7 +23,7 @@
             "links": {
                 "VLANs": [
                     {
-                        "href": "/Mockups/RackMount1/redfish/v1/Systems/1/SimpleNetwork/1/VLANs"
+                        "@odata.id": "/Mockups/RackMount1/redfish/v1/Systems/1/SimpleNetwork/1/VLANs"
                     }
                 ]
             },
