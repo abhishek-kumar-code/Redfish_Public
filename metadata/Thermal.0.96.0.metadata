@@ -65,6 +65,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Temperature"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the current value of the temperature sensor's reading."/>
+          <Annotation Term="OData.Measures.Unit" String="Celsius"/>
         </Property>
         <Property Name="UpperThresholdNonCritical" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
