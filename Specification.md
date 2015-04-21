@@ -1048,7 +1048,7 @@ An individual property within a JSON object can be annotated with extended infor
          "code": "Base.<%= DocVersion.replace(/\.[^\.]+$/, '') %>.PropertyNotWriteable",
          "target": "UserName",
          "message": "The property %1 is a read only property and cannot be assigned a value",
-         "message.parameters": [
+         "@message.parameters": [
             {
                 "UserName"
             },
@@ -1712,7 +1712,7 @@ The value of the SettingsResult property is a JSON object containing the results
 
 * Time of the attempted application
 * ETag of the Setting Data object that was applied
-* Redfish Extended Error Information containing status information 
+* Redfish [Extended Information](#extended-object-information) containing status information 
 
 ### Redfish Resources
 
