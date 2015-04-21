@@ -36,13 +36,6 @@
             "description": "The UEFI device path for this NIC",
             "longDescription": "The value of this property shall be the UEFI device path of this interface."
         },
-        "SubnetPrefixLength": {
-            "type": [
-                "integer",
-                "null"
-            ],
-            "longDescription": "The value of this property shall be the length of the Subnet prefix."
-        },
         "Status": {
             "$ref": "Resource.0.96.0.json#Status"
         },
