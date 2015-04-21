@@ -1,5 +1,5 @@
 ---
-DocTitle: Scalable Platforms Management API Specification
+DocTitle: Redfish Scalable Platforms Management API Specification
 DocNumber: '0266'
 DocType: Specification
 DocVersion: '0.96.0'
@@ -12,7 +12,7 @@ copyright: '2014-2015'
 
 # Foreword
 
-The Redfish Scalable Platform Management API ("Redfish") was prepared by the Scalable Platform Management Forum of the DMTF.
+The Redfish Scalable Platform Management API ("Redfish") was prepared by the Scalable Platforms Management Forum of the DMTF.
 
 DMTF is a not-for-profit association of industry members dedicated to promoting enterprise and systems management and interoperability. For information about the DMTF, see http://www.dmtf.org.
 
