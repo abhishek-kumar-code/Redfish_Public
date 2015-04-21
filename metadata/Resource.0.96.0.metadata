@@ -206,9 +206,6 @@
           <Annotation Term="OData.Description" String="The ETag of the resource to which the settings were applied, after the application."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the ETag of the resource to which the settings were applied, after the application.  This is here so that the client can check it against the ETag of the current resource to see if any other changes have also happened to the resource."/>
         </Property>
-        <Property Name="Messages" Type="Collection(Messages.SettingsMessage)">
-          <Annotation Term="OData.Description" String="Array of message entries"/>
-        </Property>
       </ComplexType>
 
       <EnumType Name="SettingsOperation">
