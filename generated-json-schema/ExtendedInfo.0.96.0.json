@@ -34,7 +34,7 @@
                     "longDescription": "This property shall contain an optional human readable message."
                 },
                 "target": {
-                    "type": "string"
+                    "type": "string",
                     "description": "The target of the message.",
                     "readonly": true,
                     "longDescription": "This property shall contain the target of the message."
