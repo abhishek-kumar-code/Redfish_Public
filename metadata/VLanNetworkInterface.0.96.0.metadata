@@ -37,7 +37,7 @@
           <Annotation Term="OData.Description" String="This indicates if this VLAN is enabled."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be used to indicate if this VLAN is enabled for this interface."/>
         </Property>
-        <Property Name="VLANId" Type="EthernetInterface.VLANId">
+        <Property Name="VLANId" Type="VLanNetworkInterface.VLANId">
           <Annotation Term="OData.Description" String="This indicates the VLAN identifier for this VLAN."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be used to indicate the VLAN identifier for this VLAN."/>
         </Property>
@@ -49,7 +49,7 @@
           <Annotation Term="OData.Description" String="This indicates if this VLAN is enabled."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be used to indicate if this VLAN is enabled for this interface."/>
         </Property>
-        <Property Name="VLANId" Type="EthernetInterface.VLANId">
+        <Property Name="VLANId" Type="VLanNetworkInterface.VLANId">
           <Annotation Term="OData.Description" String="This indicates the VLAN identifier for this VLAN."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be used to indicate the VLAN identifier for this VLAN."/>
         </Property>
