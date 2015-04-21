@@ -69,14 +69,7 @@
           <Annotation Term="OData.Description" String="The protocol type of the listener connection."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the protocol type that the event will use for sending the event to the destination.  A value of Redfish shall be used to indicate that the event type shall adhere to that defined in the Redfish specification."/>
         </Property>
-        <Property Name="Links" Type="ListenerDestination.Links" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="The links object contains the links to other resources that are related to this resource."/>
-        </Property>
       </EntityType>
-
-      <ComplexType Name="Links" BaseType="Resource.Links">
-      </ComplexType>
 
       <ComplexType Name="HttpHeaderProperty">
         <Annotation Term="DMTF.DynamicPropertyPatterns">
