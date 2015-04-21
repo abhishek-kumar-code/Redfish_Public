@@ -80,14 +80,13 @@
         </Property>
       </EntityType>
 
-      <ComplexType Name="Links">
+      <ComplexType Name="Links" BaseType="Resource.Links">
         <NavigationProperty Name="OriginOfCondition" Type="Resource.Item">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is the URI of the resource that caused the log entry"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an href that references the resource for which the log is associated."/>
           <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
-        <Property Name="Oem" Type="Resource.Oem"/>
       </ComplexType>
 
       <!-- This is the severity of the log entry. -->

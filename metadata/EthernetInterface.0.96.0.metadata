@@ -139,7 +139,7 @@
         </Property>
       </EntityType>
 
-      <ComplexType Name="Links">
+      <ComplexType Name="Links" BaseType="Resource.Links">
         <NavigationProperty Name="Settings" Type="Resource.Settings">
           <Annotation Term="OData.Description" String="If this resource is supports changing properties by modifying a separate (settings) resource, this is the reference to that resource. "/>
           <Annotation Term="OData.LongDescription" String="If network settings are not dynamically settable (e.g. a reset required that doesn't happen automatically), this value shall be used to reference a separately PATCHable representation of this data to be used for configuration purposes."/>
@@ -151,7 +151,6 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall reference a collection of VLAN resources.  If this property is used, the VLANEnabled and VLANId property shall not be used."/>
           <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
-        <Property Name="Oem" Type="Resource.Oem"/>
       </ComplexType>
 
       <!--Strongly typed property for MacAddress-->

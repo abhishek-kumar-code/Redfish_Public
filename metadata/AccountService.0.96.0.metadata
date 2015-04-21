@@ -58,7 +58,7 @@
         </Property>        
       </EntityType>
 
-      <ComplexType Name="Links">
+      <ComplexType Name="Links" BaseType="Resource.Links">
         <NavigationProperty Name="Accounts" Type="ManagerAccount.ManagerAccountCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Link to a collection of ManagerAccounts"/>
@@ -71,7 +71,6 @@
           <Annotation Term="OData.LongDescription" String="This property shall contain the link to a collection of Roles."/>
           <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
-        <Property Name="Oem" Type="Resource.Oem"/>
       </ComplexType>
       
     </Schema>

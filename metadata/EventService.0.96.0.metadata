@@ -59,14 +59,13 @@
       </ComplexType>
       <ComplexType Name="OemActions"/>
 
-      <ComplexType Name="Links">
+      <ComplexType Name="Links" BaseType="Resource.Links">
         <NavigationProperty Name="Subscriptions" Type="ListenerDestination.ListenerDestinationCollection" ContainsTarget="true">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a reference to a collection of ListenerDestination resources."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the link to a collection of ListenerDestination resources."/>
           <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
-        <Property Name="Oem" Type="Resource.Oem"/>
       </ComplexType>
 
       <!-- The SubmitTestEvent action causes a test event to be emitted. -->
