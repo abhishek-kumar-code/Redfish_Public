@@ -41,7 +41,7 @@
 
       <EntityContainer Name="ServiceContainer">
         <Singleton Name="Service" Type="ServiceRoot.ServiceRoot"/>
-        <Singleton Name="Systems" Type="ComputerSystem.SystemCollection"/>
+        <Singleton Name="Systems" Type="ComputerSystem.ComputerSystemCollection"/>
         <Singleton Name="Chassis" Type="Chassis.ChassisCollection"/>
         <Singleton Name="Managers" Type="Manager.ManagerCollection"/>
         <Singleton Name="TaskService" Type="TaskService.TaskService"/>
