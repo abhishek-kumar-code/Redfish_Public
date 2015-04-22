@@ -17,6 +17,9 @@
             "type": "object",
             "additionalProperties": false,
             "properties": {
+                "Oem": {
+                    "$ref": "Resource.0.96.0.json#Oem"
+                },
                 "Settings": {
                     "type": "object",
                     "properties": {
