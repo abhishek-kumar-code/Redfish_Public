@@ -45,7 +45,7 @@
         </Member>
       </EnumType>
 
-      <EntityType Name="EventRecord">
+      <EntityType Name="EventRecord" BaseType="Resource.ReferenceableMember">
         <Property Name="EventType" Type="Event.EventType" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This indicates the type of event sent, according to the definitions in the EventService."/>
