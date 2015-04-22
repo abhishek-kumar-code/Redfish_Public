@@ -13,6 +13,11 @@
         "@odata.type": {
             "$ref": "odata.4.0.0.json#type"
         },
+        "Oem": {
+            "$ref": "Resource.0.96.0.json#Oem",
+            "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+            "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+        },
         "Id": {
             "$ref": "Resource.0.96.0.json#Id"
         },
@@ -21,11 +26,6 @@
         },
         "Name": {
             "$ref": "Resource.0.96.0.json#Name"
-        },
-        "Oem": {
-            "$ref": "Resource.0.96.0.json#Oem",
-            "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
-            "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
         },
         "RedfishVersion": {
             "type": "string",

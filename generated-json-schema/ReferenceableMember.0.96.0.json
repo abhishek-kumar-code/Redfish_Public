@@ -13,11 +13,6 @@
         "@odata.type": {
             "$ref": "odata.4.0.0.json#type"
         },
-        "MemberId": {
-            "type": "string",
-            "description": "This is the identifier for the member within the collection.",
-            "longDescription": "The value of this string shall uniquely identify the member within the collection."
-        },
         "Oem": {
             "type": [
                 "object",
@@ -29,6 +24,11 @@
             },
             "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
             "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+        },
+        "MemberId": {
+            "type": "string",
+            "description": "This is the identifier for the member within the collection.",
+            "longDescription": "The value of this string shall uniquely identify the member within the collection."
         }
     },
     "description": "This is the base type for addressable members of an array.",

@@ -13,6 +13,11 @@
         "@odata.type": {
             "$ref": "odata.4.0.0.json#type"
         },
+        "Oem": {
+            "$ref": "Resource.0.96.0.json#Oem",
+            "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+            "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+        },
         "Id": {
             "$ref": "Resource.0.96.0.json#Id"
         },
@@ -21,11 +26,6 @@
         },
         "Name": {
             "$ref": "Resource.0.96.0.json#Name"
-        },
-        "Oem": {
-            "$ref": "Resource.0.96.0.json#Oem",
-            "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
-            "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
         },
         "ManagerType": {
             "type": "string",
@@ -51,9 +51,6 @@
             "type": "object",
             "additionalProperties": false,
             "properties": {
-                "Oem": {
-                    "$ref": "Resource.0.96.0.json#Oem"
-                },
                 "ManagerForServers": {
                     "type": "array",
                     "properties": {
@@ -311,7 +308,10 @@
             "additionalProperties": false,
             "properties": {
                 "Oem": {
-                    "type": "object",
+                    "type": [
+                        "object",
+                        "null"
+                    ],
                     "additionalProperties": false,
                     "properties": {
 
@@ -351,20 +351,6 @@
                         }
                     }
                 },
-                "#Manager.Reset": {
-                    "type": "object",
-                    "additionalProperties": false,
-                    "properties": {
-                        "title": {
-                            "type": "string",
-                            "description": "Friendly action name"
-                        },
-                        "target": {
-                            "type": "string",
-                            "description": "Link to invoke action"
-                        }
-                    }
-                },
                 "#Manager.ForceFailover": {
                     "type": "object",
                     "additionalProperties": false,
@@ -386,6 +372,20 @@
                                 }
                             },
                             "description": "This array defines the supported values for this property on this resource.  In this case, a valid reference is supported."
+                        }
+                    }
+                },
+                "#Manager.Reset": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "title": {
+                            "type": "string",
+                            "description": "Friendly action name"
+                        },
+                        "target": {
+                            "type": "string",
+                            "description": "Link to invoke action"
                         }
                     }
                 }

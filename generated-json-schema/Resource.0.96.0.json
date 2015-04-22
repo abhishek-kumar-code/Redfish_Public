@@ -13,6 +13,18 @@
         "@odata.type": {
             "$ref": "odata.4.0.0.json#type"
         },
+        "Oem": {
+            "type": [
+                "object",
+                "null"
+            ],
+            "additionalProperties": false,
+            "properties": {
+
+            },
+            "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+            "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+        },
         "Id": {
             "type": "string",
             "readonly": true,
@@ -33,39 +45,6 @@
             "readonly": true,
             "description": "The name of the resource or array element.",
             "longDescription": "This object represents the Name property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification. The value of this string shall be of the format for the reserved word *Name*."
-        },
-        "Oem": {
-            "type": [
-                "object",
-                "null"
-            ],
-            "additionalProperties": false,
-            "properties": {
-
-            },
-            "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
-            "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
-        },
-        "ResetType": {
-            "type": "string",
-            "enum": [
-                "On",
-                "ForceOff",
-                "GracefulRestart",
-                "ForceRestart",
-                "Nmi",
-                "ForceOn",
-                "PushPowerButton"
-            ],
-            "enumDescriptions": {
-                "On": "Turn the system on",
-                "ForceOff": "Turn the system off immediately (non-graceful) shutdown",
-                "GracefulRestart": "Perform a graceful system shutdown followed by a restart of the system",
-                "ForceRestart": "Perform an immediate (non-graceful) shutdown, followed by a restart of the system",
-                "Nmi": "Generate a Non-Maskable Interrupt to cause an immediate system halt",
-                "ForceOn": "Turn the system on immediately",
-                "PushPowerButton": "Simulate the pressing of the physical power button on this system"
-            }
         },
         "SettingsResult": {
             "type": "object",
@@ -97,14 +76,28 @@
                     "readonly": true,
                     "description": "The ETag of the resource to which the settings were applied, after the application.",
                     "longDescription": "The value of this property shall be the ETag of the resource to which the settings were applied, after the application.  This is here so that the client can check it against the ETag of the current resource to see if any other changes have also happened to the resource."
-                },
-                "Messages": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "Messages.0.96.0.json#SettingsMessage"
-                    },
-                    "description": "Array of message entries"
                 }
+            }
+        },
+        "ResetType": {
+            "type": "string",
+            "enum": [
+                "On",
+                "ForceOff",
+                "GracefulRestart",
+                "ForceRestart",
+                "Nmi",
+                "ForceOn",
+                "PushPowerButton"
+            ],
+            "enumDescriptions": {
+                "On": "Turn the system on",
+                "ForceOff": "Turn the system off immediately (non-graceful) shutdown",
+                "GracefulRestart": "Perform a graceful system shutdown followed by a restart of the system",
+                "ForceRestart": "Perform an immediate (non-graceful) shutdown, followed by a restart of the system",
+                "Nmi": "Generate a Non-Maskable Interrupt to cause an immediate system halt",
+                "ForceOn": "Turn the system on immediately",
+                "PushPowerButton": "Simulate the pressing of the physical power button on this system"
             }
         },
         "Status": {
@@ -185,6 +178,18 @@
                 }
             }
         },
+        "Settings": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "href": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "Reference to the resource the client may PUT/PATCH to in order to change this resource.",
+                    "longDescription": "The value of this property shall be the URI of the resource to which a client must do a PUT or PATCh in order to modify this resource."
+                }
+            }
+        },
         "PhysicalContext": {
             "type": "string",
             "enum": [
@@ -232,16 +237,11 @@
                 "PowerSupplyBay": "Within a power supply bay"
             }
         },
-        "Settings": {
+        "Links": {
             "type": "object",
             "additionalProperties": false,
             "properties": {
-                "href": {
-                    "type": "string",
-                    "readonly": true,
-                    "description": "Reference to the resource the client may PUT/PATCH to in order to change this resource.",
-                    "longDescription": "The value of this property shall be the URI of the resource to which a client must do a PUT or PATCh in order to modify this resource."
-                }
+
             }
         }
     },
