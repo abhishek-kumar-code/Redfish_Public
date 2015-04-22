@@ -50,7 +50,7 @@
         <NavigationProperty Name="Redundancy" Type="Collection(Redundancy.Redundancy)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Redundancy information for the power subsystem of this system or device"/>
-          <Annotation Term="DMTF.ExpandReferences"/>
+          <Annotation Term="DMTF.ExpandResources"/>
         </NavigationProperty>
 
       </EntityType>
@@ -326,7 +326,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This structure is used to show redundancy for fans.  The Component ids will reference the members of the redundancy groups."/>
           <Annotation Term="OData.LongDescription" String="The values of the properties in this array shall be used to show redundancy for fans and other elements in this resource.  The use of IDs within these arrays shall reference the members of the redundancy groups."/>
-          <Annotation Term="DMTF.ExpandReferences"/>
+          <Annotation Term="DMTF.ExpandResources"/>
         </NavigationProperty>
       </EntityType>
 
