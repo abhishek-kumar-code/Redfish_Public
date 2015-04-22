@@ -73,6 +73,12 @@
             "description": "This array of message arguments are substituted for the arguments in the message when looked up in the message registry.",
             "longDescription": "This property has the same semantics as the MessageArgs property in the Event schema for Redfish."
         },
+        "Context": {
+            "type": "string",
+            "readonly": true,
+            "description": "A context can be supplied at subscription time.  This property is the context value supplied by the subscriber.",
+            "longDescription": "This property shall contain a client supplied context for the ListnerDestination to which this event is being sent."
+        },
         "OriginOfCondition": {
             "type": "object",
             "properties": {

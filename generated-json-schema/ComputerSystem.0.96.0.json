@@ -13,6 +13,11 @@
         "@odata.type": {
             "$ref": "odata.4.0.0.json#type"
         },
+        "Oem": {
+            "$ref": "Resource.0.96.0.json#Oem",
+            "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+            "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+        },
         "Id": {
             "$ref": "Resource.0.96.0.json#Id"
         },
@@ -21,11 +26,6 @@
         },
         "Name": {
             "$ref": "Resource.0.96.0.json#Name"
-        },
-        "Oem": {
-            "$ref": "Resource.0.96.0.json#Oem",
-            "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
-            "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
         },
         "SystemType": {
             "type": "string",
@@ -51,9 +51,6 @@
             "type": "object",
             "additionalProperties": false,
             "properties": {
-                "Oem": {
-                    "$ref": "Resource.0.96.0.json#Oem"
-                },
                 "Chassis": {
                     "type": "array",
                     "properties": {
@@ -214,9 +211,8 @@
                 "string",
                 "null"
             ],
-        "readonly": true,
-        "description": "The DNS Host Name of this system, without any domain information",
-        "longDescription": "The value of this property shall contain the DNS host name without any domain information."
+            "description": "The DNS Host Name, without any domain information",
+            "longDescription": "The value of this property shall be the host name for this system, as reported by the operating system or hypervisor."
         },
         "IndicatorLED": {
             "type": [
