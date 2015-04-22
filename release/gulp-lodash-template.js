@@ -15,7 +15,7 @@ module.exports = function(defaults, options) {
     }
 
     try {
-      file.contents = new Buffer(_.template(file.contents.toString(), _.merge({}, defaults, file.data), options));
+      file.contents = new Buffer(_.template(file.contents.toString())(_.merge({}, defaults, file.data), options));
       this.push(file);
     } catch (err) {
       this.emit('error', new gutil.PluginError('gulp-lodash-template', err, {fileName: file.path}));
