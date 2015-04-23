@@ -51,12 +51,20 @@
             "type": "object",
             "additionalProperties": false,
             "properties": {
+                "Oem": {
+                    "$ref": "Resource.0.96.0.json#Oem",
+                    "description": "Oem extension object.",
+                    "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
+                },
                 "Chassis": {
                     "type": "array",
+                    "items": {
+                    "type": "object",
                     "properties": {
                         "@odata.id" :{
                             "$ref": "odata.4.0.0.json#Id"
                         }
+                    }
                     },
                     "readonly": true,
                     "description": "An array of references to the chassis in which this system is contained",
@@ -75,10 +83,13 @@
                 },
                 "ManagedBy": {
                     "type": "array",
+                    "items": {
+                    "type": "object",
                     "properties": {
                         "@odata.id" :{
                             "$ref": "odata.4.0.0.json#Id"
                         }
+                    }
                     },
                     "readonly": true,
                     "description": "An array of references to the Managers responsible for this system",
@@ -119,10 +130,13 @@
                 },
                 "PoweredBy": {
                     "type": "array",
+                    "items": {
+                    "type": "object",
                     "properties": {
                         "@odata.id" :{
                             "$ref": "odata.4.0.0.json#Id"
                         }
+                    }
                     },
                     "readonly": true,
                     "description": "An array of ID[s] of resources that power this computer system. Normally the ID will be a chassis or a specific set of powerSupplies",
@@ -130,10 +144,13 @@
                 },
                 "CooledBy": {
                     "type": "array",
+                    "items": {
+                    "type": "object",
                     "properties": {
                         "@odata.id" :{
                             "$ref": "odata.4.0.0.json#Id"
                         }
+                    }
                     },
                     "readonly": true,
                     "description": "An array of ID[s] of resources that cool this computer system. Normally the ID will be a chassis or a specific set of fans.",

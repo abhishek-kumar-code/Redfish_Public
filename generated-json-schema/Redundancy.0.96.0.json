@@ -72,10 +72,13 @@
         },
         "RedundancySet": {
             "type": "array",
+            "items": {
+            "type": "object",
             "properties": {
                 "@odata.id" :{
                     "$ref": "odata.4.0.0.json#Id"
                 }
+            }
             },
             "readonly": true,
             "description": "Contains any ids that represent components of this reduncancy set.",

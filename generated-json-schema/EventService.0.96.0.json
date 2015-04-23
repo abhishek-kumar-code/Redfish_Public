@@ -31,6 +31,11 @@
             "type": "object",
             "additionalProperties": false,
             "properties": {
+                "Oem": {
+                    "$ref": "Resource.0.96.0.json#Oem",
+                    "description": "Oem extension object.",
+                    "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
+                },
                 "Subscriptions": {
                     "type": "object",
                     "properties": {
