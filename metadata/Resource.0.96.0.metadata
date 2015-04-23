@@ -16,10 +16,10 @@
 
       <!--Base Complex type for Links properties-->
       <ComplexType Name="Links">
-        <ComplexType Name="Oem">
+        <Property Name="Oem">
           <Annotation Term="OData.Description" String="Oem extension object."/>
           <Annotation Term="OData.LongDescription" String="This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
-        </ComplexType>
+        </Property>
       </ComplexType>
       
       <!--Base entity type for array members-->
