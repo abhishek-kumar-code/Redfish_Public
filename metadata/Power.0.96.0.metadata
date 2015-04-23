@@ -98,9 +98,11 @@
         </Property>
         <NavigationProperty Name="PowerMetrics" Type="Power.PowerMetric" Nullable="false">
           <Annotation Term="OData.Description" String="This object contains power metrics for power readings (interval, min/max/ave power consumption for the chassis."/>
+		  <Annotation Term="DMTF.ExpandResources"/>
         </NavigationProperty>
         <NavigationProperty Name="PowerLimit" Type="Power.PowerLimitType" Nullable="false">
           <Annotation Term="OData.Description" String="This object contains power limit status and configuration information for the chassis"/>
+		  <Annotation Term="DMTF.ExpandResources"/>
         </NavigationProperty>
         <NavigationProperty Name="RelatedItem" Type="Collection(Resource.Item)" Nullable="false">
           <Annotation Term="OData.Description" String="The ID(s) of the resources associated with this Power Limit"/>
