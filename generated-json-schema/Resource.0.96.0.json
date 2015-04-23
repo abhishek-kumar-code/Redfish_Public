@@ -13,6 +13,18 @@
         "@odata.type": {
             "$ref": "odata.4.0.0.json#type"
         },
+        "Oem": {
+            "type": [
+                "object",
+                "null"
+            ],
+            "additionalProperties": false,
+            "properties": {
+
+            },
+            "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+            "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+        },
         "Id": {
             "type": "string",
             "readonly": true,
@@ -34,18 +46,6 @@
             "description": "The name of the resource or array element.",
             "longDescription": "This object represents the Name property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification. The value of this string shall be of the format for the reserved word *Name*."
         },
-        "Oem": {
-            "type": [
-                "object",
-                "null"
-            ],
-            "additionalProperties": false,
-            "properties": {
-
-            },
-            "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
-            "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
-        },
         "ResetType": {
             "type": "string",
             "enum": [
@@ -65,6 +65,24 @@
                 "Nmi": "Generate a Non-Maskable Interrupt to cause an immediate system halt",
                 "ForceOn": "Turn the system on immediately",
                 "PushPowerButton": "Simulate the pressing of the physical power button on this system"
+            }
+        },
+        "Links": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "Oem": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+
+                    },
+                    "description": "Oem extension object.",
+                    "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
+                }
             }
         },
         "SettingsResult": {
@@ -97,14 +115,54 @@
                     "readonly": true,
                     "description": "The ETag of the resource to which the settings were applied, after the application.",
                     "longDescription": "The value of this property shall be the ETag of the resource to which the settings were applied, after the application.  This is here so that the client can check it against the ETag of the current resource to see if any other changes have also happened to the resource."
-                },
-                "Messages": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "Messages.0.96.0.json#SettingsMessage"
-                    },
-                    "description": "Array of message entries"
                 }
+            }
+        },
+        "PhysicalContext": {
+            "type": "string",
+            "enum": [
+                "Room",
+                "Intake",
+                "Exhaust",
+                "Front",
+                "Back",
+                "Upper",
+                "Lower",
+                "CPU",
+                "GPU",
+                "Backplane",
+                "SystemBoard",
+                "PowerSupply",
+                "VoltageRegulator",
+                "StorageDevice",
+                "NetworkingDevice",
+                "ComputeBay",
+                "StorageBay",
+                "NetworkBay",
+                "ExpansionBay",
+                "PowerSupplyBay"
+            ],
+            "enumDescriptions": {
+                "Room": "The room",
+                "Intake": "The intake point of the chassis",
+                "Exhaust": "The exhaust point of the chassis",
+                "Front": "The front of the chassis",
+                "Back": "The back of the chassis",
+                "Upper": "The upper portion of the chassis",
+                "Lower": "The lower portion of the chassis",
+                "CPU": "A Processor (CPU)",
+                "GPU": "A Graphics Processor (GPU)",
+                "Backplane": "A backplane within the chassis",
+                "SystemBoard": "The system board (PCB)",
+                "PowerSupply": "A power supply",
+                "VoltageRegulator": "A voltage regulator device",
+                "StorageDevice": "A storage device",
+                "NetworkingDevice": "A networking device",
+                "ComputeBay": "Within a compute bay",
+                "StorageBay": "Within a storage bay",
+                "NetworkBay": "Within a networking bay",
+                "ExpansionBay": "Within an expansion bay",
+                "PowerSupplyBay": "Within a power supply bay"
             }
         },
         "Status": {
@@ -183,53 +241,6 @@
                     "description": "Oem extension object.",
                     "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
                 }
-            }
-        },
-        "PhysicalContext": {
-            "type": "string",
-            "enum": [
-                "Room",
-                "Intake",
-                "Exhaust",
-                "Front",
-                "Back",
-                "Upper",
-                "Lower",
-                "CPU",
-                "GPU",
-                "Backplane",
-                "SystemBoard",
-                "PowerSupply",
-                "VoltageRegulator",
-                "StorageDevice",
-                "NetworkingDevice",
-                "ComputeBay",
-                "StorageBay",
-                "NetworkBay",
-                "ExpansionBay",
-                "PowerSupplyBay"
-            ],
-            "enumDescriptions": {
-                "Room": "The room",
-                "Intake": "The intake point of the chassis",
-                "Exhaust": "The exhaust point of the chassis",
-                "Front": "The front of the chassis",
-                "Back": "The back of the chassis",
-                "Upper": "The upper portion of the chassis",
-                "Lower": "The lower portion of the chassis",
-                "CPU": "A Processor (CPU)",
-                "GPU": "A Graphics Processor (GPU)",
-                "Backplane": "A backplane within the chassis",
-                "SystemBoard": "The system board (PCB)",
-                "PowerSupply": "A power supply",
-                "VoltageRegulator": "A voltage regulator device",
-                "StorageDevice": "A storage device",
-                "NetworkingDevice": "A networking device",
-                "ComputeBay": "Within a compute bay",
-                "StorageBay": "Within a storage bay",
-                "NetworkBay": "Within a networking bay",
-                "ExpansionBay": "Within an expansion bay",
-                "PowerSupplyBay": "Within a power supply bay"
             }
         },
         "Settings": {

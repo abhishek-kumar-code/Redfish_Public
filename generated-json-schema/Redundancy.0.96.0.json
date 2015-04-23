@@ -13,15 +13,15 @@
         "@odata.type": {
             "$ref": "odata.4.0.0.json#type"
         },
-        "MemberId": {
-            "type": "string",
-            "description": "This is the identifier for the member within the collection.",
-            "longDescription": "The value of this string shall uniquely identify the member within the collection."
-        },
         "Oem": {
             "$ref": "Resource.0.96.0.json#Oem",
             "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
             "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+        },
+        "MemberId": {
+            "type": "string",
+            "description": "This is the identifier for the member within the collection.",
+            "longDescription": "The value of this string shall uniquely identify the member within the collection."
         },
         "Name": {
             "$ref": "Resource.0.96.0.json#Name"
@@ -72,10 +72,13 @@
         },
         "RedundancySet": {
             "type": "array",
+            "items": {
+            "type": "object",
             "properties": {
                 "@odata.id" :{
                     "$ref": "odata.4.0.0.json#Id"
                 }
+            }
             },
             "readonly": true,
             "description": "Contains any ids that represent components of this reduncancy set.",
