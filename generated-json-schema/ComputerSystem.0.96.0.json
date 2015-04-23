@@ -13,6 +13,11 @@
         "@odata.type": {
             "$ref": "odata.4.0.0.json#type"
         },
+        "Oem": {
+            "$ref": "Resource.0.96.0.json#Oem",
+            "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+            "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+        },
         "Id": {
             "$ref": "Resource.0.96.0.json#Id"
         },
@@ -21,11 +26,6 @@
         },
         "Name": {
             "$ref": "Resource.0.96.0.json#Name"
-        },
-        "Oem": {
-            "$ref": "Resource.0.96.0.json#Oem",
-            "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
-            "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
         },
         "SystemType": {
             "type": "string",
@@ -52,14 +52,19 @@
             "additionalProperties": false,
             "properties": {
                 "Oem": {
-                    "$ref": "Resource.0.96.0.json#Oem"
+                    "$ref": "Resource.0.96.0.json#Oem",
+                    "description": "Oem extension object.",
+                    "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
                 },
                 "Chassis": {
                     "type": "array",
+                    "items": {
+                    "type": "object",
                     "properties": {
                         "@odata.id" :{
                             "$ref": "odata.4.0.0.json#Id"
                         }
+                    }
                     },
                     "readonly": true,
                     "description": "An array of references to the chassis in which this system is contained",
@@ -78,10 +83,13 @@
                 },
                 "ManagedBy": {
                     "type": "array",
+                    "items": {
+                    "type": "object",
                     "properties": {
                         "@odata.id" :{
                             "$ref": "odata.4.0.0.json#Id"
                         }
+                    }
                     },
                     "readonly": true,
                     "description": "An array of references to the Managers responsible for this system",
@@ -122,10 +130,13 @@
                 },
                 "PoweredBy": {
                     "type": "array",
+                    "items": {
+                    "type": "object",
                     "properties": {
                         "@odata.id" :{
                             "$ref": "odata.4.0.0.json#Id"
                         }
+                    }
                     },
                     "readonly": true,
                     "description": "An array of ID[s] of resources that power this computer system. Normally the ID will be a chassis or a specific set of powerSupplies",
@@ -133,10 +144,13 @@
                 },
                 "CooledBy": {
                     "type": "array",
+                    "items": {
+                    "type": "object",
                     "properties": {
                         "@odata.id" :{
                             "$ref": "odata.4.0.0.json#Id"
                         }
+                    }
                     },
                     "readonly": true,
                     "description": "An array of ID[s] of resources that cool this computer system. Normally the ID will be a chassis or a specific set of fans.",
@@ -214,9 +228,8 @@
                 "string",
                 "null"
             ],
-        "readonly": true,
-        "description": "The DNS Host Name of this system, without any domain information",
-        "longDescription": "The value of this property shall contain the DNS host name without any domain information."
+            "description": "The DNS Host Name, without any domain information",
+            "longDescription": "The value of this property shall be the host name for this system, as reported by the operating system or hypervisor."
         },
         "IndicatorLED": {
             "type": [

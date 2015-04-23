@@ -74,6 +74,37 @@
                 }
             }    
 },
+    "IPv6StaticAddress":{
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "Oem": {
+                    "$ref": "Resource.0.96.0.json#Oem"
+                },
+                "Address": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "A valid IPv6 address.",
+                    "longDescription": "This property provides access to a static IPv6 address that is currently assigned on a network interface."
+                },
+                "PrefixLength": {
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The Prefix Length of this IPv6 address.",
+                    "longDescription": "Provides the IPv6 network prefix length in bits for this address."
+                }
+            },
+            "required": [
+                "Address",
+                "PrefixLength"
+            ],
+            "description": "This object represents a single IPv6 static address to be assigned on a network interface."    
+},
     "IPv4Address":{
             "type": "object",
             "additionalProperties": false,
@@ -130,37 +161,6 @@
                     "longDescription": "The value of this property shall be the IPv4 default gateway address for this interface. If DHCPv4 is enabled on the interface and is configured to set the IPv4 default gateway address, this property becomes read-only."
                 }
             }    
-},
-    "IPv6StaticAddress":{
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "Oem": {
-                    "$ref": "Resource.0.96.0.json#Oem"
-                },
-                "Address": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "description": "A valid IPv6 address.",
-                    "longDescription": "This property provides access to a static IPv6 address that is currently assigned on a network interface."
-                },
-                "PrefixLength": {
-                    "type": [
-                        "integer",
-                        "null"
-                    ],
-                    "readonly": true,
-                    "description": "The Prefix Length of this IPv6 address.",
-                    "longDescription": "Provides the IPv6 network prefix length in bits for this address."
-                }
-            },
-            "required": [
-                "Address",
-                "PrefixLength"
-            ],
-            "description": "This object represents a single IPv6 static address to be assigned on a network interface."    
 }
     }
 

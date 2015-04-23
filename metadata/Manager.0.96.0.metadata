@@ -116,7 +116,7 @@
         <NavigationProperty Name="Redundancy" Type="Collection(Redundancy.Redundancy)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Redundancy information for the managers of this system"/>
-          <Annotation Term="DMTF.ExpandReferences"/>
+          <Annotation Term="DMTF.ExpandResources"/>
         </NavigationProperty>
       </EntityType>
 

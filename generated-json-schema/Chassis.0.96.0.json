@@ -13,6 +13,11 @@
         "@odata.type": {
             "$ref": "odata.4.0.0.json#type"
         },
+        "Oem": {
+            "$ref": "Resource.0.96.0.json#Oem",
+            "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+            "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+        },
         "Id": {
             "$ref": "Resource.0.96.0.json#Id"
         },
@@ -21,11 +26,6 @@
         },
         "Name": {
             "$ref": "Resource.0.96.0.json#Name"
-        },
-        "Oem": {
-            "$ref": "Resource.0.96.0.json#Oem",
-            "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
-            "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
         },
         "ChassisType": {
             "type": "string",
@@ -151,7 +151,9 @@
             "additionalProperties": false,
             "properties": {
                 "Oem": {
-                    "$ref": "Resource.0.96.0.json#Oem"
+                    "$ref": "Resource.0.96.0.json#Oem",
+                    "description": "Oem extension object.",
+                    "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
                 },
                 "LogServices": {
                     "type": "object",
@@ -166,10 +168,13 @@
                 },
                 "ComputerSystems": {
                     "type": "array",
+                    "items": {
+                    "type": "object",
                     "properties": {
                         "@odata.id" :{
                             "$ref": "odata.4.0.0.json#Id"
                         }
+                    }
                     },
                     "readonly": true,
                     "description": "An array of references to the computer systems contained in this chassis.  This will only reference ComputerSystems that are directly and wholly contained in this chassis.",
@@ -177,10 +182,13 @@
                 },
                 "ManagedBy": {
                     "type": "array",
+                    "items": {
+                    "type": "object",
                     "properties": {
                         "@odata.id" :{
                             "$ref": "odata.4.0.0.json#Id"
                         }
+                    }
                     },
                     "readonly": true,
                     "description": "An array of references to the managers contained in this chassis.",
@@ -221,10 +229,13 @@
                 },
                 "Contains": {
                     "type": "array",
+                    "items": {
+                    "type": "object",
                     "properties": {
                         "@odata.id" :{
                             "$ref": "odata.4.0.0.json#Id"
                         }
+                    }
                     },
                     "readonly": true,
                     "description": "An array of references to any other chassis that this chassis has in it.",
@@ -232,10 +243,13 @@
                 },
                 "PoweredBy": {
                     "type": "array",
+                    "items": {
+                    "type": "object",
                     "properties": {
                         "@odata.id" :{
                             "$ref": "odata.4.0.0.json#Id"
                         }
+                    }
                     },
                     "readonly": true,
                     "description": "An array of ID[s] of resources that power this chassis. Normally the ID will be a chassis or a specific set of powerSupplies",
@@ -243,10 +257,13 @@
                 },
                 "CooledBy": {
                     "type": "array",
+                    "items": {
+                    "type": "object",
                     "properties": {
                         "@odata.id" :{
                             "$ref": "odata.4.0.0.json#Id"
                         }
+                    }
                     },
                     "readonly": true,
                     "description": "An array of ID[s] of resources that cool this chassis. Normally the ID will be a chassis or a specific set of fans.",
