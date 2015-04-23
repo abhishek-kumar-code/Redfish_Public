@@ -36,10 +36,13 @@
             "properties": {
                 "Members": {
                     "type": "array",
+                    "items": {
+                    "type": "object",
                     "properties": {
                         "@odata.id" :{
                             "$ref": "odata.4.0.0.json#Id"
                         }
+                    }
                     },
                     "readonly": true,
                     "description": "Contains the members of this collection."
