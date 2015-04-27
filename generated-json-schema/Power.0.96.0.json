@@ -421,9 +421,7 @@
                     "longDescription": "The value of this property shall indicate the lowest possible value for CurrentReading. Units shall use the same units as the related ReadingVolts propoerty."
                 },
                 "PhysicalContext": {
-                    "type": {
-                        "$ref": "Resource.0.96.0.json#/definitions/PhysicalContext"
-                    },
+                    "$ref": "Resource.0.96.0.json#/definitions/PhysicalContext",
                     "readonly": true,
                     "description": "Describes the area or device to which this voltage measurement applies.",
                     "longDescription": "The value of this property shall be a description of the affected device or region within the chassis to which this voltage measurement applies."
