@@ -56,7 +56,7 @@
         "Redundancy": {
             "type": "array",
             "items": {
-                "$ref": "Redundancy.0.96.0.json#Redundancy"
+                "$ref": "Redundancy.0.96.0.json#/definitions/Redundancy"
             },
             "readonly": true,
             "description": "Redundancy information for the power subsystem of this system or device"
