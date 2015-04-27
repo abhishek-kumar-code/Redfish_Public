@@ -239,15 +239,6 @@
             "type": "object",
             "additionalProperties": false,
             "properties": {
-                "@odata.context": {
-                    "$ref": "odata.4.0.0.json#context"
-                },
-                "@odata.id": {
-                    "$ref": "odata.4.0.0.json#id"
-                },
-                "@odata.type": {
-                    "$ref": "odata.4.0.0.json#type"
-                },
                 "Oem": {
                     "$ref": "Resource.0.96.0.json#Oem",
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
@@ -560,7 +551,7 @@
                     "description": "This object contains power metrics for power readings (interval, min/max/ave power consumption for the chassis."
                 },
                 "PowerLimit": {
-                        "$ref": "Power.json#PowerLimitType",
+                        "$ref": "Power.json#PowerLimit",
                     "description": "This object contains power limit status and configuration information for the chassis"
                 },
                 "RelatedItem": {
