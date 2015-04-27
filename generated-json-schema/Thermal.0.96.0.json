@@ -51,7 +51,7 @@
         "Redundancy": {
             "type": "array",
             "items": {
-                "$ref": "Redundancy.0.96.0.json#Redundancy"
+                "$ref": "Redundancy.0.96.0.json#/definitions/Redundancy"
             },
             "readonly": true,
             "description": "This structure is used to show redundancy for fans.  The Component ids will reference the members of the redundancy groups.",
