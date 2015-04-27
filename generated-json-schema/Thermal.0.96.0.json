@@ -92,7 +92,7 @@
                 },
                 "ReadingCelsius": {
                     "type": [
-                        "string",
+                        "number",
                         "null"
                     ],
                     "readonly": true,
@@ -101,7 +101,7 @@
                 },
                 "UpperThresholdNonCritical": {
                     "type": [
-                        "string",
+                        "number",
                         "null"
                     ],
                     "readonly": true,
@@ -110,7 +110,7 @@
                 },
                 "UpperThresholdCritical": {
                     "type": [
-                        "string",
+                        "number",
                         "null"
                     ],
                     "readonly": true,
@@ -119,7 +119,7 @@
                 },
                 "UpperThresholdFatal": {
                     "type": [
-                        "string",
+                        "number",
                         "null"
                     ],
                     "readonly": true,
@@ -128,7 +128,7 @@
                 },
                 "LowerThresholdNonCritical": {
                     "type": [
-                        "string",
+                        "number",
                         "null"
                     ],
                     "readonly": true,
@@ -137,7 +137,7 @@
                 },
                 "LowerThresholdCritical": {
                     "type": [
-                        "string",
+                        "number",
                         "null"
                     ],
                     "readonly": true,
@@ -146,7 +146,7 @@
                 },
                 "LowerThresholdFatal": {
                     "type": [
-                        "string",
+                        "number",
                         "null"
                     ],
                     "readonly": true,
@@ -155,7 +155,7 @@
                 },
                 "MinReadingRangeTemp": {
                     "type": [
-                        "string",
+                        "number",
                         "null"
                     ],
                     "readonly": true,
@@ -164,7 +164,7 @@
                 },
                 "MaxReadingRangeTemp": {
                     "type": [
-                        "string",
+                        "number",
                         "null"
                     ],
                     "readonly": true,
