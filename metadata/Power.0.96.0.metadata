@@ -145,7 +145,7 @@
           <Annotation Term="Validation.Minimum" Int="0"/>
         </Property>
         <Property Name="LimitException" Type="Power.PowerLimitException">
-          <Annotation Term="OData.Description" String="The action that is taken if the power cannot be maintained below the LimitInWatts"/>
+          <Annotation Term="OData.Description" String="The action that is taken if the power cannot be maintained below the LimitInWatts."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the action to be taken if the resource power consumption can not be limited below the specified limit after several correction time periods."/>
         </Property>
         <Property Name="CorrectionInMs" Type="Edm.Int64">
@@ -157,13 +157,13 @@
 
       <EnumType Name="PowerLimitException">
         <Member Name="NoAction">
-          <Annotation Term="OData.Description" String="Take no action when the limit is exceeded"/>
+          <Annotation Term="OData.Description" String="Take no action when the limit is exceeded."/>
         </Member>
         <Member Name="HardPowerOff">
-          <Annotation Term="OData.Description" String="Turn the power off immediately when the limit is exceeded"/>
+          <Annotation Term="OData.Description" String="Turn the power off immediately when the limit is exceeded."/>
         </Member>
         <Member Name="LogEventOnly">
-          <Annotation Term="OData.Description" String="Log an event when the limit is exceeded, but take no further action"/>
+          <Annotation Term="OData.Description" String="Log an event when the limit is exceeded, but take no further action."/>
         </Member>
         <Member Name="Oem">
           <Annotation Term="OData.Description" String="Take an OEM-defined action."/>

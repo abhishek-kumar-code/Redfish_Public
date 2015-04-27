@@ -45,15 +45,6 @@
             "type": "object",
             "additionalProperties": false,
             "properties": {
-                "@odata.context": {
-                    "$ref": "odata.4.0.0.json#context"
-                },
-                "@odata.id": {
-                    "$ref": "odata.4.0.0.json#id"
-                },
-                "@odata.type": {
-                    "$ref": "odata.4.0.0.json#type"
-                },
                 "Oem": {
                     "$ref": "Resource.0.96.0.json#Oem",
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
