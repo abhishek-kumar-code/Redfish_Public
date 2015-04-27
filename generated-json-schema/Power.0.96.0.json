@@ -30,12 +30,7 @@
         "PowerControl": {
             "type": "array",
             "items": {
-            "type": "object",
-            "properties": {
-                "@odata.id" :{
-                    "$ref": "odata.4.0.0.json#Id"
-                }
-            }
+                "$ref": "#/definitions/PowerControl"
             },
             "readonly": true,
             "description": "This is the definition for power control function (power reading/limiting).",
@@ -44,12 +39,7 @@
         "Voltages": {
             "type": "array",
             "items": {
-            "type": "object",
-            "properties": {
-                "@odata.id" :{
-                    "$ref": "odata.4.0.0.json#Id"
-                }
-            }
+                "$ref": "#/definitions/Voltage"
             },
             "readonly": true,
             "description": "This is the definition for voltage sensors.",
@@ -58,12 +48,7 @@
         "PowerSupplies": {
             "type": "array",
             "items": {
-            "type": "object",
-            "properties": {
-                "@odata.id" :{
-                    "$ref": "odata.4.0.0.json#Id"
-                }
-            }
+                "$ref": "#/definitions/PowerSupply"
             },
             "readonly": true,
             "description": "Details of the power supplies associated with this system or device"

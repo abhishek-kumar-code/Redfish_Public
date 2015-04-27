@@ -26,7 +26,7 @@
       <EntityType Name="Power" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition for the Power Metrics.  It represents the properties for Power Consumption and Power Limiting."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a power metrics resource for a Redfish implementation."/>
-        <NavigationProperty Name="PowerControl" Type="Collection(Power.PowerControlType)" Nullable="false">
+        <NavigationProperty Name="PowerControl" Type="Collection(Power.PowerControl)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is the definition for power control function (power reading/limiting)."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for power control (power reading and limiting) for a Redfish implementation."/>
@@ -50,7 +50,7 @@
         </NavigationProperty>
       </EntityType>
 
-      <EntityType Name="PowerControlType" BaseType="Resource.ReferenceableMember">
+      <EntityType Name="PowerControl" BaseType="Resource.ReferenceableMember">
         <Property Name="Name" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Power Control Function name."/>
