@@ -481,7 +481,7 @@
                 }
             }
         },
-        "PowerControlType":{
+        "PowerControl":{
             "type": "object",
             "additionalProperties": false,
             "properties": {
