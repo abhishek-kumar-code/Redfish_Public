@@ -307,7 +307,7 @@
                     "readonly": true,
                     "description": "The time required for the limiting process to reduce power consumption to below the limit.",
                     "longDescription": "The value of this property shall represent the time interval in ms required for the limiting process to react and reduce the power consumption below the limit."
-                },
+                }
             }
         },
         "Voltage":{
