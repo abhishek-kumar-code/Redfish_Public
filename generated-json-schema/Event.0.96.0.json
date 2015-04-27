@@ -40,7 +40,7 @@
     ],
     "description": "This is the schema definition for Events.  It represents the properties for the events themselves and not subscriptions or any other resource.",
     "longDescription": "This resource shall be used to represent an event for a Redfish implementation.",
-    "#definitions": {
+    "definitions": {
         "EventRecord":{
             "type": "object",
             "additionalProperties": false,

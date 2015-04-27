@@ -79,7 +79,7 @@
     },
     "description": "This is the schema definition for the Power Metrics.  It represents the properties for Power Consumption and Power Limiting.",
     "longDescription": "This resource shall be used to represent a power metrics resource for a Redfish implementation.",
-    "#definitions": {
+    "definitions": {
         "PowerSupply":{
             "type": "object",
             "additionalProperties": false,

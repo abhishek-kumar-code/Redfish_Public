@@ -60,7 +60,7 @@
     },
     "description": "This is the schema definition for the Thermal properties.  It represents the properties for Temperature and Cooling.",
     "longDescription": "This resource shall be used to represent a thermal metrics resource for a Redfish implementation.",
-    "#definitions": {
+    "definitions": {
         "Temperature":{
             "type": "object",
             "additionalProperties": false,

@@ -26,33 +26,28 @@
       <EntityType Name="Power" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition for the Power Metrics.  It represents the properties for Power Consumption and Power Limiting."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a power metrics resource for a Redfish implementation."/>
-
         <NavigationProperty Name="PowerControl" Type="Collection(Power.PowerControlType)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is the definition for power control function (power reading/limiting)."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for power control (power reading and limiting) for a Redfish implementation."/>
-          <Annotation Term="DMTF.ExpandReferences"/>
+          <Annotation Term="DMTF.ExpandResources"/>
         </NavigationProperty>
-
         <NavigationProperty Name="Voltages" Type="Collection(Power.Voltage)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is the definition for voltage sensors."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for voltage sensors for a Redfish implementation."/>
-          <Annotation Term="DMTF.ExpandReferences"/>
+          <Annotation Term="DMTF.ExpandResources"/>
         </NavigationProperty>
-
         <NavigationProperty Name="PowerSupplies" Type="Collection(Power.PowerSupply)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Details of the power supplies associated with this system or device"/>
-          <Annotation Term="DMTF.ExpandReferences"/>
+          <Annotation Term="DMTF.ExpandResources"/>
         </NavigationProperty>
-
         <NavigationProperty Name="Redundancy" Type="Collection(Redundancy.Redundancy)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Redundancy information for the power subsystem of this system or device"/>
           <Annotation Term="DMTF.ExpandResources"/>
         </NavigationProperty>
-
       </EntityType>
 
       <EntityType Name="PowerControlType" BaseType="Resource.ReferenceableMember">
@@ -96,23 +91,21 @@
           <Annotation Term="Validation.Minimum" Int="0"/>
           <Annotation Term="OData.Measures.Unit" String="Watts"/>
         </Property>
-        <NavigationProperty Name="PowerMetrics" Type="Power.PowerMetric" Nullable="false">
+        <Property Name="PowerMetrics" Type="Power.PowerMetric" Nullable="false">
           <Annotation Term="OData.Description" String="This object contains power metrics for power readings (interval, min/max/ave power consumption for the chassis."/>
-		  <Annotation Term="DMTF.ExpandResources"/>
-        </NavigationProperty>
-        <NavigationProperty Name="PowerLimit" Type="Power.PowerLimitType" Nullable="false">
+        </Property>
+        <Property Name="PowerLimit" Type="Power.PowerLimit" Nullable="false">
           <Annotation Term="OData.Description" String="This object contains power limit status and configuration information for the chassis"/>
-		  <Annotation Term="DMTF.ExpandResources"/>
-        </NavigationProperty>
+        </Property>
+        <Property Name="Status" Type="Resource.Status" Nullable="false"/>
         <NavigationProperty Name="RelatedItem" Type="Collection(Resource.Item)" Nullable="false">
           <Annotation Term="OData.Description" String="The ID(s) of the resources associated with this Power Limit"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of IDs containing pointers to the resource that is being limited."/>
           <Annotation Term="DMTF.ExpandReferences"/>
         </NavigationProperty>
-        <Property Name="Status" Type="Resource.Status" Nullable="false"/>
       </EntityType>
 
-      <EntityType Name="PowerMetric" BaseType="Resource.ReferenceableMember">
+      <ComplexType Name="PowerMetric">
         <Property Name="IntervalInMin" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The time interval (or window) in which the PowerMetrics are measured over."/>
@@ -141,9 +134,9 @@
           <Annotation Term="OData.Measures.Unit" String="Watts"/>
           <Annotation Term="Validation.Minimum" Int="0"/>
         </Property>
-      </EntityType>
+      </ComplexType>
 
-      <ComplexType Name="PowerLimitType">
+      <ComplexType Name="PowerLimit">
         <Annotation Term="OData.Description" String="This object contains power limit status and configuration information for the chassis."/>
         <Property Name="LimitInWatts" Type="Edm.Decimal">
           <Annotation Term="OData.Description" String="The Power limit in watts. Set to null to disable power capping."/>
