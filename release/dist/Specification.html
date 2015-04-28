@@ -264,10 +264,9 @@ if (window.location.protocol === 'file:') {
         el = td;
       }
       a = document.createElement('a');
-      a.appendChild(document.createTextNode(++i));
+      a.textContent = "" + (++i);
       a.className = 'element-number';
-      a.setAttribute('id', i);
-      a.setAttribute('href', '#' + i);
+      a.href = "#" + (a.id = "" + i);
       el.appendChild(a);
     }
     return null;
@@ -310,7 +309,7 @@ window.onload = function() {
     var anchor, li;
     li = document.createElement('li');
     anchor = document.createElement('a');
-    anchor.setAttribute('href', href);
+    anchor.href = href;
     anchor.textContent = txt;
     li.appendChild(anchor);
     return li;

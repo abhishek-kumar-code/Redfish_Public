@@ -12,7 +12,7 @@ window.onload = ->
     li = document.createElement 'li'
     anchor = document.createElement 'a'
 
-    anchor.setAttribute 'href', href
+    anchor.href = href
     anchor.textContent = txt
 
     li.appendChild anchor

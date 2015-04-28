@@ -10,9 +10,8 @@ if window.location.protocol is 'file:'
         el = td
 
       a = document.createElement 'a'
-      a.appendChild document.createTextNode ++i
+      a.textContent = "#{++i}"
       a.className = 'element-number'
-      a.setAttribute 'id', i
-      a.setAttribute 'href', '#' + i
+      a.href = "#" + a.id = "#{i}"
       el.appendChild a
     null
