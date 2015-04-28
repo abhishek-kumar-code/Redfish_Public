@@ -150,10 +150,10 @@ h5,
 h6 {
   position: relative;
 }
-body.review {
+.review {
   padding-left: 30px;
 }
-body.review .element-number {
+.review .element-number {
   position: absolute;
   left: -30px;
   top: 50%;
@@ -164,13 +164,13 @@ body.review .element-number {
   line-height: 18px;
   color: #aaa;
 }
-body.review table {
+.review table {
   margin-left: -30px;
 }
-body.review table tr {
+.review table tr {
   border: none;
 }
-body.review table tr > :first-child {
+.review table tr > :first-child {
   position: inherit;
   width: 30px;
   border: none;
@@ -178,20 +178,20 @@ body.review table tr > :first-child {
   background-color: #fff;
   vertical-align: middle;
 }
-body.review table tr > :first-child .element-number {
+.review table tr > :first-child .element-number {
   position: inherit;
 }
-body.review li .element-number {
+.review li .element-number {
   left: -70px;
 }
 @media print {
-  body.review {
+  .review {
     padding-left: 0;
   }
-  body.review table {
+  .review table {
     margin-left: 0;
   }
-  body.review .element-number {
+  .review .element-number {
     display: none;
   }
 }
@@ -251,12 +251,35 @@ body.review li .element-number {
 
 </style>
     <script type="text/javascript">
-
+if (window.location.protocol === 'file:') {
+  document.addEventListener('toc', function() {
+    var a, el, element_number, elements, i, len, results, td;
+    document.querySelector('body').classList.toggle('review');
+    elements = document.querySelectorAll('h1 ~ p, h1 ~ ul > li, h1 ~ ol > li, h1 ~ table tr, h1, h1 ~ h2, h1 ~ h3, h1 ~ h4, h1 ~ h5, h1 ~ h6');
+    element_number = 1;
+    results = [];
+    for (i = 0, len = elements.length; i < len; i++) {
+      el = elements[i];
+      if (el.nodeName === 'TR') {
+        td = document.createElement('td');
+        el.insertBefore(td, el.firstChild);
+        el = td;
+      }
+      a = document.createElement('a');
+      a.appendChild(document.createTextNode(element_number));
+      a.className = 'element-number';
+      a.setAttribute('id', element_number);
+      a.setAttribute('href', '#' + element_number++);
+      results.push(el.appendChild(a));
+    }
+    return results;
+  });
+}
 
 var scrollToHash;
 
 window.onload = function() {
-  var $, _, a, block, counter, createItem, currentLevel, el, element_number, elements, i, j, k, l, len, len1, len2, len3, level, levelMap, m, num, oldToc, ref, results, scrollLeft, scrollTop, tag, tagName, tags, td, toc, txt, ul;
+  var $, _, block, counter, createItem, currentLevel, i, j, k, l, len, len1, len2, level, levelMap, num, oldToc, ref, results, tag, tagName, tags, toc, txt, ul;
   $ = document.querySelectorAll.bind(document);
   tags = ((function() {
     var j, results;
@@ -327,37 +350,17 @@ window.onload = function() {
     tag.appendChild(document.createTextNode(txt));
     currentLevel = level;
   }
+  document.dispatchEvent(new Event('toc'));
   scrollToHash();
   ref = $('pre code');
+  results = [];
   for (l = 0, len2 = ref.length; l < len2; l++) {
     block = ref[l];
     if (/lang-/.test(block.getAttribute('class'))) {
-      hljs.highlightBlock(block);
+      results.push(hljs.highlightBlock(block));
     }
   }
-  if (window.location.protocol === 'file:') {
-    document.querySelector('body').classList.toggle('review');
-    elements = document.querySelectorAll('h1 ~ p, h1 ~ ul > li, h1 ~ ol > li, h1 ~ table tr, h1, h1 ~ h2, h1 ~ h3, h1 ~ h4, h1 ~ h5, h1 ~ h6');
-    element_number = 1;
-    scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
-    scrollLeft = document.body.scrollLeft || document.documentElement.scrollLeft;
-    results = [];
-    for (m = 0, len3 = elements.length; m < len3; m++) {
-      el = elements[m];
-      if (el.nodeName === 'TR') {
-        td = document.createElement('td');
-        el.insertBefore(td, el.firstChild);
-        el = td;
-      }
-      a = document.createElement('a');
-      a.appendChild(document.createTextNode(element_number));
-      a.className = 'element-number';
-      a.setAttribute('id', element_number);
-      a.setAttribute('href', '#' + element_number++);
-      results.push(el.appendChild(a));
-    }
-    return results;
-  }
+  return results;
 };
 
 scrollToHash = function() {
