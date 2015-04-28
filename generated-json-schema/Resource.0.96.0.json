@@ -45,12 +45,79 @@
             "readonly": true,
             "description": "The name of the resource or array element.",
             "longDescription": "This object represents the Name property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification. The value of this string shall be of the format for the reserved word *Name*."
-        }
-    },
-    "required": [
-        "Name"
-    ],
-    "definitions": {
+        },
+        "ResetType": {
+            "type": "string",
+            "enum": [
+                "On",
+                "ForceOff",
+                "GracefulRestart",
+                "ForceRestart",
+                "Nmi",
+                "ForceOn",
+                "PushPowerButton"
+            ],
+            "enumDescriptions": {
+                "On": "Turn the system on",
+                "ForceOff": "Turn the system off immediately (non-graceful) shutdown",
+                "GracefulRestart": "Perform a graceful system shutdown followed by a restart of the system",
+                "ForceRestart": "Perform an immediate (non-graceful) shutdown, followed by a restart of the system",
+                "Nmi": "Generate a Non-Maskable Interrupt to cause an immediate system halt",
+                "ForceOn": "Turn the system on immediately",
+                "PushPowerButton": "Simulate the pressing of the physical power button on this system"
+            }
+        },
+        "Links": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "Oem": {
+                    "type": [
+                        "object",
+                        "null"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+
+                    },
+                    "description": "Oem extension object.",
+                    "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
+                }
+            }
+        },
+        "SettingsResult": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "Operation": {
+                    "type": "string",
+                    "enum": [
+                        "SettingsApply"
+                    ],
+                    "readonly": true,
+                    "description": "Last operation detail.",
+                    "longDescription": "The value of this property shall indicate the results of the settings application.  The value SettingsApply shall be used to indicate the Settings were applied during the normal course of operations, such as what happens during a reboot."
+                },
+                "Time": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "Indicates the time the settings were applied.",
+                    "longDescription": "The value of this property shall indicate the time that the settings object was applied to the resource."
+                },
+                "ETag": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The ETag of the resource to which the settings were applied, after the application.",
+                    "longDescription": "The value of this property shall be the ETag of the resource to which the settings were applied, after the application.  This is here so that the client can check it against the ETag of the current resource to see if any other changes have also happened to the resource."
+                }
+            }
+        },
         "PhysicalContext": {
             "type": "string",
             "enum": [
@@ -187,78 +254,9 @@
                     "longDescription": "The value of this property shall be the URI of the resource to which a client must do a PUT or PATCh in order to modify this resource."
                 }
             }
-        },
-        "SettingsResult": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "Operation": {
-                    "type": "string",
-                    "enum": [
-                        "SettingsApply"
-                    ],
-                    "readonly": true,
-                    "description": "Last operation detail.",
-                    "longDescription": "The value of this property shall indicate the results of the settings application.  The value SettingsApply shall be used to indicate the Settings were applied during the normal course of operations, such as what happens during a reboot."
-                },
-                "Time": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "readonly": true,
-                    "description": "Indicates the time the settings were applied.",
-                    "longDescription": "The value of this property shall indicate the time that the settings object was applied to the resource."
-                },
-                "ETag": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "readonly": true,
-                    "description": "The ETag of the resource to which the settings were applied, after the application.",
-                    "longDescription": "The value of this property shall be the ETag of the resource to which the settings were applied, after the application.  This is here so that the client can check it against the ETag of the current resource to see if any other changes have also happened to the resource."
-                }
-            }
-        },
-        "ResetType": {
-            "type": "string",
-            "enum": [
-                "On",
-                "ForceOff",
-                "GracefulRestart",
-                "ForceRestart",
-                "Nmi",
-                "ForceOn",
-                "PushPowerButton"
-            ],
-            "enumDescriptions": {
-                "On": "Turn the system on",
-                "ForceOff": "Turn the system off immediately (non-graceful) shutdown",
-                "GracefulRestart": "Perform a graceful system shutdown followed by a restart of the system",
-                "ForceRestart": "Perform an immediate (non-graceful) shutdown, followed by a restart of the system",
-                "Nmi": "Generate a Non-Maskable Interrupt to cause an immediate system halt",
-                "ForceOn": "Turn the system on immediately",
-                "PushPowerButton": "Simulate the pressing of the physical power button on this system"
-            }
-        },
-        "Links": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "Oem": {
-                    "type": [
-                        "object",
-                        "null"
-                    ],
-                    "additionalProperties": false,
-                    "properties": {
-
-                    },
-                    "description": "Oem extension object.",
-                    "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
-                }
-            }
         }
-    }
+    },
+    "required": [
+        "Name"
+    ]
 }
