@@ -59,8 +59,6 @@ window.onload = ->
     elements = document.querySelectorAll 'h1 ~ p, h1 ~ ul > li, h1 ~ ol > li, h1 ~ table tr, h1, h1 ~ h2, h1 ~ h3, h1 ~ h4, h1 ~ h5, h1 ~ h6'
     element_number = 1
 
-    scrollTop = document.body.scrollTop or document.documentElement.scrollTop
-    scrollLeft = document.body.scrollLeft or document.documentElement.scrollLeft
     for el in elements
       if el.nodeName is 'TR'
         td = document.createElement 'td'
