@@ -1,0 +1,61 @@
+p, ul > li, ol > li, h1, h2, h3, h4, h5, h6 {
+  position: relative;
+}
+
+.review {
+  padding-left: 30px;
+
+  .element-number {
+    position: absolute;
+    // top: 0;
+    left: -30px;
+    // position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    font-size: 10px;
+    font-weight: normal;
+    line-height: 18px;
+    color: #aaa;
+  }
+
+  // Add line numbers for review
+  table {
+    margin-left: -30px;
+
+    tr {
+      border: none;
+
+      > :first-child {
+        position: inherit;
+        width: 30px;
+        border: none;
+        padding: 0;
+        background-color: #fff;
+        vertical-align: middle;
+
+        .element-number {
+          position: inherit;
+        }
+      }
+    }
+  }
+
+  li .element-number {
+    left: -70px;
+  }
+
+  @media print {
+    // Hide line numbers in print
+    padding-left: 0;
+
+    table {
+      margin-left: 0;
+    }
+
+    .element-number {
+      display: none;
+    }
+  }
+}
+
