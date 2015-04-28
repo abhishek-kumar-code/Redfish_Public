@@ -30,7 +30,7 @@
         "Members": {
             "type": "array",
             "items": {
-                "$ref": "LogEntry.0.96.0.json#LogEntry"
+                "$ref": "LogEntry.0.96.0.json#"
             },
             "readonly": true,
             "description": "Contains the members of this collection."
