@@ -223,7 +223,7 @@
                     "type": "object",
                     "properties": {
                         "@odata.id" :{
-                            "$ref": "odata.4.0.0.json#Id"
+                            "$ref": "odata.4.0.0.json#id"
                         }
                     },
                     "description": "If this resource is supports changing properties by modifying a separate (settings) resource, this is the reference to that resource. ",
@@ -233,7 +233,7 @@
                     "type": "object",
                     "properties": {
                         "@odata.id" :{
-                            "$ref": "odata.4.0.0.json#Id"
+                            "$ref": "odata.4.0.0.json#id"
                         }
                     },
                     "readonly": true,
