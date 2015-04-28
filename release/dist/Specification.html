@@ -253,12 +253,10 @@ h6 {
     <script type="text/javascript">
 if (window.location.protocol === 'file:') {
   document.addEventListener('toc', function() {
-    var a, el, element_number, elements, i, len, results, td;
+    var a, el, elements, i, j, len, td;
     document.querySelector('body').classList.toggle('review');
     elements = document.querySelectorAll('h1 ~ p, h1 ~ ul > li, h1 ~ ol > li, h1 ~ table tr, h1, h1 ~ h2, h1 ~ h3, h1 ~ h4, h1 ~ h5, h1 ~ h6');
-    element_number = 1;
-    results = [];
-    for (i = 0, len = elements.length; i < len; i++) {
+    for (i = j = 0, len = elements.length; j < len; i = ++j) {
       el = elements[i];
       if (el.nodeName === 'TR') {
         td = document.createElement('td');
@@ -266,20 +264,20 @@ if (window.location.protocol === 'file:') {
         el = td;
       }
       a = document.createElement('a');
-      a.appendChild(document.createTextNode(element_number));
+      a.appendChild(document.createTextNode(++i));
       a.className = 'element-number';
-      a.setAttribute('id', element_number);
-      a.setAttribute('href', '#' + element_number++);
-      results.push(el.appendChild(a));
+      a.setAttribute('id', i);
+      a.setAttribute('href', '#' + i);
+      el.appendChild(a);
     }
-    return results;
+    return null;
   });
 }
 
 var scrollToHash;
 
 window.onload = function() {
-  var $, _, block, counter, createItem, currentLevel, i, j, k, l, len, len1, len2, level, levelMap, num, oldToc, ref, results, tag, tagName, tags, toc, txt, ul;
+  var $, _, block, counter, createItem, currentLevel, i, j, k, l, len, len1, len2, level, levelMap, num, oldToc, ref, tag, tagName, tags, toc, txt, ul;
   $ = document.querySelectorAll.bind(document);
   tags = ((function() {
     var j, results;
@@ -353,14 +351,13 @@ window.onload = function() {
   document.dispatchEvent(new Event('toc'));
   scrollToHash();
   ref = $('pre code');
-  results = [];
   for (l = 0, len2 = ref.length; l < len2; l++) {
     block = ref[l];
     if (/lang-/.test(block.getAttribute('class'))) {
-      results.push(hljs.highlightBlock(block));
+      hljs.highlightBlock(block);
     }
   }
-  return results;
+  return null;
 };
 
 scrollToHash = function() {

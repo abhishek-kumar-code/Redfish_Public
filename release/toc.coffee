@@ -56,6 +56,8 @@ window.onload = ->
   for block in $('pre code') when /lang-/.test block.getAttribute('class')
     hljs.highlightBlock block
 
+  null
+
 scrollToHash = ->
   if location.hash and not document.querySelector(':target')
     document.getElementById(location.hash.slice(1))?.scrollIntoView()
