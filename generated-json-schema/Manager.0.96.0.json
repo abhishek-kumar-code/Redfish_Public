@@ -62,7 +62,7 @@
                     "type": "object",
                     "properties": {
                         "@odata.id" :{
-                            "$ref": "odata.4.0.0.json#Id"
+                            "$ref": "odata.4.0.0.json#id"
                         }
                     }
                     },
@@ -76,7 +76,7 @@
                     "type": "object",
                     "properties": {
                         "@odata.id" :{
-                            "$ref": "odata.4.0.0.json#Id"
+                            "$ref": "odata.4.0.0.json#id"
                         }
                     }
                     },
@@ -88,7 +88,7 @@
                     "type": "object",
                     "properties": {
                         "@odata.id" :{
-                            "$ref": "odata.4.0.0.json#Id"
+                            "$ref": "odata.4.0.0.json#id"
                         }
                     },
                     "readonly": true,
@@ -99,7 +99,7 @@
                     "type": "object",
                     "properties": {
                         "@odata.id" :{
-                            "$ref": "odata.4.0.0.json#Id"
+                            "$ref": "odata.4.0.0.json#id"
                         }
                     },
                     "readonly": true,
@@ -110,7 +110,7 @@
                     "type": "object",
                     "properties": {
                         "@odata.id" :{
-                            "$ref": "odata.4.0.0.json#Id"
+                            "$ref": "odata.4.0.0.json#id"
                         }
                     },
                     "readonly": true,
@@ -121,7 +121,7 @@
                     "type": "object",
                     "properties": {
                         "@odata.id" :{
-                            "$ref": "odata.4.0.0.json#Id"
+                            "$ref": "odata.4.0.0.json#id"
                         }
                     },
                     "readonly": true,
@@ -132,7 +132,7 @@
                     "type": "object",
                     "properties": {
                         "@odata.id" :{
-                            "$ref": "odata.4.0.0.json#Id"
+                            "$ref": "odata.4.0.0.json#id"
                         }
                     },
                     "readonly": true,
