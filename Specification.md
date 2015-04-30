@@ -1044,18 +1044,20 @@ An individual property within a JSON object can be annotated with extended infor
     "Description": "Manager User Session",
     "Modified": "2013-01-31T23:45:08+00:00",
     "UserName": "Administrator",
-	"UserName@DMTF.ExtendedInfo" : {
-         "code": "Base.<%= DocVersion.replace(/\.[^\.]+$/, '') %>.PropertyNotWriteable",
-         "target": "UserName",
-         "message": "The property %1 is a read only property and cannot be assigned a value",
-         "@message.parameters": [
-            {
+    "UserName@Messages.ExtendedInfo" : [
+         {
+           "MessageID": "Base.<%= DocVersion.replace(/\.[^\.]+$/, '') %>.PropertyNotWriteable",
+           "PropertiesInError": ["UserName"],
+           "Message": "The property UserName is a read only property and cannot be assigned a value",
+           "MessageArgs": [
+              {
                 "UserName"
-            },
-        ]
-        "@message.severity": "Warning",
-        "@message.resolution": "Remove the property from the request body and resubmit the request if the operation failed"
-	},
+              },
+            ]
+            "Severity": "Warning",
+            "Resolution": "Remove the property from the request body and resubmit the request if the operation failed"
+         }
+     ],
     "Oem": {}
 }
 ~~~
