@@ -12,7 +12,7 @@ window.onload = ->
     li = document.createElement 'li'
     anchor = document.createElement 'a'
 
-    anchor.setAttribute 'href', href
+    anchor.href = href
     anchor.textContent = txt
 
     li.appendChild anchor
@@ -48,12 +48,15 @@ window.onload = ->
     tag.appendChild document.createTextNode(txt)
     currentLevel = level
 
+  document.dispatchEvent new Event('toc')
+
   scrollToHash()
 
   # Only highlight blocks that have been tagged with a language
   for block in $('pre code') when /lang-/.test block.getAttribute('class')
     hljs.highlightBlock block
 
+  null
 
 scrollToHash = ->
   if location.hash and not document.querySelector(':target')

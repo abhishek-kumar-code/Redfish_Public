@@ -51,7 +51,7 @@
         "Redundancy": {
             "type": "array",
             "items": {
-                "$ref": "Redundancy.0.96.0.json#Redundancy"
+                "$ref": "Redundancy.0.96.0.json#/definitions/Redundancy"
             },
             "readonly": true,
             "description": "This structure is used to show redundancy for fans.  The Component ids will reference the members of the redundancy groups.",
@@ -60,20 +60,11 @@
     },
     "description": "This is the schema definition for the Thermal properties.  It represents the properties for Temperature and Cooling.",
     "longDescription": "This resource shall be used to represent a thermal metrics resource for a Redfish implementation.",
-    "#definitions": {
+    "definitions": {
         "Temperature":{
             "type": "object",
             "additionalProperties": false,
             "properties": {
-                "@odata.context": {
-                    "$ref": "odata.4.0.0.json#context"
-                },
-                "@odata.id": {
-                    "$ref": "odata.4.0.0.json#id"
-                },
-                "@odata.type": {
-                    "$ref": "odata.4.0.0.json#type"
-                },
                 "Oem": {
                     "$ref": "Resource.0.96.0.json#Oem",
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
@@ -101,7 +92,7 @@
                 },
                 "ReadingCelsius": {
                     "type": [
-                        "string",
+                        "number",
                         "null"
                     ],
                     "readonly": true,
@@ -110,7 +101,7 @@
                 },
                 "UpperThresholdNonCritical": {
                     "type": [
-                        "string",
+                        "number",
                         "null"
                     ],
                     "readonly": true,
@@ -119,7 +110,7 @@
                 },
                 "UpperThresholdCritical": {
                     "type": [
-                        "string",
+                        "number",
                         "null"
                     ],
                     "readonly": true,
@@ -128,7 +119,7 @@
                 },
                 "UpperThresholdFatal": {
                     "type": [
-                        "string",
+                        "number",
                         "null"
                     ],
                     "readonly": true,
@@ -137,7 +128,7 @@
                 },
                 "LowerThresholdNonCritical": {
                     "type": [
-                        "string",
+                        "number",
                         "null"
                     ],
                     "readonly": true,
@@ -146,7 +137,7 @@
                 },
                 "LowerThresholdCritical": {
                     "type": [
-                        "string",
+                        "number",
                         "null"
                     ],
                     "readonly": true,
@@ -155,7 +146,7 @@
                 },
                 "LowerThresholdFatal": {
                     "type": [
-                        "string",
+                        "number",
                         "null"
                     ],
                     "readonly": true,
@@ -164,7 +155,7 @@
                 },
                 "MinReadingRangeTemp": {
                     "type": [
-                        "string",
+                        "number",
                         "null"
                     ],
                     "readonly": true,
@@ -173,7 +164,7 @@
                 },
                 "MaxReadingRangeTemp": {
                     "type": [
-                        "string",
+                        "number",
                         "null"
                     ],
                     "readonly": true,
@@ -236,7 +227,7 @@
                     "type": "object",
                     "properties": {
                         "@odata.id" :{
-                            "$ref": "odata.4.0.0.json#Id"
+                            "$ref": "odata.4.0.0.json#id"
                         }
                     }
                     },
@@ -250,15 +241,6 @@
             "type": "object",
             "additionalProperties": false,
             "properties": {
-                "@odata.context": {
-                    "$ref": "odata.4.0.0.json#context"
-                },
-                "@odata.id": {
-                    "$ref": "odata.4.0.0.json#id"
-                },
-                "@odata.type": {
-                    "$ref": "odata.4.0.0.json#type"
-                },
                 "Oem": {
                     "$ref": "Resource.0.96.0.json#Oem",
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
@@ -418,7 +400,7 @@
                     "type": "object",
                     "properties": {
                         "@odata.id" :{
-                            "$ref": "odata.4.0.0.json#Id"
+                            "$ref": "odata.4.0.0.json#id"
                         }
                     }
                     },
