@@ -40,20 +40,11 @@
     ],
     "description": "This is the schema definition for Events.  It represents the properties for the events themselves and not subscriptions or any other resource.",
     "longDescription": "This resource shall be used to represent an event for a Redfish implementation.",
-    "#definitions": {
+    "definitions": {
         "EventRecord":{
             "type": "object",
             "additionalProperties": false,
             "properties": {
-                "@odata.context": {
-                    "$ref": "odata.4.0.0.json#context"
-                },
-                "@odata.id": {
-                    "$ref": "odata.4.0.0.json#id"
-                },
-                "@odata.type": {
-                    "$ref": "odata.4.0.0.json#type"
-                },
                 "Oem": {
                     "$ref": "Resource.0.96.0.json#Oem",
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
@@ -134,7 +125,7 @@
                     "type": "object",
                     "properties": {
                         "@odata.id" :{
-                            "$ref": "odata.4.0.0.json#Id"
+                            "$ref": "odata.4.0.0.json#id"
                         }
                     },
                     "readonly": true,

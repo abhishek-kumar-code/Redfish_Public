@@ -30,12 +30,7 @@
         "PowerControl": {
             "type": "array",
             "items": {
-            "type": "object",
-            "properties": {
-                "@odata.id" :{
-                    "$ref": "odata.4.0.0.json#Id"
-                }
-            }
+                "$ref": "#/definitions/PowerControl"
             },
             "readonly": true,
             "description": "This is the definition for power control function (power reading/limiting).",
@@ -44,12 +39,7 @@
         "Voltages": {
             "type": "array",
             "items": {
-            "type": "object",
-            "properties": {
-                "@odata.id" :{
-                    "$ref": "odata.4.0.0.json#Id"
-                }
-            }
+                "$ref": "#/definitions/Voltage"
             },
             "readonly": true,
             "description": "This is the definition for voltage sensors.",
@@ -58,12 +48,7 @@
         "PowerSupplies": {
             "type": "array",
             "items": {
-            "type": "object",
-            "properties": {
-                "@odata.id" :{
-                    "$ref": "odata.4.0.0.json#Id"
-                }
-            }
+                "$ref": "#/definitions/PowerSupply"
             },
             "readonly": true,
             "description": "Details of the power supplies associated with this system or device"
@@ -71,7 +56,7 @@
         "Redundancy": {
             "type": "array",
             "items": {
-                "$ref": "Redundancy.0.96.0.json#Redundancy"
+                "$ref": "Redundancy.0.96.0.json#/definitions/Redundancy"
             },
             "readonly": true,
             "description": "Redundancy information for the power subsystem of this system or device"
@@ -79,20 +64,11 @@
     },
     "description": "This is the schema definition for the Power Metrics.  It represents the properties for Power Consumption and Power Limiting.",
     "longDescription": "This resource shall be used to represent a power metrics resource for a Redfish implementation.",
-    "#definitions": {
+    "definitions": {
         "PowerSupply":{
             "type": "object",
             "additionalProperties": false,
             "properties": {
-                "@odata.context": {
-                    "$ref": "odata.4.0.0.json#context"
-                },
-                "@odata.id": {
-                    "$ref": "odata.4.0.0.json#id"
-                },
-                "@odata.type": {
-                    "$ref": "odata.4.0.0.json#type"
-                },
                 "Oem": {
                     "$ref": "Resource.0.96.0.json#Oem",
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
@@ -127,7 +103,7 @@
                 },
                 "LineInputVoltageType": {
                     "type": [
-                        "string",
+                        "number",
                         "null"
                     ],
                     "enum": [
@@ -152,7 +128,7 @@
                 },
                 "LineInputVoltage": {
                     "type": [
-                        "string",
+                        "number",
                         "null"
                     ],
                     "readonly": true,
@@ -161,7 +137,7 @@
                 },
                 "PowerCapacityWatts": {
                     "type": [
-                        "string",
+                        "number",
                         "null"
                     ],
                     "readonly": true,
@@ -170,7 +146,7 @@
                 },
                 "LastPowerOutputWatts": {
                     "type": [
-                        "string",
+                        "number",
                         "null"
                     ],
                     "readonly": true,
@@ -231,7 +207,7 @@
                     "type": "object",
                     "properties": {
                         "@odata.id" :{
-                            "$ref": "odata.4.0.0.json#Id"
+                            "$ref": "odata.4.0.0.json#id"
                         }
                     }
                     },
@@ -254,25 +230,6 @@
             "type": "object",
             "additionalProperties": false,
             "properties": {
-                "@odata.context": {
-                    "$ref": "odata.4.0.0.json#context"
-                },
-                "@odata.id": {
-                    "$ref": "odata.4.0.0.json#id"
-                },
-                "@odata.type": {
-                    "$ref": "odata.4.0.0.json#type"
-                },
-                "Oem": {
-                    "$ref": "Resource.0.96.0.json#Oem",
-                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
-                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
-                },
-                "MemberId": {
-                    "type": "string",
-                    "description": "This is the identifier for the member within the collection.",
-                    "longDescription": "The value of this string shall uniquely identify the member within the collection."
-                },
                 "IntervalInMin": {
                     "type": [
                         "integer",
@@ -284,7 +241,7 @@
                 },
                 "MinConsumedWatts": {
                     "type": [
-                        "string",
+                        "number",
                         "null"
                     ],
                     "readonly": true,
@@ -293,7 +250,7 @@
                 },
                 "MaxConsumedWatts": {
                     "type": [
-                        "string",
+                        "number",
                         "null"
                     ],
                     "readonly": true,
@@ -302,7 +259,7 @@
                 },
                 "AverageConsumedWatts": {
                     "type": [
-                        "string",
+                        "number",
                         "null"
                     ],
                     "readonly": true,
@@ -311,19 +268,52 @@
                 }
             }
         },
+        "PowerLimit":{
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "LimitInWatts": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The Power limit in watts. Set to null to disable power capping.",
+                    "longDescription": "he value of this property shall represent the power cap limit in watts for the resource.  If set to null, power capping shall be disabled."
+                },
+                "LimitException": {
+                    "type": "string",
+                    "enum": [
+                         "NoAction",
+                         "HardPowerOff",
+                         "LogEventOnly",
+                         "Oem"
+                    ],
+                    "enumDescriptions": {
+                        "NoAction": "Take no action when the limit is exceeded.",
+                        "HardPowerOff": "Turn the power off immediately when the limit is exceeded.",
+                        "LogEventOnly": "Log an event when the limit is exceeded, but take no further action.",
+                        "Oem": "Take an OEM-defined action."
+                    },
+                    "readonly": true,
+                    "description": "The action that is taken if the power cannot be maintained below the LimitInWatts.",
+                    "longDescription": "The value of this property shall represent the action to be taken if the resource power consumption can not be limited below the specified limit after several correction time periods."
+                },
+                "CorrectionInMs": {
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The time required for the limiting process to reduce power consumption to below the limit.",
+                    "longDescription": "The value of this property shall represent the time interval in ms required for the limiting process to react and reduce the power consumption below the limit."
+                }
+            }
+        },
         "Voltage":{
             "type": "object",
             "additionalProperties": false,
             "properties": {
-                "@odata.context": {
-                    "$ref": "odata.4.0.0.json#context"
-                },
-                "@odata.id": {
-                    "$ref": "odata.4.0.0.json#id"
-                },
-                "@odata.type": {
-                    "$ref": "odata.4.0.0.json#type"
-                },
                 "Oem": {
                     "$ref": "Resource.0.96.0.json#Oem",
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
@@ -351,7 +341,7 @@
                 },
                 "ReadingVolts": {
                     "type": [
-                        "string",
+                        "number",
                         "null"
                     ],
                     "readonly": true,
@@ -360,7 +350,7 @@
                 },
                 "UpperThresholdNonCritical": {
                     "type": [
-                        "string",
+                        "number",
                         "null"
                     ],
                     "readonly": true,
@@ -369,7 +359,7 @@
                 },
                 "UpperThresholdCritical": {
                     "type": [
-                        "string",
+                        "number",
                         "null"
                     ],
                     "readonly": true,
@@ -378,7 +368,7 @@
                 },
                 "UpperThresholdFatal": {
                     "type": [
-                        "string",
+                        "number",
                         "null"
                     ],
                     "readonly": true,
@@ -387,7 +377,7 @@
                 },
                 "LowerThresholdNonCritical": {
                     "type": [
-                        "string",
+                        "number",
                         "null"
                     ],
                     "readonly": true,
@@ -396,7 +386,7 @@
                 },
                 "LowerThresholdCritical": {
                     "type": [
-                        "string",
+                        "number",
                         "null"
                     ],
                     "readonly": true,
@@ -405,7 +395,7 @@
                 },
                 "LowerThresholdFatal": {
                     "type": [
-                        "string",
+                        "number",
                         "null"
                     ],
                     "readonly": true,
@@ -414,7 +404,7 @@
                 },
                 "MinReadingRange": {
                     "type": [
-                        "string",
+                        "number",
                         "null"
                     ],
                     "readonly": true,
@@ -423,7 +413,7 @@
                 },
                 "MaxReadingRange": {
                     "type": [
-                        "string",
+                        "number",
                         "null"
                     ],
                     "readonly": true,
@@ -431,51 +421,7 @@
                     "longDescription": "The value of this property shall indicate the lowest possible value for CurrentReading. Units shall use the same units as the related ReadingVolts propoerty."
                 },
                 "PhysicalContext": {
-                    "type": "string",
-                    "enum": [
-                        "Room",
-                        "Intake",
-                        "Exhaust",
-                        "Front",
-                        "Back",
-                        "Upper",
-                        "Lower",
-                        "CPU",
-                        "GPU",
-                        "Backplane",
-                        "SystemBoard",
-                        "PowerSupply",
-                        "VoltageRegulator",
-                        "StorageDevice",
-                        "NetworkingDevice",
-                        "ComputeBay",
-                        "StorageBay",
-                        "NetworkBay",
-                        "ExpansionBay",
-                        "PowerSupplyBay"
-                    ],
-                    "enumDescriptions": {
-                        "Room": "The room",
-                        "Intake": "The intake point of the chassis",
-                        "Exhaust": "The exhaust point of the chassis",
-                        "Front": "The front of the chassis",
-                        "Back": "The back of the chassis",
-                        "Upper": "The upper portion of the chassis",
-                        "Lower": "The lower portion of the chassis",
-                        "CPU": "A Processor (CPU)",
-                        "GPU": "A Graphics Processor (GPU)",
-                        "Backplane": "A backplane within the chassis",
-                        "SystemBoard": "The system board (PCB)",
-                        "PowerSupply": "A power supply",
-                        "VoltageRegulator": "A voltage regulator device",
-                        "StorageDevice": "A storage device",
-                        "NetworkingDevice": "A networking device",
-                        "ComputeBay": "Within a compute bay",
-                        "StorageBay": "Within a storage bay",
-                        "NetworkBay": "Within a networking bay",
-                        "ExpansionBay": "Within an expansion bay",
-                        "PowerSupplyBay": "Within a power supply bay"
-                    },
+                    "$ref": "Resource.0.96.0.json#PhysicalContext",
                     "readonly": true,
                     "description": "Describes the area or device to which this voltage measurement applies.",
                     "longDescription": "The value of this property shall be a description of the affected device or region within the chassis to which this voltage measurement applies."
@@ -486,7 +432,7 @@
                     "type": "object",
                     "properties": {
                         "@odata.id" :{
-                            "$ref": "odata.4.0.0.json#Id"
+                            "$ref": "odata.4.0.0.json#id"
                         }
                     }
                     },
@@ -496,19 +442,10 @@
                 }
             }
         },
-        "PowerControlType":{
+        "PowerControl":{
             "type": "object",
             "additionalProperties": false,
             "properties": {
-                "@odata.context": {
-                    "$ref": "odata.4.0.0.json#context"
-                },
-                "@odata.id": {
-                    "$ref": "odata.4.0.0.json#id"
-                },
-                "@odata.type": {
-                    "$ref": "odata.4.0.0.json#type"
-                },
                 "Oem": {
                     "$ref": "Resource.0.96.0.json#Oem",
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
@@ -524,7 +461,7 @@
                 },
                 "PowerConsumedWatts": {
                     "type": [
-                        "string",
+                        "number",
                         "null"
                     ],
                     "readonly": true,
@@ -533,7 +470,7 @@
                 },
                 "PowerRequestedWatts": {
                     "type": [
-                        "string",
+                        "number",
                         "null"
                     ],
                     "readonly": true,
@@ -542,7 +479,7 @@
                 },
                 "PowerAvailableWatts": {
                     "type": [
-                        "string",
+                        "number",
                         "null"
                     ],
                     "readonly": true,
@@ -551,7 +488,7 @@
                 },
                 "PowerCapacityWatts": {
                     "type": [
-                        "string",
+                        "number",
                         "null"
                     ],
                     "readonly": true,
@@ -560,7 +497,7 @@
                 },
                 "PowerAllocatedWatts": {
                     "type": [
-                        "string",
+                        "number",
                         "null"
                     ],
                     "readonly": true,
@@ -575,7 +512,7 @@
                     "description": "This object contains power metrics for power readings (interval, min/max/ave power consumption for the chassis."
                 },
                 "PowerLimit": {
-                        "$ref": "Power.json#PowerLimitType",
+                    "$ref": "#/definitions/PowerLimit",
                     "description": "This object contains power limit status and configuration information for the chassis"
                 },
                 "RelatedItem": {
@@ -584,7 +521,7 @@
                     "type": "object",
                     "properties": {
                         "@odata.id" :{
-                            "$ref": "odata.4.0.0.json#Id"
+                            "$ref": "odata.4.0.0.json#id"
                         }
                     }
                     },

@@ -124,7 +124,7 @@
             "longDescription": "The value of this property shall indicate the number of array items supported by IPv6StaticAddresses."
         },
         "VLAN": {
-            "$ref": "VLanNetworkInterface.0.96.0.json#VLAN",
+            "$ref": "VLanNetworkInterface.0.96.0.json#/defintions/VLAN",
             "readonly": true,
             "description": "If this Network Interface supports more than one VLAN, this property will not be present and the client should look for VLANs collection in the link section of this resource.",
             "longDescription": "The value of this property shall be the VLAN for this interface.  If this interface supports more than one VLAN, the VLAN property shall not be present and the VLANS collection link shall be present instead."
@@ -132,7 +132,7 @@
         "IPv4Addresses": {
             "type": "array",
             "items": {
-                "$ref": "IPAddresses.0.96.0.json#IPv4Address"
+                "$ref": "IPAddresses.0.96.0.json#/definitions/IPv4Address"
             },
             "readonly": true,
             "description": "This array of objects is used to represent the IPv4 connection characteristics for this interface."
@@ -172,7 +172,7 @@
         "IPv6Addresses": {
             "type": "array",
             "items": {
-                "$ref": "IPAddresses.0.96.0.json#IPv6Address"
+                "$ref": "IPAddresses.0.96.0.json#/definitions/IPv6Address"
             },
             "readonly": true,
             "description": "This array of objects enumerates all of the currently assigned IPv6 addresses on this interface."
@@ -180,7 +180,7 @@
         "IPv6StaticAddresses": {
             "type": "array",
             "items": {
-                "$ref": "IPAddresses.0.96.0.json#IPv6StaticAddress"
+                "$ref": "IPAddresses.0.96.0.json#/definitions/IPv6StaticAddress"
             },
             "readonly": true,
             "description": "This array of objects represents all of the IPv6 static addresses to be assigned on this interface."
@@ -223,7 +223,7 @@
                     "type": "object",
                     "properties": {
                         "@odata.id" :{
-                            "$ref": "odata.4.0.0.json#Id"
+                            "$ref": "odata.4.0.0.json#id"
                         }
                     },
                     "description": "If this resource is supports changing properties by modifying a separate (settings) resource, this is the reference to that resource. ",
@@ -233,7 +233,7 @@
                     "type": "object",
                     "properties": {
                         "@odata.id" :{
-                            "$ref": "odata.4.0.0.json#Id"
+                            "$ref": "odata.4.0.0.json#id"
                         }
                     },
                     "readonly": true,

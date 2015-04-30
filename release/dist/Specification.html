@@ -139,6 +139,62 @@ pre {
 #last-footer-fix {
   display: none;
 }
+p,
+ul > li,
+ol > li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+}
+.review {
+  padding-left: 30px;
+}
+.review .element-number {
+  position: absolute;
+  left: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  font-size: 10px;
+  font-weight: normal;
+  line-height: 18px;
+  color: #aaa;
+}
+.review table {
+  margin-left: -30px;
+}
+.review table tr {
+  border: none;
+}
+.review table tr > :first-child {
+  position: inherit;
+  width: 30px;
+  border: none;
+  padding: 0;
+  background-color: #fff;
+  vertical-align: middle;
+}
+.review table tr > :first-child .element-number {
+  position: inherit;
+}
+.review li .element-number {
+  left: -70px;
+}
+@media print {
+  .review {
+    padding-left: 0;
+  }
+  .review table {
+    margin-left: 0;
+  }
+  .review .element-number {
+    display: none;
+  }
+}
 @media print {
   #toc-header,
   #toc ~ h2 {
@@ -195,10 +251,32 @@ pre {
 
 </style>
     <script type="text/javascript">
+if (window.location.protocol === 'file:') {
+  document.addEventListener('toc', function() {
+    var a, el, elements, i, j, len, td;
+    document.querySelector('body').classList.toggle('review');
+    elements = document.querySelectorAll('h1 ~ p, h1 ~ ul > li, h1 ~ ol > li, h1 ~ table tr, h1, h1 ~ h2, h1 ~ h3, h1 ~ h4, h1 ~ h5, h1 ~ h6');
+    for (i = j = 0, len = elements.length; j < len; i = ++j) {
+      el = elements[i];
+      if (el.nodeName === 'TR') {
+        td = document.createElement('td');
+        el.insertBefore(td, el.firstChild);
+        el = td;
+      }
+      a = document.createElement('a');
+      a.textContent = "" + (++i);
+      a.className = 'element-number';
+      a.href = "#" + (a.id = "" + i);
+      el.appendChild(a);
+    }
+    return null;
+  });
+}
+
 var scrollToHash;
 
 window.onload = function() {
-  var $, _, block, counter, createItem, currentLevel, i, j, k, l, len, len1, len2, level, levelMap, num, oldToc, ref, results, tag, tagName, tags, toc, txt, ul;
+  var $, _, block, counter, createItem, currentLevel, i, j, k, l, len, len1, len2, level, levelMap, num, oldToc, ref, tag, tagName, tags, toc, txt, ul;
   $ = document.querySelectorAll.bind(document);
   tags = ((function() {
     var j, results;
@@ -231,7 +309,7 @@ window.onload = function() {
     var anchor, li;
     li = document.createElement('li');
     anchor = document.createElement('a');
-    anchor.setAttribute('href', href);
+    anchor.href = href;
     anchor.textContent = txt;
     li.appendChild(anchor);
     return li;
@@ -269,16 +347,16 @@ window.onload = function() {
     tag.appendChild(document.createTextNode(txt));
     currentLevel = level;
   }
+  document.dispatchEvent(new Event('toc'));
   scrollToHash();
   ref = $('pre code');
-  results = [];
   for (l = 0, len2 = ref.length; l < len2; l++) {
     block = ref[l];
     if (/lang-/.test(block.getAttribute('class'))) {
-      results.push(hljs.highlightBlock(block));
+      hljs.highlightBlock(block);
     }
   }
-  return results;
+  return null;
 };
 
 scrollToHash = function() {
