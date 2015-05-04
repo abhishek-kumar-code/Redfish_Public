@@ -2129,8 +2129,6 @@ Implementations shall only use compliant TLS connections to transport the data b
 
 #### Event Subscriptions
 
-* The Redfish device shall check the privilege of the subscriber before pushing event data object to the destination 
-
 * The Redfish device shall encrypt event data when there is [Sensitive Data](#sensitive-data) in the event data object before pushing it
 
 * The Redfish device may verify the destination for identity purposes before pushing event data object to the Destination 
