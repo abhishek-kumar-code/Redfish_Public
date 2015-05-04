@@ -29,15 +29,15 @@
           <Annotation Name="OData.Description" String="This is an array of properties in the request body that caused the errors."/>
           <Annotation Name="OData.LongDescription" String="This property shall contain an array of property names in error, if appropriate for the message."/>
         </Property>
-        <Property Name="MessageArgs" Type="Collection(Edm.String)" AppliesTo="Info ExtendedInfo">
+        <Property Name="MessageArgs" Type="Collection(Edm.String)">
           <Annotation Name="OData.Description" String="This array of message arguments are substituted for the arguments in the message when looked up in the message registry."/>
           <Annotation Name="OData.LongDescription" String="This property shall contain the message substitution arguments for the specific message referenced by the MessageID and shall only be included if the MessageID is present."/>
         </Property>
-        <Property Name="Severity" Type="Edm.String" AppliesTo="Info ExtendedInfo">
+        <Property Name="Severity" Type="Edm.String">
           <Annotation Name="OData.Description" String="This is the severity of the errors."/>
           <Annotation Name="OData.LongDescription" String="The value of this property shall be the severity of the error, as defined in the Status section of the Redfish specificaiton."/>
         </Property>
-        <Property Name="Resolution" Type="Edm.String" AppliesTo="Info ExtendedInfo">
+        <Property Name="Resolution" Type="Edm.String">
           <Annotation Name="OData.Description" String="Used to provide suggestions on how to resolve the situation that caused the error."/>
           <Annotation Name="OData.LongDescription" String="This property shall contain an override of the Resolution of the message in message registry, if present."/>
         </Property>

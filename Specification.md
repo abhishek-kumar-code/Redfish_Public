@@ -1019,11 +1019,11 @@ A JSON object can be annotated with "@DMTF.ExtendedInfo" in order to specify obj
     "Modified": "2013-01-31T23:45:08+00:00",
     "UserName": "Administrator",
     "Oem": {},
-	"@DMTF.ExtendedInfo" : {
-         "code": "Base.<%= DocVersion.replace(/\.[^\.]+$/, '') %>.ResourceCannotBeDeleted",
-         "message": "The delete request failed because the resource requested cannot be deleted",
-         "@message.severity": "Critical",
-         "@message.resolution": "Do not attempt to delete a non-deletable resource."
+	"@Messages.ExtendedInfo" : {
+         "MessageID": "Base.<%= DocVersion.replace(/\.[^\.]+$/, '') %>.ResourceCannotBeDeleted",
+         "Message": "The delete request failed because the resource requested cannot be deleted",
+         "Severity": "Critical",
+         "Resolution": "Do not attempt to delete a non-deletable resource."
 	}
 }
 ~~~
@@ -1050,9 +1050,7 @@ An individual property within a JSON object can be annotated with extended infor
            "PropertiesInError": ["UserName"],
            "Message": "The property UserName is a read only property and cannot be assigned a value",
            "MessageArgs": [
-              {
                 "UserName"
-              },
             ]
             "Severity": "Warning",
             "Resolution": "Remove the property from the request body and resubmit the request if the operation failed"
