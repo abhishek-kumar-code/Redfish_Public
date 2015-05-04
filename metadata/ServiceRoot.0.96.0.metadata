@@ -29,8 +29,8 @@
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/SessionService.0.96.0">
     <edmx:Include Namespace="SessionService.0.96.0" Alias="SessionService"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Messages.0.96.0">
-    <edmx:Include Namespace="Messages.0.96.0" Alias="Messages"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Message.0.96.0">
+    <edmx:Include Namespace="Message.0.96.0" Alias="Message"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/JsonSchemaFile.0.96.0">
     <edmx:Include Namespace="JsonSchemaFile.0.96.0" Alias="JsonSchemaFile"/>

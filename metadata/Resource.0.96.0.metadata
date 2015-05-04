@@ -7,8 +7,8 @@
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/DMTFExtensions.0.96.0">
     <edmx:Include Namespace="DMTFExtensions.0.96.0" Alias="DMTF"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Messages.0.96.0">
-    <edmx:Include Namespace="Messages.0.96.0" Alias="Messages"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Message.0.96.0">
+    <edmx:Include Namespace="Message.0.96.0" Alias="Message"/>
   </edmx:Reference>
 
   <edmx:DataServices>
@@ -180,13 +180,10 @@
         </Member>
       </EnumType>
 
-      <TypeDefinition Name="SettingsRef" UnderlyingType="Edm.String">
-        <Annotation Term="OData.IsUrl"/>
-      </TypeDefinition>
-
       <!-- This represents the objects used for Settings in the Redfish specification. -->
       <ComplexType Name="Settings">
-        <Property Name="href" Type="Resource.SettingsRef"  Nullable="false">
+        <Property Name="href" Type="Edm.String"  Nullable="false">
+          <Annotation Term="OData.IsUrl"/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Reference to the resource the client may PUT/PATCH to in order to change this resource."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the URI of the resource to which a client must do a PUT or PATCh in order to modify this resource."/>
@@ -200,7 +197,7 @@
           <Annotation Term="OData.Description" String="Last operation detail."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the results of the settings application.  The value SettingsApply shall be used to indicate the Settings were applied during the normal course of operations, such as what happens during a reboot."/>
         </Property>
-        <Property Name="Time" Type="Edm.String">
+        <Property Name="Time" Type="Edm.DateTimeOffset">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Indicates the time the settings were applied."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the time that the settings object was applied to the resource."/>

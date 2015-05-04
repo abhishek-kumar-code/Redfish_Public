@@ -10,10 +10,10 @@
   </edmx:Reference>
   
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Messages.0.96.0" Alias="Messages">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Message.0.96.0" Alias="Message">
 
-      <Term Name="ExtendedInfo" Type="Messages.Message">
-        <Annotation Name="OData.Description" String="The ExtendedInfo annotation can be applied to any object or property to provide additional information about the item."/>
+      <Term Name="Messages" Type="Collection(Message.Message)">
+        <Annotation Name="OData.Description" String="The Messages annotation can be applied to any object or property to provide additional information about the item."/>
       </Term>
 
       <ComplexType Name="Message">
