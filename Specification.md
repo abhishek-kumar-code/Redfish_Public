@@ -127,22 +127,36 @@ The following additional abbreviations are used in this document.
 
 The Redfish Scalable Platform Management API ("Redfish") is a management standard using a data model representation inside of a hypermedia RESTful interface.  Because it is based on REST, Redfish is easier to use and implement than many other solutions.  Since it is model oriented, it is capable of expressing the relationships between components in modern systems as well as the semantics of the services and components within them.  It is also easily extensible.  By using a hypermedia approach to REST, Redfish can express a large variety of systems from multiple vendors.  By requiring JSON representation, a wide variety of resources can be created in a denormalized fashion not only to improve scalability, but the payload can be easily interpreted by most programming environments as well as being relatively intuitive for a human examining the data.  The model is exposed in terms of an interoperable OData Schema, with the payload of the messages being expressed in JSON following OData JSON conventions. The schema (available in both XML and JSON formats) includes annotations to facilitate automatic translation of the schema to JSON Schema. The ability to externally host the Schema definition of the resources in a machine-readable format allows the meta data to be associated with the data without encumbering Redfish services with the meta data, thus enabling more advanced client scenarios as found in many data center and cloud environments.    
 
-### Principal Goals & Scope
+### Principal Goals
 
-There are many principles and goals of Redfish as an architecture, a protocol and a data representation.  It is intended that this architecture support a wide variety of systems found in service today - from stand alone machines to racks of equipment found in cloud service environment. Extensibility is a key goal, as is forward compatibility and deterministic behavior.  Leveraging the protocols and standards widely accepted and used in environments today is a key strategy to achieve these goals.  Simplicity to the extent possible is another goal, achieved by making as few operations and as few instances as possible in the model. Matching the programming environments that are being widely adopted today is another goal. 
+There are many principles and goals of Redfish as an architecture, a data representation, and the definition of the protocols that are used to access and interact with a Redfish service. Redfish seeks provide specifications that meet the following goals:
+* Scalable – To support from stand-alone machines to racks of equipment found in cloud service environment.
+* Flexible - To support a wide variety of systems found in service today.
+* Extensible – To support new and vendor-specific capabilities cleanly within the framework of the data model.
+* Backward Compatible– To enable new capabilities to be added while preserving investments in earlier versions of the specifications.
+* Interoperable – To provide a useful, required baseline that ensures common level of functionality and implementation consistency across multiple vendors.
+* System Focused – To efficiently support the most commonly required platform hardware management capabilities that are used in scalable environments, while also being capable of managing current server environments.
+* Standards based - To leverage protocols and standards that are widely accepted and used in environments today. In particular, the programming environments that are being widely adopted for developing web-based clients today.
+* Simple – To be directly usable by web developers without requiring highly specialized programming skills.
+* Lightweight - To reduce the complexity and cost of implementing and validating SPMA Services on managed systems.
 
-The following design tenets govern the design of the Redfish Scalable Platform Management API, with the key goals elaborated below:
-
-* RESTful interface using a JSON payload and entity data model
-* Separation of protocol from data model, allowing them to be revised independently
-* Specified versioning rules for protocol and schema
+### Design Tenets
+The following design tenets and technologies are used to help deliver the previously stated goals and characteristics:
+* Provide a RESTful interface using a JSON payload and an Entity Data Model
+* Separate protocol from data model, allowing them to be revised independently
+* Specify versioning rules for protocol and schema
 * Leverage strength of internet protocol standards where it meets architectural requirements, such as JSON, HTTP, OData, and the RFCs referenced by this document.
-* Focused on scalable environments but capable of managing current server environments
 * Focus on out-of-band access -- implementable on existing BMC and firmware products
-* Present value-add features alongside standardized items
-* Functionality must be usable by non-computer-science professionals
-* Data definitions as obvious in context as possible
-* Opaque view of implementation architecture
+* Organize the schema to present value-add features alongside standardized items
+* Make data definitions as obvious in context as possible
+* Maintain implementation flexibility. Do not tie the interface to any particular underlying implementation architecture. "Standardize the interface, not the implementation."
+* Focus on most widely used 'common denominator' capabilities. Avoid adding complexity to address functions that are only valued by a small percentage of users.
+* Avoid placing complexity on the management controller to support operations that can be better done at the client.
+
+### Scope
+The scope of this specification is to define the next generation systems management interface. This includes defining both the protocol and data model, as well as other architectural components needed for systems management environments.
+
+Specifically, this document is intended to enable an open, industry-standard solution as proprietary or single-vendor efforts are not acceptable for target audience. The focus is on out-of-band access for large scale environments, though this architecture is capable of being the architectural successor to many of the current management standards.
 
 #### REST based
 
@@ -169,8 +183,6 @@ Adopting OData conventions for describing schema, url conventions, and naming an
 
 #### Model Oriented
 
-Bitwise prior solutions (like IPMI) have difficulty showing relationships.  Model orientation solves this.  But current models that have evolved over time have become extremely complex, requiring many IOs to gather information.  For that reason, as well as the complexity of their protocols and operations, they have received little implementation attention.  Some have their roots in modeling multiple domains (printers, switches, software, etc).  Additionally the expression of meta data in those models have only been adopted by niche markets.   
-
 The Redfish model is built for managing systems. All resources are defined in OData Schema and represented in JSON format. OData is an industry standard that encapsulates best practices for RESTful services and provides interoperability across services of different types. JSON is being widely adopted in multiple disciplines and has a large number of tools and programming languages that accelerate development when adopting these approaches. 
 
 #### Separation of Protocol from Data Model
@@ -185,19 +197,23 @@ Note that the ServiceRoot Schema places requirements on the last segment of the 
 
 #### Scope
 
-The scope of this specification is to define the next generation systems management interface.  This includes defining both the protocol and data model, as well as other architectural components needed for systems management environments.
+The scope of this specification is to define the protocols, data model, and behaviors, as well as other architectural components needed for an inter-operable, cross-vendor management interface that meets the expectations of Cloud and Web-based IT professionals for scalable platform management while remaining capable of being used for more traditional system platform management. The specification defines required interfaces and functionality, but does not set requirements for particular hardware or firmware to be used to implement those interfaces and functions.
 
-Specifically, this document is intended to enable an open, industry-standard solution as proprietary or single-vendor efforts are not acceptable for target audience.  The focus is on out-of-band access for large scale environments, though this architecture is capable of being the architectural successor to many of the current management standards.  
+The specifications defines elements that are mandatory for all Redfish implementations as well as optional elements that can be chosen by system vendor or manufacturer. The specifications also define  points at which OEM (system vendor) -specific extensions can be provided from implementation.
+
+The specifications set normative requirements for the Redfish service and associated materials, such as schema files. In general, the specifications do not set requirements for Redfish clients, but will indicate what a Redfish client should do in order to access and utilize a Redfish Service successfully and effectively.
 
 #### Limitations
 
 Redfish does not guarantee that client software will never need to be updated.  Examples that may require updates include accommodation of new types of systems or their components, data model updates, and so on.  System optimization for an application will always require architectural oversight.  However, Redfish does attempt to minimize instances of forced upgrades to clients using Schemas, strict versioning and forward compatibility rules and through separation of the protocol from the data model.
 
-Redfish does not enable a client to read a Resource Tree and write it to another Redfish Service.  This is not possible as it is a hypermedia API. Only the root object has a well known URI. The resource topology reflects the topology of the system and devices it represents.  Consequently, different server or device types will result in differently shaped resource trees, potentially even for identical systems from the same manufacturer. 
+Inter-operable does not mean identical. A Redfish client may need to adapt to the optional elements that are provided by different vendors.Implementation and configurations of a particular product from a given vendor can also vary.
+
+For example, Redfish does not enable a client to read a Resource Tree and write it to another Redfish Service.  This is not possible as it is a hypermedia API. Only the root object has a well known URI. The resource topology reflects the topology of the system and devices it represents.  Consequently, different server or device types will result in differently shaped resource trees, potentially even for identical systems from the same manufacturer. 
 
 Additionally, not all Redfish resources are simple read/write resources.  Implementations may follow other interaction patterns discussed later.  As an example, user credentials or certificates cannot simply be read from one service and transplanted to another.  Another example is the use of Setting Data instead of writing to the same resource that was read from.
 
-There is no raw/pass-thru interface as part of the standard.
+Lastly, the value of links between resources and other elements can vary across implementations. Clients should not assume that links can be reused across different instantiations of a Redfish service. 
 
 ### Service Elements
 
