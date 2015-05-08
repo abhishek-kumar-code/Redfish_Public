@@ -36,8 +36,9 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the URI of the resource to which a client must do a PUT or PATCh in order to modify this resource."/>
           <Annotation Term="DMTF.ExpandReferences" />
         </NavigationProperty>
-      </EntityType
+      </EntityType>
 
     </Schema>
+    
   </edmx:DataServices>
 </edmx:Edmx>
