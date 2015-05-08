@@ -1,11 +1,22 @@
 {
     "@odata.context": "/redfish/v1/$metadata/TaskService/Links/Tasks/Links/Members/$entity",
     "@odata.id": "/redfish/v1/TaskService/Tasks/1",
-    "@odata.type": "#TaskService.0.96.0.Task",
+    "@odata.type": "#Tasks.0.96.0.Task",
     "Id": "1",
     "Name": "Task 1",
     "TaskState": "Completed",
     "StartTime": "2012-03-07T14:44+06:00",
     "EndTime": "2012-03-07T14:45+06:00",
     "TaskStatus": "OK"
+    "Messages" : [
+        {
+            "MessageID": "Base.1.0.PropertyNotWriteable",
+            "PropertiesInError": "SKU",
+            "Message": "The property SKU is a read only property and cannot be assigned a value",
+            "MessageArgs": [
+                "SKU"
+            ],
+            "Severity": "Warning"
+        }
+    ]
 }
