@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.--> 
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/DMTFExtensions.0.97.0">
+    <edmx:Include Namespace="DMTFExtensions.0.97.0" Alias="DMTF"/>
+    <edmx:Include Namespace="Validation.0.97.0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.0.97.0">
+    <edmx:Include Namespace="Resource.0.97.0" Alias="Resource"/>
+  </edmx:Reference>
+  
+  <edmx:DataServices>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="VLanNetworkInterface.0.97.0" Alias="VLanNetworkInterface">
+
+      <!--This schema defines a computer system and its respective properties. -->
+      <EntityType Name="VLanNetworkInterfaceCollection" BaseType="Resource.ResourceCollection">
+        <Property Name="Links" Type="VLanNetworkInterface.Members">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="Contains links to other resources that are related to this resource."/>
+        </Property>
+      </EntityType>
+
+      <ComplexType Name="Members">
+        <NavigationProperty Name="Members" Type="Collection(VLanNetworkInterface.VLanNetworkInterface)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+      </ComplexType>
+
+      <!--Entity type representing properties of a VLAN within a collection-->
+      <EntityType Name="VLanNetworkInterface" BaseType="Resource.Resource">
+        <Property Name="VLANEnable" Type="Edm.Boolean">
+          <Annotation Term="OData.Description" String="This indicates if this VLAN is enabled."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be used to indicate if this VLAN is enabled for this interface."/>
+        </Property>
+        <Property Name="VLANId" Type="VLanNetworkInterface.VLANId">
+          <Annotation Term="OData.Description" String="This indicates the VLAN identifier for this VLAN."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be used to indicate the VLAN identifier for this VLAN."/>
+        </Property>
+      </EntityType>
+
+      <!--Complex type representing properties of a single VLAN-->
+      <ComplexType Name="VLAN">
+        <Property Name="VLANEnable" Type="Edm.Boolean">
+          <Annotation Term="OData.Description" String="This indicates if this VLAN is enabled."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be used to indicate if this VLAN is enabled for this interface."/>
+        </Property>
+        <Property Name="VLANId" Type="VLanNetworkInterface.VLANId">
+          <Annotation Term="OData.Description" String="This indicates the VLAN identifier for this VLAN."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be used to indicate the VLAN identifier for this VLAN."/>
+        </Property>
+      </ComplexType>
+
+      <!--Strongly typed property for VLANId-->
+      <TypeDefinition Name="VLANId" UnderlyingType="Edm.Int64">
+        <Annotation Term="Validation.Minimum" Int="0"/>
+        <Annotation Term="Validation.Maximum" Int="4095"/>
+      </TypeDefinition>
+
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

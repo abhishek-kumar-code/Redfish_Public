@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.--> 
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:DataServices>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Privileges.0.97.0" Alias="Privileges">
+
+      <!-- Privileges Definition-->
+      
+      <EnumType Name="PrivilegeType">
+        <Member Name="Login">
+          <Annotation Term="OData.Description" String="Able to log into the service and read resources."/>
+        <Member Name="ConfigureManager">
+          <Annotation Term="OData.Description" String="Able to configure Manager resources."/>
+        <Member Name="ConfigureUsers">
+          <Annotation Term="OData.Description" String="Able to configure Users and their Accounts."/>
+        <Member Name="ConfigureSelf">
+          <Annotation Term="OData.Description" String="Able to configure the current user Account."/>
+        <Member Name="ConfigureDevice">
+          <Annotation Term="OData.Description" String="Able to configure devices managed by this service."/>
+      </EnumType>
+      
+      <Term Name="ReadPrivileges" Type="Privileges.PrivilegeType">
+        <Annotation Term="Description" String="Read privileges may be defined on a Resource to provide defaults for the entire resource, or on individual properties to override the default for that property"/>
+      </Term>
+      <Term Name="WritePrivileges" Type="Privileges.PrivilegeType">
+        <Annotation Term="Description" String="Write privileges may be defined on a Resource to provide defaults for the entire resource, or on individual properties to override the default for that property"/>
+      </Term>
+      <Term Name="InvokePrivileges" Type="Privileges.privilegeType">
+        <Annotation Term="Description" String="Invoke privileges may be defined on a Resource to provide defaults for the entire resource, or on individual properties to override the default for that property"/>
+      </Term>
+
+      <Term Name="OEMReadPrivileges" Type="Collection(Edm.String)">
+        <Annotation Term="Description" String="OEM Read privileges extend the set of privleges required to read a resource or property. OEM Properties may be defined on a resource to provide defaults for the entire resource, or on individual properties to override the default for that property"/>
+      </Term>
+      <Term Name="OEMWritePrivileges" Type="Collection(Edm.String)">
+        <Annotation Term="Description" String="OEM Write privileges extend the set of privleges required to write a resource or property. OEM Properties may be defined on a resource to provide defaults for the entire resource, or on individual properties to override the default for that property"/>
+      </Term>
+      <Term Name="OEMInvokePrivileges" Type="Collection(Edm.String)">
+        <Annotation Term="Description" String="OEM Invoke privileges extend the set of privleges required to invoke a resource or property. OEM Properties may be defined on a resource to provide defaults for the entire resource, or on individual properties to override the default for that property"/>
+      </Term>
+
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

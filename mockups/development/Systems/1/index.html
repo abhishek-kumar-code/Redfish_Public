@@ -1,7 +1,7 @@
 {
     "@odata.context": "/redfish/v1/$metadata#Systems/Links/Members/$entity", 
     "@odata.id": "/redfish/v1/Systems/1",
-    "@odata.type": "#ComputerSystem.0.96.0.ComputerSystem",
+    "@odata.type": "#ComputerSystem.0.97.0.ComputerSystem",
     "Id": "1",
     "Name": "My Computer System",
     "SystemType": "Physical",
@@ -24,7 +24,7 @@
     "Boot": {
         "BootSourceOverrideEnabled": "Once",
         "BootSourceOverrideTarget": "Pxe",
-        "BootSourceOverrideTarget@DMTF.AllowableValues": [
+        "BootSourceOverrideTarget@Redfish.AllowableValues": [
             "None",
             "Pxe",
             "Floppy",
@@ -82,7 +82,7 @@
     "Actions": {
         "#ComputerSystem.Reset": {
             "target": "/redfish/v1/Systems/1/Actions/ComputerSystem.Reset",
-            "ResetType@DMTF.AllowableValues": [
+            "ResetType@Redfish.AllowableValues": [
                 "On",
                 "ForceOff",
                 "GracefulRestart",

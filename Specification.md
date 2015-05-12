@@ -2,7 +2,7 @@
 DocTitle: Redfish Scalable Platforms Management API Specification
 DocNumber: '0266'
 DocType: Specification
-DocVersion: '0.96.0'
+DocVersion: '0.97.0'
 DocStatus: Work in Progress
 DocConfidentiality: – Not a DMTF Standard – DMTF Confidential
 expiration: '2015-08-24'
@@ -594,7 +594,7 @@ And a computer system resource contains an [Actions](#actions-property) property
 "Actions": {
     "#ComputerSystem.Reset": {
         "target":"/redfish/v1/Systems/1/Actions/ComputerSystem.Reset",
-        "ResetType@DMTF.AllowableValues": [
+        "ResetType@Redfish.AllowableValues": [
             "On",
             "ForceOff",
             "GracefulRestart",
@@ -932,7 +932,7 @@ For example, the following property represents the Reset action, defined in the 
 ~~~json
 	"#ComputerSystem.Reset": {
     	"target":"/redfish/v1/Systems/1/Actions/ComputerSystem.Reset",
-	   	 "ResetType@DMTF.AllowableValues": ["On","Off", "Reset"]
+	   	 "ResetType@Redfish.AllowableValues": ["On","Off", "Reset"]
    	}
 ~~~
 
@@ -948,7 +948,7 @@ Given this, the client could invoke a POST request to /redfish/v1/Systems/1/Acti
 
 The property representing the action may be annotated with the "AllowableValues" annotation in order to specify the list of allowable values for a particular parameter. 
 
-The set of allowable values is specified by including a property whose name is the name of the parameter followed by "@DMTF.AllowableValues", and whose value is a JSON array of strings representing the allowable values for the parameter.
+The set of allowable values is specified by including a property whose name is the name of the parameter followed by "@Redfish.AllowableValues", and whose value is a JSON array of strings representing the allowable values for the parameter.
 
 ##### Links Property
 
@@ -1387,7 +1387,7 @@ Properties that must have a non-nullable value include the [nullable attribute](
           <Annotation Term="Core.Description" String="This is a property of TypeA."/>
           <Annotation Term="Core.LongDescription" String="This is the specification of Property1."/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="DMTF.Required"/>
+          <Annotation Term="Redfish.Required"/>
           <Annotation Term="OData.Measures.Unit" String="Watts"/>
         </Property>
 ~~~
@@ -1501,7 +1501,7 @@ The Required annotation term is used to specify that a property is required to b
 If an implementation supports a property, it shall always provide a value for that property.  If a value is unknown, then null is an acceptable values in most cases. Properties not returned from a GET operation shall indicate that the property is not currently supported by the implementation.
 
 ~~~xml
-		<Annotation Term="DMTF.Required"/>
+		<Annotation Term="Redfish.Required"/>
 ~~~
 
 The `Required` annotation term is defined in http://schemas.dmtf.org/redfish/v1/DMTFExtensions.<%= DocVersion %>.
@@ -1540,7 +1540,7 @@ If the property references a single type, the value of the type attribute is the
       <NavigationProperty Name="RelatedType" Type="MyTypes.TypeB">
         <Annotation Term="Core.Description" String="This property references a related resource."/>
         <Annotation Term="Core.LongDescription" String="This is the specification of the related property."/>
-		<Annotation Term="DMTF.ExpandReferences"/>
+		<Annotation Term="OData.AutoExpandReferences"/>
       </NavigationProperty>
 ~~~
 
@@ -1554,7 +1554,7 @@ where NamespaceQualifiedTypeName is the namespace (or alias) qualified name of t
       <NavigationProperty Name="RelatedType" Type="Collection(MyTypes.TypeB)">
         <Annotation Term="Core.Description" String="This property represents a collection of related resources."/>
         <Annotation Term="Core.LongDescription" String="This is the specification of the related property."/>
-		<Annotation Term="DMTF.ExpandReferences"/>
+		<Annotation Term="OData.AutoExpandReferences"/>
       </NavigationProperty>
 ~~~
 
@@ -1562,23 +1562,23 @@ All navigation properties shall include [Description](#description) and [LongDes
 
 ##### Expanded References
 
-Navigation properties in a Redfish JSON payload are expanded to include the [related resource id](#reference-to-a-single-related-resource) or [collection of related resource ids](#array-of-references-to-related-resources). This behavior is expressed using the ExpandReferences annotation.
+Navigation properties in a Redfish JSON payload are expanded to include the [related resource id](#reference-to-a-single-related-resource) or [collection of related resource ids](#array-of-references-to-related-resources). This behavior is expressed using the AutoExpandReferences annotation.
 
 ~~~xml
-		<Annotation Term="DMTF.ExpandReferences"/>
+		<Annotation Term="OData.AutoExpandReferences"/>
 ~~~
 
-The `ExpandReferences` annotation term is defined in http://schemas.dmtf.org/redfish/v1/DMTFExtensions.<%= DocVersion %>.
+The `AutoExpandReferences` annotation term is defined in http://schemas.dmtf.org/redfish/v1/DMTFExtensions.<%= DocVersion %>.
 
 ##### Expanded Resources
 
 This term can be applied to a navigation property in order to specify that the default behavior for the service is to expand the related [resource](#structured-properties) or [collection of resources](#collection-properties) in responses.
 
 ~~~xml
-		<Annotation Term="DMTF.ExpandResources"/>
+		<Annotation Term="OData.AutoExpand"/>
 ~~~
 
-The `ExpandResources` annotation term is defined in http://schemas.dmtf.org/redfish/v1/DMTFExtensions.<%= DocVersion %>.
+The `AutoExpand` annotation term is defined in http://schemas.dmtf.org/redfish/v1/DMTFExtensions.<%= DocVersion %>.
 
 #### Resource Actions
 
@@ -2316,4 +2316,4 @@ The file where the events are written, one or more messages per event should at 
 | Version | Date      | Description                             |
 | ---     | ---       | ---                                     |
 | 0.94.0  | 2015-13-1 | Initial merge of 0.91 and 0.92 versions |
-| 0.96.0  | 2015-3-3  | Near-final Chassis and ComputerSystem schemas. Introduction of referenceable (array) members and use for power metrics, thermal metrics. Introduction of SessionService. Added JSONSchemaFile to OData metadata, mockups. Miscellaneous clean-up. |
+| 0.97.0  | 2015-3-3  | Near-final Chassis and ComputerSystem schemas. Introduction of referenceable (array) members and use for power metrics, thermal metrics. Introduction of SessionService. Added JSONSchemaFile to OData metadata, mockups. Miscellaneous clean-up. |
