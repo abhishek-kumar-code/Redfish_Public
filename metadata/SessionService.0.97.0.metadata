@@ -36,6 +36,7 @@
       </EntityType>
 
       <ComplexType Name="Links" BaseType="Resource.Links">
+        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
         <NavigationProperty Name="Sessions" Type="Session.SessionCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Link to a collection of Sessions"/>

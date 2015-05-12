@@ -24,6 +24,7 @@
       </EntityType>
 
       <ComplexType Name="Members">
+        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
         <NavigationProperty Name="Members" Type="Collection(JsonSchemaFile.SchemaFile)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Contains the members of this collection."/>
@@ -54,6 +55,7 @@
       </EntityType>
 
       <ComplexType Name="Location">
+        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
         <Property Name="Language" Nullable="false" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The language code for the file the schema is in."/>

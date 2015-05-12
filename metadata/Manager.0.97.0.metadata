@@ -49,6 +49,7 @@
       </EntityType>
 
       <ComplexType Name="Members">
+        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
         <NavigationProperty Name="Members" Type="Collection(Manager.Manager)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Contains the members of this collection."/>
@@ -121,9 +122,13 @@
       </EntityType>
 
       <ComplexType Name="Actions">
+        <Annotation Term="OData.AdditionalProperties" Bool="True"/>
         <Property Name="Oem" Type="Manager.OemActions"/>
       </ComplexType>
-      <ComplexType Name="OemActions"/>
+      
+      <ComplexType Name="OemActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="True"/>
+      </ComplexType>
 
       <!-- The reset action restarts the Manager-->
       <Action Name="Reset" Isbound="true">
@@ -233,6 +238,7 @@
 
       <ComplexType Name="ManagerService">
         <Annotation Term="OData.Description" String="Used for describing services like Serial Console, Command Shell or Graphical Console"/>
+        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
         <Property Name="Enabled" Type="Edm.Boolean" Nullable="false">
           <Annotation Term="OData.Description" String="Indicates if the service is enabled for this manager."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the enabled status of the protocol used for the service.  The value shall be true if enabled and false if disabled."/>
@@ -288,6 +294,7 @@
 
       <!-- This type contains information about the Serial Console service of a given manager. -->
       <ComplexType Name="SerialConsole" BaseType="Manager.ManagerService">
+        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
         <Property Name="ConnectTypesSupported" Type="Collection(Manager.SerialConnectTypesSupported)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This object is used to enumerate the Serial Console connection types allowed by the implementation."/>
@@ -297,6 +304,7 @@
 
       <!-- This type contains information about the Command Shell service of a given manager. -->
       <ComplexType Name="CommandShell" BaseType="Manager.ManagerService">
+        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
         <Property Name="ConnectTypesSupported" Type="Collection(Manager.CommandConnectTypesSupported)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This object is used to enumerate the Command Shell connection types allowed by the implementation."/>
@@ -306,6 +314,7 @@
 
       <!-- This type contains information about the Graphical Console (KVM-IP) service of a given manager. -->
       <ComplexType Name="GraphicalConsole" BaseType="Manager.ManagerService">
+        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
         <Property Name="ConnectTypesSupported" Type="Collection(Manager.GraphicalConnectTypesSupported)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This object is used to enumerate the Graphical Console connection types allowed by the implementation."/>

@@ -43,6 +43,7 @@
       </EntityType>
 
       <ComplexType Name="Members">
+        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
         <NavigationProperty Name="Members" Type="Collection(ComputerSystem.ComputerSystem)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Contains the members of this collection."/>
@@ -183,9 +184,13 @@
       </ComplexType>
 
       <ComplexType Name="Actions">
+        <Annotation Term="OData.AdditionalProperties" Bool="True"/>
         <Property Name="Oem" Type="ComputerSystem.OemActions"/>
       </ComplexType>
-      <ComplexType Name="OemActions"/>
+
+      <ComplexType Name="OemActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="True"/>
+      </ComplexType>
 
       <!-- The reset action resets/reboots the ComputerSystem.-->
       <Action Name="Reset" Isbound="true">
@@ -240,6 +245,7 @@
       </EnumType>
 
       <ComplexType Name="Boot">
+        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
         <Property Name="BootSourceOverrideTarget" Type="ComputerSystem.BootSource">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/ReadWrite"/>
           <Annotation Term="OData.Description" String="The current boot source to be used at next boot instead of the normal boot device, if BootSourceOverrideEnabled is true."/>
@@ -307,6 +313,7 @@
       </EnumType>
 
       <ComplexType Name="ProcessorSummary">
+        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
         <Property Name="Count" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The number of processors in the system."/>
@@ -323,6 +330,7 @@
       </ComplexType>
 
       <ComplexType Name="MemorySummary">
+        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
         <Property Name="TotalSystemMemoryGiB" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is the total amount of memory in the system measured in GiB."/>

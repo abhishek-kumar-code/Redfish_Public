@@ -109,6 +109,7 @@
       </EntityType>
 
       <ComplexType Name="PowerMetric">
+        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
         <Property Name="IntervalInMin" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The time interval (or window) in which the PowerMetrics are measured over."/>
@@ -141,6 +142,7 @@
 
       <ComplexType Name="PowerLimit">
         <Annotation Term="OData.Description" String="This object contains power limit status and configuration information for the chassis."/>
+        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
         <Property Name="LimitInWatts" Type="Edm.Decimal">
           <Annotation Term="OData.Description" String="The Power limit in watts. Set to null to disable power capping."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the power cap limit in watts for the resource.  If set to null, power capping shall be disabled."/>

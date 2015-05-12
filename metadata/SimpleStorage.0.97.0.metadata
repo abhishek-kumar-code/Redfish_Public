@@ -20,6 +20,7 @@
       </EntityType>
 
       <ComplexType Name="Members">
+        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
         <NavigationProperty Name="Members" Type="Collection(SimpleStorage.SimpleStorage)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Contains the members of this collection."/>
@@ -42,6 +43,7 @@
       </EntityType>
 
       <ComplexType Name="Device">
+        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
         <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
         <!-- Redfish schema has Description but Mockup payload has Name -->
         <Property Name="Name" Type="Edm.String" Nullable="false">

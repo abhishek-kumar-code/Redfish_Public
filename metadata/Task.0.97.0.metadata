@@ -26,7 +26,8 @@
       </EntityType>
 
       <ComplexType Name="Members">
-        <NavigationProperty Name="Members" Type="Collection(Tasks.Task)">
+       <Annotation Term="OData.AdditionalProperties" Bool="False"/>
+       <NavigationProperty Name="Members" Type="Collection(Tasks.Task)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Contains the members of this collection."/>
           <Annotation Term="OData.AutoExpandReferences"/>

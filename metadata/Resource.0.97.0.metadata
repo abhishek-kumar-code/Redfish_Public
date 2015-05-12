@@ -13,6 +13,7 @@
 
       <!--Base Complex type for Links properties-->
       <ComplexType Name="Links">
+        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
         <Property Name="Oem" Type="Resource.Oem">
           <Annotation Term="OData.Description" String="Oem extension object."/>
           <Annotation Term="OData.LongDescription" String="This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
@@ -21,6 +22,7 @@
       
       <!--Base entity type for array members-->
       <EntityType Name="Item" Abstract="true">
+        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
         <Annotation Term="OData.Description" String="This is the base type for resources and referenceable members."/>
         <Property Name="Oem" Type="Resource.Oem">
           <Annotation Term="OData.Description" String="This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections."/>
@@ -66,6 +68,7 @@
 
       <!--Base entity type for all resource collection objects-->
       <EntityType Name="ResourceCollection" Abstract="True">
+        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
         <Key>
           <PropertyRef Name="Name"/>
         </Key>
@@ -93,12 +96,14 @@
 
       <!--Complex type that serves as a "property bag" for OEM properties-->
       <ComplexType Name="Oem">
+        <Annotation Term="OData.AdditionalProperties" Bool="True"/>
         <Annotation Term="OData.Description" String="Oem extension object."/>
         <Annotation Term="OData.LongDescription" String="This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
       </ComplexType>
 
       <!--This object represents the standard status structure for resources.-->
       <ComplexType Name="Status">
+        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
         <Property Name="State" Type="Resource.State">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This indicates the known state of the resource, such as if it is enabled."/>

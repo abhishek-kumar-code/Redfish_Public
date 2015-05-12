@@ -73,6 +73,7 @@
       </EntityType>
 
       <ComplexType Name="ServiceRootLinks">
+        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
         <NavigationProperty Name="Systems" Type="ComputerSystem.ComputerSystemCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a link to a collection of Systems."/>

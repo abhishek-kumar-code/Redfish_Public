@@ -55,9 +55,13 @@
       </EntityType>
 
       <ComplexType Name="Actions">
+        <Annotation Term="OData.AdditionalProperties" Bool="True"/>
         <Property Name="Oem" Type="EventService.OemActions"/>
       </ComplexType>
-      <ComplexType Name="OemActions"/>
+      
+      <ComplexType Name="OemActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="True"/>
+      </ComplexType>
 
       <ComplexType Name="Links" BaseType="Resource.Links">
         <NavigationProperty Name="Subscriptions" Type="ListenerDestination.ListenerDestinationCollection" ContainsTarget="true">

@@ -60,6 +60,7 @@
       </ComplexType>
 
       <ComplexType Name="Message">
+        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
         <Property Name="Description" Nullable="false" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a short description of how and when this message is to be used."/>

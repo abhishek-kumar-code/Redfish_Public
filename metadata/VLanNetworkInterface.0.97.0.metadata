@@ -24,6 +24,7 @@
       </EntityType>
 
       <ComplexType Name="Members">
+        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
         <NavigationProperty Name="Members" Type="Collection(VLanNetworkInterface.VLanNetworkInterface)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Contains the members of this collection."/>
@@ -45,6 +46,7 @@
 
       <!--Complex type representing properties of a single VLAN-->
       <ComplexType Name="VLAN">
+        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
         <Property Name="VLANEnable" Type="Edm.Boolean">
           <Annotation Term="OData.Description" String="This indicates if this VLAN is enabled."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be used to indicate if this VLAN is enabled for this interface."/>

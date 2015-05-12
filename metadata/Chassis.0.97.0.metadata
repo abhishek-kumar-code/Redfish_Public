@@ -39,6 +39,7 @@
       </EntityType>
 
       <ComplexType Name="Members">
+        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
         <NavigationProperty Name="Members" Type="Collection(Chassis.Chassis)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Contains the members of this collection."/>
@@ -157,9 +158,13 @@
       </ComplexType>
 
       <ComplexType Name="Actions">
+        <Annotation Term="OData.AdditionalProperties" Bool="True"/>
         <Property Name="Oem" Type="Chassis.OemActions"/>
       </ComplexType>
-      <ComplexType Name="OemActions"/>
+      
+      <ComplexType Name="OemActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="True"/>
+      </ComplexType>
 
       <!-- The reset action restarts the Chassis.-->
       <Action Name="Reset" Isbound="true">

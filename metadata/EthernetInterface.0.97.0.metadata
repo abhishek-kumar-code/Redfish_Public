@@ -36,6 +36,7 @@
       </EntityType>
 
       <ComplexType Name="Members">
+        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
         <NavigationProperty Name="Members" Type="Collection(EthernetInterface.EthernetInterface)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Contains the members of this collection."/>
@@ -156,6 +157,7 @@
       </TypeDefinition>
 
       <ComplexType Name="IPv6AddressPolicyEntry">
+        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
         <Property Name="Prefix" Type="Edm.String">
           <Annotation Term="OData.Description" String="IPv6 Address Prefix for this table entry as defined in RFC 3484 section 2.1."/>
           <Annotation Term="Redfish.IPv6Format"/>

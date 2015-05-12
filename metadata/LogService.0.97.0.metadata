@@ -27,6 +27,7 @@
       </EntityType>
 
       <ComplexType Name="Members">
+        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
         <NavigationProperty Name="Members" Type="Collection(LogService.LogService)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Contains the members of this collection."/>
@@ -71,9 +72,13 @@
       </EntityType>
 
       <ComplexType Name="Actions">
+        <Annotation Term="OData.AdditionalProperties" Bool="True"/>
         <Property Name="Oem" Type="LogService.OemActions" Nullable="false"/>
       </ComplexType>
-      <ComplexType Name="OemActions"/>
+      
+      <ComplexType Name="OemActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="True"/>
+      </ComplexType>
       
       <ComplexType Name="Links" BaseType="Resource.Links">
         <NavigationProperty Name="Entries" Type="Collection(LogEntry.LogEntry)">

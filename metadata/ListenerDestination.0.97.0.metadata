@@ -28,6 +28,7 @@
       </EntityType>
 
       <ComplexType Name="Members">
+        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
         <NavigationProperty Name="Members" Type="Collection(ListenerDestination.ListenerDestination)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Contains the members of this collection."/>
@@ -72,6 +73,7 @@
       </EntityType>
 
       <ComplexType Name="HttpHeaderProperty">
+        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
         <Annotation Term="Redfish.DynamicPropertyPatterns">
           <Collection>
             <Record>
