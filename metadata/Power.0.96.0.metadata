@@ -14,6 +14,9 @@
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.0.96.0">
     <edmx:Include Namespace="Resource.0.96.0" Alias="Resource"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/PhysicalContext.0.96.0">
+    <edmx:Include Namespace="PhysicalContext.0.96.0" Alias="PhysicalContext"/>
+  </edmx:Reference>
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Redundancy.0.96.0">
     <edmx:Include Namespace="Redundancy.0.96.0" Alias="Redundancy"/>
   </edmx:Reference>
@@ -236,7 +239,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the lowest possible value for CurrentReading. Units shall use the same units as the related ReadingVolts propoerty."/>
           <Annotation Term="OData.Measures.Unit" String="Volts"/>
         </Property>
-        <Property Name="PhysicalContext" Type="Resource.PhysicalContext" Nullable="false">
+        <Property Name="PhysicalContext" Type="PhysicalContext.PhysicalContext" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Describes the area or device to which this voltage measurement applies."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a description of the affected device or region within the chassis to which this voltage measurement applies."/>
