@@ -4,7 +4,10 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
-
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Settings.0.96.0">
+    <edmx:Include Namespace="Settings.0.96.0" Alias="Settings"/>
+  </edmx:Reference>
+  
   <edmx:DataServices>
 
     <!--These terms extend the schema language for Redfish-specific information-->
@@ -16,6 +19,10 @@
       <Term Name="Required" Type="Edm.Boolean" DefaultValue="True">
         <Annotation Term="OData.Description" String="The term specifies that a property is required to be supported by services. Properties not annotated as required are optional."/>
       </Term>
+      <Term Name="Settings" Type="Settings.Settings">
+        <Annotation Term="OData.Description" String="Reference to the resource that represents the settings to be applied to this object."/>
+      </Term>
+
       <Term Name="ExpandReferences" Type="Edm.Boolean" DefaultValue="True">
         <Annotation Term="OData.Description" String="The term can be applied to a navigation property in order to specify that the default behavior for the service is to expand the references for the related resource or collection of resources in responses."/>
       </Term>
@@ -35,7 +42,7 @@
           <Annotation Term="OData.Description" String="The type that the name shall have"/>
         </Property>
       </ComplexType>
-      
+    
     </Schema>
     
     <!--These terms are used for validating a property value-->
