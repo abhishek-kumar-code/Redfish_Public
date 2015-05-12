@@ -4,8 +4,8 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/DMTFExtensions.0.97.0">
-    <edmx:Include Namespace="DMTFExtensions.0.97.0" Alias="DMTF"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/RedfishExtensions.0.97.0">
+    <edmx:Include Namespace="RedfishExtensions.0.97.0" Alias="Redfish"/>
     <edmx:Include Namespace="Validation.0.97.0" Alias="Validation"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.0.97.0">

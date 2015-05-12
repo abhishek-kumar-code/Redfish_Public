@@ -11,7 +11,7 @@
   <edmx:DataServices>
 
     <!--These terms extend the schema language for Redfish-specific information-->
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm"  Namespace="DMTFExtensions.0.97.0" Alias="Extensions">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm"  Namespace="RedfishExtensions.0.97.0" Alias="Extensions">
 
       <Term Name="AllowableValues" Type="Collection(Edm.String)">
         <Annotation Term="OData.Description" String="The set of allowable values for a parameter."/>

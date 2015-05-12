@@ -722,7 +722,7 @@ The service metadata describes top-level resources and resource types of the ser
 </edmx:Edmx>
 ~~~
 
-The service metadata shall include the namespaces for each of the DMTF resource types, along with the "DMTFExtensions.<%= DocVersion %>" namespace. These references may use the standard Uri for the hosted schema definitions (i.e., on http://dmtf.org/schema) or a Url to a local version of the schema that shall be identical to the hosted version. The namespace shall be aliased with the version-independent namespace name.
+The service metadata shall include the namespaces for each of the DMTF resource types, along with the "RedfishExtensions.<%= DocVersion %>" namespace. These references may use the standard Uri for the hosted schema definitions (i.e., on http://dmtf.org/schema) or a Url to a local version of the schema that shall be identical to the hosted version. The namespace shall be aliased with the version-independent namespace name.
 
 ~~~xml
 <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ServiceRoot.<%= DocVersion %>">
@@ -735,8 +735,8 @@ The service metadata shall include the namespaces for each of the DMTF resource 
 <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/VirtualMedia.<%= DocVersion %>">
   <edmx:Include Namespace="VirtualMedia.<%= DocVersion %>" Alias="VirtualMedia"/>
 </edmx:Reference>
-<edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/DMTFExtensions.<%= DocVersion %>">
-	<edmx:Include Namespace="DMTFExtensions.<%= DocVersion %>" Alias="DMTF"/>
+<edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/RedfishExtensions.<%= DocVersion %>">
+	<edmx:Include Namespace="RedfishExtensions.<%= DocVersion %>" Alias="Redfish"/>
 </edmx:Reference>
 ~~~
 
@@ -1334,7 +1334,7 @@ Type definitions generally reference the OData and DMTF namespaces for common ty
     <edmx:Include Namespace="Org.OData.Measures.V1" Alias="OData.Measures"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Extensions.<%= DocVersion %>">
-	<edmx:Include Namespace="DMTFExtensions.<%= DocVersion %>" Alias="DMTF"/>
+	<edmx:Include Namespace="RedfishExtensions.<%= DocVersion %>" Alias="Redfish"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.<%= DocVersion %>">
     <edmx:Include Namespace="Resource.<%= DocVersion %>" Alias="Resource"/>
@@ -1504,7 +1504,7 @@ If an implementation supports a property, it shall always provide a value for th
 		<Annotation Term="Redfish.Required"/>
 ~~~
 
-The `Required` annotation term is defined in http://schemas.dmtf.org/redfish/v1/DMTFExtensions.<%= DocVersion %>.
+The `Required` annotation term is defined in http://schemas.dmtf.org/redfish/v1/RedfishExtensions.<%= DocVersion %>.
 
 ##### Units of Measure
 
@@ -1568,7 +1568,7 @@ Navigation properties in a Redfish JSON payload are expanded to include the [rel
 		<Annotation Term="OData.AutoExpandReferences"/>
 ~~~
 
-The `AutoExpandReferences` annotation term is defined in http://schemas.dmtf.org/redfish/v1/DMTFExtensions.<%= DocVersion %>.
+The `AutoExpandReferences` annotation term is defined in http://schemas.dmtf.org/redfish/v1/RedfishExtensions.<%= DocVersion %>.
 
 ##### Expanded Resources
 
@@ -1578,7 +1578,7 @@ This term can be applied to a navigation property in order to specify that the d
 		<Annotation Term="OData.AutoExpand"/>
 ~~~
 
-The `AutoExpand` annotation term is defined in http://schemas.dmtf.org/redfish/v1/DMTFExtensions.<%= DocVersion %>.
+The `AutoExpand` annotation term is defined in http://schemas.dmtf.org/redfish/v1/RedfishExtensions.<%= DocVersion %>.
 
 #### Resource Actions
 

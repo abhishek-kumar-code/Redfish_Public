@@ -4,8 +4,8 @@
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.0.97.0">
     <edmx:Include Namespace="Resource.0.97.0" Alias="Resource"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/DMTFExtensions.0.97.0">
-    <edmx:Include Namespace="DMTFExtensions.0.97.0" Alias="DMTF"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/RedfishExtensions.0.97.0">
+    <edmx:Include Namespace="RedfishExtensions.0.97.0" Alias="Redfish"/>
     <edmx:Include Namespace="Validation.0.97.0" Alias="Validation"/>
   </edmx:Reference>
   
