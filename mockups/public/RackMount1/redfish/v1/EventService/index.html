@@ -1,0 +1,71 @@
+{
+    "@odata.context": "/redfish/v1/$metadata#EventService",
+    "@odata.id": "/redfish/v1/EventService",
+    "@odata.type": "#EventService.0.96.0.EventService",
+    "Name": "Event Service",
+    "Oem": {},
+    "links": {
+        "Subscriptions": {
+            "@odata.id": "/redfish/v1/EventService/EventSubscriptions"
+        },
+        "Oem": {}
+    },
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "DeliveryRetryAttempts": 3,
+    "DeliveryRetryIntervalInSeconds": 60,
+    "SubscriptionRemovalAction": "Remove",
+    "SubscriptionRemovalTimeIntervalInMinutes": 60,
+    "EventTypesForSubscription": [
+        "StatusChange",
+        "ResourceUpdated",
+        "ResourceAdded",
+        "ResourceRemoved",
+        "Alert"
+    ],
+    "AvailableActions": [
+        {
+            "Action": "SubmitTestEvent",
+            "Capabilities": [
+                {
+                    "PropertyName": "EventType",
+                    "AllowableValues": [
+                        "StatusChange",
+                        "ResourceUpdated",
+                        "ResourceAdded",
+                        "ResourceRemoved",
+                        "Alert"
+                    ]
+                },
+                {
+                    "PropertyName": "EventID"
+                },
+                {
+                    "PropertyName": "EventTimeStamp"
+                },
+                {
+                    "PropertyName": "Severity",
+                    "AllowableValues": [
+                        "OK",
+                        "Warning",
+                        "Critical"
+                    ]
+                },
+                {
+                    "PropertyName": "Message"
+                },
+                {
+                    "PropertyName": "MessageID"
+                },
+                {
+                    "PropertyName": "MessageArgs"
+                },
+                {
+                    "PropertyName": "OriginOfCondition"
+                }
+            ]
+        }
+    ]
+}

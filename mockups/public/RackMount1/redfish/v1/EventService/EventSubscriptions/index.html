@@ -1,0 +1,32 @@
+{
+    "@odata.context": "/redfish/v1/$metadata#EventService/EventSubscriptions",
+    "@odata.id": "/redfish/v1/EventService/EventSubscriptions",
+    "@odata.type": "#ListenerDestination.0.96.0.ListenerDestinationCollection",
+    "Name": "EventSubscription 1",
+    "Total": 1,
+    "links": {
+        "Member": [
+            {
+                "frag": "/Items/0"
+            }
+        ],
+        "Oem": {}
+    },
+    "Items": [
+        {
+            "Destination": "http://www.redfishspecification.org/AdminEventInbox",
+            "EventTypes": [
+                "Alert"
+            ],
+            "TTLCount": 999999,
+            "TTLUnits": "Days",
+            "Context": "ABCDEFGHJLKJ",
+            "Protocol": "Redfish",
+            "links": {
+                "self": {
+                    "@odata.id": "/redfish/v1/EventService/EventSubscriptions/1"
+                }
+            }
+        }
+    ]
+}

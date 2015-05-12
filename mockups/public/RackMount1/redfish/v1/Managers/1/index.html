@@ -1,0 +1,68 @@
+{
+    "@odata.context": "/redfish/v1/$metadata#Managers/Links/Members/$entity",
+    "@odata.id": "/redfish/v1/Managers/1",
+    "@odata.type": "#Manager.0.96.0.Manager",
+    "Name": "Manager",
+    "ManagerType": "BMC",
+    "links": {
+        "ManagerForServers": [
+            {
+                "@odata.id": "/redfish/v1/Systems/437XR1138R2"
+            }
+        ],
+        "EthernetNICs": {
+            "@odata.id": "/redfish/v1/Managers/1/NICs"
+        },
+        "NetworkService": {
+            "@odata.id": "/redfish/v1/Managers/1/NetworkService"
+        },
+        "SerialInterfaces": {
+            "@odata.id": "/redfish/v1/Managers/1/SerialInterfaces"
+        },
+        "VirtualMedia": {
+            "@odata.id": "/redfish/v1/Managers/1/VM1"
+        }
+    },
+    "Description": "Redfish-BMC",
+    "UUID": "92384634-2938-2342-8820-489239905423",
+    "Model": "Joo Janta 200",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "GraphicalConsole": {
+        "Enabled": true,
+        "MaxConcurrentSessions": 2,
+        "ConnectTypesSupported": [
+            "KVMIP"
+        ]
+    },
+    "SerialConsole": {
+        "Enabled": true,
+        "MaxConcurrentSessions": 1,
+        "ConnectTypesSupported": [
+            "Telnet",
+            "SSH",
+            "IPMI"
+        ]
+    },
+    "CommandShell": {
+        "Enabled": true,
+        "MaxConcurrentSessions": 4,
+        "ConnectTypesSupported": [
+            "Telnet",
+            "SSH"
+        ]
+    },
+    "Firmware": {
+        "Current": {
+            "VersionString": "1.34g (build Aug 11 2014 10:59:46)"
+        }
+    },
+    "Oem": {},
+    "AvailableActions": [
+        {
+            "Action": "Reset"
+        }
+    ]
+}

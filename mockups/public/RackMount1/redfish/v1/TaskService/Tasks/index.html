@@ -1,0 +1,30 @@
+{
+    "@odata.context": "/redfish/v1/$metadata#TaskService/Tasks",
+    "@odata.id": "/redfish/v1/TaskService/Tasks",
+    "@odata.type": "#Task.0.96.0.TaskCollection",
+    "Name": "Task Collection",
+    "Total": 1,
+    "Items": [
+        {
+            "Name": "Task 1",
+            "TaskState": "Completed",
+            "StartTime": "2012-03-07T14:44",
+            "EndTime": "2012-03-07T14:45",
+            "TaskStatus": "OK",
+            "links": {
+                "self": {
+                    "@odata.id": "/redfish/v1/TaskService/Tasks/1"
+                }
+            }
+        }
+    ],
+    "links": {
+        "Member": [
+            {
+                "id": "0",
+                "frag": "/Items/0",
+                "@odata.id": "/redfish/v1/TaskService/Tasks/1"
+            }
+        ]
+    }
+}
