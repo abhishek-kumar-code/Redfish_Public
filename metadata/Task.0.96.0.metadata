@@ -10,6 +10,9 @@
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.0.96.0">
     <edmx:Include Namespace="Resource.0.96.0" Alias="Resource"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Message.0.96.0">
+    <edmx:Include Namespace="Message.0.96.0" Alias="Message"/>
+  </edmx:Reference>
   
   <edmx:DataServices>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Tasks.0.96.0" Alias="Tasks">
@@ -52,6 +55,11 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is the completion status of the task."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the completion status of the task, as defined in the Status section of the Redfish specification and shall not be set until the task has completed."/>
+        </Property>
+        <Property Name="Messages" Type="Collection(Message.Message)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="This is an array of messages associated with the task."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of messages associated with the task."/>
         </Property>
       </EntityType>
 
