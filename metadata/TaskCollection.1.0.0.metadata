@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.--> 
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/RedfishExtensions.1.00.0">
+    <edmx:Include Namespace="RedfishExtensions.1.00.0" Alias="Redfish"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.1.00.0">
+    <edmx:Include Namespace="Resource.1.00.0" Alias="Resource"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Tasks.1.00.0">
+    <edmx:Include Namespace="Tasks.1.00.0" Alias="Tasks"/>
+  </edmx:Reference>
+  
+  <edmx:DataServices>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="TaskCollection.1.00.0" Alias="TaskCollection">
+
+      <!-- This is the schema definition for a Task resource. -->
+      <EntityType Name="TaskCollection" BaseType="Resource.ResourceCollection">
+        <Property Name="Links" Type="Tasks.Members">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="Contains links to other resources that are related to this resource."/>
+        </Property>
+      </EntityType>
+
+      <ComplexType Name="Members">
+       <Annotation Term="OData.AdditionalProperties" Bool="False"/>
+       <NavigationProperty Name="Members" Type="Collection(Tasks.Task)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+      </ComplexType>
+
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

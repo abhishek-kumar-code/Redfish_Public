@@ -1,0 +1,8 @@
+{
+    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.00.0",
+    "title": "Privileges",
+    "definitions":{
+
+    }
+
+}

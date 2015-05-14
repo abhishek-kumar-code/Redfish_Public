@@ -1,7 +1,7 @@
 {
     "@odata.context": "/redfish/v1/$metadata#EventService",
     "@odata.id": "/redfish/v1/EventService",
-    "@odata.type": "#EventService.0.96.0.EventService",
+    "@odata.type": "#EventService.1.00.0.EventService",
     "Id": "EventService",
     "Name": "Event Service",
     "Status": {
@@ -26,7 +26,7 @@
     "Actions": {
         "#EventService.SendTestEvent": {
               "target": "/redfish/v1/EventService/Actions/EventService.SendTestEvent",
-              "EventType@DMTF.AllowableValues": [
+              "EventType@Redfish.AllowableValues": [
                   "StatusChange",
                   "ResourceUpdated",
                   "ResourceAdded",
