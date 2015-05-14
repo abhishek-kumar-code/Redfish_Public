@@ -13,14 +13,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogEntry.0.97.0" Alias="LogEntry">
 
       <!-- This schema defines a log entry and its respective properties. -->
-      <EntityType Name="LogEntryCollection" BaseType="Resource.ResourceCollection">
-        <NavigationProperty Name="Members" Type="Collection(LogEntry.LogEntry)">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
-          <Annotation Term="OData.AutoExpand"/>
-        </NavigationProperty>
-      </EntityType>
-      
+         
       <EntityType Name="LogEntry" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This resource represents the log record format for logs.  It is designed to be used for SEL logs from IPMI as well as Event Logs and OEM specific logs.  The EntryType field indicates the type of log and there are other properties dependent on it's value."/>
         <Annotation Term="OData.LongDescription" String="This resource shall represent the log format for log services in a Redfish implementation."/>

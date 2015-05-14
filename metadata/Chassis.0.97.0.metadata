@@ -30,23 +30,8 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.0.97.0" Alias="Chassis">
 
-      <!-- This schema defines a computer system and its respective properties. -->
-      <EntityType Name="ChassisCollection" BaseType="Resource.ResourceCollection">
-        <Property Name="Links" Type="Chassis.Members">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="Contains links to other resources that are related to this resource."/>
-        </Property>
-      </EntityType>
-
-      <ComplexType Name="Members">
-        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
-        <NavigationProperty Name="Members" Type="Collection(Chassis.Chassis)">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>
-      </ComplexType>
-      
+      <!-- This schema defines a chassis and its respective properties. -->
+ 
       <EntityType Name="Chassis" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition for the Chassis resource.  It represents the properties for physical components for any system.  This one object is intended to represent racks, rackmount servers, blades, standalone, modular systems, enclosures, and all other containers.  The non-cpu/device centric parts of the schema are all accessed either directly or indirectly through this resource."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a chassis or other physical enclosure for a Redfish implementation."/>

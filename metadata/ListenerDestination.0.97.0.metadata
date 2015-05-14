@@ -19,22 +19,6 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ListenerDestination.0.97.0" Alias="ListenerDestination">
 
       <!-- This schema defines destination for events and its respective properties. -->
-
-      <EntityType Name="ListenerDestinationCollection" BaseType="Resource.ResourceCollection">
-        <Property Name="Links" Type="ListenerDestination.Members">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="Contains links to other resources that are related to this resource."/>
-        </Property>
-      </EntityType>
-
-      <ComplexType Name="Members">
-        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
-        <NavigationProperty Name="Members" Type="Collection(ListenerDestination.ListenerDestination)">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>
-      </ComplexType>
       
       <EntityType Name="ListenerDestination" BaseType="Resource.Resource">
         <Property Name="Destination" Type="Edm.String" Nullable="false">

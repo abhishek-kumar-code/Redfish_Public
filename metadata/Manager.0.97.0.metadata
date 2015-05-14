@@ -40,22 +40,6 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.0.97.0" Alias="Manager">
 
       <!-- This is the schema definition for a Manager and its respective properties -->
-
-      <EntityType Name="ManagerCollection" BaseType="Resource.ResourceCollection">
-        <Property Name="Links" Type="Manager.Members">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="Contains links to other resources that are related to this resource."/>
-        </Property>
-      </EntityType>
-
-      <ComplexType Name="Members">
-        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
-        <NavigationProperty Name="Members" Type="Collection(Manager.Manager)">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>
-      </ComplexType>
       
       <EntityType Name="Manager" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition for a Manager.  Examples of managers are BMCs, Enclosure Managers, Management Controllers and other subsystems assigned managability functions."/>

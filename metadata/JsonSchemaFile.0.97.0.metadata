@@ -16,22 +16,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="JsonSchemaFile.0.97.0" Alias="JsonSchemaFile">
 
       <!-- This schema defines a JSON Schema resource and its respective properties. -->
-      <EntityType Name="SchemaFileCollection" BaseType="Resource.ResourceCollection">
-        <Property Name="Links" Type="JsonSchemaFile.Members">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="Contains links to other resources that are related to this resource."/>
-        </Property>
-      </EntityType>
-
-      <ComplexType Name="Members">
-        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
-        <NavigationProperty Name="Members" Type="Collection(JsonSchemaFile.SchemaFile)">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>
-      </ComplexType>
-      
+       
       <EntityType Name="SchemaFile" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition for the Schema File locator resource."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent the Schema File locator resource for a Redfish implementation."/>

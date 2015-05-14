@@ -19,21 +19,6 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogService.0.97.0" Alias="LogService">
 
       <!-- This resource represents the log service for the resource or service to which it is associated. -->
-      <EntityType Name="LogServiceCollection" BaseType="Resource.ResourceCollection">
-        <Property Name="Links" Type="LogService.Members">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="Contains links to other resources that are related to this resource."/>
-        </Property>
-      </EntityType>
-
-      <ComplexType Name="Members">
-        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
-        <NavigationProperty Name="Members" Type="Collection(LogService.LogService)">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>
-      </ComplexType>
 
       <EntityType Name="LogService" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This resource represents the log service for the resource or service to which it is associated."/>

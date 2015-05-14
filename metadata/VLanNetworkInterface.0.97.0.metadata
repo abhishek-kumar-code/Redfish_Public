@@ -15,23 +15,6 @@
   <edmx:DataServices>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="VLanNetworkInterface.0.97.0" Alias="VLanNetworkInterface">
 
-      <!--This schema defines a computer system and its respective properties. -->
-      <EntityType Name="VLanNetworkInterfaceCollection" BaseType="Resource.ResourceCollection">
-        <Property Name="Links" Type="VLanNetworkInterface.Members">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="Contains links to other resources that are related to this resource."/>
-        </Property>
-      </EntityType>
-
-      <ComplexType Name="Members">
-        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
-        <NavigationProperty Name="Members" Type="Collection(VLanNetworkInterface.VLanNetworkInterface)">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>
-      </ComplexType>
-
       <!--Entity type representing properties of a VLAN within a collection-->
       <EntityType Name="VLanNetworkInterface" BaseType="Resource.Resource">
         <Property Name="VLANEnable" Type="Edm.Boolean">

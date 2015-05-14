@@ -18,21 +18,6 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Tasks.0.97.0" Alias="Tasks">
 
       <!-- This is the schema definition for a Task resource. -->
-      <EntityType Name="TaskCollection" BaseType="Resource.ResourceCollection">
-        <Property Name="Links" Type="Tasks.Members">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="Contains links to other resources that are related to this resource."/>
-        </Property>
-      </EntityType>
-
-      <ComplexType Name="Members">
-       <Annotation Term="OData.AdditionalProperties" Bool="False"/>
-       <NavigationProperty Name="Members" Type="Collection(Tasks.Task)">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>
-      </ComplexType>
 
       <EntityType Name="Task" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition for a Task resource."/>
