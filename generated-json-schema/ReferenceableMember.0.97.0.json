@@ -1,6 +1,6 @@
 {
-    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.0.97.0",
-    "title": "ReferenceableMember.0.97.0",
+    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.00.0",
+    "title": "ReferenceableMember.1.00.0",
     "type": "object",
     "additionalProperties": false,
     "properties": {

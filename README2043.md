@@ -2,7 +2,7 @@
 DocTitle: Scalable Platforms Management API Mockup Readme
 DocNumber: '2043'
 DocType: Readme
-DocVersion: '0.97.0a'
+DocVersion: '1.00.0a'
 DocStatus: Work in Progress
 DocConfidentiality: – Not a DMTF Standard – DMTF Confidential
 expiration: '2015-08-24'

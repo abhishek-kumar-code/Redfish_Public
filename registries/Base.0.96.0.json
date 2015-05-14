@@ -1,8 +1,8 @@
 {
     "@odata.context": "http://schemas.dmtf.org/redfish/v1/$metadata#Registries/$entity",
-    "@odata.id": "http://schemas.dmtf.org/redfish/v1/Base.0.97.0",
-    "@odata.type": "#MessageRegistry.0.97.0.MessageRegistry",
-    "Id": "Base.0.97.0",
+    "@odata.id": "http://schemas.dmtf.org/redfish/v1/Base.1.00.0",
+    "@odata.type": "#MessageRegistry.1.00.0.MessageRegistry",
+    "Id": "Base.1.00.0",
     "Name": "Base Message Registry",
     "Language": "en",
     "Description": "This registry defines the base messages for Redfish",

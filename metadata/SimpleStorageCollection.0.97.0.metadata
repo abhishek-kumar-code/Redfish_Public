@@ -4,15 +4,15 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.0.97.0">
-    <edmx:Include Namespace="Resource.0.97.0" Alias="Resource"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.1.00.0">
+    <edmx:Include Namespace="Resource.1.00.0" Alias="Resource"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/SimpleStorage.0.97.0">
-    <edmx:Include Namespace="SimpleStorage.0.97.0" Alias="SimpleStorage"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/SimpleStorage.1.00.0">
+    <edmx:Include Namespace="SimpleStorage.1.00.0" Alias="SimpleStorage"/>
   </edmx:Reference>
   
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SimpleStorageCollection.0.97.0" Alias="SimpleStorageCollection">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SimpleStorageCollection.1.00.0" Alias="SimpleStorageCollection">
 
       <!-- This is the schema definition for the Simple Storage resource. -->
       <EntityType Name="SimpleStorageCollection" BaseType="Resource.ResourceCollection">

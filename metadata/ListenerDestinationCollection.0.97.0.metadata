@@ -4,15 +4,15 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.0.97.0">
-    <edmx:Include Namespace="Resource.0.97.0" Alias="Resource"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.1.00.0">
+    <edmx:Include Namespace="Resource.1.00.0" Alias="Resource"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ListenerDestination.0.97.0">
-    <edmx:Include Namespace="ListenerDestination.0.97.0" Alias="ListenerDestination"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ListenerDestination.1.00.0">
+    <edmx:Include Namespace="ListenerDestination.1.00.0" Alias="ListenerDestination"/>
   </edmx:Reference>
   
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ListenerDestinationCollection.0.97.0" Alias="ListenerDestinationCollection">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ListenerDestinationCollection.1.00.0" Alias="ListenerDestinationCollection">
 
       <EntityType Name="ListenerDestinationCollection" BaseType="Resource.ResourceCollection">
         <Property Name="Links" Type="ListenerDestination.Members">

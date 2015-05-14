@@ -1,6 +1,6 @@
 {
-    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.0.97.0",
-    "title": "ComputerSystem.0.97.0",
+    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.00.0",
+    "title": "ComputerSystem.1.00.0",
     "type": "object",
     "additionalProperties": false,
     "properties": {
@@ -14,18 +14,18 @@
             "$ref": "odata.4.0.0.json#type"
         },
         "Oem": {
-            "$ref": "Resource.0.97.0.json#Oem",
+            "$ref": "Resource.1.00.0.json#Oem",
             "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
             "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
         },
         "Id": {
-            "$ref": "Resource.0.97.0.json#Id"
+            "$ref": "Resource.1.00.0.json#Id"
         },
         "Description": {
-            "$ref": "Resource.0.97.0.json#Description"
+            "$ref": "Resource.1.00.0.json#Description"
         },
         "Name": {
-            "$ref": "Resource.0.97.0.json#Name"
+            "$ref": "Resource.1.00.0.json#Name"
         },
         "SystemType": {
             "type": "string",
@@ -52,7 +52,7 @@
             "additionalProperties": false,
             "properties": {
                 "Oem": {
-                    "$ref": "Resource.0.97.0.json#Oem",
+                    "$ref": "Resource.1.00.0.json#Oem",
                     "description": "Oem extension object.",
                     "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
                 },
@@ -368,7 +368,7 @@
                     "longDescription": "This property shall contain the processor model for the central processors in the system, per the description in Table 22 of the SMBIOS Specification DSP0134 2.8 or later."
                 },
                 "Status": {
-                    "$ref": "Resource.0.97.0.json#Status"
+                    "$ref": "Resource.1.00.0.json#Status"
                 }
             },
             "description": "This object describes the central processors of the system in general detail."
@@ -387,7 +387,7 @@
                     "longDescription": "This property shall contain the amount of system general purpose volatile (RAM) memory as measured in gibibytes."
                 },
                 "Status": {
-                    "$ref": "Resource.0.97.0.json#Status"
+                    "$ref": "Resource.1.00.0.json#Status"
                 }
             },
             "description": "This object describes the central memory of the system in general detail."
@@ -451,7 +451,7 @@
             "description": "The Actions object contains the available custom actions on this resource."
         },
         "Status": {
-            "$ref": "Resource.0.97.0.json#Status"
+            "$ref": "Resource.1.00.0.json#Status"
         }
     },
     "description": "This schema defines a computer system and its respective properties.  A computer system represents a machine (physical or virtual) and the local resources such as memory, cpu and other devices that can be accessed from that machine.",
