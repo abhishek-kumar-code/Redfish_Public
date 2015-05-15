@@ -111,11 +111,13 @@ The following additional abbreviations are used in this document.
 
 | Term   | Definition                                          |
 | ---    | ---                                                 |
+| BMC    | Baseboard Management Controller                     |
 | CRUD   | Create, Replace, Update and Delete                  |
 | CSRF   | Cross-Site Request Forgery                          |
 | HTTP   | Hypertext Transfer Protocol                         |
 | HTTPS  | Hypertext Transfer Protocol over TLS                |
 | IP     | Internet Protocol                                   |
+| IPMI   | Intelligent Platform Management Interface           |
 | JSON   | JavaScript Object Notation                          |
 | KVM-IP | Keyboard, Video, Mouse redirection over IP          |
 | NIC    | Network Interface Card                              |
