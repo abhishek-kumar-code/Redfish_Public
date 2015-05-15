@@ -60,7 +60,7 @@
           <Annotation Term="OData.LongDescription" String="This property shall indicate the flow control mechanism for the serial connection."/>
         </Property>
         <Property Name="ConnectorType" Type="SerialInterface.ConnectorType" Nullable="false">
-          <Annotation Term="OData.Desription" String="The type of connector used for this interface."/>
+          <Annotation Term="OData.Description" String="The type of connector used for this interface."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the type of phyiscal connector used for this serial connection."/>
         </Property>  
         <Property Name="PinOut" Type="SerialInterface.PinOut" >
