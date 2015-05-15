@@ -106,6 +106,7 @@
                 "mUSB",
                 "uUSB"
             ],
+            "description": "The type of connector used for this interface.",
             "longDescription": "This property shall indicate the type of phyiscal connector used for this serial connection."
         },
         "PinOut": {
