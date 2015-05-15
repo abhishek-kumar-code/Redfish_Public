@@ -40,13 +40,53 @@ Initially we tried only to reference the ServiceRoot metadata in the root $metad
 
 ## Processor.1.x.x
 
-### ProcessorID: IdentificationRegisters
+### ProcessorID
 
-### ProcessorID: EffectiveFamily
+This object's properties shall contain values dependent on the value of the ProcessorArchitecture property, as listed in the sections below:
 
-### ProcessorID: EffectiveModel
+#### ProcessorArchitecture: x86
 
-### ProcessorID: Step
+##### VendorId
 
-### ProcessorID: MicrocodeInfo
+This property shall contain a 12 byte, little-endian ASCII string derived from register values resulting from the execution of the CPUID instruction.  The value shall be constructed using the following algorithm:
 
+~~~
+k=0;
+foreach reg (cpuid.0.ebx, cpuid.0.edx, cpuid.0.ecx){ ##NB: order must be ebx, edx, ecx
+  for (i=0; i<=3; i++) { vendorID[ byte(k*4 + i) ] = reg[byte(i)]; }
+  k++;
+  }
+~~~
+
+##### IdentificationRegisters
+
+This property shall contain the register contents resulting from the exeuction of the CPUID instruction.
+
+##### EffectiveFamily
+
+This property shall contain a value derived from register values resulting from the execution of the CPUID instruction.  The value shall use the following forumula:
+~~~ 
+((cpuid.1.eax & 0x0ff00000) >> 20) + ((cpuid.1.eax & 0x00000f00) >> 8)  
+~~~
+
+##### EffectiveModel
+
+This property shall contain a value derived from register values resulting from the execution of the CPUID instruction.  The value shall use the following forumula:
+~~~
+((cpuid.1.eax & 0x000f0000) >> 12) + ((cpuid.1.eax & 0x000000f0) >> 4)
+~~~
+
+##### Step
+
+This property shall contain a value derived from register values resulting from the execution of the CPUID instruction.  The value shall use the following forumula:
+~~~
+(cpuid->eax & 0xf)
+~~~
+
+##### MicrocodeInfo
+
+This property shall contain the 64-bit value contained in MSR 0x8B.
+
+#### ProcessorArchitecture: All Others
+
+The contents of this object are not specified.
