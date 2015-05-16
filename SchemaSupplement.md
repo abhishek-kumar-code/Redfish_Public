@@ -16,6 +16,8 @@ This document contains supplemental details required to implement specific prope
 
 ## Common Properties
 
+This section documents properties that are either common throughout the Redfish Schema, or are defined in the Resource.1.x.x or odata.4.x.x schema files.
+
 ### @odata.context
 
 (This section needs to be written in a normative style, an email from MikeP is copied here as a starting point)
