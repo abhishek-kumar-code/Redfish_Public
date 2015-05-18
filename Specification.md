@@ -1022,7 +1022,7 @@ Response objects may include extended information, for example properties that a
 
 ###### Extended Object Information
 
-A JSON object can be annotated with "@Message.Messages" in order to specify object-level status information. 
+A JSON object can be annotated with "@Message.ExtendedInfo" in order to specify object-level status information. 
 
 ~~~json
 {
@@ -1035,7 +1035,7 @@ A JSON object can be annotated with "@Message.Messages" in order to specify obje
     "Modified": "2013-01-31T23:45:08+00:00",
     "UserName": "Administrator",
     "Oem": {},
-	"@Message.Messages" : {
+	"@Message.ExtendedInfo" : {
          "MessageID": "Base.<%= DocVersion.replace(/\.[^\.]+$/, '') %>.ResourceCannotBeDeleted",
          "Message": "The delete request failed because the resource requested cannot be deleted",
          "Severity": "Critical",
@@ -1048,7 +1048,7 @@ The value of the property is an array of [message objects](#message-object).
 
 ###### Extended Property Information
 
-An individual property within a JSON object can be annotated with extended information using "@Message.Messages", prepended with the name of the property.
+An individual property within a JSON object can be annotated with extended information using "@Message.ExtendedInfo", prepended with the name of the property.
 
 ~~~json
 {
@@ -1060,7 +1060,7 @@ An individual property within a JSON object can be annotated with extended infor
     "Description": "Manager User Session",
     "Modified": "2013-01-31T23:45:08+00:00",
     "UserName": "Administrator",
-    "UserName@Message.Messages" : [
+    "UserName@Message.ExtendedInfo" : [
          {
            "MessageID": "Base.<%= DocVersion.replace(/\.[^\.]+$/, '') %>.PropertyNotWriteable",
            "PropertiesInError": ["UserName"],
@@ -1146,14 +1146,14 @@ Error responses are defined by an extended error resource, represented as a sing
 | ---                     | ---                                                                                                                                                                                    |
 | code                    | String indicating a specific error or message (not to be confused with the HTTP status code). This code can be used to access a detailed message from a message registry.              |
 | message                 | A human readable error message indicating the semantics associated with the error. 
-| @Message.Messages       | An array of [message objects](#message-object) describing one or more error message(s). 
+| @Message.ExtendedInfo   | An array of [message objects](#message-object) describing one or more error message(s). 
 
 ~~~json
 {
     "error": {
         "code": "400",
         "message": "The update operation failed.",
-        "@Message.Messages": [
+        "@Message.ExtendedInfo": [
             {
                 "MessageId": "Base.<%= DocVersion.replace(/\.[^\.]+$/, '') %>.PropertyValueNotInList",
                 "PropertiesInError": [ 
@@ -1192,11 +1192,13 @@ Messages are represented as a JSON object with the following properties:
 | Property                | Description                                                                                                                                                                            |
 | ---                     | ---                                                                                                                                                                                    |
 | MessageId               | String indicating a specific error or message (not to be confused with the HTTP status code). This code can be used to access a detailed message from a message registry.              |
-| Message                 | A human readable error message indicating the semantics associated with the error. 
+| Message                 | A human readable error message indicating the semantics associated with the error. This shall be the complete message, and not rely on substitution variables.
 | PropertiesInError       | An optional array of string defining the specific properties in error.                                                        |
-| MessageArgs             | An optional array of strings representing the substitution parameter values for the message. The Severity attribute is an annotation specified in the DMTF namespace and shall be prefixed with the alias "message".
-| Severity                | An optional string representing the severity of the error. The Severity attribute is an annotation specified in the DMTF namespace and shall be prefixed with the alias "message".
-| Resolution              | An optional string describing recommended action(s) to take to resolve the error. The Resolution attribute is an annotation specified in the DMTF namespace and shall be prefixed with the alias "message".
+| MessageArgs             | An optional array of strings representing the substitution parameter values for the message. This shall be included in the response if a MessageId is specified for a parameterized message. 
+| Severity                | An optional string representing the severity of the error.
+| Resolution              | An optional string describing recommended action(s) to take to resolve the error.
+
+Each instance of a Message object shall contain at least a MessageId, together with any applicable MessageArgs, or a Message property specifying the complete human-readable error message.
 
 MessageIds identify specific messages defined in a message registry.
 
@@ -1214,6 +1216,7 @@ where
 The client can use the MessageId to search the message registry for the corresponding message.
 
 The message registry approach has advantages for internationalization (since the registry can be translated easily) and light weight implementation (since large strings need not be included with the implementation).
+
 
 ## Data Model & Schema
 
