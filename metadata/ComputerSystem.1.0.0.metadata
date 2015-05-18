@@ -184,7 +184,7 @@
           <Annotation Term="OData.LongDescription" String="This defines the property name for the action."/>
         </Parameter>
         <Annotation Term="OData.Description" String="This action is used to reset the system."/>
-        <Annotation Term="OData.LongDescription" String="This defines the name of the custom action supported on this resource."/>
+        <Annotation Term="OData.LongDescription" String="This action shall perform a reset of the ComputerSystem.  For systems which implement the APCI Power Button functionality, the PushPowerButton value shall perform or emulate an ACPI short power button press, and the ForceOff and ForceRestart actions shall perform or emulate a 4-second hold of the ACPI Power Button."/>
       </Action>
 
       <EnumType Name="SystemType">
