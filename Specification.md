@@ -485,6 +485,8 @@ Services shall not require authentication in order to retrieve the service docum
 
 ##### Resource Retrieval Requests
 
+Clients request resources by issuing GET requests to the URI for the individual resource or resource collection. The URI for a resource or resource collection may be obtained from a [resource identifier property](#resource-identifier-property) returned in a previous request (for example, within the [links](#links-property) section of a previously returned resource). Services may, but are not required to, support the convention of retrieving individual properties of a resource by appending a segment containing the property name to the URI of the resource.
+
 ###### Query Parameters
 
 When the resource addressed is a collection, the client can use the following paging query options to specify that a subset of the members be returned.   
@@ -530,7 +532,7 @@ The PATCH method is the preferred method used to perform updates on pre-existing
 * Services should return status code [405](#status-405) if the client specifies a PATCH request against a collection.
 * The PATCH operation should be idempotent in the absence of outside changes to the resource provided it is used with ETags to prevent subsequent PATCH attempts. Note that the ETAG value should change as the result of this operation.
 
-OData markup ([resource identifiers](#resource-identifier-property), [type](type-property), [etag](#etag-property) and [links](links-property)) are ignored on Update.
+OData markup ([resource identifiers](#resource-identifier-property), [type](#type-property), [etag](#etag-property) and [links](#links-property)) are ignored on Update.
 
 ##### Replace (PUT)
 
