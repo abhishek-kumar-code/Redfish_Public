@@ -51,6 +51,7 @@
             "enum": [
                 "On",
                 "ForceOff",
+                "GracefulShutdown",
                 "GracefulRestart",
                 "ForceRestart",
                 "Nmi",
@@ -60,6 +61,7 @@
             "enumDescriptions": {
                 "On": "Turn the system on",
                 "ForceOff": "Turn the system off immediately (non-graceful) shutdown",
+                "GracefulShutdown": "Perform a graceful system shutdown and power off",
                 "GracefulRestart": "Perform a graceful system shutdown followed by a restart of the system",
                 "ForceRestart": "Perform an immediate (non-graceful) shutdown, followed by a restart of the system",
                 "Nmi": "Generate a Non-Maskable Interrupt to cause an immediate system halt",
