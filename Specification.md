@@ -475,9 +475,13 @@ The root URL for the service returns a RootService resource as defined by this s
 
 Redfish services shall expose a [metadata document](#service-metadata) describing the service at the "/redfish/v1/$metadata" resource. This metadata document describes the resources and collections available at the root, and references additional metadata documents describing the full set of resource types exposed by the service.
 
+Services shall not require authentication in order to retrieve the metadata document.
+
 ##### OData Service Document Request
 
 Redfish services shall expose an [OData Service Document](#odata-service-document), at the "/redfish/v1/odata" resource. This service document provides a standard format for enumerating the resources exposed by the service, enabling generic hypermedia-driven OData clients to navigate to the resources of the service.
+
+Services shall not require authentication in order to retrieve the service document.
 
 ##### Resource Retrieval Requests
 
