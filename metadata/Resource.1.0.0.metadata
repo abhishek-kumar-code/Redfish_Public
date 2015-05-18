@@ -165,6 +165,9 @@
         <Member Name="ForceOff">
           <Annotation Term="OData.Description" String="Turn the system off immediately (non-graceful) shutdown"/>
         </Member>
+        <Member Name="GracefulShutdown">
+          <Annotation Term="OData.Description" String="Perform a graceful system shutdown and power off"/>
+        </Member>
         <Member Name="GracefulRestart">
           <Annotation Term="OData.Description" String="Perform a graceful system shutdown followed by a restart of the system"/>
         </Member>
