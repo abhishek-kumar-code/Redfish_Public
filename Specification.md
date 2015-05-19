@@ -84,7 +84,7 @@ The following additional terms are used in this document.
 
 | Term           | Definition |
 | ---            | --- |
-| Baseboard Management Controller | An embedded device, typically an independent microprocessor or System-on-Chip, and associated firmare within a Computer System used to perform systems monitoring and management-related tasks.  |
+| Baseboard Management Controller | An embedded device or service, typically an independent microprocessor or System-on-Chip with associated firmware, within a Computer System used to perform systems monitoring and management-related tasks.  |
 | Collection     | A Collection is a resource that acts as a container of other Resources. The members of a collection usually have similar characteristics. The container processes messages sent to the container. The members of the container process messages sent only to that member without affecting other members of the container.  |
 | CRUD           | Basic intrinsic operations used by any interface: Create, Read, Update and Delete.  |
 | Event          | A record that corresponds to an individual alert. |
