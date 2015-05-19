@@ -263,7 +263,7 @@ class JsonSchemaGenerator:
             if not annotation.tag == "{http://docs.oasis-open.org/odata/ns/edm}Annotation":
                 continue
 
-            if annotation.attrib["Term"] == "DMTF.ExpandReferences":
+            if annotation.attrib["Term"] == "OData.AutoExpandReferences":
                 if "Boolean" in annotation.attrib.keys():
                     if annotation.attrib["Boolean"].upper() == "FALSE":
                         return True
@@ -615,7 +615,7 @@ class JsonSchemaGenerator:
             elif annotation.attrib["Term"] == "DMTF.DynamicPropertyPatterns":
                 content = self.get_dynamic_property_patterns_content(annotation)
                 output += ",\n"
-                output += UT.Utilities.indent(depth) + "\"dynamicPropertyPattern\":{ \n"
+                output += UT.Utilities.indent(depth) + "\"patternProperties\":{ \n"
                 output += UT.Utilities.indent(depth+1) + "\"pattern\":\"" + content["Pattern"] + "\",\n"
                 jsontype = self.get_edmtype_to_jsontype(content["Type"])
             
@@ -735,11 +735,6 @@ class JsonSchemaGenerator:
         elif propertyname == "Modified":
             output += UT.Utilities.indent(depth+1) + "\"Modified\": {\n"
             output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + "Resource." + JsonSchemaGenerator.schema_version +".json#Modified\"\n"
-            output += UT.Utilities.indent(depth+1) + "}"
-
-        elif propertyname == "Id":
-            output += UT.Utilities.indent(depth+1) + "\"Id\": {\n"
-            output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + "Resource." + JsonSchemaGenerator.schema_version +".json#Id\"\n"
             output += UT.Utilities.indent(depth+1) + "}"
         
         return output
@@ -927,16 +922,16 @@ class JsonSchemaGenerator:
                         propname = property.attrib["Name"]
                         output += UT.Utilities.indent(depth+1) + "\"" + propname + "\": {\n"
 
-                        # Figure out if DMTF.ExpandReferences is set or "DMTF.ExpandResources"
+                        # Figure out if OData.AutoExpandReferences is set or "OData.AutoExpand"
                         termvalue = ""
                         for annotation in property.iter("{http://docs.oasis-open.org/odata/ns/edm}Annotation"):
-                            if annotation.attrib["Term"] == "DMTF.ExpandResources":
-                                termvalue = "DMTF.ExpandResources"
-                            elif annotation.attrib["Term"] == "DMTF.ExpandReferences":
-                                termvalue = "DMTF.ExpandReferences"
+                            if annotation.attrib["Term"] == "OData.AutoExpand":
+                                termvalue = "OData.AutoExpand"
+                            elif annotation.attrib["Term"] == "OData.AutoExpandReferences":
+                                termvalue = "OData.AutoExpandReferences"
                            
-                       # Handle "DMTF.ExpandResources"
-                        if termvalue == "DMTF.ExpandResources":
+                       # Handle "OData.AutoExpand"
+                        if termvalue == "OData.AutoExpand":
                             # Check if it is a collection or not
                             attribtype = property.attrib["Type"]
 
@@ -954,7 +949,7 @@ class JsonSchemaGenerator:
                                 refvalue = JsonSchemaGenerator.get_ref_value_for_type(typetable, attribtype)
                                 output += UT.Utilities.indent(depth+3)+ "\"$ref\": \"" + refvalue + "\""
 
-                        elif termvalue == "DMTF.ExpandReferences":
+                        elif termvalue == "OData.AutoExpandReferences":
                             attribtype = property.attrib["Type"]
                             if ( not (attribtype is None)) and (attribtype.startswith("Collection")):
                                 output += UT.Utilities.indent(depth+2) + "\"type\": \"array\",\n"
@@ -974,8 +969,8 @@ class JsonSchemaGenerator:
                         propname = property.attrib["Name"]
                         proptypename = property.attrib["Type"]
 
-                        # Special handling of ["Description", "id", "Name", "Modified"] defined in Resource type.
-                        specialproperties = ["Description", "Id", "Name", "Modified"]
+                        # Special handling of ["Description", "Name", "Modified"] defined in Resource type.
+                        specialproperties = ["Description", "Name", "Modified"]
                         if (propname in specialproperties) and (typedata["Name"] != "Resource"):
                              output += self.get_json_for_special_properties(propname, depth, prefixuri)
                              continue
@@ -1072,6 +1067,9 @@ class JsonSchemaGenerator:
                     output += UT.Utilities.indent(depth)   + "]"
                 else:
                     output = UT.Utilities.indent(depth) + "\"type\": \"" + jsontype + "\""
+			
+			    if typename == "Edm.DateTimeOffset":
+                    output = UT.Utilities.indent(depth) + "\"format\": \"date-time\""
 
                 return output
 
