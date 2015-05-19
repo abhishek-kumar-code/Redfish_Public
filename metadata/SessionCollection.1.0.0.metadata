@@ -4,15 +4,15 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.1.00.0">
-    <edmx:Include Namespace="Resource.1.00.0" Alias="Resource"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.1.0.0">
+    <edmx:Include Namespace="Resource.1.0.0" Alias="Resource"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Session.1.00.0">
-    <edmx:Include Namespace="Session.1.00.0" Alias="Session"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Session.1.0.0">
+    <edmx:Include Namespace="Session.1.0.0" Alias="Session"/>
   </edmx:Reference>
 
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SessionCollection.1.00.0" Alias="SessionCollection">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SessionCollection.1.0.0" Alias="SessionCollection">
 
       <!-- This is the schema definition for the Session Collection. -->
 

@@ -4,40 +4,40 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/RedfishExtensions.1.00.0">
-    <edmx:Include Namespace="RedfishExtensions.1.00.0" Alias="Redfish"/>
-    <edmx:Include Namespace="Validation.1.00.0" Alias="Validation"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/RedfishExtensions.1.0.0">
+    <edmx:Include Namespace="RedfishExtensions.1.0.0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.1.0.0" Alias="Validation"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.1.00.0">
-    <edmx:Include Namespace="Resource.1.00.0" Alias="Resource"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.1.0.0">
+    <edmx:Include Namespace="Resource.1.0.0" Alias="Resource"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ComputerSystem.1.00.0">
-    <edmx:Include Namespace="ComputerSystem.1.00.0" Alias="ComputerSystem"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ComputerSystem.1.0.0">
+    <edmx:Include Namespace="ComputerSystem.1.0.0" Alias="ComputerSystem"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Chassis.1.00.0">
-    <edmx:Include Namespace="Chassis.1.00.0" Alias="Chassis"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Chassis.1.0.0">
+    <edmx:Include Namespace="Chassis.1.0.0" Alias="Chassis"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/EthernetInterface.1.00.0">
-    <edmx:Include Namespace="EthernetInterface.1.00.0" Alias="EthernetInterface"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/EthernetInterface.1.0.0">
+    <edmx:Include Namespace="EthernetInterface.1.0.0" Alias="EthernetInterface"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ManagerNetworkProtocol.1.00.0">
-    <edmx:Include Namespace="ManagerNetworkProtocol.1.00.0" Alias="ManagerNetworkProtocol"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ManagerNetworkProtocol.1.0.0">
+    <edmx:Include Namespace="ManagerNetworkProtocol.1.0.0" Alias="ManagerNetworkProtocol"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/LogService.1.00.0">
-    <edmx:Include Namespace="LogService.1.00.0" Alias="LogService"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/LogService.1.0.0">
+    <edmx:Include Namespace="LogService.1.0.0" Alias="LogService"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/VirtualMedia.1.00.0">
-    <edmx:Include Namespace="VirtualMedia.1.00.0" Alias="VirtualMedia"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/VirtualMedia.1.0.0">
+    <edmx:Include Namespace="VirtualMedia.1.0.0" Alias="VirtualMedia"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/SerialInterface.1.00.0">
-    <edmx:Include Namespace="SerialInterface.1.00.0" Alias="SerialInterface"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/SerialInterface.1.0.0">
+    <edmx:Include Namespace="SerialInterface.1.0.0" Alias="SerialInterface"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Redundancy.1.00.0">
-    <edmx:Include Namespace="Redundancy.1.00.0" Alias="Redundancy"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Redundancy.1.0.0">
+    <edmx:Include Namespace="Redundancy.1.0.0" Alias="Redundancy"/>
   </edmx:Reference>
 
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.1.00.0" Alias="Manager">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.1.0.0" Alias="Manager">
 
       <!-- This is the schema definition for a Manager and its respective properties -->
       

@@ -1,6 +1,6 @@
 {
-    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.00.0",
-    "title": "Power.1.00.0",
+    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0",
+    "title": "Power.1.0.0",
     "type": "object",
     "additionalProperties": false,
     "properties": {
@@ -14,18 +14,18 @@
             "$ref": "odata.4.0.0.json#type"
         },
         "Oem": {
-            "$ref": "Resource.1.00.0.json#Oem",
+            "$ref": "Resource.1.0.0.json#Oem",
             "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
             "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
         },
         "Id": {
-            "$ref": "Resource.1.00.0.json#Id"
+            "$ref": "Resource.1.0.0.json#Id"
         },
         "Description": {
-            "$ref": "Resource.1.00.0.json#Description"
+            "$ref": "Resource.1.0.0.json#Description"
         },
         "Name": {
-            "$ref": "Resource.1.00.0.json#Name"
+            "$ref": "Resource.1.0.0.json#Name"
         },
         "PowerControl": {
             "type": "array",
@@ -56,7 +56,7 @@
         "Redundancy": {
             "type": "array",
             "items": {
-                "$ref": "Redundancy.1.00.0.json#/definitions/Redundancy"
+                "$ref": "Redundancy.1.0.0.json#/definitions/Redundancy"
             },
             "readonly": true,
             "description": "Redundancy information for the power subsystem of this system or device"
@@ -70,7 +70,7 @@
             "additionalProperties": false,
             "properties": {
                 "Oem": {
-                    "$ref": "Resource.1.00.0.json#Oem",
+                    "$ref": "Resource.1.0.0.json#Oem",
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
@@ -80,7 +80,7 @@
                     "longDescription": "The value of this string shall uniquely identify the member within the collection."
                 },
                 "Name": {
-                    "$ref": "Resource.1.00.0.json#Name"
+                    "$ref": "Resource.1.0.0.json#Name"
                 },
                 "PowerSupplyType": {
                     "type": [
@@ -199,7 +199,7 @@
                     "longDescription": "This property shall contain the spare or replacement part number as defined by the manufacturer for the associated power supply."
                 },
                 "Status": {
-                    "$ref": "Resource.1.00.0.json#Status"
+                    "$ref": "Resource.1.0.0.json#Status"
                 },
                 "RelatedItem": {
                     "type": "array",
@@ -217,7 +217,7 @@
                 "Redundancy": {
                     "type": "array",
                     "items": {
-                        "$ref": "Redundancy.1.00.0.json#Redundancy"
+                        "$ref": "Redundancy.1.0.0.json#Redundancy"
                     },
                     "readonly": true,
                     "description": "This structure is used to show redundancy for fans.  The Component ids will reference the members of the redundancy groups.",
@@ -315,7 +315,7 @@
             "additionalProperties": false,
             "properties": {
                 "Oem": {
-                    "$ref": "Resource.1.00.0.json#Oem",
+                    "$ref": "Resource.1.0.0.json#Oem",
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
@@ -325,7 +325,7 @@
                     "longDescription": "The value of this string shall uniquely identify the member within the collection."
                 },
                 "Name": {
-                    "$ref": "Resource.1.00.0.json#Name"
+                    "$ref": "Resource.1.0.0.json#Name"
                 },
                 "SensorNumber": {
                     "type": [
@@ -337,7 +337,7 @@
                     "longDescription": "The value of this property shall be a numerical identifier for this voltage sensor that is unique within this resource. "
                 },
                 "Status": {
-                    "$ref": "Resource.1.00.0.json#Status"
+                    "$ref": "Resource.1.0.0.json#Status"
                 },
                 "ReadingVolts": {
                     "type": [
@@ -421,7 +421,7 @@
                     "longDescription": "The value of this property shall indicate the lowest possible value for CurrentReading. Units shall use the same units as the related ReadingVolts propoerty."
                 },
                 "PhysicalContext": {
-                    "$ref": "Resource.1.00.0.json#PhysicalContext",
+                    "$ref": "Resource.1.0.0.json#PhysicalContext",
                     "readonly": true,
                     "description": "Describes the area or device to which this voltage measurement applies.",
                     "longDescription": "The value of this property shall be a description of the affected device or region within the chassis to which this voltage measurement applies."
@@ -447,7 +447,7 @@
             "additionalProperties": false,
             "properties": {
                 "Oem": {
-                    "$ref": "Resource.1.00.0.json#Oem",
+                    "$ref": "Resource.1.0.0.json#Oem",
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
@@ -457,7 +457,7 @@
                     "longDescription": "The value of this string shall uniquely identify the member within the collection."
                 },
                 "Name": {
-                    "$ref": "Resource.1.00.0.json#Name"
+                    "$ref": "Resource.1.0.0.json#Name"
                 },
                 "PowerConsumedWatts": {
                     "type": [
@@ -505,7 +505,7 @@
                     "longDescription": "The value of this property shall represent the total power currently allocated to chassis resources."
                 },
                 "Status": {
-                    "$ref": "Resource.1.00.0.json#Status"
+                    "$ref": "Resource.1.0.0.json#Status"
                 },
                 "PowerMetrics": {
                         "$ref": "#/definitions/PowerMetric",

@@ -4,28 +4,28 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/RedfishExtensions.1.00.0">
-    <edmx:Include Namespace="RedfishExtensions.1.00.0" Alias="Redfish"/>
-    <edmx:Include Namespace="Validation.1.00.0" Alias="Validation"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/RedfishExtensions.1.0.0">
+    <edmx:Include Namespace="RedfishExtensions.1.0.0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.1.0.0" Alias="Validation"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.1.00.0">
-    <edmx:Include Namespace="Resource.1.00.0" Alias="Resource"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.1.0.0">
+    <edmx:Include Namespace="Resource.1.0.0" Alias="Resource"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Measures.V1.xml">
     <edmx:Include Namespace="Org.OData.Measures.v1" Alias="Measures"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/IPAddresses.1.00.0">
-    <edmx:Include Namespace="IPAddresses.1.00.0" Alias="IPAddresses"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/IPAddresses.1.0.0">
+    <edmx:Include Namespace="IPAddresses.1.0.0" Alias="IPAddresses"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ManagerNetworkProtocol.1.00.0">
-    <edmx:Include Namespace="NetworkService.1.00.0" Alias="NetworkService"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ManagerNetworkProtocol.1.0.0">
+    <edmx:Include Namespace="NetworkService.1.0.0" Alias="NetworkService"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/VLanNetworkInterface.1.00.0">
-    <edmx:Include Namespace="VLanNetworkInterface.1.00.0" Alias="VLanNetworkInterface"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/VLanNetworkInterface.1.0.0">
+    <edmx:Include Namespace="VLanNetworkInterface.1.0.0" Alias="VLanNetworkInterface"/>
   </edmx:Reference>
   
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EthernetInterface.1.00.0" Alias="EthernetInterface">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EthernetInterface.1.0.0" Alias="EthernetInterface">
 
       <!--This schema defines a computer system and its respective properties. -->
       <EntityType Name="EthernetInterfaceCollection" BaseType="Resource.ResourceCollection">

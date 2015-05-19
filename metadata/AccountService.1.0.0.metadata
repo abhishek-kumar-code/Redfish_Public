@@ -5,22 +5,22 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/RedfishExtensions.1.00.0">
-    <edmx:Include Namespace="RedfishExtensions.1.00.0" Alias="Redfish"/>
-    <edmx:Include Namespace="Validation.1.00.0" Alias="Validation"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/RedfishExtensions.1.0.0">
+    <edmx:Include Namespace="RedfishExtensions.1.0.0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.1.0.0" Alias="Validation"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.1.00.0">
-    <edmx:Include Namespace="Resource.1.00.0" Alias="Resource"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.1.0.0">
+    <edmx:Include Namespace="Resource.1.0.0" Alias="Resource"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ManagerAccount.1.00.0">
-    <edmx:Include Namespace="ManagerAccount.1.00.0" Alias="ManagerAccount"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ManagerAccount.1.0.0">
+    <edmx:Include Namespace="ManagerAccount.1.0.0" Alias="ManagerAccount"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Role.1.00.0">
-    <edmx:Include Namespace="Role.1.00.0" Alias="Role"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Role.1.0.0">
+    <edmx:Include Namespace="Role.1.0.0" Alias="Role"/>
   </edmx:Reference>
   
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AccountService.1.00.0" Alias="AccountService">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AccountService.1.0.0" Alias="AccountService">
 
       <!-- This schema defines an account service and its respective properties. -->
       <EntityType Name="AccountService" BaseType="Resource.Resource">

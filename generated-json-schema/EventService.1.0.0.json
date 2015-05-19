@@ -1,6 +1,6 @@
 {
-    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.00.0",
-    "title": "EventService.1.00.0",
+    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0",
+    "title": "EventService.1.0.0",
     "type": "object",
     "additionalProperties": false,
     "properties": {
@@ -14,25 +14,25 @@
             "$ref": "odata.4.0.0.json#type"
         },
         "Oem": {
-            "$ref": "Resource.1.00.0.json#Oem",
+            "$ref": "Resource.1.0.0.json#Oem",
             "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
             "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
         },
         "Id": {
-            "$ref": "Resource.1.00.0.json#Id"
+            "$ref": "Resource.1.0.0.json#Id"
         },
         "Description": {
-            "$ref": "Resource.1.00.0.json#Description"
+            "$ref": "Resource.1.0.0.json#Description"
         },
         "Name": {
-            "$ref": "Resource.1.00.0.json#Name"
+            "$ref": "Resource.1.0.0.json#Name"
         },
         "Links": {
             "type": "object",
             "additionalProperties": false,
             "properties": {
                 "Oem": {
-                    "$ref": "Resource.1.00.0.json#Oem",
+                    "$ref": "Resource.1.0.0.json#Oem",
                     "description": "Oem extension object.",
                     "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
                 },
@@ -105,7 +105,7 @@
             "description": "The Actions object contains the available custom actions on this resource."
         },
         "Status": {
-            "$ref": "Resource.1.00.0.json#Status"
+            "$ref": "Resource.1.0.0.json#Status"
         }
     },
     "description": "This is the schema definition for the Event Service.  It represents the properties for the service itself and has links to the actual list of subscriptions.",

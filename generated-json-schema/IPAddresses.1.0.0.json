@@ -1,5 +1,5 @@
 {
-    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.00.0",
+    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0",
     "title": "IPAddresses",
     "definitions":{
     "IPv6Address":{
@@ -7,7 +7,7 @@
             "additionalProperties": false,
             "properties": {
                 "Oem": {
-                    "$ref": "Resource.1.00.0.json#Oem"
+                    "$ref": "Resource.1.0.0.json#Oem"
                 },
                 "Address": {
                     "type": [
@@ -79,7 +79,7 @@
             "additionalProperties": false,
             "properties": {
                 "Oem": {
-                    "$ref": "Resource.1.00.0.json#Oem"
+                    "$ref": "Resource.1.0.0.json#Oem"
                 },
                 "Address": {
                     "type": [
@@ -110,7 +110,7 @@
             "additionalProperties": false,
             "properties": {
                 "Oem": {
-                    "$ref": "Resource.1.00.0.json#Oem"
+                    "$ref": "Resource.1.0.0.json#Oem"
                 },
                 "Address": {
                     "type": [
