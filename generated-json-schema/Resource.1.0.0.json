@@ -59,7 +59,7 @@
                 "PushPowerButton"
             ],
             "enumDescriptions": {
-                "On": "Turn the system on",
+                "On": "Wake or turn the system on",
                 "ForceOff": "Turn the system off immediately (non-graceful) shutdown",
                 "GracefulShutdown": "Perform a graceful system shutdown and power off",
                 "GracefulRestart": "Perform a graceful system shutdown followed by a restart of the system",
