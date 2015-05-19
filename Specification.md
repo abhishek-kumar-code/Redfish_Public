@@ -532,7 +532,7 @@ The PATCH method is the preferred method used to perform updates on pre-existing
 * Services may return a representation of the resource after any server-side transformations in the body of the response.
 * If a property in the request can never be updated, such as when a property is read only, a status code of [200](#status-200) shall be returned along with a representation of the resource containing an [annotation](#extended-information) specifying the non-updatable property. In this success case, other properties may be updated in the resource. 
 * Services should return status code [405](#status-405) if the client specifies a PATCH request against a collection.
-* The PATCH operation should be idempotent in the absence of outside changes to the resource provided it is used with ETags to prevent subsequent PATCH attempts. Note that the ETAG value should change as the result of this operation.
+* The PATCH operation should be idempotent in the absence of outside changes to the resource, though the original ETag value may no longer match.
 
 OData markup ([resource identifiers](#resource-identifier-property), [type](#type-property), [etag](#etag-property) and [links](#links-property)) are ignored on Update.
 
