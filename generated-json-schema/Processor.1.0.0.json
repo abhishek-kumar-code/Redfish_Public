@@ -113,10 +113,6 @@
             "description": "The instruction set of the processor",
             "longDescription": "This property shall contain the string which identifies the instruction set of the processor contained in this socket."
         },
-        "ProcessorID": {
-            "ERROR": "type ComputerSystem.ProcessorID unrecognized.",
-            "description": "This object contains the identification information for the current resource."
-        },
         "Status": {
             "$ref": "Resource.1.00.0.json#Status"
         },

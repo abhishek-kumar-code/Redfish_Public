@@ -38,8 +38,8 @@
           <Annotation Term="OData.Description" String="The instruction set of the processor" />
           <Annotation Term="OData.LongDescription" String="This property shall contain the string which identifies the instruction set of the processor contained in this socket." />
         </Property>
-        <Property Name="ProcessorID" Type="ComputerSystem.ProcessorID"  Nullable="false">
-          <Annotation Term="OData.Description" String="This object contains the identification information for the current resource."/>
+        <Property Name="ProcessorID" Type="Processor.ProcessorID"  Nullable="false">
+          <Annotation Term="OData.Description" String="This object contains the identification information for this processor."/>
         </Property>
         <Property Name="Status" Type="Resource.Status" />
         <Property Name="Manufacturer" Type="Edm.String">
