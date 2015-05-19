@@ -477,11 +477,17 @@ The root URL for the service returns a RootService resource as defined by this s
 
 Redfish services shall expose a [metadata document](#service-metadata) describing the service at the "/redfish/v1/$metadata" resource. This metadata document describes the resources and collections available at the root, and references additional metadata documents describing the full set of resource types exposed by the service.
 
+Services shall not require authentication in order to retrieve the metadata document.
+
 ##### OData Service Document Request
 
 Redfish services shall expose an [OData Service Document](#odata-service-document), at the "/redfish/v1/odata" resource. This service document provides a standard format for enumerating the resources exposed by the service, enabling generic hypermedia-driven OData clients to navigate to the resources of the service.
 
+Services shall not require authentication in order to retrieve the service document.
+
 ##### Resource Retrieval Requests
+
+Clients request resources by issuing GET requests to the URI for the individual resource or resource collection. The URI for a resource or resource collection may be obtained from a [resource identifier property](#resource-identifier-property) returned in a previous request (for example, within the [links](#links-property) section of a previously returned resource). Services may, but are not required to, support the convention of retrieving individual properties of a resource by appending a segment containing the property name to the URI of the resource.
 
 ###### Query Parameters
 
@@ -518,6 +524,8 @@ The HEAD method differs from the GET method in that it MUST NOT return message b
 
 #### Data Modification Requests 
 
+Clients create, modify, and delete resources by issuing the appropriate [Create](#create-post), [Update](#update-patch), [Replace](#replace-put) or [Delete](#delete-delete) operation, or by invoking an [Action](#actions-post) on the resource. Services return a status code [405](#status-405) if the specified resource exists but does not support the requested operation. If a client (4xx) or service (5xx) status code is returned, the resource shall not be modified as a result of the operation.
+
 ##### Update (PATCH)
 
 The PATCH method is the preferred method used to perform updates on pre-existing resources.  Changes to the resource are sent in the request body. Properties not specified in the request body are not directly changed by the PATCH request.  The response is either empty or a representation of the resource after the update was done. The implementation may reject the update operation on certain fields based on its own policies and, if so, shall not apply any of the update requested.  Updates to resources are idempotent.
@@ -526,9 +534,9 @@ The PATCH method is the preferred method used to perform updates on pre-existing
 * Services may return a representation of the resource after any server-side transformations in the body of the response.
 * If a property in the request can never be updated, such as when a property is read only, a status code of [200](#status-200) shall be returned along with a representation of the resource containing an [annotation](#extended-information) specifying the non-updatable property. In this success case, other properties may be updated in the resource. 
 * Services should return status code [405](#status-405) if the client specifies a PATCH request against a collection.
-* The PATCH operation should be idempotent in the absence of outside changes to the resource provided it is used with ETags to prevent subsequent PATCH attempts. Note that the ETAG value should change as the result of this operation.
+* The PATCH operation should be idempotent in the absence of outside changes to the resource, though the original ETag value may no longer match.
 
-OData markup ([resource identifiers](#resource-identifier-property), [type](type-property), [etag](#etag-property) and [links](links-property)) are ignored on Update.
+OData markup ([resource identifiers](#resource-identifier-property), [type](#type-property), [etag](#etag-property) and [links](#links-property)) are ignored on Update.
 
 ##### Replace (PUT)
 
@@ -1024,7 +1032,7 @@ Response objects may include extended information, for example properties that a
 
 ###### Extended Object Information
 
-A JSON object can be annotated with "@Message.Messages" in order to specify object-level status information. 
+A JSON object can be annotated with "@Message.ExtendedInfo" in order to specify object-level status information. 
 
 ~~~json
 {
@@ -1037,7 +1045,7 @@ A JSON object can be annotated with "@Message.Messages" in order to specify obje
     "Modified": "2013-01-31T23:45:08+00:00",
     "UserName": "Administrator",
     "Oem": {},
-	"@Message.Messages" : {
+	"@Message.ExtendedInfo" : {
          "MessageID": "Base.<%= DocVersion.replace(/\.[^\.]+$/, '') %>.ResourceCannotBeDeleted",
          "Message": "The delete request failed because the resource requested cannot be deleted",
          "Severity": "Critical",
@@ -1050,7 +1058,7 @@ The value of the property is an array of [message objects](#message-object).
 
 ###### Extended Property Information
 
-An individual property within a JSON object can be annotated with extended information using "@Message.Messages", prepended with the name of the property.
+An individual property within a JSON object can be annotated with extended information using "@Message.ExtendedInfo", prepended with the name of the property.
 
 ~~~json
 {
@@ -1062,7 +1070,7 @@ An individual property within a JSON object can be annotated with extended infor
     "Description": "Manager User Session",
     "Modified": "2013-01-31T23:45:08+00:00",
     "UserName": "Administrator",
-    "UserName@Message.Messages" : [
+    "UserName@Message.ExtendedInfo" : [
          {
            "MessageID": "Base.<%= DocVersion.replace(/\.[^\.]+$/, '') %>.PropertyNotWriteable",
            "PropertiesInError": ["UserName"],
@@ -1148,14 +1156,14 @@ Error responses are defined by an extended error resource, represented as a sing
 | ---                     | ---                                                                                                                                                                                    |
 | code                    | String indicating a specific error or message (not to be confused with the HTTP status code). This code can be used to access a detailed message from a message registry.              |
 | message                 | A human readable error message indicating the semantics associated with the error. 
-| @Message.Messages       | An array of [message objects](#message-object) describing one or more error message(s). 
+| @Message.ExtendedInfo   | An array of [message objects](#message-object) describing one or more error message(s). 
 
 ~~~json
 {
     "error": {
         "code": "400",
         "message": "The update operation failed.",
-        "@Message.Messages": [
+        "@Message.ExtendedInfo": [
             {
                 "MessageId": "Base.<%= DocVersion.replace(/\.[^\.]+$/, '') %>.PropertyValueNotInList",
                 "PropertiesInError": [ 
@@ -1194,11 +1202,13 @@ Messages are represented as a JSON object with the following properties:
 | Property                | Description                                                                                                                                                                            |
 | ---                     | ---                                                                                                                                                                                    |
 | MessageId               | String indicating a specific error or message (not to be confused with the HTTP status code). This code can be used to access a detailed message from a message registry.              |
-| Message                 | A human readable error message indicating the semantics associated with the error. 
+| Message                 | A human readable error message indicating the semantics associated with the error. This shall be the complete message, and not rely on substitution variables.
 | PropertiesInError       | An optional array of string defining the specific properties in error.                                                        |
-| MessageArgs             | An optional array of strings representing the substitution parameter values for the message. The Severity attribute is an annotation specified in the DMTF namespace and shall be prefixed with the alias "message".
-| Severity                | An optional string representing the severity of the error. The Severity attribute is an annotation specified in the DMTF namespace and shall be prefixed with the alias "message".
-| Resolution              | An optional string describing recommended action(s) to take to resolve the error. The Resolution attribute is an annotation specified in the DMTF namespace and shall be prefixed with the alias "message".
+| MessageArgs             | An optional array of strings representing the substitution parameter values for the message. This shall be included in the response if a MessageId is specified for a parameterized message. 
+| Severity                | An optional string representing the severity of the error.
+| Resolution              | An optional string describing recommended action(s) to take to resolve the error.
+
+Each instance of a Message object shall contain at least a MessageId, together with any applicable MessageArgs, or a Message property specifying the complete human-readable error message.
 
 MessageIds identify specific messages defined in a message registry.
 
@@ -1216,6 +1226,7 @@ where
 The client can use the MessageId to search the message registry for the corresponding message.
 
 The message registry approach has advantages for internationalization (since the registry can be translated easily) and light weight implementation (since large strings need not be included with the implementation).
+
 
 ## Data Model & Schema
 

@@ -22,14 +22,14 @@
                     "readonly": true,
                     "longDescription": "This property shall contain an optional human readable message."
                 },
-                "@Message.Messages": {
+                "@Message.ExtendedInfo": {
                     "$ref": "Message.1.00.0#/Messages"
                 }
             },
             "required":  [
                 "code",
                 "message",
-                "@Message.Messages"
+                "@Message.ExtendedInfo"
             ]
         }
     },
