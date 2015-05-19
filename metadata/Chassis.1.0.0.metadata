@@ -4,31 +4,31 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/RedfishExtensions.1.00.0">
-    <edmx:Include Namespace="RedfishExtensions.1.00.0" Alias="Redfish"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/RedfishExtensions.1.0.0">
+    <edmx:Include Namespace="RedfishExtensions.1.0.0" Alias="Redfish"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.1.00.0">
-    <edmx:Include Namespace="Resource.1.00.0" Alias="Resource"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.1.0.0">
+    <edmx:Include Namespace="Resource.1.0.0" Alias="Resource"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/LogService.1.00.0">
-    <edmx:Include Namespace="LogService.1.00.0" Alias="LogService"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/LogService.1.0.0">
+    <edmx:Include Namespace="LogService.1.0.0" Alias="LogService"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Thermal.1.00.0">
-    <edmx:Include Namespace="Thermal.1.00.0" Alias="Thermal"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Thermal.1.0.0">
+    <edmx:Include Namespace="Thermal.1.0.0" Alias="Thermal"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Power.1.00.0">
-    <edmx:Include Namespace="Power.1.00.0" Alias="Power"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Power.1.0.0">
+    <edmx:Include Namespace="Power.1.0.0" Alias="Power"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Manager.1.00.0">
-    <edmx:Include Namespace="Manager.1.00.0" Alias="Manager"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Manager.1.0.0">
+    <edmx:Include Namespace="Manager.1.0.0" Alias="Manager"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ComputerSystem.1.00.0">
-    <edmx:Include Namespace="ComputerSystem.1.00.0" Alias="ComputerSystem"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ComputerSystem.1.0.0">
+    <edmx:Include Namespace="ComputerSystem.1.0.0" Alias="ComputerSystem"/>
   </edmx:Reference>
   
   <edmx:DataServices>
 
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.1.00.0" Alias="Chassis">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.1.0.0" Alias="Chassis">
 
       <!-- This schema defines a chassis and its respective properties. -->
  

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?><!-- Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.--> 
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
 
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/RedfishExtensions.1.00.0">
-    <edmx:Include Namespace="RedfishExtensions.1.00.0" Alias="Redfish"/>
-    <edmx:Include Namespace="Validation.1.00.0" Alias="Validation"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/RedfishExtensions.1.0.0">
+    <edmx:Include Namespace="RedfishExtensions.1.0.0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.1.0.0" Alias="Validation"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.1.00.0">
-    <edmx:Include Namespace="Resource.1.00.0" Alias="Resource"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.1.0.0">
+    <edmx:Include Namespace="Resource.1.0.0" Alias="Resource"/>
   </edmx:Reference>
   
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Message.1.00.0" Alias="Message">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Message.1.0.0" Alias="Message">
 
       <Term Name="ExtendedInfo" Type="Collection(Message.Message)">
         <Annotation Name="OData.Description" String="The ExtendedInfo annotation can be applied to any object or property to provide additional information about the item."/>

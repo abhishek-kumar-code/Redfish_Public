@@ -4,12 +4,12 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.1.00.0">
-    <edmx:Include Namespace="Resource.1.00.0" Alias="Resource"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.1.0.0">
+    <edmx:Include Namespace="Resource.1.0.0" Alias="Resource"/>
   </edmx:Reference>
 
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SimpleStorage.1.00.0" Alias="SimpleStorage">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SimpleStorage.1.0.0" Alias="SimpleStorage">
 
       <!-- This is the schema definition for the Simple Storage resource. -->
 

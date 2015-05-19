@@ -4,16 +4,16 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.1.00.0">
-    <edmx:Include Namespace="Resource.1.00.0" Alias="Resource"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.1.0.0">
+    <edmx:Include Namespace="Resource.1.0.0" Alias="Resource"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Chassis.1.00.0">
-    <edmx:Include Namespace="Chassis.1.00.0" Alias="Chassis"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Chassis.1.0.0">
+    <edmx:Include Namespace="Chassis.1.0.0" Alias="Chassis"/>
   </edmx:Reference>
   
   <edmx:DataServices>
 
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ChassisCollection.1.00.0" Alias="ChassisCollection">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ChassisCollection.1.0.0" Alias="ChassisCollection">
 
       <!-- This schema defines a computer system and its respective properties. -->
       <EntityType Name="ChassisCollection" BaseType="Resource.ResourceCollection">

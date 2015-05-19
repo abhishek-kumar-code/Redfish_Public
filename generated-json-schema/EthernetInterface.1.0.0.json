@@ -1,6 +1,6 @@
 {
-    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.00.0",
-    "title": "EthernetInterface.1.00.0",
+    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0",
+    "title": "EthernetInterface.1.0.0",
     "type": "object",
     "additionalProperties": false,
     "properties": {
@@ -14,18 +14,18 @@
             "$ref": "odata.4.0.0.json#type"
         },
         "Oem": {
-            "$ref": "Resource.1.00.0.json#Oem",
+            "$ref": "Resource.1.0.0.json#Oem",
             "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
             "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
         },
         "Id": {
-            "$ref": "Resource.1.00.0.json#Id"
+            "$ref": "Resource.1.0.0.json#Id"
         },
         "Description": {
-            "$ref": "Resource.1.00.0.json#Description"
+            "$ref": "Resource.1.0.0.json#Description"
         },
         "Name": {
-            "$ref": "Resource.1.00.0.json#Name"
+            "$ref": "Resource.1.0.0.json#Name"
         },
         "UefiDevicePath": {
             "type": [
@@ -37,7 +37,7 @@
             "longDescription": "The value of this property shall be the UEFI device path of this interface."
         },
         "Status": {
-            "$ref": "Resource.1.00.0.json#Status"
+            "$ref": "Resource.1.0.0.json#Status"
         },
         "InterfaceEnabled": {
             "type": [
@@ -124,7 +124,7 @@
             "longDescription": "The value of this property shall indicate the number of array items supported by IPv6StaticAddresses."
         },
         "VLAN": {
-            "$ref": "VLanNetworkInterface.1.00.0.json#/defintions/VLAN",
+            "$ref": "VLanNetworkInterface.1.0.0.json#/defintions/VLAN",
             "readonly": true,
             "description": "If this Network Interface supports more than one VLAN, this property will not be present and the client should look for VLANs collection in the link section of this resource.",
             "longDescription": "The value of this property shall be the VLAN for this interface.  If this interface supports more than one VLAN, the VLAN property shall not be present and the VLANS collection link shall be present instead."
@@ -132,7 +132,7 @@
         "IPv4Addresses": {
             "type": "array",
             "items": {
-                "$ref": "IPAddresses.1.00.0.json#/definitions/IPv4Address"
+                "$ref": "IPAddresses.1.0.0.json#/definitions/IPv4Address"
             },
             "readonly": true,
             "description": "This array of objects is used to represent the IPv4 connection characteristics for this interface."
@@ -172,7 +172,7 @@
         "IPv6Addresses": {
             "type": "array",
             "items": {
-                "$ref": "IPAddresses.1.00.0.json#/definitions/IPv6Address"
+                "$ref": "IPAddresses.1.0.0.json#/definitions/IPv6Address"
             },
             "readonly": true,
             "description": "This array of objects enumerates all of the currently assigned IPv6 addresses on this interface."
@@ -180,7 +180,7 @@
         "IPv6StaticAddresses": {
             "type": "array",
             "items": {
-                "$ref": "IPAddresses.1.00.0.json#/definitions/IPv6StaticAddress"
+                "$ref": "IPAddresses.1.0.0.json#/definitions/IPv6StaticAddress"
             },
             "readonly": true,
             "description": "This array of objects represents all of the IPv6 static addresses to be assigned on this interface."
@@ -206,7 +206,7 @@
             "longDescription": "The value of this property shall be the DNS name servers for this interface."
         },
         "SettingsResult": {
-            "$ref": "Resource.1.00.0.json#SettingsResult",
+            "$ref": "Resource.1.0.0.json#SettingsResult",
             "description": "If there is a link to Settings, this property has the results of the last application of those settings to this NIC.",
             "longDescription": "If using separate Settings, these properties shall report the result of applying settings."
         },
@@ -215,7 +215,7 @@
             "additionalProperties": false,
             "properties": {
                 "Oem": {
-                    "$ref": "Resource.1.00.0.json#Oem",
+                    "$ref": "Resource.1.0.0.json#Oem",
                     "description": "Oem extension object.",
                     "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
                 },

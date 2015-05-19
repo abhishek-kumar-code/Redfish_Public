@@ -4,24 +4,24 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/RedfishExtensions.1.00.0">
-    <edmx:Include Namespace="RedfishExtensions.1.00.0" Alias="Redfish"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/RedfishExtensions.1.0.0">
+    <edmx:Include Namespace="RedfishExtensions.1.0.0" Alias="Redfish"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Measures.V1.xml">
     <edmx:Include Namespace="Org.OData.Measures.V1" Alias="OData.Measures"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.1.00.0">
-    <edmx:Include Namespace="Resource.1.00.0" Alias="Resource"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.1.0.0">
+    <edmx:Include Namespace="Resource.1.0.0" Alias="Resource"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Event.1.00.0">
-    <edmx:Include Namespace="Event.1.00.0" Alias="Event"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Event.1.0.0">
+    <edmx:Include Namespace="Event.1.0.0" Alias="Event"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ListenerDestination.1.00.0">
-    <edmx:Include Namespace="ListenerDestination.1.00.0" Alias="ListenerDestination"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ListenerDestination.1.0.0">
+    <edmx:Include Namespace="ListenerDestination.1.0.0" Alias="ListenerDestination"/>
   </edmx:Reference>
 
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventService.1.00.0" Alias="EventService">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventService.1.0.0" Alias="EventService">
 
       <!-- This schema defines an event service and its respective properties.-->
       <EntityType Name="EventService" BaseType="Resource.Resource">

@@ -1,6 +1,6 @@
 {
-    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.00.0",
-    "title": "ManagerNetworkProtocol.1.00.0",
+    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0",
+    "title": "ManagerNetworkProtocol.1.0.0",
     "type": "object",
     "additionalProperties": false,
     "properties": {
@@ -18,7 +18,7 @@
             "additionalProperties": false,
             "properties": {
                 "Oem": {
-                    "$ref": "Resource.1.00.0.json#Oem",
+                    "$ref": "Resource.1.0.0.json#Oem",
                     "description": "Oem extension object.",
                     "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
                 },
@@ -290,7 +290,7 @@
             "description": "This object is used for the KVM-IP (Keyboard, Video, Mouse) protocol settings for the manager. The value of the Port property shall contain the TCP port assigned for SSH usage.  The default value shall be 22 for compatibility with established client implementations."
         },
         "Status": {
-            "$ref": "Resource.1.00.0.json#Status"
+            "$ref": "Resource.1.0.0.json#Status"
         }
     },
     "description": "This resource is used to obtain or modify the network services managed by a given manager.",
