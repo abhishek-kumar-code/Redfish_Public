@@ -103,7 +103,7 @@
                 },
                 "LineInputVoltageType": {
                     "type": [
-                        "number",
+                        "string",
                         "null"
                     ],
                     "enum": [
