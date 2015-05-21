@@ -473,11 +473,6 @@ class JsonSchemaGenerator:
             output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + "Resource." + JsonSchemaGenerator.schema_version +".json#Modified\"\n"
             output += UT.Utilities.indent(depth+1) + "}"
 
-        elif propertyname == "Id":
-            output += UT.Utilities.indent(depth+1) + "\"Id\": {\n"
-            output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + "Resource." + JsonSchemaGenerator.schema_version +".json#Id\"\n"
-            output += UT.Utilities.indent(depth+1) + "}"
-        
         return output
 
 
@@ -679,8 +674,8 @@ class JsonSchemaGenerator:
                         # Extract Name, Type and namespace
                         propname = property.attrib["Name"]
                         proptypename = property.attrib["Type"]
-                        # Special handling of ["Description", "id", "Name", "Modified"] defined in Resource type.
-                        specialproperties = ["Description", "Id", "Name", "Modified"]
+                        # Special handling of ["Description", "Name", "Modified"] defined in Resource type.
+                        specialproperties = ["Description", "Name", "Modified"]
                         if (propname in specialproperties) and (typedata["Name"] != "Resource"):
                              output += self.get_json_for_special_properties(propname, depth, prefixuri)
                              continue
