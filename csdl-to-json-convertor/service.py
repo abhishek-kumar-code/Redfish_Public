@@ -568,7 +568,13 @@ class JsonSchemaGenerator:
         else:
             output = UT.Utilities.indent(depth) + "\"type\": \"object\",\n"
 
-        isopentype = False
+        # allow odata and redfish annotations
+            output = UT.Utilities.indent(depth) + "\"patternProperties\": { \n"
+            output = UT.Utilities.indent(depth+1) + "\"^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish).[a-zA-Z_][a-zA-Z0-9_.]$\"\n"
+            output += UT.Utilities.indent(depth)   + "},\n"
+		
+		# figure out additional properties
+		isopentype = False
 
         if "OpenType" in typedata["Node"].attrib.keys():
             if typedata["Node"].attrib["OpenType"].upper() == "TRUE":
