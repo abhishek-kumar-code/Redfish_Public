@@ -1215,8 +1215,11 @@ class JsonSchemaGenerator:
                     fileoutput += UT.Utilities.indent(depth+1) + "\"title\": \"" + result + "\",\n"
                     # Fill in the result
                     fileoutput += jsonresults[result]
+					# Add Copyright
+                    fileoutput += ",\n"
+					fileoutput += UT.Utilities.indent(depth+1) + "\"copyright\": \"Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.\"\n"
                     # End starting bracket
-                    fileoutput += "\n" + UT.Utilities.indent(depth) + "}\n"
+                    fileoutput += UT.Utilities.indent(depth) + "}\n"
                     screenoutput += fileoutput
                     filename = result + ".json"
                     file = open(filename, "wb")
