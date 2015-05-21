@@ -199,7 +199,7 @@ class JsonSchemaGenerator:
             if not annotation.tag == "{http://docs.oasis-open.org/odata/ns/edm}Annotation":
                 continue
 
-            if annotation.attrib["Term"] == "DMTF.ExpandReferences":
+            if annotation.attrib["Term"] == "OData.AutoExpandReferences":
                 if "Boolean" in annotation.attrib.keys():
                     if annotation.attrib["Boolean"].upper() == "FALSE":
                         return True
@@ -628,7 +628,7 @@ class JsonSchemaGenerator:
                         propname = property.attrib["Name"]
                         output += UT.Utilities.indent(depth+1) + "\"" + propname + "\": {\n"
 
-                        # Figure out if DMTF.ExpandReferences is set or "DMTF.ExpandResources"
+                        # Figure out if OData.AutoExpandReferences is set or "OData.AutoExpand"
                         termvalue = ""
                         for annotation in property.iter("{http://docs.oasis-open.org/odata/ns/edm}Annotation"):
                             if annotation.attrib["Term"] == "OData.AutoExpand":
