@@ -1,6 +1,6 @@
 {
     "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0",
-    "title": "ListenerDestinationCollection.1.0.0",
+    "title": "EventDestinationCollection.1.0.0",
     "type": "object",
     "additionalProperties": true,
     "properties": {
