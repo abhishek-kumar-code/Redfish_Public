@@ -7,15 +7,15 @@
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.1.0.0">
     <edmx:Include Namespace="Resource.1.0.0" Alias="Resource"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ListenerDestination.1.0.0">
-    <edmx:Include Namespace="ListenerDestination.1.0.0" Alias="ListenerDestination"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/EventDestination.1.0.0">
+    <edmx:Include Namespace="EventDestination.1.0.0" Alias="EventDestination"/>
   </edmx:Reference>
   
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ListenerDestinationCollection.1.0.0" Alias="ListenerDestinationCollection">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventDestinationCollection.1.0.0" Alias="EventDestinationCollection">
 
-      <EntityType Name="ListenerDestinationCollection" BaseType="Resource.ResourceCollection">
-        <Property Name="Links" Type="ListenerDestination.Members">
+      <EntityType Name="EventDestinationCollection" BaseType="Resource.ResourceCollection">
+        <Property Name="Links" Type="EventDestination.Members">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Contains links to other resources that are related to this resource."/>
         </Property>
@@ -23,7 +23,7 @@
 
       <ComplexType Name="Members">
         <Annotation Term="OData.AdditionalProperties" Bool="False"/>
-        <NavigationProperty Name="Members" Type="Collection(ListenerDestination.ListenerDestination)">
+        <NavigationProperty Name="Members" Type="Collection(EventDestination.EventDestination)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Contains the members of this collection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
