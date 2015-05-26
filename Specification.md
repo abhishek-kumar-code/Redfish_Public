@@ -2128,8 +2128,8 @@ The response to the POST request to create a session includes:
 
 *  an X-Auth-Token header that contains a "session auth token" that the client can use an subsequent requests, and 
 *  a "Location header that contains a link to the newly created session resource.
-*  The JSON response body that contains a full representation of the newly created session object:
-
+*  The JSON response body that contains a full representation of the newly created session object:  
+```
     <operation> <uri> HTTP/1.1
     <header>
     <header>
@@ -2147,7 +2147,7 @@ The response to the POST request to create a session includes:
 		"UserName": "<username>"
 		"Oem": {}
     } 
-
+``` 
 The client sending the session login request should save the "Session Auth Token" and the link returned in the Location header.
 The "Session Auth Token" is used to authentication subsequent requests by setting the Request Header "X-Auth-Token with the "Session Auth Token" received from the login POST.
 The client will later use the link that was returned in the Location header of the POST to logout or terminate the session. 
