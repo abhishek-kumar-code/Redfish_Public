@@ -2097,7 +2097,7 @@ includes orphaned session timeout and number of simultaneous open sessions.
 
 * **A Redfish Service shall provide login sessions compliant with this specification.**
 
-##### Redfish Sessions
+##### Redfish Login Sessions
 
 For functionality requiring multiple Redfish operations, a client may create a Redfish Login Session via the session management interface.  The URI used for session management is specified in the /redfish resource with the property "SessionService".
 
