@@ -1,6 +1,6 @@
 ---
 DocTitle: Redfish FAQ
-DocNumber: XXXX
+DocNumber: DSP2045
 DocType: Whitepaper
 DocVersion: '0.97.0'
 DocStatus: Work in Progress
