@@ -1298,11 +1298,7 @@ For attributes that have units, or other special meaning, the unit identifier sh
 
 ### Localization Considerations
 
-The Redfish architecture supports localized strings but does not impose any specific requirement for localization upon services.  However, current market forces seem to require localization as necessary (e.g. schemas).
-
-Schema-supplied display strings may be localized as necessary, but a Schema file may only contain one language.  Alternate language schemas may be published and available to Redfish clients, but need not be provided via the Redfish schema store. 
-
-Property names defined within a Redfish schema are never localized. User-supplied string-valued property values such as an asset tag may be localized. Localizable string valued properties should be annotated with the [IsLanguageDependent annotation term](#language-dependent-property-values).
+Localization and translation of data or meta data is not supported in version 1.0 of the Redfish Specification.
 
 ### Schema Definition
 
