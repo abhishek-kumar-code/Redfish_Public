@@ -2019,6 +2019,10 @@ REF: http://csrc.nist.gov/publications/fips/fips140-1/fips1401.pdf - This is use
 
 ### Authentication
 
+* Authentication Methods
+
+	Service shall support both "Basic Authentication" and "Redfish Session Login Authentication" (as described below under Session Management).  Services shall not require a client to create a session when Basic Auth is used.
+
 * Default Credentials 
 
 	Services should NOT implement default credentials for any account installed on the spec compliant device, with a well known password.
@@ -2093,9 +2097,9 @@ includes orphaned session timeout and number of simultaneous open sessions.
 
 * **A Redfish Service shall provide login sessions compliant with this specification.**
 
-##### Login Sessions
+##### Redfish Login Sessions
 
-For functionality requiring multiple Redfish operations, a standard Login session is specified.  The URI used for session management is specified in the /redfish resource with the property "SessionService".
+For functionality requiring multiple Redfish operations, a client may create a Redfish Login Session via the session management interface.  The URI used for session management is specified in the /redfish resource with the property "SessionService".
 
 ```json
 {
@@ -2107,50 +2111,68 @@ For functionality requiring multiple Redfish operations, a standard Login sessio
 }
 ```
 
-##### Login
+##### Session Login 
 
-A session is created by an HTTP POST to the SessionService/Sessions resource, including the following POST body:
+A Redfish session is created by an HTTP POST to the SessionService/Sessions resource, including the following POST body:
 
 ```json
 {
-    "UserName": "<username>"
+    "UserName": "<username>",
     "Password": "<password>"
 }
 ```
+
 The Origin header should be saved in reference to this session creation and compared to subsequent requests using this session to verify the request has been initiated from an authorized client domain.
 
-The return includes an X-Auth-Token header with a session token and Location header.
+The response to the POST request to create a session includes:
 
-The return JSON body includes a representation of the newly created session object:
-
+*  an X-Auth-Token header that contains a "session auth token" that the client can use an subsequent requests, and 
+*  a "Location header that contains a link to the newly created session resource.
+*  The JSON response body that contains a full representation of the newly created session object:  
+```
     <operation> <uri> HTTP/1.1
     <header>
     <header>
-    Location: "/redfish/v1/SessionService/Sessions/Administrator1"
-    X-Auth-Token: <token string>
+    Location: "/redfish/v1/SessionService/Sessions/<sessionID>"
+    X-Auth-Token: <session-auth-token>
     <header>
 
     {
         "@odata.context": "/redfish/v1/$metadata#SessionService/Links/Sessions/$entity",
-        "@odata.id": "/redfish/v1/SessionService/Sessions/Administrator1",
-	"UserName": "<username>"
+        "@odata.id": "/redfish/v1/SessionService/Sessions/<sessionID>",
+		"@odata.type": "#Session.1.0.0.Session",
+		"Id": "<sessionId>"
+		"Name": "User Session",
+		"Description": Manager User Session",
+		"UserName": "<username>"
+		"Oem": {}
     } 
+``` 
+The client sending the session login request should save the "Session Auth Token" and the link returned in the Location header.
+The "Session Auth Token" is used to authentication subsequent requests by setting the Request Header "X-Auth-Token with the "Session Auth Token" received from the login POST.
+The client will later use the link that was returned in the Location header of the POST to logout or terminate the session. 
 
-##### Logout
-
-Logout is accomplished by performing a DELETE to the Session resource provided by the Login operation including the X-Auth-Token header.  Optionally, the service may also support logout upon DELETE to the Sessions resource without specifying the individual session URI.  
-
-The ability to DELETE to a Session resource allows the service to support logging out of one or more sessions from a different session if the user has sufficient privilege to do so.
+Note that the "Session ID" and "Session Auth Token" are different.  The Session ID uniquely identifies the session resource and is returned with the response data as well as the last segment of the Location header link.  
+An administrator with sufficient privilege can view active sessions and also terminate any session using the associated sessionId.
+Only the client that executes the login will have the Session Auth Token.
 
 ##### X-Auth-Token HTTP Header
 
 Implementations shall only use compliant TLS connections to transport the data between any third party authentication service and clients.
+Therefore, the POST to create a new session shall only be supported with HTTPS, and all requests that use Basic Auth shall require HTTPS.
 
-* Limited Lifetime
-  * Implementations shall support session timeout, session idle time is defined as time from the last accepted transaction.
-  * Session timeout shall default to a finite limit.
-  * Implementations should NOT support infinite session times.
-  
+##### Session Lifetime
+
+Note that Redfish sessions "time-out" as apposed to having a token expiration time like some token-based methods use.  For Redfish sessions, as long a  client continues to send requests for the session more often than the session timeout period, the session will remain open and the session auth token remains valid.  If the sessions times-out then the session is automatically terminated.
+Note that the Redfish. 
+
+##### Session Termination or Logout
+
+A Redfish session is terminated when the client Logs-out.  This is accomplished by performing a DELETE to the Session resource identified by the link returned in the Location header when the session was created, or the SessionId returned in the response data.
+
+The ability to DELETE a Session by specifying the Session resource ID allows an administrator with sufficient privilege to terminate other users sessions from a different session.
+
+
 #### AccountService
 
 * User passwords should be stored with one-way encryption techniques.
