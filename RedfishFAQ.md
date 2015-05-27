@@ -156,15 +156,6 @@ It allows the use of the If-Match header for replacement of resources.  It also 
 
 It also allows the server the option of providing something more robust than a simple modified time.
 
-## Why isn't localization supported.
-Localization by a Redfish service is not supported in version 1.0 because by not supporting it in version 1.0, we prioritized features and functions as well as interoperability over some other issues.  Localization is one of those issues.
-
-What we tried to enable for version 1.0 was localization by the client.  The Redfish architecture supports localized strings but does not impose any specific requirement for localization upon services.  However, current market forces seem to require localization as necessary (e.g. schemas). Schema-supplied display strings may be localized as necessary, but a Schema file may only contain one language.  Alternate language schemas may be published and available to Redfish clients, but need not be provided via the Redfish schema store.
-
-Additionally, Message Registries can be translated as well.  Thus events and other constructs that leverage these registries can perform client side translation as well.
-
-Property names defined within a Redfish schema are not localized. User-supplied string-valued property values such as an asset tag may be localized but such implementations are outside of the scope of Redfish for now.
-
 # Security
 
 ## Why are AES ciphers "should"?
