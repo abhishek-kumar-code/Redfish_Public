@@ -92,9 +92,11 @@ PATCH solves this.  While PUT always does a complete replacement, PATCH always d
 Because it is considered safer (because it doesn't overwrite unintended properties), PATCH is the preferred method for updates. PATCH is gaining wide adoption in the industry, and is already supported by Open Stack and many other APIs and in available in many off the shell web servers.
 
 ## Why PUSH Eventing only?
-We need some kind of eventing mechanism to meet comp with SNMP, IPMI and other protocols.  The mechanism is already there in BMCs.
+We need some kind of eventing mechanism to meet comp with SNMP, IPMI and other protocols.  
 
 The two methods are "push" and "pull".  Push sends events to a destination and pulls create a queue where clients can retrieve events.  Pull eventing is resource intensive in a light-weight, small footprint BMC.  This is why they already use push style eventing since the data does not need to be retained in precious BMC processing memory with push style eventing.
+
+Note that in future versions of the spec, other eventing methods may be supported.
 
 ## Why separation of data model from protocol?
 The data model is expected to change, including extensions added to it, over time.  Therefore, churn is expected.  However, the protocol portion of the specification should remain relatively stable.  So, instead of churning the entire specification, this separation attempts to isolate unnecessary versioning of unaffected specification sections.
@@ -107,6 +109,9 @@ Message registries are not a new concept.  They allow the Management Processor t
 Message registries are not only light weight, but make it easy to support internationalization since the management processor does not need to contain the translations.  Instead, the registry itself can be translated and the client can then display any translations needed.
 
 One of the things you will notice is that Log Entries, Event Messages, Extended Error Information and Message Registries are all of similar format.  We are attempting to optimize both the storage in the service and the usage by Clients in keeping all of this information in as similar a format as possible.  
+
+### Why is the Published Message Registry different than the one in the Mockup?
+You'll notice that @odata.context and @odata.id are missing from the published message registry.  The reason is that this isn't retrieved via an implementation.  The message registry in the mockup, however, is returned as if from a genuine implementation.  This it has the URI that it came from as well as the path to metadata within the implementation.
 
 ## What's a RelatedItem?
 We needed a way to tie together things like sensors with the things they monitor.  We also needed a way to show member sets, such as in Redundancy.  URLs are the preferred referencing mechanism, but we needed to reference the individual property within a resource and not a whole resource.  So we have a RelatedItem, the format of which is possible to be either a JSON Pointer or an OData format.  
