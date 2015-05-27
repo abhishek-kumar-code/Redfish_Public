@@ -279,7 +279,7 @@ There is also information about when the last time the settings were applied to 
 Examples of resources that may need Settings are devices like NICs and Storage as well as BIOS.
 
 ### Determining Properties that can be updated.
-Both the Schema and the metadata define which properties can be updated.  Properties that are marked "OData.Permissions/Read" or have read-only as true indicate these properties can never be updated.  But if they are marked writable, that doesn't necessarily indicate that a property can be written.  Instead an "OData.Permissions/ReadWrite" or read-only = false indicates that it might be writable.  The LongDescription (normative text) may indicate which properties are writable and under what conditions. Note that by default, metadata without ReadWrite explicitly unless otherwise specified, properties can assumed to be writable.
+Both the Schema and the metadata define which properties can be updated.  Properties that are marked "OData.Permissions/Read" or have read-only as true indicate these properties can never be updated.  But if they are marked writable, that doesn't necessarily indicate that a property can be written.  Instead an "OData.Permissions/ReadWrite" or read-only = false indicates that it might be writable.  The LongDescription (normative text) may indicate which properties are writable and under what conditions. Note that by default, metadata without a "Permissions" annotation or schema without readonly = true can assumed to be writable.
 
 Semantics on Redfish PUT/PATCH are such that attempting to update a non-writable property isn't treated as an error.  An implementation of a Redfish Service will return a 200 with Extended Error Information indicating which properties were unable to be updated.
 
