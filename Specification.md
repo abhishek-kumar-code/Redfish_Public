@@ -907,7 +907,7 @@ DateTime values shall be returned as JSON strings according to the ISO 8601 "ext
   where:
 
 * *SSS* = one or more digits representing a decimal fraction of a second, with the number of digits implying precision.
-* The 'T' spearator and 'Z' suffix shall be capitals.
+* The 'T' separator and 'Z' suffix shall be capitals.
 
 ##### Structured Properties
 
