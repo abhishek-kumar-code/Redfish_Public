@@ -2196,91 +2196,32 @@ The ability to DELETE a Session by specifying the Session resource ID allows an 
 
 #### Privilege Model / Authorization
 
-* The Authorization subsystem has the following components to it 
-  - Profiles - A Profile is a collection of Roles from the Authorization perspective (NOTE: Profiles per Redfish constitute more than Roles. REF: See section ... for more info.)
-  - Roles - A Role is a collection of Privileges
-  - Privileges - A Privileges is a permission to perform a specific action/ activity
-    - NOTE: Specific sets of privileges can be assigned to a user without using/ modifying/ creating/ leveraging pre-canned roles
-* When a Profile like a System Profile is implemented all the required Roles per Redfish which constitute that Profile shall be implemented
-  - System Administrator and System Operator are 2 Roles are which are required to be implemented in the System Profile
-  - System Administrator - The user with this role monitors and configures the system and / or the Redfish device
-* When a Role like a System Operator is implemented all Privileges required per Redfish which constitute that Role are required to be implemented
-  - The Power Control privilege is required to be implemented per Redfish
+The Authorization subsystem uses Roles and Privileges to control which users have what access to resources.
 
-* User Management 
-    * Assigning privileges to users, either local to the Redfish device or users / user groups from the directory services infrastructure like AD/ LDAP
-      * Assign privileges individually (Users created by cherry-picking privileges)
-        OR
-      * Assign privileges via pre-defined roles (Roles required by Redfish spec or OEM implementation)
-        OR
-      * Assign privileges via custom roles (End user admin defined roles which can be reused)
+* Roles:
+  - A Role is a defined set of Privileges.   Therefore, two roles with the same privileges shall behave equivalently. 
+  - All users are assigned exactly one role.
+  - The schema specifies a set of pre-defined roles that can be assigned to a user when a user is created.
+  - Implementations shall support all of the pre-defined roles.
+  - The pre-defined Roles may include OEM privileges
+  - The privilege array defined for the predefined roles shall not be modifiable
+  - A service may optionally support additional "Custom" roles, and may allow users to create such custom roles by: 1) posting to the Roles collection; or 2) an implementation may implement a predefined custom role; or 3) other mechanism outside the specification.   
+  
+* Privileges:
+  - A privilege is a permission to perform an operation (e.g. Read, Write) within a defined management domain (e.g. Configuring Users).  
+  - The Redfish standard schema specifies a set of "assigned privileges" in the AssignedPrivileges array.
+  - An implementation may also include "OemPrivileges" which are then specified in an OemPrivileges array.
+  - Privileges are mapped to resources using the privilege mapping annotations defined in the Privileges schema file.
+  - Multiple privileges in the mapping constitute an OR of the privileges.
+
+* User Management:
+  - Users are assigned a Role when the user account is created.
+  - The privileges that the user has are defined by its role.
 
 
-* Implementations shall enforce the same privilege model for ETag related activity as is enforced for the data being represented by the ETag. For example, when activity requiring privileged access to read data item represented by ETag requires the same privileged access to read the ETag.
-
-* Privileges
-  * shall implement a set of pre-defined privileges
-    - Login
-    - Configure Manager
-    - Configure Users
-      - NOTE: The Login privilege is automatically assigned to all users
-
-  * shall implement a set of pre-defined privileges as required per implemented profiles
-    - System Profile has the Power Control privilege
-    - Other Profiles will have appropriate required privileges
-
-  * may implement a set of OEM privileges
-    - Remote Console (Remote Keyboard, Video, Mouse)
-    - Remote Media (Remote mounting of media like USB storage, file shares etc)
-    - Diagnostic capability
-    - Clear Logs
-
-  * OEM Privileges shall follow the requirements below
-    - Privileges that grant permission to affect/ modify the object and/ or object extensions in a Profile, themselves belong to that Profile
-    - Privileges that make use of methods / derived methods / OEM methods in a profile, themselves belong to that Profile
-
-##### Profiles and Roles
-
-* shall implement a set of pre-defined roles based on profiles implemented by the Redfish device
-* System Profile
-  1) System Administrator - Monitor and configures the system and the Redfish device
-    - Configure BMC
-    - Configure Users
-    - Power Control
-    - All OEM privileges relevant to the System Profile
-  2) System Operator - Performs system management tasks like power control but not configuring the power subsystem
-    - Power Control
-    - Will not include any OEM privileges
-  3) User (Read-Only with very low privilege reads)
-* Network Profile
-  1) Network Administrator - Monitor and configures the network component
-    - TBD
-  2) Network Operator - Performs network management tasks like network operations including interface up/ down but not any persistent network configuration changes
-    - TBD
-  3) User (Read-Only with very low privilege reads)
-* Storage Profile
-  1) Storage Administrator - Monitor and configures the storage component
-    - TBD
-  2) Storage Operator - Performs storage management tasks like storage operations including acknowledging bad drives to trigger rebuilding a logical volume but not any persistent storage configuration changes
-    - TBD
-  3) User (Read-Only with very low privilege reads)
-* NOTE: All OEM privileges that modify objects and/ or ohject extensions in a Profile, shall be assigned to the Administrator Role in that Profile.
-
-* Pre-defined roles shall NOT be modifiable with respect to privileges assigned
-* shall allow Redfish user to define custom roles
-* should allow Redfish user to name custom roles to enable reuse in user context
-* may implement a set of OEM roles
-
-#### Role Based Privilege
-
-A Redfish service may contain resources that require separated privileges.
-A Redfish service may limit REST operations against specific resources based
-upon user privileges.
-
-* **A Redfish service may limit individual resource access by Redfish clients
-  based upon role-based privileges**
-* **A Redfish service may limit individual resource access by Redfish clients
-  based upon specific user account information (future -- not defined yet)**
+* ETag Handling:
+  - Implementations shall enforce the same privilege model for ETag related activity as is enforced for the data being represented by the ETag. 
+  - For example, when activity requiring privileged access to read data item represented by ETag requires the same privileged access to read the ETag.
 
 
 ### Data Model Validation
