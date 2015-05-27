@@ -493,14 +493,14 @@
         "PropertyValueModified": {
             "@odata.type": "#MessageRegistry.Message",
             "Description": "Indicates that a property was given the correct value type but the value of that property was modified.  Examples are truncated or rounded values.",
-            "Message": "The property %1 was assigned the value %2 due to rounding/truncating by the service.",
+            "Message": "The property %1 was assigned the value %2 due to modification by the service.",
             "Severity": "Warning",
             "NumberOfArgs": 2,
             "ParamTypes": [
                 "String",
                 "String"
             ],
-            "Resolution": "Correct the value for the property in the request body and resubmit the request if the operation failed."
+            "Resolution": "No resolution is required."
         },
     }
 }
