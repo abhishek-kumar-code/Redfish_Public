@@ -158,20 +158,20 @@ It also allows the server the option of providing something more robust than a s
 
 # Security
 
-## Why are AES ciphers required?
-These ciphers provide a requisite level of security, efficient hardware implementations exist and are widely available to support even low cost implementations.
+## Why are AES ciphers "should"?
+These ciphers provide a requisite level of security, efficient hardware implementations exist and are widely available to support even low cost implementations.  They are what is recommended now.  But we know security requirements change over time, so they are "shoulds" not "shalls".  And they may not be right for every situation but they are what we believe implementers should support at the time of the initial release of the 1.0 Redfish specification.
 
-## Why are PSK GCM AES Ciphers required?
-While TLS is an excellent solution for security, it depends on a full PKI implementation for basic identity verification. PSK GCM ciphers provide both identity verification and encryption, allowing for a bi-directionally trusted connection during initial setup or factory default configurations on the basis of a known initial password.
+## Why are PSK GCM AES Ciphers specifically mentioned?
+While TLS is an excellent solution for security, it depends on a full PKI implementation for basic identity verification. PSK GCM ciphers provide both identity verification and encryption, allowing for a bi-directionally trusted connection during initial setup or factory default configurations on the basis of a known initial password.  This information is also relative to the initial release of the 1.0 Redfish specification. 
 
 ## ETag modification data leaks private information about resources
-It is possible for an otherwise invisible change to an object - e.g. changing a password - to cause an ETag to change, potentially providing useful information. ETag implementations are left to the vendor, many current implementations show this metadata and accept the risk.
+It is possible for an otherwise invisible change to an object - e.g. changing a password - to cause an ETag to change, potentially providing useful information. ETag implementations are left to the vendor, many current ETag implementations show this metadata and accept the risk.
 
 ## AccountService roles allow an escalation of privileges
 It is possible for a user with the System Administrator role to create user accounts which are assigned to roles which the creating user does not themselves possess. This escalation of privileges is well understood and accepted by users, and avoids complications caused by introducing special privilege states or additional roles to handle privilege propagation corner cases.
 
-## HTTP Digest authentication
+## Why is HTTP Digest authentication mentioned?
 HTTP Digest authentication provides many advantages over BASIC authentication schemes, but also has some issues that make it less desirable. First, the digest mechanisms are becoming weaker as the ability to break hashes improves, and provide no facility to improve over time. Second, the mechanism requires the ability to read the raw user password, reducing the potential security of the solution and preventing integration with infrastructure authentication services like LDAP servers which do not allow password reads.
 
 ## Logging of events
-Redfish requires logging of some events, but does not require the implementation of a local log, though one is implied. This allows implementations of logging that are record-only logs, or logs which are securely stored outside the service using services like syslog.
+Redfish requires logging of some events, but does not require the implementation of a local log, though one is implied due to the fact that it is represented in both metadata/schema and the mockup. This allows implementations of logging that are record-only logs, or logs which are securely stored outside the service using services like syslog.
