@@ -1,7 +1,5 @@
 {
-    "@Redfish.Copyright":"Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "http://schemas.dmtf.org/redfish/v1/$metadata#Registries/$entity",
-    "@odata.id": "http://schemas.dmtf.org/redfish/v1/Base.1.00.0",
+    "@Redfish.Copyright":"Copyright Â© 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
     "@odata.type": "#MessageRegistry.1.00.0.MessageRegistry",
     "Id": "Base.1.00.0",
     "Name": "Base Message Registry",
