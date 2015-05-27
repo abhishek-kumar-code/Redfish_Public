@@ -2134,7 +2134,7 @@ The response to the POST request to create a session includes:
     <header>
     <header>
     Location: "/redfish/v1/SessionService/Sessions/<sessionID>"
-    X-Auth-Token: <session-auth-token
+    X-Auth-Token: <session-auth-token>
     <header>
 
     {
@@ -2156,6 +2156,10 @@ Note that the "Session ID" and "Session Auth Token" are different.  The Session 
 An administrator with sufficient privilege can view active sessions and also terminate any session using the associated sessionId.
 Only the client that executes the login will have the Session Auth Token.
 
+##### Session Lifetime
+
+Note that Redfish sessions "time-out" as apposed to having a token expiration time like some token-based methods use.  For Redfish sessions, as long a  client continues to send requests for the session more often than the session timeout period, the session will remain open and the session auth token remains valid.  If the sessions times-out then the session is automatically terminated.
+Note that the Redfish. 
 
 ##### Session Termination or Logout
 
@@ -2168,11 +2172,7 @@ The ability to DELETE a Session by specifying the Session resource ID allows an 
 Implementations shall only use compliant TLS connections to transport the data between any third party authentication service and clients.
 Therefore, the POST to create a new session shall only be supported with HTTPS, and all requests that use Basic Auth shall require HTTPS.
 
-##### Session Lifetime
 
-Note that Redfish sessions "time-out" as apposed to having a token expiration time like some token-based methods use.  For Redfish sessions, as long a a client continues to send requests for the session more often than the session timeout period, the session will remain open and the session auth token remains valid.  If the sessions times-out then the session is automatically terminated.
-Note that the Redfish 
-  
 #### AccountService
 
 * User passwords should be stored with one-way encryption techniques.
