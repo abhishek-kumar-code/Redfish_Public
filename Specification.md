@@ -2181,15 +2181,15 @@ The Authorization subsystem uses Roles and Privileges to control which users hav
   - All users are assigned exactly one role.
   - The schema specifies a set of pre-defined roles that can be assigned to a user when a user is created.
   - Implementations shall support all of the pre-defined roles.
-  - The predefined Roles may include OEM privileges
+  - The pre-defined Roles may include OEM privileges
   - The privilege array defined for the predefined roles shall not be modifiable
   - A service may optionally support additional "Custom" roles, and may allow users to create such custom roles by: 1) posting to the Roles collection; or 2) an implementation may implement a predefined custom role; or 3) other mechanism outside the specification.   
   
 * Privileges:
-  - A privilege is a permission to perform an operation (Read, Write, Invoke) within a defined management domain (eg Configuring Users).  
+  - A privilege is a permission to perform an operation (e.g. Read, Write) within a defined management domain (e.g. Configuring Users).  
   - The Redfish standard schema specifies a set of "assigned privileges" in the AssignedPrivileges array.
-  - An implementation may also include "OEMprivileges" which are then specified in an OEMprivileges array.
-  - Privileges are mapped to resources using the privilege mapping annotations defined in the Privilege schema file.
+  - An implementation may also include "OemPrivileges" which are then specified in an OemPrivileges array.
+  - Privileges are mapped to resources using the privilege mapping annotations defined in the Privileges schema file.
   - Multiple privileges in the mapping constitute an OR of the privileges.
 
 * User Management:
@@ -2197,7 +2197,9 @@ The Authorization subsystem uses Roles and Privileges to control which users hav
   - The privileges that the user has are defined by its role.
 
 
-* Implementations shall enforce the same privilege model for ETag related activity as is enforced for the data being represented by the ETag. For example, when activity requiring privileged access to read data item represented by ETag requires the same privileged access to read the ETag.
+* ETag Handling:
+  - Implementations shall enforce the same privilege model for ETag related activity as is enforced for the data being represented by the ETag. 
+  - For example, when activity requiring privileged access to read data item represented by ETag requires the same privileged access to read the ETag.
 
 
 ### Data Model Validation
