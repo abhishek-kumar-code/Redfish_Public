@@ -159,7 +159,7 @@ It also allows the server the option of providing something more robust than a s
 ## Why isn't Localization Supported?
 For version 1.0, priority was given to features, functions and scalability.  But some thought was given to Client-side localization rather than service side localization.
 
-Schema-supplied display strings may be localized as necessary by clients and there is also JSON Schema file values for localized Schema, but any Schema file may only contain one language. Alternate language schemas may be published and available to Redfish clients, but need not be provided via the Redfish implementation.
+Schema-supplied display strings may be localized as necessary by clients and there are also JSON Schema file values for localized Schema, but any Schema file may only contain one language. Alternate language schemas may be published and available to Redfish clients, but need not be provided via the Redfish implementation.
 
 Property names defined within a Redfish schema are never localized. User-supplied string-valued property values such as an asset tag may be localized. Localizable string valued properties should be annotated with the IsLanguageDependent annotation term.
 
