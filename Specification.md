@@ -1299,6 +1299,7 @@ For attributes that have units, or other special meaning, the unit identifier sh
 ### Localization Considerations
 
 Localization and translation of data or meta data is outside of the scope of version 1.0 of the Redfish Specification.
+Property names are never localized.
 
 ### Schema Definition
 
@@ -1532,18 +1533,6 @@ In addition to following [naming conventions](#common naming-conventions), prope
 The `Unit` annotation term is defined in http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml.
 
 The string values for the Units of Measure annotation shall be taken from **TODO**.
-
-##### Language-Dependent Property Values
-
-Property names are never localized. User-supplied string-valued property values such as an asset tag may be localized. Localizable string valued properties should be annotated with the IsLanguageDependent annotation term.
-
-Properties not annotated with the IsLanguageDependent annotation, or annotated with a `Boolean` attribute with a value of `"false"`, do not have values that vary based on localization.
-
-~~~xml
-	    <Annotation Term="OData.IsLanguageDependent"/>
-~~~
-
-The `IsLanguageDependent` annotation term is defined in http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Core.V1.xml.
 
 #### Reference Properties
 
