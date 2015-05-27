@@ -900,9 +900,14 @@ Primitive properties are returned as JSON values.
 
 ###### DateTime Values
 
-DateTime values shall be returned as JSON strings according to the ISO 8601 "extended" format: 
+DateTime values shall be returned as JSON strings according to the ISO 8601 "extended" format, with time offset or UTC suffix included, of the form: 
 
  *YYYY*-*MM*-*DD* T *hh*:*mm*:*ss*[.*SSS*] (Z | (+ | - ) *hh*:*mm*)
+
+  where:
+
+* *SSS* = one or more digits representing a decimal fraction of a second, with the number of digits implying precision.
+* The 'T' separator and 'Z' suffix shall be capitals.
 
 ##### Structured Properties
 
