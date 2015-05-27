@@ -2105,7 +2105,13 @@ For functionality requiring multiple Redfish operations, a client may create a R
 
 A Redfish session is created by an HTTP POST to the SessionService/Sessions resource, including the following POST body:
 
-```json
+```
+POST /redfish/v1/Sessions HTTP/1.1
+Host: <hostpath>
+Accept: application/json
+Content-Type: charset=utf-8
+OData-Version: 4.0
+
 {
     "UserName": "<username>",
     "Password": "<password>"
@@ -2120,22 +2126,21 @@ The response to the POST request to create a session includes:
 *  a "Location header that contains a link to the newly created session resource.
 *  The JSON response body that contains a full representation of the newly created session object:  
 ```
-    <operation> <uri> HTTP/1.1
-    <header>
-    <header>
-    Location: "/redfish/v1/SessionService/Sessions/<sessionID>"
+    POST /redfish/v1/Sessions HTTP/1.
+    Content-Type: application/json
+    Content-Length: <computed length>
+    OData-Version: 4.0
+    Location: "/redfish/v1/SessionService/Sessions/1"
     X-Auth-Token: <session-auth-token>
-    <header>
 
     {
         "@odata.context": "/redfish/v1/$metadata#SessionService/Links/Sessions/$entity",
-        "@odata.id": "/redfish/v1/SessionService/Sessions/<sessionID>",
-		"@odata.type": "#Session.1.0.0.Session",
-		"Id": "<sessionId>"
-		"Name": "User Session",
-		"Description": Manager User Session",
-		"UserName": "<username>"
-		"Oem": {}
+        "@odata.id": "/redfish/v1/SessionService/Sessions/1",
+	"@odata.type": "#Session.1.0.0.Session",
+	"Id": "1",
+	"Name": "User Session",
+	"Description": "User Session",
+	"UserName": "<username>"
     } 
 ``` 
 The client sending the session login request should save the "Session Auth Token" and the link returned in the Location header.
