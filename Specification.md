@@ -43,7 +43,7 @@ The DMTF acknowledges the following individuals for their contributions to this 
 * Paul Vancil - Dell Inc
 
 ## Abstract
-The Redfish Scalable Platforms Management API ("Redfish") is a new interface that uses RESTful interface semantics to access data defined in model format to perform out of band systems management.  It is suitable for a wide range of servers, from stand-alone servers to rack mount and bladed environments but scales equally well for large scale cloud environments.
+The Redfish Scalable Platforms Management API ("Redfish") is a new specification that uses RESTful interface semantics to access data defined in model format to perform out-of-band systems management.  It is suitable for a wide range of servers, from stand-alone servers to rack mount and bladed environments but scales equally well for large scale cloud environments.
 
 There are several out of band systems management standards (defacto and de jour) available in the industry.  They all either vary widely in implementation, were developed for single server embedded environments or have their roots in antiquated software modeling constructs.  There is no single industry standard that is simple to use, based on emerging programming standards, embedded friendly and capable of meeting large scale data center & cloud needs.
 
@@ -84,12 +84,12 @@ The following additional terms are used in this document.
 
 | Term           | Definition |
 | ---            | --- |
-| Baseboard Management Controller | An embedded device or service, typically an independent microprocessor or System-on-Chip with associated firmware, within a Computer System used to perform systems monitoring and management-related tasks.  |
+| Baseboard Management Controller | An embedded device or service, typically an independent microprocessor or System-on-Chip with associated firmware, within a Computer System used to perform systems monitoring and management-related tasks, which are commonly performed out-of-band.  |
 | Collection     | A Collection is a resource that acts as a container of other Resources. The members of a collection usually have similar characteristics. The container processes messages sent to the container. The members of the container process messages sent only to that member without affecting other members of the container.  |
 | CRUD           | Basic intrinsic operations used by any interface: Create, Read, Update and Delete.  |
 | Event          | A record that corresponds to an individual alert. |
 | Managed System | In the context of this specification, a managed system is a system that provides information or status, or is controllable, via a Redfish-defined interface. |
-| Message        | A complete request or response, formatted in HTTP/HTPS.  The protocol, based on REST, is a request/response protocol where every Request should result in a Response. |
+| Message        | A complete request or response, formatted in HTTP/HTTPS.  The protocol, based on REST, is a request/response protocol where every Request should result in a Response. |
 | Operation      | The HTTP request methods which map generic CRUD operations.  These are POST, GET, PUT/PATCH, HEAD and DELETE.                                                                                                                                                                                                                                                                                                                                                      |
 | OData          | The Open Data Protocol, as defined in [OData-Protocol](#OData-Protocol).                                                                                                                                                                                                                                                                                                                                                      |
 | OData Service Document|The name for a resource that provides information about the Service Root. The Service Document document provides a standard format for enumerating the resources exposed by the service that enables generic hypermedia-driven OData clients to navigate to the resources of the Redfish Service. |
@@ -135,24 +135,24 @@ The Redfish Scalable Platform Management API ("Redfish") is a management standar
 
 The scope of this specification is to define the protocols, data model, and behaviors, as well as other architectural components needed for an inter-operable, cross-vendor, remote and out-of-band capable interface that meets the expectations of Cloud and Web-based IT professionals for scalable platform management. While large scale systems are the primary focus, the specifications are also capable of being used for more traditional system platform management implementations.
 
-The specifications define elements that are mandatory for all Redfish implementations as well as optional elements that can be chosen by system vendor or manufacturer. The specifications also define points at which OEM (system vendor) -specific extensions can be provided by an implementation.
+The specifications define elements that are mandatory for all Redfish implementations as well as optional elements that can be chosen by system vendor or manufacturer. The specifications also define points at which OEM (system vendor) -specific extensions can be provided by a given implementation.
 
 The specifications set normative requirements for Redfish services and associated materials, such as schema files. In general, the specifications do not set requirements for Redfish clients, but will indicate what a Redfish client should do in order to access and utilize a Redfish Service successfully and effectively.
 
 The specifications do not set requirements that particular hardware or firmware must be used to implement the Redfish interfaces and functions.
 
-### Principal Goals
+### Principle Goals
 
-There are many principles and goals of Redfish as an architecture, a data representation, and the definition of the protocols that are used to access and interact with a Redfish service. Redfish seeks provide specifications that meet the following goals:
-* Scalable – To support from stand-alone machines to racks of equipment found in cloud service environments.
+There are many objectives and goals of Redfish as an architecture, as a data representation, and of the definition of the protocols that are used to access and interact with a Redfish service. Redfish seeks to provide specifications that meet the following goals:
+* Scalable – To support stand-alone machines to racks of equipment found in cloud service environments.
 * Flexible - To support a wide variety of systems found in service today.
 * Extensible – To support new and vendor-specific capabilities cleanly within the framework of the data model.
 * Backward Compatible– To enable new capabilities to be added while preserving investments in earlier versions of the specifications.
 * Interoperable – To provide a useful, required baseline that ensures common level of functionality and implementation consistency across multiple vendors.
-* System Focused – To efficiently support the most commonly required platform hardware management capabilities that are used in scalable environments, while also being capable of managing current server environments.
-* Standards based - To leverage protocols and standards that are widely accepted and used in environments today. In particular, the programming environments that are being widely adopted for developing web-based clients today.
-* Simple – To be directly usable by web developers without requiring highly specialized programming skills.
-* Lightweight - To reduce the complexity and cost of implementing and validating SPMA Services on managed systems.
+* System-Focused – To efficiently support the most commonly required platform hardware management capabilities that are used in scalable environments, while also being capable of managing current server environments.
+* Standards based - To leverage protocols and standards that are widely accepted and used in environments today - in particular, programming environments that are being widely adopted for developing web-based clients today.
+* Simple – To be directly usable by software developers without requiring highly specialized programming skills or systems knowledge.
+* Lightweight - To reduce the complexity and cost of implementing and validating Redfish Services on managed systems.
 
 ### Design Tenets
 The following design tenets and technologies are used to help deliver the previously stated goals and characteristics:
@@ -171,7 +171,7 @@ The following design tenets and technologies are used to help deliver the previo
 
 Redfish does not guarantee that client software will never need to be updated.  Examples that may require updates include accommodation of new types of systems or their components, data model updates, and so on.  System optimization for an application will always require architectural oversight.  However, Redfish does attempt to minimize instances of forced upgrades to clients using Schemas, strict versioning and forward compatibility rules and through separation of the protocols from the data model.
 
-Inter-operable does not mean identical. A Redfish client may need to adapt to the optional elements that are provided by different vendors.Implementation and configurations of a particular product from a given vendor can also vary.
+Inter-operable does not mean identical. A Redfish client may need to adapt to the optional elements that are provided by different vendors. Implementation and configurations of a particular product from a given vendor can also vary.
 
 For example, Redfish does not enable a client to read a Resource Tree and write it to another Redfish Service.  This is not possible as it is a hypermedia API. Only the root object has a well known URI. The resource topology reflects the topology of the system and devices it represents.  Consequently, different server or device types will result in differently shaped resource trees, potentially even for identical systems from the same manufacturer. 
 
@@ -183,11 +183,11 @@ Lastly, the value of links between resources and other elements can vary across 
 
 #### REST based
 
-This document defines a RESTful interface. Many service applications are exposed RESTful interfaces. 
+This document defines a RESTful interface. Many service applications are exposed as RESTful interfaces. 
 
 There are several reasons to define a RESTful interface:
-* It enables a light weight implementation, where economy is a necessity (smaller data transmitted than SOAP, fewer layers to the protocol than WS-Man).
-* It is on a trajectory to become a prevalent access method in the industry.
+* It enables a lightweight implementation, where economy is a necessity (smaller data transmitted than SOAP, fewer layers to the protocol than WS-Man).
+* It is a prevalent access method in the industry.
 * It is easy to learn and easy to document.
 * There are a number of toolkits & development environments that can be used for REST.
 * It supports data model semantics and maps easily to the common CRUD operations.
@@ -202,7 +202,7 @@ With the popularity of RESTful APIs, there are nearly as many RESTful interfaces
 
 OData defines a set of common RESTful conventions and markup which, if adopted, provides for interoperability between APIs.
 
-Adopting OData conventions for describing schema, url conventions, and naming and structure of common properties in a JSON payload, not only encapsulate best practices for RESTful APIs but further enables Redfish services to be consumed by a growing ecosystem of generic client libraries, applications, and tools.
+Adopting OData conventions for describing schema, URL conventions, and naming and structure of common properties in a JSON payload, not only encapsulate best practices for RESTful APIs but further enables Redfish services to be consumed by a growing ecosystem of generic client libraries, applications, and tools.
 
 #### Model Oriented
 
@@ -230,7 +230,7 @@ The use of HTTP Response codes enable a client to determine if the operation was
 
 In some situations it is useful for a service to provide messages to clients that fall outside the normal request/response paradigm. These messages, called events, are used by the service to asynchronously notify the client of some significant state change or error condition, usually of a time critical nature.
 
-Only one style of eventing is currently defined by this specification - push style eventing. In push style eventing, when the server detects the need to send an event, it uses an HTTP POST to push the event message to the client.  Clients can subscribe to the eventing service to enable reception of events by creating a ListenerDestination subscription entry in the Event Service, or an administrator can create subscriptions as part of the Redfish service configuration.  All subscriptions are persistent configuration settings. 
+Only one style of eventing is currently defined by this specification - push style eventing. In push style eventing, when the server detects the need to send an event, it uses an HTTP POST to push the event message to the client.  Clients can subscribe to the eventing service to enable reception of events by creating a EventDestination subscription entry in the Event Service, or an administrator can create subscriptions as part of the Redfish service configuration.  All subscriptions are persistent configuration settings. 
 
 Events originate from a specific resource. Not all resources are able to generate events. Those resources capable of generating events might not generate any events unless a subscription has been created to listen for the event. An administrator or client creates a subscription by sending a "subscribe" message to the Event Service. A subscribe message is sent using HTTP POST to the Event Subscriptions collection.
 
@@ -299,7 +299,7 @@ To begin operations, a client must know the URI for a resource.
 
 The base resource URI is well known and is based on the protocol version.  Discovering the URIs to additional resources is done through observing the associated resource links returned in previous responses. This type of API that is consumed by navigating URIs returned by the service is known as a Hypermedia API.
 
-The URI is the primary unique identifier of resources.  Redfish considers 3 parts of the URI as described in [RFC3986](#RFC3986). 
+The URI is the primary unique identifier of resources.  Redfish considers three parts of the URI as described in [RFC3986](#RFC3986). 
 
 The first part includes the scheme and authority portions of the URI. The second part includes the root service and version.  The third part is a unique resource identifier.
 
