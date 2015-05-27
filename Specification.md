@@ -1298,7 +1298,7 @@ For attributes that have units, or other special meaning, the unit identifier sh
 
 ### Localization Considerations
 
-Localization and translation of data or meta data is not supported in version 1.0 of the Redfish Specification.
+Localization and translation of data or meta data is outside of the scope of version 1.0 of the Redfish Specification.
 
 ### Schema Definition
 
