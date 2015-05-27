@@ -1906,11 +1906,11 @@ The client can continue to get information about the status by directly querying
 
 ### Resource Tree Stability
 
-The Resource Tree must be consistent on a single service across device reboot and A/C power cycle, and must withstand a reasonable amount of configuration change (e.g. adding an adapter to a server). The resource Tree on one service may not be consistent across instances of devices.  The client must walk the data model and discover resources to interact with them.
-It is possible that some resources will remain very stable from system to system (e.g. BMC network settings) -- but it is not an architectural guarantee.
+The Resource Tree, which is defined as the set of URIs and array elements within the implementation, must be consistent on a single service across device reboot and A/C power cycle, and must withstand a reasonable amount of configuration change (e.g. adding an adapter to a server). The resource Tree on one service may not be consistent across instances of devices.  The client must walk the data model and discover resources to interact with them.
+It is possible that some resources will remain very stable from system to system (e.g. BMC network settings) -- but it is not an architectural guarantee.  
 
-* A Resource Tree should remain stable across Service restarts and minor device configuration changes
-* A Resource Tree shall not be expected by the client to be consistent between instances of services
+* A Resource Tree should remain stable across Service restarts and minor device configuration changes, thus the set of URIs and array element indexes should be consistent and constant.
+* A Resource Tree shall not be expected by the client to be consistent between instances of services.
 
 ### Discovery
 
