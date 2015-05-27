@@ -204,7 +204,9 @@ The return JSON body includes a representation of the newly created session obje
 You will use the token string in the X-Auth-Token header for all subsequent requests to your service.  When it's time to delete the session, you can do a DELETE operation on the URL that was returned in the @odata.id in the response (/redfish/v1/Sessions/Administrator1 in the example above).
 
 ## Redundancy
-Go back to one of the Chassis and take a look at the fans by following the link to "Thermal" and you will see how Redfish shows redundancy.  You will notice each fan has a property called “Redundancy” with an @odata.id in it.  Now look at the fan redundancy set in the array called "Redundancy".  It shows the two fans in its set using the same values in the RelatedItem properties.  Thus the client can figure out which items belongs to which redundancy set.  Redundancy has a common schema definition in Redfish and has other properties in it besides the members to show other important attributes about redundancy.
+Go back to one of the Chassis and take a look at the fans by following the link to "Thermal" and you will see how Redfish shows redundancy.  
+
+You will notice an array called "Redundancy".  It shows the two fans in its set using the same values in the RelatedItem properties.  Redundancy has a common schema definition in Redfish and has other properties in it besides the members to show other important attributes about redundancy.  This is how the client can figure out which items belongs to which redundancy set since the @odata.id values are pointers to the redundancy set members.  
 
 The value of the "@odata.id" property, though, doesn't have to be to a whole resource.  The value of this property will be of two formats: a JSON Pointer or an OData reference.  
 
