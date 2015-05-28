@@ -17,7 +17,7 @@
 
       <!-- This schema defines a computer system and its respective properties. -->
       <EntityType Name="ChassisCollection" BaseType="Resource.ResourceCollection">
-        <Property Name="Links" Type="Chassis.Members">
+        <Property Name="Links" Type="ChassisCollection.Members">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Contains links to other resources that are related to this resource."/>
         </Property>
