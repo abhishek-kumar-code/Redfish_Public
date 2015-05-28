@@ -17,8 +17,7 @@
       <EntityType Name="LogEntry" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This resource represents the log record format for logs.  It is designed to be used for SEL logs from IPMI as well as Event Logs and OEM specific logs.  The EntryType field indicates the type of log and there are other properties dependent on it's value."/>
         <Annotation Term="OData.LongDescription" String="This resource shall represent the log format for log services in a Redfish implementation."/>
-        <Property Name="Severity" Type="LogEntry.EventSeverity" Nullable="false">
-          <Annotation Term="Redfish.RequiredOnCreate"/>
+        <Property Name="Severity" Type="LogEntry.EventSeverity">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is the severity of the log entry."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the severity of the condition resulting in the log entry, as defined in the Status section of the Redfish specificaiton."/>
@@ -34,7 +33,7 @@
           <Annotation Term="OData.LongDescription" String="This property shall represent the type of LogEntry.  If the resource represents an IPMI SEL log entry, the value shall be SEL.  If the resource represents an Event log, the value shall be Event.  If the resource represents an OEM log format, the value shall be Oem."/>
           <Annotation Term="Redfish.Required"/>
         </Property>
-        <Property Name="OemRecordFormat" Type="Edm.String" Nullable="false">
+        <Property Name="OemRecordFormat" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="If the entry type is Oem, this will contain more information about the record format from the Oem."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the OEM specific format of the Entry.  This property shall be required if the value of EntryType is Oem"/>
