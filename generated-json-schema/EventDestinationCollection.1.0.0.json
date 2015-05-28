@@ -34,7 +34,7 @@
             "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
         },
         "Links": {
-            "ERROR": "type ListenerDestination.Members unrecognized.",
+            "ERROR": "type EventDestination.Members unrecognized.",
             "readonly": true,
             "description": "Contains links to other resources that are related to this resource."
         }
