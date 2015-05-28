@@ -27,7 +27,6 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate if the role is a predefined role. ."/>
         </Property>
         <Property Name="AssignedPrivileges" Type="Collection(Privileges.PrivilegeType)">
-          <Annotation Term="Redfish.RequiredOnCreate"/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/ReadWrite"/>
           <Annotation Term="OData.Description" String="The redfish privileges that this role includes."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the redfish privileges that the role includes. For pre-defined roles, this property shall be readOnly. For custom roles some implementations may not allow writing this property."/>
