@@ -2030,6 +2030,9 @@ Implementations shall support replacement of the default certificate if one is p
 	* Extended error messages shall NOT provide privileged info when authentication failures occur
 * REST objects shall not be available unauthenticated, except for
   * The root object which is needed to identify the device and service locations
+  * The $metadata object which is needed to retreive resource types
+  * The OData Service Document which is needed for compatibility with OData clients
+  * The version object located at /redfish/
 * External services linked via extref references are not part of this spec, and may have other security requirements.
 	
 * CORS headers are not recommended. Services may choose to implement them.
