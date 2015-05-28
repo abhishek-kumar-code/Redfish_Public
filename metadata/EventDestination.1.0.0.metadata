@@ -29,7 +29,6 @@
           <Annotation Term="OData.IsUrl"/>
         </Property>
         <Property Name="HttpHeaders" Nullable="true" Type="Collection(EventDestination.HttpHeaderProperty)">
-          <Annotation Term="Redfish.RequiredOnCreate"/>
           <Annotation Term="OData.Description" String="This is for setting HTTP headers, such as authorization information.  This object will be null on a GET."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain an object consisting of the names and values of of HTTP header to be included with every event POST to the Event Destination.  This property shall be null on a GET."/>
         </Property>
