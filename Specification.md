@@ -2229,8 +2229,6 @@ Custom Actions - Privilege model shall be applied consistently to both the body 
 Implementations shall log authentication requests including failures. 
 Authentication login/logout log entries shall contain a user identifier that can be used to uniquely identify the client and a time stamp.
 
-Logs shall include detailed privileged info, but shall NOT include data outside a privileged user or a privileged security context.
-
 #### Completeness of Logging
 
 * Every entity from the originator of the RESTful service call, through every intermediary, to the very last entity in the call chain, log an entry in their audit log for the call activity triggered/ taken/ ... This means same as any RESTful service call, the audit log entry will 'be complete' for the activity performed within said entity.
