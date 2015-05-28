@@ -1970,8 +1970,6 @@ Redfish devices may implement the additional SSDP messages defined by UPnP to an
 ##### TLS
 Implementations shall support TLS v1.1 or later
 
-Implementations shall only use compliant TLS connections to transport [Sensitive Data](#sensitive-data). Including to any third party authentication services or clients.
-
 ##### Cipher suites
 Implementations should support AES-256 based ciphers from the TLS suites.
 
@@ -1992,20 +1990,6 @@ References to RFCs -
 	 
 ##### Certificates
 Implementations shall support replacement of the default certificate if one is provided, with a certificate having at least a 4096 bit RSA key and sha512-rsa signature.
-
-### Sensitive Data
-
-* Sensitive data shall minimally include 
-	- User credentials (usernames, passwords)
-	- Private Keys
-	- Persistent Session Keys
-	- Password Complexity Requirements
-	- Critical Security Parameters (CSPs) as defined below
-
-Critical Security Parameters (CSP): 
-Security-related information (e.g., cryptographic keys, authentication data such as passwords and PINs) appearing in plaintext or otherwise unprotected form and whose disclosure or modification can compromise the security of a cryptographic module or the security of the information protected by the module.
-	
-REF: http://csrc.nist.gov/publications/fips/fips140-1/fips1401.pdf - This is used only as a source for the definition of CSPs. No additional requirements for compatibility with the FIPS standard should be inferred.
 
 ### Authentication
 
@@ -2046,7 +2030,6 @@ REF: http://csrc.nist.gov/publications/fips/fips140-1/fips1401.pdf - This is use
 	* Extended error messages shall NOT provide privileged info when authentication failures occur
 * REST objects shall not be available unauthenticated, except for
   * The root object which is needed to identify the device and service locations
-* Unauthenticated REST operation results shall not contain [Sensitive Data](#sensitive-data).
 * External services linked via extref references are not part of this spec, and may have other security requirements.
 	
 * CORS headers are not recommended. Services may choose to implement them.
@@ -2056,7 +2039,6 @@ REF: http://csrc.nist.gov/publications/fips/fips140-1/fips1401.pdf - This is use
 * When there is a HTTP Redirect the privilege requirements for the target resource shall be enforced  
   
 #### Extended Error Handling
-  * Authentication shall occur when [Sensitive Data](#sensitive-data) is present in any part of the REST object.
   * Extended error messages shall NOT provide privileged info when authentication failures occur
 
 #### HTTP Header Authentication
@@ -2172,8 +2154,6 @@ The ability to DELETE a Session by specifying the Session resource ID allows an 
 
 * User passwords should be stored with one-way encryption techniques.
 * Implementations may support exporting user accounts with passwords, but shall do so using encryption methods to protect them.
-* The root REST object should be available unauthenticated, but shall not contain any [Sensitive Data](#sensitive-data).
-  * Authentication shall occur when [Sensitive Data](#sensitive-data) is present in the root REST object.
 * User accounts shall support ETags and shall support atomic operations
   * Implementations may reject requests which do not include an ETag
 * User Management activity is atomic
@@ -2184,8 +2164,6 @@ The ability to DELETE a Session by specifying the Session resource ID allows an 
 * Irrespective of which users/ privileged context was used to start an async task the information in the status object shall be used to enforce the privilege(s) required to access that object. 
 
 #### Event Subscriptions
-
-* The Redfish device shall encrypt event data when there is [Sensitive Data](#sensitive-data) in the event data object before pushing it
 
 * The Redfish device may verify the destination for identity purposes before pushing event data object to the Destination 
 
@@ -2248,7 +2226,7 @@ Custom Actions - Privilege model shall be applied consistently to both the body 
 Implementations shall log authentication requests including failures. 
 Authentication login/logout log entries shall contain a user identifier that can be used to uniquely identify the client and a time stamp.
 
-Logs shall include detailed privileged info, but shall NOT include the [Sensitive Data](#sensitive-data) outside a privileged user or a privileged security context.
+Logs shall include detailed privileged info, but shall NOT include data outside a privileged user or a privileged security context.
 
 #### Completeness of Logging
 
