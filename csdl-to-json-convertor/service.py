@@ -716,7 +716,7 @@ class JsonSchemaGenerator:
                                 proptypedata = typetable[proptypename]
                                 proptypetype = proptypedata["TypeType"]
                                 proptypebasetype = proptypedata["BaseType"]
-                                if proptypetype == "ComplexType" or proptypebasetype == "Resource.ReferenceableMember":
+                                if proptypetype == "ComplexType" or proptypetype == "EnumType" or proptypetype == "TypeDefinition" or proptypebasetype == "Resource.ReferenceableMember":
                                     generate_ref = True
 
                             if generate_ref == True:
@@ -1155,7 +1155,7 @@ class JsonSchemaGenerator:
                 index = parsedtypes.index(typedata["Name"] + ":" + currentNamespace)
             except :
                 # This type has not been parsed yet. Process it now.
-                if (( namespace == currentNamespace) and ( (typetype == "ComplexType") or (basetype == "Resource.ReferenceableMember") )):
+                if (( namespace == currentNamespace) and ( (typetype == "ComplexType") or (typetype == "EnumType") or (typetype == "TypeDefinition") or (basetype == "Resource.ReferenceableMember") )):
                     # Add comma if this is not the first complex type.
                     if type_count > 0:
                         output += ",\n"
