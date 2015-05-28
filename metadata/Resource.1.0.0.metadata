@@ -33,7 +33,7 @@
         <!--Base entity type for array members-->
       <EntityType Name="ReferenceableMember" BaseType="Resource.Item" Abstract="true">
         <Annotation Term="OData.Description" String="This is the base type for addressable members of an array."/>
-        <Annotation Term="OData.LongDescription" String="Array members can be referenced using the value returned in the @odata.id property which may or may not be a dereferenceable URL."/>
+        <Annotation Term="OData.LongDescription" String="Array members can be referenced using the value returned in the @odata.id property which may or may not be a dereferenceable URL. The @odata.id of this entity shall be the location of this entity within an Item."/>
         <Key>
           <PropertyRef Name="MemberId"/>
         </Key>
