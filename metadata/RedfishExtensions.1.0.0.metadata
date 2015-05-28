@@ -19,6 +19,9 @@
       <Term Name="Required" Type="Edm.Boolean" DefaultValue="True">
         <Annotation Term="OData.Description" String="The term specifies that a property is required to be supported by services. Properties not annotated as required are optional."/>
       </Term>
+      <Term Name="RequiredOnCreate" Type="Edm.Boolean" DefaultValue="True">
+        <Annotation Term="OData.Description" String="The term specifies that a property is required to be specified in the body of a POST request to create the resource."/>
+      </Term>
       <Term Name="Settings" Type="Settings.Settings">
         <Annotation Term="OData.Description" String="Reference to the resource that represents the settings to be applied to this object."/>
       </Term>

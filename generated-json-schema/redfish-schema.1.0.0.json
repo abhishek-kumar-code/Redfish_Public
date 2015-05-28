@@ -13,6 +13,10 @@
             "type": "boolean",
             "description": "This property designates a property to be readonly when set to true."
         },
+        "requiredOnCreate": {
+            "type": "boolean",
+            "description": "This property is required to be specified in the body of a POST request to create the resource."
+        },
         "longDescription": {
             "type": "string",
             "description": "This attribute contains normative language relating to the Redfish Sprecification and documentation."
