@@ -110,8 +110,7 @@
           <Annotation Term="OData.Description" String="This is the OriginOfCondition property of event to be added."/>
           <Annotation Term="OData.LongDescription" String="This property has the same semantics as the OriginOfCondition property in the Event schema for Redfish."/>
         </Parameter>
-      </Action>
-      
+      </Action>      
 
     </Schema>
   </edmx:DataServices>
