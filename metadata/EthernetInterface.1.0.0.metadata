@@ -28,21 +28,6 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EthernetInterface.1.0.0" Alias="EthernetInterface">
 
       <!--This schema defines a computer system and its respective properties. -->
-      <EntityType Name="EthernetInterfaceCollection" BaseType="Resource.ResourceCollection">
-        <Property Name="Links" Type="EthernetInterface.Members">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="Contains links to other resources that are related to this resource."/>
-        </Property>
-      </EntityType>
-
-      <ComplexType Name="Members">
-        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
-        <NavigationProperty Name="Members" Type="Collection(EthernetInterface.EthernetInterface)">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>
-      </ComplexType>
 
       <EntityType Name="EthernetInterface" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This schema defines a simple ethernet NIC resource."/>
@@ -126,10 +111,6 @@
         <Property Name="NameServers" Type="Collection(Edm.String)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the DNS name servers for this interface."/>
-        </Property>
-        <Property Name="SettingsResult" Type="Resource.SettingsResult" Nullable="false">
-          <Annotation Term="OData.Description" String="If there is a link to Settings, this property has the results of the last application of those settings to this NIC."/>
-          <Annotation Term="OData.LongDescription" String="If using separate Settings, these properties shall report the result of applying settings."/>
         </Property>
         <Property Name="Links" Type="EthernetInterface.Links" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>

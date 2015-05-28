@@ -1,13 +1,36 @@
 {
     "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0",
     "title": "Redundancy.1.0.0",
-    "definitions": {
-        "Redundancy": {
+    "definitions":{
+        "RedundancyMode":{
+            "type": "string",
+            "enum": [
+                "Failover",
+                "N+1",
+                "LoadBalanced",
+                "Sparing",
+                "LimitedSparing"
+            ],
+            "enumDescriptions": {
+                "Failover": "Failure of the primary unit will cause a secondary unit to take over the functions of the primary unit",
+                "N+1": "Multiple units are available such that the system can continue normal operation if one unit fails",
+                "LoadBalanced": "Multiple units are available such that the system will continue operation at a reduced capacity if one unit fails",
+                "Sparing": "A spare unit is available to take over the function of a failed unit",
+                "LimitedSparing": "A spare unit is available to take over the function of a failed unit, but may require intervention to facilitate the transition"
+            }
+        },
+        "Redundancy":{
             "type": "object",
+            "patternProperties": { 
+                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+                    "type": ["array", "boolean", "integer", "number", "null", "object", "string"],
+                    "description": "This property shall specify a valid odata or redfish property."
+                }
+            },
             "additionalProperties": false,
             "properties": {
                 "Oem": {
-                    "$ref": "Resource.1.0.0.json#Oem",
+                    "$ref": "Resource.1.0.0.json#/definitions/Oem",
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
@@ -20,24 +43,7 @@
                     "$ref": "Resource.1.0.0.json#Name"
                 },
                 "Mode": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "enum": [
-                        "Failover",
-                        "N+1",
-                        "LoadBalanced",
-                        "Sparing",
-                        "LimitedSparing"
-                    ],
-                    "enumDescriptions": {
-                        "Failover": "Failure of the primary unit will cause a secondary unit to take over the functions of the primary unit",
-                        "N+1": "Multiple units are available such that the system can continue normal operation if one unit fails",
-                        "LoadBalanced": "Multiple units are available such that the system will continue operation at a reduced capacity if one unit fails",
-                        "Sparing": "A spare unit is available to take over the function of a failed unit",
-                        "LimitedSparing": "A spare unit is available to take over the function of a failed unit, but may require intervention to facilitate the transition"
-                    },
+                    "$ref": "Redundancy.1.0.0.json#RedundancyMode",
                     "readonly": true,
                     "description": "This is the redundancy mode of the group.",
                     "longDescription": "The value of this property shall contain the information about the redundancy mode of this manager.  Failover shall indicate a master/slave type arrangement where status indicates the role of this manager.  N+1 indicates an arrangement where the redundancy set needs MaxNumSupported-1 number of resources in order to be redundant.  Load Balanced indicates all members are active. However, there functionality is not independent of each other. Their functioning is determined by some sort of load balancing algorithm. Sparing is implied (i.e. each member can be a spare for the other(s). Sparing indicates that all members are active and are aware of each others. However, their functionality is independent until failover. Each member can be a spare for the other(s). Limited Sparing indicates that all members are active, and they may or may not be aware of each and they are not spares for each other."
@@ -61,7 +67,7 @@
                     "longDescription": "The value of this property shall contain the maximum number of members allowed in the redundancy group for the current redundancy mode to still be fault tolerant."
                 },
                 "Status": {
-                    "$ref": "Resource.1.0.0.json#Status"
+                    "$ref": "Resource.1.0.0.json#/definitions/Status"
                 },
                 "RedundancySet": {
                     "type": "array",
@@ -88,5 +94,6 @@
             "description": "This is the redundancy definition to be used in other resource schemas.",
             "longDescription": "This object represents the Redundancy element property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification.  The value of this string shall be of the format for the reserved word *Redundancy*"
         }
-    }
+    },
+    "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
 }

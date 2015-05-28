@@ -2,6 +2,12 @@
     "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0",
     "title": "Resource.1.0.0",
     "type": "object",
+    "patternProperties": { 
+        "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+            "type": ["array", "boolean", "integer", "number", "null", "object", "string"],
+            "description": "This property shall specify a valid odata or redfish property."
+        }
+    },
     "additionalProperties": false,
     "properties": {
         "@odata.context": {
@@ -14,14 +20,7 @@
             "$ref": "odata.4.0.0.json#type"
         },
         "Oem": {
-            "type": [
-                "object",
-                "null"
-            ],
-            "additionalProperties": false,
-            "properties": {
-
-            },
+            "$ref": "Resource.1.0.0.json#/definitions/Oem",
             "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
             "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
         },
@@ -45,130 +44,52 @@
             "readonly": true,
             "description": "The name of the resource or array element.",
             "longDescription": "This object represents the Name property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification. The value of this string shall be of the format for the reserved word *Name*."
-        },
-        "ResetType": {
-            "type": "string",
-            "enum": [
-                "On",
-                "ForceOff",
-                "GracefulShutdown",
-                "GracefulRestart",
-                "ForceRestart",
-                "Nmi",
-                "ForceOn",
-                "PushPowerButton"
-            ],
-            "enumDescriptions": {
-                "On": "Wake or turn the system on",
-                "ForceOff": "Turn the system off immediately (non-graceful) shutdown",
-                "GracefulShutdown": "Perform a graceful system shutdown and power off",
-                "GracefulRestart": "Perform a graceful system shutdown followed by a restart of the system",
-                "ForceRestart": "Perform an immediate (non-graceful) shutdown, followed by a restart of the system",
-                "Nmi": "Generate a Non-Maskable Interrupt to cause an immediate system halt",
-                "ForceOn": "Turn the system on immediately",
-                "PushPowerButton": "Simulate the pressing of the physical power button on this system"
-            }
-        },
-        "Links": {
+        }
+    },
+    "required": [
+        "Name"
+    ],
+    "definitions":{
+        "Oem":{
             "type": "object",
+            "patternProperties": { 
+                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+                    "type": ["array", "boolean", "integer", "number", "null", "object", "string"],
+                    "description": "This property shall specify a valid odata or redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+
+            },
+            "description": "Oem extension object.",
+            "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
+        },
+        "Links":{
+            "type": "object",
+            "patternProperties": { 
+                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+                    "type": ["array", "boolean", "integer", "number", "null", "object", "string"],
+                    "description": "This property shall specify a valid odata or redfish property."
+                }
+            },
             "additionalProperties": false,
             "properties": {
                 "Oem": {
-                    "type": [
-                        "object",
-                        "null"
-                    ],
-                    "additionalProperties": false,
-                    "properties": {
-
-                    },
+                    "$ref": "Resource.1.0.0.json#/definitions/Oem",
                     "description": "Oem extension object.",
                     "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
                 }
             }
         },
-        "SettingsResult": {
+        "Status":{
             "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "Operation": {
-                    "type": "string",
-                    "enum": [
-                        "SettingsApply"
-                    ],
-                    "readonly": true,
-                    "description": "Last operation detail.",
-                    "longDescription": "The value of this property shall indicate the results of the settings application.  The value SettingsApply shall be used to indicate the Settings were applied during the normal course of operations, such as what happens during a reboot."
-                },
-                "Time": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "readonly": true,
-                    "description": "Indicates the time the settings were applied.",
-                    "longDescription": "The value of this property shall indicate the time that the settings object was applied to the resource."
-                },
-                "ETag": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "readonly": true,
-                    "description": "The ETag of the resource to which the settings were applied, after the application.",
-                    "longDescription": "The value of this property shall be the ETag of the resource to which the settings were applied, after the application.  This is here so that the client can check it against the ETag of the current resource to see if any other changes have also happened to the resource."
+            "patternProperties": { 
+                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+                    "type": ["array", "boolean", "integer", "number", "null", "object", "string"],
+                    "description": "This property shall specify a valid odata or redfish property."
                 }
-            }
-        },
-        "PhysicalContext": {
-            "type": "string",
-            "enum": [
-                "Room",
-                "Intake",
-                "Exhaust",
-                "Front",
-                "Back",
-                "Upper",
-                "Lower",
-                "CPU",
-                "GPU",
-                "Backplane",
-                "SystemBoard",
-                "PowerSupply",
-                "VoltageRegulator",
-                "StorageDevice",
-                "NetworkingDevice",
-                "ComputeBay",
-                "StorageBay",
-                "NetworkBay",
-                "ExpansionBay",
-                "PowerSupplyBay"
-            ],
-            "enumDescriptions": {
-                "Room": "The room",
-                "Intake": "The intake point of the chassis",
-                "Exhaust": "The exhaust point of the chassis",
-                "Front": "The front of the chassis",
-                "Back": "The back of the chassis",
-                "Upper": "The upper portion of the chassis",
-                "Lower": "The lower portion of the chassis",
-                "CPU": "A Processor (CPU)",
-                "GPU": "A Graphics Processor (GPU)",
-                "Backplane": "A backplane within the chassis",
-                "SystemBoard": "The system board (PCB)",
-                "PowerSupply": "A power supply",
-                "VoltageRegulator": "A voltage regulator device",
-                "StorageDevice": "A storage device",
-                "NetworkingDevice": "A networking device",
-                "ComputeBay": "Within a compute bay",
-                "StorageBay": "Within a storage bay",
-                "NetworkBay": "Within a networking bay",
-                "ExpansionBay": "Within an expansion bay",
-                "PowerSupplyBay": "Within a power supply bay"
-            }
-        },
-        "Status": {
-            "type": "object",
+            },
             "additionalProperties": false,
             "properties": {
                 "State": {
@@ -235,30 +156,10 @@
                     "longDescription": "This property shall represent the HealthState of the resource without considering its dependent resources. The values shall conform to those defined in the Redfish specification."
                 },
                 "Oem": {
-                    "type": "object",
-                    "additionalProperties": false,
-                    "properties": {
-
-                    },
-                    "description": "Oem extension object.",
-                    "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
-                }
-            }
-        },
-        "Settings": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "href": {
-                    "type": "string",
-                    "readonly": true,
-                    "description": "Reference to the resource the client may PUT/PATCH to in order to change this resource.",
-                    "longDescription": "The value of this property shall be the URI of the resource to which a client must do a PUT or PATCh in order to modify this resource."
+                    "$ref": "Resource.1.0.0.json#/definitions/Oem"
                 }
             }
         }
     },
-    "required": [
-        "Name"
-    ]
+    "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
 }

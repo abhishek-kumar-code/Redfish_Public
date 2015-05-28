@@ -1,8 +1,24 @@
 {
     "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0",
-    "title": "Privileges",
+    "title": "Privileges.1.0.0",
     "definitions":{
-
-    }
-
+        "PrivilegeType":{
+            "type": "string",
+            "enum": [
+                "Login",
+                "ConfigureManager",
+                "ConfigureUsers",
+                "ConfigureSelf",
+                "ConfigureDevice"
+            ],
+            "enumDescriptions": {
+                "Login": "Able to log into the service and read resources.",
+                "ConfigureManager": "Able to configure Manager resources.",
+                "ConfigureUsers": "Able to configure Users and their Accounts.",
+                "ConfigureSelf": "Able to configure the current user Account.",
+                "ConfigureDevice": "Able to configure devices managed by this service."
+            }
+        }
+    },
+    "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
 }

@@ -16,7 +16,7 @@
 
       <!-- This resource represents the log service for the resource or service to which it is associated. -->
       <EntityType Name="LogServiceCollection" BaseType="Resource.ResourceCollection">
-        <Property Name="Links" Type="LogService.Members">
+        <Property Name="Links" Type="LogServiceCollection.Members">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Contains links to other resources that are related to this resource."/>
         </Property>

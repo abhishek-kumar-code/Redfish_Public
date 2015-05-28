@@ -17,7 +17,7 @@
       <!-- This is the schema definition for the Virtual Media Collection. -->
       
       <EntityType Name="VirtualMediaCollection" BaseType="Resource.ResourceCollection">
-        <Property Name="Links" Type="VirtualMedia.Members">
+        <Property Name="Links" Type="VirtualMediaCollection.Members">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Contains links to other resources that are related to this resource."/>
         </Property>

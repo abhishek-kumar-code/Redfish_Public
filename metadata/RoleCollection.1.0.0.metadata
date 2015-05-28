@@ -16,7 +16,7 @@
       
       <!-- This schema defines a user role and its respective properties. -->
       <EntityType Name="RoleCollection" BaseType="Resource.ResourceCollection">
-        <Property Name="Links" Type="Role.Members">
+        <Property Name="Links" Type="RoleCollection.Members">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Contains links to other resources that are related to this resource."/>
         </Property>

@@ -10,8 +10,8 @@
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.1.0.0">
     <edmx:Include Namespace="Resource.1.0.0" Alias="Resource"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Tasks.1.0.0">
-    <edmx:Include Namespace="Tasks.1.0.0" Alias="Tasks"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Task.1.0.0">
+    <edmx:Include Namespace="Task.1.0.0" Alias="Task"/>
   </edmx:Reference>
   
   <edmx:DataServices>
@@ -19,7 +19,7 @@
 
       <!-- This is the schema definition for a Task resource. -->
       <EntityType Name="TaskCollection" BaseType="Resource.ResourceCollection">
-        <Property Name="Links" Type="Tasks.Members">
+        <Property Name="Links" Type="TaskCollection.Members">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Contains links to other resources that are related to this resource."/>
         </Property>
@@ -27,7 +27,7 @@
 
       <ComplexType Name="Members">
        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
-       <NavigationProperty Name="Members" Type="Collection(Tasks.Task)">
+       <NavigationProperty Name="Members" Type="Collection(Task.Task)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Contains the members of this collection."/>
           <Annotation Term="OData.AutoExpandReferences"/>

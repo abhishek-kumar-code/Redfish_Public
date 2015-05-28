@@ -2,6 +2,12 @@
     "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0",
     "title": "AccountService.1.0.0",
     "type": "object",
+    "patternProperties": { 
+        "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+            "type": ["array", "boolean", "integer", "number", "null", "object", "string"],
+            "description": "This property shall specify a valid odata or redfish property."
+        }
+    },
     "additionalProperties": false,
     "properties": {
         "@odata.context": {
@@ -14,7 +20,7 @@
             "$ref": "odata.4.0.0.json#type"
         },
         "Oem": {
-            "$ref": "Resource.1.0.0.json#Oem",
+            "$ref": "Resource.1.0.0.json#/definitions/Oem",
             "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
             "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
         },
@@ -64,11 +70,25 @@
             "longDescription": "This property shall reference the threshold of time in seconds from the last failed login attempt at which point the AccountLockoutThreshold counter (that counts number of failed login attempts) is reset back to zero (at which point AccountLockoutThreshold failures would be required before the account is locked).  This value shall be less than or equal to AccountLockoutDuration. The threshold counter also resets to zero after each successful login."
         },
         "Links": {
+            "$ref": "AccountService.1.0.0.json#/definitions/Links",
+            "description": "The links object contains the links to other resources that are related to this resource."
+        }
+    },
+    "description": "This is the schema definition for the Account Service.  It represents the properties for the service itself and has links to the actual list of accounts.",
+    "longDescription": "This resource shall be used to represent a management account service for a Redfish implementation.",
+    "definitions":{
+        "Links":{
             "type": "object",
+            "patternProperties": { 
+                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+                    "type": ["array", "boolean", "integer", "number", "null", "object", "string"],
+                    "description": "This property shall specify a valid odata or redfish property."
+                }
+            },
             "additionalProperties": false,
             "properties": {
                 "Oem": {
-                    "$ref": "Resource.1.0.0.json#Oem",
+                    "$ref": "Resource.1.0.0.json#/definitions/Oem",
                     "description": "Oem extension object.",
                     "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
                 },
@@ -94,10 +114,8 @@
                     "description": "Link to a collection of Roles",
                     "longDescription": "This property shall contain the link to a collection of Roles."
                 }
-            },
-            "description": "The links object contains the links to other resources that are related to this resource."
+            }
         }
     },
-    "description": "This is the schema definition for the Account Service.  It represents the properties for the service itself and has links to the actual list of accounts.",
-    "longDescription": "This resource shall be used to represent a management account service for a Redfish implementation."
+    "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
 }

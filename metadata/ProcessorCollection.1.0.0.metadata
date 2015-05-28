@@ -17,7 +17,7 @@
       
       <!-- This is the schema definition for the Processor resource. -->
       <EntityType Name="ProcessorCollection" BaseType="Resource.ResourceCollection">
-        <Property Name="Links" Type="Processor.Members">
+        <Property Name="Links" Type="ProcessorCollection.Members">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
           <Annotation Term="OData.Description" String="Contains links to other resources that are related to this resource." />
         </Property>

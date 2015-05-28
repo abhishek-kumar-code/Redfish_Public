@@ -9,14 +9,19 @@
       <EnumType Name="PrivilegeType">
         <Member Name="Login">
           <Annotation Term="OData.Description" String="Able to log into the service and read resources."/>
+        </Member>
         <Member Name="ConfigureManager">
           <Annotation Term="OData.Description" String="Able to configure Manager resources."/>
+        </Member>
         <Member Name="ConfigureUsers">
           <Annotation Term="OData.Description" String="Able to configure Users and their Accounts."/>
+        </Member>
         <Member Name="ConfigureSelf">
           <Annotation Term="OData.Description" String="Able to configure the current user Account."/>
+        </Member>
         <Member Name="ConfigureDevice">
           <Annotation Term="OData.Description" String="Able to configure devices managed by this service."/>
+        </Member>
       </EnumType>
       
       <Term Name="ReadPrivileges" Type="Privileges.PrivilegeType">

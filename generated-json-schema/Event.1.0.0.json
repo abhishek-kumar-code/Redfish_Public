@@ -2,6 +2,12 @@
     "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0",
     "title": "Event.1.0.0",
     "type": "object",
+    "patternProperties": { 
+        "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+            "type": ["array", "boolean", "integer", "number", "null", "object", "string"],
+            "description": "This property shall specify a valid odata or redfish property."
+        }
+    },
     "additionalProperties": false,
     "properties": {
         "@odata.context": {
@@ -14,7 +20,7 @@
             "$ref": "odata.4.0.0.json#type"
         },
         "Oem": {
-            "$ref": "Resource.1.0.0.json#Oem",
+            "$ref": "Resource.1.0.0.json#/definitions/Oem",
             "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
             "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
         },
@@ -30,7 +36,7 @@
         "Events": {
             "type": "array",
             "items": {
-                "$ref": "#/definitions/EventRecord"
+                "$ref": "Event.1.0.0.json#/definitions/EventRecord"
             },
             "description": "Each event in this array has a set of properties that describe the event.  Since this is an array, more than one event can be sent simultaneously."
         }
@@ -40,13 +46,36 @@
     ],
     "description": "This is the schema definition for Events.  It represents the properties for the events themselves and not subscriptions or any other resource.",
     "longDescription": "This resource shall be used to represent an event for a Redfish implementation.",
-    "definitions": {
+    "definitions":{
+        "EventType":{
+            "type": "string",
+            "enum": [
+                "StatusChange",
+                "ResourceUpdated",
+                "ResourceAdded",
+                "ResourceRemoved",
+                "Alert"
+            ],
+            "enumDescriptions": {
+                "StatusChange": "The status of this resource has changed",
+                "ResourceUpdated": "The value of this resource has been updated",
+                "ResourceAdded": "A resource has been added",
+                "ResourceRemoved": "A resource has been removed",
+                "Alert": "A condition exists which requires attention"
+            }
+        },
         "EventRecord":{
             "type": "object",
+            "patternProperties": { 
+                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+                    "type": ["array", "boolean", "integer", "number", "null", "object", "string"],
+                    "description": "This property shall specify a valid odata or redfish property."
+                }
+            },
             "additionalProperties": false,
             "properties": {
                 "Oem": {
-                    "$ref": "Resource.1.0.0.json#Oem",
+                    "$ref": "Resource.1.0.0.json#/definitions/Oem",
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
@@ -56,21 +85,7 @@
                     "longDescription": "The value of this string shall uniquely identify the member within the collection."
                 },
                 "EventType": {
-                    "type": "string",
-                    "enum": [
-                        "StatusChange",
-                        "ResourceUpdated",
-                        "ResourceAdded",
-                        "ResourceRemoved",
-                        "Alert"
-                    ],
-                    "enumDescriptions": {
-                        "StatusChange": "The status of this resource has changed",
-                        "ResourceUpdated": "The value of this resource has been updated",
-                        "ResourceAdded": "A resource has been added",
-                        "ResourceRemoved": "A resource has been removed",
-                        "Alert": "A condition exists which requires attention"
-                    },
+                    "$ref": "Event.1.0.0.json#EventType",
                     "readonly": true,
                     "description": "This indicates the type of event sent, according to the definitions in the EventService.",
                     "longDescription": "The value of this property shall indicate the type of event as defined in the EventService schema."
@@ -83,6 +98,7 @@
                 },
                 "EventTimestamp": {
                     "type": "string",
+                    "format": "date-time",
                     "readonly": true,
                     "description": "This is time the event occurred.",
                     "longDescription": "The value of this property shall indicate the time the event occurred where the value shall be consistent with the Redfish service time that is also used for the values of the Modified property."
@@ -138,5 +154,6 @@
                 "MessageId"
             ]
         }
-    }
+    },
+    "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
 }

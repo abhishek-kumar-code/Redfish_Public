@@ -17,7 +17,7 @@
       <!-- This is the schema definition for a Manager and its respective properties -->
 
       <EntityType Name="ManagerCollection" BaseType="Resource.ResourceCollection">
-        <Property Name="Links" Type="Manager.Members">
+        <Property Name="Links" Type="ManagerCollection.Members">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Contains links to other resources that are related to this resource."/>
         </Property>

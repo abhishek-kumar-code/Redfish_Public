@@ -16,7 +16,7 @@
 
       <!-- This is the schema definition for the Simple Storage resource. -->
       <EntityType Name="SimpleStorageCollection" BaseType="Resource.ResourceCollection">
-        <Property Name="Links" Type="SimpleStorage.Members">
+        <Property Name="Links" Type="SimpleStorageCollection.Members">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Contains links to other resources that are related to this resource."/>
         </Property>

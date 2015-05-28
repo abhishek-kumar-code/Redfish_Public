@@ -2,6 +2,12 @@
     "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0",
     "title": "VirtualMedia.1.0.0",
     "type": "object",
+    "patternProperties": { 
+        "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+            "type": ["array", "boolean", "integer", "number", "null", "object", "string"],
+            "description": "This property shall specify a valid odata or redfish property."
+        }
+    },
     "additionalProperties": false,
     "properties": {
         "@odata.context": {
@@ -14,7 +20,7 @@
             "$ref": "odata.4.0.0.json#type"
         },
         "Oem": {
-            "$ref": "Resource.1.0.0.json#Oem",
+            "$ref": "Resource.1.0.0.json#/definitions/Oem",
             "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
             "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
         },
@@ -67,22 +73,7 @@
             "longDescription": "The values of this array shall be the supported media types for this connection."
         },
         "ConnectedVia": {
-            "type": [
-                "string",
-                "null"
-            ],
-            "enum": [
-                "NotConnected",
-                "URI",
-                "Applet",
-                "Oem"
-            ],
-            "enumDescriptions": {
-                "NotConnected": "No current connection",
-                "URI": "Connected to a URI location",
-                "Applet": "Connected to a client application",
-                "Oem": "Connected via an OEM-defined method"
-            },
+            "$ref": "VirtualMedia.1.0.0.json#ConnectedVia",
             "readonly": true,
             "description": "Current virtual media connection methods",
             "longDescription": "The value of this property shall indicate the current connection method from a client to the virtual media represented by this resource.  A value of NotConnected shall indicate no connection is present.  A value of URI shall indicate that a remote connection via a URI reference type is being used. "
@@ -107,5 +98,38 @@
         }
     },
     "description": "This is the schema definition for the Virtual Media Service.",
-    "longDescription": "This resource shall be used to represent a virtual media service for a Redfish implementation."
+    "longDescription": "This resource shall be used to represent a virtual media service for a Redfish implementation.",
+    "definitions":{
+        "MediaType":{
+            "type": "string",
+            "enum": [
+                "CD",
+                "Floppy",
+                "USBStick",
+                "DVD"
+            ],
+            "enumDescriptions": {
+                "CD": "A CD-ROM format (ISO) image",
+                "Floppy": "A floppy disk image",
+                "USBStick": "An emulation of a USB storage device",
+                "DVD": "A DVD-ROM format image"
+            }
+        },
+        "ConnectedVia":{
+            "type": "string",
+            "enum": [
+                "NotConnected",
+                "URI",
+                "Applet",
+                "Oem"
+            ],
+            "enumDescriptions": {
+                "NotConnected": "No current connection",
+                "URI": "Connected to a URI location",
+                "Applet": "Connected to a client application",
+                "Oem": "Connected via an OEM-defined method"
+            }
+        }
+    },
+    "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
 }
