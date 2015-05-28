@@ -1115,7 +1115,6 @@ class JsonSchemaGenerator:
                             output += self.generate_json_for_type(typetable, currentType, depth, namespace, prefixuri, False, False)
 
                             # Get definitions block, append it if there is something in it.
-                            print("Fnwouriparts: " + filename_without_uriparts[:filename_without_uriparts.find(".")] + " Current schema classname: " + JsonSchemaGenerator.current_schema_classname)
                             if filename_without_uriparts[:filename_without_uriparts.find(".")] == JsonSchemaGenerator.current_schema_classname:
                                 definition_block = self.generate_definition_block(typetable, depth, isnullable, namespace, prefixuri)
                                 if definition_block != "":
@@ -1173,6 +1172,11 @@ class JsonSchemaGenerator:
                 
         # Close the definitions block
         output += "\n" + UT.Utilities.indent(depth) + "}"
+
+        #don't write definitions if there aren't any
+        if type_count == 0:
+            output = ""
+
         return output
 
 
