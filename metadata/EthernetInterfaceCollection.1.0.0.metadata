@@ -16,7 +16,7 @@
 
       <!--This schema defines a computer system and its respective properties. -->
       <EntityType Name="EthernetInterfaceCollection" BaseType="Resource.ResourceCollection">
-        <Property Name="Links" Type="EthernetInterface.Members">
+        <Property Name="Links" Type="EthernetInterfaceCollection.Members">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Contains links to other resources that are related to this resource."/>
         </Property>

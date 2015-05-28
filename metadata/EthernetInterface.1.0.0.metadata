@@ -112,10 +112,6 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the DNS name servers for this interface."/>
         </Property>
-        <Property Name="SettingsResult" Type="Resource.SettingsResult" Nullable="false">
-          <Annotation Term="OData.Description" String="If there is a link to Settings, this property has the results of the last application of those settings to this NIC."/>
-          <Annotation Term="OData.LongDescription" String="If using separate Settings, these properties shall report the result of applying settings."/>
-        </Property>
         <Property Name="Links" Type="EthernetInterface.Links" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This object contains the links to other resources that are related to this resource."/>
