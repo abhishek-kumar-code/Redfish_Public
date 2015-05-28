@@ -22,6 +22,7 @@
 
 import cgi
 import cgitb
+import sys
 import xml.etree.ElementTree as ET
 import Utilities as UT
 
@@ -220,7 +221,7 @@ class JsonSchemaGenerator:
             if not annotation.tag == "{http://docs.oasis-open.org/odata/ns/edm}Annotation":
                 continue
 
-            if annotation.attrib["Term"] == "DMTF.Required":
+            if annotation.attrib["Term"] == "Redfish.Required":
                 if "Boolean" in annotation.attrib.keys():
                     if annotation.attrib["Boolean"].upper() == "FALSE":
                         break
@@ -344,20 +345,21 @@ class JsonSchemaGenerator:
                 elif annotation.attrib["EnumMember"] == "OData.Permissions/ReadWrite":
                     output += ",\n"
                     output += UT.Utilities.indent(depth) + "\"readonly\": false"
-            elif (annotation.attrib["Term"] == "Validation.Pattern") or (annotation.attrib["Term"] == "DMTF.Pattern"):
+            elif (annotation.attrib["Term"] == "Validation.Pattern") or (annotation.attrib["Term"] == "Redfish.Pattern"):
                 output += ",\n"
                 output += UT.Utilities.indent(depth) + "\"pattern\": \"" + annotation.attrib["String"] + "\""
-            elif annotation.attrib["Term"] == "DMTF.DynamicPropertyPatterns":
+            elif annotation.attrib["Term"] == "Redfish.DynamicPropertyPatterns":
                 content = self.get_dynamic_property_patterns_content(annotation)
                 output += ",\n"
-                output += UT.Utilities.indent(depth) + "\"dynamicPropertyPattern\":{ \n"
-                output += UT.Utilities.indent(depth+1) + "\"pattern\":\"" + content["Pattern"] + "\",\n"
+                output += UT.Utilities.indent(depth) + "\"patternProperties\": { \n"
+                output += UT.Utilities.indent(depth+1) + "\"" + content["Pattern"] + "\": { \n"
                 jsontype = self.get_edmtype_to_jsontype(content["Type"])
             
                 if jsontype == "object":
-                    output += self.generate_json_for_type(typetable, content["Type"], depth + 1, namespace, prefixuri, isnullable, False)
+                    output += self.generate_json_for_type(typetable, content["Type"], depth + 2, namespace, prefixuri, isnullable, False)
+                    output += "\n" + UT.Utilities.indent(depth + 1) + "}\n"
                 else:
-                    output += UT.Utilities.indent(depth+1) + "\"type\":\"" + jsontype + "\"\n"
+                    output += UT.Utilities.indent(depth + 2) + "\"type\":\"" + jsontype + "\"\n"
                 output += UT.Utilities.indent(depth) + "}"
                                                         
         return output
@@ -418,7 +420,7 @@ class JsonSchemaGenerator:
             paramtype = "Collection(" + param.attrib["Type"] + ")"
 
             output += ",\n"
-            output += UT.Utilities.indent(depth+2) + "\"" + paramname + "@DMTF.AllowableValues" + "\": {\n"
+            output += UT.Utilities.indent(depth+2) + "\"" + paramname + "@Redfish.AllowableValues" + "\": {\n"
             output += self.generate_json_for_type(typetable, paramtype, depth + 3, actionentry["Namespace"], prefixuri, False, False)
             output += self.emit_annotations(typetable, actionentry["Namespace"],  param, depth + 3, prefixuri, False)
             output += "\n"
@@ -569,12 +571,16 @@ class JsonSchemaGenerator:
             output = UT.Utilities.indent(depth) + "\"type\": \"object\",\n"
 
         # allow odata and redfish annotations
-            output = UT.Utilities.indent(depth) + "\"patternProperties\": { \n"
-            output = UT.Utilities.indent(depth+1) + "\"^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish).[a-zA-Z_][a-zA-Z0-9_.]$\"\n"
-            output += UT.Utilities.indent(depth)   + "},\n"
+
+        output += UT.Utilities.indent(depth) + "\"patternProperties\": { \n"
+        output += UT.Utilities.indent(depth+1) + "\"^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish).[a-zA-Z_][a-zA-Z0-9_.]$\" : {\n"
+        output += UT.Utilities.indent(depth+2) + "\"type\": [\"array\", \"boolean\", \"integer\", \"number\", \"null\", \"object\", \"string\"],\n"
+        output += UT.Utilities.indent(depth+2) + "\"description\": \"This property shall specify a valid odata or redfish property.\"\n"
+        output += UT.Utilities.indent(depth+1) + "}\n"
+        output += UT.Utilities.indent(depth)   + "},\n"
 		
 		# figure out additional properties
-		isopentype = False
+        isopentype = False
 
         if "OpenType" in typedata["Node"].attrib.keys():
             if typedata["Node"].attrib["OpenType"].upper() == "TRUE":
@@ -629,7 +635,7 @@ class JsonSchemaGenerator:
                         firstproperty = True
                         continue
 
-                    # Handle navigaitonLinks/NavigationProperty
+                    # Handle navigationLinks/NavigationProperty
                     if ( self.is_navigation_link(typetable, property) or propkind == "NavigationProperty"):
                         propname = property.attrib["Name"]
                         output += UT.Utilities.indent(depth+1) + "\"" + propname + "\": {\n"
@@ -642,7 +648,7 @@ class JsonSchemaGenerator:
                             elif annotation.attrib["Term"] == "OData.AutoExpandReferences":
                                 termvalue = "OData.AutoExpandReferences"
                            
-                       # Handle "OData.ExpandResources"
+                       # Handle "OData.AutoExpand" by requiring resources (not just ids)
                         if termvalue == "OData.AutoExpand":
                             # Check if it is a collection or not
                             attribtype = property.attrib["Type"]
@@ -661,6 +667,7 @@ class JsonSchemaGenerator:
                                 refvalue = JsonSchemaGenerator.get_ref_value_for_type(typetable, attribtype)
                                 output += UT.Utilities.indent(depth+3)+ "\"$ref\": \"" + refvalue + "\""
 
+						# Handle "OData.AutoExpandReferences" -allow either references or instances 
                         elif termvalue == "OData.AutoExpandReferences":
                             attribtype = property.attrib["Type"]
                             if ( not (attribtype is None)) and (attribtype.startswith("Collection")):
@@ -676,6 +683,8 @@ class JsonSchemaGenerator:
                             if ( not (attribtype is None)) and (attribtype.startswith("Collection")):
                                 output += "\n"
                                 output += UT.Utilities.indent(depth+2) + "}"
+
+					# Handle regular property
                     else:
                         # Extract Name, Type and namespace
                         propname = property.attrib["Name"]
@@ -934,10 +943,10 @@ class JsonSchemaGenerator:
     #  all the data types relevent to generation of JSON                           #
     ################################################################################
     @staticmethod
-    def generate_typetable(url, is_from_refuri):
+    def generate_typetable(url, directory, is_from_refuri):
 
         JsonSchemaGenerator.parsed.append(url)
-        data = UT.Utilities.open_url(url)
+        data = UT.Utilities.open_url(url, directory)
     
         if len(data) == 0:
             return {}
@@ -945,16 +954,19 @@ class JsonSchemaGenerator:
         root = ET.fromstring(data)
         typetable = {}
 
+        #todo:fix this?
+        refuri = ""
+
         for reference in root.iter("{http://docs.oasis-open.org/odata/ns/edmx}Reference"):
             refuri = reference.attrib["Uri"]
-            
+
             if enable_debugging == True:
                 # This is for compatibility with the mockup and must be removed for
                 # the convertor to function against a real service hosting CSDL metadata
                 refuri = "http://localhost:9080/rest/v1/" + refuri[refuri.find("//") + 2:]
         
             if not refuri in JsonSchemaGenerator.parsed:
-                typetable = dict(list(typetable.items()) + list(JsonSchemaGenerator.generate_typetable(refuri, True).items()))
+                typetable = dict(list(typetable.items()) + list(JsonSchemaGenerator.generate_typetable(refuri, directory, True).items()))
     
         for dataservices in root.iter("{http://docs.oasis-open.org/odata/ns/edmx}DataServices"):
             current_file_typetable = {}
@@ -1084,6 +1096,7 @@ class JsonSchemaGenerator:
             try :
                 # If this type has been parsed already do nothing
                 index = parsedtypes.index(typedata["Name"] + ":" + currentNamespace)
+
             except :
                 # This type has not been parsed yet
                 if ( (namespace == currentNamespace) and (typetype == "EntityType") ):
@@ -1097,8 +1110,8 @@ class JsonSchemaGenerator:
                             output += self.generate_json_for_type(typetable, currentType, depth, namespace, prefixuri, False, False)
 
                             # Get definitions block, append it if there is something in it.
-                            if filename_without_uriparts == JsonSchemaGenerator.current_schema_classname:
-                                definition_block = "" 
+                            print("Fnwouriparts: " + filename_without_uriparts[:filename_without_uriparts.find(".")] + " Current schema classname: " + JsonSchemaGenerator.current_schema_classname)
+                            if filename_without_uriparts[:filename_without_uriparts.find(".")] == JsonSchemaGenerator.current_schema_classname:
                                 definition_block = self.generate_definition_block(typetable, depth, isnullable, namespace, prefixuri)
                                 if definition_block != "":
                                     output += ",\n"
@@ -1154,7 +1167,7 @@ class JsonSchemaGenerator:
                     type_count += 1
                 
         # Close the definitions block
-        output += "\n" + UT.Utilities.indent(depth) + "}\n"
+        output += "\n" + UT.Utilities.indent(depth) + "}"
         return output
 
 
@@ -1221,9 +1234,9 @@ class JsonSchemaGenerator:
                     fileoutput += UT.Utilities.indent(depth+1) + "\"title\": \"" + result + "\",\n"
                     # Fill in the result
                     fileoutput += jsonresults[result]
-					# Add Copyright
+                    # Add Copyright
                     fileoutput += ",\n"
-					fileoutput += UT.Utilities.indent(depth+1) + "\"copyright\": \"Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.\"\n"
+                    fileoutput += UT.Utilities.indent(depth+1) + "\"copyright\": \"Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.\"\n"
                     # End starting bracket
                     fileoutput += UT.Utilities.indent(depth) + "}\n"
                     screenoutput += fileoutput
@@ -1242,7 +1255,6 @@ class JsonSchemaGenerator:
     ###################################################################################################
     @staticmethod
     def parse_url(url):
-
         result = {}
         namespaceStart = -1
         incorrect_url = False
@@ -1295,6 +1307,15 @@ class JsonSchemaGenerator:
 #################################################################
 def main():
 
+    directory=""
+    url=""
+    for arg in sys.argv:
+        keyvalue = arg.split("=")
+        if(keyvalue[0])=="directory":
+            directory=keyvalue[1]
+        if(keyvalue[0])=="url":
+            url=keyvalue[1]
+
     if enable_debugging == True:
         pdb.set_trace()
 
@@ -1309,14 +1330,20 @@ def main():
     #form = {'url': 'http://localhost:9080/rest/v1/schemas.dmtf.org/redfish/v1/odata'}
     #form = {'url': 'http://localhost:9080/rest/v1/schemas.dmtf.org/redfish/v1/Power#Power.1.0.0'};
     #form = {'url': 'http://localhost:9080/rest/v1/schemas.dmtf.org/redfish/v1/Chassis#Chassis.1.0.0'};
-    
+
+    if 'directory' in form:
+        if enable_debugging == True:
+            directory=form['directory']
+        else:
+            directory=form['directory'].value
+
     if 'url' in form:
-        
         if enable_debugging == True:
             url = form['url']
         else:
-            url = form["url"].value
-        
+            url = form['url'].value
+
+    if len(url) > 0:
         # Parse the URL and extract input values from the URL
         url_inputs = JsonSchemaGenerator.parse_url(url)
        
@@ -1372,7 +1399,7 @@ def main():
                 current_schema = JsonSchemaGenerator(schema_version_value)
                 
                 # Create the type table
-                typetable = JsonSchemaGenerator.generate_typetable(filename, False)
+                typetable = JsonSchemaGenerator.generate_typetable(filename, directory, False)
                 
                 # Generate JSON for type
                 jsonresult = current_schema.generate_json_for_type(typetable, typename, depth+1, "", prefixuri, False, False)
@@ -1387,7 +1414,7 @@ def main():
                 current_schema = JsonSchemaGenerator(schema_version_value)
                 
                 # Create the type table
-                typetable = JsonSchemaGenerator.generate_typetable(filename, False)
+                typetable = JsonSchemaGenerator.generate_typetable(filename, directory, False)
                 
                 # Get Json results
                 jsonresults = current_schema.generate_json_for_file(typetable, depth+1, "", filename, namespace, prefixuri, False)

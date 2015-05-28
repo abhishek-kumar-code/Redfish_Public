@@ -77,15 +77,17 @@ class Utilities:
     # Opens the target file and extracts data from it.              #
     #################################################################
     @staticmethod
-    def open_url(url):
+    def open_url(url, directory):
+
+        # TODO: handle cases where URL is malformed
 
         connections = {}
-        # TODO: handle cases where URL is malformed
         hostStart = url.find("//")
+        prefix = url[:hostStart]
         hostStop = url.find("/", hostStart + 2)
         hostname = url[hostStart + 2 : hostStop]
         resname  = url[hostStop :]
-
+            
         if hostname in connections.keys():
             conn = connections[hostname]
         else:
@@ -94,13 +96,23 @@ class Utilities:
 
         conn.request("GET", resname)
         response = conn.getresponse()
-
         data = response.read()
         decoded = data.decode("utf-8")
 
         if response.status != 200:
-            decoded = ""
+            # try opening as a file
+            try:
+                fileLocation = url.rfind("/")
+                filename=url[fileLocation + 1:] + ".metadata"
+                if len(directory) > 0 :
+                    filename = directory + "\\" + filename
+				
+                metafile = open(filename)
+                decoded = metafile.read()
 
+            except:
+                decoded = ""
+                print("failed to open " + url + " as " + filename)
         return decoded
 
 
