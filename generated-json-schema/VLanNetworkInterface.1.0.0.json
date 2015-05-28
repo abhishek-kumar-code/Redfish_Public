@@ -1,6 +1,6 @@
 {
     "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0",
-    "title": "SessionService.1.0.0",
+    "title": "VLanNetworkInterface.1.0.0",
     "type": "object",
     "patternProperties": { 
         "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
@@ -33,21 +33,22 @@
         "Name": {
             "$ref": "Resource.1.0.0.json#Name"
         },
-        "SessionTimeout": {
-            "type": "integer",
-            "readonly": false,
-            "description": "This is the number of seconds of inactivity that a session may have before the session service closes the session due to inactivity.",
-            "longDescription": "This property shall reference the threshold of time in seconds between requests on a specific session at which point the session service shall close the session due to inactivity."
+        "VLANEnable": {
+            "type": [
+                "boolean",
+                "null"
+            ],
+            "description": "This indicates if this VLAN is enabled.",
+            "longDescription": "The value of this property shall be used to indicate if this VLAN is enabled for this interface."
         },
-        "Links": {
-            "$ref": "SessionService.1.0.0.json#/definitions/Links",
-            "description": "The links object contains the links to other resources that are related to this resource."
+        "VLANId": {
+            "$ref": "VLanNetworkInterface.1.0.0.json#VLANId",
+            "description": "This indicates the VLAN identifier for this VLAN.",
+            "longDescription": "The value of this property shall be used to indicate the VLAN identifier for this VLAN."
         }
     },
-    "description": "This is the schema definition for the Session Service.  It represents the properties for the service itself and has links to the actual list of sessions.",
-    "longDescription": "This resource shall be used to represent the Session Service Properties for a Redfish implementation.",
     "definitions":{
-        "Links":{
+        "VLAN":{
             "type": "object",
             "patternProperties": { 
                 "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
@@ -57,23 +58,23 @@
             },
             "additionalProperties": false,
             "properties": {
-                "Oem": {
-                    "$ref": "Resource.1.0.0.json#/definitions/Oem",
-                    "description": "Oem extension object.",
-                    "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
+                "VLANEnable": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "description": "This indicates if this VLAN is enabled.",
+                    "longDescription": "The value of this property shall be used to indicate if this VLAN is enabled for this interface."
                 },
-                "Sessions": {
-                    "type": "object",
-                    "properties": {
-                        "@odata.id" :{
-                            "$ref": "odata.4.0.0.json#id"
-                        }
-                    },
-                    "readonly": true,
-                    "description": "Link to a collection of Sessions",
-                    "longDescription": "This property shall contain the link to a collection of Sessions."
+                "VLANId": {
+                    "$ref": "VLanNetworkInterface.1.0.0.json#VLANId",
+                    "description": "This indicates the VLAN identifier for this VLAN.",
+                    "longDescription": "The value of this property shall be used to indicate the VLAN identifier for this VLAN."
                 }
             }
+        },
+        "VLANId":{
+            "type": "integer"
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."

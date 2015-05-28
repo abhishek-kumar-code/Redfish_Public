@@ -2,6 +2,12 @@
     "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0",
     "title": "Processor.1.0.0",
     "type": "object",
+    "patternProperties": { 
+        "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+            "type": ["array", "boolean", "integer", "number", "null", "object", "string"],
+            "description": "This property shall specify a valid odata or redfish property."
+        }
+    },
     "additionalProperties": false,
     "properties": {
         "@odata.context": {
@@ -14,7 +20,7 @@
             "$ref": "odata.4.0.0.json#type"
         },
         "Oem": {
-            "$ref": "Resource.1.0.0.json#Oem",
+            "$ref": "Resource.1.0.0.json#/definitions/Oem",
             "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
             "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
         },
@@ -37,84 +43,29 @@
             "longDescription": "This property shall contain the string which identifies the physical location or socket of the processor."
         },
         "ProcessorType": {
-            "type": [
-                "string",
-                "null"
-            ],
-            "enum": [
-                "CPU",
-                "GPU",
-                "FPGA",
-                "DSP",
-                "Accelerator",
-                "OEM"
-            ],
-            "enumDescriptions": {
-                "CPU": "A Central Processing Unit",
-                "GPU": "A Graphics Processing Unit",
-                "FPGA": "A Field Programmable Gate Array",
-                "DSP": "A Digital Signal Processor",
-                "Accelerator": "An Accelerator",
-                "OEM": "An OEM-defined Processing Unit"
-            },
+            "$ref": "Processor.1.0.0.json#ProcessorType",
             "readonly": true,
             "description": "The type of processor",
             "longDescription": "This property shall contain the string which identifies the type of processor contained in this Socket."
         },
         "ProcessorArchitecture": {
-            "type": [
-                "string",
-                "null"
-            ],
-            "enum": [
-                "x86",
-                "IA-64",
-                "ARM",
-                "MIPS",
-                "OEM"
-            ],
-            "enumDescriptions": {
-                "x86": "x86 or x86-64",
-                "IA-64": "Intel Itanium",
-                "ARM": "ARM",
-                "MIPS": "MIPS",
-                "OEM": "OEM-defined"
-            },
+            "$ref": "Processor.1.0.0.json#ProcessorArchitecture",
             "readonly": true,
             "description": "The architecture of the processor",
             "longDescription": "This property shall contain the string which identifies the architecture of the processor contained in this Socket."
         },
         "InstructionSet": {
-            "type": [
-                "string",
-                "null"
-            ],
-            "enum": [
-                "x86",
-                "x86-64",
-                "IA-64",
-                "ARM-A32",
-                "ARM-A64",
-                "MIPS32",
-                "MIPS64",
-                "OEM"
-            ],
-            "enumDescriptions": {
-                "x86": "x86 32-bit",
-                "x86-64": "x86 64-bit",
-                "IA-64": "Intel IA-64",
-                "ARM-A32": "ARM 32-bit",
-                "ARM-A64": "ARM 64-bit",
-                "MIPS32": "MIPS 32-bit",
-                "MIPS64": "MIPS 64-bit",
-                "OEM": "OEM-defined"
-            },
+            "$ref": "Processor.1.0.0.json#InstructionSet",
             "readonly": true,
             "description": "The instruction set of the processor",
             "longDescription": "This property shall contain the string which identifies the instruction set of the processor contained in this socket."
         },
+        "ProcessorID": {
+            "$ref": "Processor.1.0.0.json#/definitions/ProcessorID",
+            "description": "This object contains the identification information for this processor."
+        },
         "Status": {
-            "$ref": "Resource.1.0.0.json#Status"
+            "$ref": "Resource.1.0.0.json#/definitions/Status"
         },
         "Manufacturer": {
             "type": [
@@ -160,9 +111,18 @@
             "readonly": true,
             "description": "The total number of execution threads supported by this processor",
             "longDescription": "This property shall indicate the total count of independent execution threads supported by this processor."
-        },
-        "ProcessorID": {
+        }
+    },
+    "description": "This is the schema definition for the Processor resource.  It represents the properties of a processor attached to a System.",
+    "definitions":{
+        "ProcessorID":{
             "type": "object",
+            "patternProperties": { 
+                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+                    "type": ["array", "boolean", "integer", "number", "null", "object", "string"],
+                    "description": "This property shall specify a valid odata or redfish property."
+                }
+            },
             "additionalProperties": false,
             "properties": {
                 "VendorID": {
@@ -220,7 +180,66 @@
                     "longDescription": "This property shall indicate the Microcode Information as provided by the manufacturer of this processor."
                 }
             }
+        },
+        "ProcessorArchitecture":{
+            "type": "string",
+            "enum": [
+                "x86",
+                "IA-64",
+                "ARM",
+                "MIPS",
+                "OEM"
+            ],
+            "enumDescriptions": {
+                "x86": "x86 or x86-64",
+                "IA-64": "Intel Itanium",
+                "ARM": "ARM",
+                "MIPS": "MIPS",
+                "OEM": "OEM-defined"
+            }
+        },
+        "InstructionSet":{
+            "type": "string",
+            "enum": [
+                "x86",
+                "x86-64",
+                "IA-64",
+                "ARM-A32",
+                "ARM-A64",
+                "MIPS32",
+                "MIPS64",
+                "OEM"
+            ],
+            "enumDescriptions": {
+                "x86": "x86 32-bit",
+                "x86-64": "x86 64-bit",
+                "IA-64": "Intel IA-64",
+                "ARM-A32": "ARM 32-bit",
+                "ARM-A64": "ARM 64-bit",
+                "MIPS32": "MIPS 32-bit",
+                "MIPS64": "MIPS 64-bit",
+                "OEM": "OEM-defined"
+            }
+        },
+        "ProcessorType":{
+            "type": "string",
+            "enum": [
+                "CPU",
+                "GPU",
+                "FPGA",
+                "DSP",
+                "Accelerator",
+                "OEM"
+            ],
+            "enumDescriptions": {
+                "CPU": "A Central Processing Unit",
+                "GPU": "A Graphics Processing Unit",
+                "FPGA": "A Field Programmable Gate Array",
+                "DSP": "A Digital Signal Processor",
+                "Accelerator": "An Accelerator",
+                "OEM": "An OEM-defined Processing Unit"
+            }
         }
     },
-    "description": "This is the schema definition for the Processor resource.  It represents the properties of a processor attached to a System."
+    "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
 }

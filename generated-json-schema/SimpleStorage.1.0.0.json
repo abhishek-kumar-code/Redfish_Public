@@ -2,6 +2,12 @@
     "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0",
     "title": "SimpleStorage.1.0.0",
     "type": "object",
+    "patternProperties": { 
+        "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+            "type": ["array", "boolean", "integer", "number", "null", "object", "string"],
+            "description": "This property shall specify a valid odata or redfish property."
+        }
+    },
     "additionalProperties": false,
     "properties": {
         "@odata.context": {
@@ -14,7 +20,7 @@
             "$ref": "odata.4.0.0.json#type"
         },
         "Oem": {
-            "$ref": "Resource.1.0.0.json#Oem",
+            "$ref": "Resource.1.0.0.json#/definitions/Oem",
             "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
             "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
         },
@@ -40,16 +46,22 @@
             "type": "array",
             "items": {
                 "type": "object",
+                "patternProperties": { 
+                    "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+                        "type": ["array", "boolean", "integer", "number", "null", "object", "string"],
+                        "description": "This property shall specify a valid odata or redfish property."
+                    }
+                },
                 "additionalProperties": false,
                 "properties": {
                     "Oem": {
-                        "$ref": "Resource.1.0.0.json#Oem"
+                        "$ref": "Resource.1.0.0.json#/definitions/Oem"
                     },
                     "Name": {
                         "$ref": "Resource.1.0.0.json#Name"
                     },
                     "Status": {
-                        "$ref": "Resource.1.0.0.json#Status"
+                        "$ref": "Resource.1.0.0.json#/definitions/Status"
                     },
                     "Manufacturer": {
                         "type": [
@@ -75,8 +87,50 @@
             "description": "A list of storage devices associated with this resource"
         },
         "Status": {
-            "$ref": "Resource.1.0.0.json#Status"
+            "$ref": "Resource.1.0.0.json#/definitions/Status"
         }
     },
-    "description": "This is the schema definition for the Simple Storage resource.  It represents the properties of a storage controller and its directly-attached devices."
+    "description": "This is the schema definition for the Simple Storage resource.  It represents the properties of a storage controller and its directly-attached devices.",
+    "definitions":{
+        "Device":{
+            "type": "object",
+            "patternProperties": { 
+                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+                    "type": ["array", "boolean", "integer", "number", "null", "object", "string"],
+                    "description": "This property shall specify a valid odata or redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Oem": {
+                    "$ref": "Resource.1.0.0.json#/definitions/Oem"
+                },
+                "Name": {
+                    "$ref": "Resource.1.0.0.json#Name"
+                },
+                "Status": {
+                    "$ref": "Resource.1.0.0.json#/definitions/Status"
+                },
+                "Manufacturer": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The name of the manufacturer of this device",
+                    "longDescription": "This property shall indicate the name of the manufacturer of this storage device."
+                },
+                "Model": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The product model number of this device",
+                    "longDescription": "This property shall indicate the model information as provided by the manufacturer of this storage device."
+                }
+            }
+        }
+    },
+    "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
 }

@@ -1,6 +1,6 @@
 {
     "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0",
-    "title": "SessionCollection.1.0.0",
+    "title": "VLanNetworkInterfaceCollection.1.0.0",
     "type": "object",
     "patternProperties": { 
         "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
@@ -34,7 +34,7 @@
             "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
         },
         "Links": {
-            "ERROR": "type Session.Members unrecognized.",
+            "ERROR": "type VLanNetworkInterface.Members unrecognized.",
             "readonly": true,
             "description": "Contains links to other resources that are related to this resource."
         }
