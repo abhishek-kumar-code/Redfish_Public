@@ -3,6 +3,7 @@
     "type": "object",
     "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0",
     "title": "Redfish Schema Extension",
+    "description": "The properties defined in this schema shall adhere to the requirements of the Redfish Specification and the semantics of the descriptions in this file.",
     "allOf": [
         {
             "$ref": "http://json-schema.org/draft-04/schema"
@@ -11,22 +12,26 @@
     "definition": {
         "readonly": {
             "type": "boolean",
-            "description": "This property designates a property to be readonly when set to true."
+            "description": "This property shall designate a property to be readonly when set to true."
+        },
+        "requiredOnCreate": {
+            "type": "boolean",
+            "description": "This property is required to be specified in the body of a POST request to create the resource."
         },
         "longDescription": {
             "type": "string",
-            "description": "This attribute contains normative language relating to the Redfish Sprecification and documentation."
+            "description": "This attribute shall contain normative language relating to the Redfish Sprecification and documentation."
         },
         "copyright": {
             "type": "string",
-            "description": "This attribute contains the copyright notice for the schema."
+            "description": "This attribute shall contain the copyright notice for the schema."
         },
         "enumDescriptions": {
           "type": "object",
-          "description": "This attribute contains informative language related to the enumeration values of the property."
+          "description": "This attribute shall contain informative language related to the enumeration values of the property."
         }
     },
-    "property": {
+    "properties": {
         "readonly": {
             "$ref": "#definition/readonly"
         },

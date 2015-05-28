@@ -43,7 +43,7 @@ The DMTF acknowledges the following individuals for their contributions to this 
 * Paul Vancil - Dell Inc
 
 ## Abstract
-The Redfish Scalable Platforms Management API ("Redfish") is a new interface that uses RESTful interface semantics to access data defined in model format to perform out of band systems management.  It is suitable for a wide range of servers, from stand-alone servers to rack mount and bladed environments but scales equally well for large scale cloud environments.
+The Redfish Scalable Platforms Management API ("Redfish") is a new specification that uses RESTful interface semantics to access data defined in model format to perform out-of-band systems management.  It is suitable for a wide range of servers, from stand-alone servers to rack mount and bladed environments but scales equally well for large scale cloud environments.
 
 There are several out of band systems management standards (defacto and de jour) available in the industry.  They all either vary widely in implementation, were developed for single server embedded environments or have their roots in antiquated software modeling constructs.  There is no single industry standard that is simple to use, based on emerging programming standards, embedded friendly and capable of meeting large scale data center & cloud needs.
 
@@ -84,12 +84,12 @@ The following additional terms are used in this document.
 
 | Term           | Definition |
 | ---            | --- |
-| Baseboard Management Controller | An embedded device or service, typically an independent microprocessor or System-on-Chip with associated firmware, within a Computer System used to perform systems monitoring and management-related tasks.  |
+| Baseboard Management Controller | An embedded device or service, typically an independent microprocessor or System-on-Chip with associated firmware, within a Computer System used to perform systems monitoring and management-related tasks, which are commonly performed out-of-band.  |
 | Collection     | A Collection is a resource that acts as a container of other Resources. The members of a collection usually have similar characteristics. The container processes messages sent to the container. The members of the container process messages sent only to that member without affecting other members of the container.  |
 | CRUD           | Basic intrinsic operations used by any interface: Create, Read, Update and Delete.  |
 | Event          | A record that corresponds to an individual alert. |
 | Managed System | In the context of this specification, a managed system is a system that provides information or status, or is controllable, via a Redfish-defined interface. |
-| Message        | A complete request or response, formatted in HTTP/HTPS.  The protocol, based on REST, is a request/response protocol where every Request should result in a Response. |
+| Message        | A complete request or response, formatted in HTTP/HTTPS.  The protocol, based on REST, is a request/response protocol where every Request should result in a Response. |
 | Operation      | The HTTP request methods which map generic CRUD operations.  These are POST, GET, PUT/PATCH, HEAD and DELETE.                                                                                                                                                                                                                                                                                                                                                      |
 | OData          | The Open Data Protocol, as defined in [OData-Protocol](#OData-Protocol).                                                                                                                                                                                                                                                                                                                                                      |
 | OData Service Document|The name for a resource that provides information about the Service Root. The Service Document document provides a standard format for enumerating the resources exposed by the service that enables generic hypermedia-driven OData clients to navigate to the resources of the Redfish Service. |
@@ -135,24 +135,24 @@ The Redfish Scalable Platform Management API ("Redfish") is a management standar
 
 The scope of this specification is to define the protocols, data model, and behaviors, as well as other architectural components needed for an inter-operable, cross-vendor, remote and out-of-band capable interface that meets the expectations of Cloud and Web-based IT professionals for scalable platform management. While large scale systems are the primary focus, the specifications are also capable of being used for more traditional system platform management implementations.
 
-The specifications define elements that are mandatory for all Redfish implementations as well as optional elements that can be chosen by system vendor or manufacturer. The specifications also define points at which OEM (system vendor) -specific extensions can be provided by an implementation.
+The specifications define elements that are mandatory for all Redfish implementations as well as optional elements that can be chosen by system vendor or manufacturer. The specifications also define points at which OEM (system vendor) -specific extensions can be provided by a given implementation.
 
 The specifications set normative requirements for Redfish services and associated materials, such as schema files. In general, the specifications do not set requirements for Redfish clients, but will indicate what a Redfish client should do in order to access and utilize a Redfish Service successfully and effectively.
 
 The specifications do not set requirements that particular hardware or firmware must be used to implement the Redfish interfaces and functions.
 
-### Principal Goals
+### Principle Goals
 
-There are many principles and goals of Redfish as an architecture, a data representation, and the definition of the protocols that are used to access and interact with a Redfish service. Redfish seeks provide specifications that meet the following goals:
-* Scalable – To support from stand-alone machines to racks of equipment found in cloud service environments.
+There are many objectives and goals of Redfish as an architecture, as a data representation, and of the definition of the protocols that are used to access and interact with a Redfish service. Redfish seeks to provide specifications that meet the following goals:
+* Scalable – To support stand-alone machines to racks of equipment found in cloud service environments.
 * Flexible - To support a wide variety of systems found in service today.
 * Extensible – To support new and vendor-specific capabilities cleanly within the framework of the data model.
 * Backward Compatible– To enable new capabilities to be added while preserving investments in earlier versions of the specifications.
 * Interoperable – To provide a useful, required baseline that ensures common level of functionality and implementation consistency across multiple vendors.
-* System Focused – To efficiently support the most commonly required platform hardware management capabilities that are used in scalable environments, while also being capable of managing current server environments.
-* Standards based - To leverage protocols and standards that are widely accepted and used in environments today. In particular, the programming environments that are being widely adopted for developing web-based clients today.
-* Simple – To be directly usable by web developers without requiring highly specialized programming skills.
-* Lightweight - To reduce the complexity and cost of implementing and validating SPMA Services on managed systems.
+* System-Focused – To efficiently support the most commonly required platform hardware management capabilities that are used in scalable environments, while also being capable of managing current server environments.
+* Standards based - To leverage protocols and standards that are widely accepted and used in environments today - in particular, programming environments that are being widely adopted for developing web-based clients today.
+* Simple – To be directly usable by software developers without requiring highly specialized programming skills or systems knowledge.
+* Lightweight - To reduce the complexity and cost of implementing and validating Redfish Services on managed systems.
 
 ### Design Tenets
 The following design tenets and technologies are used to help deliver the previously stated goals and characteristics:
@@ -171,7 +171,7 @@ The following design tenets and technologies are used to help deliver the previo
 
 Redfish does not guarantee that client software will never need to be updated.  Examples that may require updates include accommodation of new types of systems or their components, data model updates, and so on.  System optimization for an application will always require architectural oversight.  However, Redfish does attempt to minimize instances of forced upgrades to clients using Schemas, strict versioning and forward compatibility rules and through separation of the protocols from the data model.
 
-Inter-operable does not mean identical. A Redfish client may need to adapt to the optional elements that are provided by different vendors.Implementation and configurations of a particular product from a given vendor can also vary.
+Inter-operable does not mean identical. A Redfish client may need to adapt to the optional elements that are provided by different vendors. Implementation and configurations of a particular product from a given vendor can also vary.
 
 For example, Redfish does not enable a client to read a Resource Tree and write it to another Redfish Service.  This is not possible as it is a hypermedia API. Only the root object has a well known URI. The resource topology reflects the topology of the system and devices it represents.  Consequently, different server or device types will result in differently shaped resource trees, potentially even for identical systems from the same manufacturer. 
 
@@ -183,11 +183,11 @@ Lastly, the value of links between resources and other elements can vary across 
 
 #### REST based
 
-This document defines a RESTful interface. Many service applications are exposed RESTful interfaces. 
+This document defines a RESTful interface. Many service applications are exposed as RESTful interfaces. 
 
 There are several reasons to define a RESTful interface:
-* It enables a light weight implementation, where economy is a necessity (smaller data transmitted than SOAP, fewer layers to the protocol than WS-Man).
-* It is on a trajectory to become a prevalent access method in the industry.
+* It enables a lightweight implementation, where economy is a necessity (smaller data transmitted than SOAP, fewer layers to the protocol than WS-Man).
+* It is a prevalent access method in the industry.
 * It is easy to learn and easy to document.
 * There are a number of toolkits & development environments that can be used for REST.
 * It supports data model semantics and maps easily to the common CRUD operations.
@@ -202,7 +202,7 @@ With the popularity of RESTful APIs, there are nearly as many RESTful interfaces
 
 OData defines a set of common RESTful conventions and markup which, if adopted, provides for interoperability between APIs.
 
-Adopting OData conventions for describing schema, url conventions, and naming and structure of common properties in a JSON payload, not only encapsulate best practices for RESTful APIs but further enables Redfish services to be consumed by a growing ecosystem of generic client libraries, applications, and tools.
+Adopting OData conventions for describing schema, URL conventions, and naming and structure of common properties in a JSON payload, not only encapsulate best practices for RESTful APIs but further enables Redfish services to be consumed by a growing ecosystem of generic client libraries, applications, and tools.
 
 #### Model Oriented
 
@@ -230,7 +230,7 @@ The use of HTTP Response codes enable a client to determine if the operation was
 
 In some situations it is useful for a service to provide messages to clients that fall outside the normal request/response paradigm. These messages, called events, are used by the service to asynchronously notify the client of some significant state change or error condition, usually of a time critical nature.
 
-Only one style of eventing is currently defined by this specification - push style eventing. In push style eventing, when the server detects the need to send an event, it uses an HTTP POST to push the event message to the client.  Clients can subscribe to the eventing service to enable reception of events by creating a ListenerDestination subscription entry in the Event Service, or an administrator can create subscriptions as part of the Redfish service configuration.  All subscriptions are persistent configuration settings. 
+Only one style of eventing is currently defined by this specification - push style eventing. In push style eventing, when the server detects the need to send an event, it uses an HTTP POST to push the event message to the client.  Clients can subscribe to the eventing service to enable reception of events by creating a EventDestination subscription entry in the Event Service, or an administrator can create subscriptions as part of the Redfish service configuration.  All subscriptions are persistent configuration settings. 
 
 Events originate from a specific resource. Not all resources are able to generate events. Those resources capable of generating events might not generate any events unless a subscription has been created to listen for the event. An administrator or client creates a subscription by sending a "subscribe" message to the Event Service. A subscribe message is sent using HTTP POST to the Event Subscriptions collection.
 
@@ -299,7 +299,7 @@ To begin operations, a client must know the URI for a resource.
 
 The base resource URI is well known and is based on the protocol version.  Discovering the URIs to additional resources is done through observing the associated resource links returned in previous responses. This type of API that is consumed by navigating URIs returned by the service is known as a Hypermedia API.
 
-The URI is the primary unique identifier of resources.  Redfish considers 3 parts of the URI as described in [RFC3986](#RFC3986). 
+The URI is the primary unique identifier of resources.  Redfish considers three parts of the URI as described in [RFC3986](#RFC3986). 
 
 The first part includes the scheme and authority portions of the URI. The second part includes the root service and version.  The third part is a unique resource identifier.
 
@@ -440,7 +440,7 @@ HTTP defines headers that can be used in request messages. The following table d
 | Origin          | Yes         | [W3C CORS, Section 5.7][cors-5.7]     | Used to allow web applications to consume Redfish service while preventing CSRF attacks.                                                                                                                                                                                                                                
 | Via             | No          | [RFC 2616, Section 14.45][2616-14.45] | Indicates network hierarchy and recognizes message loops. Each pass inserts its own VIA.                                                                                                                                                                                                                                
 | Max-Forwards    | No          | [RFC 2616, Section 14.31][2616-14.31] | Limits gateway and proxy hops. Prevents messages from remaining in the network indefinitely.                                                                                                                                                                                                                        |
-| If-Match        | Conditional | [RFC 2616, Section 14.31][2616-14.31] | If-Match shall be supported for Atomic requests on AccountService objects.  If-Match shall be supported on requests for resources for which the service returns ETags.
+| If-Match        | Conditional | [RFC 2616, Section 14.31][2616-14.31] | If-Match shall be supported for Atomic requests on AccountService objects.  If-Match shall be supported on PUT and PATCH requests for resources for which the service returns ETags.
 | If-None-Match   | No          | [RFC 2616, Section 14.31][2616-14.31] | If this HTTP header is present, the service will only return the requested resource if the current ETag of that resource does not match the ETag sent in this header.  If the ETag specified in this header matches the resource's current ETag, the status code returned from the GET will be [304](#status-304).
 
 * Redfish services shall understand and be able to process the headers in the following table as defined by this specification if the value in the Required column is set to "yes" .
@@ -900,9 +900,14 @@ Primitive properties are returned as JSON values.
 
 ###### DateTime Values
 
-DateTime values shall be returned as JSON strings according to the ISO 8601 "extended" format: 
+DateTime values shall be returned as JSON strings according to the ISO 8601 "extended" format, with time offset or UTC suffix included, of the form: 
 
  *YYYY*-*MM*-*DD* T *hh*:*mm*:*ss*[.*SSS*] (Z | (+ | - ) *hh*:*mm*)
+
+  where:
+
+* *SSS* = one or more digits representing a decimal fraction of a second, with the number of digits implying precision.
+* The 'T' separator and 'Z' suffix shall be capitals.
 
 ##### Structured Properties
 
@@ -1293,11 +1298,8 @@ For attributes that have units, or other special meaning, the unit identifier sh
 
 ### Localization Considerations
 
-The Redfish architecture supports localized strings but does not impose any specific requirement for localization upon services.  However, current market forces seem to require localization as necessary (e.g. schemas).
-
-Schema-supplied display strings may be localized as necessary, but a Schema file may only contain one language.  Alternate language schemas may be published and available to Redfish clients, but need not be provided via the Redfish schema store. 
-
-Property names defined within a Redfish schema are never localized. User-supplied string-valued property values such as an asset tag may be localized. Localizable string valued properties should be annotated with the [IsLanguageDependent annotation term](#language-dependent-property-values).
+Localization and translation of data or meta data is outside of the scope of version 1.0 of the Redfish Specification.
+Property names are never localized.
 
 ### Schema Definition
 
@@ -1531,18 +1533,6 @@ In addition to following [naming conventions](#common naming-conventions), prope
 The `Unit` annotation term is defined in http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml.
 
 The string values for the Units of Measure annotation shall be taken from **TODO**.
-
-##### Language-Dependent Property Values
-
-Property names are never localized. User-supplied string-valued property values such as an asset tag may be localized. Localizable string valued properties should be annotated with the IsLanguageDependent annotation term.
-
-Properties not annotated with the IsLanguageDependent annotation, or annotated with a `Boolean` attribute with a value of `"false"`, do not have values that vary based on localization.
-
-~~~xml
-	    <Annotation Term="OData.IsLanguageDependent"/>
-~~~
-
-The `IsLanguageDependent` annotation term is defined in http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Core.V1.xml.
 
 #### Reference Properties
 
@@ -1901,11 +1891,11 @@ The client can continue to get information about the status by directly querying
 
 ### Resource Tree Stability
 
-The Resource Tree must be consistent on a single service across device reboot and A/C power cycle, and must withstand a reasonable amount of configuration change (e.g. adding an adapter to a server). The resource Tree on one service may not be consistent across instances of devices.  The client must walk the data model and discover resources to interact with them.
-It is possible that some resources will remain very stable from system to system (e.g. BMC network settings) -- but it is not an architectural guarantee.
+The Resource Tree, which is defined as the set of URIs and array elements within the implementation, must be consistent on a single service across device reboot and A/C power cycle, and must withstand a reasonable amount of configuration change (e.g. adding an adapter to a server). The resource Tree on one service may not be consistent across instances of devices.  The client must walk the data model and discover resources to interact with them.
+It is possible that some resources will remain very stable from system to system (e.g. BMC network settings) -- but it is not an architectural guarantee.  
 
-* A Resource Tree should remain stable across Service restarts and minor device configuration changes
-* A Resource Tree shall not be expected by the client to be consistent between instances of services
+* A Resource Tree should remain stable across Service restarts and minor device configuration changes, thus the set of URIs and array element indexes should remain constant.
+* A Resource Tree shall not be expected by the client to be consistent between instances of services.
 
 ### Discovery
 
@@ -1980,8 +1970,6 @@ Redfish devices may implement the additional SSDP messages defined by UPnP to an
 ##### TLS
 Implementations shall support TLS v1.1 or later
 
-Implementations shall only use compliant TLS connections to transport [Sensitive Data](#sensitive-data). Including to any third party authentication services or clients.
-
 ##### Cipher suites
 Implementations should support AES-256 based ciphers from the TLS suites.
 
@@ -2003,21 +1991,11 @@ References to RFCs -
 ##### Certificates
 Implementations shall support replacement of the default certificate if one is provided, with a certificate having at least a 4096 bit RSA key and sha512-rsa signature.
 
-### Sensitive Data
-
-* Sensitive data shall minimally include 
-	- User credentials (usernames, passwords)
-	- Private Keys
-	- Persistent Session Keys
-	- Password Complexity Requirements
-	- Critical Security Parameters (CSPs) as defined below
-
-Critical Security Parameters (CSP): 
-Security-related information (e.g., cryptographic keys, authentication data such as passwords and PINs) appearing in plaintext or otherwise unprotected form and whose disclosure or modification can compromise the security of a cryptographic module or the security of the information protected by the module.
-	
-REF: http://csrc.nist.gov/publications/fips/fips140-1/fips1401.pdf - This is used only as a source for the definition of CSPs. No additional requirements for compatibility with the FIPS standard should be inferred.
-
 ### Authentication
+
+* Authentication Methods
+
+	Service shall support both "Basic Authentication" and "Redfish Session Login Authentication" (as described below under Session Management).  Services shall not require a client to create a session when Basic Auth is used.
 
 * Default Credentials 
 
@@ -2052,7 +2030,9 @@ REF: http://csrc.nist.gov/publications/fips/fips140-1/fips1401.pdf - This is use
 	* Extended error messages shall NOT provide privileged info when authentication failures occur
 * REST objects shall not be available unauthenticated, except for
   * The root object which is needed to identify the device and service locations
-* Unauthenticated REST operation results shall not contain [Sensitive Data](#sensitive-data).
+  * The $metadata object which is needed to retreive resource types
+  * The OData Service Document which is needed for compatibility with OData clients
+  * The version object located at /redfish/
 * External services linked via extref references are not part of this spec, and may have other security requirements.
 	
 * CORS headers are not recommended. Services may choose to implement them.
@@ -2062,7 +2042,6 @@ REF: http://csrc.nist.gov/publications/fips/fips140-1/fips1401.pdf - This is use
 * When there is a HTTP Redirect the privilege requirements for the target resource shall be enforced  
   
 #### Extended Error Handling
-  * Authentication shall occur when [Sensitive Data](#sensitive-data) is present in any part of the REST object.
   * Extended error messages shall NOT provide privileged info when authentication failures occur
 
 #### HTTP Header Authentication
@@ -2093,9 +2072,9 @@ includes orphaned session timeout and number of simultaneous open sessions.
 
 * **A Redfish Service shall provide login sessions compliant with this specification.**
 
-##### Login Sessions
+##### Redfish Login Sessions
 
-For functionality requiring multiple Redfish operations, a standard Login session is specified.  The URI used for session management is specified in the /redfish resource with the property "SessionService".
+For functionality requiring multiple Redfish operations, a client may create a Redfish Login Session via the session management interface.  The URI used for session management is specified in the /redfish resource with the property "SessionService".
 
 ```json
 {
@@ -2107,56 +2086,77 @@ For functionality requiring multiple Redfish operations, a standard Login sessio
 }
 ```
 
-##### Login
+##### Session Login 
 
-A session is created by an HTTP POST to the SessionService/Sessions resource, including the following POST body:
+A Redfish session is created by an HTTP POST to the SessionService/Sessions resource, including the following POST body:
 
-```json
+```
+POST /redfish/v1/Sessions HTTP/1.1
+Host: <hostpath>
+Accept: application/json
+Content-Type: charset=utf-8
+OData-Version: 4.0
+
 {
-    "UserName": "<username>"
+    "UserName": "<username>",
     "Password": "<password>"
 }
 ```
+
 The Origin header should be saved in reference to this session creation and compared to subsequent requests using this session to verify the request has been initiated from an authorized client domain.
 
-The return includes an X-Auth-Token header with a session token and Location header.
+The response to the POST request to create a session includes:
 
-The return JSON body includes a representation of the newly created session object:
-
-    <operation> <uri> HTTP/1.1
-    <header>
-    <header>
-    Location: "/redfish/v1/SessionService/Sessions/Administrator1"
-    X-Auth-Token: <token string>
-    <header>
+*  an X-Auth-Token header that contains a "session auth token" that the client can use an subsequent requests, and 
+*  a "Location header that contains a link to the newly created session resource.
+*  The JSON response body that contains a full representation of the newly created session object:  
+```
+    POST /redfish/v1/Sessions HTTP/1.
+    Content-Type: application/json
+    Content-Length: <computed length>
+    OData-Version: 4.0
+    Location: "/redfish/v1/SessionService/Sessions/1"
+    X-Auth-Token: <session-auth-token>
 
     {
         "@odata.context": "/redfish/v1/$metadata#SessionService/Links/Sessions/$entity",
-        "@odata.id": "/redfish/v1/SessionService/Sessions/Administrator1",
+        "@odata.id": "/redfish/v1/SessionService/Sessions/1",
+	"@odata.type": "#Session.1.0.0.Session",
+	"Id": "1",
+	"Name": "User Session",
+	"Description": "User Session",
 	"UserName": "<username>"
     } 
+``` 
+The client sending the session login request should save the "Session Auth Token" and the link returned in the Location header.
+The "Session Auth Token" is used to authentication subsequent requests by setting the Request Header "X-Auth-Token with the "Session Auth Token" received from the login POST.
+The client will later use the link that was returned in the Location header of the POST to logout or terminate the session. 
 
-##### Logout
-
-Logout is accomplished by performing a DELETE to the Session resource provided by the Login operation including the X-Auth-Token header.  Optionally, the service may also support logout upon DELETE to the Sessions resource without specifying the individual session URI.  
-
-The ability to DELETE to a Session resource allows the service to support logging out of one or more sessions from a different session if the user has sufficient privilege to do so.
+Note that the "Session ID" and "Session Auth Token" are different.  The Session ID uniquely identifies the session resource and is returned with the response data as well as the last segment of the Location header link.  
+An administrator with sufficient privilege can view active sessions and also terminate any session using the associated sessionId.
+Only the client that executes the login will have the Session Auth Token.
 
 ##### X-Auth-Token HTTP Header
 
 Implementations shall only use compliant TLS connections to transport the data between any third party authentication service and clients.
+Therefore, the POST to create a new session shall only be supported with HTTPS, and all requests that use Basic Auth shall require HTTPS.
 
-* Limited Lifetime
-  * Implementations shall support session timeout, session idle time is defined as time from the last accepted transaction.
-  * Session timeout shall default to a finite limit.
-  * Implementations should NOT support infinite session times.
-  
+##### Session Lifetime
+
+Note that Redfish sessions "time-out" as apposed to having a token expiration time like some token-based methods use.  For Redfish sessions, as long a  client continues to send requests for the session more often than the session timeout period, the session will remain open and the session auth token remains valid.  If the sessions times-out then the session is automatically terminated.
+Note that the Redfish. 
+
+##### Session Termination or Logout
+
+A Redfish session is terminated when the client Logs-out.  This is accomplished by performing a DELETE to the Session resource identified by the link returned in the Location header when the session was created, or the SessionId returned in the response data.
+
+The ability to DELETE a Session by specifying the Session resource ID allows an administrator with sufficient privilege to terminate other users sessions from a different session.
+
+
 #### AccountService
 
 * User passwords should be stored with one-way encryption techniques.
 * Implementations may support exporting user accounts with passwords, but shall do so using encryption methods to protect them.
-* The root REST object should be available unauthenticated, but shall not contain any [Sensitive Data](#sensitive-data).
-  * Authentication shall occur when [Sensitive Data](#sensitive-data) is present in the root REST object.
 * User accounts shall support ETags and shall support atomic operations
   * Implementations may reject requests which do not include an ETag
 * User Management activity is atomic
@@ -2168,97 +2168,36 @@ Implementations shall only use compliant TLS connections to transport the data b
 
 #### Event Subscriptions
 
-* The Redfish device shall encrypt event data when there is [Sensitive Data](#sensitive-data) in the event data object before pushing it
-
 * The Redfish device may verify the destination for identity purposes before pushing event data object to the Destination 
 
 #### Privilege Model / Authorization
 
-* The Authorization subsystem has the following components to it 
-  - Profiles - A Profile is a collection of Roles from the Authorization perspective (NOTE: Profiles per Redfish constitute more than Roles. REF: See section ... for more info.)
-  - Roles - A Role is a collection of Privileges
-  - Privileges - A Privileges is a permission to perform a specific action/ activity
-    - NOTE: Specific sets of privileges can be assigned to a user without using/ modifying/ creating/ leveraging pre-canned roles
-* When a Profile like a System Profile is implemented all the required Roles per Redfish which constitute that Profile shall be implemented
-  - System Administrator and System Operator are 2 Roles are which are required to be implemented in the System Profile
-  - System Administrator - The user with this role monitors and configures the system and / or the Redfish device
-* When a Role like a System Operator is implemented all Privileges required per Redfish which constitute that Role are required to be implemented
-  - The Power Control privilege is required to be implemented per Redfish
+The Authorization subsystem uses Roles and Privileges to control which users have what access to resources.
 
-* User Management 
-    * Assigning privileges to users, either local to the Redfish device or users / user groups from the directory services infrastructure like AD/ LDAP
-      * Assign privileges individually (Users created by cherry-picking privileges)
-        OR
-      * Assign privileges via pre-defined roles (Roles required by Redfish spec or OEM implementation)
-        OR
-      * Assign privileges via custom roles (End user admin defined roles which can be reused)
+* Roles:
+  - A Role is a defined set of Privileges.   Therefore, two roles with the same privileges shall behave equivalently. 
+  - All users are assigned exactly one role.
+  - The schema specifies a set of pre-defined roles that can be assigned to a user when a user is created.
+  - Implementations shall support all of the pre-defined roles.
+  - The pre-defined Roles may include OEM privileges
+  - The privilege array defined for the predefined roles shall not be modifiable
+  - A service may optionally support additional "Custom" roles, and may allow users to create such custom roles by: 1) posting to the Roles collection; or 2) an implementation may implement a predefined custom role; or 3) other mechanism outside the specification.   
+  
+* Privileges:
+  - A privilege is a permission to perform an operation (e.g. Read, Write) within a defined management domain (e.g. Configuring Users).  
+  - The Redfish standard schema specifies a set of "assigned privileges" in the AssignedPrivileges array.
+  - An implementation may also include "OemPrivileges" which are then specified in an OemPrivileges array.
+  - Privileges are mapped to resources using the privilege mapping annotations defined in the Privileges schema file.
+  - Multiple privileges in the mapping constitute an OR of the privileges.
+
+* User Management:
+  - Users are assigned a Role when the user account is created.
+  - The privileges that the user has are defined by its role.
 
 
-* Implementations shall enforce the same privilege model for ETag related activity as is enforced for the data being represented by the ETag. For example, when activity requiring privileged access to read data item represented by ETag requires the same privileged access to read the ETag.
-
-* Privileges
-  * shall implement a set of pre-defined privileges
-    - Login
-    - Configure Manager
-    - Configure Users
-      - NOTE: The Login privilege is automatically assigned to all users
-
-  * shall implement a set of pre-defined privileges as required per implemented profiles
-    - System Profile has the Power Control privilege
-    - Other Profiles will have appropriate required privileges
-
-  * may implement a set of OEM privileges
-    - Remote Console (Remote Keyboard, Video, Mouse)
-    - Remote Media (Remote mounting of media like USB storage, file shares etc)
-    - Diagnostic capability
-    - Clear Logs
-
-  * OEM Privileges shall follow the requirements below
-    - Privileges that grant permission to affect/ modify the object and/ or object extensions in a Profile, themselves belong to that Profile
-    - Privileges that make use of methods / derived methods / OEM methods in a profile, themselves belong to that Profile
-
-##### Profiles and Roles
-
-* shall implement a set of pre-defined roles based on profiles implemented by the Redfish device
-* System Profile
-  1) System Administrator - Monitor and configures the system and the Redfish device
-    - Configure BMC
-    - Configure Users
-    - Power Control
-    - All OEM privileges relevant to the System Profile
-  2) System Operator - Performs system management tasks like power control but not configuring the power subsystem
-    - Power Control
-    - Will not include any OEM privileges
-  3) User (Read-Only with very low privilege reads)
-* Network Profile
-  1) Network Administrator - Monitor and configures the network component
-    - TBD
-  2) Network Operator - Performs network management tasks like network operations including interface up/ down but not any persistent network configuration changes
-    - TBD
-  3) User (Read-Only with very low privilege reads)
-* Storage Profile
-  1) Storage Administrator - Monitor and configures the storage component
-    - TBD
-  2) Storage Operator - Performs storage management tasks like storage operations including acknowledging bad drives to trigger rebuilding a logical volume but not any persistent storage configuration changes
-    - TBD
-  3) User (Read-Only with very low privilege reads)
-* NOTE: All OEM privileges that modify objects and/ or ohject extensions in a Profile, shall be assigned to the Administrator Role in that Profile.
-
-* Pre-defined roles shall NOT be modifiable with respect to privileges assigned
-* shall allow Redfish user to define custom roles
-* should allow Redfish user to name custom roles to enable reuse in user context
-* may implement a set of OEM roles
-
-#### Role Based Privilege
-
-A Redfish service may contain resources that require separated privileges.
-A Redfish service may limit REST operations against specific resources based
-upon user privileges.
-
-* **A Redfish service may limit individual resource access by Redfish clients
-  based upon role-based privileges**
-* **A Redfish service may limit individual resource access by Redfish clients
-  based upon specific user account information (future -- not defined yet)**
+* ETag Handling:
+  - Implementations shall enforce the same privilege model for ETag related activity as is enforced for the data being represented by the ETag. 
+  - For example, when activity requiring privileged access to read data item represented by ETag requires the same privileged access to read the ETag.
 
 
 ### Data Model Validation
@@ -2289,8 +2228,6 @@ Custom Actions - Privilege model shall be applied consistently to both the body 
 
 Implementations shall log authentication requests including failures. 
 Authentication login/logout log entries shall contain a user identifier that can be used to uniquely identify the client and a time stamp.
-
-Logs shall include detailed privileged info, but shall NOT include the [Sensitive Data](#sensitive-data) outside a privileged user or a privileged security context.
 
 #### Completeness of Logging
 

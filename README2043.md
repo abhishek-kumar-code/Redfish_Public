@@ -86,15 +86,23 @@ Not everything can be done easily using REST, so Redfish leverages OData Actions
 
 So instead of having hidden properties that you could PUT/PATCH to, or complex state machines, we created Actions.  Actions are done with POSTs to the Resource (see the spec for specifics).  You can tell what actions are supported in any resource by looking for the "Actions" property.
 
-### CorrelatableIDs ###
+### Redundancy ###
 
-Go back to one of the Chassis and take a look at the fans by following the link to "ThermalMetrics" and you will see how Redfish shows redundancy.  You will notice each fan has a property called “CorrelatableID”.  Now look at the fan redundancy set.  It shows the two fans in its set using the same values in the CorrelatableID properties.  Thus the client can figure out which belongs to which.
+Go back to one of the Chassis and take a look at the fans by following the link to "Thermal" and you will see how Redfish shows redundancy.  
 
-You can't really have hrefs that point inside of objects, though JSON Pointer can do this.  But not all clients can understand JSON pointer.  So how do you do fan redundancy without hrefs?  The way we did it is with CorrelatableIDs - an opaque string that is the same for like items.  So the Fans all have IDs and the RedundancySet has an ID and the fans can point to the RedundancySet's ID and vice versa.
+You will notice an array called "Redundancy".  It shows the two fans in its set using the same values in the RelatedItem properties.  Redundancy has a common schema definition in Redfish and has other properties in it besides the members to show other important attributes about redundancy.  This is how the client can figure out which items belongs to which redundancy set since the @odata.id values are pointers to the redundancy set members.  
 
-The manager isn't expected to directly provide all of the data in Redfish, given the advent of PMCI.  Thus providers have no knowledge of URIs to other providers.  So how do you correlate a PCI slot with a NIC?  The Redfish way for providers that know nothing about each other is to come up with a CorrelatableID that they can all figure out on their own.  Take UEFI device path - every PCI device knows its BDF and can figure out its UEFI device path.  Thus it makes an excellent CorrelatableID for the Client to be able to figure out the PCI settings for the NIC (in this case).
+The value of the "@odata.id" property, though, doesn't have to be to a whole resource.  The value of this property will be of two formats: a JSON Pointer or an OData reference.  
 
-Thus everything that has the same Correlatable ID in objects that all refer to different views or aspects of the same device or thing.
+- In the case of a JSON Pointer, there will be a # in it that indicates where the resource stops and where the property pattern begins.  The schema will also have a reference to the property.  An example of a JSON Pointer value might be "/redfish/v1/Chassis/1/Thermal#/Fans/0".
+- In the case of an OData reference, there will not be a # in it.  The schema will have a definition of the property.  An example of a JSON Pointer value might be "/redfish/v1/Chassis/1/Thermal/Fans/0".
+
+### RelatedItems ###
+If you're still in the "Thermal" resource, you can see that the Temperature array elements have a RelatedItem property with an "@odata.id" in it.  This is a reference to the sub-resource that this temperature sensor is measuring - perhaps a processor.  Like Redudancy links, the value may be to a sub-resource.  Thus a client can determine what is being measured by this temperature sensor.
+
+RelatedItem, while having a common schema definition, is situational dependent in it's usage.  But it always is used to show a relationship between two different resources or sub-resources.
+
+And like redundancy, the value of the "@odata.id" property doesn't have to be to a whole resource.
 
 ### ETags ###
 
