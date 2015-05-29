@@ -77,24 +77,17 @@ class JsonSchemaGenerator:
     #  Generate the value of ref based on the name of the type and namespace/file of the type              #
     ########################################################################################################
     @staticmethod 
-    def get_ref_value_for_type(typetable, current_typename):
+    def get_ref_value_for_type(typetable, current_typename, root_namespace):
 
         refvalue = ""
+        current_typedata = typetable[current_typename]
         simplename = current_typename[current_typename.rfind(".") + 1 :]
 
-        # Extract the file name from the URL
-        current_typedata = typetable[current_typename]
-        url_parts = current_typedata["Url"].rsplit('/', 1)
-        url_filename = url_parts[-1]
-
-        # If the current type is in definition block            
-        if current_typedata["is_definitionblock_member"] == True:
-            if url_filename == JsonSchemaGenerator.current_schema_classname:
-                refvalue = "#/definitions/" + simplename
-            else:
-                refvalue = url_filename + ".json#/definitions/" + simplename
-        else: 
-            refvalue = url_filename + ".json#" + simplename
+        # If the current type is defined in this namespace
+        if root_namespace == current_typedata["Namespace"]:
+            refvalue = "#/definitions/" + simplename
+        else:
+            refvalue = current_typedata["Url"] + "#/definitions/" + simplename
 
         return refvalue
 
@@ -256,9 +249,9 @@ class JsonSchemaGenerator:
     
         edmtojson = {
                         "Edm.String": "string",
-                        "Edm.Int16": "integer",
-                        "Edm.Int32": "integer",
-                        "Edm.Int64": "integer",
+                        "Edm.Int16": "number",
+                        "Edm.Int32": "number",
+                        "Edm.Int64": "number",
                         "Edm.Boolean": "boolean",
                         "Edm.Decimal": "number",
                         "Edm.DateTimeOffset": "string"
@@ -576,10 +569,9 @@ class JsonSchemaGenerator:
             output = UT.Utilities.indent(depth) + "\"type\": \"object\",\n"
 
         # allow odata and redfish annotations
-
         output += UT.Utilities.indent(depth) + "\"patternProperties\": { \n"
         output += UT.Utilities.indent(depth+1) + "\"^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$\" : {\n"
-        output += UT.Utilities.indent(depth+2) + "\"type\": [\"array\", \"boolean\", \"integer\", \"number\", \"null\", \"object\", \"string\"],\n"
+        output += UT.Utilities.indent(depth+2) + "\"type\": [\"array\", \"boolean\", \"number\", \"null\", \"object\", \"string\"],\n"
         output += UT.Utilities.indent(depth+2) + "\"description\": \"This property shall specify a valid odata or redfish property.\"\n"
         output += UT.Utilities.indent(depth+1) + "}\n"
         output += UT.Utilities.indent(depth)   + "},\n"
@@ -664,12 +656,12 @@ class JsonSchemaGenerator:
                                 current_typename = JsonSchemaGenerator.extract_underlyingtype_from_collectiontype(attribtype)
 
                                 # Get the reference value
-                                refvalue = JsonSchemaGenerator.get_ref_value_for_type(typetable,current_typename)
+                                refvalue = JsonSchemaGenerator.get_ref_value_for_type(typetable, current_typename, namespace)
                                 output += UT.Utilities.indent(depth+3)+ "\"$ref\": \"" + refvalue + "\""
                                 output += "\n"
                                 output += UT.Utilities.indent(depth+2) + "}"
                             else:
-                                refvalue = JsonSchemaGenerator.get_ref_value_for_type(typetable, attribtype)
+                                refvalue = JsonSchemaGenerator.get_ref_value_for_type(typetable, attribtype, namespace)
                                 output += UT.Utilities.indent(depth+3)+ "\"$ref\": \"" + refvalue + "\""
 
 						# Handle "OData.AutoExpandReferences" -allow either references or instances 
@@ -679,12 +671,12 @@ class JsonSchemaGenerator:
                                 output += UT.Utilities.indent(depth+2) + "\"type\": \"array\",\n"
                                 output += UT.Utilities.indent(depth+2) + "\"items\": {\n"
                             
-                            output += UT.Utilities.indent(depth+2) + "\"type\": \"object\",\n"
-                            output += UT.Utilities.indent(depth+2) + "\"properties\": {\n"
-                            output += UT.Utilities.indent(depth+3) + "\"@odata.id\" :{\n"
-                            output += UT.Utilities.indent(depth+4) + "\"$ref\": \"" + "odata.4.0.0.json#id\"\n"
-                            output += UT.Utilities.indent(depth+3) + "}\n"                   
-                            output += UT.Utilities.indent(depth+2) + "}"
+                            output += UT.Utilities.indent(depth+3) + "\"type\": \"object\",\n"
+                            output += UT.Utilities.indent(depth+3) + "\"properties\": {\n"
+                            output += UT.Utilities.indent(depth+4) + "\"@odata.id\" :{\n"
+                            output += UT.Utilities.indent(depth+5) + "\"$ref\": \"" + "odata.4.0.0.json#id\"\n"
+                            output += UT.Utilities.indent(depth+4) + "}\n"                   
+                            output += UT.Utilities.indent(depth+3) + "}"
                             if ( not (attribtype is None)) and (attribtype.startswith("Collection")):
                                 output += "\n"
                                 output += UT.Utilities.indent(depth+2) + "}"
@@ -713,14 +705,7 @@ class JsonSchemaGenerator:
                             # Get all keys and extract typedata for the property
                             typetablekeys = typetable.keys()
                             if (proptypename in typetablekeys):
-                                proptypedata = typetable[proptypename]
-                                proptypetype = proptypedata["TypeType"]
-                                proptypebasetype = proptypedata["BaseType"]
-                                if proptypetype == "ComplexType" or proptypetype == "EnumType" or proptypetype == "TypeDefinition" or proptypebasetype == "Resource.ReferenceableMember":
-                                    generate_ref = True
-
-                            if generate_ref == True:
-                                refvalue = JsonSchemaGenerator.get_ref_value_for_type(typetable, proptypename)
+                                refvalue = JsonSchemaGenerator.get_ref_value_for_type(typetable, proptypename, namespace)
                                 output += UT.Utilities.indent(depth+2)+ "\"$ref\": \"" + refvalue + "\""
                             else:
                                 output += self.generate_json_for_type(typetable, proptypename, depth + 2, typedata["Namespace"], prefixuri, propertyisnullable, False, ignoreannotations)
@@ -785,9 +770,9 @@ class JsonSchemaGenerator:
         output = ""
         edmtojson = {
             "Edm.String": "string",
-            "Edm.Int16": "integer",
-            "Edm.Int32": "integer",
-            "Edm.Int64": "integer",
+            "Edm.Int16": "number",
+            "Edm.Int32": "number",
+            "Edm.Int64": "number",
             "Edm.Boolean": "boolean",
             "Edm.Decimal": "number",
             "Edm.DateTimeOffset": "string"
@@ -819,7 +804,7 @@ class JsonSchemaGenerator:
         output = ""
 
         if len(namespace) != 0 and namespace != typedata["Namespace"]:
-                refvalue = JsonSchemaGenerator.get_ref_value_for_type(typetable, typename)
+                refvalue = JsonSchemaGenerator.get_ref_value_for_type(typetable, typename, namespace)
                 output += UT.Utilities.indent(depth)+ "\"$ref\": \"" + refvalue + "\""
 
         else:
@@ -915,7 +900,7 @@ class JsonSchemaGenerator:
             if namespace == typedata["Namespace"]:
                 output = self.generate_json_for_propertybag(typetable, typedata, depth, namespace, prefixuri, isnullable, in_definitions_block)
             else:
-                refvalue = JsonSchemaGenerator.get_ref_value_for_type(typetable, typename)
+                refvalue = JsonSchemaGenerator.get_ref_value_for_type(typetable, typename, namespace)
                 output += UT.Utilities.indent(depth)+ "\"$ref\": \"" + refvalue + "\""
                 
                 return output
@@ -1017,11 +1002,6 @@ class JsonSchemaGenerator:
 
                         typeentry["RefUri"] = refuri
                         typeentry["IsFromRefUri"] = is_from_refuri
-
-                        if typeentry["BaseType"] == "Resource.ReferenceableMember" or typeentry["TypeType"] == "ComplexType":
-                            typeentry["is_definitionblock_member"] = True
-                        else:
-                            typeentry["is_definitionblock_member"] = False
 
                         # Put it in a temporary dictionary so that we only process a small number of types if any extra processing is required.
                         current_file_typetable[namespace + "." + typename] = typeentry
@@ -1441,4 +1421,4 @@ def main():
 
 if __name__ == "__main__":
     result = main()
-    print(result)
+    #print(result)
