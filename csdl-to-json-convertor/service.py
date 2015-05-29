@@ -1170,7 +1170,6 @@ class JsonSchemaGenerator:
         output = ''
         outputs = {}
         filename = JsonSchemaGenerator.extract_filenamefrom_url(filename)
-        filename = filename + "." + JsonSchemaGenerator.schema_version
         output = self.generate_definition_block(typetable, depth, isnullable, namespace, prefixuri)
         # Put it in a list as the function that will generate file/output on screen expects it to come out as a list.
         outputs = {filename : output}
@@ -1421,4 +1420,4 @@ def main():
 
 if __name__ == "__main__":
     result = main()
-    #print(result)
+    print(result)
