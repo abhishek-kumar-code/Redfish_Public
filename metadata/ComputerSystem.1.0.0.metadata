@@ -77,7 +77,7 @@
           <Annotation Term="OData.Description" String="The part number for this system"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the part number for the system as defined by the manufacturer."/>
         </Property>
-        <Property Name="UUID" Type="Edm.String">
+        <Property Name="UUID" Type="ComputerSystem.UUID">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The universal unique identifier (UUID) for this system"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the universal unique identifier number for the system."/>
@@ -324,6 +324,10 @@
         <Property Name="Status" Type="Resource.Status"  Nullable="false"/>
         <Annotation Term="OData.Description" String="This object describes the memory of the system in general detail."/>
       </ComplexType>
+
+      <TypeDefinition Name="UUID" UnderlyingType="Edm.String">
+        <Annotation Term="Validation.Pattern" String="([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})"/>
+      </TypeDefinition>
 
     </Schema>
   </edmx:DataServices>
