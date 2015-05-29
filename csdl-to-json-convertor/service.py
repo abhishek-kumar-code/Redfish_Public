@@ -440,37 +440,38 @@ class JsonSchemaGenerator:
         
         if propertyname == "@odata.context":
             output += UT.Utilities.indent(depth+1) + "\"@odata.context\": {\n"
-            output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + "odata.4.0.0.json#context\"\n"
+            output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + "http://schemas.dmtf.org/redfish/v1/odata.4.0.0#/definitions/context\"\n"
             output += UT.Utilities.indent(depth+1) + "}"
 
         elif propertyname == "@odata.id":
             output += UT.Utilities.indent(depth+1) + "\"@odata.id\": {\n"
-            output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + "odata.4.0.0.json#id\"\n"
+            output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + "http://schemas.dmtf.org/redfish/v1/odata.4.0.0#/definitions/id\"\n"
             output += UT.Utilities.indent(depth+1) + "}"
             
         elif propertyname == "@odata.type":
             output += UT.Utilities.indent(depth+1) + "\"@odata.type\": {\n"
-            output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + "odata.4.0.0.json#type\"\n"
+            output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + "http://schemas.dmtf.org/redfish/v1/odata.4.0.0#/definitions/type\"\n"
             output += UT.Utilities.indent(depth+1) + "}"
-            
+
+#todo: shouldn't have to treat special once these are typedefs
         elif propertyname == "Id":
             output += UT.Utilities.indent(depth+1) + "\"Id\": {\n"
-            output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + "Resource." + JsonSchemaGenerator.schema_version +".json#Id\"\n"
+            output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + "http://schemas.dmtf.org/redfish/v1/Resource." + JsonSchemaGenerator.schema_version +"#/definitions/Id\"\n"
             output += UT.Utilities.indent(depth+1) + "}"
 
         elif propertyname == "Description":
             output += UT.Utilities.indent(depth+1) + "\"Description\": {\n"
-            output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + "Resource." + JsonSchemaGenerator.schema_version +".json#Description\"\n"
+            output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + "http://schemas.dmtf.org/redfish/v1/Resource." + JsonSchemaGenerator.schema_version +".#definitions/Description\"\n"
             output += UT.Utilities.indent(depth+1) + "}"
 
         elif propertyname == "Name":
             output += UT.Utilities.indent(depth+1) + "\"Name\": {\n"
-            output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + "Resource." + JsonSchemaGenerator.schema_version +".json#Name\"\n"
+            output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + "http://schemas.dmtf.org/redfish/v1/Resource." + JsonSchemaGenerator.schema_version +".#definitions/Name\"\n"
             output += UT.Utilities.indent(depth+1) + "}"
 
         elif propertyname == "Modified":
             output += UT.Utilities.indent(depth+1) + "\"Modified\": {\n"
-            output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + "Resource." + JsonSchemaGenerator.schema_version +".json#Modified\"\n"
+            output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + "http://schemas.dmtf.org/redfish/v1/Resource." + JsonSchemaGenerator.schema_version +".#definitions/Modified\"\n"
             output += UT.Utilities.indent(depth+1) + "}"
 
         return output
@@ -686,29 +687,23 @@ class JsonSchemaGenerator:
                         # Extract Name, Type and namespace
                         propname = property.attrib["Name"]
                         proptypename = property.attrib["Type"]
-                        # Special handling of ["Description", "Id", "Name", "Modified"] defined in Resource type.
-                        specialproperties = ["Description", "Id", "Name", "Modified"]
-                        if (propname in specialproperties) and (typedata["Name"] != "Resource"):
-                             output += self.get_json_for_special_properties(propname, depth, prefixuri)
-                             continue
-                        else:  
-                            output += UT.Utilities.indent(depth+1) + "\"" + propname + "\": {\n"    
-                            propertyisnullable = True
+                        output += UT.Utilities.indent(depth+1) + "\"" + propname + "\": {\n"    
+                        propertyisnullable = True
 
-                            if "Nullable" in property.attrib.keys():
-                                if property.attrib["Nullable"] == "false":
-                                    propertyisnullable = False                    
-                            ignoreannotations = self.get_property_annotation_terms(property)
+                        if "Nullable" in property.attrib.keys():
+                            if property.attrib["Nullable"] == "false":
+                                propertyisnullable = False                    
+                        ignoreannotations = self.get_property_annotation_terms(property)
 
-                            # Check if we should generate a ref or the whole definition
-                            generate_ref = False
-                            # Get all keys and extract typedata for the property
-                            typetablekeys = typetable.keys()
-                            if (proptypename in typetablekeys):
-                                refvalue = JsonSchemaGenerator.get_ref_value_for_type(typetable, proptypename, namespace)
-                                output += UT.Utilities.indent(depth+2)+ "\"$ref\": \"" + refvalue + "\""
-                            else:
-                                output += self.generate_json_for_type(typetable, proptypename, depth + 2, typedata["Namespace"], prefixuri, propertyisnullable, False, ignoreannotations)
+                        # Check if we should generate a ref or the whole definition
+                        generate_ref = False
+                        # Get all keys and extract typedata for the property
+                        typetablekeys = typetable.keys()
+                        if (proptypename in typetablekeys):
+                            refvalue = JsonSchemaGenerator.get_ref_value_for_type(typetable, proptypename, namespace)
+                            output += UT.Utilities.indent(depth+2)+ "\"$ref\": \"" + refvalue + "\""
+                        else:
+                            output += self.generate_json_for_type(typetable, proptypename, depth + 2, typedata["Namespace"], prefixuri, propertyisnullable, False, ignoreannotations)
 
                     if self.is_required_property(property):
                         requiredproperties.append(propname)
