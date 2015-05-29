@@ -19,28 +19,28 @@
       <ComplexType Name="Message">
         <Annotation Term="OData.AdditionalProperties" Bool="False"/>
         <Property Name="MessageID" Type="Edm.String" Nullable="false">
-          <Annotation Name="OData.Description" String="This is the key for this message which can be used to look up the message in a message registry."/>
-          <Annotation Name="OData.LongDescription" String="This property shall be a key into message registry as described in the Redfish specification."/>
+          <Annotation Term="OData.Description" String="This is the key for this message which can be used to look up the message in a message registry."/>
+          <Annotation Term="OData.LongDescription" String="This property shall be a key into message registry as described in the Redfish specification."/>
         </Property>
         <Property Name="Message" Type="Edm.String">
-          <Annotation Name="OData.Description" String="This is the human readable message, if provided."/>
-          <Annotation Name="OData.LongDescription" String="This property shall contain an optional human readable message."/>
+          <Annotation Term="OData.Description" String="This is the human readable message, if provided."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain an optional human readable message."/>
         </Property>
         <Property Name="PropertiesInError" Type="Collection(Edm.String)">
-          <Annotation Name="OData.Description" String="This is an array of properties in the request body that caused the errors."/>
-          <Annotation Name="OData.LongDescription" String="This property shall contain an array of property names in error, if appropriate for the message."/>
+          <Annotation Term="OData.Description" String="This is an array of properties in the request body that caused the errors."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain an array of property names in error, if appropriate for the message."/>
         </Property>
         <Property Name="MessageArgs" Type="Collection(Edm.String)">
-          <Annotation Name="OData.Description" String="This array of message arguments are substituted for the arguments in the message when looked up in the message registry."/>
-          <Annotation Name="OData.LongDescription" String="This property shall contain the message substitution arguments for the specific message referenced by the MessageID and shall only be included if the MessageID is present."/>
+          <Annotation Term="OData.Description" String="This array of message arguments are substituted for the arguments in the message when looked up in the message registry."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the message substitution arguments for the specific message referenced by the MessageID and shall only be included if the MessageID is present."/>
         </Property>
         <Property Name="Severity" Type="Edm.String">
-          <Annotation Name="OData.Description" String="This is the severity of the errors."/>
-          <Annotation Name="OData.LongDescription" String="The value of this property shall be the severity of the error, as defined in the Status section of the Redfish specificaiton."/>
+          <Annotation Term="OData.Description" String="This is the severity of the errors."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the severity of the error, as defined in the Status section of the Redfish specificaiton."/>
         </Property>
         <Property Name="Resolution" Type="Edm.String">
-          <Annotation Name="OData.Description" String="Used to provide suggestions on how to resolve the situation that caused the error."/>
-          <Annotation Name="OData.LongDescription" String="This property shall contain an override of the Resolution of the message in message registry, if present."/>
+          <Annotation Term="OData.Description" String="Used to provide suggestions on how to resolve the situation that caused the error."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain an override of the Resolution of the message in message registry, if present."/>
         </Property>
       </ComplexType>
 
