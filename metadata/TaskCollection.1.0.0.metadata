@@ -19,7 +19,7 @@
 
       <!-- This is the schema definition for a Task resource. -->
       <EntityType Name="TaskCollection" BaseType="Resource.ResourceCollection">
-        <Property Name="Links" Type="TaskCollction.Members">
+        <Property Name="Links" Type="TaskCollection.Members">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Contains links to other resources that are related to this resource."/>
         </Property>
