@@ -48,23 +48,29 @@
         <Key>
           <PropertyRef Name="Id"/>
         </Key>
-        <Property Name="Id" Nullable="false" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="Uniquely identifies the resource within the collection of like resources."/>
-          <Annotation Term="OData.LongDescription" String="This property represents an identifier for the resource.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
-        </Property>
-        <Property Name="Description" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="Provides a description of this resource and is used for commonality  in the schema definitions."/>
-          <Annotation Term="OData.LongDescription" String="This object represents the Description property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
-        </Property>
-        <Property Name="Name" Type="Edm.String" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description"  String="The name of the resource or array element."/>
-          <Annotation Term="OData.LongDescription" String="This object represents the Name property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification. The value of this string shall be of the format for the reserved word *Name*."/>
-          <Annotation Term="Redfish.Required"/>
-        </Property>
+        <Property Name="Id" Type="Resource.Id" Nullable="false"/>
+        <Property Name="Description" Type="Resource.Description"/>
+        <Property Name="Name" Type="Resource.Name" Nullable="false"/>
       </EntityType>
+
+      <TypeDefinition Name="Id" UnderlyingType="Edm.String">
+        <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+        <Annotation Term="OData.Description" String="Uniquely identifies the resource within the collection of like resources."/>
+        <Annotation Term="OData.LongDescription" String="This property represents an identifier for the resource.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
+      </TypeDefinition>
+
+      <TypeDefinition Name="Description" UnderlyingType="Edm.String">
+        <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+        <Annotation Term="OData.Description" String="Provides a description of this resource and is used for commonality  in the schema definitions."/>
+        <Annotation Term="OData.LongDescription" String="This object represents the Description property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
+      </TypeDefinition>
+
+      <TypeDefinition Name="Name" UnderlyingType="Edm.String">
+        <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+        <Annotation Term="OData.Description"  String="The name of the resource or array element."/>
+        <Annotation Term="OData.LongDescription" String="This object represents the Name property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification. The value of this string shall be of the format for the reserved word *Name*."/>
+        <Annotation Term="Redfish.Required"/>
+      </TypeDefinition>
 
       <!--Base entity type for all resource collection objects-->
       <EntityType Name="ResourceCollection" Abstract="True">
