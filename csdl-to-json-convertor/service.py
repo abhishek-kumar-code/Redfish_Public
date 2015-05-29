@@ -453,27 +453,6 @@ class JsonSchemaGenerator:
             output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + "http://schemas.dmtf.org/redfish/v1/odata.4.0.0#/definitions/type\"\n"
             output += UT.Utilities.indent(depth+1) + "}"
 
-#todo: shouldn't have to treat special once these are typedefs
-        elif propertyname == "Id":
-            output += UT.Utilities.indent(depth+1) + "\"Id\": {\n"
-            output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + "http://schemas.dmtf.org/redfish/v1/Resource." + JsonSchemaGenerator.schema_version +"#/definitions/Id\"\n"
-            output += UT.Utilities.indent(depth+1) + "}"
-
-        elif propertyname == "Description":
-            output += UT.Utilities.indent(depth+1) + "\"Description\": {\n"
-            output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + "http://schemas.dmtf.org/redfish/v1/Resource." + JsonSchemaGenerator.schema_version +".#definitions/Description\"\n"
-            output += UT.Utilities.indent(depth+1) + "}"
-
-        elif propertyname == "Name":
-            output += UT.Utilities.indent(depth+1) + "\"Name\": {\n"
-            output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + "http://schemas.dmtf.org/redfish/v1/Resource." + JsonSchemaGenerator.schema_version +".#definitions/Name\"\n"
-            output += UT.Utilities.indent(depth+1) + "}"
-
-        elif propertyname == "Modified":
-            output += UT.Utilities.indent(depth+1) + "\"Modified\": {\n"
-            output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + "http://schemas.dmtf.org/redfish/v1/Resource." + JsonSchemaGenerator.schema_version +".#definitions/Modified\"\n"
-            output += UT.Utilities.indent(depth+1) + "}"
-
         return output
 
 
