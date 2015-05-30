@@ -1066,7 +1066,8 @@ class JsonSchemaGenerator:
                             JsonSchemaGenerator.current_schema_classname = JsonSchemaGenerator.get_typename_without_namespace(currentType)
 
                             # Generate Json for the type
-                            output += self.generate_json_for_type(typetable, currentType, depth, namespace, prefixuri, False, False)
+                            refvalue = JsonSchemaGenerator.get_ref_value_for_type(typetable, currentType, namespace)
+                            output += "\"$ref\": \"" + refvalue + "\""
 
                             # Get definitions block, append it if there is something in it.
                             if filename_without_uriparts[:filename_without_uriparts.find(".")] == JsonSchemaGenerator.current_schema_classname:
@@ -1094,9 +1095,6 @@ class JsonSchemaGenerator:
         type_count = 0
         output = ""
 
-        # Start the definitions block
-        output += UT.Utilities.indent(depth) + "\"definitions\":{\n"
-
         # Loop though all the types defined and generate them one by one.
         for currentType in typenames:
             typedata = typetable[currentType]
@@ -1109,11 +1107,13 @@ class JsonSchemaGenerator:
                 index = parsedtypes.index(typedata["Name"] + ":" + currentNamespace)
             except :
                 # This type has not been parsed yet. Process it now.
-                if (( namespace == currentNamespace) and ( (typetype == "ComplexType") or (typetype == "EnumType") or (typetype == "TypeDefinition") or (basetype == "Resource.ReferenceableMember") )):
-                    # Add comma if this is not the first complex type.
-                    if type_count > 0:
+                if (namespace == currentNamespace and typetype != "Action"):
+                    # Add comma if this is not the first complex type, otherwise write start of definitions block
+                    if (type_count > 0):
                         output += ",\n"
-                    
+                    else:
+                        output += UT.Utilities.indent(depth) + "\"definitions\":{\n"
+
                     # Start type definition
                     output += UT.Utilities.indent(depth+1) + "\"" + typedata["Name"] + "\":{\n"
                     # Add it to the list so that it does not get generated again.
@@ -1125,11 +1125,8 @@ class JsonSchemaGenerator:
                     type_count += 1
                 
         # Close the definitions block
-        output += "\n" + UT.Utilities.indent(depth) + "}"
-
-        #don't write definitions if there aren't any
-        if type_count == 0:
-            output = ""
+        if (type_count > 0):
+            output += "\n" + UT.Utilities.indent(depth) + "}"
 
         return output
 
