@@ -381,11 +381,24 @@ class JsonSchemaGenerator:
     # Description:                                                                                          #
     #  Generates JSON for actions                                                                           #
     #########################################################################################################
-    def get_payload_actionentry(self, typetable, actionentry, depth, prefixuri):
+    def get_payload_actionentry(self, actionname, depth):
         output = ""
         
-        propname = "#" + JsonSchemaGenerator.current_schema_classname + "." + actionentry["Name"] 
+        propname = "#" + JsonSchemaGenerator.current_schema_classname + "." + actionname 
         output += UT.Utilities.indent(depth)   + "\"" + propname + "\": {\n"
+        output += UT.Utilities.indent(depth+1) + "\"$ref\": \"#/definitions/" + actionname + "\"\n"
+        output += UT.Utilities.indent(depth)   + "}"
+
+        return output
+
+    #########################################################################################################
+    # Name: get_action_definition                                                                         #
+    # Description:                                                                                          #
+    #  Generates JSON for action definitions                                                                           #
+    #########################################################################################################
+    def get_action_definition(self, typetable, actionentry, depth, prefixuri):
+
+        output = ""
         output += UT.Utilities.indent(depth+1) +     "\"type\": \"object\",\n"
         output += UT.Utilities.indent(depth+1) +     "\"additionalProperties\": false,\n"
         output += UT.Utilities.indent(depth+1) +     "\"properties\": {\n"
@@ -421,7 +434,7 @@ class JsonSchemaGenerator:
 
         output += "\n"
         output += UT.Utilities.indent(depth+1) +     "}\n"
-        output += UT.Utilities.indent(depth)   + "}"
+#        output += UT.Utilities.indent(depth)   + "}"
 
         return output
 
@@ -529,7 +542,7 @@ class JsonSchemaGenerator:
 
             if isboundtotype:
                 output += ",\n"
-                output += self.get_payload_actionentry(typetable, typeentry, depth + 1, prefixuri)
+                output += self.get_payload_actionentry(typeentry["Name"], depth + 1)
             
         return output
 
@@ -1067,7 +1080,7 @@ class JsonSchemaGenerator:
 
                             # Generate Json for the type
                             refvalue = JsonSchemaGenerator.get_ref_value_for_type(typetable, currentType, namespace)
-                            output += "\"$ref\": \"" + refvalue + "\""
+                            output += UT.Utilities.indent(depth) + "\"$ref\": \"" + refvalue + "\""
 
                             # Get definitions block, append it if there is something in it.
                             if filename_without_uriparts[:filename_without_uriparts.find(".")] == JsonSchemaGenerator.current_schema_classname:
@@ -1107,7 +1120,7 @@ class JsonSchemaGenerator:
                 index = parsedtypes.index(typedata["Name"] + ":" + currentNamespace)
             except :
                 # This type has not been parsed yet. Process it now.
-                if (namespace == currentNamespace and typetype != "Action"):
+                if (namespace == currentNamespace):
                     # Add comma if this is not the first complex type, otherwise write start of definitions block
                     if (type_count > 0):
                         output += ",\n"
@@ -1120,7 +1133,11 @@ class JsonSchemaGenerator:
                     parsedtypes.append(typedata["Name"] + ":" + currentNamespace)
 
                     # Generate JSON for the type and append it to the output
-                    output += self.generate_json_for_type(typetable, currentType, depth+2, namespace, prefixuri, False, True)
+                    if (typetype != "Action"):
+                        output += self.generate_json_for_type(typetable, currentType, depth+2, namespace, prefixuri, False, True)
+                    else:
+                        output += self.get_action_definition(typetable, typetable[currentType], depth + 1, prefixuri)
+
                     output += "\n" + UT.Utilities.indent(depth + 1) + "}"
                     type_count += 1
                 
