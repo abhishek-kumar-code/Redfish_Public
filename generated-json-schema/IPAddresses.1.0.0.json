@@ -2,18 +2,52 @@
     "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0",
     "title": "IPAddresses.1.0.0",
     "definitions":{
-        "IPv6Address":{
+        "IPv6StaticAddress":{
             "type": "object",
             "patternProperties": { 
                 "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
-                    "type": ["array", "boolean", "integer", "number", "null", "object", "string"],
+                    "type": ["array", "boolean", "number", "null", "object", "string"],
                     "description": "This property shall specify a valid odata or redfish property."
                 }
             },
             "additionalProperties": false,
             "properties": {
                 "Oem": {
-                    "$ref": "Resource.1.0.0.json#/definitions/Oem"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0#/definitions/Oem"
+                },
+                "Address": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "A valid IPv6 address.",
+                    "longDescription": "This property provides access to a static IPv6 address that is currently assigned on a network interface."
+                },
+                "PrefixLength": {
+                    "$ref": "#/definitions/PrefixLength",
+                    "readonly": true,
+                    "description": "The Prefix Length of this IPv6 address.",
+                    "longDescription": "Provides the IPv6 network prefix length in bits for this address."
+                }
+            },
+            "required": [
+                "Address",
+                "PrefixLength"
+            ],
+            "description": "This object represents a single IPv6 static address to be assigned on a network interface."
+        },
+        "IPv6Address":{
+            "type": "object",
+            "patternProperties": { 
+                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+                    "type": ["array", "boolean", "number", "null", "object", "string"],
+                    "description": "This property shall specify a valid odata or redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Oem": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0#/definitions/Oem"
                 },
                 "Address": {
                     "type": [
@@ -24,46 +58,24 @@
                     "longDescription": "This property lists an IPv6 address that is currently assigned on this interface."
                 },
                 "PrefixLength": {
-                    "$ref": "IPAddresses.1.0.0.json#PrefixLength",
+                    "$ref": "#/definitions/PrefixLength",
                     "readonly": true,
                     "description": "This is the IPv6 Address Prefix Length.",
                     "longDescription": "The value of this property shall be the IPv6 address prefix length for this interface."
                 },
                 "AddressOrigin": {
-                    "$ref": "IPAddresses.1.0.0.json#IPv6AddressOrigin",
+                    "$ref": "#/definitions/IPv6AddressOrigin",
                     "readonly": true,
                     "description": "This indicates how the address was determined.",
                     "longDescription": "The value of this property shall be the IPv6 address origin for this interface."
                 },
                 "AddressState": {
-                    "$ref": "IPAddresses.1.0.0.json#AddressState",
+                    "$ref": "#/definitions/AddressState",
                     "readonly": true,
                     "description": "The current state of this address as defined in RFC 4862.",
                     "longDescription": "Preferred and Deprecated states follow the definitions given RFC4862 Section 5.5.4. An address is in the Tentative state while undergoing Duplicate Address Detection (DAD) per RFC4862 Section 5.4.  The Failed state indicates a Static addresses which did not pass DAD.  A Static address in the Failed state is not in use on the network stack, and corrective action will be needed to remedy this condition."
                 }
             }
-        },
-        "SubnetMask":{
-            "type": "string",
-            "pattern": "^(?:[0-9]{1,3}\\.){3}[0-9]{1,3}$"
-        },
-        "AddressState":{
-            "type": "string",
-            "enum": [
-                "Preferred",
-                "Deprecated",
-                "Tentative",
-                "Failed"
-            ],
-            "enumDescriptions": {
-                "Preferred": "This address is currently within both it's valid and preferred lifetimes as defined in RFC 4862.",
-                "Deprecated": "This address is currently within it's valid lifetime, but is now outside of it's preferred lifetime as defined in RFC 4862.",
-                "Tentative": "This address is currently undergoing Duplicate Address Detection testing as defined in RFC 4862 section 5.4.",
-                "Failed": "This address has failed Duplicate Address Detection testing as defined in RFC 4862 section 5.4 and is not currently in use."
-            }
-        },
-        "PrefixLength":{
-            "type": "integer"
         },
         "IPv6AddressOrigin":{
             "type": "string",
@@ -84,83 +96,23 @@
                 "SLAAC": "Address is provided by a Stateless Address AutoConfiguration (SLAAC) service"
             }
         },
-        "IPv4Address":{
-            "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
-                    "type": ["array", "boolean", "integer", "number", "null", "object", "string"],
-                    "description": "This property shall specify a valid odata or redfish property."
-                }
-            },
-            "additionalProperties": false,
-            "properties": {
-                "Oem": {
-                    "$ref": "Resource.1.0.0.json#/definitions/Oem"
-                },
-                "Address": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "description": "This is the IPv4 Address.",
-                    "longDescription": "The value of this property shall be an IPv4 address assigned to this interface.  If DHCPv4 is enabled on the interface, this property becomes read-only.",
-                    "pattern": "^(?:[0-9]{1,3}\\.){3}[0-9]{1,3}$"
-                },
-                "SubnetMask": {
-                    "$ref": "IPAddresses.1.0.0.json#SubnetMask",
-                    "description": "This is the IPv4 Subnet mask.",
-                    "longDescription": "The value of this property shall be the IPv4 subnet mask for this address.  If DHCPv4 is enabled on the interface, this property becomes read-only.",
-                    "pattern": "^(?:[0-9]{1,3}\\.){3}[0-9]{1,3}$"
-                },
-                "AddressOrigin": {
-                    "$ref": "IPAddresses.1.0.0.json#IPv4AddressOrigin",
-                    "readonly": true,
-                    "description": "This indicates how the address was determined.",
-                    "longDescription": "The value of this property shall be the IP address origin for this network interface."
-                },
-                "Gateway": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "description": "This is the IPv4 gateway for this address.",
-                    "longDescription": "The value of this property shall be the IPv4 default gateway address for this interface. If DHCPv4 is enabled on the interface and is configured to set the IPv4 default gateway address, this property becomes read-only."
-                }
+        "AddressState":{
+            "type": "string",
+            "enum": [
+                "Preferred",
+                "Deprecated",
+                "Tentative",
+                "Failed"
+            ],
+            "enumDescriptions": {
+                "Preferred": "This address is currently within both it's valid and preferred lifetimes as defined in RFC 4862.",
+                "Deprecated": "This address is currently within it's valid lifetime, but is now outside of it's preferred lifetime as defined in RFC 4862.",
+                "Tentative": "This address is currently undergoing Duplicate Address Detection testing as defined in RFC 4862 section 5.4.",
+                "Failed": "This address has failed Duplicate Address Detection testing as defined in RFC 4862 section 5.4 and is not currently in use."
             }
         },
-        "IPv6StaticAddress":{
-            "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
-                    "type": ["array", "boolean", "integer", "number", "null", "object", "string"],
-                    "description": "This property shall specify a valid odata or redfish property."
-                }
-            },
-            "additionalProperties": false,
-            "properties": {
-                "Oem": {
-                    "$ref": "Resource.1.0.0.json#/definitions/Oem"
-                },
-                "Address": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "description": "A valid IPv6 address.",
-                    "longDescription": "This property provides access to a static IPv6 address that is currently assigned on a network interface."
-                },
-                "PrefixLength": {
-                    "$ref": "IPAddresses.1.0.0.json#PrefixLength",
-                    "readonly": true,
-                    "description": "The Prefix Length of this IPv6 address.",
-                    "longDescription": "Provides the IPv6 network prefix length in bits for this address."
-                }
-            },
-            "required": [
-                "Address",
-                "PrefixLength"
-            ],
-            "description": "This object represents a single IPv6 static address to be assigned on a network interface."
+        "PrefixLength":{
+            "type": "number"
         },
         "IPv4AddressOrigin":{
             "type": "string",
@@ -175,6 +127,54 @@
                 "DHCP": "Address is provided by a DHCP service",
                 "BOOTP": "TODO",
                 "IPv4LinkLocal": "TODO"
+            }
+        },
+        "SubnetMask":{
+            "type": "string",
+            "pattern": "^(?:[0-9]{1,3}\\.){3}[0-9]{1,3}$"
+        },
+        "IPv4Address":{
+            "type": "object",
+            "patternProperties": { 
+                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+                    "type": ["array", "boolean", "number", "null", "object", "string"],
+                    "description": "This property shall specify a valid odata or redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Oem": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0#/definitions/Oem"
+                },
+                "Address": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "This is the IPv4 Address.",
+                    "longDescription": "The value of this property shall be an IPv4 address assigned to this interface.  If DHCPv4 is enabled on the interface, this property becomes read-only.",
+                    "pattern": "^(?:[0-9]{1,3}\\.){3}[0-9]{1,3}$"
+                },
+                "SubnetMask": {
+                    "$ref": "#/definitions/SubnetMask",
+                    "description": "This is the IPv4 Subnet mask.",
+                    "longDescription": "The value of this property shall be the IPv4 subnet mask for this address.  If DHCPv4 is enabled on the interface, this property becomes read-only.",
+                    "pattern": "^(?:[0-9]{1,3}\\.){3}[0-9]{1,3}$"
+                },
+                "AddressOrigin": {
+                    "$ref": "#/definitions/IPv4AddressOrigin",
+                    "readonly": true,
+                    "description": "This indicates how the address was determined.",
+                    "longDescription": "The value of this property shall be the IP address origin for this network interface."
+                },
+                "Gateway": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "This is the IPv4 gateway for this address.",
+                    "longDescription": "The value of this property shall be the IPv4 default gateway address for this interface. If DHCPv4 is enabled on the interface and is configured to set the IPv4 default gateway address, this property becomes read-only."
+                }
             }
         }
     },

@@ -1,29 +1,6 @@
 {
     "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0",
     "title": "SerialInterfaceCollection.1.0.0",
-    "type": "object",
-    "patternProperties": { 
-        "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
-            "type": ["array", "boolean", "integer", "number", "null", "object", "string"],
-            "description": "This property shall specify a valid odata or redfish property."
-        }
-    },
-    "additionalProperties": false,
-    "properties": {
-        "@odata.context": {
-            "$ref": "odata.4.0.0.json#context"
-        },
-        "@odata.id": {
-            "$ref": "odata.4.0.0.json#id"
-        },
-        "@odata.type": {
-            "$ref": "odata.4.0.0.json#type"
-        },
-        "Links": {
-            "$ref": "SerialInterface.1.0.0.json#/definitions/Members",
-            "readonly": true,
-            "description": "Contains links to other resources that are related to this resource."
-        }
-    },
+    "$ref": "#/definitions/SerialInterfaceCollection",
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
 }

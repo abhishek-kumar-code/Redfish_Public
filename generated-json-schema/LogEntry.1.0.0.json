@@ -1,116 +1,16 @@
 {
     "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0",
     "title": "LogEntry.1.0.0",
-    "type": "object",
-    "patternProperties": { 
-        "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
-            "type": ["array", "boolean", "integer", "number", "null", "object", "string"],
-            "description": "This property shall specify a valid odata or redfish property."
-        }
-    },
-    "additionalProperties": false,
-    "properties": {
-        "@odata.context": {
-            "$ref": "odata.4.0.0.json#context"
-        },
-        "@odata.id": {
-            "$ref": "odata.4.0.0.json#id"
-        },
-        "@odata.type": {
-            "$ref": "odata.4.0.0.json#type"
-        },
-        "Oem": {
-            "$ref": "Resource.1.0.0.json#/definitions/Oem",
-            "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
-            "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
-        },
-        "Id": {
-            "$ref": "Resource.1.0.0.json#Id"
-        },
-        "Description": {
-            "$ref": "Resource.1.0.0.json#Description"
-        },
-        "Name": {
-            "$ref": "Resource.1.0.0.json#Name"
-        },
-        "Severity": {
-            "$ref": "LogEntry.1.0.0.json#EventSeverity",
-            "readonly": true,
-            "description": "This is the severity of the log entry.",
-            "longDescription": "The value of this property shall be the severity of the condition resulting in the log entry, as defined in the Status section of the Redfish specificaiton."
-        },
-        "Created": {
-            "type": "string",
-            "format": "date-time",
-            "readonly": true,
-            "description": "The time the log entry was created."
-        },
-        "EntryType": {
-            "$ref": "LogEntry.1.0.0.json#LogEntryType",
-            "readonly": true,
-            "description": "his is the type of log entry.",
-            "longDescription": "This property shall represent the type of LogEntry.  If the resource represents an IPMI SEL log entry, the value shall be SEL.  If the resource represents an Event log, the value shall be Event.  If the resource represents an OEM log format, the value shall be Oem."
-        },
-        "OemRecordFormat": {
-            "type": "string",
-            "readonly": true,
-            "description": "If the entry type is Oem, this will contain more information about the record format from the Oem.",
-            "longDescription": "The value of this property shall represent the OEM specific format of the Entry.  This property shall be required if the value of EntryType is Oem"
-        },
-        "EntryCode": {
-            "$ref": "LogEntry.1.0.0.json#LogEntryCode",
-            "readonly": true,
-            "description": "If the EntryType is SEL, this will have the entry code for the log entry.",
-            "longDescription": "This property shall be present if the EntryType value is SEL.  These enumerations are the values from table 42-1 and 42-2 of the IPMI specification"
-        },
-        "SensorType": {
-            "$ref": "LogEntry.1.0.0.json#SensorType",
-            "readonly": true,
-            "description": "If the EntryType is SEL, this will have the sensor type that the log entry pertains to.",
-            "longDescription": "This property shall be present if the EntryType value is SEL."
-        },
-        "SensorNumber": {
-            "type": "integer",
-            "readonly": true,
-            "description": "This property decodes from EntryType:  If it is SEL, it is the sensor number; if Event then the count of events.  Otherwise, it is Oem specific.",
-            "longDescription": "The value of this property shall be the EntityInstance from IPMI spec if EntryType is SEL, the count of events if EntryType is Event and OEM Specific if the EntryType is OEM."
-        },
-        "Message": {
-            "type": "string",
-            "readonly": true,
-            "description": "This property decodes from EntryType:  If it is Event then it is a message string.  Otherwise, it is SEL or Oem specific.  In most cases, this will be the actual Log Entry.",
-            "longDescription": "The value of this property shall be the Message property of the event if the EntryType is Event, the Description if EntryType is SEL and OEM Specific if the EntryType is OEM."
-        },
-        "MessageId": {
-            "type": "string",
-            "readonly": true,
-            "description": "This property decodes from EntryType:  If it is Event then it is a message id.  Otherwise, it is SEL or Oem specific.  This value is only used for registries - for more information, see the specification.",
-            "longDescription": "The value of this property shall the MessageID property of the event if the EntryType is Event, the EventData if EntryType is SEL and OEM Specific if the EntryType is OEM.  The format of this property shall be as defined in the Redfish specification."
-        },
-        "MessageArgs": {
-            "type": "array",
-            "items": {
-                "type": [
-                    "string",
-                    "null"
-                ]
-            },
-            "readonly": true,
-            "description": "The values of this property shall be any arguments for the message.",
-            "longDescription": "This contains message arguments to be substituted into the message included or in the message looked up via a registry."
-        },
-        "Links": {
-            "$ref": "LogEntry.1.0.0.json#/definitions/Links",
-            "readonly": true,
-            "description": "The links object contains the links to other resources that are related to this resource."
-        }
-    },
-    "required": [
-        "EntryType"
-    ],
-    "description": "This resource represents the log record format for logs.  It is designed to be used for SEL logs from IPMI as well as Event Logs and OEM specific logs.  The EntryType field indicates the type of log and there are other properties dependent on it's value.",
-    "longDescription": "This resource shall represent the log format for log services in a Redfish implementation.",
+    "$ref": "#/definitions/LogEntry",
     "definitions":{
+        "EventSeverity":{
+            "type": "string",
+            "enum": [
+                "OK",
+                "Warning",
+                "Critical"
+            ]
+        },
         "SensorType":{
             "type": "string",
             "enum": [
@@ -159,36 +59,28 @@
                 "FRUState"
             ]
         },
-        "EventSeverity":{
-            "type": "string",
-            "enum": [
-                "OK",
-                "Warning",
-                "Critical"
-            ]
-        },
         "Links":{
             "type": "object",
             "patternProperties": { 
                 "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
-                    "type": ["array", "boolean", "integer", "number", "null", "object", "string"],
+                    "type": ["array", "boolean", "number", "null", "object", "string"],
                     "description": "This property shall specify a valid odata or redfish property."
                 }
             },
             "additionalProperties": false,
             "properties": {
                 "Oem": {
-                    "$ref": "Resource.1.0.0.json#/definitions/Oem",
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0#/definitions/Oem",
                     "description": "Oem extension object.",
                     "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
                 },
                 "OriginOfCondition": {
-                    "type": "object",
-                    "properties": {
-                        "@odata.id" :{
-                            "$ref": "odata.4.0.0.json#id"
-                        }
-                    },
+                        "type": "object",
+                        "properties": {
+                            "@odata.id" :{
+                                "$ref": "odata.4.0.0.json#id"
+                            }
+                        },
                     "readonly": true,
                     "description": "This is the URI of the resource that caused the log entry",
                     "longDescription": "The value of this property shall be an href that references the resource for which the log is associated."
@@ -266,6 +158,126 @@
                 "SEL",
                 "Oem"
             ]
+        },
+        "LogEntry":{
+            "type": "object",
+            "patternProperties": { 
+                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+                    "type": ["array", "boolean", "number", "null", "object", "string"],
+                    "description": "This property shall specify a valid odata or redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0#/definitions/context"
+                },
+                "@odata.id": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0#/definitions/type"
+                },
+                "Oem": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0#/definitions/Oem",
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+                },
+                "Id": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0#/definitions/Id"
+                },
+                "Description": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0#/definitions/Description"
+                },
+                "Name": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0#/definitions/Name"
+                },
+                "Severity": {
+                    "$ref": "#/definitions/EventSeverity",
+                    "readonly": true,
+                    "description": "This is the severity of the log entry.",
+                    "longDescription": "The value of this property shall be the severity of the condition resulting in the log entry, as defined in the Status section of the Redfish specificaiton."
+                },
+                "Created": {
+                    "type": "string",
+                    "format": "date-time",
+                    "readonly": true,
+                    "description": "The time the log entry was created."
+                },
+                "EntryType": {
+                    "$ref": "#/definitions/LogEntryType",
+                    "readonly": true,
+                    "description": "his is the type of log entry.",
+                    "longDescription": "This property shall represent the type of LogEntry.  If the resource represents an IPMI SEL log entry, the value shall be SEL.  If the resource represents an Event log, the value shall be Event.  If the resource represents an OEM log format, the value shall be Oem."
+                },
+                "OemRecordFormat": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "If the entry type is Oem, this will contain more information about the record format from the Oem.",
+                    "longDescription": "The value of this property shall represent the OEM specific format of the Entry.  This property shall be required if the value of EntryType is Oem"
+                },
+                "EntryCode": {
+                    "$ref": "#/definitions/LogEntryCode",
+                    "readonly": true,
+                    "description": "If the EntryType is SEL, this will have the entry code for the log entry.",
+                    "longDescription": "This property shall be present if the EntryType value is SEL.  These enumerations are the values from table 42-1 and 42-2 of the IPMI specification"
+                },
+                "SensorType": {
+                    "$ref": "#/definitions/SensorType",
+                    "readonly": true,
+                    "description": "If the EntryType is SEL, this will have the sensor type that the log entry pertains to.",
+                    "longDescription": "This property shall be present if the EntryType value is SEL."
+                },
+                "SensorNumber": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "This property decodes from EntryType:  If it is SEL, it is the sensor number; if Event then the count of events.  Otherwise, it is Oem specific.",
+                    "longDescription": "The value of this property shall be the EntityInstance from IPMI spec if EntryType is SEL, the count of events if EntryType is Event and OEM Specific if the EntryType is OEM."
+                },
+                "Message": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "This property decodes from EntryType:  If it is Event then it is a message string.  Otherwise, it is SEL or Oem specific.  In most cases, this will be the actual Log Entry.",
+                    "longDescription": "The value of this property shall be the Message property of the event if the EntryType is Event, the Description if EntryType is SEL and OEM Specific if the EntryType is OEM."
+                },
+                "MessageId": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "This property decodes from EntryType:  If it is Event then it is a message id.  Otherwise, it is SEL or Oem specific.  This value is only used for registries - for more information, see the specification.",
+                    "longDescription": "The value of this property shall the MessageID property of the event if the EntryType is Event, the EventData if EntryType is SEL and OEM Specific if the EntryType is OEM.  The format of this property shall be as defined in the Redfish specification."
+                },
+                "MessageArgs": {
+                    "type": "array",
+                    "items": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "readonly": true,
+                    "description": "The values of this property shall be any arguments for the message.",
+                    "longDescription": "This contains message arguments to be substituted into the message included or in the message looked up via a registry."
+                },
+                "Links": {
+                    "$ref": "#/definitions/Links",
+                    "readonly": true,
+                    "description": "The links object contains the links to other resources that are related to this resource."
+                }
+            },
+            "required": [
+                "EntryType"
+            ],
+            "description": "This resource represents the log record format for logs.  It is designed to be used for SEL logs from IPMI as well as Event Logs and OEM specific logs.  The EntryType field indicates the type of log and there are other properties dependent on it's value.",
+            "longDescription": "This resource shall represent the log format for log services in a Redfish implementation."
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
