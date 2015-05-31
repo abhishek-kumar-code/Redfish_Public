@@ -25,9 +25,10 @@ import cgitb
 import sys
 import xml.etree.ElementTree as ET
 import Utilities as UT
+import os
 
 # Enable the printing of error information
-cgitb.enable()
+#cgitb.enable()
 enable_debugging = False
 
 if enable_debugging == True:
@@ -69,7 +70,6 @@ class JsonSchemaGenerator:
     def __init__(self, schema_version_value):
 
         JsonSchemaGenerator.schema_version = schema_version_value
-
 
     ########################################################################################################
     # Name: get_ref_value_for_type                                                                         #
@@ -936,12 +936,7 @@ class JsonSchemaGenerator:
 
         for reference in root.iter("{http://docs.oasis-open.org/odata/ns/edmx}Reference"):
             refuri = reference.attrib["Uri"]
-
-            if enable_debugging == True:
-                # This is for compatibility with the mockup and must be removed for
-                # the convertor to function against a real service hosting CSDL metadata
-                refuri = "http://localhost:9080/rest/v1/" + refuri[refuri.find("//") + 2:]
-        
+			      
             if not refuri in JsonSchemaGenerator.parsed:
                 typetable = dict(list(typetable.items()) + list(JsonSchemaGenerator.generate_typetable(refuri, directory, True).items()))
     
@@ -1217,6 +1212,8 @@ class JsonSchemaGenerator:
                     fileoutput += UT.Utilities.indent(depth) + "}\n"
                     screenoutput += fileoutput
                     filename = result + ".json"
+#fix this for web use
+                    filename="json" + "\\" + filename
                     file = open(filename, "wb")
                     file.write(bytes(fileoutput, 'utf-8'))
                     file.close()
@@ -1230,6 +1227,7 @@ class JsonSchemaGenerator:
     #  Also reports an error if the URL is not formed correctly.                                      #
     ###################################################################################################
     @staticmethod
+    #fix this - get the namespace and alias from the file
     def parse_url(url):
         result = {}
         namespaceStart = -1
@@ -1267,8 +1265,15 @@ class JsonSchemaGenerator:
 
         elif url.endswith("odata"):
             result.update({'generateOdataFile' : "True"})        
-        else:
-            incorrect_url = True 
+
+        #hack to deal emulate parse logic -- todo: fix parse logic
+        elif url.endswith(".metadata"):
+            prefixuri = 'http://schemas.dmtf.org/redfish/v1/'
+            lastindex = url.find(".metadata")
+            filename=url[:lastindex]
+            result.update({'filename' : prefixuri + filename})
+            result.update({'prefixuri' : prefixuri})
+            result.update({'namespace' : filename})
 
         if incorrect_url == True:
             result.update({'error' : 'Incorrect URL - Please specify a URL like:\n 1. http://<filename>#<namespace> or \n 2. http://<filename>#<datatype>\n e.g. http://localhost:9080/rest/v1/schemas.dmtf.org/redfish/v1/Chassis#Chassis.Chassis'})
@@ -1320,90 +1325,106 @@ def main():
             url = form['url'].value
 
     if len(url) > 0:
-        # Parse the URL and extract input values from the URL
-        url_inputs = JsonSchemaGenerator.parse_url(url)
-       
-        typename = ''
-        namespace = ''
-        filename = ''
-        prefixuri = ''
-        error = ''
-        specialodatatype = ''
-        generateOdataFile = ''
-        screenoutput = ''
-        depth = 0
-        
-        if 'error' in url_inputs:
-            error = url_inputs['error']
-            result = UT.Utilities.show_interactive_mode(error)
-        else:
-            if 'filename' in url_inputs:
-                filename = url_inputs['filename']
-            
-            if 'namespace' in url_inputs:
-                namespace = url_inputs['namespace']
+        return generate_json(url, directory)
+		                
+    elif (directory != ""):
+         for file in os.listdir(directory):
+             if ( file.endswith(".metadata") ):
+               print("generating JSON for: " + file)
+               JsonSchemaGenerator.parsed = []
+               generate_json(file, directory)          
 
-            if 'typename' in url_inputs:
-                typename = url_inputs['typename']
-
-            if 'prefixuri' in url_inputs:
-                prefixuri = url_inputs['prefixuri']
-
-            if 'generateOdataFile' in url_inputs:
-                generateOdataFile = url_inputs['generateOdataFile']
-
-            # create a dictionary from type names to type data
-            
-            jsonresults = {}
-            
-            current_schema = ''
-            # We support three scenarios:
-            # 1. Filename ending with odata is provided - We generate odata.4.0.0.json 
-            # 2. Filename and Typename provided - service will convert the specific type in the file.
-            # 3. FileName and Namespace provided - service will convert only types in given namespace.
-
-            if ( (not ( generateOdataFile is None )) and ( generateOdataFile != '') and (generateOdataFile == "True")):
-                # If odata.json file is to be generated
-                jsonresult = JsonSchemaGenerator.generate_odata_json_file(depth+1)
-                jsonresults["odata.4.0.0"] = jsonresult
-
-            elif len(typename) > 0:
-                # Create JSON schema for a specific type
-                schema_version_value = JsonSchemaGenerator.get_schemaversion_from_typename(typename)
-
-                # Create an object of JsonSchemaGenerator
-                current_schema = JsonSchemaGenerator(schema_version_value)
-                
-                # Create the type table
-                typetable = JsonSchemaGenerator.generate_typetable(filename, directory, False)
-                
-                # Generate JSON for type
-                jsonresult = current_schema.generate_json_for_type(typetable, typename, depth+1, "", prefixuri, False, False)
-                targetfilename = typename + "_type"
-                jsonresults[targetfilename] = jsonresult
-
-            else:
-                # Create a JSON schema representation of the indicated file/namespace
-                schema_version_value = JsonSchemaGenerator.get_schemaversion_from_namespace(namespace)
-                
-                # Create an object of JsonSchemaGenerator
-                current_schema = JsonSchemaGenerator(schema_version_value)
-                
-                # Create the type table
-                typetable = JsonSchemaGenerator.generate_typetable(filename, directory, False)
-                
-                # Get Json results
-                jsonresults = current_schema.generate_json_for_file(typetable, depth+1, "", filename, namespace, prefixuri, False)
-
-            # Generate the files with the results and then get the screen output
-            screenoutput = JsonSchemaGenerator.geneate_json_files(jsonresults)
-                
     else:
-        result = UT.Utilities.show_interactive_mode("Please specify URL as part of the input")
-        return result
+         result = UT.Utilities.show_interactive_mode("Please specify URL as part of the input")
+         return result
 
+
+#################################################################
+# Name: generate_json                                           #
+# Description:                                                  #
+#  Generate JSON from inputs.                                   # 
+#################################################################
+def generate_json(url, directory):
+
+    # Parse the URL and extract input values from the URL
+    url_inputs = JsonSchemaGenerator.parse_url(url)
+       
+    typename = ''
+    namespace = ''
+    filename = ''
+    prefixuri = ''
+    error = ''
+    specialodatatype = ''
+    generateOdataFile = ''
+    screenoutput = ''
+    depth = 0
+        
+    if 'error' in url_inputs:
+        error = url_inputs['error']
+        result = UT.Utilities.show_interactive_mode(error)
+    else:
+        if 'filename' in url_inputs:
+            filename = url_inputs['filename']
+            
+        if 'namespace' in url_inputs:
+            namespace = url_inputs['namespace']
+
+        if 'typename' in url_inputs:
+            typename = url_inputs['typename']
+
+        if 'prefixuri' in url_inputs:
+            prefixuri = url_inputs['prefixuri']
+
+        if 'generateOdataFile' in url_inputs:
+            generateOdataFile = url_inputs['generateOdataFile']
+
+        # create a dictionary from type names to type data
+            
+        jsonresults = {}
+            
+        current_schema = ''
+        # We support three scenarios:
+        # 1. Filename ending with odata is provided - We generate odata.4.0.0.json 
+        # 2. Filename and Typename provided - service will convert the specific type in the file.
+        # 3. FileName and Namespace provided - service will convert only types in given namespace.
+
+        if ( (not ( generateOdataFile is None )) and ( generateOdataFile != '') and (generateOdataFile == "True")):
+            # If odata.json file is to be generated
+            jsonresult = JsonSchemaGenerator.generate_odata_json_file(depth+1)
+            jsonresults["odata.4.0.0"] = jsonresult
+
+        elif len(typename) > 0:
+            # Create JSON schema for a specific type
+            schema_version_value = JsonSchemaGenerator.get_schemaversion_from_typename(typename)
+
+            # Create an object of JsonSchemaGenerator
+            current_schema = JsonSchemaGenerator(schema_version_value)
+                
+            # Create the type table
+            typetable = JsonSchemaGenerator.generate_typetable(filename, directory, False)
+                
+            # Generate JSON for type
+            jsonresult = current_schema.generate_json_for_type(typetable, typename, depth+1, "", prefixuri, False, False)
+            targetfilename = typename + "_type"
+            jsonresults[targetfilename] = jsonresult
+
+        else:
+            # Create a JSON schema representation of the indicated file/namespace
+            schema_version_value = JsonSchemaGenerator.get_schemaversion_from_namespace(namespace)
+                
+            # Create an object of JsonSchemaGenerator
+            current_schema = JsonSchemaGenerator(schema_version_value)
+                
+            # Create the type table
+            typetable = JsonSchemaGenerator.generate_typetable(filename, directory, False)
+                
+            # Get Json results
+            jsonresults = current_schema.generate_json_for_file(typetable, depth+1, "", filename, namespace, prefixuri, False)
+
+        # Generate the files with the results and then get the screen output
+        screenoutput = JsonSchemaGenerator.geneate_json_files(jsonresults)
+                
     return screenoutput
-
 
 
 if __name__ == "__main__":

@@ -118,11 +118,15 @@ class Utilities:
     def open_as_file(url, directory):
 
         try:
-            fileLocation = url.rfind("/")
-            filename=url[fileLocation + 1:] + ".metadata"
-            if len(directory) > 0 :
+            filelocation = url.rfind("/")
+            if(filelocation > 0):
+                filename=url[filelocation+1:] + ".metadata"
+            else:
+                filename=url
+
+            if(len(directory) > 0 ):
                 filename = directory + "\\" + filename
-				
+
             metafile = open(filename)
             decoded = metafile.read()
 
