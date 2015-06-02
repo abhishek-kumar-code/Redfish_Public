@@ -59,9 +59,6 @@
         <Property Name="Links" Type="AccountService.Links" Nullable="false">
           <Annotation Term="OData.Description" String="The links object contains the links to other resources that are related to this resource."/>
         </Property>        
-      </EntityType>
-
-      <ComplexType Name="Links" BaseType="Resource.Links">
         <NavigationProperty Name="Accounts" Type="ManagerAccount.ManagerAccountCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Link to a collection of ManagerAccounts"/>
@@ -74,8 +71,7 @@
           <Annotation Term="OData.LongDescription" String="This property shall contain the link to a collection of Roles."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-      </ComplexType>
-      
+      </EntityType>
     </Schema>
   </edmx:DataServices>
 </edmx:Edmx>
