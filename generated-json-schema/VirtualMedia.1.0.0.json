@@ -3,21 +3,6 @@
     "title": "VirtualMedia.1.0.0",
     "$ref": "#/definitions/VirtualMedia",
     "definitions":{
-        "ConnectedVia":{
-            "type": "string",
-            "enum": [
-                "NotConnected",
-                "URI",
-                "Applet",
-                "Oem"
-            ],
-            "enumDescriptions": {
-                "NotConnected": "No current connection",
-                "URI": "Connected to a URI location",
-                "Applet": "Connected to a client application",
-                "Oem": "Connected via an OEM-defined method"
-            }
-        },
         "VirtualMedia":{
             "type": "object",
             "patternProperties": { 
@@ -117,6 +102,21 @@
             },
             "description": "This is the schema definition for the Virtual Media Service.",
             "longDescription": "This resource shall be used to represent a virtual media service for a Redfish implementation."
+        },
+        "ConnectedVia":{
+            "type": "string",
+            "enum": [
+                "NotConnected",
+                "URI",
+                "Applet",
+                "Oem"
+            ],
+            "enumDescriptions": {
+                "NotConnected": "No current connection",
+                "URI": "Connected to a URI location",
+                "Applet": "Connected to a client application",
+                "Oem": "Connected via an OEM-defined method"
+            }
         },
         "MediaType":{
             "type": "string",

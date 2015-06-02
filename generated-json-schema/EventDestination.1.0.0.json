@@ -21,6 +21,12 @@
             },
             "description": "The value of the HTTP header is the property value.  The header name is the property name."
         },
+        "EventDestinationProtocol":{
+            "type": "string",
+            "enum": [
+                "Redfish"
+            ]
+        },
         "TTLUnits":{
             "type": "string",
             "enum": [
@@ -129,12 +135,6 @@
                     "longDescription": "This property shall contain the protocol type that the event will use for sending the event to the destination.  A value of Redfish shall be used to indicate that the event type shall adhere to that defined in the Redfish specification."
                 }
             }
-        },
-        "EventDestinationProtocol":{
-            "type": "string",
-            "enum": [
-                "Redfish"
-            ]
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."

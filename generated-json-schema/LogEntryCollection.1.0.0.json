@@ -36,11 +36,17 @@
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
+                "Members@odata.count": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0#/definitions/count"
+                },
                 "Members": {
                     "type": "array",
                     "items": {
                         "$ref": "http://schemas.dmtf.org/redfish/v1/LogEntry.1.0.0#/definitions/LogEntry"
-                    },
+                    }, 
+                "Members@odata.count": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0#/definitions/count"
+                },
                     "readonly": true,
                     "description": "Contains the members of this collection."
                 }

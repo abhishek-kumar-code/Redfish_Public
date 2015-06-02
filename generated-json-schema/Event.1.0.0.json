@@ -93,6 +93,23 @@
                 "MessageId"
             ]
         },
+        "EventType":{
+            "type": "string",
+            "enum": [
+                "StatusChange",
+                "ResourceUpdated",
+                "ResourceAdded",
+                "ResourceRemoved",
+                "Alert"
+            ],
+            "enumDescriptions": {
+                "StatusChange": "The status of this resource has changed",
+                "ResourceUpdated": "The value of this resource has been updated",
+                "ResourceAdded": "A resource has been added",
+                "ResourceRemoved": "A resource has been removed",
+                "Alert": "A condition exists which requires attention"
+            }
+        },
         "Event":{
             "type": "object",
             "patternProperties": { 
@@ -126,11 +143,17 @@
                 "Name": {
                     "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0#/definitions/Name"
                 },
+                "Events@odata.count": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0#/definitions/count"
+                },
                 "Events": {
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/EventRecord"
-                    },
+                    }, 
+                "Events@odata.count": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0#/definitions/count"
+                },
                     "description": "Each event in this array has a set of properties that describe the event.  Since this is an array, more than one event can be sent simultaneously."
                 }
             },
@@ -139,23 +162,6 @@
             ],
             "description": "This is the schema definition for Events.  It represents the properties for the events themselves and not subscriptions or any other resource.",
             "longDescription": "This resource shall be used to represent an event for a Redfish implementation."
-        },
-        "EventType":{
-            "type": "string",
-            "enum": [
-                "StatusChange",
-                "ResourceUpdated",
-                "ResourceAdded",
-                "ResourceRemoved",
-                "Alert"
-            ],
-            "enumDescriptions": {
-                "StatusChange": "The status of this resource has changed",
-                "ResourceUpdated": "The value of this resource has been updated",
-                "ResourceAdded": "A resource has been added",
-                "ResourceRemoved": "A resource has been removed",
-                "Alert": "A condition exists which requires attention"
-            }
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."

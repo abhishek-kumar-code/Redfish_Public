@@ -160,23 +160,6 @@
             },
             "description": "This is the schema definition for the Processor resource.  It represents the properties of a processor attached to a System."
         },
-        "ProcessorArchitecture":{
-            "type": "string",
-            "enum": [
-                "x86",
-                "IA-64",
-                "ARM",
-                "MIPS",
-                "OEM"
-            ],
-            "enumDescriptions": {
-                "x86": "x86 or x86-64",
-                "IA-64": "Intel Itanium",
-                "ARM": "ARM",
-                "MIPS": "MIPS",
-                "OEM": "OEM-defined"
-            }
-        },
         "ProcessorID":{
             "type": "object",
             "patternProperties": { 
@@ -241,6 +224,23 @@
                     "description": "The Microcode Information for this processor",
                     "longDescription": "This property shall indicate the Microcode Information as provided by the manufacturer of this processor."
                 }
+            }
+        },
+        "ProcessorArchitecture":{
+            "type": "string",
+            "enum": [
+                "x86",
+                "IA-64",
+                "ARM",
+                "MIPS",
+                "OEM"
+            ],
+            "enumDescriptions": {
+                "x86": "x86 or x86-64",
+                "IA-64": "Intel Itanium",
+                "ARM": "ARM",
+                "MIPS": "MIPS",
+                "OEM": "OEM-defined"
             }
         }
     },

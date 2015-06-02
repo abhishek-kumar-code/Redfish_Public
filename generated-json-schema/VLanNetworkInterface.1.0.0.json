@@ -3,6 +3,9 @@
     "title": "VLanNetworkInterface.1.0.0",
     "$ref": "#/definitions/VLanNetworkInterface",
     "definitions":{
+        "VLANId":{
+            "type": "number"
+        },
         "VLAN":{
             "type": "object",
             "patternProperties": { 
@@ -27,9 +30,6 @@
                     "longDescription": "The value of this property shall be used to indicate the VLAN identifier for this VLAN."
                 }
             }
-        },
-        "VLANId":{
-            "type": "number"
         },
         "VLanNetworkInterface":{
             "type": "object",

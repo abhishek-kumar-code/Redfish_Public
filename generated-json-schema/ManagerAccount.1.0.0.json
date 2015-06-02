@@ -3,34 +3,6 @@
     "title": "ManagerAccount.1.0.0",
     "$ref": "#/definitions/ManagerAccount",
     "definitions":{
-        "Links":{
-            "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
-                    "description": "This property shall specify a valid odata or redfish property."
-                }
-            },
-            "additionalProperties": false,
-            "properties": {
-                "Oem": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0#/definitions/Oem",
-                    "description": "Oem extension object.",
-                    "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
-                },
-                "Role": {
-                        "type": "object",
-                        "properties": {
-                            "@odata.id" :{
-                                "$ref": "odata.4.0.0.json#id"
-                            }
-                        },
-                    "readonly": true,
-                    "description": "A reference to the Role object defining Privileges for this account--returned when the resource is read. The ID of the role is the same as property RoleId.",
-                    "longDescription": "The value of this property shall be a link to a Role object instance, and should reference the object identified by property RoleId."
-                }
-            }
-        },
         "ManagerAccountCollection":{
             "type": "object",
             "patternProperties": { 
@@ -141,6 +113,34 @@
             "description": "This schema defines a user account to be used in conjunction with a manager.  This will affect the Redfish service connection if this manager is responsible for the Redfish service.",
             "longDescription": "This resource shall be used to represent resources that represent the user accounts for the manager."
         },
+        "Links":{
+            "type": "object",
+            "patternProperties": { 
+                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+                    "type": ["array", "boolean", "number", "null", "object", "string"],
+                    "description": "This property shall specify a valid odata or redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Oem": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0#/definitions/Oem",
+                    "description": "Oem extension object.",
+                    "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
+                },
+                "Role": {
+                        "type": "object",
+                        "properties": {
+                            "@odata.id" :{
+                                "$ref": "odata.4.0.0.json#id"
+                            }
+                        },
+                    "readonly": true,
+                    "description": "A reference to the Role object defining Privileges for this account--returned when the resource is read. The ID of the role is the same as property RoleId.",
+                    "longDescription": "The value of this property shall be a link to a Role object instance, and should reference the object identified by property RoleId."
+                }
+            }
+        },
         "Members":{
             "type": "object",
             "patternProperties": { 
@@ -151,6 +151,9 @@
             },
             "additionalProperties": false,
             "properties": {
+                "Members@odata.count": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0#/definitions/count"
+                },
                 "Members": {
                     "type": "array",
                     "items": {

@@ -3,17 +3,6 @@
     "title": "TaskService.1.0.0",
     "$ref": "#/definitions/TaskService",
     "definitions":{
-        "OverWritePolicy":{
-            "type": "string",
-            "enum": [
-                "Manual",
-                "Oldest"
-            ],
-            "enumDescriptions": {
-                "Manual": "Completed tasks are not automatically overwritten",
-                "Oldest": "Oldest completed tasks are overwritten"
-            }
-        },
         "TaskService":{
             "type": "object",
             "patternProperties": { 
@@ -102,6 +91,9 @@
                     "description": "Oem extension object.",
                     "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
                 },
+                "Tasks@odata.count": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0#/definitions/count"
+                },
                 "Tasks": {
                     "type": "array",
                     "items": {
@@ -116,6 +108,17 @@
                     "description": "References to the Tasks collection.",
                     "longDescription": "The value of this property shall be a link to a collection of Tasks."
                 }
+            }
+        },
+        "OverWritePolicy":{
+            "type": "string",
+            "enum": [
+                "Manual",
+                "Oldest"
+            ],
+            "enumDescriptions": {
+                "Manual": "Completed tasks are not automatically overwritten",
+                "Oldest": "Oldest completed tasks are overwritten"
             }
         }
     },

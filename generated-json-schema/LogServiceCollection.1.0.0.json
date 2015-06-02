@@ -53,6 +53,9 @@
             },
             "additionalProperties": false,
             "properties": {
+                "Members@odata.count": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0#/definitions/count"
+                },
                 "Members": {
                     "type": "array",
                     "items": {
