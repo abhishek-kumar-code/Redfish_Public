@@ -42,6 +42,10 @@
           <Annotation Name="OData.Description" String="Used to provide suggestions on how to resolve the situation that caused the error."/>
           <Annotation Name="OData.LongDescription" String="This property shall contain an override of the Resolution of the message in message registry, if present."/>
         </Property>
+        <Property Name="Oem" Type="Resource.Oem">
+          <Annotation Term="OData.Description" String="Oem extension object."/>
+          <Annotation Term="OData.LongDescription" String="This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
+        </Property>
       </ComplexType>
 
     </Schema>
