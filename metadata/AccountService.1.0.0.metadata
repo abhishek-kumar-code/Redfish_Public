@@ -34,8 +34,14 @@
         </Property>
         <Property Name="MinPasswordLength" Type="Edm.Int16" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="This is the minumum password length for this service."/>
+          <Annotation Term="OData.Description" String="This is the minimum password length for this service."/>
           <Annotation Term="OData.LongDescription" String="This property shall reference the minimum password length that the implementation will allow a password to be set to."/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+        </Property>
+        <Property Name="MaxPasswordLength" Type="Edm.Int16" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="This is the maximum password length for this service."/>
+          <Annotation Term="OData.LongDescription" String="This property shall reference the maximum password length that the implementation will allow a password to be set to."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
         </Property>
         <Property Name="AccountLockoutThreshold" Type="Edm.Int16" Nullable="true">

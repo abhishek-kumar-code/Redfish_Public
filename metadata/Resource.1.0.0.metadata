@@ -174,7 +174,7 @@
           <Annotation Term="OData.Description" String="Perform an immediate (non-graceful) shutdown, followed by a restart of the system"/>
         </Member>
         <Member Name="Nmi">
-          <Annotation Term="OData.Description" String="Generate a Non-Maskable Interrupt to cause an immediate system halt"/>
+          <Annotation Term="OData.Description" String="Generate a Diagnostic Interrupt (usually an NMI on x86 systems) to cease normal operations, perform diagnostic actions and typically halt the system."/>
         </Member>
         <Member Name="ForceOn">
           <Annotation Term="OData.Description" String="Turn the system on immediately"/>
