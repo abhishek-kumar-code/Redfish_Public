@@ -15,21 +15,12 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventDestinationCollection.1.0.0" Alias="EventDestinationCollection">
 
       <EntityType Name="EventDestinationCollection" BaseType="Resource.ResourceCollection">
-        <Property Name="Links" Type="EventDestination.Members">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="Contains links to other resources that are related to this resource."/>
-        </Property>
-      </EntityType>
-
-      <ComplexType Name="Members">
-        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
         <NavigationProperty Name="Members" Type="Collection(EventDestination.EventDestination)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Contains the members of this collection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-      </ComplexType>
-      
+      </EntityType>
     </Schema>
   </edmx:DataServices>
 </edmx:Edmx>
