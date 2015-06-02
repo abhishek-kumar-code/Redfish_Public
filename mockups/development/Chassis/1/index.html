@@ -1,5 +1,5 @@
 {
-    "@Redfish.Copyright":"Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@Redfish.Copyright": "Copyright Â© 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#Chassis/Links/Members/$entity",
     "@odata.id": "/redfish/v1/Chassis/1",
     "@odata.type": "#Chassis.1.00.0.Chassis",
@@ -16,6 +16,12 @@
         "State": "Enabled",
         "Health": "OK"
     },
+    "Thermal": {
+        "@odata.id": "/redfish/v1/Chassis/1/Thermal"
+    },
+    "Power": {
+        "@odata.id": "/redfish/v1/Chassis/1/Power"
+    },
     "Links": {
         "ComputerSystems": [
             {
@@ -30,12 +36,6 @@
                 "@odata.id": "/redfish/v1/Managers/1"
             }
         ],
-        "Thermal": {
-            "@odata.id": "/redfish/v1/Chassis/1/Thermal"
-        },
-        "Power": {
-            "@odata.id": "/redfish/v1/Chassis/1/Power"
-        },
         "Oem": {}
     },
     "Oem": {}

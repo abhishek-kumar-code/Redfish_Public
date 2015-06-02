@@ -45,10 +45,12 @@
           <Annotation Term="OData.LongDescription" String="The value is property shall represent the offset from UTC time that the current value of DataTime property contains."/>
           <Annotation Term="Validation.Pattern" String="([-+][0-1][0-9]:[0-5][0-9])"/>
         </Property>
-        <Property Name="Links" Type="LogService.Links" Nullable="false">
+        <NavigationProperty Name="Entries" Type="Collection(LogEntry.LogEntry)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="The links object contains the links to other resources that are related to this resource."/>
-        </Property>
+          <Annotation Term="OData.Description" String="References to the log entry collection."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall reference a collection of LogEntry resources."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>        
         <Property Name="Actions" Type="LogService.Actions" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The Actions object contains the available custom actions on this resource."/>
@@ -63,15 +65,6 @@
       
       <ComplexType Name="OemActions">
         <Annotation Term="OData.AdditionalProperties" Bool="True"/>
-      </ComplexType>
-      
-      <ComplexType Name="Links" BaseType="Resource.Links">
-        <NavigationProperty Name="Entries" Type="Collection(LogEntry.LogEntry)">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="References to the log entry collection."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall reference a collection of LogEntry resources."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>
       </ComplexType>
 
       <EnumType Name="OverWritePolicy">
