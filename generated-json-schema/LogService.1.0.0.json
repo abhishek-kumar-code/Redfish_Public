@@ -1,87 +1,139 @@
 {
     "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0",
     "title": "LogService.1.0.0",
-    "type": "object",
-    "patternProperties": { 
-        "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
-            "type": ["array", "boolean", "integer", "number", "null", "object", "string"],
-            "description": "This property shall specify a valid odata or redfish property."
-        }
-    },
-    "additionalProperties": false,
-    "properties": {
-        "@odata.context": {
-            "$ref": "odata.4.0.0.json#context"
-        },
-        "@odata.id": {
-            "$ref": "odata.4.0.0.json#id"
-        },
-        "@odata.type": {
-            "$ref": "odata.4.0.0.json#type"
-        },
-        "Oem": {
-            "$ref": "Resource.1.0.0.json#/definitions/Oem",
-            "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
-            "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
-        },
-        "Id": {
-            "$ref": "Resource.1.0.0.json#Id"
-        },
-        "Description": {
-            "$ref": "Resource.1.0.0.json#Description"
-        },
-        "Name": {
-            "$ref": "Resource.1.0.0.json#Name"
-        },
-        "MaxNumberOfRecords": {
-            "type": "integer",
-            "readonly": true,
-            "description": "The maximum number of log entries this service can have.",
-            "longDescription": "The value of this property shall be the maximum numbers of LogEntry resources in the Entries collection for this service."
-        },
-        "OverWritePolicy": {
-            "$ref": "LogService.1.0.0.json#OverWritePolicy",
-            "readonly": true,
-            "description": "The overwrite policy for this service that takes place when the log is full.",
-            "longDescription": "The value of this property shall indicate the policy of the log service when the MaxNumberOfRecords has been reached. Unknown indicates the log overwrite policy is unknown. WrapsWhenFull indicates that the log overwrites its entries with new entries when the log has reached its maximum capacity. NeverOverwrites indicates that the log never overwrites its entries by the new entries and ceases logging when the limit has been reached."
-        },
-        "DateTime": {
-            "type": [
-                "string",
-                "null"
-            ],
-            "format": "date-time",
-            "readonly": false,
-            "description": "The current DateTime (with offset) for the log service, used to set or read time.",
-            "longDescription": "The value of this property shall represent the current DateTime value that the log service is using, with offset from UTC, in Redfish Timestamp format."
-        },
-        "DateTimeLocalOffset": {
-            "type": [
-                "string",
-                "null"
-            ],
-            "readonly": false,
-            "description": "The time offset from UTC that the DateTime property is set to in format: +06:00 .",
-            "longDescription": "The value is property shall represent the offset from UTC time that the current value of DataTime property contains.",
-            "pattern": "([-+][0-1][0-9]:[0-5][0-9])"
-        },
-        "Links": {
-            "$ref": "LogService.1.0.0.json#/definitions/Links",
-            "readonly": true,
-            "description": "The links object contains the links to other resources that are related to this resource."
-        },
-        "Actions": {
-            "$ref": "LogService.1.0.0.json#/definitions/Actions",
-            "readonly": true,
-            "description": "The Actions object contains the available custom actions on this resource."
-        },
-        "Status": {
-            "$ref": "Resource.1.0.0.json#/definitions/Status"
-        }
-    },
-    "description": "This resource represents the log service for the resource or service to which it is associated.",
-    "longDescription": "This resource shall be used to represent a log service for a Redfish implementation.",
+    "$ref": "#/definitions/LogService",
     "definitions":{
+        "Links":{
+            "type": "object",
+            "patternProperties": { 
+                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+                    "type": ["array", "boolean", "number", "null", "object", "string"],
+                    "description": "This property shall specify a valid odata or redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Oem": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0#/definitions/Oem",
+                    "description": "Oem extension object.",
+                    "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
+                },
+                "Entries@odata.count": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0#/definitions/count"
+                },
+                "Entries": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "@odata.id" :{
+                                "$ref": "odata.4.0.0.json#id"
+                            }
+                        }
+                    },
+                    "readonly": true,
+                    "description": "References to the log entry collection.",
+                    "longDescription": "The value of this property shall reference a collection of LogEntry resources."
+                }
+            }
+        },
+        "LogService":{
+            "type": "object",
+            "patternProperties": { 
+                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+                    "type": ["array", "boolean", "number", "null", "object", "string"],
+                    "description": "This property shall specify a valid odata or redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0#/definitions/context"
+                },
+                "@odata.id": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0#/definitions/type"
+                },
+                "Oem": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0#/definitions/Oem",
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+                },
+                "Id": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0#/definitions/Id"
+                },
+                "Description": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0#/definitions/Description"
+                },
+                "Name": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0#/definitions/Name"
+                },
+                "MaxNumberOfRecords": {
+                    "type": "number",
+                    "readonly": true,
+                    "description": "The maximum number of log entries this service can have.",
+                    "longDescription": "The value of this property shall be the maximum numbers of LogEntry resources in the Entries collection for this service."
+                },
+                "OverWritePolicy": {
+                    "$ref": "#/definitions/OverWritePolicy",
+                    "readonly": true,
+                    "description": "The overwrite policy for this service that takes place when the log is full.",
+                    "longDescription": "The value of this property shall indicate the policy of the log service when the MaxNumberOfRecords has been reached. Unknown indicates the log overwrite policy is unknown. WrapsWhenFull indicates that the log overwrites its entries with new entries when the log has reached its maximum capacity. NeverOverwrites indicates that the log never overwrites its entries by the new entries and ceases logging when the limit has been reached."
+                },
+                "DateTime": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "format": "date-time",
+                    "readonly": false,
+                    "description": "The current DateTime (with offset) for the log service, used to set or read time.",
+                    "longDescription": "The value of this property shall represent the current DateTime value that the log service is using, with offset from UTC, in Redfish Timestamp format."
+                },
+                "DateTimeLocalOffset": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": false,
+                    "description": "The time offset from UTC that the DateTime property is set to in format: +06:00 .",
+                    "longDescription": "The value is property shall represent the offset from UTC time that the current value of DataTime property contains.",
+                    "pattern": "([-+][0-1][0-9]:[0-5][0-9])"
+                },
+                "Links": {
+                    "$ref": "#/definitions/Links",
+                    "readonly": true,
+                    "description": "The links object contains the links to other resources that are related to this resource."
+                },
+                "Actions": {
+                    "$ref": "#/definitions/Actions",
+                    "readonly": true,
+                    "description": "The Actions object contains the available custom actions on this resource."
+                },
+                "Status": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0#/definitions/Status"
+                }
+            },
+            "description": "This resource represents the log service for the resource or service to which it is associated.",
+            "longDescription": "This resource shall be used to represent a log service for a Redfish implementation."
+        },
+        "Actions":{
+            "type": "object",
+            "patternProperties": { 
+                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+                    "type": ["array", "boolean", "number", "null", "object", "string"],
+                    "description": "This property shall specify a valid odata or redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Oem": {
+                    "$ref": "#/definitions/OemActions"
+                }
+            }
+        },
         "OverWritePolicy":{
             "type": "string",
             "enum": [
@@ -95,57 +147,11 @@
                 "NeverOverWrites": "When full, new entries to the Log will be discarded"
             }
         },
-        "Links":{
-            "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
-                    "type": ["array", "boolean", "integer", "number", "null", "object", "string"],
-                    "description": "This property shall specify a valid odata or redfish property."
-                }
-            },
-            "additionalProperties": false,
-            "properties": {
-                "Oem": {
-                    "$ref": "Resource.1.0.0.json#/definitions/Oem",
-                    "description": "Oem extension object.",
-                    "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
-                },
-                "Entries": {
-                    "type": "array",
-                    "items": {
-                    "type": "object",
-                    "properties": {
-                        "@odata.id" :{
-                            "$ref": "odata.4.0.0.json#id"
-                        }
-                    }
-                    },
-                    "readonly": true,
-                    "description": "References to the log entry collection.",
-                    "longDescription": "The value of this property shall reference a collection of LogEntry resources."
-                }
-            }
-        },
-        "Actions":{
-            "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
-                    "type": ["array", "boolean", "integer", "number", "null", "object", "string"],
-                    "description": "This property shall specify a valid odata or redfish property."
-                }
-            },
-            "additionalProperties": false,
-            "properties": {
-                "Oem": {
-                    "$ref": "LogService.1.0.0.json#/definitions/OemActions"
-                }
-            }
-        },
         "OemActions":{
             "type": "object",
             "patternProperties": { 
                 "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
-                    "type": ["array", "boolean", "integer", "number", "null", "object", "string"],
+                    "type": ["array", "boolean", "number", "null", "object", "string"],
                     "description": "This property shall specify a valid odata or redfish property."
                 }
             },
@@ -153,6 +159,21 @@
             "properties": {
 
             }
+        },
+        "ClearLog":{
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "description": "Link to invoke action"
+                }
+            }
+
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."

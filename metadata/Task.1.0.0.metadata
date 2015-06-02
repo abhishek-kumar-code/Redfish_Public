@@ -15,7 +15,7 @@
   </edmx:Reference>
   
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Tasks.1.0.0" Alias="Tasks">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Task.1.0.0" Alias="Task">
 
       <!-- This is the schema definition for a Task resource. -->
 

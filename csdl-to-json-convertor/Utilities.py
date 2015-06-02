@@ -81,40 +81,60 @@ class Utilities:
 
         # TODO: handle cases where URL is malformed
 
-        connections = {}
-        hostStart = url.find("//")
-        prefix = url[:hostStart]
-        hostStop = url.find("/", hostStart + 2)
-        hostname = url[hostStart + 2 : hostStop]
-        resname  = url[hostStop :]
+        try:
+            connections = {}
+            hostStart = url.find("//")
+            prefix = url[:hostStart]
+            hostStop = url.find("/", hostStart + 2)
+            hostname = url[hostStart + 2 : hostStop]
+            resname  = url[hostStop :]
             
-        if hostname in connections.keys():
-            conn = connections[hostname]
-        else:
-            conn = http.client.HTTPConnection(hostname)
-            connections[hostname] = conn
+            if hostname in connections.keys():
+                conn = connections[hostname]
+            else:
+                conn = http.client.HTTPConnection(hostname)
+                connections[hostname] = conn
 
-        conn.request("GET", resname)
-        response = conn.getresponse()
-        data = response.read()
-        decoded = data.decode("utf-8")
+            conn.request("GET", resname)
+            response = conn.getresponse()
+            data = response.read()
+            decoded = data.decode("utf-8")
 
-        if response.status != 200:
-            # try opening as a file
-            try:
-                fileLocation = url.rfind("/")
-                filename=url[fileLocation + 1:] + ".metadata"
-                if len(directory) > 0 :
-                    filename = directory + "\\" + filename
-				
-                metafile = open(filename)
-                decoded = metafile.read()
+            if response.status != 200:
+                decoded = Utilities.open_as_file(url, directory)
 
-            except:
-                decoded = ""
-                print("failed to open " + url + " as " + filename)
+        except:
+            decoded = Utilities.open_as_file(url, directory)
+
         return decoded
 
+
+    #################################################################
+    # Name: open_as_file                                            #
+    # Description:                                                  #
+    # Opens the target file and extracts data from it.              #
+    #################################################################
+    @staticmethod
+    def open_as_file(url, directory):
+
+        try:
+            filelocation = url.rfind("/")
+            if(filelocation > 0):
+                filename=url[filelocation+1:] + ".metadata"
+            else:
+                filename=url
+
+            if(len(directory) > 0 ):
+                filename = directory + "\\" + filename
+
+            metafile = open(filename)
+            decoded = metafile.read()
+
+        except:
+            decoded = ""
+            print("failed to open " + url + " as " + filename)
+
+        return decoded
 
     #################################################################
     # Name: indent                                                  #
