@@ -606,6 +606,7 @@ class JsonSchemaGenerator:
             output += ",\n"
             output += self.get_json_for_special_properties("@odata.type", depth, prefixuri)
             output += ",\n"
+
             firstproperty = True
 
         bindingparameter = True
@@ -628,6 +629,12 @@ class JsonSchemaGenerator:
                     # Handle navigationLinks/NavigationProperty
                     if ( self.is_navigation_link(typetable, property) or propkind == "NavigationProperty"):
                         propname = property.attrib["Name"]
+                        attribtype = property.attrib["Type"]
+
+                        if ( not (attribtype is None)) and (attribtype.startswith("Collection")):
+                            output += UT.Utilities.indent(depth+1) + "\"" + propname + "@odata.count\": {\n"
+                            output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + "http://schemas.dmtf.org/redfish/v1/odata.4.0.0#/definitions/count\"\n"
+                            output += UT.Utilities.indent(depth+1) + "},\n"
                         output += UT.Utilities.indent(depth+1) + "\"" + propname + "\": {\n"
 
                         # Figure out if OData.AutoExpandReferences is set or "OData.AutoExpand"
@@ -641,7 +648,6 @@ class JsonSchemaGenerator:
                        # Handle "OData.AutoExpand" by requiring resources (not just ids)
                         if termvalue == "OData.AutoExpand":
                             # Check if it is a collection or not
-                            attribtype = property.attrib["Type"]
 
                             if ( not (attribtype is None)) and (attribtype.startswith("Collection")):
                                 output += UT.Utilities.indent(depth+2) + "\"type\": \"array\",\n"
@@ -652,7 +658,10 @@ class JsonSchemaGenerator:
                                 refvalue = JsonSchemaGenerator.get_ref_value_for_type(typetable, current_typename, namespace)
                                 output += UT.Utilities.indent(depth+3)+ "\"$ref\": \"" + refvalue + "\""
                                 output += "\n"
-                                output += UT.Utilities.indent(depth+2) + "}"
+                                output += UT.Utilities.indent(depth+2) + "}, \n"
+                                output += UT.Utilities.indent(depth+1) + "\"" + propname + "@odata.count\": {\n"
+                                output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + "http://schemas.dmtf.org/redfish/v1/odata.4.0.0#/definitions/count\"\n"
+                                output += UT.Utilities.indent(depth+1) + "}"
                             else:
                                 refvalue = JsonSchemaGenerator.get_ref_value_for_type(typetable, attribtype, namespace)
                                 output += UT.Utilities.indent(depth+3)+ "\"$ref\": \"" + refvalue + "\""
@@ -936,7 +945,8 @@ class JsonSchemaGenerator:
 
         for reference in root.iter("{http://docs.oasis-open.org/odata/ns/edmx}Reference"):
             refuri = reference.attrib["Uri"]
-			      
+
+            #todo: only load types from referenced namespaces			      
             if not refuri in JsonSchemaGenerator.parsed:
                 typetable = dict(list(typetable.items()) + list(JsonSchemaGenerator.generate_typetable(refuri, directory, True).items()))
     

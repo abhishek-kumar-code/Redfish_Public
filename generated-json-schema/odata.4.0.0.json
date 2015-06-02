@@ -19,6 +19,12 @@
 			"type": "string",
 			"readonly": true,
 			"longDescription": "The value of this property shall be an absolute URL that specifies the type of the resource and it shall be of the form defined in the SPMF specification."
+		},
+
+		"count":{
+			"type": "number",
+			"readonly": true,
+			"longDescription": "The value of this property shall be an integer representing the number of items in a collection."
 		}
 	}
 }
