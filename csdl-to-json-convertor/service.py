@@ -392,9 +392,9 @@ class JsonSchemaGenerator:
         return output
 
     #########################################################################################################
-    # Name: get_action_definition                                                                         #
+    # Name: get_action_definition                                                                           #
     # Description:                                                                                          #
-    #  Generates JSON for action definitions                                                                           #
+    #  Generates JSON for action definitions                                                                #
     #########################################################################################################
     def get_action_definition(self, typetable, actionentry, depth, prefixuri):
 
@@ -453,17 +453,17 @@ class JsonSchemaGenerator:
         
         if propertyname == "@odata.context":
             output += UT.Utilities.indent(depth+1) + "\"@odata.context\": {\n"
-            output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + "http://schemas.dmtf.org/redfish/v1/odata.4.0.0#/definitions/context\"\n"
+            output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/context\"\n"
             output += UT.Utilities.indent(depth+1) + "}"
 
         elif propertyname == "@odata.id":
             output += UT.Utilities.indent(depth+1) + "\"@odata.id\": {\n"
-            output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + "http://schemas.dmtf.org/redfish/v1/odata.4.0.0#/definitions/id\"\n"
+            output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/id\"\n"
             output += UT.Utilities.indent(depth+1) + "}"
             
         elif propertyname == "@odata.type":
             output += UT.Utilities.indent(depth+1) + "\"@odata.type\": {\n"
-            output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + "http://schemas.dmtf.org/redfish/v1/odata.4.0.0#/definitions/type\"\n"
+            output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/type\"\n"
             output += UT.Utilities.indent(depth+1) + "}"
 
         return output
@@ -633,7 +633,7 @@ class JsonSchemaGenerator:
 
                         if ( not (attribtype is None)) and (attribtype.startswith("Collection")):
                             output += UT.Utilities.indent(depth+1) + "\"" + propname + "@odata.count\": {\n"
-                            output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + "http://schemas.dmtf.org/redfish/v1/odata.4.0.0#/definitions/count\"\n"
+                            output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/count\"\n"
                             output += UT.Utilities.indent(depth+1) + "},\n"
                         output += UT.Utilities.indent(depth+1) + "\"" + propname + "\": {\n"
 
@@ -660,7 +660,7 @@ class JsonSchemaGenerator:
                                 output += "\n"
                                 output += UT.Utilities.indent(depth+2) + "}, \n"
                                 output += UT.Utilities.indent(depth+1) + "\"" + propname + "@odata.count\": {\n"
-                                output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + "http://schemas.dmtf.org/redfish/v1/odata.4.0.0#/definitions/count\"\n"
+                                output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/count\"\n"
                                 output += UT.Utilities.indent(depth+1) + "}"
                             else:
                                 refvalue = JsonSchemaGenerator.get_ref_value_for_type(typetable, attribtype, namespace)
@@ -676,7 +676,7 @@ class JsonSchemaGenerator:
                             output += UT.Utilities.indent(depth+3) + "\"type\": \"object\",\n"
                             output += UT.Utilities.indent(depth+3) + "\"properties\": {\n"
                             output += UT.Utilities.indent(depth+4) + "\"@odata.id\" :{\n"
-                            output += UT.Utilities.indent(depth+5) + "\"$ref\": \"" + "odata.4.0.0.json#id\"\n"
+                            output += UT.Utilities.indent(depth+5) + "\"$ref\": \"" + "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/id\"\n"
                             output += UT.Utilities.indent(depth+4) + "}\n"                   
                             output += UT.Utilities.indent(depth+3) + "}"
                             if ( not (attribtype is None)) and (attribtype.startswith("Collection")):
@@ -974,7 +974,7 @@ class JsonSchemaGenerator:
                         typename = typedata.attrib["Name"]
                         typeentry = {}
                         typeentry["TypeType"] = typekind
-                        typeentry["Url"] = url
+                        typeentry["Url"] = url + ".json"
                         typeentry["Namespace"] = namespace
                         typeentry["Alias"] = alias
                         typeentry["Name"] = typename
