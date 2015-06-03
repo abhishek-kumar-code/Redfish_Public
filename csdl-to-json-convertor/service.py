@@ -672,16 +672,18 @@ class JsonSchemaGenerator:
                             if ( not (attribtype is None)) and (attribtype.startswith("Collection")):
                                 output += UT.Utilities.indent(depth+2) + "\"type\": \"array\",\n"
                                 output += UT.Utilities.indent(depth+2) + "\"items\": {\n"
+                                depth += 1
                             
-                            output += UT.Utilities.indent(depth+3) + "\"type\": \"object\",\n"
-                            output += UT.Utilities.indent(depth+3) + "\"properties\": {\n"
-                            output += UT.Utilities.indent(depth+4) + "\"@odata.id\" :{\n"
-                            output += UT.Utilities.indent(depth+5) + "\"$ref\": \"" + "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/id\"\n"
-                            output += UT.Utilities.indent(depth+4) + "}\n"                   
-                            output += UT.Utilities.indent(depth+3) + "}"
+                            output += UT.Utilities.indent(depth+2) + "\"type\": \"object\",\n"
+                            output += UT.Utilities.indent(depth+2) + "\"properties\": {\n"
+                            output += UT.Utilities.indent(depth+3) + "\"@odata.id\" :{\n"
+                            output += UT.Utilities.indent(depth+4) + "\"$ref\": \"" + "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/id\"\n"
+                            output += UT.Utilities.indent(depth+3) + "}\n"                   
+                            output += UT.Utilities.indent(depth+2) + "}"
                             if ( not (attribtype is None)) and (attribtype.startswith("Collection")):
                                 output += "\n"
-                                output += UT.Utilities.indent(depth+2) + "}"
+                                output += UT.Utilities.indent(depth+1) + "}"
+                                depth -= 1
 
 					# Handle regular property
                     else:
