@@ -597,7 +597,7 @@ class JsonSchemaGenerator:
                         propname = property.attrib["Name"]
                         attribtype = property.attrib["Type"]
 
-                        if ( not (attribtype is None)) and (attribtype.startswith("Collection")):
+                        if ( not (attribtype is None)) and (attribtype.startswith("Collection") and typedata["Name"]=="Members"):
                             output += UT.Utilities.indent(depth+1) + "\"" + propname + "@odata.count\": {\n"
                             output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/count\"\n"
                             output += UT.Utilities.indent(depth+1) + "},\n"
@@ -1403,4 +1403,4 @@ def generate_json(url, directory):
 
 if __name__ == "__main__":
     result = main()
-    print(result)
+   # print(result)
