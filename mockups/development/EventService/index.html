@@ -1,5 +1,5 @@
 {
-    "@Redfish.Copyright":"Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@Redfish.Copyright": "Copyright Â© 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#EventService",
     "@odata.id": "/redfish/v1/EventService",
     "@odata.type": "#EventService.1.00.0.EventService",
@@ -18,22 +18,19 @@
         "ResourceRemoved",
         "Alert"
     ],
-    "Links": {
-        "Subscriptions": {
-            "@odata.id": "/redfish/v1/EventService/Subscriptions"
-        },
-        "Oem": {}
+    "Subscriptions": {
+        "@odata.id": "/redfish/v1/EventService/Subscriptions"
     },
     "Actions": {
         "#EventService.SendTestEvent": {
-              "target": "/redfish/v1/EventService/Actions/EventService.SendTestEvent",
-              "EventType@Redfish.AllowableValues": [
-                  "StatusChange",
-                  "ResourceUpdated",
-                  "ResourceAdded",
-                  "ResourceRemoved",
-                  "Alert"
-              ]
+            "target": "/redfish/v1/EventService/Actions/EventService.SendTestEvent",
+            "EventType@Redfish.AllowableValues": [
+                "StatusChange",
+                "ResourceUpdated",
+                "ResourceAdded",
+                "ResourceRemoved",
+                "Alert"
+            ]
         },
         "Oem": {}
     },
