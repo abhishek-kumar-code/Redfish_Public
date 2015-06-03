@@ -35,6 +35,16 @@ if enable_debugging == True:
     import pdb
 
 ###############################################################################
+# Name: Constants                                                             #
+# Description:                                                                #
+#   Defines constants used in the script                                      #
+###############################################################################
+
+schemaLocation = "http://schemas.dmtf.org/redfish/v1/"
+odataSchema = schemaLocation + "odata.4.0.0.json"
+redfishSchema = schemaLocation + "redfish-schema.1.0.0.json"
+
+###############################################################################
 # Name: Scenario                                                              #
 # Description:                                                                #
 #   Enumeration for various scenarios supported by the JsonSchemaGenerator    #
@@ -224,6 +234,26 @@ class JsonSchemaGenerator:
         return False
 
 
+    ##########################################################################
+    # Name: is_requiredOnCreate_property                                     # 
+    # Description:                                                           #
+    #  Returns True if the property being evaulated is required on create.   #
+    ##########################################################################
+    def is_requiredOnCreate_property(self, property):
+
+        for annotation in property:
+            if not annotation.tag == "{http://docs.oasis-open.org/odata/ns/edm}Annotation":
+                continue
+
+            if annotation.attrib["Term"] == "Redfish.RequiredOnCreate":
+                if "Boolean" in annotation.attrib.keys():
+                    if annotation.attrib["Boolean"].upper() == "FALSE":
+                        break
+
+                return True
+
+        return False
+		
     #####################################################################################
     # Name: get_dynamic_property_patterns_content                                       # 
     # Description:                                                                      #
@@ -453,17 +483,17 @@ class JsonSchemaGenerator:
         
         if propertyname == "@odata.context":
             output += UT.Utilities.indent(depth+1) + "\"@odata.context\": {\n"
-            output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/context\"\n"
+            output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + odataSchema + "#/definitions/context\"\n"
             output += UT.Utilities.indent(depth+1) + "}"
 
         elif propertyname == "@odata.id":
             output += UT.Utilities.indent(depth+1) + "\"@odata.id\": {\n"
-            output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/id\"\n"
+            output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + odataSchema + "#/definitions/id\"\n"
             output += UT.Utilities.indent(depth+1) + "}"
             
         elif propertyname == "@odata.type":
             output += UT.Utilities.indent(depth+1) + "\"@odata.type\": {\n"
-            output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/type\"\n"
+            output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + odataSchema + "#/definitions/type\"\n"
             output += UT.Utilities.indent(depth+1) + "}"
 
         return output
@@ -562,6 +592,7 @@ class JsonSchemaGenerator:
 
         output += UT.Utilities.indent(depth)  + "\"properties\": {\n"
         requiredproperties = []
+        requiredcreateproperties = []
         firstproperty = True
 
         # Generate special properties for EntityType
@@ -599,7 +630,7 @@ class JsonSchemaGenerator:
 
                         if ( not (attribtype is None)) and (attribtype.startswith("Collection") and typedata["Name"]=="Members"):
                             output += UT.Utilities.indent(depth+1) + "\"" + propname + "@odata.count\": {\n"
-                            output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/count\"\n"
+                            output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + odataSchema + "#/definitions/count\"\n"
                             output += UT.Utilities.indent(depth+1) + "},\n"
                         output += UT.Utilities.indent(depth+1) + "\"" + propname + "\": {\n"
 
@@ -655,6 +686,9 @@ class JsonSchemaGenerator:
                     if self.is_required_property(property):
                         requiredproperties.append(propname)
 
+                    if self.is_requiredOnCreate_property(property):
+                        requiredcreateproperties.append(propname)
+
                     output += self.emit_annotations(typetable, typedata["Namespace"], property, depth + 2, prefixuri, False)
                     output += "\n"
                     output += UT.Utilities.indent(depth+1) + "}"
@@ -666,6 +700,7 @@ class JsonSchemaGenerator:
         output += "\n"
         output += UT.Utilities.indent(depth) + "}"
 
+        # Write Required Properties
         if len(requiredproperties) > 0:
             output += ",\n"
             output += UT.Utilities.indent(depth)  + "\"required\": [\n"
@@ -683,6 +718,24 @@ class JsonSchemaGenerator:
             output += "\n"
             output += UT.Utilities.indent(depth)  + "]"
  
+        # Write Required On Create Properties
+        if len(requiredcreateproperties) > 0:
+            output += ",\n"
+            output += UT.Utilities.indent(depth)  + "\"requiredOnCreate\": [\n"
+            firstproperty = True
+
+            for propname in requiredcreateproperties:
+                if firstproperty:
+                    firstproperty = False
+
+                else:
+                    output += ",\n"
+
+                output += UT.Utilities.indent(depth+1) + "\"" + propname + "\""
+
+            output += "\n"
+            output += UT.Utilities.indent(depth)  + "]"
+
         return output
 
 
@@ -875,7 +928,6 @@ class JsonSchemaGenerator:
     # Name: generate_referencetype                                                 #
     # Description:                                                                 #
     #  generates a type for a reference to the specified type                      #
-    #  all the data types relevent to generation of JSON                           #
     ################################################################################
     def generate_referencetype(self, typename, typereference, depth):
 
@@ -884,12 +936,7 @@ class JsonSchemaGenerator:
         output += UT.Utilities.indent(depth) + "\""+ typename + "Ref\": { \n"
         output += UT.Utilities.indent(depth+1) + "\"oneOf\": [ \n"
         output += UT.Utilities.indent(depth+2) + "{\n"
-        output += UT.Utilities.indent(depth+3) + "\"type\": \"object\",\n"
-        output += UT.Utilities.indent(depth+3) + "\"properties\": {\n"
-        output += UT.Utilities.indent(depth+4) + "\"@odata.id\" :{\n"
-        output += UT.Utilities.indent(depth+5) + "\"$ref\": \"" + "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/id\"\n"
-        output += UT.Utilities.indent(depth+4) + "}\n"                   
-        output += UT.Utilities.indent(depth+3) + "}\n"
+        output += UT.Utilities.indent(depth+3) + "\"$ref\": \"" + odataSchema + "#/definitions/idRef\"\n"
         output += UT.Utilities.indent(depth+2) + "},\n"
         output += UT.Utilities.indent(depth+2) + "{\n"
         output += UT.Utilities.indent(depth+3) + "\"$ref\": \"" + typereference + "\"\n"
@@ -1102,7 +1149,7 @@ class JsonSchemaGenerator:
             except :
                 # This type has not been parsed yet. Process it now.
                 if (namespace == currentNamespace):
-                    # Add comma if this is not the first complex type, otherwise write start of definitions block
+                    # Add comma if this is not the first definition, otherwise write start of definitions block
                     if (type_count > 0):
                         output += ",\n"
                     else:
@@ -1187,7 +1234,7 @@ class JsonSchemaGenerator:
                     # Insert the starting bracket
                     fileoutput += UT.Utilities.indent(depth) + "{\n"
                     # Add the Schema tag
-                    fileoutput += UT.Utilities.indent(depth+1) + "\"$schema\": \"http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0\",\n"
+                    fileoutput += UT.Utilities.indent(depth+1) + "\"$schema\": \"" + redfishSchema + "\",\n"
                     fileoutput += UT.Utilities.indent(depth+1) + "\"title\": \"" + result + "\",\n"
                     # Fill in the result
                     fileoutput += jsonresults[result]
@@ -1251,7 +1298,7 @@ class JsonSchemaGenerator:
 
         #hack to deal emulate parse logic -- todo: fix parse logic
         elif url.endswith(".metadata"):
-            prefixuri = 'http://schemas.dmtf.org/redfish/v1/'
+            prefixuri =  schemaLocation
             lastindex = url.find(".metadata")
             filename=url[:lastindex]
             result.update({'filename' : prefixuri + filename})

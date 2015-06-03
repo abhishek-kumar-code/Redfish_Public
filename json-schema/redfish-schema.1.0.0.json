@@ -15,7 +15,10 @@
             "description": "This property shall designate a property to be readonly when set to true."
         },
         "requiredOnCreate": {
-            "type": "boolean",
+            "type": "array",
+            "items": {
+                "type": "boolean"
+            },
             "description": "This property is required to be specified in the body of a POST request to create the resource."
         },
         "longDescription": {
