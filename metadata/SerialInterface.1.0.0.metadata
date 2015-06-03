@@ -11,23 +11,6 @@
   <edmx:DataServices>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SerialInterface.1.0.0" Alias="SerialInterface">
 
-      <!-- This is the schema definition for the Serial Interface. -->
-      <EntityType Name="SerialInterfaceCollection" BaseType="Resource.SerialInterfaceCollection">
-        <Property Name="Links" Type="SerialInterface.Members">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="Contains links to other resources that are related to this resource."/>
-        </Property>
-      </EntityType>
-
-      <ComplexType Name="Members">
-        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
-        <NavigationProperty Name="Members" Type="Collection(SerialInterface.SerialInterface)">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>
-      </ComplexType>
-
       <EntityType Name="SerialInterface" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This schema defines an asynchronous serial interface resource."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent serial resources as part of the Redfish specification."/>

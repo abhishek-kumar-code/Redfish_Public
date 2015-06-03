@@ -14,10 +14,13 @@
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.1.0.0">
     <edmx:Include Namespace="Resource.1.0.0" Alias="Resource"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Settings.1.0.0">
+    <edmx:Include Namespace="Settings.1.0.0" Alias="Settings"/>
+  </edmx:Reference>
 
-    
+
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ManagerNetworkProtocol.1.0.0" Alias="NetworkProtocol">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ManagerNetworkProtocol.1.0.0" Alias="ManagerNetworkProtocol">
 
       <!-- This schema defines a network service and its respective properties -->
       <EntityType Name="ManagerNetworkProtocol">
@@ -77,7 +80,7 @@
       </EntityType>
 
       <ComplexType Name="Links" BaseType="Resource.Links">
-        <NavigationProperty Name="Settings" Type="Resource.Settings">
+        <NavigationProperty Name="Settings" Type="Settings.Settings">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a reference to the settings for this manager if this resource has a separate object used to change the current settings of this manager."/>
           <Annotation Term="OData.LongDescription" String="If this resource is not PATCHable, this is the link to PATCHable Settings for the resource.  This reference shall be to a resource of Type ManagerNetworkProtocol."/>

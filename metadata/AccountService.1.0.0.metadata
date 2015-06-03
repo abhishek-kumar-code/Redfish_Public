@@ -15,8 +15,8 @@
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ManagerAccount.1.0.0">
     <edmx:Include Namespace="ManagerAccount.1.0.0" Alias="ManagerAccount"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Role.1.0.0">
-    <edmx:Include Namespace="Role.1.0.0" Alias="Role"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/RoleCollection.1.0.0">
+    <edmx:Include Namespace="RoleCollection.1.0.0" Alias="RoleCollection"/>
   </edmx:Reference>
   
   <edmx:DataServices>
@@ -74,7 +74,7 @@
           <Annotation Term="OData.LongDescription" String="This property shall contain the link to a collection of ManagerAccounts."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="Roles" Type="Role.RoleCollection">
+        <NavigationProperty Name="Roles" Type="RoleCollection.RoleCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Link to a collection of Roles"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the link to a collection of Roles."/>

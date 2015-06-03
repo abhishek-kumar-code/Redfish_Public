@@ -25,6 +25,9 @@
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ComputerSystem.1.0.0">
     <edmx:Include Namespace="ComputerSystem.1.0.0" Alias="ComputerSystem"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/LogServiceCollection.1.0.0">
+    <edmx:Include Namespace="LogServiceCollection.1.0.0" Alias="LogServiceCollection"/>
+  </edmx:Reference>
   
   <edmx:DataServices>
 
@@ -86,7 +89,7 @@
       </EntityType>
 
       <ComplexType Name="Links" BaseType="Resource.Links">
-        <NavigationProperty Name="LogServices" Type="LogService.LogServiceCollection">
+        <NavigationProperty Name="LogServices" Type="LogServiceCollection.LogServiceCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="A reference to the logs for this chassis."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection LogServices."/>
