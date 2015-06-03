@@ -53,7 +53,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This object contains the links to other resources that are related to this resource."/>
         </Property>
-        <Property Name="ServiceEntryPointUUID" Type="Edm.String" Nullable="false">
+        <Property Name="ServiceEntryPointUUID" Type="Manager.UUID" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The UUID of the Redfish Service Entry Point provided by this manager"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the UUID of the Redfish Service Entry Point provided by this manager.  This property shall not be present if this manager does not provide a Redfish Service Entry Point."/>
@@ -305,7 +305,11 @@
           <Annotation Term="OData.LongDescription" String="The value of ConnectTypesSupported shall be an array of the enumerations provided here.  RDP shall be included if the Remote Desktop (RDP) protocol is supported.  KVMIP shall be included if a vendor-define KVM-IP protocol is supported."/>
         </Property>
       </ComplexType>
-
+	  
+      <TypeDefinition Name="UUID" UnderlyingType="Edm.String">
+	    <Annotation Term="Validation.Pattern" String="([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})"/>
+      </TypeDefinition>
+	  
     </Schema>
   </edmx:DataServices>
 </edmx:Edmx>
