@@ -80,11 +80,11 @@
         <Property Name="UUID" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The universal unique identifier (UUID) for this system"/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the universal unique identifier number for the system."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be used to contain a universal unique identifier number for the system. RFC4122 describes methods that can be used to create the value. The value should be considered to be opaque. Client software should only treat the overall value as a universally unique identifier and should not interpret any sub-fields within the UUID. If the system supports SMBIOS, the value and byte order of the property should match byte-for-byte with the memory byte order (from lowest address to highest) of the SMBIOS UUID. Following this order will make it simpler to correlate the UUID with the SMBIOS UUID"/>
         </Property>
         <Property Name="HostName" Type="Edm.String">
           <Annotation Term="OData.Description" String="The DNS Host Name, without any domain information"/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the host name for this system, as reported by the operating system or hypervisor."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the host name for this system, as reported by the operating system or hypervisor.  This value is typically provided to the Manager by a service running in the host operating system."/>
         </Property>
         <Property Name="IndicatorLED" Type="ComputerSystem.IndicatorLED">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/ReadWrite"/>
@@ -317,7 +317,7 @@
         <Annotation Term="OData.AdditionalProperties" Bool="False"/>
         <Property Name="TotalSystemMemoryGiB" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="This is the total amount of memory in the system measured in GiB."/>
+          <Annotation Term="OData.Description" String="The total installed, operating system-accessible memory (RAM), measured in GiB."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the amount of system general purpose volatile (RAM) memory as measured in gibibytes."/>
           <Annotation Term="Validation.Minimum" Int="0" />
         </Property>
