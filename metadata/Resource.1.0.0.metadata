@@ -80,7 +80,6 @@
         </Key>
         <Property Name="Description" Type="Resource.Description"/>
         <Property Name="Name" Type="Resource.Name" Nullable="false"/>
-        <Property Name="Modified" Type="Resource.Modified" Nullable="false"/>
         <Property Name="Oem" Type="Resource.Oem">
           <Annotation Term="OData.Description" String="This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections."/>
           <Annotation Term="OData.LongDescription" String="The value of this string shall be of the format for the reserved word *Oem*."/>
