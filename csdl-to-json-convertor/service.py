@@ -468,40 +468,6 @@ class JsonSchemaGenerator:
 
         return output
 
-
-    ##############################################################################
-    # Name: generate_odata_json_file                                             #
-    # Description:                                                               #
-    #  Generates contents of odata.4.0.0.json                                    #
-    ##############################################################################
-    @staticmethod
-    def generate_odata_json_file(depth):
-        output =""
-        output += UT.Utilities.indent(depth) + "\"definitions\": {\n"
-        output += UT.Utilities.indent(depth+1) + "\"context\": {\n"
-        output += UT.Utilities.indent(depth+2) + "\"type\": \"string\",\n"
-        output += UT.Utilities.indent(depth+2) + "\"format\": \"uri\",\n"
-        output += UT.Utilities.indent(depth+2) + "\"readonly\": true,\n"
-        output += UT.Utilities.indent(depth+2) + "\"longDescription\": \"The value of this property shall be the context URL that describes the resource according to OData-Protocol and shall be of the form defined in the SPMF specification.\"\n"
-        output += UT.Utilities.indent(depth+1) + "},\n"
-        output += UT.Utilities.indent(depth+1) + "\n"
-        output += UT.Utilities.indent(depth+1) + "\"id\":{\n"
-        output += UT.Utilities.indent(depth+2) + "\"type\": \"string\",\n"
-        output += UT.Utilities.indent(depth+2) + "\"format\": \"uri\",\n"
-        output += UT.Utilities.indent(depth+2) + "\"readonly\": true,\n"
-        output += UT.Utilities.indent(depth+2) + "\"longDescription\": \"The value of this property shall be the unique identifier for the resource and it shall be of the form defined in the SPMF specification.\"\n"
-        output += UT.Utilities.indent(depth+1) + "},\n"
-        output += UT.Utilities.indent(depth+1) + "\n"
-        output += UT.Utilities.indent(depth+1) + "\"type\":{\n"
-        output += UT.Utilities.indent(depth+2) + "\"type\": \"string\",\n"
-        output += UT.Utilities.indent(depth+2) + "\"readonly\": true,\n"
-        output += UT.Utilities.indent(depth+2) + "\"longDescription\": \"The value of this property shall be an absolute URL that specifies the type of the resource and it shall be of the form defined in the SPMF specification.\"\n"
-        output += UT.Utilities.indent(depth+1) + "}\n"
-        output += UT.Utilities.indent(depth) + "}"
-
-        return output
-
-
     ########################################################################################################
     # Name: generate_json_for_propertybag_actions                                                          #
     # Description:                                                                                         #
@@ -640,50 +606,28 @@ class JsonSchemaGenerator:
                         # Figure out if OData.AutoExpandReferences is set or "OData.AutoExpand"
                         termvalue = ""
                         for annotation in property.iter("{http://docs.oasis-open.org/odata/ns/edm}Annotation"):
-                            if annotation.attrib["Term"] == "OData.AutoExpand":
-                                termvalue = "OData.AutoExpand"
-                            elif annotation.attrib["Term"] == "OData.AutoExpandReferences":
+                            if annotation.attrib["Term"] == "OData.AutoExpandReferences":
                                 termvalue = "OData.AutoExpandReferences"
-                           
-                       # Handle "OData.AutoExpand" by requiring resources (not just ids)
-                        if termvalue == "OData.AutoExpand":
-                            # Check if it is a collection or not
+                            elif annotation.attrib["Term"] == "OData.AutoExpand":
+                                termvalue = "OData.AutoExpand"
+                          
+                        # Check if it is a collection or not
+                        if ( not (attribtype is None)) and (attribtype.startswith("Collection")):
+                            output += UT.Utilities.indent(depth+2) + "\"type\": \"array\",\n"
+                            output += UT.Utilities.indent(depth+2) + "\"items\": {\n"
+                            current_typename = JsonSchemaGenerator.extract_underlyingtype_from_collectiontype(attribtype)
 
-                            if ( not (attribtype is None)) and (attribtype.startswith("Collection")):
-                                output += UT.Utilities.indent(depth+2) + "\"type\": \"array\",\n"
-                                output += UT.Utilities.indent(depth+2) + "\"items\": {\n"
-                                current_typename = JsonSchemaGenerator.extract_underlyingtype_from_collectiontype(attribtype)
-
-                                # Get the reference value
-                                refvalue = JsonSchemaGenerator.get_ref_value_for_type(typetable, current_typename, namespace)
-                                output += UT.Utilities.indent(depth+3)+ "\"$ref\": \"" + refvalue + "\""
-                                output += "\n"
-                                output += UT.Utilities.indent(depth+2) + "}, \n"
-                                output += UT.Utilities.indent(depth+1) + "\"" + propname + "@odata.count\": {\n"
-                                output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/count\"\n"
-                                output += UT.Utilities.indent(depth+1) + "}"
-                            else:
-                                refvalue = JsonSchemaGenerator.get_ref_value_for_type(typetable, attribtype, namespace)
-                                output += UT.Utilities.indent(depth+3)+ "\"$ref\": \"" + refvalue + "\""
-
-						# Handle "OData.AutoExpandReferences" -allow either references or instances 
-                        elif termvalue == "OData.AutoExpandReferences":
-                            attribtype = property.attrib["Type"]
-                            if ( not (attribtype is None)) and (attribtype.startswith("Collection")):
-                                output += UT.Utilities.indent(depth+2) + "\"type\": \"array\",\n"
-                                output += UT.Utilities.indent(depth+2) + "\"items\": {\n"
-                                depth += 1
-                            
-                            output += UT.Utilities.indent(depth+2) + "\"type\": \"object\",\n"
-                            output += UT.Utilities.indent(depth+2) + "\"properties\": {\n"
-                            output += UT.Utilities.indent(depth+3) + "\"@odata.id\" :{\n"
-                            output += UT.Utilities.indent(depth+4) + "\"$ref\": \"" + "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/id\"\n"
-                            output += UT.Utilities.indent(depth+3) + "}\n"                   
+                            # Get the reference value
+                            refvalue = JsonSchemaGenerator.get_ref_value_for_type(typetable, current_typename, namespace)
+                            if(termvalue != "OData.AutoExpand"):
+                                refvalue += "Ref"
+                            output += UT.Utilities.indent(depth+3)+ "\"$ref\": \"" + refvalue + "\"\n"
                             output += UT.Utilities.indent(depth+2) + "}"
-                            if ( not (attribtype is None)) and (attribtype.startswith("Collection")):
-                                output += "\n"
-                                output += UT.Utilities.indent(depth+1) + "}"
-                                depth -= 1
+                        else:
+                            refvalue = JsonSchemaGenerator.get_ref_value_for_type(typetable, attribtype, namespace)
+                            if(termvalue != "OData.AutoExpand"):
+                                refvalue += "Ref"
+                            output += UT.Utilities.indent(depth+3)+ "\"$ref\": \"" + refvalue + "\""
 
 					# Handle regular property
                     else:
@@ -921,8 +865,38 @@ class JsonSchemaGenerator:
         # Emit type annotations
         output += self.emit_annotations(typetable, namespace, typedata["Node"], depth, prefixuri, isnullable, ignoreannotations)
 
+        #write out reference
+        if typetype == "EntityType" and namespace == typedata["Namespace"] and typedata["BaseType"] == "Resource.Resource":
+            output += self.generate_referencetype(typedata["Name"],JsonSchemaGenerator.get_ref_value_for_type(typetable, typename, namespace), depth-1)
+
         return output
 
+    ################################################################################
+    # Name: generate_referencetype                                                 #
+    # Description:                                                                 #
+    #  generates a type for a reference to the specified type                      #
+    #  all the data types relevent to generation of JSON                           #
+    ################################################################################
+    def generate_referencetype(self, typename, typereference, depth):
+
+        output = "\n"
+        output += UT.Utilities.indent(depth) + "},\n"
+        output += UT.Utilities.indent(depth) + "\""+ typename + "Ref\": { \n"
+        output += UT.Utilities.indent(depth+1) + "\"oneOf\": [ \n"
+        output += UT.Utilities.indent(depth+2) + "{\n"
+        output += UT.Utilities.indent(depth+3) + "\"type\": \"object\",\n"
+        output += UT.Utilities.indent(depth+3) + "\"properties\": {\n"
+        output += UT.Utilities.indent(depth+4) + "\"@odata.id\" :{\n"
+        output += UT.Utilities.indent(depth+5) + "\"$ref\": \"" + "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/id\"\n"
+        output += UT.Utilities.indent(depth+4) + "}\n"                   
+        output += UT.Utilities.indent(depth+3) + "}\n"
+        output += UT.Utilities.indent(depth+2) + "},\n"
+        output += UT.Utilities.indent(depth+2) + "{\n"
+        output += UT.Utilities.indent(depth+3) + "\"$ref\": \"" + typereference + "\"\n"
+        output += UT.Utilities.indent(depth+2) + "}\n"
+        output += UT.Utilities.indent(depth+1) + "]"
+
+        return output
 
     ################################################################################
     # Name: generate_typetable                                                     #
@@ -1275,9 +1249,6 @@ class JsonSchemaGenerator:
             else:
                 incorrect_url = True
 
-        elif url.endswith("odata"):
-            result.update({'generateOdataFile' : "True"})        
-
         #hack to deal emulate parse logic -- todo: fix parse logic
         elif url.endswith(".metadata"):
             prefixuri = 'http://schemas.dmtf.org/redfish/v1/'
@@ -1387,25 +1358,16 @@ def generate_json(url, directory):
         if 'prefixuri' in url_inputs:
             prefixuri = url_inputs['prefixuri']
 
-        if 'generateOdataFile' in url_inputs:
-            generateOdataFile = url_inputs['generateOdataFile']
-
         # create a dictionary from type names to type data
             
         jsonresults = {}
             
         current_schema = ''
         # We support three scenarios:
-        # 1. Filename ending with odata is provided - We generate odata.4.0.0.json 
-        # 2. Filename and Typename provided - service will convert the specific type in the file.
-        # 3. FileName and Namespace provided - service will convert only types in given namespace.
+        # 1. Filename and Typename provided - service will convert the specific type in the file.
+        # 2. FileName and Namespace provided - service will convert only types in given namespace.
 
-        if ( (not ( generateOdataFile is None )) and ( generateOdataFile != '') and (generateOdataFile == "True")):
-            # If odata.json file is to be generated
-            jsonresult = JsonSchemaGenerator.generate_odata_json_file(depth+1)
-            jsonresults["odata.4.0.0"] = jsonresult
-
-        elif len(typename) > 0:
+        if len(typename) > 0:
             # Create JSON schema for a specific type
             schema_version_value = JsonSchemaGenerator.get_schemaversion_from_typename(typename)
 
