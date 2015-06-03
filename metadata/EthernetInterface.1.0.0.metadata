@@ -88,7 +88,8 @@
         </Property>
         <Property Name="IPv4Addresses" Type="Collection(IPAddresses.IPv4Address)" Nullable="false" >
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="This array of objects is used to represent the IPv4 connection characteristics for this interface."/>
+          <Annotation Term="OData.Description" String="The IPv4 addresses assigned to this interface"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of objects used to represent the IPv4 connection characteristics for this interface."/>
         </Property>
         <Property Name="IPv6AddressPolicyTable" Type="Collection(EthernetInterface.IPv6AddressPolicyEntry)" Nullable="false">
           <Annotation Term="OData.Description" String="This array of objects represents the RFC3484 Address Selection Policy Table."/>
