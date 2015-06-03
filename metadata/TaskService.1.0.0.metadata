@@ -22,12 +22,6 @@
       <EntityType Name="TaskService" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition for the Task Service.  It represents the properties for the service itself and has links to the actual list of tasks."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a task service for a Redfish implementation."/>
-        <Property Name="MaxNumberOfTasks" Type="Edm.Int64" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="The maximum number of tasks this service can track."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the maximum number of tasks that this service can support."/>
-          <Annotation Term="Validation.Minimum" Int="0"/>
-        </Property>
         <Property Name="CompletedTaskOverWritePolicy" Type="TaskService.OverWritePolicy" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Overwrite policy of completed tasks"/>
