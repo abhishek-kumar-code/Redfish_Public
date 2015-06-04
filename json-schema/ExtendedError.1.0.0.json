@@ -18,9 +18,9 @@
                 },
                 "message": {
                     "type": "string",
-                    "description": "This is the human readable message, if provided.",
+                    "description": "A human readable error message corresponding to the message in the message registry.",
                     "readonly": true,
-                    "longDescription": "This property shall contain an optional human readable message."
+                    "longDescription": "This property shall contain a human readable message."
                 },
                 "@Message.ExtendedInfo": {
                     "$ref": "Message.1.0.0#/Messages"
