@@ -3,40 +3,37 @@
     "title": "Manager.1.0.0",
     "$ref": "#/definitions/Manager",
     "definitions":{
-        "ModifyRedundancySet":{
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "title": {
-                    "type": "string",
-                    "description": "Friendly action name"
-                },
-                "target": {
-                    "type": "string",
-                    "description": "Link to invoke action"
-                },
-                "Add@Redfish.AllowableValues": {
-                    "type": "array",
-                    "items": {
-                        "type": "array",
-                        "items": {
-                            "@odata.id": "Resource.1.0.0.json#Resource"
-                        }
-                    },
-                    "description": "This array defines the supported values for this property on this resource.  In this case, a valid reference is supported. Add shall be used to Add members to the manager redundancy group."
-                },
-                "Remove@Redfish.AllowableValues": {
-                    "type": "array",
-                    "items": {
-                        "type": "array",
-                        "items": {
-                            "@odata.id": "Resource.1.0.0.json#Resource"
-                        }
-                    },
-                    "description": "This array defines the supported values for this property on this resource.  In this case, a valid reference is supported. Remove shall be used to remove members from the manager redundancy group."
-                }
+        "SerialConnectTypesSupported":{
+            "type": "string",
+            "enum": [
+                "SSH",
+                "Telnet",
+                "IPMI",
+                "Oem"
+            ],
+            "enumDescriptions": {
+                "SSH": "The controller supports a Serial Console connection using the SSH protocol",
+                "Telnet": "The controller supports a Serial Console connection using the Telnet protocol",
+                "IPMI": "The controller supports a Serial Console connection using the IPMI Serial-over-LAN (SOL) protocol",
+                "Oem": "The controller supports a Serial Console connection using an OEM-specific protocol"
             }
-
+        },
+        "ManagerType":{
+            "type": "string",
+            "enum": [
+                "ManagementController",
+                "EnclosureManager",
+                "BMC",
+                "RackManager",
+                "AuxiliaryController"
+            ],
+            "enumDescriptions": {
+                "ManagementController": "A controller used primarily to monitor or manage the operation of a device or system",
+                "EnclosureManager": "A controller which provides management functions for a chassis or group of devices or systems",
+                "BMC": "A controller which provides management functions for a single computer system",
+                "RackManager": "A controller which provides management functions for a whole or part of a rack",
+                "AuxiliaryController": "A controller which provides management functions for a particular subsystem or group of devices"
+            }
         },
         "GraphicalConsole":{
             "type": "object",
@@ -78,116 +75,7 @@
                 }
             }
         },
-        "CommandConnectTypesSupported":{
-            "type": "string",
-            "enum": [
-                "SSH",
-                "Telnet",
-                "IPMI",
-                "Oem"
-            ],
-            "enumDescriptions": {
-                "SSH": "The controller supports a Command Shell connection using the SSH protocol",
-                "Telnet": "The controller supports a Command Shell connection using the SSH protocol",
-                "IPMI": "The controller supports a Command Shell connection using the SSH protocol",
-                "Oem": "The controller supports a Command Shell connection using an OEM-specific protocol"
-            }
-        },
-        "SerialConsole":{
-            "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
-                    "description": "This property shall specify a valid odata or redfish property."
-                }
-            },
-            "additionalProperties": false,
-            "properties": {
-                "Enabled": {
-                    "type": "boolean",
-                    "description": "Indicates if the service is enabled for this manager.",
-                    "longDescription": "The value of this property shall contain the enabled status of the protocol used for the service.  The value shall be true if enabled and false if disabled."
-                },
-                "MaxConcurrentSessions": {
-                    "type": "number",
-                    "readonly": true,
-                    "description": "Indicates the maximum number of service sessions, regardless of protocol, this manager is able to support.",
-                    "longDescription": "The value of this property shall contain the maximum number of concurrent service sessions supported by the implementation."
-                },
-                "ConnectTypesSupported": {
-                    "type": "array",
-                    "items": {
-                        "type": "string",
-                        "enum": [
-                            "SSH",
-                            "Telnet",
-                            "IPMI",
-                            "Oem"
-                        ],
-                        "enumDescriptions": {
-                            "SSH": "The controller supports a Serial Console connection using the SSH protocol",
-                            "Telnet": "The controller supports a Serial Console connection using the Telnet protocol",
-                            "IPMI": "The controller supports a Serial Console connection using the IPMI Serial-over-LAN (SOL) protocol",
-                            "Oem": "The controller supports a Serial Console connection using an OEM-specific protocol"
-                        }
-                    },
-                    "readonly": true,
-                    "description": "This object is used to enumerate the Serial Console connection types allowed by the implementation.",
-                    "longDescription": "The value of ConnectTypesSupported shall be an array of the enumerations provided here.  SSH shall be included if the Secure Shell (SSH) protocol is supported.  Telnet shall be included if the Telnet protocol is supported.  IPMI shall be included if the IPMI (Serial-over-LAN) protocol is supported."
-                }
-            }
-        },
-        "Reset":{
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "title": {
-                    "type": "string",
-                    "description": "Friendly action name"
-                },
-                "target": {
-                    "type": "string",
-                    "description": "Link to invoke action"
-                }
-            }
-
-        },
-        "GraphicalConnectTypesSupported":{
-            "type": "string",
-            "enum": [
-                "KVMIP",
-                "Oem"
-            ],
-            "enumDescriptions": {
-                "KVMIP": "The controller supports a Graphical Console connection using a KVM-IP (redirection of Keyboard, Video, Mouse over IP) protocol",
-                "Oem": "The controller supports a Graphical Console connection using an OEM-specific protocol"
-            }
-        },
-        "ManagerService":{
-            "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
-                    "description": "This property shall specify a valid odata or redfish property."
-                }
-            },
-            "additionalProperties": false,
-            "properties": {
-                "Enabled": {
-                    "type": "boolean",
-                    "description": "Indicates if the service is enabled for this manager.",
-                    "longDescription": "The value of this property shall contain the enabled status of the protocol used for the service.  The value shall be true if enabled and false if disabled."
-                },
-                "MaxConcurrentSessions": {
-                    "type": "number",
-                    "readonly": true,
-                    "description": "Indicates the maximum number of service sessions, regardless of protocol, this manager is able to support.",
-                    "longDescription": "The value of this property shall contain the maximum number of concurrent service sessions supported by the implementation."
-                }
-            },
-            "description": "Used for describing services like Serial Console, Command Shell or Graphical Console"
-        },
-        "ForceFailover":{
+        "ModifyRedundancySet":{
             "type": "object",
             "additionalProperties": false,
             "properties": {
@@ -199,7 +87,7 @@
                     "type": "string",
                     "description": "Link to invoke action"
                 },
-                "href@Redfish.AllowableValues": {
+                "Add@Redfish.AllowableValues": {
                     "type": "array",
                     "items": {
                         "type": "array",
@@ -207,86 +95,20 @@
                             "@odata.id": "Resource.1.0.0.json#Resource"
                         }
                     },
-                    "description": "This array defines the supported values for this property on this resource.  In this case, a valid reference is supported."
+                    "description": "This array defines the supported values for this property on this resource.  In this case, a valid reference is supported. Add shall be used to Add members to the manager redundancy group."
+                },
+                "Remove@Redfish.AllowableValues": {
+                    "type": "array",
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "@odata.id": "Resource.1.0.0.json#Resource"
+                        }
+                    },
+                    "description": "This array defines the supported values for this property on this resource.  In this case, a valid reference is supported. Remove shall be used to remove members from the manager redundancy group."
                 }
             }
 
-        },
-        "CommandShell":{
-            "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
-                    "description": "This property shall specify a valid odata or redfish property."
-                }
-            },
-            "additionalProperties": false,
-            "properties": {
-                "Enabled": {
-                    "type": "boolean",
-                    "description": "Indicates if the service is enabled for this manager.",
-                    "longDescription": "The value of this property shall contain the enabled status of the protocol used for the service.  The value shall be true if enabled and false if disabled."
-                },
-                "MaxConcurrentSessions": {
-                    "type": "number",
-                    "readonly": true,
-                    "description": "Indicates the maximum number of service sessions, regardless of protocol, this manager is able to support.",
-                    "longDescription": "The value of this property shall contain the maximum number of concurrent service sessions supported by the implementation."
-                },
-                "ConnectTypesSupported": {
-                    "type": "array",
-                    "items": {
-                        "type": "string",
-                        "enum": [
-                            "SSH",
-                            "Telnet",
-                            "IPMI",
-                            "Oem"
-                        ],
-                        "enumDescriptions": {
-                            "SSH": "The controller supports a Command Shell connection using the SSH protocol",
-                            "Telnet": "The controller supports a Command Shell connection using the SSH protocol",
-                            "IPMI": "The controller supports a Command Shell connection using the SSH protocol",
-                            "Oem": "The controller supports a Command Shell connection using an OEM-specific protocol"
-                        }
-                    },
-                    "readonly": true,
-                    "description": "This object is used to enumerate the Command Shell connection types allowed by the implementation.",
-                    "longDescription": "The value of ConnectTypesSupported shall be an array of the enumerations provided here.  SSH shall be included if the Secure Shell (SSH) protocol is supported.  Telnet shall be included if the Telnet protocol is supported.  IPMI shall be included if the IPMI (Serial-over-LAN) protocol is supported."
-                }
-            }
-        },
-        "SerialConnectTypesSupported":{
-            "type": "string",
-            "enum": [
-                "SSH",
-                "Telnet",
-                "IPMI",
-                "Oem"
-            ],
-            "enumDescriptions": {
-                "SSH": "The controller supports a Serial Console connection using the SSH protocol",
-                "Telnet": "The controller supports a Serial Console connection using the Telnet protocol",
-                "IPMI": "The controller supports a Serial Console connection using the IPMI Serial-over-LAN (SOL) protocol",
-                "Oem": "The controller supports a Serial Console connection using an OEM-specific protocol"
-            }
-        },
-        "ManagerType":{
-            "type": "string",
-            "enum": [
-                "ManagementController",
-                "EnclosureManager",
-                "BMC",
-                "RackManager",
-                "AuxiliaryController"
-            ],
-            "enumDescriptions": {
-                "ManagementController": "A controller used primarily to monitor or manage the operation of a device or system",
-                "EnclosureManager": "A controller which provides management functions for a chassis or group of devices or systems",
-                "BMC": "A controller which provides management functions for a single computer system",
-                "RackManager": "A controller which provides management functions for a whole or part of a rack",
-                "AuxiliaryController": "A controller which provides management functions for a particular subsystem or group of devices"
-            }
         },
         "Manager":{
             "type": "object",
@@ -359,36 +181,6 @@
                             "readonly": true,
                             "description": "This property is an array of references to the chasis that this manager has control over.",
                             "longDescription": "This is a reference to a collection of ListenerDestination resources."
-                        },
-                        "EthernetInterfaces": {
-                            "$ref": "http://schemas.dmtf.org/redfish/v1/EthernetInterfaceCollection.1.0.0.json#/definitions/EthernetInterfaceCollection-ref",
-                            "readonly": true,
-                            "description": "This is a reference to a collection of NICs that this manager uses for network communication.  It is here that clients will find NIC configuration options and settings.",
-                            "longDescription": "This is a reference to a collection of ListenerDestination resources."
-                        },
-                        "SerialInterfaces": {
-                            "$ref": "http://schemas.dmtf.org/redfish/v1/SerialInterfaceCollection.1.0.0.json#/definitions/SerialInterfaceCollection-ref",
-                            "readonly": true,
-                            "description": "This is a reference to a collection of serial interfaces that this manager uses for serial and console communication.  It is here that clients will find serial configuration options and settings.",
-                            "longDescription": "The value of this property shall be a link to a collection of SerialInterfaces which are for the use of this manager."
-                        },
-                        "NetworkProtocol": {
-                            "$ref": "http://schemas.dmtf.org/redfish/v1/ManagerNetworkProtocol.1.0.0.json#/definitions/ManagerNetworkProtocol-ref",
-                            "readonly": true,
-                            "description": "This is a reference to the network services and their settings that the manager controls.  It is here that clients will find network configuration options as well as network services.",
-                            "longDescription": "The value of this property shall contain a reference to a resource of type ManagerNetworkProtocol which represents the network services for this manager."
-                        },
-                        "LogServices": {
-                            "$ref": "http://schemas.dmtf.org/redfish/v1/LogServiceCollection.1.0.0.json#/definitions/LogServiceCollection-ref",
-                            "readonly": true,
-                            "description": "This is a reference to a collection of Logs used by the manager.",
-                            "longDescription": "The value of this property shall contain a reference to a collection of LogService which are for the use of this manager."
-                        },
-                        "VirtualMedia": {
-                            "$ref": "http://schemas.dmtf.org/redfish/v1/VirtualMediaCollection.1.0.0.json#/definitions/VirtualMediaCollection-ref",
-                            "readonly": true,
-                            "description": "This is a reference to the virtual media services for this particular manager.",
-                            "longDescription": "The value of this property shall contain a reference to a collection of VirtualMedia which are for the use of this manager."
                         }
                     },
                     "readonly": true,
@@ -401,10 +193,7 @@
                     "longDescription": "This property shall contain the UUID of the Redfish Service Entry Point provided by this manager.  This property shall not be present if this manager does not provide a Redfish Service Entry Point."
                 },
                 "UUID": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/UUID",
                     "readonly": true,
                     "description": "The Universal Unique Identifier (UUID) for this Manager",
                     "longDescription": "The value of this property shall contain the universal unique identifier number for the manager."
@@ -485,14 +274,14 @@
 
                             }
                         },
+                        "#Manager.ModifyRedundancySet": {
+                            "$ref": "#/definitions/ModifyRedundancySet"
+                        },
                         "#Manager.Reset": {
                             "$ref": "#/definitions/Reset"
                         },
                         "#Manager.ForceFailover": {
                             "$ref": "#/definitions/ForceFailover"
-                        },
-                        "#Manager.ModifyRedundancySet": {
-                            "$ref": "#/definitions/ModifyRedundancySet"
                         }
                     },
                     "readonly": true,
@@ -500,6 +289,36 @@
                 },
                 "Status": {
                     "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Status"
+                },
+                "EthernetInterfaces": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/EthernetInterfaceCollection.1.0.0.json#/definitions/EthernetInterfaceCollection-ref",
+                    "readonly": true,
+                    "description": "This is a reference to a collection of NICs that this manager uses for network communication.  It is here that clients will find NIC configuration options and settings.",
+                    "longDescription": "This is a reference to a collection of ListenerDestination resources."
+                },
+                "SerialInterfaces": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/SerialInterfaceCollection.1.0.0.json#/definitions/SerialInterfaceCollection-ref",
+                    "readonly": true,
+                    "description": "This is a reference to a collection of serial interfaces that this manager uses for serial and console communication.  It is here that clients will find serial configuration options and settings.",
+                    "longDescription": "The value of this property shall be a link to a collection of SerialInterfaces which are for the use of this manager."
+                },
+                "NetworkProtocol": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/ManagerNetworkProtocol.1.0.0.json#/definitions/ManagerNetworkProtocol-ref",
+                    "readonly": true,
+                    "description": "This is a reference to the network services and their settings that the manager controls.  It is here that clients will find network configuration options as well as network services.",
+                    "longDescription": "The value of this property shall contain a reference to a resource of type ManagerNetworkProtocol which represents the network services for this manager."
+                },
+                "LogServices": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/LogServiceCollection.1.0.0.json#/definitions/LogServiceCollection-ref",
+                    "readonly": true,
+                    "description": "This is a reference to a collection of Logs used by the manager.",
+                    "longDescription": "The value of this property shall contain a reference to a collection of LogService which are for the use of this manager."
+                },
+                "VirtualMedia": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/VirtualMediaCollection.1.0.0.json#/definitions/VirtualMediaCollection-ref",
+                    "readonly": true,
+                    "description": "This is a reference to the virtual media services for this particular manager.",
+                    "longDescription": "The value of this property shall contain a reference to a collection of VirtualMedia which are for the use of this manager."
                 },
                 "Redundancy": {
                     "type": "array",
@@ -522,6 +341,184 @@
                     "$ref": "#/definitions/Manager"
                 }
             ]
+        },
+        "Reset":{
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "description": "Link to invoke action"
+                }
+            }
+
+        },
+        "ManagerService":{
+            "type": "object",
+            "patternProperties": { 
+                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+                    "type": ["array", "boolean", "number", "null", "object", "string"],
+                    "description": "This property shall specify a valid odata or redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Enabled": {
+                    "type": "boolean",
+                    "description": "Indicates if the service is enabled for this manager.",
+                    "longDescription": "The value of this property shall contain the enabled status of the protocol used for the service.  The value shall be true if enabled and false if disabled."
+                },
+                "MaxConcurrentSessions": {
+                    "type": "number",
+                    "readonly": true,
+                    "description": "Indicates the maximum number of service sessions, regardless of protocol, this manager is able to support.",
+                    "longDescription": "The value of this property shall contain the maximum number of concurrent service sessions supported by the implementation."
+                }
+            },
+            "description": "Used for describing services like Serial Console, Command Shell or Graphical Console"
+        },
+        "GraphicalConnectTypesSupported":{
+            "type": "string",
+            "enum": [
+                "KVMIP",
+                "Oem"
+            ],
+            "enumDescriptions": {
+                "KVMIP": "The controller supports a Graphical Console connection using a KVM-IP (redirection of Keyboard, Video, Mouse over IP) protocol",
+                "Oem": "The controller supports a Graphical Console connection using an OEM-specific protocol"
+            }
+        },
+        "SerialConsole":{
+            "type": "object",
+            "patternProperties": { 
+                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+                    "type": ["array", "boolean", "number", "null", "object", "string"],
+                    "description": "This property shall specify a valid odata or redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Enabled": {
+                    "type": "boolean",
+                    "description": "Indicates if the service is enabled for this manager.",
+                    "longDescription": "The value of this property shall contain the enabled status of the protocol used for the service.  The value shall be true if enabled and false if disabled."
+                },
+                "MaxConcurrentSessions": {
+                    "type": "number",
+                    "readonly": true,
+                    "description": "Indicates the maximum number of service sessions, regardless of protocol, this manager is able to support.",
+                    "longDescription": "The value of this property shall contain the maximum number of concurrent service sessions supported by the implementation."
+                },
+                "ConnectTypesSupported": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "SSH",
+                            "Telnet",
+                            "IPMI",
+                            "Oem"
+                        ],
+                        "enumDescriptions": {
+                            "SSH": "The controller supports a Serial Console connection using the SSH protocol",
+                            "Telnet": "The controller supports a Serial Console connection using the Telnet protocol",
+                            "IPMI": "The controller supports a Serial Console connection using the IPMI Serial-over-LAN (SOL) protocol",
+                            "Oem": "The controller supports a Serial Console connection using an OEM-specific protocol"
+                        }
+                    },
+                    "readonly": true,
+                    "description": "This object is used to enumerate the Serial Console connection types allowed by the implementation.",
+                    "longDescription": "The value of ConnectTypesSupported shall be an array of the enumerations provided here.  SSH shall be included if the Secure Shell (SSH) protocol is supported.  Telnet shall be included if the Telnet protocol is supported.  IPMI shall be included if the IPMI (Serial-over-LAN) protocol is supported."
+                }
+            }
+        },
+        "CommandConnectTypesSupported":{
+            "type": "string",
+            "enum": [
+                "SSH",
+                "Telnet",
+                "IPMI",
+                "Oem"
+            ],
+            "enumDescriptions": {
+                "SSH": "The controller supports a Command Shell connection using the SSH protocol",
+                "Telnet": "The controller supports a Command Shell connection using the SSH protocol",
+                "IPMI": "The controller supports a Command Shell connection using the SSH protocol",
+                "Oem": "The controller supports a Command Shell connection using an OEM-specific protocol"
+            }
+        },
+        "CommandShell":{
+            "type": "object",
+            "patternProperties": { 
+                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+                    "type": ["array", "boolean", "number", "null", "object", "string"],
+                    "description": "This property shall specify a valid odata or redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Enabled": {
+                    "type": "boolean",
+                    "description": "Indicates if the service is enabled for this manager.",
+                    "longDescription": "The value of this property shall contain the enabled status of the protocol used for the service.  The value shall be true if enabled and false if disabled."
+                },
+                "MaxConcurrentSessions": {
+                    "type": "number",
+                    "readonly": true,
+                    "description": "Indicates the maximum number of service sessions, regardless of protocol, this manager is able to support.",
+                    "longDescription": "The value of this property shall contain the maximum number of concurrent service sessions supported by the implementation."
+                },
+                "ConnectTypesSupported": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "SSH",
+                            "Telnet",
+                            "IPMI",
+                            "Oem"
+                        ],
+                        "enumDescriptions": {
+                            "SSH": "The controller supports a Command Shell connection using the SSH protocol",
+                            "Telnet": "The controller supports a Command Shell connection using the SSH protocol",
+                            "IPMI": "The controller supports a Command Shell connection using the SSH protocol",
+                            "Oem": "The controller supports a Command Shell connection using an OEM-specific protocol"
+                        }
+                    },
+                    "readonly": true,
+                    "description": "This object is used to enumerate the Command Shell connection types allowed by the implementation.",
+                    "longDescription": "The value of ConnectTypesSupported shall be an array of the enumerations provided here.  SSH shall be included if the Secure Shell (SSH) protocol is supported.  Telnet shall be included if the Telnet protocol is supported.  IPMI shall be included if the IPMI (Serial-over-LAN) protocol is supported."
+                }
+            }
+        },
+        "ForceFailover":{
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "description": "Link to invoke action"
+                },
+                "href@Redfish.AllowableValues": {
+                    "type": "array",
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "@odata.id": "Resource.1.0.0.json#Resource"
+                        }
+                    },
+                    "description": "This array defines the supported values for this property on this resource.  In this case, a valid reference is supported."
+                }
+            }
+
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."

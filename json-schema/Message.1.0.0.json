@@ -62,6 +62,11 @@
                     ],
                     "description": "Used to provide suggestions on how to resolve the situation that caused the error.",
                     "longDescription": "This property shall contain an override of the Resolution of the message in message registry, if present."
+                },
+                "Oem": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Oem",
+                    "description": "Oem extension object.",
+                    "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
                 }
             }
         }

@@ -3,29 +3,6 @@
     "title": "EventDestinationCollection.1.0.0",
     "$ref": "#/definitions/EventDestinationCollection",
     "definitions":{
-        "Members":{
-            "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
-                    "description": "This property shall specify a valid odata or redfish property."
-                }
-            },
-            "additionalProperties": false,
-            "properties": {
-                "Members@odata.count": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/count"
-                },
-                "Members": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "http://schemas.dmtf.org/redfish/v1/EventDestination.1.0.0.json#/definitions/EventDestination-ref"
-                    },
-                    "readonly": true,
-                    "description": "Contains the members of this collection."
-                }
-            }
-        },
         "EventDestinationCollection":{
             "type": "object",
             "patternProperties": { 
@@ -59,10 +36,13 @@
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
-                "Links": {
-                    "ERROR": "type EventDestination.Members unrecognized.",
+                "Members": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "http://schemas.dmtf.org/redfish/v1/EventDestination.1.0.0.json#/definitions/EventDestination-ref"
+                    },
                     "readonly": true,
-                    "description": "Contains links to other resources that are related to this resource."
+                    "description": "Contains the members of this collection."
                 }
             }
         }

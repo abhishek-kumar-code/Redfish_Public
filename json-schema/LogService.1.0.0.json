@@ -16,21 +16,6 @@
                 "NeverOverWrites": "When full, new entries to the Log will be discarded"
             }
         },
-        "ClearLog":{
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "title": {
-                    "type": "string",
-                    "description": "Friendly action name"
-                },
-                "target": {
-                    "type": "string",
-                    "description": "Link to invoke action"
-                }
-            }
-
-        },
         "LogService":{
             "type": "object",
             "patternProperties": { 
@@ -96,34 +81,6 @@
                     "longDescription": "The value is property shall represent the offset from UTC time that the current value of DataTime property contains.",
                     "pattern": "([-+][0-1][0-9]:[0-5][0-9])"
                 },
-                "Links": {
-                    "type": "object",
-                    "patternProperties": { 
-                        "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
-                            "type": ["array", "boolean", "number", "null", "object", "string"],
-                            "description": "This property shall specify a valid odata or redfish property."
-                        }
-                    },
-                    "additionalProperties": false,
-                    "properties": {
-                        "Oem": {
-                            "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Oem",
-                            "description": "Oem extension object.",
-                            "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
-                        },
-                        "Entries": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "http://schemas.dmtf.org/redfish/v1/LogEntry.1.0.0.json#/definitions/LogEntry-ref"
-                            },
-                            "readonly": true,
-                            "description": "References to the log entry collection.",
-                            "longDescription": "The value of this property shall reference a collection of LogEntry resources."
-                        }
-                    },
-                    "readonly": true,
-                    "description": "The links object contains the links to other resources that are related to this resource."
-                },
                 "Actions": {
                     "type": "object",
                     "patternProperties": { 
@@ -153,6 +110,15 @@
                 },
                 "Status": {
                     "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Status"
+                },
+                "Entries": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "http://schemas.dmtf.org/redfish/v1/LogEntry.1.0.0.json#/definitions/LogEntry-ref"
+                    },
+                    "readonly": true,
+                    "description": "References to the log entry collection.",
+                    "longDescription": "The value of this property shall reference a collection of LogEntry resources."
                 }
             },
             "description": "This resource represents the log service for the resource or service to which it is associated.",
@@ -167,6 +133,21 @@
                     "$ref": "#/definitions/LogService"
                 }
             ]
+        },
+        "ClearLog":{
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "description": "Link to invoke action"
+                }
+            }
+
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
