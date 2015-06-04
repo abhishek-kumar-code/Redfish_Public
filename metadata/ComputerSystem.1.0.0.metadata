@@ -97,7 +97,8 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the power state of the system."/>
         </Property>
         <Property Name="Boot" Type="ComputerSystem.Boot"  Nullable="false">
-          <Annotation Term="OData.Description" String="This object contains the boot information for the current resource."/>
+          <Annotation Term="OData.Description" String="Information about the boot settings for this system"/>
+          <Annotation Term="OData.LongDescription" String="This object shall contain properties which describe boot information for the current resource."/>
         </Property>
         <Property Name="BiosVersion" Type="Edm.String">
           <Annotation Term="OData.Description" String="The version of the system BIOS or primary system firmware."/>
@@ -105,9 +106,11 @@
         </Property>
         <Property Name="ProcessorSummary" Type="ComputerSystem.ProcessorSummary"  Nullable="false">
           <Annotation Term="OData.Description" String="This object describes the central processors of the system in general detail."/>
+		  <Annotation Term="OData.LongDescription" String="This object shall contain properties which describe the central processors for the current resource."/>
         </Property>
         <Property Name="MemorySummary" Type="ComputerSystem.MemorySummary"  Nullable="false">
           <Annotation Term="OData.Description" String="This object describes the central memory of the system in general detail."/>
+          <Annotation Term="OData.LongDescription" String="This object shall contain properties which describe the central memory for the current resource."/>
         </Property>
         <Property Name="Actions" Type="ComputerSystem.Actions" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>

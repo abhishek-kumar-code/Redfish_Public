@@ -39,39 +39,48 @@
         </Property>
         <Property Name="HTTP" Type="NetworkProtocol.Protocol" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="This object is used for the HTTP protocol settings for the manager. The default value of the Port property shall be 80 for compatibility with established client implementations."/>
+          <Annotation Term="OData.Description" String="Settings for this Manager's HTTP protocol support"/>	  
+          <Annotation Term="OData.LongDescription" String="This object shall contain information for the HTTP protocol settings for the manager. The default value of the Port property shall be 80 for compatibility with established client implementations."/>
         </Property>
         <Property Name="HTTPS" Type="NetworkProtocol.Protocol" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="This object is used for the HTTPS/SSL settings for the manager. The default value of the Port property shall be 443 for compatibility with established client implementations."/>
+          <Annotation Term="OData.Description" String="Settings for this Manager's HTTPS protocol support"/>	  
+          <Annotation Term="OData.LongDescription" String="This object shall contain information for the HTTPS/SSL protocol settings for this manager. The default value of the Port property shall be 443 for compatibility with established client implementations."/>
         </Property>
         <Property Name="SNMP" Type="NetworkProtocol.Protocol" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="This object is used for the SNMP protocol settings for the manager. The default value of the Port property shall be 161 for compatibility with established client implementations."/>
+		  <Annotation Term="OData.Description" String="Settings for this Manager's SNMP support"/>	  
+          <Annotation Term="OData.LongDescription" String="This object shall contain information for the SNMP protocol settings for this manager. The default value of the Port property shall be 161 for compatibility with established client implementations."/>
         </Property>
         <Property Name="VirtualMedia" Type="NetworkProtocol.Protocol" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="This object is used for the Virtual Media protocol settings for the manager. The value of the Port property shall contain the TCP port assigned for Virtual Media usage."/>
+		  <Annotation Term="OData.Description" String="Settings for this Manager's Virtual Media support"/>	 		  
+          <Annotation Term="OData.LongDescription" String="This object shall contain information for the Virtual Media protocol settings for this manager. The value of the Port property shall contain the TCP port assigned for Virtual Media usage."/>
         </Property>
         <Property Name="Telnet" Type="NetworkProtocol.Protocol" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="This object is used for the Telnet protocol settings for the manager. The default value of the Port property shall be 23 for compatibility with established client implementations."/>
+		  <Annotation Term="OData.Description" String="Settings for this Manager's Telnet protocol support"/>	 		  
+          <Annotation Term="OData.LongDescription" String="This object shall contain information for the Telnet protocol settings for this manager. The default value of the Port property shall be 23 for compatibility with established client implementations."/>
         </Property>
         <Property Name="SSDP" Type="NetworkProtocol.SSDProtocol" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="This object is used for the SSDP protocol settings for the manager.  Simple Service Discovery Protocol (SSDP) is for network discovery of devices supporting the Redfish service. The default value of the Port property shall be 1900 for compatibility with established client implementations."/>
+		  <Annotation Term="OData.Description" String="Settings for this Manager's SSDP support"/>	 		  
+          <Annotation Term="OData.LongDescription" String="This object shall contain information for the SSDP protocol settings for this manager.  Simple Service Discovery Protocol (SSDP) is for network discovery of devices supporting the Redfish service. The default value of the Port property shall be 1900 for compatibility with established client implementations."/>
         </Property>
         <Property Name="IPMI" Type="NetworkProtocol.Protocol" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="This object is used for the IPMI over LAN protocol settings for the manager. The default value of the Port property shall be 623 for compatibility with established client implementations."/>
+		  <Annotation Term="OData.Description" String="Settings for this Manager's IPMI-over-LAN protocol support"/>	 		  
+          <Annotation Term="OData.LongDescription" String="This object shall contain information for the IPMI over LAN protocol settings for the manager. The default value of the Port property shall be 623 for compatibility with established client implementations."/>
         </Property>
         <Property Name="SSH" Type="NetworkProtocol.Protocol" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="This object is used for the SSH protocol settings for the manager. The default value of the Port property shall be 22 for compatibility with established client implementations."/>
+		  <Annotation Term="OData.Description" String="Settings for this Manager's SSH (Secure Shell) protocol support"/>	 		  
+          <Annotation Term="OData.LongDescription" String="This object shall contain information for the SSH protocol settings for the manager. The default value of the Port property shall be 22 for compatibility with established client implementations."/>
         </Property>
         <Property Name="KVMIP" Type="NetworkProtocol.Protocol" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="This object is used for the KVM-IP (Keyboard, Video, Mouse) protocol settings for the manager. The value of the Port property shall contain the TCP port assigned for SSH usage.  The default value shall be 22 for compatibility with established client implementations."/>
+		  <Annotation Term="OData.Description" String="Settings for this Manager's KVM-IP protocol support"/>	 
+          <Annotation Term="OData.LongDescription" String="This object shall contain information for the KVM-IP (Keyboard, Video, Mouse) protocol settings for the manager."/>
         </Property>
         <Property Name="Status" Type="Resource.Status"/>
       </EntityType>
