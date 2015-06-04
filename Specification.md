@@ -22,6 +22,7 @@ The DMTF acknowledges the following individuals for their contributions to this 
 * Jeff Autor - Hewlett-Packard Company
 * David Brockhaus - Emerson Network Power
 * Richard Brunner - VMware Inc.
+* Lee Calcote - Seagate Technology
 * P Chandrasekhar - Dell Inc
 * Chris Davenport - Hewlett-Packard Company
 * Gamma Dean - Emerson Network Power
@@ -1830,6 +1831,8 @@ The specific syntax of the subscription body is found in the Redfish Schema.
 
 On success, the "subscribe" action shall return with HTTP status 201 (CREATED) and the Location header in the response shall contain a URI giving the location of the newly created "subscription" resource. The body of the response, if any, shall contain a representation of the subscription resource. Sending an HTTP GET to the subscription resource shall return the configuration of the subscription. 
 
+Clients begin receiving events once a subscription has been registered with the service and do not receive events retroactively. Historical events are not retained by the service.
+
 #### Event Message Objects
 
 Event message objects POSTed to the specified client endpoint shall contain the properties as described in the Redfish Event Schema.
@@ -1851,10 +1854,7 @@ where
 
 To unsubscribe from the messages associated with this subscription, the client or administrator simply sends an HTTP DELETE request to the subscription resource URI.
 
-In order to avoid "orphan" subscriptions (subscriptions not cleaned up by the client, e.g., in the case the client has died or simply forgets to delete a subscription), the event service can be configured to automatically delete subscriptions under the following circumstances:
-
-* The service received an error POSTing to the configured event destination URL (client-url  field of the subscription) some service-defined number of consecutive times within a configurable time window.  See the properties defined in the EventService schema for details.
-
+These are some configurable properties that are global settings that define the behavior for all event subscriptions. See the properties defined in the EventService schema for details of the parameters available to configure the service’s behavior.
 
 ### Asynchronous Operations
 
