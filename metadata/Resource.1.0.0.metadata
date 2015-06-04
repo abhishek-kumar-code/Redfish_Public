@@ -72,12 +72,6 @@
         <Annotation Term="Redfish.Required"/>
       </TypeDefinition>
 
-      <TypeDefinition Name="Modified" UnderlyingType="Edm.DateTimeOffset">
-        <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-        <Annotation Term="OData.Description" String="The date-time stamp that the object was last modified."/>
-        <Annotation Term="OData.LongDescription" String="This object represents the Modified property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification. The value of this string shall be of the format for the reserved word *Modified*."/>
-      </TypeDefinition>
-
       <!--Base entity type for all resource collection objects-->
       <EntityType Name="ResourceCollection" Abstract="True">
         <Annotation Term="OData.AdditionalProperties" Bool="False"/>
@@ -86,7 +80,6 @@
         </Key>
         <Property Name="Description" Type="Resource.Description"/>
         <Property Name="Name" Type="Resource.Name" Nullable="false"/>
-        <Property Name="Modified" Type="Resource.Modified" Nullable="false"/>
         <Property Name="Oem" Type="Resource.Oem">
           <Annotation Term="OData.Description" String="This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections."/>
           <Annotation Term="OData.LongDescription" String="The value of this string shall be of the format for the reserved word *Oem*."/>
