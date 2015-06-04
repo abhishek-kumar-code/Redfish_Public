@@ -308,7 +308,7 @@ For example, in the following URL:
     Example: https://mgmt.vendor.com/redfish/v1/Systems/1
 
 * The first part is the scheme and authority portion (https://mgmr.vendor.com).
-* The second part is the root service and version (/redfish/v1).
+* The second part is the root service and version (/redfish/v1/).
 * The third part is the unique resource path (Systems/1).
 
 The scheme and authority part of the URI shall not be considered part of the unique _identifier_ of the resource. This is due to redirection capabilities and local operations which may result in the variability of the connection portion.  The remainder of the URI (the service and resource paths) is what _uniquely identifies_ the resource, and this is what is returned in all Redfish payloads.  
@@ -391,7 +391,7 @@ The protocol version is separate from the version of the resources or the versio
 
 Each version of the Redfish protocol is strongly typed.  This is accomplished using the URI of the Redfish service in combination with the resource obtained at that URI, called the ServiceRoot. 
 
-The root URI for this version of the Redfish protocol shall be "/redfish/v1".
+The root URI for this version of the Redfish protocol shall be "/redfish/v1/".
 
 While the major version of the protocol is represented in the URI, the major version, minor version and errata version of the protocol are represented in the Version property of the ServiceRoot resource, as defined in the Schema for that resource.  The protocol version is a string of the form: 
 
@@ -405,13 +405,33 @@ While the major version of the protocol is represented in the URI, the major ver
 
 Any resource discovered through links found by accessing the root service or any service or resource referenced using references from the root service shall conform to the same version of the protocol supported by the root service.
 
-A GET on the resource "/redfish" shall return the following body:
+A GET on the resource "/redfish/" shall return the following body:
 
 ~~~json
 	{
-	"v1": "/redfish/v1"
+	"v1": "/redfish/v1/"
 	}
 ~~~
+
+### Redfish-Defined URIs and Relative URI Rules
+
+Redfish is a hypermedia API with a small set of defined URIs.  All other resources are accessible via opaque URIs referenced from the root service.  The following Redfish-defined URIs shall be supported by a Redfish service:
+
+| URI                     | Description                                      
+| ---------               | -----------                                      
+| /redfish/               | The URI that is used to return the version       .
+| /redfish/v1/            | The URI for the Redfish Service Root             
+| /redfish/v1/odata       | The URI for the Redfish Odata Service Document
+| /redfish/v1/$metadata   | The URI for the Redfish Metadata Document
+
+In addition, the following URIs without trailing slash shall be either Redirected to the Associated Redfish-defined URI shown in the table below or else shall be treated by the service as the equivalent URI to the associated Redfish-defined URI:
+
+| URI                     | Associated Redfish-Defined URI         .
+| ---------               | -----------                            
+| /redfish                | /redfish/                              
+| /redfish/v1             | /redfish/v1/                           
+
+If a service implementation chooses not to redirect these two APIs and instead treat them as equivalent APIs, then all relative URIs used by the service shall include the full path starting with /redfish/v1/...  
 
 ### Requests
 
@@ -468,9 +488,7 @@ The GET method is used to retrieve a representation of a resource.  That represe
   
 ##### Service Root Request
 
-The root URL for Redfish version 1 services shall be "/redfish/v1".
-
-Additionally, the latest supported Redfish service shall be aliased at "/redfish". In this case the endpoint at "/redfish" may be an HTTP redirect to "/redfish/v1".
+The root URL for Redfish version 1 services shall be "/redfish/v1/".
 
 The root URL for the service returns a RootService resource as defined by this specification.
 
@@ -802,7 +820,7 @@ The OData Service Document serves as a top-level entry point for generic OData c
         {
             "name": "Service",
             "kind": "Singleton",
-            "url": "/redfish/v1"
+            "url": "/redfish/v1/"
         },
         {
             "name": "Systems",
