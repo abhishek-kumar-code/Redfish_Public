@@ -79,7 +79,7 @@
                     "longDescription": "This property shall reference the threshold of time in seconds from the last failed login attempt at which point the AccountLockoutThreshold counter (that counts number of failed login attempts) is reset back to zero (at which point AccountLockoutThreshold failures would be required before the account is locked).  This value shall be less than or equal to AccountLockoutDuration. The threshold counter also resets to zero after each successful login."
                 },
                 "Accounts": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/ManagerAccount.1.0.0.json#/definitions/ManagerAccountCollection-ref",
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/ManagerAccountCollection.1.0.0.json#/definitions/ManagerAccountCollection-ref",
                     "readonly": true,
                     "description": "Link to a collection of ManagerAccounts",
                     "longDescription": "This property shall contain the link to a collection of ManagerAccounts."

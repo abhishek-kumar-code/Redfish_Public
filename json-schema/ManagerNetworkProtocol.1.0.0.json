@@ -3,32 +3,17 @@
     "title": "ManagerNetworkProtocol.1.0.0",
     "$ref": "#/definitions/ManagerNetworkProtocol",
     "definitions":{
-        "Protocol":{
-            "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
-                    "description": "This property shall specify a valid odata or redfish property."
-                }
-            },
-            "additionalProperties": false,
-            "properties": {
-                "Enabled": {
-                    "type": [
-                        "boolean",
-                        "null"
-                    ],
-                    "description": "Indicates if the protocol is enabled or disabled",
-                    "longDescription": "The value of this property shall contain the enabled status of the protocol.  The value shall be true if enabled and false if disabled."
-                },
-                "Port": {
-                    "type": [
-                        "number",
-                        "null"
-                    ],
-                    "description": "Indicates the protocol port.",
-                    "longDescription": "The value of this property shall contain the port assigned for the protocol."
-                }
+        "NotifyIPv6Scope":{
+            "type": "string",
+            "enum": [
+                "Link",
+                "Site",
+                "Organization"
+            ],
+            "enumDescriptions": {
+                "Link": "SSDP Notify messages are sent to addresses in the IPv6 Local Link scope",
+                "Site": "SSDP Notify messages are sent to addresses in the IPv6 Local Site scope",
+                "Organization": "SSDP Notify messages are sent to addresses in the IPv6 Local Organization scope"
             }
         },
         "SSDProtocol":{
@@ -77,6 +62,34 @@
                     "ERROR": "type NetworkProtocol.NotifyIPv6Scope unrecognized.",
                     "description": "Indicates the scope for the IPv6 Notify messages for SSDP.",
                     "longDescription": "The value of this property shall contain the IPv6 scope used for multicast NOTIFY messages.  The valid enumerations are a subset of the available IPv6 Scope types."
+                }
+            }
+        },
+        "Protocol":{
+            "type": "object",
+            "patternProperties": { 
+                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+                    "type": ["array", "boolean", "number", "null", "object", "string"],
+                    "description": "This property shall specify a valid odata or redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Enabled": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "description": "Indicates if the protocol is enabled or disabled",
+                    "longDescription": "The value of this property shall contain the enabled status of the protocol.  The value shall be true if enabled and false if disabled."
+                },
+                "Port": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "description": "Indicates the protocol port.",
+                    "longDescription": "The value of this property shall contain the port assigned for the protocol."
                 }
             }
         },
@@ -134,47 +147,56 @@
                 "HTTP": {
                     "$ref": "#/definitions/Protocol",
                     "readonly": true,
-                    "description": "This object is used for the HTTP protocol settings for the manager. The default value of the Port property shall be 80 for compatibility with established client implementations."
+                    "description": "Settings for this Manager's HTTP protocol support",
+                    "longDescription": "This object shall contain information for the HTTP protocol settings for the manager. The default value of the Port property shall be 80 for compatibility with established client implementations."
                 },
                 "HTTPS": {
                     "$ref": "#/definitions/Protocol",
                     "readonly": true,
-                    "description": "This object is used for the HTTPS/SSL settings for the manager. The default value of the Port property shall be 443 for compatibility with established client implementations."
+                    "description": "Settings for this Manager's HTTPS protocol support",
+                    "longDescription": "This object shall contain information for the HTTPS/SSL protocol settings for this manager. The default value of the Port property shall be 443 for compatibility with established client implementations."
                 },
                 "SNMP": {
                     "$ref": "#/definitions/Protocol",
                     "readonly": true,
-                    "description": "This object is used for the SNMP protocol settings for the manager. The default value of the Port property shall be 161 for compatibility with established client implementations."
+                    "description": "Settings for this Manager's SNMP support",
+                    "longDescription": "This object shall contain information for the SNMP protocol settings for this manager. The default value of the Port property shall be 161 for compatibility with established client implementations."
                 },
                 "VirtualMedia": {
                     "$ref": "#/definitions/Protocol",
                     "readonly": true,
-                    "description": "This object is used for the Virtual Media protocol settings for the manager. The value of the Port property shall contain the TCP port assigned for Virtual Media usage."
+                    "description": "Settings for this Manager's Virtual Media support",
+                    "longDescription": "This object shall contain information for the Virtual Media protocol settings for this manager. The value of the Port property shall contain the TCP port assigned for Virtual Media usage."
                 },
                 "Telnet": {
                     "$ref": "#/definitions/Protocol",
                     "readonly": true,
-                    "description": "This object is used for the Telnet protocol settings for the manager. The default value of the Port property shall be 23 for compatibility with established client implementations."
+                    "description": "Settings for this Manager's Telnet protocol support",
+                    "longDescription": "This object shall contain information for the Telnet protocol settings for this manager. The default value of the Port property shall be 23 for compatibility with established client implementations."
                 },
                 "SSDP": {
                     "$ref": "#/definitions/SSDProtocol",
                     "readonly": true,
-                    "description": "This object is used for the SSDP protocol settings for the manager.  Simple Service Discovery Protocol (SSDP) is for network discovery of devices supporting the Redfish service. The default value of the Port property shall be 1900 for compatibility with established client implementations."
+                    "description": "Settings for this Manager's SSDP support",
+                    "longDescription": "This object shall contain information for the SSDP protocol settings for this manager.  Simple Service Discovery Protocol (SSDP) is for network discovery of devices supporting the Redfish service. The default value of the Port property shall be 1900 for compatibility with established client implementations."
                 },
                 "IPMI": {
                     "$ref": "#/definitions/Protocol",
                     "readonly": true,
-                    "description": "This object is used for the IPMI over LAN protocol settings for the manager. The default value of the Port property shall be 623 for compatibility with established client implementations."
+                    "description": "Settings for this Manager's IPMI-over-LAN protocol support",
+                    "longDescription": "This object shall contain information for the IPMI over LAN protocol settings for the manager. The default value of the Port property shall be 623 for compatibility with established client implementations."
                 },
                 "SSH": {
                     "$ref": "#/definitions/Protocol",
                     "readonly": true,
-                    "description": "This object is used for the SSH protocol settings for the manager. The default value of the Port property shall be 22 for compatibility with established client implementations."
+                    "description": "Settings for this Manager's SSH (Secure Shell) protocol support",
+                    "longDescription": "This object shall contain information for the SSH protocol settings for the manager. The default value of the Port property shall be 22 for compatibility with established client implementations."
                 },
                 "KVMIP": {
                     "$ref": "#/definitions/Protocol",
                     "readonly": true,
-                    "description": "This object is used for the KVM-IP (Keyboard, Video, Mouse) protocol settings for the manager. The value of the Port property shall contain the TCP port assigned for SSH usage.  The default value shall be 22 for compatibility with established client implementations."
+                    "description": "Settings for this Manager's KVM-IP protocol support",
+                    "longDescription": "This object shall contain information for the KVM-IP (Keyboard, Video, Mouse) protocol settings for the manager."
                 },
                 "Status": {
                     "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Status"
@@ -192,19 +214,6 @@
                     "$ref": "#/definitions/ManagerNetworkProtocol"
                 }
             ]
-        },
-        "NotifyIPv6Scope":{
-            "type": "string",
-            "enum": [
-                "Link",
-                "Site",
-                "Organization"
-            ],
-            "enumDescriptions": {
-                "Link": "SSDP Notify messages are sent to addresses in the IPv6 Local Link scope",
-                "Site": "SSDP Notify messages are sent to addresses in the IPv6 Local Site scope",
-                "Organization": "SSDP Notify messages are sent to addresses in the IPv6 Local Organization scope"
-            }
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
