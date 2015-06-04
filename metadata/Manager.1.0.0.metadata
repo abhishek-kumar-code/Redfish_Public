@@ -119,13 +119,16 @@
           <Annotation Term="OData.LongDescription" String="This property shall contain the firwmare version as defined by the manufacturer for the associated manager."/>
         </Property>
         <Property Name="SerialConsole" Type="Manager.SerialConsole" Nullable="false">
-          <Annotation Term="OData.Description" String="The value of this property shall contain the information about the Serial Console service of this manager."/>
+          <Annotation Term="OData.Description" String="Information about the Serial Console service provided by this manager."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain information about the Serial Console service of this manager."/>		  
         </Property>
         <Property Name="CommandShell" Type="Manager.CommandShell">
-          <Annotation Term="OData.Description" String="The value of this property shall contain the information about the Command Shell service of this manager."/>
+          <Annotation Term="OData.Description" String="Information about the Command Shell service provided by this manager."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain information about the Command Shell service of this manager."/>
         </Property>
         <Property Name="GraphicalConsole" Type="Manager.GraphicalConsole">
           <Annotation Term="OData.Description" String="The value of this property shall contain the information about the Graphical Console (KVM-IP) service of this manager."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the information about the Graphical Console (KVM-IP) service of this manager."/>
         </Property>
         <Property Name="Actions" Type="Manager.Actions" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>

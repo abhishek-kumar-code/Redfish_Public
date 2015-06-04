@@ -21,6 +21,7 @@
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent an event for a Redfish implementation."/>
         <NavigationProperty Name="Events" Type="Collection(Event.EventRecord)" Nullable="false">
           <Annotation Term="OData.Description" String="Each event in this array has a set of properties that describe the event.  Since this is an array, more than one event can be sent simultaneously."/>
+		  <Annotation Term="OData.LongDescription" String="The value of this resource shall be an array of Event objects used to represent the occurrence of one or more events."/>
           <Annotation Term="Redfish.Required"/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
