@@ -25,6 +25,7 @@
         <Property Name="Created" Type="Edm.DateTimeOffset" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The time the log entry was created."/>
+		  <Annotation Term="OData.LongDescription" String="The value of this property shall be the time at which the log entry was created."/>
         </Property>
         <Property Name="EntryType" Type="LogEntry.LogEntryType" Nullable="false">
           <Annotation Term="Redfish.RequiredOnCreate"/>

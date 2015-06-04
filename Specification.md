@@ -22,6 +22,7 @@ The DMTF acknowledges the following individuals for their contributions to this 
 * Jeff Autor - Hewlett-Packard Company
 * David Brockhaus - Emerson Network Power
 * Richard Brunner - VMware Inc.
+* Lee Calcote - Seagate Technology
 * P Chandrasekhar - Dell Inc
 * Chris Davenport - Hewlett-Packard Company
 * Gamma Dean - Emerson Network Power
@@ -308,7 +309,7 @@ For example, in the following URL:
     Example: https://mgmt.vendor.com/redfish/v1/Systems/1
 
 * The first part is the scheme and authority portion (https://mgmr.vendor.com).
-* The second part is the root service and version (/redfish/v1).
+* The second part is the root service and version (/redfish/v1/).
 * The third part is the unique resource path (Systems/1).
 
 The scheme and authority part of the URI shall not be considered part of the unique _identifier_ of the resource. This is due to redirection capabilities and local operations which may result in the variability of the connection portion.  The remainder of the URI (the service and resource paths) is what _uniquely identifies_ the resource, and this is what is returned in all Redfish payloads.  
@@ -391,7 +392,7 @@ The protocol version is separate from the version of the resources or the versio
 
 Each version of the Redfish protocol is strongly typed.  This is accomplished using the URI of the Redfish service in combination with the resource obtained at that URI, called the ServiceRoot. 
 
-The root URI for this version of the Redfish protocol shall be "/redfish/v1".
+The root URI for this version of the Redfish protocol shall be "/redfish/v1/".
 
 While the major version of the protocol is represented in the URI, the major version, minor version and errata version of the protocol are represented in the Version property of the ServiceRoot resource, as defined in the Schema for that resource.  The protocol version is a string of the form: 
 
@@ -405,13 +406,33 @@ While the major version of the protocol is represented in the URI, the major ver
 
 Any resource discovered through links found by accessing the root service or any service or resource referenced using references from the root service shall conform to the same version of the protocol supported by the root service.
 
-A GET on the resource "/redfish" shall return the following body:
+A GET on the resource "/redfish/" shall return the following body:
 
 ~~~json
 	{
-	"v1": "/redfish/v1"
+	"v1": "/redfish/v1/"
 	}
 ~~~
+
+### Redfish-Defined URIs and Relative URI Rules
+
+Redfish is a hypermedia API with a small set of defined URIs.  All other resources are accessible via opaque URIs referenced from the root service.  The following Redfish-defined URIs shall be supported by a Redfish service:
+
+| URI                     | Description                                      
+| ---------               | -----------                                      
+| /redfish/               | The URI that is used to return the version       .
+| /redfish/v1/            | The URI for the Redfish Service Root             
+| /redfish/v1/odata       | The URI for the Redfish Odata Service Document
+| /redfish/v1/$metadata   | The URI for the Redfish Metadata Document
+
+In addition, the following URIs without trailing slash shall be either Redirected to the Associated Redfish-defined URI shown in the table below or else shall be treated by the service as the equivalent URI to the associated Redfish-defined URI:
+
+| URI                     | Associated Redfish-Defined URI         .
+| ---------               | -----------                            
+| /redfish                | /redfish/                              
+| /redfish/v1             | /redfish/v1/                           
+
+If a service implementation chooses not to redirect these two APIs and instead treat them as equivalent APIs, then all relative URIs used by the service shall include the full path starting with /redfish/v1/...  
 
 ### Requests
 
@@ -468,9 +489,7 @@ The GET method is used to retrieve a representation of a resource.  That represe
   
 ##### Service Root Request
 
-The root URL for Redfish version 1 services shall be "/redfish/v1".
-
-Additionally, the latest supported Redfish service shall be aliased at "/redfish". In this case the endpoint at "/redfish" may be an HTTP redirect to "/redfish/v1".
+The root URL for Redfish version 1 services shall be "/redfish/v1/".
 
 The root URL for the service returns a RootService resource as defined by this specification.
 
@@ -802,7 +821,7 @@ The OData Service Document serves as a top-level entry point for generic OData c
         {
             "name": "Service",
             "kind": "Singleton",
-            "url": "/redfish/v1"
+            "url": "/redfish/v1/"
         },
         {
             "name": "Systems",
@@ -867,7 +886,7 @@ Expanded navigation properties shall be included in the select list if the resul
 For example, the following context URL specifies that the result contains a single resource from the Members collection nested under the Links property of the Systems resource:
 
 ~~~json
-"@odata.context":"/redfish/v1/$metadata#Systems/Links/Members/$entity", 
+"@odata.context":"/redfish/v1/$metadata#Systems/Members/$entity", 
 ~~~ 
 
 ##### Resource Identifier Property
@@ -1042,7 +1061,7 @@ A JSON object can be annotated with "@Message.ExtendedInfo" in order to specify 
 
 ~~~json
 {
-    "@odata.context": "/redfish/v1/$metadata#SessionService/Links/Sessions/Links/Members/$entity",
+    "@odata.context": "/redfish/v1/$metadata#SessionService/Sessions/Members/$entity",
     "@odata.id": "/redfish/v1/SessionService/Sessions/Administrator1",
     "@odata.type": "#Session.0.94.0.Session",
     "Id": "Administrator1",
@@ -1068,7 +1087,7 @@ An individual property within a JSON object can be annotated with extended infor
 
 ~~~json
 {
-    "@odata.context": "/redfish/v1/$metadata/Sessions/Links/Members/$entity",
+    "@odata.context": "/redfish/v1/$metadata/Sessions/Members/$entity",
     "@odata.id": "/redfish/v1/Sessions/Administrator1",
     "@odata.type": "#Session.<%= DocVersion %>.Session",
     "Id": "Administrator1",
@@ -1160,18 +1179,18 @@ Error responses are defined by an extended error resource, represented as a sing
 
 | Property                | Description                                                                                                                                                                            |
 | ---                     | ---                                                                                                                                                                                    |
-| code                    | String indicating a specific error or message (not to be confused with the HTTP status code). This code can be used to access a detailed message from a message registry.              |
-| message                 | A human readable error message indicating the semantics associated with the error. 
+| code                    | A string indicating a specific MessageId from the message registry. "GeneralError" should be used only if there is no better message.              |
+| message                 | A human readable error message corresponding to the message in the message registry. 
 | @Message.ExtendedInfo   | An array of [message objects](#message-object) describing one or more error message(s). 
 
 ~~~json
 {
     "error": {
-        "code": "400",
-        "message": "The update operation failed.",
+        "code": "Base.1.0.0.GeneralError",
+        "message": "A general error has occurred. See ExtendedInfo for more information.",
         "@Message.ExtendedInfo": [
             {
-                "MessageId": "Base.<%= DocVersion.replace(/\.[^\.]+$/, '') %>.PropertyValueNotInList",
+                "MessageId": "Base.1.0.0.PropertyValueNotInList",
                 "PropertiesInError": [ 
 					"IndicatorLED" 
 				],
@@ -1184,11 +1203,11 @@ Error responses are defined by an extended error resource, represented as a sing
                 "Resolution": "Remove the property from the request body and resubmit the request if the operation failed"
             },
             {
-                "MessageId": "Base.<%= DocVersion.replace(/\.[^\.]+$/, '') %>.PropertyNotWriteable",
+                "MessageId": "Base.1.0.0.PropertyNotWriteable",
                 "PropertiesInError": [ 
 					"SKU" 
 				],
-                "Message": "The property %1 is a read only property and cannot be assigned a value",
+                "Message": "The property SKU is a read only property and cannot be assigned a value",
                 "MssageArgs": [
                     "SKU"
                 ],
@@ -1830,6 +1849,8 @@ The specific syntax of the subscription body is found in the Redfish Schema.
 
 On success, the "subscribe" action shall return with HTTP status 201 (CREATED) and the Location header in the response shall contain a URI giving the location of the newly created "subscription" resource. The body of the response, if any, shall contain a representation of the subscription resource. Sending an HTTP GET to the subscription resource shall return the configuration of the subscription. 
 
+Clients begin receiving events once a subscription has been registered with the service and do not receive events retroactively. Historical events are not retained by the service.
+
 #### Event Message Objects
 
 Event message objects POSTed to the specified client endpoint shall contain the properties as described in the Redfish Event Schema.
@@ -1851,10 +1872,7 @@ where
 
 To unsubscribe from the messages associated with this subscription, the client or administrator simply sends an HTTP DELETE request to the subscription resource URI.
 
-In order to avoid "orphan" subscriptions (subscriptions not cleaned up by the client, e.g., in the case the client has died or simply forgets to delete a subscription), the event service can be configured to automatically delete subscriptions under the following circumstances:
-
-* The service received an error POSTing to the configured event destination URL (client-url  field of the subscription) some service-defined number of consecutive times within a configurable time window.  See the properties defined in the EventService schema for details.
-
+These are some configurable properties that are global settings that define the behavior for all event subscriptions. See the properties defined in the EventService schema for details of the parameters available to configure the service’s behavior.
 
 ### Asynchronous Operations
 
@@ -1997,6 +2015,8 @@ Implementations shall support replacement of the default certificate if one is p
 
 	Service shall support both "Basic Authentication" and "Redfish Session Login Authentication" (as described below under Session Management).  Services shall not require a client to create a session when Basic Auth is used.
 
+	Services may implement other authentication mechanisms. 
+
 * Default Credentials 
 
 	Services should NOT implement default credentials for any account installed on the spec compliant device, with a well known password.
@@ -2051,17 +2071,8 @@ Implementations shall support replacement of the default certificate if one is p
 ##### BASIC authentication
 HTTP BASIC authentication as defined by [RFC2617](#RFC2617) shall be supported, and shall only use compliant TLS connections to transport the data between any third party authentication service and clients.
 
-##### Digest authentication
-Implementations may support HTTP Digest authentication mechanism 
-
-##### Negotiate
-Implementations may support the HTTP Negotiate authentication mechanism
-
 ##### Request / Message Level Authentication
 Every request that establishes a secure channel shall be accompanied by an authentication header.
-
-##### Certificate based authentication?
-Implementations should support certificate based authentication.
 
 #### Session Management
 
@@ -2119,7 +2130,7 @@ The response to the POST request to create a session includes:
     X-Auth-Token: <session-auth-token>
 
     {
-        "@odata.context": "/redfish/v1/$metadata#SessionService/Links/Sessions/$entity",
+        "@odata.context": "/redfish/v1/$metadata#SessionService/Sessions/$entity",
         "@odata.id": "/redfish/v1/SessionService/Sessions/1",
 	"@odata.type": "#Session.1.0.0.Session",
 	"Id": "1",

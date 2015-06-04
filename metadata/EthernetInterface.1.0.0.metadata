@@ -20,8 +20,11 @@
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ManagerNetworkProtocol.1.0.0">
     <edmx:Include Namespace="NetworkService.1.0.0" Alias="NetworkService"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/VLanNetworkInterface.1.0.0">
-    <edmx:Include Namespace="VLanNetworkInterface.1.0.0" Alias="VLanNetworkInterface"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/VLanNetworkInterfaceCollection.1.0.0">
+    <edmx:Include Namespace="VLanNetworkInterfaceCollection.1.0.0" Alias="VLanNetworkInterfaceCollection"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Settings.1.0.0">
+    <edmx:Include Namespace="Settings.1.0.0" Alias="Settings"/>
   </edmx:Reference>
   
   <edmx:DataServices>
@@ -88,19 +91,22 @@
         </Property>
         <Property Name="IPv4Addresses" Type="Collection(IPAddresses.IPv4Address)" Nullable="false" >
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="This array of objects is used to represent the IPv4 connection characteristics for this interface."/>
+          <Annotation Term="OData.Description" String="The IPv4 addresses assigned to this interface"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of objects used to represent the IPv4 connection characteristics for this interface."/>
         </Property>
         <Property Name="IPv6AddressPolicyTable" Type="Collection(EthernetInterface.IPv6AddressPolicyEntry)" Nullable="false">
-          <Annotation Term="OData.Description" String="This array of objects represents the RFC3484 Address Selection Policy Table."/>
-          <Annotation Term="OData.LongDescription" String="This array represents the Address Selection Policy Table as defined in RFC3484."/>
+          <Annotation Term="OData.Description" String="An array representing the RFC3484 Address Selection Policy Table."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of objects used to represent the Address Selection Policy Table as defined in RFC3484."/>
         </Property>
         <Property Name="IPv6Addresses" Type="Collection(IPAddresses.IPv6Address)" Nullable="false" >
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This array of objects enumerates all of the currently assigned IPv6 addresses on this interface."/>
+		  <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of objects used to represent the IPv6 connection characteristics for this interface."/>
         </Property>
         <Property Name="IPv6StaticAddresses" Type="Collection(IPAddresses.IPv6StaticAddress)" Nullable="false" >
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This array of objects represents all of the IPv6 static addresses to be assigned on this interface."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of objects used to represent the IPv6 static connection characteristics for this interface."/>		  
         </Property>
         <Property Name="IPv6DefaultGateway" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
@@ -112,26 +118,14 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the DNS name servers for this interface."/>
         </Property>
-        <Property Name="Links" Type="EthernetInterface.Links" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="This object contains the links to other resources that are related to this resource."/>
-        </Property>
-      </EntityType>
-
-      <ComplexType Name="Links" BaseType="Resource.Links">
-        <NavigationProperty Name="Settings" Type="Resource.Settings">
-          <Annotation Term="OData.Description" String="If this resource is supports changing properties by modifying a separate (settings) resource, this is the reference to that resource. "/>
-          <Annotation Term="OData.LongDescription" String="If network settings are not dynamically settable (e.g. a reset required that doesn't happen automatically), this value shall be used to reference a separately PATCHable representation of this data to be used for configuration purposes."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>
-        <NavigationProperty Name="VLANs" Type="VLanNetworkInterface.VLanNetworkInterfaceCollection">
+        <NavigationProperty Name="VLANs" Type="VLanNetworkInterfaceCollection.VLanNetworkInterfaceCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a reference to a collection of VLANs and is only used if the NIC supports more than one VLAN."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall reference a collection of VLAN resources.  If this property is used, the VLANEnabled and VLANId property shall not be used."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-      </ComplexType>
-
+      </EntityType>
+      
       <!--Strongly typed property for MacAddress-->
       <TypeDefinition Name="MacAddress" UnderlyingType="Edm.String">
         <Annotation Term="Validation.Pattern" String="^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$"/>
@@ -140,16 +134,19 @@
       <ComplexType Name="IPv6AddressPolicyEntry">
         <Annotation Term="OData.AdditionalProperties" Bool="False"/>
         <Property Name="Prefix" Type="Edm.String">
-          <Annotation Term="OData.Description" String="IPv6 Address Prefix for this table entry as defined in RFC 3484 section 2.1."/>
+          <Annotation Term="OData.Description" String="The IPv6 Address Prefix (as defined in RFC 3484 section 2.1)"/>
+		<Annotation Term="OData.LongDescription" String="This property shall contain the IPv6 Address Prefix for this table entry as defined in RFC 3484 section 2.1."/>
           <Annotation Term="Redfish.IPv6Format"/>
         </Property>
         <Property Name="Precedence" Type="Edm.Int64">
-          <Annotation Term="OData.Description" String="Precedence value for this table entry as defined in RFC 3484 section 2.1."/>
+          <Annotation Term="OData.Description" String="The IPv6 Precedence (as defined in RFC 3484 section 2.1"/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the IPv6 Precedence value for this table entry as defined in RFC 3484 section 2.1."/>
           <Annotation Term="Validation.Minimum" Int="1"/>
           <Annotation Term="Validation.Maximum" Int="100"/>
         </Property>
         <Property Name="Label" Type="Edm.Int64">
-          <Annotation Term="OData.Description" String="Label value for this table entry, as defined in RFC 3484 section 2.1."/>
+          <Annotation Term="OData.Description" String="The IPv6 Label (as defined in RFC 3484 section 2.1)"/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the IPv6 Label value for this table entry as defined in RFC 3484 section 2.1."/>		  
           <Annotation Term="Validation.Minimum" Int="0"/>
           <Annotation Term="Validation.Maximum" Int="100"/>
         </Property>

@@ -16,6 +16,14 @@
             "NumberOfArgs": 0,
             "Resolution": "None"
         },
+        "GeneralError": {
+            "@odata.type": "#MessageRegistry.Message",
+            "Description": "Indicates that a general error has occurred.",
+            "Message": "A general error has occurred. See ExtendedInfo for more information.",
+            "Severity": "Critical",
+            "NumberOfArgs": 0,
+            "Resolution": "See ExtendedInfo for more information."
+        },
         "Created": {
             "@odata.type": "#MessageRegistry.Message",
             "Description": "Indicates that all conditions of a successful creation operation have been met.",

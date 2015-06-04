@@ -16,7 +16,7 @@
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Event.1.0.0">
     <edmx:Include Namespace="Event.1.0.0" Alias="Event"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/EventDestination.1.0.0">
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/EventDestinationCollection.1.0.0">
     <edmx:Include Namespace="EventDestinationCollection.1.0.0" Alias="EventDestinationCollection"/>
   </edmx:Reference>
 
@@ -26,11 +26,6 @@
       <!-- This schema defines an event service and its respective properties.-->
       <EntityType Name="EventService" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition for the Event Service.  It represents the properties for the service itself and has links to the actual list of subscriptions."/>
-        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent an eventing service in the Redfish specification."/>
-        <Property Name="Links" Type="EventService.Links" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="This object contains the links to other resources that are related to this resource."/>
-        </Property>
         <Property Name="DeliveryRetryAttempts" Type="Edm.Int64" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is the number of attempts an event posting is retried before the subscription is terminated."/>
@@ -51,11 +46,17 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The Actions object contains the available custom actions on this resource."/>
         </Property>
+        <NavigationProperty Name="Subscriptions" Type="EventDestinationCollection.EventDestinationCollection" ContainsTarget="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="This is a reference to a collection of ListenerDestination resources."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the link to a collection of ListenerDestination resources."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
         <Property Name="Status" Type="Resource.Status"/>
       </EntityType>
 
       <ComplexType Name="Actions">
-        <Annotation Term="OData.AdditionalProperties" Bool="True"/>
+        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
         <Property Name="Oem" Type="EventService.OemActions"/>
       </ComplexType>
       
@@ -63,21 +64,11 @@
         <Annotation Term="OData.AdditionalProperties" Bool="True"/>
       </ComplexType>
 
-      <ComplexType Name="Links" BaseType="Resource.Links">
-        <NavigationProperty Name="Subscriptions" Type="EventDestinationCollection.ListenerDestinationCollection" ContainsTarget="true">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="This is a reference to a collection of ListenerDestination resources."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the link to a collection of ListenerDestination resources."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>
-      </ComplexType>
-
       <!-- The SubmitTestEvent action causes a test event to be emitted. -->
       <Action Name="SubmitTestEvent" IsBound="true">
         <Annotation Term="OData.Description" String="The SubmitTestEvent action causes a test event to be added to the event service.  This message should then be sent to any appropriate ListenerDestination targets."/>
         <Annotation Term="OData.LongDescription" String="This defines the name of the custom action supported when used in conjunction with a POST operation to this resource. When issued, this operation will perform a reset of the manager."/>
         <Parameter Name="EventService" Type="EventService.Actions"/>
-        <!-- TODO Should discuss using the EventRecord complex type instead of the set of next parameters -->
         <Parameter Name="EventType" Type="Event.EventType" Nullable="false">
           <Annotation Term="OData.Description" String="This is the type of event to be added."/>
           <Annotation Term="OData.LongDescription" String="This defines the property name for which the following allowable values apply."/>
