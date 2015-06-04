@@ -180,39 +180,6 @@ class JsonSchemaGenerator:
         return underlyingtype
 
     #################################################################
-    # Name: is_navigation_link                                      #
-    # Description:                                                  #
-    #  Returns True if it is a navigation link else returns False   #
-    #################################################################
-    def is_navigation_link(self, typetable, property):
-
-        if not property.attrib["Type"].startswith("Collection("):
-            return False
-
-        scalarname = property.attrib["Type"][11:-1]
-
-        if not scalarname in typetable.keys():
-            return False
-
-        proptypedata = typetable[scalarname]
-
-        if not proptypedata["TypeType"] == "EntityType":
-            return False
-
-        for annotation in property:
-            if not annotation.tag == "{http://docs.oasis-open.org/odata/ns/edm}Annotation":
-                continue
-
-            if annotation.attrib["Term"] == "OData.AutoExpandReferences":
-                if "Boolean" in annotation.attrib.keys():
-                    if annotation.attrib["Boolean"].upper() == "FALSE":
-                        return True
-
-                return False
-
-        return True
-
-    #################################################################
     # Name: is_inline_type                                      #
     # Description:                                                  #
     #  Returns True if property should be written inline            #
@@ -236,11 +203,35 @@ class JsonSchemaGenerator:
                 continue
 
             if annotation.attrib["Term"] == "Redfish.Required":
-                if "Boolean" in annotation.attrib.keys():
-                    if annotation.attrib["Boolean"].upper() == "FALSE":
+                if "Bool" in annotation.attrib.keys():
+                    if annotation.attrib["Bool"].upper() == "FALSE":
                         break
 
                 return True
+
+        return False
+
+    ##########################################################################
+    # Name: allows_additional_properties                                     # 
+    # Description:                                                           #
+    #  Returns True if the type allows additional properties.                #
+    ##########################################################################
+    def allows_additional_properties(self, type):
+
+        if "OpenType" in type["Node"].attrib.keys():
+            if type["Node"].attrib["OpenType"].upper() == "TRUE":
+                return True
+
+        for annotation in type["Node"]:
+            if not annotation.tag == "{http://docs.oasis-open.org/odata/ns/edm}Annotation":
+                continue
+
+            if annotation.attrib["Term"] == "OData.AdditionalProperties":
+                if "Bool" in annotation.attrib.keys():
+                    if annotation.attrib["Bool"].upper() == "FALSE":
+                        return False
+                    else:
+                        return True
 
         return False
 
@@ -256,8 +247,8 @@ class JsonSchemaGenerator:
                 continue
 
             if annotation.attrib["Term"] == "Redfish.RequiredOnCreate":
-                if "Boolean" in annotation.attrib.keys():
-                    if annotation.attrib["Boolean"].upper() == "FALSE":
+                if "Bool" in annotation.attrib.keys():
+                    if annotation.attrib["Bool"].upper() == "FALSE":
                         break
 
                 return True
@@ -575,20 +566,12 @@ class JsonSchemaGenerator:
         output += UT.Utilities.indent(depth+1) + "}\n"
         output += UT.Utilities.indent(depth)   + "},\n"
 		
-		# figure out additional properties
-        isopentype = False
-
-        if "OpenType" in typedata["Node"].attrib.keys():
-            if typedata["Node"].attrib["OpenType"].upper() == "TRUE":
-                isopentype = True
-
-        if ( typedata["BaseType"] == "Resource.ResourceCollection" ):
-            output += UT.Utilities.indent(depth) + "\"additionalProperties\": true,\n"
-        elif not isopentype:
-            output += UT.Utilities.indent(depth) + "\"additionalProperties\": false,\n"
-
         nodes = [typedata["Node"]]
         currenttype = typedata
+
+        additionalproperties = False
+        if (self.allows_additional_properties(currenttype) ):
+            additionalproperties=True
     
         while "BaseType" in currenttype["Node"].attrib.keys():
             basetypename = currenttype["Node"].attrib["BaseType"]
@@ -596,9 +579,17 @@ class JsonSchemaGenerator:
             if basetypename in typetable:
                 currenttype = typetable[basetypename]
                 nodes.append(currenttype["Node"])
+                if (self.allows_additional_properties(currenttype) ):
+                    additionalproperties=True
 
             else:
                 break
+
+        # Write out Additional Properties
+        if ( additionalproperties ):
+            output += UT.Utilities.indent(depth) + "\"additionalProperties\": true,\n"
+        else:
+            output += UT.Utilities.indent(depth) + "\"additionalProperties\": false,\n"
 
         output += UT.Utilities.indent(depth)  + "\"properties\": {\n"
         requiredproperties = []
@@ -634,7 +625,7 @@ class JsonSchemaGenerator:
                         continue
 
                     # Handle navigationLinks/NavigationProperty
-                    if ( self.is_navigation_link(typetable, property) or propkind == "NavigationProperty"):
+                    if ( propkind == "NavigationProperty"):
                         propname = property.attrib["Name"]
                         attribtype = property.attrib["Type"]
 
@@ -683,8 +674,6 @@ class JsonSchemaGenerator:
                                 propertyisnullable = False                    
                         ignoreannotations = self.get_property_annotation_terms(property)
 
-                        # Check if we should generate a ref or the whole definition
-                        generate_ref = False
                         # Get all keys and extract typedata for the property
                         typetablekeys = typetable.keys()
                         if (proptypename in typetablekeys):
