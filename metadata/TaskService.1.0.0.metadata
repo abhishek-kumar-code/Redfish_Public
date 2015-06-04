@@ -45,7 +45,7 @@
       </EntityType>
 
       <ComplexType Name="Links" BaseType="Resource.Links">
-        <NavigationProperty Name="Tasks" Type="Collection(Tasks.Task)">
+        <NavigationProperty Name="Tasks" Type="Collection(Task.Task)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="References to the Tasks collection."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of Tasks."/>
