@@ -1,6 +1,6 @@
 {
-    "@Redfish.Copyright":"Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#Managers/Links/Members/$entity",
+    "@Redfish.Copyright": "Copyright Â© 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#Managers/Members/$entity",
     "@odata.id": "/redfish/v1/Managers/1",
     "@odata.type": "#Managers.1.00.0.Manager",
     "Id": "1",
@@ -41,6 +41,21 @@
         ]
     },
     "FirmwareVersion": "1.00",
+    "NetworkProtocol": {
+        "@odata.id": "/redfish/v1/Managers/1/NetworkProtocol"
+    },
+    "EthernetInterfaces": {
+        "@odata.id": "/redfish/v1/Managers/1/EthernetInterfaces"
+    },
+    "SerialInterfaces": {
+        "@odata.id": "/redfish/v1/Managers/1/SerialInterfaces"
+    },
+    "LogServices": {
+        "@odata.id": "/redfish/v1/Managers/1/LogServices"
+    },
+    "VirtualMedia": {
+        "@odata.id": "/redfish/v1/Managers/1/VM1"
+    },
     "Links": {
         "ManagerForServers": [
             {
@@ -52,21 +67,6 @@
                 "@odata.id": "/redfish/v1/Chassis/1"
             }
         ],
-        "NetworkProtocol": {
-            "@odata.id": "/redfish/v1/Managers/1/NetworkProtocol"
-        },
-        "EthernetInterfaces": {
-            "@odata.id": "/redfish/v1/Managers/1/EthernetInterfaces"
-        },
-        "SerialInterfaces": {
-            "@odata.id": "/redfish/v1/Managers/1/SerialInterfaces"
-        },
-        "LogServices": {
-            "@odata.id": "/redfish/v1/Managers/1/LogServices"
-        },
-        "VirtualMedia": {
-            "@odata.id": "/redfish/v1/Managers/1/VM1"
-        },
         "Oem": {}
     },
     "Actions": {
