@@ -94,7 +94,7 @@
         </Property>
         <Property Name="GraphicalConsole" Type="Manager.GraphicalConsole">
           <Annotation Term="OData.Description" String="The value of this property shall contain the information about the Graphical Console (KVM-IP) service of this manager."/>
-		  <Annotation Term="OData.Description" String="The value of this property shall contain the information about the Graphical Console (KVM-IP) service of this manager."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the information about the Graphical Console (KVM-IP) service of this manager."/>
         </Property>
         <Property Name="Actions" Type="Manager.Actions" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
