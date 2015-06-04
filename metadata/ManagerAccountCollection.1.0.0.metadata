@@ -8,7 +8,7 @@
     <edmx:Include Namespace="Resource.1.0.0" Alias="Resource"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ManagerAccount.1.0.0">
-    <edmx:Include Namespace="Manager.1.0.0" Alias="ManagerAccount"/>
+    <edmx:Include Namespace="ManagerAccount.1.0.0" Alias="ManagerAccount"/>
   </edmx:Reference>
 
   <edmx:DataServices>
