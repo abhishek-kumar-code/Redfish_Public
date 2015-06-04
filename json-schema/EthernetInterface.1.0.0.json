@@ -3,10 +3,6 @@
     "title": "EthernetInterface.1.0.0",
     "$ref": "#/definitions/EthernetInterface",
     "definitions":{
-        "MacAddress":{
-            "type": "string",
-            "pattern": "^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$"
-        },
         "IPv6AddressPolicyEntry":{
             "type": "object",
             "patternProperties": { 
@@ -22,21 +18,24 @@
                         "string",
                         "null"
                     ],
-                    "description": "IPv6 Address Prefix for this table entry as defined in RFC 3484 section 2.1."
+                    "description": "The IPv6 Address Prefix (as defined in RFC 3484 section 2.1)",
+                    "longDescription": "This property shall contain the IPv6 Address Prefix for this table entry as defined in RFC 3484 section 2.1."
                 },
                 "Precedence": {
                     "type": [
                         "number",
                         "null"
                     ],
-                    "description": "Precedence value for this table entry as defined in RFC 3484 section 2.1."
+                    "description": "The IPv6 Precedence (as defined in RFC 3484 section 2.1",
+                    "longDescription": "This property shall contain the IPv6 Precedence value for this table entry as defined in RFC 3484 section 2.1."
                 },
                 "Label": {
                     "type": [
                         "number",
                         "null"
                     ],
-                    "description": "Label value for this table entry, as defined in RFC 3484 section 2.1."
+                    "description": "The IPv6 Label (as defined in RFC 3484 section 2.1)",
+                    "longDescription": "This property shall contain the IPv6 Label value for this table entry as defined in RFC 3484 section 2.1."
                 }
             }
         },
@@ -173,7 +172,8 @@
                         "$ref": "http://schemas.dmtf.org/redfish/v1/IPAddresses.1.0.0.json#/definitions/IPv4Address"
                     },
                     "readonly": true,
-                    "description": "This array of objects is used to represent the IPv4 connection characteristics for this interface."
+                    "description": "The IPv4 addresses assigned to this interface",
+                    "longDescription": "The value of this property shall be an array of objects used to represent the IPv4 connection characteristics for this interface."
                 },
                 "IPv6AddressPolicyTable": {
                     "type": "array",
@@ -192,26 +192,29 @@
                                     "string",
                                     "null"
                                 ],
-                                "description": "IPv6 Address Prefix for this table entry as defined in RFC 3484 section 2.1."
+                                "description": "The IPv6 Address Prefix (as defined in RFC 3484 section 2.1)",
+                                "longDescription": "This property shall contain the IPv6 Address Prefix for this table entry as defined in RFC 3484 section 2.1."
                             },
                             "Precedence": {
                                 "type": [
                                     "number",
                                     "null"
                                 ],
-                                "description": "Precedence value for this table entry as defined in RFC 3484 section 2.1."
+                                "description": "The IPv6 Precedence (as defined in RFC 3484 section 2.1",
+                                "longDescription": "This property shall contain the IPv6 Precedence value for this table entry as defined in RFC 3484 section 2.1."
                             },
                             "Label": {
                                 "type": [
                                     "number",
                                     "null"
                                 ],
-                                "description": "Label value for this table entry, as defined in RFC 3484 section 2.1."
+                                "description": "The IPv6 Label (as defined in RFC 3484 section 2.1)",
+                                "longDescription": "This property shall contain the IPv6 Label value for this table entry as defined in RFC 3484 section 2.1."
                             }
                         }
                     },
-                    "description": "This array of objects represents the RFC3484 Address Selection Policy Table.",
-                    "longDescription": "This array represents the Address Selection Policy Table as defined in RFC3484."
+                    "description": "An array representing the RFC3484 Address Selection Policy Table.",
+                    "longDescription": "The value of this property shall be an array of objects used to represent the Address Selection Policy Table as defined in RFC3484."
                 },
                 "IPv6Addresses": {
                     "type": "array",
@@ -219,7 +222,8 @@
                         "$ref": "http://schemas.dmtf.org/redfish/v1/IPAddresses.1.0.0.json#/definitions/IPv6Address"
                     },
                     "readonly": true,
-                    "description": "This array of objects enumerates all of the currently assigned IPv6 addresses on this interface."
+                    "description": "This array of objects enumerates all of the currently assigned IPv6 addresses on this interface.",
+                    "longDescription": "The value of this property shall be an array of objects used to represent the IPv6 connection characteristics for this interface."
                 },
                 "IPv6StaticAddresses": {
                     "type": "array",
@@ -227,7 +231,8 @@
                         "$ref": "http://schemas.dmtf.org/redfish/v1/IPAddresses.1.0.0.json#/definitions/IPv6StaticAddress"
                     },
                     "readonly": true,
-                    "description": "This array of objects represents all of the IPv6 static addresses to be assigned on this interface."
+                    "description": "This array of objects represents all of the IPv6 static addresses to be assigned on this interface.",
+                    "longDescription": "The value of this property shall be an array of objects used to represent the IPv6 static connection characteristics for this interface."
                 },
                 "IPv6DefaultGateway": {
                     "type": [
@@ -268,6 +273,10 @@
                     "$ref": "#/definitions/EthernetInterface"
                 }
             ]
+        },
+        "MacAddress":{
+            "type": "string",
+            "pattern": "^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$"
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."

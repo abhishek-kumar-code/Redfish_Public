@@ -58,7 +58,8 @@
                     "items": {
                         "$ref": "#/definitions/EventRecord"
                     },
-                    "description": "Each event in this array has a set of properties that describe the event.  Since this is an array, more than one event can be sent simultaneously."
+                    "description": "Each event in this array has a set of properties that describe the event.  Since this is an array, more than one event can be sent simultaneously.",
+                    "longDescription": "The value of this resource shall be an array of Event objects used to represent the occurrence of one or more events."
                 }
             },
             "required": [

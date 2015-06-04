@@ -3,6 +3,35 @@
     "title": "ComputerSystem.1.0.0",
     "$ref": "#/definitions/ComputerSystem",
     "definitions":{
+        "BootSource":{
+            "type": "string",
+            "enum": [
+                "None",
+                "Pxe",
+                "Floppy",
+                "Cd",
+                "Usb",
+                "Hdd",
+                "BiosSetup",
+                "Utilities",
+                "Diags",
+                "UefiShell",
+                "UefiTarget"
+            ],
+            "enumDescriptions": {
+                "None": "Boot from the normal boot device",
+                "Pxe": "Boot from the Pre-Boot EXecution (PXE) environment",
+                "Floppy": "Boot from the floppy disk drive",
+                "Cd": "Boot from the CD/DVD disc",
+                "Usb": "Boot from a USB device as specified by the system BIOS",
+                "Hdd": "Boot from a hard drive",
+                "BiosSetup": "Boot to the BIOS Setup Utility",
+                "Utilities": "Boot the manufacturer's Utilities program(s)",
+                "Diags": "Boot the manufacturer's Diagnostics program",
+                "UefiShell": "Boot to the UEFI Shell",
+                "UefiTarget": "Boot to the UEFI Device specified in the UefiTargetBootSourceOverride property"
+            }
+        },
         "Reset":{
             "type": "object",
             "additionalProperties": false,
@@ -26,7 +55,16 @@
             }
 
         },
-        "ProcessorSummary":{
+        "PowerState":{
+            "type": "string",
+            "enum": [
+                "On",
+                "Off",
+                "Unknown",
+                "Reset"
+            ]
+        },
+        "Boot":{
             "type": "object",
             "patternProperties": { 
                 "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
@@ -36,29 +74,29 @@
             },
             "additionalProperties": false,
             "properties": {
-                "Count": {
-                    "type": [
-                        "number",
-                        "null"
-                    ],
-                    "readonly": true,
-                    "description": "The number of processors in the system.",
-                    "longDescription": "This property shall contain the number of central processors in the system."
+                "BootSourceOverrideTarget": {
+                    "$ref": "#/definitions/BootSource",
+                    "readonly": false,
+                    "description": "The current boot source to be used at next boot instead of the normal boot device, if BootSourceOverrideEnabled is true.",
+                    "longDescription": "The value of this property shall contain the source to boot the system from, overriding the normal boot order.  The valid values for this property are specified through the DMTF.AllowableValues annotation. Pxe indicates to PXE boot from the primary NIC; Floppy, Cd, Usb, Hdd indicates to boot from their devices respectively.  BiosSetup indicates to boot into the native BIOS screen setup.  Utilities and Diags indicate to boot from the local utilities or diags partitions and UefiTarget indicates to boot from the UEFI device path found in UefiTargetBootSourceOverride."
                 },
-                "Model": {
+                "BootSourceOverrideEnabled": {
+                    "$ref": "#/definitions/BootSourceOverrideEnabled",
+                    "readonly": false,
+                    "description": "Describes the state of the Boot Source Override feature",
+                    "longDescription": "The value of this property shall be Once if this is a one time boot override and Continuous if this selection should remain active until cancelled."
+                },
+                "UefiTargetBootSourceOverride": {
                     "type": [
                         "string",
                         "null"
                     ],
-                    "readonly": true,
-                    "description": "The processor model for the primary or majority of processors in this system.",
-                    "longDescription": "This property shall contain the processor model for the central processors in the system, per the description in Table 22 of the SMBIOS Specification DSP0134 2.8 or later."
-                },
-                "Status": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Status"
+                    "readonly": false,
+                    "description": "This property is the Uefi Device Path of the device to boot from when BootSourceOverrideSupported is UefiTarget.",
+                    "longDescription": "The value of this property shall be the UEFI device path of the override boot target.  The valid values for this property are specified through the DMTF.AllowableValues annotation. BootSourceOverrideEnabled = Continuous is not supported for Uefi Boot Source Override as this setting is defined in UEFI as a one time boot only."
                 }
             },
-            "description": "This object describes the central processors of the system in general detail."
+            "description": "This object contains the boot information for the current resource."
         },
         "ComputerSystem":{
             "type": "object",
@@ -236,7 +274,8 @@
                 },
                 "Boot": {
                     "$ref": "#/definitions/Boot",
-                    "description": "This object contains the boot information for the current resource."
+                    "description": "Information about the boot settings for this system",
+                    "longDescription": "This object shall contain properties which describe boot information for the current resource."
                 },
                 "BiosVersion": {
                     "type": [
@@ -248,11 +287,13 @@
                 },
                 "ProcessorSummary": {
                     "$ref": "#/definitions/ProcessorSummary",
-                    "description": "This object describes the central processors of the system in general detail."
+                    "description": "This object describes the central processors of the system in general detail.",
+                    "longDescription": "This object shall contain properties which describe the central processors for the current resource."
                 },
                 "MemorySummary": {
                     "$ref": "#/definitions/MemorySummary",
-                    "description": "This object describes the central memory of the system in general detail."
+                    "description": "This object describes the central memory of the system in general detail.",
+                    "longDescription": "This object shall contain properties which describe the central memory for the current resource."
                 },
                 "Actions": {
                     "type": "object",
@@ -328,22 +369,7 @@
                 }
             ]
         },
-        "IndicatorLED":{
-            "type": "string",
-            "enum": [
-                "Unknown",
-                "Lit",
-                "Blinking",
-                "Off"
-            ],
-            "enumDescriptions": {
-                "Unknown": "The state of the Indicator LED cannot be determined.",
-                "Lit": "The Indicator LED is lit.",
-                "Blinking": "The Indicator LED is blinking.",
-                "Off": "The Indicator LED is off."
-            }
-        },
-        "Boot":{
+        "ProcessorSummary":{
             "type": "object",
             "patternProperties": { 
                 "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
@@ -353,29 +379,46 @@
             },
             "additionalProperties": false,
             "properties": {
-                "BootSourceOverrideTarget": {
-                    "$ref": "#/definitions/BootSource",
-                    "readonly": false,
-                    "description": "The current boot source to be used at next boot instead of the normal boot device, if BootSourceOverrideEnabled is true.",
-                    "longDescription": "The value of this property shall contain the source to boot the system from, overriding the normal boot order.  The valid values for this property are specified through the DMTF.AllowableValues annotation. Pxe indicates to PXE boot from the primary NIC; Floppy, Cd, Usb, Hdd indicates to boot from their devices respectively.  BiosSetup indicates to boot into the native BIOS screen setup.  Utilities and Diags indicate to boot from the local utilities or diags partitions and UefiTarget indicates to boot from the UEFI device path found in UefiTargetBootSourceOverride."
+                "Count": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The number of processors in the system.",
+                    "longDescription": "This property shall contain the number of central processors in the system."
                 },
-                "BootSourceOverrideEnabled": {
-                    "$ref": "#/definitions/BootSourceOverrideEnabled",
-                    "readonly": false,
-                    "description": "Describes the state of the Boot Source Override feature",
-                    "longDescription": "The value of this property shall be Once if this is a one time boot override and Continuous if this selection should remain active until cancelled."
-                },
-                "UefiTargetBootSourceOverride": {
+                "Model": {
                     "type": [
                         "string",
                         "null"
                     ],
-                    "readonly": false,
-                    "description": "This property is the Uefi Device Path of the device to boot from when BootSourceOverrideSupported is UefiTarget.",
-                    "longDescription": "The value of this property shall be the UEFI device path of the override boot target.  The valid values for this property are specified through the DMTF.AllowableValues annotation. BootSourceOverrideEnabled = Continuous is not supported for Uefi Boot Source Override as this setting is defined in UEFI as a one time boot only."
+                    "readonly": true,
+                    "description": "The processor model for the primary or majority of processors in this system.",
+                    "longDescription": "This property shall contain the processor model for the central processors in the system, per the description in Table 22 of the SMBIOS Specification DSP0134 2.8 or later."
+                },
+                "Status": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Status"
                 }
             },
-            "description": "This object contains the boot information for the current resource."
+            "description": "This object describes the central processors of the system in general detail."
+        },
+        "SystemType":{
+            "type": "string",
+            "enum": [
+                "Physical",
+                "Virtual",
+                "OS",
+                "PhysicallyPartitioned",
+                "VirtuallyPartitioned"
+            ],
+            "enumDescriptions": {
+                "Physical": "A computer system",
+                "Virtual": "A virtual machine instance running on this system",
+                "OS": "An operating system instance",
+                "PhysicallyPartitioned": "A hardware-based partition of a computer system",
+                "VirtuallyPartitioned": "A virtual or software-based partition of a computer system"
+            }
         },
         "MemorySummary":{
             "type": "object",
@@ -402,60 +445,20 @@
             },
             "description": "This object describes the memory of the system in general detail."
         },
-        "SystemType":{
+        "IndicatorLED":{
             "type": "string",
             "enum": [
-                "Physical",
-                "Virtual",
-                "OS",
-                "PhysicallyPartitioned",
-                "VirtuallyPartitioned"
-            ],
-            "enumDescriptions": {
-                "Physical": "A computer system",
-                "Virtual": "A virtual machine instance running on this system",
-                "OS": "An operating system instance",
-                "PhysicallyPartitioned": "A hardware-based partition of a computer system",
-                "VirtuallyPartitioned": "A virtual or software-based partition of a computer system"
-            }
-        },
-        "BootSource":{
-            "type": "string",
-            "enum": [
-                "None",
-                "Pxe",
-                "Floppy",
-                "Cd",
-                "Usb",
-                "Hdd",
-                "BiosSetup",
-                "Utilities",
-                "Diags",
-                "UefiShell",
-                "UefiTarget"
-            ],
-            "enumDescriptions": {
-                "None": "Boot from the normal boot device",
-                "Pxe": "Boot from the Pre-Boot EXecution (PXE) environment",
-                "Floppy": "Boot from the floppy disk drive",
-                "Cd": "Boot from the CD/DVD disc",
-                "Usb": "Boot from a USB device as specified by the system BIOS",
-                "Hdd": "Boot from a hard drive",
-                "BiosSetup": "Boot to the BIOS Setup Utility",
-                "Utilities": "Boot the manufacturer's Utilities program(s)",
-                "Diags": "Boot the manufacturer's Diagnostics program",
-                "UefiShell": "Boot to the UEFI Shell",
-                "UefiTarget": "Boot to the UEFI Device specified in the UefiTargetBootSourceOverride property"
-            }
-        },
-        "PowerState":{
-            "type": "string",
-            "enum": [
-                "On",
-                "Off",
                 "Unknown",
-                "Reset"
-            ]
+                "Lit",
+                "Blinking",
+                "Off"
+            ],
+            "enumDescriptions": {
+                "Unknown": "The state of the Indicator LED cannot be determined.",
+                "Lit": "The Indicator LED is lit.",
+                "Blinking": "The Indicator LED is blinking.",
+                "Off": "The Indicator LED is off."
+            }
         },
         "BootSourceOverrideEnabled":{
             "type": "string",

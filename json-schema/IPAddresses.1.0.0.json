@@ -17,25 +17,6 @@
                 "IPv4LinkLocal": "TODO"
             }
         },
-        "IPv6AddressOrigin":{
-            "type": "string",
-            "enum": [
-                "Static",
-                "DHCPv6",
-                "IPv6AutoConfig",
-                "Stateless",
-                "LinkLocal",
-                "SLAAC"
-            ],
-            "enumDescriptions": {
-                "Static": "A static address as configured by the user",
-                "DHCPv6": "Address is provided by a DHCP service",
-                "IPv6AutoConfig": "TODO",
-                "Stateless": "TODO",
-                "LinkLocal": "TODO",
-                "SLAAC": "Address is provided by a Stateless Address AutoConfiguration (SLAAC) service"
-            }
-        },
         "IPv4Address":{
             "type": "object",
             "patternProperties": { 
@@ -80,6 +61,13 @@
                 }
             }
         },
+        "PrefixLength":{
+            "type": "number"
+        },
+        "SubnetMask":{
+            "type": "string",
+            "pattern": "^(?:[0-9]{1,3}\\.){3}[0-9]{1,3}$"
+        },
         "IPv6StaticAddress":{
             "type": "object",
             "patternProperties": { 
@@ -114,8 +102,24 @@
             ],
             "description": "This object represents a single IPv6 static address to be assigned on a network interface."
         },
-        "PrefixLength":{
-            "type": "number"
+        "IPv6AddressOrigin":{
+            "type": "string",
+            "enum": [
+                "Static",
+                "DHCPv6",
+                "IPv6AutoConfig",
+                "Stateless",
+                "LinkLocal",
+                "SLAAC"
+            ],
+            "enumDescriptions": {
+                "Static": "A static address as configured by the user",
+                "DHCPv6": "Address is provided by a DHCP service",
+                "IPv6AutoConfig": "TODO",
+                "Stateless": "TODO",
+                "LinkLocal": "TODO",
+                "SLAAC": "Address is provided by a Stateless Address AutoConfiguration (SLAAC) service"
+            }
         },
         "AddressState":{
             "type": "string",
@@ -131,10 +135,6 @@
                 "Tentative": "This address is currently undergoing Duplicate Address Detection testing as defined in RFC 4862 section 5.4.",
                 "Failed": "This address has failed Duplicate Address Detection testing as defined in RFC 4862 section 5.4 and is not currently in use."
             }
-        },
-        "SubnetMask":{
-            "type": "string",
-            "pattern": "^(?:[0-9]{1,3}\\.){3}[0-9]{1,3}$"
         },
         "IPv6Address":{
             "type": "object",
