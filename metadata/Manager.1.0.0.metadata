@@ -109,7 +109,7 @@
       </EntityType>
 
       <ComplexType Name="Actions">
-        <Annotation Term="OData.AdditionalProperties" Bool="True"/>
+        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
         <Property Name="Oem" Type="Manager.OemActions"/>
       </ComplexType>
       
