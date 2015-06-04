@@ -12,8 +12,8 @@
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.1.0.0">
     <edmx:Include Namespace="Resource.1.0.0" Alias="Resource"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Session.1.0.0">
-    <edmx:Include Namespace="Session.1.0.0" Alias="Session"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/SessionCollection.1.0.0">
+    <edmx:Include Namespace="SessionCollection.1.0.0" Alias="SessionCollection"/>
   </edmx:Reference>
   
   <edmx:DataServices>
@@ -30,7 +30,7 @@
           <Annotation Term="Validation.Minimum" Int="30"/>
           <Annotation Term="Validation.Maximum" Int="86400"/>
         </Property>
-        <NavigationProperty Name="Sessions" Type="Session.SessionCollection">
+        <NavigationProperty Name="Sessions" Type="SessionCollection.SessionCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Link to a collection of Sessions"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the link to a collection of Sessions."/>

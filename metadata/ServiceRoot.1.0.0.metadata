@@ -14,14 +14,14 @@
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/AccountService.1.0.0">
     <edmx:Include Namespace="AccountService.1.0.0" Alias="AccountService"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ComputerSystem.1.0.0">
-    <edmx:Include Namespace="ComputerSystem.1.0.0" Alias="ComputerSystem"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ComputerSystemCollection.1.0.0">
+    <edmx:Include Namespace="ComputerSystemCollection.1.0.0" Alias="ComputerSystemCollection"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Chassis.1.0.0">
-    <edmx:Include Namespace="Chassis.1.0.0" Alias="Chassis"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ChassisCollection.1.0.0">
+    <edmx:Include Namespace="ChassisCollection.1.0.0" Alias="ChassisCollection"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Manager.1.0.0">
-    <edmx:Include Namespace="Managers.1.0.0" Alias="Manager"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ManagerCollection.1.0.0">
+    <edmx:Include Namespace="ManagerCollection.1.0.0" Alias="ManagerCollection"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/TaskService.1.0.0">
     <edmx:Include Namespace="TaskService.1.0.0" Alias="TaskService"/>
@@ -32,22 +32,27 @@
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Message.1.0.0">
     <edmx:Include Namespace="Message.1.0.0" Alias="Message"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/JsonSchemaFile.1.0.0">
-    <edmx:Include Namespace="JsonSchemaFile.1.0.0" Alias="JsonSchemaFile"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/JsonSchemaFileCollection.1.0.0">
+    <edmx:Include Namespace="JsonSchemaFileCollection.1.0.0" Alias="JsonSchemaFileCollection"/>
   </edmx:Reference>
-
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/MessageRegistry.1.0.0">
+    <edmx:Include Namespace="MessageRegistry.1.0.0" Alias="MessageRegistry"/>
+  </edmx:Reference>
+  
   <edmx:DataServices>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ServiceRoot.1.0.0" Alias="ServiceRoot">
 
       <EntityContainer Name="ServiceContainer">
         <Singleton Name="Service" Type="ServiceRoot.ServiceRoot"/>
-        <Singleton Name="Systems" Type="ComputerSystem.ComputerSystemCollection"/>
-        <Singleton Name="Chassis" Type="Chassis.ChassisCollection"/>
-        <Singleton Name="Managers" Type="Manager.ManagerCollection"/>
-        <Singleton Name="TaskService" Type="TaskService.TaskService"/>
+        <Singleton Name="Systems" Type="ComputerSystemCollection.ComputerSystemCollection"/>
+        <Singleton Name="Chassis" Type="ChassisCollection.ChassisCollection"/>
+        <Singleton Name="Managers" Type="ManagerCollection.ManagerCollection"/>
+        <Singleton Name="Tasks" Type="TaskService.TaskService"/>
         <Singleton Name="AccountService" Type="AccountService.AccountService"/>
         <Singleton Name="SessionService" Type="SessionService.SessionService"/>
         <Singleton Name="EventService" Type="EventService.EventService"/>
+        <Singleton Name="Registries" Type="MessageRegistry.MessageRegistry"/>
+        <Singleton Name="JsonSchemas" Type="JsonSchemas.JsonSchemas"/>
       </EntityContainer>
 
       <!-- This object contains top-level properties of the Redfish service. -->
@@ -65,19 +70,19 @@
           <Annotation Term="OData.Description" String="Unique identifier for a service instance. When SSDP is used, this value should be an exact match of the UUID value returned in a 200OK from an SSDP M-SEARCH request during discovery. "/>
           <Annotation Term="OData.LongDescription" String="The value of this string shall represent the id of the Redfish service instance.  The format of this string shall be a 32-byte value in the form 8-4-4-4-12.  If SSDP is used, this value shall be an exact match of the UUID value returned in a 200OK from an SSDP M-SEARCH request during discovery. RFC4122 describes methods that can be used to create a UUID value. The value should be considered to be opaque. Client software should only treat the overall value as a universally unique identifier and should not interpret any sub-fields within the UUID."/>
         </Property>
-        <NavigationProperty Name="Systems" Type="ComputerSystem.ComputerSystemCollection">
+        <NavigationProperty Name="Systems" Type="ComputerSystemCollection.ComputerSystemCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a link to a collection of Systems."/>
           <Annotation Term="OData.LongDescription" String="This object shall only contain a reference to a collection of resources that comply to the Systems schema.  The last segment of the path shall be 'Systems'."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="Chassis" Type="Chassis.ChassisCollection">
+        <NavigationProperty Name="Chassis" Type="ChassisCollection.ChassisCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a link to a collection of Chassis."/>
           <Annotation Term="OData.LongDescription" String="This object shall only contain a reference to a collection of resources that comply to the Chassis schema. The last segment of the path shall be 'Chassis'."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="Managers" Type="Manager.ManagerCollection">
+        <NavigationProperty Name="Managers" Type="ManagerCollection.ManagerCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a link to a collection of Managers."/>
           <Annotation Term="OData.LongDescription" String="This object shall only contain a reference to a collection of resources that comply to the Managers schema.  The last segment of the path shall be 'Managers'."/>
@@ -107,13 +112,13 @@
           <Annotation Term="OData.LongDescription" String="The classes structure shall only contain a reference to a resource that complies to the EventService schema.  The last segment of the path shall be 'EventService'."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="Registries" Type="JsonSchemaFile.SchemaFileCollection">
+        <NavigationProperty Name="Registries" Type="MessageRegistry.MessageRegistry">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a link to a collection of Registries."/>
-          <Annotation Term="OData.LongDescription" String="This object shall only contain a reference to a collection of resources that comply to the SchemaFile schema where the files are Registries.  The last segment of the path shall be 'Registries'."/>
+          <Annotation Term="OData.LongDescription" String="This object shall contain a reference to Message Registry.  The last segment of the path shall be 'Registries'."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="JsonSchemas" Type="JsonSchemaFile.SchemaFileCollection">
+        <NavigationProperty Name="JsonSchemas" Type="JsonSchemaFileCollection.SchemaFileCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a link to a collection of Json-Schema files."/>
           <Annotation Term="OData.LongDescription" String="This object shall only contain a reference to a collection of resources that comply to the SchemaFile schema where the files are Json-Schema files.  The last segment of the path shall be 'JsonSchemas'."/>

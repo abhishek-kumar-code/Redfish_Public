@@ -35,7 +35,10 @@
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Redundancy.1.0.0">
     <edmx:Include Namespace="Redundancy.1.0.0" Alias="Redundancy"/>
   </edmx:Reference>
-
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/LogServiceCollection.1.0.0">
+    <edmx:Include Namespace="LogServiceCollection.1.0.0" Alias="LogServiceCollection"/>
+  </edmx:Reference>
+  
   <edmx:DataServices>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.1.0.0" Alias="Manager">
 
@@ -137,7 +140,7 @@
       </EntityType>
 
       <ComplexType Name="Actions">
-        <Annotation Term="OData.AdditionalProperties" Bool="True"/>
+        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
         <Property Name="Oem" Type="Manager.OemActions"/>
       </ComplexType>
       
