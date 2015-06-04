@@ -3,87 +3,6 @@
     "title": "Chassis.1.0.0",
     "$ref": "#/definitions/Chassis",
     "definitions":{
-        "IndicatorLED":{
-            "type": "string",
-            "enum": [
-                "Unknown",
-                "Lit",
-                "Blinking",
-                "Off"
-            ],
-            "enumDescriptions": {
-                "Unknown": "The state of the Indicator LED cannot be determined.",
-                "Lit": "The Indicator LED is lit.",
-                "Blinking": "The Indicator LED is blinking.",
-                "Off": "The Indicator LED is off."
-            }
-        },
-        "ChassisType":{
-            "type": "string",
-            "enum": [
-                "Rack",
-                "Blade",
-                "Enclosure",
-                "StandAlone",
-                "RackMount",
-                "Card",
-                "Cartridge",
-                "Row",
-                "Pod",
-                "Expansion",
-                "Sidecar",
-                "Zone",
-                "Sled",
-                "Shelf",
-                "Drawer",
-                "Module",
-                "Component",
-                "Other"
-            ],
-            "enumDescriptions": {
-                "Rack": "An equipment rack, typically a 19-inch wide freestanding unit",
-                "Blade": "An enclosed or semi-enclosed, typically vertically-oriented, system chassis which must be plugged into a multi-system chassis to function normally",
-                "Enclosure": "A generic term for a chassis that does not fit any other description",
-                "StandAlone": "A single, free-standing system, commonly called a tower or desktop chassis",
-                "RackMount": "A single system chassis designed specifically for mounting in an equipment rack",
-                "Card": "A loose device or circuit board intended to be installed in a system or other enclosure",
-                "Cartridge": "A small self-contained system intended to be plugged into a multi-system chassis",
-                "Row": "A collection of equipment racks",
-                "Pod": "A collection of equipment racks in a large, likely transportable, container",
-                "Expansion": "A chassis which expands the capabilities or capacity of another chassis",
-                "Sidecar": "A chassis that mates mechanically with another chassis to expand its capabilities or capacity",
-                "Zone": "A logical division or portion of a physical chassis that contains multiple devices or systems that cannot be physically separated",
-                "Sled": "An enclosed or semi-enclosed, system chassis which must be plugged into a multi-system chassis to function normally similar to a blade type chassis.",
-                "Shelf": "An enclosed or semi-enclosed, typically horizontally-oriented, system chassis which must be plugged into a multi-system chassis to function normally",
-                "Drawer": "An enclosed or semi-enclosed, typically horizontally-oriented, system chassis which may be slid into a multi-system chassis.",
-                "Module": "A small, typically removable, chassis or card which contains devices for a particular subsystem or function",
-                "Component": "A small chassis, card, or device which contains devices for a particular subsystem or function",
-                "Other": "A chassis that does not fit any of these definitions"
-            }
-        },
-        "Reset":{
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "title": {
-                    "type": "string",
-                    "description": "Friendly action name"
-                },
-                "target": {
-                    "type": "string",
-                    "description": "Link to invoke action"
-                },
-                "ResetType@Redfish.AllowableValues": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/ResetType"
-                    },
-                    "description": "This is the type of reset to be performed.",
-                    "longDescription": "This defines the property name for the action."
-                }
-            }
-
-        },
         "Chassis":{
             "type": "object",
             "patternProperties": { 
@@ -196,12 +115,6 @@
                             "description": "Oem extension object.",
                             "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
                         },
-                        "LogServices": {
-                            "$ref": "http://schemas.dmtf.org/redfish/v1/LogServiceCollection.1.0.0.json#/definitions/LogServiceCollection-ref",
-                            "readonly": true,
-                            "description": "A reference to the logs for this chassis.",
-                            "longDescription": "The value of this property shall be a link to a collection LogServices."
-                        },
                         "ComputerSystems": {
                             "type": "array",
                             "items": {
@@ -219,18 +132,6 @@
                             "readonly": true,
                             "description": "An array of references to the managers contained in this chassis.",
                             "longDescription": "The value of this property shall be a reference to the resource that manages this chassis and shall reference a resource of type Manager."
-                        },
-                        "Thermal": {
-                            "$ref": "http://schemas.dmtf.org/redfish/v1/Thermal.1.0.0.json#/definitions/Thermal-ref",
-                            "readonly": true,
-                            "description": "A reference to the thermal properties (fans, cooling, sensors) for this chassis.",
-                            "longDescription": "The value of this property shall be a reference to the resource that represents the thermal characteristics of this chassis and shall be of type Thermal."
-                        },
-                        "Power": {
-                            "$ref": "http://schemas.dmtf.org/redfish/v1/Power.1.0.0.json#/definitions/Power-ref",
-                            "readonly": true,
-                            "description": "A reference to the power properties (power supplies, power policies, sensors) for this chassis.",
-                            "longDescription": "The value of this property shall be a reference to the resource that represents the power characteristics of this chassis and shall be of type Power."
                         },
                         "ContainedBy": {
                             "$ref": "#/definitions/Chassis-ref",
@@ -304,6 +205,24 @@
                 },
                 "Status": {
                     "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Status"
+                },
+                "LogServices": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/LogServiceCollection.1.0.0.json#/definitions/LogServiceCollection-ref",
+                    "readonly": true,
+                    "description": "A reference to the logs for this chassis.",
+                    "longDescription": "The value of this property shall be a link to a collection LogServices."
+                },
+                "Thermal": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Thermal.1.0.0.json#/definitions/Thermal-ref",
+                    "readonly": true,
+                    "description": "A reference to the thermal properties (fans, cooling, sensors) for this chassis.",
+                    "longDescription": "The value of this property shall be a reference to the resource that represents the thermal characteristics of this chassis and shall be of type Thermal."
+                },
+                "Power": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Power.1.0.0.json#/definitions/Power-ref",
+                    "readonly": true,
+                    "description": "A reference to the power properties (power supplies, power policies, sensors) for this chassis.",
+                    "longDescription": "The value of this property shall be a reference to the resource that represents the power characteristics of this chassis and shall be of type Power."
                 }
             },
             "required": [
@@ -321,6 +240,87 @@
                     "$ref": "#/definitions/Chassis"
                 }
             ]
+        },
+        "IndicatorLED":{
+            "type": "string",
+            "enum": [
+                "Unknown",
+                "Lit",
+                "Blinking",
+                "Off"
+            ],
+            "enumDescriptions": {
+                "Unknown": "The state of the Indicator LED cannot be determined.",
+                "Lit": "The Indicator LED is lit.",
+                "Blinking": "The Indicator LED is blinking.",
+                "Off": "The Indicator LED is off."
+            }
+        },
+        "Reset":{
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "description": "Link to invoke action"
+                },
+                "ResetType@Redfish.AllowableValues": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/ResetType"
+                    },
+                    "description": "This is the type of reset to be performed.",
+                    "longDescription": "This defines the property name for the action."
+                }
+            }
+
+        },
+        "ChassisType":{
+            "type": "string",
+            "enum": [
+                "Rack",
+                "Blade",
+                "Enclosure",
+                "StandAlone",
+                "RackMount",
+                "Card",
+                "Cartridge",
+                "Row",
+                "Pod",
+                "Expansion",
+                "Sidecar",
+                "Zone",
+                "Sled",
+                "Shelf",
+                "Drawer",
+                "Module",
+                "Component",
+                "Other"
+            ],
+            "enumDescriptions": {
+                "Rack": "An equipment rack, typically a 19-inch wide freestanding unit",
+                "Blade": "An enclosed or semi-enclosed, typically vertically-oriented, system chassis which must be plugged into a multi-system chassis to function normally",
+                "Enclosure": "A generic term for a chassis that does not fit any other description",
+                "StandAlone": "A single, free-standing system, commonly called a tower or desktop chassis",
+                "RackMount": "A single system chassis designed specifically for mounting in an equipment rack",
+                "Card": "A loose device or circuit board intended to be installed in a system or other enclosure",
+                "Cartridge": "A small self-contained system intended to be plugged into a multi-system chassis",
+                "Row": "A collection of equipment racks",
+                "Pod": "A collection of equipment racks in a large, likely transportable, container",
+                "Expansion": "A chassis which expands the capabilities or capacity of another chassis",
+                "Sidecar": "A chassis that mates mechanically with another chassis to expand its capabilities or capacity",
+                "Zone": "A logical division or portion of a physical chassis that contains multiple devices or systems that cannot be physically separated",
+                "Sled": "An enclosed or semi-enclosed, system chassis which must be plugged into a multi-system chassis to function normally similar to a blade type chassis.",
+                "Shelf": "An enclosed or semi-enclosed, typically horizontally-oriented, system chassis which must be plugged into a multi-system chassis to function normally",
+                "Drawer": "An enclosed or semi-enclosed, typically horizontally-oriented, system chassis which may be slid into a multi-system chassis.",
+                "Module": "A small, typically removable, chassis or card which contains devices for a particular subsystem or function",
+                "Component": "A small chassis, card, or device which contains devices for a particular subsystem or function",
+                "Other": "A chassis that does not fit any of these definitions"
+            }
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."

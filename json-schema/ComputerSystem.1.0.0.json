@@ -3,63 +3,28 @@
     "title": "ComputerSystem.1.0.0",
     "$ref": "#/definitions/ComputerSystem",
     "definitions":{
-        "Boot":{
+        "Reset":{
             "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
-                    "description": "This property shall specify a valid odata or redfish property."
-                }
-            },
             "additionalProperties": false,
             "properties": {
-                "BootSourceOverrideTarget": {
-                    "$ref": "#/definitions/BootSource",
-                    "readonly": false,
-                    "description": "The current boot source to be used at next boot instead of the normal boot device, if BootSourceOverrideEnabled is true.",
-                    "longDescription": "The value of this property shall contain the source to boot the system from, overriding the normal boot order.  The valid values for this property are specified through the DMTF.AllowableValues annotation. Pxe indicates to PXE boot from the primary NIC; Floppy, Cd, Usb, Hdd indicates to boot from their devices respectively.  BiosSetup indicates to boot into the native BIOS screen setup.  Utilities and Diags indicate to boot from the local utilities or diags partitions and UefiTarget indicates to boot from the UEFI device path found in UefiTargetBootSourceOverride."
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
                 },
-                "BootSourceOverrideEnabled": {
-                    "$ref": "#/definitions/BootSourceOverrideEnabled",
-                    "readonly": false,
-                    "description": "Describes the state of the Boot Source Override feature",
-                    "longDescription": "The value of this property shall be Once if this is a one time boot override and Continuous if this selection should remain active until cancelled."
+                "target": {
+                    "type": "string",
+                    "description": "Link to invoke action"
                 },
-                "UefiTargetBootSourceOverride": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "readonly": false,
-                    "description": "This property is the Uefi Device Path of the device to boot from when BootSourceOverrideSupported is UefiTarget.",
-                    "longDescription": "The value of this property shall be the UEFI device path of the override boot target.  The valid values for this property are specified through the DMTF.AllowableValues annotation. BootSourceOverrideEnabled = Continuous is not supported for Uefi Boot Source Override as this setting is defined in UEFI as a one time boot only."
+                "ResetType@Redfish.AllowableValues": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/ResetType"
+                    },
+                    "description": "The type of reset to be performed",
+                    "longDescription": "This defines the property name for the action."
                 }
-            },
-            "description": "This object contains the boot information for the current resource."
-        },
-        "IndicatorLED":{
-            "type": "string",
-            "enum": [
-                "Unknown",
-                "Lit",
-                "Blinking",
-                "Off"
-            ],
-            "enumDescriptions": {
-                "Unknown": "The state of the Indicator LED cannot be determined.",
-                "Lit": "The Indicator LED is lit.",
-                "Blinking": "The Indicator LED is blinking.",
-                "Off": "The Indicator LED is off."
             }
-        },
-        "PowerState":{
-            "type": "string",
-            "enum": [
-                "On",
-                "Off",
-                "Unknown",
-                "Reset"
-            ]
+
         },
         "ProcessorSummary":{
             "type": "object",
@@ -94,19 +59,6 @@
                 }
             },
             "description": "This object describes the central processors of the system in general detail."
-        },
-        "BootSourceOverrideEnabled":{
-            "type": "string",
-            "enum": [
-                "Disabled",
-                "Once",
-                "Continuous"
-            ],
-            "enumDescriptions": {
-                "Disabled": "The system will boot as normal",
-                "Once": "On its next boot cycle, the system will boot (one time) to the Boot Source Override Target.",
-                "Continuous": "The system will boot to the target specified in the BootSourceOverrideTarget until this property is set to Disabled."
-            }
         },
         "ComputerSystem":{
             "type": "object",
@@ -171,12 +123,6 @@
                             "description": "An array of references to the chassis in which this system is contained",
                             "longDescription": "The value of this property shall reference a resource of type Chassis that represents the physical container associated with this resource."
                         },
-                        "Processors": {
-                            "$ref": "http://schemas.dmtf.org/redfish/v1/ProcessorCollection.1.0.0.json#/definitions/ProcessorCollection-ref",
-                            "readonly": true,
-                            "description": "A reference to the collection of Processors associated with this system",
-                            "longDescription": "The value of this property shall be a link to a processor collection."
-                        },
                         "ManagedBy": {
                             "type": "array",
                             "items": {
@@ -185,24 +131,6 @@
                             "readonly": true,
                             "description": "An array of references to the Managers responsible for this system",
                             "longDescription": "The value of this property shall reference a resource of type manager that represents the resource with management responsibility for this resource."
-                        },
-                        "EthernetInterfaces": {
-                            "$ref": "http://schemas.dmtf.org/redfish/v1/EthernetInterfaceCollection.1.0.0.json#/definitions/EthernetInterfaceCollection-ref",
-                            "readonly": true,
-                            "description": "A reference to the Ethernet interfaces associated with this system",
-                            "longDescription": "The value of this property shall be a link to a collection of EthernetInterfaces."
-                        },
-                        "SimpleStorage": {
-                            "$ref": "http://schemas.dmtf.org/redfish/v1/SimpleStorageCollection.1.0.0.json#/definitions/SimpleStorageCollection-ref",
-                            "readonly": true,
-                            "description": "A reference to the storage devices associated with this system",
-                            "longDescription": "The value of this property shall be a link to a collection of SimpleStorages."
-                        },
-                        "LogServices": {
-                            "$ref": "http://schemas.dmtf.org/redfish/v1/LogServiceCollection.1.0.0.json#/definitions/LogServiceCollection-ref",
-                            "readonly": true,
-                            "description": "A reference to the Log Service associated with this system",
-                            "longDescription": "The value of this property shall be a link to a collection of LogServices."
                         },
                         "PoweredBy": {
                             "type": "array",
@@ -281,10 +209,7 @@
                     "longDescription": "The value of this property shall contain the part number for the system as defined by the manufacturer."
                 },
                 "UUID": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/UUID",
                     "readonly": true,
                     "description": "The universal unique identifier (UUID) for this system",
                     "longDescription": "The value of this property shall be used to contain a universal unique identifier number for the system. RFC4122 describes methods that can be used to create the value. The value should be considered to be opaque. Client software should only treat the overall value as a universally unique identifier and should not interpret any sub-fields within the UUID. If the system supports SMBIOS, the value and byte order of the property should match byte-for-byte with the memory byte order (from lowest address to highest) of the SMBIOS UUID. Following this order will make it simpler to correlate the UUID with the SMBIOS UUID"
@@ -364,6 +289,30 @@
                 },
                 "Status": {
                     "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Status"
+                },
+                "Processors": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/ProcessorCollection.1.0.0.json#/definitions/ProcessorCollection-ref",
+                    "readonly": true,
+                    "description": "A reference to the collection of Processors associated with this system",
+                    "longDescription": "The value of this property shall be a link to a processor collection."
+                },
+                "EthernetInterfaces": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/EthernetInterfaceCollection.1.0.0.json#/definitions/EthernetInterfaceCollection-ref",
+                    "readonly": true,
+                    "description": "A reference to the Ethernet interfaces associated with this system",
+                    "longDescription": "The value of this property shall be a link to a collection of EthernetInterfaces."
+                },
+                "SimpleStorage": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/SimpleStorageCollection.1.0.0.json#/definitions/SimpleStorageCollection-ref",
+                    "readonly": true,
+                    "description": "A reference to the storage devices associated with this system",
+                    "longDescription": "The value of this property shall be a link to a collection of SimpleStorages."
+                },
+                "LogServices": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/LogServiceCollection.1.0.0.json#/definitions/LogServiceCollection-ref",
+                    "readonly": true,
+                    "description": "A reference to the Log Service associated with this system",
+                    "longDescription": "The value of this property shall be a link to a collection of LogServices."
                 }
             },
             "description": "This schema defines a computer system and its respective properties.  A computer system represents a machine (physical or virtual) and the local resources such as memory, cpu and other devices that can be accessed from that machine.",
@@ -379,28 +328,79 @@
                 }
             ]
         },
-        "Reset":{
+        "IndicatorLED":{
+            "type": "string",
+            "enum": [
+                "Unknown",
+                "Lit",
+                "Blinking",
+                "Off"
+            ],
+            "enumDescriptions": {
+                "Unknown": "The state of the Indicator LED cannot be determined.",
+                "Lit": "The Indicator LED is lit.",
+                "Blinking": "The Indicator LED is blinking.",
+                "Off": "The Indicator LED is off."
+            }
+        },
+        "Boot":{
             "type": "object",
+            "patternProperties": { 
+                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+                    "type": ["array", "boolean", "number", "null", "object", "string"],
+                    "description": "This property shall specify a valid odata or redfish property."
+                }
+            },
             "additionalProperties": false,
             "properties": {
-                "title": {
-                    "type": "string",
-                    "description": "Friendly action name"
+                "BootSourceOverrideTarget": {
+                    "$ref": "#/definitions/BootSource",
+                    "readonly": false,
+                    "description": "The current boot source to be used at next boot instead of the normal boot device, if BootSourceOverrideEnabled is true.",
+                    "longDescription": "The value of this property shall contain the source to boot the system from, overriding the normal boot order.  The valid values for this property are specified through the DMTF.AllowableValues annotation. Pxe indicates to PXE boot from the primary NIC; Floppy, Cd, Usb, Hdd indicates to boot from their devices respectively.  BiosSetup indicates to boot into the native BIOS screen setup.  Utilities and Diags indicate to boot from the local utilities or diags partitions and UefiTarget indicates to boot from the UEFI device path found in UefiTargetBootSourceOverride."
                 },
-                "target": {
-                    "type": "string",
-                    "description": "Link to invoke action"
+                "BootSourceOverrideEnabled": {
+                    "$ref": "#/definitions/BootSourceOverrideEnabled",
+                    "readonly": false,
+                    "description": "Describes the state of the Boot Source Override feature",
+                    "longDescription": "The value of this property shall be Once if this is a one time boot override and Continuous if this selection should remain active until cancelled."
                 },
-                "ResetType@Redfish.AllowableValues": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/ResetType"
-                    },
-                    "description": "The type of reset to be performed",
-                    "longDescription": "This defines the property name for the action."
+                "UefiTargetBootSourceOverride": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": false,
+                    "description": "This property is the Uefi Device Path of the device to boot from when BootSourceOverrideSupported is UefiTarget.",
+                    "longDescription": "The value of this property shall be the UEFI device path of the override boot target.  The valid values for this property are specified through the DMTF.AllowableValues annotation. BootSourceOverrideEnabled = Continuous is not supported for Uefi Boot Source Override as this setting is defined in UEFI as a one time boot only."
                 }
-            }
-
+            },
+            "description": "This object contains the boot information for the current resource."
+        },
+        "MemorySummary":{
+            "type": "object",
+            "patternProperties": { 
+                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+                    "type": ["array", "boolean", "number", "null", "object", "string"],
+                    "description": "This property shall specify a valid odata or redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "TotalSystemMemoryGiB": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The total installed, operating system-accessible memory (RAM), measured in GiB.",
+                    "longDescription": "This property shall contain the amount of system general purpose volatile (RAM) memory as measured in gibibytes."
+                },
+                "Status": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Status"
+                }
+            },
+            "description": "This object describes the memory of the system in general detail."
         },
         "SystemType":{
             "type": "string",
@@ -448,30 +448,27 @@
                 "UefiTarget": "Boot to the UEFI Device specified in the UefiTargetBootSourceOverride property"
             }
         },
-        "MemorySummary":{
-            "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
-                    "description": "This property shall specify a valid odata or redfish property."
-                }
-            },
-            "additionalProperties": false,
-            "properties": {
-                "TotalSystemMemoryGiB": {
-                    "type": [
-                        "number",
-                        "null"
-                    ],
-                    "readonly": true,
-                    "description": "The total installed, operating system-accessible memory (RAM), measured in GiB.",
-                    "longDescription": "This property shall contain the amount of system general purpose volatile (RAM) memory as measured in gibibytes."
-                },
-                "Status": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Status"
-                }
-            },
-            "description": "This object describes the memory of the system in general detail."
+        "PowerState":{
+            "type": "string",
+            "enum": [
+                "On",
+                "Off",
+                "Unknown",
+                "Reset"
+            ]
+        },
+        "BootSourceOverrideEnabled":{
+            "type": "string",
+            "enum": [
+                "Disabled",
+                "Once",
+                "Continuous"
+            ],
+            "enumDescriptions": {
+                "Disabled": "The system will boot as normal",
+                "Once": "On its next boot cycle, the system will boot (one time) to the Boot Source Override Target.",
+                "Continuous": "The system will boot to the target specified in the BootSourceOverrideTarget until this property is set to Disabled."
+            }
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
