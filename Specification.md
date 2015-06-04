@@ -1997,7 +1997,7 @@ Implementations shall support replacement of the default certificate if one is p
 
 	Service shall support both "Basic Authentication" and "Redfish Session Login Authentication" (as described below under Session Management).  Services shall not require a client to create a session when Basic Auth is used.
 
-	Services may implement other authentication mechanisms and use additional headers to implement these other mechanisms. 
+	Services may implement other authentication mechanisms. 
 
 * Default Credentials 
 
@@ -2053,17 +2053,8 @@ Implementations shall support replacement of the default certificate if one is p
 ##### BASIC authentication
 HTTP BASIC authentication as defined by [RFC2617](#RFC2617) shall be supported, and shall only use compliant TLS connections to transport the data between any third party authentication service and clients.
 
-##### Digest authentication
-Implementations may support HTTP Digest authentication mechanism 
-
-##### Negotiate
-Implementations may support the HTTP Negotiate authentication mechanism
-
 ##### Request / Message Level Authentication
 Every request that establishes a secure channel shall be accompanied by an authentication header.
-
-##### Certificate based authentication?
-Implementations should support certificate based authentication.
 
 #### Session Management
 
