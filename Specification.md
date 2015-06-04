@@ -1161,18 +1161,18 @@ Error responses are defined by an extended error resource, represented as a sing
 
 | Property                | Description                                                                                                                                                                            |
 | ---                     | ---                                                                                                                                                                                    |
-| code                    | String indicating a specific error or message (not to be confused with the HTTP status code). This code can be used to access a detailed message from a message registry.              |
-| message                 | A human readable error message indicating the semantics associated with the error. 
+| code                    | A string indicating a specific MessageId from the message registry. "GeneralError" should be used only if there is no better message.              |
+| message                 | A human readable error message corresponding to the message in the message registry. 
 | @Message.ExtendedInfo   | An array of [message objects](#message-object) describing one or more error message(s). 
 
 ~~~json
 {
     "error": {
-        "code": "400",
-        "message": "The update operation failed.",
+        "code": "Base.1.0.0.GeneralError",
+        "message": "A general error has occurred. See ExtendedInfo for more information.",
         "@Message.ExtendedInfo": [
             {
-                "MessageId": "Base.<%= DocVersion.replace(/\.[^\.]+$/, '') %>.PropertyValueNotInList",
+                "MessageId": "Base.1.0.0.PropertyValueNotInList",
                 "PropertiesInError": [ 
 					"IndicatorLED" 
 				],
@@ -1185,11 +1185,11 @@ Error responses are defined by an extended error resource, represented as a sing
                 "Resolution": "Remove the property from the request body and resubmit the request if the operation failed"
             },
             {
-                "MessageId": "Base.<%= DocVersion.replace(/\.[^\.]+$/, '') %>.PropertyNotWriteable",
+                "MessageId": "Base.1.0.0.PropertyNotWriteable",
                 "PropertiesInError": [ 
 					"SKU" 
 				],
-                "Message": "The property %1 is a read only property and cannot be assigned a value",
+                "Message": "The property SKU is a read only property and cannot be assigned a value",
                 "MssageArgs": [
                     "SKU"
                 ],
