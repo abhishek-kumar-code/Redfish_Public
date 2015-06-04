@@ -212,6 +212,17 @@ class JsonSchemaGenerator:
 
         return True
 
+    #################################################################
+    # Name: is_inline_type                                      #
+    # Description:                                                  #
+    #  Returns True if property should be written inline            #
+    #################################################################
+    def is_inline_type(self, type):
+
+        if(type["BaseType"] != "Resource.Links" and type["Name"] != "Actions" and type["Name"] != "OemActions"):
+            return True;
+
+        return False
 
     ##########################################################################
     # Name: is_required_property                                             # 
@@ -232,7 +243,6 @@ class JsonSchemaGenerator:
                 return True
 
         return False
-
 
     ##########################################################################
     # Name: is_requiredOnCreate_property                                     # 
@@ -658,7 +668,7 @@ class JsonSchemaGenerator:
                             refvalue = JsonSchemaGenerator.get_ref_value_for_type(typetable, attribtype, namespace)
                             if(termvalue != "OData.AutoExpand"):
                                 refvalue += "Ref"
-                            output += UT.Utilities.indent(depth+3)+ "\"$ref\": \"" + refvalue + "\""
+                            output += UT.Utilities.indent(depth+2)+ "\"$ref\": \"" + refvalue + "\""
 
 					# Handle regular property
                     else:
@@ -678,8 +688,14 @@ class JsonSchemaGenerator:
                         # Get all keys and extract typedata for the property
                         typetablekeys = typetable.keys()
                         if (proptypename in typetablekeys):
-                            refvalue = JsonSchemaGenerator.get_ref_value_for_type(typetable, proptypename, namespace)
-                            output += UT.Utilities.indent(depth+2)+ "\"$ref\": \"" + refvalue + "\""
+                            if(self.is_inline_type(typetable[proptypename]) ):
+                                refvalue = JsonSchemaGenerator.get_ref_value_for_type(typetable, proptypename, namespace)
+                                output += UT.Utilities.indent(depth+2)+ "\"$ref\": \"" + refvalue + "\""
+                            # write Links, Actions, OemActions inline
+                            else:
+                                output += self.generate_json_for_type(typetable, proptypename, depth + 2, typedata["Namespace"], prefixuri, propertyisnullable, False, ignoreannotations)
+
+                        # type not in loaded; probably primitive type
                         else:
                             output += self.generate_json_for_type(typetable, proptypename, depth + 2, typedata["Namespace"], prefixuri, propertyisnullable, False, ignoreannotations)
 
@@ -1148,7 +1164,7 @@ class JsonSchemaGenerator:
                 index = parsedtypes.index(typedata["Name"] + ":" + currentNamespace)
             except :
                 # This type has not been parsed yet. Process it now.
-                if (namespace == currentNamespace):
+                if (namespace == currentNamespace and self.is_inline_type(typedata) ):
                     # Add comma if this is not the first definition, otherwise write start of definitions block
                     if (type_count > 0):
                         output += ",\n"

@@ -19,7 +19,7 @@
                 "@odata.id" :{
                     "$ref": "#/definitions/id"
                 }
-            }
+            },
 			"longDescription": "The value of this property shall be used for references to a resource."
         },
         "type":{
