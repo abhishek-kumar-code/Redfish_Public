@@ -1854,12 +1854,7 @@ where
 
 To unsubscribe from the messages associated with this subscription, the client or administrator simply sends an HTTP DELETE request to the subscription resource URI.
 
-In order to avoid "orphan" subscriptions (subscriptions not cleaned up by the client, e.g., in the case the client has died or simply forgets to delete a subscription), the event service can be configured to automatically delete subscriptions under the following circumstances:
-
-* The service is unable to or received an error POSTing to the configured event destination URL (client-url field of the subscription) some service-defined number of consecutive times within a configurable time window.
-* When the number of event delivery retry attempts and the a subscription removal time interval has elapsed the subscription removal action is taken, which may be to remove, disable or ignore the subscription.
-
-These configurable properties are global settings that define the behavior for all event subscriptions. See the properties defined in the EventService schema for details of the parameters available to configure the service’s behavior.
+These are some configurable properties that are global settings that define the behavior for all event subscriptions. See the properties defined in the EventService schema for details of the parameters available to configure the service’s behavior.
 
 ### Asynchronous Operations
 
