@@ -102,7 +102,8 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="A reference to the power properties (power supplies, power policies, sensors) for this chassis."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resource that represents the power characteristics of this chassis and shall be of type Power."/>
-          <Annotation Term="OData.AutoExpandReferences"/>        
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
       </EntityType>
 
       <ComplexType Name="Links" BaseType="Resource.Links">
@@ -117,7 +118,6 @@
           <Annotation Term="OData.Description" String="An array of references to the managers contained in this chassis."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resource that manages this chassis and shall reference a resource of type Manager."/>
           <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>
         </NavigationProperty>
         <NavigationProperty Name="ContainedBy" Type="Chassis.Chassis">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>

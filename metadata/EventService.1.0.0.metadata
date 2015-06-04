@@ -46,7 +46,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The Actions object contains the available custom actions on this resource."/>
         </Property>
-        <NavigationProperty Name="Subscriptions" Type="ListenerDestination.ListenerDestinationCollection" ContainsTarget="true">
+        <NavigationProperty Name="Subscriptions" Type="EventDestinationCollection.EventDestinationCollection" ContainsTarget="true">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a reference to a collection of ListenerDestination resources."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the link to a collection of ListenerDestination resources."/>
@@ -69,7 +69,6 @@
         <Annotation Term="OData.Description" String="The SubmitTestEvent action causes a test event to be added to the event service.  This message should then be sent to any appropriate ListenerDestination targets."/>
         <Annotation Term="OData.LongDescription" String="This defines the name of the custom action supported when used in conjunction with a POST operation to this resource. When issued, this operation will perform a reset of the manager."/>
         <Parameter Name="EventService" Type="EventService.Actions"/>
-        <!-- TODO Should discuss using the EventRecord complex type instead of the set of next parameters -->
         <Parameter Name="EventType" Type="Event.EventType" Nullable="false">
           <Annotation Term="OData.Description" String="This is the type of event to be added."/>
           <Annotation Term="OData.LongDescription" String="This defines the property name for which the following allowable values apply."/>

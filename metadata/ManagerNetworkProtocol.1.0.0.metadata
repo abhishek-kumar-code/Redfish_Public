@@ -74,6 +74,7 @@
         </Property>
         <Property Name="Status" Type="Resource.Status"/>
       </EntityType>
+      
       <ComplexType Name="Protocol">
         <Annotation Term="OData.AdditionalProperties" Bool="False"/>
         <Property Name="Enabled" Type="Edm.Boolean">
