@@ -18,6 +18,19 @@
             }
 
         },
+        "OverWritePolicy":{
+            "type": "string",
+            "enum": [
+                "Unknown",
+                "WrapsWhenFull",
+                "NeverOverWrites"
+            ],
+            "enumDescriptions": {
+                "Unknown": "The overwrite policy is not known or is undefined",
+                "WrapsWhenFull": "When full, new entries to the Log will overwrite previous entries",
+                "NeverOverWrites": "When full, new entries to the Log will be discarded"
+            }
+        },
         "LogService":{
             "type": "object",
             "patternProperties": { 
@@ -129,7 +142,7 @@
                                     "description": "This property shall specify a valid odata or redfish property."
                                 }
                             },
-                            "additionalProperties": false,
+                            "additionalProperties": true,
                             "properties": {
 
                             }
@@ -154,19 +167,6 @@
                     "$ref": "#/definitions/LogService"
                 }
             ]
-        },
-        "OverWritePolicy":{
-            "type": "string",
-            "enum": [
-                "Unknown",
-                "WrapsWhenFull",
-                "NeverOverWrites"
-            ],
-            "enumDescriptions": {
-                "Unknown": "The overwrite policy is not known or is undefined",
-                "WrapsWhenFull": "When full, new entries to the Log will overwrite previous entries",
-                "NeverOverWrites": "When full, new entries to the Log will be discarded"
-            }
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."

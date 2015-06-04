@@ -3,19 +3,6 @@
     "title": "EventDestination.1.0.0",
     "$ref": "#/definitions/EventDestination",
     "definitions":{
-        "TTLUnits":{
-            "type": "string",
-            "enum": [
-                "seconds",
-                "minutes",
-                "days"
-            ],
-            "enumDescriptions": {
-                "seconds": "Time to Live (TTL) in Seconds",
-                "minutes": "Time to Live (TTL) in Minutes",
-                "days": "Time to Live (TTL) in Days"
-            }
-        },
         "EventDestinationProtocol":{
             "type": "string",
             "enum": [
@@ -153,6 +140,19 @@
                     "type":"string"
             },
             "description": "The value of the HTTP header is the property value.  The header name is the property name."
+        },
+        "TTLUnits":{
+            "type": "string",
+            "enum": [
+                "seconds",
+                "minutes",
+                "days"
+            ],
+            "enumDescriptions": {
+                "seconds": "Time to Live (TTL) in Seconds",
+                "minutes": "Time to Live (TTL) in Minutes",
+                "days": "Time to Live (TTL) in Days"
+            }
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."

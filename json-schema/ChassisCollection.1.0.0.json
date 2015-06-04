@@ -11,7 +11,7 @@
                     "description": "This property shall specify a valid odata or redfish property."
                 }
             },
-            "additionalProperties": true,
+            "additionalProperties": false,
             "properties": {
                 "@odata.context": {
                     "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/context"

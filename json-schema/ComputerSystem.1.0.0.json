@@ -3,19 +3,21 @@
     "title": "ComputerSystem.1.0.0",
     "$ref": "#/definitions/ComputerSystem",
     "definitions":{
-        "IndicatorLED":{
+        "SystemType":{
             "type": "string",
             "enum": [
-                "Unknown",
-                "Lit",
-                "Blinking",
-                "Off"
+                "Physical",
+                "Virtual",
+                "OS",
+                "PhysicallyPartitioned",
+                "VirtuallyPartitioned"
             ],
             "enumDescriptions": {
-                "Unknown": "The state of the Indicator LED cannot be determined.",
-                "Lit": "The Indicator LED is lit.",
-                "Blinking": "The Indicator LED is blinking.",
-                "Off": "The Indicator LED is off."
+                "Physical": "A computer system",
+                "Virtual": "A virtual machine instance running on this system",
+                "OS": "An operating system instance",
+                "PhysicallyPartitioned": "A hardware-based partition of a computer system",
+                "VirtuallyPartitioned": "A virtual or software-based partition of a computer system"
             }
         },
         "Reset":{
@@ -40,6 +42,21 @@
                 }
             }
 
+        },
+        "IndicatorLED":{
+            "type": "string",
+            "enum": [
+                "Unknown",
+                "Lit",
+                "Blinking",
+                "Off"
+            ],
+            "enumDescriptions": {
+                "Unknown": "The state of the Indicator LED cannot be determined.",
+                "Lit": "The Indicator LED is lit.",
+                "Blinking": "The Indicator LED is blinking.",
+                "Off": "The Indicator LED is off."
+            }
         },
         "Boot":{
             "type": "object",
@@ -75,7 +92,36 @@
             },
             "description": "This object contains the boot information for the current resource."
         },
-        "MemorySummary":{
+        "BootSource":{
+            "type": "string",
+            "enum": [
+                "None",
+                "Pxe",
+                "Floppy",
+                "Cd",
+                "Usb",
+                "Hdd",
+                "BiosSetup",
+                "Utilities",
+                "Diags",
+                "UefiShell",
+                "UefiTarget"
+            ],
+            "enumDescriptions": {
+                "None": "Boot from the normal boot device",
+                "Pxe": "Boot from the Pre-Boot EXecution (PXE) environment",
+                "Floppy": "Boot from the floppy disk drive",
+                "Cd": "Boot from the CD/DVD disc",
+                "Usb": "Boot from a USB device as specified by the system BIOS",
+                "Hdd": "Boot from a hard drive",
+                "BiosSetup": "Boot to the BIOS Setup Utility",
+                "Utilities": "Boot the manufacturer's Utilities program(s)",
+                "Diags": "Boot the manufacturer's Diagnostics program",
+                "UefiShell": "Boot to the UEFI Shell",
+                "UefiTarget": "Boot to the UEFI Device specified in the UefiTargetBootSourceOverride property"
+            }
+        },
+        "ProcessorSummary":{
             "type": "object",
             "patternProperties": { 
                 "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
@@ -85,33 +131,38 @@
             },
             "additionalProperties": false,
             "properties": {
-                "TotalSystemMemoryGiB": {
+                "Count": {
                     "type": [
                         "number",
                         "null"
                     ],
                     "readonly": true,
-                    "description": "The total installed, operating system-accessible memory (RAM), measured in GiB.",
-                    "longDescription": "This property shall contain the amount of system general purpose volatile (RAM) memory as measured in gibibytes."
+                    "description": "The number of processors in the system.",
+                    "longDescription": "This property shall contain the number of central processors in the system."
+                },
+                "Model": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The processor model for the primary or majority of processors in this system.",
+                    "longDescription": "This property shall contain the processor model for the central processors in the system, per the description in Table 22 of the SMBIOS Specification DSP0134 2.8 or later."
                 },
                 "Status": {
                     "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Status"
                 }
             },
-            "description": "This object describes the memory of the system in general detail."
+            "description": "This object describes the central processors of the system in general detail."
         },
-        "BootSourceOverrideEnabled":{
+        "PowerState":{
             "type": "string",
             "enum": [
-                "Disabled",
-                "Once",
-                "Continuous"
-            ],
-            "enumDescriptions": {
-                "Disabled": "The system will boot as normal",
-                "Once": "On its next boot cycle, the system will boot (one time) to the Boot Source Override Target.",
-                "Continuous": "The system will boot to the target specified in the BootSourceOverrideTarget until this property is set to Disabled."
-            }
+                "On",
+                "Off",
+                "Unknown",
+                "Reset"
+            ]
         },
         "ComputerSystem":{
             "type": "object",
@@ -355,7 +406,7 @@
                                     "description": "This property shall specify a valid odata or redfish property."
                                 }
                             },
-                            "additionalProperties": false,
+                            "additionalProperties": true,
                             "properties": {
 
                             }
@@ -384,24 +435,7 @@
                 }
             ]
         },
-        "SystemType":{
-            "type": "string",
-            "enum": [
-                "Physical",
-                "Virtual",
-                "OS",
-                "PhysicallyPartitioned",
-                "VirtuallyPartitioned"
-            ],
-            "enumDescriptions": {
-                "Physical": "A computer system",
-                "Virtual": "A virtual machine instance running on this system",
-                "OS": "An operating system instance",
-                "PhysicallyPartitioned": "A hardware-based partition of a computer system",
-                "VirtuallyPartitioned": "A virtual or software-based partition of a computer system"
-            }
-        },
-        "ProcessorSummary":{
+        "MemorySummary":{
             "type": "object",
             "patternProperties": { 
                 "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
@@ -411,67 +445,33 @@
             },
             "additionalProperties": false,
             "properties": {
-                "Count": {
+                "TotalSystemMemoryGiB": {
                     "type": [
                         "number",
                         "null"
                     ],
                     "readonly": true,
-                    "description": "The number of processors in the system.",
-                    "longDescription": "This property shall contain the number of central processors in the system."
-                },
-                "Model": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "readonly": true,
-                    "description": "The processor model for the primary or majority of processors in this system.",
-                    "longDescription": "This property shall contain the processor model for the central processors in the system, per the description in Table 22 of the SMBIOS Specification DSP0134 2.8 or later."
+                    "description": "The total installed, operating system-accessible memory (RAM), measured in GiB.",
+                    "longDescription": "This property shall contain the amount of system general purpose volatile (RAM) memory as measured in gibibytes."
                 },
                 "Status": {
                     "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Status"
                 }
             },
-            "description": "This object describes the central processors of the system in general detail."
+            "description": "This object describes the memory of the system in general detail."
         },
-        "BootSource":{
+        "BootSourceOverrideEnabled":{
             "type": "string",
             "enum": [
-                "None",
-                "Pxe",
-                "Floppy",
-                "Cd",
-                "Usb",
-                "Hdd",
-                "BiosSetup",
-                "Utilities",
-                "Diags",
-                "UefiShell",
-                "UefiTarget"
+                "Disabled",
+                "Once",
+                "Continuous"
             ],
             "enumDescriptions": {
-                "None": "Boot from the normal boot device",
-                "Pxe": "Boot from the Pre-Boot EXecution (PXE) environment",
-                "Floppy": "Boot from the floppy disk drive",
-                "Cd": "Boot from the CD/DVD disc",
-                "Usb": "Boot from a USB device as specified by the system BIOS",
-                "Hdd": "Boot from a hard drive",
-                "BiosSetup": "Boot to the BIOS Setup Utility",
-                "Utilities": "Boot the manufacturer's Utilities program(s)",
-                "Diags": "Boot the manufacturer's Diagnostics program",
-                "UefiShell": "Boot to the UEFI Shell",
-                "UefiTarget": "Boot to the UEFI Device specified in the UefiTargetBootSourceOverride property"
+                "Disabled": "The system will boot as normal",
+                "Once": "On its next boot cycle, the system will boot (one time) to the Boot Source Override Target.",
+                "Continuous": "The system will boot to the target specified in the BootSourceOverrideTarget until this property is set to Disabled."
             }
-        },
-        "PowerState":{
-            "type": "string",
-            "enum": [
-                "On",
-                "Off",
-                "Unknown",
-                "Reset"
-            ]
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."

@@ -3,6 +3,23 @@
     "title": "Processor.1.0.0",
     "$ref": "#/definitions/Processor",
     "definitions":{
+        "ProcessorArchitecture":{
+            "type": "string",
+            "enum": [
+                "x86",
+                "IA-64",
+                "ARM",
+                "MIPS",
+                "OEM"
+            ],
+            "enumDescriptions": {
+                "x86": "x86 or x86-64",
+                "IA-64": "Intel Itanium",
+                "ARM": "ARM",
+                "MIPS": "MIPS",
+                "OEM": "OEM-defined"
+            }
+        },
         "ProcessorID":{
             "type": "object",
             "patternProperties": { 
@@ -69,20 +86,26 @@
                 }
             }
         },
-        "ProcessorArchitecture":{
+        "InstructionSet":{
             "type": "string",
             "enum": [
                 "x86",
+                "x86-64",
                 "IA-64",
-                "ARM",
-                "MIPS",
+                "ARM-A32",
+                "ARM-A64",
+                "MIPS32",
+                "MIPS64",
                 "OEM"
             ],
             "enumDescriptions": {
-                "x86": "x86 or x86-64",
-                "IA-64": "Intel Itanium",
-                "ARM": "ARM",
-                "MIPS": "MIPS",
+                "x86": "x86 32-bit",
+                "x86-64": "x86 64-bit",
+                "IA-64": "Intel IA-64",
+                "ARM-A32": "ARM 32-bit",
+                "ARM-A64": "ARM 64-bit",
+                "MIPS32": "MIPS 32-bit",
+                "MIPS64": "MIPS 64-bit",
                 "OEM": "OEM-defined"
             }
         },
@@ -228,29 +251,6 @@
                 "DSP": "A Digital Signal Processor",
                 "Accelerator": "An Accelerator",
                 "OEM": "An OEM-defined Processing Unit"
-            }
-        },
-        "InstructionSet":{
-            "type": "string",
-            "enum": [
-                "x86",
-                "x86-64",
-                "IA-64",
-                "ARM-A32",
-                "ARM-A64",
-                "MIPS32",
-                "MIPS64",
-                "OEM"
-            ],
-            "enumDescriptions": {
-                "x86": "x86 32-bit",
-                "x86-64": "x86 64-bit",
-                "IA-64": "Intel IA-64",
-                "ARM-A32": "ARM 32-bit",
-                "ARM-A64": "ARM 64-bit",
-                "MIPS32": "MIPS 32-bit",
-                "MIPS64": "MIPS 64-bit",
-                "OEM": "OEM-defined"
             }
         }
     },

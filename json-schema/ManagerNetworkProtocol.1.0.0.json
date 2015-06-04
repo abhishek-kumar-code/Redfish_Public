@@ -50,6 +50,20 @@
                 "@odata.type": {
                     "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/type"
                 },
+                "Oem": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Oem",
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+                },
+                "Id": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Id"
+                },
+                "Description": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Description"
+                },
+                "Name": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Name"
+                },
                 "Links": {
                     "ERROR": "type NetworkProtocol.Links unrecognized.",
                     "readonly": true,
@@ -74,47 +88,47 @@
                     "longDescription": "The value of this property shall contain the fully qualified domain name for the manager."
                 },
                 "HTTP": {
-                    "ERROR": "type NetworkProtocol.Protocol unrecognized.",
+                    "$ref": "#/definitions/Protocol",
                     "readonly": true,
                     "description": "This object is used for the HTTP protocol settings for the manager. The default value of the Port property shall be 80 for compatibility with established client implementations."
                 },
                 "HTTPS": {
-                    "ERROR": "type NetworkProtocol.Protocol unrecognized.",
+                    "$ref": "#/definitions/Protocol",
                     "readonly": true,
                     "description": "This object is used for the HTTPS/SSL settings for the manager. The default value of the Port property shall be 443 for compatibility with established client implementations."
                 },
                 "SNMP": {
-                    "ERROR": "type NetworkProtocol.Protocol unrecognized.",
+                    "$ref": "#/definitions/Protocol",
                     "readonly": true,
                     "description": "This object is used for the SNMP protocol settings for the manager. The default value of the Port property shall be 161 for compatibility with established client implementations."
                 },
                 "VirtualMedia": {
-                    "ERROR": "type NetworkProtocol.Protocol unrecognized.",
+                    "$ref": "#/definitions/Protocol",
                     "readonly": true,
                     "description": "This object is used for the Virtual Media protocol settings for the manager. The value of the Port property shall contain the TCP port assigned for Virtual Media usage."
                 },
                 "Telnet": {
-                    "ERROR": "type NetworkProtocol.Protocol unrecognized.",
+                    "$ref": "#/definitions/Protocol",
                     "readonly": true,
                     "description": "This object is used for the Telnet protocol settings for the manager. The default value of the Port property shall be 23 for compatibility with established client implementations."
                 },
                 "SSDP": {
-                    "ERROR": "type NetworkProtocol.SSDProtocol unrecognized.",
+                    "$ref": "#/definitions/SSDProtocol",
                     "readonly": true,
                     "description": "This object is used for the SSDP protocol settings for the manager.  Simple Service Discovery Protocol (SSDP) is for network discovery of devices supporting the Redfish service. The default value of the Port property shall be 1900 for compatibility with established client implementations."
                 },
                 "IPMI": {
-                    "ERROR": "type NetworkProtocol.Protocol unrecognized.",
+                    "$ref": "#/definitions/Protocol",
                     "readonly": true,
                     "description": "This object is used for the IPMI over LAN protocol settings for the manager. The default value of the Port property shall be 623 for compatibility with established client implementations."
                 },
                 "SSH": {
-                    "ERROR": "type NetworkProtocol.Protocol unrecognized.",
+                    "$ref": "#/definitions/Protocol",
                     "readonly": true,
                     "description": "This object is used for the SSH protocol settings for the manager. The default value of the Port property shall be 22 for compatibility with established client implementations."
                 },
                 "KVMIP": {
-                    "ERROR": "type NetworkProtocol.Protocol unrecognized.",
+                    "$ref": "#/definitions/Protocol",
                     "readonly": true,
                     "description": "This object is used for the KVM-IP (Keyboard, Video, Mouse) protocol settings for the manager. The value of the Port property shall contain the TCP port assigned for SSH usage.  The default value shall be 22 for compatibility with established client implementations."
                 },
@@ -124,6 +138,29 @@
             },
             "description": "This resource is used to obtain or modify the network services managed by a given manager.",
             "longDescription": "This object shall be used to represent the network service settings for the manager."
+        },
+        "ManagerNetworkProtocolRef": { 
+            "oneOf": [ 
+                {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/idRef"
+                },
+                {
+                    "$ref": "#/definitions/ManagerNetworkProtocol"
+                }
+            ]
+        },
+        "NotifyIPv6Scope":{
+            "type": "string",
+            "enum": [
+                "Link",
+                "Site",
+                "Organization"
+            ],
+            "enumDescriptions": {
+                "Link": "SSDP Notify messages are sent to addresses in the IPv6 Local Link scope",
+                "Site": "SSDP Notify messages are sent to addresses in the IPv6 Local Site scope",
+                "Organization": "SSDP Notify messages are sent to addresses in the IPv6 Local Organization scope"
+            }
         },
         "SSDProtocol":{
             "type": "object",
@@ -135,6 +172,22 @@
             },
             "additionalProperties": false,
             "properties": {
+                "Enabled": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "description": "Indicates if the protocol is enabled or disabled",
+                    "longDescription": "The value of this property shall contain the enabled status of the protocol.  The value shall be true if enabled and false if disabled."
+                },
+                "Port": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "description": "Indicates the protocol port.",
+                    "longDescription": "The value of this property shall contain the port assigned for the protocol."
+                },
                 "NotifyMulticastIntervalSeconds": {
                     "type": [
                         "number",
@@ -156,19 +209,6 @@
                     "description": "Indicates the scope for the IPv6 Notify messages for SSDP.",
                     "longDescription": "The value of this property shall contain the IPv6 scope used for multicast NOTIFY messages.  The valid enumerations are a subset of the available IPv6 Scope types."
                 }
-            }
-        },
-        "NotifyIPv6Scope":{
-            "type": "string",
-            "enum": [
-                "Link",
-                "Site",
-                "Organization"
-            ],
-            "enumDescriptions": {
-                "Link": "SSDP Notify messages are sent to addresses in the IPv6 Local Link scope",
-                "Site": "SSDP Notify messages are sent to addresses in the IPv6 Local Site scope",
-                "Organization": "SSDP Notify messages are sent to addresses in the IPv6 Local Organization scope"
             }
         }
     },
