@@ -1997,6 +1997,8 @@ Implementations shall support replacement of the default certificate if one is p
 
 	Service shall support both "Basic Authentication" and "Redfish Session Login Authentication" (as described below under Session Management).  Services shall not require a client to create a session when Basic Auth is used.
 
+	Service may implement other authentication mechanisms and use additional headers to implement these other mechanisms. 
+
 * Default Credentials 
 
 	Services should NOT implement default credentials for any account installed on the spec compliant device, with a well known password.
