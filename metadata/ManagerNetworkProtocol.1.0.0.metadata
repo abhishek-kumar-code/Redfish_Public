@@ -101,7 +101,7 @@
         </Property>
       </ComplexType>
 
-      <ComplexType Name="SSDProtocol" Base="Protocol">
+      <ComplexType Name="SSDProtocol" BaseType="ManagerNetworkProtocol.Protocol">
         <Annotation Term="OData.AdditionalProperties" Bool="False"/>
         <Property Name="NotifyMulticastIntervalSeconds" Type="Edm.Int64">
           <Annotation Term="OData.Description" String="Indicates how often the Multicast is done from this service for SSDP."/>
