@@ -113,27 +113,11 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The Actions object contains the available custom actions on this resource."/>
         </Property>
-        <Property Name="Status" Type="Resource.Status"/>
-      </EntityType>
-
-      <ComplexType Name="Links" BaseType="Resource.Links">
-        <NavigationProperty Name="Chassis" Type="Collection(Chassis.Chassis)">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="An array of references to the chassis in which this system is contained"/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall reference a resource of type Chassis that represents the physical container associated with this resource."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>
         <NavigationProperty Name="Processors" Type="ProcessorCollection.ProcessorCollection" ContainsTarget="true">
            <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
            <Annotation Term="OData.Description" String="A reference to the collection of Processors associated with this system"/>
            <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a processor collection."/>
            <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>
-        <NavigationProperty Name="ManagedBy" Type="Collection(Manager.Manager)">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="An array of references to the Managers responsible for this system"/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall reference a resource of type manager that represents the resource with management responsibility for this resource."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
         <NavigationProperty Name="EthernetInterfaces" Type="EthernetInterfaceCollection.EthernetInterfaceCollection" ContainsTarget="true">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
@@ -151,6 +135,22 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="A reference to the Log Service associated with this system"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of LogServices."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>        
+        <Property Name="Status" Type="Resource.Status"/>
+      </EntityType>
+
+      <ComplexType Name="Links" BaseType="Resource.Links">
+        <NavigationProperty Name="Chassis" Type="Collection(Chassis.Chassis)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="An array of references to the chassis in which this system is contained"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall reference a resource of type Chassis that represents the physical container associated with this resource."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        <NavigationProperty Name="ManagedBy" Type="Collection(Manager.Manager)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="An array of references to the Managers responsible for this system"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall reference a resource of type manager that represents the resource with management responsibility for this resource."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
         <NavigationProperty Name="PoweredBy" Type="Collection(Resource.Item)">

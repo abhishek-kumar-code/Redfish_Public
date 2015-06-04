@@ -115,26 +115,14 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the DNS name servers for this interface."/>
         </Property>
-        <Property Name="Links" Type="EthernetInterface.Links" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="This object contains the links to other resources that are related to this resource."/>
-        </Property>
-      </EntityType>
-
-      <ComplexType Name="Links" BaseType="Resource.Links">
-        <NavigationProperty Name="Settings" Type="Settings.Settings">
-          <Annotation Term="OData.Description" String="If this resource is supports changing properties by modifying a separate (settings) resource, this is the reference to that resource. "/>
-          <Annotation Term="OData.LongDescription" String="If network settings are not dynamically settable (e.g. a reset required that doesn't happen automatically), this value shall be used to reference a separately PATCHable representation of this data to be used for configuration purposes."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>
         <NavigationProperty Name="VLANs" Type="VLanNetworkInterfaceCollection.VLanNetworkInterfaceCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a reference to a collection of VLANs and is only used if the NIC supports more than one VLAN."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall reference a collection of VLAN resources.  If this property is used, the VLANEnabled and VLANId property shall not be used."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-      </ComplexType>
-
+      </EntityType>
+      
       <!--Strongly typed property for MacAddress-->
       <TypeDefinition Name="MacAddress" UnderlyingType="Edm.String">
         <Annotation Term="Validation.Pattern" String="^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$"/>

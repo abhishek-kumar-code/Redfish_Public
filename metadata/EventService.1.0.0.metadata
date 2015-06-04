@@ -26,11 +26,6 @@
       <!-- This schema defines an event service and its respective properties.-->
       <EntityType Name="EventService" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition for the Event Service.  It represents the properties for the service itself and has links to the actual list of subscriptions."/>
-        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent an eventing service in the Redfish specification."/>
-        <Property Name="Links" Type="EventService.Links" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="This object contains the links to other resources that are related to this resource."/>
-        </Property>
         <Property Name="DeliveryRetryAttempts" Type="Edm.Int64" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is the number of attempts an event posting is retried before the subscription is terminated."/>
@@ -51,6 +46,12 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The Actions object contains the available custom actions on this resource."/>
         </Property>
+        <NavigationProperty Name="Subscriptions" Type="ListenerDestination.ListenerDestinationCollection" ContainsTarget="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="This is a reference to a collection of ListenerDestination resources."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the link to a collection of ListenerDestination resources."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
         <Property Name="Status" Type="Resource.Status"/>
       </EntityType>
 
@@ -61,15 +62,6 @@
       
       <ComplexType Name="OemActions">
         <Annotation Term="OData.AdditionalProperties" Bool="True"/>
-      </ComplexType>
-
-      <ComplexType Name="Links" BaseType="Resource.Links">
-        <NavigationProperty Name="Subscriptions" Type="EventDestinationCollection.EventDestinationCollection" ContainsTarget="true">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="This is a reference to a collection of ListenerDestination resources."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the link to a collection of ListenerDestination resources."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>
       </ComplexType>
 
       <!-- The SubmitTestEvent action causes a test event to be emitted. -->

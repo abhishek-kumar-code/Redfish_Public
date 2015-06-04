@@ -867,7 +867,7 @@ Expanded navigation properties shall be included in the select list if the resul
 For example, the following context URL specifies that the result contains a single resource from the Members collection nested under the Links property of the Systems resource:
 
 ~~~json
-"@odata.context":"/redfish/v1/$metadata#Systems/Links/Members/$entity", 
+"@odata.context":"/redfish/v1/$metadata#Systems/Members/$entity", 
 ~~~ 
 
 ##### Resource Identifier Property
@@ -1042,7 +1042,7 @@ A JSON object can be annotated with "@Message.ExtendedInfo" in order to specify 
 
 ~~~json
 {
-    "@odata.context": "/redfish/v1/$metadata#SessionService/Links/Sessions/Links/Members/$entity",
+    "@odata.context": "/redfish/v1/$metadata#SessionService/Sessions/Members/$entity",
     "@odata.id": "/redfish/v1/SessionService/Sessions/Administrator1",
     "@odata.type": "#Session.0.94.0.Session",
     "Id": "Administrator1",
@@ -1068,7 +1068,7 @@ An individual property within a JSON object can be annotated with extended infor
 
 ~~~json
 {
-    "@odata.context": "/redfish/v1/$metadata/Sessions/Links/Members/$entity",
+    "@odata.context": "/redfish/v1/$metadata/Sessions/Members/$entity",
     "@odata.id": "/redfish/v1/Sessions/Administrator1",
     "@odata.type": "#Session.<%= DocVersion %>.Session",
     "Id": "Administrator1",
@@ -2119,7 +2119,7 @@ The response to the POST request to create a session includes:
     X-Auth-Token: <session-auth-token>
 
     {
-        "@odata.context": "/redfish/v1/$metadata#SessionService/Links/Sessions/$entity",
+        "@odata.context": "/redfish/v1/$metadata#SessionService/Sessions/$entity",
         "@odata.id": "/redfish/v1/SessionService/Sessions/1",
 	"@odata.type": "#Session.1.0.0.Session",
 	"Id": "1",
