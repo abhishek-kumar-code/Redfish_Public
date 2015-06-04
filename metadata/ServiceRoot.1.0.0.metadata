@@ -118,7 +118,7 @@
         <NavigationProperty Name="Registries" Type="MessageRegistry.MessageRegistry">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a link to a collection of Registries."/>
-          <Annotation Term="OData.LongDescription" String="This object shall only contain a reference to a collection of resources that comply to the SchemaFile schema where the files are Registries. The last segment of the path shall be 'Registries'"/>
+          <Annotation Term="OData.LongDescription" String="This object shall contain a reference to Message Registry."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
         <NavigationProperty Name="JsonSchemas" Type="JsonSchemaFileCollection.SchemaFileCollection">
