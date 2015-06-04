@@ -75,7 +75,7 @@
                 "RedundancySet": {
                     "type": "array",
                     "items": {
-                        "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/ItemRef"
+                        "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Item-ref"
                     },
                     "readonly": true,
                     "description": "Contains any ids that represent components of this reduncancy set.",

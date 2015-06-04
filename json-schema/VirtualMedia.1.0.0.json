@@ -3,6 +3,36 @@
     "title": "VirtualMedia.1.0.0",
     "$ref": "#/definitions/VirtualMedia",
     "definitions":{
+        "ConnectedVia":{
+            "type": "string",
+            "enum": [
+                "NotConnected",
+                "URI",
+                "Applet",
+                "Oem"
+            ],
+            "enumDescriptions": {
+                "NotConnected": "No current connection",
+                "URI": "Connected to a URI location",
+                "Applet": "Connected to a client application",
+                "Oem": "Connected via an OEM-defined method"
+            }
+        },
+        "MediaType":{
+            "type": "string",
+            "enum": [
+                "CD",
+                "Floppy",
+                "USBStick",
+                "DVD"
+            ],
+            "enumDescriptions": {
+                "CD": "A CD-ROM format (ISO) image",
+                "Floppy": "A floppy disk image",
+                "USBStick": "An emulation of a USB storage device",
+                "DVD": "A DVD-ROM format image"
+            }
+        },
         "VirtualMedia":{
             "type": "object",
             "patternProperties": { 
@@ -103,7 +133,7 @@
             "description": "This is the schema definition for the Virtual Media Service.",
             "longDescription": "This resource shall be used to represent a virtual media service for a Redfish implementation."
         },
-        "VirtualMediaRef": { 
+        "VirtualMedia-ref": { 
             "oneOf": [ 
                 {
                     "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/idRef"
@@ -112,36 +142,6 @@
                     "$ref": "#/definitions/VirtualMedia"
                 }
             ]
-        },
-        "ConnectedVia":{
-            "type": "string",
-            "enum": [
-                "NotConnected",
-                "URI",
-                "Applet",
-                "Oem"
-            ],
-            "enumDescriptions": {
-                "NotConnected": "No current connection",
-                "URI": "Connected to a URI location",
-                "Applet": "Connected to a client application",
-                "Oem": "Connected via an OEM-defined method"
-            }
-        },
-        "MediaType":{
-            "type": "string",
-            "enum": [
-                "CD",
-                "Floppy",
-                "USBStick",
-                "DVD"
-            ],
-            "enumDescriptions": {
-                "CD": "A CD-ROM format (ISO) image",
-                "Floppy": "A floppy disk image",
-                "USBStick": "An emulation of a USB storage device",
-                "DVD": "A DVD-ROM format image"
-            }
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."

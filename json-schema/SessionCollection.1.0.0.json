@@ -19,7 +19,7 @@
                 "Members": {
                     "type": "array",
                     "items": {
-                        "$ref": "http://schemas.dmtf.org/redfish/v1/Session.1.0.0.json#/definitions/SessionRef"
+                        "$ref": "http://schemas.dmtf.org/redfish/v1/Session.1.0.0.json#/definitions/Session-ref"
                     },
                     "readonly": true,
                     "description": "Contains the members of this collection."

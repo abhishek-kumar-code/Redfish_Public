@@ -66,7 +66,7 @@
             "description": "This schema defines a user role to be used in conjunction with a manager account.",
             "longDescription": "This resource shall be used to represent resources that represent the user role for the user account."
         },
-        "RoleRef": { 
+        "Role-ref": { 
             "oneOf": [ 
                 {
                     "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/idRef"

@@ -3,6 +3,19 @@
     "title": "LogService.1.0.0",
     "$ref": "#/definitions/LogService",
     "definitions":{
+        "OverWritePolicy":{
+            "type": "string",
+            "enum": [
+                "Unknown",
+                "WrapsWhenFull",
+                "NeverOverWrites"
+            ],
+            "enumDescriptions": {
+                "Unknown": "The overwrite policy is not known or is undefined",
+                "WrapsWhenFull": "When full, new entries to the Log will overwrite previous entries",
+                "NeverOverWrites": "When full, new entries to the Log will be discarded"
+            }
+        },
         "ClearLog":{
             "type": "object",
             "additionalProperties": false,
@@ -17,19 +30,6 @@
                 }
             }
 
-        },
-        "OverWritePolicy":{
-            "type": "string",
-            "enum": [
-                "Unknown",
-                "WrapsWhenFull",
-                "NeverOverWrites"
-            ],
-            "enumDescriptions": {
-                "Unknown": "The overwrite policy is not known or is undefined",
-                "WrapsWhenFull": "When full, new entries to the Log will overwrite previous entries",
-                "NeverOverWrites": "When full, new entries to the Log will be discarded"
-            }
         },
         "LogService":{
             "type": "object",
@@ -114,7 +114,7 @@
                         "Entries": {
                             "type": "array",
                             "items": {
-                                "$ref": "http://schemas.dmtf.org/redfish/v1/LogEntry.1.0.0.json#/definitions/LogEntryRef"
+                                "$ref": "http://schemas.dmtf.org/redfish/v1/LogEntry.1.0.0.json#/definitions/LogEntry-ref"
                             },
                             "readonly": true,
                             "description": "References to the log entry collection.",
@@ -158,7 +158,7 @@
             "description": "This resource represents the log service for the resource or service to which it is associated.",
             "longDescription": "This resource shall be used to represent a log service for a Redfish implementation."
         },
-        "LogServiceRef": { 
+        "LogService-ref": { 
             "oneOf": [ 
                 {
                     "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/idRef"

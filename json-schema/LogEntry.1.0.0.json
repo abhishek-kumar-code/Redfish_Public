@@ -3,70 +3,6 @@
     "title": "LogEntry.1.0.0",
     "$ref": "#/definitions/LogEntry",
     "definitions":{
-        "EventSeverity":{
-            "type": "string",
-            "enum": [
-                "OK",
-                "Warning",
-                "Critical"
-            ]
-        },
-        "LogEntryType":{
-            "type": "string",
-            "enum": [
-                "Event",
-                "SEL",
-                "Oem"
-            ]
-        },
-        "SensorType":{
-            "type": "string",
-            "enum": [
-                "Platform Security Violation Attempt",
-                "Temperature",
-                "Voltage",
-                "Current",
-                "Fan",
-                "Physical Chassis Security",
-                "Processor",
-                "Power Supply / Converter",
-                "PowerUnit",
-                "CoolingDevice",
-                "Other Units-based Sensor",
-                "Memory",
-                "Drive Slot/Bay",
-                "POST Memory Resize",
-                "System Firmware Progress",
-                "Event Logging Disabled",
-                "System Event",
-                "Critical Interrupt",
-                "Button/Switch",
-                "Module/Board",
-                "Microcontroller/Coprocessor",
-                "Add-in Card",
-                "Chassis",
-                "ChipSet",
-                "Other FRU",
-                "Cable/Interconnect",
-                "Terminator",
-                "SystemBoot/Restart",
-                "Boot Error",
-                "BaseOSBoot/InstallationStatus",
-                "OS Stop/Shutdown",
-                "Slot/Connector",
-                "System ACPI PowerState",
-                "Watchdog",
-                "Platform Alert",
-                "Entity Presence",
-                "Monitor ASIC/IC",
-                "LAN",
-                "Management Subsystem Health",
-                "Battery",
-                "Session Audit",
-                "Version Change",
-                "FRUState"
-            ]
-        },
         "LogEntryCode":{
             "type": "string",
             "enum": [
@@ -129,6 +65,14 @@
                 "D1 Power State",
                 "D2 Power State",
                 "D3 Power State"
+            ]
+        },
+        "LogEntryType":{
+            "type": "string",
+            "enum": [
+                "Event",
+                "SEL",
+                "Oem"
             ]
         },
         "LogEntry":{
@@ -255,7 +199,7 @@
                             "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
                         },
                         "OriginOfCondition": {
-                            "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/ItemRef",
+                            "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Item-ref",
                             "readonly": true,
                             "description": "This is the URI of the resource that caused the log entry",
                             "longDescription": "The value of this property shall be an href that references the resource for which the log is associated."
@@ -274,7 +218,7 @@
             "description": "This resource represents the log record format for logs.  It is designed to be used for SEL logs from IPMI as well as Event Logs and OEM specific logs.  The EntryType field indicates the type of log and there are other properties dependent on it's value.",
             "longDescription": "This resource shall represent the log format for log services in a Redfish implementation."
         },
-        "LogEntryRef": { 
+        "LogEntry-ref": { 
             "oneOf": [ 
                 {
                     "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/idRef"
@@ -282,6 +226,62 @@
                 {
                     "$ref": "#/definitions/LogEntry"
                 }
+            ]
+        },
+        "EventSeverity":{
+            "type": "string",
+            "enum": [
+                "OK",
+                "Warning",
+                "Critical"
+            ]
+        },
+        "SensorType":{
+            "type": "string",
+            "enum": [
+                "Platform Security Violation Attempt",
+                "Temperature",
+                "Voltage",
+                "Current",
+                "Fan",
+                "Physical Chassis Security",
+                "Processor",
+                "Power Supply / Converter",
+                "PowerUnit",
+                "CoolingDevice",
+                "Other Units-based Sensor",
+                "Memory",
+                "Drive Slot/Bay",
+                "POST Memory Resize",
+                "System Firmware Progress",
+                "Event Logging Disabled",
+                "System Event",
+                "Critical Interrupt",
+                "Button/Switch",
+                "Module/Board",
+                "Microcontroller/Coprocessor",
+                "Add-in Card",
+                "Chassis",
+                "ChipSet",
+                "Other FRU",
+                "Cable/Interconnect",
+                "Terminator",
+                "SystemBoot/Restart",
+                "Boot Error",
+                "BaseOSBoot/InstallationStatus",
+                "OS Stop/Shutdown",
+                "Slot/Connector",
+                "System ACPI PowerState",
+                "Watchdog",
+                "Platform Alert",
+                "Entity Presence",
+                "Monitor ASIC/IC",
+                "LAN",
+                "Management Subsystem Health",
+                "Battery",
+                "Session Audit",
+                "Version Change",
+                "FRUState"
             ]
         }
     },

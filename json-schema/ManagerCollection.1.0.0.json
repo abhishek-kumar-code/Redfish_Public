@@ -19,7 +19,7 @@
                 "Members": {
                     "type": "array",
                     "items": {
-                        "$ref": "http://schemas.dmtf.org/redfish/v1/Manager.1.0.0.json#/definitions/ManagerRef"
+                        "$ref": "http://schemas.dmtf.org/redfish/v1/Manager.1.0.0.json#/definitions/Manager-ref"
                     },
                     "readonly": true,
                     "description": "Contains the members of this collection."

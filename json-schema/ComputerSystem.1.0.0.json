@@ -3,61 +3,6 @@
     "title": "ComputerSystem.1.0.0",
     "$ref": "#/definitions/ComputerSystem",
     "definitions":{
-        "SystemType":{
-            "type": "string",
-            "enum": [
-                "Physical",
-                "Virtual",
-                "OS",
-                "PhysicallyPartitioned",
-                "VirtuallyPartitioned"
-            ],
-            "enumDescriptions": {
-                "Physical": "A computer system",
-                "Virtual": "A virtual machine instance running on this system",
-                "OS": "An operating system instance",
-                "PhysicallyPartitioned": "A hardware-based partition of a computer system",
-                "VirtuallyPartitioned": "A virtual or software-based partition of a computer system"
-            }
-        },
-        "Reset":{
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "title": {
-                    "type": "string",
-                    "description": "Friendly action name"
-                },
-                "target": {
-                    "type": "string",
-                    "description": "Link to invoke action"
-                },
-                "ResetType@Redfish.AllowableValues": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/ResetType"
-                    },
-                    "description": "The type of reset to be performed",
-                    "longDescription": "This defines the property name for the action."
-                }
-            }
-
-        },
-        "IndicatorLED":{
-            "type": "string",
-            "enum": [
-                "Unknown",
-                "Lit",
-                "Blinking",
-                "Off"
-            ],
-            "enumDescriptions": {
-                "Unknown": "The state of the Indicator LED cannot be determined.",
-                "Lit": "The Indicator LED is lit.",
-                "Blinking": "The Indicator LED is blinking.",
-                "Off": "The Indicator LED is off."
-            }
-        },
         "Boot":{
             "type": "object",
             "patternProperties": { 
@@ -92,34 +37,29 @@
             },
             "description": "This object contains the boot information for the current resource."
         },
-        "BootSource":{
+        "IndicatorLED":{
             "type": "string",
             "enum": [
-                "None",
-                "Pxe",
-                "Floppy",
-                "Cd",
-                "Usb",
-                "Hdd",
-                "BiosSetup",
-                "Utilities",
-                "Diags",
-                "UefiShell",
-                "UefiTarget"
+                "Unknown",
+                "Lit",
+                "Blinking",
+                "Off"
             ],
             "enumDescriptions": {
-                "None": "Boot from the normal boot device",
-                "Pxe": "Boot from the Pre-Boot EXecution (PXE) environment",
-                "Floppy": "Boot from the floppy disk drive",
-                "Cd": "Boot from the CD/DVD disc",
-                "Usb": "Boot from a USB device as specified by the system BIOS",
-                "Hdd": "Boot from a hard drive",
-                "BiosSetup": "Boot to the BIOS Setup Utility",
-                "Utilities": "Boot the manufacturer's Utilities program(s)",
-                "Diags": "Boot the manufacturer's Diagnostics program",
-                "UefiShell": "Boot to the UEFI Shell",
-                "UefiTarget": "Boot to the UEFI Device specified in the UefiTargetBootSourceOverride property"
+                "Unknown": "The state of the Indicator LED cannot be determined.",
+                "Lit": "The Indicator LED is lit.",
+                "Blinking": "The Indicator LED is blinking.",
+                "Off": "The Indicator LED is off."
             }
+        },
+        "PowerState":{
+            "type": "string",
+            "enum": [
+                "On",
+                "Off",
+                "Unknown",
+                "Reset"
+            ]
         },
         "ProcessorSummary":{
             "type": "object",
@@ -155,14 +95,18 @@
             },
             "description": "This object describes the central processors of the system in general detail."
         },
-        "PowerState":{
+        "BootSourceOverrideEnabled":{
             "type": "string",
             "enum": [
-                "On",
-                "Off",
-                "Unknown",
-                "Reset"
-            ]
+                "Disabled",
+                "Once",
+                "Continuous"
+            ],
+            "enumDescriptions": {
+                "Disabled": "The system will boot as normal",
+                "Once": "On its next boot cycle, the system will boot (one time) to the Boot Source Override Target.",
+                "Continuous": "The system will boot to the target specified in the BootSourceOverrideTarget until this property is set to Disabled."
+            }
         },
         "ComputerSystem":{
             "type": "object",
@@ -221,14 +165,14 @@
                         "Chassis": {
                             "type": "array",
                             "items": {
-                                "$ref": "http://schemas.dmtf.org/redfish/v1/Chassis.1.0.0.json#/definitions/ChassisRef"
+                                "$ref": "http://schemas.dmtf.org/redfish/v1/Chassis.1.0.0.json#/definitions/Chassis-ref"
                             },
                             "readonly": true,
                             "description": "An array of references to the chassis in which this system is contained",
                             "longDescription": "The value of this property shall reference a resource of type Chassis that represents the physical container associated with this resource."
                         },
                         "Processors": {
-                            "$ref": "http://schemas.dmtf.org/redfish/v1/ProcessorCollection.1.0.0.json#/definitions/ProcessorCollectionRef",
+                            "$ref": "http://schemas.dmtf.org/redfish/v1/ProcessorCollection.1.0.0.json#/definitions/ProcessorCollection-ref",
                             "readonly": true,
                             "description": "A reference to the collection of Processors associated with this system",
                             "longDescription": "The value of this property shall be a link to a processor collection."
@@ -236,26 +180,26 @@
                         "ManagedBy": {
                             "type": "array",
                             "items": {
-                                "$ref": "http://schemas.dmtf.org/redfish/v1/Manager.1.0.0.json#/definitions/ManagerRef"
+                                "$ref": "http://schemas.dmtf.org/redfish/v1/Manager.1.0.0.json#/definitions/Manager-ref"
                             },
                             "readonly": true,
                             "description": "An array of references to the Managers responsible for this system",
                             "longDescription": "The value of this property shall reference a resource of type manager that represents the resource with management responsibility for this resource."
                         },
                         "EthernetInterfaces": {
-                            "$ref": "http://schemas.dmtf.org/redfish/v1/EthernetInterfaceCollection.1.0.0.json#/definitions/EthernetInterfaceCollectionRef",
+                            "$ref": "http://schemas.dmtf.org/redfish/v1/EthernetInterfaceCollection.1.0.0.json#/definitions/EthernetInterfaceCollection-ref",
                             "readonly": true,
                             "description": "A reference to the Ethernet interfaces associated with this system",
                             "longDescription": "The value of this property shall be a link to a collection of EthernetInterfaces."
                         },
                         "SimpleStorage": {
-                            "$ref": "http://schemas.dmtf.org/redfish/v1/SimpleStorageCollection.1.0.0.json#/definitions/SimpleStorageCollectionRef",
+                            "$ref": "http://schemas.dmtf.org/redfish/v1/SimpleStorageCollection.1.0.0.json#/definitions/SimpleStorageCollection-ref",
                             "readonly": true,
                             "description": "A reference to the storage devices associated with this system",
                             "longDescription": "The value of this property shall be a link to a collection of SimpleStorages."
                         },
                         "LogServices": {
-                            "$ref": "http://schemas.dmtf.org/redfish/v1/LogServiceCollection.1.0.0.json#/definitions/LogServiceCollectionRef",
+                            "$ref": "http://schemas.dmtf.org/redfish/v1/LogServiceCollection.1.0.0.json#/definitions/LogServiceCollection-ref",
                             "readonly": true,
                             "description": "A reference to the Log Service associated with this system",
                             "longDescription": "The value of this property shall be a link to a collection of LogServices."
@@ -263,7 +207,7 @@
                         "PoweredBy": {
                             "type": "array",
                             "items": {
-                                "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/ItemRef"
+                                "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Item-ref"
                             },
                             "readonly": true,
                             "description": "An array of ID[s] of resources that power this computer system. Normally the ID will be a chassis or a specific set of powerSupplies",
@@ -272,7 +216,7 @@
                         "CooledBy": {
                             "type": "array",
                             "items": {
-                                "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/ItemRef"
+                                "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Item-ref"
                             },
                             "readonly": true,
                             "description": "An array of ID[s] of resources that cool this computer system. Normally the ID will be a chassis or a specific set of fans.",
@@ -425,7 +369,7 @@
             "description": "This schema defines a computer system and its respective properties.  A computer system represents a machine (physical or virtual) and the local resources such as memory, cpu and other devices that can be accessed from that machine.",
             "longDescription": "This resource shall be used to represent resources that represent a computing system in the Redfish specification."
         },
-        "ComputerSystemRef": { 
+        "ComputerSystem-ref": { 
             "oneOf": [ 
                 {
                     "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/idRef"
@@ -434,6 +378,75 @@
                     "$ref": "#/definitions/ComputerSystem"
                 }
             ]
+        },
+        "Reset":{
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "description": "Link to invoke action"
+                },
+                "ResetType@Redfish.AllowableValues": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/ResetType"
+                    },
+                    "description": "The type of reset to be performed",
+                    "longDescription": "This defines the property name for the action."
+                }
+            }
+
+        },
+        "SystemType":{
+            "type": "string",
+            "enum": [
+                "Physical",
+                "Virtual",
+                "OS",
+                "PhysicallyPartitioned",
+                "VirtuallyPartitioned"
+            ],
+            "enumDescriptions": {
+                "Physical": "A computer system",
+                "Virtual": "A virtual machine instance running on this system",
+                "OS": "An operating system instance",
+                "PhysicallyPartitioned": "A hardware-based partition of a computer system",
+                "VirtuallyPartitioned": "A virtual or software-based partition of a computer system"
+            }
+        },
+        "BootSource":{
+            "type": "string",
+            "enum": [
+                "None",
+                "Pxe",
+                "Floppy",
+                "Cd",
+                "Usb",
+                "Hdd",
+                "BiosSetup",
+                "Utilities",
+                "Diags",
+                "UefiShell",
+                "UefiTarget"
+            ],
+            "enumDescriptions": {
+                "None": "Boot from the normal boot device",
+                "Pxe": "Boot from the Pre-Boot EXecution (PXE) environment",
+                "Floppy": "Boot from the floppy disk drive",
+                "Cd": "Boot from the CD/DVD disc",
+                "Usb": "Boot from a USB device as specified by the system BIOS",
+                "Hdd": "Boot from a hard drive",
+                "BiosSetup": "Boot to the BIOS Setup Utility",
+                "Utilities": "Boot the manufacturer's Utilities program(s)",
+                "Diags": "Boot the manufacturer's Diagnostics program",
+                "UefiShell": "Boot to the UEFI Shell",
+                "UefiTarget": "Boot to the UEFI Device specified in the UefiTargetBootSourceOverride property"
+            }
         },
         "MemorySummary":{
             "type": "object",
@@ -459,19 +472,6 @@
                 }
             },
             "description": "This object describes the memory of the system in general detail."
-        },
-        "BootSourceOverrideEnabled":{
-            "type": "string",
-            "enum": [
-                "Disabled",
-                "Once",
-                "Continuous"
-            ],
-            "enumDescriptions": {
-                "Disabled": "The system will boot as normal",
-                "Once": "On its next boot cycle, the system will boot (one time) to the Boot Source Override Target.",
-                "Continuous": "The system will boot to the target specified in the BootSourceOverrideTarget until this property is set to Disabled."
-            }
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."

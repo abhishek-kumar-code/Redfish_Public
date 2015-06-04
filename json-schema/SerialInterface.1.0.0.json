@@ -3,6 +3,28 @@
     "title": "SerialInterface.1.0.0",
     "$ref": "#/definitions/SerialInterface",
     "definitions":{
+        "PinOut":{
+            "type": "string",
+            "enum": [
+                "Cisco",
+                "Cyclades",
+                "Digi"
+            ]
+        },
+        "ConnectorType":{
+            "type": "string",
+            "enum": [
+                "RJ45",
+                "RJ11",
+                "DB9 Female",
+                "DB9 Male",
+                "DB25 Female",
+                "DB25 Male",
+                "USB",
+                "mUSB",
+                "uUSB"
+            ]
+        },
         "Parity":{
             "type": "string",
             "enum": [
@@ -11,6 +33,26 @@
                 "Odd",
                 "Mark",
                 "Space"
+            ]
+        },
+        "FlowControl":{
+            "type": "string",
+            "enum": [
+                "None",
+                "Software",
+                "Hardware"
+            ],
+            "enumDescriptions": {
+                "None": "No flow control imposed",
+                "Software": "XON/XOFF in-band flow control imposed",
+                "Hardware": "Out of band flow control imposed"
+            }
+        },
+        "StopBits":{
+            "type": "string",
+            "enum": [
+                "1",
+                "2"
             ]
         },
         "SerialInterface":{
@@ -98,7 +140,7 @@
             "description": "This schema defines an asynchronous serial interface resource.",
             "longDescription": "This resource shall be used to represent serial resources as part of the Redfish specification."
         },
-        "SerialInterfaceRef": { 
+        "SerialInterface-ref": { 
             "oneOf": [ 
                 {
                     "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/idRef"
@@ -108,39 +150,11 @@
                 }
             ]
         },
-        "ConnectorType":{
+        "SignalType":{
             "type": "string",
             "enum": [
-                "RJ45",
-                "RJ11",
-                "DB9 Female",
-                "DB9 Male",
-                "DB25 Female",
-                "DB25 Male",
-                "USB",
-                "mUSB",
-                "uUSB"
-            ]
-        },
-        "FlowControl":{
-            "type": "string",
-            "enum": [
-                "None",
-                "Software",
-                "Hardware"
-            ],
-            "enumDescriptions": {
-                "None": "No flow control imposed",
-                "Software": "XON/XOFF in-band flow control imposed",
-                "Hardware": "Out of band flow control imposed"
-            }
-        },
-        "PinOut":{
-            "type": "string",
-            "enum": [
-                "Cisco",
-                "Cyclades",
-                "Digi"
+                "Rs232",
+                "Rs485"
             ]
         },
         "DataBits":{
@@ -150,20 +164,6 @@
                 "6",
                 "7",
                 "8"
-            ]
-        },
-        "StopBits":{
-            "type": "string",
-            "enum": [
-                "1",
-                "2"
-            ]
-        },
-        "SignalType":{
-            "type": "string",
-            "enum": [
-                "Rs232",
-                "Rs485"
             ]
         },
         "BitRate":{

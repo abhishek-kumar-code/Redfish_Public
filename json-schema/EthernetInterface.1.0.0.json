@@ -3,6 +3,10 @@
     "title": "EthernetInterface.1.0.0",
     "$ref": "#/definitions/EthernetInterface",
     "definitions":{
+        "MacAddress":{
+            "type": "string",
+            "pattern": "^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$"
+        },
         "EthernetInterface":{
             "type": "object",
             "patternProperties": { 
@@ -228,12 +232,12 @@
                             "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
                         },
                         "Settings": {
-                            "$ref": "http://schemas.dmtf.org/redfish/v1/Settings.1.0.0.json#/definitions/SettingsRef",
+                            "$ref": "http://schemas.dmtf.org/redfish/v1/Settings.1.0.0.json#/definitions/Settings-ref",
                             "description": "If this resource is supports changing properties by modifying a separate (settings) resource, this is the reference to that resource. ",
                             "longDescription": "If network settings are not dynamically settable (e.g. a reset required that doesn't happen automatically), this value shall be used to reference a separately PATCHable representation of this data to be used for configuration purposes."
                         },
                         "VLANs": {
-                            "$ref": "http://schemas.dmtf.org/redfish/v1/VLanNetworkInterfaceCollection.1.0.0.json#/definitions/VLanNetworkInterfaceCollectionRef",
+                            "$ref": "http://schemas.dmtf.org/redfish/v1/VLanNetworkInterfaceCollection.1.0.0.json#/definitions/VLanNetworkInterfaceCollection-ref",
                             "readonly": true,
                             "description": "This is a reference to a collection of VLANs and is only used if the NIC supports more than one VLAN.",
                             "longDescription": "The value of this property shall reference a collection of VLAN resources.  If this property is used, the VLANEnabled and VLANId property shall not be used."
@@ -246,7 +250,7 @@
             "description": "This schema defines a simple ethernet NIC resource.",
             "longDescription": "This resource shall be used to represent NIC resources as part of the Redfish specification."
         },
-        "EthernetInterfaceRef": { 
+        "EthernetInterface-ref": { 
             "oneOf": [ 
                 {
                     "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/idRef"
@@ -255,10 +259,6 @@
                     "$ref": "#/definitions/EthernetInterface"
                 }
             ]
-        },
-        "MacAddress":{
-            "type": "string",
-            "pattern": "^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$"
         },
         "IPv6AddressPolicyEntry":{
             "type": "object",

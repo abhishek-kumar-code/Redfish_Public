@@ -2,23 +2,28 @@
     "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0.json",
     "title": "IPAddresses.1.0.0",
     "definitions":{
-        "PrefixLength":{
-            "type": "number"
-        },
-        "AddressState":{
+        "IPv6AddressOrigin":{
             "type": "string",
             "enum": [
-                "Preferred",
-                "Deprecated",
-                "Tentative",
-                "Failed"
+                "Static",
+                "DHCPv6",
+                "IPv6AutoConfig",
+                "Stateless",
+                "LinkLocal",
+                "SLAAC"
             ],
             "enumDescriptions": {
-                "Preferred": "This address is currently within both it's valid and preferred lifetimes as defined in RFC 4862.",
-                "Deprecated": "This address is currently within it's valid lifetime, but is now outside of it's preferred lifetime as defined in RFC 4862.",
-                "Tentative": "This address is currently undergoing Duplicate Address Detection testing as defined in RFC 4862 section 5.4.",
-                "Failed": "This address has failed Duplicate Address Detection testing as defined in RFC 4862 section 5.4 and is not currently in use."
+                "Static": "A static address as configured by the user",
+                "DHCPv6": "Address is provided by a DHCP service",
+                "IPv6AutoConfig": "TODO",
+                "Stateless": "TODO",
+                "LinkLocal": "TODO",
+                "SLAAC": "Address is provided by a Stateless Address AutoConfiguration (SLAAC) service"
             }
+        },
+        "SubnetMask":{
+            "type": "string",
+            "pattern": "^(?:[0-9]{1,3}\\.){3}[0-9]{1,3}$"
         },
         "IPv6Address":{
             "type": "object",
@@ -61,28 +66,38 @@
                 }
             }
         },
-        "SubnetMask":{
+        "AddressState":{
             "type": "string",
-            "pattern": "^(?:[0-9]{1,3}\\.){3}[0-9]{1,3}$"
+            "enum": [
+                "Preferred",
+                "Deprecated",
+                "Tentative",
+                "Failed"
+            ],
+            "enumDescriptions": {
+                "Preferred": "This address is currently within both it's valid and preferred lifetimes as defined in RFC 4862.",
+                "Deprecated": "This address is currently within it's valid lifetime, but is now outside of it's preferred lifetime as defined in RFC 4862.",
+                "Tentative": "This address is currently undergoing Duplicate Address Detection testing as defined in RFC 4862 section 5.4.",
+                "Failed": "This address has failed Duplicate Address Detection testing as defined in RFC 4862 section 5.4 and is not currently in use."
+            }
         },
-        "IPv6AddressOrigin":{
+        "IPv4AddressOrigin":{
             "type": "string",
             "enum": [
                 "Static",
-                "DHCPv6",
-                "IPv6AutoConfig",
-                "Stateless",
-                "LinkLocal",
-                "SLAAC"
+                "DHCP",
+                "BOOTP",
+                "IPv4LinkLocal"
             ],
             "enumDescriptions": {
                 "Static": "A static address as configured by the user",
-                "DHCPv6": "Address is provided by a DHCP service",
-                "IPv6AutoConfig": "TODO",
-                "Stateless": "TODO",
-                "LinkLocal": "TODO",
-                "SLAAC": "Address is provided by a Stateless Address AutoConfiguration (SLAAC) service"
+                "DHCP": "Address is provided by a DHCP service",
+                "BOOTP": "TODO",
+                "IPv4LinkLocal": "TODO"
             }
+        },
+        "PrefixLength":{
+            "type": "number"
         },
         "IPv6StaticAddress":{
             "type": "object",
@@ -160,21 +175,6 @@
                     "description": "This is the IPv4 gateway for this address.",
                     "longDescription": "The value of this property shall be the IPv4 default gateway address for this interface. If DHCPv4 is enabled on the interface and is configured to set the IPv4 default gateway address, this property becomes read-only."
                 }
-            }
-        },
-        "IPv4AddressOrigin":{
-            "type": "string",
-            "enum": [
-                "Static",
-                "DHCP",
-                "BOOTP",
-                "IPv4LinkLocal"
-            ],
-            "enumDescriptions": {
-                "Static": "A static address as configured by the user",
-                "DHCP": "Address is provided by a DHCP service",
-                "BOOTP": "TODO",
-                "IPv4LinkLocal": "TODO"
             }
         }
     },

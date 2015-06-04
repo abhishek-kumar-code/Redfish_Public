@@ -94,13 +94,13 @@
                             "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
                         },
                         "Accounts": {
-                            "$ref": "http://schemas.dmtf.org/redfish/v1/ManagerAccount.1.0.0.json#/definitions/ManagerAccountCollectionRef",
+                            "$ref": "http://schemas.dmtf.org/redfish/v1/ManagerAccount.1.0.0.json#/definitions/ManagerAccountCollection-ref",
                             "readonly": true,
                             "description": "Link to a collection of ManagerAccounts",
                             "longDescription": "This property shall contain the link to a collection of ManagerAccounts."
                         },
                         "Roles": {
-                            "$ref": "http://schemas.dmtf.org/redfish/v1/RoleCollection.1.0.0.json#/definitions/RoleCollectionRef",
+                            "$ref": "http://schemas.dmtf.org/redfish/v1/RoleCollection.1.0.0.json#/definitions/RoleCollection-ref",
                             "readonly": true,
                             "description": "Link to a collection of Roles",
                             "longDescription": "This property shall contain the link to a collection of Roles."
@@ -112,7 +112,7 @@
             "description": "This is the schema definition for the Account Service.  It represents the properties for the service itself and has links to the actual list of accounts.",
             "longDescription": "This resource shall be used to represent a management account service for a Redfish implementation."
         },
-        "AccountServiceRef": { 
+        "AccountService-ref": { 
             "oneOf": [ 
                 {
                     "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/idRef"

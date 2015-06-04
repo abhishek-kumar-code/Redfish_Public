@@ -3,6 +3,17 @@
     "title": "TaskService.1.0.0",
     "$ref": "#/definitions/TaskService",
     "definitions":{
+        "OverWritePolicy":{
+            "type": "string",
+            "enum": [
+                "Manual",
+                "Oldest"
+            ],
+            "enumDescriptions": {
+                "Manual": "Completed tasks are not automatically overwritten",
+                "Oldest": "Oldest completed tasks are overwritten"
+            }
+        },
         "TaskService":{
             "type": "object",
             "patternProperties": { 
@@ -76,7 +87,7 @@
                         "Tasks": {
                             "type": "array",
                             "items": {
-                                "$ref": "http://schemas.dmtf.org/redfish/v1/Task.1.0.0.json#/definitions/TaskRef"
+                                "$ref": "http://schemas.dmtf.org/redfish/v1/Task.1.0.0.json#/definitions/Task-ref"
                             },
                             "readonly": true,
                             "description": "References to the Tasks collection.",
@@ -93,7 +104,7 @@
             "description": "This is the schema definition for the Task Service.  It represents the properties for the service itself and has links to the actual list of tasks.",
             "longDescription": "This resource shall be used to represent a task service for a Redfish implementation."
         },
-        "TaskServiceRef": { 
+        "TaskService-ref": { 
             "oneOf": [ 
                 {
                     "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/idRef"
@@ -102,17 +113,6 @@
                     "$ref": "#/definitions/TaskService"
                 }
             ]
-        },
-        "OverWritePolicy":{
-            "type": "string",
-            "enum": [
-                "Manual",
-                "Oldest"
-            ],
-            "enumDescriptions": {
-                "Manual": "Completed tasks are not automatically overwritten",
-                "Oldest": "Oldest completed tasks are overwritten"
-            }
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."

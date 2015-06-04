@@ -3,158 +3,6 @@
     "title": "MessageRegistry.1.0.0",
     "$ref": "#/definitions/MessageRegistry",
     "definitions":{
-        "MessageProperty":{
-            "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
-                    "description": "This property shall specify a valid odata or redfish property."
-                }
-            },
-            "additionalProperties": true,
-            "properties": {
-
-            },
-            "patternProperties": { 
-                "[A-Za-z0-9]+": { 
-                    "type": "object",
-                    "patternProperties": { 
-                        "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
-                            "type": ["array", "boolean", "number", "null", "object", "string"],
-                            "description": "This property shall specify a valid odata or redfish property."
-                        }
-                    },
-                    "additionalProperties": false,
-                    "properties": {
-                        "Description": {
-                            "type": "string",
-                            "readonly": true,
-                            "description": "This is a short description of how and when this message is to be used.",
-                            "longDescription": "The value of this property shall indicate how and when this message is returned by the Redfish service."
-                        },
-                        "Message": {
-                            "type": "string",
-                            "readonly": true,
-                            "description": "The actual message.",
-                            "longDescription": "The value of this property shall be the message to be displayed.  If a %integer is included in part of the string, it shall be used to represent a string substitution for any MessageArgs accompanying the message, in order."
-                        },
-                        "Severity": {
-                            "type": "string",
-                            "readonly": true,
-                            "description": "This is the severity of the message.",
-                            "longDescription": "The value of this property shall be the severity of the condition resulting in the message, as defined in the Status section of the Redfish specification."
-                        },
-                        "NumberOfArgs": {
-                            "type": "number",
-                            "readonly": true,
-                            "description": "The number of arguments to be expected to be passed in as MessageArgs for this message.",
-                            "longDescription": "The value of this property shall be the number of MessageArgs that are expected to be substituted in the Message in the locations within the Message marked by %<integer>."
-                        },
-                        "ParamTypes": {
-                            "type": "array",
-                            "items": {
-                                "type": [
-                                    "string",
-                                    "null"
-                                ],
-                                "enum": [
-                                    "string",
-                                    "number"
-                                ]
-                            },
-                            "readonly": true,
-                            "description": "The MessageArg types, in order, for the message.",
-                            "longDescription": "The value of this property shall be an ordered array of parameter types which match the types of the MessageArgs, in order."
-                        },
-                        "Resolution": {
-                            "type": "string",
-                            "readonly": true,
-                            "description": "Used to provide suggestions on how to resolve the situation that caused the error.",
-                            "longDescription": "This property shall contain an override of the Resolution of the message in message registry, if present."
-                        }
-                    },
-                    "required": [
-                        "Description",
-                        "Message",
-                        "Severity",
-                        "NumberOfArgs",
-                        "Resolution"
-                    ]
-                }
-            }
-        },
-        "Message":{
-            "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
-                    "description": "This property shall specify a valid odata or redfish property."
-                }
-            },
-            "additionalProperties": false,
-            "properties": {
-                "Description": {
-                    "type": "string",
-                    "readonly": true,
-                    "description": "This is a short description of how and when this message is to be used.",
-                    "longDescription": "The value of this property shall indicate how and when this message is returned by the Redfish service."
-                },
-                "Message": {
-                    "type": "string",
-                    "readonly": true,
-                    "description": "The actual message.",
-                    "longDescription": "The value of this property shall be the message to be displayed.  If a %integer is included in part of the string, it shall be used to represent a string substitution for any MessageArgs accompanying the message, in order."
-                },
-                "Severity": {
-                    "type": "string",
-                    "readonly": true,
-                    "description": "This is the severity of the message.",
-                    "longDescription": "The value of this property shall be the severity of the condition resulting in the message, as defined in the Status section of the Redfish specification."
-                },
-                "NumberOfArgs": {
-                    "type": "number",
-                    "readonly": true,
-                    "description": "The number of arguments to be expected to be passed in as MessageArgs for this message.",
-                    "longDescription": "The value of this property shall be the number of MessageArgs that are expected to be substituted in the Message in the locations within the Message marked by %<integer>."
-                },
-                "ParamTypes": {
-                    "type": "array",
-                    "items": {
-                        "type": [
-                            "string",
-                            "null"
-                        ],
-                        "enum": [
-                            "string",
-                            "number"
-                        ]
-                    },
-                    "readonly": true,
-                    "description": "The MessageArg types, in order, for the message.",
-                    "longDescription": "The value of this property shall be an ordered array of parameter types which match the types of the MessageArgs, in order."
-                },
-                "Resolution": {
-                    "type": "string",
-                    "readonly": true,
-                    "description": "Used to provide suggestions on how to resolve the situation that caused the error.",
-                    "longDescription": "This property shall contain an override of the Resolution of the message in message registry, if present."
-                }
-            },
-            "required": [
-                "Description",
-                "Message",
-                "Severity",
-                "NumberOfArgs",
-                "Resolution"
-            ]
-        },
-        "ParamType":{
-            "type": "string",
-            "enum": [
-                "string",
-                "number"
-            ]
-        },
         "MessageRegistry":{
             "type": "object",
             "patternProperties": { 
@@ -309,7 +157,7 @@
             "description": "This is the schema definition for all Message Registries.  It represents the properties for the registries themselves.  The MessageID is formed per the Redfish specification.  It consists of the RegistryPrefix concatenated with the version concatenated with the unique identifier for the message registry entry.",
             "longDescription": "This resource shall be used to represent a message registry for a Redfish implementation."
         },
-        "MessageRegistryRef": { 
+        "MessageRegistry-ref": { 
             "oneOf": [ 
                 {
                     "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/idRef"
@@ -318,6 +166,158 @@
                     "$ref": "#/definitions/MessageRegistry"
                 }
             ]
+        },
+        "ParamType":{
+            "type": "string",
+            "enum": [
+                "string",
+                "number"
+            ]
+        },
+        "Message":{
+            "type": "object",
+            "patternProperties": { 
+                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+                    "type": ["array", "boolean", "number", "null", "object", "string"],
+                    "description": "This property shall specify a valid odata or redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Description": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "This is a short description of how and when this message is to be used.",
+                    "longDescription": "The value of this property shall indicate how and when this message is returned by the Redfish service."
+                },
+                "Message": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "The actual message.",
+                    "longDescription": "The value of this property shall be the message to be displayed.  If a %integer is included in part of the string, it shall be used to represent a string substitution for any MessageArgs accompanying the message, in order."
+                },
+                "Severity": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "This is the severity of the message.",
+                    "longDescription": "The value of this property shall be the severity of the condition resulting in the message, as defined in the Status section of the Redfish specification."
+                },
+                "NumberOfArgs": {
+                    "type": "number",
+                    "readonly": true,
+                    "description": "The number of arguments to be expected to be passed in as MessageArgs for this message.",
+                    "longDescription": "The value of this property shall be the number of MessageArgs that are expected to be substituted in the Message in the locations within the Message marked by %<integer>."
+                },
+                "ParamTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": [
+                            "string",
+                            "null"
+                        ],
+                        "enum": [
+                            "string",
+                            "number"
+                        ]
+                    },
+                    "readonly": true,
+                    "description": "The MessageArg types, in order, for the message.",
+                    "longDescription": "The value of this property shall be an ordered array of parameter types which match the types of the MessageArgs, in order."
+                },
+                "Resolution": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "Used to provide suggestions on how to resolve the situation that caused the error.",
+                    "longDescription": "This property shall contain an override of the Resolution of the message in message registry, if present."
+                }
+            },
+            "required": [
+                "Description",
+                "Message",
+                "Severity",
+                "NumberOfArgs",
+                "Resolution"
+            ]
+        },
+        "MessageProperty":{
+            "type": "object",
+            "patternProperties": { 
+                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+                    "type": ["array", "boolean", "number", "null", "object", "string"],
+                    "description": "This property shall specify a valid odata or redfish property."
+                }
+            },
+            "additionalProperties": true,
+            "properties": {
+
+            },
+            "patternProperties": { 
+                "[A-Za-z0-9]+": { 
+                    "type": "object",
+                    "patternProperties": { 
+                        "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+                            "type": ["array", "boolean", "number", "null", "object", "string"],
+                            "description": "This property shall specify a valid odata or redfish property."
+                        }
+                    },
+                    "additionalProperties": false,
+                    "properties": {
+                        "Description": {
+                            "type": "string",
+                            "readonly": true,
+                            "description": "This is a short description of how and when this message is to be used.",
+                            "longDescription": "The value of this property shall indicate how and when this message is returned by the Redfish service."
+                        },
+                        "Message": {
+                            "type": "string",
+                            "readonly": true,
+                            "description": "The actual message.",
+                            "longDescription": "The value of this property shall be the message to be displayed.  If a %integer is included in part of the string, it shall be used to represent a string substitution for any MessageArgs accompanying the message, in order."
+                        },
+                        "Severity": {
+                            "type": "string",
+                            "readonly": true,
+                            "description": "This is the severity of the message.",
+                            "longDescription": "The value of this property shall be the severity of the condition resulting in the message, as defined in the Status section of the Redfish specification."
+                        },
+                        "NumberOfArgs": {
+                            "type": "number",
+                            "readonly": true,
+                            "description": "The number of arguments to be expected to be passed in as MessageArgs for this message.",
+                            "longDescription": "The value of this property shall be the number of MessageArgs that are expected to be substituted in the Message in the locations within the Message marked by %<integer>."
+                        },
+                        "ParamTypes": {
+                            "type": "array",
+                            "items": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ],
+                                "enum": [
+                                    "string",
+                                    "number"
+                                ]
+                            },
+                            "readonly": true,
+                            "description": "The MessageArg types, in order, for the message.",
+                            "longDescription": "The value of this property shall be an ordered array of parameter types which match the types of the MessageArgs, in order."
+                        },
+                        "Resolution": {
+                            "type": "string",
+                            "readonly": true,
+                            "description": "Used to provide suggestions on how to resolve the situation that caused the error.",
+                            "longDescription": "This property shall contain an override of the Resolution of the message in message registry, if present."
+                        }
+                    },
+                    "required": [
+                        "Description",
+                        "Message",
+                        "Severity",
+                        "NumberOfArgs",
+                        "Resolution"
+                    ]
+                }
+            }
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."

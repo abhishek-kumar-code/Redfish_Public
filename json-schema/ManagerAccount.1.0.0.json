@@ -3,6 +3,46 @@
     "title": "ManagerAccount.1.0.0",
     "$ref": "#/definitions/ManagerAccount",
     "definitions":{
+        "ManagerAccountCollection":{
+            "type": "object",
+            "patternProperties": { 
+                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+                    "type": ["array", "boolean", "number", "null", "object", "string"],
+                    "description": "This property shall specify a valid odata or redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/context"
+                },
+                "@odata.id": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/type"
+                },
+                "Description": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Description"
+                },
+                "Name": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Name"
+                },
+                "Modified": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Modified"
+                },
+                "Oem": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Oem",
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+                },
+                "Links": {
+                    "$ref": "#/definitions/Members",
+                    "readonly": true,
+                    "description": "Contains links to other resources that are related to this resource."
+                }
+            }
+        },
         "Members":{
             "type": "object",
             "patternProperties": { 
@@ -19,7 +59,7 @@
                 "Members": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/ManagerAccountRef"
+                        "$ref": "#/definitions/ManagerAccount-ref"
                     },
                     "readonly": true,
                     "description": "Contains the members of this collection."
@@ -103,7 +143,7 @@
                             "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
                         },
                         "Role": {
-                            "$ref": "http://schemas.dmtf.org/redfish/v1/Role.1.0.0.json#/definitions/RoleRef",
+                            "$ref": "http://schemas.dmtf.org/redfish/v1/Role.1.0.0.json#/definitions/Role-ref",
                             "readonly": true,
                             "description": "A reference to the Role object defining Privileges for this account--returned when the resource is read. The ID of the role is the same as property RoleId.",
                             "longDescription": "The value of this property shall be a link to a Role object instance, and should reference the object identified by property RoleId."
@@ -121,7 +161,7 @@
             "description": "This schema defines a user account to be used in conjunction with a manager.  This will affect the Redfish service connection if this manager is responsible for the Redfish service.",
             "longDescription": "This resource shall be used to represent resources that represent the user accounts for the manager."
         },
-        "ManagerAccountRef": { 
+        "ManagerAccount-ref": { 
             "oneOf": [ 
                 {
                     "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/idRef"
@@ -130,46 +170,6 @@
                     "$ref": "#/definitions/ManagerAccount"
                 }
             ]
-        },
-        "ManagerAccountCollection":{
-            "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
-                    "description": "This property shall specify a valid odata or redfish property."
-                }
-            },
-            "additionalProperties": false,
-            "properties": {
-                "@odata.context": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/context"
-                },
-                "@odata.id": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/id"
-                },
-                "@odata.type": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/type"
-                },
-                "Description": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Description"
-                },
-                "Name": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Name"
-                },
-                "Modified": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Modified"
-                },
-                "Oem": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Oem",
-                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
-                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
-                },
-                "Links": {
-                    "$ref": "#/definitions/Members",
-                    "readonly": true,
-                    "description": "Contains links to other resources that are related to this resource."
-                }
-            }
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."

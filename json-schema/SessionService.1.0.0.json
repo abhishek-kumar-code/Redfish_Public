@@ -58,7 +58,7 @@
                             "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
                         },
                         "Sessions": {
-                            "$ref": "http://schemas.dmtf.org/redfish/v1/SessionCollection.1.0.0.json#/definitions/SessionCollectionRef",
+                            "$ref": "http://schemas.dmtf.org/redfish/v1/SessionCollection.1.0.0.json#/definitions/SessionCollection-ref",
                             "readonly": true,
                             "description": "Link to a collection of Sessions",
                             "longDescription": "This property shall contain the link to a collection of Sessions."
@@ -70,7 +70,7 @@
             "description": "This is the schema definition for the Session Service.  It represents the properties for the service itself and has links to the actual list of sessions.",
             "longDescription": "This resource shall be used to represent the Session Service Properties for a Redfish implementation."
         },
-        "SessionServiceRef": { 
+        "SessionService-ref": { 
             "oneOf": [ 
                 {
                     "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/idRef"

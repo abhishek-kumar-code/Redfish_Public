@@ -3,35 +3,6 @@
     "title": "Task.1.0.0",
     "$ref": "#/definitions/Task",
     "definitions":{
-        "TaskState":{
-            "type": "string",
-            "enum": [
-                "New",
-                "Starting",
-                "Running",
-                "Suspended",
-                "Interrupted",
-                "Pending",
-                "Stopping",
-                "Completed",
-                "Killed",
-                "Exception",
-                "Service"
-            ],
-            "enumDescriptions": {
-                "New": "A new task",
-                "Starting": "Task is starting",
-                "Running": "Task is running normally",
-                "Suspended": "Task has been suspended",
-                "Interrupted": "Task has been interrupted",
-                "Pending": "Task is pending and has not started",
-                "Stopping": "Task is in the process of stopping",
-                "Completed": "Task has completed",
-                "Killed": "Task was terminated",
-                "Exception": "Task has stopped due to an exception condition",
-                "Service": "Task is running as a service"
-            }
-        },
         "Task":{
             "type": "object",
             "patternProperties": { 
@@ -104,7 +75,7 @@
             "description": "This is the schema definition for a Task resource.",
             "longDescription": "This resource shall be used to represent a task for a Redfish implementation."
         },
-        "TaskRef": { 
+        "Task-ref": { 
             "oneOf": [ 
                 {
                     "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/idRef"
@@ -113,6 +84,35 @@
                     "$ref": "#/definitions/Task"
                 }
             ]
+        },
+        "TaskState":{
+            "type": "string",
+            "enum": [
+                "New",
+                "Starting",
+                "Running",
+                "Suspended",
+                "Interrupted",
+                "Pending",
+                "Stopping",
+                "Completed",
+                "Killed",
+                "Exception",
+                "Service"
+            ],
+            "enumDescriptions": {
+                "New": "A new task",
+                "Starting": "Task is starting",
+                "Running": "Task is running normally",
+                "Suspended": "Task has been suspended",
+                "Interrupted": "Task has been interrupted",
+                "Pending": "Task is pending and has not started",
+                "Stopping": "Task is in the process of stopping",
+                "Completed": "Task has completed",
+                "Killed": "Task was terminated",
+                "Exception": "Task has stopped due to an exception condition",
+                "Service": "Task is running as a service"
+            }
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."

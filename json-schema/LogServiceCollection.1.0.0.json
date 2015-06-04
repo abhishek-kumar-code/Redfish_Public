@@ -59,7 +59,7 @@
                 "Members": {
                     "type": "array",
                     "items": {
-                        "$ref": "http://schemas.dmtf.org/redfish/v1/LogService.1.0.0.json#/definitions/LogServiceRef"
+                        "$ref": "http://schemas.dmtf.org/redfish/v1/LogService.1.0.0.json#/definitions/LogService-ref"
                     },
                     "readonly": true,
                     "description": "Contains the members of this collection."

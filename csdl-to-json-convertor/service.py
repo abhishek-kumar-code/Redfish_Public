@@ -650,13 +650,13 @@ class JsonSchemaGenerator:
                             # Get the reference value
                             refvalue = JsonSchemaGenerator.get_ref_value_for_type(typetable, current_typename, namespace)
                             if(termvalue != "OData.AutoExpand"):
-                                refvalue += "Ref"
+                                refvalue += "-ref"
                             output += UT.Utilities.indent(depth+3)+ "\"$ref\": \"" + refvalue + "\"\n"
                             output += UT.Utilities.indent(depth+2) + "}"
                         else:
                             refvalue = JsonSchemaGenerator.get_ref_value_for_type(typetable, attribtype, namespace)
                             if(termvalue != "OData.AutoExpand"):
-                                refvalue += "Ref"
+                                refvalue += "-ref"
                             output += UT.Utilities.indent(depth+2)+ "\"$ref\": \"" + refvalue + "\""
 
 					# Handle regular property
@@ -936,7 +936,7 @@ class JsonSchemaGenerator:
 
         output = "\n"
         output += UT.Utilities.indent(depth) + "},\n"
-        output += UT.Utilities.indent(depth) + "\""+ typename + "Ref\": { \n"
+        output += UT.Utilities.indent(depth) + "\""+ typename + "-ref\": { \n"
         output += UT.Utilities.indent(depth+1) + "\"oneOf\": [ \n"
         output += UT.Utilities.indent(depth+2) + "{\n"
         output += UT.Utilities.indent(depth+3) + "\"$ref\": \"" + odataSchema + "#/definitions/idRef\"\n"

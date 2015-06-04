@@ -45,7 +45,7 @@
                 "Members": {
                     "type": "array",
                     "items": {
-                        "$ref": "http://schemas.dmtf.org/redfish/v1/SerialInterface.1.0.0.json#/definitions/SerialInterfaceRef"
+                        "$ref": "http://schemas.dmtf.org/redfish/v1/SerialInterface.1.0.0.json#/definitions/SerialInterface-ref"
                     },
                     "readonly": true,
                     "description": "Contains the members of this collection."
