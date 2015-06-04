@@ -1167,11 +1167,11 @@ Error responses are defined by an extended error resource, represented as a sing
 ~~~json
 {
     "error": {
-        "code": "GeneralError",
+        "code": "Base.1.0.0.GeneralError",
         "message": "A general error has occurred. See ExtendedInfo for more information.",
         "@Message.ExtendedInfo": [
             {
-                "MessageId": "Base.<%= DocVersion.replace(/\.[^\.]+$/, '') %>.PropertyValueNotInList",
+                "MessageId": "Base.1.0.0.PropertyValueNotInList",
                 "PropertiesInError": [ 
 					"IndicatorLED" 
 				],
@@ -1184,7 +1184,7 @@ Error responses are defined by an extended error resource, represented as a sing
                 "Resolution": "Remove the property from the request body and resubmit the request if the operation failed"
             },
             {
-                "MessageId": "Base.<%= DocVersion.replace(/\.[^\.]+$/, '') %>.PropertyNotWriteable",
+                "MessageId": "Base.1.0.0.PropertyNotWriteable",
                 "PropertiesInError": [ 
 					"SKU" 
 				],
