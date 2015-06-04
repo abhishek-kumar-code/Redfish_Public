@@ -1,5 +1,5 @@
 {
-    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0",
+    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0.json",
     "title": "TaskService.1.0.0",
     "$ref": "#/definitions/TaskService",
     "definitions":{
@@ -14,33 +14,27 @@
             "additionalProperties": false,
             "properties": {
                 "@odata.context": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0#/definitions/context"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/context"
                 },
                 "@odata.id": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0#/definitions/id"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/id"
                 },
                 "@odata.type": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0#/definitions/type"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/type"
                 },
                 "Oem": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0#/definitions/Oem",
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Oem",
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Id": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0#/definitions/Id"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Id"
                 },
                 "Description": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0#/definitions/Description"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Description"
                 },
                 "Name": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0#/definitions/Name"
-                },
-                "MaxNumberOfTasks": {
-                    "type": "number",
-                    "readonly": true,
-                    "description": "The maximum number of tasks this service can track.",
-                    "longDescription": "The value of this property shall indicate the maximum number of tasks that this service can support."
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Name"
                 },
                 "CompletedTaskOverWritePolicy": {
                     "$ref": "#/definitions/OverWritePolicy",
@@ -65,50 +59,49 @@
                     "longDescription": "The value of this property, if set to true, shall indicate that the service shall send a LifeCycle event to ListenerDestinations registered for such events upon change of task state."
                 },
                 "Links": {
-                    "$ref": "#/definitions/Links",
+                    "type": "object",
+                    "patternProperties": { 
+                        "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+                            "type": ["array", "boolean", "number", "null", "object", "string"],
+                            "description": "This property shall specify a valid odata or redfish property."
+                        }
+                    },
+                    "additionalProperties": false,
+                    "properties": {
+                        "Oem": {
+                            "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Oem",
+                            "description": "Oem extension object.",
+                            "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
+                        },
+                        "Tasks": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "http://schemas.dmtf.org/redfish/v1/Task.1.0.0.json#/definitions/TaskRef"
+                            },
+                            "readonly": true,
+                            "description": "References to the Tasks collection.",
+                            "longDescription": "The value of this property shall be a link to a collection of Tasks."
+                        }
+                    },
                     "readonly": true,
                     "description": "The links object contains the links to other resources that are related to this resource."
                 },
                 "Status": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0#/definitions/Status"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Status"
                 }
             },
             "description": "This is the schema definition for the Task Service.  It represents the properties for the service itself and has links to the actual list of tasks.",
             "longDescription": "This resource shall be used to represent a task service for a Redfish implementation."
         },
-        "Links":{
-            "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
-                    "description": "This property shall specify a valid odata or redfish property."
-                }
-            },
-            "additionalProperties": false,
-            "properties": {
-                "Oem": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0#/definitions/Oem",
-                    "description": "Oem extension object.",
-                    "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
+        "TaskServiceRef": { 
+            "oneOf": [ 
+                {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/idRef"
                 },
-                "Tasks@odata.count": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0#/definitions/count"
-                },
-                "Tasks": {
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "properties": {
-                            "@odata.id" :{
-                                "$ref": "odata.4.0.0.json#id"
-                            }
-                        }
-                    },
-                    "readonly": true,
-                    "description": "References to the Tasks collection.",
-                    "longDescription": "The value of this property shall be a link to a collection of Tasks."
+                {
+                    "$ref": "#/definitions/TaskService"
                 }
-            }
+            ]
         },
         "OverWritePolicy":{
             "type": "string",

@@ -1,41 +1,22 @@
 {
-    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0",
+    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0.json",
     "title": "LogService.1.0.0",
     "$ref": "#/definitions/LogService",
     "definitions":{
-        "Links":{
+        "ClearLog":{
             "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
-                    "description": "This property shall specify a valid odata or redfish property."
-                }
-            },
             "additionalProperties": false,
             "properties": {
-                "Oem": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0#/definitions/Oem",
-                    "description": "Oem extension object.",
-                    "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
                 },
-                "Entries@odata.count": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0#/definitions/count"
-                },
-                "Entries": {
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "properties": {
-                            "@odata.id" :{
-                                "$ref": "odata.4.0.0.json#id"
-                            }
-                        }
-                    },
-                    "readonly": true,
-                    "description": "References to the log entry collection.",
-                    "longDescription": "The value of this property shall reference a collection of LogEntry resources."
+                "target": {
+                    "type": "string",
+                    "description": "Link to invoke action"
                 }
             }
+
         },
         "LogService":{
             "type": "object",
@@ -48,27 +29,27 @@
             "additionalProperties": false,
             "properties": {
                 "@odata.context": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0#/definitions/context"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/context"
                 },
                 "@odata.id": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0#/definitions/id"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/id"
                 },
                 "@odata.type": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0#/definitions/type"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/type"
                 },
                 "Oem": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0#/definitions/Oem",
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Oem",
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Id": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0#/definitions/Id"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Id"
                 },
                 "Description": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0#/definitions/Description"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Description"
                 },
                 "Name": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0#/definitions/Name"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Name"
                 },
                 "MaxNumberOfRecords": {
                     "type": "number",
@@ -103,36 +84,76 @@
                     "pattern": "([-+][0-1][0-9]:[0-5][0-9])"
                 },
                 "Links": {
-                    "$ref": "#/definitions/Links",
+                    "type": "object",
+                    "patternProperties": { 
+                        "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+                            "type": ["array", "boolean", "number", "null", "object", "string"],
+                            "description": "This property shall specify a valid odata or redfish property."
+                        }
+                    },
+                    "additionalProperties": false,
+                    "properties": {
+                        "Oem": {
+                            "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Oem",
+                            "description": "Oem extension object.",
+                            "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
+                        },
+                        "Entries": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "http://schemas.dmtf.org/redfish/v1/LogEntry.1.0.0.json#/definitions/LogEntryRef"
+                            },
+                            "readonly": true,
+                            "description": "References to the log entry collection.",
+                            "longDescription": "The value of this property shall reference a collection of LogEntry resources."
+                        }
+                    },
                     "readonly": true,
                     "description": "The links object contains the links to other resources that are related to this resource."
                 },
                 "Actions": {
-                    "$ref": "#/definitions/Actions",
+                    "type": "object",
+                    "patternProperties": { 
+                        "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+                            "type": ["array", "boolean", "number", "null", "object", "string"],
+                            "description": "This property shall specify a valid odata or redfish property."
+                        }
+                    },
+                    "additionalProperties": false,
+                    "properties": {
+                        "Oem": {
+                            "type": "object",
+                            "patternProperties": { 
+                                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+                                    "type": ["array", "boolean", "number", "null", "object", "string"],
+                                    "description": "This property shall specify a valid odata or redfish property."
+                                }
+                            },
+                            "additionalProperties": false,
+                            "properties": {
+
+                            }
+                        }
+                    },
                     "readonly": true,
                     "description": "The Actions object contains the available custom actions on this resource."
                 },
                 "Status": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0#/definitions/Status"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Status"
                 }
             },
             "description": "This resource represents the log service for the resource or service to which it is associated.",
             "longDescription": "This resource shall be used to represent a log service for a Redfish implementation."
         },
-        "Actions":{
-            "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
-                    "description": "This property shall specify a valid odata or redfish property."
+        "LogServiceRef": { 
+            "oneOf": [ 
+                {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/idRef"
+                },
+                {
+                    "$ref": "#/definitions/LogService"
                 }
-            },
-            "additionalProperties": false,
-            "properties": {
-                "Oem": {
-                    "$ref": "#/definitions/OemActions"
-                }
-            }
+            ]
         },
         "OverWritePolicy":{
             "type": "string",
@@ -146,34 +167,6 @@
                 "WrapsWhenFull": "When full, new entries to the Log will overwrite previous entries",
                 "NeverOverWrites": "When full, new entries to the Log will be discarded"
             }
-        },
-        "OemActions":{
-            "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
-                    "description": "This property shall specify a valid odata or redfish property."
-                }
-            },
-            "additionalProperties": false,
-            "properties": {
-
-            }
-        },
-        "ClearLog":{
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "title": {
-                    "type": "string",
-                    "description": "Friendly action name"
-                },
-                "target": {
-                    "type": "string",
-                    "description": "Link to invoke action"
-                }
-            }
-
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
