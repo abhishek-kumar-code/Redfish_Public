@@ -575,13 +575,11 @@ class JsonSchemaGenerator:
     
         while "BaseType" in currenttype["Node"].attrib.keys():
             basetypename = currenttype["Node"].attrib["BaseType"]
-
             if basetypename in typetable:
                 currenttype = typetable[basetypename]
                 nodes.append(currenttype["Node"])
                 if (self.allows_additional_properties(currenttype) ):
                     additionalproperties=True
-
             else:
                 break
 
