@@ -28,26 +28,10 @@
           <Annotation Term="OData.LongDescription" String="This property shall contain a URI to the destination where the events will be sent."/>
           <Annotation Term="OData.IsUrl"/>
         </Property>
-        <Property Name="HttpHeaders" Nullable="true" Type="Collection(EventDestination.HttpHeaderProperty)">
-          <Annotation Term="OData.Description" String="This is for setting HTTP headers, such as authorization information.  This object will be null on a GET."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain an object consisting of the names and values of of HTTP header to be included with every event POST to the Event Destination.  This property shall be null on a GET."/>
-        </Property>
         <Property Name="EventTypes" Type="Collection(Event.EventType)" Nullable="false">
           <Annotation Term="Redfish.RequiredOnCreate"/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This property shall contain the types of events that shall be sent to the desination."/>
-        </Property>
-        <Property Name="TTLCount" Type="Edm.Int64" Nullable="false">
-          <Annotation Term="Redfish.RequiredOnCreate"/>
-          <Annotation Term="OData.Description" String="The number of TTLUnits until this event destination subscription expires.  It may be renewed prior to expire to reset the Time to Live counter.  The value 999999 is reserved to mean a perpetual subscription."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain the Time To Live Count.  A value of 999999 shall indicate that this is a persistent connection."/>
-          <Annotation Term="Validation.Minimum" Int="0"/>
-          <Annotation Term="Validation.Maximum" Int="999999"/>
-        </Property>
-        <Property Name="TTLUnits" Type="EventDestination.TTLUnits" Nullable="false">
-          <Annotation Term="Redfish.RequiredOnCreate"/>
-          <Annotation Term="OData.Description" String="The time unit used to measure the subscription time of this event destination.  This is the units for TTLCount and is used to express the subscription lifetime of the event destination."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain the units of the expressed TTLCount."/>
         </Property>
         <Property Name="Context" Type="Edm.String" Nullable="false">
           <Annotation Term="Redfish.RequiredOnCreate"/>
@@ -62,33 +46,8 @@
         </Property>
       </EntityType>
 
-      <ComplexType Name="HttpHeaderProperty">
-        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
-        <Annotation Term="Redfish.DynamicPropertyPatterns">
-          <Collection>
-            <Record>
-              <PropertyValue Property="Pattern" String="^[^:\\s]+$"/>
-              <PropertyValue Property="Type" String="Edm.String"/>
-            </Record>
-          </Collection>
-        </Annotation>
-        <Annotation Term="OData.Description" String="The value of the HTTP header is the property value.  The header name is the property name."/>
-      </ComplexType>
-
       <EnumType Name="EventDestinationProtocol">
         <Member Name="Redfish"/>
-      </EnumType>
-
-      <EnumType Name="TTLUnits">
-        <Member Name="seconds">
-          <Annotation Term="OData.Description" String="Time to Live (TTL) in Seconds"/>
-        </Member>
-        <Member Name="minutes">
-          <Annotation Term="OData.Description" String="Time to Live (TTL) in Minutes"/>
-        </Member>
-        <Member Name="days">
-          <Annotation Term="OData.Description" String="Time to Live (TTL) in Days"/>
-        </Member>
       </EnumType>
 
     </Schema>

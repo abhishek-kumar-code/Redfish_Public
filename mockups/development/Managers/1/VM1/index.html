@@ -1,21 +1,19 @@
 {
-    "@Redfish.Copyright":"Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#Managers/Links/Members/1/Links/VirtualMedia/$entity",
+    "@Redfish.Copyright": "Copyright Â© 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#Managers/Members/1/VirtualMedia/$entity",
     "@odata.id": "/redfish/v1/Managers/1/VirtualMedia",
     "@odata.type": "#VirtualMedia.1.00.0.VirtualMediaCollection",
     "Name": "Virtual Media Services",
     "Description": "iLO Virtual Media Services Settings",
     "Total": 2,
-    "Links": {
-        "Members@odata.count": 2,
-        "Members": [
-            {
-                "@odata.id": "/redfish/v1/Managers/1/VM1/Floppy1"
-            },
-            {
-                "@odata.id": "/redfish/v1/Managers/1/VM1/CD1"
-            }
-        ]
-    },
+    "Members@odata.count": 2,
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/Managers/1/VM1/Floppy1"
+        },
+        {
+            "@odata.id": "/redfish/v1/Managers/1/VM1/CD1"
+        }
+    ],
     "Oem": {}
 }
