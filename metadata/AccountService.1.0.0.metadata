@@ -12,8 +12,8 @@
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.1.0.0">
     <edmx:Include Namespace="Resource.1.0.0" Alias="Resource"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ManagerAccount.1.0.0">
-    <edmx:Include Namespace="ManagerAccount.1.0.0" Alias="ManagerAccount"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ManagerAccountCollection.1.0.0">
+    <edmx:Include Namespace="ManagerAccountCollection.1.0.0" Alias="ManagerAccountCollection"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Role.1.0.0">
     <edmx:Include Namespace="Role.1.0.0" Alias="Role"/>
@@ -62,7 +62,7 @@
       </EntityType>
 
       <ComplexType Name="Links" BaseType="Resource.Links">
-        <NavigationProperty Name="Accounts" Type="ManagerAccount.ManagerAccountCollection">
+        <NavigationProperty Name="Accounts" Type="ManagerAccountCollection.ManagerAccountCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Link to a collection of ManagerAccounts"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the link to a collection of ManagerAccounts."/>
