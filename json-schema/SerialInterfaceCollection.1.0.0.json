@@ -1,7 +1,6 @@
 {
     "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0.json",
     "title": "SerialInterfaceCollection.1.0.0",
-    "$ref": "#/definitions/SerialInterfaceCollection",
     "definitions":{
         "Members":{
             "type": "object",
@@ -34,7 +33,7 @@
                     "description": "This property shall specify a valid odata or redfish property."
                 }
             },
-            "additionalProperties": false,
+            "additionalProperties": true,
             "properties": {
                 "@odata.context": {
                     "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/context"

@@ -55,8 +55,6 @@ class Scenario(Enum):
     single_entityType = 2
     multiple_entityTypes = 3
     only_complexTypes = 4
-    only_entities_derived_from_refrencableMembers = 5
-
 
 #########################################################################################################
 # Class Name: JsonSchemaGenerator                                                                       #
@@ -216,24 +214,42 @@ class JsonSchemaGenerator:
     # Description:                                                           #
     #  Returns True if the type allows additional properties.                #
     ##########################################################################
-    def allows_additional_properties(self, type):
+    def allows_additional_properties(self, type, typetable):
 
+        # if type is abstract, it must allow additional properties
+        if "Abstract" in type["Node"].attrib.keys():
+            if type["Node"].attrib["Abstract"].upper() == "TRUE":
+                return True
+				
+        # if type is open, it must allow additional properties
         if "OpenType" in type["Node"].attrib.keys():
             if type["Node"].attrib["OpenType"].upper() == "TRUE":
                 return True
 
-        for annotation in type["Node"]:
-            if not annotation.tag == "{http://docs.oasis-open.org/odata/ns/edm}Annotation":
-                continue
+        # does it have the AdditionalProperties attribute anywhere in it's hierarchy?
+        while True:
+            for annotation in type["Node"]:
+                if annotation.tag == "{http://docs.oasis-open.org/odata/ns/edm}Annotation":
+                    if annotation.attrib["Term"] == "OData.AdditionalProperties":
+                        if "Bool" in annotation.attrib.keys():
+                            if annotation.attrib["Bool"].upper() == "FALSE":
+                                return False
+                            else:
+                                return True
+                        else:
+                            return True
+								 
+            if "BaseType" in type["Node"].attrib.keys():
+                basetypename = type["Node"].attrib["BaseType"]
+                if basetypename in typetable:
+                    type = typetable[basetypename]
+                else:
+                    break
+            else:
+                break
 
-            if annotation.attrib["Term"] == "OData.AdditionalProperties":
-                if "Bool" in annotation.attrib.keys():
-                    if annotation.attrib["Bool"].upper() == "FALSE":
-                        return False
-                    else:
-                        return True
-
-        return False
+        # by default, types allow additional properties
+        return True
 
     ##########################################################################
     # Name: is_requiredOnCreate_property                                     # 
@@ -307,29 +323,22 @@ class JsonSchemaGenerator:
         typevalues = typetable.values()
         entityTypeCount = 0
         visitedTypes = []
-        derived_from_ReferenceableMember = 0
     
         for typevalue in typevalues:
             typetype = typevalue["TypeType"]
             # Make sure that the type belongs to the base file for which the conversion is required i.e. IsFromRefUri = False
-            if typetype == "EntityType" and typevalue["IsFromRefUri"] == False :
+            if ( typetype == "EntityType" and typevalue["IsFromRefUri"] == False and ( typevalue["BaseType"] == "Resource.Resource" or typevalue["BaseType"] == "Resource.ResourceCollection") ):
                 try :
                     # If this type has been parsed already do nothing
                     index = visitedTypes.index(typevalue["Name"])
                 except :
                     visitedTypes.append(typevalue["Name"])
                     entityTypeCount += 1
-                    if typevalue["BaseType"] == "Resource.ReferenceableMember":
-                        derived_from_ReferenceableMember += 1
 
         # Find out what type of scenario is it. Based on this the JSON will be generated.
         if entityTypeCount == 0:
             # If no entity types are there, then only complex types will be present
             currentscenario = Scenario.only_complexTypes
-
-        elif entityTypeCount >=1 and entityTypeCount == derived_from_ReferenceableMember:
-            # If CSDL contains only entities which derive from Resource.ReferenceableMember
-            currentscenario = Scenario.only_entities_derived_from_refrencableMembers
 
         elif entityTypeCount == 1:
             # If there is only one entity type, this is the basic scenario
@@ -569,22 +578,17 @@ class JsonSchemaGenerator:
         nodes = [typedata["Node"]]
         currenttype = typedata
 
-        additionalproperties = False
-        if (self.allows_additional_properties(currenttype) ):
-            additionalproperties=True
-    
         while "BaseType" in currenttype["Node"].attrib.keys():
             basetypename = currenttype["Node"].attrib["BaseType"]
             if basetypename in typetable:
                 currenttype = typetable[basetypename]
                 nodes.append(currenttype["Node"])
-                if (self.allows_additional_properties(currenttype) ):
-                    additionalproperties=True
+
             else:
                 break
 
         # Write out Additional Properties
-        if ( additionalproperties ):
+        if ( self.allows_additional_properties(typedata, typetable) ):
             output += UT.Utilities.indent(depth) + "\"additionalProperties\": true,\n"
         else:
             output += UT.Utilities.indent(depth) + "\"additionalProperties\": false,\n"
@@ -922,7 +926,8 @@ class JsonSchemaGenerator:
         output += self.emit_annotations(typetable, namespace, typedata["Node"], depth, prefixuri, isnullable, ignoreannotations)
 
         #write out reference
-        if typetype == "EntityType" and namespace == typedata["Namespace"] and typedata["BaseType"] == "Resource.Resource":
+		#todo: improve this logic (post-v1)
+        if typetype == "EntityType" and namespace == typedata["Namespace"] and (typedata["BaseType"] == "Resource.Resource" or typedata["Name"] == "Item" or typedata["Name"] == "ReferenceableMember" ):
             output += self.generate_referencetype(typedata["Name"],JsonSchemaGenerator.get_ref_value_for_type(typetable, typename, namespace), depth-1)
 
         return output
@@ -1106,7 +1111,7 @@ class JsonSchemaGenerator:
                         parsedtypes.append(typedata["Name"] + ":" + currentNamespace)
                         output = ""
                         # Check if the type being processed is derived from Resource.ReferenceableMember
-                        if typedata["BaseType"] != "Resource.ReferenceableMember": 
+                        if ( typedata["BaseType"] == "Resource.Resource" or typedata["BaseType"] == "Resource.ResourceCollection" ): 
                             JsonSchemaGenerator.current_schema_classname = JsonSchemaGenerator.get_typename_without_namespace(currentType)
 
                             # Generate Json for the type
@@ -1210,7 +1215,7 @@ class JsonSchemaGenerator:
         JsonSchemaGenerator.current_scenario = self.get_scenario(typetable)
         
         # If there are only complex types or only types derived from RefrencableMembers.
-        if( (JsonSchemaGenerator.current_scenario == Scenario.only_complexTypes) or (JsonSchemaGenerator.current_scenario == Scenario.only_entities_derived_from_refrencableMembers )):
+        if (JsonSchemaGenerator.current_scenario == Scenario.only_complexTypes):
             outputs = self.generate_json_file_with_definition_block(typetable, depth, isnullable, filename, namespace, prefixuri, ignoreannotations)
         else:
             outputs = self.generate_json_for_file_with_entitytypes(typetable, depth, isnullable, filename, namespace, prefixuri, ignoreannotations)
@@ -1413,7 +1418,7 @@ def generate_json(url, directory):
         jsonresults = {}
             
         current_schema = ''
-        # We support three scenarios:
+        # We support two scenarios:
         # 1. Filename and Typename provided - service will convert the specific type in the file.
         # 2. FileName and Namespace provided - service will convert only types in given namespace.
 

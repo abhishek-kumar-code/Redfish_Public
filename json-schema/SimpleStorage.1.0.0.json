@@ -3,6 +3,51 @@
     "title": "SimpleStorage.1.0.0",
     "$ref": "#/definitions/SimpleStorage",
     "definitions":{
+        "Device":{
+            "type": "object",
+            "patternProperties": { 
+                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+                    "type": ["array", "boolean", "number", "null", "object", "string"],
+                    "description": "This property shall specify a valid odata or redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Oem": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Oem"
+                },
+                "Name": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "The name of the resource or array element.",
+                    "longDescription": "This object represents the Name property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification. The value of this string shall be of the format for the reserved word *Name*."
+                },
+                "Status": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Status"
+                },
+                "Manufacturer": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The name of the manufacturer of this device",
+                    "longDescription": "This property shall indicate the name of the manufacturer of this storage device."
+                },
+                "Model": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The product model number of this device",
+                    "longDescription": "This property shall indicate the model information as provided by the manufacturer of this storage device."
+                }
+            },
+            "required": [
+                "Name"
+            ]
+        },
         "SimpleStorage":{
             "type": "object",
             "patternProperties": { 
@@ -110,51 +155,6 @@
                 {
                     "$ref": "#/definitions/SimpleStorage"
                 }
-            ]
-        },
-        "Device":{
-            "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
-                    "description": "This property shall specify a valid odata or redfish property."
-                }
-            },
-            "additionalProperties": false,
-            "properties": {
-                "Oem": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Oem"
-                },
-                "Name": {
-                    "type": "string",
-                    "readonly": true,
-                    "description": "The name of the resource or array element.",
-                    "longDescription": "This object represents the Name property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification. The value of this string shall be of the format for the reserved word *Name*."
-                },
-                "Status": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Status"
-                },
-                "Manufacturer": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "readonly": true,
-                    "description": "The name of the manufacturer of this device",
-                    "longDescription": "This property shall indicate the name of the manufacturer of this storage device."
-                },
-                "Model": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "readonly": true,
-                    "description": "The product model number of this device",
-                    "longDescription": "This property shall indicate the model information as provided by the manufacturer of this storage device."
-                }
-            },
-            "required": [
-                "Name"
             ]
         }
     },
