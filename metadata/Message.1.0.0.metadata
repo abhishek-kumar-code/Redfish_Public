@@ -26,9 +26,9 @@
           <Annotation Term="OData.Description" String="This is the human readable message, if provided."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain an optional human readable message."/>
         </Property>
-        <Property Name="PropertiesInError" Type="Collection(Edm.String)">
-          <Annotation Term="OData.Description" String="This is an array of properties in the request body that caused the errors."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain an array of property names in error, if appropriate for the message."/>
+        <Property Name="Properties" Type="Collection(Edm.String)">
+          <Annotation Term="OData.Description" String="This is an array of properties described by the message."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain an array of JSON Pointers indicating the properties described by the message, if appropriate for the message."/>
         </Property>
         <Property Name="MessageArgs" Type="Collection(Edm.String)">
           <Annotation Term="OData.Description" String="This array of message arguments are substituted for the arguments in the message when looked up in the message registry."/>

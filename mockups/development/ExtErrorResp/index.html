@@ -6,7 +6,9 @@
             {
                 "@odata.type" : "/redfish/v1/$metadata#Message.1.0.0.Message",
                 "MessageID": "Base.1.0.PropertyValueNotInList",
-                "PropertiesInError": "IndicatorLED",
+                "Properties": [
+                    "#/IndicatorLED"
+                ],
                 "Message": "The value RED for the property IndicatorLED is not in the list of acceptable values",
                 "MessageArgs": [
                     "RED",
@@ -18,7 +20,9 @@
             {
                 "@odata.type" : "/redfish/v1/$metadata#Message.1.0.0.Message",
                 "MessageID": "Base.1.0.PropertyNotWriteable",
-                "PropertiesInError": "SKU",
+                "Properties": [
+                    "#/SKU"
+                ],
                 "Message": "The property SKU is a read only property and cannot be assigned a value",
                 "MessageArgs": [
                     "SKU"

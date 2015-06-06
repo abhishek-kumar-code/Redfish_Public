@@ -1096,9 +1096,11 @@ An individual property within a JSON object can be annotated with extended infor
     "Modified": "2013-01-31T23:45:08+00:00",
     "UserName": "Administrator",
     "UserName@Message.ExtendedInfo" : [
-         {
-           "MessageID": "Base.<%= DocVersion.replace(/\.[^\.]+$/, '') %>.PropertyNotWriteable",
-           "PropertiesInError": ["UserName"],
+		{
+			"MessageID": "Base.1.0.0.PropertyNotWriteable",
+			"Properties": [
+				"#/UserName"
+			],
            "Message": "The property UserName is a read only property and cannot be assigned a value",
            "MessageArgs": [
                 "UserName"
@@ -1191,8 +1193,8 @@ Error responses are defined by an extended error resource, represented as a sing
         "@Message.ExtendedInfo": [
             {
                 "MessageId": "Base.1.0.0.PropertyValueNotInList",
-                "PropertiesInError": [ 
-					"IndicatorLED" 
+                "Properties": [ 
+					"#/IndicatorLED" 
 				],
                 "Message": "The value Red for the property IndicatorLED is not in the list of acceptable values",
                 "MessageArgs": [
@@ -1204,8 +1206,8 @@ Error responses are defined by an extended error resource, represented as a sing
             },
             {
                 "MessageId": "Base.1.0.0.PropertyNotWriteable",
-                "PropertiesInError": [ 
-					"SKU" 
+                "Properties": [ 
+					"#/SKU" 
 				],
                 "Message": "The property SKU is a read only property and cannot be assigned a value",
                 "MssageArgs": [
@@ -1228,7 +1230,7 @@ Messages are represented as a JSON object with the following properties:
 | ---                     | ---                                                                                                                                                                                    |
 | MessageId               | String indicating a specific error or message (not to be confused with the HTTP status code). This code can be used to access a detailed message from a message registry.              |
 | Message                 | A human readable error message indicating the semantics associated with the error. This shall be the complete message, and not rely on substitution variables.
-| PropertiesInError       | An optional array of string defining the specific properties in error.                                                        |
+| Properties              | An optional array of JSON Pointers defining the specific properties within a JSON payload described by the message.                                                        |
 | MessageArgs             | An optional array of strings representing the substitution parameter values for the message. This shall be included in the response if a MessageId is specified for a parameterized message. 
 | Severity                | An optional string representing the severity of the error.
 | Resolution              | An optional string describing recommended action(s) to take to resolve the error.
