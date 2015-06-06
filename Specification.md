@@ -881,7 +881,7 @@ Where:
 
 If a response contains a subset of the properties defined in the schema for a type, then the context URL shall specify the subset of properties included. An asterix (*) can be used to specify "all structural properties" for a given resource.
 
-Expanded navigation properties shall be included in the select list if the result includes a subset of the properties defined for the expanded resource.
+Expanded [reference properties](#reference-properties) shall be included in the select list if the result includes a subset of the properties defined for the expanded resource.
 
 For example, the following context URL specifies that the result contains a single resource from the Members collection nested under the Links property of the Systems resource:
 
@@ -989,7 +989,7 @@ The set of allowable values is specified by including a property whose name is t
 
 [References](#reference-properties) to other resources are represented by the links property on the resource. 
 
-The links property shall be named "Links" and shall contain a property for each navigation property defined in the schema for that type. For single-valued navigation properties, the value of the property shall be the [single related resource id](#reference-to-a-single-related-resource). For collection-valued navigation properties, the value of the property shall be the [array of related resource ids](#array-of-references-to-related-resources).
+The links property shall be named "Links" and shall contain a property for each reference property defined in the schema for that type. For single-valued reference properties, the value of the property shall be the [single related resource id](#reference-to-a-single-related-resource). For collection-valued reference properties, the value of the property shall be the [array of related resource ids](#array-of-references-to-related-resources).
 
 The links property shall also include an [Oem property](#oem-property) for navigating vendor-specific links.
  
@@ -1398,14 +1398,14 @@ Resource types are defined within a [namespace](#namespace-definitions) using `E
 
 Redfish resources derive from a common Resource base type named "Resource" in the Resource.<%= DocVersion %> namespace. 
 
-The EntityType contains the [property](#resource-properties) and [navigation property](#reference-properties) elements that define the resource, as well as annotations describing the resource.
+The EntityType contains the [property](#resource-properties) and [reference property](#reference-properties) elements that define the resource, as well as annotations describing the resource.
 
 ~~~xml
       <EntityType Name="TypeA" BaseType="Resource.Resource">
         <Annotation Term="Core.Description" String="This is the description of TypeA."/>
         <Annotation Term="Core.LongDescription" String="This is the specification of TypeA."/>
 
-		<!-- Property and Navigation Property definitions go here -->
+		<!-- Property and Reference Property definitions go here -->
 
       </EntityType>
 ~~~
@@ -1466,12 +1466,12 @@ Structured types may be reused across different properties of different resource
         <Annotation Term="Core.Description" String="This is type used to describe a structured property."/>
         <Annotation Term="Core.LongDescription" String="This is the specification of the type."/>
 
-		<!-- Property and Navigation Property definitions go here -->
+		<!-- Property and Reference Property definitions go here -->
 
       </ComplexType>
 ~~~
 
-Structured types can contain [properties](#resource-properties), [navigation properties](#reference-properties) and annotations.
+Structured types can contain [properties](#resource-properties), [reference properties](#reference-properties) and annotations.
 
 Structured types shall include [Description](#description) and [LongDescription](#longdescription) annotations. 
 
@@ -1555,7 +1555,7 @@ The string values for the Units of Measure annotation shall be taken from **TODO
 
 #### Reference Properties
 
-Properties that reference other resources are represented as navigation properties. The `NavigationProperty` element specifies the `Name` and namespace (or alias) qualified [`Type`](#property-types) of the related resource(s).
+Properties that reference other resources are represented as reference properties using the `NavigationProperty` element. The `NavigationProperty` element specifies the `Name` and namespace (or alias) qualified [`Type`](#property-types) of the related resource(s).
 
 If the property references a single type, the value of the type attribute is the namespace (or alias) qualified name of the related resource type.
 
@@ -1581,11 +1581,11 @@ where NamespaceQualifiedTypeName is the namespace (or alias) qualified name of t
       </NavigationProperty>
 ~~~
 
-All navigation properties shall include [Description](#description) and [LongDescription](#longdescription) annotations. 
+All reference properties shall include [Description](#description) and [LongDescription](#longdescription) annotations. 
 
 ##### Expanded References
 
-Navigation properties in a Redfish JSON payload are expanded to include the [related resource id](#reference-to-a-single-related-resource) or [collection of related resource ids](#array-of-references-to-related-resources). This behavior is expressed using the AutoExpandReferences annotation.
+Reference properties in a Redfish JSON payload are expanded to include the [related resource id](#reference-to-a-single-related-resource) or [collection of related resource ids](#array-of-references-to-related-resources). This behavior is expressed using the AutoExpandReferences annotation.
 
 ~~~xml
 		<Annotation Term="OData.AutoExpandReferences"/>
@@ -1595,7 +1595,7 @@ The `AutoExpandReferences` annotation term is defined in http://schemas.dmtf.org
 
 ##### Expanded Resources
 
-This term can be applied to a navigation property in order to specify that the default behavior for the service is to expand the related [resource](#structured-properties) or [collection of resources](#collection-properties) in responses.
+This term can be applied to a [reference property](*reference-properties) in order to specify that the default behavior for the service is to expand the related [resource](#structured-properties) or [collection of resources](#collection-properties) in responses.
 
 ~~~xml
 		<Annotation Term="OData.AutoExpand"/>
@@ -1736,7 +1736,7 @@ The value of the status property is a common status object type as defined by th
 
 #### Links
 
-The [Links property](#links-property) represents the links associated with the resource, as defined by that resources schema definition. All navigation properties defined for a resource shall be nested under the links property.
+The [Links property](#links-property) represents the links associated with the resource, as defined by that resources schema definition. All reference properties defined for a resource shall be nested under the links property.
                                                                                                                                                                        
 #### Actions
 
