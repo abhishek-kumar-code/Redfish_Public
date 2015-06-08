@@ -385,6 +385,12 @@ class JsonSchemaGenerator:
                 else:
                     output += UT.Utilities.indent(depth + 2) + "\"type\":\"" + jsontype + "\"\n"
                 output += UT.Utilities.indent(depth) + "}"
+            elif (annotation.attrib["Term"] == "Validation.Minimum"):
+                output += ",\n"
+                output += UT.Utilities.indent(depth) + "\"minimum\": " + annotation.attrib["Int"]
+            elif (annotation.attrib["Term"] == "Validation.Maximum"):
+                output += ",\n"
+                output += UT.Utilities.indent(depth) + "\"maximum\": " + annotation.attrib["Int"]
                                                         
         return output
 
