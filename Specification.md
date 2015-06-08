@@ -923,6 +923,8 @@ Primitive properties shall be returned as JSON values according to the following
 | Edm.DateTimeOffset | String, formatted as specified in [DateTIme Values](#datetime-values)
 | Edm.Decimal        | Number, optionally containing a decimal point
 | Edm.Double         | Number, optionally containing a decimal point and optionally containing an exponent
+| Edm.Duration       | String, formatted as specified in [Duration Values](#duration-values)
+| Edm.Guid           | String, matching the pattern ([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})
 | Edm.Int64          | Number with no decimal point
 | Edm.String         | String
 
@@ -938,6 +940,13 @@ DateTime values shall be returned as JSON strings according to the ISO 8601 "ext
 
 * *SSS* = one or more digits representing a decimal fraction of a second, with the number of digits implying precision.
 * The 'T' separator and 'Z' suffix shall be capitals.
+
+###### Duration Values
+
+Duration values shall be returned as JSON strings according to the ISO 8601 "extended" format, of the form: 
+
+  [-]P [nY] [nM] [nD] [T[nH] [nM] [n[.n]S] ]
+
 
 ##### Structured Properties
 
@@ -1463,6 +1472,7 @@ Redfish services may use any of the following primitive types:
 | Edm.Decimal        | Numeric values with fixed precision and scale                         |
 | Edm.Double         | IEEE 754 binary64 floating-point number (15-17 decimal digits)        |
 | Edm.Duration       | Signed duration in days, hours, minutes, and (sub)seconds             |
+| Edm.Guid           | A globally unique identifier                                          |
 | Edm.Int64          | Signed 64-bit integer                                                 |
 | Edm.String         | Sequence of UTF-8 characters                                          |
 
