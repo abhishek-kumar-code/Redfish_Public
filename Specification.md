@@ -1880,7 +1880,7 @@ Services that support asynchronous operations will implement the Task service & 
 
 The Task service is used to describe the service that handles tasks.  It contains a collection of zero or more task resources. The Task resource is used to describe a long running operation that is spawned when a request will take longer than a few seconds, such as when a service is instantiated. Clients will poll the URI of the task resource to determine when the operation has completed and if it was successful.
 
-The Task structure in the Redfish Schema contains the exact structure of a Task.  The type of information it contains are start time, end time, task state, task status, response (completion codes) as well as potential links to sub-tasks that were spawned.
+The Task structure in the Redfish Schema contains the exact structure of a Task.  The type of information it contains are start time, end time, task state, task status, and zero or more messages associated with the task.
 
 Each task has a number of possible states.  The exact states and their semantics are defined in the Task resource of the Redfish Schema.  
 
@@ -1888,11 +1888,15 @@ When a client issues a request for a long-running operation, the service returns
 
 Any response with a status code of 202 (Accepted) shall include a location header containing the URL of a monitor for the task and may include a wait header to specify the amount of time the client should wait before querying status of the operation. 
 
+The client should not include the mime type application/http in the Accept Header when performing a GET request to the status monitor.
+
 The response body of a 202 (Accepted) should contain an instance of the Task resource describing the state of the task.
 
 As long as the operation is in process, the service shall continue to return a status code of 202 (Accepted) when querying the status monitor returned in the location header.
 
-Once the operation has completed, the status monitor shall return a status code of OK (200) and include in the body of the response a mime message containing the results of the initial operation, as if it had completed synchronously.
+Once the operation has completed, the status monitor shall return a status code of OK (200) and include the headers and response body of the initial operation, as if it had completed synchronously. If the initial operation resulted in an error, the body of the response shall contain an [Error Response](error-responses). 
+
+The service may return a status code of 410 (Gone) if the operation has completed and the service has already deleted the task.
 
 The client can continue to get information about the status by directly querying the Task resource using the [resource identifier](#resource-identifier) returned in the body of the 202 (Accepted) response.
 
@@ -1901,8 +1905,7 @@ The client can continue to get information about the status by directly querying
   and set the HTTP response header "Location" to the URI of a status monitor
   associated with the activity. The response may also include a wait header specifying
   the amount of time the client should wait before polling for status. The response body 
-  should contain a representation of the Task resource in the same major media type (e.g. JSON, XML) that would
-  have been used to return a synchronous response.
+  should contain a representation of the Task resource in JSON.
 * GET requests to either the Task monitor or the Task Resource shall return the current status of the operation without blocking.
 * Operations using HTTP GET, PUT, PATCH should always be synchronous. 
 * Clients shall be prepared to handle both synchronous and asynchronous responses for requests using HTTP DELETE and HTTP POST methods.
