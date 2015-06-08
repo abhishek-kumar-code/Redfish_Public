@@ -2204,7 +2204,7 @@ The Authorization subsystem uses Roles and Privileges to control which users hav
 * Privileges:
   - A privilege is a permission to perform an operation (e.g. Read, Write) within a defined management domain (e.g. Configuring Users).  
   - The Redfish specification defines a set of "assigned privileges" in the AssignedPrivileges array in the Role resource.
-  - An implementation may also include "OemPrivileges" which are then specified in an OemPrivileges array in the ROle resource.
+  - An implementation may also include "OemPrivileges" which are then specified in an OemPrivileges array in the Role resource.
   - Privileges are mapped to resources using the privilege mapping annotations defined in the Privileges schema file.
   - Multiple privileges in the mapping constitute an OR of the privileges.
 
