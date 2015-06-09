@@ -969,15 +969,15 @@ For example, the following property represents the Reset action, defined in the 
 	"#ComputerSystem.Reset": {
     	"target":"/redfish/v1/Systems/1/Actions/ComputerSystem.Reset",
         "ResetType@Redfish.AllowableValues": [
-		"On",
-		"ForceOff",
-		"GracefulRestart",
-		"GracefulShutdown",
-		"ForceRestart",
-		"Nmi",
-		"ForceOn",
-		"PushPowerButton"
-		]	   	 
+	   "On",
+	   "ForceOff",
+	   "GracefulRestart",
+	   "GracefulShutdown",
+	   "ForceRestart",
+	   "Nmi",
+	   "ForceOn",
+	   "PushPowerButton"
+	   ]	   	 
    	}
 ~~~
 
