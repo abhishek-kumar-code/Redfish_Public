@@ -1071,7 +1071,7 @@ A JSON object can be annotated with "@Message.ExtendedInfo" in order to specify 
     "UserName": "Administrator",
     "Oem": {},
 	"@Message.ExtendedInfo" : {
-         "MessageID": "Base.<%= DocVersion.replace(/\.[^\.]+$/, '') %>.ResourceCannotBeDeleted",
+         "MessageID": "Base.1.0.0.ResourceCannotBeDeleted",
          "Message": "The delete request failed because the resource requested cannot be deleted",
          "Severity": "Critical",
          "Resolution": "Do not attempt to delete a non-deletable resource."
@@ -1181,7 +1181,7 @@ Error responses are defined by an extended error resource, represented as a sing
 
 | Property                | Description                                                                                                                                                                            |
 | ---                     | ---                                                                                                                                                                                    |
-| code                    | A string indicating a specific MessageId from the message registry. "GeneralError" should be used only if there is no better message.              |
+| code                    | A string indicating a specific MessageID from the message registry. "GeneralError" should be used only if there is no better message.              |
 | message                 | A human readable error message corresponding to the message in the message registry. 
 | @Message.ExtendedInfo   | An array of [message objects](#message-object) describing one or more error message(s). 
 
@@ -1192,7 +1192,7 @@ Error responses are defined by an extended error resource, represented as a sing
         "message": "A general error has occurred. See ExtendedInfo for more information.",
         "@Message.ExtendedInfo": [
             {
-                "MessageId": "Base.1.0.0.PropertyValueNotInList",
+                "MessageID": "Base.1.0.0.PropertyValueNotInList",
                 "Properties": [ 
 					"#/IndicatorLED" 
 				],
@@ -1205,7 +1205,7 @@ Error responses are defined by an extended error resource, represented as a sing
                 "Resolution": "Remove the property from the request body and resubmit the request if the operation failed"
             },
             {
-                "MessageId": "Base.1.0.0.PropertyNotWriteable",
+                "MessageID": "Base.1.0.0.PropertyNotWriteable",
                 "Properties": [ 
 					"#/SKU" 
 				],
@@ -1228,18 +1228,18 @@ Messages are represented as a JSON object with the following properties:
 
 | Property                | Description                                                                                                                                                                            |
 | ---                     | ---                                                                                                                                                                                    |
-| MessageId               | String indicating a specific error or message (not to be confused with the HTTP status code). This code can be used to access a detailed message from a message registry.              |
+| MessageID               | String indicating a specific error or message (not to be confused with the HTTP status code). This code can be used to access a detailed message from a message registry.              |
 | Message                 | A human readable error message indicating the semantics associated with the error. This shall be the complete message, and not rely on substitution variables.
 | Properties              | An optional array of JSON Pointers defining the specific properties within a JSON payload described by the message.                                                        |
-| MessageArgs             | An optional array of strings representing the substitution parameter values for the message. This shall be included in the response if a MessageId is specified for a parameterized message. 
+| MessageArgs             | An optional array of strings representing the substitution parameter values for the message. This shall be included in the response if a MessageID is specified for a parameterized message. 
 | Severity                | An optional string representing the severity of the error.
 | Resolution              | An optional string describing recommended action(s) to take to resolve the error.
 
-Each instance of a Message object shall contain at least a MessageId, together with any applicable MessageArgs, or a Message property specifying the complete human-readable error message.
+Each instance of a Message object shall contain at least a MessageID, together with any applicable MessageArgs, or a Message property specifying the complete human-readable error message.
 
-MessageIds identify specific messages defined in a message registry.
+MessageIDs identify specific messages defined in a message registry.
 
-The value of the MessageId property shall be of the form
+The value of the MessageID property shall be of the form
 
  *RegistryName*.*MajorVersion*.*MinorVersion*.*MessageKey* 
 
@@ -1250,7 +1250,7 @@ where
 * *MinorVersion* is a positive integer representing the minor version of the registry 
 * *MessageKey* is a human-readable key into the registry. The message key shall be Pascal-cased and shall not include spaces, periods or special chars.  
 
-The client can use the MessageId to search the message registry for the corresponding message.
+The client can use the MessageID to search the message registry for the corresponding message.
 
 The message registry approach has advantages for internationalization (since the registry can be translated easily) and light weight implementation (since large strings need not be included with the implementation).
 
