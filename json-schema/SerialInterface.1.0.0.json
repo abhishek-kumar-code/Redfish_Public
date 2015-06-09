@@ -3,63 +3,6 @@
     "title": "SerialInterface.1.0.0",
     "$ref": "#/definitions/SerialInterface",
     "definitions":{
-        "SerialInterfaceCollection":{
-            "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
-                    "description": "This property shall specify a valid odata or redfish property."
-                }
-            },
-            "additionalProperties": true,
-            "properties": {
-                "@odata.context": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/context"
-                },
-                "@odata.id": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/id"
-                },
-                "@odata.type": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/type"
-                },
-                "Members": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/SerialInterface-ref"
-                    },
-                    "readonly": true,
-                    "description": "Contains the members of this collection."
-                }
-            }
-        },
-        "FlowControl":{
-            "type": "string",
-            "enum": [
-                "None",
-                "Software",
-                "Hardware"
-            ],
-            "enumDescriptions": {
-                "None": "No flow control imposed",
-                "Software": "XON/XOFF in-band flow control imposed",
-                "Hardware": "Out of band flow control imposed"
-            }
-        },
-        "PinOut":{
-            "type": "string",
-            "enum": [
-                "Cisco",
-                "Cyclades",
-                "Digi"
-            ]
-        },
-        "SignalType":{
-            "type": "string",
-            "enum": [
-                "Rs232",
-                "Rs485"
-            ]
-        },
         "BitRate":{
             "type": "string",
             "enum": [
@@ -74,25 +17,6 @@
                 "230400"
             ]
         },
-        "Parity":{
-            "type": "string",
-            "enum": [
-                "None",
-                "Even",
-                "Odd",
-                "Mark",
-                "Space"
-            ]
-        },
-        "DataBits":{
-            "type": "string",
-            "enum": [
-                "5",
-                "6",
-                "7",
-                "8"
-            ]
-        },
         "StopBits":{
             "type": "string",
             "enum": [
@@ -100,19 +24,18 @@
                 "2"
             ]
         },
-        "ConnectorType":{
+        "FlowControl":{
             "type": "string",
             "enum": [
-                "RJ45",
-                "RJ11",
-                "DB9 Female",
-                "DB9 Male",
-                "DB25 Female",
-                "DB25 Male",
-                "USB",
-                "mUSB",
-                "uUSB"
-            ]
+                "None",
+                "Software",
+                "Hardware"
+            ],
+            "enumDescriptions": {
+                "None": "No flow control imposed",
+                "Software": "XON/XOFF in-band flow control imposed",
+                "Hardware": "Out of band flow control imposed"
+            }
         },
         "SerialInterface":{
             "type": "object",
@@ -207,6 +130,83 @@
                 {
                     "$ref": "#/definitions/SerialInterface"
                 }
+            ]
+        },
+        "DataBits":{
+            "type": "string",
+            "enum": [
+                "5",
+                "6",
+                "7",
+                "8"
+            ]
+        },
+        "SignalType":{
+            "type": "string",
+            "enum": [
+                "Rs232",
+                "Rs485"
+            ]
+        },
+        "Parity":{
+            "type": "string",
+            "enum": [
+                "None",
+                "Even",
+                "Odd",
+                "Mark",
+                "Space"
+            ]
+        },
+        "SerialInterfaceCollection":{
+            "type": "object",
+            "patternProperties": { 
+                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+                    "type": ["array", "boolean", "number", "null", "object", "string"],
+                    "description": "This property shall specify a valid odata or redfish property."
+                }
+            },
+            "additionalProperties": true,
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/context"
+                },
+                "@odata.id": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/type"
+                },
+                "Members": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/SerialInterface-ref"
+                    },
+                    "readonly": true,
+                    "description": "Contains the members of this collection."
+                }
+            }
+        },
+        "PinOut":{
+            "type": "string",
+            "enum": [
+                "Cisco",
+                "Cyclades",
+                "Digi"
+            ]
+        },
+        "ConnectorType":{
+            "type": "string",
+            "enum": [
+                "RJ45",
+                "RJ11",
+                "DB9 Female",
+                "DB9 Male",
+                "DB25 Female",
+                "DB25 Male",
+                "USB",
+                "mUSB",
+                "uUSB"
             ]
         }
     },

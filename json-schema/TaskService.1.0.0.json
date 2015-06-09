@@ -3,6 +3,17 @@
     "title": "TaskService.1.0.0",
     "$ref": "#/definitions/TaskService",
     "definitions":{
+        "OverWritePolicy":{
+            "type": "string",
+            "enum": [
+                "Manual",
+                "Oldest"
+            ],
+            "enumDescriptions": {
+                "Manual": "Completed tasks are not automatically overwritten",
+                "Oldest": "Oldest completed tasks are overwritten"
+            }
+        },
         "TaskService":{
             "type": "object",
             "patternProperties": { 
@@ -83,17 +94,6 @@
                     "$ref": "#/definitions/TaskService"
                 }
             ]
-        },
-        "OverWritePolicy":{
-            "type": "string",
-            "enum": [
-                "Manual",
-                "Oldest"
-            ],
-            "enumDescriptions": {
-                "Manual": "Completed tasks are not automatically overwritten",
-                "Oldest": "Oldest completed tasks are overwritten"
-            }
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."

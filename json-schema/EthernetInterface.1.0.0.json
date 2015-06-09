@@ -43,6 +43,10 @@
                 }
             }
         },
+        "MACAddress":{
+            "type": "string",
+            "pattern": "^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$"
+        },
         "EthernetInterface":{
             "type": "object",
             "patternProperties": { 
@@ -281,10 +285,6 @@
                     "$ref": "#/definitions/EthernetInterface"
                 }
             ]
-        },
-        "MACAddress":{
-            "type": "string",
-            "pattern": "^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$"
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."

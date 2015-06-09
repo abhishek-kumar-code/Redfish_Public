@@ -129,13 +129,13 @@
                     "description": "This is the type of event to be added.",
                     "longDescription": "This defines the property name for which the following allowable values apply."
                 },
-                "EventID@Redfish.AllowableValues": {
+                "EventId@Redfish.AllowableValues": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
                     "description": "This is the ID of event to be added.",
-                    "longDescription": "This property has the same semantics as the EventID property in the Event schema for Redfish."
+                    "longDescription": "This property has the same semantics as the EventId property in the Event schema for Redfish."
                 },
                 "EventTimestamp@Redfish.AllowableValues": {
                     "type": "array",
@@ -144,7 +144,7 @@
                         "format": "date-time"
                     },
                     "description": "This is the time stamp of event to be added.",
-                    "longDescription": "This property has the same semantics as the EventID property in the Event schema for Redfish."
+                    "longDescription": "This property has the same semantics as the EventId property in the Event schema for Redfish."
                 },
                 "Severity@Redfish.AllowableValues": {
                     "type": "array",
@@ -162,13 +162,13 @@
                     "description": "This is the human readable message of event to be added.",
                     "longDescription": "This property has the same semantics as the Message property in the Event schema for Redfish."
                 },
-                "MessageID@Redfish.AllowableValues": {
+                "MessageId@Redfish.AllowableValues": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
                     "description": "This is the message ID of event to be added.",
-                    "longDescription": "This property has the same semantics as the MessageID property in the Event schema for Redfish."
+                    "longDescription": "This property has the same semantics as the MessageId property in the Event schema for Redfish."
                 },
                 "MessageArgs@Redfish.AllowableValues": {
                     "type": "array",
