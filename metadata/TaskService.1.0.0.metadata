@@ -42,16 +42,13 @@
           <Annotation Term="OData.Description" String="The links object contains the links to other resources that are related to this resource."/>
         </Property>
         <Property Name="Status" Type="Resource.Status"/>
-      </EntityType>
-
-      <ComplexType Name="Links" BaseType="Resource.Links">
-        <NavigationProperty Name="Tasks" Type="Collection(Task.Task)">
+        <NavigationProperty Name="Tasks" Type="Collection(TaskCollection.TaskCollection)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="References to the Tasks collection."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of Tasks."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-      </ComplexType>
+      </EntityType>
 
       <EnumType Name="OverWritePolicy">
         <Member Name="Manual">
