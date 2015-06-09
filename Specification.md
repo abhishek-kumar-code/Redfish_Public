@@ -2207,16 +2207,23 @@ The Authorization subsystem uses Roles and Privileges to control which users hav
 * Roles:
   - A Role is a defined set of Privileges.   Therefore, two roles with the same privileges shall behave equivalently. 
   - All users are assigned exactly one role.
-  - The schema specifies a set of pre-defined roles that can be assigned to a user when a user is created.
+  - This specification defines a set of pre-defined roles, one of which shall be assigned to a user when a user is created.
+  - The pre-defined roles shall be created as follows:
+    - Role Name  = "Administrator"
+      - AssignedPrivileges = Login, ConfigureManager, ConfigureUser, ConfigureComponent, ConfigureSelf
+    - Role Name = "Operator"
+      - AssignedPrivileges = Login, ConfigureComponent, ConfigureSelf
+    - Role Name = "ReadOnly"
+      - AssignedPrivileges = Login, ConfigureSelf
   - Implementations shall support all of the pre-defined roles.
-  - The pre-defined Roles may include OEM privileges
-  - The privilege array defined for the predefined roles shall not be modifiable
+  - The pre-defined Roles may include OEM privileges.
+  - The privilege array defined for the predefined roles shall not be modifiable.
   - A service may optionally support additional "Custom" roles, and may allow users to create such custom roles by: 1) posting to the Roles collection; or 2) an implementation may implement a predefined custom role; or 3) other mechanism outside the specification.   
   
 * Privileges:
   - A privilege is a permission to perform an operation (e.g. Read, Write) within a defined management domain (e.g. Configuring Users).  
-  - The Redfish standard schema specifies a set of "assigned privileges" in the AssignedPrivileges array.
-  - An implementation may also include "OemPrivileges" which are then specified in an OemPrivileges array.
+  - The Redfish specification defines a set of "assigned privileges" in the AssignedPrivileges array in the Role resource.
+  - An implementation may also include "OemPrivileges" which are then specified in an OemPrivileges array in the Role resource.
   - Privileges are mapped to resources using the privilege mapping annotations defined in the Privileges schema file.
   - Multiple privileges in the mapping constitute an OR of the privileges.
 
