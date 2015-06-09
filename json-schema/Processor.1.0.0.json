@@ -3,42 +3,6 @@
     "title": "Processor.1.0.0",
     "$ref": "#/definitions/Processor",
     "definitions":{
-        "ProcessorArchitecture":{
-            "type": "string",
-            "enum": [
-                "x86",
-                "IA-64",
-                "ARM",
-                "MIPS",
-                "OEM"
-            ],
-            "enumDescriptions": {
-                "x86": "x86 or x86-64",
-                "IA-64": "Intel Itanium",
-                "ARM": "ARM",
-                "MIPS": "MIPS",
-                "OEM": "OEM-defined"
-            }
-        },
-        "ProcessorType":{
-            "type": "string",
-            "enum": [
-                "CPU",
-                "GPU",
-                "FPGA",
-                "DSP",
-                "Accelerator",
-                "OEM"
-            ],
-            "enumDescriptions": {
-                "CPU": "A Central Processing Unit",
-                "GPU": "A Graphics Processing Unit",
-                "FPGA": "A Field Programmable Gate Array",
-                "DSP": "A Digital Signal Processor",
-                "Accelerator": "An Accelerator",
-                "OEM": "An OEM-defined Processing Unit"
-            }
-        },
         "Processor":{
             "type": "object",
             "patternProperties": { 
@@ -165,6 +129,25 @@
                 }
             ]
         },
+        "ProcessorType":{
+            "type": "string",
+            "enum": [
+                "CPU",
+                "GPU",
+                "FPGA",
+                "DSP",
+                "Accelerator",
+                "OEM"
+            ],
+            "enumDescriptions": {
+                "CPU": "A Central Processing Unit",
+                "GPU": "A Graphics Processing Unit",
+                "FPGA": "A Field Programmable Gate Array",
+                "DSP": "A Digital Signal Processor",
+                "Accelerator": "An Accelerator",
+                "OEM": "An OEM-defined Processing Unit"
+            }
+        },
         "InstructionSet":{
             "type": "string",
             "enum": [
@@ -252,6 +235,23 @@
                     "description": "The Microcode Information for this processor",
                     "longDescription": "This property shall indicate the Microcode Information as provided by the manufacturer of this processor."
                 }
+            }
+        },
+        "ProcessorArchitecture":{
+            "type": "string",
+            "enum": [
+                "x86",
+                "IA-64",
+                "ARM",
+                "MIPS",
+                "OEM"
+            ],
+            "enumDescriptions": {
+                "x86": "x86 or x86-64",
+                "IA-64": "Intel Itanium",
+                "ARM": "ARM",
+                "MIPS": "MIPS",
+                "OEM": "OEM-defined"
             }
         }
     },

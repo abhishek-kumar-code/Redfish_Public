@@ -40,7 +40,9 @@
                     "type": "number",
                     "readonly": false,
                     "description": "This is the number of seconds of inactivity that a session may have before the session service closes the session due to inactivity.",
-                    "longDescription": "This property shall reference the threshold of time in seconds between requests on a specific session at which point the session service shall close the session due to inactivity."
+                    "longDescription": "This property shall reference the threshold of time in seconds between requests on a specific session at which point the session service shall close the session due to inactivity.",
+                    "minimum": 30,
+                    "maximum": 86400
                 },
                 "Sessions": {
                     "$ref": "http://schemas.dmtf.org/redfish/v1/SessionCollection.1.0.0.json#/definitions/SessionCollection-ref",

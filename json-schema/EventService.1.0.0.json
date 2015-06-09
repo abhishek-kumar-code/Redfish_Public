@@ -93,8 +93,8 @@
                 "Subscriptions": {
                     "$ref": "http://schemas.dmtf.org/redfish/v1/EventDestinationCollection.1.0.0.json#/definitions/EventDestinationCollection-ref",
                     "readonly": true,
-                    "description": "This is a reference to a collection of ListenerDestination resources.",
-                    "longDescription": "The value of this property shall contain the link to a collection of ListenerDestination resources."
+                    "description": "This is a reference to a collection of Event Destination resources.",
+                    "longDescription": "The value of this property shall contain the link to a collection of type EventDestinationCollection."
                 }
             },
             "description": "This is the schema definition for the Event Service.  It represents the properties for the service itself and has links to the actual list of subscriptions."

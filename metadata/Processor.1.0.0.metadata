@@ -38,7 +38,7 @@
           <Annotation Term="OData.Description" String="The instruction set of the processor" />
           <Annotation Term="OData.LongDescription" String="This property shall contain the string which identifies the instruction set of the processor contained in this socket." />
         </Property>
-        <Property Name="ProcessorID" Type="Processor.ProcessorID"  Nullable="false">
+        <Property Name="ProcessorId" Type="Processor.ProcessorId"  Nullable="false">
           <Annotation Term="OData.Description" String="Identification information for this processor."/>
           <Annotation Term="OData.LongDescription" String="This object shall contain identification information for this processor."/>		  
         </Property>
@@ -71,9 +71,9 @@
         </Property>
       </EntityType>
 
-      <ComplexType Name="ProcessorID">
+      <ComplexType Name="ProcessorId">
         <Annotation Term="OData.AdditionalProperties" Bool="False"/>
-        <Property Name="VendorID" Type="Edm.String">
+        <Property Name="VendorId" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
           <Annotation Term="OData.Description" String="The Vendor Identification for this processor" />
           <Annotation Term="OData.LongDescription" String="This property shall indicate the Vendor Identification string information as provided by the manufacturer of this processor." />

@@ -46,21 +46,6 @@
                 "Other": "A chassis that does not fit any of these definitions"
             }
         },
-        "IndicatorLED":{
-            "type": "string",
-            "enum": [
-                "Unknown",
-                "Lit",
-                "Blinking",
-                "Off"
-            ],
-            "enumDescriptions": {
-                "Unknown": "The state of the Indicator LED cannot be determined.",
-                "Lit": "The Indicator LED is lit.",
-                "Blinking": "The Indicator LED is blinking.",
-                "Off": "The Indicator LED is off."
-            }
-        },
         "Reset":{
             "type": "object",
             "additionalProperties": false,
@@ -291,7 +276,7 @@
                     "$ref": "http://schemas.dmtf.org/redfish/v1/LogServiceCollection.1.0.0.json#/definitions/LogServiceCollection-ref",
                     "readonly": true,
                     "description": "A reference to the logs for this chassis.",
-                    "longDescription": "The value of this property shall be a link to a collection LogServices."
+                    "longDescription": "The value of this property shall be a link to a collection of type LogServiceCollection."
                 },
                 "Thermal": {
                     "$ref": "http://schemas.dmtf.org/redfish/v1/Thermal.1.0.0.json#/definitions/Thermal-ref",
@@ -321,6 +306,21 @@
                     "$ref": "#/definitions/Chassis"
                 }
             ]
+        },
+        "IndicatorLED":{
+            "type": "string",
+            "enum": [
+                "Unknown",
+                "Lit",
+                "Blinking",
+                "Off"
+            ],
+            "enumDescriptions": {
+                "Unknown": "The state of the Indicator LED cannot be determined.",
+                "Lit": "The Indicator LED is lit.",
+                "Blinking": "The Indicator LED is blinking.",
+                "Off": "The Indicator LED is off."
+            }
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."

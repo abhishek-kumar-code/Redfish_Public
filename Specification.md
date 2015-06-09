@@ -1085,7 +1085,7 @@ A JSON object can be annotated with "@Message.ExtendedInfo" in order to specify 
     "UserName": "Administrator",
     "Oem": {},
 	"@Message.ExtendedInfo" : {
-         "MessageID": "Base.1.0.0.ResourceCannotBeDeleted",
+         "MessageId": "Base.1.0.0.ResourceCannotBeDeleted",
          "Message": "The delete request failed because the resource requested cannot be deleted",
          "Severity": "Critical",
          "Resolution": "Do not attempt to delete a non-deletable resource."
@@ -1111,7 +1111,7 @@ An individual property within a JSON object can be annotated with extended infor
     "UserName": "Administrator",
     "UserName@Message.ExtendedInfo" : [
 		{
-			"MessageID": "Base.1.0.0.PropertyNotWriteable",
+			"MessageId": "Base.1.0.0.PropertyNotWriteable",
 			"RelatedProperties": [
 				"#/UserName"
 			],
@@ -1195,7 +1195,7 @@ Error responses are defined by an extended error resource, represented as a sing
 
 | Property                | Description                                                                                                                                                                            |
 | ---                     | ---                                                                                                                                                                                    |
-| code                    | A string indicating a specific MessageID from the message registry. "GeneralError" should be used only if there is no better message.              |
+| code                    | A string indicating a specific MessageId from the message registry. "GeneralError" should be used only if there is no better message.              |
 | message                 | A human readable error message corresponding to the message in the message registry. 
 | @Message.ExtendedInfo   | An array of [message objects](#message-object) describing one or more error message(s). 
 
@@ -1206,7 +1206,7 @@ Error responses are defined by an extended error resource, represented as a sing
         "message": "A general error has occurred. See ExtendedInfo for more information.",
         "@Message.ExtendedInfo": [
             {
-                "MessageID": "Base.1.0.0.PropertyValueNotInList",
+                "MessageId": "Base.1.0.0.PropertyValueNotInList",
                 "RelatedProperties": [ 
 					"#/IndicatorLED" 
 				],
@@ -1219,7 +1219,7 @@ Error responses are defined by an extended error resource, represented as a sing
                 "Resolution": "Remove the property from the request body and resubmit the request if the operation failed"
             },
             {
-                "MessageID": "Base.1.0.0.PropertyNotWriteable",
+                "MessageId": "Base.1.0.0.PropertyNotWriteable",
                 "RelatedProperties": [ 
 					"#/SKU" 
 				],
@@ -1242,18 +1242,18 @@ Messages are represented as a JSON object with the following properties:
 
 | Property                | Description                                                                                                                                                                            |
 | ---                     | ---                                                                                                                                                                                    |
-| MessageID               | String indicating a specific error or message (not to be confused with the HTTP status code). This code can be used to access a detailed message from a message registry.              |
+| MessageId               | String indicating a specific error or message (not to be confused with the HTTP status code). This code can be used to access a detailed message from a message registry.              |
 | Message                 | A human readable error message indicating the semantics associated with the error. This shall be the complete message, and not rely on substitution variables.
 | RelatedProperties       | An optional array of JSON Pointers defining the specific properties within a JSON payload described by the message.                                                        |
-| MessageArgs             | An optional array of strings representing the substitution parameter values for the message. This shall be included in the response if a MessageID is specified for a parameterized message. 
+| MessageArgs             | An optional array of strings representing the substitution parameter values for the message. This shall be included in the response if a MessageId is specified for a parameterized message. 
 | Severity                | An optional string representing the severity of the error.
 | Resolution              | An optional string describing recommended action(s) to take to resolve the error.
 
-Each instance of a Message object shall contain at least a MessageID, together with any applicable MessageArgs, or a Message property specifying the complete human-readable error message.
+Each instance of a Message object shall contain at least a MessageId, together with any applicable MessageArgs, or a Message property specifying the complete human-readable error message.
 
-MessageIDs identify specific messages defined in a message registry.
+MessageIds identify specific messages defined in a message registry.
 
-The value of the MessageID property shall be of the form
+The value of the MessageId property shall be of the form
 
  *RegistryName*.*MajorVersion*.*MinorVersion*.*MessageKey* 
 
@@ -1264,7 +1264,7 @@ where
 * *MinorVersion* is a positive integer representing the minor version of the registry 
 * *MessageKey* is a human-readable key into the registry. The message key shall be Pascal-cased and shall not include spaces, periods or special chars.  
 
-The client can use the MessageID to search the message registry for the corresponding message.
+The client can use the MessageId to search the message registry for the corresponding message.
 
 The message registry approach has advantages for internationalization (since the registry can be translated easily) and light weight implementation (since large strings need not be included with the implementation).
 
@@ -1873,7 +1873,7 @@ There are two types of events generated in a Redfish service - life cycle and al
 
 Life cycle events happen when resources are created, modified or destroyed.  Not every modification of a resource will result in an event - this is similar to when ETags are changed and implementations may not send an event for every resource change. For instance, if an event was sent for every Ethernet packet received or every time a sensor changed 1 degree, this could result in more events than fits a scalable interface. This event usually indicates the resource that changed as well as, optionally, any attributes that changed. 
 
-Alert events happen when a resource needs to indicate an event of some significance.  This may be either directly or indirectly pertaining to the resource.  This style of event usually adopts a message registry approach similar to extended error handling in that a MessageID will be included.  Examples of this kind of event are when a chassis is opened, button is pushed, cable is unplugged or threshold exceeded.  These events usually do not correspond well to life cycle type events hence they have their own category.
+Alert events happen when a resource needs to indicate an event of some significance.  This may be either directly or indirectly pertaining to the resource.  This style of event usually adopts a message registry approach similar to extended error handling in that a MessageId will be included.  Examples of this kind of event are when a chassis is opened, button is pushed, cable is unplugged or threshold exceeded.  These events usually do not correspond well to life cycle type events hence they have their own category.
 
 NOTE: Refer to the [Security](#security) section for security implications of Eventing
 
@@ -1891,9 +1891,9 @@ Clients begin receiving events once a subscription has been registered with the 
 
 Event message objects POSTed to the specified client endpoint shall contain the properties as described in the Redfish Event Schema.
 
-This event message structure supports a message registry.  In a message registry approach there is a message registry that has a list or array of MessageIDs in a well known format.  These MessageIDs are terse in nature and thus they are much smaller than actual messages, making them suitable for embedded environments.  In the registry, there is also a message.  The message itself can have arguments as well as default values for Severity and RecommendedActions.
+This event message structure supports a message registry.  In a message registry approach there is a message registry that has a list or array of MessageIds in a well known format.  These MessageIds are terse in nature and thus they are much smaller than actual messages, making them suitable for embedded environments.  In the registry, there is also a message.  The message itself can have arguments as well as default values for Severity and RecommendedActions.
 
-The MessageID property contents shall be of the form
+The MessageId property contents shall be of the form
 
  *RegistryName*.*MajorVersion*.*MinorVersion*.*MessageKey* 
 
