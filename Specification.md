@@ -915,7 +915,19 @@ ETags provide the ability to conditionally retrieve or update a resource. Resour
 
 ##### Primitive Properties
 
-Primitive properties are returned as JSON values. 
+Primitive properties shall be returned as JSON values according to the following table. 
+
+| Type               | JSON Representation
+| ---                | ---
+| Edm.Boolean        | Boolean
+| Edm.DateTimeOffset | String, formatted as specified in [DateTime Values](#datetime-values)
+| Edm.Decimal        | Number, optionally containing a decimal point
+| Edm.Double         | Number, optionally containing a decimal point and optionally containing an exponent
+| Edm.Guid           | String, matching the pattern ([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})
+| Edm.Int64          | Number with no decimal point
+| Edm.String         | String
+
+When receiving values from the client, services should support other valid representations of the data within the specified JSON type. In particular, services should support valid integer and decimal values written in exponential notation and integer values containing a decimal point with no non-zero trailing digits. 
 
 ###### DateTime Values
 
@@ -1443,7 +1455,7 @@ Type type of a property is specified by the `Type` attribute. The value of the t
 
 Primitive types are prefixed with the "Edm" namespace prefix. 
 
-Redfish services support the following primitive types:
+Redfish services may use any of the following primitive types:
 
 | Type               | Meaning                                                               |
 | ---                | ---                                                                   |
@@ -1451,6 +1463,7 @@ Redfish services support the following primitive types:
 | Edm.DateTimeOffset | Date and time with a time-zone                                        |
 | Edm.Decimal        | Numeric values with fixed precision and scale                         |
 | Edm.Double         | IEEE 754 binary64 floating-point number (15-17 decimal digits)        |
+| Edm.Guid           | A globally unique identifier                                          |
 | Edm.Int64          | Signed 64-bit integer                                                 |
 | Edm.String         | Sequence of UTF-8 characters                                          |
 

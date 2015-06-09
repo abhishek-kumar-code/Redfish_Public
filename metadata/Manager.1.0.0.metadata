@@ -87,7 +87,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain a reference to a collection of VirtualMedia which are for the use of this manager."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>        
-        <Property Name="ServiceEntryPointUUID" Type="Edm.String" Nullable="false">
+        <Property Name="ServiceEntryPointUUID" Type="Resource.UUID" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The UUID of the Redfish Service Entry Point provided by this manager"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the UUID of the Redfish Service Entry Point provided by this manager.  This property shall not be present if this manager does not provide a Redfish Service Entry Point."/>

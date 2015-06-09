@@ -796,6 +796,9 @@ class JsonSchemaGenerator:
             if typename == "Edm.DateTimeOffset":
                 output += ",\n" + UT.Utilities.indent(depth) + "\"format\": \"date-time\""
 
+            if typename == "Edm.Guid":
+                output += ",\n" + UT.Utilities.indent(depth) + "\"pattern\": \"([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})\""
+
         return output
 
     ############################################################################################
