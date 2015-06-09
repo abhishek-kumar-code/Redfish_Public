@@ -1923,7 +1923,7 @@ As the objective of discovery is for cilent software to locate Redfish-compliant
 
 #### UPnP Compatibility
 
-For compatibility with general purpose SSDP client software, primarily UPnP, TCP port 1900 should be used for all SSDP traffic.  It is recommended that devices also respond to M-SEARCH queries for UPnP Root Devices (with NT:upnp:rootdevice), with appropriate descriptors and XML documents.
+For compatibility with general purpose SSDP client software, primarily UPnP, TCP port 1900 should be used for all SSDP traffic.  In addition, the Time-to-Live (TTL) hop count setting for SSDP multicast messages should default to 2.  It is recommended that devices also respond to M-SEARCH queries for UPnP Root Devices (with NT:upnp:rootdevice), with appropriate descriptors and XML documents.
 
 #### USN Format
 
