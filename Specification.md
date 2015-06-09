@@ -920,7 +920,7 @@ Primitive properties shall be returned as JSON values according to the following
 | Type               | JSON Representation
 | ---                | ---
 | Edm.Boolean        | Boolean
-| Edm.DateTimeOffset | String, formatted as specified in [DateTIme Values](#datetime-values)
+| Edm.DateTimeOffset | String, formatted as specified in [DateTime Values](#datetime-values)
 | Edm.Decimal        | Number, optionally containing a decimal point
 | Edm.Double         | Number, optionally containing a decimal point and optionally containing an exponent
 | Edm.Guid           | String, matching the pattern ([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})
