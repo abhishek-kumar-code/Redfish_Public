@@ -556,6 +556,8 @@ The PATCH method is the preferred method used to perform updates on pre-existing
 * Services should return status code [405](#status-405) if the client specifies a PATCH request against a collection.
 * The PATCH operation should be idempotent in the absence of outside changes to the resource, though the original ETag value may no longer match.
 
+Within a PATCH request, unchanged members within of a JSON array may be specified as empty JSON objects.
+
 OData markup ([resource identifiers](#resource-identifier-property), [type](#type-property), [etag](#etag-property) and [links](#links-property)) are ignored on Update.
 
 ##### Replace (PUT)
