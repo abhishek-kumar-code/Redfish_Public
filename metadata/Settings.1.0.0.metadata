@@ -16,6 +16,7 @@
 
       <!-- This represents the objects used for Settings in the Redfish specification. -->
       <EntityType Name="Settings">
+        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
         <Property Name="Time" Type="Edm.DateTimeOffset">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Indicates the time the settings were applied."/>

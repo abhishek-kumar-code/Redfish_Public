@@ -3,7 +3,7 @@
     "title": "Manager.1.0.0",
     "$ref": "#/definitions/Manager",
     "definitions":{
-        "CommandShell":{
+        "GraphicalConsole":{
             "type": "object",
             "patternProperties": { 
                 "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
@@ -29,21 +29,17 @@
                     "items": {
                         "type": "string",
                         "enum": [
-                            "SSH",
-                            "Telnet",
-                            "IPMI",
+                            "KVMIP",
                             "Oem"
                         ],
                         "enumDescriptions": {
-                            "SSH": "The controller supports a Command Shell connection using the SSH protocol",
-                            "Telnet": "The controller supports a Command Shell connection using the SSH protocol",
-                            "IPMI": "The controller supports a Command Shell connection using the SSH protocol",
-                            "Oem": "The controller supports a Command Shell connection using an OEM-specific protocol"
+                            "KVMIP": "The controller supports a Graphical Console connection using a KVM-IP (redirection of Keyboard, Video, Mouse over IP) protocol",
+                            "Oem": "The controller supports a Graphical Console connection using an OEM-specific protocol"
                         }
                     },
                     "readonly": true,
-                    "description": "This object is used to enumerate the Command Shell connection types allowed by the implementation.",
-                    "longDescription": "The value of ConnectTypesSupported shall be an array of the enumerations provided here.  SSH shall be included if the Secure Shell (SSH) protocol is supported.  Telnet shall be included if the Telnet protocol is supported.  IPMI shall be included if the IPMI (Serial-over-LAN) protocol is supported."
+                    "description": "This object is used to enumerate the Graphical Console connection types allowed by the implementation.",
+                    "longDescription": "The value of ConnectTypesSupported shall be an array of the enumerations provided here.  RDP shall be included if the Remote Desktop (RDP) protocol is supported.  KVMIP shall be included if a vendor-define KVM-IP protocol is supported."
                 }
             }
         },
@@ -62,20 +58,73 @@
                 "Oem": "The controller supports a Serial Console connection using an OEM-specific protocol"
             }
         },
-        "CommandConnectTypesSupported":{
+        "ForceFailover":{
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "description": "Link to invoke action"
+                },
+                "href@Redfish.AllowableValues": {
+                    "type": "array",
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "@odata.id": "Resource.1.0.0.json#Resource"
+                        }
+                    },
+                    "description": "This array defines the supported values for this property on this resource.  In this case, a valid reference is supported."
+                }
+            }
+
+        },
+        "GraphicalConnectTypesSupported":{
             "type": "string",
             "enum": [
-                "SSH",
-                "Telnet",
-                "IPMI",
+                "KVMIP",
                 "Oem"
             ],
             "enumDescriptions": {
-                "SSH": "The controller supports a Command Shell connection using the SSH protocol",
-                "Telnet": "The controller supports a Command Shell connection using the SSH protocol",
-                "IPMI": "The controller supports a Command Shell connection using the SSH protocol",
-                "Oem": "The controller supports a Command Shell connection using an OEM-specific protocol"
+                "KVMIP": "The controller supports a Graphical Console connection using a KVM-IP (redirection of Keyboard, Video, Mouse over IP) protocol",
+                "Oem": "The controller supports a Graphical Console connection using an OEM-specific protocol"
             }
+        },
+        "ManagerType":{
+            "type": "string",
+            "enum": [
+                "ManagementController",
+                "EnclosureManager",
+                "BMC",
+                "RackManager",
+                "AuxiliaryController"
+            ],
+            "enumDescriptions": {
+                "ManagementController": "A controller used primarily to monitor or manage the operation of a device or system",
+                "EnclosureManager": "A controller which provides management functions for a chassis or group of devices or systems",
+                "BMC": "A controller which provides management functions for a single computer system",
+                "RackManager": "A controller which provides management functions for a whole or part of a rack",
+                "AuxiliaryController": "A controller which provides management functions for a particular subsystem or group of devices"
+            }
+        },
+        "Reset":{
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "description": "Link to invoke action"
+                }
+            }
+
         },
         "Manager":{
             "type": "object",
@@ -312,66 +361,6 @@
                 }
             ]
         },
-        "ForceFailover":{
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "title": {
-                    "type": "string",
-                    "description": "Friendly action name"
-                },
-                "target": {
-                    "type": "string",
-                    "description": "Link to invoke action"
-                },
-                "href@Redfish.AllowableValues": {
-                    "type": "array",
-                    "items": {
-                        "type": "array",
-                        "items": {
-                            "@odata.id": "Resource.1.0.0.json#Resource"
-                        }
-                    },
-                    "description": "This array defines the supported values for this property on this resource.  In this case, a valid reference is supported."
-                }
-            }
-
-        },
-        "ModifyRedundancySet":{
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "title": {
-                    "type": "string",
-                    "description": "Friendly action name"
-                },
-                "target": {
-                    "type": "string",
-                    "description": "Link to invoke action"
-                },
-                "Add@Redfish.AllowableValues": {
-                    "type": "array",
-                    "items": {
-                        "type": "array",
-                        "items": {
-                            "@odata.id": "Resource.1.0.0.json#Resource"
-                        }
-                    },
-                    "description": "This array defines the supported values for this property on this resource.  In this case, a valid reference is supported. Add shall be used to Add members to the manager redundancy group."
-                },
-                "Remove@Redfish.AllowableValues": {
-                    "type": "array",
-                    "items": {
-                        "type": "array",
-                        "items": {
-                            "@odata.id": "Resource.1.0.0.json#Resource"
-                        }
-                    },
-                    "description": "This array defines the supported values for this property on this resource.  In this case, a valid reference is supported. Remove shall be used to remove members from the manager redundancy group."
-                }
-            }
-
-        },
         "SerialConsole":{
             "type": "object",
             "patternProperties": { 
@@ -416,7 +405,7 @@
                 }
             }
         },
-        "Reset":{
+        "ModifyRedundancySet":{
             "type": "object",
             "additionalProperties": false,
             "properties": {
@@ -427,49 +416,29 @@
                 "target": {
                     "type": "string",
                     "description": "Link to invoke action"
+                },
+                "Add@Redfish.AllowableValues": {
+                    "type": "array",
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "@odata.id": "Resource.1.0.0.json#Resource"
+                        }
+                    },
+                    "description": "This array defines the supported values for this property on this resource.  In this case, a valid reference is supported. Add shall be used to Add members to the manager redundancy group."
+                },
+                "Remove@Redfish.AllowableValues": {
+                    "type": "array",
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "@odata.id": "Resource.1.0.0.json#Resource"
+                        }
+                    },
+                    "description": "This array defines the supported values for this property on this resource.  In this case, a valid reference is supported. Remove shall be used to remove members from the manager redundancy group."
                 }
             }
 
-        },
-        "GraphicalConsole":{
-            "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
-                    "description": "This property shall specify a valid odata or redfish property."
-                }
-            },
-            "additionalProperties": false,
-            "properties": {
-                "Enabled": {
-                    "type": "boolean",
-                    "description": "Indicates if the service is enabled for this manager.",
-                    "longDescription": "The value of this property shall contain the enabled status of the protocol used for the service.  The value shall be true if enabled and false if disabled."
-                },
-                "MaxConcurrentSessions": {
-                    "type": "number",
-                    "readonly": true,
-                    "description": "Indicates the maximum number of service sessions, regardless of protocol, this manager is able to support.",
-                    "longDescription": "The value of this property shall contain the maximum number of concurrent service sessions supported by the implementation."
-                },
-                "ConnectTypesSupported": {
-                    "type": "array",
-                    "items": {
-                        "type": "string",
-                        "enum": [
-                            "KVMIP",
-                            "Oem"
-                        ],
-                        "enumDescriptions": {
-                            "KVMIP": "The controller supports a Graphical Console connection using a KVM-IP (redirection of Keyboard, Video, Mouse over IP) protocol",
-                            "Oem": "The controller supports a Graphical Console connection using an OEM-specific protocol"
-                        }
-                    },
-                    "readonly": true,
-                    "description": "This object is used to enumerate the Graphical Console connection types allowed by the implementation.",
-                    "longDescription": "The value of ConnectTypesSupported shall be an array of the enumerations provided here.  RDP shall be included if the Remote Desktop (RDP) protocol is supported.  KVMIP shall be included if a vendor-define KVM-IP protocol is supported."
-                }
-            }
         },
         "ManagerService":{
             "type": "object",
@@ -495,32 +464,63 @@
             },
             "description": "Used for describing services like Serial Console, Command Shell or Graphical Console"
         },
-        "GraphicalConnectTypesSupported":{
+        "CommandShell":{
+            "type": "object",
+            "patternProperties": { 
+                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+                    "type": ["array", "boolean", "number", "null", "object", "string"],
+                    "description": "This property shall specify a valid odata or redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Enabled": {
+                    "type": "boolean",
+                    "description": "Indicates if the service is enabled for this manager.",
+                    "longDescription": "The value of this property shall contain the enabled status of the protocol used for the service.  The value shall be true if enabled and false if disabled."
+                },
+                "MaxConcurrentSessions": {
+                    "type": "number",
+                    "readonly": true,
+                    "description": "Indicates the maximum number of service sessions, regardless of protocol, this manager is able to support.",
+                    "longDescription": "The value of this property shall contain the maximum number of concurrent service sessions supported by the implementation."
+                },
+                "ConnectTypesSupported": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "SSH",
+                            "Telnet",
+                            "IPMI",
+                            "Oem"
+                        ],
+                        "enumDescriptions": {
+                            "SSH": "The controller supports a Command Shell connection using the SSH protocol",
+                            "Telnet": "The controller supports a Command Shell connection using the SSH protocol",
+                            "IPMI": "The controller supports a Command Shell connection using the SSH protocol",
+                            "Oem": "The controller supports a Command Shell connection using an OEM-specific protocol"
+                        }
+                    },
+                    "readonly": true,
+                    "description": "This object is used to enumerate the Command Shell connection types allowed by the implementation.",
+                    "longDescription": "The value of ConnectTypesSupported shall be an array of the enumerations provided here.  SSH shall be included if the Secure Shell (SSH) protocol is supported.  Telnet shall be included if the Telnet protocol is supported.  IPMI shall be included if the IPMI (Serial-over-LAN) protocol is supported."
+                }
+            }
+        },
+        "CommandConnectTypesSupported":{
             "type": "string",
             "enum": [
-                "KVMIP",
+                "SSH",
+                "Telnet",
+                "IPMI",
                 "Oem"
             ],
             "enumDescriptions": {
-                "KVMIP": "The controller supports a Graphical Console connection using a KVM-IP (redirection of Keyboard, Video, Mouse over IP) protocol",
-                "Oem": "The controller supports a Graphical Console connection using an OEM-specific protocol"
-            }
-        },
-        "ManagerType":{
-            "type": "string",
-            "enum": [
-                "ManagementController",
-                "EnclosureManager",
-                "BMC",
-                "RackManager",
-                "AuxiliaryController"
-            ],
-            "enumDescriptions": {
-                "ManagementController": "A controller used primarily to monitor or manage the operation of a device or system",
-                "EnclosureManager": "A controller which provides management functions for a chassis or group of devices or systems",
-                "BMC": "A controller which provides management functions for a single computer system",
-                "RackManager": "A controller which provides management functions for a whole or part of a rack",
-                "AuxiliaryController": "A controller which provides management functions for a particular subsystem or group of devices"
+                "SSH": "The controller supports a Command Shell connection using the SSH protocol",
+                "Telnet": "The controller supports a Command Shell connection using the SSH protocol",
+                "IPMI": "The controller supports a Command Shell connection using the SSH protocol",
+                "Oem": "The controller supports a Command Shell connection using an OEM-specific protocol"
             }
         }
     },

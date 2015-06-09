@@ -3,23 +3,6 @@
     "title": "Event.1.0.0",
     "$ref": "#/definitions/Event",
     "definitions":{
-        "EventType":{
-            "type": "string",
-            "enum": [
-                "StatusChange",
-                "ResourceUpdated",
-                "ResourceAdded",
-                "ResourceRemoved",
-                "Alert"
-            ],
-            "enumDescriptions": {
-                "StatusChange": "The status of this resource has changed",
-                "ResourceUpdated": "The value of this resource has been updated",
-                "ResourceAdded": "A resource has been added",
-                "ResourceRemoved": "A resource has been removed",
-                "Alert": "A condition exists which requires attention"
-            }
-        },
         "Event":{
             "type": "object",
             "patternProperties": { 
@@ -162,6 +145,23 @@
                 "EventType",
                 "MessageId"
             ]
+        },
+        "EventType":{
+            "type": "string",
+            "enum": [
+                "StatusChange",
+                "ResourceUpdated",
+                "ResourceAdded",
+                "ResourceRemoved",
+                "Alert"
+            ],
+            "enumDescriptions": {
+                "StatusChange": "The status of this resource has changed",
+                "ResourceUpdated": "The value of this resource has been updated",
+                "ResourceAdded": "A resource has been added",
+                "ResourceRemoved": "A resource has been removed",
+                "Alert": "A condition exists which requires attention"
+            }
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."

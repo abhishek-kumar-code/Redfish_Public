@@ -11,21 +11,25 @@
                 "Digi"
             ]
         },
-        "Parity":{
-            "type": "string",
-            "enum": [
-                "None",
-                "Even",
-                "Odd",
-                "Mark",
-                "Space"
-            ]
-        },
         "SignalType":{
             "type": "string",
             "enum": [
                 "Rs232",
                 "Rs485"
+            ]
+        },
+        "ConnectorType":{
+            "type": "string",
+            "enum": [
+                "RJ45",
+                "RJ11",
+                "DB9 Female",
+                "DB9 Male",
+                "DB25 Female",
+                "DB25 Male",
+                "USB",
+                "mUSB",
+                "uUSB"
             ]
         },
         "SerialInterfaceCollection":{
@@ -36,7 +40,7 @@
                     "description": "This property shall specify a valid odata or redfish property."
                 }
             },
-            "additionalProperties": false,
+            "additionalProperties": true,
             "properties": {
                 "@odata.context": {
                     "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/context"
@@ -69,50 +73,6 @@
                 "Software": "XON/XOFF in-band flow control imposed",
                 "Hardware": "Out of band flow control imposed"
             }
-        },
-        "StopBits":{
-            "type": "string",
-            "enum": [
-                "1",
-                "2"
-            ]
-        },
-        "ConnectorType":{
-            "type": "string",
-            "enum": [
-                "RJ45",
-                "RJ11",
-                "DB9 Female",
-                "DB9 Male",
-                "DB25 Female",
-                "DB25 Male",
-                "USB",
-                "mUSB",
-                "uUSB"
-            ]
-        },
-        "BitRate":{
-            "type": "string",
-            "enum": [
-                "1200",
-                "2400",
-                "4800",
-                "9600",
-                "19200",
-                "38400",
-                "57600",
-                "115200",
-                "230400"
-            ]
-        },
-        "DataBits":{
-            "type": "string",
-            "enum": [
-                "5",
-                "6",
-                "7",
-                "8"
-            ]
         },
         "SerialInterface":{
             "type": "object",
@@ -207,6 +167,46 @@
                 {
                     "$ref": "#/definitions/SerialInterface"
                 }
+            ]
+        },
+        "Parity":{
+            "type": "string",
+            "enum": [
+                "None",
+                "Even",
+                "Odd",
+                "Mark",
+                "Space"
+            ]
+        },
+        "BitRate":{
+            "type": "string",
+            "enum": [
+                "1200",
+                "2400",
+                "4800",
+                "9600",
+                "19200",
+                "38400",
+                "57600",
+                "115200",
+                "230400"
+            ]
+        },
+        "StopBits":{
+            "type": "string",
+            "enum": [
+                "1",
+                "2"
+            ]
+        },
+        "DataBits":{
+            "type": "string",
+            "enum": [
+                "5",
+                "6",
+                "7",
+                "8"
             ]
         }
     },
