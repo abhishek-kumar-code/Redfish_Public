@@ -967,7 +967,15 @@ For example, the following property represents the Reset action, defined in the 
 ~~~json
 	"#ComputerSystem.Reset": {
     	"target":"/redfish/v1/Systems/1/Actions/ComputerSystem.Reset",
-	   	 "ResetType@Redfish.AllowableValues": ["On","Off", "Reset"]
+        "ResetType@Redfish.AllowableValues": [
+	    "On",
+            "ForceOff",
+            "GracefulRestart",
+	    "ForceRestart",
+            "Nmi",
+	    "ForceOn",
+            "PushPowerButton"
+            ]	   	 
    	}
 ~~~
 
