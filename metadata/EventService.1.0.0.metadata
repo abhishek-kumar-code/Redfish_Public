@@ -48,8 +48,8 @@
         </Property>
         <NavigationProperty Name="Subscriptions" Type="EventDestinationCollection.EventDestinationCollection" ContainsTarget="true">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="This is a reference to a collection of ListenerDestination resources."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the link to a collection of ListenerDestination resources."/>
+          <Annotation Term="OData.Description" String="This is a reference to a collection of Event Destination resources."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the link to a collection of type EventDestinationCollection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
         <Property Name="Status" Type="Resource.Status"/>

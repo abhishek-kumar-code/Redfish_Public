@@ -48,7 +48,7 @@
         <NavigationProperty Name="Entries" Type="Collection(LogEntry.LogEntry)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="References to the log entry collection."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall reference a collection of LogEntry resources."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall reference a collection of resources of type LogEntry."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>        
         <Property Name="Actions" Type="LogService.Actions" Nullable="false">
