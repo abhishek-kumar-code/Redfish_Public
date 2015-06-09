@@ -89,7 +89,7 @@
         <NavigationProperty Name="LogServices" Type="LogServiceCollection.LogServiceCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="A reference to the logs for this chassis."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection LogServices."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type LogServiceCollection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>    
         <NavigationProperty Name="Thermal" Type="Thermal.Thermal" ContainsTarget="true">
