@@ -112,7 +112,7 @@
                     "description": "This is the human readable message, if provided.",
                     "longDescription": "This property shall contain an optional human readable message."
                 },
-                "MessageId": {
+                "MessageID": {
                     "type": "string",
                     "readonly": true,
                     "description": "This is the key for this message which can be used to look up the message in a message registry.",
@@ -143,7 +143,7 @@
             },
             "required": [
                 "EventType",
-                "MessageId"
+                "MessageID"
             ]
         },
         "EventType":{
