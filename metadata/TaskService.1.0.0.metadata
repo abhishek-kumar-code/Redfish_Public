@@ -38,7 +38,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property, if set to true, shall indicate that the service shall send a LifeCycle event to ListenerDestinations registered for such events upon change of task state."/>
         </Property>
         <Property Name="Status" Type="Resource.Status"/>
-        <NavigationProperty Name="Tasks" Type="Collection(TaskCollection.TaskCollection)">
+        <NavigationProperty Name="Tasks" Type="TaskCollection.TaskCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="References to the Tasks collection."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a resource of type TaskCollection."/>

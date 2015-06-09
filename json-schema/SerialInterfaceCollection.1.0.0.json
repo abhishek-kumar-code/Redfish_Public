@@ -2,29 +2,6 @@
     "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0.json",
     "title": "SerialInterfaceCollection.1.0.0",
     "definitions":{
-        "Members":{
-            "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
-                    "description": "This property shall specify a valid odata or redfish property."
-                }
-            },
-            "additionalProperties": false,
-            "properties": {
-                "Members@odata.count": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/count"
-                },
-                "Members": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "http://schemas.dmtf.org/redfish/v1/SerialInterface.1.0.0.json#/definitions/SerialInterface-ref"
-                    },
-                    "readonly": true,
-                    "description": "Contains the members of this collection."
-                }
-            }
-        },
         "SerialInterfaceCollection":{
             "type": "object",
             "patternProperties": { 
@@ -48,6 +25,29 @@
                     "$ref": "#/definitions/Members",
                     "readonly": true,
                     "description": "Contains links to other resources that are related to this resource."
+                }
+            }
+        },
+        "Members":{
+            "type": "object",
+            "patternProperties": { 
+                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+                    "type": ["array", "boolean", "number", "null", "object", "string"],
+                    "description": "This property shall specify a valid odata or redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Members@odata.count": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/count"
+                },
+                "Members": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "http://schemas.dmtf.org/redfish/v1/SerialInterface.1.0.0.json#/definitions/SerialInterface-ref"
+                    },
+                    "readonly": true,
+                    "description": "Contains the members of this collection."
                 }
             }
         }

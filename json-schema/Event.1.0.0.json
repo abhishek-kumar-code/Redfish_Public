@@ -3,91 +3,6 @@
     "title": "Event.1.0.0",
     "$ref": "#/definitions/Event",
     "definitions":{
-        "EventRecord":{
-            "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
-                    "description": "This property shall specify a valid odata or redfish property."
-                }
-            },
-            "additionalProperties": false,
-            "properties": {
-                "Oem": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Oem",
-                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
-                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
-                },
-                "MemberId": {
-                    "type": "string",
-                    "description": "This is the identifier for the member within the collection.",
-                    "longDescription": "The value of this string shall uniquely identify the member within the collection."
-                },
-                "EventType": {
-                    "$ref": "#/definitions/EventType",
-                    "readonly": true,
-                    "description": "This indicates the type of event sent, according to the definitions in the EventService.",
-                    "longDescription": "The value of this property shall indicate the type of event as defined in the EventService schema."
-                },
-                "EventID": {
-                    "type": "string",
-                    "readonly": true,
-                    "description": "This is a unique instance identifier of an event.",
-                    "longDescription": "The value of this property shall indicate a unique identifier for the event, the format of which is implementation dependent."
-                },
-                "EventTimestamp": {
-                    "type": "string",
-                    "format": "date-time",
-                    "readonly": true,
-                    "description": "This is time the event occurred.",
-                    "longDescription": "The value of this property shall indicate the time the event occurred where the value shall be consistent with the Redfish service time that is also used for the values of the Modified property."
-                },
-                "Severity": {
-                    "type": "string",
-                    "readonly": true,
-                    "description": "This is the severity of the event.",
-                    "longDescription": "The value of this property shall be the severity of the event, as defined in the Status section of the Redfish specificaiton."
-                },
-                "Message": {
-                    "type": "string",
-                    "readonly": true,
-                    "description": "This is the human readable message, if provided.",
-                    "longDescription": "This property shall contain an optional human readable message."
-                },
-                "MessageID": {
-                    "type": "string",
-                    "readonly": true,
-                    "description": "This is the key for this message which can be used to look up the message in a message registry.",
-                    "longDescription": "This property shall be a key into message registry as described in the Redfish specification.",
-                    "pattern": "^[A-Za-z0-9]+\\.\\d+\\.\\d+.[A-Za-z0-9.]+$"
-                },
-                "MessageArgs": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "readonly": true,
-                    "description": "This array of message arguments are substituted for the arguments in the message when looked up in the message registry.",
-                    "longDescription": "This property has the same semantics as the MessageArgs property in the Event schema for Redfish."
-                },
-                "Context": {
-                    "type": "string",
-                    "readonly": true,
-                    "description": "A context can be supplied at subscription time.  This property is the context value supplied by the subscriber.",
-                    "longDescription": "This property shall contain a client supplied context for the ListnerDestination to which this event is being sent."
-                },
-                "OriginOfCondition": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Item-ref",
-                    "readonly": true,
-                    "description": "This indicates the resource that originated the condition that caused the event to be generated.",
-                    "longDescription": "The value of this property shall contain the URI of the resource that caused the event to be generated."
-                }
-            },
-            "required": [
-                "EventType",
-                "MessageID"
-            ]
-        },
         "Event":{
             "type": "object",
             "patternProperties": { 
@@ -162,6 +77,91 @@
                 "ResourceRemoved": "A resource has been removed",
                 "Alert": "A condition exists which requires attention"
             }
+        },
+        "EventRecord":{
+            "type": "object",
+            "patternProperties": { 
+                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+                    "type": ["array", "boolean", "number", "null", "object", "string"],
+                    "description": "This property shall specify a valid odata or redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Oem": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Oem",
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+                },
+                "MemberId": {
+                    "type": "string",
+                    "description": "This is the identifier for the member within the collection.",
+                    "longDescription": "The value of this string shall uniquely identify the member within the collection."
+                },
+                "EventType": {
+                    "$ref": "#/definitions/EventType",
+                    "readonly": true,
+                    "description": "This indicates the type of event sent, according to the definitions in the EventService.",
+                    "longDescription": "The value of this property shall indicate the type of event as defined in the EventService schema."
+                },
+                "EventId": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "This is a unique instance identifier of an event.",
+                    "longDescription": "The value of this property shall indicate a unique identifier for the event, the format of which is implementation dependent."
+                },
+                "EventTimestamp": {
+                    "type": "string",
+                    "format": "date-time",
+                    "readonly": true,
+                    "description": "This is time the event occurred.",
+                    "longDescription": "The value of this property shall indicate the time the event occurred where the value shall be consistent with the Redfish service time that is also used for the values of the Modified property."
+                },
+                "Severity": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "This is the severity of the event.",
+                    "longDescription": "The value of this property shall be the severity of the event, as defined in the Status section of the Redfish specificaiton."
+                },
+                "Message": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "This is the human readable message, if provided.",
+                    "longDescription": "This property shall contain an optional human readable message."
+                },
+                "MessageId": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "This is the key for this message which can be used to look up the message in a message registry.",
+                    "longDescription": "This property shall be a key into message registry as described in the Redfish specification.",
+                    "pattern": "^[A-Za-z0-9]+\\.\\d+\\.\\d+.[A-Za-z0-9.]+$"
+                },
+                "MessageArgs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "readonly": true,
+                    "description": "This array of message arguments are substituted for the arguments in the message when looked up in the message registry.",
+                    "longDescription": "This property has the same semantics as the MessageArgs property in the Event schema for Redfish."
+                },
+                "Context": {
+                    "type": "string",
+                    "readonly": true,
+                    "description": "A context can be supplied at subscription time.  This property is the context value supplied by the subscriber.",
+                    "longDescription": "This property shall contain a client supplied context for the ListnerDestination to which this event is being sent."
+                },
+                "OriginOfCondition": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Item-ref",
+                    "readonly": true,
+                    "description": "This indicates the resource that originated the condition that caused the event to be generated.",
+                    "longDescription": "The value of this property shall contain the URI of the resource that caused the event to be generated."
+                }
+            },
+            "required": [
+                "EventType",
+                "MessageId"
+            ]
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."

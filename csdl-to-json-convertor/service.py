@@ -783,7 +783,8 @@ class JsonSchemaGenerator:
             "Edm.Int64": "number",
             "Edm.Boolean": "boolean",
             "Edm.Decimal": "number",
-            "Edm.DateTimeOffset": "string"
+            "Edm.DateTimeOffset": "string",
+            "Edm.Guid": "string"
         }
 
         if typename in edmtojson.keys():

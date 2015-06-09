@@ -3,6 +3,21 @@
     "title": "LogService.1.0.0",
     "$ref": "#/definitions/LogService",
     "definitions":{
+        "ClearLog":{
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "description": "Link to invoke action"
+                }
+            }
+
+        },
         "LogService":{
             "type": "object",
             "patternProperties": { 
@@ -134,21 +149,6 @@
                 "WrapsWhenFull": "When full, new entries to the Log will overwrite previous entries",
                 "NeverOverWrites": "When full, new entries to the Log will be discarded"
             }
-        },
-        "ClearLog":{
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "title": {
-                    "type": "string",
-                    "description": "Friendly action name"
-                },
-                "target": {
-                    "type": "string",
-                    "description": "Link to invoke action"
-                }
-            }
-
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
