@@ -3,17 +3,6 @@
     "title": "TaskService.1.0.0",
     "$ref": "#/definitions/TaskService",
     "definitions":{
-        "OverWritePolicy":{
-            "type": "string",
-            "enum": [
-                "Manual",
-                "Oldest"
-            ],
-            "enumDescriptions": {
-                "Manual": "Completed tasks are not automatically overwritten",
-                "Oldest": "Oldest completed tasks are overwritten"
-            }
-        },
         "TaskService":{
             "type": "object",
             "patternProperties": { 
@@ -73,10 +62,7 @@
                     "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Status"
                 },
                 "Tasks": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "http://schemas.dmtf.org/redfish/v1/TaskCollection.1.0.0.json#/definitions/TaskCollection-ref"
-                    },
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/TaskCollection.1.0.0.json#/definitions/TaskCollection-ref",
                     "readonly": true,
                     "description": "References to the Tasks collection.",
                     "longDescription": "The value of this property shall be a link to a resource of type TaskCollection."
@@ -94,6 +80,17 @@
                     "$ref": "#/definitions/TaskService"
                 }
             ]
+        },
+        "OverWritePolicy":{
+            "type": "string",
+            "enum": [
+                "Manual",
+                "Oldest"
+            ],
+            "enumDescriptions": {
+                "Manual": "Completed tasks are not automatically overwritten",
+                "Oldest": "Oldest completed tasks are overwritten"
+            }
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
