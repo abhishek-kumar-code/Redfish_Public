@@ -1523,6 +1523,16 @@ The value of the type attribute for a collection-valued property is of the form:
 
 where *NamespaceQualifiedTypeName* is the namespace or alias qualified name of the primitive, structured, or enumeration type.
 
+##### Additional Properites
+
+The AdditionalProperties annotation term is used to specify whether a type can contain additional properties outside of those defined. Types annotated with the AdditionalProperties annotation with a `Boolean` attribute with a value of `"False"`, are must not contain additional properties.
+
+~~~xml
+		<Annotation Term="OData.AdditionalProperties"/>
+~~~
+
+The `AdditionalProperties` annotation term is defined in https://tools.oasis-open.org/version-control/browse/wsvn/odata/trunk/spec/vocabularies/Org.OData.Core.V1.xml.
+
 ##### Non-Nullable properties
 
 Properties may include the Nullable attribute with a value of false to specify that the property cannot contain null values. A property with a nullable attribute with a value of `"true"`, or no nullable attribute, can accept null values. 
@@ -1551,7 +1561,17 @@ If an implementation supports a property, it shall always provide a value for th
 		<Annotation Term="Redfish.Required"/>
 ~~~
 
-The `Required` annotation term is defined in http://schemas.dmtf.org/redfish/v1/RedfishExtensions.<%= DocVersion %>.
+The `Required` annotation term is defined in http://schemas.dmtf.org/redfish/v1/RedfishExtensions.1.0.0.
+
+##### Required Properties On Create
+
+The RequiredOnCreate annotation term is used to specify that a property is required to be specified on creation of the resource. Properties not annotated with the RequiredOnCreate annotation, or annotated with a `Boolean` attribute with a value of `"false"`, are not required on create.
+
+~~~xml
+		<Annotation Term="Redfish.RequiredOnCreate"/>
+~~~
+
+The `RequiredOnCreate` annotation term is defined in http://schemas.dmtf.org/redfish/v1/RedfishExtensions.1.0.0.
 
 ##### Units of Measure
 
@@ -1603,7 +1623,7 @@ Navigation properties in a Redfish JSON payload are expanded to include the [rel
 		<Annotation Term="OData.AutoExpandReferences"/>
 ~~~
 
-The `AutoExpandReferences` annotation term is defined in http://schemas.dmtf.org/redfish/v1/RedfishExtensions.<%= DocVersion %>.
+The `AutoExpandReferences` annotation term is defined in https://tools.oasis-open.org/version-control/browse/wsvn/odata/trunk/spec/vocabularies/Org.OData.Core.V1.xml.
 
 ##### Expanded Resources
 
@@ -1613,7 +1633,7 @@ This term can be applied to a navigation property in order to specify that the d
 		<Annotation Term="OData.AutoExpand"/>
 ~~~
 
-The `AutoExpand` annotation term is defined in http://schemas.dmtf.org/redfish/v1/RedfishExtensions.<%= DocVersion %>.
+The `AutoExpand` annotation term is defined in https://tools.oasis-open.org/version-control/browse/wsvn/odata/trunk/spec/vocabularies/Org.OData.Core.V1.xml.
 
 #### Resource Actions
 
