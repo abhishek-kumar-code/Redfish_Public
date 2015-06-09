@@ -630,6 +630,7 @@ And a computer system resource contains an [Actions](#actions-property) property
             "On",
             "ForceOff",
             "GracefulRestart",
+            "GracefulShutdown",
             "ForceRestart",
             "Nmi",
             "ForceOn",
@@ -979,10 +980,19 @@ The property representing the available action may be annotated with the [Allowa
 For example, the following property represents the Reset action, defined in the ComputerSystem.<%= DocVersion %> namespace (aliased with the version-independent "ComputerSystem"):
 
 ~~~json
-	"#ComputerSystem.Reset": {
-    	"target":"/redfish/v1/Systems/1/Actions/ComputerSystem.Reset",
-	   	 "ResetType@Redfish.AllowableValues": ["On","Off", "Reset"]
-   	}
+"#ComputerSystem.Reset": {
+   "target":"/redfish/v1/Systems/1/Actions/ComputerSystem.Reset",
+   "ResetType@Redfish.AllowableValues": [
+       "On",
+       "ForceOff",
+       "GracefulRestart",
+       "GracefulShutdown",
+       "ForceRestart",
+       "Nmi",
+       "ForceOn",
+       "PushPowerButton"
+       ]
+   }
 ~~~
 
 Given this, the client could invoke a POST request to /redfish/v1/Systems/1/Actions/ComputerSystem.Reset with the following body:
