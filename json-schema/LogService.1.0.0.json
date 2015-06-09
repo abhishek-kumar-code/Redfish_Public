@@ -3,34 +3,6 @@
     "title": "LogService.1.0.0",
     "$ref": "#/definitions/LogService",
     "definitions":{
-        "ClearLog":{
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "title": {
-                    "type": "string",
-                    "description": "Friendly action name"
-                },
-                "target": {
-                    "type": "string",
-                    "description": "Link to invoke action"
-                }
-            }
-
-        },
-        "OverWritePolicy":{
-            "type": "string",
-            "enum": [
-                "Unknown",
-                "WrapsWhenFull",
-                "NeverOverWrites"
-            ],
-            "enumDescriptions": {
-                "Unknown": "The overwrite policy is not known or is undefined",
-                "WrapsWhenFull": "When full, new entries to the Log will overwrite previous entries",
-                "NeverOverWrites": "When full, new entries to the Log will be discarded"
-            }
-        },
         "LogService":{
             "type": "object",
             "patternProperties": { 
@@ -68,7 +40,8 @@
                     "type": "number",
                     "readonly": true,
                     "description": "The maximum number of log entries this service can have.",
-                    "longDescription": "The value of this property shall be the maximum numbers of LogEntry resources in the Entries collection for this service."
+                    "longDescription": "The value of this property shall be the maximum numbers of LogEntry resources in the Entries collection for this service.",
+                    "minimum": 0
                 },
                 "OverWritePolicy": {
                     "$ref": "#/definitions/OverWritePolicy",
@@ -133,7 +106,7 @@
                     },
                     "readonly": true,
                     "description": "References to the log entry collection.",
-                    "longDescription": "The value of this property shall reference a collection of LogEntry resources."
+                    "longDescription": "The value of this property shall reference a collection of resources of type LogEntry."
                 }
             },
             "description": "This resource represents the log service for the resource or service to which it is associated.",
@@ -148,6 +121,34 @@
                     "$ref": "#/definitions/LogService"
                 }
             ]
+        },
+        "OverWritePolicy":{
+            "type": "string",
+            "enum": [
+                "Unknown",
+                "WrapsWhenFull",
+                "NeverOverWrites"
+            ],
+            "enumDescriptions": {
+                "Unknown": "The overwrite policy is not known or is undefined",
+                "WrapsWhenFull": "When full, new entries to the Log will overwrite previous entries",
+                "NeverOverWrites": "When full, new entries to the Log will be discarded"
+            }
+        },
+        "ClearLog":{
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "description": "Link to invoke action"
+                }
+            }
+
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."

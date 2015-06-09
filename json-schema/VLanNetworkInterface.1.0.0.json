@@ -32,9 +32,6 @@
                 "VLANId"
             ]
         },
-        "VLANId":{
-            "type": "number"
-        },
         "VLanNetworkInterface":{
             "type": "object",
             "patternProperties": { 
@@ -96,6 +93,11 @@
                     "$ref": "#/definitions/VLanNetworkInterface"
                 }
             ]
+        },
+        "VLANId":{
+            "type": "number",
+            "minimum": 0,
+            "maximum": 4095
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."

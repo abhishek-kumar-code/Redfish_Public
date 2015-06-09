@@ -73,13 +73,13 @@
           <Annotation Term="OData.Description" String="This is the type of event to be added."/>
           <Annotation Term="OData.LongDescription" String="This defines the property name for which the following allowable values apply."/>
         </Parameter>
-        <Parameter Name="EventID" Type="Edm.String" Nullable="false">
+        <Parameter Name="EventId" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Description" String="This is the ID of event to be added."/>
-          <Annotation Term="OData.LongDescription" String="This property has the same semantics as the EventID property in the Event schema for Redfish."/>
+          <Annotation Term="OData.LongDescription" String="This property has the same semantics as the EventId property in the Event schema for Redfish."/>
         </Parameter>
         <Parameter Name="EventTimestamp" Type="Edm.DateTimeOffset" Nullable="false">
           <Annotation Term="OData.Description" String="This is the time stamp of event to be added."/>
-          <Annotation Term="OData.LongDescription" String="This property has the same semantics as the EventID property in the Event schema for Redfish."/>
+          <Annotation Term="OData.LongDescription" String="This property has the same semantics as the EventId property in the Event schema for Redfish."/>
         </Parameter>
         <Parameter Name="Severity" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Description" String="This is the Severity of event to be added."/>
@@ -89,9 +89,9 @@
           <Annotation Term="OData.Description" String="This is the human readable message of event to be added."/>
           <Annotation Term="OData.LongDescription" String="This property has the same semantics as the Message property in the Event schema for Redfish."/>
         </Parameter>
-        <Parameter Name="MessageID" Type="Edm.String" Nullable="false">
+        <Parameter Name="MessageId" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Description" String="This is the message ID of event to be added."/>
-          <Annotation Term="OData.LongDescription" String="This property has the same semantics as the MessageID property in the Event schema for Redfish."/>
+          <Annotation Term="OData.LongDescription" String="This property has the same semantics as the MessageId property in the Event schema for Redfish."/>
         </Parameter>
         <Parameter Name="MessageArgs" Type="Collection(Edm.String)" Nullable="false">
           <Annotation Term="OData.Description" String="This is the array of message arguments of the event to be added."/>

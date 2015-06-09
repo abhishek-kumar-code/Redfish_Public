@@ -3,12 +3,6 @@
     "title": "EventDestination.1.0.0",
     "$ref": "#/definitions/EventDestination",
     "definitions":{
-        "EventDestinationProtocol":{
-            "type": "string",
-            "enum": [
-                "Redfish"
-            ]
-        },
         "EventDestination":{
             "type": "object",
             "patternProperties": { 
@@ -83,6 +77,12 @@
                 {
                     "$ref": "#/definitions/EventDestination"
                 }
+            ]
+        },
+        "EventDestinationProtocol":{
+            "type": "string",
+            "enum": [
+                "Redfish"
             ]
         }
     },

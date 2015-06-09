@@ -53,7 +53,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the type of event as defined in the EventService schema."/>
           <Annotation Term="Redfish.Required"/>
         </Property>
-        <Property Name="EventID" Type="Edm.String" Nullable="false">
+        <Property Name="EventId" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a unique instance identifier of an event."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate a unique identifier for the event, the format of which is implementation dependent."/>
@@ -73,7 +73,7 @@
           <Annotation Term="OData.Description" String="This is the human readable message, if provided."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain an optional human readable message."/>
         </Property>
-        <Property Name="MessageID" Type="Edm.String" Nullable="false">
+        <Property Name="MessageId" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is the key for this message which can be used to look up the message in a message registry."/>
           <Annotation Term="OData.LongDescription" String="This property shall be a key into message registry as described in the Redfish specification."/>
