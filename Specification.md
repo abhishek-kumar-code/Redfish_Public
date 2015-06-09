@@ -1098,7 +1098,7 @@ An individual property within a JSON object can be annotated with extended infor
     "UserName@Message.ExtendedInfo" : [
 		{
 			"MessageID": "Base.1.0.0.PropertyNotWriteable",
-			"Properties": [
+			"RelatedProperties": [
 				"#/UserName"
 			],
            "Message": "The property UserName is a read only property and cannot be assigned a value",
@@ -1193,7 +1193,7 @@ Error responses are defined by an extended error resource, represented as a sing
         "@Message.ExtendedInfo": [
             {
                 "MessageID": "Base.1.0.0.PropertyValueNotInList",
-                "Properties": [ 
+                "RelatedProperties": [ 
 					"#/IndicatorLED" 
 				],
                 "Message": "The value Red for the property IndicatorLED is not in the list of acceptable values",
@@ -1206,7 +1206,7 @@ Error responses are defined by an extended error resource, represented as a sing
             },
             {
                 "MessageID": "Base.1.0.0.PropertyNotWriteable",
-                "Properties": [ 
+                "RelatedProperties": [ 
 					"#/SKU" 
 				],
                 "Message": "The property SKU is a read only property and cannot be assigned a value",
@@ -1230,7 +1230,7 @@ Messages are represented as a JSON object with the following properties:
 | ---                     | ---                                                                                                                                                                                    |
 | MessageID               | String indicating a specific error or message (not to be confused with the HTTP status code). This code can be used to access a detailed message from a message registry.              |
 | Message                 | A human readable error message indicating the semantics associated with the error. This shall be the complete message, and not rely on substitution variables.
-| Properties              | An optional array of JSON Pointers defining the specific properties within a JSON payload described by the message.                                                        |
+| RelatedProperties       | An optional array of JSON Pointers defining the specific properties within a JSON payload described by the message.                                                        |
 | MessageArgs             | An optional array of strings representing the substitution parameter values for the message. This shall be included in the response if a MessageID is specified for a parameterized message. 
 | Severity                | An optional string representing the severity of the error.
 | Resolution              | An optional string describing recommended action(s) to take to resolve the error.

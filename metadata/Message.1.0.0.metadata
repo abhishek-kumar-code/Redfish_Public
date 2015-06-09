@@ -26,7 +26,7 @@
           <Annotation Term="OData.Description" String="This is the human readable message, if provided."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain an optional human readable message."/>
         </Property>
-        <Property Name="Properties" Type="Collection(Edm.String)">
+        <Property Name="RelatedProperties" Type="Collection(Edm.String)">
           <Annotation Term="OData.Description" String="This is an array of properties described by the message."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain an array of JSON Pointers indicating the properties described by the message, if appropriate for the message."/>
         </Property>
