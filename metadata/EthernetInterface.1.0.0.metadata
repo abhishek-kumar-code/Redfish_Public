@@ -45,12 +45,12 @@
           <Annotation Term="OData.Description" String="This indicates whether this interface is enabled."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this interface is enabled."/>
         </Property>
-        <Property Name="PermanentMACAddress" Type="EthernetInterface.MacAddress">
+        <Property Name="PermanentMACAddress" Type="EthernetInterface.MACAddress">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is the MAC address assigned to this NIC at the factory."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the Permanent MAC Address of this interface."/>
         </Property>
-        <Property Name="MacAddress" Type="EthernetInterface.MacAddress">
+        <Property Name="MACAddress" Type="EthernetInterface.MACAddress">
           <Annotation Term="OData.Description" String="This is the MAC address of the logical port interface."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the effective current MAC Address of this interface.  If an assignable MAC address is not supported, this is a read only alias of the PermanentMACAddress."/>
         </Property>
@@ -126,8 +126,8 @@
         </NavigationProperty>
       </EntityType>
       
-      <!--Strongly typed property for MacAddress-->
-      <TypeDefinition Name="MacAddress" UnderlyingType="Edm.String">
+      <!--Strongly typed property for MACAddress-->
+      <TypeDefinition Name="MACAddress" UnderlyingType="Edm.String">
         <Annotation Term="Validation.Pattern" String="^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$"/>
       </TypeDefinition>
 
