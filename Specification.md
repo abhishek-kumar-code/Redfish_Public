@@ -1002,30 +1002,7 @@ A reference to a collection of zero or more related resources is returned as an 
 
 ##### OEM Property
 
-OEM-specific properties are nested under an [OEM property](#property-extensions). The name of the OEM property shall be "Oem" and its value shall be a JSON object whose properties represent OEM extensions.
-
-For example:
-
-```json
-{
-  "StandardProperty": "value",
-  "Oem": {
-    "Acme": {
-      "@odata.type": "http://acme.com/schema/extensions.v.v.v#acme.acmetype",
-      "AcmeSpecificProperty": "value"
-    },
-    "Acme:Type2": {
-      "@odata.type": "http://acme.com/schema/extensions.v.v.v#acme.acmetype2",
-      "AcmeSpecificProperty2": "value"
-    },
-    "EID:232": {
-      "@odata.type": "http://eid.org/schemas/eid232.v.v.v",
-      "EnterpriseSpecificProperty": "value"
-    }
-  }
-}
-```
-Contents of the Oem object must be valid JSON and must have a [type property](#type-property) per this specification. Any other requirements, validation or contents are beyond the scope of this specification.
+OEM-specific properties are nested under an [OEM property](#property-extensions).
 
 ##### Extended Information
 
@@ -1627,39 +1604,93 @@ The first parameter is called the "binding parameter" and specifies the resource
 
 #### Resource Extensibility
 
-Vendors can define additional [properties](#Property-Extensions), links, and [actions](#Custom-Actions) for common Redfish resources using the OEM property on resources, links, and actions. 
+Companies, OEMs, and other organizations can define additional [properties](#Property-Extensions), links, and [actions](#Custom-Actions) for common Redfish resources using the Oem property on resources, links, and actions. 
 
 While the information and semantics of these extensions are outside of the standard, the schema representing the data, the resource itself, and the semantics around the protocol shall conform to the requirements in this specification.
 
-##### Property Extensions 
+##### Oem Property 
 
-Resources contain a property called ["Oem"](#oem-property) whose value is an empty "OEM" [complex type](#sructured-type) defined for the resource. 
+In the context of this section, the term "OEM" refers to any company, manufacturer, or organization that is providing or defining an extension to the DMTF-published schema and functionality for Redfish. The base schema for Redfish-specified resources include an empty complex type property called "Oem" whose value can be used to encapsulate one or more OEM-specified complex properties. The Oem property in the standard Redfish schema is thus a pre-defined placeholder that is available for OEM-specific property definitions.
 
-~~~xml
-  <ComplexType Name="MyType.OEMType"/>
-~~~
-
-Vendor-specific information is defined in OEM-specific complex types. 
+Correct use of the Oem property requires defining the metadata for an OEM-specified complext type that can be referenced within the Oem property. The following fragment is an example of an XML schema that defines a pair of OEM-specific properties under the complex type "AnvilType1". (Other schema elements that would typically be present, such as XML and Odata schema description identifiers, are not shown in order to simplify the example).  
 
 ~~~xml
-<Schema Name="acme.v.v.v" Alias="acme">
-
-  <ComplexType Name="acmetype">
-    <Property Name="AcmeSpecificProperty" Type="Edm.String"/>
+<Schema Name="Contoso.v.v.v" Alias="contoso">
+. . .
+  <ComplexType Name="AnvilType1">
+    <Property Name="slogan" Type="Edm.String"/>
+    <Property Name="disclaimer" Type="Edm.String"/>
   </ComplexType>
-
+. . .
 </Schema>
 ~~~
 
-The OEM-specific types are exposed as dynamic properties of the root "OEM" type named using a unique OEM identifier that shall be either an ICANN-recognized domain name including the top-level domain suffix, or an IANA-assigned Enterprise ID prefaced with "EID:". Organizations using a '.com' top level domain may omit the suffix (e.g. ACME.com may use 'ACME', but ACME.org must use 'ACME.org' as their OEM property name).  This property name may be followed by a colon and any string to allow further namespacing of vendor objects.  
+The next fragment shows an example of how the previous schema and the "AnvilType1" property type might appear in the instantiation of an Oem property as the result of a GET on a resource. The example shows two required elements in the use of the Oem property: A name for the object and a type property for the object. Detailed requirements for these elements are provided in the following sections.
 
 ```json
-"Oem": {
-	"Acme": {
-		"@odata.type": "acme.v.v.v#acme.acmetype",
-		"AcmeSpecificProperty": "value"
-	}
-}
+. . .
+  "Oem": {
+    "Contoso": {
+      "@odata.type": "http://Contoso.com/schema/extensions.v.v.v#contoso.AnvilType1",
+      "slogan": "Contoso anvils never fail",
+      "disclaimer": "* Most of the time"
+    }
+  }
+. . .
+```
+
+##### Oem Property Format and Content
+
+OEM-specified objects that are contained within the [Oem property](#oem-property) must be valid JSON objects that follow the format of a Redfish[complex type](#structured-type). The name of the object (property) shall uniquely identify the OEM or organization that manages the top of the namespace under which the property is defined. This is described in more detail in the following section. The OEM-specified property shall also include a type property per this specification that provides the location of the schema and the type definition for the property within that schema. The Oem property can simultaneously hold multiple OEM-specified objects, including objects for more than one company or organization
+
+The definition of any other properties that are contained within the OEM-specific complex type, along with the functional specifications, validation, or other requirements for that content is OEM-specific and outside the scope of this specification. While there are no Redfish-specified limits on the size or complexity of the OEM-specified elements within an OEM-specified JSON object, it is intended that OEM properties will typically only be used for a small number of simple properties that augment the Redfish resource. If a large number of objects or a large quantity of data (compared to the size of the Redfish resource) is to be supported, the OEM should consider having the OEM-specified object point to a separate resource for their extensions.
+
+##### Oem Property Naming
+
+The OEM-specified objects within the Oem property are named using a unique OEM identifier for the top of the namespace under which the property is defined. There are two specified forms for the identifier. The identifier shall be either an ICANN-recognized domain name (including the top-level domain suffix), or an IANA-assigned Enterprise Number prefaced with "EID:".
+
+Organizations using '.com' domain names may omit the '.com' suffix (e.g. Contoso.com may use 'Contoso', but Contoso.org must use 'Contoso.org' as their OEM property name). The domain name portion of an OEM identifier shall be considered to be case independent. That is, the text "Contoso.biz", "contoso.BIZ", "conTOso.biZ", and so on, all identify the same OEM and top level namespace.
+
+The OEM identifier portion of the property name may be followed by a colon and any additional string to allow further namespacing of OEM-specified objects as desired by the OEM. E.g. "Contoso.com:xxxx" or "EID:412:xxxx". The form and meaning of any text that follows the colon is completely OEM-specific. OEM-specified extension suffixes may be case sensitive, depending on the OEM. Generic client software should treat such extensions, if present, as opaque and not attempt to parse nor interpret the content.
+
+There are many ways this suffix could be used, depending on OEM need. For example, the Contoso company may have a sub-organization "Research", in which case the OEM-specified property name might be extended to be "Contoso:Research". Alternatively, it could be used to identify a namespace for a functional area, geography, subsidiary, and so on.
+
+The OEM identifier portion of the name will typically identify the company or organization that created and maintains the schema for the property. However, this is not a requirement. The identifier is only required to uniquely identify the party that is the top-level manager of a namespace to prevent collisions between OEM property definitions from different vendors or organizations. Consequently, the organization for the top of the namespace may be different than the organization that provides the definition of the OEM-specified property. For example, Contoso may allow one of their customers, e.g. "CustomerA", to extend a Contoso product with certain CustomerA proprietary properties. In this case, although Contoso allocated the name "contosos:customers.CustomerA" it could be CustomerA that defines the content and functionality under that namespace. In all cases, OEM identifiers should not be used except with permission or as specified by the identified company or organization.
+
+#### Oem Property Examples
+The following fragment presents some examples of naming and use of the Oem property as it might appear when accessing a resource. The example shows that the OEM identifiers can be of different forms, that OEM-specified content can be simple or complex, and that the format and usage of extensions of the OEM identifier is OEM-specific.
+  
+
+```json
+. . . 
+
+  "Oem": {
+    "Contoso": {
+      "@odata.type": "http://contoso.com/schema/extensions.v.v.v#contoso.AnvilTypes1",
+      "slogan": "Contoso anvils never fail",
+      "disclaimer": "* Most of the time"
+    }
+    "Contoso.biz": {
+      "@odata.type": "http://contoso.biz/schemas/extension1.1#RelatedSpeed",
+      "speed" : "ludicrous"
+    }
+    "EID:412:ASB_123": {
+      "@odata.type": "http://AnotherStandardsBody/schemas.1.0.1#powerInfoExt",
+      "readingInfo": {
+        "readingAccuracy": "5",
+        "readingInterval": "20"
+      }
+    }
+    "Contoso:customers.customerA": {
+      "@odata.type" : "http://slingShots.customerA.com/catExt.2015#slingPower",
+      "AvailableTargets" : [ "rabbit", "duck", "runner" ],
+      "launchPowerOptions" : [ "low", "medium", "eliminate" ],
+      "powerSetting" : "eliminate",
+      "targetSetting" : "rabbit"
+    }
+  }
+. . .
+
 ```
 
 ##### Custom Actions
@@ -1669,7 +1700,7 @@ OEM-specific actions can be defined by defining actions bound to the OEM propert
 ~~~xml
 
   <Action Name="Ping" Isbound="true">
-    <Parameter Name="acmetype" Type="MyType.OEMActions"/>
+    <Parameter Name="ContosoType" Type="MyType.OEMActions"/>
   </Action>
 
 </Schema>
@@ -1680,8 +1711,8 @@ Such bound actions appear in the JSON payload as properties of the Oem type, nes
 ```json
 "Actions": {
 	"OEM": {
-		"acme.v.v.v#acme.Ping": {
-			    "target":"/redfish/v1/Systems/1/Actions/OEM/acme.Ping"
+		"Contoso.v.v.v#Contoso.Ping": {
+			    "target":"/redfish/v1/Systems/1/Actions/OEM/Contoso.Ping"
 		    }
 		}
 	}
