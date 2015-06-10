@@ -97,8 +97,8 @@ The following additional terms are used in this document.
 | Redfish Alert Receiver | The name for the functionality that receives alerts from a Redfish Service. This functionality is typically software running on a remote system that is separate from the managed system. |
 | Redfish Client | Name for the functionality that communicates with a Redfish Service and accesses one or more resources or functions of the Service. |
 | Redfish Protocol | The set of protocols that are used to discover, connect to, and inter-communicate with a Redfish Service. |
-| Redfish Schema    | The Schema definitions for Redfish resources.  It is defined according to OData Schema notation that can be directly translated to a JSON Schema representation. |
-| Redfish Service | Also referred to as the "Service". The collection of functionality that implements the protocols, resources, and functions that deliver an instantiation of a Redfish Schema and its associated behaviors for one or more managed systems.|
+| Redfish Schema    | The Schema definitions for Redfish resources.  It is defined according to OData Schema representation that can be directly translated to a JSON Schema representation. |
+| Redfish Service | Also referred to as the "Service". The collection of functionality that implements the protocols, resources, and functions that deliver the interface defined by this specification and its associated behaviors for one or more managed systems.|
 | Redfish Service Entry Point | Also referred to as "Service Entry Point". The interface through which a particular instance of a Redfish Service is accessed. A Redfish Service may have more than one Service Entry Point. |
 | Request        | A message from a Client to a Server.  It consists of a request line (which includes the Operation), request headers, an empty line and an optional message body. |
 | Resource       | A Resource is addressable by a URI and is able to receive and process messages. A Resource can be either an individual entity, or a collection that acts as a container for several other entities. |
@@ -130,7 +130,7 @@ The following additional abbreviations are used in this document.
 
 ## Overview
 
-The Redfish Scalable Platform Management API ("Redfish") is a management standard using a data model representation inside of a hypermedia RESTful interface.  Because it is based on REST, Redfish is easier to use and implement than many other solutions.  Since it is model oriented, it is capable of expressing the relationships between components in modern systems as well as the semantics of the services and components within them.  It is also easily extensible.  By using a hypermedia approach to REST, Redfish can express a large variety of systems from multiple vendors.  By requiring JSON representation, a wide variety of resources can be created in a denormalized fashion not only to improve scalability, but the payload can be easily interpreted by most programming environments as well as being relatively intuitive for a human examining the data.  The model is exposed in terms of an interoperable OData Schema, with the payload of the messages being expressed in JSON following OData JSON conventions. The schema (available in both XML and JSON formats) includes annotations to facilitate automatic translation of the schema to JSON Schema. The ability to externally host the Schema definition of the resources in a machine-readable format allows the meta data to be associated with the data without encumbering Redfish services with the meta data, thus enabling more advanced client scenarios as found in many data center and cloud environments.    
+The Redfish Scalable Platform Management API ("Redfish") is a management standard using a data model representation inside of a hypermedia RESTful interface.  Because it is based on REST, Redfish is easier to use and implement than many other solutions.  Since it is model oriented, it is capable of expressing the relationships between components in modern systems as well as the semantics of the services and components within them.  It is also easily extensible.  By using a hypermedia approach to REST, Redfish can express a large variety of systems from multiple vendors.  By requiring JSON representation, a wide variety of resources can be created in a denormalized fashion not only to improve scalability, but the payload can be easily interpreted by most programming environments as well as being relatively intuitive for a human examining the data.  The model is exposed in terms of an interoperable Redfish Schema, expressed in an OData Schema representation with translations to a JSON Schema representation, with the payload of the messages being expressed in a JSON following OData JSON conventions. The ability to externally host the Redfish Schema definition of the resources in a machine-readable format allows the meta data to be associated with the data without encumbering Redfish services with the meta data, thus enabling more advanced client scenarios as found in many data center and cloud environments.    
 
 ### Scope
 
@@ -138,7 +138,7 @@ The scope of this specification is to define the protocols, data model, and beha
 
 The specifications define elements that are mandatory for all Redfish implementations as well as optional elements that can be chosen by system vendor or manufacturer. The specifications also define points at which OEM (system vendor) -specific extensions can be provided by a given implementation.
 
-The specifications set normative requirements for Redfish services and associated materials, such as schema files. In general, the specifications do not set requirements for Redfish clients, but will indicate what a Redfish client should do in order to access and utilize a Redfish Service successfully and effectively.
+The specifications set normative requirements for Redfish services and associated materials, such as Redfish Schema files. In general, the specifications do not set requirements for Redfish clients, but will indicate what a Redfish client should do in order to access and utilize a Redfish Service successfully and effectively.
 
 The specifications do not set requirements that particular hardware or firmware must be used to implement the Redfish interfaces and functions.
 
@@ -203,11 +203,11 @@ With the popularity of RESTful APIs, there are nearly as many RESTful interfaces
 
 OData defines a set of common RESTful conventions and markup which, if adopted, provides for interoperability between APIs.
 
-Adopting OData conventions for describing schema, URL conventions, and naming and structure of common properties in a JSON payload, not only encapsulate best practices for RESTful APIs but further enables Redfish services to be consumed by a growing ecosystem of generic client libraries, applications, and tools.
+Adopting OData conventions for describing Redfish Schema, URL conventions, and naming and structure of common properties in a JSON payload, not only encapsulate best practices for RESTful APIs but further enables Redfish services to be consumed by a growing ecosystem of generic client libraries, applications, and tools.
 
 #### Model Oriented
 
-The Redfish model is built for managing systems. All resources are defined in OData Schema and represented in JSON format. OData is an industry standard that encapsulates best practices for RESTful services and provides interoperability across services of different types. JSON is being widely adopted in multiple disciplines and has a large number of tools and programming languages that accelerate development when adopting these approaches. 
+The Redfish model is built for managing systems. All resources are defined in OData Schema representation and translated to JSON Schema representation. OData is an industry standard that encapsulates best practices for RESTful services and provides interoperability across services of different types. JSON is being widely adopted in multiple disciplines and has a large number of tools and programming languages that accelerate development when adopting these approaches. 
 
 #### Separation of Protocol from Data Model
 
@@ -217,7 +217,7 @@ The protocol operations are specified independently of the data model.  The prot
 
 Like other hypermedia APIs, Redfish has a single service endpoint URI and all other resources are accessible via opaque URIs referenced from the root.  Any resource discovered through links found by accessing the root service or any service or resource referenced using references from the root service will conform to the same versions of the protocols supported by the root service. 
 
-Note that the ServiceRoot Schema places requirements on the last segment of the path for the URIs discoverable through the service root. 
+Note that the ServiceRoot Redfish Schema places requirements on the last segment of the path for the URIs discoverable through the service root. 
 
 ### Service Elements
 
@@ -243,7 +243,7 @@ Operations can be divided into two sets: intrinsic and extrinsic.  Intrinsic ope
 
 In Redfish, these extrinsic operations are called **actions** and are discussed in detail in different parts of this specification.
 
-The Redfish Schema defines certain standard actions associated with [common Redfish resources](#common-Redfish-resources).  For these standard actions, the Redfish Schema contains the normative language on the behavior of the action.  OEM extensions are also allowed to the [schema](#schema-extensibility), including defining [actions](#custom-actions) for existing resources.
+The Redfish Schema defines certain standard actions associated with [common Redfish resources](#common-Redfish-resources).  For these standard actions, the Redfish Schema contains the normative language on the behavior of the action.  OEM extensions are also allowed to the Redfish [schema](#schema-extensibility), including defining [actions](#custom-actions) for existing resources.
 
 #### Service Entry Point Discovery
 
@@ -261,7 +261,7 @@ The challenge with security in a remote interface that is programmatic is to ens
 
 ## Protocol Details
 
-The Redfish Scalable Platform Management API is based on REST and follows OData conventions for interoperability, as defined in [OData-Protocol](#OData-Protocol), JSON payloads, as defined in [OData-JSON](#OData-JSON), and a machine-readable representation of schema, as defined in [OData-Schema](#OData-CSDL). The schemas include annotations to enable direct translation to JSON Schema for validation and consumption by tools supporting JSON Schema. Following these common standards and conventions increases interoperability and enables leveraging of existing tool chains.
+The Redfish Scalable Platform Management API is based on REST and follows OData conventions for interoperability, as defined in [OData-Protocol](#OData-Protocol), JSON payloads, as defined in [OData-JSON](#OData-JSON), and a machine-readable representation of schema, as defined in [OData-Schema](#OData-CSDL). The OData Schema representations include annotations to enable direct translation to JSON Schema representations for validation and consumption by tools supporting JSON Schema. Following these common standards and conventions increases interoperability and enables leveraging of existing tool chains.
  
 Redfish follows the OData minimal conformance level for clients consuming minimal metadata.
 
@@ -388,13 +388,13 @@ The format of the ETag header is:
 
 ### Protocol Version
 
-The protocol version is separate from the version of the resources or the version of the schema supported by them.
+The protocol version is separate from the version of the resources or the version of the Redfish Schema supported by them.
 
 Each version of the Redfish protocol is strongly typed.  This is accomplished using the URI of the Redfish service in combination with the resource obtained at that URI, called the ServiceRoot. 
 
 The root URI for this version of the Redfish protocol shall be "/redfish/v1/".
 
-While the major version of the protocol is represented in the URI, the major version, minor version and errata version of the protocol are represented in the Version property of the ServiceRoot resource, as defined in the Schema for that resource.  The protocol version is a string of the form: 
+While the major version of the protocol is represented in the URI, the major version, minor version and errata version of the protocol are represented in the Version property of the ServiceRoot resource, as defined in the Redfish Schema for that resource.  The protocol version is a string of the form: 
 
 *MajorVersion*.*MinorVersion*.*Errata*
 
@@ -605,9 +605,9 @@ where
 
 The first parameter of a bound function is the resource on which the action is being invoked. The remaining parameters are represented as name/value pairs in the body of the request.
 
-Clients can query a resource directly to determine the [actions](#actions-property) that are available as well as [valid parameter values](#allowable-values) for those actions.  Some parameter information may require the client to examine the schema corresponding to the resource. 
+Clients can query a resource directly to determine the [actions](#actions-property) that are available as well as [valid parameter values](#allowable-values) for those actions.  Some parameter information may require the client to examine the Redfish Schema corresponding to the resource. 
 
-For instance, if a schema document `http://schemas.dmtf.org/redfish/v1/ComputerSystem.<%= DocVersion %>` defines a Reset action, in the `ComputerSystem.<%= DocVersion %>` namespace, with the alias "ComputerSystem", bound to the `ComputerSystem.Actions` type, such as this example:
+For instance, if a Redfish Schema document `http://schemas.dmtf.org/redfish/v1/ComputerSystem.<%= DocVersion %>` defines a Reset action, in the `ComputerSystem.<%= DocVersion %>` namespace, with the alias "ComputerSystem", bound to the `ComputerSystem.Actions` type, such as this example:
 
 ~~~xml
 <Schema Name="ComputerSystem.<%= DocVersion %>" Alias="ComputerSystem">
@@ -755,7 +755,7 @@ The service metadata describes top-level resources and resource types of the ser
 </edmx:Edmx>
 ~~~
 
-The service metadata shall include the namespaces for each of the DMTF resource types, along with the "RedfishExtensions.<%= DocVersion %>" namespace. These references may use the standard Uri for the hosted schema definitions (i.e., on http://dmtf.org/schema) or a Url to a local version of the schema that shall be identical to the hosted version. The namespace shall be aliased with the version-independent namespace name.
+The service metadata shall include the namespaces for each of the DMTF resource types, along with the "RedfishExtensions.<%= DocVersion %>" namespace. These references may use the standard Uri for the hosted Redfish Schema definitions (i.e., on http://dmtf.org/schema) or a Url to a local version of the Redfish Schema that shall be identical to the hosted version. The namespace shall be aliased with the version-independent namespace name.
 
 ~~~xml
 <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ServiceRoot.<%= DocVersion %>">
@@ -801,7 +801,7 @@ The service can annotate sets, types, actions and parameters with Redfish-define
 </edmx:Reference>
 ~~~
 	
-The annotation file itself specifies the Target schema element being annotated, the Term being applied, and the value of the term:
+The annotation file itself specifies the Target Redfish Schema element being annotated, the Term being applied, and the value of the term:
 
 ~~~xml
 <Annotations Target="ComputerSystem.Reset/ResetType">
@@ -882,7 +882,7 @@ Where:
 
 ###### Select List
 
-If a response contains a subset of the properties defined in the schema for a type, then the context URL shall specify the subset of properties included. An asterix (*) can be used to specify "all structural properties" for a given resource.
+If a response contains a subset of the properties defined in the Redfish Schema for a type, then the context URL shall specify the subset of properties included. An asterix (*) can be used to specify "all structural properties" for a given resource.
 
 Expanded [reference properties](#reference-properties) shall be included in the select list if the result includes a subset of the properties defined for the expanded resource.
 
@@ -896,7 +896,7 @@ For example, the following context URL specifies that the result contains a sing
 
 Resources in a response shall include a unique identifier property named "@odata.id". The value of the identifier property shall be the [unique identifier](#URIs) for the resource.
 
-Resource Identifiers shall be represented in JSON payloads as uri paths relative to the schema portion of the uri. That is, they shall always start with "/redfish/".
+Resource Identifiers shall be represented in JSON payloads as uri paths relative to the Redfish Schema portion of the uri. That is, they shall always start with "/redfish/".
 	
 The resource identifier is the canonical URL for the resource and can be used to retrieve or edit the resource, as appropriate.
 
@@ -907,7 +907,7 @@ All resources in a response shall include a type property named "@odata.type". T
  **#*Namespace*.*TypeName*
  
 Where: 
-* *Namespace* = The full namespace name of the schema in which the type is defined. For Redfish resources this will be the versioned namespace name. 
+* *Namespace* = The full namespace name of the Redfish Schema in which the type is defined. For Redfish resources this will be the versioned namespace name. 
 * *TypeName* = The name of the type of the resource.
 	
 The client may issue a GET request to this URL using a content type of `application/xml` in order to retrieve a document containing the [definition of the resource](#resource-definition).
@@ -945,11 +945,11 @@ DateTime values shall be returned as JSON strings according to the ISO 8601 "ext
 
 ##### Structured Properties
 
-Structured properties, defined as [complex types](#structured-types) or [expanded](#expand-resources) [resource types](#resource-type-definitions), are returned as JSON objects. The type of the JSON object is specified in schema definition of the property containing the structured value.
+Structured properties, defined as [complex types](#structured-types) or [expanded](#expand-resources) [resource types](#resource-type-definitions), are returned as JSON objects. The type of the JSON object is specified in the Redfish Schema definition of the property containing the structured value.
 
 ##### Collection Properties
 
-Collection-valued properties are returned as JSON arrays, where each element of the array is a JSON object whose type is specified in the schema document describing the containing type.
+Collection-valued properties are returned as JSON arrays, where each element of the array is a JSON object whose type is specified in the Redfish Schema document describing the containing type.
 
 Collection-valued properties may contain a subset of the members of the full collection. In this case, the collection-valued property shall be annotated with a next link property. The property representing the next link shall be a peer of the collection-valued property, with the name of the collection-valued property suffixed with "@odata.nextLink". The value of the next link property shall be an opaque URL that the client can use to retrieve the next set of collection members. The next link property shall only be present if the number of resources requested is greater than the number of resources returned.
 
@@ -968,10 +968,10 @@ Actions are represented by a property nested under "Actions" whose name is the u
   **#*NamespaceAlias*.*ActionName*
  
 Where: 
-* *NamespaceAlias* = The namespace alias used in the reference to the schema in which the action is defined. For Redfish resources this shall be the version-independent namespace alias. 
+* *NamespaceAlias* = The namespace alias used in the reference to the Redfish Schema in which the action is defined. For Redfish resources this shall be the version-independent namespace alias. 
 * *ActionName* = The name of the action
 
-The client may issue a GET request to this URL using a content type of `application/xml` in order to retrieve the schema document containing the [definition of the action](#resource-actions).
+The client may issue a GET request to this URL using a content type of `application/xml` in order to retrieve the Redfish Schema document containing the [definition of the action](#resource-actions).
 
 The value of the property is a JSON object containing a property named "target" whose value is a relative or absolute URL used to invoke the action.
 
@@ -1013,7 +1013,7 @@ The set of allowable values is specified by including a property whose name is t
 
 [References](#reference-properties) to other resources are represented by the links property on the resource. 
 
-The links property shall be named "Links" and shall contain a property for each reference property defined in the schema for that type. For single-valued reference properties, the value of the property shall be the [single related resource id](#reference-to-a-single-related-resource). For collection-valued reference properties, the value of the property shall be the [array of related resource ids](#array-of-references-to-related-resources).
+The links property shall be named "Links" and shall contain a property for each reference property defined in the Redfish Schema for that type. For single-valued reference properties, the value of the property shall be the [single related resource id](#reference-to-a-single-related-resource). For collection-valued reference properties, the value of the property shall be the [array of related resource ids](#array-of-references-to-related-resources).
 
 The links property shall also include an [Oem property](#oem-property) for navigating vendor-specific links.
  
@@ -1283,7 +1283,7 @@ The message registry approach has advantages for internationalization (since the
 
 One of the key tenants of the Redfish interface is the separation of protocol and data model.  This section describes common data model, resource, and Redfish Schema requirements.
 
-* Each resource shall be strongly typed according to a [resource type definition](#resource-type-definition). The type shall be defined in a [schema document](#schema-documents) and identified by a unique [type identifier](#type-identifier).
+* Each resource shall be strongly typed according to a [resource type definition](#resource-type-definition). The type shall be defined in a Redfish [schema document](#schema-documents) and identified by a unique [type identifier](#type-identifier).
 
 ### Type Identifiers
 
@@ -1320,7 +1320,7 @@ NOTE: Refer to the [Security](#security) section for security implications of Da
 
 ### Common Naming Conventions
 
-The Redfish interface is intended to be easily readable and intuitive.  Thus, consistency helps the consumer who is unfamiliar with a newly discovered property understand its use.  While this is no substitute for the normative information in the specification and schema, the following rules help with readability and client usage. 
+The Redfish interface is intended to be easily readable and intuitive.  Thus, consistency helps the consumer who is unfamiliar with a newly discovered property understand its use.  While this is no substitute for the normative information in the Redfish Specification and Redfish Schema, the following rules help with readability and client usage. 
 
 Resource Name, Property Names, and constants such as Enumerations shall be Pascal-cased
 * The first letter of each word shall be upper case with spaces between words shall be removed  (eg PowerState, SerialNumber.)
@@ -1348,7 +1348,7 @@ Property names are never localized.
 
 ### Schema Definition
 
-Individual resources and their dependent types and actions are defined within a [schema document](#schema-documents).
+Individual resources and their dependent types and actions are defined within a Redfish [schema document](#schema-documents).
 
 #### Common Annotations
 
@@ -1356,21 +1356,21 @@ All Redfish types and properties shall include [description](#description) and [
 
 ##### Description
 
-The Description annotation can be applied to any type, property, action or parameter in order to provide a human-readable description of the schema element.
+The Description annotation can be applied to any type, property, action or parameter in order to provide a human-readable description of the Redfish Schema element.
 
 The `Description` annotation is defined in http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Core.V1.xml.
 
 ##### Long Description
 
-The LongDescription annotation term can be applied to any type, property, action or parameter in order to provide a formal specification of the schema element.
+The LongDescription annotation term can be applied to any type, property, action or parameter in order to provide a formal, normative specification of the schema element.
 
 The `LongDescription` annotation term is defined in http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Core.V1.xml.
 
 #### Schema Documents
 
-Individual resources are defined as entity types within a schema document according to [OData-Schema](#OData-CSDL). The representation may include annotations to facilitate automatic generation of JSON Schema capable of validating JSON payloads.
+Individual resources are defined as entity types within a Odata Schema representation of the Redfish Schema according to [OData-Schema](#OData-CSDL). The representation may include annotations to facilitate automatic generation of JSON Schema representation of the Redfish Schema capable of validating JSON payloads.
 
-The outer element of the schema document shall be the `Edmx` element, and shall have a `Version` attribute with a value of "4.0".
+The outer element of the Odata Schema representation document shall be the `Edmx` element, and shall have a `Version` attribute with a value of "4.0".
 
 ~~~xml
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
@@ -1380,11 +1380,11 @@ The outer element of the schema document shall be the `Edmx` element, and shall 
 
 ##### Referencing other Schemas
 
-Schemas may reference types defined in other schema documents by including a `Reference` element. 
+Redfish Schemas may reference types defined in other schema documents.  In the OData Schema representation, this is done by including a `Reference` element. In the JSON Schema representation, this is done with a $ref property. 
 
-The reference element specifies the `Uri` of the schema document describing the referenced type and has one or more child `Include` elements that specify the `Namespace` attribute containing the types to be referenced, along with an optional `Alias` attribute for that namespace.
+The reference element specifies the `Uri` of the Odata schema representation document describing the referenced type and has one or more child `Include` elements that specify the `Namespace` attribute containing the types to be referenced, along with an optional `Alias` attribute for that namespace.
 
-Type definitions generally reference the OData and DMTF namespaces for common type annotation terms, and resource type definitions reference the DMTF Resource.<%= DocVersion %> namespace for base types. Schemas that include measures such as temperature, speed, or dimensions generally include the [OData Measures namespace](#OData-Measures). 
+Type definitions generally reference the OData and DMTF namespaces for common type annotation terms, and resource type definitions reference the DMTF Resource.<%= DocVersion %> namespace for base types. Redfish OData Schema representations that include measures such as temperature, speed, or dimensions generally include the [OData Measures namespace](#OData-Measures). 
 
 ~~~xml
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
@@ -1404,9 +1404,9 @@ Type definitions generally reference the OData and DMTF namespaces for common ty
 
 ##### Namespace Definitions
 
-Resource types are defined within a namespace. The namespace is defined through a `Schema` element that contains attributes for declaring the `Namespace` and local `Alias` for the schema. 
+Resource types are defined within a namespace in the OData Schema representations. The namespace is defined through a `Schema` element that contains attributes for declaring the `Namespace` and local `Alias` for the schema. 
 
-The Schema element is a child of the `DataServices` element, which is a child of the [Edmx](#schema-documents) element.
+The Odata Schema element is a child of the `DataServices` element, which is a child of the [Edmx](#schema-documents) element.
 
 ~~~xml
   <edmx:DataServices>
@@ -1756,7 +1756,7 @@ Because [service annotations](#annotations) may be applied to existing resource 
 
 This section contains a set of common properties across all Redfish resources. The property names in this section shall not be used for any other purpose, even if they are not implemented in a particular resource.
 
-Common properties are defined in the base Resource.<%= DocVersion %>.Resource schema.
+Common properties are defined in the base Resource Redfish Schema.  For OData Schema Representations, this is in Resource.<%= DocVersion %>.Resource and for JSON Schema Representations, this is in Resource.<%= DocVersion %>.json.
 
 #### Id
 
@@ -1782,7 +1782,10 @@ The value of the status property is a common status object type as defined by th
 
 #### Links
 
-The [Links property](#links-property) represents the links associated with the resource, as defined by that resources schema definition. All reference properties defined for a resource shall be nested under the links property.
+The [Links property](#links-property) represents the links associated with the resource, as defined by that resources schema definition. All associated reference properties defined for a resource shall be nested under the links property.  All directly (subordinate) referenced properties defined for a resource shall be in the root of the resource.
+
+#### RelatedItem
+The [RelatedItem property](#relatedItem-property) represents links to a resource (or part of a resource) as defined by that resources schema definition. This is not intended to be a strong linking methodology like other references.  Instead it is used to show a relationship between elements or sub-elements in disparate parts of the service.  For example, since Fans may be in one area of the implementation and processors in another, RelatedItem can be used to inform the client that one is related to the other (in this case, the Fan is cooling the processor).
                                                                                                                                                                        
 #### Actions
 
@@ -1843,7 +1846,7 @@ Service resources represent components of the Redfish Service itself as well as 
 
 #### Registry
 
-Registry resources are those resources that assist the client in interpreting Redfish resources beyond the Schema definitions.  Examples of registries include Message Registries, Event Registries and enumeration registries, such as those used for BIOS.  In registries, a identifier is used to retrieve more information about a given resource, event, message or other item.  This can include other properties, property restrictions and the like.  Registries are themselves resources.
+Registry resources are those resources that assist the client in interpreting Redfish resources beyond the Redfish Schema definitions.  Examples of registries include Message Registries, Event Registries and enumeration registries, such as those used for BIOS.  In registries, a identifier is used to retrieve more information about a given resource, event, message or other item.  This can include other properties, property restrictions and the like.  Registries are themselves resources.
 
 ### Special Resource Situations
 
@@ -1855,7 +1858,7 @@ Resources may be either absent or their state unknown at the time a client reque
 
 #### Schema Variations
 
-There are cases when deviations from the published schema are necessary.  An example is BIOS where different servers may have minor variations in available configuration settings.  A provider may build a single schema that is a superset of the individual implementations.  In order to support these variations, Redfish supports omitting parameters defined in the class schema in the current configuration object.  The following rules apply:
+There are cases when deviations from the published Redfish Schema are necessary.  An example is BIOS where different servers may have minor variations in available configuration settings.  A provider may build a single schema that is a superset of the individual implementations.  In order to support these variations, Redfish supports omitting parameters defined in the class schema in the current configuration object.  The following rules apply:
 
 * All Redfish services must support attempts to set unsupported configuration elements in the Setting Data by marking them as exceptions in the Setting Data Apply status structure, but not failing the entire configuration operation.
 * The support of a specific property in a resource is signaled by the presence of that property in the Current Configuration object.  If the element is missing from Current Configuration, the client may assume the element is not supported on that resource.
@@ -1889,7 +1892,7 @@ NOTE: Refer to the [Security](#security) section for security implications of Ev
 
 #### Event Message Subscription
 
-The client locates the eventing service through traversing the Redfish service interface.  When the eventing service has been discovered, clients subscribe to messages by sending a HTTP POST to the URL of the collection for subscriptions in the Eventing Service for which they are requesting events. This should be found off of the root service as described in the schema for that service.  
+The client locates the eventing service through traversing the Redfish service interface.  When the eventing service has been discovered, clients subscribe to messages by sending a HTTP POST to the URL of the collection for subscriptions in the Eventing Service for which they are requesting events. This should be found off of the root service as described in the Redfish Schema for that service.  
 
 The specific syntax of the subscription body is found in the Redfish Schema. 
 
@@ -1918,7 +1921,7 @@ where
 
 To unsubscribe from the messages associated with this subscription, the client or administrator simply sends an HTTP DELETE request to the subscription resource URI.
 
-These are some configurable properties that are global settings that define the behavior for all event subscriptions. See the properties defined in the EventService schema for details of the parameters available to configure the service’s behavior.
+These are some configurable properties that are global settings that define the behavior for all event subscriptions. See the properties defined in the EventService Redfish Schema for details of the parameters available to configure the service’s behavior.
 
 ### Asynchronous Operations
 
@@ -2254,7 +2257,7 @@ The Authorization subsystem uses Roles and Privileges to control which users hav
   - A privilege is a permission to perform an operation (e.g. Read, Write) within a defined management domain (e.g. Configuring Users).  
   - The Redfish specification defines a set of "assigned privileges" in the AssignedPrivileges array in the Role resource.
   - An implementation may also include "OemPrivileges" which are then specified in an OemPrivileges array in the Role resource.
-  - Privileges are mapped to resources using the privilege mapping annotations defined in the Privileges schema file.
+  - Privileges are mapped to resources using the privilege mapping annotations defined in the Privileges Redfish Schema file.
   - Multiple privileges in the mapping constitute an OR of the privileges.
 
 * User Management:
@@ -2271,15 +2274,15 @@ The Authorization subsystem uses Roles and Privileges to control which users hav
 
 #### Schema
 
-Server and Client implementations should check supplied data against schema and perform data validation checks to prevent vulnerabilities caused by later processing errors. 
+Server and Client implementations should check supplied data against Redfish Schema and perform data validation checks to prevent vulnerabilities caused by later processing errors. 
 
-When there is a disagreement between a Server and Client on schema validation, the server may enforce its version and reject the request.
+When there is a disagreement between a Server and Client on Redfish Schema validation, the server may enforce its version and reject the request.
 
-Clients shall NOT perform data interpolation unless the schema permits that.
+Clients shall NOT perform data interpolation unless the Redfish Schema permits that.
 
-Privileges should NOT be modified without a strong security related requirement. Schema validation shall include privilege checks when privilege requirements have been modified. 
+Privileges should NOT be modified without a strong security related requirement. Redfish Schema validation shall include privilege checks when privilege requirements have been modified. 
 
-NOTE: Privilege changes as part of schema updates/ changes shall be captured in the schema change log.
+NOTE: Privilege changes as part of Redfish Schema updates/changes shall be captured in the Redfish Schema change log.
 
 Idempotent actions shall be rejected when there is a security reason to do so.
 
