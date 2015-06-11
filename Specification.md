@@ -677,7 +677,7 @@ HTTP defines headers that can be used in response messages.  The following table
 | Cache-Control               | Yes       | [RFC 2616, Section 14.9][2616-14.9]   | This header shall be supported and is meant to indicate whether a response can be cached or not.                                                                                                                                    |
 | Via                         | No       | [RFC 2616, Section 14.45][2616-14.45] | Indicates network hierarchy and recognizes message loops. Each pass inserts its own VIA.                                                                                                                                                                                                                                |
 | Max-Forwards                | No       | [RFC 2616, Section 14.31][2616-14.31] | Limits gateway and proxy hops. Prevents messages from remaining in the network indefinitely.                                                                                                                                                                                                                            |
-| Link                        | No       | [RFC 5988, Section 5][5988-5]         | Exposes additional metadata about response object.  Shall only be returned in response to a HEAD operation.                                                                                                                                                                                                             |
+| <a id="link-header-table"></a>Link                        | No       | [RFC 5988, Section 5][5988-5]         | Exposes additional metadata about response object. See [Link Header](#link-header).  |
 | Access-Control-Allow-Origin | Yes      | [W3C CORS, Section 5.1][cors-5.1]     | Prevents or allows requests based on originating domain. Used to prevent CSRF attacks.                                                                                                                                                                                                                                  |
 | Allow                       | Yes      | POST, PUT, PATCH, DELETE              | Returned on GET or HEAD operation to indicate the other allowable operations for this resource.  Shall be returned with a 405 (Method Not Allowed) response to indicate the valid methods for the specified Request URI.                                                                                                                                                                                                                          |
 | WWW-Authenticate            | Yes      | [RFC 2617][2617]                      | Required for Basic and other optional authentication mechanisms. See the [Security][#Security] section for details.                                                                                                                                                                                                     |
@@ -911,6 +911,17 @@ Where:
 * *TypeName* = The name of the type of the resource.
 	
 The client may issue a GET request to this URL using a content type of `application/xml` in order to retrieve a document containing the [definition of the resource](#resource-definition).
+
+##### Link Header
+
+The [Link header](#link-header-table) provides metadata information on the
+accessed resource in response to a HEAD or GET operation. The `rel` type of the
+link shall be the `@odata.type` of the referenced resource. In addition to
+links from the resource, the JSON schema of the resource shall be returned with
+a `rel=describedby`.
+
+Link header(s) shall be returned on HEAD and a Link header satisifying
+`rel=describedby` shall be returned on GET.
 
 ##### ETag Property
 
