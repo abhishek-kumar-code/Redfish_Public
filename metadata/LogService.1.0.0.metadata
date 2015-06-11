@@ -23,6 +23,10 @@
       <EntityType Name="LogService" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This resource represents the log service for the resource or service to which it is associated."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a log service for a Redfish implementation."/>
+        <Property Name="ServiceEnabled" Type="Edm.Boolean">
+          <Annotation Term="OData.Description" String="This indicates whether this service is enabled."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this service is enabled."/>
+        </Property>
         <Property Name="MaxNumberOfRecords" Type="Edm.Int64" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The maximum number of log entries this service can have."/>
