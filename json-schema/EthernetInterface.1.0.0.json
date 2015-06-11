@@ -103,20 +103,20 @@
                 "PermanentMACAddress": {
                     "$ref": "#/definitions/MACAddress",
                     "readonly": true,
-                    "description": "This is the MAC address assigned to this NIC at the factory.",
-                    "longDescription": "The value of this property shall be the Permanent MAC Address of this interface."
+                    "description": "This is the permanent MAC address assigned to this interface (port).",
+                    "longDescription": "The value of this property shall be the Permanent MAC Address of this interface (port). This value is typically programmed during the manufacturing time. This address is not assignable."
                 },
                 "MACAddress": {
                     "$ref": "#/definitions/MACAddress",
-                    "description": "This is the MAC address of the logical port interface.",
-                    "longDescription": "The value of this property shall be the effective current MAC Address of this interface.  If an assignable MAC address is not supported, this is a read only alias of the PermanentMACAddress."
+                    "description": "This is the currently configured MAC address of the (logical port) interface.",
+                    "longDescription": "The value of this property shall be the effective current MAC Address of this interface. If an assignable MAC address is not supported, this is a read only alias of the PermanentMACAddress."
                 },
                 "SpeedMbps": {
                     "type": [
                         "number",
                         "null"
                     ],
-                    "description": "This is the current speed in Mbps of this NIC.",
+                    "description": "This is the current speed in Mbps of this interface.",
                     "longDescription": "The value of this property shall be the link speed of the interface in Mbps."
                 },
                 "AutoNeg": {
@@ -124,24 +124,24 @@
                         "boolean",
                         "null"
                     ],
-                    "description": "This indicates if the speed and duplex is automatically configured by the NIC.",
-                    "longDescription": "The value of this property shall be true of AutoNeg of speed and duplex is enabled and false if it is disabled."
+                    "description": "This indicates if the speed and duplex is automatically negotiated and configured on this interface.",
+                    "longDescription": "The value of this property shall be true if auto negotiation of speed and duplex is enabled on this interface and false if it is disabled."
                 },
                 "FullDuplex": {
                     "type": [
                         "boolean",
                         "null"
                     ],
-                    "description": "This indicates if the NIC is in Full Duplex mode or not.",
-                    "longDescription": "The value of this property shall be the connection duplex status."
+                    "description": "This indicates if the interface is in Full Duplex mode or not.",
+                    "longDescription": "The value of this property shall represent the duplex status of the Ethernet connection on this interface."
                 },
                 "MTUSize": {
                     "type": [
                         "number",
                         "null"
                     ],
-                    "description": "This is the currently configured MTU size in bytes on this Ethernet interface.",
-                    "longDescription": "The value of this property shall be the Ethernet (MAC) frame size in bytes."
+                    "description": "This is the currently configured Maximum Transmission Unit (MTU) in bytes on this Ethernet interface.",
+                    "longDescription": "The value of this property shall be the size of largest Protocol Data Unit (PDU) that can be passed in an Ethernet (MAC) frame on this interface."
                 },
                 "HostName": {
                     "type": [
@@ -264,13 +264,14 @@
                         ]
                     },
                     "readonly": true,
-                    "longDescription": "The value of this property shall be the DNS name servers for this interface."
+                    "description": "This represents DNS name servers that are currently in use on this interface.",
+                    "longDescription": "The value of this property shall be the DNS name servers used on this interface."
                 },
                 "VLANs": {
                     "$ref": "http://schemas.dmtf.org/redfish/v1/VLanNetworkInterfaceCollection.1.0.0.json#/definitions/VLanNetworkInterfaceCollection-ref",
                     "readonly": true,
-                    "description": "This is a reference to a collection of VLANs and is only used if the NIC supports more than one VLAN.",
-                    "longDescription": "The value of this property shall reference a collection of VLAN resources.  If this property is used, the VLANEnabled and VLANId property shall not be used."
+                    "description": "This is a reference to a collection of VLANs and is only used if the interface supports more than one VLANs.",
+                    "longDescription": "The value of this property shall reference a collection of VLAN resources. If this property is used, the VLANEnabled and VLANId property shall not be used."
                 }
             },
             "description": "This schema defines a simple ethernet NIC resource.",
