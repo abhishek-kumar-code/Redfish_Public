@@ -2066,32 +2066,7 @@ Implementations shall support replacement of the default certificate if one is p
 
 	Services may implement other authentication mechanisms. 
 
-* Default Credentials 
 
-	Services should NOT implement default credentials for any account installed on the spec compliant device, with a well known password.
-
-* Password Complexity
-	
-	A Redfish device shall support a set of configurable password complexity rules, should include length, character set
-	
-	When an authentication failure occurs a Redfish device shall NOT provide password complexity requirements to the user
-	
-* Account Lockout
-
-	A Redfish implementations should revoke login privilege after a configurable number of authentication failures
-
-* Authentication Failure Delays
-	
-	A Redfish device shall implement progressive authentication attempt  
-
-* Authentication Failure Policy
-
-	A Redfish device shall implement configurable options to manage login behavior when user authentication failures occur
-		- Number of failures
-		- Time between failures
-		- Increments between progressive delays
-		- Specific actions which happen automatically when failure events occur
-		- Time since last failed authentication attempt 
 
 #### HTTP Header Security
 * All write activities shall be authenticated, i.e. POST, PUT/PATCH, and DELETE, except for 
