@@ -915,13 +915,12 @@ The client may issue a GET request to this URL using a content type of `applicat
 ##### Link Header
 
 The [Link header](#link-header-table) provides metadata information on the
-accessed resource in response to a HEAD or GET operation. The `rel` type of the
-link shall be the `@odata.type` of the referenced resource. In addition to
+accessed resource in response to a HEAD or GET operation. In addition to
 links from the resource, the URL of the JSON schema of the resource shall be
 returned with a `rel=describedby`.
 
 Link header(s) shall be returned on HEAD and a Link header satisifying
-`rel=describedby` shall be returned on GET.
+`rel=describedby` shall be returned on GET and HEAD.
 
 ##### ETag Property
 
