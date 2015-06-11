@@ -41,6 +41,9 @@
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/MessageRegistry.1.0.0">
     <edmx:Include Namespace="MessageRegistry.1.0.0" Alias="MessageRegistry"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/SessionCollection.1.0.0">
+    <edmx:Include Namespace="SessionCollection.1.0.0" Alias="SessionCollection"/>
+  </edmx:Reference>
   
   <edmx:DataServices>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ServiceRoot.1.0.0" Alias="ServiceRoot">
@@ -56,6 +59,7 @@
         <Singleton Name="EventService" Type="EventService.EventService"/>
         <Singleton Name="Registries" Type="MessageRegistry.MessageRegistry"/>
         <Singleton Name="JsonSchemas" Type="JsonSchemas.JsonSchemas"/>
+        <Singleton Name="Sessions" Type="SessionCollection.SessionCollection"/>
       </EntityContainer>
 
       <!-- This object contains top-level properties of the Redfish service. -->
@@ -127,7 +131,21 @@
           <Annotation Term="OData.LongDescription" String="This object shall only contain a reference to a collection of resources that comply to the SchemaFile schema where the files are Json-Schema files."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
+        <Property Name="Links" Type="ServiceRoot.Links" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="The links object contains the links to other resources that are related to this resource."/>
+          <Annotation Term="Redfish.Required"/>
+        </Property>     
       </EntityType>
+      
+      <ComplexType Name="Links" BaseType="Resource.Links">
+        <NavigationProperty Name="Sessions" Type="SessionCollection.SessionCollection)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="Link to a collection of Sessions"/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the link to a collection of Sessions."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>  
+      </ComplexType>
       
     </Schema>
   </edmx:DataServices>

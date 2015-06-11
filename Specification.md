@@ -2165,7 +2165,7 @@ includes orphaned session timeout and number of simultaneous open sessions.
 
 ##### Redfish Login Sessions
 
-For functionality requiring multiple Redfish operations, a client may create a Redfish Login Session via the session management interface.  The URI used for session management is specified in the /redfish resource with the property "SessionService".
+For functionality requiring multiple Redfish operations, or for security reasons, a client may create a Redfish Login Session via the session management interface.  The URI used for session management is specified in the Session Service.  The URI for establishing a session can be found in the SessionService's Session property or in the Service Root's Links Section under the Sessions property.  Both URIs shall be the same. 
 
 ```json
 {
@@ -2173,16 +2173,21 @@ For functionality requiring multiple Redfish operations, a client may create a R
     "SessionService": {
         "@odata.id": "/redfish/v1/SessionService"
     },
+    "Links": {
+        "Sessions": {
+            "@odata.id": "/redfish/v1/SessionService/Sessions"
+        }
+    },
     ...
 }
 ```
 
 ##### Session Login 
 
-A Redfish session is created by an HTTP POST to the SessionService/Sessions resource, including the following POST body:
+A Redfish session is created by an HTTP POST to the SessionService' Sessions collection resource, including the following POST body:
 
 ```
-POST /redfish/v1/Sessions HTTP/1.1
+POST /redfish/v1/SessionService/Sessions HTTP/1.1
 Host: <hostpath>
 Accept: application/json
 Content-Type: charset=utf-8
@@ -2202,7 +2207,7 @@ The response to the POST request to create a session includes:
 *  a "Location header that contains a link to the newly created session resource.
 *  The JSON response body that contains a full representation of the newly created session object:  
 ```
-    POST /redfish/v1/Sessions HTTP/1.
+    POST /redfish/v1/SessionService/Sessions HTTP/1.
     Content-Type: application/json
     Content-Length: <computed length>
     OData-Version: 4.0
