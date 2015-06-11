@@ -120,7 +120,7 @@ class Utilities:
         try:
             filelocation = url.rfind("/")
             if(filelocation > 0):
-                filename=url[filelocation+1:] + ".metadata"
+                filename=url[filelocation+1:]
             else:
                 filename=url
 

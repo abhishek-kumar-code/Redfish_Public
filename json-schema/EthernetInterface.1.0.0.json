@@ -3,50 +3,6 @@
     "title": "EthernetInterface.1.0.0",
     "$ref": "#/definitions/EthernetInterface",
     "definitions":{
-        "IPv6AddressPolicyEntry":{
-            "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
-                    "description": "This property shall specify a valid odata or redfish property."
-                }
-            },
-            "additionalProperties": false,
-            "properties": {
-                "Prefix": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "description": "The IPv6 Address Prefix (as defined in RFC 3484 section 2.1)",
-                    "longDescription": "This property shall contain the IPv6 Address Prefix for this table entry as defined in RFC 3484 section 2.1."
-                },
-                "Precedence": {
-                    "type": [
-                        "number",
-                        "null"
-                    ],
-                    "description": "The IPv6 Precedence (as defined in RFC 3484 section 2.1",
-                    "longDescription": "This property shall contain the IPv6 Precedence value for this table entry as defined in RFC 3484 section 2.1.",
-                    "minimum": 1,
-                    "maximum": 100
-                },
-                "Label": {
-                    "type": [
-                        "number",
-                        "null"
-                    ],
-                    "description": "The IPv6 Label (as defined in RFC 3484 section 2.1)",
-                    "longDescription": "This property shall contain the IPv6 Label value for this table entry as defined in RFC 3484 section 2.1.",
-                    "minimum": 0,
-                    "maximum": 100
-                }
-            }
-        },
-        "MACAddress":{
-            "type": "string",
-            "pattern": "^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$"
-        },
         "EthernetInterface":{
             "type": "object",
             "patternProperties": { 
@@ -285,6 +241,50 @@
                     "$ref": "#/definitions/EthernetInterface"
                 }
             ]
+        },
+        "IPv6AddressPolicyEntry":{
+            "type": "object",
+            "patternProperties": { 
+                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+                    "type": ["array", "boolean", "number", "null", "object", "string"],
+                    "description": "This property shall specify a valid odata or redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Prefix": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "The IPv6 Address Prefix (as defined in RFC 3484 section 2.1)",
+                    "longDescription": "This property shall contain the IPv6 Address Prefix for this table entry as defined in RFC 3484 section 2.1."
+                },
+                "Precedence": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "description": "The IPv6 Precedence (as defined in RFC 3484 section 2.1",
+                    "longDescription": "This property shall contain the IPv6 Precedence value for this table entry as defined in RFC 3484 section 2.1.",
+                    "minimum": 1,
+                    "maximum": 100
+                },
+                "Label": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "description": "The IPv6 Label (as defined in RFC 3484 section 2.1)",
+                    "longDescription": "This property shall contain the IPv6 Label value for this table entry as defined in RFC 3484 section 2.1.",
+                    "minimum": 0,
+                    "maximum": 100
+                }
+            }
+        },
+        "MACAddress":{
+            "type": "string",
+            "pattern": "^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$"
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."

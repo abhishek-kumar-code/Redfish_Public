@@ -3,21 +3,6 @@
     "title": "VirtualMedia.1.0.0",
     "$ref": "#/definitions/VirtualMedia",
     "definitions":{
-        "MediaType":{
-            "type": "string",
-            "enum": [
-                "CD",
-                "Floppy",
-                "USBStick",
-                "DVD"
-            ],
-            "enumDescriptions": {
-                "CD": "A CD-ROM format (ISO) image",
-                "Floppy": "A floppy disk image",
-                "USBStick": "An emulation of a USB storage device",
-                "DVD": "A DVD-ROM format image"
-            }
-        },
         "ConnectedVia":{
             "type": "string",
             "enum": [
@@ -142,6 +127,21 @@
                     "$ref": "#/definitions/VirtualMedia"
                 }
             ]
+        },
+        "MediaType":{
+            "type": "string",
+            "enum": [
+                "CD",
+                "Floppy",
+                "USBStick",
+                "DVD"
+            ],
+            "enumDescriptions": {
+                "CD": "A CD-ROM format (ISO) image",
+                "Floppy": "A floppy disk image",
+                "USBStick": "An emulation of a USB storage device",
+                "DVD": "A DVD-ROM format image"
+            }
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."

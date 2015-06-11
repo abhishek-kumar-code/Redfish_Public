@@ -95,7 +95,7 @@ class JsonSchemaGenerator:
         if root_namespace == current_typedata["Namespace"]:
             refvalue = "#/definitions/" + simplename
         else:
-            refvalue = current_typedata["Url"] + "#/definitions/" + simplename
+            refvalue = current_typedata["JsonUrl"] + "#/definitions/" + simplename
 
         return refvalue
 
@@ -922,7 +922,7 @@ class JsonSchemaGenerator:
                 output = self.generate_json_for_propertybag(typetable, typedata, depth, namespace, prefixuri, isnullable, in_definitions_block)
             else:
                 simplename = typename[typename.rfind(".") + 1 :]
-                output = UT.Utilities.indent(depth) + "\"@odata.id\": \"" + typedata["Url"] + "#" + simplename + "\""
+                output = UT.Utilities.indent(depth) + "\"@odata.id\": \"" + typedata["JsonUrl"] + "#" + simplename + "\""
                 return output
 
         elif typetype == "TypeDefinition":
@@ -995,27 +995,26 @@ class JsonSchemaGenerator:
             current_file_typetable = {}
             namespace = ""
             alias = ""
-            #all_complex_types = True 
             for schema in dataservices.iter("{http://docs.oasis-open.org/odata/ns/edm}Schema"):
                 namespace = schema.attrib["Namespace"]
                 alias = namespace
 
                 if "Alias" in schema.attrib.keys():
                     alias = schema.attrib["Alias"]
+
+                suffix = url.rfind("/")+1
+                jsonurl = url[:suffix] + namespace + ".json"
  
                 typekinds = ["EntityType", "ComplexType", "TypeDefinition", "EnumType", "Action"]
 
                 for typekind in typekinds:
                     for typedata in schema.iter("{http://docs.oasis-open.org/odata/ns/edm}" + typekind):
-                        # If we were able to get here it means there was atleast one EntityType
-                        #if typekind == "EntityType":
-                        #    all_complex_types = False
 
                         # Populate data related to the type
                         typename = typedata.attrib["Name"]
                         typeentry = {}
                         typeentry["TypeType"] = typekind
-                        typeentry["Url"] = url + ".json"
+                        typeentry["JsonUrl"] = jsonurl 
                         typeentry["Namespace"] = namespace
                         typeentry["Alias"] = alias
                         typeentry["Name"] = typename
@@ -1204,6 +1203,10 @@ class JsonSchemaGenerator:
         output = ''
         outputs = {}
         filename = JsonSchemaGenerator.extract_filenamefrom_url(filename)
+        suffix = filename.rfind(".xml")
+        if suffix > 0:
+            filename = filename[:suffix]
+        filename = filename + "." + JsonSchemaGenerator.schema_version
         output = self.generate_definition_block(typetable, depth, isnullable, namespace, prefixuri)
         # Put it in a list as the function that will generate file/output on screen expects it to come out as a list.
         outputs = {filename : output}
@@ -1240,7 +1243,6 @@ class JsonSchemaGenerator:
     ##########################################################################################################
     @staticmethod
     def geneate_json_files(jsonresults):
-
         screenoutput = ''
         depth = 0
 
@@ -1315,13 +1317,13 @@ class JsonSchemaGenerator:
                 incorrect_url = True
 
         #hack to deal emulate parse logic -- todo: fix parse logic
-        elif url.endswith(".metadata"):
+        elif url.endswith(".xml"):
             prefixuri =  schemaLocation
-            lastindex = url.find(".metadata")
-            filename=url[:lastindex]
+            lastindex = url.find(".xml")
+            filename=url
             result.update({'filename' : prefixuri + filename})
             result.update({'prefixuri' : prefixuri})
-            result.update({'namespace' : filename})
+            result.update({'namespace' : filename[:lastindex] + ".1.0.0"})
 
         if incorrect_url == True:
             result.update({'error' : 'Incorrect URL - Please specify a URL like:\n 1. http://<filename>#<namespace> or \n 2. http://<filename>#<datatype>\n e.g. http://localhost:9080/rest/v1/schemas.dmtf.org/redfish/v1/Chassis#Chassis.Chassis'})
@@ -1377,7 +1379,7 @@ def main():
 		                
     elif (directory != ""):
          for file in os.listdir(directory):
-             if ( file.endswith(".metadata") ):
+             if ( file.endswith(".xml") ):
                print("generating JSON for: " + file)
                JsonSchemaGenerator.parsed = []
                generate_json(file, directory)          
