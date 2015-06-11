@@ -1,6 +1,6 @@
 {
     "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0",
-    "title": "ExtendedInfo.1.0.0",
+    "title": "ExtendedError.1.0.0",
     "type": "object",
     "additionalProperties": false,
     "description": "This is the schema definition for the Extended Error.  Extended errors can be returned in the body of operation responses.  They augment the HTTP error codes with more meaningful information about why the error occurred.",
@@ -25,7 +25,7 @@
                 "@Message.ExtendedInfo": {
 		    "type": "array",
 		    "items": {
-			"$ref": "Message.1.0.0#/definitions/Message"
+			"$ref": "Message.1.0.0.json#/definitions/Message"
 		    },
 		    "longDescription": "The value of this resource shall be an array of Message objects used to describe one or more conditions related to the request."
 		}
