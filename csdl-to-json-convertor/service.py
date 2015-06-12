@@ -40,9 +40,10 @@ if enable_debugging == True:
 #   Defines constants used in the script                                      #
 ###############################################################################
 
-schemaLocation = "http://schemas.dmtf.org/redfish/v1/"
-odataSchema = schemaLocation + "odata.4.0.0.json"
-redfishSchema = schemaLocation + "redfish-schema.1.0.0.json"
+schemaLocation = "http://schemas.dmtf.org/redfish/" 
+schemaBaseLocation = schemaLocation + "base/"
+odataSchema = schemaLocation + "v1/odata.4.0.0.json"
+redfishSchema = schemaLocation + "v1/redfish-schema.1.0.0.json"
 
 ###############################################################################
 # Name: Scenario                                                              #
@@ -91,11 +92,12 @@ class JsonSchemaGenerator:
         current_typedata = typetable[current_typename]
         simplename = current_typename[current_typename.rfind(".") + 1 :]
 
+#todo: fix logic to be more generic post-v1
         # If the current type is defined in this namespace
         if root_namespace == current_typedata["Namespace"]:
             refvalue = "#/definitions/" + simplename
         else:
-            refvalue = current_typedata["JsonUrl"] + "#/definitions/" + simplename
+            refvalue = schemaBaseLocation + current_typedata["Alias"] + ".json#/definitions/" + simplename
 
         return refvalue
 
@@ -208,6 +210,28 @@ class JsonSchemaGenerator:
                 return True
 
         return False
+
+    ##########################################################################
+    # Name: has_basetype                                                     # 
+    # Description:                                                           #
+    #  Returns True if the type has the specified base type n its hierarchy. #
+    ##########################################################################
+    def has_basetype(self, type, basetype):
+
+        # does it have the base type anywhere in it's hierarchy?
+        while True:
+            if "BaseType" in type["Node"].attrib.keys():
+                basetypename = type["Node"].attrib["BaseType"]
+                if basetypename == basetype:
+                    return True
+                else:
+                    type = typetable[basetypename]
+            else:
+                break
+
+        # by default, types allow additional properties
+        return True
+
 
     ##########################################################################
     # Name: allows_additional_properties                                     # 
@@ -658,15 +682,13 @@ class JsonSchemaGenerator:
                             current_typename = JsonSchemaGenerator.extract_underlyingtype_from_collectiontype(attribtype)
 
                             # Get the reference value
+                            simplename = current_typename[current_typename.rfind(".") + 1 :]
+                            alias = typetable[current_typename]["Alias"]
                             refvalue = JsonSchemaGenerator.get_ref_value_for_type(typetable, current_typename, namespace)
-                            if(termvalue != "OData.AutoExpand"):
-                                refvalue += "-ref"
                             output += UT.Utilities.indent(depth+3)+ "\"$ref\": \"" + refvalue + "\"\n"
                             output += UT.Utilities.indent(depth+2) + "}"
                         else:
                             refvalue = JsonSchemaGenerator.get_ref_value_for_type(typetable, attribtype, namespace)
-                            if(termvalue != "OData.AutoExpand"):
-                                refvalue += "-ref"
                             output += UT.Utilities.indent(depth+2)+ "\"$ref\": \"" + refvalue + "\""
 
 					# Handle regular property
@@ -935,32 +957,29 @@ class JsonSchemaGenerator:
         # Emit type annotations
         output += self.emit_annotations(typetable, namespace, typedata["Node"], depth, prefixuri, isnullable, ignoreannotations)
 
-        #write out reference
-		#todo: improve this logic (post-v1)
-        if typetype == "EntityType" and namespace == typedata["Namespace"] and (typedata["BaseType"] == "Resource.Resource" or typedata["Name"] == "Item" or typedata["Name"] == "ReferenceableMember" ):
-            output += self.generate_referencetype(typedata["Name"],JsonSchemaGenerator.get_ref_value_for_type(typetable, typename, namespace), depth-1)
-
         return output
 
     ################################################################################
-    # Name: generate_referencetype                                                 #
+    # Name: generate_json_for_reference_type                                       #
     # Description:                                                                 #
-    #  generates a type for a reference to the specified type                      #
+    #  generates a json payload for an unversioned reference to the specified type #
     ################################################################################
-    def generate_referencetype(self, typename, typereference, depth):
+    def generate_json_for_reference_type(self, typename, schemaname, prefixuri, depth):
 
-        output = "\n"
-        output += UT.Utilities.indent(depth) + "},\n"
-        output += UT.Utilities.indent(depth) + "\""+ typename + "-ref\": { \n"
-        output += UT.Utilities.indent(depth+1) + "\"oneOf\": [ \n"
-        output += UT.Utilities.indent(depth+2) + "{\n"
-        output += UT.Utilities.indent(depth+3) + "\"$ref\": \"" + odataSchema + "#/definitions/idRef\"\n"
-        output += UT.Utilities.indent(depth+2) + "},\n"
-        output += UT.Utilities.indent(depth+2) + "{\n"
-        output += UT.Utilities.indent(depth+3) + "\"$ref\": \"" + typereference + "\"\n"
-        output += UT.Utilities.indent(depth+2) + "}\n"
-        output += UT.Utilities.indent(depth+1) + "]"
-
+        output = UT.Utilities.indent(depth) + "\"$ref\": \"#/definitions/" + schemaname + "\",\n"
+        output += UT.Utilities.indent(depth) + "\"definitions\": {\n"
+        output += UT.Utilities.indent(depth+1) + "\""+ schemaname + "\": { \n"
+        output += UT.Utilities.indent(depth+2) + "\"oneOf\": [ \n"
+        output += UT.Utilities.indent(depth+3) + "{\n"
+        output += UT.Utilities.indent(depth+4) + "\"$ref\": \"" + odataSchema + "#/definitions/idRef\"\n"
+        output += UT.Utilities.indent(depth+3) + "},\n"
+        output += UT.Utilities.indent(depth+3) + "{\n"
+        output += UT.Utilities.indent(depth+4) + "\"$ref\": \"" + prefixuri + typename + ".json\"\n"
+        output += UT.Utilities.indent(depth+3) + "}\n"
+        output += UT.Utilities.indent(depth+2) + "]\n"
+        output += UT.Utilities.indent(depth+1) + "}\n"
+        output += UT.Utilities.indent(depth) + "}"
+  
         return output
 
     ################################################################################
@@ -1002,8 +1021,7 @@ class JsonSchemaGenerator:
                 if "Alias" in schema.attrib.keys():
                     alias = schema.attrib["Alias"]
 
-                suffix = url.rfind("/")+1
-                jsonurl = url[:suffix] + namespace + ".json"
+                jsonurl = schemaBaseLocation + alias + ".json"
  
                 typekinds = ["EntityType", "ComplexType", "TypeDefinition", "EnumType", "Action"]
 
@@ -1134,8 +1152,12 @@ class JsonSchemaGenerator:
                                     output += ",\n"
                                     output += definition_block
 
-                            keyname = JsonSchemaGenerator.current_schema_classname + "." + JsonSchemaGenerator.schema_version
+                            schemaname = JsonSchemaGenerator.current_schema_classname
+                            keyname = schemaname + "." + JsonSchemaGenerator.schema_version
                             outputs[keyname] = output
+
+							# generate reference type
+                            outputs[schemaname] = self.generate_json_for_reference_type(keyname,schemaname,prefixuri,depth)
 
         return outputs
 
