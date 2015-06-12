@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><!-- Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.--> 
+<?xml version="1.0" encoding="UTF-8"?><!-- Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.-->
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
 
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
@@ -11,34 +11,47 @@
     <edmx:Include Namespace="Resource.1.0.0" Alias="Resource"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/LogService.xml">
-    <edmx:Include Namespace="LogService.1.0.0" Alias="LogService"/>
+    <edmx:Include Namespace="LogService"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Thermal.xml">
-    <edmx:Include Namespace="Thermal.1.0.0" Alias="Thermal"/>
+    <edmx:Include Namespace="Thermal"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Power.xml">
-    <edmx:Include Namespace="Power.1.0.0" Alias="Power"/>
+    <edmx:Include Namespace="Power"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Manager.xml">
-    <edmx:Include Namespace="Manager.1.0.0" Alias="Manager"/>
+    <edmx:Include Namespace="Manager"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ComputerSystem.xml">
-    <edmx:Include Namespace="ComputerSystem.1.0.0" Alias="ComputerSystem"/>
+    <edmx:Include Namespace="ComputerSystem"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/LogServiceCollection.xml">
-    <edmx:Include Namespace="LogServiceCollection.1.0.0" Alias="LogServiceCollection"/>
+    <edmx:Include Namespace="LogServiceCollection"/>
   </edmx:Reference>
-  
+
   <edmx:DataServices>
 
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.1.0.0" Alias="Chassis">
-
-      <!-- This schema defines a chassis and its respective properties. -->
- 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis">
+      
       <EntityType Name="Chassis" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition for the Chassis resource.  It represents the properties for physical components for any system.  This one object is intended to represent racks, rackmount servers, blades, standalone, modular systems, enclosures, and all other containers.  The non-cpu/device centric parts of the schema are all accessed either directly or indirectly through this resource."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a chassis or other physical enclosure for a Redfish implementation."/>
-        <Property Name="ChassisType" Nullable="false" Type="Chassis.ChassisType">
+      </EntityType>
+
+      <EntityType Name="ChassisCollection" BaseType="Resource.ResourceCollection">
+        <NavigationProperty Name="Members" Type="Collection(Chassis.Chassis)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+      </EntityType>
+
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.1.0.0">
+
+      <EntityType Name="Chassis" BaseType="Chassis.Chassis">
+        <Property Name="ChassisType" Nullable="false" Type="Chassis.1.0.0.ChassisType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This property indicates the type of physical form factor of this resource."/>
           <Annotation Term="OData.LongDescription" String="ChassisType shall indicate the physical form factor for the type of chassis."/>
@@ -73,15 +86,15 @@
           <Annotation Term="OData.Description" String="The user assigned asset tag for this chassis."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an identifying string used to track the chassis for inventory purposes."/>
         </Property>
-        <Property Name="IndicatorLED" Type="Chassis.IndicatorLED">
+        <Property Name="IndicatorLED" Type="Chassis.1.0.0.IndicatorLED">
           <Annotation Term="OData.Description" String="The state of the indicator LED, used to identify the chassis."/>
           <Annotation Term="OData.LongDescription" String="This value of this property shall contain the indicator light state for the indicator light associated with this system."/>
         </Property>
-        <Property Name="Links" Type="Chassis.Links" Nullable="false">
+        <Property Name="Links" Type="Chassis.1.0.0.Links" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The links object contains the links to other resources that are related to this resource."/>
         </Property>
-        <Property Name="Actions" Type="Chassis.Actions" Nullable="false">
+        <Property Name="Actions" Type="Chassis.1.0.0.Actions" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The Actions object contains the available custom actions on this resource."/>
         </Property>
@@ -91,7 +104,7 @@
           <Annotation Term="OData.Description" String="A reference to the logs for this chassis."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type LogServiceCollection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>    
+        </NavigationProperty>
         <NavigationProperty Name="Thermal" Type="Thermal.Thermal" ContainsTarget="true">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="A reference to the thermal properties (fans, cooling, sensors) for this chassis."/>
@@ -149,7 +162,7 @@
         <Annotation Term="OData.AdditionalProperties" Bool="False"/>
         <Property Name="Oem" Type="Chassis.OemActions"/>
       </ComplexType>
-      
+
       <ComplexType Name="OemActions">
         <Annotation Term="OData.AdditionalProperties" Bool="True"/>
       </ComplexType>
@@ -164,7 +177,7 @@
         <Annotation Term="OData.Description" String="This action is used to reset the system."/>
         <Annotation Term="OData.LongDescription" String="This defines the name of the custom action supported on this resource."/>
       </Action>
-      
+
       <!-- These are all supported Chassis types. -->
       <EnumType Name="ChassisType">
         <Member Name="Rack">
@@ -216,7 +229,7 @@
           <Annotation Term="OData.Description" String="A small, typically removable, chassis or card which contains devices for a particular subsystem or function"/>
         </Member>
         <Member Name="Component">
-           <Annotation Term="OData.Description" String="A small chassis, card, or device which contains devices for a particular subsystem or function"/>
+          <Annotation Term="OData.Description" String="A small chassis, card, or device which contains devices for a particular subsystem or function"/>
         </Member>
         <Member Name="Other">
           <Annotation Term="OData.Description" String="A chassis that does not fit any of these definitions"/>
@@ -238,7 +251,7 @@
           <Annotation Term="OData.Description" String="The Indicator LED is off."/>
         </Member>
       </EnumType>
-     
+
     </Schema>
   </edmx:DataServices>
 </edmx:Edmx>

@@ -12,15 +12,21 @@
     <edmx:Include Namespace="Resource.1.0.0" Alias="Resource"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Event.xml">
-    <edmx:Include Namespace="Event.1.0.0" Alias="Event"/>
+    <edmx:Include Namespace="Event"/>
   </edmx:Reference>
   
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventDestination.1.0.0" Alias="EventDestination">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventDestination">
 
       <!-- This schema defines destination for events and its respective properties. -->
-      
+
       <EntityType Name="EventDestination" BaseType="Resource.Resource">
+      </EntityType>
+    </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventDestination.1.0.0">
+      
+      <EntityType Name="EventDestination" BaseType="EventDestination.EventDestination">
         <Property Name="Destination" Type="Edm.String" Nullable="false">
           <Annotation Term="Redfish.RequiredOnCreate"/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
@@ -38,7 +44,7 @@
           <Annotation Term="OData.Description" String="A client-supplied string that is stored with the event destination subscription."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain a client supplied context that will remain with the connection through the connections lifetime."/>
         </Property>
-        <Property Name="Protocol" Type="EventDestination.EventDestinationProtocol" Nullable="false">
+        <Property Name="Protocol" Type="EventDestination.1.0.0.EventDestinationProtocol" Nullable="false">
           <Annotation Term="Redfish.RequiredOnCreate"/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The protocol type of the event connection."/>

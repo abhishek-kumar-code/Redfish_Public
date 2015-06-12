@@ -12,24 +12,31 @@
     <edmx:Include Namespace="Resource.1.0.0" Alias="Resource"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/LogEntry.xml">
-    <edmx:Include Namespace="LogEntry.1.0.0" Alias="LogEntry"/>
+    <edmx:Include Namespace="LogEntry"/>
   </edmx:Reference>
 
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogService.1.0.0" Alias="LogService">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogService">
 
       <!-- This resource represents the log service for the resource or service to which it is associated. -->
 
       <EntityType Name="LogService" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This resource represents the log service for the resource or service to which it is associated."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a log service for a Redfish implementation."/>
+      </EntityType>
+      
+    </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogService.1.0.0">
+
+      <EntityType Name="LogService" BaseType="LogService.LogService">
         <Property Name="MaxNumberOfRecords" Type="Edm.Int64" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The maximum number of log entries this service can have."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the maximum numbers of LogEntry resources in the Entries collection for this service."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
         </Property>
-        <Property Name="OverWritePolicy" Type="LogService.OverWritePolicy" Nullable="false">
+        <Property Name="OverWritePolicy" Type="LogService.1.0.0.OverWritePolicy" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The overwrite policy for this service that takes place when the log is full."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the policy of the log service when the MaxNumberOfRecords has been reached. Unknown indicates the log overwrite policy is unknown. WrapsWhenFull indicates that the log overwrites its entries with new entries when the log has reached its maximum capacity. NeverOverwrites indicates that the log never overwrites its entries by the new entries and ceases logging when the limit has been reached."/>
@@ -51,7 +58,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall reference a collection of resources of type LogEntry."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>        
-        <Property Name="Actions" Type="LogService.Actions" Nullable="false">
+        <Property Name="Actions" Type="LogService.1.0.0.Actions" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The Actions object contains the available custom actions on this resource."/>
         </Property>
@@ -60,7 +67,7 @@
 
       <ComplexType Name="Actions">
         <Annotation Term="OData.AdditionalProperties" Bool="False"/>
-        <Property Name="Oem" Type="LogService.OemActions" Nullable="false"/>
+        <Property Name="Oem" Type="LogService.1.0.0.OemActions" Nullable="false"/>
       </ComplexType>
       
       <ComplexType Name="OemActions">
@@ -80,7 +87,7 @@
       </EnumType>
 
       <Action Name="ClearLog" IsBound="true">
-        <Parameter Name="LogService" Type="LogService.Actions"/>
+        <Parameter Name="LogService" Type="LogService.1.0.0.Actions"/>
       </Action>
 
     </Schema>

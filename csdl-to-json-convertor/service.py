@@ -42,7 +42,7 @@ if enable_debugging == True:
 
 schemaLocation = "http://schemas.dmtf.org/redfish/" 
 schemaBaseLocation = schemaLocation + "base/"
-odataSchema = schemaLocation + "v1/odata.4.0.0.json"
+odataSchema = schemaBaseLocation + "odata.4.0.0.json"
 redfishSchema = schemaLocation + "v1/redfish-schema.1.0.0.json"
 
 ###############################################################################
@@ -186,6 +186,7 @@ class JsonSchemaGenerator:
     #################################################################
     def is_inline_type(self, type):
 
+        #todo: use "has_basetype" post-v1
         if(type["BaseType"] != "Resource.Links" and type["Name"] != "Actions" and type["Name"] != "OemActions"):
             return True;
 
@@ -216,7 +217,7 @@ class JsonSchemaGenerator:
     # Description:                                                           #
     #  Returns True if the type has the specified base type n its hierarchy. #
     ##########################################################################
-    def has_basetype(self, type, basetype):
+    def has_basetype(self, typetable, type, basetype):
 
         # does it have the base type anywhere in it's hierarchy?
         while True:
@@ -225,12 +226,16 @@ class JsonSchemaGenerator:
                 if basetypename == basetype:
                     return True
                 else:
-                    type = typetable[basetypename]
+                    if basetypename == type["Namespace"] + "." + type["Name"]:
+                        print("Circular Reference Error in base type of " + basetypename )
+                        return False
+                    else:
+                       type = typetable[basetypename]
             else:
                 break
 
         # by default, types allow additional properties
-        return True
+        return False
 
 
     ##########################################################################
@@ -351,7 +356,7 @@ class JsonSchemaGenerator:
         for typevalue in typevalues:
             typetype = typevalue["TypeType"]
             # Make sure that the type belongs to the base file for which the conversion is required i.e. IsFromRefUri = False
-            if ( typetype == "EntityType" and typevalue["IsFromRefUri"] == False and ( typevalue["BaseType"] == "Resource.Resource" or typevalue["BaseType"] == "Resource.ResourceCollection") ):
+            if ( typetype == "EntityType" and typevalue["IsFromRefUri"] == False and ( self.has_basetype(typetable, typevalue, "Resource.Resource") or self.has_basetype(typetable,typevalue,"Resource.ResourceCollection") ) ):
                 try :
                     # If this type has been parsed already do nothing
                     index = visitedTypes.index(typevalue["Name"])
@@ -629,7 +634,7 @@ class JsonSchemaGenerator:
         firstproperty = True
 
         # Generate special properties for EntityType
-        if typedata["TypeType"] == "EntityType" and typedata["BaseType"] != "Resource.ReferenceableMember":
+        if typedata["TypeType"] == "EntityType" and not self.has_basetype(typetable, typedata, "Resource.ReferenceableMember"):
             output += self.get_json_for_special_properties("@odata.context", depth, prefixuri)
             output += ",\n"
             output += self.get_json_for_special_properties("@odata.id", depth, prefixuri)
@@ -1138,7 +1143,7 @@ class JsonSchemaGenerator:
                         parsedtypes.append(typedata["Name"] + ":" + currentNamespace)
                         output = ""
                         # Check if the type being processed is derived from Resource.ReferenceableMember
-                        if ( typedata["BaseType"] == "Resource.Resource" or typedata["BaseType"] == "Resource.ResourceCollection" ): 
+                        if ( self.has_basetype(typetable, typedata, "Resource.Resource" ) or self.has_basetype(typetable, typedata, "Resource.ResourceCollection") ): 
                             JsonSchemaGenerator.current_schema_classname = JsonSchemaGenerator.get_typename_without_namespace(currentType)
 
                             # Generate Json for the type
@@ -1492,4 +1497,4 @@ def generate_json(url, directory):
 
 if __name__ == "__main__":
     result = main()
-   # print(result)
+    #print(result)

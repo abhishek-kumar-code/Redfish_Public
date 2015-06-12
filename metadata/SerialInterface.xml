@@ -12,7 +12,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SerialInterface.1.0.0" Alias="SerialInterface">
 
       <!-- This is the schema definition for the Serial Interface. -->
-      <EntityType Name="SerialInterfaceCollection" BaseType="Resource.SerialInterfaceCollection">
+      <EntityType Name="SerialInterfaceCollection" BaseType="Resource.ResourceCollection">
         <NavigationProperty Name="Members" Type="Collection(SerialInterface.SerialInterface)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Contains the members of this collection."/>

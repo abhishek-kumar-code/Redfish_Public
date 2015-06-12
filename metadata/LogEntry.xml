@@ -10,14 +10,21 @@
   </edmx:Reference>
   
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogEntry.1.0.0" Alias="LogEntry">
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogEntry">
 
       <!-- This schema defines a log entry and its respective properties. -->
-         
+
       <EntityType Name="LogEntry" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This resource represents the log record format for logs.  It is designed to be used for SEL logs from IPMI as well as Event Logs and OEM specific logs.  The EntryType field indicates the type of log and there are other properties dependent on it's value."/>
         <Annotation Term="OData.LongDescription" String="This resource shall represent the log format for log services in a Redfish implementation."/>
-        <Property Name="Severity" Type="LogEntry.EventSeverity">
+      </EntityType>
+    </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogEntry.1.0.0">
+         
+      <EntityType Name="LogEntry" BaseType="LogEntry.LogEntry">
+        <Property Name="Severity" Type="LogEntry.1.0.0.EventSeverity">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is the severity of the log entry."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the severity of the condition resulting in the log entry, as defined in the Status section of the Redfish specificaiton."/>
@@ -27,7 +34,7 @@
           <Annotation Term="OData.Description" String="The time the log entry was created."/>
 		  <Annotation Term="OData.LongDescription" String="The value of this property shall be the time at which the log entry was created."/>
         </Property>
-        <Property Name="EntryType" Type="LogEntry.LogEntryType" Nullable="false">
+        <Property Name="EntryType" Type="LogEntry.1.0.0.LogEntryType" Nullable="false">
           <Annotation Term="Redfish.RequiredOnCreate"/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="his is the type of log entry."/>
@@ -39,12 +46,12 @@
           <Annotation Term="OData.Description" String="If the entry type is Oem, this will contain more information about the record format from the Oem."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the OEM specific format of the Entry.  This property shall be required if the value of EntryType is Oem"/>
         </Property>
-        <Property Name="EntryCode" Type="LogEntry.LogEntryCode">
+        <Property Name="EntryCode" Type="LogEntry.1.0.0.LogEntryCode">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="If the EntryType is SEL, this will have the entry code for the log entry."/>
           <Annotation Term="OData.LongDescription" String="This property shall be present if the EntryType value is SEL.  These enumerations are the values from table 42-1 and 42-2 of the IPMI specification"/>
         </Property>
-        <Property Name="SensorType" Type="LogEntry.SensorType">
+        <Property Name="SensorType" Type="LogEntry.1.0.0.SensorType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="If the EntryType is SEL, this will have the sensor type that the log entry pertains to."/>
           <Annotation Term="OData.LongDescription" String="This property shall be present if the EntryType value is SEL."/>
@@ -69,7 +76,7 @@
           <Annotation Term="OData.Description" String="The values of this property shall be any arguments for the message."/>
           <Annotation Term="OData.LongDescription" String="This contains message arguments to be substituted into the message included or in the message looked up via a registry."/>
         </Property>
-        <Property Name="Links" Type="LogEntry.Links" Nullable="false">
+        <Property Name="Links" Type="LogEntry.1.0.0.Links" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The links object contains the links to other resources that are related to this resource."/>
         </Property>

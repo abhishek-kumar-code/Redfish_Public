@@ -13,15 +13,22 @@
   </edmx:Reference>
   
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Event.1.0.0" Alias="Event">
-
+ 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Event">
       <!-- This schema defines an event and its respective properties. -->
       <EntityType Name="Event" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition for Events.  It represents the properties for the events themselves and not subscriptions or any other resource."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent an event for a Redfish implementation."/>
-        <NavigationProperty Name="Events" Type="Collection(Event.EventRecord)" Nullable="false">
+      </EntityType>
+      </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Event.1.0.0">
+
+      <!-- This schema defines an event and its respective properties. -->
+      <EntityType Name="Event" BaseType="Event.Event">
+        <NavigationProperty Name="Events" Type="Collection(Event.1.0.0.EventRecord)" Nullable="false">
           <Annotation Term="OData.Description" String="Each event in this array has a set of properties that describe the event.  Since this is an array, more than one event can be sent simultaneously."/>
-		  <Annotation Term="OData.LongDescription" String="The value of this resource shall be an array of Event objects used to represent the occurrence of one or more events."/>
+    		  <Annotation Term="OData.LongDescription" String="The value of this resource shall be an array of Event objects used to represent the occurrence of one or more events."/>
           <Annotation Term="Redfish.Required"/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
@@ -47,7 +54,7 @@
       </EnumType>
 
       <EntityType Name="EventRecord" BaseType="Resource.ReferenceableMember">
-        <Property Name="EventType" Type="Event.EventType" Nullable="false">
+        <Property Name="EventType" Type="Event.1.0.0.EventType" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This indicates the type of event sent, according to the definitions in the EventService."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the type of event as defined in the EventService schema."/>
@@ -94,7 +101,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This indicates the resource that originated the condition that caused the event to be generated."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the URI of the resource that caused the event to be generated."/>
-		  <Annotation Term="OData.AutoExpandReferences"/>
+		      <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </EntityType>
 

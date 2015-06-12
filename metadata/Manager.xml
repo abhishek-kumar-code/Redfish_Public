@@ -40,19 +40,26 @@
   </edmx:Reference>
   
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.1.0.0" Alias="Manager">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager">
 
       <!-- This is the schema definition for a Manager and its respective properties -->
-      
       <EntityType Name="Manager" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition for a Manager.  Examples of managers are BMCs, Enclosure Managers, Management Controllers and other subsystems assigned managability functions."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a management subsystem for a Redfish implementation."/>
-        <Property Name="ManagerType" Type="Manager.ManagerType" Nullable="false">
+      </EntityType>
+    </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.1.0.0">
+      
+      <EntityType Name="Manager" BaseType="Manager.Manager">
+        <Annotation Term="OData.Description" String="This is the schema definition for a Manager.  Examples of managers are BMCs, Enclosure Managers, Management Controllers and other subsystems assigned managability functions."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a management subsystem for a Redfish implementation."/>
+        <Property Name="ManagerType" Type="Manager.1.0.0.ManagerType" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This property represents the type of manager that this resource represents."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall describe the function of this manager.  The value EnclosureManager shall be used if this manager controls one or more services through aggregation.  The value BMC shall be used if this manager represents a traditional server management controller. The value ManagementController shall be used if none of the other enumerations apply."/>
         </Property>
-        <Property Name="Links" Type="Manager.Links" Nullable="false">
+        <Property Name="Links" Type="Manager.1.0.0.Links" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This object contains the links to other resources that are related to this resource."/>
         </Property>
@@ -118,19 +125,19 @@
           <Annotation Term="OData.Description" String="The firmware version of this Manager"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the firwmare version as defined by the manufacturer for the associated manager."/>
         </Property>
-        <Property Name="SerialConsole" Type="Manager.SerialConsole" Nullable="false">
+        <Property Name="SerialConsole" Type="Manager.1.0.0.SerialConsole" Nullable="false">
           <Annotation Term="OData.Description" String="Information about the Serial Console service provided by this manager."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain information about the Serial Console service of this manager."/>		  
         </Property>
-        <Property Name="CommandShell" Type="Manager.CommandShell">
+        <Property Name="CommandShell" Type="Manager.1.0.0.CommandShell">
           <Annotation Term="OData.Description" String="Information about the Command Shell service provided by this manager."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain information about the Command Shell service of this manager."/>
         </Property>
-        <Property Name="GraphicalConsole" Type="Manager.GraphicalConsole">
+        <Property Name="GraphicalConsole" Type="Manager.1.0.0.GraphicalConsole">
           <Annotation Term="OData.Description" String="The value of this property shall contain the information about the Graphical Console (KVM-IP) service of this manager."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the information about the Graphical Console (KVM-IP) service of this manager."/>
         </Property>
-        <Property Name="Actions" Type="Manager.Actions" Nullable="false">
+        <Property Name="Actions" Type="Manager.1.0.0.Actions" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The Actions object contains the available custom actions on this resource."/>
         </Property>
@@ -144,7 +151,7 @@
 
       <ComplexType Name="Actions">
         <Annotation Term="OData.AdditionalProperties" Bool="False"/>
-        <Property Name="Oem" Type="Manager.OemActions"/>
+        <Property Name="Oem" Type="Manager.1.0.0.OemActions"/>
       </ComplexType>
       
       <ComplexType Name="OemActions">
@@ -153,7 +160,7 @@
 
       <!-- The reset action restarts the Manager-->
       <Action Name="Reset" Isbound="true">
-        <Parameter Name="Manager" Type="Manager.Actions"/>
+        <Parameter Name="Manager" Type="Manager.1.0.0.Actions"/>
         <Parameter Name="ResetType" Type="Resource.ResetType">
           <Annotation Term="OData.Description" String="This is the type of reset to be performed."/>
           <Annotation Term="OData.LongDescription" String="This defines the property name for the action."/>
@@ -181,14 +188,14 @@
       <Action Name="Reset" Isbound="true">
         <Annotation Term="OData.Description" String="The reset action resets/reboots the manager."/>
         <Annotation Term="OData.LongDescription" String="This defines the name of the custom action supported when used in conjunction with a POST operation to this resource. When issued, this operation will perform a reset of the manager."/>
-        <Parameter Name="Manager" Type="Manager.Actions"/>
+        <Parameter Name="Manager" Type="Manager.1.0.0.Actions"/>
       </Action>
 
       <!-- The ForceFailover action forces a failover of this manager to the manager used in the href below.-->
       <Action Name="ForceFailover" Isbound="true">
         <Annotation Term="OData.Description" String="The ForceFailover action forces a failover of this manager to the manager used in the parameter"/>
         <Annotation Term="OData.LongDescription" String="This defines the name of the custom action supported when used in conjunction with a POST operation to this resource. When issued, this operation will perform a forced failover of the manager's redundancy to the manager supplied as a parameter."/>
-        <Parameter Name="Manager" Type="Manager.Actions"/>
+        <Parameter Name="Manager" Type="Manager.1.0.0.Actions"/>
         <Parameter Name="href" Type="Collection(Resource.Resource)" Nullable="false">
           <Annotation Term="OData.Description" String="This array defines the supported values for this property on this resource.  In this case, a valid reference is supported."/>
         </Parameter>
@@ -198,7 +205,7 @@
       <Action Name="ModifyRedundancySet" Isbound="true">
         <Annotation Term="OData.Description" String="The ModifyRedundancySet operation is used to add or remove members to a redundant group of manager."/>
         <Annotation Term="OData.LongDescription" String="This defines the name of the custom action for which the following properties are supported on this resource.  The ModifyRedundancySet operation shall be used to add or remove members to a redundant group of manager."/>
-        <Parameter Name="Manager" Type="Manager.Actions"/>
+        <Parameter Name="Manager" Type="Manager.1.0.0.Actions"/>
         <Parameter Name="Add" Type="Collection(Resource.Resource)" Nullable="false">
           <Annotation Term="OData.Description" String="This array defines the supported values for this property on this resource.  In this case, a valid reference is supported. Add shall be used to Add members to the manager redundancy group."/>
         </Parameter>
@@ -285,7 +292,7 @@
       <!-- This type contains information about the Serial Console service of a given manager. -->
       <ComplexType Name="SerialConsole" BaseType="Manager.ManagerService">
         <Annotation Term="OData.AdditionalProperties" Bool="False"/>
-        <Property Name="ConnectTypesSupported" Type="Collection(Manager.SerialConnectTypesSupported)" Nullable="false">
+        <Property Name="ConnectTypesSupported" Type="Collection(Manager.1.0.0.SerialConnectTypesSupported)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This object is used to enumerate the Serial Console connection types allowed by the implementation."/>
           <Annotation Term="OData.LongDescription" String="The value of ConnectTypesSupported shall be an array of the enumerations provided here.  SSH shall be included if the Secure Shell (SSH) protocol is supported.  Telnet shall be included if the Telnet protocol is supported.  IPMI shall be included if the IPMI (Serial-over-LAN) protocol is supported."/>
@@ -293,9 +300,9 @@
       </ComplexType>
 
       <!-- This type contains information about the Command Shell service of a given manager. -->
-      <ComplexType Name="CommandShell" BaseType="Manager.ManagerService">
+      <ComplexType Name="CommandShell" BaseType="Manager.1.0.0.ManagerService">
         <Annotation Term="OData.AdditionalProperties" Bool="False"/>
-        <Property Name="ConnectTypesSupported" Type="Collection(Manager.CommandConnectTypesSupported)" Nullable="false">
+        <Property Name="ConnectTypesSupported" Type="Collection(Manager.1.0.0.CommandConnectTypesSupported)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This object is used to enumerate the Command Shell connection types allowed by the implementation."/>
           <Annotation Term="OData.LongDescription" String="The value of ConnectTypesSupported shall be an array of the enumerations provided here.  SSH shall be included if the Secure Shell (SSH) protocol is supported.  Telnet shall be included if the Telnet protocol is supported.  IPMI shall be included if the IPMI (Serial-over-LAN) protocol is supported."/>
@@ -303,7 +310,7 @@
       </ComplexType>
 
       <!-- This type contains information about the Graphical Console (KVM-IP) service of a given manager. -->
-      <ComplexType Name="GraphicalConsole" BaseType="Manager.ManagerService">
+      <ComplexType Name="GraphicalConsole" BaseType="Manager.1.0.0.ManagerService">
         <Annotation Term="OData.AdditionalProperties" Bool="False"/>
         <Property Name="ConnectTypesSupported" Type="Collection(Manager.GraphicalConnectTypesSupported)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>

@@ -14,18 +14,25 @@
     <edmx:Include Namespace="Resource.1.0.0" Alias="Resource"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Event.xml">
-    <edmx:Include Namespace="Event.1.0.0" Alias="Event"/>
+    <edmx:Include Namespace="Event"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/EventDestinationCollection.xml">
-    <edmx:Include Namespace="EventDestinationCollection.1.0.0" Alias="EventDestinationCollection"/>
+    <edmx:Include Namespace="EventDestinationCollection"/>
   </edmx:Reference>
 
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventService.1.0.0" Alias="EventService">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventService">
 
       <!-- This schema defines an event service and its respective properties.-->
       <EntityType Name="EventService" BaseType="Resource.Resource">
-        <Annotation Term="OData.Description" String="This is the schema definition for the Event Service.  It represents the properties for the service itself and has links to the actual list of subscriptions."/>
+        <Annotation Term="OData.Description" String="This is the schema definition for the Event Service. It represents the properties for the service itself and has links to the actual list of subscriptions."/>
+      </EntityType>
+    </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventService.1.0.0">
+
+      <!-- This schema defines an event service and its respective properties.-->
+      <EntityType Name="EventService" BaseType="EventService.EventService">
         <Property Name="DeliveryRetryAttempts" Type="Edm.Int64" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is the number of attempts an event posting is retried before the subscription is terminated."/>
@@ -57,7 +64,7 @@
 
       <ComplexType Name="Actions">
         <Annotation Term="OData.AdditionalProperties" Bool="False"/>
-        <Property Name="Oem" Type="EventService.OemActions"/>
+        <Property Name="Oem" Type="EventService.1.0.0.OemActions"/>
       </ComplexType>
       
       <ComplexType Name="OemActions">
@@ -68,7 +75,7 @@
       <Action Name="SubmitTestEvent" IsBound="true">
         <Annotation Term="OData.Description" String="The SubmitTestEvent action causes a test event to be added to the event service.  This message should then be sent to any appropriate ListenerDestination targets."/>
         <Annotation Term="OData.LongDescription" String="This defines the name of the custom action supported when used in conjunction with a POST operation to this resource. When issued, this operation will perform a reset of the manager."/>
-        <Parameter Name="EventService" Type="EventService.Actions"/>
+        <Parameter Name="EventService" Type="EventService.1.0.0.Actions"/>
         <Parameter Name="EventType" Type="Event.EventType" Nullable="false">
           <Annotation Term="OData.Description" String="This is the type of event to be added."/>
           <Annotation Term="OData.LongDescription" String="This defines the property name for which the following allowable values apply."/>

@@ -13,19 +13,28 @@
     <edmx:Include Namespace="Resource.1.0.0" Alias="Resource"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ManagerAccountCollection.xml">
-    <edmx:Include Namespace="ManagerAccountCollection.1.0.0" Alias="ManagerAccountCollection"/>
+    <edmx:Include Namespace="ManagerAccountCollection"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/RoleCollection.xml">
-    <edmx:Include Namespace="RoleCollection.1.0.0" Alias="RoleCollection"/>
+    <edmx:Include Namespace="RoleCollection"/>
   </edmx:Reference>
   
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AccountService.1.0.0" Alias="AccountService">
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AccountService">
 
       <!-- This schema defines an account service and its respective properties. -->
       <EntityType Name="AccountService" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition for the Account Service.  It represents the properties for the service itself and has links to the actual list of accounts."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a management account service for a Redfish implementation."/>
+      </EntityType>
+      
+    </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AccountService.1.0.0">
+
+      <!-- This schema defines an account service and its respective properties. -->
+      <EntityType Name="AccountService" BaseType="AccountService.AccountService">
         <Property Name="AuthFailureLoggingThreshold" Type="Edm.Int64" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/ReadWrite"/>
           <Annotation Term="OData.Description" String="This is the number of authorization failures that need to occur before the failure attempt is logged to the manager log."/>
@@ -75,6 +84,7 @@
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </EntityType>
+      
     </Schema>
   </edmx:DataServices>
 </edmx:Edmx>
