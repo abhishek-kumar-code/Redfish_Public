@@ -100,7 +100,7 @@
         </Property>
         <Property Name="IPv6AddressPolicyTable" Type="Collection(EthernetInterface.1.0.0.IPv6AddressPolicyEntry)" Nullable="false">
           <Annotation Term="OData.Description" String="An array representing the RFC3484 Address Selection Policy Table."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of objects used to represent the Address Selection Policy Table as defined in RFC3484."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of objects used to represent the Address Selection Policy Table as defined in RFC 6724."/>
         </Property>
         <Property Name="IPv6Addresses" Type="Collection(IPAddresses.1.0.0.IPv6Address)" Nullable="false" >
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
@@ -139,18 +139,18 @@
         <Annotation Term="OData.AdditionalProperties" Bool="False"/>
         <Property Name="Prefix" Type="Edm.String">
           <Annotation Term="OData.Description" String="The IPv6 Address Prefix (as defined in RFC 3484 section 2.1)"/>
-		      <Annotation Term="OData.LongDescription" String="This property shall contain the IPv6 Address Prefix for this table entry as defined in RFC 3484 section 2.1."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the IPv6 Address Prefix for this table entry as defined in RFC 6724 section 2.1."/>
           <Annotation Term="Redfish.IPv6Format"/>
         </Property>
         <Property Name="Precedence" Type="Edm.Int64">
-          <Annotation Term="OData.Description" String="The IPv6 Precedence (as defined in RFC 3484 section 2.1"/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain the IPv6 Precedence value for this table entry as defined in RFC 3484 section 2.1."/>
+          <Annotation Term="OData.Description" String="The IPv6 Precedence (as defined in RFC 6724 section 2.1"/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the IPv6 Precedence value for this table entry as defined in RFC 6724 section 2.1."/>
           <Annotation Term="Validation.Minimum" Int="1"/>
           <Annotation Term="Validation.Maximum" Int="100"/>
         </Property>
         <Property Name="Label" Type="Edm.Int64">
-          <Annotation Term="OData.Description" String="The IPv6 Label (as defined in RFC 3484 section 2.1)"/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain the IPv6 Label value for this table entry as defined in RFC 3484 section 2.1."/>		  
+          <Annotation Term="OData.Description" String="The IPv6 Label (as defined in RFC 6724 section 2.1)"/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the IPv6 Label value for this table entry as defined in RFC 6724 section 2.1."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
           <Annotation Term="Validation.Maximum" Int="100"/>
         </Property>
