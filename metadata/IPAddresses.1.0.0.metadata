@@ -74,10 +74,10 @@
           <Annotation Term="OData.Description" String="Address is provided by a DHCP service"/>
         </Member>
         <Member Name="BOOTP">
-          <Annotation Term="OData.Description" String="TODO"/>
+          <Annotation Term="OData.Description" String="Address is provided by a BOOTP service"/>
         </Member>
         <Member Name="IPv4LinkLocal">
-          <Annotation Term="OData.Description" String="TODO"/>
+          <Annotation Term="OData.Description" String="Address is valid only for this network segment (link)"/>
         </Member>
       </EnumType>
 
@@ -88,14 +88,8 @@
         <Member Name="DHCPv6">
           <Annotation Term="OData.Description" String="Address is provided by a DHCP service"/>
         </Member>
-        <Member Name="IPv6AutoConfig">
-          <Annotation Term="OData.Description" String="TODO"/>
-        </Member>
-        <Member Name="Stateless">
-          <Annotation Term="OData.Description" String="TODO"/>
-        </Member>
         <Member Name="LinkLocal">
-          <Annotation Term="OData.Description" String="TODO"/>
+          <Annotation Term="OData.Description" String="Address is valid only for this network segment (link)"/>
         </Member>
         <Member Name="SLAAC">
           <Annotation Term="OData.Description" String="Address is provided by a Stateless Address AutoConfiguration (SLAAC) service"/>
