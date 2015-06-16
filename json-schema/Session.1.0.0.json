@@ -55,7 +55,8 @@
             "requiredOnCreate": [
                 "UserName",
                 "Password"
-            ]
+            ],
+            "description": "This is the base type for resources and referenceable members."
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."

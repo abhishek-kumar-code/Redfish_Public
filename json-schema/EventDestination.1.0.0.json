@@ -3,12 +3,6 @@
     "title": "EventDestination.1.0.0",
     "$ref": "#/definitions/EventDestination",
     "definitions":{
-        "EventDestinationProtocol":{
-            "type": "string",
-            "enum": [
-                "Redfish"
-            ]
-        },
         "EventDestination":{
             "type": "object",
             "patternProperties": { 
@@ -73,6 +67,13 @@
                 "EventTypes",
                 "Context",
                 "Protocol"
+            ],
+            "description": "This is the base type for resources and referenceable members."
+        },
+        "EventDestinationProtocol":{
+            "type": "string",
+            "enum": [
+                "Redfish"
             ]
         }
     },

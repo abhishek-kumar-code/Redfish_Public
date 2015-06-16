@@ -3,31 +3,6 @@
     "title": "Manager",
     "$ref": "#/definitions/Manager",
     "definitions":{
-        "ForceFailover":{
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "title": {
-                    "type": "string",
-                    "description": "Friendly action name"
-                },
-                "target": {
-                    "type": "string",
-                    "description": "Link to invoke action"
-                },
-                "href@Redfish.AllowableValues": {
-                    "type": "array",
-                    "items": {
-                        "type": "array",
-                        "items": {
-                            "@odata.id": "http://schemas.dmtf.org/redfish/base/Resource.json#Resource.Resource"
-                        }
-                    },
-                    "description": "This array defines the supported values for this property on this resource.  In this case, a valid reference is supported."
-                }
-            }
-
-        },
         "Manager":{
                 "oneOf": [ 
                     {
@@ -39,29 +14,6 @@
                 ]
             }
         }
-        },
-        "Reset":{
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "title": {
-                    "type": "string",
-                    "description": "Friendly action name"
-                },
-                "target": {
-                    "type": "string",
-                    "description": "Link to invoke action"
-                },
-                "ResetType@Redfish.AllowableValues": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "http://schemas.dmtf.org/redfish/base/Resource.json#/definitions/ResetType"
-                    },
-                    "description": "This is the type of reset to be performed.",
-                    "longDescription": "This defines the property name for the action."
-                }
-            }
-
         },
         "ModifyRedundancySet":{
             "type": "object",
@@ -94,6 +46,54 @@
                         }
                     },
                     "description": "This array defines the supported values for this property on this resource.  In this case, a valid reference is supported. Remove shall be used to remove members from the manager redundancy group."
+                }
+            }
+
+        },
+        "ForceFailover":{
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "description": "Link to invoke action"
+                },
+                "href@Redfish.AllowableValues": {
+                    "type": "array",
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "@odata.id": "http://schemas.dmtf.org/redfish/base/Resource.json#Resource.Resource"
+                        }
+                    },
+                    "description": "This array defines the supported values for this property on this resource.  In this case, a valid reference is supported."
+                }
+            }
+
+        },
+        "Reset":{
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "description": "Link to invoke action"
+                },
+                "ResetType@Redfish.AllowableValues": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "http://schemas.dmtf.org/redfish/base/Resource.json#/definitions/ResetType"
+                    },
+                    "description": "This is the type of reset to be performed.",
+                    "longDescription": "This defines the property name for the action."
                 }
             }
 

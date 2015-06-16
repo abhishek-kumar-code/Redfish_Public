@@ -1,8 +1,26 @@
 {
     "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0.json",
     "title": "IPAddresses.1.0.0",
-,
     "definitions":{
+        "IPv6AddressOrigin":{
+            "type": "string",
+            "enum": [
+                "Static",
+                "DHCPv6",
+                "IPv6AutoConfig",
+                "Stateless",
+                "LinkLocal",
+                "SLAAC"
+            ],
+            "enumDescriptions": {
+                "Static": "A static address as configured by the user",
+                "DHCPv6": "Address is provided by a DHCP service",
+                "IPv6AutoConfig": "TODO",
+                "Stateless": "TODO",
+                "LinkLocal": "TODO",
+                "SLAAC": "Address is provided by a Stateless Address AutoConfiguration (SLAAC) service"
+            }
+        },
         "IPv6StaticAddress":{
             "type": "object",
             "patternProperties": { 
@@ -36,26 +54,6 @@
                 "PrefixLength"
             ],
             "description": "This object represents a single IPv6 static address to be assigned on a network interface."
-        },
-        "PrefixLength":{
-            "type": "number",
-            "minimum": 1,
-            "maximum": 128
-        },
-        "AddressState":{
-            "type": "string",
-            "enum": [
-                "Preferred",
-                "Deprecated",
-                "Tentative",
-                "Failed"
-            ],
-            "enumDescriptions": {
-                "Preferred": "This address is currently within both it's valid and preferred lifetimes as defined in RFC 4862.",
-                "Deprecated": "This address is currently within it's valid lifetime, but is now outside of it's preferred lifetime as defined in RFC 4862.",
-                "Tentative": "This address is currently undergoing Duplicate Address Detection testing as defined in RFC 4862 section 5.4.",
-                "Failed": "This address has failed Duplicate Address Detection testing as defined in RFC 4862 section 5.4 and is not currently in use."
-            }
         },
         "IPv6Address":{
             "type": "object",
@@ -98,39 +96,24 @@
                 }
             }
         },
-        "IPv6AddressOrigin":{
+        "AddressState":{
             "type": "string",
             "enum": [
-                "Static",
-                "DHCPv6",
-                "IPv6AutoConfig",
-                "Stateless",
-                "LinkLocal",
-                "SLAAC"
+                "Preferred",
+                "Deprecated",
+                "Tentative",
+                "Failed"
             ],
             "enumDescriptions": {
-                "Static": "A static address as configured by the user",
-                "DHCPv6": "Address is provided by a DHCP service",
-                "IPv6AutoConfig": "TODO",
-                "Stateless": "TODO",
-                "LinkLocal": "TODO",
-                "SLAAC": "Address is provided by a Stateless Address AutoConfiguration (SLAAC) service"
+                "Preferred": "This address is currently within both it's valid and preferred lifetimes as defined in RFC 4862.",
+                "Deprecated": "This address is currently within it's valid lifetime, but is now outside of it's preferred lifetime as defined in RFC 4862.",
+                "Tentative": "This address is currently undergoing Duplicate Address Detection testing as defined in RFC 4862 section 5.4.",
+                "Failed": "This address has failed Duplicate Address Detection testing as defined in RFC 4862 section 5.4 and is not currently in use."
             }
         },
-        "IPv4AddressOrigin":{
+        "SubnetMask":{
             "type": "string",
-            "enum": [
-                "Static",
-                "DHCP",
-                "BOOTP",
-                "IPv4LinkLocal"
-            ],
-            "enumDescriptions": {
-                "Static": "A static address as configured by the user",
-                "DHCP": "Address is provided by a DHCP service",
-                "BOOTP": "TODO",
-                "IPv4LinkLocal": "TODO"
-            }
+            "pattern": "^(?:[0-9]{1,3}\\.){3}[0-9]{1,3}$"
         },
         "IPv4Address":{
             "type": "object",
@@ -176,9 +159,25 @@
                 }
             }
         },
-        "SubnetMask":{
+        "IPv4AddressOrigin":{
             "type": "string",
-            "pattern": "^(?:[0-9]{1,3}\\.){3}[0-9]{1,3}$"
+            "enum": [
+                "Static",
+                "DHCP",
+                "BOOTP",
+                "IPv4LinkLocal"
+            ],
+            "enumDescriptions": {
+                "Static": "A static address as configured by the user",
+                "DHCP": "Address is provided by a DHCP service",
+                "BOOTP": "TODO",
+                "IPv4LinkLocal": "TODO"
+            }
+        },
+        "PrefixLength":{
+            "type": "number",
+            "minimum": 1,
+            "maximum": 128
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."

@@ -1,7 +1,6 @@
 {
     "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0.json",
     "title": "Settings",
-,
     "definitions":{
         "Settings":{
             "type": "object",

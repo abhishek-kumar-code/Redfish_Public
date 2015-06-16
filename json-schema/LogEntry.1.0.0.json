@@ -11,14 +11,6 @@
                 "Critical"
             ]
         },
-        "LogEntryType":{
-            "type": "string",
-            "enum": [
-                "Event",
-                "SEL",
-                "Oem"
-            ]
-        },
         "LogEntryCode":{
             "type": "string",
             "enum": [
@@ -271,6 +263,16 @@
             ],
             "requiredOnCreate": [
                 "EntryType"
+            ],
+            "description": "This resource represents the log record format for logs.  It is designed to be used for SEL logs from IPMI as well as Event Logs and OEM specific logs.  The EntryType field indicates the type of log and there are other properties dependent on it's value.",
+            "longDescription": "This resource shall represent the log format for log services in a Redfish implementation."
+        },
+        "LogEntryType":{
+            "type": "string",
+            "enum": [
+                "Event",
+                "SEL",
+                "Oem"
             ]
         }
     },

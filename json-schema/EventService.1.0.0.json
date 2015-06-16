@@ -104,7 +104,8 @@
                     "description": "This is a reference to a collection of Event Destination resources.",
                     "longDescription": "The value of this property shall contain the link to a collection of type EventDestinationCollection."
                 }
-            }
+            },
+            "description": "This is the schema definition for the Event Service. It represents the properties for the service itself and has links to the actual list of subscriptions."
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."

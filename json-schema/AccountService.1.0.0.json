@@ -107,7 +107,9 @@
                     "description": "Link to a collection of Roles",
                     "longDescription": "This property shall contain the link to a collection of type RoleCollection."
                 }
-            }
+            },
+            "description": "This is the schema definition for the Account Service.  It represents the properties for the service itself and has links to the actual list of accounts.",
+            "longDescription": "This resource shall be used to represent a management account service for a Redfish implementation."
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."

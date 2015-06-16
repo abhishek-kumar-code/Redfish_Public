@@ -3,6 +3,23 @@
     "title": "Event.1.0.0",
     "$ref": "#/definitions/Event",
     "definitions":{
+        "EventType":{
+            "type": "string",
+            "enum": [
+                "StatusChange",
+                "ResourceUpdated",
+                "ResourceAdded",
+                "ResourceRemoved",
+                "Alert"
+            ],
+            "enumDescriptions": {
+                "StatusChange": "The status of this resource has changed",
+                "ResourceUpdated": "The value of this resource has been updated",
+                "ResourceAdded": "A resource has been added",
+                "ResourceRemoved": "A resource has been removed",
+                "Alert": "A condition exists which requires attention"
+            }
+        },
         "EventRecord":{
             "type": "object",
             "patternProperties": { 
@@ -86,24 +103,9 @@
             "required": [
                 "EventType",
                 "MessageId"
-            ]
-        },
-        "EventType":{
-            "type": "string",
-            "enum": [
-                "StatusChange",
-                "ResourceUpdated",
-                "ResourceAdded",
-                "ResourceRemoved",
-                "Alert"
             ],
-            "enumDescriptions": {
-                "StatusChange": "The status of this resource has changed",
-                "ResourceUpdated": "The value of this resource has been updated",
-                "ResourceAdded": "A resource has been added",
-                "ResourceRemoved": "A resource has been removed",
-                "Alert": "A condition exists which requires attention"
-            }
+            "description": "This is the base type for addressable members of an array.",
+            "longDescription": "Array members can be referenced using the value returned in the @odata.id property which may or may not be a dereferenceable URL. The @odata.id of this entity shall be the location of this element within an Item."
         },
         "Event":{
             "type": "object",
@@ -149,7 +151,9 @@
             },
             "required": [
                 "Events"
-            ]
+            ],
+            "description": "This is the schema definition for Events.  It represents the properties for the events themselves and not subscriptions or any other resource.",
+            "longDescription": "This resource shall be used to represent an event for a Redfish implementation."
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."

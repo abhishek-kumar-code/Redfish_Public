@@ -18,6 +18,21 @@
                 "DVD": "A DVD-ROM format image"
             }
         },
+        "ConnectedVia":{
+            "type": "string",
+            "enum": [
+                "NotConnected",
+                "URI",
+                "Applet",
+                "Oem"
+            ],
+            "enumDescriptions": {
+                "NotConnected": "No current connection",
+                "URI": "Connected to a URI location",
+                "Applet": "Connected to a client application",
+                "Oem": "Connected via an OEM-defined method"
+            }
+        },
         "VirtualMedia":{
             "type": "object",
             "patternProperties": { 
@@ -114,22 +129,9 @@
                     "description": "Indicates the media is write protected.",
                     "longDescription": "The value of this property shall be used to indicate if the remote device media prevents writing to that media. "
                 }
-            }
-        },
-        "ConnectedVia":{
-            "type": "string",
-            "enum": [
-                "NotConnected",
-                "URI",
-                "Applet",
-                "Oem"
-            ],
-            "enumDescriptions": {
-                "NotConnected": "No current connection",
-                "URI": "Connected to a URI location",
-                "Applet": "Connected to a client application",
-                "Oem": "Connected via an OEM-defined method"
-            }
+            },
+            "description": "This is the schema definition for the Virtual Media Service.",
+            "longDescription": "This resource shall be used to represent a virtual media service for a Redfish implementation."
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."

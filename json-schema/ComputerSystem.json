@@ -3,6 +3,18 @@
     "title": "ComputerSystem",
     "$ref": "#/definitions/ComputerSystem",
     "definitions":{
+        "ComputerSystem":{
+                "oneOf": [ 
+                    {
+                        "$ref": "http://schemas.dmtf.org/redfish/base/odata.4.0.0.json#/definitions/idRef"
+                    },
+                    {
+                        "$ref": "http://schemas.dmtf.org/redfish/ComputerSystem.1.0.0.json#/definitions/ComputerSystem"
+                    }
+                ]
+            }
+        }
+        },
         "Reset":{
             "type": "object",
             "additionalProperties": false,
@@ -25,18 +37,6 @@
                 }
             }
 
-        },
-        "ComputerSystem":{
-                "oneOf": [ 
-                    {
-                        "$ref": "http://schemas.dmtf.org/redfish/base/odata.4.0.0.json#/definitions/idRef"
-                    },
-                    {
-                        "$ref": "http://schemas.dmtf.org/redfish/ComputerSystem.1.0.0.json#/definitions/ComputerSystem"
-                    }
-                ]
-            }
-        }
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."

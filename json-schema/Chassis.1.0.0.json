@@ -3,21 +3,6 @@
     "title": "Chassis.1.0.0",
     "$ref": "#/definitions/Chassis",
     "definitions":{
-        "IndicatorLED":{
-            "type": "string",
-            "enum": [
-                "Unknown",
-                "Lit",
-                "Blinking",
-                "Off"
-            ],
-            "enumDescriptions": {
-                "Unknown": "The state of the Indicator LED cannot be determined.",
-                "Lit": "The Indicator LED is lit.",
-                "Blinking": "The Indicator LED is blinking.",
-                "Off": "The Indicator LED is off."
-            }
-        },
         "ChassisType":{
             "type": "string",
             "enum": [
@@ -254,7 +239,7 @@
 
                             }
                         },
-                        "#.Reset": {
+                        "#Chassis.Reset": {
                             "type": "object",
                             "additionalProperties": false,
                             "properties": {
@@ -304,7 +289,24 @@
             },
             "required": [
                 "ChassisType"
-            ]
+            ],
+            "description": "This is the schema definition for the Chassis resource.  It represents the properties for physical components for any system.  This one object is intended to represent racks, rackmount servers, blades, standalone, modular systems, enclosures, and all other containers.  The non-cpu/device centric parts of the schema are all accessed either directly or indirectly through this resource.",
+            "longDescription": "This resource shall be used to represent a chassis or other physical enclosure for a Redfish implementation."
+        },
+        "IndicatorLED":{
+            "type": "string",
+            "enum": [
+                "Unknown",
+                "Lit",
+                "Blinking",
+                "Off"
+            ],
+            "enumDescriptions": {
+                "Unknown": "The state of the Indicator LED cannot be determined.",
+                "Lit": "The Indicator LED is lit.",
+                "Blinking": "The Indicator LED is blinking.",
+                "Off": "The Indicator LED is off."
+            }
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
