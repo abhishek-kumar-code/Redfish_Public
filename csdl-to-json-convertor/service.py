@@ -40,21 +40,10 @@ if enable_debugging == True:
 #   Defines constants used in the script                                      #
 ###############################################################################
 
-schemaLocation = "http://schemas.dmtf.org/redfish/v1/"
-odataSchema = schemaLocation + "odata.4.0.0.json"
-redfishSchema = schemaLocation + "redfish-schema.1.0.0.json"
-
-###############################################################################
-# Name: Scenario                                                              #
-# Description:                                                                #
-#   Enumeration for various scenarios supported by the JsonSchemaGenerator    #
-###############################################################################
-from enum import Enum
-class Scenario(Enum):
-    none = 1
-    single_entityType = 2
-    multiple_entityTypes = 3
-    only_complexTypes = 4
+schemaLocation = "http://schemas.dmtf.org/redfish/" 
+schemaBaseLocation = schemaLocation + "v1/"
+odataSchema = schemaBaseLocation + "odata.4.0.0.json"
+redfishSchema = schemaLocation + "v1/redfish-schema.1.0.0.json"
 
 #########################################################################################################
 # Class Name: JsonSchemaGenerator                                                                       #
@@ -64,20 +53,19 @@ class Scenario(Enum):
 class JsonSchemaGenerator:
 
     # Static member variables
-    schema_version = ''                 # Schema version for which the generation is being done
+    schemaname = ''                     # Schema name for which the generation is being done
     parsed = []                         # List of URIs that have been parsed
     current_schema_classname = ''       # Class for which the schema is being generated
     definition_block_contents = []
-    current_scenario = Scenario.none
 
     #################################################################
     # Name: __init__                                                #
     # Description:                                                  #
     #   Constructor for JsonSchemaGeneratorUtils class              #
     #################################################################
-    def __init__(self, schema_version_value):
+    def __init__(self, schema_name_value):
 
-        JsonSchemaGenerator.schema_version = schema_version_value
+        JsonSchemaGenerator.schemaname = schema_name_value
 
     ########################################################################################################
     # Name: get_ref_value_for_type                                                                         #
@@ -91,11 +79,12 @@ class JsonSchemaGenerator:
         current_typedata = typetable[current_typename]
         simplename = current_typename[current_typename.rfind(".") + 1 :]
 
+#todo: fix logic to be more generic post-v1
         # If the current type is defined in this namespace
         if root_namespace == current_typedata["Namespace"]:
             refvalue = "#/definitions/" + simplename
         else:
-            refvalue = current_typedata["Url"] + "#/definitions/" + simplename
+            refvalue = schemaBaseLocation + current_typedata["Alias"] + ".json#/definitions/" + simplename
 
         return refvalue
 
@@ -124,38 +113,6 @@ class JsonSchemaGenerator:
         typename_parts = fullyqualifiedtypename.rsplit('.', 1)
         return typename_parts[-1]
 
-
-    ##############################################################################
-    # Name: get_schemaversion_from_typename                                      #
-    # Description:                                                               #
-    #   Extracts schema version from the typename that is passed in.             #
-    ##############################################################################
-    @staticmethod
-    def get_schemaversion_from_typename(typename):
-
-        version = ''
-        # Typename is defined in the following format: Chassis.0.95.0.Chassis
-        # Extract the namespace part of the type
-        typename_parts = typename.rsplit('.', 1)
-        version = JsonSchemaGenerator.get_schemaversion_from_namespace(typename_parts[0])
-        return version
-
-
-    ##############################################################################
-    # Name: get_schemaversion_from_namespace                                     #
-    # Description:                                                               #
-    #  Extracts schema version from the namespace that has been specified.       #
-    ##############################################################################
-    @staticmethod
-    def get_schemaversion_from_namespace(namespace):
-
-        version = ''
-        # Namespace is in the following format namespace.0.95.0
-        # We look for the first dot. 
-        namespace_parts = namespace.split('.', 1);
-        version = namespace_parts[-1]
-        return version
-    
     ###############################################################################################################
     # Name: extract_underlyingtype_from_collectiontype                                                            #
     # Description:                                                                                                #
@@ -184,6 +141,7 @@ class JsonSchemaGenerator:
     #################################################################
     def is_inline_type(self, type):
 
+        #todo: use "has_basetype" post-v1
         if(type["BaseType"] != "Resource.Links" and type["Name"] != "Actions" and type["Name"] != "OemActions"):
             return True;
 
@@ -208,6 +166,32 @@ class JsonSchemaGenerator:
                 return True
 
         return False
+
+    ##########################################################################
+    # Name: has_basetype                                                     # 
+    # Description:                                                           #
+    #  Returns True if the type has the specified base type n its hierarchy. #
+    ##########################################################################
+    def has_basetype(self, typetable, type, basetype):
+
+        # does it have the base type anywhere in it's hierarchy?
+        while True:
+            if "BaseType" in type["Node"].attrib.keys():
+                basetypename = type["Node"].attrib["BaseType"]
+                if basetypename == basetype:
+                    return True
+                else:
+                    if basetypename == type["Namespace"] + "." + type["Name"]:
+                        print("Circular Reference Error in base type of " + basetypename )
+                        return False
+                    else:
+                       type = typetable[basetypename]
+            else:
+                break
+
+        # by default, types allow additional properties
+        return False
+
 
     ##########################################################################
     # Name: allows_additional_properties                                     # 
@@ -309,47 +293,6 @@ class JsonSchemaGenerator:
     
         return edmtojson[inputType]
 
-
-    ##############################################################################
-    # Name: get_scenario                                                         #
-    # Description:                                                               #
-    #  Define scenarios according to which the code path will be defined.        #
-    ##############################################################################
-    def get_scenario(self, typetable):
-    
-        currentscenario = Scenario.none
-
-        # Get entries in the typetable
-        typevalues = typetable.values()
-        entityTypeCount = 0
-        visitedTypes = []
-    
-        for typevalue in typevalues:
-            typetype = typevalue["TypeType"]
-            # Make sure that the type belongs to the base file for which the conversion is required i.e. IsFromRefUri = False
-            if ( typetype == "EntityType" and typevalue["IsFromRefUri"] == False and ( typevalue["BaseType"] == "Resource.Resource" or typevalue["BaseType"] == "Resource.ResourceCollection") ):
-                try :
-                    # If this type has been parsed already do nothing
-                    index = visitedTypes.index(typevalue["Name"])
-                except :
-                    visitedTypes.append(typevalue["Name"])
-                    entityTypeCount += 1
-
-        # Find out what type of scenario is it. Based on this the JSON will be generated.
-        if entityTypeCount == 0:
-            # If no entity types are there, then only complex types will be present
-            currentscenario = Scenario.only_complexTypes
-
-        elif entityTypeCount == 1:
-            # If there is only one entity type, this is the basic scenario
-            currentscenario = Scenario.single_entityType
-
-        elif entityTypeCount > 1:
-            # If there are more than one entity types, then it needs special handling and will generate two files.
-            currentscenario = Scenario.multiple_entityTypes
-
-        return currentscenario
-        
     ##########################################################################
     # Name: emit_annotations                                                 # 
     # Description:                                                           #
@@ -358,49 +301,69 @@ class JsonSchemaGenerator:
     def emit_annotations(self, typetable, namespace, annotated, depth, prefixuri, isnullable = False, ignoreannotations = []):
 
         output = ""
+        fcontinue = True
+        written = []
 
-        for annotation in annotated:
-            if not annotation.tag == "{http://docs.oasis-open.org/odata/ns/edm}Annotation":
-                continue
+        #for each type in the heirarchy
+        while ( fcontinue == True ):
+            for annotation in annotated:
+                if not annotation.tag == "{http://docs.oasis-open.org/odata/ns/edm}Annotation":
+                    continue
 
-            if (annotation.attrib["Term"] == "OData.Description") and (not "OData.Description" in ignoreannotations):
-                output += ",\n"
-                output += UT.Utilities.indent(depth) + "\"description\": \"" + annotation.attrib["String"] + "\""
+                if ( (annotation.attrib["Term"] in ignoreannotations) or (annotation.attrib["Term"] in written ) ):
+                    continue
 
-            elif (annotation.attrib["Term"] == "OData.LongDescription") and (not "OData.Description" in ignoreannotations):
-                output += ",\n"
-                output += UT.Utilities.indent(depth) + "\"longDescription\": \"" + annotation.attrib["String"] + "\""
+                #don't add annotation more than once'
+                written.append(annotation.attrib["Term"])
 
-            elif annotation.attrib["Term"] == "OData.Permissions":
-                if annotation.attrib["EnumMember"] == "OData.Permissions/Read":
+                if (annotation.attrib["Term"] == "OData.Description"):
                     output += ",\n"
-                    output += UT.Utilities.indent(depth) + "\"readonly\": true"
-                elif annotation.attrib["EnumMember"] == "OData.Permissions/ReadWrite":
+                    output += UT.Utilities.indent(depth) + "\"description\": \"" + annotation.attrib["String"] + "\""
+
+                elif (annotation.attrib["Term"] == "OData.LongDescription"):
                     output += ",\n"
-                    output += UT.Utilities.indent(depth) + "\"readonly\": false"
-            elif (annotation.attrib["Term"] == "Validation.Pattern") or (annotation.attrib["Term"] == "Redfish.Pattern"):
-                output += ",\n"
-                output += UT.Utilities.indent(depth) + "\"pattern\": \"" + annotation.attrib["String"] + "\""
-            elif annotation.attrib["Term"] == "Redfish.DynamicPropertyPatterns":
-                content = self.get_dynamic_property_patterns_content(annotation)
-                output += ",\n"
-                output += UT.Utilities.indent(depth) + "\"patternProperties\": { \n"
-                output += UT.Utilities.indent(depth+1) + "\"" + content["Pattern"] + "\": { \n"
-                jsontype = self.get_edmtype_to_jsontype(content["Type"])
+                    output += UT.Utilities.indent(depth) + "\"longDescription\": \"" + annotation.attrib["String"] + "\""
+
+                elif (annotation.attrib["Term"] == "OData.Permissions"):
+                    if annotation.attrib["EnumMember"] == "OData.Permissions/Read":
+                        output += ",\n"
+                        output += UT.Utilities.indent(depth) + "\"readonly\": true"
+                    elif annotation.attrib["EnumMember"] == "OData.Permissions/ReadWrite":
+                        output += ",\n"
+                        output += UT.Utilities.indent(depth) + "\"readonly\": false"
+
+                elif ((annotation.attrib["Term"] == "Validation.Pattern") or (annotation.attrib["Term"] == "Redfish.Pattern") ):
+                    output += ",\n"
+                    output += UT.Utilities.indent(depth) + "\"pattern\": \"" + annotation.attrib["String"] + "\""
+
+                elif annotation.attrib["Term"] == "Redfish.DynamicPropertyPatterns":
+                    content = self.get_dynamic_property_patterns_content(annotation)
+                    output += ",\n"
+                    output += UT.Utilities.indent(depth) + "\"patternProperties\": { \n"
+                    output += UT.Utilities.indent(depth+1) + "\"" + content["Pattern"] + "\": { \n"
+                    jsontype = self.get_edmtype_to_jsontype(content["Type"])
             
-                if jsontype == "object":
-                    output += self.generate_json_for_type(typetable, content["Type"], depth + 2, namespace, prefixuri, isnullable, False)
-                    output += "\n" + UT.Utilities.indent(depth + 1) + "}\n"
-                else:
-                    output += UT.Utilities.indent(depth + 2) + "\"type\":\"" + jsontype + "\"\n"
-                output += UT.Utilities.indent(depth) + "}"
-            elif (annotation.attrib["Term"] == "Validation.Minimum"):
-                output += ",\n"
-                output += UT.Utilities.indent(depth) + "\"minimum\": " + annotation.attrib["Int"]
-            elif (annotation.attrib["Term"] == "Validation.Maximum"):
-                output += ",\n"
-                output += UT.Utilities.indent(depth) + "\"maximum\": " + annotation.attrib["Int"]
-                                                        
+                    if jsontype == "object":
+                        output += self.generate_json_for_type(typetable, content["Type"], depth + 2, namespace, prefixuri, isnullable, False)
+                        output += "\n" + UT.Utilities.indent(depth + 1) + "}\n"
+                    else:
+                        output += UT.Utilities.indent(depth + 2) + "\"type\":\"" + jsontype + "\"\n"
+                    output += UT.Utilities.indent(depth) + "}"
+
+                elif (annotation.attrib["Term"] == "Validation.Minimum"):
+                    output += ",\n"
+                    output += UT.Utilities.indent(depth) + "\"minimum\": " + annotation.attrib["Int"]
+
+                elif (annotation.attrib["Term"] == "Validation.Maximum"):
+                    output += ",\n"
+                    output += UT.Utilities.indent(depth) + "\"maximum\": " + annotation.attrib["Int"]
+                                                      
+            if "BaseType" in annotated.attrib.keys():
+                #todo: make more robust
+                annotated = typetable[annotated.attrib["BaseType"]]["Node"]
+            else:
+                fcontinue = False
+
         return output
 
 
@@ -427,12 +390,12 @@ class JsonSchemaGenerator:
     # Description:                                                                                          #
     #  Generates JSON for actions                                                                           #
     #########################################################################################################
-    def get_payload_actionentry(self, actionname, depth):
+    def get_payload_actionentry(self, typetable, actionentry, depth, prefixuri):
         output = ""
         
-        propname = "#" + JsonSchemaGenerator.current_schema_classname + "." + actionname 
+        propname = "#" + actionentry["Namespace"] + "." + actionentry["Name"] 
         output += UT.Utilities.indent(depth)   + "\"" + propname + "\": {\n"
-        output += UT.Utilities.indent(depth+1) + "\"$ref\": \"#/definitions/" + actionname + "\"\n"
+        output += self.get_action_definition(typetable, actionentry, depth, prefixuri)
         output += UT.Utilities.indent(depth)   + "}"
 
         return output
@@ -480,7 +443,6 @@ class JsonSchemaGenerator:
 
         output += "\n"
         output += UT.Utilities.indent(depth+1) +     "}\n"
-#        output += UT.Utilities.indent(depth)   + "}"
 
         return output
 
@@ -528,10 +490,10 @@ class JsonSchemaGenerator:
             if not typeentry["TypeType"] == "Action":
                 continue
 
-            if not "Isbound" in typeentry["Node"].attrib.keys():
+            if not "IsBound" in typeentry["Node"].attrib.keys():
                 continue
 
-            if typeentry["Node"].attrib["Isbound"].upper() == "FALSE":
+            if typeentry["Node"].attrib["IsBound"].upper() == "FALSE":
                 continue
 
             # we have two entries for each action. we need to consider only one of this pair
@@ -554,7 +516,7 @@ class JsonSchemaGenerator:
 
             if isboundtotype:
                 output += ",\n"
-                output += self.get_payload_actionentry(typeentry["Name"], depth + 1)
+                output += self.get_payload_actionentry(typetable, typeentry, depth + 1, prefixuri)
             
         return output
 
@@ -605,7 +567,7 @@ class JsonSchemaGenerator:
         firstproperty = True
 
         # Generate special properties for EntityType
-        if typedata["TypeType"] == "EntityType" and typedata["BaseType"] != "Resource.ReferenceableMember":
+        if typedata["TypeType"] == "EntityType" and not self.has_basetype(typetable, typedata, "Resource.ReferenceableMember"):
             output += self.get_json_for_special_properties("@odata.context", depth, prefixuri)
             output += ",\n"
             output += self.get_json_for_special_properties("@odata.id", depth, prefixuri)
@@ -658,15 +620,12 @@ class JsonSchemaGenerator:
                             current_typename = JsonSchemaGenerator.extract_underlyingtype_from_collectiontype(attribtype)
 
                             # Get the reference value
+                            simplename = current_typename[current_typename.rfind(".") + 1 :]
                             refvalue = JsonSchemaGenerator.get_ref_value_for_type(typetable, current_typename, namespace)
-                            if(termvalue != "OData.AutoExpand"):
-                                refvalue += "-ref"
                             output += UT.Utilities.indent(depth+3)+ "\"$ref\": \"" + refvalue + "\"\n"
                             output += UT.Utilities.indent(depth+2) + "}"
                         else:
                             refvalue = JsonSchemaGenerator.get_ref_value_for_type(typetable, attribtype, namespace)
-                            if(termvalue != "OData.AutoExpand"):
-                                refvalue += "-ref"
                             output += UT.Utilities.indent(depth+2)+ "\"$ref\": \"" + refvalue + "\""
 
 					# Handle regular property
@@ -767,7 +726,6 @@ class JsonSchemaGenerator:
         output += UT.Utilities.indent(depth) + "}"
 
         return output
-
 
     ############################################################################################
     # Name: generate_json_for_premitive_types                                                  #
@@ -892,6 +850,7 @@ class JsonSchemaGenerator:
 
         # Throw error if the type is not found
         if not typename in typetable.keys():
+            print("Error: " + typename + " not found.")
             return UT.Utilities.indent(depth)  + "\"ERROR\": \"type " + typename + " unrecognized.\""
 
         typedata = typetable[typename]
@@ -904,8 +863,7 @@ class JsonSchemaGenerator:
             if namespace == typedata["Namespace"]:
                 output += self.generate_json_for_propertybag(typetable, typedata, depth, namespace, prefixuri, isnullable, in_definitions_block)
             else:
-                simplename = typename[typename.rfind(".") + 1 :]
-                output = UT.Utilities.indent(depth) + "\"@odata.id\": \"" + typedata["Name"] + "." + JsonSchemaGenerator.schema_version + ".json#" + simplename + "\""
+                output = UT.Utilities.indent(depth) + "\"@odata.id\": \"" + typedata["JsonUrl"] + "#" + typename + "\""
                 return output
 
         elif typetype == "ComplexType":
@@ -922,7 +880,7 @@ class JsonSchemaGenerator:
                 output = self.generate_json_for_propertybag(typetable, typedata, depth, namespace, prefixuri, isnullable, in_definitions_block)
             else:
                 simplename = typename[typename.rfind(".") + 1 :]
-                output = UT.Utilities.indent(depth) + "\"@odata.id\": \"" + typedata["Url"] + "#" + simplename + "\""
+                output = UT.Utilities.indent(depth) + "\"@odata.id\": \"" + typedata["JsonUrl"] + "#" + simplename + "\""
                 return output
 
         elif typetype == "TypeDefinition":
@@ -935,33 +893,67 @@ class JsonSchemaGenerator:
         # Emit type annotations
         output += self.emit_annotations(typetable, namespace, typedata["Node"], depth, prefixuri, isnullable, ignoreannotations)
 
-        #write out reference
-		#todo: improve this logic (post-v1)
-        if typetype == "EntityType" and namespace == typedata["Namespace"] and (typedata["BaseType"] == "Resource.Resource" or typedata["Name"] == "Item" or typedata["Name"] == "ReferenceableMember" ):
-            output += self.generate_referencetype(typedata["Name"],JsonSchemaGenerator.get_ref_value_for_type(typetable, typename, namespace), depth-1)
-
         return output
 
     ################################################################################
-    # Name: generate_referencetype                                                 #
+    # Name: generate_json_for_reference_type                                       #
     # Description:                                                                 #
-    #  generates a type for a reference to the specified type                      #
+    #  generates a json payload for an unversioned reference to the specified type #
     ################################################################################
-    def generate_referencetype(self, typename, typereference, depth):
+    def generate_json_for_reference_type(self, typetable, typename, schemaname, depth, prefixuri):
 
-        output = "\n"
-        output += UT.Utilities.indent(depth) + "},\n"
-        output += UT.Utilities.indent(depth) + "\""+ typename + "-ref\": { \n"
-        output += UT.Utilities.indent(depth+1) + "\"oneOf\": [ \n"
-        output += UT.Utilities.indent(depth+2) + "{\n"
-        output += UT.Utilities.indent(depth+3) + "\"$ref\": \"" + odataSchema + "#/definitions/idRef\"\n"
-        output += UT.Utilities.indent(depth+2) + "},\n"
-        output += UT.Utilities.indent(depth+2) + "{\n"
-        output += UT.Utilities.indent(depth+3) + "\"$ref\": \"" + typereference + "\"\n"
-        output += UT.Utilities.indent(depth+2) + "}\n"
-        output += UT.Utilities.indent(depth+1) + "]"
+        output = ""
+        output += UT.Utilities.indent(depth+2) + "\"oneOf\": [ \n"
+        output += UT.Utilities.indent(depth+3) + "{\n"
+        output += UT.Utilities.indent(depth+4) + "\"$ref\": \"" + odataSchema + "#/definitions/idRef\"\n"
+        output += UT.Utilities.indent(depth+3) + "}"
 
+        #for each type that derives from this type
+        derivedtypes = self.get_derived_types(typetable, typename, schemaname)
+        for derivedtype in derivedtypes:
+            output += ",\n"
+            output += UT.Utilities.indent(depth+3) + "{\n"
+            output += UT.Utilities.indent(depth+4) + "\"$ref\": \"" + prefixuri + derivedtype["Namespace"] + ".json#/definitions/" + derivedtype["Name"] + "\"\n"
+            output += UT.Utilities.indent(depth+3) + "}"
+
+        output += "\n"
+        output += UT.Utilities.indent(depth+2) + "]\n"
+        output += UT.Utilities.indent(depth+1) + "}\n"
+        output += UT.Utilities.indent(depth) + "}"
+  
         return output
+
+    ################################################################################
+    # Name: get_derived_types                                                      #
+    # Description:                                                                 #
+    #  Generates a list of all types derived from current type                     #
+    ################################################################################
+    def get_derived_types(self, typetable, basetypename, basetypenamespace):
+
+        basetypename = basetypenamespace + "." + basetypename
+        typenames = typetable.keys()
+        parsedtypes=[]
+        derivedtypes = []
+
+        for currentType in typenames:
+            typedata = typetable[currentType]
+            typetype = typedata["TypeType"]
+            typename = typedata["Name"]
+            typenamespace = typedata["Namespace"]
+        
+            try :
+                # If this type has been parsed already do nothing
+                index = parsedtypes.index(typename + ":" + typenamespace)
+
+            except :
+                # This type has not been parsed yet
+                parsedtypes.append(typename + ":" + typenamespace)
+                if ( typetype == "EntityType" ):
+                    # Check if the type being processed is derived from Resource or ResourceCollection
+                    if ( self.has_basetype(typetable, typedata, basetypename) ): 
+                        derivedtypes.append(typedata)
+
+        return derivedtypes
 
     ################################################################################
     # Name: generate_typetable                                                     #
@@ -980,8 +972,8 @@ class JsonSchemaGenerator:
 
         root = ET.fromstring(data)
         typetable = {}
+        namespaces = []
 
-        #todo:fix this?
         refuri = ""
 
         for reference in root.iter("{http://docs.oasis-open.org/odata/ns/edmx}Reference"):
@@ -989,38 +981,38 @@ class JsonSchemaGenerator:
 
             #todo: only load types from referenced namespaces			      
             if not refuri in JsonSchemaGenerator.parsed:
-                typetable = dict(list(typetable.items()) + list(JsonSchemaGenerator.generate_typetable(refuri, directory, True).items()))
+                typetable = dict(list(typetable.items()) + list(JsonSchemaGenerator.generate_typetable(refuri, directory, True)["Typetable"].items()))
     
         for dataservices in root.iter("{http://docs.oasis-open.org/odata/ns/edmx}DataServices"):
             current_file_typetable = {}
             namespace = ""
             alias = ""
-            #all_complex_types = True 
             for schema in dataservices.iter("{http://docs.oasis-open.org/odata/ns/edm}Schema"):
                 namespace = schema.attrib["Namespace"]
-                alias = namespace
+                if(is_from_refuri == False):
+                   namespaces.append(namespace)
 
+                alias = namespace
                 if "Alias" in schema.attrib.keys():
                     alias = schema.attrib["Alias"]
+
+                jsonurl = schemaBaseLocation + alias + ".json"
  
                 typekinds = ["EntityType", "ComplexType", "TypeDefinition", "EnumType", "Action"]
 
                 for typekind in typekinds:
                     for typedata in schema.iter("{http://docs.oasis-open.org/odata/ns/edm}" + typekind):
-                        # If we were able to get here it means there was atleast one EntityType
-                        #if typekind == "EntityType":
-                        #    all_complex_types = False
 
                         # Populate data related to the type
                         typename = typedata.attrib["Name"]
                         typeentry = {}
                         typeentry["TypeType"] = typekind
-                        typeentry["Url"] = url + ".json"
+                        typeentry["JsonUrl"] = jsonurl 
                         typeentry["Namespace"] = namespace
                         typeentry["Alias"] = alias
                         typeentry["Name"] = typename
                         typeentry["Node"] = typedata
-                        
+
                         # Set base type
                         if "BaseType" in typedata.attrib:
                             typeentry["BaseType"] = typedata.attrib["BaseType"]
@@ -1041,7 +1033,11 @@ class JsonSchemaGenerator:
                         current_file_typetable[alias + "." + typename] = typeentry
             
             typetable.update(current_file_typetable)
-        return typetable
+
+        typeinfo = {}
+        typeinfo["Namespaces"] = namespaces
+        typeinfo["Typetable"] = typetable
+        return typeinfo
 
     ################################################################################################################
     # Name: get_referenced_types_from_same_namespace                                                               #
@@ -1065,14 +1061,11 @@ class JsonSchemaGenerator:
             # Extract namespace from property typename
             property_typename_parts = property_typename.rsplit(".", 1)
             property_type_namespace = property_typename_parts[0]
-            if( ( property_type_namespace == type_namespace) or 
-                ( (property_type_namespace + "." + JsonSchemaGenerator.schema_version) == type_namespace) or 
-                ( property_type_namespace == (type_namespace + "." + JsonSchemaGenerator.schema_version) ) ):
+            if (property_type_namespace == type_namespace):  
                 referenced_types.append(property_typename)
 
-
         # Properties
-        # Loop though the nodes and find the type of Navigation propeties.
+        # Loop though the nodes and find the type of propeties.
         for property in typedata.iter("{http://docs.oasis-open.org/odata/ns/edm}Property"):
             property_typename = property.attrib["Type"]
             property_typename = JsonSchemaGenerator.extract_underlyingtype_from_collectiontype(property_typename)
@@ -1081,65 +1074,10 @@ class JsonSchemaGenerator:
             property_typename_parts = property_typename.rsplit(".", 1)
             property_type_namespace = property_typename_parts[0]
             
-            if( ( property_type_namespace == type_namespace) or 
-                ((property_type_namespace + "." + JsonSchemaGenerator.schema_version) == type_namespace) or 
-                (property_type_namespace == (type_namespace + "." + JsonSchemaGenerator.schema_version) ) ):
+            if ( property_type_namespace == type_namespace):  
                 referenced_types.append(property_typename)
         
         return referenced_types
-   
-
-    ##########################################################################################################
-    # Name: generate_json_for_file_with_entitytypes                                                          #
-    # Description:                                                                                           #
-    #  - Generates the output json for the file that contains at least one entity type.                      #
-    #  - For the scenario where there are more than one entity types, this method returns a list of outputs. #
-    #    Each entry in the list corresponds to an entity type.                                               #
-    #  - It also handles the scenario where there are entities but one is used as a sub-type/complex type.   #
-    ##########################################################################################################
-    def generate_json_for_file_with_entitytypes(self, typetable, depth, isnullable, filename, namespace, prefixuri, ignoreannotations = []):
-
-        typenames = typetable.keys()
-        output = ''
-        outputs = {}
-        parsedtypes = []
-        filename_without_uriparts = JsonSchemaGenerator.extract_filenamefrom_url(filename)
-
-        # Loop through all the types defined in the file and generate output
-        for currentType in typenames:
-            typedata = typetable[currentType]
-            typetype = typedata["TypeType"]
-            currentNamespace = typedata["Namespace"]
-        
-            try :
-                # If this type has been parsed already do nothing
-                index = parsedtypes.index(typedata["Name"] + ":" + currentNamespace)
-
-            except :
-                # This type has not been parsed yet
-                if ( (namespace == currentNamespace) and (typetype == "EntityType") ):
-                        parsedtypes.append(typedata["Name"] + ":" + currentNamespace)
-                        output = ""
-                        # Check if the type being processed is derived from Resource.ReferenceableMember
-                        if ( typedata["BaseType"] == "Resource.Resource" or typedata["BaseType"] == "Resource.ResourceCollection" ): 
-                            JsonSchemaGenerator.current_schema_classname = JsonSchemaGenerator.get_typename_without_namespace(currentType)
-
-                            # Generate Json for the type
-                            refvalue = JsonSchemaGenerator.get_ref_value_for_type(typetable, currentType, namespace)
-                            output += UT.Utilities.indent(depth) + "\"$ref\": \"" + refvalue + "\""
-
-                            # Get definitions block, append it if there is something in it.
-                            if filename_without_uriparts[:filename_without_uriparts.find(".")] == JsonSchemaGenerator.current_schema_classname:
-                                definition_block = self.generate_definition_block(typetable, depth, isnullable, namespace, prefixuri)
-                                if definition_block != "":
-                                    output += ",\n"
-                                    output += definition_block
-
-                            keyname = JsonSchemaGenerator.current_schema_classname + "." + JsonSchemaGenerator.schema_version
-                            outputs[keyname] = output
-
-        return outputs
-
 
     ################################################################################################################
     # Name: generate_definition_block                                                                              #
@@ -1160,10 +1098,11 @@ class JsonSchemaGenerator:
             typetype = typedata["TypeType"]
             currentNamespace = typedata["Namespace"]
             basetype = typedata["BaseType"]
+            typename = typedata["Name"]
         
             try :
                 # If this type has been parsed already do nothing
-                index = parsedtypes.index(typedata["Name"] + ":" + currentNamespace)
+                index = parsedtypes.index(typename + ":" + currentNamespace)
             except :
                 # This type has not been parsed yet. Process it now.
                 if (namespace == currentNamespace and self.is_inline_type(typedata) ):
@@ -1174,15 +1113,17 @@ class JsonSchemaGenerator:
                         output += UT.Utilities.indent(depth) + "\"definitions\":{\n"
 
                     # Start type definition
-                    output += UT.Utilities.indent(depth+1) + "\"" + typedata["Name"] + "\":{\n"
+                    output += UT.Utilities.indent(depth+1) + "\"" + typename + "\":{\n"
                     # Add it to the list so that it does not get generated again.
-                    parsedtypes.append(typedata["Name"] + ":" + currentNamespace)
+                    parsedtypes.append(typename + ":" + currentNamespace)
 
                     # Generate JSON for the type and append it to the output
-                    if (typetype != "Action"):
-                        output += self.generate_json_for_type(typetable, currentType, depth+2, namespace, prefixuri, False, True)
+                    if (typetype == "Action"):
+                        output += self.get_action_definition(typetable, typedata, depth + 1, prefixuri)
+                    elif ( basetype == "Resource.Resource" ):
+                        output += self.generate_json_for_reference_type(typetable, typename, namespace, depth + 1, prefixuri)
                     else:
-                        output += self.get_action_definition(typetable, typetable[currentType], depth + 1, prefixuri)
+                        output += self.generate_json_for_type(typetable, currentType, depth+2, namespace, prefixuri, False, True)
 
                     output += "\n" + UT.Utilities.indent(depth + 1) + "}"
                     type_count += 1
@@ -1193,24 +1134,6 @@ class JsonSchemaGenerator:
 
         return output
 
-
-    ##########################################################################################
-    # Name: generate_json_file_with_definition_block                                         #
-    # Description:                                                                           #
-    #  Generates the json file content that contains a definitions block                     #
-    ##########################################################################################
-    def generate_json_file_with_definition_block(self, typetable, depth, isnullable, filename, namespace, prefixuri, ignoreannotations = []):
-                
-        output = ''
-        outputs = {}
-        filename = JsonSchemaGenerator.extract_filenamefrom_url(filename)
-        output = self.generate_definition_block(typetable, depth, isnullable, namespace, prefixuri)
-        # Put it in a list as the function that will generate file/output on screen expects it to come out as a list.
-        outputs = {filename : output}
-
-        return outputs
- 
-
     ##############################################################################
     # Name: generate_json_for_file                                               #
     # Description:                                                               #
@@ -1218,56 +1141,87 @@ class JsonSchemaGenerator:
     ##############################################################################
     def generate_json_for_file(self, typetable, depth, isnullable, filename, namespace, prefixuri, ignoreannotations = []):
 
-        outputs = {}
-    
-        # Get the scenario for which the Json is to be generated.
-        JsonSchemaGenerator.current_scenario = Scenario.none
-        JsonSchemaGenerator.current_scenario = self.get_scenario(typetable)
-        
-        # If there are only complex types or only types derived from RefrencableMembers.
-        if (JsonSchemaGenerator.current_scenario == Scenario.only_complexTypes):
-            outputs = self.generate_json_file_with_definition_block(typetable, depth, isnullable, filename, namespace, prefixuri, ignoreannotations)
-        else:
-            outputs = self.generate_json_for_file_with_entitytypes(typetable, depth, isnullable, filename, namespace, prefixuri, ignoreannotations)
+        output = ""
 
-        return outputs
-    
-    
+        # If there are any types that derive from Resource.Resource, reference them
+        typenames = typetable.keys()
+        parsedtypes = []
+        validationtypes = []
+        validationtypecount = 0
+
+        # Loop through all the types defined in the file and generate output
+        for currentType in typenames:
+            typedata = typetable[currentType]
+            typetype = typedata["TypeType"]
+            typename = typedata["Name"]
+            typenamespace = typedata["Namespace"]
+        
+            try :
+                # If this type has been parsed already do nothing
+                index = parsedtypes.index(typename + ":" + typenamespace)
+
+            except :
+                # This type has not been parsed 
+                parsedtypes.append(typename + ":" + typenamespace)
+                if ( (typenamespace == namespace) and (typedata["IsFromRefUri"] == False) and (typetype == "EntityType") and ( self.has_basetype(typetable, typedata, "Resource.Resource" ) or self.has_basetype(typetable, typedata, "Resource.ResourceCollection") ) ): 
+                    validationtypecount += 1
+                    validationtypes.append(JsonSchemaGenerator.get_ref_value_for_type(typetable, currentType, namespace))
+
+        if(validationtypecount > 1):
+           output += UT.Utilities.indent(depth) + "\"oneOf\": [\n"
+           first = True
+           for validationtype in validationtypes:
+               if (first == True):
+                   first=False
+               else:
+                   output += ",\n"
+               output += UT.Utilities.indent(depth + 1) + "{ \"$ref\": \"" + validationtype + "\" }"
+           output += "\n"
+           output += UT.Utilities.indent(depth) + "],\n"
+
+#todo: clean up conditional logic
+        elif validationtypecount == 1:
+           output += UT.Utilities.indent(depth) + "\"$ref\": \"" + validationtypes[0] + "\",\n"
+
+		#now generate definition block
+        output += self.generate_definition_block(typetable, depth, isnullable, namespace, prefixuri)
+
+        return output
+
     ##########################################################################################################
-    # Name: geneate_json_files                                                                               #
+    # Name: generate_json_files                                                                               #
     # Description:                                                                                           #
     #  Consumes the results that were returned as final output and generates the corresponsing JSON files.   #
     ##########################################################################################################
     @staticmethod
-    def geneate_json_files(jsonresults):
-
+    def generate_json_files(name, results):
         screenoutput = ''
         depth = 0
 
         # Loop through all the results and 
-        for result in jsonresults.keys():                
-                    screenoutput += "\nContent-type: application/json\n"
-                    # return the JSON result
-                    fileoutput  = ''
-                    # Insert the starting bracket
-                    fileoutput += UT.Utilities.indent(depth) + "{\n"
-                    # Add the Schema tag
-                    fileoutput += UT.Utilities.indent(depth+1) + "\"$schema\": \"" + redfishSchema + "\",\n"
-                    fileoutput += UT.Utilities.indent(depth+1) + "\"title\": \"" + result + "\",\n"
-                    # Fill in the result
-                    fileoutput += jsonresults[result]
-                    # Add Copyright
-                    fileoutput += ",\n"
-                    fileoutput += UT.Utilities.indent(depth+1) + "\"copyright\": \"Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.\"\n"
-                    # End starting bracket
-                    fileoutput += UT.Utilities.indent(depth) + "}\n"
-                    screenoutput += fileoutput
-                    filename = result + ".json"
+        screenoutput += "\nContent-type: application/json\n"
+        # return the JSON result
+        fileoutput  = ''
+        # Insert the starting bracket
+        fileoutput += UT.Utilities.indent(depth) + "{\n"
+        # Add the Schema tag
+        fileoutput += UT.Utilities.indent(depth+1) + "\"$schema\": \"" + redfishSchema + "\",\n"
+        fileoutput += UT.Utilities.indent(depth+1) + "\"title\": \"" + name + "\",\n"
+        # Fill in the result
+        fileoutput += results
+        # Add Copyright
+        fileoutput += ",\n"
+        fileoutput += UT.Utilities.indent(depth+1) + "\"copyright\": \"Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.\"\n"
+        # End starting bracket
+        fileoutput += UT.Utilities.indent(depth) + "}\n"
+        screenoutput += fileoutput
+        filename = name + ".json"
+
 #fix this for web use
-                    filename="json" + "\\" + filename
-                    file = open(filename, "wb")
-                    file.write(bytes(fileoutput, 'utf-8'))
-                    file.close()
+        filename="json" + "\\" + filename
+        file = open(filename, "wb")
+        file.write(bytes(fileoutput, 'utf-8'))
+        file.close()
             
         return screenoutput
 
@@ -1299,29 +1253,16 @@ class JsonSchemaGenerator:
 
             # Using post_filename_string figureout what was passed i.e. typename or namespace.
             post_filename_string = url[filename_end + 1:]
-
-            # Check if there is anything after #
-            if len(post_filename_string) > 0:
-                
-                # Split the string based on dots .
-                post_filename_string_list = post_filename_string.split('.')
-                
-                # If the length of the list is greater than 1 and the last item in the list is not a number then we have a typename else its a namespace
-                if( (len(post_filename_string_list) > 1) and ( post_filename_string_list[-1].isdigit() == False )):
-                    result.update({'typename' : post_filename_string})
-                else:
-                    result.update({'namespace' : post_filename_string})                
-            else:
-                incorrect_url = True
+            result.update({'namespace' : post_filename_string})                
 
         #hack to deal emulate parse logic -- todo: fix parse logic
-        elif url.endswith(".metadata"):
+        elif url.endswith(".xml"):
             prefixuri =  schemaLocation
-            lastindex = url.find(".metadata")
-            filename=url[:lastindex]
+            lastindex = url.find(".xml")
+            filename=url
             result.update({'filename' : prefixuri + filename})
             result.update({'prefixuri' : prefixuri})
-            result.update({'namespace' : filename})
+            result.update({'namespace' : filename[:lastindex] + ".1.0.0"})
 
         if incorrect_url == True:
             result.update({'error' : 'Incorrect URL - Please specify a URL like:\n 1. http://<filename>#<namespace> or \n 2. http://<filename>#<datatype>\n e.g. http://localhost:9080/rest/v1/schemas.dmtf.org/redfish/v1/Chassis#Chassis.Chassis'})
@@ -1377,7 +1318,7 @@ def main():
 		                
     elif (directory != ""):
          for file in os.listdir(directory):
-             if ( file.endswith(".metadata") ):
+             if ( file.endswith(".xml") ):
                print("generating JSON for: " + file)
                JsonSchemaGenerator.parsed = []
                generate_json(file, directory)          
@@ -1427,45 +1368,25 @@ def generate_json(url, directory):
             
         jsonresults = {}
             
-        current_schema = ''
-        # We support two scenarios:
-        # 1. Filename and Typename provided - service will convert the specific type in the file.
-        # 2. FileName and Namespace provided - service will convert only types in given namespace.
-
-        if len(typename) > 0:
-            # Create JSON schema for a specific type
-            schema_version_value = JsonSchemaGenerator.get_schemaversion_from_typename(typename)
-
+        # Create the type table
+        typeinfo = JsonSchemaGenerator.generate_typetable(filename, directory, False)
+        typetable = typeinfo["Typetable"]
+        namespaces = typeinfo["Namespaces"]
+			    
+        # Create a JSON schema representation of the indicated file/namespace
+        for currentnamespace in namespaces:
             # Create an object of JsonSchemaGenerator
-            current_schema = JsonSchemaGenerator(schema_version_value)
-                
-            # Create the type table
-            typetable = JsonSchemaGenerator.generate_typetable(filename, directory, False)
-                
-            # Generate JSON for type
-            jsonresult = current_schema.generate_json_for_type(typetable, typename, depth+1, "", prefixuri, False, False)
-            targetfilename = typename + "_type"
-            jsonresults[targetfilename] = jsonresult
+            current_schema = JsonSchemaGenerator(currentnamespace)
 
-        else:
-            # Create a JSON schema representation of the indicated file/namespace
-            schema_version_value = JsonSchemaGenerator.get_schemaversion_from_namespace(namespace)
-                
-            # Create an object of JsonSchemaGenerator
-            current_schema = JsonSchemaGenerator(schema_version_value)
-                
-            # Create the type table
-            typetable = JsonSchemaGenerator.generate_typetable(filename, directory, False)
-                
             # Get Json results
-            jsonresults = current_schema.generate_json_for_file(typetable, depth+1, "", filename, namespace, prefixuri, False)
+            jsonresults = current_schema.generate_json_for_file(typetable, depth+1, "", filename, currentnamespace, prefixuri, False)
 
-        # Generate the files with the results and then get the screen output
-        screenoutput = JsonSchemaGenerator.geneate_json_files(jsonresults)
+            # Generate the files with the results and then get the screen output
+            screenoutput = JsonSchemaGenerator.generate_json_files(currentnamespace, jsonresults)
                 
     return screenoutput
 
 
 if __name__ == "__main__":
     result = main()
-   # print(result)
+#    print(result)

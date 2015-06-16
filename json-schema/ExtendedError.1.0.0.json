@@ -23,9 +23,13 @@
                     "longDescription": "This property shall contain a human readable message."
                 },
                 "@Message.ExtendedInfo": {
-                    "$ref": "Message.1.0.0#/Messages"
-                }
+		            "type": "array",
+		            "items": {
+			            "$ref": "Message.1.0.0.json#/definitions/Message"
+		            }
+                },
             },
+            "longDescription": "The value of this resource shall be an array of Message objects used to describe one or more conditions related to the request.",
             "required":  [
                 "code",
                 "message",

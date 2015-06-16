@@ -23,18 +23,18 @@
                     "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/type"
                 },
                 "Oem": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Oem",
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Oem",
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Id": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Id"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Id"
                 },
                 "Description": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Description"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Description"
                 },
                 "Name": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Name"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Name"
                 },
                 "Events": {
                     "type": "array",
@@ -51,33 +51,6 @@
             "description": "This is the schema definition for Events.  It represents the properties for the events themselves and not subscriptions or any other resource.",
             "longDescription": "This resource shall be used to represent an event for a Redfish implementation."
         },
-        "Event-ref": { 
-            "oneOf": [ 
-                {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/idRef"
-                },
-                {
-                    "$ref": "#/definitions/Event"
-                }
-            ]
-        },
-        "EventType":{
-            "type": "string",
-            "enum": [
-                "StatusChange",
-                "ResourceUpdated",
-                "ResourceAdded",
-                "ResourceRemoved",
-                "Alert"
-            ],
-            "enumDescriptions": {
-                "StatusChange": "The status of this resource has changed",
-                "ResourceUpdated": "The value of this resource has been updated",
-                "ResourceAdded": "A resource has been added",
-                "ResourceRemoved": "A resource has been removed",
-                "Alert": "A condition exists which requires attention"
-            }
-        },
         "EventRecord":{
             "type": "object",
             "patternProperties": { 
@@ -89,7 +62,7 @@
             "additionalProperties": false,
             "properties": {
                 "Oem": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Oem",
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Oem",
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
@@ -152,7 +125,7 @@
                     "longDescription": "This property shall contain a client supplied context for the ListnerDestination to which this event is being sent."
                 },
                 "OriginOfCondition": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Item-ref",
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Item",
                     "readonly": true,
                     "description": "This indicates the resource that originated the condition that caused the event to be generated.",
                     "longDescription": "The value of this property shall contain the URI of the resource that caused the event to be generated."
@@ -161,7 +134,26 @@
             "required": [
                 "EventType",
                 "MessageId"
-            ]
+            ],
+            "description": "This is the base type for addressable members of an array.",
+            "longDescription": "Array members can be referenced using the value returned in the @odata.id property which may or may not be a dereferenceable URL. The @odata.id of this entity shall be the location of this element within an Item."
+        },
+        "EventType":{
+            "type": "string",
+            "enum": [
+                "StatusChange",
+                "ResourceUpdated",
+                "ResourceAdded",
+                "ResourceRemoved",
+                "Alert"
+            ],
+            "enumDescriptions": {
+                "StatusChange": "The status of this resource has changed",
+                "ResourceUpdated": "The value of this resource has been updated",
+                "ResourceAdded": "A resource has been added",
+                "ResourceRemoved": "A resource has been removed",
+                "Alert": "A condition exists which requires attention"
+            }
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."

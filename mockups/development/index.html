@@ -2,7 +2,7 @@
     "@Redfish.Copyright": "Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#ServiceRoot",
     "@odata.id": "/redfish/v1",
-    "@odata.type": "#ServiceRoot.1.00.0.ServiceRoot",
+    "@odata.type": "#ServiceRoot.1.0.0.ServiceRoot",
     "Id": "RootService",
     "Name": "Root Service",
     "RedfishVersion": "1.00.0",
@@ -33,6 +33,11 @@
     },
     "JsonSchemas": {
         "@odata.id": "/redfish/v1/JsonSchemas"
+    },
+    "Links": {
+        "Sessions": {
+            "@odata.id": "/redfish/v1/SessionService/Sessions"
+        }
     },
     "Oem": {}
 }
