@@ -1,24 +1,8 @@
 {
     "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0.json",
     "title": "Redundancy.1.0.0",
+,
     "definitions":{
-        "RedundancyMode":{
-            "type": "string",
-            "enum": [
-                "Failover",
-                "N+1",
-                "LoadBalanced",
-                "Sparing",
-                "LimitedSparing"
-            ],
-            "enumDescriptions": {
-                "Failover": "Failure of the primary unit will cause a secondary unit to take over the functions of the primary unit",
-                "N+1": "Multiple units are available such that the system can continue normal operation if one unit fails",
-                "LoadBalanced": "Multiple units are available such that the system will continue operation at a reduced capacity if one unit fails",
-                "Sparing": "A spare unit is available to take over the function of a failed unit",
-                "LimitedSparing": "A spare unit is available to take over the function of a failed unit, but may require intervention to facilitate the transition"
-            }
-        },
         "Redundancy":{
             "type": "object",
             "patternProperties": { 
@@ -30,7 +14,7 @@
             "additionalProperties": false,
             "properties": {
                 "Oem": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Oem",
+                    "$ref": "http://schemas.dmtf.org/redfish/base/Resource.json#/definitions/Oem",
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
@@ -70,12 +54,12 @@
                     "longDescription": "The value of this property shall contain the maximum number of members allowed in the redundancy group for the current redundancy mode to still be fault tolerant."
                 },
                 "Status": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Status"
+                    "$ref": "http://schemas.dmtf.org/redfish/base/Resource.json#/definitions/Status"
                 },
                 "RedundancySet": {
                     "type": "array",
                     "items": {
-                        "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Item-ref"
+                        "$ref": "http://schemas.dmtf.org/redfish/base/Resource.json#/definitions/Item"
                     },
                     "readonly": true,
                     "description": "Contains any ids that represent components of this reduncancy set.",
@@ -92,6 +76,23 @@
             ],
             "description": "This is the redundancy definition to be used in other resource schemas.",
             "longDescription": "This object represents the Redundancy element property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification.  The value of this string shall be of the format for the reserved word *Redundancy*"
+        },
+        "RedundancyMode":{
+            "type": "string",
+            "enum": [
+                "Failover",
+                "N+1",
+                "LoadBalanced",
+                "Sparing",
+                "LimitedSparing"
+            ],
+            "enumDescriptions": {
+                "Failover": "Failure of the primary unit will cause a secondary unit to take over the functions of the primary unit",
+                "N+1": "Multiple units are available such that the system can continue normal operation if one unit fails",
+                "LoadBalanced": "Multiple units are available such that the system will continue operation at a reduced capacity if one unit fails",
+                "Sparing": "A spare unit is available to take over the function of a failed unit",
+                "LimitedSparing": "A spare unit is available to take over the function of a failed unit, but may require intervention to facilitate the transition"
+            }
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."

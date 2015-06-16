@@ -1,0 +1,35 @@
+{
+    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0.json",
+    "title": "LogService",
+    "$ref": "#/definitions/LogService",
+    "definitions":{
+        "ClearLog":{
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "description": "Link to invoke action"
+                }
+            }
+
+        },
+        "LogService":{
+                "oneOf": [ 
+                    {
+                        "$ref": "http://schemas.dmtf.org/redfish/base/odata.4.0.0.json#/definitions/idRef"
+                    },
+                    {
+                        "$ref": "http://schemas.dmtf.org/redfish/LogService.1.0.0.json#/definitions/LogService"
+                    }
+                ]
+            }
+        }
+        }
+    },
+    "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
+}

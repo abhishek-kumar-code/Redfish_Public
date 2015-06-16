@@ -1,6 +1,7 @@
 {
     "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0.json",
     "title": "Settings.1.0.0",
+,
     "definitions":{
         "Settings":{
             "type": "object",
@@ -13,13 +14,13 @@
             "additionalProperties": false,
             "properties": {
                 "@odata.context": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/context"
+                    "$ref": "http://schemas.dmtf.org/redfish/base/odata.4.0.0.json#/definitions/context"
                 },
                 "@odata.id": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/id"
+                    "$ref": "http://schemas.dmtf.org/redfish/base/odata.4.0.0.json#/definitions/id"
                 },
                 "@odata.type": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/type"
+                    "$ref": "http://schemas.dmtf.org/redfish/base/odata.4.0.0.json#/definitions/type"
                 },
                 "Time": {
                     "type": [
@@ -41,7 +42,7 @@
                     "longDescription": "The value of this property shall be the ETag of the resource to which the settings were applied, after the application.  This is here so that the client can check it against the ETag of the current resource to see if any other changes have also happened to the resource."
                 },
                 "SettingsObject": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Item-ref",
+                    "$ref": "http://schemas.dmtf.org/redfish/base/Resource.json#/definitions/Item",
                     "description": "Reference to the resource the client may PUT/PATCH to in order to change this resource.",
                     "longDescription": "The value of this property shall be the URI of the resource to which a client must do a PUT or PATCh in order to modify this resource."
                 }

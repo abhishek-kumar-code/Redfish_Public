@@ -3,16 +3,6 @@
     "title": "SerialInterface.1.0.0",
     "$ref": "#/definitions/SerialInterface",
     "definitions":{
-        "Parity":{
-            "type": "string",
-            "enum": [
-                "None",
-                "Even",
-                "Odd",
-                "Mark",
-                "Space"
-            ]
-        },
         "DataBits":{
             "type": "string",
             "enum": [
@@ -20,98 +10,6 @@
                 "6",
                 "7",
                 "8"
-            ]
-        },
-        "PinOut":{
-            "type": "string",
-            "enum": [
-                "Cisco",
-                "Cyclades",
-                "Digi"
-            ]
-        },
-        "SignalType":{
-            "type": "string",
-            "enum": [
-                "Rs232",
-                "Rs485"
-            ]
-        },
-        "ConnectorType":{
-            "type": "string",
-            "enum": [
-                "RJ45",
-                "RJ11",
-                "DB9 Female",
-                "DB9 Male",
-                "DB25 Female",
-                "DB25 Male",
-                "USB",
-                "mUSB",
-                "uUSB"
-            ]
-        },
-        "SerialInterfaceCollection":{
-            "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
-                    "description": "This property shall specify a valid odata or redfish property."
-                }
-            },
-            "additionalProperties": true,
-            "properties": {
-                "@odata.context": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/context"
-                },
-                "@odata.id": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/id"
-                },
-                "@odata.type": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/type"
-                },
-                "Members": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/SerialInterface-ref"
-                    },
-                    "readonly": true,
-                    "description": "Contains the members of this collection."
-                }
-            }
-        },
-        "FlowControl":{
-            "type": "string",
-            "enum": [
-                "None",
-                "Software",
-                "Hardware"
-            ],
-            "enumDescriptions": {
-                "None": "No flow control imposed",
-                "Software": "XON/XOFF in-band flow control imposed",
-                "Hardware": "Out of band flow control imposed"
-            }
-        },
-        "StopBits":{
-            "type": "string",
-            "enum": [
-                "1",
-                "2"
-            ]
-        },
-        "BitRate":{
-            "type": "string",
-            "enum": [
-                "1200",
-                "2400",
-                "4800",
-                "9600",
-                "19200",
-                "38400",
-                "57600",
-                "115200",
-                "230400"
             ]
         },
         "SerialInterface":{
@@ -125,27 +23,27 @@
             "additionalProperties": false,
             "properties": {
                 "@odata.context": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/context"
+                    "$ref": "http://schemas.dmtf.org/redfish/base/odata.4.0.0.json#/definitions/context"
                 },
                 "@odata.id": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/id"
+                    "$ref": "http://schemas.dmtf.org/redfish/base/odata.4.0.0.json#/definitions/id"
                 },
                 "@odata.type": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/type"
+                    "$ref": "http://schemas.dmtf.org/redfish/base/odata.4.0.0.json#/definitions/type"
                 },
                 "Oem": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Oem",
+                    "$ref": "http://schemas.dmtf.org/redfish/base/Resource.json#/definitions/Oem",
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Id": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Id"
+                    "$ref": "http://schemas.dmtf.org/redfish/base/Resource.json#/definitions/Id"
                 },
                 "Description": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Description"
+                    "$ref": "http://schemas.dmtf.org/redfish/base/Resource.json#/definitions/Description"
                 },
                 "Name": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Name"
+                    "$ref": "http://schemas.dmtf.org/redfish/base/Resource.json#/definitions/Name"
                 },
                 "InterfaceEnabled": {
                     "type": [
@@ -199,14 +97,77 @@
             "description": "This schema defines an asynchronous serial interface resource.",
             "longDescription": "This resource shall be used to represent serial resources as part of the Redfish specification."
         },
-        "SerialInterface-ref": { 
-            "oneOf": [ 
-                {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/idRef"
-                },
-                {
-                    "$ref": "#/definitions/SerialInterface"
-                }
+        "FlowControl":{
+            "type": "string",
+            "enum": [
+                "None",
+                "Software",
+                "Hardware"
+            ],
+            "enumDescriptions": {
+                "None": "No flow control imposed",
+                "Software": "XON/XOFF in-band flow control imposed",
+                "Hardware": "Out of band flow control imposed"
+            }
+        },
+        "SignalType":{
+            "type": "string",
+            "enum": [
+                "Rs232",
+                "Rs485"
+            ]
+        },
+        "StopBits":{
+            "type": "string",
+            "enum": [
+                "1",
+                "2"
+            ]
+        },
+        "BitRate":{
+            "type": "string",
+            "enum": [
+                "1200",
+                "2400",
+                "4800",
+                "9600",
+                "19200",
+                "38400",
+                "57600",
+                "115200",
+                "230400"
+            ]
+        },
+        "PinOut":{
+            "type": "string",
+            "enum": [
+                "Cisco",
+                "Cyclades",
+                "Digi"
+            ]
+        },
+        "ConnectorType":{
+            "type": "string",
+            "enum": [
+                "RJ45",
+                "RJ11",
+                "DB9 Female",
+                "DB9 Male",
+                "DB25 Female",
+                "DB25 Male",
+                "USB",
+                "mUSB",
+                "uUSB"
+            ]
+        },
+        "Parity":{
+            "type": "string",
+            "enum": [
+                "None",
+                "Even",
+                "Odd",
+                "Mark",
+                "Space"
             ]
         }
     },

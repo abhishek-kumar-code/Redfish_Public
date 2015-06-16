@@ -14,7 +14,7 @@
             "additionalProperties": false,
             "properties": {
                 "Oem": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Oem",
+                    "$ref": "http://schemas.dmtf.org/redfish/base/Resource.json#/definitions/Oem",
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
@@ -77,7 +77,7 @@
                     "longDescription": "This property shall contain a client supplied context for the ListnerDestination to which this event is being sent."
                 },
                 "OriginOfCondition": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Item-ref",
+                    "$ref": "http://schemas.dmtf.org/redfish/base/Resource.json#/definitions/Item",
                     "readonly": true,
                     "description": "This indicates the resource that originated the condition that caused the event to be generated.",
                     "longDescription": "The value of this property shall contain the URI of the resource that caused the event to be generated."
@@ -116,27 +116,27 @@
             "additionalProperties": false,
             "properties": {
                 "@odata.context": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/context"
+                    "$ref": "http://schemas.dmtf.org/redfish/base/odata.4.0.0.json#/definitions/context"
                 },
                 "@odata.id": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/id"
+                    "$ref": "http://schemas.dmtf.org/redfish/base/odata.4.0.0.json#/definitions/id"
                 },
                 "@odata.type": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/type"
+                    "$ref": "http://schemas.dmtf.org/redfish/base/odata.4.0.0.json#/definitions/type"
                 },
                 "Oem": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Oem",
+                    "$ref": "http://schemas.dmtf.org/redfish/base/Resource.json#/definitions/Oem",
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Id": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Id"
+                    "$ref": "http://schemas.dmtf.org/redfish/base/Resource.json#/definitions/Id"
                 },
                 "Description": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Description"
+                    "$ref": "http://schemas.dmtf.org/redfish/base/Resource.json#/definitions/Description"
                 },
                 "Name": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Name"
+                    "$ref": "http://schemas.dmtf.org/redfish/base/Resource.json#/definitions/Name"
                 },
                 "Events": {
                     "type": "array",
@@ -149,18 +149,6 @@
             },
             "required": [
                 "Events"
-            ],
-            "description": "This is the schema definition for Events.  It represents the properties for the events themselves and not subscriptions or any other resource.",
-            "longDescription": "This resource shall be used to represent an event for a Redfish implementation."
-        },
-        "Event-ref": { 
-            "oneOf": [ 
-                {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/idRef"
-                },
-                {
-                    "$ref": "#/definitions/Event"
-                }
             ]
         }
     },

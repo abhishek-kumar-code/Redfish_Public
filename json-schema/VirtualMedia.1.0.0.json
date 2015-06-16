@@ -3,19 +3,19 @@
     "title": "VirtualMedia.1.0.0",
     "$ref": "#/definitions/VirtualMedia",
     "definitions":{
-        "ConnectedVia":{
+        "MediaType":{
             "type": "string",
             "enum": [
-                "NotConnected",
-                "URI",
-                "Applet",
-                "Oem"
+                "CD",
+                "Floppy",
+                "USBStick",
+                "DVD"
             ],
             "enumDescriptions": {
-                "NotConnected": "No current connection",
-                "URI": "Connected to a URI location",
-                "Applet": "Connected to a client application",
-                "Oem": "Connected via an OEM-defined method"
+                "CD": "A CD-ROM format (ISO) image",
+                "Floppy": "A floppy disk image",
+                "USBStick": "An emulation of a USB storage device",
+                "DVD": "A DVD-ROM format image"
             }
         },
         "VirtualMedia":{
@@ -29,27 +29,27 @@
             "additionalProperties": false,
             "properties": {
                 "@odata.context": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/context"
+                    "$ref": "http://schemas.dmtf.org/redfish/base/odata.4.0.0.json#/definitions/context"
                 },
                 "@odata.id": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/id"
+                    "$ref": "http://schemas.dmtf.org/redfish/base/odata.4.0.0.json#/definitions/id"
                 },
                 "@odata.type": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/type"
+                    "$ref": "http://schemas.dmtf.org/redfish/base/odata.4.0.0.json#/definitions/type"
                 },
                 "Oem": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Oem",
+                    "$ref": "http://schemas.dmtf.org/redfish/base/Resource.json#/definitions/Oem",
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Id": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Id"
+                    "$ref": "http://schemas.dmtf.org/redfish/base/Resource.json#/definitions/Id"
                 },
                 "Description": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Description"
+                    "$ref": "http://schemas.dmtf.org/redfish/base/Resource.json#/definitions/Description"
                 },
                 "Name": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Name"
+                    "$ref": "http://schemas.dmtf.org/redfish/base/Resource.json#/definitions/Name"
                 },
                 "ImageName": {
                     "type": [
@@ -114,33 +114,21 @@
                     "description": "Indicates the media is write protected.",
                     "longDescription": "The value of this property shall be used to indicate if the remote device media prevents writing to that media. "
                 }
-            },
-            "description": "This is the schema definition for the Virtual Media Service.",
-            "longDescription": "This resource shall be used to represent a virtual media service for a Redfish implementation."
+            }
         },
-        "VirtualMedia-ref": { 
-            "oneOf": [ 
-                {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/idRef"
-                },
-                {
-                    "$ref": "#/definitions/VirtualMedia"
-                }
-            ]
-        },
-        "MediaType":{
+        "ConnectedVia":{
             "type": "string",
             "enum": [
-                "CD",
-                "Floppy",
-                "USBStick",
-                "DVD"
+                "NotConnected",
+                "URI",
+                "Applet",
+                "Oem"
             ],
             "enumDescriptions": {
-                "CD": "A CD-ROM format (ISO) image",
-                "Floppy": "A floppy disk image",
-                "USBStick": "An emulation of a USB storage device",
-                "DVD": "A DVD-ROM format image"
+                "NotConnected": "No current connection",
+                "URI": "Connected to a URI location",
+                "Applet": "Connected to a client application",
+                "Oem": "Connected via an OEM-defined method"
             }
         }
     },
