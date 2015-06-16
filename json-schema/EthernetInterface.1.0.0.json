@@ -124,7 +124,7 @@
                         "boolean",
                         "null"
                     ],
-                    "description": "This indicates if the speed and duplex is automatically negotiated and configured on this interface.",
+                    "description": "This indicates if the speed and duplex are automatically negotiated and configured on this interface.",
                     "longDescription": "The value of this property shall be true if auto negotiation of speed and duplex is enabled on this interface and false if it is disabled."
                 },
                 "FullDuplex": {
@@ -141,7 +141,7 @@
                         "null"
                     ],
                     "description": "This is the currently configured Maximum Transmission Unit (MTU) in bytes on this Ethernet interface.",
-                    "longDescription": "The value of this property shall be the size of largest Protocol Data Unit (PDU) that can be passed in an Ethernet (MAC) frame on this interface."
+                    "longDescription": "The value of this property shall be the size in bytes of largest Protocol Data Unit (PDU) that can be passed in an Ethernet (MAC) frame on this interface."
                 },
                 "HostName": {
                     "type": [
