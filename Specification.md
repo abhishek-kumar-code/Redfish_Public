@@ -601,19 +601,19 @@ Custom actions are requested on a resource by sending the HTTP POST method to th
 where
 * *ResourceUri* is the URL of the resource which supports invoking the action.
 * "Actions" is the name of the property containing the actions for a resource, as defined by this specification.
-* *QualifiedActionName* is the name of the action qualified by the namespace alias. 
+* *QualifiedActionName* is the namespace qualified name of the action. 
 
 The first parameter of a bound function is the resource on which the action is being invoked. The remaining parameters are represented as name/value pairs in the body of the request.
 
 Clients can query a resource directly to determine the [actions](#actions-property) that are available as well as [valid parameter values](#allowable-values) for those actions.  Some parameter information may require the client to examine the Redfish Schema corresponding to the resource. 
 
-For instance, if a Redfish Schema document `http://schemas.dmtf.org/redfish/v1/ComputerSystem.<%= DocVersion %>` defines a Reset action, in the `ComputerSystem.<%= DocVersion %>` namespace, with the alias "ComputerSystem", bound to the `ComputerSystem.Actions` type, such as this example:
+For instance, if a Redfish Schema document `http://schemas.dmtf.org/redfish/v1/ComputerSystem.xml` defines a Reset action in the `ComputerSystem` namespace, bound to the `ComputerSystem.1.0.0.Actions` type, such as this example:
 
 ~~~xml
-<Schema Name="ComputerSystem.<%= DocVersion %>" Alias="ComputerSystem">
+<Schema Name="ComputerSystem">
 ...
   <Action Name="Reset" Isbound="true">
-    <Parameter Name="Resource" Type="ComputerSystem.Actions"/>
+    <Parameter Name="Resource" Type="ComputerSystem.1.0.0.Actions"/>
     <Parameter Name="ResetType" Type="ComputerSystem.ResetType"/>
   </Action>
 ...
@@ -755,21 +755,24 @@ The service metadata describes top-level resources and resource types of the ser
 </edmx:Edmx>
 ~~~
 
-The service metadata shall include the namespaces for each of the DMTF resource types, along with the "RedfishExtensions.<%= DocVersion %>" namespace. These references may use the standard Uri for the hosted Redfish Schema definitions (i.e., on http://dmtf.org/schema) or a Url to a local version of the Redfish Schema that shall be identical to the hosted version. The namespace shall be aliased with the version-independent namespace name.
+The service metadata shall include the namespaces for each of the DMTF resource types, along with the "RedfishExtensions.1.0.0" namespace. These references may use the standard Uri for the hosted Redfish Schema definitions (i.e., on http://dmtf.org/schema) or a Url to a local version of the Redfish Schema that shall be identical to the hosted version. 
 
 ~~~xml
-<edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ServiceRoot.<%= DocVersion %>">
-	<edmx:Include Namespace="ServiceRoot.<%= DocVersion %>" Alias="ServiceRoot"/>
+<edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ServiceRoot.xml">
+	<edmx:Include Namespace="ServiceRoot"/>
+	<edmx:Include Namespace="ServiceRoot.1.0.0"/>
 </edmx:Reference>
-<edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/AccountService.<%= DocVersion %>">
-  <edmx:Include Namespace="AccountService.<%= DocVersion %>" Alias="AccountService"/>
+<edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/AccountService.xml">
+  <edmx:Include Namespace="AccountService"/>
+  <edmx:Include Namespace="AccountService.1.0.0"/>
 </edmx:Reference>
 ...
-<edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/VirtualMedia.<%= DocVersion %>">
-  <edmx:Include Namespace="VirtualMedia.<%= DocVersion %>" Alias="VirtualMedia"/>
+<edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/VirtualMedia.xml">
+  <edmx:Include Namespace="VirtualMedia"/>
+  <edmx:Include Namespace="VirtualMedia.1.0.0"/>
 </edmx:Reference>
-<edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/RedfishExtensions.<%= DocVersion %>">
-	<edmx:Include Namespace="RedfishExtensions.<%= DocVersion %>" Alias="Redfish"/>
+<edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/RedfishExtensions.xml">
+	<edmx:Include Namespace="RedfishExtensions.1.0.0" Alias="Redfish"/>
 </edmx:Reference>
 ~~~
 
@@ -788,7 +791,7 @@ The metadata document may reference additional schema documents describing OEM-s
 
 ~~~xml
 <edmx:Reference Uri="http://contoso.org/Schema/CustomTypes">
-	<edmx:Include Namespace="CustomTypes" Alias="Contoso"/>
+	<edmx:Include Namespace="CustomTypes"/>
 </edmx:Reference>
 ~~~
 
@@ -797,7 +800,7 @@ The service can annotate sets, types, actions and parameters with Redfish-define
 
 ~~~xml
 <edmx:Reference Uri="http://service/metadata/Service.Annotations">
-	<edmx:IncludeAnnotations TermNamespace="Annotations.<%= DocVersion %>" Alias="Annotations"/>
+	<edmx:IncludeAnnotations TermNamespace="Annotations.1.0.0"/>
 </edmx:Reference>
 ~~~
 	
@@ -975,10 +978,10 @@ Available actions for a resource are represented as individual properties nested
 
 Actions are represented by a property nested under "Actions" whose name is the unique URI that identifies the action. This URI shall be of the form:
 
-  **#*NamespaceAlias*.*ActionName*
+  **#*Namespace*.*ActionName*
  
 Where: 
-* *NamespaceAlias* = The namespace alias used in the reference to the Redfish Schema in which the action is defined. For Redfish resources this shall be the version-independent namespace alias. 
+* *Namespace* = The namespace used in the reference to the Redfish Schema in which the action is defined. For Redfish resources this shall be the version-independent namespace. 
 * *ActionName* = The name of the action
 
 The client may issue a GET request to this URL using a content type of `application/xml` in order to retrieve the Redfish Schema document containing the [definition of the action](#resource-actions).
@@ -987,7 +990,7 @@ The value of the property is a JSON object containing a property named "target" 
 
 The property representing the available action may be annotated with the [AllowableValues](#allowable-values) annotation in order to specify the list of allowable values for a particular parameter.
 
-For example, the following property represents the Reset action, defined in the ComputerSystem.<%= DocVersion %> namespace (aliased with the version-independent "ComputerSystem"):
+For example, the following property represents the Reset action, defined in the ComputerSystem namespace:
 
 ~~~json
 "#ComputerSystem.Reset": {
@@ -1135,7 +1138,7 @@ A resource representation in JSON may include additional annotations represented
 where
 
 * *PropertyName* = the name of the property being annotated. If omitted, the annotation applies to the entire resource.
-* *Namespace* = the name or alias of the namespace where the annotation term is defined. This namespace must be referenced by the [metadata document](#service-metadata) specified in the [context url](#context-property) of the request.
+* *Namespace* = the name of the namespace where the annotation term is defined. This namespace must be referenced by the [metadata document](#service-metadata) specified in the [context url](#context-property) of the request.
 * *TermName* = the name of the annotation term being applied to the resource or property of the resource.
 
 The client can get the definition of the annotation from the the [service metadata](#service-metadata), or may ignore the annotation entirely, but should not fail reading the resource due to unrecognized annotations, including new annotations defined within the DMTF namespace.
@@ -1179,7 +1182,7 @@ A JSON object representing a collection of resources may include additional anno
 
 where
 
-* *Namespace* = the name or alias of the namespace where the annotation term is defined. This namespace shall be referenced by the [metadata document](#service-metadata) specified in the [context url](#context-property) of the request.
+* *Namespace* = the name of the namespace where the annotation term is defined. This namespace shall be referenced by the [metadata document](#service-metadata) specified in the [context url](#context-property) of the request.
 * *TermName* = the name of the annotation term being applied to the resource collection.
 
 The client can get the definition of the annotation from the the [service metadata](#service-metadata), or may ignore the annotation entirely, but should not fail reading the response due to unrecognized annotations, including new annotations defined within the DMTF namespace.
@@ -1280,7 +1283,7 @@ Types are identified by a *Type URI*. The full URI for a type is of the form:
 
 where: 
 
-* *Namespace* = the full name or alias of the namespace in which the type is defined 
+* *Namespace* = the name of the namespace in which the type is defined 
 * *TypeName* = the name of the type
 
 The full namespace for types defined by this specification is of the form:
@@ -1294,14 +1297,14 @@ where
 * *MinorVersion* = integer: a minor update. New properties may have been added but nothing removed. Compatibility will be preserved with previous minorversions. 
 * *Errata* = integer: something in the prior version was broken and needed to be fixed.
 
-An example of a valid type namespace might be "System.<%= DocVersion %>". 
+An example of a valid type namespace might be "System.1.0.0". 
 
 #### Type Identifiers in JSON
 Types used within a JSON payload shall be defined in, or referenced, by the [service metadata](#service-metadata).
  
 Resource types defined by this specification shall be referenced in JSON documents using the full (versioned) namespace name. 
 
-Non-resource types (for example enumerations, complex types, and actions) shall be referenced in JSON documents using the version-independent namespace alias defined in the [service metadata](#service-metadata).
+Non-resource types (for example enumerations, complex types, and actions) shall be referenced in JSON documents using the version-independent namespaces defined in the [service metadata](#service-metadata).
 
 NOTE: Refer to the [Security](#security) section for security implications of Data Model & Schema
 
@@ -1371,7 +1374,7 @@ Redfish Schemas may reference types defined in other schema documents.  In the O
 
 The reference element specifies the `Uri` of the Odata schema representation document describing the referenced type and has one or more child `Include` elements that specify the `Namespace` attribute containing the types to be referenced, along with an optional `Alias` attribute for that namespace.
 
-Type definitions generally reference the OData and DMTF namespaces for common type annotation terms, and resource type definitions reference the DMTF Resource.<%= DocVersion %> namespace for base types. Redfish OData Schema representations that include measures such as temperature, speed, or dimensions generally include the [OData Measures namespace](#OData-Measures). 
+Type definitions generally reference the OData and Redfish namespaces for common type annotation terms, and resource type definitions reference the Redfish Resource.<%= DocVersion %> namespace for base types. Redfish OData Schema representations that include measures such as temperature, speed, or dimensions generally include the [OData Measures namespace](#OData-Measures). 
 
 ~~~xml
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
@@ -1381,11 +1384,12 @@ Type definitions generally reference the OData and DMTF namespaces for common ty
     Uri="http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml">
     <edmx:Include Namespace="Org.OData.Measures.V1" Alias="OData.Measures"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Extensions.<%= DocVersion %>">
-	<edmx:Include Namespace="RedfishExtensions.<%= DocVersion %>" Alias="Redfish"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/RedfishExtensions.xml">
+	<edmx:Include Namespace="RedfishExtensions.1.0.0" Alias="Redfish"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.<%= DocVersion %>">
-    <edmx:Include Namespace="Resource.<%= DocVersion %>" Alias="Resource"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.xml">
+    <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.1.0.0"/>
   </edmx:Reference>
 ~~~
 
@@ -1397,7 +1401,7 @@ The Odata Schema element is a child of the `DataServices` element, which is a ch
 
 ~~~xml
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MyTypes.<%= DocVersion %>" Alias="MyTypes">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MyTypes.1.0.0">
 
       <!-- Type definitions go here -->
 
@@ -1522,7 +1526,7 @@ The value of the type attribute for a collection-valued property is of the form:
 
  Collection(*NamespaceQualifiedTypeName*)
 
-where *NamespaceQualifiedTypeName* is the namespace or alias qualified name of the primitive, structured, or enumeration type.
+where *NamespaceQualifiedTypeName* is the namespace qualified name of the primitive, structured, or enumeration type.
 
 ##### Additional Properites
 
@@ -1588,9 +1592,9 @@ The string values for the Units of Measure annotation shall be taken from **TODO
 
 #### Reference Properties
 
-Properties that reference other resources are represented as reference properties using the `NavigationProperty` element. The `NavigationProperty` element specifies the `Name` and namespace (or alias) qualified [`Type`](#property-types) of the related resource(s).
+Properties that reference other resources are represented as reference properties using the `NavigationProperty` element. The `NavigationProperty` element specifies the `Name` and namespace qualified [`Type`](#property-types) of the related resource(s).
 
-If the property references a single type, the value of the type attribute is the namespace (or alias) qualified name of the related resource type.
+If the property references a single type, the value of the type attribute is the namespace qualified name of the related resource type.
 
 ~~~xml
       <NavigationProperty Name="RelatedType" Type="MyTypes.TypeB">
@@ -1604,7 +1608,7 @@ If the property references a collection of resources, the value of the type attr
 
  Collection(NamespaceQualifiedTypeName)
 
-where NamespaceQualifiedTypeName is the namespace (or alias) qualified name of the type of related resources.
+where NamespaceQualifiedTypeName is the namespace qualified name of the type of related resources.
 
 ~~~xml
       <NavigationProperty Name="RelatedType" Type="Collection(MyTypes.TypeB)">
@@ -1680,7 +1684,7 @@ In the context of this section, the term "OEM" refers to any company, manufactur
 Correct use of the Oem property requires defining the metadata for an OEM-specified complext type that can be referenced within the Oem property. The following fragment is an example of an XML schema that defines a pair of OEM-specific properties under the complex type "AnvilType1". (Other schema elements that would typically be present, such as XML and Odata schema description identifiers, are not shown in order to simplify the example).  
 
 ~~~xml
-<Schema Name="Contoso.v.v.v" Alias="contoso">
+<Schema Name="Contoso.v.v.v">
 . . .
   <ComplexType Name="AnvilType1">
     <Property Name="slogan" Type="Edm.String"/>
