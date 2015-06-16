@@ -80,7 +80,6 @@ class Utilities:
     def open_url(url, directory):
 
         # TODO: handle cases where URL is malformed
-
         try:
             connections = {}
             hostStart = url.find("//")
