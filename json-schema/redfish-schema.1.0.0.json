@@ -9,7 +9,7 @@
             "$ref": "http://json-schema.org/draft-04/schema"
         }
     ],
-    "definition": {
+    "definitions": {
         "readonly": {
             "type": "boolean",
             "description": "This property shall designate a property to be readonly when set to true."
@@ -36,16 +36,16 @@
     },
     "properties": {
         "readonly": {
-            "$ref": "#definition/readonly"
+            "$ref": "#/definitions/readonly"
         },
         "longDescription": {
-            "$ref": "#definition/longDescription"
+            "$ref": "#/definitions/longDescription"
         },
         "copyright": {
-            "$ref": "#definition/copyright"
+            "$ref": "#/definitions/copyright"
         },
         "enumDescriptions": {
-          "$ref": "#definition/enumDescriptions"
+          "$ref": "#/definitions/enumDescriptions"
         }
     }
 }
