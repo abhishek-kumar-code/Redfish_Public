@@ -1,0 +1,20 @@
+{
+    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0.json",
+    "title": "JsonSchemaFile",
+    "$ref": "#/definitions/SchemaFile",
+    "definitions":{
+        "SchemaFile":{
+                "oneOf": [ 
+                    {
+                        "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/idRef"
+                    },
+                    {
+                        "$ref": "http://schemas.dmtf.org/redfish/JsonSchemaFile.1.0.0.json#/definitions/SchemaFile"
+                    }
+                ]
+            }
+        }
+        }
+    },
+    "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
+}

@@ -23,18 +23,29 @@
                     "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/type"
                 },
                 "Oem": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Oem",
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Oem",
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Id": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Id"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Id"
                 },
                 "Description": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Description"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Description"
                 },
                 "Name": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Name"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Name"
+                },
+                "Status": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Status"
+                },
+                "ServiceEnabled": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "description": "This indicates whether this service is enabled.",
+                    "longDescription": "The value of this property shall be a boolean indicating whether this service is enabled."
                 },
                 "AuthFailureLoggingThreshold": {
                     "type": "number",
@@ -85,13 +96,13 @@
                     "minimum": 0
                 },
                 "Accounts": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/ManagerAccountCollection.1.0.0.json#/definitions/ManagerAccountCollection-ref",
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/ManagerAccountCollection.json#/definitions/ManagerAccountCollection",
                     "readonly": true,
                     "description": "Link to a collection of Manager Accounts",
                     "longDescription": "This property shall contain the link to a collection of type ManagerAccountCollection."
                 },
                 "Roles": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/RoleCollection.1.0.0.json#/definitions/RoleCollection-ref",
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/RoleCollection.json#/definitions/RoleCollection",
                     "readonly": true,
                     "description": "Link to a collection of Roles",
                     "longDescription": "This property shall contain the link to a collection of type RoleCollection."
@@ -99,16 +110,6 @@
             },
             "description": "This is the schema definition for the Account Service.  It represents the properties for the service itself and has links to the actual list of accounts.",
             "longDescription": "This resource shall be used to represent a management account service for a Redfish implementation."
-        },
-        "AccountService-ref": { 
-            "oneOf": [ 
-                {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/idRef"
-                },
-                {
-                    "$ref": "#/definitions/AccountService"
-                }
-            ]
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."

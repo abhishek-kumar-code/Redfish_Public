@@ -3,21 +3,6 @@
     "title": "LogService.1.0.0",
     "$ref": "#/definitions/LogService",
     "definitions":{
-        "ClearLog":{
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "title": {
-                    "type": "string",
-                    "description": "Friendly action name"
-                },
-                "target": {
-                    "type": "string",
-                    "description": "Link to invoke action"
-                }
-            }
-
-        },
         "LogService":{
             "type": "object",
             "patternProperties": { 
@@ -38,18 +23,26 @@
                     "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/type"
                 },
                 "Oem": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Oem",
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Oem",
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Id": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Id"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Id"
                 },
                 "Description": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Description"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Description"
                 },
                 "Name": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Name"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Name"
+                },
+                "ServiceEnabled": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "description": "This indicates whether this service is enabled.",
+                    "longDescription": "The value of this property shall be a boolean indicating whether this service is enabled."
                 },
                 "MaxNumberOfRecords": {
                     "type": "number",
@@ -112,12 +105,12 @@
                     "description": "The Actions object contains the available custom actions on this resource."
                 },
                 "Status": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Status"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Status"
                 },
                 "Entries": {
                     "type": "array",
                     "items": {
-                        "$ref": "http://schemas.dmtf.org/redfish/v1/LogEntry.1.0.0.json#/definitions/LogEntry-ref"
+                        "$ref": "http://schemas.dmtf.org/redfish/v1/LogEntry.json#/definitions/LogEntry"
                     },
                     "readonly": true,
                     "description": "References to the log entry collection.",
@@ -126,16 +119,6 @@
             },
             "description": "This resource represents the log service for the resource or service to which it is associated.",
             "longDescription": "This resource shall be used to represent a log service for a Redfish implementation."
-        },
-        "LogService-ref": { 
-            "oneOf": [ 
-                {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/idRef"
-                },
-                {
-                    "$ref": "#/definitions/LogService"
-                }
-            ]
         },
         "OverWritePolicy":{
             "type": "string",
