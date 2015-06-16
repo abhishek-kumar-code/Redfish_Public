@@ -456,12 +456,13 @@ class JsonSchemaGenerator:
     # Description:                                                                                          #
     #  Generates JSON for actions                                                                           #
     #########################################################################################################
-    def get_payload_actionentry(self, actionname, depth):
+    def get_payload_actionentry(self, typetable, actionentry, depth, prefixuri):
         output = ""
         
-        propname = "#" + JsonSchemaGenerator.current_schema_classname + "." + actionname 
+        propname = "#" + JsonSchemaGenerator.current_schema_classname + "." + actionentry["Name"] 
         output += UT.Utilities.indent(depth)   + "\"" + propname + "\": {\n"
-        output += UT.Utilities.indent(depth+1) + "\"$ref\": \"#/definitions/" + actionname + "\"\n"
+        output += self.get_action_definition(typetable, actionentry, depth, prefixuri)
+#       UT.Utilities.indent(depth+1) + "\"$ref\": \"#/definitions/" + actionname + "\"\n"
         output += UT.Utilities.indent(depth)   + "}"
 
         return output
@@ -583,7 +584,7 @@ class JsonSchemaGenerator:
 
             if isboundtotype:
                 output += ",\n"
-                output += self.get_payload_actionentry(typeentry["Name"], depth + 1)
+                output += self.get_payload_actionentry(typetable, typeentry, depth + 1, prefixuri)
             
         return output
 
