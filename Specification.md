@@ -1203,6 +1203,7 @@ Error responses are defined by an extended error resource, represented as a sing
         "message": "A general error has occurred. See ExtendedInfo for more information.",
         "@Message.ExtendedInfo": [
             {
+                "@odata.type" : "/redfish/v1/$metadata#Message.1.0.0.Message",
                 "MessageId": "Base.1.0.0.PropertyValueNotInList",
                 "RelatedProperties": [ 
 					"#/IndicatorLED" 
@@ -1216,12 +1217,13 @@ Error responses are defined by an extended error resource, represented as a sing
                 "Resolution": "Remove the property from the request body and resubmit the request if the operation failed"
             },
             {
+                "@odata.type" : "/redfish/v1/$metadata#Message.1.0.0.Message",
                 "MessageId": "Base.1.0.0.PropertyNotWriteable",
                 "RelatedProperties": [ 
 					"#/SKU" 
 				],
                 "Message": "The property SKU is a read only property and cannot be assigned a value",
-                "MssageArgs": [
+                "MessageArgs": [
                     "SKU"
                 ],
                 "Severity": "Warning",
