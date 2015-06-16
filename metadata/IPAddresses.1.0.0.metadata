@@ -71,7 +71,7 @@
           <Annotation Term="OData.Description" String="A static address as configured by the user"/>
         </Member>
         <Member Name="DHCP">
-          <Annotation Term="OData.Description" String="Address is provided by a DHCP service"/>
+          <Annotation Term="OData.Description" String="Address is provided by a DHCPv4 service"/>
         </Member>
         <Member Name="BOOTP">
           <Annotation Term="OData.Description" String="Address is provided by a BOOTP service"/>
@@ -86,7 +86,7 @@
           <Annotation Term="OData.Description" String="A static address as configured by the user"/>
         </Member>
         <Member Name="DHCPv6">
-          <Annotation Term="OData.Description" String="Address is provided by a DHCP service"/>
+          <Annotation Term="OData.Description" String="Address is provided by a DHCPv6 service"/>
         </Member>
         <Member Name="LinkLocal">
           <Annotation Term="OData.Description" String="Address is valid only for this network segment (link)"/>
