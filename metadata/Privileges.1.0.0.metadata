@@ -23,19 +23,6 @@
           <Annotation Term="OData.Description" String="Able to configure components managed by this service."/>
         </Member>
       </EnumType>
-      
-      <Term Name="GetPrivileges" Type="Privileges.PrivilegeType">
-        <Annotation Term="Description" String="Get operations privileges may be defined on a Link element to provide read privileges for the referenced resources, or on individual elements to override the privileges for that element"/>
-      </Term>
-      <Term Name="PostPrivileges" Type="Privileges.PrivilegeType">
-        <Annotation Term="Description" String="Post privileges may be defined on a Link element to provide create privileges for the referenced resources, or on individual elements to override the privileges for that element"/>
-      </Term>
-      <Term Name="PatchPutPrivileges" Type="Privileges.privilegeType">
-        <Annotation Term="Description" String="PatchPut privileges may be defined on a Link element to provide update privileges for the referenced resources, or on individual elements to override the privileges for that element"/>
-      </Term>
-      <Term Name="DeletePrivileges" Type="Privileges.privilegeType">
-        <Annotation Term="Description" String="Delete privileges may be defined on a Link element to provide update privileges for the referenced resources, or on individual elements to override the privileges for that element"/>
-      </Term>
 
       <Term Name="OEMGetPrivileges" Type="Collection(Edm.String)">
         <Annotation Term="Description" String="OEM Get operations privileges may be defined on a Link element to provide read privileges for the referenced resources, or on individual elements to override the privileges for that element"/>
