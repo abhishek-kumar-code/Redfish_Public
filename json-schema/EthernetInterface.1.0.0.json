@@ -86,8 +86,8 @@
                         "null"
                     ],
                     "readonly": true,
-                    "description": "The UEFI device path for this NIC",
-                    "longDescription": "The value of this property shall be the UEFI device path of this interface."
+                    "description": "The UEFI device path for this interface",
+                    "longDescription": "The value of this property shall be the UEFI device path to the device which surfaces this interface."
                 },
                 "Status": {
                     "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Status"
