@@ -2126,8 +2126,6 @@ Implementations shall support replacement of the default certificate if one is p
   * The OData Service Document which is needed for compatibility with OData clients
   * The version object located at /redfish/
 * External services linked via extref references are not part of this spec, and may have other security requirements.
-	
-* CORS headers are not recommended. Services may choose to implement them.
 
 ##### HTTP Redirect
 
