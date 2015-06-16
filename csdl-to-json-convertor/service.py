@@ -459,7 +459,7 @@ class JsonSchemaGenerator:
     def get_payload_actionentry(self, typetable, actionentry, depth, prefixuri):
         output = ""
         
-        propname = "#" + JsonSchemaGenerator.current_schema_classname + "." + actionentry["Name"] 
+        propname = "#" + actionentry["Namespace"] + "." + actionentry["Name"] 
         output += UT.Utilities.indent(depth)   + "\"" + propname + "\": {\n"
         output += self.get_action_definition(typetable, actionentry, depth, prefixuri)
         output += UT.Utilities.indent(depth)   + "}"
@@ -1324,14 +1324,13 @@ class JsonSchemaGenerator:
                    output += ",\n"
                output += UT.Utilities.indent(depth + 1) + "{ \"$ref\": \"" + validationtype + "\" }"
            output += "\n"
-           output += UT.Utilities.indent(depth) + "]"
+           output += UT.Utilities.indent(depth) + "],\n"
 
 #todo: clean up conditional logic
         elif validationtypecount == 1:
-           output += UT.Utilities.indent(depth) + "\"$ref\": \"" + validationtypes[0] + "\""
+           output += UT.Utilities.indent(depth) + "\"$ref\": \"" + validationtypes[0] + "\",\n"
 
 		#now generate definition block
-        output += ",\n"
         output += self.generate_definition_block(typetable, depth, isnullable, namespace, prefixuri)
 
         return output
