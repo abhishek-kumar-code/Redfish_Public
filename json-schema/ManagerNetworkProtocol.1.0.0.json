@@ -3,100 +3,6 @@
     "title": "ManagerNetworkProtocol.1.0.0",
     "$ref": "#/definitions/ManagerNetworkProtocol",
     "definitions":{
-        "SSDProtocol":{
-            "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
-                    "description": "This property shall specify a valid odata or redfish property."
-                }
-            },
-            "additionalProperties": false,
-            "properties": {
-                "Enabled": {
-                    "type": [
-                        "boolean",
-                        "null"
-                    ],
-                    "description": "Indicates if the protocol is enabled or disabled",
-                    "longDescription": "The value of this property shall contain the enabled status of the protocol.  The value shall be true if enabled and false if disabled."
-                },
-                "Port": {
-                    "type": [
-                        "number",
-                        "null"
-                    ],
-                    "description": "Indicates the protocol port.",
-                    "longDescription": "The value of this property shall contain the port assigned for the protocol.",
-                    "minimum": 0
-                },
-                "NotifyMulticastIntervalSeconds": {
-                    "type": [
-                        "number",
-                        "null"
-                    ],
-                    "description": "Indicates how often the Multicast is done from this service for SSDP.",
-                    "longDescription": "The value of this property shall contain the time interval, in seconds, between transmissions of the multicast NOTIFY ALIVE message.  A setting of 0 seconds shall disable this functionality.  The recommended value is 600 seconds.",
-                    "minimum": 0
-                },
-                "NotifyTTL": {
-                    "type": [
-                        "number",
-                        "null"
-                    ],
-                    "description": "Indicates the time to live hop count for SSDPs Notify messages.",
-                    "longDescription": "The value of this property shall contain the Time-To-Live hop count used for multicast NOTIFY messages.  The recommended value is 2.",
-                    "minimum": 1
-                },
-                "NotifyIPv6Scope": {
-                    "ERROR": "type NetworkProtocol.NotifyIPv6Scope unrecognized.",
-                    "description": "Indicates the scope for the IPv6 Notify messages for SSDP.",
-                    "longDescription": "The value of this property shall contain the IPv6 scope used for multicast NOTIFY messages.  The valid enumerations are a subset of the available IPv6 Scope types."
-                }
-            }
-        },
-        "NotifyIPv6Scope":{
-            "type": "string",
-            "enum": [
-                "Link",
-                "Site",
-                "Organization"
-            ],
-            "enumDescriptions": {
-                "Link": "SSDP Notify messages are sent to addresses in the IPv6 Local Link scope",
-                "Site": "SSDP Notify messages are sent to addresses in the IPv6 Local Site scope",
-                "Organization": "SSDP Notify messages are sent to addresses in the IPv6 Local Organization scope"
-            }
-        },
-        "Protocol":{
-            "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
-                    "description": "This property shall specify a valid odata or redfish property."
-                }
-            },
-            "additionalProperties": false,
-            "properties": {
-                "Enabled": {
-                    "type": [
-                        "boolean",
-                        "null"
-                    ],
-                    "description": "Indicates if the protocol is enabled or disabled",
-                    "longDescription": "The value of this property shall contain the enabled status of the protocol.  The value shall be true if enabled and false if disabled."
-                },
-                "Port": {
-                    "type": [
-                        "number",
-                        "null"
-                    ],
-                    "description": "Indicates the protocol port.",
-                    "longDescription": "The value of this property shall contain the port assigned for the protocol.",
-                    "minimum": 0
-                }
-            }
-        },
         "ManagerNetworkProtocol":{
             "type": "object",
             "patternProperties": { 
@@ -117,18 +23,18 @@
                     "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/type"
                 },
                 "Oem": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Oem",
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Oem",
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Id": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Id"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Id"
                 },
                 "Description": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Description"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Description"
                 },
                 "Name": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Name"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Name"
                 },
                 "HostName": {
                     "type": [
@@ -203,21 +109,105 @@
                     "longDescription": "This object shall contain information for the KVM-IP (Keyboard, Video, Mouse) protocol settings for the manager."
                 },
                 "Status": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.1.0.0.json#/definitions/Status"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Status"
                 }
             },
             "description": "This resource is used to obtain or modify the network services managed by a given manager.",
             "longDescription": "This object shall be used to represent the network service settings for the manager."
         },
-        "ManagerNetworkProtocol-ref": { 
-            "oneOf": [ 
-                {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/idRef"
-                },
-                {
-                    "$ref": "#/definitions/ManagerNetworkProtocol"
+        "Protocol":{
+            "type": "object",
+            "patternProperties": { 
+                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+                    "type": ["array", "boolean", "number", "null", "object", "string"],
+                    "description": "This property shall specify a valid odata or redfish property."
                 }
-            ]
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Enabled": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "description": "Indicates if the protocol is enabled or disabled",
+                    "longDescription": "The value of this property shall contain the enabled status of the protocol.  The value shall be true if enabled and false if disabled."
+                },
+                "Port": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "description": "Indicates the protocol port.",
+                    "longDescription": "The value of this property shall contain the port assigned for the protocol.",
+                    "minimum": 0
+                }
+            }
+        },
+        "NotifyIPv6Scope":{
+            "type": "string",
+            "enum": [
+                "Link",
+                "Site",
+                "Organization"
+            ],
+            "enumDescriptions": {
+                "Link": "SSDP Notify messages are sent to addresses in the IPv6 Local Link scope",
+                "Site": "SSDP Notify messages are sent to addresses in the IPv6 Local Site scope",
+                "Organization": "SSDP Notify messages are sent to addresses in the IPv6 Local Organization scope"
+            }
+        },
+        "SSDProtocol":{
+            "type": "object",
+            "patternProperties": { 
+                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+                    "type": ["array", "boolean", "number", "null", "object", "string"],
+                    "description": "This property shall specify a valid odata or redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Enabled": {
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "description": "Indicates if the protocol is enabled or disabled",
+                    "longDescription": "The value of this property shall contain the enabled status of the protocol.  The value shall be true if enabled and false if disabled."
+                },
+                "Port": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "description": "Indicates the protocol port.",
+                    "longDescription": "The value of this property shall contain the port assigned for the protocol.",
+                    "minimum": 0
+                },
+                "NotifyMulticastIntervalSeconds": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "description": "Indicates how often the Multicast is done from this service for SSDP.",
+                    "longDescription": "The value of this property shall contain the time interval, in seconds, between transmissions of the multicast NOTIFY ALIVE message.  A setting of 0 seconds shall disable this functionality.  The recommended value is 600 seconds.",
+                    "minimum": 0
+                },
+                "NotifyTTL": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "description": "Indicates the time to live hop count for SSDPs Notify messages.",
+                    "longDescription": "The value of this property shall contain the Time-To-Live hop count used for multicast NOTIFY messages.  The recommended value is 2.",
+                    "minimum": 1
+                },
+                "NotifyIPv6Scope": {
+                    "$ref": "#/definitions/NotifyIPv6Scope",
+                    "description": "Indicates the scope for the IPv6 Notify messages for SSDP.",
+                    "longDescription": "The value of this property shall contain the IPv6 scope used for multicast NOTIFY messages.  The valid enumerations are a subset of the available IPv6 Scope types."
+                }
+            }
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."

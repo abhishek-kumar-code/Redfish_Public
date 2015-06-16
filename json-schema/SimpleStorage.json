@@ -1,0 +1,20 @@
+{
+    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0.json",
+    "title": "SimpleStorage",
+    "$ref": "#/definitions/SimpleStorage",
+    "definitions":{
+        "SimpleStorage":{
+                "oneOf": [ 
+                    {
+                        "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/idRef"
+                    },
+                    {
+                        "$ref": "http://schemas.dmtf.org/redfish/SimpleStorage.1.0.0.json#/definitions/SimpleStorage"
+                    }
+                ]
+            }
+        }
+        }
+    },
+    "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
+}

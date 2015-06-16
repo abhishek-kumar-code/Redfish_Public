@@ -80,7 +80,6 @@ class Utilities:
     def open_url(url, directory):
 
         # TODO: handle cases where URL is malformed
-
         try:
             connections = {}
             hostStart = url.find("//")
@@ -120,7 +119,7 @@ class Utilities:
         try:
             filelocation = url.rfind("/")
             if(filelocation > 0):
-                filename=url[filelocation+1:] + ".metadata"
+                filename=url[filelocation+1:]
             else:
                 filename=url
 
