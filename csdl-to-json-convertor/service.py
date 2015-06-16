@@ -301,49 +301,69 @@ class JsonSchemaGenerator:
     def emit_annotations(self, typetable, namespace, annotated, depth, prefixuri, isnullable = False, ignoreannotations = []):
 
         output = ""
+        fcontinue = True
 
-        for annotation in annotated:
-            if not annotation.tag == "{http://docs.oasis-open.org/odata/ns/edm}Annotation":
-                continue
+        #for each type in the heirarchy
+        while ( fcontinue == True ):
+            for annotation in annotated:
+                if not annotation.tag == "{http://docs.oasis-open.org/odata/ns/edm}Annotation":
+                    continue
 
-            if (annotation.attrib["Term"] == "OData.Description") and (not "OData.Description" in ignoreannotations):
-                output += ",\n"
-                output += UT.Utilities.indent(depth) + "\"description\": \"" + annotation.attrib["String"] + "\""
+                if(annotation.attrib["Term"] in ignoreannotations):
+                    continue
 
-            elif (annotation.attrib["Term"] == "OData.LongDescription") and (not "OData.Description" in ignoreannotations):
-                output += ",\n"
-                output += UT.Utilities.indent(depth) + "\"longDescription\": \"" + annotation.attrib["String"] + "\""
+                #don't add annotation more than once'
+                ignoreannotations.append(annotation.attrib["Term"])
 
-            elif annotation.attrib["Term"] == "OData.Permissions":
-                if annotation.attrib["EnumMember"] == "OData.Permissions/Read":
+                if (annotation.attrib["Term"] == "OData.Description"):
                     output += ",\n"
-                    output += UT.Utilities.indent(depth) + "\"readonly\": true"
-                elif annotation.attrib["EnumMember"] == "OData.Permissions/ReadWrite":
+                    output += UT.Utilities.indent(depth) + "\"description\": \"" + annotation.attrib["String"] + "\""
+
+                elif (annotation.attrib["Term"] == "OData.LongDescription"):
                     output += ",\n"
-                    output += UT.Utilities.indent(depth) + "\"readonly\": false"
-            elif (annotation.attrib["Term"] == "Validation.Pattern") or (annotation.attrib["Term"] == "Redfish.Pattern"):
-                output += ",\n"
-                output += UT.Utilities.indent(depth) + "\"pattern\": \"" + annotation.attrib["String"] + "\""
-            elif annotation.attrib["Term"] == "Redfish.DynamicPropertyPatterns":
-                content = self.get_dynamic_property_patterns_content(annotation)
-                output += ",\n"
-                output += UT.Utilities.indent(depth) + "\"patternProperties\": { \n"
-                output += UT.Utilities.indent(depth+1) + "\"" + content["Pattern"] + "\": { \n"
-                jsontype = self.get_edmtype_to_jsontype(content["Type"])
+                    output += UT.Utilities.indent(depth) + "\"longDescription\": \"" + annotation.attrib["String"] + "\""
+
+                elif (annotation.attrib["Term"] == "OData.Permissions"):
+                    ignoreannotations.append("OData.Permissions")
+                    if annotation.attrib["EnumMember"] == "OData.Permissions/Read":
+                        output += ",\n"
+                        output += UT.Utilities.indent(depth) + "\"readonly\": true"
+                    elif annotation.attrib["EnumMember"] == "OData.Permissions/ReadWrite":
+                        output += ",\n"
+                        output += UT.Utilities.indent(depth) + "\"readonly\": false"
+
+                elif ((annotation.attrib["Term"] == "Validation.Pattern") or (annotation.attrib["Term"] == "Redfish.Pattern") ):
+                    output += ",\n"
+                    output += UT.Utilities.indent(depth) + "\"pattern\": \"" + annotation.attrib["String"] + "\""
+
+                elif annotation.attrib["Term"] == "Redfish.DynamicPropertyPatterns":
+                    content = self.get_dynamic_property_patterns_content(annotation)
+                    output += ",\n"
+                    output += UT.Utilities.indent(depth) + "\"patternProperties\": { \n"
+                    output += UT.Utilities.indent(depth+1) + "\"" + content["Pattern"] + "\": { \n"
+                    jsontype = self.get_edmtype_to_jsontype(content["Type"])
             
-                if jsontype == "object":
-                    output += self.generate_json_for_type(typetable, content["Type"], depth + 2, namespace, prefixuri, isnullable, False)
-                    output += "\n" + UT.Utilities.indent(depth + 1) + "}\n"
-                else:
-                    output += UT.Utilities.indent(depth + 2) + "\"type\":\"" + jsontype + "\"\n"
-                output += UT.Utilities.indent(depth) + "}"
-            elif (annotation.attrib["Term"] == "Validation.Minimum"):
-                output += ",\n"
-                output += UT.Utilities.indent(depth) + "\"minimum\": " + annotation.attrib["Int"]
-            elif (annotation.attrib["Term"] == "Validation.Maximum"):
-                output += ",\n"
-                output += UT.Utilities.indent(depth) + "\"maximum\": " + annotation.attrib["Int"]
-                                                        
+                    if jsontype == "object":
+                        output += self.generate_json_for_type(typetable, content["Type"], depth + 2, namespace, prefixuri, isnullable, False)
+                        output += "\n" + UT.Utilities.indent(depth + 1) + "}\n"
+                    else:
+                        output += UT.Utilities.indent(depth + 2) + "\"type\":\"" + jsontype + "\"\n"
+                    output += UT.Utilities.indent(depth) + "}"
+
+                elif (annotation.attrib["Term"] == "Validation.Minimum"):
+                    output += ",\n"
+                    output += UT.Utilities.indent(depth) + "\"minimum\": " + annotation.attrib["Int"]
+
+                elif (annotation.attrib["Term"] == "Validation.Maximum"):
+                    output += ",\n"
+                    output += UT.Utilities.indent(depth) + "\"maximum\": " + annotation.attrib["Int"]
+                                                      
+            if "BaseType" in annotated.attrib.keys():
+                #todo: make more robust
+                annotated = typetable[annotated.attrib["BaseType"]]["Node"]
+            else:
+                fcontinue = False
+
         return output
 
 
