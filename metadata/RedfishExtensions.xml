@@ -5,7 +5,7 @@
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Settings.xml">
-    <edmx:Include Namespace="Settings.1.0.0" Alias="Settings"/>
+    <edmx:Include Namespace="Settings"/>
   </edmx:Reference>
   
   <edmx:DataServices>
@@ -38,7 +38,7 @@
       <Term Name="Copyright" Type="Edm.String">
         <Annotation Term="OData.Description" String="The term is applied to Redfish payload samples in order to specify copyright information. It would not generally be used in production payloads."/>
       </Term>
-      <Term Name="DynamicPropertyPatterns" Type="Collection(Extensions.PropertyPattern)"/>
+      <Term Name="DynamicPropertyPatterns" Type="Collection(Redfish.PropertyPattern)"/>
 
       <ComplexType Name="PropertyPattern">
         <Property Name="Pattern" Type="Edm.String">

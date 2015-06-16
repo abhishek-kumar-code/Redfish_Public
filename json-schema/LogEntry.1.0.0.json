@@ -11,68 +11,12 @@
                 "Critical"
             ]
         },
-        "LogEntryCode":{
+        "LogEntryType":{
             "type": "string",
             "enum": [
-                "Assert",
-                "Deassert",
-                "Lower Non-critical - going low",
-                "Lower Non-critical - going high",
-                "Lower Critical - going low",
-                "Lower Critical - going high",
-                "Lower Non-recoverable - going low",
-                "Lower Non-recoverable - going high",
-                "Upper Non-critical - going low",
-                "Upper Non-critical - going high",
-                "Upper Critical - going low",
-                "Upper Critical - going high",
-                "Upper Non-recoverable - going low",
-                "Upper Non-recoverable - going high",
-                "Transition to Idle",
-                "Transition to Active",
-                "Transition to Busy",
-                "State Deasserted",
-                "State Asserted",
-                "Predictive Failure deasserted",
-                "Predictive Failure asserted",
-                "Limit Not Exceeded",
-                "Limit Exceeded",
-                "Performance Met",
-                "Performance Lags",
-                "Transition to OK",
-                "Transition to Non-Critical from OK",
-                "Transition to Critical from less severe",
-                "Transition to Non-recoverable from less severe",
-                "Transition to Non-Critical from more severe",
-                "Transition to Critical from Non-recoverable",
-                "Transition to Non-recoverable",
-                "Monitor",
-                "Informational",
-                "Device Removed / Device Absent",
-                "Device Inserted / Device Present",
-                "Device Disabled",
-                "Device Enabled",
-                "Transition to Running",
-                "Transition to In Test",
-                "Transition to Power Off",
-                "Transition to On Line",
-                "Transition to Off Line",
-                "Transition to Off Duty",
-                "Transition to Degraded",
-                "Transition to Power Save",
-                "Install Error",
-                "Fully Redundant",
-                "Redundancy Lost",
-                "Redundancy Degraded",
-                "Non-redundant:Sufficient Resources from Redundant",
-                "Non-redundant:Sufficient Resources from Insufficient Resources",
-                "Non-redundant:Insufficient Resources",
-                "Redundancy Degraded from Fully Redundant",
-                "Redundancy Degraded from Non-redundant",
-                "D0 Power State",
-                "D1 Power State",
-                "D2 Power State",
-                "D3 Power State"
+                "Event",
+                "SEL",
+                "Oem"
             ]
         },
         "SensorType":{
@@ -134,27 +78,27 @@
             "additionalProperties": false,
             "properties": {
                 "@odata.context": {
-                    "$ref": "http://schemas.dmtf.org/redfish/base/odata.4.0.0.json#/definitions/context"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/context"
                 },
                 "@odata.id": {
-                    "$ref": "http://schemas.dmtf.org/redfish/base/odata.4.0.0.json#/definitions/id"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/id"
                 },
                 "@odata.type": {
-                    "$ref": "http://schemas.dmtf.org/redfish/base/odata.4.0.0.json#/definitions/type"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/type"
                 },
                 "Oem": {
-                    "$ref": "http://schemas.dmtf.org/redfish/base/Resource.json#/definitions/Oem",
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Oem",
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Id": {
-                    "$ref": "http://schemas.dmtf.org/redfish/base/Resource.json#/definitions/Id"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Id"
                 },
                 "Description": {
-                    "$ref": "http://schemas.dmtf.org/redfish/base/Resource.json#/definitions/Description"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Description"
                 },
                 "Name": {
-                    "$ref": "http://schemas.dmtf.org/redfish/base/Resource.json#/definitions/Name"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Name"
                 },
                 "Severity": {
                     "$ref": "#/definitions/EventSeverity",
@@ -243,12 +187,12 @@
                     "additionalProperties": false,
                     "properties": {
                         "Oem": {
-                            "$ref": "http://schemas.dmtf.org/redfish/base/Resource.json#/definitions/Oem",
+                            "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Oem",
                             "description": "Oem extension object.",
                             "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
                         },
                         "OriginOfCondition": {
-                            "$ref": "http://schemas.dmtf.org/redfish/base/Resource.json#/definitions/Item",
+                            "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Item",
                             "readonly": true,
                             "description": "This is the URI of the resource that caused the log entry",
                             "longDescription": "The value of this property shall be an href that references the resource for which the log is associated."
@@ -267,12 +211,68 @@
             "description": "This resource represents the log record format for logs.  It is designed to be used for SEL logs from IPMI as well as Event Logs and OEM specific logs.  The EntryType field indicates the type of log and there are other properties dependent on it's value.",
             "longDescription": "This resource shall represent the log format for log services in a Redfish implementation."
         },
-        "LogEntryType":{
+        "LogEntryCode":{
             "type": "string",
             "enum": [
-                "Event",
-                "SEL",
-                "Oem"
+                "Assert",
+                "Deassert",
+                "Lower Non-critical - going low",
+                "Lower Non-critical - going high",
+                "Lower Critical - going low",
+                "Lower Critical - going high",
+                "Lower Non-recoverable - going low",
+                "Lower Non-recoverable - going high",
+                "Upper Non-critical - going low",
+                "Upper Non-critical - going high",
+                "Upper Critical - going low",
+                "Upper Critical - going high",
+                "Upper Non-recoverable - going low",
+                "Upper Non-recoverable - going high",
+                "Transition to Idle",
+                "Transition to Active",
+                "Transition to Busy",
+                "State Deasserted",
+                "State Asserted",
+                "Predictive Failure deasserted",
+                "Predictive Failure asserted",
+                "Limit Not Exceeded",
+                "Limit Exceeded",
+                "Performance Met",
+                "Performance Lags",
+                "Transition to OK",
+                "Transition to Non-Critical from OK",
+                "Transition to Critical from less severe",
+                "Transition to Non-recoverable from less severe",
+                "Transition to Non-Critical from more severe",
+                "Transition to Critical from Non-recoverable",
+                "Transition to Non-recoverable",
+                "Monitor",
+                "Informational",
+                "Device Removed / Device Absent",
+                "Device Inserted / Device Present",
+                "Device Disabled",
+                "Device Enabled",
+                "Transition to Running",
+                "Transition to In Test",
+                "Transition to Power Off",
+                "Transition to On Line",
+                "Transition to Off Line",
+                "Transition to Off Duty",
+                "Transition to Degraded",
+                "Transition to Power Save",
+                "Install Error",
+                "Fully Redundant",
+                "Redundancy Lost",
+                "Redundancy Degraded",
+                "Non-redundant:Sufficient Resources from Redundant",
+                "Non-redundant:Sufficient Resources from Insufficient Resources",
+                "Non-redundant:Insufficient Resources",
+                "Redundancy Degraded from Fully Redundant",
+                "Redundancy Degraded from Non-redundant",
+                "D0 Power State",
+                "D1 Power State",
+                "D2 Power State",
+                "D3 Power State"
             ]
         }
     },

@@ -3,18 +3,6 @@
     "title": "LogService",
     "$ref": "#/definitions/LogService",
     "definitions":{
-        "LogService":{
-                "oneOf": [ 
-                    {
-                        "$ref": "http://schemas.dmtf.org/redfish/base/odata.4.0.0.json#/definitions/idRef"
-                    },
-                    {
-                        "$ref": "http://schemas.dmtf.org/redfish/LogService.1.0.0.json#/definitions/LogService"
-                    }
-                ]
-            }
-        }
-        },
         "ClearLog":{
             "type": "object",
             "additionalProperties": false,
@@ -29,6 +17,18 @@
                 }
             }
 
+        },
+        "LogService":{
+                "oneOf": [ 
+                    {
+                        "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/idRef"
+                    },
+                    {
+                        "$ref": "http://schemas.dmtf.org/redfish/LogService.1.0.0.json#/definitions/LogService"
+                    }
+                ]
+            }
+        }
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."

@@ -14,9 +14,6 @@
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.xml">
     <edmx:Include Namespace="Resource.1.0.0" Alias="Resource"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Settings.xml">
-    <edmx:Include Namespace="Settings"/>
-  </edmx:Reference>
 
   <edmx:DataServices>
     

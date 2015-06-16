@@ -6,7 +6,7 @@
         "EventService":{
                 "oneOf": [ 
                     {
-                        "$ref": "http://schemas.dmtf.org/redfish/base/odata.4.0.0.json#/definitions/idRef"
+                        "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/idRef"
                     },
                     {
                         "$ref": "http://schemas.dmtf.org/redfish/EventService.1.0.0.json#/definitions/EventService"
@@ -30,7 +30,7 @@
                 "EventType@Redfish.AllowableValues": {
                     "type": "array",
                     "items": {
-                        "$ref": "http://schemas.dmtf.org/redfish/base/Event.1.0.0.json#/definitions/EventType"
+                        "$ref": "http://schemas.dmtf.org/redfish/v1/Event.1.0.0.json#/definitions/EventType"
                     },
                     "description": "This is the type of event to be added.",
                     "longDescription": "This defines the property name for which the following allowable values apply."

@@ -3,18 +3,6 @@
     "title": "Chassis",
     "$ref": "#/definitions/Chassis",
     "definitions":{
-        "Chassis":{
-                "oneOf": [ 
-                    {
-                        "$ref": "http://schemas.dmtf.org/redfish/base/odata.4.0.0.json#/definitions/idRef"
-                    },
-                    {
-                        "$ref": "http://schemas.dmtf.org/redfish/Chassis.1.0.0.json#/definitions/Chassis"
-                    }
-                ]
-            }
-        }
-        },
         "Reset":{
             "type": "object",
             "additionalProperties": false,
@@ -30,13 +18,25 @@
                 "ResetType@Redfish.AllowableValues": {
                     "type": "array",
                     "items": {
-                        "$ref": "http://schemas.dmtf.org/redfish/base/Resource.json#/definitions/ResetType"
+                        "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/ResetType"
                     },
                     "description": "This is the type of reset to be performed.",
                     "longDescription": "This defines the property name for the action."
                 }
             }
 
+        },
+        "Chassis":{
+                "oneOf": [ 
+                    {
+                        "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/idRef"
+                    },
+                    {
+                        "$ref": "http://schemas.dmtf.org/redfish/Chassis.1.0.0.json#/definitions/Chassis"
+                    }
+                ]
+            }
+        }
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."

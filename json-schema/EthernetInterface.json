@@ -6,7 +6,7 @@
         "EthernetInterface":{
                 "oneOf": [ 
                     {
-                        "$ref": "http://schemas.dmtf.org/redfish/base/odata.4.0.0.json#/definitions/idRef"
+                        "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/idRef"
                     },
                     {
                         "$ref": "http://schemas.dmtf.org/redfish/EthernetInterface.1.0.0.json#/definitions/EthernetInterface"

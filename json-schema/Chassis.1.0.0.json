@@ -46,6 +46,21 @@
                 "Other": "A chassis that does not fit any of these definitions"
             }
         },
+        "IndicatorLED":{
+            "type": "string",
+            "enum": [
+                "Unknown",
+                "Lit",
+                "Blinking",
+                "Off"
+            ],
+            "enumDescriptions": {
+                "Unknown": "The state of the Indicator LED cannot be determined.",
+                "Lit": "The Indicator LED is lit.",
+                "Blinking": "The Indicator LED is blinking.",
+                "Off": "The Indicator LED is off."
+            }
+        },
         "Chassis":{
             "type": "object",
             "patternProperties": { 
@@ -57,27 +72,27 @@
             "additionalProperties": false,
             "properties": {
                 "@odata.context": {
-                    "$ref": "http://schemas.dmtf.org/redfish/base/odata.4.0.0.json#/definitions/context"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/context"
                 },
                 "@odata.id": {
-                    "$ref": "http://schemas.dmtf.org/redfish/base/odata.4.0.0.json#/definitions/id"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/id"
                 },
                 "@odata.type": {
-                    "$ref": "http://schemas.dmtf.org/redfish/base/odata.4.0.0.json#/definitions/type"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/type"
                 },
                 "Oem": {
-                    "$ref": "http://schemas.dmtf.org/redfish/base/Resource.json#/definitions/Oem",
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Oem",
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Id": {
-                    "$ref": "http://schemas.dmtf.org/redfish/base/Resource.json#/definitions/Id"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Id"
                 },
                 "Description": {
-                    "$ref": "http://schemas.dmtf.org/redfish/base/Resource.json#/definitions/Description"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Description"
                 },
                 "Name": {
-                    "$ref": "http://schemas.dmtf.org/redfish/base/Resource.json#/definitions/Name"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Name"
                 },
                 "ChassisType": {
                     "$ref": "#/definitions/ChassisType",
@@ -154,14 +169,14 @@
                     "additionalProperties": false,
                     "properties": {
                         "Oem": {
-                            "$ref": "http://schemas.dmtf.org/redfish/base/Resource.json#/definitions/Oem",
+                            "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Oem",
                             "description": "Oem extension object.",
                             "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
                         },
                         "ComputerSystems": {
                             "type": "array",
                             "items": {
-                                "$ref": "http://schemas.dmtf.org/redfish/base/ComputerSystem.json#/definitions/ComputerSystem"
+                                "$ref": "http://schemas.dmtf.org/redfish/v1/ComputerSystem.json#/definitions/ComputerSystem"
                             },
                             "readonly": true,
                             "description": "An array of references to the computer systems contained in this chassis.  This will only reference ComputerSystems that are directly and wholly contained in this chassis.",
@@ -170,14 +185,14 @@
                         "ManagedBy": {
                             "type": "array",
                             "items": {
-                                "$ref": "http://schemas.dmtf.org/redfish/base/Manager.json#/definitions/Manager"
+                                "$ref": "http://schemas.dmtf.org/redfish/v1/Manager.json#/definitions/Manager"
                             },
                             "readonly": true,
                             "description": "An array of references to the managers contained in this chassis.",
                             "longDescription": "The value of this property shall be a reference to the resource that manages this chassis and shall reference a resource of type Manager."
                         },
                         "ContainedBy": {
-                            "$ref": "http://schemas.dmtf.org/redfish/base/Chassis.json#/definitions/Chassis",
+                            "$ref": "http://schemas.dmtf.org/redfish/v1/Chassis.json#/definitions/Chassis",
                             "readonly": true,
                             "description": "A reference to the chassis that this chassis is contained by.",
                             "longDescription": "The value of this property shall be a reference to the resource that represents the chassis that contains this chassis and shall be of type Chassis."
@@ -185,7 +200,7 @@
                         "Contains": {
                             "type": "array",
                             "items": {
-                                "$ref": "http://schemas.dmtf.org/redfish/base/Chassis.json#/definitions/Chassis"
+                                "$ref": "http://schemas.dmtf.org/redfish/v1/Chassis.json#/definitions/Chassis"
                             },
                             "readonly": true,
                             "description": "An array of references to any other chassis that this chassis has in it.",
@@ -194,7 +209,7 @@
                         "PoweredBy": {
                             "type": "array",
                             "items": {
-                                "$ref": "http://schemas.dmtf.org/redfish/base/Resource.json#/definitions/Item"
+                                "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Item"
                             },
                             "readonly": true,
                             "description": "An array of ID[s] of resources that power this chassis. Normally the ID will be a chassis or a specific set of powerSupplies",
@@ -203,7 +218,7 @@
                         "CooledBy": {
                             "type": "array",
                             "items": {
-                                "$ref": "http://schemas.dmtf.org/redfish/base/Resource.json#/definitions/Item"
+                                "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Item"
                             },
                             "readonly": true,
                             "description": "An array of ID[s] of resources that cool this chassis. Normally the ID will be a chassis or a specific set of fans.",
@@ -254,7 +269,7 @@
                                 "ResetType@Redfish.AllowableValues": {
                                     "type": "array",
                                     "items": {
-                                        "$ref": "http://schemas.dmtf.org/redfish/base/Resource.json#/definitions/ResetType"
+                                        "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/ResetType"
                                     },
                                     "description": "This is the type of reset to be performed.",
                                     "longDescription": "This defines the property name for the action."
@@ -266,22 +281,22 @@
                     "description": "The Actions object contains the available custom actions on this resource."
                 },
                 "Status": {
-                    "$ref": "http://schemas.dmtf.org/redfish/base/Resource.json#/definitions/Status"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Status"
                 },
                 "LogServices": {
-                    "$ref": "http://schemas.dmtf.org/redfish/base/LogServiceCollection.json#/definitions/LogServiceCollection",
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/LogServiceCollection.json#/definitions/LogServiceCollection",
                     "readonly": true,
                     "description": "A reference to the logs for this chassis.",
                     "longDescription": "The value of this property shall be a link to a collection of type LogServiceCollection."
                 },
                 "Thermal": {
-                    "$ref": "http://schemas.dmtf.org/redfish/base/Thermal.json#/definitions/Thermal",
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Thermal.json#/definitions/Thermal",
                     "readonly": true,
                     "description": "A reference to the thermal properties (fans, cooling, sensors) for this chassis.",
                     "longDescription": "The value of this property shall be a reference to the resource that represents the thermal characteristics of this chassis and shall be of type Thermal."
                 },
                 "Power": {
-                    "$ref": "http://schemas.dmtf.org/redfish/base/Power.json#/definitions/Power",
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Power.json#/definitions/Power",
                     "readonly": true,
                     "description": "A reference to the power properties (power supplies, power policies, sensors) for this chassis.",
                     "longDescription": "The value of this property shall be a reference to the resource that represents the power characteristics of this chassis and shall be of type Power."
@@ -292,21 +307,6 @@
             ],
             "description": "This is the schema definition for the Chassis resource.  It represents the properties for physical components for any system.  This one object is intended to represent racks, rackmount servers, blades, standalone, modular systems, enclosures, and all other containers.  The non-cpu/device centric parts of the schema are all accessed either directly or indirectly through this resource.",
             "longDescription": "This resource shall be used to represent a chassis or other physical enclosure for a Redfish implementation."
-        },
-        "IndicatorLED":{
-            "type": "string",
-            "enum": [
-                "Unknown",
-                "Lit",
-                "Blinking",
-                "Off"
-            ],
-            "enumDescriptions": {
-                "Unknown": "The state of the Indicator LED cannot be determined.",
-                "Lit": "The Indicator LED is lit.",
-                "Blinking": "The Indicator LED is blinking.",
-                "Off": "The Indicator LED is off."
-            }
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."

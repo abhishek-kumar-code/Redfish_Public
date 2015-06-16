@@ -13,7 +13,7 @@
             "additionalProperties": false,
             "properties": {
                 "Oem": {
-                    "$ref": "http://schemas.dmtf.org/redfish/base/Resource.json#/definitions/Oem",
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Oem",
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
@@ -53,12 +53,12 @@
                     "longDescription": "The value of this property shall contain the maximum number of members allowed in the redundancy group for the current redundancy mode to still be fault tolerant."
                 },
                 "Status": {
-                    "$ref": "http://schemas.dmtf.org/redfish/base/Resource.json#/definitions/Status"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Status"
                 },
                 "RedundancySet": {
                     "type": "array",
                     "items": {
-                        "$ref": "http://schemas.dmtf.org/redfish/base/Resource.json#/definitions/Item"
+                        "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Item"
                     },
                     "readonly": true,
                     "description": "Contains any ids that represent components of this reduncancy set.",

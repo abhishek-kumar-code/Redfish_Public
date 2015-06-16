@@ -2,7 +2,7 @@
     "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0.json",
     "title": "Resource.1.0.0",
     "definitions":{
-        "ReferenceableMember":{
+        "ResourceCollection":{
             "type": "object",
             "patternProperties": { 
                 "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
@@ -13,27 +13,135 @@
             "additionalProperties": true,
             "properties": {
                 "@odata.context": {
-                    "$ref": "http://schemas.dmtf.org/redfish/base/odata.4.0.0.json#/definitions/context"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/context"
                 },
                 "@odata.id": {
-                    "$ref": "http://schemas.dmtf.org/redfish/base/odata.4.0.0.json#/definitions/id"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/id"
                 },
                 "@odata.type": {
-                    "$ref": "http://schemas.dmtf.org/redfish/base/odata.4.0.0.json#/definitions/type"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/type"
+                },
+                "Description": {
+                    "$ref": "#/definitions/Description"
+                },
+                "Name": {
+                    "$ref": "#/definitions/Name"
                 },
                 "Oem": {
                     "$ref": "#/definitions/Oem",
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
-                },
-                "MemberId": {
-                    "type": "string",
-                    "description": "This is the identifier for the member within the collection.",
-                    "longDescription": "The value of this string shall uniquely identify the member within the collection."
+                }
+            }
+        },
+        "Oem":{
+            "type": "object",
+            "patternProperties": { 
+                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+                    "type": ["array", "boolean", "number", "null", "object", "string"],
+                    "description": "This property shall specify a valid odata or redfish property."
                 }
             },
-            "description": "This is the base type for addressable members of an array.",
-            "longDescription": "Array members can be referenced using the value returned in the @odata.id property which may or may not be a dereferenceable URL. The @odata.id of this entity shall be the location of this element within an Item."
+            "additionalProperties": true,
+            "properties": {
+
+            },
+            "description": "Oem extension object.",
+            "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
+        },
+        "ResetType":{
+            "type": "string",
+            "enum": [
+                "On",
+                "ForceOff",
+                "GracefulShutdown",
+                "GracefulRestart",
+                "ForceRestart",
+                "Nmi",
+                "ForceOn",
+                "PushPowerButton"
+            ],
+            "enumDescriptions": {
+                "On": "Turn the system on",
+                "ForceOff": "Turn the system off immediately (non-graceful) shutdown",
+                "GracefulShutdown": "Perform a graceful system shutdown and power off",
+                "GracefulRestart": "Perform a graceful system shutdown followed by a restart of the system",
+                "ForceRestart": "Perform an immediate (non-graceful) shutdown, followed by a restart of the system",
+                "Nmi": "Generate a Diagnostic Interrupt (usually an NMI on x86 systems) to cease normal operations, perform diagnostic actions and typically halt the system.",
+                "ForceOn": "Turn the system on immediately",
+                "PushPowerButton": "Simulate the pressing of the physical power button on this system"
+            }
+        },
+        "State":{
+            "type": "string",
+            "enum": [
+                "Enabled",
+                "Disabled",
+                "Offline",
+                "InTest",
+                "Starting",
+                "Absent"
+            ],
+            "enumDescriptions": {
+                "Enabled": "This function or resource has been enabled",
+                "Disabled": "This function or resource has been disabled",
+                "Offline": "This function or resource is enabled, but currently unavailable",
+                "InTest": "This function or resource is underdoing testing",
+                "Starting": "This function or resource is starting",
+                "Absent": "This function or resource is not installed"
+            }
+        },
+        "Health":{
+            "type": "string",
+            "enum": [
+                "OK",
+                "Warning",
+                "Critical"
+            ],
+            "enumDescriptions": {
+                "OK": "Normal",
+                "Warning": "A condition exists that requires attention",
+                "Critical": "A critical condition exists that requires immediate attention"
+            }
+        },
+        "Description":{
+            "type": "string",
+            "readonly": true,
+            "description": "Provides a description of this resource and is used for commonality  in the schema definitions.",
+            "longDescription": "This object represents the Description property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
+        },
+        "UUID":{
+            "type": "string",
+            "pattern": "([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})"
+        },
+        "Links":{
+            "type": "object",
+            "patternProperties": { 
+                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+                    "type": ["array", "boolean", "number", "null", "object", "string"],
+                    "description": "This property shall specify a valid odata or redfish property."
+                }
+            },
+            "additionalProperties": true,
+            "properties": {
+                "Oem": {
+                    "$ref": "#/definitions/Oem",
+                    "description": "Oem extension object.",
+                    "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
+                }
+            }
+        },
+        "Name":{
+            "type": "string",
+            "readonly": true,
+            "description": "The name of the resource or array element.",
+            "longDescription": "This object represents the Name property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification. The value of this string shall be of the format for the reserved word *Name*."
+        },
+        "Id":{
+            "type": "string",
+            "readonly": true,
+            "description": "Uniquely identifies the resource within the collection of like resources.",
+            "longDescription": "This property represents an identifier for the resource.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
         },
         "Status":{
             "type": "object",
@@ -68,7 +176,7 @@
                 }
             }
         },
-        "Links":{
+        "Item":{
             "type": "object",
             "patternProperties": { 
                 "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
@@ -78,63 +186,22 @@
             },
             "additionalProperties": true,
             "properties": {
+                "@odata.context": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/context"
+                },
+                "@odata.id": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/type"
+                },
                 "Oem": {
                     "$ref": "#/definitions/Oem",
-                    "description": "Oem extension object.",
-                    "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
-                }
-            }
-        },
-        "State":{
-            "type": "string",
-            "enum": [
-                "Enabled",
-                "Disabled",
-                "Offline",
-                "InTest",
-                "Starting",
-                "Absent"
-            ],
-            "enumDescriptions": {
-                "Enabled": "This function or resource has been enabled",
-                "Disabled": "This function or resource has been disabled",
-                "Offline": "This function or resource is enabled, but currently unavailable",
-                "InTest": "This function or resource is underdoing testing",
-                "Starting": "This function or resource is starting",
-                "Absent": "This function or resource is not installed"
-            }
-        },
-        "UUID":{
-            "type": "string",
-            "pattern": "([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})"
-        },
-        "Health":{
-            "type": "string",
-            "enum": [
-                "OK",
-                "Warning",
-                "Critical"
-            ],
-            "enumDescriptions": {
-                "OK": "Normal",
-                "Warning": "A condition exists that requires attention",
-                "Critical": "A critical condition exists that requires immediate attention"
-            }
-        },
-        "Oem":{
-            "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
-                    "description": "This property shall specify a valid odata or redfish property."
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 }
             },
-            "additionalProperties": true,
-            "properties": {
-
-            },
-            "description": "Oem extension object.",
-            "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
+            "description": "This is the base type for resources and referenceable members."
         },
         "Resource":{
             "type": "object",
@@ -147,13 +214,13 @@
             "additionalProperties": true,
             "properties": {
                 "@odata.context": {
-                    "$ref": "http://schemas.dmtf.org/redfish/base/odata.4.0.0.json#/definitions/context"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/context"
                 },
                 "@odata.id": {
-                    "$ref": "http://schemas.dmtf.org/redfish/base/odata.4.0.0.json#/definitions/id"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/id"
                 },
                 "@odata.type": {
-                    "$ref": "http://schemas.dmtf.org/redfish/base/odata.4.0.0.json#/definitions/type"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/type"
                 },
                 "Oem": {
                     "$ref": "#/definitions/Oem",
@@ -172,30 +239,7 @@
             },
             "description": "This is the base type for resources and referenceable members."
         },
-        "ResetType":{
-            "type": "string",
-            "enum": [
-                "On",
-                "ForceOff",
-                "GracefulShutdown",
-                "GracefulRestart",
-                "ForceRestart",
-                "Nmi",
-                "ForceOn",
-                "PushPowerButton"
-            ],
-            "enumDescriptions": {
-                "On": "Turn the system on",
-                "ForceOff": "Turn the system off immediately (non-graceful) shutdown",
-                "GracefulShutdown": "Perform a graceful system shutdown and power off",
-                "GracefulRestart": "Perform a graceful system shutdown followed by a restart of the system",
-                "ForceRestart": "Perform an immediate (non-graceful) shutdown, followed by a restart of the system",
-                "Nmi": "Generate a Diagnostic Interrupt (usually an NMI on x86 systems) to cease normal operations, perform diagnostic actions and typically halt the system.",
-                "ForceOn": "Turn the system on immediately",
-                "PushPowerButton": "Simulate the pressing of the physical power button on this system"
-            }
-        },
-        "ResourceCollection":{
+        "ReferenceableMember":{
             "type": "object",
             "patternProperties": { 
                 "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
@@ -206,71 +250,27 @@
             "additionalProperties": true,
             "properties": {
                 "@odata.context": {
-                    "$ref": "http://schemas.dmtf.org/redfish/base/odata.4.0.0.json#/definitions/context"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/context"
                 },
                 "@odata.id": {
-                    "$ref": "http://schemas.dmtf.org/redfish/base/odata.4.0.0.json#/definitions/id"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/id"
                 },
                 "@odata.type": {
-                    "$ref": "http://schemas.dmtf.org/redfish/base/odata.4.0.0.json#/definitions/type"
-                },
-                "Description": {
-                    "$ref": "#/definitions/Description"
-                },
-                "Name": {
-                    "$ref": "#/definitions/Name"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/type"
                 },
                 "Oem": {
                     "$ref": "#/definitions/Oem",
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
-                }
-            }
-        },
-        "Description":{
-            "type": "string",
-            "readonly": true,
-            "description": "Provides a description of this resource and is used for commonality  in the schema definitions.",
-            "longDescription": "This object represents the Description property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
-        },
-        "Name":{
-            "type": "string",
-            "readonly": true,
-            "description": "The name of the resource or array element.",
-            "longDescription": "This object represents the Name property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification. The value of this string shall be of the format for the reserved word *Name*."
-        },
-        "Item":{
-            "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
-                    "description": "This property shall specify a valid odata or redfish property."
+                },
+                "MemberId": {
+                    "type": "string",
+                    "description": "This is the identifier for the member within the collection.",
+                    "longDescription": "The value of this string shall uniquely identify the member within the collection."
                 }
             },
-            "additionalProperties": true,
-            "properties": {
-                "@odata.context": {
-                    "$ref": "http://schemas.dmtf.org/redfish/base/odata.4.0.0.json#/definitions/context"
-                },
-                "@odata.id": {
-                    "$ref": "http://schemas.dmtf.org/redfish/base/odata.4.0.0.json#/definitions/id"
-                },
-                "@odata.type": {
-                    "$ref": "http://schemas.dmtf.org/redfish/base/odata.4.0.0.json#/definitions/type"
-                },
-                "Oem": {
-                    "$ref": "#/definitions/Oem",
-                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
-                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
-                }
-            },
-            "description": "This is the base type for resources and referenceable members."
-        },
-        "Id":{
-            "type": "string",
-            "readonly": true,
-            "description": "Uniquely identifies the resource within the collection of like resources.",
-            "longDescription": "This property represents an identifier for the resource.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
+            "description": "This is the base type for addressable members of an array.",
+            "longDescription": "Array members can be referenced using the value returned in the @odata.id property which may or may not be a dereferenceable URL. The @odata.id of this entity shall be the location of this element within an Item."
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."

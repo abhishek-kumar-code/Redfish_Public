@@ -23,9 +23,6 @@
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/VLanNetworkInterfaceCollection.xml">
     <edmx:Include Namespace="VLanNetworkInterfaceCollection"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Settings.xml">
-    <edmx:Include Namespace="Settings"/>
-  </edmx:Reference>
   
   <edmx:DataServices>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EthernetInterface">

@@ -41,7 +41,7 @@ if enable_debugging == True:
 ###############################################################################
 
 schemaLocation = "http://schemas.dmtf.org/redfish/" 
-schemaBaseLocation = schemaLocation + "base/"
+schemaBaseLocation = schemaLocation + "v1/"
 odataSchema = schemaBaseLocation + "odata.4.0.0.json"
 redfishSchema = schemaLocation + "v1/redfish-schema.1.0.0.json"
 

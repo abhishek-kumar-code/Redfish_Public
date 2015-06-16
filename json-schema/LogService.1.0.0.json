@@ -3,19 +3,6 @@
     "title": "LogService.1.0.0",
     "$ref": "#/definitions/LogService",
     "definitions":{
-        "OverWritePolicy":{
-            "type": "string",
-            "enum": [
-                "Unknown",
-                "WrapsWhenFull",
-                "NeverOverWrites"
-            ],
-            "enumDescriptions": {
-                "Unknown": "The overwrite policy is not known or is undefined",
-                "WrapsWhenFull": "When full, new entries to the Log will overwrite previous entries",
-                "NeverOverWrites": "When full, new entries to the Log will be discarded"
-            }
-        },
         "LogService":{
             "type": "object",
             "patternProperties": { 
@@ -27,27 +14,27 @@
             "additionalProperties": false,
             "properties": {
                 "@odata.context": {
-                    "$ref": "http://schemas.dmtf.org/redfish/base/odata.4.0.0.json#/definitions/context"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/context"
                 },
                 "@odata.id": {
-                    "$ref": "http://schemas.dmtf.org/redfish/base/odata.4.0.0.json#/definitions/id"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/id"
                 },
                 "@odata.type": {
-                    "$ref": "http://schemas.dmtf.org/redfish/base/odata.4.0.0.json#/definitions/type"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/type"
                 },
                 "Oem": {
-                    "$ref": "http://schemas.dmtf.org/redfish/base/Resource.json#/definitions/Oem",
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Oem",
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Id": {
-                    "$ref": "http://schemas.dmtf.org/redfish/base/Resource.json#/definitions/Id"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Id"
                 },
                 "Description": {
-                    "$ref": "http://schemas.dmtf.org/redfish/base/Resource.json#/definitions/Description"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Description"
                 },
                 "Name": {
-                    "$ref": "http://schemas.dmtf.org/redfish/base/Resource.json#/definitions/Name"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Name"
                 },
                 "ServiceEnabled": {
                     "type": [
@@ -118,12 +105,12 @@
                     "description": "The Actions object contains the available custom actions on this resource."
                 },
                 "Status": {
-                    "$ref": "http://schemas.dmtf.org/redfish/base/Resource.json#/definitions/Status"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Status"
                 },
                 "Entries": {
                     "type": "array",
                     "items": {
-                        "$ref": "http://schemas.dmtf.org/redfish/base/LogEntry.json#/definitions/LogEntry"
+                        "$ref": "http://schemas.dmtf.org/redfish/v1/LogEntry.json#/definitions/LogEntry"
                     },
                     "readonly": true,
                     "description": "References to the log entry collection.",
@@ -132,6 +119,19 @@
             },
             "description": "This resource represents the log service for the resource or service to which it is associated.",
             "longDescription": "This resource shall be used to represent a log service for a Redfish implementation."
+        },
+        "OverWritePolicy":{
+            "type": "string",
+            "enum": [
+                "Unknown",
+                "WrapsWhenFull",
+                "NeverOverWrites"
+            ],
+            "enumDescriptions": {
+                "Unknown": "The overwrite policy is not known or is undefined",
+                "WrapsWhenFull": "When full, new entries to the Log will overwrite previous entries",
+                "NeverOverWrites": "When full, new entries to the Log will be discarded"
+            }
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."

@@ -15,13 +15,13 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Settings">
 
-      <EntityType Name="Settings">
-      </EntityType>
+      <ComplexType Name="Settings">
+      </ComplexType>
     </Schema>
     
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Settings.1.0.0">
 
-      <EntityType Name="Settings" BaseType="Settings.Settings">
+      <ComplexType Name="Settings" BaseType="Settings.Settings">
         <Annotation Term="OData.AdditionalProperties" Bool="False"/>
         <Property Name="Time" Type="Edm.DateTimeOffset">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
@@ -38,7 +38,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the URI of the resource to which a client must do a PUT or PATCh in order to modify this resource."/>
           <Annotation Term="OData.AutoExpandReferences" />
         </NavigationProperty>
-      </EntityType>
+      </ComplexType>
 
     </Schema>
     

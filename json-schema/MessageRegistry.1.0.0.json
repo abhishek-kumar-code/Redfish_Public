@@ -3,6 +3,13 @@
     "title": "MessageRegistry.1.0.0",
     "$ref": "#/definitions/MessageRegistry",
     "definitions":{
+        "ParamType":{
+            "type": "string",
+            "enum": [
+                "string",
+                "number"
+            ]
+        },
         "Message":{
             "type": "object",
             "patternProperties": { 
@@ -61,7 +68,7 @@
                     "longDescription": "This property shall contain an override of the Resolution of the message in message registry, if present."
                 },
                 "Oem": {
-                    "$ref": "http://schemas.dmtf.org/redfish/base/Resource.json#/definitions/Oem",
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Oem",
                     "description": "Oem extension object.",
                     "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
                 }
@@ -72,13 +79,6 @@
                 "Severity",
                 "NumberOfArgs",
                 "Resolution"
-            ]
-        },
-        "ParamType":{
-            "type": "string",
-            "enum": [
-                "string",
-                "number"
             ]
         },
         "MessageProperty":{
@@ -152,7 +152,7 @@
                             "longDescription": "This property shall contain an override of the Resolution of the message in message registry, if present."
                         },
                         "Oem": {
-                            "$ref": "http://schemas.dmtf.org/redfish/base/Resource.json#/definitions/Oem",
+                            "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Oem",
                             "description": "Oem extension object.",
                             "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
                         }
@@ -178,27 +178,27 @@
             "additionalProperties": false,
             "properties": {
                 "@odata.context": {
-                    "$ref": "http://schemas.dmtf.org/redfish/base/odata.4.0.0.json#/definitions/context"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/context"
                 },
                 "@odata.id": {
-                    "$ref": "http://schemas.dmtf.org/redfish/base/odata.4.0.0.json#/definitions/id"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/id"
                 },
                 "@odata.type": {
-                    "$ref": "http://schemas.dmtf.org/redfish/base/odata.4.0.0.json#/definitions/type"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/type"
                 },
                 "Oem": {
-                    "$ref": "http://schemas.dmtf.org/redfish/base/Resource.json#/definitions/Oem",
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Oem",
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Id": {
-                    "$ref": "http://schemas.dmtf.org/redfish/base/Resource.json#/definitions/Id"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Id"
                 },
                 "Description": {
-                    "$ref": "http://schemas.dmtf.org/redfish/base/Resource.json#/definitions/Description"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Description"
                 },
                 "Name": {
-                    "$ref": "http://schemas.dmtf.org/redfish/base/Resource.json#/definitions/Name"
+                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Name"
                 },
                 "Language": {
                     "type": "string",
@@ -297,7 +297,7 @@
                                         "longDescription": "This property shall contain an override of the Resolution of the message in message registry, if present."
                                     },
                                     "Oem": {
-                                        "$ref": "http://schemas.dmtf.org/redfish/base/Resource.json#/definitions/Oem",
+                                        "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Oem",
                                         "description": "Oem extension object.",
                                         "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
                                     }
