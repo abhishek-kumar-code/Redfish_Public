@@ -302,6 +302,7 @@ class JsonSchemaGenerator:
 
         output = ""
         fcontinue = True
+        written = []
 
         #for each type in the heirarchy
         while ( fcontinue == True ):
@@ -309,11 +310,11 @@ class JsonSchemaGenerator:
                 if not annotation.tag == "{http://docs.oasis-open.org/odata/ns/edm}Annotation":
                     continue
 
-                if(annotation.attrib["Term"] in ignoreannotations):
+                if ( (annotation.attrib["Term"] in ignoreannotations) or (annotation.attrib["Term"] in written ) ):
                     continue
 
                 #don't add annotation more than once'
-                ignoreannotations.append(annotation.attrib["Term"])
+                written.append(annotation.attrib["Term"])
 
                 if (annotation.attrib["Term"] == "OData.Description"):
                     output += ",\n"
@@ -324,7 +325,6 @@ class JsonSchemaGenerator:
                     output += UT.Utilities.indent(depth) + "\"longDescription\": \"" + annotation.attrib["String"] + "\""
 
                 elif (annotation.attrib["Term"] == "OData.Permissions"):
-                    ignoreannotations.append("OData.Permissions")
                     if annotation.attrib["EnumMember"] == "OData.Permissions/Read":
                         output += ",\n"
                         output += UT.Utilities.indent(depth) + "\"readonly\": true"
