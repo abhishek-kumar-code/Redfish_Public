@@ -19,14 +19,6 @@
       <EntityType Name="VLanNetworkInterface" BaseType="Resource.Resource">
       </EntityType>
 
-      <EntityType Name="VLanNetworkInterfaceCollection" BaseType="Resource.ResourceCollection">
-        <NavigationProperty Name="Members" Type="Collection(VLanNetworkInterface.VLanNetworkInterface)">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>>
-      </EntityType>
-
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="VLanNetworkInterface.1.0.0">

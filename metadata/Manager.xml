@@ -17,8 +17,8 @@
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Chassis.xml">
     <edmx:Include Namespace="Chassis"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/EthernetInterface.xml">
-    <edmx:Include Namespace="EthernetInterface"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/EthernetInterfaceCollection.xml">
+    <edmx:Include Namespace="EthernetInterfaceCollection"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ManagerNetworkProtocol.xml">
     <edmx:Include Namespace="ManagerNetworkProtocol"/>
@@ -26,17 +26,17 @@
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/LogService.xml">
     <edmx:Include Namespace="LogService"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/VirtualMedia.xml">
-    <edmx:Include Namespace="VirtualMedia"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/VirtualMediaCollection.xml">
+    <edmx:Include Namespace="VirtualMediaCollection"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/SerialInterface.xml">
-    <edmx:Include Namespace="SerialInterface"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/SerialInterfaceCollection.xml">
+    <edmx:Include Namespace="SerialInterfaceCollection"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Redundancy.xml">
     <edmx:Include Namespace="Redundancy"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/LogService.xml">
-    <edmx:Include Namespace="LogService"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/LogServiceCollection.xml">
+    <edmx:Include Namespace="LogServiceCollection"/>
   </edmx:Reference>
   
   <edmx:DataServices>
@@ -45,14 +45,6 @@
       <EntityType Name="Manager" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition for a Manager.  Examples of managers are BMCs, Enclosure Managers, Management Controllers and other subsystems assigned managability functions."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a management subsystem for a Redfish implementation."/>
-      </EntityType>
-
-      <EntityType Name="ManagerCollection" BaseType="Resource.ResourceCollection">
-        <NavigationProperty Name="Members" Type="Collection(Manager.Manager)">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>
       </EntityType>
 
       <Action Name="Reset" Isbound="true">
@@ -108,13 +100,13 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This object contains the links to other resources that are related to this resource."/>
         </Property>
-        <NavigationProperty Name="EthernetInterfaces" Type="EthernetInterface.EthernetInterfaceCollection">
+        <NavigationProperty Name="EthernetInterfaces" Type="EthernetInterfaceCollection.EthernetInterfaceCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a reference to a collection of NICs that this manager uses for network communication.  It is here that clients will find NIC configuration options and settings."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type EthernetInterfaceCollection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="SerialInterfaces" Type="SerialInterface.SerialInterfaceCollection">
+        <NavigationProperty Name="SerialInterfaces" Type="SerialInterfaceCollection.SerialInterfaceCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a reference to a collection of serial interfaces that this manager uses for serial and console communication.  It is here that clients will find serial configuration options and settings."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type SerialInterfaceCollection which are for the use of this manager."/>
@@ -127,13 +119,13 @@
           <Annotation Term="OData.AutoExpandReferences"/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="LogServices" Type="LogService.LogServiceCollection">
+        <NavigationProperty Name="LogServices" Type="LogServiceCollection.LogServiceCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a reference to a collection of Logs used by the manager."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain a reference to a collection of type LogServiceCollection which are for the use of this manager."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="VirtualMedia" Type="VirtualMedia.VirtualMediaCollection">
+        <NavigationProperty Name="VirtualMedia" Type="VirtualMediaCollection.VirtualMediaCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a reference to the Virtual Media services for this particular manager."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain a reference to a collection of type VirtualMediaCollection which are for the use of this manager."/>

@@ -14,14 +14,6 @@
       <EntityType Name="SimpleStorage" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition for the Simple Storage resource.  It represents the properties of a storage controller and its directly-attached devices."/>
       </EntityType>
-
-      <EntityType Name="SimpleStorageCollection" BaseType="Resource.ResourceCollection">
-        <NavigationProperty Name="Members" Type="Collection(SimpleStorage.SimpleStorage)">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>
-      </EntityType>
       
     </Schema>
     

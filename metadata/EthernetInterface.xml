@@ -20,8 +20,8 @@
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ManagerNetworkProtocol.xml">
     <edmx:Include Namespace="NetworkService"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/VLanNetworkInterface.xml">
-    <edmx:Include Namespace="VLanNetworkInterface"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/VLanNetworkInterfaceCollection.xml">
+    <edmx:Include Namespace="VLanNetworkInterfaceCollection"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Settings.xml">
     <edmx:Include Namespace="Settings"/>
@@ -35,14 +35,6 @@
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent NIC resources as part of the Redfish specification."/>
       </EntityType>
 
-      <EntityType Name="EthernetInterfaceCollection" BaseType="Resource.ResourceCollection">
-        <NavigationProperty Name="Members" Type="Collection(EthernetInterface.EthernetInterface)">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>
-      </EntityType>
-      
     </Schema>
     
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EthernetInterface.1.0.0">
@@ -133,7 +125,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the DNS name servers for this interface."/>
         </Property>
-        <NavigationProperty Name="VLANs" Type="VLanNetworkInterface.VLanNetworkInterfaceCollection">
+        <NavigationProperty Name="VLANs" Type="VLanNetworkInterfaceCollection.VLanNetworkInterfaceCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a reference to a collection of VLANs and is only used if the NIC supports more than one VLAN."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall reference a collection of VLAN resources.  If this property is used, the VLANEnabled and VLANId property shall not be used."/>

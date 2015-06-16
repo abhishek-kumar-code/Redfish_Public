@@ -15,14 +15,6 @@
         <Annotation Term="OData.Description" String="This schema defines an asynchronous serial interface resource."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent serial resources as part of the Redfish specification."/>
       </EntityType>
-
-      <EntityType Name="SerialInterfaceCollection" BaseType="Resource.ResourceCollection">
-        <NavigationProperty Name="Members" Type="Collection(SerialInterface.SerialInterface)">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>
-      </EntityType>
       
     </Schema>
     

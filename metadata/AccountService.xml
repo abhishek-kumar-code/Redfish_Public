@@ -12,11 +12,11 @@
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.xml">
     <edmx:Include Namespace="Resource.1.0.0" Alias="Resource"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ManagerAccount.xml">
-    <edmx:Include Namespace="ManagerAccount"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ManagerAccountCollection.xml">
+    <edmx:Include Namespace="ManagerAccountCollection"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Role.xml">
-    <edmx:Include Namespace="Role"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/RoleCollection.xml">
+    <edmx:Include Namespace="RoleCollection"/>
   </edmx:Reference>
   
   <edmx:DataServices>
@@ -72,13 +72,13 @@
           <Annotation Term="OData.LongDescription" String="This property shall reference the threshold of time in seconds from the last failed login attempt at which point the AccountLockoutThreshold counter (that counts number of failed login attempts) is reset back to zero (at which point AccountLockoutThreshold failures would be required before the account is locked).  This value shall be less than or equal to AccountLockoutDuration. The threshold counter also resets to zero after each successful login."/>
           <Annotation Term="Validation.Minimum" Int="0"/>  
         </Property>
-        <NavigationProperty Name="Accounts" Type="ManagerAccount.ManagerAccountCollection">
+        <NavigationProperty Name="Accounts" Type="ManagerAccountCollection.ManagerAccountCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Link to a collection of Manager Accounts"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the link to a collection of type ManagerAccountCollection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="Roles" Type="Role.RoleCollection">
+        <NavigationProperty Name="Roles" Type="RoleCollection.RoleCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Link to a collection of Roles"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the link to a collection of type RoleCollection."/>

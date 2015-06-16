@@ -1310,26 +1310,25 @@ class JsonSchemaGenerator:
             except :
                 # This type has not been parsed 
                 parsedtypes.append(typename + ":" + typenamespace)
-                if ( (typedata["IsFromRefUri"] == False) and (typetype == "EntityType") and ( self.has_basetype(typetable, typedata, "Resource.Resource" ) or self.has_basetype(typetable, typedata, "Resource.ResourceCollection") ) ): 
+                if ( (typenamespace == namespace) and (typedata["IsFromRefUri"] == False) and (typetype == "EntityType") and ( self.has_basetype(typetable, typedata, "Resource.Resource" ) or self.has_basetype(typetable, typedata, "Resource.ResourceCollection") ) ): 
                     validationtypecount += 1
                     validationtypes.append(JsonSchemaGenerator.get_ref_value_for_type(typetable, currentType, namespace))
 
         if(validationtypecount > 1):
            output += UT.Utilities.indent(depth) + "\"oneOf\": [\n"
-           depth+=1
-
-        first = True
-        for validationtype in validationtypes:
-           if (first == True):
-               first=False
-           else:
-               output += ",\n"
-           output += UT.Utilities.indent(depth) + "{ \"$ref\": \"" + validationtype + "\" }"
-
-        if(validationtypecount > 1):
+           first = True
+           for validationtype in validationtypes:
+               if (first == True):
+                   first=False
+               else:
+                   output += ",\n"
+               output += UT.Utilities.indent(depth + 1) + "{ \"$ref\": \"" + validationtype + "\" }"
            output += "\n"
-           depth -=1
            output += UT.Utilities.indent(depth) + "]"
+
+#todo: clean up conditional logic
+        elif validationtypecount == 1:
+           output += UT.Utilities.indent(depth) + "\"$ref\": \"" + validationtypes[0] + "\""
 
 		#now generate definition block
         output += ",\n"
@@ -1389,7 +1388,6 @@ class JsonSchemaGenerator:
 
 #fix this for web use
         filename="json" + "\\" + filename
-        print("Filename: "+filename)
         file = open(filename, "wb")
         file.write(bytes(fileoutput, 'utf-8'))
         file.close()
@@ -1548,7 +1546,6 @@ def generate_json(url, directory):
  #       schema_version_value = JsonSchemaGenerator.get_schemaversion_from_namespace(namespace)
                 
         for currentnamespace in namespaces:
-            print("Processing namespace: " + currentnamespace)
             # Create an object of JsonSchemaGenerator
             current_schema = JsonSchemaGenerator(currentnamespace)
 

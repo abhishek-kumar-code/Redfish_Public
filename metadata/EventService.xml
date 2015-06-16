@@ -16,8 +16,8 @@
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Event.xml">
     <edmx:Include Namespace="Event"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/EventDestination.xml">
-    <edmx:Include Namespace="EventDestination"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/EventDestinationCollection.xml">
+    <edmx:Include Namespace="EventDestinationCollection"/>
   </edmx:Reference>
 
   <edmx:DataServices>
@@ -95,7 +95,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The Actions object contains the available custom actions on this resource."/>
         </Property>
-        <NavigationProperty Name="Subscriptions" Type="EventDestination.EventDestinationCollection" ContainsTarget="true">
+        <NavigationProperty Name="Subscriptions" Type="EventDestinationCollection.EventDestinationCollection" ContainsTarget="true">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a reference to a collection of Event Destination resources."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the link to a collection of type EventDestinationCollection."/>

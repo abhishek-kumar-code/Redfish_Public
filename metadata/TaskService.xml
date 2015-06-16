@@ -11,8 +11,8 @@
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.xml">
     <edmx:Include Namespace="Resource.1.0.0" Alias="Resource"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Task.xml">
-    <edmx:Include Namespace="Task"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/TaskCollection.xml">
+    <edmx:Include Namespace="TaskCollection"/>
   </edmx:Reference>
 
   <edmx:DataServices>
@@ -50,7 +50,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this service is enabled."/>
         </Property>        
         <Property Name="Status" Type="Resource.Status"/>
-        <NavigationProperty Name="Tasks" Type="Task.TaskCollection">
+        <NavigationProperty Name="Tasks" Type="TaskCollection.TaskCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="References to the Tasks collection."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a resource of type TaskCollection."/>

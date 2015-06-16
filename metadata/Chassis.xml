@@ -25,8 +25,8 @@
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ComputerSystem.xml">
     <edmx:Include Namespace="ComputerSystem"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/LogService.xml">
-    <edmx:Include Namespace="LogService"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/LogServiceCollection.xml">
+    <edmx:Include Namespace="LogServiceCollection"/>
   </edmx:Reference>
 
   <edmx:DataServices>
@@ -36,14 +36,6 @@
       <EntityType Name="Chassis" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition for the Chassis resource.  It represents the properties for physical components for any system.  This one object is intended to represent racks, rackmount servers, blades, standalone, modular systems, enclosures, and all other containers.  The non-cpu/device centric parts of the schema are all accessed either directly or indirectly through this resource."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a chassis or other physical enclosure for a Redfish implementation."/>
-      </EntityType>
-
-      <EntityType Name="ChassisCollection" BaseType="Resource.ResourceCollection">
-        <NavigationProperty Name="Members" Type="Collection(Chassis.Chassis)">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>
       </EntityType>
 
       <Action Name="Reset" Isbound="true">
@@ -109,7 +101,7 @@
           <Annotation Term="OData.Description" String="The Actions object contains the available custom actions on this resource."/>
         </Property>
         <Property Name="Status" Type="Resource.Status"/>
-        <NavigationProperty Name="LogServices" Type="LogService.LogServiceCollection">
+        <NavigationProperty Name="LogServices" Type="LogServiceCollection.LogServiceCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="A reference to the logs for this chassis."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type LogServiceCollection."/>
