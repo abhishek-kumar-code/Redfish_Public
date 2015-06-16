@@ -8,17 +8,30 @@
     <edmx:Include Namespace="Resource.1.0.0" Alias="Resource"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/LogEntry.xml">
-    <edmx:Include Namespace="LogEntry.1.0.0" Alias="LogEntry"/>
+    <edmx:Include Namespace="LogEntry"/>
   </edmx:Reference>
 
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Session.1.0.0" Alias="Session">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Session">
 
-      <!-- This is the schema definition for the Session resource.  It represents the properties for the session with a Redfish Service. -->
-      
       <EntityType Name="Session" BaseType="Resource.Resource">
         <Annotation Term="Core.Description" String="This is the schema definition for the Session resource.  It represents the properties for the session with a Redfish Service."/>
         <Annotation Term="Core.LongDescription" String="This resource shall be used to represent a session for a Redfish implementation."/>
+      </EntityType>
+
+      <EntityType Name="SessionCollection" BaseType="Resource.ResourceCollection">
+        <NavigationProperty Name="Members" Type="Collection(Session.Session)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+      </EntityType>
+    
+    </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Session.1.0.0">
+      
+      <EntityType Name="Session" BaseType="Session.Session">
         <Property Name="UserName" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="Redfish.RequiredOnCreate"/>

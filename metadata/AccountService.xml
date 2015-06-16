@@ -12,21 +12,25 @@
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.xml">
     <edmx:Include Namespace="Resource.1.0.0" Alias="Resource"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ManagerAccountCollection.xml">
-    <edmx:Include Namespace="ManagerAccountCollection"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ManagerAccount.xml">
+    <edmx:Include Namespace="ManagerAccount"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/RoleCollection.xml">
-    <edmx:Include Namespace="RoleCollection"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Role.xml">
+    <edmx:Include Namespace="Role"/>
   </edmx:Reference>
   
   <edmx:DataServices>
-    
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AccountService">
 
-      <!-- This schema defines an account service and its respective properties. -->
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AccountService">
       <EntityType Name="AccountService" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition for the Account Service.  It represents the properties for the service itself and has links to the actual list of accounts."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a management account service for a Redfish implementation."/>
+      </EntityType>
+    </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AccountService.1.0.0">
+
+      <EntityType Name="AccountService" BaseType="AccountService.AccountService">
         <Property Name="Status" Type="Resource.Status"/>
         <Property Name="ServiceEnabled" Type="Edm.Boolean">
           <Annotation Term="OData.Description" String="This indicates whether this service is enabled."/>
@@ -68,13 +72,13 @@
           <Annotation Term="OData.LongDescription" String="This property shall reference the threshold of time in seconds from the last failed login attempt at which point the AccountLockoutThreshold counter (that counts number of failed login attempts) is reset back to zero (at which point AccountLockoutThreshold failures would be required before the account is locked).  This value shall be less than or equal to AccountLockoutDuration. The threshold counter also resets to zero after each successful login."/>
           <Annotation Term="Validation.Minimum" Int="0"/>  
         </Property>
-        <NavigationProperty Name="Accounts" Type="ManagerAccountCollection.ManagerAccountCollection">
+        <NavigationProperty Name="Accounts" Type="ManagerAccount.ManagerAccountCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Link to a collection of Manager Accounts"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the link to a collection of type ManagerAccountCollection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="Roles" Type="RoleCollection.RoleCollection">
+        <NavigationProperty Name="Roles" Type="Role.RoleCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Link to a collection of Roles"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the link to a collection of type RoleCollection."/>

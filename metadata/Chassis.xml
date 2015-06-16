@@ -25,8 +25,8 @@
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ComputerSystem.xml">
     <edmx:Include Namespace="ComputerSystem"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/LogServiceCollection.xml">
-    <edmx:Include Namespace="LogServiceCollection"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/LogService.xml">
+    <edmx:Include Namespace="LogService"/>
   </edmx:Reference>
 
   <edmx:DataServices>
@@ -45,6 +45,16 @@
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </EntityType>
+
+      <Action Name="Reset" Isbound="true">
+        <Parameter Name="Chassis" Type="Chassis.1.0.0.Actions"/>
+        <Parameter Name="ResetType" Type="Resource.ResetType">
+          <Annotation Term="OData.Description" String="This is the type of reset to be performed."/>
+          <Annotation Term="OData.LongDescription" String="This defines the property name for the action."/>
+        </Parameter>
+        <Annotation Term="OData.Description" String="This action is used to reset the system."/>
+        <Annotation Term="OData.LongDescription" String="This defines the name of the custom action supported on this resource."/>
+      </Action>
 
     </Schema>
 
@@ -99,7 +109,7 @@
           <Annotation Term="OData.Description" String="The Actions object contains the available custom actions on this resource."/>
         </Property>
         <Property Name="Status" Type="Resource.Status"/>
-        <NavigationProperty Name="LogServices" Type="LogServiceCollection.LogServiceCollection">
+        <NavigationProperty Name="LogServices" Type="LogService.LogServiceCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="A reference to the logs for this chassis."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type LogServiceCollection."/>
@@ -132,13 +142,13 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resource that manages this chassis and shall reference a resource of type Manager."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="ContainedBy" Type="Chassis.Chassis">
+        <NavigationProperty Name="ContainedBy" Type="Chassis.1.0.0.Chassis">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="A reference to the chassis that this chassis is contained by."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resource that represents the chassis that contains this chassis and shall be of type Chassis."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="Contains" Type="Collection(Chassis.Chassis)">
+        <NavigationProperty Name="Contains" Type="Collection(Chassis.1.0.0.Chassis)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="An array of references to any other chassis that this chassis has in it."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resource that represents the chassis that this chassis contains and shall be of type Chassis."/>
@@ -160,25 +170,13 @@
 
       <ComplexType Name="Actions">
         <Annotation Term="OData.AdditionalProperties" Bool="False"/>
-        <Property Name="Oem" Type="Chassis.OemActions"/>
+        <Property Name="Oem" Type="Chassis.1.0.0.OemActions"/>
       </ComplexType>
 
       <ComplexType Name="OemActions">
         <Annotation Term="OData.AdditionalProperties" Bool="True"/>
       </ComplexType>
 
-      <!-- The reset action restarts the Chassis.-->
-      <Action Name="Reset" Isbound="true">
-        <Parameter Name="Chassis" Type="Chassis.Actions"/>
-        <Parameter Name="ResetType" Type="Resource.ResetType">
-          <Annotation Term="OData.Description" String="This is the type of reset to be performed."/>
-          <Annotation Term="OData.LongDescription" String="This defines the property name for the action."/>
-        </Parameter>
-        <Annotation Term="OData.Description" String="This action is used to reset the system."/>
-        <Annotation Term="OData.LongDescription" String="This defines the name of the custom action supported on this resource."/>
-      </Action>
-
-      <!-- These are all supported Chassis types. -->
       <EnumType Name="ChassisType">
         <Member Name="Rack">
           <Annotation Term="OData.Description" String="An equipment rack, typically a 19-inch wide freestanding unit"/>

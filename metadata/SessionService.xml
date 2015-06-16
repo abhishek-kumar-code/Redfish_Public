@@ -12,15 +12,24 @@
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.xml">
     <edmx:Include Namespace="Resource.1.0.0" Alias="Resource"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/SessionCollection.xml">
-    <edmx:Include Namespace="SessionCollection.1.0.0" Alias="SessionCollection"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Session.xml">
+    <edmx:Include Namespace="Session"/>
   </edmx:Reference>
   
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SessionService.1.0.0" Alias="SessionService">
 
-      <!-- This schema defines a Session service and its respective properties. -->
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SessionService">
+
       <EntityType Name="SessionService" BaseType="Resource.Resource">
+        <Annotation Term="OData.Description" String="This is the schema definition for the Session Service.  It represents the properties for the service itself and has links to the actual list of sessions."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent the Session Service Properties for a Redfish implementation."/>
+      </EntityType>
+
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SessionService.1.0.0">
+
+      <EntityType Name="SessionService" BaseType="SessionService.SessionService">
         <Annotation Term="OData.Description" String="This is the schema definition for the Session Service.  It represents the properties for the service itself and has links to the actual list of sessions."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent the Session Service Properties for a Redfish implementation."/>
         <Property Name="Status" Type="Resource.Status"/>
@@ -35,7 +44,7 @@
           <Annotation Term="Validation.Minimum" Int="30"/>
           <Annotation Term="Validation.Maximum" Int="86400"/>
         </Property>
-        <NavigationProperty Name="Sessions" Type="SessionCollection.SessionCollection">
+        <NavigationProperty Name="Sessions" Type="Session.SessionCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Link to a collection of Sessions"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the link to a collection of Sessions."/>

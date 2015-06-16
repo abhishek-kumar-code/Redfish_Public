@@ -2,9 +2,8 @@
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
 
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Privileges.1.0.0" Alias="Privileges">
-
-      <!-- Privileges Definition-->
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Privileges.1.0.0">
       
       <EnumType Name="PrivilegeType">
         <Member Name="Login">
@@ -24,16 +23,16 @@
         </Member>
       </EnumType>
       
-      <Term Name="GetPrivileges" Type="Privileges.PrivilegeType">
+      <Term Name="GetPrivileges" Type="Privileges.1.0.0.PrivilegeType">
         <Annotation Term="Description" String="Get operations privileges may be defined on a Link element to provide read privileges for the referenced resources, or on individual elements to override the privileges for that element"/>
       </Term>
-      <Term Name="PostPrivileges" Type="Privileges.PrivilegeType">
+      <Term Name="PostPrivileges" Type="Privileges.1.0.0.PrivilegeType">
         <Annotation Term="Description" String="Post privileges may be defined on a Link element to provide create privileges for the referenced resources, or on individual elements to override the privileges for that element"/>
       </Term>
-      <Term Name="PatchPutPrivileges" Type="Privileges.privilegeType">
+      <Term Name="PatchPutPrivileges" Type="Privileges.1.0.0.PrivilegeType">
         <Annotation Term="Description" String="PatchPut privileges may be defined on a Link element to provide update privileges for the referenced resources, or on individual elements to override the privileges for that element"/>
       </Term>
-      <Term Name="DeletePrivileges" Type="Privileges.privilegeType">
+      <Term Name="DeletePrivileges" Type="Privileges.1.0.0.PrivilegeType">
         <Annotation Term="Description" String="Delete privileges may be defined on a Link element to provide update privileges for the referenced resources, or on individual elements to override the privileges for that element"/>
       </Term>
 

@@ -9,9 +9,13 @@
   </edmx:Reference>
   
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SerialInterface.1.0.0" Alias="SerialInterface">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SerialInterface">
 
-      <!-- This is the schema definition for the Serial Interface. -->
+      <EntityType Name="SerialInterface" BaseType="Resource.Resource">
+        <Annotation Term="OData.Description" String="This schema defines an asynchronous serial interface resource."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent serial resources as part of the Redfish specification."/>
+      </EntityType>
+
       <EntityType Name="SerialInterfaceCollection" BaseType="Resource.ResourceCollection">
         <NavigationProperty Name="Members" Type="Collection(SerialInterface.SerialInterface)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
@@ -20,42 +24,46 @@
         </NavigationProperty>
       </EntityType>
       
-      <EntityType Name="SerialInterface" BaseType="Resource.Resource">
+    </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SerialInterface.1.0.0">
+
+      <EntityType Name="SerialInterface" BaseType="SerialInterface.SerialInterface">
         <Annotation Term="OData.Description" String="This schema defines an asynchronous serial interface resource."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent serial resources as part of the Redfish specification."/>
         <Property Name="InterfaceEnabled" Type="Edm.Boolean">
           <Annotation Term="OData.Description" String="This indicates whether this interface is enabled."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this interface is enabled."/>
         </Property>
-        <Property Name="SignalType" Type="SerialInterface.SignalType" Nullable="false">
+        <Property Name="SignalType" Type="SerialInterface.1.0.0.SignalType" Nullable="false">
           <Annotation Term="OData.Description" String="The type of signal used for the communication connection - RS232 or RS485."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the type of serial signalling that will be utilized for the serial connection."/>
         </Property>
-        <Property Name="BitRate" Type="SerialInterface.BitRate" Nullable="false">
+        <Property Name="BitRate" Type="SerialInterface.1.0.0.BitRate" Nullable="false">
           <Annotation Term="OData.Description" String="The receive and transmit rate of data flow, typically in bits-per-second (bps), over the serial connection."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the transmit and receive speed of the serial connection."/>
         </Property>
-        <Property Name="Parity" Type="SerialInterface.Parity" Nullable="false">
+        <Property Name="Parity" Type="SerialInterface.1.0.0.Parity" Nullable="false">
           <Annotation Term="OData.Description" String="The type of parity used by the sender and receiver in order to detect errors over the serial connection."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate parity information for a serial connection."/>
         </Property>
-        <Property Name="DataBits" Type="SerialInterface.DataBits" Nullable="false">
+        <Property Name="DataBits" Type="SerialInterface.1.0.0.DataBits" Nullable="false">
           <Annotation Term="OData.Description" String="The number of data bits that will follow the start bit over the serial connection."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate number of data bits for the serial connection."/>
         </Property>
-        <Property Name="StopBits" Type="SerialInterface.StopBits" Nullable="false">
+        <Property Name="StopBits" Type="SerialInterface.1.0.0.StopBits" Nullable="false">
           <Annotation Term="OData.Description" String="The period of time before the next start bit is transmitted."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the stop bits for the serial connection."/>
         </Property>
-        <Property Name="FlowControl" Type="SerialInterface.FlowControl" Nullable="false">
+        <Property Name="FlowControl" Type="SerialInterface.1.0.0.FlowControl" Nullable="false">
           <Annotation Term="OData.Description" String="The type of flow control, if any, that will be imposed on the serial connection."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the flow control mechanism for the serial connection."/>
         </Property>
-        <Property Name="ConnectorType" Type="SerialInterface.ConnectorType" Nullable="false">
+        <Property Name="ConnectorType" Type="SerialInterface.1.0.0.ConnectorType" Nullable="false">
           <Annotation Term="OData.Description" String="The type of connector used for this interface."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the type of phyiscal connector used for this serial connection."/>
         </Property>  
-        <Property Name="PinOut" Type="SerialInterface.PinOut" >
+        <Property Name="PinOut" Type="SerialInterface.1.0.0.PinOut" >
           <Annotation Term="OData.Description" String="The physical pin configuration needed for a serial connector."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the physical pin out for the serial connection."/>
         </Property>

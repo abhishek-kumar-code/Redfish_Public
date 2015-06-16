@@ -16,11 +16,31 @@
   </edmx:Reference>
 
   <edmx:DataServices>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogService">
 
-      <!-- This resource represents the log service for the resource or service to which it is associated. -->
-
       <EntityType Name="LogService" BaseType="Resource.Resource">
+        <Annotation Term="OData.Description" String="This resource represents the log service for the resource or service to which it is associated."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a log service for a Redfish implementation."/>
+      </EntityType>
+
+      <EntityType Name="LogServiceCollection" BaseType="Resource.ResourceCollection">
+        <NavigationProperty Name="Members" Type="Collection(LogService.LogService)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+      </EntityType>
+
+      <Action Name="ClearLog" IsBound="true">
+        <Parameter Name="LogService" Type="LogService.1.0.0.Actions"/>
+      </Action>
+      
+    </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogService.1.0.0">
+
+      <EntityType Name="LogService" BaseType="LogService.LogService">
         <Annotation Term="OData.Description" String="This resource represents the log service for the resource or service to which it is associated."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a log service for a Redfish implementation."/>
         <Property Name="ServiceEnabled" Type="Edm.Boolean">
@@ -82,10 +102,6 @@
           <Annotation Term="OData.Description" String="When full, new entries to the Log will be discarded"/>
         </Member>
       </EnumType>
-
-      <Action Name="ClearLog" IsBound="true">
-        <Parameter Name="LogService" Type="LogService.1.0.0.Actions"/>
-      </Action>
 
     </Schema>
   </edmx:DataServices>

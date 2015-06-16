@@ -919,6 +919,7 @@ class JsonSchemaGenerator:
 
         # Throw error if the type is not found
         if not typename in typetable.keys():
+            print("Error: "+typename+" not found.")
             return UT.Utilities.indent(depth)  + "\"ERROR\": \"type " + typename + " unrecognized.\""
 
         typedata = typetable[typename]
@@ -1142,7 +1143,7 @@ class JsonSchemaGenerator:
                 if ( (namespace == currentNamespace) and (typetype == "EntityType") ):
                         parsedtypes.append(typedata["Name"] + ":" + currentNamespace)
                         output = ""
-                        # Check if the type being processed is derived from Resource.ReferenceableMember
+                        # Check if the type being processed is derived from Resource or ResourceCollection
                         if ( self.has_basetype(typetable, typedata, "Resource.Resource" ) or self.has_basetype(typetable, typedata, "Resource.ResourceCollection") ): 
                             JsonSchemaGenerator.current_schema_classname = JsonSchemaGenerator.get_typename_without_namespace(currentType)
 

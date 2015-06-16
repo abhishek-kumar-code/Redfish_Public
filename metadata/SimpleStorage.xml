@@ -9,18 +9,32 @@
   </edmx:Reference>
 
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SimpleStorage.1.0.0" Alias="SimpleStorage">
-
-      <!-- This is the schema definition for the Simple Storage resource. -->
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SimpleStorage">
 
       <EntityType Name="SimpleStorage" BaseType="Resource.Resource">
+        <Annotation Term="OData.Description" String="This is the schema definition for the Simple Storage resource.  It represents the properties of a storage controller and its directly-attached devices."/>
+      </EntityType>
+
+      <EntityType Name="SimpleStorageCollection" BaseType="Resource.ResourceCollection">
+        <NavigationProperty Name="Members" Type="Collection(SimpleStorage.SimpleStorage)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+      </EntityType>
+      
+    </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SimpleStorage.1.0.0">
+
+      <EntityType Name="SimpleStorage" BaseType="SimpleStorage.SimpleStorage">
         <Annotation Term="OData.Description" String="This is the schema definition for the Simple Storage resource.  It represents the properties of a storage controller and its directly-attached devices."/>
         <Property Name="UefiDevicePath" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The UEFI device path used to access this storage controller."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the UEFI device path used to identify and locate the specific storage controller"/>
         </Property>
-        <Property Name="Devices" Type="Collection(SimpleStorage.Device)" Nullable="false">
+        <Property Name="Devices" Type="Collection(SimpleStorage.1.0.0.Device)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The storage devices associated with this resource"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain a list of storage devices associated with this resource"/>		  
@@ -31,7 +45,6 @@
       <ComplexType Name="Device">
         <Annotation Term="OData.AdditionalProperties" Bool="False"/>
         <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
-        <!-- Redfish schema has Description but Mockup payload has Name -->
         <Property Name="Name" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description"  String="The name of the resource or array element."/>

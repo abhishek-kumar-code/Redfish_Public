@@ -11,11 +11,26 @@
 
   <edmx:DataServices>
 
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Processor.1.0.0" Alias="Processor">
-
-      <!-- This is the schema definition for the Processor resource. -->
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Processor">
 
       <EntityType Name="Processor" BaseType="Resource.Resource">
+        <Annotation Term="OData.Description" String="This is the schema definition for the Processor resource.  It represents the properties of a processor attached to a System." />
+        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
+      </EntityType>
+
+      <EntityType Name="ProcessorCollection" BaseType="Resource.ResourceCollection">
+        <NavigationProperty Name="Members" Type="Collection(Processor.Processor)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="Contains the members of this collection." />
+          <Annotation Term="OData.AutoExpandReferences" />
+        </NavigationProperty>
+      </EntityType>
+    
+    </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Processor.1.0.0">
+
+      <EntityType Name="Processor" BaseType="Processor.Processor">
         <Annotation Term="OData.Description" String="This is the schema definition for the Processor resource.  It represents the properties of a processor attached to a System." />
         <Annotation Term="OData.AdditionalProperties" Bool="False"/>
         <Property Name="Socket" Type="Edm.String">
@@ -23,22 +38,22 @@
           <Annotation Term="OData.Description" String="The socket or location of the processor" />
           <Annotation Term="OData.LongDescription" String="This property shall contain the string which identifies the physical location or socket of the processor." />
         </Property>
-        <Property Name="ProcessorType" Type="Processor.ProcessorType">
+        <Property Name="ProcessorType" Type="Processor.1.0.0.ProcessorType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
           <Annotation Term="OData.Description" String="The type of processor" />
           <Annotation Term="OData.LongDescription" String="This property shall contain the string which identifies the type of processor contained in this Socket." />
         </Property>
-        <Property Name="ProcessorArchitecture" Type="Processor.ProcessorArchitecture">
+        <Property Name="ProcessorArchitecture" Type="Processor.1.0.0.ProcessorArchitecture">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
           <Annotation Term="OData.Description" String="The architecture of the processor" />
           <Annotation Term="OData.LongDescription" String="This property shall contain the string which identifies the architecture of the processor contained in this Socket." />
         </Property>
-        <Property Name="InstructionSet" Type="Processor.InstructionSet">
+        <Property Name="InstructionSet" Type="Processor.1.0.0.InstructionSet">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
           <Annotation Term="OData.Description" String="The instruction set of the processor" />
           <Annotation Term="OData.LongDescription" String="This property shall contain the string which identifies the instruction set of the processor contained in this socket." />
         </Property>
-        <Property Name="ProcessorId" Type="Processor.ProcessorId"  Nullable="false">
+        <Property Name="ProcessorId" Type="Processor.1.0.0.ProcessorId"  Nullable="false">
           <Annotation Term="OData.Description" String="Identification information for this processor."/>
           <Annotation Term="OData.LongDescription" String="This object shall contain identification information for this processor."/>		  
         </Property>
@@ -53,7 +68,6 @@
           <Annotation Term="OData.Description" String="The product model number of this device" />
           <Annotation Term="OData.LongDescription" String="This property shall indicate the model information as provided by the manufacturer of this processor." />
         </Property>
-
         <Property Name="MaxSpeedMHz" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
           <Annotation Term="OData.Description" String="The maximum clock speed of the processor" />
@@ -105,7 +119,6 @@
         </Property>
       </ComplexType>
 
-      <!-- This is Processor Types -->
       <EnumType Name="ProcessorType">
         <Member Name="CPU">
           <Annotation Term="OData.Description" String="A Central Processing Unit" />

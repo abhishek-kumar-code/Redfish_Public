@@ -11,18 +11,26 @@
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.xml">
     <edmx:Include Namespace="Resource.1.0.0" Alias="Resource"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/TaskCollection.xml">
-    <edmx:Include Namespace="TaskCollection.1.0.0" Alias="TaskCollection"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Task.xml">
+    <edmx:Include Namespace="Task"/>
   </edmx:Reference>
 
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="TaskService.1.0.0" Alias="TaskService">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="TaskService">
 
-      <!-- This is the schema definition for a Task resource. -->
       <EntityType Name="TaskService" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition for the Task Service.  It represents the properties for the service itself and has links to the actual list of tasks."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a task service for a Redfish implementation."/>
-        <Property Name="CompletedTaskOverWritePolicy" Type="TaskService.OverWritePolicy" Nullable="false">
+      </EntityType>
+      
+    </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="TaskService.1.0.0">
+
+      <EntityType Name="TaskService" BaseType="TaskService.TaskService">
+        <Annotation Term="OData.Description" String="This is the schema definition for the Task Service.  It represents the properties for the service itself and has links to the actual list of tasks."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a task service for a Redfish implementation."/>
+        <Property Name="CompletedTaskOverWritePolicy" Type="TaskService.1.0.0.OverWritePolicy" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Overwrite policy of completed tasks"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate if completed tasks are overwritten should the task service need to track more tasks but the MaxNumberOfTasks has been reached.  Never indicates that the service never overwrites entries by new entries thus causing attempts to spawn tasks to fail.  Oldest indicates that the services overwrites the oldest completed task with a new task when the service has reached its maximum capacity."/>
@@ -42,7 +50,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this service is enabled."/>
         </Property>        
         <Property Name="Status" Type="Resource.Status"/>
-        <NavigationProperty Name="Tasks" Type="TaskCollection.TaskCollection">
+        <NavigationProperty Name="Tasks" Type="Task.TaskCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="References to the Tasks collection."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a resource of type TaskCollection."/>

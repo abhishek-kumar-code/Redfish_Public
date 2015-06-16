@@ -10,12 +10,18 @@
   </edmx:Reference>
   
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MessageRegistry.1.0.0" Alias="MessageRegistry">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MessageRegistry">
 
-      <!--This schema defines a MessageRegistry and its respective properties. -->
       <EntityType Name="MessageRegistry" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition for all Message Registries.  It represents the properties for the registries themselves.  The MessageId is formed per the Redfish specification.  It consists of the RegistryPrefix concatenated with the version concatenated with the unique identifier for the message registry entry."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a message registry for a Redfish implementation."/>
+      </EntityType>
+ 
+    </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MessageRegistry.1.0.0">
+
+      <EntityType Name="MessageRegistry" BaseType="MessageRegistry.MessageRegistry">
         <Property Name="Language" Nullable="false" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is the RFC 5646 compliant language code for the registry."/>
@@ -40,7 +46,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a string that represents the publisher of this registry."/>
           <Annotation Term="Redfish.Required"/>
         </Property>
-        <Property Name="Messages" Nullable="false" Type="Collection(MessageRegistry.MessageProperty)">
+        <Property Name="Messages" Nullable="false" Type="Collection(MessageRegistry.1.0.0.MessageProperty)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The pattern property indicates that a free-form string is the unique identifier for the message within the registry."/>
           <Annotation Term="OData.LongDescription" String="The pattern property shall represent the suffix to be used in the MessageId and shall be unique within this message registry."/>
@@ -53,7 +59,7 @@
           <Collection>
             <Record>
               <PropertyValue Property="Pattern" String="[A-Za-z0-9]+"/>
-              <PropertyValue Property="Type" String="MessageRegistry.Message"/>
+              <PropertyValue Property="Type" String="MessageRegistry.1.0.0.Message"/>
             </Record>
           </Collection>
         </Annotation>
@@ -86,7 +92,7 @@
           <Annotation Term="Redfish.Required"/>
           <Annotation Term="Validation.Minimum" Int="0"/>
         </Property>
-        <Property Name="ParamTypes" Nullable="true" Type="Collection(MessageRegistry.ParamType)">
+        <Property Name="ParamTypes" Nullable="true" Type="Collection(MessageRegistry.1.0.0.ParamType)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The MessageArg types, in order, for the message."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an ordered array of parameter types which match the types of the MessageArgs, in order."/>

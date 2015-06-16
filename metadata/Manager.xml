@@ -12,41 +12,86 @@
     <edmx:Include Namespace="Resource.1.0.0" Alias="Resource"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ComputerSystem.xml">
-    <edmx:Include Namespace="ComputerSystem.1.0.0" Alias="ComputerSystem"/>
+    <edmx:Include Namespace="ComputerSystem"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Chassis.xml">
-    <edmx:Include Namespace="Chassis.1.0.0" Alias="Chassis"/>
+    <edmx:Include Namespace="Chassis"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/EthernetInterfaceCollection.xml">
-    <edmx:Include Namespace="EthernetInterface.1.0.0" Alias="EthernetInterfaceCollection"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/EthernetInterface.xml">
+    <edmx:Include Namespace="EthernetInterface"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ManagerNetworkProtocol.xml">
-    <edmx:Include Namespace="ManagerNetworkProtocol.1.0.0" Alias="ManagerNetworkProtocol"/>
+    <edmx:Include Namespace="ManagerNetworkProtocol"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/LogServiceCollection.xml">
-    <edmx:Include Namespace="LogServiceCollection.1.0.0" Alias="LogServiceCollection"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/LogService.xml">
+    <edmx:Include Namespace="LogService"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/VirtualMediaCollection.xml">
-    <edmx:Include Namespace="VirtualMediaCollection.1.0.0" Alias="VirtualMediaCollection"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/VirtualMedia.xml">
+    <edmx:Include Namespace="VirtualMedia"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/SerialInterfaceCollection.xml">
-    <edmx:Include Namespace="SerialInterfaceCollection.1.0.0" Alias="SerialInterfaceCollection"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/SerialInterface.xml">
+    <edmx:Include Namespace="SerialInterface"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Redundancy.xml">
-    <edmx:Include Namespace="Redundancy.1.0.0" Alias="Redundancy"/>
+    <edmx:Include Namespace="Redundancy"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/LogServiceCollection.xml">
-    <edmx:Include Namespace="LogServiceCollection.1.0.0" Alias="LogServiceCollection"/>
+  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/LogService.xml">
+    <edmx:Include Namespace="LogService"/>
   </edmx:Reference>
   
   <edmx:DataServices>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager">
 
-      <!-- This is the schema definition for a Manager and its respective properties -->
       <EntityType Name="Manager" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition for a Manager.  Examples of managers are BMCs, Enclosure Managers, Management Controllers and other subsystems assigned managability functions."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a management subsystem for a Redfish implementation."/>
       </EntityType>
+
+      <EntityType Name="ManagerCollection" BaseType="Resource.ResourceCollection">
+        <NavigationProperty Name="Members" Type="Collection(Manager.Manager)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+      </EntityType>
+
+      <Action Name="Reset" Isbound="true">
+        <Annotation Term="OData.Description" String="The reset action resets/reboots the manager."/>
+        <Annotation Term="OData.LongDescription" String="This defines the name of the custom action supported when used in conjunction with a POST operation to this resource. When issued, this operation will perform a reset of the manager."/>
+        <Parameter Name="Manager" Type="Manager.1.0.0.Actions"/>
+      </Action>
+
+      <Action Name="Reset" Isbound="true">
+        <Parameter Name="Manager" Type="Manager.1.0.0.Actions"/>
+        <Parameter Name="ResetType" Type="Resource.ResetType">
+          <Annotation Term="OData.Description" String="This is the type of reset to be performed."/>
+          <Annotation Term="OData.LongDescription" String="This defines the property name for the action."/>
+        </Parameter>
+        <Annotation Term="OData.Description" String="This action is used to reset the system."/>
+        <Annotation Term="OData.LongDescription" String="This defines the name of the custom action supported on this resource."/>
+      </Action>
+
+      <Action Name="ForceFailover" Isbound="true">
+        <Annotation Term="OData.Description" String="The ForceFailover action forces a failover of this manager to the manager used in the parameter"/>
+        <Annotation Term="OData.LongDescription" String="This defines the name of the custom action supported when used in conjunction with a POST operation to this resource. When issued, this operation will perform a forced failover of the manager's redundancy to the manager supplied as a parameter."/>
+        <Parameter Name="Manager" Type="Manager.1.0.0.Actions"/>
+        <Parameter Name="href" Type="Collection(Resource.Resource)" Nullable="false">
+          <Annotation Term="OData.Description" String="This array defines the supported values for this property on this resource.  In this case, a valid reference is supported."/>
+        </Parameter>
+      </Action>
+
+      <Action Name="ModifyRedundancySet" Isbound="true">
+        <Annotation Term="OData.Description" String="The ModifyRedundancySet operation is used to add or remove members to a redundant group of manager."/>
+        <Annotation Term="OData.LongDescription" String="This defines the name of the custom action for which the following properties are supported on this resource.  The ModifyRedundancySet operation shall be used to add or remove members to a redundant group of manager."/>
+        <Parameter Name="Manager" Type="Manager.1.0.0.Actions"/>
+        <Parameter Name="Add" Type="Collection(Resource.Resource)" Nullable="false">
+          <Annotation Term="OData.Description" String="This array defines the supported values for this property on this resource.  In this case, a valid reference is supported. Add shall be used to Add members to the manager redundancy group."/>
+        </Parameter>
+        <Parameter Name="Remove" Type="Collection(Resource.Resource)" Nullable="false">
+          <Annotation Term="OData.Description" String="This array defines the supported values for this property on this resource.  In this case, a valid reference is supported. Remove shall be used to remove members from the manager redundancy group."/>
+        </Parameter>
+      </Action>
+    
     </Schema>
     
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.1.0.0">
@@ -63,32 +108,32 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This object contains the links to other resources that are related to this resource."/>
         </Property>
-        <NavigationProperty Name="EthernetInterfaces" Type="EthernetInterfaceCollection.EthernetInterfaceCollection">
+        <NavigationProperty Name="EthernetInterfaces" Type="EthernetInterface.EthernetInterfaceCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a reference to a collection of NICs that this manager uses for network communication.  It is here that clients will find NIC configuration options and settings."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type EthernetInterfaceCollection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="SerialInterfaces" Type="SerialInterfaceCollection.SerialInterfaceCollection">
+        <NavigationProperty Name="SerialInterfaces" Type="SerialInterface.SerialInterfaceCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a reference to a collection of serial interfaces that this manager uses for serial and console communication.  It is here that clients will find serial configuration options and settings."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type SerialInterfaceCollection which are for the use of this manager."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="NetworkProtocol" Type="ManagerNetworkProtocol.ManagerNetworkProtocol">
+        <NavigationProperty Name="NetworkProtocol" Type="ManagerNetworkProtocol.1.0.0.ManagerNetworkProtocol">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a reference to the network services and their settings that the manager controls.  It is here that clients will find network configuration options as well as network services."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain a reference to a resource of type ManagerNetworkProtocol which represents the network services for this manager."/>
           <Annotation Term="OData.AutoExpandReferences"/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="LogServices" Type="LogServiceCollection.LogServiceCollection">
+        <NavigationProperty Name="LogServices" Type="LogService.LogServiceCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a reference to a collection of Logs used by the manager."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain a reference to a collection of type LogServiceCollection which are for the use of this manager."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="VirtualMedia" Type="VirtualMediaCollection.VirtualMediaCollection">
+        <NavigationProperty Name="VirtualMedia" Type="VirtualMedia.VirtualMediaCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a reference to the Virtual Media services for this particular manager."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain a reference to a collection of type VirtualMediaCollection which are for the use of this manager."/>
@@ -157,17 +202,6 @@
       <ComplexType Name="OemActions">
         <Annotation Term="OData.AdditionalProperties" Bool="True"/>
       </ComplexType>
-
-      <!-- The reset action restarts the Manager-->
-      <Action Name="Reset" Isbound="true">
-        <Parameter Name="Manager" Type="Manager.1.0.0.Actions"/>
-        <Parameter Name="ResetType" Type="Resource.ResetType">
-          <Annotation Term="OData.Description" String="This is the type of reset to be performed."/>
-          <Annotation Term="OData.LongDescription" String="This defines the property name for the action."/>
-        </Parameter>
-        <Annotation Term="OData.Description" String="This action is used to reset the system."/>
-        <Annotation Term="OData.LongDescription" String="This defines the name of the custom action supported on this resource."/>
-      </Action>
       
       <ComplexType Name="Links" BaseType="Resource.Links">
         <NavigationProperty Name="ManagerForServers" Type="Collection(ComputerSystem.ComputerSystem)">
@@ -183,36 +217,6 @@
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </ComplexType>
-
-      <!-- The reset action resets/reboots the manager.-->
-      <Action Name="Reset" Isbound="true">
-        <Annotation Term="OData.Description" String="The reset action resets/reboots the manager."/>
-        <Annotation Term="OData.LongDescription" String="This defines the name of the custom action supported when used in conjunction with a POST operation to this resource. When issued, this operation will perform a reset of the manager."/>
-        <Parameter Name="Manager" Type="Manager.1.0.0.Actions"/>
-      </Action>
-
-      <!-- The ForceFailover action forces a failover of this manager to the manager used in the href below.-->
-      <Action Name="ForceFailover" Isbound="true">
-        <Annotation Term="OData.Description" String="The ForceFailover action forces a failover of this manager to the manager used in the parameter"/>
-        <Annotation Term="OData.LongDescription" String="This defines the name of the custom action supported when used in conjunction with a POST operation to this resource. When issued, this operation will perform a forced failover of the manager's redundancy to the manager supplied as a parameter."/>
-        <Parameter Name="Manager" Type="Manager.1.0.0.Actions"/>
-        <Parameter Name="href" Type="Collection(Resource.Resource)" Nullable="false">
-          <Annotation Term="OData.Description" String="This array defines the supported values for this property on this resource.  In this case, a valid reference is supported."/>
-        </Parameter>
-      </Action>
-
-      <!-- The ModifyRedundancySet operation is used to add or remove members to a redundant group of manager.-->
-      <Action Name="ModifyRedundancySet" Isbound="true">
-        <Annotation Term="OData.Description" String="The ModifyRedundancySet operation is used to add or remove members to a redundant group of manager."/>
-        <Annotation Term="OData.LongDescription" String="This defines the name of the custom action for which the following properties are supported on this resource.  The ModifyRedundancySet operation shall be used to add or remove members to a redundant group of manager."/>
-        <Parameter Name="Manager" Type="Manager.1.0.0.Actions"/>
-        <Parameter Name="Add" Type="Collection(Resource.Resource)" Nullable="false">
-          <Annotation Term="OData.Description" String="This array defines the supported values for this property on this resource.  In this case, a valid reference is supported. Add shall be used to Add members to the manager redundancy group."/>
-        </Parameter>
-        <Parameter Name="Remove" Type="Collection(Resource.Resource)" Nullable="false">
-          <Annotation Term="OData.Description" String="This array defines the supported values for this property on this resource.  In this case, a valid reference is supported. Remove shall be used to remove members from the manager redundancy group."/>
-        </Parameter>
-      </Action>
 
       <!-- This type defines the type of manager that given resource represents. -->
       <EnumType Name="ManagerType">
@@ -290,7 +294,7 @@
       </EnumType>
 
       <!-- This type contains information about the Serial Console service of a given manager. -->
-      <ComplexType Name="SerialConsole" BaseType="Manager.ManagerService">
+      <ComplexType Name="SerialConsole" BaseType="Manager.1.0.0.ManagerService">
         <Annotation Term="OData.AdditionalProperties" Bool="False"/>
         <Property Name="ConnectTypesSupported" Type="Collection(Manager.1.0.0.SerialConnectTypesSupported)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
@@ -312,7 +316,7 @@
       <!-- This type contains information about the Graphical Console (KVM-IP) service of a given manager. -->
       <ComplexType Name="GraphicalConsole" BaseType="Manager.1.0.0.ManagerService">
         <Annotation Term="OData.AdditionalProperties" Bool="False"/>
-        <Property Name="ConnectTypesSupported" Type="Collection(Manager.GraphicalConnectTypesSupported)" Nullable="false">
+        <Property Name="ConnectTypesSupported" Type="Collection(Manager.1.0.0.GraphicalConnectTypesSupported)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This object is used to enumerate the Graphical Console connection types allowed by the implementation."/>
           <Annotation Term="OData.LongDescription" String="The value of ConnectTypesSupported shall be an array of the enumerations provided here.  RDP shall be included if the Remote Desktop (RDP) protocol is supported.  KVMIP shall be included if a vendor-define KVM-IP protocol is supported."/>

@@ -15,16 +15,18 @@
   <edmx:DataServices>
  
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Event">
-      <!-- This schema defines an event and its respective properties. -->
+
       <EntityType Name="Event" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition for Events.  It represents the properties for the events themselves and not subscriptions or any other resource."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent an event for a Redfish implementation."/>
       </EntityType>
+
+      <EntityType Name="EventRecord" BaseType="Resource.ReferenceableMember"/>
+
       </Schema>
     
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Event.1.0.0">
 
-      <!-- This schema defines an event and its respective properties. -->
       <EntityType Name="Event" BaseType="Event.Event">
         <NavigationProperty Name="Events" Type="Collection(Event.1.0.0.EventRecord)" Nullable="false">
           <Annotation Term="OData.Description" String="Each event in this array has a set of properties that describe the event.  Since this is an array, more than one event can be sent simultaneously."/>
@@ -34,7 +36,6 @@
         </NavigationProperty>
       </EntityType>
 
-      <!-- This is the types of Events that can be subscribed to. -->
       <EnumType Name="EventType" IsFlags="true">
         <Member Name="StatusChange">
           <Annotation Term="OData.Description" String="The status of this resource has changed"/>
@@ -53,7 +54,7 @@
         </Member>
       </EnumType>
 
-      <EntityType Name="EventRecord" BaseType="Resource.ReferenceableMember">
+      <EntityType Name="EventRecord" BaseType="Event.EventRecord">
         <Property Name="EventType" Type="Event.1.0.0.EventType" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This indicates the type of event sent, according to the definitions in the EventService."/>
