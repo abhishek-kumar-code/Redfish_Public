@@ -232,7 +232,7 @@
       <ComplexType Name="ManagerService">
         <Annotation Term="OData.Description" String="Used for describing services like Serial Console, Command Shell or Graphical Console"/>
         <Annotation Term="OData.AdditionalProperties" Bool="False"/>
-        <Property Name="Enabled" Type="Edm.Boolean" Nullable="false">
+        <Property Name="ServiceEnabled" Type="Edm.Boolean" Nullable="false">
           <Annotation Term="OData.Description" String="Indicates if the service is enabled for this manager."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the enabled status of the protocol used for the service.  The value shall be true if enabled and false if disabled."/>
         </Property>

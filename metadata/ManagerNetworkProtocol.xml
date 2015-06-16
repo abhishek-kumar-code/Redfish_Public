@@ -89,7 +89,7 @@
       
       <ComplexType Name="Protocol">
         <Annotation Term="OData.AdditionalProperties" Bool="False"/>
-        <Property Name="Enabled" Type="Edm.Boolean">
+        <Property Name="ProtocolEnabled" Type="Edm.Boolean">
           <Annotation Term="OData.Description" String="Indicates if the protocol is enabled or disabled"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the enabled status of the protocol.  The value shall be true if enabled and false if disabled."/>
         </Property>
