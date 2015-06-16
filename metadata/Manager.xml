@@ -47,13 +47,13 @@
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a management subsystem for a Redfish implementation."/>
       </EntityType>
 
-      <Action Name="Reset" Isbound="true">
+      <Action Name="Reset" IsBound="true">
         <Annotation Term="OData.Description" String="The reset action resets/reboots the manager."/>
         <Annotation Term="OData.LongDescription" String="This defines the name of the custom action supported when used in conjunction with a POST operation to this resource. When issued, this operation will perform a reset of the manager."/>
         <Parameter Name="Manager" Type="Manager.1.0.0.Actions"/>
       </Action>
 
-      <Action Name="Reset" Isbound="true">
+      <Action Name="Reset" IsBound="true">
         <Parameter Name="Manager" Type="Manager.1.0.0.Actions"/>
         <Parameter Name="ResetType" Type="Resource.ResetType">
           <Annotation Term="OData.Description" String="This is the type of reset to be performed."/>
@@ -63,7 +63,7 @@
         <Annotation Term="OData.LongDescription" String="This defines the name of the custom action supported on this resource."/>
       </Action>
 
-      <Action Name="ForceFailover" Isbound="true">
+      <Action Name="ForceFailover" IsBound="true">
         <Annotation Term="OData.Description" String="The ForceFailover action forces a failover of this manager to the manager used in the parameter"/>
         <Annotation Term="OData.LongDescription" String="This defines the name of the custom action supported when used in conjunction with a POST operation to this resource. When issued, this operation will perform a forced failover of the manager's redundancy to the manager supplied as a parameter."/>
         <Parameter Name="Manager" Type="Manager.1.0.0.Actions"/>
@@ -72,7 +72,7 @@
         </Parameter>
       </Action>
 
-      <Action Name="ModifyRedundancySet" Isbound="true">
+      <Action Name="ModifyRedundancySet" IsBound="true">
         <Annotation Term="OData.Description" String="The ModifyRedundancySet operation is used to add or remove members to a redundant group of manager."/>
         <Annotation Term="OData.LongDescription" String="This defines the name of the custom action for which the following properties are supported on this resource.  The ModifyRedundancySet operation shall be used to add or remove members to a redundant group of manager."/>
         <Parameter Name="Manager" Type="Manager.1.0.0.Actions"/>

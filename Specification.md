@@ -612,7 +612,7 @@ For instance, if a Redfish Schema document `http://schemas.dmtf.org/redfish/v1/C
 ~~~xml
 <Schema Name="ComputerSystem">
 ...
-  <Action Name="Reset" Isbound="true">
+  <Action Name="Reset" IsBound="true">
     <Parameter Name="Resource" Type="ComputerSystem.1.0.0.Actions"/>
     <Parameter Name="ResetType" Type="ComputerSystem.ResetType"/>
   </Action>
@@ -1658,14 +1658,14 @@ The type of the Actions property is a [structured type](#structured-types) with 
   <ComplexType Name="OEMActions"/>
 ~~~
 
-Individual actions are defined within a [namespace](#namespace-definitions) using `Action` elements. The `Name` attribute of the action specifies the name of the action. The `Isbound` attribute specifies that the action is bound to (appears as a member of) a resource or structured type.
+Individual actions are defined within a [namespace](#namespace-definitions) using `Action` elements. The `Name` attribute of the action specifies the name of the action. The `IsBound` attribute specifies that the action is bound to (appears as a member of) a resource or structured type.
 
 The Action element contains one or more `Parameter` elements that specify the `Name` and [`Type`](#property-types) of each parameter. 
 
 The first parameter is called the "binding parameter" and specifies the resource or [structrual type](#structural-types) that the action appears as a member of (the type of the Actions property on the resource). The remaining Parameter elements describe additional parameters to be passed to the action.
 
 ~~~xml
-  <Action Name="MyAction" Isbound="true">
+  <Action Name="MyAction" IsBound="true">
     <Parameter Name="Thing" Type="MyType.Actions"/>
     <Parameter Name="Parameter1" Type="Edm.Boolen"/>
   </Action>
@@ -1768,7 +1768,7 @@ OEM-specific actions can be defined by defining actions bound to the OEM propert
 
 ~~~xml
 
-  <Action Name="Ping" Isbound="true">
+  <Action Name="Ping" IsBound="true">
     <Parameter Name="ContosoType" Type="MyType.OEMActions"/>
   </Action>
 

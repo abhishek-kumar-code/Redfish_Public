@@ -490,10 +490,10 @@ class JsonSchemaGenerator:
             if not typeentry["TypeType"] == "Action":
                 continue
 
-            if not "Isbound" in typeentry["Node"].attrib.keys():
+            if not "IsBound" in typeentry["Node"].attrib.keys():
                 continue
 
-            if typeentry["Node"].attrib["Isbound"].upper() == "FALSE":
+            if typeentry["Node"].attrib["IsBound"].upper() == "FALSE":
                 continue
 
             # we have two entries for each action. we need to consider only one of this pair

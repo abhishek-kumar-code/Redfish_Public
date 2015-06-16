@@ -38,7 +38,7 @@
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a chassis or other physical enclosure for a Redfish implementation."/>
       </EntityType>
 
-      <Action Name="Reset" Isbound="true">
+      <Action Name="Reset" IsBound="true">
         <Parameter Name="Chassis" Type="Chassis.1.0.0.Actions"/>
         <Parameter Name="ResetType" Type="Resource.ResetType">
           <Annotation Term="OData.Description" String="This is the type of reset to be performed."/>
