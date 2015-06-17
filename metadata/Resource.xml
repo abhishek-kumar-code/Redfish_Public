@@ -95,6 +95,7 @@
 
       <!--This object represents the standard status structure for resources.-->
       <ComplexType Name="Status">
+        <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
         <Annotation Term="OData.AdditionalProperties" Bool="False"/>
         <Property Name="State" Type="Resource.State">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
