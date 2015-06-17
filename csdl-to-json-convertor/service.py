@@ -72,8 +72,7 @@ class JsonSchemaGenerator:
     # Description:                                                                                         #
     #  Generate the value of ref based on the name of the type and namespace/file of the type              #
     ########################################################################################################
-    @staticmethod 
-    def get_ref_value_for_type(typetable, current_typename, root_namespace):
+    def get_ref_value_for_type(self, typetable, current_typename, root_namespace):
 
         refvalue = ""
         current_typedata = typetable[current_typename]
@@ -81,7 +80,9 @@ class JsonSchemaGenerator:
 
 #todo: fix logic to be more generic post-v1
         # If the current type is defined in this namespace
-        if root_namespace == current_typedata["Namespace"]:
+        if self.isabstract(current_typedata):
+            refvalue = odataSchema + "#/definitions/idRef"
+        elif root_namespace == current_typedata["Namespace"]:
             refvalue = "#/definitions/" + simplename
         else:
             refvalue = schemaBaseLocation + current_typedata["Alias"] + ".json#/definitions/" + simplename
@@ -135,7 +136,7 @@ class JsonSchemaGenerator:
         return underlyingtype
 
     #################################################################
-    # Name: is_inline_type                                      #
+    # Name: is_inline_type                                          #
     # Description:                                                  #
     #  Returns True if property should be written inline            #
     #################################################################
@@ -639,11 +640,11 @@ class JsonSchemaGenerator:
 
                             # Get the reference value
                             simplename = current_typename[current_typename.rfind(".") + 1 :]
-                            refvalue = JsonSchemaGenerator.get_ref_value_for_type(typetable, current_typename, namespace)
+                            refvalue = self.get_ref_value_for_type(typetable, current_typename, namespace)
                             output += UT.Utilities.indent(depth+3)+ "\"$ref\": \"" + refvalue + "\"\n"
                             output += UT.Utilities.indent(depth+2) + "}"
                         else:
-                            refvalue = JsonSchemaGenerator.get_ref_value_for_type(typetable, attribtype, namespace)
+                            refvalue = self.get_ref_value_for_type(typetable, attribtype, namespace)
                             output += UT.Utilities.indent(depth+2)+ "\"$ref\": \"" + refvalue + "\""
 
 					# Handle regular property
@@ -663,7 +664,7 @@ class JsonSchemaGenerator:
                         typetablekeys = typetable.keys()
                         if (proptypename in typetablekeys):
                             if(self.is_inline_type(typetable[proptypename]) ):
-                                refvalue = JsonSchemaGenerator.get_ref_value_for_type(typetable, proptypename, namespace)
+                                refvalue = self.get_ref_value_for_type(typetable, proptypename, namespace)
                                 output += UT.Utilities.indent(depth+2)+ "\"$ref\": \"" + refvalue + "\""
                             # write Links, Actions, OemActions inline
                             else:
@@ -792,7 +793,7 @@ class JsonSchemaGenerator:
         output = ""
 
         if len(namespace) != 0 and namespace != typedata["Namespace"]:
-                refvalue = JsonSchemaGenerator.get_ref_value_for_type(typetable, typename, namespace)
+                refvalue = self.get_ref_value_for_type(typetable, typename, namespace)
                 output += UT.Utilities.indent(depth)+ "\"$ref\": \"" + refvalue + "\""
 
         else:
@@ -888,7 +889,7 @@ class JsonSchemaGenerator:
             if namespace == typedata["Namespace"]:
                 output = self.generate_json_for_propertybag(typetable, typedata, depth, namespace, prefixuri, isnullable, in_definitions_block)
             else:
-                refvalue = JsonSchemaGenerator.get_ref_value_for_type(typetable, typename, namespace)
+                refvalue = self.get_ref_value_for_type(typetable, typename, namespace)
                 output += UT.Utilities.indent(depth)+ "\"$ref\": \"" + refvalue + "\""
                 
                 return output
@@ -1137,7 +1138,7 @@ class JsonSchemaGenerator:
                 parsedtypes.append(typename + ":" + typenamespace)
                 if ( (typenamespace == namespace) and (typedata["IsFromRefUri"] == False) and (typetype == "EntityType") and ( self.has_basetype(typetable, typedata, "Resource.Resource" ) or self.has_basetype(typetable, typedata, "Resource.ResourceCollection") ) ): 
                     validationtypecount += 1
-                    validationtypes.append(JsonSchemaGenerator.get_ref_value_for_type(typetable, currentType, namespace))
+                    validationtypes.append(self.get_ref_value_for_type(typetable, currentType, namespace))
 
         if(validationtypecount > 1):
            output += UT.Utilities.indent(depth) + "\"oneOf\": [\n"
