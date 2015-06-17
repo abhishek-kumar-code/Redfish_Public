@@ -10,7 +10,8 @@
   </edmx:Reference>
   
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Message.1.0.0" Alias="Message">
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Message">
 
       <Term Name="ExtendedInfo" Type="Collection(Message.Message)">
         <Annotation Name="OData.Description" String="The ExtendedInfo annotation can be applied to any object or property to provide additional information about the item."/>
@@ -18,6 +19,13 @@
 
       <ComplexType Name="Message">
         <Annotation Term="OData.AdditionalProperties" Bool="False"/>
+      </ComplexType>
+
+      </Schema>
+    
+      <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Message.1.0.0">
+
+      <ComplexType Name="Message" BaseType="Message.Message">
         <Property Name="MessageId" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Description" String="This is the key for this message which can be used to look up the message in a message registry."/>
           <Annotation Term="OData.LongDescription" String="This property shall be a key into message registry as described in the Redfish specification."/>
