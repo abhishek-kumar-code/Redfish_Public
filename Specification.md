@@ -42,6 +42,7 @@ The DMTF acknowledges the following individuals for their contributions to this 
 * Donnie Sturgeon - Emerson Network Power
 * Pawel Szymanski - Intel Corporation
 * Paul Vancil - Dell Inc
+* Linda Wu - Super Micro Computer, Inc.
 
 ## Abstract
 The Redfish Scalable Platforms Management API ("Redfish") is a new specification that uses RESTful interface semantics to access data defined in model format to perform out-of-band systems management.  It is suitable for a wide range of servers, from stand-alone servers to rack mount and bladed environments but scales equally well for large scale cloud environments.
