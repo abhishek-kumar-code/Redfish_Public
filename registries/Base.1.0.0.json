@@ -9,7 +9,7 @@
     "OwningEntity": "Redfish Group",
     "Messages": {
         "Success": {
-            "@odata.type": "#MessageRegistry.Message",
+            "@odata.type": "#MessageRegistry.1.0.0.Message",
             "Description": "Indicates that all conditions of a successful operation have been met.",
             "Message": "Successfully Completed Request",
             "Severity": "OK",
@@ -17,7 +17,7 @@
             "Resolution": "None"
         },
         "GeneralError": {
-            "@odata.type": "#MessageRegistry.Message",
+            "@odata.type": "#MessageRegistry.1.0.0.Message",
             "Description": "Indicates that a general error has occurred.",
             "Message": "A general error has occurred. See ExtendedInfo for more information.",
             "Severity": "Critical",
@@ -25,7 +25,7 @@
             "Resolution": "See ExtendedInfo for more information."
         },
         "Created": {
-            "@odata.type": "#MessageRegistry.Message",
+            "@odata.type": "#MessageRegistry.1.0.0.Message",
             "Description": "Indicates that all conditions of a successful creation operation have been met.",
             "Message": "The resource has been created successfully",
             "Severity": "OK",
@@ -33,7 +33,7 @@
             "Resolution": "None"
         },
         "PropertyDuplicate": {
-            "@odata.type": "#MessageRegistry.Message",
+            "@odata.type": "#MessageRegistry.1.0.0.Message",
             "Description": "Indicates that a duplicate property was included in the request body.",
             "Message": "The property %1 was duplicated in the request.",
             "Severity": "Warning",
@@ -44,7 +44,7 @@
             "Resolution": "Remove the duplicate property from the request body and resubmit the request if the operation failed."
         },
         "PropertyUnknown": {
-            "@odata.type": "#MessageRegistry.Message",
+            "@odata.type": "#MessageRegistry.1.0.0.Message",
             "Description": "Indicates that an unknown property was included in the request body.",
             "Message": "The property %1 is not in the list of valid properties for the resource.",
             "Severity": "Warning",
@@ -55,7 +55,7 @@
             "Resolution": "Remove the unknown property from the request body and resubmit the request if the operation failed."
         },
         "PropertyValueTypeError": {
-            "@odata.type": "#MessageRegistry.Message",
+            "@odata.type": "#MessageRegistry.1.0.0.Message",
             "Description": "Indicates that a property was given the wrong value type, such as when a number is supplied for a property that requires a string.",
             "Message": "The value %1 for the property %2 is of a different type than the property can accept.",
             "Severity": "Warning",
@@ -67,7 +67,7 @@
             "Resolution": "Correct the value for the property in the request body and resubmit the request if the operation failed."
         },
         "PropertyValueFormatError": {
-            "@odata.type": "#MessageRegistry.Message",
+            "@odata.type": "#MessageRegistry.1.0.0.Message",
             "Description": "Indicates that a property was given the correct value type but the value of that property was not supported.  This includes value size/length exceeded.",
             "Message": "The value %1 for the property %2 is of a different format than the property can accept.",
             "Severity": "Warning",
@@ -79,7 +79,7 @@
             "Resolution": "Correct the value for the property in the request body and resubmit the request if the operation failed."
         },
         "PropertyValueNotInList": {
-            "@odata.type": "#MessageRegistry.Message",
+            "@odata.type": "#MessageRegistry.1.0.0.Message",
             "Description": "Indicates that a property was given the correct value type but the value of that property was not supported.  This values not in an enumeration",
             "Message": "The value %1 for the property %2 is not in the list of acceptable values.",
             "Severity": "Warning",
@@ -91,7 +91,7 @@
             "Resolution": "Choose a value from the enumeration list that the implementation can support and resubmit the request if the operation failed."
         },
         "PropertyNotWritable": {
-            "@odata.type": "#MessageRegistry.Message",
+            "@odata.type": "#MessageRegistry.1.0.0.Message",
             "Description": "Indicates that a property was given a value in the request body, but the property is a readonly property.",
             "Message": "The property %1 is a read only property and cannot be assigned a value.",
             "Severity": "Warning",
@@ -102,7 +102,7 @@
             "Resolution": "Remove the property from the request body and resubmit the request if the operation failed."
         },
         "PropertyMissing": {
-            "@odata.type": "#MessageRegistry.Message",
+            "@odata.type": "#MessageRegistry.1.0.0.Message",
             "Description": "Indicates that a required property was not supplied as part of the request.",
             "Message": "The property %1 is a required property and must be included in the request.",
             "Severity": "Warning",
@@ -113,7 +113,7 @@
             "Resolution": "Ensure that the property is in the request body and has a valid value and resubmit the request if the operation failed."
         },
         "MalformedJSON": {
-            "@odata.type": "#MessageRegistry.Message",
+            "@odata.type": "#MessageRegistry.1.0.0.Message",
             "Description": "Indicates that the request body was malformed JSON.  Could be duplicate, syntax error,etc.",
             "Message": "The request body submitted was malformed JSON and could not be parsed by the receiving service.",
             "Severity": "Critical",
@@ -121,7 +121,7 @@
             "Resolution": "Ensure that the request body is valid JSON and resubmit the request."
         },
         "ActionNotSupported": {
-            "@odata.type": "#MessageRegistry.Message",
+            "@odata.type": "#MessageRegistry.1.0.0.Message",
             "Description": "Indicates that the action supplied with the POST operation is not supported by the resource.",
             "Message": "The action %1 is not supported by the resource.",
             "Severity": "Critical",
@@ -132,7 +132,7 @@
             "Resolution": "The action supplied cannot be resubmitted to the implementation.  Perhaps the action was invalid, the wrong resource was the target or the implementation documentation may be of assistance."
         },
         "ActionParameterMissing": {
-            "@odata.type": "#MessageRegistry.Message",
+            "@odata.type": "#MessageRegistry.1.0.0.Message",
             "Description": "Indicates that the action requested was missing a parameter that is required to process the action.",
             "Message": "The action %1 requires the parameter %2 to be present in the request body.",
             "Severity": "Critical",
@@ -144,7 +144,7 @@
             "Resolution": "Supply the action with the required parameter in the request body when the request is resubmitted."
         },
         "ActionParameterDuplicate": {
-            "@odata.type": "#MessageRegistry.Message",
+            "@odata.type": "#MessageRegistry.1.0.0.Message",
             "Description": "Indicates that the action was supplied with a duplicated parameter in the request body.",
             "Message": "The action %1 was submitted with more than one value for the parameter %2.",
             "Severity": "Warning",
@@ -156,7 +156,7 @@
             "Resolution": "Resubmit the action with only one instance of the parameter in the request body if the operation failed."
         },
         "ActionParameterUnknown": {
-            "@odata.type": "#MessageRegistry.Message",
+            "@odata.type": "#MessageRegistry.1.0.0.Message",
             "Description": "Indicates that an action was submitted but a parameter supplied did not match any of the known parameters.",
             "Message": "The action %1 was submitted with with the invalid parameter %2.",
             "Severity": "Warning",
@@ -168,7 +168,7 @@
             "Resolution": "Correct the invalid parameter and resubmit the request if the operation failed."
         },
         "ActionParameterValueTypeError": {
-            "@odata.type": "#MessageRegistry.Message",
+            "@odata.type": "#MessageRegistry.1.0.0.Message",
             "Description": "Indicates that a parameter was given the wrong value type, such as when a number is supplied for a parameter that requires a string.",
             "Message": "The value %1 for the parameter %2 in the action %3 is of a different type than the parameter can accept.",
             "Severity": "Warning",
@@ -181,7 +181,7 @@
             "Resolution": "Correct the value for the parameter in the request body and resubmit the request if the operation failed."
         },
         "ActionParameterValueFormatError": {
-            "@odata.type": "#MessageRegistry.Message",
+            "@odata.type": "#MessageRegistry.1.0.0.Message",
             "Description": "Indicates that a parameter was given the correct value type but the value of that parameter was not supported.  This includes value size/length exceeded.",
             "Message": "The value %1 for the parameter %2 in the action %3 is of a different format than the parameter can accept.",
             "Severity": "Warning",
@@ -194,7 +194,7 @@
             "Resolution": "Correct the value for the parameter in the request body and resubmit the request if the operation failed."
         },
         "ActionParameterNotSupported": {
-            "@odata.type": "#MessageRegistry.Message",
+            "@odata.type": "#MessageRegistry.1.0.0.Message",
             "Description": "Indicates that the parameter supplied for the action is not supported on the resource.",
             "Message": "The parameter %1 for the action %2 is not supported on the target resource.",
             "Severity": "Warning",
@@ -206,7 +206,7 @@
             "Resolution": "Remove the parameter supplied and resubmit the request if the operation failed."
         },
         "QueryParameterValueTypeError": {
-            "@odata.type": "#MessageRegistry.Message",
+            "@odata.type": "#MessageRegistry.1.0.0.Message",
             "Description": "Indicates that a query parameter was given the wrong value type, such as when a number is supplied for a query parameter that requires a string.",
             "Message": "The value %1 for the query parameter %2 is of a different type than the parameter can accept.",
             "Severity": "Warning",
@@ -218,7 +218,7 @@
             "Resolution": "Correct the value for the query parameter in the request and resubmit the request if the operation failed."
         },
         "QueryParameterValueFormatError": {
-            "@odata.type": "#MessageRegistry.Message",
+            "@odata.type": "#MessageRegistry.1.0.0.Message",
             "Description": "Indicates that a query parameter was given the correct value type but the value of that parameter was not supported.  This includes value size/length exceeded.",
             "Message": "The value %1 for the parameter %2 is of a different format than the parameter can accept.",
             "Severity": "Warning",
@@ -230,7 +230,7 @@
             "Resolution": "Correct the value for the query parameter in the request and resubmit the request if the operation failed."
         },
         "QueryParameterOutOfRange": {
-            "@odata.type": "#MessageRegistry.Message",
+            "@odata.type": "#MessageRegistry.1.0.0.Message",
             "Description": "Indicates that a query parameter was supplied that is out of range for the given resource.  This can happen with values that are too low or beyond that possible for the supplied resource, such as when a page is requested that is beyond the last page.",
             "Message": "The value %1 for the query parameter %2 is out of range %3.",
             "Severity": "Warning",
@@ -243,7 +243,7 @@
             "Resolution": "Reduce the value for the query parameter to a value that is within range, such as a start or count value that is within bounds of the number of resources in a collection or a page that is within the range of valid pages."
         },
         "QueryNotSupportedOnResource": {
-            "@odata.type": "#MessageRegistry.Message",
+            "@odata.type": "#MessageRegistry.1.0.0.Message",
             "Description": "Indicates that query is not supported on the given resource, such as when a start/count query is attempted on a resource that is not a collection.",
             "Message": "Querying is not supported on the requested resource.",
             "Severity": "Warning",
@@ -251,7 +251,7 @@
             "Resolution": "Remove the query parameters and resubmit the request if the operation failed."
         },
         "QueryNotSupported": {
-            "@odata.type": "#MessageRegistry.Message",
+            "@odata.type": "#MessageRegistry.1.0.0.Message",
             "Description": "Indicates that query is not supported on the implementation.",
             "Message": "Querying is not supported by the implementation.",
             "Severity": "Warning",
@@ -259,7 +259,7 @@
             "Resolution": "Remove the query parameters and resubmit the request if the operation failed."
         },
         "SessionLimitExceeded": {
-            "@odata.type": "#MessageRegistry.Message",
+            "@odata.type": "#MessageRegistry.1.0.0.Message",
             "Description": "Indicates that a session establishment has been requested but the operation failed due to the number of simultaneous sessions exceeding the limit of the implementation.",
             "Message": "The session establishment failed due to the number of simultaneous sessions exceeding the limit of the implementation.",
             "Severity": "Critical",
@@ -267,7 +267,7 @@
             "Resolution": "Reduce the number of other sessions before trying to establish the session or increase the limit of simultaneous sessions (if supported)."
         },
         "EventSubscriptionLimitExceeded": {
-            "@odata.type": "#MessageRegistry.Message",
+            "@odata.type": "#MessageRegistry.1.0.0.Message",
             "Description": "Indicates that a event subscription establishment has been requested but the operation failed due to the number of simultaneous connection exceeding the limit of the implementation.",
             "Message": "The event subscription failed due to the number of simultaneous subscriptions exceeding the limit of the implementation.",
             "Severity": "Critical",
@@ -275,7 +275,7 @@
             "Resolution": "Reduce the number of other subscriptions before trying to establish the event subscription or increase the limit of simultaneous subscriptions (if supported)."
         },
         "ResourceCannotBeDeleted": {
-            "@odata.type": "#MessageRegistry.Message",
+            "@odata.type": "#MessageRegistry.1.0.0.Message",
             "Description": "Indicates that a delete operation was attempted on a resource that cannot be deleted.",
             "Message": "The delete request failed because the resource requested cannot be deleted.",
             "Severity": "Critical",
@@ -283,7 +283,7 @@
             "Resolution": "Do not attempt to delete a non-deletable resource."
         },
         "ResourceInUse": {
-            "@odata.type": "#MessageRegistry.Message",
+            "@odata.type": "#MessageRegistry.1.0.0.Message",
             "Description": "Indicates that a change was requested to a resource but the change was rejected due to the resource being in use or transition.",
             "Message": "The change to the requested resource failed because the resource is in use or in transition.",
             "Severity": "Warning",
@@ -291,7 +291,7 @@
             "Resolution": "Remove the condition and resubmit the request if the operation failed."
         },
         "ResourceAlreadyExists": {
-            "@odata.type": "#MessageRegistry.Message",
+            "@odata.type": "#MessageRegistry.1.0.0.Message",
             "Description": "Indicates that a resource change or creation was attempted but that the operation cannot proceed because the resource already exists.",
             "Message": "The requested resource already exists.",
             "Severity": "Critical",
@@ -299,7 +299,7 @@
             "Resolution": "Do not repeat the create operation as the resource has already been created."
         },
         "CreateFailedMissingReqProperties": {
-            "@odata.type": "#MessageRegistry.Message",
+            "@odata.type": "#MessageRegistry.1.0.0.Message",
             "Description": "Indicates that a create was attempted on a resource but that properties that are required for the create operation were missing from the request.",
             "Message": "The create operation failed because the required property %1 was missing from the request.",
             "Severity": "Critical",
@@ -310,7 +310,7 @@
             "Resolution": "Correct the body to include the required property with a valid value and resubmit the request if the operation failed."
         },
         "CreateLimitReachedForResource": {
-            "@odata.type": "#MessageRegistry.Message",
+            "@odata.type": "#MessageRegistry.1.0.0.Message",
             "Description": "Indicates that no more resources can be created on the resource as it has reached its create limit.",
             "Message": "The create operation failed because the resource has reached the limit of possible resources.",
             "Severity": "Critical",
@@ -318,7 +318,7 @@
             "Resolution": "Either delete resources and resubmit the request if the operation failed or do not resubmit the request."
         },
         "ServiceShuttingDown": {
-            "@odata.type": "#MessageRegistry.Message",
+            "@odata.type": "#MessageRegistry.1.0.0.Message",
             "Description": "Indicates that the operation failed as the service is shutting down, such as when the service reboots.",
             "Message": "The operation failed because the service is shutting down and can no longer take incoming requests.",
             "Severity": "Critical",
@@ -326,7 +326,7 @@
             "Resolution": "When the service becomes available, resubmit the request if the operation failed."
         },
         "ServiceInUnknownState": {
-            "@odata.type": "#MessageRegistry.Message",
+            "@odata.type": "#MessageRegistry.1.0.0.Message",
             "Description": "Indicates that the operation failed because the service is in an unknown state and cannot accept additional requests.",
             "Message": "The operation failed because the service is in an unknown state and can no longer take incoming requests.",
             "Severity": "Critical",
@@ -334,7 +334,7 @@
             "Resolution": "Restart the service and resubmit the request if the operation failed."
         },
         "NoValidSession": {
-            "@odata.type": "#MessageRegistry.Message",
+            "@odata.type": "#MessageRegistry.1.0.0.Message",
             "Description": "Indicates that the operation failed because a valid session is required in order to access any resources.",
             "Message": "There is no valid session established with the implementation.",
             "Severity": "Critical",
@@ -342,7 +342,7 @@
             "Resolution": "Establish as session before attempting any operations."
         },
         "InsufficientPrivilege": {
-            "@odata.type": "#MessageRegistry.Message",
+            "@odata.type": "#MessageRegistry.1.0.0.Message",
             "Description": "Indicates that the credentials associated with the established session do not have sufficient privileges for the requested operation",
             "Message": "There are insufficient privileges for the account or credentials associated with the current session to perform the requested operation.",
             "Severity": "Critical",
@@ -350,7 +350,7 @@
             "Resolution": "Either abandon the operation or change the associated access rights and resubmit the request if the operation failed."
         },
         "AccountModified": {
-            "@odata.type": "#MessageRegistry.Message",
+            "@odata.type": "#MessageRegistry.1.0.0.Message",
             "Description": "Indicates that the account was successfully modified.",
             "Message": "The account was successfully modifed.",
             "Severity": "OK",
@@ -358,7 +358,7 @@
             "Resolution": "No resolution is required."
         },
         "AccountNotModified": {
-            "@odata.type": "#MessageRegistry.Message",
+            "@odata.type": "#MessageRegistry.1.0.0.Message",
             "Description": "Indicates that the modification requested for the account was not successful.",
             "Message": "The account modification request failed.",
             "Severity": "Warning",
@@ -366,7 +366,7 @@
             "Resolution": "The modification may have failed due to permission issues or issues with the request body."
         },
         "AccountRemoved": {
-            "@odata.type": "#MessageRegistry.Message",
+            "@odata.type": "#MessageRegistry.1.0.0.Message",
             "Description": "Indicates that the account was successfully removed.",
             "Message": "The account was successfully removed.",
             "Severity": "OK",
@@ -374,7 +374,7 @@
             "Resolution": "No resolution is required."
         },
         "AccountForSessionNoLongerExists": {
-            "@odata.type": "#MessageRegistry.Message",
+            "@odata.type": "#MessageRegistry.1.0.0.Message",
             "Description": "Indicates that the account for the session has been removed, thus the session has been removed as well.",
             "Message": "The account for the current session has been removed, thus the current session has been removed as well.",
             "Severity": "OK",
@@ -382,7 +382,7 @@
             "Resolution": "Attempt to connect with a valid account."
         },
         "InvalidObject": {
-            "@odata.type": "#MessageRegistry.Message",
+            "@odata.type": "#MessageRegistry.1.0.0.Message",
             "Description": "Indicates that the object in question is invalid according to the implementation.  Examples include a firmware update malformed URI.",
             "Message": "The object at %1 is invalid.",
             "Severity": "Critical",
@@ -393,7 +393,7 @@
             "Resolution": "Either the object is malformed or the URI is not correct.  Correct the condition and resubmit the request if it failed."
         },
         "InternalError": {
-            "@odata.type": "#MessageRegistry.Message",
+            "@odata.type": "#MessageRegistry.1.0.0.Message",
             "Description": "Indicates that the request failed for an unknown internal error but that the service is still operational.",
             "Message": "The request failed due to an internal service error.  The service is still operational.",
             "Severity": "Critical",
@@ -401,7 +401,7 @@
             "Resolution": "Resubmit the request.  If the problem persists, consider resetting the service."
         },
         "UnrecognizedRequestBody": {
-            "@odata.type": "#MessageRegistry.Message",
+            "@odata.type": "#MessageRegistry.1.0.0.Message",
             "Description": "Indicates that the service encountered an unrecognizable request body that could not even be interpreted as malformed JSON.",
             "Message": "The service detected a malformed request body that it was unable to interpret.",
             "Severity": "Warning",
@@ -409,7 +409,7 @@
             "Resolution": "Correct the request body and resubmit the request if it failed."
         },
         "ResourceMissingAtURI": {
-            "@odata.type": "#MessageRegistry.Message",
+            "@odata.type": "#MessageRegistry.1.0.0.Message",
             "Description": "Indicates that the operation expected an image or other resource at the provided URI but none was found.  Examples of this are in requests that require URIs like Firmware Update.",
             "Message": "The resource at the URI %1 was not found.",
             "Severity": "Critical",
@@ -420,7 +420,7 @@
             "Resolution": "Place a valid resource at thr URI or correct the URI and resubmit the request."
         },
         "ResourceAtUriInUnknownFormat": {
-            "@odata.type": "#MessageRegistry.Message",
+            "@odata.type": "#MessageRegistry.1.0.0.Message",
             "Description": "Indicates that the URI was valid but the resource or image at that URI was in a format not supported by the service.",
             "Message": "The resource at %1 is in a format not recognized by the service.",
             "Severity": "Critical",
@@ -431,7 +431,7 @@
             "Resolution": "Place an image or resource or file that is recognized by the service at the URI."
         },
         "ResourceAtUriUnauthorized": {
-            "@odata.type": "#MessageRegistry.Message",
+            "@odata.type": "#MessageRegistry.1.0.0.Message",
             "Description": "Indicates that the attempt to access the resource/file/image at the URI was unauthorized.",
             "Message": "While accessing the resource at %1, the service received an authorization error %2.",
             "Severity": "Critical",
@@ -443,7 +443,7 @@
             "Resolution": "Ensure that the appropriate access is provided for the service in order for it to access the URI."
         },
         "CouldNotEstablishConnection": {
-            "@odata.type": "#MessageRegistry.Message",
+            "@odata.type": "#MessageRegistry.1.0.0.Message",
             "Description": "Indicates that the attempt to access the resource/file/image at the URI was unsuccessful because a session could not be established.",
             "Message": "The service failed to establish a connection with the URI %1.",
             "Severity": "Critical",
@@ -454,7 +454,7 @@
             "Resolution": "Ensure that the URI contains a valid and reachable node name, protocol information and other URI components."
         },
         "SourceDoesNotSupportProtocol": {
-            "@odata.type": "#MessageRegistry.Message",
+            "@odata.type": "#MessageRegistry.1.0.0.Message",
             "Description": "Indicates that while attempting to access, connect to or transfer a resource/file/image from another location that the other end of the connection did not support the protocol",
             "Message": "The other end of the connection at %1 does not support the specified protocol %2.",
             "Severity": "Critical",
@@ -466,7 +466,7 @@
             "Resolution": "Change protocols or URIs. "
         },
         "AccessDenied": {
-            "@odata.type": "#MessageRegistry.Message",
+            "@odata.type": "#MessageRegistry.1.0.0.Message",
             "Description": "Indicates that while attempting to access, connect to or transfer to/from another resource, the service was denied access.",
             "Message": "While attempting to establish a connection to %1, the service was denied access.",
             "Severity": "Critical",
@@ -477,7 +477,7 @@
             "Resolution": "Attempt to ensure that the URI is correct and that the service has the appropriate credentials."
         },
         "ServiceTemporarilyUnavailable": {
-            "@odata.type": "#MessageRegistry.Message",
+            "@odata.type": "#MessageRegistry.1.0.0.Message",
             "Description": "Indicates the service is temporarily unavailable.",
             "Message": "The service is temporarily unavailable.  Retry in %1 seconds.",
             "Severity": "Critical",
@@ -488,7 +488,7 @@
             "Resolution": "Wait for the indicated retry duration and retry the operation."
         },
         "InvalidIndex": {
-            "@odata.type": "#MessageRegistry.Message",
+            "@odata.type": "#MessageRegistry.1.0.0.Message",
             "Description": "The Index is not valid.", 
             "Message": "The Index %1 is not a valid offset into the array.",
             "Severity": "Warning",
@@ -499,7 +499,7 @@
             "Resolution": "Verify the index value provided is within the bounds of the array."
         },
         "PropertyValueModified": {
-            "@odata.type": "#MessageRegistry.Message",
+            "@odata.type": "#MessageRegistry.1.0.0.Message",
             "Description": "Indicates that a property was given the correct value type but the value of that property was modified.  Examples are truncated or rounded values.",
             "Message": "The property %1 was assigned the value %2 due to modification by the service.",
             "Severity": "Warning",
