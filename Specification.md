@@ -1075,20 +1075,32 @@ A JSON object can be annotated with "@Message.ExtendedInfo" in order to specify 
 
 ~~~json
 {
-    "@odata.context": "/redfish/v1/$metadata#SessionService/Sessions/Members/$entity",
-    "@odata.id": "/redfish/v1/SessionService/Sessions/Administrator1",
-    "@odata.type": "#Session.0.94.0.Session",
-    "Id": "Administrator1",
-    "Name": "User Session",
-    "Description": "Manager User Session",
-    "Modified": "2013-01-31T23:45:08+00:00",
-    "UserName": "Administrator",
-    "Oem": {},
+    "@odata.context": "/redfish/v1/$metadata#Managers/Members/1/SerialInterfaces/Members/$entity",
+    "@odata.id": "/redfish/v1/Managers/1/SerialInterfaces/1",
+    "@odata.type": "#SerialInterface.1.0.0.SerialInterface",
+    "Name": "Managed Serial Interface 1",
+    "Description": "Management for Serial Interface",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "InterfaceEnabled": true,
+    "SignalType": "Rs232",
+    "BitRate": 115200,
+    "Parity": "None",
+    "DataBits": 8,
+    "StopBits": 1,
+    "FlowControl": "None",
+    "ConnectorType": "RJ45",
+    "PinOut": "Cyclades"
 	"@Message.ExtendedInfo" : {
-         "MessageId": "Base.1.0.0.ResourceCannotBeDeleted",
-         "Message": "The delete request failed because the resource requested cannot be deleted",
-         "Severity": "Critical",
-         "Resolution": "Do not attempt to delete a non-deletable resource."
+         "MessageId": "Base.1.0.0.PropertyDuplicate",
+         "Message": "The property InterfaceEnabled was duplicated in the request.",
+      	 "RelatedProperties": [
+		     "#/InterfaceEnabled"
+         ],
+         "Severity": "Warning",
+         "Resolution": "Remove the duplicate property from the request body and resubmit the request if the operation failed."
 	}
 }
 ~~~
@@ -1101,26 +1113,32 @@ An individual property within a JSON object can be annotated with extended infor
 
 ~~~json
 {
-    "@odata.context": "/redfish/v1/$metadata/Sessions/Members/$entity",
-    "@odata.id": "/redfish/v1/Sessions/Administrator1",
-    "@odata.type": "#Session.<%= DocVersion %>.Session",
-    "Id": "Administrator1",
-    "Name": "User Session",
-    "Description": "Manager User Session",
-    "Modified": "2013-01-31T23:45:08+00:00",
-    "UserName": "Administrator",
-    "UserName@Message.ExtendedInfo" : [
+{
+    "@Redfish.Copyright":"Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#Managers/Members/1/SerialInterfaces/Members/$entity",
+    "@odata.id": "/redfish/v1/Managers/1/SerialInterfaces/1",
+    "@odata.type": "#SerialInterface.1.0.0.SerialInterface",
+    "Name": "Managed Serial Interface 1",
+    "Description": "Management for Serial Interface",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "InterfaceEnabled": true,
+    "SignalType": "Rs232",
+    "BitRate": 115200,
+    "Parity": "None",
+    "DataBits": 8,
+    "StopBits": 1,
+    "FlowControl": "None",
+    "ConnectorType": "RJ45",
+    "PinOut": "Cyclades"
+    "PinOut@Message.ExtendedInfo" : [
 		{
-			"MessageId": "Base.1.0.0.PropertyNotWriteable",
-			"RelatedProperties": [
-				"#/UserName"
-			],
-           "Message": "The property UserName is a read only property and cannot be assigned a value",
-           "MessageArgs": [
-                "UserName"
-            ]
-            "Severity": "Warning",
-            "Resolution": "Remove the property from the request body and resubmit the request if the operation failed"
+           "MessageId": "Base.1.0.0.PropertyValueNotInList",
+           "Message": "The value Cycldes for the property PinOut is not in the list of acceptable values.",
+           "Severity": "Warning",
+           "Resolution": "Choose a value from the enumeration list that the implementation can support and resubmit the request if the operation failed."
          }
      ],
     "Oem": {}
