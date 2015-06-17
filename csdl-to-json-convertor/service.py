@@ -148,6 +148,14 @@ class JsonSchemaGenerator:
 
         return False
 
+    #################################################################
+    # Name: is_collection                                           #
+    # Description:                                                  #
+    #  Returns True if type is a collection type                    #
+    #################################################################
+    def is_collection(self, typename):
+        return typename.startswith("Collection(")
+
     ##########################################################################
     # Name: is_required_property                                             # 
     # Description:                                                           #
@@ -493,6 +501,11 @@ class JsonSchemaGenerator:
             output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + odataSchema + "#/definitions/type\"\n"
             output += UT.Utilities.indent(depth+1) + "}"
 
+        elif propertyname == "@odata.navigationLink":
+            output += UT.Utilities.indent(depth+1) + "\"@odata.navigationLink\": {\n"
+            output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + odataSchema + "#/definitions/id\"\n"
+            output += UT.Utilities.indent(depth+1) + "}"
+
         return output
 
     ########################################################################################################
@@ -594,8 +607,6 @@ class JsonSchemaGenerator:
             output += self.get_json_for_special_properties("@odata.type", depth, prefixuri)
             output += ",\n"
 
-            firstproperty = True
-
         bindingparameter = True
 
         # Loop through the nodes in the parsed XML
@@ -618,10 +629,16 @@ class JsonSchemaGenerator:
                         propname = property.attrib["Name"]
                         attribtype = property.attrib["Type"]
 
-                        if ( not (attribtype is None)) and (attribtype.startswith("Collection") and typedata["Name"]=="Members"):
+                        # write out common properties for collections
+                        if ( not (attribtype is None)) and (self.is_collection(attribtype)):
                             output += UT.Utilities.indent(depth+1) + "\"" + propname + "@odata.count\": {\n"
                             output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + odataSchema + "#/definitions/count\"\n"
                             output += UT.Utilities.indent(depth+1) + "},\n"
+
+                            output += UT.Utilities.indent(depth+1) + "\"" + propname + "@odata.navigationLink\": {\n"
+                            output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + odataSchema + "#/definitions/count\"\n"
+                            output += UT.Utilities.indent(depth+1) + "},\n"
+
                         output += UT.Utilities.indent(depth+1) + "\"" + propname + "\": {\n"
 
                         # Figure out if OData.AutoExpandReferences is set or "OData.AutoExpand"
@@ -633,7 +650,7 @@ class JsonSchemaGenerator:
                                 termvalue = "OData.AutoExpand"
                           
                         # Check if it is a collection or not
-                        if ( not (attribtype is None)) and (attribtype.startswith("Collection")):
+                        if ( not (attribtype is None)) and (self.is_collection(attribtype)):
                             output += UT.Utilities.indent(depth+2) + "\"type\": \"array\",\n"
                             output += UT.Utilities.indent(depth+2) + "\"items\": {\n"
                             current_typename = JsonSchemaGenerator.extract_underlyingtype_from_collectiontype(attribtype)
@@ -858,7 +875,7 @@ class JsonSchemaGenerator:
 
         output = ""
         # Collections
-        if typename.startswith("Collection("):
+        if self.is_collection(typename):
             output = self.generate_json_for_collection_type(typetable, typename, depth, namespace, prefixuri, isnullable)
             return output
 
