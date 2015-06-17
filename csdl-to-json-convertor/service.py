@@ -192,6 +192,24 @@ class JsonSchemaGenerator:
         # by default, types allow additional properties
         return False
 
+    ##########################################################################
+    # Name: isabstract                                                       # 
+    # Description:                                                           #
+    #  Returns True if the type is abstract.                                 #
+    ##########################################################################
+    def isabstract(self, type):
+        return self.getattribute(type,"Abstract","True") 		   
+
+    ##########################################################################
+    # Name: getattribute                                                     # 
+    # Description:                                                           #
+    #  Returns True if the type has the attribute with the specfied value    #
+    ##########################################################################
+    def getattribute(self, type, attribute, value):
+        if attribute in type["Node"].attrib.keys():
+            if type["Node"].attrib[attribute].upper() == value.upper():
+                return True
+        return False 		   
 
     ##########################################################################
     # Name: allows_additional_properties                                     # 
@@ -201,13 +219,11 @@ class JsonSchemaGenerator:
     def allows_additional_properties(self, type, typetable):
 
         # if type is abstract, it must allow additional properties
-        if "Abstract" in type["Node"].attrib.keys():
-            if type["Node"].attrib["Abstract"].upper() == "TRUE":
-                return True
+        if self.isabstract(type):
+            return True
 				
         # if type is open, it must allow additional properties
-        if "OpenType" in type["Node"].attrib.keys():
-            if type["Node"].attrib["OpenType"].upper() == "TRUE":
+        if self.getattribute(type,"OpenType","True"):
                 return True
 
         # does it have the AdditionalProperties attribute anywhere in it's hierarchy?
@@ -270,7 +286,6 @@ class JsonSchemaGenerator:
 
         return patterncontent
 
-
     ##########################################################################
     # Name: get_edmtype_to_jsontype                                          # 
     # Description:                                                           #
@@ -310,21 +325,23 @@ class JsonSchemaGenerator:
                 if not annotation.tag == "{http://docs.oasis-open.org/odata/ns/edm}Annotation":
                     continue
 
-                if ( (annotation.attrib["Term"] in ignoreannotations) or (annotation.attrib["Term"] in written ) ):
+                term = annotation.attrib["Term"]
+
+                if ( (term in ignoreannotations) or (term in written ) ):
                     continue
 
                 #don't add annotation more than once'
-                written.append(annotation.attrib["Term"])
+                written.append(term)
 
-                if (annotation.attrib["Term"] == "OData.Description"):
+                if (term == "OData.Description"):
                     output += ",\n"
                     output += UT.Utilities.indent(depth) + "\"description\": \"" + annotation.attrib["String"] + "\""
 
-                elif (annotation.attrib["Term"] == "OData.LongDescription"):
+                elif (term == "OData.LongDescription"):
                     output += ",\n"
                     output += UT.Utilities.indent(depth) + "\"longDescription\": \"" + annotation.attrib["String"] + "\""
 
-                elif (annotation.attrib["Term"] == "OData.Permissions"):
+                elif (term == "OData.Permissions"):
                     if annotation.attrib["EnumMember"] == "OData.Permissions/Read":
                         output += ",\n"
                         output += UT.Utilities.indent(depth) + "\"readonly\": true"
@@ -332,11 +349,11 @@ class JsonSchemaGenerator:
                         output += ",\n"
                         output += UT.Utilities.indent(depth) + "\"readonly\": false"
 
-                elif ((annotation.attrib["Term"] == "Validation.Pattern") or (annotation.attrib["Term"] == "Redfish.Pattern") ):
+                elif ((term == "Validation.Pattern") or (term == "Redfish.Pattern") ):
                     output += ",\n"
                     output += UT.Utilities.indent(depth) + "\"pattern\": \"" + annotation.attrib["String"] + "\""
 
-                elif annotation.attrib["Term"] == "Redfish.DynamicPropertyPatterns":
+                elif term == "Redfish.DynamicPropertyPatterns":
                     content = self.get_dynamic_property_patterns_content(annotation)
                     output += ",\n"
                     output += UT.Utilities.indent(depth) + "\"patternProperties\": { \n"
@@ -350,17 +367,18 @@ class JsonSchemaGenerator:
                         output += UT.Utilities.indent(depth + 2) + "\"type\":\"" + jsontype + "\"\n"
                     output += UT.Utilities.indent(depth) + "}"
 
-                elif (annotation.attrib["Term"] == "Validation.Minimum"):
+                elif (term == "Validation.Minimum"):
                     output += ",\n"
                     output += UT.Utilities.indent(depth) + "\"minimum\": " + annotation.attrib["Int"]
 
-                elif (annotation.attrib["Term"] == "Validation.Maximum"):
+                elif (term == "Validation.Maximum"):
                     output += ",\n"
                     output += UT.Utilities.indent(depth) + "\"maximum\": " + annotation.attrib["Int"]
                                                       
             if "BaseType" in annotated.attrib.keys():
                 #todo: make more robust
                 annotated = typetable[annotated.attrib["BaseType"]]["Node"]
+
             else:
                 fcontinue = False
 
@@ -1019,12 +1037,6 @@ class JsonSchemaGenerator:
                         else:
                             typeentry["BaseType"] = ""
 
-                        if is_from_refuri == False:
-                            reftypes = JsonSchemaGenerator.get_referenced_types_from_same_namespace(typedata, namespace)
-                            typeentry["ReferencedType"] = reftypes
-                        else:
-                            typeentry["ReferencedType"] = []
-
                         typeentry["RefUri"] = refuri
                         typeentry["IsFromRefUri"] = is_from_refuri
 
@@ -1038,46 +1050,6 @@ class JsonSchemaGenerator:
         typeinfo["Namespaces"] = namespaces
         typeinfo["Typetable"] = typetable
         return typeinfo
-
-    ################################################################################################################
-    # Name: get_referenced_types_from_same_namespace                                                               #
-    # Description:                                                                                                 #
-    #  Loops through all the properties and navigationProperties and returns a list of types that were used        #
-    #  and belong to the same namespace.                                                                           #
-    ################################################################################################################
-    @staticmethod 
-    def get_referenced_types_from_same_namespace(typedata, type_namespace):
-        referenced_types = []
-        
-        typename = typedata.attrib["Name"]
-
-        # Navigation Properties
-        # Loop though the nodes and find the type of Navigation propeties.
-        for navproperty in typedata.iter("{http://docs.oasis-open.org/odata/ns/edm}NavigationProperty"):
-            property_typename = navproperty.attrib["Type"]
-            # If it is a collection, then we get the underlying type else we get back our input
-            property_typename = JsonSchemaGenerator.extract_underlyingtype_from_collectiontype(property_typename, False)
-
-            # Extract namespace from property typename
-            property_typename_parts = property_typename.rsplit(".", 1)
-            property_type_namespace = property_typename_parts[0]
-            if (property_type_namespace == type_namespace):  
-                referenced_types.append(property_typename)
-
-        # Properties
-        # Loop though the nodes and find the type of propeties.
-        for property in typedata.iter("{http://docs.oasis-open.org/odata/ns/edm}Property"):
-            property_typename = property.attrib["Type"]
-            property_typename = JsonSchemaGenerator.extract_underlyingtype_from_collectiontype(property_typename)
-
-            # Extract namespace from property typename
-            property_typename_parts = property_typename.rsplit(".", 1)
-            property_type_namespace = property_typename_parts[0]
-            
-            if ( property_type_namespace == type_namespace):  
-                referenced_types.append(property_typename)
-        
-        return referenced_types
 
     ################################################################################################################
     # Name: generate_definition_block                                                                              #
@@ -1105,7 +1077,7 @@ class JsonSchemaGenerator:
                 index = parsedtypes.index(typename + ":" + currentNamespace)
             except :
                 # This type has not been parsed yet. Process it now.
-                if (namespace == currentNamespace and self.is_inline_type(typedata) ):
+                if (namespace == currentNamespace and self.is_inline_type(typedata) and not (typetype=="ComplexType" and self.isabstract(typedata) ) ):
                     # Add comma if this is not the first definition, otherwise write start of definitions block
                     if (type_count > 0):
                         output += ",\n"

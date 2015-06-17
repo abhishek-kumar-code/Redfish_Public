@@ -229,7 +229,7 @@
         </Member>          
       </EnumType>
 
-      <ComplexType Name="ManagerService">
+      <ComplexType Name="ManagerService" Abstract="true">
         <Annotation Term="OData.Description" String="Used for describing services like Serial Console, Command Shell or Graphical Console"/>
         <Annotation Term="OData.AdditionalProperties" Bool="False"/>
         <Property Name="ServiceEnabled" Type="Edm.Boolean" Nullable="false">
