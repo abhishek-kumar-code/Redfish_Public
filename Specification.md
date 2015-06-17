@@ -1113,7 +1113,6 @@ An individual property within a JSON object can be annotated with extended infor
 
 ~~~json
 {
-{
     "@Redfish.Copyright":"Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#Managers/Members/1/SerialInterfaces/Members/$entity",
     "@odata.id": "/redfish/v1/Managers/1/SerialInterfaces/1",
