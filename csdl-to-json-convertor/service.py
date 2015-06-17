@@ -40,7 +40,7 @@ if enable_debugging == True:
 #   Defines constants used in the script                                      #
 ###############################################################################
 
-schemaLocation = "http://schemas.dmtf.org/redfish/" 
+schemaLocation = "http://redfish.dmtf.org/schemas/" 
 schemaBaseLocation = schemaLocation + "v1/"
 odataSchema = schemaBaseLocation + "odata.4.0.0.json"
 redfishSchema = schemaLocation + "v1/redfish-schema.1.0.0.json"
@@ -805,7 +805,7 @@ class JsonSchemaGenerator:
     # Description:                                                                             #
     #   Generates JSON corresponding to a Enum type                                            #
     ############################################################################################
-    def generate_json_for_EnumTypes(typetable, typedata, typename, namespace, depth, isnullable):
+    def generate_json_for_EnumTypes(self, typetable, typedata, typename, namespace, depth, isnullable):
 
         output = ""
 
@@ -893,7 +893,7 @@ class JsonSchemaGenerator:
         typetype = typedata["TypeType"]
 
         if typetype == "EnumType":
-            output += JsonSchemaGenerator.generate_json_for_EnumTypes(typetable, typedata, typename, namespace, depth, isnullable)
+            output += self.generate_json_for_EnumTypes(typetable, typedata, typename, namespace, depth, isnullable)
    
         elif typetype == "EntityType":
             if namespace == typedata["Namespace"]:
@@ -1255,7 +1255,7 @@ class JsonSchemaGenerator:
             result.update({'namespace' : filename[:lastindex] + ".1.0.0"})
 
         if incorrect_url == True:
-            result.update({'error' : 'Incorrect URL - Please specify a URL like:\n 1. http://<filename>#<namespace> or \n 2. http://<filename>#<datatype>\n e.g. http://localhost:9080/rest/v1/schemas.dmtf.org/redfish/v1/Chassis#Chassis.Chassis'})
+            result.update({'error' : 'Incorrect URL - Please specify a URL like:\n 1. http://<filename>#<namespace> or \n 2. http://<filename>#<datatype>\n e.g. http://localhost:9080/rest/v1/redfish.dmtf.org/redfish/v1/Chassis#Chassis.Chassis'})
 
         return result
 
@@ -1283,13 +1283,13 @@ def main():
     form = cgi.FieldStorage()
 
     # Sample URL formats supported by the convertor tool
-    #form = {'url': 'http://localhost:9080/rest/v1/schemas.dmtf.org/redfish/v1/Chassis#Chassis.1.0.0.Chassis'};
-    #form = {'url': 'http://localhost:9080/rest/v1/schemas.dmtf.org/redfish/v1/ChassisCollection#ChassisCollection.1.0.0'};
-    #form = {'url': 'http://localhost:9080/rest/v1/schemas.dmtf.org/redfish/v1/Resource#Resource.1.0.0'}
-    #form = {'url': 'http://localhost:9080/rest/v1/schemas.dmtf.org/redfish/v1/IPAddresses#IPAddresses.1.0.0'};
-    #form = {'url': 'http://localhost:9080/rest/v1/schemas.dmtf.org/redfish/v1/odata'}
-    #form = {'url': 'http://localhost:9080/rest/v1/schemas.dmtf.org/redfish/v1/Power#Power.1.0.0'};
-    #form = {'url': 'http://localhost:9080/rest/v1/schemas.dmtf.org/redfish/v1/Chassis#Chassis.1.0.0'};
+    #form = {'url': 'http://localhost:9080/rest/v1/redfish.dmtf.org/redfish/v1/Chassis#Chassis.1.0.0.Chassis'};
+    #form = {'url': 'http://localhost:9080/rest/v1/redfish.dmtf.org/redfish/v1/ChassisCollection#ChassisCollection.1.0.0'};
+    #form = {'url': 'http://localhost:9080/rest/v1/redfish.dmtf.org/redfish/v1/Resource#Resource.1.0.0'}
+    #form = {'url': 'http://localhost:9080/rest/v1/redfish.dmtf.org/redfish/v1/IPAddresses#IPAddresses.1.0.0'};
+    #form = {'url': 'http://localhost:9080/rest/v1/redfish.dmtf.org/redfish/v1/odata'}
+    #form = {'url': 'http://localhost:9080/rest/v1/redfish.dmtf.org/redfish/v1/Power#Power.1.0.0'};
+    #form = {'url': 'http://localhost:9080/rest/v1/redfish.dmtf.org/redfish/v1/Chassis#Chassis.1.0.0'};
 
     if 'directory' in form:
         if enable_debugging == True:
