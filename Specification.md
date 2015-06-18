@@ -512,7 +512,7 @@ Clients request resources by issuing GET requests to the URI for the individual 
 
 ###### Query Parameters
 
-When the resource addressed is a collection, the client can use the following paging query options to specify that a subset of the members be returned.   
+When the resource addressed is a collection, the client can use the following paging query options to specify that a subset of the members be returned. These paging query options apply to the Members property of a collection resource.  
 
 | Attribute | Description                                                                                                                                                                         | Example                    |
 | ---       | ---                                                                                                                                                                                 | ---                        |
@@ -572,7 +572,9 @@ The PUT method is used to completely replace a resource.  Properties omitted fro
 
 ##### Create (POST)
 
-The POST method is used to create new resources. The POST request is submitted to the resource collection in which the new resource is to belong.
+The POST method is used to create a new resource. The POST request is submitted to the resource collection in which the new resource is to belong. 
+
+Submitting a POST request to a resource representing a collection is equivalent to submitting the same request to the Members property of that resource. Services that support adding members to a collection shall support both forms. 
 
 * Services shall support the POST method for creating resources. If the resource does not offer anything to be created, a status code [405](#status-405) shall be returned.
 * The POST operation shall not be idempotent.
