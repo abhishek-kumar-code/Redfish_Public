@@ -39,7 +39,7 @@
           <Annotation Term="OData.Description" String="The redfish privileges that this role includes."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the redfish privileges that the role includes. For pre-defined roles, this property shall be readOnly. For custom roles some implementations may not allow writing this property."/>
         </Property>
-        <Property Name="OEMPrivileges" Type="Collection(Edm.String)">
+        <Property Name="OemPrivileges" Type="Collection(Edm.String)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/ReadWrite"/>
           <Annotation Term="OData.Description" String="The OEM privileges that this role includes."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the OEM privileges that this role includes. For pre-defined roles, this property shall be readOnly. For custom roles some implementations may not allow writing this property."/>
