@@ -1,44 +1,8 @@
 {
-    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.1.0.0.json",
     "title": "Processor.1.0.0",
     "$ref": "#/definitions/Processor",
     "definitions":{
-        "ProcessorType":{
-            "type": "string",
-            "enum": [
-                "CPU",
-                "GPU",
-                "FPGA",
-                "DSP",
-                "Accelerator",
-                "OEM"
-            ],
-            "enumDescriptions": {
-                "CPU": "A Central Processing Unit",
-                "GPU": "A Graphics Processing Unit",
-                "FPGA": "A Field Programmable Gate Array",
-                "DSP": "A Digital Signal Processor",
-                "Accelerator": "An Accelerator",
-                "OEM": "An OEM-defined Processing Unit"
-            }
-        },
-        "ProcessorArchitecture":{
-            "type": "string",
-            "enum": [
-                "x86",
-                "IA-64",
-                "ARM",
-                "MIPS",
-                "OEM"
-            ],
-            "enumDescriptions": {
-                "x86": "x86 or x86-64",
-                "IA-64": "Intel Itanium",
-                "ARM": "ARM",
-                "MIPS": "MIPS",
-                "OEM": "OEM-defined"
-            }
-        },
         "InstructionSet":{
             "type": "string",
             "enum": [
@@ -73,27 +37,27 @@
             "additionalProperties": false,
             "properties": {
                 "@odata.context": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/context"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
                 },
                 "@odata.id": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/id"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
                 },
                 "@odata.type": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/type"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
                 },
                 "Oem": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Oem",
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Id": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Id"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
                 },
                 "Description": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Description"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
                 },
                 "Name": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Name"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
                 },
                 "Socket": {
                     "type": [
@@ -128,7 +92,7 @@
                     "longDescription": "This object shall contain identification information for this processor."
                 },
                 "Status": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Status"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
                 },
                 "Manufacturer": {
                     "type": [
@@ -177,6 +141,23 @@
                 }
             },
             "description": "This is the schema definition for the Processor resource.  It represents the properties of a processor attached to a System."
+        },
+        "ProcessorArchitecture":{
+            "type": "string",
+            "enum": [
+                "x86",
+                "IA-64",
+                "ARM",
+                "MIPS",
+                "OEM"
+            ],
+            "enumDescriptions": {
+                "x86": "x86 or x86-64",
+                "IA-64": "Intel Itanium",
+                "ARM": "ARM",
+                "MIPS": "MIPS",
+                "OEM": "OEM-defined"
+            }
         },
         "ProcessorId":{
             "type": "object",
@@ -242,6 +223,25 @@
                     "description": "The Microcode Information for this processor",
                     "longDescription": "This property shall indicate the Microcode Information as provided by the manufacturer of this processor."
                 }
+            }
+        },
+        "ProcessorType":{
+            "type": "string",
+            "enum": [
+                "CPU",
+                "GPU",
+                "FPGA",
+                "DSP",
+                "Accelerator",
+                "OEM"
+            ],
+            "enumDescriptions": {
+                "CPU": "A Central Processing Unit",
+                "GPU": "A Graphics Processing Unit",
+                "FPGA": "A Field Programmable Gate Array",
+                "DSP": "A Digital Signal Processor",
+                "Accelerator": "An Accelerator",
+                "OEM": "An OEM-defined Processing Unit"
             }
         }
     },

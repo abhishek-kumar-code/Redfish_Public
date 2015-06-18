@@ -1,5 +1,5 @@
 {
-    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.1.0.0.json",
     "title": "ManagerNetworkProtocol.1.0.0",
     "$ref": "#/definitions/ManagerNetworkProtocol",
     "definitions":{
@@ -14,27 +14,27 @@
             "additionalProperties": false,
             "properties": {
                 "@odata.context": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/context"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
                 },
                 "@odata.id": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/id"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
                 },
                 "@odata.type": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/type"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
                 },
                 "Oem": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Oem",
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Id": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Id"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
                 },
                 "Description": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Description"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
                 },
                 "Name": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Name"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
                 },
                 "HostName": {
                     "type": [
@@ -109,11 +109,24 @@
                     "longDescription": "This object shall contain information for the KVM-IP (Keyboard, Video, Mouse) protocol settings for the manager."
                 },
                 "Status": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Status"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
                 }
             },
             "description": "This resource is used to obtain or modify the network services managed by a given manager.",
             "longDescription": "This object shall be used to represent the network service settings for the manager."
+        },
+        "NotifyIPv6Scope":{
+            "type": "string",
+            "enum": [
+                "Link",
+                "Site",
+                "Organization"
+            ],
+            "enumDescriptions": {
+                "Link": "SSDP Notify messages are sent to addresses in the IPv6 Local Link scope",
+                "Site": "SSDP Notify messages are sent to addresses in the IPv6 Local Site scope",
+                "Organization": "SSDP Notify messages are sent to addresses in the IPv6 Local Organization scope"
+            }
         },
         "Protocol":{
             "type": "object",
@@ -125,7 +138,7 @@
             },
             "additionalProperties": false,
             "properties": {
-                "Enabled": {
+                "ProtocolEnabled": {
                     "type": [
                         "boolean",
                         "null"
@@ -144,19 +157,6 @@
                 }
             }
         },
-        "NotifyIPv6Scope":{
-            "type": "string",
-            "enum": [
-                "Link",
-                "Site",
-                "Organization"
-            ],
-            "enumDescriptions": {
-                "Link": "SSDP Notify messages are sent to addresses in the IPv6 Local Link scope",
-                "Site": "SSDP Notify messages are sent to addresses in the IPv6 Local Site scope",
-                "Organization": "SSDP Notify messages are sent to addresses in the IPv6 Local Organization scope"
-            }
-        },
         "SSDProtocol":{
             "type": "object",
             "patternProperties": { 
@@ -167,7 +167,7 @@
             },
             "additionalProperties": false,
             "properties": {
-                "Enabled": {
+                "ProtocolEnabled": {
                     "type": [
                         "boolean",
                         "null"

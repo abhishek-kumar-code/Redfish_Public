@@ -1,5 +1,5 @@
 {
-    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.1.0.0.json",
     "title": "Message.1.0.0",
     "definitions":{
         "Message":{
@@ -31,8 +31,7 @@
                         "type": [
                             "string",
                             "null"
-                        ]
-                    },
+                        ]                        },
                     "description": "This is an array of properties described by the message.",
                     "longDescription": "This property shall contain an array of JSON Pointers indicating the properties described by the message, if appropriate for the message."
                 },
@@ -42,8 +41,7 @@
                         "type": [
                             "string",
                             "null"
-                        ]
-                    },
+                        ]                        },
                     "description": "This array of message arguments are substituted for the arguments in the message when looked up in the message registry.",
                     "longDescription": "This property shall contain the message substitution arguments for the specific message referenced by the MessageId and shall only be included if the MessageId is present."
                 },
@@ -64,7 +62,7 @@
                     "longDescription": "This property shall contain an override of the Resolution of the message in message registry, if present."
                 },
                 "Oem": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Oem",
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
                     "description": "Oem extension object.",
                     "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
                 }

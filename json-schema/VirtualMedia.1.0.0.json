@@ -1,8 +1,23 @@
 {
-    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.1.0.0.json",
     "title": "VirtualMedia.1.0.0",
     "$ref": "#/definitions/VirtualMedia",
     "definitions":{
+        "ConnectedVia":{
+            "type": "string",
+            "enum": [
+                "NotConnected",
+                "URI",
+                "Applet",
+                "Oem"
+            ],
+            "enumDescriptions": {
+                "NotConnected": "No current connection",
+                "URI": "Connected to a URI location",
+                "Applet": "Connected to a client application",
+                "Oem": "Connected via an OEM-defined method"
+            }
+        },
         "MediaType":{
             "type": "string",
             "enum": [
@@ -29,27 +44,27 @@
             "additionalProperties": false,
             "properties": {
                 "@odata.context": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/context"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
                 },
                 "@odata.id": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/id"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
                 },
                 "@odata.type": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/type"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
                 },
                 "Oem": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Oem",
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Id": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Id"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
                 },
                 "Description": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Description"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
                 },
                 "Name": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Name"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
                 },
                 "ImageName": {
                     "type": [
@@ -72,20 +87,7 @@
                 "MediaTypes": {
                     "type": "array",
                     "items": {
-                        "type": "string",
-                        "enum": [
-                            "CD",
-                            "Floppy",
-                            "USBStick",
-                            "DVD"
-                        ],
-                        "enumDescriptions": {
-                            "CD": "A CD-ROM format (ISO) image",
-                            "Floppy": "A floppy disk image",
-                            "USBStick": "An emulation of a USB storage device",
-                            "DVD": "A DVD-ROM format image"
-                        }
-                    },
+                        "$ref": "#/definitions/MediaType"                        },
                     "readonly": true,
                     "description": "This is the media types supported as virtual media.",
                     "longDescription": "The values of this array shall be the supported media types for this connection."
@@ -117,21 +119,6 @@
             },
             "description": "This is the schema definition for the Virtual Media Service.",
             "longDescription": "This resource shall be used to represent a virtual media service for a Redfish implementation."
-        },
-        "ConnectedVia":{
-            "type": "string",
-            "enum": [
-                "NotConnected",
-                "URI",
-                "Applet",
-                "Oem"
-            ],
-            "enumDescriptions": {
-                "NotConnected": "No current connection",
-                "URI": "Connected to a URI location",
-                "Applet": "Connected to a client application",
-                "Oem": "Connected via an OEM-defined method"
-            }
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."

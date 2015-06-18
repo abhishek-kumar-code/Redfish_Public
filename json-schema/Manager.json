@@ -1,5 +1,5 @@
 {
-    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.1.0.0.json",
     "title": "Manager",
     "$ref": "#/definitions/Manager",
     "definitions":{
@@ -15,15 +15,12 @@
                     "type": "string",
                     "description": "Link to invoke action"
                 },
-                "href@Redfish.AllowableValues": {
+                "NewManager@Redfish.AllowableValues": {
                     "type": "array",
                     "items": {
-                        "type": "array",
-                        "items": {
-                            "@odata.id": "http://schemas.dmtf.org/redfish/v1/Resource.json#Resource.Resource"
-                        }
+                        "@odata.id": "http://redfish.dmtf.org/schemas/v1/Manager.json#Manager.Manager"
                     },
-                    "description": "This array defines the supported values for this property on this resource.  In this case, a valid reference is supported."
+                    "description": "This Parameter specifies the Manager to fail over to.  In this case, a valid reference is supported."
                 }
             }
 
@@ -31,37 +28,14 @@
         "Manager":{
                 "oneOf": [ 
                     {
-                        "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/idRef"
+                        "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
                     },
                     {
-                        "$ref": "http://schemas.dmtf.org/redfish/Manager.1.0.0.json#/definitions/Manager"
+                        "$ref": "http://redfish.dmtf.org/schemas/Manager.1.0.0.json#/definitions/Manager"
                     }
                 ]
             }
         }
-        },
-        "Reset":{
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "title": {
-                    "type": "string",
-                    "description": "Friendly action name"
-                },
-                "target": {
-                    "type": "string",
-                    "description": "Link to invoke action"
-                },
-                "ResetType@Redfish.AllowableValues": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/ResetType"
-                    },
-                    "description": "This is the type of reset to be performed.",
-                    "longDescription": "This defines the property name for the action."
-                }
-            }
-
         },
         "ModifyRedundancySet":{
             "type": "object",
@@ -80,20 +54,43 @@
                     "items": {
                         "type": "array",
                         "items": {
-                            "@odata.id": "http://schemas.dmtf.org/redfish/v1/Resource.json#Resource.Resource"
+                            "@odata.id": "http://redfish.dmtf.org/schemas/v1/Manager.json#Manager.Manager"
                         }
                     },
-                    "description": "This array defines the supported values for this property on this resource.  In this case, a valid reference is supported. Add shall be used to Add members to the manager redundancy group."
+                    "description": "This array defines the Managers to add to the redundancy set.  In this case, a valid reference is supported."
                 },
                 "Remove@Redfish.AllowableValues": {
                     "type": "array",
                     "items": {
                         "type": "array",
                         "items": {
-                            "@odata.id": "http://schemas.dmtf.org/redfish/v1/Resource.json#Resource.Resource"
+                            "@odata.id": "http://redfish.dmtf.org/schemas/v1/Manager.json#Manager.Manager"
                         }
                     },
-                    "description": "This array defines the supported values for this property on this resource.  In this case, a valid reference is supported. Remove shall be used to remove members from the manager redundancy group."
+                    "description": "This array defines the Managers to remove from the redundancy set.  In this case, a valid reference is supported."
+                }
+            }
+
+        },
+        "Reset":{
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "description": "Link to invoke action"
+                },
+                "ResetType@Redfish.AllowableValues": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/ResetType"
+                    },
+                    "description": "This is the type of reset to be performed.",
+                    "longDescription": "This defines the property name for the action."
                 }
             }
 

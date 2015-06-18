@@ -1,15 +1,15 @@
 {
-    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.1.0.0.json",
     "title": "MessageRegistry",
     "$ref": "#/definitions/MessageRegistry",
     "definitions":{
         "MessageRegistry":{
                 "oneOf": [ 
                     {
-                        "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/idRef"
+                        "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
                     },
                     {
-                        "$ref": "http://schemas.dmtf.org/redfish/MessageRegistry.1.0.0.json#/definitions/MessageRegistry"
+                        "$ref": "http://redfish.dmtf.org/schemas/MessageRegistry.1.0.0.json#/definitions/MessageRegistry"
                     }
                 ]
             }
