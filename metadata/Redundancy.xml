@@ -65,19 +65,16 @@
 
       <EnumType Name="RedundancyMode">
         <Member Name="Failover">
-          <Annotation Term="OData.Description" String="Failure of the primary unit will cause a secondary unit to take over the functions of the primary unit"/>
+          <Annotation Term="OData.Description" String="Failure of one unit will automatically cause its functions to be taken over by a standby or offline unit in the redundancy set"/>
         </Member>
-        <Member Name="N+1">
-          <Annotation Term="OData.Description" String="Multiple units are available such that the system can continue normal operation if one unit fails"/>
+        <Member Name="N+m">
+          <Annotation Term="OData.Description" String="Multiple units are available and active such that normal operation will continue if one or more units fail"/>
         </Member>
-        <Member Name="LoadBalanced">
-          <Annotation Term="OData.Description" String="Multiple units are available such that the system will continue operation at a reduced capacity if one unit fails"/>
+        <Member Name="Sharing">
+          <Annotation Term="OData.Description" String="Multiple units contribute or share such that operation will continue, but at a reduced capacity, if one or more units fail"/>
         </Member>
         <Member Name="Sparing">
-          <Annotation Term="OData.Description" String="A spare unit is available to take over the function of a failed unit"/>
-        </Member>
-        <Member Name="LimitedSparing">
-          <Annotation Term="OData.Description" String="A spare unit is available to take over the function of a failed unit, but may require intervention to facilitate the transition"/>
+          <Annotation Term="OData.Description" String="One or more spare units are available to take over the function of a failed unit, but takeover is not automatic"/>
         </Member>
       </EnumType>
 
