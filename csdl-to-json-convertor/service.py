@@ -678,6 +678,14 @@ class JsonSchemaGenerator:
                                 propertyisnullable = False                    
                         ignoreannotations = self.get_property_annotation_terms(property)
 
+                        # Check if it is a collection or not
+                        iscollection = self.is_collection(proptypename)
+                        if ( iscollection ):
+                            output += UT.Utilities.indent(depth+2) + "\"type\": \"array\",\n"
+                            output += UT.Utilities.indent(depth+2) + "\"items\": {\n"
+                            proptypename = JsonSchemaGenerator.extract_underlyingtype_from_collectiontype(proptypename)
+                            depth += 1
+
                         # Get all keys and extract typedata for the property
                         typetablekeys = typetable.keys()
                         if (proptypename in typetablekeys):
@@ -691,6 +699,11 @@ class JsonSchemaGenerator:
                         # type not in loaded; probably primitive type
                         else:
                             output += self.generate_json_for_type(typetable, proptypename, depth + 2, typedata["Namespace"], prefixuri, propertyisnullable, False, ignoreannotations)
+
+
+                        if ( iscollection ):
+                            output += UT.Utilities.indent(depth+2) + "}"
+                            depth -= 1
 
                     if self.is_required_property(property):
                         requiredproperties.append(propname)
