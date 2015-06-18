@@ -28,6 +28,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this interface is enabled."/>
         </Property>
         <Property Name="SignalType" Type="SerialInterface.1.0.0.SignalType" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The type of signal used for the communication connection - RS232 or RS485."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the type of serial signalling that will be utilized for the serial connection."/>
         </Property>
@@ -52,10 +53,12 @@
           <Annotation Term="OData.LongDescription" String="This property shall indicate the flow control mechanism for the serial connection."/>
         </Property>
         <Property Name="ConnectorType" Type="SerialInterface.1.0.0.ConnectorType" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The type of connector used for this interface."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the type of phyiscal connector used for this serial connection."/>
         </Property>  
         <Property Name="PinOut" Type="SerialInterface.1.0.0.PinOut" >
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The physical pin configuration needed for a serial connector."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the physical pin out for the serial connection."/>
         </Property>

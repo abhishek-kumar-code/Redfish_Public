@@ -89,7 +89,6 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the number of array items supported by IPv6StaticAddresses."/>
         </Property>
         <Property Name="VLAN" Type="VLanNetworkInterface.1.0.0.VLAN">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="If this Network Interface supports more than one VLAN, this property will not be present and the client should look for VLANs collection in the link section of this resource."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the VLAN for this interface.  If this interface supports more than one VLAN, the VLAN property shall not be present and the VLANS collection link shall be present instead."/>
         </Property>

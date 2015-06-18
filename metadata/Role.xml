@@ -30,6 +30,7 @@
         <Annotation Term="OData.Description" String="This schema defines a user role to be used in conjunction with a manager account."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent resources that represent the user role for the user account."/>
         <Property Name="IsPredefined" Type="Edm.Boolean" Nullable="false" DefaultValue="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This property is used to indicate if the Role is one of the Redfish Predefined Roles vs a Custom role."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate if the role is a predefined role. ."/>
         </Property>
