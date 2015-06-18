@@ -586,7 +586,6 @@ The DELETE method is used to remove a resource.
 * Services shall support the DELETE method for resources that can be deleted. If the resource can never be deleted, status code [405](#status-405) shall be returned.
 * Services may return a representation of the just deleted resource in the response body.
 * Services should return status code [405](#status-405) if the client specifies a DELETE request against a collection.
-* The DELETE operation shall not be not idempotent.
 
 ##### Actions (POST)
 
