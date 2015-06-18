@@ -614,7 +614,7 @@ For instance, if a Redfish Schema document `http://schemas.dmtf.org/redfish/v1/C
 ...
   <Action Name="Reset" IsBound="true">
     <Parameter Name="Resource" Type="ComputerSystem.1.0.0.Actions"/>
-    <Parameter Name="ResetType" Type="ComputerSystem.ResetType"/>
+    <Parameter Name="ResetType" Type="Resource.ResetType"/>
   </Action>
 ...
 </Schema>

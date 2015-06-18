@@ -67,8 +67,8 @@
         <Annotation Term="OData.Description" String="The ForceFailover action forces a failover of this manager to the manager used in the parameter"/>
         <Annotation Term="OData.LongDescription" String="This defines the name of the custom action supported when used in conjunction with a POST operation to this resource. When issued, this operation will perform a forced failover of the manager's redundancy to the manager supplied as a parameter."/>
         <Parameter Name="Manager" Type="Manager.1.0.0.Actions"/>
-        <Parameter Name="href" Type="Collection(Resource.Resource)" Nullable="false">
-          <Annotation Term="OData.Description" String="This array defines the supported values for this property on this resource.  In this case, a valid reference is supported."/>
+        <Parameter Name="NewManager" Type="Manager.Manager" Nullable="false">
+          <Annotation Term="OData.Description" String="This Parameter specifies the Manager to fail over to.  In this case, a valid reference is supported."/>
         </Parameter>
       </Action>
 
@@ -76,11 +76,11 @@
         <Annotation Term="OData.Description" String="The ModifyRedundancySet operation is used to add or remove members to a redundant group of manager."/>
         <Annotation Term="OData.LongDescription" String="This defines the name of the custom action for which the following properties are supported on this resource.  The ModifyRedundancySet operation shall be used to add or remove members to a redundant group of manager."/>
         <Parameter Name="Manager" Type="Manager.1.0.0.Actions"/>
-        <Parameter Name="Add" Type="Collection(Resource.Resource)" Nullable="false">
-          <Annotation Term="OData.Description" String="This array defines the supported values for this property on this resource.  In this case, a valid reference is supported. Add shall be used to Add members to the manager redundancy group."/>
+        <Parameter Name="Add" Type="Collection(Manager.Manager)" Nullable="false">
+          <Annotation Term="OData.Description" String="This array defines the Managers to add to the redundancy set.  In this case, a valid reference is supported."/>
         </Parameter>
-        <Parameter Name="Remove" Type="Collection(Resource.Resource)" Nullable="false">
-          <Annotation Term="OData.Description" String="This array defines the supported values for this property on this resource.  In this case, a valid reference is supported. Remove shall be used to remove members from the manager redundancy group."/>
+        <Parameter Name="Remove" Type="Collection(Manager.Manager)" Nullable="false">
+          <Annotation Term="OData.Description" String="This array defines the Managers to remove from the redundancy set.  In this case, a valid reference is supported."/>
         </Parameter>
       </Action>
     
