@@ -3,7 +3,7 @@ jsonlint = require 'gulp-jsonlint'
 
 gulp.task 'default', ->
   gulp.src [
-    'generate-json-schema/**/*.json',
+    'json-schema/**/*.json',
     'mockups/development/**/*.html',
     '!mockups/development/viewer.html'
   ]
