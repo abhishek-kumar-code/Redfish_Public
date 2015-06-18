@@ -51,11 +51,28 @@
           <Annotation Term="OData.Description" String="The protocol type of the event connection."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the protocol type that the event will use for sending the event to the destination.  A value of Redfish shall be used to indicate that the event type shall adhere to that defined in the Redfish specification."/>
         </Property>
+        <Property Name="HttpHeaders" Nullable="true" Type="Collection(EventDestination.HttpHeaderProperty)">
+          <Annotation Term="OData.Description" String="This is for setting HTTP headers, such as authorization information.  This object will be null on a GET."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain an object consisting of the names and values of of HTTP header to be included with every event POST to the Event Destination.  This property shall be null on a GET."/>
+-        </Property>
       </EntityType>
 
       <EnumType Name="EventDestinationProtocol">
         <Member Name="Redfish"/>
       </EnumType>
+      
+      <ComplexType Name="HttpHeaderProperty">
+        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
+        <Annotation Term="Redfish.DynamicPropertyPatterns">
+          <Collection>
+            <Record>
+              <PropertyValue Property="Pattern" String="^[^:\\s]+$"/>
+              <PropertyValue Property="Type" String="Edm.String"/>
+            </Record>
+          </Collection>
+        </Annotation>
+        <Annotation Term="OData.Description" String="The value of the HTTP header is the property value.  The header name is the property name."/>
+      </ComplexType>
 
     </Schema>
   </edmx:DataServices>
