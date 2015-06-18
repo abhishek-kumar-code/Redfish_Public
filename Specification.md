@@ -1094,7 +1094,7 @@ A JSON object can be annotated with "@Message.ExtendedInfo" in order to specify 
     "ConnectorType": "RJ45",
     "PinOut": "Cyclades"
 	"@Message.ExtendedInfo" : {
-         "MessageId": "Base.1.0.0.PropertyDuplicate",
+         "MessageId": "Base.1.0.PropertyDuplicate",
          "Message": "The property InterfaceEnabled was duplicated in the request.",
       	 "RelatedProperties": [
 		     "#/InterfaceEnabled"
@@ -1134,7 +1134,7 @@ An individual property within a JSON object can be annotated with extended infor
     "PinOut": "Cyclades"
     "PinOut@Message.ExtendedInfo" : [
 		{
-           "MessageId": "Base.1.0.0.PropertyValueNotInList",
+           "MessageId": "Base.1.0.PropertyValueNotInList",
            "Message": "The value Cycldes for the property PinOut is not in the list of acceptable values.",
            "Severity": "Warning",
            "Resolution": "Choose a value from the enumeration list that the implementation can support and resubmit the request if the operation failed."
@@ -1219,12 +1219,12 @@ Error responses are defined by an extended error resource, represented as a sing
 ~~~json
 {
     "error": {
-        "code": "Base.1.0.0.GeneralError",
+        "code": "Base.1.0.GeneralError",
         "message": "A general error has occurred. See ExtendedInfo for more information.",
         "@Message.ExtendedInfo": [
             {
                 "@odata.type" : "/redfish/v1/$metadata#Message.1.0.0.Message",
-                "MessageId": "Base.1.0.0.PropertyValueNotInList",
+                "MessageId": "Base.1.0.PropertyValueNotInList",
                 "RelatedProperties": [ 
 					"#/IndicatorLED" 
 				],
@@ -1238,7 +1238,7 @@ Error responses are defined by an extended error resource, represented as a sing
             },
             {
                 "@odata.type" : "/redfish/v1/$metadata#Message.1.0.0.Message",
-                "MessageId": "Base.1.0.0.PropertyNotWriteable",
+                "MessageId": "Base.1.0.PropertyNotWriteable",
                 "RelatedProperties": [ 
 					"#/SKU" 
 				],
