@@ -67,7 +67,7 @@
         <Singleton Name="SessionService" Type="SessionService.SessionService"/>
         <Singleton Name="EventService" Type="EventService.EventService"/>
         <Singleton Name="Registries" Type="MessageRegistry.MessageRegistry"/>
-        <Singleton Name="JsonSchemas" Type="JsonSchemas.JsonSchemas"/>
+        <Singleton Name="JsonSchemas" Type="JsonSchemaFileCollection.JsonSchemaFileCollection"/>
         <Singleton Name="Sessions" Type="SessionCollection.SessionCollection"/>
       </EntityContainer>
 
@@ -133,7 +133,7 @@
           <Annotation Term="OData.LongDescription" String="This object shall contain a reference to Message Registry."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="JsonSchemas" Type="JsonSchemaFileCollection.SchemaFileCollection">
+        <NavigationProperty Name="JsonSchemas" Type="JsonSchemaFileCollection.JsonSchemaFileCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a link to a collection of Json-Schema files."/>
           <Annotation Term="OData.LongDescription" String="This object shall only contain a reference to a collection of resources that comply to the SchemaFile schema where the files are Json-Schema files."/>

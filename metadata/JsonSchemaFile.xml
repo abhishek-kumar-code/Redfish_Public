@@ -24,7 +24,7 @@
        
    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="JsonSchemaFile.1.0.0">
        
-      <EntityType Name="JsonSchemaFile" BaseType="JsonSchemaFile.SchemaFile">
+      <EntityType Name="JsonSchemaFile" BaseType="JsonSchemaFile.JsonSchemaFile">
         <Annotation Term="OData.Description" String="This is the schema definition for the Schema File locator resource."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent the Schema File locator resource for a Redfish implementation."/>
         <Property Name="Languages" Nullable="false" Type="Collection(Edm.String)">
