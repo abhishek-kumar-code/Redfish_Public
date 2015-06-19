@@ -9,7 +9,7 @@
     <edmx:Include Namespace="Validation.1.0.0" Alias="Validation"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
-    <edmx:Include Namespace="Resource.1.0.0" Alias="Resource"/>
+    <edmx:Include Namespace="Resource.1.0.0" />
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Chassis.xml">
     <edmx:Include Namespace="Chassis"/>
@@ -35,14 +35,14 @@
     <!-- This schema defines a computer system and its respective properties.-->
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem">
 
-      <EntityType Name="ComputerSystem" BaseType="Resource.Resource">
+      <EntityType Name="ComputerSystem" BaseType="Resource.1.0.0.Resource">
         <Annotation Term="OData.Description" String="This schema defines a computer system and its respective properties.  A computer system represents a machine (physical or virtual) and the local resources such as memory, cpu and other devices that can be accessed from that machine."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent resources that represent a computing system in the Redfish specification."/>
       </EntityType>
 
       <Action Name="Reset" IsBound="true">
         <Parameter Name="ComputerSystem" Type="ComputerSystem.1.0.0.Actions"/>
-        <Parameter Name="ResetType" Type="Resource.ResetType">
+        <Parameter Name="ResetType" Type="Resource.1.0.0.ResetType">
           <Annotation Term="OData.Description" String="The type of reset to be performed"/>
           <Annotation Term="OData.LongDescription" String="This defines the property name for the action."/>
         </Parameter>
@@ -159,7 +159,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type LogServiceCollection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>        
-        <Property Name="Status" Type="Resource.Status"/>
+        <Property Name="Status" Type="Resource.1.0.0.Status"/>
       </EntityType>
 
       <ComplexType Name="Links" BaseType="Resource.Links">
@@ -320,7 +320,7 @@
           <Annotation Term="OData.Description" String="The processor model for the primary or majority of processors in this system."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the processor model for the central processors in the system, per the description in Table 22 of the SMBIOS Specification DSP0134 2.8 or later."/>
         </Property>
-        <Property Name="Status" Type="Resource.Status"  Nullable="false"/>
+        <Property Name="Status" Type="Resource.1.0.0.Status"  Nullable="false"/>
         <Annotation Term="OData.Description" String="This object describes the central processors of the system in general detail."/>
       </ComplexType>
 
@@ -332,7 +332,7 @@
           <Annotation Term="OData.LongDescription" String="This property shall contain the amount of system general purpose volatile (RAM) memory as measured in gibibytes."/>
           <Annotation Term="Validation.Minimum" Int="0" />
         </Property>
-        <Property Name="Status" Type="Resource.Status"  Nullable="false"/>
+        <Property Name="Status" Type="Resource.1.0.0.Status"  Nullable="false"/>
         <Annotation Term="OData.Description" String="This object describes the memory of the system in general detail."/>
       </ComplexType>
 

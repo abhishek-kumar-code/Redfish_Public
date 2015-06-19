@@ -8,7 +8,7 @@
     <edmx:Include Namespace="RedfishExtensions.1.0.0" Alias="Redfish"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
-    <edmx:Include Namespace="Resource.1.0.0" Alias="Resource"/>
+    <edmx:Include Namespace="Resource.1.0.0" />
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Privileges.xml">
     <edmx:Include Namespace="Privileges.1.0.0"/>
@@ -17,7 +17,7 @@
   <edmx:DataServices>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Role">
 
-      <EntityType Name="Role" BaseType="Resource.Resource">
+      <EntityType Name="Role" BaseType="Resource.1.0.0.Resource">
         <Annotation Term="OData.Description" String="This schema defines a user role to be used in conjunction with a manager account."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent resources that represent the user role for the user account."/>
       </EntityType>

@@ -208,7 +208,7 @@
                     "longDescription": "This object shall contain power limit status and configuration information for this chassis"
                 },
                 "Status": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.1.0.0.json#/definitions/Status"
                 },
                 "RelatedItem@odata.count": {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
@@ -446,7 +446,7 @@
                     "longDescription": "This property shall contain the spare or replacement part number as defined by the manufacturer for the associated power supply."
                 },
                 "Status": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.1.0.0.json#/definitions/Status"
                 },
                 "RelatedItem@odata.count": {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
@@ -533,7 +533,7 @@
                     "longDescription": "The value of this property shall be a numerical identifier for this voltage sensor that is unique within this resource. "
                 },
                 "Status": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.1.0.0.json#/definitions/Status"
                 },
                 "ReadingVolts": {
                     "type": [

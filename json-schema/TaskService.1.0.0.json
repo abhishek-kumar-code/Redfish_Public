@@ -78,7 +78,7 @@
                     "longDescription": "The value of this property shall be a boolean indicating whether this service is enabled."
                 },
                 "Status": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.1.0.0.json#/definitions/Status"
                 },
                 "Tasks": {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/TaskCollection.json#/definitions/TaskCollection",

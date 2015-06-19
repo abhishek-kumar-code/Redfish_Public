@@ -9,7 +9,7 @@
     <edmx:Include Namespace="Validation.1.0.0" Alias="Validation"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
-    <edmx:Include Namespace="Resource.1.0.0" Alias="Resource"/>
+    <edmx:Include Namespace="Resource.1.0.0" />
   </edmx:Reference>
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Measures.V1.xml">
     <edmx:Include Namespace="Org.OData.Measures.v1" Alias="Measures"/>
@@ -27,7 +27,7 @@
   <edmx:DataServices>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EthernetInterface">
 
-      <EntityType Name="EthernetInterface" BaseType="Resource.Resource">
+      <EntityType Name="EthernetInterface" BaseType="Resource.1.0.0.Resource">
         <Annotation Term="OData.Description" String="This schema defines a simple ethernet NIC resource."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent NIC resources as part of the Redfish specification."/>
       </EntityType>
@@ -44,7 +44,7 @@
           <Annotation Term="OData.Description" String="The UEFI device path for this interface"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the UEFI device path to the device which implements this interface (port)."/>
         </Property>
-        <Property Name="Status" Type="Resource.Status"/>
+        <Property Name="Status" Type="Resource.1.0.0.Status"/>
         <Property Name="InterfaceEnabled" Type="Edm.Boolean">
           <Annotation Term="OData.Description" String="This indicates whether this interface is enabled."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this interface is enabled."/>

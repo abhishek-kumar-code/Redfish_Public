@@ -9,50 +9,9 @@
   </edmx:Reference>
 
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.1.0.0" Alias="Resource">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource">
 
-      <!--Base Complex type for Links properties-->
-      <ComplexType Name="Links" Abstract="true">
-        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Property Name="Oem" Type="Resource.Oem">
-          <Annotation Term="OData.Description" String="Oem extension object."/>
-          <Annotation Term="OData.LongDescription" String="This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
-        </Property>
-      </ComplexType>
-      
-      <!--Base entity type for array members-->
-      <EntityType Name="Item" Abstract="true">
-        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Annotation Term="OData.Description" String="This is the base type for resources and referenceable members."/>
-        <Property Name="Oem" Type="Resource.Oem">
-          <Annotation Term="OData.Description" String="This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections."/>
-          <Annotation Term="OData.LongDescription" String="The value of this string shall be of the format for the reserved word *Oem*."/>
-        </Property>
-      </EntityType>
-
-        <!--Base entity type for array members-->
-      <EntityType Name="ReferenceableMember" BaseType="Resource.Item" Abstract="true">
-        <Annotation Term="OData.Description" String="This is the base type for addressable members of an array."/>
-        <Annotation Term="OData.LongDescription" String="Array members can be referenced using the value returned in the @odata.id property which may or may not be a dereferenceable URL. The @odata.id of this entity shall be the location of this element within an Item."/>
-        <Key>
-          <PropertyRef Name="MemberId"/>
-        </Key>
-        <Property Name="MemberId" Nullable="false" Type="Edm.String">
-          <Annotation Term="OData.Description" String="This is the identifier for the member within the collection."/>
-          <Annotation Term="OData.LongDescription" String="The value of this string shall uniquely identify the member within the collection."/>
-        </Property>
-      </EntityType>
-
-      <!--Base entity type for all resources-->
-      <EntityType Name="Resource" BaseType="Resource.Item" Abstract="true">
-        <Key>
-          <PropertyRef Name="Id"/>
-        </Key>
-        <Property Name="Id" Type="Resource.Id" Nullable="false"/>
-        <Property Name="Description" Type="Resource.Description"/>
-        <Property Name="Name" Type="Resource.Name" Nullable="false"/>
-      </EntityType>
-
+      <!--Type Definitions-->
       <TypeDefinition Name="Id" UnderlyingType="Edm.String">
         <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
         <Annotation Term="OData.Description" String="Uniquely identifies the resource within the collection of like resources."/>
@@ -72,8 +31,71 @@
         <Annotation Term="Redfish.Required"/>
       </TypeDefinition>
 
+      <TypeDefinition Name="UUID" UnderlyingType="Edm.Guid"/>
+
+      <!--Base Complex type for Links properties-->
+      <ComplexType Name="Links" Abstract="true">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Property Name="Oem" Type="Resource.Oem">
+          <Annotation Term="OData.Description" String="Oem extension object."/>
+          <Annotation Term="OData.LongDescription" String="This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
+        </Property>
+      </ComplexType>
+
+      <!--Complex type that serves as a "property bag" for OEM properties-->
+      <ComplexType Name="Oem">
+        <Annotation Term="OData.AdditionalProperties" Bool="True"/>
+        <Annotation Term="OData.Description" String="Oem extension object."/>
+        <Annotation Term="OData.LongDescription" String="This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
+      </ComplexType>
+
+      <!--Unversioned Base Types-->
+
+      <!--Base type for Resources and ReferenceableMembers-->
+      <EntityType Name="Item" Abstract="true">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This is the base type for resources and referenceable members."/>
+        <Property Name="Oem" Type="Resource.Oem">
+          <Annotation Term="OData.Description" String="This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections."/>
+          <Annotation Term="OData.LongDescription" String="The value of this string shall be of the format for the reserved word *Oem*."/>
+        </Property>
+      </EntityType>
+
+      <EntityType Name="ReferenceableMember" BaseType="Resource.Item" Abstract="true"/>
+
+      <EntityType Name="Resource" BaseType="Resource.Item" Abstract="true"/>
+
+      <EntityType Name="ResourceCollection" Abstract="True"/>
+      
+    </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.1.0.0">
+
+      <!--Base entity type for array members-->
+      <EntityType Name="ReferenceableMember" BaseType="Resource.ReferenceableMember" Abstract="true">
+        <Annotation Term="OData.Description" String="This is the base type for addressable members of an array."/>
+        <Annotation Term="OData.LongDescription" String="Array members can be referenced using the value returned in the @odata.id property which may or may not be a dereferenceable URL. The @odata.id of this entity shall be the location of this element within an Item."/>
+        <Key>
+          <PropertyRef Name="MemberId"/>
+        </Key>
+        <Property Name="MemberId" Nullable="false" Type="Edm.String">
+          <Annotation Term="OData.Description" String="This is the identifier for the member within the collection."/>
+          <Annotation Term="OData.LongDescription" String="The value of this string shall uniquely identify the member within the collection."/>
+        </Property>
+      </EntityType>
+
+      <!--Base entity type for all resources-->
+      <EntityType Name="Resource" BaseType="Resource.Resource" Abstract="true">
+        <Key>
+          <PropertyRef Name="Id"/>
+        </Key>
+        <Property Name="Id" Type="Resource.Id" Nullable="false"/>
+        <Property Name="Description" Type="Resource.Description"/>
+        <Property Name="Name" Type="Resource.Name" Nullable="false"/>
+      </EntityType>
+
       <!--Base entity type for all resource collection objects-->
-      <EntityType Name="ResourceCollection" Abstract="True">
+      <EntityType Name="ResourceCollection" BaseType="Resource.ResourceCollection" Abstract="True">
         <Annotation Term="OData.AdditionalProperties" Bool="False"/>
         <Key>
           <PropertyRef Name="Name"/>
@@ -86,28 +108,21 @@
         </Property>
       </EntityType>
 
-      <!--Complex type that serves as a "property bag" for OEM properties-->
-      <ComplexType Name="Oem">
-        <Annotation Term="OData.AdditionalProperties" Bool="True"/>
-        <Annotation Term="OData.Description" String="Oem extension object."/>
-        <Annotation Term="OData.LongDescription" String="This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
-      </ComplexType>
-
-      <!--This object represents the standard status structure for resources.-->
+        <!--This object represents the standard status structure for resources.-->
       <ComplexType Name="Status">
         <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
         <Annotation Term="OData.AdditionalProperties" Bool="False"/>
-        <Property Name="State" Type="Resource.State">
+        <Property Name="State" Type="Resource.1.0.0.State">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This indicates the known state of the resource, such as if it is enabled."/>
           <Annotation Term="OData.LongDescription" String="This property shall represent if this component is available or not and why.  Enabled indicates the resource is available.  Disabled indicates the resource has been intentionally made unavailable but it can be enabled.  Offline indicates the resource is unavailable intentionally and requires action to be made available.  InTest indicates that the component is undergoing testing.  Starting indicates that the resource is on its way to becoming available.  Absent indicates the resources is physically unavailable."/>
         </Property>
-        <Property Name="HealthRollup" Type="Resource.Health">
+        <Property Name="HealthRollup" Type="Resource.1.0.0.Health">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This represents the overall health state from the view of this resource."/>
           <Annotation Term="OData.LongDescription" String="This property shall represent the HealthState of the resource and its dependent resources.  The values shall conform to those defined in the Redfish specification."/>
         </Property>
-        <Property Name="Health" Type="Resource.Health">
+        <Property Name="Health" Type="Resource.1.0.0.Health">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This represents the health state of this resource in the absence of its dependent resources."/>
           <Annotation Term="OData.LongDescription" String="This property shall represent the HealthState of the resource without considering its dependent resources. The values shall conform to those defined in the Redfish specification."/>
@@ -180,8 +195,6 @@
           <Annotation Term="OData.Description" String="Simulate the pressing of the physical power button on this system"/>
         </Member>
       </EnumType>
-
-      <TypeDefinition Name="UUID" UnderlyingType="Edm.Guid"/>
       
     </Schema>
   </edmx:DataServices>

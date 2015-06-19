@@ -23,7 +23,7 @@
                     "longDescription": "This object represents the Name property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification. The value of this string shall be of the format for the reserved word *Name*."
                 },
                 "Status": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.1.0.0.json#/definitions/Status"
                 },
                 "Manufacturer": {
                     "type": [
@@ -99,7 +99,7 @@
                     "longDescription": "This property shall contain a list of storage devices associated with this resource"
                 },
                 "Status": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.1.0.0.json#/definitions/Status"
                 }
             },
             "description": "This is the schema definition for the Simple Storage resource.  It represents the properties of a storage controller and its directly-attached devices."

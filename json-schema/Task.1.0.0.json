@@ -57,7 +57,7 @@
                     "longDescription": "The value of this property shall indicate the time the task was completed."
                 },
                 "TaskStatus": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Health",
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.1.0.0.json#/definitions/Health",
                     "readonly": true,
                     "description": "This is the completion status of the task.",
                     "longDescription": "The value of this property shall be the completion status of the task, as defined in the Status section of the Redfish specification and shall not be set until the task has completed."

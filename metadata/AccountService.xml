@@ -10,7 +10,7 @@
     <edmx:Include Namespace="Validation.1.0.0" Alias="Validation"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
-    <edmx:Include Namespace="Resource.1.0.0" Alias="Resource"/>
+    <edmx:Include Namespace="Resource.1.0.0" />
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ManagerAccountCollection.xml">
     <edmx:Include Namespace="ManagerAccountCollection"/>
@@ -22,7 +22,7 @@
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AccountService">
-      <EntityType Name="AccountService" BaseType="Resource.Resource">
+      <EntityType Name="AccountService" BaseType="Resource.1.0.0.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition for the Account Service.  It represents the properties for the service itself and has links to the actual list of accounts."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a management account service for a Redfish implementation."/>
       </EntityType>
@@ -31,7 +31,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AccountService.1.0.0">
 
       <EntityType Name="AccountService" BaseType="AccountService.AccountService">
-        <Property Name="Status" Type="Resource.Status"/>
+        <Property Name="Status" Type="Resource.1.0.0.Status"/>
         <Property Name="ServiceEnabled" Type="Edm.Boolean">
           <Annotation Term="OData.Description" String="This indicates whether this service is enabled."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this service is enabled."/>

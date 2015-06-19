@@ -109,7 +109,7 @@
                     "longDescription": "This object shall contain information for the KVM-IP (Keyboard, Video, Mouse) protocol settings for the manager."
                 },
                 "Status": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.1.0.0.json#/definitions/Status"
                 }
             },
             "description": "This resource is used to obtain or modify the network services managed by a given manager.",
