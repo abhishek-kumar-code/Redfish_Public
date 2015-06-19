@@ -1,15 +1,15 @@
 {
-    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0.json",
-    "title": "JsonSchemaFile",
-    "$ref": "#/definitions/SchemaFile",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.1.0.0.json",
+    "title": "#JsonSchemaFile.JsonSchemaFile",
+    "$ref": "#/definitions/JsonSchemaFile",
     "definitions":{
-        "SchemaFile":{
+        "JsonSchemaFile":{
                 "oneOf": [ 
                     {
-                        "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/idRef"
+                        "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
                     },
                     {
-                        "$ref": "http://schemas.dmtf.org/redfish/JsonSchemaFile.1.0.0.json#/definitions/SchemaFile"
+                        "$ref": "http://redfish.dmtf.org/schemas/JsonSchemaFile.1.0.0.json#/definitions/JsonSchemaFile"
                     }
                 ]
             }

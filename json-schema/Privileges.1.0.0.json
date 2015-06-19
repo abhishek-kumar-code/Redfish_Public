@@ -1,6 +1,6 @@
 {
-    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0.json",
-    "title": "Privileges.1.0.0",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.1.0.0.json",
+    "title": "#Privileges.1.0.0",
     "definitions":{
         "PrivilegeType":{
             "type": "string",
@@ -15,7 +15,7 @@
                 "Login": "Able to log into the service and read resources.",
                 "ConfigureManager": "Able to configure Manager resources.",
                 "ConfigureUsers": "Able to configure Users and their Accounts.",
-                "ConfigureSelf": "Able to configure the current user Account.",
+                "ConfigureSelf": "Able to change the password for the current user Account.",
                 "ConfigureComponents": "Able to configure components managed by this service."
             }
         }

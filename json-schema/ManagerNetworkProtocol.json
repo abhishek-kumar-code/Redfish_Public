@@ -1,15 +1,15 @@
 {
-    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0.json",
-    "title": "ManagerNetworkProtocol",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.1.0.0.json",
+    "title": "#ManagerNetworkProtocol.ManagerNetworkProtocol",
     "$ref": "#/definitions/ManagerNetworkProtocol",
     "definitions":{
         "ManagerNetworkProtocol":{
                 "oneOf": [ 
                     {
-                        "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/idRef"
+                        "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
                     },
                     {
-                        "$ref": "http://schemas.dmtf.org/redfish/ManagerNetworkProtocol.1.0.0.json#/definitions/ManagerNetworkProtocol"
+                        "$ref": "http://redfish.dmtf.org/schemas/ManagerNetworkProtocol.1.0.0.json#/definitions/ManagerNetworkProtocol"
                     }
                 ]
             }

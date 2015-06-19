@@ -1,40 +1,51 @@
 {
-    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0.json",
-    "title": "TaskService.1.0.0",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.1.0.0.json",
+    "title": "#TaskService.1.0.0.TaskService",
     "$ref": "#/definitions/TaskService",
     "definitions":{
+        "OverWritePolicy":{
+            "type": "string",
+            "enum": [
+                "Manual",
+                "Oldest"
+            ],
+            "enumDescriptions": {
+                "Manual": "Completed tasks are not automatically overwritten",
+                "Oldest": "Oldest completed tasks are overwritten"
+            }
+        },
         "TaskService":{
             "type": "object",
             "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
                     "type": ["array", "boolean", "number", "null", "object", "string"],
-                    "description": "This property shall specify a valid odata or redfish property."
-                }
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }            
             },
             "additionalProperties": false,
             "properties": {
                 "@odata.context": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/context"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
                 },
                 "@odata.id": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/id"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
                 },
                 "@odata.type": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/type"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
                 },
                 "Oem": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Oem",
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Id": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Id"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
                 },
                 "Description": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Description"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
                 },
                 "Name": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Name"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
                 },
                 "CompletedTaskOverWritePolicy": {
                     "$ref": "#/definitions/OverWritePolicy",
@@ -67,10 +78,10 @@
                     "longDescription": "The value of this property shall be a boolean indicating whether this service is enabled."
                 },
                 "Status": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/Resource.json#/definitions/Status"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
                 },
                 "Tasks": {
-                    "$ref": "http://schemas.dmtf.org/redfish/v1/TaskCollection.json#/definitions/TaskCollection",
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/TaskCollection.json#/definitions/TaskCollection",
                     "readonly": true,
                     "description": "References to the Tasks collection.",
                     "longDescription": "The value of this property shall be a link to a resource of type TaskCollection."
@@ -78,17 +89,6 @@
             },
             "description": "This is the schema definition for the Task Service.  It represents the properties for the service itself and has links to the actual list of tasks.",
             "longDescription": "This resource shall be used to represent a task service for a Redfish implementation."
-        },
-        "OverWritePolicy":{
-            "type": "string",
-            "enum": [
-                "Manual",
-                "Oldest"
-            ],
-            "enumDescriptions": {
-                "Manual": "Completed tasks are not automatically overwritten",
-                "Oldest": "Oldest completed tasks are overwritten"
-            }
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."

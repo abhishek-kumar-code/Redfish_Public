@@ -1,15 +1,15 @@
 {
-    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0.json",
-    "title": "SessionService",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.1.0.0.json",
+    "title": "#SessionService.SessionService",
     "$ref": "#/definitions/SessionService",
     "definitions":{
         "SessionService":{
                 "oneOf": [ 
                     {
-                        "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/idRef"
+                        "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
                     },
                     {
-                        "$ref": "http://schemas.dmtf.org/redfish/SessionService.1.0.0.json#/definitions/SessionService"
+                        "$ref": "http://redfish.dmtf.org/schemas/SessionService.1.0.0.json#/definitions/SessionService"
                     }
                 ]
             }

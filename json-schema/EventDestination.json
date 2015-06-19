@@ -1,15 +1,15 @@
 {
-    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0.json",
-    "title": "EventDestination",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.1.0.0.json",
+    "title": "#EventDestination.EventDestination",
     "$ref": "#/definitions/EventDestination",
     "definitions":{
         "EventDestination":{
                 "oneOf": [ 
                     {
-                        "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/idRef"
+                        "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
                     },
                     {
-                        "$ref": "http://schemas.dmtf.org/redfish/EventDestination.1.0.0.json#/definitions/EventDestination"
+                        "$ref": "http://redfish.dmtf.org/schemas/EventDestination.1.0.0.json#/definitions/EventDestination"
                     }
                 ]
             }

@@ -1,15 +1,15 @@
 {
-    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0.json",
-    "title": "Processor",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.1.0.0.json",
+    "title": "#Processor.Processor",
     "$ref": "#/definitions/Processor",
     "definitions":{
         "Processor":{
                 "oneOf": [ 
                     {
-                        "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/idRef"
+                        "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
                     },
                     {
-                        "$ref": "http://schemas.dmtf.org/redfish/Processor.1.0.0.json#/definitions/Processor"
+                        "$ref": "http://redfish.dmtf.org/schemas/Processor.1.0.0.json#/definitions/Processor"
                     }
                 ]
             }

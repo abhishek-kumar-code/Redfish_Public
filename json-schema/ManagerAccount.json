@@ -1,15 +1,15 @@
 {
-    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0.json",
-    "title": "ManagerAccount",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.1.0.0.json",
+    "title": "#ManagerAccount.ManagerAccount",
     "$ref": "#/definitions/ManagerAccount",
     "definitions":{
         "ManagerAccount":{
                 "oneOf": [ 
                     {
-                        "$ref": "http://schemas.dmtf.org/redfish/v1/odata.4.0.0.json#/definitions/idRef"
+                        "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
                     },
                     {
-                        "$ref": "http://schemas.dmtf.org/redfish/ManagerAccount.1.0.0.json#/definitions/ManagerAccount"
+                        "$ref": "http://redfish.dmtf.org/schemas/ManagerAccount.1.0.0.json#/definitions/ManagerAccount"
                     }
                 ]
             }
