@@ -15,8 +15,8 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="JsonSchemaFileCollection">
 
-      <EntityType Name="SchemaFileCollection" BaseType="Resource.ResourceCollection">
-        <NavigationProperty Name="Members" Type="Collection(JsonSchemaFile.SchemaFile)">
+      <EntityType Name="JsonSchemaFileCollection" BaseType="Resource.ResourceCollection">
+        <NavigationProperty Name="Members" Type="Collection(JsonSchemaFile.JsonSchemaFile)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Contains the members of this collection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
