@@ -318,6 +318,46 @@ class JsonSchemaGenerator:
         return edmtojson[inputType]
 
     ##########################################################################
+    # Name: emit_property_patterns                                           # 
+    # Description:                                                           #
+    #  Emits any property patterns on the object                             #
+    ##########################################################################
+    def emit_property_patterns(self, typetable, namespace, annotated, depth, prefixuri, isnullable):
+
+        output = ""
+        fcontinue = True
+        written = []
+
+        #for each type in the heirarchy
+        while ( fcontinue == True ):
+            for annotation in annotated:
+                if not annotation.tag == "{http://docs.oasis-open.org/odata/ns/edm}Annotation":
+                    continue
+
+                term = annotation.attrib["Term"]
+
+                if term == "Redfish.DynamicPropertyPatterns":
+                    content = self.get_dynamic_property_patterns_content(annotation)
+                    output += ",\n"
+                    output += UT.Utilities.indent(depth+1) + "\"" + content["Pattern"] + "\": { \n"
+                    jsontype = self.get_edmtype_to_jsontype(content["Type"])
+            
+#todo:generate reference, make sure returns are correct for multiple pattern properties
+                    if jsontype == "object":
+                        output += self.generate_json_for_type(typetable, content["Type"], depth + 2, namespace, prefixuri, isnullable, False)
+                        output += "\n" + UT.Utilities.indent(depth + 1) + "}"
+                    else:
+                        output += UT.Utilities.indent(depth + 2) + "\"type\":\"" + jsontype + "\""
+                                                      
+            if "BaseType" in annotated.attrib.keys():
+                #todo: make more robust
+                annotated = typetable[annotated.attrib["BaseType"]]["Node"]
+            else:
+                fcontinue = False
+
+        return output
+
+    ##########################################################################
     # Name: emit_annotations                                                 # 
     # Description:                                                           #
     #  Emits annotations that are to be added to JSON                        #
@@ -362,19 +402,19 @@ class JsonSchemaGenerator:
                     output += ",\n"
                     output += UT.Utilities.indent(depth) + "\"pattern\": \"" + annotation.attrib["String"] + "\""
 
-                elif term == "Redfish.DynamicPropertyPatterns":
-                    content = self.get_dynamic_property_patterns_content(annotation)
-                    output += ",\n"
-                    output += UT.Utilities.indent(depth) + "\"patternProperties\": { \n"
-                    output += UT.Utilities.indent(depth+1) + "\"" + content["Pattern"] + "\": { \n"
-                    jsontype = self.get_edmtype_to_jsontype(content["Type"])
-            
-                    if jsontype == "object":
-                        output += self.generate_json_for_type(typetable, content["Type"], depth + 2, namespace, prefixuri, isnullable, False)
-                        output += "\n" + UT.Utilities.indent(depth + 1) + "}\n"
-                    else:
-                        output += UT.Utilities.indent(depth + 2) + "\"type\":\"" + jsontype + "\"\n"
-                    output += UT.Utilities.indent(depth) + "}"
+#                elif term == "Redfish.DynamicPropertyPatterns":
+#                    content = self.get_dynamic_property_patterns_content(annotation)
+#                    output += ",\n"
+#                    output += UT.Utilities.indent(depth) + "\"patternProperties\": { \n"
+#                    output += UT.Utilities.indent(depth+1) + "\"" + content["Pattern"] + "\": { \n"
+#                    jsontype = self.get_edmtype_to_jsontype(content["Type"])
+#            
+#                    if jsontype == "object":
+#                        output += self.generate_json_for_type(typetable, content["Type"], depth + 2, namespace, prefixuri, isnullable, False)
+#                        output += "\n" + UT.Utilities.indent(depth + 1) + "}\n"
+#                    else:
+#                        output += UT.Utilities.indent(depth + 2) + "\"type\":\"" + jsontype + "\"\n"
+#                    output += UT.Utilities.indent(depth) + "}"
 
                 elif (term == "Validation.Minimum"):
                     output += ",\n"
@@ -580,7 +620,9 @@ class JsonSchemaGenerator:
         output += UT.Utilities.indent(depth+1) + "\"^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$\" : {\n"
         output += UT.Utilities.indent(depth+2) + "\"type\": [\"array\", \"boolean\", \"number\", \"null\", \"object\", \"string\"],\n"
         output += UT.Utilities.indent(depth+2) + "\"description\": \"This property shall specify a valid odata or Redfish property.\"\n"
-        output += UT.Utilities.indent(depth+1) + "}\n"
+        output += UT.Utilities.indent(depth+1) + "}"
+        output += self.emit_property_patterns(typetable, namespace, typedata["Node"], depth, prefixuri, isnullable)
+        output += UT.Utilities.indent(depth)   + "\n"
         output += UT.Utilities.indent(depth)   + "},\n"
 		
         nodes = [typedata["Node"]]
