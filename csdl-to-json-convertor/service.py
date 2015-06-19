@@ -342,9 +342,10 @@ class JsonSchemaGenerator:
                     output += UT.Utilities.indent(depth+1) + "\"" + content["Pattern"] + "\": { \n"
                     jsontype = self.get_edmtype_to_jsontype(content["Type"])
             
-#todo:generate reference, make sure returns are correct for multiple pattern properties
+#todo:make sure returns are correct for multiple pattern properties. validate we should never write type inline
                     if jsontype == "object":
-                        output += self.generate_json_for_type(typetable, content["Type"], depth + 2, namespace, prefixuri, isnullable, False)
+                        refvalue = self.get_ref_value_for_type(typetable, content["Type"], namespace)
+                        output += UT.Utilities.indent(depth+2)+ "\"$ref\": \"" + refvalue + "\"\n"                        
                         output += "\n" + UT.Utilities.indent(depth + 1) + "}"
                     else:
                         output += UT.Utilities.indent(depth + 2) + "\"type\":\"" + jsontype + "\""
@@ -401,20 +402,6 @@ class JsonSchemaGenerator:
                 elif ((term == "Validation.Pattern") or (term == "Redfish.Pattern") ):
                     output += ",\n"
                     output += UT.Utilities.indent(depth) + "\"pattern\": \"" + annotation.attrib["String"] + "\""
-
-#                elif term == "Redfish.DynamicPropertyPatterns":
-#                    content = self.get_dynamic_property_patterns_content(annotation)
-#                    output += ",\n"
-#                    output += UT.Utilities.indent(depth) + "\"patternProperties\": { \n"
-#                    output += UT.Utilities.indent(depth+1) + "\"" + content["Pattern"] + "\": { \n"
-#                    jsontype = self.get_edmtype_to_jsontype(content["Type"])
-#            
-#                    if jsontype == "object":
-#                        output += self.generate_json_for_type(typetable, content["Type"], depth + 2, namespace, prefixuri, isnullable, False)
-#                        output += "\n" + UT.Utilities.indent(depth + 1) + "}\n"
-#                    else:
-#                        output += UT.Utilities.indent(depth + 2) + "\"type\":\"" + jsontype + "\"\n"
-#                    output += UT.Utilities.indent(depth) + "}"
 
                 elif (term == "Validation.Minimum"):
                     output += ",\n"
