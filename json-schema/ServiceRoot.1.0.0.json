@@ -1,14 +1,14 @@
 {
     "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.1.0.0.json",
-    "title": "ServiceRoot.1.0.0",
+    "title": "#ServiceRoot.1.0.0.ServiceRoot",
     "$ref": "#/definitions/ServiceRoot",
     "definitions":{
         "ServiceRoot":{
             "type": "object",
             "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
                     "type": ["array", "boolean", "number", "null", "object", "string"],
-                    "description": "This property shall specify a valid odata or redfish property."
+                    "description": "This property shall specify a valid odata or Redfish property."
                 }
             },
             "additionalProperties": false,
@@ -52,9 +52,9 @@
                 "Links": {
                     "type": "object",
                     "patternProperties": { 
-                        "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+                        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
                             "type": ["array", "boolean", "number", "null", "object", "string"],
-                            "description": "This property shall specify a valid odata or redfish property."
+                            "description": "This property shall specify a valid odata or Redfish property."
                         }
                     },
                     "additionalProperties": false,
@@ -123,7 +123,7 @@
                     "longDescription": "This object shall contain a reference to Message Registry."
                 },
                 "JsonSchemas": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/JsonSchemaFileCollection.json#/definitions/SchemaFileCollection",
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/JsonSchemaFileCollection.json#/definitions/JsonSchemaFileCollection",
                     "readonly": true,
                     "description": "This is a link to a collection of Json-Schema files.",
                     "longDescription": "This object shall only contain a reference to a collection of resources that comply to the SchemaFile schema where the files are Json-Schema files."

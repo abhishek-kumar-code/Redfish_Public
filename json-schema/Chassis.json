@@ -1,6 +1,6 @@
 {
     "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.1.0.0.json",
-    "title": "Chassis",
+    "title": "#Chassis.Chassis",
     "$ref": "#/definitions/Chassis",
     "definitions":{
         "Chassis":{
@@ -26,14 +26,6 @@
                 "target": {
                     "type": "string",
                     "description": "Link to invoke action"
-                },
-                "ResetType@Redfish.AllowableValues": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/ResetType"
-                    },
-                    "description": "This is the type of reset to be performed.",
-                    "longDescription": "This defines the property name for the action."
                 }
             }
 

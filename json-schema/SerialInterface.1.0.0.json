@@ -1,6 +1,6 @@
 {
     "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.1.0.0.json",
-    "title": "SerialInterface.1.0.0",
+    "title": "#SerialInterface.1.0.0.SerialInterface",
     "$ref": "#/definitions/SerialInterface",
     "definitions":{
         "BitRate":{
@@ -74,9 +74,9 @@
         "SerialInterface":{
             "type": "object",
             "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
                     "type": ["array", "boolean", "number", "null", "object", "string"],
-                    "description": "This property shall specify a valid odata or redfish property."
+                    "description": "This property shall specify a valid odata or Redfish property."
                 }
             },
             "additionalProperties": false,
@@ -114,6 +114,7 @@
                 },
                 "SignalType": {
                     "$ref": "#/definitions/SignalType",
+                    "readonly": true,
                     "description": "The type of signal used for the communication connection - RS232 or RS485.",
                     "longDescription": "This property shall indicate the type of serial signalling that will be utilized for the serial connection."
                 },
@@ -144,11 +145,13 @@
                 },
                 "ConnectorType": {
                     "$ref": "#/definitions/ConnectorType",
+                    "readonly": true,
                     "description": "The type of connector used for this interface.",
                     "longDescription": "This property shall indicate the type of phyiscal connector used for this serial connection."
                 },
                 "PinOut": {
                     "$ref": "#/definitions/PinOut",
+                    "readonly": true,
                     "description": "The physical pin configuration needed for a serial connector.",
                     "longDescription": "This property shall indicate the physical pin out for the serial connection."
                 }

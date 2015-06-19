@@ -1,6 +1,6 @@
 {
     "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.1.0.0.json",
-    "title": "Manager",
+    "title": "#Manager.Manager",
     "$ref": "#/definitions/Manager",
     "definitions":{
         "ForceFailover":{
@@ -14,13 +14,6 @@
                 "target": {
                     "type": "string",
                     "description": "Link to invoke action"
-                },
-                "NewManager@Redfish.AllowableValues": {
-                    "type": "array",
-                    "items": {
-                        "@odata.id": "http://redfish.dmtf.org/schemas/v1/Manager.json#Manager.Manager"
-                    },
-                    "description": "This Parameter specifies the Manager to fail over to.  In this case, a valid reference is supported."
                 }
             }
 
@@ -48,26 +41,6 @@
                 "target": {
                     "type": "string",
                     "description": "Link to invoke action"
-                },
-                "Add@Redfish.AllowableValues": {
-                    "type": "array",
-                    "items": {
-                        "type": "array",
-                        "items": {
-                            "@odata.id": "http://redfish.dmtf.org/schemas/v1/Manager.json#Manager.Manager"
-                        }
-                    },
-                    "description": "This array defines the Managers to add to the redundancy set.  In this case, a valid reference is supported."
-                },
-                "Remove@Redfish.AllowableValues": {
-                    "type": "array",
-                    "items": {
-                        "type": "array",
-                        "items": {
-                            "@odata.id": "http://redfish.dmtf.org/schemas/v1/Manager.json#Manager.Manager"
-                        }
-                    },
-                    "description": "This array defines the Managers to remove from the redundancy set.  In this case, a valid reference is supported."
                 }
             }
 
@@ -83,14 +56,6 @@
                 "target": {
                     "type": "string",
                     "description": "Link to invoke action"
-                },
-                "ResetType@Redfish.AllowableValues": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/ResetType"
-                    },
-                    "description": "This is the type of reset to be performed.",
-                    "longDescription": "This defines the property name for the action."
                 }
             }
 

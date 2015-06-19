@@ -1,6 +1,6 @@
 {
     "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.1.0.0.json",
-    "title": "MessageRegistry",
+    "title": "#MessageRegistry.MessageRegistry",
     "$ref": "#/definitions/MessageRegistry",
     "definitions":{
         "MessageRegistry":{

@@ -1,6 +1,6 @@
 {
     "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.1.0.0.json",
-    "title": "ComputerSystem",
+    "title": "#ComputerSystem.ComputerSystem",
     "$ref": "#/definitions/ComputerSystem",
     "definitions":{
         "ComputerSystem":{
@@ -26,14 +26,6 @@
                 "target": {
                     "type": "string",
                     "description": "Link to invoke action"
-                },
-                "ResetType@Redfish.AllowableValues": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/ResetType"
-                    },
-                    "description": "The type of reset to be performed",
-                    "longDescription": "This defines the property name for the action."
                 }
             }
 

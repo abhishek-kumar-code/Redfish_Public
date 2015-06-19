@@ -1,6 +1,6 @@
 {
     "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.1.0.0.json",
-    "title": "EthernetInterface",
+    "title": "#EthernetInterface.EthernetInterface",
     "$ref": "#/definitions/EthernetInterface",
     "definitions":{
         "EthernetInterface":{

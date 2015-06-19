@@ -1,14 +1,14 @@
 {
     "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.1.0.0.json",
-    "title": "ComputerSystem.1.0.0",
+    "title": "#ComputerSystem.1.0.0.ComputerSystem",
     "$ref": "#/definitions/ComputerSystem",
     "definitions":{
         "Boot":{
             "type": "object",
             "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
                     "type": ["array", "boolean", "number", "null", "object", "string"],
-                    "description": "This property shall specify a valid odata or redfish property."
+                    "description": "This property shall specify a valid odata or Redfish property."
                 }
             },
             "additionalProperties": false,
@@ -82,9 +82,9 @@
         "ComputerSystem":{
             "type": "object",
             "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
                     "type": ["array", "boolean", "number", "null", "object", "string"],
-                    "description": "This property shall specify a valid odata or redfish property."
+                    "description": "This property shall specify a valid odata or Redfish property."
                 }
             },
             "additionalProperties": false,
@@ -121,9 +121,9 @@
                 "Links": {
                     "type": "object",
                     "patternProperties": { 
-                        "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+                        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
                             "type": ["array", "boolean", "number", "null", "object", "string"],
-                            "description": "This property shall specify a valid odata or redfish property."
+                            "description": "This property shall specify a valid odata or Redfish property."
                         }
                     },
                     "additionalProperties": false,
@@ -137,7 +137,7 @@
                             "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
                         },
                         "Chassis@odata.navigationLink": {
-                            "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
                         },
                         "Chassis": {
                             "type": "array",
@@ -152,7 +152,7 @@
                             "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
                         },
                         "ManagedBy@odata.navigationLink": {
-                            "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
                         },
                         "ManagedBy": {
                             "type": "array",
@@ -167,7 +167,7 @@
                             "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
                         },
                         "PoweredBy@odata.navigationLink": {
-                            "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
                         },
                         "PoweredBy": {
                             "type": "array",
@@ -182,7 +182,7 @@
                             "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
                         },
                         "CooledBy@odata.navigationLink": {
-                            "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
                         },
                         "CooledBy": {
                             "type": "array",
@@ -303,9 +303,9 @@
                 "Actions": {
                     "type": "object",
                     "patternProperties": { 
-                        "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+                        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
                             "type": ["array", "boolean", "number", "null", "object", "string"],
-                            "description": "This property shall specify a valid odata or redfish property."
+                            "description": "This property shall specify a valid odata or Redfish property."
                         }
                     },
                     "additionalProperties": false,
@@ -316,9 +316,9 @@
                                 "null"
                             ],
                             "patternProperties": { 
-                                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+                                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
                                     "type": ["array", "boolean", "number", "null", "object", "string"],
-                                    "description": "This property shall specify a valid odata or redfish property."
+                                    "description": "This property shall specify a valid odata or Redfish property."
                                 }
                             },
                             "additionalProperties": true,
@@ -337,14 +337,6 @@
                                 "target": {
                                     "type": "string",
                                     "description": "Link to invoke action"
-                                },
-                                "ResetType@Redfish.AllowableValues": {
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/ResetType"
-                                    },
-                                    "description": "The type of reset to be performed",
-                                    "longDescription": "This defines the property name for the action."
                                 }
                             }
                         }
@@ -401,9 +393,9 @@
         "MemorySummary":{
             "type": "object",
             "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
                     "type": ["array", "boolean", "number", "null", "object", "string"],
-                    "description": "This property shall specify a valid odata or redfish property."
+                    "description": "This property shall specify a valid odata or Redfish property."
                 }
             },
             "additionalProperties": false,
@@ -436,9 +428,9 @@
         "ProcessorSummary":{
             "type": "object",
             "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_])?@(odata|redfish|Message|Privileges).[a-zA-Z_][a-zA-Z0-9_.]$" : {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
                     "type": ["array", "boolean", "number", "null", "object", "string"],
-                    "description": "This property shall specify a valid odata or redfish property."
+                    "description": "This property shall specify a valid odata or Redfish property."
                 }
             },
             "additionalProperties": false,

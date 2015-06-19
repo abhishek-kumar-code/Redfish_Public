@@ -1,6 +1,6 @@
 {
     "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.1.0.0.json",
-    "title": "ServiceRoot",
+    "title": "#ServiceRoot.ServiceRoot",
     "$ref": "#/definitions/ServiceRoot",
     "definitions":{
         "ServiceRoot":{
