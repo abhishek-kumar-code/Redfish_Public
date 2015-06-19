@@ -143,7 +143,7 @@ class JsonSchemaGenerator:
     def is_inline_type(self, type):
 
         #todo: use "has_basetype" post-v1
-        if(type["BaseType"] != "Resource.Links" and type["Name"] != "Actions" and type["Name"] != "OemActions"):
+        if(type["BaseType"] != "Resource.Links" and type["Name"] != "Actions" and type["Name"] != "OemActions" ):
             return True;
 
         return False
@@ -449,24 +449,26 @@ class JsonSchemaGenerator:
         output += UT.Utilities.indent(depth+3) +     "\"description\": \"Link to invoke action\"\n"
         output += UT.Utilities.indent(depth+2) + "}"
 
-        isfirstparam = True
-        for param in actionentry["Node"]:
-            if not param.tag == "{http://docs.oasis-open.org/odata/ns/edm}Parameter":
-                continue
+## old code for writing out properties -- save for new parameter model
+        if False:
+            isfirstparam = True
+            for param in actionentry["Node"]:
+                if not param.tag == "{http://docs.oasis-open.org/odata/ns/edm}Parameter":
+                    continue
 
-            if isfirstparam:
-                isfirstparam = False
-                continue
+                if isfirstparam:
+                    isfirstparam = False
+                    continue
 
-            paramname = param.attrib["Name"]
-            paramtype = "Collection(" + param.attrib["Type"] + ")"
+                paramname = param.attrib["Name"]
+                paramtype = "Collection(" + param.attrib["Type"] + ")"
 
-            output += ",\n"
-            output += UT.Utilities.indent(depth+2) + "\"" + paramname + "@Redfish.AllowableValues" + "\": {\n"
-            output += self.generate_json_for_type(typetable, paramtype, depth + 3, actionentry["Namespace"], prefixuri, False, True)
-            output += self.emit_annotations(typetable, actionentry["Namespace"],  param, depth + 3, prefixuri, False)
-            output += "\n"
-            output += UT.Utilities.indent(depth+2) + "}"
+                output += ",\n"
+                output += UT.Utilities.indent(depth+2) + "\"" + paramname + "@Redfish.AllowableValues" + "\": {\n"
+                output += self.generate_json_for_type(typetable, paramtype, depth + 3, actionentry["Namespace"], prefixuri, False, True)
+                output += self.emit_annotations(typetable, actionentry["Namespace"],  param, depth + 3, prefixuri, False)
+                output += "\n"
+                output += UT.Utilities.indent(depth+2) + "}"
 
         output += "\n"
         output += UT.Utilities.indent(depth+1) +     "}\n"
@@ -637,7 +639,7 @@ class JsonSchemaGenerator:
                             output += UT.Utilities.indent(depth+1) + "},\n"
 
                             output += UT.Utilities.indent(depth+1) + "\"" + propname + "@odata.navigationLink\": {\n"
-                            output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + odataSchema + "#/definitions/count\"\n"
+                            output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + odataSchema + "#/definitions/idRef\"\n"
                             output += UT.Utilities.indent(depth+1) + "},\n"
 
                         output += UT.Utilities.indent(depth+1) + "\"" + propname + "\": {\n"
