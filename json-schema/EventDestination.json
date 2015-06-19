@@ -9,7 +9,7 @@
                         "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
                     },
                     {
-                        "$ref": "http://schemas.dmtf.org/redfish/v1/EventDestination.1.0.0.json#/definitions/EventDestination"
+                        "$ref": "http://redfish.dmtf.org/schemas/EventDestination.1.0.0.json#/definitions/EventDestination"
                     }
                 ]
             }
