@@ -2372,4 +2372,5 @@ The file where the events are written, one or more messages per event should at 
 | Version | Date      | Description                             |
 | ---     | ---       | ---                                     |
 | 0.94.0  | 2015-13-1 | Initial merge of 0.91 and 0.92 versions |
-| 1.00.0  | 2015-3-3  | Near-final Chassis and ComputerSystem schemas. Introduction of referenceable (array) members and use for power metrics, thermal metrics. Introduction of SessionService. Added JSONSchemaFile to OData metadata, mockups. Miscellaneous clean-up. |
+| 0.96.0  | 2015-3-3  | Near-final Chassis and ComputerSystem schemas. Introduction of referenceable (array) members and use for power metrics, thermal metrics. Introduction of SessionService. Added JSONSchemaFile to OData metadata, mockups. Miscellaneous clean-up. |
+| 0.99.0  | 2015-6-18  | Final work in progress release prior to v1.0.  |
