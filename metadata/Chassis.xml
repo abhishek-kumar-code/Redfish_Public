@@ -4,28 +4,28 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/RedfishExtensions.xml">
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions.xml">
     <edmx:Include Namespace="RedfishExtensions.1.0.0" Alias="Redfish"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.xml">
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
     <edmx:Include Namespace="Resource.1.0.0" Alias="Resource"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/LogService.xml">
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/LogService.xml">
     <edmx:Include Namespace="LogService"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Thermal.xml">
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Thermal.xml">
     <edmx:Include Namespace="Thermal"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Power.xml">
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Power.xml">
     <edmx:Include Namespace="Power"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Manager.xml">
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Manager.xml">
     <edmx:Include Namespace="Manager"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ComputerSystem.xml">
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ComputerSystem.xml">
     <edmx:Include Namespace="ComputerSystem"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/LogServiceCollection.xml">
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/LogServiceCollection.xml">
     <edmx:Include Namespace="LogServiceCollection"/>
   </edmx:Reference>
 

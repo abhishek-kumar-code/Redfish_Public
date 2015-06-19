@@ -572,9 +572,9 @@ class JsonSchemaGenerator:
 
         # allow odata and redfish annotations
         output += UT.Utilities.indent(depth) + "\"patternProperties\": { \n"
-        output += UT.Utilities.indent(depth+1) + "\"^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$\" : {\n"
+        output += UT.Utilities.indent(depth+1) + "\"^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$\" : {\n"
         output += UT.Utilities.indent(depth+2) + "\"type\": [\"array\", \"boolean\", \"number\", \"null\", \"object\", \"string\"],\n"
-        output += UT.Utilities.indent(depth+2) + "\"description\": \"This property shall specify a valid odata or redfish property.\"\n"
+        output += UT.Utilities.indent(depth+2) + "\"description\": \"This property shall specify a valid odata or Redfish property.\"\n"
         output += UT.Utilities.indent(depth+1) + "}\n"
         output += UT.Utilities.indent(depth)   + "},\n"
 		
