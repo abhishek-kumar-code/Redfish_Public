@@ -1,4 +1,3 @@
-
 { 
    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.1.0.0", 
    "title": "#ExtendedError.1.0.0.ExtendedError", 
