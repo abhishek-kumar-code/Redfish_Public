@@ -407,7 +407,7 @@ While the major version of the protocol is represented in the URI, the major ver
 
 Any resource discovered through links found by accessing the root service or any service or resource referenced using references from the root service shall conform to the same version of the protocol supported by the root service.
 
-A GET on the resource "/redfish/" shall return the following body:
+A GET on the resource "/redfish" shall return the following body:
 
 ~~~json
 {
@@ -421,16 +421,15 @@ Redfish is a hypermedia API with a small set of defined URIs.  All other resourc
 
 | URI                     | Description                                      
 | ---------               | -----------                                      
-| /redfish/               | The URI that is used to return the [version](#protocol-version)       .
+| /redfish               | The URI that is used to return the [version](#protocol-version)       .
 | /redfish/v1/            | The URI for the Redfish [Service Root](#service-root-request)             
 | /redfish/v1/odata       | The URI for the Redfish [OData Service Document](#odata-service-document-request)
 | /redfish/v1/$metadata   | The URI for the Redfish [Metadata Document](#metadata-document-request)
 
-In addition, the following URIs without trailing slash shall be either Redirected to the Associated Redfish-defined URI shown in the table below or else shall be treated by the service as the equivalent URI to the associated Redfish-defined URI:
+In addition, the following URI without a trailing slash shall be either Redirected to the Associated Redfish-defined URI shown in the table below or else shall be treated by the service as the equivalent URI to the associated Redfish-defined URI:
 
 | URI                     | Associated Redfish-Defined URI         .
 | ---------               | -----------                            
-| /redfish                | /redfish/                              
 | /redfish/v1             | /redfish/v1/                           
 
 If a service implementation chooses not to redirect these two APIs and instead treat them as equivalent APIs, then all relative URIs used by the service shall include the full path starting with /redfish/v1/...  
@@ -2137,7 +2136,7 @@ Implementations shall support replacement of the default certificate if one is p
   * The root object which is needed to identify the device and service locations
   * The $metadata object which is needed to retreive resource types
   * The OData Service Document which is needed for compatibility with OData clients
-  * The version object located at /redfish/
+  * The version object located at /redfish
 * External services linked via extref references are not part of this spec, and may have other security requirements.
 
 ##### HTTP Redirect
