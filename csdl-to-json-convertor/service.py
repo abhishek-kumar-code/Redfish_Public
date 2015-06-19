@@ -417,11 +417,16 @@ class JsonSchemaGenerator:
     # Description:                                                                                          #
     #  Generates JSON for actions                                                                           #
     #########################################################################################################
-    def get_payload_actionentry(self, typetable, actionentry, depth, prefixuri):
+    def get_payload_actionentry(self, typetable, actionentry, depth, prefixuri, namespace):
         output = ""
         
-        propname = "#" + actionentry["Namespace"] + "." + actionentry["Name"] 
-        output += UT.Utilities.indent(depth)   + "\"" + propname + "\": {\n"
+        actionname = actionentry["Namespace"] + "." + actionentry["Name"]
+        output += UT.Utilities.indent(depth)   + "\"#" + actionname + "\": {\n"
+
+# for fix #649 - writes reference rather than body of action (remove line following commented lines)
+#        refvalue = self.get_ref_value_for_type(typetable, actionname, namespace )
+#        output += UT.Utilities.indent(depth+1)+ "\"$ref\": \"" + refvalue + "\"\n"
+
         output += self.get_action_definition(typetable, actionentry, depth, prefixuri)
         output += UT.Utilities.indent(depth)   + "}"
 
@@ -515,7 +520,7 @@ class JsonSchemaGenerator:
     # Description:                                                                                         #
     #  Generated JSON corresponding to an action entry                                                     #
     ########################################################################################################
-    def generate_json_for_propertybag_actions(self, typetable, typedata, depth, prefixuri):
+    def generate_json_for_propertybag_actions(self, typetable, typedata, depth, prefixuri, namespace):
 
         output = ''
         keys = sorted(typetable.keys())
@@ -551,7 +556,7 @@ class JsonSchemaGenerator:
 
             if isboundtotype:
                 output += ",\n"
-                output += self.get_payload_actionentry(typetable, typeentry, depth + 1, prefixuri)
+                output += self.get_payload_actionentry(typetable, typeentry, depth + 1, prefixuri, namespace)
             
         return output
 
@@ -718,7 +723,7 @@ class JsonSchemaGenerator:
                     output += UT.Utilities.indent(depth+1) + "}"
 
         # Handles actions
-        output += self.generate_json_for_propertybag_actions(typetable, typedata, depth, prefixuri)
+        output += self.generate_json_for_propertybag_actions(typetable, typedata, depth, prefixuri, namespace)
 
         # Close property block
         output += "\n"
@@ -1173,6 +1178,12 @@ class JsonSchemaGenerator:
                     validationtypecount += 1
                     validationtypes.append(self.get_ref_value_for_type(typetable, currentType, namespace))
 
+        title=namespace
+        if(validationtypecount == 1):
+            title = title + "." + validationtypes[0][validationtypes[0].rfind("/")+1:]
+
+        output += UT.Utilities.indent(depth) + "\"title\": \"#" + title + "\",\n"
+
         if(validationtypecount > 1):
            output += UT.Utilities.indent(depth) + "\"oneOf\": [\n"
            first = True
@@ -1212,7 +1223,6 @@ class JsonSchemaGenerator:
         fileoutput += UT.Utilities.indent(depth) + "{\n"
         # Add the Schema tag
         fileoutput += UT.Utilities.indent(depth+1) + "\"$schema\": \"" + redfishSchema + "\",\n"
-        fileoutput += UT.Utilities.indent(depth+1) + "\"title\": \"" + name + "\",\n"
         # Fill in the result
         fileoutput += results
         # Add Copyright
