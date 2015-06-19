@@ -86,17 +86,15 @@
             "type": "string",
             "enum": [
                 "Failover",
-                "N+1",
-                "LoadBalanced",
-                "Sparing",
-                "LimitedSparing"
+                "N+m",
+                "Sharing",
+                "Sparing"
             ],
             "enumDescriptions": {
-                "Failover": "Failure of the primary unit will cause a secondary unit to take over the functions of the primary unit",
-                "N+1": "Multiple units are available such that the system can continue normal operation if one unit fails",
-                "LoadBalanced": "Multiple units are available such that the system will continue operation at a reduced capacity if one unit fails",
-                "Sparing": "A spare unit is available to take over the function of a failed unit",
-                "LimitedSparing": "A spare unit is available to take over the function of a failed unit, but may require intervention to facilitate the transition"
+                "Failover": "Failure of one unit will automatically cause its functions to be taken over by a standby or offline unit in the redundancy set",
+                "N+m": "Multiple units are available and active such that normal operation will continue if one or more units fail",
+                "Sharing": "Multiple units contribute or share such that operation will continue, but at a reduced capacity, if one or more units fail",
+                "Sparing": "One or more spare units are available to take over the function of a failed unit, but takeover is not automatic"
             }
         }
     },

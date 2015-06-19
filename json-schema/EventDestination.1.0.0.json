@@ -59,6 +59,13 @@
                     "readonly": true,
                     "description": "The protocol type of the event connection.",
                     "longDescription": "This property shall contain the protocol type that the event will use for sending the event to the destination.  A value of Redfish shall be used to indicate that the event type shall adhere to that defined in the Redfish specification."
+                },
+                "HttpHeaders": {
+                    "type": "array",
+                    "items": {
+                        "ERROR": "type EventDestination.HttpHeaderProperty unrecognized."                        },
+                    "description": "This is for setting HTTP headers, such as authorization information.  This object will be null on a GET.",
+                    "longDescription": "This property shall contain an object consisting of the names and values of of HTTP header to be included with every event POST to the Event Destination.  This property shall be null on a GET."
                 }
             },
             "requiredOnCreate": [
@@ -74,6 +81,22 @@
             "enum": [
                 "Redfish"
             ]
+        },
+        "HttpHeaderProperty":{
+            "type": "object",
+            "patternProperties": { 
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
+                    "type": ["array", "boolean", "number", "null", "object", "string"],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                },
+                "^[^:\\s]+$": { 
+                    "type":"string"            
+            },
+            "additionalProperties": false,
+            "properties": {
+
+            },
+            "description": "The value of the HTTP header is the property value.  The header name is the property name."
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
