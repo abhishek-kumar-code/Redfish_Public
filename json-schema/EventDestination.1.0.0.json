@@ -90,7 +90,8 @@
                     "description": "This property shall specify a valid odata or Redfish property."
                 },
                 "^[^:\\s]+$": { 
-                    "type":"string"            
+                    "type":"string"
+                }            
             },
             "additionalProperties": false,
             "properties": {
