@@ -143,7 +143,7 @@ class JsonSchemaGenerator:
     def is_inline_type(self, type):
 
         #todo: use "has_basetype" post-v1
-        if(type["BaseType"] != "Resource.Links" and type["Name"] != "Actions" and type["Name"] != "OemActions"):
+        if(type["BaseType"] != "Resource.Links" and type["Name"] != "Actions" and type["Name"] != "OemActions" ):
             return True;
 
         return False
@@ -318,6 +318,47 @@ class JsonSchemaGenerator:
         return edmtojson[inputType]
 
     ##########################################################################
+    # Name: emit_property_patterns                                           # 
+    # Description:                                                           #
+    #  Emits any property patterns on the object                             #
+    ##########################################################################
+    def emit_property_patterns(self, typetable, namespace, annotated, depth, prefixuri, isnullable):
+
+        output = ""
+        fcontinue = True
+        written = []
+
+        #for each type in the heirarchy
+        while ( fcontinue == True ):
+            for annotation in annotated:
+                if not annotation.tag == "{http://docs.oasis-open.org/odata/ns/edm}Annotation":
+                    continue
+
+                term = annotation.attrib["Term"]
+
+                if term == "Redfish.DynamicPropertyPatterns":
+                    content = self.get_dynamic_property_patterns_content(annotation)
+                    output += ",\n"
+                    output += UT.Utilities.indent(depth+1) + "\"" + content["Pattern"] + "\": { \n"
+                    jsontype = self.get_edmtype_to_jsontype(content["Type"])
+            
+#todo:make sure returns are correct for multiple pattern properties. validate we should never write type inline
+                    if jsontype == "object":
+                        refvalue = self.get_ref_value_for_type(typetable, content["Type"], namespace)
+                        output += UT.Utilities.indent(depth+2)+ "\"$ref\": \"" + refvalue + "\"\n"                        
+                        output += "\n" + UT.Utilities.indent(depth + 1) + "}"
+                    else:
+                        output += UT.Utilities.indent(depth + 2) + "\"type\":\"" + jsontype + "\""
+                                                      
+            if "BaseType" in annotated.attrib.keys():
+                #todo: make more robust
+                annotated = typetable[annotated.attrib["BaseType"]]["Node"]
+            else:
+                fcontinue = False
+
+        return output
+
+    ##########################################################################
     # Name: emit_annotations                                                 # 
     # Description:                                                           #
     #  Emits annotations that are to be added to JSON                        #
@@ -362,20 +403,6 @@ class JsonSchemaGenerator:
                     output += ",\n"
                     output += UT.Utilities.indent(depth) + "\"pattern\": \"" + annotation.attrib["String"] + "\""
 
-                elif term == "Redfish.DynamicPropertyPatterns":
-                    content = self.get_dynamic_property_patterns_content(annotation)
-                    output += ",\n"
-                    output += UT.Utilities.indent(depth) + "\"patternProperties\": { \n"
-                    output += UT.Utilities.indent(depth+1) + "\"" + content["Pattern"] + "\": { \n"
-                    jsontype = self.get_edmtype_to_jsontype(content["Type"])
-            
-                    if jsontype == "object":
-                        output += self.generate_json_for_type(typetable, content["Type"], depth + 2, namespace, prefixuri, isnullable, False)
-                        output += "\n" + UT.Utilities.indent(depth + 1) + "}\n"
-                    else:
-                        output += UT.Utilities.indent(depth + 2) + "\"type\":\"" + jsontype + "\"\n"
-                    output += UT.Utilities.indent(depth) + "}"
-
                 elif (term == "Validation.Minimum"):
                     output += ",\n"
                     output += UT.Utilities.indent(depth) + "\"minimum\": " + annotation.attrib["Int"]
@@ -417,11 +444,16 @@ class JsonSchemaGenerator:
     # Description:                                                                                          #
     #  Generates JSON for actions                                                                           #
     #########################################################################################################
-    def get_payload_actionentry(self, typetable, actionentry, depth, prefixuri):
+    def get_payload_actionentry(self, typetable, actionentry, depth, prefixuri, namespace):
         output = ""
         
-        propname = "#" + actionentry["Namespace"] + "." + actionentry["Name"] 
-        output += UT.Utilities.indent(depth)   + "\"" + propname + "\": {\n"
+        actionname = actionentry["Namespace"] + "." + actionentry["Name"]
+        output += UT.Utilities.indent(depth)   + "\"#" + actionname + "\": {\n"
+
+# for fix #649 - writes reference rather than body of action (remove line following commented lines)
+#        refvalue = self.get_ref_value_for_type(typetable, actionname, namespace )
+#        output += UT.Utilities.indent(depth+1)+ "\"$ref\": \"" + refvalue + "\"\n"
+
         output += self.get_action_definition(typetable, actionentry, depth, prefixuri)
         output += UT.Utilities.indent(depth)   + "}"
 
@@ -449,24 +481,26 @@ class JsonSchemaGenerator:
         output += UT.Utilities.indent(depth+3) +     "\"description\": \"Link to invoke action\"\n"
         output += UT.Utilities.indent(depth+2) + "}"
 
-        isfirstparam = True
-        for param in actionentry["Node"]:
-            if not param.tag == "{http://docs.oasis-open.org/odata/ns/edm}Parameter":
-                continue
+## old code for writing out properties -- save for new parameter model
+        if False:
+            isfirstparam = True
+            for param in actionentry["Node"]:
+                if not param.tag == "{http://docs.oasis-open.org/odata/ns/edm}Parameter":
+                    continue
 
-            if isfirstparam:
-                isfirstparam = False
-                continue
+                if isfirstparam:
+                    isfirstparam = False
+                    continue
 
-            paramname = param.attrib["Name"]
-            paramtype = "Collection(" + param.attrib["Type"] + ")"
+                paramname = param.attrib["Name"]
+                paramtype = "Collection(" + param.attrib["Type"] + ")"
 
-            output += ",\n"
-            output += UT.Utilities.indent(depth+2) + "\"" + paramname + "@Redfish.AllowableValues" + "\": {\n"
-            output += self.generate_json_for_type(typetable, paramtype, depth + 3, actionentry["Namespace"], prefixuri, False, True)
-            output += self.emit_annotations(typetable, actionentry["Namespace"],  param, depth + 3, prefixuri, False)
-            output += "\n"
-            output += UT.Utilities.indent(depth+2) + "}"
+                output += ",\n"
+                output += UT.Utilities.indent(depth+2) + "\"" + paramname + "@Redfish.AllowableValues" + "\": {\n"
+                output += self.generate_json_for_type(typetable, paramtype, depth + 3, actionentry["Namespace"], prefixuri, False, True)
+                output += self.emit_annotations(typetable, actionentry["Namespace"],  param, depth + 3, prefixuri, False)
+                output += "\n"
+                output += UT.Utilities.indent(depth+2) + "}"
 
         output += "\n"
         output += UT.Utilities.indent(depth+1) +     "}\n"
@@ -513,7 +547,7 @@ class JsonSchemaGenerator:
     # Description:                                                                                         #
     #  Generated JSON corresponding to an action entry                                                     #
     ########################################################################################################
-    def generate_json_for_propertybag_actions(self, typetable, typedata, depth, prefixuri):
+    def generate_json_for_propertybag_actions(self, typetable, typedata, depth, prefixuri, namespace):
 
         output = ''
         keys = sorted(typetable.keys())
@@ -549,7 +583,7 @@ class JsonSchemaGenerator:
 
             if isboundtotype:
                 output += ",\n"
-                output += self.get_payload_actionentry(typetable, typeentry, depth + 1, prefixuri)
+                output += self.get_payload_actionentry(typetable, typeentry, depth + 1, prefixuri, namespace)
             
         return output
 
@@ -570,10 +604,12 @@ class JsonSchemaGenerator:
 
         # allow odata and redfish annotations
         output += UT.Utilities.indent(depth) + "\"patternProperties\": { \n"
-        output += UT.Utilities.indent(depth+1) + "\"^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$\" : {\n"
+        output += UT.Utilities.indent(depth+1) + "\"^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$\" : {\n"
         output += UT.Utilities.indent(depth+2) + "\"type\": [\"array\", \"boolean\", \"number\", \"null\", \"object\", \"string\"],\n"
-        output += UT.Utilities.indent(depth+2) + "\"description\": \"This property shall specify a valid odata or redfish property.\"\n"
-        output += UT.Utilities.indent(depth+1) + "}\n"
+        output += UT.Utilities.indent(depth+2) + "\"description\": \"This property shall specify a valid odata or Redfish property.\"\n"
+        output += UT.Utilities.indent(depth+1) + "}"
+        output += self.emit_property_patterns(typetable, namespace, typedata["Node"], depth, prefixuri, isnullable)
+        output += UT.Utilities.indent(depth)   + "\n"
         output += UT.Utilities.indent(depth)   + "},\n"
 		
         nodes = [typedata["Node"]]
@@ -637,7 +673,7 @@ class JsonSchemaGenerator:
                             output += UT.Utilities.indent(depth+1) + "},\n"
 
                             output += UT.Utilities.indent(depth+1) + "\"" + propname + "@odata.navigationLink\": {\n"
-                            output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + odataSchema + "#/definitions/count\"\n"
+                            output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + odataSchema + "#/definitions/idRef\"\n"
                             output += UT.Utilities.indent(depth+1) + "},\n"
 
                         output += UT.Utilities.indent(depth+1) + "\"" + propname + "\": {\n"
@@ -716,7 +752,7 @@ class JsonSchemaGenerator:
                     output += UT.Utilities.indent(depth+1) + "}"
 
         # Handles actions
-        output += self.generate_json_for_propertybag_actions(typetable, typedata, depth, prefixuri)
+        output += self.generate_json_for_propertybag_actions(typetable, typedata, depth, prefixuri, namespace)
 
         # Close property block
         output += "\n"
@@ -1171,6 +1207,12 @@ class JsonSchemaGenerator:
                     validationtypecount += 1
                     validationtypes.append(self.get_ref_value_for_type(typetable, currentType, namespace))
 
+        title=namespace
+        if(validationtypecount == 1):
+            title = title + "." + validationtypes[0][validationtypes[0].rfind("/")+1:]
+
+        output += UT.Utilities.indent(depth) + "\"title\": \"#" + title + "\",\n"
+
         if(validationtypecount > 1):
            output += UT.Utilities.indent(depth) + "\"oneOf\": [\n"
            first = True
@@ -1210,7 +1252,6 @@ class JsonSchemaGenerator:
         fileoutput += UT.Utilities.indent(depth) + "{\n"
         # Add the Schema tag
         fileoutput += UT.Utilities.indent(depth+1) + "\"$schema\": \"" + redfishSchema + "\",\n"
-        fileoutput += UT.Utilities.indent(depth+1) + "\"title\": \"" + name + "\",\n"
         # Fill in the result
         fileoutput += results
         # Add Copyright

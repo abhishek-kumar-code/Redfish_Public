@@ -407,7 +407,7 @@ While the major version of the protocol is represented in the URI, the major ver
 
 Any resource discovered through links found by accessing the root service or any service or resource referenced using references from the root service shall conform to the same version of the protocol supported by the root service.
 
-A GET on the resource "/redfish/" shall return the following body:
+A GET on the resource "/redfish" shall return the following body:
 
 ~~~json
 {
@@ -421,16 +421,15 @@ Redfish is a hypermedia API with a small set of defined URIs.  All other resourc
 
 | URI                     | Description                                      
 | ---------               | -----------                                      
-| /redfish/               | The URI that is used to return the [version](#protocol-version)       .
+| /redfish               | The URI that is used to return the [version](#protocol-version)       .
 | /redfish/v1/            | The URI for the Redfish [Service Root](#service-root-request)             
 | /redfish/v1/odata       | The URI for the Redfish [OData Service Document](#odata-service-document-request)
 | /redfish/v1/$metadata   | The URI for the Redfish [Metadata Document](#metadata-document-request)
 
-In addition, the following URIs without trailing slash shall be either Redirected to the Associated Redfish-defined URI shown in the table below or else shall be treated by the service as the equivalent URI to the associated Redfish-defined URI:
+In addition, the following URI without a trailing slash shall be either Redirected to the Associated Redfish-defined URI shown in the table below or else shall be treated by the service as the equivalent URI to the associated Redfish-defined URI:
 
 | URI                     | Associated Redfish-Defined URI         .
 | ---------               | -----------                            
-| /redfish                | /redfish/                              
 | /redfish/v1             | /redfish/v1/                           
 
 If a service implementation chooses not to redirect these two APIs and instead treat them as equivalent APIs, then all relative URIs used by the service shall include the full path starting with /redfish/v1/...  
@@ -611,7 +610,7 @@ The first parameter of a bound function is the resource on which the action is b
 
 Clients can query a resource directly to determine the [actions](#actions-property) that are available as well as [valid parameter values](#allowable-values) for those actions.  Some parameter information may require the client to examine the Redfish Schema corresponding to the resource. 
 
-For instance, if a Redfish Schema document `http://schemas.dmtf.org/redfish/v1/ComputerSystem.xml` defines a Reset action in the `ComputerSystem` namespace, bound to the `ComputerSystem.1.0.0.Actions` type, such as this example:
+For instance, if a Redfish Schema document `http://redfish.dmtf.org/schemas/v1/ComputerSystem.xml` defines a Reset action in the `ComputerSystem` namespace, bound to the `ComputerSystem.1.0.0.Actions` type, such as this example:
 
 ~~~xml
 <Schema Name="ComputerSystem">
@@ -776,21 +775,21 @@ The service metadata describes top-level resources and resource types of the ser
 The service metadata shall include the namespaces for each of the Redfish resource types, along with the "RedfishExtensions.1.0.0" namespace. These references may use the standard Uri for the hosted Redfish Schema definitions (i.e., on http://redfish.dmtf.org/schema) or a Url to a local version of the Redfish Schema that shall be identical to the hosted version. 
 
 ~~~xml
-<edmx:Reference Uri="http://redfish.dmtf.org/schema/v1/AccountService.xml">
+<edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/AccountService.xml">
   <edmx:Include Namespace="AccountService"/>
   <edmx:Include Namespace="AccountService.1.0.0"/>
 </edmx:Reference>
-<edmx:Reference Uri="http://redfish.dmtf.org/schema/v1/ServiceRoot.xml">
+<edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ServiceRoot.xml">
 	<edmx:Include Namespace="ServiceRoot"/>
 	<edmx:Include Namespace="ServiceRoot.1.0.0"/>
 </edmx:Reference>
 
 ...
-<edmx:Reference Uri="http://redfish.dmtf.org/schema/v1/VirtualMedia.xml">
+<edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/VirtualMedia.xml">
   <edmx:Include Namespace="VirtualMedia"/>
   <edmx:Include Namespace="VirtualMedia.1.0.0"/>
 </edmx:Reference>
-<edmx:Reference Uri="http://redfish.dmtf.org/schema/v1/RedfishExtensions.xml">
+<edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions.xml">
 	<edmx:Include Namespace="RedfishExtensions.1.0.0" Alias="Redfish"/>
 </edmx:Reference>
 ~~~
@@ -1220,7 +1219,7 @@ Error responses are defined by an extended error resource, represented as a sing
 
 | Property                | Description                                                                                                                                                                            |
 | ---                     | ---                                                                                                                                                                                    |
-| code                    | A string indicating a specific MessageId from the message registry. "Base.1.0.0.GeneralError" should be used only if there is no better message.              |
+| code                    | A string indicating a specific MessageId from the message registry. "Base.1.0.GeneralError" should be used only if there is no better message.              |
 | message                 | A human readable error message corresponding to the message in the message registry. 
 | @Message.ExtendedInfo   | An array of [message objects](#message-object) describing one or more error message(s). 
 
@@ -1409,10 +1408,10 @@ Type definitions generally reference the OData and Redfish namespaces for common
     Uri="http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml">
     <edmx:Include Namespace="Org.OData.Measures.V1" Alias="OData.Measures"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/RedfishExtensions.xml">
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions.xml">
 	<edmx:Include Namespace="RedfishExtensions.1.0.0" Alias="Redfish"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.xml">
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
     <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.1.0.0"/>
   </edmx:Reference>
@@ -1592,7 +1591,7 @@ If an implementation supports a property, it shall always provide a value for th
 		<Annotation Term="Redfish.Required"/>
 ~~~
 
-The `Required` annotation term is defined in http://redfish.dmtf.org/schema/v1/RedfishExtensions.1.0.0.
+The `Required` annotation term is defined in http://redfish.dmtf.org/schemas/v1/RedfishExtensions.1.0.0.
 
 ##### Required Properties On Create
 
@@ -1602,7 +1601,7 @@ The RequiredOnCreate annotation term is used to specify that a property is requi
 		<Annotation Term="Redfish.RequiredOnCreate"/>
 ~~~
 
-The `RequiredOnCreate` annotation term is defined in http://redfish.dmtf.org/schema/v1/RedfishExtensions.1.0.0.
+The `RequiredOnCreate` annotation term is defined in http://redfish.dmtf.org/schemas/v1/RedfishExtensions.1.0.0.
 
 ##### Units of Measure
 
@@ -1613,8 +1612,6 @@ In addition to following [naming conventions](#common naming-conventions), prope
 ~~~
 
 The `Unit` annotation term is defined in http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml.
-
-The string values for the Units of Measure annotation shall be taken from **TODO**.
 
 #### Reference Properties
 
@@ -1740,7 +1737,7 @@ The next fragment shows an example of how the previous schema and the "AnvilType
 . . .
   "Oem": {
     "Contoso": {
-      "@odata.type": "http://Contoso.com/schema/extensions.v.v.v#contoso.AnvilType1",
+      "@odata.type": "http://Contoso.com/schemas/extensions.v.v.v#contoso.AnvilType1",
       "slogan": "Contoso anvils never fail",
       "disclaimer": "* Most of the time"
     }
@@ -1775,7 +1772,7 @@ The following fragment presents some examples of naming and use of the Oem prope
 
   "Oem": {
     "Contoso": {
-      "@odata.type": "http://contoso.com/schema/extensions.v.v.v#contoso.AnvilTypes1",
+      "@odata.type": "http://contoso.com/schemas/extensions.v.v.v#contoso.AnvilTypes1",
       "slogan": "Contoso anvils never fail",
       "disclaimer": "* Most of the time"
     }
@@ -2097,11 +2094,6 @@ Redfish devices may implement the additional SSDP messages defined by UPnP to an
 
 ### Protocols
 
-#### Discovery
-
-#### Transport
-**TODO**: communication requirements for Redfish peers - clients or other servers.
-
 ##### TLS
 Implementations shall support TLS v1.1 or later
 
@@ -2144,7 +2136,7 @@ Implementations shall support replacement of the default certificate if one is p
   * The root object which is needed to identify the device and service locations
   * The $metadata object which is needed to retreive resource types
   * The OData Service Document which is needed for compatibility with OData clients
-  * The version object located at /redfish/
+  * The version object located at /redfish
 * External services linked via extref references are not part of this spec, and may have other security requirements.
 
 ##### HTTP Redirect

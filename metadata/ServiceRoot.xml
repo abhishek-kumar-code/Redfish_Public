@@ -4,44 +4,44 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Resource.xml">
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
     <edmx:Include Namespace="Resource.1.0.0" Alias="Resource"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/RedfishExtensions.xml">
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions.xml">
     <edmx:Include Namespace="RedfishExtensions.1.0.0" Alias="Redfish"/>
     <edmx:Include Namespace="Validation.1.0.0" Alias="Validation"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/EventService.xml">
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/EventService.xml">
     <edmx:Include Namespace="EventService"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/AccountService.xml">
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/AccountService.xml">
     <edmx:Include Namespace="AccountService"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ComputerSystemCollection.xml">
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ComputerSystemCollection.xml">
     <edmx:Include Namespace="ComputerSystemCollection"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ChassisCollection.xml">
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ChassisCollection.xml">
     <edmx:Include Namespace="ChassisCollection"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/ManagerCollection.xml">
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ManagerCollection.xml">
     <edmx:Include Namespace="ManagerCollection"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/TaskService.xml">
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/TaskService.xml">
     <edmx:Include Namespace="TaskService"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/SessionService.xml">
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/SessionService.xml">
     <edmx:Include Namespace="SessionService"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/Message.xml">
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Message.xml">
     <edmx:Include Namespace="Message"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/JsonSchemaFileCollection.xml">
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/JsonSchemaFileCollection.xml">
     <edmx:Include Namespace="JsonSchemaFileCollection"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/MessageRegistry.xml">
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/MessageRegistry.xml">
     <edmx:Include Namespace="MessageRegistry"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://schemas.dmtf.org/redfish/v1/SessionCollection.xml">
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/SessionCollection.xml">
     <edmx:Include Namespace="SessionCollection"/>
   </edmx:Reference>
   
@@ -67,7 +67,7 @@
         <Singleton Name="SessionService" Type="SessionService.SessionService"/>
         <Singleton Name="EventService" Type="EventService.EventService"/>
         <Singleton Name="Registries" Type="MessageRegistry.MessageRegistry"/>
-        <Singleton Name="JsonSchemas" Type="JsonSchemas.JsonSchemas"/>
+        <Singleton Name="JsonSchemas" Type="JsonSchemaFileCollection.JsonSchemaFileCollection"/>
         <Singleton Name="Sessions" Type="SessionCollection.SessionCollection"/>
       </EntityContainer>
 
@@ -133,7 +133,7 @@
           <Annotation Term="OData.LongDescription" String="This object shall contain a reference to Message Registry."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="JsonSchemas" Type="JsonSchemaFileCollection.SchemaFileCollection">
+        <NavigationProperty Name="JsonSchemas" Type="JsonSchemaFileCollection.JsonSchemaFileCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a link to a collection of Json-Schema files."/>
           <Annotation Term="OData.LongDescription" String="This object shall only contain a reference to a collection of resources that comply to the SchemaFile schema where the files are Json-Schema files."/>

@@ -1,7 +1,7 @@
 {
-    "id": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0",
+    "id": "http://redfish.dmtf.org/schemas/v1/redfish-schema.1.0.0",
     "type": "object",
-    "$schema": "http://schemas.dmtf.org/redfish/v1/redfish-schema.1.0.0",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.1.0.0",
     "title": "Redfish Schema Extension",
     "description": "The properties defined in this schema shall adhere to the requirements of the Redfish Specification and the semantics of the descriptions in this file.",
     "allOf": [
