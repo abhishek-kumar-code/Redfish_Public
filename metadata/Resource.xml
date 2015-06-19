@@ -123,17 +123,20 @@
         <Member Name="Disabled">
           <Annotation Term="OData.Description" String="This function or resource has been disabled"/>
         </Member>
-        <Member Name="Offline">
-          <Annotation Term="OData.Description" String="This function or resource is enabled, but currently unavailable"/>
+        <Member Name="StandbyOffline">
+          <Annotation Term="OData.Description" String="This function or resource is enabled, but awaiting an external action to activate it"/>
+        </Member>
+        <Member Name="StandbySpare">
+          <Annotation Term="OData.Description" String="This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it."/>
         </Member>
         <Member Name="InTest">
-          <Annotation Term="OData.Description" String="This function or resource is underdoing testing"/>
+          <Annotation Term="OData.Description" String="This function or resource is undergoing testing"/>
         </Member>
         <Member Name="Starting">
           <Annotation Term="OData.Description" String="This function or resource is starting"/>
         </Member>
         <Member Name="Absent">
-          <Annotation Term="OData.Description" String="This function or resource is not installed"/>
+          <Annotation Term="OData.Description" String="This function or resource is not present or not detected"/>
         </Member>
       </EnumType>
 
