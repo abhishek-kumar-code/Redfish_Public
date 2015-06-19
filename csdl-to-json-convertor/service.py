@@ -342,14 +342,15 @@ class JsonSchemaGenerator:
                     output += UT.Utilities.indent(depth+1) + "\"" + content["Pattern"] + "\": { \n"
                     jsontype = self.get_edmtype_to_jsontype(content["Type"])
             
-#todo:make sure returns are correct for multiple pattern properties. validate we should never write type inline
+#todo:make sure returns are correct for multiple pattern properties.
                     if jsontype == "object":
                         refvalue = self.get_ref_value_for_type(typetable, content["Type"], namespace)
                         output += UT.Utilities.indent(depth+2)+ "\"$ref\": \"" + refvalue + "\"\n"                        
-                        output += "\n" + UT.Utilities.indent(depth + 1) + "}"
+#                        output += "\n" + UT.Utilities.indent(depth + 1) + "}"
                     else:
                         output += UT.Utilities.indent(depth + 2) + "\"type\":\"" + jsontype + "\""
-                                                      
+                    output += "\n" + UT.Utilities.indent(depth + 1) + "}"
+                                                     
             if "BaseType" in annotated.attrib.keys():
                 #todo: make more robust
                 annotated = typetable[annotated.attrib["BaseType"]]["Node"]
