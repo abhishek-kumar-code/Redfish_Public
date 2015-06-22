@@ -143,7 +143,6 @@ a {
 }
 
 pre {
-  word-wrap: normal;
   padding: 16px;
   overflow: auto;
   font-size: 85%;
@@ -159,6 +158,10 @@ pre {
 @import "./review.less";
 
 @media print {
+  pre {
+    white-space: pre-wrap;
+  }
+
   #toc-header, #toc ~ h2 {
     page-break-before: always;
     break-before: page;
