@@ -17,6 +17,7 @@
 
   .wip {
     margin-bottom: 2em;
+    display: none;
   }
 
   &[data-status="Work in Progress"] {
@@ -27,10 +28,6 @@
       border: 2px ridge #eee;
       display: block !important;
     }
-  }
-
-  .wip {
-    display: none;
   }
 
   .document {
@@ -143,7 +140,6 @@ a {
 }
 
 pre {
-  word-wrap: normal;
   padding: 16px;
   overflow: auto;
   font-size: 85%;
@@ -159,6 +155,10 @@ pre {
 @import "./review.less";
 
 @media print {
+  pre {
+    white-space: pre-wrap;
+  }
+
   #toc-header, #toc ~ h2 {
     page-break-before: always;
     break-before: page;
@@ -175,7 +175,7 @@ pre {
     break-before: page;
     text-align: center;
     line-height: 37em;
-    height: 65em;
+    height: 720pt;
     border: none;
 
     &:after {

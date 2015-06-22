@@ -14,9 +14,27 @@ var fs = require('fs')
 var _ = require('lodash')
 
 var documentDefaults = {
-  DocStatus: 'Work in Progress',
-  DocConfidentiality: '– Not a DMTF Standard – DMTF Confidential',
-  DocLang: 'en-US'
+  DocLang: 'en-US',
+  DocConfidentiality: ''
+}
+
+var docStatuses = {
+  wip: {
+    DocStatus: 'Work in Progress',
+    DocConfidentiality: '– Not a DMTF Standard',
+  },
+  draftStandard: {
+    DocStatus: 'DMTF Draft Standard'
+  },
+  standard: {
+    DocStatus: 'DMTF Standard'
+  },
+  informationalSpec: {
+    DocStatus: 'DMTF Informational Specification'
+  },
+  informational: {
+    DocStatus: 'DMTF Informational'
+  }
 }
 
 gulp.task('default', ['css', 'js'], function() {
@@ -30,7 +48,25 @@ gulp.task('default', ['css', 'js'], function() {
       git.stdout.on('data', function(d) {
         var date = new Date(d.toString())
         data.modified = date.toISOString().slice(0, 10)
-        cb(null, _.merge({}, documentDefaults, data))
+
+        // Default to a Work in Progress
+        if (!data.status) {
+          data.stauts = 'wip';
+        }
+
+        var merged = _.merge({}, documentDefaults, docStatuses[data.status], data)
+
+        // Append confidentiality when it is going for approval
+        if (!data.released) {
+          merged.DocConfidentiality += '– DMTF Confidential'
+        }
+
+        // Default to expiration of 30 days from today for works in progress
+        if (data.status === 'wip' && !data.expiration) {
+          data.expiration = new Date(Date.now() + 1000 * 60 * 60 * 24 * 30).toISOString().slice(0, 10)
+        }
+
+        cb(null, merged);
       })
       git.on('close', function(code) {
         cb(code > 0 ? "git failed with exit code " + code : null)
