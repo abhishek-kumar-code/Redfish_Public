@@ -644,7 +644,11 @@ And a computer system resource contains an [Actions](#actions-property) property
 Then the following would represent a possible request for the Action:
 
 ~~~json
-POST /redfish/v1/Systems/1/Actions/ComputerSystem.Reset
+POST /redfish/v1/Systems/1/Actions/ComputerSystem.Reset HTTP/1.1
+Content-Type: application/json
+Content-Length: <computed length>
+OData-Version: 4.0
+
 {
     "ResetType": "On"
 }
@@ -2182,11 +2186,12 @@ For functionality requiring multiple Redfish operations, or for security reasons
 
 A Redfish session is created by an HTTP POST to the SessionService' Sessions collection resource, including the following POST body:
 
-```
+```json
 POST /redfish/v1/SessionService/Sessions HTTP/1.1
-Host: <hostpath>
+Host: <host-path>
+Content-Type: application/json; charset=utf-8
+Content-Length: <computed-length>
 Accept: application/json
-Content-Type: charset=utf-8
 OData-Version: 4.0
 
 {
@@ -2202,24 +2207,22 @@ The response to the POST request to create a session includes:
 *  an X-Auth-Token header that contains a "session auth token" that the client can use an subsequent requests, and
 *  a "Location header that contains a link to the newly created session resource.
 *  The JSON response body that contains a full representation of the newly created session object:
-```json
-    POST /redfish/v1/SessionService/Sessions HTTP/1.
-    Content-Type: application/json
-    Content-Length: <computed length>
-    OData-Version: 4.0
-    Location: "/redfish/v1/SessionService/Sessions/1"
-    X-Auth-Token: <session-auth-token>
 
-    {
-        "@odata.context": "/redfish/v1/$metadata#SessionService/Sessions/$entity",
-        "@odata.id": "/redfish/v1/SessionService/Sessions/1",
-        "@odata.type": "#Session.1.0.0.Session",
-        "Id": "1",
-        "Name": "User Session",
-        "Description": "User Session",
-        "UserName": "<username>"
-    }
+```json
+Location: /redfish/v1/SessionService/Sessions/1
+X-Auth-Token: <session-auth-token>
+
+{
+    "@odata.context": "/redfish/v1/$metadata#SessionService/Sessions/$entity",
+    "@odata.id": "/redfish/v1/SessionService/Sessions/1",
+    "@odata.type": "#Session.1.0.0.Session",
+    "Id": "1",
+    "Name": "User Session",
+    "Description": "User Session",
+    "UserName": "<username>"
+}
 ```
+
 The client sending the session login request should save the "Session Auth Token" and the link returned in the Location header.
 The "Session Auth Token" is used to authentication subsequent requests by setting the Request Header "X-Auth-Token with the "Session Auth Token" received from the login POST.
 The client will later use the link that was returned in the Location header of the POST to logout or terminate the session.
