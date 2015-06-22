@@ -1395,7 +1395,7 @@ Redfish Schemas may reference types defined in other schema documents.  In the O
 
 The reference element specifies the `Uri` of the OData schema representation document describing the referenced type and has one or more child `Include` elements that specify the `Namespace` attribute containing the types to be referenced, along with an optional `Alias` attribute for that namespace.
 
-Type definitions generally reference the OData and Redfish namespaces for common type annotation terms, and resource type definitions reference the Redfish Resource.<%= DocVersion %> namespace for base types. Redfish OData Schema representations that include measures such as temperature, speed, or dimensions generally include the [OData Measures namespace](#OData-Measures).
+Type definitions generally reference the OData and Redfish namespaces for common type annotation terms, and resource type definitions reference the Redfish Resource.1.0.0 namespace for base types. Redfish OData Schema representations that include measures such as temperature, speed, or dimensions generally include the [OData Measures namespace](#OData-Measures).
 
 ~~~xml
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
@@ -1835,7 +1835,7 @@ Because [service annotations](#annotations) may be applied to existing resource 
 
 This section contains a set of common properties across all Redfish resources. The property names in this section shall not be used for any other purpose, even if they are not implemented in a particular resource.
 
-Common properties are defined in the base Resource Redfish Schema.  For OData Schema Representations, this is in Resource.xml and for JSON Schema Representations, this is in Resource.<%= DocVersion %>.json.
+Common properties are defined in the base Resource Redfish Schema.  For OData Schema Representations, this is in Resource.xml and for JSON Schema Representations, this is in Resource.1.0.0.json.
 
 #### Id
 
