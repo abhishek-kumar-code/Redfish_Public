@@ -612,12 +612,12 @@ For instance, if a Redfish Schema document `http://redfish.dmtf.org/schemas/v1/C
 
 ~~~xml
 <Schema Name="ComputerSystem">
-...
+  ...
   <Action Name="Reset" IsBound="true">
     <Parameter Name="Resource" Type="ComputerSystem.1.0.0.Actions"/>
     <Parameter Name="ResetType" Type="Resource.ResetType"/>
   </Action>
-...
+  ...
 </Schema>
 ~~~
 
@@ -782,6 +782,7 @@ The service metadata shall include the namespaces for each of the Redfish resour
 </edmx:Reference>
 
 ...
+
 <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/VirtualMedia.xml">
   <edmx:Include Namespace="VirtualMedia"/>
   <edmx:Include Namespace="VirtualMedia.1.0.0"/>
@@ -859,7 +860,7 @@ The OData Service Document serves as a top-level entry point for generic OData c
             "kind": "Singleton",
             "url": "/redfish/v1/Managers"
         },
-		...
+        ...
     ]
 }
 ~~~
@@ -1719,19 +1720,19 @@ Correct use of the Oem property requires defining the metadata for an OEM-specif
 
 ~~~xml
 <Schema Name="Contoso.v.v.v">
-. . .
+  ...
   <ComplexType Name="AnvilType1">
     <Property Name="slogan" Type="Edm.String"/>
     <Property Name="disclaimer" Type="Edm.String"/>
   </ComplexType>
-. . .
+  ...
 </Schema>
 ~~~
 
 The next fragment shows an example of how the previous schema and the "AnvilType1" property type might appear in the instantiation of an Oem property as the result of a GET on a resource. The example shows two required elements in the use of the Oem property: A name for the object and a type property for the object. Detailed requirements for these elements are provided in the following sections.
 
 ```json
-. . .
+...
   "Oem": {
     "Contoso": {
       "@odata.type": "http://Contoso.com/schemas/extensions.v.v.v#contoso.AnvilType1",
@@ -1739,7 +1740,7 @@ The next fragment shows an example of how the previous schema and the "AnvilType
       "disclaimer": "* Most of the time"
     }
   }
-. . .
+...
 ```
 
 ##### Oem Property Format and Content
@@ -1765,8 +1766,7 @@ The following fragment presents some examples of naming and use of the Oem prope
 
 
 ```json
-. . .
-
+...
   "Oem": {
     "Contoso": {
       "@odata.type": "http://contoso.com/schemas/extensions.v.v.v#contoso.AnvilTypes1",
@@ -1792,8 +1792,7 @@ The following fragment presents some examples of naming and use of the Oem prope
       "targetSetting" : "rabbit"
     }
   }
-. . .
-
+...
 ```
 
 ##### Custom Actions
@@ -2167,8 +2166,7 @@ includes orphaned session timeout and number of simultaneous open sessions.
 For functionality requiring multiple Redfish operations, or for security reasons, a client may create a Redfish Login Session via the session management interface.  The URI used for session management is specified in the Session Service.  The URI for establishing a session can be found in the SessionService's Session property or in the Service Root's Links Section under the Sessions property.  Both URIs shall be the same.
 
 ```json
-{
-    ...
+...
     "SessionService": {
         "@odata.id": "/redfish/v1/SessionService"
     },
@@ -2176,9 +2174,8 @@ For functionality requiring multiple Redfish operations, or for security reasons
         "Sessions": {
             "@odata.id": "/redfish/v1/SessionService/Sessions"
         }
-    },
-    ...
-}
+    }
+...
 ```
 
 ##### Session Login
