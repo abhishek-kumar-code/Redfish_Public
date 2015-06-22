@@ -2,7 +2,7 @@
 DocTitle: Redfish Scalable Platforms Management API Specification
 DocNumber: '0266'
 DocType: Specification
-DocVersion: '1.00.0'
+DocVersion: '1.0.0'
 DocStatus: Work in Progress
 DocConfidentiality: – Not a DMTF Standard – DMTF Confidential
 expiration: '2015-08-24'
