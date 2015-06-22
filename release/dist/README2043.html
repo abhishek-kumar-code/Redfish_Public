@@ -22,6 +22,7 @@
 }
 #dmtf .wip {
   margin-bottom: 2em;
+  display: none;
 }
 #dmtf[data-status="Work in Progress"] .wip {
   padding: 0.5em;
@@ -29,9 +30,6 @@
   text-align: left;
   border: 2px ridge #eee;
   display: block !important;
-}
-#dmtf .wip {
-  display: none;
 }
 #dmtf .document {
   font-weight: bold;
@@ -127,7 +125,6 @@ a:hover {
   text-decoration: underline;
 }
 pre {
-  word-wrap: normal;
   padding: 16px;
   overflow: auto;
   font-size: 85%;
@@ -139,7 +136,66 @@ pre {
 #last-footer-fix {
   display: none;
 }
+p,
+ul > li,
+ol > li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+}
+.review {
+  padding-left: 30px;
+}
+.review .element-number {
+  position: absolute;
+  left: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  font-size: 10px;
+  font-weight: normal;
+  line-height: 18px;
+  color: #aaa;
+}
+.review table {
+  margin-left: -30px;
+}
+.review table tr {
+  border: none;
+}
+.review table tr > :first-child {
+  position: inherit;
+  width: 30px;
+  border: none;
+  padding: 0;
+  background-color: #fff;
+  vertical-align: middle;
+}
+.review table tr > :first-child .element-number {
+  position: inherit;
+}
+.review li .element-number {
+  left: -70px;
+}
 @media print {
+  .review {
+    padding-left: 0;
+  }
+  .review table {
+    margin-left: 0;
+  }
+  .review .element-number {
+    display: none;
+  }
+}
+@media print {
+  pre {
+    white-space: pre-wrap;
+  }
   #toc-header,
   #toc ~ h2 {
     page-break-before: always;
@@ -155,7 +211,7 @@ pre {
     break-before: page;
     text-align: center;
     line-height: 37em;
-    height: 65em;
+    height: 720pt;
     border: none;
   }
   #last-footer-fix:after {
@@ -195,10 +251,32 @@ pre {
 
 </style>
     <script type="text/javascript">
+if (window.location.protocol === 'file:' && !/pdf/.test(window.location.search)) {
+  document.addEventListener('toc', function() {
+    var a, el, elements, i, j, len, td;
+    document.querySelector('body').classList.toggle('review');
+    elements = document.querySelectorAll('h1 ~ p, h1 ~ ul > li, h1 ~ ol > li, h1 ~ table tr, h1, h1 ~ h2, h1 ~ h3, h1 ~ h4, h1 ~ h5, h1 ~ h6');
+    for (i = j = 0, len = elements.length; j < len; i = ++j) {
+      el = elements[i];
+      if (el.nodeName === 'TR') {
+        td = document.createElement('td');
+        el.insertBefore(td, el.firstChild);
+        el = td;
+      }
+      a = document.createElement('a');
+      a.textContent = "" + (++i);
+      a.className = 'element-number';
+      a.href = "#" + (a.id = "" + i);
+      el.appendChild(a);
+    }
+    return null;
+  });
+}
+
 var scrollToHash;
 
 window.onload = function() {
-  var $, _, block, counter, createItem, currentLevel, i, j, k, l, len, len1, len2, level, levelMap, num, oldToc, ref, results, tag, tagName, tags, toc, txt, ul;
+  var $, _, block, counter, createItem, currentLevel, i, j, k, l, len, len1, len2, level, levelMap, num, oldToc, ref, tag, tagName, tags, toc, txt, ul;
   $ = document.querySelectorAll.bind(document);
   tags = ((function() {
     var j, results;
@@ -231,7 +309,7 @@ window.onload = function() {
     var anchor, li;
     li = document.createElement('li');
     anchor = document.createElement('a');
-    anchor.setAttribute('href', href);
+    anchor.href = href;
     anchor.textContent = txt;
     li.appendChild(anchor);
     return li;
@@ -269,16 +347,16 @@ window.onload = function() {
     tag.appendChild(document.createTextNode(txt));
     currentLevel = level;
   }
+  document.dispatchEvent(new Event('toc'));
   scrollToHash();
   ref = $('pre code');
-  results = [];
   for (l = 0, len2 = ref.length; l < len2; l++) {
     block = ref[l];
     if (/lang-/.test(block.getAttribute('class'))) {
-      results.push(hljs.highlightBlock(block));
+      hljs.highlightBlock(block);
     }
   }
-  return results;
+  return null;
 };
 
 scrollToHash = function() {
@@ -295,24 +373,24 @@ window.onhashchange = scrollToHash;
   <body>
     <div data-doc-title="Scalable Platforms Management API Mockup Readme" data-doc-number="2043" id="header"></div>
     <div id="wrapper">
-      <div data-status="Work in Progress" id="dmtf">
+      <div data-status="DMTF Standard" id="dmtf">
         <div class="preamble">
           <div class="logo"></div>
           <p>Document Number: DSP2043</p>
-          <p>Date: 2015-03-13</p>
-          <p>Version: 0.96.0a</p>
+          <p>Date: 2015-06-22</p>
+          <p>Version: 1.0.0</p>
           
         </div>
         <h1>Scalable Platforms Management API Mockup Readme</h1>
         <div class="wip">
           <strong>Information for Work-in-Progress version:</strong>
           <p><strong>IMPORTANT:</strong> This document is not a standard. It does not necessarily reflect the views of the DMTF or all of its members. Because this document is a Work in Progress, it may still change, perhaps profoundly. This document is available for public review and comment until the stated expiration date.</p>
-          <p><strong>It expires on: 2015-08-24</strong></p>
+          <p><strong>It expires on: </strong></p>
           <p><strong>Provide any comments through the DMTF Feedback Portal: http://www.dmtf.org/standards/feedback</strong></p>
         </div>
         <div class="document">
           <p>Document Type: Readme</p>
-          <p>Document Status: Work in Progress</p>
+          <p>Document Status: DMTF Standard</p>
           <p>Document Language: en-US</p>
         </div>
         <div class="copyright">
@@ -370,11 +448,18 @@ The section below works better if you are actually doing the GETs</p>
 <h3 id="actions">Actions</h3>
 <p>Not everything can be done easily using REST, so Redfish leverages OData Actions for procedural operations.  Things like &quot;push button&quot; on a System (which would reset the system or turn it off, depending on its setting) can&#39;t easily be represented in the System because the service has no idea what the state of the button is.</p>
 <p>So instead of having hidden properties that you could PUT/PATCH to, or complex state machines, we created Actions.  Actions are done with POSTs to the Resource (see the spec for specifics).  You can tell what actions are supported in any resource by looking for the &quot;Actions&quot; property.</p>
-<h3 id="correlatableids">CorrelatableIDs</h3>
-<p>Go back to one of the Chassis and take a look at the fans by following the link to &quot;ThermalMetrics&quot; and you will see how Redfish shows redundancy.  You will notice each fan has a property called “CorrelatableID”.  Now look at the fan redundancy set.  It shows the two fans in its set using the same values in the CorrelatableID properties.  Thus the client can figure out which belongs to which.</p>
-<p>You can&#39;t really have hrefs that point inside of objects, though JSON Pointer can do this.  But not all clients can understand JSON pointer.  So how do you do fan redundancy without hrefs?  The way we did it is with CorrelatableIDs - an opaque string that is the same for like items.  So the Fans all have IDs and the RedundancySet has an ID and the fans can point to the RedundancySet&#39;s ID and vice versa.</p>
-<p>The manager isn&#39;t expected to directly provide all of the data in Redfish, given the advent of PMCI.  Thus providers have no knowledge of URIs to other providers.  So how do you correlate a PCI slot with a NIC?  The Redfish way for providers that know nothing about each other is to come up with a CorrelatableID that they can all figure out on their own.  Take UEFI device path - every PCI device knows its BDF and can figure out its UEFI device path.  Thus it makes an excellent CorrelatableID for the Client to be able to figure out the PCI settings for the NIC (in this case).</p>
-<p>Thus everything that has the same Correlatable ID in objects that all refer to different views or aspects of the same device or thing.</p>
+<h3 id="redundancy">Redundancy</h3>
+<p>Go back to one of the Chassis and take a look at the fans by following the link to &quot;Thermal&quot; and you will see how Redfish shows redundancy.</p>
+<p>You will notice an array called &quot;Redundancy&quot;.  It shows the two fans in its set using the same values in the RelatedItem properties.  Redundancy has a common schema definition in Redfish and has other properties in it besides the members to show other important attributes about redundancy.  This is how the client can figure out which items belongs to which redundancy set since the @odata.id values are pointers to the redundancy set members.</p>
+<p>The value of the &quot;@odata.id&quot; property, though, doesn&#39;t have to be to a whole resource.  The value of this property will be of two formats: a JSON Pointer or an OData reference.</p>
+<ul>
+<li>In the case of a JSON Pointer, there will be a # in it that indicates where the resource stops and where the property pattern begins.  The schema will also have a reference to the property.  An example of a JSON Pointer value might be &quot;/redfish/v1/Chassis/1/Thermal#/Fans/0&quot;.</li>
+<li>In the case of an OData reference, there will not be a # in it.  The schema will have a definition of the property.  An example of a JSON Pointer value might be &quot;/redfish/v1/Chassis/1/Thermal/Fans/0&quot;.</li>
+</ul>
+<h3 id="relateditems">RelatedItems</h3>
+<p>If you&#39;re still in the &quot;Thermal&quot; resource, you can see that the Temperature array elements have a RelatedItem property with an &quot;@odata.id&quot; in it.  This is a reference to the sub-resource that this temperature sensor is measuring - perhaps a processor.  Like Redudancy links, the value may be to a sub-resource.  Thus a client can determine what is being measured by this temperature sensor.</p>
+<p>RelatedItem, while having a common schema definition, is situational dependent in it&#39;s usage.  But it always is used to show a relationship between two different resources or sub-resources.</p>
+<p>And like redundancy, the value of the &quot;@odata.id&quot; property doesn&#39;t have to be to a whole resource.</p>
 <h3 id="etags">ETags</h3>
 <p>ETags are used by browsers to optimize IO (caching).  They do an If-Match and if it matches, they don’t bother dragging the data.  We use them to determine if an object has changed.  Thus every ETag will change if a PUT is done or if a tool (like BIOS configuration at the console) takes place.  Thus any race condition on PUTs between Redfish and non-Redfish clients (as well as other Redfish clients) are always noticed.</p>
 <p>The problem is that this is a mock-up and not a real web service so you can&#39;t see the ETags work.</p>
@@ -387,6 +472,6 @@ The section below works better if you are actually doing the GETs</p>
 
         <div id="last-footer-fix"></div>
       </div>
-      <div id="footer"><div data-doc-version="0.96.0a">Work in Progress – Not a DMTF Standard – DMTF Confidential</div></div>
+      <div id="footer"><div data-doc-version="1.0.0">DMTF Standard – DMTF Confidential</div></div>
     </body>
   </html>
