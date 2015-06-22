@@ -49,7 +49,7 @@
           <Annotation Term="OData.Description" String="Identification information for this processor."/>
           <Annotation Term="OData.LongDescription" String="This object shall contain identification information for this processor."/>		  
         </Property>
-        <Property Name="Status" Type="Resource.1.0.0.Status" />
+        <Property Name="Status" Type="Resource.Status" />
         <Property Name="Manufacturer" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
           <Annotation Term="OData.Description" String="The processor manufacturer" />

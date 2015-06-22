@@ -55,7 +55,7 @@
 
       <Action Name="Reset" IsBound="true">
         <Parameter Name="Manager" Type="Manager.1.0.0.Actions"/>
-        <Parameter Name="ResetType" Type="Resource.1.0.0.ResetType">
+        <Parameter Name="ResetType" Type="Resource.ResetType">
           <Annotation Term="OData.Description" String="This is the type of reset to be performed."/>
           <Annotation Term="OData.LongDescription" String="This defines the property name for the action."/>
         </Parameter>
@@ -178,7 +178,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The Actions object contains the available custom actions on this resource."/>
         </Property>
-        <Property Name="Status" Type="Resource.1.0.0.Status"/>
+        <Property Name="Status" Type="Resource.Status"/>
         <NavigationProperty Name="Redundancy" Type="Collection(Redundancy.Redundancy)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Redundancy information for the managers of this system"/>

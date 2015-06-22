@@ -245,7 +245,7 @@
                     "description": "The Actions object contains the available custom actions on this resource."
                 },
                 "Status": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.1.0.0.json#/definitions/Status"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
                 },
                 "LogServices": {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/LogServiceCollection.json#/definitions/LogServiceCollection",

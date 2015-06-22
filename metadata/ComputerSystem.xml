@@ -42,7 +42,7 @@
 
       <Action Name="Reset" IsBound="true">
         <Parameter Name="ComputerSystem" Type="ComputerSystem.1.0.0.Actions"/>
-        <Parameter Name="ResetType" Type="Resource.1.0.0.ResetType">
+        <Parameter Name="ResetType" Type="Resource.ResetType">
           <Annotation Term="OData.Description" String="The type of reset to be performed"/>
           <Annotation Term="OData.LongDescription" String="This defines the property name for the action."/>
         </Parameter>
@@ -159,7 +159,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type LogServiceCollection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>        
-        <Property Name="Status" Type="Resource.1.0.0.Status"/>
+        <Property Name="Status" Type="Resource.Status"/>
       </EntityType>
 
       <ComplexType Name="Links" BaseType="Resource.Links">
@@ -320,7 +320,7 @@
           <Annotation Term="OData.Description" String="The processor model for the primary or majority of processors in this system."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the processor model for the central processors in the system, per the description in Table 22 of the SMBIOS Specification DSP0134 2.8 or later."/>
         </Property>
-        <Property Name="Status" Type="Resource.1.0.0.Status"  Nullable="false"/>
+        <Property Name="Status" Type="Resource.Status"  Nullable="false"/>
         <Annotation Term="OData.Description" String="This object describes the central processors of the system in general detail."/>
       </ComplexType>
 
@@ -332,7 +332,7 @@
           <Annotation Term="OData.LongDescription" String="This property shall contain the amount of system general purpose volatile (RAM) memory as measured in gibibytes."/>
           <Annotation Term="Validation.Minimum" Int="0" />
         </Property>
-        <Property Name="Status" Type="Resource.1.0.0.Status"  Nullable="false"/>
+        <Property Name="Status" Type="Resource.Status"  Nullable="false"/>
         <Annotation Term="OData.Description" String="This object describes the memory of the system in general detail."/>
       </ComplexType>
 

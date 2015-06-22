@@ -44,7 +44,7 @@
           <Annotation Term="OData.Description" String="The UEFI device path for this interface"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the UEFI device path to the device which implements this interface (port)."/>
         </Property>
-        <Property Name="Status" Type="Resource.1.0.0.Status"/>
+        <Property Name="Status" Type="Resource.Status"/>
         <Property Name="InterfaceEnabled" Type="Edm.Boolean">
           <Annotation Term="OData.Description" String="This indicates whether this interface is enabled."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this interface is enabled."/>

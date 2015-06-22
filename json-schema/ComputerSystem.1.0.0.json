@@ -345,7 +345,7 @@
                     "description": "The Actions object contains the available custom actions on this resource."
                 },
                 "Status": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.1.0.0.json#/definitions/Status"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
                 },
                 "Processors": {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/ProcessorCollection.json#/definitions/ProcessorCollection",
@@ -411,7 +411,7 @@
                     "minimum": 0
                 },
                 "Status": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.1.0.0.json#/definitions/Status"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
                 }
             },
             "description": "This object describes the memory of the system in general detail."
@@ -455,7 +455,7 @@
                     "longDescription": "This property shall contain the processor model for the central processors in the system, per the description in Table 22 of the SMBIOS Specification DSP0134 2.8 or later."
                 },
                 "Status": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.1.0.0.json#/definitions/Status"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
                 }
             },
             "description": "This object describes the central processors of the system in general detail."

@@ -51,7 +51,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the maximum number of members allowed in the redundancy group for the current redundancy mode to still be fault tolerant."/>
           <Annotation Term="Redfish.Required"/>
         </Property>
-        <Property Name="Status" Nullable="false" Type="Resource.1.0.0.Status">
+        <Property Name="Status" Nullable="false" Type="Resource.Status">
           <Annotation Term="Redfish.Required"/>
         </Property>
         <NavigationProperty Name="RedundancySet" Type="Collection(Resource.Item)">

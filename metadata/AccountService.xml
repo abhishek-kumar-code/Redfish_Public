@@ -31,7 +31,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AccountService.1.0.0">
 
       <EntityType Name="AccountService" BaseType="AccountService.AccountService">
-        <Property Name="Status" Type="Resource.1.0.0.Status"/>
+        <Property Name="Status" Type="Resource.Status"/>
         <Property Name="ServiceEnabled" Type="Edm.Boolean">
           <Annotation Term="OData.Description" String="This indicates whether this service is enabled."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this service is enabled."/>

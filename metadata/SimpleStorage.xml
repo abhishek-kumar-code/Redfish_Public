@@ -31,7 +31,7 @@
           <Annotation Term="OData.Description" String="The storage devices associated with this resource"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain a list of storage devices associated with this resource"/>		  
         </Property>
-        <Property Name="Status" Type="Resource.1.0.0.Status"/>
+        <Property Name="Status" Type="Resource.Status"/>
       </EntityType>
 
       <ComplexType Name="Device">
@@ -43,7 +43,7 @@
           <Annotation Term="OData.LongDescription" String="This object represents the Name property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification. The value of this string shall be of the format for the reserved word *Name*."/>
           <Annotation Term="Redfish.Required"/>
         </Property>
-        <Property Name="Status" Type="Resource.1.0.0.Status"/>
+        <Property Name="Status" Type="Resource.Status"/>
         <Property Name="Manufacturer" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The name of the manufacturer of this device"/>

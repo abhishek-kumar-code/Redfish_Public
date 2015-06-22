@@ -59,7 +59,7 @@
           <Annotation Term="OData.LongDescription" String="The values of the properties in this array shall be used to show redundancy for fans and other elements in this resource.  The use of IDs within these arrays shall reference the members of the redundancy groups."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
-        <Property Name="Status" Type="Resource.1.0.0.Status"/>
+        <Property Name="Status" Type="Resource.Status"/>
       </EntityType>
 
       <EntityType Name="Temperature" BaseType="Thermal.Temperature">
@@ -73,7 +73,7 @@
           <Annotation Term="OData.Description" String="A numerical identifier to represent the temperature sensor"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a numerical identifier for this temperature sensor that is unique within this resource. "/>
         </Property>
-        <Property Name="Status" Type="Resource.1.0.0.Status" Nullable="false"/>
+        <Property Name="Status" Type="Resource.Status" Nullable="false"/>
         <Property Name="ReadingCelsius" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Temperature"/>
@@ -152,7 +152,7 @@
           <Annotation Term="OData.Description" String="Describes the area or device associated with this fan."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a description of the affected device or region within the chassis to which this fan is associated."/>
         </Property>
-        <Property Name="Status" Type="Resource.1.0.0.Status" Nullable="false"/>
+        <Property Name="Status" Type="Resource.Status" Nullable="false"/>
         <Property Name="ReadingRPM" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Current fan speed in RPM"/>

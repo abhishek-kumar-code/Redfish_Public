@@ -84,7 +84,7 @@
 		  <Annotation Term="OData.Description" String="Settings for this Manager's KVM-IP protocol support"/>	 
           <Annotation Term="OData.LongDescription" String="This object shall contain information for the KVM-IP (Keyboard, Video, Mouse) protocol settings for the manager."/>
         </Property>
-        <Property Name="Status" Type="Resource.1.0.0.Status"/>
+        <Property Name="Status" Type="Resource.Status"/>
       </EntityType>
       
       <ComplexType Name="Protocol">

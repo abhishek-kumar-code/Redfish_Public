@@ -92,7 +92,7 @@
                     "longDescription": "This object shall contain identification information for this processor."
                 },
                 "Status": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.1.0.0.json#/definitions/Status"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
                 },
                 "Manufacturer": {
                     "type": [

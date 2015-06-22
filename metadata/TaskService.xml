@@ -49,7 +49,7 @@
           <Annotation Term="OData.Description" String="This indicates whether this service is enabled."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this service is enabled."/>
         </Property>        
-        <Property Name="Status" Type="Resource.1.0.0.Status"/>
+        <Property Name="Status" Type="Resource.Status"/>
         <NavigationProperty Name="Tasks" Type="TaskCollection.TaskCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="References to the Tasks collection."/>

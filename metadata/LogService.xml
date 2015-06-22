@@ -71,7 +71,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The Actions object contains the available custom actions on this resource."/>
         </Property>
-        <Property Name="Status" Type="Resource.1.0.0.Status"/>
+        <Property Name="Status" Type="Resource.Status"/>
       </EntityType>
 
       <ComplexType Name="Actions">
