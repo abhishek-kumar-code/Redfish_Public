@@ -1772,18 +1772,18 @@ The following fragment presents some examples of naming and use of the Oem prope
       "@odata.type": "http://contoso.com/schemas/extensions.v.v.v#contoso.AnvilTypes1",
       "slogan": "Contoso anvils never fail",
       "disclaimer": "* Most of the time"
-    }
+    },
     "Contoso.biz": {
       "@odata.type": "http://contoso.biz/schemas/extension1.1#RelatedSpeed",
       "speed" : "ludicrous"
-    }
+    },
     "EID:412:ASB_123": {
       "@odata.type": "http://AnotherStandardsBody/schemas.1.0.1#powerInfoExt",
       "readingInfo": {
         "readingAccuracy": "5",
         "readingInterval": "20"
       }
-    }
+    },
     "Contoso:customers.customerA": {
       "@odata.type" : "http://slingShots.customerA.com/catExt.2015#slingPower",
       "AvailableTargets" : [ "rabbit", "duck", "runner" ],
