@@ -791,7 +791,7 @@ The service metadata shall include the namespaces for each of the Redfish resour
 </edmx:Reference>
 ~~~
 
-The service metadata shall include an entity container that defines the top level resource and collections. This entity container shall extend the ServiceContainer defined in the ServiceRoot.<%= DocVersion %> schema and may include additional resources or collections.
+The service metadata shall include an entity container that defines the top level resource and collections. This entity container shall extend the ServiceContainer defined in the ServiceRoot.1.0.0 schema and may include additional resources or collections.
 
 ~~~xml
 <edmx:DataServices>
