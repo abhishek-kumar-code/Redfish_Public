@@ -2093,10 +2093,10 @@ Redfish devices may implement the additional SSDP messages defined by UPnP to an
 
 ### Protocols
 
-##### TLS
+#### TLS
 Implementations shall support TLS v1.1 or later
 
-##### Cipher suites
+#### Cipher suites
 Implementations should support AES-256 based ciphers from the TLS suites.
 
 Redfish implementations should consider supporting ciphers similar to below which enable authentication and identification without use of trusted certificates.
@@ -2113,8 +2113,8 @@ References to RFCs -
 
 	 http://tools.ietf.org/html/rfc5487
 	 http://tools.ietf.org/html/rfc5288
-	 
-##### Certificates
+
+#### Certificates
 Implementations shall support replacement of the default certificate if one is provided, with a certificate having at least a 4096 bit RSA key and sha512-rsa signature.
 
 ### Authentication
