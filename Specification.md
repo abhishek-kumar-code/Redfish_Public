@@ -2049,7 +2049,7 @@ The URN in the reply shall use a service name of 'redfish-rest:' followed by the
 
 An example response to an M-SEARCH multicast or unicast query shall follow the format shown below.  Fields in brackets are placeholds for device-specific values.
 
-```
+```http
 HTTP/1.1 200 OK
 CACHE-CONTROL:<seconds, at least 1800>
 ST:urn:dmtf-org:service:redfish-rest:1
@@ -2202,7 +2202,7 @@ The response to the POST request to create a session includes:
 *  an X-Auth-Token header that contains a "session auth token" that the client can use an subsequent requests, and
 *  a "Location header that contains a link to the newly created session resource.
 *  The JSON response body that contains a full representation of the newly created session object:
-```
+```json
     POST /redfish/v1/SessionService/Sessions HTTP/1.
     Content-Type: application/json
     Content-Length: <computed length>
@@ -2213,11 +2213,11 @@ The response to the POST request to create a session includes:
     {
         "@odata.context": "/redfish/v1/$metadata#SessionService/Sessions/$entity",
         "@odata.id": "/redfish/v1/SessionService/Sessions/1",
-    	"@odata.type": "#Session.1.0.0.Session",
-		"Id": "1",
-		"Name": "User Session",
-		"Description": "User Session",
-		"UserName": "<username>"
+        "@odata.type": "#Session.1.0.0.Session",
+        "Id": "1",
+        "Name": "User Session",
+        "Description": "User Session",
+        "UserName": "<username>"
     }
 ```
 The client sending the session login request should save the "Session Auth Token" and the link returned in the Location header.
