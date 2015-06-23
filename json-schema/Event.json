@@ -12,8 +12,6 @@
                         "$ref": "http://redfish.dmtf.org/schemas/Event.1.0.0.json#/definitions/Event"
                     }
                 ]
-            }
-        }
         },
         "EventRecord":{
             "type": "object",
