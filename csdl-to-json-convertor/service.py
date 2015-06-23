@@ -643,7 +643,7 @@ class JsonSchemaGenerator:
             output += self.get_json_for_special_properties("@odata.id", depth, prefixuri)
             output += ",\n"
             output += self.get_json_for_special_properties("@odata.type", depth, prefixuri)
-            output += ",\n"
+            firstproperty = False
 
         bindingparameter = True
 
