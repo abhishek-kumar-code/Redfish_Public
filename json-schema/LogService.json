@@ -3,21 +3,6 @@
     "title": "#LogService.LogService",
     "$ref": "#/definitions/LogService",
     "definitions":{
-        "ClearLog":{
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "title": {
-                    "type": "string",
-                    "description": "Friendly action name"
-                },
-                "target": {
-                    "type": "string",
-                    "description": "Link to invoke action"
-                }
-            }
-
-        },
         "LogService":{
                 "oneOf": [ 
                     {
@@ -27,8 +12,6 @@
                         "$ref": "http://redfish.dmtf.org/schemas/LogService.1.0.0.json#/definitions/LogService"
                     }
                 ]
-            }
-        }
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."

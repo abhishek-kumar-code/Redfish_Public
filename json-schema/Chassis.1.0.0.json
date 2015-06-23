@@ -227,18 +227,7 @@
                             }
                         },
                         "#Chassis.Reset": {
-                            "type": "object",
-                            "additionalProperties": false,
-                            "properties": {
-                                "title": {
-                                    "type": "string",
-                                    "description": "Friendly action name"
-                                },
-                                "target": {
-                                    "type": "string",
-                                    "description": "Link to invoke action"
-                                }
-                            }
+                            "$ref": "#/definitions/Reset"
                         }
                     },
                     "readonly": true,
@@ -328,6 +317,27 @@
                 "Lit": "The Indicator LED is lit.",
                 "Blinking": "The Indicator LED is blinking.",
                 "Off": "The Indicator LED is off."
+            }
+        },
+        "Reset":{
+            "patternProperties": { 
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
+                    "type": ["array", "boolean", "number", "null", "object", "string"],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }            
+            },
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Link to invoke action"
+                }
             }
         }
     },

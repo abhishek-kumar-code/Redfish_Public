@@ -60,8 +60,6 @@
                         "$ref": "http://redfish.dmtf.org/schemas/Thermal.1.0.0.json#/definitions/Thermal"
                     }
                 ]
-            }
-        }
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."

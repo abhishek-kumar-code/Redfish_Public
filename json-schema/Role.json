@@ -12,8 +12,6 @@
                         "$ref": "http://redfish.dmtf.org/schemas/Role.1.0.0.json#/definitions/Role"
                     }
                 ]
-            }
-        }
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."

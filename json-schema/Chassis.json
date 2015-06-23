@@ -12,23 +12,6 @@
                         "$ref": "http://redfish.dmtf.org/schemas/Chassis.1.0.0.json#/definitions/Chassis"
                     }
                 ]
-            }
-        }
-        },
-        "Reset":{
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "title": {
-                    "type": "string",
-                    "description": "Friendly action name"
-                },
-                "target": {
-                    "type": "string",
-                    "description": "Link to invoke action"
-                }
-            }
-
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
