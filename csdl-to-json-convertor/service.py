@@ -1004,9 +1004,7 @@ class JsonSchemaGenerator:
             output += UT.Utilities.indent(depth+3) + "}"
 
         output += "\n"
-        output += UT.Utilities.indent(depth+2) + "]\n"
-        output += UT.Utilities.indent(depth+1) + "}\n"
-        output += UT.Utilities.indent(depth) + "}"
+        output += UT.Utilities.indent(depth+2) + "]"
   
         return output
 
