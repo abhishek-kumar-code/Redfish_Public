@@ -27,8 +27,6 @@
                         "$ref": "http://redfish.dmtf.org/schemas/Manager.1.0.0.json#/definitions/Manager"
                     }
                 ]
-            }
-        }
         },
         "ModifyRedundancySet":{
             "type": "object",

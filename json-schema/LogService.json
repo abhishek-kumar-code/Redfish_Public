@@ -27,8 +27,6 @@
                         "$ref": "http://redfish.dmtf.org/schemas/LogService.1.0.0.json#/definitions/LogService"
                     }
                 ]
-            }
-        }
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."

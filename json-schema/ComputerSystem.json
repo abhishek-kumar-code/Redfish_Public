@@ -12,8 +12,6 @@
                         "$ref": "http://redfish.dmtf.org/schemas/ComputerSystem.1.0.0.json#/definitions/ComputerSystem"
                     }
                 ]
-            }
-        }
         },
         "Reset":{
             "type": "object",

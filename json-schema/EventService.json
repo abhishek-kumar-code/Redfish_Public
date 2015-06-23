@@ -12,8 +12,6 @@
                         "$ref": "http://redfish.dmtf.org/schemas/EventService.1.0.0.json#/definitions/EventService"
                     }
                 ]
-            }
-        }
         },
         "SubmitTestEvent":{
             "type": "object",
