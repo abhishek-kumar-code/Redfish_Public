@@ -27,7 +27,7 @@
 		            "items": { 
 			            "$ref": "Message.1.0.0.json#/definitions/Message" 
 		            } 
-                }, 
+                }
             }, 
             "longDescription": "The value of this resource shall be an array of Message objects used to describe one or more conditions related to the request.", 
             "required":  [ 
