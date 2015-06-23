@@ -8,14 +8,14 @@
     <edmx:Include Namespace="RedfishExtensions.1.0.0" Alias="Redfish"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
-    <edmx:Include Namespace="Resource.1.0.0" Alias="Resource"/>
+    <edmx:Include Namespace="Resource.1.0.0" />
   </edmx:Reference>
 
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Redundancy">
 
-      <EntityType Name="Redundancy" BaseType="Resource.ReferenceableMember">
+      <EntityType Name="Redundancy" BaseType="Resource.1.0.0.ReferenceableMember">
         <Annotation Term="OData.Description" String="This is the redundancy definition to be used in other resource schemas."/>
         <Annotation Term="OData.LongDescription" String="This object represents the Redundancy element property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification.  The value of this string shall be of the format for the reserved word *Redundancy*"/>
       </EntityType>

@@ -9,7 +9,7 @@
     <edmx:Include Namespace="Validation.1.0.0" Alias="Validation"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
-    <edmx:Include Namespace="Resource.1.0.0" Alias="Resource"/>
+    <edmx:Include Namespace="Resource.1.0.0" />
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/LogEntryCollection.xml">
     <edmx:Include Namespace="LogEntryCollection"/>
@@ -19,7 +19,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogService">
 
-      <EntityType Name="LogService" BaseType="Resource.Resource">
+      <EntityType Name="LogService" BaseType="Resource.1.0.0.Resource">
         <Annotation Term="OData.Description" String="This resource represents the log service for the resource or service to which it is associated."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a log service for a Redfish implementation."/>
       </EntityType>

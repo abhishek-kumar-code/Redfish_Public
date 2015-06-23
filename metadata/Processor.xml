@@ -6,14 +6,14 @@
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData" />
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
-    <edmx:Include Namespace="Resource.1.0.0" Alias="Resource" />
+    <edmx:Include Namespace="Resource.1.0.0"  />
   </edmx:Reference>
 
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Processor">
 
-      <EntityType Name="Processor" BaseType="Resource.Resource">
+      <EntityType Name="Processor" BaseType="Resource.1.0.0.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition for the Processor resource.  It represents the properties of a processor attached to a System." />
         <Annotation Term="OData.AdditionalProperties" Bool="False"/>
       </EntityType>

@@ -12,7 +12,7 @@
     <edmx:Include Namespace="Validation.1.0.0" Alias="Validation"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
-    <edmx:Include Namespace="Resource.1.0.0" Alias="Resource"/>
+    <edmx:Include Namespace="Resource.1.0.0" />
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/PhysicalContext.xml">
     <edmx:Include Namespace="PhysicalContext.1.0.0"/>
@@ -25,18 +25,18 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power">
 
-      <EntityType Name="Power" BaseType="Resource.Resource">
+      <EntityType Name="Power" BaseType="Resource.1.0.0.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition for the Power Metrics.  It represents the properties for Power Consumption and Power Limiting."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a power metrics resource for a Redfish implementation."/>
       </EntityType>
 
-      <EntityType Name="PowerSupply" BaseType="Resource.ReferenceableMember">
+      <EntityType Name="PowerSupply" BaseType="Resource.1.0.0.ReferenceableMember">
         <Annotation Term="OData.Description" String="Details of a power supplies associated with this system or device"/>
       </EntityType>
 
-      <EntityType Name="PowerControl" BaseType="Resource.ReferenceableMember"/>
+      <EntityType Name="PowerControl" BaseType="Resource.1.0.0.ReferenceableMember"/>
 
-      <EntityType Name="Voltage" BaseType="Resource.ReferenceableMember"/>
+      <EntityType Name="Voltage" BaseType="Resource.1.0.0.ReferenceableMember"/>
 
     
     </Schema>

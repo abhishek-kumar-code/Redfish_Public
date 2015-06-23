@@ -637,7 +637,7 @@ class JsonSchemaGenerator:
         firstproperty = True
 
         # Generate special properties for EntityType
-        if typedata["TypeType"] == "EntityType" and not self.has_basetype(typetable, typedata, "Resource.ReferenceableMember"):
+        if typedata["TypeType"] == "EntityType" and not self.has_basetype(typetable, typedata, "Resource.1.0.0.ReferenceableMember"):
             output += self.get_json_for_special_properties("@odata.context", depth, prefixuri)
             output += ",\n"
             output += self.get_json_for_special_properties("@odata.id", depth, prefixuri)
@@ -1159,7 +1159,7 @@ class JsonSchemaGenerator:
                     # Generate JSON for the type and append it to the output
                     if (typetype == "Action"):
                         output += self.get_action_definition(typetable, typedata, depth + 1, prefixuri)
-                    elif ( basetype == "Resource.Resource" ):
+                    elif ( basetype == "Resource.1.0.0.Resource" ):
                         output += self.generate_json_for_reference_type(typetable, typename, namespace, depth + 1, prefixuri)
                     else:
                         output += self.generate_json_for_type(typetable, currentType, depth+2, namespace, prefixuri, False, False)
@@ -1182,7 +1182,7 @@ class JsonSchemaGenerator:
 
         output = ""
 
-        # If there are any types that derive from Resource.Resource, reference them
+        # If there are any types that derive from Resource.1.0.0.Resource, reference them
         typenames = sorted(typetable.keys())
         parsedtypes = []
         validationtypes = []
@@ -1202,7 +1202,7 @@ class JsonSchemaGenerator:
             except :
                 # This type has not been parsed 
                 parsedtypes.append(typename + ":" + typenamespace)
-                if ( (typenamespace == namespace) and (typedata["IsFromRefUri"] == False) and (typetype == "EntityType") and ( self.has_basetype(typetable, typedata, "Resource.Resource" ) or self.has_basetype(typetable, typedata, "Resource.ResourceCollection") ) ): 
+                if ( (typenamespace == namespace) and (typedata["IsFromRefUri"] == False) and (typetype == "EntityType") and ( self.has_basetype(typetable, typedata, "Resource.1.0.0.Resource" ) or self.has_basetype(typetable, typedata, "Resource.1.0.0.ResourceCollection") ) ): 
                     validationtypecount += 1
                     validationtypes.append(self.get_ref_value_for_type(typetable, currentType, namespace))
 

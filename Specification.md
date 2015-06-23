@@ -1444,7 +1444,7 @@ Redfish resources derive from a common Resource base type named "Resource" in th
 The EntityType contains the [property](#resource-properties) and [reference property](#reference-properties) elements that define the resource, as well as annotations describing the resource.
 
 ~~~xml
-      <EntityType Name="TypeA" BaseType="Resource.Resource">
+      <EntityType Name="TypeA" BaseType="Resource.1.0.0.Resource">
         <Annotation Term="Core.Description" String="This is the description of TypeA."/>
         <Annotation Term="Core.LongDescription" String="This is the specification of TypeA."/>
 

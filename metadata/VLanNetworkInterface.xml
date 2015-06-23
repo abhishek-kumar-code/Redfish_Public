@@ -9,14 +9,14 @@
     <edmx:Include Namespace="Validation.1.0.0" Alias="Validation"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
-    <edmx:Include Namespace="Resource.1.0.0" Alias="Resource"/>
+    <edmx:Include Namespace="Resource.1.0.0" />
   </edmx:Reference>
   
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="VLanNetworkInterface">
 
-      <EntityType Name="VLanNetworkInterface" BaseType="Resource.Resource">
+      <EntityType Name="VLanNetworkInterface" BaseType="Resource.1.0.0.Resource">
       </EntityType>
 
     </Schema>
