@@ -3,21 +3,6 @@
     "title": "#LogService.LogService",
     "$ref": "#/definitions/LogService",
     "definitions":{
-        "ClearLog":{
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "title": {
-                    "type": "string",
-                    "description": "Friendly action name"
-                },
-                "target": {
-                    "type": "string",
-                    "description": "Link to invoke action"
-                }
-            }
-
-        },
         "LogService":{
                 "oneOf": [ 
                     {

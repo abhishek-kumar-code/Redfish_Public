@@ -76,13 +76,14 @@ class JsonSchemaGenerator:
 
         refvalue = ""
         current_typedata = typetable[current_typename]
+        typetype = current_typedata["TypeType"]
         simplename = current_typename[current_typename.rfind(".") + 1 :]
 
 #todo: fix logic to be more generic post-v1
         # If the current type is defined in this namespace
         if self.isabstract(current_typedata):
             refvalue = odataSchema + "#/definitions/idRef"
-        elif root_namespace == current_typedata["Namespace"]:
+        elif ( typetype != "Action" and root_namespace == current_typedata["Namespace"] ) or (typetype == "Action" and current_typedata["BoundNamespace"] == root_namespace ):
             refvalue = "#/definitions/" + simplename
         else:
             refvalue = schemaBaseLocation + current_typedata["Alias"] + ".json#/definitions/" + simplename
@@ -322,7 +323,7 @@ class JsonSchemaGenerator:
     # Description:                                                           #
     #  Emits any property patterns on the object                             #
     ##########################################################################
-    def emit_property_patterns(self, typetable, namespace, annotated, depth, prefixuri, isnullable):
+    def emit_property_patterns(self, typetable, namespace, annotated, depth, prefixuri):
 
         output = ""
         fcontinue = True
@@ -346,7 +347,6 @@ class JsonSchemaGenerator:
                     if jsontype == "object":
                         refvalue = self.get_ref_value_for_type(typetable, content["Type"], namespace)
                         output += UT.Utilities.indent(depth+2)+ "\"$ref\": \"" + refvalue + "\"\n"                        
-#                        output += "\n" + UT.Utilities.indent(depth + 1) + "}"
                     else:
                         output += UT.Utilities.indent(depth + 2) + "\"type\":\"" + jsontype + "\""
                     output += "\n" + UT.Utilities.indent(depth + 1) + "}"
@@ -449,13 +449,12 @@ class JsonSchemaGenerator:
         output = ""
         
         actionname = actionentry["Namespace"] + "." + actionentry["Name"]
-        output += UT.Utilities.indent(depth)   + "\"#" + actionname + "\": {\n"
+        propertyname = "#" + actionname
+        refvalue = self.get_ref_value_for_type(typetable, actionname, namespace )
 
-# for fix #649 - writes reference rather than body of action (remove line following commented lines)
-#        refvalue = self.get_ref_value_for_type(typetable, actionname, namespace )
-#        output += UT.Utilities.indent(depth+1)+ "\"$ref\": \"" + refvalue + "\"\n"
-
-        output += self.get_action_definition(typetable, actionentry, depth, prefixuri)
+        output += UT.Utilities.indent(depth)   + "\"" + propertyname + "\": {\n"
+        output += UT.Utilities.indent(depth+1)+ "\"$ref\": \"" + refvalue + "\"\n"
+#        output += self.get_action_definition(typetable, actionentry, depth, prefixuri)
         output += UT.Utilities.indent(depth)   + "}"
 
         return output
@@ -465,9 +464,9 @@ class JsonSchemaGenerator:
     # Description:                                                                                          #
     #  Generates JSON for action definitions                                                                #
     #########################################################################################################
-    def get_action_definition(self, typetable, actionentry, depth, prefixuri):
+    def get_action_definition(self, typetable, actionentry, depth, namespace, prefixuri):
 
-        output = ""
+        output = self.writepatternproperties(typetable, actionentry, depth+1, namespace, prefixuri)
         output += UT.Utilities.indent(depth+1) +     "\"type\": \"object\",\n"
         output += UT.Utilities.indent(depth+1) +     "\"additionalProperties\": false,\n"
         output += UT.Utilities.indent(depth+1) +     "\"properties\": {\n"
@@ -479,9 +478,11 @@ class JsonSchemaGenerator:
 
         output += UT.Utilities.indent(depth+2) + "\"target\": {\n"
         output += UT.Utilities.indent(depth+3) +     "\"type\": \"string\",\n"
+        output += UT.Utilities.indent(depth+3) +     "\"format\": \"uri\",\n"
         output += UT.Utilities.indent(depth+3) +     "\"description\": \"Link to invoke action\"\n"
         output += UT.Utilities.indent(depth+2) + "}"
 
+##todo: url (and title?) should be required
 ## old code for writing out properties -- save for new parameter model
         if False:
             isfirstparam = True
@@ -504,7 +505,7 @@ class JsonSchemaGenerator:
                 output += UT.Utilities.indent(depth+2) + "}"
 
         output += "\n"
-        output += UT.Utilities.indent(depth+1) +     "}\n"
+        output += UT.Utilities.indent(depth+1) +     "}"
 
         return output
 
@@ -555,13 +556,7 @@ class JsonSchemaGenerator:
         for typekey in keys:
             typeentry = typetable[typekey]
 
-            if not typeentry["TypeType"] == "Action":
-                continue
-
-            if not "IsBound" in typeentry["Node"].attrib.keys():
-                continue
-
-            if typeentry["Node"].attrib["IsBound"].upper() == "FALSE":
+            if( not JsonSchemaGenerator.isboundtotype(typetable, typedata, typeentry ) ):
                 continue
 
             # we have two entries for each action. we need to consider only one of this pair
@@ -589,6 +584,58 @@ class JsonSchemaGenerator:
         return output
 
     ########################################################################################################
+    # Name: isboundtotype                                                                                  #
+    # Description:                                                                                         #
+    #  Returns True if the specified action is bound to the specified type, otherwise returns False        #
+    ########################################################################################################
+    @staticmethod
+    def isboundtotype(typetable, typedata, actionentry):
+
+        if not ( actionentry["TypeType"] == "Action" ):
+            return False
+
+        if not ( "IsBound" in actionentry["Node"].attrib.keys() ):
+            return False
+
+        if ( actionentry["Node"].attrib["IsBound"].upper() == "FALSE" ):
+            return False
+
+        # we have a bound action; is it bound to this type?
+        isboundtotype = False
+		
+        for param in actionentry["Node"].iter("{http://docs.oasis-open.org/odata/ns/edm}Parameter"):
+            if not param.attrib["Type"] in typetable:
+                break
+
+            if not typetable[param.attrib["Type"]] == typedata:
+                break
+
+            isboundtotype = True
+            break
+
+        return isboundtotype
+
+    ########################################################################################################
+    # Name: writepatternproperties                                                                         #
+    # Description:                                                                                         #
+    #  Generates pattern properties for an object                                                          #
+    ########################################################################################################
+    def writepatternproperties(self, typetable, typedata, depth, namespace, prefixuri):
+
+        output=""
+        # allow odata and redfish annotations
+        output += UT.Utilities.indent(depth) + "\"patternProperties\": { \n"
+        output += UT.Utilities.indent(depth+1) + "\"^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\\\.[a-zA-Z_][a-zA-Z0-9_.]+$\" : {\n"
+        output += UT.Utilities.indent(depth+2) + "\"type\": [\"array\", \"boolean\", \"number\", \"null\", \"object\", \"string\"],\n"
+        output += UT.Utilities.indent(depth+2) + "\"description\": \"This property shall specify a valid odata or Redfish property.\"\n"
+        output += UT.Utilities.indent(depth+1) + "}"
+        output += self.emit_property_patterns(typetable, namespace, typedata["Node"], depth, prefixuri)
+        output += UT.Utilities.indent(depth)   + "\n"
+        output += UT.Utilities.indent(depth)   + "},\n"
+		
+        return output
+
+    ########################################################################################################
     # Name: generate_json_for_propertybag                                                                  #
     # Description:                                                                                         #
     #  Generates JSON for all the properties that are defined inside a type                                #
@@ -604,14 +651,7 @@ class JsonSchemaGenerator:
             output = UT.Utilities.indent(depth) + "\"type\": \"object\",\n"
 
         # allow odata and redfish annotations
-        output += UT.Utilities.indent(depth) + "\"patternProperties\": { \n"
-        output += UT.Utilities.indent(depth+1) + "\"^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\\\.[a-zA-Z_][a-zA-Z0-9_.]+$\" : {\n"
-        output += UT.Utilities.indent(depth+2) + "\"type\": [\"array\", \"boolean\", \"number\", \"null\", \"object\", \"string\"],\n"
-        output += UT.Utilities.indent(depth+2) + "\"description\": \"This property shall specify a valid odata or Redfish property.\"\n"
-        output += UT.Utilities.indent(depth+1) + "}"
-        output += self.emit_property_patterns(typetable, namespace, typedata["Node"], depth, prefixuri, isnullable)
-        output += UT.Utilities.indent(depth)   + "\n"
-        output += UT.Utilities.indent(depth)   + "},\n"
+        output += self.writepatternproperties(typetable, typedata, depth, namespace, prefixuri)
 		
         nodes = [typedata["Node"]]
         currenttype = typedata
@@ -1112,6 +1152,19 @@ class JsonSchemaGenerator:
                         current_file_typetable[alias + "." + typename] = typeentry
             
             typetable.update(current_file_typetable)
+			
+        #set bound namespace for actions
+        typekeys = typetable.keys()
+        for key in typekeys:
+            boundtype={}
+            action=typetable[key]
+            if(action["TypeType"]=="Action"):
+                action["BoundNamespace"] = action["Namespace"]
+                for bindingkey in typekeys:
+                    bindingtype = typetable[bindingkey]
+                    if( JsonSchemaGenerator.isboundtotype(typetable,bindingtype,action) ):
+                        action["BoundNamespace"] = bindingtype["Namespace"]
+                        break
 
         typeinfo = {}
         typeinfo["Namespaces"] = namespaces
@@ -1144,7 +1197,8 @@ class JsonSchemaGenerator:
                 index = parsedtypes.index(typename + ":" + currentNamespace)
             except :
                 # This type has not been parsed yet. Process it now.
-                if (namespace == currentNamespace and self.is_inline_type(typedata) and not (typetype=="ComplexType" and self.isabstract(typedata) ) ):
+                if ( (typetype!= "Action" and ( namespace == currentNamespace and self.is_inline_type(typedata) and not (typetype=="ComplexType" and self.isabstract(typedata) ) ) )
+                    or (typetype == "Action" and typedata["BoundNamespace"] == namespace) ):
                     # Add comma if this is not the first definition, otherwise write start of definitions block
                     if (type_count > 0):
                         output += ",\n"
@@ -1158,7 +1212,7 @@ class JsonSchemaGenerator:
 
                     # Generate JSON for the type and append it to the output
                     if (typetype == "Action"):
-                        output += self.get_action_definition(typetable, typedata, depth + 1, prefixuri)
+                        output += self.get_action_definition(typetable, typedata, depth + 1, namespace, prefixuri)
                     elif ( basetype == "Resource.1.0.0.Resource" ):
                         output += self.generate_json_for_reference_type(typetable, typename, namespace, depth + 1, prefixuri)
                     else:

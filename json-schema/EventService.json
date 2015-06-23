@@ -12,21 +12,6 @@
                         "$ref": "http://redfish.dmtf.org/schemas/EventService.1.0.0.json#/definitions/EventService"
                     }
                 ]
-        },
-        "SubmitTestEvent":{
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "title": {
-                    "type": "string",
-                    "description": "Friendly action name"
-                },
-                "target": {
-                    "type": "string",
-                    "description": "Link to invoke action"
-                }
-            }
-
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
