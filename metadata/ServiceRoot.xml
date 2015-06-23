@@ -5,7 +5,7 @@
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
-    <edmx:Include Namespace="Resource.1.0.0" Alias="Resource"/>
+    <edmx:Include Namespace="Resource.1.0.0" />
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions.xml">
     <edmx:Include Namespace="RedfishExtensions.1.0.0" Alias="Redfish"/>
@@ -49,7 +49,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ServiceRoot">
 
-      <EntityType Name="ServiceRoot" BaseType="Resource.Resource">
+      <EntityType Name="ServiceRoot" BaseType="Resource.1.0.0.Resource">
         <Annotation Term="OData.Description" String="This object represents the root Redfish service."/>
         <Annotation Term="OData.LongDescription" String="This object represents the root Redfish service.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
       </EntityType>

@@ -2,10 +2,8 @@
 DocTitle: Scalable Platforms Management API Schema Readme
 DocNumber: '8010'
 DocType: Readme
-DocVersion: '1.00.0a'
-DocStatus: Work in Progress
-DocConfidentiality: – Not a DMTF Standard – DMTF Confidential
-expiration: '2015-08-24'
+DocVersion: '1.0.0'
+status: standard
 released: false
 copyright: '2014-2015'
 ---
@@ -17,7 +15,7 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 * Specification.md - this files is the main Redfish Scalable Platforms Management API Specification
 * Whitepaper.md - this is intended to be a non-normative document helping those new to Redfish understand how to interact with the Redfish service and understand common functions and tasks.
 * Readme2043.md - Mockup Readme.
-* Readme8010.md - this document. 
+* Readme8010.md - this document.
 
 These other components are part of the Redfish Scalable Platforms Management API development effort
 * Mockup (DSP2043) - this is a mockup that can be used as sample of output from GETs from A Redfish service.  Informative in nature, it was used to develop the schema.  A person can set up an NGINX or similar server and configure it to output JSON format and then use this directory for demonstration purposes.

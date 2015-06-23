@@ -9,19 +9,19 @@
     <edmx:Include Namespace="Validation.1.0.0" Alias="Validation"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
-    <edmx:Include Namespace="Resource.1.0.0" Alias="Resource"/>
+    <edmx:Include Namespace="Resource.1.0.0" />
   </edmx:Reference>
   
   <edmx:DataServices>
  
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Event">
 
-      <EntityType Name="Event" BaseType="Resource.Resource">
+      <EntityType Name="Event" BaseType="Resource.1.0.0.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition for Events.  It represents the properties for the events themselves and not subscriptions or any other resource."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent an event for a Redfish implementation."/>
       </EntityType>
 
-      <EntityType Name="EventRecord" BaseType="Resource.ReferenceableMember"/>
+      <EntityType Name="EventRecord" BaseType="Resource.1.0.0.ReferenceableMember"/>
 
       </Schema>
     

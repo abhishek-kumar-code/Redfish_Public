@@ -5,7 +5,7 @@
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
-    <edmx:Include Namespace="Resource.1.0.0" Alias="Resource"/>
+    <edmx:Include Namespace="Resource.1.0.0" />
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/LogEntry.xml">
     <edmx:Include Namespace="LogEntry"/>
@@ -14,7 +14,7 @@
   <edmx:DataServices>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Session">
 
-      <EntityType Name="Session" BaseType="Resource.Resource">
+      <EntityType Name="Session" BaseType="Resource.1.0.0.Resource">
         <Annotation Term="Core.Description" String="This is the schema definition for the Session resource.  It represents the properties for the session with a Redfish Service."/>
         <Annotation Term="Core.LongDescription" String="This resource shall be used to represent a session for a Redfish implementation."/>
       </EntityType>

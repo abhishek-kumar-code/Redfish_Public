@@ -5,14 +5,14 @@
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
-    <edmx:Include Namespace="Resource.1.0.0" Alias="Resource"/>
+    <edmx:Include Namespace="Resource.1.0.0" />
   </edmx:Reference>
 
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="VirtualMedia">
 
-      <EntityType Name="VirtualMedia" BaseType="Resource.Resource">
+      <EntityType Name="VirtualMedia" BaseType="Resource.1.0.0.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition for the Virtual Media Service."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a virtual media service for a Redfish implementation."/>
       </EntityType>
