@@ -19,12 +19,6 @@
         },
         "IPv4Address":{
             "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
-                    "description": "This property shall specify a valid odata or Redfish property."
-                }            
-            },
             "additionalProperties": false,
             "properties": {
                 "Oem": {
@@ -78,12 +72,6 @@
         },
         "IPv6Address":{
             "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
-                    "description": "This property shall specify a valid odata or Redfish property."
-                }            
-            },
             "additionalProperties": false,
             "properties": {
                 "Oem": {
@@ -134,12 +122,6 @@
         },
         "IPv6StaticAddress":{
             "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
-                    "description": "This property shall specify a valid odata or Redfish property."
-                }            
-            },
             "additionalProperties": false,
             "properties": {
                 "Oem": {

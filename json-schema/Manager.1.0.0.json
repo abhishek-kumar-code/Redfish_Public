@@ -20,12 +20,6 @@
         },
         "CommandShell":{
             "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
-                    "description": "This property shall specify a valid odata or Redfish property."
-                }            
-            },
             "additionalProperties": false,
             "properties": {
                 "ServiceEnabled": {
@@ -64,12 +58,6 @@
         },
         "GraphicalConsole":{
             "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
-                    "description": "This property shall specify a valid odata or Redfish property."
-                }            
-            },
             "additionalProperties": false,
             "properties": {
                 "ServiceEnabled": {
@@ -97,12 +85,6 @@
         },
         "Manager":{
             "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
-                    "description": "This property shall specify a valid odata or Redfish property."
-                }            
-            },
             "additionalProperties": false,
             "properties": {
                 "@odata.context": {
@@ -136,12 +118,6 @@
                 },
                 "Links": {
                     "type": "object",
-                    "patternProperties": { 
-                        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
-                            "type": ["array", "boolean", "number", "null", "object", "string"],
-                            "description": "This property shall specify a valid odata or Redfish property."
-                        }                    
-                    },
                     "additionalProperties": false,
                     "properties": {
                         "Oem": {
@@ -250,12 +226,6 @@
                 },
                 "Actions": {
                     "type": "object",
-                    "patternProperties": { 
-                        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
-                            "type": ["array", "boolean", "number", "null", "object", "string"],
-                            "description": "This property shall specify a valid odata or Redfish property."
-                        }                    
-                    },
                     "additionalProperties": false,
                     "properties": {
                         "Oem": {
@@ -263,12 +233,6 @@
                                 "object",
                                 "null"
                             ],
-                            "patternProperties": { 
-                                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
-                                    "type": ["array", "boolean", "number", "null", "object", "string"],
-                                    "description": "This property shall specify a valid odata or Redfish property."
-                                }                            
-                            },
                             "additionalProperties": true,
                             "properties": {
 
@@ -372,12 +336,6 @@
         },
         "SerialConsole":{
             "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
-                    "description": "This property shall specify a valid odata or Redfish property."
-                }            
-            },
             "additionalProperties": false,
             "properties": {
                 "ServiceEnabled": {
@@ -405,7 +363,7 @@
         },
         "ForceFailover":{
             "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
                     "type": ["array", "boolean", "number", "null", "object", "string"],
                     "description": "This property shall specify a valid odata or Redfish property."
                 }            
@@ -426,7 +384,7 @@
         },
         "ModifyRedundancySet":{
             "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
                     "type": ["array", "boolean", "number", "null", "object", "string"],
                     "description": "This property shall specify a valid odata or Redfish property."
                 }            
@@ -447,7 +405,7 @@
         },
         "Reset":{
             "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
                     "type": ["array", "boolean", "number", "null", "object", "string"],
                     "description": "This property shall specify a valid odata or Redfish property."
                 }            
