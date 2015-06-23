@@ -5,6 +5,12 @@
     "definitions":{
         "Message":{
             "type": "object",
+            "patternProperties": { 
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
+                    "type": ["array", "boolean", "number", "null", "object", "string"],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }            
+            },
             "additionalProperties": false,
             "properties": {
                 "Description": {
@@ -62,6 +68,16 @@
         },
         "MessageProperty":{
             "type": "object",
+            "patternProperties": { 
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
+                    "type": ["array", "boolean", "number", "null", "object", "string"],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                },
+                "[A-Za-z0-9]+": { 
+                    "$ref": "#/definitions/Message"
+
+                }            
+            },
             "additionalProperties": true,
             "properties": {
 
@@ -69,6 +85,12 @@
         },
         "MessageRegistry":{
             "type": "object",
+            "patternProperties": { 
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
+                    "type": ["array", "boolean", "number", "null", "object", "string"],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }            
+            },
             "additionalProperties": false,
             "properties": {
                 "@odata.context": {

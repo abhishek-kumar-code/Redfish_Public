@@ -651,7 +651,7 @@ class JsonSchemaGenerator:
             output = UT.Utilities.indent(depth) + "\"type\": \"object\",\n"
 
         # allow odata and redfish annotations
-        self.writepatternproperties(typetable, typedata, depth, namespace, prefixuri)
+        output += self.writepatternproperties(typetable, typedata, depth, namespace, prefixuri)
 		
         nodes = [typedata["Node"]]
         currenttype = typedata
