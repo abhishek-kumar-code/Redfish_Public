@@ -267,7 +267,7 @@
         <NavigationProperty Name="RelatedItem" Type="Collection(Resource.Item)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Describes the areas or devices to which this voltage measurement applies."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall the array of IDs of areas or devices to which this voltage measurement applies."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of IDs containing pointers consistent with JSON pointer syntax to the areas or devices to which this voltage measurement applies."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </EntityType>
