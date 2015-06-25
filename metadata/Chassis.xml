@@ -149,13 +149,13 @@
         <NavigationProperty Name="PoweredBy" Type="Collection(Resource.Item)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="An array of ID[s] of resources that power this chassis. Normally the ID will be a chassis or a specific set of powerSupplies"/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of IDs containing pointers to the resource that powers this chassis."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of IDs containing pointers consistent with JSON pointer syntax to the resource that powers this chassis."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
         <NavigationProperty Name="CooledBy" Type="Collection(Resource.Item)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="An array of ID[s] of resources that cool this chassis. Normally the ID will be a chassis or a specific set of fans."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of IDs containing pointers to the resource that powers this chassis."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of IDs containing pointers consistent with JSON pointer syntax to the resource that powers this chassis."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </ComplexType>
