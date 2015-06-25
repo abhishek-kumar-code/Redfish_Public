@@ -10,6 +10,9 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions.xml">
     <edmx:Include Namespace="RedfishExtensions.1.0.0" Alias="Redfish"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Message.xml">
+    <edmx:Include Namespace="Message"/>
+  </edmx:Reference>  
 
   <edmx:DataServices>
 
@@ -38,6 +41,11 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the URI of the resource to which a client must do a PUT or PATCh in order to modify this resource."/>
           <Annotation Term="OData.AutoExpandReferences" />
         </NavigationProperty>
+        <Property Name="Messages" Type="Collection(Message.Message)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="This is an array of messages associated with the task."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of messages associated with the task."/>
+        </Property>
       </ComplexType>
 
     </Schema>
