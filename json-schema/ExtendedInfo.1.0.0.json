@@ -1,10 +1,10 @@
 { 
    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.1.0.0", 
-   "title": "#ExtendedError.1.0.0.ExtendedError", 
+   "title": "#ExtendedInfo.1.0.0.ExtendedInfo", 
    "type": "object", 
    "additionalProperties": false, 
-   "description": "This is the schema definition for the Extended Error.  Extended errors can be returned in the body of operation responses.  They augment the HTTP error codes with more meaningful information about why the error occurred.", 
-   "longDescription": "This resource shall be used to represent extended errors for a Redfish implementation.", 
+   "description": "This is the schema definition for Extended Info.  Extended errors using this definition can be returned in the body of operation responses.  They augment the HTTP error codes with more meaningful information about why the error occurred.", 
+   "longDescription": "This resource shall be used to represent extended information for responses in a Redfish implementation.", 
    "properties": { 
        "error": { 
             "type": "object", 
@@ -18,7 +18,7 @@
                 }, 
                 "message": { 
                     "type": "string", 
-                    "description": "A human readable error message corresponding to the message in the message registry.", 
+                    "description": "A human readable message corresponding to the message in the message registry.", 
                     "readonly": true, 
                     "longDescription": "This property shall contain a human readable message." 
                 }, 
