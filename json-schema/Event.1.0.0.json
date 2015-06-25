@@ -133,7 +133,7 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef",
                     "readonly": true,
                     "description": "This indicates the resource that originated the condition that caused the event to be generated.",
-                    "longDescription": "The value of this property shall contain the URI of the resource that caused the event to be generated."
+                    "longDescription": "The value of this property shall contain a pointer consistent with JSON pointer syntax to the resource that caused the event to be generated."
                 }
             },
             "required": [
