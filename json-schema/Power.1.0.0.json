@@ -635,7 +635,7 @@
                     },
                     "readonly": true,
                     "description": "Describes the areas or devices to which this voltage measurement applies.",
-                    "longDescription": "The value of this property shall be an array of IDs containing pointer consistent with JSON pointer syntax to the areas or devices to which this voltage measurement applies."
+                    "longDescription": "The value of this property shall be an array of IDs containing pointers consistent with JSON pointer syntax to the areas or devices to which this voltage measurement applies."
                 }
             },
             "description": "This is the base type for addressable members of an array.",
