@@ -65,7 +65,7 @@
                 "Messages": {
                     "type": "array",
                     "items": {
-                        "$ref": "http://redfish.dmtf.org/schemas/v1/Message.json#/definitions/Message"                        },
+                        "$ref": "http://redfish.dmtf.org/schemas/v1/Message.1.0.0.json#/definitions/Message"                        },
                     "readonly": true,
                     "description": "This is an array of messages associated with the task.",
                     "longDescription": "The value of this property shall be an array of messages associated with the task."
