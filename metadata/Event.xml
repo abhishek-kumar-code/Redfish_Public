@@ -74,7 +74,7 @@
         <Property Name="Severity" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is the severity of the event."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the severity of the event, as defined in the Status section of the Redfish specificaiton."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the severity of the event, as defined in the Status section of the Redfish specification."/>
         </Property>
         <Property Name="Message" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
