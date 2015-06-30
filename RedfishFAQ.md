@@ -15,8 +15,6 @@ copyright: '2014, 2015'
 
 This document is intended to explain the rationale and reasoning behind some of the architectural decisions in the Redfish API Architecture
 
-* TOC Placeholder
-
 ## Why a new Interface?
 The market is changing and the current solutions are not adequate to address the multiple dimensions that change is happening on.  Below is a bulleted list describing some of the shifts in the market:
 
@@ -121,11 +119,6 @@ If the RelatedItem is a JSON Pointer, there will be a '#' character in it.  The 
 
 If the RelatedItem is an OData format item, or if it is a whole resource, it will not have a '#' character in it.  In this case, a client should be able to do a GET on the RelatedItem and get just the sub-resource since that is allowable for "Referencable" properties in OData.
 
-## Why links section?
-As noted in the specification, URIs are used to provide a method of pointing clients from one resource to another resource that have some relationship between them.  For instance, the root of the  service has a relationship to other subtending resources, such as the Systems resource, and therefore the root service would contain URIs pointing to the systems resource.  The URI provides a means for a client to access interesting information in a relational manner.  
-
-The links section, within the JSON documents, was developed as a formalization of representing relational information between resources that use URIs.  This notion was based upon IETF RFC 5988 - Web Linking.  The Web Linking specification defines a Link header that semantically identifies a relation type (i.e. a "rel" parameter) with a URI.  What does this type of identification offer?  One benefit, outside of pagination, is that it allows the client to begin building a resource topology with explicit information within the links section, of the JSON document. Otherwise, the client must attempt to infer relationships only after retrieving all of the necessary JSON documents.  Furthermore, server implementations have the ability of implementing a HEAD method that will return, in its response, a Links header that allows a very straightforward method of building the relational topology that the client is interested in.  Without the use of the HEAD method along with a Links header, a client would be forced to retrieve the entire JSON document, parse it for all links, and then create the topology.  The HEAD method would merely elicit a 200 response with the necessary relationships and URI information for those relationships within the Links header.  That information, within the Links header, is much more easily parsed and in some cases programming languages offer automatic parsing capability of these HTTP headers which alleviates clients from having to build this functionality.  Finally, since there is no ordering of properties, the links section allows a server implementation not to have to search the entire document for URIs, rather merely look for the links section in order to populate information in the Links header of a response to a HEAD request.
-
 ## Why not CIM & MOF?
 We took a different approach for Redfish - we started with the toolset and interface style customers are adopting and leveraged that.  We learned what they use instead of forcing them to learn our way and then hope vendors develop tools to go with it.
 
@@ -180,9 +173,6 @@ It is possible for an otherwise invisible change to an object - e.g. changing a 
 
 ## AccountService roles allow an escalation of privileges
 It is possible for a user with the System Administrator role to create user accounts which are assigned to roles which the creating user does not themselves possess. This escalation of privileges is well understood and accepted by users, and avoids complications caused by introducing special privilege states or additional roles to handle privilege propagation corner cases.
-
-## Why is HTTP Digest authentication mentioned?
-HTTP Digest authentication provides many advantages over BASIC authentication schemes, but also has some issues that make it less desirable. First, the digest mechanisms are becoming weaker as the ability to break hashes improves, and provide no facility to improve over time. Second, the mechanism requires the ability to read the raw user password, reducing the potential security of the solution and preventing integration with infrastructure authentication services like LDAP servers which do not allow password reads.
 
 ## Logging of events
 Redfish requires logging of some events, but does not require the implementation of a local log, though one is implied due to the fact that it is represented in both metadata/schema and the mockup. This allows implementations of logging that are record-only logs, or logs which are securely stored outside the service using services like syslog.

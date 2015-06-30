@@ -72,7 +72,7 @@ You can view the markup either directly or through a web server.  All you need i
 
 Redfish is a hypermedia API.  That means that you get to all the resources through URLs returned from other resources.  But there is one well-known URL so that every implementation has a common starting point.  That URI is "/redfish/v1" for version 1 of the Redfish interface.
 
-URLs have a schema (the HTTP:// part), a node (such as www.spma.org or an IP address like 127.0.0.1) and a resource part.  You put these together in the URL of your browser.  So, if you are using the nginx server on your own machine, you should be able to put "HTTP://127.0.0.1/redfish/v1" in your browser to access the Redfish root.
+URLs have a schema (the HTTP:// part), a node (such as www.dmtf.org or an IP address like 127.0.0.1) and a resource part.  You put these together in the URL of your browser.  So, if you are using the nginx server on your own machine, you should be able to put "HTTP://127.0.0.1/redfish/v1/" in your browser to access the Redfish root.
 
 Do a GET on the root of the service from the URL you have constructed above.
 
@@ -82,7 +82,7 @@ Every URL represents a resource.  This could be a service, a collection, an enti
 
 The resource format is defined by a Schema.  Each resource has a specific format that is specified in the Redfish Schema that the client can use to determine the semantics about the resource (though we try to make things as intuitive as possible).  The Redfish Schema is defined in two formats: an OData-Schema format and a JSON Schema format.  It is defined in the OData Schema format (CSDL) so that generice OData tools and applications can interpret it. It is defined in the JSON Schema format for other environments - like Python scripts, JavaScript code and visualization.
 
-Structural properties of the resource are intended to be used as JavaScript variables.  This should accelerate adoption and allow JavaScript web pages and enabled apps to use the data directly.  URIs are persistent across reboots but clients are expected to start at /redfish/v1 and do discovery of the URIs from there.  
+Structural properties of the resource are intended to be used as JavaScript variables.  This should accelerate adoption and allow JavaScript web pages and enabled apps to use the data directly.  URIs are persistent across reboots but clients are expected to start at /redfish/v1/ and do discovery of the URIs from there.  
 
 One common mistake is to fixate on the URI.  Redfish is a hypermedia API so URIs can be different between implementations - even from the same vendor.  Current state objects can be separate from desired state objects.
 
@@ -92,7 +92,7 @@ The operations are GET, PUT, PATCH, POST, DELETE and HEAD.  GET is what your bro
 GET retrieves data.  POST is used for creating resources or to use actions (more on this later).  DELETE will delete a resource, but there are currently only a few resources that can be deleted.  PATCH is used to change one or more properties on a resource while PUT is used to replace a resource entirely (though only a few resources can be completely replaced - more on this later too).  HEAD is like a GET without the body data returned and can be used for figuring out the URI structure by programs accessing an Redfish implementation.
 
 ## Versioning
-Redfish has two kinds of versioning - the version of the protocol and the version of the resource schema.  The version of the protocol is in the URI - that's why you should start at /redfish/v1.  It means you are accessing version one of the protocol.  Version 1 is the only one available now, but we needed to accommodate potential future versions.  This starting URI indicates the implementation complies with the Version 1 Redfish Specification.  Note that since it is based on OData v4,  implementations also require the OData protocol header (OData-Version) have a value of 4. 
+Redfish has two kinds of versioning - the version of the protocol and the version of the resource schema.  The version of the protocol is in the URI - that's why you should start at /redfish/v1/.  It means you are accessing version one of the protocol.  Version 1 is the only one available now, but we needed to accommodate potential future versions.  This starting URI indicates the implementation complies with the Version 1 Redfish Specification.  Note that since it is based on OData v4,  implementations also require the OData protocol header (OData-Version) have a value of 4. 
 
 Each resource has a resource type definition. Resource types are defined in versioned namespaces. Each resource instance has the type represented using the OData type annotation "@odata.type". The value of the type annotation is the URI of the resourcce type, including the versioned namespace.  So when you see "@odata.type" : "#ServiceRoot.1.0.0.ServiceRoot", you are dealing with a resource that adheres to the ServiceRoot type definition, defined in 1.0.0 version of the ServiceRoot schema.  The corresponding schema file would be located at /schema/v1/ServiceRoot in the Redfish schema repository. So the full URI for the type would be "/schema/v1/ServiceRoot#ServiceRoot.1.0.0.ServiceRoot. The schema file may contain other types used by in the resource type definition (for example, structured types and enums), which would have the same resource path but the fragment would describe a different type definition, typically within the same namespace.
 
@@ -103,7 +103,7 @@ JSON has no native reference type to refer to another resource.  Redfish require
 
 Properties representing references to other resources that follow OData conventions are identified with a property name suffixed with "@odata.id". Properties representing URLs to other types of references, for example an external help topic, are identified as string properties in metadata with an annotation specifying that they represent a URL.
 
-URIs are either absolute or relative.  Absolute ones won’t have the IP address but will start with /redfish/v1.  If you have a plug in like the Chrome Advanced REST client, you can click on this to fill in the URI for your next GET.
+URIs are either absolute or relative.  Absolute ones won’t have the IP address but will start with /redfish/v1/.  If you have a plug in like the Chrome Advanced REST client, you can click on this to fill in the URI for your next GET.
 
 ## Main Objects
 The "main" objects are Systems, Managers and Chassis.  These are all collections (see next heading).  We will dig into these resources in a minute, but it's good to know a bit about them.  
@@ -173,13 +173,20 @@ Normally, only the root can be accessed without establishing a session.  But if 
 
 First, you will need to know a valid user name and password for your implementation.
 
-The URI for establishing as session is also allowed to be used for POST unsecured so that you may establish a session.  This URI is /redfish/v1/Sessions in most cases and can be determined by looking at the "Sessions" property and finding the "@odata.id" property's value by doing a GET on the root (/redfish/v1)
+The URI for establishing as session is also allowed to be used for POST unsecured so that you may establish a session.  This URI is /redfish/v1/Sessions in most cases and can be determined by looking at the `Sessions` property under `Links` and finding the `@odata.id` property's value in the service root (/redfish/v1/)
 
-A session is created by an HTTP POST to the URI indicated by /redfish/v1#Sessions/@odata/id including the following POST body:
+A session is created by an HTTP POST to the URI indicated by /redfish/v1#/Links/Sessions/@odata.id including the following POST body:
 
 ```json
+POST /redfish/v1/SessionService/Sessions HTTP/1.1
+Host: <host-path>
+Content-Type: application/json; charset=utf-8
+Content-Length: <computed-length>
+Accept: application/json
+OData-Version: 4.0
+
 {
-    "UserName": "<username>"
+    "UserName": "<username>",
     "Password": "<password>"
 }
 ```
@@ -188,20 +195,22 @@ The return includes an X-Auth-Token header with a session token and Location hea
 
 The return JSON body includes a representation of the newly created session object:
 
-    <operation> <uri> HTTP/1.1
-    <header>
-    <header>
-    Location: "/redfish/v1/Sessions/Administrator1"
-    X-Auth-Token: <token string>
-    <header>
+```json
+Location: /redfish/v1/SessionService/Sessions/1
+X-Auth-Token: <session-auth-token>
 
-    {
-        "@odata.context": "/redfish/v1/$metadata#Sessions",
-        "@odata.id": "/redfish/v1/Sessions/Administrator1",
-	    "UserName": "<username>"
-    }
+{
+    "@odata.context": "/redfish/v1/$metadata#SessionService/Sessions/$entity",
+    "@odata.id": "/redfish/v1/SessionService/Sessions/1",
+    "@odata.type": "#Session.1.0.0.Session",
+    "Id": "1",
+    "Name": "User Session",
+    "Description": "User Session",
+    "UserName": "<username>"
+}
+```
 
-You will use the token string in the X-Auth-Token header for all subsequent requests to your service.  When it's time to delete the session, you can do a DELETE operation on the URL that was returned in the @odata.id in the response (/redfish/v1/Sessions/Administrator1 in the example above).
+You will use the token string in the response X-Auth-Token header in the same header for all subsequent requests to your service.  When it's time to delete the session, you can do a DELETE operation on the URL that was returned in the @odata.id in the response (/redfish/v1/Sessions/Administrator1 in the example above).
 
 ## Redundancy
 Go back to one of the Chassis and take a look at the fans by following the link to "Thermal" and you will see how Redfish shows redundancy.  
@@ -379,7 +388,7 @@ The Redfish API represents a new style of programming for IT that is capable of 
 Here are a few use cases that will help you understand the architecture and begin your client code.
 
 ## Finding Temperature Sensors for a System
-Application code should always start at the root: /redfish/v1.
+Application code should always start at the root: /redfish/v1/
 
 1. In the root object is a property called "Systems".  
 	1. Find the "@odata.id" value.  This is the URI of the Systems collection. 
@@ -401,7 +410,7 @@ Application code should always start at the root: /redfish/v1.
 	1. Look at the "RelatedItem" to find out specifically which components each temperature sensor monitors.      
 
 ## Chassis within Chassis
-Application code should always start at the root: /redfish/v1.
+Application code should always start at the root: /redfish/v1/
 
 1. In the root object is a property called "Chassis".  
 	1. Find the "@odata.id" value.  This is the URI of the Chassis collection. 
