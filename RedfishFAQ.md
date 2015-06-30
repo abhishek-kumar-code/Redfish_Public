@@ -15,8 +15,6 @@ copyright: '2014, 2015'
 
 This document is intended to explain the rationale and reasoning behind some of the architectural decisions in the Redfish API Architecture
 
-* TOC Placeholder
-
 ## Why a new Interface?
 The market is changing and the current solutions are not adequate to address the multiple dimensions that change is happening on.  Below is a bulleted list describing some of the shifts in the market:
 
