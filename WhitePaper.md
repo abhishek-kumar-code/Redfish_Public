@@ -72,7 +72,7 @@ You can view the markup either directly or through a web server.  All you need i
 
 Redfish is a hypermedia API.  That means that you get to all the resources through URLs returned from other resources.  But there is one well-known URL so that every implementation has a common starting point.  That URI is "/redfish/v1" for version 1 of the Redfish interface.
 
-URLs have a schema (the HTTP:// part), a node (such as www.spma.org or an IP address like 127.0.0.1) and a resource part.  You put these together in the URL of your browser.  So, if you are using the nginx server on your own machine, you should be able to put "HTTP://127.0.0.1/redfish/v1" in your browser to access the Redfish root.
+URLs have a schema (the HTTP:// part), a node (such as www.dmtf.org or an IP address like 127.0.0.1) and a resource part.  You put these together in the URL of your browser.  So, if you are using the nginx server on your own machine, you should be able to put "HTTP://127.0.0.1/redfish/v1" in your browser to access the Redfish root.
 
 Do a GET on the root of the service from the URL you have constructed above.
 
