@@ -176,8 +176,5 @@ It is possible for an otherwise invisible change to an object - e.g. changing a 
 ## AccountService roles allow an escalation of privileges
 It is possible for a user with the System Administrator role to create user accounts which are assigned to roles which the creating user does not themselves possess. This escalation of privileges is well understood and accepted by users, and avoids complications caused by introducing special privilege states or additional roles to handle privilege propagation corner cases.
 
-## Why is HTTP Digest authentication mentioned?
-HTTP Digest authentication provides many advantages over BASIC authentication schemes, but also has some issues that make it less desirable. First, the digest mechanisms are becoming weaker as the ability to break hashes improves, and provide no facility to improve over time. Second, the mechanism requires the ability to read the raw user password, reducing the potential security of the solution and preventing integration with infrastructure authentication services like LDAP servers which do not allow password reads.
-
 ## Logging of events
 Redfish requires logging of some events, but does not require the implementation of a local log, though one is implied due to the fact that it is represented in both metadata/schema and the mockup. This allows implementations of logging that are record-only logs, or logs which are securely stored outside the service using services like syslog.
