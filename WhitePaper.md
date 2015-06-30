@@ -173,13 +173,20 @@ Normally, only the root can be accessed without establishing a session.  But if 
 
 First, you will need to know a valid user name and password for your implementation.
 
-The URI for establishing as session is also allowed to be used for POST unsecured so that you may establish a session.  This URI is /redfish/v1/Sessions in most cases and can be determined by looking at the "Sessions" property and finding the "@odata.id" property's value by doing a GET on the root (/redfish/v1/)
+The URI for establishing as session is also allowed to be used for POST unsecured so that you may establish a session.  This URI is /redfish/v1/Sessions in most cases and can be determined by looking at the `Sessions` property under `Links` and finding the `@odata.id` property's value in the service root (/redfish/v1/)
 
-A session is created by an HTTP POST to the URI indicated by /redfish/v1#Sessions/@odata/id including the following POST body:
+A session is created by an HTTP POST to the URI indicated by /redfish/v1#/Links/Sessions/@odata.id including the following POST body:
 
 ```json
+POST /redfish/v1/SessionService/Sessions HTTP/1.1
+Host: <host-path>
+Content-Type: application/json; charset=utf-8
+Content-Length: <computed-length>
+Accept: application/json
+OData-Version: 4.0
+
 {
-    "UserName": "<username>"
+    "UserName": "<username>",
     "Password": "<password>"
 }
 ```
@@ -188,20 +195,22 @@ The return includes an X-Auth-Token header with a session token and Location hea
 
 The return JSON body includes a representation of the newly created session object:
 
-    <operation> <uri> HTTP/1.1
-    <header>
-    <header>
-    Location: "/redfish/v1/Sessions/Administrator1"
-    X-Auth-Token: <token string>
-    <header>
+```json
+Location: /redfish/v1/SessionService/Sessions/1
+X-Auth-Token: <session-auth-token>
 
-    {
-        "@odata.context": "/redfish/v1/$metadata#Sessions",
-        "@odata.id": "/redfish/v1/Sessions/Administrator1",
-	    "UserName": "<username>"
-    }
+{
+    "@odata.context": "/redfish/v1/$metadata#SessionService/Sessions/$entity",
+    "@odata.id": "/redfish/v1/SessionService/Sessions/1",
+    "@odata.type": "#Session.1.0.0.Session",
+    "Id": "1",
+    "Name": "User Session",
+    "Description": "User Session",
+    "UserName": "<username>"
+}
+```
 
-You will use the token string in the X-Auth-Token header for all subsequent requests to your service.  When it's time to delete the session, you can do a DELETE operation on the URL that was returned in the @odata.id in the response (/redfish/v1/Sessions/Administrator1 in the example above).
+You will use the token string in the response X-Auth-Token header in the same header for all subsequent requests to your service.  When it's time to delete the session, you can do a DELETE operation on the URL that was returned in the @odata.id in the response (/redfish/v1/Sessions/Administrator1 in the example above).
 
 ## Redundancy
 Go back to one of the Chassis and take a look at the fans by following the link to "Thermal" and you will see how Redfish shows redundancy.  
