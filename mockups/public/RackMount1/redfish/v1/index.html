@@ -1,38 +1,42 @@
 {
+    "@Redfish.Copyright": "Copyright � 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#ServiceRoot",
-    "@odata.id": "/redfish/v1",
-    "@odata.type": "#ServiceRoot.0.96.0.ServiceRoot",
+    "@odata.id": "/redfish/v1/",
+    "@odata.type": "#ServiceRoot.1.0.0.ServiceRoot",
+    "Id": "RootService",
     "Name": "Root Service",
-    "Time": "2014-09-03T11:00:00+00:00",
-    "RedfishVersion": "0.96.0",
+    "RedfishVersion": "1.0.0",
     "UUID": "92384634-2938-2342-8820-489239905423",
+    "Systems": {
+        "@odata.id": "/redfish/v1/Systems"
+    },
+    "Chassis": {
+        "@odata.id": "/redfish/v1/Chassis"
+    },
+    "Managers": {
+        "@odata.id": "/redfish/v1/Managers"
+    },
+    "Tasks": {
+        "@odata.id": "/redfish/v1/TaskService"
+    },
+    "SessionService": {
+        "@odata.id": "/redfish/v1/SessionService"
+    },
+    "AccountService": {
+        "@odata.id": "/redfish/v1/AccountService"
+    },
+    "EventService": {
+        "@odata.id": "/redfish/v1/EventService"
+    },
+    "Registries": {
+        "@odata.id": "/redfish/v1/Registries"
+    },
+    "JsonSchemas": {
+        "@odata.id": "/redfish/v1/JsonSchemas"
+    },
     "Links": {
-        "Systems": {
-            "@odata.id": "/redfish/v1/Systems"
-        },
-        "Chassis": {
-            "@odata.id": "/redfish/v1/Chassis"
-        },
-        "Managers": {
-            "@odata.id": "/redfish/v1/Managers"
-        },
-        "JsonSchemas": {
-            "@odata.id": "/redfish/v1/JsonSchemas"
-        },
-        "Registries": {
-            "@odata.id": "/redfish/v1/Registries"
-        },
-        "Tasks": {
-            "@odata.id": "/redfish/v1/TaskService"
-        },
-        "AccountService": {
-            "@odata.id": "/redfish/v1/AccountService"
-        },
-        "SessionService": {
-            "@odata.id": "/redfish/v1/Sessions"
-        },
-        "EventService": {
-            "@odata.id": "/redfish/v1/EventService"
+        "Sessions": {
+            "@odata.id": "/redfish/v1/SessionService/Sessions"
         }
     },
     "Oem": {}
