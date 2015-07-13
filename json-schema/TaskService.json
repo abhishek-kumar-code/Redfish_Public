@@ -4,7 +4,7 @@
     "$ref": "#/definitions/TaskService",
     "definitions":{
         "TaskService":{
-                "oneOf": [ 
+                "anyOf": [ 
                     {
                         "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
                     },

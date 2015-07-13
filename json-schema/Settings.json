@@ -3,7 +3,7 @@
     "title": "#Settings.Settings",
     "definitions": {
         "Settings": {
-            "oneOf": [
+            "anyOf": [
                 {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
                 },
