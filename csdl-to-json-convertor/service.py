@@ -1030,7 +1030,7 @@ class JsonSchemaGenerator:
     def generate_json_for_reference_type(self, typetable, typename, schemaname, depth, prefixuri):
 
         output = ""
-        output += UT.Utilities.indent(depth+2) + "\"oneOf\": [ \n"
+        output += UT.Utilities.indent(depth+2) + "\"anyOf\": [ \n"
         output += UT.Utilities.indent(depth+3) + "{\n"
         output += UT.Utilities.indent(depth+4) + "\"$ref\": \"" + odataSchema + "#/definitions/idRef\"\n"
         output += UT.Utilities.indent(depth+3) + "}"
@@ -1267,7 +1267,7 @@ class JsonSchemaGenerator:
         output += UT.Utilities.indent(depth) + "\"title\": \"#" + title + "\",\n"
 
         if(validationtypecount > 1):
-           output += UT.Utilities.indent(depth) + "\"oneOf\": [\n"
+           output += UT.Utilities.indent(depth) + "\"anyOf\": [\n"
            first = True
            for validationtype in validationtypes:
                if (first == True):
