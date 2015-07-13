@@ -2,14 +2,21 @@
     "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.1.0.0.json",
     "title": "#ComputerSystem.1.0.0.ComputerSystem",
     "$ref": "#/definitions/ComputerSystem",
-    "definitions":{
-        "Boot":{
+    "definitions": {
+        "Boot": {
             "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
                     "description": "This property shall specify a valid odata or Redfish property."
-                }            
+                }
             },
             "additionalProperties": false,
             "properties": {
@@ -37,7 +44,7 @@
             },
             "description": "This object contains the boot information for the current resource."
         },
-        "BootSource":{
+        "BootSource": {
             "type": "string",
             "enum": [
                 "None",
@@ -66,7 +73,7 @@
                 "UefiTarget": "Boot to the UEFI Device specified in the UefiTargetBootSourceOverride property"
             }
         },
-        "BootSourceOverrideEnabled":{
+        "BootSourceOverrideEnabled": {
             "type": "string",
             "enum": [
                 "Disabled",
@@ -79,13 +86,20 @@
                 "Continuous": "The system will boot to the target specified in the BootSourceOverrideTarget until this property is set to Disabled."
             }
         },
-        "ComputerSystem":{
+        "ComputerSystem": {
             "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
                     "description": "This property shall specify a valid odata or Redfish property."
-                }            
+                }
             },
             "additionalProperties": false,
             "properties": {
@@ -120,11 +134,18 @@
                 },
                 "Links": {
                     "type": "object",
-                    "patternProperties": { 
-                        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
-                            "type": ["array", "boolean", "number", "null", "object", "string"],
+                    "patternProperties": {
+                        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                            "type": [
+                                "array",
+                                "boolean",
+                                "number",
+                                "null",
+                                "object",
+                                "string"
+                            ],
                             "description": "This property shall specify a valid odata or Redfish property."
-                        }                    
+                        }
                     },
                     "additionalProperties": false,
                     "properties": {
@@ -302,11 +323,18 @@
                 },
                 "Actions": {
                     "type": "object",
-                    "patternProperties": { 
-                        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
-                            "type": ["array", "boolean", "number", "null", "object", "string"],
+                    "patternProperties": {
+                        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                            "type": [
+                                "array",
+                                "boolean",
+                                "number",
+                                "null",
+                                "object",
+                                "string"
+                            ],
                             "description": "This property shall specify a valid odata or Redfish property."
-                        }                    
+                        }
                     },
                     "additionalProperties": false,
                     "properties": {
@@ -315,16 +343,21 @@
                                 "object",
                                 "null"
                             ],
-                            "patternProperties": { 
-                                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
-                                    "type": ["array", "boolean", "number", "null", "object", "string"],
+                            "patternProperties": {
+                                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                                    "type": [
+                                        "array",
+                                        "boolean",
+                                        "number",
+                                        "null",
+                                        "object",
+                                        "string"
+                                    ],
                                     "description": "This property shall specify a valid odata or Redfish property."
-                                }                            
+                                }
                             },
                             "additionalProperties": true,
-                            "properties": {
-
-                            }
+                            "properties": {}
                         },
                         "#ComputerSystem.Reset": {
                             "$ref": "#/definitions/Reset"
@@ -364,7 +397,7 @@
             "description": "This schema defines a computer system and its respective properties.  A computer system represents a machine (physical or virtual) and the local resources such as memory, cpu and other devices that can be accessed from that machine.",
             "longDescription": "This resource shall be used to represent resources that represent a computing system in the Redfish specification."
         },
-        "IndicatorLED":{
+        "IndicatorLED": {
             "type": "string",
             "enum": [
                 "Unknown",
@@ -379,13 +412,20 @@
                 "Off": "The Indicator LED is off."
             }
         },
-        "MemorySummary":{
+        "MemorySummary": {
             "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
                     "description": "This property shall specify a valid odata or Redfish property."
-                }            
+                }
             },
             "additionalProperties": false,
             "properties": {
@@ -405,7 +445,7 @@
             },
             "description": "This object describes the memory of the system in general detail."
         },
-        "PowerState":{
+        "PowerState": {
             "type": "string",
             "enum": [
                 "On",
@@ -414,13 +454,20 @@
                 "Reset"
             ]
         },
-        "ProcessorSummary":{
+        "ProcessorSummary": {
             "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
                     "description": "This property shall specify a valid odata or Redfish property."
-                }            
+                }
             },
             "additionalProperties": false,
             "properties": {
@@ -449,7 +496,7 @@
             },
             "description": "This object describes the central processors of the system in general detail."
         },
-        "SystemType":{
+        "SystemType": {
             "type": "string",
             "enum": [
                 "Physical",
@@ -466,12 +513,19 @@
                 "VirtuallyPartitioned": "A virtual or software-based partition of a computer system"
             }
         },
-        "Reset":{
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
+        "Reset": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
                     "description": "This property shall specify a valid odata or Redfish property."
-                }            
+                }
             },
             "type": "object",
             "additionalProperties": false,

@@ -30,8 +30,8 @@
             "description": "This attribute shall contain the copyright notice for the schema."
         },
         "enumDescriptions": {
-          "type": "object",
-          "description": "This attribute shall contain informative language related to the enumeration values of the property."
+            "type": "object",
+            "description": "This attribute shall contain informative language related to the enumeration values of the property."
         }
     },
     "properties": {
@@ -45,7 +45,7 @@
             "$ref": "#/definitions/copyright"
         },
         "enumDescriptions": {
-          "$ref": "#/definitions/enumDescriptions"
+            "$ref": "#/definitions/enumDescriptions"
         }
     }
 }
