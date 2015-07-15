@@ -2,8 +2,9 @@
 DocTitle: Redfish Scalable Platforms Management API Specification
 DocNumber: '0266'
 DocType: Specification
-DocVersion: '1.0.0'
-status: standard
+DocVersion: '0.99.0a'
+status: wip
+expiration: '2015-08-24'
 released: false
 copyright: '2014-2015'
 ---

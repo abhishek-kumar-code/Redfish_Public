@@ -373,24 +373,24 @@ window.onhashchange = scrollToHash;
   <body>
     <div data-doc-title="Redfish Scalable Platforms Management API Specification" data-doc-number="0266" id="header"></div>
     <div id="wrapper">
-      <div data-status="DMTF Standard" id="dmtf">
+      <div data-status="Work in Progress" id="dmtf">
         <div class="preamble">
           <div class="logo"></div>
           <p>Document Number: DSP0266</p>
-          <p>Date: 2015-06-22</p>
-          <p>Version: 1.0.0</p>
+          <p>Date: 2015-07-15</p>
+          <p>Version: 0.99.0a</p>
           
         </div>
         <h1>Redfish Scalable Platforms Management API Specification</h1>
         <div class="wip">
           <strong>Information for Work-in-Progress version:</strong>
           <p><strong>IMPORTANT:</strong> This document is not a standard. It does not necessarily reflect the views of the DMTF or all of its members. Because this document is a Work in Progress, it may still change, perhaps profoundly. This document is available for public review and comment until the stated expiration date.</p>
-          <p><strong>It expires on: </strong></p>
+          <p><strong>It expires on: 2015-08-24</strong></p>
           <p><strong>Provide any comments through the DMTF Feedback Portal: http://www.dmtf.org/standards/feedback</strong></p>
         </div>
         <div class="document">
           <p>Document Type: Specification</p>
-          <p>Document Status: DMTF Standard</p>
+          <p>Document Status: Work in Progress</p>
           <p>Document Language: en-US</p>
         </div>
         <div class="copyright">
@@ -2019,7 +2019,7 @@ Property names are never localized.</p>
 <p>Resource types are defined within a <a href="#namespace-definitions">namespace</a> using <code>EntityType</code> elements. The <code>Name</code> attribute specifies the name of the resource and the <code>BaseType</code> specifies the base type, if any.</p>
 <p>Redfish resources derive from a common Resource base type named &quot;Resource&quot; in the Resource.1.0.0 namespace.</p>
 <p>The EntityType contains the <a href="#resource-properties">property</a> and <a href="#reference-properties">reference property</a> elements that define the resource, as well as annotations describing the resource.</p>
-<pre><code class="lang-xml">      &lt;EntityType Name=&quot;TypeA&quot; BaseType=&quot;Resource.Resource&quot;&gt;
+<pre><code class="lang-xml">      &lt;EntityType Name=&quot;TypeA&quot; BaseType=&quot;Resource.1.0.0.Resource&quot;&gt;
         &lt;Annotation Term=&quot;Core.Description&quot; String=&quot;This is the description of TypeA.&quot;/&gt;
         &lt;Annotation Term=&quot;Core.LongDescription&quot; String=&quot;This is the specification of TypeA.&quot;/&gt;
 
@@ -2769,6 +2769,6 @@ Authentication login/logout log entries shall contain a user identifier that can
 
         <div id="last-footer-fix"></div>
       </div>
-      <div id="footer"><div data-doc-version="1.0.0">DMTF Standard – DMTF Confidential</div></div>
+      <div id="footer"><div data-doc-version="0.99.0a">Work in Progress – Not a DMTF Standard– DMTF Confidential</div></div>
     </body>
   </html>
