@@ -5,24 +5,24 @@
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions.xml">
-    <edmx:Include Namespace="RedfishExtensions.1.0.0" Alias="Redfish"/>
+    <edmx:Include Namespace="RedfishExtensions.0.99.0" Alias="Redfish"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
-    <edmx:Include Namespace="Resource.1.0.0" />
+    <edmx:Include Namespace="Resource.0.99.0" Alias="Resource"/>
   </edmx:Reference>
   
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="JsonSchemaFile">
 
-      <EntityType Name="JsonSchemaFile" BaseType="Resource.1.0.0.Resource">
+      <EntityType Name="JsonSchemaFile" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition for the Schema File locator resource."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent the Schema File locator resource for a Redfish implementation."/>
       </EntityType>
       
     </Schema>
        
-   <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="JsonSchemaFile.1.0.0">
+   <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="JsonSchemaFile.0.99.0">
        
       <EntityType Name="JsonSchemaFile" BaseType="JsonSchemaFile.JsonSchemaFile">
         <Annotation Term="OData.Description" String="This is the schema definition for the Schema File locator resource."/>
@@ -39,7 +39,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the value of the Type property for that schema and shall conform to the syntax specified in the Redfish specification for the Type property."/>
           <Annotation Term="Redfish.Required"/>
         </Property>
-        <Property Name="Location" Nullable="false" Type="Collection(JsonSchemaFile.1.0.0.Location)">
+        <Property Name="Location" Nullable="false" Type="Collection(JsonSchemaFile.0.99.0.Location)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Location information for this schema file."/>
           <Annotation Term="Redfish.Required"/>

@@ -1,17 +1,43 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.1.0.0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.0.99.0.json",
     "title": "#Event.Event",
     "$ref": "#/definitions/Event",
-    "definitions": {
-        "Event": {
-            "oneOf": [
-                {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
+    "definitions":{
+        "Event":{
+                "oneOf": [ 
+                    {
+                        "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
+                    },
+                    {
+                        "$ref": "http://redfish.dmtf.org/schemas/Event.0.99.0.json#/definitions/Event"
+                    }
+                ]
+            }
+        }
+        },
+        "EventRecord":{
+            "type": "object",
+            "patternProperties": { 
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
+                    "type": ["array", "boolean", "number", "null", "object", "string"],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }            
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Oem": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
-                {
-                    "$ref": "http://redfish.dmtf.org/schemas/Event.1.0.0.json#/definitions/Event"
+                "MemberId": {
+                    "type": "string",
+                    "description": "This is the identifier for the member within the collection.",
+                    "longDescription": "The value of this string shall uniquely identify the member within the collection."
                 }
-            ]
+            },
+            "description": "This is the base type for addressable members of an array.",
+            "longDescription": "Array members can be referenced using the value returned in the @odata.id property which may or may not be a dereferenceable URL. The @odata.id of this entity shall be the location of this element within an Item."
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."

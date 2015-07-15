@@ -5,13 +5,54 @@
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions.xml">
-    <edmx:Include Namespace="RedfishExtensions.1.0.0" Alias="Redfish"/>
+    <edmx:Include Namespace="RedfishExtensions.0.99.0" Alias="Redfish"/>
   </edmx:Reference>
 
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.0.99.0" Alias="Resource">
 
-      <!--Type Definitions-->
+      <!--Base Complex type for Links properties-->
+      <ComplexType Name="Links" Abstract="true">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Property Name="Oem" Type="Resource.Oem">
+          <Annotation Term="OData.Description" String="Oem extension object."/>
+          <Annotation Term="OData.LongDescription" String="This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
+        </Property>
+      </ComplexType>
+      
+      <!--Base entity type for array members-->
+      <EntityType Name="Item" Abstract="true">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This is the base type for resources and referenceable members."/>
+        <Property Name="Oem" Type="Resource.Oem">
+          <Annotation Term="OData.Description" String="This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections."/>
+          <Annotation Term="OData.LongDescription" String="The value of this string shall be of the format for the reserved word *Oem*."/>
+        </Property>
+      </EntityType>
+
+        <!--Base entity type for array members-->
+      <EntityType Name="ReferenceableMember" BaseType="Resource.Item" Abstract="true">
+        <Annotation Term="OData.Description" String="This is the base type for addressable members of an array."/>
+        <Annotation Term="OData.LongDescription" String="Array members can be referenced using the value returned in the @odata.id property which may or may not be a dereferenceable URL. The @odata.id of this entity shall be the location of this element within an Item."/>
+        <Key>
+          <PropertyRef Name="MemberId"/>
+        </Key>
+        <Property Name="MemberId" Nullable="false" Type="Edm.String">
+          <Annotation Term="OData.Description" String="This is the identifier for the member within the collection."/>
+          <Annotation Term="OData.LongDescription" String="The value of this string shall uniquely identify the member within the collection."/>
+        </Property>
+      </EntityType>
+
+      <!--Base entity type for all resources-->
+      <EntityType Name="Resource" BaseType="Resource.Item" Abstract="true">
+        <Key>
+          <PropertyRef Name="Id"/>
+        </Key>
+        <Property Name="Id" Type="Resource.Id" Nullable="false"/>
+        <Property Name="Description" Type="Resource.Description"/>
+        <Property Name="Name" Type="Resource.Name" Nullable="false"/>
+      </EntityType>
+
       <TypeDefinition Name="Id" UnderlyingType="Edm.String">
         <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
         <Annotation Term="OData.Description" String="Uniquely identifies the resource within the collection of like resources."/>
@@ -31,16 +72,19 @@
         <Annotation Term="Redfish.Required"/>
       </TypeDefinition>
 
-      <TypeDefinition Name="UUID" UnderlyingType="Edm.Guid"/>
-
-      <!--Base Complex type for Links properties-->
-      <ComplexType Name="Links" Abstract="true">
-        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+      <!--Base entity type for all resource collection objects-->
+      <EntityType Name="ResourceCollection" Abstract="True">
+        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
+        <Key>
+          <PropertyRef Name="Name"/>
+        </Key>
+        <Property Name="Description" Type="Resource.Description"/>
+        <Property Name="Name" Type="Resource.Name" Nullable="false"/>
         <Property Name="Oem" Type="Resource.Oem">
-          <Annotation Term="OData.Description" String="Oem extension object."/>
-          <Annotation Term="OData.LongDescription" String="This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
+          <Annotation Term="OData.Description" String="This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections."/>
+          <Annotation Term="OData.LongDescription" String="The value of this string shall be of the format for the reserved word *Oem*."/>
         </Property>
-      </ComplexType>
+      </EntityType>
 
       <!--Complex type that serves as a "property bag" for OEM properties-->
       <ComplexType Name="Oem">
@@ -49,26 +93,6 @@
         <Annotation Term="OData.LongDescription" String="This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
       </ComplexType>
 
-      <!--Unversioned Base Types-->
-
-      <!--Base type for Resources and ReferenceableMembers-->
-      <EntityType Name="Item" Abstract="true">
-        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Annotation Term="OData.Description" String="This is the base type for resources and referenceable members."/>
-        <Property Name="Oem" Type="Resource.Oem">
-          <Annotation Term="OData.Description" String="This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections."/>
-          <Annotation Term="OData.LongDescription" String="The value of this string shall be of the format for the reserved word *Oem*."/>
-        </Property>
-      </EntityType>
-
-      <EntityType Name="ReferenceableMember" BaseType="Resource.Item" Abstract="true"/>
-
-      <EntityType Name="Resource" BaseType="Resource.Item" Abstract="true"/>
-
-      <EntityType Name="ResourceCollection" Abstract="True"/>
-
-      <!--Shared types-->
-      
       <!--This object represents the standard status structure for resources.-->
       <ComplexType Name="Status">
         <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
@@ -128,7 +152,7 @@
           <Annotation Term="OData.Description" String="A critical condition exists that requires immediate attention"/>
         </Member>
       </EnumType>
-
+      
       <!--Common RestType parameter values for Reset Action-->
       <EnumType Name="ResetType">
         <Member Name="On">
@@ -157,46 +181,7 @@
         </Member>
       </EnumType>
 
-    </Schema>
-    
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.1.0.0">
-
-      <!--Base entity type for array members-->
-      <EntityType Name="ReferenceableMember" BaseType="Resource.ReferenceableMember" Abstract="true">
-        <Annotation Term="OData.Description" String="This is the base type for addressable members of an array."/>
-        <Annotation Term="OData.LongDescription" String="Array members can be referenced using the value returned in the @odata.id property which may or may not be a dereferenceable URL. The @odata.id of this entity shall be the location of this element within an Item."/>
-        <Key>
-          <PropertyRef Name="MemberId"/>
-        </Key>
-        <Property Name="MemberId" Nullable="false" Type="Edm.String">
-          <Annotation Term="OData.Description" String="This is the identifier for the member within the collection."/>
-          <Annotation Term="OData.LongDescription" String="The value of this string shall uniquely identify the member within the collection."/>
-        </Property>
-      </EntityType>
-
-      <!--Base entity type for all resources-->
-      <EntityType Name="Resource" BaseType="Resource.Resource" Abstract="true">
-        <Key>
-          <PropertyRef Name="Id"/>
-        </Key>
-        <Property Name="Id" Type="Resource.Id" Nullable="false"/>
-        <Property Name="Description" Type="Resource.Description"/>
-        <Property Name="Name" Type="Resource.Name" Nullable="false"/>
-      </EntityType>
-
-      <!--Base entity type for all resource collection objects-->
-      <EntityType Name="ResourceCollection" BaseType="Resource.ResourceCollection" Abstract="True">
-        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
-        <Key>
-          <PropertyRef Name="Name"/>
-        </Key>
-        <Property Name="Description" Type="Resource.Description"/>
-        <Property Name="Name" Type="Resource.Name" Nullable="false"/>
-        <Property Name="Oem" Type="Resource.Oem">
-          <Annotation Term="OData.Description" String="This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections."/>
-          <Annotation Term="OData.LongDescription" String="The value of this string shall be of the format for the reserved word *Oem*."/>
-        </Property>
-      </EntityType>
+      <TypeDefinition Name="UUID" UnderlyingType="Edm.Guid"/>
       
     </Schema>
   </edmx:DataServices>

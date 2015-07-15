@@ -6,21 +6,21 @@
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData" />
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
-    <edmx:Include Namespace="Resource.1.0.0"  />
+    <edmx:Include Namespace="Resource.0.99.0" Alias="Resource" />
   </edmx:Reference>
 
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Processor">
 
-      <EntityType Name="Processor" BaseType="Resource.1.0.0.Resource">
+      <EntityType Name="Processor" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition for the Processor resource.  It represents the properties of a processor attached to a System." />
         <Annotation Term="OData.AdditionalProperties" Bool="False"/>
       </EntityType>
     
     </Schema>
     
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Processor.1.0.0">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Processor.0.99.0">
 
       <EntityType Name="Processor" BaseType="Processor.Processor">
         <Annotation Term="OData.Description" String="This is the schema definition for the Processor resource.  It represents the properties of a processor attached to a System." />
@@ -30,22 +30,22 @@
           <Annotation Term="OData.Description" String="The socket or location of the processor" />
           <Annotation Term="OData.LongDescription" String="This property shall contain the string which identifies the physical location or socket of the processor." />
         </Property>
-        <Property Name="ProcessorType" Type="Processor.1.0.0.ProcessorType">
+        <Property Name="ProcessorType" Type="Processor.0.99.0.ProcessorType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
           <Annotation Term="OData.Description" String="The type of processor" />
           <Annotation Term="OData.LongDescription" String="This property shall contain the string which identifies the type of processor contained in this Socket." />
         </Property>
-        <Property Name="ProcessorArchitecture" Type="Processor.1.0.0.ProcessorArchitecture">
+        <Property Name="ProcessorArchitecture" Type="Processor.0.99.0.ProcessorArchitecture">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
           <Annotation Term="OData.Description" String="The architecture of the processor" />
           <Annotation Term="OData.LongDescription" String="This property shall contain the string which identifies the architecture of the processor contained in this Socket." />
         </Property>
-        <Property Name="InstructionSet" Type="Processor.1.0.0.InstructionSet">
+        <Property Name="InstructionSet" Type="Processor.0.99.0.InstructionSet">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
           <Annotation Term="OData.Description" String="The instruction set of the processor" />
           <Annotation Term="OData.LongDescription" String="This property shall contain the string which identifies the instruction set of the processor contained in this socket." />
         </Property>
-        <Property Name="ProcessorId" Type="Processor.1.0.0.ProcessorId"  Nullable="false">
+        <Property Name="ProcessorId" Type="Processor.0.99.0.ProcessorId"  Nullable="false">
           <Annotation Term="OData.Description" String="Identification information for this processor."/>
           <Annotation Term="OData.LongDescription" String="This object shall contain identification information for this processor."/>		  
         </Property>

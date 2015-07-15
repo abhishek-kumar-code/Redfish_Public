@@ -5,21 +5,21 @@
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
-    <edmx:Include Namespace="Resource.1.0.0" />
+    <edmx:Include Namespace="Resource.0.99.0" Alias="Resource"/>
   </edmx:Reference>
 
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="VirtualMedia">
 
-      <EntityType Name="VirtualMedia" BaseType="Resource.1.0.0.Resource">
+      <EntityType Name="VirtualMedia" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition for the Virtual Media Service."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a virtual media service for a Redfish implementation."/>
       </EntityType>
       
     </Schema>
     
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="VirtualMedia.1.0.0">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="VirtualMedia.0.99.0">
 
       <EntityType Name="VirtualMedia" BaseType="VirtualMedia.VirtualMedia">
         <Property Name="ImageName" Type="Edm.String">
@@ -33,12 +33,12 @@
           <Annotation Term="OData.LongDescription" String="The value of this string shall be an URI.  A null value indicated no image connection."/>
           <Annotation Term="OData.IsUrl"/>
         </Property>
-        <Property Name="MediaTypes" Type="Collection(VirtualMedia.1.0.0.MediaType)" Nullable="false">
+        <Property Name="MediaTypes" Type="Collection(VirtualMedia.0.99.0.MediaType)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is the media types supported as virtual media."/>
           <Annotation Term="OData.LongDescription" String="The values of this array shall be the supported media types for this connection."/>
         </Property>
-        <Property Name="ConnectedVia" Type="VirtualMedia.1.0.0.ConnectedVia">
+        <Property Name="ConnectedVia" Type="VirtualMedia.0.99.0.ConnectedVia">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Current virtual media connection methods"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the current connection method from a client to the virtual media represented by this resource.  A value of NotConnected shall indicate no connection is present.  A value of URI shall indicate that a remote connection via a URI reference type is being used. "/>

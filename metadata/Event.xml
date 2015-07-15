@@ -5,30 +5,30 @@
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions.xml">
-    <edmx:Include Namespace="RedfishExtensions.1.0.0" Alias="Redfish"/>
-    <edmx:Include Namespace="Validation.1.0.0" Alias="Validation"/>
+    <edmx:Include Namespace="RedfishExtensions.0.99.0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.0.99.0" Alias="Validation"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
-    <edmx:Include Namespace="Resource.1.0.0" />
+    <edmx:Include Namespace="Resource.0.99.0" Alias="Resource"/>
   </edmx:Reference>
   
   <edmx:DataServices>
  
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Event">
 
-      <EntityType Name="Event" BaseType="Resource.1.0.0.Resource">
+      <EntityType Name="Event" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition for Events.  It represents the properties for the events themselves and not subscriptions or any other resource."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent an event for a Redfish implementation."/>
       </EntityType>
 
-      <EntityType Name="EventRecord" BaseType="Resource.1.0.0.ReferenceableMember"/>
+      <EntityType Name="EventRecord" BaseType="Resource.ReferenceableMember"/>
 
       </Schema>
     
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Event.1.0.0">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Event.0.99.0">
 
       <EntityType Name="Event" BaseType="Event.Event">
-        <NavigationProperty Name="Events" Type="Collection(Event.1.0.0.EventRecord)" Nullable="false">
+        <NavigationProperty Name="Events" Type="Collection(Event.0.99.0.EventRecord)" Nullable="false">
           <Annotation Term="OData.Description" String="Each event in this array has a set of properties that describe the event.  Since this is an array, more than one event can be sent simultaneously."/>
     		  <Annotation Term="OData.LongDescription" String="The value of this resource shall be an array of Event objects used to represent the occurrence of one or more events."/>
           <Annotation Term="Redfish.Required"/>
@@ -55,7 +55,7 @@
       </EnumType>
 
       <EntityType Name="EventRecord" BaseType="Event.EventRecord">
-        <Property Name="EventType" Type="Event.1.0.0.EventType" Nullable="false">
+        <Property Name="EventType" Type="Event.0.99.0.EventType" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This indicates the type of event sent, according to the definitions in the EventService."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the type of event as defined in the EventService schema."/>
@@ -101,7 +101,7 @@
         <NavigationProperty Name="OriginOfCondition" Type="Resource.Item" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This indicates the resource that originated the condition that caused the event to be generated."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall contain a pointer consistent with JSON pointer syntax to the resource that caused the event to be generated."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the URI of the resource that caused the event to be generated."/>
 		      <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </EntityType>

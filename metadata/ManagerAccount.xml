@@ -5,10 +5,10 @@
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions.xml">
-    <edmx:Include Namespace="RedfishExtensions.1.0.0" Alias="Redfish"/>
+    <edmx:Include Namespace="RedfishExtensions.0.99.0" Alias="Redfish"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
-    <edmx:Include Namespace="Resource.1.0.0" />
+    <edmx:Include Namespace="Resource.0.99.0" Alias="Resource"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Role.xml">
     <edmx:Include Namespace="Role"/>
@@ -17,14 +17,14 @@
   <edmx:DataServices>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ManagerAccount">
 
-      <EntityType Name="ManagerAccount" BaseType="Resource.1.0.0.Resource">
+      <EntityType Name="ManagerAccount" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This schema defines a user account to be used in conjunction with a manager.  This will affect the Redfish service connection if this manager is responsible for the Redfish service."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent resources that represent the user accounts for the manager."/>
       </EntityType>
       
     </Schema>
     
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ManagerAccount.1.0.0">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ManagerAccount.0.99.0">
       
       <EntityType Name="ManagerAccount" BaseType="ManagerAccount.ManagerAccount">
         <Property Name="Password" Type="Edm.String">
@@ -50,7 +50,7 @@
           <Annotation Term="OData.Description" String="This property is used by a User Administrator to disable an account w/o having to delet the user information.  When set to true, the user can login.  When set to false, the account is administratively disabled and the user cannot login."/>
           <Annotation Term="OData.LongDescription" String="This property shall enable (if set to true) or disable (if set to false) the account for future logins. The value of Enable over-rides the locked property."/>
         </Property>
-        <Property Name="Links" Type="ManagerAccount.1.0.0.Links" Nullable="false">
+        <Property Name="Links" Type="ManagerAccount.0.99.0.Links" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The links object contains the links to other resources that are related to this resource."/>
         </Property>

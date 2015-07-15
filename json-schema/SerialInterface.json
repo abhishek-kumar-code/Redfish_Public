@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.1.0.0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.0.99.0.json",
     "title": "#SerialInterface.SerialInterface",
     "$ref": "#/definitions/SerialInterface",
     "definitions":{
@@ -9,9 +9,11 @@
                         "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
                     },
                     {
-                        "$ref": "http://redfish.dmtf.org/schemas/SerialInterface.1.0.0.json#/definitions/SerialInterface"
+                        "$ref": "http://redfish.dmtf.org/schemas/SerialInterface.0.99.0.json#/definitions/SerialInterface"
                     }
                 ]
+            }
+        }
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."

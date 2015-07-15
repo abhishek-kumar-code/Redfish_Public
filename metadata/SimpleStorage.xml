@@ -5,19 +5,19 @@
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
-    <edmx:Include Namespace="Resource.1.0.0" />
+    <edmx:Include Namespace="Resource.0.99.0" Alias="Resource"/>
   </edmx:Reference>
 
   <edmx:DataServices>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SimpleStorage">
 
-      <EntityType Name="SimpleStorage" BaseType="Resource.1.0.0.Resource">
+      <EntityType Name="SimpleStorage" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition for the Simple Storage resource.  It represents the properties of a storage controller and its directly-attached devices."/>
       </EntityType>
       
     </Schema>
     
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SimpleStorage.1.0.0">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SimpleStorage.0.99.0">
 
       <EntityType Name="SimpleStorage" BaseType="SimpleStorage.SimpleStorage">
         <Annotation Term="OData.Description" String="This is the schema definition for the Simple Storage resource.  It represents the properties of a storage controller and its directly-attached devices."/>
@@ -26,7 +26,7 @@
           <Annotation Term="OData.Description" String="The UEFI device path used to access this storage controller."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the UEFI device path used to identify and locate the specific storage controller"/>
         </Property>
-        <Property Name="Devices" Type="Collection(SimpleStorage.1.0.0.Device)" Nullable="false">
+        <Property Name="Devices" Type="Collection(SimpleStorage.0.99.0.Device)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The storage devices associated with this resource"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain a list of storage devices associated with this resource"/>		  

@@ -2,11 +2,11 @@
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
 
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions.xml">
-    <edmx:Include Namespace="RedfishExtensions.1.0.0" Alias="Redfish"/>
-    <edmx:Include Namespace="Validation.1.0.0" Alias="Validation"/>
+    <edmx:Include Namespace="RedfishExtensions.0.99.0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.0.99.0" Alias="Validation"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
-    <edmx:Include Namespace="Resource.1.0.0" />
+    <edmx:Include Namespace="Resource.0.99.0" Alias="Resource"/>
   </edmx:Reference>
   
   <edmx:DataServices>
@@ -23,7 +23,7 @@
 
       </Schema>
     
-      <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Message.1.0.0">
+      <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Message.0.99.0">
 
       <ComplexType Name="Message" BaseType="Message.Message">
         <Property Name="MessageId" Type="Edm.String" Nullable="false">

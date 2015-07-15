@@ -5,10 +5,10 @@
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions.xml">
-    <edmx:Include Namespace="RedfishExtensions.1.0.0" Alias="Redfish"/>
+    <edmx:Include Namespace="RedfishExtensions.0.99.0" Alias="Redfish"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
-    <edmx:Include Namespace="Resource.1.0.0" />
+    <edmx:Include Namespace="Resource.0.99.0" Alias="Resource"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/LogService.xml">
     <edmx:Include Namespace="LogService"/>
@@ -33,13 +33,13 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis">
       
-      <EntityType Name="Chassis" BaseType="Resource.1.0.0.Resource">
+      <EntityType Name="Chassis" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition for the Chassis resource.  It represents the properties for physical components for any system.  This one object is intended to represent racks, rackmount servers, blades, standalone, modular systems, enclosures, and all other containers.  The non-cpu/device centric parts of the schema are all accessed either directly or indirectly through this resource."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a chassis or other physical enclosure for a Redfish implementation."/>
       </EntityType>
 
       <Action Name="Reset" IsBound="true">
-        <Parameter Name="Chassis" Type="Chassis.1.0.0.Actions"/>
+        <Parameter Name="Chassis" Type="Chassis.0.99.0.Actions"/>
         <Parameter Name="ResetType" Type="Resource.ResetType">
           <Annotation Term="OData.Description" String="This is the type of reset to be performed."/>
           <Annotation Term="OData.LongDescription" String="This defines the property name for the action."/>
@@ -50,10 +50,10 @@
 
     </Schema>
 
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.1.0.0">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.0.99.0">
 
       <EntityType Name="Chassis" BaseType="Chassis.Chassis">
-        <Property Name="ChassisType" Nullable="false" Type="Chassis.1.0.0.ChassisType">
+        <Property Name="ChassisType" Nullable="false" Type="Chassis.0.99.0.ChassisType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This property indicates the type of physical form factor of this resource."/>
           <Annotation Term="OData.LongDescription" String="ChassisType shall indicate the physical form factor for the type of chassis."/>
@@ -88,15 +88,15 @@
           <Annotation Term="OData.Description" String="The user assigned asset tag for this chassis."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an identifying string used to track the chassis for inventory purposes."/>
         </Property>
-        <Property Name="IndicatorLED" Type="Chassis.1.0.0.IndicatorLED">
+        <Property Name="IndicatorLED" Type="Chassis.0.99.0.IndicatorLED">
           <Annotation Term="OData.Description" String="The state of the indicator LED, used to identify the chassis."/>
           <Annotation Term="OData.LongDescription" String="This value of this property shall contain the indicator light state for the indicator light associated with this system."/>
         </Property>
-        <Property Name="Links" Type="Chassis.1.0.0.Links" Nullable="false">
+        <Property Name="Links" Type="Chassis.0.99.0.Links" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The links object contains the links to other resources that are related to this resource."/>
         </Property>
-        <Property Name="Actions" Type="Chassis.1.0.0.Actions" Nullable="false">
+        <Property Name="Actions" Type="Chassis.0.99.0.Actions" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The Actions object contains the available custom actions on this resource."/>
         </Property>
@@ -149,20 +149,20 @@
         <NavigationProperty Name="PoweredBy" Type="Collection(Resource.Item)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="An array of ID[s] of resources that power this chassis. Normally the ID will be a chassis or a specific set of powerSupplies"/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of IDs containing pointers consistent with JSON pointer syntax to the resource that powers this chassis."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of IDs containing pointers to the resource that powers this chassis."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
         <NavigationProperty Name="CooledBy" Type="Collection(Resource.Item)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="An array of ID[s] of resources that cool this chassis. Normally the ID will be a chassis or a specific set of fans."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of IDs containing pointers consistent with JSON pointer syntax to the resource that powers this chassis."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of IDs containing pointers to the resource that powers this chassis."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </ComplexType>
 
       <ComplexType Name="Actions">
         <Annotation Term="OData.AdditionalProperties" Bool="False"/>
-        <Property Name="Oem" Type="Chassis.1.0.0.OemActions"/>
+        <Property Name="Oem" Type="Chassis.0.99.0.OemActions"/>
       </ComplexType>
 
       <ComplexType Name="OemActions">

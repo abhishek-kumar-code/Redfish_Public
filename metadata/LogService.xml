@@ -5,11 +5,11 @@
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions.xml">
-    <edmx:Include Namespace="RedfishExtensions.1.0.0" Alias="Redfish"/>
-    <edmx:Include Namespace="Validation.1.0.0" Alias="Validation"/>
+    <edmx:Include Namespace="RedfishExtensions.0.99.0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.0.99.0" Alias="Validation"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
-    <edmx:Include Namespace="Resource.1.0.0" />
+    <edmx:Include Namespace="Resource.0.99.0" Alias="Resource"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/LogEntryCollection.xml">
     <edmx:Include Namespace="LogEntryCollection"/>
@@ -19,18 +19,18 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogService">
 
-      <EntityType Name="LogService" BaseType="Resource.1.0.0.Resource">
+      <EntityType Name="LogService" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This resource represents the log service for the resource or service to which it is associated."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a log service for a Redfish implementation."/>
       </EntityType>
 
       <Action Name="ClearLog" IsBound="true">
-        <Parameter Name="LogService" Type="LogService.1.0.0.Actions"/>
+        <Parameter Name="LogService" Type="LogService.0.99.0.Actions"/>
       </Action>
       
     </Schema>
     
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogService.1.0.0">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogService.0.99.0">
 
       <EntityType Name="LogService" BaseType="LogService.LogService">
         <Annotation Term="OData.Description" String="This resource represents the log service for the resource or service to which it is associated."/>
@@ -45,7 +45,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the maximum numbers of LogEntry resources in the Entries collection for this service."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
         </Property>
-        <Property Name="OverWritePolicy" Type="LogService.1.0.0.OverWritePolicy" Nullable="false">
+        <Property Name="OverWritePolicy" Type="LogService.0.99.0.OverWritePolicy" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The overwrite policy for this service that takes place when the log is full."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the policy of the log service when the MaxNumberOfRecords has been reached. Unknown indicates the log overwrite policy is unknown. WrapsWhenFull indicates that the log overwrites its entries with new entries when the log has reached its maximum capacity. NeverOverwrites indicates that the log never overwrites its entries by the new entries and ceases logging when the limit has been reached."/>
@@ -67,7 +67,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall reference a collection of resources of type LogEntry."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>        
-        <Property Name="Actions" Type="LogService.1.0.0.Actions" Nullable="false">
+        <Property Name="Actions" Type="LogService.0.99.0.Actions" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The Actions object contains the available custom actions on this resource."/>
         </Property>
@@ -76,7 +76,7 @@
 
       <ComplexType Name="Actions">
         <Annotation Term="OData.AdditionalProperties" Bool="False"/>
-        <Property Name="Oem" Type="LogService.1.0.0.OemActions" Nullable="false"/>
+        <Property Name="Oem" Type="LogService.0.99.0.OemActions" Nullable="false"/>
       </ComplexType>
       
       <ComplexType Name="OemActions">

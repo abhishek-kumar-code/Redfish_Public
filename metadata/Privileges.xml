@@ -3,7 +3,7 @@
 
   <edmx:DataServices>
     
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Privileges.1.0.0">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Privileges.0.99.0">
       
       <EnumType Name="PrivilegeType">
         <Member Name="Login">

@@ -1,17 +1,34 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.1.0.0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.0.99.0.json",
     "title": "#LogService.LogService",
     "$ref": "#/definitions/LogService",
     "definitions":{
+        "ClearLog":{
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                },
+                "target": {
+                    "type": "string",
+                    "description": "Link to invoke action"
+                }
+            }
+
+        },
         "LogService":{
                 "oneOf": [ 
                     {
                         "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
                     },
                     {
-                        "$ref": "http://redfish.dmtf.org/schemas/LogService.1.0.0.json#/definitions/LogService"
+                        "$ref": "http://redfish.dmtf.org/schemas/LogService.0.99.0.json#/definitions/LogService"
                     }
                 ]
+            }
+        }
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."

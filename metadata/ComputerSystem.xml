@@ -5,11 +5,11 @@
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions.xml">
-    <edmx:Include Namespace="RedfishExtensions.1.0.0" Alias="Redfish"/>
-    <edmx:Include Namespace="Validation.1.0.0" Alias="Validation"/>
+    <edmx:Include Namespace="RedfishExtensions.0.99.0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.0.99.0" Alias="Validation"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
-    <edmx:Include Namespace="Resource.1.0.0" />
+    <edmx:Include Namespace="Resource.0.99.0" Alias="Resource"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Chassis.xml">
     <edmx:Include Namespace="Chassis"/>
@@ -35,13 +35,13 @@
     <!-- This schema defines a computer system and its respective properties.-->
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem">
 
-      <EntityType Name="ComputerSystem" BaseType="Resource.1.0.0.Resource">
+      <EntityType Name="ComputerSystem" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This schema defines a computer system and its respective properties.  A computer system represents a machine (physical or virtual) and the local resources such as memory, cpu and other devices that can be accessed from that machine."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent resources that represent a computing system in the Redfish specification."/>
       </EntityType>
 
       <Action Name="Reset" IsBound="true">
-        <Parameter Name="ComputerSystem" Type="ComputerSystem.1.0.0.Actions"/>
+        <Parameter Name="ComputerSystem" Type="ComputerSystem.0.99.0.Actions"/>
         <Parameter Name="ResetType" Type="Resource.ResetType">
           <Annotation Term="OData.Description" String="The type of reset to be performed"/>
           <Annotation Term="OData.LongDescription" String="This defines the property name for the action."/>
@@ -52,17 +52,17 @@
       
     </Schema>
       
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.1.0.0">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.0.99.0">
 
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.ComputerSystem">
         <Annotation Term="OData.Description" String="This schema defines a computer system and its respective properties.  A computer system represents a machine (physical or virtual) and the local resources such as memory, cpu and other devices that can be accessed from that machine."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent resources that represent a computing system in the Redfish specification."/>
-        <Property Name="SystemType" Type="ComputerSystem.1.0.0.SystemType" Nullable="false">
+        <Property Name="SystemType" Type="ComputerSystem.0.99.0.SystemType" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The type of computer system represented by this resource."/>
           <Annotation Term="OData.LongDescription" String="An enumeration that indicates the kind of system that this resource represents."/>
         </Property>
-        <Property Name="Links" Type="ComputerSystem.1.0.0.Links" Nullable="false">
+        <Property Name="Links" Type="ComputerSystem.0.99.0.Links" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Contains links to other resources that are related to this resource."/>
         </Property>
@@ -105,17 +105,17 @@
           <Annotation Term="OData.Description" String="The DNS Host Name, without any domain information"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the host name for this system, as reported by the operating system or hypervisor.  This value is typically provided to the Manager by a service running in the host operating system."/>
         </Property>
-        <Property Name="IndicatorLED" Type="ComputerSystem.1.0.0.IndicatorLED">
+        <Property Name="IndicatorLED" Type="ComputerSystem.0.99.0.IndicatorLED">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/ReadWrite"/>
           <Annotation Term="OData.Description" String="The state of the indicator LED, used to identify the system"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the indicator light state for the indicator light associated with this system."/>
         </Property>
-        <Property Name="PowerState" Type="ComputerSystem.1.0.0.PowerState">
+        <Property Name="PowerState" Type="ComputerSystem.0.99.0.PowerState">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is the current power state of the system"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the power state of the system."/>
         </Property>
-        <Property Name="Boot" Type="ComputerSystem.1.0.0.Boot"  Nullable="false">
+        <Property Name="Boot" Type="ComputerSystem.0.99.0.Boot"  Nullable="false">
           <Annotation Term="OData.Description" String="Information about the boot settings for this system"/>
           <Annotation Term="OData.LongDescription" String="This object shall contain properties which describe boot information for the current resource."/>
         </Property>
@@ -123,15 +123,15 @@
           <Annotation Term="OData.Description" String="The version of the system BIOS or primary system firmware."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the version string of the currently installed and running BIOS (for x86 systems).  For other systems, the value may contain a version string representing the primary system firmware."/>
         </Property>
-        <Property Name="ProcessorSummary" Type="ComputerSystem.1.0.0.ProcessorSummary"  Nullable="false">
+        <Property Name="ProcessorSummary" Type="ComputerSystem.0.99.0.ProcessorSummary"  Nullable="false">
           <Annotation Term="OData.Description" String="This object describes the central processors of the system in general detail."/>
 		      <Annotation Term="OData.LongDescription" String="This object shall contain properties which describe the central processors for the current resource."/>
         </Property>
-        <Property Name="MemorySummary" Type="ComputerSystem.1.0.0.MemorySummary"  Nullable="false">
+        <Property Name="MemorySummary" Type="ComputerSystem.0.99.0.MemorySummary"  Nullable="false">
           <Annotation Term="OData.Description" String="This object describes the central memory of the system in general detail."/>
           <Annotation Term="OData.LongDescription" String="This object shall contain properties which describe the central memory for the current resource."/>
         </Property>
-        <Property Name="Actions" Type="ComputerSystem.1.0.0.Actions" Nullable="false">
+        <Property Name="Actions" Type="ComputerSystem.0.99.0.Actions" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The Actions object contains the available custom actions on this resource."/>
         </Property>
@@ -178,20 +178,20 @@
         <NavigationProperty Name="PoweredBy" Type="Collection(Resource.Item)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="An array of ID[s] of resources that power this computer system. Normally the ID will be a chassis or a specific set of powerSupplies"/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of IDs containing pointers consistent with JSON pointer syntax to the resource that powers this computer system."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of IDs containing pointers to the resource that powers this computer system."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
         <NavigationProperty Name="CooledBy" Type="Collection(Resource.Item)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="An array of ID[s] of resources that cool this computer system. Normally the ID will be a chassis or a specific set of fans."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of IDs containing pointers consistent with JSON pointer syntax to the resource that powers this computer system."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of IDs containing pointers to the resource that powers this computer system."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </ComplexType>
 
       <ComplexType Name="Actions">
         <Annotation Term="OData.AdditionalProperties" Bool="False"/>
-        <Property Name="Oem" Type="ComputerSystem.1.0.0.OemActions"/>
+        <Property Name="Oem" Type="ComputerSystem.0.99.0.OemActions"/>
       </ComplexType>
 
       <ComplexType Name="OemActions">
@@ -241,12 +241,12 @@
 
       <ComplexType Name="Boot">
         <Annotation Term="OData.AdditionalProperties" Bool="False"/>
-        <Property Name="BootSourceOverrideTarget" Type="ComputerSystem.1.0.0.BootSource">
+        <Property Name="BootSourceOverrideTarget" Type="ComputerSystem.0.99.0.BootSource">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/ReadWrite"/>
           <Annotation Term="OData.Description" String="The current boot source to be used at next boot instead of the normal boot device, if BootSourceOverrideEnabled is true."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the source to boot the system from, overriding the normal boot order.  The valid values for this property are specified through the DMTF.AllowableValues annotation. Pxe indicates to PXE boot from the primary NIC; Floppy, Cd, Usb, Hdd indicates to boot from their devices respectively.  BiosSetup indicates to boot into the native BIOS screen setup.  Utilities and Diags indicate to boot from the local utilities or diags partitions and UefiTarget indicates to boot from the UEFI device path found in UefiTargetBootSourceOverride."/>
         </Property>
-        <Property Name="BootSourceOverrideEnabled" Type="ComputerSystem.1.0.0.BootSourceOverrideEnabled">
+        <Property Name="BootSourceOverrideEnabled" Type="ComputerSystem.0.99.0.BootSourceOverrideEnabled">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/ReadWrite"/>
           <Annotation Term="OData.Description" String="Describes the state of the Boot Source Override feature"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be Once if this is a one time boot override and Continuous if this selection should remain active until cancelled."/>

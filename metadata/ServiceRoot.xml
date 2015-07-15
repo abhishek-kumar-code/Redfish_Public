@@ -5,11 +5,11 @@
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
-    <edmx:Include Namespace="Resource.1.0.0" />
+    <edmx:Include Namespace="Resource.0.99.0" Alias="Resource"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions.xml">
-    <edmx:Include Namespace="RedfishExtensions.1.0.0" Alias="Redfish"/>
-    <edmx:Include Namespace="Validation.1.0.0" Alias="Validation"/>
+    <edmx:Include Namespace="RedfishExtensions.0.99.0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.0.99.0" Alias="Validation"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/EventService.xml">
     <edmx:Include Namespace="EventService"/>
@@ -49,13 +49,13 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ServiceRoot">
 
-      <EntityType Name="ServiceRoot" BaseType="Resource.1.0.0.Resource">
+      <EntityType Name="ServiceRoot" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This object represents the root Redfish service."/>
         <Annotation Term="OData.LongDescription" String="This object represents the root Redfish service.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
       </EntityType>
     </Schema>
     
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ServiceRoot.1.0.0">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ServiceRoot.0.99.0">
 
       <EntityContainer Name="ServiceContainer">
         <Singleton Name="Service" Type="ServiceRoot.ServiceRoot"/>
@@ -139,7 +139,7 @@
           <Annotation Term="OData.LongDescription" String="This object shall only contain a reference to a collection of resources that comply to the SchemaFile schema where the files are Json-Schema files."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <Property Name="Links" Type="ServiceRoot.1.0.0.Links" Nullable="false">
+        <Property Name="Links" Type="ServiceRoot.0.99.0.Links" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The links object contains the links to other resources that are related to this resource."/>
           <Annotation Term="Redfish.Required"/>

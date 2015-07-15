@@ -7,7 +7,7 @@
 
   <edmx:DataServices>
 
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="PhysicalContext.1.0.0">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="PhysicalContext.0.99.0">
 
       <!--Common PhysicalContext values for Power and Thermal Sensors-->
       <EnumType Name="PhysicalContext">

@@ -5,11 +5,11 @@
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions.xml">
-    <edmx:Include Namespace="RedfishExtensions.1.0.0" Alias="Redfish"/>
-    <edmx:Include Namespace="Validation.1.0.0" Alias="Validation"/>
+    <edmx:Include Namespace="RedfishExtensions.0.99.0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.0.99.0" Alias="Validation"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
-    <edmx:Include Namespace="Resource.1.0.0" />
+    <edmx:Include Namespace="Resource.0.99.0" Alias="Resource"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/TaskCollection.xml">
     <edmx:Include Namespace="TaskCollection"/>
@@ -18,19 +18,19 @@
   <edmx:DataServices>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="TaskService">
 
-      <EntityType Name="TaskService" BaseType="Resource.1.0.0.Resource">
+      <EntityType Name="TaskService" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition for the Task Service.  It represents the properties for the service itself and has links to the actual list of tasks."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a task service for a Redfish implementation."/>
       </EntityType>
       
     </Schema>
     
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="TaskService.1.0.0">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="TaskService.0.99.0">
 
       <EntityType Name="TaskService" BaseType="TaskService.TaskService">
         <Annotation Term="OData.Description" String="This is the schema definition for the Task Service.  It represents the properties for the service itself and has links to the actual list of tasks."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a task service for a Redfish implementation."/>
-        <Property Name="CompletedTaskOverWritePolicy" Type="TaskService.1.0.0.OverWritePolicy" Nullable="false">
+        <Property Name="CompletedTaskOverWritePolicy" Type="TaskService.0.99.0.OverWritePolicy" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Overwrite policy of completed tasks"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate if completed tasks are overwritten should the task service need to track more tasks but the MaxNumberOfTasks has been reached.  Never indicates that the service never overwrites entries by new entries thus causing attempts to spawn tasks to fail.  Oldest indicates that the services overwrites the oldest completed task with a new task when the service has reached its maximum capacity."/>

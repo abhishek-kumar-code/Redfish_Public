@@ -5,11 +5,11 @@
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions.xml">
-    <edmx:Include Namespace="RedfishExtensions.1.0.0" Alias="Redfish"/>
-    <edmx:Include Namespace="Validation.1.0.0" Alias="Validation"/>
+    <edmx:Include Namespace="RedfishExtensions.0.99.0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.0.99.0" Alias="Validation"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
-    <edmx:Include Namespace="Resource.1.0.0" />
+    <edmx:Include Namespace="Resource.0.99.0" Alias="Resource"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Measures.V1.xml">
     <edmx:Include Namespace="Org.OData.Measures.v1" Alias="Measures"/>
@@ -27,14 +27,14 @@
   <edmx:DataServices>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EthernetInterface">
 
-      <EntityType Name="EthernetInterface" BaseType="Resource.1.0.0.Resource">
+      <EntityType Name="EthernetInterface" BaseType="Resource.Resource">
         <Annotation Term="OData.Description" String="This schema defines a simple ethernet NIC resource."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent NIC resources as part of the Redfish specification."/>
       </EntityType>
 
     </Schema>
     
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EthernetInterface.1.0.0">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EthernetInterface.0.99.0">
 
       <EntityType Name="EthernetInterface" BaseType="EthernetInterface.EthernetInterface">
         <Annotation Term="OData.Description" String="This schema defines a simple ethernet NIC resource."/>
@@ -49,12 +49,12 @@
           <Annotation Term="OData.Description" String="This indicates whether this interface is enabled."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this interface is enabled."/>
         </Property>
-        <Property Name="PermanentMACAddress" Type="EthernetInterface.1.0.0.MACAddress">
+        <Property Name="PermanentMACAddress" Type="EthernetInterface.0.99.0.MACAddress">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is the permanent MAC address assigned to this interface (port)"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the Permanent MAC Address of this interface (port). This value is typically programmed during the manufacturing time. This address is not assignable."/>
         </Property>
-        <Property Name="MACAddress" Type="EthernetInterface.1.0.0.MACAddress">
+        <Property Name="MACAddress" Type="EthernetInterface.0.99.0.MACAddress">
           <Annotation Term="OData.Description" String="This is the currently configured MAC address of the (logical port) interface."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the effective current MAC Address of this interface. If an assignable MAC address is not supported, this is a read only alias of the PermanentMACAddress."/>
         </Property>
@@ -88,25 +88,25 @@
           <Annotation Term="OData.Description" String="This indicates the maximum number of Static IPv6 addresses that can be configured on this interface."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the number of array items supported by IPv6StaticAddresses."/>
         </Property>
-        <Property Name="VLAN" Type="VLanNetworkInterface.1.0.0.VLAN">
+        <Property Name="VLAN" Type="VLanNetworkInterface.0.99.0.VLAN">
           <Annotation Term="OData.Description" String="If this Network Interface supports more than one VLAN, this property will not be present and the client should look for VLANs collection in the link section of this resource."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the VLAN for this interface.  If this interface supports more than one VLAN, the VLAN property shall not be present and the VLANS collection link shall be present instead."/>
         </Property>
-        <Property Name="IPv4Addresses" Type="Collection(IPAddresses.1.0.0.IPv4Address)" Nullable="false" >
+        <Property Name="IPv4Addresses" Type="Collection(IPAddresses.0.99.0.IPv4Address)" Nullable="false" >
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The IPv4 addresses assigned to this interface"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of objects used to represent the IPv4 connection characteristics for this interface."/>
         </Property>
-        <Property Name="IPv6AddressPolicyTable" Type="Collection(EthernetInterface.1.0.0.IPv6AddressPolicyEntry)" Nullable="false">
+        <Property Name="IPv6AddressPolicyTable" Type="Collection(EthernetInterface.0.99.0.IPv6AddressPolicyEntry)" Nullable="false">
           <Annotation Term="OData.Description" String="An array representing the RFC3484 Address Selection Policy Table."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of objects used to represent the Address Selection Policy Table as defined in RFC 6724."/>
         </Property>
-        <Property Name="IPv6Addresses" Type="Collection(IPAddresses.1.0.0.IPv6Address)" Nullable="false" >
+        <Property Name="IPv6Addresses" Type="Collection(IPAddresses.0.99.0.IPv6Address)" Nullable="false" >
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This array of objects enumerates all of the currently assigned IPv6 addresses on this interface."/>
 		      <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of objects used to represent the IPv6 connection characteristics for this interface."/>
         </Property>
-        <Property Name="IPv6StaticAddresses" Type="Collection(IPAddresses.1.0.0.IPv6StaticAddress)" Nullable="false" >
+        <Property Name="IPv6StaticAddresses" Type="Collection(IPAddresses.0.99.0.IPv6StaticAddress)" Nullable="false" >
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This array of objects represents all of the IPv6 static addresses to be assigned on this interface."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of objects used to represent the IPv6 static connection characteristics for this interface."/>		  

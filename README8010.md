@@ -2,8 +2,9 @@
 DocTitle: Scalable Platforms Management API Schema Readme
 DocNumber: '8010'
 DocType: Readme
-DocVersion: '1.0.0'
-status: standard
+DocVersion: '0.99.0a'
+status: wip
+expiration: '2015-08-24'
 released: false
 copyright: '2014-2015'
 ---

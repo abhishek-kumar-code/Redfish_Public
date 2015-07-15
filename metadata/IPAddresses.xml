@@ -5,16 +5,16 @@
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions.xml">
-    <edmx:Include Namespace="RedfishExtensions.1.0.0" Alias="Redfish"/>
-    <edmx:Include Namespace="Validation.1.0.0" Alias="Validation"/>
+    <edmx:Include Namespace="RedfishExtensions.0.99.0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.0.99.0" Alias="Validation"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
-    <edmx:Include Namespace="Resource.1.0.0" />
+    <edmx:Include Namespace="Resource.0.99.0" Alias="Resource"/>
   </edmx:Reference>
   
   <edmx:DataServices>
 
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="IPAddresses.1.0.0">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="IPAddresses.0.99.0">
 
       <ComplexType Name="IPv4Address">
         <Annotation Term="OData.AdditionalProperties" Bool="False"/>
@@ -24,12 +24,12 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an IPv4 address assigned to this interface.  If DHCPv4 is enabled on the interface, this property becomes read-only."/>
           <Annotation Term="Redfish.Pattern" String="^(?:[0-9]{1,3}\\.){3}[0-9]{1,3}$"/>
         </Property>
-        <Property Name="SubnetMask" Type="IPAddresses.1.0.0.SubnetMask">
+        <Property Name="SubnetMask" Type="IPAddresses.0.99.0.SubnetMask">
           <Annotation Term="OData.Description" String="This is the IPv4 Subnet mask."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the IPv4 subnet mask for this address.  If DHCPv4 is enabled on the interface, this property becomes read-only."/>
           <Annotation Term="Redfish.Pattern" String="^(?:[0-9]{1,3}\\.){3}[0-9]{1,3}$"/>
         </Property>
-        <Property Name="AddressOrigin" Type="IPAddresses.1.0.0.IPv4AddressOrigin">
+        <Property Name="AddressOrigin" Type="IPAddresses.0.99.0.IPv4AddressOrigin">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This indicates how the address was determined."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the IP address origin for this network interface."/>
@@ -48,17 +48,17 @@
           <Annotation Term="OData.LongDescription" String="This property lists an IPv6 address that is currently assigned on this interface."/>
           <Annotation Term="Redfish.IPv6Format"/>
         </Property>
-        <Property Name="PrefixLength" Type="IPAddresses.1.0.0.PrefixLength">
+        <Property Name="PrefixLength" Type="IPAddresses.0.99.0.PrefixLength">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is the IPv6 Address Prefix Length."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the IPv6 address prefix length for this interface."/>
         </Property>
-        <Property Name="AddressOrigin" Type="IPAddresses.1.0.0.IPv6AddressOrigin">
+        <Property Name="AddressOrigin" Type="IPAddresses.0.99.0.IPv6AddressOrigin">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This indicates how the address was determined."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the IPv6 address origin for this interface."/>
         </Property>
-        <Property Name="AddressState" Type="IPAddresses.1.0.0.AddressState">
+        <Property Name="AddressState" Type="IPAddresses.0.99.0.AddressState">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The current state of this address as defined in RFC 4862."/>
           <Annotation Term="OData.LongDescription" String="Preferred and Deprecated states follow the definitions given RFC4862 Section 5.5.4. An address is in the Tentative state while undergoing Duplicate Address Detection (DAD) per RFC4862 Section 5.4.  The Failed state indicates a Static addresses which did not pass DAD.  A Static address in the Failed state is not in use on the network stack, and corrective action will be needed to remedy this condition."/>
@@ -132,7 +132,7 @@
           <Annotation Term="Redfish.Required"/>
           <Annotation Term="Redfish.IPv6Format"/>
         </Property>
-        <Property Name="PrefixLength" Type="IPAddresses.1.0.0.PrefixLength">
+        <Property Name="PrefixLength" Type="IPAddresses.0.99.0.PrefixLength">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The Prefix Length of this IPv6 address."/>
           <Annotation Term="OData.LongDescription" String="Provides the IPv6 network prefix length in bits for this address."/>

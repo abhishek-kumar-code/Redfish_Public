@@ -11,7 +11,7 @@
   <edmx:DataServices>
 
     <!--These terms extend the schema language for Redfish-specific information-->
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm"  Namespace="RedfishExtensions.1.0.0">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm"  Namespace="RedfishExtensions.0.99.0">
 
       <Term Name="AllowableValues" Type="Collection(Edm.String)">
         <Annotation Term="OData.Description" String="The set of allowable values for a parameter."/>
@@ -52,7 +52,7 @@
     </Schema>
     
     <!--These terms are used for validating a property value-->
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm"  Namespace="Validation.1.0.0">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm"  Namespace="Validation.0.99.0">
 
       <Term Name="Pattern" Type="Edm.String">
         <Annotation Term="OData.Description" String="The pattern that a string property or parameter must match."/>
