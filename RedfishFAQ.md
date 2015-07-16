@@ -77,7 +77,7 @@ A single API style that will match the myriad of computing platforms is required
 
 Additionally, the API must be easy for simple systems and flexible for hyperscale.  The use of hrefs to represent associations and collections for similar resources has been proven in hypermedia APIs.
 
-### Why force the use of "/rest/v1" as the service root?
+### Why force the use of "/redfish/v1/" as the service root?
 It was chosen to represent the version of the protocol.  Resources themselves have a separate versioning (the use of the Type property).  Protocols have a different lifecycle than the data model they transport so a versioning mechanism is necessary.
 
 The two choices were fixed URI or an X-Header.  The RESTful world has adopted the fixed URI methodology and is veering away from non-standard headers (like X-anything).  Additionally, headers in general and X headers in specific are difficult to use (though not impossible) in some of the tool sets.
