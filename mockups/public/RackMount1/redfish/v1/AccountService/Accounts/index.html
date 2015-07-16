@@ -1,14 +1,30 @@
 {
-    "@Redfish.Copyright": "Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#AccountService/Members/Accounts/$entity",
-    "@odata.type": "#ManagerAccountCollection.ManagerAccountCollection",
+    "@odata.context": "/redfish/v1/$metadata#AccountService/Accounts",
     "@odata.id": "/redfish/v1/AccountService/Accounts",
-    "Name": "Accounts Collection",
-    "Members@odata.count": 1,
-    "Members": [
+    "@odata.type": "#ManagerAccount.0.96.0.ManagerAccountCollection",
+    "Name": "Accounts",
+    "Description": "Manager Accounts",
+    "Total": 1,
+    "links": {
+        "Member": [
+            {
+                "frag": "/Items/0"
+            }
+        ],
+        "Oem": {}
+    },
+    "Items": [
         {
-            "@odata.id": "/redfish/v1/AccountService/Accounts/1"
+            "Description": "User Account",
+            "Name": "User Account",
+            "Oem": {},
+            "Password": null,
+            "UserName": "Administrator",
+            "links": {
+                "self": {
+                    "@odata.id": "/redfish/v1/AccountService/Accounts/1"
+                }
+            }
         }
     ]
 }
-
