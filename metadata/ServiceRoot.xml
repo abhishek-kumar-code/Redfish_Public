@@ -127,7 +127,7 @@
           <Annotation Term="OData.LongDescription" String="The classes structure shall only contain a reference to a resource that complies to the EventService schema."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="Registries" Type="MessageRegistry.MessageRegistry">
+        <NavigationProperty Name="Registries" Type="MessageRegistryCollection.MessageRegistryCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a link to a collection of Registries."/>
           <Annotation Term="OData.LongDescription" String="This object shall contain a reference to Message Registry."/>
