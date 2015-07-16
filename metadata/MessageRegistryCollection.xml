@@ -13,7 +13,7 @@
   
   <edmx:DataServices>
 
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="JsonSchemaFileCollection">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MessageRegistryCollection">
 
       <EntityType Name="JsonSchemaFileCollection" BaseType="Resource.1.0.0.ResourceCollection">
         <NavigationProperty Name="Members" Type="Collection(MessageRegistry.MessageRegistry)">
