@@ -1,15 +1,17 @@
 {
-    "@odata.context": "/redfish/v1/$metadata#Systems/Links/Members/1437XR1138R2/Processors/#entity",
+    "@odata.context": "/redfish/v1/$metadata#Systems/Links/Members/1437XR1138R2/Links/Processors/#entity", 
     "@odata.id": "/redfish/v1/Systems/1437XR1138R2/Processors",
-    "@odata.type": "#Procssors.1.0.0.ProcessorsCollection",
+    "@odata.type": "#Procssors.0.96.0.ProcessorsCollection",
     "Name": "Processors Collection",
-    "Members@odata.count": 2,
-    "Members": [
-        {
-            "@odata.id": "/redfish/v1/Systems/437XR1138R2/Processors/CPU1"
-        },
-        {
-            "@odata.id": "/redfish/v1/Systems/1437XR1138R2/Processors/CPU2"
-        }
-    ]
+    "Links": {
+        "Members@odata.count":2,
+        "Members": [
+            {
+                "@odata.id": "/redfish/v1/Systems/437XR1138R2/Processors/CPU1"
+            },
+            {
+                "@odata.id": "/redfish/v1/Systems/1437XR1138R2/Processors/CPU2"
+            }
+        ]
+    }
 }
