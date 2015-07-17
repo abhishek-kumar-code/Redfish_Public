@@ -1,6 +1,6 @@
 ---
 DocTitle: Redfish White Paper
-DocNumber: XXXX
+DocNumber: 2044
 DocType: Whitepaper
 DocVersion: '1.0.0'
 DocStatus: Work in Progress
