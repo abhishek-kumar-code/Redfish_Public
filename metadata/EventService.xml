@@ -80,7 +80,7 @@
           <Annotation Term="OData.Description" String="This is the number of attempts an event posting is retried before the subscription is terminated."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the number of retrys attempted for any given event to the subscription destination before the subscription is terminated."/>
         </Property>
-        <Property Name="DeliveryRetryIntervalInSeconds" Type="Edm.Int64" Nullable="false">
+        <Property Name="DeliveryRetryIntervalSeconds" Type="Edm.Int64" Nullable="false">
           <Annotation Term="OData.Measures.Unit" String="Seconds"/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This represents the number of seconds between retry attempts for sending any given Event"/>
