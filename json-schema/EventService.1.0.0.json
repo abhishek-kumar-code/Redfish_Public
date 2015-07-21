@@ -50,7 +50,7 @@
                     "description": "This is the number of attempts an event posting is retried before the subscription is terminated.",
                     "longDescription": "The value of this property shall be the number of retrys attempted for any given event to the subscription destination before the subscription is terminated."
                 },
-                "DeliveryRetryIntervalInSeconds": {
+                "DeliveryRetryIntervalSeconds": {
                     "type": "number",
                     "readonly": true,
                     "description": "This represents the number of seconds between retry attempts for sending any given Event",
