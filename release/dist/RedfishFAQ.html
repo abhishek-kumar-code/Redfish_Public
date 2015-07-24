@@ -1,0 +1,544 @@
+<!doctype html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/styles/default.min.css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/styles/github.min.css">
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/highlight.min.js"></script>
+    <style media="all">
+#dmtf .logo {
+  background: url("data:image/png;base64,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") no-repeat right center;
+  height: 63px;
+}
+#dmtf .preamble {
+  text-align: right;
+  font-weight: bold;
+}
+#dmtf h1 {
+  border: none;
+  margin-top: 5em;
+  margin-bottom: 2em;
+}
+#dmtf .wip {
+  margin-bottom: 2em;
+  display: none;
+}
+#dmtf[data-status="Work in Progress"] .wip {
+  padding: 0.5em;
+  font-weight: normal;
+  text-align: left;
+  border: 2px ridge #eee;
+  display: block !important;
+}
+#dmtf .document {
+  font-weight: bold;
+}
+#dmtf .copyright {
+  page-break-before: always;
+  border: 1px solid #333;
+  padding: .5em;
+}
+#dmtf .copyright p:first-child {
+  margin-top: 0;
+}
+#dmtf .copyright p:last-child {
+  margin-bottom: 0;
+}
+#toc-header {
+  text-align: center;
+}
+#toc {
+  padding-left: 0;
+}
+#toc,
+#toc ul {
+  list-style-type: none;
+}
+#wrapper {
+  display: table-row-group;
+}
+body {
+  border-collapse: collapse;
+  font-size: 13px;
+  line-height: 1.4;
+  word-wrap: break-word;
+  color: #333;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+  margin-top: 1em;
+  margin-bottom: 16px;
+}
+h1 {
+  font-size: 2.25em;
+  line-height: 1.2;
+}
+h2 {
+  font-size: 1.75em;
+  line-height: 1.225;
+}
+h1,
+h2 {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.3em;
+}
+h3 {
+  font-size: 1.5em;
+}
+h4 {
+  font-size: 1.25em;
+}
+h5 {
+  font-size: 1em;
+}
+h6 {
+  font-size: 1em;
+  color: #777;
+}
+table {
+  word-break: normal;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+table tr {
+  border-top: 1px solid #ccc;
+}
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+table th,
+table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+a {
+  text-decoration: none;
+  color: #4183c4;
+}
+a:hover {
+  text-decoration: underline;
+}
+pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+#footer,
+#last-footer-fix {
+  display: none;
+}
+p,
+ul > li,
+ol > li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+}
+.review {
+  padding-left: 30px;
+}
+.review .element-number {
+  position: absolute;
+  left: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  font-size: 10px;
+  font-weight: normal;
+  line-height: 18px;
+  color: #aaa;
+}
+.review table {
+  margin-left: -30px;
+}
+.review table tr {
+  border: none;
+}
+.review table tr > :first-child {
+  position: inherit;
+  width: 30px;
+  border: none;
+  padding: 0;
+  background-color: #fff;
+  vertical-align: middle;
+}
+.review table tr > :first-child .element-number {
+  position: inherit;
+}
+.review li .element-number {
+  left: -70px;
+}
+@media print {
+  .review {
+    padding-left: 0;
+  }
+  .review table {
+    margin-left: 0;
+  }
+  .review .element-number {
+    display: none;
+  }
+}
+@media print {
+  pre {
+    white-space: pre-wrap;
+  }
+  #toc-header,
+  #toc ~ h2 {
+    page-break-before: always;
+    break-before: page;
+  }
+  #toc ~ h2 ~ h2 {
+    page-break-before: auto;
+    break-before: auto;
+  }
+  #last-footer-fix {
+    display: block !important;
+    page-break-before: always;
+    break-before: page;
+    text-align: center;
+    line-height: 37em;
+    height: 720pt;
+    border: none;
+  }
+  #last-footer-fix:after {
+    font-weight: bold;
+    content: "This page intentionally left blank";
+  }
+  #header {
+    display: table-header-group;
+    height: 4em;
+  }
+  #header:before {
+    content: 'DSP ' attr(data-doc-number);
+  }
+  #header:after {
+    float: right;
+    content: attr(data-doc-title);
+  }
+  #footer {
+    text-align: center;
+    display: table-footer-group !important;
+  }
+  #footer div {
+    border-top: .1em solid #444;
+    height: 4em;
+    margin-top: 3em;
+  }
+  #footer div:before {
+    float: left;
+    content: "Version " attr(data-doc-version);
+  }
+  #footer div:after {
+    float: right;
+    counter-increment: page;
+    content: counter(page);
+  }
+}
+
+</style>
+    <script type="text/javascript">
+if (window.location.protocol === 'file:' && !/pdf/.test(window.location.search)) {
+  document.addEventListener('toc', function() {
+    var a, el, elements, i, j, len, td;
+    document.querySelector('body').classList.toggle('review');
+    elements = document.querySelectorAll('h1 ~ p, h1 ~ ul > li, h1 ~ ol > li, h1 ~ table tr, h1, h1 ~ h2, h1 ~ h3, h1 ~ h4, h1 ~ h5, h1 ~ h6');
+    for (i = j = 0, len = elements.length; j < len; i = ++j) {
+      el = elements[i];
+      if (el.nodeName === 'TR') {
+        td = document.createElement('td');
+        el.insertBefore(td, el.firstChild);
+        el = td;
+      }
+      a = document.createElement('a');
+      a.textContent = "" + (++i);
+      a.className = 'element-number';
+      a.href = "#" + (a.id = "" + i);
+      el.appendChild(a);
+    }
+    return null;
+  });
+}
+
+var scrollToHash;
+
+window.onload = function() {
+  var $, _, block, counter, createItem, currentLevel, i, j, k, l, len, len1, len2, level, levelMap, num, oldToc, ref, tag, tagName, tags, toc, txt, ul;
+  $ = document.querySelectorAll.bind(document);
+  tags = ((function() {
+    var j, results;
+    results = [];
+    for (i = j = 2; j <= 6; i = ++j) {
+      results.push("h" + i);
+    }
+    return results;
+  })()).join(', ');
+  tags = $(tags);
+  currentLevel = 0;
+  toc = [];
+  levelMap = (function() {
+    var j, results;
+    results = [];
+    for (i = j = 2; j <= 6; i = ++j) {
+      results.push("H" + i);
+    }
+    return results;
+  })();
+  counter = new function() {
+    var j;
+    for (i = j = 2; j <= 6; i = ++j) {
+      this["H" + i] = 0;
+    }
+    return this;
+  };
+  ul = oldToc = $('#toc')[0];
+  createItem = function(href, txt) {
+    var anchor, li;
+    li = document.createElement('li');
+    anchor = document.createElement('a');
+    anchor.href = href;
+    anchor.textContent = txt;
+    li.appendChild(anchor);
+    return li;
+  };
+  while (ul.firstChild) {
+    ul.removeChild(ul.firstChild);
+  }
+  ul.setAttribute('id', 'toc');
+  ul.previousElementSibling.setAttribute('id', 'toc-header');
+  for (j = 0, len = tags.length; j < len; j++) {
+    tag = tags[j];
+    tagName = tag.tagName;
+    level = levelMap.indexOf(tagName.toUpperCase());
+    num = [];
+    if (level > currentLevel) {
+      toc.push(ul);
+      ul.appendChild(ul = document.createElement('ul'));
+    }
+    while (level < currentLevel) {
+      counter[levelMap[currentLevel]] = 0;
+      ul = toc.pop();
+      currentLevel--;
+    }
+    counter[levelMap[level]]++;
+    for (k = 0, len1 = levelMap.length; k < len1; k++) {
+      _ = levelMap[k];
+      num.push(counter[_] + ".");
+      if (_ === tagName) {
+        break;
+      }
+    }
+    txt = (num.join('')) + " " + tag.textContent;
+    ul.appendChild(createItem('#' + tag.getAttribute('id'), txt));
+    tag.removeChild(tag.lastChild);
+    tag.appendChild(document.createTextNode(txt));
+    currentLevel = level;
+  }
+  document.dispatchEvent(new Event('toc'));
+  scrollToHash();
+  ref = $('pre code');
+  for (l = 0, len2 = ref.length; l < len2; l++) {
+    block = ref[l];
+    if (/lang-/.test(block.getAttribute('class'))) {
+      hljs.highlightBlock(block);
+    }
+  }
+  return null;
+};
+
+scrollToHash = function() {
+  var ref;
+  if (location.hash && !document.querySelector(':target')) {
+    return (ref = document.getElementById(location.hash.slice(1))) != null ? ref.scrollIntoView() : void 0;
+  }
+};
+
+window.onhashchange = scrollToHash;
+
+</script>
+  </head>
+  <body>
+    <div data-doc-title="Redfish FAQ" data-doc-number="DSP2045" id="header"></div>
+    <div id="wrapper">
+      <div data-status="Work in Progress" id="dmtf">
+        <div class="preamble">
+          <div class="logo"></div>
+          <p>Document Number: DSPDSP2045</p>
+          <p>Date: 2015-07-15</p>
+          <p>Version: 1.0.0a</p>
+          
+        </div>
+        <h1>Redfish FAQ</h1>
+        <div class="wip">
+          <strong>Information for Work-in-Progress version:</strong>
+          <p><strong>IMPORTANT:</strong> This document is not a standard. It does not necessarily reflect the views of the DMTF or all of its members. Because this document is a Work in Progress, it may still change, perhaps profoundly. This document is available for public review and comment until the stated expiration date.</p>
+          <p><strong>It expires on: 2015-05-26</strong></p>
+          <p><strong>Provide any comments through the DMTF Feedback Portal: http://www.dmtf.org/standards/feedback</strong></p>
+        </div>
+        <div class="document">
+          <p>Document Type: Whitepaper</p>
+          <p>Document Status: Work in Progress</p>
+          <p>Document Language: en-US</p>
+        </div>
+        <div class="copyright">
+          <p>Copyright Notice</p>
+          <p>Copyright &copy; 2014, 2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.
+          </p></div>
+          <p>DMTF is a not-for-profit association of industry members dedicated to promoting enterprise and systems management and interoperability. Members and non-members may reproduce DMTF specifications and documents, provided that correct attribution is given. As DMTF specifications may be revised from time to time, the particular version and release date should always be noted.</p>
+          <p>Implementation of certain elements of this standard or proposed standard may be subject to third party patent rights, including provisional patent rights (herein "patent rights"). DMTF makes no representations to users of the standard as to the existence of such rights, and is not responsible to recognize, disclose, or identify any or all such third party patent right, owners or claimants, nor for any incomplete or inaccurate identification or disclosure of such rights, owners or claimants. DMTF shall have no liability to any party, in any manner or circumstance, under any legal theory whatsoever, for failure to recognize, disclose, or identify any such third party patent rights, or for such party’s reliance on the standard or incorporation thereof in its product, protocols or testing procedures. DMTF shall have no liability to any party implementing such standard, whether such implementation is foreseeable or not, nor to any patent owner or claimant, and shall have no liability or responsibility for costs or losses incurred if a standard is withdrawn or modified after publication, and shall be indemnified and held harmless by any party implementing the standard from any and all claims of infringement by a patent owner for such implementations.</p>
+          <p>For information about patents held by third-parties which have notified the DMTF that, in their opinion, such patent may relate to or impact implementations of DMTF standards, visit http://www.dmtf.org/about/policies/disclosures.php.</p>
+        </div>
+        <p id="toc-header">CONTENTS</p>
+        <ul id="toc"></ul>
+        <h1 id="redfish-frequently-asked-questions-faq-">Redfish Frequently Asked Questions (FAQ)</h1>
+<p>This document is intended to explain the rationale and reasoning behind some of the architectural decisions in the Redfish API Architecture</p>
+<h2 id="why-a-new-interface-">Why a new Interface?</h2>
+<p>The market is changing and the current solutions are not adequate to address the multiple dimensions that change is happening on.  Below is a bulleted list describing some of the shifts in the market:</p>
+<ul>
+<li>Market shifting to scale-out solutions<ul>
+<li>Massive quantities of simple servers, reliability achieved through software </li>
+<li>Usage model different than Enterprise (servers as  “cattle”, not “pets”)</li>
+<li>Customer demand for standards-based, multi-vendor deployments</li>
+</ul>
+</li>
+<li>Functionality lags in scale-out <ul>
+<li>IPMI feature set is limited to low “common denominator” (e.g. Power On/Off/Reboot, temperature value, text console)</li>
+<li>Customers increasingly developing their own tools for tight integration</li>
+<li>Increasing fragmentation of IPMI specification as OEM extensions proliferate</li>
+</ul>
+</li>
+<li>Customers exhausting basic IPMI functionality<ul>
+<li>Security and encryption support no longer meets customer requirements</li>
+<li>Increasing occurrence of proprietary extensions fragment the specification</li>
+<li>SMASH/CIM not an option for these customers (see further section)</li>
+</ul>
+</li>
+<li>New system architectures cannot be modeled in standard IPMI structure<ul>
+<li>Bit-wise encodings cannot represent complex architectural relationships</li>
+<li>Aggregation points, multi-node systems</li>
+</ul>
+</li>
+<li>Customers are asking for a modern interface<ul>
+<li>Expect APIs to use Cloud / Web protocols, structures and security models</li>
+</ul>
+</li>
+</ul>
+<h2 id="why-rest-https-json-">Why REST, HTTPS &amp; JSON?</h2>
+<p>The market is quickly evolving to adopt the RESTful/JSON style of interface for a variety of reasons.  This bulleted list outlines some of those reasons:</p>
+<ul>
+<li>REST: Rapidly replacing SOAP<ul>
+<li>Ecosystem adopting it (OpenStack, etc.)</li>
+<li>Much quicker to learn than SOAP/WS-Man</li>
+</ul>
+</li>
+<li>HTTPS: The Web protocol<ul>
+<li>Well-understood by admins</li>
+<li>Known security model</li>
+<li>Known network configuration</li>
+<li>Being taught in High Schools and Jr Colleges</li>
+</ul>
+</li>
+<li>JSON: Modern data format<ul>
+<li>Human-readable</li>
+<li>Simpler than XML</li>
+<li>Modern language support</li>
+<li>Rapid growth</li>
+</ul>
+</li>
+<li>Combination the de-facto choice for public APIs<ul>
+<li><a href="http://fredonfire.com/wp-content/uploads/2011/10/Chart-Protocol-Usage-by-Web-APIs.png">Most Popular Protocols used by Web APIs</a></li>
+<li><a href="http://static.squarespace.com/static/51361f2fe4b0f24e710af7ae/t/52dc3638e4b0d99728f927ae/1390163522743/codeeval2014.jpg">Most Popular Coding Languages 2014</a></li>
+<li><a href="http://www.programmableweb.com/wp-content/data-formats2.jpg">Data Formats used in New APIs</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="why-odata-">Why OData?</h2>
+<p>Following common OData conventions for describing schema, url conventions, and naming and structure of common properties in a JSON payload, not only encapsulate best practices for RESTful APIs but further enables Redfish services to be consumed by a growing ecosystem of generic OData client libraries, applications, and tools.  </p>
+<p>So with Redfish, we get the best of both worlds - a direct API accessible by JSON developers as well as the growing number of OData clients. </p>
+<h2 id="why-two-schema-formats-">Why Two Schema formats?</h2>
+<p>We wanted to support both a direct API accessible by JSON developers as well as the growing number of OData clients. </p>
+<h3 id="why-odata-schema-">Why OData Schema?</h3>
+<p>We are trying to adopt as many existing standards as possible.  OData is a ratified standard, on its way to ISO standardization. OData defines a rich schema definition language that describes things in terms of entities (things) and relationships - the way we think about things in the real world. OData&#39;s schema language is inherently extensible through annotations. Those extensions can be shared uniquely identified through URIs and shared across services and industries with common semantics as &quot;vocabularies&quot;. Schema can be developed very rapidly due to tools and human readability.</p>
+<h3 id="why-json-schema-">Why JSON Schema?</h3>
+<p>We are trying to adopt as many existing standards as possible.  Since JSON schema is being adopted by the IETF (currently in draft-4) and is already in JSON (thus can be transferred by our protocol), it was one of the few candidates.  It is also extensible, so we can add any qualifiers not represented in the base schema.  Additionally, because it is JSON, it can be utilized by the existing tool chain.  It also helps us develop the schema very rapidly due to tools and human readability.  And there is not a JSON version of CSDL (OData schema) available yet.</p>
+<h2 id="why-hypermedia-api-">Why Hypermedia API?</h2>
+<p>A single API style that will match the myriad of computing platforms is required.  The industry cannot support multiple interface or programming styles.  A single interface that spans the market from standalone servers to hyperscale as well as partionable and even virtual systems is needed by customers.  A fixed URI API methodology will not suffice to show the various containment relationships between the various forms of sheet metal, the servers within them and the managers associated with them.  These means a 1-to-many or many-to-many cardinality of associations is needed.  </p>
+<p>Additionally, the API must be easy for simple systems and flexible for hyperscale.  The use of hrefs to represent associations and collections for similar resources has been proven in hypermedia APIs.</p>
+<h3 id="why-force-the-use-of-redfish-v1-as-the-service-root-">Why force the use of &quot;/redfish/v1/&quot; as the service root?</h3>
+<p>It was chosen to represent the version of the protocol.  Resources themselves have a separate versioning (the use of the Type property).  Protocols have a different lifecycle than the data model they transport so a versioning mechanism is necessary.</p>
+<p>The two choices were fixed URI or an X-Header.  The RESTful world has adopted the fixed URI methodology and is veering away from non-standard headers (like X-anything).  Additionally, headers in general and X headers in specific are difficult to use (though not impossible) in some of the tool sets.</p>
+<h2 id="why-patch-and-put-">Why PATCH and PUT?</h2>
+<p>PUT has replacement semantics -- properties not specified in a put are reset to default values (generally null). For example, if a resource allows a Setting Data (resource of settings to be applied in the future), PUT provides a way to clear existing properties. But what about when you only want to change a single property? Do you need to send all the properties? What if there are properties you don&#39;t know about?</p>
+<p>PATCH solves this.  While PUT always does a complete replacement, PATCH always does a partial replacement.  Deterministic behaviour for the service is achieved without complex logic. </p>
+<p>Because it is considered safer (because it doesn&#39;t overwrite unintended properties), PATCH is the preferred method for updates. PATCH is gaining wide adoption in the industry, and is already supported by Open Stack and many other APIs and in available in many off the shell web servers.</p>
+<h2 id="why-push-eventing-only-">Why PUSH Eventing only?</h2>
+<p>We need some kind of eventing mechanism to meet comp with SNMP, IPMI and other protocols.  </p>
+<p>The two methods are &quot;push&quot; and &quot;pull&quot;.  Push sends events to a destination and pulls create a queue where clients can retrieve events.  Pull eventing is resource intensive in a light-weight, small footprint BMC.  This is why they already use push style eventing since the data does not need to be retained in precious BMC processing memory with push style eventing.</p>
+<p>Note that in future versions of the spec, other eventing methods may be supported.</p>
+<h2 id="why-separation-of-data-model-from-protocol-">Why separation of data model from protocol?</h2>
+<p>The data model is expected to change, including extensions added to it, over time.  Therefore, churn is expected.  However, the protocol portion of the specification should remain relatively stable.  So, instead of churning the entire specification, this separation attempts to isolate unnecessary versioning of unaffected specification sections.</p>
+<p>Strict forward compatibility rules are in the specification, similar to other data models.  The one constant is that the type annotation contains unique, dereferenceable URI to the definition for the resource so, regardless of resource type, the schema can always be obtained.</p>
+<h2 id="what-s-a-message-registry-and-why-did-you-select-it-">What&#39;s a message registry and why did you select it?</h2>
+<p>Message registries are not a new concept.  They allow the Management Processor to retain a short identifier which results in a look up for the space intensive message contained a registry.  Mechanisms are in place for parameter substitution on a per-message basis.  </p>
+<p>Message registries are not only light weight, but make it easy to support internationalization since the management processor does not need to contain the translations.  Instead, the registry itself can be translated and the client can then display any translations needed.</p>
+<p>One of the things you will notice is that Log Entries, Event Messages, Extended Error Information and Message Registries are all of similar format.  We are attempting to optimize both the storage in the service and the usage by Clients in keeping all of this information in as similar a format as possible.  </p>
+<h3 id="why-is-the-published-message-registry-different-than-the-one-in-the-mockup-">Why is the Published Message Registry different than the one in the Mockup?</h3>
+<p>You&#39;ll notice that @odata.context and @odata.id are missing from the published message registry.  The reason is that this isn&#39;t retrieved via an implementation.  The message registry in the mockup, however, is returned as if from a genuine implementation.  This it has the URI that it came from as well as the path to metadata within the implementation.</p>
+<h2 id="what-s-a-relateditem-">What&#39;s a RelatedItem?</h2>
+<p>We needed a way to tie together things like sensors with the things they monitor.  We also needed a way to show member sets, such as in Redundancy.  URLs are the preferred referencing mechanism, but we needed to reference the individual property within a resource and not a whole resource.  So we have a RelatedItem, the format of which is possible to be either a JSON Pointer or an OData format.  </p>
+<h3 id="why-do-these-values-have-two-different-formats-and-how-does-an-implementer-know-which-is-which-">Why do these values have two different formats and how does an implementer know which is which?</h3>
+<p>If the RelatedItem is a JSON Pointer, there will be a &#39;#&#39; character in it.  The part before the # will be the OdataID (href) of the resource and the part after will be the property path within that resource.  Most broswer/library code acommodates JSON Pointer, so a client should be able to do a GET on the RelatedItem and get just the sub-resource.</p>
+<p>If the RelatedItem is an OData format item, or if it is a whole resource, it will not have a &#39;#&#39; character in it.  In this case, a client should be able to do a GET on the RelatedItem and get just the sub-resource since that is allowable for &quot;Referencable&quot; properties in OData.</p>
+<h2 id="why-not-cim-mof-">Why not CIM &amp; MOF?</h2>
+<p>We took a different approach for Redfish - we started with the toolset and interface style customers are adopting and leveraged that.  We learned what they use instead of forcing them to learn our way and then hope vendors develop tools to go with it.</p>
+<p>CIM is very normalized, even with View classes.  There are so many classes and they are not purpose built for the customers wanting this technology. </p>
+<p>The MOF files are not in JSON.  Even if we translated them to JSON, we would need to prune them and turn all of the associations into hrefs in each class.  Then we would have to create view classes.  We would also have to rationalize the values which do not reflect true server/hyperscale values (look at the state and status fields alone, or look at how power is done) (or networking - 17 resources to show what Redfish can do in a single object within a resource).</p>
+<p>Looking at a 4 processor System with 4DIMMs, gathering just the CPU/DIMM information would take over 90 IOs.  A view class approach would take from 6 to 14 IOs.  Redfish can do all of this and more in just 1 IO.</p>
+<p>Next, consider the tool set - HTTP &amp; JSON have a rich set of tools and programming languages with existing support.  MOF/CIM is limited and vendor specific when it comes to tools.  Many of the tools hoped for never materialized.</p>
+<p>Every BMC today has a web server and most of them surface a web page that has a JavaScript driven GUI.  So all of the components for an implementation are already in the firmware footprint.  CIM/WBEM/MOF would require additional footprint.  </p>
+<p>The amount of documentation that it takes to understand CIM and the protocols takes reams and reams of paper, resulting in a stack well over a foot high.  Our goal is to have someone read our spec in the morning, play with the data model an hour later and be coding by the afternoon - and that person should not be required to have a college education, understand cardinality, etc.</p>
+<p>Lastly is customer demand.  The customers asking for a RESTful API see CIM &amp; MOF as &quot;old&quot;, &quot;Windows centric&quot;, &quot;storage centric&quot;, &quot;OS centric&quot;, &quot;too hard&quot; and other negative feedback.  They are asking for something simple that meets their &quot;10 commandlets&quot;.</p>
+<h2 id="why-not-ironic-">Why not Ironic?</h2>
+<p>Ironic is the hardware management API for OpenStack.  It is OpenStack specific and doesn&#39;t have the functionality of a full BMC - only what OpenStack needs.  It is means as a translation layer between OpenStack and IPMI, SNMP and other protocols.  It does not have all of the features we need and is very much tied to OpenStack.  The market for a RESTful API is greater than just OpenStack.  That being said, we expect a Redfish shim for Ironic to be developed. </p>
+<h2 id="why-is-the-etag-algorithm-left-to-the-implementation-">Why is the ETag algorithm left to the implementation?</h2>
+<p>Considering the different ETag models (Weak/Strong) mentioned in the spec it seems that leaving the model decision up to the server implementation will leave clients not knowing what has been implemented and therefore not knowing how to interpret the ETag.  </p>
+<p>In practice it doesn&#39;t matter since the value of the ETag will only be as good as the server is capable of providing for.  The client should treat ETags as opaque anyway and use them to determine if data has changed.  This is the adopted practice in all web servers and is what RFC2616 allows.</p>
+<h2 id="why-does-redfish-need-to-use-etags-at-all-">Why does Redfish need to use ETags at all?</h2>
+<p>It allows the use of the If-Match header for replacement of resources.  It also allows the clients to determine if anything has changed before doing a large fetch (a Server collection in Moonshot is hundreds of servers).</p>
+<p>It also allows the server the option of providing something more robust than a simple modified time.</p>
+<h2 id="why-isn-t-localization-supported-">Why isn&#39;t Localization Supported?</h2>
+<p>For version 1.0, priority was given to features, functions and scalability.  But some thought was given to Client-side localization rather than service side localization.</p>
+<p>Schema-supplied display strings may be localized as necessary by clients and there are also JSON Schema file values for localized Schema, but any Schema file may only contain one language. Alternate language schemas may be published and available to Redfish clients, but need not be provided via the Redfish implementation.</p>
+<p>Property names defined within a Redfish schema are never localized. User-supplied string-valued property values such as an asset tag may be localized. Localizable string valued properties could be annotated with the OData IsLanguageDependent annotation term.</p>
+<p>Registries, likewise, may also be localized and lend themselves to translation.  The MessageID can be used to look up values in a translated registry as easily as in a non-localized version.</p>
+<p>While thought was given to other localization mechanisms, it was determined to consider localization fully in later versions.</p>
+<h1 id="security">Security</h1>
+<h2 id="why-are-aes-ciphers-should-">Why are AES ciphers &quot;should&quot;?</h2>
+<p>These ciphers provide a requisite level of security, efficient hardware implementations exist and are widely available to support even low cost implementations.  They are what is recommended now.  But we know security requirements change over time, so they are &quot;shoulds&quot; not &quot;shalls&quot;.  And they may not be right for every situation but they are what we believe implementers should support at the time of the initial release of the 1.0 Redfish specification.</p>
+<h2 id="why-are-psk-gcm-aes-ciphers-specifically-mentioned-">Why are PSK GCM AES Ciphers specifically mentioned?</h2>
+<p>While TLS is an excellent solution for security, it depends on a full PKI implementation for basic identity verification. PSK GCM ciphers provide both identity verification and encryption, allowing for a bi-directionally trusted connection during initial setup or factory default configurations on the basis of a known initial password.  This information is also relative to the initial release of the 1.0 Redfish specification. </p>
+<h2 id="etag-modification-data-leaks-private-information-about-resources">ETag modification data leaks private information about resources</h2>
+<p>It is possible for an otherwise invisible change to an object - e.g. changing a password - to cause an ETag to change, potentially providing useful information. ETag implementations are left to the vendor, many current ETag implementations show this metadata and accept the risk.</p>
+<h2 id="accountservice-roles-allow-an-escalation-of-privileges">AccountService roles allow an escalation of privileges</h2>
+<p>It is possible for a user with the System Administrator role to create user accounts which are assigned to roles which the creating user does not themselves possess. This escalation of privileges is well understood and accepted by users, and avoids complications caused by introducing special privilege states or additional roles to handle privilege propagation corner cases.</p>
+<h2 id="logging-of-events">Logging of events</h2>
+<p>Redfish requires logging of some events, but does not require the implementation of a local log, though one is implied due to the fact that it is represented in both metadata/schema and the mockup. This allows implementations of logging that are record-only logs, or logs which are securely stored outside the service using services like syslog.</p>
+
+        <div id="last-footer-fix"></div>
+      </div>
+      <div id="footer"><div data-doc-version="1.0.0a">Work in Progress – Not a DMTF Standard – DMTF Confidential– DMTF Confidential</div></div>
+    </body>
+  </html>
