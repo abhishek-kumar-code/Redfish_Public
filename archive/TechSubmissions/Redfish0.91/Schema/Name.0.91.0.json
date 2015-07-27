@@ -1,8 +1,0 @@
-{
-    "type": "string",
-    "$schema": "http://www.redfishspecification.org/schema",
-    "description": "The name of the resource or array element.",
-    "readonly": true,
-    "specification": "This object represents the Name property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification at <url>.  Copyright (c) 2013, Avocent & Hewlett-Packard.  All rights reserved.  The value of this string shall be of the format for the reserved word *Name*",
-    "copyright": "Copyright 2013-2014 Avocent Corporation. Copyright 2014 Dell Inc. Copyright 2013-2014 Hewlett-Packard Development Company, L.P. Copyright 2014 Intel Corporation."
-}
