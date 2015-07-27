@@ -1,23 +1,20 @@
 {
-    "@odata.context": "/redfish/v1/$metadata#TaskService",
+    "@Redfish.Copyright": "Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata/TaskService",
     "@odata.id": "/redfish/v1/TaskService",
-    "@odata.type": "#TaskService.0.96.0.TaskService",
+    "@odata.type": "#TaskService.1.0.0.TaskService",
+    "Id": "TaskService",
     "Name": "Tasks Service",
-    "MaxNumberOfTasks": 10,
+    "DateTime": "2015-03-13T04:14:33+06:00",
     "OverWritePolicy": "Never",
     "LifeCycleEventOnTaskStateChange": true,
     "Status": {
         "State": "Enabled",
         "Health": "OK"
     },
-    "Oem": {},
-    "links": {
-        "Tasks": [
-            {
-                "id": "1",
-                "frag": "/Items/0",
-                "@odata.id": "/redfish/v1/TaskService/Tasks"
-            }
-        ]
-    }
+    "ServiceEnabled": true,
+    "Tasks": {
+        "@odata.id": "/redfish/v1/TaskService/Tasks"
+    },
+    "Oem": {}
 }
