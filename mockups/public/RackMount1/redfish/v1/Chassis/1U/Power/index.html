@@ -1,5 +1,5 @@
 {
-    "@Redfish.Copyright":"Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@Redfish.Copyright": "Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#Chassis/Members/1U/Power/$entity",
     "@odata.id": "/redfish/v1/Chassis/1U/Power",
     "@odata.type": "#Power.1.0.0.Power",
@@ -9,7 +9,7 @@
         {
             "@odata.id": "/redfish/v1/Chassis/1U/Power#/PowerControl/0",
             "MemberId": "0",
-	    "Name": "Server Power Control",
+            "Name": "Server Power Control",
             "PowerConsumedWatts": 344,
             "PowerRequestedWatts": 800,
             "PowerAvailableWatts": 0,
@@ -25,16 +25,20 @@
                 "LimitInWatts": 500,
                 "LimitException": "LogEventOnly",
                 "CorrectionInMs": 50
-	        },
-            "RelatedItem": [ 
-                {"@odata.id": "/redfish/v1/Systems/437XR1138R2"},
-                {"@odata.id": "/redfish/v1/Chassis/1U"}
+            },
+            "RelatedItem": [
+                {
+                    "@odata.id": "/redfish/v1/Systems/437XR1138R2"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Chassis/1U"
+                }
             ],
-    	    "Status": {
-	            "State": "Enabled",
-	            "Health": "OK"
-	        },
-	    "Oem": {}
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK"
+            },
+            "Oem": {}
         }
     ],
     "Voltages": [
@@ -58,8 +62,12 @@
             "MaxReadingRange": 20,
             "PhysicalContext": "VoltageRegulator",
             "RelatedItem": [
-                {"@odata.id": "/redfish/v1/Systems/437XR1138R2" },
-                {"@odata.id": "/redfish/v1/Chassis/1U" }
+                {
+                    "@odata.id": "/redfish/v1/Systems/437XR1138R2"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Chassis/1U"
+                }
             ]
         },
         {
@@ -80,8 +88,12 @@
             "MaxReadingRange": 20,
             "PhysicalContext": "VoltageRegulator",
             "RelatedItem": [
-                {"@odata.id": "/redfish/v1/Systems/437XR1138R2" },
-                {"@odata.id": "/redfish/v1/Chassis/1U" }
+                {
+                    "@odata.id": "/redfish/v1/Systems/437XR1138R2"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Chassis/1U"
+                }
             ]
         }
     ],
@@ -106,7 +118,9 @@
             "PartNumber": "0000001A3A",
             "SparePartNumber": "0000001A3A",
             "RelatedItem": [
-              { "@odata.id": "/redfish/v1/Chassis/1U" }
+                {
+                    "@odata.id": "/redfish/v1/Chassis/1U"
+                }
             ]
         }
     ],
