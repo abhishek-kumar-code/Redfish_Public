@@ -2,8 +2,8 @@
     "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.1.0.0.json",
     "title": "#VirtualMedia.1.0.0.VirtualMedia",
     "$ref": "#/definitions/VirtualMedia",
-    "definitions":{
-        "ConnectedVia":{
+    "definitions": {
+        "ConnectedVia": {
             "type": "string",
             "enum": [
                 "NotConnected",
@@ -18,7 +18,7 @@
                 "Oem": "Connected via an OEM-defined method"
             }
         },
-        "MediaType":{
+        "MediaType": {
             "type": "string",
             "enum": [
                 "CD",
@@ -33,13 +33,20 @@
                 "DVD": "A DVD-ROM format image"
             }
         },
-        "VirtualMedia":{
+        "VirtualMedia": {
             "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
                     "description": "This property shall specify a valid odata or Redfish property."
-                }            
+                }
             },
             "additionalProperties": false,
             "properties": {
@@ -87,7 +94,8 @@
                 "MediaTypes": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/MediaType"                        },
+                        "$ref": "#/definitions/MediaType"
+                    },
                     "readonly": true,
                     "description": "This is the media types supported as virtual media.",
                     "longDescription": "The values of this array shall be the supported media types for this connection."

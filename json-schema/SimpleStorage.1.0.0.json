@@ -2,14 +2,21 @@
     "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.1.0.0.json",
     "title": "#SimpleStorage.1.0.0.SimpleStorage",
     "$ref": "#/definitions/SimpleStorage",
-    "definitions":{
-        "Device":{
+    "definitions": {
+        "Device": {
             "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
                     "description": "This property shall specify a valid odata or Redfish property."
-                }            
+                }
             },
             "additionalProperties": false,
             "properties": {
@@ -48,13 +55,20 @@
                 "Name"
             ]
         },
-        "SimpleStorage":{
+        "SimpleStorage": {
             "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
                     "description": "This property shall specify a valid odata or Redfish property."
-                }            
+                }
             },
             "additionalProperties": false,
             "properties": {
@@ -93,7 +107,8 @@
                 "Devices": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/Device"                        },
+                        "$ref": "#/definitions/Device"
+                    },
                     "readonly": true,
                     "description": "The storage devices associated with this resource",
                     "longDescription": "This property shall contain a list of storage devices associated with this resource"

@@ -4,7 +4,7 @@
     "$ref": "#/definitions/Redundancy",
     "definitions": {
         "Redundancy": {
-            "oneOf": [
+            "anyOf": [
                 {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
                 },
@@ -13,6 +13,6 @@
                 }
             ]
         }
-    },        
+    },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
 }

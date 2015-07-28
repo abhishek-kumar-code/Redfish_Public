@@ -2,8 +2,8 @@
     "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.1.0.0.json",
     "title": "#Power.1.0.0.Power",
     "$ref": "#/definitions/Power",
-    "definitions":{
-        "LineInputVoltageType":{
+    "definitions": {
+        "LineInputVoltageType": {
             "type": "string",
             "enum": [
                 "Unknown",
@@ -22,13 +22,20 @@
                 "DC480V": "High Voltage DC input (380V)"
             }
         },
-        "Power":{
+        "Power": {
             "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
                     "description": "This property shall specify a valid odata or Redfish property."
-                }            
+                }
             },
             "additionalProperties": false,
             "properties": {
@@ -118,13 +125,20 @@
             "description": "This is the schema definition for the Power Metrics.  It represents the properties for Power Consumption and Power Limiting.",
             "longDescription": "This resource shall be used to represent a power metrics resource for a Redfish implementation."
         },
-        "PowerControl":{
+        "PowerControl": {
             "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
                     "description": "This property shall specify a valid odata or Redfish property."
-                }            
+                }
             },
             "additionalProperties": false,
             "properties": {
@@ -228,13 +242,20 @@
             "description": "This is the base type for addressable members of an array.",
             "longDescription": "Array members can be referenced using the value returned in the @odata.id property which may or may not be a dereferenceable URL. The @odata.id of this entity shall be the location of this element within an Item."
         },
-        "PowerLimit":{
+        "PowerLimit": {
             "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
                     "description": "This property shall specify a valid odata or Redfish property."
-                }            
+                }
             },
             "additionalProperties": false,
             "properties": {
@@ -263,7 +284,7 @@
             },
             "description": "This object contains power limit status and configuration information for the chassis."
         },
-        "PowerLimitException":{
+        "PowerLimitException": {
             "type": "string",
             "enum": [
                 "NoAction",
@@ -278,13 +299,20 @@
                 "Oem": "Take an OEM-defined action."
             }
         },
-        "PowerMetric":{
+        "PowerMetric": {
             "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
                     "description": "This property shall specify a valid odata or Redfish property."
-                }            
+                }
             },
             "additionalProperties": false,
             "properties": {
@@ -330,13 +358,20 @@
                 }
             }
         },
-        "PowerSupply":{
+        "PowerSupply": {
             "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
                     "description": "This property shall specify a valid odata or Redfish property."
-                }            
+                }
             },
             "additionalProperties": false,
             "properties": {
@@ -481,7 +516,7 @@
             "description": "Details of a power supplies associated with this system or device",
             "longDescription": "Array members can be referenced using the value returned in the @odata.id property which may or may not be a dereferenceable URL. The @odata.id of this entity shall be the location of this element within an Item."
         },
-        "PowerSupplyType":{
+        "PowerSupplyType": {
             "type": "string",
             "enum": [
                 "Unknown",
@@ -494,13 +529,20 @@
                 "DC": "Direct Current (DC) power supply"
             }
         },
-        "Voltage":{
+        "Voltage": {
             "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
                     "description": "This property shall specify a valid odata or Redfish property."
-                }            
+                }
             },
             "additionalProperties": false,
             "properties": {

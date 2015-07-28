@@ -2,14 +2,21 @@
     "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.1.0.0.json",
     "title": "#LogService.1.0.0.LogService",
     "$ref": "#/definitions/LogService",
-    "definitions":{
-        "LogService":{
+    "definitions": {
+        "LogService": {
             "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
                     "description": "This property shall specify a valid odata or Redfish property."
-                }            
+                }
             },
             "additionalProperties": false,
             "properties": {
@@ -79,26 +86,38 @@
                 },
                 "Actions": {
                     "type": "object",
-                    "patternProperties": { 
-                        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
-                            "type": ["array", "boolean", "number", "null", "object", "string"],
+                    "patternProperties": {
+                        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                            "type": [
+                                "array",
+                                "boolean",
+                                "number",
+                                "null",
+                                "object",
+                                "string"
+                            ],
                             "description": "This property shall specify a valid odata or Redfish property."
-                        }                    
+                        }
                     },
                     "additionalProperties": false,
                     "properties": {
                         "Oem": {
                             "type": "object",
-                            "patternProperties": { 
-                                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
-                                    "type": ["array", "boolean", "number", "null", "object", "string"],
+                            "patternProperties": {
+                                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                                    "type": [
+                                        "array",
+                                        "boolean",
+                                        "number",
+                                        "null",
+                                        "object",
+                                        "string"
+                                    ],
                                     "description": "This property shall specify a valid odata or Redfish property."
-                                }                            
+                                }
                             },
                             "additionalProperties": true,
-                            "properties": {
-
-                            }
+                            "properties": {}
                         },
                         "#LogService.ClearLog": {
                             "$ref": "#/definitions/ClearLog"
@@ -120,7 +139,7 @@
             "description": "This resource represents the log service for the resource or service to which it is associated.",
             "longDescription": "This resource shall be used to represent a log service for a Redfish implementation."
         },
-        "OverWritePolicy":{
+        "OverWritePolicy": {
             "type": "string",
             "enum": [
                 "Unknown",
@@ -133,12 +152,19 @@
                 "NeverOverWrites": "When full, new entries to the Log will be discarded"
             }
         },
-        "ClearLog":{
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
+        "ClearLog": {
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
                     "description": "This property shall specify a valid odata or Redfish property."
-                }            
+                }
             },
             "type": "object",
             "additionalProperties": false,

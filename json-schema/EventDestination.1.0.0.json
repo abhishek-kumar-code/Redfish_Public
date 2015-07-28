@@ -2,14 +2,21 @@
     "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.1.0.0.json",
     "title": "#EventDestination.1.0.0.EventDestination",
     "$ref": "#/definitions/EventDestination",
-    "definitions":{
-        "EventDestination":{
+    "definitions": {
+        "EventDestination": {
             "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
                     "description": "This property shall specify a valid odata or Redfish property."
-                }            
+                }
             },
             "additionalProperties": false,
             "properties": {
@@ -45,7 +52,8 @@
                 "EventTypes": {
                     "type": "array",
                     "items": {
-                        "$ref": "http://redfish.dmtf.org/schemas/v1/Event.1.0.0.json#/definitions/EventType"                        },
+                        "$ref": "http://redfish.dmtf.org/schemas/v1/Event.1.0.0.json#/definitions/EventType"
+                    },
                     "readonly": true,
                     "description": "This property shall contain the types of events that shall be sent to the desination."
                 },
@@ -63,7 +71,8 @@
                 "HttpHeaders": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/HttpHeaderProperty"                        },
+                        "$ref": "#/definitions/HttpHeaderProperty"
+                    },
                     "description": "This is for setting HTTP headers, such as authorization information.  This object will be null on a GET.",
                     "longDescription": "This property shall contain an object consisting of the names and values of of HTTP header to be included with every event POST to the Event Destination.  This property shall be null on a GET."
                 }
@@ -76,27 +85,32 @@
             ],
             "description": "This is the base type for resources and referenceable members."
         },
-        "EventDestinationProtocol":{
+        "EventDestinationProtocol": {
             "type": "string",
             "enum": [
                 "Redfish"
             ]
         },
-        "HttpHeaderProperty":{
+        "HttpHeaderProperty": {
             "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
                     "description": "This property shall specify a valid odata or Redfish property."
                 },
-                "^[^:\\s]+$": { 
-                    "type":"string"
-                }            
+                "^[^:\\s]+$": {
+                    "type": "string"
+                }
             },
             "additionalProperties": false,
-            "properties": {
-
-            },
+            "properties": {},
             "description": "The value of the HTTP header is the property value.  The header name is the property name."
         }
     },

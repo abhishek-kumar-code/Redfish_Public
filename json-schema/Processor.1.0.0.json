@@ -2,8 +2,8 @@
     "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.1.0.0.json",
     "title": "#Processor.1.0.0.Processor",
     "$ref": "#/definitions/Processor",
-    "definitions":{
-        "InstructionSet":{
+    "definitions": {
+        "InstructionSet": {
             "type": "string",
             "enum": [
                 "x86",
@@ -26,13 +26,20 @@
                 "OEM": "OEM-defined"
             }
         },
-        "Processor":{
+        "Processor": {
             "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
                     "description": "This property shall specify a valid odata or Redfish property."
-                }            
+                }
             },
             "additionalProperties": false,
             "properties": {
@@ -142,7 +149,7 @@
             },
             "description": "This is the schema definition for the Processor resource.  It represents the properties of a processor attached to a System."
         },
-        "ProcessorArchitecture":{
+        "ProcessorArchitecture": {
             "type": "string",
             "enum": [
                 "x86",
@@ -159,13 +166,20 @@
                 "OEM": "OEM-defined"
             }
         },
-        "ProcessorId":{
+        "ProcessorId": {
             "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
                     "description": "This property shall specify a valid odata or Redfish property."
-                }            
+                }
             },
             "additionalProperties": false,
             "properties": {
@@ -225,7 +239,7 @@
                 }
             }
         },
-        "ProcessorType":{
+        "ProcessorType": {
             "type": "string",
             "enum": [
                 "CPU",

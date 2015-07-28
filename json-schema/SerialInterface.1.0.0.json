@@ -2,8 +2,8 @@
     "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.1.0.0.json",
     "title": "#SerialInterface.1.0.0.SerialInterface",
     "$ref": "#/definitions/SerialInterface",
-    "definitions":{
-        "BitRate":{
+    "definitions": {
+        "BitRate": {
             "type": "string",
             "enum": [
                 "1200",
@@ -17,7 +17,7 @@
                 "230400"
             ]
         },
-        "ConnectorType":{
+        "ConnectorType": {
             "type": "string",
             "enum": [
                 "RJ45",
@@ -31,7 +31,7 @@
                 "uUSB"
             ]
         },
-        "DataBits":{
+        "DataBits": {
             "type": "string",
             "enum": [
                 "5",
@@ -40,7 +40,7 @@
                 "8"
             ]
         },
-        "FlowControl":{
+        "FlowControl": {
             "type": "string",
             "enum": [
                 "None",
@@ -53,7 +53,7 @@
                 "Hardware": "Out of band flow control imposed"
             }
         },
-        "Parity":{
+        "Parity": {
             "type": "string",
             "enum": [
                 "None",
@@ -63,7 +63,7 @@
                 "Space"
             ]
         },
-        "PinOut":{
+        "PinOut": {
             "type": "string",
             "enum": [
                 "Cisco",
@@ -71,13 +71,20 @@
                 "Digi"
             ]
         },
-        "SerialInterface":{
+        "SerialInterface": {
             "type": "object",
-            "patternProperties": { 
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$" : {
-                    "type": ["array", "boolean", "number", "null", "object", "string"],
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
                     "description": "This property shall specify a valid odata or Redfish property."
-                }            
+                }
             },
             "additionalProperties": false,
             "properties": {
@@ -159,14 +166,14 @@
             "description": "This schema defines an asynchronous serial interface resource.",
             "longDescription": "This resource shall be used to represent serial resources as part of the Redfish specification."
         },
-        "SignalType":{
+        "SignalType": {
             "type": "string",
             "enum": [
                 "Rs232",
                 "Rs485"
             ]
         },
-        "StopBits":{
+        "StopBits": {
             "type": "string",
             "enum": [
                 "1",
