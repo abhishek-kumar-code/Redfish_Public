@@ -2274,9 +2274,9 @@ The Authorization subsystem uses Roles and Privileges to control which users hav
   - This specification defines a set of pre-defined roles, one of which shall be assigned to a user when a user is created.
   - The pre-defined roles shall be created as follows:
     - Role Name  = "Administrator"
-      - AssignedPrivileges = Login, ConfigureManager, ConfigureUser, ConfigureComponent, ConfigureSelf
+      - AssignedPrivileges = Login, ConfigureManager, ConfigureUsers, ConfigureComponents, ConfigureSelf
     - Role Name = "Operator"
-      - AssignedPrivileges = Login, ConfigureComponent, ConfigureSelf
+      - AssignedPrivileges = Login, ConfigureComponents, ConfigureSelf
     - Role Name = "ReadOnly"
       - AssignedPrivileges = Login, ConfigureSelf
   - Implementations shall support all of the pre-defined roles.
