@@ -141,7 +141,7 @@ The specifications set normative requirements for Redfish services and associate
 
 The specifications do not set requirements that particular hardware or firmware must be used to implement the Redfish interfaces and functions.
 
-### Principle Goals
+### Goals
 
 There are many objectives and goals of Redfish as an architecture, as a data representation, and of the definition of the protocols that are used to access and interact with a Redfish service. Redfish seeks to provide specifications that meet the following goals:
 * Scalable – To support stand-alone machines to racks of equipment found in cloud service environments.
