@@ -72,6 +72,7 @@
             "patternProperties": {
                 "([a-zA-Z0-9]+(\\.[a-z]{2,})?|EID:[0-9]+)(:.+)?" : {
                     "type": "object",
+                    "additionalProperties": true,                    
                     "description": "This property shall specify a valid odata or Redfish property."
                 }
             },
