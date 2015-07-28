@@ -1,0 +1,36 @@
+{
+    "@Redfish.Copyright": "Copyright � 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#Managers/Members/BMC/LogServices/Members/Log/Entries",
+    "@odata.id": "/redfish/v1/Managers/BMC/LogServices/Log/Entries",
+    "@odata.type": "#LogEntryCollection.LogEntryCollection",
+    "Name": "Log Service Collection",
+    "Description": "Collection of Logs for this System",
+    "members@odata.count": 1,
+    "members": [
+        {
+            "@odata.id": "/redfish/v1/Managers/BMC/LogServices/Log/Entries/1",
+            "@odata.type": "#LogEntry.1.0.0.LogEntry",
+            "Id": "1",
+            "Name": "Log Entry 1",
+            "EntryType": "SEL",
+            "OEMRecordFormat": "Contoso",
+            "Severity": "Critical",
+            "Created": "2012-03-07T14:44",
+            "EntryCode": "Assert",
+            "SensorType": "Temperature",
+            "SensorNumber": 1,
+            "Message": "System May be Melting",
+            "MessageId": "Event.1.0.TempWayTooHot",
+            "MessageArgs": [
+                "88"
+            ],
+            "Links": {
+                "OriginOfCondition": {
+                    "@odata.id": "/redfish/v1/Chassis/1U/Thermal"
+                },
+                "Oem": {}
+            },
+            "Oem": {}
+        }
+    ]
+}
