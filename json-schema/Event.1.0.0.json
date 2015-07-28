@@ -142,7 +142,7 @@
                     "type": "string",
                     "readonly": true,
                     "description": "A context can be supplied at subscription time.  This property is the context value supplied by the subscriber.",
-                    "longDescription": "This property shall contain a client supplied context for the ListnerDestination to which this event is being sent."
+                    "longDescription": "This property shall contain a client supplied context for the Event Destination to which this event is being sent."
                 },
                 "OriginOfCondition": {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef",
