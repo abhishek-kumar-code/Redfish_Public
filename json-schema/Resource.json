@@ -70,12 +70,12 @@
         "Oem": {
             "type": "object",
             "patternProperties": {
-                "([a-zA-Z0-9]+(\.[a-z]{2,})?|EID:[0-9]+)(:.+)?" : {
+                "([a-zA-Z0-9]+(\\.[a-z]{2,})?|EID:[0-9]+)(:.+)?" : {
                     "type": "object",
                     "description": "This property shall specify a valid odata or Redfish property."
                 }
             },
-            "properties": { },
+            "properties": {},
             "description": "Oem extension object.",
             "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
         },
