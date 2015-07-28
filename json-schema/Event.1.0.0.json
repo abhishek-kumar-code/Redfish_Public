@@ -114,7 +114,7 @@
                     "type": "string",
                     "readonly": true,
                     "description": "This is the severity of the event.",
-                    "longDescription": "The value of this property shall be the severity of the event, as defined in the Status section of the Redfish specificaiton."
+                    "longDescription": "The value of this property shall be the severity of the event, as defined in the Status section of the Redfish specification."
                 },
                 "Message": {
                     "type": "string",
