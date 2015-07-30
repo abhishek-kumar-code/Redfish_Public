@@ -466,7 +466,7 @@ HTTP defines headers that can be used in request messages. The following table d
 
 | Header       | Required | Supported Values             | Description                                                                                              |
 | --------     | ---      | -----------------            | ------------                                                                                             |
-| X-Auth-Token | Yes      | Opaque encoded octet strings | Used for bearer authentication of user sessions. The token value shall be indistinguishable from random. |
+| X-Auth-Token | Yes      | Opaque encoded octet strings | Used for authentication of user sessions. The token value shall be indistinguishable from random. |
 
 [2616-14.1]: http://pretty-rfc.herokuapp.com/RFC2616#header.accept
 [2616-14.4]: http://pretty-rfc.herokuapp.com/RFC2616#header.accept-language
@@ -693,7 +693,7 @@ HTTP defines headers that can be used in response messages.  The following table
 
 | Header       | Required | Supported Values             | Description                                                                                              |
 | --------     | ---      | -----------------            | ------------                                                                                             |
-| X-Auth-Token | Yes      | Opaque encoded octet strings | Used for bearer authentication of user sessions. The token value shall be indistinguishable from random. |
+| X-Auth-Token | Yes      | Opaque encoded octet strings | Used for authentication of user sessions. The token value shall be indistinguishable from random. |
 
 
 [2616-14.3]: http://pretty-rfc.herokuapp.com/RFC2616#header.content-length
