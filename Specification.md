@@ -1,11 +1,22 @@
 ---
-DocTitle: Redfish Scalable Platforms Management API Specification
-DocNumber: '0266'
-DocType: Specification
-DocVersion: '1.0.0'
-status: standard
-released: false
-copyright: '2014-2015'
+
+![](http://i.imgur.com/zYOUZzQ.jpg)
+#   **Redfish Scalable Platforms Management API Specification**
+- **Document Identifier: DSP0266**
+- **Document Version: 1.0.0**
+- **Document Status: Published**
+- released: true
+###    Copyright Notice 
+Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.
+
+DMTF is a not-for-profit association of industry members dedicated to promoting enterprise and systems management and interoperability. Members and non-members may reproduce DMTF specifications and documents, provided that correct attribution is given. As DMTF specifications may be revised from time to time, the particular version and release date should always be noted.
+
+Implementation of certain elements of this standard or proposed standard may be subject to third party patent rights, including provisional patent rights (herein "patent rights"). DMTF makes no representations to users of the standard as to the existence of such rights, and is not responsible to recognize, disclose, or identify any or all such third party patent right, owners or claimants, nor for any incomplete or inaccurate identification or disclosure of such rights, owners or claimants. DMTF shall have no liability to any party, in any manner or circumstance, under any legal theory whatsoever, for failure to recognize, disclose, or identify any such third party patent rights, or for such party’s reliance on the standard or incorporation thereof in its product, protocols or testing procedures. DMTF shall have no liability to any party implementing such standard, whether such implementation is foreseeable or not, nor to any patent owner or claimant, and shall have no liability or responsibility for costs or losses incurred if a standard is withdrawn or modified after publication, and shall be indemnified and held harmless by any party implementing the standard from any and all claims of infringement by a patent owner for such implementations.
+
+For information about patents held by third-parties which have notified the DMTF that, in their opinion, such patent may relate to or impact implementations of DMTF standards, visit [http://www.dmtf.org/about/policies/disclosures.php](http://www.dmtf.org/about/policies/disclosures.php).
+
+This document’s normative language is English. Translation into other languages is permitted.
+
 ---
 
 # Foreword
@@ -17,30 +28,30 @@ DMTF is a not-for-profit association of industry members dedicated to promoting 
 # Acknowledgments
 
 The DMTF acknowledges the following individuals for their contributions to this document:
-* Jeff Autor - Hewlett-Packard Company
-* David Brockhaus - Emerson Network Power
-* Richard Brunner - VMware Inc.
-* Lee Calcote - Seagate Technology
-* P Chandrasekhar - Dell Inc
-* Chris Davenport - Hewlett-Packard Company
-* Gamma Dean - Emerson Network Power
-* Wassim Fayed - Microsoft Corporation
-* Mike Garrett - Hewlett-Packard Company
-* Steve Geffin - Emerson Network Power
-* Jon Hass - Dell Inc
-* Jeff Hilland - Hewlett-Packard Company
-* Chris Hoffman - Emerson Network Power
-* John Leung - Intel Corporation
-* Milena Natanov - Microsoft Corporation
-* Michael Pizzo - Microsoft Corporation
-* Irina Salvan - Microsoft Corporation
-* Hemal Shah - Broadcom Corporation
-* Jim Shelton - Emerson Network Power
-* Tom Slaight - Intel Corporation
-* Donnie Sturgeon - Emerson Network Power
-* Pawel Szymanski - Intel Corporation
-* Paul Vancil - Dell Inc
-* Linda Wu - Super Micro Computer, Inc.
+* Jeff Autor Hewlett-Packard Company
+* David Brockhaus Emerson Network Power
+* Richard Brunner VMware Inc.
+* Lee Calcote Seagate Technology
+* P Chandrasekhar Dell Inc
+* Chris Davenport Hewlett-Packard Company
+* Gamma Dean Emerson Network Power
+* Wassim Fayed Microsoft Corporation
+* Mike Garrett Hewlett-Packard Company
+* Steve Geffin Emerson Network Power
+* Jon Hass Dell Inc
+* Jeff Hilland Hewlett-Packard Company
+* Chris Hoffman Emerson Network Power
+* John Leung Intel Corporation
+* Milena Natanov Microsoft Corporation
+* Michael Pizzo Microsoft Corporation
+* Irina Salvan Microsoft Corporation
+* Hemal Shah Broadcom Corporation
+* Jim Shelton Emerson Network Power
+* Tom Slaight Intel Corporation
+* Donnie Sturgeon Emerson Network Power
+* Pawel Szymanski Intel Corporation
+* Paul Vancil Dell Inc
+* Linda Wu Super Micro Computer, Inc.
 
 ## Abstract
 The Redfish Scalable Platforms Management API ("Redfish") is a new specification that uses RESTful interface semantics to access data defined in model format to perform out-of-band systems management.  It is suitable for a wide range of servers, from stand-alone servers to rack mount and bladed environments but scales equally well for large scale cloud environments.
@@ -234,7 +245,7 @@ Only one style of eventing is currently defined by this specification - push sty
 
 Events originate from a specific resource. Not all resources are able to generate events. Those resources capable of generating events might not generate any events unless a subscription has been created to listen for the event. An administrator or client creates a subscription by sending a "subscribe" message to the Event Service. A subscribe message is sent using HTTP POST to the Event Subscriptions collection.
 
-The Section on [Eventing](#eventing) further in this specification discusses the details of the eventing mechanism.
+The section on [Eventing](#eventing) further in this specification discusses the details of the eventing mechanism.
 
 #### Actions
 
@@ -714,7 +725,7 @@ accessed resource in response to a HEAD or GET operation. In addition to
 links from the resource, the URL of the JSON schema of the resource shall be
 returned with a `rel=describedby`.
 
-Link header(s) shall be returned on HEAD and a Link header satisifying
+Link header(s) shall be returned on HEAD and a Link header satisfying
 `rel=describedby` shall be returned on GET and HEAD.
 
 #### Status Codes
@@ -1035,7 +1046,7 @@ The set of allowable values is specified by including a property whose name is t
 
 [References](#reference-properties) to other resources are represented by the links property on the resource.
 
-The links property shall be named "Links" and shall contain a property for each [non-contained](#containd-resources) [reference property](#reference-properties) defined in the Redfish Schema for that type. For single-valued reference properties, the value of the property shall be the [single related resource id](#reference-to-a-single-related-resource). For collection-valued reference properties, the value of the property shall be the [array of related resource ids](#array-of-references-to-related-resources).
+The links property shall be named "Links" and shall contain a property for each [non-contained](#contained-resources) [reference property](#reference-properties) defined in the Redfish Schema for that type. For single-valued reference properties, the value of the property shall be the [single related resource id](#reference-to-a-single-related-resource). For collection-valued reference properties, the value of the property shall be the [array of related resource ids](#array-of-references-to-related-resources).
 
 The links property shall also include an [Oem property](#oem-property) for navigating vendor-specific links.
 
@@ -1554,7 +1565,7 @@ The value of the type attribute for a collection-valued property is of the form:
 
 where *NamespaceQualifiedTypeName* is the namespace qualified name of the primitive, structured, or enumeration type.
 
-##### Additional Properites
+##### Additional Properties
 
 The AdditionalProperties annotation term is used to specify whether a type can contain additional properties outside of those defined. Types annotated with the AdditionalProperties annotation with a `Boolean` attribute with a value of `"False"`, must not contain additional properties.
 
@@ -1700,7 +1711,7 @@ Individual actions are defined within a [namespace](#namespace-definitions) usin
 
 The Action element contains one or more `Parameter` elements that specify the `Name` and [`Type`](#property-types) of each parameter.
 
-The first parameter is called the "binding parameter" and specifies the resource or [structrual type](#structural-types) that the action appears as a member of (the type of the Actions property on the resource). The remaining Parameter elements describe additional parameters to be passed to the action.
+The first parameter is called the "binding parameter" and specifies the resource or [structural type](#structural-types) that the action appears as a member of (the type of the Actions property on the resource). The remaining Parameter elements describe additional parameters to be passed to the action.
 
 ~~~xml
   <Action Name="MyAction" IsBound="true">
@@ -2237,7 +2248,7 @@ Therefore, the POST to create a new session shall only be supported with HTTPS, 
 
 ##### Session Lifetime
 
-Note that Redfish sessions "time-out" as apposed to having a token expiration time like some token-based methods use.  For Redfish sessions, as long a  client continues to send requests for the session more often than the session timeout period, the session will remain open and the session auth token remains valid.  If the sessions times-out then the session is automatically terminated.
+Note that Redfish sessions "time-out" as opposed to having a token expiration time like some token-based methods use.  For Redfish sessions, as long a  client continues to send requests for the session more often than the session timeout period, the session will remain open and the session auth token remains valid.  If the sessions times-out then the session is automatically terminated.
 Note that the Redfish.
 
 ##### Session Termination or Logout
