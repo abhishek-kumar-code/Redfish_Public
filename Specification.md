@@ -1143,7 +1143,7 @@ An individual property within a JSON object can be annotated with extended infor
     "PinOut@Message.ExtendedInfo" : [
 		{
            "MessageId": "Base.1.0.PropertyValueNotInList",
-           "Message": "The value Cycldes for the property PinOut is not in the list of acceptable values.",
+           "Message": "The value Contoso for the property PinOut is not in the list of acceptable values.",
            "Severity": "Warning",
            "Resolution": "Choose a value from the enumeration list that the implementation can support and resubmit the request if the operation failed."
          }
@@ -1480,7 +1480,7 @@ Properties that have units associated with them can be annotated with the [units
 
 ##### Property Types
 
-Type type of a property is specified by the `Type` attribute. The value of the type attribute may be a [primitive type](#primitive-types), a [structured type](#structured-types), an [enumeration type](#enums) or a [collection](#collections) of primitive, structured or enumeration types.
+Type of a property is specified by the `Type` attribute. The value of the type attribute may be a [primitive type](#primitive-types), a [structured type](#structured-types), an [enumeration type](#enums) or a [collection](#collections) of primitive, structured or enumeration types.
 
 ###### Primitive Types
 
@@ -1705,7 +1705,7 @@ The first parameter is called the "binding parameter" and specifies the resource
 ~~~xml
   <Action Name="MyAction" IsBound="true">
     <Parameter Name="Thing" Type="MyType.Actions"/>
-    <Parameter Name="Parameter1" Type="Edm.Boolen"/>
+    <Parameter Name="Parameter1" Type="Edm.Boolean"/>
   </Action>
 ~~~
 
@@ -2136,7 +2136,7 @@ Implementations shall support replacement of the default certificate if one is p
   * The $metadata object which is needed to retreive resource types
   * The OData Service Document which is needed for compatibility with OData clients
   * The version object located at /redfish
-* External services linked via extref references are not part of this spec, and may have other security requirements.
+* External services linked via external references are not part of this spec, and may have other security requirements.
 
 ##### HTTP Redirect
 
