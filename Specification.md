@@ -1,11 +1,22 @@
 ---
-DocTitle: Redfish Scalable Platforms Management API Specification
-DocNumber: '0266'
-DocType: Specification
-DocVersion: '1.0.0'
-status: standard
-released: false
-copyright: '2014-2015'
+
+![](http://i.imgur.com/zYOUZzQ.jpg)
+#   **Redfish Scalable Platforms Management API Specification**
+- **Document Identifier: DSP0266**
+- **Document Version: 1.0.0**
+- **Document Status: Published**
+- released: true
+###    Copyright Notice 
+Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.
+
+DMTF is a not-for-profit association of industry members dedicated to promoting enterprise and systems management and interoperability. Members and non-members may reproduce DMTF specifications and documents, provided that correct attribution is given. As DMTF specifications may be revised from time to time, the particular version and release date should always be noted.
+
+Implementation of certain elements of this standard or proposed standard may be subject to third party patent rights, including provisional patent rights (herein "patent rights"). DMTF makes no representations to users of the standard as to the existence of such rights, and is not responsible to recognize, disclose, or identify any or all such third party patent right, owners or claimants, nor for any incomplete or inaccurate identification or disclosure of such rights, owners or claimants. DMTF shall have no liability to any party, in any manner or circumstance, under any legal theory whatsoever, for failure to recognize, disclose, or identify any such third party patent rights, or for such party’s reliance on the standard or incorporation thereof in its product, protocols or testing procedures. DMTF shall have no liability to any party implementing such standard, whether such implementation is foreseeable or not, nor to any patent owner or claimant, and shall have no liability or responsibility for costs or losses incurred if a standard is withdrawn or modified after publication, and shall be indemnified and held harmless by any party implementing the standard from any and all claims of infringement by a patent owner for such implementations.
+
+For information about patents held by third-parties which have notified the DMTF that, in their opinion, such patent may relate to or impact implementations of DMTF standards, visit [http://www.dmtf.org/about/policies/disclosures.php](http://www.dmtf.org/about/policies/disclosures.php).
+
+This document’s normative language is English. Translation into other languages is permitted.
+
 ---
 
 # Foreword
@@ -17,30 +28,30 @@ DMTF is a not-for-profit association of industry members dedicated to promoting 
 # Acknowledgments
 
 The DMTF acknowledges the following individuals for their contributions to this document:
-* Jeff Autor - Hewlett-Packard Company
-* David Brockhaus - Emerson Network Power
-* Richard Brunner - VMware Inc.
-* Lee Calcote - Seagate Technology
-* P Chandrasekhar - Dell Inc
-* Chris Davenport - Hewlett-Packard Company
-* Gamma Dean - Emerson Network Power
-* Wassim Fayed - Microsoft Corporation
-* Mike Garrett - Hewlett-Packard Company
-* Steve Geffin - Emerson Network Power
-* Jon Hass - Dell Inc
-* Jeff Hilland - Hewlett-Packard Company
-* Chris Hoffman - Emerson Network Power
-* John Leung - Intel Corporation
-* Milena Natanov - Microsoft Corporation
-* Michael Pizzo - Microsoft Corporation
-* Irina Salvan - Microsoft Corporation
-* Hemal Shah - Broadcom Corporation
-* Jim Shelton - Emerson Network Power
-* Tom Slaight - Intel Corporation
-* Donnie Sturgeon - Emerson Network Power
-* Pawel Szymanski - Intel Corporation
-* Paul Vancil - Dell Inc
-* Linda Wu - Super Micro Computer, Inc.
+* Jeff Autor Hewlett-Packard Company
+* David Brockhaus Emerson Network Power
+* Richard Brunner VMware Inc.
+* Lee Calcote Seagate Technology
+* P Chandrasekhar Dell Inc
+* Chris Davenport Hewlett-Packard Company
+* Gamma Dean Emerson Network Power
+* Wassim Fayed Microsoft Corporation
+* Mike Garrett Hewlett-Packard Company
+* Steve Geffin Emerson Network Power
+* Jon Hass Dell Inc
+* Jeff Hilland Hewlett-Packard Company
+* Chris Hoffman Emerson Network Power
+* John Leung Intel Corporation
+* Milena Natanov Microsoft Corporation
+* Michael Pizzo Microsoft Corporation
+* Irina Salvan Microsoft Corporation
+* Hemal Shah Broadcom Corporation
+* Jim Shelton Emerson Network Power
+* Tom Slaight Intel Corporation
+* Donnie Sturgeon Emerson Network Power
+* Pawel Szymanski Intel Corporation
+* Paul Vancil Dell Inc
+* Linda Wu Super Micro Computer, Inc.
 
 ## Abstract
 The Redfish Scalable Platforms Management API ("Redfish") is a new specification that uses RESTful interface semantics to access data defined in model format to perform out-of-band systems management.  It is suitable for a wide range of servers, from stand-alone servers to rack mount and bladed environments but scales equally well for large scale cloud environments.
@@ -234,7 +245,7 @@ Only one style of eventing is currently defined by this specification - push sty
 
 Events originate from a specific resource. Not all resources are able to generate events. Those resources capable of generating events might not generate any events unless a subscription has been created to listen for the event. An administrator or client creates a subscription by sending a "subscribe" message to the Event Service. A subscribe message is sent using HTTP POST to the Event Subscriptions collection.
 
-The Section on [Eventing](#eventing) further in this specification discusses the details of the eventing mechanism.
+The section on [Eventing](#eventing) further in this specification discusses the details of the eventing mechanism.
 
 #### Actions
 
@@ -534,7 +545,7 @@ No requirements are placed on implementations to return a consistent set of memb
 
 The HEAD method differs from the GET method in that it MUST NOT return message body information.  However, all of the same meta information and status codes in the HTTP headers will be returned as though a GET method were processed, including authorization checks.
 
-* Services may support the HEAD method in order to return meta information in the the form of HTTP response headers.
+* Services may support the HEAD method in order to return meta information in the form of HTTP response headers.
 * Services may support the HEAD method in order to verify link validity.
 * Services may support the HEAD method in order to verify resource accessibility
 * Services shall not support any other use of the HEAD method.
@@ -714,7 +725,7 @@ accessed resource in response to a HEAD or GET operation. In addition to
 links from the resource, the URL of the JSON schema of the resource shall be
 returned with a `rel=describedby`.
 
-Link header(s) shall be returned on HEAD and a Link header satisifying
+Link header(s) shall be returned on HEAD and a Link header satisfying
 `rel=describedby` shall be returned on GET and HEAD.
 
 #### Status Codes
@@ -1035,7 +1046,7 @@ The set of allowable values is specified by including a property whose name is t
 
 [References](#reference-properties) to other resources are represented by the links property on the resource.
 
-The links property shall be named "Links" and shall contain a property for each [non-contained](#containd-resources) [reference property](#reference-properties) defined in the Redfish Schema for that type. For single-valued reference properties, the value of the property shall be the [single related resource id](#reference-to-a-single-related-resource). For collection-valued reference properties, the value of the property shall be the [array of related resource ids](#array-of-references-to-related-resources).
+The links property shall be named "Links" and shall contain a property for each [non-contained](#contained-resources) [reference property](#reference-properties) defined in the Redfish Schema for that type. For single-valued reference properties, the value of the property shall be the [single related resource id](#reference-to-a-single-related-resource). For collection-valued reference properties, the value of the property shall be the [array of related resource ids](#array-of-references-to-related-resources).
 
 The links property shall also include an [Oem property](#oem-property) for navigating vendor-specific links.
 
@@ -1143,7 +1154,7 @@ An individual property within a JSON object can be annotated with extended infor
     "PinOut@Message.ExtendedInfo" : [
 		{
            "MessageId": "Base.1.0.PropertyValueNotInList",
-           "Message": "The value Cycldes for the property PinOut is not in the list of acceptable values.",
+           "Message": "The value Contoso for the property PinOut is not in the list of acceptable values.",
            "Severity": "Warning",
            "Resolution": "Choose a value from the enumeration list that the implementation can support and resubmit the request if the operation failed."
          }
@@ -1166,7 +1177,7 @@ where
 * *Namespace* = the name of the namespace where the annotation term is defined. This namespace must be referenced by the [metadata document](#service-metadata) specified in the [context url](#context-property) of the request.
 * *TermName* = the name of the annotation term being applied to the resource or property of the resource.
 
-The client can get the definition of the annotation from the the [service metadata](#service-metadata), or may ignore the annotation entirely, but should not fail reading the resource due to unrecognized annotations, including new annotations defined within the Redfish namespace.
+The client can get the definition of the annotation from the [service metadata](#service-metadata), or may ignore the annotation entirely, but should not fail reading the resource due to unrecognized annotations, including new annotations defined within the Redfish namespace.
 
 #### Resource Collections
 
@@ -1210,7 +1221,7 @@ where
 * *Namespace* = the name of the namespace where the annotation term is defined. This namespace shall be referenced by the [metadata document](#service-metadata) specified in the [context url](#context-property) of the request.
 * *TermName* = the name of the annotation term being applied to the resource collection.
 
-The client can get the definition of the annotation from the the [service metadata](#service-metadata), or may ignore the annotation entirely, but should not fail reading the response due to unrecognized annotations, including new annotations defined within the Redfish namespace.
+The client can get the definition of the annotation from the [service metadata](#service-metadata), or may ignore the annotation entirely, but should not fail reading the response due to unrecognized annotations, including new annotations defined within the Redfish namespace.
 
 #### Error Responses
 
@@ -1480,7 +1491,7 @@ Properties that have units associated with them can be annotated with the [units
 
 ##### Property Types
 
-Type type of a property is specified by the `Type` attribute. The value of the type attribute may be a [primitive type](#primitive-types), a [structured type](#structured-types), an [enumeration type](#enums) or a [collection](#collections) of primitive, structured or enumeration types.
+Type of a property is specified by the `Type` attribute. The value of the type attribute may be a [primitive type](#primitive-types), a [structured type](#structured-types), an [enumeration type](#enums) or a [collection](#collections) of primitive, structured or enumeration types.
 
 ###### Primitive Types
 
@@ -1554,7 +1565,7 @@ The value of the type attribute for a collection-valued property is of the form:
 
 where *NamespaceQualifiedTypeName* is the namespace qualified name of the primitive, structured, or enumeration type.
 
-##### Additional Properites
+##### Additional Properties
 
 The AdditionalProperties annotation term is used to specify whether a type can contain additional properties outside of those defined. Types annotated with the AdditionalProperties annotation with a `Boolean` attribute with a value of `"False"`, must not contain additional properties.
 
@@ -1700,12 +1711,12 @@ Individual actions are defined within a [namespace](#namespace-definitions) usin
 
 The Action element contains one or more `Parameter` elements that specify the `Name` and [`Type`](#property-types) of each parameter.
 
-The first parameter is called the "binding parameter" and specifies the resource or [structrual type](#structural-types) that the action appears as a member of (the type of the Actions property on the resource). The remaining Parameter elements describe additional parameters to be passed to the action.
+The first parameter is called the "binding parameter" and specifies the resource or [structural type](#structural-types) that the action appears as a member of (the type of the Actions property on the resource). The remaining Parameter elements describe additional parameters to be passed to the action.
 
 ~~~xml
   <Action Name="MyAction" IsBound="true">
     <Parameter Name="Thing" Type="MyType.Actions"/>
-    <Parameter Name="Parameter1" Type="Edm.Boolen"/>
+    <Parameter Name="Parameter1" Type="Edm.Boolean"/>
   </Action>
 ~~~
 
@@ -2032,7 +2043,7 @@ It is possible that some resources will remain very stable from system to system
 
 Automatic discovery of managed devices supporting the Redfish Scalable Platform Management API is accomplished using the Simple Service Discovery Protocol (SSDP).  This protocol allows for network-efficient discovery without resorting to ping-sweeps, router table searches, or restrictive DNS naming schemes.  Use of SSDP is optional, and if implemented, shall allow the user to disable the protocol through the 'Manager Network Service' resource.
 
-As the objective of discovery is for cilent software to locate Redfish-compliant managed devices, the primary SSDP functionality incorporated is the M-SEARCH query.  Redfish also follows the SSDP extensions and naming used by UPnP where applicable, such that Redfish-compliant systems can also implement UPnP without conflict.
+As the objective of discovery is for client software to locate Redfish-compliant managed devices, the primary SSDP functionality incorporated is the M-SEARCH query.  Redfish also follows the SSDP extensions and naming used by UPnP where applicable, such that Redfish-compliant systems can also implement UPnP without conflict.
 
 #### UPnP Compatibility
 
@@ -2048,9 +2059,9 @@ The managed device must respond to M-SEARCH queries searching for Search Target 
 
 Redfish Service root Search Target (ST):   URN:dmtf-org:service:redfish-rest:1
 
-The URN in the reply shall use a service name of 'redfish-rest:' followed by the major version of the Redfish specification.  If the minor version of the Redfish Specification to which the service conforms is a non-zero value, and that version is backwards-compatible with previous minor revisions, then that minor version shall be appended, preceeded with a colon.  For example, a service conforming to a Redfish specification version "1.4" would reply with a service of "redfish-rest:1:4".
+The URN in the reply shall use a service name of 'redfish-rest:' followed by the major version of the Redfish specification.  If the minor version of the Redfish Specification to which the service conforms is a non-zero value, and that version is backwards-compatible with previous minor revisions, then that minor version shall be appended, preceded with a colon.  For example, a service conforming to a Redfish specification version "1.4" would reply with a service of "redfish-rest:1:4".
 
-An example response to an M-SEARCH multicast or unicast query shall follow the format shown below.  Fields in brackets are placeholds for device-specific values.
+An example response to an M-SEARCH multicast or unicast query shall follow the format shown below.  Fields in brackets are placeholders for device-specific values.
 
 ```http
 HTTP/1.1 200 OK
@@ -2133,10 +2144,10 @@ Implementations shall support replacement of the default certificate if one is p
 	* Extended error messages shall NOT provide privileged info when authentication failures occur
 * REST objects shall not be available unauthenticated, except for
   * The root object which is needed to identify the device and service locations
-  * The $metadata object which is needed to retreive resource types
+  * The $metadata object which is needed to retrieve resource types
   * The OData Service Document which is needed for compatibility with OData clients
   * The version object located at /redfish
-* External services linked via extref references are not part of this spec, and may have other security requirements.
+* External services linked via external references are not part of this spec, and may have other security requirements.
 
 ##### HTTP Redirect
 
@@ -2237,7 +2248,7 @@ Therefore, the POST to create a new session shall only be supported with HTTPS, 
 
 ##### Session Lifetime
 
-Note that Redfish sessions "time-out" as apposed to having a token expiration time like some token-based methods use.  For Redfish sessions, as long a  client continues to send requests for the session more often than the session timeout period, the session will remain open and the session auth token remains valid.  If the sessions times-out then the session is automatically terminated.
+Note that Redfish sessions "time-out" as opposed to having a token expiration time like some token-based methods use.  For Redfish sessions, as long a  client continues to send requests for the session more often than the session timeout period, the session will remain open and the session auth token remains valid.  If the sessions times-out then the session is automatically terminated.
 Note that the Redfish.
 
 ##### Session Termination or Logout
