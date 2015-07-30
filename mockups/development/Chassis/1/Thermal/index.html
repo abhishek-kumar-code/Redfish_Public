@@ -1,5 +1,5 @@
 {
-    "@Redfish.Copyright":"Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@Redfish.Copyright":"Copyright Â© 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#Chassis/Members/1/Thermal/$entity",
     "@odata.id": "/redfish/v1/Chassis/1/Thermal",
     "@odata.type": "#Thermal.1.0.0.Thermal",
@@ -123,7 +123,7 @@
             "MinReadingRange": 0,
             "MaxReadingRange": 5000,
             "Redundancy" : [
-                {"@odata.id": "/redfish/v1/Chassis/1/Power#/Redundancy/0"}
+                {"@odata.id": "/redfish/v1/Chassis/1/Thermal#/Redundancy/0"}
             ],
             "RelatedItem" : [
                 {"@odata.id": "/redfish/v1/Systems/1" },
@@ -140,7 +140,7 @@
                 { "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Fans/0" },
                 { "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Fans/1" }
             ],
-            "Mode": "N+1",
+            "Mode": "N+m",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
