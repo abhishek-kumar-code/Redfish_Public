@@ -3,6 +3,7 @@ DocTitle: Redfish Schema Supplement
 DocNumber: XXXX
 DocClass: Normative
 DocVersion: '1.0.0'
+modified: '2015-08-04'
 status: published
 released: false
 copyright: '2015'
