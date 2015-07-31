@@ -38,8 +38,8 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/JsonSchemaFileCollection.xml">
     <edmx:Include Namespace="JsonSchemaFileCollection"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/MessageRegistry.xml">
-    <edmx:Include Namespace="MessageRegistry"/>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/MessageRegistryFileCollection.xml">
+    <edmx:Include Namespace="MessageRegistryFileCollection"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/SessionCollection.xml">
     <edmx:Include Namespace="SessionCollection"/>
@@ -66,7 +66,7 @@
         <Singleton Name="AccountService" Type="AccountService.AccountService"/>
         <Singleton Name="SessionService" Type="SessionService.SessionService"/>
         <Singleton Name="EventService" Type="EventService.EventService"/>
-        <Singleton Name="Registries" Type="MessageRegistry.MessageRegistry"/>
+        <Singleton Name="Registries" Type="MessageRegistryFileCollection.MessageRegistryFileCollection"/>
         <Singleton Name="JsonSchemas" Type="JsonSchemaFileCollection.JsonSchemaFileCollection"/>
         <Singleton Name="Sessions" Type="SessionCollection.SessionCollection"/>
       </EntityContainer>
@@ -127,7 +127,7 @@
           <Annotation Term="OData.LongDescription" String="The classes structure shall only contain a reference to a resource that complies to the EventService schema."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="Registries" Type="MessageRegistryCollection.MessageRegistryCollection">
+        <NavigationProperty Name="Registries" Type="MessageRegistryFileCollection.MessageRegistryFileCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is a link to a collection of Registries."/>
           <Annotation Term="OData.LongDescription" String="This object shall contain a reference to Message Registry."/>
