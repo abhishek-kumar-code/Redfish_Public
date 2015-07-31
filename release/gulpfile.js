@@ -23,24 +23,17 @@ var documentDefaults = {
 var docStatuses = {
   wip: {
     DocStatus: 'Work in Progress',
-    DocConfidentiality: '– Not a DMTF Standard',
   },
-  draftStandard: {
-    DocStatus: 'DMTF Draft Standard'
+  draft: {
+    DocStatus: 'Draft'
   },
-  standard: {
-    DocStatus: 'DMTF Standard'
-  },
-  informationalSpec: {
-    DocStatus: 'DMTF Informational Specification'
-  },
-  informational: {
-    DocStatus: 'DMTF Informational'
+  published: {
+    DocStatus: 'Published'
   }
 }
 
 gulp.task('default', ['css', 'js'], function() {
-  gulp.src(['../README*.md', '../Specification.md', '../WhitePaper.md'])
+  gulp.src(['../*.md'])
     .pipe(data(function(file, cb) {
       var content = fm(String(file.contents))
       var data = content.attributes
@@ -58,9 +51,8 @@ gulp.task('default', ['css', 'js'], function() {
 
         var merged = _.merge({}, documentDefaults, docStatuses[data.status], data)
 
-        // Append confidentiality when it is going for approval
         if (!data.released) {
-          merged.DocConfidentiality += '– DMTF Confidential'
+          data.DocConfidentiality = 'DMTF Confidential'
         }
 
         // Default to expiration of 30 days from today for works in progress

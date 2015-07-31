@@ -17,16 +17,20 @@
 
   .wip {
     margin-bottom: 2em;
-    display: none;
+    // display: none;
+    position: relative;
+    padding: 0.5em;
+    font-weight: normal;
+    text-align: left;
+    color: #fff;
+    user-select: none;
   }
 
   &[data-status="Work in Progress"] {
     .wip {
-      padding: 0.5em;
-      font-weight: normal;
-      text-align: left;
       border: 2px ridge #eee;
       display: block !important;
+      user-select: auto;
     }
   }
 
