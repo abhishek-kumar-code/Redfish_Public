@@ -2366,7 +2366,6 @@ The file where the events are written, one or more messages per event should at 
 
 ### Change Log
 
-| Version | Date      | Description                                                                                                                                                                                                                                       |
-| ---     | ---       | ---                                                                                                                                                                                                                                               |
-| 1.0.0  | 2015-8-4 | Initial release                                                                                                                                                                                                           |
-                                                                                                                                                                                                    |
+| Version | Date     | Description     |
+| ---     | ---      | ---             |
+| 1.0.0   | 2015-8-4 | Initial release |
