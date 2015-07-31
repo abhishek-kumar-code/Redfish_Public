@@ -41,9 +41,6 @@ gulp.task('default', ['css', 'js'], function() {
 
       var git = spawn('git', ['log', '-1', '--format=%ad', '--', file.path])
       git.stdout.on('data', function(d) {
-        var date = new Date(d.toString())
-        data.modified = date.toISOString().slice(0, 10)
-
         // Default to a Work in Progress
         if (!data.status) {
           data.stauts = 'wip';
@@ -53,6 +50,12 @@ gulp.task('default', ['css', 'js'], function() {
 
         if (!data.released) {
           data.DocConfidentiality = 'DMTF Confidential'
+        }
+
+        // Use the Git modified version if none supplied
+        if (!data.modified) {
+          var date = new Date(d.toString())
+          data.modified = date.toISOString().slice(0, 10)
         }
 
         cb(null, merged);
