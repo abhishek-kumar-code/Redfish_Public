@@ -55,11 +55,6 @@ gulp.task('default', ['css', 'js'], function() {
           data.DocConfidentiality = 'DMTF Confidential'
         }
 
-        // Default to expiration of 30 days from today for works in progress
-        if (data.status === 'wip' && !data.expiration) {
-          data.expiration = new Date(Date.now() + 1000 * 60 * 60 * 24 * 30).toISOString().slice(0, 10)
-        }
-
         cb(null, merged);
       })
       git.on('close', function(code) {
