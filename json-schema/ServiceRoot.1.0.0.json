@@ -131,7 +131,7 @@
                     "longDescription": "The classes structure shall only contain a reference to a resource that complies to the EventService schema."
                 },
                 "Registries": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/MessageRegistry.json#/definitions/MessageRegistry",
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/MessageRegistryFileCollection.json#/definitions/MessageRegistryFileCollection",
                     "readonly": true,
                     "description": "This is a link to a collection of Registries.",
                     "longDescription": "This object shall contain a reference to Message Registry."
