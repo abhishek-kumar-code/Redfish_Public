@@ -1,7 +1,7 @@
 #dmtf {
   .logo {
     background: data-uri('./dmtf-logo.png') no-repeat right center;
-    height: 63px;
+    height: 133px;
   }
 
   .preamble {
@@ -17,7 +17,6 @@
 
   .wip {
     margin-bottom: 2em;
-    // display: none;
     position: relative;
     padding: 0.5em;
     font-weight: normal;
@@ -29,7 +28,6 @@
   &[data-status="Work in Progress"] {
     .wip {
       border: 2px ridge #eee;
-      display: block !important;
       user-select: auto;
     }
   }
@@ -144,6 +142,7 @@ a {
 }
 
 pre {
+  white-space: pre-wrap;
   padding: 16px;
   overflow: auto;
   font-size: 85%;
@@ -159,10 +158,6 @@ pre {
 @import "./review.less";
 
 @media print {
-  pre {
-    white-space: pre-wrap;
-  }
-
   #toc-header, #toc ~ h2 {
     page-break-before: always;
     break-before: page;
