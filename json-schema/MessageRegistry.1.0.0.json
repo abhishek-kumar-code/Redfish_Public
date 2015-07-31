@@ -92,7 +92,6 @@
                     "$ref": "#/definitions/Message"
                 }
             },
-            "additionalProperties": true,
             "properties": {}
         },
         "MessageRegistry": {
@@ -160,7 +159,7 @@
                     "longDescription": "The value of this property shall be a string that represents the publisher of this registry."
                 },
                 "Messages": {
-                    "type": "array",
+                    "type": "object",
                     "items": {
                         "$ref": "#/definitions/MessageProperty"
                     },
