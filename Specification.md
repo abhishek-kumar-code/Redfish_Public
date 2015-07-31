@@ -3,9 +3,12 @@
 ![](http://i.imgur.com/zYOUZzQ.jpg)
 #   **Redfish Scalable Platforms Management API Specification**
 - **Document Identifier: DSP0266**
+- **Date: 2015-08-04**
 - **Document Version: 1.0.0**
+- **Document Class: Normative**
 - **Document Status: Published**
-- released: true
+- **Document Language: en-US**
+- Released: true
 ###    Copyright Notice 
 Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.
 
