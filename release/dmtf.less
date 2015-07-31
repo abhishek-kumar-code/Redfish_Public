@@ -21,14 +21,24 @@
     padding: 0.5em;
     font-weight: normal;
     text-align: left;
-    color: #fff;
-    user-select: none;
   }
 
   &[data-status="Work in Progress"] {
     .wip {
       border: 2px ridge #eee;
-      user-select: auto;
+    }
+  }
+
+  &[data-status="Published"], &[data-status="Draft"] {
+    .wip {
+      color: #fff;
+      user-select: none;
+      cursor: default;
+
+      a {
+        color: #fff;
+        cursor: default;
+      }
     }
   }
 
