@@ -159,10 +159,7 @@
                     "longDescription": "The value of this property shall be a string that represents the publisher of this registry."
                 },
                 "Messages": {
-                    "type": "object",
-                    "items": {
-                        "$ref": "#/definitions/MessageProperty"
-                    },
+                    "$ref": "#/definitions/MessageProperty",
                     "readonly": true,
                     "description": "The pattern property indicates that a free-form string is the unique identifier for the message within the registry.",
                     "longDescription": "The pattern property shall represent the suffix to be used in the MessageId and shall be unique within this message registry."
