@@ -3,6 +3,8 @@ var gutil = require('gulp-util')
 var markdown = require('gulp-markdown')
 var wrap = require('gulp-wrap')
 var less = require('gulp-less')
+var postcss = require('gulp-postcss')
+var autoprefixer = require('autoprefixer')
 var inline = require('gulp-inline')
 var coffee = require('gulp-coffee')
 var concat = require('gulp-concat')
@@ -84,6 +86,9 @@ gulp.task('default', ['css', 'js'], function() {
 gulp.task('css', function() {
   gulp.src('*.less')
     .pipe(less())
+    .pipe(postcss([
+      autoprefixer({browsers: ['last 2 versions']})
+    ]))
     .pipe(gulp.dest('dist'))
 })
 
