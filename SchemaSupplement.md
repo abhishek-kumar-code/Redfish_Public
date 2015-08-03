@@ -1,7 +1,7 @@
 ---
 DocTitle: Redfish Schema Supplement
 DocNumber: XXXX
-DocClass: Normative
+DocClass: Informative
 DocVersion: '1.0.0'
 modified: '2015-08-04'
 status: published
