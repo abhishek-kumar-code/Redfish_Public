@@ -30,7 +30,7 @@ First, the market is shifting from traditional data center environments to scale
 
 Functionality and homogeneous interfaces are lacking in scale-out management.  For instance, the IPMI feature use is limited to a “least common denominator” set of commands (e.g. Power On/Off/Reboot, temperature value, text console).  As a result, these customers, while desiring out of band functionality, have been forced to use a reduced set of functionality because vendor extensions are not common across all platforms.  This set of new customers are increasingly developing their own tools for tight integration, sometimes relying on in-band software for management since they are able to develop a common set of manageability in that environment.  Increasing fragmentation of platform management specifications as OEM extensions proliferate result in features that do not satisfy scale-out customer needs since they are fragmented.  And by referencing specific security and encryption requirements, existing management solutions no longer meets customer security requirements.
 
-Other standards, such as SMASH, have not met the ubiquity that was hoped for.  This is due to it's complexity.  The CLP ended up being implemented in most hardware but not with a consistent output format thus parsing resulting data was implementation dependent.  WS Management was only implemented in a limited number of out of band environments.  It is a complex, layered protocol that works best in homogeneous environments and thus never fulfilled the heterogeneity requirements.  Additionally, the complexity of the combination of understanding the protocol, generic operations, schema and the profiles themselves ended in a solution that took years to develop, years to change and add new functionality.  It takes months for customers to understand as well as significant resource commitments and expertise in order to become proficient in its use.  It also requires a significant number of operations to perform even the simplest tasks.  Thus, while it can represent scalable systems the interface itself has an IO pattern that is not scalable. 
+Other standards, such as SMASH, have not met the ubiquity that was hoped for.  This is due to it's complexity.  The CLP ended up being implemented in most hardware but not with a consistent output format thus parsing resulting data was implementation dependent.  WS Management was only implemented in a limited number of out of band environments.  It is a complex, layered protocol that works best in homogeneous environments and thus never fulfilled the heterogeneity requirements.  Additionally, the complexity of the combination of understanding the protocol, generic operations, schema and the profiles themselves ended in a solution that took years to develop, years to change and add new functionality.  It takes months for customers to understand as well as significant resource commitments and expertise in order to become proficient in its use.  It also requires a significant number of operations to perform even the simplest tasks.  Thus, while it can represent scalable systems the interface itself has an IO pattern that is not scalable.
 
 The hardware landscape is rapidly changing.  Systems that either put multiple systems on a traditional "blade" or aggregate a single system out of multiple blades are becoming more prevalent.  These need to be managed by the same software that is managing traditional enterprise environments.  But these new systems cannot be adequately expressed in bit-wise protocols.  They cannot represent complex architectural relationships between components in modern systems.  Additionally, system aggregation points, such as chassis or enclosure managers are incapable of using these protocols to perform their function of expressing these complexities in the same method.
 
@@ -90,7 +90,7 @@ Every URL represents a resource.  This could be a service, a collection, an enti
 
 The resource format is defined by a Schema.  Each resource has a specific format that is specified in the Redfish Schema that the client can use to determine the semantics about the resource (though we try to make things as intuitive as possible).  The Redfish Schema is defined in two formats: an OData-Schema format and a JSON Schema format.  It is defined in the OData Schema format (CSDL) so that generice OData tools and applications can interpret it. It is defined in the JSON Schema format for other environments - like Python scripts, JavaScript code and visualization.
 
-Structural properties of the resource are intended to be used as JavaScript variables.  This should accelerate adoption and allow JavaScript web pages and enabled apps to use the data directly.  URIs are persistent across reboots but clients are expected to start at /redfish/v1/ and do discovery of the URIs from there.  
+Structural properties of the resource are intended to be used as JavaScript variables.  This should accelerate adoption and allow JavaScript web pages and enabled apps to use the data directly.  URIs are persistent across reboots but clients are expected to start at /redfish/v1/ and do discovery of the URIs from there.
 
 One common mistake is to fixate on the URI.  Redfish is a hypermedia API so URIs can be different between implementations - even from the same vendor.  Current state objects can be separate from desired state objects.
 
@@ -100,7 +100,7 @@ The operations are GET, PUT, PATCH, POST, DELETE and HEAD.  GET is what your bro
 GET retrieves data.  POST is used for creating resources or to use actions (more on this later).  DELETE will delete a resource, but there are currently only a few resources that can be deleted.  PATCH is used to change one or more properties on a resource while PUT is used to replace a resource entirely (though only a few resources can be completely replaced - more on this later too).  HEAD is like a GET without the body data returned and can be used for figuring out the URI structure by programs accessing an Redfish implementation.
 
 ## Versioning
-Redfish has two kinds of versioning - the version of the protocol and the version of the resource schema.  The version of the protocol is in the URI - that's why you should start at /redfish/v1/.  It means you are accessing version one of the protocol.  Version 1 is the only one available now, but we needed to accommodate potential future versions.  This starting URI indicates the implementation complies with the Version 1 Redfish Specification.  Note that since it is based on OData v4,  implementations also require the OData protocol header (OData-Version) have a value of 4. 
+Redfish has two kinds of versioning - the version of the protocol and the version of the resource schema.  The version of the protocol is in the URI - that's why you should start at /redfish/v1/.  It means you are accessing version one of the protocol.  Version 1 is the only one available now, but we needed to accommodate potential future versions.  This starting URI indicates the implementation complies with the Version 1 Redfish Specification.  Note that since it is based on OData v4,  implementations also require the OData protocol header (OData-Version) have a value of 4.
 
 Each resource has a resource type definition. Resource types are defined in versioned namespaces. Each resource instance has the type represented using the OData type annotation "@odata.type". The value of the type annotation is the URI of the resourcce type, including the versioned namespace.  So when you see "@odata.type" : "#ServiceRoot.1.0.0.ServiceRoot", you are dealing with a resource that adheres to the ServiceRoot type definition, defined in 1.0.0 version of the ServiceRoot schema.  The corresponding schema file would be located at /schema/v1/ServiceRoot in the Redfish schema repository. So the full URI for the type would be "/schema/v1/ServiceRoot#ServiceRoot.1.0.0.ServiceRoot. The schema file may contain other types used by in the resource type definition (for example, structured types and enums), which would have the same resource path but the fragment would describe a different type definition, typically within the same namespace.
 
@@ -114,15 +114,15 @@ Properties representing references to other resources that follow OData conventi
 URIs are either absolute or relative.  Absolute ones won’t have the IP address but will start with /redfish/v1/.  If you have a plug in like the Chrome Advanced REST client, you can click on this to fill in the URI for your next GET.
 
 ## Main Objects
-The "main" objects are Systems, Managers and Chassis.  These are all collections (see next heading).  We will dig into these resources in a minute, but it's good to know a bit about them.  
+The "main" objects are Systems, Managers and Chassis.  These are all collections (see next heading).  We will dig into these resources in a minute, but it's good to know a bit about them.
 
 Systems represent your typical server.  Anything accessed in the data plane from the CPU is represented as a system and these are all in the systems collection.  Thus they will have CPUs, Memory and other devices.
- 
-Managers represent your BMC, Enclosure Manager or other component that is managing the infrastructure.  Managers handle various management services but also have their own devices (like NICs).  
 
-Chassis represents the physical aspects and containment of the infrastructure.  Racks, enclosures, the blades within them - all of these and more are Chassis. Thus there is a way to represent a Chassis in a Chassis. It is the chassis that houses sensors, fans and the like.  
+Managers represent your BMC, Enclosure Manager or other component that is managing the infrastructure.  Managers handle various management services but also have their own devices (like NICs).
 
-Systems can have one or more managers (since some managers are redundant), and are in one chassis.   Managers are in a Chassis and can manage more than one system.  And Chassis can house more than one System and/or Managers.  
+Chassis represents the physical aspects and containment of the infrastructure.  Racks, enclosures, the blades within them - all of these and more are Chassis. Thus there is a way to represent a Chassis in a Chassis. It is the chassis that houses sensors, fans and the like.
+
+Systems can have one or more managers (since some managers are redundant), and are in one chassis.   Managers are in a Chassis and can manage more than one system.  And Chassis can house more than one System and/or Managers.
 
 This is just an overview, but looking at the ServiceRoot object, you can see these right away.  You will also notice there are services such as Sessions (more on these later too).
 
@@ -161,7 +161,7 @@ The structure of the @odata.context is the url to a metadata document with a fra
 
 Technically the metadata document only has to define, or reference, any of the types it directly uses, and different payloads could reference different metadata documents. However, since the @odata.context provides a root URL for resolving relative references (such as @odata.id's) we have to return the "canonical" metadata document.  Further, because our "@odata.type" annotations are written as fragments, rather than full URLs, those fragments must be defined in, or referenced by, that metadata document. Also, because we qualify actions with the versionless namespace aliases, those aliases must also be defined through references in the referenced metadata document.
 
-For example, in the resource /redfish/v1/Systems/1, you will see the property "@odata.context" with the value of "/redfish/v1/$metadata#Systems/Links/Members/$entity".  This tells the generic OData v4 client to find the Systems definition in the $metadata and look in the Links property definition and within it is a Members property definition which has a reference to the definition for this entity.  
+For example, in the resource /redfish/v1/Systems/1, you will see the property "@odata.context" with the value of "/redfish/v1/$metadata#Systems/Links/Members/$entity".  This tells the generic OData v4 client to find the Systems definition in the $metadata and look in the Links property definition and within it is a Members property definition which has a reference to the definition for this entity.
 
 ## Actions
 Not everything can be done easily using REST.  So we made Actions.  Things like "push button" on a System (which would reset the system or turn it off, depending on its setting) can't easily be represented in the System because the service has no idea what the state of the button is and thus does not expose it as a property.  Another use is for long lived operations that are more easily expressed as an atomic action as a convenience for the client - things like firmware update or graceful shutdown.
@@ -221,11 +221,11 @@ X-Auth-Token: <session-auth-token>
 You will use the token string in the response X-Auth-Token header in the same header for all subsequent requests to your service.  When it's time to delete the session, you can do a DELETE operation on the URL that was returned in the @odata.id in the response (/redfish/v1/Sessions/Administrator1 in the example above).
 
 ## Redundancy
-Go back to one of the Chassis and take a look at the fans by following the link to "Thermal" and you will see how Redfish shows redundancy.  
+Go back to one of the Chassis and take a look at the fans by following the link to "Thermal" and you will see how Redfish shows redundancy.
 
-You will notice an array called "Redundancy".  It shows the two fans in its set using the same values in the RelatedItem properties.  Redundancy has a common schema definition in Redfish and has other properties in it besides the members to show other important attributes about redundancy.  This is how the client can figure out which items belongs to which redundancy set since the @odata.id values are pointers to the redundancy set members.  
+You will notice an array called "Redundancy".  It shows the two fans in its set using the same values in the RelatedItem properties.  Redundancy has a common schema definition in Redfish and has other properties in it besides the members to show other important attributes about redundancy.  This is how the client can figure out which items belongs to which redundancy set since the @odata.id values are pointers to the redundancy set members.
 
-The value of the "@odata.id" property, though, doesn't have to be to a whole resource.  The value of this property will be of two formats: a JSON Pointer or an OData reference.  
+The value of the "@odata.id" property, though, doesn't have to be to a whole resource.  The value of this property will be of two formats: a JSON Pointer or an OData reference.
 
 - In the case of a JSON Pointer, there will be a # in it that indicates where the resource stops and where the property pattern begins.  The schema will also have a reference to the property.  An example of a JSON Pointer value might be "/redfish/v1/Chassis/1/Thermal#/Fans/0".
 - In the case of an OData reference, there will not be a # in it.  The schema will have a definition of the property.  An example of a JSON Pointer value might be "/redfish/v1/Chassis/1/Thermal/Fans/0".
@@ -287,20 +287,20 @@ PATCH is gaining wide adoption in the industry.  It is already supported by Open
 
 ### Current Configurations vs Settings
 
-There are basically two kinds of objects in Redfish - Current Configurations and Settings.  Most objects represent the current state of any given resource.  Occasionally, you'll see a property called "@DMTF.Settings" in a resource.  This annotation has a link tells you where to do PUTs and PATCHes for configuration.  It represents the future state of the resource.  
+There are basically two kinds of objects in Redfish - Current Configurations and Settings.  Most objects represent the current state of any given resource.  Occasionally, you'll see a property called "@DMTF.Settings" in a resource.  This annotation has a link tells you where to do PUTs and PATCHes for configuration.  It represents the future state of the resource.
 
-Some resources can handle changes to them right away, others may require a restart/reboot of the system or service.  "@DMTF.Settings" is used to let the client know what type of resource this is and where to make the changes.  
+Some resources can handle changes to them right away, others may require a restart/reboot of the system or service.  "@DMTF.Settings" is used to let the client know what type of resource this is and where to make the changes.
 
-If you see the "@DMTF.Settings" property, it has a link to a resource to make the changes that will be picked up at the next opportunity, like a reset or reboot.  If you don't see a Settings link, any PATCHes to the object should take place right away (in the absence of a spawned task).  
+If you see the "@DMTF.Settings" property, it has a link to a resource to make the changes that will be picked up at the next opportunity, like a reset or reboot.  If you don't see a Settings link, any PATCHes to the object should take place right away (in the absence of a spawned task).
 
-There is also information about when the last time the settings were applied to the resource - time, an ETag and any messages that would have been returned if the settings had been able to be applied "live". 
+There is also information about when the last time the settings were applied to the resource - time, an ETag and any messages that would have been returned if the settings had been able to be applied "live".
 
 Examples of resources that may need Settings are devices like NICs and Storage as well as BIOS.
 
 ### Determining Properties that can be updated.
 Both the Schema and the metadata define which properties can be updated.  Properties that are marked "OData.Permissions/Read" or have read-only as true indicate these properties can never be updated. Instead an "OData.Permissions/ReadWrite" or read-only = false indicates that it might be writable.  The LongDescription (normative text) may indicate which properties are writable and under what conditions. Note that by default, metadata without a "Permissions" annotation or schema without readonly = true can assumed to be writable.
 
-Note that even if they are marked writable, that doesn't necessarily indicate that a property can be written as implementations can allow the property to be read-only. 
+Note that even if they are marked writable, that doesn't necessarily indicate that a property can be written as implementations can allow the property to be read-only.
 
 Semantics on Redfish PUT/PATCH are such that attempting to update a non-writable property isn't treated as an error.  An implementation of a Redfish Service will return a 200 with Extended Error Information indicating which properties were unable to be updated.
 
@@ -308,7 +308,7 @@ Semantics on Redfish PUT/PATCH are such that attempting to update a non-writable
 
 HTTP error semantics alone are not informative enough for users or applications to understand the cause and take corrective action, leading to the concept of an Extended Error Response construct. It also supports registries, and allows for more meaningful error semantics for clients.
 
-For example, let's suppose a client wants to change a couple dozen properties all at once.  But one of them is invalid. If the implementation returned a "400", it would not help the client know which property was in error and why.  Or if it returns a "200" but one of the properties didn't exist, that isn't a meaningful response. 
+For example, let's suppose a client wants to change a couple dozen properties all at once.  But one of them is invalid. If the implementation returned a "400", it would not help the client know which property was in error and why.  Or if it returns a "200" but one of the properties didn't exist, that isn't a meaningful response.
 
 If the response is accompanied by a JSON body with an Extended Error Response, the structure can contain not only the reason for the code being returned but the property name and even more information.  And since ExtendedError has an array of messages, more than one message can be returned if more than one problem was encountered.
 
@@ -323,7 +323,7 @@ Redfish supports two different categories of events: life-cycle and alert events
 More information on eventing is in the specification.
 
 ## Creating User Accounts and other resources
-Like Eventing and Sessions, resources are created via a POST operation.  This is usually through a POST to a collection.  Event subscription, sessions and account services all have collections.  The URI of these collection are discovered like any other resource in this hypermedia API.  
+Like Eventing and Sessions, resources are created via a POST operation.  This is usually through a POST to a collection.  Event subscription, sessions and account services all have collections.  The URI of these collection are discovered like any other resource in this hypermedia API.
 
 The schema defines an annotation called "RequiredOnCreate" that a client can use to determine which properties must be supplied in the POST.
 
@@ -398,40 +398,37 @@ Here are a few use cases that will help you understand the architecture and begi
 ## Finding Temperature Sensors for a System
 Application code should always start at the root: /redfish/v1/
 
-1. In the root object is a property called "Systems".  
-	1. Find the "@odata.id" value.  This is the URI of the Systems collection. 
-	2. In the mockup, this URI is /redfish/v1/Systems.  
-	3. Do a GET on that URI. 
+1. In the root object is a property called "Systems".
+	1. Find the "@odata.id" value.  This is the URI of the Systems collection.
+	2. In the mockup, this URI is /redfish/v1/Systems.
+	3. Do a GET on that URI.
 1. Look at the "Links" object at the "Members" array.
-	1. Find the "@odata.id" of the System in question (this may require GETs on each system and looking at properties in the system to determine the right system).  
-	2. In the mockup, this URI is /redfish/v1/Systems/1.  
+	1. Find the "@odata.id" of the System in question (this may require GETs on each system and looking at properties in the system to determine the right system).
+	2. In the mockup, this URI is /redfish/v1/Systems/1.
 	3. Do a GET on that URI.
 1. Look in the "Links" object for an object called "Chassis".
-	1.  Find the "@odata.id" value.  This is the chassis that this system is in.  
-	2.  In the mockup, this URI is /redfish/v1/Chassis/1. 
+	1.  Find the "@odata.id" value.  This is the chassis that this system is in.
+	2.  In the mockup, this URI is /redfish/v1/Chassis/1.
 	3.  Do a GET on that URI.
 1. Look in the "Links" section for an object called "Thermal".
-	1. Find the "@odata.id" value.  This is has the temperature sensors in it.  
-	2. In the mockup, this URI is /redfish/v1/chassis/1/Thermal. 
+	1. Find the "@odata.id" value.  This is has the temperature sensors in it.
+	2. In the mockup, this URI is /redfish/v1/chassis/1/Thermal.
 	3. Do a GET on that resource.
 1. Look in the "Temperature" array - this is the temperature sensors for a system.
-	1. Look at the "RelatedItem" to find out specifically which components each temperature sensor monitors.      
+	1. Look at the "RelatedItem" to find out specifically which components each temperature sensor monitors.
 
 ## Chassis within Chassis
 Application code should always start at the root: /redfish/v1/
 
-1. In the root object is a property called "Chassis".  
-	1. Find the "@odata.id" value.  This is the URI of the Chassis collection. 
-	2. In the mockup, this URI is /redfish/v1/Chassis.  
-	3. Do a GET on that URI. 
+1. In the root object is a property called "Chassis".
+	1. Find the "@odata.id" value.  This is the URI of the Chassis collection.
+	2. In the mockup, this URI is /redfish/v1/Chassis.
+	3. Do a GET on that URI.
 1. Look at the "Links" object at the "Members" array.
-	1. Find the "@odata.id" of the Chassis in question (this may require GETs on each system and looking at properties in the chassis to determine the right system).  
-	2. In the mockup, this URI is /redfish/v1/Chassis/Enc1.  
+	1. Find the "@odata.id" of the Chassis in question (this may require GETs on each system and looking at properties in the chassis to determine the right system).
+	2. In the mockup, this URI is /redfish/v1/Chassis/Enc1.
 	3. Do a GET on that URI.
 1. Look in the "Links" object for an object called "Contains".
-	1.  Find the "@odata.id" value.  This is the chassis that are in this chasis.  
+	1.  Find the "@odata.id" value.  This is the chassis that are in this chasis.
 1. Look in the "Links" section for an object called "ContainedBy".
-	1. Find the "@odata.id" value.  This is the chassis that this chassis is in.  
-
-##
-
+	1. Find the "@odata.id" value.  This is the chassis that this chassis is in.
