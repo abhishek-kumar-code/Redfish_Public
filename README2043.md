@@ -7,11 +7,17 @@
 
 - **Document Identifier: DSP2043**
 - **Date: 2015-08-04**
-- **Version: 1.0.0**
+- **Version: 0.99.0a**
+- **Supersedes: None**
 - **Document Class: Informative**
-- **Document Status: Published**
+- **Document Status: Work in Progress**
 - **Document Language: en-US**
 - Released: true
+- **Information for Work-in-Progress version:**
+
+**IMPORTANT:** This document is not a standard. It does not necessarily reflect the views of the DMTF or its members. Because this document is a Work in Progress, this document may still change, perhaps profoundly and without notice. This document is available for public review and comment until superseded.
+
+**Provide any comments through the DMTF Feedback Portal:** [http://www.dmtf.org/standards/feedback](http://www.dmtf.org/standards/feedback)
 ## Copyright Notice ##
 Copyright © 2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved. 
 
