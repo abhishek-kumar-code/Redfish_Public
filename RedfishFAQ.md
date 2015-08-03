@@ -1,5 +1,5 @@
 ---
-DocTitle: Redfish FAQ
+DocTitle: Redfish Frequently Asked Questions (FAQ)
 DocNumber: '2045'
 DocClass: Informative
 DocVersion: '1.0.0'
