@@ -211,10 +211,16 @@ pre {
     text-align: center;
     display: table-footer-group !important;
 
-    div {
+    > div {
       border-top: .1em solid #444;
       height: 4em;
       margin-top: 3em;
+
+      div {
+        margin: 0 auto;
+        width: 150pt;
+      }
+
       &:before {
         float: left;
         content: "Version " attr(data-doc-version);
@@ -222,6 +228,7 @@ pre {
 
       &:after {
         float: right;
+        margin-top: -1.4em;
         counter-increment: page;
         content: counter(page);
       }
