@@ -17,7 +17,8 @@ var _ = require('lodash')
 
 var documentDefaults = {
   DocLang: 'en-US',
-  DocConfidentiality: ''
+  DocConfidentiality: '',
+  SupersedesVersion: 'None'
 }
 
 var docStatuses = {
