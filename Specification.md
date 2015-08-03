@@ -249,7 +249,7 @@ The Redfish Schema defines certain standard actions associated with [common Redf
 
 While the service itself is at a well-known URI, the service host must be discovered. Redfish, like UPnP, uses SSDP for discovery. SSDP is supported in a wide variety of devices, such as printers.  It is simple, lightweight, IPv6 capable and suitable for implementation in embedded environments.  Redfish is investigating additional service entry point discovery (e.g. DHCP-based) approaches.
 
-For more information, see the section on [Discovery](#discovery-1)
+For more information, see the section on [Discovery](#discovery)
 
 #### Remote Access Support
 
