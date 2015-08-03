@@ -5,6 +5,7 @@
 - **Document Identifier: DSP0266**
 - **Date: 2015-08-04**
 - **Document Version: 1.0.0**
+-  **Supersedes: None**
 - **Document Class: Normative**
 - **Document Status: Published**
 - **Document Language: en-US**
