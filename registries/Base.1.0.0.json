@@ -6,7 +6,7 @@
     "Language": "en",
     "Description": "This registry defines the base messages for Redfish",
     "RegistryPrefix": "Base",
-    "OwningEntity": "Redfish Group",
+    "OwningEntity": "DMTF",
     "Messages": {
         "Success": {
             "Description": "Indicates that all conditions of a successful operation have been met.",
