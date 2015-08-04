@@ -18,6 +18,7 @@
   "homepage": "https://github.com/cehoffman/spmf",
   "dependencies": {
     "glob": "^5.0.14",
+    "jsonlint": "^1.6.2",
     "vows": "^0.8.1"
   }
 }
