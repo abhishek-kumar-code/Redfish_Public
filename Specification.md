@@ -624,6 +624,7 @@ For instance, if a Redfish Schema document `http://redfish.dmtf.org/schemas/v1/C
 And a computer system resource contains an [Actions](#actions-property) property such as this:
 
 ~~~json
+...
 "Actions": {
     "#ComputerSystem.Reset": {
         "target":"/redfish/v1/Systems/1/Actions/ComputerSystem.Reset",
@@ -639,11 +640,12 @@ And a computer system resource contains an [Actions](#actions-property) property
         ]
     }
 }
+...
 ~~~
 
 Then the following would represent a possible request for the Action:
 
-~~~json
+~~~http
 POST /redfish/v1/Systems/1/Actions/ComputerSystem.Reset HTTP/1.1
 Content-Type: application/json
 Content-Length: <computed length>
@@ -903,7 +905,9 @@ Expanded [reference properties](#reference-properties) shall be included in the 
 For example, the following context URL specifies that the result contains a single resource from the Members collection of the Systems resource:
 
 ~~~json
+...
 "@odata.context":"/redfish/v1/$metadata#Systems/Members/$entity",
+...
 ~~~
 
 ##### Resource Identifier Property
@@ -994,6 +998,7 @@ The property representing the available action may be annotated with the [Allowa
 For example, the following property represents the Reset action, defined in the ComputerSystem namespace:
 
 ~~~json
+...
 "#ComputerSystem.Reset": {
    "target":"/redfish/v1/Systems/1/Actions/ComputerSystem.Reset",
    "ResetType@Redfish.AllowableValues": [
@@ -1007,6 +1012,7 @@ For example, the following property represents the Reset action, defined in the 
        "PushPowerButton"
        ]
    }
+...
 ~~~
 
 Given this, the client could invoke a POST request to /redfish/v1/Systems/1/Actions/ComputerSystem.Reset with the following body:
@@ -1037,10 +1043,11 @@ A reference to a single resource is returned as a JSON object containing a singl
 
 ~~~json
 {
-"Links" : {
-	"ManagedBy": {
-		"@odata.id":"/redfish/v1/Chassis/Encl1"
-	}
+  "Links" : {
+    "ManagedBy": {
+      "@odata.id":"/redfish/v1/Chassis/Encl1"
+    }
+  }
 }
 ~~~
 
@@ -1050,15 +1057,16 @@ A reference to a collection of zero or more related resources is returned as an 
 
 ~~~json
 {
-"Links" : {
-	"Contains" : [
-		{
-			"@odata.id":"/redfish/v1/Chassis/1"
-		},
-		{
-			"@odata.id":"/redfish/v1/Chassis/Encl1"
-		}
-	]
+  "Links" : {
+    "Contains" : [
+    {
+      "@odata.id":"/redfish/v1/Chassis/1"
+    },
+    {
+      "@odata.id":"/redfish/v1/Chassis/Encl1"
+    }
+    ]
+  }
 }
 ~~~
 
@@ -1131,7 +1139,7 @@ An individual property within a JSON object can be annotated with extended infor
     "StopBits": 1,
     "FlowControl": "None",
     "ConnectorType": "RJ45",
-    "PinOut": "Cyclades"
+    "PinOut": "Cyclades",
     "PinOut@Message.ExtendedInfo" : [
 		{
            "MessageId": "Base.1.0.PropertyValueNotInList",
@@ -1806,6 +1814,7 @@ OEM-specific actions can be defined by defining actions bound to the OEM propert
 Such bound actions appear in the JSON payload as properties of the Oem type, nested under an [Actions property](#actions-property).
 
 ```json
+...
 "Actions": {
 	"OEM": {
 		"Contoso.v.v.v#Contoso.Ping": {
@@ -1813,7 +1822,7 @@ Such bound actions appear in the JSON payload as properties of the Oem type, nes
 		    }
 		}
 	}
-}
+...
 ```
 ##### Custom Annotations
 
@@ -2177,7 +2186,7 @@ For functionality requiring multiple Redfish operations, or for security reasons
 
 A Redfish session is created by an HTTP POST to the SessionService' Sessions collection resource, including the following POST body:
 
-```json
+```http
 POST /redfish/v1/SessionService/Sessions HTTP/1.1
 Host: <host-path>
 Content-Type: application/json; charset=utf-8
@@ -2199,7 +2208,7 @@ The response to the POST request to create a session includes:
 *  a "Location header that contains a link to the newly created session resource.
 *  The JSON response body that contains a full representation of the newly created session object:
 
-```json
+```http
 Location: /redfish/v1/SessionService/Sessions/1
 X-Auth-Token: <session-auth-token>
 
