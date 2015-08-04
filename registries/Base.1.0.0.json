@@ -36,7 +36,7 @@
             "Severity": "Warning",
             "NumberOfArgs": 1,
             "ParamTypes": [
-                "String"
+                "string"
             ],
             "Resolution": "Remove the duplicate property from the request body and resubmit the request if the operation failed."
         },
@@ -46,7 +46,7 @@
             "Severity": "Warning",
             "NumberOfArgs": 1,
             "ParamTypes": [
-                "String"
+                "string"
             ],
             "Resolution": "Remove the unknown property from the request body and resubmit the request if the operation failed."
         },
@@ -56,8 +56,8 @@
             "Severity": "Warning",
             "NumberOfArgs": 2,
             "ParamTypes": [
-                "String",
-                "String"
+                "string",
+                "string"
             ],
             "Resolution": "Correct the value for the property in the request body and resubmit the request if the operation failed."
         },
@@ -67,8 +67,8 @@
             "Severity": "Warning",
             "NumberOfArgs": 2,
             "ParamTypes": [
-                "String",
-                "String"
+                "string",
+                "string"
             ],
             "Resolution": "Correct the value for the property in the request body and resubmit the request if the operation failed."
         },
@@ -78,8 +78,8 @@
             "Severity": "Warning",
             "NumberOfArgs": 2,
             "ParamTypes": [
-                "String",
-                "String"
+                "string",
+                "string"
             ],
             "Resolution": "Choose a value from the enumeration list that the implementation can support and resubmit the request if the operation failed."
         },
@@ -89,7 +89,7 @@
             "Severity": "Warning",
             "NumberOfArgs": 1,
             "ParamTypes": [
-                "String"
+                "string"
             ],
             "Resolution": "Remove the property from the request body and resubmit the request if the operation failed."
         },
@@ -99,7 +99,7 @@
             "Severity": "Warning",
             "NumberOfArgs": 1,
             "ParamTypes": [
-                "String"
+                "string"
             ],
             "Resolution": "Ensure that the property is in the request body and has a valid value and resubmit the request if the operation failed."
         },
@@ -116,7 +116,7 @@
             "Severity": "Critical",
             "NumberOfArgs": 1,
             "ParamTypes": [
-                "String"
+                "string"
             ],
             "Resolution": "The action supplied cannot be resubmitted to the implementation.  Perhaps the action was invalid, the wrong resource was the target or the implementation documentation may be of assistance."
         },
@@ -126,8 +126,8 @@
             "Severity": "Critical",
             "NumberOfArgs": 2,
             "ParamTypes": [
-                "String",
-                "String"
+                "string",
+                "string"
             ],
             "Resolution": "Supply the action with the required parameter in the request body when the request is resubmitted."
         },
@@ -137,8 +137,8 @@
             "Severity": "Warning",
             "NumberOfArgs": 2,
             "ParamTypes": [
-                "String",
-                "String"
+                "string",
+                "string"
             ],
             "Resolution": "Resubmit the action with only one instance of the parameter in the request body if the operation failed."
         },
@@ -148,8 +148,8 @@
             "Severity": "Warning",
             "NumberOfArgs": 2,
             "ParamTypes": [
-                "String",
-                "String"
+                "string",
+                "string"
             ],
             "Resolution": "Correct the invalid parameter and resubmit the request if the operation failed."
         },
@@ -159,9 +159,9 @@
             "Severity": "Warning",
             "NumberOfArgs": 3,
             "ParamTypes": [
-                "String",
-                "String",
-                "String"
+                "string",
+                "string",
+                "string"
             ],
             "Resolution": "Correct the value for the parameter in the request body and resubmit the request if the operation failed."
         },
@@ -171,9 +171,9 @@
             "Severity": "Warning",
             "NumberOfArgs": 3,
             "ParamTypes": [
-                "String",
-                "String",
-                "String"
+                "string",
+                "string",
+                "string"
             ],
             "Resolution": "Correct the value for the parameter in the request body and resubmit the request if the operation failed."
         },
@@ -183,8 +183,8 @@
             "Severity": "Warning",
             "NumberOfArgs": 2,
             "ParamTypes": [
-                "String",
-                "String"
+                "string",
+                "string"
             ],
             "Resolution": "Remove the parameter supplied and resubmit the request if the operation failed."
         },
@@ -194,8 +194,8 @@
             "Severity": "Warning",
             "NumberOfArgs": 2,
             "ParamTypes": [
-                "String",
-                "String"
+                "string",
+                "string"
             ],
             "Resolution": "Correct the value for the query parameter in the request and resubmit the request if the operation failed."
         },
@@ -205,8 +205,8 @@
             "Severity": "Warning",
             "NumberOfArgs": 2,
             "ParamTypes": [
-                "String",
-                "String"
+                "string",
+                "string"
             ],
             "Resolution": "Correct the value for the query parameter in the request and resubmit the request if the operation failed."
         },
@@ -216,9 +216,9 @@
             "Severity": "Warning",
             "NumberOfArgs": 3,
             "ParamTypes": [
-                "String",
-                "String",
-                "String"
+                "string",
+                "string",
+                "string"
             ],
             "Resolution": "Reduce the value for the query parameter to a value that is within range, such as a start or count value that is within bounds of the number of resources in a collection or a page that is within the range of valid pages."
         },
@@ -277,7 +277,7 @@
             "Severity": "Critical",
             "NumberOfArgs": 1,
             "ParamTypes": [
-                "String"
+                "string"
             ],
             "Resolution": "Correct the body to include the required property with a valid value and resubmit the request if the operation failed."
         },
@@ -350,7 +350,7 @@
             "Severity": "Critical",
             "NumberOfArgs": 1,
             "ParamTypes": [
-                "String"
+                "string"
             ],
             "Resolution": "Either the object is malformed or the URI is not correct.  Correct the condition and resubmit the request if it failed."
         },
@@ -374,7 +374,7 @@
             "Severity": "Critical",
             "NumberOfArgs": 1,
             "ParamTypes": [
-                "String"
+                "string"
             ],
             "Resolution": "Place a valid resource at thr URI or correct the URI and resubmit the request."
         },
@@ -384,7 +384,7 @@
             "Severity": "Critical",
             "NumberOfArgs": 1,
             "ParamTypes": [
-                "String"
+                "string"
             ],
             "Resolution": "Place an image or resource or file that is recognized by the service at the URI."
         },
@@ -394,8 +394,8 @@
             "Severity": "Critical",
             "NumberOfArgs": 2,
             "ParamTypes": [
-                "String",
-                "String"
+                "string",
+                "string"
             ],
             "Resolution": "Ensure that the appropriate access is provided for the service in order for it to access the URI."
         },
@@ -405,7 +405,7 @@
             "Severity": "Critical",
             "NumberOfArgs": 1,
             "ParamTypes": [
-                "String"
+                "string"
             ],
             "Resolution": "Ensure that the URI contains a valid and reachable node name, protocol information and other URI components."
         },
@@ -415,8 +415,8 @@
             "Severity": "Critical",
             "NumberOfArgs": 2,
             "ParamTypes": [
-                "String",
-                "String"
+                "string",
+                "string"
             ],
             "Resolution": "Change protocols or URIs. "
         },
@@ -426,7 +426,7 @@
             "Severity": "Critical",
             "NumberOfArgs": 1,
             "ParamTypes": [
-                "String"
+                "string"
             ],
             "Resolution": "Attempt to ensure that the URI is correct and that the service has the appropriate credentials."
         },
@@ -436,7 +436,7 @@
             "Severity": "Critical",
             "NumberOfArgs": 1,
             "ParamTypes": [
-                "String"
+                "string"
             ],
             "Resolution": "Wait for the indicated retry duration and retry the operation."
         },
@@ -446,7 +446,7 @@
             "Severity": "Warning",
             "NumberOfArgs": 1,
             "ParamTypes": [
-                "Number"
+                "number"
             ],
             "Resolution": "Verify the index value provided is within the bounds of the array."
         },
@@ -456,8 +456,8 @@
             "Severity": "Warning",
             "NumberOfArgs": 2,
             "ParamTypes": [
-                "String",
-                "String"
+                "string",
+                "string"
             ],
             "Resolution": "No resolution is required."
         }
