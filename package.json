@@ -17,8 +17,7 @@
   },
   "homepage": "https://github.com/cehoffman/spmf",
   "dependencies": {
-    "coffee-script": "^1.8.0",
-    "gulp": "^3.8.10",
-    "gulp-jsonlint": "^1.0.2"
+    "glob": "^5.0.14",
+    "vows": "^0.8.1"
   }
 }
