@@ -5,7 +5,7 @@ var jsonlint = require('jsonlint');
 var fs = require('fs');
 var assert = require('assert');
 
-var files = glob.sync(join('mockups', 'development', '**', 'index.html'));
+var files = glob.sync(join('mockups', 'development', '**', 'index.json'));
 var suite = {};
 
 files.forEach(function(file) {

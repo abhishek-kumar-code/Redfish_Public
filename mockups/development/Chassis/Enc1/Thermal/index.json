@@ -57,7 +57,7 @@
             "RelatedItem" : [
                 {"@odata.id": "/redfish/v1/Systems/2" },
                 {"@odata.id": "/redfish/v1/Chassis/Enc1" }
-            ] 
+            ]
         },
         {
             "@odata.id": "/redfish/v1/Chassis/Enc1/Thermal#/Fans/1",
@@ -82,7 +82,7 @@
             "RelatedItem" : [
                 {"@odata.id": "/redfish/v1/Systems/2" },
                 {"@odata.id": "/redfish/v1/Chassis/Enc1" }
-            ] 
+            ]
         }
     ],
     "Redundancy": [
