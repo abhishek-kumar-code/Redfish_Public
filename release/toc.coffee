@@ -39,13 +39,13 @@ window.onload = ->
 
     counter[levelMap[level]]++
     for _ in levelMap
-      num.push "#{counter[_]}."
+      num.push "#{counter[_]}"
       break if _ is tagName
 
-    txt = "#{num.join('')} #{tag.textContent}"
-    ul.appendChild createItem('#' + tag.getAttribute('id'), txt)
+    txt = [num.join('.'), tag.textContent]
+    ul.appendChild createItem('#' + tag.getAttribute('id'), txt.join('. '))
     tag.removeChild tag.lastChild
-    tag.appendChild document.createTextNode(txt)
+    tag.appendChild document.createTextNode(txt.join(if num.length is 1 then '. ' else ' '))
     currentLevel = level
 
   document.dispatchEvent new Event('toc')

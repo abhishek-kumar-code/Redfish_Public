@@ -1,11 +1,10 @@
 ---
 DocTitle: Redfish Schema Supplement
 DocNumber: XXXX
-DocType: Specification
-DocVersion: '0.97.0'
-DocStatus: Work in Progress
-DocConfidentiality: – Not a DMTF Standard – DMTF Confidential
-expiration: '2015-10-31'
+DocClass: Informative
+DocVersion: '1.0.0'
+modified: '2015-08-04'
+status: published
 released: false
 copyright: '2015'
 ---

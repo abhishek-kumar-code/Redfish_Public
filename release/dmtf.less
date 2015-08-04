@@ -1,7 +1,7 @@
 #dmtf {
   .logo {
     background: data-uri('./dmtf-logo.png') no-repeat right center;
-    height: 63px;
+    height: 133px;
   }
 
   .preamble {
@@ -17,16 +17,28 @@
 
   .wip {
     margin-bottom: 2em;
-    display: none;
+    position: relative;
+    padding: 0.5em;
+    font-weight: normal;
+    text-align: left;
   }
 
   &[data-status="Work in Progress"] {
     .wip {
-      padding: 0.5em;
-      font-weight: normal;
-      text-align: left;
       border: 2px ridge #eee;
-      display: block !important;
+    }
+  }
+
+  &[data-status="Published"], &[data-status="Draft"] {
+    .wip {
+      color: #fff;
+      user-select: none;
+      cursor: default;
+
+      a {
+        color: #fff;
+        cursor: default;
+      }
     }
   }
 
@@ -140,6 +152,7 @@ a {
 }
 
 pre {
+  white-space: pre-wrap;
   padding: 16px;
   overflow: auto;
   font-size: 85%;
@@ -155,10 +168,6 @@ pre {
 @import "./review.less";
 
 @media print {
-  pre {
-    white-space: pre-wrap;
-  }
-
   #toc-header, #toc ~ h2 {
     page-break-before: always;
     break-before: page;
@@ -189,7 +198,7 @@ pre {
     height: 4em;
 
     &:before {
-      content: 'DSP ' attr(data-doc-number);
+      content: 'DSP' attr(data-doc-number);
     }
 
     &:after {
@@ -202,10 +211,16 @@ pre {
     text-align: center;
     display: table-footer-group !important;
 
-    div {
+    > div {
       border-top: .1em solid #444;
       height: 4em;
       margin-top: 3em;
+
+      div {
+        margin: 0 auto;
+        width: 150pt;
+      }
+
       &:before {
         float: left;
         content: "Version " attr(data-doc-version);
@@ -213,6 +228,7 @@ pre {
 
       &:after {
         float: right;
+        margin-top: -1.4em;
         counter-increment: page;
         content: counter(page);
       }

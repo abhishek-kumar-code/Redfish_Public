@@ -3,6 +3,8 @@ var gutil = require('gulp-util')
 var markdown = require('gulp-markdown')
 var wrap = require('gulp-wrap')
 var less = require('gulp-less')
+var postcss = require('gulp-postcss')
+var autoprefixer = require('autoprefixer')
 var inline = require('gulp-inline')
 var coffee = require('gulp-coffee')
 var concat = require('gulp-concat')
@@ -15,30 +17,24 @@ var _ = require('lodash')
 
 var documentDefaults = {
   DocLang: 'en-US',
-  DocConfidentiality: ''
+  DocConfidentiality: '',
+  SupersedesVersion: 'None'
 }
 
 var docStatuses = {
   wip: {
     DocStatus: 'Work in Progress',
-    DocConfidentiality: '– Not a DMTF Standard',
   },
-  draftStandard: {
-    DocStatus: 'DMTF Draft Standard'
+  draft: {
+    DocStatus: 'Draft'
   },
-  standard: {
-    DocStatus: 'DMTF Standard'
-  },
-  informationalSpec: {
-    DocStatus: 'DMTF Informational Specification'
-  },
-  informational: {
-    DocStatus: 'DMTF Informational'
+  published: {
+    DocStatus: 'Published'
   }
 }
 
 gulp.task('default', ['css', 'js'], function() {
-  gulp.src(['../README*.md', '../Specification.md', '../WhitePaper.md'])
+  gulp.src(['../*.md'])
     .pipe(data(function(file, cb) {
       var content = fm(String(file.contents))
       var data = content.attributes
@@ -46,9 +42,6 @@ gulp.task('default', ['css', 'js'], function() {
 
       var git = spawn('git', ['log', '-1', '--format=%ad', '--', file.path])
       git.stdout.on('data', function(d) {
-        var date = new Date(d.toString())
-        data.modified = date.toISOString().slice(0, 10)
-
         // Default to a Work in Progress
         if (!data.status) {
           data.stauts = 'wip';
@@ -56,14 +49,14 @@ gulp.task('default', ['css', 'js'], function() {
 
         var merged = _.merge({}, documentDefaults, docStatuses[data.status], data)
 
-        // Append confidentiality when it is going for approval
         if (!data.released) {
-          merged.DocConfidentiality += '– DMTF Confidential'
+          data.DocConfidentiality = 'DMTF Confidential'
         }
 
-        // Default to expiration of 30 days from today for works in progress
-        if (data.status === 'wip' && !data.expiration) {
-          data.expiration = new Date(Date.now() + 1000 * 60 * 60 * 24 * 30).toISOString().slice(0, 10)
+        // Use the Git modified version if none supplied
+        if (!data.modified) {
+          var date = new Date(d.toString())
+          data.modified = date.toISOString().slice(0, 10)
         }
 
         cb(null, merged);
@@ -84,6 +77,9 @@ gulp.task('default', ['css', 'js'], function() {
 gulp.task('css', function() {
   gulp.src('*.less')
     .pipe(less())
+    .pipe(postcss([
+      autoprefixer({browsers: ['last 2 versions']})
+    ]))
     .pipe(gulp.dest('dist'))
 })
 
