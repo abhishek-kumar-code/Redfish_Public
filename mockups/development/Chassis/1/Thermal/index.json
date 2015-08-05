@@ -26,7 +26,7 @@
             "MaxReadingRange": 200,
             "PhysicalContext": "CPU",
             "RelatedItem": [
-                {"@odata.id": "/redfish/v1/Systems/1#/Processors/0" }
+                {"@odata.id": "/redfish/v1/Systems/1/Processors/1" }
             ]
         },
         {
@@ -49,7 +49,7 @@
             "MaxReadingRange": 200,
             "PhysicalContext": "CPU",
             "RelatedItem": [
-                {"@odata.id": "/redfish/v1/Systems/1#/Processors/1" }
+                {"@odata.id": "/redfish/v1/Systems/1/Processors/2" }
             ]
         },
         {
