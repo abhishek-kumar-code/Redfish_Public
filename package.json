@@ -20,6 +20,7 @@
     "glob": "^5.0.14",
     "json8-pointer": "^0.4.0",
     "jsonlint": "^1.6.2",
+    "libxmljs-mt": "^0.14.3",
     "traverse": "^0.6.6",
     "vows": "^0.8.1"
   }
