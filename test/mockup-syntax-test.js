@@ -1,24 +1,90 @@
 var vows = require('vows');
 var glob = require('glob');
-var join = require('path').join;
+var path = require('path');
 var jsonlint = require('jsonlint');
 var fs = require('fs');
 var assert = require('assert');
+var traverse = require('traverse');
+var url = require('url');
+var jptr = require('json8-pointer');
 
-var files = glob.sync(join('mockups', 'development', '**', 'index.json'));
-var suite = {};
+var files = glob.sync(path.join('mockups', 'development', '**', 'index.json'));
+var syntaxSuite = {}, consistencySuite = {};
+
+var LinkProperties = [
+  /^@odata\.id$/,
+  /^[^@]*@odata\.navigationLink$/,
+  /^[^@]*@odata\.nextLink$/
+]
+
+function isLink(key) {
+  for (var i = 0, llen = LinkProperties.length - 1; i < llen; i++) {
+    if (LinkProperties[i].test(key)) return true
+  }
+}
+
+var linkToFile = {}
 
 files.forEach(function(file) {
-  suite[file] = {
-    topic: function() { fs.readFile(file, 'utf-8', this.callback) },
-    'is valid JSON': function(err, txt) {
-      try {
-        jsonlint.parse(txt);
-      } catch(e) {
-        assert(false, 'Failed to parse\n' + e.message);
-      }
+  var decomp = path.parse(file);
+
+  // Get everything after mockups/<type> in path
+  var link = decomp.dir.split(path.sep).slice(2)
+
+  // Prepend with /redfish/v1
+  link.unshift('', 'redfish', 'v1');
+
+  linkToFile[link.join('/')] = file;
+})
+
+var fileToJSON = {};
+
+files.forEach(function(file) {
+  syntaxSuite[file] = {
+    topic: function() {
+      var self = this;
+
+      fs.readFile(file, 'utf-8', function(err, txt) {
+        try {
+          var json = jsonlint.parse(txt);
+          fileToJSON[file] = json;
+          self.callback(null, json);
+        } catch(e) {
+          self.callback('Failed to parse\n' + e.message);
+        }
+      });
+    },
+    'is valid JSON': function(err, json) {
+      assert.isNull(err);
+    }
+  }
+
+  consistencySuite[file] = {
+    'links are internally consistent': function() {
+      var json = fileToJSON[file];
+      if (!json) return;
+
+      var walker = traverse(json);
+
+      walker.forEach(function() {
+        if (!this.isLeaf) return;
+
+        if (isLink(this.key)) {
+          var link = url.parse(this.node);
+          var refd = fileToJSON[linkToFile[link.pathname]];
+
+          assert(refd !== undefined, 'invalid link at path /' + this.path.join('/') + ' with content ' + this.node + '. No such file exists at path.');
+          if (link.hash) {
+            refd = jptr.find(refd, link.hash.slice(1));
+            assert(refd !== undefined, 'invalid fragment component at path /' + this.path.join('/') + ' with content ' + link.hash);
+          }
+        }
+      });
     }
   }
 })
 
-vows.describe('Development Mockup').addBatch(suite).export(module);
+vows.describe('Development Mockup')
+  .addBatch(syntaxSuite)
+  .addBatch(consistencySuite)
+  .export(module);
