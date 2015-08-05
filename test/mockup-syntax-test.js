@@ -21,4 +21,4 @@ files.forEach(function(file) {
   }
 })
 
-vows.describe('Development Mockkup').addBatch(suite).export(module);
+vows.describe('Development Mockup').addBatch(suite).export(module);
