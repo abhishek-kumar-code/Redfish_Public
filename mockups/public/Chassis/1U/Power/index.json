@@ -99,7 +99,7 @@
     ],
     "PowerSupplies": [
         {
-            "@odata.id": "/redfish/v1/Chassis/1/Power#/PowerSupplies/0",
+            "@odata.id": "/redfish/v1/Chassis/1U/Power#/PowerSupplies/0",
             "MemberId": "0",
             "Name": "Power Supply Bay",
             "Status": {
