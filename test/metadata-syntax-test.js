@@ -6,7 +6,7 @@ var fs = require('fs');
 var xmljs = require('libxmljs-mt');
 var assert = require('assert');
 
-var files = glob.sync(path.join('metadata', '**', '*.xml'))
+var files = glob.sync(path.join('{metadata,mockups}', '**', '*.xml'))
 var syntaxBatch = {}, schemaBatch = {};
 
 files.forEach(function(file) {
