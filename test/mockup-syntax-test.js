@@ -32,9 +32,9 @@ files.forEach(function(file) {
   var link = decomp.dir.split(path.sep).slice(2)
 
   // Prepend with /redfish/v1
-  link.unshift('', 'redfish', 'v1');
+  link.unshift('', 'redfish', 'v1', '');
 
-  linkToFile[link.join('/')] = file;
+  linkToFile[path.normalize(link.join('/'))] = file;
 })
 
 var fileToJSON = {};
