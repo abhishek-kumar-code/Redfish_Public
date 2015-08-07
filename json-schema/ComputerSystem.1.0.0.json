@@ -39,7 +39,7 @@
                     ],
                     "readonly": false,
                     "description": "This property is the Uefi Device Path of the device to boot from when BootSourceOverrideSupported is UefiTarget.",
-                    "longDescription": "The value of this property shall be the UEFI device path of the override boot target.  The valid values for this property are specified through the DMTF.AllowableValues annotation. BootSourceOverrideEnabled = Continuous is not supported for Uefi Boot Source Override as this setting is defined in UEFI as a one time boot only."
+                    "longDescription": "The value of this property shall be the UEFI device path of the override boot target.  The valid values for this property are specified through the Redfish.AllowableValues annotation. BootSourceOverrideEnabled = Continuous is not supported for Uefi Boot Source Override as this setting is defined in UEFI as a one time boot only."
                 }
             },
             "description": "This object contains the boot information for the current resource."
