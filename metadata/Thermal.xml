@@ -38,16 +38,16 @@
 
     </Schema>
     
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Thermal.1.0.0">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Thermal.1.0.1">
 
       <EntityType Name="Thermal" BaseType="Thermal.Thermal">
-        <NavigationProperty Name="Temperatures" Type="Collection(Thermal.1.0.0.Temperature)" Nullable="false">
+        <NavigationProperty Name="Temperatures" Type="Collection(Thermal.1.0.1.Temperature)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is the definition for temperature sensors."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for temperature sensors for a Redfish implementation."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
-        <NavigationProperty Name="Fans" Type="Collection(Thermal.1.0.0.Fan)" Nullable="false" ContainsTarget="True">
+        <NavigationProperty Name="Fans" Type="Collection(Thermal.1.0.1.Fan)" Nullable="false" ContainsTarget="True">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is the definition for fans."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for fans for a Redfish implementation."/>
@@ -83,49 +83,49 @@
         <Property Name="UpperThresholdNonCritical" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Above normal range"/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the ReadingCelsius is above the normal range but is not critical. The units shall be the same units as the related ReadingCelsius propoerty."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the ReadingCelsius is above the normal range but is not critical. The units shall be the same units as the related ReadingCelsius property."/>
           <Annotation Term="OData.Measures.Unit" String="Celsius"/>
         </Property>
         <Property Name="UpperThresholdCritical" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Above normal range but not yet fatal."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the ReadingCelsius is above the normal range but is not yet fatal. The units shall be the same units as the related ReadingCelsius propoerty."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the ReadingCelsius is above the normal range but is not yet fatal. The units shall be the same units as the related ReadingCelsius property."/>
           <Annotation Term="OData.Measures.Unit" String="Celsius"/>
         </Property>
         <Property Name="UpperThresholdFatal" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Above normal range and is fatal"/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the ReadingCelsius is above the normal range and is fatal. The units shall be the same units as the related ReadingCelsius propoerty."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the ReadingCelsius is above the normal range and is fatal. The units shall be the same units as the related ReadingCelsius property."/>
           <Annotation Term="OData.Measures.Unit" String="Celsius"/>
         </Property>
         <Property Name="LowerThresholdNonCritical" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Below normal range"/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the ReadingCelsius is below the normal range but is not critical. The units shall be the same units as the related ReadingCelsius propoerty."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the ReadingCelsius is below the normal range but is not critical. The units shall be the same units as the related ReadingCelsius property."/>
           <Annotation Term="OData.Measures.Unit" String="Celsius"/>
         </Property>
         <Property Name="LowerThresholdCritical" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Below normal range but not yet fatal."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the ReadingCelsius is below the normal range but is not yet fatal. The units shall be the same units as the related ReadingCelsius propoerty."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the ReadingCelsius is below the normal range but is not yet fatal. The units shall be the same units as the related ReadingCelsius property."/>
           <Annotation Term="OData.Measures.Unit" String="Celsius"/>
         </Property>
         <Property Name="LowerThresholdFatal" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Below normal range and is fatal"/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the ReadingCelsius is below the normal range and is fatal. The units shall be the same units as the related ReadingCelsius propoerty."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the ReadingCelsius is below the normal range and is fatal. The units shall be the same units as the related ReadingCelsius property."/>
           <Annotation Term="OData.Measures.Unit" String="Celsius"/>
         </Property>
         <Property Name="MinReadingRangeTemp" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Minimum value for ReadingCelsius"/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the lowest possible value for ReadingCelsius. The units shall be the same units as the related ReadingCelsius propoerty."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the lowest possible value for ReadingCelsius. The units shall be the same units as the related ReadingCelsius property."/>
           <Annotation Term="OData.Measures.Unit" String="Celsius"/>
         </Property>
         <Property Name="MaxReadingRangeTemp" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Maximum value for ReadingCelsius"/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the lowest possible value for ReadingCelsius. The units shall be the same units as the related ReadingCelsius propoerty."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the lowest possible value for ReadingCelsius. The units shall be the same units as the related ReadingCelsius property."/>
           <Annotation Term="OData.Measures.Unit" String="Celsius"/>
         </Property>
         <Property Name="PhysicalContext" Type="PhysicalContext.1.0.0.PhysicalContext" Nullable="false">
@@ -153,59 +153,60 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a description of the affected device or region within the chassis to which this fan is associated."/>
         </Property>
         <Property Name="Status" Type="Resource.Status" Nullable="false"/>
-        <Property Name="ReadingRPM" Type="Edm.Int64">
+        <Property Name="Reading" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="Current fan speed in RPM"/>
+          <Annotation Term="OData.Description" String="Current fan speed"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the current value of the fan sensor's reading."/>
-          <Annotation Term="OData.Measures.Unit" String="RPM"/>
+        </Property>
+        <Property Name="Units" Type="Edm.String" Type="Thermal.1.0.1.Units">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="Units in which the reading and thresholds are measured."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the current value of the fan sensor's reading."/>
+        </Property>
+        <Property Name="BootSourceOverrideTarget" >
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The current boot source to be used at next boot instead of the normal boot device, if BootSourceOverrideEnabled is true."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the source to boot the system from, overriding the normal boot order.  The valid values for this property are specified through the DMTF.AllowableValues annotation. Pxe indicates to PXE boot from the primary NIC; Floppy, Cd, Usb, Hdd indicates to boot from their devices respectively.  BiosSetup indicates to boot into the native BIOS screen setup.  Utilities and Diags indicate to boot from the local utilities or diags partitions and UefiTarget indicates to boot from the UEFI device path found in UefiTargetBootSourceOverride."/>
         </Property>
         <Property Name="UpperThresholdNonCritical" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Above normal range"/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the ReadingRPM is above the normal range but is not critical. The units shall be the same units as the related ReadingRPM propoerty."/>
-          <Annotation Term="OData.Measures.Unit" String="RPM"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the Reading is above the normal range but is not critical. The units shall be the same units as the related Reading property."/>
         </Property>
         <Property Name="UpperThresholdCritical" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Above normal range but not yet fatal"/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the ReadingRPM is above the normal range but is not yet fatal. The units shall be the same units as the related ReadingRPM propoerty."/>
-          <Annotation Term="OData.Measures.Unit" String="RPM"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the Reading is above the normal range but is not yet fatal. The units shall be the same units as the related Reading property."/>
         </Property>
         <Property Name="UpperThresholdFatal" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Above normal range and is fatal"/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the ReadingRPM is above the normal range and is fatal. The units shall be the same units as the related ReadingRPM propoerty."/>
-          <Annotation Term="OData.Measures.Unit" String="RPM"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the Reading is above the normal range and is fatal. The units shall be the same units as the related Reading property."/>
         </Property>
         <Property Name="LowerThresholdNonCritical" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Below normal range"/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the ReadingRPM is below the normal range but is not critical. The units shall be the same units as the related ReadingRPM propoerty."/>
-          <Annotation Term="OData.Measures.Unit" String="RPM"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the Reading is below the normal range but is not critical. The units shall be the same units as the related Reading property."/>
         </Property>
         <Property Name="LowerThresholdCritical" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Below normal range but not yet fatal"/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the ReadingRPM is below the normal range but is not yet fatal. The units shall be the same units as the related ReadingRPM propoerty."/>
-          <Annotation Term="OData.Measures.Unit" String="RPM"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the Reading is below the normal range but is not yet fatal. The units shall be the same units as the related Reading property."/>
         </Property>
         <Property Name="LowerThresholdFatal" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Below normal range and is fatal"/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the ReadingRPM is below the normal range and is fatal. The units shall be the same units as the related ReadingRPM propoerty."/>
-          <Annotation Term="OData.Measures.Unit" String="RPM"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the Reading is below the normal range and is fatal. The units shall be the same units as the related Reading property."/>
         </Property>
         <Property Name="MinReadingRange" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="Minimum value for ReadingRPM"/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the lowest possible value for ReadingRPM. The units shall be the same units as the related ReadingRPM propoerty."/>
-          <Annotation Term="OData.Measures.Unit" String="RPM"/>
+          <Annotation Term="OData.Description" String="Minimum value for Reading"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the lowest possible value for Reading. The units shall be the same units as the related Reading property."/>
         </Property>
         <Property Name="MaxReadingRange" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="Maximum value for ReadingRPM"/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the lowest possible value for ReadingRPM. The units shall be the same units as the related ReadingRPM propoerty."/>
-          <Annotation Term="OData.Measures.Unit" String="RPM"/>
+          <Annotation Term="OData.Description" String="Maximum value for Reading"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the lowest possible value for Reading. The units shall be the same units as the related Reading property."/>
         </Property>
         <NavigationProperty Name="RelatedItem" Type="Collection(Resource.Item)" Nullable="false">
           <Annotation Term="OData.Description" String="The ID(s) of the resources serviced with this fan"/>
@@ -219,7 +220,16 @@
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
       </EntityType>
-
+	  
+      <EnumType Name="Units">
+        <Member Name="RPM">
+          <Annotation Term="OData.Description" String="Indicates that the fan reading and thresholds are measured in rotations per minute."/>
+        </Member>
+        <Member Name="Percent">
+          <Annotation Term="OData.Description" String="Indicates that the fan reading and thresholds are measured in percentage of the PWM duty cycle."/>
+        </Member>
+      </EnumType>
+	  
     </Schema>
   </edmx:DataServices>
 </edmx:Edmx>
