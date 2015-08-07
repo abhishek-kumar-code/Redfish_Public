@@ -77,7 +77,7 @@
                     ],
                     "readonly": true,
                     "description": "Above normal range",
-                    "longDescription": "The value of this property shall indicate the ReadingRPM is above the normal range but is not critical. The units shall be the same units as the related ReadingRPM propoerty."
+                    "longDescription": "The value of this property shall indicate the Reading is above the normal range but is not critical. The units shall be the same units as the related Reading property."
                 },
                 "UpperThresholdCritical": {
                     "type": [
@@ -86,7 +86,7 @@
                     ],
                     "readonly": true,
                     "description": "Above normal range but not yet fatal",
-                    "longDescription": "The value of this property shall indicate the ReadingRPM is above the normal range but is not yet fatal. The units shall be the same units as the related ReadingRPM propoerty."
+                    "longDescription": "The value of this property shall indicate the Reading is above the normal range but is not yet fatal. The units shall be the same units as the related Reading property."
                 },
                 "UpperThresholdFatal": {
                     "type": [
@@ -95,7 +95,7 @@
                     ],
                     "readonly": true,
                     "description": "Above normal range and is fatal",
-                    "longDescription": "The value of this property shall indicate the ReadingRPM is above the normal range and is fatal. The units shall be the same units as the related ReadingRPM propoerty."
+                    "longDescription": "The value of this property shall indicate the Reading is above the normal range and is fatal. The units shall be the same units as the related Reading property."
                 },
                 "LowerThresholdNonCritical": {
                     "type": [
@@ -104,7 +104,7 @@
                     ],
                     "readonly": true,
                     "description": "Below normal range",
-                    "longDescription": "The value of this property shall indicate the ReadingRPM is below the normal range but is not critical. The units shall be the same units as the related ReadingRPM propoerty."
+                    "longDescription": "The value of this property shall indicate the Reading is below the normal range but is not critical. The units shall be the same units as the related Reading property."
                 },
                 "LowerThresholdCritical": {
                     "type": [
@@ -113,7 +113,7 @@
                     ],
                     "readonly": true,
                     "description": "Below normal range but not yet fatal",
-                    "longDescription": "The value of this property shall indicate the ReadingRPM is below the normal range but is not yet fatal. The units shall be the same units as the related ReadingRPM propoerty."
+                    "longDescription": "The value of this property shall indicate the Reading is below the normal range but is not yet fatal. The units shall be the same units as the related Reading property."
                 },
                 "LowerThresholdFatal": {
                     "type": [
@@ -122,7 +122,7 @@
                     ],
                     "readonly": true,
                     "description": "Below normal range and is fatal",
-                    "longDescription": "The value of this property shall indicate the ReadingRPM is below the normal range and is fatal. The units shall be the same units as the related ReadingRPM propoerty."
+                    "longDescription": "The value of this property shall indicate the Reading is below the normal range and is fatal. The units shall be the same units as the related Reading property."
                 },
                 "MinReadingRange": {
                     "type": [
@@ -130,8 +130,8 @@
                         "null"
                     ],
                     "readonly": true,
-                    "description": "Minimum value for ReadingRPM",
-                    "longDescription": "The value of this property shall indicate the lowest possible value for ReadingRPM. The units shall be the same units as the related ReadingRPM propoerty."
+                    "description": "Minimum value for Reading",
+                    "longDescription": "The value of this property shall indicate the lowest possible value for Reading. The units shall be the same units as the related Reading property."
                 },
                 "MaxReadingRange": {
                     "type": [
@@ -139,8 +139,8 @@
                         "null"
                     ],
                     "readonly": true,
-                    "description": "Maximum value for ReadingRPM",
-                    "longDescription": "The value of this property shall indicate the lowest possible value for ReadingRPM. The units shall be the same units as the related ReadingRPM propoerty."
+                    "description": "Maximum value for Reading",
+                    "longDescription": "The value of this property shall indicate the lowest possible value for Reading. The units shall be the same units as the related Reading property."
                 },
                 "RelatedItem@odata.count": {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
@@ -239,7 +239,7 @@
                     ],
                     "readonly": true,
                     "description": "Above normal range",
-                    "longDescription": "The value of this property shall indicate the ReadingCelsius is above the normal range but is not critical. The units shall be the same units as the related ReadingCelsius propoerty."
+                    "longDescription": "The value of this property shall indicate the ReadingCelsius is above the normal range but is not critical. The units shall be the same units as the related ReadingCelsius property."
                 },
                 "UpperThresholdCritical": {
                     "type": [
@@ -248,7 +248,7 @@
                     ],
                     "readonly": true,
                     "description": "Above normal range but not yet fatal.",
-                    "longDescription": "The value of this property shall indicate the ReadingCelsius is above the normal range but is not yet fatal. The units shall be the same units as the related ReadingCelsius propoerty."
+                    "longDescription": "The value of this property shall indicate the ReadingCelsius is above the normal range but is not yet fatal. The units shall be the same units as the related ReadingCelsius property."
                 },
                 "UpperThresholdFatal": {
                     "type": [
@@ -257,7 +257,7 @@
                     ],
                     "readonly": true,
                     "description": "Above normal range and is fatal",
-                    "longDescription": "The value of this property shall indicate the ReadingCelsius is above the normal range and is fatal. The units shall be the same units as the related ReadingCelsius propoerty."
+                    "longDescription": "The value of this property shall indicate the ReadingCelsius is above the normal range and is fatal. The units shall be the same units as the related ReadingCelsius property."
                 },
                 "LowerThresholdNonCritical": {
                     "type": [
@@ -266,7 +266,7 @@
                     ],
                     "readonly": true,
                     "description": "Below normal range",
-                    "longDescription": "The value of this property shall indicate the ReadingCelsius is below the normal range but is not critical. The units shall be the same units as the related ReadingCelsius propoerty."
+                    "longDescription": "The value of this property shall indicate the ReadingCelsius is below the normal range but is not critical. The units shall be the same units as the related ReadingCelsius property."
                 },
                 "LowerThresholdCritical": {
                     "type": [
@@ -275,7 +275,7 @@
                     ],
                     "readonly": true,
                     "description": "Below normal range but not yet fatal.",
-                    "longDescription": "The value of this property shall indicate the ReadingCelsius is below the normal range but is not yet fatal. The units shall be the same units as the related ReadingCelsius propoerty."
+                    "longDescription": "The value of this property shall indicate the ReadingCelsius is below the normal range but is not yet fatal. The units shall be the same units as the related ReadingCelsius property."
                 },
                 "LowerThresholdFatal": {
                     "type": [
@@ -284,7 +284,7 @@
                     ],
                     "readonly": true,
                     "description": "Below normal range and is fatal",
-                    "longDescription": "The value of this property shall indicate the ReadingCelsius is below the normal range and is fatal. The units shall be the same units as the related ReadingCelsius propoerty."
+                    "longDescription": "The value of this property shall indicate the ReadingCelsius is below the normal range and is fatal. The units shall be the same units as the related ReadingCelsius property."
                 },
                 "MinReadingRangeTemp": {
                     "type": [
@@ -293,7 +293,7 @@
                     ],
                     "readonly": true,
                     "description": "Minimum value for ReadingCelsius",
-                    "longDescription": "The value of this property shall indicate the lowest possible value for ReadingCelsius. The units shall be the same units as the related ReadingCelsius propoerty."
+                    "longDescription": "The value of this property shall indicate the lowest possible value for ReadingCelsius. The units shall be the same units as the related ReadingCelsius property."
                 },
                 "MaxReadingRangeTemp": {
                     "type": [
@@ -302,7 +302,7 @@
                     ],
                     "readonly": true,
                     "description": "Maximum value for ReadingCelsius",
-                    "longDescription": "The value of this property shall indicate the lowest possible value for ReadingCelsius. The units shall be the same units as the related ReadingCelsius propoerty."
+                    "longDescription": "The value of this property shall indicate the lowest possible value for ReadingCelsius. The units shall be the same units as the related ReadingCelsius property."
                 },
                 "PhysicalContext": {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/PhysicalContext.1.0.0.json#/definitions/PhysicalContext",
