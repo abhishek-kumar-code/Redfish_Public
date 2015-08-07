@@ -24,7 +24,7 @@
                     "$ref": "#/definitions/BootSource",
                     "readonly": false,
                     "description": "The current boot source to be used at next boot instead of the normal boot device, if BootSourceOverrideEnabled is true.",
-                    "longDescription": "The value of this property shall contain the source to boot the system from, overriding the normal boot order.  The valid values for this property are specified through the DMTF.AllowableValues annotation. Pxe indicates to PXE boot from the primary NIC; Floppy, Cd, Usb, Hdd indicates to boot from their devices respectively.  BiosSetup indicates to boot into the native BIOS screen setup.  Utilities and Diags indicate to boot from the local utilities or diags partitions and UefiTarget indicates to boot from the UEFI device path found in UefiTargetBootSourceOverride."
+                    "longDescription": "The value of this property shall contain the source to boot the system from, overriding the normal boot order.  The valid values for this property are specified through the Redfish.AllowableValues annotation. Pxe indicates to PXE boot from the primary NIC; Floppy, Cd, Usb, Hdd indicates to boot from their devices respectively.  BiosSetup indicates to boot into the native BIOS screen setup.  Utilities and Diags indicate to boot from the local utilities or diags partitions and UefiTarget indicates to boot from the UEFI device path found in UefiTargetBootSourceOverride."
                 },
                 "BootSourceOverrideEnabled": {
                     "$ref": "#/definitions/BootSourceOverrideEnabled",
