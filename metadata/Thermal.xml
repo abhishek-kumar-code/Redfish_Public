@@ -221,7 +221,7 @@
           <Annotation Term="OData.Description" String="Indicates that the fan reading and thresholds are measured in rotations per minute."/>
         </Member>
         <Member Name="Percent">
-          <Annotation Term="OData.Description" String="Indicates that the fan reading and thresholds are measured in percentage of the PWM duty cycle."/>
+          <Annotation Term="OData.Description" String="Indicates that the fan reading and thresholds are measured in percentage."/>
         </Member>
       </EnumType>
 	  
