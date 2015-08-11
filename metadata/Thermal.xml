@@ -158,15 +158,10 @@
           <Annotation Term="OData.Description" String="Current fan speed"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the current value of the fan sensor's reading."/>
         </Property>
-        <Property Name="Units" Type="Edm.String" Type="Thermal.1.0.1.Units">
+        <Property Name="ReadingUnits" Type="Edm.String" Type="Thermal.1.0.1.Units">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Units in which the reading and thresholds are measured."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the current value of the fan sensor's reading."/>
-        </Property>
-        <Property Name="BootSourceOverrideTarget" >
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/ReadWrite"/>
-          <Annotation Term="OData.Description" String="The current boot source to be used at next boot instead of the normal boot device, if BootSourceOverrideEnabled is true."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the source to boot the system from, overriding the normal boot order.  The valid values for this property are specified through the DMTF.AllowableValues annotation. Pxe indicates to PXE boot from the primary NIC; Floppy, Cd, Usb, Hdd indicates to boot from their devices respectively.  BiosSetup indicates to boot into the native BIOS screen setup.  Utilities and Diags indicate to boot from the local utilities or diags partitions and UefiTarget indicates to boot from the UEFI device path found in UefiTargetBootSourceOverride."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the units of the fan's Reading property."/>
         </Property>
         <Property Name="UpperThresholdNonCritical" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
