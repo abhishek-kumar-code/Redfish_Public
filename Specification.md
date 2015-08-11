@@ -712,8 +712,8 @@ HTTP defines headers that can be used in response messages.  The following table
 
 The [Link header](#link-header-table) provides metadata information on the
 accessed resource in response to a HEAD or GET operation. In addition to
-links from the resource, the URL of the JSON schema of the resource shall be
-returned with a `rel=describedby`.  URLs of the JSON schema of an annotation shall be returned without a `rel=describedby`.
+links from the resource, the URL of the JSON schema for the resource shall be
+returned with a `rel=describedby`.  URLs of the JSON schema for an annotation should be returned without a `rel=describedby`.
 
 Link header(s) shall be returned on HEAD and a Link header satisfying
 `rel=describedby` shall be returned on GET and HEAD.
