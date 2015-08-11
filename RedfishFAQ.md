@@ -118,7 +118,7 @@ If the RelatedItem is an OData format item, or if it is a whole resource, it wil
 ## What about OEM Extensions?
 Redfish provides methods for extending any resource by using the "oem" object.  This is defined in schema and examples are included in the mockups.  The specification has rules about extending the oem object.  But here are some of the rules:
 * a property named "oem" is a root level object in every Redfish resource.  To extend it, just create a company named object within it.  The company named object has to have an @odata.type in it and the name of the company object has to adhere to certain rules.
-* oems can add actions as well.  This is covered in the spec and there are examples of who to do that as well. 
+* OEMs can add actions as well.  This is covered in the specification and there are examples of how to do that as well. 
 * implementations cannot add properties to non-OEM sections
 * OEMs can publish their own schemas.  These can be based on or in addition to the Redfish schemas.  These schemas should be referenced in the $metadata construct using OData CSDL and in the JSON Schema File constructs provided off of the service root.
 
