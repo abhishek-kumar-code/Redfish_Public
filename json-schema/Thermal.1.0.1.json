@@ -57,7 +57,7 @@
                     "description": "Current fan speed",
                     "longDescription": "The value of this property shall be the current value of the fan sensor's reading."
                 },
-                "Units": {
+                "ReadingUnits": {
                     "type": "string",
                     "enum": [
                         "RPM",
