@@ -65,7 +65,7 @@
                     ],
                     "enumDescriptions": {
                         "RPM": "Indicates that the fan reading and thresholds are measured in rotations per minute.",
-                        "Percent": "Indicates that the fan reading and thresholds are measured in percentage of the PWM duty cycle."
+                        "Percent": "Indicates that the fan reading and thresholds are measured in percentage."
                     },
                     "description": "Units in which the reading and thresholds are measured.",
                     "longDescription": "The value of this property shall be the units in which the fan's reading and thresholds are measured."
