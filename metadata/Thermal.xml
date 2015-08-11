@@ -161,7 +161,7 @@
         <Property Name="ReadingUnits" Type="Edm.String" Type="Thermal.1.0.1.Units">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Units in which the reading and thresholds are measured."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the units of the fan's Reading property."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the units in which the fan's reading and thresholds are measured."/>
         </Property>
         <Property Name="UpperThresholdNonCritical" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
