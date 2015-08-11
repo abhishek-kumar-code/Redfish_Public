@@ -1378,7 +1378,7 @@ The `Description` annotation is defined in http://docs.oasis-open.org/odata/odat
 
 ##### Long Description
 
-The LongDescription annotation term can be applied to any type, property, action or parameter in order to provide a formal, normative specification of the schema element.
+The LongDescription annotation term can be applied to any type, property, action or parameter in order to provide a formal, normative specification of the schema element.  Where the LongDescriptions in the Redfish schema files contain "shall" references, the service shall be required to conform with the statement.
 
 The `LongDescription` annotation term is defined in http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Core.V1.xml.
 
