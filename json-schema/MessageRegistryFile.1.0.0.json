@@ -52,11 +52,11 @@
                     "description": "Language codes for the schemas available.",
                     "longDescription": "The value of this property shall be a string consisting of an RFC 5646 language code."
                 },
-                "Schema": {
+                "Registry": {
                     "type": "string",
                     "readonly": true,
-                    "description": "The type name this schema describes.",
-                    "longDescription": "The value of this property shall be the value of the Type property for that schema and shall conform to the syntax specified in the Redfish specification for the Type property."
+                    "description": "The Registry Name, Major and Minor version used in MessageID construction.",
+                    "longDescription": "The value of this property shall be the value of the Registry Name, Major and Minor version and shall conform to the syntax specified in the Redfish specification for the MessageId property without the MessageKey."
                 },
                 "Location": {
                     "type": "array",
