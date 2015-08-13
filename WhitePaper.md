@@ -435,9 +435,8 @@ Application code should always start at the root: /redfish/v1/
 
 ---
 # Revision History
-| Version                         | Change                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| ---                             | ---                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| 1.0.0                           | Initial Version                                                                                                                                                                                                                  |
-|
-| 1.0.1                           | Corrected @DMTF to @Redfish                                                                                                                                                                                                                  |
+| Version                         | Change                                                              |
+| ---                             | ---                                                                 |
+| 1.0.0                           | Initial Version                                                     |
+| 1.0.1                           | Corrected @DMTF to @Redfish                                         |
 
