@@ -2,7 +2,7 @@
 DocTitle: Redfish White Paper
 DocNumber: '2044'
 DocClass: Informative
-DocVersion: '1.0.0'
+DocVersion: '1.0.1'
 modified: '2015-08-04'
 status: published
 released: true
@@ -148,9 +148,9 @@ There are also properties that are annotations.  These start with "@" or have "@
 - "@odata.id", which has the URL to this resource.  This is an href, but since Redish is based on OData this property is called "@odata.id" and not "href".
 - "Members@odata.count", which defines the number of resources in a collection.
 
-DMTF annotations have "@DMTF." in them.  Examples of these properies are:
+DMTF annotations have "@Redfish." in them.  Examples of these properies are:
 
-- "@DMTF.Settings", which is used to indicate settings for the resource (more on this later).
+- "@Redfish.Settings", which is used to indicate settings for the resource (more on this later).
 
 One other common annotation is "@odata.context". This is really meant for generic OData v4 clients.  This is properly defined in the OData v4 specification, but basically the @odata.context is used for a few different things:
 
@@ -287,11 +287,11 @@ PATCH is gaining wide adoption in the industry.  It is already supported by Open
 
 ### Current Configurations vs Settings
 
-There are basically two kinds of objects in Redfish - Current Configurations and Settings.  Most objects represent the current state of any given resource.  Occasionally, you'll see a property called "@DMTF.Settings" in a resource.  This annotation has a link tells you where to do PUTs and PATCHes for configuration.  It represents the future state of the resource.
+There are basically two kinds of objects in Redfish - Current Configurations and Settings.  Most objects represent the current state of any given resource.  Occasionally, you'll see a property called "@Redfish.Settings" in a resource.  This annotation has a link tells you where to do PUTs and PATCHes for configuration.  It represents the future state of the resource.
 
-Some resources can handle changes to them right away, others may require a restart/reboot of the system or service.  "@DMTF.Settings" is used to let the client know what type of resource this is and where to make the changes.
+Some resources can handle changes to them right away, others may require a restart/reboot of the system or service.  "@Redfish.Settings" is used to let the client know what type of resource this is and where to make the changes.
 
-If you see the "@DMTF.Settings" property, it has a link to a resource to make the changes that will be picked up at the next opportunity, like a reset or reboot.  If you don't see a Settings link, any PATCHes to the object should take place right away (in the absence of a spawned task).
+If you see the "@Redfish.Settings" property, it has a link to a resource to make the changes that will be picked up at the next opportunity, like a reset or reboot.  If you don't see a Settings link, any PATCHes to the object should take place right away (in the absence of a spawned task).
 
 There is also information about when the last time the settings were applied to the resource - time, an ETag and any messages that would have been returned if the settings had been able to be applied "live".
 
@@ -432,3 +432,12 @@ Application code should always start at the root: /redfish/v1/
 	1.  Find the "@odata.id" value.  This is the chassis that are in this chasis.
 1. Look in the "Links" section for an object called "ContainedBy".
 	1. Find the "@odata.id" value.  This is the chassis that this chassis is in.
+
+---
+# Revision History
+| Version                         | Change                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| ---                             | ---                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| 1.0.0                           | Initial Version                                                                                                                                                                                                                  |
+|
+| 1.0.1                           | Corrected @DMTF to @Redfish                                                                                                                                                                                                                  |
+
