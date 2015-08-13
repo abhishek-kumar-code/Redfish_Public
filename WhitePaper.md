@@ -435,8 +435,9 @@ Application code should always start at the root: /redfish/v1/
 
 ---
 # Revision History
-| Version                         | Change                                                              |
-| ---                             | ---                                                                 |
-| 1.0.0                           | Initial Version                                                     |
-| 1.0.1                           | Corrected @DMTF to @Redfish                                         |
+
+| Version | Date      | Description                                                            |
+| ---     | ---       | ---                                                                    |
+| 1.0.0   | 2015-8-4  | Initial release                                                        |
+| 1.0.1   | 2015-8-13 | Corrected @DMTF to @Redfish                                            |
 
