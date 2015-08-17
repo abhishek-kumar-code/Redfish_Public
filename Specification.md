@@ -909,7 +909,7 @@ If a response contains a subset of the properties defined in the Redfish Schema 
 
 Expanded [reference properties](#reference-properties) shall be included in the select list if the result includes a subset of the properties defined for the expanded resource.
 
-For example, the following context URL specifies that the result contains a single resource from the Members collection nested under the Links property of the Systems resource:
+For example, the following context URL specifies that the result contains a single resource from the Members collection of the Systems resource:
 
 ~~~json
 "@odata.context":"/redfish/v1/$metadata#Systems/Members/$entity",
