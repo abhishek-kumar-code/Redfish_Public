@@ -274,9 +274,9 @@
         </Member>
         <Member Name="Usb">
           <Annotation Term="OData.Description" String="Boot from a USB device as specified by the system BIOS"/>
-       </Member>
+        </Member>
         <Member Name="Hdd">
-           <Annotation Term="OData.Description" String="Boot from a hard drive"/>
+          <Annotation Term="OData.Description" String="Boot from a hard drive"/>
         </Member>
         <Member Name="BiosSetup">
           <Annotation Term="OData.Description" String="Boot to the BIOS Setup Utility"/>
