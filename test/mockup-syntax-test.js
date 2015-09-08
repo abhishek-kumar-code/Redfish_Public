@@ -25,8 +25,8 @@ function isLink(key) {
 
 glob.sync(path.join('mockups', '*/')).forEach(function(mockup) {
   var files = glob.sync(path.join(mockup, '**', 'index.json'));
-  var syntaxBatch = {}, consistencyBatch = {};
-  var linkToFile = {}
+  var consistencyBatch = {}, syntaxBatch = {};
+  var linkToFile = {};
   var fileToJSON = {};
 
   files.forEach(function(file) {
@@ -42,20 +42,21 @@ glob.sync(path.join('mockups', '*/')).forEach(function(mockup) {
 
     syntaxBatch[file] = {
       topic: function() {
-        var self = this;
-
-        fs.readFile(file, 'utf-8', function(err, txt) {
-          try {
-            var json = jsonlint.parse(txt);
-            fileToJSON[file] = json;
-            self.callback(null, json);
-          } catch(e) {
-            self.callback('Failed to parse\n' + e.message);
-          }
-        });
+        fs.readFile(file, this.callback);
       },
-      'is valid JSON': function(err, json) {
-        assert.isNull(err);
+      'is utf-8 encoded': function(err, txt) {
+        var utf8 = txt.toString('utf-8');
+        // Exploit the fact illegal byte codes are dropped from the text stream
+        // on conversion to detect an invalid file
+        assert(txt.equals(new Buffer(utf8, 'utf-8')), 'contains invalid utf-8 byte code');
+      },
+      'is valid JSON': function(err, txt) {
+        try {
+          var json = jsonlint.parse(txt.toString());
+          fileToJSON[file] = json;
+        } catch(e) {
+          throw Error('Failed to parse\n' + e.message);
+        }
       }
     }
 
