@@ -21,7 +21,7 @@
 
     </Schema>
 
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="VLanNetworkInterface.1.0.0">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="VLanNetworkInterface.1.0.1">
       
       <EntityType Name="VLanNetworkInterface" BaseType="VLanNetworkInterface.VLanNetworkInterface">
         <Property Name="VLANEnable" Type="Edm.Boolean">
@@ -29,7 +29,7 @@
           <Annotation Term="OData.Description" String="This indicates if this VLAN is enabled."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be used to indicate if this VLAN is enabled for this interface."/>
         </Property>
-        <Property Name="VLANId" Type="VLanNetworkInterface.1.0.0.VLANId">
+        <Property Name="VLANId" Type="VLanNetworkInterface.1.0.1.VLANId">
           <Annotation Term="Redfish.RequiredOnCreate"/>
           <Annotation Term="OData.Description" String="This indicates the VLAN identifier for this VLAN."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be used to indicate the VLAN identifier for this VLAN."/>
@@ -43,7 +43,7 @@
           <Annotation Term="OData.Description" String="This indicates if this VLAN is enabled."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be used to indicate if this VLAN is enabled for this interface."/>
         </Property>
-        <Property Name="VLANId" Type="VLanNetworkInterface.1.0.0.VLANId">
+        <Property Name="VLANId" Type="VLanNetworkInterface.1.0.1.VLANId">
           <Annotation Term="Redfish.RequiredOnCreate"/>
           <Annotation Term="OData.Description" String="This indicates the VLAN identifier for this VLAN."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be used to indicate the VLAN identifier for this VLAN."/>
@@ -52,7 +52,7 @@
 
       <TypeDefinition Name="VLANId" UnderlyingType="Edm.Int64">
         <Annotation Term="Validation.Minimum" Int="0"/>
-        <Annotation Term="Validation.Maximum" Int="4095"/>
+        <Annotation Term="Validation.Maximum" Int="4094"/>
       </TypeDefinition>
 
     </Schema>
