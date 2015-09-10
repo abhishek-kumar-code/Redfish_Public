@@ -714,7 +714,7 @@ class JsonSchemaGenerator:
                             output += UT.Utilities.indent(depth+1) + "},\n"
 
                             output += UT.Utilities.indent(depth+1) + "\"" + propname + "@odata.navigationLink\": {\n"
-                            output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + odataSchema + "#/definitions/idRef\"\n"
+                            output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + odataSchema + "#/definitions/id\"\n"
                             output += UT.Utilities.indent(depth+1) + "},\n"
 
                         output += UT.Utilities.indent(depth+1) + "\"" + propname + "\": {\n"
