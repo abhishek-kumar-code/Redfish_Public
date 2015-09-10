@@ -22,9 +22,8 @@
         .replace(/"/g, '&quot;')
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;')
-        .replace(/(&quot;(?:extref|href|frag)&quot;: &quot;)([\w\/\.\d:]+)(&quot;)/gim, function(_, $1, $2, $3) {
-          var link = /(extref|href)/.test($1) ? $2 : '#' + $2
-          return $1 + '<a href="' + link + '">' + $2 + '</a>' + $3;
+        .replace(/(&quot;(?:.*?@odata\.(?:id|navigationLink|nextLink))&quot;: &quot;)(.+?)(&quot;)/gim, function(_, $1, $2, $3) {
+          return $1 + '<a href="' + $2 + '" onclick="fetch(\'' + $2 + '\')">' + $2 + '</a>' + $3;
         });
       }
 

@@ -37,7 +37,7 @@ var head = function(res, status, body, overrides) {
   }
 
   if (body) {
-    headers['Content-Length'] = body.length ? body.length : body;
+    headers['Content-Length'] = body.length ? new Buffer(body).length: body;
   }
 
   res.writeHead(status, headers);
