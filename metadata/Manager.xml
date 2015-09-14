@@ -199,13 +199,13 @@
         <NavigationProperty Name="ManagerForServers" Type="Collection(ComputerSystem.ComputerSystem)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This property is an array of references to the systems that this manager has control over."/>
-          <Annotation Term="OData.LongDescription" String="This is a reference to a collection of ComputerSystem resources."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain an array of references to ComputerSystem resources of which this Manager instance has control."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
         <NavigationProperty Name="ManagerForChassis" Type="Collection(Chassis.Chassis)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="This property is an array of references to the chasis that this manager has control over."/>
-          <Annotation Term="OData.LongDescription" String="This is a reference to a collection of ListenerDestination resources."/>
+          <Annotation Term="OData.Description" String="This property is an array of references to the chassis that this manager has control over."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain an array of references to Chassis resources of which this Manager instance has control."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </ComplexType>
