@@ -192,7 +192,7 @@
                             },
                             "readonly": true,
                             "description": "This property is an array of references to the systems that this manager has control over.",
-                            "longDescription": "This is a reference to a collection of ComputerSystem resources."
+                            "longDescription": "This property shall contain an array of references to ComputerSystem resources of which this Manager instance has control."
                         },
                         "ManagerForChassis@odata.count": {
                             "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
@@ -207,7 +207,7 @@
                             },
                             "readonly": true,
                             "description": "This property is an array of references to the chasis that this manager has control over.",
-                            "longDescription": "This is a reference to a collection of ListenerDestination resources."
+                            "longDescription": "This property shall contain an array of references to Chassis resources of which this Manager instance has control."
                         }
                     },
                     "readonly": true,
