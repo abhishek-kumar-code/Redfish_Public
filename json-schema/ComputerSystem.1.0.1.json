@@ -450,10 +450,16 @@
             "enum": [
                 "On",
                 "Off",
-                "Unknown",
-                "Reset"
-            ]
-        },
+                "PoweringOn",
+                "PoweringOff"
+            ],
+            "enumDescriptions": {
+                "On": "The system is powered on.",
+                "Off": "The system is powered off, although some components may continue to have AUX power such as management controller.",
+                "PoweringOn": "A temporary state between Off and On. The components within the system may take time to process the power on action.",
+                "PoweringOff": "A temporary state between On and Off. The components within the system may take time to process the power off action."
+            }
+        },        
         "ProcessorSummary": {
             "type": "object",
             "patternProperties": {
