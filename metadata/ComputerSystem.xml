@@ -51,6 +51,28 @@
       </Action>
       
     </Schema>
+   
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.1.0.1">
+      <EntityType Name="ComputerSystem" BaseType="ComputerSystem1.0.0.ComputerSystem">
+        <Property Name="PowerState" Type="ComputerSystem.1.0.1.PowerState">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="This is the current power state of the system"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the power state of the system."/>
+        </Property>
+      <EnumType Name="PowerState">
+        <Member Name="On"/>
+          <Annotation Term="OData.Description" String="The system has power on."/>        
+        <Member Name="Off"/>
+          <Annotation Term="OData.Description" String="The system has no power, except some components may continue to have AUX power such as management controller."/>
+        <Member Name="PoweringOn">
+          <Annotation Term="OData.Description" String="A temporary state between Off and On. This temporary state can be very short."/>
+        </Member>
+        <Member Name="PoweringOff">
+          <Annotation Term="OData.Description" String="A temporary state between On and Off. The power off action can take time while the OS is in the shutdown process."/>
+        </Member>
+      </EnumType>        
+        
+    </Schema>
       
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.1.0.0">
 
