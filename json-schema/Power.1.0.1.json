@@ -323,7 +323,7 @@
                     ],
                     "readonly": true,
                     "description": "The time interval (or window) in which the PowerMetrics are measured over.",
-                    "longDescription": "The value of this property shall represent the minimum power level in watts that occured within the last IntervalInMin minutes.",
+                    "longDescription": "The value of this property shall represent the time interval (or window), in minutes, in which the PowerMetrics properties are measured over.",
                     "minimum": 0
                 },
                 "MinConsumedWatts": {
