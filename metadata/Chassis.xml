@@ -88,15 +88,21 @@
           <Annotation Term="OData.Description" String="The user assigned asset tag for this chassis."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an identifying string used to track the chassis for inventory purposes."/>
         </Property>
-        <Property Name="IndicatorLED" Type="Chassis.1.0.0.IndicatorLED">
+        <Property Name="IndicatorLED" Type="Chassis.1.0.1.IndicatorLED">
           <Annotation Term="OData.Description" String="The state of the indicator LED, used to identify the chassis."/>
           <Annotation Term="OData.LongDescription" String="This value of this property shall contain the indicator light state for the indicator light associated with this system."/>
         </Property>
-        <Property Name="Links" Type="Chassis.1.0.0.Links" Nullable="false">
+        <Property Name="PowerState" Type="Chassis.1.0.1.PowerState">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="This is the current power state of the chassis."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the power state of the chassis."/>
+        </Property>
+        
+        <Property Name="Links" Type="Chassis.1.0.1.Links" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The links object contains the links to other resources that are related to this resource."/>
         </Property>
-        <Property Name="Actions" Type="Chassis.1.0.0.Actions" Nullable="false">
+        <Property Name="Actions" Type="Chassis.1.0.1.Actions" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The Actions object contains the available custom actions on this resource."/>
         </Property>
@@ -162,7 +168,7 @@
 
       <ComplexType Name="Actions">
         <Annotation Term="OData.AdditionalProperties" Bool="False"/>
-        <Property Name="Oem" Type="Chassis.1.0.0.OemActions"/>
+        <Property Name="Oem" Type="Chassis.1.0.1.OemActions"/>
       </ComplexType>
 
       <ComplexType Name="OemActions">
@@ -241,7 +247,20 @@
           <Annotation Term="OData.Description" String="The Indicator LED is off."/>
         </Member>
       </EnumType>
-
+      <EnumType Name="PowerState">
+        <Member Name="On">
+          <Annotation Term="OData.Description" String="The components within the chassis has power on."/>
+        </Member>
+        <Member Name="Off">
+          <Annotation Term="OData.Description" String="The components within the chassis has no power, except some components may continue to have AUX power such as management controller."/>
+        </Member>
+        <Member Name="PoweringOn">
+          <Annotation Term="OData.Description" String="A temporary state between Off and On. The components within the chassis can take time to process the power on action."/>
+        </Member>
+        <Member Name="PoweringOff">
+          <Annotation Term="OData.Description" String="A temporary state between On and Off. The components within the chassis can take time to process the power off action."/>
+        </Member>
+      </EnumType>
     </Schema>
   </edmx:DataServices>
 </edmx:Edmx>
