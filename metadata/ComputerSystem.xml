@@ -61,9 +61,9 @@
         </Property>
       <EnumType Name="PowerState">
         <Member Name="On"/>
-          <Annotation Term="OData.Description" String="The system has power on."/>        
+          <Annotation Term="OData.Description" String="The system is powered on."/>        
         <Member Name="Off"/>
-          <Annotation Term="OData.Description" String="The system has no power, except some components may continue to have AUX power such as management controller."/>
+          <Annotation Term="OData.Description" String="The system is powered off, although some components may continue to have AUX power such as management controller."/>
         <Member Name="PoweringOn">
           <Annotation Term="OData.Description" String="A temporary state between Off and On. This temporary state can be very short."/>
         </Member>
