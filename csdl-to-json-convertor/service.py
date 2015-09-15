@@ -506,6 +506,7 @@ class JsonSchemaGenerator:
 
         output += "\n"
         output += UT.Utilities.indent(depth+1) +     "}"
+        output += self.emit_annotations(typetable, actionentry["Namespace"],  actionentry["Node"], depth + 1, prefixuri, False)
 
         return output
 
@@ -1389,15 +1390,6 @@ def main():
 
     # read the arguments passed to the service
     form = cgi.FieldStorage()
-
-    # Sample URL formats supported by the convertor tool
-    #form = {'url': 'http://localhost:9080/rest/v1/redfish.dmtf.org/redfish/v1/Chassis#Chassis.1.0.0.Chassis'};
-    #form = {'url': 'http://localhost:9080/rest/v1/redfish.dmtf.org/redfish/v1/ChassisCollection#ChassisCollection.1.0.0'};
-    #form = {'url': 'http://localhost:9080/rest/v1/redfish.dmtf.org/redfish/v1/Resource#Resource.1.0.0'}
-    #form = {'url': 'http://localhost:9080/rest/v1/redfish.dmtf.org/redfish/v1/IPAddresses#IPAddresses.1.0.0'};
-    #form = {'url': 'http://localhost:9080/rest/v1/redfish.dmtf.org/redfish/v1/odata'}
-    #form = {'url': 'http://localhost:9080/rest/v1/redfish.dmtf.org/redfish/v1/Power#Power.1.0.0'};
-    #form = {'url': 'http://localhost:9080/rest/v1/redfish.dmtf.org/redfish/v1/Chassis#Chassis.1.0.0'};
 
     if 'directory' in form:
         if enable_debugging == True:
