@@ -107,13 +107,6 @@
                     "description": "The state of the indicator LED, used to identify the chassis.",
                     "longDescription": "This value of this property shall contain the indicator light state for the indicator light associated with this system."
                 },
-                "PowerState": {
-                    "$ref": "#/definitions/PowerState",
-                    "readonly": true,
-                    "description": "This is the current power state of the chassis",
-                    "longDescription": "The value of this property shall contain the power state of the chassis."
-                },
-                
                 "Links": {
                     "type": "object",
                     "patternProperties": {
