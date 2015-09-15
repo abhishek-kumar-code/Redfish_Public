@@ -131,7 +131,7 @@
         <Property Name="IntervalInMin" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The time interval (or window) in which the PowerMetrics are measured over."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the minimum power level in watts that occured within the last IntervalInMin minutes."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the time interval (or window), in minutes, in which the PowerMetrics properties are measured over."/>
           <Annotation Term="OData.Measures.Unit" String="Minutes"/>
           <Annotation Term="Validation.Minimum" Int="0"/>
         </Property>

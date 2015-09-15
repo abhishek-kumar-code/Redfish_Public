@@ -44,7 +44,7 @@
           <Annotation Term="OData.Description" String="This is the type of reset to be performed."/>
           <Annotation Term="OData.LongDescription" String="This defines the property name for the action."/>
         </Parameter>
-        <Annotation Term="OData.Description" String="This action is used to reset the system."/>
+        <Annotation Term="OData.Description" String="This action is used to reset the chassis. This action resets the chassis, not Systems or other contained resources, although side effects may occur which affect those resources."/>
         <Annotation Term="OData.LongDescription" String="This defines the name of the custom action supported on this resource."/>
       </Action>
 
@@ -155,7 +155,7 @@
         <NavigationProperty Name="CooledBy" Type="Collection(Resource.Item)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="An array of ID[s] of resources that cool this chassis. Normally the ID will be a chassis or a specific set of fans."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of IDs containing pointers consistent with JSON pointer syntax to the resource that powers this chassis."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of IDs containing pointers consistent with JSON pointer syntax to the resource that cools this chassis."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </ComplexType>
