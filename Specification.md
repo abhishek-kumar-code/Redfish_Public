@@ -2,8 +2,8 @@
 DocTitle: Redfish Scalable Platforms Management API Specification
 DocNumber: '0266'
 DocClass: Normative
-DocVersion: '1.0.0'
-modified: '2015-08-04'
+DocVersion: '1.0.1'
+modified: '2015-09-17'
 status: published
 released: true
 copyright: '2014-2015'
@@ -2369,3 +2369,5 @@ The file where the events are written, one or more messages per event should at 
 | Version | Date     | Description     |
 | ---     | ---      | ---             |
 | 1.0.0   | 2015-8-4 | Initial release |
+| 1.0.1   | 2015-9-17| Errata release.  Clarified normative use of LongDescription in schema files.  Clarified usage of the 'rel-describedby' link header.  Corrected text in example of 'Select List' in OData Context property.  |
+
