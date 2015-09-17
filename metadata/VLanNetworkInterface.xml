@@ -21,7 +21,7 @@
 
     </Schema>
 
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="VLanNetworkInterface.1.0.1">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="VLanNetworkInterface.1.0.0">
       
       <EntityType Name="VLanNetworkInterface" BaseType="VLanNetworkInterface.VLanNetworkInterface">
         <Property Name="VLANEnable" Type="Edm.Boolean">
@@ -56,5 +56,19 @@
       </TypeDefinition>
 
     </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="VLanNetworkInterface.1.0.1">
+      
+      <EntityType Name="VLanNetworkInterface" BaseType="VLanNetworkInterface.1.0.0.VLanNetworkInterface"/>
+
+      <ComplexType Name="VLAN" BaseType="VLanNetworkInterface.1.0.0.VLAN"/>
+      
+      <TypeDefinition Name="VLANId" UnderlyingType="Edm.Int64">
+        <Annotation Term="Validation.Minimum" Int="0"/>
+        <Annotation Term="Validation.Maximum" Int="4094"/>
+      </TypeDefinition>
+
+    </Schema>
+    
   </edmx:DataServices>
 </edmx:Edmx>

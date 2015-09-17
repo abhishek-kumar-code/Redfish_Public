@@ -1028,18 +1028,23 @@ class JsonSchemaGenerator:
     # Description:                                                                 #
     #  generates a json payload for an unversioned reference to the specified type #
     ################################################################################
-    def generate_json_for_reference_type(self, typetable, typename, schemaname, depth, prefixuri):
+    def generate_json_for_reference_type(self, typetable, typename, schemaname, depth, prefixuri, includeIdRef):
 
         output = ""
         output += UT.Utilities.indent(depth+2) + "\"anyOf\": [ \n"
-        output += UT.Utilities.indent(depth+3) + "{\n"
-        output += UT.Utilities.indent(depth+4) + "\"$ref\": \"" + odataSchema + "#/definitions/idRef\"\n"
-        output += UT.Utilities.indent(depth+3) + "}"
+        if(includeIdRef):
+            output += UT.Utilities.indent(depth+3) + "{\n"
+            output += UT.Utilities.indent(depth+4) + "\"$ref\": \"" + odataSchema + "#/definitions/idRef\"\n"
+            output += UT.Utilities.indent(depth+3) + "}"
 
         #for each type that derives from this type
+        isFirst= not(includeIdRef)
         derivedtypes = self.get_derived_types(typetable, typename, schemaname)
         for derivedtype in derivedtypes:
-            output += ",\n"
+            if(not(isFirst)):
+                output += ",\n"
+            else:
+                isFirst=False
             output += UT.Utilities.indent(depth+3) + "{\n"
             output += UT.Utilities.indent(depth+4) + "\"$ref\": \"" + prefixuri + derivedtype["Namespace"] + ".json#/definitions/" + derivedtype["Name"] + "\"\n"
             output += UT.Utilities.indent(depth+3) + "}"
@@ -1214,8 +1219,11 @@ class JsonSchemaGenerator:
                     # Generate JSON for the type and append it to the output
                     if (typetype == "Action"):
                         output += self.get_action_definition(typetable, typedata, depth + 1, namespace, prefixuri)
+                    # todo: support other versions (derived) of Resource and ReferenceableMember
                     elif ( basetype == "Resource.1.0.0.Resource" ):
-                        output += self.generate_json_for_reference_type(typetable, typename, namespace, depth + 1, prefixuri)
+                        output += self.generate_json_for_reference_type(typetable, typename, namespace, depth + 1, prefixuri, True)
+                    elif ( basetype == "Resource.1.0.0.ReferenceableMember" ):
+                        output += self.generate_json_for_reference_type(typetable, typename, namespace, depth + 1, prefixuri, False)
                     else:
                         output += self.generate_json_for_type(typetable, currentType, depth+2, namespace, prefixuri, False, False)
 

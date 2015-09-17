@@ -119,7 +119,7 @@
         </Property>
         <Property Name="NameServers" Type="Collection(Edm.String)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-		  <Annotation Term="OData.Description" String="This represents DNS name servers that are currently in use on this interface."/>
+		      <Annotation Term="OData.Description" String="This represents DNS name servers that are currently in use on this interface."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the DNS name servers used on this interface."/>
         </Property>
         <NavigationProperty Name="VLANs" Type="VLanNetworkInterfaceCollection.VLanNetworkInterfaceCollection">

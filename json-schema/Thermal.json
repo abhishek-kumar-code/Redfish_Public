@@ -9,9 +9,11 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
                 },
                 {
+                    "$ref": "http://redfish.dmtf.org/schemas/Thermal.1.0.0.json#/definitions/Thermal"
+                },
+                {
                     "$ref": "http://redfish.dmtf.org/schemas/Thermal.1.0.1.json#/definitions/Thermal"
-                }
-            ]
+                }            ]
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
