@@ -51,7 +51,7 @@
       </Action>
       
     </Schema>
-      
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.1.0.0">
 
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.ComputerSystem">
@@ -233,11 +233,19 @@
       </EnumType>
 
       <EnumType Name="PowerState">
-        <Member Name="On"/>
-        <Member Name="Off"/>
-        <Member Name="Unknown"/>
-        <Member Name="Reset"/>
-      </EnumType>
+        <Member Name="On">
+          <Annotation Term="OData.Description" String="The system is powered on."/>        
+        </Member>
+        <Member Name="Off">
+          <Annotation Term="OData.Description" String="The system is powered off, although some components may continue to have AUX power such as management controller."/>
+        </Member>
+        <Member Name="PoweringOn">
+          <Annotation Term="OData.Description" String="A temporary state between Off and On. This temporary state can be very short."/>
+        </Member>
+        <Member Name="PoweringOff">
+          <Annotation Term="OData.Description" String="A temporary state between On and Off. The power off action can take time while the OS is in the shutdown process."/>
+        </Member>
+      </EnumType>            
 
       <ComplexType Name="Boot">
         <Annotation Term="OData.AdditionalProperties" Bool="False"/>
