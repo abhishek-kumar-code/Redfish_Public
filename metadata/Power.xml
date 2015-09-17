@@ -382,6 +382,19 @@
       </EnumType>
 
     </Schema>
-  </edmx:DataServices>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.1.0.1">
+
+      <EntityType Name="Power" BaseType="Power.1.0.0.Power"/>
+
+      <EntityType Name="PowerSupply" BaseType="Power.1.0.0.PowerSupply"/>
+
+      <EntityType Name="PowerControl" BaseType="Power.1.0.0.PowerControl"/>
+
+      <EntityType Name="Voltage" BaseType="Power.1.0.0.Voltage"/>
+
+    </Schema>
+
+</edmx:DataServices>
 </edmx:Edmx>
 

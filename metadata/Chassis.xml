@@ -243,5 +243,12 @@
       </EnumType>
 
     </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.1.0.1">
+
+      <EntityType Name="Chassis" BaseType="Chassis.1.0.0.Chassis"/>
+
+    </Schema>
+
   </edmx:DataServices>
 </edmx:Edmx>
