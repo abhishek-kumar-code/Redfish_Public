@@ -431,7 +431,7 @@ In addition, the following URI without a trailing slash shall be either Redirect
 | ---------   | -----------                    |
 | /redfish/v1 | /redfish/v1/                   |
 
-If a service implementation chooses not to redirect these two APIs and instead treat them as equivalent APIs, then all relative URIs used by the service shall include the full path starting with /redfish/v1/.
+If a service implementation chooses not to redirect the APIs in the table above, and instead chooses to treat them as equivalent APIs, then all relative URIs used by the service shall include the full path below the net-location starting with a forward slash / (e.g. /redfish/v1/).
 
 ### Requests
 
@@ -448,7 +448,7 @@ HTTP defines headers that can be used in request messages. The following table d
 | Header           | Required    | Supported Values                      | Description                                                                                                                                                                                                                                                                                                                     |
 | --------         | ---         | -----------------                     | ------------                                                                                                                                                                                                                                                                                                                    |
 | Accept           | Yes         | [RFC 2616, Section 14.1][2616-14.1]   | Indicates to the server what media type(s) this client is prepared to accept. `application/json` shall be supported for requesting resources and `application/xml` shall be supported for requesting metadata.                                                                                                         |
-| Accept-Encoding  | Yes         | [RFC 2616, Section 14.4][2616-14.4]   | Indicates if gzip encoding can be handled by the client                                                                                                                                                                                                                                                                         |
+| Accept-Encoding  | Conditional | [RFC 2616, Section 14.4][2616-14.4]   | Indicates if gzip encoding can be handled by the client. Support is required if the service supports gzip encoding.  If an Accept-Encoding header is present in a request and the service cannot send a response which is acceptable according to the Accept-Encoding header, then the service SHOULD respond with status code [406](#status-406).                                                                                                                                                               |
 | Accept-Language  | No          | [RFC 2616, Section 14.4][2616-14.4]   | This header is used to indicate the language(s) requested in the response. If this header is not specified, the appliance default locale will be used.                                                                                                                                                                          |
 | Content-Type     | Conditional | [RFC 2616, Section 14.17][2616-14.17] | Describes the type of representation used in the message body.  `charset=utf-8` shall be supported for requests that have a body.  Shall be required if there is a request body.                                                                                                                                                |
 | Content-Length   | No          | [RFC 2616, Section 14.3][2616-14.3]   | Describes the size of the message body. An optional means of indicating size of the body uses Transfer-Encoding: chunked, which does not use the Content-Length header. If a service does not support Transfer-Encoding and needs Content-Length instead, the service will respond with status code [411](#status-411). |
@@ -724,7 +724,6 @@ HTTP defines status codes that can be returned in response messages.
 
 Where the HTTP status code indicates a failure, the response body contains an [extended error resource](#error-responses) to provide the client more meaningful and deterministic error semantics.
 
-* Services shall return the extended error resource as described in this specification in the response body when a status code of 400 or 500 is returned.
 * Services should return the extended error resource as described in this specification in the response body when a status code 400 or greater is returned.
 * Extended error messages MUST NOT provide privileged info when authentication failures occur
 
