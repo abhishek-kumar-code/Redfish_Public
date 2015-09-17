@@ -345,5 +345,12 @@
       </ComplexType>
 
     </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.1.0.1">
+
+      <EntityType Name="ComputerSystem" BaseType="ComputerSystem.1.0.0.ComputerSystem"/>
+
+    </Schema>
+
   </edmx:DataServices>
 </edmx:Edmx>

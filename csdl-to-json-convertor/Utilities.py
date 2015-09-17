@@ -79,6 +79,11 @@ class Utilities:
     @staticmethod
     def open_url(url, directory):
 
+	#temp hack to always open from file
+        if( url.find("OData") < 0 ):
+            decoded = Utilities.open_as_file(url, directory)
+            return decoded
+
         # TODO: handle cases where URL is malformed
         try:
             connections = {}
