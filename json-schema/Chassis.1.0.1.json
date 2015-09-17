@@ -107,6 +107,12 @@
                     "description": "The state of the indicator LED, used to identify the chassis.",
                     "longDescription": "This value of this property shall contain the indicator light state for the indicator light associated with this system."
                 },
+                "PowerState": {
+                    "$ref": "#/definitions/PowerState",
+                    "readonly": true,
+                    "description": "This is the current power state of the chassis",
+                    "longDescription": "The value of this property shall contain the power state of the chassis."
+                },                
                 "Links": {
                     "type": "object",
                     "patternProperties": {
@@ -345,6 +351,21 @@
                 "Off": "The Indicator LED is off."
             }
         },
+        "PowerState": {
+            "type": "string",
+            "enum": [
+                "On",
+                "Off",
+                "PoweringOn",
+                "PoweringOff"
+            ],
+            "enumDescriptions": {
+                "On": "The components within the chassis has power on.",
+                "Off": "The components within the chassis has no power, except some components may continue to have AUX power such as management controller.",
+                "PoweringOn": "A temporary state between Off and On. The components within the chassis can take time to process the power on action.",
+                "PoweringOff": "A temporary state between On and Off. The components within the chassis can take time to process the power off action."
+            }
+        },        
         "Reset": {
             "patternProperties": {
                 "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {

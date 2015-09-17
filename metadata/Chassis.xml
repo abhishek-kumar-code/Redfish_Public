@@ -243,5 +243,32 @@
       </EnumType>
 
     </Schema>
+        
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.1.0.1">
+      <EntityType Name="Chassis" BaseType="Chassis1.0.0.Chassis">
+        <Property Name="PowerState" Type="Chassis.1.0.1.PowerState">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="This is the current power state of the chassis."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the power state of the chassis."/>
+        </Property>
+      </EntityType>
+      
+      <EnumType Name="PowerState">
+        <Member Name="On">
+          <Annotation Term="OData.Description" String="The components within the chassis has power on."/>
+        </Member>
+        <Member Name="Off">
+          <Annotation Term="OData.Description" String="The components within the chassis has no power, except some components may continue to have AUX power such as management controller."/>
+        </Member>
+        <Member Name="PoweringOn">
+          <Annotation Term="OData.Description" String="A temporary state between Off and On. The components within the chassis can take time to process the power on action."/>
+        </Member>
+        <Member Name="PoweringOff">
+          <Annotation Term="OData.Description" String="A temporary state between On and Off. The components within the chassis can take time to process the power off action."/>
+        </Member>
+      </EnumType>
+      
+    </Schema>
+    
   </edmx:DataServices>
 </edmx:Edmx>
