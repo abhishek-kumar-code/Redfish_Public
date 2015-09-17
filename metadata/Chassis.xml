@@ -246,7 +246,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.1.0.1">
       
-      <EntityType Name="Chassis" BaseType="Chassis1.0.0.Chassis">
+      <EntityType Name="Chassis" BaseType="Chassis.1.0.0.Chassis">
         <Property Name="PowerState" Type="Chassis.1.0.1.PowerState">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is the current power state of the chassis."/>
