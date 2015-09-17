@@ -59,6 +59,7 @@
           <Annotation Term="OData.Description" String="This is the current power state of the system"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the power state of the system."/>
         </Property>
+      </EntityType>  
       <EnumType Name="PowerState">
         <Member Name="On"/>
           <Annotation Term="OData.Description" String="The system is powered on."/>        
