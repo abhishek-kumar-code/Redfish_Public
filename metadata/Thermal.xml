@@ -158,7 +158,7 @@
           <Annotation Term="OData.Description" String="Current fan speed"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the current value of the fan sensor's reading."/>
         </Property>
-        <Property Name="ReadingUnits" Type="Thermal.1.0.0.ReadingUnits">
+        <Property Name="ReadingUnits" Type="Thermal.1.0.1.ReadingUnits">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Units in which the reading and thresholds are measured."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the units in which the fan's reading and thresholds are measured."/>
@@ -215,7 +215,16 @@
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
       </EntityType>
-	  
+
+      <EnumType Name="ReadingUnits">
+        <Member Name="RPM">
+          <Annotation Term="OData.Description" String="Indicates that the fan reading and thresholds are measured in rotations per minute."/>
+        </Member>
+        <Member Name="Percent">
+          <Annotation Term="OData.Description" String="Indicates that the fan reading and thresholds are measured in percentage."/>
+        </Member>
+      </EnumType>
+      
     </Schema>
  
   </edmx:DataServices>
