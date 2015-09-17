@@ -687,13 +687,6 @@ HTTP defines headers that can be used in response messages.  The following table
 | Access-Control-Allow-Origin        | Yes         | [W3C CORS, Section 5.1][cors-5.1]     | Prevents or allows requests based on originating domain. Used to prevent CSRF attacks.                                                                                                                                                                                                                                          |
 | Allow                              | Yes         | POST, PUT, PATCH, DELETE              | Returned on GET or HEAD operation to indicate the other allowable operations for this resource.  Shall be returned with a 405 (Method Not Allowed) response to indicate the valid methods for the specified Request URI.                                                                                                     |
 | WWW-Authenticate                   | Yes         | [RFC 2617][2617]                      | Required for Basic and other optional authentication mechanisms. See the [Security][#Security] section for details.                                                                                                                                                                                                             |
-
-
-* Redfish services shall understand and be able to process the headers in the following table as defined by this specification if the value in the Required column is set to "yes".
-
-
-| Header       | Required | Supported Values             | Description                                                                                       |
-| --------     | ---      | -----------------            | ------------                                                                                      |
 | X-Auth-Token | Yes      | Opaque encoded octet strings | Used for authentication of user sessions. The token value shall be indistinguishable from random. |
 
 
