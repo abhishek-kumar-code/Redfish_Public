@@ -34,7 +34,7 @@
       <TypeDefinition Name="UUID" UnderlyingType="Edm.Guid"/>
 
       <!--Base Complex type for Links properties-->
-      <ComplexType Name="Links" Abstract="true">
+      <ComplexType Name="Links" Abstract="True">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="Oem" Type="Resource.Oem">
           <Annotation Term="OData.Description" String="Oem extension object."/>
@@ -45,14 +45,29 @@
       <!--Complex type that serves as a "property bag" for OEM properties-->
       <ComplexType Name="Oem">
         <Annotation Term="OData.AdditionalProperties" Bool="True"/>
+        <Annotation Term="Redfish.DynamicPropertyPatterns">
+          <Collection>
+            <Record>
+              <PropertyValue Property="Pattern" String="([a-zA-Z0-9]+(\\.[a-z]{2,})?|EID:[0-9]+)(:.+)?"/>
+              <PropertyValue Property="Type" String="Resource.OemObject"/>
+            </Record>
+          </Collection>
+        </Annotation>
         <Annotation Term="OData.Description" String="Oem extension object."/>
-        <Annotation Term="OData.LongDescription" String="This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
+        <Annotation Term="OData.LongDescription" String="This object represents the Oem properties.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
       </ComplexType>
 
+      <!--Base type for OEM property-->
+      <ComplexType Name="OemObject">
+        <Annotation Term="OData.AdditionalProperties" Bool="True"/>
+        <Annotation Term="OData.Description" String="Base type for an Oem object."/>
+        <Annotation Term="OData.LongDescription" String="This object represents the base type for an Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
+      </ComplexType>
+      
       <!--Unversioned Base Types-->
 
       <!--Base type for Resources and ReferenceableMembers-->
-      <EntityType Name="Item" Abstract="true">
+      <EntityType Name="Item" Abstract="True">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="This is the base type for resources and referenceable members."/>
         <Property Name="Oem" Type="Resource.Oem">
@@ -61,9 +76,9 @@
         </Property>
       </EntityType>
 
-      <EntityType Name="ReferenceableMember" BaseType="Resource.Item" Abstract="true"/>
+      <EntityType Name="ReferenceableMember" BaseType="Resource.Item" Abstract="True"/>
 
-      <EntityType Name="Resource" BaseType="Resource.Item" Abstract="true"/>
+      <EntityType Name="Resource" BaseType="Resource.Item" Abstract="True"/>
 
       <EntityType Name="ResourceCollection" Abstract="True"/>
 
