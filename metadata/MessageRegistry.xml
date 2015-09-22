@@ -46,7 +46,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a string that represents the publisher of this registry."/>
           <Annotation Term="Redfish.Required"/>
         </Property>
-        <Property Name="Messages" Nullable="false" Type="Collection(MessageRegistry.1.0.0.MessageProperty)">
+        <Property Name="Messages" Nullable="false" Type="MessageRegistry.1.0.0.MessageProperty">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="The pattern property indicates that a free-form string is the unique identifier for the message within the registry."/>
           <Annotation Term="OData.LongDescription" String="The pattern property shall represent the suffix to be used in the MessageId and shall be unique within this message registry."/>
@@ -55,6 +55,7 @@
       </EntityType>
 
       <ComplexType Name="MessageProperty" OpenType="true">
+        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
         <Annotation Term="Redfish.DynamicPropertyPatterns">
           <Collection>
             <Record>
