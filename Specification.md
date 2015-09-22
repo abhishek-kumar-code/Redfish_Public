@@ -306,7 +306,7 @@ For example, in the following URL:
 
     Example: https://mgmt.vendor.com/redfish/v1/Systems/1
 
-* The first part is the scheme and authority portion (https://mgmr.vendor.com).
+* The first part is the scheme and authority portion (https://mgmt.vendor.com).
 * The second part is the root service and version (/redfish/v1/).
 * The third part is the unique resource path (Systems/1).
 
