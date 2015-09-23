@@ -389,7 +389,7 @@
                 "Temperatures": {
                     "type": "array",
                     "items": {
-                        "$ref": "http://redfish.dmtf.org/schemas/v1/Thermal.json#/definitions/Temperature"
+                        "$ref": "#/definitions/Temperature"
                     },
                     "readonly": true,
                     "description": "This is the definition for temperature sensors.",
@@ -405,7 +405,7 @@
                 "Fans": {
                     "type": "array",
                     "items": {
-                        "$ref": "http://redfish.dmtf.org/schemas/v1/Thermal.json#/definitions/Fan"
+                        "$ref": "#/definitions/Fan"
                     },
                     "readonly": true,
                     "description": "This is the definition for fans.",

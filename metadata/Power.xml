@@ -29,15 +29,6 @@
         <Annotation Term="OData.Description" String="This is the schema definition for the Power Metrics.  It represents the properties for Power Consumption and Power Limiting."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a power metrics resource for a Redfish implementation."/>
       </EntityType>
-
-      <EntityType Name="PowerSupply" BaseType="Resource.1.0.0.ReferenceableMember">
-        <Annotation Term="OData.Description" String="Details of a power supplies associated with this system or device"/>
-      </EntityType>
-
-      <EntityType Name="PowerControl" BaseType="Resource.1.0.0.ReferenceableMember"/>
-
-      <EntityType Name="Voltage" BaseType="Resource.1.0.0.ReferenceableMember"/>
-
     
     </Schema>
     
@@ -69,7 +60,7 @@
         </NavigationProperty>
       </EntityType>
 
-      <EntityType Name="PowerControl" BaseType="Power.PowerControl">
+      <EntityType Name="PowerControl" BaseType="Resource.1.0.0.ReferenceableMember">
         <Property Name="Name" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Power Control Function name."/>
@@ -193,7 +184,7 @@
         </Member>
       </EnumType>
 
-      <EntityType Name="Voltage" BaseType="Power.Voltage">
+      <EntityType Name="Voltage" BaseType="Resource.1.0.0.ReferenceableMember">
         <Property Name="Name" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Voltage sensor name."/>
@@ -272,7 +263,7 @@
         </NavigationProperty>
       </EntityType>
 
-      <EntityType Name="PowerSupply" BaseType="Power.PowerSupply">
+      <EntityType Name="PowerSupply" BaseType="Resource.1.0.0.ReferenceableMember">
         <Annotation Term="OData.Description" String="Details of a power supplies associated with this system or device"/>
         <Property Name="Name" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
@@ -386,12 +377,6 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.1.0.1">
 
       <EntityType Name="Power" BaseType="Power.1.0.0.Power"/>
-
-      <EntityType Name="PowerSupply" BaseType="Power.1.0.0.PowerSupply"/>
-
-      <EntityType Name="PowerControl" BaseType="Power.1.0.0.PowerControl"/>
-
-      <EntityType Name="Voltage" BaseType="Power.1.0.0.Voltage"/>
 
     </Schema>
 
