@@ -81,9 +81,9 @@ class JsonSchemaGenerator:
 
 #todo: fix logic to be more generic post-v1
         # If the current type is defined in this namespace
-        if self.isabstract(current_typedata):
+        if self.isabstract(current_typedata):  #todo: this logic is wrong!  trying to write out item as idRef, but not all abstract types should be written out as idRefs...
             refvalue = odataSchema + "#/definitions/idRef"
-        elif ( typetype != "Action" and root_namespace == current_typedata["Namespace"] ) or (typetype == "Action" and current_typedata["BoundNamespace"] == root_namespace ):
+        elif ( typetype != "Action" and self.include_type(simplename, current_typedata["Namespace"], root_namespace, typetable ) ) or (typetype == "Action" and self.include_type(simplename, current_typedata["BoundNamespace"], root_namespace, typetable) ):
             refvalue = "#/definitions/" + simplename
         else:
             refvalue = schemaBaseLocation + current_typedata["Alias"] + ".json#/definitions/" + simplename
@@ -232,10 +232,6 @@ class JsonSchemaGenerator:
         if self.isabstract(type):
             return True
 				
-        # if type is open, it must allow additional properties
-        if self.getattribute(type,"OpenType","True"):
-                return True
-
         # does it have the AdditionalProperties attribute anywhere in it's hierarchy?
         while True:
             for annotation in type["Node"]:
@@ -340,15 +336,16 @@ class JsonSchemaGenerator:
                 if term == "Redfish.DynamicPropertyPatterns":
                     content = self.get_dynamic_property_patterns_content(annotation)
                     output += ",\n"
-                    output += UT.Utilities.indent(depth+1) + "\"" + content["Pattern"] + "\": { \n"
+                    output += UT.Utilities.indent(depth+1) + "\"" + content["Pattern"] + "\": {\n"
                     jsontype = self.get_edmtype_to_jsontype(content["Type"])
-            
+
 #todo:make sure returns are correct for multiple pattern properties.
                     if jsontype == "object":
                         refvalue = self.get_ref_value_for_type(typetable, content["Type"], namespace)
-                        output += UT.Utilities.indent(depth+2)+ "\"$ref\": \"" + refvalue + "\"\n"                        
+                        output += UT.Utilities.indent(depth+2)+ "\"$ref\": \"" + refvalue + "\""                        
                     else:
-                        output += UT.Utilities.indent(depth + 2) + "\"type\":\"" + jsontype + "\""
+                        output += UT.Utilities.indent(depth + 2) + "\"type\": \"" + jsontype + "\""
+
                     output += "\n" + UT.Utilities.indent(depth + 1) + "}"
                                                      
             if "BaseType" in annotated.attrib.keys():
@@ -550,7 +547,7 @@ class JsonSchemaGenerator:
     # Description:                                                                                         #
     #  Generated JSON corresponding to an action entry                                                     #
     ########################################################################################################
-    def generate_json_for_propertybag_actions(self, typetable, typedata, depth, prefixuri, namespace):
+    def generate_json_for_propertybag_actions(self, typetable, typedata, depth, prefixuri, namespace, firstproperty):
 
         output = ''
         keys = sorted(typetable.keys())
@@ -579,10 +576,13 @@ class JsonSchemaGenerator:
                 break
 
             if isboundtotype:
-                output += ",\n"
+                if(firstproperty):
+                    firstproperty = False
+                else:
+                    output += ",\n"
                 output += self.get_payload_actionentry(typetable, typeentry, depth + 1, prefixuri, namespace)
             
-        return output
+        return {"output":output, "firstproperty":firstproperty}
 
     ########################################################################################################
     # Name: isboundtotype                                                                                  #
@@ -625,13 +625,20 @@ class JsonSchemaGenerator:
 
         output=""
         # allow odata and redfish annotations
-        output += UT.Utilities.indent(depth) + "\"patternProperties\": { \n"
-        output += UT.Utilities.indent(depth+1) + "\"^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\\\.[a-zA-Z_][a-zA-Z0-9_.]+$\" : {\n"
-        output += UT.Utilities.indent(depth+2) + "\"type\": [\"array\", \"boolean\", \"number\", \"null\", \"object\", \"string\"],\n"
+        output += UT.Utilities.indent(depth) + "\"patternProperties\": {\n"
+        output += UT.Utilities.indent(depth+1) + "\"^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\\\.[a-zA-Z_][a-zA-Z0-9_.]+$\": {\n"
+        output += UT.Utilities.indent(depth+2) + "\"type\": [\n"
+        output += UT.Utilities.indent(depth+3) + "\"array\",\n"
+        output += UT.Utilities.indent(depth+3) + "\"boolean\",\n"
+        output += UT.Utilities.indent(depth+3) + "\"number\",\n"
+        output += UT.Utilities.indent(depth+3) + "\"null\",\n"
+        output += UT.Utilities.indent(depth+3) + "\"object\",\n"
+        output += UT.Utilities.indent(depth+3) + "\"string\"\n"
+        output += UT.Utilities.indent(depth+2) + "],\n"
         output += UT.Utilities.indent(depth+2) + "\"description\": \"This property shall specify a valid odata or Redfish property.\"\n"
         output += UT.Utilities.indent(depth+1) + "}"
         output += self.emit_property_patterns(typetable, namespace, typedata["Node"], depth, prefixuri)
-        output += UT.Utilities.indent(depth)   + "\n"
+        output += "\n"
         output += UT.Utilities.indent(depth)   + "},\n"
 		
         return output
@@ -672,13 +679,14 @@ class JsonSchemaGenerator:
         else:
             output += UT.Utilities.indent(depth) + "\"additionalProperties\": false,\n"
 
-        output += UT.Utilities.indent(depth)  + "\"properties\": {\n"
+        output += UT.Utilities.indent(depth)  + "\"properties\": {"
         requiredproperties = []
         requiredcreateproperties = []
         firstproperty = True
 
         # Generate special properties for EntityType
         if typedata["TypeType"] == "EntityType" and not self.has_basetype(typetable, typedata, "Resource.1.0.0.ReferenceableMember"):
+            output += "\n"
             output += self.get_json_for_special_properties("@odata.context", depth, prefixuri)
             output += ",\n"
             output += self.get_json_for_special_properties("@odata.id", depth, prefixuri)
@@ -694,6 +702,7 @@ class JsonSchemaGenerator:
             for propkind in propkinds:
                 for property in propbag.iter("{http://docs.oasis-open.org/odata/ns/edm}" + propkind):
                     if firstproperty:
+                        output += "\n"
                         firstproperty = False
                     else:
                         output += ",\n"
@@ -715,7 +724,8 @@ class JsonSchemaGenerator:
                             output += UT.Utilities.indent(depth+1) + "},\n"
 
                             output += UT.Utilities.indent(depth+1) + "\"" + propname + "@odata.navigationLink\": {\n"
-                            output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + odataSchema + "#/definitions/id\"\n"
+                            output += UT.Utilities.indent(depth+2) + "\"type\": \"string\",\n"
+                            output += UT.Utilities.indent(depth+2) + "\"format\": \"uri\"\n"
                             output += UT.Utilities.indent(depth+1) + "},\n"
 
                         output += UT.Utilities.indent(depth+1) + "\"" + propname + "\": {\n"
@@ -780,7 +790,7 @@ class JsonSchemaGenerator:
 
 
                         if ( iscollection ):
-                            output += UT.Utilities.indent(depth+2) + "}"
+                            output += "\n" + UT.Utilities.indent(depth+1) + "}"
                             depth -= 1
 
                     if self.is_required_property(property):
@@ -794,11 +804,15 @@ class JsonSchemaGenerator:
                     output += UT.Utilities.indent(depth+1) + "}"
 
         # Handles actions
-        output += self.generate_json_for_propertybag_actions(typetable, typedata, depth, prefixuri, namespace)
+        result = self.generate_json_for_propertybag_actions(typetable, typedata, depth, prefixuri, namespace, firstproperty)
+        output += result["output"]
+        firstproperty = result["firstproperty"]
 
         # Close property block
-        output += "\n"
-        output += UT.Utilities.indent(depth) + "}"
+        if not(firstproperty):
+            output += "\n"
+            output += UT.Utilities.indent(depth)
+        output += "}"
 
         # Write Required Properties
         if len(requiredproperties) > 0:
@@ -893,6 +907,71 @@ class JsonSchemaGenerator:
         return output
 
     ############################################################################################
+    # Name: is_prior_version                                                                   #
+    # Description:                                                                             #
+    #   Returns true if the first namespace is a previous version of the second namespace      #
+    ############################################################################################
+    def is_prior_version(self, namespace1, namespace2):
+
+        #todo: deal with malformed versions
+        major1 = namespace1.find(".")
+        major2 = namespace2.find(".")
+
+        # The type is from the unversioned namespace
+        if(major1 < 0 or major2 < 0):
+            return False
+
+        minor1 = namespace1.find(".", major1+1)
+        minor2 = namespace2.find(".", major2+1)
+
+        # The type is from a different major version
+        if(namespace1[:minor1] != namespace2[:minor2] ):
+            return False
+
+        errata1 = namespace1.find(".",minor1+1)
+        errata2 = namespace2.find(".",minor2+1)
+
+        minorversion1 = namespace1[minor1+1:errata1]
+        errataversion1 = namespace1[errata1+1:]
+        minorversion2 = namespace2[minor2+1:errata2]
+        errataversion2 = namespace2[errata2+1:]
+
+        # The type is from a previous version of the namespace
+        if(minorversion1 < minorversion2 or (minorversion1 == minorversion2 and errataversion1 < errataversion2 ) ):
+            return True
+
+        return False
+
+    ############################################################################################
+    # Name: include_type                                                                       #
+    # Description:                                                                             #
+    #   Returns true if this is the latest minor version of the type less than or equal to     #
+    #   the version of the namespace being written                                             #
+    ############################################################################################
+    def include_type(self, typename, type_namespace, current_namespace, typetable):
+
+        # Namespace is the same as this, so include it
+        if(type_namespace == current_namespace):
+            return True
+
+        # Namespace is not a previous version of this namespace, so exclude it
+        if( not(self.is_prior_version(type_namespace, current_namespace)) ):
+            return False
+
+        # Type is defined in current namespace so exclude it
+        if( current_namespace+"."+typename in typetable.keys() ):
+            return False
+
+        # If there are any newer versions of the type prior to current namespace version, exclude it
+        for key in typetable.keys():
+            type=typetable[key]
+            if(type["Name"] == typename and self.is_prior_version(type["Namespace"],current_namespace) ):
+                if( self.is_prior_version(type_namespace,type["Namespace"]) ):
+                    return False
+
+        return True
+
+    ############################################################################################
     # Name: generate_json_for_EnumTypes                                                        #
     # Description:                                                                             #
     #   Generates JSON corresponding to a Enum type                                            #
@@ -901,7 +980,8 @@ class JsonSchemaGenerator:
 
         output = ""
 
-        if len(namespace) != 0 and namespace != typedata["Namespace"]:
+        #if same major version, reference local definitions
+        if not(self.include_type(typename, typedata["Namespace"], namespace, typetable) ):
                 refvalue = self.get_ref_value_for_type(typetable, typename, namespace)
                 output += UT.Utilities.indent(depth)+ "\"$ref\": \"" + refvalue + "\""
 
@@ -988,14 +1068,14 @@ class JsonSchemaGenerator:
             output += self.generate_json_for_EnumTypes(typetable, typedata, typename, namespace, depth, isnullable)
    
         elif typetype == "EntityType":
-            if namespace == typedata["Namespace"] and not write_reference:
+            if self.include_type(typename, typedata["Namespace"], namespace, typetable) and not write_reference:
                 output += self.generate_json_for_propertybag(typetable, typedata, depth, namespace, prefixuri, isnullable, write_reference)
             else:
                 output = UT.Utilities.indent(depth) + "\"@odata.id\": \"" + typedata["JsonUrl"] + "#" + typename + "\""
                 return output
 
         elif typetype == "ComplexType":
-            if namespace == typedata["Namespace"] and not write_reference:
+            if self.include_type(typename, typedata["Namespace"], namespace, typetable) and not write_reference:
                 output = self.generate_json_for_propertybag(typetable, typedata, depth, namespace, prefixuri, isnullable, write_reference)
             else:
                 refvalue = self.get_ref_value_for_type(typetable, typename, namespace)
@@ -1004,7 +1084,7 @@ class JsonSchemaGenerator:
                 return output
 
         elif typetype == "Action":
-            if namespace == typedata["Namespace"] and not write_reference:
+            if self.include_type(typename, typedata["Namespace"], namespace, typetable) and not write_reference:
                 output = self.generate_json_for_propertybag(typetable, typedata, depth, namespace, prefixuri, isnullable, write_reference)
             else:
                 simplename = typename[typename.rfind(".") + 1 :]
@@ -1031,11 +1111,11 @@ class JsonSchemaGenerator:
     def generate_json_for_reference_type(self, typetable, typename, schemaname, depth, prefixuri, includeIdRef):
 
         output = ""
-        output += UT.Utilities.indent(depth+2) + "\"anyOf\": [ \n"
+        output += UT.Utilities.indent(depth+1) + "\"anyOf\": [\n"
         if(includeIdRef):
-            output += UT.Utilities.indent(depth+3) + "{\n"
-            output += UT.Utilities.indent(depth+4) + "\"$ref\": \"" + odataSchema + "#/definitions/idRef\"\n"
-            output += UT.Utilities.indent(depth+3) + "}"
+            output += UT.Utilities.indent(depth+2) + "{\n"
+            output += UT.Utilities.indent(depth+3) + "\"$ref\": \"" + odataSchema + "#/definitions/idRef\"\n"
+            output += UT.Utilities.indent(depth+2) + "}"
 
         #for each type that derives from this type
         isFirst= not(includeIdRef)
@@ -1045,12 +1125,12 @@ class JsonSchemaGenerator:
                 output += ",\n"
             else:
                 isFirst=False
-            output += UT.Utilities.indent(depth+3) + "{\n"
-            output += UT.Utilities.indent(depth+4) + "\"$ref\": \"" + prefixuri + derivedtype["Namespace"] + ".json#/definitions/" + derivedtype["Name"] + "\"\n"
-            output += UT.Utilities.indent(depth+3) + "}"
+            output += UT.Utilities.indent(depth+2) + "{\n"
+            output += UT.Utilities.indent(depth+3) + "\"$ref\": \"" + prefixuri + derivedtype["Namespace"] + ".json#/definitions/" + derivedtype["Name"] + "\"\n"
+            output += UT.Utilities.indent(depth+2) + "}"
 
         output += "\n"
-        output += UT.Utilities.indent(depth+2) + "]"
+        output += UT.Utilities.indent(depth+1) + "]"
   
         return output
 
@@ -1203,16 +1283,16 @@ class JsonSchemaGenerator:
                 index = parsedtypes.index(typename + ":" + currentNamespace)
             except :
                 # This type has not been parsed yet. Process it now.
-                if ( (typetype!= "Action" and ( namespace == currentNamespace and self.is_inline_type(typedata) and not (typetype=="ComplexType" and self.isabstract(typedata) ) ) )
-                    or (typetype == "Action" and typedata["BoundNamespace"] == namespace) ):
+                if ( (typetype!= "Action" and ( self.include_type(typename,currentNamespace, namespace, typetable) and self.is_inline_type(typedata) and not (typetype=="ComplexType" and self.isabstract(typedata) ) ) )
+                    or (typetype == "Action" and self.include_type(typename, typedata["BoundNamespace"], namespace, typetable)) ):
                     # Add comma if this is not the first definition, otherwise write start of definitions block
                     if (type_count > 0):
                         output += ",\n"
                     else:
-                        output += UT.Utilities.indent(depth) + "\"definitions\":{\n"
+                        output += UT.Utilities.indent(depth) + "\"definitions\": {\n"
 
                     # Start type definition
-                    output += UT.Utilities.indent(depth+1) + "\"" + typename + "\":{\n"
+                    output += UT.Utilities.indent(depth+1) + "\"" + typename + "\": {\n"
                     # Add it to the list so that it does not get generated again.
                     parsedtypes.append(typename + ":" + currentNamespace)
 
