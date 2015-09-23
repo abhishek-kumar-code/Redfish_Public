@@ -44,7 +44,8 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
                 },
                 "Members@odata.navigationLink": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
+                    "type": "string",
+                    "format": "uri"
                 },
                 "Members": {
                     "type": "array",

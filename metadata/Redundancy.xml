@@ -79,5 +79,10 @@
       </EnumType>
 
     </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Redundancy.1.0.1">
+      <EntityType Name="Redundancy" BaseType="Redundancy.1.0.0.Redundancy"/>
+    </Schema>
+
   </edmx:DataServices>
 </edmx:Edmx>

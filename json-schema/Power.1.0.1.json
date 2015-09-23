@@ -22,6 +22,135 @@
                 "DC480V": "High Voltage DC input (380V)"
             }
         },
+        "PowerLimit": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "LimitInWatts": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "description": "The Power limit in watts. Set to null to disable power capping.",
+                    "longDescription": "The value of this property shall represent the power cap limit in watts for the resource.  If set to null, power capping shall be disabled.",
+                    "minimum": 0
+                },
+                "LimitException": {
+                    "$ref": "#/definitions/PowerLimitException",
+                    "description": "The action that is taken if the power cannot be maintained below the LimitInWatts.",
+                    "longDescription": "The value of this property shall represent the action to be taken if the resource power consumption can not be limited below the specified limit after several correction time periods."
+                },
+                "CorrectionInMs": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "description": "The time required for the limiting process to reduce power consumption to below the limit.",
+                    "longDescription": "The value of this property shall represent the time interval in ms required for the limiting process to react and reduce the power consumption below the limit."
+                }
+            },
+            "description": "This object contains power limit status and configuration information for the chassis."
+        },
+        "PowerLimitException": {
+            "type": "string",
+            "enum": [
+                "NoAction",
+                "HardPowerOff",
+                "LogEventOnly",
+                "Oem"
+            ],
+            "enumDescriptions": {
+                "NoAction": "Take no action when the limit is exceeded.",
+                "HardPowerOff": "Turn the power off immediately when the limit is exceeded.",
+                "LogEventOnly": "Log an event when the limit is exceeded, but take no further action.",
+                "Oem": "Take an OEM-defined action."
+            }
+        },
+        "PowerMetric": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "IntervalInMin": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The time interval (or window) in which the PowerMetrics are measured over.",
+                    "longDescription": "The value of this property shall represent the time interval (or window), in minutes, in which the PowerMetrics properties are measured over.",
+                    "minimum": 0
+                },
+                "MinConsumedWatts": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The lowest power consumption level over the measurement window (the last IntervalInMin minutes).",
+                    "longDescription": "The value of this property shall represent the minimum power level in watts that occured within the last IntervalInMin minutes.",
+                    "minimum": 0
+                },
+                "MaxConsumedWatts": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The highest power consumption level that has occured over the measurement window (the last IntervalInMin minutes).",
+                    "longDescription": "The value of this property shall represent the maximum power level in watts that occured within the last IntervalInMin minutes.",
+                    "minimum": 0
+                },
+                "AverageConsumedWatts": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The average power level over the measurement window (the last IntervalInMin minutes).",
+                    "longDescription": "The value of this property shall represent the average power level that occured averaged over the last IntervalInMin minutes.",
+                    "minimum": 0
+                }
+            }
+        },
+        "PowerSupplyType": {
+            "type": "string",
+            "enum": [
+                "Unknown",
+                "AC",
+                "DC"
+            ],
+            "enumDescriptions": {
+                "Unknown": "The power supply type cannot be determined",
+                "AC": "Alternating Current (AC) power supply",
+                "DC": "Direct Current (DC) power supply"
+            }
+        },
         "Power": {
             "type": "object",
             "patternProperties": {
@@ -66,12 +195,13 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
                 },
                 "PowerControl@odata.navigationLink": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
+                    "type": "string",
+                    "format": "uri"
                 },
                 "PowerControl": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/PowerControl"
+                        "$ref": "http://redfish.dmtf.org/schemas/v1/Power.1.0.0.json#/definitions/PowerControl"
                     },
                     "readonly": true,
                     "description": "This is the definition for power control function (power reading/limiting).",
@@ -81,12 +211,13 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
                 },
                 "Voltages@odata.navigationLink": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
+                    "type": "string",
+                    "format": "uri"
                 },
                 "Voltages": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/Voltage"
+                        "$ref": "http://redfish.dmtf.org/schemas/v1/Power.1.0.0.json#/definitions/Voltage"
                     },
                     "readonly": true,
                     "description": "This is the definition for voltage sensors.",
@@ -96,12 +227,13 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
                 },
                 "PowerSupplies@odata.navigationLink": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
+                    "type": "string",
+                    "format": "uri"
                 },
                 "PowerSupplies": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/PowerSupply"
+                        "$ref": "http://redfish.dmtf.org/schemas/v1/Power.1.0.0.json#/definitions/PowerSupply"
                     },
                     "readonly": true,
                     "description": "Details of the power supplies associated with this system or device",
@@ -111,7 +243,8 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
                 },
                 "Redundancy@odata.navigationLink": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
+                    "type": "string",
+                    "format": "uri"
                 },
                 "Redundancy": {
                     "type": "array",
@@ -228,7 +361,8 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
                 },
                 "RelatedItem@odata.navigationLink": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
+                    "type": "string",
+                    "format": "uri"
                 },
                 "RelatedItem": {
                     "type": "array",
@@ -241,122 +375,6 @@
             },
             "description": "This is the base type for addressable members of an array.",
             "longDescription": "Array members can be referenced using the value returned in the @odata.id property which may or may not be a dereferenceable URL. The @odata.id of this entity shall be the location of this element within an Item."
-        },
-        "PowerLimit": {
-            "type": "object",
-            "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
-                    "type": [
-                        "array",
-                        "boolean",
-                        "number",
-                        "null",
-                        "object",
-                        "string"
-                    ],
-                    "description": "This property shall specify a valid odata or Redfish property."
-                }
-            },
-            "additionalProperties": false,
-            "properties": {
-                "LimitInWatts": {
-                    "type": [
-                        "number",
-                        "null"
-                    ],
-                    "description": "The Power limit in watts. Set to null to disable power capping.",
-                    "longDescription": "The value of this property shall represent the power cap limit in watts for the resource.  If set to null, power capping shall be disabled.",
-                    "minimum": 0
-                },
-                "LimitException": {
-                    "$ref": "#/definitions/PowerLimitException",
-                    "description": "The action that is taken if the power cannot be maintained below the LimitInWatts.",
-                    "longDescription": "The value of this property shall represent the action to be taken if the resource power consumption can not be limited below the specified limit after several correction time periods."
-                },
-                "CorrectionInMs": {
-                    "type": [
-                        "number",
-                        "null"
-                    ],
-                    "description": "The time required for the limiting process to reduce power consumption to below the limit.",
-                    "longDescription": "The value of this property shall represent the time interval in ms required for the limiting process to react and reduce the power consumption below the limit."
-                }
-            },
-            "description": "This object contains power limit status and configuration information for the chassis."
-        },
-        "PowerLimitException": {
-            "type": "string",
-            "enum": [
-                "NoAction",
-                "HardPowerOff",
-                "LogEventOnly",
-                "Oem"
-            ],
-            "enumDescriptions": {
-                "NoAction": "Take no action when the limit is exceeded.",
-                "HardPowerOff": "Turn the power off immediately when the limit is exceeded.",
-                "LogEventOnly": "Log an event when the limit is exceeded, but take no further action.",
-                "Oem": "Take an OEM-defined action."
-            }
-        },
-        "PowerMetric": {
-            "type": "object",
-            "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
-                    "type": [
-                        "array",
-                        "boolean",
-                        "number",
-                        "null",
-                        "object",
-                        "string"
-                    ],
-                    "description": "This property shall specify a valid odata or Redfish property."
-                }
-            },
-            "additionalProperties": false,
-            "properties": {
-                "IntervalInMin": {
-                    "type": [
-                        "number",
-                        "null"
-                    ],
-                    "readonly": true,
-                    "description": "The time interval (or window) in which the PowerMetrics are measured over.",
-                    "longDescription": "The value of this property shall represent the time interval (or window), in minutes, in which the PowerMetrics properties are measured over.",
-                    "minimum": 0
-                },
-                "MinConsumedWatts": {
-                    "type": [
-                        "number",
-                        "null"
-                    ],
-                    "readonly": true,
-                    "description": "The lowest power consumption level over the measurement window (the last IntervalInMin minutes).",
-                    "longDescription": "The value of this property shall represent the minimum power level in watts that occured within the last IntervalInMin minutes.",
-                    "minimum": 0
-                },
-                "MaxConsumedWatts": {
-                    "type": [
-                        "number",
-                        "null"
-                    ],
-                    "readonly": true,
-                    "description": "The highest power consumption level that has occured over the measurement window (the last IntervalInMin minutes).",
-                    "longDescription": "The value of this property shall represent the maximum power level in watts that occured within the last IntervalInMin minutes.",
-                    "minimum": 0
-                },
-                "AverageConsumedWatts": {
-                    "type": [
-                        "number",
-                        "null"
-                    ],
-                    "readonly": true,
-                    "description": "The average power level over the measurement window (the last IntervalInMin minutes).",
-                    "longDescription": "The value of this property shall represent the average power level that occured averaged over the last IntervalInMin minutes.",
-                    "minimum": 0
-                }
-            }
         },
         "PowerSupply": {
             "type": "object",
@@ -487,7 +505,8 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
                 },
                 "RelatedItem@odata.navigationLink": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
+                    "type": "string",
+                    "format": "uri"
                 },
                 "RelatedItem": {
                     "type": "array",
@@ -501,7 +520,8 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
                 },
                 "Redundancy@odata.navigationLink": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
+                    "type": "string",
+                    "format": "uri"
                 },
                 "Redundancy": {
                     "type": "array",
@@ -515,19 +535,6 @@
             },
             "description": "Details of a power supplies associated with this system or device",
             "longDescription": "Array members can be referenced using the value returned in the @odata.id property which may or may not be a dereferenceable URL. The @odata.id of this entity shall be the location of this element within an Item."
-        },
-        "PowerSupplyType": {
-            "type": "string",
-            "enum": [
-                "Unknown",
-                "AC",
-                "DC"
-            ],
-            "enumDescriptions": {
-                "Unknown": "The power supply type cannot be determined",
-                "AC": "Alternating Current (AC) power supply",
-                "DC": "Direct Current (DC) power supply"
-            }
         },
         "Voltage": {
             "type": "object",
@@ -668,7 +675,8 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
                 },
                 "RelatedItem@odata.navigationLink": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
+                    "type": "string",
+                    "format": "uri"
                 },
                 "RelatedItem": {
                     "type": "array",

@@ -3,6 +3,64 @@
     "title": "#Chassis.1.0.1.Chassis",
     "$ref": "#/definitions/Chassis",
     "definitions": {
+        "ChassisType": {
+            "type": "string",
+            "enum": [
+                "Rack",
+                "Blade",
+                "Enclosure",
+                "StandAlone",
+                "RackMount",
+                "Card",
+                "Cartridge",
+                "Row",
+                "Pod",
+                "Expansion",
+                "Sidecar",
+                "Zone",
+                "Sled",
+                "Shelf",
+                "Drawer",
+                "Module",
+                "Component",
+                "Other"
+            ],
+            "enumDescriptions": {
+                "Rack": "An equipment rack, typically a 19-inch wide freestanding unit",
+                "Blade": "An enclosed or semi-enclosed, typically vertically-oriented, system chassis which must be plugged into a multi-system chassis to function normally",
+                "Enclosure": "A generic term for a chassis that does not fit any other description",
+                "StandAlone": "A single, free-standing system, commonly called a tower or desktop chassis",
+                "RackMount": "A single system chassis designed specifically for mounting in an equipment rack",
+                "Card": "A loose device or circuit board intended to be installed in a system or other enclosure",
+                "Cartridge": "A small self-contained system intended to be plugged into a multi-system chassis",
+                "Row": "A collection of equipment racks",
+                "Pod": "A collection of equipment racks in a large, likely transportable, container",
+                "Expansion": "A chassis which expands the capabilities or capacity of another chassis",
+                "Sidecar": "A chassis that mates mechanically with another chassis to expand its capabilities or capacity",
+                "Zone": "A logical division or portion of a physical chassis that contains multiple devices or systems that cannot be physically separated",
+                "Sled": "An enclosed or semi-enclosed, system chassis which must be plugged into a multi-system chassis to function normally similar to a blade type chassis.",
+                "Shelf": "An enclosed or semi-enclosed, typically horizontally-oriented, system chassis which must be plugged into a multi-system chassis to function normally",
+                "Drawer": "An enclosed or semi-enclosed, typically horizontally-oriented, system chassis which may be slid into a multi-system chassis.",
+                "Module": "A small, typically removable, chassis or card which contains devices for a particular subsystem or function",
+                "Component": "A small chassis, card, or device which contains devices for a particular subsystem or function",
+                "Other": "A chassis that does not fit any of these definitions"
+            }
+        },
+        "IndicatorLED": {
+            "type": "string",
+            "enum": [
+                "Unknown",
+                "Lit",
+                "Blinking",
+                "Off"
+            ],
+            "enumDescriptions": {
+                "Unknown": "The state of the Indicator LED cannot be determined.",
+                "Lit": "The Indicator LED is lit.",
+                "Blinking": "The Indicator LED is blinking.",
+                "Off": "The Indicator LED is off."
+            }
+        },
         "Chassis": {
             "type": "object",
             "patternProperties": {
@@ -107,12 +165,6 @@
                     "description": "The state of the indicator LED, used to identify the chassis.",
                     "longDescription": "This value of this property shall contain the indicator light state for the indicator light associated with this system."
                 },
-                "PowerState": {
-                    "$ref": "#/definitions/PowerState",
-                    "readonly": true,
-                    "description": "This is the current power state of the chassis",
-                    "longDescription": "The value of this property shall contain the power state of the chassis."
-                },                
                 "Links": {
                     "type": "object",
                     "patternProperties": {
@@ -139,7 +191,8 @@
                             "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
                         },
                         "ComputerSystems@odata.navigationLink": {
-                            "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
+                            "type": "string",
+                            "format": "uri"
                         },
                         "ComputerSystems": {
                             "type": "array",
@@ -154,7 +207,8 @@
                             "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
                         },
                         "ManagedBy@odata.navigationLink": {
-                            "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
+                            "type": "string",
+                            "format": "uri"
                         },
                         "ManagedBy": {
                             "type": "array",
@@ -175,7 +229,8 @@
                             "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
                         },
                         "Contains@odata.navigationLink": {
-                            "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
+                            "type": "string",
+                            "format": "uri"
                         },
                         "Contains": {
                             "type": "array",
@@ -190,7 +245,8 @@
                             "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
                         },
                         "PoweredBy@odata.navigationLink": {
-                            "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
+                            "type": "string",
+                            "format": "uri"
                         },
                         "PoweredBy": {
                             "type": "array",
@@ -205,7 +261,8 @@
                             "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
                         },
                         "CooledBy@odata.navigationLink": {
-                            "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
+                            "type": "string",
+                            "format": "uri"
                         },
                         "CooledBy": {
                             "type": "array",
@@ -285,6 +342,12 @@
                     "readonly": true,
                     "description": "A reference to the power properties (power supplies, power policies, sensors) for this chassis.",
                     "longDescription": "The value of this property shall be a reference to the resource that represents the power characteristics of this chassis and shall be of type Power."
+                },
+                "PowerState": {
+                    "$ref": "#/definitions/PowerState",
+                    "readonly": true,
+                    "description": "This is the current power state of the chassis.",
+                    "longDescription": "The value of this property shall contain the power state of the chassis."
                 }
             },
             "required": [
@@ -292,64 +355,6 @@
             ],
             "description": "This is the schema definition for the Chassis resource.  It represents the properties for physical components for any system.  This one object is intended to represent racks, rackmount servers, blades, standalone, modular systems, enclosures, and all other containers.  The non-cpu/device centric parts of the schema are all accessed either directly or indirectly through this resource.",
             "longDescription": "This resource shall be used to represent a chassis or other physical enclosure for a Redfish implementation."
-        },
-        "ChassisType": {
-            "type": "string",
-            "enum": [
-                "Rack",
-                "Blade",
-                "Enclosure",
-                "StandAlone",
-                "RackMount",
-                "Card",
-                "Cartridge",
-                "Row",
-                "Pod",
-                "Expansion",
-                "Sidecar",
-                "Zone",
-                "Sled",
-                "Shelf",
-                "Drawer",
-                "Module",
-                "Component",
-                "Other"
-            ],
-            "enumDescriptions": {
-                "Rack": "An equipment rack, typically a 19-inch wide freestanding unit",
-                "Blade": "An enclosed or semi-enclosed, typically vertically-oriented, system chassis which must be plugged into a multi-system chassis to function normally",
-                "Enclosure": "A generic term for a chassis that does not fit any other description",
-                "StandAlone": "A single, free-standing system, commonly called a tower or desktop chassis",
-                "RackMount": "A single system chassis designed specifically for mounting in an equipment rack",
-                "Card": "A loose device or circuit board intended to be installed in a system or other enclosure",
-                "Cartridge": "A small self-contained system intended to be plugged into a multi-system chassis",
-                "Row": "A collection of equipment racks",
-                "Pod": "A collection of equipment racks in a large, likely transportable, container",
-                "Expansion": "A chassis which expands the capabilities or capacity of another chassis",
-                "Sidecar": "A chassis that mates mechanically with another chassis to expand its capabilities or capacity",
-                "Zone": "A logical division or portion of a physical chassis that contains multiple devices or systems that cannot be physically separated",
-                "Sled": "An enclosed or semi-enclosed, system chassis which must be plugged into a multi-system chassis to function normally similar to a blade type chassis.",
-                "Shelf": "An enclosed or semi-enclosed, typically horizontally-oriented, system chassis which must be plugged into a multi-system chassis to function normally",
-                "Drawer": "An enclosed or semi-enclosed, typically horizontally-oriented, system chassis which may be slid into a multi-system chassis.",
-                "Module": "A small, typically removable, chassis or card which contains devices for a particular subsystem or function",
-                "Component": "A small chassis, card, or device which contains devices for a particular subsystem or function",
-                "Other": "A chassis that does not fit any of these definitions"
-            }
-        },
-        "IndicatorLED": {
-            "type": "string",
-            "enum": [
-                "Unknown",
-                "Lit",
-                "Blinking",
-                "Off"
-            ],
-            "enumDescriptions": {
-                "Unknown": "The state of the Indicator LED cannot be determined.",
-                "Lit": "The Indicator LED is lit.",
-                "Blinking": "The Indicator LED is blinking.",
-                "Off": "The Indicator LED is off."
-            }
         },
         "PowerState": {
             "type": "string",
@@ -365,7 +370,7 @@
                 "PoweringOn": "A temporary state between Off and On. The components within the chassis can take time to process the power on action.",
                 "PoweringOff": "A temporary state between On and Off. The components within the chassis can take time to process the power off action."
             }
-        },        
+        },
         "Reset": {
             "patternProperties": {
                 "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
@@ -392,7 +397,9 @@
                     "format": "uri",
                     "description": "Link to invoke action"
                 }
-            }
+            },
+            "description": "This action is used to reset the chassis. This action resets the chassis, not Systems or other contained resources, although side effects may occur which affect those resources.",
+            "longDescription": "This defines the name of the custom action supported on this resource."
         }
     },
     "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."

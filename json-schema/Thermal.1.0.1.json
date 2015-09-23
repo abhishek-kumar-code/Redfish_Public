@@ -58,15 +58,8 @@
                     "longDescription": "The value of this property shall be the current value of the fan sensor's reading."
                 },
                 "ReadingUnits": {
-                    "type": "string",
-                    "enum": [
-                        "RPM",
-                        "Percent"
-                    ],
-                    "enumDescriptions": {
-                        "RPM": "Indicates that the fan reading and thresholds are measured in rotations per minute.",
-                        "Percent": "Indicates that the fan reading and thresholds are measured in percentage."
-                    },
+                    "$ref": "#/definitions/ReadingUnits",
+                    "readonly": true,
                     "description": "Units in which the reading and thresholds are measured.",
                     "longDescription": "The value of this property shall be the units in which the fan's reading and thresholds are measured."
                 },
@@ -146,7 +139,8 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
                 },
                 "RelatedItem@odata.navigationLink": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
+                    "type": "string",
+                    "format": "uri"
                 },
                 "RelatedItem": {
                     "type": "array",
@@ -160,7 +154,8 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
                 },
                 "Redundancy@odata.navigationLink": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
+                    "type": "string",
+                    "format": "uri"
                 },
                 "Redundancy": {
                     "type": "array",
@@ -174,6 +169,17 @@
             },
             "description": "This is the base type for addressable members of an array.",
             "longDescription": "Array members can be referenced using the value returned in the @odata.id property which may or may not be a dereferenceable URL. The @odata.id of this entity shall be the location of this element within an Item."
+        },
+        "ReadingUnits": {
+            "type": "string",
+            "enum": [
+                "RPM",
+                "Percent"
+            ],
+            "enumDescriptions": {
+                "RPM": "Indicates that the fan reading and thresholds are measured in rotations per minute.",
+                "Percent": "Indicates that the fan reading and thresholds are measured in percentage."
+            }
         },
         "Temperature": {
             "type": "object",
@@ -314,7 +320,8 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
                 },
                 "RelatedItem@odata.navigationLink": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
+                    "type": "string",
+                    "format": "uri"
                 },
                 "RelatedItem": {
                     "type": "array",
@@ -376,12 +383,13 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
                 },
                 "Temperatures@odata.navigationLink": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
+                    "type": "string",
+                    "format": "uri"
                 },
                 "Temperatures": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/Temperature"
+                        "$ref": "http://redfish.dmtf.org/schemas/v1/Thermal.json#/definitions/Temperature"
                     },
                     "readonly": true,
                     "description": "This is the definition for temperature sensors.",
@@ -391,12 +399,13 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
                 },
                 "Fans@odata.navigationLink": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
+                    "type": "string",
+                    "format": "uri"
                 },
                 "Fans": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/Fan"
+                        "$ref": "http://redfish.dmtf.org/schemas/v1/Thermal.json#/definitions/Fan"
                     },
                     "readonly": true,
                     "description": "This is the definition for fans.",
@@ -406,7 +415,8 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
                 },
                 "Redundancy@odata.navigationLink": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
+                    "type": "string",
+                    "format": "uri"
                 },
                 "Redundancy": {
                     "type": "array",
