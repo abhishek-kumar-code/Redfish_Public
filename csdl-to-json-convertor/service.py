@@ -1302,8 +1302,8 @@ class JsonSchemaGenerator:
                     # todo: support other versions (derived) of Resource and ReferenceableMember
                     elif ( basetype == "Resource.1.0.0.Resource" ):
                         output += self.generate_json_for_reference_type(typetable, typename, namespace, depth + 1, prefixuri, True)
-                    elif ( basetype == "Resource.1.0.0.ReferenceableMember" ):
-                        output += self.generate_json_for_reference_type(typetable, typename, namespace, depth + 1, prefixuri, False)
+#                    elif ( basetype == "Resource.1.0.0.ReferenceableMember" ):
+#                        output += self.generate_json_for_reference_type(typetable, typename, namespace, depth + 1, prefixuri, False)
                     else:
                         output += self.generate_json_for_type(typetable, currentType, depth+2, namespace, prefixuri, False, False)
 
