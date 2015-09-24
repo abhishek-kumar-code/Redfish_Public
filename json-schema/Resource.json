@@ -70,15 +70,45 @@
         "Oem": {
             "type": "object",
             "patternProperties": {
-                "([a-zA-Z0-9]+(\\.[a-z]{2,})?|EID:[0-9]+)(:.+)?" : {
-                    "type": "object",
-                    "additionalProperties": true,                    
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                },
+                "([a-zA-Z0-9]+(\\.[a-z]{2,})?|EID:[0-9]+)(:.+)?": {
+                    "$ref": "#/definitions/OemObject"
+                }
+            },
+            "additionalProperties": true,
+            "properties": {},
+            "description": "Oem extension object.",
+            "longDescription": "This object represents the Oem properties.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
+        },
+        "OemObject": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
                     "description": "This property shall specify a valid odata or Redfish property."
                 }
             },
+            "additionalProperties": true,
             "properties": {},
-            "description": "Oem extension object.",
-            "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
+            "description": "Base type for an Oem object.",
+            "longDescription": "This object represents the base type for an Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
         },
         "ReferenceableMember": {
             "type": "object",

@@ -10,6 +10,9 @@
                 },
                 {
                     "$ref": "http://redfish.dmtf.org/schemas/Redundancy.1.0.0.json#/definitions/Redundancy"
+                },
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/Redundancy.1.0.1.json#/definitions/Redundancy"
                 }
             ]
         }

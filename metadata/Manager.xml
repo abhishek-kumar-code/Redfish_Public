@@ -316,5 +316,10 @@
       </ComplexType>
 	  
     </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.1.0.1">
+      <EntityType Name="Manager" BaseType="Manager.1.0.0.Manager"/>
+    </Schema>
+
   </edmx:DataServices>
 </edmx:Edmx>

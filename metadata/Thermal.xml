@@ -31,23 +31,19 @@
         <Annotation Term="OData.Description" String="This is the schema definition for the Thermal properties.  It represents the properties for Temperature and Cooling."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a thermal metrics resource for a Redfish implementation."/>
       </EntityType>
-      
-      <EntityType Name="Temperature" BaseType="Resource.1.0.0.ReferenceableMember"/>
-      
-      <EntityType Name="Fan" BaseType="Resource.1.0.0.ReferenceableMember"/>
 
     </Schema>
     
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Thermal.1.0.1">
 
       <EntityType Name="Thermal" BaseType="Thermal.Thermal">
-        <NavigationProperty Name="Temperatures" Type="Collection(Thermal.Temperature)" Nullable="false">
+        <NavigationProperty Name="Temperatures" Type="Collection(Thermal.1.0.1.Temperature)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is the definition for temperature sensors."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for temperature sensors for a Redfish implementation."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
-        <NavigationProperty Name="Fans" Type="Collection(Thermal.Fan)" Nullable="false" ContainsTarget="True">
+        <NavigationProperty Name="Fans" Type="Collection(Thermal.1.0.1.Fan)" Nullable="false" ContainsTarget="True">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is the definition for fans."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for fans for a Redfish implementation."/>
@@ -62,7 +58,7 @@
         <Property Name="Status" Type="Resource.Status"/>
       </EntityType>
 
-      <EntityType Name="Temperature" BaseType="Thermal.Temperature">
+      <EntityType Name="Temperature" BaseType="Resource.1.0.0.ReferenceableMember">
         <Property Name="Name" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Temperature sensor name."/>
@@ -141,7 +137,7 @@
         </NavigationProperty>
       </EntityType>
 
-      <EntityType Name="Fan" BaseType="Thermal.Fan">
+      <EntityType Name="Fan" BaseType="Resource.1.0.0.ReferenceableMember">
         <Property Name="FanName" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Name of the fan"/>

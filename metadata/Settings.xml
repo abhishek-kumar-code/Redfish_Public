@@ -41,7 +41,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the URI of the resource to which a client must do a PUT or PATCh in order to modify this resource."/>
           <Annotation Term="OData.AutoExpandReferences" />
         </NavigationProperty>
-        <Property Name="Messages" Type="Collection(Message.Message)">
+        <Property Name="Messages" Type="Collection(Message.1.0.0.Message)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This is an array of messages associated with the task."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of messages associated with the task."/>

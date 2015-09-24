@@ -10,6 +10,9 @@
                 },
                 {
                     "$ref": "http://redfish.dmtf.org/schemas/Power.1.0.0.json#/definitions/Power"
+                },
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/Power.1.0.1.json#/definitions/Power"
                 }
             ]
         }
