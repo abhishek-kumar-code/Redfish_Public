@@ -217,8 +217,6 @@ The protocol operations are specified independently of the data model.  The prot
 
 Like other hypermedia APIs, Redfish has a single service endpoint URI and all other resources are accessible via opaque URIs referenced from the root.  Any resource discovered through links found by accessing the root service or any service or resource referenced using references from the root service will conform to the same versions of the protocols supported by the root service.
 
-Note that the ServiceRoot Redfish Schema places requirements on the last segment of the path for the URIs discoverable through the service root.
-
 ### Service Elements
 
 #### Synchronous and Asynchronous Operation Support
