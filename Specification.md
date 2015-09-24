@@ -431,7 +431,7 @@ In addition, the following URI without a trailing slash shall be either Redirect
 | ---------   | -----------                    |
 | /redfish/v1 | /redfish/v1/                   |
 
-If a service implementation chooses not to redirect the APIs in the table above, and instead chooses to treat them as equivalent APIs, then all relative URIs used by the service shall include the full path after the net-location (hostname:port) starting with a forward slash / (e.g. /redfish/v1/).
+Services that implement the redirect of /redfish/v1 to /redfish/v1/ may use URIs in payloads relative to /redfish/v1/.  Otherwise all relative URIs used by the service shall include the full path after the net-location (hostname:port) starting with a forward slash / (e.g. /redfish/v1/).
 
 ### Requests
 
