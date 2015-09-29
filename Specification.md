@@ -306,7 +306,7 @@ For example, in the following URL:
 
     Example: https://mgmt.vendor.com/redfish/v1/Systems/1
 
-* The first part is the scheme and authority portion (https://mgmr.vendor.com).
+* The first part is the scheme and authority portion (https://mgmt.vendor.com).
 * The second part is the root service and version (/redfish/v1/).
 * The third part is the unique resource path (Systems/1).
 
@@ -1832,11 +1832,11 @@ Common properties are defined in the base Resource Redfish Schema.  For OData Sc
 
 #### Id
 
-The Id property of a resource identifies the resource within a collection.
+The Id property of a resource identifies the resource within a collection.  The value of Id shall be unique across a collection.
 
 #### Name
 
-The Name property is used to convey a human readable moniker for the resource.  The type of the Name property shall be string.
+The Name property is used to convey a human readable moniker for a resource.  The type of the Name property shall be string.  The value of Name is NOT required to be unique across resource instances within a collection.
 
 #### Description
 
