@@ -1844,7 +1844,7 @@ The Id property of a resource identifies the resource within a collection.  The 
 
 #### Name
 
-The Name property is used to convey a human readable moniker for a resource.  The type of the Name property shall be string.  The value of Name is NOT required to be unique across resource instances within a collection (although it may be in some cases in some implementations).
+The Name property is used to convey a human readable moniker for a resource.  The type of the Name property shall be string.  The value of Name is NOT required to be unique across resource instances within a collection.
 
 #### Description
 
