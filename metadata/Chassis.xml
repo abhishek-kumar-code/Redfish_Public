@@ -245,7 +245,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.1.0.1">
-      
+
       <EntityType Name="Chassis" BaseType="Chassis.1.0.0.Chassis">
         <Property Name="PowerState" Type="Chassis.1.0.1.PowerState">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
@@ -268,6 +268,57 @@
           <Annotation Term="OData.Description" String="A temporary state between On and Off. The components within the chassis can take time to process the power off action."/>
         </Member>
       </EnumType>
+
+    </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.1.1.0">
+
+      <EntityType Name="Chassis" BaseType="Chassis.1.0.1.Chassis">
+        <Property Name="PhysicalSecurity" Type="Chassis.1.1.0.PhysicalSecurity">
+          <Annotation Term="OData.Description" String="The state of the physical security sensor."/>
+          <Annotation Term="OData.LongDescription" String="This value of this property shall contain the sensor state of the physical security."/>
+        </Property>  
+      </EntityType>
+      
+      <ComplexType Name="PhysicalSecurity">
+        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
+        <Property Name="IntrusionSensorNumber" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="A numerical identifier to represent the physical security sensor."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a numerical identifier for this physical security sensor that is unique within this resource. "/>
+        </Property>
+        <Property Name="IntrusionSensor" Type="Chassis.1.1.0.IntrusionSensor">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/ReadWrite"/>
+          <Annotation Term="OData.Description" String="This indicates the known state of the physical security sensor, such as if it is hardware intrusion detected."/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the state of this physical security sensor.  Hardware intrusion indicates the internal hardware is detected as being accessed in an insecure state. Tampering detected indicates the physical tampering of the monitored entity is detected." />
+        </Property>
+        <Property Name="IntrusionSensorReArm" Type="Chassis.1.1.0.IntrusionSensorReArm">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="This indicates how the Normal state to be restored."/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the method to set back to the Normal statue of this physical security sensor.  Manual indicates manual re-arm is needed.  Automatic indicates the state is restored automatically as no abnormal physical security conditions are detected."/>
+        </Property>
+      </ComplexType>      
+
+      <EnumType Name="IntrusionSensor">
+        <Member Name="Normal">
+          <Annotation Term="OData.Description" String="No abnormal physical security conditions are detected at this time."/>
+        </Member>
+        <Member Name="HardwareIntrusion">
+          <Annotation Term="OData.Description" String="A door, lock, or other mechanism protecting the internal system hardware from being accessed is detected as being in an insecure state."/>
+        </Member>
+        <Member Name="TamperingDetected">
+          <Annotation Term="OData.Description" String="Physical tampering of the monitored entity is detected."/>
+        </Member>
+      </EnumType>
+
+      <EnumType Name="IntrusionSensorReArm">
+        <Member Name="Manual">
+          <Annotation Term="OData.Description" String="This sensor would be restored to the Normal state by a manual re-arm."/>
+        </Member>
+        <Member Name="Automatic">
+          <Annotation Term="OData.Description" String="This sensor would be restored to the Normal state automatically as no abnormal physical security conditions are detected."/>
+        </Member>
+      </EnumType>      
 
     </Schema>
 
