@@ -246,7 +246,7 @@
     
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.1.1.0">
 
-      <EntityType Name="Chassis" BaseType="Chassis.1.0.0.Chassis">
+      <EntityType Name="Chassis" BaseType="Chassis.1.0.1.Chassis">
         <Property Name="PhysicalSecurity" Type="Chassis.1.1.0.PhysicalSecurity">
           <Annotation Term="OData.Description" String="The state of the physical security sensor."/>
           <Annotation Term="OData.LongDescription" String="This value of this property shall contain the sensor state of the physical security."/>
