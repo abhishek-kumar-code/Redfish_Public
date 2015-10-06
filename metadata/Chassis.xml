@@ -260,12 +260,12 @@
           <Annotation Term="OData.Description" String="A numerical identifier to represent the physical security sensor."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a numerical identifier for this physical security sensor that is unique within this resource. "/>
         </Property>
-        <Property Name="IntrusionSensor" Type="Chassis.IntrusionSensor">
+        <Property Name="IntrusionSensor" Type="Chassis.1.1.0.IntrusionSensor">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/ReadWrite"/>
           <Annotation Term="OData.Description" String="This indicates the known state of the physical security sensor, such as if it is hardware intrusion detected."/>
           <Annotation Term="OData.LongDescription" String="This property shall represent the state of this physical security sensor.  Hardware intrusion indicates the internal hardware is detected as being accessed in an insecure state. Tampering detected indicates the physical tampering of the monitored entity is detected." />
         </Property>
-        <Property Name="IntrusionSensorReArm" Type="Chassis.IntrusionSensorReArm">
+        <Property Name="IntrusionSensorReArm" Type="Chassis.1.1.0.IntrusionSensorReArm">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This indicates how the Normal state to be restored."/>
           <Annotation Term="OData.LongDescription" String="This property shall represent the method to set back to the Normal statue of this physical security sensor.  Manual indicates manual re-arm is needed.  Automatic indicates the state is restored automatically as no abnormal physical security conditions are detected."/>
