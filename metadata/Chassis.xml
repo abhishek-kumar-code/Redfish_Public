@@ -101,10 +101,6 @@
           <Annotation Term="OData.Description" String="The Actions object contains the available custom actions on this resource."/>
         </Property>
         <Property Name="Status" Type="Resource.Status"/>
-        <Property Name="PhysicalSecurity" Type="Chassis.1.1.0.PhysicalSecurity">
-          <Annotation Term="OData.Description" String="The state of the physical security sensor."/>
-          <Annotation Term="OData.LongDescription" String="This value of this property shall contain the sensor state of the physical security."/>
-        </Property>  
         <NavigationProperty Name="LogServices" Type="LogServiceCollection.LogServiceCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="A reference to the logs for this chassis."/>
@@ -172,25 +168,6 @@
       <ComplexType Name="OemActions">
         <Annotation Term="OData.AdditionalProperties" Bool="True"/>
       </ComplexType>
-
-      <ComplexType Name="PhysicalSecurity">
-        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
-        <Property Name="IntrusionSensorNumber" Type="Edm.Int64">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="A numerical identifier to represent the physical security sensor."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a numerical identifier for this physical security sensor that is unique within this resource. "/>
-        </Property>
-        <Property Name="IntrusionSensor" Type="Chassis.IntrusionSensor">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/ReadWrite"/>
-          <Annotation Term="OData.Description" String="This indicates the known state of the physical security sensor, such as if it is hardware intrusion detected."/>
-          <Annotation Term="OData.LongDescription" String="This property shall represent the state of this physical security sensor.  Hardware intrusion indicates the internal hardware is detected as being accessed in an insecure state. Tampering detected indicates the physical tampering of the monitored entity is detected." />
-        </Property>
-        <Property Name="IntrusionSensorReArm" Type="Chassis.IntrusionSensorReArm">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="This indicates how the Normal state to be restored."/>
-          <Annotation Term="OData.LongDescription" String="This property shall represent the method to set back to the Normal statue of this physical security sensor.  Manual indicates manual re-arm is needed.  Automatic indicates the state is restored automatically as no abnormal physical security conditions are detected."/>
-        </Property>
-      </ComplexType>      
 
       <EnumType Name="ChassisType">
         <Member Name="Rack">
@@ -264,6 +241,36 @@
           <Annotation Term="OData.Description" String="The Indicator LED is off."/>
         </Member>
       </EnumType>
+
+    </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.1.1.0">
+
+      <EntityType Name="Chassis" BaseType="Chassis.1.0.0.Chassis">
+        <Property Name="PhysicalSecurity" Type="Chassis.1.1.0.PhysicalSecurity">
+          <Annotation Term="OData.Description" String="The state of the physical security sensor."/>
+          <Annotation Term="OData.LongDescription" String="This value of this property shall contain the sensor state of the physical security."/>
+        </Property>  
+      </EntityType>
+      
+      <ComplexType Name="PhysicalSecurity">
+        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
+        <Property Name="IntrusionSensorNumber" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="A numerical identifier to represent the physical security sensor."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a numerical identifier for this physical security sensor that is unique within this resource. "/>
+        </Property>
+        <Property Name="IntrusionSensor" Type="Chassis.IntrusionSensor">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/ReadWrite"/>
+          <Annotation Term="OData.Description" String="This indicates the known state of the physical security sensor, such as if it is hardware intrusion detected."/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the state of this physical security sensor.  Hardware intrusion indicates the internal hardware is detected as being accessed in an insecure state. Tampering detected indicates the physical tampering of the monitored entity is detected." />
+        </Property>
+        <Property Name="IntrusionSensorReArm" Type="Chassis.IntrusionSensorReArm">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="This indicates how the Normal state to be restored."/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the method to set back to the Normal statue of this physical security sensor.  Manual indicates manual re-arm is needed.  Automatic indicates the state is restored automatically as no abnormal physical security conditions are detected."/>
+        </Property>
+      </ComplexType>      
 
       <EnumType Name="IntrusionSensor">
         <Member Name="Normal">
