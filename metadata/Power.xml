@@ -247,7 +247,7 @@
         <Property Name="MaxReadingRange" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Maximum value for CurrentReading"/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the lowest possible value for CurrentReading. Units shall use the same units as the related ReadingVolts propoerty."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the highest possible value for CurrentReading. Units shall use the same units as the related ReadingVolts propoerty."/>
           <Annotation Term="OData.Measures.Unit" String="Volts"/>
         </Property>
         <Property Name="PhysicalContext" Type="PhysicalContext.1.0.0.PhysicalContext" Nullable="false">
