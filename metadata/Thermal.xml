@@ -197,7 +197,7 @@
         <Property Name="MaxReadingRange" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Maximum value for Reading"/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the lowest possible value for Reading. The units shall be the same units as the related Reading property."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the highest possible value for Reading. The units shall be the same units as the related Reading property."/>
         </Property>
         <NavigationProperty Name="RelatedItem" Type="Collection(Resource.Item)" Nullable="false">
           <Annotation Term="OData.Description" String="The ID(s) of the resources serviced with this fan"/>
