@@ -31,17 +31,17 @@
         <Annotation Term="OData.Description" String="This is the schema definition for the Task Service.  It represents the properties for the service itself and has links to the actual list of tasks."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a task service for a Redfish implementation."/>
         <Property Name="CompletedTaskOverWritePolicy" Type="TaskService.1.0.0.OverWritePolicy" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Overwrite policy of completed tasks"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate how completed tasks are handled should the task service need to track more tasks."/>
         </Property>
         <Property Name="DateTime" Type="Edm.DateTimeOffset">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The current DateTime (with offset) setting that the task service is using."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the current DateTime value for the TaskService, with offset from UTC, in Redfish Timestamp format."/>
         </Property>
         <Property Name="LifeCycleEventOnTaskStateChange" Type="Edm.Boolean" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Send an Event upon Task State Change."/>
           <Annotation Term="OData.LongDescription" String="The value of this property, if set to true, shall indicate that the service shall send a LifeCycle event to ListenerDestinations registered for such events upon change of task state."/>
         </Property>
@@ -51,7 +51,7 @@
         </Property>        
         <Property Name="Status" Type="Resource.Status"/>
         <NavigationProperty Name="Tasks" Type="TaskCollection.TaskCollection">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="References to the Tasks collection."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a resource of type TaskCollection."/>
           <Annotation Term="OData.AutoExpandReferences"/>

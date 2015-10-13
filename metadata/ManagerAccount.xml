@@ -51,14 +51,14 @@
           <Annotation Term="OData.LongDescription" String="This property shall enable (if set to true) or disable (if set to false) the account for future logins. The value of Enable over-rides the locked property."/>
         </Property>
         <Property Name="Links" Type="ManagerAccount.1.0.0.Links" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The links object contains the links to other resources that are related to this resource."/>
         </Property>
       </EntityType>
 
       <ComplexType Name="Links" BaseType="Resource.Links">
         <NavigationProperty Name="Role" Type="Role.Role" ContainsTargete='true'>
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A reference to the Role object defining Privileges for this account--returned when the resource is read. The ID of the role is the same as property RoleId."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a Role object instance, and should reference the object identified by property RoleId."/>
           <Annotation Term="OData.AutoExpandReferences"/>

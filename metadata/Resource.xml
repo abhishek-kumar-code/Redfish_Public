@@ -13,19 +13,19 @@
 
       <!--Type Definitions-->
       <TypeDefinition Name="Id" UnderlyingType="Edm.String">
-        <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+        <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
         <Annotation Term="OData.Description" String="Uniquely identifies the resource within the collection of like resources."/>
         <Annotation Term="OData.LongDescription" String="This property represents an identifier for the resource.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
       </TypeDefinition>
 
       <TypeDefinition Name="Description" UnderlyingType="Edm.String">
-        <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+        <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
         <Annotation Term="OData.Description" String="Provides a description of this resource and is used for commonality  in the schema definitions."/>
         <Annotation Term="OData.LongDescription" String="This object represents the Description property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
       </TypeDefinition>
 
       <TypeDefinition Name="Name" UnderlyingType="Edm.String">
-        <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+        <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
         <Annotation Term="OData.Description"  String="The name of the resource or array element."/>
         <Annotation Term="OData.LongDescription" String="This object represents the Name property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification. The value of this string shall be of the format for the reserved word *Name*."/>
         <Annotation Term="Redfish.Required"/>
@@ -86,20 +86,20 @@
       
       <!--This object represents the standard status structure for resources.-->
       <ComplexType Name="Status">
-        <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+        <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
         <Annotation Term="OData.AdditionalProperties" Bool="False"/>
         <Property Name="State" Type="Resource.State">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This indicates the known state of the resource, such as if it is enabled."/>
           <Annotation Term="OData.LongDescription" String="This property shall represent if this component is available or not and why.  Enabled indicates the resource is available.  Disabled indicates the resource has been intentionally made unavailable but it can be enabled.  Offline indicates the resource is unavailable intentionally and requires action to be made available.  InTest indicates that the component is undergoing testing.  Starting indicates that the resource is on its way to becoming available.  Absent indicates the resources is physically unavailable."/>
         </Property>
         <Property Name="HealthRollup" Type="Resource.Health">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This represents the overall health state from the view of this resource."/>
           <Annotation Term="OData.LongDescription" String="This property shall represent the HealthState of the resource and its dependent resources.  The values shall conform to those defined in the Redfish specification."/>
         </Property>
         <Property Name="Health" Type="Resource.Health">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This represents the health state of this resource in the absence of its dependent resources."/>
           <Annotation Term="OData.LongDescription" String="This property shall represent the HealthState of the resource without considering its dependent resources. The values shall conform to those defined in the Redfish specification."/>
         </Property>

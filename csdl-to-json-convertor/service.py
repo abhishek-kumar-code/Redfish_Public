@@ -390,10 +390,10 @@ class JsonSchemaGenerator:
                     output += UT.Utilities.indent(depth) + "\"longDescription\": \"" + annotation.attrib["String"] + "\""
 
                 elif (term == "OData.Permissions"):
-                    if annotation.attrib["EnumMember"] == "OData.Permissions/Read":
+                    if annotation.attrib["EnumMember"] == "OData.Permission/Read":
                         output += ",\n"
                         output += UT.Utilities.indent(depth) + "\"readonly\": true"
-                    elif annotation.attrib["EnumMember"] == "OData.Permissions/ReadWrite":
+                    elif annotation.attrib["EnumMember"] == "OData.Permission/ReadWrite":
                         output += ",\n"
                         output += UT.Utilities.indent(depth) + "\"readonly\": false"
 
