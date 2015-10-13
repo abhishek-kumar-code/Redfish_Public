@@ -30,14 +30,14 @@
       <EntityType Name="EventDestination" BaseType="EventDestination.EventDestination">
         <Property Name="Destination" Type="Edm.String" Nullable="false">
           <Annotation Term="Redfish.RequiredOnCreate"/>
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The URI of the destination Event Service."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain a URI to the destination where the events will be sent."/>
           <Annotation Term="OData.IsUrl"/>
         </Property>
         <Property Name="EventTypes" Type="Collection(Event.1.0.0.EventType)" Nullable="false">
           <Annotation Term="Redfish.RequiredOnCreate"/>
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This property shall contain the types of events that shall be sent to the desination."/>
         </Property>
         <Property Name="Context" Type="Edm.String" Nullable="false">
@@ -47,7 +47,7 @@
         </Property>
         <Property Name="Protocol" Type="EventDestination.1.0.0.EventDestinationProtocol" Nullable="false">
           <Annotation Term="Redfish.RequiredOnCreate"/>
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The protocol type of the event connection."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the protocol type that the event will use for sending the event to the destination.  A value of Redfish shall be used to indicate that the event type shall adhere to that defined in the Redfish specification."/>
         </Property>

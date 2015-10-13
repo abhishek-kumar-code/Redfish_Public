@@ -30,7 +30,7 @@
           <Annotation Term="Redfish.Pattern" String="^(?:[0-9]{1,3}\\.){3}[0-9]{1,3}$"/>
         </Property>
         <Property Name="AddressOrigin" Type="IPAddresses.1.0.0.IPv4AddressOrigin">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This indicates how the address was determined."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the IP address origin for this network interface."/>
         </Property>
@@ -49,17 +49,17 @@
           <Annotation Term="Redfish.IPv6Format"/>
         </Property>
         <Property Name="PrefixLength" Type="IPAddresses.1.0.0.PrefixLength">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the IPv6 Address Prefix Length."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the IPv6 address prefix length for this interface."/>
         </Property>
         <Property Name="AddressOrigin" Type="IPAddresses.1.0.0.IPv6AddressOrigin">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This indicates how the address was determined."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the IPv6 address origin for this interface."/>
         </Property>
         <Property Name="AddressState" Type="IPAddresses.1.0.0.AddressState">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The current state of this address as defined in RFC 4862."/>
           <Annotation Term="OData.LongDescription" String="Preferred and Deprecated states follow the definitions given RFC4862 Section 5.5.4. An address is in the Tentative state while undergoing Duplicate Address Detection (DAD) per RFC4862 Section 5.4.  The Failed state indicates a Static addresses which did not pass DAD.  A Static address in the Failed state is not in use on the network stack, and corrective action will be needed to remedy this condition."/>
         </Property>
@@ -133,7 +133,7 @@
           <Annotation Term="Redfish.IPv6Format"/>
         </Property>
         <Property Name="PrefixLength" Type="IPAddresses.1.0.0.PrefixLength">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The Prefix Length of this IPv6 address."/>
           <Annotation Term="OData.LongDescription" String="Provides the IPv6 network prefix length in bits for this address."/>
           <Annotation Term="Redfish.Required"/>

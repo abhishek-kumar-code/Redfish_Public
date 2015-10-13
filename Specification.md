@@ -1455,7 +1455,7 @@ Properties that must have a non-nullable value include the [nullable attribute](
         <Property Name="Property1" Type="Edm.String" Nullable="false">
           <Annotation Term="Core.Description" String="This is a property of TypeA."/>
           <Annotation Term="Core.LongDescription" String="This is the specification of Property1."/>
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="Redfish.Required"/>
           <Annotation Term="OData.Measures.Unit" String="Watts"/>
         </Property>
@@ -1463,7 +1463,7 @@ Properties that must have a non-nullable value include the [nullable attribute](
 
 All properties shall include [Description](#description) and [LongDescription](#long-description) annotations.
 
-Properties that are read-only are annotated with the [Permissions annotation](#read-only-properties) with a value of `ODataPermissions/Read`.
+Properties that are read-only are annotated with the [Permissions annotation](#read-only-properties) with a value of `ODataPermission/Read`.
 
 Properties that are required to be implemented by all services are annotated with the [required annotation](#required-properties).
 
@@ -1565,10 +1565,10 @@ Properties may include the Nullable attribute with a value of false to specify t
 
 ##### Read-only properties
 
-The Permissions annotation term can be applied to a property with the value of `OData.Permissions/Read` in order to specify that it is read-only.
+The Permissions annotation term can be applied to a property with the value of `OData.Permission/Read` in order to specify that it is read-only.
 
 ~~~xml
-	    <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+	    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
 ~~~
 
 The `Permissions` annotation term is defined in http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Core.V1.xml.
