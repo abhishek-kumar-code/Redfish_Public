@@ -429,7 +429,7 @@ In addition, the following URI without a trailing slash shall be either Redirect
 | ---------   | -----------                    |
 | /redfish/v1 | /redfish/v1/                   |
 
-Services that implement the redirect of /redfish/v1 to /redfish/v1/ may use URIs in payloads relative to /redfish/v1/.  Otherwise all relative URIs used by the service shall start with a double forward slash ("//") and include the authority (e.g. //mgmt.vendor.com/redfish/v1/Systems) or a single forward slash ("/") and include the absolute-path (e.g. /redfish/v1/Systems).
+All relative URIs used by the service shall start with a double forward slash ("//") and include the authority (e.g. //mgmt.vendor.com/redfish/v1/Systems) or a single forward slash ("/") and include the absolute-path (e.g. /redfish/v1/Systems).
 
 ### Requests
 
