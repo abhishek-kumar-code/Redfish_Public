@@ -301,6 +301,9 @@
         <Member Name="UefiTarget">
           <Annotation Term="OData.Description" String="Boot to the UEFI Device specified in the UefiTargetBootSourceOverride property"/>
         </Member>
+        <Member Name="SDCard">
+           <Annotation Term="OData.Description" String="Boot from a SD Card"/>
+        </Member>
       </EnumType>
 
       <EnumType Name="BootSourceOverrideEnabled">
