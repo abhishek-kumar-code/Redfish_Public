@@ -289,16 +289,16 @@ HTTP is ideally suited to a RESTful interface. This section describes how HTTP i
 
 A URI is used to identify a resource, including the base service and all Redfish resources.
 
-* A URI shall be a unique identifier to a resource.
-* A URI shall be treated by the client as opaque, and thus should not be attempted to be understood or deconstructed by the client
+* A _canonical URI_ shall be a unique identifier to a resource.
+* A URI shall be treated by the client as opaque, and thus should not be attempted to be understood or deconstructed by the client outside of applying standard reference resolution rules as defined in section 5, Reference Resolution, of [RFC3986](#rfc3986).
 
-To begin operations, a client must know the URI for a resource.
+To begin operations, a client must know a URI for a resource.
 
 * Performing a GET operation yields a representation of the resource containing properties and links to associated resources.
 
 The base resource URI is well known and is based on the protocol version.  Discovering the URIs to additional resources is done through observing the associated resource links returned in previous responses. This type of API that is consumed by navigating URIs returned by the service is known as a Hypermedia API.
 
-The URI is the primary unique identifier of resources.  Redfish considers three parts of the URI as described in [RFC3986](#RFC3986).
+Redfish considers three parts of the URI as described in [RFC3986](#RFC3986).
 
 The first part includes the scheme and authority portions of the URI. The second part includes the root service and version.  The third part is a unique resource identifier.
 
@@ -429,7 +429,7 @@ In addition, the following URI without a trailing slash shall be either Redirect
 | ---------   | -----------                    |
 | /redfish/v1 | /redfish/v1/                   |
 
-Services that implement the redirect of /redfish/v1 to /redfish/v1/ may use URIs in payloads relative to /redfish/v1/.  Otherwise all relative URIs used by the service shall include the full path after the net-location (hostname:port) starting with a forward slash / (e.g. /redfish/v1/).
+Services that implement the redirect of /redfish/v1 to /redfish/v1/ may use URIs in payloads relative to /redfish/v1/.  Otherwise all relative URIs used by the service shall start with a double forward slash ("//") and include the authority (e.g. //mgmt.vendor.com/redfish/v1/Systems) or a single forward slash ("/") and include the absolute-path (e.g. /redfish/v1/Systems).
 
 ### Requests
 
@@ -909,7 +909,7 @@ For example, the following context URL specifies that the result contains a sing
 
 Resources in a response shall include a unique identifier property named "@odata.id". The value of the identifier property shall be the [unique identifier](#uris) for the resource.
 
-Resource Identifiers shall be represented in JSON payloads as uri paths relative to the Redfish Schema portion of the uri. That is, they shall always start with "/redfish/".
+Resources identifiers shall be represented in JSON payloads as strings that conform to the rules for URI paths as defined in Section 3.3, Path of [RFC3986](#rfc3986). Resources within the same authority as the request URI shall be represented according to the rules of path-absolute defined by that specification. That is, they shall always start with a single forward slash ("/"). Resources within a different authority as the request URI shall start with a double-slash ("//") followed by the authority and path to the resource.
 
 The resource identifier is the canonical URL for the resource and can be used to retrieve or edit the resource, as appropriate.
 
