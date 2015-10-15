@@ -289,7 +289,7 @@ HTTP is ideally suited to a RESTful interface. This section describes how HTTP i
 
 A URI is used to identify a resource, including the base service and all Redfish resources.
 
-* Each unique instance of a resource shall be identified by a URI
+* Each unique instance of a resource shall be identified by a URI; thus a URI cannot reference multiple resources other than as a single collection resource.
 * A URI shall be treated by the client as opaque, and thus should not be attempted to be understood or deconstructed by the client outside of applying standard reference resolution rules as defined in section 5, Reference Resolution, of [RFC3986](#rfc3986).
 
 To begin operations, a client must know a URI for a resource.
