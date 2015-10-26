@@ -1,0 +1,38 @@
+{
+    "@Redfish.Copyright":"Copyright \u00a9 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reservd.",
+    "@odata.id":"/redfish/v1/Chassis/StorageEnclosure2",
+    "@odata.context":"/redfish/v1/$metadata#Chassis/Members/$entity",
+    "@odata.type":"#Chassis.1.0.0.Chassis",
+    "Id":"StorageEnclosure2",
+    "Name":"MD1400 0:1",
+    "SKU":"Enclosure",
+    "Manufacturer":"Dell, Inc.",
+    "AssetTag":"MD1400",
+    "Model":"MD1400",
+    "ChassisType":"StorageEnclosure",
+    "IndicatorLED":"Lit",
+    "Status":{
+        "State":"Enabled",
+        "Health":"OK"
+    },
+    "Thermal": {
+        "@odata.id":"/redfish/v1/Chassis/StorageEnclosure2/Thermal"
+    },
+    "Power": {
+        "@odata.id":"/redfish/v1/Chassis/StorageEnclosure2/Power"
+    },
+    "Drives": {
+        "@odata.id":"/redfish/v1/Chassis/StorageEnclosure2/Drives"
+    },
+    "Links": {
+        "ManagedBy": [
+            {"@odata.id":"/redfish/v1/Managers/7"},
+            {"@odata.id":"/redfish/v1/Managers/8"},
+        ],
+        "Storage": [
+            {"@odata.id":"/redfish/v1/Systems/3/Storage/HAPERCs"}
+        ],
+        "Oem": {}
+    },
+    "Oem": { }
+}
