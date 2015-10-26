@@ -1,0 +1,34 @@
+{
+    "@Redfish.Copyright": "Copyright  2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#Systems/Members/3/Storage/PERCIntegrated/Volumes/Members/$entity",
+    "@odata.id": "/redfish/v1/Systems/3/Storage/PERCIntegrated/Volumes/2",
+    "@odata.type": "#StorageController.1.0.0",
+    "Id": "2",
+    "Name": "Virtual Disk 2",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "VolumeType": "Mirrored",
+    "VolumeSizeInBytes": 104857600,
+    "Encrypted": true,
+    "EncrytionType": "NativeDriveEncryption",
+    "Links": {
+        "Drives": [
+            {"@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.6"},
+            {"@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.7"}
+        ]
+    },
+    "Actions": {
+        "#Volume.CheckConsitency": {
+            "Target": "/redfish/v1/Systems/Storage/PERCIntegrated/Volumes/2/Actions/Volume.CheckConsitency"
+        },
+        "#Volume.Initialize": {
+            "Target": "/redfish/v1/Systems/Storage/PERCIntegrated/Volumes/2/Actions/Volume.Initialize",
+            "InitializeType@Redfish.AllowableValues": [
+                "Fast",
+                "Slow"
+            ]
+        }
+    }
+}

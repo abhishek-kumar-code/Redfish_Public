@@ -1,0 +1,33 @@
+{
+    "@Redfish.Copyright":"Copyright \u00a9 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reservd.",
+    "@odata.id":"/redfish/v1/Chassis/StorageBackplane",
+    "@odata.context":"/redfish/v1/$metadata#Chassis/Members/$entity",
+    "@odata.type":"#Chassis.1.0.0.Chassis",
+    "Id":"StorageBackplane",
+    "Name":"DP 14G",
+    "SKU":"Backplane",
+    "Manufacturer":"Dell, Inc.",
+    "Model":"DP 14G",
+    "ChassisType":"StorageEnclosure",
+    "Status":{
+        "State":"Enabled",
+        "Health":"OK"
+    },
+    "Drives": {
+        "@odata.id":"/redfish/v1/Chassis/StorageBackplane/Drives"
+    },
+    "Links": {
+        "ManagedBy": [
+            {"@odata.id":"/redfish/v1/Managers/4"}
+        ],
+        "ContainedBy": {
+            "@odata.id": "/redfish/v1/Chassis/Rack2WithDAS"
+        },
+        "Storage": [
+            {"@odata.id":"/redfish/v1/Systems/3/Storage/PERCIntegrated"},
+            {"@odata.id":"/redfish/v1/Systems/3/Storage/SATAEmbedded"}
+        ]
+        "Oem": {}
+    },
+    "Oem": { }
+}

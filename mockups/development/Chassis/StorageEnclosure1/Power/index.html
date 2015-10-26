@@ -1,0 +1,32 @@
+{
+    "@Redfish.Copyright": "Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Power",
+    "@odata.context": "/redfish/v1/$metadata#Chassis/Members/StorageEnclosure1/Power/$entity",
+    "Id": "Power",
+    "Name": "Power",
+    "PowerControl": [],
+    "Voltages": [],
+    "PowerSupplies": [
+        {
+            "Name": "PSU 0",
+            "PartNumber": "0NFCG1A01",
+            "@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Power#/PowerSupplies/PSU.Slot.0:Enclosure.External.0-0:RAID.Slot.6",
+            "MemberId": "PSU.Slot.0:Enclosure.External.0-0:RAID.Slot.6",
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK"
+            }
+        },
+        {
+            "Name": "PSU 1",
+            "PartNumber": "0NFCG1A01",
+            "@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Power#/PowerSupplies/PSU.Slot.1:Enclosure.External.0-0:RAID.Slot.6",
+            "MemberId": "PSU.Slot.1:Enclosure.External.0-0:RAID.Slot.6",
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK"
+            }
+        }
+    ],
+    "Oem": []
+}

@@ -1,0 +1,56 @@
+{
+    "@Redfish.Copyright": "Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.", 
+    "@odata.context": "/redfish/v1/$metadata#Systems/Members/3/Storage/Members/$entity", 
+    "@odata.id": "/redfish/v1/Systems/3/Storage/PERCIntegrated", 
+    "@odata.type": "#Storage.0.0.1.Storage", 
+    "Id": "PERCIntegrated", 
+    "Name": "Storage Domain", 
+    "Description": "PERC H730", 
+    "Status": { 
+        "State": "Enabled", 
+        "Health": "OK", 
+        "HealthRollUp": "OK" 
+    },
+    "EncryptionType": "LKM",
+    "EncryptionKeySet": true,
+    "Controllers": [
+        {"@odata.id": "/redfish/v1/Systems/3/Storage/PERCIntegrated/Controllers/1"}
+    ],
+    "Volumes": [
+        {"@odata.id": "/redfish/v1/Systems/3/Storage/PERCIntegrated/Volumes/1"},
+        {"@odata.id": "/redfish/v1/Systems/3/Storage/PERCIntegrated/Volumes/2"}
+    ],
+    "Links": {
+        "Drives": [
+            {"@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.5"},
+            {"@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.6"},
+            {"@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.7"},
+            {"@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.8"}
+        ],
+        "Enclosures": [
+            {"@odata.id": "/redfish/v1/Chassis/StorageBackplane"}
+        ]
+    },
+    "Actions": {
+        "#Storage.CreateVolume": {
+            "Target": "/redfish/v1/Systems/3/Storage/PERCIntegrated/Actions/Storage.CreateVolume",
+            "VolumeType@Redfish.AllowableValues": [
+                "RawDevice",
+                "NonRedundant",
+                "Mirrored",
+                "StripedWithParity",
+                "StripedWithRedundantParity",
+                "SpannedMirrors",
+                "SpannedStripesWithParity",
+                "SpannedStripesWithRedundantParity"
+            ],
+            "VolumeSizeInBytes@Redfish.AllowableRange": [
+                104857600,
+                109951162777600
+            ]
+        },
+        "#Storage.SetEncryptionKey": {
+            "Target": "/redfish/v1/Systems/3/Storage/PERCIntegrated/Actions/Storage.SetEncryptionKey"
+        }
+    }
+}
