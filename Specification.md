@@ -1556,7 +1556,7 @@ where *NamespaceQualifiedTypeName* is the namespace qualified name of the primit
 
 ##### Additional Properties
 
-The AdditionalProperties annotation term is used to specify whether a type can contain additional properties outside of those defined. Types annotated with the AdditionalProperties annotation with a `Boolean` attribute with a value of `"False"`, must not contain additional properties.
+The AdditionalProperties annotation term is used to specify whether a type can contain additional properties outside of those defined. Types annotated with the AdditionalProperties annotation with a value of `"False"`, shall not contain additional properties.
 
 ~~~xml
 		<Annotation Term="OData.AdditionalProperties"/>
