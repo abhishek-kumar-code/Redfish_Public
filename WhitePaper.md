@@ -185,7 +185,7 @@ The URI for establishing as session is also allowed to be used for POST unsecure
 
 A session is created by an HTTP POST to the URI indicated by /redfish/v1#/Links/Sessions/@odata.id including the following POST body:
 
-```json
+```http
 POST /redfish/v1/SessionService/Sessions HTTP/1.1
 Host: <host-path>
 Content-Type: application/json; charset=utf-8
@@ -203,7 +203,7 @@ The return includes an X-Auth-Token header with a session token and Location hea
 
 The return JSON body includes a representation of the newly created session object:
 
-```json
+```http
 Location: /redfish/v1/SessionService/Sessions/1
 X-Auth-Token: <session-auth-token>
 

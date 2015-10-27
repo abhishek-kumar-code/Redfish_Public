@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "$(npm bin)/vows"
   },
   "repository": {
     "type": "git",
@@ -17,8 +17,11 @@
   },
   "homepage": "https://github.com/cehoffman/spmf",
   "dependencies": {
-    "coffee-script": "^1.8.0",
-    "gulp": "^3.8.10",
-    "gulp-jsonlint": "^1.0.2"
+    "glob": "^5.0.14",
+    "json8-pointer": "^0.4.0",
+    "jsonlint": "^1.6.2",
+    "libxmljs-mt": "^0.14.3",
+    "traverse": "^0.6.6",
+    "vows": "^0.8.1"
   }
 }
