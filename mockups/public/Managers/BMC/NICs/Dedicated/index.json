@@ -3,7 +3,7 @@
     "@odata.context": "/redfish/v1/$metadata#Managers/Members/BMC/NICs/Members/$entity",
     "@odata.id": "/redfish/v1/Managers/BMC/NICs/Dedicated",
     "@odata.type": "#EthernetInterface.1.0.0.EthernetInterface",
-    "Id": "1",
+    "Id": "Dedicated",
     "Name": "Manager Ethernet Interface",
     "Description": "Management Network Interface",
     "Status": {
