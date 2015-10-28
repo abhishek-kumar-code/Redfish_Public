@@ -48,12 +48,6 @@
       </EntityType>
 
       <Action Name="Reset" IsBound="true">
-        <Annotation Term="OData.Description" String="The reset action resets/reboots the manager."/>
-        <Annotation Term="OData.LongDescription" String="This defines the name of the custom action supported when used in conjunction with a POST operation to this resource. When issued, this operation will perform a reset of the manager."/>
-        <Parameter Name="Manager" Type="Manager.1.0.0.Actions"/>
-      </Action>
-
-      <Action Name="Reset" IsBound="true">
         <Parameter Name="Manager" Type="Manager.1.0.0.Actions"/>
         <Parameter Name="ResetType" Type="Resource.ResetType">
           <Annotation Term="OData.Description" String="This is the type of reset to be performed."/>
