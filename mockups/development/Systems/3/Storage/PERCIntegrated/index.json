@@ -4,7 +4,7 @@
     "@odata.id": "/redfish/v1/Systems/3/Storage/PERCIntegrated",
     "@odata.type": "#Storage.0.0.1.Storage",
     "Id": "PERCIntegrated",
-    "Name": "Storage Domain",
+    "Name": "Integrated RAID Storage System",
     "Description": "PERC H730",
     "Status": {
         "State": "Enabled",

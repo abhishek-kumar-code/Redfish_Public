@@ -4,7 +4,7 @@
     "@odata.id": "/redfish/v1/Systems/3/Storage/1",
     "@odata.type": "#Storage.0.0.1.Storage",
     "Id": "1",
-    "Name": "Storage Domain",
+    "Name": "Embedded SATA Storage System",
     "Description": "System SATA",
     "Status": {
         "State": "Enabled",

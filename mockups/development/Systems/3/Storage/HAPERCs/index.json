@@ -4,7 +4,7 @@
     "@odata.id": "/redfish/v1/Systems/3/Storage/HAPERCs",
     "@odata.type": "#Storage.0.0.1.Storage",
     "Id": "HAPERCs",
-    "Name": "HA Storage Domain",
+    "Name": "HA Storage System",
     "Description": "PERC H830 (HA Pair)",
     "Status": {
         "State": "Enabled",
