@@ -878,22 +878,13 @@ Resources are returned as JSON payloads, using the MIME type `application/json`.
 
 Responses that represent a single resource shall contain a context property named "@odata.context" describing the source of the payload. The value of the context property shall be the context URL that describes the resource according to [OData-Protocol](#OData-Protocol).
 
-The context URL for a resource that exists within a collection is of the form:
+The context URL for a resource is of the form:
 
- *MetadataUrl*#*Collection*[(*Selectlist*)]/$entity
-
-Where:
-* *MetadataUrl* = the metadata url of the service (/redfish/v1/$metadata)
-* *Collection* = the collection resource. For contained resources this includes the path from the root collection or singleton resource to the containment property.
-* *Selectlist* = comma-separated [list of properties](#select-list) included in the response if the response includes a subset of properties defined for the represented resources.
-
-The context URL for a resource that is a top-level singleton resource is of the form:
-
- *MetadataUrl*#*SingletonName*[(*Selectlist*)]
+ *MetadataUrl*#*ResourceType
 
 Where:
 * *MetadataUrl* = the metadata url of the service (/redfish/v1/$metadata)
-* *SingletonName* = the name of the top-level singleton resource
+* *ResourceType* = the fully qualified name of the unversioned resource type
 * *Selectlist* = comma-separated [list of properties](#select-list) included in the response if the response includes a subset of properties defined for the represented resources.
 
 ###### Select List
@@ -906,7 +897,7 @@ For example, the following context URL specifies that the result contains a sing
 
 ~~~json
 ...
-"@odata.context":"/redfish/v1/$metadata#Systems/Members/$entity",
+"@odata.context":"/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
 ...
 ~~~
 
@@ -1084,7 +1075,7 @@ A JSON object can be annotated with "@Message.ExtendedInfo" in order to specify 
 
 ~~~json
 {
-    "@odata.context": "/redfish/v1/$metadata#Managers/Members/1/SerialInterfaces/Members/$entity",
+    "@odata.context": "/redfish/v1/$metadata#SerialInterface.SerialInterface",
     "@odata.id": "/redfish/v1/Managers/1/SerialInterfaces/1",
     "@odata.type": "#SerialInterface.1.0.0.SerialInterface",
     "Name": "Managed Serial Interface 1",
@@ -1122,7 +1113,7 @@ An individual property within a JSON object can be annotated with extended infor
 
 ~~~json
 {
-    "@odata.context": "/redfish/v1/$metadata#Managers/Members/1/SerialInterfaces/Members/$entity",
+    "@odata.context": "/redfish/v1/$metadata#MSerialInterface.SerialInterface",
     "@odata.id": "/redfish/v1/Managers/1/SerialInterfaces/1",
     "@odata.type": "#SerialInterface.1.0.0.SerialInterface",
     "Name": "Managed Serial Interface 1",
@@ -1177,11 +1168,11 @@ Responses that represent a collection of resources shall contain a context prope
 
 The context URL for a resource collection is of the form:
 
- *MetadataUrl*.#*Collection*[(*SelectList*)]
+ *MetadataUrl*.#Collection(*ResourceType*)[(*SelectList*)]
 
 Where:
 * *MetadataUrl* = the metadata url of the service (/redfish/v1/$metadata)
-* *Collection* = the collection resource. For contained resources this includes the path from the root collection or singleton resource to the containment property.
+* *ResourceType* = the fully qualified name of the unversioned type of resources within the collection.
 * *SelectList* = comma-separated [list of properties](#select-list) included in the response if the response includes a subset of properties defined for the represented resources.
 
 ##### Resource Count Property
@@ -2213,7 +2204,7 @@ Location: /redfish/v1/SessionService/Sessions/1
 X-Auth-Token: <session-auth-token>
 
 {
-    "@odata.context": "/redfish/v1/$metadata#SessionService/Sessions/$entity",
+    "@odata.context": "/redfish/v1/$metadata#Session.Session",
     "@odata.id": "/redfish/v1/SessionService/Sessions/1",
     "@odata.type": "#Session.1.0.0.Session",
     "Id": "1",
