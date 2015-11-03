@@ -1,9 +1,9 @@
 ---
 DocTitle: Redfish Schema Supplement
-DocNumber: XXXX
-DocClass: Informative
-DocVersion: '1.0.0'
-modified: '2015-08-04'
+DocNumber: 0268
+DocClass: DMTF Standard
+DocVersion: '0.9.0'
+modified: '2015-11-03'
 status: published
 released: false
 copyright: '2015'
