@@ -71,6 +71,7 @@ The following referenced documents are indispensable for the application of this
 * <a id="OData-Core">OData Version 4.0: Core Vocabulary</a>. 24 February 2014. [http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Core.V1.xml]("http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Core.V1.xml")
 * <a id="OData-JSON">OData Version 4.0 JSON Format</a>. 24 February 2014. [http://docs.oasis-open.org/odata/odata-json-format/v4.0/os/odata-json-format-v4.0-os.html]("http://docs.oasis-open.org/odata/odata-json-format/v4.0/os/odata-json-format-v4.0-os.html")
 * <a id="OData-UnitsOfMeasure">OData Version 4.0: Units of Measure Vocabulary</a>. 24 February 2014. [http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml]("http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml")
+* <a id="SSDP">Simple Service Discovery Protocol/1.0 </a>. 28 October 1999 ("https://tools.ietf.org/html/draft-cai-ssdp-v1-03")
 
 ## Terms and Definitions
 In this document, some terms have a specific meaning beyond the normal English meaning. Those terms are defined in this clause.
@@ -623,6 +624,7 @@ For instance, if a Redfish Schema document `http://redfish.dmtf.org/schemas/v1/C
 And a computer system resource contains an [Actions](#actions-property) property such as this:
 
 ~~~json
+...
 "Actions": {
     "#ComputerSystem.Reset": {
         "target":"/redfish/v1/Systems/1/Actions/ComputerSystem.Reset",
@@ -638,11 +640,12 @@ And a computer system resource contains an [Actions](#actions-property) property
         ]
     }
 }
+...
 ~~~
 
 Then the following would represent a possible request for the Action:
 
-~~~json
+~~~http
 POST /redfish/v1/Systems/1/Actions/ComputerSystem.Reset HTTP/1.1
 Content-Type: application/json
 Content-Length: <computed length>
@@ -902,7 +905,9 @@ Expanded [reference properties](#reference-properties) shall be included in the 
 For example, the following context URL specifies that the result contains a single resource from the Members collection of the Systems resource:
 
 ~~~json
+...
 "@odata.context":"/redfish/v1/$metadata#Systems/Members/$entity",
+...
 ~~~
 
 ##### Resource Identifier Property
@@ -993,6 +998,7 @@ The property representing the available action may be annotated with the [Allowa
 For example, the following property represents the Reset action, defined in the ComputerSystem namespace:
 
 ~~~json
+...
 "#ComputerSystem.Reset": {
    "target":"/redfish/v1/Systems/1/Actions/ComputerSystem.Reset",
    "ResetType@Redfish.AllowableValues": [
@@ -1006,6 +1012,7 @@ For example, the following property represents the Reset action, defined in the 
        "PushPowerButton"
        ]
    }
+...
 ~~~
 
 Given this, the client could invoke a POST request to /redfish/v1/Systems/1/Actions/ComputerSystem.Reset with the following body:
@@ -1036,10 +1043,11 @@ A reference to a single resource is returned as a JSON object containing a singl
 
 ~~~json
 {
-"Links" : {
-	"ManagedBy": {
-		"@odata.id":"/redfish/v1/Chassis/Encl1"
-	}
+  "Links" : {
+    "ManagedBy": {
+      "@odata.id":"/redfish/v1/Chassis/Encl1"
+    }
+  }
 }
 ~~~
 
@@ -1049,15 +1057,16 @@ A reference to a collection of zero or more related resources is returned as an 
 
 ~~~json
 {
-"Links" : {
-	"Contains" : [
-		{
-			"@odata.id":"/redfish/v1/Chassis/1"
-		},
-		{
-			"@odata.id":"/redfish/v1/Chassis/Encl1"
-		}
-	]
+  "Links" : {
+    "Contains" : [
+    {
+      "@odata.id":"/redfish/v1/Chassis/1"
+    },
+    {
+      "@odata.id":"/redfish/v1/Chassis/Encl1"
+    }
+    ]
+  }
 }
 ~~~
 
@@ -1130,7 +1139,7 @@ An individual property within a JSON object can be annotated with extended infor
     "StopBits": 1,
     "FlowControl": "None",
     "ConnectorType": "RJ45",
-    "PinOut": "Cyclades"
+    "PinOut": "Cyclades",
     "PinOut@Message.ExtendedInfo" : [
 		{
            "MessageId": "Base.1.0.PropertyValueNotInList",
@@ -1547,7 +1556,7 @@ where *NamespaceQualifiedTypeName* is the namespace qualified name of the primit
 
 ##### Additional Properties
 
-The AdditionalProperties annotation term is used to specify whether a type can contain additional properties outside of those defined. Types annotated with the AdditionalProperties annotation with a `Boolean` attribute with a value of `"False"`, must not contain additional properties.
+The AdditionalProperties annotation term is used to specify whether a type can contain additional properties outside of those defined. Types annotated with the AdditionalProperties annotation with a value of `"False"`, shall not contain additional properties.
 
 ~~~xml
 		<Annotation Term="OData.AdditionalProperties"/>
@@ -1575,7 +1584,7 @@ The `Permissions` annotation term is defined in http://docs.oasis-open.org/odata
 
 ##### Required Properties
 
-The Required annotation term is used to specify that a property is required to be supported by services. Properties not annotated with the Required annotation, or annotated with a `Boolean` attribute with a value of `"false"`, are optional.
+The Required annotation or Nullable attribute is used to specify that a property is required to be supported by services. Required properties shall be annotated with the Required annotation, or annotated with a Nullable attribute with a value of `"false"`. All other properties are optional.
 
 If an implementation supports a property, it shall always provide a value for that property.  If a value is unknown, then null is an acceptable values in most cases. Properties not returned from a GET operation shall indicate that the property is not currently supported by the implementation.
 
@@ -1805,6 +1814,7 @@ OEM-specific actions can be defined by defining actions bound to the OEM propert
 Such bound actions appear in the JSON payload as properties of the Oem type, nested under an [Actions property](#actions-property).
 
 ```json
+...
 "Actions": {
 	"OEM": {
 		"Contoso.v.v.v#Contoso.Ping": {
@@ -1812,7 +1822,7 @@ Such bound actions appear in the JSON payload as properties of the Oem type, nes
 		    }
 		}
 	}
-}
+...
 ```
 ##### Custom Annotations
 
@@ -2031,7 +2041,7 @@ For compatibility with general purpose SSDP client software, primarily UPnP, TCP
 
 #### USN Format
 
-The UUID supplied in the USN field shall equal the UUID returned for the Manager implementing the Redfish service.  If there are multiple / redundant managers, the UUID shall remain static regardless of redundancy failover.  The Unique ID shall be in the canonical UUID format, followed by '::dtmf-org'
+The UUID supplied in the USN field of the service shall equal the UUID property of the service root. If there are multiple / redundant managers, the UUID of the service shall remain static regardless of redundancy failover.  The Unique ID shall be in the canonical UUID format, followed by '::dtmf-org'
 
 #### M-SEARCH Response
 
@@ -2176,7 +2186,7 @@ For functionality requiring multiple Redfish operations, or for security reasons
 
 A Redfish session is created by an HTTP POST to the SessionService' Sessions collection resource, including the following POST body:
 
-```json
+```http
 POST /redfish/v1/SessionService/Sessions HTTP/1.1
 Host: <host-path>
 Content-Type: application/json; charset=utf-8
@@ -2198,7 +2208,7 @@ The response to the POST request to create a session includes:
 *  a "Location header that contains a link to the newly created session resource.
 *  The JSON response body that contains a full representation of the newly created session object:
 
-```json
+```http
 Location: /redfish/v1/SessionService/Sessions/1
 X-Auth-Token: <session-auth-token>
 
@@ -2359,5 +2369,6 @@ The file where the events are written, one or more messages per event should at 
 | Version | Date     | Description     |
 | ---     | ---      | ---             |
 | 1.0.0   | 2015-8-4 | Initial release |
-| 1.0.1   | 2015-9-17| Errata release.  Clarified normative use of LongDescription in schema files.  Clarified usage of the 'rel-describedby' link header.  Corrected text in example of 'Select List' in OData Context property.  Clarified Accept-Encoding Request header handling.  Deleted duplicative and conflicting statement on returning extended error resources.  Clarified relative URI resolution rules. Various grammatical corrections.  |
+| 1.0.1   | 2015-9-17| Errata release.  Clarified normative use of LongDescription in schema files.  Clarified usage of the 'rel-describedby' link header.  Corrected text in example of 'Select List' in OData Context property.  Clarified Accept-Encoding Request header handling.  Deleted duplicative and conflicting statement on returning extended error resources.  Clarified relative URI resolution rules. Various grammatical corrections. Clarified USN format.  |
 
+ 

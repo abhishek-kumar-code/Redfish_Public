@@ -1,0 +1,13 @@
+{
+    "@Bluefish.Copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#Managers/Members/5/SASInterfaces/$entity",
+    "@odata.id": "/redfish/v1/Managers/5/SASInterfaces",
+    "@odata.type": "#SASInterfaceCollection.SASInterfaceCollection",
+    "Name": "SAS Interface Collection",
+    "Description": "Collection of SASInterfaces for this Manager",
+    "Members@odata.count": 1,
+    "Members": [
+        {"@odata.id": "/redfish/v1/Managers/5/SASInterfaces/1"}
+    ],
+    "Oem": {}
+}

@@ -1,0 +1,28 @@
+{
+    "@Redfish.Copyright":"Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#Systems/Members/3/LogServices/Members/Log1/Entries/$entity",
+    "@odata.id": "/redfish/v1/Systems/3/LogServices/Log1/Entries/2",
+    "@odata.type": "#LogEntry.1.0.0.LogEntry",
+    "Id": "2",
+    "Name": "Log Entry 2",
+    "EntryType": "SEL",
+    "OEMRecordFormat": "CompanyX",
+    "RecordId": 2,
+    "Severity": "Critical",
+    "Created": "2012-03-07T14:45",
+    "EntryCode": "Transition to Degraded",
+    "SensorType": "Storage",
+    "SensorNumber": 2,
+    "Message": "Volume 2 has become degraded",
+    "MessageId": "Event.1.0.VolumeDegraded",
+    "MessageArgs": [
+        "ArrayOfMessageArgs"
+    ],
+    "Links": {
+        "OriginOfCondition": {
+            "@odata.id": "/redfish/v1/Systems/3/Storage/HAPERCs/Volume/2"
+        },
+        "Oem": {}
+    },
+    "Oem": {}
+}

@@ -1,0 +1,17 @@
+{
+    "@Redfish.Copyright":"Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#Managers/Members/1/VirtualMedia/Members/$entity",
+    "@odata.id": "/redfish/v1/Managers/1/VM1/Floppy1",
+    "@odata.type": "#VirtualMedia.1.0.0.VirtualMedia",
+    "Id": "Floppy1",
+    "Name": "Virtual Removable Media",
+    "MediaTypes": [
+        "Floppy",
+        "USBStick"
+    ],
+    "Image": "irc://<only add this if http path someserver/mymedia-puttable.img>",
+    "ImageName": "mymedia-read-only.img",
+    "ConnectedVia": "URI",
+    "Inserted": true,
+    "WriteProtected": false
+}

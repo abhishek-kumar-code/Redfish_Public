@@ -1,0 +1,79 @@
+{
+    "@Redfish.Copyright":"Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#Managers/Members/1/EthernetInterfaces/Members/$entity",
+    "@odata.id": "/redfish/v1/Managers/1/EthernetInterfaces/1",
+    "@odata.type": "#EthernetInterface.1.0.0.EthernetInterface",
+    "Id": "1",
+    "Name": "Manager Ethernet Interface",
+    "Description": "Management Network Interface",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "InterfaceEnabled": true,
+    "PermanentMACAddress": "AA:BB:CC:DD:EE:FF",
+    "MACAddress": "AA:BB:CC:DD:EE:FF",
+    "SpeedMbps": 100,
+    "AutoNeg": true,
+    "FullDuplex": true,
+    "MTUSize": 1500,
+    "HostName": "MyHostName",
+    "FQDN": "MyHostName.MyDomainName.com",
+    "MaxIPv6StaticAddresses": 1,
+    "VLAN": {
+        "VLANEnable": true,
+        "VLANId": 101
+    },
+    "IPv4Addresses": [
+        {
+            "Address": "192.168.0.10",
+            "SubnetMask": "255.255.252.0",
+            "AddressOrigin": "DHCP",
+            "Gateway": "192.168.0.1",
+            "Oem": {}
+        }
+    ],
+    "IPv6AddressPolicyTable": [
+        {
+            "Prefix": "::1/128",
+            "Precedence": 50,
+            "Label": 0
+        }
+    ],
+    "IPv6StaticAddresses": [
+        {
+            "Address": "fe80::1ec1:deff:fe6f:1e24",
+            "PrefixLength": 16
+        }
+    ],
+    "IPv6DefaultGateway": "fe80::1ec1:deff:fe6f:1e24",
+    "IPv6Addresses": [
+        {
+            "Address": "fe80::1ec1:deff:fe6f:1e24",
+            "PrefixLength": 64,
+            "AddressOrigin": "SLAAC",
+            "AddressState": "Preferred",
+            "Oem": {}
+        }
+    ],
+    "NameServers": [
+        "TheNameServer"
+    ],
+    "@Redfish.Settings": {
+        "@odata.type": "#Settings.1.0.0.Settings",
+        "SettingsObject": {
+            "@odata.id": "/redfish/v1/Managers/1/EthernetInterfaces/1/SD"
+        },
+        "Time": "2012-03-07T14:44.30-05:00",
+        "ETag": "someetag",
+        "Messages": [
+            {
+                "MessageId": "Base.1.0.SettingsFailed",
+                "RelatedProperties": [
+                    "#/IPv6Addresses/PrefixLength"
+                ]
+            }
+        ]
+    },
+    "Oem": {}
+}
