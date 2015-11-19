@@ -886,7 +886,7 @@ The context URL for a resource is of one of the following two forms:
 Where:
 * *MetadataUrl* = the metadata url of the service (/redfish/v1/$metadata)
 * *ResourceType* = the fully qualified name of the unversioned resource type
-* *ResourcePath* = the path from the service root to the resource
+* *ResourcePath* = the path from the service root to the singleton or collection containing the resource
 * *Selectlist* = comma-separated [list of properties](#select-list) included in the response if the response includes a subset of properties defined for the represented resources.
 
 ###### Select List
