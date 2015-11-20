@@ -25,7 +25,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Settings.1.0.0">
 
       <ComplexType Name="Settings" BaseType="Settings.Settings">
-        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="Time" Type="Edm.DateTimeOffset">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Indicates the time the settings were applied."/>

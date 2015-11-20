@@ -34,7 +34,7 @@
       <TypeDefinition Name="UUID" UnderlyingType="Edm.Guid"/>
 
       <!--Base Complex type for Links properties-->
-      <ComplexType Name="Links" Abstract="True">
+      <ComplexType Name="Links" Abstract="true">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="Oem" Type="Resource.Oem">
           <Annotation Term="OData.Description" String="Oem extension object."/>
@@ -44,7 +44,7 @@
 
       <!--Complex type that serves as a "property bag" for OEM properties-->
       <ComplexType Name="Oem">
-        <Annotation Term="OData.AdditionalProperties" Bool="True"/>
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
         <Annotation Term="Redfish.DynamicPropertyPatterns">
           <Collection>
             <Record>
@@ -59,7 +59,7 @@
 
       <!--Base type for OEM property-->
       <ComplexType Name="OemObject">
-        <Annotation Term="OData.AdditionalProperties" Bool="True"/>
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
         <Annotation Term="OData.Description" String="Base type for an Oem object."/>
         <Annotation Term="OData.LongDescription" String="This object represents the base type for an Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
       </ComplexType>
@@ -67,7 +67,7 @@
       <!--Unversioned Base Types-->
 
       <!--Base type for Resources and ReferenceableMembers-->
-      <EntityType Name="Item" Abstract="True">
+      <EntityType Name="Item" Abstract="true">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="This is the base type for resources and referenceable members."/>
         <Property Name="Oem" Type="Resource.Oem">
@@ -76,18 +76,18 @@
         </Property>
       </EntityType>
 
-      <EntityType Name="ReferenceableMember" BaseType="Resource.Item" Abstract="True"/>
+      <EntityType Name="ReferenceableMember" BaseType="Resource.Item" Abstract="true"/>
 
-      <EntityType Name="Resource" BaseType="Resource.Item" Abstract="True"/>
+      <EntityType Name="Resource" BaseType="Resource.Item" Abstract="true"/>
 
-      <EntityType Name="ResourceCollection" Abstract="True"/>
+      <EntityType Name="ResourceCollection" Abstract="true"/>
 
       <!--Shared types-->
       
       <!--This object represents the standard status structure for resources.-->
       <ComplexType Name="Status">
         <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="State" Type="Resource.State">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This indicates the known state of the resource, such as if it is enabled."/>
@@ -200,8 +200,8 @@
       </EntityType>
 
       <!--Base entity type for all resource collection objects-->
-      <EntityType Name="ResourceCollection" BaseType="Resource.ResourceCollection" Abstract="True">
-        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
+      <EntityType Name="ResourceCollection" BaseType="Resource.ResourceCollection" Abstract="true">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Key>
           <PropertyRef Name="Name"/>
         </Key>

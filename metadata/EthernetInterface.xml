@@ -136,7 +136,7 @@
       </TypeDefinition>
 
       <ComplexType Name="IPv6AddressPolicyEntry">
-        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="Prefix" Type="Edm.String">
           <Annotation Term="OData.Description" String="The IPv6 Address Prefix (as defined in RFC 3484 section 2.1)"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the IPv6 Address Prefix for this table entry as defined in RFC 6724 section 2.1."/>

@@ -62,7 +62,7 @@
       </EnumType>
       
       <ComplexType Name="HttpHeaderProperty">
-        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="Redfish.DynamicPropertyPatterns">
           <Collection>
             <Record>
