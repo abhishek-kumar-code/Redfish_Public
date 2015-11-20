@@ -1115,7 +1115,7 @@ An individual property within a JSON object can be annotated with extended infor
 
 ~~~json
 {
-    "@odata.context": "/redfish/v1/$metadata#MSerialInterface.SerialInterface",
+    "@odata.context": "/redfish/v1/$metadata#SerialInterface.SerialInterface",
     "@odata.id": "/redfish/v1/Managers/1/SerialInterfaces/1",
     "@odata.type": "#SerialInterface.1.0.0.SerialInterface",
     "Name": "Managed Serial Interface 1",

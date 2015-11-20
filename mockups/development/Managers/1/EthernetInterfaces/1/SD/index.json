@@ -1,6 +1,6 @@
 {
     "@Redfish.Copyright":"Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#EthernetInterface.1.0.0.EthernetInterface",
+    "@odata.context": "/redfish/v1/$metadata#EthernetInterface.EthernetInterface",
     "@odata.id": "/redfish/v1/Managers/1/EthernetInterfaces/1/SD",
     "@odata.type": "#EthernetInterface.1.0.0.EthernetInterface",
     "Id": "SD",
