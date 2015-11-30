@@ -54,6 +54,13 @@
           <Annotation Term="OData.Description" String="The product model number of this device"/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the model information as provided by the manufacturer of this storage device."/>
         </Property>
+        <Property Name="CapacityBytes" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The size of the storage device."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the size (in bytes) of the Storage Device."/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+          <Annotation Term="OData.Measures.Unit" String="Bytes"/>
+        </Property>
       </ComplexType>
 
     </Schema>
