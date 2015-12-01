@@ -53,8 +53,8 @@
           <Annotation Term="OData.Description" String="This is the type of reset to be performed."/>
           <Annotation Term="OData.LongDescription" String="This defines the property name for the action."/>
         </Parameter>
-        <Annotation Term="OData.Description" String="This action is used to reset the system."/>
-        <Annotation Term="OData.LongDescription" String="This defines the name of the custom action supported on this resource."/>
+        <Annotation Term="OData.Description" String="The reset action resets/reboots the manager."/>    
+        <Annotation Term="OData.LongDescription" String="This defines the name of the custom action supported when used in conjunction with a POST operation to this resource. When issued, this operation will perform a reset of the manager."/>  
       </Action>
 
       <Action Name="ForceFailover" IsBound="true">
