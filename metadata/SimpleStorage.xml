@@ -60,7 +60,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SimpleStorage.1.1.0">
 
-      <ComplexType Name="Device" BaseType=SimpleStorage.1.0.0.Device>
+      <ComplexType Name="Device" BaseType="SimpleStorage.1.0.0.Device">
         <Property Name="CapacityBytes" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The size of the storage device."/>
