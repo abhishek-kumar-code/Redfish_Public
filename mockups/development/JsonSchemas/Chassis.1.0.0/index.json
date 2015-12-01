@@ -1,5 +1,5 @@
 {
-    "@odata.context": "/redfish/v1/$metadata#JsonSchemas/Members/$entity",
+    "@odata.context": "/redfish/v1/$metadata#JsonSchemaFile.JsonSchemaFile",
     "@odata.id": "/redfish/v1/JsonSchemas/Chassis.1.0.0",
     "@odata.type": "#JsonSchemaFile.1.0.0.JsonSchemaFile",
     "Id": "Chassis.1.0.0",
