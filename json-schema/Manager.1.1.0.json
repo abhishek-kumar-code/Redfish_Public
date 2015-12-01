@@ -283,7 +283,16 @@
                             "readonly": true,
                             "description": "This property is an array of references to the chassis that this manager has control over.",
                             "longDescription": "This property shall contain an array of references to Chassis resources of which this Manager instance has control."
-                        }
+                        },
+                        "ManagerLocation@odata.navigationLink": {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
+                        },
+                        "ManagerLocation": {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Chassis.json#/definitions/Chassis",
+                            "readonly": true,
+                            "description": "This property is a reference to the chasis that this manager is located in.",
+                            "longDescription": "This property shall contain a reference to the chasis that this manager is located in."
+                        }						
                     },
                     "readonly": true,
                     "description": "This object contains the links to other resources that are related to this resource."

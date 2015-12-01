@@ -234,6 +234,15 @@
                             "description": "An array of references to the managers contained in this chassis.",
                             "longDescription": "The value of this property shall be a reference to the resource that manages this chassis and shall reference a resource of type Manager."
                         },
+                        "ManagersIn": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "http://redfish.dmtf.org/schemas/v1/Manager.json#/definitions/Manager"
+                            },
+                            "readonly": true,
+                            "description": "An array of references to the managers located in this chassis.",
+                            "longDescription": "The value of this property shall be a reference to the managers that are in this chassis and shall reference a resource of type Manager."
+                        },						
                         "ContainedBy": {
                             "$ref": "http://redfish.dmtf.org/schemas/v1/Chassis.json#/definitions/Chassis",
                             "readonly": true,

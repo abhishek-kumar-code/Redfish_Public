@@ -67,6 +67,9 @@
                 "@odata.id": "/redfish/v1/Chassis/1"
             }
         ],
+        "ManagerLocation": {
+            "@odata.id": "/redfish/v1/Chassis/1"
+        },		
         "Oem": {}
     },
     "Actions": {

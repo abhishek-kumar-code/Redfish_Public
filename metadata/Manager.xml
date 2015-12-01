@@ -202,6 +202,12 @@
           <Annotation Term="OData.LongDescription" String="This property shall contain an array of references to Chassis resources of which this Manager instance has control."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
+        <NavigationProperty Name="ManagerLocation" Type="Chassis.1.0.0.Chassis">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="This property is a reference to the chasis that this manager is located in."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain a reference to the chasis that this manager is located in."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>     		
       </ComplexType>
 
       <!-- This type defines the type of manager that given resource represents. -->
