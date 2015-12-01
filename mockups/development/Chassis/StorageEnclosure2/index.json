@@ -27,7 +27,7 @@
     "Links": {
         "ManagedBy": [
             {"@odata.id":"/redfish/v1/Managers/7"},
-            {"@odata.id":"/redfish/v1/Managers/8"},
+            {"@odata.id":"/redfish/v1/Managers/8"}
         ],
         "Storage": [
             {"@odata.id":"/redfish/v1/Systems/3/Storage/HAPERCs"}
