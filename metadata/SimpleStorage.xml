@@ -17,7 +17,7 @@
       
     </Schema>
     
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SimpleStorage.1.0.0">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SimpleStorage.1.1.0">
 
       <EntityType Name="SimpleStorage" BaseType="SimpleStorage.SimpleStorage">
         <Annotation Term="OData.Description" String="This is the schema definition for the Simple Storage resource.  It represents the properties of a storage controller and its directly-attached devices."/>
