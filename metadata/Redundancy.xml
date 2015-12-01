@@ -41,14 +41,14 @@
         </Property>
         <Property Name="MaxNumSupported" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="This is the maximum number of members allowable for this particular managers redundancy, including this manager."/>
+          <Annotation Term="OData.Description" String="This is the maximum number of members allowable for this particular redundancy group."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the maximum number of members allowed in the redundancy group."/>
           <Annotation Term="Redfish.Required"/>
         </Property>
         <Property Name="MinNumNeeded" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="This is the minumum number of managers needed for this manager to be redundant."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the maximum number of members allowed in the redundancy group for the current redundancy mode to still be fault tolerant."/>
+          <Annotation Term="OData.Description" String="This is the minumum number of members needed for this group to be redundant."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the minimum number of members allowed in the redundancy group for the current redundancy mode to still be fault tolerant."/>
           <Annotation Term="Redfish.Required"/>
         </Property>
         <Property Name="Status" Nullable="false" Type="Resource.Status">
