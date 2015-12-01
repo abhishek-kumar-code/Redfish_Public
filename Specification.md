@@ -71,6 +71,7 @@ The following referenced documents are indispensable for the application of this
 * <a id="OData-Core">OData Version 4.0: Core Vocabulary</a>. 24 February 2014. [http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Core.V1.xml]("http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Core.V1.xml")
 * <a id="OData-JSON">OData Version 4.0 JSON Format</a>. 24 February 2014. [http://docs.oasis-open.org/odata/odata-json-format/v4.0/os/odata-json-format-v4.0-os.html]("http://docs.oasis-open.org/odata/odata-json-format/v4.0/os/odata-json-format-v4.0-os.html")
 * <a id="OData-UnitsOfMeasure">OData Version 4.0: Units of Measure Vocabulary</a>. 24 February 2014. [http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml]("http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml")
+* <a id="SSDP">Simple Service Discovery Protocol/1.0 </a>. 28 October 1999 ("https://tools.ietf.org/html/draft-cai-ssdp-v1-03")
 
 ## Terms and Definitions
 In this document, some terms have a specific meaning beyond the normal English meaning. Those terms are defined in this clause.
@@ -289,16 +290,16 @@ HTTP is ideally suited to a RESTful interface. This section describes how HTTP i
 
 A URI is used to identify a resource, including the base service and all Redfish resources.
 
-* A URI shall be a unique identifier to a resource.
-* A URI shall be treated by the client as opaque, and thus should not be attempted to be understood or deconstructed by the client
+* Each unique instance of a resource shall be identified by a URI; thus a URI cannot reference multiple resources though it may reference a single collection resource.
+* A URI shall be treated by the client as opaque, and thus should not be attempted to be understood or deconstructed by the client outside of applying standard reference resolution rules as defined in section 5, Reference Resolution, of [RFC3986](#rfc3986).
 
-To begin operations, a client must know the URI for a resource.
+To begin operations, a client must know a URI for a resource.
 
 * Performing a GET operation yields a representation of the resource containing properties and links to associated resources.
 
 The base resource URI is well known and is based on the protocol version.  Discovering the URIs to additional resources is done through observing the associated resource links returned in previous responses. This type of API that is consumed by navigating URIs returned by the service is known as a Hypermedia API.
 
-The URI is the primary unique identifier of resources.  Redfish considers three parts of the URI as described in [RFC3986](#RFC3986).
+Redfish considers three parts of the URI as described in [RFC3986](#RFC3986).
 
 The first part includes the scheme and authority portions of the URI. The second part includes the root service and version.  The third part is a unique resource identifier.
 
@@ -429,7 +430,7 @@ In addition, the following URI without a trailing slash shall be either Redirect
 | ---------   | -----------                    |
 | /redfish/v1 | /redfish/v1/                   |
 
-Services that implement the redirect of /redfish/v1 to /redfish/v1/ may use URIs in payloads relative to /redfish/v1/.  Otherwise all relative URIs used by the service shall include the full path after the net-location (hostname:port) starting with a forward slash / (e.g. /redfish/v1/).
+All relative URIs used by the service shall start with a double forward slash ("//") and include the authority (e.g. //mgmt.vendor.com/redfish/v1/Systems) or a single forward slash ("/") and include the absolute-path (e.g. /redfish/v1/Systems).
 
 ### Requests
 
@@ -623,6 +624,7 @@ For instance, if a Redfish Schema document `http://redfish.dmtf.org/schemas/v1/C
 And a computer system resource contains an [Actions](#actions-property) property such as this:
 
 ~~~json
+...
 "Actions": {
     "#ComputerSystem.Reset": {
         "target":"/redfish/v1/Systems/1/Actions/ComputerSystem.Reset",
@@ -638,11 +640,12 @@ And a computer system resource contains an [Actions](#actions-property) property
         ]
     }
 }
+...
 ~~~
 
 Then the following would represent a possible request for the Action:
 
-~~~json
+~~~http
 POST /redfish/v1/Systems/1/Actions/ComputerSystem.Reset HTTP/1.1
 Content-Type: application/json
 Content-Length: <computed length>
@@ -902,14 +905,16 @@ Expanded [reference properties](#reference-properties) shall be included in the 
 For example, the following context URL specifies that the result contains a single resource from the Members collection of the Systems resource:
 
 ~~~json
+...
 "@odata.context":"/redfish/v1/$metadata#Systems/Members/$entity",
+...
 ~~~
 
 ##### Resource Identifier Property
 
 Resources in a response shall include a unique identifier property named "@odata.id". The value of the identifier property shall be the [unique identifier](#uris) for the resource.
 
-Resource Identifiers shall be represented in JSON payloads as uri paths relative to the Redfish Schema portion of the uri. That is, they shall always start with "/redfish/".
+Resources identifiers shall be represented in JSON payloads as strings that conform to the rules for URI paths as defined in Section 3.3, Path of [RFC3986](#rfc3986). Resources within the same authority as the request URI shall be represented according to the rules of path-absolute defined by that specification. That is, they shall always start with a single forward slash ("/"). Resources within a different authority as the request URI shall start with a double-slash ("//") followed by the authority and path to the resource.
 
 The resource identifier is the canonical URL for the resource and can be used to retrieve or edit the resource, as appropriate.
 
@@ -993,6 +998,7 @@ The property representing the available action may be annotated with the [Allowa
 For example, the following property represents the Reset action, defined in the ComputerSystem namespace:
 
 ~~~json
+...
 "#ComputerSystem.Reset": {
    "target":"/redfish/v1/Systems/1/Actions/ComputerSystem.Reset",
    "ResetType@Redfish.AllowableValues": [
@@ -1006,6 +1012,7 @@ For example, the following property represents the Reset action, defined in the 
        "PushPowerButton"
        ]
    }
+...
 ~~~
 
 Given this, the client could invoke a POST request to /redfish/v1/Systems/1/Actions/ComputerSystem.Reset with the following body:
@@ -1036,10 +1043,11 @@ A reference to a single resource is returned as a JSON object containing a singl
 
 ~~~json
 {
-"Links" : {
-	"ManagedBy": {
-		"@odata.id":"/redfish/v1/Chassis/Encl1"
-	}
+  "Links" : {
+    "ManagedBy": {
+      "@odata.id":"/redfish/v1/Chassis/Encl1"
+    }
+  }
 }
 ~~~
 
@@ -1049,15 +1057,16 @@ A reference to a collection of zero or more related resources is returned as an 
 
 ~~~json
 {
-"Links" : {
-	"Contains" : [
-		{
-			"@odata.id":"/redfish/v1/Chassis/1"
-		},
-		{
-			"@odata.id":"/redfish/v1/Chassis/Encl1"
-		}
-	]
+  "Links" : {
+    "Contains" : [
+    {
+      "@odata.id":"/redfish/v1/Chassis/1"
+    },
+    {
+      "@odata.id":"/redfish/v1/Chassis/Encl1"
+    }
+    ]
+  }
 }
 ~~~
 
@@ -1130,7 +1139,7 @@ An individual property within a JSON object can be annotated with extended infor
     "StopBits": 1,
     "FlowControl": "None",
     "ConnectorType": "RJ45",
-    "PinOut": "Cyclades"
+    "PinOut": "Cyclades",
     "PinOut@Message.ExtendedInfo" : [
 		{
            "MessageId": "Base.1.0.PropertyValueNotInList",
@@ -1547,7 +1556,7 @@ where *NamespaceQualifiedTypeName* is the namespace qualified name of the primit
 
 ##### Additional Properties
 
-The AdditionalProperties annotation term is used to specify whether a type can contain additional properties outside of those defined. Types annotated with the AdditionalProperties annotation with a `Boolean` attribute with a value of `"False"`, must not contain additional properties.
+The AdditionalProperties annotation term is used to specify whether a type can contain additional properties outside of those defined. Types annotated with the AdditionalProperties annotation with a value of `"False"`, shall not contain additional properties.
 
 ~~~xml
 		<Annotation Term="OData.AdditionalProperties"/>
@@ -1575,7 +1584,7 @@ The `Permissions` annotation term is defined in http://docs.oasis-open.org/odata
 
 ##### Required Properties
 
-The Required annotation term is used to specify that a property is required to be supported by services. Properties not annotated with the Required annotation, or annotated with a `Boolean` attribute with a value of `"false"`, are optional.
+The Required annotation or Nullable attribute is used to specify that a property is required to be supported by services. Required properties shall be annotated with the Required annotation, or annotated with a Nullable attribute with a value of `"false"`. All other properties are optional.
 
 If an implementation supports a property, it shall always provide a value for that property.  If a value is unknown, then null is an acceptable values in most cases. Properties not returned from a GET operation shall indicate that the property is not currently supported by the implementation.
 
@@ -1805,6 +1814,7 @@ OEM-specific actions can be defined by defining actions bound to the OEM propert
 Such bound actions appear in the JSON payload as properties of the Oem type, nested under an [Actions property](#actions-property).
 
 ```json
+...
 "Actions": {
 	"OEM": {
 		"Contoso.v.v.v#Contoso.Ping": {
@@ -1812,7 +1822,7 @@ Such bound actions appear in the JSON payload as properties of the Oem type, nes
 		    }
 		}
 	}
-}
+...
 ```
 ##### Custom Annotations
 
@@ -2031,7 +2041,7 @@ For compatibility with general purpose SSDP client software, primarily UPnP, TCP
 
 #### USN Format
 
-The UUID supplied in the USN field shall equal the UUID returned for the Manager implementing the Redfish service.  If there are multiple / redundant managers, the UUID shall remain static regardless of redundancy failover.  The Unique ID shall be in the canonical UUID format, followed by '::dtmf-org'
+The UUID supplied in the USN field of the service shall equal the UUID property of the service root. If there are multiple / redundant managers, the UUID of the service shall remain static regardless of redundancy failover.  The Unique ID shall be in the canonical UUID format, followed by '::dtmf-org'
 
 #### M-SEARCH Response
 
@@ -2176,7 +2186,7 @@ For functionality requiring multiple Redfish operations, or for security reasons
 
 A Redfish session is created by an HTTP POST to the SessionService' Sessions collection resource, including the following POST body:
 
-```json
+```http
 POST /redfish/v1/SessionService/Sessions HTTP/1.1
 Host: <host-path>
 Content-Type: application/json; charset=utf-8
@@ -2198,7 +2208,7 @@ The response to the POST request to create a session includes:
 *  a "Location header that contains a link to the newly created session resource.
 *  The JSON response body that contains a full representation of the newly created session object:
 
-```json
+```http
 Location: /redfish/v1/SessionService/Sessions/1
 X-Auth-Token: <session-auth-token>
 
@@ -2359,5 +2369,6 @@ The file where the events are written, one or more messages per event should at 
 | Version | Date     | Description     |
 | ---     | ---      | ---             |
 | 1.0.0   | 2015-8-4 | Initial release |
-| 1.0.1   | 2015-9-17| Errata release.  Clarified normative use of LongDescription in schema files.  Clarified usage of the 'rel-describedby' link header.  Corrected text in example of 'Select List' in OData Context property.  Clarified Accept-Encoding Request header handling.  Deleted duplicative and conflicting statement on returning extended error resources.  Various grammatical corrections.  |
+| 1.0.1   | 2015-9-17| Errata release.  Clarified normative use of LongDescription in schema files.  Clarified usage of the 'rel-describedby' link header.  Corrected text in example of 'Select List' in OData Context property.  Clarified Accept-Encoding Request header handling.  Deleted duplicative and conflicting statement on returning extended error resources.  Clarified relative URI resolution rules. Various grammatical corrections. Clarified USN format.  |
 
+ 

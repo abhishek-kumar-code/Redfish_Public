@@ -7,7 +7,7 @@
     "Name": "Thermal",
     "Temperatures": [
         {
-            "@odata.id": "/redfish/v1/Enc1/1/Thermal#/Temperatures/0",
+            "@odata.id": "/redfish/v1/Chassis/Enc1/Thermal#/Temperatures/0",
             "MemberId": "0",
             "Name": "Chassis Intake Temp",
             "SensorNumber": 42,
@@ -57,7 +57,7 @@
             "RelatedItem" : [
                 {"@odata.id": "/redfish/v1/Systems/2" },
                 {"@odata.id": "/redfish/v1/Chassis/Enc1" }
-            ] 
+            ]
         },
         {
             "@odata.id": "/redfish/v1/Chassis/Enc1/Thermal#/Fans/1",
@@ -82,7 +82,7 @@
             "RelatedItem" : [
                 {"@odata.id": "/redfish/v1/Systems/2" },
                 {"@odata.id": "/redfish/v1/Chassis/Enc1" }
-            ] 
+            ]
         }
     ],
     "Redundancy": [

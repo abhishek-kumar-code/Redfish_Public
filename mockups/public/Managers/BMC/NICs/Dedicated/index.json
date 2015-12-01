@@ -1,9 +1,9 @@
 {
-    "@Redfish.Copyright":"Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#Managers/Members/1/EthernetInterfaces/Members/$entity",
-    "@odata.id": "/redfish/v1/Managers/1/EthernetInterfaces/1",
+    "@Redfish.Copyright": "Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#Managers/Members/BMC/NICs/Members/$entity",
+    "@odata.id": "/redfish/v1/Managers/BMC/NICs/Dedicated",
     "@odata.type": "#EthernetInterface.1.0.0.EthernetInterface",
-    "Id": "1",
+    "Id": "Dedicated",
     "Name": "Manager Ethernet Interface",
     "Description": "Management Network Interface",
     "Status": {
@@ -11,14 +11,14 @@
         "Health": "OK"
     },
     "InterfaceEnabled": true,
-    "PermanentMACAddress": "AA:BB:CC:DD:EE:FF",
-    "MACAddress": "AA:BB:CC:DD:EE:FF",
+    "PermanentMACAddress": "23:11:8A:33:CF:EA",
+    "MACAddress": "23:11:8A:33:CF:EA",
     "SpeedMbps": 100,
     "AutoNeg": true,
     "FullDuplex": true,
     "MTUSize": 1500,
-    "HostName": "MyHostName",
-    "FQDN": "MyHostName.MyDomainName.com",
+    "HostName": "web483-bmc",
+    "FQDN": "web483-bmc.dmtf.org",
     "MaxIPv6StaticAddresses": 1,
     "VLAN": {
         "VLANEnable": true,
@@ -57,15 +57,15 @@
         }
     ],
     "NameServers": [
-        "TheNameServer"
+        "names.dmtf.org"
     ],
     "@Redfish.Settings": {
-        "@odata.type": "#Settings.1.0.0.Settings"
+        "@odata.type": "#Settings.1.0.0.Settings",
         "SettingsObject": {
-            "@odata.id": "/redfish/v1/Managers/1/EthernetInterfaces/1/SD"
+            "@odata.id": "/redfish/v1/Managers/BMC/NICs/Dedicated/SD"
         },
         "Time": "2012-03-07T14:44.30-05:00",
-        "ETag": "someetag",
+        "ETag": "84ffcbb050ddc7fa9cddb59014546e59",
         "Messages": [
             {
                 "MessageId": "Base.1.0.SettingsFailed",
