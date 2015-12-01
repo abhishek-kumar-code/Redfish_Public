@@ -38,7 +38,7 @@
       <Term Name="Copyright" Type="Edm.String">
         <Annotation Term="OData.Description" String="The term is applied to Redfish payload samples in order to specify copyright information. It would not generally be used in production payloads."/>
       </Term>
-      <Term Name="DynamicPropertyPatterns" Type="Collection(Redfish.PropertyPattern)"/>
+      <Term Name="DynamicPropertyPatterns" Type="Collection(RedfishExtensions.1.0.0.PropertyPattern)"/>
 
       <ComplexType Name="PropertyPattern">
         <Property Name="Pattern" Type="Edm.String">
