@@ -72,7 +72,7 @@
                 "Diags": "Boot the manufacturer's Diagnostics program",
                 "UefiShell": "Boot to the UEFI Shell",
                 "UefiTarget": "Boot to the UEFI Device specified in the UefiTargetBootSourceOverride property",
-                "SDCard": "Boot from a SD Card"
+                "SDCard": "Boot from an SD Card"
             }
         },
         "BootSourceOverrideEnabled": {
