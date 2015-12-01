@@ -74,10 +74,10 @@ glob.sync(path.join('mockups', '*/')).forEach(function(mockup) {
             var link = url.parse(this.node);
             var refd = fileToJSON[linkToFile[link.pathname]];
 
-            assert(refd !== undefined, 'invalid link at path /' + this.path.join('/') + ' with content ' + this.node + '. No such file exists at path.');
+            assert(refd !== undefined, 'invalid link in JSON at property /' + this.path.join('/') + ' with value ' + this.node + '. No such file exists in mockup at path.');
             if (link.hash) {
               refd = jptr.find(refd, link.hash.slice(1));
-              assert(refd !== undefined, 'invalid fragment component at path /' + this.path.join('/') + ' with content ' + link.hash);
+              assert(refd !== undefined, 'invalid fragment component in JSON at property /' + this.path.join('/') + ' with fragment value ' + link.hash);
             }
           }
         });
