@@ -26,7 +26,7 @@
             "MaxReadingRange": 200,
             "PhysicalContext": "CPU",
             "RelatedItem": [
-                {"@odata.id": "/redfish/v1/Systems/1#/Processors/0" }
+                {"@odata.id": "/redfish/v1/Systems/1/Processors/1" }
             ]
         },
         {
@@ -49,7 +49,7 @@
             "MaxReadingRange": 200,
             "PhysicalContext": "CPU",
             "RelatedItem": [
-                {"@odata.id": "/redfish/v1/Systems/1#/Processors/1" }
+                {"@odata.id": "/redfish/v1/Systems/1/Processors/2" }
             ]
         },
         {
@@ -97,13 +97,13 @@
             "LowerThresholdFatal": 42,
             "MinReadingRange": 0,
             "MaxReadingRange": 5000,
-            "Redundancy" : [ 
+            "Redundancy" : [
                 {"@odata.id": "/redfish/v1/Chassis/1/Thermal#/Redundancy/0"}
             ],
             "RelatedItem" : [
                 {"@odata.id": "/redfish/v1/Systems/1" },
                 {"@odata.id": "/redfish/v1/Chassis/1" }
-            ] 
+            ]
         },
         {
             "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Fans/1",
@@ -130,7 +130,7 @@
             "RelatedItem" : [
                 {"@odata.id": "/redfish/v1/Systems/1" },
                 {"@odata.id": "/redfish/v1/Chassis/1" }
-            ] 
+            ]
        }
     ],
     "Redundancy": [

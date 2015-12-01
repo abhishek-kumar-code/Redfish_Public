@@ -1,6 +1,6 @@
 {
   "@odata.context": "/redfish/v1/$metadata#Systems/Members/1/Processors/Members/$entity",
-  "@odata.id": "/redfish/v1/Systems/1/Processors/2",
+  "@odata.id": "/redfish/v1/Systems/1/Processors/1",
   "@odata.type": "#Processor.1.0.0.Processor",
   "Name": "Processor",
   "Id": "1",
@@ -12,17 +12,17 @@
   "Model": "Multi-Core Intel(R) Xeon(R) processor 7xxx Series",
   "ProcessorID": {
     "VendorID": "GenuineIntel",
-    "IdentificationRegisters": "0x34AC34DC890127BB",
+    "IdentificationRegisters": "0x34AC34DC8901274A",
     "EffectiveFamily": "0x42",
-    "EffectiveModel": "0x62",
-    "Step": "0x2",
-    "MicrocodeInfo": "0x418843"
+    "EffectiveModel": "0x61",
+    "Step": "0x1",
+    "MicrocodeInfo": "0x429943"
   },
-  "MaxSpeedMHz": 3100,
-  "TotalCores": 6,
-  "TotalThreads": 12,
+  "MaxSpeedMHz": 3700,
+  "TotalCores": 8,
+  "TotalThreads": 16,
   "Status": {
     "State": "Enabled",
     "Health": "OK"
   }
-} 
+}

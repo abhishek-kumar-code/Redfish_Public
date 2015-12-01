@@ -28,25 +28,25 @@
         <Annotation Term="OData.Description" String="This is the redundancy definition to be used in other resource schemas."/>
         <Annotation Term="OData.LongDescription" String="This object represents the Redundancy element property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification.  The value of this string shall be of the format for the reserved word *Redundancy*"/>
         <Property Name="Name" Type="Edm.String" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description"  String="The name of the resource or array element."/>
           <Annotation Term="OData.LongDescription" String="This object represents the Name property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification. The value of this string shall be of the format for the reserved word *Name*."/>
           <Annotation Term="Redfish.Required"/>
         </Property>
         <Property Name="Mode" Type="Redundancy.1.0.0.RedundancyMode">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the redundancy mode of the group."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the information about the redundancy mode of this manager.  Failover shall indicate a master/slave type arrangement where status indicates the role of this manager.  N+1 indicates an arrangement where the redundancy set needs MaxNumSupported-1 number of resources in order to be redundant.  Load Balanced indicates all members are active. However, there functionality is not independent of each other. Their functioning is determined by some sort of load balancing algorithm. Sparing is implied (i.e. each member can be a spare for the other(s). Sparing indicates that all members are active and are aware of each others. However, their functionality is independent until failover. Each member can be a spare for the other(s). Limited Sparing indicates that all members are active, and they may or may not be aware of each and they are not spares for each other."/>
           <Annotation Term="Redfish.Required"/>
         </Property>
         <Property Name="MaxNumSupported" Type="Edm.Int64">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the maximum number of members allowable for this particular managers redundancy, including this manager."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the maximum number of members allowed in the redundancy group."/>
           <Annotation Term="Redfish.Required"/>
         </Property>
         <Property Name="MinNumNeeded" Type="Edm.Int64">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the minumum number of managers needed for this manager to be redundant."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the maximum number of members allowed in the redundancy group for the current redundancy mode to still be fault tolerant."/>
           <Annotation Term="Redfish.Required"/>
@@ -55,7 +55,7 @@
           <Annotation Term="Redfish.Required"/>
         </Property>
         <NavigationProperty Name="RedundancySet" Type="Collection(Resource.Item)">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains any ids that represent components of this reduncancy set."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the ids of components that are part of this redundancy set. The id values may or may not be dereferenceable."/>
           <Annotation Term="OData.AutoExpandReferences"/>

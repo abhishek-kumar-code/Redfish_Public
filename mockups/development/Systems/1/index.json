@@ -67,7 +67,7 @@
         "@odata.id": "/redfish/v1/Systems/1/SimpleStorage"
     },
     "LogServices": {
-        "@odata.id": "/redfish/v1/Systems/1/Logs"
+        "@odata.id": "/redfish/v1/Systems/1/LogServices"
     },
     "Links": {
         "Chassis": [

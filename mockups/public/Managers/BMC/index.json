@@ -3,7 +3,7 @@
     "@odata.context": "/redfish/v1/$metadata#Managers/Members/$entity",
     "@odata.id": "/redfish/v1/Managers/BMC",
     "@odata.type": "#Manager.1.0.1.Manager",
-    "Id": "1",
+    "Id": "BMC",
     "Name": "Manager",
     "ManagerType": "BMC",
     "Description": "Contoso BMC",
