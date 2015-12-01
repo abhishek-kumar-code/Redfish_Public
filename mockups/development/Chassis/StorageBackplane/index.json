@@ -26,7 +26,7 @@
         "Storage": [
             {"@odata.id":"/redfish/v1/Systems/3/Storage/PERCIntegrated"},
             {"@odata.id":"/redfish/v1/Systems/3/Storage/SATAEmbedded"}
-        ]
+        ],
         "Oem": {}
     },
     "Oem": { }
