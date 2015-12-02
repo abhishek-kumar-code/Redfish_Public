@@ -26,13 +26,13 @@
                 "LimitException": "LogEventOnly",
                 "CorrectionInMs": 42
 	        },
-            "RelatedItem": [ 
+            "RelatedItem": [
                 {"@odata.id": "/redfish/v1/Systems/1"},
                 {"@odata.id": "/redfish/v1/Chassis/1"},
                 {"@odata.id": "/redfish/v1/Systems/1/Processors/1"},
                 {"@odata.id": "/redfish/v1/Systems/1/Processors/2"}
             ],
-    	    "Status": {
+	    "Status": {
 	            "State": "Enabled",
 	            "Health": "OK"
 	        },

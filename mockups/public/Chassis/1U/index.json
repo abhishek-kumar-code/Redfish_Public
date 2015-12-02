@@ -3,7 +3,7 @@
     "@odata.context": "/redfish/v1/$metadata#Chassis/Members/$entity",
     "@odata.id": "/redfish/v1/Chassis/1U",
     "@odata.type": "#Chassis.1.0.1.Chassis",
-    "Id": "1",
+    "Id": "1U",
     "Name": "Computer System Chassis",
     "ChassisType": "RackMount",
     "AssetTag": "Chicago-45Z-2381",
