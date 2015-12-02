@@ -1,6 +1,6 @@
 {
     "@odata.context": "/redfish/v1/$metadata#Chassis/Members/Drives/Members/$entity",
-    "@odata.id": "/redfish/v1/Chassis/StorageBackplane/Disk.Bay.6",
+    "@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.6",
     "@odata.type": "#StorageDisk0.0.1",
     "IndicatorLED": "Lit",
     "Model": "ST9146802SS",
