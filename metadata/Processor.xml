@@ -15,7 +15,7 @@
 
       <EntityType Name="Processor" BaseType="Resource.1.0.0.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition for the Processor resource.  It represents the properties of a processor attached to a System." />
-        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
       </EntityType>
     
     </Schema>
@@ -24,7 +24,7 @@
 
       <EntityType Name="Processor" BaseType="Processor.Processor">
         <Annotation Term="OData.Description" String="This is the schema definition for the Processor resource.  It represents the properties of a processor attached to a System." />
-        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="Socket" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read" />
           <Annotation Term="OData.Description" String="The socket or location of the processor" />
@@ -78,7 +78,7 @@
       </EntityType>
 
       <ComplexType Name="ProcessorId">
-        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="VendorId" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read" />
           <Annotation Term="OData.Description" String="The Vendor Identification for this processor" />

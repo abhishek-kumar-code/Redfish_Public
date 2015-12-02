@@ -118,7 +118,7 @@
       </EntityType>
 
       <ComplexType Name="PowerMetric">
-        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="IntervalInMin" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The time interval (or window) in which the PowerMetrics are measured over."/>
@@ -151,7 +151,7 @@
 
       <ComplexType Name="PowerLimit">
         <Annotation Term="OData.Description" String="This object contains power limit status and configuration information for the chassis."/>
-        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="LimitInWatts" Type="Edm.Decimal">
           <Annotation Term="OData.Description" String="The Power limit in watts. Set to null to disable power capping."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the power cap limit in watts for the resource.  If set to null, power capping shall be disabled."/>
@@ -247,7 +247,7 @@
         <Property Name="MaxReadingRange" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Maximum value for CurrentReading"/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the lowest possible value for CurrentReading. Units shall use the same units as the related ReadingVolts propoerty."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the highest possible value for CurrentReading. Units shall use the same units as the related ReadingVolts propoerty."/>
           <Annotation Term="OData.Measures.Unit" String="Volts"/>
         </Property>
         <Property Name="PhysicalContext" Type="PhysicalContext.1.0.0.PhysicalContext" Nullable="false">

@@ -12,13 +12,10 @@
     <edmx:Include Namespace="Resource.1.0.0" />
   </edmx:Reference>
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Measures.V1.xml">
-    <edmx:Include Namespace="Org.OData.Measures.v1" Alias="Measures"/>
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/IPAddresses.xml">
-    <edmx:Include Namespace="IPAddresses"/>
-  </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ManagerNetworkProtocol.xml">
-    <edmx:Include Namespace="NetworkService"/>
+    <edmx:Include Namespace="IPAddresses.1.0.0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/VLanNetworkInterfaceCollection.xml">
     <edmx:Include Namespace="VLanNetworkInterfaceCollection"/>
@@ -136,7 +133,7 @@
       </TypeDefinition>
 
       <ComplexType Name="IPv6AddressPolicyEntry">
-        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="Prefix" Type="Edm.String">
           <Annotation Term="OData.Description" String="The IPv6 Address Prefix (as defined in RFC 3484 section 2.1)"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the IPv6 Address Prefix for this table entry as defined in RFC 6724 section 2.1."/>

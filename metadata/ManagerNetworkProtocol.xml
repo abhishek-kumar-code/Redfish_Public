@@ -88,7 +88,7 @@
       </EntityType>
       
       <ComplexType Name="Protocol">
-        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="ProtocolEnabled" Type="Edm.Boolean">
           <Annotation Term="OData.Description" String="Indicates if the protocol is enabled or disabled"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the enabled status of the protocol.  The value shall be true if enabled and false if disabled."/>
@@ -101,7 +101,7 @@
       </ComplexType>
 
       <ComplexType Name="SSDProtocol" BaseType="ManagerNetworkProtocol.1.0.0.Protocol">
-        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="NotifyMulticastIntervalSeconds" Type="Edm.Int64">
           <Annotation Term="OData.Description" String="Indicates how often the Multicast is done from this service for SSDP."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the time interval, in seconds, between transmissions of the multicast NOTIFY ALIVE message.  A setting of 0 seconds shall disable this functionality.  The recommended value is 600 seconds."/>
