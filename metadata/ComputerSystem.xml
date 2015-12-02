@@ -301,6 +301,9 @@
         <Member Name="UefiTarget">
           <Annotation Term="OData.Description" String="Boot to the UEFI Device specified in the UefiTargetBootSourceOverride property"/>
         </Member>
+        <Member Name="SDCard">
+           <Annotation Term="OData.Description" String="Boot from an SD Card"/>
+        </Member>
       </EnumType>
 
       <EnumType Name="BootSourceOverrideEnabled">
@@ -352,5 +355,11 @@
 
     </Schema>
 
-  </edmx:DataServices>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.1.1.0">
+
+      <EntityType Name="ComputerSystem" BaseType="ComputerSystem.1.0.1.ComputerSystem"/>
+
+    </Schema>
+  
+</edmx:DataServices>
 </edmx:Edmx>
