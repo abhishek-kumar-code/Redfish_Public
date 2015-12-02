@@ -8,7 +8,7 @@
     "Members@odata.count": 1,
     "Members": [
         {
-            "@odata.id": "/redfish/v1/Systems/Storage/PERCIntegrated/Controllers/1"
+            "@odata.id": "/redfish/v1/Systems/3/Storage/PERCIntegrated/Controllers/1"
         }
     ],
     "Oem": {}
