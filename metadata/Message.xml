@@ -18,7 +18,7 @@
       </Term>
 
       <ComplexType Name="Message">
-        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
       </ComplexType>
 
       </Schema>
