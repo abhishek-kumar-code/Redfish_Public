@@ -17,7 +17,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="IPAddresses.1.0.0">
 
       <ComplexType Name="IPv4Address">
-        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
         <Property Name="Address" Type="Edm.String">
           <Annotation Term="OData.Description" String="This is the IPv4 Address."/>
@@ -40,7 +40,7 @@
       </ComplexType>
 
       <ComplexType Name="IPv6Address">
-        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
         <Property Name="Address" Type="Edm.String">
           <Annotation Term="OData.Description" String="This is the IPv6 Address."/>
@@ -123,7 +123,7 @@
 
       <ComplexType Name="IPv6StaticAddress">
         <Annotation Term="OData.Description" String="This object represents a single IPv6 static address to be assigned on a network interface."/>
-        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="Oem" Type="Resource.Oem"/>
         <Property Name="Address" Type="Edm.String">
           <Annotation Term="OData.Description" String="A valid IPv6 address."/>
