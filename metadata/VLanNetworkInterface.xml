@@ -37,7 +37,7 @@
       </EntityType>
 
       <ComplexType Name="VLAN">
-        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="VLANEnable" Type="Edm.Boolean">
           <Annotation Term="Redfish.RequiredOnCreate"/>
           <Annotation Term="OData.Description" String="This indicates if this VLAN is enabled."/>
