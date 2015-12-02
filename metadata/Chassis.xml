@@ -161,12 +161,12 @@
       </ComplexType>
 
       <ComplexType Name="Actions">
-        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="Oem" Type="Chassis.1.0.0.OemActions"/>
       </ComplexType>
 
       <ComplexType Name="OemActions">
-        <Annotation Term="OData.AdditionalProperties" Bool="True"/>
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
       </ComplexType>
 
       <EnumType Name="ChassisType">
@@ -281,7 +281,7 @@
       </EntityType>
       
       <ComplexType Name="PhysicalSecurity">
-        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="IntrusionSensorNumber" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A numerical identifier to represent the physical security sensor."/>

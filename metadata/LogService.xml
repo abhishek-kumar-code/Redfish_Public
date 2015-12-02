@@ -75,12 +75,12 @@
       </EntityType>
 
       <ComplexType Name="Actions">
-        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="Oem" Type="LogService.1.0.0.OemActions" Nullable="false"/>
       </ComplexType>
       
       <ComplexType Name="OemActions">
-        <Annotation Term="OData.AdditionalProperties" Bool="True"/>
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
       </ComplexType>
 
       <EnumType Name="OverWritePolicy">

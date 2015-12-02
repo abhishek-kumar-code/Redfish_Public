@@ -34,7 +34,7 @@
         </NavigationProperty>
       </EntityType>
 
-      <EnumType Name="EventType" IsFlags="true">
+      <EnumType Name="EventType">
         <Member Name="StatusChange">
           <Annotation Term="OData.Description" String="The status of this resource has changed"/>
         </Member>

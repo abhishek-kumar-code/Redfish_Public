@@ -7,9 +7,6 @@
     <edmx:Include Namespace="Org.OData.Measures.V1" Alias="OData.Measures"/>
   </edmx:Reference>
 
-  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
-    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
-  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions.xml">
     <edmx:Include Namespace="RedfishExtensions.1.0.0" Alias="Redfish"/>
   </edmx:Reference>
@@ -43,7 +40,7 @@
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for temperature sensors for a Redfish implementation."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
-        <NavigationProperty Name="Fans" Type="Collection(Thermal.1.0.1.Fan)" Nullable="false" ContainsTarget="True">
+        <NavigationProperty Name="Fans" Type="Collection(Thermal.1.0.1.Fan)" Nullable="false" ContainsTarget="true">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the definition for fans."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for fans for a Redfish implementation."/>
@@ -121,7 +118,7 @@
         <Property Name="MaxReadingRangeTemp" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Maximum value for ReadingCelsius"/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the lowest possible value for ReadingCelsius. The units shall be the same units as the related ReadingCelsius property."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the highest possible value for ReadingCelsius. The units shall be the same units as the related ReadingCelsius property."/>
           <Annotation Term="OData.Measures.Unit" String="Celsius"/>
         </Property>
         <Property Name="PhysicalContext" Type="PhysicalContext.1.0.0.PhysicalContext" Nullable="false">
@@ -197,7 +194,7 @@
         <Property Name="MaxReadingRange" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Maximum value for Reading"/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the lowest possible value for Reading. The units shall be the same units as the related Reading property."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the highest possible value for Reading. The units shall be the same units as the related Reading property."/>
         </Property>
         <NavigationProperty Name="RelatedItem" Type="Collection(Resource.Item)" Nullable="false">
           <Annotation Term="OData.Description" String="The ID(s) of the resources serviced with this fan"/>

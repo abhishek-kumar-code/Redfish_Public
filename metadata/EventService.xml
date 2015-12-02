@@ -105,12 +105,12 @@
       </EntityType>
 
       <ComplexType Name="Actions">
-        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="Oem" Type="EventService.1.0.0.OemActions"/>
       </ComplexType>
       
       <ComplexType Name="OemActions">
-        <Annotation Term="OData.AdditionalProperties" Bool="True"/>
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
       </ComplexType>
 
     </Schema>

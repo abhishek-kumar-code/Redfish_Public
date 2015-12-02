@@ -170,7 +170,7 @@ class JsonSchemaGenerator:
 
             if annotation.attrib["Term"] == "Redfish.Required":
                 if "Bool" in annotation.attrib.keys():
-                    if annotation.attrib["Bool"].upper() == "FALSE":
+                    if annotation.attrib["Bool"] == "false":
                         break
 
                 return True
@@ -208,7 +208,7 @@ class JsonSchemaGenerator:
     #  Returns True if the type is abstract.                                 #
     ##########################################################################
     def isabstract(self, type):
-        return self.getattribute(type,"Abstract","True") 		   
+        return self.getattribute(type,"Abstract","true") 		   
 
     ##########################################################################
     # Name: getattribute                                                     # 
@@ -238,7 +238,7 @@ class JsonSchemaGenerator:
                 if annotation.tag == "{http://docs.oasis-open.org/odata/ns/edm}Annotation":
                     if annotation.attrib["Term"] == "OData.AdditionalProperties":
                         if "Bool" in annotation.attrib.keys():
-                            if annotation.attrib["Bool"].upper() == "FALSE":
+                            if annotation.attrib["Bool"] == "false":
                                 return False
                             else:
                                 return True
@@ -270,7 +270,7 @@ class JsonSchemaGenerator:
 
             if annotation.attrib["Term"] == "Redfish.RequiredOnCreate":
                 if "Bool" in annotation.attrib.keys():
-                    if annotation.attrib["Bool"].upper() == "FALSE":
+                    if annotation.attrib["Bool"] == "false":
                         break
 
                 return True
@@ -598,7 +598,7 @@ class JsonSchemaGenerator:
         if not ( "IsBound" in actionentry["Node"].attrib.keys() ):
             return False
 
-        if ( actionentry["Node"].attrib["IsBound"].upper() == "FALSE" ):
+        if ( actionentry["Node"].attrib["IsBound"] == "false" ):
             return False
 
         # we have a bound action; is it bound to this type?

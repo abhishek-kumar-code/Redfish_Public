@@ -33,7 +33,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The URI of the destination Event Service."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain a URI to the destination where the events will be sent."/>
-          <Annotation Term="OData.IsUrl"/>
+          <Annotation Term="OData.IsURL"/>
         </Property>
         <Property Name="EventTypes" Type="Collection(Event.1.0.0.EventType)" Nullable="false">
           <Annotation Term="Redfish.RequiredOnCreate"/>
@@ -62,7 +62,7 @@
       </EnumType>
       
       <ComplexType Name="HttpHeaderProperty">
-        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="Redfish.DynamicPropertyPatterns">
           <Collection>
             <Record>

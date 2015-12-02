@@ -1,6 +1,6 @@
 {
     "@Redfish.Copyright": "Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#EventService",
+    "@odata.context": "/redfish/v1/$metadata#EventService.EventService",
     "@odata.id": "/redfish/v1/EventService",
     "@odata.type": "#EventService.1.0.0.EventService",
     "Id": "EventService",

@@ -1,6 +1,6 @@
 {
     "@Redfish.Copyright":"Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#Chassis/Members/1/Thermal/$entity",
+    "@odata.context": "/redfish/v1/$metadata#Thermal.Thermal",
     "@odata.id": "/redfish/v1/Chassis/1/Thermal",
     "@odata.type": "#Thermal.1.0.0.Thermal",
     "Id": "Thermal",
