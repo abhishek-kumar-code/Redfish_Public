@@ -6,56 +6,56 @@
     "Name": "Thermals",
     "Temperatures": [
         {
+            "@odata.id": "/redfish/v1/Chassis/StorageEnclosure2/Thermal#/Temperatures/0",
+            "MemberId": "0",
             "Name": "EMM 0 Thermal Sensor",
             "ReadingCelcius": "27",
             "UpperThresholdNonCritical": "65",
             "UpperThresholdCritical": "65",
             "LowerThresholdNonCritical": "-2",
             "LowerThresholdCritical": "-2",
-            "@odata.id": "/redfish/v1/Chassis/StorageEnclosure2/Thermal#/Temperatures/TempSensor.Embedded.0:Enclosure.External.0-1:RAID.Slot.6",
-            "MemberId": "TempSensor.Embedded.0:Enclosure.External.0-1:RAID.Slot.6",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
             }
         },
         {
+            "@odata.id": "/redfish/v1/Chassis/StorageEnclosure2/Thermal#/Temperatures/1",
+            "MemberId": "1",
             "Name": "EMM 1 Thermal Sensor",
             "ReadingCelcius": "31",
             "UpperThresholdNonCritical": "65",
             "UpperThresholdCritical": "65",
             "LowerThresholdNonCritical": "-2",
             "LowerThresholdCritical": "-2",
-            "@odata.id": "/redfish/v1/Chassis/StorageEnclosure2/Thermal#/Temperatures/TempSensor.Embedded.1:Enclosure.External.0-1:RAID.Slot.6",
-            "MemberId": "TempSensor.Embedded.1:Enclosure.External.0-1:RAID.Slot.6",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
             }
         },
         {
+            "@odata.id": "/redfish/v1/Chassis/StorageEnclosure2/Thermal#/Temperatures/2",
+            "MemberId": "2",
             "Name": "Backplane Thermal Sensor 1",
             "ReadingCelcius": "25",
             "UpperThresholdNonCritical": "50",
             "UpperThresholdCritical": "55",
             "LowerThresholdNonCritical": "8",
             "LowerThresholdCritical": "3",
-            "@odata.id": "/redfish/v1/Chassis/StorageEnclosure2/Thermal#/Temperatures/TempSensor.Embedded.2:Enclosure.External.0-1:RAID.Slot.6",
-            "MemberId": "TempSensor.Embedded.2:Enclosure.External.0-1:RAID.Slot.6",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
             }
         },
         {
+            "@odata.id": "/redfish/v1/Chassis/StorageEnclosure2/Thermal#/Temperatures/2",
+            "MemberId": "3",
             "Name": "Backplane Thermal Sensor 2",
             "ReadingCelcius": "24",
             "UpperThresholdNonCritical": "50",
             "UpperThresholdCritical": "55",
             "LowerThresholdNonCritical": "8",
             "LowerThresholdCritical": "3",
-            "@odata.id": "/redfish/v1/Chassis/StorageEnclosure2/Thermal#/Temperatures/TempSensor.Embedded.3:Enclosure.External.0-1:RAID.Slot.6",
-            "MemberId": "TempSensor.Embedded.3:Enclosure.External.0-1:RAID.Slot.6",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
@@ -64,10 +64,10 @@
     ],
     "Fans": [
         {
+            "@odata.id": "/redfish/v1/Chassis/StorageEnclosure2/Thermal#/Fans/0",
+            "MemberId": "0",
             "FanName": "Fan 0",
             "Reading": "4970",
-            "@odata.id": "/redfish/v1/Chassis/StorageEnclosure2/Thermal#/Fans/Fan.Slot.0:Enclosure.External.0-1:RAID.Slot.6",
-            "MemberId": "Fan.Slot.0:Enclosure.External.0-1:RAID.Slot.6",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
@@ -75,10 +75,10 @@
             "ReadingUnits": "RPMS"
         },
         {
+            "@odata.id": "/redfish/v1/Chassis/StorageEnclosure2/Thermal#/Fans/1",
+            "MemberId": "1",
             "FanName": "Fan 1",
             "Reading": "5040",
-            "@odata.id": "/redfish/v1/Chassis/StorageEnclosure2/Thermal#/Fans/Fan.Slot.1:Enclosure.External.0-1:RAID.Slot.6",
-            "MemberId": "Fan.Slot.1:Enclosure.External.0-1:RAID.Slot.6",
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
