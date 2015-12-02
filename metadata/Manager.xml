@@ -111,7 +111,6 @@
           <Annotation Term="OData.Description" String="This is a reference to the network services and their settings that the manager controls.  It is here that clients will find network configuration options as well as network services."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain a reference to a resource of type ManagerNetworkProtocol which represents the network services for this manager."/>
           <Annotation Term="OData.AutoExpandReferences"/>
-          <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
         <NavigationProperty Name="LogServices" Type="LogServiceCollection.LogServiceCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
