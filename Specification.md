@@ -1402,7 +1402,7 @@ Type definitions generally reference the OData and Redfish namespaces for common
   </edmx:Reference>
   <edmx:Reference
     Uri="http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml">
-    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="OData.Measures"/>
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions.xml">
 	<edmx:Include Namespace="RedfishExtensions.1.0.0" Alias="Redfish"/>
@@ -1461,7 +1461,7 @@ Properties that must have a non-nullable value include the [nullable attribute](
           <Annotation Term="Core.LongDescription" String="This is the specification of Property1."/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="Redfish.Required"/>
-          <Annotation Term="OData.Measures.Unit" String="Watts"/>
+          <Annotation Term="Measures.Unit" String="Watts"/>
         </Property>
 ~~~
 
@@ -1604,7 +1604,7 @@ The `RequiredOnCreate` annotation term is defined in http://redfish.dmtf.org/sch
 In addition to following [naming conventions](#common-naming-conventions), properties representing units of measure shall be annotated with the Units annotation term in order to specify the units of measurement for the property.
 
 ~~~xml
-	    <Annotation Term="OData.Measures.Unit" String="Watts"/>
+	    <Annotation Term="Measures.Unit" String="Watts"/>
 ~~~
 
 The `Unit` annotation term is defined in http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml.
