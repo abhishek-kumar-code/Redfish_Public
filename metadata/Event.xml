@@ -9,6 +9,7 @@
     <edmx:Include Namespace="Validation.1.0.0" Alias="Validation"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
+    <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.1.0.0" />
   </edmx:Reference>
   
