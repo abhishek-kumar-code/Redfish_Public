@@ -26,7 +26,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Event.1.0.0">
 
       <EntityType Name="Event" BaseType="Event.Event">
-        <NavigationProperty Name="Events" Type="Collection(Event.1.0.0.EventRecord)" Nullable="false">
+        <NavigationProperty Name="Events" Type="Collection(Event.1.0.0.EventRecord)" >
           <Annotation Term="OData.Description" String="Each event in this array has a set of properties that describe the event.  Since this is an array, more than one event can be sent simultaneously."/>
     		  <Annotation Term="OData.LongDescription" String="The value of this resource shall be an array of Event objects used to represent the occurrence of one or more events."/>
           <Annotation Term="Redfish.Required"/>
@@ -96,7 +96,7 @@
           <Annotation Term="OData.Description" String="A context can be supplied at subscription time.  This property is the context value supplied by the subscriber."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain a client supplied context for the Event Destination to which this event is being sent."/>
         </Property>
-        <NavigationProperty Name="OriginOfCondition" Type="Resource.Item" Nullable="false">
+        <NavigationProperty Name="OriginOfCondition" Type="Resource.Item" >
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This indicates the resource that originated the condition that caused the event to be generated."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain a pointer consistent with JSON pointer syntax to the resource that caused the event to be generated."/>
