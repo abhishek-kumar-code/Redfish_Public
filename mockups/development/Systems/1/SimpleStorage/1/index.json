@@ -14,7 +14,7 @@
     },
     "Devices": [
         {
-            "@odata.type": "#SimpleStorage.1.1.0.Device"
+            "@odata.type": "#SimpleStorage.1.1.0.Device",
             "Name": "Drive 1",
             "Manufacturer": "ACME",
             "Model": "Drive Model string",
@@ -25,7 +25,7 @@
             }
         },
         {
-            "@odata.type": "#SimpleStorage.1.1.0.Device"
+            "@odata.type": "#SimpleStorage.1.1.0.Device",
             "Name": "Drive 2",
             "Manufacturer": "SuperDuperSSD",
             "Model": "Drive Model string",
