@@ -1439,8 +1439,8 @@ The EntityType contains the [property](#resource-properties) and [reference prop
 
 ~~~xml
       <EntityType Name="TypeA" BaseType="Resource.1.0.0.Resource">
-        <Annotation Term="Core.Description" String="This is the description of TypeA."/>
-        <Annotation Term="Core.LongDescription" String="This is the specification of TypeA."/>
+        <Annotation Term="OData.Description" String="This is the description of TypeA."/>
+        <Annotation Term="OData.LongDescription" String="This is the specification of TypeA."/>
 
 		<!-- Property and Reference Property definitions go here -->
 
@@ -1457,8 +1457,8 @@ Properties that must have a non-nullable value include the [nullable attribute](
 
 ~~~xml
         <Property Name="Property1" Type="Edm.String" Nullable="false">
-          <Annotation Term="Core.Description" String="This is a property of TypeA."/>
-          <Annotation Term="Core.LongDescription" String="This is the specification of Property1."/>
+          <Annotation Term="OData.Description" String="This is a property of TypeA."/>
+          <Annotation Term="OData.LongDescription" String="This is the specification of Property1."/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="Redfish.Required"/>
           <Annotation Term="OData.Measures.Unit" String="Watts"/>
@@ -1501,8 +1501,8 @@ Structured types may be reused across different properties of different resource
 
 ~~~xml
       <ComplexType Name="PropertyTypeA">
-        <Annotation Term="Core.Description" String="This is type used to describe a structured property."/>
-        <Annotation Term="Core.LongDescription" String="This is the specification of the type."/>
+        <Annotation Term="OData.Description" String="This is type used to describe a structured property."/>
+        <Annotation Term="OData.LongDescription" String="This is the specification of the type."/>
 
 		<!-- Property and Reference Property definitions go here -->
 
@@ -1524,13 +1524,13 @@ EnumType elements contain `Member` elements that define the members of the enume
 
 ~~~xml
       <EnumType Name="EnumTypeA">
-        <Annotation Term="Core.Description" String="This is the EnumTypeA enumeration."/>
-        <Annotation Term="Core.LongDescription" String="This is used to describe the EnumTypeA enumeration."/>
+        <Annotation Term="OData.Description" String="This is the EnumTypeA enumeration."/>
+        <Annotation Term="OData.LongDescription" String="This is used to describe the EnumTypeA enumeration."/>
         <Member Name="MemberA">
-          <Annotation Term="Core.Description" String="Description of MemberA"/>
+          <Annotation Term="OData.Description" String="Description of MemberA"/>
         </Member>
         <Member Name="MemberB">
-          <Annotation Term="Core.Description" String="Description of MemberB"/>
+          <Annotation Term="OData.Description" String="Description of MemberB"/>
         </Member>
       </EnumType>
 ~~~
@@ -1617,8 +1617,8 @@ If the property references a single type, the value of the type attribute is the
 
 ~~~xml
       <NavigationProperty Name="RelatedType" Type="MyTypes.TypeB">
-        <Annotation Term="Core.Description" String="This property references a related resource."/>
-        <Annotation Term="Core.LongDescription" String="This is the specification of the related property."/>
+        <Annotation Term="OData.Description" String="This property references a related resource."/>
+        <Annotation Term="OData.LongDescription" String="This is the specification of the related property."/>
 		<Annotation Term="OData.AutoExpandReferences"/>
       </NavigationProperty>
 ~~~
@@ -1631,8 +1631,8 @@ where NamespaceQualifiedTypeName is the namespace qualified name of the type of 
 
 ~~~xml
       <NavigationProperty Name="RelatedTypes" Type="Collection(MyTypes.TypeB)">
-        <Annotation Term="Core.Description" String="This property represents a collection of related resources."/>
-        <Annotation Term="Core.LongDescription" String="This is the specification of the related property."/>
+        <Annotation Term="OData.Description" String="This property represents a collection of related resources."/>
+        <Annotation Term="OData.LongDescription" String="This is the specification of the related property."/>
 		<Annotation Term="OData.AutoExpandReferences"/>
       </NavigationProperty>
 ~~~
