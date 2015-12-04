@@ -2234,7 +2234,6 @@ Therefore, the POST to create a new session shall only be supported with HTTPS, 
 ##### Session Lifetime
 
 Note that Redfish sessions "time-out" as opposed to having a token expiration time like some token-based methods use.  For Redfish sessions, as long a  client continues to send requests for the session more often than the session timeout period, the session will remain open and the session auth token remains valid.  If the sessions times-out then the session is automatically terminated.
-Note that the Redfish.
 
 ##### Session Termination or Logout
 
