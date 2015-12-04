@@ -2,7 +2,7 @@
     "@Redfish.Copyright":"Copyright \u00a9 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reservd.",
     "@odata.id":"/redfish/v1/Chassis/StorageEnclosure1",
     "@odata.context":"/redfish/v1/$metadata#Chassis/Members/$entity",
-    "@odata.type":"#Chassis.1.0.0.Chassis",
+    "@odata.type":"#Chassis.1.2.0.Chassis",
     "Id":"StorageEnclosure1",
     "Name":"MD1400 0:0",
     "SKU":"",
