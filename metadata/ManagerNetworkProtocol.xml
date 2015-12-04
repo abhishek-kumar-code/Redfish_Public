@@ -9,9 +9,10 @@
     <edmx:Include Namespace="Validation.1.0.0" Alias="Validation"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Measures.V1.xml">
-    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="OData.Measures"/>
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
+    <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.1.0.0" />
   </edmx:Reference>
 
@@ -105,7 +106,7 @@
         <Property Name="NotifyMulticastIntervalSeconds" Type="Edm.Int64">
           <Annotation Term="OData.Description" String="Indicates how often the Multicast is done from this service for SSDP."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the time interval, in seconds, between transmissions of the multicast NOTIFY ALIVE message.  A setting of 0 seconds shall disable this functionality.  The recommended value is 600 seconds."/>
-          <Annotation Term="OData.Measures.Unit" String="Seconds"/>
+          <Annotation Term="Measures.Unit" String="Seconds"/>
           <Annotation Term="Validation.Minimum" Int="0"/>
         </Property>
         <Property Name="NotifyTTL" Type="Edm.Int64">

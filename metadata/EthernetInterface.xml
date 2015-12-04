@@ -9,6 +9,7 @@
     <edmx:Include Namespace="Validation.1.0.0" Alias="Validation"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
+    <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.1.0.0" />
   </edmx:Reference>
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Measures.V1.xml">
@@ -16,6 +17,9 @@
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/IPAddresses.xml">
     <edmx:Include Namespace="IPAddresses.1.0.0"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/VLanNetworkInterface.xml">
+    <edmx:Include Namespace="VLanNetworkInterface.1.0.0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/VLanNetworkInterfaceCollection.xml">
     <edmx:Include Namespace="VLanNetworkInterfaceCollection"/>

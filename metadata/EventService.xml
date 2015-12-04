@@ -8,13 +8,14 @@
     <edmx:Include Namespace="RedfishExtensions.1.0.0" Alias="Redfish"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Measures.V1.xml">
-    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="OData.Measures"/>
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
+    <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.1.0.0" />
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Event.xml">
-    <edmx:Include Namespace="Event"/>
+    <edmx:Include Namespace="Event.1.0.0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/EventDestinationCollection.xml">
     <edmx:Include Namespace="EventDestinationCollection"/>
@@ -81,7 +82,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the number of retrys attempted for any given event to the subscription destination before the subscription is terminated."/>
         </Property>
         <Property Name="DeliveryRetryIntervalSeconds" Type="Edm.Int64" Nullable="false">
-          <Annotation Term="OData.Measures.Unit" String="Seconds"/>
+          <Annotation Term="Measures.Unit" String="Seconds"/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This represents the number of seconds between retry attempts for sending any given Event"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the interval in seconds between the retry attempts for any given event to the subscription destination."/>
