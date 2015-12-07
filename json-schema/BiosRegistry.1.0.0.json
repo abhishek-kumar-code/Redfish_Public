@@ -1,0 +1,446 @@
+{
+  "$ref": "#/definitions/BiosRegistry",
+  "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.1.0.0.json",
+  "copyright": "Copyright 2014,2015 Hewlett Packard Enterprise LP. All rights reserved.",
+  "description": "This is the schema definition for all BIOS Attribute Registries. It represents the properties for the registries themselves. ",
+  "longDescription": "This resource shall be used to represent a BIOS Attribute registry for a Redfish implementation.",
+  "properties": {
+    "@odata.context": {
+      "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
+    },
+    "@odata.id": {
+      "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
+    },
+    "@odata.type": {
+      "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+    },
+    "BiosVersion": {
+      "description": "System BIOS version.",
+      "longDescription": "The version of the BIOS firmware image that this registry applies to.",
+      "type": "string"
+    },
+    "Description": {
+      "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
+    },
+    "Id": {
+      "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
+    },
+    "Language": {
+      "description": "This is the RFC 5646 compliant language code for the registry.",
+      "longDescription": "The value of this property shall be a string consisting of an RFC 5646 language code",
+      "readonly": true,
+      "type": "string"
+    },
+    "Name": {
+      "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
+    },
+    "Oem": {
+      "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+      "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+      "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+    },
+    "OwningEntity": {
+      "description": "This is the organization or company that publishes this registry.",
+      "longDescription": "The value of this property shall be a string that represents the publisher of this registry.",
+      "readonly": true,
+      "type": "string"
+    },
+    "ProductName": {
+      "description": "The product name of the system.",
+      "longDescription": "The value of this property shall be the product name of the computer system that this registry applies to.",
+      "type": "string"
+    },
+    "RegistryEntries": {
+      "additionalProperties": false,
+      "description": "Array of all BIOS attributes and their metadata for this computer system.",
+      "longDescription": "The value of this property shall be an array containing a list of all BIOS attributes for this system, along with their possible values other metadata.",
+      "properties": {
+        "Attributes": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "CurrentValue": {
+                "description": "Placeholder of the current value of the BIOS attribute.",
+                "longDescription": "Placeholder of the current value of the BIOS attribute. The current value of a BIOS attribute might be affected by the results of evaluating the 'Dependencies' array.",
+                "type": [
+                  "string",
+                  "integer",
+                  "boolean",
+                  "null"
+                ]
+              },
+              "DisplayName": {
+                "description": "The user-readable display string of the BIOS attribute in the defined 'Language'.",
+                "longDescription": "The value of this property shall be the user-readable display string of the BIOS attribute in the defined 'Language'.",
+                "type": "string"
+              },
+              "DisplayOrder": {
+                "description": "The numeric value describing the ascending order that the BIOS attribute is displayed relative to other attributes.",
+                "longDescription": "The value of this property shall be a number the describes the ascending order in which this BIOS attribute is displayed, relative to other attributes.",
+                "type": "integer"
+              },
+              "GrayOut": {
+                "description": "The gray-out state of this BIOS attribute.",
+                "longDescription": "The value of this property shall be a boolean describing the gray-out state of this BIOS attribute. When set to true, a grayed-out BIOS attribute should be grayed out in user interfaces. But, unlike ReadOnly, the value of grayed-out attributes might still be be modified. The grayout state of a BIOS attribute might be affected by the results of evaluating the 'Dependencies' array.",
+                "type": "boolean"
+              },
+              "HelpText": {
+                "description": "The help text for the BIOS attribute.",
+                "longDescription": "The value of this property shall be the help text of the BIOS attribute.",
+                "type": "string"
+              },
+              "Immutable": {
+                "description": "Defines whether this BIOS attribute is immutable or not.",
+                "longDescription": "The value of this property shall be a boolean describing the immutable state of this BIOS attribute. Immutable attributes should not be modified and are typically used to reflect a hardware state.",
+                "type": "boolean"
+              },
+              "IsSystemUniqueProperty": {
+                "description": "Defines whether this BIOS attribute is unique for this system and should not be replicated.",
+                "longDescription": "The value of this property shall be a boolean describing this BIOS attribute is unique or not. A value of true indicates that the BIOS attribute is unique and should not be replicated.",
+                "type": "boolean"
+              },
+              "LowerBound": {
+                "description": "The lower limit of the value of a BIOS attribute of type 'Integer'.",
+                "longDescription": "The value of this property shall be a number indicating the lower limit of the value of a BIOS attribute of type 'Integer'.",
+                "type": "integer"
+              },
+              "MaxLength": {
+                "description": "The maximum character length of the value of a BIOS attribute of type 'String'.",
+                "longDescription": "The value of this property shall be a number indicating the maximum character length of the value of a BIOS attribute of type 'String'.",
+                "type": "integer"
+              },
+              "MenuPath": {
+                "description": "A path that describes the menu hierarchy of this BIOS attribute.",
+                "longDescription": "The value of this property shall be a string indicating the menu hierarchy of this BIOS attribute, in the form of a path to the menu names.",
+                "pattern": "^[.]?[A-Za-z0-9//]+$",
+                "type": "string"
+              },
+              "MinLength": {
+                "description": "The minimum character length of the value of a BIOS attribute of type 'String'.",
+                "longDescription": "The value of this property shall be a number indicating the minimum character length of the value of a BIOS attribute of type 'String'.",
+                "type": "integer"
+              },
+              "Name": {
+                "description": "The unique name of the BIOS attribute.",
+                "longDescription": "The value of this property shall be the name of this BIOS attribute that is unique in this registry.",
+                "pattern": "^[A-Z][A-Za-z0-9]+$",
+                "type": "string"
+              },
+              "ReadOnly": {
+                "description": "The read-only state of this BIOS attribute.",
+                "longDescription": "The value of this property shall be a boolean describing the read-only state of this BIOS attribute. A read-only attribute cannot be modified, and should be grayed out in user interfaces. The read-only state of a BIOS attribute might be affected by the results of evaluating the 'Dependencies' array.",
+                "type": "boolean"
+              },
+              "ScalarIncrement": {
+                "description": "The amount to increment or decrement the value of a BIOS attribute of type 'Integer' each time a user requests a value change.",
+                "longDescription": "The value of this property shall be a number indicating the amount to increment or decrement the value of a BIOS attribute of type 'Integer' each time a user requests a value change. A ScalarIncrement value of 0 indicates a free-form numeric user input.",
+                "type": "integer"
+              },
+              "Type": {
+                "description": "The type of the BIOS attribute.",
+                "enum": [
+                  "Enumeration",
+                  "String",
+                  "Integer",
+                  "Boolean",
+                  "Password"
+                ],
+                "enumDescriptions": {
+                  "Boolean": "The BIOS attributes that are true or false.",
+                  "Enumeration": "The BIOS attributes that include a list of the known possible enumerated values.",
+                  "Integer": "The BIOS attributes that have integer numeric values.",
+                  "Password": "The BIOS attributes that include password values and are not displayed as plain text.",
+                  "String": "The BIOS attributes that include free form text in their values."
+                },
+                "longDescription": "The value of this property shall be an enumeration describing type of the BIOS attribute.",
+                "type": "string"
+              },
+              "UpperBound": {
+                "description": "The upper limit of the value of a BIOS attribute of type 'Integer'.",
+                "longDescription": "The value of this property shall be a number indicating the upper limit of the value of a BIOS attribute of type 'Integer'.",
+                "type": "integer"
+              },
+              "Value": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "ValueDisplayName": {
+                      "description": "A user-readable display string of the value of the BIOS attribute in the defined 'Language'.",
+                      "longDescription": "The value of this property shall be a string representing the user-readable display string of the value of the BIOS attribute in the defined 'Language'.",
+                      "type": "string"
+                    },
+                    "ValueName": {
+                      "description": "The value name of the BIOS attribute.",
+                      "longDescription": "The value of this property shall be a string representing the value name of the BIOS attribute. ValueName is a unique string within the list of possible values in the 'Value' array of a given BIOS attribute.",
+                      "pattern": "^[A-Za-z0-9]+$",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "ValueName"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "ValueExpression": {
+                "description": "A regular expression that is used to validate the value of the BIOS attribute. This is only applicable to BIOS attributes of type 'String' or 'Integer'.",
+                "longDescription": "The value of this property shall be a regular expression that is valid according to the ECMA 262 regular expression dialect. This string is used to validate the value of the BIOS attribute. This is only applicable to BIOS attributes of type 'String' or 'Integer'.",
+                "type": "string"
+              },
+              "WarningText": {
+                "description": "The warning text for changing the BIOS attribute.",
+                "longDescription": "The value of this property shall be the warning text of the BIOS attribute.",
+                "type": "string"
+              },
+              "WriteOnly": {
+                "description": "Defines whether this BIOS attribute is write-only. Such attributes revert back to their initial value after settings are applied.",
+                "longDescription": "The value of this property shall be a boolean describing the write-only state of this BIOS attribute. A write-only attribute reverts back to it's initial value after settings are applied.",
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "Name",
+              "Type",
+              "HelpText",
+              "ReadOnly",
+              "CurrentValue"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "Dependencies": {
+          "description": "The array containing a list of dependencies of BIOS attributes on this system.",
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "Dependency": {
+                "additionalProperties": false,
+                "properties": {
+                  "MapFrom": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "MapFromAttribute": {
+                          "description": "The BIOS attribute that is used to evaluate this dependency expression.",
+                          "pattern": "^[A-Z][A-Za-z0-9]+$",
+                          "type": "string"
+                        },
+                        "MapFromCondition": {
+                          "description": "The condition that is used to evaluate this dependency expression. For example, '==' or '!='.",
+                          "enum": [
+                            "==",
+                            "!=",
+                            ">",
+                            ">=",
+                            "<",
+                            "<="
+                          ],
+                          "enumDescriptions": {
+                            "!=": "The logical operation for 'Not Equal'.",
+                            "<": "The logical operation for 'Less than'.",
+                            "<=": "The logical operation for 'Less than or Equal'.",
+                            "==": "The logical operation for 'Equal'.",
+                            ">": "The logical operation for 'Greater than'.",
+                            ">=": "The logical operation for 'Greater than or Equal'."
+                          },
+                          "type": "string"
+                        },
+                        "MapFromProperty": {
+                          "description": "The BIOS attribute specified in MapFromAttribute whose value is used to evaluate this dependency expression.",
+                          "enum": [
+                            "CurrentValue",
+                            "ReadOnly",
+                            "GrayOut"
+                          ],
+                          "enumDescriptions": {
+                            "CurrentValue": "The dependency on an attribute's CurrentValue.",
+                            "GrayOut": "The dependency on an attribute's GrayOut state.",
+                            "ReadOnly": "The dependency on an attribute's ReadOnly state."
+                          },
+                          "type": "string"
+                        },
+                        "MapFromValue": {
+                          "description": "The value that the property specified in MapToProperty (the BIOS attribute specified in MapToAttribute) is changed to if the dependency expression evaluates to true.",
+                          "pattern": "^[A-Za-z0-9]+$",
+                          "type": [
+                            "string",
+                            "integer",
+                            "boolean"
+                          ]
+                        },
+                        "MapTerms": {
+                          "description": "The logical term used to combine multiple conditions in this dependency expression. For example, '&&' for logical AND, or '||' for logical OR of the conditions.",
+                          "enum": [
+                            "&&",
+                            "||"
+                          ],
+                          "enumDescriptions": {
+                            "&&": "The operation used for logical 'AND' of dependency terms.",
+                            "||": "The operation used for logical 'OR' of dependency terms."
+                          },
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "MapFromAttribute",
+                        "MapFromCondition",
+                        "MapFromProperty",
+                        "MapFromValue"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "MapToAttribute": {
+                    "description": "The Name of the BIOS attribute that is affected by this dependency expression.",
+                    "pattern": "^[A-Z][A-Za-z0-9]+$",
+                    "type": "string"
+                  },
+                  "MapToProperty": {
+                    "description": "The property of the BIOS attribute specified in MapToAttribute that is affected by this dependency expression (for example, 'CurrentValue' or 'ReadOnly').",
+                    "enum": [
+                      "CurrentValue",
+                      "ReadOnly",
+                      "GrayOut",
+                      "HelpText",
+                      "WarningText",
+                      "MaxLength",
+                      "MinLength",
+                      "UpperBound",
+                      "LowerBound",
+                      "ScalarIncrement",
+                      "ValueExpression"
+                    ],
+                    "enumDescriptions": {
+                      "CurrentValue": "The dependency that affects an attribute's CurrentValue.",
+                      "GrayOut": "The dependency that affects an attribute's GrayOut state.",
+                      "HelpText": "The dependency that affects an attribute's HelpText.",
+                      "LowerBound": "The dependency that affects an attribute's LowerBound.",
+                      "MaxLength": "The dependency that affects an attribute's MaxLength.",
+                      "MinLength": "The dependency that affects an attribute's MinLength.",
+                      "ReadOnly": "The dependency that affects an attribute's ReadOnly state.",
+                      "ScalarIncrement": "The dependency that affects an attribute's ScalarIncrement.",
+                      "UpperBound": "The dependency that affects an attribute's UpperBound.",
+                      "ValueExpression": "The dependency that affects an attribute's ValueExpression.",
+                      "WarningText": "The dependency that affects an attribute's WarningText."
+                    },
+                    "type": "string"
+                  },
+                  "MapToValue": {
+                    "description": "The value that MapToProperty (the BIOS attribute specified in MapToAttribute) is changed to if the dependency expression evaluates to true.",
+                    "pattern": "^[A-Za-z0-9]+$",
+                    "type": [
+                      "string",
+                      "integer",
+                      "boolean"
+                    ]
+                  }
+                },
+                "type": "object"
+              },
+              "DependencyFor": {
+                "description": "The Name of the parent BIOS attribute whose value change triggers the evaluation of this dependency expression.",
+                "pattern": "^[A-Z][A-Za-z0-9]+$",
+                "type": "string"
+              },
+              "Type": {
+                "description": "The type of the dependency structure.",
+                "enum": [
+                  "Map"
+                ],
+                "enumDescriptions": {
+                  "Map": "A simple mapping dependency. The attribute value or state is changed to the mapped value if the condition evaluates to true."
+                },
+                "type": "string"
+              }
+            },
+            "required": [
+              "DependencyFor",
+              "Dependency",
+              "Type"
+            ],
+            "type": "object"
+          },
+          "longDescription": "The value of this property shall be an array containing a list of dependencies of BIOS attributes on this system.",
+          "required": [
+            "Type"
+          ],
+          "type": "array"
+        },
+        "Menus": {
+          "description": "The array containing the BIOS attributes menus and their hierarchy.",
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "DisplayName": {
+                "description": "The user-readable display string of this menu in the defined 'Language'.",
+                "longDescription": "The value of this property shall be the user-readable display string of the menu in the defined 'Language'.",
+                "type": "string"
+              },
+              "DisplayOrder": {
+                "description": "The numeric value describing the ascending order in which this menu is displayed relative to other menus.",
+                "longDescription": "The value of this property shall be a number the describes the ascending order in which this menu is displayed, relative to other menus.",
+                "type": "integer"
+              },
+              "GrayOut": {
+                "description": "The gray-out state of this menu. A grayed-only menu is not accessible in user interfaces.",
+                "longDescription": "The value of this property shall be a boolean describing the gray-out state of this menu. When set to true, a grayed-only menu is not accessible in user interfaces.",
+                "type": "boolean"
+              },
+              "MenuPath": {
+                "description": "A path that describes this menu hierarchy relative to other menus.",
+                "longDescription": "The value of this property shall be a string indicating the menu hierarchy of this menu, in the form of a path to the menu names.",
+                "pattern": "^[.]?[A-Za-z0-9//]+$",
+                "type": "string"
+              },
+              "Name": {
+                "description": "The unique name string of this menu.",
+                "longDescription": "The value of this property shall be the name of this menu that is unique in this registry.",
+                "pattern": "^[A-Z][A-Za-z0-9]+$",
+                "type": "string"
+              },
+              "ReadOnly": {
+                "description": "The read-only state of this menu.",
+                "longDescription": "The value of this property shall be a boolean describing the read-only state of this menu. A read-only menu is not accessible in user interfaces, and all properties contained in that menu and its sub-menus become read-only.",
+                "type": "boolean"
+              }
+            },
+            "type": "object"
+          },
+          "longDescription": "The value of this property shall be an array containing the BIOS attributes menus and their hierarchy.",
+          "required": [
+            "Name",
+            "ReadOnly"
+          ],
+          "type": "array"
+        }
+      },
+      "required": [
+        "Attributes"
+      ],
+      "type": "object"
+    },
+    "RegistryVersion": {
+      "description": "This is the message registry version which is used in the middle portion of a messageID.",
+      "longDescription": "The value of this property shall be the version of this message registry. The format of this string shall be of the format majorversion.minorversion.errata in compliance with Protocol Version section of the Redfish specification.",
+      "readonly": true,
+      "type": "string"
+    },
+    "SystemId": {
+      "description": "The system ID of the system.",
+      "longDescription": "The value of this property shall be the system ID that identifies the computer system model that this registry applies to.",
+      "pattern": "^[A-Za-z0-9]+$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "Language",
+    "RegistryPrefix",
+    "RegistryVersion",
+    "OwningEntity",
+    "RegistryEntries"
+  ],
+  "title": "#BiosRegistry.1.0.0.BiosRegistry"
+}

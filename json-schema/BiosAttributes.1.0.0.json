@@ -1,0 +1,51 @@
+{
+  "$ref": "#/definitions/BiosAttributes",
+  "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.1.0.0.json",
+  "copyright": "Copyright 2014,2015 Hewlett Packard Enterprise LP. All rights reserved.",
+  "properties": {
+    "@odata.context": {
+      "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
+    },
+    "@odata.id": {
+      "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
+    },
+    "@odata.type": {
+      "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+    },
+    "BiosRegistry": {
+      "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
+      "description": "The BIOS Attribute Registry",
+      "longDescription": "The reference to the BIOS Attribute Registry that lists the metadata describing BIOS settings in this resource. BIOS settings appear as additional properties in this resource, and can be looked up in the Attribute Registry by their names."
+    },
+    "Description": {
+      "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
+    },
+    "Id": {
+      "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
+    },
+    "Name": {
+      "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
+    },
+    "Oem": {
+      "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+      "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+      "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+    },
+    "additionalProperties": false,
+    "patternProperties": {
+      "^(([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$)|(^[A-Z][A-Za-z0-9]+$)": {
+        "additionalProperties": true,
+        "description": "This property shall specify a valid odata or Redfish property.",
+        "type": [
+          "array",
+          "boolean",
+          "number",
+          "null",
+          "object",
+          "string"
+        ]
+      }
+    }
+  },
+  "title": "#BiosAttributes.1.0.0.BiosAttributes"
+}

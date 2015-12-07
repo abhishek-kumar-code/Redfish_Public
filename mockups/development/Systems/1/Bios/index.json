@@ -1,0 +1,36 @@
+{
+  "@Redfish.Copyright": "Copyright 2014,2015 Hewlett Packard Enterprise LP. All rights reserved.",
+  "@Redfish.Settings": {
+    "@odata.type": "#Settings.1.0.0.Settings",
+    "ETag": "someetag",
+    "Messages": [
+      {
+        "MessageId": "Base.1.0.SettingsFailed",
+        "RelatedProperties": [
+          "#/ProcTurboMode"
+        ]
+      }
+    ],
+    "SettingsObject": {
+      "@odata.id": "/redfish/v1/Systems/1/Bios/SD"
+    },
+    "Time": "2012-03-07T14:44.30-05:00"
+  },
+  "@odata.context": "/redfish/v1/$metadata#Systems/1/Bios",
+  "@odata.id": "/redfish/v1/Systems/1/Bios",
+  "@odata.type": "#BiosAttributes.1.0.0.BiosAttributes",
+  "AdminPhone": "",
+  "BiosRegistry": "BiosAttributeRegistryP89.1.0.0",
+  "BootMode": "Uefi",
+  "Description": "BIOS Configuration Current Settings",
+  "EmbeddedSata": "Raid",
+  "Id": "Bios",
+  "Name": "BIOS Configuration Current Settings",
+  "NicBoot1": "NetworkBoot",
+  "NicBoot2": "Disabled",
+  "PowerProfile": "MaxPerf",
+  "ProcCoreDisable": 0,
+  "ProcHyperthreading": "Enabled",
+  "ProcTurboMode": "Enabled",
+  "UsbControl": "UsbEnabled"
+}
