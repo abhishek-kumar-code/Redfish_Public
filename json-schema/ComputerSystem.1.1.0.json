@@ -210,6 +210,78 @@
                 "VirtuallyPartitioned": "A virtual or software-based partition of a computer system"
             }
         },
+        "TrustedModules": {
+          "description": "This object describes a list of Trusted Modules installed in the system.",
+          "items": {
+            "additionalProperties": false,
+            "description": "This object describes the inventory of a Trusted Modules installed in the system.",
+            "patternProperties": {
+              "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                "description": "This property shall specify a valid odata or Redfish property.",
+                "type": [
+                  "array",
+                  "boolean",
+                  "number",
+                  "null",
+                  "object",
+                  "string"
+                ]
+              }
+            },
+            "properties": {
+            "FirmwareVersion": {
+                "description": "The firmware version of this Trusted Module",
+                "longDescription": "This property shall contain the firwmare version as defined by the manufacturer for the Trusted Module.",
+                "readonly": true,
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "ModuleState": {
+                "description": "This property indicates the Trusted Module state.",
+                "enum": [
+                  "NotPresent",
+                  "PresentEnabled",
+                  "PresentDisabled"
+                ],
+                "enumDescriptions": {
+                  "NotPresent": "Trusted Module is not present.",
+                  "PresentDisabled": "Trusted Module is present but disabled.",
+                  "PresentEnabled": "Trusted Module is present and enabled."
+                },
+                "longDescription": "This property shall contain the current state of the installed Trusted Module.",
+                "readonly": true,
+                "type": "string"
+              },
+              "ModuleType": {
+                "description": "This property indicates the type of the Trusted Module.",
+                "enum": [
+                  "TPM1.2",
+                  "TPM2.0",
+                  "TCM1.0"
+                ],
+                "enumDescriptions": {
+                  "TCM1.0": "Trusted Cryptography Module (TCM) 1.0",
+                  "TPM1.2": "Trusted Platform Module (TPM) 1.2.",
+                  "TPM2.0": "Trusted Platform Module (TPM) 2.0."
+                },
+                "longDescription": "This property shall contain the type of the installed Trusted Module.",
+                "readonly": true,
+                "type": "string"
+              },
+              "Oem": {
+                "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+              }
+            },
+            "readonly": true,
+            "type": "object"
+          },
+          "readonly": true,
+          "type": "array"
+        },
         "ComputerSystem": {
             "type": "object",
             "patternProperties": {
@@ -448,6 +520,11 @@
                     "$ref": "#/definitions/MemorySummary",
                     "description": "This object describes the central memory of the system in general detail.",
                     "longDescription": "This object shall contain properties which describe the central memory for the current resource."
+                },
+                "TrustedModules": {
+                  "$ref": "#/definitions/TrustedModules",
+                  "description": "This object describes the Trusted Modules in the system.",
+                  "longDescription": "This object shall contain properties which describe the truted modules for the current resource."
                 },
                 "Actions": {
                     "type": "object",
