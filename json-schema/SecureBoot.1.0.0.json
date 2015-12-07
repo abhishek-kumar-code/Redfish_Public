@@ -47,25 +47,25 @@
                     "type": "boolean",
                     "readonly": false,
                     "description": "Enable or disable UEFI Secure Boot (takes effect on next boot).",
-                    "longDescription": "@todo"
+                    "longDescription": "Setting this property to true enables UEFI Secure Boot, and setting it to false disables it."
                 },
                 "SecureBootCurrentState": {
                     "type": "boolean",
                     "readonly": true,
                     "description": "Current enabled state of Secure Boot",
-                    "longDescription": "@todo"
+                    "longDescription": "The value of this property indicates the current state of UEFI Secure Boot. A value of true indicates that Secure Boot is currently enabled, and false indicate that it is disabled."
                 },
                 "ResetToDefaultKeys": {
                     "type": "boolean",
                     "readonly": false,
                     "description": "If true, reset to default Secure Boot keys on next boot.",
-                    "longDescription": "@todo"
+                    "longDescription": "Setting this property to true causes the content of all UEFI Secure Boot databases to get reset to their default state."
                 },
                 "ResetAllKeys": {
                     "type": "boolean",
                     "readonly": false,
                     "description": "If true, clear all Secure Boot keys on next boot.",
-                    "longDescription": "@todo"
+                    "longDescription": "Settings this property to true causes the content of all UEFI Secure Boot databases to get cleared, putting the system in Setup Mode."
                 }
             }
         }
