@@ -56,5 +56,24 @@
         "#Storage.BreakHAPair": {
             "Target": "/redfish/v1/Systems/3/Storage/HAPERCs/Actions/Storage.BreakHAPair"
         }
-    }
+    },
+    "Redundancy": [
+        {
+            "@odata.id": "/redfish/v1/Systems/3/Storage/HAPERCs#/Redundancy/0",
+            "MemberId": "0",
+            "Name": "Controller Redundancy Group 1",
+            "Mode": "Sharing",
+            "MaxNumSupported": 2,
+            "MinNumNeeded": 1,
+            "RedundancySet": [
+                {"@odata.id": "/redfish/v1/Systems/3/Storage/HAPERCs/Controllers/1"},
+                {"@odata.id": "/redfish/v1/Systems/3/Storage/HAPERCs/Controllers/2"}
+            ],
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK"
+            }
+        }
+    ],
+    "Oem": {}    
 }
