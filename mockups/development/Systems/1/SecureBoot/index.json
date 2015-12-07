@@ -1,0 +1,12 @@
+{
+  "@Redfish.Copyright": "Copyright 2014,2015 Hewlett Packard Enterprise LP. All rights reserved.",
+  "@odata.context": "/redfish/v1/$metadata#Systems/1/SecureBoot",
+  "@odata.id": "/redfish/v1/Systems/1/SecureBoot",
+  "@odata.type": "#SecureBoot.0.1.0.SecureBoot",
+  "Id": "SecureBoot",
+  "Name": "UEFI Secure Boot",
+  "ResetAllKeys": false,
+  "ResetToDefaultKeys": false,
+  "SecureBootCurrentState": false,
+  "SecureBootEnable": false
+}

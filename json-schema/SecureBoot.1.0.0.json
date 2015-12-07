@@ -1,0 +1,74 @@
+{
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.1.0.0.json",
+    "title": "#SecureBoot.1.0.0.SecureBoot",
+    "$ref": "#/definitions/SecureBoot",
+    "definitions": {
+        "SecureBoot": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+                },
+                "Oem": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
+                },
+                "Description": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
+                },
+                "SecureBootEnable": {
+                    "type": "boolean",
+                    "readonly": false,
+                    "description": "Enable or disable UEFI Secure Boot (takes effect on next boot).",
+                    "longDescription": "@todo"
+                },
+                "SecureBootCurrentState": {
+                    "type": "boolean",
+                    "readonly": true,
+                    "description": "Current enabled state of Secure Boot",
+                    "longDescription": "@todo"
+                },
+                "ResetToDefaultKeys": {
+                    "type": "boolean",
+                    "readonly": false,
+                    "description": "If true, reset to default Secure Boot keys on next boot.",
+                    "longDescription": "@todo"
+                },
+                "ResetAllKeys": {
+                    "type": "boolean",
+                    "readonly": false,
+                    "description": "If true, clear all Secure Boot keys on next boot.",
+                    "longDescription": "@todo"
+                }
+            }
+        }
+    },
+    "copyright": "Copyright 2014,2015 Hewlett Packard Enterprise LP. All rights reserved."
+}

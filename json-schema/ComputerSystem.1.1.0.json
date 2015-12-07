@@ -449,6 +449,12 @@
                     "description": "This object describes the central memory of the system in general detail.",
                     "longDescription": "This object shall contain properties which describe the central memory for the current resource."
                 },
+                "SecureBoot": {
+                  "$ref": "http://redfish.dmtf.org/schemas/v1/SecureBoot.json#/definitions/SecureBoot",
+                  "description": "A reference to the SecureBoot resource associated with this system",
+                  "longDescription": "The value of this property shall be a link to a resource of type SecureBoot.",
+                  "readonly": true
+                },		
                 "Actions": {
                     "type": "object",
                     "patternProperties": {
