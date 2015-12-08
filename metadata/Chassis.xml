@@ -137,7 +137,7 @@
         <NavigationProperty Name="ManagersIn" Type="Collection(Manager.Manager)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the managers located in this chassis."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the managers that are in this chassis and shall reference a resource of type Manager."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall reference a resource of type Manager that are in this Chassis."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>		
         <NavigationProperty Name="ContainedBy" Type="Chassis.Chassis">
