@@ -23,6 +23,7 @@
     "IndicatorLED": "Off",
     "PowerState": "On",
     "Boot": {
+        "@odata.type": "ComputerSystem.1.1.0.Boot"
         "BootSourceOverrideEnabled": "Once",
         "BootSourceOverrideMode": "UEFI",
         "BootSourceOverrideTarget": "Pxe",
