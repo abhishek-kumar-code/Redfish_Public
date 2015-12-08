@@ -24,6 +24,7 @@
     "PowerState": "On",
     "Boot": {
         "BootSourceOverrideEnabled": "Once",
+        "BootSourceOverrideTarget": "UEFI",
         "BootSourceOverrideTarget": "Pxe",
         "BootSourceOverrideTarget@Redfish.AllowableValues": [
             "None",
