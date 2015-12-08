@@ -309,16 +309,7 @@
         <Member Name="SDCard">
            <Annotation Term="OData.Description" String="Boot from an SD Card"/>
         </Member>
-      </EnumType>
-
-      <EnumType Name="BootSourceOverrideBootMode">
-        <Member Name="Legacy">
-          <Annotation Term="OData.Description" String="The system will boot in non-UEFI boot mode to the Boot Source Override Target."/>
-        </Member>
-        <Member Name="UEFI">
-          <Annotation Term="OData.Description" String="The system will boot in UEFI boot mode to the Boot Source Override Target."/>
-        </Member>
-      </EnumType>
+      </EnumType> 
 
       <EnumType Name="BootSourceOverrideEnabled">
         <Member Name="Disabled">
@@ -372,6 +363,15 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.1.1.0">
 
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.1.0.1.ComputerSystem"/>
+
+      <EnumType Name="BootSourceOverrideBootMode">
+        <Member Name="Legacy">
+          <Annotation Term="OData.Description" String="The system will boot in non-UEFI boot mode to the Boot Source Override Target."/>
+        </Member>
+        <Member Name="UEFI">
+          <Annotation Term="OData.Description" String="The system will boot in UEFI boot mode to the Boot Source Override Target."/>
+        </Member>
+      </EnumType>
 
     </Schema>
   
