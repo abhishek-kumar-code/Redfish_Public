@@ -322,8 +322,8 @@
           </Property>
         </Property>
         
-     <ComplexType Name="Links" BaseType=Manager.1.0.0.Links">
-        <NavigationProperty Name="ManagerLocation" Type="Manager.1.1.0.Manager">
+     <ComplexType Name="Links" BaseType="Manager.1.0.0.Links">
+        <NavigationProperty Name="ManagerLocation" Type="Chassis.Chassis">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This property is a reference to the chasis that this manager is located in."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain a reference to the chasis that this manager is located in."/>
