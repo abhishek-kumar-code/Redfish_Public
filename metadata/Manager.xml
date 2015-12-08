@@ -201,12 +201,6 @@
           <Annotation Term="OData.LongDescription" String="This property shall contain an array of references to Chassis resources of which this Manager instance has control."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="ManagerLocation" Type="Chassis.1.0.0.Chassis">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-          <Annotation Term="OData.Description" String="This property is a reference to the chasis that this manager is located in."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain a reference to the chasis that this manager is located in."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>     		
       </ComplexType>
 
       <!-- This type defines the type of manager that given resource represents. -->
@@ -320,5 +314,23 @@
       <EntityType Name="Manager" BaseType="Manager.1.0.0.Manager"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.1.1.0">
+        <EntityType Name="Manager" BaseType="Manager.1.0.1.Manager">	
+           <Property Name="Links" Type="Manager.1.1.0.Links" Nullable="false">
+             <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+             <Annotation Term="OData.Description" String="This object contains the links to other resources that are related to this resource."/>
+          </Property>
+        </Property>
+        
+     <ComplexType Name="Links" BaseType=Manager.1.0.0.Links">
+        <NavigationProperty Name="ManagerLocation" Type="Manager.1.1.0.Manager">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="This property is a reference to the chasis that this manager is located in."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain a reference to the chasis that this manager is located in."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>		
+      </ComplexType>
+
+    </Schema>
   </edmx:DataServices>
 </edmx:Edmx>
