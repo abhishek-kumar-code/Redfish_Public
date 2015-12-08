@@ -134,12 +134,6 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resource that manages this chassis and shall reference a resource of type Manager."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="ManagersIn" Type="Collection(Manager.Manager)">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="An array of references to the managers located in this chassis."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall reference one or more resources of type Manager that are in this Chassis."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>		
         <NavigationProperty Name="ContainedBy" Type="Chassis.Chassis">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A reference to the chassis that this chassis is contained by."/>
