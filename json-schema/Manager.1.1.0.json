@@ -287,7 +287,7 @@
                         "ManagerLocation@odata.navigationLink": {
                             "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
                         },
-                        "ManagerInChassis": {
+                        "ManagersInChassis": {
                             "$ref": "http://redfish.dmtf.org/schemas/v1/Chassis.json#/definitions/Chassis",
                             "readonly": true,
                             "description": "This property is a reference to the chasis that this manager is located in.",
