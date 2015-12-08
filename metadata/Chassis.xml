@@ -323,13 +323,6 @@
    </Schema>
 
    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.1.2.0">    
-      <EntityType Name="Chassis" BaseType="Chassis.1.1.0.Chassis">
-          <Property Name="Links" Type="Chassis.1.2.0.Links" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The links object contains the links to other resources that are related to this resource."/>
-        </Property> 
-      </EntityType>
-      
      <ComplexType Name="Links" BaseType="Chassis.1.0.0.Links">
         <NavigationProperty Name="ManagersIn" Type="Collection(Manager.Manager)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
