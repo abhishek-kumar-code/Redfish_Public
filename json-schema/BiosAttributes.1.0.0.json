@@ -35,7 +35,8 @@
     "patternProperties": {
       "^(([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$)|(^[A-Z][A-Za-z0-9]+$)": {
         "additionalProperties": true,
-        "description": "This property shall specify a valid odata or Redfish property.",
+        "description": "This can be any odata or Redfish properties or Attribute names.",
+        "longDescription": "This property shall specify a valid odata or Redfish property, or a valid Attribute Name specified in the Attribute Registry.",
         "type": [
           "array",
           "boolean",
