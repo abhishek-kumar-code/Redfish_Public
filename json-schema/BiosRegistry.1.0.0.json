@@ -202,7 +202,6 @@
             "required": [
               "Name",
               "Type",
-              "HelpText",
               "ReadOnly",
               "CurrentValue"
             ],
