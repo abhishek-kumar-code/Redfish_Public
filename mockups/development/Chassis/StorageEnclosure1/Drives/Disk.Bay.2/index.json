@@ -1,7 +1,7 @@
 {
     "@odata.context": "/redfish/v1/$metadata#Chassis/Members/Drives/Members/$entity",
     "@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.2",
-    "@odata.type": "#StorageDisk0.0.1",
+    "@odata.type": "#StorageDrive.0.0.1.Drive",
     "IndicatorLED": "Lit",
     "Model": "ST9146802SS",
     "Revision": "S20A",
@@ -17,7 +17,7 @@
     "FormFactor": "3.5 inch",
     "Links": {
         "Volumes": [
-            {"@odata.id": "/redfish/v1/Systems/3/Storage/HAPERCs/Volumes/2"}
+            {"@odata.id": "/redfish/v1/Systems/3/Storage/HA-RAID/Volumes/2"}
         ]
     },
     "Actions": {

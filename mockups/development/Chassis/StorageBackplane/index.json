@@ -12,10 +12,7 @@
     "Status":{
         "State":"Enabled",
         "Health":"OK"
-    },
-    "Drives": {
-        "@odata.id":"/redfish/v1/Chassis/StorageBackplane/Drives"
-    },
+    }, 
     "Links": {
         "ManagedBy": [
             {"@odata.id":"/redfish/v1/Managers/4"}
@@ -24,8 +21,16 @@
             "@odata.id": "/redfish/v1/Chassis/Rack2WithDAS"
         },
         "Storage": [
-            {"@odata.id":"/redfish/v1/Systems/3/Storage/PERCIntegrated"},
+            {"@odata.id":"/redfish/v1/Systems/3/Storage/RAIDIntegrated"},
             {"@odata.id":"/redfish/v1/Systems/3/Storage/SATAEmbedded"}
+        ],
+        "Drives": [
+            {"@odata.id":"/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.1"},
+            {"@odata.id":"/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.2"},
+            {"@odata.id":"/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.5"},
+            {"@odata.id":"/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.6"},
+            {"@odata.id":"/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.7"},
+            {"@odata.id":"/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.8"}
         ],
         "Oem": {}
     },

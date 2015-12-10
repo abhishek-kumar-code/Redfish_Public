@@ -12,17 +12,32 @@
         "HealthRollUp": "OK"
     },
     "Controllers": [
-        {"@odata.id": "/redfish/v1/Systems/3/Storage/SATAEmbedded/Controllers/1"}
+        {
+            "@odata.id": "/redfish/v1/Systems/3/Storage/SATAEmbedded#Controllers/0",
+            "@odata.type": "#Storage.0.0.1.Controller",
+            "Id": "0",
+            "Name": "System SATA",
+            "Description": "System SATA (Embedded)",
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK"
+            },
+            "SpeedGbps": 6,
+            "SupportedDeviceProtocols": [
+                "SATA"
+            ],
+            "UEFIDevicePath": "Acpi(PNP0A03,0)/Pci(1F|1)/Ata(Primary,Master)/HD(Part3, Sig00110011)"
+        }
+    ],
+    "Drives": [
+        {"@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.1"},
+        {"@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.2"}
     ],
     "Volumes": [
         {"@odata.id": "/redfish/v1/Systems/3/Storage/SATAEmbedded/Volumes/1"},
         {"@odata.id": "/redfish/v1/Systems/3/Storage/SATAEmbedded/Volumes/2"}
     ],
-    "Links": {
-        "Drives": [
-            {"@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.1"},
-            {"@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.2"}
-        ],
+    "Links": { 
         "Enclosures": [
             {"@odata.id": "/redfish/v1/Chassis/StorageBackplane"}
         ]

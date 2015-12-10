@@ -20,17 +20,20 @@
     },
     "Power": {
         "@odata.id":"/redfish/v1/Chassis/StorageEnclosure1/Power"
-    },
-    "Drives": {
-        "@odata.id":"/redfish/v1/Chassis/StorageEnclosure1/Drives"
-    },
+    }, 
     "Links": {
         "ManagedBy": [
             {"@odata.id":"/redfish/v1/Managers/5"},
             {"@odata.id":"/redfish/v1/Managers/6"}
         ],
         "Storage": [
-            {"@odata.id":"/redfish/v1/Systems/3/Storage/HAPERCs"}
+            {"@odata.id":"/redfish/v1/Systems/3/Storage/HA-RAID"}
+        ],
+        "Drives": [
+            {"@odata.id":"/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.0"},
+            {"@odata.id":"/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.1"},
+            {"@odata.id":"/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.2"},
+            {"@odata.id":"/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.3"}
         ],
         "Oem": {}
     },

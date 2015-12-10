@@ -1,7 +1,7 @@
 {
     "@Redfish.Copyright": "Copyright  2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#Systems/Members/3/Storage/HAPERCs/Volumes/Members/$entity",
-    "@odata.id": "/redfish/v1/Systems/3/Storage/HAPERCs/Volumes/1",
+    "@odata.context": "/redfish/v1/$metadata#Systems/Members/3/Storage/HA-RAID/Volumes/Members/$entity",
+    "@odata.id": "/redfish/v1/Systems/3/Storage/HA-RAID/Volumes/1",
     "@odata.type": "#StorageController.1.0.0",
     "Id": "1",
     "Name": "Virtual Disk 1",
@@ -18,7 +18,7 @@
     },
     "Actions": {
         "#Volume.Initialize": {
-            "Target": "/redfish/v1/Systems/3/Storage/HAPERCs/Volumes/1/Actions/Volume.Initialize",
+            "Target": "/redfish/v1/Systems/3/Storage/HA-RAID/Volumes/1/Actions/Volume.Initialize",
             "InitializeType@Redfish.AllowableValues": [
                 "Fast",
                 "Slow"

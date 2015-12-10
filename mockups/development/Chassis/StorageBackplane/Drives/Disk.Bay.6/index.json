@@ -1,7 +1,7 @@
 {
     "@odata.context": "/redfish/v1/$metadata#Chassis/Members/Drives/Members/$entity",
     "@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.6",
-    "@odata.type": "#StorageDisk0.0.1",
+    "@odata.type": "#StorageDrive.0.0.1.Drive",
     "IndicatorLED": "Lit",
     "Model": "ST9146802SS",
     "Revision": "S20A",
@@ -22,7 +22,7 @@
     "BlockSizeBytes": 512,
     "Links": {
         "Volumes": [
-            {"@odata.id": "/redfish/v1/Systems/3/Storage/PERCIntegrated/Volumes/1"}
+            {"@odata.id": "/redfish/v1/Systems/3/Storage/RAIDIntegrated/Volumes/1"}
         ]
     },
     "Actions": {
