@@ -22,9 +22,14 @@
                 "State": "Enabled",
                 "Health": "OK"
             },
-            "WorldWideName": "5782BCB07197C900",
+            "WorldWideNames": [
+                "5782BCB07197C900"
+            ],
             "SpeedGbps": 12,
             "FirmwareVersion": "23.13.06.0006",
+            "SupportedControllerProtocols": [
+                "PCIe"
+            ],
             "SupportedDeviceProtocols": [
                 "SAS",
                 "SATA"
@@ -40,9 +45,14 @@
                 "State": "Enabled",
                 "Health": "OK"
             },
-            "WorldWideName": "5782BCB07197F900",
+            "WorldWideNames": [
+                "5782BCB07197F900"
+            ],
             "SpeedGbps": 12,
             "FirmwareVersion": "23.13.06.0006",
+            "SupportedControllerProtocols": [
+                "PCIe"
+            ],
             "SupportedDeviceProtocols": [
                 "SAS",
                 "SATA"

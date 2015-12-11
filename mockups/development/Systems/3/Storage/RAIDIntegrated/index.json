@@ -24,9 +24,14 @@
                 "State": "Enabled",
                 "Health": "OK"
             },
-            "WorldWideName": "5782BCB07197C600",
+            "WorldWideNames": [
+                "5782BCB07197C600"
+            ],
             "SpeedGbps": 12,
             "FirmwareVersion": "23.13.06.0006",
+            "SupportedControllerProtocols": [
+                "PCIe"
+            ],
             "SupportedDeviceProtocols": [
                 "SAS",
                 "SATA"
