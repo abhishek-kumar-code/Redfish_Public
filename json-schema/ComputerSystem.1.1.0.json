@@ -254,8 +254,8 @@
                 "readonly": true,
                 "type": "string"
               },
-              "ModuleType": {
-                "description": "This property indicates the type of the Trusted Module.",
+              "InterfaceType": {
+                "description": "This property indicates the interface type of the Trusted Module.",
                 "enum": [
                   "TPM1.2",
                   "TPM2.0",
@@ -266,7 +266,7 @@
                   "TPM1.2": "Trusted Platform Module (TPM) 1.2.",
                   "TPM2.0": "Trusted Platform Module (TPM) 2.0."
                 },
-                "longDescription": "This property shall contain the type of the installed Trusted Module.",
+                "longDescription": "This property shall contain the interface type of the installed Trusted Module.",
                 "readonly": true,
                 "type": "string"
               },
