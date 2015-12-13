@@ -50,13 +50,21 @@
 					"longDescription": "Setting this property to true enables UEFI Secure Boot, and setting it to false disables it."
 				},
 				"SecureBootCurrentState": {
-					"type": "boolean",
+					"description": "Current enabled state of Secure Boot.",
+					"enum": [
+						"Enabled",
+						"Disabled"
+					],
+					"enumDescriptions": {
+						"Enabled": "Secure Boot is currently enabled.",
+						"Disabled": "Secure Boot is currently disabled."
+					},
+					"longDescription": "The value of this property shall indicate the current state of UEFI Secure Boot.",
 					"readonly": true,
-					"description": "Current enabled state of Secure Boot",
-					"longDescription": "The value of this property indicates the current state of UEFI Secure Boot. A value of true indicates that Secure Boot is currently enabled, and false indicate that it is disabled."
+					"type": "string"
 				},
 				"SecureBootMode": {
-					"description": "This property indicates the current Secure Boot Mode.",
+					"description": "Current Secure Boot Mode.",
 					"enum": [
 						"SetupMode",
 						"UserMode",
