@@ -8,5 +8,6 @@
   "ResetAllKeys": false,
   "ResetToDefaultKeys": false,
   "SecureBootCurrentState": false,
-  "SecureBootEnable": false
+  "SecureBootEnable": false,
+  "SecureBootMode":"UserMode"
 }
