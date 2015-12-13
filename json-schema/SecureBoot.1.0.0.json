@@ -55,6 +55,24 @@
                     "description": "Current enabled state of Secure Boot",
                     "longDescription": "The value of this property indicates the current state of UEFI Secure Boot. A value of true indicates that Secure Boot is currently enabled, and false indicate that it is disabled."
                 },
+              "SecureBootMode": {
+                "description": "This property indicates the current Secure Boot Mode.",
+                "enum": [
+                  "SetupMode",
+                  "UserMode",
+                  "AuditMode",
+                  "DeployedMode"
+                ],
+                "enumDescriptions": {
+                  "Secure Boot is currently in Setup Mode.",
+                  "Secure Boot is currently in User Mode.",
+                  "Secure Boot is currently in Audit Mode.",
+                  "Secure Boot is currently in Deployed Mode."
+                },
+                "longDescription": "This property shall contain the current Secure Boot mode, as defined in the UEFI Specification.",
+                "readonly": true,
+                "type": "string"
+              },                
                 "ResetToDefaultKeys": {
                     "type": "boolean",
                     "readonly": false,
