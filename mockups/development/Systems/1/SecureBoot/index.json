@@ -7,7 +7,7 @@
   "Name": "UEFI Secure Boot",
   "ResetAllKeys": false,
   "ResetToDefaultKeys": false,
-  "SecureBootCurrentState": false,
+  "SecureBootCurrentState": "Disabled",
   "SecureBootEnable": false,
   "SecureBootMode":"UserMode"
 }
