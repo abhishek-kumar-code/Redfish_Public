@@ -13,7 +13,7 @@
     },
     "Controllers": [
         {
-            "@odata.id": "/redfish/v1/Systems/3/Storage/HA-RAID#Controllers/0",
+            "@odata.id": "/redfish/v1/Systems/3/Storage/HA-RAID#/Controllers/0",
             "@odata.type": "#Storage.0.0.1.Controller",
             "Id": "0",
             "Name": "Contoso External RAID",
@@ -36,7 +36,7 @@
             ]
         },
         {
-            "@odata.id": "/redfish/v1/Systems/3/Storage/HA-RAID#Controllers/1",
+            "@odata.id": "/redfish/v1/Systems/3/Storage/HA-RAID#/Controllers/1",
             "@odata.type": "#Storage.0.0.1.Controller",
             "Id": "1",
             "Name": "Contoso External RAID",
@@ -110,8 +110,8 @@
             "MaxNumSupported": 2,
             "MinNumNeeded": 1,
             "RedundancySet": [
-                {"@odata.id": "/redfish/v1/Systems/3/Storage/HA-RAID#Controllers/0"},
-                {"@odata.id": "/redfish/v1/Systems/3/Storage/HA-RAID#Controllers/1"}
+                {"@odata.id": "/redfish/v1/Systems/3/Storage/HA-RAID#/Controllers/0"},
+                {"@odata.id": "/redfish/v1/Systems/3/Storage/HA-RAID#/Controllers/1"}
             ],
             "Status": {
                 "State": "Enabled",

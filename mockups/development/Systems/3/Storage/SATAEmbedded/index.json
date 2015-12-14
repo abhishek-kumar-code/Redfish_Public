@@ -13,7 +13,7 @@
     },
     "Controllers": [
         {
-            "@odata.id": "/redfish/v1/Systems/3/Storage/SATAEmbedded#Controllers/0",
+            "@odata.id": "/redfish/v1/Systems/3/Storage/SATAEmbedded#/Controllers/0",
             "@odata.type": "#Storage.0.0.1.Controller",
             "Id": "0",
             "Name": "System SATA",

@@ -8,7 +8,7 @@
     "members@odata.count": 1,
     "members": [
         {
-            "@odata.id": "/redfish/v1/Systems/3/LogServices/Log1/Entries/2",
+            "@odata.id": "/redfish/v1/Systems/3/LogServices/Log1/Entries/1",
             "@odata.type": "#LogEntry.1.0.0.LogEntry",
             "Id": "2",
             "Name": "Log Entry 2",
@@ -27,7 +27,7 @@
             ],
             "Links": {
                 "OriginOfCondition": {
-                    "@odata.id": "/redfish/v1/Systems/3/Storage/HAPERCs/Volumes/2"
+                    "@odata.id": "/redfish/v1/Systems/3/Storage/HA-RAID/Volumes/2"
                 },
                 "Oem": {}
             },
