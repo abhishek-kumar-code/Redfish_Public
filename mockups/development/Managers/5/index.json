@@ -13,7 +13,6 @@
         "Health": "OK"
     },
     "FirmwareVersion": "1.06",
-    "SASInterfaces": { "@odata.id": "/redfish/v1/Managers/5/SASInterfaces" },
     "Links": {
         "ManagerForChassis": [ { "@odata.id": "/redfish/v1/Chassis/StorageEnclosure1" } ], "Oem": {}
     },
