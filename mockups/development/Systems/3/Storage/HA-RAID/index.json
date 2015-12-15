@@ -96,9 +96,6 @@
                 104857600,
                 109951162777600
             ]
-        },
-        "#Storage.BreakHAPair": {
-            "Target": "/redfish/v1/Systems/3/Storage/HA-RAID/Actions/Storage.BreakHAPair"
         }
     },
     "Redundancy": [
