@@ -16,6 +16,9 @@
     "WorldWideName": "500003942810D136",
     "FormFactor": "3.5 inch",
     "HotspareType": "Global",
+    "AssetTag": "",
+    "CapableSpeedGbs": 12,
+    "NegotiatedSpeedGbs": 12,
     "Links": {
         "Volumes": [
         ]
