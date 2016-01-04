@@ -11,6 +11,12 @@
     },
     "VolumeType": "NonRedundant",
     "VolumeSizeInBytes": 104857600,
+    "DeviceDesignators": [
+        {
+            "Type": "TargetPort",
+            "Value": "0"
+        }
+    ],
     "Links": {
         "Drives": [
             {"@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.0"}

@@ -11,6 +11,12 @@
     },
     "VolumeType": "Mirrored",
     "VolumeSizeInBytes": 104857600,
+    "DeviceDesignators": [
+        {
+            "Type": "TargetPort",
+            "Value": "1"
+        }
+    ],
     "Links": {
         "Drives": [
             {"@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.1"},

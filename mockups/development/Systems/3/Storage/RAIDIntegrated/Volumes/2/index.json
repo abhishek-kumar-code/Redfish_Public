@@ -13,6 +13,12 @@
     "VolumeSizeInBytes": 104857600,
     "Encrypted": true,
     "EncrytionType": "NativeDriveEncryption",
+    "DeviceDesignators": [
+        {
+            "Type": "TargetPort",
+            "Value": "1"
+        }
+    ],
     "Links": {
         "Drives": [
             {"@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.6"},

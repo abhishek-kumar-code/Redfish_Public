@@ -24,8 +24,11 @@
                 "State": "Enabled",
                 "Health": "OK"
             },
-            "WorldWideNames": [
-                "5782BCB07197C600"
+            "DeviceDesignators": [
+                {
+                    "Type": "NAA",
+                    "Value": "5782BCB07197C600"
+                }
             ],
             "SpeedGbps": 12,
             "FirmwareVersion": "23.13.06.0006",
