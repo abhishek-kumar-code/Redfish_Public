@@ -22,6 +22,12 @@
                 "State": "Enabled",
                 "Health": "OK"
             },
+            "Manufacturer": "ManufacturerName",
+            "Model": "ProductModelName",
+            "SKU": "",
+            "SerialNumber": "2M220100SL",
+            "PartNumber": "",
+            "AssetTag": "CustomerWritableThingy",
             "SpeedGbps": 6,
             "SupportedControllerProtocols": [
                 "PCIe"
