@@ -1,0 +1,31 @@
+{
+    "@Redfish.Copyright":"Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#Chassis/Members/$entity",
+    "@odata.id": "/redfish/v1/Chassis/Rack2WithDAS",
+    "@odata.type": "#Chassis.1.0.0.Chassis",
+    "Id": "Rack2WithDAS",
+    "Name": "DAS Rack",
+    "ChassisType": "Rack",
+    "Oem": {},
+    "Description": "User Rack Row 1, Rack 4, Rack47",
+    "Manufacturer": "Manufacturer Name",
+    "Model": "Rack",
+    "SKU": "SKU Number",
+    "SerialNumber": "",
+    "Version": "",
+    "PartNumber": "",
+    "AssetTag": "CustomerWritableThingy",
+    "Links": {
+        "ComputerSystems": [
+            {
+                "@odata.id": "/redfish/v1/Systems/3"
+            }
+        ],
+        "Contains": [
+            {
+                "@odata.id": "/redfish/v1/Chassis/StorageBackplane"
+            }
+        ],
+        "Oem": {}
+    }
+ }

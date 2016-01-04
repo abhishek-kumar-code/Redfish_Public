@@ -1,0 +1,41 @@
+{
+    "@Redfish.Copyright":"Copyright \u00a9 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reservd.",
+    "@odata.id":"/redfish/v1/Chassis/StorageEnclosure2",
+    "@odata.context":"/redfish/v1/$metadata#Chassis/Members/$entity",
+    "@odata.type":"#Chassis.1.2.0.Chassis",
+    "Id":"StorageEnclosure2",
+    "Name":"External Enclosure 2",
+    "SKU":"Enclosure",
+    "Manufacturer":"Manufacturer Name",
+    "AssetTag":"External Enclosure",
+    "Model":"External Enclosure",
+    "ChassisType":"StorageEnclosure",
+    "IndicatorLED":"Lit",
+    "Status":{
+        "State":"Enabled",
+        "Health":"OK"
+    },
+    "Thermal": {
+        "@odata.id":"/redfish/v1/Chassis/StorageEnclosure2/Thermal"
+    },
+    "Power": {
+        "@odata.id":"/redfish/v1/Chassis/StorageEnclosure2/Power"
+    }, 
+    "Links": {
+        "ManagedBy": [
+            {"@odata.id":"/redfish/v1/Managers/7"},
+            {"@odata.id":"/redfish/v1/Managers/8"}
+        ],
+        "Storage": [
+            {"@odata.id":"/redfish/v1/Systems/3/Storage/HA-RAID"}
+        ],
+        "Drives": [
+            {"@odata.id":"/redfish/v1/Chassis/StorageEnclosure2/Drives/Disk.Bay.0"},
+            {"@odata.id":"/redfish/v1/Chassis/StorageEnclosure2/Drives/Disk.Bay.1"},
+            {"@odata.id":"/redfish/v1/Chassis/StorageEnclosure2/Drives/Disk.Bay.2"},
+            {"@odata.id":"/redfish/v1/Chassis/StorageEnclosure2/Drives/Disk.Bay.3"}
+        ],
+        "Oem": {}
+    },
+    "Oem": { }
+}

@@ -1,0 +1,19 @@
+{
+    "@odata.context": "/redfish/v1/$metadata#Chassis/Members/Drives/Members/$entity",
+    "@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.1",
+    "@odata.type": "#StorageDrive.0.0.1.Drive",
+    "IndicatorLED": "Lit",
+    "Model": "Drive Model string",
+    "Status": { "State": "Enabled", "Health": "OK" },
+    "SizeInBytes": "899527000000",
+    "Protocol": "SATA",
+    "MediaType": "HDD",
+    "Manufacturer": "ACME",
+    "Links": {
+        "Volumes": [
+            {"@odata.id": "/redfish/v1/Systems/3/Storage/SATAEmbedded/Volumes/1"}
+        ]
+    },
+    "Actions": {
+    }
+}

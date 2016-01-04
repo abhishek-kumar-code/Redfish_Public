@@ -1,0 +1,120 @@
+{
+    "@Redfish.Copyright": "Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#Systems/Members/3/Storage/Members/$entity",
+    "@odata.id": "/redfish/v1/Systems/3/Storage/HA-RAID",
+    "@odata.type": "#Storage.0.0.1.Storage",
+    "Id": "HA-RAID",
+    "Name": "HA Storage System",
+    "Description": "PERC H830 (HA Pair)",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK",
+        "HealthRollUp": "OK"
+    },
+    "Controllers": [
+        {
+            "@odata.id": "/redfish/v1/Systems/3/Storage/HA-RAID#/Controllers/0",
+            "@odata.type": "#Storage.0.0.1.Controller",
+            "Id": "0",
+            "Name": "Contoso External RAID",
+            "Description": "Contoso External RAID (Slot 6)",
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK"
+            },
+            "WorldWideNames": [
+                "5782BCB07197C900"
+            ],
+            "SpeedGbps": 12,
+            "FirmwareVersion": "23.13.06.0006",
+            "SupportedControllerProtocols": [
+                "PCIe"
+            ],
+            "SupportedDeviceProtocols": [
+                "SAS",
+                "SATA"
+            ]
+        },
+        {
+            "@odata.id": "/redfish/v1/Systems/3/Storage/HA-RAID#/Controllers/1",
+            "@odata.type": "#Storage.0.0.1.Controller",
+            "Id": "1",
+            "Name": "Contoso External RAID",
+            "Description": "Contoso External RAID (Slot 7)",
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK"
+            },
+            "WorldWideNames": [
+                "5782BCB07197F900"
+            ],
+            "SpeedGbps": 12,
+            "FirmwareVersion": "23.13.06.0006",
+            "SupportedControllerProtocols": [
+                "PCIe"
+            ],
+            "SupportedDeviceProtocols": [
+                "SAS",
+                "SATA"
+            ]
+        }
+    ],
+    "Drives": [
+            {"@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.0"},
+            {"@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.1"},
+            {"@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.2"},
+            {"@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.3"},
+            {"@odata.id": "/redfish/v1/Chassis/StorageEnclosure2/Drives/Disk.Bay.0"},
+            {"@odata.id": "/redfish/v1/Chassis/StorageEnclosure2/Drives/Disk.Bay.1"},
+            {"@odata.id": "/redfish/v1/Chassis/StorageEnclosure2/Drives/Disk.Bay.2"},
+            {"@odata.id": "/redfish/v1/Chassis/StorageEnclosure2/Drives/Disk.Bay.3"}
+    ],
+    "Volumes": [
+        {"@odata.id": "/redfish/v1/Systems/3/Storage/HA-RAID/Volumes/1"},
+        {"@odata.id": "/redfish/v1/Systems/3/Storage/HA-RAID/Volumes/2"}
+    ],
+    "Links": {
+        "Enclosures": [
+            {"@odata.id": "/redfish/v1/Chassis/StorageEnclosure1"},
+            {"@odata.id": "/redfish/v1/Chassis/StorageEnclosure2"}
+        ]
+    },
+    "Actions": {
+        "#Storage.CreateVolume": {
+            "Target": "/redfish/v1/Systems/3/Storage/HA-RAID/Actions/Storage.CreateVolume",
+            "VolumeType@Redfish.AllowableValues": [
+                "RawDevice",
+                "NonRedundant",
+                "Mirrored",
+                "StripedWithParity",
+                "StripedWithRedundantParity",
+                "SpannedMirrors",
+                "SpannedStripesWithParity",
+                "SpannedStripesWithRedundantParity"
+            ],
+            "VolumeSizeInBytes@Redfish.AllowableRange": [
+                104857600,
+                109951162777600
+            ]
+        }
+    },
+    "Redundancy": [
+        {
+            "@odata.id": "/redfish/v1/Systems/3/Storage/HA-RAID#/Redundancy/0",
+            "MemberId": "0",
+            "Name": "Controller Redundancy Group 1",
+            "Mode": "Sharing",
+            "MaxNumSupported": 2,
+            "MinNumNeeded": 1,
+            "RedundancySet": [
+                {"@odata.id": "/redfish/v1/Systems/3/Storage/HA-RAID#/Controllers/0"},
+                {"@odata.id": "/redfish/v1/Systems/3/Storage/HA-RAID#/Controllers/1"}
+            ],
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK"
+            }
+        }
+    ],
+    "Oem": {}    
+}
