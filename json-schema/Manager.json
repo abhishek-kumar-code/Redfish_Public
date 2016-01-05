@@ -13,7 +13,10 @@
                 },
                 {
                     "$ref": "http://redfish.dmtf.org/schemas/Manager.1.0.1.json#/definitions/Manager"
-                }
+                },
+				{
+                    "$ref": "http://redfish.dmtf.org/schemas/Manager.1.1.0.json#/definitions/Manager"
+                }				
             ]
         }
     },
