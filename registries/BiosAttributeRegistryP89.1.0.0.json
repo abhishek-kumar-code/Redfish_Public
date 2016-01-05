@@ -247,7 +247,7 @@
           "MapFrom": [
             {
               "MapFromAttribute": "BootMode",
-              "MapFromCondition": "==",
+              "MapFromCondition": "EQU",
               "MapFromProperty": "CurrentValue",
               "MapFromValue": "LegacyBios"
             }
@@ -264,7 +264,7 @@
           "MapFrom": [
             {
               "MapFromAttribute": "PowerProfile",
-              "MapFromCondition": "==",
+              "MapFromCondition": "EQU",
               "MapFromProperty": "CurrentValue",
               "MapFromValue": "MaxPerf"
             }
@@ -281,7 +281,7 @@
           "MapFrom": [
             {
               "MapFromAttribute": "PowerProfile",
-              "MapFromCondition": "==",
+              "MapFromCondition": "EQU",
               "MapFromProperty": "CurrentValue",
               "MapFromValue": "BalancedPowerPerf"
             }
@@ -298,7 +298,7 @@
           "MapFrom": [
             {
               "MapFromAttribute": "PowerProfile",
-              "MapFromCondition": "==",
+              "MapFromCondition": "EQU",
               "MapFromProperty": "CurrentValue",
               "MapFromValue": "MinPower"
             }
@@ -315,7 +315,7 @@
           "MapFrom": [
             {
               "MapFromAttribute": "PowerProfile",
-              "MapFromCondition": "!=",
+              "MapFromCondition": "NEQ",
               "MapFromProperty": "CurrentValue",
               "MapFromValue": "Custom"
             }

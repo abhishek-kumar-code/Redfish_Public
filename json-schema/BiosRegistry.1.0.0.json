@@ -227,22 +227,22 @@
                           "type": "string"
                         },
                         "MapFromCondition": {
-                          "description": "The condition that is used to evaluate this dependency expression. For example, '==' or '!='.",
+                          "description": "The condition that is used to evaluate this dependency expression. For example, 'EQU' or 'NEQ'.",
                           "enum": [
-                            "==",
-                            "!=",
-                            ">",
-                            ">=",
-                            "<",
-                            "<="
+                            "EQU",
+                            "NEQ",
+                            "GTR",
+                            "GEQ",
+                            "LSS",
+                            "LEQ"
                           ],
                           "enumDescriptions": {
-                            "!=": "The logical operation for 'Not Equal'.",
-                            "<": "The logical operation for 'Less than'.",
-                            "<=": "The logical operation for 'Less than or Equal'.",
-                            "==": "The logical operation for 'Equal'.",
-                            ">": "The logical operation for 'Greater than'.",
-                            ">=": "The logical operation for 'Greater than or Equal'."
+                            "NEQ": "The logical operation for 'Not Equal'.",
+                            "LSS": "The logical operation for 'Less than'.",
+                            "LEQ": "The logical operation for 'Less than or Equal'.",
+                            "EQU": "The logical operation for 'Equal'.",
+                            "GTR": "The logical operation for 'Greater than'.",
+                            "GEQ": "The logical operation for 'Greater than or Equal'."
                           },
                           "type": "string"
                         },
@@ -270,14 +270,14 @@
                           ]
                         },
                         "MapTerms": {
-                          "description": "The logical term used to combine multiple conditions in this dependency expression. For example, '&&' for logical AND, or '||' for logical OR of the conditions.",
+                          "description": "The logical term used to combine multiple conditions in this dependency expression. For example, 'AND' for logical AND, or 'OR' for logical OR of the conditions.",
                           "enum": [
-                            "&&",
-                            "||"
+                            "AND",
+                            "OR"
                           ],
                           "enumDescriptions": {
-                            "&&": "The operation used for logical 'AND' of dependency terms.",
-                            "||": "The operation used for logical 'OR' of dependency terms."
+                            "AND": "The operation used for logical 'AND' of dependency terms.",
+                            "OR": "The operation used for logical 'OR' of dependency terms."
                           },
                           "type": "string"
                         }
