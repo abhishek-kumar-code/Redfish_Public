@@ -13,7 +13,13 @@
                 },
                 {
                     "$ref": "http://redfish.dmtf.org/schemas/Chassis.1.0.0.json#/definitions/Chassis"
-                }
+                },
+{
+                    "$ref": "http://redfish.dmtf.org/schemas/Chassis.1.1.0.json#/definitions/Chassis"
+                },
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/Chassis.1.2.0.json#/definitions/Chassis"
+                }				
             ]
         }
     },

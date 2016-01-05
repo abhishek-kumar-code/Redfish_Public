@@ -38,6 +38,11 @@
                 "@odata.id": "/redfish/v1/Managers/1"
             }
         ],
+        "ManagersInChassis": [
+            {
+                "@odata.id": "/redfish/v1/Managers/1"
+            }
+        ],		
         "Oem": {}
     },
     "Oem": {}
