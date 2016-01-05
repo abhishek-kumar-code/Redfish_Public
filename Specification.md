@@ -335,6 +335,7 @@ An attractive feature of the RESTful interface is the very limited number of ope
 | PATCH       | Object update                          | Yes      |
 | DELETE      | Object delete                          | Yes      |
 | HEAD        | Object or Collection header retrieval  | No       |
+| OPTIONS     | Header retrieval, CORs preflight       | No       |
 
 Other HTTP methods are not allowed and shall receive a [405](#status-405) response.
 
