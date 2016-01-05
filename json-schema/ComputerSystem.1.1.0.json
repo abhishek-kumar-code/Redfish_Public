@@ -74,7 +74,7 @@
                 "UefiShell": "Boot to the UEFI Shell",
                 "UefiTarget": "Boot to the UEFI Device specified in the UefiTargetBootSourceOverride property",
                 "SDCard": "Boot from an SD Card",
-                "UefiHttp": "Boot from an HTTP network location"
+                "UefiHttp": "Boot from a UEFI HTTP network location"
             }
         },
         "BootSourceOverrideEnabled": {
