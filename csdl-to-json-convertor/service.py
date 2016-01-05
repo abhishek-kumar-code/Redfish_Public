@@ -361,7 +361,7 @@ class JsonSchemaGenerator:
     # Description:                                                           #
     #  Emits annotations that are to be added to JSON                        #
     ##########################################################################
-    def emit_annotations(self, typetable, namespace, annotated, depth, prefixuri, isnullable = False, ignoreannotations = []):
+    def emit_annotations(self, typetable, namespace, annotated, depth, prefixuri, isnullable = False, ignoreannotations = [], isTypeAttribute=False):
 
         output = ""
         fcontinue = True
@@ -381,34 +381,41 @@ class JsonSchemaGenerator:
                 #don't add annotation more than once'
                 written.append(term)
 
-                if (term == "OData.Description"):
-                    output += ",\n"
-                    output += UT.Utilities.indent(depth) + "\"description\": \"" + annotation.attrib["String"] + "\""
-
-                elif (term == "OData.LongDescription"):
-                    output += ",\n"
-                    output += UT.Utilities.indent(depth) + "\"longDescription\": \"" + annotation.attrib["String"] + "\""
-
-                elif (term == "OData.Permissions"):
-                    if annotation.attrib["EnumMember"] == "OData.Permission/Read" or annotation.attrib["EnumMember"] == "OData.Permissions/Read":
+                if(isTypeAttribute):
+                    if ((term == "Validation.Pattern") or (term == "Redfish.Pattern") ):
                         output += ",\n"
-                        output += UT.Utilities.indent(depth) + "\"readonly\": true"
-                    elif annotation.attrib["EnumMember"] == "OData.Permission/ReadWrite" or annotation.attrib["EnumMember"] == "OData.Permissions/ReadWrite":
+                        output += UT.Utilities.indent(depth) + "\"pattern\": \"" + annotation.attrib["String"] + "\""
+
+                    elif (term == "Validation.Minimum"):
                         output += ",\n"
-                        output += UT.Utilities.indent(depth) + "\"readonly\": false"
+                        output += UT.Utilities.indent(depth) + "\"minimum\": " + annotation.attrib["Int"]
 
-                elif ((term == "Validation.Pattern") or (term == "Redfish.Pattern") ):
-                    output += ",\n"
-                    output += UT.Utilities.indent(depth) + "\"pattern\": \"" + annotation.attrib["String"] + "\""
+                    elif (term == "Validation.Maximum"):
+                        output += ",\n"
+                        output += UT.Utilities.indent(depth) + "\"maximum\": " + annotation.attrib["Int"]
 
-                elif (term == "Validation.Minimum"):
-                    output += ",\n"
-                    output += UT.Utilities.indent(depth) + "\"minimum\": " + annotation.attrib["Int"]
+                    elif (term == "OData.IsURL"):
+                        if (not ("Bool" in annotation.attrib.keys() and annotation.attrib["Bool"] == "false")):
+                            output += ",\n"
+                            output += UT.Utilities.indent(depth) + "\"format\": \"uri\"" 
+							                                                     
+                else:
+                    if (term == "OData.Description"):
+                        output += ",\n"
+                        output += UT.Utilities.indent(depth) + "\"description\": \"" + annotation.attrib["String"] + "\""
 
-                elif (term == "Validation.Maximum"):
-                    output += ",\n"
-                    output += UT.Utilities.indent(depth) + "\"maximum\": " + annotation.attrib["Int"]
-                                                      
+                    elif (term == "OData.LongDescription"):
+                        output += ",\n"
+                        output += UT.Utilities.indent(depth) + "\"longDescription\": \"" + annotation.attrib["String"] + "\""
+
+                    elif (term == "OData.Permissions"):
+                        if annotation.attrib["EnumMember"] == "OData.Permission/Read" or annotation.attrib["EnumMember"] == "OData.Permissions/Read":
+                            output += ",\n"
+                            output += UT.Utilities.indent(depth) + "\"readonly\": true"
+                        elif annotation.attrib["EnumMember"] == "OData.Permission/ReadWrite" or annotation.attrib["EnumMember"] == "OData.Permissions/ReadWrite":
+                            output += ",\n"
+                            output += UT.Utilities.indent(depth) + "\"readonly\": false"
+
             if "BaseType" in annotated.attrib.keys():
                 #todo: make more robust
                 annotated = typetable[annotated.attrib["BaseType"]]["Node"]
@@ -788,6 +795,7 @@ class JsonSchemaGenerator:
                         else:
                             output += self.generate_json_for_type(typetable, proptypename, depth + 2, typedata["Namespace"], prefixuri, propertyisnullable, False, ignoreannotations)
 
+                        output += self.emit_annotations(typetable, typedata["Namespace"], property, depth + 2, prefixuri, False, [], True)
 
                         if ( iscollection ):
                             output += "\n" + UT.Utilities.indent(depth+1) + "}"
@@ -1094,6 +1102,7 @@ class JsonSchemaGenerator:
         elif typetype == "TypeDefinition":
             underlyingtype = typedata["Node"].attrib["UnderlyingType"]
             output = self.generate_json_for_type(typetable, underlyingtype, depth, namespace, prefixuri, isnullable, False)
+            output += self.emit_annotations(typetable, namespace, typedata["Node"], depth, prefixuri, isnullable, ignoreannotations, True)
 
         else:
             return UT.Utilities.indent(depth) + "ERROR: unknown TypeType " + typetype
