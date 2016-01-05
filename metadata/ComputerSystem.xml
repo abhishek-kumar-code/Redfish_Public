@@ -305,7 +305,7 @@
         <Member Name="SDCard">
            <Annotation Term="OData.Description" String="Boot from an SD Card"/>
         </Member>
-        <Member Name="Http">
+        <Member Name="UefiHttp">
            <Annotation Term="OData.Description" String="Boot from an HTTP network location"/>
         </Member>
       </EnumType> 
