@@ -16,7 +16,7 @@
         "DisplayOrder": 5,
         "HelpText": "Select this option to enable network boot (PXE, iSCSI, or FCoE) for the selected NIC. You may need to configure the NIC firmware for the boot option to be active.",
         "MenuPath": "./SystemOptions/NetworkBootOptions",
-        "Name": "NicBoot1",
+        "AttributeName": "NicBoot1",
         "ReadOnly": false,
         "Type": "Enumeration",
         "Value": [
@@ -37,7 +37,7 @@
         "DisplayOrder": 6,
         "HelpText": "Select this option to enable network boot (PXE, iSCSI, or FCoE) for the selected NIC. You may need to configure the NIC firmware for the boot option to be active.",
         "MenuPath": "./SystemOptions/NetworkBootOptions",
-        "Name": "NicBoot2",
+        "AttributeName": "NicBoot2",
         "ReadOnly": false,
         "Type": "Enumeration",
         "Value": [
@@ -58,7 +58,7 @@
         "DisplayOrder": 74,
         "HelpText": "Important: Select this option to configure the embedded chipset SATA controller. When selecting the Advanced Host Controller Interface (AHCI) or Software RAID (if supported), ensure that the proper operating system drivers are used for correct operations.",
         "MenuPath": "./SystemOptions/SataOptions",
-        "Name": "EmbeddedSata",
+        "AttributeName": "EmbeddedSata",
         "ReadOnly": false,
         "Type": "Enumeration",
         "Value": [
@@ -79,7 +79,7 @@
         "DisplayOrder": 65,
         "HelpText": "USB Enabled: enables all USB ports and embedded devices. External USB Ports Disabled: only external USB ports are disabled.",
         "MenuPath": "./SystemOptions/UsbOptions",
-        "Name": "UsbControl",
+        "AttributeName": "UsbControl",
         "ReadOnly": false,
         "Type": "Enumeration",
         "Value": [
@@ -99,7 +99,7 @@
         "DisplayOrder": 71,
         "HelpText": "Select this option to enable or disable Intel Hyperthreading. When enabled, each physical processor core operates as two logical processor cores. When disabled, each physical processor core operates as only one logical processor core. Enabling this option can improve overall performance for applications that benefit from a higher processor core count.",
         "MenuPath": "./SystemOptions/ProcessorOptions",
-        "Name": "ProcHyperthreading",
+        "AttributeName": "ProcHyperthreading",
         "ReadOnly": false,
         "Type": "Enumeration",
         "Value": [
@@ -120,7 +120,7 @@
         "HelpText": "Select this option to disable processor cores using Intel's Core Multi-Processing (CMP) Technology. This option lets you disable a specific number of the cores on each physical processor. This option lets you reduce processor power usage and can improve performance with some applications. It can improve overall performance for applications that benefit from higher performance cores rather than more processing cores. This option also addresses issues with software that is licensed on a per-core basis. The value entered should be the number of enabled cores per socket.",
         "LowerBound": 0,
         "MenuPath": "./SystemOptions/ProcessorOptions",
-        "Name": "ProcCoreDisable",
+        "AttributeName": "ProcCoreDisable",
         "ReadOnly": false,
         "ScalarIncrement": 1,
         "Type": "Integer",
@@ -133,7 +133,7 @@
         "DisplayOrder": 82,
         "HelpText": "This option lets you select the boot mode of the system. Selecting configures the system to boot Unified Extensible Firmware Interface (UEFI) compatible operating systems. Selecting \"Legacy BIOS Mode\" configures the system to boot traditional operating systems in Legacy BIOS compatibility mode. The Operating System can only boot in the mode it gets installed in. In addition, the following features require booting in UEFI Boot Mode: Secure Boot, IPv6 PXE Boot, boot > 2.2 TB Disks.",
         "MenuPath": "./BootOptions",
-        "Name": "BootMode",
+        "AttributeName": "BootMode",
         "ReadOnly": false,
         "Type": "Enumeration",
         "Value": [
@@ -154,7 +154,7 @@
         "DisplayOrder": 88,
         "HelpText": "- Balanced Power and Performance:  Provides the optimum settings to maximize power savings with minimal impact to performance for most operating systems and applications. \\n- Minimum Power Usage:  Enables power reduction mechanisms that can negatively affect performance. This mode guarantees a lower maximum power usage by the system. \\n- Maximum Performance:  Disables all power management options that can negatively affect performance.",
         "MenuPath": "./PowerManagementOptions",
-        "Name": "PowerProfile",
+        "AttributeName": "PowerProfile",
         "ReadOnly": false,
         "Type": "Enumeration",
         "Value": [
@@ -182,7 +182,7 @@
         "DisplayOrder": 101,
         "HelpText": "Turbo Boost Technology lets the processor transition to a higher frequency than the processor's rated speed if the processor has available power and is within temperature specifications. Disabling this option reduces power usage and also reduces the systems maximum achievable performance under some workloads.",
         "MenuPath": "./PerformanceOptions",
-        "Name": "ProcTurbo",
+        "AttributeName": "ProcTurbo",
         "ReadOnly": false,
         "Type": "Enumeration",
         "Value": [
@@ -204,7 +204,7 @@
         "MaxLength": 28,
         "MenuPath": "./ServerAssetText/AdminInfo",
         "MinLength": 0,
-        "Name": "AdminPhone",
+        "AttributeName": "AdminPhone",
         "ReadOnly": false,
         "Type": "String",
         "ValueExpression": "[\\x20-\\x7e]"
@@ -215,7 +215,7 @@
         "DisplayOrder": 90,
         "HelpText": "You can only configure this option if HP Power Profile is set to Custom. This option lets you select the processor's lowest idle power state (C-state) that the operating system uses. The higher the C-state, the lower the power usage of that idle state (C6 is the lowest power idle state supported by the processor).",
         "MenuPath": "./PowerManagementOptions",
-        "Name": "MinProcIdlePower",
+        "AttributeName": "MinProcIdlePower",
         "ReadOnly": false,
         "Type": "Enumeration",
         "Value": [
@@ -330,77 +330,77 @@
         "DisplayName": "BIOS Configuration",
         "DisplayOrder": 1,
         "MenuPath": "./",
-        "Name": "BiosMainMenu",
+        "MenuName": "BiosMainMenu",
         "ReadOnly": false
       },
       {
         "DisplayName": "System Options",
         "DisplayOrder": 2,
         "MenuPath": "./SystemOptions",
-        "Name": "SystemOptions",
+        "MenuName": "SystemOptions",
         "ReadOnly": false
       },
       {
         "DisplayName": "Network Boot Options",
         "DisplayOrder": 4,
         "MenuPath": "./SystemOptions/NetworkBootOptions",
-        "Name": "NetworkBootOptions",
+        "MenuName": "NetworkBootOptions",
         "ReadOnly": false
       },
       {
         "DisplayName": "USB Options",
         "DisplayOrder": 6,
         "MenuPath": "./SystemOptions/UsbOptions",
-        "Name": "UsbOptions",
+        "MenuName": "UsbOptions",
         "ReadOnly": false
       },
       {
         "DisplayName": "Processor Options",
         "DisplayOrder": 7,
         "MenuPath": "./SystemOptions/ProcessorOptions",
-        "Name": "ProcessorOptions",
+        "MenuName": "ProcessorOptions",
         "ReadOnly": false
       },
       {
         "DisplayName": "SATA Controller Options",
         "DisplayOrder": 8,
         "MenuPath": "./SystemOptions/SataOptions",
-        "Name": "SataOptions",
+        "MenuName": "SataOptions",
         "ReadOnly": false
       },
       {
         "DisplayName": "Boot Options",
         "DisplayOrder": 11,
         "MenuPath": "./BootOptions",
-        "Name": "BootOptions",
+        "MenuName": "BootOptions",
         "ReadOnly": false
       },
       {
         "DisplayName": "Power Management",
         "DisplayOrder": 15,
         "MenuPath": "./PowerManagementOptions",
-        "Name": "PowerManagementOptions",
+        "MenuName": "PowerManagementOptions",
         "ReadOnly": false
       },
       {
         "DisplayName": "Performance Options",
         "DisplayOrder": 17,
         "MenuPath": "./PerformanceOptions",
-        "Name": "PerformanceOptions",
+        "MenuName": "PerformanceOptions",
         "ReadOnly": false
       },
       {
         "DisplayName": "Server Asset Information",
         "DisplayOrder": 24,
         "MenuPath": "./ServerAssetText",
-        "Name": "ServerAssetText",
+        "MenuName": "ServerAssetText",
         "ReadOnly": false
       },
       {
         "DisplayName": "Administrator Information",
         "DisplayOrder": 26,
         "MenuPath": "./ServerAssetText/AdminInfo",
-        "Name": "AdminInfo",
+        "MenuName": "AdminInfo",
         "ReadOnly": false
       }
     ]

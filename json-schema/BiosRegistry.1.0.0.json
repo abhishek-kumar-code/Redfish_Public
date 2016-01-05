@@ -120,7 +120,7 @@
                 "longDescription": "The value of this property shall be a number indicating the minimum character length of the value of a BIOS attribute of type 'String'.",
                 "type": "integer"
               },
-              "Name": {
+              "AttributeName": {
                 "description": "The unique name of the BIOS attribute.",
                 "longDescription": "The value of this property shall be the name of this BIOS attribute that is unique in this registry.",
                 "pattern": "^[A-Z][A-Za-z0-9]+$",
@@ -200,7 +200,7 @@
               }
             },
             "required": [
-              "Name",
+              "AttribtueName",
               "Type",
               "ReadOnly",
               "CurrentValue"
@@ -394,7 +394,7 @@
                 "pattern": "^[.]?[A-Za-z0-9//]+$",
                 "type": "string"
               },
-              "Name": {
+              "MenuName": {
                 "description": "The unique name string of this menu.",
                 "longDescription": "The value of this property shall be the name of this menu that is unique in this registry.",
                 "pattern": "^[A-Z][A-Za-z0-9]+$",
@@ -410,7 +410,7 @@
           },
           "longDescription": "The value of this property shall be an array containing the BIOS attributes menus and their hierarchy.",
           "required": [
-            "Name",
+            "MenuName",
             "ReadOnly"
           ],
           "type": "array"
