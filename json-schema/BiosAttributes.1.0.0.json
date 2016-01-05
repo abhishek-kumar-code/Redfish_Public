@@ -1,7 +1,7 @@
 {
   "$ref": "#/definitions/BiosAttributes",
   "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.1.0.0.json",
-  "copyright": "Copyright 2014,2015 Hewlett Packard Enterprise LP. All rights reserved.",
+  "copyright": "Copyright 2014-2016 Hewlett Packard Enterprise LP. All rights reserved.",
   "properties": {
     "@odata.context": {
       "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
@@ -12,10 +12,10 @@
     "@odata.type": {
       "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
     },
-    "BiosRegistry": {
+    "AttributeRegistry": {
       "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
       "description": "The BIOS Attribute Registry",
-      "longDescription": "The reference to the BIOS Attribute Registry that lists the metadata describing BIOS settings in this resource. BIOS settings appear as additional properties in this resource, and can be looked up in the Attribute Registry by their names."
+      "longDescription": "The reference to the BIOS Attribute Registry that lists the metadata describing BIOS settings in this resource. BIOS settings appear as additional properties in this resource, and can be looked up in the Attribute Registry by their AttributeName."
     },
     "Description": {
       "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"

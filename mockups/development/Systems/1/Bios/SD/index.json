@@ -1,10 +1,10 @@
 {
-  "@Redfish.Copyright": "Copyright 2014,2015 Hewlett Packard Enterprise LP. All rights reserved.",
+  "@Redfish.Copyright": "Copyright 2014-2016 Hewlett Packard Enterprise LP. All rights reserved.",
   "@odata.context": "/redfish/v1/$metadata#Systems/1/Bios/SD",
   "@odata.id": "/redfish/v1/Systems/1/Bios/SD",
   "@odata.type": "#BiosAttributes.1.0.0.BiosAttributes",
   "AdminPhone": "(123) 456-789",
-  "BiosRegistry": "BiosAttributeRegistryP89.1.0.0",
+  "AttributeRegistry": "BiosAttributeRegistryP89.1.0.0",
   "BootMode": "Uefi",
   "Description": "BIOS Configuration Pending Settings. These settings will be applied on next system reboot.",
   "EmbeddedSata": "Ahci",
