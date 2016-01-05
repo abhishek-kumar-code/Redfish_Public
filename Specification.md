@@ -335,6 +335,7 @@ An attractive feature of the RESTful interface is the very limited number of ope
 | PATCH       | Object update                          | Yes      |
 | DELETE      | Object delete                          | Yes      |
 | HEAD        | Object or Collection header retrieval  | No       |
+| OPTIONS     | Header retrieval, CORs preflight       | No       |
 
 Other HTTP methods are not allowed and shall receive a [405](#status-405) response.
 
@@ -2026,7 +2027,7 @@ It is possible that some resources will remain very stable from system to system
 
 ### Discovery
 
-Automatic discovery of managed devices supporting the Redfish Scalable Platform Management API is accomplished using the Simple Service Discovery Protocol (SSDP).  This protocol allows for network-efficient discovery without resorting to ping-sweeps, router table searches, or restrictive DNS naming schemes.  Use of SSDP is optional, and if implemented, shall allow the user to disable the protocol through the 'Manager Network Service' resource.
+Automatic discovery of managed devices supporting the Redfish Scalable Platform Management API may be accomplished using the Simple Service Discovery Protocol (SSDP).  This protocol allows for network-efficient discovery without resorting to ping-sweeps, router table searches, or restrictive DNS naming schemes.  Use of SSDP is optional, and if implemented, shall allow the user to disable the protocol through the 'Manager Network Service' resource.
 
 As the objective of discovery is for client software to locate Redfish-compliant managed devices, the primary SSDP functionality incorporated is the M-SEARCH query.  Redfish also follows the SSDP extensions and naming used by UPnP where applicable, such that Redfish-compliant systems can also implement UPnP without conflict.
 
