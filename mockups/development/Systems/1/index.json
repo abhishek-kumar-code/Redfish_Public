@@ -60,7 +60,10 @@
     },
     "TrustedModules": [
         {
-           "ModuleState":"PresentEnabled",
+          "Status": {
+            "State": "Enabled",
+            "Health": "OK"
+           },
            "ModuleType":"TPM2.0",
            "FirmwareVersion":"3.1"
         }

@@ -229,7 +229,10 @@
               }
             },
             "properties": {
-            "FirmwareVersion": {
+              "Status": {
+                "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
+              },
+              "FirmwareVersion": {
                 "description": "The firmware version of this Trusted Module",
                 "longDescription": "This property shall contain the firwmare version as defined by the manufacturer for the Trusted Module.",
                 "readonly": true,
@@ -237,22 +240,6 @@
                   "string",
                   "null"
                 ]
-              },
-              "ModuleState": {
-                "description": "This property indicates the Trusted Module state.",
-                "enum": [
-                  "NotPresent",
-                  "PresentEnabled",
-                  "PresentDisabled"
-                ],
-                "enumDescriptions": {
-                  "NotPresent": "Trusted Module is not present.",
-                  "PresentDisabled": "Trusted Module is present but disabled.",
-                  "PresentEnabled": "Trusted Module is present and enabled."
-                },
-                "longDescription": "This property shall contain the current state of the installed Trusted Module.",
-                "readonly": true,
-                "type": "string"
               },
               "InterfaceType": {
                 "description": "This property indicates the interface type of the Trusted Module.",
