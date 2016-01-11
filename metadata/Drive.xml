@@ -175,13 +175,13 @@
       </EnumType>
 
       <EnumType Name="FormFactor">
-        <Member Name="1_8Inches">
+        <Member Name="Inches1_8">
           <Annotation Term="OData.Description" String="The drive is 1.8 inches in width"/>
         </Member>
-        <Member Name="2_5Inches">
+        <Member Name="Inches2_5">
           <Annotation Term="OData.Description" String="The drive is 2.5 inches in width"/>
         </Member>
-        <Member Name="3_5Inches">
+        <Member Name="Inches3_5">
           <Annotation Term="OData.Description" String="The drive is 3.5 inches in width"/>
         </Member>
         <Member Name="m_2">
