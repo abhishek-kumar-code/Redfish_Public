@@ -123,19 +123,19 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The size of the smallest addressible unit (Block) of this drive in bytes"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain size of the smallest addressible unit of the associated drive."/>
-          <Annotation Term="Measures.Unit" String="Byte"/>
+          <Annotation Term="Measures.Unit" String="By"/>
         </Property>
         <Property Name="CapableSpeedGbs" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The speed which this drive can communicate to a storage controller in ideal conditions in Gigabits per second"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain fastest capable bus speed of the associated drive."/>
-          <Annotation Term="Measures.Unit" String="Gbps"/>
+          <Annotation Term="Measures.Unit" String="Gbit/s"/>
         </Property>
         <Property Name="NegotiatedSpeedGbs" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The speed which this drive is currently communicating to the storage controller in Gigabits per second"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain current bus speed of the associated drive."/>
-          <Annotation Term="Measures.Unit" String="Gbps"/>
+          <Annotation Term="Measures.Unit" String="Gbit/s"/>
         </Property>
         <Property Name="Links" Type="Drive.1.0.0.Links" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
