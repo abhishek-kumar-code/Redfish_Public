@@ -175,16 +175,16 @@
       </EnumType>
 
       <EnumType Name="FormFactor">
-        <Member Name="1Point8Inches">
+        <Member Name="1_8Inches">
           <Annotation Term="OData.Description" String="The drive is 1.8 inches in width"/>
         </Member>
-        <Member Name="2AndAHalfInches">
+        <Member Name="2_5Inches">
           <Annotation Term="OData.Description" String="The drive is 2.5 inches in width"/>
         </Member>
-        <Member Name="3AndAHalfInches">
+        <Member Name="3_5Inches">
           <Annotation Term="OData.Description" String="The drive is 3.5 inches in width"/>
         </Member>
-        <Member Name="m2">
+        <Member Name="m_2">
           <Annotation Term="OData.Description" String="The drive conforms to the m.2 standard"/>
         </Member>
       </EnumType>
