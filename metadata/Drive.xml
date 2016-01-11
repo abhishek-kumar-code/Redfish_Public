@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.-->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions.xml">
+    <edmx:Include Namespace="RedfishExtensions.1.0.0" Alias="Redfish"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
+    <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.1.0.0" />
+  </edmx:Reference>
+
+  <edmx:DataServices>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive">
+      
+      <EntityType Name="Drive" BaseType="Resource.1.0.0.Resource">
+        <Annotation Term="OData.Description" String="This is the schema definition for the Drive resource.  It represents the properties for physical disk drives for any system."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a disk drive or other physical storage medium for a Redfish implementation."/>
+      </EntityType>
+
+      <Action Name="SecureErase" IsBound="true">
+        <Parameter Name="Drive" Type="Drive.1.0.0.Actions"/>
+        <Annotation Term="OData.Description" String="This action is used to securely erase the contents of the drive."/>
+        <Annotation Term="OData.LongDescription" String="This defines the name of the custom action supported on this resource."/>
+      </Action>
+
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.1.0.0">
+
+      <EntityType Name="Drive" BaseType="Drive.Drive">
+        <Property Name="IndicatorLED" Type="Chassis.1.0.0.IndicatorLED">
+          <Annotation Term="OData.Description" String="The state of the indicator LED, used to identify the drive."/>
+          <Annotation Term="OData.LongDescription" String="This value of this property shall contain the indicator light state for the indicator light associated with this drive."/>
+        </Property>
+        <Property Name="Model" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This is the model number for the drive."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the name by which the manufacturer generally refers to the drive."/>
+        </Property>
+        <Property Name="Revision" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The revision of this Drive"/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the revision as defined by the manufacturer for the associated drive."/>
+        </Property>
+        <Property Name="Status" Type="Resource.Status"/>
+        <Property Name="SizeBytes" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The size in bytes of this Drive"/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the size in bytes of the associated drive."/>
+          <Annotation Term="Measures.Unit" String="Bytes"/>
+        </Property>
+        <Property Name="FailurePredicted" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Is this drive currently predicting a failure in the near future"/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain failure information as defined by the manufacturer for the associated drive."/>
+        </Property>
+        <Property Name="Protocol" Type="Storage.1.0.0.Protocol">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The protocol this drive is using to communicate to the storage controller"/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the protocol the associated drive is using to communicate to the storage controller for this system."/>
+        </Property>
+        <Property Name="MediaType" Type="Drive.1.0.0.MediaType">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The type of media contained in this drive"/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the type of media contained in the associated drive."/>
+        </Property>
+        <Property Name="Manufacturer" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This is the manufacturer of this drive."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the name of the organization responsible for producing the drive. This organization might be the entity from whom the drive is purchased, but this is not necessarily true."/>
+        </Property>
+        <Property Name="SKU" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This is the SKU for this drive."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the stock-keeping unit number for this drive."/>
+        </Property>
+        <Property Name="SerialNumber" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The serial number for this drive."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a manufacturer-allocated number used to identify the drive."/>
+        </Property>
+        <Property Name="PartNumber" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The part number for this drive."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a part number assigned by the organization that is responsible for producing or manufacturing the drive."/>
+        </Property>
+        <Property Name="AssetTag" Type="Edm.String">
+          <Annotation Term="OData.Description" String="The user assigned asset tag for this drive."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an identifying string used to track the drive for inventory purposes."/>
+        </Property>
+        <!--TODO What ever we decide for WWN/DesignationDescriptor-->
+        <Property Name="FormFactor" Type="Drive.1.0.0.FormFactor">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The form factor of this drive"/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the form factor for the associated drive."/>
+        </Property>
+        <Property Name="HotspareType" Type="Drive.1.0.0.HotspareType">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The type of hotspare this drive is currently serving as"/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the hotspare type for the associated drive."/>
+        </Property>
+        <Property Name="EncryptionAbility" Type="Drive.1.0.0.EncryptionAbility">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The encryption abilities of this drive"/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the encryption ability for the associated drive."/>
+        </Property>
+        <Property Name="EncryptionStatus" Type="Drive.1.0.0.EncryptionStatus">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The status of the encrytion of this drive"/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the encrytion status for the associated drive."/>
+        </Property>
+        <Property Name="RotationSpeedRPM" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The rotation speed of this Drive in Revolutions per Minute (RPM)"/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain rotation speed of the associated drive."/>
+          <Annotation Term="Measures.Unit" String="RPM"/>
+        </Property>
+        <Property Name="BlockSizeBytes" Type="Edm.Int32">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The size of the smallest addressible unit (Block) of this drive in bytes"/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain size of the smallest addressible unit of the associated drive."/>
+          <Annotation Term="Measures.Unit" String="Byte"/>
+        </Property>
+        <Property Name="CapableSpeedGbs" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The speed which this drive can communicate to a storage controller in ideal conditions in Gigabits per second"/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain fastest capable bus speed of the associated drive."/>
+          <Annotation Term="Measures.Unit" String="Gbps"/>
+        </Property>
+        <Property Name="NegotiatedSpeedGbs" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The speed which this drive is currently communicating to the storage controller in Gigabits per second"/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain current bus speed of the associated drive."/>
+          <Annotation Term="Measures.Unit" String="Gbps"/>
+        </Property>
+        <Property Name="Links" Type="Drive.1.0.0.Links" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The links object contains the links to other resources that are related to this resource."/>
+        </Property>
+        <Property Name="Actions" Type="Drive.1.0.0.Actions" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The Actions object contains the available custom actions on this resource."/>
+        </Property>
+      </EntityType>
+
+      <ComplexType Name="Links" BaseType="Resource.Links">
+        <NavigationProperty Name="Volumes" Type="Collection(Volume.Volume)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="An array of references to the volumes contained in this drive. This will reference Volumes that are either wholly or only partly contained by this drive."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resource that this drive is associated with and shall reference a resource of type Volume."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+      </ComplexType>
+
+      <ComplexType Name="Actions">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Property Name="Oem" Type="Drive.1.0.0.OemActions"/>
+      </ComplexType>
+
+      <ComplexType Name="OemActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+      </ComplexType>
+
+      <EnumType Name="MediaType">
+        <Member Name="HDD">
+          <Annotation Term="OData.Description" String="The drive media type is traditional magnetic platers"/>
+        </Member>
+        <Member Name="SSD">
+          <Annotation Term="OData.Description" String="The drive media type is solid state or flash memory"/>
+        </Member>
+      </EnumType>
+
+      <EnumType Name="FormFactor">
+        <Member Name="1Point8Inches">
+          <Annotation Term="OData.Description" String="The drive is 1.8 inches in width"/>
+        </Member>
+        <Member Name="2AndAHalfInches">
+          <Annotation Term="OData.Description" String="The drive is 2.5 inches in width"/>
+        </Member>
+        <Member Name="3AndAHalfInches">
+          <Annotation Term="OData.Description" String="The drive is 3.5 inches in width"/>
+        </Member>
+        <Member Name="m2">
+          <Annotation Term="OData.Description" String="The drive conforms to the m.2 standard"/>
+        </Member>
+      </EnumType>
+
+      <EnumType Name="HotspareType">
+        <Member Name="None">
+          <Annotation Term="OData.Description" String="The drive is not currently a hotspare"/>
+        </Member>
+        <Member Name="Global">
+          <Annotation Term="OData.Description" String="The drive is currently serving as a hotspare for all other drives in the storage system"/>
+        </Member>
+        <Member Name="Chassis">
+          <Annotation Term="OData.Description" String="The drive is currently serving as a hotspare for all other drives in the chassis"/>
+        </Member>
+        <Member Name="Dedicated">
+          <Annotation Term="OData.Description" String="The drive is currently serving as a hotspare for a user defined set of drives"/>
+        </Member>
+      </EnumType>
+
+      <EnumType Name="EncryptionAbility">
+        <Member Name="None">
+          <Annotation Term="OData.Description" String="The drive is not capable of self encryption"/>
+        </Member>
+        <Member Name="SelfEncryptingDrive">
+          <Annotation Term="OData.Description" String="The drive is capable of self encryption per the Trusted Computing Group's Self Encrypting Drive Standard"/>
+        </Member>
+        <Member Name="Other">
+          <Annotation Term="OData.Description" String="The drive is capable of self encryption through some other means"/>
+        </Member>
+      </EnumType>
+
+      <EnumType Name="EncryptionStatus">
+        <Member Name="Unecrypted">
+          <Annotation Term="OData.Description" String="The drive is not currently encrypted"/>
+        </Member>
+        <Member Name="Unlocked">
+          <Annotation Term="OData.Description" String="The drive is currently encrypted but the data is accessible to the user unencrypted"/>
+        </Member>
+        <Member Name="Locked">
+          <Annotation Term="OData.Description" String="The drive is currently encrypted and the data is not accessible to the user, however the system has the ability to unlock the drive automatically"/>
+        </Member>
+        <Member Name="Foreign">
+          <Annotation Term="OData.Description" String="The drive is currently encrypted, the data is not accessible to the user, and the system requires user intervention to expose the data"/>
+        </Member>
+      </EnumType>
+
+    </Schema>
+    
+  </edmx:DataServices>
+</edmx:Edmx>
