@@ -5,7 +5,7 @@
     "IndicatorLED": "Lit",
     "Model": "Drive Model string",
     "Status": { "State": "Enabled", "Health": "OK" },
-    "SizeInBytes": "899527000000",
+    "SizeBytes": 899527000000,
     "Protocol": "SATA",
     "MediaType": "HDD",
     "Manufacturer": "ACME",
