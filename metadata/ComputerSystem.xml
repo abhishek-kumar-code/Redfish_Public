@@ -358,7 +358,14 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.1.1.0">
 
-      <EntityType Name="ComputerSystem" BaseType="ComputerSystem.1.0.1.ComputerSystem"/>
+      <EntityType Name="ComputerSystem" BaseType="ComputerSystem.1.0.1.ComputerSystem">
+
+        <Property Name="TrustedModules" Type="Collection(ComputerSystem.1.1.0.TrustedModules)"  Nullable="false">
+          <Annotation Term="OData.Description" String="This object describes the array of Trusted Modules in the system."/>
+          <Annotation Term="OData.LongDescription" String="This object shall contain an array of objects with properties which describe the truted modules for the current resource."/>
+        </Property>
+
+      </EntityType>
 
       <ComplexType Name="Boot" BaseType="ComputerSystem.1.0.0.Boot">		    
           <Property Name="BootSourceOverrideMode" Type="ComputerSystem.1.1.0.BootSourceOverrideMode">
@@ -374,6 +381,35 @@
         </Member>
         <Member Name="UEFI">
           <Annotation Term="OData.Description" String="The system will boot in UEFI boot mode to the Boot Source Override Target."/>
+        </Member>
+      </EnumType>
+
+      <ComplexType Name="TrustedModules">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Property Name="FirmwareVersion" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The firmware version of this Trusted Module"/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the firwmare version as defined by the manufacturer for the Trusted Module."/>
+        </Property>
+        <Property Name="InterfaceType" Type="ComputerSystem.1.1.0.InterfaceType">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This property indicates the interface type of the Trusted Module."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the interface type of the installed Trusted Module."/>
+        </Property>
+        <Property Name="Status" Type="Resource.Status"  Nullable="false"/>
+        <Property Name="Oem" Type="Resource.Oem"/>
+        <Annotation Term="OData.Description" String="This object describes the inventory of a Trusted Modules installed in the system."/>
+      </ComplexType>
+
+      <EnumType Name="InterfaceType">
+        <Member Name="TPM1.2">
+          <Annotation Term="OData.Description" String="Trusted Platform Module (TPM) 1.2"/>
+        </Member>
+        <Member Name="TPM2.0">
+          <Annotation Term="OData.Description" String="Trusted Platform Module (TPM) 2.0"/>
+        </Member>
+        <Member Name="TCM1.0">
+          <Annotation Term="OData.Description" String="Trusted Cryptography Module (TCM) 1.0"/>
         </Member>
       </EnumType>
 
