@@ -9,6 +9,9 @@
     "Protocol": "SATA",
     "MediaType": "HDD",
     "Manufacturer": "ACME",
+    "AssetTag": "",
+    "CapableSpeedGbs": 6,
+    "NegotiatedSpeedGbs": 6,
     "Links": {
         "Volumes": [
             {"@odata.id": "/redfish/v1/Systems/3/Storage/SATAEmbedded/Volumes/1"}

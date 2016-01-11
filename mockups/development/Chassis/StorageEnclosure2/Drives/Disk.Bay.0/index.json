@@ -16,6 +16,9 @@
     "WorldWideName": "500003942810D136",
     "FormFactor": "3.5 inch",
     "HotspareType": "Dedicated",
+    "AssetTag": "",
+    "CapableSpeedGbs": 12,
+    "NegotiatedSpeedGbs": 12,
     "Links": {
         "Volumes": [
             {"@odata.id": "/redfish/v1/Systems/3/Storage/HA-RAID/Volumes/2"}
