@@ -97,7 +97,7 @@
           <Annotation Term="OData.Description" String="The speed of the storage controller interface."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the speed of the Storage bus interface (in Gigabits per second)."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
-          <Annotation Term="Measures.Unit" String="Gbit/s"/>
+          <Annotation Term="Measures.Unit" String="Gbps"/>
         </Property>
         <Property Name="FirmwareVersion" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
