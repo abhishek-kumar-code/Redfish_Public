@@ -8,9 +8,13 @@
   "OwningEntity": "HPE",
   "RegistryPrefix": "BiosAttributeRegistryP89",
   "RegistryVersion": "1.0.0",
-  "ProductName": "HPE ProLiant DL380 Gen9",
-  "SystemId": "P89"
-  "FirmwareVersion": "P89 v1.00 (06/02/2014)",
+  "SupportedSystems": [
+    {
+      "ProductName": "HPE ProLiant DL380 Gen9",
+      "SystemId": "P89",
+      "FirmwareVersion": "P89 v1.00 (06/02/2014)"
+    }
+  ],
   "RegistryEntries": {
     "Attributes": [
       {

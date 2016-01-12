@@ -14,11 +14,6 @@
     "@odata.type": {
       "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
     },
-    "Version": {
-      "description": "Firmware version.",
-      "longDescription": "The version of the component firmware image that this registry applies to.",
-      "type": "string"
-    },
     "Description": {
       "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
     },
@@ -45,10 +40,38 @@
       "readonly": true,
       "type": "string"
     },
-    "ProductName": {
-      "description": "The product name of the system.",
-      "longDescription": "The value of this property shall be the product name of the computer system that this registry applies to.",
+    "RegistryVersion": {
+      "description": "This is the message registry version which is used in the middle portion of a messageID.",
+      "longDescription": "The value of this property shall be the version of this message registry. The format of this string shall be of the format majorversion.minorversion.errata in compliance with Protocol Version section of the Redfish specification.",
+      "readonly": true,
       "type": "string"
+    },
+    "SupportedSystems": {
+    "additionalProperties": false,
+    "description": "Array of systems supported by this attribute registry.",
+      "longDescription": "The value of this property shall be an array containing a list of systems supported by this attribute registry.",
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "ProductName": {
+            "description": "The product name of the system.",
+            "longDescription": "The value of this property shall be the product name of the computer system that this registry applies to.",
+            "type": "string"
+          },
+          "SystemId": {
+            "description": "The system ID of the system.",
+            "longDescription": "The value of this property shall be the system ID that identifies the computer system model that this registry applies to.",
+            "pattern": "^[A-Za-z0-9]+$",
+            "type": "string"
+          },
+          "FirmwareVersion": {
+            "description": "Firmware version.",
+            "longDescription": "The version of the component firmware image that this registry applies to.",
+            "type": "string"
+          }
+        }
+      },
+      "type": "array"
     },
     "RegistryEntries": {
       "additionalProperties": false,
@@ -420,18 +443,6 @@
         "Attributes"
       ],
       "type": "object"
-    },
-    "RegistryVersion": {
-      "description": "This is the message registry version which is used in the middle portion of a messageID.",
-      "longDescription": "The value of this property shall be the version of this message registry. The format of this string shall be of the format majorversion.minorversion.errata in compliance with Protocol Version section of the Redfish specification.",
-      "readonly": true,
-      "type": "string"
-    },
-    "SystemId": {
-      "description": "The system ID of the system.",
-      "longDescription": "The value of this property shall be the system ID that identifies the computer system model that this registry applies to.",
-      "pattern": "^[A-Za-z0-9]+$",
-      "type": "string"
     }
   },
   "required": [
