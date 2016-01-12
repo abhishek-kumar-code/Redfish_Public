@@ -244,14 +244,14 @@
               "InterfaceType": {
                 "description": "This property indicates the interface type of the Trusted Module.",
                 "enum": [
-                  "TPM1.2",
-                  "TPM2.0",
-                  "TCM1.0"
+                  "TPM12",
+                  "TPM20",
+                  "TCM10"
                 ],
                 "enumDescriptions": {
-                  "TCM1.0": "Trusted Cryptography Module (TCM) 1.0",
-                  "TPM1.2": "Trusted Platform Module (TPM) 1.2.",
-                  "TPM2.0": "Trusted Platform Module (TPM) 2.0."
+                  "TCM10": "Trusted Cryptography Module (TCM) 1.0",
+                  "TPM12": "Trusted Platform Module (TPM) 1.2.",
+                  "TPM20": "Trusted Platform Module (TPM) 2.0."
                 },
                 "longDescription": "This property shall contain the interface type of the installed Trusted Module.",
                 "readonly": true,
