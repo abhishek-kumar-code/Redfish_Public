@@ -2,7 +2,7 @@
   "@Redfish.Copyright": "Copyright 2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
   "@odata.context": "/redfish/v1/$metadata#Systems/1/Bios/SD",
   "@odata.id": "/redfish/v1/Systems/1/Bios/SD",
-  "@odata.type": "#BiosAttributes.1.0.0.BiosAttributes",
+  "@odata.type": "#Attributes.1.0.0.Attributes",
   "AdminPhone": "(123) 456-789",
   "AttributeRegistry": "BiosAttributeRegistryP89.1.0.0",
   "BootMode": "Uefi",

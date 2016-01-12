@@ -1,5 +1,5 @@
 {
-  "$ref": "#/definitions/BiosAttributes",
+  "$ref": "#/definitions/Attributes",
   "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.1.0.0.json",
   "copyright": "Copyright 2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
   "properties": {
@@ -14,8 +14,8 @@
     },
     "AttributeRegistry": {
       "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
-      "description": "The BIOS Attribute Registry",
-      "longDescription": "The reference to the BIOS Attribute Registry that lists the metadata describing BIOS settings in this resource. BIOS settings appear as additional properties in this resource, and can be looked up in the Attribute Registry by their AttributeName."
+      "description": "The Attribute Registry for the Attributes resource",
+      "longDescription": "The reference to the Attribute Registry that lists the metadata describing the attribute settings in this resource. Attribute settings appear as additional properties in this resource, and can be looked up in the Attribute Registry by their AttributeName."
     },
     "Description": {
       "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
@@ -48,5 +48,5 @@
       }
     }
   },
-  "title": "#BiosAttributes.1.0.0.BiosAttributes"
+  "title": "#Attributes.1.0.0.Attributes"
 }
