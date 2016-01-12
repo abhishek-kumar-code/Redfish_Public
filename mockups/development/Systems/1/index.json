@@ -64,7 +64,7 @@
             "State": "Enabled",
             "Health": "OK"
            },
-           "ModuleType":"TPM20",
+           "ModuleType":"TPM2_0",
            "FirmwareVersion":"3.1"
         }
     ],

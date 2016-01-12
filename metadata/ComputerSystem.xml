@@ -402,13 +402,13 @@
       </ComplexType>
 
       <EnumType Name="InterfaceType">
-        <Member Name="TPM12">
+        <Member Name="TPM1_2">
           <Annotation Term="OData.Description" String="Trusted Platform Module (TPM) 1.2"/>
         </Member>
-        <Member Name="TPM20">
+        <Member Name="TPM2_0">
           <Annotation Term="OData.Description" String="Trusted Platform Module (TPM) 2.0"/>
         </Member>
-        <Member Name="TCM10">
+        <Member Name="TCM1_0">
           <Annotation Term="OData.Description" String="Trusted Cryptography Module (TCM) 1.0"/>
         </Member>
       </EnumType>
