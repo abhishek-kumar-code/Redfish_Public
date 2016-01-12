@@ -451,7 +451,7 @@
                 },
                 "SecureBoot": {
                   "$ref": "#/definitions/SecureBoot",
-                  "description": "A reference to the SecureBoot resource associated with this system",
+                  "description": "A reference to the UEFI SecureBoot resource associated with this system.",
                   "longDescription": "The value of this property shall be a link to a resource of type SecureBoot.",
                   "readonly": true
                 },

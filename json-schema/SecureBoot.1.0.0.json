@@ -47,7 +47,7 @@
 					"type": "boolean",
 					"readonly": false,
 					"description": "Enable or disable UEFI Secure Boot (takes effect on next boot).",
-					"longDescription": "Setting this property to true enables UEFI Secure Boot, and setting it to false disables it."
+					"longDescription": "Setting this property to true enables UEFI Secure Boot, and setting it to false disables it. This property can be enabled only in UEFI boot mode."
 				},
 				"SecureBootCurrentState": {
 					"description": "Current enabled state of Secure Boot.",
@@ -96,5 +96,5 @@
 			}
 		}
 	},
-	"copyright": "Copyright 2014,2015 Hewlett Packard Enterprise LP. All rights reserved."
+	"copyright": "Copyright 2014-2016 Hewlett Packard Enterprise LP. All rights reserved."
 }
