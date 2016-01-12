@@ -377,7 +377,7 @@
         </Member>
       </EnumType>
 
-      <EnumType Name="BootSource" BaseType="ComputerSystem.1.0.1.ComputerSystem">
+      <EnumType Name="BootSource" BaseType="ComputerSystem.1.0.0.ComputerSystem">
         <Member Name="UefiHttp">
            <Annotation Term="OData.Description" String="Boot from a UEFI HTTP network location"/>
         </Member>
