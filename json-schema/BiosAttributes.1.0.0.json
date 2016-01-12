@@ -1,7 +1,7 @@
 {
   "$ref": "#/definitions/BiosAttributes",
   "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.1.0.0.json",
-  "copyright": "Copyright 2014-2016 Hewlett Packard Enterprise LP. All rights reserved.",
+  "copyright": "Copyright 2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
   "properties": {
     "@odata.context": {
       "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
