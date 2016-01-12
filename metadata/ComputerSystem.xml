@@ -360,7 +360,7 @@
 
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.1.0.1.ComputerSystem">
 
-        <Property Name="TrustedModules" Type="Collection(ComputerSystem.1.1.0.TrustedModules)"  Nullable="false">
+        <Property Name="TrustedModules" Type="Collection(ComputerSystem.1.1.0.TrustedModules)">
           <Annotation Term="OData.Description" String="This object describes the array of Trusted Modules in the system."/>
           <Annotation Term="OData.LongDescription" String="This object shall contain an array of objects with properties which describe the truted modules for the current resource."/>
         </Property>
