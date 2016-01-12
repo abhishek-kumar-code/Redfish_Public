@@ -305,9 +305,6 @@
         <Member Name="SDCard">
            <Annotation Term="OData.Description" String="Boot from an SD Card"/>
         </Member>
-        <Member Name="UefiHttp">
-           <Annotation Term="OData.Description" String="Boot from a UEFI HTTP network location"/>
-        </Member>
       </EnumType> 
 
       <EnumType Name="BootSourceOverrideEnabled">
@@ -379,6 +376,12 @@
           <Annotation Term="OData.Description" String="The system will boot in UEFI boot mode to the Boot Source Override Target."/>
         </Member>
       </EnumType>
+
+      <EnumType Name="BootSource" BaseType="ComputerSystem.1.0.1.ComputerSystem">
+        <Member Name="UefiHttp">
+           <Annotation Term="OData.Description" String="Boot from a UEFI HTTP network location"/>
+        </Member>
+      </EnumType> 
 
     </Schema>
   
