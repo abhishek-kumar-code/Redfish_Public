@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.-->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions.xml">
+    <edmx:Include Namespace="RedfishExtensions.1.0.0" Alias="Redfish"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
+    <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.1.0.0" />
+  </edmx:Reference>
+
+  <edmx:DataServices>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Volume">
+      
+      <EntityType Name="Volume" BaseType="Resource.1.0.0.Resource">
+        <Annotation Term="OData.Description" String="This is the schema definition for the Volume resource.  It represents the properties for logical disk drives for any system."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a volume, virtual disk, logical disk, LUN, or other logical storage for a Redfish implementation."/>
+      </EntityType>
+
+      <Action Name="Initialize" IsBound="true">
+        <Parameter Name="Volume" Type="Volume.1.0.0.Actions"/>
+        <Parameter Name="InitializeType" Type="Volume.InitializeType">
+          <Annotation Term="OData.Description" String="The type of initialization to be performed"/>
+          <Annotation Term="OData.LongDescription" String="This defines the property name for the action."/>
+        </Parameter>
+        <Annotation Term="OData.Description" String="This action is used to prepare the contents of the volume for use by the system."/>
+        <Annotation Term="OData.LongDescription" String="This defines the name of the custom action supported on this resource."/>
+      </Action>
+
+      <EnumType Name="InitializeType">
+        <Member Name="Fast">
+          <Annotation Term="OData.Description" String="The volume is prepared for use quickly, typically by erasing just the begining and end of the space so that partitioning can be performed"/>
+        </Member>
+        <Member Name="Slow">
+          <Annotation Term="OData.Description" String="The volume is prepared for use slowly, typically by completely erasing the volume"/>
+        </Member>
+      </EnumType>
+
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Volume.1.0.0">
+
+      <EntityType Name="Volume" BaseType="Volume.Volume">
+        <Property Name="Status" Type="Resource.Status"/>
+        <Property Name="SizeBytes" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The size in bytes of this Volume"/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the size in bytes of the associated volume."/>
+          <Annotation Term="Measures.Unit" String="By"/>
+        </Property>
+        <Property Name="VolumeType" Type="Volume.1.0.0.VolumeType">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Is this drive currently predicting a failure in the near future"/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain failure information as defined by the manufacturer for the associated drive."/>
+        </Property>
+
+        <!--TODO What ever we decide for WWN/DesignationDescriptor-->
+        <Property Name="BlockSizeBytes" Type="Edm.Int32">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The size of the smallest addressible unit (Block) of this volume in bytes"/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain size of the smallest addressible unit of the associated volume."/>
+          <Annotation Term="Measures.Unit" String="By"/>
+        </Property>
+        <Property Name="Links" Type="Volume.1.0.0.Links" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The links object contains the links to other resources that are related to this resource."/>
+        </Property>
+        <Property Name="Actions" Type="Volume.1.0.0.Actions" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The Actions object contains the available custom actions on this resource."/>
+        </Property>
+      </EntityType>
+
+      <ComplexType Name="Links" BaseType="Resource.Links">
+        <NavigationProperty Name="Drives" Type="Collection(Drive.Drive)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="An array of references to the drives which contain this volume. This will reference Drives that either wholly or only partly contain this volume."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resource that this volume is associated with and shall reference a resource of type Drive."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+      </ComplexType>
+
+      <ComplexType Name="Actions">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Property Name="Oem" Type="Volume.1.0.0.OemActions"/>
+      </ComplexType>
+
+      <ComplexType Name="OemActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+      </ComplexType>
+
+      <EnumType Name="VolumeType">
+        <Member Name="RawDevice">
+          <Annotation Term="OData.Description" String="The volume is a raw physical device without any RAID or other virtualization applied"/>
+        </Member>
+        <Member Name="NonRedundant">
+          <Annotation Term="OData.Description" String="The volume is a non-redundant storage device"/>
+        </Member>
+        <Member Name="Mirrored">
+          <Annotation Term="OData.Description" String="The volume is a mirrored device"/>
+        </Member>
+        <Member Name="StripedWithParity">
+          <Annotation Term="OData.Description" String="The volume is a device which uses parity to retain redundant information"/>
+        </Member>
+        <Member Name="SpannedMirrors">
+          <Annotation Term="OData.Description" String="The volume is a spanned set of mirrored devices"/>
+        </Member>
+        <Member Name="SpannedStripesWithParity">
+          <Annotation Term="OData.Description" String="The volume is a spanned set of devices which uses parity to retain redundant information"/>
+        </Member>
+      </EnumType>
+
+    </Schema>
+    
+  </edmx:DataServices>
+</edmx:Edmx>
