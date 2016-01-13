@@ -80,7 +80,7 @@
     "LogServices": {
         "@odata.id": "/redfish/v1/Systems/1/LogServices"
     },
-    "BiosAttributes": {
+    "Bios": {
         "@odata.id": "/redfish/v1/Systems/1/Bios"
     },
     "Links": {

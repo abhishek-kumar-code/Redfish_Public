@@ -1,5 +1,12 @@
 {
   "@Redfish.Copyright": "Copyright 2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+  "@odata.context": "/redfish/v1/$metadata#Systems/1/Bios",
+  "@odata.id": "/redfish/v1/Systems/1/Bios",
+  "@odata.type": "#Bios.1.0.0.Bios",
+  "Id": "Bios",
+  "Name": "BIOS Configuration Current Settings",
+  "Description": "BIOS Configuration Current Settings",
+  "AttributeRegistry": "BiosAttributeRegistryP89.1.0.0",
   "@Redfish.Settings": {
     "@odata.type": "#Settings.1.0.0.Settings",
     "ETag": "someetag",
@@ -16,21 +23,16 @@
     },
     "Time": "2012-03-07T14:44.30-05:00"
   },
-  "@odata.context": "/redfish/v1/$metadata#Systems/1/Bios",
-  "@odata.id": "/redfish/v1/Systems/1/Bios",
-  "@odata.type": "#Attributes.1.0.0.Attributes",
-  "AdminPhone": "",
-  "AttributeRegistry": "BiosAttributeRegistryP89.1.0.0",
-  "BootMode": "Uefi",
-  "Description": "BIOS Configuration Current Settings",
-  "EmbeddedSata": "Raid",
-  "Id": "Bios",
-  "Name": "BIOS Configuration Current Settings",
-  "NicBoot1": "NetworkBoot",
-  "NicBoot2": "Disabled",
-  "PowerProfile": "MaxPerf",
-  "ProcCoreDisable": 0,
-  "ProcHyperthreading": "Enabled",
-  "ProcTurboMode": "Enabled",
-  "UsbControl": "UsbEnabled"
+  "Attributes": {
+    "AdminPhone": "",
+    "BootMode": "Uefi",
+    "EmbeddedSata": "Raid",
+    "NicBoot1": "NetworkBoot",
+    "NicBoot2": "Disabled",
+    "PowerProfile": "MaxPerf",
+    "ProcCoreDisable": 0,
+    "ProcHyperthreading": "Enabled",
+    "ProcTurboMode": "Enabled",
+    "UsbControl": "UsbEnabled"
+  }
 }
