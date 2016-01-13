@@ -24,18 +24,18 @@
                 "State": "Enabled",
                 "Health": "OK"
             },
-            "DeviceDesignators": [
+            "Identifiers": [
                 {
-                    "Type": "NAA",
-                    "Value": "5782BCB07197C600"
+                    "DurableNameFormat": "NAA",
+                    "DurableName": "5782BCB07197C600"
                 }
+            ],
             "Manufacturer": "ManufacturerName",
             "Model": "ProductModelName",
             "SKU": "",
             "SerialNumber": "2M220100SL",
             "PartNumber": "",
             "AssetTag": "CustomerWritableThingy",
-            ],
             "SpeedGbps": 12,
             "FirmwareVersion": "23.13.06.0006",
             "SupportedControllerProtocols": [

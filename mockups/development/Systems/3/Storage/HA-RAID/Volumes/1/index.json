@@ -11,10 +11,10 @@
     },
     "VolumeType": "NonRedundant",
     "VolumeSizeInBytes": 104857600,
-    "DeviceDesignators": [
+    "Identifiers": [
         {
-            "Type": "TargetPort",
-            "Value": "0"
+            "DurableNameFormat": "UUID",
+            "DurableName": "995dff70-48eb-4cd3-9ae1-0f8e3cdfe80e"
         }
     ],
     "Links": {

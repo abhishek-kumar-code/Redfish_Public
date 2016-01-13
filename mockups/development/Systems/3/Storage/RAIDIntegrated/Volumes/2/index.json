@@ -13,10 +13,14 @@
     "VolumeSizeInBytes": 104857600,
     "Encrypted": true,
     "EncrytionType": "NativeDriveEncryption",
-    "DeviceDesignators": [
+    "Identifiers": [
         {
-            "Type": "TargetPort",
-            "Value": "1"
+            "DurableNameFormat": "VPD83type3",
+            "DurableName": "690b11c02547001d96f0fbe6c1cb32"
+        },
+        {
+            "DurableNameFormat": "UUID",
+            "DurableName": "d820b7e6-0635-4a6a-bf2c-825d3824fe3d"
         }
     ],
     "Links": {
