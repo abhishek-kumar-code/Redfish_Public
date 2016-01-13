@@ -20,12 +20,14 @@
         }
     ],
     "FormFactor": "3.5 inch",
-    "HotspareType": "None",
     "EncryptionAbility": "SelfEncryptingDrive",
     "EncryptionStatus": "Unlocked",
     "RotationSpeedRPM": 15000,
     "BlockSizeBytes": 512,
     "HotspareType": "Dedicated",
+    "AssetTag": "",
+    "CapableSpeedGbs": 12,
+    "NegotiatedSpeedGbs": 12,
     "Links": {
         "Volumes": [
             {"@odata.id": "/redfish/v1/Systems/3/Storage/RAIDIntegrated/Volumes/1"}

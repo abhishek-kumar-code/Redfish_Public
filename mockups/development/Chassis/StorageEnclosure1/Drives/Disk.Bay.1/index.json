@@ -20,6 +20,9 @@
         }
     ],
     "FormFactor": "3.5 inch",
+    "AssetTag": "",
+    "CapableSpeedGbs": 12,
+    "NegotiatedSpeedGbs": 12,
     "Links": {
         "Volumes": [
             {"@odata.id": "/redfish/v1/Systems/3/Storage/HA-RAID/Volumes/2"}

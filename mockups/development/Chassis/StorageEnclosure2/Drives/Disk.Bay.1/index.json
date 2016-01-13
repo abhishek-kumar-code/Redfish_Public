@@ -21,6 +21,9 @@
     ],
     "FormFactor": "3.5 inch",
     "HotspareType": "None",
+    "AssetTag": "",
+    "CapableSpeedGbs": 12,
+    "NegotiatedSpeedGbs": 12,
     "Links": {
         "Volumes": [
         ]

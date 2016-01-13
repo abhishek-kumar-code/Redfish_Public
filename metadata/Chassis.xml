@@ -320,8 +320,36 @@
           <Annotation Term="OData.Description" String="This sensor would be restored to the Normal state automatically as no abnormal physical security conditions are detected."/>
         </Member>
       </EnumType>      
+   </Schema>
 
+   <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.1.2.0">  
+     <EntityType Name="Chassis" BaseType="Chassis.1.1.0.Chassis"/>
+     <ComplexType Name="Links" BaseType="Chassis.1.0.0.Links">
+        <NavigationProperty Name="ManagersInChassis" Type="Collection(Manager.Manager)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="An array of references to the managers located in this Chassis."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall reference one or more resources of type Manager that are in this Chassis."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        <NavigationProperty Name="Drives" Type="Collection(Drive.Drive)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="An array of references to the disk drives located in this Chassis."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall reference one or more resources of type Drive that are in this Chassis."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        <NavigationProperty Name="Storage" Type="Collection(Storage.Storage)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="An array of references to the storage subsystems connected to or inside this Chassis."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall reference one or more resources of type Storage that are connected to or contained inside this Chassis."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+      </ComplexType>
+      <EnumType Name="ChassisType" BaseType="Chassis.1.0.0.ChassisType">
+        <Member Name="StorageEnclosure">
+            <Annotation Term="OData.Description" String="A chassis that primarily holds disk drives and/or storage controllers"/>
+        </Member>
+      </EnumType>
     </Schema>
-
+    
   </edmx:DataServices>
 </edmx:Edmx>
