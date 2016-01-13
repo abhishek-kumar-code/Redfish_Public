@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.--> 
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions.xml">
+    <edmx:Include Namespace="RedfishExtensions.1.0.0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.1.0.0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
+    <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.1.0.0" />
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/PhysicalContext.xml">
+    <edmx:Include Namespace="PhysicalContext.1.0.0"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Redundancy.xml">
+    <edmx:Include Namespace="Redundancy"/>
+  </edmx:Reference>
+    
+  <edmx:DataServices>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SecureBoot">
+
+      <EntityType Name="SecureBoot" BaseType="Resource.1.0.0.Resource">
+        <Annotation Term="OData.Description" String="This is the schema definition for the UEFI Secure Boot. It represents the properties for UEFI Secure Boot status and management."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a UEFI Secure Boot resource for a Redfish implementation."/>
+      </EntityType>
+    
+    </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SecureBoot.1.0.0">
+
+      <EntityType Name="SecureBoot" BaseType="SecureBoot.SecureBoot">
+        <Property Name="SecureBootEnable" Type="Edm.Boolean">
+          <Annotation Term="OData.Description" String="Enable or disable UEFI Secure Boot (takes effect on next boot)."/>
+          <Annotation Term="OData.LongDescription" String="Setting this property to true enables UEFI Secure Boot, and setting it to false disables it. This property can be enabled only in UEFI boot mode."/>
+        </Property>
+        <Property Name="SecureBootCurrentState" Type="SecureBoot.1.0.0.SecureBootCurrentStateType">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Current enabled state of Secure Boot."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the current state of UEFI Secure Boot."/>
+        </Property>
+        <Property Name="SecureBootMode" Type="SecureBoot.1.0.0.SecureBootModeType">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Current Secure Boot Mode."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the current Secure Boot mode, as defined in the UEFI Specification."/>
+        </Property>
+        <Property Name="ResetKeys" Type="SecureBoot.1.0.0.ResetKeysType">
+          <Annotation Term="OData.Description" String="Reset the UEFI Secure Boot key databases."/>
+          <Annotation Term="OData.LongDescription" String="This property shall be used to clear the UEFI Secure Boot databases or set them to their default values."/>
+        </Property>
+      </EntityType>
+
+      <EnumType Name="SecureBootCurrentStateType">
+        <Member Name="Enabled">
+          <Annotation Term="OData.Description" String="Secure Boot is currently enabled."/>
+        </Member>
+        <Member Name="Disabled">
+          <Annotation Term="OData.Description" String="Secure Boot is currently disabled."/>
+        </Member>
+      </EnumType>
+
+      <EnumType Name="SecureBootModeType">
+        <Member Name="SetupMode">
+          <Annotation Term="OData.Description" String="Secure Boot is currently in Setup Mode."/>
+        </Member>
+        <Member Name="UserMode">
+          <Annotation Term="OData.Description" String="Secure Boot is currently in User Mode."/>
+        </Member>
+        <Member Name="AuditMode">
+          <Annotation Term="OData.Description" String="Secure Boot is currently in Audit Mode."/>
+        </Member>
+        <Member Name="DeployedMode">
+          <Annotation Term="OData.Description" String="Secure Boot is currently in Deployed Mode."/>
+        </Member>
+      </EnumType>
+
+      <EnumType Name="ResetKeysType">
+        <Member Name="No">
+          <Annotation Term="OData.Description" String="Do not reset Secure Boot key databases."/>
+        </Member>
+        <Member Name="ResetAllKeysToDefault">
+          <Annotation Term="OData.Description" String="Reset the content of all UEFI Secure Boot key databases (PK, KEK, DB, DBX) to their default values."/>
+        </Member>
+        <Member Name="ClearAllKeys">
+          <Annotation Term="OData.Description" String="Clear the content of all UEFI Secure Boot key databases (PK, KEK, DB, DBX). This puts the system in Setup Mode."/>
+        </Member>
+        <Member Name="ClearPK">
+          <Annotation Term="OData.Description" String="Clear the content of the PK UEFI Secure Boot database. This puts the system in Setup Mod."/>
+        </Member>
+      </EnumType>
+
+    </Schema>
+
+</edmx:DataServices>
+</edmx:Edmx>
+
