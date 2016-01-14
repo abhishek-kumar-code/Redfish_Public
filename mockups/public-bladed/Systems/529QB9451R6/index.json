@@ -52,6 +52,9 @@
     "Processors": {
         "@odata.id": "/redfish/v1/Systems/529QB9451R6/Processors"
     },
+    "SimpleStorage": {
+        "@odata.id": "/redfish/v1/Systems/529QB9451R6/SimpleStorage"
+    },
     "Links": {
         "Chassis": [
             {

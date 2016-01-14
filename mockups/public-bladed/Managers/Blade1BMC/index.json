@@ -19,6 +19,12 @@
         ]
     },
     "FirmwareVersion": "1.00",
+    "EthernetInterfaces": {
+        "@odata.id": "/redfish/v1/Managers/Blade1BMC/EthernetInterfaces"
+    },
+    "LogServices": {
+        "@odata.id": "/redfish/v1/Managers/Blade1BMC/LogServices"
+    },
     "Links": {
         "ManagerForServers": [
             {
