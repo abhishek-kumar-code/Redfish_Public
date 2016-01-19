@@ -87,11 +87,11 @@
         <Member Name="ResetAllKeysToDefault">
           <Annotation Term="OData.Description" String="Reset the content of all UEFI Secure Boot key databases (PK, KEK, DB, DBX) to their default values."/>
         </Member>
-        <Member Name="ClearAllKeys">
-          <Annotation Term="OData.Description" String="Clear the content of all UEFI Secure Boot key databases (PK, KEK, DB, DBX). This puts the system in Setup Mode."/>
+        <Member Name="DeleteAllKeys">
+          <Annotation Term="OData.Description" String="Delete the content of all UEFI Secure Boot key databases (PK, KEK, DB, DBX). This puts the system in Setup Mode."/>
         </Member>
-        <Member Name="ClearPK">
-          <Annotation Term="OData.Description" String="Clear the content of the PK UEFI Secure Boot database. This puts the system in Setup Mod."/>
+        <Member Name="DeletePK">
+          <Annotation Term="OData.Description" String="Delete the content of the PK UEFI Secure Boot database. This puts the system in Setup Mode."/>
         </Member>
       </EnumType>
 
