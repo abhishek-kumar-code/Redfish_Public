@@ -513,6 +513,12 @@
                   "description": "This object describes the Trusted Modules in the system.",
                   "longDescription": "This object shall contain properties which describe the truted modules for the current resource."
                 },
+                "SecureBoot": {
+                  "$ref": "#/definitions/SecureBoot",
+                  "description": "A reference to the UEFI SecureBoot resource associated with this system.",
+                  "longDescription": "The value of this property shall be a link to a resource of type SecureBoot.",
+                  "readonly": true
+                },		
                 "Actions": {
                     "type": "object",
                     "patternProperties": {
