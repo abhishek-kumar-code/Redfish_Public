@@ -33,7 +33,7 @@
 
       <Action Name="ResetKeys" IsBound="true">
         <Parameter Name="SecureBoot" Type="SecureBoot.1.0.0.Actions"/>
-        <Parameter Name="ResetKeysType" Type="SecureBoot.ResetKeysType">
+        <Parameter Name="ResetKeysType" Type="SecureBoot.1.0.0.ResetKeysType">
           <Annotation Term="OData.Description" String="The type of reset to be performed"/>
           <Annotation Term="OData.LongDescription" String="This defines the property name for the action."/>
         </Parameter>
