@@ -58,8 +58,7 @@
                 "Diags",
                 "UefiShell",
                 "UefiTarget",
-                "SDCard",
-                "UefiHttp"
+                "SDCard"
             ],
             "enumDescriptions": {
                 "None": "Boot from the normal boot device",
@@ -73,8 +72,7 @@
                 "Diags": "Boot the manufacturer's Diagnostics program",
                 "UefiShell": "Boot to the UEFI Shell",
                 "UefiTarget": "Boot to the UEFI Device specified in the UefiTargetBootSourceOverride property",
-                "SDCard": "Boot from an SD Card",
-                "UefiHttp": "Boot from a UEFI HTTP network location"
+                "SDCard": "Boot from an SD Card"
             }
         },
         "BootSourceOverrideEnabled": {
@@ -521,12 +519,6 @@
                   "description": "This object describes the Trusted Modules in the system.",
                   "longDescription": "This object shall contain properties which describe the truted modules for the current resource."
                 },
-                "SecureBoot": {
-                  "$ref": "#/definitions/SecureBoot",
-                  "description": "A reference to the UEFI SecureBoot resource associated with this system.",
-                  "longDescription": "The value of this property shall be a link to a resource of type SecureBoot.",
-                  "readonly": true
-                },		
                 "Actions": {
                     "type": "object",
                     "patternProperties": {

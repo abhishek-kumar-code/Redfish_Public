@@ -305,9 +305,6 @@
         <Member Name="SDCard">
            <Annotation Term="OData.Description" String="Boot from an SD Card"/>
         </Member>
-        <Member Name="UefiHttp">
-           <Annotation Term="OData.Description" String="Boot from a UEFI HTTP network location"/>
-        </Member>
       </EnumType> 
 
       <EnumType Name="BootSourceOverrideEnabled">
@@ -362,15 +359,12 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.1.1.0">
 
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.1.0.1.ComputerSystem">
+
         <Property Name="TrustedModules" Type="Collection(ComputerSystem.1.1.0.TrustedModules)">
           <Annotation Term="OData.Description" String="This object describes the array of Trusted Modules in the system."/>
           <Annotation Term="OData.LongDescription" String="This object shall contain an array of objects with properties which describe the truted modules for the current resource."/>
         </Property>
-       <NavigationProperty Name="SecureBoot" Type="SecureBoot.SecureBoot">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="A reference to the UEFI SecureBoot resource associated with this system."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a resource of type SecureBoot."/>
-       </NavigationProperty>
+
       </EntityType>
 
       <ComplexType Name="Boot" BaseType="ComputerSystem.1.0.0.Boot">            
