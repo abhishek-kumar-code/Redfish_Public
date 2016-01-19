@@ -2037,7 +2037,7 @@ For compatibility with general purpose SSDP client software, primarily UPnP, TCP
 
 #### USN Format
 
-The UUID supplied in the USN field of the service shall equal the UUID property of the service root. If there are multiple / redundant managers, the UUID of the service shall remain static regardless of redundancy failover.  The Unique ID shall be in the canonical UUID format, followed by '::dtmf-org'
+The UUID supplied in the USN field of the service shall equal the UUID property of the service root. If there are multiple / redundant managers, the UUID of the service shall remain static regardless of redundancy failover.  The Unique ID shall be in the canonical UUID format, followed by '::dmtf-org'
 
 #### M-SEARCH Response
 
