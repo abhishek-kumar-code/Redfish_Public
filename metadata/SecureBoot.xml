@@ -30,9 +30,19 @@
         <Annotation Term="OData.Description" String="This is the schema definition for the UEFI Secure Boot. It represents the properties for UEFI Secure Boot status and management."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a UEFI Secure Boot resource for a Redfish implementation."/>
       </EntityType>
-    
+
+      <Action Name="ResetKeys" IsBound="true">
+        <Parameter Name="SecureBoot" Type="SecureBoot.1.0.0.Actions"/>
+        <Parameter Name="ResetKeysType" Type="SecureBoot.ResetKeysType">
+          <Annotation Term="OData.Description" String="The type of reset to be performed"/>
+          <Annotation Term="OData.LongDescription" String="This defines the property name for the action."/>
+        </Parameter>
+        <Annotation Term="OData.Description" String="This action is used to reset the Secure Boot keys."/>
+        <Annotation Term="OData.LongDescription" String="This action shall perform a reset of the Secure Boot key databases. The ResetAllKeysToDefault value shall reset the UEFI Secure Boot key databases to their default values. The DeleteAllKeys value shall delete the content of the UEFI Secure Boot key databases. The DeletePK value shall delete the content of the PK Secure boot key."/>
+      </Action>
+            
     </Schema>
-    
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SecureBoot.1.0.0">
 
       <EntityType Name="SecureBoot" BaseType="SecureBoot.SecureBoot">
@@ -49,10 +59,6 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Current Secure Boot Mode."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the current Secure Boot mode, as defined in the UEFI Specification."/>
-        </Property>
-        <Property Name="ResetKeys" Type="SecureBoot.1.0.0.ResetKeysType">
-          <Annotation Term="OData.Description" String="Reset the UEFI Secure Boot key databases."/>
-          <Annotation Term="OData.LongDescription" String="This property shall be used to clear the UEFI Secure Boot databases or set them to their default values."/>
         </Property>
       </EntityType>
 
@@ -81,9 +87,6 @@
       </EnumType>
 
       <EnumType Name="ResetKeysType">
-        <Member Name="No">
-          <Annotation Term="OData.Description" String="Do not reset Secure Boot key databases."/>
-        </Member>
         <Member Name="ResetAllKeysToDefault">
           <Annotation Term="OData.Description" String="Reset the content of all UEFI Secure Boot key databases (PK, KEK, DB, DBX) to their default values."/>
         </Member>
