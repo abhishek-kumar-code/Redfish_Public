@@ -500,6 +500,12 @@
                     "description": "The version of the system BIOS or primary system firmware.",
                     "longDescription": "The value of this property shall be the version string of the currently installed and running BIOS (for x86 systems).  For other systems, the value may contain a version string representing the primary system firmware."
                 },
+                "Bios": {
+                  "$ref": "#/definitions/Bios",
+                  "description": "A reference to the BIOS settings associated with this system",
+                  "longDescription": "The value of this property shall be a link to a resource of type Bios that lists the BIOS settings for this system.",
+                  "readonly": true
+                },
                 "ProcessorSummary": {
                     "$ref": "#/definitions/ProcessorSummary",
                     "description": "This object describes the central processors of the system in general detail.",

@@ -1,0 +1,73 @@
+{
+  "$ref": "#/definitions/Bios",
+  "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.1.0.0.json",
+  "copyright": "Copyright 2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+  "properties": {
+    "@odata.context": {
+      "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
+    },
+    "@odata.id": {
+      "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
+    },
+    "@odata.type": {
+      "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+    },
+    "AttributeRegistry": {
+      "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
+      "description": "The Attribute Registry for the BIOS Attributes resource",
+      "longDescription": "The reference to the Attribute Registry that lists the metadata describing the BIOS attribute settings in this resource."
+    },
+    "Description": {
+      "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
+    },
+    "Id": {
+      "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
+    },
+    "Name": {
+      "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
+    },
+    "Oem": {
+      "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+      "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+      "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+    },
+    "Attributes": {
+      "type": "object",
+      "additionalProperties": false,
+      "patternProperties": {
+        "^(([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$)|(^[A-Z][A-Za-z0-9]+$)": {
+          "additionalProperties": true,
+          "description": "This can be any odata or Redfish properties or Attribute names.",
+          "longDescription": "This property shall specify a valid odata or Redfish property, or a valid Attribute Name specified in the Attribute Registry.",
+          "type": [
+            "array",
+            "boolean",
+            "number",
+            "null",
+            "object",
+            "string"
+          ]
+        }
+      },
+      "description": "This is the manufacturer/provider specific list of BIOS attributes.",
+      "longDescription": "BIOS Attribute settings appear as additional properties in this object, and can be looked up in the Attribute Registry by their AttributeName."
+    },
+    "additionalProperties": false,
+    "patternProperties": {
+      "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+        "additionalProperties": true,
+        "description": "This can be any odata or Redfish properties or Attribute names.",
+        "longDescription": "This property shall specify a valid odata or Redfish property.",
+        "type": [
+          "array",
+          "boolean",
+          "number",
+          "null",
+          "object",
+          "string"
+        ]
+      }
+    }
+  },
+  "title": "#Bios.1.0.0.Bios"
+}
