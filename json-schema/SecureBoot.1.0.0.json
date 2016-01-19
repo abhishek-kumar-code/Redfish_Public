@@ -80,24 +80,6 @@
                     "longDescription": "This property shall contain the current Secure Boot mode, as defined in the UEFI Specification.",
                     "readonly": true,
                     "type": "string"
-                },
-                "ResetKeys": {
-                    "description": "Reset the UEFI Secure Boot key databases.",
-                    "enum": [
-                        "No",
-                        "ResetAllKeysToDefault",
-                        "DeleteAllKeys",
-                        "DeletePK"
-                    ],
-                    "enumDescriptions": {
-                        "No": "Do not reset Secure Boot key databases.",
-                        "ResetAllKeysToDefault": "Reset the content of all UEFI Secure Boot key databases (PK, KEK, DB, DBX) to their default values.",
-                        "DeleteAllKeys": "Delete the content of all UEFI Secure Boot key databases (PK, KEK, DB, DBX). This puts the system in Setup Mode.",
-                        "DeletePK": "Delete the content of the PK UEFI Secure Boot database. This puts the system in Setup Mode."
-                    },
-                    "longDescription": "This property shall be used to clear the UEFI Secure Boot databases or set them to their default values.",
-                    "readonly": false,
-                    "type": "string"
                 }
             }
         }
