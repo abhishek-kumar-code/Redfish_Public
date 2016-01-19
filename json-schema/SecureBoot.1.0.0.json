@@ -49,8 +49,8 @@
 					"description": "Enable or disable UEFI Secure Boot (takes effect on next boot).",
 					"longDescription": "Setting this property to true enables UEFI Secure Boot, and setting it to false disables it. This property can be enabled only in UEFI boot mode."
 				},
-				"SecureBootCurrentState": {
-					"description": "Current enabled state of Secure Boot.",
+				"SecureBootCurrentBoot": {
+					"description": "Secure Boot state during the current boot cycle.",
 					"enum": [
 						"Enabled",
 						"Disabled"
@@ -59,7 +59,7 @@
 						"Enabled": "Secure Boot is currently enabled.",
 						"Disabled": "Secure Boot is currently disabled."
 					},
-					"longDescription": "The value of this property shall indicate the current state of UEFI Secure Boot.",
+					"longDescription": "The value of this property shall indicate the UEFI Secure Boot state during the current boot cycle.",
 					"readonly": true,
 					"type": "string"
 				},

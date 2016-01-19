@@ -40,10 +40,10 @@
           <Annotation Term="OData.Description" String="Enable or disable UEFI Secure Boot (takes effect on next boot)."/>
           <Annotation Term="OData.LongDescription" String="Setting this property to true enables UEFI Secure Boot, and setting it to false disables it. This property can be enabled only in UEFI boot mode."/>
         </Property>
-        <Property Name="SecureBootCurrentState" Type="SecureBoot.1.0.0.SecureBootCurrentStateType">
+        <Property Name="SecureBootCurrentBoot" Type="SecureBoot.1.0.0.SecureBootCurrentBootType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Current enabled state of Secure Boot."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the current state of UEFI Secure Boot."/>
+          <Annotation Term="OData.Description" String="Secure Boot state during the current boot cycle."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the UEFI Secure Boot state during the current boot cycle."/>
         </Property>
         <Property Name="SecureBootMode" Type="SecureBoot.1.0.0.SecureBootModeType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -56,7 +56,7 @@
         </Property>
       </EntityType>
 
-      <EnumType Name="SecureBootCurrentStateType">
+      <EnumType Name="SecureBootCurrentBootType">
         <Member Name="Enabled">
           <Annotation Term="OData.Description" String="Secure Boot is currently enabled."/>
         </Member>
