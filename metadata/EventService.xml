@@ -29,8 +29,8 @@
       </EntityType>
 
       <Action Name="SubmitTestEvent" IsBound="true">
-        <Annotation Term="OData.Description" String="The SubmitTestEvent action causes a test event to be added to the event service.  This message should then be sent to any appropriate ListenerDestination targets."/>
-        <Annotation Term="OData.LongDescription" String="This defines the name of the custom action supported when used in conjunction with a POST operation to this resource. When issued, this operation will perform a reset of the manager."/>
+        <Annotation Term="OData.Description" String="This action is used to generate a test event."/>
+        <Annotation Term="OData.LongDescription" String="This action shall add a test event to the event service with the event data specified in the action parameters. This message should then be sent to any appropriate ListenerDestination targets."/>
         <Parameter Name="EventService" Type="EventService.1.0.0.Actions"/>
         <Parameter Name="EventType" Type="Event.1.0.0.EventType" Nullable="false">
           <Annotation Term="OData.Description" String="This is the type of event to be added."/>
