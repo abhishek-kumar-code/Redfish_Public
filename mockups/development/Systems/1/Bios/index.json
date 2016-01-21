@@ -23,6 +23,11 @@
     },
     "Time": "2012-03-07T14:44.30-05:00"
   },
+  "Actions": {
+      "#Bios.ResetBios": {
+          "target": "/redfish/v1/Systems/1/Actions/Bios.ResetBios"
+      }
+  },
   "Attributes": {
     "AdminPhone": "",
     "BootMode": "Uefi",
