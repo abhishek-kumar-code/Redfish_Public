@@ -529,6 +529,12 @@
                     "description": "A reference to the collection of Log Services associated with this system",
                     "longDescription": "The value of this property shall be a link to a collection of type LogServiceCollection."
                 },
+                "Bios": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Bios.json#/definitions/Bios",
+                    "readonly": true,
+                    "description": "A reference to the BIOS settings associated with this system.",
+                    "longDescription": "The value of this property shall be a link to a resource of type Bios that lists the BIOS settings for this system."
+                },		
                 "TrustedModules": {
                     "type": "array",
                     "items": {
