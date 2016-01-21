@@ -115,5 +115,10 @@
       </ComplexType>
 
     </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventService.1.0.1">
+        <EntityType Name="EventService" BaseType="EventService.1.0.0.EventService"/>
+    </Schema>
+    
   </edmx:DataServices>
 </edmx:Edmx>
