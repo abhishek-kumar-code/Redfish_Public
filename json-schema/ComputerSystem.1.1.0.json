@@ -593,7 +593,6 @@
                     "description": "A reference to the UEFI SecureBoot resource associated with this system.",
                     "longDescription": "The value of this property shall be a link to a resource of type SecureBoot."
                 }
-                }
             },
             "description": "This schema defines a computer system and its respective properties.  A computer system represents a machine (physical or virtual) and the local resources such as memory, cpu and other devices that can be accessed from that machine.",
             "longDescription": "This resource shall be used to represent resources that represent a computing system in the Redfish specification."
