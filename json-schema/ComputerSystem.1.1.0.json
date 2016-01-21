@@ -592,7 +592,13 @@
                     "readonly": true,
                     "description": "A reference to the UEFI SecureBoot resource associated with this system.",
                     "longDescription": "The value of this property shall be a link to a resource of type SecureBoot."
-                }
+                },
+                "Bios": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Bios.json#/definitions/Bios",
+                    "readonly": true,
+                    "description": "A reference to the BIOS settings associated with this system.",
+                    "longDescription": "The value of this property shall be a link to a resource of type Bios that lists the BIOS settings for this system."
+                }		
             },
             "description": "This schema defines a computer system and its respective properties.  A computer system represents a machine (physical or virtual) and the local resources such as memory, cpu and other devices that can be accessed from that machine.",
             "longDescription": "This resource shall be used to represent resources that represent a computing system in the Redfish specification."
