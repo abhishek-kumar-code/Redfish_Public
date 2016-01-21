@@ -30,6 +30,9 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ProcessorCollection.xml">
     <edmx:Include Namespace="ProcessorCollection"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Bios.xml">
+    <edmx:Include Namespace="Bios"/>
+  </edmx:Reference>   
 
   <edmx:DataServices>
 

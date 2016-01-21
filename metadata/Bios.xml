@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.--> 
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions.xml">
+    <edmx:Include Namespace="RedfishExtensions.1.0.0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.1.0.0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
+    <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.1.0.0" />
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/PhysicalContext.xml">
+    <edmx:Include Namespace="PhysicalContext.1.0.0"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Redundancy.xml">
+    <edmx:Include Namespace="Redundancy"/>
+  </edmx:Reference>
+    
+  <edmx:DataServices>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Bios">
+
+      <EntityType Name="Bios" BaseType="Resource.1.0.0.Resource">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="This is the schema definition for the BIOS attributes resource."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent BIOS attributes for a Redfish implementation."/>
+      </EntityType>
+
+      <Action Name="ResetBios" IsBound="true">
+        <Parameter Name="Bios" Type="Bios.1.0.0.Actions"/>
+        <Annotation Term="OData.Description" String="This action is used to reset the BIOS attributes to default."/>
+        <Annotation Term="OData.LongDescription" String="This action shall perform a reset of the BIOS attributes to teir default values."/>
+      </Action>
+
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Bios.1.0.0">
+
+      <EntityType Name="Bios" BaseType="Bios.Bios">
+        <Property Name="AttributeRegistry" Type="Resource.Id">
+          <Annotation Term="OData.Description" String="The Resource ID of the Attribute Registry for the BIOS Attributes resource."/>
+          <Annotation Term="OData.LongDescription" String="The reference to the Attribute Registry that lists the metadata describing the BIOS attribute settings in this resource."/>
+        </Property>
+        <Property Name="Actions" Type="Bios.1.0.0.Actions" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The Actions object contains the available custom actions on this resource."/>
+        </Property>
+      </EntityType>
+
+      <ComplexType Name="Actions">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Property Name="Oem" Type="Bios.1.0.0.OemActions" Nullable="false"/>
+      </ComplexType>
+      
+      <ComplexType Name="OemActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+      </ComplexType>
+
+    </Schema>
+
+</edmx:DataServices>
+</edmx:Edmx>
+
