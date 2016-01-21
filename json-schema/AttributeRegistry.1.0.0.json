@@ -208,7 +208,7 @@
               },
               "ValueExpression": {
                 "description": "A regular expression that is used to validate the value of the attribute. This is only applicable to attributes of type 'String' or 'Integer'.",
-                "longDescription": "The value of this property shall be a regular expression that is valid according to the ECMA 262 regular expression dialect. This string is used to validate the value of the attribute. This is only applicable to attributes of type 'String' or 'Integer'.",
+                "longDescription": "The value of this property shall be a regular expression that is valid according to the Perl regular expression dialect. This string is used to validate the value of the attribute. This is only applicable to attributes of type 'String' or 'Integer'.",
                 "type": "string"
               },
               "WarningText": {
