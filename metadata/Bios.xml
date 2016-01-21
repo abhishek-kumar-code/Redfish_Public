@@ -51,6 +51,10 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The Actions object contains the available custom actions on this resource."/>
         </Property>
+        <Property Name="Attributes" Type="Bios.1.0.0.Attributes">
+          <Annotation Term="OData.Description" String="This can be any odata or Redfish properties or Attribute names."/>
+          <Annotation Term="OData.LongDescription" String="This property shall specify a valid Attribute Name specified in the Attribute Registry."/>
+        </Property>
       </EntityType>
 
       <ComplexType Name="Actions">
@@ -59,6 +63,10 @@
       </ComplexType>
       
       <ComplexType Name="OemActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+      </ComplexType>
+
+      <ComplexType Name="Attributes">
         <Annotation Term="OData.AdditionalProperties" Bool="true"/>
       </ComplexType>
 
