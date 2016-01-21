@@ -515,12 +515,6 @@
                   "description": "This object describes the Trusted Modules in the system.",
                   "longDescription": "This object shall contain properties which describe the truted modules for the current resource."
                 },
-                "SecureBoot": {
-                  "$ref": "#/definitions/SecureBoot",
-                  "description": "A reference to the UEFI SecureBoot resource associated with this system.",
-                  "longDescription": "The value of this property shall be a link to a resource of type SecureBoot.",
-                  "readonly": true
-                },		
                 "Actions": {
                     "type": "object",
                     "patternProperties": {
@@ -592,6 +586,13 @@
                     "readonly": true,
                     "description": "A reference to the collection of Log Services associated with this system",
                     "longDescription": "The value of this property shall be a link to a collection of type LogServiceCollection."
+                },
+                "SecureBoot": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/SecureBoot.json#/definitions/SecureBoot",
+                    "readonly": true,
+                    "description": "A reference to the UEFI SecureBoot resource associated with this system.",
+                    "longDescription": "The value of this property shall be a link to a resource of type SecureBoot."
+                }
                 }
             },
             "description": "This schema defines a computer system and its respective properties.  A computer system represents a machine (physical or virtual) and the local resources such as memory, cpu and other devices that can be accessed from that machine.",
