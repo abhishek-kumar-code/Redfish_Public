@@ -374,6 +374,11 @@
           <Annotation Term="OData.Description" String="A reference to the UEFI SecureBoot resource associated with this system."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a resource of type SecureBoot."/>
        </NavigationProperty>
+       <NavigationProperty Name="Bios" Type="Bios.Bios">
+         <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+         <Annotation Term="OData.Description" String="A reference to the BIOS settings associated with this system."/>
+         <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a resource of type Bios that lists the BIOS settings for this system."/>
+       </NavigationProperty>
       </EntityType>
 
       <ComplexType Name="Boot" BaseType="ComputerSystem.1.0.0.Boot">            
@@ -382,11 +387,6 @@
               <Annotation Term="OData.Description" String="The BIOS Boot Mode (either Legacy or UEFI) to be used when BootSourceOverrideTarget boot source is booted from."/>
               <Annotation Term="OData.LongDescription" String="The value of this property shall be Legacy for non-UEFI BIOS boot or UEFI for UEFI boot from boot source specified in BootSourceOverrideTarget property."/>
           </Property>
-          <NavigationProperty Name="Bios" Type="Bios.Bios">
-            <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-            <Annotation Term="OData.Description" String="A reference to the BIOS settings associated with this system."/>
-            <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a resource of type Bios that lists the BIOS settings for this system."/>
-          </NavigationProperty>
       </ComplexType>
 
       <EnumType Name="BootSourceOverrideMode">
