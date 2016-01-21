@@ -27,7 +27,6 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Bios">
 
       <EntityType Name="Bios" BaseType="Resource.1.0.0.Resource">
-        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
         <Annotation Term="OData.Description" String="This is the schema definition for the BIOS attributes resource."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent BIOS attributes for a Redfish implementation."/>
       </EntityType>
@@ -66,7 +65,7 @@
         <Annotation Term="OData.AdditionalProperties" Bool="true"/>
       </ComplexType>
 
-      <ComplexType Name="Attributes">
+      <ComplexType Name="Attributes" OpenType="true">
         <Annotation Term="OData.AdditionalProperties" Bool="true"/>
       </ComplexType>
 
