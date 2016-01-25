@@ -12,6 +12,16 @@
     "Encrypted": false,
     "VolumeType": "NonRedundant",
     "VolumeSizeInBytes": 104857600,
+    "Identifiers": [
+        {
+            "DurableNameFormat": "VPD83type3",
+            "DurableName": "690b11c02547001d96f0fbe6c1cb31"
+        },
+        {
+            "DurableNameFormat": "UUID",
+            "DurableName": "38f1818b-111e-463a-aa19-fa54f792e468"
+        }
+    ],
     "Links": {
         "Drives": [
             {"@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.5"}

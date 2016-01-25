@@ -13,8 +13,13 @@
     "Manufacturer": "SEAGATE",
     "SerialNumber": "72D0A037FRD27",
     "PartNumber": "SG0GP8811253178M02GJA00",
-    "WorldWideName": "500003942810D137",
     "FormFactor": "Inches3_5",
+    "Identifiers": [
+        {
+            "DurableNameFormat": "NAA",
+            "DurableName": "500003942810D138"
+        }
+    ],
     "EncryptionAbility": "SelfEncryptingDrive",
     "EncryptionStatus": "Unlocked",
     "RotationSpeedRPM": 15000,

@@ -11,6 +11,12 @@
     },
     "VolumeType": "Mirrored",
     "VolumeSizeInBytes": 104857600,
+    "Identifiers": [
+        {
+            "DurableNameFormat": "UUID",
+            "DurableName": "995dff70-48eb-4cd3-9ae1-0f8e3cdfe80e"
+        }
+    ],
     "Links": {
         "Drives": [
             {"@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.1"},

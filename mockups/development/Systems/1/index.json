@@ -58,6 +58,16 @@
             "HealthRollUp": "OK"
         }
     },
+    "TrustedModules": [
+        {
+          "Status": {
+            "State": "Enabled",
+            "Health": "OK"
+           },
+           "ModuleType":"TPM2_0",
+           "FirmwareVersion":"3.1"
+        }
+    ],
     "Processors": {
         "@odata.id": "/redfish/v1/Systems/1/Processors"
     },
@@ -69,6 +79,12 @@
     },
     "LogServices": {
         "@odata.id": "/redfish/v1/Systems/1/LogServices"
+    },
+    "SecureBoot": {
+        "@odata.id": "/redfish/v1/Systems/1/SecureBoot"
+    },
+        "Bios": {
+        "@odata.id": "/redfish/v1/Systems/1/Bios"
     },
     "Links": {
         "Chassis": [
