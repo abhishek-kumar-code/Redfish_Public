@@ -80,6 +80,12 @@
     "LogServices": {
         "@odata.id": "/redfish/v1/Systems/1/LogServices"
     },
+    "SecureBoot": {
+        "@odata.id": "/redfish/v1/Systems/1/SecureBoot"
+    },
+        "Bios": {
+        "@odata.id": "/redfish/v1/Systems/1/Bios"
+    },
     "Links": {
         "Chassis": [
             {
