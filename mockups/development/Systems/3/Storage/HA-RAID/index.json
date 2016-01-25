@@ -22,15 +22,18 @@
                 "State": "Enabled",
                 "Health": "OK"
             },
+            "Identifiers": [
+                {
+                    "DurableNameFormat": "NAA",
+                    "DurableName": "5782BCB07197C900"
+                }
+            ],
             "Manufacturer": "ManufacturerName",
             "Model": "ProductModelName",
             "SKU": "",
             "SerialNumber": "2M220100SL",
             "PartNumber": "",
             "AssetTag": "CustomerWritableThingy",
-            "WorldWideNames": [
-                "5782BCB07197C900"
-            ],
             "SpeedGbps": 12,
             "FirmwareVersion": "23.13.06.0006",
             "SupportedControllerProtocols": [
@@ -51,15 +54,18 @@
                 "State": "Enabled",
                 "Health": "OK"
             },
+            "Identifiers": [
+                {
+                    "DurableNameFormat": "NAA",
+                    "DurableName": "5782BCB07197F900"
+                }
+            ],
             "Manufacturer": "ManufacturerName",
             "Model": "ProductModelName",
             "SKU": "",
             "SerialNumber": "2M220100SL",
             "PartNumber": "",
             "AssetTag": "CustomerWritableThingy",
-            "WorldWideNames": [
-                "5782BCB07197F900"
-            ],
             "SpeedGbps": 12,
             "FirmwareVersion": "23.13.06.0006",
             "SupportedControllerProtocols": [
