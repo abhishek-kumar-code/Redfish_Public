@@ -23,12 +23,12 @@
     <edmx:reference uri="http://redfish.dmtf.org/schemas/v1/ComputerSystemCollection.xml">
         <edmx:include Namespace="ComputerSystemCollection" />
     </edmx:reference>
-    <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/EhternetNetworkInterface.xml">
-        <edmx:include Namespace="EhternetNetworkInterface" />
-        <edmx:Include Namespace="EhternetNetworkInterface.1.0.0"/>
+    <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/EthernetInterface.xml">
+        <edmx:include Namespace="EthernetInterface" />
+        <edmx:Include Namespace="EthernetInterface.1.0.0"/>
     </edmx:Reference>
-    <edmx:reference uri="http://redfish.dmtf.org/schemas/v1/EhternetNetworkInterfaceCollection.xml">
-        <edmx:include Namespace="EhternetNetworkInterfaceCollection" />
+    <edmx:reference uri="http://redfish.dmtf.org/schemas/v1/EthernetInterfaceCollection.xml">
+        <edmx:include Namespace="EthernetInterfaceCollection" />
     </edmx:reference>
     <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/VLanNetworkInterface.xml">
         <edmx:include Namespace="VLanNetworkInterface" />
