@@ -2,11 +2,11 @@
 DocTitle: Redfish Scalable Platforms Management API Specification
 DocNumber: '0266'
 DocClass: Normative
-DocVersion: '1.0.1'
-modified: '2015-09-17'
+DocVersion: '1.0.2'
+modified: '2016-02-10'
 status: published
 released: true
-copyright: '2014-2015'
+copyright: '2014-2016'
 ---
 
 # Foreword
@@ -2365,5 +2365,6 @@ The file where the events are written, one or more messages per event should at 
 | ---     | ---      | ---             |
 | 1.0.0   | 2015-8-4 | Initial release |
 | 1.0.1   | 2015-9-17| Errata release.  Clarified normative use of LongDescription in schema files.  Clarified usage of the 'rel-describedby' link header.  Corrected text in example of 'Select List' in OData Context property.  Clarified Accept-Encoding Request header handling.  Deleted duplicative and conflicting statement on returning extended error resources.  Clarified relative URI resolution rules. Various grammatical corrections. Clarified USN format.  |
+| 1.0.2   | 2016-2-25| Errata release.  Clarified normative usage of the Context Property, the ability to use two URL forms in the property, and the "@odata.context" URL examples throughout.  Corrected name of Measures.Unit annotation term as used in examples.  Various typographical errors. Correctd outdated reference to Core OData specification in Annotation Term examples.  Clarified that implementation of the SSDP protocol is optional.  Added missing OPTIONS method to the allowed HTTP Methods list.  Corrected typographical error in the SSDP USN field's string definition (now '::dmtf-org').  Clarified usage of 'charset=utf-8' in the HTTP Accept and Content-Type headers. |
 
  
