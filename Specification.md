@@ -11,31 +11,31 @@ copyright: '2014-2015'
 
 # Foreword
 
-The Redfish Scalable Platform Management API ("Redfish") was prepared by the Scalable Platforms Management Forum of the DMTF.
+The Redfish Scalable Platforms Management API ("Redfish") was prepared by the Scalable Platforms Management Forum of the DMTF.
 
 DMTF is a not-for-profit association of industry members dedicated to promoting enterprise and systems management and interoperability. For information about the DMTF, see http://www.dmtf.org.
 
 # Acknowledgments
 
 The DMTF acknowledges the following individuals for their contributions to this document:
-* Jeff Autor Hewlett-Packard Company
+* Jeff Autor Hewlett Packard Enterprise
 * David Brockhaus Emerson Network Power
 * Richard Brunner VMware Inc.
 * Lee Calcote Seagate Technology
 * P Chandrasekhar Dell Inc
-* Chris Davenport Hewlett-Packard Company
+* Chris Davenport Hewlett Packard Enterprise
 * Gamma Dean Emerson Network Power
 * Wassim Fayed Microsoft Corporation
-* Mike Garrett Hewlett-Packard Company
+* Mike Garrett Hewlett Packard Enterprise
 * Steve Geffin Emerson Network Power
 * Jon Hass Dell Inc
-* Jeff Hilland Hewlett-Packard Company
+* Jeff Hilland Hewlett Packard Enterprise
 * Chris Hoffman Emerson Network Power
 * John Leung Intel Corporation
 * Milena Natanov Microsoft Corporation
 * Michael Pizzo Microsoft Corporation
 * Irina Salvan Microsoft Corporation
-* Hemal Shah Broadcom Corporation
+* Hemal Shah Broadcom Limited
 * Jim Shelton Emerson Network Power
 * Tom Slaight Intel Corporation
 * Donnie Sturgeon Emerson Network Power
