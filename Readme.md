@@ -11,7 +11,7 @@ All members are encouraged to create a local clone (not a fork) of the repositor
 
 ## Obtaining Access
 
-Only SPMF Forum members shall have access to the repository.  Forum Alliance Partners, Contractors or other individuals may be granted access according to DMTF and SPMF Policy.
+Only SPMF Forum members shall have access to the repository.  Forum Alliance Partners, Contractors or other individuals may be granted access according to DMTF and SPMF Policy.  All SPMF members by default have read-only access to the repository which allows issues to be entered, cloning or forking of the repository, or pull requests (from the repository or a clone) to be made.  Forum members which require read-write access may request it from their company's Primary or Alternate representative, who will determine the need and request access from the co-Chair.  All requests for "Author" (read-write) access received by the co-Chair will be approved.  
 
 ## Contents of the SPMF Repository
 
