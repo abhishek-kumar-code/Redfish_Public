@@ -60,7 +60,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the effective current MAC Address of this interface. If an assignable MAC address is not supported, this is a read only alias of the PermanentMACAddress."/>
         </Property>
         <Property Name="SpeedMbps" Type="Edm.Int64">
-          <Annotation Term="Measures.Unit" Edm.String="Mbps"/>
+          <Annotation Term="Measures.Unit" Edm.String="Mbit/s"/>
           <Annotation Term="OData.Description" String="This is the current speed in Mbps of this interface."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the link speed of the interface in Mbps."/>
         </Property>

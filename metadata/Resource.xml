@@ -214,5 +214,37 @@
       </EntityType>
       
     </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.1.1.0">
+      <ComplexType Name="Identifier">
+        <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Property Name="DurableName" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This indicates the world wide, persistent name of the resource."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the world wide unique identifier for the resource. The string shall be in the format described by the value of the Identifier.DurableNameFormat property"/>
+        </Property>
+        <Property Name="DurableNameFormat" Type="Resource.1.1.0.DurableNameFormat">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This represents the format of the DurableName property."/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the format of the DurableName property."/>
+        </Property>
+      </ComplexType>
+
+      <EnumType Name="DurableNameFormat">
+        <Member Name="NAA">
+          <Annotation Term="OData.Description" String="Name Address Authority Format"/>
+        </Member>
+        <Member Name="iQN">
+          <Annotation Term="OData.Description" String="iSCSI Qualified Name"/>
+        </Member>
+        <Member Name="FC_WWN">
+          <Annotation Term="OData.Description" String="Fibre Channel World Wide Name"/>
+        </Member>
+        <Member Name="UUID">
+          <Annotation Term="OData.Description" String="Universally Unique Identifier"/>
+        </Member>
+      </EnumType>
+    </Schema>
   </edmx:DataServices>
 </edmx:Edmx>
