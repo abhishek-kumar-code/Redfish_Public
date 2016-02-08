@@ -92,6 +92,16 @@
                   "null"
                 ]
               },
+              "DefaultValue": {
+                "description": "The default current value of the attribute.",
+                "longDescription": "The default value of the attribute.",
+                "type": [
+                  "string",
+                  "integer",
+                  "boolean",
+                  "null"
+                ]
+              },
               "DisplayName": {
                 "description": "The user-readable display string of the attribute in the defined 'Language'.",
                 "longDescription": "The value of this property shall be the user-readable display string of the attribute in the defined 'Language'.",
