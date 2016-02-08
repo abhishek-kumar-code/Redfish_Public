@@ -238,7 +238,7 @@
         </Member>
         <Member Name="iQN">
           <Annotation Term="OData.Description" String="iSCSI Qualified Name"/>
-          <Annotation Term="OData.LongDescription" String="This durable name shall be in the iSCSI Qualified Name format as defined in RFC 3720 and RFC 3721.."/>
+          <Annotation Term="OData.LongDescription" String="This durable name shall be in the iSCSI Qualified Name format as defined in RFC 3720 and RFC 3721."/>
         </Member>
         <Member Name="FC_WWN">
           <Annotation Term="OData.Description" String="Fibre Channel World Wide Name"/>
