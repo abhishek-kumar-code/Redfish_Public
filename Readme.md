@@ -133,5 +133,11 @@ In addition to the normal Github labels, the following custom labels have been c
 ## Travis automatic tools
 Chris TODO...
 ## Release process
+
+Checklist for schema or specification release
+ Namespace creation
+ Schema repository placement
+ $metadata example updates
+ 
 ## github.io
 
