@@ -1300,11 +1300,11 @@ One of the key tenants of the Redfish interface is the separation of protocol an
 
 ### Schema Repository
 
-All Redfish schemas produced, approved and published by the SPMF are available from the DMTF website at http://redfish.dmtf.org/schemas for download.  The schema files are organized on the site in the following manner:
+All Redfish schemas produced, approved and published by the SPMF are available from the DMTF website at http://redfish.dmtf.org/schemas for download.  Each folder in the Repository contains both CSDL and json-schema formats.  The schema files are organized on the site in the following manner:
 
 | URL | Folder contents |
 |-----|-----------------|
-| redfish.dmtf.org/schemas | Current (most recent release) of each schema file in both CSDL and json-schema format(s). |
+| redfish.dmtf.org/schemas | Current (most recent minor or errata ) release of each schema file. |
 | redfish.dmtf.org/schemas/v1 |  All v1.xx schema files.  Every v1.xx minor or errata release of each schema file. |
 | redfish.dmtf.org/schemas/archive | Sub-folders contain schema files specific to a particular version release. |
 
