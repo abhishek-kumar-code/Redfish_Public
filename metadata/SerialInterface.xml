@@ -69,17 +69,39 @@
         <Member Name="Rs485"/>
       </EnumType>
 
-      <EnumType Name="BitRate">
-        <Member Name="1200"/>
-        <Member Name="2400"/>
-        <Member Name="4800"/>
-        <Member Name="9600"/>
-        <Member Name="19200"/>
-        <Member Name="38400"/>
-        <Member Name="57600"/>
-        <Member Name="115200"/>
-        <Member Name="230400"/>
-      </EnumType>
+      <TypeDefinition Name="BitRate" UnderlyingType="Edm.String">
+        <Annotation Term="Redfish.Enumeration">
+          <Collection>
+            <Record>
+              <PropertyValue Property="Member" String="1200"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="2400"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="4800"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="9600"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="19200"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="38400"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="57600"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="115200"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="230400"/>
+            </Record>
+          </Collection>
+        </Annotation>
+      </TypeDefinition>
 
       <EnumType Name="Parity">
         <Member Name="None"/>
@@ -89,17 +111,37 @@
         <Member Name="Space"/>
       </EnumType>
 
-      <EnumType Name="DataBits">
-        <Member Name="5"/>
-        <Member Name="6"/>
-        <Member Name="7"/>
-        <Member Name="8"/>
-      </EnumType>
+      <TypeDefinition Name="DataBits" UnderlyingType="Edm.String">
+        <Annotation Term="Redfish.Enumeration">
+          <Collection>
+            <Record>
+              <PropertyValue Property="Member" String="5"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="6"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="7"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="8"/>
+            </Record>
+          </Collection>
+        </Annotation>
+      </TypeDefinition>
 
-      <EnumType Name="StopBits">
-        <Member Name="1"/>
-        <Member Name="2"/>
-      </EnumType>
+      <TypeDefinition Name="StopBits" UnderlyingType="Edm.String">
+        <Annotation Term="Redfish.Enumeration">
+          <Collection>
+            <Record>
+              <PropertyValue Property="Member" String="1"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="2"/>
+            </Record>
+          </Collection>
+        </Annotation>
+      </TypeDefinition>
 
       <EnumType Name="FlowControl">
         <Member Name="None">
@@ -119,17 +161,39 @@
         <Member Name="Digi"/>
       </EnumType>
 
-      <EnumType Name="ConnectorType">
-        <Member Name="RJ45"/>
-        <Member Name="RJ11"/>
-        <Member Name="DB9 Female"/>
-        <Member Name="DB9 Male"/>
-        <Member Name="DB25 Female"/>
-        <Member Name="DB25 Male"/>
-        <Member Name="USB"/>
-        <Member Name="mUSB"/>
-        <Member Name="uUSB"/>
-      </EnumType>
+      <TypeDefinition Name="ConnectorType" UnderlyingType="Edm.String">
+        <Annotation Term="Redfish.Enumeration">
+          <Collection>
+            <Record>
+              <PropertyValue Property="Member" String="RJ45"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="RJ11"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="DB9 Female"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="DB9 Male"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="DB25 Female"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="DB25 Male"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="USB"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="mUSB"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="uUSB"/>
+            </Record>
+          </Collection>
+        </Annotation>
+      </TypeDefinition>
       
     </Schema>
   </edmx:DataServices>
