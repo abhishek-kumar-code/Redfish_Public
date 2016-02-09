@@ -25,6 +25,7 @@
         "MenuPath": "./SystemOptions/NetworkBootOptions",
         "AttributeName": "NicBoot1",
         "ReadOnly": false,
+        "Hidden": false,
         "Type": "Enumeration",
         "Value": [
           {
@@ -46,6 +47,7 @@
         "MenuPath": "./SystemOptions/NetworkBootOptions",
         "AttributeName": "NicBoot2",
         "ReadOnly": false,
+        "Hidden": false,       
         "Type": "Enumeration",
         "Value": [
           {
@@ -67,6 +69,7 @@
         "MenuPath": "./SystemOptions/SataOptions",
         "AttributeName": "EmbeddedSata",
         "ReadOnly": false,
+        "Hidden": false,        
         "Type": "Enumeration",
         "Value": [
           {
@@ -88,6 +91,7 @@
         "MenuPath": "./SystemOptions/UsbOptions",
         "AttributeName": "UsbControl",
         "ReadOnly": false,
+        "Hidden": false,        
         "Type": "Enumeration",
         "Value": [
           {
@@ -108,6 +112,7 @@
         "MenuPath": "./SystemOptions/ProcessorOptions",
         "AttributeName": "ProcHyperthreading",
         "ReadOnly": false,
+        "Hidden": false,        
         "Type": "Enumeration",
         "Value": [
           {
@@ -129,6 +134,7 @@
         "MenuPath": "./SystemOptions/ProcessorOptions",
         "AttributeName": "ProcCoreDisable",
         "ReadOnly": false,
+        "Hidden": false,        
         "ScalarIncrement": 1,
         "Type": "Integer",
         "UpperBound": 18,
@@ -142,6 +148,7 @@
         "MenuPath": "./BootOptions",
         "AttributeName": "BootMode",
         "ReadOnly": false,
+        "Hidden": false,        
         "Type": "Enumeration",
         "Value": [
           {
@@ -163,6 +170,7 @@
         "MenuPath": "./PowerManagementOptions",
         "AttributeName": "PowerProfile",
         "ReadOnly": false,
+        "Hidden": false,        
         "Type": "Enumeration",
         "Value": [
           {
@@ -191,6 +199,7 @@
         "MenuPath": "./PerformanceOptions",
         "AttributeName": "ProcTurbo",
         "ReadOnly": false,
+        "Hidden": false,        
         "Type": "Enumeration",
         "Value": [
           {
@@ -213,6 +222,7 @@
         "MinLength": 0,
         "AttributeName": "AdminPhone",
         "ReadOnly": false,
+        "Hidden": false,        
         "Type": "String",
         "ValueExpression": "[\\x20-\\x7e]"
       },
@@ -224,6 +234,7 @@
         "MenuPath": "./PowerManagementOptions",
         "AttributeName": "MinProcIdlePower",
         "ReadOnly": false,
+        "Hidden": false,        
         "Type": "Enumeration",
         "Value": [
           {
@@ -338,6 +349,7 @@
         "DisplayOrder": 1,
         "MenuPath": "./",
         "MenuName": "BiosMainMenu",
+        "Hidden": false,
         "ReadOnly": false
       },
       {
@@ -345,6 +357,7 @@
         "DisplayOrder": 2,
         "MenuPath": "./SystemOptions",
         "MenuName": "SystemOptions",
+        "Hidden": false,
         "ReadOnly": false
       },
       {
@@ -352,6 +365,7 @@
         "DisplayOrder": 4,
         "MenuPath": "./SystemOptions/NetworkBootOptions",
         "MenuName": "NetworkBootOptions",
+        "Hidden": false,
         "ReadOnly": false
       },
       {
@@ -359,6 +373,7 @@
         "DisplayOrder": 6,
         "MenuPath": "./SystemOptions/UsbOptions",
         "MenuName": "UsbOptions",
+        "Hidden": false,
         "ReadOnly": false
       },
       {
@@ -366,6 +381,7 @@
         "DisplayOrder": 7,
         "MenuPath": "./SystemOptions/ProcessorOptions",
         "MenuName": "ProcessorOptions",
+        "Hidden": false,
         "ReadOnly": false
       },
       {
@@ -373,6 +389,7 @@
         "DisplayOrder": 8,
         "MenuPath": "./SystemOptions/SataOptions",
         "MenuName": "SataOptions",
+        "Hidden": false,
         "ReadOnly": false
       },
       {
@@ -380,6 +397,7 @@
         "DisplayOrder": 11,
         "MenuPath": "./BootOptions",
         "MenuName": "BootOptions",
+        "Hidden": false,
         "ReadOnly": false
       },
       {
@@ -387,6 +405,7 @@
         "DisplayOrder": 15,
         "MenuPath": "./PowerManagementOptions",
         "MenuName": "PowerManagementOptions",
+        "Hidden": false,
         "ReadOnly": false
       },
       {
@@ -394,6 +413,7 @@
         "DisplayOrder": 17,
         "MenuPath": "./PerformanceOptions",
         "MenuName": "PerformanceOptions",
+        "Hidden": false,
         "ReadOnly": false
       },
       {
@@ -401,6 +421,7 @@
         "DisplayOrder": 24,
         "MenuPath": "./ServerAssetText",
         "MenuName": "ServerAssetText",
+        "Hidden": false,
         "ReadOnly": false
       },
       {
@@ -408,6 +429,7 @@
         "DisplayOrder": 26,
         "MenuPath": "./ServerAssetText/AdminInfo",
         "MenuName": "AdminInfo",
+        "Hidden": false,
         "ReadOnly": false
       }
     ]

@@ -92,6 +92,16 @@
                   "null"
                 ]
               },
+              "DefaultValue": {
+                "description": "The default current value of the attribute.",
+                "longDescription": "The value of this property shall be the default value of the attribute.",
+                "type": [
+                  "string",
+                  "integer",
+                  "boolean",
+                  "null"
+                ]
+              },
               "DisplayName": {
                 "description": "The user-readable display string of the attribute in the defined 'Language'.",
                 "longDescription": "The value of this property shall be the user-readable display string of the attribute in the defined 'Language'.",
@@ -105,6 +115,11 @@
               "GrayOut": {
                 "description": "The gray-out state of this attribute.",
                 "longDescription": "The value of this property shall be a boolean describing the gray-out state of this attribute. When set to true, a grayed-out attribute should be grayed out in user interfaces. But, unlike ReadOnly, the value of grayed-out attributes might still be be modified. The grayout state of an attribute might be affected by the results of evaluating the 'Dependencies' array.",
+                "type": "boolean"
+              },
+              "Hidden": {
+                "description": "The hidden state of this attribute.",
+                "longDescription": "The value of this property shall be a boolean describing the visibility state of this attribute. When set to true, a hidden attribute should be hidden in user interfaces. The hidden state of an attribute might be affected by the results of evaluating the 'Dependencies' array.",
                 "type": "boolean"
               },
               "HelpText": {
@@ -326,6 +341,7 @@
                       "CurrentValue",
                       "ReadOnly",
                       "GrayOut",
+                      "Hidden",
                       "HelpText",
                       "WarningText",
                       "MaxLength",
@@ -338,6 +354,7 @@
                     "enumDescriptions": {
                       "CurrentValue": "The dependency that affects an attribute's CurrentValue.",
                       "GrayOut": "The dependency that affects an attribute's GrayOut state.",
+                      "Hidden": "The dependency that affects an attribute's Hidden state.",
                       "HelpText": "The dependency that affects an attribute's HelpText.",
                       "LowerBound": "The dependency that affects an attribute's LowerBound.",
                       "MaxLength": "The dependency that affects an attribute's MaxLength.",

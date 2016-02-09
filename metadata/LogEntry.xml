@@ -109,113 +109,325 @@
       </EnumType>
 
       <!-- This is the type of log entry. -->
-      <EnumType Name="LogEntryCode">
-        <Member Name="Assert"/>
-        <Member Name="Deassert"/>
-        <Member Name="Lower Non-critical - going low"/>
-        <Member Name="Lower Non-critical - going high"/>
-        <Member Name="Lower Critical - going low"/>
-        <Member Name="Lower Critical - going high"/>
-        <Member Name="Lower Non-recoverable - going low"/>
-        <Member Name="Lower Non-recoverable - going high"/>
-        <Member Name="Upper Non-critical - going low"/>
-        <Member Name="Upper Non-critical - going high"/>
-        <Member Name="Upper Critical - going low"/>
-        <Member Name="Upper Critical - going high"/>
-        <Member Name="Upper Non-recoverable - going low"/>
-        <Member Name="Upper Non-recoverable - going high"/>
-        <Member Name="Transition to Idle"/>
-        <Member Name="Transition to Active"/>
-        <Member Name="Transition to Busy"/>
-        <Member Name="State Deasserted"/>
-        <Member Name="State Asserted"/>
-        <Member Name="Predictive Failure deasserted"/>
-        <Member Name="Predictive Failure asserted"/>
-        <Member Name="Limit Not Exceeded"/>
-        <Member Name="Limit Exceeded"/>
-        <Member Name="Performance Met"/>
-        <Member Name="Performance Lags"/>
-        <Member Name="Transition to OK"/>
-        <Member Name="Transition to Non-Critical from OK"/>
-        <Member Name="Transition to Critical from less severe"/>
-        <Member Name="Transition to Non-recoverable from less severe"/>
-        <Member Name="Transition to Non-Critical from more severe"/>
-        <Member Name="Transition to Critical from Non-recoverable"/>
-        <Member Name="Transition to Non-recoverable"/>
-        <Member Name="Monitor"/>
-        <Member Name="Informational"/>
-        <Member Name="Device Removed / Device Absent"/>
-        <Member Name="Device Inserted / Device Present"/>
-        <Member Name="Device Disabled"/>
-        <Member Name="Device Enabled"/>
-        <Member Name="Transition to Running"/>
-        <Member Name="Transition to In Test"/>
-        <Member Name="Transition to Power Off"/>
-        <Member Name="Transition to On Line"/>
-        <Member Name="Transition to Off Line"/>
-        <Member Name="Transition to Off Duty"/>
-        <Member Name="Transition to Degraded"/>
-        <Member Name="Transition to Power Save"/>
-        <Member Name="Install Error"/>
-        <Member Name="Fully Redundant"/>
-        <Member Name="Redundancy Lost"/>
-        <Member Name="Redundancy Degraded"/>
-        <Member Name="Non-redundant:Sufficient Resources from Redundant"/>
-        <Member Name="Non-redundant:Sufficient Resources from Insufficient Resources"/>
-        <Member Name="Non-redundant:Insufficient Resources"/>
-        <Member Name="Redundancy Degraded from Fully Redundant"/>
-        <Member Name="Redundancy Degraded from Non-redundant"/>
-        <Member Name="D0 Power State"/>
-        <Member Name="D1 Power State"/>
-        <Member Name="D2 Power State"/>
-        <Member Name="D3 Power State"/>
-      </EnumType>
+      <TypeDefinition Name="LogEntryCode" UnderlyingType="Edm.String">
+        <Annotation Term="Redfish.Enumeration">
+          <Collection>
+            <Record>
+              <PropertyValue Property="Member" String="Assert"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Deassert"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Lower Non-critical - going low"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Lower Non-critical - going high"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Lower Critical - going low"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Lower Critical - going high"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Lower Non-recoverable - going low"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Lower Non-recoverable - going high"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Upper Non-critical - going low"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Upper Non-critical - going high"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Upper Critical - going low"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Upper Critical - going high"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Upper Non-recoverable - going low"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Upper Non-recoverable - going high"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Transition to Idle"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Transition to Active"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Transition to Busy"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="State Deasserted"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="State Asserted"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Predictive Failure deasserted"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Predictive Failure asserted"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Limit Not Exceeded"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Limit Exceeded"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Performance Met"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Performance Lags"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Transition to OK"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Transition to Non-Critical from OK"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Transition to Critical from less severe"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Transition to Non-recoverable from less severe"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Transition to Non-Critical from more severe"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Transition to Critical from Non-recoverable"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Transition to Non-recoverable"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Monitor"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Informational"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Device Removed / Device Absent"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Device Inserted / Device Present"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Device Disabled"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Device Enabled"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Transition to Running"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Transition to In Test"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Transition to Power Off"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Transition to On Line"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Transition to Off Line"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Transition to Off Duty"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Transition to Degraded"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Transition to Power Save"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Install Error"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Fully Redundant"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Redundancy Lost"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Redundancy Degraded"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Non-redundant:Sufficient Resources from Redundant"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Non-redundant:Sufficient Resources from Insufficient Resources"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Non-redundant:Insufficient Resources"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Redundancy Degraded from Fully Redundant"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Redundancy Degraded from Non-redundant"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="D0 Power State"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="D1 Power State"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="D2 Power State"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="D3 Power State"/>
+            </Record>
+          </Collection>
+        </Annotation>
+      </TypeDefinition>
 
-      <EnumType Name="SensorType">
-        <Member Name="Platform Security Violation Attempt"/>
-        <Member Name="Temperature"/>
-        <Member Name="Voltage"/>
-        <Member Name="Current"/>
-        <Member Name="Fan"/>
-        <Member Name="Physical Chassis Security"/>
-        <Member Name="Processor"/>
-        <Member Name="Power Supply / Converter"/>
-        <Member Name="PowerUnit"/>
-        <Member Name="CoolingDevice"/>
-        <Member Name="Other Units-based Sensor"/>
-        <Member Name="Memory"/>
-        <Member Name="Drive Slot/Bay"/>
-        <Member Name="POST Memory Resize"/>
-        <Member Name="System Firmware Progress"/>
-        <Member Name="Event Logging Disabled"/>
-        <Member Name="System Event"/>
-        <Member Name="Critical Interrupt"/>
-        <Member Name="Button/Switch"/>
-        <Member Name="Module/Board"/>
-        <Member Name="Microcontroller/Coprocessor"/>
-        <Member Name="Add-in Card"/>
-        <Member Name="Chassis"/>
-        <Member Name="ChipSet"/>
-        <Member Name="Other FRU"/>
-        <Member Name="Cable/Interconnect"/>
-        <Member Name="Terminator"/>
-        <Member Name="SystemBoot/Restart"/>
-        <Member Name="Boot Error"/>
-        <Member Name="BaseOSBoot/InstallationStatus"/>
-        <Member Name="OS Stop/Shutdown"/>
-        <Member Name="Slot/Connector"/>
-        <Member Name="System ACPI PowerState"/>
-        <Member Name="Watchdog"/>
-        <Member Name="Platform Alert"/>
-        <Member Name="Entity Presence"/>
-        <Member Name="Monitor ASIC/IC"/>
-        <Member Name="LAN"/>
-        <Member Name="Management Subsystem Health"/>
-        <Member Name="Battery"/>
-        <Member Name="Session Audit"/>
-        <Member Name="Version Change"/>
-        <Member Name="FRUState"/>
-      </EnumType>
+      <TypeDefinition Name="SensorType" UnderlyingType="Edm.String">
+        <Annotation Term="Redfish.Enumeration" >
+          <Collection>
+            <Record>
+              <PropertyValue Property="Member" String="Platform Security Violation Attempt"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Temperature"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Voltage"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Current"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Fan"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Physical Chassis Security"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Processor"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Power Supply / Converter"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="PowerUnit"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="CoolingDevice"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Other Units-based Sensor"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Memory"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Drive Slot/Bay"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="POST Memory Resize"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="System Firmware Progress"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Event Logging Disabled"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="System Event"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Critical Interrupt"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Button/Switch"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Module/Board"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Microcontroller/Coprocessor"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Add-in Card"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Chassis"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="ChipSet"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Other FRU"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Cable/Interconnect"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Terminator"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="SystemBoot/Restart"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Boot Error"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="BaseOSBoot/InstallationStatus"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="OS Stop/Shutdown"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Slot/Connector"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="System ACPI PowerState"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Watchdog"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Platform Alert"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Entity Presence"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Monitor ASIC/IC"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="LAN"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Management Subsystem Health"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Battery"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Session Audit"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Version Change"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="FRUState"/>
+            </Record>
+          </Collection>
+        </Annotation>
+      </TypeDefinition>
 
     </Schema>
   </edmx:DataServices>
