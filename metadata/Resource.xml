@@ -234,7 +234,7 @@
       <EnumType Name="DurableNameFormat">
         <Member Name="NAA">
           <Annotation Term="OData.Description" String="Name Address Authority Format"/>
-          <Annotation Term="OData.LongDescription" String="This durable name shall be a hexidecimal representation of the Name Address Authority structure as defined in the T10 SCSI Primary Commands specification."/>
+          <Annotation Term="OData.LongDescription" String="This durable name shall be a hexadecimal representation of the Name Address Authority structure as defined in the T10 SCSI Primary Commands specification."/>
         </Member>
         <Member Name="iQN">
           <Annotation Term="OData.Description" String="iSCSI Qualified Name"/>
@@ -242,11 +242,11 @@
         </Member>
         <Member Name="FC_WWN">
           <Annotation Term="OData.Description" String="Fibre Channel World Wide Name"/>
-          <Annotation Term="OData.LongDescription" String="This durable name shall be a hexidecimal representation of the World Wide Name format as defined in the T11 Fibre Channel Physical and Signaling Interface Specification."/>
+          <Annotation Term="OData.LongDescription" String="This durable name shall be a hexadecimal representation of the World Wide Name format as defined in the T11 Fibre Channel Physical and Signaling Interface Specification."/>
         </Member>
         <Member Name="UUID">
           <Annotation Term="OData.Description" String="Universally Unique Identifier"/>
-          <Annotation Term="OData.LongDescription" String="This durable name shall be the hexidecimal representation of the Universal Unique Identifier as defined in the Internation Telecom Union's OSI networking and system aspects - Naming, Addressing and Registration Specification."/>
+          <Annotation Term="OData.LongDescription" String="This durable name shall be the hexadecimal representation of the Universal Unique Identifier as defined in the Internation Telecom Union's OSI networking and system aspects - Naming, Addressing and Registration Specification."/>
         </Member>
       </EnumType>
     </Schema>
