@@ -178,6 +178,25 @@ class JsonSchemaGenerator:
         return False
 
     ##########################################################################
+    # Name: is_redfish_enum                                                  # 
+    # Description:                                                           #
+    #  Returns True if the type has the Redfish enum annotation.             #
+    ##########################################################################
+    def is_redfish_enum(self, type):
+
+        for annotation in type:
+            if not annotation.tag == "{http://docs.oasis-open.org/odata/ns/edm}Annotation":
+                continue
+
+            if annotation.attrib["Term"] == "Redfish.Enumeration":
+                if "Bool" in annotation.attrib.keys():
+                    if annotation.attrib["Bool"] == "false":
+                        break
+                return True
+
+         return False
+
+    ##########################################################################
     # Name: has_basetype                                                     # 
     # Description:                                                           #
     #  Returns True if the type has the specified base type n its hierarchy. #
@@ -878,11 +897,11 @@ class JsonSchemaGenerator:
         return output
 
     ############################################################################################
-    # Name: generate_json_for_premitive_types                                                  #
+    # Name: generate_json_for_primitive_types                                                  #
     # Description:                                                                             #
-    #   Generates JSON corresponding to premitive types                                        #
+    #   Generates JSON corresponding to primitive types                                        #
     ############################################################################################
-    def generate_json_for_premitive_types(self, typename, isnullable, depth):
+    def generate_json_for_primitive_types(self, typename, isnullable, depth):
         output = ""
         edmtojson = {
             "Edm.String": "string",
@@ -1073,44 +1092,59 @@ class JsonSchemaGenerator:
             firstenumvalue = True
             foundmemberannotations = False
 
-##fix for annotation term
-            for member in typedata["Node"].iter("{http://docs.oasis-open.org/odata/ns/edm}Member"):
-                if firstenumvalue:
-                    firstenumvalue = False
+            for annotation in type:
+                if not annotation.tag == "{http://docs.oasis-open.org/odata/ns/edm}Annotation":
+                    continue
 
-                else:
-                    output += ",\n"
+                if annotation.attrib["Term"] == "Redfish.Enumeration":
+                    for child in annotation:
+                        if not annotation.tag == "{http://docs.oasis-open.org/odata/ns/edm}Collection":
+                            continue
 
-                for annotation in member.iter("{http://docs.oasis-open.org/odata/ns/edm}Annotation"):
-                    foundmemberannotations = True
-                    break
+                        for record in child.iter("{http://docs.oasis-open.org/odata/ns/edm}Record"):
+                            for propertyvalue in record.iter("{http://docs.oasis-open.org/odata/ns/edm}PropertyValue"):
+                                if propertyvalue.attrib["Property"] == "Member":
+                                    if firstenumvalue:
+                                        firstenumvalue = False
+                                    else:
+                                        output += ",n"
 
-                output += UT.Utilities.indent(depth+1) + "\"" + member.attrib["Name"] + "\""
+                                    output += UT.Utilities.indent(depth+1) + "\"" + propertyvalue.attrib["String"] + "\""
 
-            output += "\n"
-            output += UT.Utilities.indent(depth) + "]"
-
-            if foundmemberannotations:
-                output += ",\n"
-                output += UT.Utilities.indent(depth) + "\"enumDescriptions\": {\n"
-                firstenumvalue = True
-
-                for member in typedata["Node"].iter("{http://docs.oasis-open.org/odata/ns/edm}Member"):
-                    if firstenumvalue:
-                        firstenumvalue = False
-
-                    else:
-                        output += ",\n"
-
-                    for annotation in member.iter("{http://docs.oasis-open.org/odata/ns/edm}Annotation"):
-                        if annotation.attrib["Term"] == "OData.Description":
-                            output += UT.Utilities.indent(depth+1) + "\"" + member.attrib["Name"] + "\": \"" + annotation.attrib["String"] + "\""
-                            break
-
+                            for annotation in record.iter("{http://docs.oasis-open.org/odata/ns/edm}Annotation"):
+                                foundmemberannotations = True
+ 
                 output += "\n"
-                output += UT.Utilities.indent(depth)  + "}"
+                output += UT.Utilities.indent(depth) + "]"
 
-        return output
+                if foundmemberannotations:
+
+                    output += ",\n"
+                    output += UT.Utilities.indent(depth) + "\"enumDescriptions\": {\n"
+                    firstenumvalue = True
+
+                    for child in annotation:
+                        if not annotation.tag == "{http://docs.oasis-open.org/odata/ns/edm}Collection":
+                            continue
+
+                        for record in child.iter("{http://docs.oasis-open.org/odata/ns/edm}Record"):
+                            for propertyvalue in record.iter("{http://docs.oasis-open.org/odata/ns/edm}PropertyValue"):
+                                if propertyvalue.attrib["Property"] == "Member":
+                                    if firstenumvalue:
+                                        firstenumvalue = False
+                                    else:
+                                        output += ",n"
+
+
+                        for annotation in member.iter("{http://docs.oasis-open.org/odata/ns/edm}Annotation"):
+                            if annotation.attrib["Term"] == "OData.Description":
+                                output += UT.Utilities.indent(depth+1) + "\"" + member.attrib["Name"] + "\": \"" + annotation.attrib["String"] + "\""
+                                break
+
+                    output += "\n"
+                    output += UT.Utilities.indent(depth)  + "}"
+
+            return output
 
     ##############################################################################
     # Name: generate_json_for_type                                               #
@@ -1120,6 +1154,7 @@ class JsonSchemaGenerator:
     def generate_json_for_type(self, typetable, typename, depth, namespace, prefixuri, isnullable, write_reference, ignoreannotations = []):
 
         output = ""
+
         # Collections
         if self.is_collection(typename):
             output = self.generate_json_for_collection_type(typetable, typename, depth, namespace, prefixuri, isnullable, write_reference)
@@ -1127,7 +1162,7 @@ class JsonSchemaGenerator:
 
         # "Primitive" types
         if typename.startswith("Edm."):
-            output = self.generate_json_for_premitive_types(typename, isnullable, depth)
+            output = self.generate_json_for_primitive_types(typename, isnullable, depth)
             return output
 
         # Throw error if the type is not found
@@ -1140,7 +1175,7 @@ class JsonSchemaGenerator:
 
         if typetype == "EnumType":
             output += self.generate_json_for_EnumTypes(typetable, typedata, typename, namespace, depth, isnullable)
-   
+
         elif typetype == "EntityType":
             if self.include_type(typename, typedata["Namespace"], namespace, typetable) and not write_reference:
                 output += self.generate_json_for_propertybag(typetable, typedata, depth, namespace, prefixuri, isnullable, write_reference)
@@ -1167,8 +1202,13 @@ class JsonSchemaGenerator:
 
         elif typetype == "TypeDefinition":
             underlyingtype = typedata["Node"].attrib["UnderlyingType"]
-            output = self.generate_json_for_type(typetable, underlyingtype, depth, namespace, prefixuri, isnullable, False)
-            output += self.emit_annotations(typetable, namespace, typedata["Node"], depth, prefixuri, isnullable, ignoreannotations, True)
+
+            if underlyingtype == "Edm.String" and is_redfish_enum(typedata["Node"]):
+                output += self.generate_json_for_RedfishEnum(typetable, typedata, typename, namespace, depth, isnullable)
+ 
+            else:
+                output = self.generate_json_for_type(typetable, underlyingtype, depth, namespace, prefixuri, isnullable, False)
+                output += self.emit_annotations(typetable, namespace, typedata["Node"], depth, prefixuri, isnullable, ignoreannotations, True)
 
         else:
             return UT.Utilities.indent(depth) + "ERROR: unknown TypeType " + typetype
