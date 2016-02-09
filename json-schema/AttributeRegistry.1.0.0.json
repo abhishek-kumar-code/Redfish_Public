@@ -94,7 +94,7 @@
               },
               "DefaultValue": {
                 "description": "The default current value of the attribute.",
-                "longDescription": "The default value of the attribute.",
+                "longDescription": "The value of this property shall be the default value of the attribute.",
                 "type": [
                   "string",
                   "integer",
