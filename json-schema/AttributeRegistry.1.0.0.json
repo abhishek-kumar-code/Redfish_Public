@@ -187,7 +187,7 @@
                   "Boolean": "The attributes that are true or false.",
                   "Enumeration": "The attributes that include a list of the known possible enumerated values.",
                   "Integer": "The attributes that have integer numeric values.",
-                  "Password": "The attributes that include password values and are not displayed as plain text.",
+                  "Password": "The attributes that include password values and are not displayed as plain text. The value shall be null for GET requests.",
                   "String": "The attributes that include free form text in their values."
                 },
                 "longDescription": "The value of this property shall be an enumeration describing type of the attribute.",
