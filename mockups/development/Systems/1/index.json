@@ -32,13 +32,13 @@
             "Floppy",
             "Cd",
             "Usb",
-            "SDCard",
             "Hdd",
             "BiosSetup",
             "Utilities",
             "Diags",
-            "UefiHttp",
-            "UefiTarget"
+            "UefiTarget",
+            "SDCard",            
+            "UefiHttp"
         ],
         "UefiTargetBootSourceOverride": "uefi device path"
     },
