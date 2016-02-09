@@ -51,7 +51,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The Actions object contains the available custom actions on this resource."/>
         </Property>
-        <Property Name="Attributes" Type="Bios.1.0.0.Attributes">
+        <Property Name="Attributes" Type="Bios.1.0.0.Attributes" Nullable="false" >
           <Annotation Term="OData.Description" String="This is the manufacturer/provider specific list of BIOS attributes."/>
           <Annotation Term="OData.LongDescription" String="BIOS Attribute settings appear as additional properties in this object, and can be looked up in the Attribute Registry by their AttributeName."/>
         </Property>
@@ -67,7 +67,19 @@
       </ComplexType>
 
       <ComplexType Name="Attributes">
-        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="Redfish.DynamicPropertyPatterns">
+          <Collection>
+            <Record>
+              <PropertyValue Property="Pattern" String="[A-Za-z0-9]+"/>
+              <PropertyValue Property="Type" String="Edm.String"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Pattern" String="[A-Za-z0-9]+"/>
+              <PropertyValue Property="Type" String="Edm.Int64"/>
+            </Record>
+          </Collection>
+        </Annotation>
       </ComplexType>
 
     </Schema>
