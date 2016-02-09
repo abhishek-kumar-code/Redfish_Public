@@ -27,8 +27,8 @@
     "#Bios.ResetBios": {
       "target": "/redfish/v1/Systems/1/Bios/Actions/Bios.ResetBios"
     },
-    "#Bios.ChangePasswords": {
-      "target": "/redfish/v1/Systems/1/Bios/Actions/Bios.ChangePasswords"
+    "#Bios.ChangePassword": {
+      "target": "/redfish/v1/Systems/1/Bios/Actions/Bios.ChangePassword"
     }
   },
   "Attributes": {
