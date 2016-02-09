@@ -1294,7 +1294,7 @@ The message registry approach has advantages for internationalization (since the
 
 ## Data Model & Schema
 
-One of the key tenants of the Redfish interface is the separation of protocol and data model.  This section describes common data model, resource, and Redfish Schema requirements.
+One of the key tenets of the Redfish interface is the separation of protocol and data model.  This section describes common data model, resource, and Redfish Schema requirements.
 
 * Each resource shall be strongly typed according to a [resource type definition](#resource-type-definitions). The type shall be defined in a Redfish [schema document](#schema-documents) and identified by a unique [type identifier](#type-property).
 
@@ -1310,7 +1310,7 @@ All Redfish schemas produced, approved and published by the SPMF are available f
 
 #### Programmatic access to Schema files
 
-Programs may access the Schema Repository using the redfish.dmtf.org/schemas/v1 durable URL, as this folder will contain each released version of each schema.  Programs incorporating schema usage should implement a local schema cache to reduce latecy, program requirements for Internet access and undue traffic burden on the DMTF website.
+Programs may access the Schema Repository using the redfish.dmtf.org/schemas/v1 durable URL, as this folder will contain each released version of each schema.  Programs incorporating schema usage should implement a local schema cache to reduce latency, program requirements for Internet access and undue traffic burden on the DMTF website.
 
 
 
