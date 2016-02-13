@@ -36,7 +36,9 @@
             "BiosSetup",
             "Utilities",
             "Diags",
-            "UefiTarget"
+            "UefiTarget",
+            "SDCard",            
+            "UefiHttp"
         ],
         "UefiTargetBootSourceOverride": "uefi device path"
     },

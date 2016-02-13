@@ -38,6 +38,24 @@
         <Annotation Term="OData.LongDescription" String="This action shall perform a reset of the BIOS attributes to teir default values."/>
       </Action>
 
+      <Action Name="ChangePassword" IsBound="true">
+        <Parameter Name="Bios" Type="Bios.1.0.0.Actions"/>
+        <Parameter Name="PasswordName" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Description" String="The name of the BIOS password to change"/>
+          <Annotation Term="OData.LongDescription" String="This defines the BIOS password name to change. For instance, this could be the AdminPassword or UserPassword."/>
+        </Parameter>
+        <Parameter Name="OldPassword" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Description" String="The value of the existing password."/>
+          <Annotation Term="OData.LongDescription" String="This defines the value of the existing BIOS password that is about to be changed."/>
+        </Parameter>
+        <Parameter Name="NewPassword" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Description" String="The value of the new BIOS password."/>
+          <Annotation Term="OData.LongDescription" String="This defines the value of the new BIOS password."/>
+        </Parameter>
+        <Annotation Term="OData.Description" String="This action is used to change the BIOS passwords."/>
+        <Annotation Term="OData.LongDescription" String="This action shall perform a change of the selected BIOS password."/>
+      </Action>
+
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Bios.1.0.0">
@@ -51,7 +69,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The Actions object contains the available custom actions on this resource."/>
         </Property>
-        <Property Name="Attributes" Type="Bios.1.0.0.Attributes">
+        <Property Name="Attributes" Type="Bios.1.0.0.Attributes" Nullable="false" >
           <Annotation Term="OData.Description" String="This is the manufacturer/provider specific list of BIOS attributes."/>
           <Annotation Term="OData.LongDescription" String="BIOS Attribute settings appear as additional properties in this object, and can be looked up in the Attribute Registry by their AttributeName."/>
         </Property>
@@ -67,7 +85,19 @@
       </ComplexType>
 
       <ComplexType Name="Attributes">
-        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="Redfish.DynamicPropertyPatterns">
+          <Collection>
+            <Record>
+              <PropertyValue Property="Pattern" String="[A-Za-z0-9]+"/>
+              <PropertyValue Property="Type" String="Edm.String"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Pattern" String="[A-Za-z0-9]+"/>
+              <PropertyValue Property="Type" String="Edm.Int64"/>
+            </Record>
+          </Collection>
+        </Annotation>
       </ComplexType>
 
     </Schema>
