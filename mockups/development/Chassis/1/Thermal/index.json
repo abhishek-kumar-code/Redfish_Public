@@ -81,7 +81,7 @@
         {
             "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Fans/0",
             "MemberId": "0",
-            "FanName": "BaseBoard System Fan",
+            "Name": "BaseBoard System Fan",
             "PhysicalContext": "Backplane",
             "Status": {
                 "State": "Enabled",
@@ -108,7 +108,7 @@
         {
             "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Fans/1",
             "MemberId": "1",
-            "FanName": "BaseBoard System Fan Backup",
+            "Name": "BaseBoard System Fan Backup",
             "PhysicalContext": "Backplane",
             "Status": {
                 "State": "Enabled",
