@@ -50,7 +50,17 @@
           <Annotation Term="OData.Description" String="The type that the name shall have"/>
         </Property>
       </ComplexType>
-    
+
+      <Term Name="Enumeration" Type="Collection(RedfishExtensions.v1_0_0.EnumerationMember">
+        <Annotation Term="OData.Description" String="The term enumerates the allowable set of non-standard string values where a standard enumeration cannot be used."/>
+      </Term>
+
+      <ComplexType Name="EnumerationMember">
+        <Property Name="Member" Type="Edm.String">
+          <Annotation Term="OData.Description" String="An allowable string member."/>
+        </Property>
+      </ComplexType>
+
     </Schema>
     
     <!--These terms are used for validating a property value-->

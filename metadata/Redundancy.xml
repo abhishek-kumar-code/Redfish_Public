@@ -64,20 +64,28 @@
         </NavigationProperty>
       </EntityType>
 
-      <EnumType Name="RedundancyMode">
-        <Member Name="Failover">
-          <Annotation Term="OData.Description" String="Failure of one unit will automatically cause its functions to be taken over by a standby or offline unit in the redundancy set"/>
-        </Member>
-        <Member Name="N+m">
-          <Annotation Term="OData.Description" String="Multiple units are available and active such that normal operation will continue if one or more units fail"/>
-        </Member>
-        <Member Name="Sharing">
-          <Annotation Term="OData.Description" String="Multiple units contribute or share such that operation will continue, but at a reduced capacity, if one or more units fail"/>
-        </Member>
-        <Member Name="Sparing">
-          <Annotation Term="OData.Description" String="One or more spare units are available to take over the function of a failed unit, but takeover is not automatic"/>
-        </Member>
-      </EnumType>
+      <TypeDefinition Name="RedundancyMode" UnderlyingType="Edm.String">
+        <Annotation Term="Redfish.Enumeration">
+          <Collection>
+            <Record>
+              <PropertyValue Property="Member" String="Failover"/>
+              <Annotation Term="OData.Description" String="Failure of one unit will automatically cause its functions to be taken over by a standby or offline unit in the redundancy set"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="N+m"/>
+              <Annotation Term="OData.Description" String="Multiple units are available and active such that normal operation will continue if one or more units fail"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Sharing"/>
+              <Annotation Term="OData.Description" String="Multiple units contribute or share such that operation will continue, but at a reduced capacity, if one or more units fail"/>
+            </Record>
+            <Record>
+              <PropertyValue Property="Member" String="Sparing"/>
+              <Annotation Term="OData.Description" String="One or more spare units are available to take over the function of a failed unit, but takeover is not automatic"/>
+            </Record>
+          </Collection>
+        </Annotation>
+      </TypeDefinition>
 
     </Schema>
 

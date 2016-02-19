@@ -2,40 +2,40 @@
 DocTitle: Redfish Scalable Platforms Management API Specification
 DocNumber: '0266'
 DocClass: Normative
-DocVersion: '1.0.1'
-modified: '2015-09-17'
+DocVersion: '1.0.2'
+modified: '2016-02-10'
 status: published
 released: true
-copyright: '2014-2015'
+copyright: '2014-2016'
 ---
 
 # Foreword
 
-The Redfish Scalable Platform Management API ("Redfish") was prepared by the Scalable Platforms Management Forum of the DMTF.
+The Redfish Scalable Platforms Management API ("Redfish") was prepared by the Scalable Platforms Management Forum of the DMTF.
 
 DMTF is a not-for-profit association of industry members dedicated to promoting enterprise and systems management and interoperability. For information about the DMTF, see http://www.dmtf.org.
 
 # Acknowledgments
 
 The DMTF acknowledges the following individuals for their contributions to this document:
-* Jeff Autor Hewlett-Packard Company
+* Jeff Autor Hewlett Packard Enterprise
 * David Brockhaus Emerson Network Power
 * Richard Brunner VMware Inc.
 * Lee Calcote Seagate Technology
 * P Chandrasekhar Dell Inc
-* Chris Davenport Hewlett-Packard Company
+* Chris Davenport Hewlett Packard Enterprise
 * Gamma Dean Emerson Network Power
 * Wassim Fayed Microsoft Corporation
-* Mike Garrett Hewlett-Packard Company
+* Mike Garrett Hewlett Packard Enterprise
 * Steve Geffin Emerson Network Power
 * Jon Hass Dell Inc
-* Jeff Hilland Hewlett-Packard Company
+* Jeff Hilland Hewlett Packard Enterprise
 * Chris Hoffman Emerson Network Power
 * John Leung Intel Corporation
 * Milena Natanov Microsoft Corporation
 * Michael Pizzo Microsoft Corporation
 * Irina Salvan Microsoft Corporation
-* Hemal Shah Broadcom Corporation
+* Hemal Shah Broadcom Limited
 * Jim Shelton Emerson Network Power
 * Tom Slaight Intel Corporation
 * Donnie Sturgeon Emerson Network Power
@@ -1294,9 +1294,25 @@ The message registry approach has advantages for internationalization (since the
 
 ## Data Model & Schema
 
-One of the key tenants of the Redfish interface is the separation of protocol and data model.  This section describes common data model, resource, and Redfish Schema requirements.
+One of the key tenets of the Redfish interface is the separation of protocol and data model.  This section describes common data model, resource, and Redfish Schema requirements.
 
 * Each resource shall be strongly typed according to a [resource type definition](#resource-type-definitions). The type shall be defined in a Redfish [schema document](#schema-documents) and identified by a unique [type identifier](#type-property).
+
+### Schema Repository
+
+All Redfish schemas produced, approved and published by the SPMF are available from the DMTF website at http://redfish.dmtf.org/schemas for download.  Each folder in the Repository contains both CSDL and json-schema formats.  The schema files are organized on the site in the following manner:
+
+| URL | Folder contents |
+|-----|-----------------|
+| redfish.dmtf.org/schemas | Current (most recent minor or errata ) release of each schema file. |
+| redfish.dmtf.org/schemas/v1 |  All v1.xx schema files.  Every v1.xx minor or errata release of each schema file. |
+| redfish.dmtf.org/schemas/archive | Sub-folders contain schema files specific to a particular version release. |
+
+#### Programmatic access to Schema files
+
+Programs may access the Schema Repository using the redfish.dmtf.org/schemas/v1 durable URL, as this folder will contain each released version of each schema.  Programs incorporating schema usage should implement a local schema cache to reduce latency, program requirements for Internet access and undue traffic burden on the DMTF website.
+
+
 
 ### Type Identifiers
 
@@ -2365,5 +2381,6 @@ The file where the events are written, one or more messages per event should at 
 | ---     | ---      | ---             |
 | 1.0.0   | 2015-8-4 | Initial release |
 | 1.0.1   | 2015-9-17| Errata release.  Clarified normative use of LongDescription in schema files.  Clarified usage of the 'rel-describedby' link header.  Corrected text in example of 'Select List' in OData Context property.  Clarified Accept-Encoding Request header handling.  Deleted duplicative and conflicting statement on returning extended error resources.  Clarified relative URI resolution rules. Various grammatical corrections. Clarified USN format.  |
+| 1.0.2   | 2016-2-25| Errata release.  Clarified normative usage of the Context Property, the ability to use two URL forms in the property, and the "@odata.context" URL examples throughout.  Corrected name of Measures.Unit annotation term as used in examples.  Various typographical errors. Correctd outdated reference to Core OData specification in Annotation Term examples.  Clarified that implementation of the SSDP protocol is optional.  Added missing OPTIONS method to the allowed HTTP Methods list.  Corrected typographical error in the SSDP USN field's string definition (now '::dmtf-org').  Clarified usage of 'charset=utf-8' in the HTTP Accept and Content-Type headers.  Added section detailing the location of the Redfish Schema Repository. |
 
  

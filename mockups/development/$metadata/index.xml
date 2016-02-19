@@ -23,17 +23,13 @@
     <edmx:reference uri="http://redfish.dmtf.org/schemas/v1/ComputerSystemCollection.xml">
         <edmx:include Namespace="ComputerSystemCollection" />
     </edmx:reference>
-    <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/EhternetNetworkInterface.xml">
-        <edmx:include Namespace="EhternetNetworkInterface" />
-        <edmx:Include Namespace="EhternetNetworkInterface.1.0.0"/>
+    <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/EthernetInterface.xml">
+        <edmx:include Namespace="EthernetInterface" />
+        <edmx:Include Namespace="EthernetInterface.1.0.0"/>
     </edmx:Reference>
-    <edmx:reference uri="http://redfish.dmtf.org/schemas/v1/EhternetNetworkInterfaceCollection.xml">
-        <edmx:include Namespace="EhternetNetworkInterfaceCollection" />
+    <edmx:reference uri="http://redfish.dmtf.org/schemas/v1/EthernetInterfaceCollection.xml">
+        <edmx:include Namespace="EthernetInterfaceCollection" />
     </edmx:reference>
-    <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/VLanNetworkInterface.xml">
-        <edmx:include Namespace="VLanNetworkInterface" />
-        <edmx:Include Namespace="VLanNetworkInterface.1.0.0"/>
-    </edmx:Reference>
     <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Event.xml">
         <edmx:include Namespace="Event" />
         <edmx:Include Namespace="Event.1.0.0"/>
@@ -103,9 +99,31 @@
         <edmx:include Namespace="Message" />
         <edmx:Include Namespace="Message.1.0.0"/>
     </edmx:Reference>
+        <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/MessageRegistry.xml">
+        <edmx:include Namespace="MessageRegistry" />
+        <edmx:Include Namespace="MessageRegistry.1.0.0"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/MessageRegistryCollection.xml">
+        <edmx:include Namespace="MessageRegistryCollection" />
+    </edmx:Reference>
+        <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/MessageRegistryFile.xml">
+        <edmx:include Namespace="MessageRegistryFile" />
+        <edmx:Include Namespace="MessageRegistryFile.1.0.0"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/MessageRegistryFileCollection.xml">
+        <edmx:include Namespace="MessageRegistryFileCollection" />
+    </edmx:Reference>
+        <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/PhysicalContext.xml">
+        <edmx:include Namespace="PhysicalContext" />
+        <edmx:Include Namespace="PhysicalContext.1.0.0"/>
+    </edmx:Reference>
     <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Power.xml">
         <edmx:include Namespace="Power" />
         <edmx:Include Namespace="Power.1.0.0"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Privileges.xml">
+        <edmx:include Namespace="Privileges" />
+        <edmx:Include Namespace="Privileges.1.0.0"/>
     </edmx:Reference>
     <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Redundancy.xml">
         <edmx:include Namespace="Redundancy" />
@@ -135,6 +153,10 @@
     <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/SessionService.xml">
         <edmx:include Namespace="SessionService" />
         <edmx:Include Namespace="SessionService.1.0.0"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Settings.xml">
+        <edmx:include Namespace="Settings" />
+        <edmx:Include Namespace="Settings.1.0.0"/>
     </edmx:Reference>
     <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/SimpleStorage.xml">
         <edmx:include Namespace="SimpleStorage" />
