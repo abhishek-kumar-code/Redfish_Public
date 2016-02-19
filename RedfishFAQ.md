@@ -122,6 +122,9 @@ Redfish provides methods for extending any resource by using the "oem" object.  
 * implementations cannot add properties to non-OEM sections
 * OEMs can publish their own schemas.  These can be based on or in addition to the Redfish schemas.  These schemas should be referenced in the $metadata construct using OData CSDL and in the JSON Schema File constructs provided off of the service root.
 
+### What about Copying, Distributing or Modifying Schema?
+The DMTF allows this as long as the usage adheres to the DMTF copyright notice.  The copyright notice can be found in the Readme for DSP8010.
+
 ## Why not CIM & MOF?
 We took a different approach for Redfish - we started with the toolset and interface style customers are adopting and leveraged that.  We learned what they use instead of forcing them to learn our way and then hope vendors develop tools to go with it.
 
