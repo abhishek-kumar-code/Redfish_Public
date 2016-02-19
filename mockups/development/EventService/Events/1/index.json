@@ -5,6 +5,7 @@
     "@odata.type": "#Event.1.0.0.Event",
     "Id": "1",
     "Name": "Event Array",
+    "Context": "ABCDEFGH",
     "Events": [
         {
             "EventType": "Alert",
