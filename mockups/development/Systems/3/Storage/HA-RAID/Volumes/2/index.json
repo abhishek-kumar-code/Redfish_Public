@@ -25,8 +25,8 @@
         ]
     },
     "Actions": {
-        "#Volume.CheckConsitency": {
-            "Target": "/redfish/v1/Systems/3/Storage/HA-RAID/Volumes/2/Actions/Volume.CheckConsitency"
+        "#Volume.CheckConsistency": {
+            "Target": "/redfish/v1/Systems/3/Storage/HA-RAID/Volumes/2/Actions/Volume.CheckConsistency"
         },
         "#Volume.Initialize": {
             "Target": "/redfish/v1/3/Storage/HA-RAID/Volumes/2/Actions/Volume.Initialize",
