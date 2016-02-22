@@ -58,7 +58,11 @@
           <Annotation Term="OData.LongDescription" String="This property shall contain failure information as defined by the manufacturer for the associated drive."/>
         </Property>
 
-        <!--TODO What ever we decide for WWN/DesignationDescriptor-->
+        <Property Name="Identifiers" Type="Collection(Resource.1.1.0.Identifier)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The Durable names for the volume"/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain a list of all known durable names for the associated volume."/>
+        </Property>
         <Property Name="BlockSizeBytes" Type="Edm.Int32">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The size of the smallest addressible unit (Block) of this volume in bytes"/>

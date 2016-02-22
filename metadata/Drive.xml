@@ -92,7 +92,11 @@
           <Annotation Term="OData.Description" String="The user assigned asset tag for this drive."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an identifying string used to track the drive for inventory purposes."/>
         </Property>
-        <!--TODO What ever we decide for WWN/DesignationDescriptor-->
+        <Property Name="Identifiers" Type="Collection(Resource.1.1.0.Identifier)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The Durable names for the drive"/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain a list of all known durable names for the associated drive."/>
+        </Property>
         <Property Name="FormFactor" Type="Drive.1.0.0.FormFactor">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The form factor of this drive"/>

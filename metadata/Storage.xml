@@ -143,6 +143,11 @@
 		  <Annotation Term="OData.Description" String="This represents the protocols which the controller can use to communicate with attached devices."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the set of protocols this controller can use to communicate with attached devices."/>
         </Property>
+        <Property Name="Identifiers" Type="Collection(Resource.1.1.0.Identifier)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The Durable names for the controller"/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain a list of all known durable names for the associated controller."/>
+        </Property>
       </EntityType>
 
       <EnumType Name="Protocol">
