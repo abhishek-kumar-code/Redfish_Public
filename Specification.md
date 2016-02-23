@@ -609,13 +609,13 @@ The first parameter of a bound function is the resource on which the action is b
 
 Clients can query a resource directly to determine the [actions](#actions-property) that are available as well as [valid parameter values](#allowable-values) for those actions.  Some parameter information may require the client to examine the Redfish Schema corresponding to the resource.
 
-For instance, if a Redfish Schema document `http://redfish.dmtf.org/schemas/v1/ComputerSystem.xml` defines a Reset action in the `ComputerSystem` namespace, bound to the `ComputerSystem.1.0.0.Actions` type, such as this example:
+For instance, if a Redfish Schema document `http://redfish.dmtf.org/schemas/v1/ComputerSystem_v1.xml` defines a Reset action in the `ComputerSystem` namespace, bound to the `ComputerSystem.v1_0_0.Actions` type, such as this example:
 
 ~~~xml
 <Schema Name="ComputerSystem">
   ...
   <Action Name="Reset" IsBound="true">
-    <Parameter Name="Resource" Type="ComputerSystem.1.0.0.Actions"/>
+    <Parameter Name="Resource" Type="ComputerSystem.v1_0_0.Actions"/>
     <Parameter Name="ResetType" Type="Resource.ResetType"/>
   </Action>
   ...
@@ -767,35 +767,35 @@ The service metadata describes top-level resources and resource types of the ser
 ~~~
 
 ###### Referencing Other Schemas
-The service metadata shall include the namespaces for each of the Redfish resource types, along with the "RedfishExtensions.1.0.0" namespace. These references may use the standard Uri for the hosted Redfish Schema definitions (i.e., on http://redfish.dmtf.org/schema) or a Url to a local version of the Redfish Schema that shall be identical to the hosted version.
+The service metadata shall include the namespaces for each of the Redfish resource types, along with the "RedfishExtensions.v1_0_0" namespace. These references may use the standard Uri for the hosted Redfish Schema definitions (i.e., on http://redfish.dmtf.org/schema) or a Url to a local version of the Redfish Schema that shall be identical to the hosted version.
 
 ~~~xml
-<edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/AccountService.xml">
+<edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/AccountService_v1.xml">
   <edmx:Include Namespace="AccountService"/>
-  <edmx:Include Namespace="AccountService.1.0.0"/>
+  <edmx:Include Namespace="AccountService.v1_0_0"/>
 </edmx:Reference>
-<edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ServiceRoot.xml">
+<edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ServiceRoot_v1.xml">
 	<edmx:Include Namespace="ServiceRoot"/>
-	<edmx:Include Namespace="ServiceRoot.1.0.0"/>
+	<edmx:Include Namespace="ServiceRoot.v1_0_0"/>
 </edmx:Reference>
 
 ...
 
-<edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/VirtualMedia.xml">
+<edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/VirtualMedia_v1.xml">
   <edmx:Include Namespace="VirtualMedia"/>
-  <edmx:Include Namespace="VirtualMedia.1.0.0"/>
+  <edmx:Include Namespace="VirtualMedia.v1_0_0"/>
 </edmx:Reference>
-<edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions.xml">
-	<edmx:Include Namespace="RedfishExtensions.1.0.0" Alias="Redfish"/>
+<edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+	<edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
 </edmx:Reference>
 ~~~
 
-The service metadata shall include an entity container that defines the top level resource and collections. This entity container shall extend the ServiceContainer defined in the ServiceRoot.1.0.0 schema and may include additional resources or collections.
+The service metadata shall include an entity container that defines the top level resource and collections. This entity container shall extend the ServiceContainer defined in the ServiceRoot.v1_0_0 schema and may include additional resources or collections.
 
 ~~~xml
 <edmx:DataServices>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Service">
-      <EntityContainer Name="Service" Extends="ServiceRoot.1.0.0.ServiceContainer"/>
+      <EntityContainer Name="Service" Extends="ServiceRoot.v1_0_0.ServiceContainer"/>
     </Schema>
 </edmx:DataServices>
 ~~~
@@ -814,7 +814,7 @@ The service can annotate sets, types, actions and parameters with Redfish-define
 
 ~~~xml
 <edmx:Reference Uri="http://service/metadata/Service.Annotations">
-	<edmx:IncludeAnnotations TermNamespace="Annotations.1.0.0"/>
+	<edmx:IncludeAnnotations TermNamespace="Annotations.v1_0_0"/>
 </edmx:Reference>
 ~~~
 
@@ -1080,7 +1080,7 @@ A JSON object can be annotated with "@Message.ExtendedInfo" in order to specify 
 {
     "@odata.context": "/redfish/v1/$metadata#SerialInterface.SerialInterface",
     "@odata.id": "/redfish/v1/Managers/1/SerialInterfaces/1",
-    "@odata.type": "#SerialInterface.1.0.0.SerialInterface",
+    "@odata.type": "#SerialInterface.v1_0_0.SerialInterface",
     "Name": "Managed Serial Interface 1",
     "Description": "Management for Serial Interface",
     "Status": {
@@ -1118,7 +1118,7 @@ An individual property within a JSON object can be annotated with extended infor
 {
     "@odata.context": "/redfish/v1/$metadata#SerialInterface.SerialInterface",
     "@odata.id": "/redfish/v1/Managers/1/SerialInterfaces/1",
-    "@odata.type": "#SerialInterface.1.0.0.SerialInterface",
+    "@odata.type": "#SerialInterface.v1_0_0.SerialInterface",
     "Name": "Managed Serial Interface 1",
     "Description": "Management for Serial Interface",
     "Status": {
@@ -1227,7 +1227,7 @@ Error responses are defined by an extended error resource, represented as a sing
         "message": "A general error has occurred. See ExtendedInfo for more information.",
         "@Message.ExtendedInfo": [
             {
-                "@odata.type" : "/redfish/v1/$metadata#Message.1.0.0.Message",
+                "@odata.type" : "/redfish/v1/$metadata#Message.v1_0_0.Message",
                 "MessageId": "Base.1.0.PropertyValueNotInList",
                 "RelatedProperties": [
 					"#/IndicatorLED"
@@ -1241,7 +1241,7 @@ Error responses are defined by an extended error resource, represented as a sing
                 "Resolution": "Remove the property from the request body and resubmit the request if the operation failed"
             },
             {
-                "@odata.type" : "/redfish/v1/$metadata#Message.1.0.0.Message",
+                "@odata.type" : "/redfish/v1/$metadata#Message.v1_0_0.Message",
                 "MessageId": "Base.1.0.PropertyNotWriteable",
                 "RelatedProperties": [
 					"#/SKU"
@@ -1327,7 +1327,7 @@ where:
 
 The namespace for types defined by this specification is of the form:
 
- *ResourceTypeName*.*MajorVersion*.*MinorVersion*.*Errata*
+ *ResourceTypeName*.v*MajorVersion*_*MinorVersion*_*Errata*
 
 where
 
@@ -1336,7 +1336,7 @@ where
 * *MinorVersion* = integer: a minor update. New properties may have been added but nothing removed. Compatibility will be preserved with previous minorversions.
 * *Errata* = integer: something in the prior version was broken and needed to be fixed.
 
-An example of a valid type namespace might be "ComputerSystem.1.0.0".
+An example of a valid type namespace might be "ComputerSystem.v1_0_0".
 
 #### Type Identifiers in JSON
 Types used within a JSON payload shall be defined in, or referenced, by the [service metadata](#service-metadata).
@@ -1411,7 +1411,7 @@ Redfish Schemas may reference types defined in other schema documents.  In the O
 
 The reference element specifies the `Uri` of the OData schema representation document describing the referenced type and has one or more child `Include` elements that specify the `Namespace` attribute containing the types to be referenced, along with an optional `Alias` attribute for that namespace.
 
-Type definitions generally reference the OData and Redfish namespaces for common type annotation terms, and resource type definitions reference the Redfish Resource.1.0.0 namespace for base types. Redfish OData Schema representations that include measures such as temperature, speed, or dimensions generally include the [OData Measures namespace](#units-of-measure).
+Type definitions generally reference the OData and Redfish namespaces for common type annotation terms, and resource type definitions reference the Redfish Resource.v1_0_0 namespace for base types. Redfish OData Schema representations that include measures such as temperature, speed, or dimensions generally include the [OData Measures namespace](#units-of-measure).
 
 ~~~xml
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
@@ -1421,12 +1421,12 @@ Type definitions generally reference the OData and Redfish namespaces for common
     Uri="http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml">
     <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions.xml">
-	<edmx:Include Namespace="RedfishExtensions.1.0.0" Alias="Redfish"/>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+	<edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
-    <edmx:Include Namespace="Resource.1.0.0"/>
+    <edmx:Include Namespace="Resource.v1_0_0"/>
   </edmx:Reference>
 ~~~
 
@@ -1438,7 +1438,7 @@ The OData Schema element is a child of the `DataServices` element, which is a ch
 
 ~~~xml
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MyTypes.1.0.0">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MyTypes.v1_0_0">
 
       <!-- Type definitions go here -->
 
@@ -1450,12 +1450,12 @@ The OData Schema element is a child of the `DataServices` element, which is a ch
 
 Resource types are defined within a [namespace](#namespace-definitions) using `EntityType` elements. The `Name` attribute specifies the name of the resource and the `BaseType` specifies the base type, if any.
 
-Redfish resources derive from a common Resource base type named "Resource" in the Resource.1.0.0 namespace.
+Redfish resources derive from a common Resource base type named "Resource" in the Resource.v1_0_0 namespace.
 
 The EntityType contains the [property](#resource-properties) and [reference property](#reference-properties) elements that define the resource, as well as annotations describing the resource.
 
 ~~~xml
-      <EntityType Name="TypeA" BaseType="Resource.1.0.0.Resource">
+      <EntityType Name="TypeA" BaseType="Resource.v1_0_0.Resource">
         <Annotation Term="OData.Description" String="This is the description of TypeA."/>
         <Annotation Term="OData.LongDescription" String="This is the specification of TypeA."/>
 
@@ -1604,7 +1604,7 @@ If an implementation supports a property, it shall always provide a value for th
 		<Annotation Term="Redfish.Required"/>
 ~~~
 
-The `Required` annotation term is defined in http://redfish.dmtf.org/schemas/v1/RedfishExtensions.1.0.0.
+The `Required` annotation term is defined in http://redfish.dmtf.org/schemas/v1/RedfishExtensions.v1_0_0.
 
 ##### Required Properties On Create
 
@@ -1614,7 +1614,7 @@ The RequiredOnCreate annotation term is used to specify that a property is requi
 		<Annotation Term="Redfish.RequiredOnCreate"/>
 ~~~
 
-The `RequiredOnCreate` annotation term is defined in http://redfish.dmtf.org/schemas/v1/RedfishExtensions.1.0.0.
+The `RequiredOnCreate` annotation term is defined in http://redfish.dmtf.org/schemas/v1/RedfishExtensions.v1_0_0.
 
 ##### Units of Measure
 
@@ -1784,16 +1784,16 @@ The following fragment presents some examples of naming and use of the Oem prope
 ...
   "Oem": {
     "Contoso": {
-      "@odata.type": "http://contoso.com/schemas/extensions.v.v.v#contoso.AnvilTypes1",
+      "@odata.type": "http://contoso.com/schemas/extensions.v_v_v#contoso.AnvilTypes1",
       "slogan": "Contoso anvils never fail",
       "disclaimer": "* Most of the time"
     },
     "Contoso.biz": {
-      "@odata.type": "http://contoso.biz/schemas/extension1.1#RelatedSpeed",
+      "@odata.type": "http://contoso.biz/schemas/extension1_1#RelatedSpeed",
       "speed" : "ludicrous"
     },
     "EID:412:ASB_123": {
-      "@odata.type": "http://AnotherStandardsBody/schemas.1.0.1#powerInfoExt",
+      "@odata.type": "http://AnotherStandardsBody/schemas.v1_0_1#powerInfoExt",
       "readingInfo": {
         "readingAccuracy": "5",
         "readingInterval": "20"
@@ -1850,7 +1850,7 @@ Because [service annotations](#annotations) may be applied to existing resource 
 
 This section contains a set of common properties across all Redfish resources. The property names in this section shall not be used for any other purpose, even if they are not implemented in a particular resource.
 
-Common properties are defined in the base Resource Redfish Schema.  For OData Schema Representations, this is in Resource.xml and for JSON Schema Representations, this is in Resource.1.0.0.json.
+Common properties are defined in the base Resource Redfish Schema.  For OData Schema Representations, this is in Resource_v1.xml and for JSON Schema Representations, this is in Resource.v1_0_0.json.
 
 #### Id
 
@@ -2227,7 +2227,7 @@ X-Auth-Token: <session-auth-token>
 {
     "@odata.context": "/redfish/v1/$metadata#Session.Session",
     "@odata.id": "/redfish/v1/SessionService/Sessions/1",
-    "@odata.type": "#Session.1.0.0.Session",
+    "@odata.type": "#Session.v1_0_0.Session",
     "Id": "1",
     "Name": "User Session",
     "Description": "User Session",
