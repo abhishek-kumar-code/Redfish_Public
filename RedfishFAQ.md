@@ -2,7 +2,7 @@
 DocTitle: Redfish Frequently Asked Questions (FAQ)
 DocNumber: '2045'
 DocClass: Informative
-DocVersion: '1.0.0'
+DocVersion: '1.1.0'
 modified: '2015-08-04'
 status: published
 released: true
@@ -148,7 +148,7 @@ Ironic is the hardware management API for OpenStack.  It is OpenStack specific a
 ## Why is the ETag algorithm left to the implementation?
 Considering the different ETag models (Weak/Strong) mentioned in the spec it seems that leaving the model decision up to the server implementation will leave clients not knowing what has been implemented and therefore not knowing how to interpret the ETag.  
 
-In practice it doesn't matter since the value of the ETag will only be as good as the server is capable of providing for.  The client should treat ETags as opaque anyway and use them to determine if data has changed.  This is the adopted practice in all web servers and is what RFC2616 allows.
+In practice it doesn't matter since the value of the ETag will only be as good as the server is capable of providing for.  The client should treat ETags as opaque anyway and use them to determine if data has changed.  This is the adopted practice in all web servers and is what RFC7230 allows.
 
 ## Why does Redfish need to use ETags at all?
 It allows the use of the If-Match header for replacement of resources.  It also allows the clients to determine if anything has changed before doing a large fetch (a Server collection in Moonshot is hundreds of servers).
@@ -182,3 +182,10 @@ It is possible for a user with the System Administrator role to create user acco
 
 ## Logging of events
 Redfish requires logging of some events, but does not require the implementation of a local log, though one is implied due to the fact that it is represented in both metadata/schema and the mockup. This allows implementations of logging that are record-only logs, or logs which are securely stored outside the service using services like syslog.
+
+# Change Log
+
+| Version | Date      | Description     |
+| ---     | ---       | ---             |
+| 1.0.0   | 2015-9-17   | Initial release |
+| 1.0.1  | 2016-3-17 | Added Clarification on Schema Reuse, Change RFC2616 to RFC7230 |
