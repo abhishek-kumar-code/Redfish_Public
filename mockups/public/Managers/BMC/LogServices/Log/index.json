@@ -2,7 +2,7 @@
     "@Redfish.Copyright": "Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#Managers/Members/BMC/LogServices/Members/$entity",
     "@odata.id": "/redfish/v1/Managers/BMC/LogServices/Log",
-    "@odata.type": "#LogService.1.0.0.LogService",
+    "@odata.type": "#LogService.v1_0_0.LogService",
     "Id": "Log",
     "Name": "System Log Service",
     "MaxNumberOfRecords": 1000,

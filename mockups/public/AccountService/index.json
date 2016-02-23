@@ -2,7 +2,7 @@
     "@Redfish.Copyright": "Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#AccountService",
     "@odata.id": "/redfish/v1/AccountService",
-    "@odata.type": "#AccountService.1.0.0.AccountService",
+    "@odata.type": "#AccountService.v1_0_0.AccountService",
     "Id": "AccountService",
     "Name": "Account Service",
     "Description": "Account Service",
