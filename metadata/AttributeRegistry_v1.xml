@@ -127,7 +127,7 @@
         <Property Name="CurrentValue" Type="Edm.PrimitiveType"> 
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Placeholder of the current value of the attribute."/>
-          <Annotation Term="OData.LongDescription" String="Placeholder of the current value of the attribute. The current value of an attribute might be affected by the results of evaluating the 'Dependencies' array."/>
+          <Annotation Term="OData.LongDescription" String="Placeholder of the current value of the attribute, to aid in evaluating dependencies. The current value of an attribute might be affected by the results of evaluating the 'Dependencies' array."/>
         </Property>
         <Property Name="DefaultValue" Type="Edm.PrimitiveType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
