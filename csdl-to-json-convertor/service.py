@@ -1533,7 +1533,7 @@ class JsonSchemaGenerator:
             result.update({'namespace' : filename[:lastindex] + ".v1_0_0"})
 
         if incorrect_url == True:
-            result.update({'error' : 'Incorrect URL - Please specify a URL like:\n 1. http://<filename>#<namespace> or \n 2. http://<filename>#<datatype>\n e.g. http://localhost:9080/rest/v1/redfish.dmtf.org/redfish/v1/Chassis#Chassis.Chassis'})
+            result.update({'error' : 'Incorrect URL - Please specify a URL like:\n 1. http://<filename>#<namespace> or \n 2. http://<filename>#<datatype>\n e.g. http://localhost:9080/rest/v1/redfish.dmtf.org/redfish/v1/Chassis_v1#Chassis.Chassis'})
 
         return result
 
