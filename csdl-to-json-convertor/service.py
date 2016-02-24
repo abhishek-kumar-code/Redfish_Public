@@ -357,7 +357,6 @@ class JsonSchemaGenerator:
 
                 if term == "Redfish.DynamicPropertyPatterns":
                     content = self.get_dynamic_property_patterns_content(annotation)
-                    print(content)
                     for record in content:
                         output += ",\n"
                         output += UT.Utilities.indent(depth+1) + "\"" + record["Pattern"] + "\": {\n"
@@ -939,7 +938,7 @@ class JsonSchemaGenerator:
                 output += ",\n" + UT.Utilities.indent(depth) + "\"pattern\": \"([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})\""
 
         elif typename == "Edm.PrimitiveType":
-            output += wite_primitive_type(depth, isnullable)
+            output += self.wite_primitive_type(depth, isnullable)
 
         else:
                print("Primitive Type Not Found!: " + typename)
