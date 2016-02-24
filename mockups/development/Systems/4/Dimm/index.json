@@ -6,22 +6,22 @@
     "Members@odata.count": 6,
     "Members": [
         {
-            "@odata.id": "/redfish/v1/Systems/4/DimmConfig/1"
+            "@odata.id": "/redfish/v1/Systems/4/Dimm/1"
         },
         {
-            "@odata.id": "/redfish/v1/Systems/4/DimmConfig/2"
+            "@odata.id": "/redfish/v1/Systems/4/Dimm/2"
         },
         {
-            "@odata.id": "/redfish/v1/Systems/4/DimmConfig/3"
+            "@odata.id": "/redfish/v1/Systems/4/Dimm/3"
         },
         {
-            "@odata.id": "/redfish/v1/Systems/4/DimmConfig/4"
+            "@odata.id": "/redfish/v1/Systems/4/Dimm/4"
         },
         {
-            "@odata.id": "/redfish/v1/Systems/4/DimmConfig/5"
+            "@odata.id": "/redfish/v1/Systems/4/Dimm/5"
         },
         {
-            "@odata.id": "/redfish/v1/Systems/4/DimmConfig/6"
+            "@odata.id": "/redfish/v1/Systems/4/Dimm/6"
         }
     ],
     "Oem": {}
