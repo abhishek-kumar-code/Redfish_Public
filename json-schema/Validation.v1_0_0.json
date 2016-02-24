@@ -1,0 +1,6 @@
+{
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_0_0.json",
+    "title": "#Validation.v1_0_0",
+,
+    "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
+}
