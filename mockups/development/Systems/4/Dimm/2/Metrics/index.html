@@ -1,0 +1,41 @@
+{
+	"@Redfish.Copyright":"Copyright © 2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",    
+    "@odata.context": "/redfish/v1/$metadata#Systems/Links/Members/1/Memory/Links/Members/2/Links/Metrics/$entity",
+    "@odata.id": "/redfish/v1/Systems/4/Dimm/2/Metrics",
+    "@odata.type": "#Memory.1.0.0.MemoryMetrics",
+    "Name": "DIMM Metrics",
+    "Id": "Metrics",
+    ".comment1": "Block size used for read and write counter in read and write counters",
+    "BlockSizeB": 4096,
+    ".comment2": "Metrics related to the current boot",
+    "CurrentPeriod": {
+        "BlocksRead": 0,
+        "BlocksWritten": 0
+    },
+    ".comment3": "Metrics related to lifetime",
+    "Lifetime": {
+        "BlocksRead": 0,
+        "BlocksWritten": 0
+    },
+    ".comment4": "DIMM health information",
+    "HealthData": {
+        "RemainingSpareBlockPercentage": 50,
+        "IsLastShutdownSuccess": true,
+        "DataLossDetected": false,
+        "PerformanceDegraded": false,
+        "AlarmTrips": {
+            "Temperature": true,
+            "SpareBlock": false,
+            "UncorrectableError": false,
+            "CorrectedError": false
+        }
+    },
+    "Actions": {
+        "#Memory.ClearMetrics": {
+            ".comment4": "This action is used to clear CurrentPeriod metrics",
+            "target": "/redfish/v1/Systems/4/Dimm/2/Actions/Dimm.ClearMetrics"
+        },
+        "Oem": {}
+    },
+    "Oem": {}
+}

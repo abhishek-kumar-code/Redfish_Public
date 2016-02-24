@@ -1,0 +1,130 @@
+ {
+	"@Redfish.Copyright":"Copyright © 2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",    
+    "@odata.context": "/redfish/v1/$metadata#Systems/Members/1/Dimm/$entity",
+    "@odata.id": "/redfish/v1/Systems/4/Dimm/6",
+    "@odata.type": "#Memory.1.0.0.Dimm",
+    ".comment1": "DIMM config includes DIMM capabilities from SPD and DIMM controller, and DIMM related configuration information",
+    "Name": "NVDIMM",
+    "Id": "6",
+    "DimmUID": 6,
+    ".comment2": "DIMM capability information from SPD and DIMM controller",
+    "DimmType": "NVDIMM-F",
+    "DimmDeviceType": "DDR4",
+    "BaseModuleType": "LRDIMM",
+    "DimmMedia": [
+		"NAND"		
+    ],
+    "CapacityMiB": 8192,
+    ".comment21": "8GB",
+    "DataWidthBits": 64,
+    "BusWidthBits": 72,
+    "Manufacturer": "Contoso",
+    "SerialNumber": "1A2B3F",
+    "PartNumber": "1A2B3D",
+    "AllowedSpeedsMhz": [
+        2133,
+        2400,
+        2667
+    ],
+    "FirmwareRevision": "RevAbc",
+    "FirmwareApiVersion": "ApiAbc",
+    "FunctionClasses": [
+        "Block"
+    ],
+    "VendorID": "vendorX",
+    "DeviceID": "deviceX",
+    "SubsystemVendorID": "vendorA",
+    "SubsystemDeviceID": "deviceA",
+    "MaxTDPMilliWatts": [
+        10000,
+        12000,
+        15000
+    ],
+    "SecurityCapabilities": {
+        "PassphraseCapable": true,
+        "MaxPassphraseRegionCount": 4,
+        "SecurityStates": [
+            "enabled",
+            "unlocked"
+        ]
+    },
+    "RankCount": 1,
+    ".comment3": "DIMM connection information",
+    ".comment4": "Device Locator data from SMBIOS record",
+    "DeviceLocator": "PROC 1 DIMM 6",
+    ".comment5": "Dimm Location with respect to processor and memory controller",
+    "DimmLocation": {
+        "Socket": 1,
+        "MemoryController": 2,
+        "Channel": 2,
+        "Slot": 1
+    },
+    "ErrorCorrection": "MultiBitECC",
+    ".comment6": "DIMM Enable/Disable status and health",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    ".comment7": "Current operating speed",
+    "OperatingSpeedMhz": 2400,
+    ".comment8": "Dimm region sizes limits",
+    "PersistentRegionSizeLimitMiB": 8192,
+    ".comment9": "Dimm region information",
+    "Regions": [
+        {
+            "RegionId": "1",
+            "MemoryType": "Block",
+            "OffsetMiB": 0,
+            "SizeMiB": 8192,
+            "PassphraseState": "Enabled"
+        }
+    ],
+    ".comment10": "Current operating modes based platform capability",
+    "OperatingMemoryModes": [
+        "Block"
+    ],
+    ".comment12": "Power management policy settings",
+    "PowerManagementPolicy": {
+        "PolicyEnabled": true,
+        "MaxTDPMilliWatts": 15000,
+        "PeakPowerBudgetMilliWatts": 10000,
+        "AveragePowerBudgetMilliWatts": 5000
+    },
+    "IsSpareDeviceEnabled": true,
+    "IsRankSpareEnabled": false,
+    "Metrics": {
+        "@odata.id": "/redfish/v1/Systems/4/Dimm/6/Metrics"
+    },
+    "Actions": {
+        "#Dimm.UnlockUnit": {
+            "target": "/redfish/v1/Systems/4/Dimm/6/Actions/Dimm.UnlockUnit",
+            "RegionId@Redfish.AllowableValues": [
+                "1"
+            ],
+            "Passphrase@Redfish.AllowableValues": "string"
+        },
+        "#Dimm.SecureEraseUnit": {
+            "target": "/redfish/v1/Systems/4/Dimm/6/Actions/Dimm.SecureEraseUnit",
+            "RegionId@Redfish.AllowableValues": [
+                "1"
+            ],
+            "Passphrase@Redfish.AllowableValues": "string"
+        },
+        "#Dimm.SetPassphrase": {
+            "target": "/redfish/v1/Systems/4/Dimm/6/Actions/Dimm.SetPassphrase",
+            "RegionId@Redfish.AllowableValues": [
+                "1"
+            ],
+            "Passphrase@Redfish.AllowableValues": "string"
+        },
+        "#Dimm.DisablePassphrase": {
+            "target": "/redfish/v1/Systems/4/Dimm/6/Actions/Dimm.DisablePassphrase",
+            "RegionId@Redfish.AllowableValues": [
+                "1"
+            ],
+            "Passphrase@Redfish.AllowableValues": "string"
+        },
+        "Oem": {}
+    },
+    "Oem": {}
+}

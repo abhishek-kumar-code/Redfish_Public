@@ -1,0 +1,95 @@
+{
+	"@Redfish.Copyright":"Copyright © 2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",    
+    "@odata.context": "/redfish/v1/$metadata#Systems/Members/1/Dimm/$entity",
+    "@odata.id": "/redfish/v1/Systems/4/Dimm/4",
+    "@odata.type": "#Memory.1.0.0.Dimm",
+    ".comment1": "DIMM config includes DIMM capabilities from SPD and DIMM controller, and DIMM related configuration information",
+    "Name": "DRAM DIMM",
+    "Id": "4",
+    "DimmUID": 4,
+    ".comment2": "DIMM capability information from SPD and DIMM controller",
+    "DimmType": "DRAM",
+    "DimmDeviceType": "DDR4",
+    "BaseModuleType": "LRDIMM",
+    "DimmMedia": [
+        "DRAM"
+    ],
+    "CapacityMiB": 8192,
+    ".comment21": "8G",
+    "DataWidthBits": 64,
+    "BusWidthBits": 72,
+    "Manufacturer": "Contoso",
+    "SerialNumber": "1A2B3E",
+    "PartNumber": "1A2B3D",
+    "AllowedSpeedsMhz": [
+        2133,
+        2400,
+        2667
+    ],
+    "FirmwareRevision": "RevAbc",
+    "FirmwareApiVersion": "ApiAbc",
+    "FunctionClasses": [
+        "Volatile"
+    ],
+    "MaxTDPMilliWatts": [
+        10000
+    ],
+    "RankCount": 1,
+    ".comment3": "DIMM connection information",
+    ".comment4": "Device Locator data from SMBIOS record",
+    "DeviceLocator": "PROC 1 DIMM 4",
+    ".comment5": "Dimm Location with respect to processor and memory controller",
+    "DimmLocation": {
+        "Socket": 1,
+        "MemoryController": 1,
+        "Channel": 2,
+        "Slot": 2
+    },
+    "ErrorCorrection": "MultiBitECC",
+    ".comment6": "DIMM Enable/Disable status and health",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    ".comment7": "Current operating speed",
+    "OperatingSpeedMhz": 2400,
+    ".comment8": "Dimm region sizes limits",
+    "VolatileRegionSizeLimitMiB": 8192,
+    ".comment9": "Dimm region information",
+    "Regions": [
+        {
+            "RegionId": "1",
+            "MemoryType": "Volatile",
+            "OffsetMiB": 0,
+            "SizeMiB": 2048,
+            ".comment91": "used for Volatile memory cache"
+        },
+        {
+            "RegionId": "2",
+            "MemoryType": "Volatile",
+            "OffsetMiB": 2048,
+            "SizeMiB": 2048,
+            ".comment92": "used for Volatile memory mirror"
+        },
+        {
+            "RegionId": "3",
+            "MemoryType": "Volatile",
+            "OffsetMiB": 4096,
+            "SizeMiB": 4096,
+            ".comment93": "used for Volatile memory"
+        }
+    ],
+    ".comment10": "Current operating modes based platform capability",
+    "OperatingMemoryModes": [
+        "Volatile"
+    ],
+    ".comment12": "Power management policy settings",
+    "PowerManagementPolicy": {
+        "PolicyEnabled": true,
+        "MaxTDPMilliWatts": 10000,
+        "PeakPowerBudgetMilliWatts": 8000,
+        "AveragePowerBudgetMilliWatts": 5000
+    },
+    "IsRankSpareEnabled": false,
+    "Oem": {}
+}

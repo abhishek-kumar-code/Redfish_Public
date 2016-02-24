@@ -1,0 +1,22 @@
+{
+    "@odata.type": "#ComputerSystem.1.1.0.ComputerSystem",
+    "Name": "Memory Subsystem Example",
+    "SystemType": "Physical",
+    "UUID": "00000000-0000-0000-0000-000000000000",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK",
+        "HealthRollUp": "OK"
+    },
+    "PowerState": "On",	
+    "Dimm": {
+        "@odata.id": "/redfish/v1/Systems/4/Dimm"
+    },
+    "MemoryChunks": {
+        "@odata.id": "/redfish/v1/Systems/4/MemoryChunks"
+    },
+    "Oem": {},
+    "Id": "4",
+    "@odata.context": "/redfish/v1/$metadata#Systems/Members/$entity",
+    "@odata.id": "/redfish/v1/Systems/4"
+}

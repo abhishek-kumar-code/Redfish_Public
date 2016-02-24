@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.-->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData" />
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
+    <edmx:Include Namespace="Resource.1.0.0"  />
+  </edmx:Reference>
+
+  <edmx:DataServices>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DimmMetrics">
+
+      <EntityType Name="Memory" BaseType="Resource.1.0.0.Resource">
+        <Annotation Term="OData.Description" String="This is the schema definition of a DIMMs and its configuration. " />
+        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
+      </EntityType>
+    
+    </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Dimm.1.0.0">
+
+      <EntityType Name="DimmMetrics" BaseType="Metrics.Metrics">
+        <Annotation Term="OData.Description" String="This is the schema definition for definition of a DIMM and its configuration" />
+		<Annotation Term="OData.AdditionalProperties" Bool="False"/>
+
+        <Property Name="BlockSizeB" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="Block size in bytes" />
+          <Annotation Term="OData.LongDescription" String="The block size in bytes provides here are used to increment the counters in CurrentPeriod and Lifetime stucture elements." />
+        </Property>
+		
+		
+	<ComplexType Name="CurrentPeriod">
+        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
+        <Property Name="BlocksRead" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="Number of blocks read since reset" />
+          <Annotation Term="OData.LongDescription" String="Number of blocks read since reset." />
+        </Property>
+        <Property Name="BlocksWritten" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="Number of blocks written since reset" />
+          <Annotation Term="OData.LongDescription" String="Number of blocks written since reset." />
+        </Property>
+        <Annotation Term="OData.Description" String="DIMM metrics since last reset."/>
+    </ComplexType>
+
+	<ComplexType Name="LifeTime">
+        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
+        <Property Name="BlocksRead" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="Number of blocks read for the lifetime of the DIMM" />
+          <Annotation Term="OData.LongDescription" String="Number of blocks read for the lifetime of the DIMM." />
+        </Property>
+        <Property Name="BlocksWritten" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="Number of blocks written for the lifetime of the DIMM" />
+          <Annotation Term="OData.LongDescription" String="Number of blocks written for the lifetime of the DIMM." />
+        </Property>
+        <Annotation Term="OData.Description" String="DIMM metrics since last reset."/>
+    </ComplexType>
+
+		
+	<ComplexType Name="HealthData">
+        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
+        <Property Name="RemainingSpareBlockPercentage" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="Remaining spare blocks in percentage" />
+          <Annotation Term="OData.LongDescription" String="Remaining spare blocks in percentage." />
+        </Property>
+        <Property Name="IsLastShutdownSuccess" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="Status of last shutdown" />
+          <Annotation Term="OData.LongDescription" String="Status of last shutdown." />
+        </Property>
+        <Property Name="DataLossDetected" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="Data loss detection status" />
+          <Annotation Term="OData.LongDescription" String="Data loss detection status." />
+        </Property>
+        <Property Name="PerformanceDegraded" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="Performance degraded mode status" />
+          <Annotation Term="OData.LongDescription" String="Performance degraded mode status." />
+        </Property>
+		<ComplexType Name="AlarmTrips">
+			<Annotation Term="OData.AdditionalProperties" Bool="False"/>
+			<Property Name="Temperature" Type="Edm.Boolean">
+				<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+				<Annotation Term="OData.Description" String="Temperature threshold crossing alarm trip detected status" />
+				<Annotation Term="OData.LongDescription" String="Temperature threshold crossing alarm trip detected status." />
+			</Property>
+			<Property Name="SpareBlock" Type="Edm.Boolean">
+				<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+				<Annotation Term="OData.Description" String="Spare block capacity crossing alarm trip detected status" />
+				<Annotation Term="OData.LongDescription" String="Spare block capacity crossing alarm trip detected status." />
+			</Property>
+			<Property Name="UncorrectableError" Type="Edm.Boolean">
+				<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+				<Annotation Term="OData.Description" String="Number of uncorrectable error threshold crossing alarm trip detected status" />
+				<Annotation Term="OData.LongDescription" String="Number of uncorrectable error threshold crossing alarm trip detected status." />
+			</Property>
+			<Property Name="CorrectableError" Type="Edm.Boolean">
+				<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+				<Annotation Term="OData.Description" String="Number of correctable error threshold crossing alarm trip detected status" />
+				<Annotation Term="OData.LongDescription" String="Number of correctable error threshold crossing alarm trip detected status." />
+			</Property>
+			<Annotation Term="OData.Description" String="Alarm trip status."/>
+		</ComplexType>
+        <Annotation Term="OData.Description" String="DIMM health information."/>
+    </ComplexType>
+
+ 
+      <Action Name="ClearCurrentPeriod" IsBound="true">
+        <Annotation Term="OData.Description" String="This defines the action for clearing CurrentPeriod object."/>
+        <Annotation Term="OData.LongDescription" String="This defines the action for clearing CurrentPeriod object.."/>
+        <Parameter Name="Target" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Description" String="Clear current period object url"/>
+          <Annotation Term="OData.LongDescription" String="Clear current period object url."/>
+        </Parameter>
+      </Action>
+
+
+      <Action Name="Oem" IsBound="true">
+		<Annotation Term="OData.Description" String="Disable passphrase for given regions" />
+		<Annotation Term="OData.LongDescription" String="Disable passphrase for given regions." />
+      </Action>
+	  
+
+      <ComplexType Name="Oem">
+        <Annotation Term="OData.AdditionalProperties" Bool="True"/>
+        <Annotation Term="OData.Description" String="Oem extensions."/>
+      </ComplexType>
+	  
+      </EntityType>	  
+	  
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>
