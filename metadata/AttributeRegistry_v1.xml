@@ -124,14 +124,12 @@
           <Annotation Term="OData.Description" String="The warning text for changing the attribute."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the warning text of the attribute."/>
         </Property>
-        <Property Name="CurrentValue" Type="Edm.String"> 
-          <!-- TODO need this to be string, integer, boolean, or null-->
+        <Property Name="CurrentValue" Type="Edm.PrimitiveType"> 
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Placeholder of the current value of the attribute."/>
           <Annotation Term="OData.LongDescription" String="Placeholder of the current value of the attribute. The current value of an attribute might be affected by the results of evaluating the 'Dependencies' array."/>
         </Property>
-        <Property Name="DefaultValue" Type="Edm.String">
-          <!-- TODO need this to be string, integer, boolean, or null-->
+        <Property Name="DefaultValue" Type="Edm.PrimitiveType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The default current value of the attribute."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the default value of the attribute."/>
@@ -294,8 +292,7 @@
           <Annotation Term="OData.Description" String="The meta-data property of the attribute specified in MapFromAttribute that is used to evaluate this dependency expression."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the meta-data property of the attribute specified in MapFromAttribute that is used to evaluate this dependency expression. For example, this could be the MapFromAttribute CurrentValue, or ReadOnly state."/>
         </Property>
-        <Property Name="MapToValue" Type="Edm.String">
-          <!-- TODO need this to be string, integer, boolean, or null-->
+        <Property Name="MapToValue" Type="Edm.PrimitiveType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The value that MapToProperty is changed to if the dependency expression evaluates to true."/>
           <Annotation Term="OData.LongDescription" String="The value that the property specified in MapToProperty (in the attribute specified in MapToAttribute) is changed to if the dependency expression evaluates to true."/>
@@ -319,8 +316,7 @@
           <Annotation Term="OData.Description" String="The condition that is used to evaluate this dependency expression."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the condition that is used to evaluate this dependency expression. For example, 'EQU' or 'NEQ'."/>
         </Property>
-        <Property Name="MapFromValue" Type="Edm.String">
-          <!-- TODO need this to be string, integer, boolean, or null-->
+        <Property Name="MapFromValue" Type="Edm.PrimitiveType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The value that the is used property specified in MapFromProperty that is used to evaluate this dependency expression."/>
           <Annotation Term="OData.LongDescription" String="The value that the property specified in MapFromProperty (in the attribute specified in MapFromAttribute) that is used to evaluate this dependency expression."/>
