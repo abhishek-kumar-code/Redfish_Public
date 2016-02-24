@@ -1212,7 +1212,7 @@ The client can get the definition of the annotation from the [service metadata](
 
 HTTP response status codes alone often do not provide enough information to enable deterministic error semantics. For example, if a client does a PATCH and some of the properties do not match while others are not supported, simply returning an HTTP status code of 400 does not tell the client which values were in error. Error responses provide the client more meaningful and deterministic error semantics.
 
-A Redfish service may provide multiple error responses in the HTTP response in order to provide the client with as much information about the error situation as it can. Additionally, the service may provide Redfish standardized errors, OEM defined errors or both depending on the implementation ablity to convey the most useful information about the underlying error.
+A Redfish service may provide multiple error responses in the HTTP response in order to provide the client with as much information about the error situation as it can. Additionally, the service may provide Redfish standardized errors, OEM defined errors or both depending on the implementation's ablity to convey the most useful information about the underlying error.
 
 Error responses are defined by an extended error resource, represented as a single JSON object with a property named "error" with the following properties.
 
