@@ -1,11 +1,10 @@
 {
-	"@Redfish.Copyright":"Copyright © 2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",    
+    "@Redfish.Copyright":"Copyright (c) 2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",    
     "@odata.context": "/redfish/v1/$metadata#Systems/Members/1/MemoryChunks/$entity",
     "@odata.id": "/redfish/v1/Systems/4/MemoryChunks/3/SD",
-    "@odata.type": "#Memory.1.0.0.MemoryChunks",
+    "@odata.type": "#MemoryChunks.v1_0_0.MemoryChunks",
     "Id": "SD",
     "Name": "Memory Chunk Pending Settings",
-    ".comment1": "Create a memory chunk from DIMM1 and DIMM2 using offset, size and memory type",
     "InterleaveSets": [
         {
             "@odata.id": "/redfish/v1/Systems/4/Dimm/1",
