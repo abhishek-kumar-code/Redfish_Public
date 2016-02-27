@@ -52,21 +52,18 @@
             "MemoryType": "Volatile",
             "OffsetMiB": 0,
             "SizeMiB": 2048,
-            ".comment91": "used for Volatile memory cache"
         },
         {
             "RegionId": "2",
             "MemoryType": "Volatile",
             "OffsetMiB": 2048,
             "SizeMiB": 2048,
-            ".comment92": "used for Volatile memory mirror"
         },
         {
             "RegionId": "3",
             "MemoryType": "Volatile",
             "OffsetMiB": 4096,
             "SizeMiB": 4096,
-            ".comment93": "used for Volatile memory"
         }
     ],
     "OperatingMemoryModes": [
