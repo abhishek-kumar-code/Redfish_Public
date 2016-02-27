@@ -1,8 +1,8 @@
 {
-	"@Redfish.Copyright":"Copyright © 2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",    
+    "@Redfish.Copyright":"Copyright (c) 2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",    
     "@odata.context": "/redfish/v1/$metadata#Systems/Members/8/MemoryChunks/$entity",
     "@odata.id": "/redfish/v1/Systems/4/MemoryChunks/6",
-    "@odata.type": "#Memory.1.0.0.MemoryChunks",
+    "@odata.type": "#MemoryChunks.v1_0_0.MemoryChunks",
     "Name": "Memory Chunk6 - Volatile",
     "Id": "6",
     "MemoryChunkSizeMiB": 8192,
@@ -13,7 +13,6 @@
         "State": "Enabled",
         "Health": "OK"
     },
-    ".comment4": "DIMM interleave information",
     "InterleaveSets": [
         {
             "@odata.id": "/redfish/v1/Systems/4/Dimm/5",
