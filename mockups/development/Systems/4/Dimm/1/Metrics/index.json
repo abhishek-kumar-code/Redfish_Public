@@ -1,23 +1,19 @@
 {
-	"@Redfish.Copyright":"Copyright © 2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",    
+    "@Redfish.Copyright":"Copyright © 2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",    
     "@odata.context": "/redfish/v1/$metadata#Systems/Links/Members/1/Memory/Links/Members/2/Links/Metrics/$entity",
     "@odata.id": "/redfish/v1/Systems/4/Dimm/1/Metrics",
-    "@odata.type": "#Memory.1.0.0.MemoryMetrics",
+    "@odata.type": "#DimmMetrics.v1_0_0.DimmMetrics",
     "Name": "DIMM Metrics",
     "Id": "Metrics",
-    ".comment1": "Block size used for read and write counter in read and write counters",
     "BlockSizeB": 4096,
-    ".comment2": "Metrics related to the current boot",
     "CurrentPeriod": {
         "BlocksRead": 0,
         "BlocksWritten": 0
     },
-    ".comment3": "Metrics related to lifetime",
     "Lifetime": {
         "BlocksRead": 0,
         "BlocksWritten": 0
     },
-    ".comment4": "DIMM health information",
     "HealthData": {
         "RemainingSpareBlockPercentage": 50,
         "IsLastShutdownSuccess": true,
