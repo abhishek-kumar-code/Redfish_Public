@@ -6,7 +6,7 @@
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
-    <edmx:Include Namespace="Resource.1.0.0" />
+    <edmx:Include Namespace="Resource.v1_0_0" />
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Dimm.xml">
     <edmx:Include Namespace="Dimm"/>
@@ -15,7 +15,7 @@
   <edmx:DataServices>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DimmCollection">
 
-      <EntityType Name="DimmCollection" BaseType="Resource.1.0.0.ResourceCollection">
+      <EntityType Name="DimmCollection" BaseType="Resource.v1_0_0.ResourceCollection">
         <NavigationProperty Name="Members" Type="Collection(Dimm.Dimm)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Contains the members of this collection."/>
