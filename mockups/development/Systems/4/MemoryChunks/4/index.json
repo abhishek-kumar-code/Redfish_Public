@@ -1,12 +1,11 @@
 {
-	"@Redfish.Copyright":"Copyright © 2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",    
+    "@Redfish.Copyright":"Copyright (c) 2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",    
     "@odata.context": "/redfish/v1/$metadata#Systems/Members/1/MemoryChunks/$entity",
     "@odata.id": "/redfish/v1/Systems/4/MemoryChunks/4",
-    "@odata.type": "#Memory.1.0.0.MemoryChunks",
+    "@odata.type": "#MemoryChunks.v1_0_0.MemoryChunks",
     "Name": "Memory Chunk4 - Volatile Mirrored",
     "Id": "4",
     "MemoryChunkSizeMiB": 2048,
-    ".comment0": "Note: The total memory size half of total memory size since mirror is enabled",
     "AddressRangeType": "Volatile",
     "IsMirrorEnabled": true,
     "IsSpare": false,
@@ -14,7 +13,6 @@
         "State": "Enabled",
         "Health": "OK"
     },
-    ".comment4": "DIMM interleave information",
     "InterleaveSets": [
         {
             "@odata.id": "/redfish/v1/Systems/4/Dimm/3",
