@@ -2,7 +2,7 @@
     "@Redfish.Copyright":"Copyright © 2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",    
     "@odata.context": "/redfish/v1/$metadata#Systems/Members/1/MemoryChunks/$entity",
     "@odata.id": "/redfish/v1/Systems/4/MemoryChunks/1",
-    "@odata.type": "#MemoryChunks.1.0.0.MemoryChunks",
+    "@odata.type": "#MemoryChunks.v1_0_0.MemoryChunks",
     "Name": "Memory Chunk1 - Volatile",
     "Id": "1",
     "MemoryChunkSizeMiB": 8192,
@@ -24,7 +24,7 @@
         }
     ],
     "#Redfish.Settings": {
-        "@odata.type": "#Settings.1.0.0.Settings",
+        "@odata.type": "#Settings.v1_0_0.Settings",
         "SettingsObject": {
             "@odata.id": "/redfish/v1/System/4/MemoryChunks/1/SD"
         },
