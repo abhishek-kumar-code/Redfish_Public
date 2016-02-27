@@ -2,7 +2,7 @@
     "@Redfish.Copyright":"Copyrightm (c) 2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",    
     "@odata.context": "/redfish/v1/$metadata#Systems/Links/Members/1/Memory/Links/Members/2/Links/Metrics/$entity",
     "@odata.id": "/redfish/v1/Systems/4/Dimm/6/Metrics",
-    "@odata.type": "#Dimm.v1_0_0.DimmMetrics",
+    "@odata.type": "#DimmMetrics.v1_0_0.DimmMetrics",
     "Name": "DIMM Metrics",
     "Id": "Metrics",
     "BlockSizeB": 4096,
