@@ -1,12 +1,11 @@
 {
-	"@Redfish.Copyright":"Copyright © 2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",    
+    "@Redfish.Copyright":"Copyright (c) 2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",    
     "@odata.context": "/redfish/v1/$metadata#Systems/Members/1/MemoryChunks/$entity",
     "@odata.id": "/redfish/v1/Systems/4/MemoryChunks/4/SD",
-    "@odata.type": "#Memory.1.0.0.MemoryChunks",
+    "@odata.type": "#MemoryChunks.v1_0_0.MemoryChunks",
     "Id": "SD",
     "Name": "Memory Chunk Pending Settings",
     "IsMirrorEnabled": true,
-    ".comment1": "Create a mirrored volatile memory chunk using DIMM3 and DIMM4",
     "InterleaveSets": [
         {
             "@odata.id": "/redfish/v1/Systems/4/Dimm/3",
