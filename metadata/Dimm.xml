@@ -26,7 +26,7 @@
       <Action Name="UnlockUnit" IsBound="true">
         <Annotation Term="OData.Description" String="This defines the action for unlocking given regions."/>
         <Annotation Term="OData.LongDescription" String="This action shall apply the supplied passphrase to the supplied region for the purpose of unlocking the given regions."/>
-        <Parameter Name="Dimm" Type="Dimm.1.0.0.Actions"/>
+        <Parameter Name="Dimm" Type="Dimm.v1_0_0.Actions"/>
         <Parameter Name="RegionId" Type="Edm.String">
           <Annotation Term="OData.Description" String="DIMM region ID for which this action to be applied" />
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the DIMM region ID for which this action to be applied." />
@@ -40,7 +40,7 @@
       <Action Name="SecureEraseUnit" IsBound="true">
         <Annotation Term="OData.Description" String="This defines the action for securely erasing given regions."/>
         <Annotation Term="OData.LongDescription" String="This action shall securely erase the supplied region provided the supplied passphrase matches that of the given region."/>
-        <Parameter Name="Dimm" Type="Dimm.1.0.0.Actions"/>
+        <Parameter Name="Dimm" Type="Dimm.v1_0_0.Actions"/>
         <Parameter Name="RegionId" Type="Edm.String">
           <Annotation Term="OData.Description" String="DIMM region ID for which this action to be applied" />
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the DIMM region ID for which this action to be applied." />
@@ -54,7 +54,7 @@
       <Action Name="SetPassphrase" IsBound="true">
         <Annotation Term="OData.Description" String="Set passphrase for the given regions" />
         <Annotation Term="OData.LongDescription" String="This action shall apply the supplied passphrase to the supplied region." />
-        <Parameter Name="Dimm" Type="Dimm.1.0.0.Actions"/>
+        <Parameter Name="Dimm" Type="Dimm.v1_0_0.Actions"/>
         <Parameter Name="RegionId" Type="Edm.String">
           <Annotation Term="OData.Description" String="DIMM region ID for which this action to be applied" />
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the DIMM region ID for which this action to be applied." />
@@ -68,7 +68,7 @@
       <Action Name="DisablePassphrase" IsBound="true">
         <Annotation Term="OData.Description" String="Disable passphrase for given regions" />
         <Annotation Term="OData.LongDescription" String="This action shall disaple the need for passphrases on the supplied region provided the supplied passphrase matches that of the region." />
-        <Parameter Name="Dimm" Type="Dimm.1.0.0.Actions"/>
+        <Parameter Name="Dimm" Type="Dimm.v1_0_0.Actions"/>
         <Parameter Name="RegionId" Type="Edm.String">
           <Annotation Term="OData.Description" String="DIMM region ID for which this action to be applied" />
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the DIMM region ID for which this action to be applied." />
@@ -181,7 +181,7 @@
           <Annotation Term="OData.Description" String="Maximum TDPs in milli Watts" />
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the maximum power budgets supported by the DIMM in milli Watts." />
         </Property>
-        <Property Name="SecurityCapabilities" Type="ComputerSystem.1.0.0.SecurityCapabilities"  Nullable="false">
+        <Property Name="SecurityCapabilities" Type="Dimm.v1_0_0.SecurityCapabilities"  Nullable="false">
           <Annotation Term="OData.Description" String="This object contains security capabilities of the DIMM."/>
           <Annotation Term="OData.LongDescription" String="This object shall contain properties which describe the security capabilities of the DIMM."/>
         </Property>
@@ -200,7 +200,7 @@
           <Annotation Term="OData.Description" String="Location of the DIMM in the platform" />
           <Annotation Term="OData.LongDescription" String="The value of this property shall be location of the DIMM in the platform, typically marked in the silk screen." />
         </Property>
-        <Property Name="DimmLocation" Type="ComputerSystem.1.0.0.DimmLocation"  Nullable="false">
+        <Property Name="DimmLocation" Type="Dimm.v1_0_0.DimmLocation"  Nullable="false">
           <Annotation Term="OData.Description" String="DIMM connection information to sockets and memory controllers."/>
           <Annotation Term="OData.LongDescription" String="This object shall contain properties which describe the DIMM connection information to sockets and memory controllers."/>
         </Property>
@@ -234,7 +234,7 @@
           <Annotation Term="OData.Description" String="Memory modes supported by the DIMM" />
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the memory modes supported by the DIMM." />
         </Property>
-        <Property Name="PowerManagementPolicy" Type="ComputerSystem.1.0.0.PowerManagementPolicy"  Nullable="false">
+        <Property Name="PowerManagementPolicy" Type="Dimm.v1_0_0.PowerManagementPolicy"  Nullable="false">
           <Annotation Term="OData.Description" String="Power management policy information."/>
           <Annotation Term="OData.LongDescription" String="This object shall contain properties which describe the power management policy for the current resource."/>
         </Property>
@@ -253,7 +253,7 @@
           <Annotation Term="OData.LongDescription" String="A reference to the Metrics  associated with this DIMM."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <Property Name="Actions" Type="Dimm.1.0.0.Actions" Nullable="false">
+        <Property Name="Actions" Type="Dimm.v1_0_0.Actions" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The Actions object contains the available custom actions on this resource."/>
         </Property>
@@ -549,7 +549,7 @@
 
       <ComplexType Name="Actions">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Property Name="Oem" Type="EventService.1.0.0.OemActions"/>
+        <Property Name="Oem" Type="Dimm.v1_0_0.OemActions"/>
       </ComplexType>
 
       <ComplexType Name="OemActions">
