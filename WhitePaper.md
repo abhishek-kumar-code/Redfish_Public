@@ -88,7 +88,7 @@ Do a GET on the root of the service from the URL you have constructed above.
 
 Every URL represents a resource.  This could be a service, a collection, an entity or some other construct.  But in RESTful terms, these URIs point to resources and clients interact with resources.  So when you see the term resource, you can think of it as what you get back when you access a URI.
 
-The resource format is defined by a Schema.  Each resource has a specific format that is specified in the Redfish Schema that the client can use to determine the semantics about the resource (though we try to make things as intuitive as possible).  The Redfish Schema is defined in two formats: an OData-Schema format and a JSON Schema format.  It is defined in the OData Schema format (CSDL) so that generice OData tools and applications can interpret it. It is defined in the JSON Schema format for other environments - like Python scripts, JavaScript code and visualization.
+The resource format is defined by a Schema.  Each resource has a specific format that is specified in the Redfish Schema that the client can use to determine the semantics about the resource (though we try to make things as intuitive as possible).  The Redfish Schema is defined in two formats: an OData-Schema format and a JSON Schema format.  It is defined in the OData Schema format (CSDL) so that generic OData tools and applications can interpret it. It is defined in the JSON Schema format for other environments - like Python scripts, JavaScript code and visualization.
 
 Structural properties of the resource are intended to be used as JavaScript variables.  This should accelerate adoption and allow JavaScript web pages and enabled apps to use the data directly.  URIs are persistent across reboots but clients are expected to start at /redfish/v1/ and do discovery of the URIs from there.
 
@@ -102,7 +102,7 @@ GET retrieves data.  POST is used for creating resources or to use actions (more
 ## Versioning
 Redfish has two kinds of versioning - the version of the protocol and the version of the resource schema.  The version of the protocol is in the URI - that's why you should start at /redfish/v1/.  It means you are accessing version one of the protocol.  Version 1 is the only one available now, but we needed to accommodate potential future versions.  This starting URI indicates the implementation complies with the Version 1 Redfish Specification.  Note that since it is based on OData v4,  implementations also require the OData protocol header (OData-Version) have a value of 4.
 
-Each resource has a resource type definition. Resource types are defined in versioned namespaces. Each resource instance has the type represented using the OData type annotation "@odata.type". The value of the type annotation is the URI of the resourcce type, including the versioned namespace.  So when you see "@odata.type" : "#ServiceRoot.1.0.0.ServiceRoot", you are dealing with a resource that adheres to the ServiceRoot type definition, defined in 1.0.0 version of the ServiceRoot schema.  The corresponding schema file would be located at /schema/v1/ServiceRoot in the Redfish schema repository. So the full URI for the type would be "/schema/v1/ServiceRoot#ServiceRoot.1.0.0.ServiceRoot. The schema file may contain other types used by in the resource type definition (for example, structured types and enums), which would have the same resource path but the fragment would describe a different type definition, typically within the same namespace.
+Each resource has a resource type definition. Resource types are defined in versioned namespaces. Each resource instance has the type represented using the OData type annotation "@odata.type". The value of the type annotation is the URI of the resource type, including the versioned namespace.  So when you see "@odata.type" : "#ServiceRoot.v1_0_0.ServiceRoot", you are dealing with a resource that adheres to the ServiceRoot type definition, defined in 1.0.0 version of the ServiceRoot schema.  The corresponding schema file would be located at /schema/v1/ServiceRoot in the Redfish schema repository. So the full URI for the type would be "/schema/v1/ServiceRoot#ServiceRoot.V1_0_0.ServiceRoot. The schema file may contain other types used in the resource type definition (for example, structured types and enums), which would have the same resource path but the fragment would describe a different type definition, typically within the same namespace.
 
 ## References
 When you see the links section, it will have references to other resources in it.
@@ -210,7 +210,7 @@ X-Auth-Token: <session-auth-token>
 {
     "@odata.context": "/redfish/v1/$metadata#SessionService/Sessions/$entity",
     "@odata.id": "/redfish/v1/SessionService/Sessions/1",
-    "@odata.type": "#Session.1.0.0.Session",
+    "@odata.type": "#Session.v1_0_0.Session",
     "Id": "1",
     "Name": "User Session",
     "Description": "User Session",
