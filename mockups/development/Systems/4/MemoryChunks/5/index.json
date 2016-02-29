@@ -23,7 +23,7 @@
             "RegionId": "3"
         }
     ],
-    "#Redfish.Settings": {
+    "@Redfish.Settings": {
         "@odata.type": "#Settings.1.0.0.Settings",
         "SettingsObject": {
             "@odata.id": "/redfish/v1/System/4/MemoryChunks/5/SD"
