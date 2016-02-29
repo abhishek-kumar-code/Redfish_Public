@@ -34,13 +34,7 @@ glob.sync(path.join('mockups', '*/')).forEach(function(mockup) {
   files.forEach(function(file) {
     var decomp = path.parse(file);
 
-    // Get everything after mockups/<type> in path
-    var link = decomp.dir.split(path.sep).slice(2)
-
-    // Prepend with /redfish/v1
-    link.unshift('', 'redfish', 'v1', '');
-
-    linkToFile[path.normalize(link.join('/'))] = file;
+    linkToFile[path2Redfish(decomp.dir)] = file;
 
     syntaxBatch[file] = {
       topic: function() {
@@ -80,9 +74,11 @@ glob.sync(path.join('mockups', '*/')).forEach(function(mockup) {
 
             if (!refd) {
               let invalidPath = this.node.replace('/redfish/v1/', mockup).split('/');
-              let possible = fuzzy.filter(path.join(...invalidPath), files);
+              let possible = fuzzy.filter(path.join(...invalidPath), files)
+              .map(x => path2Redfish(x.string, true));
+
               if (possible.length) {
-                errorMsg += `\nPerhaps you meant one of:\n${possible.map(x => x.string).join('\n')}`;
+                errorMsg += `\nPerhaps you meant one of:\n${possible.join('\n')}`;
               }
             }
 
@@ -105,3 +101,9 @@ glob.sync(path.join('mockups', '*/')).forEach(function(mockup) {
 });
 
 mockupSuite.export(module);
+
+function path2Redfish(p, removeIndex) {
+  let link = p.split(path.sep).slice(2, removeIndex ? -1 : void 0);
+  link.unshift('', 'redfish', 'v1', '');
+  return path.normalize(link.join('/'));
+}
