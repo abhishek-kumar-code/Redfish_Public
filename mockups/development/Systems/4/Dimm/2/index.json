@@ -6,7 +6,7 @@
     "Name": "NVDIMM",
     "Id": "2",
     "DimmUID": 2,
-    "DimmType": "NVDIMM-N",
+    "DimmType": "NVDIMM_N",
     "DimmDeviceType": "DDR4",
     "BaseModuleType": "LRDIMM",
     "DimmMedia": [
