@@ -36,7 +36,12 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Bios_v1.xml">
     <edmx:Include Namespace="Bios"/>
   </edmx:Reference>   
-
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/DimmCollection.xml">
+    <edmx:Include Namespace="DimmCollection"/>
+  </edmx:Reference>   
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/MemoryChunksCollection.xml">
+    <edmx:Include Namespace="MemoryChunksCollection"/>
+  </edm:Reference>  
   <edmx:DataServices>
 
     <!-- This schema defines a computer system and its respective properties.-->
