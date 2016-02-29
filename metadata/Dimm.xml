@@ -263,13 +263,13 @@
         <Member Name="DRAM">
           <Annotation Term="OData.Description" String="DRAM DIMM" />
         </Member>
-        <Member Name="NVDIMM-N">
+        <Member Name="NVDIMM_N">
           <Annotation Term="OData.Description" String="NVDIMM-N DIMM" />
         </Member>
-        <Member Name="NVDIMM-F">
+        <Member Name="NVDIMM_F">
           <Annotation Term="OData.Description" String="NVDIMM-F DIMM" />
         </Member>
-        <Member Name="NVDIMM-P">
+        <Member Name="NVDIMM_P">
           <Annotation Term="OData.Description" String="NVDIMM-P DIMM" />
         </Member>
       </EnumType>
