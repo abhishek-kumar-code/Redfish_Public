@@ -8,6 +8,7 @@ var assert = require('assert');
 var traverse = require('traverse');
 var url = require('url');
 var jptr = require('json8-pointer');
+var fuzzy = require('fuzzy');
 
 var mockupSuite = vows.describe('Mockups');
 
@@ -75,15 +76,13 @@ glob.sync(path.join('mockups', '*/')).forEach(function(mockup) {
             var link = url.parse(this.node);
             var refd = fileToJSON[linkToFile[link.pathname]];
 
-            let errorMsg = 'invalid link in JSON at property /' + this.path.join('/') + ' with value ' + this.node + '. No such file exists in mockup at path.'
+            let errorMsg = 'invalid link in JSON at property /' + this.path.join('/') + ' with value ' + this.node + '. No such file exists in mockup at path.';
 
-            let possible = [];
             if (!refd) {
-              let globber = this.node.replace('/redfish/v1/', mockup).split('/')
-              globber = globber.map(x => `*${x}*`);
-              possible = glob.sync(path.join(...globber));
+              let invalidPath = this.node.replace('/redfish/v1/', mockup).split('/');
+              let possible = fuzzy.filter(path.join(...invalidPath), files);
               if (possible.length) {
-                errorMsg += `\nPerhaps you meant one of:\n${possible.join('\n')}`
+                errorMsg += `\nPerhaps you meant one of:\n${possible.map(x => x.string).join('\n')}`;
               }
             }
 
