@@ -387,13 +387,13 @@
          <Annotation Term="OData.Description" String="A reference to the BIOS settings associated with this system."/>
          <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a resource of type Bios that lists the BIOS settings for this system."/>
        </NavigationProperty>
-       <NavigationProperty Name="Dimm" Type="DimmCollection" ContainsTarget="true">
+       <NavigationProperty Name="Dimm" Type="DimmCollection.DimmCollection" ContainsTarget="true">
            <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
            <Annotation Term="OData.Description" String="A reference to the collection of Dimms associated with this system"/>
            <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type DimmCollection."/>
            <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>	
-        <NavigationProperty Name="MemoryChunks" Type="MemoryChunksCollection.ProcessorCollection" ContainsTarget="true">
+        <NavigationProperty Name="MemoryChunks" Type="MemoryChunksCollection.MemoryChunksCollection" ContainsTarget="true">
            <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
            <Annotation Term="OData.Description" String="A reference to the collection of MemoryChunks associated with this system"/>
            <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type MemoryChunks."/>
