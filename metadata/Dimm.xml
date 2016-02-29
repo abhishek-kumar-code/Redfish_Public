@@ -20,7 +20,7 @@
       <EntityType Name="Dimm" BaseType="Resource.v1_0_0.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition of a DIMMs and its configuration. " />
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent DIMMs in a Redfish implementation." />        
-        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
       </EntityType>
 
       <Action Name="UnlockUnit" IsBound="true">
@@ -84,7 +84,7 @@
 
       <EntityType Name="Dimm" BaseType="Dimm.Dimm">
         <Annotation Term="OData.Description" String="This is the schema definition for definition of a DIMM and its configuration" />
-        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
 
         <Property Name="DimmType" Type="Dimm.v1_0_0.DimmType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
@@ -380,7 +380,7 @@
       </EnumType>
 
       <ComplexType Name="SecurityCapabilities">
-        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="PassphraseCapable" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="DIMM passphrase set capability"/>
@@ -423,7 +423,7 @@
       </EnumType>
 
       <ComplexType Name="DimmLocation">
-        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="Socket" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
           <Annotation Term="OData.Description" String="Socket number in which DIMM is connected" />
@@ -460,7 +460,7 @@
       </EnumType>
 
       <ComplexType Name="RegionSet">
-        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="RegionId" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
           <Annotation Term="OData.Description" String="Unique region ID representing a specific region within the DIMM" />
@@ -523,7 +523,7 @@
       </EnumType>
 
       <ComplexType Name="PowerManagementPolicy">
-        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="PolicyEnabled" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
           <Annotation Term="OData.Description" String="Power management policy enabled status" />
