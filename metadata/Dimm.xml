@@ -493,7 +493,7 @@
         <Member Name="Volatile">
           <Annotation Term="OData.Description" String="Volatile memory" />
         </Member>
-        <Member Name="Byte Accessible Persistent">
+        <Member Name="ByteAccessiblePersistent">
           <Annotation Term="OData.Description" String="Byte accessible persistent memory" />
         </Member>
         <Member Name="Block">
