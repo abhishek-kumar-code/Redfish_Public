@@ -11,6 +11,18 @@
     <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.1.0.0" />
   </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Storage.xml">
+    <edmx:Include Namespace="Storage.1.0.0"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Volume.xml">
+    <edmx:Include Namespace="Volume"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Chassis.xml">
+    <edmx:Include Namespace="Chassis.1.0.0"/>
+  </edmx:Reference>
 
   <edmx:DataServices>
 
