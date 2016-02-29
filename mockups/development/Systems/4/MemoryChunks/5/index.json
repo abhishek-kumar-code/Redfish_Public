@@ -26,7 +26,7 @@
     "@Redfish.Settings": {
         "@odata.type": "#Settings.1.0.0.Settings",
         "SettingsObject": {
-            "@odata.id": "/redfish/v1/System/4/MemoryChunks/5/SD"
+            "@odata.id": "/redfish/v1/Systems/4/MemoryChunks/5/SD"
         },
         "Time": "2012-03-07T14:44.30-05:00",
         "ETag": "someetag",
