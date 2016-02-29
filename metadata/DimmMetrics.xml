@@ -19,7 +19,7 @@
 
       <EntityType Name="DimmMetrics" BaseType="Resource.v1_0_0.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition of a DIMMs and its configuration. " />
-        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
       </EntityType>
 
       <Action Name="ClearCurrentPeriod" IsBound="true">
@@ -50,14 +50,14 @@
           <Annotation Term="OData.Description" String="This object describes the central memory of the system in general detail."/>
           <Annotation Term="OData.LongDescription" String="This object shall contain properties which describe the HealthData metrics for the current resource."/>
         </Property>
-        <Property Name="Actions" Type="DimmMetrics.v1_0.0.Actions" Nullable="false">
+        <Property Name="Actions" Type="DimmMetrics.v1_0_0.Actions" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The Actions object contains the available custom actions on this resource."/>
         </Property>
       </EntityType>
 
       <ComplexType Name="CurrentPeriod">
-        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="BlocksRead" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
           <Annotation Term="OData.Description" String="Number of blocks read since reset" />
@@ -72,7 +72,7 @@
       </ComplexType>
 
       <ComplexType Name="LifeTime">
-        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="BlocksRead" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
           <Annotation Term="OData.Description" String="Number of blocks read for the lifetime of the DIMM" />
@@ -87,7 +87,7 @@
       </ComplexType>
 
       <ComplexType Name="HealthData">
-        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="RemainingSpareBlockPercentage" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
           <Annotation Term="OData.Description" String="Remaining spare blocks in percentage" />
@@ -109,7 +109,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be verformance degraded mode status, with true indicating perfomance degraded." />
         </Property>          
         <ComplexType Name="AlarmTrips">
-          <Annotation Term="OData.AdditionalProperties" Bool="False"/>
+          <Annotation Term="OData.AdditionalProperties" Bool="false"/>
           <Property Name="Temperature" Type="Edm.Boolean">
             <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
             <Annotation Term="OData.Description" String="Temperature threshold crossing alarm trip detected status" />
