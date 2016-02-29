@@ -1,3 +1,4 @@
+'use strict';
 var vows = require('vows');
 var glob = require('glob');
 var path = require('path');
@@ -74,7 +75,19 @@ glob.sync(path.join('mockups', '*/')).forEach(function(mockup) {
             var link = url.parse(this.node);
             var refd = fileToJSON[linkToFile[link.pathname]];
 
-            assert(refd !== undefined, 'invalid link in JSON at property /' + this.path.join('/') + ' with value ' + this.node + '. No such file exists in mockup at path.');
+            let errorMsg = 'invalid link in JSON at property /' + this.path.join('/') + ' with value ' + this.node + '. No such file exists in mockup at path.'
+
+            let possible = [];
+            if (!refd) {
+              let globber = this.node.replace('/redfish/v1/', mockup).split('/')
+              globber = globber.map(x => `*${x}*`);
+              possible = glob.sync(path.join(...globber));
+              if (possible.length) {
+                errorMsg += `\nPerhaps you meant one of:\n${possible.join('\n')}`
+              }
+            }
+
+            assert(refd !== undefined, errorMsg);
             if (link.hash) {
               refd = jptr.find(refd, link.hash.slice(1));
               assert(refd !== undefined, 'invalid fragment component in JSON at property /' + this.path.join('/') + ' with fragment value ' + link.hash);
