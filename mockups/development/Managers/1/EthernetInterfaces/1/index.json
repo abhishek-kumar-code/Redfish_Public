@@ -2,7 +2,7 @@
     "@Redfish.Copyright":"Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#EthernetInterface.EthernetInterface",
     "@odata.id": "/redfish/v1/Managers/1/EthernetInterfaces/1",
-    "@odata.type": "#EthernetInterface.1.0.0.EthernetInterface",
+    "@odata.type": "#EthernetInterface.v1_0_0.EthernetInterface",
     "Id": "1",
     "Name": "Manager Ethernet Interface",
     "Description": "Management Network Interface",
@@ -60,7 +60,7 @@
         "TheNameServer"
     ],
     "@Redfish.Settings": {
-        "@odata.type": "#Settings.1.0.0.Settings",
+        "@odata.type": "#Settings.v1_0_0.Settings",
         "SettingsObject": {
             "@odata.id": "/redfish/v1/Managers/1/EthernetInterfaces/1/SD"
         },

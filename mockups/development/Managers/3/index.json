@@ -2,7 +2,7 @@
     "@Redfish.Copyright":"Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#Manager.Manager",
     "@odata.id": "/redfish/v1/Managers/3",
-    "@odata.type": "#Managers.1.0.0.Manager",
+    "@odata.type": "#Managers.v1_0_0.Manager",
     "Id": "3",
     "Name": "Manager for Enclosure Secondary",
     "DateTime": "2015-03-13T04:14:33+06:00",

@@ -453,7 +453,7 @@ HTTP defines headers that can be used in request messages. The following table d
 | Content-Type     | Conditional | [RFC 2616, Section 14.17][2616-14.17] | Describes the type of representation used in the message body. Content-Type shall be required in requests that include a request body. Services shall accept Content-Type values of `application/json` or `application/json;charset=utf-8`.                                                                                     |
 | Content-Length   | No          | [RFC 2616, Section 14.3][2616-14.3]   | Describes the size of the message body. An optional means of indicating size of the body uses Transfer-Encoding: chunked, which does not use the Content-Length header. If a service does not support Transfer-Encoding and needs Content-Length instead, the service will respond with status code [411](#status-411). |
 | OData-MaxVersion | No          | 4.0                                   | Indicates the maximum version of OData that an odata-aware client understands                                                                                                                                                                                                                                                   |
-| OData-Version    | Yes         | 4.0                                   | Services shall reject requests which specify an unsupported OData version.                                                                                                                                                                                                                                         |
+| OData-Version    | Yes         | 4.0                                   | Services shall reject requests which specify an unsupported OData version.  If a service encounters a version that it does not support, the service should reject the request with status code [412] (#status-412).  If client does not specify an Odata-Version header, the client is outside the boundaries of this specification.                                                                                                                         |
 | Authorization    | Conditional | [RFC 2617, Section 2][2617-2]         | Required for [Basic Authorization](#basic-authentication)                                                                                                                                                                                                                                                                       |
 | User-Agent       | Yes         | [RFC 2616, Section 14.43][2616-14.43] | Required for tracing product tokens and their version.  Multiple product tokens may be listed.                                                                                                                                                                                                                                  |
 | Host             | Yes         | [RFC 2616, Section 14.23][2616-14.23] | Required to allow support of multiple origin hosts at a single IP address.                                                                                                                                                                                                                                                      |
@@ -609,13 +609,13 @@ The first parameter of a bound function is the resource on which the action is b
 
 Clients can query a resource directly to determine the [actions](#actions-property) that are available as well as [valid parameter values](#allowable-values) for those actions.  Some parameter information may require the client to examine the Redfish Schema corresponding to the resource.
 
-For instance, if a Redfish Schema document `http://redfish.dmtf.org/schemas/v1/ComputerSystem.xml` defines a Reset action in the `ComputerSystem` namespace, bound to the `ComputerSystem.1.0.0.Actions` type, such as this example:
+For instance, if a Redfish Schema document `http://redfish.dmtf.org/schemas/v1/ComputerSystem_v1.xml` defines a Reset action in the `ComputerSystem` namespace, bound to the `ComputerSystem.v1_0_0.Actions` type, such as this example:
 
 ~~~xml
 <Schema Name="ComputerSystem">
   ...
   <Action Name="Reset" IsBound="true">
-    <Parameter Name="Resource" Type="ComputerSystem.1.0.0.Actions"/>
+    <Parameter Name="Resource" Type="ComputerSystem.v1_0_0.Actions"/>
     <Parameter Name="ResetType" Type="Resource.ResetType"/>
   </Action>
   ...
@@ -748,7 +748,7 @@ The following table lists some of the common HTTP status codes. Other codes may 
 | <a id="status-409"></a>409 Conflict               | A creation or update request could not be completed, because it would cause a conflict in the current state of the resources supported by the platform (for example, an attempt to set multiple attributes that work in a linked manner using incompatible values).                                                                                                                                                                                                                            |
 | <a id="status-410"></a>410 Gone                   | The requested resource is no longer available at the server and no forwarding address is known. This condition is expected to be considered permanent. Clients with link editing capabilities SHOULD delete references to the Request-URI after user approval. If the server does not know, or has no facility to determine, whether or not the condition is permanent, the status code 404 (Not Found) SHOULD be used instead. This response is cacheable unless indicated otherwise. |
 | <a id="status-411"></a>411 Length Required        | The request did not specify the length of its content using the Content-Length header (perhaps Transfer-Encoding: chunked was used instead). The addressed resource requires the Content-Length header.                                                                                                                                                                                                                                                                                         |
-| <a id="status-412"></a>412 Precondition Failed    | Precondition (If Match or If Not Modified ) check failed.                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| <a id="status-412"></a>412 Precondition Failed    | Precondition (such as OData-Version, If Match or If Not Modified headers) check failed.                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | <a id="status-415"></a>415 Unsupported Media Type | The request specifies a Content-Type for the body that is not supported.                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | <a id="status-500"></a>500 Internal Server Error  | The server encountered an unexpected condition that prevented it from fulfilling the request. An extended error shall be returned in the response body, as defined in section [Extended Error Handling](#error-responses).                                                                                                                                                                                                                                                                   |
 | <a id="status-501"></a>501 Not Implemented        | The server does not (currently) support the functionality required to fulfill the request.  This is the appropriate response when the server does not recognize the request method and is not capable of supporting the method for any resource.                                                                                                                                                                                                                                           |
@@ -767,35 +767,35 @@ The service metadata describes top-level resources and resource types of the ser
 ~~~
 
 ###### Referencing Other Schemas
-The service metadata shall include the namespaces for each of the Redfish resource types, along with the "RedfishExtensions.1.0.0" namespace. These references may use the standard Uri for the hosted Redfish Schema definitions (i.e., on http://redfish.dmtf.org/schema) or a Url to a local version of the Redfish Schema that shall be identical to the hosted version.
+The service metadata shall include the namespaces for each of the Redfish resource types, along with the "RedfishExtensions.v1_0_0" namespace. These references may use the standard Uri for the hosted Redfish Schema definitions (i.e., on http://redfish.dmtf.org/schema) or a Url to a local version of the Redfish Schema that shall be identical to the hosted version.
 
 ~~~xml
-<edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/AccountService.xml">
+<edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/AccountService_v1.xml">
   <edmx:Include Namespace="AccountService"/>
-  <edmx:Include Namespace="AccountService.1.0.0"/>
+  <edmx:Include Namespace="AccountService.v1_0_0"/>
 </edmx:Reference>
-<edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ServiceRoot.xml">
+<edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ServiceRoot_v1.xml">
 	<edmx:Include Namespace="ServiceRoot"/>
-	<edmx:Include Namespace="ServiceRoot.1.0.0"/>
+	<edmx:Include Namespace="ServiceRoot.v1_0_0"/>
 </edmx:Reference>
 
 ...
 
-<edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/VirtualMedia.xml">
+<edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/VirtualMedia_v1.xml">
   <edmx:Include Namespace="VirtualMedia"/>
-  <edmx:Include Namespace="VirtualMedia.1.0.0"/>
+  <edmx:Include Namespace="VirtualMedia.v1_0_0"/>
 </edmx:Reference>
-<edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions.xml">
-	<edmx:Include Namespace="RedfishExtensions.1.0.0" Alias="Redfish"/>
+<edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+	<edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
 </edmx:Reference>
 ~~~
 
-The service metadata shall include an entity container that defines the top level resource and collections. This entity container shall extend the ServiceContainer defined in the ServiceRoot.1.0.0 schema and may include additional resources or collections.
+The service metadata shall include an entity container that defines the top level resource and collections. This entity container shall extend the ServiceContainer defined in the ServiceRoot.v1_0_0 schema and may include additional resources or collections.
 
 ~~~xml
 <edmx:DataServices>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Service">
-      <EntityContainer Name="Service" Extends="ServiceRoot.1.0.0.ServiceContainer"/>
+      <EntityContainer Name="Service" Extends="ServiceRoot.v1_0_0.ServiceContainer"/>
     </Schema>
 </edmx:DataServices>
 ~~~
@@ -814,7 +814,7 @@ The service can annotate sets, types, actions and parameters with Redfish-define
 
 ~~~xml
 <edmx:Reference Uri="http://service/metadata/Service.Annotations">
-	<edmx:IncludeAnnotations TermNamespace="Annotations.1.0.0"/>
+	<edmx:IncludeAnnotations TermNamespace="Annotations.v1_0_0"/>
 </edmx:Reference>
 ~~~
 
@@ -1080,7 +1080,7 @@ A JSON object can be annotated with "@Message.ExtendedInfo" in order to specify 
 {
     "@odata.context": "/redfish/v1/$metadata#SerialInterface.SerialInterface",
     "@odata.id": "/redfish/v1/Managers/1/SerialInterfaces/1",
-    "@odata.type": "#SerialInterface.1.0.0.SerialInterface",
+    "@odata.type": "#SerialInterface.v1_0_0.SerialInterface",
     "Name": "Managed Serial Interface 1",
     "Description": "Management for Serial Interface",
     "Status": {
@@ -1118,7 +1118,7 @@ An individual property within a JSON object can be annotated with extended infor
 {
     "@odata.context": "/redfish/v1/$metadata#SerialInterface.SerialInterface",
     "@odata.id": "/redfish/v1/Managers/1/SerialInterfaces/1",
-    "@odata.type": "#SerialInterface.1.0.0.SerialInterface",
+    "@odata.type": "#SerialInterface.v1_0_0.SerialInterface",
     "Name": "Managed Serial Interface 1",
     "Description": "Management for Serial Interface",
     "Status": {
@@ -1212,6 +1212,8 @@ The client can get the definition of the annotation from the [service metadata](
 
 HTTP response status codes alone often do not provide enough information to enable deterministic error semantics. For example, if a client does a PATCH and some of the properties do not match while others are not supported, simply returning an HTTP status code of 400 does not tell the client which values were in error. Error responses provide the client more meaningful and deterministic error semantics.
 
+A Redfish service may provide multiple error responses in the HTTP response in order to provide the client with as much information about the error situation as it can. Additionally, the service may provide Redfish standardized errors, OEM defined errors or both depending on the implementation's ablity to convey the most useful information about the underlying error.
+
 Error responses are defined by an extended error resource, represented as a single JSON object with a property named "error" with the following properties.
 
 | Property              | Description                                                                                                                                    |
@@ -1227,7 +1229,7 @@ Error responses are defined by an extended error resource, represented as a sing
         "message": "A general error has occurred. See ExtendedInfo for more information.",
         "@Message.ExtendedInfo": [
             {
-                "@odata.type" : "/redfish/v1/$metadata#Message.1.0.0.Message",
+                "@odata.type" : "/redfish/v1/$metadata#Message.v1_0_0.Message",
                 "MessageId": "Base.1.0.PropertyValueNotInList",
                 "RelatedProperties": [
 					"#/IndicatorLED"
@@ -1241,7 +1243,7 @@ Error responses are defined by an extended error resource, represented as a sing
                 "Resolution": "Remove the property from the request body and resubmit the request if the operation failed"
             },
             {
-                "@odata.type" : "/redfish/v1/$metadata#Message.1.0.0.Message",
+                "@odata.type" : "/redfish/v1/$metadata#Message.v1_0_0.Message",
                 "MessageId": "Base.1.0.PropertyNotWriteable",
                 "RelatedProperties": [
 					"#/SKU"
@@ -1327,7 +1329,7 @@ where:
 
 The namespace for types defined by this specification is of the form:
 
- *ResourceTypeName*.*MajorVersion*.*MinorVersion*.*Errata*
+ *ResourceTypeName*.v*MajorVersion*_*MinorVersion*_*Errata*
 
 where
 
@@ -1336,7 +1338,7 @@ where
 * *MinorVersion* = integer: a minor update. New properties may have been added but nothing removed. Compatibility will be preserved with previous minorversions.
 * *Errata* = integer: something in the prior version was broken and needed to be fixed.
 
-An example of a valid type namespace might be "ComputerSystem.1.0.0".
+An example of a valid type namespace might be "ComputerSystem.v1_0_0".
 
 #### Type Identifiers in JSON
 Types used within a JSON payload shall be defined in, or referenced, by the [service metadata](#service-metadata).
@@ -1411,7 +1413,7 @@ Redfish Schemas may reference types defined in other schema documents.  In the O
 
 The reference element specifies the `Uri` of the OData schema representation document describing the referenced type and has one or more child `Include` elements that specify the `Namespace` attribute containing the types to be referenced, along with an optional `Alias` attribute for that namespace.
 
-Type definitions generally reference the OData and Redfish namespaces for common type annotation terms, and resource type definitions reference the Redfish Resource.1.0.0 namespace for base types. Redfish OData Schema representations that include measures such as temperature, speed, or dimensions generally include the [OData Measures namespace](#units-of-measure).
+Type definitions generally reference the OData and Redfish namespaces for common type annotation terms, and resource type definitions reference the Redfish Resource.v1_0_0 namespace for base types. Redfish OData Schema representations that include measures such as temperature, speed, or dimensions generally include the [OData Measures namespace](#units-of-measure).
 
 ~~~xml
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
@@ -1421,12 +1423,12 @@ Type definitions generally reference the OData and Redfish namespaces for common
     Uri="http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml">
     <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions.xml">
-	<edmx:Include Namespace="RedfishExtensions.1.0.0" Alias="Redfish"/>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+	<edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
-    <edmx:Include Namespace="Resource.1.0.0"/>
+    <edmx:Include Namespace="Resource.v1_0_0"/>
   </edmx:Reference>
 ~~~
 
@@ -1438,7 +1440,7 @@ The OData Schema element is a child of the `DataServices` element, which is a ch
 
 ~~~xml
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MyTypes.1.0.0">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MyTypes.v1_0_0">
 
       <!-- Type definitions go here -->
 
@@ -1450,12 +1452,12 @@ The OData Schema element is a child of the `DataServices` element, which is a ch
 
 Resource types are defined within a [namespace](#namespace-definitions) using `EntityType` elements. The `Name` attribute specifies the name of the resource and the `BaseType` specifies the base type, if any.
 
-Redfish resources derive from a common Resource base type named "Resource" in the Resource.1.0.0 namespace.
+Redfish resources derive from a common Resource base type named "Resource" in the Resource.v1_0_0 namespace.
 
 The EntityType contains the [property](#resource-properties) and [reference property](#reference-properties) elements that define the resource, as well as annotations describing the resource.
 
 ~~~xml
-      <EntityType Name="TypeA" BaseType="Resource.1.0.0.Resource">
+      <EntityType Name="TypeA" BaseType="Resource.v1_0_0.Resource">
         <Annotation Term="OData.Description" String="This is the description of TypeA."/>
         <Annotation Term="OData.LongDescription" String="This is the specification of TypeA."/>
 
@@ -1604,7 +1606,7 @@ If an implementation supports a property, it shall always provide a value for th
 		<Annotation Term="Redfish.Required"/>
 ~~~
 
-The `Required` annotation term is defined in http://redfish.dmtf.org/schemas/v1/RedfishExtensions.1.0.0.
+The `Required` annotation term is defined in http://redfish.dmtf.org/schemas/v1/RedfishExtensions.v1_0_0.
 
 ##### Required Properties On Create
 
@@ -1614,7 +1616,7 @@ The RequiredOnCreate annotation term is used to specify that a property is requi
 		<Annotation Term="Redfish.RequiredOnCreate"/>
 ~~~
 
-The `RequiredOnCreate` annotation term is defined in http://redfish.dmtf.org/schemas/v1/RedfishExtensions.1.0.0.
+The `RequiredOnCreate` annotation term is defined in http://redfish.dmtf.org/schemas/v1/RedfishExtensions.v1_0_0.
 
 ##### Units of Measure
 
@@ -1784,16 +1786,16 @@ The following fragment presents some examples of naming and use of the Oem prope
 ...
   "Oem": {
     "Contoso": {
-      "@odata.type": "http://contoso.com/schemas/extensions.v.v.v#contoso.AnvilTypes1",
+      "@odata.type": "http://contoso.com/schemas/extensions.v_v_v#contoso.AnvilTypes1",
       "slogan": "Contoso anvils never fail",
       "disclaimer": "* Most of the time"
     },
     "Contoso.biz": {
-      "@odata.type": "http://contoso.biz/schemas/extension1.1#RelatedSpeed",
+      "@odata.type": "http://contoso.biz/schemas/extension1_1#RelatedSpeed",
       "speed" : "ludicrous"
     },
     "EID:412:ASB_123": {
-      "@odata.type": "http://AnotherStandardsBody/schemas.1.0.1#powerInfoExt",
+      "@odata.type": "http://AnotherStandardsBody/schemas.v1_0_1#powerInfoExt",
       "readingInfo": {
         "readingAccuracy": "5",
         "readingInterval": "20"
@@ -1850,7 +1852,7 @@ Because [service annotations](#annotations) may be applied to existing resource 
 
 This section contains a set of common properties across all Redfish resources. The property names in this section shall not be used for any other purpose, even if they are not implemented in a particular resource.
 
-Common properties are defined in the base Resource Redfish Schema.  For OData Schema Representations, this is in Resource.xml and for JSON Schema Representations, this is in Resource.1.0.0.json.
+Common properties are defined in the base Resource Redfish Schema.  For OData Schema Representations, this is in Resource_v1.xml and for JSON Schema Representations, this is in Resource.v1_0_0.json.
 
 #### Id
 
@@ -2227,7 +2229,7 @@ X-Auth-Token: <session-auth-token>
 {
     "@odata.context": "/redfish/v1/$metadata#Session.Session",
     "@odata.id": "/redfish/v1/SessionService/Sessions/1",
-    "@odata.type": "#Session.1.0.0.Session",
+    "@odata.type": "#Session.v1_0_0.Session",
     "Id": "1",
     "Name": "User Session",
     "Description": "User Session",
@@ -2381,6 +2383,6 @@ The file where the events are written, one or more messages per event should at 
 | ---     | ---      | ---             |
 | 1.0.0   | 2015-8-4 | Initial release |
 | 1.0.1   | 2015-9-17| Errata release.  Clarified normative use of LongDescription in schema files.  Clarified usage of the 'rel-describedby' link header.  Corrected text in example of 'Select List' in OData Context property.  Clarified Accept-Encoding Request header handling.  Deleted duplicative and conflicting statement on returning extended error resources.  Clarified relative URI resolution rules. Various grammatical corrections. Clarified USN format.  |
-| 1.0.2   | 2016-2-25| Errata release.  Clarified normative usage of the Context Property, the ability to use two URL forms in the property, and the "@odata.context" URL examples throughout.  Corrected name of Measures.Unit annotation term as used in examples.  Various typographical errors. Correctd outdated reference to Core OData specification in Annotation Term examples.  Clarified that implementation of the SSDP protocol is optional.  Added missing OPTIONS method to the allowed HTTP Methods list.  Corrected typographical error in the SSDP USN field's string definition (now '::dmtf-org').  Clarified usage of 'charset=utf-8' in the HTTP Accept and Content-Type headers.  Added section detailing the location of the Redfish Schema Repository. |
+| 1.0.2   | 2016-2-25| Errata release.  Clarified normative usage of the Context Property, the ability to use two URL forms in the property, and the "@odata.context" URL examples throughout.  Corrected name of Measures.Unit annotation term as used in examples.  Various typographical errors. Correctd outdated reference to Core OData specification in Annotation Term examples.  Clarified that implementation of the SSDP protocol is optional.  Added missing OPTIONS method to the allowed HTTP Methods list.  Corrected typographical error in the SSDP USN field's string definition (now '::dmtf-org').  Clarified usage of 'charset=utf-8' in the HTTP Accept and Content-Type headers.  Added section detailing the location of the Redfish Schema Repository. Clarified OData-Version header matching rules. |
 
  
