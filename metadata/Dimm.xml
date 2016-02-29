@@ -264,13 +264,13 @@
           <Annotation Term="OData.Description" String="DRAM DIMM" />
         </Member>
         <Member Name="NVDIMM_N">
-          <Annotation Term="OData.Description" String="NVDIMM-N DIMM" />
+          <Annotation Term="OData.Description" String="NVDIMM_N DIMM" />
         </Member>
         <Member Name="NVDIMM_F">
-          <Annotation Term="OData.Description" String="NVDIMM-F DIMM" />
+          <Annotation Term="OData.Description" String="NVDIMM_F DIMM" />
         </Member>
         <Member Name="NVDIMM_P">
-          <Annotation Term="OData.Description" String="NVDIMM-P DIMM" />
+          <Annotation Term="OData.Description" String="NVDIMM_P DIMM" />
         </Member>
       </EnumType>
 
@@ -305,11 +305,11 @@
         <Member Name="DDR2 SDRAM">
           <Annotation Term="OData.Description" String="DDR2 SDRAM" />
         </Member>
-        <Member Name="DDR2 SDRAM FB-DIMM">
-          <Annotation Term="OData.Description" String="DDR2 SDRAM FB-DIMM" />
+        <Member Name="DDR2 SDRAM FB_DIMM">
+          <Annotation Term="OData.Description" String="DDR2 SDRAM FB_DIMM" />
         </Member>
-        <Member Name="DDR2 SDRAM FB-DIMM PROBE">
-          <Annotation Term="OData.Description" String="DDR2 SDRAM FB-DIMM PROBE" />
+        <Member Name="DDR2 SDRAM FB_DIMM PROBE">
+          <Annotation Term="OData.Description" String="DDR2 SDRAM FB_DIMM PROBE" />
         </Member>
         <Member Name="DDR SGRAM">
           <Annotation Term="OData.Description" String="DDR SGRAM" />
@@ -341,29 +341,29 @@
         <Member Name="UDIMM">
           <Annotation Term="OData.Description" String="UDIMM" />
         </Member>
-        <Member Name="SO-DIMM">
-          <Annotation Term="OData.Description" String="SO-DIMM" />
+        <Member Name="SO_DIMM">
+          <Annotation Term="OData.Description" String="SO_DIMM" />
         </Member>
         <Member Name="LRDIMM">
-          <Annotation Term="OData.Description" String="Load Reduced " />
+          <Annotation Term="OData.Description" String="Load Reduced" />
         </Member>
-        <Member Name="Mini-RDIMM">
-          <Annotation Term="OData.Description" String="Mini-RDIMM" />
+        <Member Name="Mini_RDIMM">
+          <Annotation Term="OData.Description" String="Mini_RDIMM" />
         </Member>
-        <Member Name="Mini-UDIMM">
-          <Annotation Term="OData.Description" String="Mini-UDIMM" />
+        <Member Name="Mini_UDIMM">
+          <Annotation Term="OData.Description" String="Mini_UDIMM" />
         </Member>
-        <Member Name="72b-SO-RDIMM">
-          <Annotation Term="OData.Description" String="72b-SO-RDIMM" />
+        <Member Name="72b_SO_RDIMM">
+          <Annotation Term="OData.Description" String="72b_SO_RDIMM" />
         </Member>
-        <Member Name="72b-SO-UDIMM">
-          <Annotation Term="OData.Description" String="72b-SO-UDIMM" />
+        <Member Name="72b_SO_UDIMM">
+          <Annotation Term="OData.Description" String="72b_SO_UDIMM" />
         </Member>
-        <Member Name="16b-SO-DIMM">
-          <Annotation Term="OData.Description" String="16b-SO-DIMM" />
+        <Member Name="16b_SO_DIMM">
+          <Annotation Term="OData.Description" String="16b_SO_DIMM" />
         </Member>
-        <Member Name="32b-SO-DIMM">
-          <Annotation Term="OData.Description" String="32b-SO-DIMM" />
+        <Member Name="32b_SO_DIMM">
+          <Annotation Term="OData.Description" String="32b_SO_DIMM" />
         </Member>
       </EnumType>
 
