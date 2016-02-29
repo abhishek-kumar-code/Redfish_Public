@@ -287,34 +287,34 @@
         <Member Name="DDR4">
           <Annotation Term="OData.Description" String="DDR4" />
         </Member>
-        <Member Name="DDR4 SDRAM">
+        <Member Name="DDR4_SDRAM">
           <Annotation Term="OData.Description" String="DDR4 SDRAM" />
         </Member>
-        <Member Name="DDR4E SDRAM">
+        <Member Name="DDR4E_SDRAM">
           <Annotation Term="OData.Description" String="DDR4E SDRAM" />
         </Member>
-        <Member Name="LPDDR4 SDRAM">
+        <Member Name="LPDDR4_SDRAM">
           <Annotation Term="OData.Description" String="LPDDR4 SDRAM" />
         </Member>
-        <Member Name="DDR3 SDRAM">
+        <Member Name="DDR3_SDRAM">
           <Annotation Term="OData.Description" String="DDR3 SDRAM" />
         </Member>
-        <Member Name="LPDDR3 SDRAM">
+        <Member Name="LPDDR3_SDRAM">
           <Annotation Term="OData.Description" String="LPDDR3 SDRAM" />
         </Member>
-        <Member Name="DDR2 SDRAM">
+        <Member Name="DDR2_SDRAM">
           <Annotation Term="OData.Description" String="DDR2 SDRAM" />
         </Member>
-        <Member Name="DDR2 SDRAM FB_DIMM">
+        <Member Name="DDR2_SDRAM_FB_DIMM">
           <Annotation Term="OData.Description" String="DDR2 SDRAM FB_DIMM" />
         </Member>
-        <Member Name="DDR2 SDRAM FB_DIMM PROBE">
+        <Member Name="DDR2_SDRAM_FB_DIMM_PROBE">
           <Annotation Term="OData.Description" String="DDR2 SDRAM FB_DIMM PROBE" />
         </Member>
-        <Member Name="DDR SGRAM">
+        <Member Name="DDR_SGRAM">
           <Annotation Term="OData.Description" String="DDR SGRAM" />
         </Member>
-        <Member Name="DDR SDRAM">
+        <Member Name="DDR_SDRAM">
           <Annotation Term="OData.Description" String="DDR SDRAM" />
         </Member>
         <Member Name="ROM">
@@ -326,10 +326,10 @@
         <Member Name="EDO">
           <Annotation Term="OData.Description" String="EDO" />
         </Member>
-        <Member Name="Fast Page Mode">
+        <Member Name="FastPageMode">
           <Annotation Term="OData.Description" String="Fast Page Mode" />
         </Member>
-        <Member Name="Pipelined Nibble">
+        <Member Name="PipelinedNibble">
           <Annotation Term="OData.Description" String="Pipelined Nibble" />
         </Member>
       </EnumType>
