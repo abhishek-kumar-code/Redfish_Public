@@ -9,7 +9,7 @@
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
-    <edmx:Include Namespace="Resource.v1_0_0" />
+    <edmx:Include Namespace="Resource.v1_1_0" />
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/LogService_v1.xml">
     <edmx:Include Namespace="LogService"/>
@@ -324,6 +324,7 @@
 
    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_2_0">  
      <EntityType Name="Chassis" BaseType="Chassis.v1_1_0.Chassis"/>
+     <Property Name="Location" Type="Resource.v_1_1_0.Location"/>     
      <ComplexType Name="Links" BaseType="Chassis.v1_0_0.Links">
         <NavigationProperty Name="ManagersInChassis" Type="Collection(Manager.Manager)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
