@@ -353,17 +353,17 @@
         <Member Name="Mini_UDIMM">
           <Annotation Term="OData.Description" String="Mini_UDIMM" />
         </Member>
-        <Member Name="72b_SO_RDIMM">
-          <Annotation Term="OData.Description" String="72b_SO_RDIMM" />
+        <Member Name="SO_RDIMM_72b">
+          <Annotation Term="OData.Description" String="SO_RDIMM_72b" />
         </Member>
-        <Member Name="72b_SO_UDIMM">
-          <Annotation Term="OData.Description" String="72b_SO_UDIMM" />
+        <Member Name="SO_UDIMM_72b">
+          <Annotation Term="OData.Description" String="SO_UDIMM_72b" />
         </Member>
-        <Member Name="16b_SO_DIMM">
-          <Annotation Term="OData.Description" String="16b_SO_DIMM" />
+        <Member Name="SO_DIMM_16b">
+          <Annotation Term="OData.Description" String="SO_DIMM_16b" />
         </Member>
-        <Member Name="32b_SO_DIMM">
-          <Annotation Term="OData.Description" String="32b_SO_DIMM" />
+        <Member Name="SO_DIMM_32b">
+          <Annotation Term="OData.Description" String="SO_DIMM_32b" />
         </Member>
       </EnumType>
 
