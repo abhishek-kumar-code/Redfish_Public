@@ -84,11 +84,7 @@
           <Collection>
             <Record>
               <PropertyValue Property="Pattern" String="[A-Za-z0-9]+"/>
-              <PropertyValue Property="Type" String="Edm.String"/>
-            </Record>
-            <Record>
-              <PropertyValue Property="Pattern" String="[A-Za-z0-9]+"/>
-              <PropertyValue Property="Type" String="Edm.Int64"/>
+              <PropertyValue Property="Type" String="Edm.Primitive"/>
             </Record>
           </Collection>
         </Annotation>
