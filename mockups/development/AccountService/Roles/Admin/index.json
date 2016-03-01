@@ -12,7 +12,7 @@
 	"ConfigureManager",
 	"ConfigureUsers",
 	"ConfigureSelf",
-	"ConfigureDevice"
+	"ConfigureComponents"
     ],
     "OEMPrivileges": [
         "OemClearLog",
