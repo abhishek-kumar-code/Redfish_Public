@@ -2,7 +2,7 @@
     "@Redfish.Copyright": "Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#Managers/Members/BMC/VirtualMedia/Members/$entity",
     "@odata.id": "/redfish/v1/Managers/BMC/VirtualMedia/Floppy1",
-    "@odata.type": "#VirtualMedia.1.0.0.VirtualMedia",
+    "@odata.type": "#VirtualMedia.v1_0_0.VirtualMedia",
     "Id": "Floppy1",
     "Name": "Virtual Removable Media",
     "MediaTypes": [
