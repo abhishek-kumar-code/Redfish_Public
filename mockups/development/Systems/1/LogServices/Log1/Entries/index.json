@@ -9,7 +9,7 @@
     "members": [
         {
             "@odata.id": "/redfish/v1/Systems/1/LogServices/Log1/Entries/1",
-            "@odata.type": "#LogEntry.1.0.0.LogEntry",
+            "@odata.type": "#LogEntry.v1_0_0.LogEntry",
             "Id": "1",
             "Name": "Log Entry 1",
             "EntryType": "SEL",
@@ -35,7 +35,7 @@
         },
         {
             "@odata.id": "/redfish/v1/Systems/1/LogServices/Log1/Entries/2",
-            "@odata.type": "#LogEntry.1.0.0.LogEntry",
+            "@odata.type": "#LogEntry.v1_0_0.LogEntry",
             "Id": "2",
             "Name": "Log Entry 2",
             "EntryType": "SEL",

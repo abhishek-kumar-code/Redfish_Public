@@ -2,13 +2,13 @@
   "@Redfish.Copyright": "Copyright 2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
   "@odata.context": "/redfish/v1/$metadata#Systems/1/Bios",
   "@odata.id": "/redfish/v1/Systems/1/Bios",
-  "@odata.type": "#Bios.1.0.0.Bios",
+  "@odata.type": "#Bios.v1_0_0.Bios",
   "Id": "Bios",
   "Name": "BIOS Configuration Current Settings",
   "Description": "BIOS Configuration Current Settings",
-  "AttributeRegistry": "BiosAttributeRegistryP89.1.0.0",
+  "AttributeRegistry": "BiosAttributeRegistryP89.v1_0_0",
   "@Redfish.Settings": {
-    "@odata.type": "#Settings.1.0.0.Settings",
+    "@odata.type": "#Settings.v1_0_0.Settings",
     "ETag": "someetag",
     "Messages": [
       {
