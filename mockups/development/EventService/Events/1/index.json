@@ -2,9 +2,10 @@
     "@Redfish.Copyright":"Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#Event.Event",
     "@odata.id": "/redfish/v1/EventService/Events/1",
-    "@odata.type": "#Event.v1_0_0.Event",
+    "@odata.type": "#Event.v1_1_0.Event",
     "Id": "1",
     "Name": "Event Array",
+    "Context": "ABCDEFGH",
     "Events": [
         {
             "EventType": "Alert",
