@@ -1,0 +1,29 @@
+{
+    "@Redfish.Copyright":"Copyright (c) 2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",    
+    "@odata.context": "/redfish/v1/$metadata#Systems/Members/1/MemoryChunks/$entity",
+    "@odata.id": "/redfish/v1/Systems/4/MemoryChunks",
+    "@odata.type" : "#MemoryChunkCollection.MemoryChunkCollection",
+    "Name": "Memory Chunks Collection",
+    "Members@odata.count": 6,
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/Systems/4/MemoryChunks/1"
+        },
+        {
+            "@odata.id": "/redfish/v1/Systems/4/MemoryChunks/3"
+        },
+        {
+            "@odata.id": "/redfish/v1/Systems/4/MemoryChunks/4"
+        },
+        {
+            "@odata.id": "/redfish/v1/Systems/4/MemoryChunks/5"
+        },
+        {
+            "@odata.id": "/redfish/v1/Systems/4/MemoryChunks/6"
+        },
+        {
+            "@odata.id": "/redfish/v1/Systems/4/MemoryChunks/7"
+        }
+    ],
+    "Oem": {}
+}
