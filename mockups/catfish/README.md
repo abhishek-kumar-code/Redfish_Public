@@ -3,12 +3,12 @@ DocTitle:  Catfish Mockup
 ---
 # Catfish Mockup:
   *  A simple, minimal Redfish Service
-  *  For a monolythic Server
+  *  For a monolithic Server
   *  Aligned with: OCP Remote Mancing Management Spec feature set
 
 
 # Top Level Description:
-  * A Monolythic server:
+  * A Monolithic server:
       * One ComputerSystem
       * One Chassis
       * One Manager
@@ -33,8 +33,7 @@ DocTitle:  Catfish Mockup
 
 
 # Discussion
-   * Opportunity to define some Redfish ‘API Profiles’ that specify
+   * Opportunity to define some Redfish ‘Integration Recipe’ that specify
       * What APIs and properties are supported / required
-      * Min and Max issue
       * How to capture
 
