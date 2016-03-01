@@ -191,7 +191,7 @@
           <Annotation Term="OData.Description" String="Fibre Channel over Ethernet"/>
           <Annotation Term="OData.LongDescription" String="This value shall mean that this device conforms to the T11 FC-BB-5 Specification."/>
         </Member>
-        <Member Name="NMVeOverFabrics">
+        <Member Name="NVMeOverFabrics">
           <Annotation Term="OData.Description" String="NVMe over Fabrics"/>
           <Annotation Term="OData.LongDescription" String="This value shall mean that this device conforms to the NVM Express over Fabrics Specification."/>
         </Member>
