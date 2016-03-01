@@ -104,7 +104,17 @@
 		      <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </EntityType>
-
     </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Event.v1_1_0">
+      <EntityType Name="Event" BaseType="Event.v1_0_0.Event">
+         <Property Name="Context" Type="Edm.String" Nullable="false">
+           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+           <Annotation Term="OData.Description" String="A context can be supplied at subscription time.  This property is the context value supplied by the subscriber."/>
+           <Annotation Term="OData.LongDescription" String="This property shall contain a client supplied context for the Event Destination to which this event is being sent."/>
+         </Property>
+      </EntityType>  
+    </Schema>
+    
   </edmx:DataServices>
 </edmx:Edmx>
