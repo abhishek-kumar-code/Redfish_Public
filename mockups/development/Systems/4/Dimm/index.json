@@ -1,0 +1,29 @@
+{
+    "@Redfish.Copyright":"Copyright (c) 2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",    
+    "@odata.context": "/redfish/v1/$metadata#Systems/Members/1/Dimm/$entity",
+    "@odata.id": "/redfish/v1/Systems/4/Dimm",
+    "@odata.type": "#DimmCollection.DimmCollection",    
+    "Name": "DIMM Collection",
+    "Members@odata.count": 6,
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/Systems/4/Dimm/1"
+        },
+        {
+            "@odata.id": "/redfish/v1/Systems/4/Dimm/2"
+        },
+        {
+            "@odata.id": "/redfish/v1/Systems/4/Dimm/3"
+        },
+        {
+            "@odata.id": "/redfish/v1/Systems/4/Dimm/4"
+        },
+        {
+            "@odata.id": "/redfish/v1/Systems/4/Dimm/5"
+        },
+        {
+            "@odata.id": "/redfish/v1/Systems/4/Dimm/6"
+        }
+    ],
+    "Oem": {}
+}
