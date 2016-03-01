@@ -120,15 +120,20 @@
             <Annotation Term="OData.Description" String="Spare block capacity crossing alarm trip detected status" />
             <Annotation Term="OData.LongDescription" String="The value of this property shall be true if the spare block capacity crossing alarm trip was detected." />
           </Property>
-          <Property Name="UncorrectableError" Type="Edm.Boolean">
+          <Property Name="UncorrectableECCError" Type="Edm.Boolean">
             <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
-            <Annotation Term="OData.Description" String="NUncorrectable error threshold crossing alarm trip detected status" />
+            <Annotation Term="OData.Description" String="Uncorrectable data error threshold crossing alarm trip detected status" />
             <Annotation Term="OData.LongDescription" String="The value of this property shall be true if the uncorrectable error threshold alarm trip was detected." />
           </Property>
-          <Property Name="CorrectableError" Type="Edm.Boolean">
+          <Property Name="CorrectableECCError" Type="Edm.Boolean">
             <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
-            <Annotation Term="OData.Description" String="Correctable error threshold crossing alarm trip detected status" />
+            <Annotation Term="OData.Description" String="Correctable data error threshold crossing alarm trip detected status" />
             <Annotation Term="OData.LongDescription" String="The value of this property shall be true if the correctable error threshold crossing alarm trip was detected." />
+          </Property>
+          <Property Name="AddressParityError" Type="Edm.Boolean">
+            <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+            <Annotation Term="OData.Description" String="Address parity error detected status" />
+            <Annotation Term="OData.LongDescription" String="The value of this property shall be true if an Address Parity Error was detected which could not be corrected by retry" />
           </Property>
         </ComplexType>
       </ComplexType>
