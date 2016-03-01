@@ -230,6 +230,21 @@
           <Annotation Term="OData.LongDescription" String="This property shall represent the format of the DurableName property."/>
         </Property>
       </ComplexType>
+      <ComplexType Name="Location">
+        <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Property Name="Info" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This indicates the location of the resource."/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the location of the resource."/>
+        </Property>
+        <Property Name="InfoFormat" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This represents the format of the Info property."/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the format of the Info property."/>
+        </Property>
+        <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
+      </ComplexType>      
 
       <EnumType Name="DurableNameFormat">
         <Member Name="NAA">
