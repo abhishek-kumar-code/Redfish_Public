@@ -452,10 +452,13 @@
           <Annotation Term="OData.Description" String="No ECC available" />
         </Member>
         <Member Name="SingleBitECC">
-          <Annotation Term="OData.Description" String="Single bit error can be corrected by ECC" />
+          <Annotation Term="OData.Description" String="Single bit Data error can be corrected by ECC" />
         </Member>
         <Member Name="MultiBitECC">
-          <Annotation Term="OData.Description" String="Multiple bits of errors can be corrected by ECC" />
+          <Annotation Term="OData.Description" String="Multi-bit Data errors can be corrected by ECC" />
+        </Member>
+        <Member Name="AddressParity">
+          <Annotation Term="OData.Description" String="Address Partiy errors can be corrected" />
         </Member>
       </EnumType>
 
