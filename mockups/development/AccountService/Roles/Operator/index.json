@@ -10,7 +10,7 @@
     "AssignedPrivileges": [
 	"Login",
         "ConfigureSelf",
-	"ConfigureDevice"
+	"ConfigureComponents"
     ],
     "OEMPrivileges": [ ]
 }

@@ -2156,6 +2156,7 @@ Implementations shall support replacement of the default certificate if one is p
 ##### HTTP Redirect
 
 * When there is a HTTP Redirect the privilege requirements for the target resource shall be enforced
+* Generally if the location is reachable without authentication, but only over https the server should issue a redirect to the https version of the resource. For cases where the resource is only accessible with authentication, a 404 should be returned.
 
 #### Extended Error Handling
   * Extended error messages shall NOT provide privileged info when authentication failures occur
