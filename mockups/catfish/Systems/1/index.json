@@ -12,7 +12,7 @@
 	"SerialNumber": "2M220100SL",
 	"SKU": "",
 	"PartNumber": "",
-	"Description": "Catfish Profile of simple scale-out monolythic server",
+	"Description": "Catfish Implementation Recipe of simple scale-out monolithic server",
 	"UUID": "00000000-0000-0000-0000-000000000000",
 	"HostName": "catfishHostname",
 	"Status": {
