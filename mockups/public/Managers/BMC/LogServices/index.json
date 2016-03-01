@@ -4,7 +4,7 @@
     "@odata.id": "/redfish/v1/Managers/BMC/LogServices",
     "@odata.type": "#LogServiceCollection.LogServiceCollection",
     "Name": "Log Service Collection",
-    "Description": "Collection of Log Services for this System",
+    "Description": "Collection of Log Services for this Manager",
     "Members@odata.count": 1,
     "Members": [
         {
