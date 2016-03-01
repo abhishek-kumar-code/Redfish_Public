@@ -1,0 +1,564 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.-->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData" />
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+    <edmx:Include Namespace="Resource.v1_0_0"  />
+  </edmx:Reference>
+
+  <edmx:DataServices>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Dimm">
+
+      <EntityType Name="Dimm" BaseType="Resource.v1_0_0.Resource">
+        <Annotation Term="OData.Description" String="This is the schema definition of a DIMMs and its configuration. " />
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent DIMMs in a Redfish implementation." />        
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+      </EntityType>
+
+      <Action Name="UnlockUnit" IsBound="true">
+        <Annotation Term="OData.Description" String="This defines the action for unlocking given regions."/>
+        <Annotation Term="OData.LongDescription" String="This action shall apply the supplied passphrase to the supplied region for the purpose of unlocking the given regions."/>
+        <Parameter Name="Dimm" Type="Dimm.v1_0_0.Actions"/>
+        <Parameter Name="RegionId" Type="Edm.String">
+          <Annotation Term="OData.Description" String="DIMM region ID for which this action to be applied" />
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the DIMM region ID for which this action to be applied." />
+        </Parameter>
+        <Parameter Name="Passphrase" Type="Edm.String">
+          <Annotation Term="OData.Description" String="Passphrase for doing the operation" />
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the passphrase used in this actionn." />
+        </Parameter>
+      </Action>
+      
+      <Action Name="SecureEraseUnit" IsBound="true">
+        <Annotation Term="OData.Description" String="This defines the action for securely erasing given regions."/>
+        <Annotation Term="OData.LongDescription" String="This action shall securely erase the supplied region provided the supplied passphrase matches that of the given region."/>
+        <Parameter Name="Dimm" Type="Dimm.v1_0_0.Actions"/>
+        <Parameter Name="RegionId" Type="Edm.String">
+          <Annotation Term="OData.Description" String="DIMM region ID for which this action to be applied" />
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the DIMM region ID for which this action to be applied." />
+        </Parameter>
+        <Parameter Name="Passphrase" Type="Edm.String">
+          <Annotation Term="OData.Description" String="Passphrase for doing the operation" />
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the passphrase used in this actionn." />
+        </Parameter>
+      </Action>
+
+      <Action Name="SetPassphrase" IsBound="true">
+        <Annotation Term="OData.Description" String="Set passphrase for the given regions" />
+        <Annotation Term="OData.LongDescription" String="This action shall apply the supplied passphrase to the supplied region." />
+        <Parameter Name="Dimm" Type="Dimm.v1_0_0.Actions"/>
+        <Parameter Name="RegionId" Type="Edm.String">
+          <Annotation Term="OData.Description" String="DIMM region ID for which this action to be applied" />
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the DIMM region ID for which this action to be applied." />
+        </Parameter>
+        <Parameter Name="Passphrase" Type="Edm.String">
+          <Annotation Term="OData.Description" String="Passphrase for doing the operation" />
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the passphrase used in this actionn." />
+        </Parameter>
+      </Action>
+
+      <Action Name="DisablePassphrase" IsBound="true">
+        <Annotation Term="OData.Description" String="Disable passphrase for given regions" />
+        <Annotation Term="OData.LongDescription" String="This action shall disaple the need for passphrases on the supplied region provided the supplied passphrase matches that of the region." />
+        <Parameter Name="Dimm" Type="Dimm.v1_0_0.Actions"/>
+        <Parameter Name="RegionId" Type="Edm.String">
+          <Annotation Term="OData.Description" String="DIMM region ID for which this action to be applied" />
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the DIMM region ID for which this action to be applied." />
+        </Parameter>
+        <Parameter Name="Passphrase" Type="Edm.String">
+          <Annotation Term="OData.Description" String="Passphrase for doing the operation" />
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the passphrase used in this actionn." />
+        </Parameter>
+      </Action>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Dimm.v1_0_0">
+
+      <EntityType Name="Dimm" BaseType="Dimm.Dimm">
+        <Annotation Term="OData.Description" String="This is the schema definition for definition of a DIMM and its configuration" />
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+
+        <Property Name="DimmType" Type="Dimm.v1_0_0.DimmType">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="The type of DIMM" />
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the type of DIMM represented by this resource." />
+        </Property>
+        <Property Name="DimmDeviceType" Type="Dimm.v1_0_0.DimmDeviceType">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="Type details of DIMM" />
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the DimmDeviceType as defined by SMBIOS." />
+        </Property>
+        <Property Name="BaseModuleType" Type="Dimm.v1_0_0.BaseModuleType">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="The base module type of DIMM" />
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the base module type of DIMM" />
+        </Property>
+        <Property Name="DimmMedia" Type="Collection(Dimm.v1_0_0.DimmMedia)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="Media  of this DIMM" />
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the media types of this DIMM" />
+        </Property>
+        <Property Name="CapacityMiB" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="DIMM Capacity in MiB." />
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the DIMM capacity in MiB." />
+        </Property>
+        <Property Name="DataWidthBits" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="Data Width in bits." />
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the data width in bits." />
+        </Property>
+        <Property Name="BusWidthBits" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="Bus Width in bits." />
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the bus width in bits." />
+        </Property>
+        <Property Name="Manufacturer" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="The DIMM manufacturer" />
+          <Annotation Term="OData.LongDescription" String="This property shall contain a string which identifies the manufacturer of the DIMM." />
+        </Property>
+        <Property Name="SerialNumber" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="The product serial number of this device" />
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the serial number as provided by the manufacturer of this DIMM." />
+        </Property>
+        <Property Name="PartNumber" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="The product part number of this device" />
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the part number as provided by the manufacturer of this DIMM." />
+        </Property>
+        <Property Name="AllowedSpeedsMhz" Type="Collection(Edm.Int64)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="Speed bins supported by this DIMM" />
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the speed supported by this DIMM." />
+        </Property>
+        <Property Name="FirmwareRevision" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="Revision of firmware on the DIMM controller" />
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the revision of firmware on the DIMM controller." />
+        </Property>
+        <Property Name="FirmwareApiVersion" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="Version of API supported by the firmware" />
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the version of API supported by the firmware." />
+        </Property>
+        <Property Name="FunctionClasses" Type="Collection(Edm.String)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="Function Classes by the DIMM" />
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the function classes by the DIMM." />
+        </Property>
+        <Property Name="VendorID" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="Vendor ID" />
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the vendor ID of the DIMM." />
+        </Property>
+        <Property Name="DeviceID" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="Device ID" />
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the device ID of the DIMM." />
+        </Property>
+        <Property Name="SubsystemVendorID" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="SubSystem Vendor ID" />
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the subsystem Vendor ID of the DIMM." />
+        </Property>
+        <Property Name="SubsystemDeviceID" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="Subsystem Device ID" />
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the subsystem Device ID of the DIMM." />
+        </Property>
+        <Property Name="MaxTDPMilliWatts" Type="Collection(Edm.Int64)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="Maximum TDPs in milli Watts" />
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the maximum power budgets supported by the DIMM in milli Watts." />
+        </Property>
+        <Property Name="SecurityCapabilities" Type="Dimm.v1_0_0.SecurityCapabilities"  Nullable="false">
+          <Annotation Term="OData.Description" String="This object contains security capabilities of the DIMM."/>
+          <Annotation Term="OData.LongDescription" String="This object shall contain properties which describe the security capabilities of the DIMM."/>
+        </Property>
+        <Property Name="SpareDeviceCount" Type="Collection(Edm.Int64)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="Number of unused spare devices available in the DIMM" />
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the number of unused spare devices available in the DIMM. If memory devices fails, the spare device could be used." />
+        </Property>
+        <Property Name="RankCount" Type="Collection(Edm.Int64)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="Number of ranks available in the DIMM" />
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be number of ranks available in the DIMM. The ranks could be used for spare or interleave." />
+        </Property>
+        <Property Name="DeviceLocator" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="Location of the DIMM in the platform" />
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be location of the DIMM in the platform, typically marked in the silk screen." />
+        </Property>
+        <Property Name="DimmLocation" Type="Dimm.v1_0_0.DimmLocation"  Nullable="false">
+          <Annotation Term="OData.Description" String="DIMM connection information to sockets and memory controllers."/>
+          <Annotation Term="OData.LongDescription" String="This object shall contain properties which describe the DIMM connection information to sockets and memory controllers."/>
+        </Property>
+        <Property Name="ErrorCorrection" Type="Dimm.v1_0_0.ErrorCorrection">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="Error correction scheme supported for this memory" />
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the error correction scheme supported for this memory." />
+        </Property>
+        <Property Name="OperatingSpeedMhz" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="Operating speed of DIMM in MHz" />
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the operating speed of DIMM in MHz." />
+        </Property>
+        <Property Name="VolatileRegionSizeLimitMiB" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="Total size of volatile regions in MiB" />
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the total size of volatile regions in MiB." />
+        </Property>
+        <Property Name="PersistentRegionSizeLimitMiB" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="Total size of persistent regions in MiB" />
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the total size of persistent regions in MiB." />
+        </Property>
+        <Property Name="Regions" Type="Collection(Dimm.v1_0_0.RegionSet)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="Memory regions information within the DIMM" />
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the memory region information within the DIMM." />
+        </Property>
+        <Property Name="OperatingMemoryModes" Type="Collection(Dimm.v1_0_0.OperatingMemoryModes)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="Memory modes supported by the DIMM" />
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the memory modes supported by the DIMM." />
+        </Property>
+        <Property Name="PowerManagementPolicy" Type="Dimm.v1_0_0.PowerManagementPolicy"  Nullable="false">
+          <Annotation Term="OData.Description" String="Power management policy information."/>
+          <Annotation Term="OData.LongDescription" String="This object shall contain properties which describe the power management policy for the current resource."/>
+        </Property>
+        <Property Name="IsSpareDeviceEnabled" Type="Edm.Boolean" DefaultValue="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="Spare device enabled status" />
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be true if a spare device is enabled for this DIMM." />
+        </Property>
+        <Property Name="IsRankSpareEnabled" Type="Edm.Boolean" DefaultValue="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="Rank spare enabled status" />
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be true if a rank spare is enabled for this DIMM." />
+        </Property>              
+        <NavigationProperty Name="Metrics" Type="Metrics.Metrics" ContainsTarget="true">
+          <Annotation Term="OData.Description" String="A reference to the Metrics  associated with this DIMM"/>
+          <Annotation Term="OData.LongDescription" String="A reference to the Metrics  associated with this DIMM."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        <Property Name="Actions" Type="Dimm.v1_0_0.Actions" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The Actions object contains the available custom actions on this resource."/>
+        </Property>
+      </EntityType>
+
+      <EnumType Name="DimmType">
+        <Member Name="DRAM">
+          <Annotation Term="OData.Description" String="DRAM DIMM" />
+        </Member>
+        <Member Name="NVDIMM_N">
+          <Annotation Term="OData.Description" String="NVDIMM_N DIMM" />
+        </Member>
+        <Member Name="NVDIMM_F">
+          <Annotation Term="OData.Description" String="NVDIMM_F DIMM" />
+        </Member>
+        <Member Name="NVDIMM_P">
+          <Annotation Term="OData.Description" String="NVDIMM_P DIMM" />
+        </Member>
+      </EnumType>
+
+      <EnumType Name="DimmDeviceType">
+        <Member Name="DDR">
+          <Annotation Term="OData.Description" String="DDR" />
+        </Member>
+        <Member Name="DDR2">
+          <Annotation Term="OData.Description" String="DDR2" />
+        </Member>
+        <Member Name="DDR3">
+          <Annotation Term="OData.Description" String="DDR3" />
+        </Member>
+        <Member Name="DDR4">
+          <Annotation Term="OData.Description" String="DDR4" />
+        </Member>
+        <Member Name="DDR4_SDRAM">
+          <Annotation Term="OData.Description" String="DDR4 SDRAM" />
+        </Member>
+        <Member Name="DDR4E_SDRAM">
+          <Annotation Term="OData.Description" String="DDR4E SDRAM" />
+        </Member>
+        <Member Name="LPDDR4_SDRAM">
+          <Annotation Term="OData.Description" String="LPDDR4 SDRAM" />
+        </Member>
+        <Member Name="DDR3_SDRAM">
+          <Annotation Term="OData.Description" String="DDR3 SDRAM" />
+        </Member>
+        <Member Name="LPDDR3_SDRAM">
+          <Annotation Term="OData.Description" String="LPDDR3 SDRAM" />
+        </Member>
+        <Member Name="DDR2_SDRAM">
+          <Annotation Term="OData.Description" String="DDR2 SDRAM" />
+        </Member>
+        <Member Name="DDR2_SDRAM_FB_DIMM">
+          <Annotation Term="OData.Description" String="DDR2 SDRAM FB_DIMM" />
+        </Member>
+        <Member Name="DDR2_SDRAM_FB_DIMM_PROBE">
+          <Annotation Term="OData.Description" String="DDR2 SDRAM FB_DIMM PROBE" />
+        </Member>
+        <Member Name="DDR_SGRAM">
+          <Annotation Term="OData.Description" String="DDR SGRAM" />
+        </Member>
+        <Member Name="DDR_SDRAM">
+          <Annotation Term="OData.Description" String="DDR SDRAM" />
+        </Member>
+        <Member Name="ROM">
+          <Annotation Term="OData.Description" String="ROM" />
+        </Member>
+        <Member Name="SDRAM">
+          <Annotation Term="OData.Description" String="SDRAM" />
+        </Member>
+        <Member Name="EDO">
+          <Annotation Term="OData.Description" String="EDO" />
+        </Member>
+        <Member Name="FastPageMode">
+          <Annotation Term="OData.Description" String="Fast Page Mode" />
+        </Member>
+        <Member Name="PipelinedNibble">
+          <Annotation Term="OData.Description" String="Pipelined Nibble" />
+        </Member>
+      </EnumType>
+
+      <EnumType Name="BaseModuleType">
+        <Member Name="RDIMM">
+          <Annotation Term="OData.Description" String="Registered DIMM" />
+        </Member>
+        <Member Name="UDIMM">
+          <Annotation Term="OData.Description" String="UDIMM" />
+        </Member>
+        <Member Name="SO_DIMM">
+          <Annotation Term="OData.Description" String="SO_DIMM" />
+        </Member>
+        <Member Name="LRDIMM">
+          <Annotation Term="OData.Description" String="Load Reduced" />
+        </Member>
+        <Member Name="Mini_RDIMM">
+          <Annotation Term="OData.Description" String="Mini_RDIMM" />
+        </Member>
+        <Member Name="Mini_UDIMM">
+          <Annotation Term="OData.Description" String="Mini_UDIMM" />
+        </Member>
+        <Member Name="SO_RDIMM_72b">
+          <Annotation Term="OData.Description" String="SO_RDIMM_72b" />
+        </Member>
+        <Member Name="SO_UDIMM_72b">
+          <Annotation Term="OData.Description" String="SO_UDIMM_72b" />
+        </Member>
+        <Member Name="SO_DIMM_16b">
+          <Annotation Term="OData.Description" String="SO_DIMM_16b" />
+        </Member>
+        <Member Name="SO_DIMM_32b">
+          <Annotation Term="OData.Description" String="SO_DIMM_32b" />
+        </Member>
+      </EnumType>
+
+      <EnumType Name="DimmMedia">
+        <Member Name="DRAM">
+          <Annotation Term="OData.Description" String="DRAM media" />
+        </Member>
+        <Member Name="NAND">
+          <Annotation Term="OData.Description" String="NAND media" />
+        </Member>
+        <Member Name="Proprietary">
+          <Annotation Term="OData.Description" String="Proprietary media" />
+        </Member>
+      </EnumType>
+
+      <ComplexType Name="SecurityCapabilities">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Property Name="PassphraseCapable" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="DIMM passphrase set capability"/>
+          <Annotation Term="OData.LongDescription" String="DIMM passphrase set capability."/>
+        </Property>
+        <Property Name="MaxPassphraseCount" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="Maximum number of passphrases supported for this DIMM"/>
+          <Annotation Term="OData.LongDescription" String="Maximum number of passphrases supported for this DIMM."/>
+        </Property>
+        <Property Name="SecurityStates" Type="Collection(Dimm.v1_0_0.SecurityStates)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="Security states supported by the DIMM"/>
+          <Annotation Term="OData.LongDescription" String="Security states supported by the DIMM."/>
+        </Property>
+      </ComplexType>
+
+      <EnumType Name="SecurityStates">
+        <Member Name="unknown">
+          <Annotation Term="OData.Description" String="Security state is unknown" />
+        </Member>
+        <Member Name="enabled">
+          <Annotation Term="OData.Description" String="Secure mode is enabled" />
+        </Member>
+        <Member Name="disabled">
+          <Annotation Term="OData.Description" String="Secure mode is disabled" />
+        </Member>
+        <Member Name="unlocked">
+          <Annotation Term="OData.Description" String="Secure mode is enabled and access to the data is unlocked" />
+        </Member>
+        <Member Name="locked">
+          <Annotation Term="OData.Description" String="Secure mode is enabled and access to the data is locked" />
+        </Member>
+        <Member Name="frozen">
+          <Annotation Term="OData.Description" String="Secure state is frozen and can not be modified until reset" />
+        </Member>
+        <Member Name="passphraselimit">
+          <Annotation Term="OData.Description" String="Number of attempts to unlock the DIMM exceeded limit" />
+        </Member>
+      </EnumType>
+
+      <ComplexType Name="DimmLocation">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Property Name="Socket" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="Socket number in which DIMM is connected" />
+          <Annotation Term="OData.LongDescription" String="Socket number in which DIMM is connected." />
+        </Property>
+        <Property Name="MemoryController" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="Memory controller number in which DIMM is connected" />
+          <Annotation Term="OData.LongDescription" String="Memory controller number in which DIMM is connected." />
+        </Property>
+        <Property Name="Channel" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="Channel number in which DIMM is connected" />
+          <Annotation Term="OData.LongDescription" String="Channel number in which DIMM is connected." />
+        </Property>
+        <Property Name="Slot" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="Slot number in which DIMM is connected" />
+          <Annotation Term="OData.LongDescription" String="Slot number in which DIMM is connected." />
+        </Property>
+        <Annotation Term="OData.Description" String="."/>
+      </ComplexType>
+
+      <EnumType Name="ErrorCorrection">
+        <Member Name="NoECC">
+          <Annotation Term="OData.Description" String="No ECC available" />
+        </Member>
+        <Member Name="SingleBitECC">
+          <Annotation Term="OData.Description" String="Single bit Data error can be corrected by ECC" />
+        </Member>
+        <Member Name="MultiBitECC">
+          <Annotation Term="OData.Description" String="Multi-bit Data errors can be corrected by ECC" />
+        </Member>
+        <Member Name="AddressParity">
+          <Annotation Term="OData.Description" String="Address Partiy errors can be corrected" />
+        </Member>
+      </EnumType>
+
+      <ComplexType Name="RegionSet">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Property Name="RegionId" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="Unique region ID representing a specific region within the DIMM" />
+          <Annotation Term="OData.LongDescription" String="Unique region ID representing a specific region within the DIMM." />
+        </Property>
+        <Property Name="MemoryType" Type="Dimm.v1_0_0.MemoryType">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="Type of memory occupied by the given memory region" />
+          <Annotation Term="OData.LongDescription" String="Type of memory occupied by the given memory region." />
+        </Property>
+        <Property Name="OffsetMiB" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="Offset with in the DIMM that corresponds to the starting of this memory region in MiB" />
+          <Annotation Term="OData.LongDescription" String="Offset with in the DIMM that corresponds to the starting of this memory region in MiB." />
+        </Property>
+        <Property Name="SizeMiB" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="Size of this memory region in MiB" />
+          <Annotation Term="OData.LongDescription" String="Size of this memory region in MiB." />
+        </Property>
+        <Property Name="PassphraseState" Type="Dimm.v1_0_0.PassphraseState">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="State of the passphrase for this region" />
+          <Annotation Term="OData.LongDescription" String="State of the passphrase for this region." />
+        </Property>
+        <Annotation Term="OData.Description" String="DIMM memory region information."/>
+      </ComplexType>
+
+      <EnumType Name="MemoryType">
+        <Member Name="Volatile">
+          <Annotation Term="OData.Description" String="Volatile memory" />
+        </Member>
+        <Member Name="ByteAccessiblePersistent">
+          <Annotation Term="OData.Description" String="Byte accessible persistent memory" />
+        </Member>
+        <Member Name="Block">
+          <Annotation Term="OData.Description" String="Block accesible memory" />
+        </Member>
+      </EnumType>
+
+      <EnumType Name="PassphraseState">
+        <Member Name="enabled">
+          <Annotation Term="OData.Description" String="Secure mode is enabled" />
+        </Member>
+        <Member Name="disabled">
+          <Annotation Term="OData.Description" String="Secure mode is disabled" />
+        </Member>
+      </EnumType>
+      
+      <EnumType Name="OperatingMemoryModes">
+        <Member Name="Volatile">
+          <Annotation Term="OData.Description" String="Volatile memory" />
+        </Member>
+        <Member Name="PMEM">
+          <Annotation Term="OData.Description" String="Persistent memory, byte accesible through system address space" />
+        </Member>
+        <Member Name="Block">
+          <Annotation Term="OData.Description" String="Block accessible system memory" />
+        </Member>
+      </EnumType>
+
+      <ComplexType Name="PowerManagementPolicy">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Property Name="PolicyEnabled" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="Power management policy enabled status" />
+          <Annotation Term="OData.LongDescription" String="Power management policy enabled status." />
+        </Property>
+        <Property Name="MaxTDPMilliWattst" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="Maximum TDP in milli watts" />
+          <Annotation Term="OData.LongDescription" String="Maximum TDP in milli watts." />
+        </Property>
+        <Property Name="PeakPowerBudgetMilliWatts" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="Peak power budget in milli watts" />
+          <Annotation Term="OData.LongDescription" String="Peak power budget in milli watts." />
+        </Property>
+        <Property Name="AveragePowerBudgetMilliWatts" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="Average power budget in milli watts" />
+          <Annotation Term="OData.LongDescription" String="Average power budget in milli watts." />
+        </Property>
+        <Annotation Term="OData.Description" String="."/>
+      </ComplexType>
+
+      <ComplexType Name="Actions">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Property Name="Oem" Type="Dimm.v1_0_0.OemActions"/>
+      </ComplexType>
+
+      <ComplexType Name="OemActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+      </ComplexType>
+
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>
