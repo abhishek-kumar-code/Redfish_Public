@@ -303,11 +303,13 @@ class JsonSchemaGenerator:
     #####################################################################################
     def get_dynamic_property_patterns_content(self, annotation):
     
-        patterncontent = {}
+        patterncontent = []
         for collection in annotation:
             for record in collection:
+                pattern = {}
                 for propertyvalue in record:
-                    patterncontent.update({propertyvalue.attrib["Property"] : propertyvalue.attrib["String"]})
+                    pattern.update({propertyvalue.attrib["Property"] : propertyvalue.attrib["String"]})
+                patterncontent.append(pattern)
 
         return patterncontent
 
@@ -325,7 +327,8 @@ class JsonSchemaGenerator:
                         "Edm.Int64": "number",
                         "Edm.Boolean": "boolean",
                         "Edm.Decimal": "number",
-                        "Edm.DateTimeOffset": "string"
+                        "Edm.DateTimeOffset": "string",
+                        "Edm.Primitive": "primitive"
                     }
 
         if not inputType in edmtojson:
@@ -354,18 +357,20 @@ class JsonSchemaGenerator:
 
                 if term == "Redfish.DynamicPropertyPatterns":
                     content = self.get_dynamic_property_patterns_content(annotation)
-                    output += ",\n"
-                    output += UT.Utilities.indent(depth+1) + "\"" + content["Pattern"] + "\": {\n"
-                    jsontype = self.get_edmtype_to_jsontype(content["Type"])
+                    for record in content:
+                        output += ",\n"
+                        output += UT.Utilities.indent(depth+1) + "\"" + record["Pattern"] + "\": {\n"
+                        jsontype = self.get_edmtype_to_jsontype(record["Type"])
+                        if jsontype == "object":
+                            refvalue = self.get_ref_value_for_type(typetable, record["Type"], namespace)
+                            output += UT.Utilities.indent(depth+2)+ "\"$ref\": \"" + refvalue + "\""                        
+                        elif jsontype == "primitive":
+#todo: might we have null here? if so, pass nullability as second arg to write_primitive_type
+                            output += self.wite_primitive_type(depth+2, False)
+                        else:
+                            output += UT.Utilities.indent(depth + 2) + "\"type\": \"" + jsontype + "\""
 
-#todo:make sure returns are correct for multiple pattern properties.
-                    if jsontype == "object":
-                        refvalue = self.get_ref_value_for_type(typetable, content["Type"], namespace)
-                        output += UT.Utilities.indent(depth+2)+ "\"$ref\": \"" + refvalue + "\""                        
-                    else:
-                        output += UT.Utilities.indent(depth + 2) + "\"type\": \"" + jsontype + "\""
-
-                    output += "\n" + UT.Utilities.indent(depth + 1) + "}"
+                        output += "\n" + UT.Utilities.indent(depth + 1) + "}"
                                                      
             if "BaseType" in annotated.attrib.keys():
                 #todo: make more robust
@@ -911,7 +916,7 @@ class JsonSchemaGenerator:
             "Edm.Boolean": "boolean",
             "Edm.Decimal": "number",
             "Edm.DateTimeOffset": "string",
-            "Edm.Guid": "string"
+            "Edm.Guid": "string",
         }
 
         if typename in edmtojson.keys():
@@ -922,6 +927,7 @@ class JsonSchemaGenerator:
                 output += UT.Utilities.indent(depth+1) +     "\"" + jsontype + "\",\n"
                 output += UT.Utilities.indent(depth+1) +     "\"null\"\n"
                 output += UT.Utilities.indent(depth)   + "]"
+
             else:
                 output = UT.Utilities.indent(depth) + "\"type\": \"" + jsontype + "\""
 
@@ -931,8 +937,34 @@ class JsonSchemaGenerator:
             if typename == "Edm.Guid":
                 output += ",\n" + UT.Utilities.indent(depth) + "\"pattern\": \"([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})\""
 
+        elif typename == "Edm.PrimitiveType":
+            output += self.wite_primitive_type(depth, isnullable)
+
+        else:
+               print("Primitive Type Not Found!: " + typename)
+
         return output
 
+    ############################################################################################
+    # Name: write_primitive_type                                                               #
+    # Description:                                                                             #
+    #   Generates JSON corresponding to Edm.PrimitiveType                                      #
+    ############################################################################################
+    def wite_primitive_type(self, depth, isnullable):
+
+        output = ""
+        output  = UT.Utilities.indent(depth)   + "\"type\": [\n"
+        output += UT.Utilities.indent(depth+1) +     "\"string\",\n"
+        output += UT.Utilities.indent(depth+1) +     "\"boolean\",\n"
+        output += UT.Utilities.indent(depth+1) +     "\"number\""
+        if isnullable: 
+            output += ",\n"
+            output += UT.Utilities.indent(depth+1) +  "\"null\""
+        output += "\n"
+        output += UT.Utilities.indent(depth)   + "]"
+
+        return output
+    
     ############################################################################################
     # Name: is_prior_version                                                                   #
     # Description:                                                                             #
