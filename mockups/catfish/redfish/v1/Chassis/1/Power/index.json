@@ -1,28 +1,27 @@
 {
-    "@Redfish.Copyright":"Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#Power.Power",
-    "@odata.id": "/redfish/v1/Chassis/1/Power",
-    "@odata.type": "#Power.v1_0_0.Power",
-    "Id": "Power",
-    "Name": "Power",
-    "PowerControl": [
-        {
-            "@odata.id": "/redfish/v1/Chassis/1/Power#/PowerControl/0",
-            "MemberId": "0",
-	    "Name": "System Power Control",
-            "PowerConsumedWatts":  224,
-            "PowerCapacityWatts":  600,
-            "PowerLimit": {
-                "LimitInWatts": 450,
-                "LimitException": "LogEventOnly",
-                "CorrectionInMs": 1000
-	        },
-	    "Status": {
-	            "State": "Enabled",
-	            "Health": "OK"
-	        },
-	    "Oem": {}
-        }
-    ]
-    "Oem": {}
+	"@Redfish.Copyright": "Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+	"@odata.context": "/redfish/v1/$metadata#Power.Power",
+	"@odata.id": "/redfish/v1/Chassis/1/Power",
+	"@odata.type": "#Power.v1_0_0.Power",
+	"Id": "Power",
+	"Name": "Power",
+	"PowerControl": [{
+		"@odata.id": "/redfish/v1/Chassis/1/Power#/PowerControl/0",
+		"MemberId": "0",
+		"Name": "System Power Control",
+		"PowerConsumedWatts": 224,
+		"PowerCapacityWatts": 600,
+		"PowerLimit": {
+			"LimitInWatts": 450,
+			"LimitException": "LogEventOnly",
+			"CorrectionInMs": 1000
+		},
+		"Status": {
+			"State": "Enabled",
+			"Health": "OK"
+		},
+		"Oem": {}
+	}],
+	"Oem": {}
 }
+
