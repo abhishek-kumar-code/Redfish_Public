@@ -35,13 +35,13 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Thermal.1.0.0">
 
       <EntityType Name="Thermal" BaseType="Thermal.Thermal">
-        <NavigationProperty Name="Temperatures" Type="Collection(Thermal.1.0.1.Temperature)">
+        <NavigationProperty Name="Temperatures" Type="Collection(Thermal.1.0.0.Temperature)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the definition for temperature sensors."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for temperature sensors for a Redfish implementation."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
-        <NavigationProperty Name="Fans" Type="Collection(Thermal.1.0.1.Fan)" ContainsTarget="true">
+        <NavigationProperty Name="Fans" Type="Collection(Thermal.1.0.0.Fan)" ContainsTarget="true">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the definition for fans."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for fans for a Redfish implementation."/>
@@ -152,7 +152,7 @@
           <Annotation Term="OData.Description" String="Current fan speed"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the current value of the fan sensor's reading."/>
         </Property>
-        <Property Name="ReadingUnits" Type="Thermal.1.0.1.ReadingUnits">
+        <Property Name="ReadingUnits" Type="Thermal.1.0.0.ReadingUnits">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Units in which the reading and thresholds are measured."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the units in which the fan's reading and thresholds are measured."/>
