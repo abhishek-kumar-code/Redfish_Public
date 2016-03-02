@@ -1,8 +1,8 @@
 {
     "@Redfish.Copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#Managers/Members/$entity",
+    "@odata.context": "/redfish/v1/$metadata#Manager.Manager",
     "@odata.id": "/redfish/v1/Managers/6",
-    "@odata.type": "#Manager.1.0.0.Manager",
+    "@odata.type": "#Manager.v1_0_0.Manager",
     "Id": "6",
     "Name": "EMM 1",
     "ManagerType": "EnclosureManager",
