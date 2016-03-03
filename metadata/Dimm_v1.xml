@@ -12,6 +12,9 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource.v1_0_0"  />
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/DimmMetrics_v1.xml">
+    <edmx:Include Namespace="DimmMetrics"/>
+  </edmx:Reference>
 
   <edmx:DataServices>
 
@@ -248,9 +251,9 @@
           <Annotation Term="OData.Description" String="Rank spare enabled status" />
           <Annotation Term="OData.LongDescription" String="The value of this property shall be true if a rank spare is enabled for this DIMM." />
         </Property>              
-        <NavigationProperty Name="Metrics" Type="Metrics.Metrics" ContainsTarget="true">
-          <Annotation Term="OData.Description" String="A reference to the Metrics  associated with this DIMM"/>
-          <Annotation Term="OData.LongDescription" String="A reference to the Metrics  associated with this DIMM."/>
+        <NavigationProperty Name="Metrics" Type="DimmMetrics.DimmMetrics" ContainsTarget="true">
+          <Annotation Term="OData.Description" String="A reference to the Metrics associated with this DIMM"/>
+          <Annotation Term="OData.LongDescription" String="A reference to the Metrics associated with this DIMM."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
         <Property Name="Actions" Type="Dimm.v1_0_0.Actions" Nullable="false">

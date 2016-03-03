@@ -55,10 +55,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Bios.v1_0_0">
 
       <EntityType Name="Bios" BaseType="Bios.Bios">
-        <Property Name="AttributeRegistry" Type="Resource.Id">
-          <Annotation Term="OData.Description" String="The Resource ID of the Attribute Registry for the BIOS Attributes resource."/>
-          <Annotation Term="OData.LongDescription" String="The reference to the Attribute Registry that lists the metadata describing the BIOS attribute settings in this resource."/>
-        </Property>
+        <Property Name="AttributeRegistry" Type="Resource.Id"/>
         <Property Name="Actions" Type="Bios.v1_0_0.Actions" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The Actions object contains the available custom actions on this resource."/>
