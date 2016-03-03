@@ -68,7 +68,6 @@
           <Annotation Term="OData.LongDescription" String="This property shall contain a boolean indicator if the Volume is currently utilizing encryption or not."/>
         </Property>
         <Property Name="EncryptionType" Type="Volume.1.0.0.EncryptionTypes">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The type of encryption used by this Volume"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the type of encryption used by this Volume."/>
         </Property>
