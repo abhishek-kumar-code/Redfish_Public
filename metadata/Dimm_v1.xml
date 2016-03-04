@@ -461,7 +461,7 @@
           <Annotation Term="OData.Description" String="Multi-bit Data errors can be corrected by ECC" />
         </Member>
         <Member Name="AddressParity">
-          <Annotation Term="OData.Description" String="Address Partiy errors can be corrected" />
+          <Annotation Term="OData.Description" String="Address Parity errors can be corrected" />
         </Member>
       </EnumType>
 
