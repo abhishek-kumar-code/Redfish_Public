@@ -1,7 +1,7 @@
 {
     "@odata.context": "/redfish/v1/$metadata#Systems/Members/3/Processors/#entity",
     "@odata.id": "/redfish/v1/Systems/3/Processors",
-    "@odata.type": "#Processors.1.0.0.ProcessorsCollection",
+    "@odata.type": "#Processors.v1_0_0.ProcessorsCollection",
     "Name": "Processors Collection",
     "Members@odata.count": 2,
     "Members": [
