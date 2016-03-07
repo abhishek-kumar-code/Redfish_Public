@@ -1,7 +1,8 @@
 {
     "@Redfish.Copyright": "Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
     "@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Power",
-    "@odata.context": "/redfish/v1/$metadata#Chassis/Members/StorageEnclosure1/Power/$entity",
+    "@odata.context": "/redfish/v1/$metadata#Power.Power",
+    "@odata.type": "#Power.v1_0_0.Power",
     "Id": "Power",
     "Name": "Power",
     "PowerControl": [],
