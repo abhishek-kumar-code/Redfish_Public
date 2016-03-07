@@ -75,6 +75,11 @@
           <Annotation Term="OData.LongDescription" String="This property shall contain size of the smallest addressible unit of the associated volume."/>
           <Annotation Term="Measures.Unit" String="By"/>
         </Property>
+        <Property Name="Operations" Type="Collection(Volume.1.0.0.Operations)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The operations currently running on the Volume"/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain a list of all currently running on the Volume."/>
+        </Property>
         <Property Name="Links" Type="Volume.1.0.0.Links" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The links object contains the links to other resources that are related to this resource."/>
@@ -101,6 +106,17 @@
 
       <ComplexType Name="OemActions">
         <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+      </ComplexType>
+
+      <ComplexType Name="Operations">
+        <Property Name="OperationName" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The name of the operation."/>
+        </Property>
+        <Property Name="PercentageComplete" Type="Edm.Int32">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The percentage of the operation that has been completed."/>
+        </Property>
       </ComplexType>
 
       <EnumType Name="VolumeType">
