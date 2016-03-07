@@ -183,7 +183,7 @@
 
       <EnumType Name="MediaType">
         <Member Name="HDD">
-          <Annotation Term="OData.Description" String="The drive media type is traditional magnetic platers"/>
+          <Annotation Term="OData.Description" String="The drive media type is traditional magnetic platters"/>
         </Member>
         <Member Name="SSD">
           <Annotation Term="OData.Description" String="The drive media type is solid state or flash memory"/>
