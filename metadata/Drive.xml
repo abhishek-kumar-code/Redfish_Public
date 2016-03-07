@@ -97,11 +97,6 @@
           <Annotation Term="OData.Description" String="The Durable names for the drive"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain a list of all known durable names for the associated drive."/>
         </Property>
-        <Property Name="FormFactor" Type="Drive.1.0.0.FormFactor">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The form factor of this drive"/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain the form factor for the associated drive."/>
-        </Property>
         <Property Name="HotspareType" Type="Drive.1.0.0.HotspareType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The type of hotspare this drive is currently serving as"/>
@@ -179,21 +174,6 @@
         <Member Name="SMR">
           <Annotation Term="OData.Description" String="The drive media type is shingled magnetic recording"/>
         </Member>		
-      </EnumType>
-
-      <EnumType Name="FormFactor">
-        <Member Name="Inches1_8">
-          <Annotation Term="OData.Description" String="The drive is 1.8 inches in width"/>
-        </Member>
-        <Member Name="Inches2_5">
-          <Annotation Term="OData.Description" String="The drive is 2.5 inches in width"/>
-        </Member>
-        <Member Name="Inches3_5">
-          <Annotation Term="OData.Description" String="The drive is 3.5 inches in width"/>
-        </Member>
-        <Member Name="m_2">
-          <Annotation Term="OData.Description" String="The drive conforms to the m.2 standard"/>
-        </Member>
       </EnumType>
 
       <EnumType Name="HotspareType">
