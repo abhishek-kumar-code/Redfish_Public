@@ -153,6 +153,11 @@
           <Annotation Term="OData.LongDescription" String="This property shall contain current bus speed of the associated drive."/>
           <Annotation Term="Measures.Unit" String="Gbit/s"/>
         </Property>
+        <Property Name="PredictedMediaLifeLeftPercent" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The percentage of reads and writes that are predicted to still be available for the media"/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain an indicator of the percentage of life remaining in the Drive's media."/>
+        </Property>
         <Property Name="Links" Type="Drive.1.0.0.Links" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The links object contains the links to other resources that are related to this resource."/>
