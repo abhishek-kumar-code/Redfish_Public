@@ -11,10 +11,10 @@
         "Health": "OK",
         "HealthRollUp": "OK"
     },
-    "StorageControllers": [
+    "Controllers": [
         {
-            "@odata.id": "/redfish/v1/Systems/3/Storage/SATAEmbedded#/StorageControllers/0",
-            "@odata.type": "#Storage.0.0.1.StorageController",
+            "@odata.id": "/redfish/v1/Systems/3/Storage/SATAEmbedded#/Controllers/0",
+            "@odata.type": "#Storage.0.0.1.Controller",
             "Id": "0",
             "Name": "System SATA",
             "Description": "System SATA (Embedded)",
