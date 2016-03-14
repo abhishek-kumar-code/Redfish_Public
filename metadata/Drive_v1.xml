@@ -113,7 +113,7 @@
         <Property Name="HotspareType" Type="Drive.v1_0_0.HotspareType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The type of hotspare this drive is currently serving as"/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain the hotspare type for the associated drive."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the hotspare type for the associated drive. If the drive is currently serving as a Hotspare its Status.State field shall be 'StandbySpare' and 'Enabled' when it is being used as part of a Volume."/>
         </Property>
         <Property Name="EncryptionAbility" Type="Drive.v1_0_0.EncryptionAbility">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -168,7 +168,7 @@
         <NavigationProperty Name="Volumes" Type="Collection(Volume.Volume)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the volumes contained in this drive. This will reference Volumes that are either wholly or only partly contained by this drive."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resource that this drive is associated with and shall reference a resource of type Volume."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resources that this drive is associated with and shall reference a resource of type Volume. This shall include all Volume resources of which this Drive is a member and all Volumes for which this Drive is acting as a spare if the HotspareType is Dedicated."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </ComplexType>
