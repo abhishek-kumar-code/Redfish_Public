@@ -4,47 +4,48 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions.xml">
-    <edmx:Include Namespace="RedfishExtensions.1.0.0" Alias="Redfish"/>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
-    <edmx:Include Namespace="Resource.1.0.0" />
+    <edmx:Include Namespace="Resource.v1_0_0" />
+    <edmx:Include Namespace="Resource.v1_1_0" />
   </edmx:Reference>
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Measures.V1.xml">
     <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Storage.xml">
-    <edmx:Include Namespace="Storage.1.0.0"/>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Storage_v1.xml">
+    <edmx:Include Namespace="Storage.v1_0_0"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Volume.xml">
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Volume_v1.xml">
     <edmx:Include Namespace="Volume"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Chassis.xml">
-    <edmx:Include Namespace="Chassis.1.0.0"/>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Chassis_v1.xml">
+    <edmx:Include Namespace="Chassis.v1_0_0"/>
   </edmx:Reference>
 
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive">
       
-      <EntityType Name="Drive" BaseType="Resource.1.0.0.Resource">
+      <EntityType Name="Drive" BaseType="Resource.v1_0_0.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition for the Drive resource.  It represents the properties for physical disk drives for any system."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a disk drive or other physical storage medium for a Redfish implementation."/>
       </EntityType>
 
       <Action Name="SecureErase" IsBound="true">
-        <Parameter Name="Drive" Type="Drive.1.0.0.Actions"/>
+        <Parameter Name="Drive" Type="Drive.v1_0_0.Actions"/>
         <Annotation Term="OData.Description" String="This action is used to securely erase the contents of the drive."/>
         <Annotation Term="OData.LongDescription" String="This defines the name of the custom action supported on this resource."/>
       </Action>
 
     </Schema>
 
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.1.0.0">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.v1_0_0">
 
       <EntityType Name="Drive" BaseType="Drive.Drive">
-        <Property Name="IndicatorLED" Type="Chassis.1.0.0.IndicatorLED">
+        <Property Name="IndicatorLED" Type="Chassis.v1_0_0.IndicatorLED">
           <Annotation Term="OData.Description" String="The state of the indicator LED, used to identify the drive."/>
           <Annotation Term="OData.LongDescription" String="This value of this property shall contain the indicator light state for the indicator light associated with this drive."/>
         </Property>
@@ -70,12 +71,12 @@
           <Annotation Term="OData.Description" String="Is this drive currently predicting a failure in the near future"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain failure information as defined by the manufacturer for the associated drive."/>
         </Property>
-        <Property Name="Protocol" Type="Storage.1.0.0.Protocol">
+        <Property Name="Protocol" Type="Storage.v1_0_0.Protocol">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The protocol this drive is using to communicate to the storage controller"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the protocol the associated drive is using to communicate to the storage controller for this system."/>
         </Property>
-        <Property Name="MediaType" Type="Drive.1.0.0.MediaType">
+        <Property Name="MediaType" Type="Drive.v1_0_0.MediaType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The type of media contained in this drive"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the type of media contained in the associated drive."/>
@@ -104,22 +105,22 @@
           <Annotation Term="OData.Description" String="The user assigned asset tag for this drive."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an identifying string used to track the drive for inventory purposes."/>
         </Property>
-        <Property Name="Identifiers" Type="Collection(Resource.1.1.0.Identifier)">
+        <Property Name="Identifiers" Type="Collection(Resource.v1_1_0.Identifier)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The Durable names for the drive"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain a list of all known durable names for the associated drive."/>
         </Property>
-        <Property Name="HotspareType" Type="Drive.1.0.0.HotspareType">
+        <Property Name="HotspareType" Type="Drive.v1_0_0.HotspareType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The type of hotspare this drive is currently serving as"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the hotspare type for the associated drive."/>
         </Property>
-        <Property Name="EncryptionAbility" Type="Drive.1.0.0.EncryptionAbility">
+        <Property Name="EncryptionAbility" Type="Drive.v1_0_0.EncryptionAbility">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The encryption abilities of this drive"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the encryption ability for the associated drive."/>
         </Property>
-        <Property Name="EncryptionStatus" Type="Drive.1.0.0.EncryptionStatus">
+        <Property Name="EncryptionStatus" Type="Drive.v1_0_0.EncryptionStatus">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The status of the encrytion of this drive"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the encrytion status for the associated drive."/>
@@ -153,11 +154,11 @@
           <Annotation Term="OData.Description" String="The percentage of reads and writes that are predicted to still be available for the media"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain an indicator of the percentage of life remaining in the Drive's media."/>
         </Property>
-        <Property Name="Links" Type="Drive.1.0.0.Links" Nullable="false">
+        <Property Name="Links" Type="Drive.v1_0_0.Links" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The links object contains the links to other resources that are related to this resource."/>
         </Property>
-        <Property Name="Actions" Type="Drive.1.0.0.Actions" Nullable="false">
+        <Property Name="Actions" Type="Drive.v1_0_0.Actions" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The Actions object contains the available custom actions on this resource."/>
         </Property>
@@ -174,7 +175,7 @@
 
       <ComplexType Name="Actions">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Property Name="Oem" Type="Drive.1.0.0.OemActions"/>
+        <Property Name="Oem" Type="Drive.v1_0_0.OemActions"/>
       </ComplexType>
 
       <ComplexType Name="OemActions">

@@ -7,24 +7,25 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Measures.V1.xml">
     <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions.xml">
-    <edmx:Include Namespace="RedfishExtensions.1.0.0" Alias="Redfish"/>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
     <edmx:Include Namespace="Validation.1.0.0" Alias="Validation"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
-    <edmx:Include Namespace="Resource.1.0.0" />
+    <edmx:Include Namespace="Resource.v1_0_0" />
+    <edmx:Include Namespace="Resource.v1_1_0" />
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Chassis.xml">
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Chassis_v1.xml">
     <edmx:Include Namespace="Chassis"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Redundancy.xml">
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Redundancy_v1.xml">
     <edmx:Include Namespace="Redundancy"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Drive.xml">
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Drive_v1.xml">
     <edmx:Include Namespace="Drive"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Volume.xml">
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Volume_v1.xml">
     <edmx:Include Namespace="Volume"/>
   </edmx:Reference>
 
@@ -33,41 +34,41 @@
     <!-- This schema defines a storage subsystem and its respective properties.-->
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Storage">
 
-      <EntityType Name="Storage" BaseType="Resource.1.0.0.Resource">
+      <EntityType Name="Storage" BaseType="Resource.v1_0_0.Resource">
         <Annotation Term="OData.Description" String="This schema defines a storage subsystem and its respective properties.  A storage subsystem represents a set of storage controllers (physical or virtual) and the resources such as volumes that can be accessed from that subsystem."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent resources that represent a storage subsystem in the Redfish specification."/>
       </EntityType>
       
     </Schema>
 
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Storage.1.0.0">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Storage.v1_0_0">
 
       <EntityType Name="Storage" BaseType="Storage.Storage">
         <Annotation Term="OData.Description" String="This schema defines a storage subsystem and its respective properties.  A storage subsystem represents a set of storage controllers (physical or virtual) and the resources such as volumes that can be accessed from that subsystem."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent resources that represent a storage subsystem in the Redfish specification."/>
-        <NavigationProperty Name="Controllers" Type="Collection(Storage.1.0.0.Controller)">
+        <NavigationProperty Name="StorageControllers" Type="Collection(Storage.v1_0_0.StorageController)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The set of controllers represented by this resource."/>
+          <Annotation Term="OData.Description" String="The set of storage controllers represented by this resource."/>
           <Annotation Term="OData.LongDescription" String="A collection that indicates all the storage controllers that this resource represents."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
         <NavigationProperty Name="Drives" Type="Collection(Drive.Drive)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The set of drives attached to the controllers represented by this resource."/>
+          <Annotation Term="OData.Description" String="The set of drives attached to the storage controllers represented by this resource."/>
           <Annotation Term="OData.LongDescription" String="A collection that indicates all the drives attached to the storage controllers that this resource represents."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
         <NavigationProperty Name="Volumes" Type="Collection(Volume.Volume)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The set of volumes produced by the controllers represented by this resource."/>
+          <Annotation Term="OData.Description" String="The set of volumes produced by the storage controllers represented by this resource."/>
           <Annotation Term="OData.LongDescription" String="A collection that indicates all the volumes produced by the storage controllers that this resource represents."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <Property Name="Links" Type="Storage.1.0.0.Links" Nullable="false">
+        <Property Name="Links" Type="Storage.v1_0_0.Links" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains links to other resources that are related to this resource."/>
         </Property>
-        <Property Name="Actions" Type="Storage.1.0.0.Actions" Nullable="false">
+        <Property Name="Actions" Type="Storage.v1_0_0.Actions" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The Actions object contains the available custom actions on this resource."/>
         </Property>     
@@ -90,14 +91,14 @@
 
       <ComplexType Name="Actions">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Property Name="Oem" Type="Storage.1.0.0.OemActions"/>
+        <Property Name="Oem" Type="Storage.v1_0_0.OemActions"/>
       </ComplexType>
 
       <ComplexType Name="OemActions">
         <Annotation Term="OData.AdditionalProperties" Bool="true"/>
       </ComplexType>
 
-      <EntityType Name="Controller">
+      <EntityType Name="StorageController">
         <Annotation Term="OData.Description" String="This schema defines a storage controller and its respective properties.  A storage controller represents a storage device (physical or virtual) that produces Volumes."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a resource that represents a storage controller in the Redfish specification."/>
         <Property Name="Status" Type="Resource.Status"/>
@@ -110,52 +111,52 @@
         </Property>
         <Property Name="FirmwareVersion" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The firmware version of this Controller"/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain the firwmare version as defined by the manufacturer for the associated controller."/>
+          <Annotation Term="OData.Description" String="The firmware version of this storage Controller"/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the firwmare version as defined by the manufacturer for the associated storage controller."/>
         </Property>
         <Property Name="Manufacturer" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="This is the manufacturer of this controller."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the name of the organization responsible for producing the controller. This organization might be the entity from whom the controller is purchased, but this is not necessarily true."/>
+          <Annotation Term="OData.Description" String="This is the manufacturer of this storage controller."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the name of the organization responsible for producing the storage controller. This organization might be the entity from whom the storage controller is purchased, but this is not necessarily true."/>
         </Property>
         <Property Name="Model" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="This is the model number for the controller."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the name by which the manufacturer generally refers to the controller."/>
+          <Annotation Term="OData.Description" String="This is the model number for the storage controller."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the name by which the manufacturer generally refers to the storage controller."/>
         </Property>
         <Property Name="SKU" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="This is the SKU for this controller."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the stock-keeping unit number for this controller."/>
+          <Annotation Term="OData.Description" String="This is the SKU for this storage controller."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the stock-keeping unit number for this storage storage controller."/>
         </Property>
         <Property Name="SerialNumber" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The serial number for this controller."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a manufacturer-allocated number used to identify the controller."/>
+          <Annotation Term="OData.Description" String="The serial number for this storage controller."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a manufacturer-allocated number used to identify the storage controller."/>
         </Property>
         <Property Name="PartNumber" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The part number for this controller."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a part number assigned by the organization that is responsible for producing or manufacturing the controller."/>
+          <Annotation Term="OData.Description" String="The part number for this storage controller."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a part number assigned by the organization that is responsible for producing or manufacturing the storage controller."/>
         </Property>
         <Property Name="AssetTag" Type="Edm.String">
-          <Annotation Term="OData.Description" String="The user assigned asset tag for this controller."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be an identifying string used to track the controller for inventory purposes."/>
+          <Annotation Term="OData.Description" String="The user assigned asset tag for this storage controller."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an identifying string used to track the storage controller for inventory purposes."/>
         </Property>
         <Property Name="SupportedControllerProtocols" Type="Collection(Storage.1.0.0.Protocol)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-		  <Annotation Term="OData.Description" String="This represents the protocols by which this controller can be communicated to."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the set of protocols this controller can be communicated to."/>
+		  <Annotation Term="OData.Description" String="This represents the protocols by which this storage controller can be communicated to."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the set of protocols this storage controller can be communicated to."/>
         </Property>
         <Property Name="SupportedDeviceProtocols" Type="Collection(Storage.1.0.0.Protocol)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-		  <Annotation Term="OData.Description" String="This represents the protocols which the controller can use to communicate with attached devices."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the set of protocols this controller can use to communicate with attached devices."/>
+		  <Annotation Term="OData.Description" String="This represents the protocols which the storage controller can use to communicate with attached devices."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the set of protocols this storage controller can use to communicate with attached devices."/>
         </Property>
         <Property Name="Identifiers" Type="Collection(Resource.1.1.0.Identifier)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The Durable names for the controller"/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain a list of all known durable names for the associated controller."/>
+          <Annotation Term="OData.Description" String="The Durable names for the storage controller"/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain a list of all known durable names for the associated storage controller."/>
         </Property>
       </EntityType>
 
