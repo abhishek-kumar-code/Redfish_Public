@@ -7,24 +7,25 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Measures.V1.xml">
     <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions.xml">
-    <edmx:Include Namespace="RedfishExtensions.1.0.0" Alias="Redfish"/>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
     <edmx:Include Namespace="Validation.1.0.0" Alias="Validation"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
-    <edmx:Include Namespace="Resource.1.0.0" />
+    <edmx:Include Namespace="Resource.v1_0_0" />
+    <edmx:Include Namespace="Resource.v1_1_0" />
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Chassis.xml">
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Chassis_v1.xml">
     <edmx:Include Namespace="Chassis"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Redundancy.xml">
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Redundancy_v1.xml">
     <edmx:Include Namespace="Redundancy"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Drive.xml">
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Drive_v1.xml">
     <edmx:Include Namespace="Drive"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Volume.xml">
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Volume_v1.xml">
     <edmx:Include Namespace="Volume"/>
   </edmx:Reference>
 
@@ -33,19 +34,19 @@
     <!-- This schema defines a storage subsystem and its respective properties.-->
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Storage">
 
-      <EntityType Name="Storage" BaseType="Resource.1.0.0.Resource">
+      <EntityType Name="Storage" BaseType="Resource.v1_0_0.Resource">
         <Annotation Term="OData.Description" String="This schema defines a storage subsystem and its respective properties.  A storage subsystem represents a set of storage controllers (physical or virtual) and the resources such as volumes that can be accessed from that subsystem."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent resources that represent a storage subsystem in the Redfish specification."/>
       </EntityType>
       
     </Schema>
 
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Storage.1.0.0">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Storage.v1_0_0">
 
       <EntityType Name="Storage" BaseType="Storage.Storage">
         <Annotation Term="OData.Description" String="This schema defines a storage subsystem and its respective properties.  A storage subsystem represents a set of storage controllers (physical or virtual) and the resources such as volumes that can be accessed from that subsystem."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent resources that represent a storage subsystem in the Redfish specification."/>
-        <NavigationProperty Name="StorageControllers" Type="Collection(Storage.1.0.0.StorageController)">
+        <NavigationProperty Name="StorageControllers" Type="Collection(Storage.v1_0_0.StorageController)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The set of storage controllers represented by this resource."/>
           <Annotation Term="OData.LongDescription" String="A collection that indicates all the storage controllers that this resource represents."/>
@@ -63,11 +64,11 @@
           <Annotation Term="OData.LongDescription" String="A collection that indicates all the volumes produced by the storage controllers that this resource represents."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <Property Name="Links" Type="Storage.1.0.0.Links" Nullable="false">
+        <Property Name="Links" Type="Storage.v1_0_0.Links" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains links to other resources that are related to this resource."/>
         </Property>
-        <Property Name="Actions" Type="Storage.1.0.0.Actions" Nullable="false">
+        <Property Name="Actions" Type="Storage.v1_0_0.Actions" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The Actions object contains the available custom actions on this resource."/>
         </Property>     
@@ -90,7 +91,7 @@
 
       <ComplexType Name="Actions">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Property Name="Oem" Type="Storage.1.0.0.OemActions"/>
+        <Property Name="Oem" Type="Storage.v1_0_0.OemActions"/>
       </ComplexType>
 
       <ComplexType Name="OemActions">

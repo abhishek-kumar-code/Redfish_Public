@@ -1,7 +1,7 @@
 {
     "@odata.context": "/redfish/v1/$metadata#Chassis/Members/Drives/Members/$entity",
     "@odata.id": "/redfish/v1/Chassis/StorageEnclosure2/Drives/Disk.Bay.0",
-    "@odata.type": "#StorageDrive.0.0.1.Drive",
+    "@odata.type": "#Drive.v1_0_0.Drive",
     "IndicatorLED": "Lit",
     "Model": "ST9146802SS",
     "Revision": "S20A",
