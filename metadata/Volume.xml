@@ -88,6 +88,12 @@
           <Annotation Term="OData.LongDescription" String="This property shall contain size of the smallest addressible unit of the associated volume."/>
           <Annotation Term="Measures.Unit" String="By"/>
         </Property>
+        <Property Name="OptimumIOSizeBytes" Type="Edm.Int32">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The size in bytes of this Volume's optimum IO size."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the optimum IO size to use when performing IO on this volume. For logical disks, this is the stripe size. For physical disks, this describes the physical sector size."/>
+          <Annotation Term="Measures.Unit" String="By"/>
+        </Property>
         <Property Name="Links" Type="Volume.1.0.0.Links" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The links object contains the links to other resources that are related to this resource."/>
