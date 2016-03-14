@@ -110,6 +110,11 @@
           <Annotation Term="OData.Description" String="The Durable names for the drive"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain a list of all known durable names for the associated drive."/>
         </Property>
+        <Property Name="Location" Type="Collection(Resource.v1_1_0.Location)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The Location of the drive"/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain location information of the associated drive."/>
+        </Property>
         <Property Name="HotspareType" Type="Drive.v1_0_0.HotspareType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The type of hotspare this drive is currently serving as"/>
