@@ -914,15 +914,13 @@ The resource identifier is the canonical URL for the resource and can be used to
 
 ##### Type Property
 
-All resources in a response shall include a type property named "@odata.type". The value of the type property shall be an absolute URL that specifies the type of the resource and shall be of the form:
+All resources in a response shall include a type property named "@odata.type". The value of the type property shall be a URL fragment that specifies the type of the resource as defined within, or referenced by, the [metadata document](#service-metadata) and shall be of the form:
 
  **#*Namespace*.*TypeName*
 
 Where:
 * *Namespace* = The full namespace name of the Redfish Schema in which the type is defined. For Redfish resources this will be the versioned namespace name.
 * *TypeName* = The name of the type of the resource.
-
-The client may issue a GET request to this URL using a content type of `application/xml` in order to retrieve a document containing the [definition of the resource](#schema-definition).
 
 ##### ETag Property
 
