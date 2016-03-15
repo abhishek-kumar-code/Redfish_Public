@@ -15,7 +15,7 @@ Only SPMF Forum members shall have access to the repository.  Forum Alliance Par
 
 ## Contents of the SPMF Repository
 
-contains forum work, documents, code, normative and informational...
+The "spmf" private repository contains forum work in progress, published documents and specifications (both normative and informational), schema files and mockups.  Presentations, documents and other binaries (in formats not natively supported by Github) releated to Forum business are stored in the DMTF's web site under the SPMF: https://members.dmtf.org/apps/org/workgroup/spmf/  
 
 ### Master Branch
 
@@ -23,20 +23,31 @@ The 'Master' (or main) branch of the repository contains deliverables that have 
 
 The Forum co-Chairs reserve the right to make typographical, syntax, formatting or other editorial corrections to items in the Master branch in order to complete release processes, correct issues with Forum deliverable, or otherwise resolve issues impeding Forum business.
 
-### Directories
+### Contents of the Repository
 
-The following are the primary directories within the SPMF repository:
+In the root folder of the repository are the primary documents created by the SPMF.  Other files in the root folder are supporting files of the repository and are not normally accessed or referenced.
 
-Make into a table...
+| Filename | Description |
+|----------|-------------|
+| Readme.md | This document - the SPMF Github User Guide |
+| Specification.md | The Redfish API Specification - DSP0266 |
+| WhitePaper.md | The Redfish White Paper - DSP2044 |
+| RedfishFAQ.md | The Redfish FAQ - DSP2045 |
+| SchemaSupplement.md | The Redfish Schema Supplemental material - DSPxxxx |
+| README8010.md | Readme file used with the schema release bundle - DSP8010 |
+| README2043.md | Readme file used with the mockup release bundle - DSP2043 |
 
-#### Root
-spec and other docs
-#### Mockups
-#### Metadata
-#### json-schema
-#### Registries
-#### Other
-Release, test
+Off of the root are several folders which contain the schemas and mockups created by the Forum.
+
+| Folder  | Contents |
+|---------|----------|
+| json-schema | Redfish Schema files in json-schema format |
+| metadata | Redfish Schema files in CSDL format |
+| mockups | Redfish Mockups including the "development" and published, public-facing mockups. |
+| registries | Redfish Message Registries |
+| release | Supporting files and published documents in HTML and PDF formats |
+| test | Supporing files for managing the repository |
+
 
 ### Other Repositories
 
@@ -61,13 +72,15 @@ Create a new issue using Github's "New Issue" button.  It is helpful to label th
 
 ### Working in Branches
 
-Everying in a branch...
+TODO - Everying in a branch...
 
 ### Pull Request
 
-define workflow
+TODO - define workflow
 
 #### Connecting Pull Request to an open Issue
+
+TODO 
 
 ## Issue Management Process
 
@@ -86,7 +99,7 @@ and label the issue with "Ready for Review" so that the solution can be reviewed
 
 ### Approval, Merging and Automatic Checks
 
-watch for FAIL!
+TODO - watch for FAIL!
 
 ### Label Flow
 
