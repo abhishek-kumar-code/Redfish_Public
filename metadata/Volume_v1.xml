@@ -117,7 +117,7 @@
         <NavigationProperty Name="Drives" Type="Collection(Drive.Drive)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the drives which contain this volume. This will reference Drives that either wholly or only partly contain this volume."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resource that this volume is associated with and shall reference a resource of type Drive."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resources that this volume is associated with and shall reference resources of type Drive. This property shall only contain references to Drive entities which are currently members of the Volume, not hot spare Drives which are not currently a member of the volume."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </ComplexType>
