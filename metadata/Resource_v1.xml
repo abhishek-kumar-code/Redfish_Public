@@ -16,6 +16,7 @@
         <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
         <Annotation Term="OData.Description" String="Uniquely identifies the resource within the collection of like resources."/>
         <Annotation Term="OData.LongDescription" String="This property represents an identifier for the resource.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
+        <Annotation Term="Redfish.Required"/>
       </TypeDefinition>
 
       <TypeDefinition Name="Description" UnderlyingType="Edm.String">
