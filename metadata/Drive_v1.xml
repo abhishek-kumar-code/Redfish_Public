@@ -113,7 +113,7 @@
         <Property Name="HotspareType" Type="Drive.v1_0_0.HotspareType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The type of hotspare this drive is currently serving as"/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain the hotspare type for the associated drive. If the drive is currently serving as a Hotspare its Status.State field shall be 'StandbySpare' and 'Enabled' when it is being used as part of a Volume."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the hot spare type for the associated drive. If the drive is currently serving as a hot spare its Status.State field shall be 'StandbySpare' and 'Enabled' when it is being used as part of a Volume."/>
         </Property>
         <Property Name="EncryptionAbility" Type="Drive.v1_0_0.EncryptionAbility">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
