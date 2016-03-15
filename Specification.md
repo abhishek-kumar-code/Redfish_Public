@@ -757,7 +757,7 @@ The following table lists some of the common HTTP status codes. Other codes may 
 #### Metadata Responses
 Metadata describes resources, collections, capabilities and service-dependent behavior to generic consumers, including OData client tools and applications with no specific understanding of this specification. Clients are not required to request metadata if they already have sufficient understanding of the target service; for example, to request and interpret a JSON representation of a resource defined in this specification.
 
-##### Service Metadata Document
+##### Service Metadata
 The service metadata describes top-level resources and resource types of the service according to [OData-Schema](#OData-CSDL). The Redfish Service Metadata is represented as an XML document with a root element named "Edmx", defined in the http://docs.oasis-open.org/odata/ns/edmx" namespace, and with an OData Version attribute equal to "4.0".
 
 ~~~xml
