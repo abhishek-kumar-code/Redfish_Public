@@ -18,6 +18,9 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Drive_v1.xml">
     <edmx:Include Namespace="Drive"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Task_v1.xml">
+    <edmx:Include Namespace="Task"/>
+  </edmx:Reference>
 
   <edmx:DataServices>
 
@@ -89,6 +92,11 @@
           <Annotation Term="OData.LongDescription" String="This property shall contain size of the smallest addressible unit of the associated volume."/>
           <Annotation Term="Measures.Unit" String="By"/>
         </Property>
+        <Property Name="Operations" Type="Collection(Volume.v1_0_0.Operations)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The operations currently running on the Volume"/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain a list of all currently running on the Volume."/>
+        </Property>
         <Property Name="OptimumIOSizeBytes" Type="Edm.Int32">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The size in bytes of this Volume's optimum IO size."/>
@@ -121,6 +129,21 @@
 
       <ComplexType Name="OemActions">
         <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+      </ComplexType>
+
+      <ComplexType Name="Operations">
+        <Property Name="OperationName" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The name of the operation."/>
+        </Property>
+        <Property Name="PercentageComplete" Type="Edm.Int32">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The percentage of the operation that has been completed."/>
+        </Property>
+        <NavigationProperty Name="AssociatedTask" Type="Task.Task">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A reference to the task associated with the operation if any."/>
+        </NavigationProperty>
       </ComplexType>
 
       <EnumType Name="VolumeType">
