@@ -2009,7 +2009,7 @@ Each task has a number of possible states.  The exact states and their semantics
 
 When a client issues a request for a long-running operation, the service returns a status of 202 (Accepted).
 
-Any response with a status code of 202 (Accepted) shall include a location header containing the URL of a monitor for the task and may include a wait header to specify the amount of time the client should wait before querying status of the operation.
+Any response with a status code of 202 (Accepted) shall include a location header containing the URL of a monitor for the task and may include the Retry-After header to specify the amount of time the client should wait before querying status of the operation.
 
 The client should not include the mime type application/http in the Accept Header when performing a GET request to the status monitor.
 
@@ -2026,7 +2026,7 @@ The client can continue to get information about the status by directly querying
 * Services that support asynchronous operations shall implement the Task resource
 * The response to an asynchronous operation shall return a status code of 202 (Accepted)
   and set the HTTP response header "Location" to the URI of a status monitor
-  associated with the activity. The response may also include a wait header specifying
+  associated with the activity. The response may also include the Retry-After header specifying
   the amount of time the client should wait before polling for status. The response body
   should contain a representation of the Task resource in JSON.
 * GET requests to either the Task monitor or the Task Resource shall return the current status of the operation without blocking.
