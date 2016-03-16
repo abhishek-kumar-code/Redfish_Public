@@ -37,6 +37,10 @@
             "type": "object",
             "description": "This attribute shall contain informative language related to the enumeration values of the property."
         },
+        "enumLongDescriptions": {
+            "type": "object",
+            "description": "This attribute shall contain normative language relating to the enumeration values of the property."
+        },
         "units": {
             "type": "string",
             "description": "This attribute shall contain the units of measure used by the value of the property."
@@ -54,6 +58,9 @@
         },
         "enumDescriptions": {
             "$ref": "#/definitions/enumDescriptions"
+        },
+        "enumLongDescriptions": {
+            "$ref": "#/definitions/enumLongDescriptions"
         },
         "units": {
             "$ref": "#/definitions/units"
