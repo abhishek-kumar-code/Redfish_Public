@@ -4,9 +4,16 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0" />
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
   </edmx:Reference>
 
   <edmx:DataServices>
@@ -67,7 +74,7 @@
           <Annotation Term="OData.Description" String="The size of the storage device."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the size (in bytes) of the Storage Device."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
-          <Annotation Term="OData.Measures.Unit" String="Bytes"/>
+          <Annotation Term="Measures.Unit" String="Bytes"/>
         </Property>
       </ComplexType>
 
