@@ -1618,10 +1618,12 @@ The `RequiredOnCreate` annotation term is defined in http://redfish.dmtf.org/sch
 
 ##### Units of Measure
 
-In addition to following [naming conventions](#common-naming-conventions), properties representing units of measure shall be annotated with the Units annotation term in order to specify the units of measurement for the property.
+In addition to following [naming conventions](#common-naming-conventions), properties representing units of measure shall be annotated with the Units annotation term in order to specify the units of measurement for the property.  
+
+The value of the annotation should be a string which contains the case-sensitive "(c/s)" symbol of the unit of measure as listed in the Unified Code for Units of Measure, unless the symbolic representation does not reflect common usage.  For units with prefixes (e.g. megabyte, which has the UCUM prefix and symbol "MBy"), the case-sensitive "(c/s)" symbol for the prefix as listed in UCUM should be prepended to the unit symbol.  For values which also include rate information (e.g. megabytes per second), the rate unit's symbol should be appended and use a "/" slash character as a separator (e.g. "Mby/s").
 
 ~~~xml
-	    <Annotation Term="Measures.Unit" String="Watts"/>
+	    <Annotation Term="Measures.Unit" String="W"/>
 ~~~
 
 The `Unit` annotation term is defined in http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml.
