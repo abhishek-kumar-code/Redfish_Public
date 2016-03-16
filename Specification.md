@@ -72,6 +72,7 @@ The following referenced documents are indispensable for the application of this
 * <a id="OData-JSON">OData Version 4.0 JSON Format</a>. 24 February 2014. [http://docs.oasis-open.org/odata/odata-json-format/v4.0/os/odata-json-format-v4.0-os.html]("http://docs.oasis-open.org/odata/odata-json-format/v4.0/os/odata-json-format-v4.0-os.html")
 * <a id="OData-UnitsOfMeasure">OData Version 4.0: Units of Measure Vocabulary</a>. 24 February 2014. [http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml]("http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml")
 * <a id="SSDP">Simple Service Discovery Protocol/1.0 </a>. 28 October 1999 ("https://tools.ietf.org/html/draft-cai-ssdp-v1-03")
+* <a id="UCUM">The Unified Code for Units of Measure</a>.  [http://www.unitsofmeasure.org/ucum.html]("http://www.unitsofmeasure.org/ucum.html") 
 
 ## Terms and Definitions
 In this document, some terms have a specific meaning beyond the normal English meaning. Those terms are defined in this clause.
@@ -1620,10 +1621,10 @@ The `RequiredOnCreate` annotation term is defined in http://redfish.dmtf.org/sch
 
 In addition to following [naming conventions](#common-naming-conventions), properties representing units of measure shall be annotated with the Units annotation term in order to specify the units of measurement for the property.  
 
-The value of the annotation should be a string which contains the case-sensitive "(c/s)" symbol of the unit of measure as listed in the Unified Code for Units of Measure, unless the symbolic representation does not reflect common usage.  For units with prefixes (e.g. megabyte, which has the UCUM prefix and symbol "MBy"), the case-sensitive "(c/s)" symbol for the prefix as listed in UCUM should be prepended to the unit symbol.  For values which also include rate information (e.g. megabytes per second), the rate unit's symbol should be appended and use a "/" slash character as a separator (e.g. "Mby/s").
+The value of the annotation should be a string which contains the case-sensitive "(c/s)" symbol of the unit of measure as listed in the [Unified Code for Units of Measure (UCUM)](#UCUM), unless the symbolic representation does not reflect common usage (e.g. "RPM" is commonly used to report fan speeds in revolutions-per-minute, but has no simple UCUM representation).  For units with prefixes (e.g. megabyte, which has the UCUM prefix "M" and symbol "By"), the case-sensitive "(c/s)" symbol for the prefix as listed in UCUM should be prepended to the unit symbol.  For values which also include rate information (e.g. megabytes per second), the rate unit's symbol should be appended and use a "/" slash character as a separator (e.g. "Mby/s").
 
 ~~~xml
-	    <Annotation Term="Measures.Unit" String="W"/>
+	    <Annotation Term="Measures.Unit" String="MBy"/>
 ~~~
 
 The `Unit` annotation term is defined in http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml.
@@ -2384,6 +2385,6 @@ The file where the events are written, one or more messages per event should at 
 | ---     | ---      | ---             |
 | 1.0.0   | 2015-8-4 | Initial release |
 | 1.0.1   | 2015-9-17| Errata release.  Clarified normative use of LongDescription in schema files.  Clarified usage of the 'rel-describedby' link header.  Corrected text in example of 'Select List' in OData Context property.  Clarified Accept-Encoding Request header handling.  Deleted duplicative and conflicting statement on returning extended error resources.  Clarified relative URI resolution rules. Various grammatical corrections. Clarified USN format.  |
-| 1.0.2   | 2016-2-25| Errata release.  Clarified normative usage of the Context Property, the ability to use two URL forms in the property, and the "@odata.context" URL examples throughout.  Corrected name of Measures.Unit annotation term as used in examples.  Various typographical errors. Correctd outdated reference to Core OData specification in Annotation Term examples.  Clarified that implementation of the SSDP protocol is optional.  Added missing OPTIONS method to the allowed HTTP Methods list.  Corrected typographical error in the SSDP USN field's string definition (now '::dmtf-org').  Clarified usage of 'charset=utf-8' in the HTTP Accept and Content-Type headers.  Added section detailing the location of the Redfish Schema Repository. Clarified OData-Version header matching rules. |
+| 1.0.2   | 2016-2-25| Errata release.  Clarified normative usage of the Context Property, the ability to use two URL forms in the property, and the "@odata.context" URL examples throughout.  Corrected name of Measures.Unit annotation term as used in examples. Added recommendation for UCUM units of measure for Measures.Unit annotation terms.  Various typographical errors. Correctd outdated reference to Core OData specification in Annotation Term examples.  Clarified that implementation of the SSDP protocol is optional.  Added missing OPTIONS method to the allowed HTTP Methods list.  Corrected typographical error in the SSDP USN field's string definition (now '::dmtf-org').  Clarified usage of 'charset=utf-8' in the HTTP Accept and Content-Type headers.  Added section detailing the location of the Redfish Schema Repository. Clarified OData-Version header matching rules. |
 
  
