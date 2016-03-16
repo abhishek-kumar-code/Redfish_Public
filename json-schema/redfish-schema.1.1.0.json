@@ -23,7 +23,7 @@
         },
         "longDescription": {
             "type": "string",
-            "description": "This attribute shall contain normative language relating to the Redfish Sprecification and documentation."
+            "description": "This attribute shall contain normative language relating to the Redfish Specification and documentation."
         },
         "copyright": {
             "type": "string",
