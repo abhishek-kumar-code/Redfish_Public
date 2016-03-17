@@ -74,7 +74,7 @@
           <Annotation Term="OData.Description" String="The size of the storage device."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the size (in bytes) of the Storage Device."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
-          <Annotation Term="Measures.Unit" String="Bytes"/>
+          <Annotation Term="Measures.Unit" String="By"/>
         </Property>
       </ComplexType>
 
