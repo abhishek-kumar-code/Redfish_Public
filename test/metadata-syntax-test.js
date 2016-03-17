@@ -52,12 +52,20 @@ files.forEach(function(file) {
       for(var i = 0; i < measures.length; i++)
       {
           var unitName = measures[i].value();
-          var ucumTypes = ucum.get('//*[local-name()="unit"][@Code="'+unitName+'"]');
+          var ucumTypes = ucum.get('//*[@Code="'+unitName+'"]');
           if(ucumTypes === undefined)
           {
-              throw new Error('Unit name '+unitName+' is not a valid UCUM measure');
+              prefix = ucum.get('//*[local-name()="prefix"][@Code="'+unitName[0]+'"]');
+              if(prefix !== undefined)
+              {
+                  var tmp = unitName.substring(1);
+                  ucumTypes = ucum.get('//*[@Code="'+tmp+'"]');
+              }
+              if(ucumTypes === undefined)
+              {
+                  throw new Error('Unit name '+unitName+' is not a valid UCUM measure');
+              }
           }
-          console.log(ucumTypes);
       }
     }
   }
