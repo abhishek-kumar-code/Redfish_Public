@@ -1,0 +1,36 @@
+{
+    "@Redfish.Copyright":"Copyright (c) 2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",    
+    "@odata.context": "/redfish/v1/$metadata#Systems/Links/Members/1/Memory/Links/Members/2/Links/Metrics/$entity",
+    "@odata.id": "/redfish/v1/Systems/4/Dimm/1/Metrics",
+    "@odata.type": "#DimmMetrics.v1_0_0.DimmMetrics",
+    "Name": "DIMM Metrics",
+    "Id": "Metrics",
+    "BlockSizeB": 4096,
+    "CurrentPeriod": {
+        "BlocksRead": 0,
+        "BlocksWritten": 0
+    },
+    "Lifetime": {
+        "BlocksRead": 0,
+        "BlocksWritten": 0
+    },
+    "HealthData": {
+        "RemainingSpareBlockPercentage": 50,
+        "IsLastShutdownSuccess": true,
+        "DataLossDetected": false,
+        "PerformanceDegraded": false,
+        "AlarmTrips": {
+            "Temperature": true,
+            "SpareBlock": false,
+            "UncorrectableError": false,
+            "CorrectedError": false
+        }
+    },
+    "Actions": {
+        "#Dimm.ClearCurrentPeriod": {
+            "target": "/redfish/v1/Systems/4/Dimm/1/Actions/Dimm.ClearCurrentPeriod"
+        },
+        "Oem": {}
+    },
+    "Oem": {}
+}

@@ -2,7 +2,7 @@
     "@Redfish.Copyright": "Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata/TaskService",
     "@odata.id": "/redfish/v1/TaskService",
-    "@odata.type": "#TaskService.1.0.0.TaskService",
+    "@odata.type": "#TaskService.v1_0_0.TaskService",
     "Id": "TaskService",
     "Name": "Tasks Service",
     "DateTime": "2015-03-13T04:14:33+06:00",

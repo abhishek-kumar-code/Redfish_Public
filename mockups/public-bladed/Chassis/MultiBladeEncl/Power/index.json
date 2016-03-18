@@ -1,0 +1,138 @@
+{
+    "@Redfish.Copyright": "Copyright © 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#Chassis/Members/MultiBladeEncl/Power/$entity",
+    "@odata.id": "/redfish/v1/Chassis/MultiBladeEncl/Power",
+    "@odata.type": "#Power.v1_0_1.Power",
+    "Id": "Power",
+    "Name": "Quad Blade Chassis Power",
+    "PowerSupplies": [
+        {
+            "@odata.id": "/redfish/v1/Chassis/MultiBladeEncl/Power#/PowerSupplies/0",
+            "MemberId": "0",
+            "Name": "Power Supply 0",
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK"
+            },
+            "PowerSupplyType": "AC",
+            "LineInputVoltageType": "ACHighLine",
+            "LineInputVoltage": 220,
+            "PowerCapacityWatts": 1450,
+            "LastPowerOutputWatts": 650,
+            "Model": "325457-A06",
+            "FirmwareVersion": "2.20",
+            "SerialNumber": "1S0000523",
+            "PartNumber": "425-591-654",
+            "SparePartNumber": "425-591-654",
+            "Redundancy": [
+                {
+                    "@odata.id": "/redfish/v1/Chassis/MultiBladeEncl/Power#/Redundancy/0"
+                }
+            ],
+            "RelatedItem": [
+                {
+                    "@odata.id": "/redfish/v1/Chassis/MultiBladeEncl"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Blade1"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Blade2"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Blade3"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Blade4"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Systems/529QB9450R6"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Systems/529QB9451R6"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Systems/529QB9452R6"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Systems/529QB9453R6"
+                }
+            ]
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/MultiBladeEncl/Power#/PowerSupplies/1",
+            "MemberId": "1",
+            "Name": "Power Supply 1",
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK"
+            },
+            "PowerSupplyType": "AC",
+            "LineInputVoltageType": "ACHighLine",
+            "LineInputVoltage": 222,
+            "PowerCapacityWatts": 1450,
+            "LastPowerOutputWatts": 635,
+            "Model": "325457-A06",
+            "FirmwareVersion": "2.20",
+            "SerialNumber": "1S0000524",
+            "PartNumber": "425-591-654",
+            "SparePartNumber": "425-591-654",
+            "Redundancy": [
+                {
+                    "@odata.id": "/redfish/v1/Chassis/MultiBladeEncl/Power#/Redundancy/0"
+                }
+            ],
+            "RelatedItem": [
+                {
+                    "@odata.id": "/redfish/v1/Chassis/MultiBladeEncl"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Blade1"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Blade2"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Blade3"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Blade4"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Systems/529QB9450R6"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Systems/529QB9451R6"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Systems/529QB9452R6"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Systems/529QB9453R6"
+                }
+            ]
+        }
+    ],
+    "Redundancy": [
+        {
+            "@odata.id": "/redfish/v1/Chassis/MultiBladeEncl/Power#/Redundancy/0",
+            "MemberId": "0",
+            "Name": "Power Supply Redundancy",
+            "RedundancySet": [
+                {
+                    "@odata.id": "/redfish/v1/Chassis/MultiBladeEncl/Power#/PowerSupplies/0"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Chassis/MultiBladeEncl/Power#/PowerSupplies/1"
+                }
+            ],
+            "Mode": "N+m",
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK"
+            },
+            "MinNumNeeded": 1,
+            "MaxNumSupported": 2
+        }
+    ]
+}

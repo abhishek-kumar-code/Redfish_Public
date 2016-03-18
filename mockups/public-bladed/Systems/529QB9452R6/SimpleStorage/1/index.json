@@ -1,0 +1,33 @@
+{
+    "@Redfish.Copyright": "Copyright © 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#Systems/Members/529QB9452R6/SimpleStorage/Members/$entity",
+    "@odata.id": "/redfish/v1/Systems/529QB9452R6/SimpleStorage/1",
+    "@odata.type": "#SimpleStorage.v1_0_0.SimpleStorage",
+    "Id": "1",
+    "Name": "Simple Storage Controller",
+    "Description": "System SATA",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "Devices": [
+        {
+            "Name": "SATA Bay 1",
+            "Manufacturer": "Contoso",
+            "Model": "3000GT8",
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK"
+            }
+        },
+        {
+            "Name": "SATA Bay 2",
+            "Manufacturer": "Contoso",
+            "Model": "3000GT8",
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK"
+            }
+        }
+    ]
+}
