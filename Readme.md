@@ -1,7 +1,9 @@
+[![Build Status](https://magnum.travis-ci.com/DMTF/spmf.svg?token=ozH2uEG6iB1dbkNvyKLZ&branch=master)](https://magnum.travis-ci.com/DMTF/spmf)
+<p align="center">
+  <img src="http://redfish.dmtf.org/sites/all/themes/dmtf2015/images/dmtf-redfish-logo.png" alt="DMTF Redfish" width=180>
+</p>
 
 #SPMF Github User Guide
-
-[![Build Status](https://magnum.travis-ci.com/DMTF/spmf.svg?token=ozH2uEG6iB1dbkNvyKLZ&branch=master)](https://magnum.travis-ci.com/DMTF/spmf)
 
 This is a guide to the policies and procedures used by the Forum for managing documents and code deliverables in the private Github repository.  This is solely a guide to the SPMF's usage of Github and the processes for handling issues and submissions.  **This is NOT a substitute for learning how to use Github itself. **
 
@@ -11,11 +13,11 @@ All members are encouraged to create a local clone (not a fork) of the repositor
 
 ## Obtaining Access
 
-Only SPMF Forum members shall have access to the repository.  Forum Alliance Partners, Contractors or other individuals may be granted access according to DMTF and SPMF Policy.
+Only SPMF Forum members shall have access to the repository.  Forum Alliance Partners, Contractors or other individuals may be granted access according to DMTF and SPMF Policy.  All SPMF members by default have read-only access to the repository which allows issues to be entered, cloning or forking of the repository, or pull requests (from the repository or a clone) to be made.  Forum members which require read-write access may request it from their company's Primary or Alternate representative, who will determine the need and request access from the co-Chair.  All requests for "Author" (read-write) access received by the co-Chair will be approved.  
 
 ## Contents of the SPMF Repository
 
-contains forum work, documents, code, normative and informational...
+The "spmf" private repository contains forum work in progress, published documents and specifications (both normative and informational), schema files and mockups.  Presentations, documents and other binaries (in formats not natively supported by Github) releated to Forum business are stored in the DMTF's web site under the SPMF: https://members.dmtf.org/apps/org/workgroup/spmf/  
 
 ### Master Branch
 
@@ -23,20 +25,31 @@ The 'Master' (or main) branch of the repository contains deliverables that have 
 
 The Forum co-Chairs reserve the right to make typographical, syntax, formatting or other editorial corrections to items in the Master branch in order to complete release processes, correct issues with Forum deliverable, or otherwise resolve issues impeding Forum business.
 
-### Directories
+### Contents of the Repository
 
-The following are the primary directories within the SPMF repository:
+In the root folder of the repository are the primary documents created by the SPMF.  Other files in the root folder are supporting files of the repository and are not normally accessed or referenced.
 
-Make into a table...
+| Filename | Description |
+|----------|-------------|
+| Readme.md | This document - the SPMF Github User Guide |
+| Specification.md | The Redfish API Specification - DSP0266 |
+| WhitePaper.md | The Redfish White Paper - DSP2044 |
+| RedfishFAQ.md | The Redfish FAQ - DSP2045 |
+| SchemaSupplement.md | The Redfish Schema Supplemental material - DSPxxxx |
+| README8010.md | Readme file used with the schema release bundle - DSP8010 |
+| README2043.md | Readme file used with the mockup release bundle - DSP2043 |
 
-#### Root
-spec and other docs
-#### Mockups
-#### Metadata
-#### json-schema
-#### Registries
-#### Other
-Release, test
+Off of the root are several folders which contain the schemas and mockups created by the Forum.
+
+| Folder  | Contents |
+|---------|----------|
+| json-schema | Redfish Schema files in json-schema format |
+| metadata | Redfish Schema files in CSDL format |
+| mockups | Redfish Mockups including the "development" and published, public-facing mockups. |
+| registries | Redfish Message Registries |
+| release | Supporting files and published documents in HTML and PDF formats |
+| test | Supporing files for managing the repository |
+
 
 ### Other Repositories
 
@@ -61,13 +74,15 @@ Create a new issue using Github's "New Issue" button.  It is helpful to label th
 
 ### Working in Branches
 
-Everying in a branch...
+TODO - Everying in a branch...
 
 ### Pull Request
 
-define workflow
+TODO - define workflow
 
 #### Connecting Pull Request to an open Issue
+
+TODO 
 
 ## Issue Management Process
 
@@ -86,7 +101,7 @@ and label the issue with "Ready for Review" so that the solution can be reviewed
 
 ### Approval, Merging and Automatic Checks
 
-watch for FAIL!
+TODO - watch for FAIL!
 
 ### Label Flow
 
@@ -133,5 +148,11 @@ In addition to the normal Github labels, the following custom labels have been c
 ## Travis automatic tools
 Chris TODO...
 ## Release process
+
+Checklist for schema or specification release
+ Namespace creation
+ Schema repository placement
+ $metadata example updates
+ 
 ## github.io
 
