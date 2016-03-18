@@ -53,16 +53,27 @@ Off of the root are several folders which contain the schemas and mockups create
 
 ### Other Repositories
 
+The SPMF maintains several other repositories on Github within the DMTF organization.  See the README document in each of these repositories for more information.
+  
 #### Redfish-tools
-Public repo for tools
+
+[https://github.com/DMTF/Redfish-tools](https://github.com/DMTF/Redfish-tools "https://github.com/DMTF/Redfish-tools")
+
+This is the public repository containing tools developed by the Forum and released as open source.  Code posted here has been approved by the Forum for public release.  Forum members contributing code to the Forum should use the private spmf-tools repository for those submissions.
 
 #### spmf-tools
-Private repo for internal tools or staging for public tools
+
+[https://github.com/DMTF/spmf-tools](https://github.com/DMTF/spmf-tools "https://github.com/DMTF/spmf-tools")
+
+This is the Private repository for both internal tools (not intended for public release)or for staging or development of tools intended for eventual public release in the Redfish-tools repository.
  
 ## Using the Github Repository  
 
 ### SPMF Viewer
-http://dmtf.github.io/spmf
+
+[https://dmtf.github.io/spmf](https://dmtf.github.io/spmf "http://dmtf.github.io/spmf")
+
+This application provides an easy method for browsing the Redfish mockups using normal browser controls, with clickable links to navigate between resources within the mockup. 
 
 
 
