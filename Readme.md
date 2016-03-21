@@ -85,15 +85,19 @@ Create a new issue using Github's "New Issue" button.  It is helpful to label th
 
 ### Working in Branches
 
-TODO - Everying in a branch...
+Any proposed change, fix, addition or enhancement to the Forum deliverables must be approved before the change is merged into the Master branch.  For that reason, all work must occur in a branch off of Master so that the work can be reviewed in its entirety via a Pull Request.  By creating a branch, you can make changes or additions to numerous files in the repository and have them all reviewed together.  This is typical of Forum business, as an addition to a Schema may require changes to a number of schema files, the mockups, and perhaps the Specification itself.  
 
-### Pull Request
+Note: Make sure you create (and select) a branch before starting any work to avoid losing changes or inadvertently saving unapproved changes directly to the Master branch.
 
-TODO - define workflow
+Any unapproved changes to the Master branch may be reverted by the co-Chair without notice.
 
-#### Connecting Pull Request to an open Issue
 
-TODO 
+### Pull Requests
+
+When work on a proposed fix or addition to the deliverables has been completed, the  author makes a Pull Request to signal that this work is ready for review by the Forum for merging into the Master branch.  
+
+Fixes for issues can be proposed prior to an agreed Approved solution, this is encouraged for obvious errors or other straightforward changes.  It is not uncommon for the Forum to review a Pull Request which addresses a new issue (going through triage during a meeting).  
+
 
 ## Issue Management Process
 
@@ -101,7 +105,7 @@ TODO
 
 During SPMF meetings, triage is performed on new issues, with discussion, categorization and assignment of an owner.  The issue creator is welcome and encouraged to self-assign ownership and propose a solution to the issue (going as far as generating a pull request) prior to triage.   
 
-### Review and Create Pull Request
+### Review Issue and Assign Owner
 
 Once a solution and disposition for the issue been decided by the Forum, that solution is documented in an issue comment, and the issue is labeled with "Approved".  The assigned owner is then tasked with completing the work to resolve the issue.  
 
@@ -112,7 +116,7 @@ and label the issue with "Ready for Review" so that the solution can be reviewed
 
 ### Approval, Merging and Automatic Checks
 
-TODO - watch for FAIL!
+Once all comments have been reviewed and the Forum has agreed to the changes, the co-Chair will call to Merge the changes into the Master branch.  The Travis CI processes will be allowed to execute to check for any syntax errors or other technical issues with the changes before the merge is completed.  Unless otherwise requested, merged branches will be deleted from the repository.
 
 ### Label Flow
 
@@ -129,9 +133,11 @@ There are a number of Forum-defined custom Github labels.  See the "Label Usage"
 
 ## How to Submit New Proposals or Schemas
 
-Technology submisssion vs. company/individual submission
+The Forum welcomes and encourages submissions of new schema(s), clarifications or additions to the Specification, mockups, tools and other relevant documentation to further the Forum's goals.  
 
-How to submit new stuff we didn't ask for...
+###Technology submission vs. Member or individual submission
+
+An DMTF Technology Submission (through the Feedback Portal) is needed when technology has been created by multiple members or non-member companies.  Proposals or submissions made solely by a single Member or individual can be made using a Branch and Pull Request directly in the repository.  
 
 ## Label Usage
 
@@ -152,18 +158,22 @@ In addition to the normal Github labels, the following custom labels have been c
 | Security | This issue pertains to security-related topics such as authentication, privileges or encryption. |
 | Specification | This issue is directed at the Redfish Specification document itself. |
 | TF_<name> | This issue is directed at work being performed and currently owned by one of the SPMF Task Forces.  Task Force issues are addressed in Task Force meetings, where issues are resolved and merges are allowed into the Task Force branch - but not Master. |
+| TF_A_Master | This issue is directed at the Specification or Schema, and is to be addressed by the Forum.  This label is used to allow easy filtering of all Task Force-related issues or Pull Requests |
 | Vote to Merge | This label indicates that an issue or pull request is ready for review, and the issue owner has requested voting members to approve the solution.  This is a method to streamline Forum meetings by indicating members have completed their review of a solution to an issue. |
 
 # Administration
 
 ## Travis automatic tools
-Chris TODO...
+
+The Travis Continuous Integration suite of tools are used for verifying syntax and link validity in schema and mockup files.
+
 ## Release process
 
-Checklist for schema or specification release
- Namespace creation
- Schema repository placement
- $metadata example updates
- 
-## github.io
+The following is a checklist for schema or specification release:
 
+-  Namespace creation: Schema releases must increment the schema version, and therefore must create a new CSDL namespace.
+-  New schemas: The $metadata example must be updated to include the new schema file(s).
+ 
+##github.io
+
+Information regarding the SPMF Viewer application TODO here...
