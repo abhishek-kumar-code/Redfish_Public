@@ -62,7 +62,7 @@
 
       <EntityType Name="Volume" BaseType="Volume.Volume">
         <Property Name="Status" Type="Resource.Status"/>
-        <Property Name="SizeBytes" Type="Edm.Int64">
+        <Property Name="CapacityBytes" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The size in bytes of this Volume"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the size in bytes of the associated volume."/>
