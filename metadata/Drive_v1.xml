@@ -63,7 +63,7 @@
         <Property Name="SizeBytes" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The size in bytes of this Drive"/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain the number of bytes which are accesible to the user for the associated drive."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the raw size in bytes of the associated drive."/>
           <Annotation Term="Measures.Unit" String="By"/>
         </Property>
         <Property Name="FailurePredicted" Type="Edm.Boolean">
