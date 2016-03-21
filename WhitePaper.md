@@ -389,6 +389,26 @@ execution of the custom action.  This pattern is not idempotent because re-posti
 the same content will result in additional work being performed.  An example of
 a custom action might be sending a test event or clearing a log.
 
+## Inheritance & Polymorphism 
+
+One of the items you will not see much of us Inheritance or Polymorphism.  
+Object inherit from a single master object called Resource.  Other than that, Redfish doesn't use inheritance.  Likewise, 
+Redfish doesn't take common properties and put them into a parent object.  Thus, there are no sub-objects to specialize from 
+any schema. So you will never see sub-types returned in the same collection along with a parent type.
+
+## Inheritance by Copy
+Redfish takes common definitions and, if they aren't in Resource, the authors just cut and paste the objects
+that are needed from other schema and include them in the object.  This does place a burden of keeping things in sync
+on the authors but it also prevents the reader from digging through reference into another reference into another reference just to find out the semantics of any given object, property or action.
+
+## Polymorphism by Union
+Redfish takes resources that have semantics in common and puts the definition all in the same resource.  This way, similar resources
+will have similar semantics.  Implementers then just don't use the properties that aren't supported.  So, for example, if there 
+are 3 different devices that are 85% similar, the 15% difference of each device is included in the common schema definiiion.  
+Implementers would then use the parts of the 85% they need for their resource as well as the 15% of the definition that applies
+to the device they are implementing.  This does make for larger schema, but also makes for fewer schema.  When you see this approach,
+you will often see an extra "resource type" style property in the schema and resource to help clients tell what flavor this device is.
+
 # Conclusion
 The Redfish API represents a new style of programming for IT that is capable of managing systems from hyper-scale to blades to stand alone servers in a consistent manner.  We believe it represents a natural evolution that fits customer demand as well as the tools being used by those customers.
 
