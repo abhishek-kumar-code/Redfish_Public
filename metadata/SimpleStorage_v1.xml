@@ -66,6 +66,10 @@
 
     </Schema>
 
+	<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SimpleStorage.v1_0_1">
+	      <EntityType Name="SimpleStorage" BaseType="SimpleStorage.v1_0_1.SimpleStorage">
+	</Schema>
+	
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SimpleStorage.v1_1_0">
 
       <ComplexType Name="Device" BaseType="SimpleStorage.v1_0_0.Device">
@@ -79,6 +83,8 @@
       </ComplexType>
 
     </Schema>
+	
+	
 
   </edmx:DataServices>
 </edmx:Edmx>

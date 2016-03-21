@@ -133,5 +133,10 @@
       </EnumType>
 
     </Schema>
+	
+	<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Namespace="ManagerNetworkProtocol.v1_0_1">
+      <EntityType Name="ManagerNetworkProtocol" BaseType="ManagerNetworkProtocol.ManagerNetworkProtocol.v1_0_0"/>
+    </Schema>
+
   </edmx:DataServices>
 </edmx:Edmx>
