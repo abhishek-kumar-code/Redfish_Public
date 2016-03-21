@@ -51,7 +51,7 @@
         </Property>
       </ComplexType>
 
-      <Term Name="Enumeration" Type="Collection(RedfishExtensions.v1_0_0.EnumerationMember">
+      <Term Name="Enumeration" Type="Collection(RedfishExtensions.v1_0_0.EnumerationMember)">
         <Annotation Term="OData.Description" String="The term enumerates the allowable set of non-standard string values where a standard enumeration cannot be used."/>
       </Term>
 
