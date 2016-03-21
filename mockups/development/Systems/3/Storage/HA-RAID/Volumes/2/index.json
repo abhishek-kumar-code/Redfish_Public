@@ -10,7 +10,7 @@
         "Health": "OK"
     },
     "VolumeType": "Mirrored",
-    "VolumeSizeInBytes": 104857600,
+    "CapacityBytes": 104857600,
     "Identifiers": [
         {
             "DurableNameFormat": "UUID",

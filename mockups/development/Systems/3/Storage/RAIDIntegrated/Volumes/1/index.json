@@ -11,7 +11,7 @@
     },
     "Encrypted": false,
     "VolumeType": "NonRedundant",
-    "VolumeSizeInBytes": 104857600,
+    "CapacityBytes": 104857600,
     "Identifiers": [
         {
             "DurableNameFormat": "VPD83type3",

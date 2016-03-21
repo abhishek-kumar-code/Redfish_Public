@@ -126,7 +126,7 @@
                 "SpannedStripesWithParity",
                 "SpannedStripesWithRedundantParity"
             ],
-            "VolumeSizeInBytes@Redfish.AllowableRange": [
+            "CapacityBytes@Redfish.AllowableRange": [
                 104857600,
                 109951162777600
             ]
