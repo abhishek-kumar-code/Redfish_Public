@@ -375,19 +375,22 @@
           <Annotation Term="OData.Description" String="High Voltage DC input (380V)"/>
         </Member>
         <Member Name="AC120V">
-          <Annotation Term="OData.Description" String="100-127V AC input"/>
+          <Annotation Term="OData.Description" String="AC 120V nominal input"/>
         </Member>
         <Member Name="AC240V">
-          <Annotation Term="OData.Description" String="200-240V AC input"/>
+          <Annotation Term="OData.Description" String="AC 240V nominal input"/>
         </Member>
         <Member Name="AC277V">
-          <Annotation Term="OData.Description" String="277V AC input"/>
+          <Annotation Term="OData.Description" String="AC 277V nominal input"/>
         </Member>
         <Member Name="ACDCWideRange"> 
-          <Annotation Term="OData.Description" String="Wide range AC (120-277V) or DC (240-380V)"/>
+          <Annotation Term="OData.Description" String="Wide range AC or DC input"/>
+        </Member>
+        <Member Name="ACWideRange"> 
+          <Annotation Term="OData.Description" String="Wide range AC input"/>
         </Member>
         <Member Name="DC240V">
-          <Annotation Term="OData.Description" String="DC 240-377V input"/>
+          <Annotation Term="OData.Description" String="DC 240V nominal input"/>
         </Member>
       </EnumType>
 
