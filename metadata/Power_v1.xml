@@ -383,7 +383,7 @@
         <Member Name="AC277V">
           <Annotation Term="OData.Description" String="AC 277V nominal input"/>
         </Member>
-        <Member Name="ACDCWideRange"> 
+        <Member Name="ACandDCWideRange"> 
           <Annotation Term="OData.Description" String="Wide range AC or DC input"/>
         </Member>
         <Member Name="ACWideRange"> 
