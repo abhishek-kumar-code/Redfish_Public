@@ -49,9 +49,9 @@
           <Annotation Term="OData.Description" String="Array of systems supported by this attribute registry."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array containing a list of systems supported by this attribute registry."/>
         </Property>
-        <Property Name="RegistryEntries" Type="AttributeRegistry.v1_0_0.RegistryEntries" Nullable="false" >
-          <Annotation Term="OData.Description" String="List of all attributes and their metadata for this component."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall a list of all attributes for this component, along with their possible values, dependencies, and other metadata."/>
+        <Property Name="RegistryEntries" Type="Collection(AttributeRegistry.v1_0_0.RegistryEntries)" Nullable="false" >
+          <Annotation Term="OData.Description" String="Array of all attributes and their metadata for this component."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array containing a list of all attributes for this component, along with their possible values, dependencies, and other metadata."/>
         </Property>
       </EntityType>
 
@@ -104,7 +104,7 @@
           <Annotation Term="OData.Description" String="The type of the attribute."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an enumeration describing type of the attribute."/>
         </Property>
-        <Property Name="Value" Type="Collection(AttributeRegistry.v1_0_0.AttributeValue)" >
+        <Property Name="Value" Type="AttributeRegistry.v1_0_0.AttributeValue" >
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The array containing possible values for attributes of type 'Enumeration'."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array containing the possible values of an attribute of type 'Enumeration'."/>
