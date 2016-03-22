@@ -691,6 +691,7 @@ HTTP defines headers that can be used in response messages.  The following table
 | Allow                              | Yes         | POST, PUT, PATCH, DELETE              | Returned on GET or HEAD operation to indicate the other allowable operations for this resource.  Shall be returned with a 405 (Method Not Allowed) response to indicate the valid methods for the specified Request URI.                                                                                                     |
 | WWW-Authenticate                   | Yes         | [RFC 2617][2617]                      | Required for Basic and other optional authentication mechanisms. See the [Security][#Security] section for details.                                                                                                                                                                                                             |
 | X-Auth-Token | Yes      | Opaque encoded octet strings | Used for authentication of user sessions. The token value shall be indistinguishable from random. |
+| Retry-After | No | [RFC 2616, Section 14.37][2616-14.37] | Used to inform a client how long to wait before requesting the Task information again. |
 
 
 [2616-14.3]: http://pretty-rfc.herokuapp.com/RFC2616#header.content-length
@@ -698,6 +699,7 @@ HTTP defines headers that can be used in response messages.  The following table
 [2616-14.17]: http://pretty-rfc.herokuapp.com/RFC2616#header.content-type
 [2616-14.19]: http://pretty-rfc.herokuapp.com/RFC2616#header.etag
 [2616-14.30]: http://pretty-rfc.herokuapp.com/RFC2616#header.location
+[2616-14.37]: http://pretty-rfc.herokuapp.com/RFC2616#header.retry-after
 [2616-14.38]: http://pretty-rfc.herokuapp.com/RFC2616#header.server
 [5988-5]: http://tools.ietf.org/html/rfc5988#section-5
 [cors-5.1]: http://www.w3.org/TR/cors/#access-control-allow-origin-response-header
@@ -2012,7 +2014,7 @@ Each task has a number of possible states.  The exact states and their semantics
 
 When a client issues a request for a long-running operation, the service returns a status of 202 (Accepted).
 
-Any response with a status code of 202 (Accepted) shall include a location header containing the URL of a monitor for the task and may include a wait header to specify the amount of time the client should wait before querying status of the operation.
+Any response with a status code of 202 (Accepted) shall include a location header containing the URL of a monitor for the task and may include the Retry-After header to specify the amount of time the client should wait before querying status of the operation.
 
 The client should not include the mime type application/http in the Accept Header when performing a GET request to the status monitor.
 
@@ -2029,7 +2031,7 @@ The client can continue to get information about the status by directly querying
 * Services that support asynchronous operations shall implement the Task resource
 * The response to an asynchronous operation shall return a status code of 202 (Accepted)
   and set the HTTP response header "Location" to the URI of a status monitor
-  associated with the activity. The response may also include a wait header specifying
+  associated with the activity. The response may also include the Retry-After header specifying
   the amount of time the client should wait before polling for status. The response body
   should contain a representation of the Task resource in JSON.
 * GET requests to either the Task monitor or the Task Resource shall return the current status of the operation without blocking.
