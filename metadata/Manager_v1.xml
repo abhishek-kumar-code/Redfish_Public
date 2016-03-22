@@ -127,8 +127,8 @@
         </NavigationProperty>        
         <Property Name="ServiceEntryPointUUID" Type="Resource.UUID" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The UUID of the Redfish Service Entry Point provided by this manager"/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain the UUID of the Redfish Service Entry Point provided by this manager.  This property shall not be present if this manager does not provide a Redfish Service Entry Point."/>
+          <Annotation Term="OData.Description" String="The UUID of the Redfish Service provided by this manager"/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the UUID of the Redfish Service provided by this manager.  Each Manager providing an Entry Point to the same Redfish Service shall report the same UUID value (even though the name of the property may imply otherwise).  This property shall not be present if this manager does not provide a Redfish Service Entry Point."/>
         </Property>  
         <Property Name="UUID" Type="Resource.UUID">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -315,8 +315,12 @@
       <EntityType Name="Manager" BaseType="Manager.v1_0_0.Manager"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_0_2">
+      <EntityType Name="Manager" BaseType="Manager.v1_0_1.Manager"/>
+    </Schema>
+	
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_1_0">
-     <EntityType Name="Manager" BaseType="Manager.v1_0_1.Manager"/>	
+     <EntityType Name="Manager" BaseType="Manager.v1_0_2.Manager"/>	
      <ComplexType Name="Links" BaseType="Manager.v1_0_0.Links">
         <NavigationProperty Name="ManagerInChassis" Type="Chassis.Chassis">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
