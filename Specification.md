@@ -72,6 +72,7 @@ The following referenced documents are indispensable for the application of this
 * <a id="OData-JSON">OData Version 4.0 JSON Format</a>. 24 February 2014. [http://docs.oasis-open.org/odata/odata-json-format/v4.0/os/odata-json-format-v4.0-os.html]("http://docs.oasis-open.org/odata/odata-json-format/v4.0/os/odata-json-format-v4.0-os.html")
 * <a id="OData-UnitsOfMeasure">OData Version 4.0: Units of Measure Vocabulary</a>. 24 February 2014. [http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml]("http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml")
 * <a id="SSDP">Simple Service Discovery Protocol/1.0 </a>. 28 October 1999 ("https://tools.ietf.org/html/draft-cai-ssdp-v1-03")
+* <a id="UCUM">The Unified Code for Units of Measure</a>.  [http://www.unitsofmeasure.org/ucum.html]("http://www.unitsofmeasure.org/ucum.html") 
 
 ## Terms and Definitions
 In this document, some terms have a specific meaning beyond the normal English meaning. Those terms are defined in this clause.
@@ -1618,10 +1619,12 @@ The `RequiredOnCreate` annotation term is defined in http://redfish.dmtf.org/sch
 
 ##### Units of Measure
 
-In addition to following [naming conventions](#common-naming-conventions), properties representing units of measure shall be annotated with the Units annotation term in order to specify the units of measurement for the property.
+In addition to following [naming conventions](#common-naming-conventions), properties representing units of measure shall be annotated with the Units annotation term in order to specify the units of measurement for the property.  
+
+The value of the annotation should be a string which contains the case-sensitive "(c/s)" symbol of the unit of measure as listed in the [Unified Code for Units of Measure (UCUM)](#UCUM), unless the symbolic representation does not reflect common usage (e.g. "RPM" is commonly used to report fan speeds in revolutions-per-minute, but has no simple UCUM representation).  For units with prefixes (e.g. Mebibyte (1024^2 bytes), which has the UCUM prefix "Mi" and symbol "By"), the case-sensitive "(c/s)" symbol for the prefix as listed in UCUM should be prepended to the unit symbol.  For values which also include rate information (e.g. megabits per second), the rate unit's symbol should be appended and use a "/" slash character as a separator (e.g. "Mbit/s").
 
 ~~~xml
-	    <Annotation Term="Measures.Unit" String="Watts"/>
+	    <Annotation Term="Measures.Unit" String="MiBy"/>
 ~~~
 
 The `Unit` annotation term is defined in http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml.
@@ -1766,15 +1769,15 @@ The definition of any other properties that are contained within the OEM-specifi
 
 ##### Oem Property Naming
 
-The OEM-specified objects within the Oem property are named using a unique OEM identifier for the top of the namespace under which the property is defined. There are two specified forms for the identifier. The identifier shall be either an ICANN-recognized domain name (including the top-level domain suffix), or an IANA-assigned Enterprise Number prefaced with "EID:".
+The OEM-specified objects within the Oem property are named using a unique OEM identifier for the top of the namespace under which the property is defined. There are two specified forms for the identifier. The identifier shall be either an ICANN-recognized domain name (including the top-level domain suffix), with all dot '.' separators replaced with underscores '_', or an IANA-assigned Enterprise Number prefaced with "EID_".
 
-Organizations using '.com' domain names may omit the '.com' suffix (e.g. Contoso.com may use 'Contoso', but Contoso.org must use 'Contoso.org' as their OEM property name). The domain name portion of an OEM identifier shall be considered to be case independent. That is, the text "Contoso.biz", "contoso.BIZ", "conTOso.biZ", and so on, all identify the same OEM and top level namespace.
+Organizations using '.com' domain names may omit the '.com' suffix (e.g. Contoso.com may use 'Contoso', but Contoso.org must use 'Contoso_org' as their OEM property name). The domain name portion of an OEM identifier shall be considered to be case independent. That is, the text "Contoso_biz", "contoso_BIZ", "conTOso_biZ", and so on, all identify the same OEM and top level namespace.
 
-The OEM identifier portion of the property name may be followed by a colon and any additional string to allow further namespacing of OEM-specified objects as desired by the OEM. E.g. "Contoso.com:xxxx" or "EID:412:xxxx". The form and meaning of any text that follows the colon is completely OEM-specific. OEM-specified extension suffixes may be case sensitive, depending on the OEM. Generic client software should treat such extensions, if present, as opaque and not attempt to parse nor interpret the content.
+The OEM identifier portion of the property name may be followed by an underscore and any additional string to allow further namespacing of OEM-specified objects as desired by the OEM. E.g. "Contoso_xxxx" or "EID_412_xxxx". The form and meaning of any text that follows the trailing underscore is completely OEM-specific. OEM-specified extension suffixes may be case sensitive, depending on the OEM. Generic client software should treat such extensions, if present, as opaque and not attempt to parse nor interpret the content.
 
-There are many ways this suffix could be used, depending on OEM need. For example, the Contoso company may have a sub-organization "Research", in which case the OEM-specified property name might be extended to be "Contoso:Research". Alternatively, it could be used to identify a namespace for a functional area, geography, subsidiary, and so on.
+There are many ways this suffix could be used, depending on OEM need. For example, the Contoso company may have a sub-organization "Research", in which case the OEM-specified property name might be extended to be "Contoso_Research". Alternatively, it could be used to identify a namespace for a functional area, geography, subsidiary, and so on.
 
-The OEM identifier portion of the name will typically identify the company or organization that created and maintains the schema for the property. However, this is not a requirement. The identifier is only required to uniquely identify the party that is the top-level manager of a namespace to prevent collisions between OEM property definitions from different vendors or organizations. Consequently, the organization for the top of the namespace may be different than the organization that provides the definition of the OEM-specified property. For example, Contoso may allow one of their customers, e.g. "CustomerA", to extend a Contoso product with certain CustomerA proprietary properties. In this case, although Contoso allocated the name "contosos:customers.CustomerA" it could be CustomerA that defines the content and functionality under that namespace. In all cases, OEM identifiers should not be used except with permission or as specified by the identified company or organization.
+The OEM identifier portion of the name will typically identify the company or organization that created and maintains the schema for the property. However, this is not a requirement. The identifier is only required to uniquely identify the party that is the top-level manager of a namespace to prevent collisions between OEM property definitions from different vendors or organizations. Consequently, the organization for the top of the namespace may be different than the organization that provides the definition of the OEM-specified property. For example, Contoso may allow one of their customers, e.g. "CustomerA", to extend a Contoso product with certain CustomerA proprietary properties. In this case, although Contoso allocated the name "Contoso_customers_CustomerA" it could be CustomerA that defines the content and functionality under that namespace. In all cases, OEM identifiers should not be used except with permission or as specified by the identified company or organization.
 
 #### Oem Property Examples
 The following fragment presents some examples of naming and use of the Oem property as it might appear when accessing a resource. The example shows that the OEM identifiers can be of different forms, that OEM-specified content can be simple or complex, and that the format and usage of extensions of the OEM identifier is OEM-specific.
@@ -1788,18 +1791,18 @@ The following fragment presents some examples of naming and use of the Oem prope
       "slogan": "Contoso anvils never fail",
       "disclaimer": "* Most of the time"
     },
-    "Contoso.biz": {
+    "Contoso_biz": {
       "@odata.type": "http://contoso.biz/schemas/extension1_1#RelatedSpeed",
       "speed" : "ludicrous"
     },
-    "EID:412:ASB_123": {
+    "EID_412_ASB_123": {
       "@odata.type": "http://AnotherStandardsBody/schemas.v1_0_1#powerInfoExt",
       "readingInfo": {
         "readingAccuracy": "5",
         "readingInterval": "20"
       }
     },
-    "Contoso:customers.customerA": {
+    "Contoso_customers_customerA": {
       "@odata.type" : "http://slingShots.customerA.com/catExt.2015#slingPower",
       "AvailableTargets" : [ "rabbit", "duck", "runner" ],
       "launchPowerOptions" : [ "low", "medium", "eliminate" ],
@@ -1829,7 +1832,7 @@ Such bound actions appear in the JSON payload as properties of the Oem type, nes
 ...
 "Actions": {
 	"OEM": {
-		"Contoso.v.v.v#Contoso.Ping": {
+		"Contoso.vx_x_x#Contoso.Ping": {
 			    "target":"/redfish/v1/Systems/1/Actions/OEM/Contoso.Ping"
 		    }
 		}
@@ -2382,6 +2385,6 @@ The file where the events are written, one or more messages per event should at 
 | ---     | ---      | ---             |
 | 1.0.0   | 2015-8-4 | Initial release |
 | 1.0.1   | 2015-9-17| Errata release.  Clarified normative use of LongDescription in schema files.  Clarified usage of the 'rel-describedby' link header.  Corrected text in example of 'Select List' in OData Context property.  Clarified Accept-Encoding Request header handling.  Deleted duplicative and conflicting statement on returning extended error resources.  Clarified relative URI resolution rules. Various grammatical corrections. Clarified USN format.  |
-| 1.0.2   | 2016-2-25| Errata release.  Clarified normative usage of the Context Property, the ability to use two URL forms in the property, and the "@odata.context" URL examples throughout.  Corrected name of Measures.Unit annotation term as used in examples.  Various typographical errors. Correctd outdated reference to Core OData specification in Annotation Term examples.  Clarified that implementation of the SSDP protocol is optional.  Added missing OPTIONS method to the allowed HTTP Methods list.  Corrected typographical error in the SSDP USN field's string definition (now '::dmtf-org').  Clarified usage of 'charset=utf-8' in the HTTP Accept and Content-Type headers.  Added section detailing the location of the Redfish Schema Repository. Clarified OData-Version header matching rules. |
+| 1.0.2   | 2016-2-25| Errata release.  Clarified normative usage of the Context Property, the ability to use two URL forms in the property, and the "@odata.context" URL examples throughout.  Corrected name of Measures.Unit annotation term as used in examples. Added recommendation for UCUM units of measure for Measures.Unit annotation terms.  Various typographical errors. Correctd outdated reference to Core OData specification in Annotation Term examples.  Clarified that implementation of the SSDP protocol is optional.  Added missing OPTIONS method to the allowed HTTP Methods list.  Corrected typographical error in the SSDP USN field's string definition (now '::dmtf-org').  Clarified usage of 'charset=utf-8' in the HTTP Accept and Content-Type headers.  Added section detailing the location of the Redfish Schema Repository. Clarified OData-Version header matching rules. |
 
  
