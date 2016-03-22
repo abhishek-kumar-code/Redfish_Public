@@ -2,7 +2,7 @@
 DocTitle: Redfish Frequently Asked Questions (FAQ)
 DocNumber: '2045'
 DocClass: Informative
-DocVersion: '1.0.0'
+DocVersion: '1.1.0'
 modified: '2015-08-04'
 status: published
 released: true
@@ -122,6 +122,9 @@ Redfish provides methods for extending any resource by using the "oem" object.  
 * implementations cannot add properties to non-OEM sections
 * OEMs can publish their own schemas.  These can be based on or in addition to the Redfish schemas.  These schemas should be referenced in the $metadata construct using OData CSDL and in the JSON Schema File constructs provided off of the service root.
 
+### What about Copying, Distributing or Modifying Schema?
+The DMTF allows this as long as the usage adheres to the DMTF copyright notice.  The copyright notice can be found in the Readme for DSP8010.
+
 ## Why not CIM & MOF?
 We took a different approach for Redfish - we started with the toolset and interface style customers are adopting and leveraged that.  We learned what they use instead of forcing them to learn our way and then hope vendors develop tools to go with it.
 
@@ -137,6 +140,8 @@ Every BMC today has a web server and most of them surface a web page that has a 
 
 The amount of documentation that it takes to understand CIM and the protocols takes reams and reams of paper, resulting in a stack well over a foot high.  Our goal is to have someone read our spec in the morning, play with the data model an hour later and be coding by the afternoon - and that person should not be required to have a college education, understand cardinality, etc.
 
+CIM also allows things like inheritance.  For instance, a Collection could allow not only the resource types but also any resource sub-types based off of that resource types.  Since inheritance is discouraged in Redfish, a language that encourages inheritance was considered an issue.
+
 Lastly is customer demand.  The customers asking for a RESTful API see CIM & MOF as "old", "Windows centric", "storage centric", "OS centric", "too hard" and other negative feedback.  They are asking for something simple that meets their "10 commandlets".
 
 ## Why not Ironic?
@@ -145,7 +150,7 @@ Ironic is the hardware management API for OpenStack.  It is OpenStack specific a
 ## Why is the ETag algorithm left to the implementation?
 Considering the different ETag models (Weak/Strong) mentioned in the spec it seems that leaving the model decision up to the server implementation will leave clients not knowing what has been implemented and therefore not knowing how to interpret the ETag.  
 
-In practice it doesn't matter since the value of the ETag will only be as good as the server is capable of providing for.  The client should treat ETags as opaque anyway and use them to determine if data has changed.  This is the adopted practice in all web servers and is what RFC2616 allows.
+In practice it doesn't matter since the value of the ETag will only be as good as the server is capable of providing for.  The client should treat ETags as opaque anyway and use them to determine if data has changed.  This is the adopted practice in all web servers and is what RFC7230 allows.
 
 ## Why does Redfish need to use ETags at all?
 It allows the use of the If-Match header for replacement of resources.  It also allows the clients to determine if anything has changed before doing a large fetch (a Server collection in Moonshot is hundreds of servers).
@@ -179,3 +184,10 @@ It is possible for a user with the System Administrator role to create user acco
 
 ## Logging of events
 Redfish requires logging of some events, but does not require the implementation of a local log, though one is implied due to the fact that it is represented in both metadata/schema and the mockup. This allows implementations of logging that are record-only logs, or logs which are securely stored outside the service using services like syslog.
+
+# Change Log
+
+| Version | Date      | Description     |
+| ---     | ---       | ---             |
+| 1.0.0   | 2015-9-17   | Initial release |
+| 1.0.1  | 2016-3-17 | Added Clarification on Schema Reuse, Change RFC2616 to RFC7230 |

@@ -1,0 +1,19 @@
+{
+    "@odata.type": "#ManagerAccount.v1_0_0.ManagerAccount",
+    "Id": "john",
+    "Name": "UserAccount",
+    "Description": "User Account",
+    "Enabled": true,
+    "Password": null,
+    "UserName": "john",
+    "RoleId": "ReadOnlyUser",
+    "Locked": false,
+    "Links": {
+       "Role": {
+	    "@odata.id": "/redfish/v1/AccountService/Roles/ReadOnlyUser"
+       }
+    },
+    "@odata.context": "/redfish/v1/$metadata#ManagerAccount.ManagerAccount",
+    "@odata.id": "/redfish/v1/AccountService/Accounts/john",
+    "@Redfish.Copyright":"Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
+}
