@@ -81,7 +81,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MessageRegistryFile.v1_0_1">
-      <EntityType Name="MessageRegistryFile" BaseType="MessageRegistryFile.MessageRegistryFile.v1_0_0"/>
+      <EntityType Name="MessageRegistryFile" BaseType="MessageRegistryFile.v1_0_0.MessageRegistryFile"/>
     </Schema>
     
   </edmx:DataServices>
