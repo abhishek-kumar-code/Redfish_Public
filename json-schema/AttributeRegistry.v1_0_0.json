@@ -70,14 +70,15 @@
                     "longDescription": "The value of this property shall be an array containing a list of systems supported by this attribute registry."
                 },
                 "RegistryEntries": {
-                    "$ref": "#/definitions/RegistryEntries",
-                    "description": "List of all attributes and their metadata for this component.",
-                    "longDescription": "The value of this property shall a list of all attributes for this component, along with their possible values, dependencies, and other metadata."
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/RegistryEntries"
+                    },
+                    "description": "Array of all attributes and their metadata for this component.",
+                    "longDescription": "The value of this property shall be an array containing a list of all attributes for this component, along with their possible values, dependencies, and other metadata."
                 }
             },
             "required": [
-                "Id",
-                "Name",
                 "Language",
                 "RegistryVersion",
                 "OwningEntity"
@@ -171,10 +172,7 @@
                     "longDescription": "The value of this property shall be an enumeration describing type of the attribute."
                 },
                 "Value": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/AttributeValue"
-                    },
+                    "$ref": "#/definitions/AttributeValue",
                     "readonly": true,
                     "description": "The array containing possible values for attributes of type 'Enumeration'.",
                     "longDescription": "The value of this property shall be an array containing the possible values of an attribute of type 'Enumeration'."
