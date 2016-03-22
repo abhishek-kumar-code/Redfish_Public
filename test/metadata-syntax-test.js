@@ -43,6 +43,10 @@ files.forEach(function(file) {
       xmljs.parseXml(txt);
     },
     'units are valid': function(err, txt) {
+      if(this.context.title.indexOf('_v') === -1)
+      {
+           return;
+      }
       var doc = xmljs.parseXml(txt);
       var measures = doc.find('//*[local-name()="Annotation"][@Term="Measures.Unit"]/@String');
       if(measures.length === 0)
