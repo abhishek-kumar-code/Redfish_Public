@@ -55,7 +55,7 @@
       </EntityType>
     </Schema>
 
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SessionService.v1_0_1">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SessionService.v1_0_2">
       <EntityType Name="SessionService" BaseType="SessionService.v1_0_0.SessionService"/>
     </Schema>
 
