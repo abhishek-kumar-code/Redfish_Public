@@ -81,7 +81,7 @@
       </EntityType>
 
       <ComplexType Name="Links" BaseType="Resource.Links">
-        <NavigationProperty Name="Enclosures" Type="Collection(Enclosure.Enclosure)">
+        <NavigationProperty Name="Enclosures" Type="Collection(Chassis.Chassis)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the chassis to which this storage subsystem is attached"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall reference a resource of type Chassis that represents the physical containers attached to this resource."/>
