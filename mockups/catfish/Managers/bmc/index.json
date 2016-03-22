@@ -45,5 +45,5 @@
     "Oem": {},
     "@odata.context": "/redfish/v1/$metadata#Manager.Manager",
     "@odata.id": "/redfish/v1/Managers/bmc",
-    "@Redfish.Copyright": "Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
+    "@Redfish.Copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
 }

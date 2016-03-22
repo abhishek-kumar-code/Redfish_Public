@@ -60,5 +60,5 @@
     "@odata.nextLink": "/redfish/v1/Systems/1/LogServices/SEL/Entries?$skiptoken=2",
     "@odata.context": "/redfish/v1/$metadata#LogEntryCollection.LogEntryCollection",
     "@odata.id": "/redfish/v1/Systems/1/LogServices/SEL/Entries",
-    "@Redfish.Copyright":"Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
+    "@Redfish.Copyright":"Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
 }
