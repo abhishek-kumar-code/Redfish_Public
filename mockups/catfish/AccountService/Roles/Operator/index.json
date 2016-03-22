@@ -1,7 +1,4 @@
 {
-    "@Redfish.Copyright":"Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#Role.Role",
-    "@odata.id": "/redfish/v1/AccountService/Roles/Operator",
     "@odata.type": "#Role.v1_0_0.Role",
     "Id": "Operator",
     "Name": "User Role",
@@ -11,5 +8,8 @@
 	"Login",
         "ConfigureSelf",
 	"ConfigureComponents"
-    ]
+    ],
+    "@odata.context": "/redfish/v1/$metadata#Role.Role",
+    "@odata.id": "/redfish/v1/AccountService/Roles/Operator",
+    "@Redfish.Copyright":"Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
 }
