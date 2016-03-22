@@ -54,6 +54,10 @@
           <Annotation Term="OData.Description" String="Current Secure Boot Mode."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the current Secure Boot mode, as defined in the UEFI Specification."/>
         </Property>
+        <Property Name="Actions" Type="SecureBoot.v1_0_0.Actions" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The Actions object contains the available custom actions on this resource."/>
+        </Property>
       </EntityType>
 
       <EnumType Name="SecureBootCurrentBootType">
@@ -91,6 +95,15 @@
           <Annotation Term="OData.Description" String="Delete the content of the PK UEFI Secure Boot database. This puts the system in Setup Mode."/>
         </Member>
       </EnumType>
+
+      <ComplexType Name="Actions">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Property Name="Oem" Type="SecureBoot.v1_0_0.OemActions"/>
+      </ComplexType>
+
+      <ComplexType Name="OemActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+      </ComplexType>
 
     </Schema>
 
