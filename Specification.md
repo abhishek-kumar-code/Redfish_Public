@@ -1470,7 +1470,7 @@ All resources shall include [Description](#description) and [LongDescription](#l
 
 Structural properties of the resource are defined using the `Property` element. The `Name` attribute specifies the name of the property, and the [`Type`](#property-types) its type.
 
-Property names in the Request and Response JSON Payload shall match the [casing](#property-name-case) of the value of the `Name` attribute(#property-name-case).
+Property names in the Request and Response JSON Payload shall match the casing of the value of the `Name` attribute.
 
 Properties that must have a non-nullable value include the [nullable attribute](#non-nullable-properties) with a value of "false".
 
