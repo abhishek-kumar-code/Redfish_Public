@@ -876,7 +876,7 @@ Each entry shall be represented as a JSON object and shall include a "name" prop
 
 #### Resource Responses
 
-Resources are returned as JSON payloads, using the MIME type `application/json`.  Note that property names have [casing](#property-name-case) requirements in that they need to match the case specified in the Schema.
+Resources are returned as JSON payloads, using the MIME type `application/json`.  Resource property names shall match the case specified in the [Schema](#resource-properties).
 
 ##### Context Property
 
