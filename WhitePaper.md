@@ -163,6 +163,8 @@ Technically the metadata document only has to define, or reference, any of the t
 
 For example, in the resource /redfish/v1/Systems/1, you will see the property "@odata.context" with the value of "/redfish/v1/$metadata#Systems/Links/Members/$entity".  This tells the generic OData v4 client to find the Systems definition in the $metadata and look in the Links property definition and within it is a Members property definition which has a reference to the definition for this entity.
 
+You will also see an annotation called "@Redfish.Copyright".  Implementations will not return this property.  It is only here as a copyright statement for the static example responses used in the mockups. 
+
 ## Actions
 Not everything can be done easily using REST.  So we made Actions.  Things like "push button" on a System (which would reset the system or turn it off, depending on its setting) can't easily be represented in the System because the service has no idea what the state of the button is and thus does not expose it as a property.  Another use is for long lived operations that are more easily expressed as an atomic action as a convenience for the client - things like firmware update or graceful shutdown.
 
@@ -438,6 +440,6 @@ Application code should always start at the root: /redfish/v1/
 
 | Version | Date      | Description                                                            |
 | ---     | ---       | ---                                                                    |
-| 1.0.0   | 2015-8-4  | Initial release                                                        |
-| 1.0.1   | 2015-8-13 | Corrected @DMTF to @Redfish                                            |
-
+| 1.0.0   | 2015-8    | Initial release                                                        |
+| 1.0.1   | 2015-8    | Corrected @DMTF to @Redfish                                            |
+| 1.0.2   | 2016-4    | Added Statement about Copyright Annotation in Mockups                  |
