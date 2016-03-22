@@ -350,6 +350,9 @@
         <Member Name="DC">
           <Annotation Term="OData.Description" String="Direct Current (DC) power supply"/>
         </Member>
+        <Member Name="ACorDC">
+          <Annotation Term="OData.Description" String="Power Supply supports both DC or AC"/>
+        </Member>
       </EnumType>
 
       <EnumType Name="LineInputVoltageType">
@@ -357,19 +360,37 @@
           <Annotation Term="OData.Description" String="The power supply line input voltage type cannot be determined"/>
         </Member>
         <Member Name="ACLowLine">
-          <Annotation Term="OData.Description" String="100-127V AC input"/>
+          <Annotation Term="OData.Description" String="100-127V AC input. Deprecated: Use AC120V"/>
         </Member>
         <Member Name="ACMidLine">
-          <Annotation Term="OData.Description" String="200-240V AC input"/>
+          <Annotation Term="OData.Description" String="200-240V AC input. Deprecated: Use AC240V"/>
         </Member>
         <Member Name="ACHighLine">
-          <Annotation Term="OData.Description" String="277V AC input"/>
+          <Annotation Term="OData.Description" String="277V AC input. Deprecated: Use AC277V"/>
         </Member>
         <Member Name="DCNeg48V">
           <Annotation Term="OData.Description" String="-48V DC input"/>
         </Member>
-        <Member Name="DC480V">
+        <Member Name="DC380V">
           <Annotation Term="OData.Description" String="High Voltage DC input (380V)"/>
+        </Member>
+        <Member Name="AC120V">
+          <Annotation Term="OData.Description" String="AC 120V nominal input"/>
+        </Member>
+        <Member Name="AC240V">
+          <Annotation Term="OData.Description" String="AC 240V nominal input"/>
+        </Member>
+        <Member Name="AC277V">
+          <Annotation Term="OData.Description" String="AC 277V nominal input"/>
+        </Member>
+        <Member Name="ACandDCWideRange"> 
+          <Annotation Term="OData.Description" String="Wide range AC or DC input"/>
+        </Member>
+        <Member Name="ACWideRange"> 
+          <Annotation Term="OData.Description" String="Wide range AC input"/>
+        </Member>
+        <Member Name="DC240V">
+          <Annotation Term="OData.Description" String="DC 240V nominal input"/>
         </Member>
       </EnumType>
 
@@ -379,9 +400,23 @@
       <EntityType Name="Power" BaseType="Power.v1_0_0.Power"/>
     </Schema>
 
-	<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.v1_0_2">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.v1_0_2">
       <EntityType Name="Power" BaseType="Power.v1_0_1.Power"/>
     </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.v1_1_0">
+
+      <EntityType Name="Power" BaseType="Power.v1_0_2.Power"/>
+      <EntityType Name="PowerSupply" BaseType="Resource.v1_0_0.ReferenceableMember">
+        <Property Name="Manufacturer" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This is the manufacturer of this power supply."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the name of the organization responsible for producing the power supply. This organization might be the entity from whom the power supply is purchased, but this is not necessarily true."/>
+        </Property>
+      </EntityType>
+
+    </Schema>
+	
 </edmx:DataServices>
 </edmx:Edmx>
 
