@@ -1607,7 +1607,7 @@ If an implementation supports a property, it shall always provide a value for th
 		<Annotation Term="Redfish.Required"/>
 ~~~
 
-The `Required` annotation term is defined in http://redfish.dmtf.org/schemas/v1/RedfishExtensions.v1_0_0.
+The `Required` annotation term is defined in http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml.
 
 ##### Required Properties On Create
 
@@ -1617,7 +1617,7 @@ The RequiredOnCreate annotation term is used to specify that a property is requi
 		<Annotation Term="Redfish.RequiredOnCreate"/>
 ~~~
 
-The `RequiredOnCreate` annotation term is defined in http://redfish.dmtf.org/schemas/v1/RedfishExtensions.v1_0_0.
+The `RequiredOnCreate` annotation term is defined in http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml.
 
 ##### Units of Measure
 
