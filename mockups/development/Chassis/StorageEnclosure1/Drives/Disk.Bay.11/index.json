@@ -6,7 +6,7 @@
     "Model": null,
     "Revision": null,
     "Status": { "State": "Absent", "Health": null },
-    "SizeBytes": null,
+    "CapacityBytes": null,
     "FailurePredicted": null,
     "Protocol": null,
     "MediaType": null,

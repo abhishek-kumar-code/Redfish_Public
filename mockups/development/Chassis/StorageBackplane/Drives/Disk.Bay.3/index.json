@@ -5,7 +5,7 @@
     "IndicatorLED": "Off",
     "Model": null,
     "Status": { "State": "Absent", "Health": null },
-    "SizeBytes": null,
+    "CapacityBytes": null,
     "Protocol": null,
     "MediaType": null,
     "Manufacturer": null,
