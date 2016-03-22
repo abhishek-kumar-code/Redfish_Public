@@ -1,5 +1,0 @@
-
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AccountService.v1_0_2">
-      <EntityType Name="AccountService" BaseType="AccountService.v1_0_0.AccountService"/>
-    </Schema>
-
