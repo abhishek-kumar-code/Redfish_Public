@@ -128,6 +128,9 @@
         <Member Name="Absent">
           <Annotation Term="OData.Description" String="This function or resource is not present or not detected"/>
         </Member>
+        <Member Name="UnavailableOffline">
+          <Annotation Term="OData.Description" String="This function or resource is present but cannot be used"/>
+        </Member>
       </EnumType>
 
       <!--This represents the state of the health of a resource.-->
