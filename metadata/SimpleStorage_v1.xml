@@ -66,8 +66,14 @@
 
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SimpleStorage.v1_0_1">
+      <EntityType Name="SimpleStorage" BaseType="SimpleStorage.v1_0_0.SimpleStorage"/>
+    </Schema>
+	
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SimpleStorage.v1_1_0">
 
+      <EntityType Name="SimpleStorage" BaseType="SimpleStorage.v1_0_1.SimpleStorage"/>
+	      
       <ComplexType Name="Device" BaseType="SimpleStorage.v1_0_0.Device">
         <Property Name="CapacityBytes" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -79,6 +85,8 @@
       </ComplexType>
 
     </Schema>
+	
+	
 
   </edmx:DataServices>
 </edmx:Edmx>
