@@ -56,7 +56,7 @@
           <Annotation Term="OData.Description" String="This is the message ID of event to be added."/>
           <Annotation Term="OData.LongDescription" String="This property has the same semantics as the MessageId property in the Event schema for Redfish."/>
         </Parameter>
-        <Parameter Name="MessageArgs" Type="Collection(Edm.String)" Nullable="false">
+        <Parameter Name="MessageArgs" Type="Collection(Edm.String)">
           <Annotation Term="OData.Description" String="This is the array of message arguments of the event to be added."/>
           <Annotation Term="OData.LongDescription" String="This property has the same semantics as the MessageArgs property in the Event schema for Redfish."/>
         </Parameter>
@@ -82,7 +82,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the number of retrys attempted for any given event to the subscription destination before the subscription is terminated."/>
         </Property>
         <Property Name="DeliveryRetryIntervalSeconds" Type="Edm.Int64" Nullable="false">
-          <Annotation Term="Measures.Unit" String="Seconds"/>
+          <Annotation Term="Measures.Unit" String="s"/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This represents the number of seconds between retry attempts for sending any given Event"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the interval in seconds between the retry attempts for any given event to the subscription destination."/>
