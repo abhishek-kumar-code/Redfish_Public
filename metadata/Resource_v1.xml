@@ -128,6 +128,9 @@
         <Member Name="Absent">
           <Annotation Term="OData.Description" String="This function or resource is not present or not detected"/>
         </Member>
+        <Member Name="UnavailableOffline">
+          <Annotation Term="OData.Description" String="This function or resource is present but cannot be used"/>
+        </Member>
       </EnumType>
 
       <!--This represents the state of the health of a resource.-->
@@ -252,7 +255,7 @@
       <EnumType Name="DurableNameFormat">
         <Member Name="NAA">
           <Annotation Term="OData.Description" String="Name Address Authority Format"/>
-          <Annotation Term="OData.LongDescription" String="This durable name shall be a hexadecimal representation of the Name Address Authority structure as defined in the T10 SCSI Primary Commands specification."/>
+          <Annotation Term="OData.LongDescription" String="This durable name shall be a hexadecimal representation of the Name Address Authority structure as defined in the T11 Fibre Channel - Framing and Signaling - 3 (FC-FS-3) specification."/>
         </Member>
         <Member Name="iQN">
           <Annotation Term="OData.Description" String="iSCSI Qualified Name"/>
@@ -265,7 +268,11 @@
         <Member Name="UUID">
           <Annotation Term="OData.Description" String="Universally Unique Identifier"/>
           <Annotation Term="OData.LongDescription" String="This durable name shall be the hexadecimal representation of the Universal Unique Identifier as defined in the Internation Telecom Union's OSI networking and system aspects - Naming, Addressing and Registration Specification."/>
-        </Member>
+         </Member>
+         <Member Name="EUI">
+           <Annotation Term="OData.Description" String="IEEE-defined 64-bit Extended Unique Identifier"/>
+          <Annotation Term="OData.LongDescription" String="This durable name shall be the hexadecimal representation of the IEEE-defined 64-bit Extended Unique Identifier as defined in the IEEE's Guidelines for 64-bit Global Identifier (EUI-64) Specification."/>
+         </Member>
       </EnumType>
     </Schema>
   </edmx:DataServices>
