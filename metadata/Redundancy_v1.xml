@@ -57,7 +57,7 @@
         </Property>
         <NavigationProperty Name="RedundancySet" Type="Collection(Resource.Item)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Contains any ids that represent components of this reduncancy set."/>
+          <Annotation Term="OData.Description" String="Contains any ids that represent components of this redundancy set."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the ids of components that are part of this redundancy set. The id values may or may not be dereferenceable."/>
           <Annotation Term="OData.AutoExpandReferences"/>
           <Annotation Term="Redfish.Required"/>
