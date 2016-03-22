@@ -357,27 +357,57 @@
           <Annotation Term="OData.Description" String="The power supply line input voltage type cannot be determined"/>
         </Member>
         <Member Name="ACLowLine">
-          <Annotation Term="OData.Description" String="100-127V AC input"/>
+          <Annotation Term="OData.Description" String="100-127V AC input. Deprecated: Use AC120V"/>
         </Member>
         <Member Name="ACMidLine">
-          <Annotation Term="OData.Description" String="200-240V AC input"/>
+          <Annotation Term="OData.Description" String="200-240V AC input. Deprecated: Use AC240V"/>
         </Member>
         <Member Name="ACHighLine">
-          <Annotation Term="OData.Description" String="277V AC input"/>
+          <Annotation Term="OData.Description" String="277V AC input. Deprecated: Use AC277V"/>
         </Member>
         <Member Name="DCNeg48V">
           <Annotation Term="OData.Description" String="-48V DC input"/>
         </Member>
-        <Member Name="DC480V">
+        <Member Name="DC380V">
           <Annotation Term="OData.Description" String="High Voltage DC input (380V)"/>
         </Member>
+        <Member Name="AC120V">
+          <Annotation Term="OData.Description" String="100-127V AC input"/>
+        </Member>
+        <Member Name="AC240V">
+          <Annotation Term="OData.Description" String="200-240V AC input"/>
+        </Member>
+        <Member Name="AC277V">
+          <Annotation Term="OData.Description" String="277V AC input"/>
+        </Member>
+        <Member Name="ACorDC"> 
+          <Annotation Term="OData.Description" String="Wide range AC (120-277V) or DC (240-380V)"/>
+        </Member>
+        <Member Name="DC240V">
+          <Annotation Term="OData.Description" String="DC 240-377V input"/>
+        </Member>
       </EnumType>
+
 
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.1.0.1">
 
       <EntityType Name="Power" BaseType="Power.1.0.0.Power"/>
+
+    </Schema>
+
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.1.1.0">
+
+      <EntityType Name="Power" BaseType="Power.1.0.1.Power"/>
+      <EntityType Name="PowerSupply" BaseType="Resource.1.0.0.ReferenceableMember">
+        <Property Name="Manufacturer" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This is the manufacturer of this power supply."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the name of the organization responsible for producing the power supply. This organization might be the entity from whom the power supply is purchased, but this is not necessarily true."/>
+        </Property>
+      </EntityType>
 
     </Schema>
 
