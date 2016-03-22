@@ -28,7 +28,6 @@
         <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
         <Annotation Term="OData.Description"  String="The name of the resource or array element."/>
         <Annotation Term="OData.LongDescription" String="This object represents the Name property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification. The value of this string shall be of the format for the reserved word *Name*."/>
-        <Annotation Term="Redfish.Required"/>
       </TypeDefinition>
 
       <TypeDefinition Name="UUID" UnderlyingType="Edm.Guid"/>
@@ -194,9 +193,13 @@
         <Key>
           <PropertyRef Name="Id"/>
         </Key>
-        <Property Name="Id" Type="Resource.Id" Nullable="false"/>
+        <Property Name="Id" Type="Resource.Id" Nullable="false">
+          <Annotation Term="Redfish.Required"/>
+        </Property>
         <Property Name="Description" Type="Resource.Description"/>
-        <Property Name="Name" Type="Resource.Name" Nullable="false"/>
+        <Property Name="Name" Type="Resource.Name" Nullable="false">
+          <Annotation Term="Redfish.Required"/>
+        </Property>
       </EntityType>
 
       <!--Base entity type for all resource collection objects-->

@@ -1,7 +1,4 @@
 {
-	"@Redfish.Copyright": "Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-	"@odata.context": "/redfish/v1/$metadata#Thermal.Thermal",
-	"@odata.id": "/redfish/v1/Chassis/1/Thermal",
 	"@odata.type": "#Thermal.v1_0_0.Thermal",
 	"Id": "Thermal",
 	"Name": "Thermal",
@@ -129,6 +126,9 @@
 		},
 		"MinNumNeeded": 1,
 		"MaxNumSupported": 2
-	}]
+	}],
+	"@odata.context": "/redfish/v1/$metadata#Thermal.Thermal",
+	"@odata.id": "/redfish/v1/Chassis/1/Thermal",
+	"@Redfish.Copyright": "Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
 }
 
