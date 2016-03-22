@@ -11,6 +11,7 @@ var files = glob.sync(path.join('{metadata,mockups}', '**', '*.xml'))
 var syntaxBatch = {}, schemaBatch = {};
 
 var ucum = null;
+var unitsWhiteList = ['RPM'];
 
 function getUcumXML(callback, context, end)
 {
@@ -56,6 +57,15 @@ files.forEach(function(file) {
       for(var i = 0; i < measures.length; i++)
       {
           var unitName = measures[i].value();
+          if(unitsWhiteList.indexOf(unitName) !== -1)
+          {
+              continue;
+          }
+          var pos = unitName.indexOf('/s');
+          if(pos !== -1)
+          {
+              unitName = unitName.substring(0, pos);
+          }
           var ucumTypes = ucum.get('//*[@Code="'+unitName+'"]');
           if(ucumTypes === undefined)
           {
