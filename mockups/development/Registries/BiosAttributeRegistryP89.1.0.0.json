@@ -6,7 +6,6 @@
   "Language": "en",
   "Name": "P89 BIOS Attribute Registry",
   "OwningEntity": "HPE",
-  "RegistryPrefix": "BiosAttributeRegistryP89",
   "RegistryVersion": "1.0.0",
   "SupportedSystems": [
     {
