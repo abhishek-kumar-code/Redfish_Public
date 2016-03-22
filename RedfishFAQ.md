@@ -140,6 +140,8 @@ Every BMC today has a web server and most of them surface a web page that has a 
 
 The amount of documentation that it takes to understand CIM and the protocols takes reams and reams of paper, resulting in a stack well over a foot high.  Our goal is to have someone read our spec in the morning, play with the data model an hour later and be coding by the afternoon - and that person should not be required to have a college education, understand cardinality, etc.
 
+CIM also allows things like inheritance.  For instance, a Collection could allow not only the resource types but also any resource sub-types based off of that resource types.  Since inheritance is discouraged in Redfish, a language that encourages inheritance was considered an issue.
+
 Lastly is customer demand.  The customers asking for a RESTful API see CIM & MOF as "old", "Windows centric", "storage centric", "OS centric", "too hard" and other negative feedback.  They are asking for something simple that meets their "10 commandlets".
 
 ## Why not Ironic?
