@@ -320,7 +320,7 @@
     </Schema>
 	
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_1_0">
-     <EntityType Name="Manager" BaseType="Manager.v1_0_1.Manager"/>	
+     <EntityType Name="Manager" BaseType="Manager.v1_0_2.Manager"/>	
      <ComplexType Name="Links" BaseType="Manager.v1_0_0.Links">
         <NavigationProperty Name="ManagerInChassis" Type="Chassis.Chassis">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
