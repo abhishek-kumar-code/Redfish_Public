@@ -61,6 +61,15 @@ files.forEach(function(file) {
                   var tmp = unitName.substring(1);
                   ucumTypes = ucum.get('//*[@Code="'+tmp+'"]');
               }
+              else
+              {
+                  prefix = ucum.get('//*[local-name()="prefix"][@Code="'+unitName.substring(0,2)+'"]');
+                  if(prefix !== undefined)
+                  {
+                      var tmp = unitName.substring(2);
+                      ucumTypes = ucum.get('//*[@Code="'+tmp+'"]');
+                  }
+              }
               if(ucumTypes === undefined)
               {
                   throw new Error('Unit name '+unitName+' is not a valid UCUM measure');
