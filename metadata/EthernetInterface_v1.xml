@@ -99,7 +99,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of objects used to represent the IPv4 connection characteristics for this interface."/>
         </Property>
         <Property Name="IPv6AddressPolicyTable" Type="Collection(EthernetInterface.v1_0_0.IPv6AddressPolicyEntry)" Nullable="false">
-          <Annotation Term="OData.Description" String="An array representing the RFC3484 Address Selection Policy Table."/>
+          <Annotation Term="OData.Description" String="An array representing the RFC 6724 Address Selection Policy Table."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of objects used to represent the Address Selection Policy Table as defined in RFC 6724."/>
         </Property>
         <Property Name="IPv6Addresses" Type="Collection(IPAddresses.v1_0_0.IPv6Address)" Nullable="false" >
@@ -139,7 +139,7 @@
       <ComplexType Name="IPv6AddressPolicyEntry">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="Prefix" Type="Edm.String">
-          <Annotation Term="OData.Description" String="The IPv6 Address Prefix (as defined in RFC 3484 section 2.1)"/>
+          <Annotation Term="OData.Description" String="The IPv6 Address Prefix (as defined in RFC 6724 section 2.1)"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the IPv6 Address Prefix for this table entry as defined in RFC 6724 section 2.1."/>
           <Annotation Term="Redfish.IPv6Format"/>
         </Property>
@@ -156,7 +156,11 @@
           <Annotation Term="Validation.Maximum" Int="100"/>
         </Property>
       </ComplexType>
-
     </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EthernetInterface.v1_0_1">
+      <EntityType Name="EthernetInterface" BaseType="EthernetInterface.v1_0_0.EthernetInterface"/>
+    </Schema>         
+    
   </edmx:DataServices>
 </edmx:Edmx>
