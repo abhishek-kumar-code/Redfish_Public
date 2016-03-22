@@ -71,10 +71,10 @@
         <Annotation Term="OData.Description" String="The ModifyRedundancySet operation is used to add or remove members to a redundant group of manager."/>
         <Annotation Term="OData.LongDescription" String="This defines the name of the custom action for which the following properties are supported on this resource.  The ModifyRedundancySet operation shall be used to add or remove members to a redundant group of manager."/>
         <Parameter Name="Manager" Type="Manager.v1_0_0.Actions"/>
-        <Parameter Name="Add" Type="Collection(Manager.Manager)" Nullable="false">
+        <Parameter Name="Add" Type="Collection(Manager.Manager)">
           <Annotation Term="OData.Description" String="This array defines the Managers to add to the redundancy set.  In this case, a valid reference is supported."/>
         </Parameter>
-        <Parameter Name="Remove" Type="Collection(Manager.Manager)" Nullable="false">
+        <Parameter Name="Remove" Type="Collection(Manager.Manager)">
           <Annotation Term="OData.Description" String="This array defines the Managers to remove from the redundancy set.  In this case, a valid reference is supported."/>
         </Parameter>
       </Action>
