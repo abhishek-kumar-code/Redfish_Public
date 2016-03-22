@@ -691,6 +691,7 @@ HTTP defines headers that can be used in response messages.  The following table
 | Allow                              | Yes         | POST, PUT, PATCH, DELETE              | Returned on GET or HEAD operation to indicate the other allowable operations for this resource.  Shall be returned with a 405 (Method Not Allowed) response to indicate the valid methods for the specified Request URI.                                                                                                     |
 | WWW-Authenticate                   | Yes         | [RFC 2617][2617]                      | Required for Basic and other optional authentication mechanisms. See the [Security][#Security] section for details.                                                                                                                                                                                                             |
 | X-Auth-Token | Yes      | Opaque encoded octet strings | Used for authentication of user sessions. The token value shall be indistinguishable from random. |
+| Retry-After | No | [RFC 2616, Section 14.37][2616-14.37] | Used to inform a client how long to wait before requesting the Task information again. |
 
 
 [2616-14.3]: http://pretty-rfc.herokuapp.com/RFC2616#header.content-length
@@ -698,6 +699,7 @@ HTTP defines headers that can be used in response messages.  The following table
 [2616-14.17]: http://pretty-rfc.herokuapp.com/RFC2616#header.content-type
 [2616-14.19]: http://pretty-rfc.herokuapp.com/RFC2616#header.etag
 [2616-14.30]: http://pretty-rfc.herokuapp.com/RFC2616#header.location
+[2616-14.37]: http://pretty-rfc.herokuapp.com/RFC2616#header.retry-after
 [2616-14.38]: http://pretty-rfc.herokuapp.com/RFC2616#header.server
 [5988-5]: http://tools.ietf.org/html/rfc5988#section-5
 [cors-5.1]: http://www.w3.org/TR/cors/#access-control-allow-origin-response-header
