@@ -23,6 +23,7 @@
     "jsonlint": "^1.6.2",
     "libxmljs-mt": "^0.17.1",
     "traverse": "^0.6.6",
-    "vows": "^0.8.1"
+    "vows": "^0.8.1",
+    "request": "^2.69"
   }
 }

@@ -1,6 +1,4 @@
 {
-    "@Redfish.Copyright": "Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#SessionService/SessionCollection.SessionCollection",
     "@odata.type": "#SessionCollection.SessionCollection",
     "Name": "Session Collection",
     "Members@odata.count": 1,
@@ -8,5 +6,8 @@
         {
             "@odata.id": "/redfish/v1/SessionService/Sessions/1234567890ABCDEF"
         }
-    ]
+    ],
+    "@odata.context": "/redfish/v1/$metadata#SessionService/SessionCollection.SessionCollection",
+    "@odata.id": "/redfish/v1/SessionService/Sessions",
+    "@Redfish.Copyright": "Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
 }
