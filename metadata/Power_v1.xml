@@ -350,6 +350,9 @@
         <Member Name="DC">
           <Annotation Term="OData.Description" String="Direct Current (DC) power supply"/>
         </Member>
+        <Member Name="ACorDC">
+          <Annotation Term="OData.Description" String="Power Supply supports both DC or AC"/>
+        </Member>
       </EnumType>
 
       <EnumType Name="LineInputVoltageType">
