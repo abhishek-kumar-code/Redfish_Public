@@ -45,7 +45,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.v1_0_0">
 
       <EntityType Name="Drive" BaseType="Drive.Drive">
-        <Property Name="StatusIndicator" Type="Drive.1.0.0.StatusIndicator">
+        <Property Name="StatusIndicator" Type="Drive.v1_0_0.StatusIndicator">
           <Annotation Term="OData.Description" String="The state of the status indicator, used to communicate status information about this drive."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the status indicator state for the status indicator associated with this drive. The valid values for this property are specified through the Redfish.AllowableValues annotation."/>
         </Property>
