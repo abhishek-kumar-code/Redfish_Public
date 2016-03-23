@@ -443,13 +443,15 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The minimum line input frequency at which this power supply input range is effective"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the value in Hertz of the minimum line input frequency which the power supply is capable of consuming for this range."/>
-          <Annotation Term="Measures.Unit" String="Hz"/>
+	  <Annotation Term="Measures.Unit" String="Hz"/>
+	  <Annotation Term="Validation.Minimum" Int="0"/>
          </Property>
          <Property Name="MaximumFrequencyHz" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The maximum line input frequency at which this power supply input range is effective"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the value in Hertz of the maximum line input frequency which the power supply is capable of consuming for this range."/>
-          <Annotation Term="Measures.Unit" String="Hz"/>
+	  <Annotation Term="Measures.Unit" String="Hz"/>
+	  <Annotation Term="Validation.Minimum" Int="0"/>
          </Property>
          <Property Name="OutputWattage" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
