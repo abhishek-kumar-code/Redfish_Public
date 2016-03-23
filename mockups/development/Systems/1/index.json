@@ -85,7 +85,7 @@
     "SecureBoot": {
         "@odata.id": "/redfish/v1/Systems/1/SecureBoot"
     },
-        "Bios": {
+    "Bios": {
         "@odata.id": "/redfish/v1/Systems/1/Bios"
     },
     "Links": {
