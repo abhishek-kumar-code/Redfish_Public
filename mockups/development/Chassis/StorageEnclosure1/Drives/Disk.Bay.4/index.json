@@ -1,0 +1,27 @@
+{
+    "@odata.context": "/redfish/v1/$metadata#Chassis/Members/Drives/Members/$entity",
+    "@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.4",
+    "@odata.type": "#Drive.v1_0_0.Drive",
+    "IndicatorLED": "Off",
+    "Model": null,
+    "Revision": null,
+    "Status": { "State": "Absent", "Health": null },
+    "CapacityBytes": null,
+    "FailurePredicted": null,
+    "Protocol": null,
+    "MediaType": null,
+    "Manufacturer": null,
+    "SerialNumber": null,
+    "PartNumber": null,
+    "Identifiers": [],
+    "HotspareType": null,
+    "AssetTag": null,
+    "CapableSpeedGbs": null,
+    "NegotiatedSpeedGbs": null,
+    "Links": {
+        "Volumes": [
+        ]
+    },
+    "Actions": {
+    }
+}

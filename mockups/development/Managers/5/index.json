@@ -1,0 +1,21 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#Manager.Manager",
+    "@odata.id": "/redfish/v1/Managers/5",
+    "@odata.type": "#Manager.v1_0_0.Manager",
+    "Id": "5",
+    "Name": "EMM 0",
+    "ManagerType": "EnclosureManager",
+    "Description": "Enclosure Services Controller Electronics",
+    "Model": "0W307KA00",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "FirmwareVersion": "1.06",
+    "Links": {
+        "ManagerForChassis": [ { "@odata.id": "/redfish/v1/Chassis/StorageEnclosure1" } ], "Oem": {}
+    },
+    "Actions": {"Oem": {}},
+    "Oem": {}
+}
