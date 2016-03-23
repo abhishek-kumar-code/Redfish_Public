@@ -45,6 +45,10 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.v1_0_0">
 
       <EntityType Name="Drive" BaseType="Drive.Drive">
+        <Property Name="StatusIndicator" Type="Drive.v1_0_0.StatusIndicator">
+          <Annotation Term="OData.Description" String="The state of the status indicator, used to communicate status information about this drive."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the status indicator state for the status indicator associated with this drive. The valid values for this property are specified through the Redfish.AllowableValues annotation."/>
+        </Property>
         <Property Name="IndicatorLED" Type="Chassis.v1_0_0.IndicatorLED">
           <Annotation Term="OData.Description" String="The state of the indicator LED, used to identify the drive."/>
           <Annotation Term="OData.LongDescription" String="This value of this property shall contain the indicator light state for the indicator light associated with this drive."/>
@@ -238,6 +242,30 @@
         </Member>
         <Member Name="Foreign">
           <Annotation Term="OData.Description" String="The drive is currently encrypted, the data is not accessible to the user, and the system requires user intervention to expose the data"/>
+        </Member>
+      </EnumType>
+
+      <EnumType Name="StatusIndicator">
+        <Member Name="OK">
+          <Annotation Term="OData.Description" String="The drive is OK."/>
+        </Member>
+        <Member Name="Fail">
+          <Annotation Term="OData.Description" String="The drive has failed."/>
+        </Member>
+        <Member Name="Rebuild">
+          <Annotation Term="OData.Description" String="The drive is being rebuilt."/>
+        </Member>
+        <Member Name="PredictiveFailureAnalysis">
+          <Annotation Term="OData.Description" String="The drive is still working but predicted to fail soon."/>
+        </Member>
+        <Member Name="Hotspare">
+          <Annotation Term="OData.Description" String="The drive is marked to be automatically rebuilt and used as a replacement for a failed drive."/>
+        </Member>
+        <Member Name="InACriticalArray">
+          <Annotation Term="OData.Description" String="The array that this drive is a part of is degraded."/>
+        </Member>
+        <Member Name="InAFailedArray">
+          <Annotation Term="OData.Description" String="The array that this drive is a part of is failed."/>
         </Member>
       </EnumType>
 
