@@ -14,7 +14,7 @@
       {
         "MessageId": "Base.1.0.SettingsFailed",
         "RelatedProperties": [
-          "#/ProcTurboMode"
+          "#/Attributes/ProcTurboMode"
         ]
       }
     ],

@@ -2,7 +2,7 @@
     "@Redfish.Copyright": "Copyright  2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#Systems/Members/3/Storage/HA-RAID/Volumes/Members/$entity",
     "@odata.id": "/redfish/v1/Systems/3/Storage/HA-RAID/Volumes/1",
-    "@odata.type": "#StorageController.1.0.0",
+    "@odata.type": "#Volume.v1_0_0.Volume",
     "Id": "1",
     "Name": "Virtual Disk 1",
     "Status": {
@@ -10,7 +10,7 @@
         "Health": "OK"
     },
     "VolumeType": "NonRedundant",
-    "VolumeSizeInBytes": 104857600,
+    "CapacityBytes": 104857600,
     "Identifiers": [
         {
             "DurableNameFormat": "UUID",

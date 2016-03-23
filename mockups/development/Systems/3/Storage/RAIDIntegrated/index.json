@@ -2,7 +2,7 @@
     "@Redfish.Copyright": "Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#Systems/Members/3/Storage/Members/$entity",
     "@odata.id": "/redfish/v1/Systems/3/Storage/RAIDIntegrated",
-    "@odata.type": "#Storage.0.0.1.Storage",
+    "@odata.type": "#Storage.v1_0_0.Storage",
     "Id": "RAIDIntegrated",
     "Name": "Integrated RAID Storage System",
     "Description": "Contoso Internal RAID",
@@ -13,10 +13,10 @@
     },
     "EncryptionType": "LKM",
     "EncryptionKeySet": true,
-    "Controllers": [
+    "StorageControllers": [
         {
-            "@odata.id": "/redfish/v1/Systems/3/Storage/RAIDIntegrated#/Controllers/0",
-            "@odata.type": "#Storage.0.0.1.Controller",
+            "@odata.id": "/redfish/v1/Systems/3/Storage/RAIDIntegrated#/StorageControllers/0",
+            "@odata.type": "#Storage.v1_0_0.StorageController",
             "Id": "0",
             "Name": "Contoso Internal RAID",
             "Description": "Contoso Internal RAID (Slot 5)",
@@ -75,7 +75,7 @@
                 "SpannedStripesWithParity",
                 "SpannedStripesWithRedundantParity"
             ],
-            "VolumeSizeInBytes@Redfish.AllowableRange": [
+            "CapacityBytes@Redfish.AllowableRange": [
                 104857600,
                 109951162777600
             ]

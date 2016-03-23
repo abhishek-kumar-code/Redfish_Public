@@ -2,7 +2,7 @@
     "@Redfish.Copyright": "Copyright  2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#Systems/Members/3/Storage/RAIDIntegrated/Volumes/Members/$entity",
     "@odata.id": "/redfish/v1/Systems/3/Storage/RAIDIntegrated/Volumes/2",
-    "@odata.type": "#StorageVolume.0.0.1.Volume",
+    "@odata.type": "#Volume.v1_0_0.Volume",
     "Id": "2",
     "Name": "Virtual Disk 2",
     "Status": {
@@ -10,9 +10,9 @@
         "Health": "OK"
     },
     "VolumeType": "Mirrored",
-    "VolumeSizeInBytes": 104857600,
+    "CapacityBytes": 104857600,
     "Encrypted": true,
-    "EncrytionType": "NativeDriveEncryption",
+    "EncryptionType": "NativeDriveEncryption",
     "Identifiers": [
         {
             "DurableNameFormat": "VPD83type3",
@@ -30,8 +30,8 @@
         ]
     },
     "Actions": {
-        "#Volume.CheckConsitency": {
-            "Target": "/redfish/v1/Systems/Storage/RAIDIntegrated/Volumes/2/Actions/Volume.CheckConsitency"
+        "#Volume.CheckConsistency": {
+            "Target": "/redfish/v1/Systems/Storage/RAIDIntegrated/Volumes/2/Actions/Volume.CheckConsistency"
         },
         "#Volume.Initialize": {
             "Target": "/redfish/v1/Systems/Storage/RAIDIntegrated/Volumes/2/Actions/Volume.Initialize",
