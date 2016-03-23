@@ -113,6 +113,7 @@
                    "InputType": "DC",
 		   "MinimumVoltage": -47,
 		   "MaximumVoltage": -49,
+		   "OutputWattage": 400,
 		   "Oem": {}
 	       }
             ],
@@ -150,6 +151,7 @@
 		   "MaximumVoltage": 225,
 		   "MinimumFrequencyHz": 45,
 		   "MaximumFrequencyHz": 55,
+		   "OutputWattage": 400,
 		   "Oem": {}
 	       },
 	       {
@@ -158,6 +160,7 @@
 		   "MaximumVoltage": 215,
 		   "MinimumFrequencyHz": 40,
 		   "MaximumFrequencyHz": 65,
+		   "OutputWattage": 380,
 		   "Oem": {}
 	       }
             ],
