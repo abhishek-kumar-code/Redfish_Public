@@ -3,7 +3,7 @@
     "@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.2",
     "@odata.type": "#Drive.v1_0_0.Drive",
     "IndicatorLED": "Lit",
-    "FaultLED": "Fault",
+    "StatusIndicator": "Fail",
     "Model": "Drive Model string",
     "Status": { "State": "Enabled", "Health": "Degraded" },
     "CapacityBytes": 899527000000,
