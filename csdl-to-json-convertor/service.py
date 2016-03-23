@@ -1391,10 +1391,7 @@ class JsonSchemaGenerator:
             basetype = typedata["BaseType"]
             typename = typedata["Name"]
         
-            try :
-                # If this type has been parsed already do nothing
-                index = parsedtypes.index(typename + ":" + currentNamespace)
-            except :
+            if(not typename + ":" + currentNamespace in parsedtypes) :
                 # This type has not been parsed yet. Process it now.
                 if ( (typetype!= "Action" and ( self.include_type(typename,currentNamespace, namespace, typetable) and self.is_inline_type(typedata) and not (typetype=="ComplexType" and self.isabstract(typedata) ) ) )
                     or (typetype == "Action" and self.include_type(typename, typedata["BoundNamespace"], namespace, typetable)) ):
@@ -1511,7 +1508,7 @@ class JsonSchemaGenerator:
         fileoutput += results
         # Add Copyright
         fileoutput += ",\n"
-        fileoutput += UT.Utilities.indent(depth+1) + "\"copyright\": \"Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.\"\n"
+        fileoutput += UT.Utilities.indent(depth+1) + "\"copyright\": \"Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.\"\n"
         # End starting bracket
         fileoutput += UT.Utilities.indent(depth) + "}\n"
         screenoutput += fileoutput
