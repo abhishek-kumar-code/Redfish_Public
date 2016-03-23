@@ -62,7 +62,7 @@
         <Annotation Term="OData.Description" String="This action is used to reset the system."/>
         <Annotation Term="OData.LongDescription" String="This action shall perform a reset of the ComputerSystem.  For systems which implement APCI Power Button functionality, the PushPowerButton value shall perform or emulate an ACPI Power Button push.  The ForceOff value shall remove power from the system or perform an ACPI Power Button Override (commonly known as a 4-second hold of the Power Button).  The ForceRestart value shall perform a ForceOff action followed by a On action."/>
       </Action>
-      
+
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_0_0">
@@ -171,7 +171,7 @@
           <Annotation Term="OData.Description" String="A reference to the collection of Log Services associated with this system"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type LogServiceCollection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>        
+        </NavigationProperty>
         <Property Name="Status" Type="Resource.Status"/>
       </EntityType>
 
@@ -247,7 +247,7 @@
 
       <EnumType Name="PowerState">
         <Member Name="On">
-          <Annotation Term="OData.Description" String="The system is powered on."/>        
+          <Annotation Term="OData.Description" String="The system is powered on."/>
         </Member>
         <Member Name="Off">
           <Annotation Term="OData.Description" String="The system is powered off, although some components may continue to have AUX power such as management controller."/>
@@ -258,7 +258,7 @@
         <Member Name="PoweringOff">
           <Annotation Term="OData.Description" String="A temporary state between On and Off. The power off action can take time while the OS is in the shutdown process."/>
         </Member>
-      </EnumType>            
+      </EnumType>
 
       <ComplexType Name="Boot">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
@@ -266,7 +266,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The current boot source to be used at next boot instead of the normal boot device, if BootSourceOverrideEnabled is true."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the source to boot the system from, overriding the normal boot order.  The valid values for this property are specified through the Redfish.AllowableValues annotation. Pxe indicates to PXE boot from the primary NIC; Floppy, Cd, Usb, Hdd indicates to boot from their devices respectively.  BiosSetup indicates to boot into the native BIOS screen setup.  Utilities and Diags indicate to boot from the local utilities or diags partitions and UefiTarget indicates to boot from the UEFI device path found in UefiTargetBootSourceOverride."/>
-        </Property> 
+        </Property>
         <Property Name="BootSourceOverrideEnabled" Type="ComputerSystem.v1_0_0.BootSourceOverrideEnabled">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Describes the state of the Boot Source Override feature"/>
@@ -320,7 +320,7 @@
         <Member Name="UefiHttp">
            <Annotation Term="OData.Description" String="Boot from a UEFI HTTP network location"/>
         </Member>
-      </EnumType> 
+      </EnumType>
 
       <EnumType Name="BootSourceOverrideEnabled">
         <Member Name="Disabled">
@@ -382,11 +382,13 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A reference to the UEFI SecureBoot resource associated with this system."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a resource of type SecureBoot."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
        </NavigationProperty>
        <NavigationProperty Name="Bios" Type="Bios.Bios">
          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
          <Annotation Term="OData.Description" String="A reference to the BIOS settings associated with this system."/>
          <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a resource of type Bios that lists the BIOS settings for this system."/>
+         <Annotation Term="OData.AutoExpandReferences"/>
        </NavigationProperty>
        <NavigationProperty Name="Storage" Type="StorageCollection.StorageCollection" ContainsTarget="true">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -396,7 +398,7 @@
         </NavigationProperty>
       </EntityType>
 
-      <ComplexType Name="Boot" BaseType="ComputerSystem.v1_0_0.Boot">            
+      <ComplexType Name="Boot" BaseType="ComputerSystem.v1_0_0.Boot">
           <Property Name="BootSourceOverrideMode" Type="ComputerSystem.v1_1_0.BootSourceOverrideMode">
               <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
               <Annotation Term="OData.Description" String="The BIOS Boot Mode (either Legacy or UEFI) to be used when BootSourceOverrideTarget boot source is booted from."/>
@@ -443,6 +445,6 @@
       </EnumType>
 
     </Schema>
-  
+
 </edmx:DataServices>
 </edmx:Edmx>
