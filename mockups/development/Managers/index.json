@@ -4,7 +4,7 @@
     "@odata.id": "/redfish/v1/Managers",
     "@odata.type": "#ManagerCollection.ManagerCollection",
     "Name": "Manager Collection",
-    "Members@odata.count": 3,
+    "Members@odata.count": 8,
     "Members": [
         {
             "@odata.id": "/redfish/v1/Managers/1"
@@ -14,6 +14,21 @@
         },
         {
             "@odata.id": "/redfish/v1/Managers/3"
+        },
+        {
+            "@odata.id": "/redfish/v1/Managers/4"
+        },
+        {
+            "@odata.id": "/redfish/v1/Managers/5"
+        },
+        {
+            "@odata.id": "/redfish/v1/Managers/6"
+        },
+        {
+            "@odata.id": "/redfish/v1/Managers/7"
+        },
+        {
+            "@odata.id": "/redfish/v1/Managers/8"
         }
     ]
 }
