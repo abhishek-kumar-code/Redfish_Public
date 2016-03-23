@@ -370,7 +370,8 @@ Clients may request compression by specifying an [Accept-Encoding header](#reque
 In order to reduce the cases of unnecessary RESTful accesses to resources, the Redfish Service should support associating a separate ETag with each resource.
 
 * Implementations should support returning [ETag properties](#etag-property) for each resource.
-* Implementations should support returning ETag headers for each response that represents a single resource.  Implementations shall support returning ETag headers for GET requests of ManagerAccount resources.
+* Implementations should support returning ETag headers for each response that represents a single resource.  
+* Implementations shall support returning ETag headers for GET requests of ManagerAccount resources.
 
 The ETag is generated and provided as part of the resource payload because the service is in the best position to know if the new version of the object is different enough to be considered substantial. There are two types of ETags: weak and strong.
 
@@ -464,7 +465,7 @@ HTTP defines headers that can be used in request messages. The following table d
 | Origin           | Yes         | [W3C CORS, Section 5.7][cors-5.7]     | Used to allow web applications to consume Redfish service while preventing CSRF attacks.                                                                                                                                                                                                                                        |
 | Via              | No          | [RFC 7230][7230] | Indicates network hierarchy and recognizes message loops. Each pass inserts its own VIA.                                                                                                                                                                                                                                        |
 | Max-Forwards     | No          | [RFC 7231][7231] | Limits gateway and proxy hops. Prevents messages from remaining in the network indefinitely.                                                                                                                                                                                                                                    |
-| If-Match         | Conditional | [RFC 7232][7232] | If-Match shall be supported on PUT and PATCH requests for resources for which the service returns ETags.  If-Match shall be supported for PATCH or PUT requests to ManagerAccount resource instances to ensure clients are updating the resource from a known state.                                                                                                                                     |
+| If-Match         | Conditional | [RFC 7232][7232] | If-Match shall be supported on PUT and PATCH requests for resources for which the service returns ETags, to ensure clients are updating the resource from a known state.                                                                                                                                     |
 | If-None-Match    | No          | [RFC 7232][7232]] | If this HTTP header is present, the service will only return the requested resource if the current ETag of that resource does not match the ETag sent in this header.  If the ETag specified in this header matches the resource's current ETag, the status code returned from the GET will be [304](#status-304).       |
 
 * Redfish services shall understand and be able to process the headers in the following table as defined by this specification if the value in the Required column is set to "yes" .
