@@ -108,6 +108,15 @@
             "SerialNumber": "1z0000001",
             "PartNumber": "1z0000001A3a",
             "SparePartNumber": "0000001A3a",
+	    "InputRanges": [
+               {
+                   "InputType": "DC",
+		   "MinimumVoltage": -47,
+		   "MaximumVoltage": -49,
+		   "OutputWattage": 400,
+		   "Oem": {}
+	       }
+            ],
             "RelatedItem": [
               { "@odata.id": "/redfish/v1/Chassis/1" }
             ],
@@ -135,6 +144,26 @@
             "SerialNumber": "1z0000001",
             "PartNumber": "1z0000001A3a",
             "SparePartNumber": "0000001A3a",
+	    "InputRanges": [
+               {
+                   "InputType": "AC",
+		   "MinimumVoltage": 215,
+		   "MaximumVoltage": 225,
+		   "MinimumFrequencyHz": 45,
+		   "MaximumFrequencyHz": 55,
+		   "OutputWattage": 400,
+		   "Oem": {}
+	       },
+	       {
+                   "InputType": "AC",
+		   "MinimumVoltage": 200,
+		   "MaximumVoltage": 215,
+		   "MinimumFrequencyHz": 40,
+		   "MaximumFrequencyHz": 65,
+		   "OutputWattage": 380,
+		   "Oem": {}
+	       }
+            ],
             "RelatedItem": [
               { "@odata.id": "/redfish/v1/Chassis/1" }
             ],
