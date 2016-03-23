@@ -231,7 +231,7 @@
       <!-- These are all supported LED statuses. -->
       <EnumType Name="IndicatorLED">
         <Member Name="Unknown">
-          <Annotation Term="OData.Description" String="The state of the Indicator LED cannot be determined."/>
+          <Annotation Term="OData.Description" String="The state of the Indicator LED cannot be determined. Deprecated: Return null if state is unknown."/>
         </Member>
         <Member Name="Lit">
           <Annotation Term="OData.Description" String="The Indicator LED is lit."/>
