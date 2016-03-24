@@ -2027,7 +2027,7 @@ As long as the operation is in process, the service shall continue to return a s
 
 The client may cancel the operation by performing a DELETE on the Task monitor URL. The service determines when to delete the associated Task resource object.
 
-The client may also cancel the operation by performing a DELETE on the Task resource. Deleting the Task resource object invalidates the associated Task monitor and subsequent GET on the Task monitor URL returns either 410 (Gone) or 404 (Not Found).
+The client may also cancel the operation by performing a DELETE on the Task resource. Deleting the Task resource object may invalidate the associated Task monitor and subsequent GET on the Task monitor URL returns either 410 (Gone) or 404 (Not Found).
 
 Once the operation has completed, the Task monitor shall return a status code of OK (200) and include the headers and response body of the initial operation, as if it had completed synchronously. If the initial operation resulted in an error, the body of the response shall contain an [Error Response](#error-responses).
 
