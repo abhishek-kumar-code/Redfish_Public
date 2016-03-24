@@ -388,16 +388,16 @@
           <Annotation Term="OData.AutoExpandReferences"/>
        </NavigationProperty>
        <NavigationProperty Name="Bios" Type="Bios.Bios">
-         <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-         <Annotation Term="OData.Description" String="A reference to the BIOS settings associated with this system."/>
-         <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a resource of type Bios that lists the BIOS settings for this system."/>
-         <Annotation Term="OData.AutoExpandReferences"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A reference to the BIOS settings associated with this system."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a resource of type Bios that lists the BIOS settings for this system."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
        </NavigationProperty>
        <NavigationProperty Name="Memory" Type="MemoryCollection.MemoryCollection" ContainsTarget="true">
-         <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/           
-		 <Annotation Term="OData.Description" String="A reference to the collection of Memory associated with this system"/>
-         <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type MemoryCollection."/>
-         <Annotation Term="OData.AutoExpandReferences"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/           
+          <Annotation Term="OData.Description" String="A reference to the collection of Memory associated with this system"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type MemoryCollection."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
        </NavigationProperty>	   
        <NavigationProperty Name="Storage" Type="StorageCollection.StorageCollection" ContainsTarget="true">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -407,12 +407,12 @@
         </NavigationProperty>
       </EntityType>
 	  
-	  <ComplexType Name="MemorySummary" BaseType="ComputerSystem.v1_0_0.MemorySummary">
-          <Property Name="MemoryMirroring" Type="ComputerSystem.v1_1_0.MemoryMirroring">
-            <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-            <Annotation Term="OData.Description" String="The ability and type of memory mirroring supported by this system."/>
-            <Annotation Term="OData.LongDescription" String="This property shall contain the ability and type of memory mirring supported by this system."/>
-          </Property>
+      <ComplexType Name="MemorySummary" BaseType="ComputerSystem.v1_0_0.MemorySummary">
+        <Property Name="MemoryMirroring" Type="ComputerSystem.v1_1_0.MemoryMirroring">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The ability and type of memory mirroring supported by this system."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the ability and type of memory mirring supported by this system."/>
+        </Property>
       </ComplexType>
         
       <EnumType Name="MemoryMirroring">
