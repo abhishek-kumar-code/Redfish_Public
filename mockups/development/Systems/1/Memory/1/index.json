@@ -29,5 +29,5 @@
 	},
     "Metrics": {
         "@odata.id": "/redfish/v1/Systems/4/Memory/1/Metrics"
-    },	
+    }	
 }
