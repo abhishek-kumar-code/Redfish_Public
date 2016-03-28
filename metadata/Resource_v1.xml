@@ -47,7 +47,7 @@
         <Annotation Term="Redfish.DynamicPropertyPatterns">
           <Collection>
             <Record>
-              <PropertyValue Property="Pattern" String="([a-zA-Z0-9]+(\\.[a-z]{2,})?|EID_[0-9]+)(_.+)?"/>
+              <PropertyValue Property="Pattern" String="([a-zA-Z0-9]+(\\.[a-z]{2,})?|EID_[0-9]+)(_.+)?|EID:[0-9]+)(:.+)?"/>
               <PropertyValue Property="Type" String="Resource.OemObject"/>
             </Record>
           </Collection>
