@@ -18,7 +18,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Event">
 
       <EntityType Name="Event" BaseType="Resource.v1_0_0.Resource">
-        <Annotation Term="OData.Description" String="This is the schema definition for Events.  It represents the properties for the events themselves and not subscriptions or any other resource."/>
+        <Annotation Term="OData.Description" String="The Event schema describes the JSON payload received by an Event Destination (which has subscribed to event notification) when an event occurs.  This resource contains data about a single event, including descriptions, severity and MessageId reference to a Message Registry that can be accessed for further information. "/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent an event for a Redfish implementation."/>
       </EntityType>
 
