@@ -38,6 +38,12 @@
         <Annotation Term="OData.Description" String="This schema defines a storage subsystem and its respective properties.  A storage subsystem represents a set of storage controllers (physical or virtual) and the resources such as volumes that can be accessed from that subsystem."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent resources that represent a storage subsystem in the Redfish specification."/>
       </EntityType>
+
+      <Action Name="SetEncryptionKey" IsBound="true">
+        <Parameter Name="Storage" Type="Storage.v1_0_0.Actions"/>
+        <Annotation Term="OData.Description" String="This action is used to set the encryption key for the storage subsystem."/>
+        <Annotation Term="OData.LongDescription" String="This defines the name of the custom action supported on this resource."/>
+      </Action>
       
     </Schema>
 

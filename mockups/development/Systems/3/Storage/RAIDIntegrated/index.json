@@ -63,23 +63,6 @@
         ]
     },
     "Actions": {
-        "#Storage.CreateVolume": {
-            "Target": "/redfish/v1/Systems/3/Storage/RAIDIntegrated/Actions/Storage.CreateVolume",
-            "VolumeType@Redfish.AllowableValues": [
-                "RawDevice",
-                "NonRedundant",
-                "Mirrored",
-                "StripedWithParity",
-                "StripedWithRedundantParity",
-                "SpannedMirrors",
-                "SpannedStripesWithParity",
-                "SpannedStripesWithRedundantParity"
-            ],
-            "CapacityBytes@Redfish.AllowableRange": [
-                104857600,
-                109951162777600
-            ]
-        },
         "#Storage.SetEncryptionKey": {
             "Target": "/redfish/v1/Systems/3/Storage/RAIDIntegrated/Actions/Storage.SetEncryptionKey"
         }
