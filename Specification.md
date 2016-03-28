@@ -1740,7 +1740,7 @@ In the context of this section, the term "OEM" refers to any company, manufactur
 Correct use of the Oem property requires defining the metadata for an OEM-specified complex type that can be referenced within the Oem property. The following fragment is an example of an XML schema that defines a pair of OEM-specific properties under the complex type "AnvilType1". (Other schema elements that would typically be present, such as XML and OData schema description identifiers, are not shown in order to simplify the example).
 
 ~~~xml
-<Schema Name="Contoso.v.v.v">
+<Schema Name="Contoso.v1_2_0">
   ...
   <ComplexType Name="AnvilType1">
     <Property Name="slogan" Type="Edm.String"/>
@@ -1756,7 +1756,7 @@ The next fragment shows an example of how the previous schema and the "AnvilType
 ...
   "Oem": {
     "Contoso": {
-      "@odata.type": "http://Contoso.com/schemas/extensions.v.v.v#contoso.AnvilType1",
+      "@odata.type": "http://Contoso.com/schemas/extensions.v1_2_0#contoso.AnvilType1",
       "slogan": "Contoso anvils never fail",
       "disclaimer": "* Most of the time"
     }
@@ -1790,7 +1790,7 @@ The following fragment presents some examples of naming and use of the Oem prope
 ...
   "Oem": {
     "Contoso": {
-      "@odata.type": "http://contoso.com/schemas/extensions.v_v_v#contoso.AnvilTypes1",
+      "@odata.type": "http://contoso.com/schemas/extensions.v1_2_1#contoso.AnvilTypes1",
       "slogan": "Contoso anvils never fail",
       "disclaimer": "* Most of the time"
     },
