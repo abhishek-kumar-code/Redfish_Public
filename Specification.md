@@ -52,7 +52,10 @@ There are several out of band systems management standards (defacto and de jour)
 
 The following referenced documents are indispensable for the application of this document. For dated or versioned references, only the edition cited (including any corrigenda or DMTF update versions) applies. For references without a date or version, the latest published edition of the referenced document (including any corrigenda or DMTF update versions) applies.
 
-* <a id="RFC2616">IETF RFC 2616</a>, R. Fielding et al., HTTP/1.1, [http://www.ietf.org/rfc/rfc2616.txt](http://www.ietf.org/rfc/rfc2616.txt "http://www.ietf.org/rfc/rfc2616.txt")
+* <a id="RFC7230">IETF RFC 7230</a>, R. Fielding et al., Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing, [http://www.ietf.org/rfc/rfc7230.txt](http://www.ietf.org/rfc/rfc7230.txt "http://www.ietf.org/rfc/rfc7230.txt")
+* <a id="RFC7231">IETF RFC 7231</a>, R. Fielding et al., Hypertext Transfer Protocol (HTTP/1.1): Semantics and Content, [http://www.ietf.org/rfc/rfc7231.txt](http://www.ietf.org/rfc/rfc7231.txt "http://www.ietf.org/rfc/rfc7231.txt")
+* <a id="RFC7232">IETF RFC 7232</a>, R. Fielding et al., Hypertext Transfer Protocol (HTTP/1.1): Conditional Requests, [http://www.ietf.org/rfc/rfc7232.txt](http://www.ietf.org/rfc/rfc7232.txt "http://www.ietf.org/rfc/rfc7232.txt")
+* <a id="RFC7234">IETF RFC 7234</a>, R. Fielding et al., Hypertext Transfer Protocol (HTTP/1.1): Caching, [http://www.ietf.org/rfc/rfc7234.txt](http://www.ietf.org/rfc/rfc7234.txt "http://www.ietf.org/rfc/rfc7234.txt")
 * <a id="RFC2617">IETF RFC 2617</a>  J. Franks et al., HTTP Authentication: Basic and Digest Access Authentication, [http://www.ietf.org/rfc/rfc2617.txt](http://www.ietf.org/rfc/rfc2617.txt "http://www.ietf.org/rfc/rfc2617.txt")
 * <a id="RFC3986">IETF RFC 3986</a>  T. Berners-Lee et al, Uniform Resource Identifier (URI): Generic Syntax, [http://www.ietf.org/rfc/rfc3986.txt](http://www.ietf.org/rfc/rfc3986.txt "http://www.ietf.org/rfc/rfc3986.txt")
 * <a id="RFC4627">IETF RFC 4627</a>, D. Crockford, The application/json Media Type for JavaScript Object Notation (JSON), [http://www.ietf.org/rfc/rfc4627.txt](http://www.ietf.org/rfc/rfc4627.txt "http://www.ietf.org/rfc/rfc4627.txt")
@@ -71,7 +74,8 @@ The following referenced documents are indispensable for the application of this
 * <a id="OData-Core">OData Version 4.0: Core Vocabulary</a>. 24 February 2014. [http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Core.V1.xml]("http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Core.V1.xml")
 * <a id="OData-JSON">OData Version 4.0 JSON Format</a>. 24 February 2014. [http://docs.oasis-open.org/odata/odata-json-format/v4.0/os/odata-json-format-v4.0-os.html]("http://docs.oasis-open.org/odata/odata-json-format/v4.0/os/odata-json-format-v4.0-os.html")
 * <a id="OData-UnitsOfMeasure">OData Version 4.0: Units of Measure Vocabulary</a>. 24 February 2014. [http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml]("http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml")
-* <a id="SSDP">Simple Service Discovery Protocol/1.0 </a>. 28 October 1999 ("https://tools.ietf.org/html/draft-cai-ssdp-v1-03")
+* <a id="SSDP">Simple Service Discovery Protocol/1.0</a>. 28 October 1999. [http://tools.ietf.org/html/draft-cai-ssdp-v1-03]("http://tools.ietf.org/html/draft-cai-ssdp-v1-03")
+* <a id="UCUM">The Unified Code for Units of Measure</a>.  [http://www.unitsofmeasure.org/ucum.html]("http://www.unitsofmeasure.org/ucum.html") 
 
 ## Terms and Definitions
 In this document, some terms have a specific meaning beyond the normal English meaning. Those terms are defined in this clause.
@@ -284,7 +288,7 @@ Some operations may take longer than required for synchronous return semantics. 
 
 HTTP is ideally suited to a RESTful interface. This section describes how HTTP is used in the Redfish interface and what constraints are added on top of HTTP to assure interoperability of Redfish compliant implementations.
 
-* A Redfish interface shall be exposed through a web service endpoint implemented using Hypertext Transfer Protocols, version 1.1 ([RFC2616](#RFC2616)).
+* A Redfish interface shall be exposed through a web service endpoint implemented using Hypertext Transfer Protocols, version 1.1 ([RFC7230](#RFC7230), [RFC7231](#RFC7231), [RFC7232](#RFC7232)).
 
 #### URIs
 
@@ -366,7 +370,8 @@ Clients may request compression by specifying an [Accept-Encoding header](#reque
 In order to reduce the cases of unnecessary RESTful accesses to resources, the Redfish Service should support associating a separate ETag with each resource.
 
 * Implementations should support returning [ETag properties](#etag-property) for each resource.
-* Implementations should support returning ETag headers for each response that represents a single resource.  Implementations shall support returning ETag headers for certain requests and responses as listed in the [Security](#security) section.
+* Implementations should support returning ETag headers for each response that represents a single resource.  
+* Implementations shall support returning ETag headers for GET requests of ManagerAccount resources.
 
 The ETag is generated and provided as part of the resource payload because the service is in the best position to know if the new version of the object is different enough to be considered substantial. There are two types of ETags: weak and strong.
 
@@ -447,21 +452,21 @@ HTTP defines headers that can be used in request messages. The following table d
 
 | Header           | Required    | Supported Values                      | Description                                                                                                                                                                                                                                                                                                                     |
 | --------         | ---         | -----------------                     | ------------                                                                                                                                                                                                                                                                                                                    |
-| Accept           | Yes         | [RFC 2616, Section 14.1][2616-14.1]   | Indicates to the server what media type(s) this client is prepared to accept. Services shall support requests for resources with an Accept header including `application/json` or `application/json;charset=utf-8`. Services shall support requests for metadata with an Accept header including `application/xml` or `application/xml;charset=utf-8`. |
-| Accept-Encoding  | No | [RFC 2616, Section 14.4][2616-14.4]   | Indicates if gzip encoding can be handled by the client. If an Accept-Encoding header is present in a request and the service cannot send a response which is acceptable according to the Accept-Encoding header, then the service should respond with status code [406](#status-406). Services should not return responses gzip encoded if the Accept-Encoding header is not present in the request.                                                                                                                                      |
-| Accept-Language  | No          | [RFC 2616, Section 14.4][2616-14.4]   | This header is used to indicate the language(s) requested in the response. If this header is not specified, the appliance default locale will be used.                                                                                                                                                                          |
-| Content-Type     | Conditional | [RFC 2616, Section 14.17][2616-14.17] | Describes the type of representation used in the message body. Content-Type shall be required in requests that include a request body. Services shall accept Content-Type values of `application/json` or `application/json;charset=utf-8`.                                                                                     |
-| Content-Length   | No          | [RFC 2616, Section 14.3][2616-14.3]   | Describes the size of the message body. An optional means of indicating size of the body uses Transfer-Encoding: chunked, which does not use the Content-Length header. If a service does not support Transfer-Encoding and needs Content-Length instead, the service will respond with status code [411](#status-411). |
+| Accept           | Yes         | [RFC 7231][7231]   | Indicates to the server what media type(s) this client is prepared to accept. Services shall support requests for resources with an Accept header including `application/json` or `application/json;charset=utf-8`. Services shall support requests for metadata with an Accept header including `application/xml` or `application/xml;charset=utf-8`. |
+| Accept-Encoding  | No | [RFC 7231][7231]   | Indicates if gzip encoding can be handled by the client. If an Accept-Encoding header is present in a request and the service cannot send a response which is acceptable according to the Accept-Encoding header, then the service should respond with status code [406](#status-406). Services should not return responses gzip encoded if the Accept-Encoding header is not present in the request.                                                                                                                                      |
+| Accept-Language  | No          | [RFC 7231][7231]   | This header is used to indicate the language(s) requested in the response. If this header is not specified, the appliance default locale will be used.                                                                                                                                                                          |
+| Content-Type     | Conditional | [RFC 7231][7231] | Describes the type of representation used in the message body. Content-Type shall be required in requests that include a request body. Services shall accept Content-Type values of `application/json` or `application/json;charset=utf-8`.                                                                                     |
+| Content-Length   | No          | [RFC 7231][7231]| Describes the size of the message body. An optional means of indicating size of the body uses Transfer-Encoding: chunked, which does not use the Content-Length header. If a service does not support Transfer-Encoding and needs Content-Length instead, the service will respond with status code [411](#status-411). |
 | OData-MaxVersion | No          | 4.0                                   | Indicates the maximum version of OData that an odata-aware client understands                                                                                                                                                                                                                                                   |
 | OData-Version    | Yes         | 4.0                                   | Services shall reject requests which specify an unsupported OData version.  If a service encounters a version that it does not support, the service should reject the request with status code [412] (#status-412).  If client does not specify an Odata-Version header, the client is outside the boundaries of this specification.                                                                                                                         |
 | Authorization    | Conditional | [RFC 2617, Section 2][2617-2]         | Required for [Basic Authorization](#basic-authentication)                                                                                                                                                                                                                                                                       |
-| User-Agent       | Yes         | [RFC 2616, Section 14.43][2616-14.43] | Required for tracing product tokens and their version.  Multiple product tokens may be listed.                                                                                                                                                                                                                                  |
-| Host             | Yes         | [RFC 2616, Section 14.23][2616-14.23] | Required to allow support of multiple origin hosts at a single IP address.                                                                                                                                                                                                                                                      |
+| User-Agent       | Yes         | [RFC 7231][7231] | Required for tracing product tokens and their version.  Multiple product tokens may be listed.                                                                                                                                                                                                                                  |
+| Host             | Yes         | [RFC 7230][7230] | Required to allow support of multiple origin hosts at a single IP address.                                                                                                                                                                                                                                                      |
 | Origin           | Yes         | [W3C CORS, Section 5.7][cors-5.7]     | Used to allow web applications to consume Redfish service while preventing CSRF attacks.                                                                                                                                                                                                                                        |
-| Via              | No          | [RFC 2616, Section 14.45][2616-14.45] | Indicates network hierarchy and recognizes message loops. Each pass inserts its own VIA.                                                                                                                                                                                                                                        |
-| Max-Forwards     | No          | [RFC 2616, Section 14.31][2616-14.31] | Limits gateway and proxy hops. Prevents messages from remaining in the network indefinitely.                                                                                                                                                                                                                                    |
-| If-Match         | Conditional | [RFC 2616, Section 14.31][2616-14.31] | If-Match shall be supported for Atomic requests on AccountService objects.  If-Match shall be supported on PUT and PATCH requests for resources for which the service returns ETags.                                                                                                                                     |
-| If-None-Match    | No          | [RFC 2616, Section 14.31][2616-14.31] | If this HTTP header is present, the service will only return the requested resource if the current ETag of that resource does not match the ETag sent in this header.  If the ETag specified in this header matches the resource's current ETag, the status code returned from the GET will be [304](#status-304).       |
+| Via              | No          | [RFC 7230][7230] | Indicates network hierarchy and recognizes message loops. Each pass inserts its own VIA.                                                                                                                                                                                                                                        |
+| Max-Forwards     | No          | [RFC 7231][7231] | Limits gateway and proxy hops. Prevents messages from remaining in the network indefinitely.                                                                                                                                                                                                                                    |
+| If-Match         | Conditional | [RFC 7232][7232] | If-Match shall be supported on PUT and PATCH requests for resources for which the service returns ETags, to ensure clients are updating the resource from a known state.                                                                                                                                     |
+| If-None-Match    | No          | [RFC 7232][7232]] | If this HTTP header is present, the service will only return the requested resource if the current ETag of that resource does not match the ETag sent in this header.  If the ETag specified in this header matches the resource's current ETag, the status code returned from the GET will be [304](#status-304).       |
 
 * Redfish services shall understand and be able to process the headers in the following table as defined by this specification if the value in the Required column is set to "yes" .
 
@@ -469,12 +474,9 @@ HTTP defines headers that can be used in request messages. The following table d
 | --------     | ---      | -----------------            | ------------                                                                                      |
 | X-Auth-Token | Yes      | Opaque encoded octet strings | Used for authentication of user sessions. The token value shall be indistinguishable from random. |
 
-[2616-14.1]: http://pretty-rfc.herokuapp.com/RFC2616#header.accept
-[2616-14.4]: http://pretty-rfc.herokuapp.com/RFC2616#header.accept-language
-[2616-14.23]: http://pretty-rfc.herokuapp.com/RFC2616#header.host
-[2616-14.31]: http://pretty-rfc.herokuapp.com/RFC2616#header.max-forwards
-[2616-14.43]: http://pretty-rfc.herokuapp.com/RFC2616#header.user-agent
-[2616-14.45]: http://pretty-rfc.herokuapp.com/RFC2616#header.via
+[7230]: http://pretty-rfc.herokuapp.com/RFC2610
+[7231]: http://pretty-rfc.herokuapp.com/RFC2611
+[7232]: http://pretty-rfc.herokuapp.com/RFC2613
 [2617-2]: http://pretty-rfc.herokuapp.com/RFC2617#basic-authentication-scheme
 [cors-5.7]: http://www.w3.org/TR/cors/
 
@@ -676,28 +678,28 @@ HTTP defines headers that can be used in response messages.  The following table
 | Header                             | Required    | Supported Values                      | Description                                                                                                                                                                                                                                                                                                                     |
 | --------                           | ---         | -----------------                     | ------------                                                                                                                                                                                                                                                                                                                    |
 | OData-Version                      | Yes         | 4.0                                   | Describes the OData version of the payload that the response conforms to.                                                                                                                                                                                                                                                       |
-| Content-Type                       | Yes         | [RFC 2616, Section 14.17][2616-14.17] | Describes the type of representation used in the message body. Services shall specify a Content-Type of `application/json` when returning resources as JSON, and `application/xml` when returning metadata as XML. `;charset=utf-8` shall be appended to the Content-Type if specified in the chosen media-type in the Accept header for the request. |
-| Content-Encoding                   | No          | [RFC 2616, Section 14.17][2616-14.17] | Describes the encoding that has been performed on the media type                                                                                                                                                                                                                                                                |
-| Content-Length                     | No          | [RFC 2616, Section 14.3][2616-14.3]   | Describes the size of the message body. An optional means of indicating size of the body uses Transfer-Encoding: chunked, which does not use the Content-Length header. If a service does not support Transfer-Encoding and needs Content-Length instead, the service will respond with status code [411](#status-411). |
-| ETag                               | Conditional | [RFC 2616, Section 14.19][2616-14.19] | An identifier for a specific version of a resource, often a message digest.   Etags shall be included on Account objects.                                                                                                                                                                                                       |
-| Server                             | Yes         | [RFC 2616, Section 14.38][2616-14.38] | Required to describe a product token and its version. Multiple product tokens may be listed.                                                                                                                                                                                                                                    |
+| Content-Type                       | Yes         | [RFC 7231][7231] | Describes the type of representation used in the message body. Services shall specify a Content-Type of `application/json` when returning resources as JSON, and `application/xml` when returning metadata as XML. `;charset=utf-8` shall be appended to the Content-Type if specified in the chosen media-type in the Accept header for the request. |
+| Content-Encoding                   | No          | [RFC 7231][7231] | Describes the encoding that has been performed on the media type                                                                                                                                                                                                                                                                |
+| Content-Length                     | No          | [RFC 7231][7231]   | Describes the size of the message body. An optional means of indicating size of the body uses Transfer-Encoding: chunked, which does not use the Content-Length header. If a service does not support Transfer-Encoding and needs Content-Length instead, the service will respond with status code [411](#status-411). |
+| ETag                               | Conditional | [RFC 7232][7232] | An identifier for a specific version of a resource, often a message digest.   Etags shall be included on responses to GETs of ManagerAccount objects.                                                                                                                                                                                                       |
+| Server                             | Yes         | [RFC 7231][7231] | Required to describe a product token and its version. Multiple product tokens may be listed.                                                                                                                                                                                                                                    |
 | <a id="link-header-table"></a>Link | Yes         | See [Link Header](#link-header)       | Link headers shall be returned as described in the section on [Link Headers](#link-header).                                                                                                                                                                                                                                     |
-| Location                           | Conditional | [RFC 2616, Section 14.30][2616-14.30] | Indicates a URI that can be used to request a representation of the resource.  Shall be returned if a new resource was created.  Location and X-Auth-Token shall be included on responses which create user sessions.                                                                                                      |
-| Cache-Control                      | Yes         | [RFC 2616, Section 14.9][2616-14.9]   | This header shall be supported and is meant to indicate whether a response can be cached or not.                                                                                                                                                                                                                                |
-| Via                                | No          | [RFC 2616, Section 14.45][2616-14.45] | Indicates network hierarchy and recognizes message loops. Each pass inserts its own VIA.                                                                                                                                                                                                                                        |
-| Max-Forwards                       | No          | [RFC 2616, Section 14.31][2616-14.31] | Limits gateway and proxy hops. Prevents messages from remaining in the network indefinitely.                                                                                                                                                                                                                                    |
+| Location                           | Conditional | [RFC 7231][7231] | Indicates a URI that can be used to request a representation of the resource.  Shall be returned if a new resource was created.  Location and X-Auth-Token shall be included on responses which create user sessions.                                                                                                      |
+| Cache-Control                      | Yes         | [RFC 7234][7234]   | This header shall be supported and is meant to indicate whether a response can be cached or not.                                                                                                                                                                                                                                |
+| Via                                | No          | [RFC 7230][7230] | Indicates network hierarchy and recognizes message loops. Each pass inserts its own VIA.                                                                                                                                                                                                                                        |
+| Max-Forwards                       | No          | [RFC 7231][7231] | Limits gateway and proxy hops. Prevents messages from remaining in the network indefinitely.                                                                                                                                                                                                                                    |
 | Access-Control-Allow-Origin        | Yes         | [W3C CORS, Section 5.1][cors-5.1]     | Prevents or allows requests based on originating domain. Used to prevent CSRF attacks.                                                                                                                                                                                                                                          |
-| Allow                              | Yes         | POST, PUT, PATCH, DELETE              | Returned on GET or HEAD operation to indicate the other allowable operations for this resource.  Shall be returned with a 405 (Method Not Allowed) response to indicate the valid methods for the specified Request URI.                                                                                                     |
+| Allow                              | Yes         | POST, PUT, PATCH, DELETE, GET, HEAD   | Shall be returned with a 405 (Method Not Allowed) response to indicate the valid methods for the specified Request URI.  Should be returned with any GET or HEAD operation to indicate the other allowable operations for this resource.                                                                                                     |
 | WWW-Authenticate                   | Yes         | [RFC 2617][2617]                      | Required for Basic and other optional authentication mechanisms. See the [Security][#Security] section for details.                                                                                                                                                                                                             |
 | X-Auth-Token | Yes      | Opaque encoded octet strings | Used for authentication of user sessions. The token value shall be indistinguishable from random. |
+| Retry-After | No | [RFC 2616, Section 14.37][2616-14.37] | Used to inform a client how long to wait before requesting the Task information again. |
 
 
-[2616-14.3]: http://pretty-rfc.herokuapp.com/RFC2616#header.content-length
-[2616-14.9]: http://pretty-rfc.herokuapp.com/RFC2616#header.cache-control
-[2616-14.17]: http://pretty-rfc.herokuapp.com/RFC2616#header.content-type
-[2616-14.19]: http://pretty-rfc.herokuapp.com/RFC2616#header.etag
-[2616-14.30]: http://pretty-rfc.herokuapp.com/RFC2616#header.location
-[2616-14.38]: http://pretty-rfc.herokuapp.com/RFC2616#header.server
+[7230]: http://pretty-rfc.herokuapp.com/RFC2610
+[7231]: http://pretty-rfc.herokuapp.com/RFC2611
+[7232]: http://pretty-rfc.herokuapp.com/RFC2613
+[7234]: http://pretty-rfc.herokuapp.com/RFC2614
+[2616-14.37]: http://pretty-rfc.herokuapp.com/RFC2616#header.retry-after
 [5988-5]: http://tools.ietf.org/html/rfc5988#section-5
 [cors-5.1]: http://www.w3.org/TR/cors/#access-control-allow-origin-response-header
 [2617]: http://pretty-rfc.herokuapp.com/RFC2617
@@ -873,7 +875,7 @@ Each entry shall be represented as a JSON object and shall include a "name" prop
 
 #### Resource Responses
 
-Resources are returned as JSON payloads, using the MIME type `application/json`.
+Resources are returned as JSON payloads, using the MIME type `application/json`.  Resource property names shall match the case specified in the [Schema](#resource-properties).
 
 ##### Context Property
 
@@ -1470,6 +1472,8 @@ All resources shall include [Description](#description) and [LongDescription](#l
 
 Structural properties of the resource are defined using the `Property` element. The `Name` attribute specifies the name of the property, and the [`Type`](#property-types) its type.
 
+Property names in the Request and Response JSON Payload shall match the casing of the value of the `Name` attribute.
+
 Properties that must have a non-nullable value include the [nullable attribute](#non-nullable-properties) with a value of "false".
 
 ~~~xml
@@ -1604,7 +1608,7 @@ If an implementation supports a property, it shall always provide a value for th
 		<Annotation Term="Redfish.Required"/>
 ~~~
 
-The `Required` annotation term is defined in http://redfish.dmtf.org/schemas/v1/RedfishExtensions.v1_0_0.
+The `Required` annotation term is defined in http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml.
 
 ##### Required Properties On Create
 
@@ -1614,14 +1618,16 @@ The RequiredOnCreate annotation term is used to specify that a property is requi
 		<Annotation Term="Redfish.RequiredOnCreate"/>
 ~~~
 
-The `RequiredOnCreate` annotation term is defined in http://redfish.dmtf.org/schemas/v1/RedfishExtensions.v1_0_0.
+The `RequiredOnCreate` annotation term is defined in http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml.
 
 ##### Units of Measure
 
-In addition to following [naming conventions](#common-naming-conventions), properties representing units of measure shall be annotated with the Units annotation term in order to specify the units of measurement for the property.
+In addition to following [naming conventions](#common-naming-conventions), properties representing units of measure shall be annotated with the Units annotation term in order to specify the units of measurement for the property.  
+
+The value of the annotation should be a string which contains the case-sensitive "(c/s)" symbol of the unit of measure as listed in the [Unified Code for Units of Measure (UCUM)](#UCUM), unless the symbolic representation does not reflect common usage (e.g. "RPM" is commonly used to report fan speeds in revolutions-per-minute, but has no simple UCUM representation).  For units with prefixes (e.g. Mebibyte (1024^2 bytes), which has the UCUM prefix "Mi" and symbol "By"), the case-sensitive "(c/s)" symbol for the prefix as listed in UCUM should be prepended to the unit symbol.  For values which also include rate information (e.g. megabits per second), the rate unit's symbol should be appended and use a "/" slash character as a separator (e.g. "Mbit/s").
 
 ~~~xml
-	    <Annotation Term="Measures.Unit" String="Watts"/>
+	    <Annotation Term="Measures.Unit" String="MiBy"/>
 ~~~
 
 The `Unit` annotation term is defined in http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml.
@@ -1766,15 +1772,15 @@ The definition of any other properties that are contained within the OEM-specifi
 
 ##### Oem Property Naming
 
-The OEM-specified objects within the Oem property are named using a unique OEM identifier for the top of the namespace under which the property is defined. There are two specified forms for the identifier. The identifier shall be either an ICANN-recognized domain name (including the top-level domain suffix), or an IANA-assigned Enterprise Number prefaced with "EID:".
+The OEM-specified objects within the Oem property are named using a unique OEM identifier for the top of the namespace under which the property is defined. There are two specified forms for the identifier. The identifier shall be either an ICANN-recognized domain name (including the top-level domain suffix), with all dot '.' separators replaced with underscores '_', or an IANA-assigned Enterprise Number prefaced with "EID_".
 
-Organizations using '.com' domain names may omit the '.com' suffix (e.g. Contoso.com may use 'Contoso', but Contoso.org must use 'Contoso.org' as their OEM property name). The domain name portion of an OEM identifier shall be considered to be case independent. That is, the text "Contoso.biz", "contoso.BIZ", "conTOso.biZ", and so on, all identify the same OEM and top level namespace.
+Organizations using '.com' domain names may omit the '.com' suffix (e.g. Contoso.com may use 'Contoso', but Contoso.org must use 'Contoso_org' as their OEM property name). The domain name portion of an OEM identifier shall be considered to be case independent. That is, the text "Contoso_biz", "contoso_BIZ", "conTOso_biZ", and so on, all identify the same OEM and top level namespace.
 
-The OEM identifier portion of the property name may be followed by a colon and any additional string to allow further namespacing of OEM-specified objects as desired by the OEM. E.g. "Contoso.com:xxxx" or "EID:412:xxxx". The form and meaning of any text that follows the colon is completely OEM-specific. OEM-specified extension suffixes may be case sensitive, depending on the OEM. Generic client software should treat such extensions, if present, as opaque and not attempt to parse nor interpret the content.
+The OEM identifier portion of the property name may be followed by an underscore and any additional string to allow further namespacing of OEM-specified objects as desired by the OEM. E.g. "Contoso_xxxx" or "EID_412_xxxx". The form and meaning of any text that follows the trailing underscore is completely OEM-specific. OEM-specified extension suffixes may be case sensitive, depending on the OEM. Generic client software should treat such extensions, if present, as opaque and not attempt to parse nor interpret the content.
 
-There are many ways this suffix could be used, depending on OEM need. For example, the Contoso company may have a sub-organization "Research", in which case the OEM-specified property name might be extended to be "Contoso:Research". Alternatively, it could be used to identify a namespace for a functional area, geography, subsidiary, and so on.
+There are many ways this suffix could be used, depending on OEM need. For example, the Contoso company may have a sub-organization "Research", in which case the OEM-specified property name might be extended to be "Contoso_Research". Alternatively, it could be used to identify a namespace for a functional area, geography, subsidiary, and so on.
 
-The OEM identifier portion of the name will typically identify the company or organization that created and maintains the schema for the property. However, this is not a requirement. The identifier is only required to uniquely identify the party that is the top-level manager of a namespace to prevent collisions between OEM property definitions from different vendors or organizations. Consequently, the organization for the top of the namespace may be different than the organization that provides the definition of the OEM-specified property. For example, Contoso may allow one of their customers, e.g. "CustomerA", to extend a Contoso product with certain CustomerA proprietary properties. In this case, although Contoso allocated the name "contosos:customers.CustomerA" it could be CustomerA that defines the content and functionality under that namespace. In all cases, OEM identifiers should not be used except with permission or as specified by the identified company or organization.
+The OEM identifier portion of the name will typically identify the company or organization that created and maintains the schema for the property. However, this is not a requirement. The identifier is only required to uniquely identify the party that is the top-level manager of a namespace to prevent collisions between OEM property definitions from different vendors or organizations. Consequently, the organization for the top of the namespace may be different than the organization that provides the definition of the OEM-specified property. For example, Contoso may allow one of their customers, e.g. "CustomerA", to extend a Contoso product with certain CustomerA proprietary properties. In this case, although Contoso allocated the name "Contoso_customers_CustomerA" it could be CustomerA that defines the content and functionality under that namespace. In all cases, OEM identifiers should not be used except with permission or as specified by the identified company or organization.
 
 #### Oem Property Examples
 The following fragment presents some examples of naming and use of the Oem property as it might appear when accessing a resource. The example shows that the OEM identifiers can be of different forms, that OEM-specified content can be simple or complex, and that the format and usage of extensions of the OEM identifier is OEM-specific.
@@ -1788,18 +1794,18 @@ The following fragment presents some examples of naming and use of the Oem prope
       "slogan": "Contoso anvils never fail",
       "disclaimer": "* Most of the time"
     },
-    "Contoso.biz": {
+    "Contoso_biz": {
       "@odata.type": "http://contoso.biz/schemas/extension1_1#RelatedSpeed",
       "speed" : "ludicrous"
     },
-    "EID:412:ASB_123": {
+    "EID_412_ASB_123": {
       "@odata.type": "http://AnotherStandardsBody/schemas.v1_0_1#powerInfoExt",
       "readingInfo": {
         "readingAccuracy": "5",
         "readingInterval": "20"
       }
     },
-    "Contoso:customers.customerA": {
+    "Contoso_customers_customerA": {
       "@odata.type" : "http://slingShots.customerA.com/catExt.2015#slingPower",
       "AvailableTargets" : [ "rabbit", "duck", "runner" ],
       "launchPowerOptions" : [ "low", "medium", "eliminate" ],
@@ -1829,7 +1835,7 @@ Such bound actions appear in the JSON payload as properties of the Oem type, nes
 ...
 "Actions": {
 	"OEM": {
-		"Contoso.v.v.v#Contoso.Ping": {
+		"Contoso.vx_x_x#Contoso.Ping": {
 			    "target":"/redfish/v1/Systems/1/Actions/OEM/Contoso.Ping"
 		    }
 		}
@@ -2009,7 +2015,7 @@ Each task has a number of possible states.  The exact states and their semantics
 
 When a client issues a request for a long-running operation, the service returns a status of 202 (Accepted).
 
-Any response with a status code of 202 (Accepted) shall include a location header containing the URL of a monitor for the task and may include a wait header to specify the amount of time the client should wait before querying status of the operation.
+Any response with a status code of 202 (Accepted) shall include a location header containing the URL of a monitor for the task and may include the Retry-After header to specify the amount of time the client should wait before querying status of the operation.
 
 The client should not include the mime type application/http in the Accept Header when performing a GET request to the status monitor.
 
@@ -2026,7 +2032,7 @@ The client can continue to get information about the status by directly querying
 * Services that support asynchronous operations shall implement the Task resource
 * The response to an asynchronous operation shall return a status code of 202 (Accepted)
   and set the HTTP response header "Location" to the URI of a status monitor
-  associated with the activity. The response may also include a wait header specifying
+  associated with the activity. The response may also include the Retry-After header specifying
   the amount of time the client should wait before polling for status. The response body
   should contain a representation of the Task resource in JSON.
 * GET requests to either the Task monitor or the Task Resource shall return the current status of the operation without blocking.
@@ -2382,6 +2388,7 @@ The file where the events are written, one or more messages per event should at 
 | ---     | ---      | ---             |
 | 1.0.0   | 2015-8-4 | Initial release |
 | 1.0.1   | 2015-9-17| Errata release.  Clarified normative use of LongDescription in schema files.  Clarified usage of the 'rel-describedby' link header.  Corrected text in example of 'Select List' in OData Context property.  Clarified Accept-Encoding Request header handling.  Deleted duplicative and conflicting statement on returning extended error resources.  Clarified relative URI resolution rules. Various grammatical corrections. Clarified USN format.  |
-| 1.0.2   | 2016-2-25| Errata release.  Clarified normative usage of the Context Property, the ability to use two URL forms in the property, and the "@odata.context" URL examples throughout.  Corrected name of Measures.Unit annotation term as used in examples.  Various typographical errors. Correctd outdated reference to Core OData specification in Annotation Term examples.  Clarified that implementation of the SSDP protocol is optional.  Added missing OPTIONS method to the allowed HTTP Methods list.  Corrected typographical error in the SSDP USN field's string definition (now '::dmtf-org').  Clarified usage of 'charset=utf-8' in the HTTP Accept and Content-Type headers.  Added section detailing the location of the Redfish Schema Repository. Clarified OData-Version header matching rules. |
+| 1.0.2   | 2016-2-25| Errata release.  Clarified normative usage of the Context Property, the ability to use two URL forms in the property, and the "@odata.context" URL examples throughout.  Corrected name of Measures.Unit annotation term as used in examples. Added recommendation for UCUM units of measure for Measures.Unit annotation terms.  Various typographical errors. Correctd outdated reference to Core OData specification in Annotation Term examples.  Clarified that implementation of the SSDP protocol is optional.  Added missing OPTIONS method to the allowed HTTP Methods list.  Corrected typographical error in the SSDP USN field's string definition (now '::dmtf-org').  Clarified usage of 'charset=utf-8' in the HTTP Accept and Content-Type headers.  Added section detailing the location of the Redfish Schema Repository. Clarified OData-Version header matching rules. |
+
 
  
