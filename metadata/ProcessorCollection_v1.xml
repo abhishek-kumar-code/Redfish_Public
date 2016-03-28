@@ -16,6 +16,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ProcessorCollection">
 
       <EntityType Name="ProcessorCollection" BaseType="Resource.v1_0_0.ResourceCollection">
+	    <Annotation Term="OData.Description" String="A Collection of Processor resource instances."/>
         <NavigationProperty Name="Members" Type="Collection(Processor.Processor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read" />
           <Annotation Term="OData.Description" String="Contains the members of this collection." />
