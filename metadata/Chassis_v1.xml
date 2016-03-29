@@ -102,7 +102,8 @@
         </Property>
         <Property Name="Links" Type="Chassis.v1_0_0.Links" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The links object contains the links to other resources that are related to this resource."/>
+          <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
+          <Annotation Term="OData.LongDescription" String="The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
         </Property>
         <Property Name="Actions" Type="Chassis.v1_0_0.Actions" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
