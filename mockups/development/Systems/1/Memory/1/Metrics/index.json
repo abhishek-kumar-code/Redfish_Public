@@ -16,7 +16,7 @@
     },
     "HealthData": {
         "RemainingSpareBlockPercentage": 50,
-        "IsLastShutdownSuccess": true,
+        "LastShutdownSuccess": true,
         "DataLossDetected": false,
         "PerformanceDegraded": false,
         "AlarmTrips": {
