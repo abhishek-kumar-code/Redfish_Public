@@ -20,7 +20,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Task">
 
       <EntityType Name="Task" BaseType="Resource.v1_0_0.Resource">
-        <Annotation Term="OData.Description" String="This is the schema definition for a Task resource."/>
+        <Annotation Term="OData.Description" String="This resource contains information about a specific Task scheduled by or being executed by a Redfish service's Task Service."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a task for a Redfish implementation."/>
       </EntityType>
       

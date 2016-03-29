@@ -365,8 +365,8 @@ class JsonSchemaGenerator:
                             refvalue = self.get_ref_value_for_type(typetable, record["Type"], namespace)
                             output += UT.Utilities.indent(depth+2)+ "\"$ref\": \"" + refvalue + "\""                        
                         elif jsontype == "primitive":
-#todo: might we have null here? if so, pass nullability as second arg to write_primitive_type
-                            output += self.wite_primitive_type(depth+2, False)
+#Assume DynamicPropertyPatterns primitive types can be nullable
+                            output += self.write_primitive_type(depth+2, True)
                         else:
                             output += UT.Utilities.indent(depth + 2) + "\"type\": \"" + jsontype + "\""
 
@@ -938,7 +938,7 @@ class JsonSchemaGenerator:
                 output += ",\n" + UT.Utilities.indent(depth) + "\"pattern\": \"([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})\""
 
         elif typename == "Edm.PrimitiveType":
-            output += self.wite_primitive_type(depth, isnullable)
+            output += self.write_primitive_type(depth, isnullable)
 
         else:
                print("Primitive Type Not Found!: " + typename)
@@ -950,7 +950,7 @@ class JsonSchemaGenerator:
     # Description:                                                                             #
     #   Generates JSON corresponding to Edm.PrimitiveType                                      #
     ############################################################################################
-    def wite_primitive_type(self, depth, isnullable):
+    def write_primitive_type(self, depth, isnullable):
 
         output = ""
         output  = UT.Utilities.indent(depth)   + "\"type\": [\n"
