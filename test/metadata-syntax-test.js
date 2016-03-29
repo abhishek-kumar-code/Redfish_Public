@@ -64,6 +64,15 @@ files.forEach(function(file) {
               {
                   var tmp = unitName.substring(1);
                   ucumTypes = ucum.get('//*[@Code="'+tmp+'"]');
+                  if(ucumTypes === undefined)
+                  {
+                      prefix = ucum.get('//*[local-name()="prefix"][@Code="'+unitName.substring(0,2)+'"]');
+                      if(prefix !== undefined)
+                      {
+                          var tmp = unitName.substring(2);
+                          ucumTypes = ucum.get('//*[@Code="'+tmp+'"]');
+                      }
+                  }
               }
               else
               {
