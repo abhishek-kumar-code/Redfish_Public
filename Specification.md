@@ -2096,30 +2096,6 @@ Redfish devices may implement the additional SSDP messages defined by UPnP to an
 
 ## Security
 
-### Goals
-- Privilege Model to Monitor and Manage:
-	- System Settings
-		- BIOS Configuration
-		- System Power States
-		- Sensor Information (power/thermal/health)
-		- Network Settings
-		- Storage Settings
-		- Logs
-	- Redfish Service Configuration
-		- Account Management
-		- Network Settings
-		- Logs
-	- Firmware versions
-	- OEM vendor-specific features and functionality
-
-- Permission/ authorization  model shall be consistent between instances of Redfish compliant devices
-	- Define a minimum baseline for the permission/ authorization model
-- Infrastructure Authentication
-- CURL compatibility
-- Automated clients
-- Embedded Service Processors
-
-
 ### Protocols
 
 #### TLS
@@ -2157,10 +2133,10 @@ Implementations shall support replacement of the default certificate if one is p
 
 
 #### HTTP Header Security
-* All write activities shall be authenticated, i.e. POST, PUT/PATCH, and DELETE, except for
+* All write requests to Redfish objects shall be authenticated, i.e. POST, PUT/PATCH, and DELETE, except for
   * The POST operation to the Sessions service/object needed for authentication
 	* Extended error messages shall NOT provide privileged info when authentication failures occur
-* REST objects shall not be available unauthenticated, except for
+* Redfish objects shall not be available unauthenticated, except for
   * The root object which is needed to identify the device and service locations
   * The $metadata object which is needed to retrieve resource types
   * The OData Service Document which is needed for compatibility with OData clients
@@ -2328,67 +2304,6 @@ The Authorization subsystem uses Roles and Privileges to control which users hav
 * ETag Handling:
   - Implementations shall enforce the same privilege model for ETag related activity as is enforced for the data being represented by the ETag.
   - For example, when activity requiring privileged access to read data item represented by ETag requires the same privileged access to read the ETag.
-
-
-### Data Model Validation
-
-#### Schema
-
-Server and Client implementations should check supplied data against Redfish Schema and perform data validation checks to prevent vulnerabilities caused by later processing errors.
-
-When there is a disagreement between a Server and Client on Redfish Schema validation, the server may enforce its version and reject the request.
-
-Clients shall NOT perform data interpolation unless the Redfish Schema permits that.
-
-Privileges should NOT be modified without a strong security related requirement. Redfish Schema validation shall include privilege checks when privilege requirements have been modified.
-
-NOTE: Privilege changes as part of Redfish Schema updates/changes shall be captured in the Redfish Schema change log.
-
-Idempotent actions shall be rejected when there is a security reason to do so.
-
-Resource definitions shall include required privileges to perform read/ RW actions on that resource.
-
-Resource tree stability - Permissions on resources should be stable as well.
-
-Custom Actions - Privilege model shall be applied consistently to both the body and the response. Where applicable the privilege model defined for the URI should be inherited for custom actions.
-
-### Logging
-
-#### Required data for security log entries
-
-Implementations shall log authentication requests including failures.
-Authentication login/logout log entries shall contain a user identifier that can be used to uniquely identify the client and a time stamp.
-
-#### Completeness of Logging
-
-* Every entity from the originator of the RESTful service call, through every intermediary, to the very last entity in the call chain, log an entry in their audit log for the call activity triggered/ taken/ ... This means same as any RESTful service call, the audit log entry will 'be complete' for the activity performed within said entity.
-  * shall - All write activities i.e. POST, PUT/ PATCH and DELETE
-    * NOTE: When a new log entry is created logging the occurrence of that event is not required.
-  * shall - Have the ability to log the privileged reads i.e. GETs
-    * This ability may be turned on by default.
-* Rejection of idempotent actions due to security reasons shall be logged
-
-#### Content of Audit Logs
-
-Details : Need to generate events for the following
-
-1. logon, log-off, modification of user accounts
-2. successful and rejected login attempts,
-3. successful and rejected connections to nodes and other resource access attempts
-4. details about the modification of user accounts
-5. all changes to the system configuration,
-6. information about the use of built-in utilities running in Redfish compliant-devices(e.g. low-level diagnostic tools),
-7. information about accessing the system interfaces of the Redfish compliant-devices
-8. network addresses and protocols (e.g. workstation IP address and protocol used for access)
-9. activation and de-activation of protection measures
-
-The file where the events are written, one or more messages per event should at least have the following information :
-
-* User ID
-* Date, time
-* Event type
-* Event description
-
 
 ## ANNEX A (informative)
 
