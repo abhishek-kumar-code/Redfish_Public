@@ -47,7 +47,6 @@
         <Annotation Term="Redfish.DynamicPropertyPatterns">
           <Collection>
             <Record>
-              <PropertyValue Property="Pattern" String="([a-zA-Z0-9]+(\\.[a-z]{2,})?|EID_[0-9]+)(_.+)?"/>
               <PropertyValue Property="Type" String="Resource.OemObject"/>
             </Record>
           </Collection>
@@ -273,6 +272,18 @@
            <Annotation Term="OData.Description" String="IEEE-defined 64-bit Extended Unique Identifier"/>
           <Annotation Term="OData.LongDescription" String="This durable name shall be the hexadecimal representation of the IEEE-defined 64-bit Extended Unique Identifier as defined in the IEEE's Guidelines for 64-bit Global Identifier (EUI-64) Specification."/>
          </Member>
+       </EnumType>
+
+       <EnumType Name="IndicatorLED">
+        <Member Name="Lit">
+          <Annotation Term="OData.Description" String="The Indicator LED is lit."/>
+        </Member>
+        <Member Name="Blinking">
+          <Annotation Term="OData.Description" String="The Indicator LED is blinking."/>
+        </Member>
+        <Member Name="Off">
+          <Annotation Term="OData.Description" String="The Indicator LED is off."/>
+        </Member>
       </EnumType>
     </Schema>
   </edmx:DataServices>

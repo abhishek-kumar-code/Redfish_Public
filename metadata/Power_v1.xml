@@ -37,19 +37,19 @@
 
       <EntityType Name="Power" BaseType="Power.Power">
         <NavigationProperty Name="PowerControl" Type="Collection(Power.v1_0_0.PowerControl)">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="This is the definition for power control function (power reading/limiting)."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for power control (power reading and limiting) for a Redfish implementation."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
         <NavigationProperty Name="Voltages" Type="Collection(Power.v1_0_0.Voltage)">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="This is the definition for voltage sensors."/>
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for voltage sensors for a Redfish implementation."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
         <NavigationProperty Name="PowerSupplies" Type="Collection(Power.v1_0_0.PowerSupply)">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>	  
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>	  
           <Annotation Term="OData.Description" String="Details of the power supplies associated with this system or device"/>
 		  <Annotation Term="OData.LongDescription" String="This object shall contain details of the power supplies associated with this system or device"/>
           <Annotation Term="OData.AutoExpand"/>
