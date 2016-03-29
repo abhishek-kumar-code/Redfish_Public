@@ -370,7 +370,8 @@ Clients may request compression by specifying an [Accept-Encoding header](#reque
 In order to reduce the cases of unnecessary RESTful accesses to resources, the Redfish Service should support associating a separate ETag with each resource.
 
 * Implementations should support returning [ETag properties](#etag-property) for each resource.
-* Implementations should support returning ETag headers for each response that represents a single resource.  Implementations shall support returning ETag headers for certain requests and responses as listed in the [Security](#security) section.
+* Implementations should support returning ETag headers for each response that represents a single resource.  
+* Implementations shall support returning ETag headers for GET requests of ManagerAccount resources.
 
 The ETag is generated and provided as part of the resource payload because the service is in the best position to know if the new version of the object is different enough to be considered substantial. There are two types of ETags: weak and strong.
 
@@ -464,7 +465,7 @@ HTTP defines headers that can be used in request messages. The following table d
 | Origin           | Yes         | [W3C CORS, Section 5.7][cors-5.7]     | Used to allow web applications to consume Redfish service while preventing CSRF attacks.                                                                                                                                                                                                                                        |
 | Via              | No          | [RFC 7230][7230] | Indicates network hierarchy and recognizes message loops. Each pass inserts its own VIA.                                                                                                                                                                                                                                        |
 | Max-Forwards     | No          | [RFC 7231][7231] | Limits gateway and proxy hops. Prevents messages from remaining in the network indefinitely.                                                                                                                                                                                                                                    |
-| If-Match         | Conditional | [RFC 7232][7232] | If-Match shall be supported for Atomic requests on AccountService objects.  If-Match shall be supported on PUT and PATCH requests for resources for which the service returns ETags.                                                                                                                                     |
+| If-Match         | Conditional | [RFC 7232][7232] | If-Match shall be supported on PUT and PATCH requests for resources for which the service returns ETags, to ensure clients are updating the resource from a known state.                                                                                                                                     |
 | If-None-Match    | No          | [RFC 7232][7232]] | If this HTTP header is present, the service will only return the requested resource if the current ETag of that resource does not match the ETag sent in this header.  If the ETag specified in this header matches the resource's current ETag, the status code returned from the GET will be [304](#status-304).       |
 
 * Redfish services shall understand and be able to process the headers in the following table as defined by this specification if the value in the Required column is set to "yes" .
@@ -680,7 +681,7 @@ HTTP defines headers that can be used in response messages.  The following table
 | Content-Type                       | Yes         | [RFC 7231][7231] | Describes the type of representation used in the message body. Services shall specify a Content-Type of `application/json` when returning resources as JSON, and `application/xml` when returning metadata as XML. `;charset=utf-8` shall be appended to the Content-Type if specified in the chosen media-type in the Accept header for the request. |
 | Content-Encoding                   | No          | [RFC 7231][7231] | Describes the encoding that has been performed on the media type                                                                                                                                                                                                                                                                |
 | Content-Length                     | No          | [RFC 7231][7231]   | Describes the size of the message body. An optional means of indicating size of the body uses Transfer-Encoding: chunked, which does not use the Content-Length header. If a service does not support Transfer-Encoding and needs Content-Length instead, the service will respond with status code [411](#status-411). |
-| ETag                               | Conditional | [RFC 7232][7232] | An identifier for a specific version of a resource, often a message digest.   Etags shall be included on Account objects.                                                                                                                                                                                                       |
+| ETag                               | Conditional | [RFC 7232][7232] | An identifier for a specific version of a resource, often a message digest.   Etags shall be included on responses to GETs of ManagerAccount objects.                                                                                                                                                                                                       |
 | Server                             | Yes         | [RFC 7231][7231] | Required to describe a product token and its version. Multiple product tokens may be listed.                                                                                                                                                                                                                                    |
 | <a id="link-header-table"></a>Link | Yes         | See [Link Header](#link-header)       | Link headers shall be returned as described in the section on [Link Headers](#link-header).                                                                                                                                                                                                                                     |
 | Location                           | Conditional | [RFC 7231][7231] | Indicates a URI that can be used to request a representation of the resource.  Shall be returned if a new resource was created.  Location and X-Auth-Token shall be included on responses which create user sessions.                                                                                                      |
@@ -688,7 +689,7 @@ HTTP defines headers that can be used in response messages.  The following table
 | Via                                | No          | [RFC 7230][7230] | Indicates network hierarchy and recognizes message loops. Each pass inserts its own VIA.                                                                                                                                                                                                                                        |
 | Max-Forwards                       | No          | [RFC 7231][7231] | Limits gateway and proxy hops. Prevents messages from remaining in the network indefinitely.                                                                                                                                                                                                                                    |
 | Access-Control-Allow-Origin        | Yes         | [W3C CORS, Section 5.1][cors-5.1]     | Prevents or allows requests based on originating domain. Used to prevent CSRF attacks.                                                                                                                                                                                                                                          |
-| Allow                              | Yes         | POST, PUT, PATCH, DELETE              | Returned on GET or HEAD operation to indicate the other allowable operations for this resource.  Shall be returned with a 405 (Method Not Allowed) response to indicate the valid methods for the specified Request URI.                                                                                                     |
+| Allow                              | Yes         | POST, PUT, PATCH, DELETE, GET, HEAD   | Shall be returned with a 405 (Method Not Allowed) response to indicate the valid methods for the specified Request URI.  Should be returned with any GET or HEAD operation to indicate the other allowable operations for this resource.                                                                                                     |
 | WWW-Authenticate                   | Yes         | [RFC 2617][2617]                      | Required for Basic and other optional authentication mechanisms. See the [Security][#Security] section for details.                                                                                                                                                                                                             |
 | X-Auth-Token | Yes      | Opaque encoded octet strings | Used for authentication of user sessions. The token value shall be indistinguishable from random. |
 | Retry-After | No | [RFC 2616, Section 14.37][2616-14.37] | Used to inform a client how long to wait before requesting the Task information again. |
@@ -1607,7 +1608,7 @@ If an implementation supports a property, it shall always provide a value for th
 		<Annotation Term="Redfish.Required"/>
 ~~~
 
-The `Required` annotation term is defined in http://redfish.dmtf.org/schemas/v1/RedfishExtensions.v1_0_0.
+The `Required` annotation term is defined in http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml.
 
 ##### Required Properties On Create
 
@@ -1617,7 +1618,7 @@ The RequiredOnCreate annotation term is used to specify that a property is requi
 		<Annotation Term="Redfish.RequiredOnCreate"/>
 ~~~
 
-The `RequiredOnCreate` annotation term is defined in http://redfish.dmtf.org/schemas/v1/RedfishExtensions.v1_0_0.
+The `RequiredOnCreate` annotation term is defined in http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml.
 
 ##### Units of Measure
 
@@ -1739,7 +1740,7 @@ In the context of this section, the term "OEM" refers to any company, manufactur
 Correct use of the Oem property requires defining the metadata for an OEM-specified complex type that can be referenced within the Oem property. The following fragment is an example of an XML schema that defines a pair of OEM-specific properties under the complex type "AnvilType1". (Other schema elements that would typically be present, such as XML and OData schema description identifiers, are not shown in order to simplify the example).
 
 ~~~xml
-<Schema Name="Contoso.v.v.v">
+<Schema Name="Contoso.v1_2_0">
   ...
   <ComplexType Name="AnvilType1">
     <Property Name="slogan" Type="Edm.String"/>
@@ -1755,7 +1756,7 @@ The next fragment shows an example of how the previous schema and the "AnvilType
 ...
   "Oem": {
     "Contoso": {
-      "@odata.type": "http://Contoso.com/schemas/extensions.v.v.v#contoso.AnvilType1",
+      "@odata.type": "http://Contoso.com/schemas/extensions.v1_2_0#contoso.AnvilType1",
       "slogan": "Contoso anvils never fail",
       "disclaimer": "* Most of the time"
     }
@@ -1772,6 +1773,7 @@ The definition of any other properties that are contained within the OEM-specifi
 ##### Oem Property Naming
 
 The OEM-specified objects within the Oem property are named using a unique OEM identifier for the top of the namespace under which the property is defined. There are two specified forms for the identifier. The identifier shall be either an ICANN-recognized domain name (including the top-level domain suffix), with all dot '.' separators replaced with underscores '_', or an IANA-assigned Enterprise Number prefaced with "EID_".
+DEPRECATED: The identifier shall be either an ICANN-recognized domain name (including the top-level domain suffix), or an IANA-assigned Enterprise Number prefaced with "EID:".
 
 Organizations using '.com' domain names may omit the '.com' suffix (e.g. Contoso.com may use 'Contoso', but Contoso.org must use 'Contoso_org' as their OEM property name). The domain name portion of an OEM identifier shall be considered to be case independent. That is, the text "Contoso_biz", "contoso_BIZ", "conTOso_biZ", and so on, all identify the same OEM and top level namespace.
 
@@ -1789,7 +1791,7 @@ The following fragment presents some examples of naming and use of the Oem prope
 ...
   "Oem": {
     "Contoso": {
-      "@odata.type": "http://contoso.com/schemas/extensions.v_v_v#contoso.AnvilTypes1",
+      "@odata.type": "http://contoso.com/schemas/extensions.v1_2_1#contoso.AnvilTypes1",
       "slogan": "Contoso anvils never fail",
       "disclaimer": "* Most of the time"
     },
@@ -2014,27 +2016,33 @@ Each task has a number of possible states.  The exact states and their semantics
 
 When a client issues a request for a long-running operation, the service returns a status of 202 (Accepted).
 
-Any response with a status code of 202 (Accepted) shall include a location header containing the URL of a monitor for the task and may include the Retry-After header to specify the amount of time the client should wait before querying status of the operation.
+Any response with a status code of 202 (Accepted) shall include a location header containing the URL of the Task Monitor and may include the Retry-After header to specify the amount of time the client should wait before querying status of the operation.
 
-The client should not include the mime type application/http in the Accept Header when performing a GET request to the status monitor.
+The Task Monitor is an opaque URL generated by the service intended to be used by the client that initiated the request. The client queries the status of the operation by performing a GET request on the Task Monitor.
+
+The client should not include the mime type application/http in the Accept Header when performing a GET request to the Task Monitor.
 
 The response body of a 202 (Accepted) should contain an instance of the Task resource describing the state of the task.
 
-As long as the operation is in process, the service shall continue to return a status code of 202 (Accepted) when querying the status monitor returned in the location header.
+As long as the operation is in process, the service shall continue to return a status code of 202 (Accepted) when querying the Task Monitor returned in the location header.
 
-Once the operation has completed, the status monitor shall return a status code of OK (200) and include the headers and response body of the initial operation, as if it had completed synchronously. If the initial operation resulted in an error, the body of the response shall contain an [Error Response](#error-responses).
+The client may cancel the operation by performing a DELETE on the Task Monitor URL. The service determines when to delete the associated Task resource object.
 
-The service may return a status code of 410 (Gone) if the operation has completed and the service has already deleted the task.
+The client may also cancel the operation by performing a DELETE on the Task resource. Deleting the Task resource object may invalidate the associated Task Monitor and subsequent GET on the Task Monitor URL returns either 410 (Gone) or 404 (Not Found).
+
+Once the operation has completed, the Task Monitor shall return a status code of OK (200) and include the headers and response body of the initial operation, as if it had completed synchronously. If the initial operation resulted in an error, the body of the response shall contain an [Error Response](#error-responses).
+
+The service may return a status code of 410 (Gone) or 404 (Not Found) if the operation has completed and the service has already deleted the task. This can occur if the client waits too long to read the Task Monitor. 
 
 The client can continue to get information about the status by directly querying the Task resource using the [resource identifier](#resource-identifier-property) returned in the body of the 202 (Accepted) response.
 
 * Services that support asynchronous operations shall implement the Task resource
 * The response to an asynchronous operation shall return a status code of 202 (Accepted)
-  and set the HTTP response header "Location" to the URI of a status monitor
+  and set the HTTP response header "Location" to the URI of a Task Monitor
   associated with the activity. The response may also include the Retry-After header specifying
   the amount of time the client should wait before polling for status. The response body
   should contain a representation of the Task resource in JSON.
-* GET requests to either the Task monitor or the Task Resource shall return the current status of the operation without blocking.
+* GET requests to either the Task Monitor or the Task Resource shall return the current status of the operation without blocking.
 * Operations using HTTP GET, PUT, PATCH should always be synchronous.
 * Clients shall be prepared to handle both synchronous and asynchronous responses for requests using HTTP DELETE and HTTP POST methods.
 

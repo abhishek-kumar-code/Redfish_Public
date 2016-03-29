@@ -365,8 +365,8 @@ class JsonSchemaGenerator:
                             refvalue = self.get_ref_value_for_type(typetable, record["Type"], namespace)
                             output += UT.Utilities.indent(depth+2)+ "\"$ref\": \"" + refvalue + "\""                        
                         elif jsontype == "primitive":
-#todo: might we have null here? if so, pass nullability as second arg to write_primitive_type
-                            output += self.wite_primitive_type(depth+2, False)
+#Assume DynamicPropertyPatterns primitive types can be nullable
+                            output += self.write_primitive_type(depth+2, True)
                         else:
                             output += UT.Utilities.indent(depth + 2) + "\"type\": \"" + jsontype + "\""
 
@@ -938,7 +938,7 @@ class JsonSchemaGenerator:
                 output += ",\n" + UT.Utilities.indent(depth) + "\"pattern\": \"([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})\""
 
         elif typename == "Edm.PrimitiveType":
-            output += self.wite_primitive_type(depth, isnullable)
+            output += self.write_primitive_type(depth, isnullable)
 
         else:
                print("Primitive Type Not Found!: " + typename)
@@ -950,7 +950,7 @@ class JsonSchemaGenerator:
     # Description:                                                                             #
     #   Generates JSON corresponding to Edm.PrimitiveType                                      #
     ############################################################################################
-    def wite_primitive_type(self, depth, isnullable):
+    def write_primitive_type(self, depth, isnullable):
 
         output = ""
         output  = UT.Utilities.indent(depth)   + "\"type\": [\n"
@@ -1265,11 +1265,7 @@ class JsonSchemaGenerator:
             typename = typedata["Name"]
             typenamespace = typedata["Namespace"]
         
-            try :
-                # If this type has been parsed already do nothing
-                index = parsedtypes.index(typename + ":" + typenamespace)
-
-            except :
+            if(not ((typename + ":" + typenamespace) in parsedtypes )) :
                 # This type has not been parsed yet
                 parsedtypes.append(typename + ":" + typenamespace)
                 if ( typetype == "EntityType" ):
@@ -1391,10 +1387,7 @@ class JsonSchemaGenerator:
             basetype = typedata["BaseType"]
             typename = typedata["Name"]
         
-            try :
-                # If this type has been parsed already do nothing
-                index = parsedtypes.index(typename + ":" + currentNamespace)
-            except :
+            if(not ((typename + ":" + currentNamespace) in parsedtypes)) :
                 # This type has not been parsed yet. Process it now.
                 if ( (typetype!= "Action" and ( self.include_type(typename,currentNamespace, namespace, typetable) and self.is_inline_type(typedata) and not (typetype=="ComplexType" and self.isabstract(typedata) ) ) )
                     or (typetype == "Action" and self.include_type(typename, typedata["BoundNamespace"], namespace, typetable)) ):
@@ -1451,11 +1444,7 @@ class JsonSchemaGenerator:
             typename = typedata["Name"]
             typenamespace = typedata["Namespace"]
         
-            try :
-                # If this type has been parsed already do nothing
-                index = parsedtypes.index(typename + ":" + typenamespace)
-
-            except :
+            if(not ((typename + ":" + typenamespace) in parsedtypes)) :
                 # This type has not been parsed 
                 parsedtypes.append(typename + ":" + typenamespace)
                 if ( (typenamespace == namespace) and (typedata["IsFromRefUri"] == False) and (typetype == "EntityType") and ( self.has_basetype(typetable, typedata, "Resource.v1_0_0.Resource" ) or self.has_basetype(typetable, typedata, "Resource.v1_0_0.ResourceCollection") ) ): 
@@ -1511,7 +1500,7 @@ class JsonSchemaGenerator:
         fileoutput += results
         # Add Copyright
         fileoutput += ",\n"
-        fileoutput += UT.Utilities.indent(depth+1) + "\"copyright\": \"Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.\"\n"
+        fileoutput += UT.Utilities.indent(depth+1) + "\"copyright\": \"Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.\"\n"
         # End starting bracket
         fileoutput += UT.Utilities.indent(depth) + "}\n"
         screenoutput += fileoutput

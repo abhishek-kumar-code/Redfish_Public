@@ -30,13 +30,19 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/LogServiceCollection_v1.xml">
     <edmx:Include Namespace="LogServiceCollection"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Storage_v1.xml">
+    <edmx:Include Namespace="Storage"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Drive_v1.xml">
+    <edmx:Include Namespace="Drive"/>
+  </edmx:Reference>
 
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis">
       
       <EntityType Name="Chassis" BaseType="Resource.v1_0_0.Resource">
-        <Annotation Term="OData.Description" String="This is the schema definition for the Chassis resource.  It represents the properties for physical components for any system.  This one object is intended to represent racks, rackmount servers, blades, standalone, modular systems, enclosures, and all other containers.  The non-cpu/device centric parts of the schema are all accessed either directly or indirectly through this resource."/>
+        <Annotation Term="OData.Description" String="A Chassis represents the physical components for any system.  This resource represents the sheet-metal confined spaces and logical zones like racks, enclosures, chassis and all other containers. Subsystems (like sensors), which operate outside of a system's data plane (meaning the resources are not accessible to software running on the system) are linked either directly or indirectly through this resource."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a chassis or other physical enclosure for a Redfish implementation."/>
       </EntityType>
 
@@ -231,7 +237,7 @@
       <!-- These are all supported LED statuses. -->
       <EnumType Name="IndicatorLED">
         <Member Name="Unknown">
-          <Annotation Term="OData.Description" String="The state of the Indicator LED cannot be determined."/>
+          <Annotation Term="OData.Description" String="The state of the Indicator LED cannot be determined. Deprecated: Return null if state is unknown."/>
         </Member>
         <Member Name="Lit">
           <Annotation Term="OData.Description" String="The Indicator LED is lit."/>
@@ -332,7 +338,19 @@
           <Annotation Term="OData.Description" String="An array of references to the managers located in this Chassis."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall reference one or more resources of type Manager that are in this Chassis."/>
           <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>		
+        </NavigationProperty>
+        <NavigationProperty Name="Drives" Type="Collection(Drive.Drive)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="An array of references to the disk drives located in this Chassis."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall reference one or more resources of type Drive that are in this Chassis."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        <NavigationProperty Name="Storage" Type="Collection(Storage.Storage)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="An array of references to the storage subsystems connected to or inside this Chassis."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall reference one or more resources of type Storage that are connected to or contained inside this Chassis."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
       </ComplexType>
     </Schema>
     

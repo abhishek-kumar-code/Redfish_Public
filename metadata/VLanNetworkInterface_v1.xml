@@ -17,6 +17,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="VLanNetworkInterface">
 
       <EntityType Name="VLanNetworkInterface" BaseType="Resource.v1_0_0.Resource">
+        <Annotation Term="OData.Description" String="This resource contains information for a Virtual LAN (VLAN) network instance available on a manager, system or other device."/>
       </EntityType>
 
     </Schema>
