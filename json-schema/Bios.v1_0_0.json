@@ -10,7 +10,8 @@
           "type": [
             "string",
             "boolean",
-            "number"
+            "number",
+            "null"
           ]
         },
         "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
