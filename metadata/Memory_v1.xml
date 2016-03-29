@@ -267,13 +267,13 @@
           <Annotation Term="OData.Description" String="DRAM" />
         </Member>
         <Member Name="NVDIMM_N">
-          <Annotation Term="OData.Description" String="NVDIMM_N" />
+          <Annotation Term="OData.Description" String="NVDIMM_N as defined by JEDEC." />
         </Member>
         <Member Name="NVDIMM_F">
-          <Annotation Term="OData.Description" String="NVDIMM_F" />
+          <Annotation Term="OData.Description" String="NVDIMM_F as defined by JEDEC." />
         </Member>
         <Member Name="NVDIMM_P">
-          <Annotation Term="OData.Description" String="NVDIMM_P" />
+          <Annotation Term="OData.Description" String="NVDIMM_P as defined by JEDEC." />
         </Member>
       </EnumType>
 
