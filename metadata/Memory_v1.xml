@@ -473,10 +473,10 @@
           <Annotation Term="OData.Description" String="Unique region ID representing a specific region within the Memory" />
           <Annotation Term="OData.LongDescription" String="Unique region ID representing a specific region within the Memory." />
         </Property>
-        <Property Name="MemoryType" Type="Memory.v1_0_0.MemoryType">
+        <Property Name="MemoryClassification" Type="Memory.v1_0_0.MemoryClassification">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
-          <Annotation Term="OData.Description" String="Type of memory occupied by the given memory region" />
-          <Annotation Term="OData.LongDescription" String="Type of memory occupied by the given memory region." />
+          <Annotation Term="OData.Description" String="Classification of memory occupied by the given memory region" />
+          <Annotation Term="OData.LongDescription" String="Classification of memory occupied by the given memory region." />
         </Property>
         <Property Name="OffsetMiB" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
@@ -498,7 +498,7 @@
         <Annotation Term="OData.Description" String="Memory memory region information."/>
       </ComplexType>
 
-      <EnumType Name="MemoryType">
+      <EnumType Name="MemoryClassification">
         <Member Name="Volatile">
           <Annotation Term="OData.Description" String="Volatile memory" />
         </Member>
