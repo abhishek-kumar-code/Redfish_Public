@@ -42,7 +42,7 @@
       </Action>
 
       <Action Name="CheckConsistency">
-        <Parameter Name="Volume" Type="Volume.1.0.0.Actions"/>
+        <Parameter Name="Volume" Type="Volume.v1_0_0.Actions"/>
         <Annotation Term="OData.Description" String="This action is used to force a check of the Volume's parity or redundant data to ensure it matches calculated values."/>
         <Annotation Term="OData.LongDescription" String="This defines the name of the custom action supported on this resource."/>
       </Action>
@@ -103,11 +103,11 @@
           <Annotation Term="OData.LongDescription" String="This property shall contain the optimum IO size to use when performing IO on this volume. For logical disks, this is the stripe size. For physical disks, this describes the physical sector size."/>
           <Annotation Term="Measures.Unit" String="By"/>
         </Property>
-        <Property Name="Links" Type="Volume.1.0.0.Links" Nullable="false">
+        <Property Name="Links" Type="Volume.v1_0_0.Links" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The links object contains the links to other resources that are related to this resource."/>
         </Property>
-        <Property Name="Actions" Type="Volume.1.0.0.Actions" Nullable="false">
+        <Property Name="Actions" Type="Volume.v1_0_0.Actions" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The Actions object contains the available custom actions on this resource."/>
         </Property>
