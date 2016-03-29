@@ -1162,7 +1162,7 @@ where
 
 The client can get the definition of the annotation from the [service metadata](#service-metadata), or may ignore the annotation entirely, but should not fail reading the resource due to unrecognized annotations, including new annotations defined within the Redfish namespace.
 
-#### Collection Resource Responses
+#### Collection Resource Response
 
 Collection resources are returned as a JSON object. The JSON object shall include a [context](#context-property), [resource count](#resource-count-property), and array of [members](#resource-members-property), and may include a [next link](#partial-results) for partial results.
 
