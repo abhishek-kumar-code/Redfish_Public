@@ -16,7 +16,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MessageRegistryFileCollection">
 
       <EntityType Name="MessageRegistryFileCollection" BaseType="Resource.v1_0_0.ResourceCollection">
-	    <Annotation Term="OData.Description" String="A Collection of MessageRegistryFile resource instances."/>
+        <Annotation Term="OData.Description" String="A Collection of MessageRegistryFile resource instances."/>
         <NavigationProperty Name="Members" Type="Collection(MessageRegistryFile.MessageRegistryFile)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the members of this collection."/>
