@@ -9,7 +9,7 @@
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
     <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
-    <edmx:Include Namespace="Validation.1.0.0" Alias="Validation"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
@@ -77,7 +77,7 @@
         <Property Name="Actions" Type="Storage.v1_0_0.Actions" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The Actions object contains the available custom actions on this resource."/>
-        </Property>     
+        </Property>
         <Property Name="Status" Type="Resource.Status"/>
         <NavigationProperty Name="Redundancy" Type="Collection(Redundancy.Redundancy)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -149,17 +149,17 @@
           <Annotation Term="OData.Description" String="The user assigned asset tag for this storage controller."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an identifying string used to track the storage controller for inventory purposes."/>
         </Property>
-        <Property Name="SupportedControllerProtocols" Type="Collection(Storage.1.0.0.Protocol)">
+        <Property Name="SupportedControllerProtocols" Type="Collection(Storage.v1_0_0.Protocol)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-		  <Annotation Term="OData.Description" String="This represents the protocols by which this storage controller can be communicated to."/>
+          <Annotation Term="OData.Description" String="This represents the protocols by which this storage controller can be communicated to."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the set of protocols this storage controller can be communicated to."/>
         </Property>
-        <Property Name="SupportedDeviceProtocols" Type="Collection(Storage.1.0.0.Protocol)">
+        <Property Name="SupportedDeviceProtocols" Type="Collection(Storage.v1_0_0.Protocol)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-		  <Annotation Term="OData.Description" String="This represents the protocols which the storage controller can use to communicate with attached devices."/>
+          <Annotation Term="OData.Description" String="This represents the protocols which the storage controller can use to communicate with attached devices."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the set of protocols this storage controller can use to communicate with attached devices."/>
         </Property>
-        <Property Name="Identifiers" Type="Collection(Resource.1.1.0.Identifier)">
+        <Property Name="Identifiers" Type="Collection(Resource.v1_1_0.Identifier)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The Durable names for the storage controller"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain a list of all known durable names for the associated storage controller."/>
