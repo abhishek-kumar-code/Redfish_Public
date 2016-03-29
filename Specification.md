@@ -2023,7 +2023,7 @@ The client should not include the mime type application/http in the Accept Heade
 
 The response body of a 202 (Accepted) should contain an instance of the Task resource describing the state of the task.
 
-As long as the operation is in process, the service shall continue to return a status code of 202 (Accepted) when querying the Task monitor returned in the location header.
+As long as the operation is in process, the service shall continue to return a status code of 202 (Accepted) when querying the Task Monitor returned in the location header.
 
 The client may cancel the operation by performing a DELETE on the Task Monitor URL. The service determines when to delete the associated Task resource object.
 
