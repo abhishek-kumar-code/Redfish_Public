@@ -112,6 +112,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
           <Annotation Term="OData.Description" String="Memory Capacity in MiB." />
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the Memory capacity in MiB." />
+          <Annotation Term="Measures.Unit" String="MiBy"/>          
         </Property>
         <Property Name="DataWidthBits" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
@@ -138,7 +139,7 @@
           <Annotation Term="OData.Description" String="The product part number of this device" />
           <Annotation Term="OData.LongDescription" String="This property shall indicate the part number as provided by the manufacturer of this Memory." />
         </Property>
-        <Property Name="AllowedSpeedsMhz" Type="Collection(Edm.Int64)">
+        <Property Name="AllowedSpeedsMHz" Type="Collection(Edm.Int64)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
           <Annotation Term="OData.Description" String="Speed bins supported by this Memory" />
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the speed supported by this Memory." />
@@ -401,9 +402,6 @@
       </ComplexType>
 
       <EnumType Name="SecurityStates">
-        <Member Name="unknown">
-          <Annotation Term="OData.Description" String="Security state is unknown" />
-        </Member>
         <Member Name="enabled">
           <Annotation Term="OData.Description" String="Secure mode is enabled" />
         </Member>
@@ -486,7 +484,7 @@
           <Annotation Term="OData.Description" String="Size of this memory region in MiB" />
           <Annotation Term="OData.LongDescription" String="Size of this memory region in MiB." />
         </Property>
-        <Property Name="PassphraseState" Type="Memory.v1_0_0.PassphraseState">
+        <Property Name="PassphraseState" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
           <Annotation Term="OData.Description" String="State of the passphrase for this region" />
           <Annotation Term="OData.LongDescription" String="State of the passphrase for this region." />
@@ -503,15 +501,6 @@
         </Member>
         <Member Name="Block">
           <Annotation Term="OData.Description" String="Block accesible memory" />
-        </Member>
-      </EnumType>
-
-      <EnumType Name="PassphraseState">
-        <Member Name="enabled">
-          <Annotation Term="OData.Description" String="Secure mode is enabled" />
-        </Member>
-        <Member Name="disabled">
-          <Annotation Term="OData.Description" String="Secure mode is disabled" />
         </Member>
       </EnumType>
       
@@ -534,7 +523,7 @@
           <Annotation Term="OData.Description" String="Power management policy enabled status" />
           <Annotation Term="OData.LongDescription" String="Power management policy enabled status." />
         </Property>
-        <Property Name="MaxTDPMilliWattst" Type="Edm.Int64">
+        <Property Name="MaxTDPMilliWatts" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
           <Annotation Term="OData.Description" String="Maximum TDP in milli watts" />
           <Annotation Term="OData.LongDescription" String="Maximum TDP in milli watts." />
