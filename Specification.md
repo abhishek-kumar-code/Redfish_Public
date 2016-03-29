@@ -579,7 +579,7 @@ Submitting a POST request to a resource representing a collection is equivalent 
 * Services shall support the POST method for creating resources. If the resource does not offer anything to be created, a status code [405](#status-405) shall be returned.
 * The POST operation shall not be idempotent.
 
-The body of the create request contains a representation of the object to be created. The service can ignore any service controlled attributes (e.g. id), forcing those attributes to be overridden by the service. The service shall set the Location header to the URI of the newly created resource. The response to a successful create request should be 201 (Created) and may include a response body containing the representation of the newly created resource.
+The body of the create request contains a representation of the object to be created. The service can ignore any service controlled attributes (e.g. id), forcing those attributes to be overridden by the service. The service shall set the Location header to the URI of the newly created resource. The response to a successful create request should be 201 (Created) and may include a response body containing a representation of the newly created resource conforming to the schema of the created resource.
 
 ##### Delete (DELETE)
 
@@ -1977,7 +1977,7 @@ The client locates the eventing service through traversing the Redfish service i
 
 The specific syntax of the subscription body is found in the Redfish Schema.
 
-On success, the "subscribe" action shall return with HTTP status 201 (CREATED) and the Location header in the response shall contain a URI giving the location of the newly created "subscription" resource. The body of the response, if any, shall contain a representation of the subscription resource. Sending an HTTP GET to the subscription resource shall return the configuration of the subscription.
+On success, the "subscribe" action shall return with HTTP status 201 (CREATED) and the Location header in the response shall contain a URI giving the location of the newly created "subscription" resource. The body of the response, if any, shall contain a representation of the subscription resource conforming to the EventDestination schema. Sending an HTTP GET to the subscription resource shall return the configuration of the subscription.
 
 Clients begin receiving events once a subscription has been registered with the service and do not receive events retroactively. Historical events are not retained by the service.
 
