@@ -22,7 +22,7 @@
                     "$ref": "#/definitions/id"
                 }
             },
-            "description": "A reference a resource.",
+            "description": "A reference to a resource.",
             "longDescription": "The value of this property shall be used for references to a resource."
         },
         "type": {
