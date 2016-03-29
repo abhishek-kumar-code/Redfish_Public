@@ -80,7 +80,8 @@
         </Property>
         <Property Name="Actions" Type="Storage.v1_0_0.Actions" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The Actions object contains the available custom actions on this resource."/>
+          <Annotation Term="OData.Description" String="The available actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
         <Property Name="Status" Type="Resource.Status"/>
         <NavigationProperty Name="Redundancy" Type="Collection(Redundancy.Redundancy)">
