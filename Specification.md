@@ -525,7 +525,7 @@ When the resource addressed is a collection, the client can use the following pa
 
 ###### Retrieving Collections
 
-Retrieving a collection is done by sending the HTTP GET method to the URI for the collection. The response will be a [resource collection representation](#resource-collections) that includes the collection's attributes as well as the list of the members of the collection. A subset of the members can be returned using [client paging query parameters](#query-parameters).
+Retrieving a collection is done by sending the HTTP GET method to the URI for the collection. The response includes attributes of the collection as well as the list of the members of the collection. A subset of the members can be returned using [client paging query parameters](#query-parameters).
 
 No requirements are placed on implementations to return a consistent set of members when a series of requests using paging query parameters are made over time to obtain the entire set of members. It is possible that this could result in missed or duplicate elements being retrieved if multiple GETs are used to retrieve a collection using paging.
 
@@ -664,7 +664,7 @@ OData-Version: 4.0
 Redfish defines four types of responses:
 * [Metadata Responses](#metadata-responses) - Describe the resources and types exposed by the service to generic clients.
 * [Resource Responses](#resource-responses) - JSON representation of an individual resource.
-* [Resource Collection Responses](#resource-collections) - JSON representation of a collections of resources.
+* [Collection Resource Responses](#collection-resource-response) - JSON representation of a resource that represents a collections of resources.
 * [Error Responses](#error-responses) - Top level JSON response providing additional information in the case of an HTTP error.
 
 #### Response Headers
@@ -1162,36 +1162,35 @@ where
 
 The client can get the definition of the annotation from the [service metadata](#service-metadata), or may ignore the annotation entirely, but should not fail reading the resource due to unrecognized annotations, including new annotations defined within the Redfish namespace.
 
-#### Resource Collections
+#### Collection Resource Response
 
-Resource collections are returned as a JSON object. The JSON object shall include a [context](#context-property), [resource count](#resource-count-property), and array of [values](#resource-members-property), and may include a [next link](#partial-results) for partial results.
+Collection resources are returned as a JSON object. The JSON object shall include a [context](#context-property), [resource count](#resource-count-property), and array of [members](#resource-members-property), and may include a [next link](#partial-results) for partial results.
 
 #####	Context Property
-Responses that represent a collection of resources shall contain a context property named "@odata.context" describing the source of the payload. The value of the context property shall be the context URL that describes the resources according to [OData-Protocol](#OData-Protocol).
+Responses that represent a collection resource shall contain a context property named "@odata.context" describing the source of the payload. The value of the context property shall be the context URL that describes the collection resource according to [OData-Protocol](#OData-Protocol).
 
-The context URL for a resource collection is of one of the following two forms:
+The context URL for a collection resource is of one of the following two forms:
 
- *MetadataUrl*.#Collection(*ResourceType*)[(*SelectList*)]
- *MetadataUrl*.#*ResourcePath*[(*Selectlist*)]
+ *MetadataUrl*.#*CollectionResourceType*
+ *MetadataUrl*.#*CollectionResourcePath*
 
 Where:
 * *MetadataUrl* = the metadata url of the service (/redfish/v1/$metadata)
-* *ResourceType* = the fully qualified name of the unversioned type of resources within the collection.
-* *ResourcePath* = the path from the service root to the collection resource
-* *SelectList* = comma-separated [list of properties](#select-list) included in the response if the response includes a subset of properties defined for the represented resources.
+* *CollectionResourceType* = the fully qualified name of the unversioned type of resources within the collection.
+* *CollectionResourcePath* = the path from the service root to the collection resource
 
 ##### Resource Count Property
 
-The total number of resources available in the collection is represented through the count property. The count property shall be named "@odata.count" and its value shall be an integer representing the total number of records in the result. This count is not affected by the $top or $skip [query parameters](#query-parameters).
+The total number of resources available in the collection is represented through the count property. The count property shall be named "Members@odata.count" and its value shall be an integer representing the total number of records in the result. This count is not affected by the $top or $skip [query parameters](#query-parameters).
 
 ##### Resource Members Property
 
-The members of the collection of resources are returned as a JSON array. The name of the property representing the members of the collection shall be "value".
+The members of the collection of resources are returned as a JSON array. The name of the property representing the members of the collection shall be "Members".
 
 ##### Partial Results
 Responses representing a single resource shall not be broken into multiple results.
 
-Collections of resources, or resource ids, may be returned in multiple partial responses. For partial collections the service includes a next link property named "@odata.nextLink". The value of the next link property shall be an opaque URL that the client can use to retrieve the next set of resources. The next link shall only be returned if the number of resources requested is greater than the number of resources returned.
+Collections of resources, or resource ids, may be returned in multiple partial responses. For partial collections the service includes a next link property named "Members@odata.nextLink". The value of the next link property shall be an opaque URL that the client can use to retrieve the next set of resources. The next link shall only be returned if the number of resources requested is greater than the number of resources returned.
 
 The value of the [count property](#resource-count-property) represents the total number of resources available if the client enumerates all pages of the collection.
 
@@ -1880,6 +1879,10 @@ The value of the status property is a common status object type as defined by th
 #### Links
 
 The [Links property](#links-property) represents the links associated with the resource, as defined by that resources schema definition. All associated reference properties defined for a resource shall be nested under the links property.  All directly (subordinate) referenced properties defined for a resource shall be in the root of the resource.
+
+#### Members
+
+The Members property of a collection resource identifies the members of the a collection.
 
 #### RelatedItem
 The [RelatedItem property](#relateditem) represents links to a resource (or part of a resource) as defined by that resources schema definition. This is not intended to be a strong linking methodology like other references.  Instead it is used to show a relationship between elements or sub-elements in disparate parts of the service.  For example, since Fans may be in one area of the implementation and processors in another, RelatedItem can be used to inform the client that one is related to the other (in this case, the Fan is cooling the processor).
