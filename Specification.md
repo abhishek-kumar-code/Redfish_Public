@@ -494,6 +494,8 @@ The root URL for Redfish version 1 services shall be "/redfish/v1/".
 
 The root URL for the service returns a ServiceRoot resource as defined by this specification.
 
+Services shall not require authentication in order to retrieve the service root and "/redfish" documents.
+
 ##### Metadata Document Request
 
 Redfish services shall expose a [metadata document](#service-metadata) describing the service at the "/redfish/v1/$metadata" resource. This metadata document describes the resources and collections available at the root, and references additional metadata documents describing the full set of resource types exposed by the service.
