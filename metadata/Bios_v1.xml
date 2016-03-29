@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?><!-- Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.--> 
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright-->
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
 
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
@@ -61,7 +62,8 @@
         </Property>
         <Property Name="Actions" Type="Bios.v1_0_0.Actions" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The Actions object contains the available custom actions on this resource."/>
+          <Annotation Term="OData.Description" String="The available actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
         <Property Name="Attributes" Type="Bios.v1_0_0.Attributes">
           <Annotation Term="OData.Description" String="This is the manufacturer/provider specific list of BIOS attributes."/>
