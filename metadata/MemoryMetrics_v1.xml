@@ -32,10 +32,11 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MemoryMetrics.v1_0_0">
 
       <EntityType Name="MemoryMetrics" BaseType="MemoryMetrics.MemoryMetrics">
-        <Property Name="BlockSizeB" Type="Edm.Int64">
+        <Property Name="BlockSizeBytes" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
           <Annotation Term="OData.Description" String="Block size in bytes" />
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the block size in bytes of all stucture elements." />
+          <Annotation Term="Measures.Unit" String="By"/>
         </Property>
         <Property Name="CurrentPeriod" Type="MemoryMetrics.v1_0_0.CurrentPeriod"  Nullable="false">
           <Annotation Term="OData.Description" String="This object describes the central memory of the system in general detail."/>
@@ -92,10 +93,10 @@
           <Annotation Term="OData.Description" String="Remaining spare blocks in percentage" />
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the remaining spare blocks in percentage." />
         </Property>
-        <Property Name="IsLastShutdownSuccess" Type="Edm.Boolean">
+        <Property Name="LastShutdownSuccess" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
           <Annotation Term="OData.Description" String="Status of last shutdown" />
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be status of last shutdown, with true indicating success." />
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the status ofthe  last shutdown, with true indicating success." />
         </Property>
         <Property Name="DataLossDetected" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
