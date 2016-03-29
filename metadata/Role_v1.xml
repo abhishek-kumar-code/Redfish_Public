@@ -27,7 +27,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Role.v1_0_0">
       
       <EntityType Name="Role" BaseType="Role.Role">
-        <Annotation Term="OData.Description" String="This schema defines a user role to be used in conjunction with a manager account."/>
+        <Annotation Term="OData.Description" String="This resource defines a user role to be used in conjunction with a Manager Account."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent resources that represent the user role for the user account."/>
         <Property Name="IsPredefined" Type="Edm.Boolean" Nullable="false" DefaultValue="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
