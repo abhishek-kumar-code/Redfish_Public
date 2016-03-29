@@ -1500,7 +1500,7 @@ class JsonSchemaGenerator:
         fileoutput += results
         # Add Copyright
         fileoutput += ",\n"
-        fileoutput += UT.Utilities.indent(depth+1) + "\"copyright\": \"Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.\"\n"
+        fileoutput += UT.Utilities.indent(depth+1) + "\"copyright\": \"Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright\"\n"
         # End starting bracket
         fileoutput += UT.Utilities.indent(depth) + "}\n"
         screenoutput += fileoutput
