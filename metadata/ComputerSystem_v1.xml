@@ -49,7 +49,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem">
 
       <EntityType Name="ComputerSystem" BaseType="Resource.v1_0_0.Resource">
-        <Annotation Term="OData.Description" String="A Computer System represents a machine or system instance and the software-visible resources (items within the "data plane") such as memory, CPU and other devices that can be accessed from that machine.  Details of those resources or subsystems are also linked through this resource."/>
+        <Annotation Term="OData.Description" String="A Computer System represents a machine or system instance and the software-visible resources (items within the data plane) such as memory, CPU and other devices that can be accessed from that machine.  Details of those resources or subsystems are also linked through this resource."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent resources that represent a computing system in the Redfish specification."/>
       </EntityType>
 
