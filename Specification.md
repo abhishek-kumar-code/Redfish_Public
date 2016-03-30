@@ -3,7 +3,7 @@ DocTitle: Redfish Scalable Platforms Management API Specification
 DocNumber: '0266'
 DocClass: Normative
 DocVersion: '1.0.2'
-modified: '2016-02-10'
+modified: '2016-03-31'
 status: published
 released: true
 copyright: '2014-2016'
@@ -877,7 +877,7 @@ Each entry shall be represented as a JSON object and shall include a "name" prop
 
 #### Resource Responses
 
-Resources are returned as JSON payloads, using the MIME type `application/json`.  Resource property names shall match the case specified in the [Schema](#resource-properties).
+Resources are returned as JSON payloads, using the MIME type `application/json`.  Resource property names match the case specified in the [Schema](#resource-properties).
 
 ##### Context Property
 
