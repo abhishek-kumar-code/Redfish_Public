@@ -2321,7 +2321,7 @@ The Authorization subsystem uses Roles and Privileges to control which users hav
 
 | Version | Date     | Description     |
 | ---     | ---      | ---             |
-| 1.0.2   | 2016-2-25| Errata release.  Various typographical errors. |
+| 1.0.2   | 2016-3-31| Errata release.  Various typographical errors. |
 |         |          | Corrected schema namespace rules to conform to OData namespace requirements (<namespace>.n.n.n becomes <namespace>.vn_n_n) and updated examples throughout the document to conform to this format.  File naming rules for json-schema and CSDL (XML) schemas were also corrected to match this format and to allow for future major (v2) versions to coexist. |
 |         |          | Added missing section detailing the location of the Schema Repository and listing the durable URLs for the repository. |
 |         |          | Added definition for the value of the Units annotation, using the definitions from the UCUM specification.  Updated examples throughout to use this standardized form. |
