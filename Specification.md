@@ -2345,7 +2345,14 @@ The Authorization subsystem uses Roles and Privileges to control which users hav
 |         |          | Clarified that implementation of the SSDP protocol is optional. | 
 |         |          | Corrected typographical error in the SSDP USN field's string definition (now '::dmtf-org'). |
 |         |          | Added missing OPTIONS method to the allowed HTTP Methods list. |
-| 1.0.1   | 2015-9-17| Errata release.  Clarified normative use of LongDescription in schema files.  Clarified usage of the 'rel-describedby' link header.  Corrected text in example of 'Select List' in OData Context property.  Clarified Accept-Encoding Request header handling.  Deleted duplicative and conflicting statement on returning extended error resources.  Clarified relative URI resolution rules. Various grammatical corrections. Clarified USN format.  |
+| 1.0.1   | 2015-9-17| Errata release.  Various grammatical corrections. |
+|         |          | Clarified normative use of LongDescription in schema files. |
+|         |          | Clarified usage of the 'rel-describedby' link header. |
+|         |          | Corrected text in example of 'Select List' in OData Context property. |
+|         |          | Clarified Accept-Encoding Request header handling. |
+|         |          | Deleted duplicative and conflicting statement on returning extended error resources. |
+|         |          | Clarified relative URI resolution rules. |
+|         |          | Clarified USN format.  |
 | 1.0.0   | 2015-8-4 | Initial release |
 
 
