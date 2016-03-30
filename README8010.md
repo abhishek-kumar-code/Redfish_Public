@@ -22,6 +22,12 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | Schema File | Version | Date      | Description     |
 | ---         | ---     | ---       | ---             |
 | (all files) | 1.0.2   | 2016-3-31 | Errata release of all schema files to adjust file naming conventions. CSDL schema files now have the major version appended to the end of the schema name (e.g. Chassis_v1), and json-schema files include the major/minor/errata version number (matching the namespace definitions in the schema as they did previously) in the filename, but are now prefaced with a 'v' and with underscore separators (e.g. Chassis.v1_0_2.json) to match the corrected namespace naming rules.  |
+| (various) | 1.1.2   | 2016-3-31 | Errata release of any schema at the v1.1.0 revision level prior to 2016-3-31 to incorporate the naming convention adjustments (see 1.0.2 errata description above).|
+
+| Chassis    | 1.2.0   | 2016-3-31  | Added Links for ManagersInChassis, Drives and Storage. |
+| Chassis    | 1.1.0   | 2015-xxxx | Added Physical Security embedded object for Intrusion Detection sensor support. |
+
+
 | Thermal     | 1.0.1  | 2015-9-17 | Errata release.  Renamed Fan 'ReadingRPM' property to 'Reading' as it was determined that the initial definition was too limiting. Added Fan property 'ReadingUnits' to allow for either RPM or percent-based fan readings.  Corrected spelling errors throughout. Any future property name changes will result in a major version change to the schema file. |
 | Chassis     | 1.0.1   | 2015-9-17 | Errata release.  Added missing 'PowerState' property intended for inclusion in v1.0.0.  Corrected longDescription text of 'CooledBy'.  Clarified longDescription of 'Reset' action.  |
 | ComputerSystem | 1.0.1  | 2015-9-17 | Errata release.  Changed enumeration values of 'PowerState' to reflect a better set of real-world use cases.  Corrected annotation name in longDescription of 'UefiTargetBootSourceOverride'. |
