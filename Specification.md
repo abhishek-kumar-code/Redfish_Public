@@ -2321,7 +2321,30 @@ The Authorization subsystem uses Roles and Privileges to control which users hav
 
 | Version | Date     | Description     |
 | ---     | ---      | ---             |
-| 1.0.2   | 2016-2-25| Errata release.  Clarified normative usage of the Context Property, the ability to use two URL forms in the property, and the "@odata.context" URL examples throughout.  Corrected name of Measures.Unit annotation term as used in examples. Added recommendation for UCUM units of measure for Measures.Unit annotation terms.  Various typographical errors. Correctd outdated reference to Core OData specification in Annotation Term examples.  Clarified that implementation of the SSDP protocol is optional.  Added missing OPTIONS method to the allowed HTTP Methods list.  Corrected typographical error in the SSDP USN field's string definition (now '::dmtf-org').  Clarified usage of 'charset=utf-8' in the HTTP Accept and Content-Type headers.  Added section detailing the location of the Redfish Schema Repository. Clarified OData-Version header matching rules. |
+| 1.0.2   | 2016-2-25| Errata release.  Various typographical errors. |
+|         |          | Corrected schema namespace rules to conform to OData namespace requirements (<namespace>.n.n.n becomes <namespace>.vn_n_n) and updated examples throughout the document to conform to this format.  File naming rules for json-schema and CSDL (XML) schemas were also corrected to match this format and to allow for future major (v2) versions to coexist. |
+|         |          | Added missing section detailing the location of the Schema Repository and listing the durable URLs for the repository. |
+|         |          | Added definition for the value of the Units annotation, using the definitions from the UCUM specification.  Updated examples throughout to use this standardized form. |
+|         |          | Modified the naming requirements for Oem Property Naming to avoid future use of colon ':' and period '.' in property names, which can produce invalid or problematic variable names when used in some programming languages or environments.  Both separators have been replaced with underscore '_', with colon and period usage now deprecated (but valid). |
+|         |          | Removed duplicative or out-of-scope sub-sections from the Security section, which made unintended requirements on Redfish service implementations. |
+|         |          | Added missing requirement that property names in Resource Responses must match the casing (capitialization) as specified in schema. |
+|         |          | Updated normative references to current HTTP RFCs and added section references throughout the document where applicable. | 
+|         |          | Clarified ETag header requirements. |
+|         |          | Clarified that no authentication is required for accessing the Service Root resource. |
+|         |          | Clarified description of Retrieving Collections. |
+|         |          | Clarified usage of 'charset=utf-8' in the HTTP Accept and Content-Type headers. |
+|         |          | Clarified usage of the 'Allow' HTTP Response Header and added missing table entry for usage of the 'Retry-After' header. |
+|         |          | Clarified normative usage of the Type Property and Context Property, explaining the ability to use two URL forms, and corrected the "@odata.context" URL examples throughout. |
+|         |          | Corrected inconsistent terminology throughout the Collection Resource Response section. |
+|         |          | Corrected name of normative Resource Members Property ('Members', not 'value'). |
+|         |          | Clarified that Error Responses may include information about multiple error conditions. |
+|         |          | Corrected name of Measures.Unit annotation term as used in examples. |
+|         |          | Corrected outdated reference to Core OData specification in Annotation Term examples. |
+|         |          | Added missing 'Members' property to the Common Redfish Resource Properties section. |
+|         |          | Clarified terminology and usage of the Task Monitor and related operations in the Asynchronous Operations section. |
+|         |          | Clarified that implementation of the SSDP protocol is optional. | 
+|         |          | Corrected typographical error in the SSDP USN field's string definition (now '::dmtf-org'). |
+|         |          | Added missing OPTIONS method to the allowed HTTP Methods list. |
 | 1.0.1   | 2015-9-17| Errata release.  Clarified normative use of LongDescription in schema files.  Clarified usage of the 'rel-describedby' link header.  Corrected text in example of 'Select List' in OData Context property.  Clarified Accept-Encoding Request header handling.  Deleted duplicative and conflicting statement on returning extended error resources.  Clarified relative URI resolution rules. Various grammatical corrections. Clarified USN format.  |
 | 1.0.0   | 2015-8-4 | Initial release |
 
