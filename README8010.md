@@ -19,7 +19,7 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 
 # Redfish Work in Progress Schemas
 
-Per DMTF policy, the following new schema files are currently undergoing a 30-day call for Essential Patent Rights.  Once completed and then approved by the DMTF Board of Directors, these schema files will be added to the Redfish schema repository.  They are currently available in the 'WorkInProgress' directory within the DSP8010 ZIP archive file.
+The following new schema files are released as Work In Progress documents.  They have also been submitted to the DMTF Board of Directors for approval, with a final release expected in May 2016.  Upon release, these schemas will be added to a new revision of the DSP8010-2016.1a.ZIP schema bundle, and the individual schema files will be added to the public schema repository at http://redfish.dmtf.org/schemas at that time.
 
 | Schema File | Version | Date      | Description     |
 | ---         | ---     | ---       | ---             |
