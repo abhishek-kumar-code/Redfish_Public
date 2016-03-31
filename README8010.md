@@ -47,6 +47,7 @@ Per DMTF policy, the following new schema files are currently undergoing a 30-da
 | Power       | 1.1.0  | 2016-3-31 | Added 'InputRanges' array and 'Manufacturer' to 'PowerSupply' object.  Added enumerations to the 'LineInputVoltageType' property in 'PowerSupply' that promote better interoperability and deprecated others whose terminology differs in meaning among vendors. | 
 | Power       | 1.0.2 | 2016-3-31 | Errata release (see 1.0.2 errata description above).  Corrected read-write permissions on all embedded objects.  Corrected Unit annotations to use UCUM unit definitions. | 
 | Resource    | 1.1.0 | 2016-3-31 | Added 'Identifier' object, 'Location' object and 'IndicatorLED' definitions for use throughout the Redfish data model.  Added 'UnavailableOffline' enumeration to 'State' in 'Status' object. |
+| Resource   | 1.0.2 | 2016-3-31 | Errata release (see 1.0.2 errata description above).  Corrected missing Required annotation on  'Id' property. | 
 | SessionService | 1.0.2 | 2016-3-31 | Errata release (see 1.0.2 errata description above).  Added Unit annotations. |
 | SimpleStorage | 1.1.0  | 2016-3-31 | Added 'CapacityBytes' to 'Device' object. |
 | SimpleStorage | 1.0.2 | 2016-3-31 | Errata release (see 1.0.2 errata description above).  Corrected Unit annotations to use UCUM unit definitions. |
