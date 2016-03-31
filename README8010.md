@@ -29,6 +29,7 @@ Per DMTF policy, the following new schema files are currently undergoing a 30-da
 | Memory    | 1.0.0  | 2016-3-31 | Initial release.  Memory describes a memory module or similar memory device as part of a system. |
 | MemoryCollection | 1.0.0 | 2016-3-31 | Initial release.  A Collection of Memory resource instances. |
 | MemoryMetrics | 1.0.0 | 2016-3-31 | Initial release.  MemoryMetrics contains usage and health statistics for a single Memory module or device instance. |
+| SecureBoot | 1.0.0  | 2016-3-31 | Initial release.  This resource contains UEFI Secure Boot information. It represents properties for managing the UEFI Secure Boot functionality of a system. |
 | Storage    | 1.0.0  | 2016-3-31 | Initial release.  Describes a storage subsystem, including the controllers, disks and volumes associated with the subsystem. |  
 | StorageCollection    | 1.0.0  | 2016-3-31 | Initial release.  A Collection of Storage resource instances. |
 | Volume    | 1.0.0  | 2016-3-31 | Initial release.  Describes a single Volume as part of a storage subsystem, disk, or other storage device. |
