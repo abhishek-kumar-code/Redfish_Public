@@ -90,7 +90,7 @@
                         "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
                     },
                     "readonly": true,
-                    "description": "Contains any ids that represent components of this reduncancy set.",
+                    "description": "Contains any ids that represent components of this redundancy set.",
                     "longDescription": "The value of this property shall contain the ids of components that are part of this redundancy set. The id values may or may not be dereferenceable."
                 }
             },
@@ -106,5 +106,5 @@
             "longDescription": "This object represents the Redundancy element property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification.  The value of this string shall be of the format for the reserved word *Redundancy*"
         }
     },
-    "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
+    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }

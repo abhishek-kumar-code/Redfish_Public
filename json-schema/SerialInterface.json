@@ -10,6 +10,9 @@
                 },
                 {
                     "$ref": "http://redfish.dmtf.org/schemas/SerialInterface.v1_0_0.json#/definitions/SerialInterface"
+                },
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/SerialInterface.v1_0_2.json#/definitions/SerialInterface"
                 }
             ]
         }

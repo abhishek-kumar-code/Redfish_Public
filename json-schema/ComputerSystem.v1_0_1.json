@@ -54,13 +54,13 @@
                     "$ref": "#/definitions/BootSource",
                     "readonly": false,
                     "description": "The current boot source to be used at next boot instead of the normal boot device, if BootSourceOverrideEnabled is true.",
-                    "longDescription": "The value of this property shall contain the source to boot the system from, overriding the normal boot order.  The valid values for this property are specified through the Redfish.AllowableValues annotation. Pxe indicates to PXE boot from the primary NIC; Floppy, Cd, Usb, Hdd indicates to boot from their devices respectively.  BiosSetup indicates to boot into the native BIOS screen setup.  Utilities and Diags indicate to boot from the local utilities or diags partitions and UefiTarget indicates to boot from the UEFI device path found in UefiTargetBootSourceOverride."
+                    "longDescription": "The value of this property shall contain the source to boot the system from, overriding the normal boot order. The valid values for this property are specified through the Redfish.AllowableValues annotation. Pxe indicates to PXE boot from the primary NIC; Floppy, Cd, Usb, Hdd indicates to boot from their devices respectively. BiosSetup indicates to boot into the native BIOS screen setup. Utilities and Diags indicate to boot from the local utilities or diags partitions and UefiTarget indicates to boot from the UEFI device path found in UefiTargetBootSourceOverride."
                 },
                 "BootSourceOverrideEnabled": {
                     "$ref": "#/definitions/BootSourceOverrideEnabled",
                     "readonly": false,
                     "description": "Describes the state of the Boot Source Override feature",
-                    "longDescription": "The value of this property shall be Once if this is a one time boot override and Continuous if this selection should remain active until cancelled."
+                    "longDescription": "The value of this property shall be Once if this is a one time boot override and Continuous if this selection should remain active until cancelled. If the property value is set to Once, the value will be reset back to Disabled after the BootSourceOverrideTarget actions have been completed."
                 },
                 "UefiTargetBootSourceOverride": {
                     "type": [
@@ -68,8 +68,8 @@
                         "null"
                     ],
                     "readonly": false,
-                    "description": "This property is the Uefi Device Path of the device to boot from when BootSourceOverrideSupported is UefiTarget.",
-                    "longDescription": "The value of this property shall be the UEFI device path of the override boot target.  The valid values for this property are specified through the Redfish.AllowableValues annotation. BootSourceOverrideEnabled = Continuous is not supported for Uefi Boot Source Override as this setting is defined in UEFI as a one time boot only."
+                    "description": "This property is the UEFI Device Path of the device to boot from when BootSourceOverrideSupported is UefiTarget.",
+                    "longDescription": "The value of this property shall be the UEFI device path of the override boot target. The valid values for this property are specified through the Redfish.AllowableValues annotation. BootSourceOverrideEnabled = Continuous is not supported for UEFI Boot Source Override as this setting is defined in UEFI as a one time boot only."
                 }
             },
             "description": "This object contains the boot information for the current resource."
@@ -115,8 +115,8 @@
                 "Continuous"
             ],
             "enumDescriptions": {
-                "Disabled": "The system will boot as normal",
-                "Once": "On its next boot cycle, the system will boot (one time) to the Boot Source Override Target.",
+                "Disabled": "The system will boot normally.",
+                "Once": "On its next boot cycle, the system will boot (one time) to the Boot Source Override Target. The value of BootSourceOverrideEnabled is then reset back to Disabled.",
                 "Continuous": "The system will boot to the target specified in the BootSourceOverrideTarget until this property is set to Disabled."
             }
         },
@@ -129,7 +129,7 @@
                 "Off"
             ],
             "enumDescriptions": {
-                "Unknown": "The state of the Indicator LED cannot be determined.",
+                "Unknown": "The state of the Indicator LED cannot be determined. Deprecated: Return null if state is unknown.",
                 "Lit": "The Indicator LED is lit.",
                 "Blinking": "The Indicator LED is blinking.",
                 "Off": "The Indicator LED is off."
@@ -376,7 +376,8 @@
                         }
                     },
                     "readonly": true,
-                    "description": "Contains links to other resources that are related to this resource."
+                    "description": "Contains references to other resources that are related to this resource.",
+                    "longDescription": "The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."
                 },
                 "AssetTag": {
                     "type": [
@@ -461,7 +462,7 @@
                 "Boot": {
                     "$ref": "#/definitions/Boot",
                     "description": "Information about the boot settings for this system",
-                    "longDescription": "This object shall contain properties which describe boot information for the current resource."
+                    "longDescription": "This object shall contain properties which describe boot information for the current resource. Changes to this object do not alter the BIOS persistent boot order configuration."
                 },
                 "BiosVersion": {
                     "type": [
@@ -524,7 +525,8 @@
                         }
                     },
                     "readonly": true,
-                    "description": "The Actions object contains the available custom actions on this resource."
+                    "description": "The available actions for this resource.",
+                    "longDescription": "The Actions property shall contain the available actions for this resource."
                 },
                 "Status": {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
@@ -554,9 +556,13 @@
                     "longDescription": "The value of this property shall be a link to a collection of type LogServiceCollection."
                 }
             },
+            "required": [
+                "Id",
+                "Name"
+            ],
             "description": "This schema defines a computer system and its respective properties.  A computer system represents a machine (physical or virtual) and the local resources such as memory, cpu and other devices that can be accessed from that machine.",
             "longDescription": "This resource shall be used to represent resources that represent a computing system in the Redfish specification."
         }
     },
-    "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
+    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }

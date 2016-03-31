@@ -63,55 +63,55 @@
                 },
                 "HTTP": {
                     "$ref": "#/definitions/Protocol",
-                    "readonly": true,
+                    "readonly": false,
                     "description": "Settings for this Manager's HTTP protocol support",
                     "longDescription": "This object shall contain information for the HTTP protocol settings for the manager. The default value of the Port property should be 80 for compatibility with established client implementations."
                 },
                 "HTTPS": {
                     "$ref": "#/definitions/Protocol",
-                    "readonly": true,
+                    "readonly": false,
                     "description": "Settings for this Manager's HTTPS protocol support",
                     "longDescription": "This object shall contain information for the HTTPS/SSL protocol settings for this manager. The default value of the Port property should be 443 for compatibility with established client implementations."
                 },
                 "SNMP": {
                     "$ref": "#/definitions/Protocol",
-                    "readonly": true,
+                    "readonly": false,
                     "description": "Settings for this Manager's SNMP support",
                     "longDescription": "This object shall contain information for the SNMP protocol settings for this manager. The default value of the Port property should be 161 for compatibility with established client implementations."
                 },
                 "VirtualMedia": {
                     "$ref": "#/definitions/Protocol",
-                    "readonly": true,
+                    "readonly": false,
                     "description": "Settings for this Manager's Virtual Media support",
                     "longDescription": "This object shall contain information for the Virtual Media protocol settings for this manager. The value of the Port property shall contain the TCP port assigned for Virtual Media usage."
                 },
                 "Telnet": {
                     "$ref": "#/definitions/Protocol",
-                    "readonly": true,
+                    "readonly": false,
                     "description": "Settings for this Manager's Telnet protocol support",
                     "longDescription": "This object shall contain information for the Telnet protocol settings for this manager. The default value of the Port property should be 23 for compatibility with established client implementations."
                 },
                 "SSDP": {
                     "$ref": "#/definitions/SSDProtocol",
-                    "readonly": true,
+                    "readonly": false,
                     "description": "Settings for this Manager's SSDP support",
                     "longDescription": "This object shall contain information for the SSDP protocol settings for this manager.  Simple Service Discovery Protocol (SSDP) is for network discovery of devices supporting the Redfish service. The default value of the Port property should be 1900 for compatibility with established client implementations."
                 },
                 "IPMI": {
                     "$ref": "#/definitions/Protocol",
-                    "readonly": true,
+                    "readonly": false,
                     "description": "Settings for this Manager's IPMI-over-LAN protocol support",
                     "longDescription": "This object shall contain information for the IPMI over LAN protocol settings for the manager. The default value of the Port property should be 623 for compatibility with established client implementations."
                 },
                 "SSH": {
                     "$ref": "#/definitions/Protocol",
-                    "readonly": true,
+                    "readonly": false,
                     "description": "Settings for this Manager's SSH (Secure Shell) protocol support",
                     "longDescription": "This object shall contain information for the SSH protocol settings for the manager. The default value of the Port property should be 22 for compatibility with established client implementations."
                 },
                 "KVMIP": {
                     "$ref": "#/definitions/Protocol",
-                    "readonly": true,
+                    "readonly": false,
                     "description": "Settings for this Manager's KVM-IP protocol support",
                     "longDescription": "This object shall contain information for the KVM-IP (Keyboard, Video, Mouse) protocol settings for the manager."
                 },
@@ -119,6 +119,10 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
                 }
             },
+            "required": [
+                "Id",
+                "Name"
+            ],
             "description": "This resource is used to obtain or modify the network services managed by a given manager.",
             "longDescription": "This object shall be used to represent the network service settings for the manager."
         },
@@ -157,6 +161,7 @@
                         "boolean",
                         "null"
                     ],
+                    "readonly": false,
                     "description": "Indicates if the protocol is enabled or disabled",
                     "longDescription": "The value of this property shall contain the enabled status of the protocol.  The value shall be true if enabled and false if disabled."
                 },
@@ -166,6 +171,7 @@
                         "null"
                     ],
                     "minimum": 0,
+                    "readonly": false,
                     "description": "Indicates the protocol port.",
                     "longDescription": "The value of this property shall contain the port assigned for the protocol."
                 }
@@ -193,6 +199,7 @@
                         "boolean",
                         "null"
                     ],
+                    "readonly": false,
                     "description": "Indicates if the protocol is enabled or disabled",
                     "longDescription": "The value of this property shall contain the enabled status of the protocol.  The value shall be true if enabled and false if disabled."
                 },
@@ -202,6 +209,7 @@
                         "null"
                     ],
                     "minimum": 0,
+                    "readonly": false,
                     "description": "Indicates the protocol port.",
                     "longDescription": "The value of this property shall contain the port assigned for the protocol."
                 },
@@ -231,5 +239,5 @@
             }
         }
     },
-    "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
+    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }
