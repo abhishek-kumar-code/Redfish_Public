@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright--> 
+<!---->
+<!--################################################################################       -->
+<!--# Redfish Schema:  VirtualMedia  v1.0.2-->
+<!--#                                                                                      -->
+<!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
+<!--# available at http://www.dmtf.org/standards/redfish                                   -->
+<!--# Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF).                  -->
+<!--# For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright -->
+<!--################################################################################       -->
+<!---->
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
 
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
@@ -56,7 +65,6 @@
         </Property>
       </EntityType>
 
-      <!-- These are all supported media types. -->
       <EnumType Name="MediaType">
         <Member Name="CD">
           <Annotation Term="OData.Description" String="A CD-ROM format (ISO) image"/>
@@ -72,7 +80,6 @@
         </Member>
       </EnumType>
 
-      <!-- These are all supported types of connection for virtual media. -->
       <EnumType Name="ConnectedVia">
         <Member Name="NotConnected">
           <Annotation Term="OData.Description" String="No current connection"/>
@@ -89,5 +96,10 @@
       </EnumType>
 
     </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="VirtualMedia.v1_0_2">
+      <EntityType Name="VirtualMedia" BaseType="VirtualMedia.v1_0_0.VirtualMedia"/>
+    </Schema>
+
   </edmx:DataServices>
 </edmx:Edmx>

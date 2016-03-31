@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright--> 
+<!---->
+<!--################################################################################       -->
+<!--# Redfish Schema:  EthernetInterface  v1.0.2-->
+<!--#                                                                                      -->
+<!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
+<!--# available at http://www.dmtf.org/standards/redfish                                   -->
+<!--# Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF).                  -->
+<!--# For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright -->
+<!--################################################################################       -->
+<!---->
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
 
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
@@ -25,7 +34,7 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/VLanNetworkInterfaceCollection_v1.xml">
     <edmx:Include Namespace="VLanNetworkInterfaceCollection"/>
   </edmx:Reference>
-  
+
   <edmx:DataServices>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EthernetInterface">
 
@@ -35,7 +44,7 @@
       </EntityType>
 
     </Schema>
-    
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EthernetInterface.v1_0_0">
 
       <EntityType Name="EthernetInterface" BaseType="EthernetInterface.EthernetInterface">
@@ -106,12 +115,12 @@
         <Property Name="IPv6Addresses" Type="Collection(IPAddresses.v1_0_0.IPv6Address)" Nullable="false" >
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This array of objects enumerates all of the currently assigned IPv6 addresses on this interface."/>
-		      <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of objects used to represent the IPv6 connection characteristics for this interface."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of objects used to represent the IPv6 connection characteristics for this interface."/>
         </Property>
         <Property Name="IPv6StaticAddresses" Type="Collection(IPAddresses.v1_0_0.IPv6StaticAddress)" Nullable="false" >
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This array of objects represents all of the IPv6 static addresses to be assigned on this interface."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of objects used to represent the IPv6 static connection characteristics for this interface."/>		  
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of objects used to represent the IPv6 static connection characteristics for this interface."/>
         </Property>
         <Property Name="IPv6DefaultGateway" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -121,7 +130,7 @@
         </Property>
         <Property Name="NameServers" Type="Collection(Edm.String)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-		      <Annotation Term="OData.Description" String="This represents DNS name servers that are currently in use on this interface."/>
+          <Annotation Term="OData.Description" String="This represents DNS name servers that are currently in use on this interface."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the DNS name servers used on this interface."/>
         </Property>
         <NavigationProperty Name="VLANs" Type="VLanNetworkInterfaceCollection.VLanNetworkInterfaceCollection">
@@ -131,8 +140,7 @@
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </EntityType>
-      
-      <!--Strongly typed property for MACAddress-->
+
       <TypeDefinition Name="MACAddress" UnderlyingType="Edm.String">
         <Annotation Term="Validation.Pattern" String="^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$"/>
       </TypeDefinition>
@@ -159,9 +167,9 @@
       </ComplexType>
     </Schema>
 
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EthernetInterface.v1_0_1">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EthernetInterface.v1_0_2">
       <EntityType Name="EthernetInterface" BaseType="EthernetInterface.v1_0_0.EthernetInterface"/>
-    </Schema>         
-    
+    </Schema>
+  
   </edmx:DataServices>
 </edmx:Edmx>
