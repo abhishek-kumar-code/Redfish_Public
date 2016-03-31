@@ -94,9 +94,13 @@
                     "longDescription": "The value of this property shall be a link to a resource of type TaskCollection."
                 }
             },
+            "required": [
+                "Id",
+                "Name"
+            ],
             "description": "This is the schema definition for the Task Service.  It represents the properties for the service itself and has links to the actual list of tasks.",
             "longDescription": "This resource shall be used to represent a task service for a Redfish implementation."
         }
     },
-    "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
+    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }
