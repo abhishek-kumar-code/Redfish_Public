@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright--> 
+<!--
+     ############################################################################### 
+     # Redfish Schema:  IPAddresses  v1.0.2                                                                                                                     
+     #                                                                                                                                                          
+     # For a detailed change log, see the README file contained in the DSP8010 bundle, available at http://www.dmtf.org/standards/redfish                       
+     # Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright 
+     ###############################################################################
+-->
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
   
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
@@ -66,7 +73,6 @@
         </Property>
       </ComplexType>
 
-      <!-- This indicates how the address was determined. -->
       <EnumType Name="IPv4AddressOrigin">
         <Member Name="Static">
           <Annotation Term="OData.Description" String="A static address as configured by the user"/>
@@ -97,12 +103,10 @@
         </Member>
       </EnumType>
 
-      <!--Strongly typed property for SubnetMask-->
       <TypeDefinition Name="SubnetMask" UnderlyingType="Edm.String">
         <Annotation Term="Validation.Pattern" String="^(?:[0-9]{1,3}\\.){3}[0-9]{1,3}$"/>
       </TypeDefinition>
 
-      <!--Strongly typed property for PrefixLength-->
       <TypeDefinition Name="PrefixLength" UnderlyingType="Edm.Int64">
         <Annotation Term="Validation.Minimum" Int="1"/>
         <Annotation Term="Validation.Maximum" Int="128"/>

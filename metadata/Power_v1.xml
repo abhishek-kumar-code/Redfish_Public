@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright--> 
+<!--
+     ############################################################################### 
+     # Redfish Schema:  Power  v1.0.2                                                                                                                           
+     #                                                                                                                                                          
+     # For a detailed change log, see the README file contained in the DSP8010 bundle, available at http://www.dmtf.org/standards/redfish                       
+     # Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright 
+     ###############################################################################
+-->
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
 
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
@@ -22,7 +29,7 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Redundancy_v1.xml">
     <edmx:Include Namespace="Redundancy"/>
   </edmx:Reference>
-    
+
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power">
@@ -31,9 +38,9 @@
         <Annotation Term="OData.Description" String="This is the schema definition for the Power Metrics.  It represents the properties for Power Consumption and Power Limiting."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a power metrics resource for a Redfish implementation."/>
       </EntityType>
-    
+
     </Schema>
-    
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.v1_0_0">
 
       <EntityType Name="Power" BaseType="Power.Power">
@@ -50,9 +57,9 @@
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
         <NavigationProperty Name="PowerSupplies" Type="Collection(Power.v1_0_0.PowerSupply)">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>	  
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Details of the power supplies associated with this system or device"/>
-		  <Annotation Term="OData.LongDescription" String="This object shall contain details of the power supplies associated with this system or device"/>
+          <Annotation Term="OData.LongDescription" String="This object shall contain details of the power supplies associated with this system or device"/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
         <NavigationProperty Name="Redundancy" Type="Collection(Redundancy.Redundancy)">
@@ -384,10 +391,10 @@
         <Member Name="AC277V">
           <Annotation Term="OData.Description" String="AC 277V nominal input"/>
         </Member>
-        <Member Name="ACandDCWideRange"> 
+        <Member Name="ACandDCWideRange">
           <Annotation Term="OData.Description" String="Wide range AC or DC input"/>
         </Member>
-        <Member Name="ACWideRange"> 
+        <Member Name="ACWideRange">
           <Annotation Term="OData.Description" String="Wide range AC input"/>
         </Member>
         <Member Name="DC240V">
@@ -401,20 +408,16 @@
       <EntityType Name="Power" BaseType="Power.v1_0_0.Power"/>
     </Schema>
 
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.v1_0_2">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.v1_1_2">
+
       <EntityType Name="Power" BaseType="Power.v1_0_1.Power"/>
-    </Schema>
-
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.v1_1_0">
-
-      <EntityType Name="Power" BaseType="Power.v1_0_2.Power"/>
       <EntityType Name="PowerSupply" BaseType="Power.v1_0_0.PowerSupply">
         <Property Name="Manufacturer" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the manufacturer of this power supply."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the name of the organization responsible for producing the power supply. This organization might be the entity from whom the power supply is purchased, but this is not necessarily true."/>
         </Property>
-        <Property Name="InputRanges" Type="Collection(Power.v1_1_0.InputRange)">
+        <Property Name="InputRanges" Type="Collection(Power.v1_1_2.InputRange)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the input ranges that the power supply can use."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a collection of ranges usable by the power supply unit."/>
@@ -422,46 +425,46 @@
       </EntityType>
 
       <ComplexType Name="InputRange">
-	 <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-	 <Property Name="InputType" Type="Power.v1_1_0.InputType">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Property Name="InputType" Type="Power.v1_1_2.InputType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The Input type (AC or DC)"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the input type (AC or DC) of the associated range."/>
-         </Property>
-         <Property Name="MinimumVoltage" Type="Edm.Decimal">
+        </Property>
+        <Property Name="MinimumVoltage" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The minimum line input voltage at which this power supply input range is effective"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the value in Volts of the minimum line input voltage which the power supply is capable of consuming for this range."/>
           <Annotation Term="Measures.Unit" String="V"/>
-         </Property>
-         <Property Name="MaximumVoltage" Type="Edm.Decimal">
+        </Property>
+        <Property Name="MaximumVoltage" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The maximum line input voltage at which this power supply input range is effective"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the value in Volts of the maximum line input voltage which the power supply is capable of consuming for this range."/>
           <Annotation Term="Measures.Unit" String="V"/>
-         </Property>
-         <Property Name="MinimumFrequencyHz" Type="Edm.Decimal">
+        </Property>
+        <Property Name="MinimumFrequencyHz" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The minimum line input frequency at which this power supply input range is effective"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the value in Hertz of the minimum line input frequency which the power supply is capable of consuming for this range."/>
-	  <Annotation Term="Measures.Unit" String="Hz"/>
-	  <Annotation Term="Validation.Minimum" Int="0"/>
-         </Property>
-         <Property Name="MaximumFrequencyHz" Type="Edm.Decimal">
+          <Annotation Term="Measures.Unit" String="Hz"/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+        </Property>
+        <Property Name="MaximumFrequencyHz" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The maximum line input frequency at which this power supply input range is effective"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the value in Hertz of the maximum line input frequency which the power supply is capable of consuming for this range."/>
-	  <Annotation Term="Measures.Unit" String="Hz"/>
-	  <Annotation Term="Validation.Minimum" Int="0"/>
-         </Property>
-         <Property Name="OutputWattage" Type="Edm.Decimal">
+          <Annotation Term="Measures.Unit" String="Hz"/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+        </Property>
+        <Property Name="OutputWattage" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The maximum capacity of this Power Supply when operating in this input range"/>
           <Annotation Term="OData.LongDescription" String="This property shall contiain the maximum amount of power, in Watts, that the associated power supply is rated to deliver while operating in this input range."/>
           <Annotation Term="Measures.Unit" String="W"/>
           <Annotation Term="Validation.Minimum" Int="0"/>
-         </Property>
-         <Property Name="Oem" Type="Resource.Oem"/>
+        </Property>
+        <Property Name="Oem" Type="Resource.Oem"/>
       </ComplexType>
 
       <EnumType Name="InputType">
@@ -474,7 +477,7 @@
       </EnumType>
 
     </Schema>
-	
-</edmx:DataServices>
+
+  </edmx:DataServices>
 </edmx:Edmx>
 
