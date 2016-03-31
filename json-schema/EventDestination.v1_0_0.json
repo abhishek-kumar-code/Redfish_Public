@@ -78,13 +78,17 @@
                     "longDescription": "This property shall contain an object consisting of the names and values of of HTTP header to be included with every event POST to the Event Destination.  This property shall be null on a GET."
                 }
             },
+            "required": [
+                "Id",
+                "Name"
+            ],
             "requiredOnCreate": [
                 "Destination",
                 "EventTypes",
                 "Context",
                 "Protocol"
             ],
-            "description": "This is the base type for resources and referenceable members."
+            "description": "An Event Destination desribes the target of an event subscription, including the types of events subscribed and context to provide to the target in the Event payload."
         },
         "EventDestinationProtocol": {
             "type": "string",
@@ -115,5 +119,5 @@
             "description": "The value of the HTTP header is the property value.  The header name is the property name."
         }
     },
-    "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
+    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }

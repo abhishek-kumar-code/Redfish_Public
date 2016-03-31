@@ -126,9 +126,13 @@
                     "longDescription": "The value of this property shall be used to indicate if the remote device media prevents writing to that media. "
                 }
             },
-            "description": "This is the schema definition for the Virtual Media Service.",
+            "required": [
+                "Id",
+                "Name"
+            ],
+            "description": "This resource allows monitoring and control of an instance of virtual media (e.g. a remote CD, DVD, or USB device) functionality provided by a Manager for a system or device.",
             "longDescription": "This resource shall be used to represent a virtual media service for a Redfish implementation."
         }
     },
-    "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
+    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }

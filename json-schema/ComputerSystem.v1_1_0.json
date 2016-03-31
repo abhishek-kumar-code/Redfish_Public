@@ -74,8 +74,8 @@
                 "Continuous"
             ],
             "enumDescriptions": {
-                "Disabled": "The system will boot as normal",
-                "Once": "On its next boot cycle, the system will boot (one time) to the Boot Source Override Target.",
+                "Disabled": "The system will boot normally.",
+                "Once": "On its next boot cycle, the system will boot (one time) to the Boot Source Override Target. The value of BootSourceOverrideEnabled is then reset back to Disabled.",
                 "Continuous": "The system will boot to the target specified in the BootSourceOverrideTarget until this property is set to Disabled."
             }
         },
@@ -88,44 +88,11 @@
                 "Off"
             ],
             "enumDescriptions": {
-                "Unknown": "The state of the Indicator LED cannot be determined.",
+                "Unknown": "The state of the Indicator LED cannot be determined. Deprecated: Return null if state is unknown.",
                 "Lit": "The Indicator LED is lit.",
                 "Blinking": "The Indicator LED is blinking.",
                 "Off": "The Indicator LED is off."
             }
-        },
-        "MemorySummary": {
-            "type": "object",
-            "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
-                    "type": [
-                        "array",
-                        "boolean",
-                        "number",
-                        "null",
-                        "object",
-                        "string"
-                    ],
-                    "description": "This property shall specify a valid odata or Redfish property."
-                }
-            },
-            "additionalProperties": false,
-            "properties": {
-                "TotalSystemMemoryGiB": {
-                    "type": [
-                        "number",
-                        "null"
-                    ],
-                    "minimum": 0,
-                    "readonly": true,
-                    "description": "The total installed, operating system-accessible memory (RAM), measured in GiB.",
-                    "longDescription": "This property shall contain the amount of system general purpose volatile (RAM) memory as measured in gibibytes."
-                },
-                "Status": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
-                }
-            },
-            "description": "This object describes the memory of the system in general detail."
         },
         "PowerState": {
             "type": "string",
@@ -222,13 +189,13 @@
                     "$ref": "#/definitions/BootSource",
                     "readonly": false,
                     "description": "The current boot source to be used at next boot instead of the normal boot device, if BootSourceOverrideEnabled is true.",
-                    "longDescription": "The value of this property shall contain the source to boot the system from, overriding the normal boot order.  The valid values for this property are specified through the Redfish.AllowableValues annotation. Pxe indicates to PXE boot from the primary NIC; Floppy, Cd, Usb, Hdd indicates to boot from their devices respectively.  BiosSetup indicates to boot into the native BIOS screen setup.  Utilities and Diags indicate to boot from the local utilities or diags partitions and UefiTarget indicates to boot from the UEFI device path found in UefiTargetBootSourceOverride."
+                    "longDescription": "The value of this property shall contain the source to boot the system from, overriding the normal boot order. The valid values for this property are specified through the Redfish.AllowableValues annotation. Pxe indicates to PXE boot from the primary NIC; Floppy, Cd, Usb, Hdd indicates to boot from their devices respectively. BiosSetup indicates to boot into the native BIOS screen setup. Utilities and Diags indicate to boot from the local utilities or diags partitions and UefiTarget indicates to boot from the UEFI device path found in UefiTargetBootSourceOverride."
                 },
                 "BootSourceOverrideEnabled": {
                     "$ref": "#/definitions/BootSourceOverrideEnabled",
                     "readonly": false,
                     "description": "Describes the state of the Boot Source Override feature",
-                    "longDescription": "The value of this property shall be Once if this is a one time boot override and Continuous if this selection should remain active until cancelled."
+                    "longDescription": "The value of this property shall be Once if this is a one time boot override and Continuous if this selection should remain active until cancelled. If the property value is set to Once, the value will be reset back to Disabled after the BootSourceOverrideTarget actions have been completed."
                 },
                 "UefiTargetBootSourceOverride": {
                     "type": [
@@ -236,8 +203,8 @@
                         "null"
                     ],
                     "readonly": false,
-                    "description": "This property is the Uefi Device Path of the device to boot from when BootSourceOverrideSupported is UefiTarget.",
-                    "longDescription": "The value of this property shall be the UEFI device path of the override boot target.  The valid values for this property are specified through the Redfish.AllowableValues annotation. BootSourceOverrideEnabled = Continuous is not supported for Uefi Boot Source Override as this setting is defined in UEFI as a one time boot only."
+                    "description": "This property is the UEFI Device Path of the device to boot from when BootSourceOverrideSupported is UefiTarget.",
+                    "longDescription": "The value of this property shall be the UEFI device path of the override boot target. The valid values for this property are specified through the Redfish.AllowableValues annotation. BootSourceOverrideEnabled = Continuous is not supported for UEFI Boot Source Override as this setting is defined in UEFI as a one time boot only."
                 },
                 "BootSourceOverrideMode": {
                     "$ref": "#/definitions/BootSourceOverrideMode",
@@ -393,7 +360,8 @@
                         }
                     },
                     "readonly": true,
-                    "description": "Contains links to other resources that are related to this resource."
+                    "description": "Contains references to other resources that are related to this resource.",
+                    "longDescription": "The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."
                 },
                 "AssetTag": {
                     "type": [
@@ -478,7 +446,7 @@
                 "Boot": {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/ComputerSystem.v1_0_0.json#/definitions/Boot",
                     "description": "Information about the boot settings for this system",
-                    "longDescription": "This object shall contain properties which describe boot information for the current resource."
+                    "longDescription": "This object shall contain properties which describe boot information for the current resource. Changes to this object do not alter the BIOS persistent boot order configuration."
                 },
                 "BiosVersion": {
                     "type": [
@@ -494,7 +462,7 @@
                     "longDescription": "This object shall contain properties which describe the central processors for the current resource."
                 },
                 "MemorySummary": {
-                    "$ref": "#/definitions/MemorySummary",
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/ComputerSystem.v1_0_0.json#/definitions/MemorySummary",
                     "description": "This object describes the central memory of the system in general detail.",
                     "longDescription": "This object shall contain properties which describe the central memory for the current resource."
                 },
@@ -541,7 +509,8 @@
                         }
                     },
                     "readonly": true,
-                    "description": "The Actions object contains the available custom actions on this resource."
+                    "description": "The available actions for this resource.",
+                    "longDescription": "The Actions property shall contain the available actions for this resource."
                 },
                 "Status": {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
@@ -589,8 +558,24 @@
                     "readonly": true,
                     "description": "A reference to the BIOS settings associated with this system.",
                     "longDescription": "The value of this property shall be a link to a resource of type Bios that lists the BIOS settings for this system."
+                },
+                "Memory": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/MemoryCollection.json#/definitions/MemoryCollection",
+                    "readonly": true,
+                    "description": "A reference to the collection of Memory associated with this system",
+                    "longDescription": "The value of this property shall be a link to a collection of type MemoryCollection."
+                },
+                "Storage": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/StorageCollection.json#/definitions/StorageCollection",
+                    "readonly": true,
+                    "description": "A reference to the collection of storage devices associated with this system",
+                    "longDescription": "The value of this property shall be a link to a collection of type StorageCollection."
                 }
             },
+            "required": [
+                "Id",
+                "Name"
+            ],
             "description": "This schema defines a computer system and its respective properties.  A computer system represents a machine (physical or virtual) and the local resources such as memory, cpu and other devices that can be accessed from that machine.",
             "longDescription": "This resource shall be used to represent resources that represent a computing system in the Redfish specification."
         },
@@ -606,6 +591,60 @@
                 "TPM2_0": "Trusted Platform Module (TPM) 2.0",
                 "TCM1_0": "Trusted Cryptography Module (TCM) 1.0"
             }
+        },
+        "MemoryMirroring": {
+            "type": "string",
+            "enum": [
+                "System",
+                "DIMM",
+                "Hybrid",
+                "None"
+            ],
+            "enumDescriptions": {
+                "System": "The system supports DIMM mirroring at the System level.  Individual DIMMs are not paired for mirroring in this mode.",
+                "DIMM": "The system supports DIMM mirroring at the DIMM level.  Individual DIMMs can be mirrored.",
+                "Hybrid": "The system supports a hybrid mirroring at the system and DIMM levels.  Individual DIMMs can be mirrored.",
+                "None": "The system does not support DIMM mirroring."
+            }
+        },
+        "MemorySummary": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "TotalSystemMemoryGiB": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "minimum": 0,
+                    "readonly": true,
+                    "description": "The total installed, operating system-accessible memory (RAM), measured in GiB.",
+                    "longDescription": "This property shall contain the amount of system general purpose volatile (RAM) memory as measured in gibibytes."
+                },
+                "Status": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
+                },
+                "MemoryMirroring": {
+                    "$ref": "#/definitions/MemoryMirroring",
+                    "readonly": true,
+                    "description": "The ability and type of memory mirroring supported by this system.",
+                    "longDescription": "This property shall contain the ability and type of memory mirring supported by this system."
+                }
+            },
+            "description": "This object describes the memory of the system in general detail."
         },
         "TrustedModules": {
             "type": "object",
@@ -649,5 +688,5 @@
             "description": "This object describes the inventory of a Trusted Modules installed in the system."
         }
     },
-    "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
+    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }

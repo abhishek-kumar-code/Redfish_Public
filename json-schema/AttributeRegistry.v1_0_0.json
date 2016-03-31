@@ -82,7 +82,7 @@
                 "RegistryVersion",
                 "OwningEntity"
             ],
-            "description": "This is the schema definition for Attribute Registries. It represents the properties for the registries themselves.",
+            "description": "An Attribute Registry is a set of key-value pairs which are specific to a particular implementation or product, such that creating standardized property names would be impractical.  This schema describes the structure of a Registry, and also includes mechanisms for building user interfaces (menus) allowing consistent navigation of the contents.",
             "longDescription": "This resource shall be used to represent an Attribute registry for a Redfish implementation."
         },
         "AttributeType": {
@@ -777,5 +777,5 @@
             }
         }
     },
-    "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
+    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }
