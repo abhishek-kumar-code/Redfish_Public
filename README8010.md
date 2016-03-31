@@ -24,7 +24,8 @@ Per DMTF policy, the following new schema files are currently undergoing a 30-da
 | Schema File | Version | Date      | Description     |
 | ---         | ---     | ---       | ---             |
 | Bios    | 1.0.0  | 2016-3-31 | Initial release.  Provides access to BIOS settings as part of a system, typically incorporating a Bios Attribute Registry. |
-| BiosAttributeRegistry | 1.0.0  | 2016-3-31 | Initial release.  
+| BiosAttributeRegistry | 1.0.0  | 2016-3-31 | Initial release.  |
+| Drive     | 1.0.0  | 2016-3-31 | Initial release. |
 | Memory    | 1.0.0  | 2016-3-31 | Initial release.  Memory describes a memory module or similar memory device as part of a system. |  
 | Storage    | 1.0.0  | 2016-3-31 | Initial release.  Describes a storage subsystem, including the controllers, disks and volumes associated with the subsystem. |  
 | Volume    | 1.0.0  | 2016-3-31 | Initial release.  Describes a single Volume as part of a storage subsystem, disk, or other storage device. |
@@ -38,14 +39,17 @@ Per DMTF policy, the following new schema files are currently undergoing a 30-da
 | Chassis | 1.1.2   | 2016-3-31 | Errata release to incorporate the naming convention adjustments (see 1.0.2 errata description above).|
 | ComputerSystem | 1.1.0 | 2016-3-31 | Added Links for 'Bios', 'Memory', 'Storage' and 'SecureBoot'.  Added 'MemoryMirroring' to the 'MemorySummary' object.  Added 'TrustedModule' object.  Added 'BootSourceOverrideMode' to 'Boot' object.  Added 'SDCard' and 'UefiHttp' enumerations to 'BootSourceOverrideTarget' in 'Boot' object. |
 | Event      | 1.1.0  | 2016-3-31 | Added 'Context' property. |
+| EventService | 1.0.2 | 2016-3-31 | Errata release.  Corrected Unit annotations to use UCUM unit definitions.  Incorporates naming convention adjustments (see 1.0.2 errata description above) |
 | Manager     | 1.1.0  | 2016-3-31 | Added Link for 'ManagerInChassis'. |
-| ManagerNetworkProtocol | 1.0.2 | 2016-3-31 | Errata release.  Corrected read-write permissions on all embedded objects.  Incorporates naming convention adjustments (see 1.0.2 errata description above) |  
+| ManagerNetworkProtocol | 1.0.2 | 2016-3-31 | Errata release.  Corrected read-write permissions on all embedded objects.  Corrected Unit annotations to use UCUM unit definitions.  Incorporates naming convention adjustments (see 1.0.2 errata description above) |  
 | Power       | 1.1.0  | 2016-3-31 | Added 'InputRanges' array and 'Manufacturer' to 'PowerSupply' object.  Added enumerations to the 'LineInputVoltageType' property in 'PowerSupply' that promote better interoperability and deprecated others whose terminology differs in meaning among vendors. | 
-| Power       | 1.0.2 | 2016-3-31 | Errata release.  Corrected read-write permissions on all embedded objects.  Incorporates naming convention adjustments (see 1.0.2 errata description above) | 
+| Power       | 1.0.2 | 2016-3-31 | Errata release.  Corrected read-write permissions on all embedded objects.  Corrected Unit annotations to use UCUM unit definitions.  Incorporates naming convention adjustments (see 1.0.2 errata description above) | 
 | Resource    | 1.1.0 | 2016-3-31 | Added 'Identifier' object, 'Location' object and 'IndicatorLED' definition for use throughout the Redfish data model. |
+| SessionService | 1.0.2 | 2016-3-31 | Errata release.  Added Unit annotations.  Incorporates naming convention adjustments (see 1.0.2 errata description above) |
 | SimpleStorage | 1.1.0  | 2016-3-31 | Added 'CapacityBytes' to 'Device' object. |
-| Thermal     | 1.1.0  | 2016-3-31 | Added 'Name' to 'Fan' object. |
-| Thermal     | 1.0.2 | 2016-3-31 | Errata release.  Corrected read-write permissions on all embedded objects.  Incorporates naming convention adjustments (see 1.0.2 errata description above) | 
+| SimpleStorage | 1.0.2 | 2016-3-31 | Errata release.  Corrected Unit annotations to use UCUM unit definitions.  Incorporates naming convention adjustments (see 1.0.2 errata description above) |
+| Thermal     | 1.1.0  | 2016-3-31 | Added 'Name' to 'Fan' object.  Deprecated inconsistent 'FanName' in 'Fan'. |
+| Thermal     | 1.0.2 | 2016-3-31 | Errata release.  Corrected read-write permissions on all embedded objects.  Corrected Unit annotations to use UCUM unit definitions.  Incorporates naming convention adjustments (see 1.0.2 errata description above) | 
 | Chassis    | 1.1.0   | 2015-11-25 | Added 'PhysicalSecurity' object for Intrusion Detection sensor support. |
 | Thermal     | 1.0.1  | 2015-9-17 | Errata release.  Renamed Fan 'ReadingRPM' property to 'Reading' as it was determined that the initial definition was too limiting. Added Fan property 'ReadingUnits' to allow for either RPM or percent-based fan readings.  Corrected spelling errors throughout. Any future property name changes will result in a major version change to the schema file. |
 | Chassis     | 1.0.1   | 2015-9-17 | Errata release.  Added missing 'PowerState' property intended for inclusion in v1.0.0.  Corrected longDescription text of 'CooledBy'.  Clarified longDescription of 'Reset' action.  |
