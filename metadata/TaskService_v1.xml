@@ -33,9 +33,9 @@
         <Annotation Term="OData.Description" String="The Task Service of a Redfish service allows scheduling and execution of long-duration processes.  It represents the properties for the Task Service itself and has links to the actual collection of Task resources."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a task service for a Redfish implementation."/>
       </EntityType>
-      
+
     </Schema>
-    
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="TaskService.v1_0_0">
 
       <EntityType Name="TaskService" BaseType="TaskService.TaskService">
@@ -59,7 +59,7 @@
         <Property Name="ServiceEnabled" Type="Edm.Boolean">
           <Annotation Term="OData.Description" String="This indicates whether this service is enabled."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this service is enabled."/>
-        </Property>        
+        </Property>
         <Property Name="Status" Type="Resource.Status"/>
         <NavigationProperty Name="Tasks" Type="TaskCollection.TaskCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -83,6 +83,6 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="TaskService.v1_0_2">
       <EntityType Name="TaskService" BaseType="TaskService.v1_0_0.TaskService"/>
     </Schema>
-    
+
   </edmx:DataServices>
 </edmx:Edmx>

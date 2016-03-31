@@ -33,9 +33,9 @@
         <Annotation Term="OData.Description" String="This resource contains information about a specific Task scheduled by or being executed by a Redfish service's Task Service."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a task for a Redfish implementation."/>
       </EntityType>
-      
+
     </Schema>
-    
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Task.v1_0_0">
 
       <EntityType Name="Task" BaseType="Task.Task">
@@ -107,6 +107,6 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Task.v1_0_2">
       <EntityType Name="Task" BaseType="Task.v1_0_0.Task"/>
     </Schema>
-    
+
   </edmx:DataServices>
 </edmx:Edmx>

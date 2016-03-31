@@ -413,7 +413,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.v1_0_2">
       <EntityType Name="Power" BaseType="Power.v1_0_1.Power"/>
     </Schema>
-    
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.v1_1_0">
 
       <EntityType Name="Power" BaseType="Power.v1_0_2.Power"/>

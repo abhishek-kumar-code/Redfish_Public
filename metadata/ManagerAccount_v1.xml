@@ -24,7 +24,7 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Role_v1.xml">
     <edmx:Include Namespace="Role"/>
   </edmx:Reference>
-  
+
   <edmx:DataServices>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ManagerAccount">
 
@@ -32,11 +32,11 @@
         <Annotation Term="OData.Description" String="The user accounts, owned by a Manager, are defined in this resource.  Changes to a Manager Account may affect the current Redfish service connection if this manager is responsible for the Redfish service."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent resources that represent the user accounts for the manager."/>
       </EntityType>
-      
+
     </Schema>
-    
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ManagerAccount.v1_0_0">
-      
+
       <EntityType Name="ManagerAccount" BaseType="ManagerAccount.ManagerAccount">
         <Property Name="Password" Type="Edm.String">
           <Annotation Term="Redfish.RequiredOnCreate"/>
@@ -82,6 +82,6 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ManagerAccount.v1_0_2">
       <EntityType Name="ManagerAccount" BaseType="ManagerAccount.v1_0_0.ManagerAccount"/>
     </Schema>
-    
+
   </edmx:DataServices>
 </edmx:Edmx>

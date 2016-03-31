@@ -31,11 +31,11 @@
         <Annotation Term="OData.Description" String="The Session resource describes a single connection (session) between a client and a Redfish service instance."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a session for a Redfish implementation."/>
       </EntityType>
-    
+
     </Schema>
-    
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Session.v1_0_0">
-      
+
       <EntityType Name="Session" BaseType="Session.Session">
         <Property Name="UserName" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -55,6 +55,6 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Session.v1_0_2">
       <EntityType Name="Session" BaseType="Session.v1_0_0.Session"/>
     </Schema>
-    
+
   </edmx:DataServices>
 </edmx:Edmx>

@@ -32,7 +32,7 @@
       </EntityType>
 
     </Schema>
-    
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Redundancy.v1_0_0">
 
       <EntityType Name="Redundancy" BaseType="Redundancy.Redundancy">
@@ -106,6 +106,6 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Redundancy.v1_0_2">
       <EntityType Name="Redundancy" BaseType="Redundancy.v1_0_1.Redundancy"/>
     </Schema>
-    
+
   </edmx:DataServices>
 </edmx:Edmx>

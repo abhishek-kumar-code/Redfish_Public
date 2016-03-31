@@ -35,7 +35,7 @@
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive">
-      
+
       <EntityType Name="Drive" BaseType="Resource.v1_0_0.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition for the Drive resource.  It represents the properties for physical disk drives for any system."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a disk drive or other physical storage medium for a Redfish implementation."/>
@@ -209,7 +209,7 @@
         </Member>
         <Member Name="SMR">
           <Annotation Term="OData.Description" String="The drive media type is shingled magnetic recording"/>
-        </Member>		
+        </Member>
       </EnumType>
 
       <EnumType Name="HotspareType">
@@ -279,6 +279,6 @@
       </EnumType>
 
     </Schema>
-    
+
   </edmx:DataServices>
 </edmx:Edmx>

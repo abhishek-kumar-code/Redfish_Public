@@ -77,15 +77,14 @@
       </Action>
 
     </Schema>
-    
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventService.v1_0_0">
 
-      <!-- This schema defines an event service and its respective properties.-->
       <EntityType Name="EventService" BaseType="EventService.EventService">
         <Property Name="ServiceEnabled" Type="Edm.Boolean">
           <Annotation Term="OData.Description" String="This indicates whether this service is enabled."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this service is enabled."/>
-        </Property> 
+        </Property>
         <Property Name="DeliveryRetryAttempts" Type="Edm.Int64" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the number of attempts an event posting is retried before the subscription is terminated."/>
@@ -120,16 +119,16 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="Oem" Type="EventService.v1_0_0.OemActions"/>
       </ComplexType>
-      
+
       <ComplexType Name="OemActions">
         <Annotation Term="OData.AdditionalProperties" Bool="true"/>
       </ComplexType>
 
     </Schema>
-    
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventService.v1_0_2">
-        <EntityType Name="EventService" BaseType="EventService.v1_0_0.EventService"/>
+      <EntityType Name="EventService" BaseType="EventService.v1_0_0.EventService"/>
     </Schema>
-    
+
   </edmx:DataServices>
 </edmx:Edmx>

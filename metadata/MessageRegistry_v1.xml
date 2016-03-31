@@ -22,7 +22,7 @@
     <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0" />
   </edmx:Reference>
-  
+
   <edmx:DataServices>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MessageRegistry">
 
@@ -30,9 +30,9 @@
         <Annotation Term="OData.Description" String="This is the schema definition for all Message Registries.  It represents the properties for the registries themselves.  The MessageId is formed per the Redfish specification.  It consists of the RegistryPrefix concatenated with the version concatenated with the unique identifier for the message registry entry."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a message registry for a Redfish implementation."/>
       </EntityType>
- 
+
     </Schema>
-    
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MessageRegistry.v1_0_0">
 
       <EntityType Name="MessageRegistry" BaseType="MessageRegistry.MessageRegistry">
@@ -134,6 +134,6 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MessageRegistry.v1_0_2">
       <EntityType Name="MessageRegistry" BaseType="MessageRegistry.v1_0_0.MessageRegistry"/>
     </Schema>
-  
+
   </edmx:DataServices>
 </edmx:Edmx>

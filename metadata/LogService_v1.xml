@@ -38,9 +38,9 @@
       <Action Name="ClearLog" IsBound="true">
         <Parameter Name="LogService" Type="LogService.v1_0_0.Actions"/>
       </Action>
-      
+
     </Schema>
-    
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogService.v1_0_0">
 
       <EntityType Name="LogService" BaseType="LogService.LogService">
@@ -77,7 +77,7 @@
           <Annotation Term="OData.Description" String="References to the log entry collection."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall reference a collection of resources of type LogEntry."/>
           <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>        
+        </NavigationProperty>
         <Property Name="Actions" Type="LogService.v1_0_0.Actions" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
@@ -90,7 +90,7 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="Oem" Type="LogService.v1_0_0.OemActions" Nullable="false"/>
       </ComplexType>
-      
+
       <ComplexType Name="OemActions">
         <Annotation Term="OData.AdditionalProperties" Bool="true"/>
       </ComplexType>
@@ -108,10 +108,10 @@
       </EnumType>
 
     </Schema>
-    
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogService.v1_0_2">
       <EntityType Name="LogService" BaseType="LogService.v1_0_0.LogService"/>
     </Schema>
-    
+
   </edmx:DataServices>
 </edmx:Edmx>

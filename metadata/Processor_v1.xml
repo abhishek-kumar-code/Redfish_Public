@@ -30,9 +30,9 @@
         <Annotation Term="OData.Description" String="The Processor resource reports information about a single processor contained within a system.  This includes both performance characteristics (clock speed, architecture, core count, etc.) and compatibility (e.g. CPU ID instruction results)."/>
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
       </EntityType>
-    
+
     </Schema>
-    
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Processor.v1_0_0">
 
       <EntityType Name="Processor" BaseType="Processor.Processor">
@@ -60,7 +60,7 @@
         </Property>
         <Property Name="ProcessorId" Type="Processor.v1_0_0.ProcessorId"  Nullable="false">
           <Annotation Term="OData.Description" String="Identification information for this processor."/>
-          <Annotation Term="OData.LongDescription" String="This object shall contain identification information for this processor."/>		  
+          <Annotation Term="OData.LongDescription" String="This object shall contain identification information for this processor."/>
         </Property>
         <Property Name="Status" Type="Resource.Status" />
         <Property Name="Manufacturer" Type="Edm.String">
@@ -144,7 +144,7 @@
           <Annotation Term="OData.Description" String="An OEM-defined Processing Unit" />
         </Member>
       </EnumType>
-      
+
       <TypeDefinition Name="ProcessorArchitecture" UnderlyingType="Edm.String">
         <Annotation Term="Redfish.Enumeration">
           <Collection>
@@ -216,6 +216,6 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Processor.v1_0_2">
       <EntityType Name="Processor" BaseType="Processor.v1_0_0.Processor"/>
     </Schema>
-    
+
   </edmx:DataServices>
 </edmx:Edmx>

@@ -24,18 +24,18 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Event_v1.xml">
     <edmx:Include Namespace="Event.v1_0_0"/>
   </edmx:Reference>
-  
+
   <edmx:DataServices>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventDestination">
 
       <EntityType Name="EventDestination" BaseType="Resource.v1_0_0.Resource">
         <Annotation Term="OData.Description" String="An Event Destination desribes the target of an event subscription, including the types of events subscribed and context to provide to the target in the Event payload."/>
       </EntityType>
-    
+
     </Schema>
-    
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventDestination.v1_0_0">
-      
+
       <EntityType Name="EventDestination" BaseType="EventDestination.EventDestination">
         <Property Name="Destination" Type="Edm.String" Nullable="false">
           <Annotation Term="Redfish.RequiredOnCreate"/>
@@ -69,7 +69,7 @@
       <EnumType Name="EventDestinationProtocol">
         <Member Name="Redfish"/>
       </EnumType>
-      
+
       <ComplexType Name="HttpHeaderProperty">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="Redfish.DynamicPropertyPatterns">
@@ -88,6 +88,6 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventDestination.v1_0_2">
       <EntityType Name="EventDestination" BaseType="EventDestination.v1_0_0.EventDestination"/>
     </Schema>
-    
+
   </edmx:DataServices>
 </edmx:Edmx>

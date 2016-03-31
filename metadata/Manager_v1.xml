@@ -216,7 +216,6 @@
         </NavigationProperty>
       </ComplexType>
 
-      <!-- This type defines the type of manager that given resource represents. -->
       <EnumType Name="ManagerType">
         <Member Name="ManagementController">
           <Annotation Term="OData.Description" String="A controller used primarily to monitor or manage the operation of a device or system"/>
@@ -250,7 +249,6 @@
         </Property>
       </ComplexType>
 
-      <!-- This schema defines Serial Console connection types allowed by the implementation. -->
       <EnumType Name="SerialConnectTypesSupported">
         <Member Name="SSH">
           <Annotation Term="OData.Description" String="The controller supports a Serial Console connection using the SSH protocol"/>
@@ -266,7 +264,6 @@
         </Member>
       </EnumType>
 
-      <!-- Need other enumerations because enumeration descriptions differ by type -->
       <EnumType Name="CommandConnectTypesSupported">
         <Member Name="SSH">
           <Annotation Term="OData.Description" String="The controller supports a Command Shell connection using the SSH protocol"/>
@@ -291,7 +288,6 @@
         </Member>
       </EnumType>
 
-      <!-- This type contains information about the Serial Console service of a given manager. -->
       <ComplexType Name="SerialConsole" BaseType="Manager.v1_0_0.ManagerService">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="ConnectTypesSupported" Type="Collection(Manager.v1_0_0.SerialConnectTypesSupported)" Nullable="false">
@@ -301,7 +297,6 @@
         </Property>
       </ComplexType>
 
-      <!-- This type contains information about the Command Shell service of a given manager. -->
       <ComplexType Name="CommandShell" BaseType="Manager.v1_0_0.ManagerService">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="ConnectTypesSupported" Type="Collection(Manager.v1_0_0.CommandConnectTypesSupported)" Nullable="false">
@@ -311,7 +306,6 @@
         </Property>
       </ComplexType>
 
-      <!-- This type contains information about the Graphical Console (KVM-IP) service of a given manager. -->
       <ComplexType Name="GraphicalConsole" BaseType="Manager.v1_0_0.ManagerService">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="ConnectTypesSupported" Type="Collection(Manager.v1_0_0.GraphicalConnectTypesSupported)" Nullable="false">
