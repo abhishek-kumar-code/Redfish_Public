@@ -32,7 +32,7 @@ Per DMTF policy, the following new schema files are currently undergoing a 30-da
 | SecureBoot | 1.0.0  | 2016-3-31 | Initial release.  This resource contains UEFI Secure Boot information. It represents properties for managing the UEFI Secure Boot functionality of a system. |
 | Storage    | 1.0.0  | 2016-3-31 | Initial release.  Storage defines a storage subsystem and its respective properties.  A storage subsystem represents a set of storage controllers (physical or virtual) and the resources such as volumes that can be accessed from that subsystem. |  
 | StorageCollection    | 1.0.0  | 2016-3-31 | Initial release.  A Collection of Storage resource instances. |
-| Volume    | 1.0.0  | 2016-3-31 | Initial release.  Describes a single Volume as part of a storage subsystem, disk, or other storage device. |
+| Volume    | 1.0.0  | 2016-3-31 | Initial release.  Volume contains properties used to describe a volume, virtual disk, LUN, or other logical storage entity for any system. |
 
 # Redfish Schema Change Log
 
