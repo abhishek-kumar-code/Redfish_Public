@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright-->
+<!---->
+<!--################################################################################       -->
+<!--# Redfish Schema:  Memory  v1.0.0-->
+<!--#                                                                                      -->
+<!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
+<!--# available at http://www.dmtf.org/standards/redfish                                   -->
+<!--# Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF).                  -->
+<!--# For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright -->
+<!--################################################################################       -->
+<!---->
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
 
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
@@ -24,7 +33,7 @@
 
       <EntityType Name="Memory" BaseType="Resource.v1_0_0.Resource">
         <Annotation Term="OData.Description" String="This is the schema definition of the Memory and its configuration. " />
-        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent the Memory in a Redfish implementation." />        
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent the Memory in a Redfish implementation." />
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
       </EntityType>
 
@@ -41,7 +50,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the passphrase used in this actionn." />
         </Parameter>
       </Action>
-      
+
       <Action Name="SecureEraseUnit" IsBound="true">
         <Annotation Term="OData.Description" String="This defines the action for securely erasing given regions."/>
         <Annotation Term="OData.LongDescription" String="This action shall securely erase the supplied region provided the supplied passphrase matches that of the given region."/>
@@ -115,7 +124,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
           <Annotation Term="OData.Description" String="Memory Capacity in MiB." />
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the Memory capacity in MiB." />
-          <Annotation Term="Measures.Unit" String="MiBy"/>          
+          <Annotation Term="Measures.Unit" String="MiBy"/>
         </Property>
         <Property Name="DataWidthBits" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
@@ -253,7 +262,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
           <Annotation Term="OData.Description" String="Rank spare enabled status" />
           <Annotation Term="OData.LongDescription" String="The value of this property shall be true if a rank spare is enabled for this Memory." />
-        </Property>              
+        </Property>
         <NavigationProperty Name="Metrics" Type="MemoryMetrics.MemoryMetrics" ContainsTarget="true">
           <Annotation Term="OData.Description" String="A reference to the Metrics associated with this Memory"/>
           <Annotation Term="OData.LongDescription" String="A reference to the Metrics associated with this Memory."/>
@@ -482,13 +491,13 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
           <Annotation Term="OData.Description" String="Offset with in the Memory that corresponds to the starting of this memory region in MiB" />
           <Annotation Term="OData.LongDescription" String="Offset with in the Memory that corresponds to the starting of this memory region in MiB." />
-          <Annotation Term="Measures.Unit" String="MiBy"/>           
+          <Annotation Term="Measures.Unit" String="MiBy"/>
         </Property>
         <Property Name="SizeMiB" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
           <Annotation Term="OData.Description" String="Size of this memory region in MiB" />
           <Annotation Term="OData.LongDescription" String="Size of this memory region in MiB." />
-          <Annotation Term="Measures.Unit" String="MiBy"/>           
+          <Annotation Term="Measures.Unit" String="MiBy"/>
         </Property>
         <Property Name="PassphraseState" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
@@ -509,7 +518,7 @@
           <Annotation Term="OData.Description" String="Block accesible memory" />
         </Member>
       </EnumType>
-      
+
       <EnumType Name="OperatingMemoryModes">
         <Member Name="Volatile">
           <Annotation Term="OData.Description" String="Volatile memory" />
@@ -533,19 +542,19 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
           <Annotation Term="OData.Description" String="Maximum TDP in milli watts" />
           <Annotation Term="OData.LongDescription" String="Maximum TDP in milli watts." />
-          <Annotation Term="Measures.Unit" String="mW"/>           
+          <Annotation Term="Measures.Unit" String="mW"/>
         </Property>
         <Property Name="PeakPowerBudgetMilliWatts" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
           <Annotation Term="OData.Description" String="Peak power budget in milli watts" />
           <Annotation Term="OData.LongDescription" String="Peak power budget in milli watts." />
-          <Annotation Term="Measures.Unit" String="mW"/>               
+          <Annotation Term="Measures.Unit" String="mW"/>
         </Property>
         <Property Name="AveragePowerBudgetMilliWatts" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
           <Annotation Term="OData.Description" String="Average power budget in milli watts" />
           <Annotation Term="OData.LongDescription" String="Average power budget in milli watts." />
-          <Annotation Term="Measures.Unit" String="mW"/>               
+          <Annotation Term="Measures.Unit" String="mW"/>
         </Property>
         <Annotation Term="OData.Description" String="."/>
       </ComplexType>

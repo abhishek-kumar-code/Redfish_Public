@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright-->
+<!---->
+<!--################################################################################       -->
+<!--# Redfish Schema:  MemoryMetrics  v1.0.0-->
+<!--#                                                                                      -->
+<!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
+<!--# available at http://www.dmtf.org/standards/redfish                                   -->
+<!--# Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF).                  -->
+<!--# For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright -->
+<!--################################################################################       -->
+<!---->
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
 
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
@@ -7,29 +16,30 @@
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
     <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
-  </edmx:Reference>  
+  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource.v1_0_0"  />
   </edmx:Reference>
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Measures.V1.xml">
     <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
   </edmx:Reference>
-  
+
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MemoryMetrics">
 
       <EntityType Name="MemoryMetrics" BaseType="Resource.v1_0_0.Resource">
-        <Annotation Term="OData.Description" String="This is the schema definition of a memory unit's metrics. " />
+        <Annotation Term="OData.Description" String="MemoryMetrics contains usage and health statistics for a single Memory module or device instance." />
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent the Memory Metrics for a single Memory device in a Redfish implementation." />
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
       </EntityType>
 
       <Action Name="ClearCurrentPeriod" IsBound="true">
-        <Parameter Name="MemoryMetrics" Type="MemoryMetrics.v1_0_0.Actions"/>        
+        <Parameter Name="MemoryMetrics" Type="MemoryMetrics.v1_0_0.Actions"/>
         <Annotation Term="OData.Description" String="This sets the CurrentPeriod object values to zero."/>
         <Annotation Term="OData.LongDescription" String="This action shall set the CurrentPeriod object property values to zero."/>
       </Action>
-      
+
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MemoryMetrics.v1_0_0">
@@ -111,7 +121,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
           <Annotation Term="OData.Description" String="Performance degraded mode status" />
           <Annotation Term="OData.LongDescription" String="The value of this property shall be verformance degraded mode status, with true indicating perfomance degraded." />
-        </Property>          
+        </Property>
         <ComplexType Name="AlarmTrips">
           <Annotation Term="OData.AdditionalProperties" Bool="false"/>
           <Property Name="Temperature" Type="Edm.Boolean">
@@ -150,7 +160,7 @@
       <ComplexType Name="OemActions">
         <Annotation Term="OData.AdditionalProperties" Bool="true"/>
       </ComplexType>
-      
+
     </Schema>
   </edmx:DataServices>
 </edmx:Edmx>
