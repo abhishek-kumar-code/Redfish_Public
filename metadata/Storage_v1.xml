@@ -44,7 +44,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Storage">
 
       <EntityType Name="Storage" BaseType="Resource.v1_0_0.Resource">
-        <Annotation Term="OData.Description" String="This schema defines a storage subsystem and its respective properties.  A storage subsystem represents a set of storage controllers (physical or virtual) and the resources such as volumes that can be accessed from that subsystem."/>
+        <Annotation Term="OData.Description" String="Storage defines a storage subsystem and its respective properties.  A storage subsystem represents a set of storage controllers (physical or virtual) and the resources such as volumes that can be accessed from that subsystem."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent resources that represent a storage subsystem in the Redfish specification."/>
       </EntityType>
 
