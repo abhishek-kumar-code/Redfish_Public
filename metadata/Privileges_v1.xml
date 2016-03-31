@@ -16,9 +16,9 @@
   </edmx:Reference>
 
   <edmx:DataServices>
-    
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Privileges.v1_0_0">
-      
+
       <EnumType Name="PrivilegeType">
         <Member Name="Login">
           <Annotation Term="OData.Description" String="Able to log into the service and read resources."/>
@@ -51,5 +51,8 @@
       </Term>
 
     </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Privileges.v1_0_2"/>
+
   </edmx:DataServices>
 </edmx:Edmx>

@@ -22,14 +22,16 @@
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Message_v1.xml">
     <edmx:Include Namespace="Message"/>
-  </edmx:Reference>  
+  </edmx:Reference>
 
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Settings">
       <ComplexType Name="Settings" Abstract="true"/>
     </Schema>
-    
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Settings.v1_0_2"/>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Settings.v1_0_0">
 
       <ComplexType Name="Settings" BaseType="Settings.Settings">
@@ -57,6 +59,6 @@
       </ComplexType>
 
     </Schema>
-    
+
   </edmx:DataServices>
 </edmx:Edmx>

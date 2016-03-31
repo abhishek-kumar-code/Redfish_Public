@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Power  v1.0.2-->
+<!--# Redfish Schema:  Power  v1.1.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -410,16 +410,20 @@
       <EntityType Name="Power" BaseType="Power.v1_0_0.Power"/>
     </Schema>
 
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.v1_1_2">
-
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.v1_0_2">
       <EntityType Name="Power" BaseType="Power.v1_0_1.Power"/>
+    </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.v1_1_0">
+
+      <EntityType Name="Power" BaseType="Power.v1_0_2.Power"/>
       <EntityType Name="PowerSupply" BaseType="Power.v1_0_0.PowerSupply">
         <Property Name="Manufacturer" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the manufacturer of this power supply."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the name of the organization responsible for producing the power supply. This organization might be the entity from whom the power supply is purchased, but this is not necessarily true."/>
         </Property>
-        <Property Name="InputRanges" Type="Collection(Power.v1_1_2.InputRange)">
+        <Property Name="InputRanges" Type="Collection(Power.v1_1_0.InputRange)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the input ranges that the power supply can use."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a collection of ranges usable by the power supply unit."/>
@@ -428,7 +432,7 @@
 
       <ComplexType Name="InputRange">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Property Name="InputType" Type="Power.v1_1_2.InputType">
+        <Property Name="InputType" Type="Power.v1_1_0.InputType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The Input type (AC or DC)"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the input type (AC or DC) of the associated range."/>

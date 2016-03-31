@@ -22,7 +22,7 @@
     <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0" />
   </edmx:Reference>
-  
+
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Message">
@@ -35,9 +35,9 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
       </ComplexType>
 
-      </Schema>
-    
-      <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Message.v1_0_0">
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Message.v1_0_0">
 
       <ComplexType Name="Message" BaseType="Message.Message">
         <Property Name="MessageId" Type="Edm.String" Nullable="false">
@@ -71,5 +71,8 @@
       </ComplexType>
 
     </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Message.v1_0_2"/>
+
   </edmx:DataServices>
 </edmx:Edmx>

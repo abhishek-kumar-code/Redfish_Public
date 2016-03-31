@@ -148,5 +148,8 @@
       </ComplexType>
 
     </Schema>
-  </edmx:DataServices>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="IPAddresses.v1_0_2"/>
+
+</edmx:DataServices>
 </edmx:Edmx>
