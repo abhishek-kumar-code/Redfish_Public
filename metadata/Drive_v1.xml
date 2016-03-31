@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright-->
+<!---->
+<!--################################################################################       -->
+<!--# Redfish Schema:  Drive  v1.0.0-->
+<!--#                                                                                      -->
+<!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
+<!--# available at http://www.dmtf.org/standards/redfish                                   -->
+<!--# Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF).                  -->
+<!--# For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright -->
+<!--################################################################################       -->
+<!---->
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
 
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
@@ -26,7 +35,7 @@
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive">
-      
+
       <EntityType Name="Drive" BaseType="Resource.v1_0_0.Resource">
         <Annotation Term="OData.Description" String="Drive contains properties describing a single physical disk drive for any system, along with links to associated Volumes."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a disk drive or other physical storage medium for a Redfish implementation."/>
@@ -200,7 +209,7 @@
         </Member>
         <Member Name="SMR">
           <Annotation Term="OData.Description" String="The drive media type is shingled magnetic recording"/>
-        </Member>		
+        </Member>
       </EnumType>
 
       <EnumType Name="HotspareType">
@@ -270,6 +279,6 @@
       </EnumType>
 
     </Schema>
-    
+
   </edmx:DataServices>
 </edmx:Edmx>
