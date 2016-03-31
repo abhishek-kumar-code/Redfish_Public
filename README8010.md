@@ -23,11 +23,14 @@ Per DMTF policy, the following new schema files are currently undergoing a 30-da
 
 | Schema File | Version | Date      | Description     |
 | ---         | ---     | ---       | ---             |
-| Bios    | 1.0.0  | 2016-3-31 | Initial release.  Provides access to BIOS settings as part of a system, typically incorporating a Bios Attribute Registry. |
-| BiosAttributeRegistry | 1.0.0  | 2016-3-31 | Initial release.  |
-| Drive     | 1.0.0  | 2016-3-31 | Initial release. |
-| Memory    | 1.0.0  | 2016-3-31 | Initial release.  Memory describes a memory module or similar memory device as part of a system. |  
+| AttributeRegistry | 1.0.0  | 2016-3-31 | Initial release.  | An Attribute Registry is a set of key-value pairs which are specific to a particular implementation or product, such that creating standardized property names would be impractical.  This schema describes the structure of a Registry, and also includes mechanisms for building user interfaces (menus) allowing consistent navigation of the contents.|
+| Bios    | 1.0.0  | 2016-3-31 | Initial release.  Bios contains properties surrounding a BIOS Attribute Registry (where the system-specific BIOS attributes are described) and the Actions needed to perform changes to BIOS settings, which typically require a system reset to apply.|
+| Drive     | 1.0.0  | 2016-3-31 | Initial release.  Drive contains properties describing a single physical disk drive for any system, along with links to associated Volumes. |
+| Memory    | 1.0.0  | 2016-3-31 | Initial release.  Memory describes a memory module or similar memory device as part of a system. |
+| MemoryCollection | 1.0.0 | 2016-3-31 | Initial release.  A Collection of Memory resource instances. |
+| MemoryMetrics | 1.0.0 | 2016-3-31 | Initial release.  MemoryMetrics contains usage and health statistics for a single Memory module or device instance. |
 | Storage    | 1.0.0  | 2016-3-31 | Initial release.  Describes a storage subsystem, including the controllers, disks and volumes associated with the subsystem. |  
+| StorageCollection    | 1.0.0  | 2016-3-31 | Initial release.  A Collection of Storage resource instances. |
 | Volume    | 1.0.0  | 2016-3-31 | Initial release.  Describes a single Volume as part of a storage subsystem, disk, or other storage device. |
 
 # Redfish Schema Change Log
