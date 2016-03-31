@@ -20,7 +20,8 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MemoryMetrics">
 
       <EntityType Name="MemoryMetrics" BaseType="Resource.v1_0_0.Resource">
-        <Annotation Term="OData.Description" String="This is the schema definition of a memory unit's metrics. " />
+        <Annotation Term="OData.Description" String="MemoryMetrics contains usage and health statistics for a single Memory device instance." />
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent the Memory Metrics for a single Memory device in a Redfish implementation." />
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
       </EntityType>
 
