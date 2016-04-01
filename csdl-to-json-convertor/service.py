@@ -43,7 +43,7 @@ if enable_debugging == True:
 schemaLocation = "http://redfish.dmtf.org/schemas/" 
 schemaBaseLocation = schemaLocation + "v1/"
 odataSchema = schemaBaseLocation + "odata.4.0.0.json"
-redfishSchema = schemaLocation + "v1/redfish-schema.v1_0_0.json"
+redfishSchema = schemaLocation + "v1/redfish-schema.v1_1_0.json"
 
 #########################################################################################################
 # Class Name: JsonSchemaGenerator                                                                       #
