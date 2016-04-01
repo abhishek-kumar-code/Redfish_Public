@@ -1546,7 +1546,7 @@ class JsonSchemaGenerator:
 
         #hack to deal emulate parse logic -- todo: fix parse logic
         elif url.endswith(".xml"):
-            prefixuri =  schemaLocation
+            prefixuri =  schemaBaseLocation
             lastindex = url.find(".xml")
             filename=url
             result.update({'filename' : prefixuri + filename})

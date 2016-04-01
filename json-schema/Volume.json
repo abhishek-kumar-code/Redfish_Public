@@ -50,7 +50,7 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
                 },
                 {
-                    "$ref": "http://redfish.dmtf.org/schemas/Volume.v1_0_0.json#/definitions/Volume"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Volume.v1_0_0.json#/definitions/Volume"
                 }
             ]
         }
