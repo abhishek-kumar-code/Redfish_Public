@@ -261,7 +261,7 @@
                                 "$ref": "http://redfish.dmtf.org/schemas/v1/Manager.json#/definitions/Manager"
                             },
                             "readonly": true,
-                            "description": "An array of references to the managers contained in this chassis.",
+                            "description": "An array of references to the Managers responsible for managing this chassis.",
                             "longDescription": "The value of this property shall be a reference to the resource that manages this chassis and shall reference a resource of type Manager."
                         },
                         "ContainedBy": {
