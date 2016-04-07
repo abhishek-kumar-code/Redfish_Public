@@ -2083,9 +2083,9 @@ The UUID supplied in the USN field of the service shall equal the UUID property 
 
 #### M-SEARCH Response
 
-The Redfish Service root Search Target (ST) is defined as: urn:dmtf-org:service:redfish-rest:1
+The Redfish Service Search Target (ST) is defined as: urn:dmtf-org:service:redfish-rest:1
 
-The managed device shall respond to M-SEARCH queries searching for Search Target (ST) of the Redfish Service as well as "ssdp:all".  For UPnP compatibility, The managed device should respond to M-SEARCH queries searching for Search Target (ST) of "upnp:rootdevice".
+The managed device shall respond to M-SEARCH queries searching for Search Target (ST) of the Redfish Service as well as "ssdp:all".  For UPnP compatibility, the managed device should respond to M-SEARCH queries searching for Search Target (ST) of "upnp:rootdevice".
 
 The URN provided in the ST header in the reply shall use a service name of "redfish-rest:" followed by the major version of the Redfish specification.  If the minor version of the Redfish Specification to which the service conforms is a non-zero value, and that version is backwards-compatible with previous minor revisions, then that minor version shall be appended, preceded with a colon.  For example, a service conforming to a Redfish specification version "1.4" would reply with a service of "redfish-rest:1:4".
 
