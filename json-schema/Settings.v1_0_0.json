@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_0_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
     "title": "#Settings.v1_0_0",
     "definitions": {
         "Settings": {
@@ -41,7 +41,7 @@
                 "Messages": {
                     "type": "array",
                     "items": {
-                        "$ref": "http://redfish.dmtf.org/schemas/v1/Message.v1_0_0.json#/definitions/Message"
+                        "$ref": "http://redfish.dmtf.org/schemas/v1/Message.json#/definitions/Message"
                     },
                     "readonly": true,
                     "description": "This is an array of messages associated with the task.",
@@ -55,5 +55,5 @@
             }
         }
     },
-    "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
+    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }

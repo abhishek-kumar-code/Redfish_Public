@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_0_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
     "title": "#ChassisCollection.ChassisCollection",
     "$ref": "#/definitions/ChassisCollection",
     "definitions": {
@@ -55,7 +55,8 @@
                     "readonly": true,
                     "description": "Contains the members of this collection."
                 }
-            }
+            },
+            "description": "A Collection of Chassis resource instances."
         }
     },
     "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"

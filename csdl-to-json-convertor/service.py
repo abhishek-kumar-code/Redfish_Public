@@ -43,7 +43,7 @@ if enable_debugging == True:
 schemaLocation = "http://redfish.dmtf.org/schemas/" 
 schemaBaseLocation = schemaLocation + "v1/"
 odataSchema = schemaBaseLocation + "odata.4.0.0.json"
-redfishSchema = schemaLocation + "v1/redfish-schema.v1_0_0.json"
+redfishSchema = schemaLocation + "v1/redfish-schema.v1_1_0.json"
 
 #########################################################################################################
 # Class Name: JsonSchemaGenerator                                                                       #
@@ -1546,7 +1546,7 @@ class JsonSchemaGenerator:
 
         #hack to deal emulate parse logic -- todo: fix parse logic
         elif url.endswith(".xml"):
-            prefixuri =  schemaLocation
+            prefixuri =  schemaBaseLocation
             lastindex = url.find(".xml")
             filename=url
             result.update({'filename' : prefixuri + filename})

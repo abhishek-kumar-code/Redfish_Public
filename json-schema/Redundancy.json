@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_0_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
     "title": "#Redundancy",
     "definitions": {
         "Redundancy": {
@@ -30,7 +30,7 @@
                     "longDescription": "The value of this string shall uniquely identify the member within the collection."
                 }
             },
-            "description": "This is the redundancy definition to be used in other resource schemas.",
+            "description": "This is the common redundancy definition and structure used in other Redfish schemas.",
             "longDescription": "This object represents the Redundancy element property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification.  The value of this string shall be of the format for the reserved word *Redundancy*"
         }
     },

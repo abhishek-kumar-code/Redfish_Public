@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright-->
+<!---->
+<!--################################################################################       -->
+<!--# Redfish Schema:  Chassis  v1.2.0-->
+<!--#                                                                                      -->
+<!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
+<!--# available at http://www.dmtf.org/standards/redfish                                   -->
+<!--# Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF).                  -->
+<!--# For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright -->
+<!--################################################################################       -->
+<!---->
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
 
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
@@ -41,7 +50,7 @@
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis">
-      
+
       <EntityType Name="Chassis" BaseType="Resource.v1_0_0.Resource">
         <Annotation Term="OData.Description" String="A Chassis represents the physical components for any system.  This resource represents the sheet-metal confined spaces and logical zones like racks, enclosures, chassis and all other containers. Subsystems (like sensors), which operate outside of a system's data plane (meaning the resources are not accessible to software running on the system) are linked either directly or indirectly through this resource."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a chassis or other physical enclosure for a Redfish implementation."/>
@@ -281,16 +290,20 @@
       </EnumType>
 
     </Schema>
-    
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_0_2">
+      <EntityType Name="Chassis" BaseType="Chassis.v1_0_1.Chassis"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_1_0">
 
-      <EntityType Name="Chassis" BaseType="Chassis.v1_0_1.Chassis">
+      <EntityType Name="Chassis" BaseType="Chassis.v1_0_2.Chassis">
         <Property Name="PhysicalSecurity" Type="Chassis.v1_1_0.PhysicalSecurity">
           <Annotation Term="OData.Description" String="The state of the physical security sensor."/>
           <Annotation Term="OData.LongDescription" String="This value of this property shall contain the sensor state of the physical security."/>
-        </Property>  
+        </Property>
       </EntityType>
-      
+
       <ComplexType Name="PhysicalSecurity">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="IntrusionSensorNumber" Type="Edm.Int64">
@@ -308,7 +321,7 @@
           <Annotation Term="OData.Description" String="This indicates how the Normal state to be restored."/>
           <Annotation Term="OData.LongDescription" String="This property shall represent the method to set back to the Normal statue of this physical security sensor.  Manual indicates manual re-arm is needed.  Automatic indicates the state is restored automatically as no abnormal physical security conditions are detected."/>
         </Property>
-      </ComplexType>      
+      </ComplexType>
 
       <EnumType Name="IntrusionSensor">
         <Member Name="Normal">
@@ -329,13 +342,17 @@
         <Member Name="Automatic">
           <Annotation Term="OData.Description" String="This sensor would be restored to the Normal state automatically as no abnormal physical security conditions are detected."/>
         </Member>
-      </EnumType>      
-   </Schema>
+      </EnumType>
+    </Schema>
 
-   <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_2_0">  
-     <EntityType Name="Chassis" BaseType="Chassis.v1_1_0.Chassis"/>
-     <Property Name="Location" Type="Resource.v1_1_0.Location"/>     
-     <ComplexType Name="Links" BaseType="Chassis.v1_0_0.Links">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_1_2">
+      <EntityType Name="Chassis" BaseType="Chassis.v1_1_0.Chassis"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_2_0">
+      <EntityType Name="Chassis" BaseType="Chassis.v1_1_2.Chassis"/>
+      <Property Name="Location" Type="Resource.v1_1_0.Location"/>
+      <ComplexType Name="Links" BaseType="Chassis.v1_0_0.Links">
         <NavigationProperty Name="ManagersInChassis" Type="Collection(Manager.Manager)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the managers located in this Chassis."/>
@@ -356,6 +373,6 @@
         </NavigationProperty>
       </ComplexType>
     </Schema>
-    
+
   </edmx:DataServices>
 </edmx:Edmx>
