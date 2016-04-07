@@ -2075,7 +2075,7 @@ As the objective of discovery is for client software to locate Redfish-compliant
 
 #### UPnP Compatibility
 
-For compatibility with general purpose SSDP client software, primarily UPnP, TCP port 1900 should be used for all SSDP traffic.  In addition, the Time-to-Live (TTL) hop count setting for SSDP multicast messages should default to 2.  It is recommended that devices also respond to M-SEARCH queries for UPnP Root Devices (with NT:upnp:rootdevice), with appropriate descriptors and XML documents.
+For compatibility with general purpose SSDP client software, primarily UPnP, UDP port 1900 should be used for all SSDP traffic.  In addition, the Time-to-Live (TTL) hop count setting for SSDP multicast messages should default to 2.
 
 #### USN Format
 
@@ -2083,19 +2083,23 @@ The UUID supplied in the USN field of the service shall equal the UUID property 
 
 #### M-SEARCH Response
 
-The managed device must respond to M-SEARCH queries searching for Search Target (ST) of the Redfish Service from clients with the AL pointing to the Redfish service root URI.  Redfish device shall also respond to M-SEARCH queries for Search Target type of "ssdp:all".
+The Redfish Service Search Target (ST) is defined as: urn:dmtf-org:service:redfish-rest:1
 
-Redfish Service root Search Target (ST):   URN:dmtf-org:service:redfish-rest:1
+The managed device shall respond to M-SEARCH queries searching for Search Target (ST) of the Redfish Service as well as "ssdp:all".  For UPnP compatibility, the managed device should respond to M-SEARCH queries searching for Search Target (ST) of "upnp:rootdevice".
 
-The URN in the reply shall use a service name of 'redfish-rest:' followed by the major version of the Redfish specification.  If the minor version of the Redfish Specification to which the service conforms is a non-zero value, and that version is backwards-compatible with previous minor revisions, then that minor version shall be appended, preceded with a colon.  For example, a service conforming to a Redfish specification version "1.4" would reply with a service of "redfish-rest:1:4".
+The URN provided in the ST header in the reply shall use a service name of "redfish-rest:" followed by the major version of the Redfish specification.  If the minor version of the Redfish Specification to which the service conforms is a non-zero value, and that version is backwards-compatible with previous minor revisions, then that minor version shall be appended, preceded with a colon.  For example, a service conforming to a Redfish specification version "1.4" would reply with a service of "redfish-rest:1:4".
+
+The managed device shall provide clients with the AL header pointing to the Redfish service root URL.
+
+For UPnP compatibility, the managed device should provide clients with the LOCATION header pointing to the UPnP XML descriptor.
 
 An example response to an M-SEARCH multicast or unicast query shall follow the format shown below.  Fields in brackets are placeholders for device-specific values.
 
 ```http
 HTTP/1.1 200 OK
-CACHE-CONTROL:<seconds, at least 1800>
+CACHE-CONTROL:max-age=<seconds, at least 1800>
 ST:urn:dmtf-org:service:redfish-rest:1
-USN:uuid:<UUID of Manager>::urn:dmtf-org:service:rest-rest:1
+USN:uuid:<UUID of Manager>::urn:dmtf-org:service:redfish-rest:1
 AL:<URL of Redfish service root>
 EXT:
 ```
@@ -2322,6 +2326,8 @@ The Authorization subsystem uses Roles and Privileges to control which users hav
 | Version | Date     | Description     |
 | ---     | ---      | ---             |
 | 1.0.2   | 2016-3-31| Errata release.  Various typographical errors. |
+|         |          | Corrected normative language for M-SEARCH queries and responses. |
+|         |          | Corrected Cache-Control and USN format in M-SEARCH responses. |
 |         |          | Corrected schema namespace rules to conform to OData namespace requirements (<namespace>.n.n.n becomes <namespace>.vn_n_n) and updated examples throughout the document to conform to this format.  File naming rules for json-schema and CSDL (XML) schemas were also corrected to match this format and to allow for future major (v2) versions to coexist. |
 |         |          | Added missing section detailing the location of the Schema Repository and listing the durable URLs for the repository. |
 |         |          | Added definition for the value of the Units annotation, using the definitions from the UCUM specification.  Updated examples throughout to use this standardized form. |
