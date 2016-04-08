@@ -351,27 +351,27 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_2_0">
       <EntityType Name="Chassis" BaseType="Chassis.v1_1_2.Chassis">
-      <Property Name="Location" Type="Resource.v1_1_0.Location"/>
-      <ComplexType Name="Links" BaseType="Chassis.v1_0_0.Links">
-        <NavigationProperty Name="ManagersInChassis" Type="Collection(Manager.Manager)">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="An array of references to the managers located in this Chassis."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall reference one or more resources of type Manager that are in this Chassis."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>
-        <NavigationProperty Name="Drives" Type="Collection(Drive.Drive)">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="An array of references to the disk drives located in this Chassis."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall reference one or more resources of type Drive that are in this Chassis."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>
-        <NavigationProperty Name="Storage" Type="Collection(Storage.Storage)">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="An array of references to the storage subsystems connected to or inside this Chassis."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall reference one or more resources of type Storage that are connected to or contained inside this Chassis."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>
-      </ComplexType>
+        <Property Name="Location" Type="Resource.v1_1_0.Location"/>
+        <ComplexType Name="Links" BaseType="Chassis.v1_0_0.Links">
+          <NavigationProperty Name="ManagersInChassis" Type="Collection(Manager.Manager)">
+            <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+            <Annotation Term="OData.Description" String="An array of references to the managers located in this Chassis."/>
+            <Annotation Term="OData.LongDescription" String="The value of this property shall reference one or more resources of type Manager that are in this Chassis."/>
+            <Annotation Term="OData.AutoExpandReferences"/>
+          </NavigationProperty>
+          <NavigationProperty Name="Drives" Type="Collection(Drive.Drive)">
+            <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+            <Annotation Term="OData.Description" String="An array of references to the disk drives located in this Chassis."/>
+            <Annotation Term="OData.LongDescription" String="The value of this property shall reference one or more resources of type Drive that are in this Chassis."/>
+            <Annotation Term="OData.AutoExpandReferences"/>
+          </NavigationProperty>
+          <NavigationProperty Name="Storage" Type="Collection(Storage.Storage)">
+            <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+            <Annotation Term="OData.Description" String="An array of references to the storage subsystems connected to or inside this Chassis."/>
+            <Annotation Term="OData.LongDescription" String="The value of this property shall reference one or more resources of type Storage that are connected to or contained inside this Chassis."/>
+            <Annotation Term="OData.AutoExpandReferences"/>
+          </NavigationProperty>
+        </ComplexType>
       </EntityType>
     </Schema>
 
