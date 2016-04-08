@@ -464,6 +464,9 @@
                     "$ref": "#/definitions/PhysicalSecurity",
                     "description": "The state of the physical security sensor.",
                     "longDescription": "This value of this property shall contain the sensor state of the physical security."
+                },
+                "Location": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.v1_1_0.json#/definitions/Location"
                 }
             },
             "required": [
