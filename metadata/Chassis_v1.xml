@@ -350,7 +350,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_2_0">
-      <EntityType Name="Chassis" BaseType="Chassis.v1_1_2.Chassis"/>
+      <EntityType Name="Chassis" BaseType="Chassis.v1_1_2.Chassis">
       <Property Name="Location" Type="Resource.v1_1_0.Location"/>
       <ComplexType Name="Links" BaseType="Chassis.v1_0_0.Links">
         <NavigationProperty Name="ManagersInChassis" Type="Collection(Manager.Manager)">
