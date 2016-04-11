@@ -15,7 +15,7 @@
                 "DeviceId": "0xABCD",
                 "VendorId": "0xABCD",
                 "SubsystemId": "0xABCD",
-                "SubsystemVendorId": "0xABCD",
+                "SubsystemVendorId": "0xABCD"
             },
             "DeviceLink": {
                 "@odata.id": "/redfish/v1/Systems/3/Storage/RAIDIntegrated#/StorageControllers/0"
