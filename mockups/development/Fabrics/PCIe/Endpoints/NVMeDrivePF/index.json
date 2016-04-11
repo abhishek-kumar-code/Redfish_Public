@@ -18,7 +18,6 @@
                 "SubsystemVendorId": "0xABCD"
             },
             "DeviceLink": {
-                "@odata.id": "/redfish/v1/Chassis/PCIeSwitch/Drives/Disk.Bay.1"
             },
             "Oem": {}
         }
