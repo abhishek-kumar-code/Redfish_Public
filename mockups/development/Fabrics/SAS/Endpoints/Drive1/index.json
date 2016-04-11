@@ -22,7 +22,7 @@
             {"@odata.id": "/redfish/v1/Fabrics/SAS/Endpoints/Enclosure2"}
         ],
         "Oem": {}
-    }
+    },
 	"Oem": {}
 }
 

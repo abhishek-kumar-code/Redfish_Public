@@ -39,7 +39,7 @@
             {"@odata.id": "/redfish/v1/Fabrics/SAS/Endpoints/Drive2"}
         ],
         "Oem": {}
-    }
+    },
 	"Oem": {}
 }
 
