@@ -1962,7 +1962,7 @@ Providers may split the schema resources into separate files such as Schema + St
 
 * Resources may communicate omissions from the published schema via the Current Configuration object if applicable.
 
-##Service Details
+## Service Details
 
 ### Eventing
 
