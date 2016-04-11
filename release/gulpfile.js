@@ -13,7 +13,6 @@ var data = require('gulp-data')
 var fm = require('front-matter')
 var spawn = require('child_process').spawn
 var fs = require('fs')
-var _ = require('lodash')
 
 var documentDefaults = {
   DocLang: 'en-US',
@@ -47,7 +46,7 @@ gulp.task('default', ['css', 'js'], function() {
           data.stauts = 'wip';
         }
 
-        var merged = _.merge({}, documentDefaults, docStatuses[data.status], data)
+        var merged = Object.assign({}, documentDefaults, docStatuses[data.status], data)
 
         if (!data.released) {
           data.DocConfidentiality = 'DMTF Confidential'
@@ -70,7 +69,6 @@ gulp.task('default', ['css', 'js'], function() {
     .pipe(markdown())
     .pipe(wrap({src: 'template.html'}))
     .pipe(inline({base: 'dist'}))
-    // .pipe(require('gulp-prettify')({indent_size: 2}))
     .pipe(gulp.dest('dist'))
 })
 
@@ -86,8 +84,6 @@ gulp.task('css', function() {
 gulp.task('js', function() {
   gulp.src(['*.coffee', '!gulpfile.js'])
     .pipe(coffee({bare: true}).on('error', gutil.log))
-    // .pipe(add('zepto.js', fs.readFileSync('node_modules/zeptojs/zepto.js', 'utf-8'), true))
-    // .pipe(gulp.src(['./node_modules/zeptojs/zepto.js']))
     .pipe(concat('all.js'))
     .pipe(gulp.dest('dist'))
 })
