@@ -141,10 +141,10 @@ class JsonSchemaGenerator:
     # Description:                                                  #
     #  Returns True if property should be written inline            #
     #################################################################
-    def is_inline_type(self, type):
+    def is_inline_type(self, type, typetable):
 
         #todo: use "has_basetype" post-v1
-        if(type["BaseType"] != "Resource.Links" and type["Name"] != "Actions" and type["Name"] != "OemActions" ):
+        if( not(self.has_basetype(typetable, type, "Resource.Links")) and type["Name"] != "Actions" and type["Name"] != "OemActions" ):
             return True;
 
         return False
@@ -808,7 +808,7 @@ class JsonSchemaGenerator:
                         # Get all keys and extract typedata for the property
                         typetablekeys = typetable.keys()
                         if (proptypename in typetablekeys):
-                            if(self.is_inline_type(typetable[proptypename]) ):
+                            if(self.is_inline_type(typetable[proptypename], typetable) ):
                                 refvalue = self.get_ref_value_for_type(typetable, proptypename, namespace)
                                 output += UT.Utilities.indent(depth+2)+ "\"$ref\": \"" + refvalue + "\""
                             # write Links, Actions, OemActions inline
@@ -1389,7 +1389,7 @@ class JsonSchemaGenerator:
         
             if(not ((typename + ":" + currentNamespace) in parsedtypes)) :
                 # This type has not been parsed yet. Process it now.
-                if ( (typetype!= "Action" and ( self.include_type(typename,currentNamespace, namespace, typetable) and self.is_inline_type(typedata) and not (typetype=="ComplexType" and self.isabstract(typedata) ) ) )
+                if ( (typetype!= "Action" and ( self.include_type(typename,currentNamespace, namespace, typetable) and self.is_inline_type(typedata, typetable) and not (typetype=="ComplexType" and self.isabstract(typedata) ) ) )
                     or (typetype == "Action" and self.include_type(typename, typedata["BoundNamespace"], namespace, typetable)) ):
                     # Add comma if this is not the first definition, otherwise write start of definitions block
                     if (type_count > 0):
