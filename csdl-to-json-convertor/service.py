@@ -81,7 +81,7 @@ class JsonSchemaGenerator:
 
 #todo: fix logic to be more generic post-v1
         # If the current type is defined in this namespace
-        if self.isabstract(current_typedata):  #todo: this logic is wrong!  trying to write out item as idRef, but not all abstract types should be written out as idRefs...
+        if (current_typename == "Resource.Item") :
             refvalue = odataSchema + "#/definitions/idRef"
         elif ( typetype != "Action" and self.include_type(simplename, current_typedata["Namespace"], root_namespace, typetable ) ) or (typetype == "Action" and self.include_type(simplename, current_typedata["BoundNamespace"], root_namespace, typetable) ):
             refvalue = "#/definitions/" + simplename
@@ -1224,26 +1224,33 @@ class JsonSchemaGenerator:
     def generate_json_for_reference_type(self, typetable, typename, schemaname, depth, prefixuri, includeIdRef):
 
         output = ""
-        output += UT.Utilities.indent(depth+1) + "\"anyOf\": [\n"
-        if(includeIdRef):
-            output += UT.Utilities.indent(depth+2) + "{\n"
-            output += UT.Utilities.indent(depth+3) + "\"$ref\": \"" + odataSchema + "#/definitions/idRef\"\n"
-            output += UT.Utilities.indent(depth+2) + "}"
+        derivedtypes = self.get_derived_types(typetable, typename, schemaname)
+        write_as_array = len(derivedtypes) > 1 or includeIdRef
+        if(write_as_array):
+            output += UT.Utilities.indent(depth+1) + "\"anyOf\": [\n"
+            depth+=1
+            if(includeIdRef):
+                output += UT.Utilities.indent(depth+1) + "{\n"
+                output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + odataSchema + "#/definitions/idRef\"\n"
+                output += UT.Utilities.indent(depth+1) + "}"
 
         #for each type that derives from this type
         isFirst= not(includeIdRef)
-        derivedtypes = self.get_derived_types(typetable, typename, schemaname)
         for derivedtype in derivedtypes:
             if(not(isFirst)):
                 output += ",\n"
             else:
                 isFirst=False
-            output += UT.Utilities.indent(depth+2) + "{\n"
-            output += UT.Utilities.indent(depth+3) + "\"$ref\": \"" + prefixuri + derivedtype["Namespace"] + ".json#/definitions/" + derivedtype["Name"] + "\"\n"
-            output += UT.Utilities.indent(depth+2) + "}"
+            if(write_as_array):
+                output += UT.Utilities.indent(depth+1) + "{\n"
+            output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + prefixuri + derivedtype["Namespace"] + ".json#/definitions/" + derivedtype["Name"] + "\""
+            if(write_as_array):
+                output += "\n"
+                output += UT.Utilities.indent(depth+1) + "}"
 
-        output += "\n"
-        output += UT.Utilities.indent(depth+1) + "]"
+        if(write_as_array):
+            output += "\n"
+            output += UT.Utilities.indent(depth) + "]"
   
         return output
 
@@ -1256,7 +1263,7 @@ class JsonSchemaGenerator:
 
         basetypename = basetypenamespace + "." + basetypename
         typenames = typetable.keys()
-        parsedtypes=[]
+        visitedtypes=[]
         derivedtypes = []
 
         for currentType in typenames:
@@ -1265,10 +1272,10 @@ class JsonSchemaGenerator:
             typename = typedata["Name"]
             typenamespace = typedata["Namespace"]
         
-            if(not ((typename + ":" + typenamespace) in parsedtypes )) :
+            if(not ((typename + ":" + typenamespace) in visitedtypes )) :
                 # This type has not been parsed yet
-                parsedtypes.append(typename + ":" + typenamespace)
-                if ( typetype == "EntityType" ):
+                visitedtypes.append(typename + ":" + typenamespace)
+                if ( typetype == "EntityType" or typetype == "ComplexType"):
                     # Check if the type being processed is derived from Resource or ResourceCollection
                     if ( self.has_basetype(typetable, typedata, basetypename) ): 
                         derivedtypes.append(typedata)
@@ -1389,7 +1396,8 @@ class JsonSchemaGenerator:
         
             if(not ((typename + ":" + currentNamespace) in parsedtypes)) :
                 # This type has not been parsed yet. Process it now.
-                if ( (typetype!= "Action" and ( self.include_type(typename,currentNamespace, namespace, typetable) and self.is_inline_type(typedata, typetable) and not (typetype=="ComplexType" and self.isabstract(typedata) ) ) )
+                #if this is an inline type to include, that's not an abstract complex type in the Resource namespace
+                if ( (typetype!= "Action" and ( self.include_type(typename,currentNamespace, namespace, typetable) and self.is_inline_type(typedata, typetable) and not (typetype=="ComplexType" and self.isabstract(typedata) and currentNamespace == "Resource" ) ) )
                     or (typetype == "Action" and self.include_type(typename, typedata["BoundNamespace"], namespace, typetable)) ):
                     # Add comma if this is not the first definition, otherwise write start of definitions block
                     if (type_count > 0):
@@ -1405,11 +1413,12 @@ class JsonSchemaGenerator:
                     # Generate JSON for the type and append it to the output
                     if (typetype == "Action"):
                         output += self.get_action_definition(typetable, typedata, depth + 1, namespace, prefixuri)
+
                     # todo: support other versions (derived) of Resource and ReferenceableMember
                     elif ( basetype == "Resource.v1_0_0.Resource" ):
                         output += self.generate_json_for_reference_type(typetable, typename, namespace, depth + 1, prefixuri, True)
-#                    elif ( basetype == "Resource.v1_0_0.ReferenceableMember" ):
-#                        output += self.generate_json_for_reference_type(typetable, typename, namespace, depth + 1, prefixuri, False)
+                    elif ( self.isabstract(typedata) ):
+                        output += self.generate_json_for_reference_type(typetable, typename, namespace, depth + 1, prefixuri, False)
                     else:
                         output += self.generate_json_for_type(typetable, currentType, depth+2, namespace, prefixuri, False, False)
 
@@ -1447,7 +1456,7 @@ class JsonSchemaGenerator:
             if(not ((typename + ":" + typenamespace) in parsedtypes)) :
                 # This type has not been parsed 
                 parsedtypes.append(typename + ":" + typenamespace)
-                if ( (typenamespace == namespace) and (typedata["IsFromRefUri"] == False) and (typetype == "EntityType") and ( self.has_basetype(typetable, typedata, "Resource.v1_0_0.Resource" ) or self.has_basetype(typetable, typedata, "Resource.v1_0_0.ResourceCollection") ) ): 
+                if ( (typenamespace == namespace) and (typedata["IsFromRefUri"] == False) and (typetype == "EntityType" and (self.has_basetype(typetable, typedata, "Resource.v1_0_0.Resource" ) or self.has_basetype(typetable, typedata, "Resource.v1_0_0.ResourceCollection") ) ) ): 
                     validationtypecount += 1
                     validationtypes.append(self.get_ref_value_for_type(typetable, currentType, namespace))
 
