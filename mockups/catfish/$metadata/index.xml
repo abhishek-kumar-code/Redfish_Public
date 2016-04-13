@@ -84,6 +84,10 @@
   <edmx:Reference uri="http://redfish.dmtf.org/schemas/v1/ManagerAccountCollection_v1.xml">
     <edmx:Include Namespace="ManagerAccountCollection"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ManagerNetworkProtocol_v1.xml">
+    <edmx:Include Namespace="ManagerNetworkProtocol"/>
+    <edmx:Include Namespace="ManagerNetworkProtocol.v1_0_2"/>
+  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Message_v1.xml">
     <edmx:Include Namespace="Message"/>
     <edmx:Include Namespace="Message.v1_0_2"/>
