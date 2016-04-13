@@ -9,9 +9,9 @@
     "RoleId": "ReadOnlyUser",
     "Locked": false,
     "Links": {
-       "Role": {
-	    "@odata.id": "/redfish/v1/AccountService/Roles/ReadOnlyUser"
-       }
+        "Role": {
+            "@odata.id": "/redfish/v1/AccountService/Roles/ReadOnlyUser"
+        }
     },
     "@odata.context": "/redfish/v1/$metadata#ManagerAccount.ManagerAccount",
     "@odata.id": "/redfish/v1/AccountService/Accounts/john",

@@ -5,11 +5,11 @@
     "Description": "Admin User Role",
     "IsPredefined": true,
     "AssignedPrivileges": [
-	"Login",
-	"ConfigureManager",
-	"ConfigureUsers",
-	"ConfigureSelf",
-	"ConfigureComponents"
+        "Login",
+        "ConfigureManager",
+        "ConfigureUsers",
+        "ConfigureSelf",
+        "ConfigureComponents"
     ],
     "@odata.context": "/redfish/v1/$metadata#Role.Role",
     "@odata.id": "/redfish/v1/AccountService/Roles/Admin",

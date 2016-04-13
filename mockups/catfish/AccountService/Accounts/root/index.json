@@ -9,9 +9,9 @@
     "RoleId": "Admin",
     "Locked": false,
     "Links": {
-       "Role": {
-	    "@odata.id": "/redfish/v1/AccountService/Roles/Admin"
-       }
+        "Role": {
+            "@odata.id": "/redfish/v1/AccountService/Roles/Admin"
+        }
     },
     "@odata.context": "/redfish/v1/$metadata#ManagerAccount.ManagerAccount",
     "@odata.id": "/redfish/v1/AccountService/Accounts/root",

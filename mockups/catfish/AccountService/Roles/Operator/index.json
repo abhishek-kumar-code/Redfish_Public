@@ -5,9 +5,9 @@
     "Description": "Operator User Role",
     "IsPredefined": true,
     "AssignedPrivileges": [
-	"Login",
+        "Login",
         "ConfigureSelf",
-	"ConfigureComponents"
+        "ConfigureComponents"
     ],
     "@odata.context": "/redfish/v1/$metadata#Role.Role",
     "@odata.id": "/redfish/v1/AccountService/Roles/Operator",
