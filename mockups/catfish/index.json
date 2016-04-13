@@ -1,8 +1,8 @@
 {
-    "@odata.type": "#ServiceRoot.v1_0_0.ServiceRoot",
+    "@odata.type": "#ServiceRoot.v1_0_2.ServiceRoot",
     "Id": "RootService",
     "Name": "Root Service",
-    "RedfishVersion": "1.0.0",
+    "RedfishVersion": "1.0.2",
     "UUID": "92384634-2938-2342-8820-489239905423",
     "Systems": {
         "@odata.id": "/redfish/v1/Systems"

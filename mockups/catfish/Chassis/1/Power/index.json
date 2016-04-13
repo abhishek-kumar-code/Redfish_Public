@@ -1,5 +1,5 @@
 {
-	"@odata.type": "#Power.v1_0_0.Power",
+	"@odata.type": "#Power.v1_1_0.Power",
 	"Id": "Power",
 	"Name": "Power",
 	"PowerControl": [{
