@@ -15,6 +15,16 @@
             "LineInputVoltageType": "AC240V",
             "LineInputVoltage": 220,
             "PowerCapacityWatts": 1450,
+            "InputRanges": [
+                {
+                    "InputType": "AC",
+                    "MinimumVoltage": 185,
+                    "MaximumVoltage": 250,
+                    "MinimumFrequencyHz": 47,
+                    "MaximumFrequencyHz": 63,
+                    "OutputWattage": 1450
+                }
+            ],
             "LastPowerOutputWatts": 650,
             "Model": "325457-A06",
             "Manufacturer": "ManufacturerName",
@@ -69,6 +79,16 @@
             "LineInputVoltageType": "AC240V",
             "LineInputVoltage": 222,
             "PowerCapacityWatts": 1450,
+            "InputRanges": [
+                {
+                    "InputType": "AC",
+                    "MinimumVoltage": 185,
+                    "MaximumVoltage": 250,
+                    "MinimumFrequencyHz": 47,
+                    "MaximumFrequencyHz": 63,
+                    "OutputWattage": 1450
+                }
+            ],
             "LastPowerOutputWatts": 635,
             "Model": "325457-A06",
             "Manufacturer": "ManufacturerName",
