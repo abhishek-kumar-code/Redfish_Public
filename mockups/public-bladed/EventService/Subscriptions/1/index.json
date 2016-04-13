@@ -1,7 +1,4 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#EventService/Subscriptions/Members/$entity",
-    "@odata.id": "/redfish/v1/EventService/Subscriptions/1",
     "@odata.type": "#EventDestination.v1_0_2.EventDestination",
     "Id": "1",
     "Name": "Event Subscription 1",
@@ -10,5 +7,8 @@
         "Alert"
     ],
     "Context": "CustomerServiceAttention",
-    "Protocol": "Redfish"
+    "Protocol": "Redfish",
+    "@odata.context": "/redfish/v1/$metadata#EventService/Subscriptions/Members/$entity",
+    "@odata.id": "/redfish/v1/EventService/Subscriptions/1",
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }
