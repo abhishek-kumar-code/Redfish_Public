@@ -2,7 +2,7 @@
     "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#Chassis/Members/MultiBladeEncl/Thermal/$entity",
     "@odata.id": "/redfish/v1/Chassis/MultiBladeEncl/Thermal",
-    "@odata.type": "#Thermal.v1_0_1.Thermal",
+    "@odata.type": "#Thermal.v1_1_0.Thermal",
     "Id": "Thermal",
     "Name": "Quad Blade Chassis Thermal",
     "Temperatures": [
@@ -56,7 +56,7 @@
         {
             "@odata.id": "/redfish/v1/Chassis/MultiBladeEncl/Thermal#/Fans/0",
             "MemberId": "0",
-            "FanName": "System Fan 0",
+            "Name": "System Fan 0",
             "PhysicalContext": "Front",
             "Status": {
                 "State": "Enabled",
@@ -105,7 +105,7 @@
         {
             "@odata.id": "/redfish/v1/Chassis/MultiBladeEncl/Thermal#/Fans/1",
             "MemberId": "1",
-            "FanName": "System Fan 1",
+            "Name": "System Fan 1",
             "PhysicalContext": "Front",
             "Status": {
                 "State": "Enabled",
@@ -154,7 +154,7 @@
         {
             "@odata.id": "/redfish/v1/Chassis/MultiBladeEncl/Thermal#/Fans/2",
             "MemberId": "2",
-            "FanName": "System Fan 2",
+            "Name": "System Fan 2",
             "PhysicalContext": "Front",
             "Status": {
                 "State": "Enabled",
@@ -203,7 +203,7 @@
         {
             "@odata.id": "/redfish/v1/Chassis/MultiBladeEncl/Thermal#/Fans/3",
             "MemberId": "3",
-            "FanName": "System Fan 3",
+            "Name": "System Fan 3",
             "PhysicalContext": "Front",
             "Status": {
                 "State": "Enabled",

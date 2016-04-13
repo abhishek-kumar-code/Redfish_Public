@@ -2,10 +2,10 @@
     "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#ServiceRoot",
     "@odata.id": "/redfish/v1/",
-    "@odata.type": "#ServiceRoot.v1_0_0.ServiceRoot",
+    "@odata.type": "#ServiceRoot.v1_0_2.ServiceRoot",
     "Id": "RootService",
     "Name": "Root Service",
-    "RedfishVersion": "1.0.0",
+    "RedfishVersion": "1.0.2",
     "UUID": "85775665-c110-4b85-8989-e6162170b3ec",
     "Systems": {
         "@odata.id": "/redfish/v1/Systems"
