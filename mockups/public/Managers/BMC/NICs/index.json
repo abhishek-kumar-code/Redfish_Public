@@ -1,7 +1,4 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.",
-    "@odata.context": "/redfish/v1/$metadata#Managers/Members/BMC/NICs/$entity",
-    "@odata.id": "/redfish/v1/Managers/BMC/NICs",
     "@odata.type": "#EthernetInterfaceCollection.EthernetInterfaceCollection",
     "Name": "Ethernet Network Interface Collection",
     "Description": "Collection of EthernetInterfaces for this Manager",
@@ -11,5 +8,8 @@
             "@odata.id": "/redfish/v1/Managers/BMC/NICs/Dedicated"
         }
     ],
-    "Oem": {}
+    "Oem": {},
+    "@odata.context": "/redfish/v1/$metadata#Managers/Members/BMC/NICs/$entity",
+    "@odata.id": "/redfish/v1/Managers/BMC/NICs",
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

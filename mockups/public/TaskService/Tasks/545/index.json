@@ -1,7 +1,4 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.",
-    "@odata.context": "/redfish/v1/$metadata/TaskService/Tasks/Members/$entity",
-    "@odata.id": "/redfish/v1/TaskService/Tasks/545",
     "@odata.type": "#Tasks.v1_0_0.Task",
     "Id": "545",
     "Name": "Task 545",
@@ -21,5 +18,8 @@
             ],
             "Severity": "Warning"
         }
-    ]
+    ],
+    "@odata.context": "/redfish/v1/$metadata/TaskService/Tasks/Members/$entity",
+    "@odata.id": "/redfish/v1/TaskService/Tasks/545",
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

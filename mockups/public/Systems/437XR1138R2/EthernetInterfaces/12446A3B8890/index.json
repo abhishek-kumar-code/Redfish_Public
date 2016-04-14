@@ -1,7 +1,4 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.",
-    "@odata.context": "/redfish/v1/$metadata#Systems/Members/437XR1138R2/EthernetInterfaces/Members/$entity",
-    "@odata.id": "/redfish/v1/Systems/437XR1138R2/EthernetInterfaces/12446A3B8890",
     "@odata.type": "#EthernetInterface.v1_0_0.EthernetInterface",
     "Id": "2",
     "Name": "Ethernet Interface",
@@ -39,5 +36,8 @@
     "VLAN": {
         "VLANEnable": true,
         "VLANId": 101
-    }
+    },
+    "@odata.context": "/redfish/v1/$metadata#Systems/Members/437XR1138R2/EthernetInterfaces/Members/$entity",
+    "@odata.id": "/redfish/v1/Systems/437XR1138R2/EthernetInterfaces/12446A3B8890",
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }
