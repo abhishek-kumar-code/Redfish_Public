@@ -1,9 +1,9 @@
 {
 	"@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
 	"@odata.context": "/redfish/v1/$metadata#Switch.Switch",
-	"@odata.id": "/redfish/v1/Fabrics/SAS/Switches/1",
+	"@odata.id": "/redfish/v1/Fabrics/SAS/Switches/2",
 	"@odata.type": "#Switch.v1_0_0.Switch",
-    "Id": "1",
+    "Id": "2",
 	"Name": "SAS Switch",
     "SwitchType": "SAS",
     "Manufacturer": "Manufacturer Name",
@@ -14,11 +14,11 @@
     "Identifiers": [
         {
             "DurableNameFormat": "NAA",
-            "DurableName": "5000039401010100"
+            "DurableName": "5000039401010200"
         }
     ],
 	"Ports": {
-		"@odata.id": "/redfish/v1/Fabrics/SAS/Switches/1/Ports"
+		"@odata.id": "/redfish/v1/Fabrics/SAS/Switches/2/Ports"
 	},
     "Redundancy": [
         {
@@ -48,7 +48,7 @@
 	},
 	"Actions": {
 		"#Switch.Reset": {
-			"target": "/redfish/v1/Fabrics/SAS/Switches/1/Actions/Switch.Reset",
+			"target": "/redfish/v1/Fabrics/SAS/Switches/2/Actions/Switch.Reset",
 			"ResetType@Redfish.AllowableValues": [
 				"ForceRestart",
 				"GracefulRestart"

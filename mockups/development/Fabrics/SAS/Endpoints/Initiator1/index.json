@@ -12,7 +12,7 @@
             "DeviceType": "Initiator",
             "DeviceRole": "Initiator",
             "DeviceLink": {
-                "@odata.id": "/redfish/v1/Systems/3/Storage/HA-RAID#/Controllers/0"
+                "@odata.id": "/redfish/v1/Systems/3/Storage/HA-RAID#/StorageControllers/0"
             },
             "Oem": {}
         }
