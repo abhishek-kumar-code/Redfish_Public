@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#SimpleStorage.v1_0_0.SimpleStorage",
+    "@odata.type": "#SimpleStorage.v1_0_2.SimpleStorage",
     "Id": "1",
     "Name": "Simple Storage Controller",
     "Description": "System SATA",

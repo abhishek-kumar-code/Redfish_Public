@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#Tasks.v1_0_0.Task",
+    "@odata.type": "#Tasks.v1_0_2.Task",
     "Id": "545",
     "Name": "Task 545",
     "TaskState": "Completed",

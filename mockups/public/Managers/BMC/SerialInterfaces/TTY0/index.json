@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#SerialInterface.v1_0_0.SerialInterface",
+    "@odata.type": "#SerialInterface.v1_0_2.SerialInterface",
     "Name": "Manager Serial Interface 1",
     "Description": "Management for Serial Interface",
     "Status": {
