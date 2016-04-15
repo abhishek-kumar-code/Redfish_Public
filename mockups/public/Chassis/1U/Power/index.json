@@ -105,7 +105,7 @@
             },
             "Oem": {},
             "PowerSupplyType": "AC",
-            "LineInputVoltageType": "ACLowLine",
+            "LineInputVoltageType": "ACWideRange",
             "LineInputVoltage": 120,
             "PowerCapacityWatts": 800,
             "LastPowerOutputWatts": 325,
@@ -115,6 +115,20 @@
             "SerialNumber": "1Z0000001",
             "PartNumber": "0000001A3A",
             "SparePartNumber": "0000001A3A",
+			"InputRanges": [
+				{
+                   "InputType": "AC",
+				   "MinimumVoltage": 100,
+				   "MaximumVoltage": 120,
+				   "OutputWattage": 800
+				},
+				{
+                   "InputType": "AC",
+				   "MinimumVoltage": 200,
+				   "MaximumVoltage": 240,
+				   "OutputWattage": 1300
+				}				
+            ],
             "RelatedItem": [
                 {
                     "@odata.id": "/redfish/v1/Chassis/1U"
