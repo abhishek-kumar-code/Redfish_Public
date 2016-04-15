@@ -36,7 +36,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power">
 
-      <EntityType Name="Power" BaseType="Resource.v1_0_0.Resource">
+      <EntityType Name="Power" BaseType="Resource.v1_0_0.Resource" Abstract="True">
         <Annotation Term="OData.Description" String="This is the schema definition for the Power Metrics.  It represents the properties for Power Consumption and Power Limiting."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a power metrics resource for a Redfish implementation."/>
       </EntityType>
