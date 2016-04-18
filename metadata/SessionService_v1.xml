@@ -45,7 +45,7 @@
       <EntityType Name="SessionService" BaseType="SessionService.SessionService">
         <Annotation Term="OData.Description" String="This is the schema definition for the Session Service.  It represents the properties for the service itself and has links to the actual list of sessions."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent the Session Service Properties for a Redfish implementation."/>
-        <Property Name="Status" Type="Resource.Status"/>
+        <Property Name="Status" Type="Resource.Status" Nullable="false"/>
         <Property Name="ServiceEnabled" Type="Edm.Boolean">
           <Annotation Term="OData.Description" String="This indicates whether this service is enabled."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this service is enabled."/>

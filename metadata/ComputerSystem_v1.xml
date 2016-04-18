@@ -190,7 +190,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type LogServiceCollection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <Property Name="Status" Type="Resource.Status"/>
+        <Property Name="Status" Type="Resource.Status" Nullable="false"/>
       </EntityType>
 
       <ComplexType Name="Links" BaseType="Resource.Links">

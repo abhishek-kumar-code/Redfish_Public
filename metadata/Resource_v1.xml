@@ -250,6 +250,7 @@
           <Annotation Term="OData.LongDescription" String="This property shall represent the format of the DurableName property."/>
         </Property>
       </ComplexType>
+      
       <ComplexType Name="Location">
         <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>

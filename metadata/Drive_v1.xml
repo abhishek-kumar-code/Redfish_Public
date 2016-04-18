@@ -70,7 +70,7 @@
           <Annotation Term="OData.Description" String="The revision of this Drive"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the revision as defined by the manufacturer for the associated drive."/>
         </Property>
-        <Property Name="Status" Type="Resource.Status"/>
+        <Property Name="Status" Type="Resource.Status" Nullable="false"/>
         <Property Name="CapacityBytes" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The size in bytes of this Drive"/>

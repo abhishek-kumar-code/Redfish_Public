@@ -93,7 +93,7 @@
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
-        <Property Name="Status" Type="Resource.Status"/>
+        <Property Name="Status" Type="Resource.Status" Nullable="false"/>
         <NavigationProperty Name="Redundancy" Type="Collection(Redundancy.Redundancy)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Redundancy information for the storage subsystem"/>
@@ -122,7 +122,7 @@
       <EntityType Name="StorageController" BaseType="Resource.v1_0_0.Resource" Abstract="True">
         <Annotation Term="OData.Description" String="This schema defines a storage controller and its respective properties.  A storage controller represents a storage device (physical or virtual) that produces Volumes."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a resource that represents a storage controller in the Redfish specification."/>
-        <Property Name="Status" Type="Resource.Status"/>
+        <Property Name="Status" Type="Resource.Status" Nullable="false"/>
         <Property Name="SpeedGbps" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The speed of the storage controller interface."/>
