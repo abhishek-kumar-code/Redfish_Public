@@ -82,7 +82,7 @@
 
       <ComplexType Name="Actions">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Property Name="Oem" Type="Bios.v1_0_0.OemActions" Nullable="false"/>
+        <Property Name="Oem" Type="Bios.v1_0_0.OemActions"/>
       </ComplexType>
       
       <ComplexType Name="OemActions">
