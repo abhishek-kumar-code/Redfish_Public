@@ -81,10 +81,10 @@
         <Annotation Term="OData.Description" String="The ModifyRedundancySet operation is used to add or remove members to a redundant group of manager."/>
         <Annotation Term="OData.LongDescription" String="This defines the name of the custom action for which the following properties are supported on this resource.  The ModifyRedundancySet operation shall be used to add or remove members to a redundant group of manager."/>
         <Parameter Name="Manager" Type="Manager.v1_0_0.Actions"/>
-        <Parameter Name="Add" Type="Collection(Manager.Manager)">
+        <Parameter Name="Add" Type="Collection(Manager.Manager)" Nullable="false">
           <Annotation Term="OData.Description" String="This array defines the Managers to add to the redundancy set.  In this case, a valid reference is supported."/>
         </Parameter>
-        <Parameter Name="Remove" Type="Collection(Manager.Manager)">
+        <Parameter Name="Remove" Type="Collection(Manager.Manager)" Nullable="false">
           <Annotation Term="OData.Description" String="This array defines the Managers to remove from the redundancy set.  In this case, a valid reference is supported."/>
         </Parameter>
       </Action>
@@ -185,7 +185,7 @@
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
         <Property Name="Status" Type="Resource.Status"/>
-        <NavigationProperty Name="Redundancy" Type="Collection(Redundancy.Redundancy)">
+        <NavigationProperty Name="Redundancy" Type="Collection(Redundancy.Redundancy)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Redundancy information for the managers of this system"/>
           <Annotation Term="OData.AutoExpand"/>
@@ -202,13 +202,13 @@
       </ComplexType>
       
       <ComplexType Name="Links" BaseType="Resource.Links">
-        <NavigationProperty Name="ManagerForServers" Type="Collection(ComputerSystem.ComputerSystem)">
+        <NavigationProperty Name="ManagerForServers" Type="Collection(ComputerSystem.ComputerSystem)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This property is an array of references to the systems that this manager has control over."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain an array of references to ComputerSystem resources of which this Manager instance has control."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="ManagerForChassis" Type="Collection(Chassis.Chassis)">
+        <NavigationProperty Name="ManagerForChassis" Type="Collection(Chassis.Chassis)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This property is an array of references to the chassis that this manager has control over."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain an array of references to Chassis resources of which this Manager instance has control."/>

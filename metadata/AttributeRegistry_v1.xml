@@ -54,7 +54,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a string that represents the publisher of this registry."/>
           <Annotation Term="Redfish.Required"/>
         </Property>
-        <Property Name="SupportedSystems" Type="Collection(AttributeRegistry.v1_0_0.SupportedSystems)" >
+        <Property Name="SupportedSystems" Type="Collection(AttributeRegistry.v1_0_0.SupportedSystems)" Nullable="false" >
           <Annotation Term="OData.Description" String="Array of systems supported by this attribute registry."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array containing a list of systems supported by this attribute registry."/>
         </Property>
@@ -89,12 +89,12 @@
           <Annotation Term="OData.Description" String="The array containing the attributes and their possible values."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array containing the attributes and their possible values and other metadata."/>
         </Property>
-        <Property Name="Menus" Type="Collection(AttributeRegistry.v1_0_0.Menus)">
+        <Property Name="Menus" Type="Collection(AttributeRegistry.v1_0_0.Menus)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The array containing the attributes menus and their hierarchy."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array containing the attributes menus and their hierarchy."/>
         </Property>
-        <Property Name="Dependencies" Type="Collection(AttributeRegistry.v1_0_0.Dependencies)">
+        <Property Name="Dependencies" Type="Collection(AttributeRegistry.v1_0_0.Dependencies)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The array containing a list of dependencies of attributes on this component."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array containing a list of dependencies of attributes on this component."/>
@@ -113,7 +113,7 @@
           <Annotation Term="OData.Description" String="The type of the attribute."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an enumeration describing type of the attribute."/>
         </Property>
-        <Property Name="Value" Type="Collection(AttributeRegistry.v1_0_0.AttributeValue)" >
+        <Property Name="Value" Type="Collection(AttributeRegistry.v1_0_0.AttributeValue)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The array containing possible values for attributes of type 'Enumeration'."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array containing the possible values of an attribute of type 'Enumeration'."/>
@@ -285,7 +285,7 @@
       </ComplexType>
 
       <ComplexType Name="Dependency">
-        <Property Name="MapFrom" Type="Collection(AttributeRegistry.v1_0_0.MapFrom)" >
+        <Property Name="MapFrom" Type="Collection(AttributeRegistry.v1_0_0.MapFrom)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Array of the map-from conditions for mapping dependency."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array containing the map-from conditions for a dependency of Type 'Map'."/>

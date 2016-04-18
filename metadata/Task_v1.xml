@@ -59,7 +59,7 @@
           <Annotation Term="OData.Description" String="This is the completion status of the task."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the completion status of the task, as defined in the Status section of the Redfish specification and shall not be set until the task has completed."/>
         </Property>
-        <Property Name="Messages" Type="Collection(Message.Message)">
+        <Property Name="Messages" Type="Collection(Message.Message)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is an array of messages associated with the task."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of messages associated with the task."/>

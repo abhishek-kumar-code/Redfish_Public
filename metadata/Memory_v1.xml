@@ -115,7 +115,7 @@
           <Annotation Term="OData.Description" String="The base module type of Memory" />
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the base module type of Memory" />
         </Property>
-        <Property Name="MemoryMedia" Type="Collection(Memory.v1_0_0.MemoryMedia)">
+        <Property Name="MemoryMedia" Type="Collection(Memory.v1_0_0.MemoryMedia)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
           <Annotation Term="OData.Description" String="Media  of this Memory" />
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the media types of this Memory" />
@@ -151,7 +151,7 @@
           <Annotation Term="OData.Description" String="The product part number of this device" />
           <Annotation Term="OData.LongDescription" String="This property shall indicate the part number as provided by the manufacturer of this Memory." />
         </Property>
-        <Property Name="AllowedSpeedsMHz" Type="Collection(Edm.Int64)">
+        <Property Name="AllowedSpeedsMHz" Type="Collection(Edm.Int64)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
           <Annotation Term="OData.Description" String="Speed bins supported by this Memory" />
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the speed supported by this Memory." />
@@ -166,7 +166,7 @@
           <Annotation Term="OData.Description" String="Version of API supported by the firmware" />
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the version of API supported by the firmware." />
         </Property>
-        <Property Name="FunctionClasses" Type="Collection(Edm.String)">
+        <Property Name="FunctionClasses" Type="Collection(Edm.String)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
           <Annotation Term="OData.Description" String="Function Classes by the Memory" />
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the function classes by the Memory." />
@@ -191,7 +191,7 @@
           <Annotation Term="OData.Description" String="Subsystem Device ID" />
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the subsystem Device ID of the Memory." />
         </Property>
-        <Property Name="MaxTDPMilliWatts" Type="Collection(Edm.Int64)">
+        <Property Name="MaxTDPMilliWatts" Type="Collection(Edm.Int64)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
           <Annotation Term="OData.Description" String="Maximum TDPs in milli Watts" />
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the maximum power budgets supported by the Memory in milli Watts." />
@@ -200,12 +200,12 @@
           <Annotation Term="OData.Description" String="This object contains security capabilities of the Memory."/>
           <Annotation Term="OData.LongDescription" String="This object shall contain properties which describe the security capabilities of the Memory."/>
         </Property>
-        <Property Name="SpareDeviceCount" Type="Collection(Edm.Int64)">
+        <Property Name="SpareDeviceCount" Type="Collection(Edm.Int64)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
           <Annotation Term="OData.Description" String="Number of unused spare devices available in the Memory" />
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the number of unused spare devices available in the Memory. If memory devices fails, the spare device could be used." />
         </Property>
-        <Property Name="RankCount" Type="Collection(Edm.Int64)">
+        <Property Name="RankCount" Type="Collection(Edm.Int64)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
           <Annotation Term="OData.Description" String="Number of ranks available in the Memory" />
           <Annotation Term="OData.LongDescription" String="The value of this property shall be number of ranks available in the Memory. The ranks could be used for spare or interleave." />
@@ -239,12 +239,12 @@
           <Annotation Term="OData.Description" String="Total size of persistent regions in MiB" />
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the total size of persistent regions in MiB." />
         </Property>
-        <Property Name="Regions" Type="Collection(Memory.v1_0_0.RegionSet)">
+        <Property Name="Regions" Type="Collection(Memory.v1_0_0.RegionSet)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
           <Annotation Term="OData.Description" String="Memory regions information within the Memory" />
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the memory region information within the Memory." />
         </Property>
-        <Property Name="OperatingMemoryModes" Type="Collection(Memory.v1_0_0.OperatingMemoryModes)">
+        <Property Name="OperatingMemoryModes" Type="Collection(Memory.v1_0_0.OperatingMemoryModes)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
           <Annotation Term="OData.Description" String="Memory modes supported by the Memory" />
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the memory modes supported by the Memory." />
@@ -407,7 +407,7 @@
           <Annotation Term="OData.Description" String="Maximum number of passphrases supported for this Memory"/>
           <Annotation Term="OData.LongDescription" String="Maximum number of passphrases supported for this Memory."/>
         </Property>
-        <Property Name="SecurityStates" Type="Collection(Memory.v1_0_0.SecurityStates)">
+        <Property Name="SecurityStates" Type="Collection(Memory.v1_0_0.SecurityStates)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Security states supported by the Memory"/>
           <Annotation Term="OData.LongDescription" String="Security states supported by the Memory."/>

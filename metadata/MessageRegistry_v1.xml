@@ -107,7 +107,7 @@
           <Annotation Term="Redfish.Required"/>
           <Annotation Term="Validation.Minimum" Int="0"/>
         </Property>
-        <Property Name="ParamTypes" Nullable="true" Type="Collection(MessageRegistry.v1_0_0.ParamType)">
+        <Property Name="ParamTypes" Nullable="true" Type="Collection(MessageRegistry.v1_0_0.ParamType)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The MessageArg types, in order, for the message."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an ordered array of parameter types which match the types of the MessageArgs, in order."/>

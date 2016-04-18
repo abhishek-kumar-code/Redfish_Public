@@ -66,7 +66,7 @@
           <Annotation Term="OData.Description" String="This is the message ID of event to be added."/>
           <Annotation Term="OData.LongDescription" String="This property has the same semantics as the MessageId property in the Event schema for Redfish."/>
         </Parameter>
-        <Parameter Name="MessageArgs" Type="Collection(Edm.String)">
+        <Parameter Name="MessageArgs" Type="Collection(Edm.String)" Nullable="false">
           <Annotation Term="OData.Description" String="This is the array of message arguments of the event to be added."/>
           <Annotation Term="OData.LongDescription" String="This property has the same semantics as the MessageArgs property in the Event schema for Redfish."/>
         </Parameter>

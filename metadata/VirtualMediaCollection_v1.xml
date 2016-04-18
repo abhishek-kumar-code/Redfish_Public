@@ -26,7 +26,7 @@
 
       <EntityType Name="VirtualMediaCollection" BaseType="Resource.v1_0_0.ResourceCollection">
         <Annotation Term="OData.Description" String="A Collection of VirtualMedia resource instances."/>
-        <NavigationProperty Name="Members" Type="Collection(VirtualMedia.VirtualMedia)">
+        <NavigationProperty Name="Members" Type="Collection(VirtualMedia.VirtualMedia)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the members of this collection."/>
           <Annotation Term="OData.AutoExpandReferences"/>

@@ -116,12 +116,12 @@
           <Annotation Term="OData.Description" String="The user assigned asset tag for this drive."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an identifying string used to track the drive for inventory purposes."/>
         </Property>
-        <Property Name="Identifiers" Type="Collection(Resource.v1_1_0.Identifier)">
+        <Property Name="Identifiers" Type="Collection(Resource.v1_1_0.Identifier)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The Durable names for the drive"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain a list of all known durable names for the associated drive."/>
         </Property>
-        <Property Name="Location" Type="Collection(Resource.v1_1_0.Location)">
+        <Property Name="Location" Type="Collection(Resource.v1_1_0.Location)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The Location of the drive"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain location information of the associated drive."/>
@@ -183,7 +183,7 @@
       </EntityType>
 
       <ComplexType Name="Links" BaseType="Resource.Links">
-        <NavigationProperty Name="Volumes" Type="Collection(Volume.Volume)">
+        <NavigationProperty Name="Volumes" Type="Collection(Volume.Volume)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the volumes contained in this drive. This will reference Volumes that are either wholly or only partly contained by this drive."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resources that this drive is associated with and shall reference a resource of type Volume. This shall include all Volume resources of which this Drive is a member and all Volumes for which this Drive is acting as a spare if the HotspareType is Dedicated."/>
