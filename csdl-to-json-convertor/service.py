@@ -818,7 +818,7 @@ class JsonSchemaGenerator:
                             output += UT.Utilities.indent(depth+2) + "}"
                         else:
                             refvalue = self.get_ref_value_for_type(typetable, proptypename, namespace)
-                            output += self.write_reference(refvalue, depth+2, propertyisnullable)
+                            output += self.write_reference(refvalue, depth+2, propertyisnullable and not isnullable)
 
 					# Handle regular property
                     else:
@@ -838,7 +838,7 @@ class JsonSchemaGenerator:
                         if (proptypename in typetablekeys):
                             if(self.is_inline_type(typetable[proptypename], typetable) ):
                                 refvalue = self.get_ref_value_for_type(typetable, proptypename, namespace)
-                                output += self.write_reference(refvalue, depth+2, propertyisnullable)
+                                output += self.write_reference(refvalue, depth+2, propertyisnullable and not isnullable)
                             # write Links, Actions, OemActions inline
                             else:
                                 output += self.generate_json_for_type(typetable, proptypename, depth + 2, typedata["Namespace"], prefixuri, propertyisnullable, False, ignoreannotations)
