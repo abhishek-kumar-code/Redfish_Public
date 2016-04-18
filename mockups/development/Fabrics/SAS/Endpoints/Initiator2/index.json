@@ -17,5 +17,11 @@
             "Oem": {}
         }
     ],
+    "Links": {
+        "Ports": [
+            {"@odata.id": "/redfish/v1/Fabrics/SAS/Switches/1/Ports/2"},
+            {"@odata.id": "/redfish/v1/Fabrics/SAS/Switches/2/Ports/2"}
+        ]
+    },
 	"Oem": {}
 }

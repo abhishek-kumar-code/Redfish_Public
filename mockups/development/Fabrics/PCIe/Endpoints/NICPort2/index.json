@@ -22,6 +22,11 @@
             "Oem": {}
         }
     ],
+    "Links": {
+        "Ports": [
+            {"@odata.id": "/redfish/v1/Fabrics/PCIe/Switches/1/Ports/Down3"}
+        ]
+    },
 	"Oem": {}
 }
 
