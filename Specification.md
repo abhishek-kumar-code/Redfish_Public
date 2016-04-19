@@ -2137,14 +2137,11 @@ References to RFCs -
 Implementations shall support replacement of the default certificate if one is provided, with a certificate having at least a 4096 bit RSA key and sha512-rsa signature.
 
 ### Authentication
-
 * Authentication Methods
 
-	Service shall support both "Basic Authentication" and "Redfish Session Login Authentication" (as described below under Session Management).  Services shall not require a client to create a session when Basic Auth is used.
+	Service shall support either "Basic Authentication" or "Redfish Session Login Authentication" (as described below under Session Management). If both are supported, services shall not require a client to create a session when Basic Authentication is used. Services shall not require authentication in order to create a Redfish Login Session.
 
 	Services may implement other authentication mechanisms.
-
-
 
 #### HTTP Header Security
 * All write requests to Redfish objects shall be authenticated, i.e. POST, PUT/PATCH, and DELETE, except for
@@ -2165,15 +2162,15 @@ Implementations shall support replacement of the default certificate if one is p
 #### Extended Error Handling
   * Extended error messages shall NOT provide privileged info when authentication failures occur
 
-#### HTTP Header Authentication
+#### HTTP Authorization Header
 * HTTP Headers for authentication shall be processed before other headers that may affect the response, i.e.: etag, If-Modified, etc.
 * HTTP Cookies shall NOT be used to authenticate any activity i.e.: GET, POST, PUT/PATCH, and DELETE.
 
-##### BASIC authentication
+##### BASIC Authentication
 HTTP BASIC authentication as defined by [RFC2617](#RFC2617) shall be supported, and shall only use compliant TLS connections to transport the data between any third party authentication service and clients.
 
 ##### Request / Message Level Authentication
-Every request that establishes a secure channel shall be accompanied by an authentication header.
+Every request that establishes a secure channel shall be accompanied by an authorization header.
 
 #### Session Management
 
