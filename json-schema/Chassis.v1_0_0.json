@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_0_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
     "title": "#Chassis.v1_0_0.Chassis",
     "$ref": "#/definitions/Chassis",
     "definitions": {
@@ -188,7 +188,7 @@
                                 "$ref": "http://redfish.dmtf.org/schemas/v1/Manager.json#/definitions/Manager"
                             },
                             "readonly": true,
-                            "description": "An array of references to the managers contained in this chassis.",
+                            "description": "An array of references to the Managers responsible for managing this chassis.",
                             "longDescription": "The value of this property shall be a reference to the resource that manages this chassis and shall reference a resource of type Manager."
                         },
                         "ContainedBy": {
@@ -247,7 +247,8 @@
                         }
                     },
                     "readonly": true,
-                    "description": "The links object contains the links to other resources that are related to this resource."
+                    "description": "Contains references to other resources that are related to this resource.",
+                    "longDescription": "The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."
                 },
                 "Actions": {
                     "type": "object",
@@ -292,7 +293,8 @@
                         }
                     },
                     "readonly": true,
-                    "description": "The Actions object contains the available custom actions on this resource."
+                    "description": "The available actions for this resource.",
+                    "longDescription": "The Actions property shall contain the available actions for this resource."
                 },
                 "Status": {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
@@ -317,9 +319,11 @@
                 }
             },
             "required": [
+                "Id",
+                "Name",
                 "ChassisType"
             ],
-            "description": "This is the schema definition for the Chassis resource.  It represents the properties for physical components for any system.  This one object is intended to represent racks, rackmount servers, blades, standalone, modular systems, enclosures, and all other containers.  The non-cpu/device centric parts of the schema are all accessed either directly or indirectly through this resource.",
+            "description": "A Chassis represents the physical components for any system.  This resource represents the sheet-metal confined spaces and logical zones like racks, enclosures, chassis and all other containers. Subsystems (like sensors), which operate outside of a system's data plane (meaning the resources are not accessible to software running on the system) are linked either directly or indirectly through this resource.",
             "longDescription": "This resource shall be used to represent a chassis or other physical enclosure for a Redfish implementation."
         },
         "ChassisType": {
@@ -374,12 +378,12 @@
                 "Off"
             ],
             "enumDescriptions": {
-                "Unknown": "The state of the Indicator LED cannot be determined.",
+                "Unknown": "The state of the Indicator LED cannot be determined. Deprecated: Return null if state is unknown.",
                 "Lit": "The Indicator LED is lit.",
                 "Blinking": "The Indicator LED is blinking.",
                 "Off": "The Indicator LED is off."
             }
         }
     },
-    "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
+    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }

@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.--> 
+<!---->
+<!--################################################################################       -->
+<!--# Redfish Schema:  AttributeRegistry  v1.0.0-->
+<!--#                                                                                      -->
+<!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
+<!--# available at http://www.dmtf.org/standards/redfish                                   -->
+<!--# Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF).                  -->
+<!--# For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright -->
+<!--################################################################################       -->
+<!---->
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
 
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
@@ -17,8 +26,8 @@
   <edmx:DataServices>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AttributeRegistry">
 
-      <EntityType Name="AttributeRegistry" BaseType="Resource.v1_0_0.Resource">
-        <Annotation Term="OData.Description" String="This is the schema definition for Attribute Registries. It represents the properties for the registries themselves."/>
+      <EntityType Name="AttributeRegistry" BaseType="Resource.v1_0_0.Resource" Abstract="True">
+        <Annotation Term="OData.Description" String="An Attribute Registry is a set of key-value pairs which are specific to a particular implementation or product, such that creating standardized property names would be impractical.  This schema describes the structure of a Registry, and also includes mechanisms for building user interfaces (menus) allowing consistent navigation of the contents."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent an Attribute registry for a Redfish implementation."/>
       </EntityType>
  
@@ -45,7 +54,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a string that represents the publisher of this registry."/>
           <Annotation Term="Redfish.Required"/>
         </Property>
-        <Property Name="SupportedSystems" Type="Collection(AttributeRegistry.v1_0_0.SupportedSystems)" >
+        <Property Name="SupportedSystems" Type="Collection(AttributeRegistry.v1_0_0.SupportedSystems)" Nullable="false" >
           <Annotation Term="OData.Description" String="Array of systems supported by this attribute registry."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array containing a list of systems supported by this attribute registry."/>
         </Property>
@@ -80,12 +89,12 @@
           <Annotation Term="OData.Description" String="The array containing the attributes and their possible values."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array containing the attributes and their possible values and other metadata."/>
         </Property>
-        <Property Name="Menus" Type="Collection(AttributeRegistry.v1_0_0.Menus)">
+        <Property Name="Menus" Type="Collection(AttributeRegistry.v1_0_0.Menus)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The array containing the attributes menus and their hierarchy."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array containing the attributes menus and their hierarchy."/>
         </Property>
-        <Property Name="Dependencies" Type="Collection(AttributeRegistry.v1_0_0.Dependencies)">
+        <Property Name="Dependencies" Type="Collection(AttributeRegistry.v1_0_0.Dependencies)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The array containing a list of dependencies of attributes on this component."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array containing a list of dependencies of attributes on this component."/>
@@ -104,7 +113,7 @@
           <Annotation Term="OData.Description" String="The type of the attribute."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an enumeration describing type of the attribute."/>
         </Property>
-        <Property Name="Value" Type="Collection(AttributeRegistry.v1_0_0.AttributeValue)" >
+        <Property Name="Value" Type="Collection(AttributeRegistry.v1_0_0.AttributeValue)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The array containing possible values for attributes of type 'Enumeration'."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array containing the possible values of an attribute of type 'Enumeration'."/>
@@ -276,7 +285,7 @@
       </ComplexType>
 
       <ComplexType Name="Dependency">
-        <Property Name="MapFrom" Type="Collection(AttributeRegistry.v1_0_0.MapFrom)" >
+        <Property Name="MapFrom" Type="Collection(AttributeRegistry.v1_0_0.MapFrom)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Array of the map-from conditions for mapping dependency."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array containing the map-from conditions for a dependency of Type 'Map'."/>
@@ -321,7 +330,7 @@
           <Annotation Term="OData.Description" String="The value that the is used property specified in MapFromProperty that is used to evaluate this dependency expression."/>
           <Annotation Term="OData.LongDescription" String="The value that the property specified in MapFromProperty (in the attribute specified in MapFromAttribute) that is used to evaluate this dependency expression."/>
         </Property>
-        <Property Name="MapTerms" Type="AttributeRegistry.v1_0_0.MapTerms" >
+        <Property Name="MapTerms" Type="AttributeRegistry.v1_0_0.MapTerms" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The logical term used to combine two or more MapFrom conditions in this dependency expression. "/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the logical term used to combine two or more MapFrom conditions in this dependency expression. For example, 'AND' for logical AND, or 'OR' for logical OR of the conditions."/>
@@ -473,6 +482,6 @@
       </EnumType>
       
    </Schema>
-
+  
 </edmx:DataServices>
 </edmx:Edmx>

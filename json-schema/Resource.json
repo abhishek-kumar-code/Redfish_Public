@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_0_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
     "title": "#Resource",
     "definitions": {
         "Description": {
@@ -81,7 +81,7 @@
                     ],
                     "description": "This property shall specify a valid odata or Redfish property."
                 },
-                "([a-zA-Z0-9]+(\\.[a-z]{2,})?|EID:[0-9]+)(:.+)?": {
+                "[A-Za-z0-9_.:]+": {
                     "$ref": "#/definitions/OemObject"
                 }
             },
@@ -238,7 +238,8 @@
                 "StandbySpare",
                 "InTest",
                 "Starting",
-                "Absent"
+                "Absent",
+                "UnavailableOffline"
             ],
             "enumDescriptions": {
                 "Enabled": "This function or resource has been enabled",
@@ -247,7 +248,8 @@
                 "StandbySpare": "This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it.",
                 "InTest": "This function or resource is undergoing testing",
                 "Starting": "This function or resource is starting",
-                "Absent": "This function or resource is not present or not detected"
+                "Absent": "This function or resource is not present or not detected",
+                "UnavailableOffline": "This function or resource is present but cannot be used"
             }
         },
         "Status": {
@@ -296,5 +298,5 @@
             "pattern": "([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})"
         }
     },
-    "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
+    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }

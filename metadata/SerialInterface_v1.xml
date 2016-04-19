@@ -1,4 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?><!-- Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.--> 
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Redfish Schema:  SerialInterface  v1.0.2-->
+<!--#                                                                                      -->
+<!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
+<!--# available at http://www.dmtf.org/standards/redfish                                   -->
+<!--# Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF).                  -->
+<!--# For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright -->
+<!--################################################################################       -->
+<!---->
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
 
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
@@ -14,13 +24,13 @@
   <edmx:DataServices>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SerialInterface">
 
-      <EntityType Name="SerialInterface" BaseType="Resource.v1_0_0.Resource">
-        <Annotation Term="OData.Description" String="This schema defines an asynchronous serial interface resource."/>
+      <EntityType Name="SerialInterface" BaseType="Resource.v1_0_0.Resource" Abstract="True">
+        <Annotation Term="OData.Description" String="This resource describes an asynchronous serial interface, such as an RS-232 interface, available to a system or device."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent serial resources as part of the Redfish specification."/>
       </EntityType>
-      
+
     </Schema>
-    
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SerialInterface.v1_0_0">
 
       <EntityType Name="SerialInterface" BaseType="SerialInterface.SerialInterface">
@@ -59,7 +69,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The type of connector used for this interface."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the type of phyiscal connector used for this serial connection."/>
-        </Property>  
+        </Property>
         <Property Name="PinOut" Type="SerialInterface.v1_0_0.PinOut" >
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The physical pin configuration needed for a serial connector."/>
@@ -197,7 +207,12 @@
           </Collection>
         </Annotation>
       </TypeDefinition>
-      
+
     </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SerialInterface.v1_0_2">
+      <EntityType Name="SerialInterface" BaseType="SerialInterface.v1_0_0.SerialInterface"/>
+    </Schema>
+
   </edmx:DataServices>
 </edmx:Edmx>

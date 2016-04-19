@@ -1,4 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?><!-- Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.--> 
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Redfish Schema:  Manager  v1.1.0-->
+<!--#                                                                                      -->
+<!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
+<!--# available at http://www.dmtf.org/standards/redfish                                   -->
+<!--# Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF).                  -->
+<!--# For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright -->
+<!--################################################################################       -->
+<!---->
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
 
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
@@ -43,8 +53,8 @@
   <edmx:DataServices>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager">
 
-      <EntityType Name="Manager" BaseType="Resource.v1_0_0.Resource">
-        <Annotation Term="OData.Description" String="This is the schema definition for a Manager.  Examples of managers are BMCs, Enclosure Managers, Management Controllers and other subsystems assigned managability functions."/>
+      <EntityType Name="Manager" BaseType="Resource.v1_0_0.Resource" Abstract="True">
+        <Annotation Term="OData.Description" String="In Redfish, a Manager is a systems management entity which may implement or provide access to a Redfish service.  Examples of managers are BMCs, Enclosure Managers, Management Controllers and other subsystems assigned managability functions.  There may be multiple Managers in an implementation, and they may or may not be directly accessible via a Redfish-defined interface."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a management subsystem for a Redfish implementation."/>
       </EntityType>
 
@@ -71,10 +81,10 @@
         <Annotation Term="OData.Description" String="The ModifyRedundancySet operation is used to add or remove members to a redundant group of manager."/>
         <Annotation Term="OData.LongDescription" String="This defines the name of the custom action for which the following properties are supported on this resource.  The ModifyRedundancySet operation shall be used to add or remove members to a redundant group of manager."/>
         <Parameter Name="Manager" Type="Manager.v1_0_0.Actions"/>
-        <Parameter Name="Add" Type="Collection(Manager.Manager)">
+        <Parameter Name="Add" Type="Collection(Manager.Manager)" Nullable="false">
           <Annotation Term="OData.Description" String="This array defines the Managers to add to the redundancy set.  In this case, a valid reference is supported."/>
         </Parameter>
-        <Parameter Name="Remove" Type="Collection(Manager.Manager)">
+        <Parameter Name="Remove" Type="Collection(Manager.Manager)" Nullable="false">
           <Annotation Term="OData.Description" String="This array defines the Managers to remove from the redundancy set.  In this case, a valid reference is supported."/>
         </Parameter>
       </Action>
@@ -93,7 +103,8 @@
         </Property>
         <Property Name="Links" Type="Manager.v1_0_0.Links" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="This object contains the links to other resources that are related to this resource."/>
+          <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
+          <Annotation Term="OData.LongDescription" String="The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
         </Property>
         <NavigationProperty Name="EthernetInterfaces" Type="EthernetInterfaceCollection.EthernetInterfaceCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -160,20 +171,21 @@
           <Annotation Term="OData.Description" String="Information about the Serial Console service provided by this manager."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain information about the Serial Console service of this manager."/>		  
         </Property>
-        <Property Name="CommandShell" Type="Manager.v1_0_0.CommandShell">
+        <Property Name="CommandShell" Type="Manager.v1_0_0.CommandShell" Nullable="false">
           <Annotation Term="OData.Description" String="Information about the Command Shell service provided by this manager."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain information about the Command Shell service of this manager."/>
         </Property>
-        <Property Name="GraphicalConsole" Type="Manager.v1_0_0.GraphicalConsole">
+        <Property Name="GraphicalConsole" Type="Manager.v1_0_0.GraphicalConsole" Nullable="false">
           <Annotation Term="OData.Description" String="The value of this property shall contain the information about the Graphical Console (KVM-IP) service of this manager."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the information about the Graphical Console (KVM-IP) service of this manager."/>
         </Property>
         <Property Name="Actions" Type="Manager.v1_0_0.Actions" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The Actions object contains the available custom actions on this resource."/>
+          <Annotation Term="OData.Description" String="The available actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
-        <Property Name="Status" Type="Resource.Status"/>
-        <NavigationProperty Name="Redundancy" Type="Collection(Redundancy.Redundancy)">
+        <Property Name="Status" Type="Resource.Status" Nullable="false"/>
+        <NavigationProperty Name="Redundancy" Type="Collection(Redundancy.Redundancy)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Redundancy information for the managers of this system"/>
           <Annotation Term="OData.AutoExpand"/>
@@ -182,7 +194,7 @@
 
       <ComplexType Name="Actions">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Property Name="Oem" Type="Manager.v1_0_0.OemActions"/>
+        <Property Name="Oem" Type="Manager.v1_0_0.OemActions" Nullable="false"/>
       </ComplexType>
       
       <ComplexType Name="OemActions">
@@ -190,13 +202,13 @@
       </ComplexType>
       
       <ComplexType Name="Links" BaseType="Resource.Links">
-        <NavigationProperty Name="ManagerForServers" Type="Collection(ComputerSystem.ComputerSystem)">
+        <NavigationProperty Name="ManagerForServers" Type="Collection(ComputerSystem.ComputerSystem)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This property is an array of references to the systems that this manager has control over."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain an array of references to ComputerSystem resources of which this Manager instance has control."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="ManagerForChassis" Type="Collection(Chassis.Chassis)">
+        <NavigationProperty Name="ManagerForChassis" Type="Collection(Chassis.Chassis)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This property is an array of references to the chassis that this manager has control over."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain an array of references to Chassis resources of which this Manager instance has control."/>
@@ -204,7 +216,6 @@
         </NavigationProperty>
       </ComplexType>
 
-      <!-- This type defines the type of manager that given resource represents. -->
       <EnumType Name="ManagerType">
         <Member Name="ManagementController">
           <Annotation Term="OData.Description" String="A controller used primarily to monitor or manage the operation of a device or system"/>
@@ -238,7 +249,6 @@
         </Property>
       </ComplexType>
 
-      <!-- This schema defines Serial Console connection types allowed by the implementation. -->
       <EnumType Name="SerialConnectTypesSupported">
         <Member Name="SSH">
           <Annotation Term="OData.Description" String="The controller supports a Serial Console connection using the SSH protocol"/>
@@ -254,7 +264,6 @@
         </Member>
       </EnumType>
 
-      <!-- Need other enumerations because enumeration descriptions differ by type -->
       <EnumType Name="CommandConnectTypesSupported">
         <Member Name="SSH">
           <Annotation Term="OData.Description" String="The controller supports a Command Shell connection using the SSH protocol"/>
@@ -279,7 +288,6 @@
         </Member>
       </EnumType>
 
-      <!-- This type contains information about the Serial Console service of a given manager. -->
       <ComplexType Name="SerialConsole" BaseType="Manager.v1_0_0.ManagerService">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="ConnectTypesSupported" Type="Collection(Manager.v1_0_0.SerialConnectTypesSupported)" Nullable="false">
@@ -289,7 +297,6 @@
         </Property>
       </ComplexType>
 
-      <!-- This type contains information about the Command Shell service of a given manager. -->
       <ComplexType Name="CommandShell" BaseType="Manager.v1_0_0.ManagerService">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="ConnectTypesSupported" Type="Collection(Manager.v1_0_0.CommandConnectTypesSupported)" Nullable="false">
@@ -299,7 +306,6 @@
         </Property>
       </ComplexType>
 
-      <!-- This type contains information about the Graphical Console (KVM-IP) service of a given manager. -->
       <ComplexType Name="GraphicalConsole" BaseType="Manager.v1_0_0.ManagerService">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="ConnectTypesSupported" Type="Collection(Manager.v1_0_0.GraphicalConnectTypesSupported)" Nullable="false">
@@ -329,7 +335,7 @@
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>		
       </ComplexType>
-
     </Schema>
+  
   </edmx:DataServices>
 </edmx:Edmx>

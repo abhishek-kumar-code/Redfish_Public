@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_0_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
     "title": "#Session.v1_0_0.Session",
     "$ref": "#/definitions/Session",
     "definitions": {
@@ -61,13 +61,17 @@
                     "longDescription": "The value of this property shall be the password for this session.  The value shall be null for GET requests."
                 }
             },
+            "required": [
+                "Id",
+                "Name"
+            ],
             "requiredOnCreate": [
                 "UserName",
                 "Password"
             ],
-            "description": "This is the schema definition for the Session resource.  It represents the properties for the session with a Redfish Service.",
+            "description": "The Session resource describes a single connection (session) between a client and a Redfish service instance.",
             "longDescription": "This resource shall be used to represent a session for a Redfish implementation."
         }
     },
-    "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
+    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }

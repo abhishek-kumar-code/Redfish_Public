@@ -3,7 +3,7 @@ DocTitle: Redfish Scalable Platforms Management API Specification
 DocNumber: '0266'
 DocClass: Normative
 DocVersion: '1.0.2'
-modified: '2016-02-10'
+modified: '2016-03-31'
 status: published
 released: true
 copyright: '2014-2016'
@@ -19,21 +19,29 @@ DMTF is a not-for-profit association of industry members dedicated to promoting 
 
 The DMTF acknowledges the following individuals for their contributions to this document:
 * Jeff Autor Hewlett Packard Enterprise
+* Patrick Boyd Dell Inc
 * David Brockhaus Emerson Network Power
 * Richard Brunner VMware Inc.
 * Lee Calcote Seagate Technology
 * P Chandrasekhar Dell Inc
 * Chris Davenport Hewlett Packard Enterprise
 * Gamma Dean Emerson Network Power
+* Daniel Dufresne EMC
+* Samer El-Haj-Mahmoud Hewlett Packard Enterprise
+* George Ericson EMC
 * Wassim Fayed Microsoft Corporation
 * Mike Garrett Hewlett Packard Enterprise
 * Steve Geffin Emerson Network Power
+* Joe Handzik Hewlett Packard Enterprise
 * Jon Hass Dell Inc
 * Jeff Hilland Hewlett Packard Enterprise
 * Chris Hoffman Emerson Network Power
+* Steven Krig Intel Corporation
 * John Leung Intel Corporation
 * Milena Natanov Microsoft Corporation
 * Michael Pizzo Microsoft Corporation
+* Chris Poblete Dell Inc
+* Michael Raineri EMC
 * Irina Salvan Microsoft Corporation
 * Hemal Shah Broadcom Limited
 * Jim Shelton Emerson Network Power
@@ -494,6 +502,8 @@ The root URL for Redfish version 1 services shall be "/redfish/v1/".
 
 The root URL for the service returns a ServiceRoot resource as defined by this specification.
 
+Services shall not require authentication in order to retrieve the service root and "/redfish" documents.
+
 ##### Metadata Document Request
 
 Redfish services shall expose a [metadata document](#service-metadata) describing the service at the "/redfish/v1/$metadata" resource. This metadata document describes the resources and collections available at the root, and references additional metadata documents describing the full set of resource types exposed by the service.
@@ -525,7 +535,7 @@ When the resource addressed is a collection, the client can use the following pa
 
 ###### Retrieving Collections
 
-Retrieving a collection is done by sending the HTTP GET method to the URI for the collection. The response will be a [resource collection representation](#resource-collections) that includes the collection's attributes as well as the list of the members of the collection. A subset of the members can be returned using [client paging query parameters](#query-parameters).
+Retrieving a collection is done by sending the HTTP GET method to the URI for the collection. The response includes attributes of the collection as well as the list of the members of the collection. A subset of the members can be returned using [client paging query parameters](#query-parameters).
 
 No requirements are placed on implementations to return a consistent set of members when a series of requests using paging query parameters are made over time to obtain the entire set of members. It is possible that this could result in missed or duplicate elements being retrieved if multiple GETs are used to retrieve a collection using paging.
 
@@ -579,7 +589,7 @@ Submitting a POST request to a resource representing a collection is equivalent 
 * Services shall support the POST method for creating resources. If the resource does not offer anything to be created, a status code [405](#status-405) shall be returned.
 * The POST operation shall not be idempotent.
 
-The body of the create request contains a representation of the object to be created. The service can ignore any service controlled attributes (e.g. id), forcing those attributes to be overridden by the service. The service shall set the Location header to the URI of the newly created resource. The response to a successful create request should be 201 (Created) and may include a response body containing the representation of the newly created resource.
+The body of the create request contains a representation of the object to be created. The service can ignore any service controlled attributes (e.g. id), forcing those attributes to be overridden by the service. The service shall set the Location header to the URI of the newly created resource. The response to a successful create request should be 201 (Created) and may include a response body containing a representation of the newly created resource conforming to the schema of the created resource.
 
 ##### Delete (DELETE)
 
@@ -664,7 +674,7 @@ OData-Version: 4.0
 Redfish defines four types of responses:
 * [Metadata Responses](#metadata-responses) - Describe the resources and types exposed by the service to generic clients.
 * [Resource Responses](#resource-responses) - JSON representation of an individual resource.
-* [Resource Collection Responses](#resource-collections) - JSON representation of a collections of resources.
+* [Collection Resource Responses](#collection-resource-response) - JSON representation of a resource that represents a collections of resources.
 * [Error Responses](#error-responses) - Top level JSON response providing additional information in the case of an HTTP error.
 
 #### Response Headers
@@ -875,7 +885,7 @@ Each entry shall be represented as a JSON object and shall include a "name" prop
 
 #### Resource Responses
 
-Resources are returned as JSON payloads, using the MIME type `application/json`.  Resource property names shall match the case specified in the [Schema](#resource-properties).
+Resources are returned as JSON payloads, using the MIME type `application/json`.  Resource property names match the case specified in the [Schema](#resource-properties).
 
 ##### Context Property
 
@@ -1162,36 +1172,35 @@ where
 
 The client can get the definition of the annotation from the [service metadata](#service-metadata), or may ignore the annotation entirely, but should not fail reading the resource due to unrecognized annotations, including new annotations defined within the Redfish namespace.
 
-#### Resource Collections
+#### Collection Resource Response
 
-Resource collections are returned as a JSON object. The JSON object shall include a [context](#context-property), [resource count](#resource-count-property), and array of [values](#resource-members-property), and may include a [next link](#partial-results) for partial results.
+Collection resources are returned as a JSON object. The JSON object shall include a [context](#context-property), [resource count](#resource-count-property), and array of [members](#resource-members-property), and may include a [next link](#partial-results) for partial results.
 
 #####	Context Property
-Responses that represent a collection of resources shall contain a context property named "@odata.context" describing the source of the payload. The value of the context property shall be the context URL that describes the resources according to [OData-Protocol](#OData-Protocol).
+Responses that represent a collection resource shall contain a context property named "@odata.context" describing the source of the payload. The value of the context property shall be the context URL that describes the collection resource according to [OData-Protocol](#OData-Protocol).
 
-The context URL for a resource collection is of one of the following two forms:
+The context URL for a collection resource is of one of the following two forms:
 
- *MetadataUrl*.#Collection(*ResourceType*)[(*SelectList*)]
- *MetadataUrl*.#*ResourcePath*[(*Selectlist*)]
+ *MetadataUrl*.#*CollectionResourceType*
+ *MetadataUrl*.#*CollectionResourcePath*
 
 Where:
 * *MetadataUrl* = the metadata url of the service (/redfish/v1/$metadata)
-* *ResourceType* = the fully qualified name of the unversioned type of resources within the collection.
-* *ResourcePath* = the path from the service root to the collection resource
-* *SelectList* = comma-separated [list of properties](#select-list) included in the response if the response includes a subset of properties defined for the represented resources.
+* *CollectionResourceType* = the fully qualified name of the unversioned type of resources within the collection.
+* *CollectionResourcePath* = the path from the service root to the collection resource
 
 ##### Resource Count Property
 
-The total number of resources available in the collection is represented through the count property. The count property shall be named "@odata.count" and its value shall be an integer representing the total number of records in the result. This count is not affected by the $top or $skip [query parameters](#query-parameters).
+The total number of resources available in the collection is represented through the count property. The count property shall be named "Members@odata.count" and its value shall be an integer representing the total number of records in the result. This count is not affected by the $top or $skip [query parameters](#query-parameters).
 
 ##### Resource Members Property
 
-The members of the collection of resources are returned as a JSON array. The name of the property representing the members of the collection shall be "value".
+The members of the collection of resources are returned as a JSON array. The name of the property representing the members of the collection shall be "Members".
 
 ##### Partial Results
 Responses representing a single resource shall not be broken into multiple results.
 
-Collections of resources, or resource ids, may be returned in multiple partial responses. For partial collections the service includes a next link property named "@odata.nextLink". The value of the next link property shall be an opaque URL that the client can use to retrieve the next set of resources. The next link shall only be returned if the number of resources requested is greater than the number of resources returned.
+Collections of resources, or resource ids, may be returned in multiple partial responses. For partial collections the service includes a next link property named "Members@odata.nextLink". The value of the next link property shall be an opaque URL that the client can use to retrieve the next set of resources. The next link shall only be returned if the number of resources requested is greater than the number of resources returned.
 
 The value of the [count property](#resource-count-property) represents the total number of resources available if the client enumerates all pages of the collection.
 
@@ -1740,7 +1749,7 @@ In the context of this section, the term "OEM" refers to any company, manufactur
 Correct use of the Oem property requires defining the metadata for an OEM-specified complex type that can be referenced within the Oem property. The following fragment is an example of an XML schema that defines a pair of OEM-specific properties under the complex type "AnvilType1". (Other schema elements that would typically be present, such as XML and OData schema description identifiers, are not shown in order to simplify the example).
 
 ~~~xml
-<Schema Name="Contoso.v.v.v">
+<Schema Name="Contoso.v1_2_0">
   ...
   <ComplexType Name="AnvilType1">
     <Property Name="slogan" Type="Edm.String"/>
@@ -1756,7 +1765,7 @@ The next fragment shows an example of how the previous schema and the "AnvilType
 ...
   "Oem": {
     "Contoso": {
-      "@odata.type": "http://Contoso.com/schemas/extensions.v.v.v#contoso.AnvilType1",
+      "@odata.type": "http://Contoso.com/schemas/extensions.v1_2_0#contoso.AnvilType1",
       "slogan": "Contoso anvils never fail",
       "disclaimer": "* Most of the time"
     }
@@ -1773,6 +1782,7 @@ The definition of any other properties that are contained within the OEM-specifi
 ##### Oem Property Naming
 
 The OEM-specified objects within the Oem property are named using a unique OEM identifier for the top of the namespace under which the property is defined. There are two specified forms for the identifier. The identifier shall be either an ICANN-recognized domain name (including the top-level domain suffix), with all dot '.' separators replaced with underscores '_', or an IANA-assigned Enterprise Number prefaced with "EID_".
+DEPRECATED: The identifier shall be either an ICANN-recognized domain name (including the top-level domain suffix), or an IANA-assigned Enterprise Number prefaced with "EID:".
 
 Organizations using '.com' domain names may omit the '.com' suffix (e.g. Contoso.com may use 'Contoso', but Contoso.org must use 'Contoso_org' as their OEM property name). The domain name portion of an OEM identifier shall be considered to be case independent. That is, the text "Contoso_biz", "contoso_BIZ", "conTOso_biZ", and so on, all identify the same OEM and top level namespace.
 
@@ -1790,7 +1800,7 @@ The following fragment presents some examples of naming and use of the Oem prope
 ...
   "Oem": {
     "Contoso": {
-      "@odata.type": "http://contoso.com/schemas/extensions.v_v_v#contoso.AnvilTypes1",
+      "@odata.type": "http://contoso.com/schemas/extensions.v1_2_1#contoso.AnvilTypes1",
       "slogan": "Contoso anvils never fail",
       "disclaimer": "* Most of the time"
     },
@@ -1880,6 +1890,10 @@ The value of the status property is a common status object type as defined by th
 
 The [Links property](#links-property) represents the links associated with the resource, as defined by that resources schema definition. All associated reference properties defined for a resource shall be nested under the links property.  All directly (subordinate) referenced properties defined for a resource shall be in the root of the resource.
 
+#### Members
+
+The Members property of a collection resource identifies the members of the a collection.
+
 #### RelatedItem
 The [RelatedItem property](#relateditem) represents links to a resource (or part of a resource) as defined by that resources schema definition. This is not intended to be a strong linking methodology like other references.  Instead it is used to show a relationship between elements or sub-elements in disparate parts of the service.  For example, since Fans may be in one area of the implementation and processors in another, RelatedItem can be used to inform the client that one is related to the other (in this case, the Fan is cooling the processor).
 
@@ -1948,7 +1962,7 @@ Providers may split the schema resources into separate files such as Schema + St
 
 * Resources may communicate omissions from the published schema via the Current Configuration object if applicable.
 
-##Service Details
+## Service Details
 
 ### Eventing
 
@@ -1976,7 +1990,7 @@ The client locates the eventing service through traversing the Redfish service i
 
 The specific syntax of the subscription body is found in the Redfish Schema.
 
-On success, the "subscribe" action shall return with HTTP status 201 (CREATED) and the Location header in the response shall contain a URI giving the location of the newly created "subscription" resource. The body of the response, if any, shall contain a representation of the subscription resource. Sending an HTTP GET to the subscription resource shall return the configuration of the subscription.
+On success, the "subscribe" action shall return with HTTP status 201 (CREATED) and the Location header in the response shall contain a URI giving the location of the newly created "subscription" resource. The body of the response, if any, shall contain a representation of the subscription resource conforming to the EventDestination schema. Sending an HTTP GET to the subscription resource shall return the configuration of the subscription.
 
 Clients begin receiving events once a subscription has been registered with the service and do not receive events retroactively. Historical events are not retained by the service.
 
@@ -2015,27 +2029,33 @@ Each task has a number of possible states.  The exact states and their semantics
 
 When a client issues a request for a long-running operation, the service returns a status of 202 (Accepted).
 
-Any response with a status code of 202 (Accepted) shall include a location header containing the URL of a monitor for the task and may include the Retry-After header to specify the amount of time the client should wait before querying status of the operation.
+Any response with a status code of 202 (Accepted) shall include a location header containing the URL of the Task Monitor and may include the Retry-After header to specify the amount of time the client should wait before querying status of the operation.
 
-The client should not include the mime type application/http in the Accept Header when performing a GET request to the status monitor.
+The Task Monitor is an opaque URL generated by the service intended to be used by the client that initiated the request. The client queries the status of the operation by performing a GET request on the Task Monitor.
+
+The client should not include the mime type application/http in the Accept Header when performing a GET request to the Task Monitor.
 
 The response body of a 202 (Accepted) should contain an instance of the Task resource describing the state of the task.
 
-As long as the operation is in process, the service shall continue to return a status code of 202 (Accepted) when querying the status monitor returned in the location header.
+As long as the operation is in process, the service shall continue to return a status code of 202 (Accepted) when querying the Task Monitor returned in the location header.
 
-Once the operation has completed, the status monitor shall return a status code of OK (200) and include the headers and response body of the initial operation, as if it had completed synchronously. If the initial operation resulted in an error, the body of the response shall contain an [Error Response](#error-responses).
+The client may cancel the operation by performing a DELETE on the Task Monitor URL. The service determines when to delete the associated Task resource object.
 
-The service may return a status code of 410 (Gone) if the operation has completed and the service has already deleted the task.
+The client may also cancel the operation by performing a DELETE on the Task resource. Deleting the Task resource object may invalidate the associated Task Monitor and subsequent GET on the Task Monitor URL returns either 410 (Gone) or 404 (Not Found).
+
+Once the operation has completed, the Task Monitor shall return a status code of OK (200) and include the headers and response body of the initial operation, as if it had completed synchronously. If the initial operation resulted in an error, the body of the response shall contain an [Error Response](#error-responses).
+
+The service may return a status code of 410 (Gone) or 404 (Not Found) if the operation has completed and the service has already deleted the task. This can occur if the client waits too long to read the Task Monitor. 
 
 The client can continue to get information about the status by directly querying the Task resource using the [resource identifier](#resource-identifier-property) returned in the body of the 202 (Accepted) response.
 
 * Services that support asynchronous operations shall implement the Task resource
 * The response to an asynchronous operation shall return a status code of 202 (Accepted)
-  and set the HTTP response header "Location" to the URI of a status monitor
+  and set the HTTP response header "Location" to the URI of a Task Monitor
   associated with the activity. The response may also include the Retry-After header specifying
   the amount of time the client should wait before polling for status. The response body
   should contain a representation of the Task resource in JSON.
-* GET requests to either the Task monitor or the Task Resource shall return the current status of the operation without blocking.
+* GET requests to either the Task Monitor or the Task Resource shall return the current status of the operation without blocking.
 * Operations using HTTP GET, PUT, PATCH should always be synchronous.
 * Clients shall be prepared to handle both synchronous and asynchronous responses for requests using HTTP DELETE and HTTP POST methods.
 
@@ -2055,7 +2075,7 @@ As the objective of discovery is for client software to locate Redfish-compliant
 
 #### UPnP Compatibility
 
-For compatibility with general purpose SSDP client software, primarily UPnP, TCP port 1900 should be used for all SSDP traffic.  In addition, the Time-to-Live (TTL) hop count setting for SSDP multicast messages should default to 2.  It is recommended that devices also respond to M-SEARCH queries for UPnP Root Devices (with NT:upnp:rootdevice), with appropriate descriptors and XML documents.
+For compatibility with general purpose SSDP client software, primarily UPnP, UDP port 1900 should be used for all SSDP traffic.  In addition, the Time-to-Live (TTL) hop count setting for SSDP multicast messages should default to 2.
 
 #### USN Format
 
@@ -2063,19 +2083,23 @@ The UUID supplied in the USN field of the service shall equal the UUID property 
 
 #### M-SEARCH Response
 
-The managed device must respond to M-SEARCH queries searching for Search Target (ST) of the Redfish Service from clients with the AL pointing to the Redfish service root URI.  Redfish device shall also respond to M-SEARCH queries for Search Target type of "ssdp:all".
+The Redfish Service Search Target (ST) is defined as: urn:dmtf-org:service:redfish-rest:1
 
-Redfish Service root Search Target (ST):   URN:dmtf-org:service:redfish-rest:1
+The managed device shall respond to M-SEARCH queries searching for Search Target (ST) of the Redfish Service as well as "ssdp:all".  For UPnP compatibility, the managed device should respond to M-SEARCH queries searching for Search Target (ST) of "upnp:rootdevice".
 
-The URN in the reply shall use a service name of 'redfish-rest:' followed by the major version of the Redfish specification.  If the minor version of the Redfish Specification to which the service conforms is a non-zero value, and that version is backwards-compatible with previous minor revisions, then that minor version shall be appended, preceded with a colon.  For example, a service conforming to a Redfish specification version "1.4" would reply with a service of "redfish-rest:1:4".
+The URN provided in the ST header in the reply shall use a service name of "redfish-rest:" followed by the major version of the Redfish specification.  If the minor version of the Redfish Specification to which the service conforms is a non-zero value, and that version is backwards-compatible with previous minor revisions, then that minor version shall be appended, preceded with a colon.  For example, a service conforming to a Redfish specification version "1.4" would reply with a service of "redfish-rest:1:4".
+
+The managed device shall provide clients with the AL header pointing to the Redfish service root URL.
+
+For UPnP compatibility, the managed device should provide clients with the LOCATION header pointing to the UPnP XML descriptor.
 
 An example response to an M-SEARCH multicast or unicast query shall follow the format shown below.  Fields in brackets are placeholders for device-specific values.
 
 ```http
 HTTP/1.1 200 OK
-CACHE-CONTROL:<seconds, at least 1800>
+CACHE-CONTROL:max-age=<seconds, at least 1800>
 ST:urn:dmtf-org:service:redfish-rest:1
-USN:uuid:<UUID of Manager>::urn:dmtf-org:service:rest-rest:1
+USN:uuid:<UUID of Manager>::urn:dmtf-org:service:redfish-rest:1
 AL:<URL of Redfish service root>
 EXT:
 ```
@@ -2085,30 +2109,6 @@ EXT:
 Redfish devices may implement the additional SSDP messages defined by UPnP to announce their availability to software.  This capability, if implemented, must allow the end user to disable the traffic separately from the M-SEARCH response functionality.  This allows users to utilize the discovery functionality with minimal amounts of network traffic generated.
 
 ## Security
-
-### Goals
-- Privilege Model to Monitor and Manage:
-	- System Settings
-		- BIOS Configuration
-		- System Power States
-		- Sensor Information (power/thermal/health)
-		- Network Settings
-		- Storage Settings
-		- Logs
-	- Redfish Service Configuration
-		- Account Management
-		- Network Settings
-		- Logs
-	- Firmware versions
-	- OEM vendor-specific features and functionality
-
-- Permission/ authorization  model shall be consistent between instances of Redfish compliant devices
-	- Define a minimum baseline for the permission/ authorization model
-- Infrastructure Authentication
-- CURL compatibility
-- Automated clients
-- Embedded Service Processors
-
 
 ### Protocols
 
@@ -2147,10 +2147,10 @@ Implementations shall support replacement of the default certificate if one is p
 
 
 #### HTTP Header Security
-* All write activities shall be authenticated, i.e. POST, PUT/PATCH, and DELETE, except for
+* All write requests to Redfish objects shall be authenticated, i.e. POST, PUT/PATCH, and DELETE, except for
   * The POST operation to the Sessions service/object needed for authentication
 	* Extended error messages shall NOT provide privileged info when authentication failures occur
-* REST objects shall not be available unauthenticated, except for
+* Redfish objects shall not be available unauthenticated, except for
   * The root object which is needed to identify the device and service locations
   * The $metadata object which is needed to retrieve resource types
   * The OData Service Document which is needed for compatibility with OData clients
@@ -2319,76 +2319,47 @@ The Authorization subsystem uses Roles and Privileges to control which users hav
   - Implementations shall enforce the same privilege model for ETag related activity as is enforced for the data being represented by the ETag.
   - For example, when activity requiring privileged access to read data item represented by ETag requires the same privileged access to read the ETag.
 
-
-### Data Model Validation
-
-#### Schema
-
-Server and Client implementations should check supplied data against Redfish Schema and perform data validation checks to prevent vulnerabilities caused by later processing errors.
-
-When there is a disagreement between a Server and Client on Redfish Schema validation, the server may enforce its version and reject the request.
-
-Clients shall NOT perform data interpolation unless the Redfish Schema permits that.
-
-Privileges should NOT be modified without a strong security related requirement. Redfish Schema validation shall include privilege checks when privilege requirements have been modified.
-
-NOTE: Privilege changes as part of Redfish Schema updates/changes shall be captured in the Redfish Schema change log.
-
-Idempotent actions shall be rejected when there is a security reason to do so.
-
-Resource definitions shall include required privileges to perform read/ RW actions on that resource.
-
-Resource tree stability - Permissions on resources should be stable as well.
-
-Custom Actions - Privilege model shall be applied consistently to both the body and the response. Where applicable the privilege model defined for the URI should be inherited for custom actions.
-
-### Logging
-
-#### Required data for security log entries
-
-Implementations shall log authentication requests including failures.
-Authentication login/logout log entries shall contain a user identifier that can be used to uniquely identify the client and a time stamp.
-
-#### Completeness of Logging
-
-* Every entity from the originator of the RESTful service call, through every intermediary, to the very last entity in the call chain, log an entry in their audit log for the call activity triggered/ taken/ ... This means same as any RESTful service call, the audit log entry will 'be complete' for the activity performed within said entity.
-  * shall - All write activities i.e. POST, PUT/ PATCH and DELETE
-    * NOTE: When a new log entry is created logging the occurrence of that event is not required.
-  * shall - Have the ability to log the privileged reads i.e. GETs
-    * This ability may be turned on by default.
-* Rejection of idempotent actions due to security reasons shall be logged
-
-#### Content of Audit Logs
-
-Details : Need to generate events for the following
-
-1. logon, log-off, modification of user accounts
-2. successful and rejected login attempts,
-3. successful and rejected connections to nodes and other resource access attempts
-4. details about the modification of user accounts
-5. all changes to the system configuration,
-6. information about the use of built-in utilities running in Redfish compliant-devices(e.g. low-level diagnostic tools),
-7. information about accessing the system interfaces of the Redfish compliant-devices
-8. network addresses and protocols (e.g. workstation IP address and protocol used for access)
-9. activation and de-activation of protection measures
-
-The file where the events are written, one or more messages per event should at least have the following information :
-
-* User ID
-* Date, time
-* Event type
-* Event description
-
-
 ## ANNEX A (informative)
 
 ### Change Log
 
 | Version | Date     | Description     |
 | ---     | ---      | ---             |
+| 1.0.2   | 2016-3-31| Errata release.  Various typographical errors. |
+|         |          | Corrected normative language for M-SEARCH queries and responses. |
+|         |          | Corrected Cache-Control and USN format in M-SEARCH responses. |
+|         |          | Corrected schema namespace rules to conform to OData namespace requirements (<namespace>.n.n.n becomes <namespace>.vn_n_n) and updated examples throughout the document to conform to this format.  File naming rules for json-schema and CSDL (XML) schemas were also corrected to match this format and to allow for future major (v2) versions to coexist. |
+|         |          | Added missing section detailing the location of the Schema Repository and listing the durable URLs for the repository. |
+|         |          | Added definition for the value of the Units annotation, using the definitions from the UCUM specification.  Updated examples throughout to use this standardized form. |
+|         |          | Modified the naming requirements for Oem Property Naming to avoid future use of colon ':' and period '.' in property names, which can produce invalid or problematic variable names when used in some programming languages or environments.  Both separators have been replaced with underscore '_', with colon and period usage now deprecated (but valid). |
+|         |          | Removed duplicative or out-of-scope sub-sections from the Security section, which made unintended requirements on Redfish service implementations. |
+|         |          | Added missing requirement that property names in Resource Responses must match the casing (capitialization) as specified in schema. |
+|         |          | Updated normative references to current HTTP RFCs and added section references throughout the document where applicable. | 
+|         |          | Clarified ETag header requirements. |
+|         |          | Clarified that no authentication is required for accessing the Service Root resource. |
+|         |          | Clarified description of Retrieving Collections. |
+|         |          | Clarified usage of 'charset=utf-8' in the HTTP Accept and Content-Type headers. |
+|         |          | Clarified usage of the 'Allow' HTTP Response Header and added missing table entry for usage of the 'Retry-After' header. |
+|         |          | Clarified normative usage of the Type Property and Context Property, explaining the ability to use two URL forms, and corrected the "@odata.context" URL examples throughout. |
+|         |          | Corrected inconsistent terminology throughout the Collection Resource Response section. |
+|         |          | Corrected name of normative Resource Members Property ('Members', not 'value'). |
+|         |          | Clarified that Error Responses may include information about multiple error conditions. |
+|         |          | Corrected name of Measures.Unit annotation term as used in examples. |
+|         |          | Corrected outdated reference to Core OData specification in Annotation Term examples. |
+|         |          | Added missing 'Members' property to the Common Redfish Resource Properties section. |
+|         |          | Clarified terminology and usage of the Task Monitor and related operations in the Asynchronous Operations section. |
+|         |          | Clarified that implementation of the SSDP protocol is optional. | 
+|         |          | Corrected typographical error in the SSDP USN field's string definition (now '::dmtf-org'). |
+|         |          | Added missing OPTIONS method to the allowed HTTP Methods list. |
+| 1.0.1   | 2015-9-17| Errata release.  Various grammatical corrections. |
+|         |          | Clarified normative use of LongDescription in schema files. |
+|         |          | Clarified usage of the 'rel-describedby' link header. |
+|         |          | Corrected text in example of 'Select List' in OData Context property. |
+|         |          | Clarified Accept-Encoding Request header handling. |
+|         |          | Deleted duplicative and conflicting statement on returning extended error resources. |
+|         |          | Clarified relative URI resolution rules. |
+|         |          | Clarified USN format.  |
 | 1.0.0   | 2015-8-4 | Initial release |
-| 1.0.1   | 2015-9-17| Errata release.  Clarified normative use of LongDescription in schema files.  Clarified usage of the 'rel-describedby' link header.  Corrected text in example of 'Select List' in OData Context property.  Clarified Accept-Encoding Request header handling.  Deleted duplicative and conflicting statement on returning extended error resources.  Clarified relative URI resolution rules. Various grammatical corrections. Clarified USN format.  |
-| 1.0.2   | 2016-2-25| Errata release.  Clarified normative usage of the Context Property, the ability to use two URL forms in the property, and the "@odata.context" URL examples throughout.  Corrected name of Measures.Unit annotation term as used in examples. Added recommendation for UCUM units of measure for Measures.Unit annotation terms.  Various typographical errors. Correctd outdated reference to Core OData specification in Annotation Term examples.  Clarified that implementation of the SSDP protocol is optional.  Added missing OPTIONS method to the allowed HTTP Methods list.  Corrected typographical error in the SSDP USN field's string definition (now '::dmtf-org').  Clarified usage of 'charset=utf-8' in the HTTP Accept and Content-Type headers.  Added section detailing the location of the Redfish Schema Repository. Clarified OData-Version header matching rules. |
 
 
  

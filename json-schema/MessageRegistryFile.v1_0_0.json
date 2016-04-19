@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_0_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
     "title": "#MessageRegistryFile.v1_0_0.MessageRegistryFile",
     "$ref": "#/definitions/MessageRegistryFile",
     "definitions": {
@@ -31,7 +31,7 @@
                     "format": "uri",
                     "readonly": true,
                     "description": "Link to locally available URI for schema.",
-                    "longDescription": "The value of this property shall be a URI co-located with the Redfish service that specifies the location of the schema file.  This property shall only be used for individual schema files.  The file name portion of the URI shall conform to the format [SchemaType].[MajorVersion].[MinorVersion].json and be in conformance with the Redfish specification."
+                    "longDescription": "The value of this property shall be a URI co-located with the Redfish service that specifies the location of the schema file.  This property shall only be used for individual schema files.  The file name portion of the URI shall conform to the syntax specified in the Redfish specification."
                 },
                 "ArchiveUri": {
                     "type": "string",
@@ -51,7 +51,7 @@
                     "type": "string",
                     "readonly": true,
                     "description": "If the schema is hosted on the service in an archive file, this is the name of the file within the archive.",
-                    "longDescription": "The value of this property shall be the file name of the individual schema file within the archive file specified by the ArchiveUri property.  The file name shall conform to the format [SchemaType].[MajorVersion].[MinorVersion].json and be in conformance with the Redfish specification."
+                    "longDescription": "The value of this property shall be the file name of the individual schema file within the archive file specified by the ArchiveUri property. The file name shall conform to the syntax specified in the Redfish specification."
                 }
             }
         },
@@ -120,6 +120,8 @@
                 }
             },
             "required": [
+                "Id",
+                "Name",
                 "Languages",
                 "Registry",
                 "Location"
@@ -128,5 +130,5 @@
             "longDescription": "This resource shall be used to represent the Schema File locator resource for a Redfish implementation."
         }
     },
-    "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
+    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }
