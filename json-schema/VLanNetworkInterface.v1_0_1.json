@@ -29,7 +29,7 @@
                     "longDescription": "The value of this property shall be used to indicate if this VLAN is enabled for this interface."
                 },
                 "VLANId": {
-                    oneOf: [
+                    "oneOf": [
                         {"$ref": "#/definitions/VLANId"},
                         {"type": "null"}
                     ],
@@ -96,7 +96,7 @@
                     "longDescription": "The value of this property shall be used to indicate if this VLAN is enabled for this interface."
                 },
                 "VLANId": {
-                    oneOf: [
+                    "oneOf": [
                         {"$ref": "#/definitions/VLANId"},
                         {"type": "null"}
                     ],

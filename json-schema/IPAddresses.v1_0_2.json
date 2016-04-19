@@ -47,7 +47,7 @@
                     "longDescription": "The value of this property shall be an IPv4 address assigned to this interface.  If DHCPv4 is enabled on the interface, this property becomes read-only."
                 },
                 "SubnetMask": {
-                    oneOf: [
+                    "oneOf": [
                         {"$ref": "#/definitions/SubnetMask"},
                         {"type": "null"}
                     ],
@@ -55,7 +55,7 @@
                     "longDescription": "The value of this property shall be the IPv4 subnet mask for this address.  If DHCPv4 is enabled on the interface, this property becomes read-only."
                 },
                 "AddressOrigin": {
-                    oneOf: [
+                    "oneOf": [
                         {"$ref": "#/definitions/IPv4AddressOrigin"},
                         {"type": "null"}
                     ],
@@ -117,7 +117,7 @@
                     "longDescription": "This property lists an IPv6 address that is currently assigned on this interface."
                 },
                 "PrefixLength": {
-                    oneOf: [
+                    "oneOf": [
                         {"$ref": "#/definitions/PrefixLength"},
                         {"type": "null"}
                     ],
@@ -126,7 +126,7 @@
                     "longDescription": "The value of this property shall be the IPv6 address prefix length for this interface."
                 },
                 "AddressOrigin": {
-                    oneOf: [
+                    "oneOf": [
                         {"$ref": "#/definitions/IPv6AddressOrigin"},
                         {"type": "null"}
                     ],
@@ -135,7 +135,7 @@
                     "longDescription": "The value of this property shall be the IPv6 address origin for this interface."
                 },
                 "AddressState": {
-                    oneOf: [
+                    "oneOf": [
                         {"$ref": "#/definitions/AddressState"},
                         {"type": "null"}
                     ],
@@ -189,7 +189,7 @@
                     "longDescription": "This property provides access to a static IPv6 address that is currently assigned on a network interface."
                 },
                 "PrefixLength": {
-                    oneOf: [
+                    "oneOf": [
                         {"$ref": "#/definitions/PrefixLength"},
                         {"type": "null"}
                     ],

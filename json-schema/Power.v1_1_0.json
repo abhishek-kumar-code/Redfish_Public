@@ -179,7 +179,7 @@
                     "longDescription": "The value of this property shall represent the power cap limit in watts for the resource.  If set to null, power capping shall be disabled."
                 },
                 "LimitException": {
-                    oneOf: [
+                    "oneOf": [
                         {"$ref": "#/definitions/PowerLimitException"},
                         {"type": "null"}
                     ],
@@ -459,7 +459,7 @@
             "additionalProperties": false,
             "properties": {
                 "InputType": {
-                    oneOf: [
+                    "oneOf": [
                         {"$ref": "#/definitions/InputType"},
                         {"type": "null"}
                     ],
@@ -679,7 +679,7 @@
                     "longDescription": "This property shall contain a descriptive name for the associated power supply."
                 },
                 "PowerSupplyType": {
-                    oneOf: [
+                    "oneOf": [
                         {"$ref": "#/definitions/PowerSupplyType"},
                         {"type": "null"}
                     ],
@@ -688,7 +688,7 @@
                     "longDescription": "This property shall contain the input power type (AC or DC) of the associated power supply."
                 },
                 "LineInputVoltageType": {
-                    oneOf: [
+                    "oneOf": [
                         {"$ref": "#/definitions/LineInputVoltageType"},
                         {"type": "null"}
                     ],

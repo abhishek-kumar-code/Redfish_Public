@@ -133,7 +133,7 @@
                     "longDescription": "The value of this property shall be an identifying string used to track the chassis for inventory purposes."
                 },
                 "IndicatorLED": {
-                    oneOf: [
+                    "oneOf": [
                         {"$ref": "#/definitions/IndicatorLED"},
                         {"type": "null"}
                     ],
@@ -195,7 +195,7 @@
                             "longDescription": "The value of this property shall be a reference to the resource that manages this chassis and shall reference a resource of type Manager."
                         },
                         "ContainedBy": {
-                            oneOf: [
+                            "oneOf": [
                                 {"$ref": "http://redfish.dmtf.org/schemas/v1/Chassis.json#/definitions/Chassis"},
                                 {"type": "null"}
                             ],
@@ -300,13 +300,13 @@
                     "longDescription": "The Actions property shall contain the available actions for this resource."
                 },
                 "Status": {
-                    oneOf: [
+                    "oneOf": [
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"},
                         {"type": "null"}
                     ]
                 },
                 "LogServices": {
-                    oneOf: [
+                    "oneOf": [
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/LogServiceCollection.json#/definitions/LogServiceCollection"},
                         {"type": "null"}
                     ],
@@ -315,7 +315,7 @@
                     "longDescription": "The value of this property shall be a link to a collection of type LogServiceCollection."
                 },
                 "Thermal": {
-                    oneOf: [
+                    "oneOf": [
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/Thermal.json#/definitions/Thermal"},
                         {"type": "null"}
                     ],
@@ -324,7 +324,7 @@
                     "longDescription": "The value of this property shall be a reference to the resource that represents the thermal characteristics of this chassis and shall be of type Thermal."
                 },
                 "Power": {
-                    oneOf: [
+                    "oneOf": [
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/Power.json#/definitions/Power"},
                         {"type": "null"}
                     ],

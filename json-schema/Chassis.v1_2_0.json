@@ -157,7 +157,7 @@
                     "longDescription": "The value of this property shall be a numerical identifier for this physical security sensor that is unique within this resource. "
                 },
                 "IntrusionSensor": {
-                    oneOf: [
+                    "oneOf": [
                         {"$ref": "#/definitions/IntrusionSensor"},
                         {"type": "null"}
                     ],
@@ -166,7 +166,7 @@
                     "longDescription": "This property shall represent the state of this physical security sensor.  Hardware intrusion indicates the internal hardware is detected as being accessed in an insecure state. Tampering detected indicates the physical tampering of the monitored entity is detected."
                 },
                 "IntrusionSensorReArm": {
-                    oneOf: [
+                    "oneOf": [
                         {"$ref": "#/definitions/IntrusionSensorReArm"},
                         {"type": "null"}
                     ],
@@ -276,7 +276,7 @@
                     "longDescription": "The value of this property shall be an identifying string used to track the chassis for inventory purposes."
                 },
                 "IndicatorLED": {
-                    oneOf: [
+                    "oneOf": [
                         {"$ref": "#/definitions/IndicatorLED"},
                         {"type": "null"}
                     ],
@@ -338,7 +338,7 @@
                             "longDescription": "The value of this property shall be a reference to the resource that manages this chassis and shall reference a resource of type Manager."
                         },
                         "ContainedBy": {
-                            oneOf: [
+                            "oneOf": [
                                 {"$ref": "http://redfish.dmtf.org/schemas/v1/Chassis.json#/definitions/Chassis"},
                                 {"type": "null"}
                             ],
@@ -443,13 +443,13 @@
                     "longDescription": "The Actions property shall contain the available actions for this resource."
                 },
                 "Status": {
-                    oneOf: [
+                    "oneOf": [
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"},
                         {"type": "null"}
                     ]
                 },
                 "LogServices": {
-                    oneOf: [
+                    "oneOf": [
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/LogServiceCollection.json#/definitions/LogServiceCollection"},
                         {"type": "null"}
                     ],
@@ -458,7 +458,7 @@
                     "longDescription": "The value of this property shall be a link to a collection of type LogServiceCollection."
                 },
                 "Thermal": {
-                    oneOf: [
+                    "oneOf": [
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/Thermal.json#/definitions/Thermal"},
                         {"type": "null"}
                     ],
@@ -467,7 +467,7 @@
                     "longDescription": "The value of this property shall be a reference to the resource that represents the thermal characteristics of this chassis and shall be of type Thermal."
                 },
                 "Power": {
-                    oneOf: [
+                    "oneOf": [
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/Power.json#/definitions/Power"},
                         {"type": "null"}
                     ],
@@ -476,7 +476,7 @@
                     "longDescription": "The value of this property shall be a reference to the resource that represents the power characteristics of this chassis and shall be of type Power."
                 },
                 "PowerState": {
-                    oneOf: [
+                    "oneOf": [
                         {"$ref": "#/definitions/PowerState"},
                         {"type": "null"}
                     ],

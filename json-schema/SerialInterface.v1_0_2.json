@@ -171,7 +171,7 @@
                     "longDescription": "This property shall indicate the type of phyiscal connector used for this serial connection."
                 },
                 "PinOut": {
-                    oneOf: [
+                    "oneOf": [
                         {"$ref": "#/definitions/PinOut"},
                         {"type": "null"}
                     ],

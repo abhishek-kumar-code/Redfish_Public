@@ -52,7 +52,7 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
                 },
                 "Severity": {
-                    oneOf: [
+                    "oneOf": [
                         {"$ref": "#/definitions/EventSeverity"},
                         {"type": "null"}
                     ],
@@ -83,7 +83,7 @@
                     "longDescription": "The value of this property shall represent the OEM specific format of the Entry.  This property shall be required if the value of EntryType is Oem"
                 },
                 "EntryCode": {
-                    oneOf: [
+                    "oneOf": [
                         {"$ref": "#/definitions/LogEntryCode"},
                         {"type": "null"}
                     ],
@@ -92,7 +92,7 @@
                     "longDescription": "This property shall be present if the EntryType value is SEL.  These enumerations are the values from table 42-1 and 42-2 of the IPMI specification"
                 },
                 "SensorType": {
-                    oneOf: [
+                    "oneOf": [
                         {"$ref": "#/definitions/SensorType"},
                         {"type": "null"}
                     ],
@@ -156,7 +156,7 @@
                             "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
                         },
                         "OriginOfCondition": {
-                            oneOf: [
+                            "oneOf": [
                                 {"$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"},
                                 {"type": "null"}
                             ],

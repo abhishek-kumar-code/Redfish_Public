@@ -52,7 +52,7 @@
                     "longDescription": "This property shall contain the world wide unique identifier for the resource. The string shall be in the format described by the value of the Identifier.DurableNameFormat property"
                 },
                 "DurableNameFormat": {
-                    oneOf: [
+                    "oneOf": [
                         {"$ref": "#/definitions/DurableNameFormat"},
                         {"type": "null"}
                     ],

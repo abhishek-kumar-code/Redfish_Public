@@ -94,7 +94,7 @@
                             "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
                         },
                         "Role": {
-                            oneOf: [
+                            "oneOf": [
                                 {"$ref": "http://redfish.dmtf.org/schemas/v1/Role.json#/definitions/Role"},
                                 {"type": "null"}
                             ],

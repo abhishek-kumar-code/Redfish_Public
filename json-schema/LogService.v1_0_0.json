@@ -156,7 +156,7 @@
                     "longDescription": "The Actions property shall contain the available actions for this resource."
                 },
                 "Status": {
-                    oneOf: [
+                    "oneOf": [
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"},
                         {"type": "null"}
                     ]
