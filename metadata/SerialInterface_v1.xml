@@ -24,7 +24,7 @@
   <edmx:DataServices>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SerialInterface">
 
-      <EntityType Name="SerialInterface" BaseType="Resource.v1_0_0.Resource" Abstract="True">
+      <EntityType Name="SerialInterface" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="This resource describes an asynchronous serial interface, such as an RS-232 interface, available to a system or device."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent serial resources as part of the Redfish specification."/>
       </EntityType>
