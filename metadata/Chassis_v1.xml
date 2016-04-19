@@ -51,7 +51,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis">
 
-      <EntityType Name="Chassis" BaseType="Resource.v1_0_0.Resource">
+      <EntityType Name="Chassis" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="A Chassis represents the physical components for any system.  This resource represents the sheet-metal confined spaces and logical zones like racks, enclosures, chassis and all other containers. Subsystems (like sensors), which operate outside of a system's data plane (meaning the resources are not accessible to software running on the system) are linked either directly or indirectly through this resource."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a chassis or other physical enclosure for a Redfish implementation."/>
       </EntityType>
@@ -120,7 +120,7 @@
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
-        <Property Name="Status" Type="Resource.Status"/>
+        <Property Name="Status" Type="Resource.Status" Nullable="false"/>
         <NavigationProperty Name="LogServices" Type="LogServiceCollection.LogServiceCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A reference to the logs for this chassis."/>
@@ -142,13 +142,13 @@
       </EntityType>
 
       <ComplexType Name="Links" BaseType="Resource.Links">
-        <NavigationProperty Name="ComputerSystems" Type="Collection(ComputerSystem.ComputerSystem)">
+        <NavigationProperty Name="ComputerSystems" Type="Collection(ComputerSystem.ComputerSystem)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the computer systems contained in this chassis.  This will only reference ComputerSystems that are directly and wholly contained in this chassis."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resource that this physical container is associated with and shall reference a resource of type ComputerSystem.  If a ComputerSystem is also referenced in a Chassis that is referenced in a Contains link from this resource, that ComputerSystem shall not be referenced in this Chassis."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="ManagedBy" Type="Collection(Manager.Manager)">
+        <NavigationProperty Name="ManagedBy" Type="Collection(Manager.Manager)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the Managers responsible for managing this chassis."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resource that manages this chassis and shall reference a resource of type Manager."/>
@@ -160,19 +160,19 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resource that represents the chassis that contains this chassis and shall be of type Chassis."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="Contains" Type="Collection(Chassis.Chassis)">
+        <NavigationProperty Name="Contains" Type="Collection(Chassis.Chassis)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to any other chassis that this chassis has in it."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resource that represents the chassis that this chassis contains and shall be of type Chassis."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="PoweredBy" Type="Collection(Resource.Item)">
+        <NavigationProperty Name="PoweredBy" Type="Collection(Resource.Item)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of ID[s] of resources that power this chassis. Normally the ID will be a chassis or a specific set of powerSupplies"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of IDs containing pointers consistent with JSON pointer syntax to the resource that powers this chassis."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="CooledBy" Type="Collection(Resource.Item)">
+        <NavigationProperty Name="CooledBy" Type="Collection(Resource.Item)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of ID[s] of resources that cool this chassis. Normally the ID will be a chassis or a specific set of fans."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of IDs containing pointers consistent with JSON pointer syntax to the resource that cools this chassis."/>
@@ -182,7 +182,7 @@
 
       <ComplexType Name="Actions">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Property Name="Oem" Type="Chassis.v1_0_0.OemActions"/>
+        <Property Name="Oem" Type="Chassis.v1_0_0.OemActions" Nullable="false"/>
       </ComplexType>
 
       <ComplexType Name="OemActions">
@@ -298,7 +298,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_1_0">
 
       <EntityType Name="Chassis" BaseType="Chassis.v1_0_2.Chassis">
-        <Property Name="PhysicalSecurity" Type="Chassis.v1_1_0.PhysicalSecurity">
+        <Property Name="PhysicalSecurity" Type="Chassis.v1_1_0.PhysicalSecurity" Nullable="false">
           <Annotation Term="OData.Description" String="The state of the physical security sensor."/>
           <Annotation Term="OData.LongDescription" String="This value of this property shall contain the sensor state of the physical security."/>
         </Property>
@@ -351,23 +351,23 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_2_0">
       <EntityType Name="Chassis" BaseType="Chassis.v1_1_2.Chassis">
-        <Property Name="Location" Type="Resource.v1_1_0.Location"/>
+        <Property Name="Location" Type="Resource.v1_1_0.Location" Nullable="false"/>
       </EntityType>
 
       <ComplexType Name="Links" BaseType="Chassis.v1_0_0.Links">
-        <NavigationProperty Name="ManagersInChassis" Type="Collection(Manager.Manager)">
+        <NavigationProperty Name="ManagersInChassis" Type="Collection(Manager.Manager)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the managers located in this Chassis."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall reference one or more resources of type Manager that are in this Chassis."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="Drives" Type="Collection(Drive.Drive)">
+        <NavigationProperty Name="Drives" Type="Collection(Drive.Drive)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the disk drives located in this Chassis."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall reference one or more resources of type Drive that are in this Chassis."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="Storage" Type="Collection(Storage.Storage)">
+        <NavigationProperty Name="Storage" Type="Collection(Storage.Storage)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the storage subsystems connected to or inside this Chassis."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall reference one or more resources of type Storage that are connected to or contained inside this Chassis."/>

@@ -1662,7 +1662,7 @@ If the property references a collection of resources, the value of the type attr
 where NamespaceQualifiedTypeName is the namespace qualified name of the type of related resources.
 
 ~~~xml
-      <NavigationProperty Name="RelatedTypes" Type="Collection(MyTypes.TypeB)">
+      <NavigationProperty Name="RelatedTypes" Type="Collection(MyTypes.TypeB)" Nullable="false">
         <Annotation Term="OData.Description" String="This property represents a collection of related resources."/>
         <Annotation Term="OData.LongDescription" String="This is the specification of the related property."/>
 		<Annotation Term="OData.AutoExpandReferences"/>
@@ -2351,6 +2351,7 @@ The Authorization subsystem uses Roles and Privileges to control which users hav
 |         |          | Clarified that implementation of the SSDP protocol is optional. | 
 |         |          | Corrected typographical error in the SSDP USN field's string definition (now '::dmtf-org'). |
 |         |          | Added missing OPTIONS method to the allowed HTTP Methods list. |
+|         |          | Fixed nullablity in example.  |
 | 1.0.1   | 2015-9-17| Errata release.  Various grammatical corrections. |
 |         |          | Clarified normative use of LongDescription in schema files. |
 |         |          | Clarified usage of the 'rel-describedby' link header. |

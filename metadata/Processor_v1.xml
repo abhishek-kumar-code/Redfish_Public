@@ -26,7 +26,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Processor">
 
-      <EntityType Name="Processor" BaseType="Resource.v1_0_0.Resource">
+      <EntityType Name="Processor" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="The Processor resource reports information about a single processor contained within a system.  This includes both performance characteristics (clock speed, architecture, core count, etc.) and compatibility (e.g. CPU ID instruction results)."/>
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
       </EntityType>
@@ -62,7 +62,7 @@
           <Annotation Term="OData.Description" String="Identification information for this processor."/>
           <Annotation Term="OData.LongDescription" String="This object shall contain identification information for this processor."/>
         </Property>
-        <Property Name="Status" Type="Resource.Status" />
+        <Property Name="Status" Type="Resource.Status" Nullable="false"/>
         <Property Name="Manufacturer" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read" />
           <Annotation Term="OData.Description" String="The processor manufacturer" />

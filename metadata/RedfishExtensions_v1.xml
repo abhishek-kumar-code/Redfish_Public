@@ -23,7 +23,7 @@
     <!--These terms extend the schema language for Redfish-specific information-->
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm"  Namespace="RedfishExtensions.v1_0_0">
 
-      <Term Name="AllowableValues" Type="Collection(Edm.String)">
+      <Term Name="AllowableValues" Type="Collection(Edm.String)" Nullable="false">
         <Annotation Term="OData.Description" String="The set of allowable values for a parameter."/>
       </Term>
       <Term Name="Required" Type="Edm.Boolean" DefaultValue="true">
@@ -50,7 +50,7 @@
       <Term Name="Deprecated" Type="Edm.String">
         <Annotation Term="OData.Description" String="The term shall be applied to a property in order to specify that the property is deprecated.  The value of the string should explain the deprecation, including new property or properties to be used. The property can be supported in new and existing implementations, but usage in new implementations is discouraged.  Deprecated properties are likely to be removed in a future major version of the schema."/>
       </Term>
-      <Term Name="DynamicPropertyPatterns" Type="Collection(RedfishExtensions.v1_0_0.PropertyPattern)"/>
+      <Term Name="DynamicPropertyPatterns" Type="Collection(RedfishExtensions.v1_0_0.PropertyPattern)" Nullable="false"/>
 
       <ComplexType Name="PropertyPattern">
         <Property Name="Pattern" Type="Edm.String">
@@ -61,7 +61,7 @@
         </Property>
       </ComplexType>
 
-      <Term Name="Enumeration" Type="Collection(RedfishExtensions.v1_0_0.EnumerationMember)">
+      <Term Name="Enumeration" Type="Collection(RedfishExtensions.v1_0_0.EnumerationMember)" Nullable="false">
         <Annotation Term="OData.Description" String="The term enumerates the allowable set of non-standard string values where a standard enumeration cannot be used."/>
       </Term>
 
