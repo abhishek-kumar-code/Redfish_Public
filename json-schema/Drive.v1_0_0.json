@@ -74,12 +74,18 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
                 },
                 "StatusIndicator": {
-                    "$ref": "#/definitions/StatusIndicator",
+                    oneOf: [
+                        {"$ref": "#/definitions/StatusIndicator"},
+                        {"type": "null"}
+                    ],
                     "description": "The state of the status indicator, used to communicate status information about this drive.",
                     "longDescription": "The value of this property shall contain the status indicator state for the status indicator associated with this drive. The valid values for this property are specified through the Redfish.AllowableValues annotation."
                 },
                 "IndicatorLED": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.v1_1_0.json#/definitions/IndicatorLED",
+                    oneOf: [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.v1_1_0.json#/definitions/IndicatorLED"},
+                        {"type": "null"}
+                    ],
                     "description": "The state of the indicator LED, used to identify the drive.",
                     "longDescription": "This value of this property shall contain the indicator light state for the indicator light associated with this drive."
                 },
@@ -123,13 +129,19 @@
                     "longDescription": "This property shall contain failure information as defined by the manufacturer for the associated drive."
                 },
                 "Protocol": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Storage.v1_0_0.json#/definitions/Protocol",
+                    oneOf: [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Storage.v1_0_0.json#/definitions/Protocol"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "The protocol this drive is using to communicate to the storage controller",
                     "longDescription": "This property shall contain the protocol the associated drive is using to communicate to the storage controller for this system."
                 },
                 "MediaType": {
-                    "$ref": "#/definitions/MediaType",
+                    oneOf: [
+                        {"$ref": "#/definitions/MediaType"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "The type of media contained in this drive",
                     "longDescription": "This property shall contain the type of media contained in the associated drive."
@@ -197,19 +209,28 @@
                     "longDescription": "This property shall contain location information of the associated drive."
                 },
                 "HotspareType": {
-                    "$ref": "#/definitions/HotspareType",
+                    oneOf: [
+                        {"$ref": "#/definitions/HotspareType"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "The type of hotspare this drive is currently serving as",
                     "longDescription": "This property shall contain the hot spare type for the associated drive. If the drive is currently serving as a hot spare its Status.State field shall be 'StandbySpare' and 'Enabled' when it is being used as part of a Volume."
                 },
                 "EncryptionAbility": {
-                    "$ref": "#/definitions/EncryptionAbility",
+                    oneOf: [
+                        {"$ref": "#/definitions/EncryptionAbility"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "The encryption abilities of this drive",
                     "longDescription": "This property shall contain the encryption ability for the associated drive."
                 },
                 "EncryptionStatus": {
-                    "$ref": "#/definitions/EncryptionStatus",
+                    oneOf: [
+                        {"$ref": "#/definitions/EncryptionStatus"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "The status of the encrytion of this drive",
                     "longDescription": "This property shall contain the encrytion status for the associated drive."
@@ -277,7 +298,10 @@
                     "additionalProperties": false,
                     "properties": {
                         "Oem": {
-                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                            oneOf: [
+                                {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem"},
+                                {"type": "null"}
+                            ],
                             "description": "Oem extension object.",
                             "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
                         },

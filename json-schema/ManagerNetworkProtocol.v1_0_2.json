@@ -109,7 +109,10 @@
                     "longDescription": "The value of this property shall contain the Time-To-Live hop count used for multicast NOTIFY messages.  The recommended value is 2."
                 },
                 "NotifyIPv6Scope": {
-                    "$ref": "#/definitions/NotifyIPv6Scope",
+                    oneOf: [
+                        {"$ref": "#/definitions/NotifyIPv6Scope"},
+                        {"type": "null"}
+                    ],
                     "description": "Indicates the scope for the IPv6 Notify messages for SSDP.",
                     "longDescription": "The value of this property shall contain the IPv6 scope used for multicast NOTIFY messages.  The valid enumerations are a subset of the available IPv6 Scope types."
                 }

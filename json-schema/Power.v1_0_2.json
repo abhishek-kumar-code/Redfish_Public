@@ -179,7 +179,10 @@
                     "longDescription": "The value of this property shall represent the power cap limit in watts for the resource.  If set to null, power capping shall be disabled."
                 },
                 "LimitException": {
-                    "$ref": "#/definitions/PowerLimitException",
+                    oneOf: [
+                        {"$ref": "#/definitions/PowerLimitException"},
+                        {"type": "null"}
+                    ],
                     "description": "The action that is taken if the power cannot be maintained below the LimitInWatts.",
                     "longDescription": "The value of this property shall represent the action to be taken if the resource power consumption can not be limited below the specified limit after several correction time periods."
                 },
@@ -305,13 +308,19 @@
                     "longDescription": "This property shall contain a descriptive name for the associated power supply."
                 },
                 "PowerSupplyType": {
-                    "$ref": "#/definitions/PowerSupplyType",
+                    oneOf: [
+                        {"$ref": "#/definitions/PowerSupplyType"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "The Power Supply type (AC or DC)",
                     "longDescription": "This property shall contain the input power type (AC or DC) of the associated power supply."
                 },
                 "LineInputVoltageType": {
-                    "$ref": "#/definitions/LineInputVoltageType",
+                    oneOf: [
+                        {"$ref": "#/definitions/LineInputVoltageType"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "The line voltage type supported as an input to this Power Supply",
                     "longDescription": "This property shall contain the type of input line voltage supported by the associated power supply"

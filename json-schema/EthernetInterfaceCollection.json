@@ -36,7 +36,10 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
                 },
                 "Oem": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                    oneOf: [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem"},
+                        {"type": "null"}
+                    ],
                     "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },

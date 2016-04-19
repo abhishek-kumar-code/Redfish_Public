@@ -327,7 +327,10 @@
                     "longDescription": "The values of the properties in this array shall be used to show redundancy for fans and other elements in this resource.  The use of IDs within these arrays shall reference the members of the redundancy groups."
                 },
                 "ReadingUnits": {
-                    "$ref": "#/definitions/ReadingUnits",
+                    oneOf: [
+                        {"$ref": "#/definitions/ReadingUnits"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "Units in which the reading and thresholds are measured.",
                     "longDescription": "The value of this property shall be the units in which the fan's reading and thresholds are measured."

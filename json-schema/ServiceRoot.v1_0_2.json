@@ -51,7 +51,10 @@
                     "longDescription": "The value of this string shall represent the version of the Redfish service.  The format of this string shall be of the format majorversion.minorversion.errata in compliance with Protocol Version section of the Redfish specification. "
                 },
                 "UUID": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/UUID",
+                    oneOf: [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/UUID"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "Unique identifier for a service instance. When SSDP is used, this value should be an exact match of the UUID value returned in a 200OK from an SSDP M-SEARCH request during discovery. ",
                     "longDescription": "The value of this string shall represent the id of the Redfish service instance.  The format of this string shall be a 32-byte value in the form 8-4-4-4-12.  If SSDP is used, this value shall be an exact match of the UUID value returned in a 200OK from an SSDP M-SEARCH request during discovery. RFC4122 describes methods that can be used to create a UUID value. The value should be considered to be opaque. Client software should only treat the overall value as a universally unique identifier and should not interpret any sub-fields within the UUID."
@@ -74,7 +77,10 @@
                     "additionalProperties": false,
                     "properties": {
                         "Oem": {
-                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                            oneOf: [
+                                {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem"},
+                                {"type": "null"}
+                            ],
                             "description": "Oem extension object.",
                             "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
                         },
@@ -90,55 +96,82 @@
                     "longDescription": "The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."
                 },
                 "Systems": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/ComputerSystemCollection.json#/definitions/ComputerSystemCollection",
+                    oneOf: [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/ComputerSystemCollection.json#/definitions/ComputerSystemCollection"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "This is a link to a collection of Systems.",
                     "longDescription": "This object shall only contain a reference to a collection of resources that comply to the Systems schema."
                 },
                 "Chassis": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/ChassisCollection.json#/definitions/ChassisCollection",
+                    oneOf: [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/ChassisCollection.json#/definitions/ChassisCollection"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "This is a link to a collection of Chassis.",
                     "longDescription": "This object shall only contain a reference to a collection of resources that comply to the Chassis schema."
                 },
                 "Managers": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/ManagerCollection.json#/definitions/ManagerCollection",
+                    oneOf: [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/ManagerCollection.json#/definitions/ManagerCollection"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "This is a link to a collection of Managers.",
                     "longDescription": "This object shall only contain a reference to a collection of resources that comply to the Managers schema."
                 },
                 "Tasks": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/TaskService.json#/definitions/TaskService",
+                    oneOf: [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/TaskService.json#/definitions/TaskService"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "This is a link to the Task Service.",
                     "longDescription": "The classes structure shall only contain a reference to a resource that complies to the TaskService schema."
                 },
                 "SessionService": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/SessionService.json#/definitions/SessionService",
+                    oneOf: [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/SessionService.json#/definitions/SessionService"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "This is a link to the Sessions Service.",
                     "longDescription": "The classes structure shall only contain a reference to a resource that complies to the SessionService schema."
                 },
                 "AccountService": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/AccountService.json#/definitions/AccountService",
+                    oneOf: [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/AccountService.json#/definitions/AccountService"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "This is a link to the Account Service.",
                     "longDescription": "The classes structure shall only contain a reference to a resource that complies to the AccountService schema."
                 },
                 "EventService": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/EventService.json#/definitions/EventService",
+                    oneOf: [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/EventService.json#/definitions/EventService"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "This is a link to the EventService.",
                     "longDescription": "The classes structure shall only contain a reference to a resource that complies to the EventService schema."
                 },
                 "Registries": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/MessageRegistryFileCollection.json#/definitions/MessageRegistryFileCollection",
+                    oneOf: [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/MessageRegistryFileCollection.json#/definitions/MessageRegistryFileCollection"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "This is a link to a collection of Registries.",
                     "longDescription": "This object shall contain a reference to Message Registry."
                 },
                 "JsonSchemas": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/JsonSchemaFileCollection.json#/definitions/JsonSchemaFileCollection",
+                    oneOf: [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/JsonSchemaFileCollection.json#/definitions/JsonSchemaFileCollection"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "This is a link to a collection of Json-Schema files.",
                     "longDescription": "This object shall only contain a reference to a collection of resources that comply to the SchemaFile schema where the files are Json-Schema files."

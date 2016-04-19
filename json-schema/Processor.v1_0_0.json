@@ -76,19 +76,28 @@
                     "longDescription": "This property shall contain the string which identifies the physical location or socket of the processor."
                 },
                 "ProcessorType": {
-                    "$ref": "#/definitions/ProcessorType",
+                    oneOf: [
+                        {"$ref": "#/definitions/ProcessorType"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "The type of processor",
                     "longDescription": "This property shall contain the string which identifies the type of processor contained in this Socket."
                 },
                 "ProcessorArchitecture": {
-                    "$ref": "#/definitions/ProcessorArchitecture",
+                    oneOf: [
+                        {"$ref": "#/definitions/ProcessorArchitecture"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "The architecture of the processor",
                     "longDescription": "This property shall contain the string which identifies the architecture of the processor contained in this Socket."
                 },
                 "InstructionSet": {
-                    "$ref": "#/definitions/InstructionSet",
+                    oneOf: [
+                        {"$ref": "#/definitions/InstructionSet"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "The instruction set of the processor",
                     "longDescription": "This property shall contain the string which identifies the instruction set of the processor contained in this socket."

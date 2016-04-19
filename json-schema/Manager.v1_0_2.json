@@ -201,6 +201,9 @@
             },
             "description": "Used for describing services like Serial Console, Command Shell or Graphical Console"
         },
+        "ManagerService": {
+
+        },
         "ManagerType": {
             "type": "string",
             "enum": [
@@ -338,7 +341,10 @@
                     "additionalProperties": false,
                     "properties": {
                         "Oem": {
-                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                            oneOf: [
+                                {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem"},
+                                {"type": "null"}
+                            ],
                             "description": "Oem extension object.",
                             "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
                         },
@@ -386,7 +392,10 @@
                     "longDescription": "This property shall contain the UUID of the Redfish Service provided by this manager.  Each Manager providing an Entry Point to the same Redfish Service shall report the same UUID value (even though the name of the property may imply otherwise).  This property shall not be present if this manager does not provide a Redfish Service Entry Point."
                 },
                 "UUID": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/UUID",
+                    oneOf: [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/UUID"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "The Universal Unique Identifier (UUID) for this Manager",
                     "longDescription": "The value of this property shall contain the universal unique identifier number for the manager."
@@ -500,31 +509,46 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
                 },
                 "EthernetInterfaces": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/EthernetInterfaceCollection.json#/definitions/EthernetInterfaceCollection",
+                    oneOf: [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/EthernetInterfaceCollection.json#/definitions/EthernetInterfaceCollection"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "This is a reference to a collection of NICs that this manager uses for network communication.  It is here that clients will find NIC configuration options and settings.",
                     "longDescription": "The value of this property shall be a link to a collection of type EthernetInterfaceCollection."
                 },
                 "SerialInterfaces": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/SerialInterfaceCollection.json#/definitions/SerialInterfaceCollection",
+                    oneOf: [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/SerialInterfaceCollection.json#/definitions/SerialInterfaceCollection"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "This is a reference to a collection of serial interfaces that this manager uses for serial and console communication.  It is here that clients will find serial configuration options and settings.",
                     "longDescription": "The value of this property shall be a link to a collection of type SerialInterfaceCollection which are for the use of this manager."
                 },
                 "NetworkProtocol": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/ManagerNetworkProtocol.json#/definitions/ManagerNetworkProtocol",
+                    oneOf: [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/ManagerNetworkProtocol.json#/definitions/ManagerNetworkProtocol"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "This is a reference to the network services and their settings that the manager controls.  It is here that clients will find network configuration options as well as network services.",
                     "longDescription": "The value of this property shall contain a reference to a resource of type ManagerNetworkProtocol which represents the network services for this manager."
                 },
                 "LogServices": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/LogServiceCollection.json#/definitions/LogServiceCollection",
+                    oneOf: [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/LogServiceCollection.json#/definitions/LogServiceCollection"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "This is a reference to a collection of Logs used by the manager.",
                     "longDescription": "The value of this property shall contain a reference to a collection of type LogServiceCollection which are for the use of this manager."
                 },
                 "VirtualMedia": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/VirtualMediaCollection.json#/definitions/VirtualMediaCollection",
+                    oneOf: [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/VirtualMediaCollection.json#/definitions/VirtualMediaCollection"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "This is a reference to the Virtual Media services for this particular manager.",
                     "longDescription": "The value of this property shall contain a reference to a collection of type VirtualMediaCollection which are for the use of this manager."

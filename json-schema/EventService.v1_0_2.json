@@ -152,7 +152,10 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
                 },
                 "Subscriptions": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/EventDestinationCollection.json#/definitions/EventDestinationCollection",
+                    oneOf: [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/EventDestinationCollection.json#/definitions/EventDestinationCollection"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "This is a reference to a collection of Event Destination resources.",
                     "longDescription": "The value of this property shall contain the link to a collection of type EventDestinationCollection."

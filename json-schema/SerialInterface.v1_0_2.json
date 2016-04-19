@@ -171,7 +171,10 @@
                     "longDescription": "This property shall indicate the type of phyiscal connector used for this serial connection."
                 },
                 "PinOut": {
-                    "$ref": "#/definitions/PinOut",
+                    oneOf: [
+                        {"$ref": "#/definitions/PinOut"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "The physical pin configuration needed for a serial connector.",
                     "longDescription": "This property shall indicate the physical pin out for the serial connection."

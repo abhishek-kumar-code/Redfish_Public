@@ -35,7 +35,10 @@
             "additionalProperties": false,
             "properties": {
                 "Oem": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem"
+                    oneOf: [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem"},
+                        {"type": "null"}
+                    ]
                 },
                 "Address": {
                     "type": [
@@ -47,12 +50,18 @@
                     "longDescription": "The value of this property shall be an IPv4 address assigned to this interface.  If DHCPv4 is enabled on the interface, this property becomes read-only."
                 },
                 "SubnetMask": {
-                    "$ref": "#/definitions/SubnetMask",
+                    oneOf: [
+                        {"$ref": "#/definitions/SubnetMask"},
+                        {"type": "null"}
+                    ],
                     "description": "This is the IPv4 Subnet mask.",
                     "longDescription": "The value of this property shall be the IPv4 subnet mask for this address.  If DHCPv4 is enabled on the interface, this property becomes read-only."
                 },
                 "AddressOrigin": {
-                    "$ref": "#/definitions/IPv4AddressOrigin",
+                    oneOf: [
+                        {"$ref": "#/definitions/IPv4AddressOrigin"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "This indicates how the address was determined.",
                     "longDescription": "The value of this property shall be the IP address origin for this network interface."
@@ -100,7 +109,10 @@
             "additionalProperties": false,
             "properties": {
                 "Oem": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem"
+                    oneOf: [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem"},
+                        {"type": "null"}
+                    ]
                 },
                 "Address": {
                     "type": [
@@ -111,19 +123,28 @@
                     "longDescription": "This property lists an IPv6 address that is currently assigned on this interface."
                 },
                 "PrefixLength": {
-                    "$ref": "#/definitions/PrefixLength",
+                    oneOf: [
+                        {"$ref": "#/definitions/PrefixLength"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "This is the IPv6 Address Prefix Length.",
                     "longDescription": "The value of this property shall be the IPv6 address prefix length for this interface."
                 },
                 "AddressOrigin": {
-                    "$ref": "#/definitions/IPv6AddressOrigin",
+                    oneOf: [
+                        {"$ref": "#/definitions/IPv6AddressOrigin"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "This indicates how the address was determined.",
                     "longDescription": "The value of this property shall be the IPv6 address origin for this interface."
                 },
                 "AddressState": {
-                    "$ref": "#/definitions/AddressState",
+                    oneOf: [
+                        {"$ref": "#/definitions/AddressState"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "The current state of this address as defined in RFC 4862.",
                     "longDescription": "Preferred and Deprecated states follow the definitions given RFC4862 Section 5.5.4. An address is in the Tentative state while undergoing Duplicate Address Detection (DAD) per RFC4862 Section 5.4.  The Failed state indicates a Static addresses which did not pass DAD.  A Static address in the Failed state is not in use on the network stack, and corrective action will be needed to remedy this condition."
@@ -163,7 +184,10 @@
             "additionalProperties": false,
             "properties": {
                 "Oem": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem"
+                    oneOf: [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem"},
+                        {"type": "null"}
+                    ]
                 },
                 "Address": {
                     "type": [
@@ -174,7 +198,10 @@
                     "longDescription": "This property provides access to a static IPv6 address that is currently assigned on a network interface."
                 },
                 "PrefixLength": {
-                    "$ref": "#/definitions/PrefixLength",
+                    oneOf: [
+                        {"$ref": "#/definitions/PrefixLength"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "The Prefix Length of this IPv6 address.",
                     "longDescription": "Provides the IPv6 network prefix length in bits for this address."

@@ -104,7 +104,10 @@
                     "longDescription": "The value of this property shall be the UEFI device path to the device which implements this interface (port)."
                 },
                 "Status": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
+                    oneOf: [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"},
+                        {"type": "null"}
+                    ]
                 },
                 "InterfaceEnabled": {
                     "type": [
@@ -115,13 +118,19 @@
                     "longDescription": "The value of this property shall be a boolean indicating whether this interface is enabled."
                 },
                 "PermanentMACAddress": {
-                    "$ref": "#/definitions/MACAddress",
+                    oneOf: [
+                        {"$ref": "#/definitions/MACAddress"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "This is the permanent MAC address assigned to this interface (port)",
                     "longDescription": "The value of this property shall be the Permanent MAC Address of this interface (port). This value is typically programmed during the manufacturing time. This address is not assignable."
                 },
                 "MACAddress": {
-                    "$ref": "#/definitions/MACAddress",
+                    oneOf: [
+                        {"$ref": "#/definitions/MACAddress"},
+                        {"type": "null"}
+                    ],
                     "description": "This is the currently configured MAC address of the (logical port) interface.",
                     "longDescription": "The value of this property shall be the effective current MAC Address of this interface. If an assignable MAC address is not supported, this is a read only alias of the PermanentMACAddress."
                 },
@@ -183,7 +192,10 @@
                     "longDescription": "The value of this property shall indicate the number of array items supported by IPv6StaticAddresses."
                 },
                 "VLAN": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/VLanNetworkInterface.v1_0_0.json#/definitions/VLAN",
+                    oneOf: [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/VLanNetworkInterface.v1_0_0.json#/definitions/VLAN"},
+                        {"type": "null"}
+                    ],
                     "description": "If this Network Interface supports more than one VLAN, this property will not be present and the client should look for VLANs collection in the link section of this resource.",
                     "longDescription": "The value of this property shall be the VLAN for this interface.  If this interface supports more than one VLAN, the VLAN property shall not be present and the VLANS collection link shall be present instead."
                 },
@@ -234,17 +246,17 @@
                 "NameServers": {
                     "type": "array",
                     "items": {
-                        "type": [
-                            "string",
-                            "null"
-                        ]
+                        "type": "string"
                     },
                     "readonly": true,
                     "description": "This represents DNS name servers that are currently in use on this interface.",
                     "longDescription": "The value of this property shall be the DNS name servers used on this interface."
                 },
                 "VLANs": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/VLanNetworkInterfaceCollection.json#/definitions/VLanNetworkInterfaceCollection",
+                    oneOf: [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/VLanNetworkInterfaceCollection.json#/definitions/VLanNetworkInterfaceCollection"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "This is a reference to a collection of VLANs and is only used if the interface supports more than one VLANs.",
                     "longDescription": "The value of this property shall reference a collection of VLAN resources. If this property is used, the VLANEnabled and VLANId property shall not be used."

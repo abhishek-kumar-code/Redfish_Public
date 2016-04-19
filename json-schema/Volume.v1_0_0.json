@@ -80,7 +80,10 @@
                     "description": "The percentage of the operation that has been completed."
                 },
                 "AssociatedTask": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Task.json#/definitions/Task",
+                    oneOf: [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Task.json#/definitions/Task"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "A reference to the task associated with the operation if any."
                 }
@@ -139,7 +142,10 @@
                     "longDescription": "This property shall contain the size in bytes of the associated volume."
                 },
                 "VolumeType": {
-                    "$ref": "#/definitions/VolumeType",
+                    oneOf: [
+                        {"$ref": "#/definitions/VolumeType"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "Is this drive currently predicting a failure in the near future",
                     "longDescription": "This property shall contain failure information as defined by the manufacturer for the associated drive."
@@ -214,7 +220,10 @@
                     "additionalProperties": false,
                     "properties": {
                         "Oem": {
-                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                            oneOf: [
+                                {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem"},
+                                {"type": "null"}
+                            ],
                             "description": "Oem extension object.",
                             "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
                         },

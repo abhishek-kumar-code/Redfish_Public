@@ -89,12 +89,18 @@
                     "additionalProperties": false,
                     "properties": {
                         "Oem": {
-                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                            oneOf: [
+                                {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem"},
+                                {"type": "null"}
+                            ],
                             "description": "Oem extension object.",
                             "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
                         },
                         "Role": {
-                            "$ref": "http://redfish.dmtf.org/schemas/v1/Role.json#/definitions/Role",
+                            oneOf: [
+                                {"$ref": "http://redfish.dmtf.org/schemas/v1/Role.json#/definitions/Role"},
+                                {"type": "null"}
+                            ],
                             "readonly": true,
                             "description": "A reference to the Role object defining Privileges for this account--returned when the resource is read. The ID of the role is the same as property RoleId.",
                             "longDescription": "The value of this property shall be a link to a Role object instance, and should reference the object identified by property RoleId."

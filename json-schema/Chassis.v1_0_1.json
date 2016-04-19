@@ -191,7 +191,10 @@
                     "longDescription": "The value of this property shall be an identifying string used to track the chassis for inventory purposes."
                 },
                 "IndicatorLED": {
-                    "$ref": "#/definitions/IndicatorLED",
+                    oneOf: [
+                        {"$ref": "#/definitions/IndicatorLED"},
+                        {"type": "null"}
+                    ],
                     "description": "The state of the indicator LED, used to identify the chassis.",
                     "longDescription": "This value of this property shall contain the indicator light state for the indicator light associated with this system."
                 },
@@ -213,7 +216,10 @@
                     "additionalProperties": false,
                     "properties": {
                         "Oem": {
-                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                            oneOf: [
+                                {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem"},
+                                {"type": "null"}
+                            ],
                             "description": "Oem extension object.",
                             "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
                         },
@@ -250,7 +256,10 @@
                             "longDescription": "The value of this property shall be a reference to the resource that manages this chassis and shall reference a resource of type Manager."
                         },
                         "ContainedBy": {
-                            "$ref": "http://redfish.dmtf.org/schemas/v1/Chassis.json#/definitions/Chassis",
+                            oneOf: [
+                                {"$ref": "http://redfish.dmtf.org/schemas/v1/Chassis.json#/definitions/Chassis"},
+                                {"type": "null"}
+                            ],
                             "readonly": true,
                             "description": "A reference to the chassis that this chassis is contained by.",
                             "longDescription": "The value of this property shall be a reference to the resource that represents the chassis that contains this chassis and shall be of type Chassis."
@@ -355,28 +364,43 @@
                     "longDescription": "The Actions property shall contain the available actions for this resource."
                 },
                 "Status": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
+                    oneOf: [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"},
+                        {"type": "null"}
+                    ]
                 },
                 "LogServices": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/LogServiceCollection.json#/definitions/LogServiceCollection",
+                    oneOf: [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/LogServiceCollection.json#/definitions/LogServiceCollection"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "A reference to the logs for this chassis.",
                     "longDescription": "The value of this property shall be a link to a collection of type LogServiceCollection."
                 },
                 "Thermal": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Thermal.json#/definitions/Thermal",
+                    oneOf: [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Thermal.json#/definitions/Thermal"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "A reference to the thermal properties (fans, cooling, sensors) for this chassis.",
                     "longDescription": "The value of this property shall be a reference to the resource that represents the thermal characteristics of this chassis and shall be of type Thermal."
                 },
                 "Power": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Power.json#/definitions/Power",
+                    oneOf: [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Power.json#/definitions/Power"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "A reference to the power properties (power supplies, power policies, sensors) for this chassis.",
                     "longDescription": "The value of this property shall be a reference to the resource that represents the power characteristics of this chassis and shall be of type Power."
                 },
                 "PowerState": {
-                    "$ref": "#/definitions/PowerState",
+                    oneOf: [
+                        {"$ref": "#/definitions/PowerState"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "This is the current power state of the chassis.",
                     "longDescription": "The value of this property shall contain the power state of the chassis."
