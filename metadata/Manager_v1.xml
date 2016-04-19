@@ -335,6 +335,24 @@
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>		
       </ComplexType>
+      
+     <EntityType Name="Manager" BaseType="Manager.v1_0_2.Manager">
+        <Property Name="PowerState" Type="Manager.v1_1_0.PowerState">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This is the current power state of the manager."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the power state of the manager."/>
+        </Property>
+      </EntityType>
+      
+      <EnumType Name="PowerState">
+        <Member Name="On">
+          <Annotation Term="OData.Description" String="The power state of the Manager is on."/>
+        </Member>
+        <Member Name="InReset">
+          <Annotation Term="OData.Description" String="The power state of the Manager is in reset."/>
+        </Member>
+      </EnumType>
+      
     </Schema>
   
   </edmx:DataServices>
