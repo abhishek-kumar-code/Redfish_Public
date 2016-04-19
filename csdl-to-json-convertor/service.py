@@ -701,7 +701,7 @@ class JsonSchemaGenerator:
 
         output = UT.Utilities.indent(depth) 
         if isnullable:
-            output += "oneOf: [\n"
+            output += "\"oneOf\": [\n"
             output += UT.Utilities.indent(depth+1) + "{\"$ref\": \"" + refvalue + "\"},\n"
             output += UT.Utilities.indent(depth+1) + "{\"type\": \"null\"}\n"
             output += UT.Utilities.indent(depth)   + "]"
@@ -773,13 +773,23 @@ class JsonSchemaGenerator:
                         firstproperty = True
                         continue
 
-                    # Extract Name, Type and nullable
+                    # Extract Name and Type
                     propname = property.attrib["Name"]
                     proptypename = property.attrib["Type"]
+
+                    #determine nullability
                     propertyisnullable = True
                     if "Nullable" in property.attrib.keys():
                         if property.attrib["Nullable"] == "false":
-                            propertyisnullable = False                    
+                            propertyisnullable = False
+                    else:
+                        #if the property type is a type definition with nullable=true already defined, we don't need to write it
+                        if proptypename in typetable.keys() :
+                            proptype=typetable[proptypename]
+                            if (proptype["TypeType"] == "TypeDefinition" ):
+                                if "Nullable" in proptype["Node"].attrib.keys():
+                                    if proptype["Node"].attrib["Nullable"] == "true":
+                                        propertyisnullable = False
 
                     # Handle navigationLinks/NavigationProperty
                     if ( propkind == "NavigationProperty"):
@@ -818,7 +828,7 @@ class JsonSchemaGenerator:
                             output += UT.Utilities.indent(depth+2) + "}"
                         else:
                             refvalue = self.get_ref_value_for_type(typetable, proptypename, namespace)
-                            output += self.write_reference(refvalue, depth+2, propertyisnullable and not isnullable)
+                            output += self.write_reference(refvalue, depth+2, propertyisnullable)
 
 					# Handle regular property
                     else:
@@ -838,7 +848,7 @@ class JsonSchemaGenerator:
                         if (proptypename in typetablekeys):
                             if(self.is_inline_type(typetable[proptypename], typetable) ):
                                 refvalue = self.get_ref_value_for_type(typetable, proptypename, namespace)
-                                output += self.write_reference(refvalue, depth+2, propertyisnullable and not isnullable)
+                                output += self.write_reference(refvalue, depth+2, propertyisnullable)
                             # write Links, Actions, OemActions inline
                             else:
                                 output += self.generate_json_for_type(typetable, proptypename, depth + 2, typedata["Namespace"], prefixuri, propertyisnullable, False, ignoreannotations)
