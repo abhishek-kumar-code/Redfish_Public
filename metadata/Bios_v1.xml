@@ -74,7 +74,7 @@
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
-        <Property Name="Attributes" Type="Bios.v1_0_0.Attributes">
+        <Property Name="Attributes" Type="Bios.v1_0_0.Attributes" Nullable="false">
           <Annotation Term="OData.Description" String="This is the manufacturer/provider specific list of BIOS attributes."/>
           <Annotation Term="OData.LongDescription" String="BIOS Attribute settings appear as additional properties in this object, and can be looked up in the Attribute Registry by their AttributeName."/>
         </Property>

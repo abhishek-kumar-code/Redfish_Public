@@ -71,7 +71,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Volume.v1_0_0">
 
       <EntityType Name="Volume" BaseType="Volume.Volume">
-        <Property Name="Status" Type="Resource.Status"/>
+        <Property Name="Status" Type="Resource.Status" Nullable="false"/>
         <Property Name="CapacityBytes" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The size in bytes of this Volume"/>
@@ -102,7 +102,7 @@
           <Annotation Term="OData.LongDescription" String="This property shall contain size of the smallest addressible unit of the associated volume."/>
           <Annotation Term="Measures.Unit" String="By"/>
         </Property>
-        <Property Name="Operations" Type="Collection(Volume.v1_0_0.Operations)">
+        <Property Name="Operations" Type="Collection(Volume.v1_0_0.Operations)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The operations currently running on the Volume"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain a list of all currently running on the Volume."/>
@@ -136,7 +136,7 @@
 
       <ComplexType Name="Actions">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Property Name="Oem" Type="Volume.v1_0_0.OemActions"/>
+        <Property Name="Oem" Type="Volume.v1_0_0.OemActions" Nullable="false"/>
       </ComplexType>
 
       <ComplexType Name="OemActions">

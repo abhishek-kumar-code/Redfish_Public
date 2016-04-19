@@ -330,7 +330,7 @@
           <Annotation Term="OData.Description" String="The value that the is used property specified in MapFromProperty that is used to evaluate this dependency expression."/>
           <Annotation Term="OData.LongDescription" String="The value that the property specified in MapFromProperty (in the attribute specified in MapFromAttribute) that is used to evaluate this dependency expression."/>
         </Property>
-        <Property Name="MapTerms" Type="AttributeRegistry.v1_0_0.MapTerms" >
+        <Property Name="MapTerms" Type="AttributeRegistry.v1_0_0.MapTerms" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The logical term used to combine two or more MapFrom conditions in this dependency expression. "/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the logical term used to combine two or more MapFrom conditions in this dependency expression. For example, 'AND' for logical AND, or 'OR' for logical OR of the conditions."/>

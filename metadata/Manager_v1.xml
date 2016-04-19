@@ -171,11 +171,11 @@
           <Annotation Term="OData.Description" String="Information about the Serial Console service provided by this manager."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain information about the Serial Console service of this manager."/>		  
         </Property>
-        <Property Name="CommandShell" Type="Manager.v1_0_0.CommandShell">
+        <Property Name="CommandShell" Type="Manager.v1_0_0.CommandShell" Nullable="false">
           <Annotation Term="OData.Description" String="Information about the Command Shell service provided by this manager."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain information about the Command Shell service of this manager."/>
         </Property>
-        <Property Name="GraphicalConsole" Type="Manager.v1_0_0.GraphicalConsole">
+        <Property Name="GraphicalConsole" Type="Manager.v1_0_0.GraphicalConsole" Nullable="false">
           <Annotation Term="OData.Description" String="The value of this property shall contain the information about the Graphical Console (KVM-IP) service of this manager."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the information about the Graphical Console (KVM-IP) service of this manager."/>
         </Property>
@@ -184,7 +184,7 @@
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
-        <Property Name="Status" Type="Resource.Status"/>
+        <Property Name="Status" Type="Resource.Status" Nullable="false"/>
         <NavigationProperty Name="Redundancy" Type="Collection(Redundancy.Redundancy)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Redundancy information for the managers of this system"/>
@@ -194,7 +194,7 @@
 
       <ComplexType Name="Actions">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Property Name="Oem" Type="Manager.v1_0_0.OemActions"/>
+        <Property Name="Oem" Type="Manager.v1_0_0.OemActions" Nullable="false"/>
       </ComplexType>
       
       <ComplexType Name="OemActions">

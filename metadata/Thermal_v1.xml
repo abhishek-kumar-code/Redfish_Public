@@ -62,7 +62,7 @@
           <Annotation Term="OData.LongDescription" String="The values of the properties in this array shall be used to show redundancy for fans and other elements in this resource.  The use of IDs within these arrays shall reference the members of the redundancy groups."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
-        <Property Name="Status" Type="Resource.Status"/>
+        <Property Name="Status" Type="Resource.Status" Nullable="false"/>
       </EntityType>
 
       <EntityType Name="Temperature" BaseType="Resource.v1_0_0.ReferenceableMember">

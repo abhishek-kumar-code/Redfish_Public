@@ -190,7 +190,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type LogServiceCollection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <Property Name="Status" Type="Resource.Status"/>
+        <Property Name="Status" Type="Resource.Status" Nullable="false"/>
       </EntityType>
 
       <ComplexType Name="Links" BaseType="Resource.Links">
@@ -222,7 +222,7 @@
 
       <ComplexType Name="Actions">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Property Name="Oem" Type="ComputerSystem.v1_0_0.OemActions"/>
+        <Property Name="Oem" Type="ComputerSystem.v1_0_0.OemActions" Nullable="false"/>
       </ComplexType>
 
       <ComplexType Name="OemActions">
@@ -477,7 +477,7 @@
           <Annotation Term="OData.LongDescription" String="This property shall contain the interface type of the installed Trusted Module."/>
         </Property>
         <Property Name="Status" Type="Resource.Status"  Nullable="false"/>
-        <Property Name="Oem" Type="Resource.Oem"/>
+        <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
         <Annotation Term="OData.Description" String="This object describes the inventory of a Trusted Modules installed in the system."/>
       </ComplexType>
 
