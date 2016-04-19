@@ -53,7 +53,7 @@
   <edmx:DataServices>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager">
 
-      <EntityType Name="Manager" BaseType="Resource.v1_0_0.Resource" Abstract="True">
+      <EntityType Name="Manager" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="In Redfish, a Manager is a systems management entity which may implement or provide access to a Redfish service.  Examples of managers are BMCs, Enclosure Managers, Management Controllers and other subsystems assigned managability functions.  There may be multiple Managers in an implementation, and they may or may not be directly accessible via a Redfish-defined interface."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a management subsystem for a Redfish implementation."/>
       </EntityType>
