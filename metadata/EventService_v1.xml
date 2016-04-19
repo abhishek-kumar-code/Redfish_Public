@@ -106,7 +106,7 @@
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
-        <NavigationProperty Name="Subscriptions" Type="EventDestinationCollection.EventDestinationCollection" ContainsTarget="true">
+        <NavigationProperty Name="Subscriptions" Type="EventDestinationCollection.EventDestinationCollection" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is a reference to a collection of Event Destination resources."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the link to a collection of type EventDestinationCollection."/>

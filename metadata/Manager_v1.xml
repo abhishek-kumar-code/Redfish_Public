@@ -106,31 +106,31 @@
           <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
           <Annotation Term="OData.LongDescription" String="The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
         </Property>
-        <NavigationProperty Name="EthernetInterfaces" Type="EthernetInterfaceCollection.EthernetInterfaceCollection">
+        <NavigationProperty Name="EthernetInterfaces" Type="EthernetInterfaceCollection.EthernetInterfaceCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is a reference to a collection of NICs that this manager uses for network communication.  It is here that clients will find NIC configuration options and settings."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type EthernetInterfaceCollection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="SerialInterfaces" Type="SerialInterfaceCollection.SerialInterfaceCollection">
+        <NavigationProperty Name="SerialInterfaces" Type="SerialInterfaceCollection.SerialInterfaceCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is a reference to a collection of serial interfaces that this manager uses for serial and console communication.  It is here that clients will find serial configuration options and settings."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type SerialInterfaceCollection which are for the use of this manager."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="NetworkProtocol" Type="ManagerNetworkProtocol.ManagerNetworkProtocol">
+        <NavigationProperty Name="NetworkProtocol" Type="ManagerNetworkProtocol.ManagerNetworkProtocol" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is a reference to the network services and their settings that the manager controls.  It is here that clients will find network configuration options as well as network services."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain a reference to a resource of type ManagerNetworkProtocol which represents the network services for this manager."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="LogServices" Type="LogServiceCollection.LogServiceCollection">
+        <NavigationProperty Name="LogServices" Type="LogServiceCollection.LogServiceCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is a reference to a collection of Logs used by the manager."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain a reference to a collection of type LogServiceCollection which are for the use of this manager."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="VirtualMedia" Type="VirtualMediaCollection.VirtualMediaCollection">
+        <NavigationProperty Name="VirtualMedia" Type="VirtualMediaCollection.VirtualMediaCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is a reference to the Virtual Media services for this particular manager."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain a reference to a collection of type VirtualMediaCollection which are for the use of this manager."/>
@@ -328,7 +328,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_1_0">
      <EntityType Name="Manager" BaseType="Manager.v1_0_2.Manager"/>	
      <ComplexType Name="Links" BaseType="Manager.v1_0_0.Links">
-        <NavigationProperty Name="ManagerInChassis" Type="Chassis.Chassis">
+        <NavigationProperty Name="ManagerInChassis" Type="Chassis.Chassis" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This property is a reference to the chassis that this manager is located in."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain a reference to the chassis that this manager is located in."/>

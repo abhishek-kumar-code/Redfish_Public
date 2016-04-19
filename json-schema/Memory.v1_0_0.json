@@ -543,10 +543,7 @@
                     "longDescription": "The Actions property shall contain the available actions for this resource."
                 },
                 "Metrics": {
-                    "anyOf": [
-                        {"$ref": "http://redfish.dmtf.org/schemas/v1/MemoryMetrics.json#/definitions/MemoryMetrics"},
-                        {"type": "null"}
-                    ],
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/MemoryMetrics.json#/definitions/MemoryMetrics",
                     "description": "A reference to the Metrics associated with this Memory",
                     "longDescription": "A reference to the Metrics associated with this Memory."
                 }
