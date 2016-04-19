@@ -29,7 +29,7 @@
 
       <ComplexType Name="IPv4Address">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Property Name="Oem" Type="Resource.Oem"/>
+        <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
         <Property Name="Address" Type="Edm.String">
           <Annotation Term="OData.Description" String="This is the IPv4 Address."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an IPv4 address assigned to this interface.  If DHCPv4 is enabled on the interface, this property becomes read-only."/>
@@ -52,7 +52,7 @@
 
       <ComplexType Name="IPv6Address">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Property Name="Oem" Type="Resource.Oem"/>
+        <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
         <Property Name="Address" Type="Edm.String">
           <Annotation Term="OData.Description" String="This is the IPv6 Address."/>
           <Annotation Term="OData.LongDescription" String="This property lists an IPv6 address that is currently assigned on this interface."/>
@@ -132,7 +132,7 @@
       <ComplexType Name="IPv6StaticAddress">
         <Annotation Term="OData.Description" String="This object represents a single IPv6 static address to be assigned on a network interface."/>
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Property Name="Oem" Type="Resource.Oem"/>
+        <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
         <Property Name="Address" Type="Edm.String">
           <Annotation Term="OData.Description" String="A valid IPv6 address."/>
           <Annotation Term="OData.LongDescription" String="This property provides access to a static IPv6 address that is currently assigned on a network interface."/>
