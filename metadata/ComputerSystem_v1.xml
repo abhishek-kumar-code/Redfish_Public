@@ -49,8 +49,8 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem">
 
       <EntityType Name="ComputerSystem" BaseType="Resource.v1_0_0.Resource">
-        <Annotation Term="OData.Description" String="This schema defines a computer system and its respective properties.  A computer system represents a machine (physical or virtual) and the local resources such as memory, cpu and other devices that can be accessed from that machine."/>
-        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent resources that represent a computing system in the Redfish specification."/>
+        <Annotation Term="OData.Description" String="This schema defines a computer system and its respective properties.  A computer system represents a general purpose machine (physical or virtual) and the local resources such as memory, cpu and other devices that can be accessed from that machine."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent resources that represent a general purpose computing system (as opposed to an appliance) in the Redfish specification."/>
       </EntityType>
 
       <Action Name="Reset" IsBound="true">
