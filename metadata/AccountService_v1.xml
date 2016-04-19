@@ -87,13 +87,13 @@
           <Annotation Term="Validation.Minimum" Int="0"/>
           <Annotation Term="Measures.Unit" String="s"/>
         </Property>
-        <NavigationProperty Name="Accounts" Type="ManagerAccountCollection.ManagerAccountCollection">
+        <NavigationProperty Name="Accounts" Type="ManagerAccountCollection.ManagerAccountCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Link to a collection of Manager Accounts"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the link to a collection of type ManagerAccountCollection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="Roles" Type="RoleCollection.RoleCollection">
+        <NavigationProperty Name="Roles" Type="RoleCollection.RoleCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Link to a collection of Roles"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the link to a collection of type RoleCollection."/>
