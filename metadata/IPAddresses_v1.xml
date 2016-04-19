@@ -132,7 +132,7 @@
       <ComplexType Name="IPv6StaticAddress">
         <Annotation Term="OData.Description" String="This object represents a single IPv6 static address to be assigned on a network interface."/>
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Property Name="Oem" Type="Resource.Oem"/>
+        <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
         <Property Name="Address" Type="Edm.String">
           <Annotation Term="OData.Description" String="A valid IPv6 address."/>
           <Annotation Term="OData.LongDescription" String="This property provides access to a static IPv6 address that is currently assigned on a network interface."/>

@@ -28,7 +28,7 @@
   <edmx:DataServices>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ManagerAccount">
 
-      <EntityType Name="ManagerAccount" BaseType="Resource.v1_0_0.Resource">
+      <EntityType Name="ManagerAccount" BaseType="Resource.v1_0_0.Resource" Abstract="True">
         <Annotation Term="OData.Description" String="The user accounts, owned by a Manager, are defined in this resource.  Changes to a Manager Account may affect the current Redfish service connection if this manager is responsible for the Redfish service."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent resources that represent the user accounts for the manager."/>
       </EntityType>

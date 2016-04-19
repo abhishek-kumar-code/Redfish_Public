@@ -30,7 +30,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Bios">
 
-      <EntityType Name="Bios" BaseType="Resource.v1_0_0.Resource">
+      <EntityType Name="Bios" BaseType="Resource.v1_0_0.Resource" Abstract="True">
         <Annotation Term="OData.AdditionalProperties" Bool="true"/>
         <Annotation Term="OData.Description" String="Bios contains properties surrounding a BIOS Attribute Registry (where the system-specific BIOS attributes are described) and the Actions needed to perform changes to BIOS settings, which typically require a system reset to apply."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent BIOS attributes for a Redfish implementation."/>
@@ -74,7 +74,7 @@
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
-        <Property Name="Attributes" Type="Bios.v1_0_0.Attributes">
+        <Property Name="Attributes" Type="Bios.v1_0_0.Attributes" Nullable="false">
           <Annotation Term="OData.Description" String="This is the manufacturer/provider specific list of BIOS attributes."/>
           <Annotation Term="OData.LongDescription" String="BIOS Attribute settings appear as additional properties in this object, and can be looked up in the Attribute Registry by their AttributeName."/>
         </Property>
