@@ -382,19 +382,19 @@
                     "longDescription": "This object shall contain properties which describe the security capabilities of the Memory."
                 },
                 "SpareDeviceCount": {
-                    "type": "array",
-                    "items": {
-                        "type": "number"
-                    },
+                    "type": [
+                        "number",
+                        "null"
+                    ],
                     "readonly": true,
                     "description": "Number of unused spare devices available in the Memory",
                     "longDescription": "The value of this property shall be the number of unused spare devices available in the Memory. If memory devices fails, the spare device could be used."
                 },
                 "RankCount": {
-                    "type": "array",
-                    "items": {
-                        "type": "number"
-                    },
+                    "type": [
+                        "number",
+                        "null"
+                    ],
                     "readonly": true,
                     "description": "Number of ranks available in the Memory",
                     "longDescription": "The value of this property shall be number of ranks available in the Memory. The ranks could be used for spare or interleave."
