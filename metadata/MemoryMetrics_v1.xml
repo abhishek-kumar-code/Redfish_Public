@@ -125,7 +125,7 @@
         <Property Name="AlarmTrips" Type="MemoryMetrics.v1_0_0.AlarmTrips" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
           <Annotation Term="OData.Description" String="Alarm trip information about the memory"/>
-          <Annotation Term="OData.LongDescription" String="This object shall contain that describe the types of alarms that have been raised by the memory."/>
+          <Annotation Term="OData.LongDescription" String="This object shall contain properties describe the types of alarms that have been raised by the memory."/>
         </Property>
       </ComplexType>
 
