@@ -69,7 +69,7 @@
       </EntityType>
 
       <ComplexType Name="Links" BaseType="Resource.Links">
-        <NavigationProperty Name="Role" Type="Role.Role" ContainsTarget='true'>
+        <NavigationProperty Name="Role" Type="Role.Role" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A reference to the Role object defining Privileges for this account--returned when the resource is read. The ID of the role is the same as property RoleId."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a Role object instance, and should reference the object identified by property RoleId."/>

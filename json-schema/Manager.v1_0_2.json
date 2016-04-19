@@ -503,46 +503,31 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
                 },
                 "EthernetInterfaces": {
-                    "anyOf": [
-                        {"$ref": "http://redfish.dmtf.org/schemas/v1/EthernetInterfaceCollection.json#/definitions/EthernetInterfaceCollection"},
-                        {"type": "null"}
-                    ],
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/EthernetInterfaceCollection.json#/definitions/EthernetInterfaceCollection",
                     "readonly": true,
                     "description": "This is a reference to a collection of NICs that this manager uses for network communication.  It is here that clients will find NIC configuration options and settings.",
                     "longDescription": "The value of this property shall be a link to a collection of type EthernetInterfaceCollection."
                 },
                 "SerialInterfaces": {
-                    "anyOf": [
-                        {"$ref": "http://redfish.dmtf.org/schemas/v1/SerialInterfaceCollection.json#/definitions/SerialInterfaceCollection"},
-                        {"type": "null"}
-                    ],
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/SerialInterfaceCollection.json#/definitions/SerialInterfaceCollection",
                     "readonly": true,
                     "description": "This is a reference to a collection of serial interfaces that this manager uses for serial and console communication.  It is here that clients will find serial configuration options and settings.",
                     "longDescription": "The value of this property shall be a link to a collection of type SerialInterfaceCollection which are for the use of this manager."
                 },
                 "NetworkProtocol": {
-                    "anyOf": [
-                        {"$ref": "http://redfish.dmtf.org/schemas/v1/ManagerNetworkProtocol.json#/definitions/ManagerNetworkProtocol"},
-                        {"type": "null"}
-                    ],
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/ManagerNetworkProtocol.json#/definitions/ManagerNetworkProtocol",
                     "readonly": true,
                     "description": "This is a reference to the network services and their settings that the manager controls.  It is here that clients will find network configuration options as well as network services.",
                     "longDescription": "The value of this property shall contain a reference to a resource of type ManagerNetworkProtocol which represents the network services for this manager."
                 },
                 "LogServices": {
-                    "anyOf": [
-                        {"$ref": "http://redfish.dmtf.org/schemas/v1/LogServiceCollection.json#/definitions/LogServiceCollection"},
-                        {"type": "null"}
-                    ],
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/LogServiceCollection.json#/definitions/LogServiceCollection",
                     "readonly": true,
                     "description": "This is a reference to a collection of Logs used by the manager.",
                     "longDescription": "The value of this property shall contain a reference to a collection of type LogServiceCollection which are for the use of this manager."
                 },
                 "VirtualMedia": {
-                    "anyOf": [
-                        {"$ref": "http://redfish.dmtf.org/schemas/v1/VirtualMediaCollection.json#/definitions/VirtualMediaCollection"},
-                        {"type": "null"}
-                    ],
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/VirtualMediaCollection.json#/definitions/VirtualMediaCollection",
                     "readonly": true,
                     "description": "This is a reference to the Virtual Media services for this particular manager.",
                     "longDescription": "The value of this property shall contain a reference to a collection of type VirtualMediaCollection which are for the use of this manager."

@@ -263,7 +263,7 @@
           <Annotation Term="OData.Description" String="Rank spare enabled status" />
           <Annotation Term="OData.LongDescription" String="The value of this property shall be true if a rank spare is enabled for this Memory." />
         </Property>
-        <NavigationProperty Name="Metrics" Type="MemoryMetrics.MemoryMetrics" ContainsTarget="true">
+        <NavigationProperty Name="Metrics" Type="MemoryMetrics.MemoryMetrics" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Description" String="A reference to the Metrics associated with this Memory"/>
           <Annotation Term="OData.LongDescription" String="A reference to the Metrics associated with this Memory."/>
           <Annotation Term="OData.AutoExpandReferences"/>

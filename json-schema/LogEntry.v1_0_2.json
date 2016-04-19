@@ -276,10 +276,7 @@
                             "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
                         },
                         "OriginOfCondition": {
-                            "anyOf": [
-                                {"$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"},
-                                {"type": "null"}
-                            ],
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef",
                             "readonly": true,
                             "description": "This is the URI of the resource that caused the log entry",
                             "longDescription": "The value of this property shall be an href that references the resource for which the log is associated."
