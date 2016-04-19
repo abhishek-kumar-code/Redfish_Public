@@ -200,12 +200,12 @@
           <Annotation Term="OData.Description" String="This object contains security capabilities of the Memory."/>
           <Annotation Term="OData.LongDescription" String="This object shall contain properties which describe the security capabilities of the Memory."/>
         </Property>
-        <Property Name="SpareDeviceCount" Type="Collection(Edm.Int64)" Nullable="false">
+        <Property Name="SpareDeviceCount" Type="Edm.Int64" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
           <Annotation Term="OData.Description" String="Number of unused spare devices available in the Memory" />
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the number of unused spare devices available in the Memory. If memory devices fails, the spare device could be used." />
         </Property>
-        <Property Name="RankCount" Type="Collection(Edm.Int64)" Nullable="false">
+        <Property Name="RankCount" Type="Edm.Int64" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
           <Annotation Term="OData.Description" String="Number of ranks available in the Memory" />
           <Annotation Term="OData.LongDescription" String="The value of this property shall be number of ranks available in the Memory. The ranks could be used for spare or interleave." />
