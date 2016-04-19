@@ -122,7 +122,7 @@
           <Annotation Term="OData.Description" String="Performance degraded mode status" />
           <Annotation Term="OData.LongDescription" String="The value of this property shall be verformance degraded mode status, with true indicating perfomance degraded." />
         </Property>
-        <Property Name="AlarmTrips" Type="MemoryMetrics.v1_0_0.HealthData" Nullable="false">
+        <Property Name="AlarmTrips" Type="MemoryMetrics.v1_0_0.AlarmTrips" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
           <Annotation Term="OData.Description" String="Alarm trip information about the memory"/>
           <Annotation Term="OData.LongDescription" String="This object shall contain that describe the types of alarms that have been raised by the memory."/>
