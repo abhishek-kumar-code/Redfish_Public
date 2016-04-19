@@ -102,7 +102,7 @@
                     "longDescription": "The values of this array shall be the supported media types for this connection."
                 },
                 "ConnectedVia": {
-                    "oneOf": [
+                    "anyOf": [
                         {"$ref": "#/definitions/ConnectedVia"},
                         {"type": "null"}
                     ],

@@ -30,19 +30,19 @@
         "Item": {
             "anyOf": [
                 {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/ReferenceableMember"
+                },
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.v1_0_0.json#/definitions/Resource"
+                },
+                {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.v1_0_0.json#/definitions/ReferenceableMember"
                 },
                 {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Resource"
                 },
                 {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/ReferenceableMember"
-                },
-                {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.v1_1_0.json#/definitions/ReferenceableMember"
-                },
-                {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.v1_0_0.json#/definitions/Resource"
                 }
             ]
         },
@@ -175,7 +175,7 @@
             "additionalProperties": false,
             "properties": {
                 "State": {
-                    "oneOf": [
+                    "anyOf": [
                         {"$ref": "#/definitions/State"},
                         {"type": "null"}
                     ],
@@ -184,7 +184,7 @@
                     "longDescription": "This property shall represent if this component is available or not and why.  Enabled indicates the resource is available.  Disabled indicates the resource has been intentionally made unavailable but it can be enabled.  Offline indicates the resource is unavailable intentionally and requires action to be made available.  InTest indicates that the component is undergoing testing.  Starting indicates that the resource is on its way to becoming available.  Absent indicates the resources is physically unavailable."
                 },
                 "HealthRollup": {
-                    "oneOf": [
+                    "anyOf": [
                         {"$ref": "#/definitions/Health"},
                         {"type": "null"}
                     ],
@@ -193,7 +193,7 @@
                     "longDescription": "This property shall represent the HealthState of the resource and its dependent resources.  The values shall conform to those defined in the Redfish specification."
                 },
                 "Health": {
-                    "oneOf": [
+                    "anyOf": [
                         {"$ref": "#/definitions/Health"},
                         {"type": "null"}
                     ],

@@ -51,7 +51,7 @@
                     "longDescription": "This object represents the Name property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification. The value of this string shall be of the format for the reserved word *Name*."
                 },
                 "Mode": {
-                    "oneOf": [
+                    "anyOf": [
                         {"$ref": "#/definitions/RedundancyMode"},
                         {"type": "null"}
                     ],

@@ -149,7 +149,7 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
                 },
                 "Subscriptions": {
-                    "oneOf": [
+                    "anyOf": [
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/EventDestinationCollection.json#/definitions/EventDestinationCollection"},
                         {"type": "null"}
                     ],

@@ -327,7 +327,7 @@
                     "longDescription": "The values of the properties in this array shall be used to show redundancy for fans and other elements in this resource.  The use of IDs within these arrays shall reference the members of the redundancy groups."
                 },
                 "ReadingUnits": {
-                    "oneOf": [
+                    "anyOf": [
                         {"$ref": "#/definitions/ReadingUnits"},
                         {"type": "null"}
                     ],

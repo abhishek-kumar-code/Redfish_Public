@@ -232,7 +232,7 @@
                     "longDescription": "The value of this property shall contain the Time-To-Live hop count used for multicast NOTIFY messages.  The recommended value is 2."
                 },
                 "NotifyIPv6Scope": {
-                    "oneOf": [
+                    "anyOf": [
                         {"$ref": "#/definitions/NotifyIPv6Scope"},
                         {"type": "null"}
                     ],

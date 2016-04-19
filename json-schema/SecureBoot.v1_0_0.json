@@ -95,7 +95,7 @@
                     "longDescription": "Setting this property to true enables UEFI Secure Boot, and setting it to false disables it. This property can be enabled only in UEFI boot mode."
                 },
                 "SecureBootCurrentBoot": {
-                    "oneOf": [
+                    "anyOf": [
                         {"$ref": "#/definitions/SecureBootCurrentBootType"},
                         {"type": "null"}
                     ],
@@ -104,7 +104,7 @@
                     "longDescription": "The value of this property shall indicate the UEFI Secure Boot state during the current boot cycle."
                 },
                 "SecureBootMode": {
-                    "oneOf": [
+                    "anyOf": [
                         {"$ref": "#/definitions/SecureBootModeType"},
                         {"type": "null"}
                     ],

@@ -74,7 +74,7 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
                 },
                 "StatusIndicator": {
-                    "oneOf": [
+                    "anyOf": [
                         {"$ref": "#/definitions/StatusIndicator"},
                         {"type": "null"}
                     ],
@@ -82,7 +82,7 @@
                     "longDescription": "The value of this property shall contain the status indicator state for the status indicator associated with this drive. The valid values for this property are specified through the Redfish.AllowableValues annotation."
                 },
                 "IndicatorLED": {
-                    "oneOf": [
+                    "anyOf": [
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.v1_1_0.json#/definitions/IndicatorLED"},
                         {"type": "null"}
                     ],
@@ -129,7 +129,7 @@
                     "longDescription": "This property shall contain failure information as defined by the manufacturer for the associated drive."
                 },
                 "Protocol": {
-                    "oneOf": [
+                    "anyOf": [
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/Storage.v1_0_0.json#/definitions/Protocol"},
                         {"type": "null"}
                     ],
@@ -138,7 +138,7 @@
                     "longDescription": "This property shall contain the protocol the associated drive is using to communicate to the storage controller for this system."
                 },
                 "MediaType": {
-                    "oneOf": [
+                    "anyOf": [
                         {"$ref": "#/definitions/MediaType"},
                         {"type": "null"}
                     ],
@@ -209,7 +209,7 @@
                     "longDescription": "This property shall contain location information of the associated drive."
                 },
                 "HotspareType": {
-                    "oneOf": [
+                    "anyOf": [
                         {"$ref": "#/definitions/HotspareType"},
                         {"type": "null"}
                     ],
@@ -218,7 +218,7 @@
                     "longDescription": "This property shall contain the hot spare type for the associated drive. If the drive is currently serving as a hot spare its Status.State field shall be 'StandbySpare' and 'Enabled' when it is being used as part of a Volume."
                 },
                 "EncryptionAbility": {
-                    "oneOf": [
+                    "anyOf": [
                         {"$ref": "#/definitions/EncryptionAbility"},
                         {"type": "null"}
                     ],
@@ -227,7 +227,7 @@
                     "longDescription": "This property shall contain the encryption ability for the associated drive."
                 },
                 "EncryptionStatus": {
-                    "oneOf": [
+                    "anyOf": [
                         {"$ref": "#/definitions/EncryptionStatus"},
                         {"type": "null"}
                     ],

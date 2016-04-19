@@ -313,7 +313,7 @@
                     "longDescription": "This property shall contain the UUID of the Redfish Service provided by this manager.  Each Manager providing an Entry Point to the same Redfish Service shall report the same UUID value (even though the name of the property may imply otherwise).  This property shall not be present if this manager does not provide a Redfish Service Entry Point."
                 },
                 "UUID": {
-                    "oneOf": [
+                    "anyOf": [
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/UUID"},
                         {"type": "null"}
                     ],
@@ -427,7 +427,7 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
                 },
                 "EthernetInterfaces": {
-                    "oneOf": [
+                    "anyOf": [
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/EthernetInterfaceCollection.json#/definitions/EthernetInterfaceCollection"},
                         {"type": "null"}
                     ],
@@ -436,7 +436,7 @@
                     "longDescription": "The value of this property shall be a link to a collection of type EthernetInterfaceCollection."
                 },
                 "SerialInterfaces": {
-                    "oneOf": [
+                    "anyOf": [
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/SerialInterfaceCollection.json#/definitions/SerialInterfaceCollection"},
                         {"type": "null"}
                     ],
@@ -445,7 +445,7 @@
                     "longDescription": "The value of this property shall be a link to a collection of type SerialInterfaceCollection which are for the use of this manager."
                 },
                 "NetworkProtocol": {
-                    "oneOf": [
+                    "anyOf": [
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/ManagerNetworkProtocol.json#/definitions/ManagerNetworkProtocol"},
                         {"type": "null"}
                     ],
@@ -454,7 +454,7 @@
                     "longDescription": "The value of this property shall contain a reference to a resource of type ManagerNetworkProtocol which represents the network services for this manager."
                 },
                 "LogServices": {
-                    "oneOf": [
+                    "anyOf": [
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/LogServiceCollection.json#/definitions/LogServiceCollection"},
                         {"type": "null"}
                     ],
@@ -463,7 +463,7 @@
                     "longDescription": "The value of this property shall contain a reference to a collection of type LogServiceCollection which are for the use of this manager."
                 },
                 "VirtualMedia": {
-                    "oneOf": [
+                    "anyOf": [
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/VirtualMediaCollection.json#/definitions/VirtualMediaCollection"},
                         {"type": "null"}
                     ],
@@ -497,13 +497,13 @@
         "ManagerService": {
             "anyOf": [
                 {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Manager.v1_0_0.json#/definitions/CommandShell"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Manager.v1_0_0.json#/definitions/GraphicalConsole"
                 },
                 {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Manager.v1_0_0.json#/definitions/SerialConsole"
                 },
                 {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Manager.v1_0_0.json#/definitions/GraphicalConsole"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Manager.v1_0_0.json#/definitions/CommandShell"
                 }
             ]
         },

@@ -80,7 +80,7 @@
                     "description": "The percentage of the operation that has been completed."
                 },
                 "AssociatedTask": {
-                    "oneOf": [
+                    "anyOf": [
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/Task.json#/definitions/Task"},
                         {"type": "null"}
                     ],
@@ -142,7 +142,7 @@
                     "longDescription": "This property shall contain the size in bytes of the associated volume."
                 },
                 "VolumeType": {
-                    "oneOf": [
+                    "anyOf": [
                         {"$ref": "#/definitions/VolumeType"},
                         {"type": "null"}
                     ],

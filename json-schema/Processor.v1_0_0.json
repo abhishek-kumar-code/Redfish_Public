@@ -76,7 +76,7 @@
                     "longDescription": "This property shall contain the string which identifies the physical location or socket of the processor."
                 },
                 "ProcessorType": {
-                    "oneOf": [
+                    "anyOf": [
                         {"$ref": "#/definitions/ProcessorType"},
                         {"type": "null"}
                     ],
@@ -85,7 +85,7 @@
                     "longDescription": "This property shall contain the string which identifies the type of processor contained in this Socket."
                 },
                 "ProcessorArchitecture": {
-                    "oneOf": [
+                    "anyOf": [
                         {"$ref": "#/definitions/ProcessorArchitecture"},
                         {"type": "null"}
                     ],
@@ -94,7 +94,7 @@
                     "longDescription": "This property shall contain the string which identifies the architecture of the processor contained in this Socket."
                 },
                 "InstructionSet": {
-                    "oneOf": [
+                    "anyOf": [
                         {"$ref": "#/definitions/InstructionSet"},
                         {"type": "null"}
                     ],
