@@ -206,19 +206,28 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
                 },
                 "MemoryType": {
-                    "$ref": "#/definitions/MemoryType",
+                    "anyOf": [
+                        {"$ref": "#/definitions/MemoryType"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "The type of Memory",
                     "longDescription": "The value of this property shall be the type of Memory represented by this resource."
                 },
                 "MemoryDeviceType": {
-                    "$ref": "#/definitions/MemoryDeviceType",
+                    "anyOf": [
+                        {"$ref": "#/definitions/MemoryDeviceType"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "Type details of the Memory",
                     "longDescription": "The value of this property shall be the Memory Device Type as defined by SMBIOS."
                 },
                 "BaseModuleType": {
-                    "$ref": "#/definitions/BaseModuleType",
+                    "anyOf": [
+                        {"$ref": "#/definitions/BaseModuleType"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "The base module type of Memory",
                     "longDescription": "The value of this property shall be the base module type of Memory"
@@ -289,10 +298,7 @@
                 "AllowedSpeedsMHz": {
                     "type": "array",
                     "items": {
-                        "type": [
-                            "number",
-                            "null"
-                        ]
+                        "type": "number"
                     },
                     "readonly": true,
                     "description": "Speed bins supported by this Memory",
@@ -319,10 +325,7 @@
                 "FunctionClasses": {
                     "type": "array",
                     "items": {
-                        "type": [
-                            "string",
-                            "null"
-                        ]
+                        "type": "string"
                     },
                     "readonly": true,
                     "description": "Function Classes by the Memory",
@@ -367,10 +370,7 @@
                 "MaxTDPMilliWatts": {
                     "type": "array",
                     "items": {
-                        "type": [
-                            "number",
-                            "null"
-                        ]
+                        "type": "number"
                     },
                     "readonly": true,
                     "description": "Maximum TDPs in milli Watts",
@@ -384,10 +384,7 @@
                 "SpareDeviceCount": {
                     "type": "array",
                     "items": {
-                        "type": [
-                            "number",
-                            "null"
-                        ]
+                        "type": "number"
                     },
                     "readonly": true,
                     "description": "Number of unused spare devices available in the Memory",
@@ -396,10 +393,7 @@
                 "RankCount": {
                     "type": "array",
                     "items": {
-                        "type": [
-                            "number",
-                            "null"
-                        ]
+                        "type": "number"
                     },
                     "readonly": true,
                     "description": "Number of ranks available in the Memory",
@@ -420,7 +414,10 @@
                     "longDescription": "This object shall contain properties which describe the Memory connection information to sockets and memory controllers."
                 },
                 "ErrorCorrection": {
-                    "$ref": "#/definitions/ErrorCorrection",
+                    "anyOf": [
+                        {"$ref": "#/definitions/ErrorCorrection"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "Error correction scheme supported for this memory",
                     "longDescription": "The value of this property shall be the error correction scheme supported for this memory."
@@ -511,10 +508,7 @@
                     "additionalProperties": false,
                     "properties": {
                         "Oem": {
-                            "type": [
-                                "object",
-                                "null"
-                            ],
+                            "type": "object",
                             "patternProperties": {
                                 "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                                     "type": [
@@ -799,7 +793,10 @@
                     "longDescription": "Unique region ID representing a specific region within the Memory."
                 },
                 "MemoryClassification": {
-                    "$ref": "#/definitions/MemoryClassification",
+                    "anyOf": [
+                        {"$ref": "#/definitions/MemoryClassification"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "Classification of memory occupied by the given memory region",
                     "longDescription": "Classification of memory occupied by the given memory region."

@@ -53,7 +53,10 @@
                     "longDescription": "The value of this property shall be the UEFI device path to the device which implements this interface (port)."
                 },
                 "Status": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
+                    "anyOf": [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"},
+                        {"type": "null"}
+                    ]
                 },
                 "InterfaceEnabled": {
                     "type": [
@@ -64,13 +67,19 @@
                     "longDescription": "The value of this property shall be a boolean indicating whether this interface is enabled."
                 },
                 "PermanentMACAddress": {
-                    "$ref": "#/definitions/MACAddress",
+                    "anyOf": [
+                        {"$ref": "#/definitions/MACAddress"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "This is the permanent MAC address assigned to this interface (port)",
                     "longDescription": "The value of this property shall be the Permanent MAC Address of this interface (port). This value is typically programmed during the manufacturing time. This address is not assignable."
                 },
                 "MACAddress": {
-                    "$ref": "#/definitions/MACAddress",
+                    "anyOf": [
+                        {"$ref": "#/definitions/MACAddress"},
+                        {"type": "null"}
+                    ],
                     "description": "This is the currently configured MAC address of the (logical port) interface.",
                     "longDescription": "The value of this property shall be the effective current MAC Address of this interface. If an assignable MAC address is not supported, this is a read only alias of the PermanentMACAddress."
                 },
@@ -132,7 +141,10 @@
                     "longDescription": "The value of this property shall indicate the number of array items supported by IPv6StaticAddresses."
                 },
                 "VLAN": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/VLanNetworkInterface.v1_0_0.json#/definitions/VLAN",
+                    "anyOf": [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/VLanNetworkInterface.v1_0_0.json#/definitions/VLAN"},
+                        {"type": "null"}
+                    ],
                     "description": "If this Network Interface supports more than one VLAN, this property will not be present and the client should look for VLANs collection in the link section of this resource.",
                     "longDescription": "The value of this property shall be the VLAN for this interface.  If this interface supports more than one VLAN, the VLAN property shall not be present and the VLANS collection link shall be present instead."
                 },
@@ -183,10 +195,7 @@
                 "NameServers": {
                     "type": "array",
                     "items": {
-                        "type": [
-                            "string",
-                            "null"
-                        ]
+                        "type": "string"
                     },
                     "readonly": true,
                     "description": "This represents DNS name servers that are currently in use on this interface.",

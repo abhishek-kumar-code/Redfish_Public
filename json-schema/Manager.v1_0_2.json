@@ -201,6 +201,9 @@
             },
             "description": "Used for describing services like Serial Console, Command Shell or Graphical Console"
         },
+        "ManagerService": {
+
+        },
         "ManagerType": {
             "type": "string",
             "enum": [
@@ -386,7 +389,10 @@
                     "longDescription": "This property shall contain the UUID of the Redfish Service provided by this manager.  Each Manager providing an Entry Point to the same Redfish Service shall report the same UUID value (even though the name of the property may imply otherwise).  This property shall not be present if this manager does not provide a Redfish Service Entry Point."
                 },
                 "UUID": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/UUID",
+                    "anyOf": [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/UUID"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "The Universal Unique Identifier (UUID) for this Manager",
                     "longDescription": "The value of this property shall contain the universal unique identifier number for the manager."
@@ -462,10 +468,7 @@
                     "additionalProperties": false,
                     "properties": {
                         "Oem": {
-                            "type": [
-                                "object",
-                                "null"
-                            ],
+                            "type": "object",
                             "patternProperties": {
                                 "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                                     "type": [

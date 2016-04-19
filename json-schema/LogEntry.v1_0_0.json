@@ -52,7 +52,10 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
                 },
                 "Severity": {
-                    "$ref": "#/definitions/EventSeverity",
+                    "anyOf": [
+                        {"$ref": "#/definitions/EventSeverity"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "This is the severity of the log entry.",
                     "longDescription": "The value of this property shall be the severity of the condition resulting in the log entry, as defined in the Status section of the Redfish specificaiton."
@@ -80,13 +83,19 @@
                     "longDescription": "The value of this property shall represent the OEM specific format of the Entry.  This property shall be required if the value of EntryType is Oem"
                 },
                 "EntryCode": {
-                    "$ref": "#/definitions/LogEntryCode",
+                    "anyOf": [
+                        {"$ref": "#/definitions/LogEntryCode"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "If the EntryType is SEL, this will have the entry code for the log entry.",
                     "longDescription": "This property shall be present if the EntryType value is SEL.  These enumerations are the values from table 42-1 and 42-2 of the IPMI specification"
                 },
                 "SensorType": {
-                    "$ref": "#/definitions/SensorType",
+                    "anyOf": [
+                        {"$ref": "#/definitions/SensorType"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "If the EntryType is SEL, this will have the sensor type that the log entry pertains to.",
                     "longDescription": "This property shall be present if the EntryType value is SEL."
@@ -118,10 +127,7 @@
                 "MessageArgs": {
                     "type": "array",
                     "items": {
-                        "type": [
-                            "string",
-                            "null"
-                        ]
+                        "type": "string"
                     },
                     "readonly": true,
                     "description": "The values of this property shall be any arguments for the message.",
