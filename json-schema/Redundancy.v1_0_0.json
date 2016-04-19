@@ -36,7 +36,10 @@
                     "longDescription": "This object represents the Name property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification. The value of this string shall be of the format for the reserved word *Name*."
                 },
                 "Mode": {
-                    "$ref": "#/definitions/RedundancyMode",
+                    "anyOf": [
+                        {"$ref": "#/definitions/RedundancyMode"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "This is the redundancy mode of the group.",
                     "longDescription": "The value of this property shall contain the information about the redundancy mode of this manager.  Failover shall indicate a master/slave type arrangement where status indicates the role of this manager.  N+1 indicates an arrangement where the redundancy set needs MaxNumSupported-1 number of resources in order to be redundant.  Load Balanced indicates all members are active. However, there functionality is not independent of each other. Their functioning is determined by some sort of load balancing algorithm. Sparing is implied (i.e. each member can be a spare for the other(s). Sparing indicates that all members are active and are aware of each others. However, their functionality is independent until failover. Each member can be a spare for the other(s). Limited Sparing indicates that all members are active, and they may or may not be aware of each and they are not spares for each other."

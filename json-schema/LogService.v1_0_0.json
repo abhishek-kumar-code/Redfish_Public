@@ -156,7 +156,10 @@
                     "longDescription": "The Actions property shall contain the available actions for this resource."
                 },
                 "Status": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
+                    "anyOf": [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"},
+                        {"type": "null"}
+                    ]
                 },
                 "Entries": {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/LogEntryCollection.json#/definitions/LogEntryCollection",
