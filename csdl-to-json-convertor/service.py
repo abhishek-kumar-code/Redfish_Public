@@ -701,7 +701,7 @@ class JsonSchemaGenerator:
 
         output = UT.Utilities.indent(depth) 
         if isnullable:
-            output += "\"oneOf\": [\n"
+            output += "\"anyOf\": [\n"
             output += UT.Utilities.indent(depth+1) + "{\"$ref\": \"" + refvalue + "\"},\n"
             output += UT.Utilities.indent(depth+1) + "{\"type\": \"null\"}\n"
             output += UT.Utilities.indent(depth)   + "]"
