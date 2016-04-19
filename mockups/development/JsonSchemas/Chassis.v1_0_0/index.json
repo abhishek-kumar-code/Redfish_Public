@@ -8,7 +8,7 @@
     "Languages": [
         "en"
     ],
-    "Schema": "Chassis.v1_0_0",
+    "Schema": "#Chassis.v1_0_0.Chassis",
     "Oem": {},
     "Location": [
         {

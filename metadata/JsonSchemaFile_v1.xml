@@ -45,8 +45,8 @@
         </Property>
         <Property Name="Schema" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The type name this schema describes."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the value of the Type property for that schema and shall conform to the syntax specified in the Redfish specification for the Type property."/>
+          <Annotation Term="OData.Description" String="The @odata.type name this schema describes."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the value of the @odata.type property for that schema and shall conform to the syntax specified in the Redfish specification for the Type property."/>
           <Annotation Term="Redfish.Required"/>
         </Property>
         <Property Name="Location" Type="Collection(JsonSchemaFile.v1_0_0.Location)" Nullable="false">
