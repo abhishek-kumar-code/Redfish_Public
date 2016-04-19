@@ -21,10 +21,7 @@
             "additionalProperties": false,
             "properties": {
                 "Oem": {
-                    oneOf: [
-                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem"},
-                        {"type": "null"}
-                    ]
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem"
                 },
                 "Name": {
                     "type": "string",

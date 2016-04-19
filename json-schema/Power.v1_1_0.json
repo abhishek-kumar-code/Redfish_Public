@@ -516,10 +516,7 @@
                     "longDescription": "This property shall contiain the maximum amount of power, in Watts, that the associated power supply is rated to deliver while operating in this input range."
                 },
                 "Oem": {
-                    oneOf: [
-                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem"},
-                        {"type": "null"}
-                    ]
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem"
                 }
             }
         },

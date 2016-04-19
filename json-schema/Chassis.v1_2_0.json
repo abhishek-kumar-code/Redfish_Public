@@ -301,10 +301,7 @@
                     "additionalProperties": false,
                     "properties": {
                         "Oem": {
-                            oneOf: [
-                                {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem"},
-                                {"type": "null"}
-                            ],
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
                             "description": "Oem extension object.",
                             "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
                         },
@@ -420,10 +417,7 @@
                     "additionalProperties": false,
                     "properties": {
                         "Oem": {
-                            "type": [
-                                "object",
-                                "null"
-                            ],
+                            "type": "object",
                             "patternProperties": {
                                 "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                                     "type": [

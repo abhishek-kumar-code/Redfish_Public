@@ -112,10 +112,7 @@
                     "longDescription": "This property shall represent the format of the Info property."
                 },
                 "Oem": {
-                    oneOf: [
-                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem"},
-                        {"type": "null"}
-                    ]
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem"
                 }
             },
             "readonly": true
