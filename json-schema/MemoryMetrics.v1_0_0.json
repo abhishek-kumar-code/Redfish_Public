@@ -188,50 +188,11 @@
                     "description": "Performance degraded mode status",
                     "longDescription": "The value of this property shall be verformance degraded mode status, with true indicating perfomance degraded."
                 },
-                "Temperature": {
-                    "type": [
-                        "boolean",
-                        "null"
-                    ],
+                "AlarmTrips": {
+                    "$ref": "#/definitions/AlarmTrips",
                     "readonly": true,
-                    "description": "Temperature threshold crossing alarm trip detected status",
-                    "longDescription": "The value of this property shall be true if a temperature threshold alarm trip was detected."
-                },
-                "SpareBlock": {
-                    "type": [
-                        "boolean",
-                        "null"
-                    ],
-                    "readonly": true,
-                    "description": "Spare block capacity crossing alarm trip detected status",
-                    "longDescription": "The value of this property shall be true if the spare block capacity crossing alarm trip was detected."
-                },
-                "UncorrectableECCError": {
-                    "type": [
-                        "boolean",
-                        "null"
-                    ],
-                    "readonly": true,
-                    "description": "Uncorrectable data error threshold crossing alarm trip detected status",
-                    "longDescription": "The value of this property shall be true if the uncorrectable error threshold alarm trip was detected."
-                },
-                "CorrectableECCError": {
-                    "type": [
-                        "boolean",
-                        "null"
-                    ],
-                    "readonly": true,
-                    "description": "Correctable data error threshold crossing alarm trip detected status",
-                    "longDescription": "The value of this property shall be true if the correctable error threshold crossing alarm trip was detected."
-                },
-                "AddressParityError": {
-                    "type": [
-                        "boolean",
-                        "null"
-                    ],
-                    "readonly": true,
-                    "description": "Address parity error detected status",
-                    "longDescription": "The value of this property shall be true if an Address Parity Error was detected which could not be corrected by retry"
+                    "description": "Alarm trip information about the memory",
+                    "longDescription": "This object shall contain properties describe the types of alarms that have been raised by the memory."
                 }
             }
         },
@@ -355,10 +316,7 @@
                     "additionalProperties": false,
                     "properties": {
                         "Oem": {
-                            "type": [
-                                "object",
-                                "null"
-                            ],
+                            "type": "object",
                             "patternProperties": {
                                 "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                                     "type": [

@@ -206,7 +206,10 @@
                     "longDescription": "The value of this property shall be an identifying string used to track the chassis for inventory purposes."
                 },
                 "IndicatorLED": {
-                    "$ref": "#/definitions/IndicatorLED",
+                    "anyOf": [
+                        {"$ref": "#/definitions/IndicatorLED"},
+                        {"type": "null"}
+                    ],
                     "description": "The state of the indicator LED, used to identify the chassis.",
                     "longDescription": "This value of this property shall contain the indicator light state for the indicator light associated with this system."
                 },
@@ -341,10 +344,7 @@
                     "additionalProperties": false,
                     "properties": {
                         "Oem": {
-                            "type": [
-                                "object",
-                                "null"
-                            ],
+                            "type": "object",
                             "patternProperties": {
                                 "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                                     "type": [
@@ -391,7 +391,10 @@
                     "longDescription": "The value of this property shall be a reference to the resource that represents the power characteristics of this chassis and shall be of type Power."
                 },
                 "PowerState": {
-                    "$ref": "#/definitions/PowerState",
+                    "anyOf": [
+                        {"$ref": "#/definitions/PowerState"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "This is the current power state of the chassis.",
                     "longDescription": "The value of this property shall contain the power state of the chassis."

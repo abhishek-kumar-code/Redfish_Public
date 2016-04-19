@@ -35,10 +35,7 @@
                 "RelatedProperties": {
                     "type": "array",
                     "items": {
-                        "type": [
-                            "string",
-                            "null"
-                        ]
+                        "type": "string"
                     },
                     "description": "This is an array of properties described by the message.",
                     "longDescription": "This property shall contain an array of JSON Pointers indicating the properties described by the message, if appropriate for the message."
@@ -46,10 +43,7 @@
                 "MessageArgs": {
                     "type": "array",
                     "items": {
-                        "type": [
-                            "string",
-                            "null"
-                        ]
+                        "type": "string"
                     },
                     "description": "This array of message arguments are substituted for the arguments in the message when looked up in the message registry.",
                     "longDescription": "This property shall contain the message substitution arguments for the specific message referenced by the MessageId and shall only be included if the MessageId is present."

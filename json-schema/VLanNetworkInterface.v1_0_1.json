@@ -29,7 +29,10 @@
                     "longDescription": "The value of this property shall be used to indicate if this VLAN is enabled for this interface."
                 },
                 "VLANId": {
-                    "$ref": "#/definitions/VLANId",
+                    "anyOf": [
+                        {"$ref": "#/definitions/VLANId"},
+                        {"type": "null"}
+                    ],
                     "description": "This indicates the VLAN identifier for this VLAN.",
                     "longDescription": "The value of this property shall be used to indicate the VLAN identifier for this VLAN."
                 }
@@ -93,7 +96,10 @@
                     "longDescription": "The value of this property shall be used to indicate if this VLAN is enabled for this interface."
                 },
                 "VLANId": {
-                    "$ref": "#/definitions/VLANId",
+                    "anyOf": [
+                        {"$ref": "#/definitions/VLANId"},
+                        {"type": "null"}
+                    ],
                     "description": "This indicates the VLAN identifier for this VLAN.",
                     "longDescription": "The value of this property shall be used to indicate the VLAN identifier for this VLAN."
                 }

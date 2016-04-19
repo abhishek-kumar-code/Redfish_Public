@@ -62,10 +62,10 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the minimum number of members allowed in the redundancy group for the current redundancy mode to still be fault tolerant."/>
           <Annotation Term="Redfish.Required"/>
         </Property>
-        <Property Name="Status" Nullable="false" Type="Resource.Status">
+        <Property Name="Status" Type="Resource.Status" Nullable="false">
           <Annotation Term="Redfish.Required"/>
         </Property>
-        <NavigationProperty Name="RedundancySet" Type="Collection(Resource.Item)">
+        <NavigationProperty Name="RedundancySet" Type="Collection(Resource.Item)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains any ids that represent components of this redundancy set."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the ids of components that are part of this redundancy set. The id values may or may not be dereferenceable."/>

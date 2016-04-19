@@ -81,7 +81,7 @@ class JsonSchemaGenerator:
 
 #todo: fix logic to be more generic post-v1
         # If the current type is defined in this namespace
-        if self.isabstract(current_typedata):  #todo: this logic is wrong!  trying to write out item as idRef, but not all abstract types should be written out as idRefs...
+        if (current_typename == "Resource.Item") :
             refvalue = odataSchema + "#/definitions/idRef"
         elif ( typetype != "Action" and self.include_type(simplename, current_typedata["Namespace"], root_namespace, typetable ) ) or (typetype == "Action" and self.include_type(simplename, current_typedata["BoundNamespace"], root_namespace, typetable) ):
             refvalue = "#/definitions/" + simplename
@@ -141,10 +141,10 @@ class JsonSchemaGenerator:
     # Description:                                                  #
     #  Returns True if property should be written inline            #
     #################################################################
-    def is_inline_type(self, type):
+    def is_inline_type(self, type, typetable):
 
         #todo: use "has_basetype" post-v1
-        if(type["BaseType"] != "Resource.Links" and type["Name"] != "Actions" and type["Name"] != "OemActions" ):
+        if( not(self.has_basetype(typetable, type, "Resource.Links")) and type["Name"] != "Actions" and type["Name"] != "OemActions" ):
             return True;
 
         return False
@@ -675,19 +675,49 @@ class JsonSchemaGenerator:
         return output
 
     ########################################################################################################
+    # Name: write_type                                                                                     #
+    # Description:                                                                                         #
+    #  writes type attribute                                                                               #
+    ########################################################################################################
+    def write_type(self, typename, depth, isnullable):
+
+        output  = UT.Utilities.indent(depth)   + "\"type\": "
+        if isnullable:
+            output += "[\n"
+            output += UT.Utilities.indent(depth+1) +     "\"" + typename + "\",\n"
+            output += UT.Utilities.indent(depth+1) +     "\"null\"\n"
+            output += UT.Utilities.indent(depth)   + "]"
+        else:
+            output += "\"" + typename +"\""
+
+        return output
+
+    ########################################################################################################
+    # Name: write_reference                                                                                #
+    # Description:                                                                                         #
+    #  Generates JSON for a property reference that may be nullable                                        #
+    ########################################################################################################
+    def write_reference(self, refvalue, depth, isnullable):
+
+        output = UT.Utilities.indent(depth) 
+        if isnullable:
+            output += "\"anyOf\": [\n"
+            output += UT.Utilities.indent(depth+1) + "{\"$ref\": \"" + refvalue + "\"},\n"
+            output += UT.Utilities.indent(depth+1) + "{\"type\": \"null\"}\n"
+            output += UT.Utilities.indent(depth)   + "]"
+        else:
+            output += "\"$ref\": \"" + refvalue + "\""
+
+        return output
+
+    ########################################################################################################
     # Name: generate_json_for_propertybag                                                                  #
     # Description:                                                                                         #
     #  Generates JSON for all the properties that are defined inside a type                                #
     ########################################################################################################
-    def generate_json_for_propertybag(self, typetable, typedata, depth, namespace, prefixuri, isnullable, write_reference):
+    def generate_json_for_propertybag(self, typetable, typedata, depth, namespace, prefixuri, isnullable, write_as_reference):
 
-        if isnullable:
-            output  = UT.Utilities.indent(depth)   + "\"type\": [\n"
-            output += UT.Utilities.indent(depth+1) +     "\"object\",\n"
-            output += UT.Utilities.indent(depth+1) +     "\"null\"\n"
-            output += UT.Utilities.indent(depth)   + "],\n"
-        else:
-            output = UT.Utilities.indent(depth) + "\"type\": \"object\",\n"
+        output = self.write_type("object", depth, isnullable) + ",\n"
 
         # allow odata and redfish annotations
         output += self.writepatternproperties(typetable, typedata, depth, namespace, prefixuri)
@@ -743,13 +773,29 @@ class JsonSchemaGenerator:
                         firstproperty = True
                         continue
 
+                    # Extract Name and Type
+                    propname = property.attrib["Name"]
+                    proptypename = property.attrib["Type"]
+
+                    #determine nullability
+                    propertyisnullable = True
+                    if "Nullable" in property.attrib.keys():
+                        if property.attrib["Nullable"] == "false":
+                            propertyisnullable = False
+                    else:
+                        #if the property type is a type definition with nullable=true already defined, we don't need to write it
+                        if proptypename in typetable.keys() :
+                            proptype=typetable[proptypename]
+                            if (proptype["TypeType"] == "TypeDefinition" ):
+                                if "Nullable" in proptype["Node"].attrib.keys():
+                                    if proptype["Node"].attrib["Nullable"] == "true":
+                                        propertyisnullable = False
+
                     # Handle navigationLinks/NavigationProperty
                     if ( propkind == "NavigationProperty"):
-                        propname = property.attrib["Name"]
-                        attribtype = property.attrib["Type"]
 
                         # write out common properties for collections
-                        if ( not (attribtype is None)) and (self.is_collection(attribtype)):
+                        if ( not (proptypename is None)) and (self.is_collection(proptypename)):
                             output += UT.Utilities.indent(depth+1) + "\"" + propname + "@odata.count\": {\n"
                             output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + odataSchema + "#/definitions/count\"\n"
                             output += UT.Utilities.indent(depth+1) + "},\n"
@@ -770,10 +816,10 @@ class JsonSchemaGenerator:
                                 termvalue = "OData.AutoExpand"
                           
                         # Check if it is a collection or not
-                        if ( not (attribtype is None)) and (self.is_collection(attribtype)):
+                        if ( not (proptypename is None)) and (self.is_collection(proptypename)):
                             output += UT.Utilities.indent(depth+2) + "\"type\": \"array\",\n"
                             output += UT.Utilities.indent(depth+2) + "\"items\": {\n"
-                            current_typename = JsonSchemaGenerator.extract_underlyingtype_from_collectiontype(attribtype)
+                            current_typename = JsonSchemaGenerator.extract_underlyingtype_from_collectiontype(proptypename)
 
                             # Get the reference value
                             simplename = current_typename[current_typename.rfind(".") + 1 :]
@@ -781,21 +827,12 @@ class JsonSchemaGenerator:
                             output += UT.Utilities.indent(depth+3)+ "\"$ref\": \"" + refvalue + "\"\n"
                             output += UT.Utilities.indent(depth+2) + "}"
                         else:
-                            refvalue = self.get_ref_value_for_type(typetable, attribtype, namespace)
-                            output += UT.Utilities.indent(depth+2)+ "\"$ref\": \"" + refvalue + "\""
+                            refvalue = self.get_ref_value_for_type(typetable, proptypename, namespace)
+                            output += self.write_reference(refvalue, depth+2, propertyisnullable)
 
 					# Handle regular property
                     else:
-                        # Extract Name, Type and namespace
-                        propname = property.attrib["Name"]
-                        proptypename = property.attrib["Type"]
                         output += UT.Utilities.indent(depth+1) + "\"" + propname + "\": {\n"    
-                        propertyisnullable = True
-
-                        if "Nullable" in property.attrib.keys():
-                            if property.attrib["Nullable"] == "false":
-                                propertyisnullable = False                    
-                        ignoreannotations = self.get_property_annotation_terms(property)
 
                         # Check if it is a collection or not
                         iscollection = self.is_collection(proptypename)
@@ -806,11 +843,12 @@ class JsonSchemaGenerator:
                             depth += 1
 
                         # Get all keys and extract typedata for the property
+                        ignoreannotations = self.get_property_annotation_terms(property)
                         typetablekeys = typetable.keys()
                         if (proptypename in typetablekeys):
-                            if(self.is_inline_type(typetable[proptypename]) ):
+                            if(self.is_inline_type(typetable[proptypename], typetable) ):
                                 refvalue = self.get_ref_value_for_type(typetable, proptypename, namespace)
-                                output += UT.Utilities.indent(depth+2)+ "\"$ref\": \"" + refvalue + "\""
+                                output += self.write_reference(refvalue, depth+2, propertyisnullable)
                             # write Links, Actions, OemActions inline
                             else:
                                 output += self.generate_json_for_type(typetable, proptypename, depth + 2, typedata["Namespace"], prefixuri, propertyisnullable, False, ignoreannotations)
@@ -890,12 +928,12 @@ class JsonSchemaGenerator:
     # Description:                                                                             #
     #   Generates JSON corresponding to a collection type                                      #
     ############################################################################################
-    def generate_json_for_collection_type(self, typetable, typename, depth, namespace, prefixuri, isnullable, write_reference):
+    def generate_json_for_collection_type(self, typetable, typename, depth, namespace, prefixuri, isnullable, write_as_reference):
         output = ""
         scalarname = typename[11:-1]
         output  = UT.Utilities.indent(depth) + "\"type\": \"array\",\n"
         output += UT.Utilities.indent(depth) + "\"items\": {\n"
-        output += self.generate_json_for_type(typetable, scalarname, depth + 1, namespace, prefixuri, isnullable, write_reference)
+        output += self.generate_json_for_type(typetable, scalarname, depth + 1, namespace, prefixuri, isnullable, write_as_reference)
         output += "\n"
         output += UT.Utilities.indent(depth) + "}"
 
@@ -922,14 +960,7 @@ class JsonSchemaGenerator:
         if typename in edmtojson.keys():
             jsontype = edmtojson[typename]
 
-            if isnullable:
-                output  = UT.Utilities.indent(depth)   + "\"type\": [\n"
-                output += UT.Utilities.indent(depth+1) +     "\"" + jsontype + "\",\n"
-                output += UT.Utilities.indent(depth+1) +     "\"null\"\n"
-                output += UT.Utilities.indent(depth)   + "]"
-
-            else:
-                output = UT.Utilities.indent(depth) + "\"type\": \"" + jsontype + "\""
+            output = self.write_type(jsontype, depth, isnullable)
 
             if typename == "Edm.DateTimeOffset":
                 output += ",\n" + UT.Utilities.indent(depth) + "\"format\": \"date-time\""
@@ -1042,17 +1073,10 @@ class JsonSchemaGenerator:
         #if same major version, reference local definitions
         if not(self.include_type(typename, typedata["Namespace"], namespace, typetable) ):
                 refvalue = self.get_ref_value_for_type(typetable, typename, namespace)
-                output += UT.Utilities.indent(depth)+ "\"$ref\": \"" + refvalue + "\""
+                output += self.write_reference(refvalue,depth,isnullable)
 
         else:
-            if isnullable:
-                output  = UT.Utilities.indent(depth)   + "\"type\": [\n"
-                output += UT.Utilities.indent(depth+1) +     "\"string\",\n"
-                output += UT.Utilities.indent(depth+1) +     "\"null\"\n"
-                output += UT.Utilities.indent(depth)   + "],\n"
-
-            else:
-                output = UT.Utilities.indent(depth) + "\"type\": \"string\",\n"
+            output = self.write_type("string", depth, isnullable) + ",\n"
 
             output += UT.Utilities.indent(depth) + "\"enum\": [\n"
             firstenumvalue = True
@@ -1149,13 +1173,13 @@ class JsonSchemaGenerator:
     # Description:                                                               #
     #  Generates JSON for a particular type                                      #
     ##############################################################################
-    def generate_json_for_type(self, typetable, typename, depth, namespace, prefixuri, isnullable, write_reference, ignoreannotations = []):
+    def generate_json_for_type(self, typetable, typename, depth, namespace, prefixuri, isnullable, write_as_reference, ignoreannotations = []):
 
         output = ""
 
         # Collections
         if self.is_collection(typename):
-            output = self.generate_json_for_collection_type(typetable, typename, depth, namespace, prefixuri, isnullable, write_reference)
+            output = self.generate_json_for_collection_type(typetable, typename, depth, namespace, prefixuri, isnullable, write_as_reference)
             return output
 
         # "Primitive" types
@@ -1175,24 +1199,24 @@ class JsonSchemaGenerator:
             output += self.generate_json_for_EnumTypes(typetable, typedata, typename, namespace, depth, isnullable)
 
         elif typetype == "EntityType":
-            if self.include_type(typename, typedata["Namespace"], namespace, typetable) and not write_reference:
-                output += self.generate_json_for_propertybag(typetable, typedata, depth, namespace, prefixuri, isnullable, write_reference)
+            if self.include_type(typename, typedata["Namespace"], namespace, typetable) and not write_as_reference:
+                output += self.generate_json_for_propertybag(typetable, typedata, depth, namespace, prefixuri, isnullable, write_as_reference)
             else:
                 output = UT.Utilities.indent(depth) + "\"@odata.id\": \"" + typedata["JsonUrl"] + "#" + typename + "\""
                 return output
 
         elif typetype == "ComplexType":
-            if self.include_type(typename, typedata["Namespace"], namespace, typetable) and not write_reference:
-                output = self.generate_json_for_propertybag(typetable, typedata, depth, namespace, prefixuri, isnullable, write_reference)
+            if self.include_type(typename, typedata["Namespace"], namespace, typetable) and not write_as_reference:
+                output = self.generate_json_for_propertybag(typetable, typedata, depth, namespace, prefixuri, isnullable, write_as_reference)
             else:
                 refvalue = self.get_ref_value_for_type(typetable, typename, namespace)
-                output += UT.Utilities.indent(depth)+ "\"$ref\": \"" + refvalue + "\""
+                output += self.write_reference(refvalue, depth, isnullable)
                 
                 return output
 
         elif typetype == "Action":
-            if self.include_type(typename, typedata["Namespace"], namespace, typetable) and not write_reference:
-                output = self.generate_json_for_propertybag(typetable, typedata, depth, namespace, prefixuri, isnullable, write_reference)
+            if self.include_type(typename, typedata["Namespace"], namespace, typetable) and not write_as_reference:
+                output = self.generate_json_for_propertybag(typetable, typedata, depth, namespace, prefixuri, isnullable, write_as_reference)
             else:
                 simplename = typename[typename.rfind(".") + 1 :]
                 output = UT.Utilities.indent(depth) + "\"@odata.id\": \"" + typedata["JsonUrl"] + "#" + simplename + "\""
@@ -1224,26 +1248,33 @@ class JsonSchemaGenerator:
     def generate_json_for_reference_type(self, typetable, typename, schemaname, depth, prefixuri, includeIdRef):
 
         output = ""
-        output += UT.Utilities.indent(depth+1) + "\"anyOf\": [\n"
-        if(includeIdRef):
-            output += UT.Utilities.indent(depth+2) + "{\n"
-            output += UT.Utilities.indent(depth+3) + "\"$ref\": \"" + odataSchema + "#/definitions/idRef\"\n"
-            output += UT.Utilities.indent(depth+2) + "}"
+        derivedtypes = self.get_derived_types(typetable, typename, schemaname)
+        write_as_array = len(derivedtypes) > 1 or includeIdRef
+        if(write_as_array):
+            output += UT.Utilities.indent(depth+1) + "\"anyOf\": [\n"
+            depth+=1
+            if(includeIdRef):
+                output += UT.Utilities.indent(depth+1) + "{\n"
+                output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + odataSchema + "#/definitions/idRef\"\n"
+                output += UT.Utilities.indent(depth+1) + "}"
 
         #for each type that derives from this type
         isFirst= not(includeIdRef)
-        derivedtypes = self.get_derived_types(typetable, typename, schemaname)
         for derivedtype in derivedtypes:
             if(not(isFirst)):
                 output += ",\n"
             else:
                 isFirst=False
-            output += UT.Utilities.indent(depth+2) + "{\n"
-            output += UT.Utilities.indent(depth+3) + "\"$ref\": \"" + prefixuri + derivedtype["Namespace"] + ".json#/definitions/" + derivedtype["Name"] + "\"\n"
-            output += UT.Utilities.indent(depth+2) + "}"
+            if(write_as_array):
+                output += UT.Utilities.indent(depth+1) + "{\n"
+            output += UT.Utilities.indent(depth+2) + "\"$ref\": \"" + prefixuri + derivedtype["Namespace"] + ".json#/definitions/" + derivedtype["Name"] + "\""
+            if(write_as_array):
+                output += "\n"
+                output += UT.Utilities.indent(depth+1) + "}"
 
-        output += "\n"
-        output += UT.Utilities.indent(depth+1) + "]"
+        if(write_as_array):
+            output += "\n"
+            output += UT.Utilities.indent(depth) + "]"
   
         return output
 
@@ -1256,7 +1287,7 @@ class JsonSchemaGenerator:
 
         basetypename = basetypenamespace + "." + basetypename
         typenames = typetable.keys()
-        parsedtypes=[]
+        visitedtypes=[]
         derivedtypes = []
 
         for currentType in typenames:
@@ -1265,10 +1296,10 @@ class JsonSchemaGenerator:
             typename = typedata["Name"]
             typenamespace = typedata["Namespace"]
         
-            if(not ((typename + ":" + typenamespace) in parsedtypes )) :
+            if(not ((typename + ":" + typenamespace) in visitedtypes )) :
                 # This type has not been parsed yet
-                parsedtypes.append(typename + ":" + typenamespace)
-                if ( typetype == "EntityType" ):
+                visitedtypes.append(typename + ":" + typenamespace)
+                if ( typetype == "EntityType" or typetype == "ComplexType"):
                     # Check if the type being processed is derived from Resource or ResourceCollection
                     if ( self.has_basetype(typetable, typedata, basetypename) ): 
                         derivedtypes.append(typedata)
@@ -1389,7 +1420,8 @@ class JsonSchemaGenerator:
         
             if(not ((typename + ":" + currentNamespace) in parsedtypes)) :
                 # This type has not been parsed yet. Process it now.
-                if ( (typetype!= "Action" and ( self.include_type(typename,currentNamespace, namespace, typetable) and self.is_inline_type(typedata) and not (typetype=="ComplexType" and self.isabstract(typedata) ) ) )
+                #if this is an inline type to include, that's not an abstract complex type in the Resource namespace
+                if ( (typetype!= "Action" and ( self.include_type(typename,currentNamespace, namespace, typetable) and self.is_inline_type(typedata, typetable) and not (typetype=="ComplexType" and self.isabstract(typedata) and currentNamespace == "Resource" ) ) )
                     or (typetype == "Action" and self.include_type(typename, typedata["BoundNamespace"], namespace, typetable)) ):
                     # Add comma if this is not the first definition, otherwise write start of definitions block
                     if (type_count > 0):
@@ -1405,11 +1437,12 @@ class JsonSchemaGenerator:
                     # Generate JSON for the type and append it to the output
                     if (typetype == "Action"):
                         output += self.get_action_definition(typetable, typedata, depth + 1, namespace, prefixuri)
+
                     # todo: support other versions (derived) of Resource and ReferenceableMember
                     elif ( basetype == "Resource.v1_0_0.Resource" ):
                         output += self.generate_json_for_reference_type(typetable, typename, namespace, depth + 1, prefixuri, True)
-#                    elif ( basetype == "Resource.v1_0_0.ReferenceableMember" ):
-#                        output += self.generate_json_for_reference_type(typetable, typename, namespace, depth + 1, prefixuri, False)
+                    elif ( self.isabstract(typedata) ):
+                        output += self.generate_json_for_reference_type(typetable, typename, namespace, depth + 1, prefixuri, False)
                     else:
                         output += self.generate_json_for_type(typetable, currentType, depth+2, namespace, prefixuri, False, False)
 
@@ -1447,7 +1480,7 @@ class JsonSchemaGenerator:
             if(not ((typename + ":" + typenamespace) in parsedtypes)) :
                 # This type has not been parsed 
                 parsedtypes.append(typename + ":" + typenamespace)
-                if ( (typenamespace == namespace) and (typedata["IsFromRefUri"] == False) and (typetype == "EntityType") and ( self.has_basetype(typetable, typedata, "Resource.v1_0_0.Resource" ) or self.has_basetype(typetable, typedata, "Resource.v1_0_0.ResourceCollection") ) ): 
+                if ( (typenamespace == namespace) and (typedata["IsFromRefUri"] == False) and (typetype == "EntityType" and (self.has_basetype(typetable, typedata, "Resource.v1_0_0.Resource" ) or self.has_basetype(typetable, typedata, "Resource.v1_0_0.ResourceCollection") ) ) ): 
                     validationtypecount += 1
                     validationtypes.append(self.get_ref_value_for_type(typetable, currentType, namespace))
 
