@@ -43,7 +43,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this string shall be an URI.  A null value indicated no image connection."/>
           <Annotation Term="OData.IsURL"/>
         </Property>
-        <Property Name="MediaTypes" Type="Collection(VirtualMedia.v1_0_0.MediaType)">
+        <Property Name="MediaTypes" Type="Collection(VirtualMedia.v1_0_0.MediaType)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the media types supported as virtual media."/>
           <Annotation Term="OData.LongDescription" String="The values of this array shall be the supported media types for this connection."/>
