@@ -28,7 +28,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MemoryMetrics">
 
-      <EntityType Name="MemoryMetrics" BaseType="Resource.v1_0_0.Resource">
+      <EntityType Name="MemoryMetrics" BaseType="Resource.v1_0_0.Resource" Abstract="True">
         <Annotation Term="OData.Description" String="MemoryMetrics contains usage and health statistics for a single Memory module or device instance." />
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent the Memory Metrics for a single Memory device in a Redfish implementation." />
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
@@ -154,7 +154,7 @@
 
       <ComplexType Name="Actions">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Property Name="Oem" Type="MemoryMetrics.v1_0_0.OemActions"/>
+        <Property Name="Oem" Type="MemoryMetrics.v1_0_0.OemActions" Nullable="false"/>
       </ComplexType>
 
       <ComplexType Name="OemActions">

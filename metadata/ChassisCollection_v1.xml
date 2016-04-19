@@ -27,7 +27,7 @@
 
       <EntityType Name="ChassisCollection" BaseType="Resource.v1_0_0.ResourceCollection">
         <Annotation Term="OData.Description" String="A Collection of Chassis resource instances."/>
-        <NavigationProperty Name="Members" Type="Collection(Chassis.Chassis)">
+        <NavigationProperty Name="Members" Type="Collection(Chassis.Chassis)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the members of this collection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
