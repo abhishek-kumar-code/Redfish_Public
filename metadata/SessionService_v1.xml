@@ -33,7 +33,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SessionService">
 
-      <EntityType Name="SessionService" BaseType="Resource.v1_0_0.Resource" Abstract="True">
+      <EntityType Name="SessionService" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="This is the schema definition for the Session Service.  It represents the properties for the service itself and has links to the actual list of sessions."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent the Session Service Properties for a Redfish implementation."/>
       </EntityType>

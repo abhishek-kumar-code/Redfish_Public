@@ -36,7 +36,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Volume">
 
-      <EntityType Name="Volume" BaseType="Resource.v1_0_0.Resource" Abstract="True">
+      <EntityType Name="Volume" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="Volume contains properties used to describe a volume, virtual disk, LUN, or other logical storage entity for any system."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a volume, virtual disk, logical disk, LUN, or other logical storage for a Redfish implementation."/>
       </EntityType>
