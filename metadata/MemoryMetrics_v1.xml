@@ -122,34 +122,40 @@
           <Annotation Term="OData.Description" String="Performance degraded mode status" />
           <Annotation Term="OData.LongDescription" String="The value of this property shall be verformance degraded mode status, with true indicating perfomance degraded." />
         </Property>
-        <ComplexType Name="AlarmTrips">
-          <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-          <Property Name="Temperature" Type="Edm.Boolean">
-            <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
-            <Annotation Term="OData.Description" String="Temperature threshold crossing alarm trip detected status" />
-            <Annotation Term="OData.LongDescription" String="The value of this property shall be true if a temperature threshold alarm trip was detected." />
-          </Property>
-          <Property Name="SpareBlock" Type="Edm.Boolean">
-            <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
-            <Annotation Term="OData.Description" String="Spare block capacity crossing alarm trip detected status" />
-            <Annotation Term="OData.LongDescription" String="The value of this property shall be true if the spare block capacity crossing alarm trip was detected." />
-          </Property>
-          <Property Name="UncorrectableECCError" Type="Edm.Boolean">
-            <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
-            <Annotation Term="OData.Description" String="Uncorrectable data error threshold crossing alarm trip detected status" />
-            <Annotation Term="OData.LongDescription" String="The value of this property shall be true if the uncorrectable error threshold alarm trip was detected." />
-          </Property>
-          <Property Name="CorrectableECCError" Type="Edm.Boolean">
-            <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
-            <Annotation Term="OData.Description" String="Correctable data error threshold crossing alarm trip detected status" />
-            <Annotation Term="OData.LongDescription" String="The value of this property shall be true if the correctable error threshold crossing alarm trip was detected." />
-          </Property>
-          <Property Name="AddressParityError" Type="Edm.Boolean">
-            <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
-            <Annotation Term="OData.Description" String="Address parity error detected status" />
-            <Annotation Term="OData.LongDescription" String="The value of this property shall be true if an Address Parity Error was detected which could not be corrected by retry" />
-          </Property>
-        </ComplexType>
+        <Property Name="AlarmTrips" Type="MemoryMetrics.v1_0_0.HealthData" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="Alarm trip information about the memory"/>
+          <Annotation Term="OData.LongDescription" String="This object shall contain that describe the types of alarms that have been raised by the memory."/>
+        </Property>
+      </ComplexType>
+
+      <ComplexType Name="AlarmTrips">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Property Name="Temperature" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="Temperature threshold crossing alarm trip detected status" />
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be true if a temperature threshold alarm trip was detected." />
+        </Property>
+        <Property Name="SpareBlock" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="Spare block capacity crossing alarm trip detected status" />
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be true if the spare block capacity crossing alarm trip was detected." />
+        </Property>
+        <Property Name="UncorrectableECCError" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="Uncorrectable data error threshold crossing alarm trip detected status" />
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be true if the uncorrectable error threshold alarm trip was detected." />
+        </Property>
+        <Property Name="CorrectableECCError" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="Correctable data error threshold crossing alarm trip detected status" />
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be true if the correctable error threshold crossing alarm trip was detected." />
+        </Property>
+        <Property Name="AddressParityError" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
+          <Annotation Term="OData.Description" String="Address parity error detected status" />
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be true if an Address Parity Error was detected which could not be corrected by retry" />
+        </Property>
       </ComplexType>
 
       <ComplexType Name="Actions">
