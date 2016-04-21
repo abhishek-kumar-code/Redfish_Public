@@ -26,6 +26,14 @@
 		},
 		"Oem": {}
 	},
+    "Links": {
+        "ConnectedSwitches": [
+            {"@odata.id": "/redfish/v1/Fabrics/ComplexPCIe/Switches/2"}
+        ],
+        "ConnectedSwitchPorts": [
+            {"@odata.id": "/redfish/v1/Fabrics/ComplexPCIe/Switches/2/Ports/InterswitchLink"}
+        ]
+    },
 	"Oem": {}
 }
 
