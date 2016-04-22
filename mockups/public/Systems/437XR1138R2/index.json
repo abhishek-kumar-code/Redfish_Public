@@ -25,17 +25,28 @@
         "BootSourceOverrideTarget@Redfish.AllowableValues": [
             "None",
             "Pxe",
-            "Floppy",
             "Cd",
             "Usb",
             "Hdd",
             "BiosSetup",
             "Utilities",
             "Diags",
+			"SDCard",
             "UefiTarget"
         ],
+		"BootSourceOverrideMode": "UEFI",
         "UefiTargetBootSourceOverride": "/0x31/0x33/0x01/0x01"
     },
+	"TrustedModules": [
+		{
+			"FirmwareVersion": "1.13b",
+			"InterfaceType": "TPM1_2",
+			"Status": {
+				"State": "Enabled",
+				"Health": "OK"
+			}
+		}
+	],
     "Oem": {
         "Contoso": {
             "@odata.type": "http://Contoso.com/Schema#Contoso.ComputerSystem",
