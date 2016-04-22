@@ -32,9 +32,12 @@
                 "@odata.id": "/redfish/v1/Managers/BMC"
             }
         ],
-        "Oem": {}
+		"ManagersInChassis": [
+			{
+				"@odata.id": "/redfish/v1/Managers/BMC"
+			}
+		]
     },
-    "Oem": {},
     "@odata.context": "/redfish/v1/$metadata#Chassis/Members/$entity",
     "@odata.id": "/redfish/v1/Chassis/1U",
     "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
