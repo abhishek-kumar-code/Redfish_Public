@@ -27,7 +27,7 @@
   <edmx:DataServices>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Session">
 
-      <EntityType Name="Session" BaseType="Resource.v1_0_0.Resource">
+      <EntityType Name="Session" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="The Session resource describes a single connection (session) between a client and a Redfish service instance."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a session for a Redfish implementation."/>
       </EntityType>

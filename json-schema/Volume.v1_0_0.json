@@ -139,7 +139,10 @@
                     "longDescription": "This property shall contain the size in bytes of the associated volume."
                 },
                 "VolumeType": {
-                    "$ref": "#/definitions/VolumeType",
+                    "anyOf": [
+                        {"$ref": "#/definitions/VolumeType"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "Is this drive currently predicting a failure in the near future",
                     "longDescription": "This property shall contain failure information as defined by the manufacturer for the associated drive."
@@ -257,10 +260,7 @@
                     "additionalProperties": false,
                     "properties": {
                         "Oem": {
-                            "type": [
-                                "object",
-                                "null"
-                            ],
+                            "type": "object",
                             "patternProperties": {
                                 "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                                     "type": [
