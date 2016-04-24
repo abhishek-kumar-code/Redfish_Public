@@ -711,11 +711,35 @@ class JsonSchemaGenerator:
         return output
 
     ########################################################################################################
+    # Name: get_latest_version                                                                             #
+    # Description:                                                                                         #
+    #  Gets the latest version less than or equal to current namespace for a particular type               #
+    ########################################################################################################
+    def get_latest_version(self, typetable, typedata, current_namespace):
+
+        #if type is in current namespace, return it
+        if typedata["Namespace"] == current_namespace :
+            return typedata
+
+        typename=typedata["Name"]
+        for key in typetable.keys():
+            candidate_type=typetable[key]
+            candidate_namespace=candidate_type["Namespace"]
+            #if namespace is a more recent namespace of the current type that is less than the current namespace
+            if(candidate_type["Name"] == typename and (candidate_namespace == current_namespace or ( not ( self.is_prior_version(typedata["Namespace"],candidate_namespace) ) and self.is_prior_version(candidate_namespace,current_namespace) ) ) ):
+                typedata=candidate_type
+
+        return typedata                
+
+    ########################################################################################################
     # Name: generate_json_for_propertybag                                                                  #
     # Description:                                                                                         #
     #  Generates JSON for all the properties that are defined inside a type                                #
     ########################################################################################################
     def generate_json_for_propertybag(self, typetable, typedata, depth, namespace, prefixuri, isnullable, write_as_reference):
+
+        #find out if there is a later version of this type defined within this namespace
+        typedata = self.get_latest_version(typetable,typedata,namespace)
 
         output = self.write_type("object", depth, isnullable) + ",\n"
 

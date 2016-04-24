@@ -314,15 +314,6 @@
                     "readonly": true,
                     "description": "This structure is used to show redundancy for fans.  The Component ids will reference the members of the redundancy groups.",
                     "longDescription": "The values of the properties in this array shall be used to show redundancy for fans and other elements in this resource.  The use of IDs within these arrays shall reference the members of the redundancy groups."
-                },
-                "ReadingUnits": {
-                    "anyOf": [
-                        {"$ref": "#/definitions/ReadingUnits"},
-                        {"type": "null"}
-                    ],
-                    "readonly": true,
-                    "description": "Units in which the reading and thresholds are measured.",
-                    "longDescription": "The value of this property shall be the units in which the fan's reading and thresholds are measured."
                 }
             },
             "description": "This is the base type for addressable members of an array.",
