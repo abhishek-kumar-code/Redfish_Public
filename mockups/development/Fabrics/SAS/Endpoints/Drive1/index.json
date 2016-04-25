@@ -7,7 +7,7 @@
 	"Name": "SAS Drive",
 	"Description": "The SAS Drive in Enclosure 2 Bay 0",
     "EndpointProtocol": "SAS",
-    "ConnectedDevices": [
+    "ConnectedEntities": [
         {
             "DeviceType": "Drive",
             "DeviceRole": "Target",

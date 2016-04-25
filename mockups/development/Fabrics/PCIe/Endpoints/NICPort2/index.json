@@ -7,7 +7,7 @@
 	"Name": "NIC Port",
 	"Description": "A Physical function of a multi-function NIC",
     "EndpointProtocol": "PCIe",
-    "ConnectedDevices": [
+    "ConnectedEntities": [
         {
             "DeviceType": "NetworkController",
             "DevicePciId": {

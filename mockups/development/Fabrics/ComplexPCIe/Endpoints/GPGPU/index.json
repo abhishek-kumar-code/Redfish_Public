@@ -7,7 +7,7 @@
 	"Name": "General Purpose GPU",
 	"Description": "A GPGPU Device",
     "EndpointProtocol": "PCIe",
-    "ConnectedDevices": [
+    "ConnectedEntities": [
         {
             "DeviceType": "Target",
             "DeviceRole": "Target",

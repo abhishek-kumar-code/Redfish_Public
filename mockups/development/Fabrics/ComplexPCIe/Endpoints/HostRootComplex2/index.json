@@ -7,7 +7,7 @@
 	"Name": "Host Root Complex for System 2",
 	"Description": "The PCIe Root Complex for System 3",
     "EndpointProtocol": "PCIe",
-    "ConnectedDevices": [
+    "ConnectedEntities": [
         {
             "DeviceType": "RootComplex",
             "DevicePciId": {

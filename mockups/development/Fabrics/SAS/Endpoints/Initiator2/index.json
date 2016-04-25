@@ -7,7 +7,7 @@
 	"Name": "SAS RAID Controller 2",
 	"Description": "SAS RAID Controller 2",
     "EndpointProtocol": "SAS",
-    "ConnectedDevices": [
+    "ConnectedEntities": [
         {
             "DeviceType": "Initiator",
             "DeviceRole": "Initiator",

@@ -7,7 +7,7 @@
 	"Name": "FC Port",
 	"Description": "A Physical function of a multi-function FC-HBA",
     "EndpointProtocol": "PCIe",
-    "ConnectedDevices": [
+    "ConnectedEntities": [
         {
             "DeviceType": "Initiator",
             "DevicePciId": {

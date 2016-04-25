@@ -7,7 +7,7 @@
 	"Name": "SAS Enclosure",
 	"Description": "A non-zoning capable SAS Enclosure",
     "EndpointProtocol": "SAS",
-    "ConnectedDevices": [
+    "ConnectedEntities": [
         {
             "DeviceType": "Expander",
             "DeviceRole": null,

@@ -7,7 +7,7 @@
 	"Name": "NVMe Drive",
 	"Description": "The PCIe Physical function of an 850GB NVMe drive",
     "EndpointProtocol": "PCIe",
-    "ConnectedDevices": [
+    "ConnectedEntities": [
         {
             "DeviceType": "Drive",
             "DeviceRole": "Target",

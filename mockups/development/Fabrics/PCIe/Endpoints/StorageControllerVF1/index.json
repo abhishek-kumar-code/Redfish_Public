@@ -7,7 +7,7 @@
 	"Name": "Storage Controller",
 	"Description": "A PCIe Virtual function of a storage controller",
     "EndpointProtocol": "PCIe",
-    "ConnectedDevices": [
+    "ConnectedEntities": [
         {
             "DeviceType": "Initiator",
             "DeviceRole": "Initiator",
