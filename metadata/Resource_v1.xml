@@ -209,7 +209,7 @@
         <Property Name="Id" Type="Resource.Id" Nullable="false">
           <Annotation Term="Redfish.Required"/>
         </Property>
-        <Property Name="Description" Type="Resource.Description" Nullable="false"/>
+        <Property Name="Description" Type="Resource.Description"/>
         <Property Name="Name" Type="Resource.Name" Nullable="false">
           <Annotation Term="Redfish.Required"/>
         </Property>
@@ -221,7 +221,7 @@
         <Key>
           <PropertyRef Name="Name"/>
         </Key>
-        <Property Name="Description" Type="Resource.Description" Nullable="false"/>
+        <Property Name="Description" Type="Resource.Description"/>
         <Property Name="Name" Type="Resource.Name" Nullable="false"/>
         <Property Name="Oem" Type="Resource.Oem" Nullable="false">
           <Annotation Term="OData.Description" String="This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections."/>
