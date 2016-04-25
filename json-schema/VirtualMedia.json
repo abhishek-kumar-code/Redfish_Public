@@ -9,10 +9,10 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
                 },
                 {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/VirtualMedia.v1_0_2.json#/definitions/VirtualMedia"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/VirtualMedia.v1_0_0.json#/definitions/VirtualMedia"
                 },
                 {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/VirtualMedia.v1_0_0.json#/definitions/VirtualMedia"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/VirtualMedia.v1_0_2.json#/definitions/VirtualMedia"
                 }
             ]
         }
