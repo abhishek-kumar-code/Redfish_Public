@@ -21,7 +21,7 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 
 The following new schema files are released as Work In Progress documents. 
 
-IMPORTANT: This document is not final. It does not necessarily reflect the views of the DMTF or its members. Because this document is a Work in Progress, this document may still change, perhaps profoundly and without notice. This document is available for public review and comment until superseded.”
+IMPORTANT: This document is not final. It does not necessarily reflect the views of the DMTF or its members. Because this document is a Work in Progress, this document may still change, perhaps profoundly and without notice. This document is available for public review and comment until superseded.
 
 
 | Schema File | Version | Date      | Description     |
