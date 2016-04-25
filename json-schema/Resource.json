@@ -33,16 +33,16 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.v1_1_0.json#/definitions/ReferenceableMember"
                 },
                 {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.v1_0_0.json#/definitions/Resource"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/ReferenceableMember"
                 },
                 {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Resource"
                 },
                 {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.v1_0_0.json#/definitions/ReferenceableMember"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.v1_0_0.json#/definitions/Resource"
                 },
                 {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/ReferenceableMember"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.v1_0_0.json#/definitions/ReferenceableMember"
                 }
             ]
         },

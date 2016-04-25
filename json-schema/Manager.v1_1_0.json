@@ -376,6 +376,12 @@
                             "readonly": true,
                             "description": "This property is an array of references to the chassis that this manager has control over.",
                             "longDescription": "This property shall contain an array of references to Chassis resources of which this Manager instance has control."
+                        },
+                        "ManagerInChassis": {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Chassis.json#/definitions/Chassis",
+                            "readonly": true,
+                            "description": "This property is a reference to the chassis that this manager is located in.",
+                            "longDescription": "This property shall contain a reference to the chassis that this manager is located in."
                         }
                     },
                     "readonly": true,

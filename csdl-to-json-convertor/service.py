@@ -726,7 +726,7 @@ class JsonSchemaGenerator:
             candidate_type=typetable[key]
             candidate_namespace=candidate_type["Namespace"]
             #if namespace is a more recent namespace of the current type that is less than the current namespace
-            if(candidate_type["Name"] == typename and (candidate_namespace == current_namespace or ( not ( self.is_prior_version(typedata["Namespace"],candidate_namespace) ) and self.is_prior_version(candidate_namespace,current_namespace) ) ) ):
+            if(candidate_type["Name"] == typename and (candidate_namespace == current_namespace or ( not ( self.is_prior_version(candidate_namespace,typedata["Namespace"]) ) and self.is_prior_version(candidate_namespace,current_namespace) ) ) ):
                 typedata=candidate_type
 
         return typedata                
