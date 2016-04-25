@@ -482,13 +482,13 @@
         "ManagerService": {
             "anyOf": [
                 {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Manager.v1_0_0.json#/definitions/CommandShell"
+                },
+                {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Manager.v1_0_0.json#/definitions/GraphicalConsole"
                 },
                 {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Manager.v1_0_0.json#/definitions/SerialConsole"
-                },
-                {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Manager.v1_0_0.json#/definitions/CommandShell"
                 }
             ]
         },
