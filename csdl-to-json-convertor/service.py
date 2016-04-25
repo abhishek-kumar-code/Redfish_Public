@@ -1310,7 +1310,7 @@ class JsonSchemaGenerator:
     def get_derived_types(self, typetable, basetypename, basetypenamespace):
 
         basetypename = basetypenamespace + "." + basetypename
-        typenames = typetable.keys()
+        typenames = sorted(typetable.keys())
         visitedtypes=[]
         derivedtypes = []
 

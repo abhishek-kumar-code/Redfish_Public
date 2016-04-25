@@ -12,13 +12,13 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Manager.v1_0_0.json#/definitions/Manager"
                 },
                 {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Manager.v1_1_0.json#/definitions/Manager"
-                },
-                {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Manager.v1_0_1.json#/definitions/Manager"
                 },
                 {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Manager.v1_0_2.json#/definitions/Manager"
+                },
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Manager.v1_1_0.json#/definitions/Manager"
                 }
             ]
         }
