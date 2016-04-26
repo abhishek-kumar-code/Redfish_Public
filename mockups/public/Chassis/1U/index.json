@@ -32,11 +32,11 @@
                 "@odata.id": "/redfish/v1/Managers/BMC"
             }
         ],
-		"ManagersInChassis": [
-			{
-				"@odata.id": "/redfish/v1/Managers/BMC"
-			}
-		]
+        "ManagersInChassis": [
+            {
+                "@odata.id": "/redfish/v1/Managers/BMC"
+            }
+        ]
     },
     "@odata.context": "/redfish/v1/$metadata#Chassis/Members/$entity",
     "@odata.id": "/redfish/v1/Chassis/1U",
