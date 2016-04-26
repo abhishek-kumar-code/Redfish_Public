@@ -102,7 +102,10 @@
                     "longDescription": "The values of this array shall be the supported media types for this connection."
                 },
                 "ConnectedVia": {
-                    "$ref": "#/definitions/ConnectedVia",
+                    "anyOf": [
+                        {"$ref": "#/definitions/ConnectedVia"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "Current virtual media connection methods",
                     "longDescription": "The value of this property shall indicate the current connection method from a client to the virtual media represented by this resource.  A value of NotConnected shall indicate no connection is present.  A value of URI shall indicate that a remote connection via a URI reference type is being used. "

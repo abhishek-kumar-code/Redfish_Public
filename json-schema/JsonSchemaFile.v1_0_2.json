@@ -107,8 +107,8 @@
                 "Schema": {
                     "type": "string",
                     "readonly": true,
-                    "description": "The type name this schema describes.",
-                    "longDescription": "The value of this property shall be the value of the Type property for that schema and shall conform to the syntax specified in the Redfish specification for the Type property."
+                    "description": "The @odata.type name this schema describes.",
+                    "longDescription": "The value of this property shall be the value of the @odata.type property for that schema and shall conform to the syntax specified in the Redfish specification for the Type property."
                 },
                 "Location": {
                     "type": "array",

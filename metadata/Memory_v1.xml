@@ -31,7 +31,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Memory">
 
-      <EntityType Name="Memory" BaseType="Resource.v1_0_0.Resource" Abstract="True">
+      <EntityType Name="Memory" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="This is the schema definition of the Memory and its configuration. " />
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent the Memory in a Redfish implementation." />
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
@@ -200,12 +200,12 @@
           <Annotation Term="OData.Description" String="This object contains security capabilities of the Memory."/>
           <Annotation Term="OData.LongDescription" String="This object shall contain properties which describe the security capabilities of the Memory."/>
         </Property>
-        <Property Name="SpareDeviceCount" Type="Collection(Edm.Int64)" Nullable="false">
+        <Property Name="SpareDeviceCount" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
           <Annotation Term="OData.Description" String="Number of unused spare devices available in the Memory" />
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the number of unused spare devices available in the Memory. If memory devices fails, the spare device could be used." />
         </Property>
-        <Property Name="RankCount" Type="Collection(Edm.Int64)" Nullable="false">
+        <Property Name="RankCount" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
           <Annotation Term="OData.Description" String="Number of ranks available in the Memory" />
           <Annotation Term="OData.LongDescription" String="The value of this property shall be number of ranks available in the Memory. The ranks could be used for spare or interleave." />
@@ -263,7 +263,7 @@
           <Annotation Term="OData.Description" String="Rank spare enabled status" />
           <Annotation Term="OData.LongDescription" String="The value of this property shall be true if a rank spare is enabled for this Memory." />
         </Property>
-        <NavigationProperty Name="Metrics" Type="MemoryMetrics.MemoryMetrics" ContainsTarget="true">
+        <NavigationProperty Name="Metrics" Type="MemoryMetrics.MemoryMetrics" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Description" String="A reference to the Metrics associated with this Memory"/>
           <Annotation Term="OData.LongDescription" String="A reference to the Metrics associated with this Memory."/>
           <Annotation Term="OData.AutoExpandReferences"/>

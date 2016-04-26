@@ -51,7 +51,8 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis">
 
-      <EntityType Name="Chassis" BaseType="Resource.v1_0_0.Resource" Abstract="True">
+
+      <EntityType Name="Chassis" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="A Chassis represents the physical components for any system.  This resource represents the sheet-metal confined spaces and logical zones like racks, enclosures, chassis and all other containers. Subsystems (like sensors), which operate outside of a system's data plane (meaning the resources are not accessible to software running on the system) are linked either directly or indirectly through this resource."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a chassis or other physical enclosure for a Redfish implementation."/>
       </EntityType>
@@ -120,20 +121,20 @@
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
-        <Property Name="Status" Type="Resource.Status"/>
-        <NavigationProperty Name="LogServices" Type="LogServiceCollection.LogServiceCollection">
+        <Property Name="Status" Type="Resource.Status" Nullable="false"/>
+        <NavigationProperty Name="LogServices" Type="LogServiceCollection.LogServiceCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A reference to the logs for this chassis."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type LogServiceCollection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="Thermal" Type="Thermal.Thermal" ContainsTarget="true">
+        <NavigationProperty Name="Thermal" Type="Thermal.Thermal" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A reference to the thermal properties (fans, cooling, sensors) for this chassis."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resource that represents the thermal characteristics of this chassis and shall be of type Thermal."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="Power" Type="Power.Power" ContainsTarget="true">
+        <NavigationProperty Name="Power" Type="Power.Power" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A reference to the power properties (power supplies, power policies, sensors) for this chassis."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resource that represents the power characteristics of this chassis and shall be of type Power."/>
@@ -154,7 +155,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resource that manages this chassis and shall reference a resource of type Manager."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="ContainedBy" Type="Chassis.Chassis">
+        <NavigationProperty Name="ContainedBy" Type="Chassis.Chassis" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A reference to the chassis that this chassis is contained by."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resource that represents the chassis that contains this chassis and shall be of type Chassis."/>

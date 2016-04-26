@@ -51,13 +51,19 @@
             "additionalProperties": false,
             "properties": {
                 "BootSourceOverrideTarget": {
-                    "$ref": "#/definitions/BootSource",
+                    "anyOf": [
+                        {"$ref": "#/definitions/BootSource"},
+                        {"type": "null"}
+                    ],
                     "readonly": false,
                     "description": "The current boot source to be used at next boot instead of the normal boot device, if BootSourceOverrideEnabled is true.",
                     "longDescription": "The value of this property shall contain the source to boot the system from, overriding the normal boot order. The valid values for this property are specified through the Redfish.AllowableValues annotation. Pxe indicates to PXE boot from the primary NIC; Floppy, Cd, Usb, Hdd indicates to boot from their devices respectively. BiosSetup indicates to boot into the native BIOS screen setup. Utilities and Diags indicate to boot from the local utilities or diags partitions and UefiTarget indicates to boot from the UEFI device path found in UefiTargetBootSourceOverride."
                 },
                 "BootSourceOverrideEnabled": {
-                    "$ref": "#/definitions/BootSourceOverrideEnabled",
+                    "anyOf": [
+                        {"$ref": "#/definitions/BootSourceOverrideEnabled"},
+                        {"type": "null"}
+                    ],
                     "readonly": false,
                     "description": "Describes the state of the Boot Source Override feature",
                     "longDescription": "The value of this property shall be Once if this is a one time boot override and Continuous if this selection should remain active until cancelled. If the property value is set to Once, the value will be reset back to Disabled after the BootSourceOverrideTarget actions have been completed."
@@ -434,7 +440,10 @@
                     "longDescription": "The value of this property shall contain the part number for the system as defined by the manufacturer."
                 },
                 "UUID": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/UUID",
+                    "anyOf": [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/UUID"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "The universal unique identifier (UUID) for this system",
                     "longDescription": "The value of this property shall be used to contain a universal unique identifier number for the system. RFC4122 describes methods that can be used to create the value. The value should be considered to be opaque. Client software should only treat the overall value as a universally unique identifier and should not interpret any sub-fields within the UUID. If the system supports SMBIOS, the value and byte order of the property should match byte-for-byte with the memory byte order (from lowest address to highest) of the SMBIOS UUID. Following this order will make it simpler to correlate the UUID with the SMBIOS UUID"
@@ -448,13 +457,19 @@
                     "longDescription": "The value of this property shall be the host name for this system, as reported by the operating system or hypervisor.  This value is typically provided to the Manager by a service running in the host operating system."
                 },
                 "IndicatorLED": {
-                    "$ref": "#/definitions/IndicatorLED",
+                    "anyOf": [
+                        {"$ref": "#/definitions/IndicatorLED"},
+                        {"type": "null"}
+                    ],
                     "readonly": false,
                     "description": "The state of the indicator LED, used to identify the system",
                     "longDescription": "The value of this property shall contain the indicator light state for the indicator light associated with this system."
                 },
                 "PowerState": {
-                    "$ref": "#/definitions/PowerState",
+                    "anyOf": [
+                        {"$ref": "#/definitions/PowerState"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "This is the current power state of the system",
                     "longDescription": "The value of this property shall contain the power state of the system."
@@ -500,10 +515,7 @@
                     "additionalProperties": false,
                     "properties": {
                         "Oem": {
-                            "type": [
-                                "object",
-                                "null"
-                            ],
+                            "type": "object",
                             "patternProperties": {
                                 "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                                     "type": [
