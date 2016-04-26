@@ -31,10 +31,10 @@
             "BiosSetup",
             "Utilities",
             "Diags",
-			"SDCard",
+            "SDCard",
             "UefiTarget"
         ],
-		"BootSourceOverrideMode": "UEFI",
+        "BootSourceOverrideMode": "UEFI",
         "UefiTargetBootSourceOverride": "/0x31/0x33/0x01/0x01"
     },
     "TrustedModules": [
