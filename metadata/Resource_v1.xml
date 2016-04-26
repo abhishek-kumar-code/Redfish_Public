@@ -28,7 +28,7 @@
         <Annotation Term="OData.LongDescription" String="This property represents an identifier for the resource.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
       </TypeDefinition>
 
-      <TypeDefinition Name="Description" UnderlyingType="Edm.String" Nullable="true">
+      <TypeDefinition Name="Description" UnderlyingType="Edm.String">
         <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
         <Annotation Term="OData.Description" String="Provides a description of this resource and is used for commonality  in the schema definitions."/>
         <Annotation Term="OData.LongDescription" String="This object represents the Description property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
