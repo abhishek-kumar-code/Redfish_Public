@@ -806,14 +806,6 @@ class JsonSchemaGenerator:
                     if "Nullable" in property.attrib.keys():
                         if property.attrib["Nullable"] == "false":
                             propertyisnullable = False
-                    else:
-                        #if the property type is a type definition with nullable=true already defined, we don't need to write it
-                        if proptypename in typetable.keys() :
-                            proptype=typetable[proptypename]
-                            if (proptype["TypeType"] == "TypeDefinition" ):
-                                if "Nullable" in proptype["Node"].attrib.keys():
-                                    if proptype["Node"].attrib["Nullable"] == "true":
-                                        propertyisnullable = False
 
                     # Handle navigationLinks/NavigationProperty
                     if ( propkind == "NavigationProperty"):
