@@ -9,6 +9,9 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
                 },
                 {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Power.v1_0_0.json#/definitions/Power"
+                },
+                {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Power.v1_0_1.json#/definitions/Power"
                 },
                 {
@@ -16,9 +19,6 @@
                 },
                 {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Power.v1_1_0.json#/definitions/Power"
-                },
-                {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Power.v1_0_0.json#/definitions/Power"
                 }
             ]
         }
