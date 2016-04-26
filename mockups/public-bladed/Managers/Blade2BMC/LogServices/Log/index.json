@@ -1,8 +1,5 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#Managers/Members/Blade2BMC/LogServices/Members/$entity",
-    "@odata.id": "/redfish/v1/Managers/Blade2BMC/LogServices/Log",
-    "@odata.type": "#LogService.v1_0_0.LogService",
+    "@odata.type": "#LogService.v1_0_2.LogService",
     "Id": "Log",
     "Name": "System Log Service",
     "MaxNumberOfRecords": 1024,
@@ -21,5 +18,8 @@
     },
     "Entries": {
         "@odata.id": "/redfish/v1/Managers/Blade2BMC/LogServices/Log/Entries"
-    }
+    },
+    "@odata.context": "/redfish/v1/$metadata#Managers/Members/Blade2BMC/LogServices/Members/$entity",
+    "@odata.id": "/redfish/v1/Managers/Blade2BMC/LogServices/Log",
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }
