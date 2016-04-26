@@ -115,19 +115,19 @@
             "SerialNumber": "1Z0000001",
             "PartNumber": "0000001A3A",
             "SparePartNumber": "0000001A3A",
-			"InputRanges": [
-				{
-                   "InputType": "AC",
-				   "MinimumVoltage": 100,
-				   "MaximumVoltage": 120,
-				   "OutputWattage": 800
-				},
-				{
-                   "InputType": "AC",
-				   "MinimumVoltage": 200,
-				   "MaximumVoltage": 240,
-				   "OutputWattage": 1300
-				}				
+            "InputRanges": [
+                {
+                    "InputType": "AC",
+                    "MinimumVoltage": 100,
+                    "MaximumVoltage": 120,
+                    "OutputWattage": 800
+                },
+                {
+                    "InputType": "AC",
+                    "MinimumVoltage": 200,
+                    "MaximumVoltage": 240,
+                    "OutputWattage": 1300
+                }
             ],
             "RelatedItem": [
                 {
