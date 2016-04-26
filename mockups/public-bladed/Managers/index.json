@@ -1,7 +1,4 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#Managers",
-    "@odata.id": "/redfish/v1/Managers",
     "@odata.type": "#ManagerCollection.ManagerCollection",
     "Name": "Manager Collection",
     "Members@odata.count": 5,
@@ -21,5 +18,8 @@
         {
             "@odata.id": "/redfish/v1/Managers/Blade4BMC"
         }
-    ]
+    ],
+    "@odata.context": "/redfish/v1/$metadata#Managers",
+    "@odata.id": "/redfish/v1/Managers",
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }
