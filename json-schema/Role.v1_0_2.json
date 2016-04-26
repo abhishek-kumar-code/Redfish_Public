@@ -61,10 +61,7 @@
                 "OemPrivileges": {
                     "type": "array",
                     "items": {
-                        "type": [
-                            "string",
-                            "null"
-                        ]
+                        "type": "string"
                     },
                     "readonly": false,
                     "description": "The OEM privileges that this role includes.",
