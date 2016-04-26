@@ -14,7 +14,7 @@
             "Name": "SATA Bay 1",
             "Manufacturer": "Contoso",
             "Model": "3000GT8",
-			"CapacityBytes": 8000000000000,
+            "CapacityBytes": 8000000000000,
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"
@@ -24,7 +24,7 @@
             "Name": "SATA Bay 2",
             "Manufacturer": "Contoso",
             "Model": "3000GT7",
-			"CapacityBytes": 4000000000000,
+            "CapacityBytes": 4000000000000,
             "Status": {
                 "State": "Enabled",
                 "Health": "Degraded"
