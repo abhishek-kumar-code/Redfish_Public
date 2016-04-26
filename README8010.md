@@ -40,7 +40,7 @@ IMPORTANT: These documents are not final. They do not necessarily reflect the vi
 
 | Schema File | Version | Date      | Description     |
 | ---         | ---     | ---       | ---             |
-| (all files) | 1.0.2   | 2016-3-31 | Errata release of all schema files to adjust file naming conventions. CSDL schema files now have the major version appended to the end of the schema name (e.g. Chassis_v1), and json-schema files include the major/minor/errata version number (matching the namespace definitions in the schema as they did previously) in the filename, but are now prefaced with a 'v' and with underscore separators (e.g. Chassis.v1_0_2.json) to match the corrected namespace naming rules.  Added LongDescriptions to 'Links' and 'Actions' objects throughout.  Added 'Unit', 'Minimum' and 'Maximum' annotations throughout.  Improved schema description text, updated RFC references and whitespace consistency throughout.  |
+| (all files) | 1.0.2   | 2016-3-31 | Errata release of all schema files to adjust file naming conventions. CSDL schema files now have the major version appended to the end of the schema name (e.g. Chassis_v1), and json-schema files include the major/minor/errata version number (matching the namespace definitions in the schema as they did previously) in the filename, but are now prefaced with a 'v' and with underscore separators (e.g. Chassis.v1_0_2.json) to match the corrected namespace naming rules.  Added LongDescriptions to 'Links' and 'Actions' objects throughout.  Added 'Unit', 'Minimum' and 'Maximum' annotations throughout.  Defined all un-versioned resources in CSDL as 'abstract'.  Corrected all string properties with enumerations to allow use of null (nullable).  Marked all 'Links' and other NavigationProperties and embedded objects (ComplexTypes) as non-nullable.  Improved schema description text, updated RFC references and whitespace consistency throughout.  |
 | (all Collections) | n/a | 2016-3-31 | Corrected URI of the schema locations to the /schemas/v1 repository instead of the /schema location, which contains only the latest version of each schema. |
 | (all files) | (various) | 2016-3-31 | Copies of all previously-released Redfish json-schema files have been created to follow the corrected json-schema filename format (v1_n_n instead of 1.n.n).  The internal schema name references were updated to match this style, but otherwise the files are identical to their originally released content. |
 | Chassis    | 1.2.0   | 2016-3-31  | Added Links for ManagersInChassis, Drives and Storage. |
@@ -49,6 +49,7 @@ IMPORTANT: These documents are not final. They do not necessarily reflect the vi
 | ComputerSystem | 1.0.2 | 2016-3-31 | Errata release (see 1.0.2 errata description above).  Deprecated 'Unknown' enumeration value for 'IndicatorLED'. |
 | Event      | 1.1.0  | 2016-3-31 | Added 'Context' property. |
 | EventService | 1.0.2 | 2016-3-31 | Errata release (see 1.0.2 errata description above).  Corrected Unit annotations to use UCUM unit definitions. |
+| JsonSchemaFile | 1.0.2 | 2016-3-31 | Errata release (see 1.0.2 errata description above).  Corrected text in 'Schema' property descriptions to reference "@odata.type" instead of "Type". | 
 | Manager     | 1.1.0  | 2016-3-31 | Added Link for 'ManagerInChassis'. |
 | Manager     | 1.0.2 | 2016-3-31 | Errata release (see 1.0.2 errata description above).  Corrected descriptions for 'ServiceEntryPointUUID' to correctly match the intent of the property. |
 | ManagerNetworkProtocol | 1.0.2 | 2016-3-31 | Errata release (see 1.0.2 errata description above).  Corrected read-write permissions on all embedded objects.  Corrected Unit annotations to use UCUM unit definitions. |  
@@ -57,7 +58,7 @@ IMPORTANT: These documents are not final. They do not necessarily reflect the vi
 | Resource    | 1.1.0 | 2016-3-31 | Added 'Identifier' object, 'Location' object and 'IndicatorLED' definitions for use throughout the Redfish data model.  Added 'UnavailableOffline' enumeration to 'State' in 'Status' object. |
 | Resource   | 1.0.2 | 2016-3-31 | Errata release (see 1.0.2 errata description above).  Corrected missing Required annotation on 'Id' property. Added 'Pattern' Redfish annotation for 'Oem' property names. | 
 | SessionService | 1.0.2 | 2016-3-31 | Errata release (see 1.0.2 errata description above).  Added Unit annotations. |
-| SimpleStorage | 1.1.0  | 2016-3-31 | Added 'CapacityBytes' to 'Device' object. |
+| SimpleStorage | 1.1.0  | 2016-3-31 | Added 'CapacityBytes' to 'Devices' object. |
 | SimpleStorage | 1.0.2 | 2016-3-31 | Errata release (see 1.0.2 errata description above).  Corrected Unit annotations to use UCUM unit definitions. |
 | Thermal     | 1.1.0  | 2016-3-31 | Added 'Name' to 'Fan' object.  Deprecated inconsistent 'FanName' in 'Fan'. |
 | Thermal     | 1.0.2 | 2016-3-31 | Errata release (see 1.0.2 errata description above).  Corrected read-write permissions on all embedded objects.  Corrected Unit annotations to use UCUM unit definitions. | 
