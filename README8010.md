@@ -1,11 +1,11 @@
 ---
 DocTitle: Redfish API Schema Readme
 DocNumber: '8010'
-DocClass: Informative
-DocVersion: '1.0.2'
+DocClass: Normative
+DocVersion: '2016.1a'
 modified: '2016-03-31'
 status: published
-released: true
+released: True
 copyright: '2015-2016'
 ---
 # Foreword
