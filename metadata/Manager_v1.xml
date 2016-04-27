@@ -343,7 +343,6 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the power state of the Manager."/>
         </Property>
       </EntityType>
-
     </Schema>
   
   </edmx:DataServices>
