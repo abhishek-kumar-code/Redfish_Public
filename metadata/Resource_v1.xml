@@ -302,6 +302,21 @@
         </Member>
       </EnumType>
 
+      <EnumType Name="PowerState">
+        <Member Name="On">
+          <Annotation Term="OData.Description" String="The state is powered on. The component is fully operational."/>
+        </Member>
+        <Member Name="Off">
+          <Annotation Term="OData.Description" String="The state is powered off. although some sub-components may continue to have AUX power."/>
+        </Member>
+        <Member Name="PoweringOn">
+          <Annotation Term="OData.Description" String="A temporary state between Off and On."/>
+        </Member>
+        <Member Name="PoweringOff">
+          <Annotation Term="OData.Description" String="A temporary state between On and Off."/>
+        </Member>
+      </EnumType>
+      
     </Schema>
 
   </edmx:DataServices>
