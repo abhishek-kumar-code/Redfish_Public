@@ -2170,7 +2170,7 @@ Implementations shall support replacement of the default certificate if one is p
 * HTTP Cookies shall NOT be used to authenticate any activity i.e.: GET, POST, PUT/PATCH, and DELETE.
 
 ##### Basic Authentication
-HTTP Basic authentication as defined by [RFC2617](#RFC2617) shall be supported, and shall only use compliant TLS connections to transport the data between any third party authentication service and clients.
+HTTP Basic Authentication as defined by [RFC2617](#RFC2617) shall be supported, and shall only use compliant TLS connections to transport the data between any third party authentication service and clients.
 
 ##### Request / Message Level Authentication
 Every request that establishes a secure channel shall be accompanied by either the X-Auth-Token header, Authorization header, or an OEM-defined authentication header.
