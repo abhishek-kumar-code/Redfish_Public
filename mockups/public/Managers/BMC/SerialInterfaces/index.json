@@ -1,7 +1,4 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#Managers/BMC/SerialInterfaces/$entity",
-    "@odata.id": "/redfish/v1/Managers/BMC/SerialInterfaces",
     "@odata.type": "#SerialInterfaceCollection.SerialInterfaceCollection",
     "Name": "Serial Interface Collection",
     "Description": "Collection of Serial Interfaces for this System",
@@ -11,5 +8,8 @@
             "@odata.id": "/redfish/v1/Managers/BMC/SerialInterfaces/TTY0"
         }
     ],
-    "Oem": {}
+    "Oem": {},
+    "@odata.context": "/redfish/v1/$metadata#Managers/BMC/SerialInterfaces/$entity",
+    "@odata.id": "/redfish/v1/Managers/BMC/SerialInterfaces",
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }
