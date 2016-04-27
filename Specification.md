@@ -2144,6 +2144,8 @@ Implementations shall support replacement of the default certificate if one is p
 
 	Services may implement other authentication mechanisms.
 
+
+
 #### HTTP Header Security
 * All write requests to Redfish objects shall be authenticated, i.e. POST, PUT/PATCH, and DELETE, except for
   * The POST operation to the Sessions service/object needed for authentication
