@@ -304,10 +304,10 @@
 
       <EnumType Name="PowerState">
         <Member Name="On">
-          <Annotation Term="OData.Description" String="The state is powered on. The component is fully operational."/>
+          <Annotation Term="OData.Description" String="The state is powered on."/>
         </Member>
         <Member Name="Off">
-          <Annotation Term="OData.Description" String="The state is powered off. although some sub-components may continue to have AUX power."/>
+          <Annotation Term="OData.Description" String="The state is powered off."/>
         </Member>
         <Member Name="PoweringOn">
           <Annotation Term="OData.Description" String="A temporary state between Off and On."/>
