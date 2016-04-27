@@ -2137,6 +2137,7 @@ References to RFCs -
 Implementations shall support replacement of the default certificate if one is provided, with a certificate having at least a 4096 bit RSA key and sha512-rsa signature.
 
 ### Authentication
+
 * Authentication Methods
 
 	Service shall support both "Basic Authentication" and "Redfish Session Login Authentication" (as described below under Session Management). Services shall not require a client to create a session when Basic Authentication is used.
