@@ -1,8 +1,5 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#Managers/Members/BMC/NetworkProtocol/$entity",
-    "@odata.id": "/redfish/v1/Managers/BMC/NetworkProtocol",
-    "@odata.type": "#ManagerNetworkProtocol.v1_0_0.ManagerNetworkProtocol",
+    "@odata.type": "#ManagerNetworkProtocol.v1_0_2.ManagerNetworkProtocol",
     "Id": "NetworkProtocol",
     "Name": "Manager Network Protocol",
     "Description": "Manager Network Service",
@@ -51,5 +48,8 @@
         "ProtocolEnabled": true,
         "Port": 5288
     },
-    "Oem": {}
+    "Oem": {},
+    "@odata.context": "/redfish/v1/$metadata#Managers/Members/BMC/NetworkProtocol/$entity",
+    "@odata.id": "/redfish/v1/Managers/BMC/NetworkProtocol",
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }
