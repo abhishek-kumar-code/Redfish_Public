@@ -2139,7 +2139,7 @@ Implementations shall support replacement of the default certificate if one is p
 ### Authentication
 * Authentication Methods
 
-	Service shall support either "Basic Authentication" or "Redfish Session Login Authentication" (as described below under Session Management). If both are supported, services shall not require a client to create a session when Basic Authentication is used. Services shall not require authentication in order to create a Redfish Login Session.
+	Service shall support both "Basic Authentication" and "Redfish Session Login Authentication" (as described below under Session Management). Services shall not require a client to create a session when Basic Authentication is used.
 
 	Services may implement other authentication mechanisms.
 
@@ -2170,7 +2170,7 @@ Implementations shall support replacement of the default certificate if one is p
 HTTP BASIC authentication as defined by [RFC2617](#RFC2617) shall be supported, and shall only use compliant TLS connections to transport the data between any third party authentication service and clients.
 
 ##### Request / Message Level Authentication
-Every request that establishes a secure channel shall be accompanied by an authorization header.
+Every request that establishes a secure channel shall be accompanied by either the X-Auth-Token header, Authorization header, or an OEM-defined authentication header.
 
 #### Session Management
 
@@ -2200,7 +2200,7 @@ For functionality requiring multiple Redfish operations, or for security reasons
 
 ##### Session Login
 
-A Redfish session is created by an HTTP POST to the SessionService' Sessions collection resource, including the following POST body:
+A Redfish session is created, without requiring an authentication header, by an HTTP POST to the SessionService' Sessions collection resource, including the following POST body:
 
 ```http
 POST /redfish/v1/SessionService/Sessions HTTP/1.1
