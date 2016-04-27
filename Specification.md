@@ -2140,7 +2140,7 @@ Implementations shall support replacement of the default certificate if one is p
 
 * Authentication Methods
 
-	Service shall support both "Basic Authentication" and "Redfish Session Login Authentication" (as described below under Session Management). Services shall not require a client to create a session when Basic Authentication is used.
+	Service shall support both "Basic Authentication" and "Redfish Session Login Authentication" (as described below under Session Management).  Services shall not require a client to create a session when Basic Authentication is used.
 
 	Services may implement other authentication mechanisms.
 
