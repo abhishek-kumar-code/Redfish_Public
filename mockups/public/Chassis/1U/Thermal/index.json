@@ -1,8 +1,5 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#Chassis/Members/1U/Thermal/$entity",
-    "@odata.id": "/redfish/v1/Chassis/1U/Thermal",
-    "@odata.type": "#Thermal.v1_0_1.Thermal",
+    "@odata.type": "#Thermal.v1_0_2.Thermal",
     "Id": "Thermal",
     "Name": "Thermal",
     "Temperatures": [
@@ -81,7 +78,7 @@
         {
             "@odata.id": "/redfish/v1/Chassis/1U/Thermal#/Fans/0",
             "MemberId": "0",
-            "FanName": "BaseBoard System Fan",
+            "Name": "BaseBoard System Fan",
             "PhysicalContext": "Backplane",
             "Status": {
                 "State": "Enabled",
@@ -109,7 +106,7 @@
         {
             "@odata.id": "/redfish/v1/Chassis/1U/Thermal#/Fans/1",
             "MemberId": "1",
-            "FanName": "BaseBoard System Fan Backup",
+            "Name": "BaseBoard System Fan Backup",
             "PhysicalContext": "Backplane",
             "Status": {
                 "State": "Enabled",
@@ -156,5 +153,8 @@
             "MinNumNeeded": 1,
             "MaxNumSupported": 2
         }
-    ]
+    ],
+    "@odata.context": "/redfish/v1/$metadata#Chassis/Members/1U/Thermal/$entity",
+    "@odata.id": "/redfish/v1/Chassis/1U/Thermal",
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

@@ -1,8 +1,5 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#Chassis/Members/$entity",
-    "@odata.id": "/redfish/v1/Chassis/1U",
-    "@odata.type": "#Chassis.v1_0_1.Chassis",
+    "@odata.type": "#Chassis.v1_1_2.Chassis",
     "Id": "1U",
     "Name": "Computer System Chassis",
     "ChassisType": "RackMount",
@@ -35,7 +32,13 @@
                 "@odata.id": "/redfish/v1/Managers/BMC"
             }
         ],
-        "Oem": {}
+        "ManagersInChassis": [
+            {
+                "@odata.id": "/redfish/v1/Managers/BMC"
+            }
+        ]
     },
-    "Oem": {}
+    "@odata.context": "/redfish/v1/$metadata#Chassis/Members/$entity",
+    "@odata.id": "/redfish/v1/Chassis/1U",
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

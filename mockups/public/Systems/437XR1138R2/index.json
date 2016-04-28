@@ -1,8 +1,5 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#Systems/Members/$entity",
-    "@odata.id": "/redfish/v1/Systems/437XR1138R2",
-    "@odata.type": "#ComputerSystem.v1_0_1.ComputerSystem",
+    "@odata.type": "#ComputerSystem.v1_0_2.ComputerSystem",
     "Id": "437XR1138R2",
     "Name": "WebFrontEnd483",
     "SystemType": "Physical",
@@ -28,17 +25,28 @@
         "BootSourceOverrideTarget@Redfish.AllowableValues": [
             "None",
             "Pxe",
-            "Floppy",
             "Cd",
             "Usb",
             "Hdd",
             "BiosSetup",
             "Utilities",
             "Diags",
+            "SDCard",
             "UefiTarget"
         ],
+        "BootSourceOverrideMode": "UEFI",
         "UefiTargetBootSourceOverride": "/0x31/0x33/0x01/0x01"
     },
+    "TrustedModules": [
+        {
+            "FirmwareVersion": "1.13b",
+            "InterfaceType": "TPM1_2",
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK"
+            }
+        }
+    ],
     "Oem": {
         "Contoso": {
             "@odata.type": "http://Contoso.com/Schema#Contoso.ComputerSystem",
@@ -113,5 +121,8 @@
                 "target": "/redfish/v1/Systems/437XR1138R2/Oem/Contoso/Actions/Contoso.Reset"
             }
         }
-    }
+    },
+    "@odata.context": "/redfish/v1/$metadata#Systems/Members/$entity",
+    "@odata.id": "/redfish/v1/Systems/437XR1138R2",
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

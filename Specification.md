@@ -4,6 +4,7 @@ DocNumber: '0266'
 DocClass: Normative
 DocVersion: '1.0.2'
 modified: '2016-03-31'
+SupersedesVersion: '1.0.1'
 status: published
 released: true
 copyright: '2014-2016'

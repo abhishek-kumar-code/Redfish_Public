@@ -1,8 +1,5 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#Managers/Members/$entity",
-    "@odata.id": "/redfish/v1/Managers/BMC",
-    "@odata.type": "#Manager.v1_0_1.Manager",
+    "@odata.type": "#Manager.v1_0_2.Manager",
     "Id": "BMC",
     "Name": "Manager",
     "ManagerType": "BMC",
@@ -67,6 +64,9 @@
                 "@odata.id": "/redfish/v1/Chassis/1U"
             }
         ],
+        "ManagerInChassis": {
+            "@odata.id": "/redfish/v1/Chassis/1U"
+        },	
         "Oem": {}
     },
     "Actions": {
@@ -75,5 +75,8 @@
         },
         "Oem": {}
     },
-    "Oem": {}
+    "Oem": {},
+    "@odata.context": "/redfish/v1/$metadata#Managers/Members/$entity",
+    "@odata.id": "/redfish/v1/Managers/BMC",
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }
