@@ -211,21 +211,18 @@ h6 {
   #toc-header,
   #toc ~ h2 {
     page-break-before: always;
-    -webkit-break-before: page;
-       -moz-break-before: page;
+    -webkit-column-break-before: page;
             break-before: page;
   }
   #toc ~ h2 ~ h2 {
     page-break-before: auto;
-    -webkit-break-before: auto;
-       -moz-break-before: auto;
+    -webkit-column-break-before: auto;
             break-before: auto;
   }
   #last-footer-fix {
     display: block !important;
     page-break-before: always;
-    -webkit-break-before: page;
-       -moz-break-before: page;
+    -webkit-column-break-before: page;
             break-before: page;
     text-align: center;
     line-height: 37em;
@@ -400,8 +397,8 @@ window.onhashchange = scrollToHash;
         <div class="preamble">
           <div class="logo"></div>
           <p>Document Identifier: DSP2045</p>
-          <p>Date: 2015-08-04</p>
-          <p>Version: 1.0.0</p>
+          <p>Date: 2016-03-17</p>
+          <p>Version: 1.1.0</p>
           
         </div>
         <h1>Redfish Frequently Asked Questions (FAQ)</h1>
@@ -418,7 +415,7 @@ window.onhashchange = scrollToHash;
         </div>
         <div class="copyright">
           <p>Copyright Notice</p>
-          <p>Copyright &copy; 2014, 2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.
+          <p>Copyright &copy; 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.
           </p></div>
           <p>DMTF is a not-for-profit association of industry members dedicated to promoting enterprise and systems management and interoperability. Members and non-members may reproduce DMTF specifications and documents, provided that correct attribution is given. As DMTF specifications may be revised from time to time, the particular version and release date should always be noted.</p>
           <p>Implementation of certain elements of this standard or proposed standard may be subject to third party patent rights, including provisional patent rights (herein "patent rights"). DMTF makes no representations to users of the standard as to the existence of such rights, and is not responsible to recognize, disclose, or identify any or all such third party patent right, owners or claimants, nor for any incomplete or inaccurate identification or disclosure of such rights, owners or claimants. DMTF shall have no liability to any party, in any manner or circumstance, under any legal theory whatsoever, for failure to recognize, disclose, or identify any such third party patent rights, or for such party’s reliance on the standard or incorporation thereof in its product, protocols or testing procedures. DMTF shall have no liability to any party implementing such standard, whether such implementation is foreseeable or not, nor to any patent owner or claimant, and shall have no liability or responsibility for costs or losses incurred if a standard is withdrawn or modified after publication, and shall be indemnified and held harmless by any party implementing the standard from any and all claims of infringement by a patent owner for such implementations.</p>
@@ -526,6 +523,16 @@ window.onhashchange = scrollToHash;
 <h3 id="why-do-these-values-have-two-different-formats-and-how-does-an-implementer-know-which-is-which-">Why do these values have two different formats and how does an implementer know which is which?</h3>
 <p>If the RelatedItem is a JSON Pointer, there will be a &#39;#&#39; character in it.  The part before the # will be the OdataID (href) of the resource and the part after will be the property path within that resource.  Most broswer/library code acommodates JSON Pointer, so a client should be able to do a GET on the RelatedItem and get just the sub-resource.</p>
 <p>If the RelatedItem is an OData format item, or if it is a whole resource, it will not have a &#39;#&#39; character in it.  In this case, a client should be able to do a GET on the RelatedItem and get just the sub-resource since that is allowable for &quot;Referencable&quot; properties in OData.</p>
+<h2 id="what-about-oem-extensions-">What about OEM Extensions?</h2>
+<p>Redfish provides methods for extending any resource by using the &quot;oem&quot; object.  This is defined in schema and examples are included in the mockups.  The specification has rules about extending the oem object.  But here are some of the rules:</p>
+<ul>
+<li>a property named &quot;oem&quot; is a root level object in every Redfish resource.  To extend it, just create a company named object within it.  The company named object has to have an @odata.type in it and the name of the company object has to adhere to certain rules.</li>
+<li>OEMs can add actions as well.  This is covered in the specification and there are examples of how to do that as well. </li>
+<li>implementations cannot add properties to non-OEM sections</li>
+<li>OEMs can publish their own schemas.  These can be based on or in addition to the Redfish schemas.  These schemas should be referenced in the $metadata construct using OData CSDL and in the JSON Schema File constructs provided off of the service root.</li>
+</ul>
+<h3 id="what-about-copying-distributing-or-modifying-schema-">What about Copying, Distributing or Modifying Schema?</h3>
+<p>The DMTF allows this as long as the usage adheres to the DMTF copyright notice.  The copyright notice can be found in the Readme for DSP8010.</p>
 <h2 id="why-not-cim-mof-">Why not CIM &amp; MOF?</h2>
 <p>We took a different approach for Redfish - we started with the toolset and interface style customers are adopting and leveraged that.  We learned what they use instead of forcing them to learn our way and then hope vendors develop tools to go with it.</p>
 <p>CIM is very normalized, even with View classes.  There are so many classes and they are not purpose built for the customers wanting this technology. </p>
@@ -534,12 +541,13 @@ window.onhashchange = scrollToHash;
 <p>Next, consider the tool set - HTTP &amp; JSON have a rich set of tools and programming languages with existing support.  MOF/CIM is limited and vendor specific when it comes to tools.  Many of the tools hoped for never materialized.</p>
 <p>Every BMC today has a web server and most of them surface a web page that has a JavaScript driven GUI.  So all of the components for an implementation are already in the firmware footprint.  CIM/WBEM/MOF would require additional footprint.  </p>
 <p>The amount of documentation that it takes to understand CIM and the protocols takes reams and reams of paper, resulting in a stack well over a foot high.  Our goal is to have someone read our spec in the morning, play with the data model an hour later and be coding by the afternoon - and that person should not be required to have a college education, understand cardinality, etc.</p>
+<p>CIM also allows things like inheritance.  For instance, a Collection could allow not only the resource types but also any resource sub-types based off of that resource types.  Since inheritance is discouraged in Redfish, a language that encourages inheritance was considered an issue.</p>
 <p>Lastly is customer demand.  The customers asking for a RESTful API see CIM &amp; MOF as &quot;old&quot;, &quot;Windows centric&quot;, &quot;storage centric&quot;, &quot;OS centric&quot;, &quot;too hard&quot; and other negative feedback.  They are asking for something simple that meets their &quot;10 commandlets&quot;.</p>
 <h2 id="why-not-ironic-">Why not Ironic?</h2>
 <p>Ironic is the hardware management API for OpenStack.  It is OpenStack specific and doesn&#39;t have the functionality of a full BMC - only what OpenStack needs.  It is means as a translation layer between OpenStack and IPMI, SNMP and other protocols.  It does not have all of the features we need and is very much tied to OpenStack.  The market for a RESTful API is greater than just OpenStack.  That being said, we expect a Redfish shim for Ironic to be developed. </p>
 <h2 id="why-is-the-etag-algorithm-left-to-the-implementation-">Why is the ETag algorithm left to the implementation?</h2>
 <p>Considering the different ETag models (Weak/Strong) mentioned in the spec it seems that leaving the model decision up to the server implementation will leave clients not knowing what has been implemented and therefore not knowing how to interpret the ETag.  </p>
-<p>In practice it doesn&#39;t matter since the value of the ETag will only be as good as the server is capable of providing for.  The client should treat ETags as opaque anyway and use them to determine if data has changed.  This is the adopted practice in all web servers and is what RFC2616 allows.</p>
+<p>In practice it doesn&#39;t matter since the value of the ETag will only be as good as the server is capable of providing for.  The client should treat ETags as opaque anyway and use them to determine if data has changed.  This is the adopted practice in all web servers and is what RFC7230 allows.</p>
 <h2 id="why-does-redfish-need-to-use-etags-at-all-">Why does Redfish need to use ETags at all?</h2>
 <p>It allows the use of the If-Match header for replacement of resources.  It also allows the clients to determine if anything has changed before doing a large fetch (a Server collection in Moonshot is hundreds of servers).</p>
 <p>It also allows the server the option of providing something more robust than a simple modified time.</p>
@@ -560,9 +568,31 @@ window.onhashchange = scrollToHash;
 <p>It is possible for a user with the System Administrator role to create user accounts which are assigned to roles which the creating user does not themselves possess. This escalation of privileges is well understood and accepted by users, and avoids complications caused by introducing special privilege states or additional roles to handle privilege propagation corner cases.</p>
 <h2 id="logging-of-events">Logging of events</h2>
 <p>Redfish requires logging of some events, but does not require the implementation of a local log, though one is implied due to the fact that it is represented in both metadata/schema and the mockup. This allows implementations of logging that are record-only logs, or logs which are securely stored outside the service using services like syslog.</p>
+<h1 id="change-log">Change Log</h1>
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.0.0</td>
+<td>2015-9-17</td>
+<td>Initial release</td>
+</tr>
+<tr>
+<td>1.1.0</td>
+<td>2016-3-17</td>
+<td>Added Clarification on Schema Reuse, Change RFC2616 to RFC7230</td>
+</tr>
+</tbody>
+</table>
 
         <div id="last-footer-fix"></div>
       </div>
-      <div id="footer"><div data-doc-version="1.0.0"><div> Published</div></div></div>
+      <div id="footer"><div data-doc-version="1.1.0"><div> Published</div></div></div>
     </body>
-  </html>
+  </html>

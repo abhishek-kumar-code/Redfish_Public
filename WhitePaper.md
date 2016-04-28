@@ -3,10 +3,10 @@ DocTitle: Redfish White Paper
 DocNumber: '2044'
 DocClass: Informative
 DocVersion: '1.0.1'
-modified: '2015-08-04'
+modified: '2016-03-31'
 status: published
 released: true
-copyright: '2014-2015'
+copyright: '2014-2016'
 ---
 
 DMTF is a not-for-profit association of industry members dedicated to promoting enterprise and systems management and interoperability. Members and non-members may reproduce DMTF specifications and documents, provided that correct attribution is given. As DMTF specifications may be revised from time to time, the particular version and release date should always be noted.
