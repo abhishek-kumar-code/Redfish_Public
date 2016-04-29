@@ -18,9 +18,6 @@
 		"Health": "OK",
 		"HealthRollUp": "OK"
 	},
-	"AssignableDeviceFunctions": {
-		"@odata.id": "/redfish/v1/Devices/D1/Functions"
-	},
 	"Links": {
 		"Chassis": [{
 			"@odata.id": "/redfish/v1/Chassis/1"
