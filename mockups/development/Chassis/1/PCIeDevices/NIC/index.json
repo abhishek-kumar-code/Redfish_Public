@@ -23,8 +23,8 @@
 			"@odata.id": "/redfish/v1/Chassis/1"
 		}],
         "PCIeFunctions": [
-            {"@odata.id": "/redfish/v1/Chassis/1/NIC/Functions/1"},
-            {"@odata.id": "/redfish/v1/Chassis/1/NIC/Functions/2"}
+            {"@odata.id": "/redfish/v1/Chassis/1/PCIeDevices/NIC/Functions/1"},
+            {"@odata.id": "/redfish/v1/Chassis/1/PCIeDevices/NIC/Functions/2"}
         ],
 		"Oem": {}
 	},
