@@ -19,38 +19,38 @@ DMTF is a not-for-profit association of industry members dedicated to promoting 
 # Acknowledgments
 
 The DMTF acknowledges the following individuals for their contributions to this document:
-* Jeff Autor Hewlett Packard Enterprise
-* Patrick Boyd Dell Inc
-* David Brockhaus Emerson Network Power
-* Richard Brunner VMware Inc.
-* Lee Calcote Seagate Technology
-* P Chandrasekhar Dell Inc
-* Chris Davenport Hewlett Packard Enterprise
-* Gamma Dean Emerson Network Power
-* Daniel Dufresne EMC
-* Samer El-Haj-Mahmoud Hewlett Packard Enterprise
-* George Ericson EMC
-* Wassim Fayed Microsoft Corporation
-* Mike Garrett Hewlett Packard Enterprise
-* Steve Geffin Emerson Network Power
-* Joe Handzik Hewlett Packard Enterprise
-* Jon Hass Dell Inc
-* Jeff Hilland Hewlett Packard Enterprise
-* Chris Hoffman Emerson Network Power
-* Steven Krig Intel Corporation
-* John Leung Intel Corporation
-* Milena Natanov Microsoft Corporation
-* Michael Pizzo Microsoft Corporation
-* Chris Poblete Dell Inc
-* Michael Raineri EMC
-* Irina Salvan Microsoft Corporation
-* Hemal Shah Broadcom Limited
-* Jim Shelton Emerson Network Power
-* Tom Slaight Intel Corporation
-* Donnie Sturgeon Emerson Network Power
-* Pawel Szymanski Intel Corporation
-* Paul Vancil Dell Inc
-* Linda Wu Super Micro Computer, Inc.
+* Jeff Autor - Hewlett Packard Enterprise
+* Patrick Boyd - Dell Inc.
+* David Brockhaus - Emerson Network Power
+* Richard Brunner - VMware Inc.
+* Lee Calcote - Seagate Technology
+* P Chandrasekhar - Dell Inc.
+* Chris Davenport - Hewlett Packard Enterprise
+* Gamma Dean - Emerson Network Power
+* Daniel Dufresne - EMC
+* Samer El-Haj-Mahmoud - Hewlett Packard Enterprise
+* George Ericson - EMC
+* Wassim Fayed - Microsoft Corporation
+* Mike Garrett - Hewlett Packard Enterprise
+* Steve Geffin - Emerson Network Power
+* Joe Handzik - Hewlett Packard Enterprise
+* Jon Hass - Dell Inc.
+* Jeff Hilland - Hewlett Packard Enterprise
+* Chris Hoffman - Emerson Network Power
+* Steven Krig - Intel Corporation
+* John Leung - Intel Corporation
+* Milena Natanov - Microsoft Corporation
+* Michael Pizzo - Microsoft Corporation
+* Chris Poblete - Dell Inc.
+* Michael Raineri - EMC
+* Irina Salvan - Microsoft Corporation
+* Hemal Shah - Broadcom Limited
+* Jim Shelton - Emerson Network Power
+* Tom Slaight - Intel Corporation
+* Donnie Sturgeon - Emerson Network Power
+* Pawel Szymanski - Intel Corporation
+* Paul Vancil - Dell Inc.
+* Linda Wu - Super Micro Computer, Inc.
 
 ## Abstract
 The Redfish Scalable Platforms Management API ("Redfish") is a new specification that uses RESTful interface semantics to access data defined in model format to perform out-of-band systems management.  It is suitable for a wide range of servers, from stand-alone servers to rack mount and bladed environments but scales equally well for large scale cloud environments.
@@ -67,7 +67,7 @@ The following referenced documents are indispensable for the application of this
 * <a id="RFC7234">IETF RFC 7234</a>, R. Fielding et al., Hypertext Transfer Protocol (HTTP/1.1): Caching, [http://www.ietf.org/rfc/rfc7234.txt](http://www.ietf.org/rfc/rfc7234.txt "http://www.ietf.org/rfc/rfc7234.txt")
 * <a id="RFC2617">IETF RFC 2617</a>  J. Franks et al., HTTP Authentication: Basic and Digest Access Authentication, [http://www.ietf.org/rfc/rfc2617.txt](http://www.ietf.org/rfc/rfc2617.txt "http://www.ietf.org/rfc/rfc2617.txt")
 * <a id="RFC3986">IETF RFC 3986</a>  T. Berners-Lee et al, Uniform Resource Identifier (URI): Generic Syntax, [http://www.ietf.org/rfc/rfc3986.txt](http://www.ietf.org/rfc/rfc3986.txt "http://www.ietf.org/rfc/rfc3986.txt")
-* <a id="RFC5789">IETF RFC 5789</a>, D. Crockford, The application/json Media Type for JavaScript Object Notation (JSON), [http://www.ietf.org/rfc/rfc5789.txt](http://www.ietf.org/rfc/rfc5789.txt "http://www.ietf.org/rfc/rfc5789.txt")
+* <a id="RFC5789">IETF RFC 4627</a>, D. Crockford, The application/json Media Type for JavaScript Object Notation (JSON), [http://www.ietf.org/rfc/rfc4627.txt](http://www.ietf.org/rfc/rfc4627.txt "http://www.ietf.org/rfc/rfc5789.txt")
 * <a id="RFC5789">IETF RFC 5789</a>, L. Dusseault et al, PATCH method for HTTP, [http://www.ietf.org/rfc/rfc5789.txt](http://www.ietf.org/rfc/rfc5789.txt "http://www.ietf.org/rfc/rfc5789.txt")
 * <a id="RFC5988">IETF RFC 5988</a>, M. Nottingham, Web linking, [http://www.ietf.org/rfc/rfc5988.txt](http://www.ietf.org/rfc/rfc5988.txt "http://www.ietf.org/rfc/rfc5988.txt")
 * <a id="RFC6901">IETF RFC 6901</a>, P. Bryan, Ed. et al, JavaScript Object Notation (JSON) Pointer, [http://www.ietf.org/rfc/rfc6901.txt](http://www.ietf.org/rfc/rfc6901.txt "http://www.ietf.org/rfc/rfc6901.txt")
