@@ -24,7 +24,7 @@
             {"@odata.id": "/redfish/v1/Systems/1/EthernetInterfaces/1"}
         ],
         "PCIeDevice": {
-            {"@odata.id": "/redfish/v1/Chassis/1/PCIeDevices/NIC"}
+            "@odata.id": "/redfish/v1/Chassis/1/PCIeDevices/NIC"
         }
     },
     "Oem": {}
