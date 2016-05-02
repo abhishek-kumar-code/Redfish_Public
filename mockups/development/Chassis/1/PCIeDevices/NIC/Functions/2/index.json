@@ -20,6 +20,9 @@
         "HealthRollUp": "OK"
     },
     "Links": {
+        "PCIeDevice": {
+            {"@odata.id": "/redfish/v1/Chassis/1/PCIeDevices/NIC"}
+        }
     },
     "Oem": {}
 }
