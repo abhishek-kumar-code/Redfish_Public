@@ -1108,15 +1108,15 @@ A JSON object can be annotated with "@Message.ExtendedInfo" in order to specify 
     "ConnectorType": "RJ45",
     "PinOut": "Cyclades",
     "@Message.ExtendedInfo" : [
-      {
-        "MessageId": "Base.1.0.PropertyDuplicate",
-        "Message": "The property InterfaceEnabled was duplicated in the request.",
-        "RelatedProperties": [
-            "#/InterfaceEnabled"
-        ],
-        "Severity": "Warning",
-        "Resolution": "Remove the duplicate property from the request body and resubmit the request if the operation failed."
-      }
+        {
+            "MessageId": "Base.1.0.PropertyDuplicate",
+            "Message": "The property InterfaceEnabled was duplicated in the request.",
+            "RelatedProperties": [
+                "#/InterfaceEnabled"
+            ],
+            "Severity": "Warning",
+            "Resolution": "Remove the duplicate property from the request body and resubmit the request if the operation failed."
+        }
     ]
 }
 ~~~
