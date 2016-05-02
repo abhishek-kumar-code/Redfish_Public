@@ -1107,7 +1107,8 @@ A JSON object can be annotated with "@Message.ExtendedInfo" in order to specify 
     "FlowControl": "None",
     "ConnectorType": "RJ45",
     "PinOut": "Cyclades",
-    "@Message.ExtendedInfo" : {
+    "@Message.ExtendedInfo" : [
+      {
         "MessageId": "Base.1.0.PropertyDuplicate",
         "Message": "The property InterfaceEnabled was duplicated in the request.",
         "RelatedProperties": [
@@ -1115,7 +1116,8 @@ A JSON object can be annotated with "@Message.ExtendedInfo" in order to specify 
         ],
         "Severity": "Warning",
         "Resolution": "Remove the duplicate property from the request body and resubmit the request if the operation failed."
-    }
+      }
+    ]
 }
 ~~~
 
@@ -1152,12 +1154,11 @@ An individual property within a JSON object can be annotated with extended infor
            "Severity": "Warning",
            "Resolution": "Choose a value from the enumeration list that the implementation can support and resubmit the request if the operation failed."
          }
-     ],
-    "Oem": {}
+     ]
 }
 ~~~
 
-The value of the property is a [message object](#message-object).
+The value of the property is an array of [message objects](#message-object).
 
 ##### Additional Annotations
 
