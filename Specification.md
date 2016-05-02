@@ -57,7 +57,7 @@ The Redfish Scalable Platforms Management API ("Redfish") is a new specification
 
 There are several out-of-band systems management standards (defacto and de jour) available in the industry.  They all either vary widely in implementation, were developed for single server embedded environments or have their roots in antiquated software modeling constructs.  There is no single industry standard that is simple to use, based on emerging programming standards, embedded friendly and capable of meeting large scale data center & cloud needs.
 
-## Normative References
+## Normative references
 
 The following referenced documents are indispensable for the application of this document. For dated or versioned references, only the edition cited (including any corrigenda or DMTF update versions) applies. For references without a date or version, the latest published edition of the referenced document (including any corrigenda or DMTF update versions) applies.
 
@@ -223,7 +223,7 @@ Adopting OData conventions for describing Redfish Schema, URL conventions, and n
 
 The Redfish model is built for managing systems. All resources are defined in OData Schema representation and translated to JSON Schema representation. OData is an industry standard that encapsulates best practices for RESTful services and provides interoperability across services of different types. JSON is being widely adopted in multiple disciplines and has a large number of tools and programming languages that accelerate development when adopting these approaches.
 
-#### Separation of Protocol from Data Model
+#### Separation of protocol from data model
 
 The protocol operations are specified independently of the data model.  The protocols are also versioned independently of the data model.  The expectation is that the protocol version changes extremely infrequently, while the data model version is allowed to change as needed.  This implies that innovation should happen primarily in the data model, not the protocols.  It allows the data model to be extended and changed as needed without requiring the protocols or API version to change. Conversely, separating the protocols from the data model allows for changes to occur in the protocols without causing significant changes to the data model.
 
@@ -233,11 +233,11 @@ Like other hypermedia APIs, Redfish has a single service endpoint URI and all ot
 
 ### Service elements
 
-#### Synchronous and Asynchronous Operation Support
+#### Synchronous and asynchronous operation support
 
 While the majority of operations in this architecture are synchronous in nature, some operations can take a long time to execute, more time than a client typically wants to wait. For this reason, some operations can be asynchronous at the discretion of the service. The request portion of an asynchronous operation is no different from the request portion of a synchronous operation.
 
-The use of HTTP Response codes enable a client to determine if the operation was completed synchronously or asynchronously.  For more information see the clause on [Tasks](#async-tasks).
+The use of HTTP Response codes enable a client to determine if the operation was completed synchronously or asynchronously.  For more information, see the clause on [Tasks](#async-tasks).
 
 #### Eventing mechanism
 
@@ -428,7 +428,7 @@ A GET on the resource "/redfish" shall return the following body:
 }
 ~~~
 
-### Redfish-Defined URIs and Relative URI Rules
+### Redfish-defined URIs and relative URI rules
 
 Redfish is a hypermedia API with a small set of defined URIs.  All other resources are accessible via opaque URIs referenced from the root service.  The following Redfish-defined URIs shall be supported by a Redfish Service:
 
@@ -1304,7 +1304,7 @@ The client can use the MessageId to search the message registry for the correspo
 The message registry approach has advantages for internationalization (since the registry can be translated easily) and light weight implementation (since large strings need not be included with the implementation).
 
 
-## Data model & Schema
+## Data model and Schema
 
 One of the key tenets of the Redfish interface is the separation of protocol and data model.  This clause describes common data model, resource, and Redfish Schema requirements.
 
@@ -2284,7 +2284,7 @@ The ability to DELETE a Session by specifying the Session resource ID allows an 
 
 * The Redfish device may verify the destination for identity purposes before pushing event data object to the Destination
 
-#### Privilege Model/Authorization
+#### Privilege model/Authorization
 
 The Authorization subsystem uses Roles and Privileges to control which users have what access to resources.
 

@@ -466,7 +466,7 @@ window.onhashchange = scrollToHash;
 <h2 id="abstract">Abstract</h2>
 <p>The Redfish Scalable Platforms Management API (&quot;Redfish&quot;) is a new specification that uses RESTful interface semantics to access data defined in model format to perform out-of-band systems management.  It is suitable for a wide range of servers, from stand-alone servers to rack mount and bladed environments but scales equally well for large scale cloud environments.</p>
 <p>There are several out-of-band systems management standards (defacto and de jour) available in the industry.  They all either vary widely in implementation, were developed for single server embedded environments or have their roots in antiquated software modeling constructs.  There is no single industry standard that is simple to use, based on emerging programming standards, embedded friendly and capable of meeting large scale data center &amp; cloud needs.</p>
-<h2 id="normative-references">Normative References</h2>
+<h2 id="normative-references">Normative references</h2>
 <p>The following referenced documents are indispensable for the application of this document. For dated or versioned references, only the edition cited (including any corrigenda or DMTF update versions) applies. For references without a date or version, the latest published edition of the referenced document (including any corrigenda or DMTF update versions) applies.</p>
 <ul>
 <li><a id="RFC7230">IETF RFC 7230</a>, R. Fielding et al., Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing, <a href="http://www.ietf.org/rfc/rfc7230.txt" title="http://www.ietf.org/rfc/rfc7230.txt">http://www.ietf.org/rfc/rfc7230.txt</a></li>
@@ -723,14 +723,14 @@ window.onhashchange = scrollToHash;
 <p>Adopting OData conventions for describing Redfish Schema, URL conventions, and naming and structure of common properties in a JSON payload, not only encapsulate best practices for RESTful APIs but further enables Redfish Services to be consumed by a growing ecosystem of generic client libraries, applications, and tools.</p>
 <h4 id="model-oriented">Model-oriented</h4>
 <p>The Redfish model is built for managing systems. All resources are defined in OData Schema representation and translated to JSON Schema representation. OData is an industry standard that encapsulates best practices for RESTful services and provides interoperability across services of different types. JSON is being widely adopted in multiple disciplines and has a large number of tools and programming languages that accelerate development when adopting these approaches.</p>
-<h4 id="separation-of-protocol-from-data-model">Separation of Protocol from Data Model</h4>
+<h4 id="separation-of-protocol-from-data-model">Separation of protocol from data model</h4>
 <p>The protocol operations are specified independently of the data model.  The protocols are also versioned independently of the data model.  The expectation is that the protocol version changes extremely infrequently, while the data model version is allowed to change as needed.  This implies that innovation should happen primarily in the data model, not the protocols.  It allows the data model to be extended and changed as needed without requiring the protocols or API version to change. Conversely, separating the protocols from the data model allows for changes to occur in the protocols without causing significant changes to the data model.</p>
 <h4 id="hypermedia-api-service-endpoint">Hypermedia API service endpoint</h4>
 <p>Like other hypermedia APIs, Redfish has a single service endpoint URI and all other resources are accessible via opaque URIs referenced from the root.  Any resource discovered through links found by accessing the root service or any service or resource referenced using references from the root service will conform to the same versions of the protocols supported by the root service.</p>
 <h3 id="service-elements">Service elements</h3>
-<h4 id="synchronous-and-asynchronous-operation-support">Synchronous and Asynchronous Operation Support</h4>
+<h4 id="synchronous-and-asynchronous-operation-support">Synchronous and asynchronous operation support</h4>
 <p>While the majority of operations in this architecture are synchronous in nature, some operations can take a long time to execute, more time than a client typically wants to wait. For this reason, some operations can be asynchronous at the discretion of the service. The request portion of an asynchronous operation is no different from the request portion of a synchronous operation.</p>
-<p>The use of HTTP Response codes enable a client to determine if the operation was completed synchronously or asynchronously.  For more information see the clause on <a href="#async-tasks">Tasks</a>.</p>
+<p>The use of HTTP Response codes enable a client to determine if the operation was completed synchronously or asynchronously.  For more information, see the clause on <a href="#async-tasks">Tasks</a>.</p>
 <h4 id="eventing-mechanism">Eventing mechanism</h4>
 <p>In some situations it is useful for a service to provide messages to clients that fall outside the normal request/response paradigm. These messages, called events, are used by the service to asynchronously notify the client of some significant state change or error condition, usually of a time critical nature.</p>
 <p>Only one style of eventing is currently defined by this specification - push style eventing. In push style eventing, when the server detects the need to send an event, it uses an HTTP POST to push the event message to the client.  Clients can subscribe to the eventing service to enable reception of events by creating a EventDestination subscription entry in the Event Service, or an administrator can create subscriptions as part of the Redfish Service configuration.  All subscriptions are persistent configuration settings.</p>
@@ -898,7 +898,7 @@ window.onhashchange = scrollToHash;
     &quot;v1&quot;: &quot;/redfish/v1/&quot;
 }
 </code></pre>
-<h3 id="redfish-defined-uris-and-relative-uri-rules">Redfish-Defined URIs and Relative URI Rules</h3>
+<h3 id="redfish-defined-uris-and-relative-uri-rules">Redfish-defined URIs and relative URI rules</h3>
 <p>Redfish is a hypermedia API with a small set of defined URIs.  All other resources are accessible via opaque URIs referenced from the root service.  The following Redfish-defined URIs shall be supported by a Redfish Service:</p>
 <table>
 <thead>
@@ -1941,7 +1941,7 @@ returned with a <code>rel=describedby</code>.  URLs of the JSON schema for an an
 </ul>
 <p>The client can use the MessageId to search the message registry for the corresponding message.</p>
 <p>The message registry approach has advantages for internationalization (since the registry can be translated easily) and light weight implementation (since large strings need not be included with the implementation).</p>
-<h2 id="data-model-schema">Data model &amp; Schema</h2>
+<h2 id="data-model-schema">Data model and Schema</h2>
 <p>One of the key tenets of the Redfish interface is the separation of protocol and data model.  This clause describes common data model, resource, and Redfish Schema requirements.</p>
 <ul>
 <li>Each resource shall be strongly typed according to a <a href="#resource-type-definitions">resource type definition</a>. The type shall be defined in a Redfish <a href="#schema-documents">schema document</a> and identified by a unique <a href="#type-property">type identifier</a>.</li>
@@ -2667,7 +2667,7 @@ Therefore, the POST to create a new session shall only be supported with HTTPS, 
 <ul>
 <li>The Redfish device may verify the destination for identity purposes before pushing event data object to the Destination</li>
 </ul>
-<h4 id="privilege-model-authorization">Privilege Model/Authorization</h4>
+<h4 id="privilege-model-authorization">Privilege model/Authorization</h4>
 <p>The Authorization subsystem uses Roles and Privileges to control which users have what access to resources.</p>
 <ul>
 <li><p>Roles:</p>
