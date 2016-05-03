@@ -335,8 +335,10 @@
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>		
       </ComplexType>
+    </Schema>
       
-     <EntityType Name="Manager" BaseType="Manager.v1_0_2.Manager">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_2_0">
+     <EntityType Name="Manager" BaseType="Manager.v1_1_0.Manager">
         <Property Name="PowerState" Type="Resource.v1_1_0.PowerState">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the current power state of the Manager."/>
