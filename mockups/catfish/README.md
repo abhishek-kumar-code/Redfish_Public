@@ -4,7 +4,7 @@ DocTitle:  Catfish Mockup
 # Catfish Mockup:
   *  A simple, minimal Redfish Service
   *  For a monolithic Server
-  *  Aligned with: OCP Remote Mancing Management Spec feature set
+  *  Aligned with: OCP Remote Machine Management Spec feature set
 
 
 # Top Level Description:
@@ -14,16 +14,16 @@ DocTitle:  Catfish Mockup
       * One Manager
   --Provides basic management features aligned with OCP Remote Machine Management Spec 1.01:
       * Power-on/off/reset
-      * Boot to Pxe, HDD, BIOSsetup (boot override)
+      * Boot to PXE, HDD, BIOS setup (boot override)
       * 4 temp sensors per DCMI (CPU1, CPU2, Board, Inlet)
       * Simple Power Reading, and  DCMI Power Limiting
       * Fan Monitoring w/ redundancy
       * Set asset tag and Indicator LED
-      * Basic inventory (serial#, model, SKU, Vendor, BIOSver…)
+      * Basic inventory (serial#, model, SKU, Vendor, BIOS ver…)
       * User Management
       * BMC management: get/set IP, version, enable/disable protocol
 
-# What is does NOT have -- that the Redfish 1.0 model supports
+# What it does NOT have -- that the Redfish 1.0 model supports
    * No PSUs in model  (RMM spec did not include PSUs) 
    * No ProcessorInfo, MemoryInfo, StorageInfo, System-EthernetInterfaceInfo
    * No Tasks

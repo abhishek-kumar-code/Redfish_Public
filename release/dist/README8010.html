@@ -428,11 +428,11 @@ window.onhashchange = scrollToHash;
 <ul>
 <li>DSP0226 - Redfish Specification - this file is the main Redfish Scalable Platforms Management API Specification.</li>
 <li>DSP2044 - Redfish Whitepaper - this is intended to be a non-normative document helping those new to Redfish understand how to interact with the Redfish service and understand common functions and tasks.</li>
-<li>DSP2043 - Redfish Mockup - this is a mockup that can be used as sample of output from GETs from A Redfish service.  Informative in nature, it was used to develop the schema.  A person can set up an NGINX or similar server and configure it to output JSON format and then use this directory for demonstration purposes.</li>
-<li>DSP8010 - Redfish Schema - this contains the Redfish Schema definitions.  These files are normative in nature and are normatively referenced by the Redfish Specification.  There are two Schema formats - CSDL (OData Common Schema Definition Language format which is in XML) and JSON Schema.  These Schema definitions should be functionally equivalent, thus specifying the schema in two different languages.</li>
+<li>DSP2043 - Redfish Mockup - this is a mockup that can be used as sample of output from GETs from a Redfish Service.  Informative in nature, it was used to develop the schema.  A person can set up an NGINX or similar server and configure it to output JSON format and then use this directory for demonstration purposes.</li>
+<li>DSP8010 - Redfish Schema - this contains the Redfish Schema definitions.  These files are normative in nature and are normatively referenced by the Redfish Specification.  There are two schema formats - CSDL (OData Common Schema Definition Language format, which is in XML) and JSON Schema.  These schema definitions should be functionally equivalent, thus specifying the schema in two different languages.</li>
 </ul>
 <h1 id="redfish-work-in-progress-schemas">Redfish Work in Progress Schemas</h1>
-<p>The following new schema files are released as Work In Progress documents.  They have also been submitted to the DMTF Board of Directors for approval, with a final release expected in May 2016.  Upon release, these schemas will be added to a new revision of the DSP8010-2016.1a.ZIP schema bundle, and the individual schema files will be added to the public schema repository at <a href="http://redfish.dmtf.org/schemas">http://redfish.dmtf.org/schemas</a> at that time.</p>
+<p>The following new schema files are released as Work in Progress documents.  They have also been submitted to the DMTF Board of Directors for approval, with a final release expected in May 2016.  Upon release, these schemas will be added to a new revision of the DSP8010-2016.1a.ZIP schema bundle, and the individual schema files will be added to the public schema repository at <a href="http://redfish.dmtf.org/schemas">http://redfish.dmtf.org/schemas</a> at that time.</p>
 <table>
 <thead>
 <tr>
@@ -447,7 +447,7 @@ window.onhashchange = scrollToHash;
 <td>AttributeRegistry</td>
 <td>1.0.0</td>
 <td>2016-3-31</td>
-<td>Initial release.  An Attribute Registry is a set of key-value pairs which are specific to a particular implementation or product, such that creating standardized property names would be impractical.  This schema describes the structure of a Registry, and also includes mechanisms for building user interfaces (menus) allowing consistent navigation of the contents.</td>
+<td>Initial release.  An Attribute Registry is a set of key-value pairs, which are specific to a particular implementation or product, such that creating standardized property names would be impractical.  This schema describes the structure of a Registry, and also includes mechanisms for building user interfaces (menus) allowing consistent navigation of the contents.</td>
 </tr>
 <tr>
 <td>Bios</td>
@@ -505,7 +505,7 @@ window.onhashchange = scrollToHash;
 </tr>
 </tbody>
 </table>
-<h1 id="redfish-schema-change-log">Redfish Schema Change Log</h1>
+<h1 id="redfish-schema-change-log">Redfish Schema Change log</h1>
 <table>
 <thead>
 <tr>
@@ -520,7 +520,7 @@ window.onhashchange = scrollToHash;
 <td>(all files)</td>
 <td>1.0.2</td>
 <td>2016-3-31</td>
-<td>Errata release of all schema files to adjust file naming conventions. CSDL schema files now have the major version appended to the end of the schema name (e.g. Chassis_v1), and json-schema files include the major/minor/errata version number (matching the namespace definitions in the schema as they did previously) in the filename, but are now prefaced with a 'v' and with underscore separators (e.g. Chassis.v1_0_2.json) to match the corrected namespace naming rules.  Added LongDescriptions to 'Links' and 'Actions' objects throughout.  Added 'Unit', 'Minimum' and 'Maximum' annotations throughout.  Improved schema description text, updated RFC references and whitespace consistency throughout.</td>
+<td>Errata release of all schema files to adjust file naming conventions. CSDL schema files now have the major version appended to the end of the schema name (e.g., Chassis_v1), and json-schema files include the major/minor/errata version number (matching the namespace definitions in the schema as they did previously) in the file name, but are now prefaced with a 'v' and with underscore separators (e.g., Chassis.v1_0_2.json) to match the corrected namespace naming rules.  Added LongDescriptions to 'Links' and 'Actions' objects throughout.  Added 'Unit', 'Minimum' and 'Maximum' annotations throughout.  Improved schema description text, updated RFC references, and whitespace consistency throughout.</td>
 </tr>
 <tr>
 <td>(all Collections)</td>
@@ -532,13 +532,13 @@ window.onhashchange = scrollToHash;
 <td>(all files)</td>
 <td>(various)</td>
 <td>2016-3-31</td>
-<td>Copies of all previously-released Redfish json-schema files have been created to follow the corrected json-schema filename format (v1_n_n instead of 1.n.n).  The internal schema name references were updated to match this style, but otherwise the files are identical to their originally released content.</td>
+<td>Copies of all previously-released Redfish json-schema files have been created to follow the corrected json-schema file name format (v1_n_n instead of 1.n.n).  The internal schema name references were updated to match this style, but otherwise the files are identical to their originally released content.</td>
 </tr>
 <tr>
 <td>Chassis</td>
 <td>1.2.0</td>
 <td>2016-3-31</td>
-<td>Added Links for ManagersInChassis, Drives and Storage.</td>
+<td>Added Links for ManagersInChassis, Drives, and Storage.</td>
 </tr>
 <tr>
 <td>Chassis</td>
@@ -670,13 +670,13 @@ window.onhashchange = scrollToHash;
 <td>Manager</td>
 <td>1.0.1</td>
 <td>2015-9-17</td>
-<td>Errata release.  Corrected longDescription text for both 'ManagerForChassis' and 'ManagerForSystem'</td>
+<td>Errata release.  Corrected longDescription text for both 'ManagerForChassis' and 'ManagerForSystem'.</td>
 </tr>
 <tr>
 <td>Power</td>
 <td>1.0.1</td>
 <td>2015-9-17</td>
-<td>Errata release.  Corrected longDescription text for 'IntervalInMin'</td>
+<td>Errata release.  Corrected longDescription text for 'IntervalInMin'.</td>
 </tr>
 <tr>
 <td>VLanNetworkInterface</td>
@@ -688,7 +688,7 @@ window.onhashchange = scrollToHash;
 <td>(all files)</td>
 <td>1.0.0</td>
 <td>various</td>
-<td>Initial release</td>
+<td>Initial release.</td>
 </tr>
 </tbody>
 </table>

@@ -1,11 +1,11 @@
 ---
 DocTitle: Redfish API Schema Readme
 DocNumber: '8010'
-DocClass: Informative
-DocVersion: '1.0.2'
+DocClass: Normative
+DocVersion: '2016.1a'
 modified: '2016-03-31'
 status: published
-released: true
+released: True
 copyright: '2015-2016'
 ---
 # Foreword
@@ -20,6 +20,8 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 # Redfish Work in Progress Schemas
 
 The following new schema files are released as Work In Progress documents.  They have also been submitted to the DMTF Board of Directors for approval, with a final release expected in May 2016.  Upon release, these schemas will be added to a new revision of the DSP8010-2016.1a.ZIP schema bundle, and the individual schema files will be added to the public schema repository at http://redfish.dmtf.org/schemas at that time.
+
+IMPORTANT: These documents are not final. They do not necessarily reflect the views of the DMTF or its members. Because these documents are a Work in Progress, these documents may still change, perhaps profoundly and without notice. These documents are available for public review and comment until superseded.
 
 | Schema File | Version | Date      | Description     |
 | ---         | ---     | ---       | ---             |
