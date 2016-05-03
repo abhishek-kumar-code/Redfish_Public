@@ -2141,7 +2141,7 @@ Implementations shall support replacement of the default certificate if one is p
 
 * Authentication Methods
 
-	Service shall support both "Basic Authentication" and "Redfish Session Login Authentication" (as described below under Session Management).  Services shall not require a client to create a session when Basic Authentication is used.
+	Service shall support both "Basic Authentication" and "Redfish Session Login Authentication" (as described below under Session Management).  Services shall not require a client to create a session when Basic Auth is used.
 
 	Services may implement other authentication mechanisms.
 
@@ -2166,12 +2166,12 @@ Implementations shall support replacement of the default certificate if one is p
 #### Extended Error Handling
   * Extended error messages shall NOT provide privileged info when authentication failures occur
 
-#### HTTP Authorization Header
+#### HTTP header authentication
 * HTTP Headers for authentication shall be processed before other headers that may affect the response, i.e.: etag, If-Modified, etc.
 * HTTP Cookies shall NOT be used to authenticate any activity i.e.: GET, POST, PUT/PATCH, and DELETE.
 
-##### Basic Authentication
-HTTP Basic Authentication as defined by [RFC2617](#RFC2617) shall be supported, and shall only use compliant TLS connections to transport the data between any third party authentication service and clients.
+##### BASIC authentication
+HTTP BASIC authentication as defined by [RFC2617](#RFC2617) shall be supported, and shall only use compliant TLS connections to transport the data between any third party authentication service and clients.
 
 ##### Request / Message Level Authentication
 Every request that establishes a secure channel shall be accompanied by either the X-Auth-Token header, Authorization header, or an OEM-defined authentication header.
