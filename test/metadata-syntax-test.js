@@ -11,13 +11,17 @@ var files = glob.sync(path.join('{metadata,mockups}', '**', '*.xml'))
 var syntaxBatch = {}, schemaBatch = {};
 
 var ucum = null;
+var ucumError = false;
 var unitsWhiteList = ['RPM'];
 
 function getUcumXML(callback, context, end)
 {
-    request('http://unitsofmeasure.org/ucum-essence.xml', function (error, response, body) {
+    request({url: 'http://unitsofmeasure.org/ucum-essence.xml', timeout: 5000}, function (error, response, body) {
       if (!error && response.statusCode == 200) {
         ucum = xmljs.parseXml(body);
+      }
+      else {
+          ucumError = true;
       }
       callback(context, end);
     });
@@ -31,7 +35,7 @@ function readFile(file, callback)
 files.forEach(function(file) {
   syntaxBatch[file] = {
     topic: function() {
-      if(ucum === null)
+      if(ucum === null && ucumError === false)
       {
           getUcumXML(readFile, file, this.callback);
       }
@@ -44,6 +48,11 @@ files.forEach(function(file) {
       xmljs.parseXml(txt);
     },
     'units are valid': function(err, txt) {
+      if(ucum === null)
+      {
+           process.stderr.write('Skipping units test due to inability to obtain UCUM file...');
+           return;
+      }
       if(this.context.title.indexOf('_v') === -1)
       {
            return;
