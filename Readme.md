@@ -173,7 +173,11 @@ The following is a checklist for schema or specification release:
 
 -  Namespace creation: Schema releases must increment the schema version, and therefore must create a new CSDL namespace.
 -  New schemas: The $metadata example must be updated to include the new schema file(s).
- 
+
+### HTML document generation
+
+A set of batch/script files are located in the root and release folder which will execute a series of tools to convert the Markdown documents to HTML.  Note that for Windows users, the node.js javascript environment used by these scripts may have issues locating the proper toolchain components of Visual Studio (C/C++).  This is a well-known issue, and following the steps documented here: https://github.com/nodejs/node-gyp/issues/629#issuecomment-153196245 can resolve that issue.  
+
 ##github.io
 
 Information regarding the SPMF Viewer application TODO here...
