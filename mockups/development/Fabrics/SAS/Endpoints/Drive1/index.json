@@ -1,0 +1,32 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+	"@odata.context": "/redfish/v1/$metadata#Endpoint.Endpoint",
+	"@odata.id": "/redfish/v1/Fabrics/SAS/Endpoints/Drive1",
+	"@odata.type": "#Endpoint.v1_0_0.Endpoint",
+	"Id": "Drive1",
+	"Name": "SAS Drive",
+	"Description": "The SAS Drive in Enclosure 2 Bay 0",
+    "EndpointProtocol": "SAS",
+    "ConnectedEntities": [
+        {
+            "DeviceType": "Drive",
+            "DeviceRole": "Target",
+            "DeviceLink": {
+                "@odata.id": "/redfish/v1/Chassis/StorageEnclosure2/Drives/Disk.Bay.0"
+            },
+            "Oem": {}
+        }
+    ],
+    "Links": {
+        "MutuallyExclusiveEndpoints": [
+            {"@odata.id": "/redfish/v1/Fabrics/SAS/Endpoints/Enclosure2"}
+        ],
+        "Ports": [
+            {"@odata.id": "/redfish/v1/Fabrics/SAS/Switches/1/Ports/8"},
+            {"@odata.id": "/redfish/v1/Fabrics/SAS/Switches/2/Ports/8"}
+        ],
+        "Oem": {}
+    },
+	"Oem": {}
+}
+
