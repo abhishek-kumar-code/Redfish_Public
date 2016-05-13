@@ -76,14 +76,18 @@ class JsonSchemaGenerator:
 
         refvalue = ""
         current_typedata = typetable[current_typename]
+
+        # get the most recent version of this type less than or equal to the current namespace
+        current_namespace = self.get_current_namespace(current_typedata["Name"], current_typedata["Namespace"], root_namespace, typetable)
+
         typetype = current_typedata["TypeType"]
-        simplename = current_typename[current_typename.rfind(".") + 1 :]
+        simplename = current_typedata["Name"]
 
 #todo: fix logic to be more generic post-v1
         # If the current type is defined in this namespace
         if (current_typename == "Resource.Item") :
             refvalue = odataSchema + "#/definitions/idRef"
-        elif ( typetype != "Action" and self.include_type(simplename, current_typedata["Namespace"], root_namespace, typetable ) ) or (typetype == "Action" and self.include_type(simplename, current_typedata["BoundNamespace"], root_namespace, typetable) ):
+        elif ( typetype != "Action" and self.include_type(simplename, current_namespace, root_namespace, typetable ) ) or (typetype == "Action" and self.include_type(simplename, current_typedata["BoundNamespace"], root_namespace, typetable) ):
             refvalue = "#/definitions/" + simplename
         else:
             refvalue = schemaBaseLocation + current_typedata["Alias"] + ".json#/definitions/" + simplename
@@ -1087,7 +1091,6 @@ class JsonSchemaGenerator:
         if( current_namespace+"."+typename in typetable.keys() ):
             return False
 
-        # If there are any newer versions of the type prior to current namespace version, exclude it
         for key in typetable.keys():
             type=typetable[key]
             if(type["Name"] == typename and self.is_prior_version(type["Namespace"],current_namespace) ):
@@ -1095,6 +1098,39 @@ class JsonSchemaGenerator:
                     return False
 
         return True
+
+    ############################################################################################
+    # Name: get_current_namespace                                                              #
+    # Description:                                                                             #
+    #   Returns the namespace of the latest version of a type less than or equal to            #
+	#   the current namespace                                                                  #
+    ############################################################################################
+    def get_current_namespace(self, typename, type_namespace, current_namespace, typetable):
+
+        # If namespace is the same as current namespace, return it
+        if(type_namespace == current_namespace):
+            return current_namespace
+
+        #if this is not a type we've read, just return its namespace
+        if not (type_namespace + "." + typename in typetable.keys()):
+            return type_namespace
+
+        # If type namespace is greater than the current namespace, return it (this should never happen)
+        if(self.is_prior_version(current_namespace, type_namespace)):
+            return type_namespace
+
+        # If type is defined in current namespace return current namespace
+        if( current_namespace + "." + typename in typetable.keys() ):
+            return current_namespace
+
+        # Return latest version of the type less than or equal to the current namespace version
+        for candidate_key in typetable.keys():
+            type=typetable[candidate_key]
+            if(type["Name"] == typename and self.is_prior_version(type["Namespace"],current_namespace) ):
+                if( self.is_prior_version(type_namespace,type["Namespace"]) ):
+                     type_namespace=type["Namespace"]
+
+        return type_namespace
 
     ############################################################################################
     # Name: generate_enum_type                                                                 #
