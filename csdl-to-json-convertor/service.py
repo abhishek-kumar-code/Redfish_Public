@@ -78,7 +78,9 @@ class JsonSchemaGenerator:
         current_typedata = typetable[current_typename]
 
         # get the most recent version of this type less than or equal to the current namespace
-        current_namespace = self.get_current_namespace(current_typedata["Name"], current_typedata["Namespace"], root_namespace, typetable)
+        current_namespace = current_typedata["Namespace"]
+        if(current_namespace.find(".") > 0) :
+            current_namespace = self.get_current_namespace(current_typedata["Name"], current_namespace, root_namespace, typetable)
 
         typetype = current_typedata["TypeType"]
         simplename = current_typedata["Name"]
@@ -700,24 +702,6 @@ class JsonSchemaGenerator:
     # Description:                                                                                         #
     #  Generates JSON for a property reference that may be nullable                                        #
     ########################################################################################################
-    def write_reference2(self, refvalue, depth, isnullable):
-
-        output = UT.Utilities.indent(depth) 
-        if isnullable:
-            output += "\"anyOf\": [\n"
-            output += UT.Utilities.indent(depth+1) + "{\"$ref\": \"" + refvalue + "\"},\n"
-            output += UT.Utilities.indent(depth+1) + "{\"type\": \"null\"}\n"
-            output += UT.Utilities.indent(depth)   + "]"
-        else:
-            output += "\"$ref\": \"" + refvalue + "\""
-
-        return output
-
-    ########################################################################################################
-    # Name: write_reference                                                                                #
-    # Description:                                                                                         #
-    #  Generates JSON for a property reference that may be nullable                                        #
-    ########################################################################################################
     def write_reference(self, refvalue, depth, isnullable, allowreference):
 
         output = UT.Utilities.indent(depth) 
@@ -1091,6 +1075,7 @@ class JsonSchemaGenerator:
         if( current_namespace+"."+typename in typetable.keys() ):
             return False
 
+        # If there are any newer versions of the type prior to current namespace version, exclude it 
         for key in typetable.keys():
             type=typetable[key]
             if(type["Name"] == typename and self.is_prior_version(type["Namespace"],current_namespace) ):

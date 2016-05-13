@@ -198,7 +198,7 @@
                             "longDescription": "The value of this property shall be a reference to the resource that manages this chassis and shall reference a resource of type Manager."
                         },
                         "ContainedBy": {
-                            "$ref": "#/definitions/Chassis",
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Chassis.json#/definitions/Chassis",
                             "readonly": true,
                             "description": "A reference to the chassis that this chassis is contained by.",
                             "longDescription": "The value of this property shall be a reference to the resource that represents the chassis that contains this chassis and shall be of type Chassis."
@@ -213,7 +213,7 @@
                         "Contains": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/Chassis"
+                                "$ref": "http://redfish.dmtf.org/schemas/v1/Chassis.json#/definitions/Chassis"
                             },
                             "readonly": true,
                             "description": "An array of references to any other chassis that this chassis has in it.",
