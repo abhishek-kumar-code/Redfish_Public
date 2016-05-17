@@ -138,13 +138,14 @@
             "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Redundancy/0",
             "MemberId": "0",
             "Name": "BaseBoard System Fans",
+            "RedundancyEnabled": false,
             "RedundancySet": [
                 { "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Fans/0" },
                 { "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Fans/1" }
             ],
             "Mode": "N+m",
             "Status": {
-                "State": "Enabled",
+                "State": "Disabled",
                 "Health": "OK"
             },
             "MinNumNeeded": 1,
