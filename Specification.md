@@ -2174,7 +2174,7 @@ Implementations shall support replacement of the default certificate if one is p
 HTTP BASIC authentication as defined by [RFC2617](#RFC2617) shall be supported, and shall only use compliant TLS connections to transport the data between any third party authentication service and clients.
 
 ##### Request/Message level authentication
-Every request that establishes a secure channel shall be accompanied by either the X-Auth-Token header, Authorization header, or an OEM-defined authentication header.
+Every request that establishes a secure channel shall be accompanied by an authentication header.
 
 #### Session Management
 
