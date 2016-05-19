@@ -52,7 +52,11 @@
     },
     "Actions": {
         "#Manager.Reset": {
-            "target": "/redfish/v1/Managers/2/Actions/Manager.Reset"
+            "target": "/redfish/v1/Managers/2/Actions/Manager.Reset",
+            "ResetType@Redfish.AllowableValues": [
+                "ForceRestart",
+                "GracefulRestart"
+            ]
         },
         "#Manager.v1_0_0.ForceFailover": {
             "target": "/redfish/v1/Managers/2/Actions/Manager.ForceFailover"
