@@ -88,6 +88,6 @@
         "Oem": {}
     },
     "Oem": {
-			"ManagementConfigurationMode": "Manual",
+			"ManagementConfigurationMode": "Manual"
 	}
 }
