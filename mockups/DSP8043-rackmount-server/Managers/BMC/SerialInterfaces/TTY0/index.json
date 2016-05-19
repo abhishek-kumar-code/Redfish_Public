@@ -1,5 +1,6 @@
 {
     "@odata.type": "#SerialInterface.v1_0_2.SerialInterface",
+    "Id": "TTY0",
     "Name": "Manager Serial Interface 1",
     "Description": "Management for Serial Interface",
     "Status": {
