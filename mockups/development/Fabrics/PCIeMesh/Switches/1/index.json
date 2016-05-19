@@ -1,0 +1,50 @@
+{
+	"@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+	"@odata.context": "/redfish/v1/$metadata#Switch.Switch",
+	"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/1",
+	"@odata.type": "#Switch.v1_0_0.Switch",
+    "Id": "1",
+	"Name": "PCIe Switch",
+    "SwitchType": "PCIe",
+    "Manufacturer": "PCIe Switch Guys",
+    "Model": "XKE-PCIe",
+    "SKU": "97LANEPCI",
+    "SerialNumber": "MYSERIALNUMBER",
+    "PartNumber": "1776-1883",
+	"DomainID": "MyPCIeDomainID",
+	"IsManaged": true,
+	"TotalSwitchWidth": 97,
+	"PowerState": "On",
+	"Ports": {
+		"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/1/Ports"
+	},
+	"Links": {
+		"Chassis": [
+            {"@odata.id": "/redfish/v1/Chassis/PCIeSwitch1"},
+            {"@odata.id": "/redfish/v1/Chassis/PCIeSwitchRackMount"}, 
+			{"@odata.id": "/redfish/v1/Chassis/PCIeSwitchMgrHW"}	
+		],
+		"ManagedBy": [
+			{"@odata.id": "/redfish/v1/Managers/PCIeSwitchManager"}
+		],
+		"Oem": {}
+	},
+	"Actions": {
+		"#Switch.Reset": {
+			"target": "/redfish/v1/Fabrics/PCIeMesh/Switches/1/Actions/Switch.Reset",
+			"ResetType@Redfish.AllowableValues": [
+				"On",
+				"ForceOff",
+				"GracefulShutdown",
+				"ForceRestart",
+				"Nmi",
+				"GracefulRestart",
+				"ForceOn",
+				"PushPowerButton"
+			]
+		},
+		"Oem": {}
+	},
+	"Oem": {}
+}
+

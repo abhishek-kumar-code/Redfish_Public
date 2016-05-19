@@ -4,7 +4,7 @@
     "@odata.id": "/redfish/v1/Chassis",
     "@odata.type": "#ChassisCollection.ChassisCollection",
     "Name": "Chassis Collection",
-    "Members@odata.count": 9,
+    "Members@odata.count": 12,
     "Members": [
         {
             "@odata.id": "/redfish/v1/Chassis/1"
@@ -29,7 +29,19 @@
         },
         {
             "@odata.id": "/redfish/v1/Chassis/StorageEnclosure2"
-        }
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/PCIeSwitch2"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/PCIeSwitch3"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/PCIeSwitchMgrHW"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/PCIeSwitchRackMount"
+        }		
     ],
     "Members@odata.nextLink": "/redfish/v1/Chassis/Page2/$ref"
 }

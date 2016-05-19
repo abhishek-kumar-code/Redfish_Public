@@ -1,0 +1,42 @@
+{
+    "@Redfish.Copyright":"Copyright \u00a9 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reservd.",
+    "@odata.id":"/redfish/v1/Chassis/PCIeSwitchRackmount",
+    "@odata.context":"/redfish/v1/$metadata#Chassis.Chassis",
+    "@odata.type":"#Chassis.v1_2_0.Chassis",
+    "Id":"PCIeSwitchRackmount",
+    "Name":"PCIe Switch Rackmount Enclosure",
+    "SKU":"PCIeSwitchRack",
+    "Manufacturer":"Manufacturer Name",
+    "AssetTag":"External Enclosure",
+    "Model":"External Enclosure",
+    "ChassisType":"Rackmount",
+    "IndicatorLED":"Lit",
+    "Status":{
+        "State":"Enabled",
+        "Health":"OK"
+    },
+    "Thermal": {
+        "@odata.id":"/redfish/v1/Chassis/PCIeSwitchRackmount/Thermal"
+    },
+    "Power": {
+        "@odata.id":"/redfish/v1/Chassis/PCIeSwitchRackmount/Power"
+    }, 
+    "Links": {
+        "ManagedBy": [
+            {"@odata.id":"/redfish/v1/PCIeSwitchManager"}
+        ],
+        "Contains": [
+            {
+			"@odata.id":"/redfish/v1/PCIeSwitch2"
+			},
+            {
+			"@odata.id":"/redfish/v1/PCIeSwitch3"
+			},
+            {
+			"@odata.id":"/redfish/v1/PCIeSwitchMgrHW"
+			}
+        ],
+        "Oem": {}
+    },
+    "Oem": { }
+}

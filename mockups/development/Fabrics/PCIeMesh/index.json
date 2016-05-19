@@ -1,0 +1,31 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#Fabric.Fabric",
+    "@odata.id": "/redfish/v1/Fabrics/PCIeMesh",
+    "@odata.type": "#Fabric.v1_0_0.Fabric",
+    "Id": "PCIe",
+    "Name": "PCIe Fabric",
+    "FabricType": "PCIe",
+    "Description": "A PCIe Mesh Fabric Configuration",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+	"MaxZones": 64,
+    "Zones": {
+        "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Zones"
+    },
+    "Endpoints": {
+        "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Endpoints"
+    },
+    "Switches": {
+        "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches"
+    },
+    "Links": {
+        "Oem": {}
+    },
+    "Actions": {
+        "Oem": {}
+    },
+    "Oem": {}
+}

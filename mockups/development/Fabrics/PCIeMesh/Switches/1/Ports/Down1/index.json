@@ -1,0 +1,31 @@
+{
+	"@odata.context": "/redfish/v1/$metadata#Port.Port",
+	"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/1/Ports/Down1",
+	"@odata.type": "#Port.v1_0_0.Port",
+	"Id": "Down1",
+	"Name": "PCIe Downstream Port 1",
+	"Description": "PCIe Downstream Port 1",
+	"Status": {
+		"State": "Enabled",
+		"Health": "OK"
+	},
+	"PortId": "7",
+    "PortProtocol": "PCIe",
+	"PortType": "DownstreamPort",
+	"SpeedGbps": 32,
+	"Width": 4,
+	"MaxSpeedGbps": 64,
+	"Actions": {
+		"#Port.Reset": {
+			"target": "/redfish/v1/Fabrics/PCIeMesh/Switches/1/Ports/Down1/Actions/Port.Reset",
+			"ResetType@Redfish.AllowableValues": [
+				"ForceOff",
+				"ForceRestart",
+				"ForceOn"
+			]
+		},
+		"Oem": {}
+	},
+	"Oem": {}
+}
+

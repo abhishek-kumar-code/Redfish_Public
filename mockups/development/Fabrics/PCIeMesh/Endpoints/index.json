@@ -1,0 +1,41 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#EndpointCollection.EndpointCollection",
+    "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Endpoints",
+    "@odata.type": "#EndpointCollection.EndpointCollection",
+    "Name": "PCIe Endpoint Collection",
+    "Members@odata.count": 10,
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Endpoints/NVMeDrivePF"
+        },
+        {
+            "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Endpoints/StorageControllerVF1"
+        },
+        {
+            "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Endpoints/StorageControllerVF2"
+        },
+        {
+            "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Endpoints/NICPort1"
+        },
+        {
+            "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Endpoints/NICPort2"
+        },
+        {
+            "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Endpoints/FCPort1"
+        },
+        {
+            "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Endpoints/FCPort2"
+        },
+        {
+            "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Endpoints/GPGPU"
+        },
+        {
+            "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Endpoints/HostRootComplex1"
+        },
+        {
+            "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Endpoints/HostRootComplex2"
+        }
+    ]
+}
+
