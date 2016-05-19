@@ -19,7 +19,8 @@
 				"FunctionNumber": 0,
             },
             "DeviceLink": {
-            },
+                "@odata.id": "/redfish/v1/Managers/PCIeSwitchManager"
+			},
             "Oem": {}
         }
     ],

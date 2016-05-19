@@ -9,12 +9,17 @@
     "Manufacturer": "PCIe Switch Guys",
     "Model": "XKE-PCIe",
     "SKU": "97LANEPCI",
-    "SerialNumber": "MYSERIALNUMBER",
+    "SerialNumber": "MYSERIALNUMBER1",
     "PartNumber": "1776-1883",
 	"DomainID": "MyPCIeDomainID",
 	"IsManaged": true,
 	"TotalSwitchWidth": 97,
 	"PowerState": "On",
+	"Status": {
+		"State": "Enabled",
+		"Health": "Ok",
+		"HealthRollup": "Ok"
+	},
 	"Ports": {
 		"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/1/Ports"
 	},

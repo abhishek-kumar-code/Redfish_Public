@@ -20,7 +20,8 @@
 				"ClassType": "0x1234"
             },
             "DeviceLink": {
-            },
+                "@odata.id": "/redfish/v1/Managers/PCIeSwitchManager"
+			},
             "Oem": {}
         }
     ],

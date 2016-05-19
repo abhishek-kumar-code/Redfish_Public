@@ -7,7 +7,7 @@
 	"Description": "PCIe Upstream Port 1",
 	"Status": {
 		"State": "Enabled",
-		"Health": "OK"
+		"Health": "Warning"
 	},
 	"PortId": "1",
     "PortProtocol": "PCIe",
@@ -26,6 +26,11 @@
 		},
 		"Oem": {}
 	},
+    "Links": {
+        "AssociatedEndpoints": [
+             {"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Endpoints/HostRootComplex2"}
+        ]
+    },
 	"Oem": {}
 }
 

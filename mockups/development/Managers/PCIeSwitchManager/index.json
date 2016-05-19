@@ -19,7 +19,8 @@
 	
     "Status": {
         "State": "Enabled",
-        "Health": "OK"
+        "Health": "OK",
+		"HealthRollup": "Warning"
     },
 
     "SerialConsole": {
