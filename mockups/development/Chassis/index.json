@@ -31,11 +31,17 @@
             "@odata.id": "/redfish/v1/Chassis/StorageEnclosure2"
         },
         {
-            "@odata.id": "/redfish/v1/Chassis/PCIeSwitch2"
+            "@odata.id": "/redfish/v1/Chassis/PCIeSwitch1"
         },
+        {
+            "@odata.id": "/redfish/v1/Chassis/PCIeSwitch2"
+        },		
         {
             "@odata.id": "/redfish/v1/Chassis/PCIeSwitch3"
         },
+        {
+            "@odata.id": "/redfish/v1/Chassis/PCIeSwitch4"
+        },		
         {
             "@odata.id": "/redfish/v1/Chassis/PCIeSwitchMgrHW"
         },

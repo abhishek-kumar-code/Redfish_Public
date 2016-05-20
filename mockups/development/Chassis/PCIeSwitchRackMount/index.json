@@ -27,10 +27,16 @@
         ],
         "Contains": [
             {
+			"@odata.id":"/redfish/v1/PCIeSwitch1"
+			},
+            {
 			"@odata.id":"/redfish/v1/PCIeSwitch2"
 			},
             {
 			"@odata.id":"/redfish/v1/PCIeSwitch3"
+			},
+            {
+			"@odata.id":"/redfish/v1/PCIeSwitch4"
 			},
             {
 			"@odata.id":"/redfish/v1/PCIeSwitchMgrHW"

@@ -25,7 +25,7 @@
 	},
 	"Links": {
 		"Chassis": [
-            {"@odata.id": "/redfish/v1/Chassis/PCIeSwitch2"},
+            {"@odata.id": "/redfish/v1/Chassis/PCIeSwitch1"},
             {"@odata.id": "/redfish/v1/Chassis/PCIeSwitchRackMount"}, 
 			{"@odata.id": "/redfish/v1/Chassis/PCIeSwitchMgrHW"}	
 		],
