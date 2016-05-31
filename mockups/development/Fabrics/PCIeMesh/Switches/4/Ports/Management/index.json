@@ -9,12 +9,12 @@
 		"State": "Enabled",
 		"Health": "OK"
 	},
-	"PortId": "15",
+	"PortId": "24",
     "PortProtocol": "PCIe",
 	"PortType": "ManagementPort",
 	"SpeedGbps": 8,
 	"Width": 1,
-	"MaxSpeedGbps": 16,
+	"MaxSpeedGbps": 8,
 	"Actions": {
 		"Oem": {}
 	},

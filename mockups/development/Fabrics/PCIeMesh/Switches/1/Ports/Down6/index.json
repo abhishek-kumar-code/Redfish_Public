@@ -9,12 +9,12 @@
 		"State": "Enabled",
 		"Health": "OK"
 	},
-	"PortId": "12",
+	"PortId": "16",
     "PortProtocol": "PCIe",
 	"PortType": "DownstreamPort",
 	"SpeedGbps": 32,
 	"Width": 4,
-	"MaxSpeedGbps": 64,
+	"MaxSpeedGbps": 32,
 	"Actions": {
 		"#Port.Reset": {
 			"target": "/redfish/v1/Fabrics/PCIeMesh/Switches/1/Ports/Down6/Actions/Port.Reset",

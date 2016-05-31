@@ -9,12 +9,12 @@
 		"State": "Enabled",
 		"Health": "OK"
 	},
-	"PortId": "5",
+	"PortId": "12",
     "PortProtocol": "PCIe",
 	"PortType": "UpstreamPort",
 	"SpeedGbps": 32,
 	"Width": 4,
-	"MaxSpeedGbps": 64,
+	"MaxSpeedGbps": 32,
 	"Actions": {
 		"#Port.Reset": {
 			"target": "/redfish/v1/Fabrics/PCIeMesh/Switches/4/Ports/Up5/Actions/Port.Reset",

@@ -12,9 +12,9 @@
 	"PortId": "16",
     "PortProtocol": "PCIe",
 	"PortType": "InterswitchPort",
-	"SpeedGbps": 256,
+	"SpeedGbps": 128,
 	"Width": 16,
-	"MaxSpeedGbps": 256,
+	"MaxSpeedGbps": 128,
 	"Actions": {
 		"#Port.Reset": {
 			"target": "/redfish/v1/Fabrics/PCIeMesh/Switches/4/Ports/InterswitchLink2/Actions/Port.Reset",
