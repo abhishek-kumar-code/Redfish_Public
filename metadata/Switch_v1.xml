@@ -97,10 +97,10 @@
           <Annotation Term="OData.Description" String="The user assigned asset tag for this switch."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an identifying string used to track the drive for inventory purposes."/>
         </Property>
-		<Property Name="DomainID" Type="Edm.String">
+		<Property Name="DomainID" Type="Edm.int64">
 		  <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
 		  <Annotation Term="OData.Description" String="The Domain ID for this switch."/>
-		  <Annotation Term="OData.LongDescription" String=""/>
+		  <Annotation Term="OData.LongDescription" String="The value of this property shall have a scope of uniqueness within the fabric of which the switch is a member."/>
 		</Property>
         <Property Name="IsManaged" Type="Edm.Boolean">
           <Annotation Term="OData.Description" String="This indicates whether the switch is in a managed or unmanaged state."/>
