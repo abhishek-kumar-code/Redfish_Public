@@ -87,8 +87,6 @@ The following referenced documents are indispensable for the application of this
 * <a id="UCUM">The Unified Code for Units of Measure</a>.  [http://www.unitsofmeasure.org/ucum.html](http://www.unitsofmeasure.org/ucum.html "http://www.unitsofmeasure.org/ucum.html")
 * <a id="W3C-CORS">W3C Recommendation of Cross-Origin Resource Sharing</a>. 16 January 2014. [http://www.w3.org/TR/cors/]("http://www.w3.org/TR/cors/")  
 
-
-
 ## Terms and definitions
 In this document, some terms have a specific meaning beyond the normal English meaning. Those terms are defined in this clause.
 
