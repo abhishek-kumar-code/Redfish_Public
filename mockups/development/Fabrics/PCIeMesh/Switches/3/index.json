@@ -11,7 +11,7 @@
     "SKU": "97LANEPCI",
     "SerialNumber": "MYSERIALNUMBER3",
     "PartNumber": "1776-1883",
-	"DomainID": "MyPCIeDomainID",
+	"DomainID": "43458",
 	"IsManaged": true,
 	"TotalSwitchWidth": 97,
 	"Status": {
