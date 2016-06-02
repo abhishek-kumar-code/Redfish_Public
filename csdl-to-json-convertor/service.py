@@ -411,7 +411,16 @@ class JsonSchemaGenerator:
                 written.append(term)
 
                 if(isTypeAttribute):
-                    if ((term == "Validation.Pattern") or (term == "Redfish.Pattern") ):
+
+                    if (term == "Redfish.Deprecated"):
+                        output += ",\n"
+                        output += UT.Utilities.indent(depth) + "\"deprecated\": \"" + annotation.attrib["String"] + "\"" 														                                                     
+
+                    elif (term == "Measures.Unit"):
+                        output += ",\n"
+                        output += UT.Utilities.indent(depth) + "\"units\": \"" + annotation.attrib["String"] + "\"" 
+
+                    elif ((term == "Validation.Pattern") or (term == "Redfish.Pattern") ):
                         output += ",\n"
                         output += UT.Utilities.indent(depth) + "\"pattern\": \"" + annotation.attrib["String"] + "\""
 
@@ -1137,6 +1146,7 @@ class JsonSchemaGenerator:
             output += UT.Utilities.indent(depth) + "\"enum\": [\n"
             firstenumvalue = True
             founddescriptions=False
+            foundlongdescriptions=False
 
             for member in members:
                 if firstenumvalue:
@@ -1149,6 +1159,9 @@ class JsonSchemaGenerator:
 
                 if member["Description"] != "":
                    founddescriptions = True
+
+                if member["LongDescription"] != "":
+                   foundlongdescriptions = True
 
             output += "\n"
             output += UT.Utilities.indent(depth) + "]"
@@ -1171,6 +1184,24 @@ class JsonSchemaGenerator:
                 output += "\n"
                 output += UT.Utilities.indent(depth)  + "}"
 
+            if foundlongdescriptions:
+                output += ",\n"
+                output += UT.Utilities.indent(depth) + "\"enumLongDescriptions\": {\n"
+                firstenumvalue = True
+
+                for member in members:
+                    if member["LongDescription"] != "":
+                        if firstenumvalue:
+                            firstenumvalue = False
+
+                        else:
+                            output += ",\n"
+
+                        output += UT.Utilities.indent(depth+1) + "\"" + member["Name"] + "\": \"" + member["LongDescription"] + "\""
+            
+                output += "\n"
+                output += UT.Utilities.indent(depth)  + "}"
+
         return output
 
     ############################################################################################
@@ -1184,12 +1215,14 @@ class JsonSchemaGenerator:
 
         for member in typedata["Node"].iter("{http://docs.oasis-open.org/odata/ns/edm}Member"):
             description = ""
+            longdescription = ""
             for annotation in member.iter("{http://docs.oasis-open.org/odata/ns/edm}Annotation"):
                 if annotation.attrib["Term"] == "OData.Description":
                    description = annotation.attrib["String"]
-                   break
+                elif annotation.attrib["Term"] == "OData.LongDescription":
+                   longdescription = annotation.attrib["String"]
 
-            members.append({"Name":member.attrib["Name"], "Description":description})
+            members.append({"Name":member.attrib["Name"], "Description":description, "LongDescription":longdescription})
 
         return self.generate_enum_type(typetable, typedata, typename, namespace, depth, isnullable, members)
 
@@ -1208,6 +1241,7 @@ class JsonSchemaGenerator:
                     if element.tag == "{http://docs.oasis-open.org/odata/ns/edm}Collection":
                         for record in element.iter("{http://docs.oasis-open.org/odata/ns/edm}Record"):
                             description = ""
+                            longdescription = ""
                             for propertyvalue in record.iter("{http://docs.oasis-open.org/odata/ns/edm}PropertyValue"):
                                 if propertyvalue.attrib["Property"] == "Member":
                                     member = propertyvalue.attrib["String"]
@@ -1216,9 +1250,10 @@ class JsonSchemaGenerator:
                             for annotation in record.iter("{http://docs.oasis-open.org/odata/ns/edm}Annotation"):
                                 if annotation.attrib["Term"] == "OData.Description":
                                     description = annotation.attrib["String"]
-                                    break
+                                elif annotation.attrib["Term"] == "OData.LongDescription":
+                                    longdescription = annotation.attrib["String"]
 
-                            members.append({"Name":member,"Description":description})
+                            members.append({"Name":member,"Description":description,"LongDescription":longdescription})
                     break
             break
 
