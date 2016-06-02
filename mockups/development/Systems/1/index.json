@@ -108,16 +108,7 @@
     "Actions": {
         "#ComputerSystem.Reset": {
             "target": "/redfish/v1/Systems/1/Actions/ComputerSystem.Reset",
-            "ResetType@Redfish.AllowableValues": [
-                "On",
-                "ForceOff",
-                "GracefulShutdown",
-                "ForceRestart",
-                "Nmi",
-                "GracefulRestart",
-                "ForceOn",
-                "PushPowerButton"
-            ]
+			"@Redfish.ActionInfo": "/redfish/v1/Systems/1/ResetActionInfo"
         },
         "Oem": {
             "#Contoso.Reset": {
