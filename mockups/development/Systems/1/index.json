@@ -108,12 +108,12 @@
     "Actions": {
         "#ComputerSystem.Reset": {
             "target": "/redfish/v1/Systems/1/Actions/ComputerSystem.Reset",
-			"@Redfish.ActionInfo": "/redfish/v1/Systems/1/ResetActionInfo"
+	    "@Redfish.ActionInfo": "/redfish/v1/Systems/1/ResetActionInfo"
         },
         "Oem": {
             "#Contoso.Reset": {
                 "target": "/redfish/v1/Systems/1/OEM/Contoso/Actions/Contoso.Reset",
-				"@Redfish.ActionInfo": "/redfish/v1/Systems/1/ContosoResetActionInfo"
+		"@Redfish.ActionInfo": "/redfish/v1/Systems/1/ContosoResetActionInfo"
             }
         }
     },
