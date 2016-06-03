@@ -6,7 +6,7 @@
 	"Parameters": [{
 		"ParameterName": "ContosoResetType",
 		"ParameterRequired": true,
-		"ParameterType": "string",
+		"ParameterType": "String",
 		"AllowableValues": [
 			"On",
 			"ForceOff",
@@ -16,10 +16,15 @@
 	}, {
 		"ParameterName": "ResetReason",
 		"ParameterRequired": false,
-		"ParameterType": "string"
+		"ParameterType": "String"
 	}, {
 		"ParameterName": "ShutdownDelay",
 		"ParameterRequired": false,
-		"ParameterType": "number"
+		"ParameterType": "Number"
+	}, {
+		"ParameterName": "ResetEvent",
+		"ParameterRequired": false,
+		"ParameterType": "Object",
+		"ParameterTypeDefinition": "#Event.v1_0_2.Event"
 	}]
 }
