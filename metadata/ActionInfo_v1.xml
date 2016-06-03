@@ -62,6 +62,11 @@
           <Annotation Term="OData.Description" String="The JSON property type used for this parameter"/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the JSON property type of the parameter."/>
         </Property>
+        <Property Name="ParameterTypeDefinition" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The OData Type of an object-based parameter"/>
+          <Annotation Term="OData.LongDescription" String="This property shall describe the entity type definition (as shown in @odata.type) for the parameter.  This property shall be required for parameters with a ParameterType of Object or ObjectArray."/>
+        </Property>
         <Property Name="AllowableValues" Type="Collection(Edm.String)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A list of values for this parameter supported by this Action target"/>
@@ -76,16 +81,22 @@
         <Member Name="Number">
           <Annotation Term="OData.Description" String="A number"/>
         </Member>
+        <Member Name="NumberArray">
+          <Annotation Term="OData.Description" String="An array of numbers"/>
+        </Member>
         <Member Name="String">
           <Annotation Term="OData.Description" String="A string"/>
         </Member>
-        <Member Name="Array">
-          <Annotation Term="OData.Description" String="An array of values"/>
+        <Member Name="StringArray">
+          <Annotation Term="OData.Description" String="An array of strings"/>
         </Member>
         <Member Name="Object">
           <Annotation Term="OData.Description" String="An embedded JSON object"/>
         </Member>
-      </EnumType>
+        <Member Name="ObjectArray">
+          <Annotation Term="OData.Description" String="An array of JSON objects"/>
+        </Member>
+	   </EnumType>
 	  
     </Schema>
 
