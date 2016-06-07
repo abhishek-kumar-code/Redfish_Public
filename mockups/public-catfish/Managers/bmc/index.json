@@ -38,7 +38,11 @@
     },
     "Actions": {
         "#Manager.Reset": {
-            "target": "/redfish/v1/Managers/bmc/Actions/Manager.Reset"
+            "target": "/redfish/v1/Managers/bmc/Actions/Manager.Reset",
+            "ResetType@Redfish.AllowableValues": [
+                "ForceRestart",
+                "GracefulRestart"
+            ]
         },
         "Oem": {}
     },
