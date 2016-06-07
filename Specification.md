@@ -2191,7 +2191,7 @@ For functionality requiring multiple Redfish operations, or for security reasons
 
 ##### Session login
 
-A Redfish session is created by an HTTP POST to the SessionService' Sessions collection resource, including the following POST body:
+A Redfish session is created, without requiring an authentication header, by an HTTP POST to the SessionService' Sessions collection resource, including the following POST body:
 
 ```http
 POST /redfish/v1/SessionService/Sessions HTTP/1.1
