@@ -2313,6 +2313,8 @@ The Authorization subsystem uses Roles and Privileges to control which users hav
 | Version | Date     | Description     |
 | ---     | ---      | ---             |
 | 1.0.3   | 2016-6-17| Errata release.  Corrected missing Table of Contents and Clause numbering.  Corrected URL references to external specifications.  Added missing Normative References. |
+|         |          | Clarified examples for ExtendedInfo to show arrays of Messages. |
+|         |          | Clarified that a POST to Session Service to create a new Session does not require authorization headers. | 
 | 1.0.2   | 2016-3-31| Errata release.  Various typographical errors. |
 |         |          | Corrected normative language for M-SEARCH queries and responses. |
 |         |          | Corrected Cache-Control and USN format in M-SEARCH responses. |
