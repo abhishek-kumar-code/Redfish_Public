@@ -1093,15 +1093,17 @@ A JSON object can be annotated with "@Message.ExtendedInfo" in order to specify 
     "FlowControl": "None",
     "ConnectorType": "RJ45",
     "PinOut": "Cyclades",
-    "@Message.ExtendedInfo" : {
-        "MessageId": "Base.1.0.PropertyDuplicate",
-        "Message": "The property InterfaceEnabled was duplicated in the request.",
-        "RelatedProperties": [
-            "#/InterfaceEnabled"
-        ],
-        "Severity": "Warning",
-        "Resolution": "Remove the duplicate property from the request body and resubmit the request if the operation failed."
-    }
+    "@Message.ExtendedInfo" : [
+        {
+            "MessageId": "Base.1.0.PropertyDuplicate",
+            "Message": "The property InterfaceEnabled was duplicated in the request.",
+            "RelatedProperties": [
+                "#/InterfaceEnabled"
+            ],
+            "Severity": "Warning",
+            "Resolution": "Remove the duplicate property from the request body and resubmit the request if the operation failed."
+        }
+    ]
 }
 ~~~
 
@@ -1138,12 +1140,11 @@ An individual property within a JSON object can be annotated with extended infor
            "Severity": "Warning",
            "Resolution": "Choose a value from the enumeration list that the implementation can support and resubmit the request if the operation failed."
          }
-     ],
-    "Oem": {}
+     ]
 }
 ~~~
 
-The value of the property is a [message object](#message-object).
+The value of the property is an array of [message objects](#message-object).
 
 ##### Additional annotations
 
@@ -2190,7 +2191,7 @@ For functionality requiring multiple Redfish operations, or for security reasons
 
 ##### Session login
 
-A Redfish session is created by an HTTP POST to the SessionService' Sessions collection resource, including the following POST body:
+A Redfish session is created, without requiring an authentication header, by an HTTP POST to the SessionService' Sessions collection resource, including the following POST body:
 
 ```http
 POST /redfish/v1/SessionService/Sessions HTTP/1.1
