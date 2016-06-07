@@ -151,5 +151,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="IPAddresses.v1_0_2"/>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="IPAddresses.v1_0_3"/>
+
   </edmx:DataServices>
 </edmx:Edmx>
