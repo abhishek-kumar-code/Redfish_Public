@@ -399,7 +399,7 @@ In addition to returning the ETag property on each resource,
 
 The format of the ETag header is:
 
-	ETag W/"<string>"
+	ETag: W/"<string>"
 
 ### Protocol version
 
