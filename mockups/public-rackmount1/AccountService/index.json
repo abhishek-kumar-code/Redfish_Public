@@ -19,6 +19,6 @@
     "Roles": {
         "@odata.id": "/redfish/v1/AccountService/Roles"
     },
-    "@odata.context": "/redfish/v1/$metadata#AccountService",
+    "@odata.context": "/redfish/v1/$metadata#AccountService.AccountService",
     "@odata.id": "/redfish/v1/AccountService"
 }
