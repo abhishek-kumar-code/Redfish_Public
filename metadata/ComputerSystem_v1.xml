@@ -506,13 +506,13 @@
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_1_0.ComputerSystem"/>
     </Schema>
 
-    <Schema Namespace="ComputerSystem.v1_2_0" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_2_0">
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_1_1.ComputerSystem">
-
-      <Property Name="HostingRoles" Type="Collection(ComputerSystem.v1_1_0.HostingRole)" Nullable="false">
-        <Annotation Term="OData.Description" String="The hosing roles that this computer system supports."/>
-        <Annotation Term="OData.LongDescription" String="The values of this collection shall be the hosting roles supported by this computer system."/>
-      </Property>
+        <Property Name="HostingRoles" Type="Collection(ComputerSystem.v1_1_0.HostingRole)" Nullable="false">
+          <Annotation Term="OData.Description" String="The hosing roles that this computer system supports."/>
+          <Annotation Term="OData.LongDescription" String="The values of this collection shall be the hosting roles supported by this computer system."/>
+        </Property>
+      </EntityType>
 
       <ComplexType Name="HostedServices">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
