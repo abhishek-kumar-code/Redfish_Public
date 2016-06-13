@@ -11,6 +11,7 @@
             "EntryType": "Event",
             "Severity": "Warning",
             "Created": "2016-01-15T03:01",
+            "MessageId": "Event.1.0.TempWayTooHot",
             "Message": "CPU temperature crossed Upper Non Critical Threshold",
             "Links": {
                 "OriginOfCondition": {
