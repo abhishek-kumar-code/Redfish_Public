@@ -514,13 +514,16 @@
         <Annotation Term="OData.LongDescription" String="The values of this collection shall be the hosting roles supported by this computer system."/>
       </Property>
 
-      <ComplexType Name="Links" BaseType="ComputerSystem.v1_1_1.Links">
+      <ComplexType Name="HostedServices">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <NavigationProperty Name="StorageServices" Type="StorageServiceCollection.StorageServiceCollection" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A reference to a collection of storage services supported by this computer system"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type StorageServiceCollection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>   
+        </NavigationProperty> 
+        <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
+        <Annotation Term="OData.Description" String="This object describes services that may be running or installed on the system."/>
       </ComplexType>
       
       <EnumType Name="HostingRole">
