@@ -35,8 +35,8 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Drive_v1.xml">
     <edmx:Include Namespace="Drive"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Volume_v1.xml">
-    <edmx:Include Namespace="Volume"/>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/VolumeCollection_v1.xml">
+    <edmx:Include Namespace="VolumeCollection"/>
   </edmx:Reference>
 
   <edmx:DataServices>
@@ -77,7 +77,7 @@
           <Annotation Term="OData.LongDescription" String="A collection that indicates all the drives attached to the storage controllers that this resource represents."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="Volumes" Type="Collection(Volume.Volume)" Nullable="false">
+        <NavigationProperty Name="Volumes" Type="VolumeCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The set of volumes produced by the storage controllers represented by this resource."/>
           <Annotation Term="OData.LongDescription" String="A collection that indicates all the volumes produced by the storage controllers that this resource represents."/>
@@ -255,6 +255,10 @@
           <Annotation Term="OData.LongDescription" String="This value shall mean that this device conforms to the File Transfer protocol as defined by RFC 114 utilizing Transport Layer Security as specified by RFC 5246 or RFC 6176."/>
         </Member>
       </EnumType>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Storage.v1_0_1">
+      <EntityType Name="Storage" BaseType="Storage.v1_0_0.Storage"/>
     </Schema>
 
   </edmx:DataServices>

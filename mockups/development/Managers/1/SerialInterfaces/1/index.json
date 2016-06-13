@@ -3,6 +3,7 @@
     "@odata.context": "/redfish/v1/$metadata#SerialInterface.SerialInterface",
     "@odata.id": "/redfish/v1/Managers/1/SerialInterfaces/1",
     "@odata.type": "#SerialInterface.v1_0_0.SerialInterface",
+    "Id": "1",
     "Name": "Managed Serial Interface 1",
     "Description": "Management for Serial Interface",
     "Status": {

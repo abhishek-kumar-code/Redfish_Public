@@ -211,21 +211,18 @@ h6 {
   #toc-header,
   #toc ~ h2 {
     page-break-before: always;
-    -webkit-break-before: page;
-       -moz-break-before: page;
+    -webkit-column-break-before: page;
             break-before: page;
   }
   #toc ~ h2 ~ h2 {
     page-break-before: auto;
-    -webkit-break-before: auto;
-       -moz-break-before: auto;
+    -webkit-column-break-before: auto;
             break-before: auto;
   }
   #last-footer-fix {
     display: block !important;
     page-break-before: always;
-    -webkit-break-before: page;
-       -moz-break-before: page;
+    -webkit-column-break-before: page;
             break-before: page;
     text-align: center;
     line-height: 37em;
@@ -400,8 +397,8 @@ window.onhashchange = scrollToHash;
         <div class="preamble">
           <div class="logo"></div>
           <p>Document Identifier: DSP2044</p>
-          <p>Date: 2015-08-04</p>
-          <p>Version: 1.0.0</p>
+          <p>Date: 2016-03-31</p>
+          <p>Version: 1.0.1</p>
           
         </div>
         <h1>Redfish White Paper</h1>
@@ -418,7 +415,7 @@ window.onhashchange = scrollToHash;
         </div>
         <div class="copyright">
           <p>Copyright Notice</p>
-          <p>Copyright &copy; 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.
+          <p>Copyright &copy; 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.
           </p></div>
           <p>DMTF is a not-for-profit association of industry members dedicated to promoting enterprise and systems management and interoperability. Members and non-members may reproduce DMTF specifications and documents, provided that correct attribution is given. As DMTF specifications may be revised from time to time, the particular version and release date should always be noted.</p>
           <p>Implementation of certain elements of this standard or proposed standard may be subject to third party patent rights, including provisional patent rights (herein "patent rights"). DMTF makes no representations to users of the standard as to the existence of such rights, and is not responsible to recognize, disclose, or identify any or all such third party patent right, owners or claimants, nor for any incomplete or inaccurate identification or disclosure of such rights, owners or claimants. DMTF shall have no liability to any party, in any manner or circumstance, under any legal theory whatsoever, for failure to recognize, disclose, or identify any such third party patent rights, or for such party’s reliance on the standard or incorporation thereof in its product, protocols or testing procedures. DMTF shall have no liability to any party implementing such standard, whether such implementation is foreseeable or not, nor to any patent owner or claimant, and shall have no liability or responsibility for costs or losses incurred if a standard is withdrawn or modified after publication, and shall be indemnified and held harmless by any party implementing the standard from any and all claims of infringement by a patent owner for such implementations.</p>
@@ -474,7 +471,7 @@ window.onhashchange = scrollToHash;
 <p>Do a GET on the root of the service from the URL you have constructed above.</p>
 <h1 id="basic-concepts">Basic Concepts</h1>
 <p>Every URL represents a resource.  This could be a service, a collection, an entity or some other construct.  But in RESTful terms, these URIs point to resources and clients interact with resources.  So when you see the term resource, you can think of it as what you get back when you access a URI.</p>
-<p>The resource format is defined by a Schema.  Each resource has a specific format that is specified in the Redfish Schema that the client can use to determine the semantics about the resource (though we try to make things as intuitive as possible).  The Redfish Schema is defined in two formats: an OData-Schema format and a JSON Schema format.  It is defined in the OData Schema format (CSDL) so that generice OData tools and applications can interpret it. It is defined in the JSON Schema format for other environments - like Python scripts, JavaScript code and visualization.</p>
+<p>The resource format is defined by a Schema.  Each resource has a specific format that is specified in the Redfish Schema that the client can use to determine the semantics about the resource (though we try to make things as intuitive as possible).  The Redfish Schema is defined in two formats: an OData-Schema format and a JSON Schema format.  It is defined in the OData Schema format (CSDL) so that generic OData tools and applications can interpret it. It is defined in the JSON Schema format for other environments - like Python scripts, JavaScript code and visualization.</p>
 <p>Structural properties of the resource are intended to be used as JavaScript variables.  This should accelerate adoption and allow JavaScript web pages and enabled apps to use the data directly.  URIs are persistent across reboots but clients are expected to start at /redfish/v1/ and do discovery of the URIs from there.</p>
 <p>One common mistake is to fixate on the URI.  Redfish is a hypermedia API so URIs can be different between implementations - even from the same vendor.  Current state objects can be separate from desired state objects.</p>
 <h2 id="operations">Operations</h2>
@@ -482,7 +479,7 @@ window.onhashchange = scrollToHash;
 <p>GET retrieves data.  POST is used for creating resources or to use actions (more on this later).  DELETE will delete a resource, but there are currently only a few resources that can be deleted.  PATCH is used to change one or more properties on a resource while PUT is used to replace a resource entirely (though only a few resources can be completely replaced - more on this later too).  HEAD is like a GET without the body data returned and can be used for figuring out the URI structure by programs accessing an Redfish implementation.</p>
 <h2 id="versioning">Versioning</h2>
 <p>Redfish has two kinds of versioning - the version of the protocol and the version of the resource schema.  The version of the protocol is in the URI - that&#39;s why you should start at /redfish/v1/.  It means you are accessing version one of the protocol.  Version 1 is the only one available now, but we needed to accommodate potential future versions.  This starting URI indicates the implementation complies with the Version 1 Redfish Specification.  Note that since it is based on OData v4,  implementations also require the OData protocol header (OData-Version) have a value of 4.</p>
-<p>Each resource has a resource type definition. Resource types are defined in versioned namespaces. Each resource instance has the type represented using the OData type annotation &quot;@odata.type&quot;. The value of the type annotation is the URI of the resourcce type, including the versioned namespace.  So when you see &quot;@odata.type&quot; : &quot;#ServiceRoot.1.0.0.ServiceRoot&quot;, you are dealing with a resource that adheres to the ServiceRoot type definition, defined in 1.0.0 version of the ServiceRoot schema.  The corresponding schema file would be located at /schema/v1/ServiceRoot in the Redfish schema repository. So the full URI for the type would be &quot;/schema/v1/ServiceRoot#ServiceRoot.1.0.0.ServiceRoot. The schema file may contain other types used by in the resource type definition (for example, structured types and enums), which would have the same resource path but the fragment would describe a different type definition, typically within the same namespace.</p>
+<p>Each resource has a resource type definition. Resource types are defined in versioned namespaces. Each resource instance has the type represented using the OData type annotation &quot;@odata.type&quot;. The value of the type annotation is the URI of the resource type, including the versioned namespace.  So when you see &quot;@odata.type&quot; : &quot;#ServiceRoot.v1_0_0.ServiceRoot&quot;, you are dealing with a resource that adheres to the ServiceRoot type definition, defined in 1.0.0 version of the ServiceRoot schema.  The corresponding schema file would be located at /schema/v1/ServiceRoot in the Redfish schema repository. So the full URI for the type would be &quot;/schema/v1/ServiceRoot#ServiceRoot.V1_0_0.ServiceRoot. The schema file may contain other types used in the resource type definition (for example, structured types and enums), which would have the same resource path but the fragment would describe a different type definition, typically within the same namespace.</p>
 <h2 id="references">References</h2>
 <p>When you see the links section, it will have references to other resources in it.</p>
 <p>JSON has no native reference type to refer to another resource.  Redfish requires a fully connected resource tree without requiring the client to consult schema (for simple operations).  Therefore, this specification leverages OData conventions for representing a reference to another internal or external resource.</p>
@@ -513,9 +510,9 @@ window.onhashchange = scrollToHash;
 <li>&quot;@odata.id&quot;, which has the URL to this resource.  This is an href, but since Redish is based on OData this property is called &quot;@odata.id&quot; and not &quot;href&quot;.</li>
 <li>&quot;Members@odata.count&quot;, which defines the number of resources in a collection.</li>
 </ul>
-<p>DMTF annotations have &quot;@DMTF.&quot; in them.  Examples of these properies are:</p>
+<p>DMTF annotations have &quot;@Redfish.&quot; in them.  Examples of these properies are:</p>
 <ul>
-<li>&quot;@DMTF.Settings&quot;, which is used to indicate settings for the resource (more on this later).</li>
+<li>&quot;@Redfish.Settings&quot;, which is used to indicate settings for the resource (more on this later).</li>
 </ul>
 <p>One other common annotation is &quot;@odata.context&quot;. This is really meant for generic OData v4 clients.  This is properly defined in the OData v4 specification, but basically the @odata.context is used for a few different things:</p>
 <ol>
@@ -525,6 +522,7 @@ window.onhashchange = scrollToHash;
 <p>The structure of the @odata.context is the url to a metadata document with a fragment describing the data (typically rooted at the top-level singleton or collection).</p>
 <p>Technically the metadata document only has to define, or reference, any of the types it directly uses, and different payloads could reference different metadata documents. However, since the @odata.context provides a root URL for resolving relative references (such as @odata.id&#39;s) we have to return the &quot;canonical&quot; metadata document.  Further, because our &quot;@odata.type&quot; annotations are written as fragments, rather than full URLs, those fragments must be defined in, or referenced by, that metadata document. Also, because we qualify actions with the versionless namespace aliases, those aliases must also be defined through references in the referenced metadata document.</p>
 <p>For example, in the resource /redfish/v1/Systems/1, you will see the property &quot;@odata.context&quot; with the value of &quot;/redfish/v1/$metadata#Systems/Links/Members/$entity&quot;.  This tells the generic OData v4 client to find the Systems definition in the $metadata and look in the Links property definition and within it is a Members property definition which has a reference to the definition for this entity.</p>
+<p>You will also see an annotation called &quot;@Redfish.Copyright&quot;.  Implementations will not return this property.  It is only here as a copyright statement for the static example responses used in the mockups. </p>
 <h2 id="actions">Actions</h2>
 <p>Not everything can be done easily using REST.  So we made Actions.  Things like &quot;push button&quot; on a System (which would reset the system or turn it off, depending on its setting) can&#39;t easily be represented in the System because the service has no idea what the state of the button is and thus does not expose it as a property.  Another use is for long lived operations that are more easily expressed as an atomic action as a convenience for the client - things like firmware update or graceful shutdown.</p>
 <p>So instead of having hidden properties that you could PUT/PATCH to, or complex state machines, we created Actions.  Actions are done with POSTs to the Resource (see the spec for specifics).  You can tell what actions are supported in any resource by looking for the &quot;Actions&quot; property.</p>
@@ -537,7 +535,7 @@ window.onhashchange = scrollToHash;
 <p>First, you will need to know a valid user name and password for your implementation.</p>
 <p>The URI for establishing as session is also allowed to be used for POST unsecured so that you may establish a session.  This URI is /redfish/v1/Sessions in most cases and can be determined by looking at the <code>Sessions</code> property under <code>Links</code> and finding the <code>@odata.id</code> property&#39;s value in the service root (/redfish/v1/)</p>
 <p>A session is created by an HTTP POST to the URI indicated by /redfish/v1#/Links/Sessions/@odata.id including the following POST body:</p>
-<pre><code class="lang-json">POST /redfish/v1/SessionService/Sessions HTTP/1.1
+<pre><code class="lang-http">POST /redfish/v1/SessionService/Sessions HTTP/1.1
 Host: &lt;host-path&gt;
 Content-Type: application/json; charset=utf-8
 Content-Length: &lt;computed-length&gt;
@@ -551,13 +549,13 @@ OData-Version: 4.0
 </code></pre>
 <p>The return includes an X-Auth-Token header with a session token and Location header.</p>
 <p>The return JSON body includes a representation of the newly created session object:</p>
-<pre><code class="lang-json">Location: /redfish/v1/SessionService/Sessions/1
+<pre><code class="lang-http">Location: /redfish/v1/SessionService/Sessions/1
 X-Auth-Token: &lt;session-auth-token&gt;
 
 {
     &quot;@odata.context&quot;: &quot;/redfish/v1/$metadata#SessionService/Sessions/$entity&quot;,
     &quot;@odata.id&quot;: &quot;/redfish/v1/SessionService/Sessions/1&quot;,
-    &quot;@odata.type&quot;: &quot;#Session.1.0.0.Session&quot;,
+    &quot;@odata.type&quot;: &quot;#Session.v1_0_0.Session&quot;,
     &quot;Id&quot;: &quot;1&quot;,
     &quot;Name&quot;: &quot;User Session&quot;,
     &quot;Description&quot;: &quot;User Session&quot;,
@@ -609,9 +607,9 @@ X-Auth-Token: &lt;session-auth-token&gt;
 <p>PATCH solves this.  PUT always does a complete replacement.  PATCH always does a partial replacement.  Deterministic behavior for the service is achieved without complex logic for either client or server.</p>
 <p>PATCH is gaining wide adoption in the industry.  It is already supported by Open Stack and many other APIs and in available in many off the shell web servers.</p>
 <h3 id="current-configurations-vs-settings">Current Configurations vs Settings</h3>
-<p>There are basically two kinds of objects in Redfish - Current Configurations and Settings.  Most objects represent the current state of any given resource.  Occasionally, you&#39;ll see a property called &quot;@DMTF.Settings&quot; in a resource.  This annotation has a link tells you where to do PUTs and PATCHes for configuration.  It represents the future state of the resource.</p>
-<p>Some resources can handle changes to them right away, others may require a restart/reboot of the system or service.  &quot;@DMTF.Settings&quot; is used to let the client know what type of resource this is and where to make the changes.</p>
-<p>If you see the &quot;@DMTF.Settings&quot; property, it has a link to a resource to make the changes that will be picked up at the next opportunity, like a reset or reboot.  If you don&#39;t see a Settings link, any PATCHes to the object should take place right away (in the absence of a spawned task).</p>
+<p>There are basically two kinds of objects in Redfish - Current Configurations and Settings.  Most objects represent the current state of any given resource.  Occasionally, you&#39;ll see a property called &quot;@Redfish.Settings&quot; in a resource.  This annotation has a link tells you where to do PUTs and PATCHes for configuration.  It represents the future state of the resource.</p>
+<p>Some resources can handle changes to them right away, others may require a restart/reboot of the system or service.  &quot;@Redfish.Settings&quot; is used to let the client know what type of resource this is and where to make the changes.</p>
+<p>If you see the &quot;@Redfish.Settings&quot; property, it has a link to a resource to make the changes that will be picked up at the next opportunity, like a reset or reboot.  If you don&#39;t see a Settings link, any PATCHes to the object should take place right away (in the absence of a spawned task).</p>
 <p>There is also information about when the last time the settings were applied to the resource - time, an ETag and any messages that would have been returned if the settings had been able to be applied &quot;live&quot;.</p>
 <p>Examples of resources that may need Settings are devices like NICs and Storage as well as BIOS.</p>
 <h3 id="determining-properties-that-can-be-updated-">Determining Properties that can be updated.</h3>
@@ -676,6 +674,20 @@ resource is a child of that URI and may be deleted by DELETE to the new URI.</p>
 execution of the custom action.  This pattern is not idempotent because re-posting
 the same content will result in additional work being performed.  An example of
 a custom action might be sending a test event or clearing a log.</p>
+<h2 id="inheritance-polymorphism">Inheritance &amp; Polymorphism</h2>
+<p>One of the items you will not see much of us Inheritance or Polymorphism.<br>Object inherit from a single master object called Resource.  Other than that, Redfish doesn&#39;t use inheritance.  Likewise, 
+Redfish doesn&#39;t take common properties and put them into a parent object.  Thus, there are no sub-objects to specialize from 
+any schema. So you will never see sub-types returned in the same collection along with a parent type.</p>
+<h2 id="inheritance-by-copy">Inheritance by Copy</h2>
+<p>Redfish takes common definitions and, if they aren&#39;t in Resource, the authors just cut and paste the objects
+that are needed from other schema and include them in the object.  This does place a burden of keeping things in sync
+on the authors but it also prevents the reader from digging through reference into another reference into another reference just to find out the semantics of any given object, property or action.</p>
+<h2 id="polymorphism-by-union">Polymorphism by Union</h2>
+<p>Redfish takes resources that have semantics in common and puts the definition all in the same resource.  This way, similar resources
+will have similar semantics.  Implementers then just don&#39;t use the properties that aren&#39;t supported.  So, for example, if there 
+are 3 different devices that are 85% similar, the 15% difference of each device is included in the common schema definiiion.<br>Implementers would then use the parts of the 85% they need for their resource as well as the 15% of the definition that applies
+to the device they are implementing.  This does make for larger schema, but also makes for fewer schema.  When you see this approach,
+you will often see an extra &quot;resource type&quot; style property in the schema and resource to help clients tell what flavor this device is.</p>
 <h1 id="conclusion">Conclusion</h1>
 <p>The Redfish API represents a new style of programming for IT that is capable of managing systems from hyper-scale to blades to stand alone servers in a consistent manner.  We believe it represents a natural evolution that fits customer demand as well as the tools being used by those customers.</p>
 <h1 id="common-use-cases">Common Use Cases</h1>
@@ -736,9 +748,37 @@ a custom action might be sending a test event or clearing a log.</p>
 </ol>
 </li>
 </ol>
+<hr>
+<h1 id="revision-history">Revision History</h1>
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.0.0</td>
+<td>2015-8</td>
+<td>Initial release</td>
+</tr>
+<tr>
+<td>1.0.1</td>
+<td>2015-8</td>
+<td>Corrected @DMTF to @Redfish</td>
+</tr>
+<tr>
+<td>1.0.2</td>
+<td>2016-4</td>
+<td>Added Statement about Copyright Annotation in Mockups</td>
+</tr>
+</tbody>
+</table>
 
         <div id="last-footer-fix"></div>
       </div>
-      <div id="footer"><div data-doc-version="1.0.0"><div> Published</div></div></div>
+      <div id="footer"><div data-doc-version="1.0.1"><div> Published</div></div></div>
     </body>
-  </html>
+  </html>
