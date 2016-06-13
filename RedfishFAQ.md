@@ -3,10 +3,10 @@ DocTitle: Redfish Frequently Asked Questions (FAQ)
 DocNumber: '2045'
 DocClass: Informative
 DocVersion: '1.1.0'
-modified: '2015-08-04'
+modified: '2016-03-17'
 status: published
 released: true
-copyright: '2014, 2015'
+copyright: '2014-2016'
 ---
 # Introduction #
 This document is intended to explain the rationale and reasoning behind some of the architectural decisions in the Redfish API Architecture
@@ -190,4 +190,4 @@ Redfish requires logging of some events, but does not require the implementation
 | Version | Date      | Description     |
 | ---     | ---       | ---             |
 | 1.0.0   | 2015-9-17   | Initial release |
-| 1.0.1  | 2016-3-17 | Added Clarification on Schema Reuse, Change RFC2616 to RFC7230 |
+| 1.1.0  | 2016-3-17 | Added Clarification on Schema Reuse, Change RFC2616 to RFC7230 |

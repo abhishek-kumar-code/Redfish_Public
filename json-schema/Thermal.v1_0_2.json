@@ -411,7 +411,7 @@
                 "Fans": {
                     "type": "array",
                     "items": {
-                        "$ref": "http://redfish.dmtf.org/schemas/v1/Thermal.v1_0_0.json#/definitions/Fan"
+                        "$ref": "#/definitions/Fan"
                     },
                     "readonly": false,
                     "description": "This is the definition for fans.",
