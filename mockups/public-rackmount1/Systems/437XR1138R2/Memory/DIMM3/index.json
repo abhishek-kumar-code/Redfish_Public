@@ -2,7 +2,6 @@
 	"@odata.type": "#Memory.v1_0_0.Memory",
 	"Name": "DIMM Slot 3",
 	"Id": "DIMM3",
-	"MemoryType": "DDR4",
 	"RankCount": 2,
 	"MaxTDPMilliWatts": [12000],
 	"CapacityMiB": 32768,
