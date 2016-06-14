@@ -1,0 +1,35 @@
+{
+	"name": "Proposed OCP Redfish Profile",
+	"description": "A typical web-scale server with minimal data model that meets OCP Remote Machine Management spec.",
+	"navlinks": [{
+		"text": "Main",
+		"target": "main"
+	}, {
+		"text": "Systems",
+		"target": "Systems",
+		"navlinks": [{
+			"text": "1",
+			"target": "1"
+		}]
+	}, {
+		"text": "Chassis",
+		"target": "Chassis",
+		"navlinks": [{
+			"text": "1",
+			"target": "1"
+		}]
+	}, {
+		"text": "Managers",
+		"target": "Managers",
+		"navlinks": [{
+			"text": "BMC",
+			"target": "bmc"
+		}]
+	}, {
+		"text": "Session Service",
+		"target": "SessionService"
+	}, {
+		"target": "AccountService",
+		"text": "Account Service"
+	}]
+}
