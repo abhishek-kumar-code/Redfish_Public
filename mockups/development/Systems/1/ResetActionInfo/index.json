@@ -6,7 +6,7 @@
 	"Parameters": [{
 		"Name": "ResetType",
 		"Required": true,
-		"TypeDef": "String",
+		"DataType": "String",
 		"AllowableValues": [
 			"On",
 			"ForceOff",

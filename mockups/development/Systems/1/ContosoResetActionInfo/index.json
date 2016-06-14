@@ -6,7 +6,7 @@
 	"Parameters": [{
 		"Name": "ContosoResetType",
 		"Required": true,
-		"TypeDef": "String",
+		"DataType": "String",
 		"AllowableValues": [
 			"On",
 			"ForceOff",
@@ -16,15 +16,15 @@
 	}, {
 		"Name": "ResetReason",
 		"Required": false,
-		"TypeDef": "String"
+		"DataType": "String"
 	}, {
 		"Name": "ShutdownDelay",
 		"Required": false,
-		"TypeDef": "Number"
+		"DataType": "Number"
 	}, {
 		"Name": "ResetEvent",
 		"Required": false,
-		"TypeDef": "Object",
-		"ObjectTypeDef": "#Event.v1_0_2.Event"
+		"DataType": "Object",
+		"ObjectDataType": "#Event.v1_0_2.Event"
 	}]
 }
