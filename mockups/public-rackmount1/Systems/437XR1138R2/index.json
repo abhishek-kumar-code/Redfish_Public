@@ -71,7 +71,7 @@
         }
     },
     "MemorySummary": {
-        "TotalSystemMemoryGiB": 64,
+        "TotalSystemMemoryGiB": 96,
         "Status": {
             "State": "Enabled",
             "Health": "OK",
