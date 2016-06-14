@@ -96,7 +96,7 @@
         <Member Name="ObjectArray">
           <Annotation Term="OData.Description" String="An array of JSON objects"/>
         </Member>
-	   </EnumType>
+      </EnumType>
 	  
     </Schema>
 
