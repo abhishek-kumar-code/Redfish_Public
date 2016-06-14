@@ -26,5 +26,9 @@
 		"Required": false,
 		"DataType": "Object",
 		"ObjectDataType": "#Event.v1_0_2.Event"
+	}, {
+		"Name": "ApplicationsAffected",
+		"Required": false,
+		"DataType": "StringArray"
 	}]
 }
