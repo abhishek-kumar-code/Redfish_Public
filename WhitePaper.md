@@ -2,8 +2,8 @@
 DocTitle: Redfish White Paper
 DocNumber: '2044'
 DocClass: Informative
-DocVersion: '1.0.1'
-modified: '2016-03-31'
+DocVersion: '1.0.2'
+modified: '2016-06-15'
 status: published
 released: true
 copyright: '2014-2016'
