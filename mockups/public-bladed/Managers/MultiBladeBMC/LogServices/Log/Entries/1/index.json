@@ -5,6 +5,7 @@
     "EntryType": "Event",
     "Severity": "Critical",
     "Created": "2016-01-10T18:02",
+    "MessageId": "Event.1.0.FanWayTooSlow",
     "Message": "Fan 2 crossed Lower Fatal Threshold; fans are no longer redundant",
     "Links": {
         "OriginOfCondition": {
