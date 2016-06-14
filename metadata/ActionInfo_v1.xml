@@ -65,7 +65,7 @@
         <Property Name="ObjectDataType" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The OData Type of an object-based parameter"/>
-          <Annotation Term="OData.LongDescription" String="This property shall describe the entity type definition (as shown in @odata.type) for the parameter.  This property shall be required for parameters with a ParameterType of Object or ObjectArray."/>
+          <Annotation Term="OData.LongDescription" String="This property shall describe the entity type definition (in @odata.type format) for the parameter.  This property shall be required for parameters with a DataType of Object or ObjectArray, and shall not be present for parameters with other DataType(s)."/>
         </Property>
         <Property Name="AllowableValues" Type="Collection(Edm.String)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
