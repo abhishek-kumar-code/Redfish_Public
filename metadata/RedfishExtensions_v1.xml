@@ -50,6 +50,9 @@
       <Term Name="Deprecated" Type="Edm.String">
         <Annotation Term="OData.Description" String="The term shall be applied to a property in order to specify that the property is deprecated.  The value of the string should explain the deprecation, including new property or properties to be used. The property can be supported in new and existing implementations, but usage in new implementations is discouraged.  Deprecated properties are likely to be removed in a future major version of the schema."/>
       </Term>
+	  <Term Name="ActionInfo" Type="Edm.String">
+		<Annotation Term="OData.Description" String="The term can be applied to an Action to specify a URI to an ActionInfo resource which describes the parameters supported by this instance of the Action."/>
+	  </Term>
       <Term Name="DynamicPropertyPatterns" Type="Collection(RedfishExtensions.v1_0_0.PropertyPattern)" Nullable="false"/>
 
       <ComplexType Name="PropertyPattern">
