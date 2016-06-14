@@ -1,6 +1,6 @@
 {
     "@odata.type": "#LogEntryCollection.LogEntryCollection",
-    "Name": "Log Service Collection",
+    "Name": "Log Entry Collection",
     "Members@odata.count": 0,
     "Members": [],
     "@odata.context": "/redfish/v1/$metadata#Managers/Members/Blade2BMC/LogServices/Members/Log/Entries/$entity",
