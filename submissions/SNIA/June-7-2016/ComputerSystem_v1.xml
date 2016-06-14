@@ -6,6 +6,7 @@
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
 <!--# Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF).                  -->
+<!--# Including contributions from the Storage Network Industry Association (SNIA) 2016.   -->
 <!--# For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright -->
 <!--################################################################################       -->
 <!---->
@@ -55,9 +56,16 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Manager_v1.xml">
     <edmx:Include Namespace="Manager"/>
   </edmx:Reference>
+  <!-- Deprecation Start.  -->
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/StorageCollection_v1.xml">
     <edmx:Include Namespace="StorageCollection"/>
+    <Annotation Term="Deprecated" String="The StorageCollection and Storage entity types are deprecated in favor of the StorageServiceCollection and the StorageService entitity types respectively. "/>
   </edmx:Reference>
+  <!-- Deprecation End.  -->
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/SNIA/v1/StorageServiceCollection_v1.xml">
+    <edmx:Include Namespace="StorageServiceCollection"/>
+  </edmx:Reference> 
+
 
   <edmx:DataServices>
 
@@ -65,8 +73,8 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem">
 
       <EntityType Name="ComputerSystem" BaseType="Resource.v1_0_0.Resource" Abstract="true">
-        <Annotation Term="OData.Description" String="A Computer System represents a general purpose machine or system (as opposed to an appliance) instance and the software-visible resources (items within the data plane) such as memory, CPU and other devices that can be accessed from that machine.  Details of those resources or subsystems are also linked through this resource."/>
-        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent resources that represent a computing system (as opposed to an appliance) in the Redfish specification."/>
+        <Annotation Term="OData.Description" String="A Computer System represents a machine or system instance and the software-visible resources (items within the data plane) such as memory, CPU and other devices that can be accessed from that machine.  Details of those resources or subsystems are also linked through this resource."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent resources that represent a computing system in the Redfish specification."/>
       </EntityType>
 
       <Action Name="Reset" IsBound="true">
@@ -390,10 +398,6 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_0_2">
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_0_1.ComputerSystem"/>
     </Schema>
-  
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_0_3">
-      <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_0_2.ComputerSystem"/>
-    </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_1_0">
 
@@ -420,12 +424,25 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type MemoryCollection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
+        <!-- Deprecation Start.  -->
         <NavigationProperty Name="Storage" Type="StorageCollection.StorageCollection" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="Deprecated" String="The StorageCollection and Storage entity types are deprecated in favor of the StorageServiceCollection and the StorageService entitity types respectively. "/>
           <Annotation Term="OData.Description" String="A reference to the collection of storage devices associated with this system"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type StorageCollection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
+        <!-- Deprecation End.  -->
+        <NavigationProperty Name="StorageServices" Type="StorageServiceCollection.StorageServiceCollection" ContainsTarget="true" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A reference to a collection of storage services supported by this computer system"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type StorageServiceCollection."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>     
+        <Property Name="HostingRoles" Type="Collection(ComputerSystem.v1_1_0.HostingRole)" Nullable="false">
+          <Annotation Term="OData.Description" String="The hosing roles that this computer system supports."/>
+          <Annotation Term="OData.LongDescription" String="The values of this collection shall be the hosting roles supported by this computer system."/>
+        </Property>
       </EntityType>
 
       <ComplexType Name="MemorySummary" BaseType="ComputerSystem.v1_0_0.MemorySummary">
@@ -448,6 +465,19 @@
         </Member>
         <Member Name="None">
           <Annotation Term="OData.Description" String="The system does not support DIMM mirroring."/>
+        </Member>
+      </EnumType>
+      
+      <EnumType Name="HostingRole">
+       <Annotation Term="OData.Description" String="The enumerations of HostingRoles specify different features that the hosting ComputerSystem supports."/>
+       <Member Name="ApplicationServer">
+          <Annotation Term="OData.Description" String="The system hosts functionality that supports general purpose applications."/>
+        </Member>
+        <Member Name="StorageServer">
+          <Annotation Term="OData.Description" String="The system hosts functionality that supports the system acting as a storage server."/>
+        </Member>
+        <Member Name="Switch">
+          <Annotation Term="OData.Description" String="The system hosts functionality that supports the system acting as a switch."/>
         </Member>
       </EnumType>
 
@@ -497,10 +527,6 @@
         </Member>
       </EnumType>
 
-    </Schema>
-
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_1_1">
-      <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_1_0.ComputerSystem"/>
     </Schema>
 
   </edmx:DataServices>
