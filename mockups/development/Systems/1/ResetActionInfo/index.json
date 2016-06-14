@@ -4,9 +4,9 @@
 	"@odata.id": "/redfish/v1/Systems/1/ResetActionInfo",
 	"@odata.type": "#ActionInfo.v1_0_0.ActionInfo",
 	"Parameters": [{
-		"ParameterName": "ResetType",
-		"ParameterRequired": true,
-		"ParameterType": "String",
+		"Name": "ResetType",
+		"Required": true,
+		"TypeDef": "String",
 		"AllowableValues": [
 			"On",
 			"ForceOff",

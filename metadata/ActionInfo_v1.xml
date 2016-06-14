@@ -46,23 +46,23 @@
 
       <ComplexType Name="Parameters">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Property Name="ParameterName" Type="Edm.String" Nullable="false">
+        <Property Name="Name" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description"  String="The name of the parameter for this Action."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the name of the parameter used by the associated Redfish Action"/>
           <Annotation Term="Redfish.Required"/>
         </Property>
-        <Property Name="ParameterRequired" Type="Edm.Boolean" Nullable="false">
+        <Property Name="Required" Type="Edm.Boolean" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Indicates whether the parameter is required to perform this Action."/>
           <Annotation Term="OData.LongDescription" String="This property shall return true if the parameter is required to be present to perform the associated Action, and shall be false if the parameter is not required (optional) to perform the associated Action."/>
         </Property>
-        <Property Name="ParameterType" Type="ActionInfo.v1_0_0.ParameterTypes">
+        <Property Name="TypeDef" Type="ActionInfo.v1_0_0.ParameterTypes">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The JSON property type used for this parameter"/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the JSON property type of the parameter."/>
         </Property>
-        <Property Name="ParameterTypeDefinition" Type="Edm.String">
+        <Property Name="ObjectTypeDef" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The OData Type of an object-based parameter"/>
           <Annotation Term="OData.LongDescription" String="This property shall describe the entity type definition (as shown in @odata.type) for the parameter.  This property shall be required for parameters with a ParameterType of Object or ObjectArray."/>

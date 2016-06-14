@@ -4,9 +4,9 @@
 	"@odata.id": "/redfish/v1/Systems/1/ContosoResetActionInfo",
 	"@odata.type": "#ActionInfo.v1_1_0.ActionInfo",
 	"Parameters": [{
-		"ParameterName": "ContosoResetType",
-		"ParameterRequired": true,
-		"ParameterType": "String",
+		"Name": "ContosoResetType",
+		"Required": true,
+		"TypeDef": "String",
 		"AllowableValues": [
 			"On",
 			"ForceOff",
@@ -14,17 +14,17 @@
 			"GracefulRestart"
 		]
 	}, {
-		"ParameterName": "ResetReason",
-		"ParameterRequired": false,
-		"ParameterType": "String"
+		"Name": "ResetReason",
+		"Required": false,
+		"TypeDef": "String"
 	}, {
-		"ParameterName": "ShutdownDelay",
-		"ParameterRequired": false,
-		"ParameterType": "Number"
+		"Name": "ShutdownDelay",
+		"Required": false,
+		"TypeDef": "Number"
 	}, {
-		"ParameterName": "ResetEvent",
-		"ParameterRequired": false,
-		"ParameterType": "Object",
-		"ParameterTypeDefinition": "#Event.v1_0_2.Event"
+		"Name": "ResetEvent",
+		"Required": false,
+		"TypeDef": "Object",
+		"ObjectTypeDef": "#Event.v1_0_2.Event"
 	}]
 }
