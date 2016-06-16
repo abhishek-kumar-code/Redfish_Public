@@ -5,7 +5,6 @@
     "@odata.type": "#ComputerSystemCollection.ComputerSystemCollection",
     "Name": "Computer System Collection",
     "Members@odata.count": 3,
-    "Members@odata.count": 2,
     "Members": [
         {
             "@odata.id": "/redfish/v1/Systems/1"
