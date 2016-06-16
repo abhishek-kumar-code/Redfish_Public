@@ -2,8 +2,8 @@
 DocTitle: Redfish White Paper
 DocNumber: '2044'
 DocClass: Informative
-DocVersion: '1.0.1'
-modified: '2016-03-31'
+DocVersion: '1.0.2'
+modified: '2016-06-15'
 status: published
 released: true
 copyright: '2014-2016'
@@ -303,6 +303,8 @@ Examples of resources that may need Settings are devices like NICs and Storage a
 Both the Schema and the metadata define which properties can be updated.  Properties that are marked "OData.Permissions/Read" or have read-only as true indicate these properties can never be updated. Instead an "OData.Permissions/ReadWrite" or read-only = false indicates that it might be writable.  The LongDescription (normative text) may indicate which properties are writable and under what conditions. Note that by default, metadata without a "Permissions" annotation or schema without readonly = true can assumed to be writable.
 
 Note that even if they are marked writable, that doesn't necessarily indicate that a property can be written as implementations can allow the property to be read-only.
+
+The permission on a complex type property is the default permission for all properties within the complex type that do not have a "Permissions" annotation. For example the SubnetMask property in the IPv4Address complex type has no "Permissions" annotation. The IPv4Addresses property in EthernetInterface is of type IPv4Address. If IPv4Addresses has an "OData.Permission/Read" annotation, then SubnetMask becomes read-only. If IPv4Addresses has an "OData.Permission/ReadWrite" annotation, then SubnetMask becomes read-write. For clarity, the best practice is to define a "Permissions" annotation for all properties within the complex type.
 
 Semantics on Redfish PUT/PATCH are such that attempting to update a non-writable property isn't treated as an error.  An implementation of a Redfish Service will return a 200 with Extended Error Information indicating which properties were unable to be updated.
 
