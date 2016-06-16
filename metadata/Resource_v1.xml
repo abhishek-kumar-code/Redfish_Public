@@ -303,6 +303,25 @@
       </EnumType>
 
     </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_2_0">
+      
+      <EnumType Name="PowerState">
+        <Member Name="On">
+          <Annotation Term="OData.Description" String="The state is powered On."/>
+        </Member>
+        <Member Name="Off">
+          <Annotation Term="OData.Description" String="The state is powered Off."/>
+        </Member>
+        <Member Name="PoweringOn">
+          <Annotation Term="OData.Description" String="A temporary state between Off and On."/>
+        </Member>
+        <Member Name="PoweringOff">
+          <Annotation Term="OData.Description" String="A temporary state between On and Off."/>
+        </Member>
+      </EnumType>
+      
+    </Schema>
 
   </edmx:DataServices>
 </edmx:Edmx>
