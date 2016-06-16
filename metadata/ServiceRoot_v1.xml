@@ -89,7 +89,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The version of the Redfish service"/>
           <Annotation Term="OData.LongDescription" String="The value of this string shall represent the version of the Redfish service.  The format of this string shall be of the format majorversion.minorversion.errata in compliance with Protocol Version section of the Redfish specification. "/>
-          <Annotation Term="Validation.Pattern" String="^\\d+\\.\\d+\\.\\d+$"/>
+          <Annotation Term="Validation.Pattern" String="^\d+\.\d+\.\d+$"/>
         </Property>
         <Property Name="UUID" Type="Resource.UUID">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -171,6 +171,10 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ServiceRoot.v1_0_2">
       <EntityType Name="ServiceRoot" BaseType="ServiceRoot.v1_0_0.ServiceRoot"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ServiceRoot.v1_0_3">
+      <EntityType Name="ServiceRoot" BaseType="ServiceRoot.v1_0_2.ServiceRoot"/>
     </Schema>
 
   </edmx:DataServices>
