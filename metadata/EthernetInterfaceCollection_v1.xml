@@ -35,7 +35,6 @@
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </EntityType>
-
       <Annotation Term="Capabilities.InsertRestrictions">
         <Record>
           <PropertyValue Property="Insertable" Boolean="false"/>
@@ -51,7 +50,6 @@
           <PropertyValue Property="Deletable" Boolean="false"/>
         </Record>
       </Annotation>
-
     </Schema>
   </edmx:DataServices>
 </edmx:Edmx>
