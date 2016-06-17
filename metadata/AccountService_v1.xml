@@ -50,7 +50,7 @@
       <Annotation Term="Capabilities.UpdateRestrictions">
         <Record>
           <PropertyValue Property="Updatable" Boolean="true"/>
-          <Annotation Term="OData.Description" String="The Account Service can be updated the change some items such as various thresholds and durations."/>
+          <Annotation Term="OData.Description" String="The Account Service can be updated to change some properties such as various thresholds and durations."/>
         </Record>
       </Annotation>
       <Annotation Term="Capabilities.DeleteRestrictions">
