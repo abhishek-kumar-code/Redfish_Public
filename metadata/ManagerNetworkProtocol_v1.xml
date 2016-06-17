@@ -46,7 +46,7 @@
       <Annotation Term="Capabilities.UpdateRestrictions">
         <Record>
           <PropertyValue Property="Updatable" Boolean="true"/>
-          <Annotation Term="OData.Description" String="Manager Network Protocol resources can be updated to change the protocol & virtual media settings and other writable properties."/>
+          <Annotation Term="OData.Description" String="Manager Network Protocol resources can be updated to change the protocol and virtual media settings and other writable properties."/>
         </Record>
       </Annotation>
       <Annotation Term="Capabilities.DeleteRestrictions">
