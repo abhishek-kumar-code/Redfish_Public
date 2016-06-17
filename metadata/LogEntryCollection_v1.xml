@@ -26,7 +26,14 @@
   
   <edmx:DataServices>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogEntryCollection">
-      
+      <EntityType Name="LogEntryCollection" BaseType="Resource.v1_0_0.ResourceCollection">
+        <Annotation Term="OData.Description" String="A Collection of LogEntry resource instances."/>
+        <NavigationProperty Name="Members" Type="Collection(LogEntry.LogEntry)" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
+          <Annotation Term="OData.AutoExpand"/>
+        </NavigationProperty>
+      </EntityType>
       <Annotation Term="Capabilities.InsertRestrictions">
         <Record>
           <PropertyValue Property="Insertable" Boolean="false"/>
@@ -42,16 +49,6 @@
           <PropertyValue Property="Deletable" Boolean="false"/>
         </Record>
       </Annotation>
-      
-      <EntityType Name="LogEntryCollection" BaseType="Resource.v1_0_0.ResourceCollection">
-        <Annotation Term="OData.Description" String="A Collection of LogEntry resource instances."/>
-        <NavigationProperty Name="Members" Type="Collection(LogEntry.LogEntry)" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
-          <Annotation Term="OData.AutoExpand"/>
-        </NavigationProperty>
-      </EntityType>
-
     </Schema>
   </edmx:DataServices>
 </edmx:Edmx>
