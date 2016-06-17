@@ -48,7 +48,7 @@
       <Annotation Term="Capabilities.UpdateRestrictions">
         <Record>
           <PropertyValue Property="Updatable" Boolean="true"/>
-          <Annotation Term="OData.Description" String="A Session Service can be updated to change the timeout as well as enable/disable it."/>
+          <Annotation Term="OData.Description" String="A Session Service can be updated to change the timeout as well as enable or disable it."/>
         </Record>
       </Annotation>
       <Annotation Term="Capabilities.DeleteRestrictions">
