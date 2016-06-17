@@ -37,7 +37,6 @@
         <Annotation Term="OData.Description" String="This resource is used to obtain or modify the network services managed by a given manager."/>
         <Annotation Term="OData.LongDescription" String="This object shall be used to represent the network service settings for the manager."/>
       </EntityType>
-      
       <Annotation Term="Capabilities.InsertRestrictions">
         <Record>
           <PropertyValue Property="Insertable" Boolean="false"/>
@@ -54,7 +53,6 @@
           <PropertyValue Property="Deletable" Boolean="false"/>
         </Record>
       </Annotation>
-      
     </Schema>
   
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ManagerNetworkProtocol.v1_0_0">
