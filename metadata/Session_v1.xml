@@ -51,7 +51,6 @@
         </Record>
       </Annotation>
     </Schema>
-    </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Session.v1_0_0">
 
