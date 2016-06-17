@@ -34,7 +34,6 @@
         <Annotation Term="OData.Description" String="The Event schema describes the JSON payload received by an Event Destination (which has subscribed to event notification) when events occurs.  This resource contains data about event(s), including descriptions, severity and MessageId reference to a Message Registry that can be accessed for further information. "/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent an event for a Redfish implementation."/>
       </EntityType>
-
       <Annotation Term="Capabilities.InsertRestrictions">
         <Record>
           <PropertyValue Property="Insertable" Boolean="false"/>
@@ -50,7 +49,6 @@
           <PropertyValue Property="Deletable" Boolean="false"/>
         </Record>
       </Annotation>
-
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Event.v1_0_0">
