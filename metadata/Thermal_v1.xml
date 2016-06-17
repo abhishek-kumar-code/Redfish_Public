@@ -13,6 +13,9 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>  
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Measures.V1.xml">
     <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
   </edmx:Reference>
@@ -38,7 +41,22 @@
         <Annotation Term="OData.Description" String="This is the schema definition for the Thermal properties.  It represents the properties for Temperature and Cooling."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a thermal metrics resource for a Redfish implementation."/>
       </EntityType>
-
+      <Annotation Term="Capabilities.InsertRestrictions">
+        <Record>
+          <PropertyValue Property="Insertable" Boolean="false"/>
+        </Record>
+      </Annotation>
+      <Annotation Term="Capabilities.UpdateRestrictions">
+        <Record>
+          <PropertyValue Property="Updatable" Boolean="true"/>
+          <Annotation Term="OData.Description" String="Thermal resources can be updated to change any writable properties."/>
+        </Record>
+      </Annotation>
+      <Annotation Term="Capabilities.DeleteRestrictions">
+        <Record>
+          <PropertyValue Property="Deletable" Boolean="false"/>
+        </Record>
+      </Annotation>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Thermal.v1_0_0">
