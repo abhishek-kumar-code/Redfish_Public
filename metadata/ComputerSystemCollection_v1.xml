@@ -37,23 +37,22 @@
         </NavigationProperty>
       </EntityType>
 
-        <Annotation Term="Capabilities.InsertRestrictions">
-          <Record>
-            <PropertyValue Property="Insertable" Boolean="false"/>
-          </Record>
-        </Annotation>
-        <Annotation Term="Capabilities.UpdateRestrictions">
-          <Record>
-            <PropertyValue Property="Updatable" Boolean="false"/>
-          </Record>
-        </Annotation>
-        <Annotation Term="Capabilities.DeleteRestrictions">
-          <Record>
-            <PropertyValue Property="Deletable" Boolean="false"/>
-          </Record>
-        </Annotation>
-      </EntityType>
-
+      <Annotation Term="Capabilities.InsertRestrictions">
+        <Record>
+          <PropertyValue Property="Insertable" Boolean="false"/>
+        </Record>
+      </Annotation>
+      <Annotation Term="Capabilities.UpdateRestrictions">
+        <Record>
+          <PropertyValue Property="Updatable" Boolean="false"/>
+        </Record>
+      </Annotation>
+      <Annotation Term="Capabilities.DeleteRestrictions">
+        <Record>
+          <PropertyValue Property="Deletable" Boolean="false"/>
+        </Record>
+      </Annotation>
+  
     </Schema>
   </edmx:DataServices>
 </edmx:Edmx>
