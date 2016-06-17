@@ -51,7 +51,7 @@
         <Record>
           <PropertyValue Property="Deletable" Boolean="tree"/>
           <Annotation Term="OData.Description" String="Manager Accounts are removed with a Delete operation."/>
-        </</Record>
+        </Record>
       </Annotation>
       
     </Schema>
