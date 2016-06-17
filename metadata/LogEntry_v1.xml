@@ -47,7 +47,8 @@
       </Annotation>
       <Annotation Term="Capabilities.DeleteRestrictions">
         <Record>
-          <PropertyValue Property="Deletable" Boolean="false"/>
+          <PropertyValue Property="Deletable" Boolean="true"/>
+          <Annotation Term="OData.Description" String="Some implementations may allow the deletion of individual Log Entries."/>
         </Record>
       </Annotation>
 
