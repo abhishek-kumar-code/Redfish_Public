@@ -29,7 +29,6 @@
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="IPAddresses.v1_0_0">
-
       <Annotation Term="Capabilities.InsertRestrictions">
         <Record>
           <PropertyValue Property="Insertable" Boolean="false"/>
@@ -46,7 +45,6 @@
           <PropertyValue Property="Deletable" Boolean="false"/>
         </Record>
       </Annotation>
-
       <ComplexType Name="IPv4Address">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
