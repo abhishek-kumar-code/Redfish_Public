@@ -60,7 +60,6 @@
         <Annotation Term="OData.Description" String="In Redfish, a Manager is a systems management entity which may implement or provide access to a Redfish service.  Examples of managers are BMCs, Enclosure Managers, Management Controllers and other subsystems assigned managability functions.  There may be multiple Managers in an implementation, and they may or may not be directly accessible via a Redfish-defined interface."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a management subsystem for a Redfish implementation."/>
       </EntityType>
-
       <Annotation Term="Capabilities.InsertRestrictions">
         <Record>
           <PropertyValue Property="Insertable" Boolean="false"/>
@@ -77,7 +76,6 @@
           <PropertyValue Property="Deletable" Boolean="false"/>
         </Record>
       </Annotation>
-
       <Action Name="Reset" IsBound="true">
         <Parameter Name="Manager" Type="Manager.v1_0_0.Actions"/>
         <Parameter Name="ResetType" Type="Resource.ResetType">
