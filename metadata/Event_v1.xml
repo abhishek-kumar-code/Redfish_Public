@@ -94,7 +94,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the key for this message which can be used to look up the message in a message registry."/>
           <Annotation Term="OData.LongDescription" String="This property shall be a key into message registry as described in the Redfish specification."/>
-          <Annotation Term="Validation.Pattern" String="^[A-Za-z0-9]+\\.\\d+\\.\\d+.[A-Za-z0-9.]+$"/>
+          <Annotation Term="Validation.Pattern" String="^[A-Za-z0-9]+\.\d+\.\d+\.[A-Za-z0-9.]+$"/>
           <Annotation Term="Redfish.Required"/>
         </Property>
         <Property Name="MessageArgs" Type="Collection(Edm.String)" Nullable="false">
@@ -120,6 +120,10 @@
       <EntityType Name="Event" BaseType="Event.v1_0_0.Event"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Event.v1_0_3">
+      <EntityType Name="Event" BaseType="Event.v1_0_2.Event"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Event.v1_1_0">
       <EntityType Name="Event" BaseType="Event.v1_0_2.Event">
         <Property Name="Context" Type="Edm.String" Nullable="false">
@@ -128,6 +132,10 @@
           <Annotation Term="OData.LongDescription" String="This property shall contain a client supplied context for the Event Destination to which this event is being sent."/>
         </Property>
       </EntityType>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Event.v1_1_1">
+      <EntityType Name="Event" BaseType="Event.v1_1_0.Event"/>
     </Schema>
 
   </edmx:DataServices>
