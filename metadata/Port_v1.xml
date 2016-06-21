@@ -71,10 +71,15 @@
           <Annotation Term="OData.Description" String="This is the type of this port."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the port type for this port."/>
         </Property>
-        <Property Name="SpeedGbps" Type="Edm.Int64">
+        <Property Name="CurrentSpeedGbps" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The current speed of this port as currently configured."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the speed of this port as currently configured."/>
+          <Annotation Term="OData.Description" String="The current speed of this port."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the speed of this port currently negotiated and running."/>
+        </Property>
+        <Property Name="MaxSpeedGbps" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The maximum speed of this port as currently configured."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the maximum speed of which this port is capable of being configured.  If capable of auto-negotiation, the system shall attempt to negotiate at the maximum speed set."/>
         </Property>
         <Property Name="Width" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
