@@ -59,7 +59,7 @@
         </NavigationProperty>
       </EntityType>
       
-      <EntityType Name="InterleavableMemorySets" BaseType="MemoryDomain.v1_0_0.InterleavableMemoryObjects">
+      <EntityType Name="InterleavableMemorySets" BaseType="Collection(MemoryDomain.v1_0_0.InterleavableMemoryObjects)">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
       </EntityType>
 
