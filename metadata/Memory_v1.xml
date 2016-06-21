@@ -517,9 +517,6 @@
         <Member Name="Block">
           <Annotation Term="OData.Description" String="Block accesible memory" />
         </Member>
-	<Member Name="ByteAndBlockPersistent">
-          <Annotation Term="OData.Description" String="Block and Byte accesible persistent memory" />
-        </Member>
       </EnumType>
 
       <EnumType Name="OperatingMemoryModes">
