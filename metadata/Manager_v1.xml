@@ -354,6 +354,16 @@
         </NavigationProperty>		
       </ComplexType>
     </Schema>
+      
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_2_0">
+     <EntityType Name="Manager" BaseType="Manager.v1_1_0.Manager">
+        <Property Name="PowerState" Type="Resource.v1_2_0.PowerState">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This is the current power state of the Manager."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the power state of the Manager."/>
+        </Property>
+      </EntityType>
+    </Schema>
   
   </edmx:DataServices>
 </edmx:Edmx>
