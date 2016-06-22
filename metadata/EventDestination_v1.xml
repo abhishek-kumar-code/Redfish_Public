@@ -24,7 +24,9 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Event_v1.xml">
     <edmx:Include Namespace="Event.v1_0_0"/>
   </edmx:Reference>
-
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/MessageRegistry_v1.xml">
+    <edmx:Include Namespace="MessageRegistry"/>
+  </edmx:Reference>  
   <edmx:DataServices>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventDestination">
 
@@ -86,7 +88,17 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventDestination.v1_0_2">
-      <EntityType Name="EventDestination" BaseType="EventDestination.v1_0_0.EventDestination"/>
+      <EntityType Name="EventDestination" BaseType="EventDestination.v1_0_0.EventDestination">
+        <NavigationProperty Name="OriginResources" Type="ResourceCollection.v1_0_0.ResourceCollection)" ContainsTarget="true" >
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A collection of resources that may be referenced in the OriginOfCondition property of an EventRecord resulting from this subscription."/>
+          <Annotation Term="OData.LongDescription" String="If present, the values shall restrict the resources that may be referenced in the OriginOfCondition property within an EventRecord sent to the Destination specified by this subscription."/>
+        </NavigationProperty>
+        <Property Name="MessageIds" Type="Collection(Edm.String)" /> 
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A collection of MessageIDs."/>
+          <Annotation Term="OData.LongDescription" String="If present, the values shall restrict values of the MessageID property within an EventRecord sent to the Destination specified by this subscription. The values shall be MessageIds as defined by the Redfish specification."/>
+      </EntityType>
     </Schema>
 
   </edmx:DataServices>
