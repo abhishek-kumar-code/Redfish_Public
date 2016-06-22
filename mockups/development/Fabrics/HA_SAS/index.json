@@ -1,24 +1,24 @@
 {
     "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#Fabric.Fabric",
-    "@odata.id": "/redfish/v1/Fabrics/SAS",
+    "@odata.id": "/redfish/v1/Fabrics/HA_SAS",
     "@odata.type": "#Fabric.v1_0_0.Fabric",
-    "Id": "SAS",
-    "Name": "SAS Fabric",
+    "Id": "HA_SAS",
+    "Name": "High Availability SAS Fabric",
     "FabricType": "SAS",
-    "Description": "SAS Fabric without all endpoints explicitly managed (this is also an HA model as you can tell by the ports, but requires less client understanding of HA)",
+    "Description": "High Availability SAS Fabric with all endpoints explicitly managed",
     "Status": {
         "State": "Enabled",
         "Health": "OK"
     },
     "Zones": {
-        "@odata.id": "/redfish/v1/Fabrics/SAS/Zones"
+        "@odata.id": "/redfish/v1/Fabrics/HA_SAS/Zones"
     },
     "Endpoints": {
-        "@odata.id": "/redfish/v1/Fabrics/SAS/Endpoints"
+        "@odata.id": "/redfish/v1/Fabrics/HA_SAS/Endpoints"
     },
     "Switches": {
-        "@odata.id": "/redfish/v1/Fabrics/SAS/Switches"
+        "@odata.id": "/redfish/v1/Fabrics/HA_SAS/Switches"
     },
     "Links": {
         "Oem": {}
