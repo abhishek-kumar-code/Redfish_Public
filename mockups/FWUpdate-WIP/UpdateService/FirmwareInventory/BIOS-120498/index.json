@@ -1,0 +1,23 @@
+{
+    "@Redfish.Copyright": "Copyright 2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#UpdateService/FirmwareInventory/Members/$entity",
+    "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/BIOS-120498",
+    "@odata.type": "#FirmwareInventory.v1_0_0.FirmwareInventory",
+    "Id": "BIOS-120498",
+    "Name": "Contoso Server BIOS",
+    "Description": "Description of Contoso Server BIOS",
+    "DeviceClass": "7777-8888",
+    "DeviceInstance": "112312-2111-2333-0000-489239905423",
+    "Updateable": false,
+    "Version": "120498",
+    "VersionSequence": "<mmddyy>",
+    "RelatedItem": [
+        { 
+            "@odata.id": "/redfish/v1/Systems/1" 
+        }
+    ],
+    "Actions": {
+        "Oem": {}
+    },
+    "Oem": {}
+}

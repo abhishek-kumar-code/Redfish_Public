@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved. -->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.1.0.0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0" />
+    <edmx:Include Namespace="Resource.v1_1_0" />
+  </edmx:Reference>
+
+  <edmx:DataServices>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="FirmwareInventory">
+      <EntityType Name="FirmwareInventory" BaseType="Resource.v1_0_0.Resource">
+        <Annotation Term="OData.Description" String="This schema defines a storage subsystem and its respective properties.  A storage subsystem represents a set of storage controllers (physical or virtual) and the resources such as volumes that can be accessed from that subsystem."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent resources that represent a storage subsystem in the Redfish specification."/>
+      </EntityType>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="FirmwareInventory.v0_9_0">
+
+      <EntityType Name="FirmwareInventory" BaseType="FirmwareInventory.FirmwareInventory">
+        <Annotation Term="OData.Description" String="This is the schema definition for the Update Service. It represents the properties for the service itself and has link to a collection of inventory."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent an Update Service for a Redfish implementation. It represents the properties that affect the service itself and all update packages."/>
+        <Property Name="Status" Type="Resource.Status"/>
+        <Property Name="DeviceClass" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A unique identifier for the device class associated with this firmware."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a unique identifier for the device class associated with this inventory. For example, UEFI GUID or similar."/>
+        </Property>        
+        <Property Name="DeviceInstance" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="An opaque string to uniquely identify an instance of a device class."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an opaque string to uniquely identify an instance of a device class. For example, UEFI Device Path, UUID, MAC Address."/>
+        </Property>        
+        <Property Name="DeviceContext" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="An opaque string to provide context for the device class."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an opaque string to provide context for the device class. For example, PCI bus 0 Device 19."/>
+        </Property>        
+        <Property Name="Version" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A string representing the version of this firmware."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a string representing the version of this firmware."/>
+        </Property>        
+        <Property Name="VersionSequence" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A description of the version string structure or format."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a description of the version string structure or format."/>
+        </Property>        
+        <Property Name="Updateable" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Indicates whether this firmware can be updated by the update service."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this firmware can be updated by the update service. If false, this firmware is for reporting purpose only."/>
+        </Property>        
+        <Property Name="Actions" Type="FirmwareInventory.v0_9_0.Actions" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The Actions object contains the available custom actions on this resource."/>
+        </Property>
+      </EntityType>
+
+      <ComplexType Name="Actions">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Property Name="Oem" Type="FirmwareInventory.v0_9_0.OemActions" Nullable="false"/>
+      </ComplexType>
+      
+      <ComplexType Name="OemActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+      </ComplexType>
+
+    </Schema>
+
+  </edmx:DataServices>
+</edmx:Edmx>

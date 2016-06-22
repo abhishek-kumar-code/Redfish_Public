@@ -1,0 +1,26 @@
+{
+    "@Redfish.Copyright": "Copyright 2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#Managers/UpdateService/FirmwareInventory/Members/$entity",
+    "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/Device-current",
+    "@odata.type": "#FirmwareInventory.v1_0_0.FirmwareInventory",
+    "Id": "Device-current",
+    "Name": "Name of the Firmware / Device",
+    "Status": {
+        "State": "Enabled"
+    },
+    "DeviceClass": "UEFI GUID or similar",
+    "DeviceInstance": "UEFI Device Path, UUID, MAC Address, OEM style - opaque string to ID an instance of a Class",
+    "DeviceContext": "optional, roughly human readable string to provide context for device",
+    "Updateable": true,
+    "Version": "current version",
+    "VersionSequence": "description of version string structure",
+    "RelatedItem": [
+        { 
+            "@odata.id": "/redfish/v1/Managers/1" 
+        }
+    ],
+    "Actions": {
+        "Oem": {}
+    },
+    "Oem": {}
+}

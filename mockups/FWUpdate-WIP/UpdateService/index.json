@@ -1,0 +1,21 @@
+{
+    "@Redfish.Copyright": "Copyright 2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#UpdateService/$entity",
+    "@odata.id": "/redfish/v1/UpdateService",
+    "@odata.type": "#UpdateService.v1_0_0.UpdateService",
+    "Id": "UpdateService",
+    "Name": "Update service",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK",
+        "HealthRollUp": "OK"
+    },
+    "ServiceEnabled": true,
+    "FirmwareInventory": {
+        "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory"
+    },
+    "Actions": {
+        "Oem": {}
+    },
+    "Oem": {}
+}
