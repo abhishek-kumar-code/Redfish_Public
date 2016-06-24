@@ -38,17 +38,17 @@
       </EntityType>
       <Annotation Term="Capabilities.InsertRestrictions">
         <Record>
-          <PropertyValue Property="Insertable" Boolean="false"/>
+          <PropertyValue Property="Insertable" Bool="false"/>
         </Record>
       </Annotation>
       <Annotation Term="Capabilities.UpdateRestrictions">
         <Record>
-          <PropertyValue Property="Updatable" Boolean="false"/>
+          <PropertyValue Property="Updatable" Bool="false"/>
         </Record>
       </Annotation>
       <Annotation Term="Capabilities.DeleteRestrictions">
         <Record>
-          <PropertyValue Property="Deletable" Boolean="false"/>
+          <PropertyValue Property="Deletable" Bool="false"/>
         </Record>
       </Annotation>
     </Schema>

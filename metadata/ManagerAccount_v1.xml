@@ -37,18 +37,18 @@
       </EntityType>
       <Annotation Term="Capabilities.InsertRestrictions">
         <Record>
-          <PropertyValue Property="Insertable" Boolean="false"/>
+          <PropertyValue Property="Insertable" Bool="false"/>
         </Record>
       </Annotation>
       <Annotation Term="Capabilities.UpdateRestrictions">
         <Record>
-          <PropertyValue Property="Updatable" Boolean="true"/>
+          <PropertyValue Property="Updatable" Bool="true"/>
           <Annotation Term="OData.Description" String="Manager Accounts can be updated to change the password and other writable properties."/>
         </Record>
       </Annotation>
       <Annotation Term="Capabilities.DeleteRestrictions">
         <Record>
-          <PropertyValue Property="Deletable" Boolean="tree"/>
+          <PropertyValue Property="Deletable" Bool="tree"/>
           <Annotation Term="OData.Description" String="Manager Accounts are removed with a Delete operation."/>
         </Record>
       </Annotation>

@@ -34,18 +34,18 @@
       </EntityType>
       <Annotation Term="Capabilities.InsertRestrictions">
         <Record>
-          <PropertyValue Property="Insertable" Boolean="false"/>
+          <PropertyValue Property="Insertable" Bool="false"/>
         </Record>
       </Annotation>
       <Annotation Term="Capabilities.UpdateRestrictions">
         <Record>
-          <PropertyValue Property="Updatable" Boolean="true"/>
+          <PropertyValue Property="Updatable" Bool="true"/>
           <Annotation Term="OData.Description" String="VLan Network Interfaces can be updated to change the VLan ID and to enable or disable it."/>
         </Record>
       </Annotation>
       <Annotation Term="Capabilities.DeleteRestrictions">
         <Record>
-          <PropertyValue Property="Deletable" Boolean="true"/>
+          <PropertyValue Property="Deletable" Bool="true"/>
           <Annotation Term="OData.Description" String="VLan Network Interface can be deleted in some implementations, though others may keep a fixed number in the collection and thus not allow deletion."/>
         </Record>
       </Annotation>

@@ -45,18 +45,18 @@
       </EntityType>
       <Annotation Term="Capabilities.InsertRestrictions">
         <Record>
-          <PropertyValue Property="Insertable" Boolean="false"/>
+          <PropertyValue Property="Insertable" Bool="false"/>
         </Record>
       </Annotation>
       <Annotation Term="Capabilities.UpdateRestrictions">
         <Record>
-          <PropertyValue Property="Updatable" Boolean="true"/>
+          <PropertyValue Property="Updatable" Bool="true"/>
           <Annotation Term="OData.Description" String="Volumes can be updated to change the writable properties."/>
         </Record>
       </Annotation>
       <Annotation Term="Capabilities.DeleteRestrictions">
         <Record>
-          <PropertyValue Property="Deletable" Boolean="true"/>
+          <PropertyValue Property="Deletable" Bool="true"/>
           <Annotation Term="OData.Description" String="Volumes can be deleted by deleting the Volume resource."/>
         </Record>
       </Annotation>

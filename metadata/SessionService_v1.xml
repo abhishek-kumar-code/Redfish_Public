@@ -42,18 +42,18 @@
       </EntityType>
       <Annotation Term="Capabilities.InsertRestrictions">
         <Record>
-          <PropertyValue Property="Insertable" Boolean="false"/>
+          <PropertyValue Property="Insertable" Bool="false"/>
         </Record>
       </Annotation>
       <Annotation Term="Capabilities.UpdateRestrictions">
         <Record>
-          <PropertyValue Property="Updatable" Boolean="true"/>
+          <PropertyValue Property="Updatable" Bool="true"/>
           <Annotation Term="OData.Description" String="A Session Service can be updated to change the timeout as well as enable or disable it."/>
         </Record>
       </Annotation>
       <Annotation Term="Capabilities.DeleteRestrictions">
         <Record>
-          <PropertyValue Property="Deletable" Boolean="false"/>
+          <PropertyValue Property="Deletable" Bool="false"/>
         </Record>
       </Annotation>
     </Schema>

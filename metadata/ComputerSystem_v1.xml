@@ -76,18 +76,18 @@
       </EntityType>
       <Annotation Term="Capabilities.InsertRestrictions">
         <Record>
-          <PropertyValue Property="Insertable" Boolean="false"/>
+          <PropertyValue Property="Insertable" Bool="false"/>
         </Record>
       </Annotation>
       <Annotation Term="Capabilities.UpdateRestrictions">
         <Record>
-          <PropertyValue Property="Updatable" Boolean="true"/>
+          <PropertyValue Property="Updatable" Bool="true"/>
           <Annotation Term="OData.Description" String="A Computer System can be updated to change properties such as the AssetTag, IndicatorLED and some Boot parameters."/>
         </Record>
       </Annotation>
       <Annotation Term="Capabilities.DeleteRestrictions">
         <Record>
-          <PropertyValue Property="Deletable" Boolean="false"/>
+          <PropertyValue Property="Deletable" Bool="false"/>
         </Record>
       </Annotation>
 
