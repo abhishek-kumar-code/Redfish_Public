@@ -241,8 +241,7 @@
 
       <EnumType Name="EncryptionStatus">
         <Member Name="Unecrypted">
-          <Annotation Term="OData.Description" String="The drive is not currently encrypted"/>
-          <Annotation Term="Redfish.Deprecated" String="This member has been Deprecated in favor of Unencrypted"/>
+          <Annotation Term="OData.Description" String="The drive is not currently encrypted. Deprecated: Use Unencrypted"/>
         </Member>
         <Member Name="Unlocked">
           <Annotation Term="OData.Description" String="The drive is currently encrypted but the data is accessible to the user unencrypted"/>
