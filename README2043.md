@@ -2,9 +2,9 @@
 DocTitle: Scalable Platforms Management API Mockup Readme
 DocNumber: '2043'
 DocClass: Informative
-DocVersion: '2016.1'
+DocVersion: '1.0.0'
 modified: '2016-06-28'
-status: wip
+status: released
 released: true
 copyright: '2015-2016'
 ---
