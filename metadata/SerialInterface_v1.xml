@@ -14,6 +14,9 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>  
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
     <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
   </edmx:Reference>
@@ -28,7 +31,22 @@
         <Annotation Term="OData.Description" String="This resource describes an asynchronous serial interface, such as an RS-232 interface, available to a system or device."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent serial resources as part of the Redfish specification."/>
       </EntityType>
-
+      <Annotation Term="Capabilities.InsertRestrictions">
+        <Record>
+          <PropertyValue Property="Insertable" Bool="false"/>
+        </Record>
+      </Annotation>
+      <Annotation Term="Capabilities.UpdateRestrictions">
+        <Record>
+          <PropertyValue Property="Updatable" Bool="true"/>
+          <Annotation Term="OData.Description" String="Serial Interface can be updated to enable or disable it or to change the configuration."/>
+        </Record>
+      </Annotation>
+      <Annotation Term="Capabilities.DeleteRestrictions">
+        <Record>
+          <PropertyValue Property="Deletable" Bool="false"/>
+        </Record>
+      </Annotation>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SerialInterface.v1_0_0">
