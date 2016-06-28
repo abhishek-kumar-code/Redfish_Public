@@ -31,6 +31,10 @@ Many of these mockups are also used to populate the Redfish Resource Explorer, p
 
 This mockup provides an example of a 1U or 2U rack-mounted server typically deployed in large scale data centers.  In addition, the mockup is intended to be used as a base for "Work in Progress" mockups to demonstrate new features, schemas or properties currently under development within the SPMF.    
 
+## Simple Rack-mounted server (public-rackmount)
+
+This illustration of a Redfish service implementation shows a typical rack-mount server, as commonly used in scale-out data centers. It depicts the types of information that can be expected, but does not represent an actual implementation.
+
 ## Bladed Server (public-bladed)
 
 This example represents an enclosure of “blade servers” that share infrastructure components, such as power supplies and fans. Depicting an enclosure containing four blade servers (a total of five “Chassis”), this mockup demonstrates the modeling of multiple chassis and systems managed from a single Redfish service.
