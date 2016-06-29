@@ -14,6 +14,9 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>  
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Measures.V1.xml">
     <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
   </edmx:Reference>
@@ -58,6 +61,9 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/StorageCollection_v1.xml">
     <edmx:Include Namespace="StorageCollection"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/SNIA/v1/StorageServiceCollection_v1.xml">
+    <edmx:Include Namespace="StorageServiceCollection"/>
+  </edmx:Reference>  
 
   <edmx:DataServices>
 
@@ -68,6 +74,22 @@
         <Annotation Term="OData.Description" String="A Computer System represents a general purpose machine or system (as opposed to an appliance) instance and the software-visible resources (items within the data plane) such as memory, CPU and other devices that can be accessed from that machine.  Details of those resources or subsystems are also linked through this resource."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent resources that represent a computing system (as opposed to an appliance) in the Redfish specification."/>
       </EntityType>
+      <Annotation Term="Capabilities.InsertRestrictions">
+        <Record>
+          <PropertyValue Property="Insertable" Bool="false"/>
+        </Record>
+      </Annotation>
+      <Annotation Term="Capabilities.UpdateRestrictions">
+        <Record>
+          <PropertyValue Property="Updatable" Bool="true"/>
+          <Annotation Term="OData.Description" String="A Computer System can be updated to change properties such as the AssetTag, IndicatorLED and some Boot parameters."/>
+        </Record>
+      </Annotation>
+      <Annotation Term="Capabilities.DeleteRestrictions">
+        <Record>
+          <PropertyValue Property="Deletable" Bool="false"/>
+        </Record>
+      </Annotation>
 
       <Action Name="Reset" IsBound="true">
         <Parameter Name="ComputerSystem" Type="ComputerSystem.v1_0_0.Actions"/>
@@ -501,6 +523,40 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_1_1">
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_1_0.ComputerSystem"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_2_0">
+      <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_1_1.ComputerSystem">
+        <Property Name="HostingRoles" Type="Collection(ComputerSystem.v1_1_0.HostingRole)" Nullable="false">
+          <Annotation Term="OData.Description" String="The hosing roles that this computer system supports."/>
+          <Annotation Term="OData.LongDescription" String="The values of this collection shall be the hosting roles supported by this computer system."/>
+        </Property>
+      </EntityType>
+
+      <ComplexType Name="HostedServices">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <NavigationProperty Name="StorageServices" Type="StorageServiceCollection.StorageServiceCollection" ContainsTarget="true" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A reference to a collection of storage services supported by this computer system"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type StorageServiceCollection."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty> 
+        <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
+        <Annotation Term="OData.Description" String="This object describes services that may be running or installed on the system."/>
+      </ComplexType>
+      
+      <EnumType Name="HostingRole">
+       <Annotation Term="OData.Description" String="The enumerations of HostingRoles specify different features that the hosting ComputerSystem supports."/>
+       <Member Name="ApplicationServer">
+          <Annotation Term="OData.Description" String="The system hosts functionality that supports general purpose applications."/>
+        </Member>
+        <Member Name="StorageServer">
+          <Annotation Term="OData.Description" String="The system hosts functionality that supports the system acting as a storage server."/>
+        </Member>
+        <Member Name="Switch">
+          <Annotation Term="OData.Description" String="The system hosts functionality that supports the system acting as a switch."/>
+        </Member>
+      </EnumType>
     </Schema>
 
   </edmx:DataServices>
