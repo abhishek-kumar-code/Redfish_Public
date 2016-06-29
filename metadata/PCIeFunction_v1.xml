@@ -45,7 +45,7 @@
           <Annotation Term="OData.Description" String="The type of the PCIe Function."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the function type of the PCIe device function such as Physical or Virtual."/>
         </Property>
-        <Property Name="DeviceClass" Type="PCIeFunction.v0_9_0.DeviceClass" Nullable="false">
+        <Property Name="DeviceClass" Type="PCIeFunction.v1_0_0.DeviceClass" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The class for this PCIe Function."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the device class of the PCIe device function such as Storage, Network, Memory etc."/>
