@@ -31,6 +31,9 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Switch_v1.xml">
     <edmx:Include Namespace="Switch"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
 
   <edmx:DataServices>
   
@@ -80,6 +83,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The maximum speed of this port as currently configured."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the maximum speed of which this port is capable of being configured.  If capable of auto-negotiation, the system shall attempt to negotiate at the maximum speed set."/>
+          <Annotation Term="Measures.Unit" String="Gbit/s"/>
         </Property>
         <Property Name="Width" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -89,6 +93,7 @@
         <Property Name="MaxSpeedGbps" Type="Edm.Int64">
           <Annotation Term="OData.Description" String="The maximum capable speed of this port."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the maximum capable speed of this port."/>
+          <Annotation Term="Measures.Unit" String="Gbit/s"/>
         </Property>
         <Property Name="Links" Type="Port.v1_0_0.Links" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
