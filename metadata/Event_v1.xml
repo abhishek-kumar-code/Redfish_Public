@@ -123,6 +123,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A context can be supplied at subscription time.  This property is the context value supplied by the subscriber."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain a client supplied context for the Event Destination to which this event is being sent."/>
+          <Annotation Term="Redfish.Deprecated" String="Events are triggered independently from subscriptions to those events.  This property has been Deprecated in favor of Event.v1_0_2.Event.Context"/>
         </Property>
         <NavigationProperty Name="OriginOfCondition" Type="Resource.Item" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
