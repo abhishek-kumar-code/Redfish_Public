@@ -9,9 +9,9 @@
     "EndpointProtocol": "SAS",
     "ConnectedEntities": [
         {
-            "DeviceType": "Drive",
-            "DeviceRole": "Target",
-            "DeviceLink": {
+            "EntityType": "Drive",
+            "EntityRole": "Target",
+            "EntityLink": {
                 "@odata.id": "/redfish/v1/Chassis/StorageEnclosure2/Drives/Disk.Bay.0"
             },
             "Oem": {}

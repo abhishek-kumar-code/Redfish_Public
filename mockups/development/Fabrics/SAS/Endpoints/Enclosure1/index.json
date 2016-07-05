@@ -9,25 +9,25 @@
     "EndpointProtocol": "SAS",
     "ConnectedEntities": [
         {
-            "DeviceType": "Expander",
-            "DeviceRole": null,
-            "DeviceLink": {
+            "EntityType": "Expander",
+            "EntityRole": null,
+            "EntityLink": {
                 "@odata.id": "/redfish/v1/Chassis/StorageEnclosure2"
             },
             "Oem": {}
         },
         {
-            "DeviceType": "Drive",
-            "DeviceRole": "Target",
-            "DeviceLink": {
+            "EntityType": "Drive",
+            "EntityRole": "Target",
+            "EntityLink": {
                 "@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.0"
             },
             "Oem": {}
         },
         {
-            "DeviceType": "Drive",
-            "DeviceRole": "Target",
-            "DeviceLink": {
+            "EntityType": "Drive",
+            "EntityRole": "Target",
+            "EntityLink": {
                 "@odata.id": "/redfish/v1/Chassis/StorageEnclosure1/Drives/Disk.Bay.1"
             },
             "Oem": {}

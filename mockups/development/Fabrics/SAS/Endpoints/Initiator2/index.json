@@ -9,9 +9,9 @@
     "EndpointProtocol": "SAS",
     "ConnectedEntities": [
         {
-            "DeviceType": "Initiator",
-            "DeviceRole": "Initiator",
-            "DeviceLink": {
+            "EntityType": "Initiator",
+            "EntityRole": "Initiator",
+            "EntityLink": {
                 "@odata.id": "/redfish/v1/Systems/3/Storage/HA-RAID#/StorageControllers/1"
             },
             "Oem": {}
