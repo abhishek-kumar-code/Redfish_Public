@@ -14,6 +14,9 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>  
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0" />
@@ -55,7 +58,10 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/SessionCollection_v1.xml">
     <edmx:Include Namespace="SessionCollection"/>
   </edmx:Reference>
-
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/SNIA/v1/StorageServiceCollection_v1.xml">
+    <edmx:Include Namespace="StorageServiceCollection"/>
+  </edmx:Reference> 
+  
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ServiceRoot">
@@ -64,6 +70,21 @@
         <Annotation Term="OData.Description" String="This resource represents the root of the Redfish service, located at the \redfish\v1 URI.  As a hypermedia API, all other resources accessible through the Redfish interface on this device are linked directly or indirectly from the Service Root."/>
         <Annotation Term="OData.LongDescription" String="This object represents the root Redfish service.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
       </EntityType>
+            <Annotation Term="Capabilities.InsertRestrictions">
+        <Record>
+          <PropertyValue Property="Insertable" Bool="false"/>
+        </Record>
+      </Annotation>
+      <Annotation Term="Capabilities.UpdateRestrictions">
+        <Record>
+          <PropertyValue Property="Updatable" Bool="false"/>
+        </Record>
+      </Annotation>
+      <Annotation Term="Capabilities.DeleteRestrictions">
+        <Record>
+          <PropertyValue Property="Deletable" Bool="false"/>
+        </Record>
+      </Annotation>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ServiceRoot.v1_0_0">
@@ -177,5 +198,20 @@
       <EntityType Name="ServiceRoot" BaseType="ServiceRoot.v1_0_2.ServiceRoot"/>
     </Schema>
 
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ServiceRoot.v1_1_0">
+      <EntityType Name="ServiceRoot" BaseType="ServiceRoot.v1_0_2.ServiceRoot">
+        <NavigationProperty Name="StorageSystems" Type="ComputerSystemCollection.ComputerSystemCollection" Nullable="false" ContainsTarget="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This is a link to a collection of storage systems."/>
+          <Annotation Term="OData.LongDescription" String="The referenced collection shall contain computer systems that act as storage servers.  The HostingRoles attribute of each such computer system shall have an entry for StorageServer."/>
+        </NavigationProperty>
+        <NavigationProperty Name="StorageServices" Type="StorageServiceCollection.StorageServiceCollection" Nullable="false" ContainsTarget="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A link to a collection of all storage service entities."/>
+          <Annotation Term="OData.LongDescription" String="The referenced collection shall contain references to all StorageService instances."/>
+        </NavigationProperty>   
+      </EntityType>        
+    </Schema>
   </edmx:DataServices>
 </edmx:Edmx>

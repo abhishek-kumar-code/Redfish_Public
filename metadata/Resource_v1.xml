@@ -234,7 +234,6 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_0_2"/>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_1_0">
-      <EntityType Name="ReferenceableMember" BaseType="Resource.ReferenceableMember" Abstract="true"/>
 
       <ComplexType Name="Identifier">
         <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -322,6 +321,8 @@
       </EnumType>
       
     </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_1_1"/>
 
   </edmx:DataServices>
 </edmx:Edmx>
