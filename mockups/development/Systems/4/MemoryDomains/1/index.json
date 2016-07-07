@@ -11,11 +11,13 @@
     "AllowsMemoryRegionCreation": false,
     "AllowsBlockProvisioning": false,
     "InterleavableMemorySets": [
-        [
-            {"@odata.id": "/redfish/v1/Systems/4/Memory/3"},
-            {"@odata.id": "/redfish/v1/Systems/4/Memory/4"},
-            {"@odata.id": "/redfish/v1/Systems/4/Memory/5"}
-        ]
+        {
+            "MemorySet" : [
+                {"@odata.id": "/redfish/v1/Systems/4/Memory/3"},
+                {"@odata.id": "/redfish/v1/Systems/4/Memory/4"},
+                {"@odata.id": "/redfish/v1/Systems/4/Memory/5"}
+            ]
+        }
     ],
     "Oem": {}
 }
