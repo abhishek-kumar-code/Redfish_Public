@@ -51,7 +51,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type MemoryChunkCollection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>	
-        <NavigationProperty Name="InterleavableMemorySets" Type="Collection(MemoryDomain.v1_0_0.InterleavableMemorySetArrayElements)">
+        <NavigationProperty Name="InterleavableMemorySets" Type="Collection(MemoryDomain.v1_0_0.MemorySet)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the interleave sets for the memory chunk."/>
           <Annotation Term="OData.LongDescription" String="These properties shall represent the interleave sets for the memory chunk."/>
@@ -59,11 +59,7 @@
         </NavigationProperty>
       </EntityType>
       
-      <EntityType Name="InterleavableMemorySetArrayElements" BaseType="Collection(MemoryDomain.v1_0_0.InterleavableMemoryObjects)">
-        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-      </EntityType>
-
-      <EntityType Name="InterleavableMemoryObjects" BaseType="Resource.v1_0_0.ReferenceableMember">
+      <EntityType Name="MemorySet" BaseType="Collection(Resource.v1_0_0.ReferenceableMember)">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
       </EntityType>
    
