@@ -13,10 +13,10 @@
     "InterleavableMemorySets": [
         {
     	    "MemorySet": [
-    	        {"@odata.id": "/redfish/v1/Systems/2/Memory/1"},
-    		    {"@odata.id": "/redfish/v1/Systems/2/Memory/2"},
-    		    {"@odata.id": "/redfish/v1/Systems/2/Memory/3"},
-    		    {"@odata.id": "/redfish/v1/Systems/2/Memory/4"}
+                {"@odata.id": "/redfish/v1/Systems/2/Memory/1"},
+                {"@odata.id": "/redfish/v1/Systems/2/Memory/2"},
+                {"@odata.id": "/redfish/v1/Systems/2/Memory/3"},
+                {"@odata.id": "/redfish/v1/Systems/2/Memory/4"}
             ]
         }
     ],
