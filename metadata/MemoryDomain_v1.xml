@@ -56,14 +56,14 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type MemoryChunkCollection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <Property Name="InterleavableMemorySets" Type="Collection(MemoryDomain.v1_0_0.InterleavableMemorySet)">
+        <Property Name="InterleavableMemorySets" Type="Collection(MemoryDomain.v1_0_0.MemorySet)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the interleave sets for the memory chunk."/>
           <Annotation Term="OData.LongDescription" String="These properties shall represent the interleave sets for the memory chunk."/>
         </Property>
       </EntityType>
 
-      <ComplexType Name="InterleavableMemorySet">
+      <ComplexType Name="MemorySet">
         <NavigationProperty Name="MemorySet" Type="Collection(Memory.Memory)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the collection of memory for a particular interleave set."/>
