@@ -15,10 +15,10 @@
     },
     "InterleaveSets": [
         {
-            "@odata.id": "/redfish/v1/Systems/4/Memory/3",
+            "@odata.id": "/redfish/v1/Systems/4/Memory/3"
         },
         {
-            "@odata.id": "/redfish/v1/Systems/4/Memory/4",
+            "@odata.id": "/redfish/v1/Systems/4/Memory/4"
         }
     ],
     "@Redfish.Settings": {
