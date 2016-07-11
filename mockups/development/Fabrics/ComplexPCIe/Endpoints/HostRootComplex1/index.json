@@ -9,14 +9,14 @@
     "EndpointProtocol": "PCIe",
     "ConnectedEntities": [
         {
-            "DeviceType": "RootComplex",
-            "DevicePciId": {
+            "EntityType": "RootComplex",
+            "EntityPciId": {
                 "DeviceId": "0xABCD",
                 "VendorId": "0xABCD",
                 "SubsystemId": "0xABCD",
                 "SubsystemVendorId": "0xABCD"
             },
-            "DeviceLink": {
+            "EntityLink": {
                 "@odata.id": "/redfish/v1/Systems/1"
             },
             "Oem": {}

@@ -9,14 +9,14 @@
     "EndpointProtocol": "PCIe",
     "ConnectedEntities": [
         {
-            "DeviceType": "NetworkController",
-            "DevicePciId": {
+            "EntityType": "NetworkController",
+            "EntityPciId": {
                 "DeviceId": "0xABCD",
                 "VendorId": "0xABCD",
                 "SubsystemId": "0xABCD",
                 "SubsystemVendorId": "0xABCD"
             },
-            "DeviceLink": {
+            "EntityLink": {
                 "@odata.id": "/redfish/v1/Systems/1/EthernetInterfaces/1"
             },
             "Oem": {}

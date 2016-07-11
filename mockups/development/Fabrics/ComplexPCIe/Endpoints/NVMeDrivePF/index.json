@@ -9,15 +9,15 @@
     "EndpointProtocol": "PCIe",
     "ConnectedEntities": [
         {
-            "DeviceType": "Drive",
-            "DeviceRole": "Target",
-            "DevicePciId": {
+            "EntityType": "Drive",
+            "EntityRole": "Target",
+            "EntityPciId": {
                 "DeviceId": "0xABCD",
                 "VendorId": "0xABCD",
                 "SubsystemId": "0xABCD",
                 "SubsystemVendorId": "0xABCD"
             },
-            "DeviceLink": {
+            "EntityLink": {
             },
             "Oem": {}
         }
