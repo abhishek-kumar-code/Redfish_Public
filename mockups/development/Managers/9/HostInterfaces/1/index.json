@@ -52,7 +52,6 @@
         },
         "DHCP": {
             "MethodEnabled": true,
-            "ClientIdString": "ContosoBmc:33859934-0890-4943-8d84-0a8b65a35f3c",
             "Port": 67
         },
         "DNS": {
