@@ -9,9 +9,9 @@
     "EndpointProtocol": "PCIe",
     "ConnectedEntities": [
         {
-            "DeviceType": "Target",
-            "DeviceRole": "Target",
-            "DevicePciId": {
+            "EntityType": "Target",
+            "EntityRole": "Target",
+            "EntityPciId": {
                 "DeviceId": "0xABCD",
                 "VendorId": "0xABCD",
                 "SubsystemId": "0xABCD",
