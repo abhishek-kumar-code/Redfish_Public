@@ -14,6 +14,9 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>  
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
     <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
     <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
@@ -42,7 +45,22 @@
         <Annotation Term="OData.Description" String="Contains the properties needed to describe and configure a single, logical Ethernet Interface."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent NIC resources as part of the Redfish specification."/>
       </EntityType>
-
+      <Annotation Term="Capabilities.InsertRestrictions">
+        <Record>
+          <PropertyValue Property="Insertable" Bool="false"/>
+        </Record>
+      </Annotation>
+      <Annotation Term="Capabilities.UpdateRestrictions">
+        <Record>
+          <PropertyValue Property="Updatable" Bool="true"/>
+          <Annotation Term="OData.Description" String="An Ethernet Interfaces can be updated to change addressing, link information and other writable properties."/>
+        </Record>
+      </Annotation>
+      <Annotation Term="Capabilities.DeleteRestrictions">
+        <Record>
+          <PropertyValue Property="Deletable" Bool="false"/>
+        </Record>
+      </Annotation>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EthernetInterface.v1_0_0">
@@ -169,6 +187,28 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EthernetInterface.v1_0_2">
       <EntityType Name="EthernetInterface" BaseType="EthernetInterface.v1_0_0.EthernetInterface"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EthernetInterface.v1_1_0">
+      <EntityType Name="EthernetInterface" BaseType="EthernetInterface.v1_0_2.EthernetInterface">
+        <Property Name="LinkStatus" Type="EthernetInterface.v1_1_0.LinkStatus">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The link status of this interface (port)"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the link status of this interface (port)."/>
+        </Property>
+      </EntityType>
+
+      <EnumType Name="LinkStatus">
+        <Member Name="LinkUp">
+          <Annotation Term="OData.Description" String="The link is available for communication on this interface."/>
+        </Member>
+        <Member Name="NoLink">
+          <Annotation Term="OData.Description" String="There is no link or connection detected on this interface."/>
+        </Member>
+        <Member Name="LinkDown">
+          <Annotation Term="OData.Description" String="There is no link on this interface, but the interface is connected."/>
+        </Member>
+      </EnumType>
     </Schema>
   
   </edmx:DataServices>
