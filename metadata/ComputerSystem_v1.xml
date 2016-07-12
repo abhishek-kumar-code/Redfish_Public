@@ -63,7 +63,13 @@
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/SNIA/v1/StorageServiceCollection_v1.xml">
     <edmx:Include Namespace="StorageServiceCollection"/>
-  </edmx:Reference>  
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/PCIeDevice_v1.xml">
+    <edmx:Include Namespace="PCIeDevice"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/PCIeFunction_v1.xml">
+    <edmx:Include Namespace="PCIeFunction"/>
+  </edmx:Reference> 
 
   <edmx:DataServices>
 
@@ -531,6 +537,18 @@
           <Annotation Term="OData.Description" String="The hosing roles that this computer system supports."/>
           <Annotation Term="OData.LongDescription" String="The values of this collection shall be the hosting roles supported by this computer system."/>
         </Property>
+        <NavigationProperty Name="PCIeDevices" Type="Collection(PCIeDevice.PCIeDevice)" ContainsTarget="true" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A reference to a collection of PCIe Devices used by this computer system"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of references of type PCIeDevice."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        <NavigationProperty Name="PCIeFunctions" Type="Collection(PCIeFunction.PCIeFunction)" ContainsTarget="true" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A reference to a collection of PCIe Functions used by this computer system"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of references of type PCIeFunction."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty> 
       </EntityType>
 
       <ComplexType Name="HostedServices">
