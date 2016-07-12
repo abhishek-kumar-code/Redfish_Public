@@ -77,9 +77,9 @@ The following referenced documents are indispensable for the application of this
 [http://tools.ietf.org/html/draft-zyp-json-schema-04.txt](http://tools.ietf.org/html/draft-zyp-json-schema-04.txt "http://tools.ietf.org/html/draft-zyp-json-schema-04.txt")
 * <a id="JSONSchema-Validation">JSON Schema, Interactive and Non-Interactive Validation, Draft 4</a>
 [http://tools.ietf.org/html/draft-fge-json-schema-validation-00.txt](http://tools.ietf.org/html/draft-fge-json-schema-validation-00.txt "http://tools.ietf.org/html/draft-fge-json-schema-validation-00.txt")
-* <a id="OData-Protocol">OData Version 4.0 Part 1: Protocol</a>. 24 February 2014. [http://docs.oasis-open.org/odata/odata/v4.0/os/odata-v4.0-part1-protocol.html](http://docs.oasis-open.org/odata/odata/v4.0/os/odata-v4.0-part1-protocol.html "http://docs.oasis-open.org/odata/odata/v4.0/os/odata-v4.0-part1-protocol.html")
-* <a id="OData-URLConventions">OData Version 4.0 Part 2: URL Conventions</a>. 24 February 2014. [http://docs.oasis-open.org/odata/odata/v4.0/os/odata-v4.0-part2-url-conventions.html](http://docs.oasis-open.org/odata/odata/v4.0/os/odata-v4.0-part2-url-conventions.html "http://docs.oasis-open.org/odata/odata/v4.0/os/odata-v4.0-part2-url-conventions.html")
-* <a id="OData-CSDL">OData Version 4.0 Part 3: Common Schema Definition Language (CSDL)</a>. 24 February 2014. [http://docs.oasis-open.org/odata/odata/v4.0/os/odata-v4.0-part3-csdl.html](http://docs.oasis-open.org/odata/odata/v4.0/os/odata-v4.0-part3-csdl.html "http://docs.oasis-open.org/odata/odata/v4.0/os/odata-v4.0-part3-csdl.html")
+* <a id="OData-Protocol">OData Version 4.0 Part 1: Protocol</a>. 24 February 2014. [http://docs.oasis-open.org/odata/odata/v4.0/os/part1-protocol/odata-v4.0-os-part1-protocol.html](http://docs.oasis-open.org/odata/odata/v4.0/os/part1-protocol/odata-v4.0-os-part1-protocol.html "http://docs.oasis-open.org/odata/odata/v4.0/os/part1-protocol/odata-v4.0-os-part1-protocol.html")
+* <a id="OData-URLConventions">OData Version 4.0 Part 2: URL Conventions</a>. 24 February 2014. [http://docs.oasis-open.org/odata/odata/v4.0/os/part2-url-conventions/odata-v4.0-os-part2-url-conventions.html](http://docs.oasis-open.org/odata/odata/v4.0/os/part2-url-conventions/odata-v4.0-os-part2-url-conventions.html "http://docs.oasis-open.org/odata/odata/v4.0/os/part2-url-conventions/odata-v4.0-os-part2-url-conventions.html")
+* <a id="OData-CSDL">OData Version 4.0 Part 3: Common Schema Definition Language (CSDL)</a>. 24 February 2014. [http://docs.oasis-open.org/odata/odata/v4.0/os/part3-csdl/odata-v4.0-os-part3-csdl.html](http://docs.oasis-open.org/odata/odata/v4.0/os/part3-csdl/odata-v4.0-os-part3-csdl.html "http://docs.oasis-open.org/odata/odata/v4.0/os/part3-csdl/odata-v4.0-os-part3-csdl.html")
 * <a id="OData-Core">OData Version 4.0: Core Vocabulary</a>. 24 February 2014. [http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Core.V1.xml](http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Core.V1.xml "http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Core.V1.xml")
 * <a id="OData-JSON">OData Version 4.0 JSON Format</a>. 24 February 2014. [http://docs.oasis-open.org/odata/odata-json-format/v4.0/os/odata-json-format-v4.0-os.html](http://docs.oasis-open.org/odata/odata-json-format/v4.0/os/odata-json-format-v4.0-os.html "http://docs.oasis-open.org/odata/odata-json-format/v4.0/os/odata-json-format-v4.0-os.html")
 * <a id="OData-UnitsOfMeasure">OData Version 4.0: Units of Measure Vocabulary</a>. 24 February 2014. [http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml](http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml "http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml")
@@ -305,7 +305,7 @@ HTTP is ideally suited to a RESTful interface. This clause describes how HTTP is
 A URI is used to identify a resource, including the base service and all Redfish resources.
 
 * Each unique instance of a resource shall be identified by a URI; thus a URI cannot reference multiple resources though it may reference a single collection resource.
-* A URI shall be treated by the client as opaque, and thus should not be attempted to be understood or deconstructed by the client outside of applying standard reference resolution rules as defined in clause 5, Reference Resolution, of [RFC3986](#rfc3986).
+* A URI shall be treated by the client as opaque, and thus should not be attempted to be understood or deconstructed by the client outside of applying standard reference resolution rules as defined in clause 5, Reference Resolution, of [RFC3986](#RFC3986).
 
 To begin operations, a client must know a URI for a resource.
 
@@ -321,9 +321,9 @@ For example, in the following URL:
 
     Example: https://mgmt.vendor.com/redfish/v1/Systems/1
 
-* The first part is the scheme and authority portion (https://mgmt.vendor.com).
-* The second part is the root service and version (/redfish/v1/).
-* The third part is the unique resource path (Systems/1).
+* The first part is the scheme and authority portion (`https://mgmt.vendor.com`).
+* The second part is the root service and version (`/redfish/v1/`).
+* The third part is the unique resource path (`Systems/1`).
 
 The scheme and authority part of the URI shall not be considered part of the unique _identifier_ of the resource. This is due to redirection capabilities and local operations which may result in the variability of the connection portion.  The remainder of the URI (the service and resource paths) is what _uniquely identifies_ the resource, and this is what is returned in all Redfish payloads.
 
@@ -333,7 +333,7 @@ For example, a POST may return the following URI in the Location header of the r
 
     Example: /redfish/v1/Systems/2
 
-Assuming the client is connecting through an appliance named "mgmt.vendor.com", the full URI needed to access this new resource is https://mgmt.vendor.com/redfish/v1/Systems/2.
+Assuming the client is connecting through an appliance named "mgmt.vendor.com", the full URI needed to access this new resource is `https://mgmt.vendor.com/redfish/v1/Systems/2`.
 
 URIs, as described in [RFC3986](#RFC3986), may also contain a query (?query) and a frag (#frag) components.  Queries are addressed in the clause [Query Parameters](#query-parameters).  Fragments (frag) shall be ignored by the server when used as the URI for submitting an operation.
 
@@ -380,7 +380,7 @@ Clients may request compression by specifying an [Accept-Encoding header](#reque
 In order to reduce the cases of unnecessary RESTful accesses to resources, the Redfish Service should support associating a separate ETag with each resource.
 
 * Implementations should support returning [ETag properties](#etag-property) for each resource.
-* Implementations should support returning ETag headers for each response that represents a single resource.  
+* Implementations should support returning ETag headers for each response that represents a single resource.
 * Implementations shall support returning ETag headers for GET requests of ManagerAccount resources.
 
 The ETag is generated and provided as part of the resource payload because the service is in the best position to know if the new version of the object is different enough to be considered substantial. There are two types of ETags: weak and strong.
@@ -469,7 +469,7 @@ HTTP defines headers that can be used in request messages. The following table d
 | Content-Length   | No          | [RFC 7231](#RFC7231) | Describes the size of the message body. An optional means of indicating size of the body uses Transfer-Encoding: chunked, which does not use the Content-Length header. If a service does not support Transfer-Encoding and needs Content-Length instead, the service will respond with status code [411](#status-411). |
 | OData-MaxVersion | No          | 4.0                                   | Indicates the maximum version of OData that an odata-aware client understands                                                                                                                                                                                                                                                   |
 | OData-Version    | Yes         | 4.0                                   | Services shall reject requests which specify an unsupported OData version.  If a service encounters a version that it does not support, the service should reject the request with status code [412] (#status-412).  If client does not specify an Odata-Version header, the client is outside the boundaries of this specification.                                                                                                                         |
-| Authorization    | Conditional | [RFC 7235](#RFC7235), Section 4.2  | Required for [Basic Authorization](#basic-authentication)                                                                                                                                                                                                                                                                       |
+| Authorization    | Conditional | [RFC 7235](#RFC7235), Section 4.2  | Required for [Basic Authentication](#basic-authentication)                                                                                                                                                                                                                                                                       |
 | User-Agent       | Yes         | [RFC 7231](#RFC7231) | Required for tracing product tokens and their version.  Multiple product tokens may be listed.                                                                                                                                                                                                                                  |
 | Host             | Yes         | [RFC 7230](#RFC7230) | Required to allow support of multiple origin hosts at a single IP address.                                                                                                                                                                                                                                                      |
 | Origin           | Yes         | [W3C CORS](#W3C-CORS), Section 5.7     | Used to allow web applications to consume Redfish Service while preventing CSRF attacks.                                                                                                                                                                                                                                        |
@@ -523,8 +523,8 @@ When the resource addressed is a collection, the client can use the following pa
 
 | Attribute | Description                                                                                                                                                                | Example                   |
 | ---       | ---                                                                                                                                                                        | ---                       |
-| $skip     | Integer indicating the number of resources in the collection to skip before retrieving the first resource.                                                                 | http://collection?$skip=5 |
-| $top      | Integer indicating the number of collection members to include in the response. The minimum value for this parameter is 1.  The default behavior is to return all members. | http://collection?$top=30 |
+| $skip     | Integer indicating the number of resources in the collection to skip before retrieving the first resource.                                                                 | `http://collection?$skip=5` |
+| $top      | Integer indicating the number of collection members to include in the response. The minimum value for this parameter is 1.  The default behavior is to return all members. | `http://collection?$top=30` |
 
 * Services should support the $top and $skip query parameters.
 * Implementation shall return the 501, Not Implemented, status code for any query parameters starting with "$" that are not supported, and should return an [extended error](#error-responses) indicating the requested query parameter(s) not supported for this resource.
@@ -697,7 +697,7 @@ HTTP defines headers that can be used in response messages.  The following table
 | Max-Forwards                       | No          | [RFC 7231](#RFC7231) | Limits gateway and proxy hops. Prevents messages from remaining in the network indefinitely.                                                                                                                                                                                                                                    |
 | Access-Control-Allow-Origin        | Yes         | [W3C CORS](#W3C-CORS), Section 5.1     | Prevents or allows requests based on originating domain. Used to prevent CSRF attacks.                                                                                                                                                                                                                                          |
 | Allow                              | Yes         | POST, PUT, PATCH, DELETE, GET, HEAD   | Shall be returned with a 405 (Method Not Allowed) response to indicate the valid methods for the specified Request URI.  Should be returned with any GET or HEAD operation to indicate the other allowable operations for this resource.                                                                                                     |
-| WWW-Authenticate                   | Yes         | [RFC 7235](#RFC7235), Section 4.1     | Required for Basic and other optional authentication mechanisms. See the [Security](#Security) clause for details.                                                                                                                                                                                                             |
+| WWW-Authenticate                   | Yes         | [RFC 7235](#RFC7235), Section 4.1     | Required for Basic and other optional authentication mechanisms. See the [Security](#security) clause for details.                                                                                                                                                                                                             |
 | X-Auth-Token | Yes      | Opaque encoded octet strings | Used for authentication of user sessions. The token value shall be indistinguishable from random. |
 | Retry-After | No | [RFC 7231](#RFC7231), Section 7.1.3 | Used to inform a client how long to wait before requesting the Task information again. |
 
@@ -766,7 +766,7 @@ The service metadata describes top-level resources and resource types of the ser
 ~~~
 
 ###### Referencing other schemas
-The service metadata shall include the namespaces for each of the Redfish resource types, along with the "RedfishExtensions.v1_0_0" namespace. These references may use the standard Uri for the hosted Redfish Schema definitions (i.e., on http://redfish.dmtf.org/schema) or a Url to a local version of the Redfish Schema that shall be identical to the hosted version.
+The service metadata shall include the namespaces for each of the Redfish resource types, along with the "RedfishExtensions.v1_0_0" namespace. These references may use the standard Uri for the hosted Redfish Schema definitions (i.e., on http://redfish.dmtf.org/schemas) or a Url to a local version of the Redfish Schema that shall be identical to the hosted version.
 
 ~~~xml
 <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/AccountService_v1.xml">
@@ -880,7 +880,7 @@ Responses that represent a single resource shall contain a context property name
 
 The context URL for a resource is of one of the following two forms:
 
- *MetadataUrl*#*ResourceType*[(*Selectlist*)] 
+ *MetadataUrl*#*ResourceType*[(*Selectlist*)]
  *MetadataUrl*#*ResourcePath*[(*Selectlist*)]/$entity
 
 where
@@ -907,7 +907,7 @@ For example, the following context URL specifies that the result contains a sing
 
 Resources in a response shall include a unique identifier property named "@odata.id". The value of the identifier property shall be the [unique identifier](#uris) for the resource.
 
-Resources identifiers shall be represented in JSON payloads as strings that conform to the rules for URI paths as defined in Section 3.3, Path of [RFC3986](#rfc3986). Resources within the same authority as the request URI shall be represented according to the rules of path-absolute defined by that specification. That is, they shall always start with a single forward slash ("/"). Resources within a different authority as the request URI shall start with a double-slash ("//") followed by the authority and path to the resource.
+Resources identifiers shall be represented in JSON payloads as strings that conform to the rules for URI paths as defined in Section 3.3, Path of [RFC3986](#RFC3986). Resources within the same authority as the request URI shall be represented according to the rules of path-absolute defined by that specification. That is, they shall always start with a single forward slash ("/"). Resources within a different authority as the request URI shall start with a double-slash ("//") followed by the authority and path to the resource.
 
 The resource identifier is the canonical URL for the resource and can be used to retrieve or edit the resource, as appropriate.
 
@@ -1619,7 +1619,7 @@ The `RequiredOnCreate` annotation term is defined in http://redfish.dmtf.org/sch
 
 ##### Units of measure
 
-In addition to following [naming conventions](#common-naming-conventions), properties representing units of measure shall be annotated with the Units annotation term in order to specify the units of measurement for the property.  
+In addition to following [naming conventions](#common-naming-conventions), properties representing units of measure shall be annotated with the Units annotation term in order to specify the units of measurement for the property.
 
 The value of the annotation should be a string which contains the case-sensitive "(c/s)" symbol of the unit of measure as listed in the [Unified Code for Units of Measure (UCUM)](#UCUM), unless the symbolic representation does not reflect common usage (e.g., "RPM" is commonly used to report fan speeds in revolutions-per-minute, but has no simple UCUM representation).  For units with prefixes (e.g., Mebibyte (1024^2 bytes), which has the UCUM prefix "Mi" and symbol "By"), the case-sensitive "(c/s)" symbol for the prefix as listed in UCUM should be prepended to the unit symbol.  For values which also include rate information (e.g., megabits per second), the rate unit's symbol should be appended and use a "/" slash character as a separator (e.g., "Mbit/s").
 
@@ -1685,7 +1685,7 @@ The `AutoExpandReferences` annotation term is defined in https://tools.oasis-ope
 
 ##### Expanded resources
 
-This term can be applied to a [reference property](*reference-properties) in order to specify that the default behavior for the service is to expand the related [resource](#structured-properties) or [collection of resources](#collection-properties) in responses.
+This term can be applied to a [reference property](#reference-properties) in order to specify that the default behavior for the service is to expand the related [resource](#structured-properties) or [collection of resources](#collection-properties) in responses.
 
 ~~~xml
 		<Annotation Term="OData.AutoExpand"/>
@@ -2033,7 +2033,7 @@ The client may also cancel the operation by performing a DELETE on the Task reso
 
 Once the operation has completed, the Task Monitor shall return a status code of OK (200) and include the headers and response body of the initial operation, as if it had completed synchronously. If the initial operation resulted in an error, the body of the response shall contain an [Error Response](#error-responses).
 
-The service may return a status code of 410 (Gone) or 404 (Not Found) if the operation has completed and the service has already deleted the task. This can occur if the client waits too long to read the Task Monitor. 
+The service may return a status code of 410 (Gone) or 404 (Not Found) if the operation has completed and the service has already deleted the task. This can occur if the client waits too long to read the Task Monitor.
 
 The client can continue to get information about the status by directly querying the Task resource using the [resource identifier](#resource-identifier-property) returned in the body of the 202 (Accepted) response.
 
@@ -2315,7 +2315,7 @@ The Authorization subsystem uses Roles and Privileges to control which users hav
 | ---     | ---      | ---             |
 | 1.0.3   | 2016-6-17| Errata release.  Corrected missing Table of Contents and Clause numbering.  Corrected URL references to external specifications.  Added missing Normative References.  Corrected typographical error in ETag example. |
 |         |          | Clarified examples for ExtendedInfo to show arrays of Messages. |
-|         |          | Clarified that a POST to Session Service to create a new Session does not require authorization headers. | 
+|         |          | Clarified that a POST to Session Service to create a new Session does not require authorization headers. |
 | 1.0.2   | 2016-3-31| Errata release.  Various typographical errors. |
 |         |          | Corrected normative language for M-SEARCH queries and responses. |
 |         |          | Corrected Cache-Control and USN format in M-SEARCH responses. |
@@ -2325,7 +2325,7 @@ The Authorization subsystem uses Roles and Privileges to control which users hav
 |         |          | Modified the naming requirements for Oem Property Naming to avoid future use of colon ':' and period '.' in property names, which can produce invalid or problematic variable names when used in some programming languages or environments.  Both separators have been replaced with underscore '_', with colon and period usage now deprecated (but valid). |
 |         |          | Removed duplicative or out-of-scope sub-clauses from the Security clause, which made unintended requirements on Redfish service implementations. |
 |         |          | Added missing requirement that property names in Resource Responses must match the casing (capitalization) as specified in schema. |
-|         |          | Updated normative references to current HTTP RFCs and added clause references throughout the document where applicable. | 
+|         |          | Updated normative references to current HTTP RFCs and added clause references throughout the document where applicable. |
 |         |          | Clarified ETag header requirements. |
 |         |          | Clarified that no authentication is required for accessing the Service Root resource. |
 |         |          | Clarified description of Retrieving Collections. |
@@ -2339,7 +2339,7 @@ The Authorization subsystem uses Roles and Privileges to control which users hav
 |         |          | Corrected outdated reference to Core OData specification in Annotation Term examples. |
 |         |          | Added missing 'Members' property to the Common Redfish Resource Properties clause. |
 |         |          | Clarified terminology and usage of the Task Monitor and related operations in the Asynchronous Operations clause. |
-|         |          | Clarified that implementation of the SSDP protocol is optional. | 
+|         |          | Clarified that implementation of the SSDP protocol is optional. |
 |         |          | Corrected typographical error in the SSDP USN field's string definition (now '::dmtf-org'). |
 |         |          | Added missing OPTIONS method to the allowed HTTP Methods list. |
 |         |          | Fixed nullablity in example.  |
@@ -2354,4 +2354,4 @@ The Authorization subsystem uses Roles and Privileges to control which users hav
 | 1.0.0   | 2015-8-4 | Initial release |
 
 
- 
+
