@@ -1,0 +1,27 @@
+{
+    "@odata.type": "#FirmwareInventory.v1_0_0.FirmwareInventory",
+    "Id": "BIOS",
+    "Name": "Contoso Server BIOS",
+    "Status": {
+        "State": "Updating",
+        "Health": "OK"
+    },
+	"DeviceContext": "Contoso 3500RX Server BIOS",
+    "DeviceClass": "7777-8888",
+    "DeviceInstance": "112312-2111-2333-0000-489239905423",
+    "Updateable": true,
+    "Version": "12042015",
+    "VersionSequence": "<mmddyyyy>",
+    "RelatedItem": [
+        { 
+            "@odata.id": "/redfish/v1/Systems/437XR1138R2" 
+        }
+    ],
+    "Actions": {
+        "Oem": {}
+    },
+    "Oem": {},
+    "@odata.context": "/redfish/v1/$metadata#UpdateService/FirmwareInventory/Members/$entity",
+    "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/BIOS",
+    "@Redfish.Copyright": "Copyright 2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
+}

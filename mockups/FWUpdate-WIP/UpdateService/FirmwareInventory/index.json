@@ -1,20 +1,20 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#FirmwareInventoryCollection.FirmwareInventoryCollection",
-    "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory",
     "@odata.type": "#FirmwareInventoryCollection.v1_0_0.FirmwareInventoryCollection",
     "Name": "Firmware Inventory Collection",
     "Members@odata.count": 3,
     "Members": [
         { 
-            "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/Device-current" 
+            "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/BMC" 
         },
         { 
-            "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/BMC-1.45.455b66-rev4" 
+            "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/BIOS" 
         },
         { 
-            "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/BIOS-120498" 
+            "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/BackupBIOS" 
         }
     ],
-    "Oem": {}
+    "Oem": {},
+    "@odata.context": "/redfish/v1/$metadata#FirmwareInventoryCollection.FirmwareInventoryCollection",
+    "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory",
+    "@Redfish.Copyright": "Copyright 2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
 }

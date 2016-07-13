@@ -1,7 +1,4 @@
 {
-    "@Redfish.Copyright": "Copyright 2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#UpdateService/$entity",
-    "@odata.id": "/redfish/v1/UpdateService",
     "@odata.type": "#UpdateService.v1_0_0.UpdateService",
     "Id": "UpdateService",
     "Name": "Update service",
@@ -15,7 +12,14 @@
         "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory"
     },
     "Actions": {
+        "#UpdateService.Update": {
+            "target": "/redfish/v1/UpdateService/Actions/SimpleUpdate",
+			"@Redfish.ActionInfo": "/redfish/v1/UpdateService/SimpleUpdateActionInfo"
+        },
         "Oem": {}
     },
-    "Oem": {}
+    "Oem": {},
+    "@odata.context": "/redfish/v1/$metadata#UpdateService/$entity",
+    "@odata.id": "/redfish/v1/UpdateService",
+    "@Redfish.Copyright": "Copyright 2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
 }
