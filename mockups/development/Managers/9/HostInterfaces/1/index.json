@@ -45,17 +45,17 @@
     },
     "ManagementIPDiscovery": {
         "SSDP": {
-            "MethodEnabled": true,
+            "Enabled": true,
             "IPv4MulticastAddress": "239.255.255.250",
             "IPv6MulticastAddress": "ff05::c",
             "Port": 1900
         },
         "DHCP": {
-            "MethodEnabled": true,
+            "Enabled": true,
             "Port": 67
         },
         "DNS": {
-            "MethodEnabled": true,
+            "Enabled": true,
             "HostName": "bmc-host-interface",
             "FQDN": "bmc-host-interface.dmtf.org"
         },
