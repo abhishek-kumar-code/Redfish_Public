@@ -2,7 +2,7 @@
     "@Redfish.Copyright":"Copyright (c) 2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",    
     "@odata.context": "/redfish/v1/$metadata#MemoryMetrics.MemoryMetrics",
     "@odata.id": "/redfish/v1/Systems/4/Memory/2/Metrics",
-    "@odata.type": "#MemoryMetrics.1.0.0.MemoryMetrics",
+    "@odata.type": "#MemoryMetrics.1.1.0.MemoryMetrics",
     "Name": "Memory Metrics",
     "Id": "Metrics",
     "BlockSizeB": 4096,
