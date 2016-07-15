@@ -16,6 +16,7 @@
     },
     "HealthData": {
         "RemainingSpareBlockPercentage": 50,
+        "PredictedMediaLifeLeftPercent": 75,
         "IsLastShutdownSuccess": true,
         "DataLossDetected": false,
         "PerformanceDegraded": false,
