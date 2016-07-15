@@ -14,9 +14,9 @@
         "Health": "OK"
     },
     "InterleaveSets": [
-        {
+        {"DIMM" :{
             "@odata.id": "/redfish/v1/Systems/4/Memory/5"
-        }
+        }}
     ],
     "Oem": {}
 }
