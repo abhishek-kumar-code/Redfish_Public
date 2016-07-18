@@ -17,12 +17,10 @@
         {"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/4/Ports/Down4"},
         {"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/4/Ports/Down5"},
         {"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/4/Ports/Down6"},
-        {"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/4/Ports/Down7"},
-        {"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/4/Ports/Down8"}, 
         {"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/4/Ports/Management"},
         {"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/4/Ports/InterswitchLink1"},
         {"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/4/Ports/InterswitchLink2"},
-		{"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/4/Ports/InterswitchLink3"}
+	{"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/4/Ports/InterswitchLink3"}
     ]
 }
 

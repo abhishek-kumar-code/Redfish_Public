@@ -1,13 +1,13 @@
 {
     "@Redfish.Copyright": "Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.id": "/redfish/v1/Chassis/PCIeSwitchRackmount/Thermal",
+    "@odata.id": "/redfish/v1/Chassis/PCIeSwitchRackMount/Thermal",
     "@odata.context": "/redfish/v1/$metadata#Thermal.Thermal",
     "@odata.type": "#Thermal.v1_1_0.Thermal",
     "Id": "Thermals",
     "Name": "Thermals",
     "Temperatures": [
         {
-            "@odata.id": "/redfish/v1/Chassis/PCIeSwitchRackmount/Thermal#/Temperatures/0",
+            "@odata.id": "/redfish/v1/Chassis/PCIeSwitchRackMount/Thermal#/Temperatures/0",
             "MemberId": "0",
             "Name": "EMM 0 Thermal Sensor",
             "ReadingCelcius": "27",
@@ -21,7 +21,7 @@
             }
         },
         {
-            "@odata.id": "/redfish/v1/Chassis/PCIeSwitchRackmount/Thermal#/Temperatures/1",
+            "@odata.id": "/redfish/v1/Chassis/PCIeSwitchRackMount/Thermal#/Temperatures/1",
             "MemberId": "1",
             "Name": "EMM 1 Thermal Sensor",
             "ReadingCelcius": "31",
@@ -35,7 +35,7 @@
             }
         },
         {
-            "@odata.id": "/redfish/v1/Chassis/PCIeSwitchRackmount/Thermal#/Temperatures/2",
+            "@odata.id": "/redfish/v1/Chassis/PCIeSwitchRackMount/Thermal#/Temperatures/2",
             "MemberId": "2",
             "Name": "Backplane Thermal Sensor 1",
             "ReadingCelcius": "25",
@@ -49,7 +49,7 @@
             }
         },
         {
-            "@odata.id": "/redfish/v1/Chassis/PCIeSwitchRackmount/Thermal#/Temperatures/2",
+            "@odata.id": "/redfish/v1/Chassis/PCIeSwitchRackMount/Thermal#/Temperatures/2",
             "MemberId": "3",
             "Name": "Backplane Thermal Sensor 2",
             "ReadingCelcius": "24",
@@ -65,7 +65,7 @@
     ],
     "Fans": [
         {
-            "@odata.id": "/redfish/v1/Chassis/PCIeSwitchRackmount/Thermal#/Fans/0",
+            "@odata.id": "/redfish/v1/Chassis/PCIeSwitchRackMount/Thermal#/Fans/0",
             "MemberId": "0",
             "FanName": "Fan 0",
             "Reading": "4970",
@@ -76,7 +76,7 @@
             "ReadingUnits": "RPMS"
         },
         {
-            "@odata.id": "/redfish/v1/Chassis/PCIeSwitchRackmount/Thermal#/Fans/1",
+            "@odata.id": "/redfish/v1/Chassis/PCIeSwitchRackMount/Thermal#/Fans/1",
             "MemberId": "1",
             "FanName": "Fan 1",
             "Reading": "5040",

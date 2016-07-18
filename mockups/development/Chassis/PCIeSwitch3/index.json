@@ -1,7 +1,7 @@
 ﻿{
     "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#Chassis/Members/$entity",
-    "@odata.id": "/redfish/v1/Chassis/PCIeSwitchChassis",
+    "@odata.id": "/redfish/v1/Chassis/PCIeSwitch3",
     "@odata.type": "#Chassis.v1_0_0.Chassis",
     "Id": "PCIeSwitchChassis",
     "Name": "PCIe Switch 3",
@@ -25,16 +25,6 @@
         "@odata.id":"/redfish/v1/Chassis/PCIeSwitch3/Power"
     }, 
     "Links": {
-        "PCIeSwitches": [
-            {
-                "@odata.id": "/redfish/v1/PCIeSwitches/3"
-            }
-        ],
-        "PCIeDevices": [
-            {
-                "@odata.id": "/redfish/v1/Devices/MDF1"
-            }
-        ],
         "ContainedBy": {
             "@odata.id": "/redfish/v1/Chassis/PCIeSwitchRackMount"
         },

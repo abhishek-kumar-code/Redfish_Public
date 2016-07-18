@@ -19,22 +19,6 @@
         "Health": "OK"
     },
     "Links": {
-        "PCIeSwitches": [
-            {
-                "@odata.id": "/redfish/v1/PCIeSwitches/2"
-            },
-            {
-                "@odata.id": "/redfish/v1/PCIeSwitches/3"
-            }			
-        ],
-        "PCIeDevices": [
-            {
-                "@odata.id": "/redfish/v1/Devices/SFD1"
-            },
-            {
-                "@odata.id": "/redfish/v1/Devices/MFD1"
-            }
-        ],
         "ContainedBy": {
             "@odata.id": "/redfish/v1/Chassis/PCIeSwitchRackMount"
         },
