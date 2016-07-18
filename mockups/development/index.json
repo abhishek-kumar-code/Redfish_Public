@@ -19,6 +19,9 @@
     "Tasks": {
         "@odata.id": "/redfish/v1/TaskService"
     },
+    "Fabrics": {
+        "@odata.id": "/redfish/v1/Fabrics"
+    },
     "SessionService": {
         "@odata.id": "/redfish/v1/SessionService"
     },
