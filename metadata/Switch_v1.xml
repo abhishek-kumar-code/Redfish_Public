@@ -149,6 +149,7 @@
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
       </EntityType>
+
       <ComplexType Name="Links" BaseType="Resource.Links">
         <NavigationProperty Name="Chassis" Type="Chassis.Chasssis" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -162,6 +163,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resources that this switch is associated with and shall reference a resource of type Manager."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
+      </ComplexType>
 
       <ComplexType Name="Actions">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>

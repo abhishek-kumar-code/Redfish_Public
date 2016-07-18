@@ -28,7 +28,7 @@
             },
             "RelatedItem": [
                 {
-                    "@odata.id": "/redfish/v1/PCIeSwitches/3"
+                    "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/3"
                 },
                 {
                     "@odata.id": "/redfish/v1/Chassis/PCIeSwitch3"
@@ -63,7 +63,7 @@
             "PhysicalContext": "VoltageRegulator",
             "RelatedItem": [
                 {
-                    "@odata.id": "/redfish/v1/PCIeSwitches/3"
+                    "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/3"
                 },
                 {
                     "@odata.id": "/redfish/v1/Chassis/PCIeSwitch3"

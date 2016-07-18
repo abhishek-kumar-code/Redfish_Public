@@ -16,7 +16,7 @@
                 "SubsystemId": "0xABCD",
                 "SubsystemVendorId": "0xABCD",
 				"HostReservationMemoryBytes": 67108864,
-				"FunctionNumber": 0,
+				"FunctionNumber": 0
             },
             "DeviceLink": {
                 "@odata.id": "/redfish/v1/Managers/PCIeSwitchManager"

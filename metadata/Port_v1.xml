@@ -78,6 +78,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The current speed of this port."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the speed of this port currently negotiated and running."/>
+          <Annotation Term="Measures.Unit" String="Gbit/s"/>
         </Property>
         <Property Name="MaxSpeedGbps" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -89,11 +90,6 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The number of lanes, phys, or other physical transport links that this port contains."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the number of physical transport links that this port contains."/>
-        </Property>
-        <Property Name="MaxSpeedGbps" Type="Edm.Int64">
-          <Annotation Term="OData.Description" String="The maximum capable speed of this port."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the maximum capable speed of this port."/>
-          <Annotation Term="Measures.Unit" String="Gbit/s"/>
         </Property>
         <Property Name="Links" Type="Port.v1_0_0.Links" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
