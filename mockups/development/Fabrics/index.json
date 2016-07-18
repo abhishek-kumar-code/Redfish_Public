@@ -4,12 +4,18 @@
     "@odata.id": "/redfish/v1/Fabrics",
     "@odata.type": "#FabricCollection.FabricCollection",
     "Name": "Fabric Collection",
-    "Members@odata.count": 2,
+    "Members@odata.count": 4,
     "Members": [
+        {
+            "@odata.id": "/redfish/v1/Fabrics/ComplexPCIe"
+        },
         {
             "@odata.id": "/redfish/v1/Fabrics/PCIe"
         },
-        {
+		{
+            "@odata.id": "/redfish/v1/Fabrics/PCIeMesh"
+        },
+		{
             "@odata.id": "/redfish/v1/Fabrics/SAS"
         }
     ]

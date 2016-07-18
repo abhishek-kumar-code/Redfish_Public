@@ -1,9 +1,9 @@
 {
     "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
 	"@odata.context": "/redfish/v1/$metadata#Endpoint.Endpoint",
-	"@odata.id": "/redfish/v1/Fabrics/HA_SAS/Endpoints/Initiator2PortB",
+	"@odata.id": "/redfish/v1/Fabrics/HA_SAS/Endpoints/Initiator2PortA",
 	"@odata.type": "#Endpoint.v1_0_0.Endpoint",
-	"Id": "Initiator2PortB",
+	"Id": "Initiator2PortA",
 	"Name": "SAS RAID Controller 2",
 	"Description": "SAS RAID Controller 2",
     "EndpointProtocol": "SAS",

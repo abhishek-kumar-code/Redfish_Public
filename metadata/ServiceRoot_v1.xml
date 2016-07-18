@@ -60,7 +60,10 @@
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/SNIA/v1/StorageServiceCollection_v1.xml">
     <edmx:Include Namespace="StorageServiceCollection"/>
-  </edmx:Reference> 
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/FabricCollection_v1.xml">
+    <edmx:Include Namespace="FabricCollection"/>
+  </edmx:Reference>
   
   <edmx:DataServices>
 
@@ -210,7 +213,12 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A link to a collection of all storage service entities."/>
           <Annotation Term="OData.LongDescription" String="The referenced collection shall contain references to all StorageService instances."/>
-        </NavigationProperty>   
+        </NavigationProperty>
+        <NavigationProperty Name="Fabrics" Type="FabricCollection.FabricCollection" Nullable="false" ContainsTarget="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A link to a collection of all fabric entities."/>
+          <Annotation Term="OData.LongDescription" String="The referenced collection shall contain references to all Fabric instances."/>
+        </NavigationProperty>
       </EntityType>        
     </Schema>
   </edmx:DataServices>

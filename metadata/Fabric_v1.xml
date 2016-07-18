@@ -54,6 +54,10 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the type of fabric being represented by this simple fabric."/>
         </Property>
         <Property Name="Status" Type="Resource.Status" Nullable="false"/>
+	<Property Name="MaxZones" Type="Edm.Int64">
+          <Annotation Term="OData.Description" String="The value of this property shall contain the maximum number of zones the switch can currently configure."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the maximum number of zones the switch can currently configure. This value can change based on changes in the logical or physical configuration of the system."/>
+	</Property>	
         <NavigationProperty Name="Zones" Type="ZoneCollection.ZoneCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A collection of references to the zones contained in this fabric."/>

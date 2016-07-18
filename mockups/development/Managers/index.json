@@ -29,6 +29,9 @@
         },
         {
             "@odata.id": "/redfish/v1/Managers/8"
-        }
+        },
+        {
+            "@odata.id": "/redfish/v1/Managers/PCIeSwitchManager"
+        }	
     ]
 }

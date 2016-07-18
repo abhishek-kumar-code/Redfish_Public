@@ -39,5 +39,10 @@
     "VLANs": {
         "@odata.id": "/redfish/v1/Systems/3/EthernetInterfaces/1/VLANs"
     },
+    "Links": {
+        "Endpoints": [
+            {"@odata.id": "/redfish/v1/Fabrics/PCIe/Endpoints/NICPort1"}
+        ]
+    },
     "Oem": {}
 }
