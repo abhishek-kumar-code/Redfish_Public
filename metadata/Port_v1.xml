@@ -153,6 +153,9 @@
         <Member Name="BidirectionalPort">
           <Annotation Term="OData.Description" String="This port connects to any type of device"/>
         </Member>
+        <Member Name="UnconfiguredPort">
+          <Annotation Term="OData.Description" String="This port has not yet been configured."/>
+        </Member>
       </EnumType>
     </Schema>
 
