@@ -1,0 +1,38 @@
+﻿{
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#Chassis/Members/$entity",
+    "@odata.id": "/redfish/v1/Chassis/PCIeSwitch2",
+    "@odata.type": "#Chassis.v1_0_0.Chassis",
+    "Id": "PCIeSwitchChassis",
+    "Name": "PCIe Switch 2",
+    "ChassisType": "Card",
+    "Manufacturer": "PCIe Switch Guys",
+    "Model": "PCIe Awesome Switch",
+    "SKU": "",
+    "SerialNumber": "SN1-ABC-DEFG",
+    "PartNumber": "",
+    "AssetTag": "CustomerWritableThingy",
+	"PowerState": "On",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+	"Thermal": {
+        "@odata.id":"/redfish/v1/Chassis/PCIeSwitch2/Thermal"
+    },
+    "Power": {
+        "@odata.id":"/redfish/v1/Chassis/PCIeSwitch2/Power"
+    }, 
+    "Links": {
+        "ContainedBy": {
+            "@odata.id": "/redfish/v1/Chassis/PCIeSwitchRackMount"
+        },
+        "ManagedBy": [
+            {
+                "@odata.id": "/redfish/v1/Managers/PCIeSwitchManager"
+            }
+        ],
+        "Oem": {}
+    },
+    "Oem": {}
+}

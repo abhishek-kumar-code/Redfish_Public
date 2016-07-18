@@ -37,6 +37,9 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/VLanNetworkInterfaceCollection_v1.xml">
     <edmx:Include Namespace="VLanNetworkInterfaceCollection"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Endpoint_v1.xml">
+    <edmx:Include Namespace="Endpoint"/>
+  </edmx:Reference>
 
   <edmx:DataServices>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EthernetInterface">
@@ -196,6 +199,11 @@
           <Annotation Term="OData.Description" String="The link status of this interface (port)"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the link status of this interface (port)."/>
         </Property>
+        <Property Name="Links" Type="EthernetInterface.v1_1_0.Links" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
+          <Annotation Term="OData.LongDescription" String="The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
+        </Property>
       </EntityType>
 
       <EnumType Name="LinkStatus">
@@ -209,6 +217,15 @@
           <Annotation Term="OData.Description" String="There is no link on this interface, but the interface is connected."/>
         </Member>
       </EnumType>
+
+      <ComplexType Name="Links" BaseType="Resource.Links">
+        <NavigationProperty Name="Endpoints" Type="Collection(Endpoint.Endpoint)" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="An array of references to the endpoints that connect to this ethernet interface."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resources that this ethernet interface is associated with and shall reference a resource of type Endpoint."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+      </ComplexType>
     </Schema>
   
   </edmx:DataServices>

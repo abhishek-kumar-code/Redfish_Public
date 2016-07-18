@@ -110,6 +110,11 @@
                 "@odata.id": "/redfish/v1/Managers/1"
             }
         ],
+        "Endpoints": [
+            {
+                "@odata.id": "/redfish/v1/Fabrics/PCIe/Endpoints/HostRootComplex1"
+            }
+        ],
         "Oem": {}
     },
     "Actions": {

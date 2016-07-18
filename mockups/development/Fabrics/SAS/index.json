@@ -6,7 +6,7 @@
     "Id": "SAS",
     "Name": "SAS Fabric",
     "FabricType": "SAS",
-    "Description": "SAS Fabric",
+    "Description": "SAS Fabric without all endpoints explicitly managed (this is also an HA model as you can tell by the ports, but requires less client understanding of HA)",
     "Status": {
         "State": "Enabled",
         "Health": "OK"
