@@ -20,9 +20,9 @@
 	},
     "Links": {
         "AssociatedEndpoints": [
-             {"@odata.id": "/redfish/v1/Fabrics/SAS/Endpoints/Enclosure2PortA"},
-             {"@odata.id": "/redfish/v1/Fabrics/SAS/Endpoints/Drive1PortA"},
-             {"@odata.id": "/redfish/v1/Fabrics/SAS/Endpoints/Drive2PortA"}
+             {"@odata.id": "/redfish/v1/Fabrics/HA_SAS/Endpoints/Enclosure2PortA"},
+             {"@odata.id": "/redfish/v1/Fabrics/HA_SAS/Endpoints/Drive1PortA"},
+             {"@odata.id": "/redfish/v1/Fabrics/HA_SAS/Endpoints/Drive2PortA"}
         ]
     },
 	"Oem": {}

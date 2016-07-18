@@ -20,7 +20,7 @@
 	},
         "Links": {
           "AssociatedEndpoints": [
-             {"@odata.id": "/redfish/v1/Fabrics/SAS/Endpoints/Initiator1PortB"}
+             {"@odata.id": "/redfish/v1/Fabrics/HA_SAS/Endpoints/Initiator1PortB"}
           ]
     },
 	"Oem": {}

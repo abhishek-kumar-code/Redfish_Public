@@ -13,8 +13,8 @@
 		"Endpoints": [
             {"@odata.id": "/redfish/v1/Fabrics/HA_SAS/Endpoints/Initiator1PortA"},
             {"@odata.id": "/redfish/v1/Fabrics/HA_SAS/Endpoints/Initiator1PortB"},
-            {"@odata.id": "/redfish/v1/Fabrics/SAS/Endpoints/Enclosure1PortA"},
-            {"@odata.id": "/redfish/v1/Fabrics/SAS/Endpoints/Enclosure1PortB"}
+            {"@odata.id": "/redfish/v1/Fabrics/HA_SAS/Endpoints/Enclosure1PortA"},
+            {"@odata.id": "/redfish/v1/Fabrics/HA_SAS/Endpoints/Enclosure1PortB"}
         ]
 	},
 	"Oem": {}
