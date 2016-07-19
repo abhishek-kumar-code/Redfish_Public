@@ -91,7 +91,7 @@
           <Annotation Term="OData.Description" String="Level of the interleave set for multi-level tiered memory."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the level of this interleave set for multi-level tiered memory."/>
         </Property>
-      </EntityType>
+      </ComplexType>
 
       <EnumType Name="AddressRangeType">
         <Member Name="Volatile">
