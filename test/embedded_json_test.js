@@ -1,24 +1,23 @@
-var vows = require('vows');
-var glob = require('glob');
-var join = require('path').join;
-var jsonlint = require('jsonlint');
-var fs = require('fs');
-var assert = require('assert');
-var execAll = require('./utils').execAll;
+const vows = require('vows');
+const glob = require('glob');
+const join = require('path').join;
+const jsonlint = require('jsonlint');
+const fs = require('fs');
+const assert = require('assert');
+const execAll = require('./utils').execAll;
 
+const files = glob.sync('*.md');
 
-var files = glob.sync('*.md');
-
-var suite = {}
+const suite = {}
 files.forEach(function(file) {
-  var data = fs.readFileSync(file, 'utf-8')
-  var examples = execAll(/(?:~~~|```)(json|http)([\s\S]*?)(?:~~~|```)/gim, data);
+  const data = fs.readFileSync(file, 'utf-8')
+  const examples = execAll(/(?:~~~|```)(json|http)([\s\S]*?)(?:~~~|```)/gim, data);
 
   if (examples) {
-    var exampleTests = {};
+    const exampleTests = {};
 
     examples.forEach(function(example) {
-      var json = example[1] === 'http' ? example[2].split("\n\n")[1] : example[2];
+      let json = example[1] === 'http' ? example[2].split("\n\n")[1] : example[2];
 
       if(!json) return;
 
@@ -30,7 +29,7 @@ files.forEach(function(file) {
       // Replace any ellipsis in the body with nothingness
       json = json.replace(/(["\]}]),?\s*\.\.\./, '$1')
 
-      var name = "line " + example.lineNumber + " example";
+      const name = "line " + example.lineNumber + " example";
       exampleTests[name + ' is valid syntax'] = function() {
         try {
           jsonlint.parse(json);
