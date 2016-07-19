@@ -7,13 +7,13 @@
     "Name": "Memory Chunk Pending Settings",
     "InterleaveSets": [
         {
-            "DIMM": { "@odata.id": "/redfish/v1/Systems/4/Memory/1" },
+            "Memory": { "@odata.id": "/redfish/v1/Systems/4/Memory/1" },
             "MemoryType": "Byte Accessible Persistent",
             "OffsetMiB": 0,
             "SizeMiB": 4096
         },
         {
-            "DIMM": { "@odata.id": "/redfish/v1/Systems/4/Memory/2" },
+            "Memory": { "@odata.id": "/redfish/v1/Systems/4/Memory/2" },
             "MemoryType": "Byte Accessible Persistent",
             "OffsetMiB": 0,
             "SizeMiB": 4096
