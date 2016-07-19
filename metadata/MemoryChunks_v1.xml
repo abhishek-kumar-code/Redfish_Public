@@ -60,7 +60,6 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the interleave sets for the memory chunk."/>
           <Annotation Term="OData.LongDescription" String="These properties shall represent the interleave sets for the memory chunk."/>
-          <Annotation Term="OData.AutoExpand"/>
         </Property>
       </EntityType>
 
