@@ -13,7 +13,7 @@
     },
     "InterleaveSets": [
         {
-            "DIMM": { "@odata.id": "/redfish/v1/Systems/4/Memory/6" },
+            "Memory": { "@odata.id": "/redfish/v1/Systems/4/Memory/6" },
             "RegionId": "1"
         }
     ],
