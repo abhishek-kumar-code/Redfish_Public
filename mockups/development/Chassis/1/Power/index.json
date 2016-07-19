@@ -2,7 +2,7 @@
     "@Redfish.Copyright":"Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#Power.Power",
     "@odata.id": "/redfish/v1/Chassis/1/Power",
-    "@odata.type": "#Power.v1_1_0.Power",
+    "@odata.type": "#Power.v1_2_0.Power",
     "Id": "Power",
     "Name": "Power",
     "PowerControl": [
