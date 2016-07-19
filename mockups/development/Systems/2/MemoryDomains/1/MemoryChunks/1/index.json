@@ -15,16 +15,16 @@
         "Health": "OK"
     },
     "InterleaveSets": [
-        {"DIMM" : {
+        {"Memory" : {
             "@odata.id": "/redfish/v1/Systems/2/Memory/1"
         }},
-        {"DIMM" : {
+        {"Memory" : {
             "@odata.id": "/redfish/v1/Systems/2/Memory/2"
         }},
-        {"DIMM" : {
+        {"Memory" : {
             "@odata.id": "/redfish/v1/Systems/2/Memory/3"
         }},
-        {"DIMM" : {
+        {"Memory" : {
             "@odata.id": "/redfish/v1/Systems/2/Memory/4"
         }}
     ],
