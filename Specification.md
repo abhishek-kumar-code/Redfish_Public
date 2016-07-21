@@ -1396,6 +1396,14 @@ The `LongDescription` annotation term is defined in http://docs.oasis-open.org/o
 
 Individual resources are defined as entity types within an OData Schema representation of the Redfish Schema according to [OData-Schema](#OData-CSDL). The representation may include annotations to facilitate automatic generation of JSON Schema representation of the Redfish Schema capable of validating JSON payloads.
 
+##### Schema Modification Rules
+
+Schema referenced from the implementation, either from the OData Service Document or the JSON Schema File representations, may vary from the canonical definitions of those Schema defined by the Redfish Schema or other entities, provided they adhere to the rules in the list below.  Clients should take this into consideration when attempting operations on the resources defined by schema.
+* Modified schema may constrain a read/write property to be read only.
+* Modified schema may remove properties. 
+* Other modifications to the Schema shall not be allowed.
+
+##### Schema Version Requirements
 The outer element of the OData Schema representation document shall be the `Edmx` element, and shall have a `Version` attribute with a value of "4.0".
 
 ~~~xml
