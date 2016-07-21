@@ -12,16 +12,12 @@
         "Health": "OK"
     },
     "FirmwareVersion": "1.00",
-    "EthernetInterfaces": [
-        {
-            "@odata.id": "/redfish/v1/Managers/9/EthernetInterfaces"
-        }
-    ],
-    "HostInterfaces": [
-        {
-            "@odata.id": "/redfish/v1/Managers/9/HostInterfaces"
-        }
-    ],
+    "EthernetInterfaces": {
+        "@odata.id": "/redfish/v1/Managers/9/EthernetInterfaces"
+    },
+    "HostInterfaces": {
+        "@odata.id": "/redfish/v1/Managers/9/HostInterfaces"
+    },
     "Actions": {
         "#Manager.Reset": {
             "target": "/redfish/v1/Managers/9/Actions/Manager.Reset"
