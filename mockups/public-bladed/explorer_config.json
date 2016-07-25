@@ -1,6 +1,6 @@
 {
 	"name": "Bladed System",
-	"description": "An enclosure with 4 blade servers",
+	"description": "This example represents an enclosure of \"blade servers\" that share infrastructure components, such as power supplies and fans. Depicting an enclosure containing four blade servers (a total of five \"Chassis\"), this mockup demonstrates the modeling of multiple chassis and systems managed from a single Redfish service.",
 	"navlinks": [{
 		"text": "Main",
 		"target": "main"

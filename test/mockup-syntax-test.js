@@ -1,18 +1,18 @@
 'use strict';
-var vows = require('vows');
-var glob = require('glob');
-var path = require('path');
-var jsonlint = require('jsonlint');
-var fs = require('fs');
-var assert = require('assert');
-var traverse = require('traverse');
-var url = require('url');
-var jptr = require('json8-pointer');
-var fuzzy = require('fuzzy');
+const vows = require('vows');
+const glob = require('glob');
+const path = require('path');
+const jsonlint = require('jsonlint');
+const fs = require('fs');
+const assert = require('assert');
+const traverse = require('traverse');
+const url = require('url');
+const jptr = require('json8-pointer');
+const fuzzy = require('fuzzy');
 
-var mockupSuite = vows.describe('Mockups');
+const mockupSuite = vows.describe('Mockups');
 
-var LinkProperties = [
+const LinkProperties = [
   /^@odata\.id$/,
   /^[^@]*@odata\.navigationLink$/,
   /^[^@]*@odata\.nextLink$/
@@ -24,15 +24,14 @@ function isLink(key) {
   }
 }
 
-
 glob.sync(path.join('mockups', '*/')).forEach(function(mockup) {
-  var files = glob.sync(path.join(mockup, '**', 'index.json'));
-  var consistencyBatch = {}, syntaxBatch = {};
-  var linkToFile = {};
-  var fileToJSON = {};
+  const files = glob.sync(path.join(mockup, '**', 'index.json'));
+  const consistencyBatch = {}, syntaxBatch = {};
+  const linkToFile = {};
+  const fileToJSON = {};
 
   files.forEach(function(file) {
-    var decomp = path.parse(file);
+    const decomp = path.parse(file);
 
     linkToFile[path2Redfish(decomp.dir)] = file;
 
@@ -41,7 +40,7 @@ glob.sync(path.join('mockups', '*/')).forEach(function(mockup) {
         fs.readFile(file, this.callback);
       },
       'is utf-8 encoded': function(err, txt) {
-        var utf8 = txt.toString('utf-8');
+        const utf8 = txt.toString('utf-8');
         // Exploit the fact illegal byte codes are dropped from the text stream
         // on conversion to detect an invalid file
         assert(txt.equals(new Buffer(utf8, 'utf-8')), 'contains invalid utf-8 byte code');
@@ -58,23 +57,23 @@ glob.sync(path.join('mockups', '*/')).forEach(function(mockup) {
 
     consistencyBatch[file] = {
       'links are internally consistent': function() {
-        var json = fileToJSON[file];
+        const json = fileToJSON[file];
         if (!json) return;
 
-        var walker = traverse(json);
+        const walker = traverse(json);
 
         walker.forEach(function() {
           if (!this.isLeaf) return;
 
           if (isLink(this.key)) {
-            var link = url.parse(this.node);
-            var refd = fileToJSON[linkToFile[link.pathname]];
+            const link = url.parse(this.node);
+            let refd = fileToJSON[linkToFile[link.pathname]];
 
-            let errorMsg = 'invalid link in JSON at property /' + this.path.join('/') + ' with value ' + this.node + '. No such file exists in mockup at path.';
+            const errorMsg = 'invalid link in JSON at property /' + this.path.join('/') + ' with value ' + this.node + '. No such file exists in mockup at path.';
 
             if (!refd) {
-              let invalidPath = this.node.replace('/redfish/v1/', mockup).split('/');
-              let possible = fuzzy.filter(path.join(...invalidPath), files)
+              const invalidPath = this.node.replace('/redfish/v1/', mockup).split('/');
+              const possible = fuzzy.filter(path.join(...invalidPath), files)
               .map(x => path2Redfish(x.string, true));
 
               if (possible.length) {
@@ -103,7 +102,7 @@ glob.sync(path.join('mockups', '*/')).forEach(function(mockup) {
 mockupSuite.export(module);
 
 function path2Redfish(p, removeIndex) {
-  let link = p.split(path.sep).slice(2, removeIndex ? -1 : void 0);
+  const link = p.split(path.sep).slice(2, removeIndex ? -1 : void 0);
   link.unshift('', 'redfish', 'v1', '');
   return path.normalize(link.join('/'));
 }

@@ -14,6 +14,9 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData" />
   </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>  
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
     <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
   </edmx:Reference>
@@ -33,7 +36,21 @@
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent the Memory Metrics for a single Memory device in a Redfish implementation." />
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
       </EntityType>
-
+      <Annotation Term="Capabilities.InsertRestrictions">
+        <Record>
+          <PropertyValue Property="Insertable" Bool="false"/>
+        </Record>
+      </Annotation>
+      <Annotation Term="Capabilities.UpdateRestrictions">
+        <Record>
+          <PropertyValue Property="Updatable" Bool="false"/>
+        </Record>
+      </Annotation>
+      <Annotation Term="Capabilities.DeleteRestrictions">
+        <Record>
+          <PropertyValue Property="Deletable" Bool="false"/>
+        </Record>
+      </Annotation>
       <Action Name="ClearCurrentPeriod" IsBound="true">
         <Parameter Name="MemoryMetrics" Type="MemoryMetrics.v1_0_0.Actions"/>
         <Annotation Term="OData.Description" String="This sets the CurrentPeriod object values to zero."/>
@@ -167,6 +184,16 @@
         <Annotation Term="OData.AdditionalProperties" Bool="true"/>
       </ComplexType>
 
+    </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MemoryMetrics.v1_1_0">
+      <ComplexType Name="HealthData" BaseType="MemoryMetrics.v1_0_0.HealthData">
+        <Property Name="PredictedMediaLifeLeftPercent" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The percentage of reads and writes that are predicted to still be available for the media"/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain an indicator of the percentage of life remaining in the media."/>
+        </Property>  
+      </ComplexType>
     </Schema>
   </edmx:DataServices>
 </edmx:Edmx>

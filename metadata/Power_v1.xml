@@ -14,6 +14,9 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>  
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Measures.V1.xml">
     <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
   </edmx:Reference>
@@ -23,7 +26,8 @@
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
-    <edmx:Include Namespace="Resource.v1_0_0" />
+    <edmx:Include Namespace="Resource.v1_0_0"/>
+    <edmx:Include Namespace="Resource.v1_1_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/PhysicalContext_v1.xml">
     <edmx:Include Namespace="PhysicalContext.v1_0_0"/>
@@ -40,7 +44,22 @@
         <Annotation Term="OData.Description" String="This is the schema definition for the Power Metrics.  It represents the properties for Power Consumption and Power Limiting."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a power metrics resource for a Redfish implementation."/>
       </EntityType>
-
+      <Annotation Term="Capabilities.InsertRestrictions">
+        <Record>
+          <PropertyValue Property="Insertable" Bool="false"/>
+        </Record>
+      </Annotation>
+      <Annotation Term="Capabilities.UpdateRestrictions">
+        <Record>
+          <PropertyValue Property="Updatable" Bool="true"/>
+          <Annotation Term="OData.Description" String="Power propertes can be updated to change limits, exceptions and other writable properties."/>
+        </Record>
+      </Annotation>
+      <Annotation Term="Capabilities.DeleteRestrictions">
+        <Record>
+          <PropertyValue Property="Deletable" Bool="false"/>
+        </Record>
+      </Annotation>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.v1_0_0">
@@ -484,6 +503,19 @@
 
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.v1_2_0">
+
+      <EntityType Name="Power" BaseType="Power.v1_1_0.Power"/>
+
+      <EntityType Name="PowerSupply" BaseType="Power.v1_1_0.PowerSupply">
+        <Property Name="IndicatorLED" Type="Resource.v1_1_0.IndicatorLED">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The state of the indicator LED, used to identify the power supply"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the indicator light state for the indicator light associated with this power supply."/>
+        </Property>
+      </EntityType>
+
+    </Schema>
+
   </edmx:DataServices>
 </edmx:Edmx>
-

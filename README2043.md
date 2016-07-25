@@ -2,11 +2,11 @@
 DocTitle: Scalable Platforms Management API Mockup Readme
 DocNumber: '2043'
 DocClass: Informative
-DocVersion: '0.99.0a'
-modified: '2015-08-04'
-status: wip
+DocVersion: '1.0.0'
+modified: '2016-06-28'
+status: released
 released: true
-copyright: '2015'
+copyright: '2015-2016'
 ---
 # Foreword
 
@@ -21,19 +21,27 @@ These other components are part of the Redfish Scalable Platforms Management API
 * Mockup (DSP2043) - this is a mockup that can be used as sample of output from GETs from A Redfish service.  Informative in nature, it was used to develop the schema.  A person can set up an NGINX or similar server and configure it to output JSON format and then use this directory for demonstration purposes.
 * Schema - this contains the Redfish Schema definitions.  These files are normative in nature and are normatively reference by the Redfish Specification.  There are two Schema formats - CSDL (OData Common Schema Definition Language format which is in XML) and JSON Schema.  These Schema defintions should be functionally equivalent, thus specifying the schema in two different languages.
 
-## Setting up and accessing the Mockup ##
+# Redfish Mockups
 
-You can view the markup either directly or through a webserver.
+This archive contains a number of mockups of various Redfish service implementations.  They are intended to be a guide for learning about the Redfish Specification by showing typical examples of implementations.  These mockups are not prototypes and do not reflect any actual product or Redfish implementation.
 
-### Directly ###
+Many of these mockups are also used to populate the Redfish Resource Explorer, part of the Redfish Developer Hub located at: http://redfish.dmtf.org
 
-If you are viewing the files directly either through GitHub or a browser, you can get the html files to load in your browser.  If you are viewing it in your browser, then make sure you have a JSON viewer loaded as it will help make the mockup more user friendly.
+## DSP2043 Server (DSP2043-server)
 
-### Via Webserver ###
+This mockup provides an example of a 1U or 2U rack-mounted server typically deployed in large scale data centers.  In addition, the mockup is intended to be used as a base for "Work in Progress" mockups to demonstrate new features, schemas or properties currently under development within the SPMF.    
 
-Install [NodeJS](http://nodejs.org) first; this will act as the webserver. Double click `run.bat` inside the Mockup folder to start a local server accessible at [http://localhost:9080/redfish/v1](http://localhost:9080/redfish/v1).  It will look almost like a real service from the GET perspective (the headers will not be the same).
+## Simple Rack-mounted server (public-rackmount)
 
-Keep in mind that this is a mockup, not a prototype.  But you can do GETs on it and see JSON so it’s as real on the READ side as any prototype (except for ETags and some of the headers).  If you get a plug-in for Chrome or Opera that does REST (there are some free ones out there) or a JSON decoder for pages, you will improve the experience.  The plug-ins let you expand and collapse structures making it very easy to interact with.
+This illustration of a Redfish service implementation shows a typical rack-mount server, as commonly used in scale-out data centers. It depicts the types of information that can be expected, but does not represent an actual implementation.
+
+## Bladed Server (public-bladed)
+
+This example represents an enclosure of “blade servers” that share infrastructure components, such as power supplies and fans. Depicting an enclosure containing four blade servers (a total of five “Chassis”), this mockup demonstrates the modeling of multiple chassis and systems managed from a single Redfish service.
+
+## Proposed OCP Redfish Profile (proposed-ocp-profile)
+
+This draft example, for ongoing development,  represents a proposed minimal Redfish data model "profile" that meets the needs of the Open Compute Project’s Hardware Management requirements. This draft profile is intended to help define a list of required properties so that essential management-related tasks, as defined by OCP, can be performed on any Redfish implementation. 
 
 ## Concepts ##
 

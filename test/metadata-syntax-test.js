@@ -1,18 +1,17 @@
-var vows = require('vows');
-var glob = require('glob');
-var path = require('path');
-var jsonlint = require('jsonlint');
-var fs = require('fs');
-var xmljs = require('libxmljs-mt');
-var assert = require('assert');
-var request = require('request');
+const vows = require('vows');
+const glob = require('glob');
+const path = require('path');
+const fs = require('fs');
+const xmljs = require('libxmljs-mt');
+const assert = require('assert');
+const request = require('request');
 
-var files = glob.sync(path.join('{metadata,mockups}', '**', '*.xml'))
-var syntaxBatch = {}, schemaBatch = {};
+const files = glob.sync(path.join('{metadata,mockups}', '**', '*.xml'))
+const syntaxBatch = {}, schemaBatch = {};
 
-var ucum = null;
-var ucumError = false;
-var unitsWhiteList = ['RPM'];
+let ucum = null;
+let ucumError = false;
+const unitsWhiteList = ['RPM'];
 
 function getUcumXML(callback, context, end)
 {
@@ -57,38 +56,38 @@ files.forEach(function(file) {
       {
            return;
       }
-      var doc = xmljs.parseXml(txt);
-      var measures = doc.find('//*[local-name()="Annotation"][@Term="Measures.Unit"]/@String');
+      let doc = xmljs.parseXml(txt);
+      let measures = doc.find('//*[local-name()="Annotation"][@Term="Measures.Unit"]/@String');
       if(measures.length === 0)
       {
           return;
       }
-      for(var i = 0; i < measures.length; i++)
+      for(let i = 0; i < measures.length; i++)
       {
-          var unitName = measures[i].value();
+          let unitName = measures[i].value();
           if(unitsWhiteList.indexOf(unitName) !== -1)
           {
               continue;
           }
-          var pos = unitName.indexOf('/s');
+          let pos = unitName.indexOf('/s');
           if(pos !== -1)
           {
               unitName = unitName.substring(0, pos);
           }
-          var ucumTypes = ucum.get('//*[@Code="'+unitName+'"]');
+          let ucumTypes = ucum.get('//*[@Code="'+unitName+'"]');
           if(ucumTypes === undefined)
           {
               prefix = ucum.get('//*[local-name()="prefix"][@Code="'+unitName[0]+'"]');
               if(prefix !== undefined)
               {
-                  var tmp = unitName.substring(1);
+                  let tmp = unitName.substring(1);
                   ucumTypes = ucum.get('//*[@Code="'+tmp+'"]');
                   if(ucumTypes === undefined)
                   {
                       prefix = ucum.get('//*[local-name()="prefix"][@Code="'+unitName.substring(0,2)+'"]');
                       if(prefix !== undefined)
                       {
-                          var tmp = unitName.substring(2);
+                          let tmp = unitName.substring(2);
                           ucumTypes = ucum.get('//*[@Code="'+tmp+'"]');
                       }
                   }
@@ -98,7 +97,7 @@ files.forEach(function(file) {
                   prefix = ucum.get('//*[local-name()="prefix"][@Code="'+unitName.substring(0,2)+'"]');
                   if(prefix !== undefined)
                   {
-                      var tmp = unitName.substring(2);
+                      let tmp = unitName.substring(2);
                       ucumTypes = ucum.get('//*[@Code="'+tmp+'"]');
                   }
               }
