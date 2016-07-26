@@ -1,4 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?><!-- Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.--> 
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Redfish Schema:  Settings  v1.0.2-->
+<!--#                                                                                      -->
+<!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
+<!--# available at http://www.dmtf.org/standards/redfish                                   -->
+<!--# Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF).                  -->
+<!--# For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright -->
+<!--################################################################################       -->
+<!---->
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
 
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
@@ -12,16 +22,16 @@
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Message_v1.xml">
     <edmx:Include Namespace="Message"/>
-  </edmx:Reference>  
+  </edmx:Reference>
 
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Settings">
-
-      <ComplexType Name="Settings">
-      </ComplexType>
+      <ComplexType Name="Settings" Abstract="true"/>
     </Schema>
-    
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Settings.v1_0_2"/>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Settings.v1_0_0">
 
       <ComplexType Name="Settings" BaseType="Settings.Settings">
@@ -41,7 +51,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the URI of the resource to which a client must do a PUT or PATCh in order to modify this resource."/>
           <Annotation Term="OData.AutoExpandReferences" />
         </NavigationProperty>
-        <Property Name="Messages" Type="Collection(Message.Message)">
+        <Property Name="Messages" Type="Collection(Message.Message)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is an array of messages associated with the task."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of messages associated with the task."/>
@@ -49,6 +59,6 @@
       </ComplexType>
 
     </Schema>
-    
+
   </edmx:DataServices>
 </edmx:Edmx>

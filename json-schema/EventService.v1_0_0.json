@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_0_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
     "title": "#EventService.v1_0_0.EventService",
     "$ref": "#/definitions/EventService",
     "definitions": {
@@ -68,7 +68,10 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
                 },
                 "Description": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
+                    "anyOf": [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
+                        {"type": "null"}
+                    ]
                 },
                 "Name": {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
@@ -120,10 +123,7 @@
                     "additionalProperties": false,
                     "properties": {
                         "Oem": {
-                            "type": [
-                                "object",
-                                "null"
-                            ],
+                            "type": "object",
                             "patternProperties": {
                                 "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                                     "type": [
@@ -145,7 +145,8 @@
                         }
                     },
                     "readonly": true,
-                    "description": "The Actions object contains the available custom actions on this resource."
+                    "description": "The available actions for this resource.",
+                    "longDescription": "The Actions property shall contain the available actions for this resource."
                 },
                 "Status": {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
@@ -157,8 +158,12 @@
                     "longDescription": "The value of this property shall contain the link to a collection of type EventDestinationCollection."
                 }
             },
-            "description": "This is the schema definition for the Event Service. It represents the properties for the service itself and has links to the actual list of subscriptions."
+            "required": [
+                "Id",
+                "Name"
+            ],
+            "description": "The Event Service resource contains properties for managing event subcriptions and generates the events sent to subscribers.  The resource has links to the actual collection of subscriptions (called Event Destinations)."
         }
     },
-    "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
+    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }

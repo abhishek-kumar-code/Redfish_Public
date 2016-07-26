@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_0_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
     "title": "#Power.v1_0_0.Power",
     "$ref": "#/definitions/Power",
     "definitions": {
@@ -11,15 +11,27 @@
                 "ACMidLine",
                 "ACHighLine",
                 "DCNeg48V",
-                "DC480V"
+                "DC380V",
+                "AC120V",
+                "AC240V",
+                "AC277V",
+                "ACandDCWideRange",
+                "ACWideRange",
+                "DC240V"
             ],
             "enumDescriptions": {
                 "Unknown": "The power supply line input voltage type cannot be determined",
-                "ACLowLine": "100-127V AC input",
-                "ACMidLine": "200-240V AC input",
-                "ACHighLine": "277V AC input",
+                "ACLowLine": "100-127V AC input. Deprecated: Use AC120V",
+                "ACMidLine": "200-240V AC input. Deprecated: Use AC240V",
+                "ACHighLine": "277V AC input. Deprecated: Use AC277V",
                 "DCNeg48V": "-48V DC input",
-                "DC480V": "High Voltage DC input (380V)"
+                "DC380V": "High Voltage DC input (380V)",
+                "AC120V": "AC 120V nominal input",
+                "AC240V": "AC 240V nominal input",
+                "AC277V": "AC 277V nominal input",
+                "ACandDCWideRange": "Wide range AC or DC input",
+                "ACWideRange": "Wide range AC input",
+                "DC240V": "DC 240V nominal input"
             }
         },
         "Power": {
@@ -57,7 +69,10 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
                 },
                 "Description": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
+                    "anyOf": [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
+                        {"type": "null"}
+                    ]
                 },
                 "Name": {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
@@ -74,7 +89,7 @@
                     "items": {
                         "$ref": "#/definitions/PowerControl"
                     },
-                    "readonly": true,
+                    "readonly": false,
                     "description": "This is the definition for power control function (power reading/limiting).",
                     "longDescription": "These properties shall be the definition for power control (power reading and limiting) for a Redfish implementation."
                 },
@@ -90,7 +105,7 @@
                     "items": {
                         "$ref": "#/definitions/Voltage"
                     },
-                    "readonly": true,
+                    "readonly": false,
                     "description": "This is the definition for voltage sensors.",
                     "longDescription": "These properties shall be the definition for voltage sensors for a Redfish implementation."
                 },
@@ -106,7 +121,7 @@
                     "items": {
                         "$ref": "#/definitions/PowerSupply"
                     },
-                    "readonly": true,
+                    "readonly": false,
                     "description": "Details of the power supplies associated with this system or device",
                     "longDescription": "This object shall contain details of the power supplies associated with this system or device"
                 },
@@ -126,6 +141,10 @@
                     "description": "Redundancy information for the power subsystem of this system or device"
                 }
             },
+            "required": [
+                "Id",
+                "Name"
+            ],
             "description": "This is the schema definition for the Power Metrics.  It represents the properties for Power Consumption and Power Limiting.",
             "longDescription": "This resource shall be used to represent a power metrics resource for a Redfish implementation."
         },
@@ -274,7 +293,10 @@
                     "longDescription": "The value of this property shall represent the power cap limit in watts for the resource.  If set to null, power capping shall be disabled."
                 },
                 "LimitException": {
-                    "$ref": "#/definitions/PowerLimitException",
+                    "anyOf": [
+                        {"$ref": "#/definitions/PowerLimitException"},
+                        {"type": "null"}
+                    ],
                     "description": "The action that is taken if the power cannot be maintained below the LimitInWatts.",
                     "longDescription": "The value of this property shall represent the action to be taken if the resource power consumption can not be limited below the specified limit after several correction time periods."
                 },
@@ -400,13 +422,19 @@
                     "longDescription": "This property shall contain a descriptive name for the associated power supply."
                 },
                 "PowerSupplyType": {
-                    "$ref": "#/definitions/PowerSupplyType",
+                    "anyOf": [
+                        {"$ref": "#/definitions/PowerSupplyType"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "The Power Supply type (AC or DC)",
                     "longDescription": "This property shall contain the input power type (AC or DC) of the associated power supply."
                 },
                 "LineInputVoltageType": {
-                    "$ref": "#/definitions/LineInputVoltageType",
+                    "anyOf": [
+                        {"$ref": "#/definitions/LineInputVoltageType"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "The line voltage type supported as an input to this Power Supply",
                     "longDescription": "This property shall contain the type of input line voltage supported by the associated power supply"
@@ -418,7 +446,7 @@
                     ],
                     "readonly": true,
                     "description": "The line input voltage at which the Power Supply is operating",
-                    "longDescription": "This property shall contain the value in Watts of the line input voltage (measured or configured for) that the power supply has been configured to operate with or is currently receiving."
+                    "longDescription": "This property shall contain the value in Volts of the line input voltage (measured or configured for) that the power supply has been configured to operate with or is currently receiving."
                 },
                 "PowerCapacityWatts": {
                     "type": [
@@ -516,8 +544,8 @@
                         "$ref": "http://redfish.dmtf.org/schemas/v1/Redundancy.json#/definitions/Redundancy"
                     },
                     "readonly": true,
-                    "description": "This structure is used to show redundancy for fans.  The Component ids will reference the members of the redundancy groups.",
-                    "longDescription": "The values of the properties in this array shall be used to show redundancy for fans and other elements in this resource.  The use of IDs within these arrays shall reference the members of the redundancy groups."
+                    "description": "This structure is used to show redundancy for power supplies.  The Component ids will reference the members of the redundancy groups.",
+                    "longDescription": "The values of the properties in this array shall be used to show redundancy for power supplies and other elements in this resource.  The use of IDs within these arrays shall reference the members of the redundancy groups."
                 }
             },
             "description": "Details of a power supplies associated with this system or device",
@@ -528,12 +556,14 @@
             "enum": [
                 "Unknown",
                 "AC",
-                "DC"
+                "DC",
+                "ACorDC"
             ],
             "enumDescriptions": {
                 "Unknown": "The power supply type cannot be determined",
                 "AC": "Alternating Current (AC) power supply",
-                "DC": "Direct Current (DC) power supply"
+                "DC": "Direct Current (DC) power supply",
+                "ACorDC": "Power Supply supports both DC or AC"
             }
         },
         "Voltage": {
@@ -692,5 +722,5 @@
             "longDescription": "Array members can be referenced using the value returned in the @odata.id property which may or may not be a dereferenceable URL. The @odata.id of this entity shall be the location of this element within an Item."
         }
     },
-    "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
+    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }

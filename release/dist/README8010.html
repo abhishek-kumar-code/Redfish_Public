@@ -211,21 +211,18 @@ h6 {
   #toc-header,
   #toc ~ h2 {
     page-break-before: always;
-    -webkit-break-before: page;
-       -moz-break-before: page;
+    -webkit-column-break-before: page;
             break-before: page;
   }
   #toc ~ h2 ~ h2 {
     page-break-before: auto;
-    -webkit-break-before: auto;
-       -moz-break-before: auto;
+    -webkit-column-break-before: auto;
             break-before: auto;
   }
   #last-footer-fix {
     display: block !important;
     page-break-before: always;
-    -webkit-break-before: page;
-       -moz-break-before: page;
+    -webkit-column-break-before: page;
             break-before: page;
     text-align: center;
     line-height: 37em;
@@ -400,8 +397,8 @@ window.onhashchange = scrollToHash;
         <div class="preamble">
           <div class="logo"></div>
           <p>Document Identifier: DSP8010</p>
-          <p>Date: 2015-08-04</p>
-          <p>Version: 1.0.0</p>
+          <p>Date: 2016-05-14</p>
+          <p>Version: 2016.1</p>
           
         </div>
         <h1>Redfish API Schema Readme</h1>
@@ -412,32 +409,285 @@ window.onhashchange = scrollToHash;
         </div>
         <div class="document">
           <p>Supersedes: None</p>
-          <p>Document Class: Informative</p>
+          <p>Document Class: Normative</p>
           <p>Document Status: Published</p>
           <p>Document Language: en-US</p>
         </div>
         <div class="copyright">
           <p>Copyright Notice</p>
-          <p>Copyright &copy; 2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.
+          <p>Copyright &copy; 2015-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.
           </p></div>
           <p>DMTF is a not-for-profit association of industry members dedicated to promoting enterprise and systems management and interoperability. Members and non-members may reproduce DMTF specifications and documents, provided that correct attribution is given. As DMTF specifications may be revised from time to time, the particular version and release date should always be noted.</p>
           <p>Implementation of certain elements of this standard or proposed standard may be subject to third party patent rights, including provisional patent rights (herein "patent rights"). DMTF makes no representations to users of the standard as to the existence of such rights, and is not responsible to recognize, disclose, or identify any or all such third party patent right, owners or claimants, nor for any incomplete or inaccurate identification or disclosure of such rights, owners or claimants. DMTF shall have no liability to any party, in any manner or circumstance, under any legal theory whatsoever, for failure to recognize, disclose, or identify any such third party patent rights, or for such party’s reliance on the standard or incorporation thereof in its product, protocols or testing procedures. DMTF shall have no liability to any party implementing such standard, whether such implementation is foreseeable or not, nor to any patent owner or claimant, and shall have no liability or responsibility for costs or losses incurred if a standard is withdrawn or modified after publication, and shall be indemnified and held harmless by any party implementing the standard from any and all claims of infringement by a patent owner for such implementations.</p>
           <p>For information about patents held by third-parties which have notified the DMTF that, in their opinion, such patent may relate to or impact implementations of DMTF standards, visit <a href="http://www.dmtf.org/about/policies/disclosures.php">http://www.dmtf.org/about/policies/disclosures.php</a>.</p>
           <p>This document’s normative language is English. Translation into other languages is permitted.</p>
         </div>
-        <p id="toc-header">CONTENTS</p>
+        <p id="toc-header"></p>
         <ul id="toc"></ul>
         <h1 id="foreword">Foreword</h1>
 <p>The following files are part of the Redfish Scalable Platforms Management API (&quot;Redfish&quot;) development effort:</p>
 <ul>
-<li>DSP0226 - Redfish Specification - this file is the main Redfish Scalable Platforms Management API Specification.</li>
-<li>DSP2044 - Redfish Whitepaper - this is intended to be a non-normative document helping those new to Redfish understand how to interact with the Redfish service and understand common functions and tasks.</li>
-<li>DSP2043 - Redfish Mockup - this is a mockup that can be used as sample of output from GETs from A Redfish service.  Informative in nature, it was used to develop the schema.  A person can set up an NGINX or similar server and configure it to output JSON format and then use this directory for demonstration purposes.</li>
-<li>DSP8010 - Redfish Schema - this contains the Redfish Schema definitions.  These files are normative in nature and are normatively reference by the Redfish Specification.  There are two Schema formats - CSDL (OData Common Schema Definition Language format which is in XML) and JSON Schema.  These Schema definitions should be functionally equivalent, thus specifying the schema in two different languages.</li>
+<li>DSP0226 - Redfish Specification - This file is the main Redfish Scalable Platforms Management API Specification.</li>
+<li>DSP2044 - Redfish Whitepaper - This is intended to be a non-normative document helping those new to Redfish understand how to interact with the Redfish Service and understand common functions and tasks.</li>
+<li>DSP2043 - Redfish Mockup - This is a mockup that can be used as sample of output from GETs from a Redfish Service.  Informative in nature, it was used to develop the Schema.  A person can set up an NGINX or similar server and configure it to output JSON format and then use this directory for demonstration purposes.</li>
+<li>DSP8010 - Redfish Schema - This contains the Redfish Schema definitions.  These files are normative in nature and are normatively referenced by the Redfish Specification.  There are two Schema formats - CSDL (OData Common Schema Definition Language format, which is in XML) and JSON Schema.  These Schema definitions should be functionally equivalent, thus specifying the Schema in two different languages.</li>
 </ul>
+<h1 id="redfish-schema-change-log">Redfish Schema Change log</h1>
+<table>
+<thead>
+<tr>
+<th>Schema File</th>
+<th>Version</th>
+<th>Date</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AttributeRegistry</td>
+<td>1.0.0</td>
+<td>2016-5-14</td>
+<td>Initial release.  An Attribute Registry is a set of key-value pairs that are specific to a particular implementation or product, such that creating standardized property names would be impractical.  This schema describes the structure of a Registry, and also includes mechanisms for building user interfaces (menus) allowing consistent navigation of the contents.</td>
+</tr>
+<tr>
+<td>Bios</td>
+<td>1.0.0</td>
+<td>2016-5-14</td>
+<td>Initial release.  Bios contains properties surrounding a BIOS Attribute Registry (where the system-specific BIOS attributes are described) and the Actions needed to perform changes to BIOS settings, which typically require a system reset to apply.</td>
+</tr>
+<tr>
+<td>Drive</td>
+<td>1.0.0</td>
+<td>2016-5-14</td>
+<td>Initial release.  Drive contains properties describing a single physical disk drive for any system, along with links to associated Volumes.</td>
+</tr>
+<tr>
+<td>Memory</td>
+<td>1.0.0</td>
+<td>2016-5-14</td>
+<td>Initial release.  Memory describes a memory module or similar memory device as part of a system.</td>
+</tr>
+<tr>
+<td>MemoryCollection</td>
+<td>1.0.0</td>
+<td>2016-5-14</td>
+<td>Initial release.  A Collection of Memory resource instances.</td>
+</tr>
+<tr>
+<td>MemoryMetrics</td>
+<td>1.0.0</td>
+<td>2016-5-14</td>
+<td>Initial release.  MemoryMetrics contains usage and health statistics for a single Memory module or device instance.</td>
+</tr>
+<tr>
+<td>SecureBoot</td>
+<td>1.0.0</td>
+<td>2016-5-14</td>
+<td>Initial release.  This resource contains UEFI Secure Boot information. It represents properties for managing the UEFI Secure Boot functionality of a system.</td>
+</tr>
+<tr>
+<td>Storage</td>
+<td>1.0.0</td>
+<td>2016-5-14</td>
+<td>Initial release.  Storage defines a storage subsystem and its respective properties.  A storage subsystem represents a set of storage controllers (physical or virtual) and the resources such as volumes that can be accessed from that subsystem.</td>
+</tr>
+<tr>
+<td>StorageCollection</td>
+<td>1.0.0</td>
+<td>2016-5-14</td>
+<td>Initial release.  A Collection of Storage resource instances.</td>
+</tr>
+<tr>
+<td>Volume</td>
+<td>1.0.0</td>
+<td>2016-5-14</td>
+<td>Initial release.  Volume contains properties used to describe a volume, virtual disk, LUN, or other logical storage entity for any system.</td>
+</tr>
+<tr>
+<td>(all files)</td>
+<td>1.0.2</td>
+<td>2016-3-31</td>
+<td>Errata release of all schema files to adjust file naming conventions. CSDL schema files now have the major version appended to the end of the schema name (e.g., Chassis_v1), and json-schema files include the major/minor/errata version number (matching the namespace definitions in the schema as they did previously) in the filename, but are now prefaced with a &#39;v&#39; and with underscore separators (e.g., Chassis.v1_0_2.json) to match the corrected namespace naming rules.  Added LongDescriptions to &#39;Links&#39; and &#39;Actions&#39; objects throughout.  Added &#39;Unit&#39;, &#39;Minimum&#39;, and &#39;Maximum&#39; annotations throughout.  Defined all unversioned resources in CSDL as &#39;abstract&#39;.  Corrected all string properties with enumerations to allow use of null (nullable).  Marked all &#39;Links&#39; and other NavigationProperties and embedded objects (ComplexTypes) as non-nullable.  Improved schema description text, updated RFC references, and whitespace consistency throughout.</td>
+</tr>
+<tr>
+<td>(all Collections)</td>
+<td>n/a</td>
+<td>2016-3-31</td>
+<td>Corrected URI of the schema locations to the /schemas/v1 repository instead of the /schema location, which contains only the latest version of each schema. Corrected missing &#39;anyOf&#39; structure to allow &#39;idref&#39; references to collections.</td>
+</tr>
+<tr>
+<td>(all files)</td>
+<td>(various)</td>
+<td>2016-3-31</td>
+<td>Copies of all previously-released Redfish json-schema files have been created to follow the corrected json-schema filename format (v1_n_n instead of 1.n.n).  The internal schema name references were updated to match this style, but otherwise the files are identical to their originally released content.</td>
+</tr>
+<tr>
+<td>Chassis</td>
+<td>1.2.0</td>
+<td>2016-3-31</td>
+<td>Added Links for ManagersInChassis, Drives, and Storage.</td>
+</tr>
+<tr>
+<td>Chassis</td>
+<td>1.1.2</td>
+<td>2016-3-31</td>
+<td>Errata release (see 1.0.2 errata description above).  Corrected description for ManagedBy link.  Deprecated &#39;Unknown&#39; enumeration value for &#39;IndicatorLED&#39;.</td>
+</tr>
+<tr>
+<td>ComputerSystem</td>
+<td>1.1.0</td>
+<td>2016-3-31</td>
+<td>Added Links for &#39;Bios&#39;, &#39;Memory&#39;, &#39;Storage&#39;, and &#39;SecureBoot&#39;.  Added &#39;MemoryMirroring&#39; to the &#39;MemorySummary&#39; object.  Added &#39;TrustedModule&#39; object.  Added &#39;BootSourceOverrideMode&#39; to &#39;Boot&#39; object.  Added &#39;SDCard&#39; and &#39;UefiHttp&#39; enumerations to &#39;BootSourceOverrideTarget&#39; in &#39;Boot&#39; object.</td>
+</tr>
+<tr>
+<td>ComputerSystem</td>
+<td>1.0.2</td>
+<td>2016-3-31</td>
+<td>Errata release (see 1.0.2 errata description above).  Deprecated &#39;Unknown&#39; enumeration value for &#39;IndicatorLED&#39;.</td>
+</tr>
+<tr>
+<td>Event</td>
+<td>1.1.0</td>
+<td>2016-3-31</td>
+<td>Added &#39;Context&#39; property.</td>
+</tr>
+<tr>
+<td>EventService</td>
+<td>1.0.2</td>
+<td>2016-3-31</td>
+<td>Errata release (see 1.0.2 errata description above).  Corrected Unit annotations to use UCUM unit definitions.</td>
+</tr>
+<tr>
+<td>JsonSchemaFile</td>
+<td>1.0.2</td>
+<td>2016-3-31</td>
+<td>Errata release (see 1.0.2 errata description above).  Corrected text in &#39;Schema&#39; property descriptions to reference &quot;@odata.type&quot; instead of &quot;Type&quot;.</td>
+</tr>
+<tr>
+<td>Manager</td>
+<td>1.1.0</td>
+<td>2016-3-31</td>
+<td>Added Link for &#39;ManagerInChassis&#39;.</td>
+</tr>
+<tr>
+<td>Manager</td>
+<td>1.0.2</td>
+<td>2016-3-31</td>
+<td>Errata release (see 1.0.2 errata description above).  Corrected descriptions for &#39;ServiceEntryPointUUID&#39; to correctly match the intent of the property.</td>
+</tr>
+<tr>
+<td>ManagerNetworkProtocol</td>
+<td>1.0.2</td>
+<td>2016-3-31</td>
+<td>Errata release (see 1.0.2 errata description above).  Corrected read-write permissions on all embedded objects.  Corrected Unit annotations to use UCUM unit definitions.</td>
+</tr>
+<tr>
+<td>Power</td>
+<td>1.1.0</td>
+<td>2016-3-31</td>
+<td>Added &#39;InputRanges&#39; array and &#39;Manufacturer&#39; to &#39;PowerSupplies&#39; object.  Added enumerations to the &#39;LineInputVoltageType&#39; property in &#39;PowerSupplies&#39; that promote better interoperability and deprecated others whose terminology differs in meaning among vendors.</td>
+</tr>
+<tr>
+<td>Power</td>
+<td>1.0.2</td>
+<td>2016-3-31</td>
+<td>Errata release (see 1.0.2 errata description above).  Corrected read-write permissions on all embedded objects.  Corrected Unit annotations to use UCUM unit definitions.</td>
+</tr>
+<tr>
+<td>Resource</td>
+<td>1.1.0</td>
+<td>2016-3-31</td>
+<td>Added &#39;Identifier&#39; object, &#39;Location&#39; object and &#39;IndicatorLED&#39; definitions for use throughout the Redfish data model.  Added &#39;UnavailableOffline&#39; enumeration to &#39;State&#39; in &#39;Status&#39; object.</td>
+</tr>
+<tr>
+<td>Resource</td>
+<td>1.0.2</td>
+<td>2016-3-31</td>
+<td>Errata release (see 1.0.2 errata description above).  Corrected missing Required annotation on &#39;Id&#39; property. Added &#39;Pattern&#39; Redfish annotation for &#39;Oem&#39; property names.</td>
+</tr>
+<tr>
+<td>SessionService</td>
+<td>1.0.2</td>
+<td>2016-3-31</td>
+<td>Errata release (see 1.0.2 errata description above).  Added Unit annotations.</td>
+</tr>
+<tr>
+<td>SimpleStorage</td>
+<td>1.1.0</td>
+<td>2016-3-31</td>
+<td>Added &#39;CapacityBytes&#39; to &#39;Devices&#39; object.</td>
+</tr>
+<tr>
+<td>SimpleStorage</td>
+<td>1.0.2</td>
+<td>2016-3-31</td>
+<td>Errata release (see 1.0.2 errata description above).  Corrected Unit annotations to use UCUM unit definitions.</td>
+</tr>
+<tr>
+<td>Thermal</td>
+<td>1.1.0</td>
+<td>2016-3-31</td>
+<td>Added &#39;Name&#39; to &#39;Fan&#39; object.  Deprecated inconsistent &#39;FanName&#39; in &#39;Fan&#39;.</td>
+</tr>
+<tr>
+<td>Thermal</td>
+<td>1.0.2</td>
+<td>2016-3-31</td>
+<td>Errata release (see 1.0.2 errata description above).  Corrected read-write permissions on all embedded objects.  Corrected Unit annotations to use UCUM unit definitions.</td>
+</tr>
+<tr>
+<td>Chassis</td>
+<td>1.1.0</td>
+<td>2015-11-25</td>
+<td>Added &#39;PhysicalSecurity&#39; object for Intrusion Detection sensor support.</td>
+</tr>
+<tr>
+<td>Thermal</td>
+<td>1.0.1</td>
+<td>2015-9-17</td>
+<td>Errata release.  Renamed Fan &#39;ReadingRPM&#39; property to &#39;Reading&#39; as it was determined that the initial definition was too limiting. Added Fan property &#39;ReadingUnits&#39; to allow for either RPM or percent-based fan readings.  Corrected spelling errors throughout. Any future property name changes will result in a major version change to the schema file.</td>
+</tr>
+<tr>
+<td>Chassis</td>
+<td>1.0.1</td>
+<td>2015-9-17</td>
+<td>Errata release.  Added missing &#39;PowerState&#39; property intended for inclusion in v1.0.0.  Corrected longDescription text of &#39;CooledBy&#39;.  Clarified longDescription of &#39;Reset&#39; action.</td>
+</tr>
+<tr>
+<td>ComputerSystem</td>
+<td>1.0.1</td>
+<td>2015-9-17</td>
+<td>Errata release.  Changed enumeration values of &#39;PowerState&#39; to reflect a better set of real-world use cases.  Corrected annotation name in longDescription of &#39;UefiTargetBootSourceOverride&#39;.</td>
+</tr>
+<tr>
+<td>Manager</td>
+<td>1.0.1</td>
+<td>2015-9-17</td>
+<td>Errata release.  Corrected longDescription text for both &#39;ManagerForChassis&#39; and &#39;ManagerForSystem&#39;.</td>
+</tr>
+<tr>
+<td>Power</td>
+<td>1.0.1</td>
+<td>2015-9-17</td>
+<td>Errata release.  Corrected longDescription text for &#39;IntervalInMin&#39;.</td>
+</tr>
+<tr>
+<td>VLanNetworkInterface</td>
+<td>1.0.1</td>
+<td>2015-9-17</td>
+<td>Errata release.  Corrected maximum VLAN ID value.</td>
+</tr>
+<tr>
+<td>(all files)</td>
+<td>1.0.0</td>
+<td>various</td>
+<td>Initial release.</td>
+</tr>
+</tbody>
+</table>
 
         <div id="last-footer-fix"></div>
       </div>
-      <div id="footer"><div data-doc-version="1.0.0"><div> Published</div></div></div>
+      <div id="footer"><div data-doc-version="2016.1"><div> Published</div></div></div>
     </body>
-  </html>
+  </html>

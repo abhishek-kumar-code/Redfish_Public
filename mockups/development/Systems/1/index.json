@@ -54,6 +54,7 @@
     },
     "MemorySummary": {
         "TotalSystemMemoryGiB": 16,
+        "MemoryMirroring" : "System",		
         "Status": {
             "State": "Enabled",
             "Health": "OK",
@@ -73,6 +74,9 @@
     "Processors": {
         "@odata.id": "/redfish/v1/Systems/1/Processors"
     },
+    "Memory": {
+        "@odata.id": "/redfish/v1/Systems/1/Memory"
+    },	
     "EthernetInterfaces": {
         "@odata.id": "/redfish/v1/Systems/1/EthernetInterfaces"
     },
@@ -104,20 +108,12 @@
     "Actions": {
         "#ComputerSystem.Reset": {
             "target": "/redfish/v1/Systems/1/Actions/ComputerSystem.Reset",
-            "ResetType@Redfish.AllowableValues": [
-                "On",
-                "ForceOff",
-                "GracefulShutdown",
-                "ForceRestart",
-                "Nmi",
-                "GracefulRestart",
-                "ForceOn",
-                "PushPowerButton"
-            ]
+	    "@Redfish.ActionInfo": "/redfish/v1/Systems/1/ResetActionInfo"
         },
         "Oem": {
             "#Contoso.Reset": {
-                "target": "/redfish/v1/Systems/1/OEM/Contoso/Actions/Contoso.Reset"
+                "target": "/redfish/v1/Systems/1/OEM/Contoso/Actions/Contoso.Reset",
+		"@Redfish.ActionInfo": "/redfish/v1/Systems/1/ContosoResetActionInfo"
             }
         }
     },

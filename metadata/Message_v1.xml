@@ -1,9 +1,22 @@
-<?xml version="1.0" encoding="UTF-8"?><!-- Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.--> 
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Redfish Schema:  Message  v1.0.2-->
+<!--#                                                                                      -->
+<!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
+<!--# available at http://www.dmtf.org/standards/redfish                                   -->
+<!--# Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF).                  -->
+<!--# For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright -->
+<!--################################################################################       -->
+<!---->
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
 
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>  
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
     <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
     <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
@@ -12,22 +25,36 @@
     <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0" />
   </edmx:Reference>
-  
+
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Message">
 
-      <Term Name="ExtendedInfo" Type="Collection(Message.Message)">
+      <Term Name="ExtendedInfo" Type="Collection(Message.Message)" Nullable="false">
         <Annotation Term="OData.Description" String="The ExtendedInfo annotation can be applied to any object or property to provide additional information about the item."/>
       </Term>
 
       <ComplexType Name="Message">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
       </ComplexType>
+      <Annotation Term="Capabilities.InsertRestrictions">
+        <Record>
+          <PropertyValue Property="Insertable" Bool="false"/>
+        </Record>
+      </Annotation>
+      <Annotation Term="Capabilities.UpdateRestrictions">
+        <Record>
+          <PropertyValue Property="Updatable" Bool="false"/>
+        </Record>
+      </Annotation>
+      <Annotation Term="Capabilities.DeleteRestrictions">
+        <Record>
+          <PropertyValue Property="Deletable" Bool="false"/>
+        </Record>
+      </Annotation>
+    </Schema>
 
-      </Schema>
-    
-      <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Message.v1_0_0">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Message.v1_0_0">
 
       <ComplexType Name="Message" BaseType="Message.Message">
         <Property Name="MessageId" Type="Edm.String" Nullable="false">
@@ -38,11 +65,11 @@
           <Annotation Term="OData.Description" String="This is the human readable message, if provided."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain an optional human readable message."/>
         </Property>
-        <Property Name="RelatedProperties" Type="Collection(Edm.String)">
+        <Property Name="RelatedProperties" Type="Collection(Edm.String)" Nullable="false">
           <Annotation Term="OData.Description" String="This is an array of properties described by the message."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain an array of JSON Pointers indicating the properties described by the message, if appropriate for the message."/>
         </Property>
-        <Property Name="MessageArgs" Type="Collection(Edm.String)">
+        <Property Name="MessageArgs" Type="Collection(Edm.String)" Nullable="false">
           <Annotation Term="OData.Description" String="This array of message arguments are substituted for the arguments in the message when looked up in the message registry."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the message substitution arguments for the specific message referenced by the MessageId and shall only be included if the MessageId is present."/>
         </Property>
@@ -54,12 +81,15 @@
           <Annotation Term="OData.Description" String="Used to provide suggestions on how to resolve the situation that caused the error."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain an override of the Resolution of the message in message registry, if present."/>
         </Property>
-        <Property Name="Oem" Type="Resource.Oem">
+        <Property Name="Oem" Type="Resource.Oem" Nullable="false">
           <Annotation Term="OData.Description" String="Oem extension object."/>
           <Annotation Term="OData.LongDescription" String="This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
         </Property>
       </ComplexType>
 
     </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Message.v1_0_2"/>
+
   </edmx:DataServices>
 </edmx:Edmx>

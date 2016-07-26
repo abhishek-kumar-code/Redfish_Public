@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_0_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
     "title": "#JsonSchemaFile.v1_0_0.JsonSchemaFile",
     "$ref": "#/definitions/JsonSchemaFile",
     "definitions": {
@@ -38,7 +38,10 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
                 },
                 "Description": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
+                    "anyOf": [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
+                        {"type": "null"}
+                    ]
                 },
                 "Name": {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
@@ -55,8 +58,8 @@
                 "Schema": {
                     "type": "string",
                     "readonly": true,
-                    "description": "The type name this schema describes.",
-                    "longDescription": "The value of this property shall be the value of the Type property for that schema and shall conform to the syntax specified in the Redfish specification for the Type property."
+                    "description": "The @odata.type name this schema describes.",
+                    "longDescription": "The value of this property shall be the value of the @odata.type property for that schema and shall conform to the syntax specified in the Redfish specification for the Type property."
                 },
                 "Location": {
                     "type": "array",
@@ -68,6 +71,8 @@
                 }
             },
             "required": [
+                "Id",
+                "Name",
                 "Languages",
                 "Schema",
                 "Location"
@@ -128,5 +133,5 @@
             }
         }
     },
-    "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
+    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }

@@ -1,4 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?><!-- Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.--> 
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Redfish Schema:  Resource  v1.1.0-->
+<!--#                                                                                      -->
+<!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
+<!--# available at http://www.dmtf.org/standards/redfish                                   -->
+<!--# Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF).                  -->
+<!--# For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright -->
+<!--################################################################################       -->
+<!---->
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
 
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
@@ -35,7 +45,7 @@
       <!--Base Complex type for Links properties-->
       <ComplexType Name="Links" Abstract="true">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Property Name="Oem" Type="Resource.Oem">
+        <Property Name="Oem" Type="Resource.Oem" Nullable="false">
           <Annotation Term="OData.Description" String="Oem extension object."/>
           <Annotation Term="OData.LongDescription" String="This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
         </Property>
@@ -47,7 +57,7 @@
         <Annotation Term="Redfish.DynamicPropertyPatterns">
           <Collection>
             <Record>
-              <PropertyValue Property="Pattern" String="([a-zA-Z0-9]+(\\.[a-z]{2,})?|EID_[0-9]+)(_.+)?"/>
+              <PropertyValue Property="Pattern" String="[A-Za-z0-9_.:]+"/>
               <PropertyValue Property="Type" String="Resource.OemObject"/>
             </Record>
           </Collection>
@@ -62,14 +72,14 @@
         <Annotation Term="OData.Description" String="Base type for an Oem object."/>
         <Annotation Term="OData.LongDescription" String="This object represents the base type for an Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
       </ComplexType>
-      
+
       <!--Unversioned Base Types-->
 
       <!--Base type for Resources and ReferenceableMembers-->
       <EntityType Name="Item" Abstract="true">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="This is the base type for resources and referenceable members."/>
-        <Property Name="Oem" Type="Resource.Oem">
+        <Property Name="Oem" Type="Resource.Oem" Nullable="false">
           <Annotation Term="OData.Description" String="This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections."/>
           <Annotation Term="OData.LongDescription" String="The value of this string shall be of the format for the reserved word *Oem*."/>
         </Property>
@@ -82,7 +92,7 @@
       <EntityType Name="ResourceCollection" Abstract="true"/>
 
       <!--Shared types-->
-      
+
       <!--This object represents the standard status structure for resources.-->
       <ComplexType Name="Status">
         <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -175,7 +185,7 @@
       </EnumType>
 
     </Schema>
-    
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_0_0">
 
       <!--Base entity type for array members-->
@@ -213,15 +223,18 @@
         </Key>
         <Property Name="Description" Type="Resource.Description"/>
         <Property Name="Name" Type="Resource.Name" Nullable="false"/>
-        <Property Name="Oem" Type="Resource.Oem">
+        <Property Name="Oem" Type="Resource.Oem" Nullable="false">
           <Annotation Term="OData.Description" String="This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections."/>
           <Annotation Term="OData.LongDescription" String="The value of this string shall be of the format for the reserved word *Oem*."/>
         </Property>
       </EntityType>
-      
+
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_0_2"/>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_1_0">
+
       <ComplexType Name="Identifier">
         <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
@@ -236,6 +249,7 @@
           <Annotation Term="OData.LongDescription" String="This property shall represent the format of the DurableName property."/>
         </Property>
       </ComplexType>
+      
       <ComplexType Name="Location">
         <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
@@ -250,7 +264,7 @@
           <Annotation Term="OData.LongDescription" String="This property shall represent the format of the Info property."/>
         </Property>
         <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
-      </ComplexType>      
+      </ComplexType>
 
       <EnumType Name="DurableNameFormat">
         <Member Name="NAA">
@@ -268,12 +282,47 @@
         <Member Name="UUID">
           <Annotation Term="OData.Description" String="Universally Unique Identifier"/>
           <Annotation Term="OData.LongDescription" String="This durable name shall be the hexadecimal representation of the Universal Unique Identifier as defined in the Internation Telecom Union's OSI networking and system aspects - Naming, Addressing and Registration Specification."/>
-         </Member>
-         <Member Name="EUI">
-           <Annotation Term="OData.Description" String="IEEE-defined 64-bit Extended Unique Identifier"/>
+        </Member>
+        <Member Name="EUI">
+          <Annotation Term="OData.Description" String="IEEE-defined 64-bit Extended Unique Identifier"/>
           <Annotation Term="OData.LongDescription" String="This durable name shall be the hexadecimal representation of the IEEE-defined 64-bit Extended Unique Identifier as defined in the IEEE's Guidelines for 64-bit Global Identifier (EUI-64) Specification."/>
-         </Member>
+        </Member>
       </EnumType>
+
+      <EnumType Name="IndicatorLED">
+        <Member Name="Lit">
+          <Annotation Term="OData.Description" String="The Indicator LED is lit."/>
+        </Member>
+        <Member Name="Blinking">
+          <Annotation Term="OData.Description" String="The Indicator LED is blinking."/>
+        </Member>
+        <Member Name="Off">
+          <Annotation Term="OData.Description" String="The Indicator LED is off."/>
+        </Member>
+      </EnumType>
+
     </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_2_0">
+      
+      <EnumType Name="PowerState">
+        <Member Name="On">
+          <Annotation Term="OData.Description" String="The state is powered On."/>
+        </Member>
+        <Member Name="Off">
+          <Annotation Term="OData.Description" String="The state is powered Off."/>
+        </Member>
+        <Member Name="PoweringOn">
+          <Annotation Term="OData.Description" String="A temporary state between Off and On."/>
+        </Member>
+        <Member Name="PoweringOff">
+          <Annotation Term="OData.Description" String="A temporary state between On and Off."/>
+        </Member>
+      </EnumType>
+      
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_1_1"/>
+
   </edmx:DataServices>
 </edmx:Edmx>

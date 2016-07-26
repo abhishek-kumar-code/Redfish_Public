@@ -1,9 +1,22 @@
-<?xml version="1.0" encoding="UTF-8"?><!-- Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.--> 
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Redfish Schema:  VirtualMedia  v1.0.2-->
+<!--#                                                                                      -->
+<!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
+<!--# available at http://www.dmtf.org/standards/redfish                                   -->
+<!--# Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF).                  -->
+<!--# For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright -->
+<!--################################################################################       -->
+<!---->
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
 
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>  
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource.v1_0_0" />
   </edmx:Reference>
@@ -12,11 +25,25 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="VirtualMedia">
 
-      <EntityType Name="VirtualMedia" BaseType="Resource.v1_0_0.Resource">
-        <Annotation Term="OData.Description" String="This is the schema definition for the Virtual Media Service."/>
+      <EntityType Name="VirtualMedia" BaseType="Resource.v1_0_0.Resource" Abstract="true">
+        <Annotation Term="OData.Description" String="This resource allows monitoring and control of an instance of virtual media (e.g. a remote CD, DVD, or USB device) functionality provided by a Manager for a system or device."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a virtual media service for a Redfish implementation."/>
       </EntityType>
-      
+      <Annotation Term="Capabilities.InsertRestrictions">
+        <Record>
+          <PropertyValue Property="Insertable" Bool="false"/>
+        </Record>
+      </Annotation>
+      <Annotation Term="Capabilities.UpdateRestrictions">
+        <Record>
+          <PropertyValue Property="Updatable" Bool="false"/>
+        </Record>
+      </Annotation>
+      <Annotation Term="Capabilities.DeleteRestrictions">
+        <Record>
+          <PropertyValue Property="Deletable" Bool="false"/>
+        </Record>
+      </Annotation>      
     </Schema>
     
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="VirtualMedia.v1_0_0">
@@ -33,7 +60,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this string shall be an URI.  A null value indicated no image connection."/>
           <Annotation Term="OData.IsURL"/>
         </Property>
-        <Property Name="MediaTypes" Type="Collection(VirtualMedia.v1_0_0.MediaType)">
+        <Property Name="MediaTypes" Type="Collection(VirtualMedia.v1_0_0.MediaType)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the media types supported as virtual media."/>
           <Annotation Term="OData.LongDescription" String="The values of this array shall be the supported media types for this connection."/>
@@ -55,7 +82,6 @@
         </Property>
       </EntityType>
 
-      <!-- These are all supported media types. -->
       <EnumType Name="MediaType">
         <Member Name="CD">
           <Annotation Term="OData.Description" String="A CD-ROM format (ISO) image"/>
@@ -71,7 +97,6 @@
         </Member>
       </EnumType>
 
-      <!-- These are all supported types of connection for virtual media. -->
       <EnumType Name="ConnectedVia">
         <Member Name="NotConnected">
           <Annotation Term="OData.Description" String="No current connection"/>
@@ -88,5 +113,10 @@
       </EnumType>
 
     </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="VirtualMedia.v1_0_2">
+      <EntityType Name="VirtualMedia" BaseType="VirtualMedia.v1_0_0.VirtualMedia"/>
+    </Schema>
+
   </edmx:DataServices>
 </edmx:Edmx>

@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_0_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
     "title": "#VLanNetworkInterface.v1_0_0.VLanNetworkInterface",
     "$ref": "#/definitions/VLanNetworkInterface",
     "definitions": {
@@ -29,7 +29,10 @@
                     "longDescription": "The value of this property shall be used to indicate if this VLAN is enabled for this interface."
                 },
                 "VLANId": {
-                    "$ref": "#/definitions/VLANId",
+                    "anyOf": [
+                        {"$ref": "#/definitions/VLANId"},
+                        {"type": "null"}
+                    ],
                     "description": "This indicates the VLAN identifier for this VLAN.",
                     "longDescription": "The value of this property shall be used to indicate the VLAN identifier for this VLAN."
                 }
@@ -79,7 +82,10 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
                 },
                 "Description": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
+                    "anyOf": [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
+                        {"type": "null"}
+                    ]
                 },
                 "Name": {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
@@ -93,17 +99,24 @@
                     "longDescription": "The value of this property shall be used to indicate if this VLAN is enabled for this interface."
                 },
                 "VLANId": {
-                    "$ref": "#/definitions/VLANId",
+                    "anyOf": [
+                        {"$ref": "#/definitions/VLANId"},
+                        {"type": "null"}
+                    ],
                     "description": "This indicates the VLAN identifier for this VLAN.",
                     "longDescription": "The value of this property shall be used to indicate the VLAN identifier for this VLAN."
                 }
             },
+            "required": [
+                "Id",
+                "Name"
+            ],
             "requiredOnCreate": [
                 "VLANEnable",
                 "VLANId"
             ],
-            "description": "This is the base type for resources and referenceable members."
+            "description": "This resource contains information for a Virtual LAN (VLAN) network instance available on a manager, system or other device."
         }
     },
-    "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
+    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }

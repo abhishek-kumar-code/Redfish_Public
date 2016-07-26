@@ -1,23 +1,26 @@
-var vows = require('vows');
-var glob = require('glob');
-var path = require('path');
-var jsonlint = require('jsonlint');
-var fs = require('fs');
-var xmljs = require('libxmljs-mt');
-var assert = require('assert');
-var request = require('request');
+const vows = require('vows');
+const glob = require('glob');
+const path = require('path');
+const fs = require('fs');
+const xmljs = require('libxmljs-mt');
+const assert = require('assert');
+const request = require('request');
 
-var files = glob.sync(path.join('{metadata,mockups}', '**', '*.xml'))
-var syntaxBatch = {}, schemaBatch = {};
+const files = glob.sync(path.join('{metadata,mockups}', '**', '*.xml'))
+const syntaxBatch = {}, schemaBatch = {};
 
-var ucum = null;
-var unitsWhiteList = ['RPM'];
+let ucum = null;
+let ucumError = false;
+const unitsWhiteList = ['RPM'];
 
 function getUcumXML(callback, context, end)
 {
-    request('http://unitsofmeasure.org/ucum-essence.xml', function (error, response, body) {
+    request({url: 'http://unitsofmeasure.org/ucum-essence.xml', timeout: 5000}, function (error, response, body) {
       if (!error && response.statusCode == 200) {
         ucum = xmljs.parseXml(body);
+      }
+      else {
+          ucumError = true;
       }
       callback(context, end);
     });
@@ -31,7 +34,7 @@ function readFile(file, callback)
 files.forEach(function(file) {
   syntaxBatch[file] = {
     topic: function() {
-      if(ucum === null)
+      if(ucum === null && ucumError === false)
       {
           getUcumXML(readFile, file, this.callback);
       }
@@ -44,43 +47,57 @@ files.forEach(function(file) {
       xmljs.parseXml(txt);
     },
     'units are valid': function(err, txt) {
+      if(ucum === null)
+      {
+           process.stderr.write('Skipping units test due to inability to obtain UCUM file...');
+           return;
+      }
       if(this.context.title.indexOf('_v') === -1)
       {
            return;
       }
-      var doc = xmljs.parseXml(txt);
-      var measures = doc.find('//*[local-name()="Annotation"][@Term="Measures.Unit"]/@String');
+      let doc = xmljs.parseXml(txt);
+      let measures = doc.find('//*[local-name()="Annotation"][@Term="Measures.Unit"]/@String');
       if(measures.length === 0)
       {
           return;
       }
-      for(var i = 0; i < measures.length; i++)
+      for(let i = 0; i < measures.length; i++)
       {
-          var unitName = measures[i].value();
+          let unitName = measures[i].value();
           if(unitsWhiteList.indexOf(unitName) !== -1)
           {
               continue;
           }
-          var pos = unitName.indexOf('/s');
+          let pos = unitName.indexOf('/s');
           if(pos !== -1)
           {
               unitName = unitName.substring(0, pos);
           }
-          var ucumTypes = ucum.get('//*[@Code="'+unitName+'"]');
+          let ucumTypes = ucum.get('//*[@Code="'+unitName+'"]');
           if(ucumTypes === undefined)
           {
               prefix = ucum.get('//*[local-name()="prefix"][@Code="'+unitName[0]+'"]');
               if(prefix !== undefined)
               {
-                  var tmp = unitName.substring(1);
+                  let tmp = unitName.substring(1);
                   ucumTypes = ucum.get('//*[@Code="'+tmp+'"]');
+                  if(ucumTypes === undefined)
+                  {
+                      prefix = ucum.get('//*[local-name()="prefix"][@Code="'+unitName.substring(0,2)+'"]');
+                      if(prefix !== undefined)
+                      {
+                          let tmp = unitName.substring(2);
+                          ucumTypes = ucum.get('//*[@Code="'+tmp+'"]');
+                      }
+                  }
               }
               else
               {
                   prefix = ucum.get('//*[local-name()="prefix"][@Code="'+unitName.substring(0,2)+'"]');
                   if(prefix !== undefined)
                   {
-                      var tmp = unitName.substring(2);
+                      let tmp = unitName.substring(2);
                       ucumTypes = ucum.get('//*[@Code="'+tmp+'"]');
                   }
               }

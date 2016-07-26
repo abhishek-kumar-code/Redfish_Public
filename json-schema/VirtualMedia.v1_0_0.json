@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_0_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
     "title": "#VirtualMedia.v1_0_0.VirtualMedia",
     "$ref": "#/definitions/VirtualMedia",
     "definitions": {
@@ -68,7 +68,10 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
                 },
                 "Description": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
+                    "anyOf": [
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
+                        {"type": "null"}
+                    ]
                 },
                 "Name": {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
@@ -102,7 +105,10 @@
                     "longDescription": "The values of this array shall be the supported media types for this connection."
                 },
                 "ConnectedVia": {
-                    "$ref": "#/definitions/ConnectedVia",
+                    "anyOf": [
+                        {"$ref": "#/definitions/ConnectedVia"},
+                        {"type": "null"}
+                    ],
                     "readonly": true,
                     "description": "Current virtual media connection methods",
                     "longDescription": "The value of this property shall indicate the current connection method from a client to the virtual media represented by this resource.  A value of NotConnected shall indicate no connection is present.  A value of URI shall indicate that a remote connection via a URI reference type is being used. "
@@ -126,9 +132,13 @@
                     "longDescription": "The value of this property shall be used to indicate if the remote device media prevents writing to that media. "
                 }
             },
-            "description": "This is the schema definition for the Virtual Media Service.",
+            "required": [
+                "Id",
+                "Name"
+            ],
+            "description": "This resource allows monitoring and control of an instance of virtual media (e.g. a remote CD, DVD, or USB device) functionality provided by a Manager for a system or device.",
             "longDescription": "This resource shall be used to represent a virtual media service for a Redfish implementation."
         }
     },
-    "copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
+    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }
