@@ -66,7 +66,7 @@
       </ComplexType>
 
       <Term Name="Enumeration" Type="Collection(RedfishExtensions.v1_0_0.EnumerationMember)" Nullable="false">
-        <Annotation Term="OData.Description" String="The term enumerates the allowable set of non-standard string values where a standard enumeration cannot be used."/>
+        <Annotation Term="OData.Description" String="The term enumerates the allowable set of legacy, non-standard string values where a standard enumeration cannot be used.  This annotation should not be used for any new values."/>
       </Term>
 
       <ComplexType Name="EnumerationMember">
