@@ -118,7 +118,7 @@
         <Property Name="MessageIds" Type="Collection(Edm.String)"> 
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A list of MessageIds that the service will only send."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall specify an array of MessageIds which will generate events sent to the subscriber.  Events with MessageIds not contained in this array shall not be sent to the subscriber."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall specify an array of MessageIds that are the only allowable values for the MessageId property within an EventRecord sent to the subscriber.  Events with MessageIds not contained in this array shall not be sent to the subscriber."/>
         </Property>
       </EntityType>
     </Schema>
