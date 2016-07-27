@@ -141,6 +141,15 @@
         <Member Name="UnavailableOffline">
           <Annotation Term="OData.Description" String="This function or resource is present but cannot be used"/>
         </Member>
+        <Member Name="Deferring">
+          <Annotation Term="OData.Description" String="The element will not process any commands but will queue new requests."/>
+        </Member>
+        <Member Name="Quiesced">
+          <Annotation Term="OData.Description" String="The element is enabled but only processes a restricted set of commands."/>
+        </Member>
+        <Member Name="Updating">
+          <Annotation Term="OData.Description" String="The element is updating and may be unavailable or degraded."/>
+        </Member>
       </EnumType>
 
       <!--This represents the state of the health of a resource.-->
