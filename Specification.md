@@ -85,7 +85,8 @@ The following referenced documents are indispensable for the application of this
 * <a id="OData-UnitsOfMeasure">OData Version 4.0: Units of Measure Vocabulary</a>. 24 February 2014. [http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml](http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml "http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml")
 * <a id="SSDP">Simple Service Discovery Protocol/1.0</a>. 28 October 1999. [http://tools.ietf.org/html/draft-cai-ssdp-v1-03](http://tools.ietf.org/html/draft-cai-ssdp-v1-03 "http://tools.ietf.org/html/draft-cai-ssdp-v1-03")
 * <a id="UCUM">The Unified Code for Units of Measure</a>.  [http://www.unitsofmeasure.org/ucum.html](http://www.unitsofmeasure.org/ucum.html "http://www.unitsofmeasure.org/ucum.html")
-* <a id="W3C-CORS">W3C Recommendation of Cross-Origin Resource Sharing</a>. 16 January 2014. [http://www.w3.org/TR/cors/](http://www.w3.org/TR/cors "http://www.w3.org/TR/cors/")  
+* <a id="W3C-CORS">W3C Recommendation of Cross-Origin Resource Sharing</a>. 16 January 2014. [http://www.w3.org/TR/cors/](http://www.w3.org/TR/cors "http://www.w3.org/TR/cors/")
+* <a id="SNIA-TLS">SNIA TLS Specification for Storage Systems</a>. 20 November 2014. [http://www.snia.org/tls/](http://www.snia.org/tls/ "http://www.snia.org/tls/")
 
 ## Terms and definitions
 In this document, some terms have a specific meaning beyond the normal English meaning. Those terms are defined in this clause.
@@ -2101,20 +2102,26 @@ Redfish devices may implement the additional SSDP messages defined by UPnP to an
 ### Protocols
 
 #### TLS
-Implementations shall support TLS v1.1 or later
+Implementations shall support TLS v1.1 or later.  Implementations should support TLS v1.2 or later.  It is strongly recommended that an implementation does not use TLS v1.1.
+
+Implementations should support the [SNIA TLS Specification for Storage Systems](#SNIA-TLS).
 
 #### Cipher suites
 Implementations should support AES-256 based ciphers from the TLS suites.
 
 Redfish implementations should consider supporting ciphers similar to below which enable authentication and identification without use of trusted certificates.
 
-	 TLS_PSK_WITH_AES_256_GCM_SHA384
+         TLS_PSK_WITH_AES_256_GCM_SHA384
      TLS_DHE_PSK_WITH_AES_256_GCM_SHA384
      TLS_RSA_PSK_WITH_AES_256_GCM_SHA384
 
 Additional advantage with using above recommended ciphers is -
 
 "AES-GCM is not only efficient and secure, but hardware implementations can achieve high speeds with low cost and low latency, because the mode can be pipelined."
+
+Redfish implementations should support the following additional ciphers.
+
+            TLS_RSA_WITH_AES_128_CBC_SHA
 
 References to RFCs -
 
