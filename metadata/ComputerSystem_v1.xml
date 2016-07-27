@@ -154,7 +154,7 @@
         <Property Name="UUID" Type="Resource.UUID">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The universal unique identifier (UUID) for this system"/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be used to contain a universal unique identifier number for the system. RFC4122 describes methods that can be used to create the value. The value should be considered to be opaque. Client software should only treat the overall value as a universally unique identifier and should not interpret any sub-fields within the UUID. If the system supports SMBIOS, the value and byte order of the property should match byte-for-byte with the memory byte order (from lowest address to highest) of the SMBIOS UUID. Following this order will make it simpler to correlate the UUID with the SMBIOS UUID"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be used to contain a universal unique identifier number for the system. RFC4122 describes methods that can be used to create the value. The value should be considered to be opaque. Client software should only treat the overall value as a universally unique identifier and should not interpret any sub-fields within the UUID. If the system supports SMBIOS, the value of the property should be formed by following the SMBIOS 2.6+ recommendation for converting the SMBIOS 16-byte UUID structure into the redfish canonical xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx string format so that the property value matches the byte order presented by current OS APIs such as WMI and dmidecode."/>
         </Property>
         <Property Name="HostName" Type="Edm.String">
           <Annotation Term="OData.Description" String="The DNS Host Name, without any domain information"/>
@@ -363,6 +363,9 @@
         <Member Name="UefiHttp">
           <Annotation Term="OData.Description" String="Boot from a UEFI HTTP network location"/>
         </Member>
+        <Member Name="RemoteDrive">
+          <Annotation Term="OData.Description" String="Boot from a remote drive (e.g. iSCSI)"/>
+        </Member>
       </EnumType>
 
       <EnumType Name="BootSourceOverrideEnabled">
@@ -531,9 +534,13 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_2_0">
 
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_1_1.ComputerSystem">
-        <Property Name="HostingRoles" Type="Collection(ComputerSystem.v1_1_0.HostingRole)" Nullable="false">
+        <Property Name="HostingRoles" Type="Collection(ComputerSystem.v1_2_0.HostingRole)" Nullable="false">
           <Annotation Term="OData.Description" String="The hosing roles that this computer system supports."/>
           <Annotation Term="OData.LongDescription" String="The values of this collection shall be the hosting roles supported by this computer system."/>
+        </Property>
+        <Property Name="HostedServices" Type="ComputerSystem.v1_2_0.HostedServices" Nullable="false">
+          <Annotation Term="OData.Description" String="The services that this computer system supports."/>
+          <Annotation Term="OData.LongDescription" String="The values of this collection shall describe services supported by this computer system."/>
         </Property>
         <NavigationProperty Name="MemoryDomains" Type="MemoryDomainCollection.MemoryDomainCollection" ContainsTarget="true">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
