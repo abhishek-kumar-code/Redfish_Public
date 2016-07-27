@@ -110,7 +110,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventDestination.v1_1_0">
       <EntityType Name="EventDestination" BaseType="EventDestination.v1_0_2.EventDestination">
-        <NavigationProperty Name="OriginResources" Type="Collection(Resource.Item)" ContainsTarget="true">
+        <NavigationProperty Name="OriginResources" Type="Collection(Resource.Item)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A collection of resources that may be referenced in the OriginOfCondition property of an EventRecord resulting from this subscription."/>
           <Annotation Term="OData.LongDescription" String="If present, the values shall restrict the resources that may be referenced in the OriginOfCondition property within an EventRecord sent to the Destination specified by this subscription."/>
