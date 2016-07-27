@@ -2104,7 +2104,7 @@ Redfish devices may implement the additional SSDP messages defined by UPnP to an
 #### TLS
 Implementations shall support TLS v1.1 or later.
 
-Implementations should support TLS v1.2 or later.
+Implementations should support the latest version of the TLS v1.x specification.
 
 Implementations should support the [SNIA TLS Specification for Storage Systems](#SNIA-TLS).
 
