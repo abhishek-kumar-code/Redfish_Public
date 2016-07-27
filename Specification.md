@@ -85,7 +85,8 @@ The following referenced documents are indispensable for the application of this
 * <a id="OData-UnitsOfMeasure">OData Version 4.0: Units of Measure Vocabulary</a>. 24 February 2014. [http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml](http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml "http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml")
 * <a id="SSDP">Simple Service Discovery Protocol/1.0</a>. 28 October 1999. [http://tools.ietf.org/html/draft-cai-ssdp-v1-03](http://tools.ietf.org/html/draft-cai-ssdp-v1-03 "http://tools.ietf.org/html/draft-cai-ssdp-v1-03")
 * <a id="UCUM">The Unified Code for Units of Measure</a>.  [http://www.unitsofmeasure.org/ucum.html](http://www.unitsofmeasure.org/ucum.html "http://www.unitsofmeasure.org/ucum.html")
-* <a id="W3C-CORS">W3C Recommendation of Cross-Origin Resource Sharing</a>. 16 January 2014. [http://www.w3.org/TR/cors/](http://www.w3.org/TR/cors "http://www.w3.org/TR/cors/")  
+* <a id="W3C-CORS">W3C Recommendation of Cross-Origin Resource Sharing</a>. 16 January 2014. [http://www.w3.org/TR/cors/](http://www.w3.org/TR/cors "http://www.w3.org/TR/cors/")
+* <a id="SNIA-TLS">SNIA TLS Specification for Storage Systems</a>. 20 November 2014. [http://www.snia.org/tls/](http://www.snia.org/tls/ "http://www.snia.org/tls/")
 
 ## Terms and definitions
 In this document, some terms have a specific meaning beyond the normal English meaning. Those terms are defined in this clause.
@@ -707,7 +708,12 @@ HTTP defines headers that can be used in response messages.  The following table
 The [Link header](#link-header-table) provides metadata information on the
 accessed resource in response to a HEAD or GET operation. In addition to
 links from the resource, the URL of the JSON schema for the resource shall be
-returned with a `rel=describedby`.  URLs of the JSON schema for an annotation should be returned without a `rel=describedby`.
+returned with a `rel=describedby`.  URLs of the JSON schema for an annotation should be returned without a `rel=describedby`. For example the link headers of a ManagerAccount with a role of Admin.
+
+~~~http
+Link: </redfish/v1/AccountService/Roles/Admin>; path=/Links/Role
+Link: </redfish/v1/Schemas/ManagerAccount.v1_0_2.json>; rel=describedby
+~~~
 
 Link header(s) shall be returned on HEAD and a Link header satisfying
 `rel=describedby` shall be returned on GET and HEAD.
@@ -1396,6 +1402,15 @@ The `LongDescription` annotation term is defined in http://docs.oasis-open.org/o
 
 Individual resources are defined as entity types within an OData Schema representation of the Redfish Schema according to [OData-Schema](#OData-CSDL). The representation may include annotations to facilitate automatic generation of JSON Schema representation of the Redfish Schema capable of validating JSON payloads.
 
+##### Schema Modification Rules
+
+Schema referenced from the implementation, either from the OData Service Document or the JSON Schema File representations, may vary from the canonical definitions of those Schema defined by the Redfish Schema or other entities, provided they adhere to the rules in the list below.  Clients should take this into consideration when attempting operations on the resources defined by schema.
+* Modified schema may constrain a read/write property to be read only.
+* Modified schema may remove properties. 
+* Modified schema may change any Reference Uri to point to Schema that adheres to the modification rules.   
+* Other modifications to the Schema shall not be allowed.
+
+##### Schema Version Requirements
 The outer element of the OData Schema representation document shall be the `Edmx` element, and shall have a `Version` attribute with a value of "4.0".
 
 ~~~xml
@@ -1763,7 +1778,7 @@ The next fragment shows an example of how the previous schema and the "AnvilType
 
 ##### Oem property format and content
 
-OEM-specified objects that are contained within the [Oem property](#oem-property) must be valid JSON objects that follow the format of a Redfish [complex type](#resource-type-definitions). The name of the object (property) shall uniquely identify the OEM or organization that manages the top of the namespace under which the property is defined. This is described in more detail in the following clause. The OEM-specified property shall also include a [type property](#type-property) that provides the location of the schema and the type definition for the property within that schema. The Oem property can simultaneously hold multiple OEM-specified objects, including objects for more than one company or organization
+OEM-specified objects that are contained within the [Oem property](#oem-property) shall be valid JSON objects that follow the format of a Redfish [complex type](#resource-type-definitions). The name of the object (property) shall uniquely identify the OEM or organization that manages the top of the namespace under which the property is defined. This is described in more detail in the following clause. The OEM-specified property shall also include a [type property](#type-property) that provides the location of the schema and the type definition for the property within that schema. The Oem property can simultaneously hold multiple OEM-specified objects, including objects for more than one company or organization
 
 The definition of any other properties that are contained within the OEM-specific complex type, along with the functional specifications, validation, or other requirements for that content is OEM-specific and outside the scope of this specification. While there are no Redfish-specified limits on the size or complexity of the OEM-specified elements within an OEM-specified JSON object, it is intended that OEM properties will typically only be used for a small number of simple properties that augment the Redfish resource. If a large number of objects or a large quantity of data (compared to the size of the Redfish resource) is to be supported, the OEM should consider having the OEM-specified object point to a separate resource for their extensions.
 
@@ -2101,20 +2116,28 @@ Redfish devices may implement the additional SSDP messages defined by UPnP to an
 ### Protocols
 
 #### TLS
-Implementations shall support TLS v1.1 or later
+Implementations shall support TLS v1.1 or later.
+
+Implementations should support the latest version of the TLS v1.x specification.
+
+Implementations should support the [SNIA TLS Specification for Storage Systems](#SNIA-TLS).
 
 #### Cipher suites
 Implementations should support AES-256 based ciphers from the TLS suites.
 
 Redfish implementations should consider supporting ciphers similar to below which enable authentication and identification without use of trusted certificates.
 
-	 TLS_PSK_WITH_AES_256_GCM_SHA384
+         TLS_PSK_WITH_AES_256_GCM_SHA384
      TLS_DHE_PSK_WITH_AES_256_GCM_SHA384
      TLS_RSA_PSK_WITH_AES_256_GCM_SHA384
 
 Additional advantage with using above recommended ciphers is -
 
 "AES-GCM is not only efficient and secure, but hardware implementations can achieve high speeds with low cost and low latency, because the mode can be pipelined."
+
+Redfish implementations should support the following additional ciphers.
+
+            TLS_RSA_WITH_AES_128_CBC_SHA
 
 References to RFCs -
 
