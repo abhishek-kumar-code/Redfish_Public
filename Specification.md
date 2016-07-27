@@ -1401,6 +1401,7 @@ Individual resources are defined as entity types within an OData Schema represen
 Schema referenced from the implementation, either from the OData Service Document or the JSON Schema File representations, may vary from the canonical definitions of those Schema defined by the Redfish Schema or other entities, provided they adhere to the rules in the list below.  Clients should take this into consideration when attempting operations on the resources defined by schema.
 * Modified schema may constrain a read/write property to be read only.
 * Modified schema may remove properties. 
+* Modified schema may change any Reference Uri to point to Schema that adheres to the modification rules.   
 * Other modifications to the Schema shall not be allowed.
 
 ##### Schema Version Requirements
