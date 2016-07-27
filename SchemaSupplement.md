@@ -101,7 +101,7 @@ The format of the string follows the 35-character string format specified in RFC
 
 If the computer system supports SMBIOS, then the string should be formed from the raw binary 16-byte SMBIOS UUID structure.  This allows out-of-band clients to correlate the UUID that in-band agents are reading from SMBIOS with the UUID represented out-of-band via the redfish API.
 
-The SMBIOS 2.6+ specification specifies the proper algorithm for converting the raw binary SMBIOS 16-byte structure into the conical  string format of form "xxxxxx-xxxx-xxxx-xxxx-xxxxxx").  Redfish services should follow the SMBIOS 2.6+ specification for implementing this conversion.
+The SMBIOS 2.6+ specification specifies the proper algorithm for converting the raw binary SMBIOS 16-byte structure into the canonical  string format of form "xxxxxx-xxxx-xxxx-xxxx-xxxxxx").  Redfish services should follow the SMBIOS 2.6+ specification for implementing this conversion.
 WMI and Linux dmidecode also follow the SMBIOS guidelines.
 
 Specifically, since RFC4122 defines that the conical string value should follow network byte ordering, and since SMBIOS represents the UUID as five fields shown below:
@@ -116,15 +116,15 @@ Specifically, since RFC4122 defines that the conical string value should follow 
     }
 then for little-endian systems (including x86 systems), there is a little-endian to network-byte-order conversion required for the first three fields to convert the SMBIOS binary UUID to network byte order.
 
-Therefore, as specified in the SMBIOS 2.6+ specification, if the conical UUID string is:
+Therefore, as specified in the SMBIOS 2.6+ specification, if the canonical UUID string is:
 
     "00112233-4455-6677-8899-aabbccddeeff"
 then the corresponding raw representation in the SMBIOS UUID structure would be:
 
     raw_smbios_uuid={ 0x33, 0x22, 0x11, 0x00,    0x55, 0x44,     0x77, 0x66,     0x88, 0x99,     0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF }
-and the C-code to convert the raw SMBIOS UUID struct in a little-endian system to the conical string would be:
+and the C-code to convert the raw SMBIOS UUID struct in a little-endian system to the canonical string would be:
 
-    /* routine to convert raw little-endian smbios structure to conical string */
+    /* routine to convert raw little-endian smbios structure to canonical string */
     sprintf(redfishUUID,"%02x%02x%02x%02x-%02x%02x-%02x%02x-%02x%02x-%02x%02x%02x%02x%02x%02x")
         raw_smbios_uuid[3], raw_smbios_uuid[2], raw_smbios_uuid[1],raw_smbios_uuid[0],
         raw_smbios_uuid[5],raw_smbios_uuid[4],
@@ -133,7 +133,7 @@ and the C-code to convert the raw SMBIOS UUID struct in a little-endian system t
         raw_smbios_uuid[10],raw_smbios_uuid[11],raw_smbios_uuid[12],raw_smbios_uuid[13],raw_smbios_uuid[14],raw_smbios_uuid[15]
         );
     
-This will create the same conical formated string as WMI and dmidecode for little-endian X86 systems.
+This will create the same canonical formated string as WMI and dmidecode for little-endian X86 systems.
 In the case that the computer architecture is not little-endian, then the conversion and conical representation should be the same as the OS APIs such as WMI and dmidecode.
 
 Note that as specified in RFC4122, the fields in the string should be zero-filled hex values as shown in the conversion code above so that the overall string length and format is of the form xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx.
