@@ -28,11 +28,11 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ZoneCollection_v1.xml">
     <edmx:Include Namespace="ZoneCollection"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Endpoint_v1.xml">
-    <edmx:Include Namespace="Endpoint"/>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/EndpointCollection_v1.xml">
+    <edmx:Include Namespace="EndpointCollection"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Switch_v1.xml">
-    <edmx:Include Namespace="Switch"/>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/SwitchCollection_v1.xml">
+    <edmx:Include Namespace="SwitchCollection"/>
   </edmx:Reference>
 
   <edmx:DataServices>
