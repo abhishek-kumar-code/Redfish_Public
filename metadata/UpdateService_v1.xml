@@ -28,6 +28,36 @@
         <Annotation Term="OData.Description" String="This schema defines a storage subsystem and its respective properties.  A storage subsystem represents a set of storage controllers (physical or virtual) and the resources such as volumes that can be accessed from that subsystem."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent resources that represent a storage subsystem in the Redfish specification."/>
       </EntityType>
+      <Annotation Term="Capabilities.InsertRestrictions">
+        <Record>
+          <PropertyValue Property="Insertable" Bool="false"/>
+        </Record>
+      </Annotation>
+      <Annotation Term="Capabilities.UpdateRestrictions">
+        <Record>
+          <PropertyValue Property="Updatable" Bool="true"/>
+          <Annotation Term="OData.Description" String="The Update Service can be updated to change properties such as  ServiceEnabled."/>
+        </Record>
+      </Annotation>
+      <Annotation Term="Capabilities.DeleteRestrictions">
+        <Record>
+          <PropertyValue Property="Deletable" Bool="false"/>
+        </Record>
+      </Annotation>
+
+      <Action Name="SimpleUpdate" IsBound="true">
+        <Parameter Name="UpdateService" Type="UpdateService.v1_0_0.Actions"/>
+        <Parameter Name="ImageURI" Type="Edm.String">
+          <Annotation Term="OData.Description" String="The URI of the software image to be installed."/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall contain a URI referencing a software image to be retreived by the UpdateService for the purpose of installing software contained within the image."/>
+        </Parameter>
+        <Parameter Name="TransferProtocol" Type="Edm.String">
+          <Annotation Term="OData.Description" String="The network protocol used by the Update Service to retrieve the software image file located at the URI provided in ImageURI, if the URI does not contain a scheme."/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall contain the network protocol that the Update Service shall use to retreive the software image located at the ImageURL.  If this parameter is not provided (or supported), and a transfer protocol is not specified by a scheme contained within ImageURL, the Update Service shall use HTTP to retrieve the image."/>
+        </Parameter>
+        <Annotation Term="OData.Description" String="This action is used to update software components."/>
+        <Annotation Term="OData.LongDescription" String="This action shall perform an update of installed software component(s) as contained within a software image file located at a URI referenced by the ImageURI parameter."/>
+      </Action>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="UpdateService.v1_0_0">
@@ -63,7 +93,7 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="Oem" Type="UpdateService.v1_0_0.OemActions" Nullable="false"/>
       </ComplexType>
-
+	  
       <ComplexType Name="OemActions">
         <Annotation Term="OData.AdditionalProperties" Bool="true"/>
       </ComplexType>
