@@ -4,6 +4,9 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
     <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
   </edmx:Reference>
@@ -70,7 +73,7 @@
           <Annotation Term="OData.Description" String="Redundancy information for the lower level endpoints supporting this endpoint"/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
-		<Property Name="HostReservationMemoryBytes" Type="Endpoint.v1_0_0.HostReservationMemoryBytes">
+          <Annotation Term="Measures.Unit" String="By"/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The amount of memory in Bytes that the Host should allocate to connect to this endpoint."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the amount of memory in Bytes that the Host should allocate to connect to this endpoint."/>
