@@ -70,6 +70,11 @@
           <Annotation Term="OData.Description" String="Redundancy information for the lower level endpoints supporting this endpoint"/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
+		<Property Name="HostReservationMemoryBytes" Type="Endpoint.v1_0_0.HostReservationMemoryBytes">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The amount of memory in Bytes that the Host should allocate to connect to this endpoint."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the amount of memory in Bytes that the Host should allocate to connect to this endpoint."/>
+        </Property>
      
         <Property Name="Links" Type="Endpoint.v1_0_0.Links" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
