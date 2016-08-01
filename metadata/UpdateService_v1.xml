@@ -46,12 +46,12 @@
           <Annotation Term="OData.Description" String="An inventory of firmware."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a resource of type SoftwareInventoryCollection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
         <NavigationProperty Name="SoftwareInventory" Type="SoftwareInventoryCollection.SoftwareInventoryCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An inventory of software."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a resource of type SoftwareInventoryCollection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>
 		</NavigationProperty>
         <Property Name="Actions" Type="UpdateService.v1_0_0.Actions" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -63,7 +63,7 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="Oem" Type="UpdateService.v1_0_0.OemActions" Nullable="false"/>
       </ComplexType>
-      
+
       <ComplexType Name="OemActions">
         <Annotation Term="OData.AdditionalProperties" Bool="true"/>
       </ComplexType>
