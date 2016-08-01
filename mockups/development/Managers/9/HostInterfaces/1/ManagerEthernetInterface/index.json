@@ -1,9 +1,9 @@
 {
     "@Redfish.Copyright":"Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#EthernetInterface.EthernetInterface",
-    "@odata.id": "/redfish/v1/Managers/9/EthernetInterfaces/1",
+    "@odata.id": "/redfish/v1/Managers/9/HostInterfaces/1/ManagerEthernetInterface",
     "@odata.type": "#EthernetInterface.v1_0_2.EthernetInterface",
-    "Id": "1",
+    "Id": "ManagerEthernetInterface",
     "Name": "Manager Ethernet Interface",
     "Description": "Management Network Interface",
     "Status": {
@@ -49,10 +49,5 @@
             "AddressOrigin": "Static",
             "AddressState": "Preferred"
         }
-    ],
-    "Links": {
-        "HostInterface": {
-            "@odata.id": "/redfish/v1/Managers/9/HostInterfaces/1"
-        }
-    }
+    ]
 }

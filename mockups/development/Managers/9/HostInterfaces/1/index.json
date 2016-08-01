@@ -6,7 +6,7 @@
     "Id": "1",
     "Name": "Host Interface",
     "Description": "Management Host Interface",
-    "Type": "Type1",
+    "Type": "NetworkHostInterface",
     "Status": {
         "State": "Enabled",
         "Health": "OK"
@@ -20,28 +20,11 @@
         "OemAuth"
     ],
     "HTTPMode": "HTTPSOnly",
-    "HostIPAssignment": {
-        "IPv4": {
-            "Method": "Static",
-            "Address": "192.168.0.56",
-            "Mask": "255.255.255.0",
-            "Port": 8080,
-            "VLAN": {
-                "VLANEnable": false,
-                "VLANId": 0
-            }
-        },
-        "IPv6": {
-            "Method": "Static",
-            "Address": "fe80::1ec1:deff:fe6f:1e25",
-            "PrefixLength": 64,
-            "Port": 8080,
-            "VLAN": {
-                "VLANEnable": false,
-                "VLANId": 0
-            }
-        },
-        "Oem": {}
+    "HostEthernetInterface": {
+        "@odata.id": "/redfish/v1/Managers/9/HostInterfaces/1/HostEthernetInterface"
+    },
+    "ManagerEthernetInterface": {
+        "@odata.id": "/redfish/v1/Managers/9/HostInterfaces/1/ManagerEthernetInterface"
     },
     "ManagementIPDiscovery": {
         "SSDP": {
@@ -67,9 +50,11 @@
                 "@odata.id": "/redfish/v1/Systems/2"
             }
         ],
-        "EthernetInterface": {
-            "@odata.id": "/redfish/v1/Managers/9/EthernetInterfaces/1"
-        }
+        "EthernetInterfaces": [
+            {
+                "@odata.id": "/redfish/v1/Managers/9/EthernetInterfaces/1"
+            }
+        ],
     },
     "Oem": {}
 }
