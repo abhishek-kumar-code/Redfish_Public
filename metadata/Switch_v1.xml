@@ -97,11 +97,11 @@
           <Annotation Term="OData.Description" String="The user assigned asset tag for this switch."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an identifying string used to track the drive for inventory purposes."/>
         </Property>
-		<Property Name="DomainID" Type="Edm.int64">
-		  <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-		  <Annotation Term="OData.Description" String="The Domain ID for this switch."/>
-		  <Annotation Term="OData.LongDescription" String="The value of this property shall have a scope of uniqueness within the fabric of which the switch is a member."/>
-		</Property>
+        <Property Name="DomainID" Type="Edm.Int64">
+	  <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+	  <Annotation Term="OData.Description" String="The Domain ID for this switch."/>
+	  <Annotation Term="OData.LongDescription" String="The value of this property shall have a scope of uniqueness within the fabric of which the switch is a member."/>
+        </Property>
         <Property Name="IsManaged" Type="Edm.Boolean">
           <Annotation Term="OData.Description" String="This indicates whether the switch is in a managed or unmanaged state."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this switch is in a managed or unmanaged state."/>
@@ -115,7 +115,6 @@
           <Annotation Term="OData.Description" String="The state of the indicator LED, used to identify the switch."/>
           <Annotation Term="OData.LongDescription" String="This value of this property shall contain the indicator light state for the indicator light associated with this switch."/>
         </Property>
-		<!--See issue #1367 re: moving PowerState to resource -->
         <Property Name="PowerState" Type="Resource.v1_2_0.PowerState">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the current power state of the switch."/>
@@ -151,13 +150,13 @@
       </EntityType>
 
       <ComplexType Name="Links" BaseType="Resource.Links">
-        <NavigationProperty Name="Chassis" Type="Chassis.Chasssis" Nullable="false">
+        <NavigationProperty Name="Chassis" Type="Chassis.Chassis" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A reference to the chassis which contains this switch."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resources that this switch is associated with and shall reference a resource of type Chassis."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="ManagedBy" Type="Collection(Manager.Manger)" Nullable="false">
+        <NavigationProperty Name="ManagedBy" Type="Collection(Manager.Manager)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the managers that manage this switch."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resources that this switch is associated with and shall reference a resource of type Manager."/>

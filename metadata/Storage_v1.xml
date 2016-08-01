@@ -99,7 +99,7 @@
           <Annotation Term="OData.LongDescription" String="A collection that indicates all the drives attached to the storage controllers that this resource represents."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="Volumes" Type="VolumeCollection" Nullable="false">
+        <NavigationProperty Name="Volumes" Type="VolumeCollection.VolumeCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The set of volumes produced by the storage controllers represented by this resource."/>
           <Annotation Term="OData.LongDescription" String="A collection that indicates all the volumes produced by the storage controllers that this resource represents."/>
