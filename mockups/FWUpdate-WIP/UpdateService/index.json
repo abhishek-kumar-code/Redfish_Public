@@ -11,6 +11,9 @@
 	"FirmwareInventory": {
 		"@odata.id": "/redfish/v1/UpdateService/FirmwareInventory"
 	},
+	"SoftwareInventory": {
+		"@odata.id": "/redfish/v1/UpdateService/SoftwareInventory",
+	},
 	"Actions": {
 		"#UpdateService.Update": {
 			"target": "/redfish/v1/UpdateService/Actions/SimpleUpdate",

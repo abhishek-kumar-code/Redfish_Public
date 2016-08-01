@@ -1,0 +1,19 @@
+{
+    "@odata.type": "#SoftwareInventory.v1_0_0.SoftwareInventory",
+    "Id": "Solitaire",
+    "Name": "Contoso Free to Play Solitaire",
+    "Status": {
+        "State": "Updating",
+        "Health": "OK"
+    },
+    "Updateable": true,
+    "Version": "1",
+    "VersionSequence": "<version>",
+    "Actions": {
+        "Oem": {}
+    },
+    "Oem": {},
+    "@odata.context": "/redfish/v1/$metadata#UpdateService/SoftwareInventory/Members/$entity",
+    "@odata.id": "/redfish/v1/UpdateService/SoftwareInventory/Solitaire",
+    "@Redfish.Copyright": "Copyright 2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
+}

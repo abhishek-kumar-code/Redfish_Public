@@ -17,8 +17,8 @@
     <edmx:Include Namespace="Resource.v1_0_0" />
     <edmx:Include Namespace="Resource.v1_1_0" />
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/FirmwareInventoryCollection_v1.xml">
-    <edmx:Include Namespace="FirmwareInventoryCollection"/>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/SoftwareInventoryCollection_v1.xml">
+    <edmx:Include Namespace="SoftwareInventoryCollection"/>
   </edmx:Reference>
 
   <edmx:DataServices>
@@ -30,10 +30,10 @@
       </EntityType>
     </Schema>
 
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="UpdateService.v0_9_0">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="UpdateService.v1_0_0">
       
       <EntityType Name="UpdateService" BaseType="UpdateService.UpdateService">
-        <Annotation Term="OData.Description" String="This is the schema definition for the Update Service. It represents the properties for the service itself and has link to a collection of inventory."/>
+        <Annotation Term="OData.Description" String="This is the schema definition for the Update Service. It represents the properties for the service itself and has link to collection of firmware and software inventory."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent an Update Service for a Redfish implementation. It represents the properties that affect the service itself and all update packages."/>
         <Property Name="Status" Type="Resource.Status"/>
         <Property Name="ServiceEnabled" Type="Edm.Boolean">
@@ -47,7 +47,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a resource of type FirmwareInventoryCollection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <Property Name="Actions" Type="UpdateService.v0_9_0.Actions" Nullable="false">
+        <Property Name="Actions" Type="UpdateService.v1_0_0.Actions" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The Actions object contains the available custom actions on this resource."/>
         </Property>
@@ -55,7 +55,7 @@
       
       <ComplexType Name="Actions">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Property Name="Oem" Type="UpdateService.v0_9_0.OemActions" Nullable="false"/>
+        <Property Name="Oem" Type="UpdateService.v1_0_0.OemActions" Nullable="false"/>
       </ComplexType>
       
       <ComplexType Name="OemActions">
