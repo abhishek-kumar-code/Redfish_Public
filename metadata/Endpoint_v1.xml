@@ -4,6 +4,9 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
     <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
   </edmx:Reference>
@@ -46,7 +49,7 @@
         <Property Name="Status" Type="Resource.Status"/>
         <Property Name="EndpointProtocol" Type="Storage.v1_0_0.Protocol">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-<Annotation Term="OData.Description" String="The protocol supported by this endpoint."/>
+          <Annotation Term="OData.Description" String="The protocol supported by this endpoint."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the protocol this endpoint uses to communicate with other endpoints on this fabric."/>
         </Property>
         <Property Name="ConnectedEntities" Type="Collection(Endpoint.v1_0_0.ConnectedEntity)">
@@ -70,6 +73,12 @@
           <Annotation Term="OData.Description" String="Redundancy information for the lower level endpoints supporting this endpoint"/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
+        <Property Name="HostReservationMemoryBytes" Type="Edm.Int64">
+          <Annotation Term="Measures.Unit" String="By"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The amount of memory in Bytes that the Host should allocate to connect to this endpoint."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the amount of memory in Bytes that the Host should allocate to connect to this endpoint."/>
+        </Property>
      
         <Property Name="Links" Type="Endpoint.v1_0_0.Links" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
