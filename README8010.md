@@ -36,7 +36,6 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | MemoryMetrics | 1.1.0 | 2016-8-12 | Added "PredictedMediaLifeLeftPercent" property to the "HealthData" object. |
 | EventDestination | 1.1.0 | 2016-8-12 | Added "OriginResources" and "MessageIds" properties. |
 | Power | 1.2.0 | 2016-8-12 | Added "IndicatorLED" property to "PowerSupply" object. |
-| RedfishExtensions | 1.2.0 | 2016-8-12 | Added "ActionInfo" schema extension. Added descriptions to "Enumeration". |
 | Redundancy | 1.1.0 | 2016-8-12 | Added "RedundancyEnabled" property. |
 | Resource | 1.2.0 | 2016-8-12 |   |
 | ServiceRoot | 1.1.0 | 2016-8-12 | Added links to "StorageSystems", "StorageServices" and "UpdateService".  |
