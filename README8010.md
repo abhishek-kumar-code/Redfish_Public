@@ -29,6 +29,7 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | MemoryDomainCollection | 1.0.0 | 2016-8-12 | Initial release.  Collection of Memory Domains. |
 | SoftwareInventory | 1.0.0 | 2016-8-12 | Initial release.       |
 | UpdateService | 1.0.0 | 2016-8-12 | Initial release.       |
+| VolumeCollection | 1.0.0 | 2016-8-12 | Initial release.  Collection of Volumes.  |
 | ComputerSystem | 1.2.0 | 2016-8-12 | Added HostedServices and HostingRoles properties and MemoryDomains link. Added "RemoteDrive" enumeration to BootSourceOverrideTarget. |
 | EthernetInterface | 1.1.0 | 2016-8-12 | Added LinkStatus property. |
 | LogEntry | 1.1.0 | 2016-8-12 | Added "EventType", "EventId", and "EventTimeStamp" properties. |
@@ -38,7 +39,8 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | RedfishExtensions | 1.2.0 | 2016-8-12 | Added "ActionInfo" schema extension. Added descriptions to "Enumeration". |
 | Redundancy | 1.1.0 | 2016-8-12 | Added "RedundancyEnabled" property. |
 | Resource | 1.2.0 | 2016-8-12 |   |
-| ServiceRoot | 1.2.0 | 2016-8-12 |   |
+| ServiceRoot | 1.1.0 | 2016-8-12 | Added links to "StorageSystems", "StorageServices" and "UpdateService".  |
+| SessionService | 1.1.0 | 2016-8-12 | Added OEM Action capabilities. |
 | ComputerSystem | 1.1.1 | 2016-8-12 | Errata release.  Clarified description of ComputerSystem and the UUID property. |
 | ComputerSystem | 1.0.3 | 2016-8-12 | Errata release.  Clarified description of ComputerSystem and the UUID property. |
 | Drive | 1.0.1 | 2016-8-12 | Errata release.  Added "Unencrypted" enumeration to EncryptionStatus and deprecated misspelled enumeration. |
@@ -47,6 +49,7 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | IPAddresses | 1.0.3 | 2016-8-12 | Errata release.  Corrected validation patterns for "IPv4Address" and "SubnetMask".  Added validation pattern for "Gateway". |
 | Message | 1.0.3 | 2016-8-12 | Errata release.  Corrected "MessageId" to mark it as a required property. |
 | ServiceRoot | 1.0.3 | 2016-8-12 |   |
+| Storage | 1.0.1 | 2016-8-12 | Corrected type definition of the "Volumes" link. |
 | AttributeRegistry | 1.0.0  | 2016-5-14 | Initial release.  An Attribute Registry is a set of key-value pairs that are specific to a particular implementation or product, such that creating standardized property names would be impractical.  This schema describes the structure of a Registry, and also includes mechanisms for building user interfaces (menus) allowing consistent navigation of the contents.|
 | Bios    | 1.0.0  | 2016-5-14 | Initial release.  Bios contains properties surrounding a BIOS Attribute Registry (where the system-specific BIOS attributes are described) and the Actions needed to perform changes to BIOS settings, which typically require a system reset to apply.|
 | Drive     | 1.0.0  | 2016-5-14 | Initial release.  Drive contains properties describing a single physical disk drive for any system, along with links to associated Volumes. |
