@@ -46,17 +46,17 @@
       </Annotation>
 
       <Action Name="SimpleUpdate" IsBound="true">
+        <Annotation Term="OData.Description" String="This action is used to update software components."/>
+        <Annotation Term="OData.LongDescription" String="This action shall perform an update of installed software component(s) as contained within a software image file located at a URI referenced by the ImageURI parameter."/>
         <Parameter Name="UpdateService" Type="UpdateService.v1_0_0.Actions"/>
-        <Parameter Name="ImageURI" Type="Edm.String">
+        <Parameter Name="ImageURI" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Description" String="The URI of the software image to be installed."/>
           <Annotation Term="OData.LongDescription" String="This parameter shall contain a URI referencing a software image to be retreived by the UpdateService for the purpose of installing software contained within the image."/>
         </Parameter>
-        <Parameter Name="TransferProtocol" Type="Edm.String">
+        <Parameter Name="TransferProtocol" Type="UpdateService.v1_0_0.TransferProtocolType">
           <Annotation Term="OData.Description" String="The network protocol used by the Update Service to retrieve the software image file located at the URI provided in ImageURI, if the URI does not contain a scheme."/>
           <Annotation Term="OData.LongDescription" String="This parameter shall contain the network protocol that the Update Service shall use to retreive the software image located at the ImageURL.  If this parameter is not provided (or supported), and a transfer protocol is not specified by a scheme contained within ImageURL, the Update Service shall use HTTP to retrieve the image."/>
         </Parameter>
-        <Annotation Term="OData.Description" String="This action is used to update software components."/>
-        <Annotation Term="OData.LongDescription" String="This action shall perform an update of installed software component(s) as contained within a software image file located at a URI referenced by the ImageURI parameter."/>
       </Action>
     </Schema>
 
@@ -98,6 +98,33 @@
         <Annotation Term="OData.AdditionalProperties" Bool="true"/>
       </ComplexType>
 
+      <EnumType Name="TransferProtocolType">
+        <Member Name="CIFS">
+          <Annotation Term="OData.Description" String="Common Internet File System protocol"/>
+        </Member>
+        <Member Name="FTP">
+          <Annotation Term="OData.Description" String="File Transfer Protocol"/>
+        </Member>
+	    <Member Name="HTTP">
+          <Annotation Term="OData.Description" String="Hypertext Transfer Protocol"/>
+        </Member>
+        <Member Name="HTTPS">
+          <Annotation Term="OData.Description" String="HTTP Secure protocol"/>
+        </Member>
+        <Member Name="NSF">
+          <Annotation Term="OData.Description" String="Network File System protocol"/>
+        </Member>
+        <Member Name="SCP">
+          <Annotation Term="OData.Description" String="Secure File Copy protocol"/>
+        </Member>
+        <Member Name="TFTP">
+          <Annotation Term="OData.Description" String="Trivial File Transfer Protocol"/>
+        </Member>
+        <Member Name="OEM">
+          <Annotation Term="OData.Description" String="A protocol defined by the manufacturer."/>
+        </Member>
+      </EnumType>
+	  
     </Schema>
 
   </edmx:DataServices>
