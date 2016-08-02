@@ -712,8 +712,8 @@ returned with a `rel=describedby`.  URLs of the JSON schema for an annotation sh
 
 Below is an example of the link headers of a ManagerAccount with a role of Admin that has a Settings Annotation.  
 - The first header is an example of a link that comes from the resource.  It describes links within the resource.  This type of header is outside the scope of this specification. 
-- The second link header is an example of an annotion link header as there is no rel=describedby.  
-- The third link header is an example for the actual resource. 
+- The second link header is an example of an annotion link header as it references the JSON Schema that describes the annotation and does not have rel=describedby.  
+- The third link header is an example for the JSON Schema that describes the actual resource. 
 - Note that the URL can reference an unversioned JSON Schema (since the @odata.type in the resource will indicate the appropriate version) or reference the versioned JSON Schema (which according to previous normative statments would need to match the version specified in the @odata.type property of the resource).
 
 ~~~http
