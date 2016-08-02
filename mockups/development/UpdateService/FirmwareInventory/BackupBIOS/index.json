@@ -1,19 +1,19 @@
 {
-	"@odata.type": "#SoftwareInventory.v1_0_0.SoftwareInventory",
-	"Id": "BackupBIOS",
-	"Name": "Contoso Server BIOS",
-	"Status": {
-		"State": "StandbySpare",
-		"Health": "OK"
-	},
-	"Updateable": true,
-	"Version": "03192014",
-	"VersionSequence": "<mmddyyyy>",
-	"Actions": {
-		"Oem": {}
-	},
-	"Oem": {},
-	"@odata.context": "/redfish/v1/$metadata#UpdateService/FirmwareInventory/Members/$entity",
-	"@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/BackupBIOS",
-	"@Redfish.Copyright": "Copyright 2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
+    "@odata.type": "#SoftwareInventory.v1_0_0.SoftwareInventory",
+    "Id": "BackupBIOS",
+    "Name": "Contoso Server BIOS",
+    "Status": {
+        "State": "StandbySpare",
+        "Health": "OK"
+    },
+    "Updateable": true,
+    "Version": "03192014",
+    "VersionSequence": "<mmddyyyy>",
+    "Actions": {
+        "Oem": {}
+    },
+    "Oem": {},
+    "@odata.context": "/redfish/v1/$metadata#UpdateService/FirmwareInventory/Members/$entity",
+    "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/BackupBIOS",
+    "@Redfish.Copyright": "Copyright 2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
 }
