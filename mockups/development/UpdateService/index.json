@@ -12,7 +12,7 @@
 		"@odata.id": "/redfish/v1/UpdateService/FirmwareInventory"
 	},
 	"SoftwareInventory": {
-		"@odata.id": "/redfish/v1/UpdateService/SoftwareInventory",
+		"@odata.id": "/redfish/v1/UpdateService/SoftwareInventory"
 	},
 	"Actions": {
 		"#UpdateService.SimpleUpdate": {
