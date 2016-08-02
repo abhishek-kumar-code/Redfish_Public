@@ -29,7 +29,7 @@
         "@odata.id": "/redfish/v1/EventService"
     },
 	"UpdateService": {
-		"@odata.id": "/redfish/v1/UpdateService"'
+		"@odata.id": "/redfish/v1/UpdateService"
 	},
     "Registries": {
         "@odata.id": "/redfish/v1/Registries"
