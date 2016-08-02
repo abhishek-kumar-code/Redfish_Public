@@ -19,7 +19,7 @@
   </edmx:Reference>  
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
-    <edmx:Include Namespace="Resource.v1_0_0" />
+    <edmx:Include Namespace="Resource.v1_0_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
     <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
@@ -60,10 +60,11 @@
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/SNIA/v1/StorageServiceCollection_v1.xml">
     <edmx:Include Namespace="StorageServiceCollection"/>
-  </edmx:Reference> 
+  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/UpdateService_v1.xml">
     <edmx:Include Namespace="UpdateService"/>
-  </edmx:Reference>   
+  </edmx:Reference>
+
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ServiceRoot">
@@ -200,7 +201,6 @@
       <EntityType Name="ServiceRoot" BaseType="ServiceRoot.v1_0_2.ServiceRoot"/>
     </Schema>
 
-    
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ServiceRoot.v1_1_0">
       <EntityType Name="ServiceRoot" BaseType="ServiceRoot.v1_0_2.ServiceRoot">
         <NavigationProperty Name="StorageSystems" Type="ComputerSystemCollection.ComputerSystemCollection" Nullable="false">
@@ -218,8 +218,8 @@
           <Annotation Term="OData.Description" String="This is a link to the UpdateService."/>
           <Annotation Term="OData.LongDescription" String="The classes structure shall only contain a reference to a resource that complies to the UpdateService schema."/>
           <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>		
-      </EntityType>        
+        </NavigationProperty>
+      </EntityType>
     </Schema>
   </edmx:DataServices>
 </edmx:Edmx>
