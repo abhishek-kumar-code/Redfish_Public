@@ -30,8 +30,8 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | SoftwareInventory | 1.0.0 | 2016-8-12 | Initial release.       |
 | UpdateService | 1.0.0 | 2016-8-12 | Initial release.       |
 | VolumeCollection | 1.0.0 | 2016-8-12 | Initial release.  Collection of Volumes.  |
-| ComputerSystem | 1.2.0 | 2016-8-12 | Added HostedServices and HostingRoles properties and MemoryDomains link. Added "RemoteDrive" enumeration to BootSourceOverrideTarget. |
-| EthernetInterface | 1.1.0 | 2016-8-12 | Added LinkStatus property. |
+| ComputerSystem | 1.2.0 | 2016-8-12 | Added "HostedServices" and "HostingRoles" properties and "MemoryDomains" link. Added "RemoteDrive" enumeration to "BootSourceOverrideTarget". |
+| EthernetInterface | 1.1.0 | 2016-8-12 | Added "LinkStatus" property. |
 | LogEntry | 1.1.0 | 2016-8-12 | Added "EventType", "EventId", and "EventTimeStamp" properties. |
 | MemoryMetrics | 1.1.0 | 2016-8-12 | Added "PredictedMediaLifeLeftPercent" property to the "HealthData" object. |
 | EventDestination | 1.1.0 | 2016-8-12 | Added "OriginResources" and "MessageIds" properties. |
@@ -40,8 +40,8 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | Resource | 1.2.0 | 2016-8-12 |   |
 | ServiceRoot | 1.1.0 | 2016-8-12 | Added links to "StorageSystems", "StorageServices" and "UpdateService".  |
 | SessionService | 1.1.0 | 2016-8-12 | Added OEM Action capabilities. |
-| ComputerSystem | 1.1.1 | 2016-8-12 | Errata release.  Clarified description of ComputerSystem and the UUID property. |
-| ComputerSystem | 1.0.3 | 2016-8-12 | Errata release.  Clarified description of ComputerSystem and the UUID property. |
+| ComputerSystem | 1.1.1 | 2016-8-12 | Errata release.  Clarified description of ComputerSystem and the "UUID" property. |
+| ComputerSystem | 1.0.3 | 2016-8-12 | Errata release.  Clarified description of ComputerSystem and the "UUID" property. |
 | Drive | 1.0.1 | 2016-8-12 | Errata release.  Added "Unencrypted" enumeration to EncryptionStatus and deprecated misspelled enumeration. |
 | Event | 1.1.1 | 2016-8-12 | Errata release.  Deprecated "Context" property in favor of the Event-specific "Context" contained within each Event. |
 | Event | 1.0.3 | 2016-8-12 | Errata release.  Deprecated "Context" property in favor of the Event-specific "Context" contained within each Event.  |
