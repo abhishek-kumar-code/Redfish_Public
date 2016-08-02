@@ -14,8 +14,8 @@
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
-    <edmx:Include Namespace="Resource.v1_0_0" />
-    <edmx:Include Namespace="Resource.v1_1_0" />
+    <edmx:Include Namespace="Resource.v1_0_0"/>
+    <edmx:Include Namespace="Resource.v1_1_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/SoftwareInventoryCollection_v1.xml">
     <edmx:Include Namespace="SoftwareInventoryCollection"/>
@@ -61,7 +61,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="UpdateService.v1_0_0">
-      
+
       <EntityType Name="UpdateService" BaseType="UpdateService.UpdateService">
         <Annotation Term="OData.Description" String="This is the schema definition for the Update Service. It represents the properties for the service itself and has link to collection of firmware and software inventory."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent an Update Service for a Redfish implementation. It represents the properties that affect the service itself and all update packages."/>
@@ -70,7 +70,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="This indicates whether this service is enabled."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this service is enabled."/>
-        </Property>        
+        </Property>
         <NavigationProperty Name="FirmwareInventory" Type="SoftwareInventoryCollection.SoftwareInventoryCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An inventory of firmware."/>
@@ -82,18 +82,18 @@
           <Annotation Term="OData.Description" String="An inventory of software."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a resource of type SoftwareInventoryCollection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
-		</NavigationProperty>
+        </NavigationProperty>
         <Property Name="Actions" Type="UpdateService.v1_0_0.Actions" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The Actions object contains the available custom actions on this resource."/>
         </Property>
       </EntityType>
-      
+
       <ComplexType Name="Actions">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="Oem" Type="UpdateService.v1_0_0.OemActions" Nullable="false"/>
       </ComplexType>
-	  
+
       <ComplexType Name="OemActions">
         <Annotation Term="OData.AdditionalProperties" Bool="true"/>
       </ComplexType>
@@ -105,7 +105,7 @@
         <Member Name="FTP">
           <Annotation Term="OData.Description" String="File Transfer Protocol"/>
         </Member>
-	    <Member Name="HTTP">
+        <Member Name="HTTP">
           <Annotation Term="OData.Description" String="Hypertext Transfer Protocol"/>
         </Member>
         <Member Name="HTTPS">
@@ -124,7 +124,7 @@
           <Annotation Term="OData.Description" String="A protocol defined by the manufacturer."/>
         </Member>
       </EnumType>
-	  
+
     </Schema>
 
   </edmx:DataServices>
