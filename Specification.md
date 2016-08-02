@@ -2302,7 +2302,7 @@ The Authorization subsystem uses Roles and Privileges to control which users hav
   - A Role is a defined set of Privileges.   Therefore, two roles with the same privileges shall behave equivalently.
   - All users are assigned exactly one role.
   - This specification defines a set of predefined roles, one of which shall be assigned to a user when a user is created.
-  - The predefined roles shall be created as follows:
+  - The predefined roles shall be created as follows (where Role Name is the value of the Id property for the role resource):
     - Role Name  = "Administrator"
       - AssignedPrivileges = Login, ConfigureManager, ConfigureUsers, ConfigureComponents, ConfigureSelf
     - Role Name = "Operator"
