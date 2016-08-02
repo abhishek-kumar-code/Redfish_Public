@@ -14,8 +14,8 @@
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
-    <edmx:Include Namespace="Resource.v1_0_0" />
-    <edmx:Include Namespace="Resource.v1_1_0" />
+    <edmx:Include Namespace="Resource.v1_0_0"/>
+    <edmx:Include Namespace="Resource.v1_1_0"/>
   </edmx:Reference>
 
   <edmx:DataServices>
@@ -37,17 +37,17 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A string representing the version of this firmware."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a string representing the version of this firmware."/>
-        </Property>        
+        </Property>
         <Property Name="VersionSequence" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A description of the version string structure or format."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a description of the version string structure or format."/>
-        </Property>        
+        </Property>
         <Property Name="Updateable" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Indicates whether this firmware can be updated by the update service."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this firmware can be updated by the update service. If false, this firmware is for reporting purpose only."/>
-        </Property>        
+        </Property>
         <Property Name="Actions" Type="SoftwareInventory.v1_0_0.Actions" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The Actions object contains the available custom actions on this resource."/>
@@ -58,7 +58,7 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="Oem" Type="SoftwareInventory.v1_0_0.OemActions" Nullable="false"/>
       </ComplexType>
-      
+
       <ComplexType Name="OemActions">
         <Annotation Term="OData.AdditionalProperties" Bool="true"/>
       </ComplexType>
