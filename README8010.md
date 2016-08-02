@@ -22,6 +22,31 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 
 | Schema File | Version | Date      | Description     |
 | ---         | ---     | ---       | ---             |
+| ActionInfo | 1.0.0 | 2016-8-12 | Initial release.  ActionInfo describes the parameters and other information necessary to perform a Redfish Action to a particular Action target.  |
+| MemoryChunks | 1.0.0 | 2016-8-12 | Initial release.  Describes a Memory Chunk and memory Interleve Sets. |
+| MemoryChunksCollection | 1.0.0 | 2016-8-12 | Initial release.  Collection of Memory Chunks. |
+| MemoryDomain | 1.0.0 | 2016-8-12 | Initial release.  Memory Domains are used to indicate to the client which Memory (DIMMs) can be grouped together in Memory Chunks to form interleave sets or otherwise grouped together. |
+| MemoryDomainCollection | 1.0.0 | 2016-8-12 | Initial release.  Collection of Memory Domains. |
+| SoftwareInventory | 1.0.0 | 2016-8-12 | Initial release.       |
+| UpdateService | 1.0.0 | 2016-8-12 | Initial release.       |
+| ComputerSystem | 1.2.0 | 2016-8-12 | Added HostedServices and HostingRoles properties and MemoryDomains link. Added "RemoteDrive" enumeration to BootSourceOverrideTarget. |
+| EthernetInterface | 1.1.0 | 2016-8-12 | Added LinkStatus property. |
+| LogEntry | 1.1.0 | 2016-8-12 | Added "EventType", "EventId", and "EventTimeStamp" properties. |
+| MemoryMetrics | 1.1.0 | 2016-8-12 | Added "PredictedMediaLifeLeftPercent" property to the "HealthData" object. |
+| EventDestination | 1.1.0 | 2016-8-12 | Added "OriginResources" and "MessageIds" properties. |
+| Power | 1.2.0 | 2016-8-12 | Added "IndicatorLED" property to "PowerSupply" object. |
+| RedfishExtensions | 1.2.0 | 2016-8-12 | Added "ActionInfo" schema extension. Added descriptions to "Enumeration". |
+| Redundancy | 1.1.0 | 2016-8-12 | Added "RedundancyEnabled" property. |
+| Resource | 1.2.0 | 2016-8-12 |   |
+| ServiceRoot | 1.2.0 | 2016-8-12 |   |
+| ComputerSystem | 1.1.1 | 2016-8-12 | Errata release.  Clarified description of ComputerSystem and the UUID property. |
+| ComputerSystem | 1.0.3 | 2016-8-12 | Errata release.  Clarified description of ComputerSystem and the UUID property. |
+| Drive | 1.0.1 | 2016-8-12 | Errata release.  Added "Unencrypted" enumeration to EncryptionStatus and deprecated misspelled enumeration. |
+| Event | 1.1.1 | 2016-8-12 | Errata release.  Deprecated "Context" property in favor of the Event-specific "Context" contained within each Event. |
+| Event | 1.0.3 | 2016-8-12 | Errata release.  Deprecated "Context" property in favor of the Event-specific "Context" contained within each Event.  |
+| IPAddresses | 1.0.3 | 2016-8-12 | Errata release.  Corrected validation patterns for "IPv4Address" and "SubnetMask".  Added validation pattern for "Gateway". |
+| Message | 1.0.3 | 2016-8-12 | Errata release.  Corrected "MessageId" to mark it as a required property. |
+| ServiceRoot | 1.0.3 | 2016-8-12 |   |
 | AttributeRegistry | 1.0.0  | 2016-5-14 | Initial release.  An Attribute Registry is a set of key-value pairs that are specific to a particular implementation or product, such that creating standardized property names would be impractical.  This schema describes the structure of a Registry, and also includes mechanisms for building user interfaces (menus) allowing consistent navigation of the contents.|
 | Bios    | 1.0.0  | 2016-5-14 | Initial release.  Bios contains properties surrounding a BIOS Attribute Registry (where the system-specific BIOS attributes are described) and the Actions needed to perform changes to BIOS settings, which typically require a system reset to apply.|
 | Drive     | 1.0.0  | 2016-5-14 | Initial release.  Drive contains properties describing a single physical disk drive for any system, along with links to associated Volumes. |
