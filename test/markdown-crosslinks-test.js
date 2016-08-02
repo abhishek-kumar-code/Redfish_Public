@@ -1,47 +1,43 @@
-var vows = require('vows');
-var glob = require('glob');
-var join = require('path').join;
-var jsonlint = require('jsonlint');
-var fs = require('fs');
-var assert = require('assert');
-var execAll = require('./utils').execAll;
+const vows = require('vows');
+const glob = require('glob');
+const fs = require('fs');
+const assert = require('assert');
+const marked = require('marked');
+const cheerio = require('cheerio');
 
-var files = glob.sync('*.md');
+const files = glob.sync('*.md');
 
-var suite = {}
-files.forEach(function(file) {
-  var data = fs.readFileSync(file, 'utf-8')
-  var links = execAll(/\[([^\]]+)\]\(#([^\)]+)\)/gm, data);
+const suite = {}
+files.forEach(file => {
+  suite[file] = {
+    topic: function() {
+      fs.readFile(file, 'utf-8', (err, data) => {
+        if (err) { return this.callback(err) }
+        marked(data, (err2, html) => {
+          if (err2) { return this.callback(err2) };
+          this.callback(err2, cheerio.load(`<body>${html}</body>`));
+        });
+      });
+    },
+    'has valid internal document links': function($) {
+      const targets = new Set();
+      $('[id]').each((i, el) => {
+        targets.add($(el).attr('id'));
+      });
 
-  var headers = execAll(/^#+\s*(.*)/gm, data) || [];
+      $('a[href^="#"]').each((i, el) => {
+        const $el = $(el);
+        const link = $el.attr('href').slice(1);
+        let parent = $el;
+        do {
+          parent = parent.parent();
+        } while (!parent.parent().is('body'));
+        const section = parent.prevAll('h1, h2, h3, h4, h5, h6').first().text();
 
-  var headerAnchors = {}
-  for (var header of headers) {
-    var id = header[1].trim().toLowerCase().replace(/[^a-z0-9-]/gi, '-').replace(/-+/, '-');
-    if (id !== '') headerAnchors[id] = true;
-  }
-
-  var ids = execAll(/<a id="([^"]+)">/gim, data) || [];
-  for (var header of ids) {
-    var id = header[1].trim().toLowerCase();
-    headerAnchors[id] = true;
-  }
-
-  if (links) {
-    var anchorTests = {};
-
-    links.forEach(function(link) {
-      var anchor = link[2].toLowerCase();
-      var txt = link[1];
-
-      var name = "line " + link.lineNumber + " link with text '" + txt + "'";
-      anchorTests[name + ' is valid anchor'] = function() {
-        assert(headerAnchors[anchor], 'No header with anchor "' + anchor + '" in document');
-        }
-    });
-
-    suite[file] = anchorTests;
-  }
+        assert(targets.has(link), `Link "${$el.text()}" targets non-existant id "${link}" in document. Link is in section "${section}".`);
+      });
+    },
+  };
 });
 
 vows.describe('Markdown Internal Cross-References').addBatch(suite).export(module);

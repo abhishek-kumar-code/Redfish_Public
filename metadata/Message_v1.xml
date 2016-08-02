@@ -16,10 +16,9 @@
   </edmx:Reference>
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Capabilities.V1.xml">
     <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
-  </edmx:Reference>  
+  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
     <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
-    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
@@ -60,6 +59,7 @@
         <Property Name="MessageId" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Description" String="This is the key for this message which can be used to look up the message in a message registry."/>
           <Annotation Term="OData.LongDescription" String="This property shall be a key into message registry as described in the Redfish specification."/>
+          <Annotation Term="Redfish.Required"/>
         </Property>
         <Property Name="Message" Type="Edm.String">
           <Annotation Term="OData.Description" String="This is the human readable message, if provided."/>
@@ -90,6 +90,8 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Message.v1_0_2"/>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Message.v1_0_3"/>
 
   </edmx:DataServices>
 </edmx:Edmx>
