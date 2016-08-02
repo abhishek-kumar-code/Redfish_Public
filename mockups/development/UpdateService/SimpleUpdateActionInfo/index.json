@@ -1,17 +1,20 @@
 {
-	"@odata.type": "#ActionInfo.v1_0_0.ActionInfo",
-	"Parameters": [{
-		"Name": "ImageURI",
-		"Required": true,
-		"DataType": "String"
-	}, {
-		"Name": "TransferProtocol",
-		"Required": false,
-		"DataType": "String",
-		"AllowableValues": ["HTTP", "HTTPS", "FTP"]
-	}],
-	"Oem": {},
-	"@odata.context": "/redfish/v1/$metadata#ActionInfo.ActionInfo",
-	"@odata.id": "/redfish/v1/UpdateService/SimpleUpdateActionInfo",
-	"@Redfish.Copyright": "Copyright 2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
+    "@odata.type": "#ActionInfo.v1_0_0.ActionInfo",
+    "Parameters": [
+        {
+            "Name": "ImageURI",
+            "Required": true,
+            "DataType": "String"
+        },
+        {
+            "Name": "TransferProtocol",
+            "Required": false,
+            "DataType": "String",
+            "AllowableValues": [ "HTTP", "HTTPS", "FTP" ]
+        }
+    ],
+    "Oem": {},
+    "@odata.context": "/redfish/v1/$metadata#ActionInfo.ActionInfo",
+    "@odata.id": "/redfish/v1/UpdateService/SimpleUpdateActionInfo",
+    "@Redfish.Copyright": "Copyright 2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
 }
