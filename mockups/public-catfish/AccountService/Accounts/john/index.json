@@ -6,7 +6,7 @@
     "Enabled": true,
     "Password": null,
     "UserName": "john",
-    "RoleId": "ReadOnlyUser",
+    "RoleId": "ReadOnly",
     "Locked": false,
     "Links": {
         "Role": {
