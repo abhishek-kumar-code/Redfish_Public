@@ -31,7 +31,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SoftwareInventory">
       <EntityType Name="SoftwareInventory" BaseType="Resource.v1_0_0.Resource">
-        <Annotation Term="OData.Description" String="This schema defines an inventory of software components.  In the Redfish model, there are separate Collections for installed firmware and software which share this common definition for each listed component."/>
+        <Annotation Term="OData.Description" String="This schema defines an inventory of software components."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a single software component managed by this Redfish Service."/>
       </EntityType>
     </Schema>
@@ -39,18 +39,13 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SoftwareInventory.v1_0_0">
 
       <EntityType Name="SoftwareInventory" BaseType="SoftwareInventory.SoftwareInventory">
-        <Annotation Term="OData.Description" String="This schema defines an inventory of software components.  In the Redfish model, there are separate Collections for installed firmware and software which share this common definition for each listed component."/>
+        <Annotation Term="OData.Description" String="This schema defines an inventory of software components."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a single software component managed by this Redfish Service."/>
         <Property Name="Status" Type="Resource.Status"/>
         <Property Name="Version" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A string representing the version of this firmware."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a string representing the version of this firmware."/>
-        </Property>
-        <Property Name="VersionSequence" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="A description of the version string structure or format."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a description of the version string structure or format."/>
         </Property>
         <Property Name="Updateable" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
