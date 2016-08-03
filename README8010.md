@@ -2,8 +2,8 @@
 DocTitle: Redfish API Schema Readme
 DocNumber: '8010'
 DocClass: Normative
-DocVersion: '2016.1'
-modified: '2016-05-14'
+DocVersion: '2016.2'
+modified: '2016-08-12'
 status: Published
 released: True
 copyright: '2015-2016'
@@ -27,8 +27,9 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | MemoryChunksCollection | 1.0.0 | 2016-8-12 | Initial release.  Collection of Memory Chunks. |
 | MemoryDomain | 1.0.0 | 2016-8-12 | Initial release.  Memory Domains are used to indicate to the client which Memory (DIMMs) can be grouped together in Memory Chunks to form interleave sets or otherwise grouped together. |
 | MemoryDomainCollection | 1.0.0 | 2016-8-12 | Initial release.  Collection of Memory Domains. |
-| SoftwareInventory | 1.0.0 | 2016-8-12 | Initial release.       |
-| UpdateService | 1.0.0 | 2016-8-12 | Initial release.       |
+| SoftwareInventory | 1.0.0 | 2016-8-12 | Initial release.  Describes an inventory of software components. |
+| SoftwareInventoryCollection | 1.0.0 | 2016-8-12 | Initial release.  Collection of Software components. |
+| UpdateService | 1.0.0 | 2016-8-12 | Initial release.  Describes the Redfish Update Service. |
 | VolumeCollection | 1.0.0 | 2016-8-12 | Initial release.  Collection of Volumes.  |
 | ComputerSystem | 1.2.0 | 2016-8-12 | Added "HostedServices" and "HostingRoles" properties and "MemoryDomains" link. Added "RemoteDrive" enumeration to "BootSourceOverrideTarget". |
 | EthernetInterface | 1.1.0 | 2016-8-12 | Added "LinkStatus" property. |
