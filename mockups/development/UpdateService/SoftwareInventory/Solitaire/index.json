@@ -8,7 +8,6 @@
     },
     "Updateable": true,
     "Version": "1",
-    "VersionSequence": "<version>",
     "Actions": {
         "Oem": {}
     },

@@ -8,7 +8,6 @@
     },
     "Updateable": true,
     "Version": "1.45.455b66-rev4",
-    "VersionSequence": "<major>.<minor>.<build>-<release>",
     "Actions": {
         "Oem": {}
     },
