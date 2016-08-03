@@ -2340,6 +2340,7 @@ The Authorization subsystem uses Roles and Privileges to control which users hav
 |         |          | Added example of an HTTP Link Header and clarified usage and content. |
 |         |          | Added Schema Modification clause describing allowed usage of the Schema files. |
 |         |          | Added recommendation to use TLS 1.2 or later, and to follow the SNIA TLS Specification.  Added reference to the SNIA TLS Specification.  Added additional recommended TLS_RSA_WITH_AES_128_CBC_SHA Cipher suite. |
+|         |          | Clarified that the "Id" property of a Role resource must match the Role Name. |
 | 1.0.3   | 2016-6-17| Errata release.  Corrected missing Table of Contents and Clause numbering.  Corrected URL references to external specifications.  Added missing Normative References.  Corrected typographical error in ETag example. |
 |         |          | Clarified examples for ExtendedInfo to show arrays of Messages. |
 |         |          | Clarified that a POST to Session Service to create a new Session does not require authorization headers. |
