@@ -22,6 +22,7 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 
 | Schema File | Version | Date      | Description     |
 | ---         | ---     | ---       | ---             |
+| (all files) | various | 2016-8-12 | Corrected Reference URI links to OData v4 (errata 3) and added Capabilities annotations to CSDL files. |
 | ActionInfo | 1.0.0 | 2016-8-12 | Initial release.  ActionInfo describes the parameters and other information necessary to perform a Redfish Action to a particular Action target.  |
 | MemoryChunks | 1.0.0 | 2016-8-12 | Initial release.  Describes a Memory Chunk and memory Interleve Sets. |
 | MemoryChunksCollection | 1.0.0 | 2016-8-12 | Initial release.  Collection of Memory Chunks. |
@@ -31,6 +32,7 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | SoftwareInventoryCollection | 1.0.0 | 2016-8-12 | Initial release.  Collection of Software components. |
 | UpdateService | 1.0.0 | 2016-8-12 | Initial release.  Describes the Redfish Update Service. |
 | VolumeCollection | 1.0.0 | 2016-8-12 | Initial release.  Collection of Volumes.  |
+| Chassis | 1.3.0 | 2016-8-12 | Added "IPBasedDrive" to "ChassisType" enumerations.  |
 | ComputerSystem | 1.2.0 | 2016-8-12 | Added "HostedServices" and "HostingRoles" properties and "MemoryDomains" link. Added "RemoteDrive" enumeration to "BootSourceOverrideTarget". |
 | EthernetInterface | 1.1.0 | 2016-8-12 | Added "LinkStatus" property. |
 | LogEntry | 1.1.0 | 2016-8-12 | Added "EventType", "EventId", and "EventTimeStamp" properties. |
@@ -38,7 +40,7 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | EventDestination | 1.1.0 | 2016-8-12 | Added "OriginResources" and "MessageIds" properties. |
 | Power | 1.2.0 | 2016-8-12 | Added "IndicatorLED" property to "PowerSupply" object. |
 | Redundancy | 1.1.0 | 2016-8-12 | Added "RedundancyEnabled" property. |
-| Resource | 1.2.0 | 2016-8-12 |   |
+| Resource | 1.2.0 | 2016-8-12 |  Added "Deferring", "Quiesced", and "Updating" to "State" enumerations. |
 | ServiceRoot | 1.1.0 | 2016-8-12 | Added links to "StorageSystems", "StorageServices" and "UpdateService".  |
 | SessionService | 1.1.0 | 2016-8-12 | Added OEM Action capabilities. |
 | ComputerSystem | 1.1.1 | 2016-8-12 | Errata release.  Clarified description of ComputerSystem and the "UUID" property. |
