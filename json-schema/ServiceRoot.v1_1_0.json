@@ -48,7 +48,7 @@
                 },
                 "RedfishVersion": {
                     "type": "string",
-                    "pattern": "^\d+\.\d+\.\d+$",
+                    "pattern": "^\\d+\\.\\d+\\.\\d+$",
                     "readonly": true,
                     "description": "The version of the Redfish service",
                     "longDescription": "The value of this string shall represent the version of the Redfish service.  The format of this string shall be of the format majorversion.minorversion.errata in compliance with Protocol Version section of the Redfish specification. "
