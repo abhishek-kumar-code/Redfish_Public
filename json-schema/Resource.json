@@ -40,9 +40,6 @@
                 },
                 {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.v1_0_0.json#/definitions/Resource"
-                },
-                {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.v1_1_0.json#/definitions/ReferenceableMember"
                 }
             ]
         },
@@ -96,14 +93,7 @@
             "longDescription": "This object represents the base type for an Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
         },
         "ReferenceableMember": {
-            "anyOf": [
-                {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.v1_0_0.json#/definitions/ReferenceableMember"
-                },
-                {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.v1_1_0.json#/definitions/ReferenceableMember"
-                }
-            ]
+                "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.v1_0_0.json#/definitions/ReferenceableMember"
         },
         "ResetType": {
             "type": "string",
@@ -144,7 +134,10 @@
                 "InTest",
                 "Starting",
                 "Absent",
-                "UnavailableOffline"
+                "UnavailableOffline",
+                "Deferring",
+                "Quiesced",
+                "Updating"
             ],
             "enumDescriptions": {
                 "Enabled": "This function or resource has been enabled",
@@ -154,7 +147,10 @@
                 "InTest": "This function or resource is undergoing testing",
                 "Starting": "This function or resource is starting",
                 "Absent": "This function or resource is not present or not detected",
-                "UnavailableOffline": "This function or resource is present but cannot be used"
+                "UnavailableOffline": "This function or resource is present but cannot be used",
+                "Deferring": "The element will not process any commands but will queue new requests.",
+                "Quiesced": "The element is enabled but only processes a restricted set of commands.",
+                "Updating": "The element is updating and may be unavailable or degraded."
             }
         },
         "Status": {

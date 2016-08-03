@@ -137,6 +137,7 @@
                         "number",
                         "null"
                     ],
+                    "units": "By",
                     "readonly": true,
                     "description": "The size in bytes of this Volume",
                     "longDescription": "This property shall contain the size in bytes of the associated volume."
@@ -180,6 +181,7 @@
                         "number",
                         "null"
                     ],
+                    "units": "By",
                     "readonly": true,
                     "description": "The size of the smallest addressible unit (Block) of this volume in bytes",
                     "longDescription": "This property shall contain size of the smallest addressible unit of the associated volume."
@@ -198,6 +200,7 @@
                         "number",
                         "null"
                     ],
+                    "units": "By",
                     "readonly": true,
                     "description": "The size in bytes of this Volume's optimum IO size.",
                     "longDescription": "This property shall contain the optimum IO size to use when performing IO on this volume. For logical disks, this is the stripe size. For physical disks, this describes the physical sector size."

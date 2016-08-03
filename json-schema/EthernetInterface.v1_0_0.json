@@ -91,6 +91,7 @@
                         "number",
                         "null"
                     ],
+                    "units": "Mbit/s",
                     "description": "This is the current speed in Mbps of this interface.",
                     "longDescription": "The value of this property shall be the link speed of the interface in Mbps."
                 },

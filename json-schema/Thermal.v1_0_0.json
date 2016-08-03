@@ -35,6 +35,7 @@
                         "string",
                         "null"
                     ],
+                    "deprecated": "This property has been Deprecated in favor of Thermal.v1_1_0.Thermal.Fan.Name",
                     "readonly": true,
                     "description": "Name of the fan",
                     "longDescription": "The value of this property shall be the name of the fan."
@@ -217,6 +218,7 @@
                         "number",
                         "null"
                     ],
+                    "units": "Cel",
                     "readonly": true,
                     "description": "Temperature",
                     "longDescription": "The value of this property shall be the current value of the temperature sensor's reading."
@@ -226,6 +228,7 @@
                         "number",
                         "null"
                     ],
+                    "units": "Cel",
                     "readonly": true,
                     "description": "Above normal range",
                     "longDescription": "The value of this property shall indicate the ReadingCelsius is above the normal range but is not critical. The units shall be the same units as the related ReadingCelsius property."
@@ -235,6 +238,7 @@
                         "number",
                         "null"
                     ],
+                    "units": "Cel",
                     "readonly": true,
                     "description": "Above normal range but not yet fatal.",
                     "longDescription": "The value of this property shall indicate the ReadingCelsius is above the normal range but is not yet fatal. The units shall be the same units as the related ReadingCelsius property."
@@ -244,6 +248,7 @@
                         "number",
                         "null"
                     ],
+                    "units": "Cel",
                     "readonly": true,
                     "description": "Above normal range and is fatal",
                     "longDescription": "The value of this property shall indicate the ReadingCelsius is above the normal range and is fatal. The units shall be the same units as the related ReadingCelsius property."
@@ -253,6 +258,7 @@
                         "number",
                         "null"
                     ],
+                    "units": "Cel",
                     "readonly": true,
                     "description": "Below normal range",
                     "longDescription": "The value of this property shall indicate the ReadingCelsius is below the normal range but is not critical. The units shall be the same units as the related ReadingCelsius property."
@@ -262,6 +268,7 @@
                         "number",
                         "null"
                     ],
+                    "units": "Cel",
                     "readonly": true,
                     "description": "Below normal range but not yet fatal.",
                     "longDescription": "The value of this property shall indicate the ReadingCelsius is below the normal range but is not yet fatal. The units shall be the same units as the related ReadingCelsius property."
@@ -271,6 +278,7 @@
                         "number",
                         "null"
                     ],
+                    "units": "Cel",
                     "readonly": true,
                     "description": "Below normal range and is fatal",
                     "longDescription": "The value of this property shall indicate the ReadingCelsius is below the normal range and is fatal. The units shall be the same units as the related ReadingCelsius property."
@@ -280,6 +288,7 @@
                         "number",
                         "null"
                     ],
+                    "units": "Cel",
                     "readonly": true,
                     "description": "Minimum value for ReadingCelsius",
                     "longDescription": "The value of this property shall indicate the lowest possible value for ReadingCelsius. The units shall be the same units as the related ReadingCelsius property."
@@ -289,6 +298,7 @@
                         "number",
                         "null"
                     ],
+                    "units": "Cel",
                     "readonly": true,
                     "description": "Maximum value for ReadingCelsius",
                     "longDescription": "The value of this property shall indicate the highest possible value for ReadingCelsius. The units shall be the same units as the related ReadingCelsius property."

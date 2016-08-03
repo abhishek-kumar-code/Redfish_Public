@@ -13,6 +13,9 @@
                 },
                 {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/EventDestination.v1_0_2.json#/definitions/EventDestination"
+                },
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/EventDestination.v1_1_0.json#/definitions/EventDestination"
                 }
             ]
         }

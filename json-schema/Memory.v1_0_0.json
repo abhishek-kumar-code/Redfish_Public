@@ -249,6 +249,7 @@
                         "number",
                         "null"
                     ],
+                    "units": "MiBy",
                     "readonly": true,
                     "description": "Memory Capacity in MiB.",
                     "longDescription": "The value of this property shall be the Memory capacity in MiB."
@@ -744,6 +745,7 @@
                         "number",
                         "null"
                     ],
+                    "units": "mW",
                     "readonly": true,
                     "description": "Maximum TDP in milli watts",
                     "longDescription": "Maximum TDP in milli watts."
@@ -753,6 +755,7 @@
                         "number",
                         "null"
                     ],
+                    "units": "mW",
                     "readonly": true,
                     "description": "Peak power budget in milli watts",
                     "longDescription": "Peak power budget in milli watts."
@@ -762,6 +765,7 @@
                         "number",
                         "null"
                     ],
+                    "units": "mW",
                     "readonly": true,
                     "description": "Average power budget in milli watts",
                     "longDescription": "Average power budget in milli watts."
@@ -809,6 +813,7 @@
                         "number",
                         "null"
                     ],
+                    "units": "MiBy",
                     "readonly": true,
                     "description": "Offset with in the Memory that corresponds to the starting of this memory region in MiB",
                     "longDescription": "Offset with in the Memory that corresponds to the starting of this memory region in MiB."
@@ -818,6 +823,7 @@
                         "number",
                         "null"
                     ],
+                    "units": "MiBy",
                     "readonly": true,
                     "description": "Size of this memory region in MiB",
                     "longDescription": "Size of this memory region in MiB."

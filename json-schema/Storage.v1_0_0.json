@@ -77,6 +77,26 @@
                 "HTTPS": "Secure Hypertext Transport Protocol",
                 "FTP": "File Transfer Protocol",
                 "SFTP": "Secure File Transfer Protocol"
+            },
+            "enumLongDescriptions": {
+                "PCIe": "This value shall mean that this device conforms to the PCI-SIG PCI Express Base Specification only beyond that is uses some vendor proprietary mechanism to communicate.",
+                "AHCI": "This value shall mean that this device conforms to the Intel Advanced Host Controller Interface Specification.",
+                "UHCI": "This value shall mean that this device conforms to the Intel Universal Host Controller Interface Specification, Enhanced Host Controller Interface Specification, or the Extensible Host Controller Interface specification.",
+                "SAS": "This value shall mean that this device conforms to the T10 SAS Protocol Layer Specification.",
+                "SATA": "This value shall mean that this device conforms to the Serial ATA International Organization Serial ATA Specification.",
+                "USB": "This value shall mean that this device conforms to the USB Implementers Forum Universal Serial Bus Specification.",
+                "NVMe": "This value shall mean that this device conforms to the Non-Volatile Memory Host Controller Interface Specification Specification.",
+                "FC": "This value shall mean that this device conforms to the T11 Fibre Channel Physical and Signaling Interface Specification.",
+                "iSCSI": "This value shall mean that this device conforms to the IETF Internet Small Computer Systems Interface (iSCSI) Specification.",
+                "FCoE": "This value shall mean that this device conforms to the T11 FC-BB-5 Specification.",
+                "NVMeOverFabrics": "This value shall mean that this device conforms to the NVM Express over Fabrics Specification.",
+                "SMB": "This value shall mean that this device conforms to the Microsoft Server Message Block Protocol.",
+                "NFSv3": "This value shall mean that this device conforms to the Network File System protocol as defined by RFC 1813.",
+                "NFSv4": "This value shall mean that this device conforms to the Network File System protocol as defined by RFC 3010 or RFC 5661.",
+                "HTTP": "This value shall mean that this device conforms to the Hypertext Transfer protocol as defined by RFC 2068 or RFC 2616.",
+                "HTTPS": "This value shall mean that this device conforms to the Hypertext Transfer protocol as defined by RFC 2068 or RFC 2616 utilizing Transport Layer Security as specified by RFC 5246 or RFC 6176.",
+                "FTP": "This value shall mean that this device conforms to the File Transfer protocol as defined by RFC 114.",
+                "SFTP": "This value shall mean that this device conforms to the File Transfer protocol as defined by RFC 114 utilizing Transport Layer Security as specified by RFC 5246 or RFC 6176."
             }
         },
         "Storage": {
@@ -243,18 +263,8 @@
                     "description": "The set of drives attached to the storage controllers represented by this resource.",
                     "longDescription": "A collection that indicates all the drives attached to the storage controllers that this resource represents."
                 },
-                "Volumes@odata.count": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
-                },
-                "Volumes@odata.navigationLink": {
-                    "type": "string",
-                    "format": "uri"
-                },
                 "Volumes": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "http://redfish.dmtf.org/schemas/v1/Volume.json#/definitions/Volume"
-                    },
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/VolumeCollection.json#/definitions/VolumeCollection",
                     "readonly": true,
                     "description": "The set of volumes produced by the storage controllers represented by this resource.",
                     "longDescription": "A collection that indicates all the volumes produced by the storage controllers that this resource represents."

@@ -95,6 +95,7 @@
                         "number",
                         "null"
                     ],
+                    "units": "s",
                     "minimum": 0,
                     "description": "Indicates how often the Multicast is done from this service for SSDP.",
                     "longDescription": "The value of this property shall contain the time interval, in seconds, between transmissions of the multicast NOTIFY ALIVE message.  A setting of 0 seconds shall disable this functionality.  The recommended value is 600 seconds."

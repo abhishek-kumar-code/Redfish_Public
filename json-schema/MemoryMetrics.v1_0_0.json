@@ -282,6 +282,7 @@
                         "number",
                         "null"
                     ],
+                    "units": "By",
                     "readonly": true,
                     "description": "Block size in bytes",
                     "longDescription": "The value of this property shall be the block size in bytes of all stucture elements."

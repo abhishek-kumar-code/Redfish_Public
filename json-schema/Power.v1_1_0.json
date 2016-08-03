@@ -76,6 +76,7 @@
                         "null"
                     ],
                     "minimum": 0,
+                    "units": "W",
                     "readonly": true,
                     "description": "The actual power being consumed by the chassis.",
                     "longDescription": "The value of this property shall represent the actual power being consumed (in Watts) by the chassis."
@@ -86,6 +87,7 @@
                         "null"
                     ],
                     "minimum": 0,
+                    "units": "W",
                     "readonly": true,
                     "description": "The potential power that the chassis resources are requesting which may be higher than the current level being consumed since requested power includes budget that the chassis resource wants for future use.",
                     "longDescription": "The value of this property shall represent the amount of power (in Watts) that the chassis resource is currently requesting be budgeted to it for future use."
@@ -96,6 +98,7 @@
                         "null"
                     ],
                     "minimum": 0,
+                    "units": "W",
                     "readonly": true,
                     "description": "The amount of power not already budgeted and therefore available for additional allocation. (powerCapacity - powerAllocated).  This indicates how much reserve power capacity is left.",
                     "longDescription": "The value of this property shall represent the amount of power capacity (in Watts) not already allocated and shall equal PowerCapacityWatts - PowerAllocatedWatts."
@@ -106,6 +109,7 @@
                         "null"
                     ],
                     "minimum": 0,
+                    "units": "W",
                     "readonly": true,
                     "description": "The total amount of power available to the chassis for allocation. This may the power supply capacity, or power budget assigned to the chassis from an up-stream chassis.",
                     "longDescription": "The value of this property shall represent the total power capacity that is available for allocation to the chassis resources."
@@ -116,6 +120,7 @@
                         "null"
                     ],
                     "minimum": 0,
+                    "units": "W",
                     "readonly": true,
                     "description": "The total amount of power that has been allocated (or budegeted)to  chassis resources.",
                     "longDescription": "The value of this property shall represent the total power currently allocated to chassis resources."
@@ -174,6 +179,7 @@
                         "number",
                         "null"
                     ],
+                    "units": "W",
                     "minimum": 0,
                     "description": "The Power limit in watts. Set to null to disable power capping.",
                     "longDescription": "The value of this property shall represent the power cap limit in watts for the resource.  If set to null, power capping shall be disabled."
@@ -191,6 +197,7 @@
                         "number",
                         "null"
                     ],
+                    "units": "ms",
                     "description": "The time required for the limiting process to reduce power consumption to below the limit.",
                     "longDescription": "The value of this property shall represent the time interval in ms required for the limiting process to react and reduce the power consumption below the limit."
                 }
@@ -234,6 +241,7 @@
                         "number",
                         "null"
                     ],
+                    "units": "min",
                     "minimum": 0,
                     "readonly": true,
                     "description": "The time interval (or window) in which the PowerMetrics are measured over.",
@@ -244,6 +252,7 @@
                         "number",
                         "null"
                     ],
+                    "units": "W",
                     "minimum": 0,
                     "readonly": true,
                     "description": "The lowest power consumption level over the measurement window (the last IntervalInMin minutes).",
@@ -254,6 +263,7 @@
                         "number",
                         "null"
                     ],
+                    "units": "W",
                     "minimum": 0,
                     "readonly": true,
                     "description": "The highest power consumption level that has occured over the measurement window (the last IntervalInMin minutes).",
@@ -264,6 +274,7 @@
                         "number",
                         "null"
                     ],
+                    "units": "W",
                     "minimum": 0,
                     "readonly": true,
                     "description": "The average power level over the measurement window (the last IntervalInMin minutes).",
@@ -339,6 +350,7 @@
                         "number",
                         "null"
                     ],
+                    "units": "V",
                     "readonly": true,
                     "description": "The current value of the voltage sensor.",
                     "longDescription": "The value of this property shall be the current value of the voltage sensor's reading."
@@ -348,6 +360,7 @@
                         "number",
                         "null"
                     ],
+                    "units": "V",
                     "readonly": true,
                     "description": "Above normal range",
                     "longDescription": "The value of this property shall indicate the CurrentReading is above the normal range but is not critical. Units shall use the same units as the related ReadingVolts propoerty."
@@ -357,6 +370,7 @@
                         "number",
                         "null"
                     ],
+                    "units": "V",
                     "readonly": true,
                     "description": "Above normal range but not yet fatal.",
                     "longDescription": "The value of this property shall indicate the CurrentReading is above the normal range but is not yet fatal. Units shall use the same units as the related ReadingVolts propoerty."
@@ -366,6 +380,7 @@
                         "number",
                         "null"
                     ],
+                    "units": "V",
                     "readonly": true,
                     "description": "Above normal range and is fatal",
                     "longDescription": "The value of this property shall indicate the CurrentReading is above the normal range and is fatal. Units shall use the same units as the related ReadingVolts propoerty."
@@ -375,6 +390,7 @@
                         "number",
                         "null"
                     ],
+                    "units": "V",
                     "readonly": true,
                     "description": "Below normal range",
                     "longDescription": "The value of this property shall indicate the CurrentReading is below the normal range but is not critical. Units shall use the same units as the related ReadingVolts propoerty."
@@ -384,6 +400,7 @@
                         "number",
                         "null"
                     ],
+                    "units": "V",
                     "readonly": true,
                     "description": "Below normal range but not yet fatal.",
                     "longDescription": "The value of this property shall indicate the CurrentReading is below the normal range but is not yet fatal. Units shall use the same units as the related ReadingVolts propoerty."
@@ -393,6 +410,7 @@
                         "number",
                         "null"
                     ],
+                    "units": "V",
                     "readonly": true,
                     "description": "Below normal range and is fatal",
                     "longDescription": "The value of this property shall indicate the CurrentReading is below the normal range and is fatal. Units shall use the same units as the related ReadingVolts propoerty."
@@ -402,6 +420,7 @@
                         "number",
                         "null"
                     ],
+                    "units": "V",
                     "readonly": true,
                     "description": "Minimum value for CurrentReading",
                     "longDescription": "The value of this property shall indicate the lowest possible value for CurrentReading. Units shall use the same units as the related ReadingVolts propoerty."
@@ -411,6 +430,7 @@
                         "number",
                         "null"
                     ],
+                    "units": "V",
                     "readonly": true,
                     "description": "Maximum value for CurrentReading",
                     "longDescription": "The value of this property shall indicate the highest possible value for CurrentReading. Units shall use the same units as the related ReadingVolts propoerty."
@@ -472,6 +492,7 @@
                         "number",
                         "null"
                     ],
+                    "units": "V",
                     "readonly": true,
                     "description": "The minimum line input voltage at which this power supply input range is effective",
                     "longDescription": "This property shall contain the value in Volts of the minimum line input voltage which the power supply is capable of consuming for this range."
@@ -481,6 +502,7 @@
                         "number",
                         "null"
                     ],
+                    "units": "V",
                     "readonly": true,
                     "description": "The maximum line input voltage at which this power supply input range is effective",
                     "longDescription": "This property shall contain the value in Volts of the maximum line input voltage which the power supply is capable of consuming for this range."
@@ -490,6 +512,7 @@
                         "number",
                         "null"
                     ],
+                    "units": "Hz",
                     "minimum": 0,
                     "readonly": true,
                     "description": "The minimum line input frequency at which this power supply input range is effective",
@@ -500,6 +523,7 @@
                         "number",
                         "null"
                     ],
+                    "units": "Hz",
                     "minimum": 0,
                     "readonly": true,
                     "description": "The maximum line input frequency at which this power supply input range is effective",
@@ -510,6 +534,7 @@
                         "number",
                         "null"
                     ],
+                    "units": "W",
                     "minimum": 0,
                     "readonly": true,
                     "description": "The maximum capacity of this Power Supply when operating in this input range",
@@ -704,6 +729,7 @@
                         "number",
                         "null"
                     ],
+                    "units": "V",
                     "readonly": true,
                     "description": "The line input voltage at which the Power Supply is operating",
                     "longDescription": "This property shall contain the value in Volts of the line input voltage (measured or configured for) that the power supply has been configured to operate with or is currently receiving."
@@ -713,6 +739,7 @@
                         "number",
                         "null"
                     ],
+                    "units": "W",
                     "minimum": 0,
                     "readonly": true,
                     "description": "The maximum capacity of this Power Supply",
@@ -723,6 +750,7 @@
                         "number",
                         "null"
                     ],
+                    "units": "W",
                     "minimum": 0,
                     "readonly": true,
                     "description": "The average power output of this Power Supply",

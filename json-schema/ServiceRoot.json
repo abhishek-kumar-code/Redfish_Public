@@ -13,6 +13,12 @@
                 },
                 {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/ServiceRoot.v1_0_2.json#/definitions/ServiceRoot"
+                },
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/ServiceRoot.v1_0_3.json#/definitions/ServiceRoot"
+                },
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/ServiceRoot.v1_1_0.json#/definitions/ServiceRoot"
                 }
             ]
         }
