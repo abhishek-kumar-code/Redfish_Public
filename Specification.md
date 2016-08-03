@@ -718,7 +718,7 @@ Below is an example of the link headers of a ManagerAccount with a role of Admin
 
 ~~~http
 Link: </redfish/v1/AccountService/Roles/Admin>; path=/Links/Role
-Link: <</redfish/v1/Schemas/Settings.json>   
+Link: </redfish/v1/Schemas/Settings.json>   
 Link: </redfish/v1/Schemas/ManagerAccount.v1_0_2.json>; rel=describedby
 ~~~
 
