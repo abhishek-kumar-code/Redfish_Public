@@ -263,7 +263,7 @@
           <Annotation Term="OData.Description" String="A small chassis, card, or device which contains devices for a particular subsystem or function"/>
         </Member>
         <Member Name="IPBasedDrive">
-          <Annotation Term="OData.Description" String="A chassis in Drive form factor with network connections."/>
+          <Annotation Term="OData.Description" String="A chassis in Drive form factor with IP-based network connections."/>
         </Member>
         <Member Name="Other">
           <Annotation Term="OData.Description" String="A chassis that does not fit any of these definitions"/>
