@@ -262,6 +262,9 @@
         <Member Name="Component">
           <Annotation Term="OData.Description" String="A small chassis, card, or device which contains devices for a particular subsystem or function"/>
         </Member>
+        <Member Name="IPBasedDrive">
+          <Annotation Term="OData.Description" String="A chassis in Drive form factor with network connections."/>
+        </Member>
         <Member Name="Other">
           <Annotation Term="OData.Description" String="A chassis that does not fit any of these definitions"/>
         </Member>
@@ -395,6 +398,10 @@
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </ComplexType>
+    </Schema>
+	
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_3_0">
+      <EntityType Name="Chassis" BaseType="Chassis.v1_1_2.Chassis"/>
     </Schema>
 
   </edmx:DataServices>
