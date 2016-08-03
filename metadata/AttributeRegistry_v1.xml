@@ -16,16 +16,16 @@
   </edmx:Reference>
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
     <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
-  </edmx:Reference>  
+  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
     <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
     <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
-    <edmx:Include Namespace="Resource.v1_0_0" />
+    <edmx:Include Namespace="Resource.v1_0_0"/>
   </edmx:Reference>
-  
+
   <edmx:DataServices>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AttributeRegistry">
 
@@ -48,35 +48,35 @@
           <PropertyValue Property="Deletable" Bool="false"/>
         </Record>
       </Annotation>
-      
+
     </Schema>
-    
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AttributeRegistry.v1_0_0">
 
-      <EntityType Name="AttributeRegistry" BaseType="AttributeRegistry.AttributeRegistry">       
-        <Property Name="Language" Type="Edm.String" Nullable="false" >
+      <EntityType Name="AttributeRegistry" BaseType="AttributeRegistry.AttributeRegistry">
+        <Property Name="Language" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the RFC 5646 compliant language code for the registry."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a string consisting of an RFC 5646 language code"/>
           <Annotation Term="Redfish.Required"/>
         </Property>
-        <Property Name="RegistryVersion" Type="Edm.String" Nullable="false" >
+        <Property Name="RegistryVersion" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the attribute registry version which is used in the middle portion of a AttributeRegistry."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the version of this attribute registry. The format of this string shall be of the format majorversion.minorversion.errata in compliance with Protocol Version section of the Redfish specification."/>
           <Annotation Term="Redfish.Required"/>
         </Property>
-        <Property Name="OwningEntity" Type="Edm.String" Nullable="false" >
+        <Property Name="OwningEntity" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the organization or company that publishes this registry."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a string that represents the publisher of this registry."/>
           <Annotation Term="Redfish.Required"/>
         </Property>
-        <Property Name="SupportedSystems" Type="Collection(AttributeRegistry.v1_0_0.SupportedSystems)" Nullable="false" >
+        <Property Name="SupportedSystems" Type="Collection(AttributeRegistry.v1_0_0.SupportedSystems)" Nullable="false">
           <Annotation Term="OData.Description" String="Array of systems supported by this attribute registry."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array containing a list of systems supported by this attribute registry."/>
         </Property>
-        <Property Name="RegistryEntries" Type="AttributeRegistry.v1_0_0.RegistryEntries" Nullable="false" >
+        <Property Name="RegistryEntries" Type="AttributeRegistry.v1_0_0.RegistryEntries" Nullable="false">
           <Annotation Term="OData.Description" String="List of all attributes and their metadata for this component."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall a list of all attributes for this component, along with their possible values, dependencies, and other metadata."/>
         </Property>
@@ -102,7 +102,7 @@
       </ComplexType>
 
       <ComplexType Name="RegistryEntries">
-        <Property Name="Attributes" Type="Collection(AttributeRegistry.v1_0_0.Attributes)" Nullable="false" >
+        <Property Name="Attributes" Type="Collection(AttributeRegistry.v1_0_0.Attributes)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The array containing the attributes and their possible values."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array containing the attributes and their possible values and other metadata."/>
@@ -151,7 +151,7 @@
           <Annotation Term="OData.Description" String="The warning text for changing the attribute."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the warning text of the attribute."/>
         </Property>
-        <Property Name="CurrentValue" Type="Edm.PrimitiveType"> 
+        <Property Name="CurrentValue" Type="Edm.PrimitiveType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Placeholder of the current value of the attribute."/>
           <Annotation Term="OData.LongDescription" String="Placeholder of the current value of the attribute, to aid in evaluating dependencies. The current value of an attribute might be affected by the results of evaluating the 'Dependencies' array."/>
@@ -172,12 +172,12 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a string indicating the menu hierarchy of this attribute, in the form of a path to the menu names."/>
           <Annotation Term="Validation.Pattern" String="^[.]?[A-Za-z0-9//]+$"/>
         </Property>
-        <Property Name="ReadOnly" Type="Edm.Boolean" >
+        <Property Name="ReadOnly" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The read-only state of this attribute."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean describing the read-only state of attribute. A read-only attribute cannot be modified, and should be grayed out in user interfaces. The read-only state of an attribute might be affected by the results of evaluating the 'Dependencies' array."/>
         </Property>
-        <Property Name="WriteOnly" Type="Edm.Boolean" >
+        <Property Name="WriteOnly" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Defines whether this attribute is write-only. Such attributes revert back to their initial value after settings are applied."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean describing the write-only state of this attribute. A write-only attribute reverts back to it's initial value after settings are applied."/>
@@ -207,17 +207,17 @@
           <Annotation Term="OData.Description" String="The maximum character length of the value of an attribute of type 'String'."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a number indicating the maximum character length of the value of an attribute of type 'String'."/>
         </Property>
-        <Property Name="MinLength" Type="Edm.Int64" >
+        <Property Name="MinLength" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The minimum character length of the value of an attribute of type 'String'."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a number indicating the minimum character length of the value of an attribute of type 'String'."/>
         </Property>
-        <Property Name="ScalarIncrement" Type="Edm.Int64" >
+        <Property Name="ScalarIncrement" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The amount to increment or decrement the value of an attribute of type 'Integer' each time a user requests a value change."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a number indicating the amount to increment or decrement the value of an attribute of type 'Integer' each time a user requests a value change. A ScalarIncrement value of 0 indicates a free-form numeric user input."/>
         </Property>
-        <Property Name="UpperBound" Type="Edm.Int64" >
+        <Property Name="UpperBound" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The upper limit of the value of an attribute of type 'Integer'."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a number indicating the upper limit of the value of an attribute of type 'Integer'."/>
@@ -251,7 +251,7 @@
           <Annotation Term="OData.Description" String="The numeric value describing the ascending order in which this menu is displayed relative to other menus."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a number the describes the ascending order in which this menu is displayed, relative to other menus."/>
         </Property>
-        <Property Name="ReadOnly" Type="Edm.Boolean" >
+        <Property Name="ReadOnly" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The read-only state of this menu."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean describing the read-only state of this menu. A read-only menu is not accessible in user interfaces, and all properties contained in that menu and its sub-menus become read-only."/>
@@ -282,7 +282,7 @@
           <Annotation Term="Validation.Pattern" String="^[A-Z][A-Za-z0-9]+$"/>
         </Property>
         <Property Name="Type" Type="AttributeRegistry.v1_0_0.DependencyType" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>          
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The type of the dependency structure."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an enumeration describing type of the attribute dependency."/>
         </Property>
@@ -354,7 +354,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the logical term used to combine two or more MapFrom conditions in this dependency expression. For example, 'AND' for logical AND, or 'OR' for logical OR of the conditions."/>
         </Property>
       </ComplexType>
-     
+
       <EnumType Name="AttributeType">
         <Member Name="Enumeration">
           <Annotation Term="OData.Description" String="The attributes that include a list of the known possible enumerated values."/>
@@ -378,7 +378,7 @@
           <Annotation Term="OData.Description" String="A simple mapping dependency. The attribute value or state is changed to the mapped value if the condition evaluates to true."/>
         </Member>
       </EnumType>
-      
+
       <EnumType Name="MapFromCondition">
         <Member Name="EQU">
           <Annotation Term="OData.Description" String="The logical operation for 'Equal'."/>
@@ -498,8 +498,8 @@
           <Annotation Term="OData.Description" String="The dependency that affects an attribute's ValueExpression."/>
         </Member>
       </EnumType>
-      
-   </Schema>
-  
-</edmx:DataServices>
+
+    </Schema>
+
+  </edmx:DataServices>
 </edmx:Edmx>

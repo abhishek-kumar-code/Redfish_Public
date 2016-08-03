@@ -258,7 +258,7 @@
           <Annotation Term="OData.LongDescription" String="This property shall represent the format of the DurableName property."/>
         </Property>
       </ComplexType>
-      
+
       <ComplexType Name="Location">
         <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
@@ -311,9 +311,9 @@
       </EnumType>
 
     </Schema>
-    
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_2_0">
-      
+
       <EnumType Name="PowerState">
         <Member Name="On">
           <Annotation Term="OData.Description" String="The state is powered On."/>
@@ -328,7 +328,7 @@
           <Annotation Term="OData.Description" String="A temporary state between On and Off."/>
         </Member>
       </EnumType>
-      
+
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_1_1"/>
