@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  ComputerSystem  v1.1.0-->
+<!--# Redfish Schema:  ComputerSystem  v1.2.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -11,13 +11,13 @@
 <!---->
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
 
-  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Capabilities.V1.xml">
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
     <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
-  </edmx:Reference>  
-  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Measures.V1.xml">
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
     <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
@@ -26,7 +26,7 @@
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
-    <edmx:Include Namespace="Resource.v1_0_0" />
+    <edmx:Include Namespace="Resource.v1_0_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Chassis_v1.xml">
     <edmx:Include Namespace="Chassis"/>
@@ -386,7 +386,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The number of processors in the system."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the number of central processors in the system."/>
-          <Annotation Term="Validation.Minimum" Int="0" />
+          <Annotation Term="Validation.Minimum" Int="0"/>
         </Property>
         <Property Name="Model" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -403,7 +403,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The total installed, operating system-accessible memory (RAM), measured in GiB."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the amount of system general purpose volatile (RAM) memory as measured in gibibytes."/>
-          <Annotation Term="Validation.Minimum" Int="0" />
+          <Annotation Term="Validation.Minimum" Int="0"/>
         </Property>
         <Property Name="Status" Type="Resource.Status"  Nullable="false"/>
         <Annotation Term="OData.Description" String="This object describes the memory of the system in general detail."/>
@@ -418,7 +418,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_0_2">
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_0_1.ComputerSystem"/>
     </Schema>
-  
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_0_3">
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_0_2.ComputerSystem"/>
     </Schema>
@@ -557,11 +557,11 @@
           <Annotation Term="OData.Description" String="A reference to a collection of storage services supported by this computer system"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type HostedStorageServices."/>
           <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty> 
+        </NavigationProperty>
         <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
         <Annotation Term="OData.Description" String="This object describes services that may be running or installed on the system."/>
       </ComplexType>
-      
+
       <EnumType Name="HostingRole">
        <Annotation Term="OData.Description" String="The enumerations of HostingRoles specify different features that the hosting ComputerSystem supports."/>
        <Member Name="ApplicationServer">
