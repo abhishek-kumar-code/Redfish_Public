@@ -11,7 +11,7 @@
             "@odata.id": "/redfish/v1/JsonSchemas/Chassis.v1_0_0"
         },
 		{
-            "@odata.id": "/redfish/v1/JsonSchemas/AccountManager.v1_0_2"
+            "@odata.id": "/redfish/v1/JsonSchemas/ManagerAccount.v1_0_2"
         }
     ]
 }
