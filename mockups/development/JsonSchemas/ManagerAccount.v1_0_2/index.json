@@ -1,0 +1,20 @@
+{
+    "@odata.context": "/redfish/v1/$metadata#JsonSchemaFile.JsonSchemaFile",
+    "@odata.id": "/redfish/v1/JsonSchemas/ManagerAccount.v1_0_2",
+    "@odata.type": "#JsonSchemaFile.v1_0_0.JsonSchemaFile",
+    "Id": "ManagerAccount.v1_0_2",
+    "Name": "ManagerAccount Schema File",
+    "Description": "ManagerAccount Schema File Location, local copy",
+    "Languages": [
+        "en"
+    ],
+    "Schema": "#ManagerAccount.v1_0_2.ManagerAccount",
+    "Oem": {},
+    "Location": [
+        {
+            "Language": "en",         
+            "Uri": "/redfish/v1/JsonSchemas/ManagerAccount.v1_0_2.json",
+            "PublicationUri" : "http://redfish.dmtf.org/schemas/ManagerAccount.v1_0_2.json"
+        }
+    ]
+}
