@@ -24,20 +24,34 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | ---         | ---     | ---       | ---             |
 | (all files) | various | 2016-8-12 | Corrected Reference URI links to OData v4 (errata 3) and added Capabilities annotations to CSDL files. |
 | ActionInfo | 1.0.0 | 2016-8-12 | Initial release.  ActionInfo describes the parameters and other information necessary to perform a Redfish Action to a particular Action target.  |
+| Endpoint | 1.0.0 | 2016-8-12 | Initial release.  An Endpoint is an entity that sends or receives protocol defined messages over a transport. |
+| EndpointCollection | 1.0.0 | 2016-8-12 | Initial release.  Collection of Endpoints. |
+| Fabric | 1.0.0 | 2016-8-12 | Initial release.  A Fabric consists of one or more Switches and may include  Endpoints and Zones. |
+| FabricCollection | 1.0.0 | 2016-8-12 | Initial release.  Collection of Fabric resources.|
 | MemoryChunks | 1.0.0 | 2016-8-12 | Initial release.  Describes a Memory Chunk and memory Interleve Sets. |
 | MemoryChunksCollection | 1.0.0 | 2016-8-12 | Initial release.  Collection of Memory Chunks. |
 | MemoryDomain | 1.0.0 | 2016-8-12 | Initial release.  Memory Domains are used to indicate to the client which Memory (DIMMs) can be grouped together in Memory Chunks to form interleave sets or otherwise grouped together. |
 | MemoryDomainCollection | 1.0.0 | 2016-8-12 | Initial release.  Collection of Memory Domains. |
+| PCIeDevice | 1.0.0 | 2016-8-12 | Initial release.  Describes a PCIe Device attached to a system. |
+| PCIeFunction | 1.0.0 | 2016-8-12 | Initial release.  Describes a PCIe Function. |
+| Port | 1.0.0 | 2016-8-12 | Initial release. |
+| PortCollection | 1.0.0 | 2016-8-12 | Initial release.  Collection of Ports. |
 | SoftwareInventory | 1.0.0 | 2016-8-12 | Initial release.  Describes an inventory of software components. |
 | SoftwareInventoryCollection | 1.0.0 | 2016-8-12 | Initial release.  Collection of Software components. |
+| Switch | 1.0.0 | 2016-8-12 | Initial release. |
+| SwitchCollection| 1.0.0 | 2016-8-12 | Initial release.  Collection of Switches. |
 | UpdateService | 1.0.0 | 2016-8-12 | Initial release.  Describes the Redfish Update Service. |
-| VolumeCollection | 1.0.0 | 2016-8-12 | Initial release.  Collection of Volumes.  |
+| VolumeCollection | 1.0.0 | 2016-8-12 | Initial release.  Collection of Volumes. |
+| Zone | 1.0.0 | 2016-8-12 | Initial release. |
+| ZoneCollection | 1.0.0 | 2016-8-12 | Initial release.  Collection of Zones. |
 | Chassis | 1.3.0 | 2016-8-12 | Added "IPBasedDrive" to "ChassisType" enumerations.  |
-| ComputerSystem | 1.2.0 | 2016-8-12 | Added "HostedServices" and "HostingRoles" properties and "MemoryDomains" link. Added "RemoteDrive" enumeration to "BootSourceOverrideTarget". |
-| EthernetInterface | 1.1.0 | 2016-8-12 | Added "LinkStatus" property. |
-| LogEntry | 1.1.0 | 2016-8-12 | Added "EventType", "EventId", and "EventTimeStamp" properties. |
-| MemoryMetrics | 1.1.0 | 2016-8-12 | Added "PredictedMediaLifeLeftPercent" property to the "HealthData" object. |
+| ComputerSystem | 1.2.0 | 2016-8-12 | Added "HostedServices" and "HostingRoles" properties.  Added  "MemoryDomains", "PCIeDevices", "PCIFunctions", and "Endpoints" links. Added "RemoteDrive" enumeration to "BootSourceOverrideTarget". |
+| Drive | 1.1.0 | 2016-8-12 | Added "Operations" property and "Endpoints" link. |
+| EthernetInterface | 1.1.0 | 2016-8-12 | Added "LinkStatus" property and "Endpoints" link. |
 | EventDestination | 1.1.0 | 2016-8-12 | Added "OriginResources" and "MessageIds" properties. |
+| LogEntry | 1.1.0 | 2016-8-12 | Added "EventType", "EventId", and "EventTimeStamp" properties. |
+| Manager | 1.2.0 | 2016-8-12 | Added "PowerState" property. |
+| MemoryMetrics | 1.1.0 | 2016-8-12 | Added "PredictedMediaLifeLeftPercent" property to the "HealthData" object. |
 | Power | 1.2.0 | 2016-8-12 | Added "IndicatorLED" property to "PowerSupply" object. |
 | Redundancy | 1.1.0 | 2016-8-12 | Added "RedundancyEnabled" property. |
 | Resource | 1.2.0 | 2016-8-12 |  Added "Deferring", "Quiesced", and "Updating" to "State" enumerations. |
