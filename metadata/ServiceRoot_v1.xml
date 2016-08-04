@@ -61,6 +61,12 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/SNIA/v1/StorageServiceCollection_v1.xml">
     <edmx:Include Namespace="StorageServiceCollection"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/SNIA/v1/StorageSystemCollection_v1.xml">
+    <edmx:Include Namespace="StorageSystemCollection"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/UpdateService_v1.xml">
+    <edmx:Include Namespace="UpdateService"/>
+  </edmx:Reference>
 
   <edmx:DataServices>
 
@@ -200,7 +206,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ServiceRoot.v1_1_0">
       <EntityType Name="ServiceRoot" BaseType="ServiceRoot.v1_0_2.ServiceRoot">
-        <NavigationProperty Name="StorageSystems" Type="ComputerSystemCollection.ComputerSystemCollection" Nullable="false">
+        <NavigationProperty Name="StorageSystems" Type="StorageSystemCollection.StorageSystemCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is a link to a collection of storage systems."/>
           <Annotation Term="OData.LongDescription" String="The referenced collection shall contain computer systems that act as storage servers.  The HostingRoles attribute of each such computer system shall have an entry for StorageServer."/>
@@ -209,6 +215,12 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A link to a collection of all storage service entities."/>
           <Annotation Term="OData.LongDescription" String="The referenced collection shall contain references to all StorageService instances."/>
+        </NavigationProperty>
+        <NavigationProperty Name="UpdateService" Type="UpdateService.UpdateService" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This is a link to the UpdateService."/>
+          <Annotation Term="OData.LongDescription" String="The classes structure shall only contain a reference to a resource that complies to the UpdateService schema."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </EntityType>
     </Schema>
