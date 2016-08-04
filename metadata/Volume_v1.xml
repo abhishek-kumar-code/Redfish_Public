@@ -100,8 +100,8 @@
         </Property>
         <Property Name="VolumeType" Type="Volume.v1_0_0.VolumeType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Is this drive currently predicting a failure in the near future"/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain failure information as defined by the manufacturer for the associated drive."/>
+          <Annotation Term="OData.Description" String="The type of this volume"/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the type of the associated Volume."/>
         </Property>
         <Property Name="Encrypted" Type="Edm.Boolean">
           <Annotation Term="OData.Description" String="Is this Volume encrypted"/>
