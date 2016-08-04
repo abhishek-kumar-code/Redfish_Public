@@ -19,7 +19,7 @@
   </edmx:Reference>  
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
-    <edmx:Include Namespace="Resource.v1_0_0" />
+    <edmx:Include Namespace="Resource.v1_0_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
     <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
@@ -63,6 +63,9 @@
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/SNIA/v1/StorageSystemCollection_v1.xml">
     <edmx:Include Namespace="StorageSystemCollection"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/UpdateService_v1.xml">
+    <edmx:Include Namespace="UpdateService"/>
   </edmx:Reference>
 
   <edmx:DataServices>
@@ -212,8 +215,14 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A link to a collection of all storage service entities."/>
           <Annotation Term="OData.LongDescription" String="The referenced collection shall contain references to all StorageService instances."/>
-        </NavigationProperty>   
-      </EntityType>        
+        </NavigationProperty>
+        <NavigationProperty Name="UpdateService" Type="UpdateService.UpdateService" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This is a link to the UpdateService."/>
+          <Annotation Term="OData.LongDescription" String="The classes structure shall only contain a reference to a resource that complies to the UpdateService schema."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+      </EntityType>
     </Schema>
   </edmx:DataServices>
 </edmx:Edmx>
