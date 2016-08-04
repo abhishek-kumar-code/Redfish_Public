@@ -719,7 +719,7 @@ Below is an example of the link headers of a ManagerAccount with a role of Admin
 ~~~http
 Link: </redfish/v1/AccountService/Roles/Administrator>; path=/Links/Role
 Link: <http://redfish.dmtf.org/schemas/Settings.json>   
-Link: </redfish/v1/Schemas/ManagerAccount.v1_0_2.json>; rel=describedby
+Link: </redfish/v1/JsonSchemas/ManagerAccount.v1_0_2.json>; rel=describedby
 ~~~
 
 Link header(s) shall be returned on HEAD and a Link header satisfying
