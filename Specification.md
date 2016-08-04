@@ -1305,7 +1305,7 @@ One of the key tenets of the Redfish interface is the separation of protocol and
 
 ### Schema repository
 
-All Redfish schemas produced, approved and published by the SPMF are available from the DMTF website at http://redfish.dmtf.org/schemas for download.  Each folder in the Repository contains both CSDL and json-schema formats.  The schema files are organized on the site in the following manner:
+All Redfish schemas produced, approved and published by the SPMF are available from the DMTF website at http://redfish.dmtf.org/schemas for download.  Each folder in the Repository contains both CSDL and JSON Schema formats.  The schema files are organized on the site in the following manner:
 
 | URL | Folder contents |
 |-----|-----------------|
@@ -2342,7 +2342,7 @@ The Authorization subsystem uses Roles and Privileges to control which users hav
 | 1.0.2   | 2016-3-31| Errata release.  Various typographical errors. |
 |         |          | Corrected normative language for M-SEARCH queries and responses. |
 |         |          | Corrected Cache-Control and USN format in M-SEARCH responses. |
-|         |          | Corrected schema namespace rules to conform to OData namespace requirements (<namespace>.n.n.n becomes <namespace>.vn_n_n) and updated examples throughout the document to conform to this format.  File naming rules for json-schema and CSDL (XML) schemas were also corrected to match this format and to allow for future major (v2) versions to coexist. |
+|         |          | Corrected schema namespace rules to conform to OData namespace requirements (<namespace>.n.n.n becomes <namespace>.vn_n_n) and updated examples throughout the document to conform to this format.  File naming rules for JSON Schema and CSDL (XML) schemas were also corrected to match this format and to allow for future major (v2) versions to coexist. |
 |         |          | Added missing clause detailing the location of the Schema Repository and listing the durable URLs for the repository. |
 |         |          | Added definition for the value of the Units annotation, using the definitions from the UCUM specification.  Updated examples throughout to use this standardized form. |
 |         |          | Modified the naming requirements for Oem Property Naming to avoid future use of colon ':' and period '.' in property names, which can produce invalid or problematic variable names when used in some programming languages or environments.  Both separators have been replaced with underscore '_', with colon and period usage now deprecated (but valid). |
