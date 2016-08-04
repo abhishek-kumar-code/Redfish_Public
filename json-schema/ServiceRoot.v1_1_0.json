@@ -150,7 +150,7 @@
                     "longDescription": "This object shall only contain a reference to a collection of resources that comply to the SchemaFile schema where the files are Json-Schema files."
                 },
                 "StorageSystems": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/ComputerSystemCollection.json#/definitions/ComputerSystemCollection",
+                    "$ref": "http://redfish.dmtf.org/schemas/SNIA/v1/StorageSystemCollection.json#/definitions/StorageSystemCollection",
                     "readonly": true,
                     "description": "This is a link to a collection of storage systems.",
                     "longDescription": "The referenced collection shall contain computer systems that act as storage servers.  The HostingRoles attribute of each such computer system shall have an entry for StorageServer."
