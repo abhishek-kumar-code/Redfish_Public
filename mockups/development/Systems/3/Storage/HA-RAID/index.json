@@ -14,7 +14,7 @@
     "StorageControllers": [
         {
             "@odata.id": "/redfish/v1/Systems/3/Storage/HA-RAID#/StorageControllers/0",
-            "@odata.type": "#Storage.v1_0_0.StorageController",
+            "@odata.type": "#Storage.v1_1_0.StorageController",
             "Id": "0",
             "Name": "Contoso External RAID",
             "Description": "Contoso External RAID (Slot 6)",
@@ -42,7 +42,12 @@
             "SupportedDeviceProtocols": [
                 "SAS",
                 "SATA"
-            ]
+            ],
+            "Links": {
+                "Endpoints": [
+                    {"@odata.id": "/redfish/v1/Fabrics/SAS/Endpoints/Initiator1"}
+                ]
+            }
         },
         {
             "@odata.id": "/redfish/v1/Systems/3/Storage/HA-RAID#/StorageControllers/1",
@@ -74,7 +79,12 @@
             "SupportedDeviceProtocols": [
                 "SAS",
                 "SATA"
-            ]
+            ],
+            "Links": {
+                "Endpoints": [
+                    {"@odata.id": "/redfish/v1/Fabrics/SAS/Endpoints/Initiator2"}
+                ]
+            }
         }
     ],
     "Drives": [

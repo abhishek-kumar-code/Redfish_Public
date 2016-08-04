@@ -64,6 +64,15 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/StorageCollection_v1.xml">
     <edmx:Include Namespace="StorageCollection"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/PCIeDevice_v1.xml">
+    <edmx:Include Namespace="PCIeDevice"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/PCIeFunction_v1.xml">
+    <edmx:Include Namespace="PCIeFunction"/>
+  </edmx:Reference> 
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Endpoint_v1.xml">
+    <edmx:Include Namespace="Endpoint"/>
+  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/SNIA/v1/HostedStorageServices_v1.xml">
     <edmx:Include Namespace="HostedStorageServices"/>
   </edmx:Reference>  
@@ -538,6 +547,18 @@
           <Annotation Term="OData.Description" String="The hosing roles that this computer system supports."/>
           <Annotation Term="OData.LongDescription" String="The values of this collection shall be the hosting roles supported by this computer system."/>
         </Property>
+        <NavigationProperty Name="PCIeDevices" Type="Collection(PCIeDevice.PCIeDevice)" ContainsTarget="true" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A reference to a collection of PCIe Devices used by this computer system"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of references of type PCIeDevice."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        <NavigationProperty Name="PCIeFunctions" Type="Collection(PCIeFunction.PCIeFunction)" ContainsTarget="true" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A reference to a collection of PCIe Functions used by this computer system"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of references of type PCIeFunction."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty> 
         <Property Name="HostedServices" Type="ComputerSystem.v1_2_0.HostedServices" Nullable="false">
           <Annotation Term="OData.Description" String="The services that this computer system supports."/>
           <Annotation Term="OData.LongDescription" String="The values of this collection shall describe services supported by this computer system."/>
@@ -574,6 +595,15 @@
           <Annotation Term="OData.Description" String="The system hosts functionality that supports the system acting as a switch."/>
         </Member>
       </EnumType>
+
+      <EntityType Name="Links" BaseType="ComputerSystem.v1_0_0.Links">
+        <NavigationProperty Name="Endpoints" Type="Collection(Endpoint.Endpoint)" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="An array of references to the endpoints that connect to this system."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resources that this system is associated with and shall reference a resource of type Endpoint."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+      </EntityType>
     </Schema>
 
   </edmx:DataServices>

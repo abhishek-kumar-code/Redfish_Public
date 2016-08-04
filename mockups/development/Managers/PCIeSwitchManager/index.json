@@ -1,0 +1,72 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#Managers/Members/$entity",
+    "@odata.id": "/redfish/v1/Managers/PCIeSwitchManager",
+    "@odata.type": "#Manager.v1_0_1.Manager",
+    "Id": "PCIeSwitchManager",
+    "Name": "PCIe Switch Manager",
+    "ManagerType": "ManagementController",
+    "Description": "Best Switch Vendor's Embedded PCIe Switch Manager",
+    "ServiceEntryPointUUID": "92384634-2938-2342-8820-489239905423",
+    "UUID": "System-ID-1",
+    "Model": "Joo Janta 200",
+    "DateTime": "2015-03-13T04:14:33+06:00",
+    "DateTimeLocalOffset": "+06:00",
+	"FirmwareVersion": "v1.234.44",
+	
+	"ManagementDomainID": "",
+
+	
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK",
+		"HealthRollup": "Warning"
+    },
+
+    "SerialConsole": {
+        "ServiceEnabled": true,
+        "MaxConcurrentSessions": 1,
+        "ConnectTypesSupported": [
+            "Telnet",
+            "SSH"
+        ]
+    },
+    "CommandShell": {
+        "ServiceEnabled": true,
+        "MaxConcurrentSessions": 4,
+        "ConnectTypesSupported": [
+            "Telnet",
+            "SSH"
+        ]
+    },
+    "NetworkProtocol": {
+        "@odata.id": "/redfish/v1/Managers/PCIeSwitchManager/NetworkProtocol"
+    },
+    "EthernetInterfaces": {
+        "@odata.id": "/redfish/v1/Managers/PCIeSwitchManager/NICs"
+    },
+    "SerialInterfaces": {
+        "@odata.id": "/redfish/v1/Managers/PCIeSwitchManager/SerialInterfaces"
+    },
+    "LogServices": {
+        "@odata.id": "/redfish/v1/Managers/PCIeSwitchManager/LogServices"
+    },
+
+    "Links": {
+        "ManagerForChassis": [
+            {
+                "@odata.id": "/redfish/v1/Chassis/PCIeSwitchMgrHW"
+            }
+        ],
+        "Oem": {}
+    },
+    "Actions": {
+        "#Manager.Reset": {
+            "target": "/redfish/v1/Managers/PCIeSwitchManager/Actions/Manager.Reset"
+        },
+        "Oem": {}
+    },
+    "Oem": {
+			"ManagementConfigurationMode": "Manual"
+	}
+}
