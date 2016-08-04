@@ -1,0 +1,18 @@
+{
+    "@odata.type": "#SoftwareInventory.v1_0_0.SoftwareInventory",
+    "Id": "BMC",
+    "Name": "Contoso BMC Firmware",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "Updateable": true,
+    "Version": "1.45.455b66-rev4",
+    "Actions": {
+        "Oem": {}
+    },
+    "Oem": {},
+    "@odata.context": "/redfish/v1/$metadata#UpdateService/FirmwareInventory/Members/$entity",
+    "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/BMC",
+    "@Redfish.Copyright": "Copyright 2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
+}
