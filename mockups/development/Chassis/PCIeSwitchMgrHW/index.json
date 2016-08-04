@@ -1,0 +1,33 @@
+﻿{
+    "@Redfish.Copyright": "Copyright (C) 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#Chassis/Members/$entity",
+    "@odata.id": "/redfish/v1/Chassis/PCIeSwitchMgrHW",
+    "@odata.type": "#Chassis.v1_0_0.Chassis",
+    "Id": "PCIeSwitchMgrHW",
+    "Name": "PCIe Switch Mgr Hardware",
+    "ChassisType": "Card",
+    "Manufacturer": "PCIe Switch Guys",
+    "Model": "PCIe Switch Manager Mega One",
+    "SKU": "",
+    "SerialNumber": "SN1703737",
+    "PartNumber": "",
+    "AssetTag": "CustomerWritableThingy",
+	"PowerState": "On",
+	
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "Links": {
+        "ContainedBy": {
+            "@odata.id": "/redfish/v1/Chassis/PCIeSwitchRackMount"
+        },
+        "ManagedBy": [
+            {
+                "@odata.id": "/redfish/v1/Managers/PCIeSwitchManager"
+            }
+        ],
+        "Oem": {}
+    },
+    "Oem": {}
+}

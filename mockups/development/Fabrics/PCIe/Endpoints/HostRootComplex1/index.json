@@ -1,0 +1,32 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+	"@odata.context": "/redfish/v1/$metadata#Endpoint.Endpoint",
+	"@odata.id": "/redfish/v1/Fabrics/PCIe/Endpoints/HostRootComplex1",
+	"@odata.type": "#Endpoint.v1_0_0.Endpoint",
+	"Id": "HostRootComplex1",
+	"Name": "Host Root Complex for System 1",
+	"Description": "The PCIe Root Complex for System 1",
+    "EndpointProtocol": "PCIe",
+    "ConnectedEntities": [
+        {
+            "EntityType": "RootComplex",
+            "EntityPciId": {
+                "DeviceId": "0xABCD",
+                "VendorId": "0xABCD",
+                "SubsystemId": "0xABCD",
+                "SubsystemVendorId": "0xABCD"
+            },
+            "EntityLink": {
+                "@odata.id": "/redfish/v1/Systems/1"
+            },
+            "Oem": {}
+        }
+    ],
+    "Links": {
+        "Ports": [
+            {"@odata.id": "/redfish/v1/Fabrics/PCIe/Switches/1/Ports/Up1"}
+        ]
+    },
+	"Oem": {}
+}
+

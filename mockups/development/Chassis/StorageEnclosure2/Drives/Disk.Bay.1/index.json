@@ -25,6 +25,9 @@
     "NegotiatedSpeedGbs": 12,
     "Links": {
         "Volumes": [
+        ],
+        "Endpoints": [
+            {"@odata.id": "/redfish/v1/Fabrics/SAS/Endpoints/Drive2"}
         ]
     },
     "Actions": {
