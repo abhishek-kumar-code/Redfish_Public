@@ -4,7 +4,7 @@
     "@odata.type": "#JsonSchemaFile.v1_0_0.JsonSchemaFile",
     "Id": "ManagerAccount.v1_0_2",
     "Name": "ManagerAccount Schema File",
-    "Description": "ManagerAccount Schema File Location",
+    "Description": "ManagerAccount Schema File Location, local copy",
     "Languages": [
         "en"
     ],
