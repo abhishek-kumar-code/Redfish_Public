@@ -16,8 +16,14 @@
     "Managers": {
         "@odata.id": "/redfish/v1/Managers"
     },
+    "Fabrics": {
+        "@odata.id": "/redfish/v1/Fabrics"
+    },
     "Tasks": {
         "@odata.id": "/redfish/v1/TaskService"
+    },
+    "Fabrics": {
+        "@odata.id": "/redfish/v1/Fabrics"
     },
     "SessionService": {
         "@odata.id": "/redfish/v1/SessionService"
@@ -27,6 +33,9 @@
     },
     "EventService": {
         "@odata.id": "/redfish/v1/EventService"
+    },
+    "UpdateService": {
+        "@odata.id": "/redfish/v1/UpdateService"
     },
     "Registries": {
         "@odata.id": "/redfish/v1/Registries"

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  ServiceRoot  v1.0.2-->
+<!--# Redfish Schema:  ServiceRoot  v1.1.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -11,15 +11,15 @@
 <!---->
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
 
-  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Capabilities.V1.xml">
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
     <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
-  </edmx:Reference>  
+  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
-    <edmx:Include Namespace="Resource.v1_0_0" />
+    <edmx:Include Namespace="Resource.v1_0_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
     <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
@@ -60,8 +60,17 @@
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/SNIA/v1/StorageServiceCollection_v1.xml">
     <edmx:Include Namespace="StorageServiceCollection"/>
-  </edmx:Reference> 
-  
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/FabricCollection_v1.xml">
+    <edmx:Include Namespace="FabricCollection"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/SNIA/v1/StorageSystemCollection_v1.xml">
+    <edmx:Include Namespace="StorageSystemCollection"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/UpdateService_v1.xml">
+    <edmx:Include Namespace="UpdateService"/>
+  </edmx:Reference>
+
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ServiceRoot">
@@ -198,10 +207,9 @@
       <EntityType Name="ServiceRoot" BaseType="ServiceRoot.v1_0_2.ServiceRoot"/>
     </Schema>
 
-    
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ServiceRoot.v1_1_0">
       <EntityType Name="ServiceRoot" BaseType="ServiceRoot.v1_0_2.ServiceRoot">
-        <NavigationProperty Name="StorageSystems" Type="ComputerSystemCollection.ComputerSystemCollection" Nullable="false">
+        <NavigationProperty Name="StorageSystems" Type="StorageSystemCollection.StorageSystemCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is a link to a collection of storage systems."/>
           <Annotation Term="OData.LongDescription" String="The referenced collection shall contain computer systems that act as storage servers.  The HostingRoles attribute of each such computer system shall have an entry for StorageServer."/>
@@ -210,8 +218,19 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A link to a collection of all storage service entities."/>
           <Annotation Term="OData.LongDescription" String="The referenced collection shall contain references to all StorageService instances."/>
-        </NavigationProperty>   
-      </EntityType>        
+        </NavigationProperty>
+        <NavigationProperty Name="Fabrics" Type="FabricCollection.FabricCollection" Nullable="false" ContainsTarget="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A link to a collection of all fabric entities."/>
+          <Annotation Term="OData.LongDescription" String="The referenced collection shall contain references to all Fabric instances."/>
+        </NavigationProperty>
+        <NavigationProperty Name="UpdateService" Type="UpdateService.UpdateService" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This is a link to the UpdateService."/>
+          <Annotation Term="OData.LongDescription" String="The classes structure shall only contain a reference to a resource that complies to the UpdateService schema."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+      </EntityType>
     </Schema>
   </edmx:DataServices>
 </edmx:Edmx>
