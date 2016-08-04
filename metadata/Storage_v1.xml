@@ -26,8 +26,8 @@
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
-    <edmx:Include Namespace="Resource.v1_0_0" />
-    <edmx:Include Namespace="Resource.v1_1_0" />
+    <edmx:Include Namespace="Resource.v1_0_0"/>
+    <edmx:Include Namespace="Resource.v1_1_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Chassis_v1.xml">
     <edmx:Include Namespace="Chassis"/>
@@ -69,7 +69,7 @@
           <PropertyValue Property="Deletable" Bool="false"/>
         </Record>
       </Annotation>
-      
+
       <Action Name="SetEncryptionKey" IsBound="true">
         <Parameter Name="Storage" Type="Storage.v1_0_0.Actions"/>
         <Parameter Name="EncryptionKey" Type="Edm.String">
