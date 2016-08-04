@@ -36,7 +36,7 @@
       </EntityType>
       <Annotation Term="Capabilities.InsertRestrictions">
         <Record>
-          <PropertyValue Property="Insertable" Bool="false"/>
+          <PropertyValue Property="Insertable" Bool="true"/>
           <Annotation Term="OData.Description" String="manager Accounts are created by posting to the Manager Account Collection."/>
         </Record>
       </Annotation>
