@@ -212,7 +212,7 @@
       </EnumType>
 
     </Schema>
-    
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Volume.v1_0_1">
       <EntityType Name="Volume" BaseType="Volume.v1_0_0.Volume"/>
     </Schema>
