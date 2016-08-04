@@ -212,6 +212,10 @@
       </EnumType>
 
     </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Volume.v1_0_0">
+      <EntityType Name="Volume" BaseType="Volume.v1_0_0.Volume"/>
+    </Schema>
 
   </edmx:DataServices>
 </edmx:Edmx>
