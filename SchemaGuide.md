@@ -15,21 +15,12 @@ This document contains details about specific properties contained within Schema
 
 The Redfish Documentation Generator uses this file to create the Redfish Schema Guide.  The tool uses Markdown section headers to locate and integrate text into the various portions of the documment as follows:
 
-## Introduction
+ - Introduction - All text in the Introduction section until the next major header is included as the head of the document. 
+- Postscript - All text in the Postscript sectino until the next major header is appended to the end of the document.
+ - Schema Supplement: This section contains all the schema-specific information, property details and sample payloads.  
+	 - Second-level headers in this section indicate the name of the Schema.  The section must be named "Schema_<major version>" for integration, for example "Processor_1". 
 
-All text in the Introduction section until the next major header is included as the head of the document. 
-
-## Postscript
-
-All text in the Postscript sectino until the next major header is appended to the end of the document.
-
-## Schema Supplement
-
-This section contains all the schema-specific information, property details and sample payloads.  
-
-Second-level headers in this section indicate the name of the Schema.  The section must be named "Schema_<major version>" for integration, for example "Processor_1". 
-
-### Property desriptions
+### Property descriptions
 
 Individual property documentation can be added using a third-level header in this section.  The header must match the property name within a schema.  This includes properties in embedded objects within a resource.
 
@@ -57,11 +48,11 @@ Introduction to Redfish goes here.
  
 
 
-## Common Properties
+# Common Redfish Properties
 
 This section documents properties that are either common throughout the Redfish Schema, or are defined in the Resource.1.x.x or odata.4.x.x schema files.
 
-### @odata.context
+## @odata.context
 
 
 The @odata.context is used for a few different things:
@@ -74,19 +65,36 @@ Technically the metadata document only has to define, or reference, any of the t
 
 Initially we tried only to reference the ServiceRoot metadata in the root $metadata document, but this required us to use relative URLs for all of our @odata.type annotations for types that were hosted on-box, or absolute URLs for off-box metadata, and the client having to parse the URL to match just the fragment. Having the types defined or referenced from the service's $metadata allows us to just put a canonical fragment in the payload and decide in the service $metadata whether the reference is hosted on-box or off-box.  So it turned out that putting the <References> for any used types in the metadata document allows all of our payloads to be shorter and more consistent by using fragments, as well as using versionless aliases for actions.
 
-### @odata.type
+## @odata.type
 
-### @odata.id
+## @odata.id
 
-### Status
+## Status
 
-### DateTime?
+# Common Properties
+
+The Common Properties section removes properties from any schema section.  If they require documentation, it should be included in the Introduction section of this document
+
+## @odata.context
+## @odata.type
+## @odata.id
+ 
+# Additional Schemas
+
+Some schemas are not enumerated here...
+
+## *Collection
+
+Collections ...
+
 
 # Schema Supplement
 
-## Processor_1
+## Processor
 
-### ProcessorID
+### Property Details
+
+#### ProcessorId
 
 This object's properties shall contain values dependent on the value of the ProcessorArchitecture property, as listed in the sections below:
 
@@ -133,3 +141,4 @@ This property shall contain the 64-bit value contained in MSR 0x8B.
 
 # Postscript
 
+This is the text that goes at the end of the file...
