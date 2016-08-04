@@ -2,9 +2,9 @@
 DocTitle: Redfish Scalable Platforms Management API Specification
 DocNumber: '0266'
 DocClass: Normative
-DocVersion: '1.0.3'
-modified: '2016-06-17'
-SupersedesVersion: '1.0.2'
+DocVersion: '1.0.4'
+modified: '2016-08-12'
+SupersedesVersion: '1.0.3'
 status: published
 released: true
 copyright: '2014-2016'
@@ -611,7 +611,7 @@ Custom actions are requested on a resource by sending the HTTP POST method to th
  *ResourceUri*/Actions/*QualifiedActionName*
 
 where
-* *ResourceUri* is the URL of the resource which supports invoking the action.
+* *ResourceUri* is the URI of the resource which supports invoking the action.
 * "Actions" is the name of the property containing the actions for a resource, as defined by this specification.
 * *QualifiedActionName* is the namespace or alias qualified name of the action.
 
@@ -779,7 +779,7 @@ The service metadata describes top-level resources and resource types of the ser
 ~~~
 
 ###### Referencing other schemas
-The service metadata shall include the namespaces for each of the Redfish resource types, along with the "RedfishExtensions.v1_0_0" namespace. These references may use the standard Uri for the hosted Redfish Schema definitions (i.e., on http://redfish.dmtf.org/schemas) or a Url to a local version of the Redfish Schema that shall be identical to the hosted version.
+The service metadata shall include the namespaces for each of the Redfish resource types, along with the "RedfishExtensions.v1_0_0" namespace. These references may use the standard URI for the hosted Redfish Schema definitions (i.e., on http://redfish.dmtf.org/schemas) or a URI to a local version of the Redfish Schema that shall be identical to the hosted version.
 
 ~~~xml
 <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/AccountService_v1.xml">
@@ -1351,7 +1351,7 @@ where
 An example of a valid type namespace might be "ComputerSystem.v1_0_0".
 
 #### Type identifiers in JSON
-Types used within a JSON payload shall be defined in, or referenced, by the [service metadata](#service-metadata).
+Types used within a JSON payload shall be defined in, or referenced by, the [service metadata](#service-metadata).
 
 Resource types defined by this specification shall be referenced in JSON documents using the full (versioned) namespace name.
 
@@ -1414,7 +1414,7 @@ Individual resources are defined as entity types within an OData Schema represen
 Schema referenced from the implementation, either from the OData Service Document or the JSON Schema File representations, may vary from the canonical definitions of those Schema defined by the Redfish Schema or other entities, provided they adhere to the rules in the list below.  Clients should take this into consideration when attempting operations on the resources defined by schema.
 * Modified schema may constrain a read/write property to be read only.
 * Modified schema may remove properties. 
-* Modified schema may change any Reference Uri to point to Schema that adheres to the modification rules.   
+* Modified schema may change any "Reference Uri" to point to Schema that adheres to the modification rules.   
 * Other modifications to the Schema shall not be allowed.
 
 ##### Schema Version Requirements
@@ -1785,7 +1785,7 @@ The next fragment shows an example of how the previous schema and the "AnvilType
 
 ##### Oem property format and content
 
-OEM-specified objects that are contained within the [Oem property](#oem-property) shall be valid JSON objects that follow the format of a Redfish [complex type](#resource-type-definitions). The name of the object (property) shall uniquely identify the OEM or organization that manages the top of the namespace under which the property is defined. This is described in more detail in the following clause. The OEM-specified property shall also include a [type property](#type-property) that provides the location of the schema and the type definition for the property within that schema. The Oem property can simultaneously hold multiple OEM-specified objects, including objects for more than one company or organization
+OEM-specified objects that are contained within the [Oem property](#oem-property) shall be valid JSON objects that follow the format of a Redfish [complex type](#resource-type-definitions). The name of the object (property) shall uniquely identify the OEM or organization that manages the top of the namespace under which the property is defined. This is described in more detail in the following clause. The OEM-specified property shall also include a [type property](#type-property) that provides the location of the schema and the type definition for the property within that schema. The Oem property can simultaneously hold multiple OEM-specified objects, including objects for more than one company or organization.
 
 The definition of any other properties that are contained within the OEM-specific complex type, along with the functional specifications, validation, or other requirements for that content is OEM-specific and outside the scope of this specification. While there are no Redfish-specified limits on the size or complexity of the OEM-specified elements within an OEM-specified JSON object, it is intended that OEM properties will typically only be used for a small number of simple properties that augment the Redfish resource. If a large number of objects or a large quantity of data (compared to the size of the Redfish resource) is to be supported, the OEM should consider having the OEM-specified object point to a separate resource for their extensions.
 
@@ -2343,6 +2343,11 @@ The Authorization subsystem uses Roles and Privileges to control which users hav
 
 | Version | Date     | Description     |
 | ---     | ---      | ---             |
+| 1.0.4   | 2016-8-12| Errata release.  Various typographical errors. |
+|         |          | Added example of an HTTP Link Header and clarified usage and content. |
+|         |          | Added Schema Modification clause describing allowed usage of the Schema files. |
+|         |          | Added recommendation to use TLS 1.2 or later, and to follow the SNIA TLS Specification.  Added reference to the SNIA TLS Specification.  Added additional recommended TLS_RSA_WITH_AES_128_CBC_SHA Cipher suite. |
+|         |          | Clarified that the "Id" property of a Role resource must match the Role Name. |
 | 1.0.3   | 2016-6-17| Errata release.  Corrected missing Table of Contents and Clause numbering.  Corrected URL references to external specifications.  Added missing Normative References.  Corrected typographical error in ETag example. |
 |         |          | Clarified examples for ExtendedInfo to show arrays of Messages. |
 |         |          | Clarified that a POST to Session Service to create a new Session does not require authorization headers. |
