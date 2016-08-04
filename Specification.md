@@ -707,16 +707,23 @@ HTTP defines headers that can be used in response messages.  The following table
 
 The [Link header](#link-header-table) provides metadata information on the
 accessed resource in response to a HEAD or GET operation. In addition to
-links from the resource, the URL of the JSON schema for the resource shall be
-returned with a `rel=describedby`.  URLs of the JSON schema for an annotation should be returned without a `rel=describedby`. For example the link headers of a ManagerAccount with a role of Admin.
+links from the resource, the URL of the JSON Schema for the resource shall be
+returned with a `rel=describedby`.  URLs of the JSON Schema for an annotation should be returned without a `rel=describedby`. If the referenced JSON Schema is a versioned schema, it shall match the version contained in the value of the @odata.id property returned in this resource.
+
+Below is an example of the link headers of a ManagerAccount with a role of Administrator that has a Settings Annotation.  
+- The first header is an example of a link that comes from the resource.  It describes links within the resource.  This type of header is outside the scope of this specification. 
+- The second link header is an example of an Annotation link header as it references the JSON Schema that describes the annotation and does not have rel=describedby.  This example references the public copy of the annotation on the DMTF's Redfish Schema repository. 
+- The third link header is an example for the JSON Schema that describes the actual resource. 
+- Note that the URL can reference an unversioned JSON Schema (since the @odata.type in the resource will indicate the appropriate version) or reference the versioned JSON Schema (which according to previous normative statements would need to match the version specified in the @odata.type property of the resource).
 
 ~~~http
-Link: </redfish/v1/AccountService/Roles/Admin>; path=/Links/Role
-Link: </redfish/v1/Schemas/ManagerAccount.v1_0_2.json>; rel=describedby
+Link: </redfish/v1/AccountService/Roles/Administrator>; path=/Links/Role
+Link: <http://redfish.dmtf.org/schemas/Settings.json>   
+Link: </redfish/v1/JsonSchemas/ManagerAccount.v1_0_2.json>; rel=describedby
 ~~~
 
 Link header(s) shall be returned on HEAD and a Link header satisfying
-`rel=describedby` shall be returned on GET and HEAD.
+`rel=describedby` shall be returned on GET and HEAD and a Link header satisfying Annotations should be returned on GET and HEAD.
 
 #### Status codes
 
@@ -1305,7 +1312,7 @@ One of the key tenets of the Redfish interface is the separation of protocol and
 
 ### Schema repository
 
-All Redfish schemas produced, approved and published by the SPMF are available from the DMTF website at http://redfish.dmtf.org/schemas for download.  Each folder in the Repository contains both CSDL and json-schema formats.  The schema files are organized on the site in the following manner:
+All Redfish schemas produced, approved and published by the SPMF are available from the DMTF website at http://redfish.dmtf.org/schemas for download.  Each folder in the Repository contains both CSDL and JSON Schema formats.  The schema files are organized on the site in the following manner:
 
 | URL | Folder contents |
 |-----|-----------------|
@@ -2342,7 +2349,7 @@ The Authorization subsystem uses Roles and Privileges to control which users hav
 | 1.0.2   | 2016-3-31| Errata release.  Various typographical errors. |
 |         |          | Corrected normative language for M-SEARCH queries and responses. |
 |         |          | Corrected Cache-Control and USN format in M-SEARCH responses. |
-|         |          | Corrected schema namespace rules to conform to OData namespace requirements (<namespace>.n.n.n becomes <namespace>.vn_n_n) and updated examples throughout the document to conform to this format.  File naming rules for json-schema and CSDL (XML) schemas were also corrected to match this format and to allow for future major (v2) versions to coexist. |
+|         |          | Corrected schema namespace rules to conform to OData namespace requirements (<namespace>.n.n.n becomes <namespace>.vn_n_n) and updated examples throughout the document to conform to this format.  File naming rules for JSON Schema and CSDL (XML) schemas were also corrected to match this format and to allow for future major (v2) versions to coexist. |
 |         |          | Added missing clause detailing the location of the Schema Repository and listing the durable URLs for the repository. |
 |         |          | Added definition for the value of the Units annotation, using the definitions from the UCUM specification.  Updated examples throughout to use this standardized form. |
 |         |          | Modified the naming requirements for Oem Property Naming to avoid future use of colon ':' and period '.' in property names, which can produce invalid or problematic variable names when used in some programming languages or environments.  Both separators have been replaced with underscore '_', with colon and period usage now deprecated (but valid). |

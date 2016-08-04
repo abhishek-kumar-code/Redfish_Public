@@ -5,7 +5,8 @@
     "Description": "ReadOnlyUser User Role",
     "IsPredefined": true,
     "AssignedPrivileges": [
-        "Login"
+        "Login",
+        "ConfigureSelf"
     ],
     "OEMPrivileges": [],
     "@odata.context": "/redfish/v1/$metadata#Role.Role",

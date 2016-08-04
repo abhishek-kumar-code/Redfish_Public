@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Manager  v1.1.0-->
+<!--# Redfish Schema:  Manager  v1.2.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -11,19 +11,20 @@
 <!---->
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
 
-  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Capabilities.V1.xml">
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
     <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
-  </edmx:Reference>  
+  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
     <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
     <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
-    <edmx:Include Namespace="Resource.v1_0_0" />
+    <edmx:Include Namespace="Resource.v1_0_0"/>
+    <edmx:Include Namespace="Resource.v1_2_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ComputerSystem_v1.xml">
     <edmx:Include Namespace="ComputerSystem"/>
@@ -52,7 +53,7 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/LogServiceCollection_v1.xml">
     <edmx:Include Namespace="LogServiceCollection"/>
   </edmx:Reference>
-  
+
   <edmx:DataServices>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager">
 
@@ -82,8 +83,8 @@
           <Annotation Term="OData.Description" String="This is the type of reset to be performed."/>
           <Annotation Term="OData.LongDescription" String="This defines the property name for the action."/>
         </Parameter>
-        <Annotation Term="OData.Description" String="The reset action resets/reboots the manager."/>    
-        <Annotation Term="OData.LongDescription" String="This defines the name of the custom action supported when used in conjunction with a POST operation to this resource. When issued, this operation will perform a reset of the manager."/>  
+        <Annotation Term="OData.Description" String="The reset action resets/reboots the manager."/>
+        <Annotation Term="OData.LongDescription" String="This defines the name of the custom action supported when used in conjunction with a POST operation to this resource. When issued, this operation will perform a reset of the manager."/>
       </Action>
 
       <Action Name="ForceFailover" IsBound="true">
@@ -106,11 +107,11 @@
           <Annotation Term="OData.Description" String="This array defines the Managers to remove from the redundancy set.  In this case, a valid reference is supported."/>
         </Parameter>
       </Action>
-    
+
     </Schema>
-    
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_0_0">
-      
+
       <EntityType Name="Manager" BaseType="Manager.Manager">
         <Annotation Term="OData.Description" String="This is the schema definition for a Manager.  Examples of managers are BMCs, Enclosure Managers, Management Controllers and other subsystems assigned managability functions."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a management subsystem for a Redfish implementation."/>
@@ -153,12 +154,12 @@
           <Annotation Term="OData.Description" String="This is a reference to the Virtual Media services for this particular manager."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain a reference to a collection of type VirtualMediaCollection which are for the use of this manager."/>
           <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>        
+        </NavigationProperty>
         <Property Name="ServiceEntryPointUUID" Type="Resource.UUID" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The UUID of the Redfish Service provided by this manager"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the UUID of the Redfish Service provided by this manager.  Each Manager providing an Entry Point to the same Redfish Service shall report the same UUID value (even though the name of the property may imply otherwise).  This property shall not be present if this manager does not provide a Redfish Service Entry Point."/>
-        </Property>  
+        </Property>
         <Property Name="UUID" Type="Resource.UUID">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The Universal Unique Identifier (UUID) for this Manager"/>
@@ -187,7 +188,7 @@
         </Property>
         <Property Name="SerialConsole" Type="Manager.v1_0_0.SerialConsole" Nullable="false">
           <Annotation Term="OData.Description" String="Information about the Serial Console service provided by this manager."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall contain information about the Serial Console service of this manager."/>		  
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain information about the Serial Console service of this manager."/>
         </Property>
         <Property Name="CommandShell" Type="Manager.v1_0_0.CommandShell" Nullable="false">
           <Annotation Term="OData.Description" String="Information about the Command Shell service provided by this manager."/>
@@ -214,11 +215,11 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="Oem" Type="Manager.v1_0_0.OemActions" Nullable="false"/>
       </ComplexType>
-      
+
       <ComplexType Name="OemActions">
         <Annotation Term="OData.AdditionalProperties" Bool="true"/>
       </ComplexType>
-      
+
       <ComplexType Name="Links" BaseType="Resource.Links">
         <NavigationProperty Name="ManagerForServers" Type="Collection(ComputerSystem.ComputerSystem)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -249,7 +250,7 @@
         </Member>
         <Member Name="AuxiliaryController">
           <Annotation Term="OData.Description" String="A controller which provides management functions for a particular subsystem or group of devices"/>
-        </Member>          
+        </Member>
       </EnumType>
 
       <ComplexType Name="ManagerService" Abstract="true">
@@ -332,7 +333,7 @@
           <Annotation Term="OData.LongDescription" String="The value of ConnectTypesSupported shall be an array of the enumerations provided here.  RDP shall be included if the Remote Desktop (RDP) protocol is supported.  KVMIP shall be included if a vendor-define KVM-IP protocol is supported."/>
         </Property>
       </ComplexType>
-	  
+
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_0_1">
@@ -342,21 +343,21 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_0_2">
       <EntityType Name="Manager" BaseType="Manager.v1_0_1.Manager"/>
     </Schema>
-	
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_1_0">
-     <EntityType Name="Manager" BaseType="Manager.v1_0_2.Manager"/>	
-     <ComplexType Name="Links" BaseType="Manager.v1_0_0.Links">
+      <EntityType Name="Manager" BaseType="Manager.v1_0_2.Manager"/>
+      <ComplexType Name="Links" BaseType="Manager.v1_0_0.Links">
         <NavigationProperty Name="ManagerInChassis" Type="Chassis.Chassis" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="This property is a reference to the chassis that this manager is located in."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain a reference to the chassis that this manager is located in."/>
           <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>		
-      </ComplexType>
+        </NavigationProperty>
+       </ComplexType>
     </Schema>
-      
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Manager.v1_2_0">
-     <EntityType Name="Manager" BaseType="Manager.v1_1_0.Manager">
+      <EntityType Name="Manager" BaseType="Manager.v1_1_0.Manager">
         <Property Name="PowerState" Type="Resource.v1_2_0.PowerState">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the current power state of the Manager."/>
@@ -364,6 +365,6 @@
         </Property>
       </EntityType>
     </Schema>
-  
+
   </edmx:DataServices>
 </edmx:Edmx>
