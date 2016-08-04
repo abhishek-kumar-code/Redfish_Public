@@ -772,7 +772,7 @@ The service metadata describes top-level resources and resource types of the ser
 ~~~
 
 ###### Referencing other schemas
-The service metadata shall include the namespaces for each of the Redfish resource types, along with the "RedfishExtensions.v1_0_0" namespace. These references may use the standard URI for the hosted Redfish Schema definitions (i.e., on http://redfish.dmtf.org/schemas) or a URL to a local version of the Redfish Schema that shall be identical to the hosted version.
+The service metadata shall include the namespaces for each of the Redfish resource types, along with the "RedfishExtensions.v1_0_0" namespace. These references may use the standard URI for the hosted Redfish Schema definitions (i.e., on http://redfish.dmtf.org/schemas) or a URI to a local version of the Redfish Schema that shall be identical to the hosted version.
 
 ~~~xml
 <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/AccountService_v1.xml">
