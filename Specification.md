@@ -710,15 +710,15 @@ accessed resource in response to a HEAD or GET operation. In addition to
 links from the resource, the URL of the JSON Schema for the resource shall be
 returned with a `rel=describedby`.  URLs of the JSON Schema for an annotation should be returned without a `rel=describedby`. If the referenced JSON Schema is a versioned schema, it shall match the version contained in the value of the @odata.id property returned in this resource.
 
-Below is an example of the link headers of a ManagerAccount with a role of Admin that has a Settings Annotation.  
+Below is an example of the link headers of a ManagerAccount with a role of Administrator that has a Settings Annotation.  
 - The first header is an example of a link that comes from the resource.  It describes links within the resource.  This type of header is outside the scope of this specification. 
-- The second link header is an example of an Annotation link header as it references the JSON Schema that describes the annotation and does not have rel=describedby.  
+- The second link header is an example of an Annotation link header as it references the JSON Schema that describes the annotation and does not have rel=describedby.  This example references the public copy of the annotation on the DMTF's Redfish Schema repository. 
 - The third link header is an example for the JSON Schema that describes the actual resource. 
 - Note that the URL can reference an unversioned JSON Schema (since the @odata.type in the resource will indicate the appropriate version) or reference the versioned JSON Schema (which according to previous normative statments would need to match the version specified in the @odata.type property of the resource).
 
 ~~~http
-Link: </redfish/v1/AccountService/Roles/Admin>; path=/Links/Role
-Link: </redfish/v1/Schemas/Settings.json>   
+Link: </redfish/v1/AccountService/Roles/Administrator>; path=/Links/Role
+Link: <http://redfish.dmtf.org/schemas/Settings.json>   
 Link: </redfish/v1/Schemas/ManagerAccount.v1_0_2.json>; rel=describedby
 ~~~
 
