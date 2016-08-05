@@ -1,10 +1,7 @@
 {
     "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
-    "title": "#Storage.v1_0_0",
-    "anyOf": [
-        { "$ref": "#/definitions/Storage" },
-        { "$ref": "#/definitions/StorageController" }
-    ],
+    "title": "#Storage.v1_1_0.StorageController",
+    "$ref": "#/definitions/StorageController",
     "definitions": {
         "SetEncryptionKey": {
             "patternProperties": {
@@ -293,14 +290,7 @@
             "longDescription": "This resource shall be used to represent resources that represent a storage subsystem in the Redfish specification."
         },
         "StorageController": {
-            "anyOf": [
-                {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
-                },
-                {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Storage.v1_1_0.json#/definitions/StorageController"
-                }
-            ]
+
         }
     },
     "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
