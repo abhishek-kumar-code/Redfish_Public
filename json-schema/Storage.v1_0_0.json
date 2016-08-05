@@ -1,10 +1,7 @@
 {
     "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
-    "title": "#Storage.v1_0_0",
-    "anyOf": [
-        { "$ref": "#/definitions/Storage" },
-        { "$ref": "#/definitions/StorageController" }
-    ],
+    "title": "#Storage.v1_0_0.Storage",
+    "$ref": "#/definitions/Storage",
     "definitions": {
         "SetEncryptionKey": {
             "patternProperties": {
@@ -293,14 +290,138 @@
             "longDescription": "This resource shall be used to represent resources that represent a storage subsystem in the Redfish specification."
         },
         "StorageController": {
-            "anyOf": [
-                {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
-                },
-                {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Storage.v1_1_0.json#/definitions/StorageController"
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
                 }
-            ]
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Oem": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+                },
+                "MemberId": {
+                    "type": "string",
+                    "description": "This is the identifier for the member within the collection.",
+                    "longDescription": "The value of this string shall uniquely identify the member within the collection."
+                },
+                "Status": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
+                },
+                "SpeedGbps": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "minimum": 0,
+                    "units": "Gbit/s",
+                    "readonly": true,
+                    "description": "The speed of the storage controller interface.",
+                    "longDescription": "The value of this property shall represent the speed of the Storage bus interface (in Gigabits per second)."
+                },
+                "FirmwareVersion": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The firmware version of this storage Controller",
+                    "longDescription": "This property shall contain the firwmare version as defined by the manufacturer for the associated storage controller."
+                },
+                "Manufacturer": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "This is the manufacturer of this storage controller.",
+                    "longDescription": "The value of this property shall be the name of the organization responsible for producing the storage controller. This organization might be the entity from whom the storage controller is purchased, but this is not necessarily true."
+                },
+                "Model": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "This is the model number for the storage controller.",
+                    "longDescription": "The value of this property shall be the name by which the manufacturer generally refers to the storage controller."
+                },
+                "SKU": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "This is the SKU for this storage controller.",
+                    "longDescription": "The value of this property shall be the stock-keeping unit number for this storage storage controller."
+                },
+                "SerialNumber": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The serial number for this storage controller.",
+                    "longDescription": "The value of this property shall be a manufacturer-allocated number used to identify the storage controller."
+                },
+                "PartNumber": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The part number for this storage controller.",
+                    "longDescription": "The value of this property shall be a part number assigned by the organization that is responsible for producing or manufacturing the storage controller."
+                },
+                "AssetTag": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "The user assigned asset tag for this storage controller.",
+                    "longDescription": "The value of this property shall be an identifying string used to track the storage controller for inventory purposes."
+                },
+                "SupportedControllerProtocols": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Protocol"
+                    },
+                    "readonly": true,
+                    "description": "This represents the protocols by which this storage controller can be communicated to.",
+                    "longDescription": "The value of this property shall be the set of protocols this storage controller can be communicated to."
+                },
+                "SupportedDeviceProtocols": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Protocol"
+                    },
+                    "readonly": true,
+                    "description": "This represents the protocols which the storage controller can use to communicate with attached devices.",
+                    "longDescription": "The value of this property shall be the set of protocols this storage controller can use to communicate with attached devices."
+                },
+                "Identifiers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.v1_1_0.json#/definitions/Identifier"
+                    },
+                    "readonly": true,
+                    "description": "The Durable names for the storage controller",
+                    "longDescription": "This property shall contain a list of all known durable names for the associated storage controller."
+                }
+            },
+            "description": "This schema defines a storage controller and its respective properties.  A storage controller represents a storage device (physical or virtual) that produces Volumes.",
+            "longDescription": "This resource shall be used to represent a resource that represents a storage controller in the Redfish specification."
         }
     },
     "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
