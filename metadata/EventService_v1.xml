@@ -52,7 +52,7 @@
           <Annotation Term="Capabilities.UpdateRestrictions">
             <Record>
               <PropertyValue Property="Updatable" Bool="true"/>
-              <Annotation Term="OData.Description" String="Drives can be updated to enable and disable the service."/>
+              <Annotation Term="OData.Description" String="The Event Service can be updated to enable and disable the service."/>
             </Record>
           </Annotation>
           <Annotation Term="Capabilities.DeleteRestrictions">
