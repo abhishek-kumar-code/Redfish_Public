@@ -126,7 +126,7 @@
 
       <ComplexType Name="Actions">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Property Name="Oem" Type="Switch.v1_0_0.OemActions" Nullable="false"/>
+        <Property Name="Oem" Type="Port.v1_0_0.OemActions" Nullable="false"/>
       </ComplexType>
 
       <ComplexType Name="OemActions">

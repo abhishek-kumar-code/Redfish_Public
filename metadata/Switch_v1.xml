@@ -38,6 +38,9 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/PortCollection_v1.xml">
     <edmx:Include Namespace="PortCollection"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/LogServiceCollection_v1.xml">
+    <edmx:Include Namespace="LogServiceCollection"/>
+  </edmx:Reference>
 
   <edmx:DataServices>
   

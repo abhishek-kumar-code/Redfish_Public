@@ -596,14 +596,14 @@
         </Member>
       </EnumType>
 
-      <EntityType Name="Links" BaseType="ComputerSystem.v1_0_0.Links">
+      <ComplexType Name="Links" BaseType="ComputerSystem.v1_0_0.Links">
         <NavigationProperty Name="Endpoints" Type="Collection(Endpoint.Endpoint)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the endpoints that connect to this system."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resources that this system is associated with and shall reference a resource of type Endpoint."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-      </EntityType>
+      </ComplexType>
     </Schema>
 
   </edmx:DataServices>
