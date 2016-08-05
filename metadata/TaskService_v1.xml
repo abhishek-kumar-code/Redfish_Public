@@ -48,7 +48,7 @@
           <Annotation Term="Capabilities.UpdateRestrictions">
             <Record>
               <PropertyValue Property="Updatable" Bool="true"/>
-              <Annotation Term="OData.Description" String="Drives can be updated to enable or disable the service, though some implemenations may not allow the operation to succeed."/>
+              <Annotation Term="OData.Description" String="Task Service can be updated to enable or disable the service, though some implemenations may not allow the operation to succeed."/>
             </Record>
           </Annotation>
           <Annotation Term="Capabilities.DeleteRestrictions">
