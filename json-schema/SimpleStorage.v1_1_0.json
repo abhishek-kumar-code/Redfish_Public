@@ -56,6 +56,7 @@
                         "null"
                     ],
                     "minimum": 0,
+                    "units": "By",
                     "readonly": true,
                     "description": "The size of the storage device.",
                     "longDescription": "The value of this property shall represent the size (in bytes) of the Storage Device."

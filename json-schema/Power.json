@@ -19,6 +19,9 @@
                 },
                 {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Power.v1_1_0.json#/definitions/Power"
+                },
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Power.v1_2_0.json#/definitions/Power"
                 }
             ]
         }

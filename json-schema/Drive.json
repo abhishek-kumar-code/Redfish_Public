@@ -10,6 +10,9 @@
                 },
                 {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Drive.v1_0_0.json#/definitions/Drive"
+                },
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Drive.v1_0_1.json#/definitions/Drive"
                 }
             ]
         }
