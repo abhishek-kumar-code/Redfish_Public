@@ -43,7 +43,7 @@
           <Annotation Term="Capabilities.UpdateRestrictions">
             <Record>
               <PropertyValue Property="Updatable" Bool="true"/>
-              <Annotation Term="OData.Description" String="Serial Interface can be updated to enable or disable it or to change the configuration."/>
+              <Annotation Term="OData.Description" String="A Serial Interface can be updated to enable or disable it or to change the configuration."/>
             </Record>
           </Annotation>
           <Annotation Term="Capabilities.DeleteRestrictions">
