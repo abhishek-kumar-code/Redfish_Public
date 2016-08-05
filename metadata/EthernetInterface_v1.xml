@@ -60,7 +60,7 @@
           <Annotation Term="Capabilities.UpdateRestrictions">
             <Record>
               <PropertyValue Property="Updatable" Bool="true"/>
-              <Annotation Term="OData.Description" String="An Ethernet Interfaces can be updated to change addressing, link information and other writable properties."/>
+              <Annotation Term="OData.Description" String="An Ethernet Interface can be updated to change addressing, link information and other writable properties."/>
             </Record>
           </Annotation>
           <Annotation Term="Capabilities.DeleteRestrictions">
