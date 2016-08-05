@@ -25,6 +25,7 @@
   </edmx:Reference>
 
   <edmx:DataServices>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="StorageCollection">
 
       <EntityType Name="StorageCollection" BaseType="Resource.v1_0_0.ResourceCollection">

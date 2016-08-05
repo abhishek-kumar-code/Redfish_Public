@@ -30,6 +30,7 @@
   </edmx:Reference>
 
   <edmx:DataServices>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SimpleStorage">
 
       <EntityType Name="SimpleStorage" BaseType="Resource.v1_0_0.Resource" Abstract="true">
