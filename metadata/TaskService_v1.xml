@@ -36,22 +36,28 @@
         <Annotation Term="OData.Description" String="The Task Service of a Redfish service allows scheduling and execution of long-duration processes.  It represents the properties for the Task Service itself and has links to the actual collection of Task resources."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a task service for a Redfish implementation."/>
       </EntityType>
-      <Annotation Term="Capabilities.InsertRestrictions">
-        <Record>
-          <PropertyValue Property="Insertable" Bool="false"/>
-        </Record>
-      </Annotation>
-      <Annotation Term="Capabilities.UpdateRestrictions">
-        <Record>
-          <PropertyValue Property="Updatable" Bool="true"/>
-          <Annotation Term="OData.Description" String="Drives can be updated to enable or disable the service, though some implemenations may not allow the operation to succeed."/>
-        </Record>
-      </Annotation>
-      <Annotation Term="Capabilities.DeleteRestrictions">
-        <Record>
-          <PropertyValue Property="Deletable" Bool="false"/>
-        </Record>
-      </Annotation>
+
+      <EntityContainer Name="TaskServiceContainer">
+        <EntitySet Name="TaskServiceSet" EntityType="TaskService.TaskService">
+          <Annotation Term="Capabilities.InsertRestrictions">
+            <Record>
+              <PropertyValue Property="Insertable" Bool="false"/>
+            </Record>
+          </Annotation>
+          <Annotation Term="Capabilities.UpdateRestrictions">
+            <Record>
+              <PropertyValue Property="Updatable" Bool="true"/>
+              <Annotation Term="OData.Description" String="Drives can be updated to enable or disable the service, though some implemenations may not allow the operation to succeed."/>
+            </Record>
+          </Annotation>
+          <Annotation Term="Capabilities.DeleteRestrictions">
+            <Record>
+              <PropertyValue Property="Deletable" Bool="false"/>
+            </Record>
+          </Annotation>
+        </EntitySet>
+      </EntityContainer>
+
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="TaskService.v1_0_0">

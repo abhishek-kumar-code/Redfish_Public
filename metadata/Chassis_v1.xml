@@ -60,22 +60,26 @@
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a chassis or other physical enclosure for a Redfish implementation."/>
       </EntityType>
 
-      <Annotation Term="Capabilities.InsertRestrictions">
-        <Record>
-          <PropertyValue Property="Insertable" Bool="false"/>
-        </Record>
-      </Annotation>
-      <Annotation Term="Capabilities.UpdateRestrictions">
-        <Record>
-          <PropertyValue Property="Updatable" Bool="true"/>
-          <Annotation Term="OData.Description" String="A Chassis can be updated to change some properties such as the IndicatorLED."/>
-        </Record>
-      </Annotation>
-      <Annotation Term="Capabilities.DeleteRestrictions">
-        <Record>
-          <PropertyValue Property="Deletable" Bool="false"/>
-        </Record>
-      </Annotation>
+      <EntityContainer Name="ChassisContainer">
+        <EntitySet Name="ChassisSet" EntityType="Chassis.Chassis">
+          <Annotation Term="Capabilities.InsertRestrictions">
+            <Record>
+              <PropertyValue Property="Insertable" Bool="false"/>
+            </Record>
+          </Annotation>
+          <Annotation Term="Capabilities.UpdateRestrictions">
+            <Record>
+              <PropertyValue Property="Updatable" Bool="true"/>
+              <Annotation Term="OData.Description" String="A Chassis can be updated to change some properties such as the IndicatorLED."/>
+            </Record>
+          </Annotation>
+          <Annotation Term="Capabilities.DeleteRestrictions">
+            <Record>
+              <PropertyValue Property="Deletable" Bool="false"/>
+            </Record>
+          </Annotation>
+        </EntitySet>
+      </EntityContainer>
 
       <Action Name="Reset" IsBound="true">
         <Parameter Name="Chassis" Type="Chassis.v1_0_0.Actions"/>

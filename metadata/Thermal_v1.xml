@@ -41,22 +41,28 @@
         <Annotation Term="OData.Description" String="This is the schema definition for the Thermal properties.  It represents the properties for Temperature and Cooling."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a thermal metrics resource for a Redfish implementation."/>
       </EntityType>
-      <Annotation Term="Capabilities.InsertRestrictions">
-        <Record>
-          <PropertyValue Property="Insertable" Bool="false"/>
-        </Record>
-      </Annotation>
-      <Annotation Term="Capabilities.UpdateRestrictions">
-        <Record>
-          <PropertyValue Property="Updatable" Bool="true"/>
-          <Annotation Term="OData.Description" String="Thermal resources can be updated to change any writable properties."/>
-        </Record>
-      </Annotation>
-      <Annotation Term="Capabilities.DeleteRestrictions">
-        <Record>
-          <PropertyValue Property="Deletable" Bool="false"/>
-        </Record>
-      </Annotation>
+
+      <EntityContainer Name="ThermalContainer">
+        <EntitySet Name="ThermalSet" EntityType="Thermal.Thermal">
+          <Annotation Term="Capabilities.InsertRestrictions">
+            <Record>
+              <PropertyValue Property="Insertable" Bool="false"/>
+            </Record>
+          </Annotation>
+          <Annotation Term="Capabilities.UpdateRestrictions">
+            <Record>
+              <PropertyValue Property="Updatable" Bool="true"/>
+              <Annotation Term="OData.Description" String="Thermal resources can be updated to change any writable properties."/>
+            </Record>
+          </Annotation>
+          <Annotation Term="Capabilities.DeleteRestrictions">
+            <Record>
+              <PropertyValue Property="Deletable" Bool="false"/>
+            </Record>
+          </Annotation>
+        </EntitySet>
+      </EntityContainer>
+
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Thermal.v1_0_0">

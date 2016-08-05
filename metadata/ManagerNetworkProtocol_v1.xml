@@ -37,22 +37,28 @@
         <Annotation Term="OData.Description" String="This resource is used to obtain or modify the network services managed by a given manager."/>
         <Annotation Term="OData.LongDescription" String="This object shall be used to represent the network service settings for the manager."/>
       </EntityType>
-      <Annotation Term="Capabilities.InsertRestrictions">
-        <Record>
-          <PropertyValue Property="Insertable" Bool="false"/>
-        </Record>
-      </Annotation>
-      <Annotation Term="Capabilities.UpdateRestrictions">
-        <Record>
-          <PropertyValue Property="Updatable" Bool="true"/>
-          <Annotation Term="OData.Description" String="Manager Network Protocol resources can be updated to change the protocol and virtual media settings and other writable properties."/>
-        </Record>
-      </Annotation>
-      <Annotation Term="Capabilities.DeleteRestrictions">
-        <Record>
-          <PropertyValue Property="Deletable" Bool="false"/>
-        </Record>
-      </Annotation>
+
+      <EntityContainer Name="ManagerNetworkProtocolContainer">
+        <EntitySet Name="ManagerNetworkProtocolSet" EntityType="ManagerNetworkProtocol.ManagerNetworkProtocol">
+          <Annotation Term="Capabilities.InsertRestrictions">
+            <Record>
+              <PropertyValue Property="Insertable" Bool="false"/>
+            </Record>
+          </Annotation>
+          <Annotation Term="Capabilities.UpdateRestrictions">
+            <Record>
+              <PropertyValue Property="Updatable" Bool="true"/>
+              <Annotation Term="OData.Description" String="Manager Network Protocol resources can be updated to change the protocol and virtual media settings and other writable properties."/>
+            </Record>
+          </Annotation>
+          <Annotation Term="Capabilities.DeleteRestrictions">
+            <Record>
+              <PropertyValue Property="Deletable" Bool="false"/>
+            </Record>
+          </Annotation>
+        </EntitySet>
+      </EntityContainer>
+
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ManagerNetworkProtocol.v1_0_0">

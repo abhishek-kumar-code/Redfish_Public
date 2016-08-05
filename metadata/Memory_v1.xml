@@ -39,21 +39,26 @@
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent the Memory in a Redfish implementation."/>
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
       </EntityType>
-      <Annotation Term="Capabilities.InsertRestrictions">
-        <Record>
-          <PropertyValue Property="Insertable" Bool="false"/>
-        </Record>
-      </Annotation>
-      <Annotation Term="Capabilities.UpdateRestrictions">
-        <Record>
-          <PropertyValue Property="Updatable" Bool="false"/>
-        </Record>
-      </Annotation>
-      <Annotation Term="Capabilities.DeleteRestrictions">
-        <Record>
-          <PropertyValue Property="Deletable" Bool="false"/>
-        </Record>
-      </Annotation>
+
+      <EntityContainer Name="MemoryContainer">
+        <EntitySet Name="MemorySet" EntityType="Memory.Memory">
+          <Annotation Term="Capabilities.InsertRestrictions">
+            <Record>
+              <PropertyValue Property="Insertable" Bool="false"/>
+            </Record>
+          </Annotation>
+          <Annotation Term="Capabilities.UpdateRestrictions">
+            <Record>
+              <PropertyValue Property="Updatable" Bool="false"/>
+            </Record>
+          </Annotation>
+          <Annotation Term="Capabilities.DeleteRestrictions">
+            <Record>
+              <PropertyValue Property="Deletable" Bool="false"/>
+            </Record>
+          </Annotation>
+        </EntitySet>
+      </EntityContainer>
 
       <Action Name="UnlockUnit" IsBound="true">
         <Annotation Term="OData.Description" String="This defines the action for unlocking given regions."/>

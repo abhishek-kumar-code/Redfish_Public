@@ -37,22 +37,28 @@
         <Annotation Term="OData.Description" String="This resource defines the record format for a log.  It is designed to be used for SEL logs (from IPMI) as well as Event Logs and OEM-specific log formats.  The EntryType field indicates the type of log and the resource includes several additional properties dependent on the EntryType."/>
         <Annotation Term="OData.LongDescription" String="This resource shall represent the log format for log services in a Redfish implementation."/>
       </EntityType>
-      <Annotation Term="Capabilities.InsertRestrictions">
-        <Record>
-          <PropertyValue Property="Insertable" Bool="false"/>
-        </Record>
-      </Annotation>
-      <Annotation Term="Capabilities.UpdateRestrictions">
-        <Record>
-          <PropertyValue Property="Updatable" Bool="false"/>
-        </Record>
-      </Annotation>
-      <Annotation Term="Capabilities.DeleteRestrictions">
-        <Record>
-          <PropertyValue Property="Deletable" Bool="true"/>
-          <Annotation Term="OData.Description" String="Some implementations may allow the deletion of individual Log Entries."/>
-        </Record>
-      </Annotation>
+
+      <EntityContainer Name="LogEntryContainer">
+        <EntitySet Name="LogEntrySet" EntityType="LogEntry.LogEntry">
+          <Annotation Term="Capabilities.InsertRestrictions">
+            <Record>
+              <PropertyValue Property="Insertable" Bool="false"/>
+            </Record>
+          </Annotation>
+          <Annotation Term="Capabilities.UpdateRestrictions">
+            <Record>
+              <PropertyValue Property="Updatable" Bool="false"/>
+            </Record>
+          </Annotation>
+          <Annotation Term="Capabilities.DeleteRestrictions">
+            <Record>
+              <PropertyValue Property="Deletable" Bool="true"/>
+              <Annotation Term="OData.Description" String="Some implementations may allow the deletion of individual Log Entries."/>
+            </Record>
+          </Annotation>
+        </EntitySet>
+      </EntityContainer>
+
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogEntry.v1_0_0">

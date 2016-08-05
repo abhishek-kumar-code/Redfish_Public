@@ -31,22 +31,28 @@
         <Annotation Term="OData.Description" String="This resource describes an asynchronous serial interface, such as an RS-232 interface, available to a system or device."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent serial resources as part of the Redfish specification."/>
       </EntityType>
-      <Annotation Term="Capabilities.InsertRestrictions">
-        <Record>
-          <PropertyValue Property="Insertable" Bool="false"/>
-        </Record>
-      </Annotation>
-      <Annotation Term="Capabilities.UpdateRestrictions">
-        <Record>
-          <PropertyValue Property="Updatable" Bool="true"/>
-          <Annotation Term="OData.Description" String="Serial Interface can be updated to enable or disable it or to change the configuration."/>
-        </Record>
-      </Annotation>
-      <Annotation Term="Capabilities.DeleteRestrictions">
-        <Record>
-          <PropertyValue Property="Deletable" Bool="false"/>
-        </Record>
-      </Annotation>
+
+      <EntityContainer Name="SerialInterfaceContainer">
+        <EntitySet Name="SerialInterfaceSet" EntityType="SerialInterface.SerialInterface">
+          <Annotation Term="Capabilities.InsertRestrictions">
+            <Record>
+              <PropertyValue Property="Insertable" Bool="false"/>
+            </Record>
+          </Annotation>
+          <Annotation Term="Capabilities.UpdateRestrictions">
+            <Record>
+              <PropertyValue Property="Updatable" Bool="true"/>
+              <Annotation Term="OData.Description" String="Serial Interface can be updated to enable or disable it or to change the configuration."/>
+            </Record>
+          </Annotation>
+          <Annotation Term="Capabilities.DeleteRestrictions">
+            <Record>
+              <PropertyValue Property="Deletable" Bool="false"/>
+            </Record>
+          </Annotation>
+        </EntitySet>
+      </EntityContainer>
+
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SerialInterface.v1_0_0">
