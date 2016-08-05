@@ -65,7 +65,7 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | Event | 1.0.3 | 2016-8-12 | Errata release.  Deprecated "Context" property in favor of the Event-specific "Context" contained within each Event.  |
 | IPAddresses | 1.0.3 | 2016-8-12 | Errata release.  Corrected validation patterns for "IPv4Address" and "SubnetMask".  Added validation pattern for "Gateway". |
 | Message | 1.0.3 | 2016-8-12 | Errata release.  Corrected "MessageId" to mark it as a required property. |
-| ServiceRoot | 1.0.3 | 2016-8-12 |   |
+| ServiceRoot | 1.0.3 | 2016-8-12 | Corrected validation pattern annotation for "RedfishVersion".  |
 | Storage | 1.0.1 | 2016-8-12 | Corrected type definition of the "Volumes" link. |
 | Volume  | 1.0.1 | 2016-8-12 | Corrected description of "VolumeType". |
 | AttributeRegistry | 1.0.0  | 2016-5-14 | Initial release.  An Attribute Registry is a set of key-value pairs that are specific to a particular implementation or product, such that creating standardized property names would be impractical.  This schema describes the structure of a Registry, and also includes mechanisms for building user interfaces (menus) allowing consistent navigation of the contents.|
