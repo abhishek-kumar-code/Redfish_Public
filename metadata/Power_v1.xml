@@ -55,7 +55,7 @@
           <Annotation Term="Capabilities.UpdateRestrictions">
             <Record>
               <PropertyValue Property="Updatable" Bool="true"/>
-              <Annotation Term="OData.Description" String="Power propertes can be updated to change limits, exceptions and other writable properties."/>
+              <Annotation Term="OData.Description" String="Power properties can be updated to change limits, exceptions and other writable properties."/>
             </Record>
           </Annotation>
           <Annotation Term="Capabilities.DeleteRestrictions">
