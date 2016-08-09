@@ -27,7 +27,7 @@ Individual property documentation can be added using a third-level header in thi
 
 A "Description" third-level section can be used to supplement the "Description" text from the schema file.  The text here is appended to the schema description.
 
-### Sample JSON payuload
+### Sample JSON payload
 
 A "JSONPayload" setion can contain a JSON payload example for this schema.  This sample will be appended to the end of that schema's section, and will also populate the language-specific tab in the Slate documentation.
 
@@ -40,10 +40,12 @@ A "JSONPayload" setion can contain a JSON payload example for this schema.  This
   <img src="http://redfish.dmtf.org/sites/all/themes/dmtf2015/images/dmtf-redfish-logo.png" alt="DMTF Redfish" width=180>
 </p>
 
-Introduction to Redfish goes here. 
- - Purpose of the document
- - Structure and usage
- - Other sources of information
+# Redfish Schema Guide 
+
+ -  Introduction to Redfish goes here. 
+ -  Purpose of the document
+ -  Structure and usage
+ -  Other sources of information
  
 
 
@@ -65,14 +67,20 @@ Technically the metadata document only has to define, or reference, any of the t
 Initially we tried only to reference the ServiceRoot metadata in the root $metadata document, but this required us to use relative URLs for all of our @odata.type annotations for types that were hosted on-box, or absolute URLs for off-box metadata, and the client having to parse the URL to match just the fragment. Having the types defined or referenced from the service's $metadata allows us to just put a canonical fragment in the payload and decide in the service $metadata whether the reference is hosted on-box or off-box.  So it turned out that putting the <References> for any used types in the metadata document allows all of our payloads to be shorter and more consistent by using fragments, as well as using versionless aliases for actions.
 
 ## @odata.type
+ - Description of @odata.type
 
 ## @odata.id
+ - Description of @odada.id
 
 ## Status
+ - Full details and enum table for the common status block
+ - State, Health, HealthRollUp
 
-# Common Properties
+# Redfish Schema Details
 
-The Common Properties section removes properties from any schema section.  If they require documentation, it should be included in the Introduction section of this document
+# Excluded Properties
+
+The Excluded Properties section removes properties from any schema section.  If they require documentation, it should be included in the Introduction section of this document
 
 ## @odata.context
 ## @odata.type
@@ -80,7 +88,7 @@ The Common Properties section removes properties from any schema section.  If th
 ## *@odata.count
 ## *@odata.navigationLink
  
-# Additional Schemas
+# Excluded Schemas
 
 Some schemas are not enumerated here...
 
