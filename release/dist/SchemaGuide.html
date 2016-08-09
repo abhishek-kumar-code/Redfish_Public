@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Redfish Schema</title>
+<title></title>
 
 <style>
  * {margin: 0; padding: 0;}
@@ -48,15 +48,17 @@ pre.code{
 
 </head>
 <body>
-<h1>Redfish Schema</h1>
-<h2>Introduction</h2><p align="center">
+<p align="center">
   <img src="http://redfish.dmtf.org/sites/all/themes/dmtf2015/images/dmtf-redfish-logo.png" alt="DMTF Redfish" width=180>
 </p>
 
-<p>Introduction to Redfish goes here. 
- - Purpose of the document
- - Structure and usage
- - Other sources of information</p>
+<h1>Redfish Schema Guide</h1>
+<ul>
+<li>Introduction to Redfish goes here. </li>
+<li>Purpose of the document</li>
+<li>Structure and usage</li>
+<li>Other sources of information</li>
+</ul>
 <h1>Common Redfish Properties</h1>
 <p>This section documents properties that are either common throughout the Redfish Schema, or are defined in the Resource.1.x.x or odata.4.x.x schema files.</p>
 <h2>@odata.context</h2>
@@ -68,12 +70,13 @@ pre.code{
 <p>Initially we tried only to reference the ServiceRoot metadata in the root $metadata document, but this required us to use relative URLs for all of our @odata.type annotations for types that were hosted on-box, or absolute URLs for off-box metadata, and the client having to parse the URL to match just the fragment. Having the types defined or referenced from the service's $metadata allows us to just put a canonical fragment in the payload and decide in the service $metadata whether the reference is hosted on-box or off-box.  So it turned out that putting the <References> for any used types in the metadata document allows all of our payloads to be shorter and more consistent by using fragments, as well as using versionless aliases for actions.</p>
 <h2>@odata.type</h2>
 <h2>@odata.id</h2>
-<h2>Status</h2><h2>AccountService 1.0.2</h2>
+<h2>Status</h2>
+<h1>Redfish Schema Details</h1><h2>AccountService 1.0.2</h2>
 <p>Account Service contains properties common to all user accounts, such as password requirements, and control features such as account lockout.  It also contains links to the collections of Manager Accounts and Roles.</p>
 <table class="properties">
 <tbody>
-<tr><td><b>AccountLockoutCounterResetAfter</b></td><td>number</td><td>read-write</td><td>The interval of time in seconds since the last failed login attempt at which point the lockout threshold counter for the account is reset to zero. Must be less than or equal to AccountLockoutDuration</td></tr>
-<tr><td><b>AccountLockoutDuration</b></td><td>number, null</td><td>read-write</td><td>The time in seconds an account is locked after the account lockout threshold is met. Must be &gt;= AccountLockoutResetAfter. If set to 0, no lockout will occur.</td></tr>
+<tr><td><b>AccountLockoutCounterResetAfter</b></td><td>number<br>(s)</td><td>read-write</td><td>The interval of time in seconds since the last failed login attempt at which point the lockout threshold counter for the account is reset to zero. Must be less than or equal to AccountLockoutDuration</td></tr>
+<tr><td><b>AccountLockoutDuration</b></td><td>number, null<br>(s)</td><td>read-write</td><td>The time in seconds an account is locked after the account lockout threshold is met. Must be &gt;= AccountLockoutResetAfter. If set to 0, no lockout will occur.</td></tr>
 <tr><td><b>AccountLockoutThreshold</b></td><td>number, null</td><td>read-write</td><td>The number of failed login attempts before a user account is locked for a specified duration. (0=never locked)</td></tr>
 <tr><td><b>Accounts</b> {</td><td>object</td><td>read-write</td><td>Link to a collection of Manager Accounts</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Description</b></td><td>string, null</td><td>read-only</td><td>Provides a description of this resource and is used for commonality  in the schema definitions.</td></tr>
@@ -133,13 +136,50 @@ pre.code{
 </thead>
 <tbody>
 <tr><td>Absent</td><td>This function or resource is not present or not detected</td></tr>
+<tr><td>Deferring</td><td>The element will not process any commands but will queue new requests.</td></tr>
 <tr><td>Disabled</td><td>This function or resource has been disabled</td></tr>
 <tr><td>Enabled</td><td>This function or resource has been enabled</td></tr>
 <tr><td>InTest</td><td>This function or resource is undergoing testing</td></tr>
+<tr><td>Quiesced</td><td>The element is enabled but only processes a restricted set of commands.</td></tr>
 <tr><td>StandbyOffline</td><td>This function or resource is enabled, but awaiting an external action to activate it</td></tr>
 <tr><td>StandbySpare</td><td>This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it.</td></tr>
 <tr><td>Starting</td><td>This function or resource is starting</td></tr>
 <tr><td>UnavailableOffline</td><td>This function or resource is present but cannot be used</td></tr>
+<tr><td>Updating</td><td>The element is updating and may be unavailable or degraded.</td></tr>
+</tbody></table>
+
+</div>
+<h2>ActionInfo 1.0.0</h2>
+<p>ActionInfo describes the parameters and other information necessary to perform a Redfish Action to a particular Action target.  As parameter support may differ between implementations and even among instances of a resource, this data can be used to ensure Action requests from applications contain supported parameters.</p>
+<table class="properties">
+<tbody>
+<tr><td><b>Description</b></td><td>string, null</td><td>read-only</td><td>Provides a description of this resource and is used for commonality  in the schema definitions.</td></tr>
+<tr><td><b>Id</b></td><td>string</td><td>read-only</td><td>Uniquely identifies the resource within the collection of like resources.</td></tr>
+<tr><td><b>Name</b></td><td>string</td><td>read-only</td><td>The name of the resource or array element.</td></tr>
+<tr><td><b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
+<tr><td><b>Parameters</b> [ {</td><td>array</td><td>read-only</td><td>The parameters associated with the specified Redfish Action</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>AllowableValues</b> [ {} ]</td><td>array</td><td>read-only</td><td>A list of values for this parameter supported by this Action target</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>DataType</b></td><td>string, null</td><td>read-write</td><td>The JSON property type used for this parameter<br><i>See Property Details, below, for more information about this property.</i></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Name</b></td><td>string</td><td>read-only</td><td>The name of the parameter for this Action.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>ObjectDataType</b></td><td>string, null</td><td>read-only</td><td>The OData Type of an object-based parameter</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Required</b></td><td>boolean</td><td>read-only</td><td>Indicates whether the parameter is required to perform this Action.</td></tr>
+<tr><td>} ]</td><td></td><td></td><td></td></tr>
+</tbody></table>
+<div class="property-details">
+<h3>Property Details</h3>
+<h4>DataType:</h4>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Boolean</td><td>A boolean (true or false)</td></tr>
+<tr><td>Number</td><td>A number</td></tr>
+<tr><td>NumberArray</td><td>An array of numbers</td></tr>
+<tr><td>Object</td><td>An embedded JSON object</td></tr>
+<tr><td>ObjectArray</td><td>An array of JSON objects</td></tr>
+<tr><td>String</td><td>A string</td></tr>
+<tr><td>StringArray</td><td>An array of strings</td></tr>
 </tbody></table>
 
 </div>
@@ -180,7 +220,7 @@ pre.code{
 <tr><td><b>Name</b></td><td>string</td><td>read-only</td><td>The name of the resource or array element.</td></tr>
 <tr><td><b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
 </tbody></table>
-<h2>Chassis 1.2.0</h2>
+<h2>Chassis 1.3.0</h2>
 <p>A Chassis represents the physical components for any system.  This resource represents the sheet-metal confined spaces and logical zones like racks, enclosures, chassis and all other containers. Subsystems (like sensors), which operate outside of a system's data plane (meaning the resources are not accessible to software running on the system) are linked either directly or indirectly through this resource.</p>
 <table class="properties">
 <tbody>
@@ -271,6 +311,7 @@ pre.code{
 <tr><td>Drawer</td><td>An enclosed or semi-enclosed, typically horizontally-oriented, system chassis which may be slid into a multi-system chassis.</td></tr>
 <tr><td>Enclosure</td><td>A generic term for a chassis that does not fit any other description</td></tr>
 <tr><td>Expansion</td><td>A chassis which expands the capabilities or capacity of another chassis</td></tr>
+<tr><td>IPBasedDrive</td><td>A chassis in a drive form factor with IP-based network connections.</td></tr>
 <tr><td>Module</td><td>A small, typically removable, chassis or card which contains devices for a particular subsystem or function</td></tr>
 <tr><td>Other</td><td>A chassis that does not fit any of these definitions</td></tr>
 <tr><td>Pod</td><td>A collection of equipment racks in a large, likely transportable, container</td></tr>
@@ -358,17 +399,20 @@ pre.code{
 </thead>
 <tbody>
 <tr><td>Absent</td><td>This function or resource is not present or not detected</td></tr>
+<tr><td>Deferring</td><td>The element will not process any commands but will queue new requests.</td></tr>
 <tr><td>Disabled</td><td>This function or resource has been disabled</td></tr>
 <tr><td>Enabled</td><td>This function or resource has been enabled</td></tr>
 <tr><td>InTest</td><td>This function or resource is undergoing testing</td></tr>
+<tr><td>Quiesced</td><td>The element is enabled but only processes a restricted set of commands.</td></tr>
 <tr><td>StandbyOffline</td><td>This function or resource is enabled, but awaiting an external action to activate it</td></tr>
 <tr><td>StandbySpare</td><td>This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it.</td></tr>
 <tr><td>Starting</td><td>This function or resource is starting</td></tr>
 <tr><td>UnavailableOffline</td><td>This function or resource is present but cannot be used</td></tr>
+<tr><td>Updating</td><td>The element is updating and may be unavailable or degraded.</td></tr>
 </tbody></table>
 
 </div>
-<h2>ComputerSystem 1.1.0</h2>
+<h2>ComputerSystem 1.2.0</h2>
 <p>This schema defines a computer system and its respective properties.  A computer system represents a machine (physical or virtual) and the local resources such as memory, cpu and other devices that can be accessed from that machine.</p>
 <table class="properties">
 <tbody>
@@ -401,11 +445,17 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
 <tr><td>}</td><td></td><td></td><td></td></tr>
 <tr><td><b>HostName</b></td><td>string, null</td><td>read-write</td><td>The DNS Host Name, without any domain information</td></tr>
+<tr><td><b>HostedServices</b> <i>(v1.2+)</i> {</td><td>object</td><td>read-write</td><td>The services that this computer system supports.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>StorageServices</b></td><td></td><td>read-write</td><td>A reference to a collection of storage services supported by this computer system</td></tr>
+<tr><td>}</td><td></td><td></td><td></td></tr>
+<tr><td><b>HostingRoles</b> <i>(v1.2+)</i> [ {} ]</td><td>array</td><td>read-write</td><td>The hosing roles that this computer system supports.</td></tr>
 <tr><td><b>Id</b></td><td>string</td><td>read-only</td><td>Uniquely identifies the resource within the collection of like resources.</td></tr>
 <tr><td><b>IndicatorLED</b></td><td>string, null</td><td>read-write</td><td>The state of the indicator LED, used to identify the system<br><i>See Property Details, below, for more information about this property.</i></td></tr>
 <tr><td><b>Links</b> {</td><td>object</td><td>read-only</td><td>Contains references to other resources that are related to this resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Chassis</b> [ {} ]</td><td>array</td><td>read-only</td><td>An array of references to the chassis in which this system is contained</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>CooledBy</b> [ {} ]</td><td>array</td><td>read-only</td><td>An array of ID[s] of resources that cool this computer system. Normally the ID will be a chassis or a specific set of fans.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Endpoints</b> [ {} ]</td><td>array</td><td>read-only</td><td>An array of references to the endpoints that connect to this system.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>ManagedBy</b> [ {} ]</td><td>array</td><td>read-only</td><td>An array of references to the Managers responsible for this system</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td>Oem extension object.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>PoweredBy</b> [ {} ]</td><td>array</td><td>read-only</td><td>An array of ID[s] of resources that power this computer system. Normally the ID will be a chassis or a specific set of powerSupplies</td></tr>
@@ -423,6 +473,12 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Name</b></td><td>string</td><td>read-only</td><td>The name of the resource or array element.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
 <tr><td>}</td><td></td><td></td><td></td></tr>
+<tr><td><b>MemoryDomains</b> <i>(v1.2+)</i> {</td><td>object, null</td><td>read-write</td><td>A reference to the collection of Memory Domains associated with this system.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Description</b></td><td>string, null</td><td>read-only</td><td>Provides a description of this resource and is used for commonality  in the schema definitions.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Members</b> [ {} ]</td><td>array</td><td>read-only</td><td>Contains the members of this collection.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Name</b></td><td>string</td><td>read-only</td><td>The name of the resource or array element.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
+<tr><td>}</td><td></td><td></td><td></td></tr>
 <tr><td><b>MemorySummary</b> {</td><td>object</td><td>read-write</td><td>This object describes the central memory of the system in general detail.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>MemoryMirroring</b></td><td>string, null</td><td>read-write</td><td>The ability and type of memory mirroring supported by this system.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Status</b> {}</td><td>object</td><td>read-only</td><td></td></tr>
@@ -431,6 +487,39 @@ pre.code{
 <tr><td><b>Model</b></td><td>string, null</td><td>read-only</td><td>The model number for this system</td></tr>
 <tr><td><b>Name</b></td><td>string</td><td>read-only</td><td>The name of the resource or array element.</td></tr>
 <tr><td><b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
+<tr><td><b>PCIeDevices</b> <i>(v1.2+)</i> [ {</td><td>array</td><td>read-only</td><td>A reference to a collection of PCIe Devices used by this computer system</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>AssetTag</b></td><td>string, null</td><td>read-write</td><td>The user assigned asset tag for this PCIe device.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Description</b></td><td>string, null</td><td>read-only</td><td>Provides a description of this resource and is used for commonality  in the schema definitions.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>DeviceType</b></td><td>string</td><td>read-write</td><td>The device type for this PCIe device.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>FirmwareVersion</b></td><td>string, null</td><td>read-only</td><td>The version of firmware for this PCIe device.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Id</b></td><td>string</td><td>read-only</td><td>Uniquely identifies the resource within the collection of like resources.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Links</b> {}</td><td>object</td><td>read-only</td><td>The links object contains the links to other resources that are related to this resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Manufacturer</b></td><td>string, null</td><td>read-only</td><td>This is the manufacturer of this PCIe device.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Model</b></td><td>string, null</td><td>read-only</td><td>This is the model number for the PCIe device.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Name</b></td><td>string</td><td>read-only</td><td>The name of the resource or array element.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>PartNumber</b></td><td>string, null</td><td>read-only</td><td>The part number for this PCIe device.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>SKU</b></td><td>string, null</td><td>read-only</td><td>This is the SKU for this PCIe device.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>SerialNumber</b></td><td>string, null</td><td>read-only</td><td>The serial number for this PCIe device.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Status</b> {}</td><td>object, null</td><td>read-only</td><td></td></tr>
+<tr><td>} ]</td><td></td><td></td><td></td></tr>
+<tr><td><b>PCIeFunctions</b> <i>(v1.2+)</i> [ {</td><td>array</td><td>read-only</td><td>A reference to a collection of PCIe Functions used by this computer system</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>ClassCode</b></td><td>string, null</td><td>read-write</td><td>The Class Code of this PCIe function.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Description</b></td><td>string, null</td><td>read-only</td><td>Provides a description of this resource and is used for commonality  in the schema definitions.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>DeviceClass</b></td><td>string</td><td>read-write</td><td>The class for this PCIe Function.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>DeviceId</b></td><td>string, null</td><td>read-write</td><td>The Device ID of this PCIe function.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>FunctionId</b></td><td>number, null</td><td>read-only</td><td>The the PCIe Function identifier.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>FunctionType</b></td><td>string</td><td>read-write</td><td>The type of the PCIe Function.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Id</b></td><td>string</td><td>read-only</td><td>Uniquely identifies the resource within the collection of like resources.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Links</b> {}</td><td>object</td><td>read-only</td><td>The links object contains the links to other resources that are related to this resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Name</b></td><td>string</td><td>read-only</td><td>The name of the resource or array element.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>RevisionId</b></td><td>string, null</td><td>read-write</td><td>The Revision ID of this PCIe function.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Status</b> {}</td><td>object, null</td><td>read-only</td><td></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>SubsystemId</b></td><td>string, null</td><td>read-write</td><td>The Subsystem ID of this PCIe function.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>SubsystemVendorId</b></td><td>string, null</td><td>read-write</td><td>The Subsystem Vendor ID of this PCIe function.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>VendorId</b></td><td>string, null</td><td>read-write</td><td>The Vendor ID of this PCIe function.</td></tr>
+<tr><td>} ]</td><td></td><td></td><td></td></tr>
 <tr><td><b>PartNumber</b></td><td>string, null</td><td>read-only</td><td>The part number for this system</td></tr>
 <tr><td><b>PowerState</b></td><td>string, null</td><td>read-write</td><td>This is the current power state of the system<br><i>See Property Details, below, for more information about this property.</i></td></tr>
 <tr><td><b>ProcessorSummary</b> {</td><td>object</td><td>read-write</td><td>This object describes the central processors of the system in general detail.</td></tr>
@@ -519,12 +608,65 @@ pre.code{
 <tr><td>Hdd</td><td>Boot from a hard drive</td></tr>
 <tr><td>None</td><td>Boot from the normal boot device</td></tr>
 <tr><td>Pxe</td><td>Boot from the Pre-Boot EXecution (PXE) environment</td></tr>
+<tr><td>RemoteDrive</td><td>Boot from a remote drive (e.g. iSCSI)</td></tr>
 <tr><td>SDCard</td><td>Boot from an SD Card</td></tr>
 <tr><td>UefiHttp</td><td>Boot from a UEFI HTTP network location</td></tr>
 <tr><td>UefiShell</td><td>Boot to the UEFI Shell</td></tr>
 <tr><td>UefiTarget</td><td>Boot to the UEFI Device specified in the UefiTargetBootSourceOverride property</td></tr>
 <tr><td>Usb</td><td>Boot from a USB device as specified by the system BIOS</td></tr>
 <tr><td>Utilities</td><td>Boot the manufacturer's Utilities program(s)</td></tr>
+</tbody></table>
+
+<h4>DeviceClass:</h4>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Bridge</td><td>A bridge</td></tr>
+<tr><td>CommunicationController</td><td>A communication controller</td></tr>
+<tr><td>Coprocessor</td><td>A coprocessor</td></tr>
+<tr><td>DisplayController</td><td>A display controller</td></tr>
+<tr><td>DockingStation</td><td>A docking station</td></tr>
+<tr><td>EncryptionController</td><td>An encryption controller</td></tr>
+<tr><td>GenericSystemPeripheral</td><td>A generic system peripheral</td></tr>
+<tr><td>InputDeviceController</td><td>An input device controller</td></tr>
+<tr><td>IntelligentController</td><td>An intelligent controller</td></tr>
+<tr><td>MassStorageController</td><td>A mass storage controller</td></tr>
+<tr><td>MemoryController</td><td>A memory controller</td></tr>
+<tr><td>MultimediaController</td><td>A multimedia controller</td></tr>
+<tr><td>NetworkController</td><td>A network controller</td></tr>
+<tr><td>NonEssentialInstrumentation</td><td>A non-essential instrumentation</td></tr>
+<tr><td>Other</td><td>A other class. The function Device Class Id needs to be verified</td></tr>
+<tr><td>ProcessingAccelerators</td><td>A processing accelerators</td></tr>
+<tr><td>Processor</td><td>A processor</td></tr>
+<tr><td>SatelliteCommunicationsController</td><td>A satellite communications controller</td></tr>
+<tr><td>SerialBusController</td><td>A serial bus controller</td></tr>
+<tr><td>SignalProcessingController</td><td>A signal processing controller</td></tr>
+<tr><td>UnassignedClass</td><td>An unassigned class</td></tr>
+<tr><td>UnclassifiedDevice</td><td>An unclassified device</td></tr>
+<tr><td>WirelessController</td><td>A wireless controller</td></tr>
+</tbody></table>
+
+<h4>DeviceType:</h4>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>MultiFunction</td><td>A multi-function PCIe device</td></tr>
+<tr><td>Simulated</td><td>A PCIe device which is not currently physically present, but is being simulated by the PCIe infrastructure</td></tr>
+<tr><td>SingleFunction</td><td>A single-function PCIe device</td></tr>
+</tbody></table>
+
+<h4>FunctionType:</h4>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Physical</td><td>A physical PCie function</td></tr>
+<tr><td>Virtual</td><td>A virtual PCIe function</td></tr>
 </tbody></table>
 
 <h4>Health:</h4>
@@ -625,13 +767,16 @@ pre.code{
 </thead>
 <tbody>
 <tr><td>Absent</td><td>This function or resource is not present or not detected</td></tr>
+<tr><td>Deferring</td><td>The element will not process any commands but will queue new requests.</td></tr>
 <tr><td>Disabled</td><td>This function or resource has been disabled</td></tr>
 <tr><td>Enabled</td><td>This function or resource has been enabled</td></tr>
 <tr><td>InTest</td><td>This function or resource is undergoing testing</td></tr>
+<tr><td>Quiesced</td><td>The element is enabled but only processes a restricted set of commands.</td></tr>
 <tr><td>StandbyOffline</td><td>This function or resource is enabled, but awaiting an external action to activate it</td></tr>
 <tr><td>StandbySpare</td><td>This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it.</td></tr>
 <tr><td>Starting</td><td>This function or resource is starting</td></tr>
 <tr><td>UnavailableOffline</td><td>This function or resource is present but cannot be used</td></tr>
+<tr><td>Updating</td><td>The element is updating and may be unavailable or degraded.</td></tr>
 </tbody></table>
 
 <h4>SystemType:</h4>
@@ -689,7 +834,7 @@ However, dmidecode, WMI and some Redfish implementations currently use upper-cas
 However, Redfish implementations and OS APIs MAY also output in uppercase and clients MUST therefore compare UUIDs using a case-insensitive compares (as recommended by RFC4122).</p>
 
 </div>
-<h2>Drive 1.0.0</h2>
+<h2>Drive 1.1.0</h2>
 <p>Drive contains properties describing a single physical disk drive for any system, along with links to associated Volumes.</p>
 <table class="properties">
 <tbody>
@@ -698,9 +843,9 @@ However, Redfish implementations and OS APIs MAY also output in uppercase and cl
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td></td></tr>
 <tr><td>}</td><td></td><td></td><td></td></tr>
 <tr><td><b>AssetTag</b></td><td>string, null</td><td>read-write</td><td>The user assigned asset tag for this drive.</td></tr>
-<tr><td><b>BlockSizeBytes</b></td><td>number, null</td><td>read-only</td><td>The size of the smallest addressible unit (Block) of this drive in bytes</td></tr>
-<tr><td><b>CapableSpeedGbs</b></td><td>number, null</td><td>read-only</td><td>The speed which this drive can communicate to a storage controller in ideal conditions in Gigabits per second</td></tr>
-<tr><td><b>CapacityBytes</b></td><td>number, null</td><td>read-only</td><td>The size in bytes of this Drive</td></tr>
+<tr><td><b>BlockSizeBytes</b></td><td>number, null<br>(By)</td><td>read-only</td><td>The size of the smallest addressible unit (Block) of this drive in bytes</td></tr>
+<tr><td><b>CapableSpeedGbs</b></td><td>number, null<br>(Gbit/s)</td><td>read-only</td><td>The speed which this drive can communicate to a storage controller in ideal conditions in Gigabits per second</td></tr>
+<tr><td><b>CapacityBytes</b></td><td>number, null<br>(By)</td><td>read-only</td><td>The size in bytes of this Drive</td></tr>
 <tr><td><b>Description</b></td><td>string, null</td><td>read-only</td><td>Provides a description of this resource and is used for commonality  in the schema definitions.</td></tr>
 <tr><td><b>EncryptionAbility</b></td><td>string, null</td><td>read-write</td><td>The encryption abilities of this drive<br><i>See Property Details, below, for more information about this property.</i></td></tr>
 <tr><td><b>EncryptionStatus</b></td><td>string, null</td><td>read-write</td><td>The status of the encrytion of this drive<br><i>See Property Details, below, for more information about this property.</i></td></tr>
@@ -713,6 +858,7 @@ However, Redfish implementations and OS APIs MAY also output in uppercase and cl
 <tr><td>} ]</td><td></td><td></td><td></td></tr>
 <tr><td><b>IndicatorLED</b></td><td>string, null</td><td>read-write</td><td>The state of the indicator LED, used to identify the drive.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
 <tr><td><b>Links</b> {</td><td>object</td><td>read-only</td><td>Contains references to other resources that are related to this resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Endpoints</b> [ {} ]</td><td>array</td><td>read-only</td><td>An array of references to the endpoints that connect to this drive.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td>Oem extension object.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Volumes</b> [ {} ]</td><td>array</td><td>read-only</td><td>An array of references to the volumes contained in this drive. This will reference Volumes that are either wholly or only partly contained by this drive.</td></tr>
 <tr><td>}</td><td></td><td></td><td></td></tr>
@@ -725,13 +871,14 @@ However, Redfish implementations and OS APIs MAY also output in uppercase and cl
 <tr><td><b>MediaType</b></td><td>string, null</td><td>read-write</td><td>The type of media contained in this drive<br><i>See Property Details, below, for more information about this property.</i></td></tr>
 <tr><td><b>Model</b></td><td>string, null</td><td>read-only</td><td>This is the model number for the drive.</td></tr>
 <tr><td><b>Name</b></td><td>string</td><td>read-only</td><td>The name of the resource or array element.</td></tr>
-<tr><td><b>NegotiatedSpeedGbs</b></td><td>number, null</td><td>read-only</td><td>The speed which this drive is currently communicating to the storage controller in Gigabits per second</td></tr>
+<tr><td><b>NegotiatedSpeedGbs</b></td><td>number, null<br>(Gbit/s)</td><td>read-only</td><td>The speed which this drive is currently communicating to the storage controller in Gigabits per second</td></tr>
 <tr><td><b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
+<tr><td><b>Operations</b> <i>(v1.1+)</i> [ {} ]</td><td>array</td><td>read-only</td><td>The operations currently running on the Drive</td></tr>
 <tr><td><b>PartNumber</b></td><td>string, null</td><td>read-only</td><td>The part number for this drive.</td></tr>
 <tr><td><b>PredictedMediaLifeLeftPercent</b></td><td>number, null</td><td>read-only</td><td>The percentage of reads and writes that are predicted to still be available for the media</td></tr>
 <tr><td><b>Protocol</b></td><td>null</td><td>read-write</td><td>The protocol this drive is using to communicate to the storage controller</td></tr>
 <tr><td><b>Revision</b></td><td>string, null</td><td>read-only</td><td>The revision of this Drive</td></tr>
-<tr><td><b>RotationSpeedRPM</b></td><td>number, null</td><td>read-only</td><td>The rotation speed of this Drive in Revolutions per Minute (RPM)</td></tr>
+<tr><td><b>RotationSpeedRPM</b></td><td>number, null<br>(RPM)</td><td>read-only</td><td>The rotation speed of this Drive in Revolutions per Minute (RPM)</td></tr>
 <tr><td><b>SKU</b></td><td>string, null</td><td>read-only</td><td>This is the SKU for this drive.</td></tr>
 <tr><td><b>SerialNumber</b></td><td>string, null</td><td>read-only</td><td>The serial number for this drive.</td></tr>
 <tr><td><b>Status</b> {</td><td>object</td><td>read-only</td><td></td></tr>
@@ -776,7 +923,8 @@ However, Redfish implementations and OS APIs MAY also output in uppercase and cl
 <tbody>
 <tr><td>Foreign</td><td>The drive is currently encrypted, the data is not accessible to the user, and the system requires user intervention to expose the data</td></tr>
 <tr><td>Locked</td><td>The drive is currently encrypted and the data is not accessible to the user, however the system has the ability to unlock the drive automatically</td></tr>
-<tr><td>Unecrypted</td><td>The drive is not currently encrypted</td></tr>
+<tr><td>Unecrypted</td><td>The drive is not currently encrypted. Deprecated: Use Unencrypted</td></tr>
+<tr><td>Unencrypted</td><td>The drive is not currently encrypted</td></tr>
 <tr><td>Unlocked</td><td>The drive is currently encrypted but the data is accessible to the user unencrypted</td></tr>
 </tbody></table>
 
@@ -843,13 +991,16 @@ However, Redfish implementations and OS APIs MAY also output in uppercase and cl
 </thead>
 <tbody>
 <tr><td>Absent</td><td>This function or resource is not present or not detected</td></tr>
+<tr><td>Deferring</td><td>The element will not process any commands but will queue new requests.</td></tr>
 <tr><td>Disabled</td><td>This function or resource has been disabled</td></tr>
 <tr><td>Enabled</td><td>This function or resource has been enabled</td></tr>
 <tr><td>InTest</td><td>This function or resource is undergoing testing</td></tr>
+<tr><td>Quiesced</td><td>The element is enabled but only processes a restricted set of commands.</td></tr>
 <tr><td>StandbyOffline</td><td>This function or resource is enabled, but awaiting an external action to activate it</td></tr>
 <tr><td>StandbySpare</td><td>This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it.</td></tr>
 <tr><td>Starting</td><td>This function or resource is starting</td></tr>
 <tr><td>UnavailableOffline</td><td>This function or resource is present but cannot be used</td></tr>
+<tr><td>Updating</td><td>The element is updating and may be unavailable or degraded.</td></tr>
 </tbody></table>
 
 <h4>StatusIndicator:</h4>
@@ -868,7 +1019,140 @@ However, Redfish implementations and OS APIs MAY also output in uppercase and cl
 </tbody></table>
 
 </div>
-<h2>EthernetInterface 1.0.2</h2>
+<h2>Endpoint 1.0.0</h2>
+<p>This is the schema definition for the Endpoint resource. It represents the properties of an entity that sends or receives protocol defined messages over a transport.</p>
+<table class="properties">
+<tbody>
+<tr><td><b>Actions</b> {</td><td>object</td><td>read-only</td><td>The Actions object contains the available custom actions on this resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object, null</td><td>read-write</td><td></td></tr>
+<tr><td>}</td><td></td><td></td><td></td></tr>
+<tr><td><b>ConnectedEntities</b> [ {</td><td>array</td><td>read-only</td><td>All the entities connected to this endpoint.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>EntityLink</b> {}</td><td>object, null</td><td>read-write</td><td>A link to the associated entity.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>EntityPciId</b> {}</td><td>object, null</td><td>read-write</td><td>The PCI ID of the connected entity.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>EntityRole</b></td><td>string, null</td><td>read-write</td><td>The role of the connected entity.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>EntityType</b></td><td>string, null</td><td>read-write</td><td>The type of the connected entity.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Identifiers</b> [ {} ]</td><td>array</td><td>read-only</td><td>Identifiers for the remote entity.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object, null</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>PciClassCode</b></td><td>string, null</td><td>read-write</td><td>The Class Code and Subclass code of this PCIe function.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>PciFunctionNumber</b></td><td>number, null</td><td>read-only</td><td>The PCI ID of the connected entity.</td></tr>
+<tr><td>} ]</td><td></td><td></td><td></td></tr>
+<tr><td><b>Description</b></td><td>string, null</td><td>read-only</td><td>Provides a description of this resource and is used for commonality  in the schema definitions.</td></tr>
+<tr><td><b>EndpointProtocol</b></td><td>null</td><td>read-write</td><td>The protocol supported by this endpoint.</td></tr>
+<tr><td><b>HostReservationMemoryBytes</b></td><td>number, null<br>(By)</td><td>read-only</td><td>The amount of memory in Bytes that the Host should allocate to connect to this endpoint.</td></tr>
+<tr><td><b>Id</b></td><td>string</td><td>read-only</td><td>Uniquely identifies the resource within the collection of like resources.</td></tr>
+<tr><td><b>Identifiers</b> [ {</td><td>array</td><td>read-only</td><td>Identifiers for this endpoint</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>DurableName</b></td><td>string, null</td><td>read-only</td><td>This indicates the world wide, persistent name of the resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>DurableNameFormat</b></td><td>string, null</td><td>read-write</td><td>This represents the format of the DurableName property.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
+<tr><td>} ]</td><td></td><td></td><td></td></tr>
+<tr><td><b>Links</b> {</td><td>object</td><td>read-only</td><td>The links object contains the links to other resources that are related to this resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>MutuallyExclusiveEndpoints</b> [ {} ]</td><td>array</td><td>read-only</td><td>An array of references to the endpoints that may not be used in zones if this endpoint is used in a zone.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td>Oem extension object.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Ports</b> [ {} ]</td><td>array</td><td>read-only</td><td>An array of references to the the physical ports associated with this endpoint.</td></tr>
+<tr><td>}</td><td></td><td></td><td></td></tr>
+<tr><td><b>Name</b></td><td>string</td><td>read-only</td><td>The name of the resource or array element.</td></tr>
+<tr><td><b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
+<tr><td><b>PciId</b> {</td><td>object, null</td><td>read-write</td><td>The PCI ID of the endpoint.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>DeviceId</b></td><td>string, null</td><td>read-write</td><td>The Device ID of this PCIe function.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>SubsystemId</b></td><td>string, null</td><td>read-write</td><td>The Subsystem ID of this PCIe function.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>SubsystemVendorId</b></td><td>string, null</td><td>read-write</td><td>The Subsystem Vendor ID of this PCIe function.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>VendorId</b></td><td>string, null</td><td>read-write</td><td>The Vendor ID of this PCIe function.</td></tr>
+<tr><td>}</td><td></td><td></td><td></td></tr>
+<tr><td><b>Redundancy</b> [ {</td><td>array</td><td>read-only</td><td>Redundancy information for the lower level endpoints supporting this endpoint</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>MemberId</b></td><td>string</td><td>read-write</td><td>This is the identifier for the member within the collection.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
+<tr><td>} ]</td><td></td><td></td><td></td></tr>
+<tr><td><b>Status</b> {</td><td>object, null</td><td>read-only</td><td></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Health</b></td><td>string, null</td><td>read-write</td><td>This represents the health state of this resource in the absence of its dependent resources.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>HealthRollup</b></td><td>string, null</td><td>read-write</td><td>This represents the overall health state from the view of this resource.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>State</b></td><td>string, null</td><td>read-write</td><td>This indicates the known state of the resource, such as if it is enabled.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
+<tr><td>}</td><td></td><td></td><td></td></tr>
+</tbody></table>
+<div class="property-details">
+<h3>Property Details</h3>
+<h4>DurableNameFormat:</h4>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>EUI</td><td>IEEE-defined 64-bit Extended Unique Identifier</td></tr>
+<tr><td>FC_WWN</td><td>Fibre Channel World Wide Name</td></tr>
+<tr><td>NAA</td><td>Name Address Authority Format</td></tr>
+<tr><td>UUID</td><td>Universally Unique Identifier</td></tr>
+<tr><td>iQN</td><td>iSCSI Qualified Name</td></tr>
+</tbody></table>
+
+<h4>EntityRole:</h4>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Both</td><td>The entity is acting as both an initiator and a target</td></tr>
+<tr><td>Initiator</td><td>The entity is acting as an initiator</td></tr>
+<tr><td>Target</td><td>The entity is acting as a target</td></tr>
+</tbody></table>
+
+<h4>EntityType:</h4>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Bridge</td><td>The entity is a PCI(e) bridge.</td></tr>
+<tr><td>DisplayController</td><td>The entity is a display controller.</td></tr>
+<tr><td>Drive</td><td>The entity is a disk drive. The EntityLink property (if present) should be a Drive.Drive entity</td></tr>
+<tr><td>NetworkController</td><td>The entity is a network controller. The EntityLink property (if present) should be an EthernetInterface.EthernetInterface entity</td></tr>
+<tr><td>Processor</td><td>The entity is a processor device.</td></tr>
+<tr><td>RootComplex</td><td>The entity is a PCI(e) root complex. The EntityLink property (if present) should be a ComputerSystem.ComputerSystem entity</td></tr>
+<tr><td>StorageExpander</td><td>The entity is a storage expander. The EntityLink property (if present) should be a Chassis.Chassis entity</td></tr>
+<tr><td>StorageInitiator</td><td>The entity is a storage initator. The EntityLink property (if present) should be a Storage.StorageController entity</td></tr>
+</tbody></table>
+
+<h4>Health:</h4>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Critical</td><td>A critical condition exists that requires immediate attention</td></tr>
+<tr><td>OK</td><td>Normal</td></tr>
+<tr><td>Warning</td><td>A condition exists that requires attention</td></tr>
+</tbody></table>
+
+<h4>HealthRollup:</h4>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Critical</td><td>A critical condition exists that requires immediate attention</td></tr>
+<tr><td>OK</td><td>Normal</td></tr>
+<tr><td>Warning</td><td>A condition exists that requires attention</td></tr>
+</tbody></table>
+
+<h4>State:</h4>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Absent</td><td>This function or resource is not present or not detected</td></tr>
+<tr><td>Deferring</td><td>The element will not process any commands but will queue new requests.</td></tr>
+<tr><td>Disabled</td><td>This function or resource has been disabled</td></tr>
+<tr><td>Enabled</td><td>This function or resource has been enabled</td></tr>
+<tr><td>InTest</td><td>This function or resource is undergoing testing</td></tr>
+<tr><td>Quiesced</td><td>The element is enabled but only processes a restricted set of commands.</td></tr>
+<tr><td>StandbyOffline</td><td>This function or resource is enabled, but awaiting an external action to activate it</td></tr>
+<tr><td>StandbySpare</td><td>This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it.</td></tr>
+<tr><td>Starting</td><td>This function or resource is starting</td></tr>
+<tr><td>UnavailableOffline</td><td>This function or resource is present but cannot be used</td></tr>
+<tr><td>Updating</td><td>The element is updating and may be unavailable or degraded.</td></tr>
+</tbody></table>
+
+</div>
+<h2>EthernetInterface 1.1.0</h2>
 <p>This schema defines a simple ethernet NIC resource.</p>
 <table class="properties">
 <tbody>
@@ -904,6 +1188,11 @@ However, Redfish implementations and OS APIs MAY also output in uppercase and cl
 <tr><td>} ]</td><td></td><td></td><td></td></tr>
 <tr><td><b>Id</b></td><td>string</td><td>read-only</td><td>Uniquely identifies the resource within the collection of like resources.</td></tr>
 <tr><td><b>InterfaceEnabled</b></td><td>boolean, null</td><td>read-write</td><td>This indicates whether this interface is enabled.</td></tr>
+<tr><td><b>LinkStatus</b> <i>(v1.1+)</i></td><td>string, null</td><td>read-write</td><td>The link status of this interface (port)<br><i>See Property Details, below, for more information about this property.</i></td></tr>
+<tr><td><b>Links</b> <i>(v1.1+)</i> {</td><td>object</td><td>read-only</td><td>Contains references to other resources that are related to this resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Endpoints</b> [ {} ]</td><td>array</td><td>read-only</td><td>An array of references to the endpoints that connect to this ethernet interface.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td>Oem extension object.</td></tr>
+<tr><td>}</td><td></td><td></td><td></td></tr>
 <tr><td><b>MACAddress</b></td><td>string, null</td><td>read-write</td><td>This is the currently configured MAC address of the (logical port) interface.</td></tr>
 <tr><td><b>MTUSize</b></td><td>number, null</td><td>read-write</td><td>This is the currently configured Maximum Transmission Unit (MTU) in bytes on this interface.</td></tr>
 <tr><td><b>MaxIPv6StaticAddresses</b></td><td>number, null</td><td>read-only</td><td>This indicates the maximum number of Static IPv6 addresses that can be configured on this interface.</td></tr>
@@ -911,7 +1200,7 @@ However, Redfish implementations and OS APIs MAY also output in uppercase and cl
 <tr><td><b>NameServers</b> [ {} ]</td><td>array</td><td>read-only</td><td>This represents DNS name servers that are currently in use on this interface.</td></tr>
 <tr><td><b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
 <tr><td><b>PermanentMACAddress</b></td><td>string, null</td><td>read-write</td><td>This is the permanent MAC address assigned to this interface (port)</td></tr>
-<tr><td><b>SpeedMbps</b></td><td>number, null</td><td>read-write</td><td>This is the current speed in Mbps of this interface.</td></tr>
+<tr><td><b>SpeedMbps</b></td><td>number, null<br>(Mbit/s)</td><td>read-write</td><td>This is the current speed in Mbps of this interface.</td></tr>
 <tr><td><b>Status</b> {</td><td>object, null</td><td>read-only</td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Health</b></td><td>string, null</td><td>read-write</td><td>This represents the health state of this resource in the absence of its dependent resources.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>HealthRollup</b></td><td>string, null</td><td>read-write</td><td>This represents the overall health state from the view of this resource.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
@@ -975,6 +1264,17 @@ However, Redfish implementations and OS APIs MAY also output in uppercase and cl
 <tr><td>Warning</td><td>A condition exists that requires attention</td></tr>
 </tbody></table>
 
+<h4>LinkStatus:</h4>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>LinkDown</td><td>There is no link on this interface, but the interface is connected.</td></tr>
+<tr><td>LinkUp</td><td>The link is available for communication on this interface.</td></tr>
+<tr><td>NoLink</td><td>There is no link or connection detected on this interface.</td></tr>
+</tbody></table>
+
 <h4>State:</h4>
 <table class="enum enum-details">
 <thead>
@@ -982,17 +1282,20 @@ However, Redfish implementations and OS APIs MAY also output in uppercase and cl
 </thead>
 <tbody>
 <tr><td>Absent</td><td>This function or resource is not present or not detected</td></tr>
+<tr><td>Deferring</td><td>The element will not process any commands but will queue new requests.</td></tr>
 <tr><td>Disabled</td><td>This function or resource has been disabled</td></tr>
 <tr><td>Enabled</td><td>This function or resource has been enabled</td></tr>
 <tr><td>InTest</td><td>This function or resource is undergoing testing</td></tr>
+<tr><td>Quiesced</td><td>The element is enabled but only processes a restricted set of commands.</td></tr>
 <tr><td>StandbyOffline</td><td>This function or resource is enabled, but awaiting an external action to activate it</td></tr>
 <tr><td>StandbySpare</td><td>This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it.</td></tr>
 <tr><td>Starting</td><td>This function or resource is starting</td></tr>
 <tr><td>UnavailableOffline</td><td>This function or resource is present but cannot be used</td></tr>
+<tr><td>Updating</td><td>The element is updating and may be unavailable or degraded.</td></tr>
 </tbody></table>
 
 </div>
-<h2>Event 1.1.0</h2>
+<h2>Event 1.1.1</h2>
 <p>The Event schema describes the JSON payload received by an Event Destination (which has subscribed to event notification) when events occurs.  This resource contains data about event(s), including descriptions, severity and MessageId reference to a Message Registry that can be accessed for further information. </p>
 <table class="properties">
 <tbody>
@@ -1031,7 +1334,7 @@ However, Redfish implementations and OS APIs MAY also output in uppercase and cl
 </tbody></table>
 
 </div>
-<h2>EventDestination 1.0.2</h2>
+<h2>EventDestination 1.1.0</h2>
 <p>An Event Destination desribes the target of an event subscription, including the types of events subscribed and context to provide to the target in the Event payload.</p>
 <table class="properties">
 <tbody>
@@ -1041,8 +1344,10 @@ However, Redfish implementations and OS APIs MAY also output in uppercase and cl
 <tr><td><b>EventTypes</b> [ {} ]</td><td>array</td><td>read-only</td><td>This property shall contain the types of events that shall be sent to the desination.</td></tr>
 <tr><td><b>HttpHeaders</b> [ {} ]</td><td>array</td><td>read-write</td><td>This is for setting HTTP headers, such as authorization information.  This object will be null on a GET.</td></tr>
 <tr><td><b>Id</b></td><td>string</td><td>read-only</td><td>Uniquely identifies the resource within the collection of like resources.</td></tr>
+<tr><td><b>MessageIds</b> <i>(v1.1+)</i> [ {} ]</td><td>array</td><td>read-only</td><td>A list of MessageIds that the service will only send.</td></tr>
 <tr><td><b>Name</b></td><td>string</td><td>read-only</td><td>The name of the resource or array element.</td></tr>
 <tr><td><b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
+<tr><td><b>OriginResources</b> <i>(v1.1+)</i> [ {} ]</td><td>array</td><td>read-only</td><td>A list of resources for which the service will only send related events.</td></tr>
 <tr><td><b>Protocol</b></td><td>string</td><td>read-write</td><td>The protocol type of the event connection.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
 </tbody></table>
 <div class="property-details">
@@ -1066,7 +1371,7 @@ However, Redfish implementations and OS APIs MAY also output in uppercase and cl
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td></td></tr>
 <tr><td>}</td><td></td><td></td><td></td></tr>
 <tr><td><b>DeliveryRetryAttempts</b></td><td>number</td><td>read-only</td><td>This is the number of attempts an event posting is retried before the subscription is terminated.</td></tr>
-<tr><td><b>DeliveryRetryIntervalSeconds</b></td><td>number</td><td>read-only</td><td>This represents the number of seconds between retry attempts for sending any given Event</td></tr>
+<tr><td><b>DeliveryRetryIntervalSeconds</b></td><td>number<br>(s)</td><td>read-only</td><td>This represents the number of seconds between retry attempts for sending any given Event</td></tr>
 <tr><td><b>Description</b></td><td>string, null</td><td>read-only</td><td>Provides a description of this resource and is used for commonality  in the schema definitions.</td></tr>
 <tr><td><b>EventTypesForSubscription</b> [ {} ]</td><td>array</td><td>read-only</td><td>This is the types of Events that can be subscribed to.</td></tr>
 <tr><td><b>Id</b></td><td>string</td><td>read-only</td><td>Uniquely identifies the resource within the collection of like resources.</td></tr>
@@ -1117,13 +1422,101 @@ However, Redfish implementations and OS APIs MAY also output in uppercase and cl
 </thead>
 <tbody>
 <tr><td>Absent</td><td>This function or resource is not present or not detected</td></tr>
+<tr><td>Deferring</td><td>The element will not process any commands but will queue new requests.</td></tr>
 <tr><td>Disabled</td><td>This function or resource has been disabled</td></tr>
 <tr><td>Enabled</td><td>This function or resource has been enabled</td></tr>
 <tr><td>InTest</td><td>This function or resource is undergoing testing</td></tr>
+<tr><td>Quiesced</td><td>The element is enabled but only processes a restricted set of commands.</td></tr>
 <tr><td>StandbyOffline</td><td>This function or resource is enabled, but awaiting an external action to activate it</td></tr>
 <tr><td>StandbySpare</td><td>This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it.</td></tr>
 <tr><td>Starting</td><td>This function or resource is starting</td></tr>
 <tr><td>UnavailableOffline</td><td>This function or resource is present but cannot be used</td></tr>
+<tr><td>Updating</td><td>The element is updating and may be unavailable or degraded.</td></tr>
+</tbody></table>
+
+</div>
+<h2>Fabric 1.0.0</h2>
+<p>Fabric contains properties describing a simple fabric consisting of one or more switches, zero or more endpoints, and zero or more zones.</p>
+<table class="properties">
+<tbody>
+<tr><td><b>Actions</b> {</td><td>object</td><td>read-only</td><td>The available actions for this resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td></td></tr>
+<tr><td>}</td><td></td><td></td><td></td></tr>
+<tr><td><b>Description</b></td><td>string, null</td><td>read-only</td><td>Provides a description of this resource and is used for commonality  in the schema definitions.</td></tr>
+<tr><td><b>Endpoints</b> {</td><td>object</td><td>read-write</td><td>A collection of references to the endpoints contained in this fabric.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Description</b></td><td>string, null</td><td>read-only</td><td>Provides a description of this resource and is used for commonality  in the schema definitions.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Members</b> [ {} ]</td><td>array</td><td>read-only</td><td>Contains the members of this collection.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Name</b></td><td>string</td><td>read-only</td><td>The name of the resource or array element.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
+<tr><td>}</td><td></td><td></td><td></td></tr>
+<tr><td><b>FabricType</b></td><td>null</td><td>read-write</td><td>The protocol being sent over this fabric.</td></tr>
+<tr><td><b>Id</b></td><td>string</td><td>read-only</td><td>Uniquely identifies the resource within the collection of like resources.</td></tr>
+<tr><td><b>Links</b> {</td><td>object</td><td>read-only</td><td>Contains references to other resources that are related to this resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td>Oem extension object.</td></tr>
+<tr><td>}</td><td></td><td></td><td></td></tr>
+<tr><td><b>MaxZones</b></td><td>number, null</td><td>read-write</td><td>The value of this property shall contain the maximum number of zones the switch can currently configure.</td></tr>
+<tr><td><b>Name</b></td><td>string</td><td>read-only</td><td>The name of the resource or array element.</td></tr>
+<tr><td><b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
+<tr><td><b>Status</b> {</td><td>object</td><td>read-only</td><td></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Health</b></td><td>string, null</td><td>read-write</td><td>This represents the health state of this resource in the absence of its dependent resources.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>HealthRollup</b></td><td>string, null</td><td>read-write</td><td>This represents the overall health state from the view of this resource.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>State</b></td><td>string, null</td><td>read-write</td><td>This indicates the known state of the resource, such as if it is enabled.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
+<tr><td>}</td><td></td><td></td><td></td></tr>
+<tr><td><b>Switches</b> {</td><td>object</td><td>read-write</td><td>A collection of references to the switches contained in this fabric.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Description</b></td><td>string, null</td><td>read-only</td><td>Provides a description of this resource and is used for commonality  in the schema definitions.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Members</b> [ {} ]</td><td>array</td><td>read-only</td><td>Contains the members of this collection.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Name</b></td><td>string</td><td>read-only</td><td>The name of the resource or array element.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
+<tr><td>}</td><td></td><td></td><td></td></tr>
+<tr><td><b>Zones</b> {</td><td>object</td><td>read-write</td><td>A collection of references to the zones contained in this fabric.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Description</b></td><td>string, null</td><td>read-only</td><td>Provides a description of this resource and is used for commonality  in the schema definitions.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Members</b> [ {} ]</td><td>array</td><td>read-only</td><td>Contains the members of this collection.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Name</b></td><td>string</td><td>read-only</td><td>The name of the resource or array element.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
+<tr><td>}</td><td></td><td></td><td></td></tr>
+</tbody></table>
+<div class="property-details">
+<h3>Property Details</h3>
+<h4>Health:</h4>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Critical</td><td>A critical condition exists that requires immediate attention</td></tr>
+<tr><td>OK</td><td>Normal</td></tr>
+<tr><td>Warning</td><td>A condition exists that requires attention</td></tr>
+</tbody></table>
+
+<h4>HealthRollup:</h4>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Critical</td><td>A critical condition exists that requires immediate attention</td></tr>
+<tr><td>OK</td><td>Normal</td></tr>
+<tr><td>Warning</td><td>A condition exists that requires attention</td></tr>
+</tbody></table>
+
+<h4>State:</h4>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Absent</td><td>This function or resource is not present or not detected</td></tr>
+<tr><td>Deferring</td><td>The element will not process any commands but will queue new requests.</td></tr>
+<tr><td>Disabled</td><td>This function or resource has been disabled</td></tr>
+<tr><td>Enabled</td><td>This function or resource has been enabled</td></tr>
+<tr><td>InTest</td><td>This function or resource is undergoing testing</td></tr>
+<tr><td>Quiesced</td><td>The element is enabled but only processes a restricted set of commands.</td></tr>
+<tr><td>StandbyOffline</td><td>This function or resource is enabled, but awaiting an external action to activate it</td></tr>
+<tr><td>StandbySpare</td><td>This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it.</td></tr>
+<tr><td>Starting</td><td>This function or resource is starting</td></tr>
+<tr><td>UnavailableOffline</td><td>This function or resource is present but cannot be used</td></tr>
+<tr><td>Updating</td><td>The element is updating and may be unavailable or degraded.</td></tr>
 </tbody></table>
 
 </div>
@@ -1145,7 +1538,7 @@ However, Redfish implementations and OS APIs MAY also output in uppercase and cl
 <tr><td><b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
 <tr><td><b>Schema</b></td><td>string</td><td>read-only</td><td>The @odata.type name this schema describes.</td></tr>
 </tbody></table>
-<h2>LogEntry 1.0.2</h2>
+<h2>LogEntry 1.1.0</h2>
 <p>This resource defines the record format for a log.  It is designed to be used for SEL logs (from IPMI) as well as Event Logs and OEM-specific log formats.  The EntryType field indicates the type of log and the resource includes several additional properties dependent on the EntryType.</p>
 <table class="properties">
 <tbody>
@@ -1153,6 +1546,9 @@ However, Redfish implementations and OS APIs MAY also output in uppercase and cl
 <tr><td><b>Description</b></td><td>string, null</td><td>read-only</td><td>Provides a description of this resource and is used for commonality  in the schema definitions.</td></tr>
 <tr><td><b>EntryCode</b></td><td>string, null</td><td>read-write</td><td>If the EntryType is SEL, this will have the entry code for the log entry.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
 <tr><td><b>EntryType</b></td><td>string</td><td>read-write</td><td>his is the type of log entry.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
+<tr><td><b>EventId</b> <i>(v1.1+)</i></td><td>string</td><td>read-only</td><td>This is a unique instance identifier of an event.</td></tr>
+<tr><td><b>EventTimestamp</b> <i>(v1.1+)</i></td><td>string</td><td>read-only</td><td>This is time the event occurred.</td></tr>
+<tr><td><b>EventType</b> <i>(v1.1+)</i></td><td></td><td>read-only</td><td>This indicates the type of an event recorded in this log.</td></tr>
 <tr><td><b>Id</b></td><td>string</td><td>read-only</td><td>Uniquely identifies the resource within the collection of like resources.</td></tr>
 <tr><td><b>Links</b> {</td><td>object</td><td>read-only</td><td>Contains references to other resources that are related to this resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td>Oem extension object.</td></tr>
@@ -1383,17 +1779,20 @@ However, Redfish implementations and OS APIs MAY also output in uppercase and cl
 </thead>
 <tbody>
 <tr><td>Absent</td><td>This function or resource is not present or not detected</td></tr>
+<tr><td>Deferring</td><td>The element will not process any commands but will queue new requests.</td></tr>
 <tr><td>Disabled</td><td>This function or resource has been disabled</td></tr>
 <tr><td>Enabled</td><td>This function or resource has been enabled</td></tr>
 <tr><td>InTest</td><td>This function or resource is undergoing testing</td></tr>
+<tr><td>Quiesced</td><td>The element is enabled but only processes a restricted set of commands.</td></tr>
 <tr><td>StandbyOffline</td><td>This function or resource is enabled, but awaiting an external action to activate it</td></tr>
 <tr><td>StandbySpare</td><td>This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it.</td></tr>
 <tr><td>Starting</td><td>This function or resource is starting</td></tr>
 <tr><td>UnavailableOffline</td><td>This function or resource is present but cannot be used</td></tr>
+<tr><td>Updating</td><td>The element is updating and may be unavailable or degraded.</td></tr>
 </tbody></table>
 
 </div>
-<h2>Manager 1.1.0</h2>
+<h2>Manager 1.2.0</h2>
 <p>This is the schema definition for a Manager.  Examples of managers are BMCs, Enclosure Managers, Management Controllers and other subsystems assigned managability functions.</p>
 <table class="properties">
 <tbody>
@@ -1458,6 +1857,7 @@ However, Redfish implementations and OS APIs MAY also output in uppercase and cl
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>VirtualMedia</b> {}</td><td>object</td><td>read-write</td><td>Settings for this Manager's Virtual Media support</td></tr>
 <tr><td>}</td><td></td><td></td><td></td></tr>
 <tr><td><b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
+<tr><td><b>PowerState</b> <i>(v1.2+)</i></td><td>string, null</td><td>read-write</td><td>This is the current power state of the Manager.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
 <tr><td><b>Redundancy</b> [ {</td><td>array</td><td>read-only</td><td>Redundancy information for the managers of this system</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>MemberId</b></td><td>string</td><td>read-write</td><td>This is the identifier for the member within the collection.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
@@ -1525,6 +1925,18 @@ However, Redfish implementations and OS APIs MAY also output in uppercase and cl
 <tr><td>RackManager</td><td>A controller which provides management functions for a whole or part of a rack</td></tr>
 </tbody></table>
 
+<h4>PowerState:</h4>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Off</td><td>The state is powered Off.</td></tr>
+<tr><td>On</td><td>The state is powered On.</td></tr>
+<tr><td>PoweringOff</td><td>A temporary state between On and Off.</td></tr>
+<tr><td>PoweringOn</td><td>A temporary state between Off and On.</td></tr>
+</tbody></table>
+
 <h4>State:</h4>
 <table class="enum enum-details">
 <thead>
@@ -1532,13 +1944,16 @@ However, Redfish implementations and OS APIs MAY also output in uppercase and cl
 </thead>
 <tbody>
 <tr><td>Absent</td><td>This function or resource is not present or not detected</td></tr>
+<tr><td>Deferring</td><td>The element will not process any commands but will queue new requests.</td></tr>
 <tr><td>Disabled</td><td>This function or resource has been disabled</td></tr>
 <tr><td>Enabled</td><td>This function or resource has been enabled</td></tr>
 <tr><td>InTest</td><td>This function or resource is undergoing testing</td></tr>
+<tr><td>Quiesced</td><td>The element is enabled but only processes a restricted set of commands.</td></tr>
 <tr><td>StandbyOffline</td><td>This function or resource is enabled, but awaiting an external action to activate it</td></tr>
 <tr><td>StandbySpare</td><td>This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it.</td></tr>
 <tr><td>Starting</td><td>This function or resource is starting</td></tr>
 <tr><td>UnavailableOffline</td><td>This function or resource is present but cannot be used</td></tr>
+<tr><td>Updating</td><td>The element is updating and may be unavailable or degraded.</td></tr>
 </tbody></table>
 
 </div>
@@ -1592,7 +2007,7 @@ However, Redfish implementations and OS APIs MAY also output in uppercase and cl
 <tr><td>}</td><td></td><td></td><td></td></tr>
 <tr><td><b>SSDP</b> {</td><td>object</td><td>read-write</td><td>Settings for this Manager's SSDP support</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>NotifyIPv6Scope</b></td><td>string, null</td><td>read-write</td><td>Indicates the scope for the IPv6 Notify messages for SSDP.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>NotifyMulticastIntervalSeconds</b></td><td>number, null</td><td>read-write</td><td>Indicates how often the Multicast is done from this service for SSDP.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>NotifyMulticastIntervalSeconds</b></td><td>number, null<br>(s)</td><td>read-write</td><td>Indicates how often the Multicast is done from this service for SSDP.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>NotifyTTL</b></td><td>number, null</td><td>read-write</td><td>Indicates the time to live hop count for SSDPs Notify messages.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Port</b></td><td>number, null</td><td>read-write</td><td>Indicates the protocol port.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>ProtocolEnabled</b></td><td>boolean, null</td><td>read-write</td><td>Indicates if the protocol is enabled or disabled</td></tr>
@@ -1658,13 +2073,16 @@ However, Redfish implementations and OS APIs MAY also output in uppercase and cl
 </thead>
 <tbody>
 <tr><td>Absent</td><td>This function or resource is not present or not detected</td></tr>
+<tr><td>Deferring</td><td>The element will not process any commands but will queue new requests.</td></tr>
 <tr><td>Disabled</td><td>This function or resource has been disabled</td></tr>
 <tr><td>Enabled</td><td>This function or resource has been enabled</td></tr>
 <tr><td>InTest</td><td>This function or resource is undergoing testing</td></tr>
+<tr><td>Quiesced</td><td>The element is enabled but only processes a restricted set of commands.</td></tr>
 <tr><td>StandbyOffline</td><td>This function or resource is enabled, but awaiting an external action to activate it</td></tr>
 <tr><td>StandbySpare</td><td>This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it.</td></tr>
 <tr><td>Starting</td><td>This function or resource is starting</td></tr>
 <tr><td>UnavailableOffline</td><td>This function or resource is present but cannot be used</td></tr>
+<tr><td>Updating</td><td>The element is updating and may be unavailable or degraded.</td></tr>
 </tbody></table>
 
 </div>
@@ -1682,7 +2100,7 @@ However, Redfish implementations and OS APIs MAY also output in uppercase and cl
 <tr><td><b>AllowedSpeedsMHz</b> [ {} ]</td><td>array</td><td>read-only</td><td>Speed bins supported by this Memory</td></tr>
 <tr><td><b>BaseModuleType</b></td><td>string, null</td><td>read-write</td><td>The base module type of Memory<br><i>See Property Details, below, for more information about this property.</i></td></tr>
 <tr><td><b>BusWidthBits</b></td><td>number, null</td><td>read-only</td><td>Bus Width in bits.</td></tr>
-<tr><td><b>CapacityMiB</b></td><td>number, null</td><td>read-only</td><td>Memory Capacity in MiB.</td></tr>
+<tr><td><b>CapacityMiB</b></td><td>number, null<br>(MiBy)</td><td>read-only</td><td>Memory Capacity in MiB.</td></tr>
 <tr><td><b>DataWidthBits</b></td><td>number, null</td><td>read-only</td><td>Data Width in bits.</td></tr>
 <tr><td><b>Description</b></td><td>string, null</td><td>read-only</td><td>Provides a description of this resource and is used for commonality  in the schema definitions.</td></tr>
 <tr><td><b>DeviceID</b></td><td>string, null</td><td>read-only</td><td>Device ID</td></tr>
@@ -1707,7 +2125,7 @@ However, Redfish implementations and OS APIs MAY also output in uppercase and cl
 <tr><td><b>MemoryType</b></td><td>string, null</td><td>read-write</td><td>The type of Memory<br><i>See Property Details, below, for more information about this property.</i></td></tr>
 <tr><td><b>Metrics</b> {</td><td>object</td><td>read-write</td><td>A reference to the Metrics associated with this Memory</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Actions</b> {}</td><td>object</td><td>read-only</td><td>The available actions for this resource.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>BlockSizeBytes</b></td><td>number, null</td><td>read-only</td><td>Block size in bytes</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>BlockSizeBytes</b></td><td>number, null<br>(By)</td><td>read-only</td><td>Block size in bytes</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>CurrentPeriod</b> {}</td><td>object</td><td>read-write</td><td>This object describes the central memory of the system in general detail.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Description</b></td><td>string, null</td><td>read-only</td><td>Provides a description of this resource and is used for commonality  in the schema definitions.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>HealthData</b> {}</td><td>object</td><td>read-write</td><td>This object describes the central memory of the system in general detail.</td></tr>
@@ -1723,18 +2141,18 @@ However, Redfish implementations and OS APIs MAY also output in uppercase and cl
 <tr><td><b>PartNumber</b></td><td>string, null</td><td>read-only</td><td>The product part number of this device</td></tr>
 <tr><td><b>PersistentRegionSizeLimitMiB</b></td><td>number, null</td><td>read-only</td><td>Total size of persistent regions in MiB</td></tr>
 <tr><td><b>PowerManagementPolicy</b> {</td><td>object</td><td>read-write</td><td>Power management policy information.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>AveragePowerBudgetMilliWatts</b></td><td>number, null</td><td>read-only</td><td>Average power budget in milli watts</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>MaxTDPMilliWatts</b></td><td>number, null</td><td>read-only</td><td>Maximum TDP in milli watts</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>PeakPowerBudgetMilliWatts</b></td><td>number, null</td><td>read-only</td><td>Peak power budget in milli watts</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>AveragePowerBudgetMilliWatts</b></td><td>number, null<br>(mW)</td><td>read-only</td><td>Average power budget in milli watts</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>MaxTDPMilliWatts</b></td><td>number, null<br>(mW)</td><td>read-only</td><td>Maximum TDP in milli watts</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>PeakPowerBudgetMilliWatts</b></td><td>number, null<br>(mW)</td><td>read-only</td><td>Peak power budget in milli watts</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>PolicyEnabled</b></td><td>boolean, null</td><td>read-only</td><td>Power management policy enabled status</td></tr>
 <tr><td>}</td><td></td><td></td><td></td></tr>
 <tr><td><b>RankCount</b></td><td>number, null</td><td>read-only</td><td>Number of ranks available in the Memory</td></tr>
 <tr><td><b>Regions</b> [ {</td><td>array</td><td>read-only</td><td>Memory regions information within the Memory</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>MemoryClassification</b></td><td>string, null</td><td>read-write</td><td>Classification of memory occupied by the given memory region<br><i>See Property Details, below, for more information about this property.</i></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>OffsetMiB</b></td><td>number, null</td><td>read-only</td><td>Offset with in the Memory that corresponds to the starting of this memory region in MiB</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>OffsetMiB</b></td><td>number, null<br>(MiBy)</td><td>read-only</td><td>Offset with in the Memory that corresponds to the starting of this memory region in MiB</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>PassphraseState</b></td><td>boolean, null</td><td>read-only</td><td>State of the passphrase for this region</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>RegionId</b></td><td>string, null</td><td>read-only</td><td>Unique region ID representing a specific region within the Memory</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>SizeMiB</b></td><td>number, null</td><td>read-only</td><td>Size of this memory region in MiB</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>SizeMiB</b></td><td>number, null<br>(MiBy)</td><td>read-only</td><td>Size of this memory region in MiB</td></tr>
 <tr><td>} ]</td><td></td><td></td><td></td></tr>
 <tr><td><b>SecurityCapabilities</b> {</td><td>object</td><td>read-write</td><td>This object contains security capabilities of the Memory.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>MaxPassphraseCount</b></td><td>number, null</td><td>read-only</td><td>Maximum number of passphrases supported for this Memory</td></tr>
@@ -1831,6 +2249,60 @@ However, Redfish implementations and OS APIs MAY also output in uppercase and cl
 </tbody></table>
 
 </div>
+<h2>MemoryChunks 1.0.0</h2>
+<p>This is the schema definition of a Memory Chunk and its configuration.</p>
+<table class="properties">
+<tbody>
+<tr><td><b>AddressRangeType</b></td><td>string, null</td><td>read-write</td><td>Memory type of this memory chunk<br><i>See Property Details, below, for more information about this property.</i></td></tr>
+<tr><td><b>Description</b></td><td>string, null</td><td>read-only</td><td>Provides a description of this resource and is used for commonality  in the schema definitions.</td></tr>
+<tr><td><b>Id</b></td><td>string</td><td>read-only</td><td>Uniquely identifies the resource within the collection of like resources.</td></tr>
+<tr><td><b>InterleaveSets</b> [ {</td><td>array</td><td>read-only</td><td>This is the interleave sets for the memory chunk.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Memory</b> {}</td><td>object</td><td>read-write</td><td>Describes a memory device of the interleave set. </td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>MemoryLevel</b></td><td>number, null</td><td>read-only</td><td>Level of the interleave set for multi-level tiered memory.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>OffsetMiB</b></td><td>number, null</td><td>read-only</td><td>Offset within the DIMM that corresponds to the start of this memory region, with units in MiB</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>RegionId</b></td><td>string, null</td><td>read-only</td><td>DIMM region identifier</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>SizeMiB</b></td><td>number, null</td><td>read-only</td><td>Size of this memory region in MiB</td></tr>
+<tr><td>} ]</td><td></td><td></td><td></td></tr>
+<tr><td><b>IsMirrorEnabled</b></td><td>boolean, null</td><td>read-only</td><td>Mirror Enabled status</td></tr>
+<tr><td><b>IsSpare</b></td><td>boolean, null</td><td>read-only</td><td>Spare enabled status</td></tr>
+<tr><td><b>MemoryChunkSizeMiB</b></td><td>number, null</td><td>read-only</td><td>Size of the memory chunk in MiB</td></tr>
+<tr><td><b>Name</b></td><td>string</td><td>read-only</td><td>The name of the resource or array element.</td></tr>
+<tr><td><b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
+</tbody></table>
+<div class="property-details">
+<h3>Property Details</h3>
+<h4>AddressRangeType:</h4>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Block</td><td>Block accesible memory</td></tr>
+<tr><td>PMEM</td><td>Byte accessible persistent memory</td></tr>
+<tr><td>Volatile</td><td>Volatile memory</td></tr>
+</tbody></table>
+
+</div>
+<h2>MemoryDomain 1.0.0</h2>
+<p>This is the schema definition of a Memory Domain and its configuration. Memory Domains are used to indicate to the client which Memory (DIMMs) can be grouped together in Memory Chunks to form interleave sets or otherwise grouped together.</p>
+<table class="properties">
+<tbody>
+<tr><td><b>AllowsBlockProvisioning</b></td><td>boolean, null</td><td>read-only</td><td>Indicates if this Memory Domain supports the provisioning of blocks of memory.</td></tr>
+<tr><td><b>AllowsMemoryChunkCreation</b></td><td>boolean, null</td><td>read-only</td><td>Indicates if this Memory Domain supports the creation of Memory Chunks.</td></tr>
+<tr><td><b>Description</b></td><td>string, null</td><td>read-only</td><td>Provides a description of this resource and is used for commonality  in the schema definitions.</td></tr>
+<tr><td><b>Id</b></td><td>string</td><td>read-only</td><td>Uniquely identifies the resource within the collection of like resources.</td></tr>
+<tr><td><b>InterleavableMemorySets</b> [ {</td><td>array</td><td>read-only</td><td>This is the interleave sets for the memory chunk.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>MemorySet</b> [ {} ]</td><td>array</td><td>read-only</td><td>This is the collection of memory for a particular interleave set.</td></tr>
+<tr><td>} ]</td><td></td><td></td><td></td></tr>
+<tr><td><b>MemoryChunks</b> {</td><td>object, null</td><td>read-write</td><td>A reference to the collection of Memory Chunks associated with this Memory Domain.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Description</b></td><td>string, null</td><td>read-only</td><td>Provides a description of this resource and is used for commonality  in the schema definitions.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Members</b> [ {} ]</td><td>array</td><td>read-only</td><td>Contains the members of this collection.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Name</b></td><td>string</td><td>read-only</td><td>The name of the resource or array element.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
+<tr><td>}</td><td></td><td></td><td></td></tr>
+<tr><td><b>Name</b></td><td>string</td><td>read-only</td><td>The name of the resource or array element.</td></tr>
+<tr><td><b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
+</tbody></table>
 <h2>MemoryMetrics 1.0.0</h2>
 <p>MemoryMetrics contains usage and health statistics for a single Memory module or device instance.</p>
 <table class="properties">
@@ -1839,7 +2311,7 @@ However, Redfish implementations and OS APIs MAY also output in uppercase and cl
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>#MemoryMetrics.ClearCurrentPeriod</b> {}</td><td>object</td><td>read-write</td><td>This sets the CurrentPeriod object values to zero.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td></td></tr>
 <tr><td>}</td><td></td><td></td><td></td></tr>
-<tr><td><b>BlockSizeBytes</b></td><td>number, null</td><td>read-only</td><td>Block size in bytes</td></tr>
+<tr><td><b>BlockSizeBytes</b></td><td>number, null<br>(By)</td><td>read-only</td><td>Block size in bytes</td></tr>
 <tr><td><b>CurrentPeriod</b> {</td><td>object</td><td>read-write</td><td>This object describes the central memory of the system in general detail.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>BlocksRead</b></td><td>number, null</td><td>read-only</td><td>Number of blocks read since reset</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>BlocksWritten</b></td><td>string, null</td><td>read-only</td><td>Number of blocks written since reset</td></tr>
@@ -1892,7 +2364,295 @@ However, Redfish implementations and OS APIs MAY also output in uppercase and cl
 <tr><td><b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
 <tr><td><b>Registry</b></td><td>string</td><td>read-only</td><td>The Registry Name, Major and Minor version used in MessageID construction.</td></tr>
 </tbody></table>
-<h2>Power 1.1.0</h2>
+<h2>PCIeDevice 1.0.0</h2>
+<p>This is the schema definition for the PCIeDevice resource.  It represents the properties of a PCIeDevice attached to a System.</p>
+<table class="properties">
+<tbody>
+<tr><td><b>AssetTag</b></td><td>string, null</td><td>read-write</td><td>The user assigned asset tag for this PCIe device.</td></tr>
+<tr><td><b>Description</b></td><td>string, null</td><td>read-only</td><td>Provides a description of this resource and is used for commonality  in the schema definitions.</td></tr>
+<tr><td><b>DeviceType</b></td><td>string</td><td>read-write</td><td>The device type for this PCIe device.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
+<tr><td><b>FirmwareVersion</b></td><td>string, null</td><td>read-only</td><td>The version of firmware for this PCIe device.</td></tr>
+<tr><td><b>Id</b></td><td>string</td><td>read-only</td><td>Uniquely identifies the resource within the collection of like resources.</td></tr>
+<tr><td><b>Links</b> {</td><td>object</td><td>read-only</td><td>The links object contains the links to other resources that are related to this resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Chassis</b> [ {} ]</td><td>array</td><td>read-only</td><td>An array of references to the chassis in which the PCIe device is contained</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td>Oem extension object.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>PCIeFunctions</b> [ {} ]</td><td>array</td><td>read-only</td><td>An array of references to PCIeFunctions exposed by this device.</td></tr>
+<tr><td>}</td><td></td><td></td><td></td></tr>
+<tr><td><b>Manufacturer</b></td><td>string, null</td><td>read-only</td><td>This is the manufacturer of this PCIe device.</td></tr>
+<tr><td><b>Model</b></td><td>string, null</td><td>read-only</td><td>This is the model number for the PCIe device.</td></tr>
+<tr><td><b>Name</b></td><td>string</td><td>read-only</td><td>The name of the resource or array element.</td></tr>
+<tr><td><b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
+<tr><td><b>PartNumber</b></td><td>string, null</td><td>read-only</td><td>The part number for this PCIe device.</td></tr>
+<tr><td><b>SKU</b></td><td>string, null</td><td>read-only</td><td>This is the SKU for this PCIe device.</td></tr>
+<tr><td><b>SerialNumber</b></td><td>string, null</td><td>read-only</td><td>The serial number for this PCIe device.</td></tr>
+<tr><td><b>Status</b> {</td><td>object, null</td><td>read-only</td><td></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Health</b></td><td>string, null</td><td>read-write</td><td>This represents the health state of this resource in the absence of its dependent resources.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>HealthRollup</b></td><td>string, null</td><td>read-write</td><td>This represents the overall health state from the view of this resource.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>State</b></td><td>string, null</td><td>read-write</td><td>This indicates the known state of the resource, such as if it is enabled.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
+<tr><td>}</td><td></td><td></td><td></td></tr>
+</tbody></table>
+<div class="property-details">
+<h3>Property Details</h3>
+<h4>DeviceType:</h4>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>MultiFunction</td><td>A multi-function PCIe device</td></tr>
+<tr><td>Simulated</td><td>A PCIe device which is not currently physically present, but is being simulated by the PCIe infrastructure</td></tr>
+<tr><td>SingleFunction</td><td>A single-function PCIe device</td></tr>
+</tbody></table>
+
+<h4>Health:</h4>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Critical</td><td>A critical condition exists that requires immediate attention</td></tr>
+<tr><td>OK</td><td>Normal</td></tr>
+<tr><td>Warning</td><td>A condition exists that requires attention</td></tr>
+</tbody></table>
+
+<h4>HealthRollup:</h4>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Critical</td><td>A critical condition exists that requires immediate attention</td></tr>
+<tr><td>OK</td><td>Normal</td></tr>
+<tr><td>Warning</td><td>A condition exists that requires attention</td></tr>
+</tbody></table>
+
+<h4>State:</h4>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Absent</td><td>This function or resource is not present or not detected</td></tr>
+<tr><td>Deferring</td><td>The element will not process any commands but will queue new requests.</td></tr>
+<tr><td>Disabled</td><td>This function or resource has been disabled</td></tr>
+<tr><td>Enabled</td><td>This function or resource has been enabled</td></tr>
+<tr><td>InTest</td><td>This function or resource is undergoing testing</td></tr>
+<tr><td>Quiesced</td><td>The element is enabled but only processes a restricted set of commands.</td></tr>
+<tr><td>StandbyOffline</td><td>This function or resource is enabled, but awaiting an external action to activate it</td></tr>
+<tr><td>StandbySpare</td><td>This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it.</td></tr>
+<tr><td>Starting</td><td>This function or resource is starting</td></tr>
+<tr><td>UnavailableOffline</td><td>This function or resource is present but cannot be used</td></tr>
+<tr><td>Updating</td><td>The element is updating and may be unavailable or degraded.</td></tr>
+</tbody></table>
+
+</div>
+<h2>PCIeFunction 1.0.0</h2>
+<p>This is the schema definition for the PCIeFunction resource.  It represents the properties of a PCIeFunction attached to a System.</p>
+<table class="properties">
+<tbody>
+<tr><td><b>ClassCode</b></td><td>string, null</td><td>read-write</td><td>The Class Code of this PCIe function.</td></tr>
+<tr><td><b>Description</b></td><td>string, null</td><td>read-only</td><td>Provides a description of this resource and is used for commonality  in the schema definitions.</td></tr>
+<tr><td><b>DeviceClass</b></td><td>string</td><td>read-write</td><td>The class for this PCIe Function.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
+<tr><td><b>DeviceId</b></td><td>string, null</td><td>read-write</td><td>The Device ID of this PCIe function.</td></tr>
+<tr><td><b>FunctionId</b></td><td>number, null</td><td>read-only</td><td>The the PCIe Function identifier.</td></tr>
+<tr><td><b>FunctionType</b></td><td>string</td><td>read-write</td><td>The type of the PCIe Function.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
+<tr><td><b>Id</b></td><td>string</td><td>read-only</td><td>Uniquely identifies the resource within the collection of like resources.</td></tr>
+<tr><td><b>Links</b> {</td><td>object</td><td>read-only</td><td>The links object contains the links to other resources that are related to this resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Drives</b> [ {} ]</td><td>array</td><td>read-only</td><td>An array of references to the drives which the PCIe device produces</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>EthernetInterfaces</b> [ {} ]</td><td>array</td><td>read-only</td><td>An array of references to the ethernet interfaces which the PCIe device produces</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td>Oem extension object.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>PCIeDevice</b> {}</td><td>object, null</td><td>read-write</td><td>A reference to the PCIeDevice on which this function resides.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>StorageControllers</b> [ {} ]</td><td>array</td><td>read-only</td><td>An array of references to the storage controllers which the PCIe device produces</td></tr>
+<tr><td>}</td><td></td><td></td><td></td></tr>
+<tr><td><b>Name</b></td><td>string</td><td>read-only</td><td>The name of the resource or array element.</td></tr>
+<tr><td><b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
+<tr><td><b>RevisionId</b></td><td>string, null</td><td>read-write</td><td>The Revision ID of this PCIe function.</td></tr>
+<tr><td><b>Status</b> {</td><td>object, null</td><td>read-only</td><td></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Health</b></td><td>string, null</td><td>read-write</td><td>This represents the health state of this resource in the absence of its dependent resources.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>HealthRollup</b></td><td>string, null</td><td>read-write</td><td>This represents the overall health state from the view of this resource.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>State</b></td><td>string, null</td><td>read-write</td><td>This indicates the known state of the resource, such as if it is enabled.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
+<tr><td>}</td><td></td><td></td><td></td></tr>
+<tr><td><b>SubsystemId</b></td><td>string, null</td><td>read-write</td><td>The Subsystem ID of this PCIe function.</td></tr>
+<tr><td><b>SubsystemVendorId</b></td><td>string, null</td><td>read-write</td><td>The Subsystem Vendor ID of this PCIe function.</td></tr>
+<tr><td><b>VendorId</b></td><td>string, null</td><td>read-write</td><td>The Vendor ID of this PCIe function.</td></tr>
+</tbody></table>
+<div class="property-details">
+<h3>Property Details</h3>
+<h4>DeviceClass:</h4>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Bridge</td><td>A bridge</td></tr>
+<tr><td>CommunicationController</td><td>A communication controller</td></tr>
+<tr><td>Coprocessor</td><td>A coprocessor</td></tr>
+<tr><td>DisplayController</td><td>A display controller</td></tr>
+<tr><td>DockingStation</td><td>A docking station</td></tr>
+<tr><td>EncryptionController</td><td>An encryption controller</td></tr>
+<tr><td>GenericSystemPeripheral</td><td>A generic system peripheral</td></tr>
+<tr><td>InputDeviceController</td><td>An input device controller</td></tr>
+<tr><td>IntelligentController</td><td>An intelligent controller</td></tr>
+<tr><td>MassStorageController</td><td>A mass storage controller</td></tr>
+<tr><td>MemoryController</td><td>A memory controller</td></tr>
+<tr><td>MultimediaController</td><td>A multimedia controller</td></tr>
+<tr><td>NetworkController</td><td>A network controller</td></tr>
+<tr><td>NonEssentialInstrumentation</td><td>A non-essential instrumentation</td></tr>
+<tr><td>Other</td><td>A other class. The function Device Class Id needs to be verified</td></tr>
+<tr><td>ProcessingAccelerators</td><td>A processing accelerators</td></tr>
+<tr><td>Processor</td><td>A processor</td></tr>
+<tr><td>SatelliteCommunicationsController</td><td>A satellite communications controller</td></tr>
+<tr><td>SerialBusController</td><td>A serial bus controller</td></tr>
+<tr><td>SignalProcessingController</td><td>A signal processing controller</td></tr>
+<tr><td>UnassignedClass</td><td>An unassigned class</td></tr>
+<tr><td>UnclassifiedDevice</td><td>An unclassified device</td></tr>
+<tr><td>WirelessController</td><td>A wireless controller</td></tr>
+</tbody></table>
+
+<h4>FunctionType:</h4>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Physical</td><td>A physical PCie function</td></tr>
+<tr><td>Virtual</td><td>A virtual PCIe function</td></tr>
+</tbody></table>
+
+<h4>Health:</h4>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Critical</td><td>A critical condition exists that requires immediate attention</td></tr>
+<tr><td>OK</td><td>Normal</td></tr>
+<tr><td>Warning</td><td>A condition exists that requires attention</td></tr>
+</tbody></table>
+
+<h4>HealthRollup:</h4>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Critical</td><td>A critical condition exists that requires immediate attention</td></tr>
+<tr><td>OK</td><td>Normal</td></tr>
+<tr><td>Warning</td><td>A condition exists that requires attention</td></tr>
+</tbody></table>
+
+<h4>State:</h4>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Absent</td><td>This function or resource is not present or not detected</td></tr>
+<tr><td>Deferring</td><td>The element will not process any commands but will queue new requests.</td></tr>
+<tr><td>Disabled</td><td>This function or resource has been disabled</td></tr>
+<tr><td>Enabled</td><td>This function or resource has been enabled</td></tr>
+<tr><td>InTest</td><td>This function or resource is undergoing testing</td></tr>
+<tr><td>Quiesced</td><td>The element is enabled but only processes a restricted set of commands.</td></tr>
+<tr><td>StandbyOffline</td><td>This function or resource is enabled, but awaiting an external action to activate it</td></tr>
+<tr><td>StandbySpare</td><td>This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it.</td></tr>
+<tr><td>Starting</td><td>This function or resource is starting</td></tr>
+<tr><td>UnavailableOffline</td><td>This function or resource is present but cannot be used</td></tr>
+<tr><td>Updating</td><td>The element is updating and may be unavailable or degraded.</td></tr>
+</tbody></table>
+
+</div>
+<h2>Port 1.0.0</h2>
+<p>Port contains properties describing a port of a switch.</p>
+<table class="properties">
+<tbody>
+<tr><td><b>Actions</b> {</td><td>object</td><td>read-only</td><td>The available actions for this resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>#Port.Reset</b> {}</td><td>object</td><td>read-write</td><td>This action is used to reset this switch.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td></td></tr>
+<tr><td>}</td><td></td><td></td><td></td></tr>
+<tr><td><b>CurrentSpeedGbps</b></td><td>number, null<br>(Gbit/s)</td><td>read-only</td><td>The current speed of this port.</td></tr>
+<tr><td><b>Description</b></td><td>string, null</td><td>read-only</td><td>Provides a description of this resource and is used for commonality  in the schema definitions.</td></tr>
+<tr><td><b>Id</b></td><td>string</td><td>read-only</td><td>Uniquely identifies the resource within the collection of like resources.</td></tr>
+<tr><td><b>Links</b> {</td><td>object</td><td>read-only</td><td>Contains references to other resources that are related to this resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>AssociatedEndpoints</b> [ {} ]</td><td>array</td><td>read-only</td><td>An array of references to the endpoints that connect to the switch through this port.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>ConnectedSwitchPorts</b> [ {} ]</td><td>array</td><td>read-only</td><td>An array of references to the ports that connect to the switch through this port.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>ConnectedSwitches</b> [ {} ]</td><td>array</td><td>read-only</td><td>An array of references to the switches that connect to the switch through this port.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td>Oem extension object.</td></tr>
+<tr><td>}</td><td></td><td></td><td></td></tr>
+<tr><td><b>MaxSpeedGbps</b></td><td>number, null<br>(Gbit/s)</td><td>read-only</td><td>The maximum speed of this port as currently configured.</td></tr>
+<tr><td><b>Name</b></td><td>string</td><td>read-only</td><td>The name of the resource or array element.</td></tr>
+<tr><td><b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
+<tr><td><b>PortId</b></td><td>string, null</td><td>read-only</td><td>This is the label of this port on the physical switch package.</td></tr>
+<tr><td><b>PortProtocol</b></td><td>null</td><td>read-write</td><td>The protocol being sent over this port.</td></tr>
+<tr><td><b>PortType</b></td><td>string, null</td><td>read-write</td><td>This is the type of this port.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
+<tr><td><b>Status</b> {</td><td>object</td><td>read-only</td><td></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Health</b></td><td>string, null</td><td>read-write</td><td>This represents the health state of this resource in the absence of its dependent resources.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>HealthRollup</b></td><td>string, null</td><td>read-write</td><td>This represents the overall health state from the view of this resource.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>State</b></td><td>string, null</td><td>read-write</td><td>This indicates the known state of the resource, such as if it is enabled.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
+<tr><td>}</td><td></td><td></td><td></td></tr>
+<tr><td><b>Width</b></td><td>number, null</td><td>read-only</td><td>The number of lanes, phys, or other physical transport links that this port contains.</td></tr>
+</tbody></table>
+<div class="property-details">
+<h3>Property Details</h3>
+<h4>Health:</h4>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Critical</td><td>A critical condition exists that requires immediate attention</td></tr>
+<tr><td>OK</td><td>Normal</td></tr>
+<tr><td>Warning</td><td>A condition exists that requires attention</td></tr>
+</tbody></table>
+
+<h4>HealthRollup:</h4>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Critical</td><td>A critical condition exists that requires immediate attention</td></tr>
+<tr><td>OK</td><td>Normal</td></tr>
+<tr><td>Warning</td><td>A condition exists that requires attention</td></tr>
+</tbody></table>
+
+<h4>PortType:</h4>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>BidirectionalPort</td><td>This port connects to any type of device</td></tr>
+<tr><td>DownstreamPort</td><td>This port connects to a target device</td></tr>
+<tr><td>InterswitchPort</td><td>This port connects to another switch</td></tr>
+<tr><td>ManagementPort</td><td>This port connects to a switch manager</td></tr>
+<tr><td>UnconfiguredPort</td><td>This port has not yet been configured.</td></tr>
+<tr><td>UpstreamPort</td><td>This port connects to a host device</td></tr>
+</tbody></table>
+
+<h4>State:</h4>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Absent</td><td>This function or resource is not present or not detected</td></tr>
+<tr><td>Deferring</td><td>The element will not process any commands but will queue new requests.</td></tr>
+<tr><td>Disabled</td><td>This function or resource has been disabled</td></tr>
+<tr><td>Enabled</td><td>This function or resource has been enabled</td></tr>
+<tr><td>InTest</td><td>This function or resource is undergoing testing</td></tr>
+<tr><td>Quiesced</td><td>The element is enabled but only processes a restricted set of commands.</td></tr>
+<tr><td>StandbyOffline</td><td>This function or resource is enabled, but awaiting an external action to activate it</td></tr>
+<tr><td>StandbySpare</td><td>This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it.</td></tr>
+<tr><td>Starting</td><td>This function or resource is starting</td></tr>
+<tr><td>UnavailableOffline</td><td>This function or resource is present but cannot be used</td></tr>
+<tr><td>Updating</td><td>The element is updating and may be unavailable or degraded.</td></tr>
+</tbody></table>
+
+</div>
+<h2>Power 1.2.0</h2>
 <p>This is the schema definition for the Power Metrics.  It represents the properties for Power Consumption and Power Limiting.</p>
 <table class="properties">
 <tbody>
@@ -1904,21 +2664,22 @@ However, Redfish implementations and OS APIs MAY also output in uppercase and cl
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>MemberId</b></td><td>string</td><td>read-write</td><td>This is the identifier for the member within the collection.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Name</b></td><td>string, null</td><td>read-only</td><td>Power Control Function name.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>PowerAllocatedWatts</b></td><td>number, null</td><td>read-only</td><td>The total amount of power that has been allocated (or budegeted)to  chassis resources.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>PowerAvailableWatts</b></td><td>number, null</td><td>read-only</td><td>The amount of power not already budgeted and therefore available for additional allocation. (powerCapacity - powerAllocated).  This indicates how much reserve power capacity is left.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>PowerCapacityWatts</b></td><td>number, null</td><td>read-only</td><td>The total amount of power available to the chassis for allocation. This may the power supply capacity, or power budget assigned to the chassis from an up-stream chassis.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>PowerConsumedWatts</b></td><td>number, null</td><td>read-only</td><td>The actual power being consumed by the chassis.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>PowerAllocatedWatts</b></td><td>number, null<br>(W)</td><td>read-only</td><td>The total amount of power that has been allocated (or budegeted)to  chassis resources.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>PowerAvailableWatts</b></td><td>number, null<br>(W)</td><td>read-only</td><td>The amount of power not already budgeted and therefore available for additional allocation. (powerCapacity - powerAllocated).  This indicates how much reserve power capacity is left.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>PowerCapacityWatts</b></td><td>number, null<br>(W)</td><td>read-only</td><td>The total amount of power available to the chassis for allocation. This may the power supply capacity, or power budget assigned to the chassis from an up-stream chassis.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>PowerConsumedWatts</b></td><td>number, null<br>(W)</td><td>read-only</td><td>The actual power being consumed by the chassis.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>PowerLimit</b> {}</td><td>object</td><td>read-write</td><td>Power limit status and configuration information for this chassis</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>PowerMetrics</b> {}</td><td>object</td><td>read-write</td><td>Power readings for this chassis.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>PowerRequestedWatts</b></td><td>number, null</td><td>read-only</td><td>The potential power that the chassis resources are requesting which may be higher than the current level being consumed since requested power includes budget that the chassis resource wants for future use.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>PowerRequestedWatts</b></td><td>number, null<br>(W)</td><td>read-only</td><td>The potential power that the chassis resources are requesting which may be higher than the current level being consumed since requested power includes budget that the chassis resource wants for future use.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>RelatedItem</b> [ {} ]</td><td>array</td><td>read-write</td><td>The ID(s) of the resources associated with this Power Limit</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Status</b> {}</td><td>object</td><td>read-only</td><td></td></tr>
 <tr><td>} ]</td><td></td><td></td><td></td></tr>
 <tr><td><b>PowerSupplies</b> [ {</td><td>array</td><td>read-write</td><td>Details of the power supplies associated with this system or device</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>FirmwareVersion</b></td><td>string, null</td><td>read-only</td><td>The firmware version for this Power Supply</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>IndicatorLED</b></td><td>string, null</td><td>read-write</td><td>The state of the indicator LED, used to identify the power supply<br><i>See Property Details, below, for more information about this property.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>InputRanges</b> [ {} ]</td><td>array</td><td>read-only</td><td>This is the input ranges that the power supply can use.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>LastPowerOutputWatts</b></td><td>number, null</td><td>read-only</td><td>The average power output of this Power Supply</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>LineInputVoltage</b></td><td>number, null</td><td>read-only</td><td>The line input voltage at which the Power Supply is operating</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>LastPowerOutputWatts</b></td><td>number, null<br>(W)</td><td>read-only</td><td>The average power output of this Power Supply</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>LineInputVoltage</b></td><td>number, null<br>(V)</td><td>read-only</td><td>The line input voltage at which the Power Supply is operating</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>LineInputVoltageType</b></td><td>string, null</td><td>read-write</td><td>The line voltage type supported as an input to this Power Supply<br><i>See Property Details, below, for more information about this property.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Manufacturer</b></td><td>string, null</td><td>read-only</td><td>This is the manufacturer of this power supply.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>MemberId</b></td><td>string</td><td>read-write</td><td>This is the identifier for the member within the collection.</td></tr>
@@ -1926,7 +2687,7 @@ However, Redfish implementations and OS APIs MAY also output in uppercase and cl
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Name</b></td><td>string, null</td><td>read-only</td><td>The name of the Power Supply</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>PartNumber</b></td><td>string, null</td><td>read-only</td><td>The part number for this Power Supply</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>PowerCapacityWatts</b></td><td>number, null</td><td>read-only</td><td>The maximum capacity of this Power Supply</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>PowerCapacityWatts</b></td><td>number, null<br>(W)</td><td>read-only</td><td>The maximum capacity of this Power Supply</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>PowerSupplyType</b></td><td>string, null</td><td>read-write</td><td>The Power Supply type (AC or DC)<br><i>See Property Details, below, for more information about this property.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Redundancy</b> [ {} ]</td><td>array</td><td>read-only</td><td>This structure is used to show redundancy for power supplies.  The Component ids will reference the members of the redundancy groups.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>RelatedItem</b> [ {} ]</td><td>array</td><td>read-write</td><td>The ID(s) of the resources associated with this Power Limit</td></tr>
@@ -1939,26 +2700,37 @@ However, Redfish implementations and OS APIs MAY also output in uppercase and cl
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
 <tr><td>} ]</td><td></td><td></td><td></td></tr>
 <tr><td><b>Voltages</b> [ {</td><td>array</td><td>read-write</td><td>This is the definition for voltage sensors.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>LowerThresholdCritical</b></td><td>number, null</td><td>read-only</td><td>Below normal range but not yet fatal.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>LowerThresholdFatal</b></td><td>number, null</td><td>read-only</td><td>Below normal range and is fatal</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>LowerThresholdNonCritical</b></td><td>number, null</td><td>read-only</td><td>Below normal range</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>MaxReadingRange</b></td><td>number, null</td><td>read-only</td><td>Maximum value for CurrentReading</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>LowerThresholdCritical</b></td><td>number, null<br>(V)</td><td>read-only</td><td>Below normal range but not yet fatal.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>LowerThresholdFatal</b></td><td>number, null<br>(V)</td><td>read-only</td><td>Below normal range and is fatal</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>LowerThresholdNonCritical</b></td><td>number, null<br>(V)</td><td>read-only</td><td>Below normal range</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>MaxReadingRange</b></td><td>number, null<br>(V)</td><td>read-only</td><td>Maximum value for CurrentReading</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>MemberId</b></td><td>string</td><td>read-write</td><td>This is the identifier for the member within the collection.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>MinReadingRange</b></td><td>number, null</td><td>read-only</td><td>Minimum value for CurrentReading</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>MinReadingRange</b></td><td>number, null<br>(V)</td><td>read-only</td><td>Minimum value for CurrentReading</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Name</b></td><td>string, null</td><td>read-only</td><td>Voltage sensor name.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>PhysicalContext</b></td><td>string</td><td>read-write</td><td>Describes the area or device to which this voltage measurement applies.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>ReadingVolts</b></td><td>number, null</td><td>read-only</td><td>The current value of the voltage sensor.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>ReadingVolts</b></td><td>number, null<br>(V)</td><td>read-only</td><td>The current value of the voltage sensor.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>RelatedItem</b> [ {} ]</td><td>array</td><td>read-only</td><td>Describes the areas or devices to which this voltage measurement applies.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>SensorNumber</b></td><td>number, null</td><td>read-only</td><td>A numerical identifier to represent the voltage sensor</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Status</b> {}</td><td>object</td><td>read-only</td><td></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>UpperThresholdCritical</b></td><td>number, null</td><td>read-only</td><td>Above normal range but not yet fatal.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>UpperThresholdFatal</b></td><td>number, null</td><td>read-only</td><td>Above normal range and is fatal</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>UpperThresholdNonCritical</b></td><td>number, null</td><td>read-only</td><td>Above normal range</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>UpperThresholdCritical</b></td><td>number, null<br>(V)</td><td>read-only</td><td>Above normal range but not yet fatal.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>UpperThresholdFatal</b></td><td>number, null<br>(V)</td><td>read-only</td><td>Above normal range and is fatal</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>UpperThresholdNonCritical</b></td><td>number, null<br>(V)</td><td>read-only</td><td>Above normal range</td></tr>
 <tr><td>} ]</td><td></td><td></td><td></td></tr>
 </tbody></table>
 <div class="property-details">
 <h3>Property Details</h3>
+<h4>IndicatorLED:</h4>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Blinking</td><td>The Indicator LED is blinking.</td></tr>
+<tr><td>Lit</td><td>The Indicator LED is lit.</td></tr>
+<tr><td>Off</td><td>The Indicator LED is off.</td></tr>
+</tbody></table>
+
 <h4>LineInputVoltageType:</h4>
 <table class="enum enum-details">
 <thead>
@@ -2147,13 +2919,16 @@ However, Redfish implementations and OS APIs MAY also output in uppercase and cl
 </thead>
 <tbody>
 <tr><td>Absent</td><td>This function or resource is not present or not detected</td></tr>
+<tr><td>Deferring</td><td>The element will not process any commands but will queue new requests.</td></tr>
 <tr><td>Disabled</td><td>This function or resource has been disabled</td></tr>
 <tr><td>Enabled</td><td>This function or resource has been enabled</td></tr>
 <tr><td>InTest</td><td>This function or resource is undergoing testing</td></tr>
+<tr><td>Quiesced</td><td>The element is enabled but only processes a restricted set of commands.</td></tr>
 <tr><td>StandbyOffline</td><td>This function or resource is enabled, but awaiting an external action to activate it</td></tr>
 <tr><td>StandbySpare</td><td>This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it.</td></tr>
 <tr><td>Starting</td><td>This function or resource is starting</td></tr>
 <tr><td>UnavailableOffline</td><td>This function or resource is present but cannot be used</td></tr>
+<tr><td>Updating</td><td>The element is updating and may be unavailable or degraded.</td></tr>
 </tbody></table>
 
 <h4>Step:</h4>
@@ -2348,13 +3123,13 @@ foreach reg (cpuid.0.ebx, cpuid.0.edx, cpuid.0.ecx){ ##NB: order must be ebx, ed
 </tbody></table>
 
 </div>
-<h2>ServiceRoot 1.0.2</h2>
+<h2>ServiceRoot 1.1.0</h2>
 <p>This object represents the root Redfish service.</p>
 <table class="properties">
 <tbody>
 <tr><td><b>AccountService</b> {</td><td>object</td><td>read-write</td><td>This is a link to the Account Service.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>AccountLockoutCounterResetAfter</b></td><td>number</td><td>read-write</td><td>The interval of time in seconds since the last failed login attempt at which point the lockout threshold counter for the account is reset to zero. Must be less than or equal to AccountLockoutDuration</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>AccountLockoutDuration</b></td><td>number, null</td><td>read-write</td><td>The time in seconds an account is locked after the account lockout threshold is met. Must be &gt;= AccountLockoutResetAfter. If set to 0, no lockout will occur.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>AccountLockoutCounterResetAfter</b></td><td>number<br>(s)</td><td>read-write</td><td>The interval of time in seconds since the last failed login attempt at which point the lockout threshold counter for the account is reset to zero. Must be less than or equal to AccountLockoutDuration</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>AccountLockoutDuration</b></td><td>number, null<br>(s)</td><td>read-write</td><td>The time in seconds an account is locked after the account lockout threshold is met. Must be &gt;= AccountLockoutResetAfter. If set to 0, no lockout will occur.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>AccountLockoutThreshold</b></td><td>number, null</td><td>read-write</td><td>The number of failed login attempts before a user account is locked for a specified duration. (0=never locked)</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Accounts</b> {}</td><td>object</td><td>read-write</td><td>Link to a collection of Manager Accounts</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>AuthFailureLoggingThreshold</b></td><td>number</td><td>read-write</td><td>This is the number of authorization failures that need to occur before the failure attempt is logged to the manager log.</td></tr>
@@ -2378,7 +3153,7 @@ foreach reg (cpuid.0.ebx, cpuid.0.edx, cpuid.0.ecx){ ##NB: order must be ebx, ed
 <tr><td><b>EventService</b> {</td><td>object</td><td>read-write</td><td>This is a link to the EventService.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Actions</b> {}</td><td>object</td><td>read-only</td><td>The available actions for this resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>DeliveryRetryAttempts</b></td><td>number</td><td>read-only</td><td>This is the number of attempts an event posting is retried before the subscription is terminated.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>DeliveryRetryIntervalSeconds</b></td><td>number</td><td>read-only</td><td>This represents the number of seconds between retry attempts for sending any given Event</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>DeliveryRetryIntervalSeconds</b></td><td>number<br>(s)</td><td>read-only</td><td>This represents the number of seconds between retry attempts for sending any given Event</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Description</b></td><td>string, null</td><td>read-only</td><td>Provides a description of this resource and is used for commonality  in the schema definitions.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>EventTypesForSubscription</b> [ {} ]</td><td>array</td><td>read-only</td><td>This is the types of Events that can be subscribed to.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Id</b></td><td>string</td><td>read-only</td><td>Uniquely identifies the resource within the collection of like resources.</td></tr>
@@ -2387,6 +3162,12 @@ foreach reg (cpuid.0.ebx, cpuid.0.edx, cpuid.0.ecx){ ##NB: order must be ebx, ed
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>ServiceEnabled</b></td><td>boolean, null</td><td>read-write</td><td>This indicates whether this service is enabled.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Status</b> {}</td><td>object</td><td>read-only</td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Subscriptions</b> {}</td><td>object</td><td>read-write</td><td>This is a reference to a collection of Event Destination resources.</td></tr>
+<tr><td>}</td><td></td><td></td><td></td></tr>
+<tr><td><b>Fabrics</b> <i>(v1.1+)</i> {</td><td>object</td><td>read-write</td><td>A link to a collection of all fabric entities.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Description</b></td><td>string, null</td><td>read-only</td><td>Provides a description of this resource and is used for commonality  in the schema definitions.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Members</b> [ {} ]</td><td>array</td><td>read-only</td><td>Contains the members of this collection.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Name</b></td><td>string</td><td>read-only</td><td>The name of the resource or array element.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
 <tr><td>}</td><td></td><td></td><td></td></tr>
 <tr><td><b>Id</b></td><td>string</td><td>read-only</td><td>Uniquely identifies the resource within the collection of like resources.</td></tr>
 <tr><td><b>JsonSchemas</b> {</td><td>object</td><td>read-write</td><td>This is a link to a collection of Json-Schema files.</td></tr>
@@ -2415,15 +3196,18 @@ foreach reg (cpuid.0.ebx, cpuid.0.edx, cpuid.0.ecx){ ##NB: order must be ebx, ed
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
 <tr><td>}</td><td></td><td></td><td></td></tr>
 <tr><td><b>SessionService</b> {</td><td>object</td><td>read-write</td><td>This is a link to the Sessions Service.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Actions</b> {}</td><td>object</td><td>read-only</td><td>The Actions object contains the available custom actions on this resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Description</b></td><td>string, null</td><td>read-only</td><td>Provides a description of this resource and is used for commonality  in the schema definitions.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Id</b></td><td>string</td><td>read-only</td><td>Uniquely identifies the resource within the collection of like resources.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Name</b></td><td>string</td><td>read-only</td><td>The name of the resource or array element.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>ServiceEnabled</b></td><td>boolean, null</td><td>read-write</td><td>This indicates whether this service is enabled.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>SessionTimeout</b></td><td>number</td><td>read-write</td><td>This is the number of seconds of inactivity that a session may have before the session service closes the session due to inactivity.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>SessionTimeout</b></td><td>number<br>(s)</td><td>read-write</td><td>This is the number of seconds of inactivity that a session may have before the session service closes the session due to inactivity.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Sessions</b> {}</td><td>object</td><td>read-write</td><td>Link to a collection of Sessions</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Status</b> {}</td><td>object</td><td>read-only</td><td></td></tr>
 <tr><td>}</td><td></td><td></td><td></td></tr>
+<tr><td><b>StorageServices</b> <i>(v1.1+)</i></td><td></td><td>read-only</td><td>A link to a collection of all storage service entities.</td></tr>
+<tr><td><b>StorageSystems</b> <i>(v1.1+)</i></td><td></td><td>read-only</td><td>This is a link to a collection of storage systems.</td></tr>
 <tr><td><b>Systems</b> {</td><td>object</td><td>read-write</td><td>This is a link to a collection of Systems.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Description</b></td><td>string, null</td><td>read-only</td><td>Provides a description of this resource and is used for commonality  in the schema definitions.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Members</b> [ {} ]</td><td>array</td><td>read-only</td><td>Contains the members of this collection.</td></tr>
@@ -2443,6 +3227,17 @@ foreach reg (cpuid.0.ebx, cpuid.0.edx, cpuid.0.ecx){ ##NB: order must be ebx, ed
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Tasks</b> {}</td><td>object</td><td>read-write</td><td>References to the Tasks collection.</td></tr>
 <tr><td>}</td><td></td><td></td><td></td></tr>
 <tr><td><b>UUID</b></td><td>string, null</td><td>read-write</td><td>Unique identifier for a service instance. When SSDP is used, this value should be an exact match of the UUID value returned in a 200OK from an SSDP M-SEARCH request during discovery. </td></tr>
+<tr><td><b>UpdateService</b> <i>(v1.1+)</i> {</td><td>object</td><td>read-write</td><td>This is a link to the UpdateService.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Actions</b> {}</td><td>object</td><td>read-only</td><td>The Actions object contains the available custom actions on this resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Description</b></td><td>string, null</td><td>read-only</td><td>Provides a description of this resource and is used for commonality  in the schema definitions.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>FirmwareInventory</b> {}</td><td>object, null</td><td>read-write</td><td>An inventory of firmware.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Id</b></td><td>string</td><td>read-only</td><td>Uniquely identifies the resource within the collection of like resources.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Name</b></td><td>string</td><td>read-only</td><td>The name of the resource or array element.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>ServiceEnabled</b></td><td>boolean, null</td><td>read-write</td><td>This indicates whether this service is enabled.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>SoftwareInventory</b> {}</td><td>object, null</td><td>read-write</td><td>An inventory of software.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Status</b> {}</td><td>object, null</td><td>read-only</td><td></td></tr>
+<tr><td>}</td><td></td><td></td><td></td></tr>
 </tbody></table>
 <div class="property-details">
 <h3>Property Details</h3>
@@ -2468,16 +3263,19 @@ foreach reg (cpuid.0.ebx, cpuid.0.edx, cpuid.0.ecx){ ##NB: order must be ebx, ed
 <tr><td><b>Password</b></td><td>string, null</td><td>read-write</td><td>This property is used in a POST to specify a password when creating a new session.  This property is null on a GET.</td></tr>
 <tr><td><b>UserName</b></td><td>string, null</td><td>read-only</td><td>The UserName for the account for this session.</td></tr>
 </tbody></table>
-<h2>SessionService 1.0.2</h2>
+<h2>SessionService 1.1.0</h2>
 <p>This is the schema definition for the Session Service.  It represents the properties for the service itself and has links to the actual list of sessions.</p>
 <table class="properties">
 <tbody>
+<tr><td><b>Actions</b> <i>(v1.1+)</i> {</td><td>object</td><td>read-only</td><td>The Actions object contains the available custom actions on this resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object, null</td><td>read-write</td><td></td></tr>
+<tr><td>}</td><td></td><td></td><td></td></tr>
 <tr><td><b>Description</b></td><td>string, null</td><td>read-only</td><td>Provides a description of this resource and is used for commonality  in the schema definitions.</td></tr>
 <tr><td><b>Id</b></td><td>string</td><td>read-only</td><td>Uniquely identifies the resource within the collection of like resources.</td></tr>
 <tr><td><b>Name</b></td><td>string</td><td>read-only</td><td>The name of the resource or array element.</td></tr>
 <tr><td><b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
 <tr><td><b>ServiceEnabled</b></td><td>boolean, null</td><td>read-write</td><td>This indicates whether this service is enabled.</td></tr>
-<tr><td><b>SessionTimeout</b></td><td>number</td><td>read-write</td><td>This is the number of seconds of inactivity that a session may have before the session service closes the session due to inactivity.</td></tr>
+<tr><td><b>SessionTimeout</b></td><td>number<br>(s)</td><td>read-write</td><td>This is the number of seconds of inactivity that a session may have before the session service closes the session due to inactivity.</td></tr>
 <tr><td><b>Sessions</b> {</td><td>object</td><td>read-write</td><td>Link to a collection of Sessions</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Description</b></td><td>string, null</td><td>read-only</td><td>Provides a description of this resource and is used for commonality  in the schema definitions.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Members</b> [ {} ]</td><td>array</td><td>read-only</td><td>Contains the members of this collection.</td></tr>
@@ -2522,13 +3320,16 @@ foreach reg (cpuid.0.ebx, cpuid.0.edx, cpuid.0.ecx){ ##NB: order must be ebx, ed
 </thead>
 <tbody>
 <tr><td>Absent</td><td>This function or resource is not present or not detected</td></tr>
+<tr><td>Deferring</td><td>The element will not process any commands but will queue new requests.</td></tr>
 <tr><td>Disabled</td><td>This function or resource has been disabled</td></tr>
 <tr><td>Enabled</td><td>This function or resource has been enabled</td></tr>
 <tr><td>InTest</td><td>This function or resource is undergoing testing</td></tr>
+<tr><td>Quiesced</td><td>The element is enabled but only processes a restricted set of commands.</td></tr>
 <tr><td>StandbyOffline</td><td>This function or resource is enabled, but awaiting an external action to activate it</td></tr>
 <tr><td>StandbySpare</td><td>This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it.</td></tr>
 <tr><td>Starting</td><td>This function or resource is starting</td></tr>
 <tr><td>UnavailableOffline</td><td>This function or resource is present but cannot be used</td></tr>
+<tr><td>Updating</td><td>The element is updating and may be unavailable or degraded.</td></tr>
 </tbody></table>
 
 </div>
@@ -2538,7 +3339,7 @@ foreach reg (cpuid.0.ebx, cpuid.0.edx, cpuid.0.ecx){ ##NB: order must be ebx, ed
 <tbody>
 <tr><td><b>Description</b></td><td>string, null</td><td>read-only</td><td>Provides a description of this resource and is used for commonality  in the schema definitions.</td></tr>
 <tr><td><b>Devices</b> [ {</td><td>array</td><td>read-only</td><td>The storage devices associated with this resource</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>CapacityBytes</b></td><td>number, null</td><td>read-only</td><td>The size of the storage device.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>CapacityBytes</b></td><td>number, null<br>(By)</td><td>read-only</td><td>The size of the storage device.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Manufacturer</b></td><td>string, null</td><td>read-only</td><td>The name of the manufacturer of this device</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Model</b></td><td>string, null</td><td>read-only</td><td>The product model number of this device</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Name</b></td><td>string</td><td>read-only</td><td>The name of the resource or array element.</td></tr>
@@ -2587,17 +3388,84 @@ foreach reg (cpuid.0.ebx, cpuid.0.edx, cpuid.0.ecx){ ##NB: order must be ebx, ed
 </thead>
 <tbody>
 <tr><td>Absent</td><td>This function or resource is not present or not detected</td></tr>
+<tr><td>Deferring</td><td>The element will not process any commands but will queue new requests.</td></tr>
 <tr><td>Disabled</td><td>This function or resource has been disabled</td></tr>
 <tr><td>Enabled</td><td>This function or resource has been enabled</td></tr>
 <tr><td>InTest</td><td>This function or resource is undergoing testing</td></tr>
+<tr><td>Quiesced</td><td>The element is enabled but only processes a restricted set of commands.</td></tr>
 <tr><td>StandbyOffline</td><td>This function or resource is enabled, but awaiting an external action to activate it</td></tr>
 <tr><td>StandbySpare</td><td>This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it.</td></tr>
 <tr><td>Starting</td><td>This function or resource is starting</td></tr>
 <tr><td>UnavailableOffline</td><td>This function or resource is present but cannot be used</td></tr>
+<tr><td>Updating</td><td>The element is updating and may be unavailable or degraded.</td></tr>
 </tbody></table>
 
 </div>
-<h2>Storage 1.0.0</h2>
+<h2>SoftwareInventory 1.0.0</h2>
+<p>This schema defines an inventory of software components.</p>
+<table class="properties">
+<tbody>
+<tr><td><b>Actions</b> {</td><td>object</td><td>read-only</td><td>The Actions object contains the available custom actions on this resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td></td></tr>
+<tr><td>}</td><td></td><td></td><td></td></tr>
+<tr><td><b>Description</b></td><td>string, null</td><td>read-only</td><td>Provides a description of this resource and is used for commonality  in the schema definitions.</td></tr>
+<tr><td><b>Id</b></td><td>string</td><td>read-only</td><td>Uniquely identifies the resource within the collection of like resources.</td></tr>
+<tr><td><b>Name</b></td><td>string</td><td>read-only</td><td>The name of the resource or array element.</td></tr>
+<tr><td><b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
+<tr><td><b>Status</b> {</td><td>object, null</td><td>read-only</td><td></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Health</b></td><td>string, null</td><td>read-write</td><td>This represents the health state of this resource in the absence of its dependent resources.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>HealthRollup</b></td><td>string, null</td><td>read-write</td><td>This represents the overall health state from the view of this resource.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>State</b></td><td>string, null</td><td>read-write</td><td>This indicates the known state of the resource, such as if it is enabled.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
+<tr><td>}</td><td></td><td></td><td></td></tr>
+<tr><td><b>Updateable</b></td><td>boolean, null</td><td>read-only</td><td>Indicates whether this firmware can be updated by the update service.</td></tr>
+<tr><td><b>Version</b></td><td>string, null</td><td>read-only</td><td>A string representing the version of this firmware.</td></tr>
+</tbody></table>
+<div class="property-details">
+<h3>Property Details</h3>
+<h4>Health:</h4>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Critical</td><td>A critical condition exists that requires immediate attention</td></tr>
+<tr><td>OK</td><td>Normal</td></tr>
+<tr><td>Warning</td><td>A condition exists that requires attention</td></tr>
+</tbody></table>
+
+<h4>HealthRollup:</h4>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Critical</td><td>A critical condition exists that requires immediate attention</td></tr>
+<tr><td>OK</td><td>Normal</td></tr>
+<tr><td>Warning</td><td>A condition exists that requires attention</td></tr>
+</tbody></table>
+
+<h4>State:</h4>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Absent</td><td>This function or resource is not present or not detected</td></tr>
+<tr><td>Deferring</td><td>The element will not process any commands but will queue new requests.</td></tr>
+<tr><td>Disabled</td><td>This function or resource has been disabled</td></tr>
+<tr><td>Enabled</td><td>This function or resource has been enabled</td></tr>
+<tr><td>InTest</td><td>This function or resource is undergoing testing</td></tr>
+<tr><td>Quiesced</td><td>The element is enabled but only processes a restricted set of commands.</td></tr>
+<tr><td>StandbyOffline</td><td>This function or resource is enabled, but awaiting an external action to activate it</td></tr>
+<tr><td>StandbySpare</td><td>This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it.</td></tr>
+<tr><td>Starting</td><td>This function or resource is starting</td></tr>
+<tr><td>UnavailableOffline</td><td>This function or resource is present but cannot be used</td></tr>
+<tr><td>Updating</td><td>The element is updating and may be unavailable or degraded.</td></tr>
+</tbody></table>
+
+</div>
+<h2>Storage 1.0.1</h2>
 <p>This schema defines a storage subsystem and its respective properties.  A storage subsystem represents a set of storage controllers (physical or virtual) and the resources such as volumes that can be accessed from that subsystem.</p>
 <table class="properties">
 <tbody>
@@ -2609,9 +3477,9 @@ foreach reg (cpuid.0.ebx, cpuid.0.edx, cpuid.0.ecx){ ##NB: order must be ebx, ed
 <tr><td><b>Drives</b> [ {</td><td>array</td><td>read-only</td><td>The set of drives attached to the storage controllers represented by this resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Actions</b> {}</td><td>object</td><td>read-only</td><td>The available actions for this resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>AssetTag</b></td><td>string, null</td><td>read-write</td><td>The user assigned asset tag for this drive.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>BlockSizeBytes</b></td><td>number, null</td><td>read-only</td><td>The size of the smallest addressible unit (Block) of this drive in bytes</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>CapableSpeedGbs</b></td><td>number, null</td><td>read-only</td><td>The speed which this drive can communicate to a storage controller in ideal conditions in Gigabits per second</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>CapacityBytes</b></td><td>number, null</td><td>read-only</td><td>The size in bytes of this Drive</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>BlockSizeBytes</b></td><td>number, null<br>(By)</td><td>read-only</td><td>The size of the smallest addressible unit (Block) of this drive in bytes</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>CapableSpeedGbs</b></td><td>number, null<br>(Gbit/s)</td><td>read-only</td><td>The speed which this drive can communicate to a storage controller in ideal conditions in Gigabits per second</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>CapacityBytes</b></td><td>number, null<br>(By)</td><td>read-only</td><td>The size in bytes of this Drive</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Description</b></td><td>string, null</td><td>read-only</td><td>Provides a description of this resource and is used for commonality  in the schema definitions.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>EncryptionAbility</b></td><td>string, null</td><td>read-write</td><td>The encryption abilities of this drive<br><i>See Property Details, below, for more information about this property.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>EncryptionStatus</b></td><td>string, null</td><td>read-write</td><td>The status of the encrytion of this drive<br><i>See Property Details, below, for more information about this property.</i></td></tr>
@@ -2626,13 +3494,14 @@ foreach reg (cpuid.0.ebx, cpuid.0.edx, cpuid.0.ecx){ ##NB: order must be ebx, ed
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>MediaType</b></td><td>string, null</td><td>read-write</td><td>The type of media contained in this drive<br><i>See Property Details, below, for more information about this property.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Model</b></td><td>string, null</td><td>read-only</td><td>This is the model number for the drive.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Name</b></td><td>string</td><td>read-only</td><td>The name of the resource or array element.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>NegotiatedSpeedGbs</b></td><td>number, null</td><td>read-only</td><td>The speed which this drive is currently communicating to the storage controller in Gigabits per second</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>NegotiatedSpeedGbs</b></td><td>number, null<br>(Gbit/s)</td><td>read-only</td><td>The speed which this drive is currently communicating to the storage controller in Gigabits per second</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Operations</b> [ {} ]</td><td>array</td><td>read-only</td><td>The operations currently running on the Drive</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>PartNumber</b></td><td>string, null</td><td>read-only</td><td>The part number for this drive.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>PredictedMediaLifeLeftPercent</b></td><td>number, null</td><td>read-only</td><td>The percentage of reads and writes that are predicted to still be available for the media</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Protocol</b></td><td>null</td><td>read-write</td><td>The protocol this drive is using to communicate to the storage controller</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Revision</b></td><td>string, null</td><td>read-only</td><td>The revision of this Drive</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>RotationSpeedRPM</b></td><td>number, null</td><td>read-only</td><td>The rotation speed of this Drive in Revolutions per Minute (RPM)</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>RotationSpeedRPM</b></td><td>number, null<br>(RPM)</td><td>read-only</td><td>The rotation speed of this Drive in Revolutions per Minute (RPM)</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>SKU</b></td><td>string, null</td><td>read-only</td><td>This is the SKU for this drive.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>SerialNumber</b></td><td>string, null</td><td>read-only</td><td>The serial number for this drive.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Status</b> {}</td><td>object</td><td>read-only</td><td></td></tr>
@@ -2655,24 +3524,28 @@ foreach reg (cpuid.0.ebx, cpuid.0.edx, cpuid.0.ecx){ ##NB: order must be ebx, ed
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>State</b></td><td>string, null</td><td>read-write</td><td>This indicates the known state of the resource, such as if it is enabled.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
 <tr><td>}</td><td></td><td></td><td></td></tr>
-<tr><td><b>StorageControllers</b> [ {} ]</td><td>array</td><td>read-only</td><td>The set of storage controllers represented by this resource.</td></tr>
-<tr><td><b>Volumes</b> [ {</td><td>array</td><td>read-only</td><td>The set of volumes produced by the storage controllers represented by this resource.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Actions</b> {}</td><td>object</td><td>read-only</td><td>The available actions for this resource.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>BlockSizeBytes</b></td><td>number, null</td><td>read-only</td><td>The size of the smallest addressible unit (Block) of this volume in bytes</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>CapacityBytes</b></td><td>number, null</td><td>read-only</td><td>The size in bytes of this Volume</td></tr>
+<tr><td><b>StorageControllers</b> [ {</td><td>array</td><td>read-only</td><td>The set of storage controllers represented by this resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>AssetTag</b></td><td>string, null</td><td>read-write</td><td>The user assigned asset tag for this storage controller.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>FirmwareVersion</b></td><td>string, null</td><td>read-only</td><td>The firmware version of this storage Controller</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Identifiers</b> [ {} ]</td><td>array</td><td>read-only</td><td>The Durable names for the storage controller</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Manufacturer</b></td><td>string, null</td><td>read-only</td><td>This is the manufacturer of this storage controller.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>MemberId</b></td><td>string</td><td>read-write</td><td>This is the identifier for the member within the collection.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Model</b></td><td>string, null</td><td>read-only</td><td>This is the model number for the storage controller.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>PartNumber</b></td><td>string, null</td><td>read-only</td><td>The part number for this storage controller.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>SKU</b></td><td>string, null</td><td>read-only</td><td>This is the SKU for this storage controller.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>SerialNumber</b></td><td>string, null</td><td>read-only</td><td>The serial number for this storage controller.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>SpeedGbps</b></td><td>number, null<br>(Gbit/s)</td><td>read-only</td><td>The speed of the storage controller interface.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Status</b> {}</td><td>object</td><td>read-only</td><td></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>SupportedControllerProtocols</b> [ {} ]</td><td>array</td><td>read-only</td><td>This represents the protocols by which this storage controller can be communicated to.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>SupportedDeviceProtocols</b> [ {} ]</td><td>array</td><td>read-only</td><td>This represents the protocols which the storage controller can use to communicate with attached devices.</td></tr>
+<tr><td>} ]</td><td></td><td></td><td></td></tr>
+<tr><td><b>Volumes</b> {</td><td>object</td><td>read-write</td><td>The set of volumes produced by the storage controllers represented by this resource.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Description</b></td><td>string, null</td><td>read-only</td><td>Provides a description of this resource and is used for commonality  in the schema definitions.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Encrypted</b></td><td>boolean, null</td><td>read-write</td><td>Is this Volume encrypted</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>EncryptionTypes</b> [ {} ]</td><td>array</td><td>read-write</td><td>The types of encryption used by this Volume</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Id</b></td><td>string</td><td>read-only</td><td>Uniquely identifies the resource within the collection of like resources.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Identifiers</b> [ {} ]</td><td>array</td><td>read-only</td><td>The Durable names for the volume</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Links</b> {}</td><td>object</td><td>read-only</td><td>Contains references to other resources that are related to this resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Members</b> [ {} ]</td><td>array</td><td>read-only</td><td>Contains the members of this collection.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Name</b></td><td>string</td><td>read-only</td><td>The name of the resource or array element.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Operations</b> [ {} ]</td><td>array</td><td>read-only</td><td>The operations currently running on the Volume</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>OptimumIOSizeBytes</b></td><td>number, null</td><td>read-only</td><td>The size in bytes of this Volume's optimum IO size.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Status</b> {}</td><td>object</td><td>read-only</td><td></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>VolumeType</b></td><td>string, null</td><td>read-write</td><td>Is this drive currently predicting a failure in the near future<br><i>See Property Details, below, for more information about this property.</i></td></tr>
-<tr><td>} ]</td><td></td><td></td><td></td></tr>
+<tr><td>}</td><td></td><td></td><td></td></tr>
 </tbody></table>
 <div class="property-details">
 <h3>Property Details</h3>
@@ -2695,7 +3568,8 @@ foreach reg (cpuid.0.ebx, cpuid.0.edx, cpuid.0.ecx){ ##NB: order must be ebx, ed
 <tbody>
 <tr><td>Foreign</td><td>The drive is currently encrypted, the data is not accessible to the user, and the system requires user intervention to expose the data</td></tr>
 <tr><td>Locked</td><td>The drive is currently encrypted and the data is not accessible to the user, however the system has the ability to unlock the drive automatically</td></tr>
-<tr><td>Unecrypted</td><td>The drive is not currently encrypted</td></tr>
+<tr><td>Unecrypted</td><td>The drive is not currently encrypted. Deprecated: Use Unencrypted</td></tr>
+<tr><td>Unencrypted</td><td>The drive is not currently encrypted</td></tr>
 <tr><td>Unlocked</td><td>The drive is currently encrypted but the data is accessible to the user unencrypted</td></tr>
 </tbody></table>
 
@@ -2762,13 +3636,16 @@ foreach reg (cpuid.0.ebx, cpuid.0.edx, cpuid.0.ecx){ ##NB: order must be ebx, ed
 </thead>
 <tbody>
 <tr><td>Absent</td><td>This function or resource is not present or not detected</td></tr>
+<tr><td>Deferring</td><td>The element will not process any commands but will queue new requests.</td></tr>
 <tr><td>Disabled</td><td>This function or resource has been disabled</td></tr>
 <tr><td>Enabled</td><td>This function or resource has been enabled</td></tr>
 <tr><td>InTest</td><td>This function or resource is undergoing testing</td></tr>
+<tr><td>Quiesced</td><td>The element is enabled but only processes a restricted set of commands.</td></tr>
 <tr><td>StandbyOffline</td><td>This function or resource is enabled, but awaiting an external action to activate it</td></tr>
 <tr><td>StandbySpare</td><td>This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it.</td></tr>
 <tr><td>Starting</td><td>This function or resource is starting</td></tr>
 <tr><td>UnavailableOffline</td><td>This function or resource is present but cannot be used</td></tr>
+<tr><td>Updating</td><td>The element is updating and may be unavailable or degraded.</td></tr>
 </tbody></table>
 
 <h4>StatusIndicator:</h4>
@@ -2786,18 +3663,123 @@ foreach reg (cpuid.0.ebx, cpuid.0.edx, cpuid.0.ecx){ ##NB: order must be ebx, ed
 <tr><td>Rebuild</td><td>The drive is being rebuilt.</td></tr>
 </tbody></table>
 
-<h4>VolumeType:</h4>
+</div>
+<h2>Switch 1.0.0</h2>
+<p>Switch contains properties describing a simple fabric switch.</p>
+<table class="properties">
+<tbody>
+<tr><td><b>Actions</b> {</td><td>object</td><td>read-only</td><td>The available actions for this resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>#Switch.Reset</b> {}</td><td>object</td><td>read-write</td><td>This action is used to reset this switch.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td></td></tr>
+<tr><td>}</td><td></td><td></td><td></td></tr>
+<tr><td><b>AssetTag</b></td><td>string, null</td><td>read-write</td><td>The user assigned asset tag for this switch.</td></tr>
+<tr><td><b>Description</b></td><td>string, null</td><td>read-only</td><td>Provides a description of this resource and is used for commonality  in the schema definitions.</td></tr>
+<tr><td><b>DomainID</b></td><td>number, null</td><td>read-only</td><td>The Domain ID for this switch.</td></tr>
+<tr><td><b>Id</b></td><td>string</td><td>read-only</td><td>Uniquely identifies the resource within the collection of like resources.</td></tr>
+<tr><td><b>IndicatorLED</b></td><td>string, null</td><td>read-write</td><td>The state of the indicator LED, used to identify the switch.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
+<tr><td><b>IsManaged</b></td><td>boolean, null</td><td>read-write</td><td>This indicates whether the switch is in a managed or unmanaged state.</td></tr>
+<tr><td><b>Links</b> {</td><td>object</td><td>read-only</td><td>Contains references to other resources that are related to this resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Chassis</b> {}</td><td>object</td><td>read-write</td><td>A reference to the chassis which contains this switch.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>ManagedBy</b> [ {} ]</td><td>array</td><td>read-only</td><td>An array of references to the managers that manage this switch.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td>Oem extension object.</td></tr>
+<tr><td>}</td><td></td><td></td><td></td></tr>
+<tr><td><b>LogServices</b> {</td><td>object, null</td><td>read-write</td><td>A reference to the collection of Log Services associated with this system</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Description</b></td><td>string, null</td><td>read-only</td><td>Provides a description of this resource and is used for commonality  in the schema definitions.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Members</b> [ {} ]</td><td>array</td><td>read-only</td><td>Contains the members of this collection.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Name</b></td><td>string</td><td>read-only</td><td>The name of the resource or array element.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
+<tr><td>}</td><td></td><td></td><td></td></tr>
+<tr><td><b>Manufacturer</b></td><td>string, null</td><td>read-only</td><td>This is the manufacturer of this switch.</td></tr>
+<tr><td><b>Model</b></td><td>string, null</td><td>read-only</td><td>The product model number of this switch.</td></tr>
+<tr><td><b>Name</b></td><td>string</td><td>read-only</td><td>The name of the resource or array element.</td></tr>
+<tr><td><b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
+<tr><td><b>PartNumber</b></td><td>string, null</td><td>read-only</td><td>The part number for this switch.</td></tr>
+<tr><td><b>Ports</b> {</td><td>object</td><td>read-write</td><td>A collection of references to the ports for this switch.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Description</b></td><td>string, null</td><td>read-only</td><td>Provides a description of this resource and is used for commonality  in the schema definitions.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Members</b> [ {} ]</td><td>array</td><td>read-only</td><td>Contains the members of this collection.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Name</b></td><td>string</td><td>read-only</td><td>The name of the resource or array element.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
+<tr><td>}</td><td></td><td></td><td></td></tr>
+<tr><td><b>PowerState</b></td><td>string, null</td><td>read-write</td><td>This is the current power state of the switch.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
+<tr><td><b>Redundancy</b> [ {</td><td>array</td><td>read-only</td><td>Redundancy information for the switches</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>MemberId</b></td><td>string</td><td>read-write</td><td>This is the identifier for the member within the collection.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
+<tr><td>} ]</td><td></td><td></td><td></td></tr>
+<tr><td><b>SKU</b></td><td>string, null</td><td>read-only</td><td>This is the SKU for this switch.</td></tr>
+<tr><td><b>SerialNumber</b></td><td>string, null</td><td>read-only</td><td>The serial number for this switch.</td></tr>
+<tr><td><b>Status</b> {</td><td>object</td><td>read-only</td><td></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Health</b></td><td>string, null</td><td>read-write</td><td>This represents the health state of this resource in the absence of its dependent resources.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>HealthRollup</b></td><td>string, null</td><td>read-write</td><td>This represents the overall health state from the view of this resource.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>State</b></td><td>string, null</td><td>read-write</td><td>This indicates the known state of the resource, such as if it is enabled.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
+<tr><td>}</td><td></td><td></td><td></td></tr>
+<tr><td><b>SwitchType</b></td><td>null</td><td>read-write</td><td>The protocol being sent over this switch.</td></tr>
+<tr><td><b>TotalSwitchWidth</b></td><td>number, null</td><td>read-only</td><td>The total number of lanes, phys, or other physical transport links that this switch contains.</td></tr>
+</tbody></table>
+<div class="property-details">
+<h3>Property Details</h3>
+<h4>Health:</h4>
 <table class="enum enum-details">
 <thead>
 <tr><th>string</th><th>Description</th></tr>
 </thead>
 <tbody>
-<tr><td>Mirrored</td><td>The volume is a mirrored device</td></tr>
-<tr><td>NonRedundant</td><td>The volume is a non-redundant storage device</td></tr>
-<tr><td>RawDevice</td><td>The volume is a raw physical device without any RAID or other virtualization applied</td></tr>
-<tr><td>SpannedMirrors</td><td>The volume is a spanned set of mirrored devices</td></tr>
-<tr><td>SpannedStripesWithParity</td><td>The volume is a spanned set of devices which uses parity to retain redundant information</td></tr>
-<tr><td>StripedWithParity</td><td>The volume is a device which uses parity to retain redundant information</td></tr>
+<tr><td>Critical</td><td>A critical condition exists that requires immediate attention</td></tr>
+<tr><td>OK</td><td>Normal</td></tr>
+<tr><td>Warning</td><td>A condition exists that requires attention</td></tr>
+</tbody></table>
+
+<h4>HealthRollup:</h4>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Critical</td><td>A critical condition exists that requires immediate attention</td></tr>
+<tr><td>OK</td><td>Normal</td></tr>
+<tr><td>Warning</td><td>A condition exists that requires attention</td></tr>
+</tbody></table>
+
+<h4>IndicatorLED:</h4>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Blinking</td><td>The Indicator LED is blinking.</td></tr>
+<tr><td>Lit</td><td>The Indicator LED is lit.</td></tr>
+<tr><td>Off</td><td>The Indicator LED is off.</td></tr>
+</tbody></table>
+
+<h4>PowerState:</h4>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Off</td><td>The state is powered Off.</td></tr>
+<tr><td>On</td><td>The state is powered On.</td></tr>
+<tr><td>PoweringOff</td><td>A temporary state between On and Off.</td></tr>
+<tr><td>PoweringOn</td><td>A temporary state between Off and On.</td></tr>
+</tbody></table>
+
+<h4>State:</h4>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Absent</td><td>This function or resource is not present or not detected</td></tr>
+<tr><td>Deferring</td><td>The element will not process any commands but will queue new requests.</td></tr>
+<tr><td>Disabled</td><td>This function or resource has been disabled</td></tr>
+<tr><td>Enabled</td><td>This function or resource has been enabled</td></tr>
+<tr><td>InTest</td><td>This function or resource is undergoing testing</td></tr>
+<tr><td>Quiesced</td><td>The element is enabled but only processes a restricted set of commands.</td></tr>
+<tr><td>StandbyOffline</td><td>This function or resource is enabled, but awaiting an external action to activate it</td></tr>
+<tr><td>StandbySpare</td><td>This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it.</td></tr>
+<tr><td>Starting</td><td>This function or resource is starting</td></tr>
+<tr><td>UnavailableOffline</td><td>This function or resource is present but cannot be used</td></tr>
+<tr><td>Updating</td><td>The element is updating and may be unavailable or degraded.</td></tr>
 </tbody></table>
 
 </div>
@@ -2914,13 +3896,16 @@ foreach reg (cpuid.0.ebx, cpuid.0.edx, cpuid.0.ecx){ ##NB: order must be ebx, ed
 </thead>
 <tbody>
 <tr><td>Absent</td><td>This function or resource is not present or not detected</td></tr>
+<tr><td>Deferring</td><td>The element will not process any commands but will queue new requests.</td></tr>
 <tr><td>Disabled</td><td>This function or resource has been disabled</td></tr>
 <tr><td>Enabled</td><td>This function or resource has been enabled</td></tr>
 <tr><td>InTest</td><td>This function or resource is undergoing testing</td></tr>
+<tr><td>Quiesced</td><td>The element is enabled but only processes a restricted set of commands.</td></tr>
 <tr><td>StandbyOffline</td><td>This function or resource is enabled, but awaiting an external action to activate it</td></tr>
 <tr><td>StandbySpare</td><td>This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it.</td></tr>
 <tr><td>Starting</td><td>This function or resource is starting</td></tr>
 <tr><td>UnavailableOffline</td><td>This function or resource is present but cannot be used</td></tr>
+<tr><td>Updating</td><td>The element is updating and may be unavailable or degraded.</td></tr>
 </tbody></table>
 
 </div>
@@ -2963,22 +3948,22 @@ foreach reg (cpuid.0.ebx, cpuid.0.edx, cpuid.0.ecx){ ##NB: order must be ebx, ed
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>State</b></td><td>string, null</td><td>read-write</td><td>This indicates the known state of the resource, such as if it is enabled.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
 <tr><td>}</td><td></td><td></td><td></td></tr>
 <tr><td><b>Temperatures</b> [ {</td><td>array</td><td>read-write</td><td>This is the definition for temperature sensors.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>LowerThresholdCritical</b></td><td>number, null</td><td>read-only</td><td>Below normal range but not yet fatal.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>LowerThresholdFatal</b></td><td>number, null</td><td>read-only</td><td>Below normal range and is fatal</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>LowerThresholdNonCritical</b></td><td>number, null</td><td>read-only</td><td>Below normal range</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>MaxReadingRangeTemp</b></td><td>number, null</td><td>read-only</td><td>Maximum value for ReadingCelsius</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>LowerThresholdCritical</b></td><td>number, null<br>(Cel)</td><td>read-only</td><td>Below normal range but not yet fatal.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>LowerThresholdFatal</b></td><td>number, null<br>(Cel)</td><td>read-only</td><td>Below normal range and is fatal</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>LowerThresholdNonCritical</b></td><td>number, null<br>(Cel)</td><td>read-only</td><td>Below normal range</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>MaxReadingRangeTemp</b></td><td>number, null<br>(Cel)</td><td>read-only</td><td>Maximum value for ReadingCelsius</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>MemberId</b></td><td>string</td><td>read-write</td><td>This is the identifier for the member within the collection.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>MinReadingRangeTemp</b></td><td>number, null</td><td>read-only</td><td>Minimum value for ReadingCelsius</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>MinReadingRangeTemp</b></td><td>number, null<br>(Cel)</td><td>read-only</td><td>Minimum value for ReadingCelsius</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Name</b></td><td>string, null</td><td>read-only</td><td>Temperature sensor name.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>PhysicalContext</b></td><td>string</td><td>read-write</td><td>Describes the area or device to which this temperature measurement applies.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>ReadingCelsius</b></td><td>number, null</td><td>read-only</td><td>Temperature</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>ReadingCelsius</b></td><td>number, null<br>(Cel)</td><td>read-only</td><td>Temperature</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>RelatedItem</b> [ {} ]</td><td>array</td><td>read-only</td><td>Describes the areas or devices to which this temperature measurement applies.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>SensorNumber</b></td><td>number, null</td><td>read-only</td><td>A numerical identifier to represent the temperature sensor</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Status</b> {}</td><td>object</td><td>read-only</td><td></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>UpperThresholdCritical</b></td><td>number, null</td><td>read-only</td><td>Above normal range but not yet fatal.</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>UpperThresholdFatal</b></td><td>number, null</td><td>read-only</td><td>Above normal range and is fatal</td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>UpperThresholdNonCritical</b></td><td>number, null</td><td>read-only</td><td>Above normal range</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>UpperThresholdCritical</b></td><td>number, null<br>(Cel)</td><td>read-only</td><td>Above normal range but not yet fatal.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>UpperThresholdFatal</b></td><td>number, null<br>(Cel)</td><td>read-only</td><td>Above normal range and is fatal</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>UpperThresholdNonCritical</b></td><td>number, null<br>(Cel)</td><td>read-only</td><td>Above normal range</td></tr>
 <tr><td>} ]</td><td></td><td></td><td></td></tr>
 </tbody></table>
 <div class="property-details">
@@ -3050,13 +4035,92 @@ foreach reg (cpuid.0.ebx, cpuid.0.edx, cpuid.0.ecx){ ##NB: order must be ebx, ed
 </thead>
 <tbody>
 <tr><td>Absent</td><td>This function or resource is not present or not detected</td></tr>
+<tr><td>Deferring</td><td>The element will not process any commands but will queue new requests.</td></tr>
 <tr><td>Disabled</td><td>This function or resource has been disabled</td></tr>
 <tr><td>Enabled</td><td>This function or resource has been enabled</td></tr>
 <tr><td>InTest</td><td>This function or resource is undergoing testing</td></tr>
+<tr><td>Quiesced</td><td>The element is enabled but only processes a restricted set of commands.</td></tr>
 <tr><td>StandbyOffline</td><td>This function or resource is enabled, but awaiting an external action to activate it</td></tr>
 <tr><td>StandbySpare</td><td>This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it.</td></tr>
 <tr><td>Starting</td><td>This function or resource is starting</td></tr>
 <tr><td>UnavailableOffline</td><td>This function or resource is present but cannot be used</td></tr>
+<tr><td>Updating</td><td>The element is updating and may be unavailable or degraded.</td></tr>
+</tbody></table>
+
+</div>
+<h2>UpdateService 1.0.0</h2>
+<p>This is the schema definition for the Update Service. It represents the properties for the service itself and has links to collections of firmware and software inventory.</p>
+<table class="properties">
+<tbody>
+<tr><td><b>Actions</b> {</td><td>object</td><td>read-only</td><td>The Actions object contains the available custom actions on this resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>#UpdateService.SimpleUpdate</b> {}</td><td>object</td><td>read-write</td><td>This action is used to update software components.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td></td></tr>
+<tr><td>}</td><td></td><td></td><td></td></tr>
+<tr><td><b>Description</b></td><td>string, null</td><td>read-only</td><td>Provides a description of this resource and is used for commonality  in the schema definitions.</td></tr>
+<tr><td><b>FirmwareInventory</b> {</td><td>object, null</td><td>read-write</td><td>An inventory of firmware.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Description</b></td><td>string, null</td><td>read-only</td><td>Provides a description of this resource and is used for commonality  in the schema definitions.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Members</b> [ {} ]</td><td>array</td><td>read-only</td><td>Contains the members of this collection.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Name</b></td><td>string</td><td>read-only</td><td>The name of the resource or array element.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
+<tr><td>}</td><td></td><td></td><td></td></tr>
+<tr><td><b>Id</b></td><td>string</td><td>read-only</td><td>Uniquely identifies the resource within the collection of like resources.</td></tr>
+<tr><td><b>Name</b></td><td>string</td><td>read-only</td><td>The name of the resource or array element.</td></tr>
+<tr><td><b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
+<tr><td><b>ServiceEnabled</b></td><td>boolean, null</td><td>read-write</td><td>This indicates whether this service is enabled.</td></tr>
+<tr><td><b>SoftwareInventory</b> {</td><td>object, null</td><td>read-write</td><td>An inventory of software.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Description</b></td><td>string, null</td><td>read-only</td><td>Provides a description of this resource and is used for commonality  in the schema definitions.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Members</b> [ {} ]</td><td>array</td><td>read-only</td><td>Contains the members of this collection.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Name</b></td><td>string</td><td>read-only</td><td>The name of the resource or array element.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
+<tr><td>}</td><td></td><td></td><td></td></tr>
+<tr><td><b>Status</b> {</td><td>object, null</td><td>read-only</td><td></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Health</b></td><td>string, null</td><td>read-write</td><td>This represents the health state of this resource in the absence of its dependent resources.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>HealthRollup</b></td><td>string, null</td><td>read-write</td><td>This represents the overall health state from the view of this resource.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>State</b></td><td>string, null</td><td>read-write</td><td>This indicates the known state of the resource, such as if it is enabled.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
+<tr><td>}</td><td></td><td></td><td></td></tr>
+</tbody></table>
+<div class="property-details">
+<h3>Property Details</h3>
+<h4>Health:</h4>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Critical</td><td>A critical condition exists that requires immediate attention</td></tr>
+<tr><td>OK</td><td>Normal</td></tr>
+<tr><td>Warning</td><td>A condition exists that requires attention</td></tr>
+</tbody></table>
+
+<h4>HealthRollup:</h4>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Critical</td><td>A critical condition exists that requires immediate attention</td></tr>
+<tr><td>OK</td><td>Normal</td></tr>
+<tr><td>Warning</td><td>A condition exists that requires attention</td></tr>
+</tbody></table>
+
+<h4>State:</h4>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Absent</td><td>This function or resource is not present or not detected</td></tr>
+<tr><td>Deferring</td><td>The element will not process any commands but will queue new requests.</td></tr>
+<tr><td>Disabled</td><td>This function or resource has been disabled</td></tr>
+<tr><td>Enabled</td><td>This function or resource has been enabled</td></tr>
+<tr><td>InTest</td><td>This function or resource is undergoing testing</td></tr>
+<tr><td>Quiesced</td><td>The element is enabled but only processes a restricted set of commands.</td></tr>
+<tr><td>StandbyOffline</td><td>This function or resource is enabled, but awaiting an external action to activate it</td></tr>
+<tr><td>StandbySpare</td><td>This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it.</td></tr>
+<tr><td>Starting</td><td>This function or resource is starting</td></tr>
+<tr><td>UnavailableOffline</td><td>This function or resource is present but cannot be used</td></tr>
+<tr><td>Updating</td><td>The element is updating and may be unavailable or degraded.</td></tr>
 </tbody></table>
 
 </div>
@@ -3101,7 +4165,7 @@ foreach reg (cpuid.0.ebx, cpuid.0.edx, cpuid.0.ecx){ ##NB: order must be ebx, ed
 </tbody></table>
 
 </div>
-<h2>Volume 1.0.0</h2>
+<h2>Volume 1.0.1</h2>
 <p>Volume contains properties used to describe a volume, virtual disk, LUN, or other logical storage entity for any system.</p>
 <table class="properties">
 <tbody>
@@ -3109,8 +4173,8 @@ foreach reg (cpuid.0.ebx, cpuid.0.edx, cpuid.0.ecx){ ##NB: order must be ebx, ed
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>#Volume.Initialize</b> {}</td><td>object</td><td>read-write</td><td>This action is used to prepare the contents of the volume for use by the system.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td></td></tr>
 <tr><td>}</td><td></td><td></td><td></td></tr>
-<tr><td><b>BlockSizeBytes</b></td><td>number, null</td><td>read-only</td><td>The size of the smallest addressible unit (Block) of this volume in bytes</td></tr>
-<tr><td><b>CapacityBytes</b></td><td>number, null</td><td>read-only</td><td>The size in bytes of this Volume</td></tr>
+<tr><td><b>BlockSizeBytes</b></td><td>number, null<br>(By)</td><td>read-only</td><td>The size of the smallest addressible unit (Block) of this volume in bytes</td></tr>
+<tr><td><b>CapacityBytes</b></td><td>number, null<br>(By)</td><td>read-only</td><td>The size in bytes of this Volume</td></tr>
 <tr><td><b>Description</b></td><td>string, null</td><td>read-only</td><td>Provides a description of this resource and is used for commonality  in the schema definitions.</td></tr>
 <tr><td><b>Encrypted</b></td><td>boolean, null</td><td>read-write</td><td>Is this Volume encrypted</td></tr>
 <tr><td><b>EncryptionTypes</b> [ {} ]</td><td>array</td><td>read-write</td><td>The types of encryption used by this Volume</td></tr>
@@ -3130,14 +4194,14 @@ foreach reg (cpuid.0.ebx, cpuid.0.edx, cpuid.0.ecx){ ##NB: order must be ebx, ed
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>OperationName</b></td><td>string, null</td><td>read-only</td><td>The name of the operation.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>PercentageComplete</b></td><td>number, null</td><td>read-only</td><td>The percentage of the operation that has been completed.</td></tr>
 <tr><td>} ]</td><td></td><td></td><td></td></tr>
-<tr><td><b>OptimumIOSizeBytes</b></td><td>number, null</td><td>read-only</td><td>The size in bytes of this Volume's optimum IO size.</td></tr>
+<tr><td><b>OptimumIOSizeBytes</b></td><td>number, null<br>(By)</td><td>read-only</td><td>The size in bytes of this Volume's optimum IO size.</td></tr>
 <tr><td><b>Status</b> {</td><td>object</td><td>read-only</td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Health</b></td><td>string, null</td><td>read-write</td><td>This represents the health state of this resource in the absence of its dependent resources.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>HealthRollup</b></td><td>string, null</td><td>read-write</td><td>This represents the overall health state from the view of this resource.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>State</b></td><td>string, null</td><td>read-write</td><td>This indicates the known state of the resource, such as if it is enabled.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
 <tr><td>}</td><td></td><td></td><td></td></tr>
-<tr><td><b>VolumeType</b></td><td>string, null</td><td>read-write</td><td>Is this drive currently predicting a failure in the near future<br><i>See Property Details, below, for more information about this property.</i></td></tr>
+<tr><td><b>VolumeType</b></td><td>string, null</td><td>read-write</td><td>The type of this volume<br><i>See Property Details, below, for more information about this property.</i></td></tr>
 </tbody></table>
 <div class="property-details">
 <h3>Property Details</h3>
@@ -3183,13 +4247,16 @@ foreach reg (cpuid.0.ebx, cpuid.0.edx, cpuid.0.ecx){ ##NB: order must be ebx, ed
 </thead>
 <tbody>
 <tr><td>Absent</td><td>This function or resource is not present or not detected</td></tr>
+<tr><td>Deferring</td><td>The element will not process any commands but will queue new requests.</td></tr>
 <tr><td>Disabled</td><td>This function or resource has been disabled</td></tr>
 <tr><td>Enabled</td><td>This function or resource has been enabled</td></tr>
 <tr><td>InTest</td><td>This function or resource is undergoing testing</td></tr>
+<tr><td>Quiesced</td><td>The element is enabled but only processes a restricted set of commands.</td></tr>
 <tr><td>StandbyOffline</td><td>This function or resource is enabled, but awaiting an external action to activate it</td></tr>
 <tr><td>StandbySpare</td><td>This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it.</td></tr>
 <tr><td>Starting</td><td>This function or resource is starting</td></tr>
 <tr><td>UnavailableOffline</td><td>This function or resource is present but cannot be used</td></tr>
+<tr><td>Updating</td><td>The element is updating and may be unavailable or degraded.</td></tr>
 </tbody></table>
 
 <h4>VolumeType:</h4>
@@ -3204,6 +4271,70 @@ foreach reg (cpuid.0.ebx, cpuid.0.edx, cpuid.0.ecx){ ##NB: order must be ebx, ed
 <tr><td>SpannedMirrors</td><td>The volume is a spanned set of mirrored devices</td></tr>
 <tr><td>SpannedStripesWithParity</td><td>The volume is a spanned set of devices which uses parity to retain redundant information</td></tr>
 <tr><td>StripedWithParity</td><td>The volume is a device which uses parity to retain redundant information</td></tr>
+</tbody></table>
+
+</div>
+<h2>Zone 1.0.0</h2>
+<p>Switch contains properties describing a simple fabric zone.</p>
+<table class="properties">
+<tbody>
+<tr><td><b>Description</b></td><td>string, null</td><td>read-only</td><td>Provides a description of this resource and is used for commonality  in the schema definitions.</td></tr>
+<tr><td><b>Id</b></td><td>string</td><td>read-only</td><td>Uniquely identifies the resource within the collection of like resources.</td></tr>
+<tr><td><b>Links</b> {</td><td>object</td><td>read-only</td><td>Contains references to other resources that are related to this resource.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Endpoints</b> [ {} ]</td><td>array</td><td>read-only</td><td>An array of references to the endpoints that are contained in this zone.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>InvolvedSwitches</b> [ {} ]</td><td>array</td><td>read-only</td><td>An array of references to the switchs that are utilized in this zone.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td>Oem extension object.</td></tr>
+<tr><td>}</td><td></td><td></td><td></td></tr>
+<tr><td><b>Name</b></td><td>string</td><td>read-only</td><td>The name of the resource or array element.</td></tr>
+<tr><td><b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
+<tr><td><b>Status</b> {</td><td>object</td><td>read-only</td><td></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Health</b></td><td>string, null</td><td>read-write</td><td>This represents the health state of this resource in the absence of its dependent resources.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>HealthRollup</b></td><td>string, null</td><td>read-write</td><td>This represents the overall health state from the view of this resource.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Oem</b> {}</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>State</b></td><td>string, null</td><td>read-write</td><td>This indicates the known state of the resource, such as if it is enabled.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
+<tr><td>}</td><td></td><td></td><td></td></tr>
+</tbody></table>
+<div class="property-details">
+<h3>Property Details</h3>
+<h4>Health:</h4>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Critical</td><td>A critical condition exists that requires immediate attention</td></tr>
+<tr><td>OK</td><td>Normal</td></tr>
+<tr><td>Warning</td><td>A condition exists that requires attention</td></tr>
+</tbody></table>
+
+<h4>HealthRollup:</h4>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Critical</td><td>A critical condition exists that requires immediate attention</td></tr>
+<tr><td>OK</td><td>Normal</td></tr>
+<tr><td>Warning</td><td>A condition exists that requires attention</td></tr>
+</tbody></table>
+
+<h4>State:</h4>
+<table class="enum enum-details">
+<thead>
+<tr><th>string</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td>Absent</td><td>This function or resource is not present or not detected</td></tr>
+<tr><td>Deferring</td><td>The element will not process any commands but will queue new requests.</td></tr>
+<tr><td>Disabled</td><td>This function or resource has been disabled</td></tr>
+<tr><td>Enabled</td><td>This function or resource has been enabled</td></tr>
+<tr><td>InTest</td><td>This function or resource is undergoing testing</td></tr>
+<tr><td>Quiesced</td><td>The element is enabled but only processes a restricted set of commands.</td></tr>
+<tr><td>StandbyOffline</td><td>This function or resource is enabled, but awaiting an external action to activate it</td></tr>
+<tr><td>StandbySpare</td><td>This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it.</td></tr>
+<tr><td>Starting</td><td>This function or resource is starting</td></tr>
+<tr><td>UnavailableOffline</td><td>This function or resource is present but cannot be used</td></tr>
+<tr><td>Updating</td><td>The element is updating and may be unavailable or degraded.</td></tr>
 </tbody></table>
 
 </div><p>This is the text that goes at the end of the file...</p>
