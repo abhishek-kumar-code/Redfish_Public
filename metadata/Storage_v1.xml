@@ -52,28 +52,23 @@
       <EntityType Name="Storage" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="Storage defines a storage subsystem and its respective properties.  A storage subsystem represents a set of storage controllers (physical or virtual) and the resources such as volumes that can be accessed from that subsystem."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent resources that represent a storage subsystem in the Redfish specification."/>
+        <Annotation Term="Capabilities.InsertRestrictions">
+          <Record>
+            <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.UpdateRestrictions">
+          <Record>
+            <PropertyValue Property="Updatable" Bool="true"/>
+            <Annotation Term="OData.Description" String="Storage can be updated to change AssetTag and other writable properties."/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.DeleteRestrictions">
+          <Record>
+            <PropertyValue Property="Deletable" Bool="false"/>
+          </Record>
+        </Annotation>
       </EntityType>
-
-      <EntityContainer Name="StorageContainer">
-        <EntitySet Name="StorageSet" EntityType="Storage.Storage">
-          <Annotation Term="Capabilities.InsertRestrictions">
-            <Record>
-              <PropertyValue Property="Insertable" Bool="false"/>
-            </Record>
-          </Annotation>
-          <Annotation Term="Capabilities.UpdateRestrictions">
-            <Record>
-              <PropertyValue Property="Updatable" Bool="true"/>
-              <Annotation Term="OData.Description" String="Storage can be updated to change AssetTag and other writable properties."/>
-            </Record>
-          </Annotation>
-          <Annotation Term="Capabilities.DeleteRestrictions">
-            <Record>
-              <PropertyValue Property="Deletable" Bool="false"/>
-            </Record>
-          </Annotation>
-        </EntitySet>
-      </EntityContainer>
 
       <Action Name="SetEncryptionKey" IsBound="true">
         <Parameter Name="Storage" Type="Storage.v1_0_0.Actions"/>

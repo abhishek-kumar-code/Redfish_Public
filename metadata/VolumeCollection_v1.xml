@@ -30,33 +30,28 @@
 
       <EntityType Name="VolumeCollection" BaseType="Resource.v1_0_0.ResourceCollection">
         <Annotation Term="OData.Description" String="A Collection of Storage resource instances."/>
+        <Annotation Term="Capabilities.InsertRestrictions">
+          <Record>
+            <PropertyValue Property="Insertable" Bool="true"/>
+            <Annotation Term="OData.Description" String="Volumes can be created by POSTing to the Volume Collection."/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.UpdateRestrictions">
+          <Record>
+            <PropertyValue Property="Updatable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.DeleteRestrictions">
+          <Record>
+            <PropertyValue Property="Deletable" Bool="false"/>
+          </Record>
+        </Annotation>
         <NavigationProperty Name="Members" Type="Collection(Volume.Volume)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the members of this collection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </EntityType>
-
-      <EntityContainer Name="VolumeCollectionContainer">
-        <EntitySet Name="VolumeCollectionSet" EntityType="VolumeCollection.VolumeCollection">
-          <Annotation Term="Capabilities.InsertRestrictions">
-            <Record>
-              <PropertyValue Property="Insertable" Bool="true"/>
-              <Annotation Term="OData.Description" String="Volumes can be created by POSTing to the Volume Collection."/>
-            </Record>
-          </Annotation>
-          <Annotation Term="Capabilities.UpdateRestrictions">
-            <Record>
-              <PropertyValue Property="Updatable" Bool="false"/>
-            </Record>
-          </Annotation>
-          <Annotation Term="Capabilities.DeleteRestrictions">
-            <Record>
-              <PropertyValue Property="Deletable" Bool="false"/>
-            </Record>
-          </Annotation>
-        </EntitySet>
-      </EntityContainer>
 
     </Schema>
   </edmx:DataServices>

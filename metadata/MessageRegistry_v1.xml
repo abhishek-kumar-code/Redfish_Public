@@ -33,27 +33,22 @@
       <EntityType Name="MessageRegistry" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="This is the schema definition for all Message Registries.  It represents the properties for the registries themselves.  The MessageId is formed per the Redfish specification.  It consists of the RegistryPrefix concatenated with the version concatenated with the unique identifier for the message registry entry."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a message registry for a Redfish implementation."/>
+        <Annotation Term="Capabilities.InsertRestrictions">
+          <Record>
+            <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.UpdateRestrictions">
+          <Record>
+            <PropertyValue Property="Updatable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.DeleteRestrictions">
+          <Record>
+            <PropertyValue Property="Deletable" Bool="false"/>
+          </Record>
+        </Annotation>
       </EntityType>
-
-      <EntityContainer Name="MessageRegistryContainer">
-        <EntitySet Name="MessageRegistrySet" EntityType="MessageRegistry.MessageRegistry">
-          <Annotation Term="Capabilities.InsertRestrictions">
-            <Record>
-              <PropertyValue Property="Insertable" Bool="false"/>
-            </Record>
-          </Annotation>
-          <Annotation Term="Capabilities.UpdateRestrictions">
-            <Record>
-              <PropertyValue Property="Updatable" Bool="false"/>
-            </Record>
-          </Annotation>
-          <Annotation Term="Capabilities.DeleteRestrictions">
-            <Record>
-              <PropertyValue Property="Deletable" Bool="false"/>
-            </Record>
-          </Annotation>
-        </EntitySet>
-      </EntityContainer>
 
     </Schema>
 

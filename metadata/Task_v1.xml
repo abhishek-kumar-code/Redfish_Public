@@ -35,28 +35,23 @@
       <EntityType Name="Task" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="This resource contains information about a specific Task scheduled by or being executed by a Redfish service's Task Service."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a task for a Redfish implementation."/>
+        <Annotation Term="Capabilities.InsertRestrictions">
+          <Record>
+            <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.UpdateRestrictions">
+          <Record>
+            <PropertyValue Property="Updatable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.DeleteRestrictions">
+          <Record>
+            <PropertyValue Property="Deletable" Bool="true"/>
+            <Annotation Term="OData.Description" String="Tasks can be removed with a Delete operation."/>
+          </Record>
+        </Annotation>
       </EntityType>
-
-      <EntityContainer Name="TaskContainer">
-        <EntitySet Name="TaskSet" EntityType="Task.Task">
-          <Annotation Term="Capabilities.InsertRestrictions">
-            <Record>
-              <PropertyValue Property="Insertable" Bool="false"/>
-            </Record>
-          </Annotation>
-          <Annotation Term="Capabilities.UpdateRestrictions">
-            <Record>
-              <PropertyValue Property="Updatable" Bool="false"/>
-            </Record>
-          </Annotation>
-          <Annotation Term="Capabilities.DeleteRestrictions">
-            <Record>
-              <PropertyValue Property="Deletable" Bool="true"/>
-              <Annotation Term="OData.Description" String="Tasks can be removed with a Delete operation."/>
-            </Record>
-          </Annotation>
-        </EntitySet>
-      </EntityContainer>
 
     </Schema>
 

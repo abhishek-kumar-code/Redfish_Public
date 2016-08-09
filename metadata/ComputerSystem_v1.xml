@@ -85,28 +85,23 @@
       <EntityType Name="ComputerSystem" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="A Computer System represents a general purpose machine or system (as opposed to an appliance) instance and the software-visible resources (items within the data plane) such as memory, CPU and other devices that can be accessed from that machine.  Details of those resources or subsystems are also linked through this resource."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent resources that represent a computing system (as opposed to an appliance) in the Redfish specification."/>
+        <Annotation Term="Capabilities.InsertRestrictions">
+          <Record>
+            <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.UpdateRestrictions">
+          <Record>
+            <PropertyValue Property="Updatable" Bool="true"/>
+            <Annotation Term="OData.Description" String="A Computer System can be updated to change properties such as the AssetTag, IndicatorLED and some Boot parameters."/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.DeleteRestrictions">
+          <Record>
+            <PropertyValue Property="Deletable" Bool="false"/>
+          </Record>
+        </Annotation>
       </EntityType>
-
-      <EntityContainer Name="ComputerSystemContainer">
-        <EntitySet Name="ComputerSystemSet" EntityType="ComputerSystem.ComputerSystem">
-          <Annotation Term="Capabilities.InsertRestrictions">
-            <Record>
-              <PropertyValue Property="Insertable" Bool="false"/>
-            </Record>
-          </Annotation>
-          <Annotation Term="Capabilities.UpdateRestrictions">
-            <Record>
-              <PropertyValue Property="Updatable" Bool="true"/>
-              <Annotation Term="OData.Description" String="A Computer System can be updated to change properties such as the AssetTag, IndicatorLED and some Boot parameters."/>
-            </Record>
-          </Annotation>
-          <Annotation Term="Capabilities.DeleteRestrictions">
-            <Record>
-              <PropertyValue Property="Deletable" Bool="false"/>
-            </Record>
-          </Annotation>
-        </EntitySet>
-      </EntityContainer>
 
       <Action Name="Reset" IsBound="true">
         <Parameter Name="ComputerSystem" Type="ComputerSystem.v1_0_0.Actions"/>
