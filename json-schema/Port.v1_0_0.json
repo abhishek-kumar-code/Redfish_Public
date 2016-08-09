@@ -1,9 +1,9 @@
 {
     "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
-    "title": "#Volume.v1_0_0.Volume",
-    "$ref": "#/definitions/Volume",
+    "title": "#Port.v1_0_0.Port",
+    "$ref": "#/definitions/Port",
     "definitions": {
-        "Initialize": {
+        "Reset": {
             "patternProperties": {
                 "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
                     "type": [
@@ -30,63 +30,10 @@
                     "description": "Link to invoke action"
                 }
             },
-            "description": "This action is used to prepare the contents of the volume for use by the system.",
+            "description": "This action is used to reset this switch.",
             "longDescription": "This defines the name of the custom action supported on this resource."
         },
-        "EncryptionTypes": {
-            "type": "string",
-            "enum": [
-                "NativeDriveEncryption",
-                "ControllerAssisted",
-                "SoftwareAssisted"
-            ],
-            "enumDescriptions": {
-                "NativeDriveEncryption": "The volume is utilizing the native drive encryption capabilities of the drive hardware",
-                "ControllerAssisted": "The volume is being encrypted by the storage controller entity",
-                "SoftwareAssisted": "The volume is being encrypted by software running on the system or the operating system"
-            }
-        },
-        "Operations": {
-            "type": "object",
-            "patternProperties": {
-                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
-                    "type": [
-                        "array",
-                        "boolean",
-                        "number",
-                        "null",
-                        "object",
-                        "string"
-                    ],
-                    "description": "This property shall specify a valid odata or Redfish property."
-                }
-            },
-            "additionalProperties": true,
-            "properties": {
-                "OperationName": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "readonly": true,
-                    "description": "The name of the operation."
-                },
-                "PercentageComplete": {
-                    "type": [
-                        "number",
-                        "null"
-                    ],
-                    "readonly": true,
-                    "description": "The percentage of the operation that has been completed."
-                },
-                "AssociatedTask": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Task.json#/definitions/Task",
-                    "readonly": true,
-                    "description": "A reference to the task associated with the operation if any."
-                }
-            }
-        },
-        "Volume": {
+        "Port": {
             "type": "object",
             "patternProperties": {
                 "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
@@ -132,78 +79,60 @@
                 "Status": {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
                 },
-                "CapacityBytes": {
+                "PortId": {
                     "type": [
-                        "number",
+                        "string",
                         "null"
                     ],
-                    "units": "By",
                     "readonly": true,
-                    "description": "The size in bytes of this Volume",
-                    "longDescription": "This property shall contain the size in bytes of the associated volume."
+                    "description": "This is the label of this port on the physical switch package.",
+                    "longDescription": "The value of this property shall be the name of the switch port as indicated on the outside of the switch."
                 },
-                "VolumeType": {
+                "PortProtocol": {
                     "anyOf": [
-                        {"$ref": "#/definitions/VolumeType"},
+                        {"$ref": "http://redfish.dmtf.org/schemas/v1/Storage.v1_0_0.json#/definitions/Protocol"},
+                        {"type": "null"}
+                    ],
+                    "description": "The protocol being sent over this port.",
+                    "longDescription": "The value of this property shall contain the protocol being sent over this port."
+                },
+                "PortType": {
+                    "anyOf": [
+                        {"$ref": "#/definitions/PortType"},
                         {"type": "null"}
                     ],
                     "readonly": true,
-                    "description": "The type of this volume",
-                    "longDescription": "This property shall contain the type of the associated Volume."
+                    "description": "This is the type of this port.",
+                    "longDescription": "The value of this property shall be the port type for this port."
                 },
-                "Encrypted": {
-                    "type": [
-                        "boolean",
-                        "null"
-                    ],
-                    "description": "Is this Volume encrypted",
-                    "longDescription": "This property shall contain a boolean indicator if the Volume is currently utilizing encryption or not."
-                },
-                "EncryptionTypes": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/EncryptionTypes"
-                    },
-                    "description": "The types of encryption used by this Volume",
-                    "longDescription": "This property shall contain the types of encryption used by this Volume."
-                },
-                "Identifiers": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.v1_1_0.json#/definitions/Identifier"
-                    },
-                    "readonly": true,
-                    "description": "The Durable names for the volume",
-                    "longDescription": "This property shall contain a list of all known durable names for the associated volume."
-                },
-                "BlockSizeBytes": {
+                "CurrentSpeedGbps": {
                     "type": [
                         "number",
                         "null"
                     ],
-                    "units": "By",
+                    "units": "Gbit/s",
                     "readonly": true,
-                    "description": "The size of the smallest addressible unit (Block) of this volume in bytes",
-                    "longDescription": "This property shall contain size of the smallest addressible unit of the associated volume."
+                    "description": "The current speed of this port.",
+                    "longDescription": "The value of this property shall be the speed of this port currently negotiated and running."
                 },
-                "Operations": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/Operations"
-                    },
-                    "readonly": true,
-                    "description": "The operations currently running on the Volume",
-                    "longDescription": "This property shall contain a list of all currently running on the Volume."
-                },
-                "OptimumIOSizeBytes": {
+                "MaxSpeedGbps": {
                     "type": [
                         "number",
                         "null"
                     ],
-                    "units": "By",
+                    "units": "Gbit/s",
                     "readonly": true,
-                    "description": "The size in bytes of this Volume's optimum IO size.",
-                    "longDescription": "This property shall contain the optimum IO size to use when performing IO on this volume. For logical disks, this is the stripe size. For physical disks, this describes the physical sector size."
+                    "description": "The maximum speed of this port as currently configured.",
+                    "longDescription": "The value of this property shall be the maximum speed of which this port is capable of being configured.  If capable of auto-negotiation, the system shall attempt to negotiate at the maximum speed set."
+                },
+                "Width": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The number of lanes, phys, or other physical transport links that this port contains.",
+                    "longDescription": "The value of this property shall be the number of physical transport links that this port contains."
                 },
                 "Links": {
                     "type": "object",
@@ -227,21 +156,53 @@
                             "description": "Oem extension object.",
                             "longDescription": "This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
                         },
-                        "Drives@odata.count": {
+                        "AssociatedEndpoints@odata.count": {
                             "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
                         },
-                        "Drives@odata.navigationLink": {
+                        "AssociatedEndpoints@odata.navigationLink": {
                             "type": "string",
                             "format": "uri"
                         },
-                        "Drives": {
+                        "AssociatedEndpoints": {
                             "type": "array",
                             "items": {
-                                "$ref": "http://redfish.dmtf.org/schemas/v1/Drive.json#/definitions/Drive"
+                                "$ref": "http://redfish.dmtf.org/schemas/v1/Endpoint.json#/definitions/Endpoint"
                             },
                             "readonly": true,
-                            "description": "An array of references to the drives which contain this volume. This will reference Drives that either wholly or only partly contain this volume.",
-                            "longDescription": "The value of this property shall be a reference to the resources that this volume is associated with and shall reference resources of type Drive. This property shall only contain references to Drive entities which are currently members of the Volume, not hot spare Drives which are not currently a member of the volume."
+                            "description": "An array of references to the endpoints that connect to the switch through this port.",
+                            "longDescription": "The value of this property shall be a reference to the resources that this port is associated with and shall reference a resource of type Endpoint."
+                        },
+                        "ConnectedSwitches@odata.count": {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
+                        },
+                        "ConnectedSwitches@odata.navigationLink": {
+                            "type": "string",
+                            "format": "uri"
+                        },
+                        "ConnectedSwitches": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "http://redfish.dmtf.org/schemas/v1/Switch.json#/definitions/Switch"
+                            },
+                            "readonly": true,
+                            "description": "An array of references to the switches that connect to the switch through this port.",
+                            "longDescription": "The value of this property shall be a reference to the resources that this port is associated with and shall reference a resource of type Switch."
+                        },
+                        "ConnectedSwitchPorts@odata.count": {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
+                        },
+                        "ConnectedSwitchPorts@odata.navigationLink": {
+                            "type": "string",
+                            "format": "uri"
+                        },
+                        "ConnectedSwitchPorts": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "http://redfish.dmtf.org/schemas/v1/Port.json#/definitions/Port"
+                            },
+                            "readonly": true,
+                            "description": "An array of references to the ports that connect to the switch through this port.",
+                            "longDescription": "The value of this property shall be a reference to the resources that this port is associated with and shall reference a resource of type Port."
                         }
                     },
                     "readonly": true,
@@ -283,8 +244,8 @@
                             "additionalProperties": true,
                             "properties": {}
                         },
-                        "#Volume.Initialize": {
-                            "$ref": "#/definitions/Initialize"
+                        "#Port.Reset": {
+                            "$ref": "#/definitions/Reset"
                         }
                     },
                     "readonly": true,
@@ -296,26 +257,26 @@
                 "Id",
                 "Name"
             ],
-            "description": "Volume contains properties used to describe a volume, virtual disk, LUN, or other logical storage entity for any system.",
-            "longDescription": "This resource shall be used to represent a volume, virtual disk, logical disk, LUN, or other logical storage for a Redfish implementation."
+            "description": "Port contains properties describing a port of a switch.",
+            "longDescription": "This resource shall be used to represent a simple switch port for a Redfish implementation."
         },
-        "VolumeType": {
+        "PortType": {
             "type": "string",
             "enum": [
-                "RawDevice",
-                "NonRedundant",
-                "Mirrored",
-                "StripedWithParity",
-                "SpannedMirrors",
-                "SpannedStripesWithParity"
+                "UpstreamPort",
+                "DownstreamPort",
+                "InterswitchPort",
+                "ManagementPort",
+                "BidirectionalPort",
+                "UnconfiguredPort"
             ],
             "enumDescriptions": {
-                "RawDevice": "The volume is a raw physical device without any RAID or other virtualization applied",
-                "NonRedundant": "The volume is a non-redundant storage device",
-                "Mirrored": "The volume is a mirrored device",
-                "StripedWithParity": "The volume is a device which uses parity to retain redundant information",
-                "SpannedMirrors": "The volume is a spanned set of mirrored devices",
-                "SpannedStripesWithParity": "The volume is a spanned set of devices which uses parity to retain redundant information"
+                "UpstreamPort": "This port connects to a host device",
+                "DownstreamPort": "This port connects to a target device",
+                "InterswitchPort": "This port connects to another switch",
+                "ManagementPort": "This port connects to a switch manager",
+                "BidirectionalPort": "This port connects to any type of device",
+                "UnconfiguredPort": "This port has not yet been configured."
             }
         }
     },

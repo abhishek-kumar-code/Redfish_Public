@@ -51,6 +51,9 @@
                 },
                 {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Volume.v1_0_0.json#/definitions/Volume"
+                },
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Volume.v1_0_1.json#/definitions/Volume"
                 }
             ]
         }
