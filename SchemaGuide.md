@@ -1,5 +1,5 @@
 ---
-title: Redfish Schema
+title: 
 
 language tabs:
   - shell
@@ -7,17 +7,17 @@ language tabs:
 search: true
 ---
 
-# Introduction
-
 
 <p align="center">
   <img src="http://redfish.dmtf.org/sites/all/themes/dmtf2015/images/dmtf-redfish-logo.png" alt="DMTF Redfish" width=180>
 </p>
 
-Introduction to Redfish goes here. 
- - Purpose of the document
- - Structure and usage
- - Other sources of information
+# Redfish Schema Guide 
+
+ -  Introduction to Redfish goes here. 
+ -  Purpose of the document
+ -  Structure and usage
+ -  Other sources of information
  
 
 
@@ -44,6 +44,8 @@ Initially we tried only to reference the ServiceRoot metadata in the root $metad
 
 ## Status
 
+# Redfish Schema Details
+
 
 
 # AccountService 1.0.2
@@ -52,8 +54,8 @@ Account Service contains properties common to all user accounts, such as passwor
 
 |     |     |     |
 | --- | --- | --- |
-| **AccountLockoutCounterResetAfter** | number<br><br>*read-write* | The interval of time in seconds since the last failed login attempt at which point the lockout threshold counter for the account is reset to zero. Must be less than or equal to AccountLockoutDuration |
-| **AccountLockoutDuration** | number, null<br><br>*read-write* | The time in seconds an account is locked after the account lockout threshold is met. Must be >= AccountLockoutResetAfter. If set to 0, no lockout will occur. |
+| **AccountLockoutCounterResetAfter** | number<br>(s)<br><br>*read-write* | The interval of time in seconds since the last failed login attempt at which point the lockout threshold counter for the account is reset to zero. Must be less than or equal to AccountLockoutDuration |
+| **AccountLockoutDuration** | number, null<br>(s)<br><br>*read-write* | The time in seconds an account is locked after the account lockout threshold is met. Must be >= AccountLockoutResetAfter. If set to 0, no lockout will occur. |
 | **AccountLockoutThreshold** | number, null<br><br>*read-write* | The number of failed login attempts before a user account is locked for a specified duration. (0=never locked) |
 | **Accounts** { | object<br><br>*read-write* | Link to a collection of Manager Accounts |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Description** | string, null<br><br>*read-only* | Provides a description of this resource and is used for commonality  in the schema definitions. |
@@ -105,13 +107,49 @@ Account Service contains properties common to all user accounts, such as passwor
 | string | Description |
 | --- | --- |
 | Absent | This function or resource is not present or not detected |
+| Deferring | The element will not process any commands but will queue new requests. |
 | Disabled | This function or resource has been disabled |
 | Enabled | This function or resource has been enabled |
 | InTest | This function or resource is undergoing testing |
+| Quiesced | The element is enabled but only processes a restricted set of commands. |
 | StandbyOffline | This function or resource is enabled, but awaiting an external action to activate it |
 | StandbySpare | This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it. |
 | Starting | This function or resource is starting |
 | UnavailableOffline | This function or resource is present but cannot be used |
+| Updating | The element is updating and may be unavailable or degraded. |
+
+
+# ActionInfo 1.0.0
+
+ActionInfo describes the parameters and other information necessary to perform a Redfish Action to a particular Action target.  As parameter support may differ between implementations and even among instances of a resource, this data can be used to ensure Action requests from applications contain supported parameters.
+
+|     |     |     |
+| --- | --- | --- |
+| **Description** | string, null<br><br>*read-only* | Provides a description of this resource and is used for commonality  in the schema definitions. |
+| **Id** | string<br><br>*read-only* | Uniquely identifies the resource within the collection of like resources. |
+| **Name** | string<br><br>*read-only* | The name of the resource or array element. |
+| **Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
+| **Parameters** [ { | array<br><br>*read-only* | The parameters associated with the specified Redfish Action |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**AllowableValues** [ {} ] | array<br><br>*read-only* | A list of values for this parameter supported by this Action target |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**DataType** | string, null<br><br>*read-write* | The JSON property type used for this parameter *See Property Details, below, for more information about this property.* |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Name** | string<br><br>*read-only* | The name of the parameter for this Action. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**ObjectDataType** | string, null<br><br>*read-only* | The OData Type of an object-based parameter |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Required** | boolean<br><br>*read-only* | Indicates whether the parameter is required to perform this Action. |
+| } ] |   |   |
+
+## Property Details
+
+### DataType:
+
+| string | Description |
+| --- | --- |
+| Boolean | A boolean (true or false) |
+| Number | A number |
+| NumberArray | An array of numbers |
+| Object | An embedded JSON object |
+| ObjectArray | An array of JSON objects |
+| String | A string |
+| StringArray | An array of strings |
 
 
 # AttributeRegistry 1.0.0
@@ -155,7 +193,7 @@ Bios contains properties surrounding a BIOS Attribute Registry (where the system
 | **Name** | string<br><br>*read-only* | The name of the resource or array element. |
 | **Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
 
-# Chassis 1.2.0
+# Chassis 1.3.0
 
 A Chassis represents the physical components for any system.  This resource represents the sheet-metal confined spaces and logical zones like racks, enclosures, chassis and all other containers. Subsystems (like sensors), which operate outside of a system's data plane (meaning the resources are not accessible to software running on the system) are linked either directly or indirectly through this resource.
 
@@ -246,6 +284,7 @@ A Chassis represents the physical components for any system.  This resource repr
 | Drawer | An enclosed or semi-enclosed, typically horizontally-oriented, system chassis which may be slid into a multi-system chassis. |
 | Enclosure | A generic term for a chassis that does not fit any other description |
 | Expansion | A chassis which expands the capabilities or capacity of another chassis |
+| IPBasedDrive | A chassis in a drive form factor with IP-based network connections. |
 | Module | A small, typically removable, chassis or card which contains devices for a particular subsystem or function |
 | Other | A chassis that does not fit any of these definitions |
 | Pod | A collection of equipment racks in a large, likely transportable, container |
@@ -312,16 +351,19 @@ A Chassis represents the physical components for any system.  This resource repr
 | string | Description |
 | --- | --- |
 | Absent | This function or resource is not present or not detected |
+| Deferring | The element will not process any commands but will queue new requests. |
 | Disabled | This function or resource has been disabled |
 | Enabled | This function or resource has been enabled |
 | InTest | This function or resource is undergoing testing |
+| Quiesced | The element is enabled but only processes a restricted set of commands. |
 | StandbyOffline | This function or resource is enabled, but awaiting an external action to activate it |
 | StandbySpare | This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it. |
 | Starting | This function or resource is starting |
 | UnavailableOffline | This function or resource is present but cannot be used |
+| Updating | The element is updating and may be unavailable or degraded. |
 
 
-# ComputerSystem 1.1.0
+# ComputerSystem 1.2.0
 
 This schema defines a computer system and its respective properties.  A computer system represents a machine (physical or virtual) and the local resources such as memory, cpu and other devices that can be accessed from that machine.
 
@@ -356,11 +398,17 @@ This schema defines a computer system and its respective properties.  A computer
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
 | } |   |   |
 | **HostName** | string, null<br><br>*read-write* | The DNS Host Name, without any domain information |
+| **HostedServices** *(v1.2+)* { | object<br><br>*read-write* | The services that this computer system supports. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**StorageServices** | <br><br>*read-write* | A reference to a collection of storage services supported by this computer system |
+| } |   |   |
+| **HostingRoles** *(v1.2+)* [ {} ] | array<br><br>*read-write* | The hosing roles that this computer system supports. |
 | **Id** | string<br><br>*read-only* | Uniquely identifies the resource within the collection of like resources. |
 | **IndicatorLED** | string, null<br><br>*read-write* | The state of the indicator LED, used to identify the system *See Property Details, below, for more information about this property.* |
 | **Links** { | object<br><br>*read-only* | Contains references to other resources that are related to this resource. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Chassis** [ {} ] | array<br><br>*read-only* | An array of references to the chassis in which this system is contained |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**CooledBy** [ {} ] | array<br><br>*read-only* | An array of ID[s] of resources that cool this computer system. Normally the ID will be a chassis or a specific set of fans. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Endpoints** [ {} ] | array<br><br>*read-only* | An array of references to the endpoints that connect to this system. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**ManagedBy** [ {} ] | array<br><br>*read-only* | An array of references to the Managers responsible for this system |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* | Oem extension object. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**PoweredBy** [ {} ] | array<br><br>*read-only* | An array of ID[s] of resources that power this computer system. Normally the ID will be a chassis or a specific set of powerSupplies |
@@ -378,6 +426,12 @@ This schema defines a computer system and its respective properties.  A computer
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Name** | string<br><br>*read-only* | The name of the resource or array element. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
 | } |   |   |
+| **MemoryDomains** *(v1.2+)* { | object, null<br><br>*read-write* | A reference to the collection of Memory Domains associated with this system. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Description** | string, null<br><br>*read-only* | Provides a description of this resource and is used for commonality  in the schema definitions. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Members** [ {} ] | array<br><br>*read-only* | Contains the members of this collection. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Name** | string<br><br>*read-only* | The name of the resource or array element. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
+| } |   |   |
 | **MemorySummary** { | object<br><br>*read-write* | This object describes the central memory of the system in general detail. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**MemoryMirroring** | string, null<br><br>*read-write* | The ability and type of memory mirroring supported by this system. *See Property Details, below, for more information about this property.* |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Status** {} | object<br><br>*read-only* |  |
@@ -386,6 +440,39 @@ This schema defines a computer system and its respective properties.  A computer
 | **Model** | string, null<br><br>*read-only* | The model number for this system |
 | **Name** | string<br><br>*read-only* | The name of the resource or array element. |
 | **Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
+| **PCIeDevices** *(v1.2+)* [ { | array<br><br>*read-only* | A reference to a collection of PCIe Devices used by this computer system |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**AssetTag** | string, null<br><br>*read-write* | The user assigned asset tag for this PCIe device. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Description** | string, null<br><br>*read-only* | Provides a description of this resource and is used for commonality  in the schema definitions. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**DeviceType** | string<br><br>*read-write* | The device type for this PCIe device. *See Property Details, below, for more information about this property.* |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**FirmwareVersion** | string, null<br><br>*read-only* | The version of firmware for this PCIe device. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Id** | string<br><br>*read-only* | Uniquely identifies the resource within the collection of like resources. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Links** {} | object<br><br>*read-only* | The links object contains the links to other resources that are related to this resource. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Manufacturer** | string, null<br><br>*read-only* | This is the manufacturer of this PCIe device. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Model** | string, null<br><br>*read-only* | This is the model number for the PCIe device. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Name** | string<br><br>*read-only* | The name of the resource or array element. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**PartNumber** | string, null<br><br>*read-only* | The part number for this PCIe device. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**SKU** | string, null<br><br>*read-only* | This is the SKU for this PCIe device. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**SerialNumber** | string, null<br><br>*read-only* | The serial number for this PCIe device. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Status** {} | object, null<br><br>*read-only* |  |
+| } ] |   |   |
+| **PCIeFunctions** *(v1.2+)* [ { | array<br><br>*read-only* | A reference to a collection of PCIe Functions used by this computer system |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**ClassCode** | string, null<br><br>*read-write* | The Class Code of this PCIe function. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Description** | string, null<br><br>*read-only* | Provides a description of this resource and is used for commonality  in the schema definitions. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**DeviceClass** | string<br><br>*read-write* | The class for this PCIe Function. *See Property Details, below, for more information about this property.* |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**DeviceId** | string, null<br><br>*read-write* | The Device ID of this PCIe function. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**FunctionId** | number, null<br><br>*read-only* | The the PCIe Function identifier. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**FunctionType** | string<br><br>*read-write* | The type of the PCIe Function. *See Property Details, below, for more information about this property.* |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Id** | string<br><br>*read-only* | Uniquely identifies the resource within the collection of like resources. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Links** {} | object<br><br>*read-only* | The links object contains the links to other resources that are related to this resource. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Name** | string<br><br>*read-only* | The name of the resource or array element. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**RevisionId** | string, null<br><br>*read-write* | The Revision ID of this PCIe function. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Status** {} | object, null<br><br>*read-only* |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**SubsystemId** | string, null<br><br>*read-write* | The Subsystem ID of this PCIe function. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**SubsystemVendorId** | string, null<br><br>*read-write* | The Subsystem Vendor ID of this PCIe function. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**VendorId** | string, null<br><br>*read-write* | The Vendor ID of this PCIe function. |
+| } ] |   |   |
 | **PartNumber** | string, null<br><br>*read-only* | The part number for this system |
 | **PowerState** | string, null<br><br>*read-write* | This is the current power state of the system *See Property Details, below, for more information about this property.* |
 | **ProcessorSummary** { | object<br><br>*read-write* | This object describes the central processors of the system in general detail. |
@@ -466,12 +553,56 @@ This schema defines a computer system and its respective properties.  A computer
 | Hdd | Boot from a hard drive |
 | None | Boot from the normal boot device |
 | Pxe | Boot from the Pre-Boot EXecution (PXE) environment |
+| RemoteDrive | Boot from a remote drive (e.g. iSCSI) |
 | SDCard | Boot from an SD Card |
 | UefiHttp | Boot from a UEFI HTTP network location |
 | UefiShell | Boot to the UEFI Shell |
 | UefiTarget | Boot to the UEFI Device specified in the UefiTargetBootSourceOverride property |
 | Usb | Boot from a USB device as specified by the system BIOS |
 | Utilities | Boot the manufacturer's Utilities program(s) |
+
+### DeviceClass:
+
+| string | Description |
+| --- | --- |
+| Bridge | A bridge |
+| CommunicationController | A communication controller |
+| Coprocessor | A coprocessor |
+| DisplayController | A display controller |
+| DockingStation | A docking station |
+| EncryptionController | An encryption controller |
+| GenericSystemPeripheral | A generic system peripheral |
+| InputDeviceController | An input device controller |
+| IntelligentController | An intelligent controller |
+| MassStorageController | A mass storage controller |
+| MemoryController | A memory controller |
+| MultimediaController | A multimedia controller |
+| NetworkController | A network controller |
+| NonEssentialInstrumentation | A non-essential instrumentation |
+| Other | A other class. The function Device Class Id needs to be verified |
+| ProcessingAccelerators | A processing accelerators |
+| Processor | A processor |
+| SatelliteCommunicationsController | A satellite communications controller |
+| SerialBusController | A serial bus controller |
+| SignalProcessingController | A signal processing controller |
+| UnassignedClass | An unassigned class |
+| UnclassifiedDevice | An unclassified device |
+| WirelessController | A wireless controller |
+
+### DeviceType:
+
+| string | Description |
+| --- | --- |
+| MultiFunction | A multi-function PCIe device |
+| Simulated | A PCIe device which is not currently physically present, but is being simulated by the PCIe infrastructure |
+| SingleFunction | A single-function PCIe device |
+
+### FunctionType:
+
+| string | Description |
+| --- | --- |
+| Physical | A physical PCie function |
+| Virtual | A virtual PCIe function |
 
 ### Health:
 
@@ -545,13 +676,16 @@ This schema defines a computer system and its respective properties.  A computer
 | string | Description |
 | --- | --- |
 | Absent | This function or resource is not present or not detected |
+| Deferring | The element will not process any commands but will queue new requests. |
 | Disabled | This function or resource has been disabled |
 | Enabled | This function or resource has been enabled |
 | InTest | This function or resource is undergoing testing |
+| Quiesced | The element is enabled but only processes a restricted set of commands. |
 | StandbyOffline | This function or resource is enabled, but awaiting an external action to activate it |
 | StandbySpare | This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it. |
 | Starting | This function or resource is starting |
 | UnavailableOffline | This function or resource is present but cannot be used |
+| Updating | The element is updating and may be unavailable or degraded. |
 
 ### SystemType:
 
@@ -617,7 +751,7 @@ However, Redfish implementations and OS APIs MAY also output in uppercase and cl
 
 
 
-# Drive 1.0.0
+# Drive 1.1.0
 
 Drive contains properties describing a single physical disk drive for any system, along with links to associated Volumes.
 
@@ -628,9 +762,9 @@ Drive contains properties describing a single physical disk drive for any system
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* |  |
 | } |   |   |
 | **AssetTag** | string, null<br><br>*read-write* | The user assigned asset tag for this drive. |
-| **BlockSizeBytes** | number, null<br><br>*read-only* | The size of the smallest addressible unit (Block) of this drive in bytes |
-| **CapableSpeedGbs** | number, null<br><br>*read-only* | The speed which this drive can communicate to a storage controller in ideal conditions in Gigabits per second |
-| **CapacityBytes** | number, null<br><br>*read-only* | The size in bytes of this Drive |
+| **BlockSizeBytes** | number, null<br>(By)<br><br>*read-only* | The size of the smallest addressible unit (Block) of this drive in bytes |
+| **CapableSpeedGbs** | number, null<br>(Gbit/s)<br><br>*read-only* | The speed which this drive can communicate to a storage controller in ideal conditions in Gigabits per second |
+| **CapacityBytes** | number, null<br>(By)<br><br>*read-only* | The size in bytes of this Drive |
 | **Description** | string, null<br><br>*read-only* | Provides a description of this resource and is used for commonality  in the schema definitions. |
 | **EncryptionAbility** | string, null<br><br>*read-write* | The encryption abilities of this drive *See Property Details, below, for more information about this property.* |
 | **EncryptionStatus** | string, null<br><br>*read-write* | The status of the encrytion of this drive *See Property Details, below, for more information about this property.* |
@@ -643,6 +777,7 @@ Drive contains properties describing a single physical disk drive for any system
 | } ] |   |   |
 | **IndicatorLED** | string, null<br><br>*read-write* | The state of the indicator LED, used to identify the drive. *See Property Details, below, for more information about this property.* |
 | **Links** { | object<br><br>*read-only* | Contains references to other resources that are related to this resource. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Endpoints** [ {} ] | array<br><br>*read-only* | An array of references to the endpoints that connect to this drive. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* | Oem extension object. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Volumes** [ {} ] | array<br><br>*read-only* | An array of references to the volumes contained in this drive. This will reference Volumes that are either wholly or only partly contained by this drive. |
 | } |   |   |
@@ -655,13 +790,14 @@ Drive contains properties describing a single physical disk drive for any system
 | **MediaType** | string, null<br><br>*read-write* | The type of media contained in this drive *See Property Details, below, for more information about this property.* |
 | **Model** | string, null<br><br>*read-only* | This is the model number for the drive. |
 | **Name** | string<br><br>*read-only* | The name of the resource or array element. |
-| **NegotiatedSpeedGbs** | number, null<br><br>*read-only* | The speed which this drive is currently communicating to the storage controller in Gigabits per second |
+| **NegotiatedSpeedGbs** | number, null<br>(Gbit/s)<br><br>*read-only* | The speed which this drive is currently communicating to the storage controller in Gigabits per second |
 | **Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
+| **Operations** *(v1.1+)* [ {} ] | array<br><br>*read-only* | The operations currently running on the Drive |
 | **PartNumber** | string, null<br><br>*read-only* | The part number for this drive. |
 | **PredictedMediaLifeLeftPercent** | number, null<br><br>*read-only* | The percentage of reads and writes that are predicted to still be available for the media |
 | **Protocol** | null<br><br>*read-write* | The protocol this drive is using to communicate to the storage controller |
 | **Revision** | string, null<br><br>*read-only* | The revision of this Drive |
-| **RotationSpeedRPM** | number, null<br><br>*read-only* | The rotation speed of this Drive in Revolutions per Minute (RPM) |
+| **RotationSpeedRPM** | number, null<br>(RPM)<br><br>*read-only* | The rotation speed of this Drive in Revolutions per Minute (RPM) |
 | **SKU** | string, null<br><br>*read-only* | This is the SKU for this drive. |
 | **SerialNumber** | string, null<br><br>*read-only* | The serial number for this drive. |
 | **Status** { | object<br><br>*read-only* |  |
@@ -698,7 +834,8 @@ Drive contains properties describing a single physical disk drive for any system
 | --- | --- |
 | Foreign | The drive is currently encrypted, the data is not accessible to the user, and the system requires user intervention to expose the data |
 | Locked | The drive is currently encrypted and the data is not accessible to the user, however the system has the ability to unlock the drive automatically |
-| Unecrypted | The drive is not currently encrypted |
+| Unecrypted | The drive is not currently encrypted. Deprecated: Use Unencrypted |
+| Unencrypted | The drive is not currently encrypted |
 | Unlocked | The drive is currently encrypted but the data is accessible to the user unencrypted |
 
 ### Health:
@@ -747,13 +884,16 @@ Drive contains properties describing a single physical disk drive for any system
 | string | Description |
 | --- | --- |
 | Absent | This function or resource is not present or not detected |
+| Deferring | The element will not process any commands but will queue new requests. |
 | Disabled | This function or resource has been disabled |
 | Enabled | This function or resource has been enabled |
 | InTest | This function or resource is undergoing testing |
+| Quiesced | The element is enabled but only processes a restricted set of commands. |
 | StandbyOffline | This function or resource is enabled, but awaiting an external action to activate it |
 | StandbySpare | This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it. |
 | Starting | This function or resource is starting |
 | UnavailableOffline | This function or resource is present but cannot be used |
+| Updating | The element is updating and may be unavailable or degraded. |
 
 ### StatusIndicator:
 
@@ -768,7 +908,124 @@ Drive contains properties describing a single physical disk drive for any system
 | Rebuild | The drive is being rebuilt. |
 
 
-# EthernetInterface 1.0.2
+# Endpoint 1.0.0
+
+This is the schema definition for the Endpoint resource. It represents the properties of an entity that sends or receives protocol defined messages over a transport.
+
+|     |     |     |
+| --- | --- | --- |
+| **Actions** { | object<br><br>*read-only* | The Actions object contains the available custom actions on this resource. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object, null<br><br>*read-write* |  |
+| } |   |   |
+| **ConnectedEntities** [ { | array<br><br>*read-only* | All the entities connected to this endpoint. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**EntityLink** {} | object, null<br><br>*read-write* | A link to the associated entity. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**EntityPciId** {} | object, null<br><br>*read-write* | The PCI ID of the connected entity. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**EntityRole** | string, null<br><br>*read-write* | The role of the connected entity. *See Property Details, below, for more information about this property.* |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**EntityType** | string, null<br><br>*read-write* | The type of the connected entity. *See Property Details, below, for more information about this property.* |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Identifiers** [ {} ] | array<br><br>*read-only* | Identifiers for the remote entity. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object, null<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**PciClassCode** | string, null<br><br>*read-write* | The Class Code and Subclass code of this PCIe function. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**PciFunctionNumber** | number, null<br><br>*read-only* | The PCI ID of the connected entity. |
+| } ] |   |   |
+| **Description** | string, null<br><br>*read-only* | Provides a description of this resource and is used for commonality  in the schema definitions. |
+| **EndpointProtocol** | null<br><br>*read-write* | The protocol supported by this endpoint. |
+| **HostReservationMemoryBytes** | number, null<br>(By)<br><br>*read-only* | The amount of memory in Bytes that the Host should allocate to connect to this endpoint. |
+| **Id** | string<br><br>*read-only* | Uniquely identifies the resource within the collection of like resources. |
+| **Identifiers** [ { | array<br><br>*read-only* | Identifiers for this endpoint |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**DurableName** | string, null<br><br>*read-only* | This indicates the world wide, persistent name of the resource. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**DurableNameFormat** | string, null<br><br>*read-write* | This represents the format of the DurableName property. *See Property Details, below, for more information about this property.* |
+| } ] |   |   |
+| **Links** { | object<br><br>*read-only* | The links object contains the links to other resources that are related to this resource. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**MutuallyExclusiveEndpoints** [ {} ] | array<br><br>*read-only* | An array of references to the endpoints that may not be used in zones if this endpoint is used in a zone. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* | Oem extension object. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Ports** [ {} ] | array<br><br>*read-only* | An array of references to the the physical ports associated with this endpoint. |
+| } |   |   |
+| **Name** | string<br><br>*read-only* | The name of the resource or array element. |
+| **Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
+| **PciId** { | object, null<br><br>*read-write* | The PCI ID of the endpoint. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**DeviceId** | string, null<br><br>*read-write* | The Device ID of this PCIe function. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**SubsystemId** | string, null<br><br>*read-write* | The Subsystem ID of this PCIe function. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**SubsystemVendorId** | string, null<br><br>*read-write* | The Subsystem Vendor ID of this PCIe function. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**VendorId** | string, null<br><br>*read-write* | The Vendor ID of this PCIe function. |
+| } |   |   |
+| **Redundancy** [ { | array<br><br>*read-only* | Redundancy information for the lower level endpoints supporting this endpoint |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**MemberId** | string<br><br>*read-write* | This is the identifier for the member within the collection. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
+| } ] |   |   |
+| **Status** { | object, null<br><br>*read-only* |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Health** | string, null<br><br>*read-write* | This represents the health state of this resource in the absence of its dependent resources. *See Property Details, below, for more information about this property.* |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**HealthRollup** | string, null<br><br>*read-write* | This represents the overall health state from the view of this resource. *See Property Details, below, for more information about this property.* |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**State** | string, null<br><br>*read-write* | This indicates the known state of the resource, such as if it is enabled. *See Property Details, below, for more information about this property.* |
+| } |   |   |
+
+## Property Details
+
+### DurableNameFormat:
+
+| string | Description |
+| --- | --- |
+| EUI | IEEE-defined 64-bit Extended Unique Identifier |
+| FC_WWN | Fibre Channel World Wide Name |
+| NAA | Name Address Authority Format |
+| UUID | Universally Unique Identifier |
+| iQN | iSCSI Qualified Name |
+
+### EntityRole:
+
+| string | Description |
+| --- | --- |
+| Both | The entity is acting as both an initiator and a target |
+| Initiator | The entity is acting as an initiator |
+| Target | The entity is acting as a target |
+
+### EntityType:
+
+| string | Description |
+| --- | --- |
+| Bridge | The entity is a PCI(e) bridge. |
+| DisplayController | The entity is a display controller. |
+| Drive | The entity is a disk drive. The EntityLink property (if present) should be a Drive.Drive entity |
+| NetworkController | The entity is a network controller. The EntityLink property (if present) should be an EthernetInterface.EthernetInterface entity |
+| Processor | The entity is a processor device. |
+| RootComplex | The entity is a PCI(e) root complex. The EntityLink property (if present) should be a ComputerSystem.ComputerSystem entity |
+| StorageExpander | The entity is a storage expander. The EntityLink property (if present) should be a Chassis.Chassis entity |
+| StorageInitiator | The entity is a storage initator. The EntityLink property (if present) should be a Storage.StorageController entity |
+
+### Health:
+
+| string | Description |
+| --- | --- |
+| Critical | A critical condition exists that requires immediate attention |
+| OK | Normal |
+| Warning | A condition exists that requires attention |
+
+### HealthRollup:
+
+| string | Description |
+| --- | --- |
+| Critical | A critical condition exists that requires immediate attention |
+| OK | Normal |
+| Warning | A condition exists that requires attention |
+
+### State:
+
+| string | Description |
+| --- | --- |
+| Absent | This function or resource is not present or not detected |
+| Deferring | The element will not process any commands but will queue new requests. |
+| Disabled | This function or resource has been disabled |
+| Enabled | This function or resource has been enabled |
+| InTest | This function or resource is undergoing testing |
+| Quiesced | The element is enabled but only processes a restricted set of commands. |
+| StandbyOffline | This function or resource is enabled, but awaiting an external action to activate it |
+| StandbySpare | This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it. |
+| Starting | This function or resource is starting |
+| UnavailableOffline | This function or resource is present but cannot be used |
+| Updating | The element is updating and may be unavailable or degraded. |
+
+
+# EthernetInterface 1.1.0
 
 This schema defines a simple ethernet NIC resource.
 
@@ -806,6 +1063,11 @@ This schema defines a simple ethernet NIC resource.
 | } ] |   |   |
 | **Id** | string<br><br>*read-only* | Uniquely identifies the resource within the collection of like resources. |
 | **InterfaceEnabled** | boolean, null<br><br>*read-write* | This indicates whether this interface is enabled. |
+| **LinkStatus** *(v1.1+)* | string, null<br><br>*read-write* | The link status of this interface (port) *See Property Details, below, for more information about this property.* |
+| **Links** *(v1.1+)* { | object<br><br>*read-only* | Contains references to other resources that are related to this resource. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Endpoints** [ {} ] | array<br><br>*read-only* | An array of references to the endpoints that connect to this ethernet interface. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* | Oem extension object. |
+| } |   |   |
 | **MACAddress** | string, null<br><br>*read-write* | This is the currently configured MAC address of the (logical port) interface. |
 | **MTUSize** | number, null<br><br>*read-write* | This is the currently configured Maximum Transmission Unit (MTU) in bytes on this interface. |
 | **MaxIPv6StaticAddresses** | number, null<br><br>*read-only* | This indicates the maximum number of Static IPv6 addresses that can be configured on this interface. |
@@ -813,7 +1075,7 @@ This schema defines a simple ethernet NIC resource.
 | **NameServers** [ {} ] | array<br><br>*read-only* | This represents DNS name servers that are currently in use on this interface. |
 | **Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
 | **PermanentMACAddress** | string, null<br><br>*read-write* | This is the permanent MAC address assigned to this interface (port) |
-| **SpeedMbps** | number, null<br><br>*read-write* | This is the current speed in Mbps of this interface. |
+| **SpeedMbps** | number, null<br>(Mbit/s)<br><br>*read-write* | This is the current speed in Mbps of this interface. |
 | **Status** { | object, null<br><br>*read-only* |  |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Health** | string, null<br><br>*read-write* | This represents the health state of this resource in the absence of its dependent resources. *See Property Details, below, for more information about this property.* |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**HealthRollup** | string, null<br><br>*read-write* | This represents the overall health state from the view of this resource. *See Property Details, below, for more information about this property.* |
@@ -865,21 +1127,32 @@ This schema defines a simple ethernet NIC resource.
 | OK | Normal |
 | Warning | A condition exists that requires attention |
 
+### LinkStatus:
+
+| string | Description |
+| --- | --- |
+| LinkDown | There is no link on this interface, but the interface is connected. |
+| LinkUp | The link is available for communication on this interface. |
+| NoLink | There is no link or connection detected on this interface. |
+
 ### State:
 
 | string | Description |
 | --- | --- |
 | Absent | This function or resource is not present or not detected |
+| Deferring | The element will not process any commands but will queue new requests. |
 | Disabled | This function or resource has been disabled |
 | Enabled | This function or resource has been enabled |
 | InTest | This function or resource is undergoing testing |
+| Quiesced | The element is enabled but only processes a restricted set of commands. |
 | StandbyOffline | This function or resource is enabled, but awaiting an external action to activate it |
 | StandbySpare | This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it. |
 | Starting | This function or resource is starting |
 | UnavailableOffline | This function or resource is present but cannot be used |
+| Updating | The element is updating and may be unavailable or degraded. |
 
 
-# Event 1.1.0
+# Event 1.1.1
 
 The Event schema describes the JSON payload received by an Event Destination (which has subscribed to event notification) when events occurs.  This resource contains data about event(s), including descriptions, severity and MessageId reference to a Message Registry that can be accessed for further information. 
 
@@ -917,7 +1190,7 @@ The Event schema describes the JSON payload received by an Event Destination (wh
 | StatusChange | The status of this resource has changed |
 
 
-# EventDestination 1.0.2
+# EventDestination 1.1.0
 
 An Event Destination desribes the target of an event subscription, including the types of events subscribed and context to provide to the target in the Event payload.
 
@@ -929,8 +1202,10 @@ An Event Destination desribes the target of an event subscription, including the
 | **EventTypes** [ {} ] | array<br><br>*read-only* | This property shall contain the types of events that shall be sent to the desination. |
 | **HttpHeaders** [ {} ] | array<br><br>*read-write* | This is for setting HTTP headers, such as authorization information.  This object will be null on a GET. |
 | **Id** | string<br><br>*read-only* | Uniquely identifies the resource within the collection of like resources. |
+| **MessageIds** *(v1.1+)* [ {} ] | array<br><br>*read-only* | A list of MessageIds that the service will only send. |
 | **Name** | string<br><br>*read-only* | The name of the resource or array element. |
 | **Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
+| **OriginResources** *(v1.1+)* [ {} ] | array<br><br>*read-only* | A list of resources for which the service will only send related events. |
 | **Protocol** | string<br><br>*read-write* | The protocol type of the event connection. *See Property Details, below, for more information about this property.* |
 
 ## Property Details
@@ -953,7 +1228,7 @@ The Event Service resource contains properties for managing event subcriptions a
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* |  |
 | } |   |   |
 | **DeliveryRetryAttempts** | number<br><br>*read-only* | This is the number of attempts an event posting is retried before the subscription is terminated. |
-| **DeliveryRetryIntervalSeconds** | number<br><br>*read-only* | This represents the number of seconds between retry attempts for sending any given Event |
+| **DeliveryRetryIntervalSeconds** | number<br>(s)<br><br>*read-only* | This represents the number of seconds between retry attempts for sending any given Event |
 | **Description** | string, null<br><br>*read-only* | Provides a description of this resource and is used for commonality  in the schema definitions. |
 | **EventTypesForSubscription** [ {} ] | array<br><br>*read-only* | This is the types of Events that can be subscribed to. |
 | **Id** | string<br><br>*read-only* | Uniquely identifies the resource within the collection of like resources. |
@@ -996,13 +1271,94 @@ The Event Service resource contains properties for managing event subcriptions a
 | string | Description |
 | --- | --- |
 | Absent | This function or resource is not present or not detected |
+| Deferring | The element will not process any commands but will queue new requests. |
 | Disabled | This function or resource has been disabled |
 | Enabled | This function or resource has been enabled |
 | InTest | This function or resource is undergoing testing |
+| Quiesced | The element is enabled but only processes a restricted set of commands. |
 | StandbyOffline | This function or resource is enabled, but awaiting an external action to activate it |
 | StandbySpare | This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it. |
 | Starting | This function or resource is starting |
 | UnavailableOffline | This function or resource is present but cannot be used |
+| Updating | The element is updating and may be unavailable or degraded. |
+
+
+# Fabric 1.0.0
+
+Fabric contains properties describing a simple fabric consisting of one or more switches, zero or more endpoints, and zero or more zones.
+
+|     |     |     |
+| --- | --- | --- |
+| **Actions** { | object<br><br>*read-only* | The available actions for this resource. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* |  |
+| } |   |   |
+| **Description** | string, null<br><br>*read-only* | Provides a description of this resource and is used for commonality  in the schema definitions. |
+| **Endpoints** { | object<br><br>*read-write* | A collection of references to the endpoints contained in this fabric. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Description** | string, null<br><br>*read-only* | Provides a description of this resource and is used for commonality  in the schema definitions. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Members** [ {} ] | array<br><br>*read-only* | Contains the members of this collection. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Name** | string<br><br>*read-only* | The name of the resource or array element. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
+| } |   |   |
+| **FabricType** | null<br><br>*read-write* | The protocol being sent over this fabric. |
+| **Id** | string<br><br>*read-only* | Uniquely identifies the resource within the collection of like resources. |
+| **Links** { | object<br><br>*read-only* | Contains references to other resources that are related to this resource. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* | Oem extension object. |
+| } |   |   |
+| **MaxZones** | number, null<br><br>*read-write* | The value of this property shall contain the maximum number of zones the switch can currently configure. |
+| **Name** | string<br><br>*read-only* | The name of the resource or array element. |
+| **Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
+| **Status** { | object<br><br>*read-only* |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Health** | string, null<br><br>*read-write* | This represents the health state of this resource in the absence of its dependent resources. *See Property Details, below, for more information about this property.* |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**HealthRollup** | string, null<br><br>*read-write* | This represents the overall health state from the view of this resource. *See Property Details, below, for more information about this property.* |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**State** | string, null<br><br>*read-write* | This indicates the known state of the resource, such as if it is enabled. *See Property Details, below, for more information about this property.* |
+| } |   |   |
+| **Switches** { | object<br><br>*read-write* | A collection of references to the switches contained in this fabric. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Description** | string, null<br><br>*read-only* | Provides a description of this resource and is used for commonality  in the schema definitions. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Members** [ {} ] | array<br><br>*read-only* | Contains the members of this collection. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Name** | string<br><br>*read-only* | The name of the resource or array element. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
+| } |   |   |
+| **Zones** { | object<br><br>*read-write* | A collection of references to the zones contained in this fabric. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Description** | string, null<br><br>*read-only* | Provides a description of this resource and is used for commonality  in the schema definitions. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Members** [ {} ] | array<br><br>*read-only* | Contains the members of this collection. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Name** | string<br><br>*read-only* | The name of the resource or array element. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
+| } |   |   |
+
+## Property Details
+
+### Health:
+
+| string | Description |
+| --- | --- |
+| Critical | A critical condition exists that requires immediate attention |
+| OK | Normal |
+| Warning | A condition exists that requires attention |
+
+### HealthRollup:
+
+| string | Description |
+| --- | --- |
+| Critical | A critical condition exists that requires immediate attention |
+| OK | Normal |
+| Warning | A condition exists that requires attention |
+
+### State:
+
+| string | Description |
+| --- | --- |
+| Absent | This function or resource is not present or not detected |
+| Deferring | The element will not process any commands but will queue new requests. |
+| Disabled | This function or resource has been disabled |
+| Enabled | This function or resource has been enabled |
+| InTest | This function or resource is undergoing testing |
+| Quiesced | The element is enabled but only processes a restricted set of commands. |
+| StandbyOffline | This function or resource is enabled, but awaiting an external action to activate it |
+| StandbySpare | This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it. |
+| Starting | This function or resource is starting |
+| UnavailableOffline | This function or resource is present but cannot be used |
+| Updating | The element is updating and may be unavailable or degraded. |
 
 
 # JsonSchemaFile 1.0.2
@@ -1025,7 +1381,7 @@ This is the schema definition for the Schema File locator resource.
 | **Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
 | **Schema** | string<br><br>*read-only* | The @odata.type name this schema describes. |
 
-# LogEntry 1.0.2
+# LogEntry 1.1.0
 
 This resource defines the record format for a log.  It is designed to be used for SEL logs (from IPMI) as well as Event Logs and OEM-specific log formats.  The EntryType field indicates the type of log and the resource includes several additional properties dependent on the EntryType.
 
@@ -1035,6 +1391,9 @@ This resource defines the record format for a log.  It is designed to be used fo
 | **Description** | string, null<br><br>*read-only* | Provides a description of this resource and is used for commonality  in the schema definitions. |
 | **EntryCode** | string, null<br><br>*read-write* | If the EntryType is SEL, this will have the entry code for the log entry. *See Property Details, below, for more information about this property.* |
 | **EntryType** | string<br><br>*read-write* | his is the type of log entry. *See Property Details, below, for more information about this property.* |
+| **EventId** *(v1.1+)* | string<br><br>*read-only* | This is a unique instance identifier of an event. |
+| **EventTimestamp** *(v1.1+)* | string<br><br>*read-only* | This is time the event occurred. |
+| **EventType** *(v1.1+)* | <br><br>*read-only* | This indicates the type of an event recorded in this log. |
 | **Id** | string<br><br>*read-only* | Uniquely identifies the resource within the collection of like resources. |
 | **Links** { | object<br><br>*read-only* | Contains references to other resources that are related to this resource. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* | Oem extension object. |
@@ -1244,16 +1603,19 @@ This resource represents the log service for the resource or service to which it
 | string | Description |
 | --- | --- |
 | Absent | This function or resource is not present or not detected |
+| Deferring | The element will not process any commands but will queue new requests. |
 | Disabled | This function or resource has been disabled |
 | Enabled | This function or resource has been enabled |
 | InTest | This function or resource is undergoing testing |
+| Quiesced | The element is enabled but only processes a restricted set of commands. |
 | StandbyOffline | This function or resource is enabled, but awaiting an external action to activate it |
 | StandbySpare | This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it. |
 | Starting | This function or resource is starting |
 | UnavailableOffline | This function or resource is present but cannot be used |
+| Updating | The element is updating and may be unavailable or degraded. |
 
 
-# Manager 1.1.0
+# Manager 1.2.0
 
 This is the schema definition for a Manager.  Examples of managers are BMCs, Enclosure Managers, Management Controllers and other subsystems assigned managability functions.
 
@@ -1320,6 +1682,7 @@ This is the schema definition for a Manager.  Examples of managers are BMCs, Enc
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**VirtualMedia** {} | object<br><br>*read-write* | Settings for this Manager's Virtual Media support |
 | } |   |   |
 | **Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
+| **PowerState** *(v1.2+)* | string, null<br><br>*read-write* | This is the current power state of the Manager. *See Property Details, below, for more information about this property.* |
 | **Redundancy** [ { | array<br><br>*read-only* | Redundancy information for the managers of this system |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**MemberId** | string<br><br>*read-write* | This is the identifier for the member within the collection. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
@@ -1378,18 +1741,30 @@ This is the schema definition for a Manager.  Examples of managers are BMCs, Enc
 | ManagementController | A controller used primarily to monitor or manage the operation of a device or system |
 | RackManager | A controller which provides management functions for a whole or part of a rack |
 
+### PowerState:
+
+| string | Description |
+| --- | --- |
+| Off | The state is powered Off. |
+| On | The state is powered On. |
+| PoweringOff | A temporary state between On and Off. |
+| PoweringOn | A temporary state between Off and On. |
+
 ### State:
 
 | string | Description |
 | --- | --- |
 | Absent | This function or resource is not present or not detected |
+| Deferring | The element will not process any commands but will queue new requests. |
 | Disabled | This function or resource has been disabled |
 | Enabled | This function or resource has been enabled |
 | InTest | This function or resource is undergoing testing |
+| Quiesced | The element is enabled but only processes a restricted set of commands. |
 | StandbyOffline | This function or resource is enabled, but awaiting an external action to activate it |
 | StandbySpare | This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it. |
 | Starting | This function or resource is starting |
 | UnavailableOffline | This function or resource is present but cannot be used |
+| Updating | The element is updating and may be unavailable or degraded. |
 
 
 # ManagerAccount 1.0.2
@@ -1446,7 +1821,7 @@ This resource is used to obtain or modify the network services managed by a give
 | } |   |   |
 | **SSDP** { | object<br><br>*read-write* | Settings for this Manager's SSDP support |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**NotifyIPv6Scope** | string, null<br><br>*read-write* | Indicates the scope for the IPv6 Notify messages for SSDP. *See Property Details, below, for more information about this property.* |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**NotifyMulticastIntervalSeconds** | number, null<br><br>*read-write* | Indicates how often the Multicast is done from this service for SSDP. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**NotifyMulticastIntervalSeconds** | number, null<br>(s)<br><br>*read-write* | Indicates how often the Multicast is done from this service for SSDP. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**NotifyTTL** | number, null<br><br>*read-write* | Indicates the time to live hop count for SSDPs Notify messages. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Port** | number, null<br><br>*read-write* | Indicates the protocol port. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**ProtocolEnabled** | boolean, null<br><br>*read-write* | Indicates if the protocol is enabled or disabled |
@@ -1501,13 +1876,16 @@ This resource is used to obtain or modify the network services managed by a give
 | string | Description |
 | --- | --- |
 | Absent | This function or resource is not present or not detected |
+| Deferring | The element will not process any commands but will queue new requests. |
 | Disabled | This function or resource has been disabled |
 | Enabled | This function or resource has been enabled |
 | InTest | This function or resource is undergoing testing |
+| Quiesced | The element is enabled but only processes a restricted set of commands. |
 | StandbyOffline | This function or resource is enabled, but awaiting an external action to activate it |
 | StandbySpare | This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it. |
 | Starting | This function or resource is starting |
 | UnavailableOffline | This function or resource is present but cannot be used |
+| Updating | The element is updating and may be unavailable or degraded. |
 
 
 # Memory 1.0.0
@@ -1526,7 +1904,7 @@ This is the schema definition for definition of a Memory and its configuration
 | **AllowedSpeedsMHz** [ {} ] | array<br><br>*read-only* | Speed bins supported by this Memory |
 | **BaseModuleType** | string, null<br><br>*read-write* | The base module type of Memory *See Property Details, below, for more information about this property.* |
 | **BusWidthBits** | number, null<br><br>*read-only* | Bus Width in bits. |
-| **CapacityMiB** | number, null<br><br>*read-only* | Memory Capacity in MiB. |
+| **CapacityMiB** | number, null<br>(MiBy)<br><br>*read-only* | Memory Capacity in MiB. |
 | **DataWidthBits** | number, null<br><br>*read-only* | Data Width in bits. |
 | **Description** | string, null<br><br>*read-only* | Provides a description of this resource and is used for commonality  in the schema definitions. |
 | **DeviceID** | string, null<br><br>*read-only* | Device ID |
@@ -1551,7 +1929,7 @@ This is the schema definition for definition of a Memory and its configuration
 | **MemoryType** | string, null<br><br>*read-write* | The type of Memory *See Property Details, below, for more information about this property.* |
 | **Metrics** { | object<br><br>*read-write* | A reference to the Metrics associated with this Memory |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Actions** {} | object<br><br>*read-only* | The available actions for this resource. |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**BlockSizeBytes** | number, null<br><br>*read-only* | Block size in bytes |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**BlockSizeBytes** | number, null<br>(By)<br><br>*read-only* | Block size in bytes |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**CurrentPeriod** {} | object<br><br>*read-write* | This object describes the central memory of the system in general detail. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Description** | string, null<br><br>*read-only* | Provides a description of this resource and is used for commonality  in the schema definitions. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**HealthData** {} | object<br><br>*read-write* | This object describes the central memory of the system in general detail. |
@@ -1567,18 +1945,18 @@ This is the schema definition for definition of a Memory and its configuration
 | **PartNumber** | string, null<br><br>*read-only* | The product part number of this device |
 | **PersistentRegionSizeLimitMiB** | number, null<br><br>*read-only* | Total size of persistent regions in MiB |
 | **PowerManagementPolicy** { | object<br><br>*read-write* | Power management policy information. |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**AveragePowerBudgetMilliWatts** | number, null<br><br>*read-only* | Average power budget in milli watts |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**MaxTDPMilliWatts** | number, null<br><br>*read-only* | Maximum TDP in milli watts |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**PeakPowerBudgetMilliWatts** | number, null<br><br>*read-only* | Peak power budget in milli watts |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**AveragePowerBudgetMilliWatts** | number, null<br>(mW)<br><br>*read-only* | Average power budget in milli watts |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**MaxTDPMilliWatts** | number, null<br>(mW)<br><br>*read-only* | Maximum TDP in milli watts |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**PeakPowerBudgetMilliWatts** | number, null<br>(mW)<br><br>*read-only* | Peak power budget in milli watts |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**PolicyEnabled** | boolean, null<br><br>*read-only* | Power management policy enabled status |
 | } |   |   |
 | **RankCount** | number, null<br><br>*read-only* | Number of ranks available in the Memory |
 | **Regions** [ { | array<br><br>*read-only* | Memory regions information within the Memory |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**MemoryClassification** | string, null<br><br>*read-write* | Classification of memory occupied by the given memory region *See Property Details, below, for more information about this property.* |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**OffsetMiB** | number, null<br><br>*read-only* | Offset with in the Memory that corresponds to the starting of this memory region in MiB |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**OffsetMiB** | number, null<br>(MiBy)<br><br>*read-only* | Offset with in the Memory that corresponds to the starting of this memory region in MiB |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**PassphraseState** | boolean, null<br><br>*read-only* | State of the passphrase for this region |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**RegionId** | string, null<br><br>*read-only* | Unique region ID representing a specific region within the Memory |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**SizeMiB** | number, null<br><br>*read-only* | Size of this memory region in MiB |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**SizeMiB** | number, null<br>(MiBy)<br><br>*read-only* | Size of this memory region in MiB |
 | } ] |   |   |
 | **SecurityCapabilities** { | object<br><br>*read-write* | This object contains security capabilities of the Memory. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**MaxPassphraseCount** | number, null<br><br>*read-only* | Maximum number of passphrases supported for this Memory |
@@ -1660,6 +2038,61 @@ This is the schema definition for definition of a Memory and its configuration
 | NVDIMM_P | NVDIMM_P as defined by JEDEC. |
 
 
+# MemoryChunks 1.0.0
+
+This is the schema definition of a Memory Chunk and its configuration.
+
+|     |     |     |
+| --- | --- | --- |
+| **AddressRangeType** | string, null<br><br>*read-write* | Memory type of this memory chunk *See Property Details, below, for more information about this property.* |
+| **Description** | string, null<br><br>*read-only* | Provides a description of this resource and is used for commonality  in the schema definitions. |
+| **Id** | string<br><br>*read-only* | Uniquely identifies the resource within the collection of like resources. |
+| **InterleaveSets** [ { | array<br><br>*read-only* | This is the interleave sets for the memory chunk. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Memory** {} | object<br><br>*read-write* | Describes a memory device of the interleave set.  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**MemoryLevel** | number, null<br><br>*read-only* | Level of the interleave set for multi-level tiered memory. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**OffsetMiB** | number, null<br><br>*read-only* | Offset within the DIMM that corresponds to the start of this memory region, with units in MiB |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**RegionId** | string, null<br><br>*read-only* | DIMM region identifier |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**SizeMiB** | number, null<br><br>*read-only* | Size of this memory region in MiB |
+| } ] |   |   |
+| **IsMirrorEnabled** | boolean, null<br><br>*read-only* | Mirror Enabled status |
+| **IsSpare** | boolean, null<br><br>*read-only* | Spare enabled status |
+| **MemoryChunkSizeMiB** | number, null<br><br>*read-only* | Size of the memory chunk in MiB |
+| **Name** | string<br><br>*read-only* | The name of the resource or array element. |
+| **Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
+
+## Property Details
+
+### AddressRangeType:
+
+| string | Description |
+| --- | --- |
+| Block | Block accesible memory |
+| PMEM | Byte accessible persistent memory |
+| Volatile | Volatile memory |
+
+
+# MemoryDomain 1.0.0
+
+This is the schema definition of a Memory Domain and its configuration. Memory Domains are used to indicate to the client which Memory (DIMMs) can be grouped together in Memory Chunks to form interleave sets or otherwise grouped together.
+
+|     |     |     |
+| --- | --- | --- |
+| **AllowsBlockProvisioning** | boolean, null<br><br>*read-only* | Indicates if this Memory Domain supports the provisioning of blocks of memory. |
+| **AllowsMemoryChunkCreation** | boolean, null<br><br>*read-only* | Indicates if this Memory Domain supports the creation of Memory Chunks. |
+| **Description** | string, null<br><br>*read-only* | Provides a description of this resource and is used for commonality  in the schema definitions. |
+| **Id** | string<br><br>*read-only* | Uniquely identifies the resource within the collection of like resources. |
+| **InterleavableMemorySets** [ { | array<br><br>*read-only* | This is the interleave sets for the memory chunk. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**MemorySet** [ {} ] | array<br><br>*read-only* | This is the collection of memory for a particular interleave set. |
+| } ] |   |   |
+| **MemoryChunks** { | object, null<br><br>*read-write* | A reference to the collection of Memory Chunks associated with this Memory Domain. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Description** | string, null<br><br>*read-only* | Provides a description of this resource and is used for commonality  in the schema definitions. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Members** [ {} ] | array<br><br>*read-only* | Contains the members of this collection. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Name** | string<br><br>*read-only* | The name of the resource or array element. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
+| } |   |   |
+| **Name** | string<br><br>*read-only* | The name of the resource or array element. |
+| **Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
+
 # MemoryMetrics 1.0.0
 
 MemoryMetrics contains usage and health statistics for a single Memory module or device instance.
@@ -1670,7 +2103,7 @@ MemoryMetrics contains usage and health statistics for a single Memory module or
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**#MemoryMetrics.ClearCurrentPeriod** {} | object<br><br>*read-write* | This sets the CurrentPeriod object values to zero. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* |  |
 | } |   |   |
-| **BlockSizeBytes** | number, null<br><br>*read-only* | Block size in bytes |
+| **BlockSizeBytes** | number, null<br>(By)<br><br>*read-only* | Block size in bytes |
 | **CurrentPeriod** { | object<br><br>*read-write* | This object describes the central memory of the system in general detail. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**BlocksRead** | number, null<br><br>*read-only* | Number of blocks read since reset |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**BlocksWritten** | string, null<br><br>*read-only* | Number of blocks written since reset |
@@ -1727,7 +2160,262 @@ This is the schema definition for the Schema File locator resource.
 | **Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
 | **Registry** | string<br><br>*read-only* | The Registry Name, Major and Minor version used in MessageID construction. |
 
-# Power 1.1.0
+# PCIeDevice 1.0.0
+
+This is the schema definition for the PCIeDevice resource.  It represents the properties of a PCIeDevice attached to a System.
+
+|     |     |     |
+| --- | --- | --- |
+| **AssetTag** | string, null<br><br>*read-write* | The user assigned asset tag for this PCIe device. |
+| **Description** | string, null<br><br>*read-only* | Provides a description of this resource and is used for commonality  in the schema definitions. |
+| **DeviceType** | string<br><br>*read-write* | The device type for this PCIe device. *See Property Details, below, for more information about this property.* |
+| **FirmwareVersion** | string, null<br><br>*read-only* | The version of firmware for this PCIe device. |
+| **Id** | string<br><br>*read-only* | Uniquely identifies the resource within the collection of like resources. |
+| **Links** { | object<br><br>*read-only* | The links object contains the links to other resources that are related to this resource. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Chassis** [ {} ] | array<br><br>*read-only* | An array of references to the chassis in which the PCIe device is contained |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* | Oem extension object. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**PCIeFunctions** [ {} ] | array<br><br>*read-only* | An array of references to PCIeFunctions exposed by this device. |
+| } |   |   |
+| **Manufacturer** | string, null<br><br>*read-only* | This is the manufacturer of this PCIe device. |
+| **Model** | string, null<br><br>*read-only* | This is the model number for the PCIe device. |
+| **Name** | string<br><br>*read-only* | The name of the resource or array element. |
+| **Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
+| **PartNumber** | string, null<br><br>*read-only* | The part number for this PCIe device. |
+| **SKU** | string, null<br><br>*read-only* | This is the SKU for this PCIe device. |
+| **SerialNumber** | string, null<br><br>*read-only* | The serial number for this PCIe device. |
+| **Status** { | object, null<br><br>*read-only* |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Health** | string, null<br><br>*read-write* | This represents the health state of this resource in the absence of its dependent resources. *See Property Details, below, for more information about this property.* |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**HealthRollup** | string, null<br><br>*read-write* | This represents the overall health state from the view of this resource. *See Property Details, below, for more information about this property.* |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**State** | string, null<br><br>*read-write* | This indicates the known state of the resource, such as if it is enabled. *See Property Details, below, for more information about this property.* |
+| } |   |   |
+
+## Property Details
+
+### DeviceType:
+
+| string | Description |
+| --- | --- |
+| MultiFunction | A multi-function PCIe device |
+| Simulated | A PCIe device which is not currently physically present, but is being simulated by the PCIe infrastructure |
+| SingleFunction | A single-function PCIe device |
+
+### Health:
+
+| string | Description |
+| --- | --- |
+| Critical | A critical condition exists that requires immediate attention |
+| OK | Normal |
+| Warning | A condition exists that requires attention |
+
+### HealthRollup:
+
+| string | Description |
+| --- | --- |
+| Critical | A critical condition exists that requires immediate attention |
+| OK | Normal |
+| Warning | A condition exists that requires attention |
+
+### State:
+
+| string | Description |
+| --- | --- |
+| Absent | This function or resource is not present or not detected |
+| Deferring | The element will not process any commands but will queue new requests. |
+| Disabled | This function or resource has been disabled |
+| Enabled | This function or resource has been enabled |
+| InTest | This function or resource is undergoing testing |
+| Quiesced | The element is enabled but only processes a restricted set of commands. |
+| StandbyOffline | This function or resource is enabled, but awaiting an external action to activate it |
+| StandbySpare | This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it. |
+| Starting | This function or resource is starting |
+| UnavailableOffline | This function or resource is present but cannot be used |
+| Updating | The element is updating and may be unavailable or degraded. |
+
+
+# PCIeFunction 1.0.0
+
+This is the schema definition for the PCIeFunction resource.  It represents the properties of a PCIeFunction attached to a System.
+
+|     |     |     |
+| --- | --- | --- |
+| **ClassCode** | string, null<br><br>*read-write* | The Class Code of this PCIe function. |
+| **Description** | string, null<br><br>*read-only* | Provides a description of this resource and is used for commonality  in the schema definitions. |
+| **DeviceClass** | string<br><br>*read-write* | The class for this PCIe Function. *See Property Details, below, for more information about this property.* |
+| **DeviceId** | string, null<br><br>*read-write* | The Device ID of this PCIe function. |
+| **FunctionId** | number, null<br><br>*read-only* | The the PCIe Function identifier. |
+| **FunctionType** | string<br><br>*read-write* | The type of the PCIe Function. *See Property Details, below, for more information about this property.* |
+| **Id** | string<br><br>*read-only* | Uniquely identifies the resource within the collection of like resources. |
+| **Links** { | object<br><br>*read-only* | The links object contains the links to other resources that are related to this resource. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Drives** [ {} ] | array<br><br>*read-only* | An array of references to the drives which the PCIe device produces |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**EthernetInterfaces** [ {} ] | array<br><br>*read-only* | An array of references to the ethernet interfaces which the PCIe device produces |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* | Oem extension object. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**PCIeDevice** {} | object, null<br><br>*read-write* | A reference to the PCIeDevice on which this function resides. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**StorageControllers** [ {} ] | array<br><br>*read-only* | An array of references to the storage controllers which the PCIe device produces |
+| } |   |   |
+| **Name** | string<br><br>*read-only* | The name of the resource or array element. |
+| **Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
+| **RevisionId** | string, null<br><br>*read-write* | The Revision ID of this PCIe function. |
+| **Status** { | object, null<br><br>*read-only* |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Health** | string, null<br><br>*read-write* | This represents the health state of this resource in the absence of its dependent resources. *See Property Details, below, for more information about this property.* |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**HealthRollup** | string, null<br><br>*read-write* | This represents the overall health state from the view of this resource. *See Property Details, below, for more information about this property.* |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**State** | string, null<br><br>*read-write* | This indicates the known state of the resource, such as if it is enabled. *See Property Details, below, for more information about this property.* |
+| } |   |   |
+| **SubsystemId** | string, null<br><br>*read-write* | The Subsystem ID of this PCIe function. |
+| **SubsystemVendorId** | string, null<br><br>*read-write* | The Subsystem Vendor ID of this PCIe function. |
+| **VendorId** | string, null<br><br>*read-write* | The Vendor ID of this PCIe function. |
+
+## Property Details
+
+### DeviceClass:
+
+| string | Description |
+| --- | --- |
+| Bridge | A bridge |
+| CommunicationController | A communication controller |
+| Coprocessor | A coprocessor |
+| DisplayController | A display controller |
+| DockingStation | A docking station |
+| EncryptionController | An encryption controller |
+| GenericSystemPeripheral | A generic system peripheral |
+| InputDeviceController | An input device controller |
+| IntelligentController | An intelligent controller |
+| MassStorageController | A mass storage controller |
+| MemoryController | A memory controller |
+| MultimediaController | A multimedia controller |
+| NetworkController | A network controller |
+| NonEssentialInstrumentation | A non-essential instrumentation |
+| Other | A other class. The function Device Class Id needs to be verified |
+| ProcessingAccelerators | A processing accelerators |
+| Processor | A processor |
+| SatelliteCommunicationsController | A satellite communications controller |
+| SerialBusController | A serial bus controller |
+| SignalProcessingController | A signal processing controller |
+| UnassignedClass | An unassigned class |
+| UnclassifiedDevice | An unclassified device |
+| WirelessController | A wireless controller |
+
+### FunctionType:
+
+| string | Description |
+| --- | --- |
+| Physical | A physical PCie function |
+| Virtual | A virtual PCIe function |
+
+### Health:
+
+| string | Description |
+| --- | --- |
+| Critical | A critical condition exists that requires immediate attention |
+| OK | Normal |
+| Warning | A condition exists that requires attention |
+
+### HealthRollup:
+
+| string | Description |
+| --- | --- |
+| Critical | A critical condition exists that requires immediate attention |
+| OK | Normal |
+| Warning | A condition exists that requires attention |
+
+### State:
+
+| string | Description |
+| --- | --- |
+| Absent | This function or resource is not present or not detected |
+| Deferring | The element will not process any commands but will queue new requests. |
+| Disabled | This function or resource has been disabled |
+| Enabled | This function or resource has been enabled |
+| InTest | This function or resource is undergoing testing |
+| Quiesced | The element is enabled but only processes a restricted set of commands. |
+| StandbyOffline | This function or resource is enabled, but awaiting an external action to activate it |
+| StandbySpare | This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it. |
+| Starting | This function or resource is starting |
+| UnavailableOffline | This function or resource is present but cannot be used |
+| Updating | The element is updating and may be unavailable or degraded. |
+
+
+# Port 1.0.0
+
+Port contains properties describing a port of a switch.
+
+|     |     |     |
+| --- | --- | --- |
+| **Actions** { | object<br><br>*read-only* | The available actions for this resource. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**#Port.Reset** {} | object<br><br>*read-write* | This action is used to reset this switch. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* |  |
+| } |   |   |
+| **CurrentSpeedGbps** | number, null<br>(Gbit/s)<br><br>*read-only* | The current speed of this port. |
+| **Description** | string, null<br><br>*read-only* | Provides a description of this resource and is used for commonality  in the schema definitions. |
+| **Id** | string<br><br>*read-only* | Uniquely identifies the resource within the collection of like resources. |
+| **Links** { | object<br><br>*read-only* | Contains references to other resources that are related to this resource. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**AssociatedEndpoints** [ {} ] | array<br><br>*read-only* | An array of references to the endpoints that connect to the switch through this port. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**ConnectedSwitchPorts** [ {} ] | array<br><br>*read-only* | An array of references to the ports that connect to the switch through this port. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**ConnectedSwitches** [ {} ] | array<br><br>*read-only* | An array of references to the switches that connect to the switch through this port. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* | Oem extension object. |
+| } |   |   |
+| **MaxSpeedGbps** | number, null<br>(Gbit/s)<br><br>*read-only* | The maximum speed of this port as currently configured. |
+| **Name** | string<br><br>*read-only* | The name of the resource or array element. |
+| **Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
+| **PortId** | string, null<br><br>*read-only* | This is the label of this port on the physical switch package. |
+| **PortProtocol** | null<br><br>*read-write* | The protocol being sent over this port. |
+| **PortType** | string, null<br><br>*read-write* | This is the type of this port. *See Property Details, below, for more information about this property.* |
+| **Status** { | object<br><br>*read-only* |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Health** | string, null<br><br>*read-write* | This represents the health state of this resource in the absence of its dependent resources. *See Property Details, below, for more information about this property.* |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**HealthRollup** | string, null<br><br>*read-write* | This represents the overall health state from the view of this resource. *See Property Details, below, for more information about this property.* |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**State** | string, null<br><br>*read-write* | This indicates the known state of the resource, such as if it is enabled. *See Property Details, below, for more information about this property.* |
+| } |   |   |
+| **Width** | number, null<br><br>*read-only* | The number of lanes, phys, or other physical transport links that this port contains. |
+
+## Property Details
+
+### Health:
+
+| string | Description |
+| --- | --- |
+| Critical | A critical condition exists that requires immediate attention |
+| OK | Normal |
+| Warning | A condition exists that requires attention |
+
+### HealthRollup:
+
+| string | Description |
+| --- | --- |
+| Critical | A critical condition exists that requires immediate attention |
+| OK | Normal |
+| Warning | A condition exists that requires attention |
+
+### PortType:
+
+| string | Description |
+| --- | --- |
+| BidirectionalPort | This port connects to any type of device |
+| DownstreamPort | This port connects to a target device |
+| InterswitchPort | This port connects to another switch |
+| ManagementPort | This port connects to a switch manager |
+| UnconfiguredPort | This port has not yet been configured. |
+| UpstreamPort | This port connects to a host device |
+
+### State:
+
+| string | Description |
+| --- | --- |
+| Absent | This function or resource is not present or not detected |
+| Deferring | The element will not process any commands but will queue new requests. |
+| Disabled | This function or resource has been disabled |
+| Enabled | This function or resource has been enabled |
+| InTest | This function or resource is undergoing testing |
+| Quiesced | The element is enabled but only processes a restricted set of commands. |
+| StandbyOffline | This function or resource is enabled, but awaiting an external action to activate it |
+| StandbySpare | This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it. |
+| Starting | This function or resource is starting |
+| UnavailableOffline | This function or resource is present but cannot be used |
+| Updating | The element is updating and may be unavailable or degraded. |
+
+
+# Power 1.2.0
 
 This is the schema definition for the Power Metrics.  It represents the properties for Power Consumption and Power Limiting.
 
@@ -1741,21 +2429,22 @@ This is the schema definition for the Power Metrics.  It represents the properti
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**MemberId** | string<br><br>*read-write* | This is the identifier for the member within the collection. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Name** | string, null<br><br>*read-only* | Power Control Function name. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**PowerAllocatedWatts** | number, null<br><br>*read-only* | The total amount of power that has been allocated (or budegeted)to  chassis resources. |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**PowerAvailableWatts** | number, null<br><br>*read-only* | The amount of power not already budgeted and therefore available for additional allocation. (powerCapacity - powerAllocated).  This indicates how much reserve power capacity is left. |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**PowerCapacityWatts** | number, null<br><br>*read-only* | The total amount of power available to the chassis for allocation. This may the power supply capacity, or power budget assigned to the chassis from an up-stream chassis. |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**PowerConsumedWatts** | number, null<br><br>*read-only* | The actual power being consumed by the chassis. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**PowerAllocatedWatts** | number, null<br>(W)<br><br>*read-only* | The total amount of power that has been allocated (or budegeted)to  chassis resources. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**PowerAvailableWatts** | number, null<br>(W)<br><br>*read-only* | The amount of power not already budgeted and therefore available for additional allocation. (powerCapacity - powerAllocated).  This indicates how much reserve power capacity is left. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**PowerCapacityWatts** | number, null<br>(W)<br><br>*read-only* | The total amount of power available to the chassis for allocation. This may the power supply capacity, or power budget assigned to the chassis from an up-stream chassis. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**PowerConsumedWatts** | number, null<br>(W)<br><br>*read-only* | The actual power being consumed by the chassis. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**PowerLimit** {} | object<br><br>*read-write* | Power limit status and configuration information for this chassis |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**PowerMetrics** {} | object<br><br>*read-write* | Power readings for this chassis. |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**PowerRequestedWatts** | number, null<br><br>*read-only* | The potential power that the chassis resources are requesting which may be higher than the current level being consumed since requested power includes budget that the chassis resource wants for future use. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**PowerRequestedWatts** | number, null<br>(W)<br><br>*read-only* | The potential power that the chassis resources are requesting which may be higher than the current level being consumed since requested power includes budget that the chassis resource wants for future use. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**RelatedItem** [ {} ] | array<br><br>*read-write* | The ID(s) of the resources associated with this Power Limit |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Status** {} | object<br><br>*read-only* |  |
 | } ] |   |   |
 | **PowerSupplies** [ { | array<br><br>*read-write* | Details of the power supplies associated with this system or device |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**FirmwareVersion** | string, null<br><br>*read-only* | The firmware version for this Power Supply |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**IndicatorLED** | string, null<br><br>*read-write* | The state of the indicator LED, used to identify the power supply *See Property Details, below, for more information about this property.* |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**InputRanges** [ {} ] | array<br><br>*read-only* | This is the input ranges that the power supply can use. |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**LastPowerOutputWatts** | number, null<br><br>*read-only* | The average power output of this Power Supply |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**LineInputVoltage** | number, null<br><br>*read-only* | The line input voltage at which the Power Supply is operating |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**LastPowerOutputWatts** | number, null<br>(W)<br><br>*read-only* | The average power output of this Power Supply |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**LineInputVoltage** | number, null<br>(V)<br><br>*read-only* | The line input voltage at which the Power Supply is operating |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**LineInputVoltageType** | string, null<br><br>*read-write* | The line voltage type supported as an input to this Power Supply *See Property Details, below, for more information about this property.* |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Manufacturer** | string, null<br><br>*read-only* | This is the manufacturer of this power supply. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**MemberId** | string<br><br>*read-write* | This is the identifier for the member within the collection. |
@@ -1763,7 +2452,7 @@ This is the schema definition for the Power Metrics.  It represents the properti
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Name** | string, null<br><br>*read-only* | The name of the Power Supply |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**PartNumber** | string, null<br><br>*read-only* | The part number for this Power Supply |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**PowerCapacityWatts** | number, null<br><br>*read-only* | The maximum capacity of this Power Supply |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**PowerCapacityWatts** | number, null<br>(W)<br><br>*read-only* | The maximum capacity of this Power Supply |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**PowerSupplyType** | string, null<br><br>*read-write* | The Power Supply type (AC or DC) *See Property Details, below, for more information about this property.* |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Redundancy** [ {} ] | array<br><br>*read-only* | This structure is used to show redundancy for power supplies.  The Component ids will reference the members of the redundancy groups. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**RelatedItem** [ {} ] | array<br><br>*read-write* | The ID(s) of the resources associated with this Power Limit |
@@ -1776,25 +2465,33 @@ This is the schema definition for the Power Metrics.  It represents the properti
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
 | } ] |   |   |
 | **Voltages** [ { | array<br><br>*read-write* | This is the definition for voltage sensors. |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**LowerThresholdCritical** | number, null<br><br>*read-only* | Below normal range but not yet fatal. |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**LowerThresholdFatal** | number, null<br><br>*read-only* | Below normal range and is fatal |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**LowerThresholdNonCritical** | number, null<br><br>*read-only* | Below normal range |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**MaxReadingRange** | number, null<br><br>*read-only* | Maximum value for CurrentReading |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**LowerThresholdCritical** | number, null<br>(V)<br><br>*read-only* | Below normal range but not yet fatal. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**LowerThresholdFatal** | number, null<br>(V)<br><br>*read-only* | Below normal range and is fatal |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**LowerThresholdNonCritical** | number, null<br>(V)<br><br>*read-only* | Below normal range |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**MaxReadingRange** | number, null<br>(V)<br><br>*read-only* | Maximum value for CurrentReading |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**MemberId** | string<br><br>*read-write* | This is the identifier for the member within the collection. |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**MinReadingRange** | number, null<br><br>*read-only* | Minimum value for CurrentReading |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**MinReadingRange** | number, null<br>(V)<br><br>*read-only* | Minimum value for CurrentReading |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Name** | string, null<br><br>*read-only* | Voltage sensor name. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**PhysicalContext** | string<br><br>*read-write* | Describes the area or device to which this voltage measurement applies. *See Property Details, below, for more information about this property.* |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**ReadingVolts** | number, null<br><br>*read-only* | The current value of the voltage sensor. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**ReadingVolts** | number, null<br>(V)<br><br>*read-only* | The current value of the voltage sensor. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**RelatedItem** [ {} ] | array<br><br>*read-only* | Describes the areas or devices to which this voltage measurement applies. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**SensorNumber** | number, null<br><br>*read-only* | A numerical identifier to represent the voltage sensor |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Status** {} | object<br><br>*read-only* |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**UpperThresholdCritical** | number, null<br><br>*read-only* | Above normal range but not yet fatal. |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**UpperThresholdFatal** | number, null<br><br>*read-only* | Above normal range and is fatal |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**UpperThresholdNonCritical** | number, null<br><br>*read-only* | Above normal range |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**UpperThresholdCritical** | number, null<br>(V)<br><br>*read-only* | Above normal range but not yet fatal. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**UpperThresholdFatal** | number, null<br>(V)<br><br>*read-only* | Above normal range and is fatal |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**UpperThresholdNonCritical** | number, null<br>(V)<br><br>*read-only* | Above normal range |
 | } ] |   |   |
 
 ## Property Details
+
+### IndicatorLED:
+
+| string | Description |
+| --- | --- |
+| Blinking | The Indicator LED is blinking. |
+| Lit | The Indicator LED is lit. |
+| Off | The Indicator LED is off. |
 
 ### LineInputVoltageType:
 
@@ -1984,13 +2681,16 @@ This object's properties shall contain values dependent on the value of the Proc
 | string | Description |
 | --- | --- |
 | Absent | This function or resource is not present or not detected |
+| Deferring | The element will not process any commands but will queue new requests. |
 | Disabled | This function or resource has been disabled |
 | Enabled | This function or resource has been enabled |
 | InTest | This function or resource is undergoing testing |
+| Quiesced | The element is enabled but only processes a restricted set of commands. |
 | StandbyOffline | This function or resource is enabled, but awaiting an external action to activate it |
 | StandbySpare | This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it. |
 | Starting | This function or resource is starting |
 | UnavailableOffline | This function or resource is present but cannot be used |
+| Updating | The element is updating and may be unavailable or degraded. |
 
 ### Step:
 
@@ -2171,15 +2871,15 @@ This schema defines an asynchronous serial interface resource.
 | 2 | 
 
 
-# ServiceRoot 1.0.2
+# ServiceRoot 1.1.0
 
 This object represents the root Redfish service.
 
 |     |     |     |
 | --- | --- | --- |
 | **AccountService** { | object<br><br>*read-write* | This is a link to the Account Service. |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**AccountLockoutCounterResetAfter** | number<br><br>*read-write* | The interval of time in seconds since the last failed login attempt at which point the lockout threshold counter for the account is reset to zero. Must be less than or equal to AccountLockoutDuration |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**AccountLockoutDuration** | number, null<br><br>*read-write* | The time in seconds an account is locked after the account lockout threshold is met. Must be >= AccountLockoutResetAfter. If set to 0, no lockout will occur. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**AccountLockoutCounterResetAfter** | number<br>(s)<br><br>*read-write* | The interval of time in seconds since the last failed login attempt at which point the lockout threshold counter for the account is reset to zero. Must be less than or equal to AccountLockoutDuration |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**AccountLockoutDuration** | number, null<br>(s)<br><br>*read-write* | The time in seconds an account is locked after the account lockout threshold is met. Must be >= AccountLockoutResetAfter. If set to 0, no lockout will occur. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**AccountLockoutThreshold** | number, null<br><br>*read-write* | The number of failed login attempts before a user account is locked for a specified duration. (0=never locked) |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Accounts** {} | object<br><br>*read-write* | Link to a collection of Manager Accounts |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**AuthFailureLoggingThreshold** | number<br><br>*read-write* | This is the number of authorization failures that need to occur before the failure attempt is logged to the manager log. |
@@ -2203,7 +2903,7 @@ This object represents the root Redfish service.
 | **EventService** { | object<br><br>*read-write* | This is a link to the EventService. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Actions** {} | object<br><br>*read-only* | The available actions for this resource. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**DeliveryRetryAttempts** | number<br><br>*read-only* | This is the number of attempts an event posting is retried before the subscription is terminated. |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**DeliveryRetryIntervalSeconds** | number<br><br>*read-only* | This represents the number of seconds between retry attempts for sending any given Event |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**DeliveryRetryIntervalSeconds** | number<br>(s)<br><br>*read-only* | This represents the number of seconds between retry attempts for sending any given Event |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Description** | string, null<br><br>*read-only* | Provides a description of this resource and is used for commonality  in the schema definitions. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**EventTypesForSubscription** [ {} ] | array<br><br>*read-only* | This is the types of Events that can be subscribed to. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Id** | string<br><br>*read-only* | Uniquely identifies the resource within the collection of like resources. |
@@ -2212,6 +2912,12 @@ This object represents the root Redfish service.
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**ServiceEnabled** | boolean, null<br><br>*read-write* | This indicates whether this service is enabled. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Status** {} | object<br><br>*read-only* |  |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Subscriptions** {} | object<br><br>*read-write* | This is a reference to a collection of Event Destination resources. |
+| } |   |   |
+| **Fabrics** *(v1.1+)* { | object<br><br>*read-write* | A link to a collection of all fabric entities. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Description** | string, null<br><br>*read-only* | Provides a description of this resource and is used for commonality  in the schema definitions. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Members** [ {} ] | array<br><br>*read-only* | Contains the members of this collection. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Name** | string<br><br>*read-only* | The name of the resource or array element. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
 | } |   |   |
 | **Id** | string<br><br>*read-only* | Uniquely identifies the resource within the collection of like resources. |
 | **JsonSchemas** { | object<br><br>*read-write* | This is a link to a collection of Json-Schema files. |
@@ -2240,15 +2946,18 @@ This object represents the root Redfish service.
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
 | } |   |   |
 | **SessionService** { | object<br><br>*read-write* | This is a link to the Sessions Service. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Actions** {} | object<br><br>*read-only* | The Actions object contains the available custom actions on this resource. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Description** | string, null<br><br>*read-only* | Provides a description of this resource and is used for commonality  in the schema definitions. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Id** | string<br><br>*read-only* | Uniquely identifies the resource within the collection of like resources. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Name** | string<br><br>*read-only* | The name of the resource or array element. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**ServiceEnabled** | boolean, null<br><br>*read-write* | This indicates whether this service is enabled. |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**SessionTimeout** | number<br><br>*read-write* | This is the number of seconds of inactivity that a session may have before the session service closes the session due to inactivity. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**SessionTimeout** | number<br>(s)<br><br>*read-write* | This is the number of seconds of inactivity that a session may have before the session service closes the session due to inactivity. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Sessions** {} | object<br><br>*read-write* | Link to a collection of Sessions |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Status** {} | object<br><br>*read-only* |  |
 | } |   |   |
+| **StorageServices** *(v1.1+)* | <br><br>*read-only* | A link to a collection of all storage service entities. |
+| **StorageSystems** *(v1.1+)* | <br><br>*read-only* | This is a link to a collection of storage systems. |
 | **Systems** { | object<br><br>*read-write* | This is a link to a collection of Systems. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Description** | string, null<br><br>*read-only* | Provides a description of this resource and is used for commonality  in the schema definitions. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Members** [ {} ] | array<br><br>*read-only* | Contains the members of this collection. |
@@ -2268,6 +2977,17 @@ This object represents the root Redfish service.
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Tasks** {} | object<br><br>*read-write* | References to the Tasks collection. |
 | } |   |   |
 | **UUID** | string, null<br><br>*read-write* | Unique identifier for a service instance. When SSDP is used, this value should be an exact match of the UUID value returned in a 200OK from an SSDP M-SEARCH request during discovery.  |
+| **UpdateService** *(v1.1+)* { | object<br><br>*read-write* | This is a link to the UpdateService. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Actions** {} | object<br><br>*read-only* | The Actions object contains the available custom actions on this resource. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Description** | string, null<br><br>*read-only* | Provides a description of this resource and is used for commonality  in the schema definitions. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**FirmwareInventory** {} | object, null<br><br>*read-write* | An inventory of firmware. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Id** | string<br><br>*read-only* | Uniquely identifies the resource within the collection of like resources. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Name** | string<br><br>*read-only* | The name of the resource or array element. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**ServiceEnabled** | boolean, null<br><br>*read-write* | This indicates whether this service is enabled. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**SoftwareInventory** {} | object, null<br><br>*read-write* | An inventory of software. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Status** {} | object, null<br><br>*read-only* |  |
+| } |   |   |
 
 ## Property Details
 
@@ -2292,18 +3012,21 @@ The Session resource describes a single connection (session) between a client an
 | **Password** | string, null<br><br>*read-write* | This property is used in a POST to specify a password when creating a new session.  This property is null on a GET. |
 | **UserName** | string, null<br><br>*read-only* | The UserName for the account for this session. |
 
-# SessionService 1.0.2
+# SessionService 1.1.0
 
 This is the schema definition for the Session Service.  It represents the properties for the service itself and has links to the actual list of sessions.
 
 |     |     |     |
 | --- | --- | --- |
+| **Actions** *(v1.1+)* { | object<br><br>*read-only* | The Actions object contains the available custom actions on this resource. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object, null<br><br>*read-write* |  |
+| } |   |   |
 | **Description** | string, null<br><br>*read-only* | Provides a description of this resource and is used for commonality  in the schema definitions. |
 | **Id** | string<br><br>*read-only* | Uniquely identifies the resource within the collection of like resources. |
 | **Name** | string<br><br>*read-only* | The name of the resource or array element. |
 | **Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
 | **ServiceEnabled** | boolean, null<br><br>*read-write* | This indicates whether this service is enabled. |
-| **SessionTimeout** | number<br><br>*read-write* | This is the number of seconds of inactivity that a session may have before the session service closes the session due to inactivity. |
+| **SessionTimeout** | number<br>(s)<br><br>*read-write* | This is the number of seconds of inactivity that a session may have before the session service closes the session due to inactivity. |
 | **Sessions** { | object<br><br>*read-write* | Link to a collection of Sessions |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Description** | string, null<br><br>*read-only* | Provides a description of this resource and is used for commonality  in the schema definitions. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Members** [ {} ] | array<br><br>*read-only* | Contains the members of this collection. |
@@ -2340,13 +3063,16 @@ This is the schema definition for the Session Service.  It represents the proper
 | string | Description |
 | --- | --- |
 | Absent | This function or resource is not present or not detected |
+| Deferring | The element will not process any commands but will queue new requests. |
 | Disabled | This function or resource has been disabled |
 | Enabled | This function or resource has been enabled |
 | InTest | This function or resource is undergoing testing |
+| Quiesced | The element is enabled but only processes a restricted set of commands. |
 | StandbyOffline | This function or resource is enabled, but awaiting an external action to activate it |
 | StandbySpare | This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it. |
 | Starting | This function or resource is starting |
 | UnavailableOffline | This function or resource is present but cannot be used |
+| Updating | The element is updating and may be unavailable or degraded. |
 
 
 # SimpleStorage 1.1.0
@@ -2357,7 +3083,7 @@ This is the schema definition for the Simple Storage resource.  It represents th
 | --- | --- | --- |
 | **Description** | string, null<br><br>*read-only* | Provides a description of this resource and is used for commonality  in the schema definitions. |
 | **Devices** [ { | array<br><br>*read-only* | The storage devices associated with this resource |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**CapacityBytes** | number, null<br><br>*read-only* | The size of the storage device. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**CapacityBytes** | number, null<br>(By)<br><br>*read-only* | The size of the storage device. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Manufacturer** | string, null<br><br>*read-only* | The name of the manufacturer of this device |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Model** | string, null<br><br>*read-only* | The product model number of this device |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Name** | string<br><br>*read-only* | The name of the resource or array element. |
@@ -2398,16 +3124,76 @@ This is the schema definition for the Simple Storage resource.  It represents th
 | string | Description |
 | --- | --- |
 | Absent | This function or resource is not present or not detected |
+| Deferring | The element will not process any commands but will queue new requests. |
 | Disabled | This function or resource has been disabled |
 | Enabled | This function or resource has been enabled |
 | InTest | This function or resource is undergoing testing |
+| Quiesced | The element is enabled but only processes a restricted set of commands. |
 | StandbyOffline | This function or resource is enabled, but awaiting an external action to activate it |
 | StandbySpare | This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it. |
 | Starting | This function or resource is starting |
 | UnavailableOffline | This function or resource is present but cannot be used |
+| Updating | The element is updating and may be unavailable or degraded. |
 
 
-# Storage 1.0.0
+# SoftwareInventory 1.0.0
+
+This schema defines an inventory of software components.
+
+|     |     |     |
+| --- | --- | --- |
+| **Actions** { | object<br><br>*read-only* | The Actions object contains the available custom actions on this resource. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* |  |
+| } |   |   |
+| **Description** | string, null<br><br>*read-only* | Provides a description of this resource and is used for commonality  in the schema definitions. |
+| **Id** | string<br><br>*read-only* | Uniquely identifies the resource within the collection of like resources. |
+| **Name** | string<br><br>*read-only* | The name of the resource or array element. |
+| **Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
+| **Status** { | object, null<br><br>*read-only* |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Health** | string, null<br><br>*read-write* | This represents the health state of this resource in the absence of its dependent resources. *See Property Details, below, for more information about this property.* |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**HealthRollup** | string, null<br><br>*read-write* | This represents the overall health state from the view of this resource. *See Property Details, below, for more information about this property.* |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**State** | string, null<br><br>*read-write* | This indicates the known state of the resource, such as if it is enabled. *See Property Details, below, for more information about this property.* |
+| } |   |   |
+| **Updateable** | boolean, null<br><br>*read-only* | Indicates whether this firmware can be updated by the update service. |
+| **Version** | string, null<br><br>*read-only* | A string representing the version of this firmware. |
+
+## Property Details
+
+### Health:
+
+| string | Description |
+| --- | --- |
+| Critical | A critical condition exists that requires immediate attention |
+| OK | Normal |
+| Warning | A condition exists that requires attention |
+
+### HealthRollup:
+
+| string | Description |
+| --- | --- |
+| Critical | A critical condition exists that requires immediate attention |
+| OK | Normal |
+| Warning | A condition exists that requires attention |
+
+### State:
+
+| string | Description |
+| --- | --- |
+| Absent | This function or resource is not present or not detected |
+| Deferring | The element will not process any commands but will queue new requests. |
+| Disabled | This function or resource has been disabled |
+| Enabled | This function or resource has been enabled |
+| InTest | This function or resource is undergoing testing |
+| Quiesced | The element is enabled but only processes a restricted set of commands. |
+| StandbyOffline | This function or resource is enabled, but awaiting an external action to activate it |
+| StandbySpare | This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it. |
+| Starting | This function or resource is starting |
+| UnavailableOffline | This function or resource is present but cannot be used |
+| Updating | The element is updating and may be unavailable or degraded. |
+
+
+# Storage 1.0.1
 
 This schema defines a storage subsystem and its respective properties.  A storage subsystem represents a set of storage controllers (physical or virtual) and the resources such as volumes that can be accessed from that subsystem.
 
@@ -2421,9 +3207,9 @@ This schema defines a storage subsystem and its respective properties.  A storag
 | **Drives** [ { | array<br><br>*read-only* | The set of drives attached to the storage controllers represented by this resource. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Actions** {} | object<br><br>*read-only* | The available actions for this resource. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**AssetTag** | string, null<br><br>*read-write* | The user assigned asset tag for this drive. |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**BlockSizeBytes** | number, null<br><br>*read-only* | The size of the smallest addressible unit (Block) of this drive in bytes |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**CapableSpeedGbs** | number, null<br><br>*read-only* | The speed which this drive can communicate to a storage controller in ideal conditions in Gigabits per second |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**CapacityBytes** | number, null<br><br>*read-only* | The size in bytes of this Drive |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**BlockSizeBytes** | number, null<br>(By)<br><br>*read-only* | The size of the smallest addressible unit (Block) of this drive in bytes |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**CapableSpeedGbs** | number, null<br>(Gbit/s)<br><br>*read-only* | The speed which this drive can communicate to a storage controller in ideal conditions in Gigabits per second |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**CapacityBytes** | number, null<br>(By)<br><br>*read-only* | The size in bytes of this Drive |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Description** | string, null<br><br>*read-only* | Provides a description of this resource and is used for commonality  in the schema definitions. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**EncryptionAbility** | string, null<br><br>*read-write* | The encryption abilities of this drive *See Property Details, below, for more information about this property.* |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**EncryptionStatus** | string, null<br><br>*read-write* | The status of the encrytion of this drive *See Property Details, below, for more information about this property.* |
@@ -2438,13 +3224,14 @@ This schema defines a storage subsystem and its respective properties.  A storag
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**MediaType** | string, null<br><br>*read-write* | The type of media contained in this drive *See Property Details, below, for more information about this property.* |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Model** | string, null<br><br>*read-only* | This is the model number for the drive. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Name** | string<br><br>*read-only* | The name of the resource or array element. |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**NegotiatedSpeedGbs** | number, null<br><br>*read-only* | The speed which this drive is currently communicating to the storage controller in Gigabits per second |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**NegotiatedSpeedGbs** | number, null<br>(Gbit/s)<br><br>*read-only* | The speed which this drive is currently communicating to the storage controller in Gigabits per second |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Operations** [ {} ] | array<br><br>*read-only* | The operations currently running on the Drive |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**PartNumber** | string, null<br><br>*read-only* | The part number for this drive. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**PredictedMediaLifeLeftPercent** | number, null<br><br>*read-only* | The percentage of reads and writes that are predicted to still be available for the media |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Protocol** | null<br><br>*read-write* | The protocol this drive is using to communicate to the storage controller |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Revision** | string, null<br><br>*read-only* | The revision of this Drive |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**RotationSpeedRPM** | number, null<br><br>*read-only* | The rotation speed of this Drive in Revolutions per Minute (RPM) |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**RotationSpeedRPM** | number, null<br>(RPM)<br><br>*read-only* | The rotation speed of this Drive in Revolutions per Minute (RPM) |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**SKU** | string, null<br><br>*read-only* | This is the SKU for this drive. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**SerialNumber** | string, null<br><br>*read-only* | The serial number for this drive. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Status** {} | object<br><br>*read-only* |  |
@@ -2467,24 +3254,28 @@ This schema defines a storage subsystem and its respective properties.  A storag
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**State** | string, null<br><br>*read-write* | This indicates the known state of the resource, such as if it is enabled. *See Property Details, below, for more information about this property.* |
 | } |   |   |
-| **StorageControllers** [ {} ] | array<br><br>*read-only* | The set of storage controllers represented by this resource. |
-| **Volumes** [ { | array<br><br>*read-only* | The set of volumes produced by the storage controllers represented by this resource. |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Actions** {} | object<br><br>*read-only* | The available actions for this resource. |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**BlockSizeBytes** | number, null<br><br>*read-only* | The size of the smallest addressible unit (Block) of this volume in bytes |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**CapacityBytes** | number, null<br><br>*read-only* | The size in bytes of this Volume |
+| **StorageControllers** [ { | array<br><br>*read-only* | The set of storage controllers represented by this resource. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**AssetTag** | string, null<br><br>*read-write* | The user assigned asset tag for this storage controller. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**FirmwareVersion** | string, null<br><br>*read-only* | The firmware version of this storage Controller |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Identifiers** [ {} ] | array<br><br>*read-only* | The Durable names for the storage controller |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Manufacturer** | string, null<br><br>*read-only* | This is the manufacturer of this storage controller. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**MemberId** | string<br><br>*read-write* | This is the identifier for the member within the collection. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Model** | string, null<br><br>*read-only* | This is the model number for the storage controller. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**PartNumber** | string, null<br><br>*read-only* | The part number for this storage controller. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**SKU** | string, null<br><br>*read-only* | This is the SKU for this storage controller. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**SerialNumber** | string, null<br><br>*read-only* | The serial number for this storage controller. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**SpeedGbps** | number, null<br>(Gbit/s)<br><br>*read-only* | The speed of the storage controller interface. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Status** {} | object<br><br>*read-only* |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**SupportedControllerProtocols** [ {} ] | array<br><br>*read-only* | This represents the protocols by which this storage controller can be communicated to. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**SupportedDeviceProtocols** [ {} ] | array<br><br>*read-only* | This represents the protocols which the storage controller can use to communicate with attached devices. |
+| } ] |   |   |
+| **Volumes** { | object<br><br>*read-write* | The set of volumes produced by the storage controllers represented by this resource. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Description** | string, null<br><br>*read-only* | Provides a description of this resource and is used for commonality  in the schema definitions. |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Encrypted** | boolean, null<br><br>*read-write* | Is this Volume encrypted |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**EncryptionTypes** [ {} ] | array<br><br>*read-write* | The types of encryption used by this Volume |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Id** | string<br><br>*read-only* | Uniquely identifies the resource within the collection of like resources. |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Identifiers** [ {} ] | array<br><br>*read-only* | The Durable names for the volume |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Links** {} | object<br><br>*read-only* | Contains references to other resources that are related to this resource. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Members** [ {} ] | array<br><br>*read-only* | Contains the members of this collection. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Name** | string<br><br>*read-only* | The name of the resource or array element. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Operations** [ {} ] | array<br><br>*read-only* | The operations currently running on the Volume |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**OptimumIOSizeBytes** | number, null<br><br>*read-only* | The size in bytes of this Volume's optimum IO size. |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Status** {} | object<br><br>*read-only* |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**VolumeType** | string, null<br><br>*read-write* | Is this drive currently predicting a failure in the near future *See Property Details, below, for more information about this property.* |
-| } ] |   |   |
+| } |   |   |
 
 ## Property Details
 
@@ -2502,7 +3293,8 @@ This schema defines a storage subsystem and its respective properties.  A storag
 | --- | --- |
 | Foreign | The drive is currently encrypted, the data is not accessible to the user, and the system requires user intervention to expose the data |
 | Locked | The drive is currently encrypted and the data is not accessible to the user, however the system has the ability to unlock the drive automatically |
-| Unecrypted | The drive is not currently encrypted |
+| Unecrypted | The drive is not currently encrypted. Deprecated: Use Unencrypted |
+| Unencrypted | The drive is not currently encrypted |
 | Unlocked | The drive is currently encrypted but the data is accessible to the user unencrypted |
 
 ### Health:
@@ -2551,13 +3343,16 @@ This schema defines a storage subsystem and its respective properties.  A storag
 | string | Description |
 | --- | --- |
 | Absent | This function or resource is not present or not detected |
+| Deferring | The element will not process any commands but will queue new requests. |
 | Disabled | This function or resource has been disabled |
 | Enabled | This function or resource has been enabled |
 | InTest | This function or resource is undergoing testing |
+| Quiesced | The element is enabled but only processes a restricted set of commands. |
 | StandbyOffline | This function or resource is enabled, but awaiting an external action to activate it |
 | StandbySpare | This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it. |
 | Starting | This function or resource is starting |
 | UnavailableOffline | This function or resource is present but cannot be used |
+| Updating | The element is updating and may be unavailable or degraded. |
 
 ### StatusIndicator:
 
@@ -2571,16 +3366,111 @@ This schema defines a storage subsystem and its respective properties.  A storag
 | PredictiveFailureAnalysis | The drive is still working but predicted to fail soon. |
 | Rebuild | The drive is being rebuilt. |
 
-### VolumeType:
+
+# Switch 1.0.0
+
+Switch contains properties describing a simple fabric switch.
+
+|     |     |     |
+| --- | --- | --- |
+| **Actions** { | object<br><br>*read-only* | The available actions for this resource. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**#Switch.Reset** {} | object<br><br>*read-write* | This action is used to reset this switch. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* |  |
+| } |   |   |
+| **AssetTag** | string, null<br><br>*read-write* | The user assigned asset tag for this switch. |
+| **Description** | string, null<br><br>*read-only* | Provides a description of this resource and is used for commonality  in the schema definitions. |
+| **DomainID** | number, null<br><br>*read-only* | The Domain ID for this switch. |
+| **Id** | string<br><br>*read-only* | Uniquely identifies the resource within the collection of like resources. |
+| **IndicatorLED** | string, null<br><br>*read-write* | The state of the indicator LED, used to identify the switch. *See Property Details, below, for more information about this property.* |
+| **IsManaged** | boolean, null<br><br>*read-write* | This indicates whether the switch is in a managed or unmanaged state. |
+| **Links** { | object<br><br>*read-only* | Contains references to other resources that are related to this resource. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Chassis** {} | object<br><br>*read-write* | A reference to the chassis which contains this switch. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**ManagedBy** [ {} ] | array<br><br>*read-only* | An array of references to the managers that manage this switch. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* | Oem extension object. |
+| } |   |   |
+| **LogServices** { | object, null<br><br>*read-write* | A reference to the collection of Log Services associated with this system |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Description** | string, null<br><br>*read-only* | Provides a description of this resource and is used for commonality  in the schema definitions. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Members** [ {} ] | array<br><br>*read-only* | Contains the members of this collection. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Name** | string<br><br>*read-only* | The name of the resource or array element. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
+| } |   |   |
+| **Manufacturer** | string, null<br><br>*read-only* | This is the manufacturer of this switch. |
+| **Model** | string, null<br><br>*read-only* | The product model number of this switch. |
+| **Name** | string<br><br>*read-only* | The name of the resource or array element. |
+| **Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
+| **PartNumber** | string, null<br><br>*read-only* | The part number for this switch. |
+| **Ports** { | object<br><br>*read-write* | A collection of references to the ports for this switch. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Description** | string, null<br><br>*read-only* | Provides a description of this resource and is used for commonality  in the schema definitions. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Members** [ {} ] | array<br><br>*read-only* | Contains the members of this collection. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Name** | string<br><br>*read-only* | The name of the resource or array element. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
+| } |   |   |
+| **PowerState** | string, null<br><br>*read-write* | This is the current power state of the switch. *See Property Details, below, for more information about this property.* |
+| **Redundancy** [ { | array<br><br>*read-only* | Redundancy information for the switches |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**MemberId** | string<br><br>*read-write* | This is the identifier for the member within the collection. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
+| } ] |   |   |
+| **SKU** | string, null<br><br>*read-only* | This is the SKU for this switch. |
+| **SerialNumber** | string, null<br><br>*read-only* | The serial number for this switch. |
+| **Status** { | object<br><br>*read-only* |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Health** | string, null<br><br>*read-write* | This represents the health state of this resource in the absence of its dependent resources. *See Property Details, below, for more information about this property.* |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**HealthRollup** | string, null<br><br>*read-write* | This represents the overall health state from the view of this resource. *See Property Details, below, for more information about this property.* |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**State** | string, null<br><br>*read-write* | This indicates the known state of the resource, such as if it is enabled. *See Property Details, below, for more information about this property.* |
+| } |   |   |
+| **SwitchType** | null<br><br>*read-write* | The protocol being sent over this switch. |
+| **TotalSwitchWidth** | number, null<br><br>*read-only* | The total number of lanes, phys, or other physical transport links that this switch contains. |
+
+## Property Details
+
+### Health:
 
 | string | Description |
 | --- | --- |
-| Mirrored | The volume is a mirrored device |
-| NonRedundant | The volume is a non-redundant storage device |
-| RawDevice | The volume is a raw physical device without any RAID or other virtualization applied |
-| SpannedMirrors | The volume is a spanned set of mirrored devices |
-| SpannedStripesWithParity | The volume is a spanned set of devices which uses parity to retain redundant information |
-| StripedWithParity | The volume is a device which uses parity to retain redundant information |
+| Critical | A critical condition exists that requires immediate attention |
+| OK | Normal |
+| Warning | A condition exists that requires attention |
+
+### HealthRollup:
+
+| string | Description |
+| --- | --- |
+| Critical | A critical condition exists that requires immediate attention |
+| OK | Normal |
+| Warning | A condition exists that requires attention |
+
+### IndicatorLED:
+
+| string | Description |
+| --- | --- |
+| Blinking | The Indicator LED is blinking. |
+| Lit | The Indicator LED is lit. |
+| Off | The Indicator LED is off. |
+
+### PowerState:
+
+| string | Description |
+| --- | --- |
+| Off | The state is powered Off. |
+| On | The state is powered On. |
+| PoweringOff | A temporary state between On and Off. |
+| PoweringOn | A temporary state between Off and On. |
+
+### State:
+
+| string | Description |
+| --- | --- |
+| Absent | This function or resource is not present or not detected |
+| Deferring | The element will not process any commands but will queue new requests. |
+| Disabled | This function or resource has been disabled |
+| Enabled | This function or resource has been enabled |
+| InTest | This function or resource is undergoing testing |
+| Quiesced | The element is enabled but only processes a restricted set of commands. |
+| StandbyOffline | This function or resource is enabled, but awaiting an external action to activate it |
+| StandbySpare | This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it. |
+| Starting | This function or resource is starting |
+| UnavailableOffline | This function or resource is present but cannot be used |
+| Updating | The element is updating and may be unavailable or degraded. |
 
 
 # Task 1.0.2
@@ -2683,13 +3573,16 @@ This is the schema definition for the Task Service.  It represents the propertie
 | string | Description |
 | --- | --- |
 | Absent | This function or resource is not present or not detected |
+| Deferring | The element will not process any commands but will queue new requests. |
 | Disabled | This function or resource has been disabled |
 | Enabled | This function or resource has been enabled |
 | InTest | This function or resource is undergoing testing |
+| Quiesced | The element is enabled but only processes a restricted set of commands. |
 | StandbyOffline | This function or resource is enabled, but awaiting an external action to activate it |
 | StandbySpare | This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it. |
 | Starting | This function or resource is starting |
 | UnavailableOffline | This function or resource is present but cannot be used |
+| Updating | The element is updating and may be unavailable or degraded. |
 
 
 # Thermal 1.1.0
@@ -2733,22 +3626,22 @@ This is the schema definition for the Thermal properties.  It represents the pro
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**State** | string, null<br><br>*read-write* | This indicates the known state of the resource, such as if it is enabled. *See Property Details, below, for more information about this property.* |
 | } |   |   |
 | **Temperatures** [ { | array<br><br>*read-write* | This is the definition for temperature sensors. |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**LowerThresholdCritical** | number, null<br><br>*read-only* | Below normal range but not yet fatal. |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**LowerThresholdFatal** | number, null<br><br>*read-only* | Below normal range and is fatal |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**LowerThresholdNonCritical** | number, null<br><br>*read-only* | Below normal range |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**MaxReadingRangeTemp** | number, null<br><br>*read-only* | Maximum value for ReadingCelsius |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**LowerThresholdCritical** | number, null<br>(Cel)<br><br>*read-only* | Below normal range but not yet fatal. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**LowerThresholdFatal** | number, null<br>(Cel)<br><br>*read-only* | Below normal range and is fatal |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**LowerThresholdNonCritical** | number, null<br>(Cel)<br><br>*read-only* | Below normal range |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**MaxReadingRangeTemp** | number, null<br>(Cel)<br><br>*read-only* | Maximum value for ReadingCelsius |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**MemberId** | string<br><br>*read-write* | This is the identifier for the member within the collection. |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**MinReadingRangeTemp** | number, null<br><br>*read-only* | Minimum value for ReadingCelsius |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**MinReadingRangeTemp** | number, null<br>(Cel)<br><br>*read-only* | Minimum value for ReadingCelsius |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Name** | string, null<br><br>*read-only* | Temperature sensor name. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**PhysicalContext** | string<br><br>*read-write* | Describes the area or device to which this temperature measurement applies. *See Property Details, below, for more information about this property.* |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**ReadingCelsius** | number, null<br><br>*read-only* | Temperature |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**ReadingCelsius** | number, null<br>(Cel)<br><br>*read-only* | Temperature |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**RelatedItem** [ {} ] | array<br><br>*read-only* | Describes the areas or devices to which this temperature measurement applies. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**SensorNumber** | number, null<br><br>*read-only* | A numerical identifier to represent the temperature sensor |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Status** {} | object<br><br>*read-only* |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**UpperThresholdCritical** | number, null<br><br>*read-only* | Above normal range but not yet fatal. |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**UpperThresholdFatal** | number, null<br><br>*read-only* | Above normal range and is fatal |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**UpperThresholdNonCritical** | number, null<br><br>*read-only* | Above normal range |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**UpperThresholdCritical** | number, null<br>(Cel)<br><br>*read-only* | Above normal range but not yet fatal. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**UpperThresholdFatal** | number, null<br>(Cel)<br><br>*read-only* | Above normal range and is fatal |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**UpperThresholdNonCritical** | number, null<br>(Cel)<br><br>*read-only* | Above normal range |
 | } ] |   |   |
 
 ## Property Details
@@ -2806,13 +3699,85 @@ This is the schema definition for the Thermal properties.  It represents the pro
 | string | Description |
 | --- | --- |
 | Absent | This function or resource is not present or not detected |
+| Deferring | The element will not process any commands but will queue new requests. |
 | Disabled | This function or resource has been disabled |
 | Enabled | This function or resource has been enabled |
 | InTest | This function or resource is undergoing testing |
+| Quiesced | The element is enabled but only processes a restricted set of commands. |
 | StandbyOffline | This function or resource is enabled, but awaiting an external action to activate it |
 | StandbySpare | This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it. |
 | Starting | This function or resource is starting |
 | UnavailableOffline | This function or resource is present but cannot be used |
+| Updating | The element is updating and may be unavailable or degraded. |
+
+
+# UpdateService 1.0.0
+
+This is the schema definition for the Update Service. It represents the properties for the service itself and has links to collections of firmware and software inventory.
+
+|     |     |     |
+| --- | --- | --- |
+| **Actions** { | object<br><br>*read-only* | The Actions object contains the available custom actions on this resource. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**#UpdateService.SimpleUpdate** {} | object<br><br>*read-write* | This action is used to update software components. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* |  |
+| } |   |   |
+| **Description** | string, null<br><br>*read-only* | Provides a description of this resource and is used for commonality  in the schema definitions. |
+| **FirmwareInventory** { | object, null<br><br>*read-write* | An inventory of firmware. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Description** | string, null<br><br>*read-only* | Provides a description of this resource and is used for commonality  in the schema definitions. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Members** [ {} ] | array<br><br>*read-only* | Contains the members of this collection. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Name** | string<br><br>*read-only* | The name of the resource or array element. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
+| } |   |   |
+| **Id** | string<br><br>*read-only* | Uniquely identifies the resource within the collection of like resources. |
+| **Name** | string<br><br>*read-only* | The name of the resource or array element. |
+| **Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
+| **ServiceEnabled** | boolean, null<br><br>*read-write* | This indicates whether this service is enabled. |
+| **SoftwareInventory** { | object, null<br><br>*read-write* | An inventory of software. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Description** | string, null<br><br>*read-only* | Provides a description of this resource and is used for commonality  in the schema definitions. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Members** [ {} ] | array<br><br>*read-only* | Contains the members of this collection. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Name** | string<br><br>*read-only* | The name of the resource or array element. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
+| } |   |   |
+| **Status** { | object, null<br><br>*read-only* |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Health** | string, null<br><br>*read-write* | This represents the health state of this resource in the absence of its dependent resources. *See Property Details, below, for more information about this property.* |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**HealthRollup** | string, null<br><br>*read-write* | This represents the overall health state from the view of this resource. *See Property Details, below, for more information about this property.* |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**State** | string, null<br><br>*read-write* | This indicates the known state of the resource, such as if it is enabled. *See Property Details, below, for more information about this property.* |
+| } |   |   |
+
+## Property Details
+
+### Health:
+
+| string | Description |
+| --- | --- |
+| Critical | A critical condition exists that requires immediate attention |
+| OK | Normal |
+| Warning | A condition exists that requires attention |
+
+### HealthRollup:
+
+| string | Description |
+| --- | --- |
+| Critical | A critical condition exists that requires immediate attention |
+| OK | Normal |
+| Warning | A condition exists that requires attention |
+
+### State:
+
+| string | Description |
+| --- | --- |
+| Absent | This function or resource is not present or not detected |
+| Deferring | The element will not process any commands but will queue new requests. |
+| Disabled | This function or resource has been disabled |
+| Enabled | This function or resource has been enabled |
+| InTest | This function or resource is undergoing testing |
+| Quiesced | The element is enabled but only processes a restricted set of commands. |
+| StandbyOffline | This function or resource is enabled, but awaiting an external action to activate it |
+| StandbySpare | This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it. |
+| Starting | This function or resource is starting |
+| UnavailableOffline | This function or resource is present but cannot be used |
+| Updating | The element is updating and may be unavailable or degraded. |
 
 
 # VLanNetworkInterface 1.0.2
@@ -2857,7 +3822,7 @@ This resource allows monitoring and control of an instance of virtual media (e.g
 | URI | Connected to a URI location |
 
 
-# Volume 1.0.0
+# Volume 1.0.1
 
 Volume contains properties used to describe a volume, virtual disk, LUN, or other logical storage entity for any system.
 
@@ -2867,8 +3832,8 @@ Volume contains properties used to describe a volume, virtual disk, LUN, or othe
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**#Volume.Initialize** {} | object<br><br>*read-write* | This action is used to prepare the contents of the volume for use by the system. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* |  |
 | } |   |   |
-| **BlockSizeBytes** | number, null<br><br>*read-only* | The size of the smallest addressible unit (Block) of this volume in bytes |
-| **CapacityBytes** | number, null<br><br>*read-only* | The size in bytes of this Volume |
+| **BlockSizeBytes** | number, null<br>(By)<br><br>*read-only* | The size of the smallest addressible unit (Block) of this volume in bytes |
+| **CapacityBytes** | number, null<br>(By)<br><br>*read-only* | The size in bytes of this Volume |
 | **Description** | string, null<br><br>*read-only* | Provides a description of this resource and is used for commonality  in the schema definitions. |
 | **Encrypted** | boolean, null<br><br>*read-write* | Is this Volume encrypted |
 | **EncryptionTypes** [ {} ] | array<br><br>*read-write* | The types of encryption used by this Volume |
@@ -2888,14 +3853,14 @@ Volume contains properties used to describe a volume, virtual disk, LUN, or othe
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**OperationName** | string, null<br><br>*read-only* | The name of the operation. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**PercentageComplete** | number, null<br><br>*read-only* | The percentage of the operation that has been completed. |
 | } ] |   |   |
-| **OptimumIOSizeBytes** | number, null<br><br>*read-only* | The size in bytes of this Volume's optimum IO size. |
+| **OptimumIOSizeBytes** | number, null<br>(By)<br><br>*read-only* | The size in bytes of this Volume's optimum IO size. |
 | **Status** { | object<br><br>*read-only* |  |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Health** | string, null<br><br>*read-write* | This represents the health state of this resource in the absence of its dependent resources. *See Property Details, below, for more information about this property.* |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**HealthRollup** | string, null<br><br>*read-write* | This represents the overall health state from the view of this resource. *See Property Details, below, for more information about this property.* |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**State** | string, null<br><br>*read-write* | This indicates the known state of the resource, such as if it is enabled. *See Property Details, below, for more information about this property.* |
 | } |   |   |
-| **VolumeType** | string, null<br><br>*read-write* | Is this drive currently predicting a failure in the near future *See Property Details, below, for more information about this property.* |
+| **VolumeType** | string, null<br><br>*read-write* | The type of this volume *See Property Details, below, for more information about this property.* |
 
 ## Property Details
 
@@ -2930,13 +3895,16 @@ Volume contains properties used to describe a volume, virtual disk, LUN, or othe
 | string | Description |
 | --- | --- |
 | Absent | This function or resource is not present or not detected |
+| Deferring | The element will not process any commands but will queue new requests. |
 | Disabled | This function or resource has been disabled |
 | Enabled | This function or resource has been enabled |
 | InTest | This function or resource is undergoing testing |
+| Quiesced | The element is enabled but only processes a restricted set of commands. |
 | StandbyOffline | This function or resource is enabled, but awaiting an external action to activate it |
 | StandbySpare | This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it. |
 | Starting | This function or resource is starting |
 | UnavailableOffline | This function or resource is present but cannot be used |
+| Updating | The element is updating and may be unavailable or degraded. |
 
 ### VolumeType:
 
@@ -2948,6 +3916,63 @@ Volume contains properties used to describe a volume, virtual disk, LUN, or othe
 | SpannedMirrors | The volume is a spanned set of mirrored devices |
 | SpannedStripesWithParity | The volume is a spanned set of devices which uses parity to retain redundant information |
 | StripedWithParity | The volume is a device which uses parity to retain redundant information |
+
+
+# Zone 1.0.0
+
+Switch contains properties describing a simple fabric zone.
+
+|     |     |     |
+| --- | --- | --- |
+| **Description** | string, null<br><br>*read-only* | Provides a description of this resource and is used for commonality  in the schema definitions. |
+| **Id** | string<br><br>*read-only* | Uniquely identifies the resource within the collection of like resources. |
+| **Links** { | object<br><br>*read-only* | Contains references to other resources that are related to this resource. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Endpoints** [ {} ] | array<br><br>*read-only* | An array of references to the endpoints that are contained in this zone. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**InvolvedSwitches** [ {} ] | array<br><br>*read-only* | An array of references to the switchs that are utilized in this zone. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* | Oem extension object. |
+| } |   |   |
+| **Name** | string<br><br>*read-only* | The name of the resource or array element. |
+| **Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
+| **Status** { | object<br><br>*read-only* |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Health** | string, null<br><br>*read-write* | This represents the health state of this resource in the absence of its dependent resources. *See Property Details, below, for more information about this property.* |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**HealthRollup** | string, null<br><br>*read-write* | This represents the overall health state from the view of this resource. *See Property Details, below, for more information about this property.* |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Oem** {} | object<br><br>*read-write* | This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**State** | string, null<br><br>*read-write* | This indicates the known state of the resource, such as if it is enabled. *See Property Details, below, for more information about this property.* |
+| } |   |   |
+
+## Property Details
+
+### Health:
+
+| string | Description |
+| --- | --- |
+| Critical | A critical condition exists that requires immediate attention |
+| OK | Normal |
+| Warning | A condition exists that requires attention |
+
+### HealthRollup:
+
+| string | Description |
+| --- | --- |
+| Critical | A critical condition exists that requires immediate attention |
+| OK | Normal |
+| Warning | A condition exists that requires attention |
+
+### State:
+
+| string | Description |
+| --- | --- |
+| Absent | This function or resource is not present or not detected |
+| Deferring | The element will not process any commands but will queue new requests. |
+| Disabled | This function or resource has been disabled |
+| Enabled | This function or resource has been enabled |
+| InTest | This function or resource is undergoing testing |
+| Quiesced | The element is enabled but only processes a restricted set of commands. |
+| StandbyOffline | This function or resource is enabled, but awaiting an external action to activate it |
+| StandbySpare | This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it. |
+| Starting | This function or resource is starting |
+| UnavailableOffline | This function or resource is present but cannot be used |
+| Updating | The element is updating and may be unavailable or degraded. |
 
 
 
