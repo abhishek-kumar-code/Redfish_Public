@@ -25,32 +25,34 @@
   </edmx:Reference>
 
   <edmx:DataServices>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SessionCollection">
 
       <EntityType Name="SessionCollection" BaseType="Resource.v1_0_0.ResourceCollection">
         <Annotation Term="OData.Description" String="A Collection of Session resource instances."/>
+        <Annotation Term="Capabilities.InsertRestrictions">
+          <Record>
+            <PropertyValue Property="Insertable" Bool="true"/>
+            <Annotation Term="OData.Description" String="Sessions are established by posting to the SessionCollection."/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.UpdateRestrictions">
+          <Record>
+            <PropertyValue Property="Updatable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.DeleteRestrictions">
+          <Record>
+            <PropertyValue Property="Deletable" Bool="false"/>
+          </Record>
+        </Annotation>
         <NavigationProperty Name="Members" Type="Collection(Session.Session)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the members of this collection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </EntityType>
-      <Annotation Term="Capabilities.InsertRestrictions">
-        <Record>
-          <PropertyValue Property="Insertable" Bool="true"/>
-             <Annotation Term="OData.Description" String="Sessions are established by posting to the SessionCollection."/>
-        </Record>
-      </Annotation>
-      <Annotation Term="Capabilities.UpdateRestrictions">
-        <Record>
-          <PropertyValue Property="Updatable" Bool="false"/>
-        </Record>
-      </Annotation>
-      <Annotation Term="Capabilities.DeleteRestrictions">
-        <Record>
-          <PropertyValue Property="Deletable" Bool="false"/>
-        </Record>
-      </Annotation>
+
     </Schema>
   </edmx:DataServices>
 </edmx:Edmx>
