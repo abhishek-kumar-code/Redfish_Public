@@ -11,7 +11,7 @@
 <!---->
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
 
-  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
@@ -19,9 +19,9 @@
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
-    <edmx:Include Namespace="Resource.v1_0_0" />
-    <edmx:Include Namespace="Resource.v1_1_0" />
-	<edmx:Include Namespace="Resource.v1_2_0" />
+    <edmx:Include Namespace="Resource.v1_0_0"/>
+    <edmx:Include Namespace="Resource.v1_1_0"/>
+    <edmx:Include Namespace="Resource.v1_2_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Storage_v1.xml">
     <edmx:Include Namespace="Storage.v1_0_0"/>
@@ -37,6 +37,9 @@
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/PortCollection_v1.xml">
     <edmx:Include Namespace="PortCollection"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/LogServiceCollection_v1.xml">
+    <edmx:Include Namespace="LogServiceCollection"/>
   </edmx:Reference>
 
   <edmx:DataServices>
@@ -74,10 +77,10 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the name of the organization responsible for producing the switch. This organization might be the entity from whom the switch is purchased, but this is not necessarily true."/>
         </Property>
         <Property Name="Model" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read" />
-          <Annotation Term="OData.Description" String="The product model number of this switch." />
-          <Annotation Term="OData.LongDescription" String="This property shall indicate the model information as provided by the manufacturer of this switch." />
-        </Property>	
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The product model number of this switch."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the model information as provided by the manufacturer of this switch."/>
+        </Property>
         <Property Name="SKU" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the SKU for this switch."/>
@@ -98,14 +101,14 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an identifying string used to track the drive for inventory purposes."/>
         </Property>
         <Property Name="DomainID" Type="Edm.Int64">
-	  <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-	  <Annotation Term="OData.Description" String="The Domain ID for this switch."/>
-	  <Annotation Term="OData.LongDescription" String="The value of this property shall have a scope of uniqueness within the fabric of which the switch is a member."/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="The Domain ID for this switch."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall have a scope of uniqueness within the fabric of which the switch is a member."/>
         </Property>
         <Property Name="IsManaged" Type="Edm.Boolean">
           <Annotation Term="OData.Description" String="This indicates whether the switch is in a managed or unmanaged state."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this switch is in a managed or unmanaged state."/>
-        </Property>	
+        </Property>
         <Property Name="TotalSwitchWidth" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The total number of lanes, phys, or other physical transport links that this switch contains."/>
@@ -136,12 +139,12 @@
           <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
           <Annotation Term="OData.LongDescription" String="The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
         </Property>
-		<NavigationProperty Name="LogServices" Type="LogServiceCollection.LogServiceCollection" ContainsTarget="true">
-		  <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+        <NavigationProperty Name="LogServices" Type="LogServiceCollection.LogServiceCollection" ContainsTarget="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="A reference to the collection of Log Services associated with this system"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type LogServiceCollection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
-		</NavigationProperty>
+        </NavigationProperty>
         <Property Name="Actions" Type="Switch.v1_0_0.Actions" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The available actions for this resource."/>

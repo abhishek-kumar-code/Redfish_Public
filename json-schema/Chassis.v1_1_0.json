@@ -74,7 +74,7 @@
                 "Drawer": "An enclosed or semi-enclosed, typically horizontally-oriented, system chassis which may be slid into a multi-system chassis.",
                 "Module": "A small, typically removable, chassis or card which contains devices for a particular subsystem or function",
                 "Component": "A small chassis, card, or device which contains devices for a particular subsystem or function",
-                "IPBasedDrive": "A chassis in Drive form factor with IP-based network connections.",
+                "IPBasedDrive": "A chassis in a drive form factor with IP-based network connections.",
                 "Other": "A chassis that does not fit any of these definitions"
             }
         },
