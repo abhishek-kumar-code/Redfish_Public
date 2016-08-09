@@ -1,6 +1,6 @@
 {
     "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
-    "title": "#Volume.v1_0_0.Volume",
+    "title": "#Volume.v1_0_1.Volume",
     "$ref": "#/definitions/Volume",
     "definitions": {
         "Initialize": {
@@ -84,6 +84,25 @@
                     "readonly": true,
                     "description": "A reference to the task associated with the operation if any."
                 }
+            }
+        },
+        "VolumeType": {
+            "type": "string",
+            "enum": [
+                "RawDevice",
+                "NonRedundant",
+                "Mirrored",
+                "StripedWithParity",
+                "SpannedMirrors",
+                "SpannedStripesWithParity"
+            ],
+            "enumDescriptions": {
+                "RawDevice": "The volume is a raw physical device without any RAID or other virtualization applied",
+                "NonRedundant": "The volume is a non-redundant storage device",
+                "Mirrored": "The volume is a mirrored device",
+                "StripedWithParity": "The volume is a device which uses parity to retain redundant information",
+                "SpannedMirrors": "The volume is a spanned set of mirrored devices",
+                "SpannedStripesWithParity": "The volume is a spanned set of devices which uses parity to retain redundant information"
             }
         },
         "Volume": {
@@ -298,25 +317,6 @@
             ],
             "description": "Volume contains properties used to describe a volume, virtual disk, LUN, or other logical storage entity for any system.",
             "longDescription": "This resource shall be used to represent a volume, virtual disk, logical disk, LUN, or other logical storage for a Redfish implementation."
-        },
-        "VolumeType": {
-            "type": "string",
-            "enum": [
-                "RawDevice",
-                "NonRedundant",
-                "Mirrored",
-                "StripedWithParity",
-                "SpannedMirrors",
-                "SpannedStripesWithParity"
-            ],
-            "enumDescriptions": {
-                "RawDevice": "The volume is a raw physical device without any RAID or other virtualization applied",
-                "NonRedundant": "The volume is a non-redundant storage device",
-                "Mirrored": "The volume is a mirrored device",
-                "StripedWithParity": "The volume is a device which uses parity to retain redundant information",
-                "SpannedMirrors": "The volume is a spanned set of mirrored devices",
-                "SpannedStripesWithParity": "The volume is a spanned set of devices which uses parity to retain redundant information"
-            }
         }
     },
     "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"

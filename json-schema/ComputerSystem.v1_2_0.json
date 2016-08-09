@@ -485,6 +485,22 @@
                             "readonly": true,
                             "description": "An array of ID[s] of resources that cool this computer system. Normally the ID will be a chassis or a specific set of fans.",
                             "longDescription": "The value of this property shall be an array of IDs containing pointers consistent with JSON pointer syntax to the resource that powers this computer system."
+                        },
+                        "Endpoints@odata.count": {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
+                        },
+                        "Endpoints@odata.navigationLink": {
+                            "type": "string",
+                            "format": "uri"
+                        },
+                        "Endpoints": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "http://redfish.dmtf.org/schemas/v1/Endpoint.json#/definitions/Endpoint"
+                            },
+                            "readonly": true,
+                            "description": "An array of references to the endpoints that connect to this system.",
+                            "longDescription": "The value of this property shall be a reference to the resources that this system is associated with and shall reference a resource of type Endpoint."
                         }
                     },
                     "readonly": true,
@@ -717,6 +733,38 @@
                     "$ref": "#/definitions/HostedServices",
                     "description": "The services that this computer system supports.",
                     "longDescription": "The values of this collection shall describe services supported by this computer system."
+                },
+                "PCIeDevices@odata.count": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
+                },
+                "PCIeDevices@odata.navigationLink": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "PCIeDevices": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "http://redfish.dmtf.org/schemas/v1/PCIeDevice.json#/definitions/PCIeDevice"
+                    },
+                    "readonly": true,
+                    "description": "A reference to a collection of PCIe Devices used by this computer system",
+                    "longDescription": "The value of this property shall be an array of references of type PCIeDevice."
+                },
+                "PCIeFunctions@odata.count": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
+                },
+                "PCIeFunctions@odata.navigationLink": {
+                    "type": "string",
+                    "format": "uri"
+                },
+                "PCIeFunctions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "http://redfish.dmtf.org/schemas/v1/PCIeFunction.json#/definitions/PCIeFunction"
+                    },
+                    "readonly": true,
+                    "description": "A reference to a collection of PCIe Functions used by this computer system",
+                    "longDescription": "The value of this property shall be an array of references of type PCIeFunction."
                 },
                 "MemoryDomains": {
                     "anyOf": [
