@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Resource  v1.1.0-->
+<!--# Redfish Schema:  Resource  v1.2.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -11,7 +11,7 @@
 <!---->
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
 
-  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
@@ -141,6 +141,15 @@
         <Member Name="UnavailableOffline">
           <Annotation Term="OData.Description" String="This function or resource is present but cannot be used"/>
         </Member>
+        <Member Name="Deferring">
+          <Annotation Term="OData.Description" String="The element will not process any commands but will queue new requests."/>
+        </Member>
+        <Member Name="Quiesced">
+          <Annotation Term="OData.Description" String="The element is enabled but only processes a restricted set of commands."/>
+        </Member>
+        <Member Name="Updating">
+          <Annotation Term="OData.Description" String="The element is updating and may be unavailable or degraded."/>
+        </Member>
       </EnumType>
 
       <!--This represents the state of the health of a resource.-->
@@ -249,7 +258,7 @@
           <Annotation Term="OData.LongDescription" String="This property shall represent the format of the DurableName property."/>
         </Property>
       </ComplexType>
-      
+
       <ComplexType Name="Location">
         <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
@@ -302,9 +311,9 @@
       </EnumType>
 
     </Schema>
-    
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_2_0">
-      
+
       <EnumType Name="PowerState">
         <Member Name="On">
           <Annotation Term="OData.Description" String="The state is powered On."/>
@@ -319,7 +328,7 @@
           <Annotation Term="OData.Description" String="A temporary state between On and Off."/>
         </Member>
       </EnumType>
-      
+
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_1_1"/>

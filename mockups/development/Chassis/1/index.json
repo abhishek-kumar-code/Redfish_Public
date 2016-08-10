@@ -42,7 +42,10 @@
             {
                 "@odata.id": "/redfish/v1/Managers/1"
             }
-        ],		
+        ],
+        "PCIeDevices": [
+            {"@odata.id": "/redfish/v1/Chassis/1/PCIeDevices/NIC"}
+        ],
         "Oem": {}
     },
     "Oem": {}

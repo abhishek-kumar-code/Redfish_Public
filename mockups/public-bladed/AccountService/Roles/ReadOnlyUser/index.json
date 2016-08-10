@@ -1,11 +1,12 @@
 {
     "@odata.type": "#Role.v1_0_2.Role",
-    "Id": "ReadOnlyUser",
+    "Id": "ReadOnly",
     "Name": "User Role",
     "Description": "ReadOnlyUser User Role",
     "IsPredefined": true,
     "AssignedPrivileges": [
-        "Login"
+        "Login",
+        "ConfigureSelf"
     ],
     "@odata.context": "/redfish/v1/$metadata#AccountService/Members/Roles/Members/$entity",
     "@odata.id": "/redfish/v1/AccountService/Roles/ReadOnlyUser",

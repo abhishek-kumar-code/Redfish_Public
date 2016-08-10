@@ -23,6 +23,12 @@
         "HealthRollUp": "OK"
     },
     "Boot": {},
+    "Memory": {
+        "@odata.id": "/redfish/v1/Systems/2/Memory"
+    },
+    "MemoryDomains": {
+        "@odata.id": "/redfish/v1/Systems/2/MemoryDomains"
+    },		
     "Links": {
         "Chassis": [
             {

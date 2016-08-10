@@ -6,7 +6,7 @@
     "Enabled": true,
     "Password": null,
     "UserName": "Administrator",
-    "RoleId": "Admin",
+    "RoleId": "Administrator",
     "Locked": false,
     "Links": {
         "Role": {

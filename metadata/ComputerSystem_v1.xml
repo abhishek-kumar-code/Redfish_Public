@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  ComputerSystem  v1.1.0-->
+<!--# Redfish Schema:  ComputerSystem  v1.2.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -11,13 +11,13 @@
 <!---->
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
 
-  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Capabilities.V1.xml">
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
     <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
-  </edmx:Reference>  
-  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Measures.V1.xml">
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
     <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
@@ -26,7 +26,7 @@
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
-    <edmx:Include Namespace="Resource.v1_0_0" />
+    <edmx:Include Namespace="Resource.v1_0_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Chassis_v1.xml">
     <edmx:Include Namespace="Chassis"/>
@@ -55,14 +55,26 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/MemoryCollection_v1.xml">
     <edmx:Include Namespace="MemoryCollection"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/MemoryDomainCollection_v1.xml">
+    <edmx:Include Namespace="MemoryDomainCollection"/>
+  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Manager_v1.xml">
     <edmx:Include Namespace="Manager"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/StorageCollection_v1.xml">
     <edmx:Include Namespace="StorageCollection"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/SNIA/v1/StorageServiceCollection_v1.xml">
-    <edmx:Include Namespace="StorageServiceCollection"/>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/PCIeDevice_v1.xml">
+    <edmx:Include Namespace="PCIeDevice"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/PCIeFunction_v1.xml">
+    <edmx:Include Namespace="PCIeFunction"/>
+  </edmx:Reference> 
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Endpoint_v1.xml">
+    <edmx:Include Namespace="Endpoint"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/SNIA/v1/HostedStorageServices_v1.xml">
+    <edmx:Include Namespace="HostedStorageServices"/>
   </edmx:Reference>  
 
   <edmx:DataServices>
@@ -151,7 +163,7 @@
         <Property Name="UUID" Type="Resource.UUID">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The universal unique identifier (UUID) for this system"/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be used to contain a universal unique identifier number for the system. RFC4122 describes methods that can be used to create the value. The value should be considered to be opaque. Client software should only treat the overall value as a universally unique identifier and should not interpret any sub-fields within the UUID. If the system supports SMBIOS, the value and byte order of the property should match byte-for-byte with the memory byte order (from lowest address to highest) of the SMBIOS UUID. Following this order will make it simpler to correlate the UUID with the SMBIOS UUID"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be used to contain a universal unique identifier number for the system. RFC4122 describes methods that can be used to create the value. The value should be considered to be opaque. Client software should only treat the overall value as a universally unique identifier and should not interpret any sub-fields within the UUID. If the system supports SMBIOS, the value of the property should be formed by following the SMBIOS 2.6+ recommendation for converting the SMBIOS 16-byte UUID structure into the redfish canonical xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx string format so that the property value matches the byte order presented by current OS APIs such as WMI and dmidecode."/>
         </Property>
         <Property Name="HostName" Type="Edm.String">
           <Annotation Term="OData.Description" String="The DNS Host Name, without any domain information"/>
@@ -360,6 +372,9 @@
         <Member Name="UefiHttp">
           <Annotation Term="OData.Description" String="Boot from a UEFI HTTP network location"/>
         </Member>
+        <Member Name="RemoteDrive">
+          <Annotation Term="OData.Description" String="Boot from a remote drive (e.g. iSCSI)"/>
+        </Member>
       </EnumType>
 
       <EnumType Name="BootSourceOverrideEnabled">
@@ -380,7 +395,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The number of processors in the system."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the number of central processors in the system."/>
-          <Annotation Term="Validation.Minimum" Int="0" />
+          <Annotation Term="Validation.Minimum" Int="0"/>
         </Property>
         <Property Name="Model" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -397,7 +412,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The total installed, operating system-accessible memory (RAM), measured in GiB."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the amount of system general purpose volatile (RAM) memory as measured in gibibytes."/>
-          <Annotation Term="Validation.Minimum" Int="0" />
+          <Annotation Term="Validation.Minimum" Int="0"/>
         </Property>
         <Property Name="Status" Type="Resource.Status"  Nullable="false"/>
         <Annotation Term="OData.Description" String="This object describes the memory of the system in general detail."/>
@@ -412,7 +427,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_0_2">
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_0_1.ComputerSystem"/>
     </Schema>
-  
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_0_3">
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_0_2.ComputerSystem"/>
     </Schema>
@@ -526,25 +541,48 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_2_0">
+
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_1_1.ComputerSystem">
-        <Property Name="HostingRoles" Type="Collection(ComputerSystem.v1_1_0.HostingRole)" Nullable="false">
+        <Property Name="HostingRoles" Type="Collection(ComputerSystem.v1_2_0.HostingRole)" Nullable="false">
           <Annotation Term="OData.Description" String="The hosing roles that this computer system supports."/>
           <Annotation Term="OData.LongDescription" String="The values of this collection shall be the hosting roles supported by this computer system."/>
         </Property>
+        <NavigationProperty Name="PCIeDevices" Type="Collection(PCIeDevice.PCIeDevice)" ContainsTarget="true" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A reference to a collection of PCIe Devices used by this computer system"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of references of type PCIeDevice."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        <NavigationProperty Name="PCIeFunctions" Type="Collection(PCIeFunction.PCIeFunction)" ContainsTarget="true" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A reference to a collection of PCIe Functions used by this computer system"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of references of type PCIeFunction."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty> 
+        <Property Name="HostedServices" Type="ComputerSystem.v1_2_0.HostedServices" Nullable="false">
+          <Annotation Term="OData.Description" String="The services that this computer system supports."/>
+          <Annotation Term="OData.LongDescription" String="The values of this collection shall describe services supported by this computer system."/>
+        </Property>
+        <NavigationProperty Name="MemoryDomains" Type="MemoryDomainCollection.MemoryDomainCollection" ContainsTarget="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="A reference to the collection of Memory Domains associated with this system."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type MemoryDomainCollection."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
       </EntityType>
 
       <ComplexType Name="HostedServices">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <NavigationProperty Name="StorageServices" Type="StorageServiceCollection.StorageServiceCollection" ContainsTarget="true" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+        <NavigationProperty Name="StorageServices" Type="HostedStorageServices.HostedStorageServices" ContainsTarget="true" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="A reference to a collection of storage services supported by this computer system"/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type StorageServiceCollection."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type HostedStorageServices."/>
           <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty> 
+        </NavigationProperty>
         <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
         <Annotation Term="OData.Description" String="This object describes services that may be running or installed on the system."/>
       </ComplexType>
-      
+
       <EnumType Name="HostingRole">
        <Annotation Term="OData.Description" String="The enumerations of HostingRoles specify different features that the hosting ComputerSystem supports."/>
        <Member Name="ApplicationServer">
@@ -557,6 +595,15 @@
           <Annotation Term="OData.Description" String="The system hosts functionality that supports the system acting as a switch."/>
         </Member>
       </EnumType>
+
+      <EntityType Name="Links" BaseType="ComputerSystem.v1_0_0.Links">
+        <NavigationProperty Name="Endpoints" Type="Collection(Endpoint.Endpoint)" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="An array of references to the endpoints that connect to this system."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resources that this system is associated with and shall reference a resource of type Endpoint."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+      </EntityType>
     </Schema>
 
   </edmx:DataServices>

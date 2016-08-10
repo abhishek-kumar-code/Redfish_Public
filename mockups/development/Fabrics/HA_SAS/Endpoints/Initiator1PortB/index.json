@@ -1,0 +1,27 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+	"@odata.context": "/redfish/v1/$metadata#Endpoint.Endpoint",
+	"@odata.id": "/redfish/v1/Fabrics/HA_SAS/Endpoints/Initiator1PortB",
+	"@odata.type": "#Endpoint.v1_0_0.Endpoint",
+	"Id": "Initiator1PortB",
+	"Name": "SAS RAID Controller 1",
+	"Description": "SAS RAID Controller 1",
+    "EndpointProtocol": "SAS",
+    "ConnectedEntities": [
+        {
+            "EntityType": "Initiator",
+            "EntityRole": "Initiator",
+            "EntityLink": {
+                "@odata.id": "/redfish/v1/Systems/3/Storage/HA-RAID#/StorageControllers/0"
+            },
+            "Oem": {}
+        }
+    ],
+    "Links": {
+        "Ports": [
+            {"@odata.id": "/redfish/v1/Fabrics/HA_SAS/Switches/2/Ports/1"}
+        ]
+    },
+	"Oem": {}
+}
+
