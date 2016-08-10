@@ -47,5 +47,10 @@
             "AddressOrigin": "Static",
             "AddressState": "Preferred"
         }
-    ]
+    ],
+    "Links": {
+        "HostInterface": {
+            "@odata.id": "/redfish/v1/Managers/9/HostInterfaces/1"
+        }
+    }
 }
