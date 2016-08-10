@@ -47,12 +47,15 @@
     "Links": {
         "ComputerSystems": [
             {
-                "@odata.id": "/redfish/v1/Systems/2"
+                "@odata.id": "/redfish/v1/Systems/5"
             }
         ],
         "EthernetInterfaces": [
             {
                 "@odata.id": "/redfish/v1/Managers/9/EthernetInterfaces/1"
+            },
+            {
+                "@odata.id": "/redfish/v1/Systems/5/EthernetInterfaces/1"
             }
         ]
     },
