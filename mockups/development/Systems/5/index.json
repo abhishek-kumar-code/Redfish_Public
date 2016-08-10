@@ -13,7 +13,7 @@
     },
     "IndicatorLED": "Off",
     "EthernetInterfaces": {
-        "@odata.id": "/redfish/v1/Systems/9/EthernetInterfaces"
+        "@odata.id": "/redfish/v1/Systems/5/EthernetInterfaces"
     },
     "Links": {
         "Chassis": [
