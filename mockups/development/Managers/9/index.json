@@ -12,6 +12,9 @@
         "Health": "OK"
     },
     "FirmwareVersion": "1.00",
+    "NetworkProtocol": {
+        "@odata.id": "/redfish/v1/Managers/9/NetworkProtocol"
+    },
     "EthernetInterfaces": {
         "@odata.id": "/redfish/v1/Managers/9/EthernetInterfaces"
     },

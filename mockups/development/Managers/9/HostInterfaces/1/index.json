@@ -26,23 +26,8 @@
     "ManagerEthernetInterface": {
         "@odata.id": "/redfish/v1/Managers/9/HostInterfaces/1/ManagerEthernetInterface"
     },
-    "ManagementIPDiscovery": {
-        "SSDP": {
-            "Enabled": true,
-            "IPv4MulticastAddress": "239.255.255.250",
-            "IPv6MulticastAddress": "ff05::c",
-            "Port": 1900
-        },
-        "DHCP": {
-            "Enabled": true,
-            "Port": 67
-        },
-        "DNS": {
-            "Enabled": true,
-            "HostName": "bmc-host-interface",
-            "FQDN": "bmc-host-interface.dmtf.org"
-        },
-        "Oem": {}
+    "NetworkProtocol": {
+        "@odata.id": "/redfish/v1/Managers/9/HostInterfaces/1/NetworkProtocol"
     },
     "Links": {
         "ComputerSystems": [
