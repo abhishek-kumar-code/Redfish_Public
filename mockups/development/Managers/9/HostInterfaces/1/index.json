@@ -54,7 +54,7 @@
             {
                 "@odata.id": "/redfish/v1/Managers/9/EthernetInterfaces/1"
             }
-        ],
+        ]
     },
     "Oem": {}
 }
