@@ -20,8 +20,8 @@
         "OemAuth"
     ],
     "HTTPMode": "HTTPSOnly",
-    "HostEthernetInterface": {
-        "@odata.id": "/redfish/v1/Managers/9/HostInterfaces/1/HostEthernetInterface"
+    "HostEthernetInterfaces": {
+        "@odata.id": "/redfish/v1/Managers/9/HostInterfaces/1/HostEthernetInterfaces"
     },
     "ManagerEthernetInterface": {
         "@odata.id": "/redfish/v1/Managers/9/HostInterfaces/1/ManagerEthernetInterface"
