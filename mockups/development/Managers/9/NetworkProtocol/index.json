@@ -28,7 +28,7 @@
         "NotifyIPv6Scope": "Site"
     },
     "DHCP": {
-        "Enabled": true,
+        "ProtocolEnabled": true,
         "Port": 1067
     }
 }
