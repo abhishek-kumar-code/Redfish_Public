@@ -25,5 +25,12 @@
         "#Manager.Reset": {
             "target": "/redfish/v1/Managers/9/Actions/Manager.Reset"
         }
+    },
+    "Links": {
+        "ManagerForServers": [
+            {
+                "@odata.id": "/redfish/v1/Systems/5"
+            }
+        ]
     }
 }
