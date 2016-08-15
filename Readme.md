@@ -66,6 +66,14 @@ This is the public repository containing tools developed by the Forum and releas
 [https://github.com/DMTF/spmf-tools](https://github.com/DMTF/spmf-tools "https://github.com/DMTF/spmf-tools")
 
 This is the Private repository for both internal tools (not intended for public release)or for staging or development of tools intended for eventual public release in the Redfish-tools repository.
+
+#### redfish-samples
+
+
+[https://github.com/DMTF/redfish-samples](https://github.com/DMTF/redfish-samples "https://github.com/DMTF/redfish-samples")
+
+This Private repository contains samples of Redfish Service implementations, in the style of a "mockup" which can be used with the SPMF tools to emulate the implementation's JSON payload responses.  
+
  
 ## Using the Github Repository  
 
