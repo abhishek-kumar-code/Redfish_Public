@@ -24,23 +24,15 @@
         "@odata.id": "/redfish/v1/Managers/9/HostInterfaces/1/HostEthernetInterfaces"
     },
     "ManagerEthernetInterface": {
-        "@odata.id": "/redfish/v1/Managers/9/HostInterfaces/1/ManagerEthernetInterface"
+        "@odata.id": "/redfish/v1/Managers/9/EthernetInterfaces/1"
     },
     "NetworkProtocol": {
-        "@odata.id": "/redfish/v1/Managers/9/HostInterfaces/1/NetworkProtocol"
+        "@odata.id": "/redfish/v1/Managers/9/NetworkProtocol"
     },
     "Links": {
         "ComputerSystems": [
             {
                 "@odata.id": "/redfish/v1/Systems/5"
-            }
-        ],
-        "EthernetInterfaces": [
-            {
-                "@odata.id": "/redfish/v1/Managers/9/EthernetInterfaces/1"
-            },
-            {
-                "@odata.id": "/redfish/v1/Systems/5/EthernetInterfaces/1"
             }
         ]
     },
