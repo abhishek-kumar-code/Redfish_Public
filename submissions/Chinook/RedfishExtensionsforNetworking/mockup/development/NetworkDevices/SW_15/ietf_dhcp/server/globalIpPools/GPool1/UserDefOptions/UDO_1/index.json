@@ -1,0 +1,14 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#NetworkDevices/Members/ietf_dhcp/server/globalIpPools/Members/UserDefOptions/Members/$entity",
+    "@odata.type": "#UserDefOptions.1.0.0.UserDefOptions",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_dhcp/Server/globalIpPools/GPool1/UserDefOptions/UDO_1",
+
+    "Id": "UDO_1",
+    "Name": "User defined options of a global IP pool of a DHCP server service",
+
+    "optionCode": 1,
+    "ipAddress": "192.168.1.55",
+    "optionString": "",
+    "optionHex": "0x"
+}

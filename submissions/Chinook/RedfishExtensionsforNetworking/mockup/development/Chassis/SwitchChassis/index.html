@@ -1,0 +1,37 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#Chassis/Members/$entity",
+    "@odata.type": "#Chassis.1.0.0.Chassis",
+    "@odata.id": "/redfish/v1/Chassis/SwitchChassis",
+
+    "Id": "SwitchChassis",
+    "Name": "Ethernet Switch Chassis",
+    "ChassisType": "RackMount",
+    "Manufacturer": "ManufacturerName",
+    "Model": "ModelName",
+    "SKU": "",
+    "SerialNumber": "2M220100SL",
+    "PartNumber": "",
+    "AssetTag": "CustomerWritableThingy",
+    "IndicatorLED": "Lit",
+    "PowerState": "On",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "Links": {
+        "Switches": [
+            {
+                "@odata.id": "/redfish/v1/Switches/SW_15"
+            }
+        ],
+        "ContainedBy": {
+            "@odata.id": "/redfish/v1/Chassis/Rack1"
+        },
+        "ManagedBy": [
+            {
+                "@odata.id": "/redfish/v1/Managers/SwitchManager1"
+            }
+        ]
+    }
+}

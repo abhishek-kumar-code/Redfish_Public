@@ -1,0 +1,41 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+
+    "@odata.context": "/redfish/v1/$metadata#NetworkDevices/Members/$entity",
+    "@odata.type": "#NetworkDevice.v1_0_0.Network",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_15",
+    "Id": "SW_15",
+
+    "Name": "Ethernet Switch",
+    "Manufacturer": "Manufacturer Name",
+    "Model": "Model Name",
+    "SKU": "67B",
+    "SerialNumber": "2M220100SL",
+    "PartNumber": "76-88883",
+
+    "Dhcp": { "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_dhcp" },
+    "Dns":  { "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_dns" },
+    "Interfaces": { "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_interfaces" },
+    "
+
+    "Links": {
+		"Chassis": [{
+			"@odata.id": "/redfish/v1/Chassis/NetworkDeviceChassis_1"
+		}],
+		"ManagedBy": [{
+			"@odata.id": "/redfish/v1/Managers/NetworkDeviceManager_1"
+		}]
+    },
+
+	"Actions": {
+		"#NetworkDevice.Reset": {
+			"target": "/redfish/v1/NetworkDevices/SW_15/Actions/NetworkDevice.Reset",
+			"ResetType@Redfish.AllowableValues": [
+				"On",
+				"ForceOff",
+				"GracefulShutdown",
+				"ForceRestart",
+			]
+		}
+	}
+}

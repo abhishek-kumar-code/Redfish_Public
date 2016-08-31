@@ -1,0 +1,19 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+
+    "@odata.context": "/redfish/v1/$metadata#NetworkDevices/Members/dhcp/relay/dhcpRelayIfCfgs/Members/$entity",
+    "@odata.type": "#dhcpRelayIfCfgs.1.0.0.dhcpRelayIfCfgs",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_dhcp/relay/dhcpRelayIfCfgs/IF_foo",
+
+    "Id": "IF_foo",
+    "Name": "Interface configuration for a DHCP relay service",
+
+    "ifName": "IF_foo",
+    "enable": "TRUE",
+    "serverAddress": [ "192.168.1.10" ],
+
+    "serverGroupName": {
+        "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_dhcp/relay/dhcpServerGroups/SG1"
+    }
+
+}

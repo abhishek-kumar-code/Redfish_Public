@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.-->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData" />
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
+    <edmx:Include Namespace="Resource.1.0.0"  />
+  </edmx:Reference>
+
+  <edmx:DataServices>
+
+    <Schema Namespace="packetStatistics" xmlns="http://docs.oasis-open.org/odata/ns/edm" >
+
+      <EntityType Name="packetStatistics" BaseType="Resource.1.0.0.Resource">
+        <Annotation Term="OData.Description" String="Schema definition for packet statistics for a DHCP server service." />
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+      </EntityType>
+	      
+    </Schema>
+    
+    <Schema Namespace="packetStatistics.1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm" >
+	
+		<EntityType Name="packetStatistics" BaseType="packetStatistics.packetStatistics">
+			<Annotation Term="OData.Description" String="Schema definition for packet statistics for a DHCP server service." />
+			<Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        
+			<Property Name="clientRequestCount" Type="Edm.Int64" Nullable="false">
+				<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+				<Annotation Term="OData.Description" String="Count of client request packets."/>
+				<Annotation Term="OData.LongDescription" String=""/>		  
+			</Property>
+			<Property Name="discoverCount" Type="Edm.Int64" Nullable="false">
+				<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+				<Annotation Term="OData.Description" String="Count of discover packets."/>
+				<Annotation Term="OData.LongDescription" String=""/>
+ 			</Property>
+			<Property Name="reqeustCount" Type="Edm.Int64" Nullable="false">
+				<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+				<Annotation Term="OData.Description" String="Count of request packets."/>
+				<Annotation Term="OData.LongDescription" String=""/>		  
+			</Property>
+			<Property Name="declineCount" Type="Edm.Int64" Nullable="false">
+				<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+				<Annotation Term="OData.Description" String="Count of decline packets."/>
+				<Annotation Term="OData.LongDescription" String=""/>		  
+			</Property>
+			<Property Name="releaseCount" Type="Edm.Int64" Nullable="false">
+				<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+				<Annotation Term="OData.Description" String="Count of release packets."/>
+				<Annotation Term="OData.LongDescription" String=""/>		  
+			</Property>
+		</EntityType>
+		
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

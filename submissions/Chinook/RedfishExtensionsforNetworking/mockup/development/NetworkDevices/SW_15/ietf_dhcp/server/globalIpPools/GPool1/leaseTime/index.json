@@ -1,0 +1,13 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#NetworkDevices/Members/ietf_dhcp/server/globalIpPools/Members/leaseTime/$entity",
+    "@odata.type": "#leaseTime.1.0.0.leaseTime",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_dhcpsServer/globalIpPools/GPool1/leaseTime",
+
+    "Id": "leaseTime",
+    "Name": "Lease time of a global IP pool of a DHCP server service",
+
+    "day": 1,
+    "hour": 1,
+    "minute": 10
+}

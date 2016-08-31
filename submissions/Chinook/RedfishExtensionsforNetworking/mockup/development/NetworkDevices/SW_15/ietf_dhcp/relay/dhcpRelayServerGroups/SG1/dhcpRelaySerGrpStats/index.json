@@ -1,0 +1,14 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#NetworkDevices/Members/ietf_dhcp/relay/dhcpRelayServerGroups/Members/dhcpRelaySerGrpStats/Members/$entity",
+    "@odata.type": "#dhcpRelaySerGrpStatsCollection.dhcpRelaySerGrpStatsCollection",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_dhcp/Relay/dhcpRelayServerGroups/SG1/dhcpRelaySerGrpStats",
+
+    "Name": "Collection of statistics for a given DHCP relay server group",
+    "Members@odata.count": 1,
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_dhcp/Relay/dhcpRelayServerGroups/SG1/dhcpRelaySerGrpStats/192.168.1.99"
+        }
+    ]
+}
