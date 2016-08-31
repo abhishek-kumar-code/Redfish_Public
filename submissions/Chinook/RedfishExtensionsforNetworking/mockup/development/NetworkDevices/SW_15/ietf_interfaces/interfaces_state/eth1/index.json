@@ -1,0 +1,34 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#NetworkDevices/Members/ietf_interfaces/interfaces_state/globalIpPools/Members/$entity",
+    "@odata.type": "#statistics.1.0.0.statistics",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_interfaces/interfaces_state/interface/ethernet1",
+    "name": "ethernet1",
+    "type": "ethernetCsmaCd",
+    "admin_status": "up",
+    "oper_status": "up",
+    "last_change": "2016-05-16T11:15.11+05:30",
+    "if_index": "1",
+    "phys_address": "00:aa:bb:cc:dd:ee",
+    "higher_layer_if": "eth1.09",
+    "lower_layer_if": "eth1.08",
+    "speed": "1000000000",
+
+    "statistics": {
+        "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_interfaces/interfaces_state/eth1/statistics"
+    },
+
+    "@Redfish.Settings": {
+        "@odata.type": "#Settings.1.0.0.Settings",
+        "SettingsObject": {
+            "@odata.id": "/redfish/v1/NetworkDevices/SW_15/dhcp/server/globalIPPools/GPool1/Settings"
+        },
+        "Time": "2016-03-07T14:44.30-05:00",
+        "ETag": "84ffcbb050ddc7fa9cddb59014546e59",
+        "Messages": [
+            {
+                "MessageId": "Base.1.0.SettingsFailed"
+            }
+        ]
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#NetworkDevices/Members/ietf_dhcp/relay/dhcpRelayIfCfg/$entity",
+    "@odata.type": "#dhcpRelayIfCfgsCollection.dhcpRelayIfCfgsCollection",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_dhcp/relay/dhcpRelayIfCfgs",
+
+    "Name": "Collection of interface configurations for DHCP relay service",
+    "Members@odata.count": 1,
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_dhcp/relay/dhcpRelayIfCfgs/IF_foo"
+        }
+    ]
+}

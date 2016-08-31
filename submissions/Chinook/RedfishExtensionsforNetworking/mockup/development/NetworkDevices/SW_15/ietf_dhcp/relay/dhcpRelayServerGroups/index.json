@@ -1,0 +1,14 @@
+{
+    "@Redfish.Copyright": "Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#NetworkDevices/Members/ietf_dhcp/relay/dhcpRelayServerGroups/$entity",
+    "@odata.type": "#dhcpRelayServerGroupsCollection.dhcpRelayServerGroupsCollection",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_dhcp/relay/dhcpRelayServerGroups",
+
+    "Name": "Collection of server groups within DHCP relay service",
+    "Members@odata.count": 1,
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_dhcp/relay/dhcpRelayServerGroups/SG1"
+        }
+    ]
+}

@@ -1,0 +1,593 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.-->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+  <edmx:DataServices>
+
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions.xml">
+        <edmx:Include Namespace="RedfishExtensions.1.0.0" Alias="Redfish"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
+        <edmx:Include Namespace="Resource.1.0.0"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ietf-yang-types">
+        <edmx:Include Namespace="ietf_yang_types.v1_0_0" Alias="yang" />
+    </edmx:Reference>
+    <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ietf-inet-types.xml">
+	<edmx:Include Namespace="ietf_inet_types.v1_0_0" Alias="inet" />
+    </edmx:Reference>
+    <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/iana-netconf-acm">
+       <edmx:Include Alias="nacm" Namespace="iana_netconf_acm.v1_0_0"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/iana-crypt-hash">
+       <edmx:Include Alias="ianach" Namespace="iana_crypt_hash.v1_0_0"/>
+    </edmx:Reference>
+
+    <Schema Namespace="ietf_system" xmlns="urn.ietf.params.xml.ns.yang.ietf_system"
+            Alias="sys">
+        <Annotation Term="OData.LongDescription"
+                    String=" ... TBD ... "/>
+
+        <EntityType Name="ietf_system" BaseType="Resource.1.0.0.Resource">
+            <Annotation Term="Redfish.Yang.NodeType"
+                        EnumMember="Redfish.Yang.NodeTypes/module"/>
+            <Annotation Term="Redfish.Yang.contact"
+                        String="netmod@ietf.org"/>
+            <!-- TBD add 'organization' in mapping doc -->
+            <Annotation Term="Redfish.Yang.organization"
+                        String="IETF NETMOD (NETCONF Data Modeling Language) Working Group"/>
+            <Annotation Term="Redfish.Yang.description" String="This module contains a collection of YANG definitions for
+        managing network interfaces.[...]"/>
+            <Annotation Term="OData.description" String="This module contains a collection of YANG definitions for the
+     configuration and identification of some common system
+     properties within a device containing a NETCONF server.[...]"/>
+
+            <Annotation Term="Redfish.Yang.revision" String="2014-08-06">
+                <Annotation Term="Redfish.Yang.description" String="Initial revision"/>
+                <Annotation Term="Redfish.Yang.reference"
+                            String="RFC 7317: A YANG Data Model for System Management"/>
+            </Annotation>
+            <TypeDefinition Name="timezone_name" UnderlyingType="Edm.String">
+		<Annotation Term="Redfish.Yang.description" String="A time zone name as used by the Time Zone Database [...]"/>
+		<Annotation Term="Redfish.Yang.reference" String="RFC 6557: Procedures for Maintaining the Time Zone Database"/>
+                <Annotation Term="Redfish.Yang.YangType" String="string" />
+            </TypeDefinition>
+            <Annotation Term="Redfish.Yang.feature" String="radius">
+                <Annotation Term="Redfish.Yang.description"
+                            String="Indicates that the device can be configured as a RADIUS
+       client."/>
+                <Annotation Term="Redfish.Yang.reference" String="RFC 2865: Remote Authentication Dial In User Service (RADIUS)"/>
+            </Annotation>
+
+            <Annotation Term="Redfish.Yang.feature" String="authentication">
+                <Annotation Term="Redfish.Yang.description" String="Indicates that the device supports configuration of
+       user authentication."/>
+            </Annotation>
+            <Annotation Term="Redfish.Yang.feature" String="local-users">
+                <Annotation Term="Redfish.Yang.description"
+                            String="Indicates that the device supports configuration of
+       local user authentication."/>
+                <Annotation Term="Redfish.Yang.if_feature" String="authentication"/>
+            </Annotation>
+
+            <Annotation Term="Redfish.Yang.feature" String="radius-authentication">
+                <!-- Can we have two annotations with the same name, or do we need a list?--> 
+                <!-- In the case that a feature depends on multiple features ... --> 
+                <Annotation Term="Redfish.Yang.if-feature" String="radius"/>
+                <Annotation Term="Redfish.Yang.if-feature" String="authentication"/>
+                <Annotation Term="Redfish.Yang.description"
+                            String="Indicates that the device supports configuration of user
+       authentication over RADIUS."/>
+                <Annotation Term="Redfish.Yang.reference" String="
+       RFC 2865: Remote Authentication Dial In User Service (RADIUS)
+       RFC 5607: Remote Authentication Dial-In User Service (RADIUS)
+                 Authorization for Network Access Server (NAS)
+                 Management"/>
+            </Annotation>
+
+            <Annotation Term="Redfish.Yang.feature" String="ntp">
+                <Annotation Term="Redfish.Yang.description"
+                            String="Indicates that the device can be configured to use one or
+       more NTP servers to set the system date and time."/>
+            </Annotation>
+
+            <Annotation Term="Redfish.Yang.feature" String="ntp-udp-port">
+                <Annotation Term="Redfish.Yang.if-feature" String="ntp"/>
+                <Annotation Term="Redfish.Yang.description"
+                            String="Indicates that the device supports the configuration of
+       the UDP port for NTP servers.
+
+       This is a 'feature', since many implementations do not support
+       any port other than the default port."/>
+            </Annotation>
+
+            <Annotation Term="Redfish.Yang.feature" String="timezone-name">
+                <Annotation Term="Redfish.Yang.description"
+                            String="Indicates that the local time zone on the device
+       can be configured to use the TZ database
+       to set the time zone and manage daylight saving time."/>
+                <Annotation Term="Redfish.Yang.reference" String="RFC 6557: Procedures for Maintaining the Time Zone Database"/>
+            </Annotation>
+
+            <Annotation Term="Redfish.Yang.feature" String="dns-udp-tcp-port">
+                <Annotation Term="Redfish.Yang.description"
+                            String="Indicates that the device supports the configuration of
+       the UDP and TCP port for DNS servers.
+
+       This is a 'feature', since many implementations do not support
+       any port other than the default port."/>
+            </Annotation>
+
+            <ComplexType Name="authentication_method">
+               <Annotation Term="Redfish.Yang.identity" String="authentication-method"/>
+               <Annotation Term="Redfish.Yang.description"
+                            String="Base identity for user authentication methods."/>
+            </ComplexType>
+
+            <ComplexType Name="radius" BaseType="authentication_method">
+
+               <Annotation Term="Redfish.Yang.identity" String="radius"/>
+               <Annotation Term="Redfish.Yang.base"  String="authentication-method"/>
+               <Annotation Term="Redfish.Yang.description"
+                            String="Indicates user authentication using RADIUS."/>
+               <Annotation Term="Redfish.Yang.reference"
+                            String="RFC 2865: Remote Authentication Dial In User Service (RADIUS)
+                  RFC 5607: Remote Authentication Dial-In User Service (RADIUS)
+                  Authorization for Network Access Server (NAS)  Management"/>
+            </ComplexType>
+
+
+            <Annotation Term="Redfish.Yang.identity" String="local-users">
+               <Annotation Term="Redfish.Yang.base"  String="authentication-method"/>
+               <Annotation Term="Redfish.Yang.description"
+                            String="Indicates password-based authentication of locally configured users.">
+              </Annotation>
+            </Annotation>
+
+            <Annotation Term="Redfish.Yang.identity" String="radius-authentication-type">
+               <Annotation Term="Redfish.Yang.description"
+                            String="Base identity for RADIUS authentication types.">
+              </Annotation>
+            </Annotation>
+
+            <Annotation Term="Redfish.Yang.identity" String="radius-pap">
+               <Annotation Term="Redfish.Yang.base"  String="radius-authentication-type"/>
+               <Annotation Term="Redfish.Yang.description"
+                            String="The device requests Password Authentication Protocol (PAP)
+       authentication from the RADIUS server.">
+              </Annotation>
+              <Annotation Term="Redfish.Yang.reference"
+                            String="RFC 2865: Remote Authentication Dial In User Service (RADIUS)"/>
+            </Annotation>
+
+            <Annotation Term="Redfish.Yang.identity" String="radius-chap">
+               <Annotation Term="Redfish.Yang.base"  String="radius-authentication-type"/>
+               <Annotation Term="Redfish.Yang.description"
+                            String="The device requests Challenge Handshake Authentication
+       Protocol (CHAP) authentication from the RADIUS server.">
+              </Annotation>
+              <Annotation Term="Redfish.Yang.reference"
+                            String="RFC 2865: Remote Authentication Dial In User Service (RADIUS)"/>
+            </Annotation>
+        </EntityType>
+    </Schema>
+
+
+    <Schema Namespace="ietf_system.v1_0_0" xmlns="urn.ietf.params.xml.ns.yang.ietf_system">
+      <EntityType Name="ietf_system" BaseType="ietf_system.ietf_system">
+        <NavigationProperty Name="system" Type="system.system">
+          <Annotation Term="Redfish.Yang.config" EnumMember="Redfish.Yang.ConfigPermission/true"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="System group configuration."/>
+          <Annotation Term="OData.LongDescription" String=" TBD "/>
+          <Annotation Term="OData.AutoExpand"/>
+        </NavigationProperty>
+        <NavigationProperty Name="system_state" Type="system_state.system_state">
+          <Annotation Term="Redfish.Yang.config" EnumMember="Redfish.Yang.ConfigPermission/false"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="System group operational state."/>
+          <Annotation Term="OData.LongDescription" String=" TBD "/>
+          <Annotation Term="OData.AutoExpand"/>
+        </NavigationProperty>
+      </EntityType>
+    </Schema>
+
+    <Schema Namespace="system" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <EntityType Name="system" BaseType="Resource.1.0.0.Resource">
+          <Annotation Term="OData.Description" String="System group configuration."/>
+          <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+      </EntityType>        
+    </Schema>
+
+	
+    <Schema Namespace="system.1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <EntityType Name="system" BaseType="system.system">
+            <Annotation Term="Redfish.Yang.NodeType"
+				EnumMember ="Redfish.Yang.NodeTypes/container"/>
+	    <Annotation Term="OData.Description" String="System group configuration."/>
+	    <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+            <!-- TBD Assume Redfish.Yang.String based on Edm.String -->
+            <Property Name="contact" Type="Edm.String">
+		<Annotation Term="Redfish.Yang.NodeType" EnumMember ="Redfish.Yang.NodeTypes/leaf"/>
+		<Annotation Term="Redfish.Yang.YangType" String="string"/>
+                <Annotation Term="Redfish.Yang.description" String="The administrator contact information for the system [...]."/>
+                <Annotation Term="Redfish.Yang.reference"
+                            String="RFC 3418: Management Information Base (MIB) for the
+                   Simple Network Management Protocol (SNMP)
+                   SNMPv2-MIB.sysContact"/>
+            </Property>
+            <Property Name="hostname" Type="inet.domain_name">
+		<Annotation Term="Redfish.Yang.NodeType" EnumMember ="Redfish.Yang.NodeTypes/leaf"/>
+		<Annotation Term="Redfish.Yang.YangType" String="inet:domain-name"/>
+                <Annotation Term="Redfish.Yang.description" String="The name of the host [...]."/>
+            </Property>
+            <Property Name="location" Type="Edm.String">
+		<Annotation Term="Redfish.Yang.NodeType" EnumMember ="Redfish.Yang.NodeTypes/leaf"/>
+		<Annotation Term="Redfish.Yang.YangType" String="string"/>
+                <Annotation Term="Redfish.Yang.description" String="The system location [...]."/>
+                <Annotation Term="Redfish.Yang.reference"
+                            String="RFC 3418: Management Information Base (MIB) for the
+                   Simple Network Management Protocol (SNMP)
+                   SNMPv2-MIB.sysLocation"/>
+            </Property>
+            <NavigationProperty Name="clock" Type="clock.clock">
+                <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+                <Annotation Term="Redfish.Yang.config" EnumMember="Redfish.Yang.ConfigPermission/true"/>
+                <Annotation Term="Redfish.Yang.description" String="Configuration of the system date and time properties."/>
+                <Annotation Term="OData.Description" String="Configuration of the system date and time properties."/>
+                <Annotation Term="OData.AutoExpand"/>
+            </NavigationProperty>
+            <NavigationProperty Name="ntp" Type="ntp.ntp">
+                <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+                <Annotation Term="Redfish.Yang.config" EnumMember="Redfish.Yang.ConfigPermission/true"/>
+                <Annotation Term="OData.Description" String="."/>
+                <Annotation Term="Redfish.Yang.description" String="Configuration of the NTP client."/>
+                <Annotation Term="Redfish.Yang.if-feature" String="ntp"/>
+                <Annotation Term="OData.AutoExpand"/>
+            </NavigationProperty>
+            <NavigationProperty Name="dns_resolver" Type="dns_resolver.dns_resolver">
+                <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+                <Annotation Term="Redfish.Yang.config" EnumMember="Redfish.Yang.ConfigPermission/true"/>
+                <Annotation Term="OData.Description" String="List of the DNS servers that the resolver should query. [...]"/>
+                <Annotation Term="Redfish.Yang.description" String="List of the DNS servers that the resolver should query. [...]"/>
+                <Annotation Term="OData.AutoExpand"/>
+            </NavigationProperty>
+            <NavigationProperty Name="radius" Type="radius.radius">
+                <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+                <Annotation Term="Redfish.Yang.if-feature" String="radius"/>
+                <Annotation Term="Redfish.Yang.config" EnumMember="Redfish.Yang.ConfigPermission/true"/>
+                <Annotation Term="OData.Description" String="Configuration of the RADIUS client."/>
+                <Annotation Term="Redfish.Yang.description" String="Configuration of the RADIUS client."/>
+                <Annotation Term="OData.AutoExpand"/>
+            </NavigationProperty>
+            <NavigationProperty Name="authentication" Type="authentication.authentication">
+                <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+                <Annotation Term="Redfish.Yang.if-feature" String="authentication"/>
+                <Annotation Term="Redfish.Yang.config" EnumMember="Redfish.Yang.ConfigPermission/true"/>
+                <Annotation Term="OData.Description" String="The authentication configuration subtree."/>
+                <Annotation Term="Redfish.Yang.description" String="The authentication configuration subtree."/>
+                <Annotation Term="OData.AutoExpand"/>
+            </NavigationProperty>
+
+          </EntityType>
+    </Schema>
+
+
+   <!-- TBD: Possible name conflict with 'system_state.clock' -->
+    <Schema Namespace="system.clock" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <EntityType Name="clock" BaseType="Resource.1.0.0.Resource">
+          <Annotation Term="OData.Description" String="Configuration of the system date and time properties.."/>
+          <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+      </EntityType>        
+    </Schema>
+
+
+    <Schema Namespace="system.clock.1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <EntityType Name="clock" BaseType="system.clock.clock">
+            <Annotation Term="Redfish.Yang.NodeType"
+				EnumMember ="Redfish.Yang.NodeTypes/container"/>
+	    <Annotation Term="OData.Description" String="Configuration of the system date and time properties."/>
+	    <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+
+            <Annotation Term="Redfish.Yang.choice" String="timezone">
+                <Annotation Term="Redfish.Yang.description" String="The system time zone information."/>
+
+                <Annotation Term="Redfish.Yang.case" String="timezone-name">
+                    <Annotation Term="Redfish.Yang.if_feature" String="timezone-name"/>
+                    <Annotation Term="Redfish.Yang.NodeName" String="timezone-name"/>
+                    <Annotation Term="Redfish.Yang.NodeType"
+				EnumMember ="Redfish.Yang.NodeTypes/leaf"/>
+                </Annotation>
+
+                <Annotation Term="Redfish.Yang.case" String="timezone-utc-offset">
+                    <Annotation Term="Redfish.Yang.NodeName" String="timezone-utc-offset" />
+                    <Annotation Term="Redfish.Yang.NodeType"
+		                EnumMember ="Redfish.Yang.NodeTypes/leaf"/>
+                </Annotation>
+            </Annotation>
+
+           <Property Name="timezone_name" Type="timezone_name">
+               <Annotation Term="Redfish.Yang.NodeType" EnumMember ="Redfish.Yang.NodeTypes/leaf"/>
+               <Annotation Term="Redfish.Yang.YangType" String="timezone-name"/>
+               <Annotation Term="Redfish.Yang.description" String="The TZ database name to [...]."/>
+               <Annotation Term="Redfish.Yang.choice" String="timezone"/>
+               <Annotation Term="Redfish.Yang.case" String="timezone-name"/>
+           </Property>
+
+           <Property Name = "timezone_utc_offset" Type = "Edm.int16">
+              <Annotation Term="Redfish.Yang.NodeType" EnumMember ="Redfish.Yang.NodeTypes/leaf"/>
+              <Annotation Term="Redfish.Yang.YangType" String="int16"/>
+              <Annotation Term="Redfish.Yang.range" String="-1500 .. 1500"/>
+              <Annotation Term="Redfish.Yang.units" String="minutes"/>
+              <Annotation Term="Redfish.Yang.description"
+				String="The number of minutes to add to UTC time to..."/>
+              <Annotation Term="Redfish.Yang.choice" String="timezone"/>
+              <Annotation Term="Redfish.Yang.case" String="timezone-utc-offset"/>
+           </Property>
+	   
+        </EntityType>
+    </Schema>
+
+
+    <Schema Namespace="system.ntp" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <EntityType Name="ntp" BaseType="Resource.1.0.0.Resource">
+          <Annotation Term="Redfish.Yang.if_feature" String="ntp"/>
+          <Annotation Term="Redfish.Yang.presence" String="Enables the NTP client unless the 'enabled' leaf
+         (which defaults to 'true') is set to 'false'"/>
+          <Annotation Term="OData.Description" String="Configuration of the NTP client."/>
+          <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+      </EntityType>        
+    </Schema>
+
+
+    <Schema Namespace="system.ntp.1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <EntityType Name="ntp" BaseType="system.ntp.ntp">
+            <!-- TBD: do we need if_feature replicated here ? -->  
+            <Annotation Term="Redfish.Yang.if_feature" String="ntp"/>
+            <Annotation Term="Redfish.Yang.NodeType"
+				EnumMember ="Redfish.Yang.NodeTypes/container"/>
+           <Property Name="enabled" Type="Edm.Boolean">
+		<Annotation Term="Redfish.Yang.NodeType" EnumMember ="Redfish.Yang.NodeTypes/leaf"/>
+                <!-- TBD Do we need this ? Type is already specified as part of the 'Property' -->
+		<Annotation Term="Redfish.Yang.YangType" String="boolean"/>
+		<Annotation Term="Redfish.Yang.default" String="true"/>
+                <Annotation Term="Redfish.Yang.description" String="Indicates that the system should attempt to
+           synchronize the system clock with an NTP server
+           from the 'ntp/server' list."/>
+            </Property>
+
+           <NavigationProperty Name="server" Type="system.ntp.serverCollection.serverCollection">
+              <Annotation Term="Redfish.Yang.config" EnumMember="Redfish.Yang.ConfigPermission/true"/>
+              <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+              <Annotation Term="OData.Description" String="List of NTP servers to use [...] "/>
+              <Annotation Term="OData.LongDescription" String=" TBD "/>
+              <Annotation Term="OData.AutoExpand"/>
+           </NavigationProperty>
+      </EntityType>        
+    </Schema>
+
+
+    <Schema Namespace="system.ntp.serverCollection" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <EntityType Name="serverCollection" BaseType="Resource.1.0.0.ResourceCollection">
+          <NavigationProperty Name="Members" Type="Collection(system.ntp.server.server)">
+              <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          </NavigationProperty>
+      </EntityType>        
+    </Schema>
+
+
+    <Schema Namespace="system.ntp.server" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <EntityType Name="serverEntry" BaseType="Resource.1.0.0.Resource">
+
+       </EntityType>        
+    </Schema>
+
+    <Schema Namespace="system.ntp.server.1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <EnumType Name="association_typeEnumeration">
+     	    <Member Name="server">
+		<Annotation Term="Redfish.Yang.enum" String="server"/>
+     		<Annotation Term="OData.Description"
+				String="Use client association mode.[...]"/>
+    	    </Member>
+     	    <Member Name="peer">
+		<Annotation Term="Redfish.Yang.enum" String="peer"/>
+		<Annotation Term="OData.Description"
+				String="Use symmetric active association mode.[...]"/>
+    	    </Member>
+    	    <Member Name="pool">
+		<Annotation Term="Redfish.Yang.enum" String="pool"/>
+        	<Annotation Term="OData.Description"
+				String="Use client association mode with one or more of the NTP servers.[...]"/>
+            </Member>
+      </EnumType>
+
+      <EntityType Name="server" BaseType="system.ntp.server">
+          <!-- Is this a list node type, or rather a listEntry type ? -->    
+          <Annotation Term="Redfish.Yang.NodeType"
+				EnumMember ="Redfish.Yand.NodeTypes/list"/>
+            <Key>
+                <PropertyRef Name="name"/>
+            </Key>
+         
+            <Property Name="name" Type="Edm.String">
+                <Annotation Term="Redfish.Yang.description" String="An arbitrary name for the NTP server." />
+                <Annotation Term="Redfish.Yang.YangType" String="string"/>
+            </Property>
+
+            <Property Name="association_type" Type="association_typeEnumeration">
+                <Annotation Term="Redfish.Yang.YangType" String="enumeration"/>
+                <Annotation Term="Redfish.Yang.default" String="server"/>
+                <Annotation Term="Redfish.Yang.description" String="The desired association type for this NTP server."/>
+            </Property>
+
+            <Property Name="iburst" Type="Edm.Boolean">
+                <Annotation Term="Redfish.Yang.default" String="true"/>
+                <Annotation Term="Redfish.Yang.YangType" String="boolean"/>
+                <Annotation Term="Redfish.Yang.description" String="Indicates whether this server should enable burst
+             synchronization or not." />
+            </Property>
+
+            <Property Name="prefer" Type="Edm.Boolean">
+                <Annotation Term="Redfish.Yang.default" String="true"/>
+                <Annotation Term="Redfish.Yang.YangType" String="boolean"/>
+                <Annotation Term="Redfish.Yang.description" String="Indicates whether this server should be preferred or not." />
+            </Property>
+ 
+       </EntityType>        
+    </Schema>
+
+    <Schema Namespace="system_state" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <EntityType Name="system_state" BaseType="Resource.1.0.0.Resource">
+          <Annotation Term="OData.Description" String="System group operational state."/>
+          <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+      </EntityType>
+    </Schema>
+
+    <Schema Namespace="system_state.1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <EntityType Name="system_state" BaseType="system_state.system_state">
+          <Annotation Term="Redfish.Yang.NodeType"
+				EnumMember ="Redfish.Yand.NodeTypes/container"/>
+          <Annotation Term="OData.Description" String="System group operational state."/>
+          <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+
+        <NavigationProperty Name="platform" Type="system_state.platform.platform">
+          <Annotation Term="Redfish.Yang.config" EnumMember="Redfish.Yang.ConfigPermission/false"/>
+          <Annotation Term="OData.Description" String="Contains vendor-specific information for
+         identifying the system platform and operating system."/>
+          <Annotation Term="Redfish.Yang.reference" String="IEEE Std 1003.1-2008 - sys/utsname.h"/>
+          <Annotation Term="OData.LongDescription" String=" TBD "/>
+          <Annotation Term="OData.AutoExpand"/>
+        </NavigationProperty>
+
+        <NavigationProperty Name="clock" Type="system_state.clock.clock">
+          <Annotation Term="Redfish.Yang.config" EnumMember="Redfish.Yang.ConfigPermission/false"/>
+          <Annotation Term="OData.Description" String="Monitoring of the system date and time properties."/>
+          <Annotation Term="Redfish.Yang.reference" String="IEEE Std 1003.1-2008 - sys/utsname.h"/>
+          <Annotation Term="OData.LongDescription" String=" TBD "/>
+          <Annotation Term="OData.AutoExpand"/>
+        </NavigationProperty>
+
+      </EntityType>
+    </Schema>
+
+
+    <Schema Namespace="system_state.platform" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <EntityType Name="platform" BaseType="Resource.1.0.0.Resource">
+          <Annotation Term="OData.Description" String="Contains vendor-specific information for
+                       identifying the system platform and operating system."/>
+          <Annotation Term="Redfish.Yang.reference"
+                            String="IEEE Std 1003.1-2008 - sys/utsname.h"/>
+          <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+      </EntityType>        
+    </Schema>
+
+
+    <Schema Namespace="system_state.platform.1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <EntityType Name="platform" BaseType="system_state.platform.platform">
+            <Annotation Term="Redfish.Yang.NodeType"
+				EnumMember ="Redfish.Yang.NodeTypes/container"/>
+	    <Annotation Term="OData.Description" String="Contains vendor-specific information for
+         identifying the system platform and operating system."/>
+	    <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+
+            <Property Name="os_name" Type="Edm.String">
+		<Annotation Term="Redfish.Yang.NodeType" EnumMember ="Redfish.Yang.NodeTypes/leaf"/>
+		<Annotation Term="Redfish.Yang.YangType" String="string"/>
+                <Annotation Term="Redfish.Yang.description" String="The name of the operating system in use -
+           for example, 'Linux'."/>
+                <Annotation Term="Redfish.Yang.reference"
+                            String="IEEE Std 1003.1-2008 - utsname.sysname"/>
+            </Property>
+            <Property Name="os_release" Type="Edm.String">
+		<Annotation Term="Redfish.Yang.NodeType" EnumMember ="Redfish.Yang.NodeTypes/leaf"/>
+		<Annotation Term="Redfish.Yang.YangType" String="string"/>
+                <Annotation Term="Redfish.Yang.description" String="The current release level of the operating system [...]"/>
+                <Annotation Term="Redfish.Yang.reference"
+                            String="IEEE Std 1003.1-2008 - utsname.release"/>
+            </Property>
+            <Property Name="os_version" Type="Edm.String">
+		<Annotation Term="Redfish.Yang.NodeType" EnumMember ="Redfish.Yang.NodeTypes/leaf"/>
+		<Annotation Term="Redfish.Yang.YangType" String="string"/>
+                <Annotation Term="Redfish.Yang.description" String="The current version of the operating system [...]"/>
+                <Annotation Term="Redfish.Yang.reference"
+                            String="IEEE Std 1003.1-2008 - utsname.version"/>
+            </Property>
+            <Property Name="machine" Type="Edm.String">
+		<Annotation Term="Redfish.Yang.NodeType" EnumMember ="Redfish.Yang.NodeTypes/leaf"/>
+		<Annotation Term="Redfish.Yang.YangType" String="string"/>
+                <Annotation Term="Redfish.Yang.description" String="A vendor-specific identifier string representing
+           the hardware in use."/>
+                <Annotation Term="Redfish.Yang.reference"
+                            String="IEEE Std 1003.1-2008 - utsname.machine"/>
+            </Property>
+
+         </EntityType>
+    </Schema>
+
+    <!-- TBD: Possible name conflict with 'system.clock' -->
+    <Schema Namespace="system_state.clock" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <EntityType Name="clock" BaseType="Resource.1.0.0.Resource">
+          <Annotation Term="OData.Description" String="Monitoring of the system date and time properties.."/>
+          <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+      </EntityType>        
+    </Schema>
+
+
+    <Schema Namespace="system_state.clock.1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <EntityType Name="clock" BaseType="system_state.clock.clock">
+            <Annotation Term="Redfish.Yang.NodeType"
+				EnumMember ="Redfish.Yang.NodeTypes/container"/>
+	    <Annotation Term="OData.Description" String="Monitoring of the system date and time properties."/>
+	    <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+
+            <Property Name="current_datetime" Type="yang.date_and_time">
+		<Annotation Term="Redfish.Yang.NodeType" EnumMember ="Redfish.Yang.NodeTypes/leaf"/>
+		<Annotation Term="Redfish.Yang.YangType" String="yang.date_and_time"/>
+                <Annotation Term="Redfish.Yang.description" String="The current system date and time."/>
+            </Property>
+            <Property Name="boot_datetime" Type="yang.date_and_time">
+		<Annotation Term="Redfish.Yang.NodeType" EnumMember ="Redfish.Yang.NodeTypes/leaf"/>
+		<Annotation Term="Redfish.Yang.YangType" String="yang.date_and_time"/>
+                <Annotation Term="Redfish.Yang.description" String="The system date and time when the system last restarted."/>
+            </Property>
+
+         </EntityType>
+    </Schema>
+
+      <Action Name="set_current_datetime">
+          <!-- TBD nacm:default-deny-all -->
+
+          <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/rpc"/>
+          <Annotation Term="Redfish.Yang.description" String="Set the /system-state/clock/current-datetime leaf
+to the specified value.
+
+If the system is using NTP (i.e., /system/ntp/enabled
+is set to 'true'), then this operation will fail with
+error-tag 'operation-failed' and error-app-tag value of
+'ntp-active'." />
+
+        <Parameter Name="current_datetime" Type="yang.date_and_time">
+          <Annotation Term="Redfish.Yang.mandatory" EnumMember ="Redfish.Yang.Mandatory/true"/>
+          <Annotation Term="Redfish.Yang.description" String="The current system date and time."  />
+        </Parameter>
+      </Action>
+
+      <Action Name="system_restart">
+          <!-- TBD nacm:default-deny-all -->
+         <Annotation Term="Redfish.Yang.NodeType" EnumMember ="Redfish.Yang.NodeTypes/rpc"/>
+         <Annotation Term="Redfish.Yang.description" String="Request that the entire system be restarted immediately. [...]" />
+      </Action>
+
+      <Action Name="system_shutdown">
+          <!-- TBD nacm:default-deny-all -->
+         <Annotation Term="Redfish.Yang.NodeType" EnumMember ="Redfish.Yang.NodeTypes/rpc"/>
+         <Annotation Term="Redfish.Yang.description" String="Request that the entire system be shut down immediately. [...]" />
+      </Action>
+
+  </edmx:DataServices>
+</edmx:Edmx>
+
+
+

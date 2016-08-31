@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.-->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData" />
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
+    <edmx:Include Namespace="Resource.1.0.0"  />
+  </edmx:Reference>
+
+  <edmx:DataServices>
+
+    <Schema Namespace="dhcpRelayServerGroup" xmlns="http://docs.oasis-open.org/odata/ns/edm" >
+      <EntityType Name="dhcpRelayServerGroup" BaseType="Resource.1.0.0.Resource">
+        <Annotation Term="OData.Description" String="Schema definition for a server groups of a DHCP relay service." />
+        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
+      </EntityType>
+    </Schema>
+    
+    <Schema Namespace="dhcpRelayServerGroup.1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm" >
+	
+		<EntityType Name="dhcpRelayServerGroup" BaseType="dhcpRelayServerGroup.dhcpRelayServerGroup">
+		    <Annotation Term="Redfish.Yang.NodeType" EnumMember ="Redfish.Yang.NodeTypes/list"/>
+			<Annotation Term="OData.Description" String="Schema definition for a server group of a DHCP relay service." />
+			<Annotation Term="OData.AdditionalProperties" Bool="False"/>
+		    <Annotation Term="Redfish.Yang.key" String=" the yang key string"/>
+		    <Key>
+			    <PropertyRef Name="ifName" />
+  	        </Key>      			
+            <Property Name="vpnName" Type="Edm.String" Nullable="false">
+				<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+				<Annotation Term="OData.Description" String="Name of the VPN. (RFC if:interface-ref)"/>
+				<Annotation Term="OData.LongDescription" String=""/>		  
+			</Property>
+			<Property Name="sourceIP" Type="Edm.String" Nullable="false">
+				<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+				<Annotation Term="OData.Description" String="IP address of source"/>
+				<Annotation Term="OData.LongDescription" String=""/>
+                <Annotation Term="Redfish.Pattern" String="^(?:[0-9]{1,3}\\.){3}[0-9]{1,3}$"/>		  
+			</Property>
+			<Property Name="gateway" Type="Edm.String" Nullable="false">
+				<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+				<Annotation Term="OData.Description" String="IP address of gateway"/>
+				<Annotation Term="OData.LongDescription" String=""/>
+                <Annotation Term="Redfish.Pattern" String="^(?:[0-9]{1,3}\\.){3}[0-9]{1,3}$"/>		  
+			</Property>
+            <Property Name="serverAddress" Type="Collection(Yang.inet.ipv4-address)">
+		        <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf_list" />
+    	        <Annotation Term="Redfish.Yang.YangType" String="inet.ipv4-address" />
+				<Annotation Term="OData.Description" String="IP address of server"/>
+				<Annotation Term="OData.LongDescription" String="IP address of server"/>
+                <Annotation Term="Redfish.Pattern" String="^(?:[0-9]{1,3}\\.){3}[0-9]{1,3}$"/>		  
+            <Property>
+
+            <NavigationProperty Name="dhcpRelaySerGrpStats" Type="dhcpRelaySerGrpStatsCollection.dhcpRelaySerGrpStatsCollection" ContainsTarget="true">
+                <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+                <Annotation Term="OData.Description" String="A reference to the collection of statistics for the relay server group."/>
+                <Annotation Term="OData.LongDescription" String=""/>
+		        <Annotation Term="OData.AutoExpandReferences"/>
+            </NavigationProperty>
+
+		</EntityType>
+		
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>
