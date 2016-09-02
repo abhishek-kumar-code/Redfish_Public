@@ -592,7 +592,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Memory.v1_1_0">
       <EntityType Name="Memory" BaseType="Memory.v1_0_0.Memory">
         <Property Name="Status" Type="Resource.Status" Nullable="false"/>
-      </Entity>
+      </EntityType>
     </Schema>
 
   </edmx:DataServices>
