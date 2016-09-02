@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!-- Copyright 2015-2016 Storage Networking Industry Association (SNIA), USA. All rights reserved.-->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
+
+  <edmx:DataServices>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Schedule">
+
+     <ComplexType  Name="Schedule" Abstract="true">
+        <Annotation Term="OData.Description" String="Schedule a series of events."/>
+        <Annotation Term="OData.LongDescription" String="Schedule a series of events"/>
+     </ComplexType>
+  
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Schedule.v1_0_0">
+
+      <ComplexType  Name="Schedule" BaseType="Schedule.Schedule">
+        <Annotation Term="OData.Description" String="Schedule a series of events."/>
+        <Annotation Term="OData.LongDescription" String="Schedule a series of events"/>
+        <Property Name="Name" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The Schedule name."/>
+          <Annotation Term="OData.LongDescription" String="The name of the Schedule. It should be constructed as &lt;OrgID&gt;:&lt;ScheduleName&gt;.Examples: ACME:Daily, ACME:Weekly, ACME:FirstTuesday,"/>
+        </Property>
+        <!-- There is no Edm.Duration property equivalent in JSON. We should just restrict this with a RegEx -->
+        <Property Name="ScheduleLifetime" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The time after provisioning when the schedule expires."/>
+          <Annotation Term="OData.LongDescription" String="The time after provisioning when the schedule expires."/>
+        </Property>
+        <Property Name="MaxScheduledEvents" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Maximum number of scheduled events."/>
+          <Annotation Term="OData.LongDescription" String="Maximum number of scheduled events."/>
+        </Property>
+        <Property Name="EventStartTimeMilliSeconds" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="MilliSeconds after midnightfor event."/>
+          <Annotation Term="OData.LongDescription" String="MilliSeconds after midnight defining when in a day, each scheduled event occurs."/>
+          <Annotation Term="Org.OData.Measurements.V1.Unit" String="ms" />
+        </Property>
+        <Property Name="RecurrenceGranularity" Type="Schedule.v1_0_0.RecurrenceGranularity">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The granularity of the interval until the next event."/>
+          <Annotation Term="OData.LongDescription" String="The granularity of the interval until the next event is in terms of recurrenceInterval number of recurrenceGranularity units."/>
+        </Property>
+        <Property Name="RecurrenceInterval" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Distance until the next events."/>
+          <Annotation Term="OData.LongDescription" String="Distance until the next events.  Defined in units of recurrenceGranularity."/>
+        </Property>
+        <Property Name="RecurrenceDayOfWeekMask" Type="Collection(Schedule.v1_0_0.DayOfWeek)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Days of the week when scheduled events are enabled."/>
+          <Annotation Term="OData.LongDescription" String="Days of the week when scheduled events are enabled."/>
+        </Property>
+        <Property Name="RecurrenceDayOfMonthMask" Type="Collection(Edm.Int64)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Days of month when scheduled events are enabled."/>
+          <Annotation Term="OData.LongDescription" String="Days of month when scheduled events are enabled."/>
+          <Annotation Term="Validation.Minimum" Int="1"/>
+          <Annotation Term="Validation.Maximum" Int="31"/>
+        </Property>
+        <Property Name="RecurrenceMonthOfYearMask" Type="Collection(Schedule.v1_0_0.MonthOfYear)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Months of year when scheduled events are enabled."/>
+          <Annotation Term="OData.LongDescription" String="Months of year when scheduled events are enabled."/>
+        </Property>
+      </ComplexType>
+
+      <EnumType Name="RecurrenceGranularity">
+        <Annotation Term="OData.Description" String="The interval until the next event."/>
+        <Annotation Term="OData.LongDescription" String="The interval until the next event."/>
+        <Member Name="Seconds">
+          <Annotation Term="OData.Description" String="Next interval is seconds away."/>
+        </Member>
+        <Member Name="Minutes">
+          <Annotation Term="OData.Description" String="Next interval is minutes away."/>
+        </Member>
+        <Member Name="Hours">
+          <Annotation Term="OData.Description" String="Next interval is hours away."/>
+        </Member>
+        <Member Name="Days">
+          <Annotation Term="OData.Description" String="Next interval is days away."/>
+        </Member>
+        <Member Name="Weeks">
+          <Annotation Term="OData.Description" String="Next interval is weeks away."/>
+        </Member>
+        <Member Name="Months">
+          <Annotation Term="OData.Description" String="Next interval is months away."/>
+        </Member>
+        <Member Name="Years">
+          <Annotation Term="OData.Description" String="Next interval is years away."/>
+        </Member>
+      </EnumType>
+
+      <EnumType Name="DayOfWeek">
+        <Annotation Term="OData.Description" String="Days of the Week."/>
+        <Annotation Term="OData.LongDescription" String="Days of the Week."/>
+        <Member Name="Monday">
+          <Annotation Term="OData.Description" String="Monday."/>
+        </Member>
+        <Member Name="Tuesday">
+          <Annotation Term="OData.Description" String="Tuesday."/>
+        </Member>
+        <Member Name="Wednesday">
+          <Annotation Term="OData.Description" String="Wednesday."/>
+        </Member>
+        <Member Name="Thursday">
+          <Annotation Term="OData.Description" String="Thursday."/>
+        </Member>
+        <Member Name="Friday">
+          <Annotation Term="OData.Description" String="Friday."/>
+        </Member>
+        <Member Name="Saturday">
+          <Annotation Term="OData.Description" String="Saturday."/>
+        </Member>
+        <Member Name="Sunday">
+          <Annotation Term="OData.Description" String="Sunday."/>
+        </Member>
+      </EnumType>
+
+
+      <EnumType Name="MonthOfYear">
+        <Annotation Term="OData.Description" String="Months of the year."/>
+        <Annotation Term="OData.LongDescription" String="Months of the year."/>
+        <Member Name="January">
+          <Annotation Term="OData.Description" String="January."/>
+        </Member>
+        <Member Name="February">
+          <Annotation Term="OData.Description" String="February."/>
+        </Member>
+        <Member Name="March">
+          <Annotation Term="OData.Description" String="March."/>
+        </Member>
+        <Member Name="April">
+          <Annotation Term="OData.Description" String="April."/>
+        </Member>
+        <Member Name="May">
+          <Annotation Term="OData.Description" String="May."/>
+        </Member>
+        <Member Name="June">
+          <Annotation Term="OData.Description" String="June."/>
+        </Member>
+        <Member Name="July">
+          <Annotation Term="OData.Description" String="July."/>
+        </Member>
+        <Member Name="August">
+          <Annotation Term="OData.Description" String="August."/>
+        </Member>
+        <Member Name="September">
+          <Annotation Term="OData.Description" String="September."/>
+        </Member>
+        <Member Name="October">
+          <Annotation Term="OData.Description" String="October."/>
+        </Member>
+        <Member Name="November">
+          <Annotation Term="OData.Description" String="November."/>
+        </Member>
+        <Member Name="December">
+          <Annotation Term="OData.Description" String="December."/>
+        </Member>
+      </EnumType>
+
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx> 

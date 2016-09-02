@@ -3,7 +3,7 @@ DocTitle: Redfish API Schema Readme
 DocNumber: '8010'
 DocClass: Normative
 DocVersion: '2016.2'
-modified: '2016-08-12'
+modified: '2016-08-28'
 status: published
 released: True
 copyright: '2015-2016'

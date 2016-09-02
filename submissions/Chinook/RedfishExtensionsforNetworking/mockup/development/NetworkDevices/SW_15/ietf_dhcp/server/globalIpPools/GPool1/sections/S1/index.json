@@ -1,0 +1,16 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#NetworkDevices/Members/ieft_dhcp/server/globalIpPools/Members/sections/Members/$entity",
+    "@odata.type": "#section.1.0.0.section",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ieft_dhcp/server/globalIpPools/GPool1/sections/S1",
+
+    "Id": "S1",
+    "Name": "Section within global IP pool for a DHCP server service",
+
+	"StartIP": "192.168.1.10",
+	"EndIP": "192.168.1.20",
+
+	"ipPoolSectionStat": {
+        "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ieft_dhcp/server/globalIpPools/GPool1/sections/S1/ipPoolSectionStat"
+   	}
+}

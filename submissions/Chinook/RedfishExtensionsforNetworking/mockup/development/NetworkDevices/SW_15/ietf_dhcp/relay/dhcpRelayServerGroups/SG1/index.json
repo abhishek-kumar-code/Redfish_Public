@@ -1,0 +1,18 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#NetworkDevices/Members/ietf_dhcp/relay/dhcpRelayServerGroups/Members/$entity",
+    "@odata.type": "#dhcpRelayServerGroup.1.0.0.dhcpRelayServerGroup",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_dhcp/relay/dhcpRelayServerGroups/SG1",
+
+    "Id": "SG1",
+    "Name": "DHCP Relay Server Group 1",
+
+    "vpnName": "<if:interface-ref>?",
+    "sourceIP": "192.168.1.15",
+    "gateway": "192.168.1.199",
+    "serverAddress": "<enum>?",
+
+    "dhcpRelaySerGrpStats": {
+        "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_dhcp/relay/dhcpRelayServerGroups/SG1/dhcpRelaySerGrpStats"
+    }
+}

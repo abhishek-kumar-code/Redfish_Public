@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.-->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData" />
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
+    <edmx:Include Namespace="Resource.1.0.0"  />
+  </edmx:Reference>
+
+  <edmx:DataServices>
+
+    <Schema Namespace="section" xmlns="http://docs.oasis-open.org/odata/ns/edm" >
+
+      <EntityType Name="section" BaseType="Resource.1.0.0.Resource">
+        <Annotation Term="OData.Description" String="Schema definition for a section of a global IP pool in a DHCP server service." />
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+      </EntityType>
+	      
+    </Schema>
+    
+    <Schema Namespace="section.1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm" >
+	
+		<EntityType Name="section" BaseType="section.section">
+			<Annotation Term="OData.Description" String="Schema definition for a section of a global IP pool in a DHCP server service." />
+			<Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        
+			<Property Name="StartIP" Type="Edm.String" Nullable="false">
+				<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+				<Annotation Term="OData.Description" String="Starting IP address of section."/>
+				<Annotation Term="OData.LongDescription" String=""/>
+		        <Annotation Term="Redfish.Pattern" String="^(?:[0-9]{1,3}\\.){3}[0-9]{1,3}$"/>		
+			</Property>
+			<Property Name="EndIP" Type="Edm.String" Nullable="false">
+				<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+				<Annotation Term="OData.Description" String="Ending IP address of section."/>
+				<Annotation Term="OData.LongDescription" String=""/>
+                <Annotation Term="Redfish.Pattern" String="^(?:[0-9]{1,3}\\.){3}[0-9]{1,3}$"/>		  
+			</Property>
+
+            <NavigationProperty Name="ipPoolSectionStat" Type="ipPoolSectionStat.ipPoolSectionStat" ContainsTarget="true">
+                <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+                <Annotation Term="OData.Description" String="A reference to the statistics for the section"/>
+                <Annotation Term="OData.LongDescription" String=""/>
+		        <Annotation Term="OData.AutoExpandReferences"/>
+            </NavigationProperty>
+		</EntityType>
+		
+
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

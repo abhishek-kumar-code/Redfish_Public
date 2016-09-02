@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.--> 
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0" />
+  </edmx:Reference>
+    
+  <edmx:DataServices>
+
+    <Schema Namespace="dhcp" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+
+      <EntityType Name="dhcp" BaseType="Resource.v1_0_0.Resource">
+        <Annotation Term="OData.Description" String="This is the schema definition for the DHCP Service.  ."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a dhcp service."/>
+      </EntityType>
+    
+    </Schema>
+    
+    <Schema Namespace="dhcp.v1_0_0" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+
+      <EntityType Name="dhcp" BaseType="dhcp.dhcp">
+        <NavigationProperty Name="relay" Type="relay.relay">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A reference to the DHCP relay service associated to this switch."/>
+          <Annotation Term="OData.LongDescription" String=""/>
+          <Annotation Term="OData.AutoExpand"/>
+        </NavigationProperty>
+        <NavigationProperty Name="server" Type="server.server">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A reference to the DHCP server service associated to this switch."/>
+          <Annotation Term="OData.LongDescription" String=""/>
+          <Annotation Term="OData.AutoExpand"/>
+        </NavigationProperty>
+      </EntityType>
+
+    </Schema>
+	
+</edmx:DataServices>
+</edmx:Edmx>
+

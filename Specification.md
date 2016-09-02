@@ -3,7 +3,7 @@ DocTitle: Redfish Scalable Platforms Management API Specification
 DocNumber: '0266'
 DocClass: Normative
 DocVersion: '1.0.4'
-modified: '2016-08-12'
+modified: '2016-08-28'
 SupersedesVersion: '1.0.3'
 status: published
 released: true
@@ -2343,7 +2343,7 @@ The Authorization subsystem uses Roles and Privileges to control which users hav
 
 | Version | Date     | Description     |
 | ---     | ---      | ---             |
-| 1.0.4   | 2016-8-12| Errata release.  Various typographical errors. |
+| 1.0.4   | 2016-8-28| Errata release.  Various typographical errors. |
 |         |          | Added example of an HTTP Link Header and clarified usage and content. |
 |         |          | Added Schema Modification clause describing allowed usage of the Schema files. |
 |         |          | Added recommendation to use TLS 1.2 or later, and to follow the SNIA TLS Specification.  Added reference to the SNIA TLS Specification.  Added additional recommended TLS_RSA_WITH_AES_128_CBC_SHA Cipher suite. |
