@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.-->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData" />
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
+    <edmx:Include Namespace="Resource.1.0.0"  />
+  </edmx:Reference>
+
+  <edmx:DataServices>
+
+    <Schema Namespace="server" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+
+      <EntityType Name="server" BaseType="Resource.1.0.0.Resource">
+        <Annotation Term="OData.Description" String="Schema definition for a DHCP server service."/>
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+      </EntityType>
+	      
+    </Schema>
+    
+    <Schema Namespace="server.1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+	
+		<EntityType Name="server" BaseType="server.server">
+			<Annotation Term="OData.Description" String="Schema definition for a DHCP server service."/>
+			<Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        
+            <NavigationProperty Name="common" Type="common.common" ContainsTarget="true">
+                <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+                <Annotation Term="OData.Description" String="A reference to the common properties."/>
+                <Annotation Term="OData.LongDescription" String=""/>
+		        <Annotation Term="OData.AutoExpandReferences"/>
+            </NavigationProperty>
+            <NavigationProperty Name="packetStatistics" Type="packetStatistics.packetStatistics" ContainsTarget="true">
+                <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+                <Annotation Term="OData.Description" String="A reference to the packet statistics"/>
+                <Annotation Term="OData.LongDescription" String=""/>
+		        <Annotation Term="OData.AutoExpandReferences"/>
+            </NavigationProperty>
+            <NavigationProperty Name="globalIpPools" Type="globalIpPoolsCollection.globalIpPoolsCollection" ContainsTarget="true">
+                <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+                <Annotation Term="OData.Description" String="A reference to the collection of global IP pools."/>
+                <Annotation Term="OData.LongDescription" String=""/>
+                <Annotation Term="OData.AutoExpandReferences"/>
+            </NavigationProperty>
+		</EntityType>
+
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

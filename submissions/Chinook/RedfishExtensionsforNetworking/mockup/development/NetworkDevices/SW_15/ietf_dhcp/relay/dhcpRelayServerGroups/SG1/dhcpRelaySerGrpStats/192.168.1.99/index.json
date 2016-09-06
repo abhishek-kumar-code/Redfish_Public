@@ -1,0 +1,25 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+
+    "@odata.context": "/redfish/v1/$metadata#NetworkDevices/Members/ietf_dhcp/relay/dhcpRelayServerGroups/Members/dhcpRelaySerGrpStats/Members/$entity",
+    "@odata.type": "#dhcpRelaySerGrpStats.1.0.0.dhcpRelaySerGrpStats",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_dhcp/relay/dhcpRelayServerGroups/SG1/dhcpRelaySerGrpStats/192.168.1.99",
+
+    "Id": "192.168.1.99",
+    "Name": "Statistics for IP address within server group of DHCP relay service",
+
+    "pktsReceiveFromClient": 1,
+    "discoverPktsReceive": 1,
+    "requestPktsReceive": 0,
+    "releasePktsReceive": 0,
+    "informPktsReceive": 0,
+    "declinePktsReceive": 0,
+    "pktsReceiveFromServers": 1,
+    "offerPktsReceive": 0,
+    "ackPktsReceive": 0,
+    "nakPktsReceive": 0,
+    "pktsSentToServers": 1,
+    "pktsSentToClients": 20,
+    "unicastPktsSentToClients": 10,
+    "broadcastPktsSentToClients": 0
+}

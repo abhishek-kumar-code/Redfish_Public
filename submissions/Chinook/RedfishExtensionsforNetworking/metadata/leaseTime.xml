@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.-->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData" />
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
+    <edmx:Include Namespace="Resource.1.0.0"  />
+  </edmx:Reference>
+
+  <edmx:DataServices>
+
+    <Schema Namespace="leaseTime" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+
+      <EntityType Name="leaseTime" BaseType="Resource.1.0.0.Resource">
+        <Annotation Term="OData.Description" String="Schema definition for lease time of a global IP pool in a DHCP server service."/>
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+      </EntityType>
+	      
+    </Schema>
+    
+    <Schema Namespace="leaseTime.1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+	
+		<EntityType Name="leaseTime" BaseType="ipPoolSectionStat.ipPoolSectionStat">
+			<Annotation Term="OData.Description" String="Schema definition for lease time of a global IP pool in a DHCP server service."/>
+			<Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        
+			<Property Name="day" Type="Edm.Int64" Nullable="false">
+				<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+				<Annotation Term="OData.Description" String="Number of days of lease."/>
+				<Annotation Term="OData.LongDescription" String=""/>		  
+			</Property>
+			<Property Name="hour" Type="Edm.Int64" Nullable="false">
+				<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+				<Annotation Term="OData.Description" String="Number of hours of lease."/>
+				<Annotation Term="OData.LongDescription" String=""/>
+ 			</Property>
+			<Property Name="minute" Type="Edm.Int64" Nullable="false">
+				<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+				<Annotation Term="OData.Description" String="Number of minutes of lease."/>
+				<Annotation Term="OData.LongDescription" String=""/>		  
+			</Property>
+		</EntityType>
+		
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

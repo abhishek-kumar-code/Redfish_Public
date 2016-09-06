@@ -1,0 +1,14 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-20165 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#NetworkDevices/Members/ietf_dhcp/server/globalIpPools/Members/sections/Members/ipPoolSectionStat/$entity",
+    "@odata.type": "#ipPoolSectionStat.1.0.0.iPoolSectionStat",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_dhcp/server/globalIpPools/GPool1/sections/S1/ipPoolSectionStat",
+
+    "Id": "ipPoolSectionStat",
+    "Name": "Statistics for a section within global IP pool for a DHCP server service",
+
+    "usedIPCount": 3,
+    "idleIPCount": 2,
+    "conflictIPCount": 0,
+    "totalIPCount" : 5
+}
