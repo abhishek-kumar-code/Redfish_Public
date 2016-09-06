@@ -610,7 +610,7 @@
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_2_0.ComputerSystem">
         <Property Name="TrustedModules" Type="Collection(ComputerSystem.v1_3_0.TrustedModules)" Nullable="false">
           <Annotation Term="OData.Description" String="This object describes the array of Trusted Modules in the system."/>
-          <Annotation Term="OData.LongDescription" String="This object shall contain an array of objects with properties which describe the truted modules for the current resource."/>
+          <Annotation Term="OData.LongDescription" String="This object shall contain an array of objects with properties which describe the trusted modules for the current resource."/>
         </Property>
       </EntityType>      
 
@@ -619,7 +619,7 @@
         <Property Name="FirmwareVersion2" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The 2nd firmware version of this Trusted Module, if applicable."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain the 2nd firwmare version, if applicable, as defined by the manufacturer for the Trusted Module."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the 2nd firmware version, if applicable, as defined by the manufacturer for the Trusted Module."/>
         </Property>
         <Property Name="InterfaceTypeSelection" Type="ComputerSystem.v1_3_0.InterfaceTypeSelection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
