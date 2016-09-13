@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.-->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions.xml">
+    <edmx:Include Namespace="RedfishExtensions.1.0.0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.1.0.0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
+    <edmx:Include Namespace="Resource.1.0.0" />
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Chassis.xml">
+    <edmx:Include Namespace="Chassis"/>
+  </edmx:Reference>
+  
+  <edmx:DataServices>
+
+    <Schema Namespace="NetworkDevice" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+
+      <EntityType Name="NetworkDevice" BaseType="Resource.1.0.0.Resource">
+        <Annotation Term="OData.Description" String="This schema specifies the unversioned network device and its respective properties."/>
+        <Annotation Term="OData.LongDescription" String=""/>
+      </EntityType>
+
+      <Action Name="Reset" IsBound="true">
+        <Parameter Name="NetworkDevice" Type="NetworkDevice.v1_0_0.Actions"/>
+        <Parameter Name="ResetType" Type="Resource.ResetType">
+          <Annotation Term="OData.Description" String="The type of reset to be performed"/>
+          <Annotation Term="OData.LongDescription" String="The type of reset which the reset action shall perform."/>
+        </Parameter>
+        <Annotation Term="OData.Description" String="The reset action which is performed on the network device."/>
+        <Annotation Term="OData.LongDescription" String="This action shall perform a reset of the network device."/>
+      </Action>
+      
+    </Schema>
+      
+    <Schema Namespace="Switch.v1_0_0" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+
+      <EntityType Name="Switch" BaseType="Switch.Switch">
+        <Annotation Term="OData.Description" String="This schema specifies v1.0.0 Ethernet switch."/>
+        <Annotation Term="OData.LongDescription" String=""/>
+        <Property Name="Manufacturer" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="The manufacturer of this switch."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain a value that represents the manufacturer of the switch."/>
+        </Property>
+        <Property Name="Model" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="The model number for this switch"/>
+          <Annotation Term="OData.LongDescription" String=""/>
+        </Property>
+        <Property Name="SKU" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="The manufacturer SKU for this switch"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the Stock Keeping Unit (SKU) for thesSwitch."/>
+        </Property>
+        <Property Name="SerialNumber" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="The serial number for this switch"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the serial number for the switch."/>
+        </Property>
+        <Property Name="PartNumber" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="The part number for this switch"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the part number for the switch as defined by the manufacturer."/>
+        </Property>
+        <Property Name="Status" Type="Resource.Status"/>
+       
+        <Property Name="PowerState" Type="Switch.v1_0_0.PowerState">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="This is the current power state of the Switch"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the power state of the switch."/>
+        </Property>   
+        <Property Name="Links" Type="Switch.v1_0_0.Links" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="Contains links to other resources that are related to this resource."/>
+        </Property>
+
+        <Property Name="Actions" Type="Switch.v1_0_0.Actions" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="The Actions object contains the available custom actions on this resource."/>
+        </Property>
+
+        <NavigationProperty Name="DHCP" Type="DHCP.DHCPService" ContainsTarget="true">
+           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+           <Annotation Term="OData.Description" String="A reference to the DHCP service associated with this Switch"/>
+           <Annotation Term="OData.LongDescription" String=""/>
+           <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        
+      </EntityType>
+
+      <ComplexType Name="Links" BaseType="Resource.Links">
+        <NavigationProperty Name="Chassis" Type="Collection(Chassis.Chassis)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="An array of references to the chassis in which this switch is contained"/>
+          <Annotation Term="OData.LongDescription" String=""/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        <NavigationProperty Name="ManagedBy" Type="Collection(Manager.Manager)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="An array of references to the Managers responsible for this switch"/>
+          <Annotation Term="OData.LongDescription" String=""/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        <NavigationProperty Name="PoweredBy" Type="Collection(Resource.Item)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="An array of ID[s] of resources that power this switch. "/>
+          <Annotation Term="OData.LongDescription" String=""/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        <NavigationProperty Name="CooledBy" Type="Collection(Resource.Item)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="An array of ID[s] of resources that cool this switch. "/>
+          <Annotation Term="OData.LongDescription" String=""/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+      </ComplexType>
+
+      <ComplexType Name="Actions">
+        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
+        <Property Name="Oem" Type="Switch.1.0.0.OemActions"/>
+      </ComplexType>
+
+      <ComplexType Name="OemActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="True"/>
+      </ComplexType>
+      
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

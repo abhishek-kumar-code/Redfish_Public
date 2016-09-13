@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.-->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
+    <edmx:Include Namespace="Resource.1.0.0" />
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/globalIpPools.xml">
+    <edmx:Include Namespace="globalIpPools"/>
+  </edmx:Reference>
+
+  <edmx:DataServices>
+
+    <Schema Namespace="Namespace="globalIpPoolsCollection" xmlns="http://docs.oasis-open.org/odata/ns/edm" >
+
+      <EntityType Name="globalIpPoolsCollection" BaseType="Resource.1.0.0.ResourceCollection" >
+            <NavigationProperty Name="Members" Type="Collection(globalIpPools.globalIpPools)" />
+                <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+                <Annotation Term="OData.Description" String="Contains the members of this collection."/>
+                <Annotation Term="OData.AutoExpandReferences"/>
+            </NavigationProperty>
+
+			<Property Name="domainNameServer" Type="Edm.String" Nullable="false">
+				<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+				<Annotation Term="OData.Description" String="Specifies the domain name server, option code is 5."/>
+				<Annotation Term="OData.LongDescription" String=""/>
+                <Annotation Term="Redfish.Pattern" String="^(?:[0-9]{1,3}\\.){3}[0-9]{1,3}$"/>		  
+			</Property>
+			<Property Name="domainName" Type="Edm.String" Nullable="false" >
+				<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+				<Annotation Term="OData.Description" String="Specifies the domain name, option code is 15."/>
+				<Annotation Term="OData.LongDescription" String=""/>
+			</Property>
+	        <Property Name="NbnsServer" Type="Edm.String" Nullable="false">
+				<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+				<Annotation Term="OData.Description" String="Specifies the NetBIOS name server, option code is 44."/>
+				<Annotation Term="OData.LongDescription" String=""/>
+                <Annotation Term="Redfish.Pattern" String="^(?:[0-9]{1,3}\\.){3}[0-9]{1,3}$"/>		  
+			</Property>
+			<Property Name="NbNodeType" Type="NbNodeTypeEnum" Nullable="false" >
+				<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+				<Annotation Term="OData.Description" String="Specifies the NetBIOS node type, option code is 46."/>
+				<Annotation Term="OData.LongDescription" String=""/>
+			</Property>
+      </EntityType>
+
+
+      <EnumType Name="NbNodeTypeEnum" Type="edm.Enum">
+        <Annotation Term="OData.Description" String="An equipment rack, typically a 19-inch wide freestanding unit"/>
+        <Member Name="B-node">
+          <Annotation Term="OData.Description" String="An equipment rack, typically a 19-inch wide freestanding unit"/>
+        </Member>
+        <Member Name="P-node">
+          <Annotation Term="OData.Description" String="An enclosed or semi-enclosed, typically vertically-oriented, system chassis which must be plugged into a multi-system chassis to function normally"/>
+        </Member>
+        <Member Name="M-node">
+          <Annotation Term="OData.Description" String="A generic term for a chassis that does not fit any other description"/>
+        </Member>
+        <Member Name="H-node">
+          <Annotation Term="OData.Description" String="A single, free-standing system, commonly called a tower or desktop chassis"/>
+        </Member>
+      </EnumType>
+    </Schema>
+
+  </edmx:DataServices>
+</edmx:Edmx>

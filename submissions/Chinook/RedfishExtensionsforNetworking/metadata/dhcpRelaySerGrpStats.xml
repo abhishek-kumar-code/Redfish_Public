@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.-->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData" />
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource.xml">
+    <edmx:Include Namespace="Resource.1.0.0"  />
+  </edmx:Reference>
+
+  <edmx:DataServices>
+
+    <Schema Namespace="dhcpRelaySerGrpStats" xmlns="http://docs.oasis-open.org/odata/ns/edm" >
+      <EntityType Name="dhcpRelaySerGrpStats" BaseType="Resource.1.0.0.Resource">
+        <Annotation Term="OData.Description" String="Schema definition for a server groups of a DHCP relay service." />
+        <Annotation Term="OData.AdditionalProperties" Bool="False"/>
+      </EntityType>
+    </Schema>
+    
+    <Schema Namespace="dhcpRelaySerGrpStats.1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm" >
+	
+		<EntityType Name="dhcpRelaySerGrpStats" BaseType="dhcpRelaySerGrpStats.dhcpRelaySerGrpStats">
+			<Annotation Term="OData.Description" String="Schema definition for the statistics for a server group of a DHCP relay service." />
+			<Annotation Term="OData.AdditionalProperties" Bool="False"/>
+        
+			<Property Name="pktsReceiveFromClient" Type="Edm.Int64" Nullable="false">
+				<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+				<Annotation Term="OData.Description" String="Number of packets received from client"/>
+				<Annotation Term="OData.LongDescription" String=""/>		  
+			</Property>
+			<Property Name="discoverPktsReceive" Type="Edm.Int64" Nullable="false">
+				<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+				<Annotation Term="OData.Description" String="Number of discover packets received"/>
+				<Annotation Term="OData.LongDescription" String=""/>	  
+			</Property>
+			<Property Name="requestPktsReceive" Type="Edm.Int64" Nullable="false">
+				<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+				<Annotation Term="OData.Description" String="Number of request packets received"/>
+				<Annotation Term="OData.LongDescription" String=""/>	  
+			</Property>
+			<Property Name="releasetPktsReceive" Type="Edm.Int64" Nullable="false">
+				<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+				<Annotation Term="OData.Description" String="Number of release packets received"/>
+				<Annotation Term="OData.LongDescription" String=""/>	  
+			</Property>
+			<Property Name="informPktsReceive" Type="Edm.Int64" Nullable="false">
+				<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+				<Annotation Term="OData.Description" String="Number of inform packets received"/>
+				<Annotation Term="OData.LongDescription" String=""/>	  
+			</Property>
+			<Property Name="declinePktsReceive" Type="Edm.Int64" Nullable="false">
+				<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+				<Annotation Term="OData.Description" String="Number of decline packets received"/>
+				<Annotation Term="OData.LongDescription" String=""/>	  
+			</Property>
+			<Property Name="pktsReceiveFromServers" Type="Edm.Int64" Nullable="false">
+				<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+				<Annotation Term="OData.Description" String="Number of packets received from server"/>
+				<Annotation Term="OData.LongDescription" String=""/>	  
+			</Property>
+			<Property Name="offerPktsReceive" Type="Edm.Int64" Nullable="false">
+				<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+				<Annotation Term="OData.Description" String="Number of offer packets received"/>
+				<Annotation Term="OData.LongDescription" String=""/>	  
+			</Property>
+			<Property Name="ackPktsReceive" Type="Edm.Int64" Nullable="false">
+				<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+				<Annotation Term="OData.Description" String="Number of ACK packets received"/>
+				<Annotation Term="OData.LongDescription" String=""/>	  
+			</Property>
+			<Property Name="nakPktsReceive" Type="Edm.Int64" Nullable="false">
+				<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+				<Annotation Term="OData.Description" String="Number of NAK packets received"/>
+				<Annotation Term="OData.LongDescription" String=""/>	  
+			</Property>
+			<Property Name="pktsSentToServers" Type="Edm.Int64" Nullable="false">
+				<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+				<Annotation Term="OData.Description" String="Number of packets sent to servers"/>
+				<Annotation Term="OData.LongDescription" String=""/>	  
+			</Property>
+			<Property Name="pktsSentToClients" Type="Edm.Int64" Nullable="false">
+				<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+				<Annotation Term="OData.Description" String="Number of packets sent to clients"/>
+				<Annotation Term="OData.LongDescription" String=""/>	  
+			</Property>
+			<Property Name="unicastPktsSentToClients" Type="Edm.Int64" Nullable="false">
+				<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+				<Annotation Term="OData.Description" String="Number of unicast packets sent to clients"/>
+				<Annotation Term="OData.LongDescription" String=""/>	  
+			</Property>
+			<Property Name="broadcastpktsSentToClients" Type="Edm.Int64" Nullable="false">
+				<Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+				<Annotation Term="OData.Description" String="Number of broadcast packets sent to clients"/>
+				<Annotation Term="OData.LongDescription" String=""/>	  
+			</Property>
+		</EntityType>
+		
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

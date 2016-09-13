@@ -1,0 +1,12 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#NetworkDevices/Members/ietf_dhcp/server/common/$entity",
+    "@odata.type": "#common.1.0.0.common",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_dhcp/server/common",
+
+    "Id": "common",
+    "Name": "Commom properties of DHCP server service",
+
+    "pingPacketNumber": 1,
+    "pingPacketTimeOut": 1
+}

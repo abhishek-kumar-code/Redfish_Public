@@ -1,0 +1,158 @@
+{
+  "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+  "@odata.context": "/redfish/v1/$metadata#ietf_interfaces/Members/$entity",
+  "@odata.type": "#ietf-interfaces.EthernetSwitch",
+  "@odata.id": "/redfish/v1/Switches/SW_12/ietf_interfaces",
+  "Id": "ietf_interfaces",
+  "Name": "Model for management of network interfaces",
+  "interfaces": [
+    "eth1"
+    :
+    {
+      "name": "ethernet 1",
+      "description": "Ethernet interface on slot 1",
+      "type": "iana_if_type:ethernetCsmacd",
+      "enabled": "true",
+      "link_up_down_trap_enable": "true",
+      "ipv4": {
+        "enabled": "true",
+        "forwarding": "true",
+        "mtu": "1518",
+        "address": {
+          "ip": "10.10.1.1",
+          "prefix-length": "8",
+          "description": "The prefix length is eight."
+        },
+        "neighbor": [
+          {
+            "ip": "10.20.20.1",
+            "link_layer_address": "00:aa:bb:cc:dd:ef"
+          }
+        ]
+      },
+      "ipv6": {
+        "enabled": "true",
+        "forwarding": "true",
+        "mtu": "1518",
+        "address": //verify if this is the correct method of representation
+        [
+          {
+            "ip": "0:0:0:0:0:ffff:a0a:101",
+            "prefix-length": "8"
+          }
+        ],
+        "neighbor": [
+          {
+            "ip": "0:0:0:0:0:ffff:a14:1401",
+            "link_layer_address": "00:aa:bb:cc:dd:ef"
+          }
+        ],
+        "dup_addr_detect_transmits": "1",
+        "autoconf": {
+          "create_global_addresses": "true",
+          "create_temporary_addresses": "false",
+          "temporary_valid_lifetime": "604800",
+          "temporary_preferred_lifetime": "86400"
+        }
+      }
+    },
+    "eth2"
+    :
+    {
+      "name": "ethernet 2",
+      "description": "Ethernet interface on slot 2",
+      "type": "ethernetCsmacd",
+      "enabled": "true",
+      "link_up_down_trap_enable": "false",
+    }
+  ]
+
+  "interfaces-state": [
+    "eth1"
+    :
+    {
+      "name": "ethernet1",
+      "type": "ethernetCsmaCd",
+      "admin_status": "up",
+      "oper_status": "up",
+      "last_change": "2016-05-16T11:15.11+05:30",
+      "if_index": "1",
+      "phys_address": "00:aa:bb:cc:dd:ee",
+      "higher_layer_if": "eth1.09",
+      "lower_layer_if": "eth1.08",
+      "speed": "1000000000",
+      "statistics": {
+        "discontinuity_time": "2016-04-16T11:15.11+05:30",
+        "in_octets": "654321",
+        "in_unicast_pkts": "600000",
+        "in_broadcast_pkts": "50000",
+        "in_multicast_pkts": "4000",
+        "in_discards": "300",
+        "in_errors": "20",
+        "in_unknown_protos": "1"
+      },
+      "ipv4": {
+        "forwarding": "true",
+        "mtu": "1518",
+        "address": [
+          {
+            "ip": "10.10.1.1",
+            "prefix_length": "8"
+          }
+        ],
+        "neighbor": [
+          {
+            "ip": "10.20.20.1",
+            "link_layer_address": "00:aa:bb:cc:dd:ef",
+            "origin": "dynamic"
+          }
+        ]
+      },
+      "ipv6": {
+        "forwarding": "true",
+        "mtu": "1518",
+        "address": [
+
+          {
+            "ip": "0:0:0:0:0:ffff:a0a:101",
+            "prefix-length": "8",
+            "origin": "static",
+            "status": "optimistic"
+          },
+{
+ "ip": "0:0:0:0:0:ffff:a0a:102",
+            "prefix-length": "8",
+            "origin": "static",
+            "status": "optimistic"
+}
+        ],
+        "neighbor": [
+          {
+            "ip": "0:0:0:0:0:ffff:a14:1401",
+            "link_layer_address": "00:aa:bb:cc:dd:ef",
+            "origin": "dynamic",
+            "is_router": "",
+            //empty, indicates that the neighbor node acts as a router
+            "state": "reachable"
+          }
+        ]
+      }
+    }
+  ]
+
+
+
+  "@Redfish.Settings": {
+    "@odata.type": "#Settings.1.0.0.Settings",
+    "SettingsObject": {
+      "@odata.id": "/redfish/v1/Switches/SW_12/ietf-interfaces/Settings"
+    },
+    "Time": "2016-04-12T16:42.41-06:00",
+    "ETag": "c12c2116e880ec87728693406ae06506",
+    "Messages": [
+      {
+        "MessageId": "Base.1.0.SettingsSuccess"
+      }
+    ]
+  }
+}

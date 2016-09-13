@@ -1,0 +1,37 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#NetworkDevices/Members/ietf_dhcp/server/globalIpPools/Members/$entity",
+    "@odata.type": "#globalIpPool.1.0.0.globalIpPool",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_dhcp/server/globalIPPools/GPool1",
+
+    "Id": "GPool1",
+    "Name": "Global Pool 1 for DHCP server",
+
+	"vpnInstance": "VPN_1",
+
+	"gatewayIp": "192.168.1.99",
+	"gatewayMask": "255.255.255.0",
+
+    "DomainNameServer": "192.168.1.98",
+    "DomainName": "contoso.com",
+    "NbnsServer": "192.168.1.22,
+    "NbNodeType": <enum>
+
+    "Sections": {
+        "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_dhcp/server/globalIPPools/GPool1/Sections"
+    },
+
+    "@Redfish.Settings": {
+        "@odata.type": "#Settings.1.0.0.Settings",
+        "SettingsObject": {
+            "@odata.id": "/redfish/v1/NetworkDevices/SW_15/dhcp/server/globalIPPools/GPool1/Settings"
+        },
+        "Time": "2016-03-07T14:44.30-05:00",
+        "ETag": "84ffcbb050ddc7fa9cddb59014546e59",
+        "Messages": [
+            {
+                "MessageId": "Base.1.0.SettingsFailed"
+            }
+        ]
+    }
+}

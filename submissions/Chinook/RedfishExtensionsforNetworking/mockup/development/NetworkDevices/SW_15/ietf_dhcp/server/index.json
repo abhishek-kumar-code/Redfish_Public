@@ -1,0 +1,23 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+
+    "@odata.context": "/redfish/v1/$metadata#NetworkDevices/Members/ietf_dhcp/server/$entity",
+    "@odata.type": "#server.1.0.0.server",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_dhcp/server",
+
+    "Id": "server",
+    "Name": "DHCP server",
+
+    "common": {
+        "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_dhcp/server/common"
+    },
+
+    "packetStatistics": {
+        "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_dhcp/server/packetStatistics"
+    },
+
+    "globalIpPools": {
+        "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_dhcp/server/globalIpPools"
+    }
+ 
+}

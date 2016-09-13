@@ -1,0 +1,19 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#NetworkDevices/Member/ietf_dhcp/relay/$entity",
+    "@odata.type": "#relay.1.0.0.relay",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_dhcp/relay",
+
+    "Id": "relay",
+    "Name": "DHCP Relay Service",
+
+    "dhcpRelayIfCfgs": {
+        "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_dhcp/relay/dhcpRelayIfCfgs"
+    },
+    "dhcpRelayServerGroups": {
+        "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_dhcp/relay/dhcpRelayServerGroups"
+    },
+    "dhcpRelayStatistics": {
+        "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_dhcp/relay/dhcpRelayStatistics"
+    }
+}
