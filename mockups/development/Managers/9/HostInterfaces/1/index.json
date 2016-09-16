@@ -19,6 +19,8 @@
         "RedfishSessionAuth",
         "OemAuth"
     ],
+    "KernelAuthRoleId": "Administrator",
+    "KernelAuthEnabled": true,
     "HTTPMode": "HTTPSOnly",
     "HostEthernetInterfaces": {
         "@odata.id": "/redfish/v1/Managers/9/HostInterfaces/1/HostEthernetInterfaces"
@@ -34,7 +36,10 @@
             {
                 "@odata.id": "/redfish/v1/Systems/5"
             }
-        ]
+        ],
+        "KernelAuthRole": {
+            "@odata.id": "/redfish/v1/AccountService/Roles/Admin"
+        }
     },
     "Oem": {}
 }
