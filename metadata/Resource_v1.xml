@@ -516,15 +516,15 @@
       <ComplexType Name="ContainerAddress">
         <Annotation Term="OData.Description" String="The address within a container of a resource."/>
         <Annotation Term="OData.LongDescription" String="The value shall describe a location within a container.  Examples of containers include a room in a building and a shelf in a rack."/>
-        <Property Name="Row"  Type="Edm.Int64"  DefaultValue="0">
+        <Property Name="Row"  Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="Row location within the container."/>
-          <Annotation Term="OData.LongDescription" String="The value shall be the ordinal position of the row within the container.  Rows shall be numbered from front to back starting with 0."/>
+          <Annotation Term="OData.Description" String="Name of row location within the container."/>
+          <Annotation Term="OData.LongDescription" String="The value shall be the name of the row within the container."/>
         </Property>
-        <Property Name="Rack"  Type="Edm.Int64"  DefaultValue="0">
+        <Property Name="Rack"  Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="Rack location within a row."/>
-          <Annotation Term="OData.LongDescription" String="The value shall be ordinal position of the rack within a row.  Rack numbers shall be allocated from left to right starting with 0."/>
+          <Annotation Term="OData.Description" String="Name of a rack location within a row."/>
+          <Annotation Term="OData.LongDescription" String="The value shall be the name of the rack within a row."/>
         </Property>
         <Property Name="RackOffsetUnits" Type="Location.RackUnits">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
