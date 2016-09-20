@@ -526,12 +526,13 @@
           <Annotation Term="OData.Description" String="Name of a rack location within a row."/>
           <Annotation Term="OData.LongDescription" String="The value shall be the name of the rack within a row."/>
         </Property>
+
         <Property Name="RackOffsetUnits" Type="Location.RackUnits">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The type of Rack Units in use."/>
           <Annotation Term="OData.LongDescription" String="The value shall be a RackUnit enumeration literal indicating the type of rack units in use."/>
         </Property>
-        <Property Name="RackOffset" Type="Edm.Int64"  DefaultValue="0">
+        <Property Name="RackOffset" Type="Edm.Int64" DefaultValue="0">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Vertical location of the item in terms of RackOffsetUnits."/>
           <Annotation Term="OData.LongDescription" String="Vertical location of the item in the rack. Rack offset units shall be measured from bottom to top starting with 0."/>
@@ -541,12 +542,12 @@
       <ComplexType Name="Location" BaseType="Resource.v1_1_0.Location">
         <Annotation Term="OData.Description" String="The location of a resource."/>
         <Annotation Term="OData.LongDescription" String="Instances shall describe a location for a resource. For more information see RFC5139. Depending on use, the instance may represent a past, current, or future location."/>
-        <Property Name="PostalAddress" Type="Location.PostalAddress">
+        <Property Name="PostalAddress" Type="Resource.v1_3_0.PostalAddress">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Postal address of the addressed resource.."/>
           <Annotation Term="OData.LongDescription" String="The value shall be a postal address of the resource."/>
         </Property>
-        <Property Name="ContainerAddress" Type="Location.ContainerAddress">
+        <Property Name="ContainerAddress" Type="Resource.v1_3_0.ContainerAddress">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="An address within the addressed location."/>
           <Annotation Term="OData.LongDescription" String="The value shall be an address within the addressed location."/>
