@@ -335,14 +335,14 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_3_0">
 
-      <EnumType Name="RackUnitType">
+      <EnumType Name="RackUnits">
         <Annotation Term="OData.Description" String="Defines a rack unit."/>
         <Annotation Term="OData.LongDescription" String="Enumeration literals shall name the type of rack units in use."/>
         <Member Name="OpenU">
           <Annotation Term="OData.Description" String="Defines a rack unit as being equal to 48 mm (1.89 in)."/>
           <Annotation Term="OData.LongDescription" String="Rack units shall be specifie3d in terms of the Open Compute Open Rack specification."/>
         </Member>
-        <Member Name="RackU">
+        <Member Name="EIA_310">
           <Annotation Term="OData.Description" String="Defines a rack unit as being equal to 1.75 in (44.45 mm)."/>
           <Annotation Term="OData.LongDescription" String="Rack units shall be specified as defined by the EIA-310 standard."/>
         </Member>
@@ -526,15 +526,15 @@
           <Annotation Term="OData.Description" String="Rack location within a row."/>
           <Annotation Term="OData.LongDescription" String="The value shall be ordinal position of the rack within a row.  Rack numbers shall be allocated from left to right starting with 0."/>
         </Property>
-        <Property Name="RackUnitType" Type="Location.RackUnitType">
+        <Property Name="RackOffsetUnits" Type="Location.RackUnits">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The type of Rack Units in use."/>
           <Annotation Term="OData.LongDescription" String="The value shall be a RackUnit enumeration literal indicating the type of rack units in use."/>
         </Property>
         <Property Name="RackOffset" Type="Edm.Int64"  DefaultValue="0">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="Vertical location of the item in terms of RackUnits."/>
-          <Annotation Term="OData.LongDescription" String="Vertical location of the item in the rack. Rack units shall be measured from bottom to top starting with 0."/>
+          <Annotation Term="OData.Description" String="Vertical location of the item in terms of RackOffsetUnits."/>
+          <Annotation Term="OData.LongDescription" String="Vertical location of the item in the rack. Rack offset units shall be measured from bottom to top starting with 0."/>
         </Property>
       </ComplexType>
 
