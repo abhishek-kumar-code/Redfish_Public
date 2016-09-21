@@ -516,18 +516,17 @@
       <ComplexType Name="ContainerAddress">
         <Annotation Term="OData.Description" String="The address within a container of a resource."/>
         <Annotation Term="OData.LongDescription" String="The value shall describe a location within a container.  Examples of containers include a room in a building and a shelf in a rack."/>
-        <Property Name="Row"  Type="Edm.String">
+        <Property Name="Row" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Name of row location within the container."/>
           <Annotation Term="OData.LongDescription" String="The value shall be the name of the row within the container."/>
         </Property>
-        <Property Name="Rack"  Type="Edm.String">
+        <Property Name="Rack" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Name of a rack location within a row."/>
           <Annotation Term="OData.LongDescription" String="The value shall be the name of the rack within a row."/>
         </Property>
-
-        <Property Name="RackOffsetUnits" Type="Location.RackUnits">
+        <Property Name="RackOffsetUnits" Type="Resource.v1_3_0.RackUnits">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The type of Rack Units in use."/>
           <Annotation Term="OData.LongDescription" String="The value shall be a RackUnit enumeration literal indicating the type of rack units in use."/>
