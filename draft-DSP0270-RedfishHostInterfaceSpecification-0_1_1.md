@@ -76,6 +76,7 @@ The following additional terms are used in this document.
 | Redfish Manager    | x                     |
 
 
+
 ## Symbols and abbreviated terms
 
 The following additional abbreviations are used in this document.
@@ -185,7 +186,12 @@ An attractive feature of the RESTful interface is the very limited number of ope
 
 #### Privilege model/Authorization
 
-The Authorization 
+Services shall require Authentication and encryption via the Host Interface with same requirements as via out-of-band network interfaces:
+
+* Session Login POSTs shall use encryption
+* Patches that contain sensitive data shall use encryption
+* Basic Auth requests shall require encryption
+
 
 
 ## ANNEX A (informative)
