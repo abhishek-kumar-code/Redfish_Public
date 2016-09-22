@@ -354,162 +354,162 @@
         <Property Name="Country" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Country"/>
-          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the Country field as defined in RFC5159."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the Country field as defined in RFC5139."/>
         </Property>
         <Property Name="Territory" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="A top-level subdivision within a country."/>
-          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the A1 field as defined in RFC5159 when used to name a territory, state, region, province, or prefecture within a country."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the A1 field as defined in RFC5139 when used to name a territory, state, region, province, or prefecture within a country."/>
         </Property>
         <Property Name="District" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="A county, parish, gun (JP), or  district (IN)"/>
-          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the A2 field as defined in RFC5159.  It is used to name a county, parish, gun (JP), or  district (IN). "/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the A2 field as defined in RFC5139.  It is used to name a county, parish, gun (JP), or  district (IN). "/>
         </Property>
         <Property Name="City" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="City, township, or shi (JP)."/>
-          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the A3 field as defined in RFC5159.  It is used to name a city, township, or shi (JP)."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the A3 field as defined in RFC5139.  It is used to name a city, township, or shi (JP)."/>
         </Property>
         <Property Name="Division" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="City division, borough, dity district, ward, chou (JP)."/>
-          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the A4 field as defined in RFC5159.  It is used to name a city division, borough, dity district, ward, chou (JP)."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the A4 field as defined in RFC5139.  It is used to name a city division, borough, dity district, ward, chou (JP)."/>
         </Property>
         <Property Name="Neighborhood" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Neighborhood or block."/>
-          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the A5 field as defined in RFC5159.  It is used to name a neighborhood or block."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the A5 field as defined in RFC5139.  It is used to name a neighborhood or block."/>
         </Property>
         <Property Name="LeadingStreetDirection" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="A leading street direction."/>
-          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the PRD field as defined in RFC5159.  It is used to name a leading street direction, (N, W, SE)."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the PRD field as defined in RFC5139.  It is used to name a leading street direction, (N, W, SE)."/>
         </Property>
         <Property Name="Street" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Street name."/>
-          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the A6 field as defined in RFC5159.  It is used to name a street."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the A6 field as defined in RFC5139.  It is used to name a street."/>
         </Property>
         <Property Name="TrailingStreetSuffix" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="A trailing street suffix."/>
-          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the POD field as defined in RFC5159.  It is used to name a trailing street suffix."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the POD field as defined in RFC5139.  It is used to name a trailing street suffix."/>
         </Property>
         <Property Name="StreetSuffix" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Avenue, Platz, Street, Circle."/>
-          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the STS field as defined in RFC5159.  It is used to name a  street suffix."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the STS field as defined in RFC5139.  It is used to name a  street suffix."/>
         </Property>
         <Property Name="House Number" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Numeric portion of house number."/>
-          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the HNO field as defined in RFC5159.  It is the numeric portion of the house number."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the HNO field as defined in RFC5139.  It is the numeric portion of the house number."/>
         </Property>
         <Property Name="HouseNumberSuffix" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="House number suffix."/>
-          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the HNS field as defined in RFC5159.  It is used to provide a suffix to a house number, (F, B, 1/2)."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the HNS field as defined in RFC5139.  It is used to provide a suffix to a house number, (F, B, 1/2)."/>
         </Property>
         <Property Name="Landmark" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Landmark"/>
-          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the LMK field as defined in RFC5159.  It is used to identify a landmark or vanity address."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the LMK field as defined in RFC5139.  It is used to identify a landmark or vanity address."/>
         </Property>
         <Property Name="Location" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Room designation or other additional info."/>
-          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the LOC field as defined in RFC5159.  It is used to provide additional information."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the LOC field as defined in RFC5139.  It is used to provide additional information."/>
         </Property>
         <Property Name="Floor" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Floor."/>
-          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the FLR field as defined in RFC5159.  It is used to provide a floor designation."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the FLR field as defined in RFC5139.  It is used to provide a floor designation."/>
         </Property>
         <Property Name="Name" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Name"/>
-          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the NAM field as defined in RFC5159.  It is used to name the occupant."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the NAM field as defined in RFC5139.  It is used to name the occupant."/>
         </Property>
         <Property Name="PostalCode" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Postal code (or zip code)."/>
-          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the PC field as defined in RFC5159. The value shall be a Postal code (or zip code)."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the PC field as defined in RFC5139. The value shall be a Postal code (or zip code)."/>
         </Property>
         <Property Name="Building" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Name of the building."/>
-          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the BLD field as defined in RFC5159.  The value shall be name a building used to locate the resource."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the BLD field as defined in RFC5139.  The value shall be name a building used to locate the resource."/>
         </Property>
         <Property Name="Unit" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Name or number of the unit (apartment, suite)."/>
-          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the UNIT field as defined in RFC5159.  The value shall be a name or number of a unit (apartment, suite) used to locate the resource."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the UNIT field as defined in RFC5139.  The value shall be a name or number of a unit (apartment, suite) used to locate the resource."/>
         </Property>
         <Property Name="Room" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Name or number of the room."/>
-          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the ROOM field as defined in RFC5159.  The value shall be a name or number of a room used to locate the resource within the unit."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the ROOM field as defined in RFC5139.  The value shall be a name or number of a room used to locate the resource within the unit."/>
         </Property>
         <Property Name="Seat" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Seat (desk, cubicle, workstation)"/>
-          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the SEAT field as defined in RFC5159.  The value shall be a name or number of a Seat (desk, cubicle, workstation)."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the SEAT field as defined in RFC5139.  The value shall be a name or number of a Seat (desk, cubicle, workstation)."/>
         </Property>
         <Property Name="PlaceType" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="A description of the type of place that is addressed."/>
-          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the PLC field as defined in RFC5159.  Examples include: office, residence,...)"/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the PLC field as defined in RFC5139.  Examples include: office, residence,...)"/>
         </Property>
         <Property Name="Community" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Postal community name."/>
-          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the PCN field as defined in RFC5159.  The value shall be a postal community name."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the PCN field as defined in RFC5139.  The value shall be a postal community name."/>
         </Property>
         <Property Name="POBox" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Post office box (P.O. box)."/>
-          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the POBOX field as defined in RFC5159.  The value shall be a Post office box (P.O. box)."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the POBOX field as defined in RFC5139.  The value shall be a Post office box (P.O. box)."/>
         </Property>
         <Property Name="AdditionalCode" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Additional code."/>
-          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the ADDCODE field as defined in RFC5159."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the ADDCODE field as defined in RFC5139."/>
         </Property>
         <Property Name="Road" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="A primary road or street."/>
-          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the RD field as defined in RFC5159.  The value designates a primary road or street."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the RD field as defined in RFC5139.  The value designates a primary road or street."/>
         </Property>
         <Property Name="RoadSection" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Road Section."/>
-          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the RDSEC field as defined in RFC5159.  The value shall be a road section."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the RDSEC field as defined in RFC5139.  The value shall be a road section."/>
         </Property>
         <Property Name="RoadBranch" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Road branch)."/>
-          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the RDBR field as defined in RFC5159.  The value shall be a Post office box (P.O. box)road branch."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the RDBR field as defined in RFC5139.  The value shall be a Post office box (P.O. box)road branch."/>
         </Property>
         <Property Name="RoadSubBranch" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Road sub branch"/>
-          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the RDSUBBR field as defined in RFC5159."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the RDSUBBR field as defined in RFC5139."/>
         </Property>
         <Property Name="RoadPreModifier" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Road pre-modifier."/>
-          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the PRM field as defined in RFC5159.  (Old, New)"/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the PRM field as defined in RFC5139.  (Old, New)"/>
         </Property>
         <Property Name="RoadPostModifier" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Road post-modifier."/>
-          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the POM field as defined in RFC5159.  (Extended)"/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the POM field as defined in RFC5139.  (Extended)"/>
         </Property>
         <Property Name="GPSCoords" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The GPS coordinates of the part."/>
-          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the ADDCODE field as defined in RFC5159. The value shall be the GPS coordinates of the location. If furnished, this shall be expressed in the format '[-][nn]n.nnnnnn, [-][nn]n.nnnnn', i.e. two numbers, either positive or negative, with six decimal places of precision, comma-separated."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the ADDCODE field as defined in RFC5139. The value shall be the GPS coordinates of the location. If furnished, this shall be expressed in the format '[-][nn]n.nnnnnn, [-][nn]n.nnnnn', i.e. two numbers, either positive or negative, with six decimal places of precision, comma-separated."/>
         </Property>
       </ComplexType>
 
