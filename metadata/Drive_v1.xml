@@ -90,7 +90,7 @@
         </Property>
         <Property Name="Revision" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The revision of this Drive"/>
+          <Annotation Term="OData.Description" String="The revision of this Drive. This is typically the firmware/hardware version of the drive."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the revision as defined by the manufacturer for the associated drive."/>
         </Property>
         <Property Name="Status" Type="Resource.Status" Nullable="false"/>
