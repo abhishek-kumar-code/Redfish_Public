@@ -329,6 +329,10 @@
         </NavigationProperty>
       </ComplexType>
     </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.v1_1_1">
+      <EntityType Name="Drive" BaseType="Drive.v1_1_0.Drive"/>
+    </Schema>
 
   </edmx:DataServices>
 </edmx:Edmx>
