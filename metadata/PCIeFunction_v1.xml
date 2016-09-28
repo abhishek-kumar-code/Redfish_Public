@@ -216,6 +216,10 @@
       </EnumType>
 
     </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="PCIeFunction.v1_0_1">
+      <EntityType Name="PCIeFunction" BaseType="PCIeFunction.v1_0_0.PCIeFunction"/>
+    </Schema>
+
   </edmx:DataServices>
 </edmx:Edmx>
-
