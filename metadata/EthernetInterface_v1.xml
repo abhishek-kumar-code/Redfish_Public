@@ -40,6 +40,9 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Endpoint_v1.xml">
     <edmx:Include Namespace="Endpoint"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/HostInterface_v1.xml">
+    <edmx:Include Namespace="HostInterface"/>
+  </edmx:Reference>
 
   <edmx:DataServices>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EthernetInterface">
@@ -223,6 +226,19 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the endpoints that connect to this ethernet interface."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resources that this ethernet interface is associated with and shall reference a resource of type Endpoint."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+      </ComplexType>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EthernetInterface.v1_2_0">
+      <EntityType Name="EthernetInterface" BaseType="EthernetInterface.v1_1_0.EthernetInterface"/>
+
+      <ComplexType Name="Links" BaseType="EthernetInterface.v1_1_0.Links">
+        <NavigationProperty Name="HostInterface" Type="HostInterface.HostInterface" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This is a reference to a Host Interface that is associated with this Ethernet Interface."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to a resource of type HostInterface which represents the interface used by a host to communicate with a Manager."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </ComplexType>

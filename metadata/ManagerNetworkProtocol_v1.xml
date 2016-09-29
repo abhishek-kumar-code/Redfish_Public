@@ -168,5 +168,15 @@
       <EntityType Name="ManagerNetworkProtocol" BaseType="ManagerNetworkProtocol.v1_0_0.ManagerNetworkProtocol"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ManagerNetworkProtocol.v1_1_0">
+      <EntityType Name="ManagerNetworkProtocol" BaseType="ManagerNetworkProtocol.v1_0_2.ManagerNetworkProtocol">
+        <Property Name="DHCP" Type="ManagerNetworkProtocol.v1_0_0.Protocol" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Settings for this Manager's DHCP protocol support"/>
+          <Annotation Term="OData.LongDescription" String="This object shall contain information for the DHCP protocol settings for the manager."/>
+        </Property>
+      </EntityType>
+    </Schema>
+
   </edmx:DataServices>
 </edmx:Edmx>
