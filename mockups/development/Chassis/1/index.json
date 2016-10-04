@@ -26,7 +26,7 @@
             "Name": "Excellent dining establishment",
             "PostalCode": "77070-3002"
         },
-        "ContainerAddress": {
+        "Placement": {
             "Row": "North",
             "Rack": "WEB43",
             "RackOffsetUnits": "EIA_310",
