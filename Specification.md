@@ -600,7 +600,7 @@ The DELETE method is used to remove a resource.
 
 Services may return status code [404](#status-404) or a success code if the resource has already been deleted.
 
-##### Actions (POST)
+##### <a id="actions-post"></a>Actions (POST)
 
 The POST method is used to initiate operations on the object (such as Actions).
 
