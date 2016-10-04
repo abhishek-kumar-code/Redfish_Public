@@ -233,5 +233,19 @@
         </NavigationProperty>
       </EntityType>
     </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ServiceRoot.v1_1_1">
+
+      <EntityContainer Name="ServiceContainer" Extends="ServiceRoot.v1_0_0.ServiceContainer">
+        <Singleton Name="StorageSystems" Type="StorageSystemCollection.StorageSystemCollection"/>
+        <Singleton Name="StorageServices" Type="StorageServiceCollection.StorageServiceCollection"/>
+        <Singleton Name="Fabrics" Type="FabricCollection.FabricCollection"/>
+        <Singleton Name="UpdateService" Type="UpdateService.UpdateService"/>
+      </EntityContainer>
+
+      <EntityType Name="ServiceRoot" BaseType="ServiceRoot.v1_1_0.ServiceRoot"/>
+
+    </Schema>
+
   </edmx:DataServices>
 </edmx:Edmx>
