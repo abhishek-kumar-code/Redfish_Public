@@ -513,13 +513,13 @@
         </Property>
       </ComplexType>
 
-      <ComplexType Name="ContainerAddress">
-        <Annotation Term="OData.Description" String="The address within a container of a resource."/>
-        <Annotation Term="OData.LongDescription" String="The value shall describe a location within a container.  Examples of containers include a room in a building and a shelf in a rack."/>
+      <ComplexType Name="Placement">
+        <Annotation Term="OData.Description" String="The placement within the addressed location."/>
+        <Annotation Term="OData.LongDescription" String="The value shall describe a location within a resource.  Examples include a shelf in a rack."/>
         <Property Name="Row" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="Name of row location within the container."/>
-          <Annotation Term="OData.LongDescription" String="The value shall be the name of the row within the container."/>
+          <Annotation Term="OData.Description" String="Name of row."/>
+          <Annotation Term="OData.LongDescription" String="The value shall be the name of the row."/>
         </Property>
         <Property Name="Rack" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
@@ -546,10 +546,10 @@
           <Annotation Term="OData.Description" String="Postal address of the addressed resource.."/>
           <Annotation Term="OData.LongDescription" String="The value shall be a postal address of the resource."/>
         </Property>
-        <Property Name="ContainerAddress" Type="Resource.v1_3_0.ContainerAddress">
+        <Property Name="Placement" Type="Resource.v1_3_0.Placement">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="An address within the addressed location."/>
-          <Annotation Term="OData.LongDescription" String="The value shall be an address within the addressed location."/>
+          <Annotation Term="OData.Description" String="A place within the addressed location."/>
+          <Annotation Term="OData.LongDescription" String="The value shall be a place within the addressed location."/>
         </Property>
       </ComplexType>
 
