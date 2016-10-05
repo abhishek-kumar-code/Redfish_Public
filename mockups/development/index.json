@@ -37,6 +37,9 @@
     "UpdateService": {
         "@odata.id": "/redfish/v1/UpdateService"
     },
+    "CompositionService": {
+        "@odata.id": "/redfish/v1/CompositionService"
+    },
     "Registries": {
         "@odata.id": "/redfish/v1/Registries"
     },

@@ -1,0 +1,36 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+    "@odata.context": "/redfish/v1/$metadata#ResourceBlock.ResourceBlock",
+    "@odata.type": "#ResourceBlock.v1_0_0.ResourceBlock",
+    "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock5",
+    "Id": "DriveBlock5",
+    "Name": "Drive Block 5",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "Available": true,
+    "Processors": [],
+    "Memory": [],
+    "Drives": [
+        {
+            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock5/Drives/Slot2"
+        }
+    ],
+    "Links": {
+        "ComputerSystems": [],
+        "Chassis": [
+            {
+                "@odata.id": "/redfish/v1/Chassis/ComposableModule3"
+            }
+        ],
+        "Zones": [
+            {
+                "@odata.id": "/redfish/v1/CompositionService/ResourceZones/1"
+            },
+            {
+                "@odata.id": "/redfish/v1/CompositionService/ResourceZones/2"
+            }
+        ]
+    }
+}
