@@ -6,6 +6,20 @@
     "Id": "ComposedSystem",
     "Name": "Sample Composed System",
     "SystemType": "Logical",
+    "Description": "This shows an example of a composed system",
+    "UUID": "37596f04-b032-48ce-9bad-7d55a61fe574",
+    "HostName": "composed-system",
+    "PowerState": "On",
+    "Boot": {
+        "BootSourceOverrideEnabled": "Once",
+        "BootSourceOverrideTarget": "Pxe",
+        "BootSourceOverrideTarget@Redfish.AllowableValues": [
+            "None",
+            "Pxe",
+            "Usb",
+            "Hdd"
+        ]
+    },
     "Processors": {
         "@odata.id" : "/redfish/v1/Systems/ComposedSystem/Processors"
     },

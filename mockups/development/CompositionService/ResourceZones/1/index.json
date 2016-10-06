@@ -30,5 +30,11 @@
                 "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock7"
             }
         ]
+    },
+    "@Redfish.Capabilities": {
+        "@odata.type": "#Capabilities.v1_0_0.Capabilities",
+        "CapabilitiesObject": {
+            "@odata.id": "/redfish/v1/CompositionService/ResourceZones/1/Capabilities"
+        }
     }
 }

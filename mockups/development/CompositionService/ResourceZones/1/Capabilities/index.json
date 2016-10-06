@@ -1,0 +1,25 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.",
+    "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
+    "@odata.type": "#ComputerSystem.v1_2_0.ComputerSystem",
+    "@odata.id": "/redfish/v1/CompositionService/ResourceZones/1/Capabilities",
+    "Id": "Capabilities",
+    "Name": null,
+    "Description": null,
+    "UUID": null,
+    "HostName": null,
+    "PowerState": null,
+    "Boot": {
+        "BootSourceOverrideEnabled": null,
+        "BootSourceOverrideTarget": null,
+        "BootSourceOverrideTarget@Redfish.AllowableValues": [
+            "None",
+            "Pxe",
+            "Usb",
+            "Hdd"
+        ]
+    },
+    "Processors": null,
+    "Memory": null,
+    "Storage": null
+}
