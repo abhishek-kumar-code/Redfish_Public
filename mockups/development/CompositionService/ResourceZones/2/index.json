@@ -35,6 +35,9 @@
         "@odata.type": "#Capabilities.v1_0_0.Capabilities",
         "CapabilitiesObject": {
             "@odata.id": "/redfish/v1/CompositionService/ResourceZones/2/Capabilities"
+        },
+        "TargetCollection": {
+            "@odata.id": "/redfish/v1/Systems"
         }
     }
 }
