@@ -82,9 +82,9 @@
           <Annotation Term="OData.Description" String="This indicates whether this interface is accessible by external entities."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this interface is accessible by external (non-host) entities."/>
         </Property>
-        <Property Name="Authentication" Type="Collection(HostInterface.v1_0_0.Authentication)" Nullable="false">
-          <Annotation Term="OData.Description" String="This indicates the authentication mechanisms available on this interface."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array consisting of the authentication mechanisms allowed on this interface."/>
+        <Property Name="AuthenticationModes" Type="Collection(HostInterface.v1_0_0.AuthenticationMode)" Nullable="false">
+          <Annotation Term="OData.Description" String="This indicates the authentication modes available on this interface."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array consisting of the authentication modes allowed on this interface."/>
         </Property>
         <Property Name="KernelAuthRoleId" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Description" String="This property contains the Role for kernel authentication on this interface."/>
@@ -93,10 +93,6 @@
         <Property Name="KernelAuthEnabled" Type="Edm.Boolean">
           <Annotation Term="OData.Description" String="This indicates whether this kernel authentication is enabled for this interface."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether kernel authentication for this interface is enabled."/>
-        </Property>
-        <Property Name="HTTPMode" Type="HostInterface.v1_0_0.HTTPMode">
-          <Annotation Term="OData.Description" String="This indicates the HTTP modes allowed on this interface."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall describe the HTTP modes allowed on this interface.  The value HTTPOnly shall be used if HTTP is the only supported protocol.  The value HTTPSOnly shall be used if HTTPS is the only supported protocol.  The value HTTPBoth shall be used if both HTTP and HTTPS are supported."/>
         </Property>
 
         <NavigationProperty Name="HostEthernetInterfaces" Type="EthernetInterfaceCollection.EthernetInterfaceCollection" Nullable="false">
@@ -108,7 +104,7 @@
         <NavigationProperty Name="ManagerEthernetInterface" Type="EthernetInterface.EthernetInterface" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is a reference to a single NIC that this Manager uses for network communication with this Host Interface."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type EthernetInterface which represents the network interface used by this Manager as the HostInterface."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a resource of type EthernetInterface which represents the network interface used by this Manager as the HostInterface."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
         <NavigationProperty Name="NetworkProtocol" Type="ManagerNetworkProtocol.ManagerNetworkProtocol" Nullable="false">
@@ -125,7 +121,7 @@
         </Property>
       </EntityType>
 
-      <EnumType Name="Authentication">
+      <EnumType Name="AuthenticationMode">
         <Member Name="AuthNone">
           <Annotation Term="OData.Description" String="Requests without any sort of authentication are allowed."/>
         </Member>
@@ -137,18 +133,6 @@
         </Member>
         <Member Name="OemAuth">
           <Annotation Term="OData.Description" String="Requests using OEM authentication mechanisms are allowed."/>
-        </Member>
-      </EnumType>
-
-      <EnumType Name="HTTPMode">
-        <Member Name="HTTPOnly">
-          <Annotation Term="OData.Description" String="Only HTTP is supported."/>
-        </Member>
-        <Member Name="HTTPSOnly">
-          <Annotation Term="OData.Description" String="Only HTTPS is supported."/>
-        </Member>
-        <Member Name="HTTPBoth">
-          <Annotation Term="OData.Description" String="HTTP and HTTPS are supported."/>
         </Member>
       </EnumType>
 
