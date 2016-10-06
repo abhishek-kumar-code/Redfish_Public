@@ -13,7 +13,7 @@
     },
     "InterfaceEnabled": true,
     "ExternallyAccessible": true,
-    "Authentication": [
+    "AuthenticationModes": [
         "AuthNone",
         "BasicAuth",
         "RedfishSessionAuth",
@@ -21,7 +21,6 @@
     ],
     "KernelAuthRoleId": "Administrator",
     "KernelAuthEnabled": true,
-    "HTTPMode": "HTTPSOnly",
     "HostEthernetInterfaces": {
         "@odata.id": "/redfish/v1/Managers/9/HostInterfaces/1/HostEthernetInterfaces"
     },
