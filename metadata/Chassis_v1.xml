@@ -434,7 +434,7 @@
           <Annotation Term="OData.Description" String="The weight of the chassis."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the published mass (commonly referred to as weight) of the chassis (in kilograms)."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
-          <Annotation Term="Measures.Unit" String="mm"/>
+          <Annotation Term="Measures.Unit" String="kg"/>
         </Property>	 
 	</Schema>
 	
