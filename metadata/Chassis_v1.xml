@@ -264,9 +264,9 @@
         <Member Name="IPBasedDrive">
           <Annotation Term="OData.Description" String="A chassis in a drive form factor with IP-based network connections."/>
         </Member>
-	<Member Name="RackGroup">
-	  <Annotation Term="OData.Description" String="A group of racks which form a single entity or share infrastructure."/>
-	</Member>
+        <Member Name="RackGroup">
+          <Annotation Term="OData.Description" String="A group of racks which form a single entity or share infrastructure."/>
+        </Member>
         <Member Name="Other">
           <Annotation Term="OData.Description" String="A chassis that does not fit any of these definitions"/>
         </Member>
