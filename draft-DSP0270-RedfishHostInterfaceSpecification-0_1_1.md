@@ -68,7 +68,6 @@ The following additional terms are used in this document.
 | Host                            | x                |
 | Host Processor                  | x                |
 | Host Software                   | x                |
-| System Firmware                 | x                |
 | Redfish                         | x                |
 | Redfish Service                 | x                |
 | Service Entry Point             | x                |
@@ -81,7 +80,6 @@ The following additional abbreviations are used in this document.
 
 | Term   | Definition                                          
 | ---    | ---                                                 
-| BMC    | Baseboard Management Controller                     
 | BIOS   | Basic I/O System. Name for system firmware typically used for initialization and launching the boot of an ISA (Industry Standard Architecture), aka 'x86' or 'PC', architecture-based computer system                  
 | BSP   | Board Support Package. Name for system firmware typically used for initialization and launching the boot of Linux in a computer system that uses a non-ISA architecture, but may be used for booting other types of operating systems or run-time software                      
 | SMBIOS   | System Management BIOS. Refers to DSP0134. Defines memory mapped tables, typically implemented by system firmware/BIOS and mapped into system firmware/BIOS memory space, that provide inventory and management information for the computer system.                         
@@ -130,25 +128,27 @@ A Redfish Host Interface shall support one of the following protocols:
 * Network HI -- Redfish HTTP requests/responses over a TCP/IP network connection between a Host and Manager
 
 
-### Network Host Interface Details
+### Network Host Interface Protocol Details
 
-* A Network Host Interface provides a TCP/IP network connection that routes TCP/IP traffic between the Redfish client software running on the host OS and the Manager.  
-* Any link-level driver and interconnect that routes TCP/IP may be used.  
-* Authentication, encryption, and authorization equivalent to the out-of-band Redfish API is included in the definition. 
-  * Implementations should support the full authentication, encryption, and authorization for Network Host interfaces.  
-  * Implementations may also support AuthNone or un-encrypted connections when passing credentials if so configured.
-* A mechanism to automatically pass credentials to the host OS kernel using UEFI runtime variables is also  defined
-  * Users may disable this if desired 
-  * The privileges for this kernel interface shall be configurable.  In many cases the privilege is expected to be limited to reading sensors
+Implementations that support the "Network Host Interface" shall implement a TCP/IP network connection that routes TCP/IP traffic between the Redfish client software running on the host OS and the Manager.
 
+* Any link-level driver and interconnect that routes TCP/IP may be used.  Example implementations include:
+  * A  USB Network Connection between host and manager
+  * A host PCIe NIC that connects to a manager NIC
+  * A host PCIe NIC that connects to a management LAN that connects to a manager
 
+* Authentication, and authorization equivalent to the out-of-band Redfish API shall be supported if enabled via manager configuration. 
+  * However, implementations may support an AuthNone authentication mode (no authentication required) that can optionally be configured on the manager.   If implemented the RoleId assumed by AuthNone requests shall be configurable.
 
-### MCTP Host Interface Details
-* An MCTP-based Host Interface provides an MCTP Host Interface compliant with DSP0256 that routes Redfish requests and responses over MCTP between the Redfish host software and the Manager
-* Any physical interconnect between the host and manager that has a MCTP host transport binding (as defined in DSP0256) may be used
-* The SPMF and PMCI will specify a mapping of HTTP to MCTP sufficient to carry Redfish requests/responses. 
-* Authentication, encryption, and authorization will be supported in the MCTP HI definition.
-* The mechanism to pass credentials up to the host OS kernel will also be supported.
+* Services shall require HTTPS encryption for the Network Host Interface with same requirements as via out-of-band network interfaces:
+  * Session Login POSTs shall use HTTPS
+  * Patches that contain sensitive data shall use HTTPS
+  * Basic Auth requests shall require HTTPS
+
+* A mechanism to automatically pass credentials to the host OS kernel using UEFI runtime variables may be implemented as defined in section  (Kernel Authentication Link).  
+  * If the Kernal Authentication Interface is implemented, Redfish services shall implement a configuration option that allows customers to disable the Kernel Authentication
+  * If the Kernel Authentication Interface is implemented, Redfish service shall implement a configurable privileges for this kernel interface shall be configurable.
+
 
 
 ### SMBIOS Support
@@ -159,20 +159,10 @@ Information in the structure will allow host software to discover the Redfish Ma
 * For Network Host interfaces, the mechanism that clients should use to discover/obtain the manager IP address will also be described in the structure
 
 
-### Kernel Authentication via UEFI Runtime Variables
+### Kernel Authentication Interface via UEFI Runtime Variables
 
-An attractive feature of the RESTful interface is the very limited number of operations which are supported. The following table describes the general mapping of operations to HTTP methods.  If the value in the column entitled "required" has the value "yes" then the HTTP method shall be supported by a Redfish interface.
+Import kernel auth text
 
-
-
-
-#### Privilege model/Authorization
-
-Services shall require Authentication and encryption via the Host Interface with same requirements as via out-of-band network interfaces:
-
-* Session Login POSTs shall use encryption
-* Patches that contain sensitive data shall use encryption
-* Basic Auth requests shall require encryption
 
 
 
