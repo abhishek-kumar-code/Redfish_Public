@@ -21,19 +21,18 @@ DMTF is a not-for-profit association of industry members dedicated to promoting 
 The DMTF acknowledges the following individuals for their contributions to this document:
 
 * Jeff Autor - Hewlett Packard Enterprise
+* Jeff Bobsen - Insyde
+* Patrick Caporale - Lenovo
+* Phil Chidester – Dell Inc.
+* Chris Davenport - Hewlett Packard Enterprise
 * Samer El-Haj-Mahmoud - Lenovo
 * Wassim Fayed - Microsoft Corporation
 * Jeff Hilland - Hewlett Packard Enterprise
 * John Leung - Intel Corporation
-* Michael Raineri - EMC
-* Irina Salvan - Microsoft Corporation
+* Michael Raineri - Dell Inc.
 * Hemal Shah - Broadcom Limited
 * Paul Vancil - Dell Inc.
 * Linda Wu - Super Micro Computer, Inc.
-* Daniel Dufresne - EMC
-* Phil Chidester – Dell
-* Jeff Bobsen - Insyde
-* Patrick Caporale - Lenovo
 
 ## Abstract
 This specification defines functional requirements for Redfish Host Interfaces. In the context of this document, the term "host interface" refers to interfaces that can be used by software running on a computer system to access the Redfish Service that is used to manage that computer system.
