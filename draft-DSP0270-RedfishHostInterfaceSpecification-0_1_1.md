@@ -45,8 +45,11 @@ The target audience for this specification is system manufacturers that are prov
 The following referenced documents are indispensable for the application of this document. For dated or versioned references, only the edition cited (including any corrigenda or DMTF update versions) applies. For references without a date or version, the latest published edition of the referenced document (including any corrigenda or DMTF update versions) applies.x
 
 * <a id="DMTFDSP0134">DMTF DSP0124</a> System Management BIOS Reference Specification (SMBIOS)
+* UEFI
 * <a id="DMTFDSP0256">DMTF DSP0256</a> Management Component Transport Protocol (MCTP) Base Specification
+* PMCI DSP239
 * <a id="DMTFDSP0266">DMTF DSP0266</a> Redfish Scalable Platforms Management API Specification
+* Redfish Schema
 * <a id="ISODIR">ISO/IEC Directives, Part 2</a> Rules for the structure and drafting of International Standards, [http://isotc.iso.org/livelink/livelink.exe?func=ll&objId=4230456&objAction=browse&sort=subtype](http://isotc.iso.org/livelink/livelink.exe?func=ll&objId=4230456&objAction=browse&sort=subtype "http://isotc.iso.org/livelink/livelink.exe?func=ll&objId=4230456&objAction=browse&sort=subtype")
 
 
@@ -95,12 +98,11 @@ The following additional abbreviations are used in this document.
 | TCP    | Transmission Control Protocol                       |
 
 ## Introduction
-The initial Redfish specification defines a TCP/IP-based out-of-band interface between a client and a Management Controller
-The initial base Redfish Specification does not define a standard host interface e.g IPMI
+The initial Redfish specification defines a TCP/IP-based out-of-band interface between a client and a Management Controller.
+The initial base Redfish Specification does not define a standard host interface e.g IPMI.
 Significant user feedback has been received that a DMTF standard Redfish “In-band” Host Interface (HI) is needed:
 
 * So that Apps/tools running on a system OS (both deployment OS’s and production OS’s) can communicate with the Redfish manager that is managing the system using the Redfish API
-* In future, the host OS and UEFI/BIOS may also benefit from being able to communicate with the manager using a standard Redfish API
 
 
 ## Scope
