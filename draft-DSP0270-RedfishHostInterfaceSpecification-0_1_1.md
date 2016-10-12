@@ -21,18 +21,17 @@ DMTF is a not-for-profit association of industry members dedicated to promoting 
 The DMTF acknowledges the following individuals for their contributions to this document:
 
 * Jeff Autor - Hewlett Packard Enterprise
-* Jeff Bobsen - Insyde
+* Jeff Bobzin - Insyde Software Corp
 * Patrick Caporale - Lenovo
 * Phil Chidester – Dell Inc.
 * Chris Davenport - Hewlett Packard Enterprise
 * Samer El-Haj-Mahmoud - Lenovo
-* Wassim Fayed - Microsoft Corporation
 * Jeff Hilland - Hewlett Packard Enterprise
 * John Leung - Intel Corporation
+* Edward Newman - Hewlett Packard Enterprise
 * Michael Raineri - Dell Inc.
 * Hemal Shah - Broadcom Limited
 * Paul Vancil - Dell Inc.
-* Linda Wu - Super Micro Computer, Inc.
 
 ## Abstract
 This specification defines functional requirements for Redfish Host Interfaces. In the context of this document, the term "host interface" refers to interfaces that can be used by software running on a computer system to access the Redfish Service that is used to manage that computer system.
@@ -45,11 +44,11 @@ The target audience for this specification is system manufacturers that are prov
 The following referenced documents are indispensable for the application of this document. For dated or versioned references, only the edition cited (including any corrigenda or DMTF update versions) applies. For references without a date or version, the latest published edition of the referenced document (including any corrigenda or DMTF update versions) applies.x
 
 * <a id="DMTFDSP0134">DMTF DSP0124</a> System Management BIOS Reference Specification (SMBIOS)
-* UEFI
+* <a id="UEFISPEC"> UEFI </a> Unified Extensible Firmwre Interface Specification (UEFI), version 2.6
 * <a id="DMTFDSP0256">DMTF DSP0256</a> Management Component Transport Protocol (MCTP) Base Specification
-* PMCI DSP239
+* <a id="DMTFDSP0239"> DMTF DSP0239</a> Management Compoonent Transport Protocol (MCTP) IDs and Codes
 * <a id="DMTFDSP0266">DMTF DSP0266</a> Redfish Scalable Platforms Management API Specification
-* Redfish Schema
+* <a id="DMTFDSP8010">DMTF DSP8010</a> Redfish API Schema
 * <a id="ISODIR">ISO/IEC Directives, Part 2</a> Rules for the structure and drafting of International Standards, [http://isotc.iso.org/livelink/livelink.exe?func=ll&objId=4230456&objAction=browse&sort=subtype](http://isotc.iso.org/livelink/livelink.exe?func=ll&objId=4230456&objAction=browse&sort=subtype "http://isotc.iso.org/livelink/livelink.exe?func=ll&objId=4230456&objAction=browse&sort=subtype")
 
 
@@ -64,90 +63,72 @@ The terms "normative" and "informative" in this document are to be interpreted a
 
 The following additional terms are used in this document.
 
-| Term                            | Definition                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| ---                             | ---          
-
-| Host    | x                     |
-| Host Processor    | x                     |
-| Host Software    | x                     |
-| System Firmware    | x                     |
-| Redfish    | x                     |
-| Redfish Service    | x                     |
-| Service Entry Point    | x                     |
-| Manager    | x                     |
-| Redfish Manager    | x                     |
-
-
+| Term                            | Definition       |
+| ---                             | ---              |
+| Host                            | x                |
+| Host Processor                  | x                |
+| Host Software                   | x                |
+| System Firmware                 | x                |
+| Redfish                         | x                |
+| Redfish Service                 | x                |
+| Service Entry Point             | x                |
+| Manager                         | x                |
+| Redfish Manager                 | x                |
 
 ## Symbols and abbreviated terms
 
 The following additional abbreviations are used in this document.
 
 | Term   | Definition                                          
-|
 | ---    | ---                                                 
-|
-| BMC    | Baseboard Management Controller                     |
-| BIOS   | Basic I/O System. Name for system firmware typically used for initialization and launching the boot of an ISA (Industry Standard Architecture), aka 'x86' or 'PC', architecture-based computer system                  |
-| BSP   | Board Support Package. Name for system firmware typically used for initialization and launching the boot of Linux in a computer system that uses a non-ISA architecture, but may be used for booting other types of operating systems or run-time software                          |
-| SMBIOS   | System Management BIOS. Refers to DSP0134. Defines memory mapped tables, typically implemented by system firmware/BIOS and mapped into system firmware/BIOS memory space, that provide inventory and management information for the computer system.                         |
-| HTTPS  | Hypertext Transfer Protocol over TLS                |
-| IP     | Internet Protocol                                   |
-| IPMI   | Intelligent Platform Management Interface           |
-| PCIe   | PCI Express                                         |
+| BMC    | Baseboard Management Controller                     
+| BIOS   | Basic I/O System. Name for system firmware typically used for initialization and launching the boot of an ISA (Industry Standard Architecture), aka 'x86' or 'PC', architecture-based computer system                  
+| BSP   | Board Support Package. Name for system firmware typically used for initialization and launching the boot of Linux in a computer system that uses a non-ISA architecture, but may be used for booting other types of operating systems or run-time software                      
+| SMBIOS   | System Management BIOS. Refers to DSP0134. Defines memory mapped tables, typically implemented by system firmware/BIOS and mapped into system firmware/BIOS memory space, that provide inventory and management information for the computer system.                         
+| HTTPS  | Hypertext Transfer Protocol over TLS                
+| IP     | Internet Protocol                                   
+| IPMI   | Intelligent Platform Management Interface           
+| PCIe   | PCI Express                                         
 | TCP    | Transmission Control Protocol                       |
 
 ## Introduction
 The initial Redfish specification defines a TCP/IP-based out-of-band interface between a client and a Management Controller.
-The initial base Redfish Specification does not define a standard host interface e.g IPMI.
-Significant user feedback has been received that a DMTF standard Redfish “In-band” Host Interface (HI) is needed:
-
-* So that Apps/tools running on a system OS (both deployment OS’s and production OS’s) can communicate with the Redfish manager that is managing the system using the Redfish API
-
+It does not define a standard host interface (e.g IPMI).
+However, significant user feedback has been received that a DMTF standard Redfish “In-band” Host Interface (HI) is needed
+so that applications/tools running on a system OS can communicate with the Redfish manager that is managing the system using the Redfish API.  This Redfish host interface need applies to both deployment OS’s and production OS’s and OS kernels for reading sensors.
 
 ## Scope
 
 This specification is targeted to system manufacturers that are providing Redfish Host Interfaces within computer systems, system and component manufactures that are providing devices or firmware that include or support Redfish Host interfaces, and system firmware and software writers that are creating software or firmware that uses Redfish Host Interfaces.
 
-Within this specification the term "host processor" is used to refer to the main processors, or CPUs, of the managed computer system. This should not be confused with the Redfish Manager which represents the physical or logical processor that is used for implementing the Service Entry Point for the Redfish Service.
-
-The terms "host software", "host firmware", and "BIOS", refer to code that is executed on a host processor. The term "host" alone will be used to refer to the computer system that contains the host processors and software that are accessing a Redfish Service that provides manageability functions for that host. The host interface may also be thought of as the interface between the host and the Redfish Manager that is the gateway to that Redfish Service. 
-
 The specification covers host accessible physical and logical communication paths and protocols that are used to access the Redfish Service that manages that host. 
 
 The specification also defines certain supporting elements in the host, such as SMBIOS extensions, that enable inventory and discovery functions.  
-The specification may define particular hardware requirements for the host visible portions of the interface, such as register locations. Otherwise, the specification does not seek to place particular physical hardware requirements on the implementation behind the interface. For example, it should not matter whether the interface is implemented in a particular component, such as a microcontroller, network controller, chipset, virtual machine, and so on, as long as the host visible elements and functionality of the interface meet the specification.
 
-The host interface is primarily targeted at providing 'run time' or 'post boot' software access. That is, it is targeted for use by host software that executes after the computer system firmware, BSP, or BIOS has transferred flow of control to an operating system, hypervisor, service agent, PXE image, VMM, and so on. The specification may also be used by 'pre-boot' firmware or software. The specification may include additional provisions for supporting pre-boot interfaces and functionality.
-
-The specification and implementation requirements for pre-boot and post-boot interfaces are separable. That is, a post-boot interface that meets this specification does not require the implementation of a pre-boot interface that meets this specification, and vice versa.
-
-This specification itself does not define particular host firmware, software, software architectures or designs, or software interfaces, such as driver interfaces or APIs, for the host interface. However, this specification may define certain steps that pre-boot firmware or post-boot software may need to take to discover and utilize the interface. The specification may also indicate that certain functionality and software elements, such as networking stacks or hardware drivers have been assumed to be present in the host software as considerations behind the design and typical usage of the host interface.
+The specification does not seek to place specific hardware implementation requirements; however, it does i some cases specify how hardware-specific interfaces are identified for host software (e.g. SMBIOS structures).
 
 
 ### Goals
 The following goals where established for the Redfish Host Interface:
 
-* Implementable with typical MC technology
+* Implementable with existing management controller technology
 * Easily integrated into products 
 * In-band HI and out-of-band API must be the same (where possible) so that client apps will have minimal (if any) change to adapt
 * Support authentication, confidentiality, and  integrity:
   * Support environments where users do not want to solely rely on host/OS access control mechanisms
   * Provide mechanism to optionally (if configured) pass credentials to an OS Kernel for sensor monitoring (with configurable privilege)
 * Support multi-manager to multi-host architectures:
-  * Blade system with Chassis Mgr and MCs on each blade each w/ HI
-* Initial priority targeting a Host OS clients.  
+  * Blade system with Chassis Manager as well as sled management controller on each blade, each with a host interface
+* Support security requirements with authentication and confidentiality.  
   * But, longer-term, add support pre-OS clients e.g. BIOS/UEFI and OS boot path
 
 
 ## Protocol details
 
-Two Host Interface models have been considered:
+A Redfish Host Interface shall support one of the following protocols:
 
-* Network HI -- Redfish HTTP requests/responses over a TCP/IP network connection between Host and Manager
-* MCTP HI -- Redfish HTTP requests/responses over an MCTP connection between the host and Manager
+* Network HI -- Redfish HTTP requests/responses over a TCP/IP network connection between a Host and Manager
 
-The initial specification fully defines the Network HI, and creates the framework for later updates that will define the MCTP HI.
 
 ### Network Host Interface Details
 
