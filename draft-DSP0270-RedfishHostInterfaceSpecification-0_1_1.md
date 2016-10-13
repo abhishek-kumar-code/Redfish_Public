@@ -130,33 +130,88 @@ A Redfish Host Interface shall support one of the following protocols:
 
 ### Network Host Interface Protocol Details
 
-Implementations that support the "Network Host Interface" shall implement a TCP/IP network connection that routes TCP/IP traffic between the Redfish client software running on the host OS and the Manager.
+Implementations that support the "Network Host Interface" protocol shall implement the following requirements:
 
-* Any link-level driver and interconnect that routes TCP/IP may be used.  Example implementations include:
+* Implementations shall provide a TCP/IP network connection that route TCP/IP traffic between a Redfish client executing on the host and the Manager.
+
+* Any link-level driver and interconnect that implements a TCP/IP network connection between the host and manager may be used.  Example implementations include:
   * A  USB Network Connection between host and manager
   * A host PCIe NIC that connects to a manager NIC
   * A host PCIe NIC that connects to a management LAN that connects to a manager
 
-* Authentication, and authorization equivalent to the out-of-band Redfish API shall be supported if enabled via manager configuration. 
-  * However, implementations may support an AuthNone authentication mode (no authentication required) that can optionally be configured on the manager.   If implemented the RoleId assumed by AuthNone requests shall be configurable.
+* Authentication, and privilege authorization equivalent to the out-of-band Redfish API as specified in DSP0266 shall be supported by the implementation when enabled from the manager configuration. 
+  * Implementations may support a configurable AuthNone authentication mode (no authentication required) that can be configured on the manager.   If implemented, enablement of AuthNone shall be configurable, and the RoleId assumed by AuthNone requests shall be configurable.
 
 * Services shall require HTTPS encryption for the Network Host Interface with same requirements as via out-of-band network interfaces:
   * Session Login POSTs shall use HTTPS
   * Patches that contain sensitive data shall use HTTPS
   * Basic Auth requests shall require HTTPS
 
-* A mechanism to automatically pass credentials to the host OS kernel using UEFI runtime variables may be implemented as defined in section  (Kernel Authentication Link).  
+* Implementations should implement an SMBIOS Type 42 structure that describes each host interface as described in section (SMBIOS Link)
+
+* Support for automatically generating and sending credentials to the host OS kernel and/or firmware using UEFI runtime variables should be implemented as defined in section  (Kernel Authentication Link).  
   * If the Kernal Authentication Interface is implemented, Redfish services shall implement a configuration option that allows customers to disable the Kernel Authentication
   * If the Kernel Authentication Interface is implemented, Redfish service shall implement a configurable privileges for this kernel interface shall be configurable.
 
 
 
 ### SMBIOS Support
-The host may support an SMBIOS Type 42 struct that defines the attributes of the Redfish Host Interfaces that are supported for the system. 
+The host should support an SMBIOS Type 42 structure that defines the attributes of the Redfish Host Interfaces that are supported for the system. 
 
 Information in the structure will allow host software to discover the Redfish Manager interfaces supported and to initialize the host-side driver stack.  
 
 * For Network Host interfaces, the mechanism that clients should use to discover/obtain the manager IP address will also be described in the structure
+
+The following table describes the SMBIOS (Type 42) structure for a Netowrk Host Interface interface:
+
+
+| Offset  | Name             | Length   | Value    | Description     |
+| ---     | ---              | ---      | ---      | ---             |
+| 00h     | Type             | BYTE     | 42       | Management Controller Host Interface structure indicator      |
+| 01h     | Length           | BYTE     | Varies   | Lengthh of the structure, a minimum of 09h      |
+| 02h     | Handle           | WORD     | Varies   |       |
+| 04h     | Interface Type   | BYTE     | 09h      | Management Controller Interface Type.  (Network Host Interface = 09h )    |
+
+Following the above 4 fields is the Interface Specific Data:
+
+| Offset  | Name     | Length   | Value    | Description     |
+| ---     | ---      | ---      | ---      | ---             |
+| 05h     | Length     | BYTE     | Varies       | if 0, there is no Interface specific data      |
+| 06h     | Device Type   | BYTE     | Enum       | Unknown=0h1, USB Network Interface=02h, PCI/PCIe Network Interface=03h,  OEM=04h       |
+|      | Device Descriptors for USB       |      |        | idVendor(2-bytes),  idProduct(2-bytes), iSerialNumber( bLength(1-Byte), bDescriptorType(1-Byte), bString(Varies) )      |
+|      | Device Descriptors for PCI/PCIe     |      |        | VendorID(2-Bytes), DeviceID(2-Bytes), Subsystem_Vendor_ID(2-bytes), Subsystem_ID(2-bytes)      |
+|      | Device Descriptors for OEM     |      |        | vendor_IANA(4-bytes),  OEM defined data      |
+
+Protocol Specific Data header follows:
+
+| Offset  | Name     | Length   | Value    | Description     |
+| ---     | ---      | ---      | ---      | ---             |
+| n       | Length     | BYTE     | Varies       | if 0, there is no protocol specific data      |
+| n+1     | Number of Protocols     | BYTE     | 01h       | one protocol defined for this host interface      |
+| n+2     | Protocol 1 Type     | BYTE     | 04h       | Redfish over IP = 04h      |
+
+Protocol specific data for Redfish Over IP protocol follows:
+
+| Offset  | Name     | Length   | Value    | Description     |
+| ---     | ---      | ---      | ---      | ---             |
+| m       | Length     | BYTE     | varies       | length of protocol specific data for Redfish Over IP protocol      |
+| m+1     | Service UUID     | 16BYTEs     | Varies       | same as Redfish Service UUID in Redfish Service Root resource    |
+| m+17     | Host IP Assignment Type     | BYTE     | Enum       | Unknown=01h,    Static=02h,   DHCP=03h,     AutoConfigure=04h,   HostSelected=05h      |
+| m+18     | Host IP Address Format     | BYTE     | Enum       | Unknown=01h,   Ipv4=01h,    Ipv6=02h      |
+| m+19     | Host IP Address     | 4BYTE / 16BYTE     | Varies       | Used for Static and AutoConfigure.  Size is 4Bytes for Ipv4.  Size is 16Btyes for IPV6      |
+| m+23/35     | Host IP Mask     | 4BYTE / 16BYTE     | Varies       | Used for Static and AutoConfigure.  Size is 4Bytes for Ipv4.  Size is 16Btyes for IPV6      |
+| m+27/51     | Host IP Port     | WORD     | Varies       | Used for Static and AutoConfigure      |
+| m+31/55     | Host VLAN ID     | DWORD     | Varies       | Used for Static and AutoConfigure      |
+| m+39/63     | Manager IP Discovery Type     | BYTE     | Enum       | Unknown=01h,    Static=02h,   DHCP=03h,     AutoConfigure=04h,   HostSelected=05h      |
+| m+40/64     | Manager IP Address Format     | BYTE     | Enum       | Unknown=01h,   Ipv4=01h,    Ipv6=02h      |
+| m+41/65     | Manager IP Address     | 4BYTE / 16BYTE     | Varies       | Used for Static and AutoConfigure.  Size is 4Bytes for Ipv4.  Size is 16Btyes for IPV6      |
+| m+x     | Manager IP Mask     | 4BYTE /16BYTE    | Varies       | Used for Static and AutoConfigure.  Size is 4Bytes for Ipv4.  Size is 16Btyes for IPV6      |
+| m+x     | Manager IP Port     | WORD     | Varies       | Used for Static and AutoConfigure.      |
+| m+x     | Manager VLAN ID     | DWORD     | Varies       | Used for Static and AutoConfigure.      |
+| m+x     | Manager Hostname Length     | BYTE     | Varies       | length of the following hostname string      |
+| m+x     | Manager Hostname     | varies     | Varies       | hostname of manager      |
+
+
 
 
 ### Kernel Authentication Interface via UEFI Runtime Variables
