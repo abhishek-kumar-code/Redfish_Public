@@ -196,7 +196,7 @@ Protocol specific data for Redfish Over IP protocol follows:
 | ---     | ---      | ---      | ---      | ---             |
 | m       | Length     | BYTE     | varies       | length of protocol specific data for Redfish Over IP protocol      |
 | m+1     | Service UUID     | 16BYTEs     | Varies       | same as Redfish Service UUID in Redfish Service Root resource    |
-| m+17     | Host IP Assignment Type     | BYTE     | Enum       | Unknown=01h,    Static=02h,   DHCP=03h,     AutoConfigure=04h,   HostSelected=05h      |
+| m+17     | Host IP Assignment Type     | BYTE     | Enum       | Unknown=01h, <br/>    Static=02h, <br/>  DHCP=03h, <br/>    AutoConfigure=04h, <br/>  HostSelected=05h      |
 | m+18     | Host IP Address Format     | BYTE     | Enum       | Unknown=01h,   Ipv4=01h,    Ipv6=02h      |
 | m+19     | Host IP Address     | 4BYTE / 16BYTE     | Varies       | Used for Static and AutoConfigure.  Size is 4Bytes for Ipv4.  Size is 16Btyes for IPV6      |
 | m+23/35     | Host IP Mask     | 4BYTE / 16BYTE     | Varies       | Used for Static and AutoConfigure.  Size is 4Bytes for Ipv4.  Size is 16Btyes for IPV6      |
