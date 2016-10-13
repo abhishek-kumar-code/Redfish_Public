@@ -214,6 +214,7 @@ Protocol specific data for Redfish Over IP protocol follows:
 
 
 
+
 ## Kernel Authentication Interface via UEFI Runtime Variables
 
 This section defines a mechanism for automatically generating and sending credentials to the host OS kernel and/or firmware using UEFI runtime variables.
@@ -292,8 +293,10 @@ The UEFI variables for delivery of temporary credentials shall contain an array 
 
 For convenience when identifying the auto-generated credentials when active and for the purpose of editing permissions, the following Username strings shall be used:
 
+
 | Default Firmware Auto Username     | HostAutoFW                |
 | Default OS AUto Username           | HostAUtoOS                |
+
 
 
 ## ANNEX A (informative)
