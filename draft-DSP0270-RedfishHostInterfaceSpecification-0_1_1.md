@@ -177,10 +177,10 @@ Following the above 4 fields is the Interface Specific Data:
 | Offset  | Name     | Length   | Value    | Description     |
 | ---     | ---      | ---      | ---      | ---             |
 | 05h     | Length     | BYTE     | Varies       | if 0, there is no Interface specific data      |
-| 06h     | Device Type   | BYTE     | Enum       | Unknown=0h1, USB Network Interface=02h, PCI/PCIe Network Interface=03h,  OEM=04h       |
-|      | Device Descriptors for USB       |      |        | idVendor(2-bytes),  idProduct(2-bytes), iSerialNumber( bLength(1-Byte), bDescriptorType(1-Byte), bString(Varies) )      |
-|      | Device Descriptors for PCI/PCIe     |      |        | VendorID(2-Bytes), DeviceID(2-Bytes), Subsystem_Vendor_ID(2-bytes), Subsystem_ID(2-bytes)      |
-|      | Device Descriptors for OEM     |      |        | vendor_IANA(4-bytes),  OEM defined data      |
+| 06h     | Device Type   | BYTE     | Enum       | Unknown=0h1, <br/> USB Network Interface=02h, <br/> PCI/PCIe Network Interface=03h,  <br/> OEM=04h       |
+|      | Device Descriptors for USB       |      |        | <br/> idVendor(2-bytes),  <br/> idProduct(2-bytes), <br/> iSerialNumber: <br/>  -- bLength(1-Byte), <br/> -- bDescriptorType(1-Byte), <br/> -- bString(Varies) )      |
+|      | Device Descriptors for PCI/PCIe     |      |        | VendorID(2-Bytes), <br/> DeviceID(2-Bytes), <br/> Subsystem_Vendor_ID(2-bytes), <br/> Subsystem_ID(2-bytes)      |
+|      | Device Descriptors for OEM     |      |        | vendor_IANA(4-bytes),  <br/> OEM defined data      |
 
 Protocol Specific Data header follows:
 
@@ -197,13 +197,13 @@ Protocol specific data for Redfish Over IP protocol follows:
 | m       | Length     | BYTE     | varies       | length of protocol specific data for Redfish Over IP protocol      |
 | m+1     | Service UUID     | 16BYTEs     | Varies       | same as Redfish Service UUID in Redfish Service Root resource    |
 | m+17     | Host IP Assignment Type     | BYTE     | Enum       | Unknown=01h, <br/>    Static=02h, <br/>  DHCP=03h, <br/>    AutoConfigure=04h, <br/>  HostSelected=05h      |
-| m+18     | Host IP Address Format     | BYTE     | Enum       | Unknown=01h,   Ipv4=01h,    Ipv6=02h      |
+| m+18     | Host IP Address Format     | BYTE     | Enum       | Unknown=01h,   <br/> Ipv4=01h,    <br/> Ipv6=02h      |
 | m+19     | Host IP Address     | 4BYTE / 16BYTE     | Varies       | Used for Static and AutoConfigure.  Size is 4Bytes for Ipv4.  Size is 16Btyes for IPV6      |
 | m+23/35     | Host IP Mask     | 4BYTE / 16BYTE     | Varies       | Used for Static and AutoConfigure.  Size is 4Bytes for Ipv4.  Size is 16Btyes for IPV6      |
 | m+27/51     | Host IP Port     | WORD     | Varies       | Used for Static and AutoConfigure      |
 | m+31/55     | Host VLAN ID     | DWORD     | Varies       | Used for Static and AutoConfigure      |
-| m+39/63     | Manager IP Discovery Type     | BYTE     | Enum       | Unknown=01h,    Static=02h,   DHCP=03h,     AutoConfigure=04h,   HostSelected=05h      |
-| m+40/64     | Manager IP Address Format     | BYTE     | Enum       | Unknown=01h,   Ipv4=01h,    Ipv6=02h      |
+| m+39/63     | Manager IP Discovery Type     | BYTE     | Enum       | Unknown=01h,    <br/> Static=02h,   <br/> DHCP=03h,     <br/> AutoConfigure=04h,   <br/> HostSelected=05h      |
+| m+40/64     | Manager IP Address Format     | BYTE     | Enum       | Unknown=01h,   <br/> Ipv4=01h,    <br/> Ipv6=02h      |
 | m+41/65     | Manager IP Address     | 4BYTE / 16BYTE     | Varies       | Used for Static and AutoConfigure.  Size is 4Bytes for Ipv4.  Size is 16Btyes for IPV6      |
 | m+x     | Manager IP Mask     | 4BYTE /16BYTE    | Varies       | Used for Static and AutoConfigure.  Size is 4Bytes for Ipv4.  Size is 16Btyes for IPV6      |
 | m+x     | Manager IP Port     | WORD     | Varies       | Used for Static and AutoConfigure.      |
