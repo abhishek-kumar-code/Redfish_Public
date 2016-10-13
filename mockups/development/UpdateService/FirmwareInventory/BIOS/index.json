@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#SoftwareInventory.v1_0_0.SoftwareInventory",
+    "@odata.type": "#SoftwareInventory.v1_1_0.SoftwareInventory",
     "Id": "BIOS",
     "Name": "Contoso Server BIOS",
     "Status": {
@@ -8,6 +8,17 @@
     },
     "Updateable": true,
     "Version": "12042015",
+    "Key": "2A9AB82E-1D68-4E88-0B30-7D05812B6496",
+    "LowestSupportedVersion": "03192014",
+    "UpdateApplyTime": "AtReboot",
+    "UpdateResetRequired": "PowerCycle",
+    "InUse": true,
+    "UEFIDevicePath": [
+      "VenHw(3267E7C5-40FF-4F70-892C-E89EE0A9A385,0)"
+    ],
+    "RelatedItem": [
+      { "@odata.id": "/redfish/v1/Systems/1/Bios" }
+    ],
     "Actions": {
         "Oem": {}
     },

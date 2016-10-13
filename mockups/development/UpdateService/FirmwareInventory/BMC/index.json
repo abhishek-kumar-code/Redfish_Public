@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#SoftwareInventory.v1_0_0.SoftwareInventory",
+    "@odata.type": "#SoftwareInventory.v1_1_0.SoftwareInventory",
     "Id": "BMC",
     "Name": "Contoso BMC Firmware",
     "Status": {
@@ -8,6 +8,17 @@
     },
     "Updateable": true,
     "Version": "1.45.455b66-rev4",
+    "Key": "1624A9DF-5E13-47FC-874A-DF3AFF143089",
+    "LowestSupportedVersion": "1.30.367a12-rev1",
+    "UpdateApplyTime": "AtUpdateAction",
+    "UpdateResetRequired": "None",
+    "InUse": true,
+    "UEFIDevicePath": [
+      "BMC(0x1,0x0ABCDEF)"
+    ],
+    "RelatedItem": [
+      { "@odata.id": "/redfish/v1/Managers/1" }
+    ],
     "Actions": {
         "Oem": {}
     },

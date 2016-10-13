@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  SoftwareInventory  v1.0.0-->
+<!--# Redfish Schema:  SoftwareInventory  v1.1.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -43,13 +43,13 @@
         <Property Name="Status" Type="Resource.Status"/>
         <Property Name="Version" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="A string representing the version of this firmware."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a string representing the version of this firmware."/>
+          <Annotation Term="OData.Description" String="A string representing the version of this software."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a string representing the version of this software."/>
         </Property>
         <Property Name="Updateable" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Indicates whether this firmware can be updated by the update service."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this firmware can be updated by the update service. If false, this firmware is for reporting purpose only."/>
+          <Annotation Term="OData.Description" String="Indicates whether this software can be updated by the update service."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this software can be updated by the update service. If false, this software is for reporting purpose only."/>
         </Property>
         <Property Name="Actions" Type="SoftwareInventory.v1_0_0.Actions" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -66,6 +66,72 @@
         <Annotation Term="OData.AdditionalProperties" Bool="true"/>
       </ComplexType>
 
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SoftwareInventory.v1_1_0">
+      <EntityType Name="SoftwareInventory" BaseType="SoftwareInventory.SoftwareInventory.v1_0_0">
+        <Property Name="Key" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A string representing the implementation-specific key for identifying this software."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a string representing an implementation-specific key for identifying this software. This string is used for correlation to a component repository or database."/>
+        </Property>
+        <Property Name="LowestSupportedVersion" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A string representing the lowest supported version of this software."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a string representing the lowest supported version of this software. This string is formatted using the same format used for the Version property"/>
+        </Property>
+        <Property Name="InUse" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Indicates whether this software is in use."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this software is currently actively in use. If false, this software could be a backup or an inactive copy."/>
+        </Property>
+        <Property Name="UpdateApplyTime" Type="SoftwareInventory.v1_1_0.UpdateApplyTime">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Indicates when the software update takes effect."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate when this software update takes effect."/>
+        </Property>
+        <Property Name="UpdateApplyTime" Type="SoftwareInventory.v1_1_0.UpdateResetRequired">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Indicates the type of reset required for this software update to take effect."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the type of reset required for this software update to take effect."/>
+        </Property>
+        <Property Name="UEFIDevicePath" Type="Collection(Edm.String)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A list of strings representing the UEFI Device Path(s) of the component(s) associated with this software inventory item."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a list of strings representing the UEFI Device Path(s) of the component(s) associated with this software inventory item. The UEFI Device Path string(s) shall be formatted as defined by the UEFI Specification."/>
+        </Property>
+        <NavigationProperty Name="RelatedItem" Type="Collection(Resource.Item)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The ID(s) of the resources associated with this software inventory item"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of IDs containing pointers consistent with JSON pointer syntax to the resource that is associated with this software inventory item."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+      </EntityType>
+
+      <EnumType Name="UpdateApplyTime">
+        <Member Name="AtUpdateAction">
+          <Annotation Term="OData.Description" String="Software update takes effect at time of client POST to Update Action request."/>
+        </Member>
+        <Member Name="AtReboot">
+          <Annotation Term="OData.Description" String="Software update takes effect at time of component reboot or restart."/>
+        </Member>
+        <Member Name="AtOEM">
+          <Annotation Term="OData.Description" String="Software update takes effect at time determined by implementation."/>          
+        </Member>
+      </EnumType>
+
+      <EnumType Name="UpdateResetRequired">
+        <Member Name="None">
+          <Annotation Term="OData.Description" String="No reset is required for this software update to take effect."/>
+        </Member>
+        <Member Name="PowerCycle">
+          <Annotation Term="OData.Description" String="An AC Power Cycle is required for this software update to take effect."/>
+        </Member>
+        <Member Name="Reboot">
+          <Annotation Term="OData.Description" String="A component reboot or restart is required for this software update to take effect."/>
+        </Member>
+      </EnumType>
+      
     </Schema>
 
   </edmx:DataServices>
