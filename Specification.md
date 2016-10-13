@@ -2153,7 +2153,10 @@ References to RFCs -
 	 http://tools.ietf.org/html/rfc5288
 
 #### Certificates
-Implementations shall support replacement of the default certificate if one is provided, with a certificate having at least a 4096 bit RSA key and sha512-rsa signature.
+Implementations shall support replacement of the default certificate if one is provided. 
+
+Certificates shall have at least a 2048 bit RSA key and sha256-rsa signature. For future proofing, Certificates should have at least a 4096 bit RSA key and sha512-rsa signature.
+
 
 ### Authentication
 
