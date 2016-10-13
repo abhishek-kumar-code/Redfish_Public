@@ -290,10 +290,10 @@ If the variables EFI_REDFISH_INFORMATION_FW_CREDENTIALS  or EFI_REDFISH_INFORMAT
 
 The UEFI variables for delivery of temporary credentials shall contain an array of UTF-8 characters in the format Username:Password where the : character shall act as separator.   The final byte of the array shall be 0x00 as terminator and the size of the variable shall be length of Username plus length of Password plus 2. Characters shall be chosen from the set elsewhere defined as legal for Redfish Username and Password.
 
-For convenience when identifying the auto-generated credentials when active and for the purpose of editing permissions, the following Username strings shall be used
+For convenience when identifying the auto-generated credentials when active and for the purpose of editing permissions, the following Username strings shall be used:
 
-| Default Firmware Auto Username  | HostAutoFW                
-| Default OS AUto Username     | HostAUtoOS                                  
+| Default Firmware Auto Username  | HostAutoFW                |
+| Default OS AUto Username        | HostAUtoOS                    |               
     
 
 ## ANNEX A (informative)
