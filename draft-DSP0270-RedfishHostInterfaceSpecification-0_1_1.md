@@ -292,9 +292,9 @@ The UEFI variables for delivery of temporary credentials shall contain an array 
 
 For convenience when identifying the auto-generated credentials when active and for the purpose of editing permissions, the following Username strings shall be used:
 
-| Default Firmware Auto Username  | HostAutoFW                |
-| Default OS AUto Username        | HostAUtoOS                    |               
-    
+| Default Firmware Auto Username     | HostAutoFW                |
+| Default OS AUto Username           | HostAUtoOS                |
+
 
 ## ANNEX A (informative)
 
