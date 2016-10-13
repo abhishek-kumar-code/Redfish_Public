@@ -139,7 +139,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="UpdateService.v1_1_0">
-      <EntityType Name="UpdateService" BaseType="UpdateService.v1_0_0.UpdateService"/>
+      <EntityType Name="UpdateService" BaseType="UpdateService.v1_0_0.UpdateService">
         <Property Name="PushUpdateUri" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The URI used to perform a push update to the Update Service."/>
