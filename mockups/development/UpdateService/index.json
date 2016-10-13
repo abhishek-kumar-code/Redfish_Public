@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#UpdateService.v1_0_0.UpdateService",
+    "@odata.type": "#UpdateService.v1_1_0.UpdateService",
     "Id": "UpdateService",
     "Name": "Update service",
     "Status": {
@@ -8,6 +8,7 @@
         "HealthRollUp": "OK"
     },
     "ServiceEnabled": true,
+	"PushUpdateUri": "/update",
     "FirmwareInventory": {
         "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory"
     },

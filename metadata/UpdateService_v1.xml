@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  UpdateService  v1.0.0-->
+<!--# Redfish Schema:  UpdateService  v1.1.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -138,5 +138,16 @@
 
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="UpdateService.v1_1_0">
+      <EntityType Name="UpdateService" BaseType="UpdateService.v1_0_0.UpdateService"/>
+        <Property Name="PushUpdateUri" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The URI used to perform a push update to the Update Service."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain a URI at which the UpdateService supports a POST of a software image for the purpose of installing software contained within the image."/>
+          <Annotation Term="OData.IsURL"/>
+        </Property>
+      </EntityType>
+
+    </Schema>
   </edmx:DataServices>
 </edmx:Edmx>
