@@ -66,12 +66,11 @@ The following additional terms are used in this document.
 | Term                            | Definition       |
 | ---                             | ---              |
 | Host                            | The Computer System that is managed by a Redfish Service               |
-| Host Software                   | Software running on the Host Computer System, including Operating System and it's Software components (such as drivers or applications), as well as pre-boot software such as UEFI or BIOS drivers and applications
-|
+| Host Software                   | Software running on the Host Computer System, including Operating System and it's Software components (such as drivers or applications), as well as pre-boot software such as UEFI or BIOS drivers and applications.
 | Redfish Service                 | Also referred to as the "Service". The collection of functionality that implements the protocols, resources, and functions that deliver the interface defined by the Redfish API specification and its associated behaviors for one or more managed systems.                                                                                                                                                                                                                               |
 | Redfish Service Entry Point     | Also referred to as "Service Entry Point". The interface through which a particular instance of a Redfish Service is accessed. A Redfish Service may have more than one Service Entry Point.                                                                                                                                                                                                                                                                                              |
 | Redfish Manager                 | Also referred to as "Manager". The entity that manages a Computer System and other peripherals through a Redfish Service.                
-|
+
 
 ## Symbols and abbreviated terms
 
@@ -80,13 +79,9 @@ The following additional abbreviations are used in this document.
 | Term   | Definition                                         | 
 | ---    | ---                                                |
 | BIOS   | Basic I/O System. Name for system firmware typically used for initialization and launching the boot of an ISA (Industry Standard Architecture), aka 'x86' or 'PC', architecture-based computer system.                  
-|
-| BSP   | Board Support Package. Name for system firmware typically used for initialization and launching the boot of Linux in a computer system that uses a non-ISA architecture, but may be used for booting other types of operating systems or run-time software.                      
-|
+| BSP   | Board Support Package. Name for system firmware typically used for initialization and launching the boot of Linux in a computer system that uses a non-ISA architecture, but may be used for booting other types of operating systems or run-time software.                   
 | SMBIOS   | System Management BIOS. Refers to DSP0134. Defines memory mapped tables, typically implemented by system firmware/BIOS and mapped into system firmware/BIOS memory space, that provide inventory and management information for the computer system.
-|
 | UEFI   | Unified Extensible Firmware Interface. A modern firmware standard that defines the interfaces between hardware and Operating Systems in a Computer System. UEFI is supported on multiple processor architectures, including x86, x64, ia64, and AARCH64.
-|
 | HTTP   | Hypertext Transfer Protocol                         |
 | HTTPS  | Hypertext Transfer Protocol over TLS                |
 | IP     | Internet Protocol                                   |
