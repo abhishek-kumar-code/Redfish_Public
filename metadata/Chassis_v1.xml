@@ -264,6 +264,9 @@
         <Member Name="IPBasedDrive">
           <Annotation Term="OData.Description" String="A chassis in a drive form factor with IP-based network connections."/>
         </Member>
+        <Member Name="RackGroup">
+          <Annotation Term="OData.Description" String="A group of racks which form a single entity or share infrastructure."/>
+        </Member>
         <Member Name="Other">
           <Annotation Term="OData.Description" String="A chassis that does not fit any of these definitions"/>
         </Member>
@@ -315,6 +318,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_0_2">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="Chassis" BaseType="Chassis.v1_0_1.Chassis"/>
     </Schema>
 
@@ -369,6 +373,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_1_2">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="Chassis" BaseType="Chassis.v1_1_0.Chassis"/>
     </Schema>
 
@@ -400,8 +405,41 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_3_0">
+      <Annotation Term="OData.Description" String="This version was created to show the ChassisType enumerated list was updated."/>
       <EntityType Name="Chassis" BaseType="Chassis.v1_2_0.Chassis"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_4_0">
+      <EntityType Name="Chassis" BaseType="Chassis.v1_3_0.Chassis"/>
+        <Property Name="HeightMm" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The height of the chassis."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the height of the chassis (in millimeters) as specified by the manufacturer."/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+          <Annotation Term="Measures.Unit" String="mm"/>
+        </Property>	  
+        <Property Name="WidthMm" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The width of the chassis."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the width of the chassis (in millimeters) as specified by the manufacturer."/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+          <Annotation Term="Measures.Unit" String="mm"/>
+        </Property>
+        <Property Name="DepthMm" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The depth of the chassis."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the depth (length) of the chassis (in millimeters) as specified by the manufacturer."/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+          <Annotation Term="Measures.Unit" String="mm"/>
+        </Property>	 
+        <Property Name="WeightKg" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The weight of the chassis."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the published mass (commonly referred to as weight) of the chassis (in kilograms)."/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+          <Annotation Term="Measures.Unit" String="kg"/>
+        </Property>	 
+	</Schema>
+	
   </edmx:DataServices>
 </edmx:Edmx>

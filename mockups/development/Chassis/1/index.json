@@ -14,10 +14,33 @@
     "AssetTag": "CustomerWritableThingy",
     "IndicatorLED": "Lit",
     "PowerState": "On",
+    "Location" : {
+        "PostalAddress": {
+            "Country": "US",
+            "Territory": "TX",
+            "District": "Harris",
+            "City": "Houston",
+            "Street": "TX-249",
+            "HouseNumber": 19550,
+            "Floor": "1",
+            "Name": "Excellent dining establishment",
+            "PostalCode": "77070-3002"
+        },
+        "Placement": {
+            "Row": "North",
+            "Rack": "WEB43",
+            "RackOffsetUnits": "EIA_310",
+            "RackOffset": 12
+        }
+    },
     "Status": {
         "State": "Enabled",
         "Health": "OK"
     },
+	"HeightMm": 44.45,
+	"WidthMm": 431.8,
+	"DepthMm": 711,
+	"WeightKg": 15.31,
     "Thermal": {
         "@odata.id": "/redfish/v1/Chassis/1/Thermal"
     },
