@@ -523,7 +523,7 @@
           <Annotation Term="OData.Description" String="State of the passphrase for this region"/>
           <Annotation Term="OData.LongDescription" String="State of the passphrase for this region."/>
         </Property>
-        <Annotation Term="OData.Description" String="Memory memory region information."/>
+        <Annotation Term="OData.Description" String="Memory region information."/>
       </ComplexType>
 
       <EnumType Name="MemoryClassification">
