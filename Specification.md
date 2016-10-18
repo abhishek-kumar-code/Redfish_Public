@@ -2155,7 +2155,7 @@ References to RFCs -
 #### Certificates
 Implementations shall support replacement of the default certificate if one is provided. 
 
-Certificates shall have at least a 2048 bit RSA key and sha256-rsa signature. For future proofing, Certificates should have at least a 4096 bit RSA key and sha512-rsa signature.
+Certificates shall have at least a 2048 bit RSA key and sha256-rsa signature. For future proofing, certificates should have at least a 4096 bit RSA key and sha512-rsa signature.
 
 
 ### Authentication
