@@ -89,10 +89,12 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="VLanNetworkInterface.v1_0_1">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="VLanNetworkInterface" BaseType="VLanNetworkInterface.v1_0_0.VLanNetworkInterface"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="VLanNetworkInterface.v1_0_2">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="VLanNetworkInterface" BaseType="VLanNetworkInterface.v1_0_1.VLanNetworkInterface"/>
     </Schema>
 
