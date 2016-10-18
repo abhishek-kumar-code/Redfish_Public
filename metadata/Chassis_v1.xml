@@ -410,7 +410,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_4_0">
-      <EntityType Name="Chassis" BaseType="Chassis.v1_3_0.Chassis"/>
+      <EntityType Name="Chassis" BaseType="Chassis.v1_3_0.Chassis">
         <Property Name="HeightMm" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The height of the chassis."/>
