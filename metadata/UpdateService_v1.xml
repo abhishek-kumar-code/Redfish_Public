@@ -118,7 +118,7 @@
         </Member>
         <Member Name="SFTP">
           <Annotation Term="OData.Description" String="Secure File Transfer Protocol"/>
-        </Member>        
+        </Member>
         <Member Name="HTTP">
           <Annotation Term="OData.Description" String="Hypertext Transfer Protocol"/>
         </Member>
