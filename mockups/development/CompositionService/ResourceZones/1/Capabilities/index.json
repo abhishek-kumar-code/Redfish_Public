@@ -21,5 +21,6 @@
     },
     "Processors": null,
     "Memory": null,
+    "EthernetInterfaces": null,
     "Storage": null
 }

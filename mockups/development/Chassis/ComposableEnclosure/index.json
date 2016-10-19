@@ -33,6 +33,12 @@
             },
             {
                 "@odata.id": "/redfish/v1/Chassis/ComposableModule4"
+            },
+            {
+                "@odata.id": "/redfish/v1/Chassis/ComposableModule5"
+            },
+            {
+                "@odata.id": "/redfish/v1/Chassis/ComposableModule6"
             }
         ]
     }

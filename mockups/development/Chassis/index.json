@@ -4,7 +4,7 @@
     "@odata.id": "/redfish/v1/Chassis",
     "@odata.type": "#ChassisCollection.ChassisCollection",
     "Name": "Chassis Collection",
-    "Members@odata.count": 19,
+    "Members@odata.count": 21,
     "Members": [
         {
             "@odata.id": "/redfish/v1/Chassis/1"
@@ -62,6 +62,12 @@
         },
         {
             "@odata.id": "/redfish/v1/Chassis/ComposableModule4"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/ComposableModule5"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/ComposableModule6"
         }
     ],
     "Members@odata.nextLink": "/redfish/v1/Chassis/Page2/$ref"

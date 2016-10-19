@@ -26,6 +26,9 @@
     "Memory": {
         "@odata.id" : "/redfish/v1/Systems/ComposedSystem/Memory"
     },
+    "EthernetInterfaces": {
+        "@odata.id" : "/redfish/v1/Systems/ComposedSystem/EthernetInterfaces"
+    },
     "Storage": {
         "@odata.id" : "/redfish/v1/Systems/ComposedSystem/Storage"
     }

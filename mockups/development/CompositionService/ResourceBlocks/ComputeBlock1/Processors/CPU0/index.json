@@ -21,7 +21,7 @@
         "EffectiveModel": "0x61",
         "Step": "0x1",
         "MicrocodeInfo": "0x429943"
-      },
+    },
     "MaxSpeedMHz": 2000,
     "TotalCores": 8,
     "TotalThreads": 16,

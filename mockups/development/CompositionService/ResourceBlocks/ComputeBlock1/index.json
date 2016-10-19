@@ -33,6 +33,11 @@
         }
     ],
     "Drives": [],
+    "EthernetInterfaces": [
+        {
+            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock1/EthernetInterfaces/OnboardNIC"
+        }
+    ],
     "Links": {
         "ComputerSystems": [
             {
