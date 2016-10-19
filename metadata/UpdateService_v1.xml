@@ -116,6 +116,9 @@
         <Member Name="FTP">
           <Annotation Term="OData.Description" String="File Transfer Protocol"/>
         </Member>
+        <Member Name="SFTP">
+          <Annotation Term="OData.Description" String="Secure File Transfer Protocol"/>
+        </Member>        
         <Member Name="HTTP">
           <Annotation Term="OData.Description" String="Hypertext Transfer Protocol"/>
         </Member>
