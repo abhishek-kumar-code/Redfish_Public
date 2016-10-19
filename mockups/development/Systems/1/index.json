@@ -68,7 +68,9 @@
             "Health": "OK"
            },
            "ModuleType":"TPM2_0",
-           "FirmwareVersion":"3.1"
+           "FirmwareVersion": "3.1",
+           "FirmwareVersion2": "1",
+           "InterfaceTypeSelection": "None"
         }
     ],
     "Processors": {
