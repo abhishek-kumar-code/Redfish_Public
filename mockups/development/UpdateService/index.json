@@ -8,7 +8,7 @@
         "HealthRollUp": "OK"
     },
     "ServiceEnabled": true,
-	"PushUpdateUri": "/update",
+    "PushUpdateUri": "/update",
     "FirmwareInventory": {
         "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory"
     },
