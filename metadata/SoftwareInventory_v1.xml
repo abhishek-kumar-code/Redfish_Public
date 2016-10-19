@@ -80,11 +80,6 @@
           <Annotation Term="OData.Description" String="A string representing the lowest supported version of this software."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a string representing the lowest supported version of this software. This string is formatted using the same format used for the Version property"/>
         </Property>
-        <Property Name="InUse" Type="Edm.Boolean">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Indicates whether this software is in use."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this software is currently actively in use. If false, this software could be a backup or an inactive copy."/>
-        </Property>
         <Property Name="UpdateApplyTime" Type="SoftwareInventory.v1_1_0.UpdateApplyTime">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Indicates when the software update takes effect."/>
