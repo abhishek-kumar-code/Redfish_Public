@@ -111,7 +111,7 @@
           <Annotation Term="OData.Description" String="Software update takes effect at time of component or system reset, as indicated by UpdateResetRequired."/>
         </Member>
         <Member Name="AtOEM">
-          <Annotation Term="OData.Description" String="Software update takes effect at time determined by implementation."/>          
+          <Annotation Term="OData.Description" String="Software update takes effect at time determined by implementation."/>
         </Member>
       </EnumType>
 
