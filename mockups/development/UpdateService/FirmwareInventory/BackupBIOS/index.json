@@ -10,7 +10,7 @@
     "Version": "03192014",
     "Key": "2A9AB82E-1D68-4E88-0B30-7D05812B6496",
     "LowestSupportedVersion": "03192014",
-    "UpdateApplyTime": "AtReboot",
+    "UpdateApplyTime": "AtReset",
     "UpdateResetRequired": "PowerCycle",
     "InUse": false,
     "UEFIDevicePath": [
