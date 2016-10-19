@@ -112,8 +112,8 @@
         <Member Name="AtUpdateAction">
           <Annotation Term="OData.Description" String="Software update takes effect at time of client POST to Update Action request."/>
         </Member>
-        <Member Name="AtReboot">
-          <Annotation Term="OData.Description" String="Software update takes effect at time of component reboot or restart."/>
+        <Member Name="AtReset">
+          <Annotation Term="OData.Description" String="Software update takes effect at time of component or system reset, as indicated by UpdateResetRequired."/>
         </Member>
         <Member Name="AtOEM">
           <Annotation Term="OData.Description" String="Software update takes effect at time determined by implementation."/>          
