@@ -12,7 +12,6 @@
     "LowestSupportedVersion": "1.30.367a12-rev1",
     "UpdateApplyTime": "AtUpdateAction",
     "UpdateResetRequired": "None",
-    "InUse": true,
     "UEFIDevicePath": [
       "BMC(0x1,0x0ABCDEF)"
     ],

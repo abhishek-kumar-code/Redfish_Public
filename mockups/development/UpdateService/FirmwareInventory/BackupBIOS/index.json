@@ -12,7 +12,6 @@
     "LowestSupportedVersion": "03192014",
     "UpdateApplyTime": "AtReset",
     "UpdateResetRequired": "PowerCycle",
-    "InUse": false,
     "UEFIDevicePath": [
       "VenHw(3267E7C5-40FF-4F70-892C-E89EE0A9A385,0)"
     ],

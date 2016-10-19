@@ -85,7 +85,7 @@
           <Annotation Term="OData.Description" String="Indicates when the software update takes effect."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate when this software update takes effect."/>
         </Property>
-        <Property Name="UpdateApplyTime" Type="SoftwareInventory.v1_1_0.UpdateResetRequired">
+        <Property Name="UpdateResetRequired" Type="SoftwareInventory.v1_1_0.UpdateResetRequired">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Indicates the type of reset required for this software update to take effect."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the type of reset required for this software update to take effect."/>
