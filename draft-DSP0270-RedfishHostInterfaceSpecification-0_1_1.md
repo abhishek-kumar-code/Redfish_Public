@@ -172,7 +172,7 @@ The following table describes the SMBIOS (Type 42) structure for a Network Host 
 | 00h     | Type             | BYTE     | 42       | Management Controller Host Interface structure indicator      |
 | 01h     | Length           | BYTE     | Varies   | Length of the structure, a minimum of 09h      |
 | 02h     | Handle           | WORD     | Varies   |       |
-| 04h     | Interface Type   | BYTE     | 09h      | Management Controller Interface Type.  (Network Host Interface = 09h )    |
+| 04h     | Interface Type   | BYTE     | Varies      | Management Controller Interface Type. <br/>  Network Host Interface = 09h     |
 
 Following the above 4 fields is the Interface Specific Data:
 
@@ -180,6 +180,7 @@ Following the above 4 fields is the Interface Specific Data:
 | ---     | ---      | ---      | ---      | ---             |
 | 05h     | Length     | BYTE     | Varies       | if 0, there is no Interface specific data      |
 | 06h     | Device Type   | BYTE     | Enum       | Unknown=0h1, <br/> USB Network Interface=02h, <br/> PCI/PCIe Network Interface=03h,  <br/> OEM=04h       |
+| 07h     | Device Descriptors   | Varies   | Varies    | Length and Value is based on Device Type field value. Descriptor definition per type is provided in subsequent rows  |
 |      | Device Descriptors for USB       |      |        | <br/> idVendor(2-bytes),  <br/> idProduct(2-bytes), <br/> iSerialNumber: <br/>  -- bLength(1-Byte), <br/> -- bDescriptorType(1-Byte), <br/> -- bString(Varies) )      |
 |      | Device Descriptors for PCI/PCIe     |      |        | VendorID(2-Bytes), <br/> DeviceID(2-Bytes), <br/> Subsystem_Vendor_ID(2-bytes), <br/> Subsystem_ID(2-bytes)      |
 |      | Device Descriptors for OEM     |      |        | vendor_IANA(4-bytes),  <br/> OEM defined data      |
@@ -190,7 +191,7 @@ Protocol Specific Data header follows:
 | ---     | ---      | ---      | ---      | ---             |
 | n       | Length     | BYTE     | Varies       | if 0, there is no protocol specific data      |
 | n+1     | Number of Protocols     | BYTE     | 01h       | one protocol defined for this host interface      |
-| n+2     | Protocol 1 Type     | BYTE     | 04h       | Redfish over IP = 04h      |
+| n+2     | Protocol 1 Type     | BYTE     | Varies       | Redfish over IP = 04h      |
 
 Protocol specific data for Redfish Over IP protocol follows:
 
