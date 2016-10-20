@@ -455,7 +455,7 @@ This clause describes the requests that can be sent to Redfish Services.
 
 #### Request headers
 
-HTTP defines headers that can be used in request messages. The following table defines those headers and their requirements for Redfish Services.
+HTTP defines headers that can be used in request messages. The following table defines those headers and their requirements for Redfish Services. Note that these are requirements for the Redfish Services, and not the clients sending the HTTP requests.
 
 * Redfish Services shall understand and be able to process the headers in the following table as defined by the HTTP 1.1 specification if the value in the Required column is set to "Yes".
 * Redfish Services shall understand and be able to process the headers in the following table as defined by the HTTP 1.1 specification if the value in the Required column is set to "Conditional" under the conditions noted in the description.
