@@ -1,0 +1,36 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#Manager.Manager",
+    "@odata.id": "/redfish/v1/Managers/9",
+    "@odata.type": "#Manager.v1_1_0.Manager",
+    "Id": "9",
+    "Name": "Manager",
+    "ManagerType": "BMC",
+    "Description": "Host Interface Example",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "FirmwareVersion": "1.00",
+    "NetworkProtocol": {
+        "@odata.id": "/redfish/v1/Managers/9/NetworkProtocol"
+    },
+    "EthernetInterfaces": {
+        "@odata.id": "/redfish/v1/Managers/9/EthernetInterfaces"
+    },
+    "HostInterfaces": {
+        "@odata.id": "/redfish/v1/Managers/9/HostInterfaces"
+    },
+    "Actions": {
+        "#Manager.Reset": {
+            "target": "/redfish/v1/Managers/9/Actions/Manager.Reset"
+        }
+    },
+    "Links": {
+        "ManagerForServers": [
+            {
+                "@odata.id": "/redfish/v1/Systems/5"
+            }
+        ]
+    }
+}
