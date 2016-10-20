@@ -149,7 +149,7 @@ Implementations that support the "Network Host Interface" protocol shall impleme
 * Implementations should implement an SMBIOS Type 42 structure that describes each host interface as described in section (SMBIOS Link)
 
 * Support for automatically generating and sending credentials to the host OS kernel and/or firmware using UEFI runtime variables should be implemented as defined in section  (Kernel Authentication Link).  
-  * If the Kernal Authentication Interface is implemented, Redfish services shall implement a configuration option that allows customers to disable the Kernel Authentication
+  * If the Kernel Authentication Interface is implemented, Redfish services shall implement a configuration option that allows customers to disable the Kernel Authentication
   * If the Kernel Authentication Interface is implemented, Redfish service shall implement a configurable privileges for this kernel interface shall be configurable.
 
 
@@ -161,13 +161,13 @@ Information in the structure will allow host software to discover the Redfish Ma
 
 * For Network Host interfaces, the mechanism that clients should use to discover/obtain the manager IP address will also be described in the structure
 
-The following table describes the SMBIOS (Type 42) structure for a Netowrk Host Interface interface:
+The following table describes the SMBIOS (Type 42) structure for a Network Host Interface interface:
 
 
 | Offset  | Name             | Length   | Value    | Description     |
 | ---     | ---              | ---      | ---      | ---             |
 | 00h     | Type             | BYTE     | 42       | Management Controller Host Interface structure indicator      |
-| 01h     | Length           | BYTE     | Varies   | Lengthh of the structure, a minimum of 09h      |
+| 01h     | Length           | BYTE     | Varies   | Length of the structure, a minimum of 09h      |
 | 02h     | Handle           | WORD     | Varies   |       |
 | 04h     | Interface Type   | BYTE     | 09h      | Management Controller Interface Type.  (Network Host Interface = 09h )    |
 
@@ -294,7 +294,7 @@ For convenience when identifying the auto-generated credentials when active and 
 
 
 | Default Firmware Auto Username     | HostAutoFW                |
-| Default OS AUto Username           | HostAUtoOS                |
+| Default OS Auto Username           | HostAutoOS                |
 
 
 
