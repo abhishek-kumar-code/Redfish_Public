@@ -3,15 +3,20 @@
     "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
     "@odata.type": "#ComputerSystem.v1_2_0.ComputerSystem",
     "@odata.id": "/redfish/v1/CompositionService/ResourceZones/1/Capabilities",
+    "Id@Redfish.RequiredOnCreate": true,
+    "Id@Redfish.SetOnlyOnCreate": true,
     "Id": "Capabilities",
-    "Name": null,
-    "Description": null,
-    "UUID": null,
-    "HostName": null,
-    "PowerState": null,
+    "Name@Redfish.RequiredOnCreate": true,
+    "Name@Redfish.SetOnlyOnCreate": true,
+    "Name": "Capabilities for the Zone",
+    "Description@Redfish.RequiredOnCreate": true,
+    "UUID@Redfish.AvailableInResource": true,
+    "HostName@Redfish.AvailableInResource": true,
+    "PowerState@Redfish.AvailableInResource": true,
+    "Boot@Redfish.AvailableInResource": true,
     "Boot": {
-        "BootSourceOverrideEnabled": null,
-        "BootSourceOverrideTarget": null,
+        "BootSourceOverrideEnabled@Redfish.AvailableInResource": true,
+        "BootSourceOverrideTarget@Redfish.AvailableInResource": true,
         "BootSourceOverrideTarget@Redfish.AllowableValues": [
             "None",
             "Pxe",
@@ -19,8 +24,10 @@
             "Hdd"
         ]
     },
-    "Processors": null,
-    "Memory": null,
-    "EthernetInterfaces": null,
-    "Storage": null
+    "Processors@Redfish.RequiredOnCreate": true,
+    "Processors@Redfish.SetOnlyOnCreate": true,
+    "Memory@Redfish.RequiredOnCreate": true,
+    "Memory@Redfish.SetOnlyOnCreate": true,
+    "EthernetInterfaces@Redfish.AvailableInResource ": true
+    "Storage@Redfish.AvailableInResource ": true
 }
