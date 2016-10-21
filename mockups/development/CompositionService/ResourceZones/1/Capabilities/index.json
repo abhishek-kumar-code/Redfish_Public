@@ -28,6 +28,6 @@
     "Processors@Redfish.SetOnlyOnCreate": true,
     "Memory@Redfish.RequiredOnCreate": true,
     "Memory@Redfish.SetOnlyOnCreate": true,
-    "EthernetInterfaces@Redfish.AvailableInResource ": true
-    "Storage@Redfish.AvailableInResource ": true
+    "EthernetInterfaces@Redfish.AvailableInResource": true,
+    "Storage@Redfish.AvailableInResource": true
 }
