@@ -41,14 +41,13 @@ The target audience for this specification is system manufacturers that are prov
 
 ## Normative references
 
-The following referenced documents are indispensable for the application of this document. For dated or versioned references, only the edition cited (including any corrigenda or DMTF update versions) applies. For references without a date or version, the latest published edition of the referenced document (including any corrigenda or DMTF update versions) applies.x
+The following referenced documents are indispensable for the application of this document. For dated or versioned references, only the edition cited (including any corrigenda or DMTF update versions) applies. For references without a date or version, the latest published edition of the referenced document (including any corrigenda or DMTF update versions) applies.
 
-* <a id="DMTFDSP0134">DMTF DSP0124</a> System Management BIOS Reference Specification (SMBIOS)
-* <a id="UEFISPEC"> UEFI </a> Unified Extensible Firmwre Interface Specification (UEFI), version 2.6
-* <a id="DMTFDSP0256">DMTF DSP0256</a> Management Component Transport Protocol (MCTP) Base Specification
-* <a id="DMTFDSP0239"> DMTF DSP0239</a> Management Compoonent Transport Protocol (MCTP) IDs and Codes
-* <a id="DMTFDSP0266">DMTF DSP0266</a> Redfish Scalable Platforms Management API Specification
-* <a id="DMTFDSP8010">DMTF DSP8010</a> Redfish API Schema
+* <a id="DMTFDSP0134">DMTF DSP0134</a> System Management BIOS Reference Specification (SMBIOS), [http://www.dmtf.org/sites/default/files/standards/documents/DSP0134_3.0.pdf](http://www.dmtf.org/sites/default/files/standards/documents/DSP0134_3.0.pdf "http://www.dmtf.org/sites/default/files/standards/documents/DSP0134_3.0.pdf")
+* <a id="UEFISPEC">UEFI</a> Unified Extensible Firmware Interface Specification (UEFI), Version 2.6, [http://www.uefi.org/sites/default/files/resources/UEFI Spec 2_6.pdf](http://www.uefi.org/sites/default/files/resources/UEFI%20Spec%202_6.pdf "http://www.uefi.org/sites/default/files/resources/UEFI%20Spec%202_6.pdf")
+* <a id="DMTFDSP0239">DMTF DSP0239</a> Management Component Transport Protocol (MCTP) IDs and Codes, Version 1.4, [http://www.dmtf.org/sites/default/files/standards/documents/DSP0239_1.4.pdf](http://www.dmtf.org/sites/default/files/standards/documents/DSP0239_1.4.pdf "http://www.dmtf.org/sites/default/files/standards/documents/DSP0239_1.4.pdf")
+* <a id="DMTFDSP0266">DMTF DSP0266</a> Redfish Scalable Platforms Management API Specification, [http://www.dmtf.org/sites/default/files/standards/documents/DSP0266_1.0.pdf](http://www.dmtf.org/sites/default/files/standards/documents/DSP0266_1.0.pdf "http://www.dmtf.org/sites/default/files/standards/documents/DSP0266_1.0.pdf")
+* <a id="DMTFDSP8010">DMTF DSP8010</a> Redfish API Schema, [http://www.dmtf.org/standards/redfish](http://www.dmtf.org/standards/redfish "http://www.dmtf.org/standards/redfish")
 * <a id="ISODIR">ISO/IEC Directives, Part 2</a> Rules for the structure and drafting of International Standards, [http://isotc.iso.org/livelink/livelink.exe?func=ll&objId=4230456&objAction=browse&sort=subtype](http://isotc.iso.org/livelink/livelink.exe?func=ll&objId=4230456&objAction=browse&sort=subtype "http://isotc.iso.org/livelink/livelink.exe?func=ll&objId=4230456&objAction=browse&sort=subtype")
 
 
@@ -65,29 +64,33 @@ The following additional terms are used in this document.
 
 | Term                            | Definition       |
 | ---                             | ---              |
-| Host                            | x                |
-| Host Processor                  | x                |
-| Host Software                   | x                |
-| Redfish                         | x                |
-| Redfish Service                 | x                |
-| Service Entry Point             | x                |
-| Manager                         | x                |
-| Redfish Manager                 | x                |
+| Host                            | The Computer System that is managed by a Redfish Service               |
+| Host Software                   | Software running on the Host Computer System, including Operating System and it's Software components (such as drivers or applications), as well as pre-boot software such as UEFI or BIOS drivers and applications.
+| Redfish Service                 | Also referred to as the "Service". The collection of functionality that implements the protocols, resources, and functions that deliver the interface defined by the Redfish API specification and its associated behaviors for one or more managed systems.                                                                                                                                                                                                                               |
+| Redfish Service Entry Point     | Also referred to as "Service Entry Point". The interface through which a particular instance of a Redfish Service is accessed. A Redfish Service may have more than one Service Entry Point.                                                                                                                                                                                                                                                                                              |
+| Redfish Manager                 | Also referred to as "Manager". The entity that manages a Computer System and other peripherals through a Redfish Service.                
+
 
 ## Symbols and abbreviated terms
 
 The following additional abbreviations are used in this document.
 
-| Term   | Definition                                          
-| ---    | ---                                                 
-| BIOS   | Basic I/O System. Name for system firmware typically used for initialization and launching the boot of an ISA (Industry Standard Architecture), aka 'x86' or 'PC', architecture-based computer system                  
-| BSP   | Board Support Package. Name for system firmware typically used for initialization and launching the boot of Linux in a computer system that uses a non-ISA architecture, but may be used for booting other types of operating systems or run-time software                      
-| SMBIOS   | System Management BIOS. Refers to DSP0134. Defines memory mapped tables, typically implemented by system firmware/BIOS and mapped into system firmware/BIOS memory space, that provide inventory and management information for the computer system.                         
-| HTTPS  | Hypertext Transfer Protocol over TLS                
-| IP     | Internet Protocol                                   
-| IPMI   | Intelligent Platform Management Interface           
-| PCIe   | PCI Express                                         
-| TCP    | Transmission Control Protocol                       |
+| Term   | Definition                                         | 
+| ---    | ---                                                |
+| BIOS   | Basic I/O System. Name for system firmware typically used for initialization and launching the boot of an ISA (Industry Standard Architecture), aka 'x86' or 'PC', architecture-based computer system.                  
+| BSP   | Board Support Package. Name for system firmware typically used for initialization and launching the boot of Linux in a computer system that uses a non-ISA architecture, but may be used for booting other types of operating systems or run-time software.                   
+| SMBIOS   | System Management BIOS. Refers to DSP0134. Defines memory mapped tables, typically implemented by system firmware/BIOS and mapped into system firmware/BIOS memory space, that provide inventory and management information for the computer system.
+| UEFI   | Unified Extensible Firmware Interface. A modern firmware standard that defines the interfaces between hardware and Operating Systems in a Computer System. UEFI is supported on multiple processor architectures, including x86, x64, ia64, and AARCH64.
+| HTTP   | Hypertext Transfer Protocol                         |
+| HTTPS  | Hypertext Transfer Protocol over TLS                |
+| IP     | Internet Protocol                                   |
+| IPMI   | Intelligent Platform Management Interface           |
+| NIC    | Network Interface Card                              |
+| PCI    | Peripheral Component Interconnect                   |
+| PCIe   | PCI Express                                         |
+| TCP    | Transmission Control Protocol                       |         
+| UUID   | Universally Unique Identifier                       |
+
 
 ## Introduction
 The initial Redfish specification defines a TCP/IP-based out-of-band interface between a client and a Management Controller.
@@ -152,6 +155,9 @@ Implementations that support the "Network Host Interface" protocol shall impleme
 
 * Implementations should implement an SMBIOS Type 42 structure that describes each host interface as described in section (SMBIOS Link)
 
+* Support for automatically generating and sending credentials to the host OS kernel and/or firmware using UEFI runtime variables should be implemented as defined in section  (Kernel Authentication Link).  
+  * If the Kernel Authentication Interface is implemented, Redfish services shall implement a configuration option that allows customers to disable the Kernel Authentication
+  * If the Kernel Authentication Interface is implemented, Redfish service shall implement a configurable privileges for this kernel interface shall be configurable.
 
 ## SMBIOS Support
 The host should support an SMBIOS Type 42 structure that defines the attributes of the Redfish Host Interfaces that are supported for the system.
@@ -160,15 +166,15 @@ Information in the structure will allow host software to discover the Redfish Ma
 
 * For Network Host interfaces, the mechanism that clients should use to discover/obtain the manager IP address will also be described in the structure
 
-The following table describes the SMBIOS (Type 42) structure for a Netowrk Host Interface interface:
+The following table describes the SMBIOS (Type 42) structure for a Network Host Interface interface:
 
 
 | Offset  | Name             | Length   | Value    | Description     |
 | ---     | ---              | ---      | ---      | ---             |
 | 00h     | Type             | BYTE     | 42       | Management Controller Host Interface structure indicator      |
-| 01h     | Length           | BYTE     | Varies   | Lengthh of the structure, a minimum of 09h      |
+| 01h     | Length           | BYTE     | Varies   | Length of the structure, a minimum of 09h      |
 | 02h     | Handle           | WORD     | Varies   |       |
-| 04h     | Interface Type   | BYTE     | 09h      | Management Controller Interface Type.  (Network Host Interface = 09h )    |
+| 04h     | Interface Type   | BYTE     | Varies      | Management Controller Interface Type. <br/>  Network Host Interface = 09h     |
 
 Following the above 4 fields is the Interface Specific Data:
 
@@ -176,6 +182,7 @@ Following the above 4 fields is the Interface Specific Data:
 | ---     | ---      | ---      | ---      | ---             |
 | 05h     | Length     | BYTE     | Varies       | if 0, there is no Interface specific data      |
 | 06h     | Device Type   | BYTE     | Enum       | Unknown=0h1, <br/> USB Network Interface=02h, <br/> PCI/PCIe Network Interface=03h,  <br/> OEM=0Fh       |
+| 07h     | Device Descriptors   | Varies   | Varies    | Length and Value is based on Device Type field value. Descriptor definition per type is provided in subsequent rows  |
 |      | Device Descriptors for USB       |      |        | <br/> idVendor(2-bytes),  <br/> idProduct(2-bytes), <br/> iSerialNumber: <br/>  -- bLength(1-Byte), <br/> -- bDescriptorType(1-Byte), <br/> -- bString(Varies) )      |
 |      | Device Descriptors for PCI/PCIe     |      |        | VendorID(2-Bytes), <br/> DeviceID(2-Bytes), <br/> Subsystem_Vendor_ID(2-bytes), <br/> Subsystem_ID(2-bytes)      |
 |      | Device Descriptors for OEM     |      |        | vendor_IANA(4-bytes),  <br/> OEM defined data      |
@@ -186,7 +193,7 @@ Protocol Specific Data header follows:
 | ---     | ---      | ---      | ---      | ---             |
 | n       | Length     | BYTE     | Varies       | if 0, there is no protocol specific data      |
 | n+1     | Number of Protocols     | BYTE     | 01h       | one protocol defined for this host interface      |
-| n+2     | Protocol 1 Type     | BYTE     | 04h       | Redfish over IP = 04h      |
+| n+2     | Protocol 1 Type     | BYTE     | Varies       | Redfish over IP = 04h      |
 
 Protocol specific data for Redfish Over IP protocol follows:
 
