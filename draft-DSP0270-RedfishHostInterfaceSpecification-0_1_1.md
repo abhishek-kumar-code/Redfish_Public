@@ -75,7 +75,7 @@ The following additional terms are used in this document.
 
 The following additional abbreviations are used in this document.
 
-| Term   | Definition                                         | 
+| Term   | Definition                                         |
 | ---    | ---                                                |
 | BIOS   | Basic I/O System. Name for system firmware typically used for initialization and launching the boot of an ISA (Industry Standard Architecture), aka 'x86' or 'PC', architecture-based computer system.                  
 | BSP   | Board Support Package. Name for system firmware typically used for initialization and launching the boot of Linux in a computer system that uses a non-ISA architecture, but may be used for booting other types of operating systems or run-time software.                   
@@ -93,10 +93,8 @@ The following additional abbreviations are used in this document.
 
 
 ## Introduction
-The initial Redfish specification defines a TCP/IP-based out-of-band interface between a client and a Management Controller.
-However said specification does not define a standard host interface (as was provided in the earlier IPMI Management specification).
-Recently significant user feedback has been received that a DMTF standard Redfish “In-band” Host Interface (HI) is needed
-so that applications/tools running on a system OS can communicate with the Redfish manager that is managing the system using the Redfish API.  This Redfish host interface need applies to both deployment OS’s and production OS’s and OS kernels to provide services for reading sensors and other items. Also, the host interface needs to be available when network topology prevents host access to the Redfish network interface used by remote clients.
+
+Redfish is a flexible system management tool that can be successfully applied to various system architectures.  One important architecture consists of one or more CPUs assigned to the system application (The Host CPUs) and a separate CPU or CPUs assigned solely to management including publishing the Redfish interface.  In many management schemes it is necessary to provide standardized Redfish-based communication between the Host CPU and the Redfish service in the Management unit. This communication is in addition to the Redfish services available via the external network.  The Redfish Host Interface may be used in both the pre-boot (firmware) stage and by drivers within the Host Operating system and is designed to be available without use of external networks.  This specification provides design details for several methods of Host-to-Manager communication. Additional methods may be added in future revisions.
 
 ## Scope
 
@@ -114,7 +112,7 @@ The following goals where established for the Redfish Host Interface:
 
 * Implementable with existing management controller technology
 * Easily integrated into products
-* Host Interface and out-of-band API must be the same (where possible) so that client apps will have minimal (if any) change to adapt
+* Host Interface and out-of-band API must be the same (where possible) so that client apps shall have minimal (if any) change to adapt
 * Support authentication, confidentiality, and  integrity:
   * Support environments where users do not want to solely rely on host/OS access control mechanisms
   * Provide mechanism to optionally (if configured) pass credentials to an OS Kernel for sensor monitoring (with configurable privilege)
@@ -145,8 +143,8 @@ Implementations that support the "Network Host Interface" protocol shall impleme
   * Authentication credentials that are valid on the normal out-of-band Redfish network interface shall also be valid on the HI.
   * Implementations may optionally support a configurable AuthNone authentication mode (no authentication required) that can be configured on the manager for use on HI.   If implemented, enablement of AuthNone shall be configurable, and the RoleId assumed by AuthNone requests shall be configurable.
   * In addition to standard credentials, implementations may optionally support auto-generation and delivery of HI-only credentials that may be used by the Firmware or OS to authenticate.
-  * Auto-generated host credentials will be delivered using UEFI-based mechanism described in a later section of this document.
-  * The permissions granted to any auto-generated credentials will be configurable with a defined RoleId assigned.
+  * If supported, auto-generated host credentials shall be delivered using UEFI-based mechanism described in a later section of this document.
+  * The permissions granted to any auto-generated credentials shall be configurable with a defined RoleId assigned.
 
 * Services shall require HTTPS encryption for the Network Host Interface with same requirements as via out-of-band network interfaces:
   * Session Login POSTs shall use HTTPS
@@ -160,14 +158,27 @@ Implementations that support the "Network Host Interface" protocol shall impleme
   * If the Kernel Authentication Interface is implemented, Redfish service shall implement a configurable privileges for this kernel interface shall be configurable.
 
 ## SMBIOS Support
-The host should support an SMBIOS Type 42 structure that defines the attributes of the Redfish Host Interfaces that are supported for the system.
+When Redfish Host Interface is available, the host shall support an SMBIOS Type 42 structure that defines the attributes of the Redfish Host Interfaces that are supported for the system. Identification of host interface parameters on systems that do not implement SMBIOS is not covered in this document and therefore OEM-specific methods shall be used.
 
-Information in the structure will allow host software to discover the Redfish Manager interfaces supported and to initialize the host-side driver stack.  
+Information in the SMBIOS structure shall allow host software to discover the Redfish Manager interfaces supported and to initialize the host-side driver stack.  
 
-* For Network Host interfaces, the mechanism that clients should use to discover/obtain the manager IP address will also be described in the structure
+* For Network Host interfaces, the mechanism that clients should use to discover/obtain the manager IP address shall also be described in the structure
 
-The following table describes the SMBIOS (Type 42) structure for a Network Host Interface interface:
+### Table Layout
 
+  `------------------------`<br>
+  `Type 42 Header         `<br>
+  `------------------------`<br>
+  ` Interface Data          `<br>
+  `   - Device Description `<br>
+  `   - (1 of 3 types)`<br>
+  `------------------------`<br>
+  ` Protocol Specific Data Header`  <br>
+  `------------------------`<br>
+  ` - Protocol Specific Data`  
+  `------------------------`<br>
+
+The following describes the SMBIOS (Type 42) structure for a Network Host Interface beginning with the Type 42 header:
 
 | Offset  | Name             | Length   | Value    | Description     |
 | ---     | ---              | ---      | ---      | ---             |
@@ -176,16 +187,16 @@ The following table describes the SMBIOS (Type 42) structure for a Network Host 
 | 02h     | Handle           | WORD     | Varies   |       |
 | 04h     | Interface Type   | BYTE     | Varies      | Management Controller Interface Type. <br/>  Network Host Interface = 09h     |
 
-Following the above 4 fields is the Interface Specific Data:
+Following the above 4 fields is the Interface Specific Data. There are 3 types of Device Descriptor data defined, however only 1 may be used in specific Tape 42 table.
 
 | Offset  | Name     | Length   | Value    | Description     |
 | ---     | ---      | ---      | ---      | ---             |
 | 05h     | Length     | BYTE     | Varies       | if 0, there is no Interface specific data      |
-| 06h     | Device Type   | BYTE     | Enum       | Unknown=0h1, <br/> USB Network Interface=02h, <br/> PCI/PCIe Network Interface=03h,  <br/> OEM=0Fh       |
-| 07h     | Device Descriptors   | Varies   | Varies    | Length and Value is based on Device Type field value. Descriptor definition per type is provided in subsequent rows  |
-|      | Device Descriptors for USB       |      |        | <br/> idVendor(2-bytes),  <br/> idProduct(2-bytes), <br/> iSerialNumber: <br/>  -- bLength(1-Byte), <br/> -- bDescriptorType(1-Byte), <br/> -- bString(Varies) )      |
-|      | Device Descriptors for PCI/PCIe     |      |        | VendorID(2-Bytes), <br/> DeviceID(2-Bytes), <br/> Subsystem_Vendor_ID(2-bytes), <br/> Subsystem_ID(2-bytes)      |
-|      | Device Descriptors for OEM     |      |        | vendor_IANA(4-bytes),  <br/> OEM defined data      |
+| 06h     | Device Type   | BYTE     | Enum       | Unknown=00h, <br/> USB Network Interface=02h, <br/> PCI/PCIe Network Interface=03h,  <br/> OEM=80h-FFh       |
+| 07h     | Device Descriptors   | Varies   | Varies    | Required descriptor formated per Device Type. Definition is provided in subsequent rows.|
+|      | Device Descriptors for USB Device Type      |      |        | <br/> idVendor(2-bytes),  <br/> idProduct(2-bytes), <br/> iSerialNumber: <br/>  -- bLength(1-Byte), <br/> -- bDescriptorType(1-Byte), <br/> -- bString(Varies) )      |
+|      | Device Descriptors for PCI/PCIe Device Type     |      |        | VendorID(2-Bytes), <br/> DeviceID(2-Bytes), <br/> Subsystem_Vendor_ID(2-bytes), <br/> Subsystem_ID(2-bytes)      |
+|      | Device Descriptors for OEM  Device Type    |      |        | vendor_IANA(4-bytes),  <br/> OEM defined data      |
 
 Protocol Specific Data header follows:
 
@@ -239,7 +250,7 @@ To provide for situations of this type, systems supporting the Redfish service m
 * The session associated with the credentials shall not timeout or expire.
 * The Redfish service may close the session if it resets or for other policy reasons in which case the host may re-open the session using the same credentials.   
 * Any open session started with firmware credentials shall be closed and the credentials invalidated at UEFI `ExitBootServices()` event.
-* Any open session started with OS credentials will be closed and new credential passwords generated when host restart is detected by manager.
+* Any open session started with OS credentials shall be closed and new credential passwords generated when host restart is detected by manager.
 * The Firmware Credentials shall be made available for any agent or driver that operates within the UEFI pre-boot prior to ExitBootServices() call. This may include local system ROM firmware or utility firmware applications downloaded from external sources.
 
 ### Security Considerations for Protecting Auto-generated Credentials
@@ -258,7 +269,7 @@ The design of this delivery mechanism is compatible with any UEFI version starti
 
 #### Prototype
 
-      #define EFI_REDFISH_INFORMATION_GUID \
+    #define EFI_REDFISH_INFORMATION_GUID \
         {0x16faa37e, 0x4b6a, 0x4891, {0x90, 0x28, 0x24, 0x2d, 0xe6, 0x5a, 0x3b, 0x70 }}
     #define EFI_REDFISH_INFORMATION_INDICATIONS 	L”RedfishIndications”
     #define EFI_REDFISH_INFORMATION_FW_CREDENTIALS 	L”RedfishFWCredentials”
@@ -285,13 +296,13 @@ The variable `EFI_REDFISH_INFORMATION_INDICATIONS` shall return a 32-bit value, 
 * `If EFI_REDFISH_ INDICATIONS_OS_CREDENTIALS` bit is 1, the Redfish host interface is configured to provide a credentials for use by system OS.
 * All other bits in `EFI_REDFISH_ INDICATIONS_HOST_IF` are reserved.
 
-When the Redfish implementation provides credentials for firmware use, the variable `EFI_REDFISH_INFORMATION_FW_CREDENTIALS` will contain a UTF-8 character array formatted as described in the next section. If this session is not available as defined by current system policy, this variable will return `EFI_NOT_FOUND`.
+When the Redfish implementation provides credentials for firmware use, the variable `EFI_REDFISH_INFORMATION_FW_CREDENTIALS` shall contain a UTF-8 character array formatted as described in the next section. If this session is not available as defined by current system policy, this variable shall return `EFI_NOT_FOUND`.
 
-When the Redfish implementation provides a credentials for OS use, the variable `EFI_REDFISH_INFORMATION_OS_CREDENTIALS` a UTF-8 character array formatted as described in the next section. If these credentials are not available as defined by current system policy, this variable will return `EFI_NOT_FOUND`.
+When the Redfish implementation provides a credentials for OS use, the variable `EFI_REDFISH_INFORMATION_OS_CREDENTIALS` a UTF-8 character array formatted as described in the next section. If these credentials are not available as defined by current system policy, this variable shall return `EFI_NOT_FOUND`.
 
 The password contained in these variables shall be recalculated so as to be unique and not easily predicted on each boot.
 
-If the variables `EFI_REDFISH_INFORMATION_FW_CREDENTIALS`  or `EFI_REDFISH_INFORMATION_OS_CREDENTIALS` are accessed using the `SetVariable()` function with a *DataSize* of zero, the variable contents will be hidden until the next system restart and not be available for retrieval by future `GetVariable()` calls.  After such `SetVariable()` access any `GetVariable()` attempt will return `EFI_NOT_FOUND` error. Calls to `SetVariable()` with non-zero *DataSize* shall be processed as if *DataSize* is zero
+If the variables `EFI_REDFISH_INFORMATION_FW_CREDENTIALS`  or `EFI_REDFISH_INFORMATION_OS_CREDENTIALS` are accessed using the `SetVariable()` function with a *DataSize* of zero, the variable contents shall be hidden until the next system restart and not be available for retrieval by future `GetVariable()` calls.  After such `SetVariable()` access any `GetVariable()` attempt shall return `EFI_NOT_FOUND` error. Calls to `SetVariable()` with non-zero *DataSize* shall be processed as if *DataSize* is zero
 
 
 #### Variable Format
