@@ -94,7 +94,7 @@ The following additional abbreviations are used in this document.
 
 ## Introduction
 
-Redfish is a flexible system management tool that can be successfully applied to various system architectures.  One important architecture consists of one or more CPUs assigned to the system application (The Host CPUs) and a separate CPU or CPUs assigned solely to management including publishing the Redfish interface.  In many management schemes it is necessary to provide standardized Redfish-based communication between the Host CPU and the Redfish service in the Management unit. This communication is in addition to the Redfish services available via the external network.  The Redfish Host Interface may be used in both the pre-boot (firmware) stage and by drivers within the Host Operating system and is designed to be available without use of external networks.  This specification provides design details for several methods of Host-to-Manager communication. Additional methods may be added in future revisions.
+Redfish is a flexible system management tool that can be successfully applied to various system architectures.  One important architecture consists of one or more CPUs assigned to the system application (The Host CPUs) and a separate CPU or CPUs assigned solely to management including publishing the Redfish interface.  In many management schemes it is necessary to provide standardized Redfish-based communication between the Host CPU and the Redfish service in the Management unit. This communication is in addition to the Redfish services available via the external network.  Implementation of the Redfish Host Interface is optional for the system designer. If provided, this interface may be used in both the pre-boot (firmware) stage and by drivers and applications within the Host Operating system and is designed to be available without use of external networking.  This specification provides design details for several methods of Host-to-Manager communication. Additional methods may be added in future revisions of this specification.
 
 ## Scope
 
@@ -165,7 +165,7 @@ Information in the SMBIOS structure shall allow host software to discover the Re
 * For Network Host interfaces, the mechanism that clients should use to discover/obtain the manager IP address shall also be described in the structure
 
 ### Table Layout
-
+<BLOCKQUOTE>
   `------------------------`<br>
   `Type 42 Header         `<br>
   `------------------------`<br>
@@ -173,11 +173,12 @@ Information in the SMBIOS structure shall allow host software to discover the Re
   `   - Device Description `<br>
   `   - (1 of 3 types)`<br>
   `------------------------`<br>
-  ` Protocol Specific Data Header`  <br>
+  ` Protocol-Specific Data Header`  <br>
   `------------------------`<br>
   ` - Protocol Specific Data`  
   `------------------------`<br>
-
+</BLOCKQUOTE>  
+### Table Definition
 The following describes the SMBIOS (Type 42) structure for a Network Host Interface beginning with the Type 42 header:
 
 | Offset  | Name             | Length   | Value    | Description     |
