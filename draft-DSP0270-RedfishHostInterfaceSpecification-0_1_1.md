@@ -165,19 +165,18 @@ Information in the SMBIOS structure shall allow host software to discover the Re
 * For Network Host interfaces, the mechanism that clients should use to discover/obtain the manager IP address shall also be described in the structure
 
 ### Table Layout
-<BLOCKQUOTE>
-  `------------------------`<br>
-  `Type 42 Header         `<br>
-  `------------------------`<br>
-  ` Interface Data          `<br>
-  `   - Device Description `<br>
-  `   - (1 of 3 types)`<br>
-  `------------------------`<br>
-  ` Protocol-Specific Data Header`  <br>
-  `------------------------`<br>
-  ` - Protocol Specific Data`  
-  `------------------------`<br>
-</BLOCKQUOTE>  
+*  `------------------------`
+*  `Type 42 Header         `
+*  `------------------------`
+*  ` Interface Data          `
+*  `   - Device Description `
+*  `   - (1 of 3 types)`
+*  `------------------------`
+*  ` Protocol-Specific Data Header`
+*  `------------------------`
+*  ` - Protocol Specific Data`
+*  `------------------------`
+
 ### Table Definition
 The following describes the SMBIOS (Type 42) structure for a Network Host Interface beginning with the Type 42 header:
 
