@@ -37,6 +37,10 @@
         "State": "Enabled",
         "Health": "OK"
     },
+	"HeightMm": 44.45,
+	"WidthMm": 431.8,
+	"DepthMm": 711,
+	"WeightKg": 15.31,
     "Thermal": {
         "@odata.id": "/redfish/v1/Chassis/1/Thermal"
     },
