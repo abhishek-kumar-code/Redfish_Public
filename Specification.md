@@ -588,7 +588,7 @@ Submitting a POST request to a resource representing a collection is equivalent 
 * Services shall only support POST operations for URIs representing either a ResourceCollection entity or an Action (see [Actions (POST)](#actions-post-)).
 * The POST operation shall not be idempotent.
 
-The body of the create request contains a representation of the object to be created. The service can ignore any service controlled attributes (e.g., id), forcing those attributes to be overridden by the service. The service shall set the Location header to the URI of the newly created resource. The response to a successful create request should be 201 (Created) and may include a response body containing a representation of the newly created resource conforming to the schema of the created resource.
+The body of the create request contains a representation of the object to be created. The service may ignore any service controlled attributes (e.g., id), forcing those attributes to be overridden by the service. The service shall set the Location header to the URI of the newly created resource. The response to a successful create request should be 201 (Created) and may include a response body containing a representation of the newly created resource conforming to the schema of the created resource.
 
 ##### Delete (DELETE)
 
