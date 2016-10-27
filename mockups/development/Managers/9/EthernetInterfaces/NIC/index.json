@@ -17,8 +17,8 @@
     "AutoNeg": true,
     "FullDuplex": true,
     "MTUSize": 1500,
-    "HostName": "bmc-host-interface",
-    "FQDN": "bmc-host-interface.dmtf.org",
+    "HostName": "bmc-external-interface",
+    "FQDN": "bmc-external-interface.dmtf.org",
     "MaxIPv6StaticAddresses": 1,
     "IPv4Addresses": [
         {
