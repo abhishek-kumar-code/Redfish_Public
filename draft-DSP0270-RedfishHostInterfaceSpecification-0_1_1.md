@@ -112,7 +112,7 @@ The following goals where established for the Redfish Host Interface:
 
 * Implementable with existing management controller technology
 * Easily integrated into products
-* Host Interface and out-of-band API must be the same (where possible) so that client apps shall have minimal (if any) change to adapt
+* Host Interface and out-of-band API must be the same (where possible) so that client apps have minimal (if any) change to adapt
 * Support authentication, confidentiality, and  integrity:
   * Support environments where users do not want to solely rely on host/OS access control mechanisms
   * Provide mechanism to optionally (if configured) pass credentials to an OS Kernel for sensor monitoring (with configurable privilege)
