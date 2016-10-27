@@ -149,7 +149,7 @@ Implementations that support the "Network Host Interface" protocol shall impleme
   * Patches that contain sensitive data shall use HTTPS
   * Basic Auth requests shall require HTTPS
 
-* Implementations shall provide an SMBIOS Type 42 structure that describes each host interface as defined by the [SMBIOS](#DMTFDSP0134) standard and the [SMBIOS Support](#smbios-support) clause of this document.
+* Implementations that support SMBIOS shall provide an SMBIOS Type 42 structure that describes each host interface as defined by the [SMBIOS](#DMTFDSP0134) standard and the [SMBIOS Support](#smbios-support) clause of this document.
 
 * Implementations that support automatically generating and sending credentials to the host OS kernel and/or firmware using UEFI runtime variables shall be implemented as defined within the [Kernel Authentication](#delivery-of-kernel-authentication-information-via-uefi-runtime-variables) clause of this document..  
   * If the Kernel Authentication Interface is implemented, Redfish services shall implement a configuration option that allows customers to disable the Kernel Authentication
