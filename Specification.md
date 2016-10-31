@@ -2342,7 +2342,7 @@ The Authorization subsystem uses Roles and Privileges to control which users hav
 
 For every request made by a Redfish client to a Redfish service, the Redfish service implementation Shall determine whether 
 the authenticated identity context has the authorization to perform the requested operation on the URI specified in the request.
-Using the role and privileges authorization model, where a role is a set of privileges, the service will typically check a HTTP request
+Using the role and privileges authorization model, where an authenticated identity context is assigned a role and a role is a set of privileges, the service will typically check a HTTP request
 against a mapping of the authenticated requesting identity role/privileges and determine whether the identity privileges are sufficient to perform the operation specified in the request.
 
 ##### Why specify Operation to Privilege Mapping
@@ -2362,15 +2362,17 @@ JSON document that contains a Mappings array of PrivilegeMapping entity elements
 supported by the service.  The operation to privilege mapping is defined for every entity schema and applies to every resource the service 
 implements for the applicable schema.  There are several situations where specific resources or elements of resources may have differing 
 operation to privilege mappings than the entity mappings and the entity level mappings have to be overridden.  The methodology for specifying
-entity level operation to provilege mappings and related overrides are defined in the PrivilegeRegistry schema.
+entity level operation to privilege mappings and related overrides are defined in the PrivilegeRegistry schema.
+
+The SPMF Redfish Privilege Mapping Registry Should be used by Redfish Service implementations as a base privilege requirements mapping in order to promote interoperability for Redfish clients.
 
 ##### OperationMap Syntax
 
 An operation map defines the set of privileges required to perform a specific operation on an entity, entity element, or resource.
-The operationsmapped are GET, PUT, PATCH, POST, DELETE and HEAD. Privilege mapping are defined for each operation irrespective 
-of whether the service or the API data model support the specific operation on the entity, entity element or resource. The 
-privileges required for an operation can be specified with logical AND and OR behavior as required.  The following example defines
-the privileges required for various operations on Manager entity.  Unless overrides are defined, the specified operation to 
+The operations mapped are GET, PUT, PATCH, POST, DELETE and HEAD. Privilege mapping are defined for each operation irrespective 
+of whether the service or the API data model support the specific operation on the entity, entity element or resource. Privilege labels used may be the Redfish standardized labels defined in the Privilege.PrivilegeType enumeration and they may be OEM defined prvilege labels. The 
+privileges required for an operation can be specified with logical AND and OR behavior as required (see Privilege AND and OR Syntax section for more information).  The following example defines
+the privileges required for various operations on Manager entity.  Unless mapping overrides to the OperationMap array are defined (syntax explained in next section), the specified operation to 
 privilege mapping would represent behavior for all Manager resources in a service implementation.
 ~~~json
 {
@@ -2400,7 +2402,7 @@ privilege mapping would represent behavior for all Manager resources in a servic
 
 ##### Mapping Overrides Syntax
 
-Several situations occur where opertaion to privilege mapping varies from what might be specified at an entity schema level.
+Several situations occur where operation to privilege mapping varies from what might be specified at an entity schema level.
 These situations are:
 * Property Override - Where a property has different privilege requirements that the resource (document) it is in.  For example, the Password 
 property on the ManagerAccountresource requires the "ConfigureSelf" or the "ConfigureUser" privilege to change in contrast 
@@ -2463,7 +2465,7 @@ required for the rest of the properties on ManagerAccount resources.
 
 In the following example, the privileges for PATCH operations 
 on EthernetInterface resources depends on whether the resource is subordinate to Manager (ConfigureManager is required) or ComputerSystem (ConfigureComponent
-is required) resources.
+is required, this is the default unless overridden) resources.
 ~~~json
 {
 		"Entity": "EthernetInterface",
@@ -2506,7 +2508,7 @@ is required) resources.
 
 ##### ResourceURI Override
 
-In the following example use of the ResourceURI Override syntax for representing operation privilege variations for specific resource URIs is demonstrated.  The example specifies both ConfigureComponents and OEMAdminPriv privileges are required in order to perform a PATCH operation on the 2 resource URIs listed. 
+In the following example use of the ResourceURI Override syntax for representing operation privilege variations for specific resource URIs is demonstrated.  The example specifies both ConfigureComponents and OEMAdminPriv privileges are required in order to perform a PATCH operation on the 2 resource URIs listed as Targets. 
 ~~~json
 {
 		"Entity": "ComputerSystem",
@@ -2544,6 +2546,18 @@ In the following example use of the ResourceURI Override syntax for representing
 			}
 		} 
 ~~~		
+
+##### Privilege AND and OR Syntax
+
+Logical combinations of privileges required to perform an operation on an entity, entity element or resource are defined by the array placement of the privilege labels in the OperationMap GET, HEAD, PATCH, POST, PUT, DELETE operation element arrays.  For OR logicial combinations, the privilege label is placed in the operation element array as individual elements.  In the following example, either Login or OEMPrivilege1 privileges are required to perform a GET operation.
+~~~json
+	"GET": [{"Privilege": ["Login"]}, {"Privilege": ["OEMPrivilege1"]}]
+~~~
+For logical AND combinations, the privilege label is placed in the Privilege property array within the operation element.  In the following example, both ConfigureComponents and OEMSysAdminPriv are required to perform a PATCH operation.
+~~~json
+	"PATCH": [{"Privilege": ["ConfigureComponents","OEMSysAdminPriv"]}]
+~~~
+
 ## ANNEX A (informative)
 
 ### Change log
