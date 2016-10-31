@@ -2338,6 +2338,195 @@ The Authorization subsystem uses Roles and Privileges to control which users hav
   - Implementations shall enforce the same privilege model for ETag related activity as is enforced for the data being represented by the ETag.
   - For example, when activity requiring privileged access to read data item represented by ETag requires the same privileged access to read the ETag.
 
+#### Redfish Service Operation to Privilege Mapping
+
+For every request made by a Redfish client to a Redfish service, the Redfish service implementation Shall determine whether 
+the authenticated identity context has the authorization to perform the requested operation on the URI specified in the request.
+Using the role and privileges authorization model, where a role is a set of privileges, the service will typically check a HTTP request
+against a mapping of the authenticated requesting identity role/privileges and determine whether the identity privileges are sufficient to perform the operation specified in the request.
+
+##### Why specify Operation to Privilege Mapping
+
+Initial versions of the Redfish specifications specified several Role to Privilege mappings for standardized Roles and normatively identified
+several Prvilege labels but did not normatively define what these privileges meant in detail or how privilege to operations mappings could 
+be specified or represented in a normative fashion. The lack of a methdology to define what privilege(s) are required to perform a specific
+requested operation against the URI specified in the request puts at risk the interoperability between Redfsh service implementations that
+Redfish clients may encounter due to variances in privilege requirements between implementations.  Also, a lack of methodology for specififying 
+and representing the operation to privilege mapping prevents the SPMF or other governing organization to normatively define privilege requirements for a service.
+
+##### Representing Operation to Privilege Mappings
+
+A Redfish service Should provide a Privilege Registry file in the service Registry Collection. The Privilege Registry file represents the 
+Privilege(s) required to perform an operation against a URI specified in a HTTP request to the service. The Privilege Registry is a single 
+JSON document that contains a Mappings array of PrivilegeMapping entity elements where there is an individual element for every schema entity 
+supported by the service.  The operation to privilege mapping is defined for every entity schema and applies to every resource the service 
+implements for the applicable schema.  There are several situations where specific resources or elements of resources may have differing 
+operation to privilege mappings than the entity mappings and the entity level mappings have to be overridden.  The methodology for specifying
+entity level operation to provilege mappings and related overrides are defined in the PrivilegeRegistry schema.
+
+##### OperationMap Syntax
+
+An operation map defines the set of privileges required to perform a specific operation on an entity, entity element, or resource.
+The operationsmapped are GET, PUT, PATCH, POST, DELETE and HEAD. Privilege mapping are defined for each operation irrespective 
+of whether the service or the API data model support the specific operation on the entity, entity element or resource. The 
+privileges required for an operation can be specified with logical AND and OR behavior as required.  The following example defines
+the privileges required for various operations on Manager entity.  Unless overrides are defined, the specified operation to 
+privilege mapping would represent behavior for all Manager resources in a service implementation.
+~~~json
+{
+		"Entity": "Manager",
+		"OperationMap": {
+			"GET": [{
+				"Privilege": ["Login"]
+			}],
+			"HEAD": [{ 
+				"Privilege": ["Login"]
+			}],
+			"PATCH": [{
+				"Privilege": ["ConfigureManager"]
+			}],
+			"POST": [{
+				"Privilege": ["ConfigureManager"]
+			}],
+			"PUT": [{
+				"Privilege": ["ConfigureManager"]
+			}],
+			"DELETE": [{
+				"Privilege": ["ConfigureManager"]
+			}]
+		}
+	}
+~~~
+
+##### Mapping Overrides Syntax
+
+Several situations occur where opertaion to privilege mapping varies from what might be specified at an entity schema level.
+These situations are:
+* Property Override - Where a property has different privilege requirements that the resource (document) it is in.  For example, the Password 
+property on the ManagerAccountresource requires the "ConfigureSelf" or the "ConfigureUser" privilege to change in contrast 
+to the "ConfigureUser" privilege required for the rest of the properties on ManagerAccount resources.
+* Subordinate Override - Where an entity is used in context of another entity and the contextual privileges need to govern.  For example, the 
+privileges for PATCH operations on EthernetInterface resources depends on whether the resource is subordinate to Manager
+(ConfigureManager is required) or ComputerSystem (ConfigureComponentis required) resources.
+* Resource URI Override - Where a specific resource instance has different privilege requirements for operation that those defined for the entity schema.
+The overrides are defined in the context of the operation to privilege mapping for an entity.
+
+##### Property Override Example
+
+In the following example, the Password property on the ManagerAccount
+resource requires the "ConfigureSelf" or the "ConfigureUser" privilege to change in contrast to the "ConfigureUser" privilege 
+required for the rest of the properties on ManagerAccount resources.
+~~~json
+{
+		"Entity": "ManagerAccount",
+		"OperationMap": {
+			"GET": [{
+				"Privilege": ["ConfigureManager"]
+			}, {
+				"Privilege": ["ConfigureUser"]
+			}, {
+				"Privilege": ["ConfigureSelf"]
+			}],
+			"HEAD": [{ 
+				"Privilege": ["Login"]
+			}],
+			"PATCH": [{
+				"Privilege": ["ConfigureUser"]
+			}],
+			"POST": [{
+				"Privilege": ["ConfigureUser"]
+			}],
+			"PUT": [{
+				"Privilege": ["ConfigureUser"]
+			}],
+			"DELETE": [{
+				"Privilege": ["ConfigureUser"]
+			}]
+		},
+		"PropertyOverrides": [{
+			"Targets": ["Password"],
+			"OperationMap": {
+				"GET": [{
+					"Privilege": "ConfigureManager"
+				}],
+				"PATCH": [{
+					"Privilege": ["ConfigureManager"]
+				}, {
+					"Privilege": ["ConfigureSelf"]
+				}]
+			}
+		}]
+	}
+~~~
+
+##### Subordinate Override
+
+In the following example, the privileges for PATCH operations 
+on EthernetInterface resources depends on whether the resource is subordinate to Manager (ConfigureManager is required) or ComputerSystem (ConfigureComponent
+is required) resources.
+~~~json
+{
+		"Entity": "EthernetInterface",
+		"OperationMap": {
+			"GET": [{
+				"Privilege": ["Login"]
+			}],
+			"HEAD": [{ 
+				"Privilege": ["Login"]
+			}],
+			"PATCH": [{
+				"Privilege": ["ConfigureComponent"]
+			}],
+			"POST": [{
+				"Privilege": ["ConfigureComponent"]
+			}],
+			"PUT": [{
+				"Privilege": ["ConfigureComponent"]
+			}],
+			"DELETE": [{
+				"Privilege": ["ConfigureComponent"]
+			}],
+			"SubordinateOverrides": [{
+				"Targets": [
+					["Manager", "EthernetInterfaceCollection"],
+					"Manager"
+				],
+				"OperationMap": {
+					"GET": [{
+						"Privilege": ["Login"]
+					}],
+					"PATCH": [{
+						"Privilege": ["ConfigureManager"]
+					}]
+				}
+			}]
+		}
+	}
+~~~
+
+##### ResourceURI Override
+
+In the following example. use of the syntax for representing operation privilege variations is demonstrated.
+~~~json
+{
+		"Entity": "ComputerSystem",
+		"ResourceURIOverrides": [{
+			"Targets": [
+				"/redfish/v1/Systems/VM6",
+				"/redfish/v1/Systems/Sys1"
+			],
+			"OperationMap": {
+				"GET": [{
+					"Privilege": ["Login"]
+				}, {
+					"Privilege": ["OEMPrivilege1"]
+				}],
+				"PATCH": [{
+					"Privilege": ["ConfigureComponents"]
+				}]
+			}
+		} 
+~~~		
 ## ANNEX A (informative)
 
 ### Change log
