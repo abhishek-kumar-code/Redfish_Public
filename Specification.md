@@ -2340,8 +2340,8 @@ The Authorization subsystem uses Roles and Privileges to control which users hav
 
 #### Redfish Service Operation to Privilege Mapping
 
-For every request made by a Redfish client to a Redfish service, the Redfish service implementation Shall determine whether 
-the authenticated identity context has the authorization to perform the requested operation on the URI specified in the request.
+For every request made by a Redfish client to a Redfish service, the Redfish service implementation shall determine that 
+the authenticated identity has the authorization to perform the requested operation on the URI specified in the request.
 Using the role and privileges authorization model, where an authenticated identity context is assigned a role and a role is a set of privileges, the service will typically check a HTTP request
 against a mapping of the authenticated requesting identity role/privileges and determine whether the identity privileges are sufficient to perform the operation specified in the request.
 
@@ -2356,7 +2356,7 @@ and representing the operation to privilege mapping prevents the SPMF or other g
 
 ##### Representing Operation to Privilege Mappings
 
-A Redfish service Should provide a Privilege Registry file in the service Registry Collection. The Privilege Registry file represents the 
+A Redfish service should provide a Privilege Registry file in the service Registry Collection. The Privilege Registry file represents the 
 Privilege(s) required to perform an operation against a URI specified in a HTTP request to the service. The Privilege Registry is a single 
 JSON document that contains a Mappings array of PrivilegeMapping entity elements where there is an individual element for every schema entity 
 supported by the service.  The operation to privilege mapping is defined for every entity schema and applies to every resource the service 
