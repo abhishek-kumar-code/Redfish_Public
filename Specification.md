@@ -2511,51 +2511,55 @@ is required, this is the default unless overridden) resources.
 In the following example use of the ResourceURI Override syntax for representing operation privilege variations for specific resource URIs is demonstrated.  The example specifies both ConfigureComponents and OEMAdminPriv privileges are required in order to perform a PATCH operation on the 2 resource URIs listed as Targets. 
 ~~~json
 {
-		"Entity": "ComputerSystem",
-		"OperationMap": {
-			"GET": [{
-				"Privilege": ["Login"]
-			}],
-			"HEAD": [{ 
-				"Privilege": ["Login"]
-			}],
-			"PATCH": [{
-				"Privilege": ["ConfigureComponent"]
-			}],
-			"POST": [{
-				"Privilege": ["ConfigureComponent"]
-			}],
-			"PUT": [{
-				"Privilege": ["ConfigureComponent"]
-			}],
-			"DELETE": [{
-				"Privilege": ["ConfigureComponent"]
-			}],
-			"ResourceURIOverrides": [{
-				"Targets": [
-					"/redfish/v1/Systems/VM6",
-					"/redfish/v1/Systems/Sys1"
-				],
-				"OperationMap": {
-					"GET": [{
-						"Privilege": ["Login"]
-					}],
-					"PATCH": [{
-						"Privilege": ["ConfigureComponents","OEMSysAdminPriv"] 
-					}]
+	"Entity": "ComputerSystem",
+	"OperationMap": {
+		"GET": [{
+			"Privilege": ["Login"]
+		}],
+		"HEAD": [{ 
+			"Privilege": ["Login"]
+		}],
+		"PATCH": [{
+			"Privilege": ["ConfigureComponent"]
+		}],
+		"POST": [{
+			"Privilege": ["ConfigureComponent"]
+		}],
+		"PUT": [{
+			"Privilege": ["ConfigureComponent"]
+		}],
+		"DELETE": [{
+			"Privilege": ["ConfigureComponent"]
+		}],
+		"ResourceURIOverrides": [{
+			"Targets": [
+				"/redfish/v1/Systems/VM6",
+				"/redfish/v1/Systems/Sys1"
+			],
+			"OperationMap": {
+				"GET": [{
+					"Privilege": ["Login"]
+				}],
+				"PATCH": [{
+					"Privilege": ["ConfigureComponents","OEMSysAdminPriv"] 
+				}]
 			}
-		} 
+		}
+	}
 ~~~		
-
 ##### Privilege AND and OR Syntax
 
 Logical combinations of privileges required to perform an operation on an entity, entity element or resource are defined by the array placement of the privilege labels in the OperationMap GET, HEAD, PATCH, POST, PUT, DELETE operation element arrays.  For OR logicial combinations, the privilege label is placed in the operation element array as individual elements.  In the following example, either Login or OEMPrivilege1 privileges are required to perform a GET operation.
 ~~~json
+{
 	"GET": [{"Privilege": ["Login"]}, {"Privilege": ["OEMPrivilege1"]}]
+}
 ~~~
 For logical AND combinations, the privilege label is placed in the Privilege property array within the operation element.  In the following example, both ConfigureComponents and OEMSysAdminPriv are required to perform a PATCH operation.
 ~~~json
+{
 	"PATCH": [{"Privilege": ["ConfigureComponents","OEMSysAdminPriv"]}]
+}
 ~~~
 
 ## ANNEX A (informative)
