@@ -2544,7 +2544,7 @@ In the following example use of the ResourceURI Override syntax for representing
 					"Privilege": ["ConfigureComponents","OEMSysAdminPriv"] 
 				}]
 			}
-		}
+		}]
 	}
 ~~~		
 ##### Privilege AND and OR Syntax
