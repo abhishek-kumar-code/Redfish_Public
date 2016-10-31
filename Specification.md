@@ -2506,24 +2506,41 @@ is required) resources.
 
 ##### ResourceURI Override
 
-In the following example. use of the syntax for representing operation privilege variations is demonstrated.
+In the following example use of the ResourceURI Override syntax for representing operation privilege variations for specific resource URIs is demonstrated.  The example specifies both ConfigureComponents and OEMAdminPriv privileges are required in order to perform a PATCH operation on the 2 resource URIs listed. 
 ~~~json
 {
 		"Entity": "ComputerSystem",
-		"ResourceURIOverrides": [{
-			"Targets": [
-				"/redfish/v1/Systems/VM6",
-				"/redfish/v1/Systems/Sys1"
-			],
-			"OperationMap": {
-				"GET": [{
-					"Privilege": ["Login"]
-				}, {
-					"Privilege": ["OEMPrivilege1"]
-				}],
-				"PATCH": [{
-					"Privilege": ["ConfigureComponents"]
-				}]
+		"OperationMap": {
+			"GET": [{
+				"Privilege": ["Login"]
+			}],
+			"HEAD": [{ 
+				"Privilege": ["Login"]
+			}],
+			"PATCH": [{
+				"Privilege": ["ConfigureComponent"]
+			}],
+			"POST": [{
+				"Privilege": ["ConfigureComponent"]
+			}],
+			"PUT": [{
+				"Privilege": ["ConfigureComponent"]
+			}],
+			"DELETE": [{
+				"Privilege": ["ConfigureComponent"]
+			}],
+			"ResourceURIOverrides": [{
+				"Targets": [
+					"/redfish/v1/Systems/VM6",
+					"/redfish/v1/Systems/Sys1"
+				],
+				"OperationMap": {
+					"GET": [{
+						"Privilege": ["Login"]
+					}],
+					"PATCH": [{
+						"Privilege": ["ConfigureComponents","OEMSysAdminPriv"] 
+					}]
 			}
 		} 
 ~~~		
