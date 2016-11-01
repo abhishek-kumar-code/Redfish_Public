@@ -127,6 +127,7 @@ files.forEach(function(file) {
         children = schemas[i].find('//*[local-name()="Annotation"]');
         if(children.length === 0)
         {
+          //$metadata docs don't require this. Let's just skip those.
           if(this.context.name.includes('mockups'))
           {
             continue;
