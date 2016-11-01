@@ -107,6 +107,34 @@ files.forEach(function(file) {
               }
           }
       }
+    },
+    'no empty Schema tags': function(err, txt) {
+      let doc = xmljs.parseXml(txt);
+      let schemas = doc.find('//*[local-name()="Schema"]');
+      if(schemas.length === 0)
+      {
+          //No Schema tags... that's fine
+          return;
+      }
+      for(let i = 0; i < schemas.length; i++)
+      {
+        let children = schemas[i].childNodes();
+        if(children.length === 0)
+        {
+          var schemaName = schemas[i].attr('Namespace').value();
+          throw new Error('Schema '+schemaName+' is empty!');
+        }
+        children = schemas[i].find('//*[local-name()="Annotation"]');
+        if(children.length === 0)
+        {
+          if(this.context.name.includes('mockups'))
+          {
+            continue;
+          }
+          var schemaName = schemas[i].attr('Namespace').value();
+          throw new Error('Schema '+schemaName+' has no Annotations!');
+        }
+      }
     }
   }
 })
