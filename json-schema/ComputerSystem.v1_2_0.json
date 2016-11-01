@@ -804,7 +804,7 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem"
                 },
                 "StorageServices": {
-                    "$ref": "http://redfish.dmtf.org/schemas/SNIA/v1/HostedStorageServices.json#/definitions/HostedStorageServices",
+                    "$ref": "http://redfish.dmtf.org/schemas/swordfish/v1/HostedStorageServices.json#/definitions/HostedStorageServices",
                     "readonly": false,
                     "description": "A reference to a collection of storage services supported by this computer system",
                     "longDescription": "The value of this property shall be a link to a collection of type HostedStorageServices."
