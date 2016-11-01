@@ -107,6 +107,24 @@ files.forEach(function(file) {
               }
           }
       }
+    },
+    'has permission annotations': function(err, txt) {
+      let doc = xmljs.parseXml(txt);
+      let properties = doc.find('//*[local-name()="Property"]');
+      if(properties.length === 0)
+      {
+          return;
+      }
+      for(let i = 0; i < properties.length; i++)
+      {
+          var property = properties[i];
+          var permissions = property.find('//*[local-name()="Annotation"][@Term="OData.Permissions"]');
+          if(permissions.length === 0)
+          {
+              var propName = property.attr('Name').value();
+              throw new Error('Property '+propName+' lacks permission!');
+          }
+      }
     }
   }
 })
