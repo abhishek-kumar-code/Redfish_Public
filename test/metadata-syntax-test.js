@@ -125,6 +125,35 @@ files.forEach(function(file) {
               throw new Error('Property '+propName+' lacks permission!');
           }
       }
+    },
+    'no empty Schema tags': function(err, txt) {
+      let doc = xmljs.parseXml(txt);
+      let schemas = doc.find('//*[local-name()="Schema"]');
+      if(schemas.length === 0)
+      {
+          //No Schema tags... that's fine
+          return;
+      }
+      for(let i = 0; i < schemas.length; i++)
+      {
+        let children = schemas[i].childNodes();
+        if(children.length === 0)
+        {
+          var schemaName = schemas[i].attr('Namespace').value();
+          throw new Error('Schema '+schemaName+' is empty!');
+        }
+        children = schemas[i].find('//*[local-name()="Annotation"]');
+        if(children.length === 0)
+        {
+          //$metadata docs don't require this. Let's just skip those.
+          if(this.context.name.includes('mockups'))
+          {
+            continue;
+          }
+          var schemaName = schemas[i].attr('Namespace').value();
+          throw new Error('Schema '+schemaName+' has no Annotations!');
+        }
+      }
     }
   }
 })
