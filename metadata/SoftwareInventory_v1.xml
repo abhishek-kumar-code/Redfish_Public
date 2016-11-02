@@ -85,7 +85,7 @@
           <Annotation Term="OData.Description" String="Indicates when this software update will get applied."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the whether this software update will take effect immediately, or upon a reset or power cycle."/>
         </Property>
-        <Property Name="UEFIDevicePaths" Type="Collection(Edm.String)">
+        <Property Name="UefiDevicePaths" Type="Collection(Edm.String)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A list of strings representing the UEFI Device Path(s) of the component(s) associated with this software inventory item."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a list of strings representing the UEFI Device Path(s) of the component(s) associated with this software inventory item. The UEFI Device Path string(s) shall be formatted as defined by the UEFI Specification."/>

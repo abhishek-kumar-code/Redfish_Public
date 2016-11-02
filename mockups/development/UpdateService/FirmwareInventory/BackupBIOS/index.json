@@ -11,7 +11,7 @@
     "SoftwareId": "2A9AB82E-1D68-4E88-0B30-7D05812B6496",
     "LowestSupportedVersion": "03192014",
     "UpdateApplied": "AtPowerCycle",
-    "UEFIDevicePath": [
+    "UefiDevicePaths": [
       "VenHw(3267E7C5-40FF-4F70-892C-E89EE0A9A385,0)"
     ],
     "RelatedItem": [
