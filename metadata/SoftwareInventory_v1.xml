@@ -70,27 +70,22 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SoftwareInventory.v1_1_0">
       <EntityType Name="SoftwareInventory" BaseType="SoftwareInventory.v1_0_0.SoftwareInventory">
-        <Property Name="Key" Type="Edm.String" Nullable="false">
+        <Property Name="SoftwareId" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="A string representing the implementation-specific key for identifying this software."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a string representing an implementation-specific key for identifying this software. This string is used for correlation to a component repository or database."/>
+          <Annotation Term="OData.Description" String="A string representing the implementation-specific ID for identifying this software."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a string representing an implementation-specific ID for identifying this software. This string is used for correlation to a component repository or database."/>
         </Property>
         <Property Name="LowestSupportedVersion" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A string representing the lowest supported version of this software."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a string representing the lowest supported version of this software. This string is formatted using the same format used for the Version property"/>
         </Property>
-        <Property Name="UpdateApplyTime" Type="SoftwareInventory.v1_1_0.UpdateApplyTime">
+        <Property Name="UpdateApplied" Type="SoftwareInventory.v1_1_0.UpdateApplied">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Indicates when the software update takes effect."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate when this software update takes effect."/>
+          <Annotation Term="OData.Description" String="Indicates when this software update will get applied."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the whether this software update will take effect immediately, or upon a reset or power cycle."/>
         </Property>
-        <Property Name="UpdateResetRequired" Type="SoftwareInventory.v1_1_0.UpdateResetRequired">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Indicates the type of reset required for this software update to take effect."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the type of reset required for this software update to take effect."/>
-        </Property>
-        <Property Name="UEFIDevicePath" Type="Collection(Edm.String)">
+        <Property Name="UEFIDevicePaths" Type="Collection(Edm.String)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A list of strings representing the UEFI Device Path(s) of the component(s) associated with this software inventory item."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a list of strings representing the UEFI Device Path(s) of the component(s) associated with this software inventory item. The UEFI Device Path string(s) shall be formatted as defined by the UEFI Specification."/>
@@ -103,27 +98,21 @@
         </NavigationProperty>
       </EntityType>
 
-      <EnumType Name="UpdateApplyTime">
-        <Member Name="AtUpdateAction">
-          <Annotation Term="OData.Description" String="Software update takes effect at time of client POST to Update Action request."/>
+      <EnumType Name="UpdateApplied">
+        <Member Name="Immediately">
+          <Annotation Term="OData.Description" String="This software update is applied immediately."/>
         </Member>
-        <Member Name="AtReset">
-          <Annotation Term="OData.Description" String="Software update takes effect at time of component or system reset, as indicated by UpdateResetRequired."/>
+        <Member Name="AtSystemReset">
+          <Annotation Term="OData.Description" String="This software update requires a reset of the related Computer System to get applied."/>
         </Member>
-        <Member Name="AtOEM">
-          <Annotation Term="OData.Description" String="Software update takes effect at time determined by implementation."/>
+        <Member Name="AtComponentReset">
+          <Annotation Term="OData.Description" String="This software update requires a reset of the related component(s) to get applied."/>
         </Member>
-      </EnumType>
-
-      <EnumType Name="UpdateResetRequired">
-        <Member Name="None">
-          <Annotation Term="OData.Description" String="No reset is required for this software update to take effect."/>
+        <Member Name="AtPowerCycle">
+          <Annotation Term="OData.Description" String="This software update requires a power cycle of the related component(s) or Computer System to get applied."/>
         </Member>
-        <Member Name="PowerCycle">
-          <Annotation Term="OData.Description" String="An AC Power Cycle is required for this software update to take effect."/>
-        </Member>
-        <Member Name="Reboot">
-          <Annotation Term="OData.Description" String="A component reboot or restart is required for this software update to take effect."/>
+        <Member Name="Oem">
+          <Annotation Term="OData.Description" String="This software update gets applied at an OEM defined time."/>
         </Member>
       </EnumType>
       

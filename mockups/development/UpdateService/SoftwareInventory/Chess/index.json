@@ -8,9 +8,8 @@
     },
     "Updateable": true,
     "Version": "2.0.09-rev1",
-    "Key": "AEC4F00F-E03C-4D89-6D22-47D51DE2C3B9",
-    "ApplyTime": "AtUpdateAction",
-    "UpdateResetRequired": "None",
+    "SoftwareId": "AEC4F00F-E03C-4D89-6D22-47D51DE2C3B9",
+    "UpdateApplied": "Immediately",
     "Actions": {
         "Oem": {}
     },
