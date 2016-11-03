@@ -24,10 +24,8 @@
             "Hdd"
         ]
     },
-    "Processors@Redfish.RequiredOnCreate": true,
-    "Processors@Redfish.SetOnlyOnCreate": true,
-    "Memory@Redfish.RequiredOnCreate": true,
-    "Memory@Redfish.SetOnlyOnCreate": true,
-    "EthernetInterfaces@Redfish.AvailableInResource": true,
-    "Storage@Redfish.AvailableInResource": true
+    "Links@Redfish.RequiredOnCreate": true,
+    "Links": {
+        "ResourceBlocks@Redfish.RequiredOnCreate": true
+    }
 }
