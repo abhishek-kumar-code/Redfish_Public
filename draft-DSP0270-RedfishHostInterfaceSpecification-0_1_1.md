@@ -212,33 +212,35 @@ The following table defines the specific Device Descriptor data (referenced in T
 | 03h                    | PCI/PCIe Network Interface   |  8-Bytes     |  Varies      | Device Descriptors for PCI/PCIe Device Type: <br/>  VendorID(2-Bytes), <br/>  DeviceID(2-Bytes), <br/>  Subsystem_Vendor_ID(2-bytes), <br/>  Subsystem_ID(2-bytes)      |
 | 80h-FFh                | OEM                   |  Varies   |  Varies | Device Descriptors for OEM  Device Type: <br/>   vendor_IANA(4-bytes),  <br/>   OEM defined data      |
 
-### Table-4:  Protocol Record Header format:
+### Table-4:  Protocol Records Data format:
 The following table defines the general Protocol Record layout specific data for Redfish Over IP protocol follows:
 
 | Offset  | Name     | Length   | Value    | Description     |
 | ---     | ---      | ---      | ---      | ---             |
 | X       | Protocol Identifier | BYTE     | Varies          | The protocol identifier <br/> "Redfish over IP" = 20h      |
 | X + 1   | Length     | BYTE     | varies       | length of protocol specific data for Redfish Over IP protocol      |
-| X + 2   | Protocol specific data | p Bytes | Varies   | Defined by protocol. See Table-5 below for Redfish over IP |
+| X + 2   | Protocol specific record data | p Bytes | Varies   | Defined by protocol. <br/> See Table-5 below for "Redfish over IP" protocol |
 
-### Table-5:  Protocol Record Data
+### Table-5:  "Redfish Over IP" Protocol-specific Record Data
+The following table defines the protocol-specific data for the "Redfish Over IP" protocol:
+
 | Offset  | Name     | Length   | Value    | Description     |
 | ---     | ---      | ---      | ---      | ---             |
-| m+1     | Service UUID     | 16BYTEs     | Varies       | same as Redfish Service UUID in Redfish Service Root resource    |
-| m+17     | Host IP Assignment Type     | BYTE     | Enum       | Unknown=01h, <br/>    Static=02h, <br/>  DHCP=03h, <br/>    AutoConfigure=04h, <br/>  HostSelected=05h      |
-| m+18     | Host IP Address Format     | BYTE     | Enum       | Unknown=01h,   <br/> Ipv4=01h,    <br/> Ipv6=02h      |
-| m+19     | Host IP Address     | 4BYTE / 16BYTE     | Varies       | Used for Static and AutoConfigure.  Size is 4Bytes for Ipv4.  Size is 16Btyes for IPV6      |
-| m+23/35     | Host IP Mask     | 4BYTE / 16BYTE     | Varies       | Used for Static and AutoConfigure.  Size is 4Bytes for Ipv4.  Size is 16Btyes for IPV6      |
-| m+27/51     | Host IP Port     | WORD     | Varies       | Used for Static and AutoConfigure      |
-| m+31/55     | Host VLAN ID     | DWORD     | Varies       | Used for Static and AutoConfigure      |
-| m+39/63     | Manager IP Discovery Type     | BYTE     | Enum       | Unknown=01h,    <br/> Static=02h,   <br/> DHCP=03h,     <br/> AutoConfigure=04h,   <br/> HostSelected=05h      |
-| m+40/64     | Manager IP Address Format     | BYTE     | Enum       | Unknown=01h,   <br/> Ipv4=01h,    <br/> Ipv6=02h      |
-| m+41/65     | Manager IP Address     | 4BYTE / 16BYTE     | Varies       | Used for Static and AutoConfigure.  Size is 4Bytes for Ipv4.  Size is 16Btyes for IPV6      |
-| m+x     | Manager IP Mask     | 4BYTE /16BYTE    | Varies       | Used for Static and AutoConfigure.  Size is 4Bytes for Ipv4.  Size is 16Btyes for IPV6      |
-| m+x     | Manager IP Port     | WORD     | Varies       | Used for Static and AutoConfigure.      |
-| m+x     | Manager VLAN ID     | DWORD     | Varies       | Used for Static and AutoConfigure.      |
-| m+x     | Manager Hostname Length     | BYTE     | Varies       | length of the following hostname string      |
-| m+x     | Manager Hostname     | varies     | Varies       | hostname of manager      |
+| X+0     | Service UUID     | 16BYTEs     | Varies       | same as Redfish Service UUID in Redfish Service Root resource    |
+| X+16     | Host IP Assignment Type     | BYTE     | Enum       | Unknown=01h, <br/>    Static=02h, <br/>  DHCP=03h, <br/>    AutoConfigure=04h, <br/>  HostSelected=05h      |
+| X+17     | Host IP Address Format     | BYTE     | Enum       | Unknown=01h,   <br/> Ipv4=01h,    <br/> Ipv6=02h      |
+| X+18     | Host IP Address     |  16BYTE     | Varies       | Used for Static and AutoConfigure.  Size is 4Bytes for Ipv4.  Size is 16Btyes for IPV6      |
+| X+34     | Host IP Mask     | 16BYTE     | Varies       | Used for Static and AutoConfigure.  Size is 4Bytes for Ipv4.  Size is 16Btyes for IPV6      |
+| X+50     | Host IP Port     | WORD     | Varies       | Used for Static and AutoConfigure      |
+| X+54     | Host VLAN ID     | DWORD     | Varies       | Used for Static and AutoConfigure      |
+| X+62     | Manager IP Discovery Type     | BYTE     | Enum       | Unknown=01h,    <br/> Static=02h,   <br/> DHCP=03h,     <br/> AutoConfigure=04h,   <br/> HostSelected=05h      |
+| X+63     | Manager IP Address Format     | BYTE     | Enum       | Unknown=01h,   <br/> Ipv4=01h,    <br/> Ipv6=02h      |
+| X+64     | Manager IP Address     | 16BYTE     | Varies       | Used for Static and AutoConfigure.  Size is 4Bytes for Ipv4.  Size is 16Btyes for IPV6      |
+| X+80     | Manager IP Mask     | 16BYTE    | Varies       | Used for Static and AutoConfigure.  Size is 4Bytes for Ipv4.  Size is 16Btyes for IPV6      |
+| X+96     | Manager IP Port     | WORD     | Varies       | Used for Static and AutoConfigure.      |
+| m+100     | Manager VLAN ID     | DWORD     | Varies       | Used for Static and AutoConfigure.      |
+| m+108     | Manager Hostname Length     | BYTE     | Varies       | length of the following hostname string      |
+| m+109     | Manager Hostname     | varies     | Varies       | hostname of manager      |
 
 
 
