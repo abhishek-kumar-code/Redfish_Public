@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  MemoryMetrics  v1.1.0-->
+<!--# Redfish Schema:  MemoryMetrics  v1.1.1-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -120,7 +120,7 @@
 
       <ComplexType Name="HealthData">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Property Name="RemainingSpareBlockPercentage" Type="Edm.Int64">
+        <Property Name="RemainingSpareBlockPercentage" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Remaining spare blocks in percentage"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the remaining spare blocks in percentage."/>
@@ -187,7 +187,14 @@
 
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MemoryMetrics.v1_0_1">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
+      <EntityType Name="MemoryMetrics" BaseType="MemoryMetrics.v1_0_0.MemoryMetrics"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MemoryMetrics.v1_1_0">
+      <EntityType Name="MemoryMetrics" BaseType="MemoryMetrics.v1_0_0.MemoryMetrics"/>
+
       <ComplexType Name="HealthData" BaseType="MemoryMetrics.v1_0_0.HealthData">
         <Property Name="PredictedMediaLifeLeftPercent" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -196,5 +203,11 @@
         </Property>
       </ComplexType>
     </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MemoryMetrics.v1_1_1">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
+      <EntityType Name="MemoryMetrics" BaseType="MemoryMetrics.v1_1_0.MemoryMetrics"/>
+    </Schema>
+
   </edmx:DataServices>
 </edmx:Edmx>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  ComputerSystem  v1.2.0-->
+<!--# Redfish Schema:  ComputerSystem  v1.3.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -73,7 +73,7 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Endpoint_v1.xml">
     <edmx:Include Namespace="Endpoint"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/SNIA/v1/HostedStorageServices_v1.xml">
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/swordfish/v1/HostedStorageServices_v1.xml">
     <edmx:Include Namespace="HostedStorageServices"/>
   </edmx:Reference>
 
@@ -408,7 +408,7 @@
 
       <ComplexType Name="MemorySummary">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Property Name="TotalSystemMemoryGiB" Type="Edm.Int64">
+        <Property Name="TotalSystemMemoryGiB" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The total installed, operating system-accessible memory (RAM), measured in GiB."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the amount of system general purpose volatile (RAM) memory as measured in gibibytes."/>
@@ -421,15 +421,23 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_0_1">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_0_0.ComputerSystem"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_0_2">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_0_1.ComputerSystem"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_0_3">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_0_2.ComputerSystem"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_0_4">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
+      <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_0_3.ComputerSystem"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_1_0">
@@ -537,7 +545,13 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_1_1">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_1_0.ComputerSystem"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_1_2">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
+      <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_1_1.ComputerSystem"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_2_0">
@@ -604,6 +618,51 @@
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </ComplexType>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_2_1">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
+      <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_2_0.ComputerSystem"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_3_0">
+      <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_2_1.ComputerSystem">
+        <Property Name="TrustedModules" Type="Collection(ComputerSystem.v1_3_0.TrustedModules)" Nullable="false">
+          <Annotation Term="OData.Description" String="This object describes the array of Trusted Modules in the system."/>
+          <Annotation Term="OData.LongDescription" String="This object shall contain an array of objects with properties which describe the trusted modules for the current resource."/>
+        </Property>
+      </EntityType>      
+
+      <ComplexType Name="TrustedModules" BaseType="ComputerSystem.v1_1_0.TrustedModules">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Property Name="FirmwareVersion2" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The 2nd firmware version of this Trusted Module, if applicable."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the 2nd firmware version, if applicable, as defined by the manufacturer for the Trusted Module."/>
+        </Property>
+        <Property Name="InterfaceTypeSelection" Type="ComputerSystem.v1_3_0.InterfaceTypeSelection">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The Interface Type selection supported by this Trusted Module."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the Interface Type Selection method (for example to switch between TPM1_2 and TPM2_0) that is supported by this TrustedModule."/>
+        </Property>     
+      </ComplexType>
+
+      <EnumType Name="InterfaceTypeSelection">
+       <Annotation Term="OData.Description" String="The enumerations of InterfaceTypeSelection specify the method for switching the TrustedModule InterfaceType, for instance between TPM1_2 and TPM2_0, if supported."/>
+       <Member Name="None">
+          <Annotation Term="OData.Description" String="The TrustedModule does not support switching the InterfaceType."/>
+        </Member>
+        <Member Name="FirmwareUpdate">
+          <Annotation Term="OData.Description" String="The TrustedModule supports switching InterfaceType via a firmware update."/>
+        </Member>
+        <Member Name="BiosSetting">
+          <Annotation Term="OData.Description" String="The TrustedModule supports switching InterfaceType via platform software, such as a BIOS configuration Attribute."/>
+        </Member>
+        <Member Name="OemMethod">
+          <Annotation Term="OData.Description" String="The TrustedModule supports switching InterfaceType via an OEM proprietary mechanism."/>
+        </Member>      
+      </EnumType>
+    
     </Schema>
 
   </edmx:DataServices>

@@ -455,7 +455,7 @@ This clause describes the requests that can be sent to Redfish Services.
 
 #### Request headers
 
-HTTP defines headers that can be used in request messages. The following table defines those headers and their requirements for Redfish Services.
+HTTP defines headers that can be used in request messages. The following table defines those headers and their requirements for Redfish Services. Note that these are requirements for the Redfish Services, and not the clients sending the HTTP requests.
 
 * Redfish Services shall understand and be able to process the headers in the following table as defined by the HTTP 1.1 specification if the value in the Required column is set to "Yes".
 * Redfish Services shall understand and be able to process the headers in the following table as defined by the HTTP 1.1 specification if the value in the Required column is set to "Conditional" under the conditions noted in the description.
@@ -565,7 +565,7 @@ The PATCH method is the preferred method used to perform updates on pre-existing
 * Services should return status code [405](#status-405) if the client specifies a PATCH request against a collection.
 * The PATCH operation should be idempotent in the absence of outside changes to the resource, though the original ETag value may no longer match.
 
-Within a PATCH request, unchanged members within a JSON array may be specified as empty JSON objects.
+Services may have null entries for properties that are JSON arrays to show the number of entries a client is allowed to use in a PATCH request. Within a PATCH request, unchanged members within a JSON array may be specified as empty JSON objects, and clearing members within a JSON array may be specified with null.
 
 OData markup ([resource identifiers](#resource-identifier-property), [type](#type-property), [etag](#etag-property) and [links](#links-property)) are ignored on Update.
 
@@ -585,9 +585,10 @@ The POST method is used to create a new resource. The POST request is submitted 
 Submitting a POST request to a resource representing a collection is equivalent to submitting the same request to the Members property of that resource. Services that support adding members to a collection shall support both forms.
 
 * Services shall support the POST method for creating resources. If the resource does not offer anything to be created, a status code [405](#status-405) shall be returned.
+* Services shall only support POST operations for URIs representing either a ResourceCollection entity or an Action (see [Actions (POST)](#actions-post-)).
 * The POST operation shall not be idempotent.
 
-The body of the create request contains a representation of the object to be created. The service can ignore any service controlled attributes (e.g., id), forcing those attributes to be overridden by the service. The service shall set the Location header to the URI of the newly created resource. The response to a successful create request should be 201 (Created) and may include a response body containing a representation of the newly created resource conforming to the schema of the created resource.
+The body of the create request contains a representation of the object to be created. The service may ignore any service controlled attributes (e.g., id), forcing those attributes to be overridden by the service. The service shall set the Location header to the URI of the newly created resource. The response to a successful create request should be 201 (Created) and may include a response body containing a representation of the newly created resource conforming to the schema of the created resource.
 
 ##### Delete (DELETE)
 
@@ -2067,7 +2068,7 @@ The client can continue to get information about the status by directly querying
   should contain a representation of the Task resource in JSON.
 * GET requests to either the Task Monitor or the Task Resource shall return the current status of the operation without blocking.
 * Operations using HTTP GET, PUT, PATCH should always be synchronous.
-* Clients shall be prepared to handle both synchronous and asynchronous responses for requests using HTTP DELETE and HTTP POST methods.
+* Clients shall be prepared to handle both synchronous and asynchronous responses for requests using HTTP PUT, PATCH, POST, and DELETE methods.
 
 ### Resource tree stability
 
