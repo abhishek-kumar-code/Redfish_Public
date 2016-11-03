@@ -193,8 +193,8 @@ Offset 00h-04h is the Type 42 Header.  Starting at Offset 05h is the Interface-s
 | 07h+n | Protocol Records  | m Bytes | Varies     | Include a Protocol Record for each protocol supported. See Table-4 below record format |
 
 ### Table-2: Interface Specific Data
-Interface Specific Data starts at offset 05h of the SMBIOS Type 42 struct. 
-There are 3 types of Device Descriptor data defined, however only 1 may be used in specific Tape 42 table.
+Interface Specific Data starts at offset 06h of the SMBIOS Type 42 struct. 
+There are 3 types of Device Descriptor3 defined (see Table-3), however only 1 may be used in specific Tape 42 table.
 
 | Offset  | Name     | Length   | Value    | Description     |
 | ---     | ---      | ---      | ---      | ---             |
