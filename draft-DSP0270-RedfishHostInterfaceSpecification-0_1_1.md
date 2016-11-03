@@ -199,7 +199,7 @@ There are 3 types of Device Descriptor3 defined (see Table-3), however only 1 ma
 
 | Offset  | Name     | Length   | Value    | Description     |
 | ---     | ---      | ---      | ---      | ---             |
-| X       | Device Type   | BYTE     | Enum       |  Unknown=00h, <br/> USB Network Interface=02h, <br/> PCI/PCIe Network Interface=03h,  <br/> OEM=80h-FFh  <br/> other values reserved     |
+| X       | Device Type   | BYTE     | Enum       |  USB Network Interface=02h, <br/> PCI/PCIe Network Interface=03h,  <br/> OEM=80h-FFh  <br/> other values reserved     |
 | X+1     | Device Descriptors   | n-1 Bytes   | Varies    | Device descriptor data formated based on Device Type. <br/> See Table-3  |
 
 
@@ -208,7 +208,6 @@ The following table defines the specific Device Descriptor data (referenced in T
 
 | Device Type enum value  | Device Type Name      | Length   | Value    |  Description    |
 | --- | ---------------  | --- | ---  | ----------------------------------------  |
-| 00h                    | Unknown               |  Varies  |  Varies  | unknown data format    |
 | 02h                    | USB Network Interface |  Varies  |  Varies  | Device Descriptors for USB Device Type: <br/> -idVendor(2-bytes),  <br/> -idProduct(2-bytes), <br/> -iSerialNumber: <br/>  --- bLength(1-Byte), <br/> --- bDescriptorType(1-Byte), <br/> --- bString(Varies) )      |
 | 03h                    | PCI/PCIe Network Interface   |  8-Bytes     |  Varies      | Device Descriptors for PCI/PCIe Device Type: <br/>  -VendorID(2-Bytes), <br/>  -DeviceID(2-Bytes), <br/>  -Subsystem_Vendor_ID(2-bytes), <br/>  -Subsystem_ID(2-bytes)      |
 | 80h-FFh                | OEM                   |  Varies   |  Varies | Device Descriptors for OEM  Device Type: <br/>   -vendor_IANA(4-bytes),  <br/>   -OEM defined data      |
