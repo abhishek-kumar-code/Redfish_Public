@@ -12,7 +12,7 @@
         "Health": "OK"
     },
     "InterfaceEnabled": true,
-    "ExternallyAccessible": true,
+    "ExternallyAccessible": false,
     "AuthenticationModes": [
         "AuthNone",
         "BasicAuth",
@@ -25,7 +25,7 @@
         "@odata.id": "/redfish/v1/Managers/9/HostInterfaces/1/HostEthernetInterfaces"
     },
     "ManagerEthernetInterface": {
-        "@odata.id": "/redfish/v1/Managers/9/EthernetInterfaces/1"
+        "@odata.id": "/redfish/v1/Managers/9/EthernetInterfaces/ToHost"
     },
     "NetworkProtocol": {
         "@odata.id": "/redfish/v1/Managers/9/NetworkProtocol"
