@@ -227,16 +227,16 @@ The following table defines the protocol-specific data for the "Redfish Over IP"
 | Offset  | Name     | Length   | Value    | Description     |
 | ---     | ---      | ---      | ---      | ---             |
 | X+0     | Service UUID     | 16BYTEs     | Varies       | same as Redfish Service UUID in Redfish Service Root resource    |
-| X+16     | Host IP Assignment Type     | BYTE     | Enum       | Unknown=01h, <br/>    Static=02h, <br/>  DHCP=03h, <br/>    AutoConfigure=04h, <br/>  HostSelected=05h      |
-| X+17     | Host IP Address Format     | BYTE     | Enum       | Unknown=01h,   <br/> Ipv4=01h,    <br/> Ipv6=02h      |
-| X+18     | Host IP Address     |  16BYTE     | Varies       | Used for Static and AutoConfigure.  Size is 4Bytes for Ipv4.  Size is 16Btyes for IPV6      |
-| X+34     | Host IP Mask     | 16BYTE     | Varies       | Used for Static and AutoConfigure.  Size is 4Bytes for Ipv4.  Size is 16Btyes for IPV6      |
+| X+16     | Host IP Assignment Type     | BYTE     | Enum       | Unknown=00h, <br/>    Static=01h, <br/>  DHCP=02h, <br/>    AutoConfigure=03h, <br/>  HostSelected=04h      |
+| X+17     | Host IP Address Format     | BYTE     | Enum       | Unknown=00h,   <br/> Ipv4=01h,    <br/> Ipv6=02h      |
+| X+18     | Host IP Address     |  16BYTE     | Varies       | Used for Static and AutoConfigure.  <br/> For IPV4, use the first 4 Bytes and zero fill the remaining bytes.      |
+| X+34     | Host IP Mask     | 16BYTE     | Varies       | Used for Static and AutoConfigure.  <br/> For IPV4, use the first 4 Bytes and zero fill the remaining bytes.      |
 | X+50     | Host IP Port     | WORD     | Varies       | Used for Static and AutoConfigure      |
 | X+54     | Host VLAN ID     | DWORD     | Varies       | Used for Static and AutoConfigure      |
-| X+62     | Manager IP Discovery Type     | BYTE     | Enum       | Unknown=01h,    <br/> Static=02h,   <br/> DHCP=03h,     <br/> AutoConfigure=04h,   <br/> HostSelected=05h      |
-| X+63     | Manager IP Address Format     | BYTE     | Enum       | Unknown=01h,   <br/> Ipv4=01h,    <br/> Ipv6=02h      |
-| X+64     | Manager IP Address     | 16BYTE     | Varies       | Used for Static and AutoConfigure.  Size is 4Bytes for Ipv4.  Size is 16Btyes for IPV6      |
-| X+80     | Manager IP Mask     | 16BYTE    | Varies       | Used for Static and AutoConfigure.  Size is 4Bytes for Ipv4.  Size is 16Btyes for IPV6      |
+| X+62     | Manager IP Discovery Type     | BYTE     | Enum       | Unknown=00h,    <br/> Static=01h,   <br/> DHCP=02h,     <br/> AutoConfigure=03h,   <br/> HostSelected=04h      |
+| X+63     | Manager IP Address Format     | BYTE     | Enum       | Unknown=00h,   <br/> Ipv4=01h,    <br/> Ipv6=02h      |
+| X+64     | Manager IP Address     | 16BYTE     | Varies       | Used for Static and AutoConfigure.  <br/> For IPV4, use the first 4 Bytes and zero fill the remaining bytes.      |
+| X+80     | Manager IP Mask     | 16BYTE    | Varies       | Used for Static and AutoConfigure.  <br/> For IPV4, use the first 4 Bytes and zero fill the remaining bytes.      |
 | X+96     | Manager IP Port     | WORD     | Varies       | Used for Static and AutoConfigure.      |
 | m+100     | Manager VLAN ID     | DWORD     | Varies       | Used for Static and AutoConfigure.      |
 | m+108     | Manager Hostname Length     | BYTE     | Varies       | length of the following hostname string      |
