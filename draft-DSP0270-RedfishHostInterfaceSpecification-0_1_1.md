@@ -186,19 +186,20 @@ Offset 00h-04h is the Type 42 Header.  Starting at Offset 05h is the Interface-s
 | 00h     | Type             | BYTE     | 42       | Management Controller Host Interface structure indicator      |
 | 01h     | Length           | BYTE     | Varies   | Length of the structure, a minimum of 09h      |
 | 02h     | Handle           | WORD     | Varies   |       |
-| 04h     | Interface Type   | BYTE     | Varies      | Management Controller Interface Type. <br/> --Network Host Interface = 20h     |
+| 04h     | Interface Type   | BYTE     | Varies      | Management Controller Interface Type. <br/> --Network Host Interface = 40h     |
 | 05h     | Interface Specific Data Length (n) | BYTE | Varies | Interface-specific Data as specified by the Interface type. <br/> if 0, there is no Interface specific data |
 | 06h     | Interface Specific data        | n BYTEs | Varies | Defined by Interface Type.  See Table-2 below. |
 | 06h+n | Protocol count  | BYTE   |  Varies     | number of protocols defined for the host interface (typically 1) |
 | 07h+n | Protocol Records  | m Bytes | Varies     | Include a Protocol Record for each protocol supported. See Table-4 below record format |
 
-### Table-2: Interface Specific Data
+### Table-2: Interface Specific Data (for Interface Type 40h)
 Interface Specific Data starts at offset 06h of the SMBIOS Type 42 struct. 
+This table defines the Interface Specific data for Interface Type 40h.
 There are 3 types of Device Descriptor3 defined (see Table-3), however only 1 may be used in specific Tape 42 table.
 
 | Offset  | Name     | Length   | Value    | Description     |
 | ---     | ---      | ---      | ---      | ---             |
-| X       | Device Type   | BYTE     | Enum       |  Unknown=00h, <br/> USB Network Interface=02h, <br/> PCI/PCIe Network Interface=03h,  <br/> OEM=80h-FFh       |
+| X       | Device Type   | BYTE     | Enum       |  Unknown=00h, <br/> USB Network Interface=02h, <br/> PCI/PCIe Network Interface=03h,  <br/> OEM=80h-FFh  <br/> other values reserved     |
 | X+1     | Device Descriptors   | n-1 Bytes   | Varies    | Device descriptor data formated based on Device Type. <br/> See Table-3  |
 
 
@@ -217,7 +218,7 @@ The following table defines the general Protocol Record layout specific data for
 
 | Offset  | Name     | Length   | Value    | Description     |
 | ---     | ---      | ---      | ---      | ---             |
-| X       | Protocol Identifier | BYTE     | Varies          | The protocol identifier <br/> --"Redfish over IP" = 20h      |
+| X       | Protocol Identifier | BYTE     | Varies          | The protocol identifier <br/> --"Redfish over IP" = 04h      |
 | X+1   | Length     | BYTE     | varies       | length of protocol specific data for Redfish Over IP protocol      |
 | X+2   | Protocol specific record data | p Bytes | Varies   | Defined by protocol. <br/> See Table-5 below for "Redfish over IP" protocol |
 
