@@ -164,68 +164,83 @@ Information in the SMBIOS structure shall allow host software to discover the Re
 
 * For Network Host interfaces, the mechanism that clients should use to discover/obtain the manager IP address shall also be described in the structure
 
-### Table Layout
+### SMBIOS Type 42 Struct General Layout
 *  `------------------------`
-*  `Type 42 Header         `
+*  ` Type 42 Header         `
 *  `------------------------`
-*  ` Interface Data          `
+*  ` Interface Specific Data          `
 *  `   - Device Description `
 *  `   - (1 of 3 types)`
 *  `------------------------`
-*  ` Protocol-Specific Data Header`
+*  ` Protocol Record Header`
 *  `------------------------`
 *  ` - Protocol Specific Data`
 *  `------------------------`
 
-### Table Definition
-The following describes the SMBIOS (Type 42) structure for a Network Host Interface beginning with the Type 42 header:
+### Table-1:  SMBIOS Type 42 Struct Definition for Redfish Host Interfaces
+The following describes the SMBIOS Management Controller Host Interface (Type 42) structure.
+Offset 00h-04h is the Type 42 Header.  Starting at Offset 05h is the Interface-specific Data.
 
 | Offset  | Name             | Length   | Value    | Description     |
 | ---     | ---              | ---      | ---      | ---             |
 | 00h     | Type             | BYTE     | 42       | Management Controller Host Interface structure indicator      |
 | 01h     | Length           | BYTE     | Varies   | Length of the structure, a minimum of 09h      |
 | 02h     | Handle           | WORD     | Varies   |       |
-| 04h     | Interface Type   | BYTE     | Varies      | Management Controller Interface Type. <br/>  Network Host Interface = 09h     |
+| 04h     | Interface Type   | BYTE     | Varies      | Management Controller Interface Type. <br/> --Network Host Interface = 40h     |
+| 05h     | Interface Specific Data Length (n) | BYTE | Varies | Interface-specific Data as specified by the Interface type. <br/> if 0, there is no Interface specific data |
+| 06h     | Interface Specific data        | n BYTEs | Varies | Defined by Interface Type.  See Table-2 below. |
+| 06h+n | Protocol count  | BYTE   |  Varies     | number of protocols defined for the host interface (typically 1) |
+| 07h+n | Protocol Records  | m Bytes | Varies     | Include a Protocol Record for each protocol supported. See Table-4 below record format |
 
-Following the above 4 fields is the Interface Specific Data. There are 3 types of Device Descriptor data defined, however only 1 may be used in specific Tape 42 table.
-
-| Offset  | Name     | Length   | Value    | Description     |
-| ---     | ---      | ---      | ---      | ---             |
-| 05h     | Length     | BYTE     | Varies       | if 0, there is no Interface specific data      |
-| 06h     | Device Type   | BYTE     | Enum       | Unknown=00h, <br/> USB Network Interface=02h, <br/> PCI/PCIe Network Interface=03h,  <br/> OEM=80h-FFh       |
-| 07h     | Device Descriptors   | Varies   | Varies    | Required descriptor formated per Device Type. Definition is provided in subsequent rows.|
-|      | Device Descriptors for USB Device Type      |      |        | <br/> idVendor(2-bytes),  <br/> idProduct(2-bytes), <br/> iSerialNumber: <br/>  -- bLength(1-Byte), <br/> -- bDescriptorType(1-Byte), <br/> -- bString(Varies) )      |
-|      | Device Descriptors for PCI/PCIe Device Type     |      |        | VendorID(2-Bytes), <br/> DeviceID(2-Bytes), <br/> Subsystem_Vendor_ID(2-bytes), <br/> Subsystem_ID(2-bytes)      |
-|      | Device Descriptors for OEM  Device Type    |      |        | vendor_IANA(4-bytes),  <br/> OEM defined data      |
-
-Protocol Specific Data header follows:
+### Table-2: Interface Specific Data (for Interface Type 40h)
+Interface Specific Data starts at offset 06h of the SMBIOS Type 42 struct. 
+This table defines the Interface Specific data for Interface Type 40h.
+There are 3 types of Device Descriptor3 defined (see Table-3), however only 1 may be used in specific Tape 42 table.
 
 | Offset  | Name     | Length   | Value    | Description     |
 | ---     | ---      | ---      | ---      | ---             |
-| n       | Length     | BYTE     | Varies       | if 0, there is no protocol specific data      |
-| n+1     | Number of Protocols     | BYTE     | 01h       | one protocol defined for this host interface      |
-| n+2     | Protocol 1 Type     | BYTE     | Varies       | Redfish over IP = 04h      |
+| X       | Device Type   | BYTE     | Enum       |  USB Network Interface=02h, <br/> PCI/PCIe Network Interface=03h,  <br/> OEM=80h-FFh  <br/> other values reserved     |
+| X+1     | Device Descriptors   | n-1 Bytes   | Varies    | Device descriptor data formated based on Device Type. <br/> See Table-3  |
 
-Protocol specific data for Redfish Over IP protocol follows:
+
+### Table-3:  Device Descriptor Data
+The following table defines the specific Device Descriptor data (referenced in Table-2) for each defined Device Type:
+
+| Device Type enum value  | Device Type Name      | Length   | Value    |  Description    |
+| --- | ---------------  | --- | ---  | ----------------------------------------  |
+| 02h                    | USB Network Interface |  Varies  |  Varies  | Device Descriptors for USB Device Type: <br/> -idVendor(2-bytes),  <br/> -idProduct(2-bytes), <br/> -iSerialNumber: <br/>  --- bLength(1-Byte), <br/> --- bDescriptorType(1-Byte), <br/> --- bString(Varies) )      |
+| 03h                    | PCI/PCIe Network Interface   |  8-Bytes     |  Varies      | Device Descriptors for PCI/PCIe Device Type: <br/>  -VendorID(2-Bytes), <br/>  -DeviceID(2-Bytes), <br/>  -Subsystem_Vendor_ID(2-bytes), <br/>  -Subsystem_ID(2-bytes)      |
+| 80h-FFh                | OEM                   |  Varies   |  Varies | Device Descriptors for OEM  Device Type: <br/>   -vendor_IANA(4-bytes),  <br/>   -OEM defined data      |
+
+### Table-4:  Protocol Records Data format:
+The following table defines the general Protocol Record layout specific data for Redfish Over IP protocol follows:
 
 | Offset  | Name     | Length   | Value    | Description     |
 | ---     | ---      | ---      | ---      | ---             |
-| m       | Length     | BYTE     | varies       | length of protocol specific data for Redfish Over IP protocol      |
-| m+1     | Service UUID     | 16BYTEs     | Varies       | same as Redfish Service UUID in Redfish Service Root resource    |
-| m+17     | Host IP Assignment Type     | BYTE     | Enum       | Unknown=01h, <br/>    Static=02h, <br/>  DHCP=03h, <br/>    AutoConfigure=04h, <br/>  HostSelected=05h      |
-| m+18     | Host IP Address Format     | BYTE     | Enum       | Unknown=01h,   <br/> Ipv4=01h,    <br/> Ipv6=02h      |
-| m+19     | Host IP Address     | 4BYTE / 16BYTE     | Varies       | Used for Static and AutoConfigure.  Size is 4Bytes for Ipv4.  Size is 16Btyes for IPV6      |
-| m+23/35     | Host IP Mask     | 4BYTE / 16BYTE     | Varies       | Used for Static and AutoConfigure.  Size is 4Bytes for Ipv4.  Size is 16Btyes for IPV6      |
-| m+27/51     | Host IP Port     | WORD     | Varies       | Used for Static and AutoConfigure      |
-| m+31/55     | Host VLAN ID     | DWORD     | Varies       | Used for Static and AutoConfigure      |
-| m+39/63     | Manager IP Discovery Type     | BYTE     | Enum       | Unknown=01h,    <br/> Static=02h,   <br/> DHCP=03h,     <br/> AutoConfigure=04h,   <br/> HostSelected=05h      |
-| m+40/64     | Manager IP Address Format     | BYTE     | Enum       | Unknown=01h,   <br/> Ipv4=01h,    <br/> Ipv6=02h      |
-| m+41/65     | Manager IP Address     | 4BYTE / 16BYTE     | Varies       | Used for Static and AutoConfigure.  Size is 4Bytes for Ipv4.  Size is 16Btyes for IPV6      |
-| m+x     | Manager IP Mask     | 4BYTE /16BYTE    | Varies       | Used for Static and AutoConfigure.  Size is 4Bytes for Ipv4.  Size is 16Btyes for IPV6      |
-| m+x     | Manager IP Port     | WORD     | Varies       | Used for Static and AutoConfigure.      |
-| m+x     | Manager VLAN ID     | DWORD     | Varies       | Used for Static and AutoConfigure.      |
-| m+x     | Manager Hostname Length     | BYTE     | Varies       | length of the following hostname string      |
-| m+x     | Manager Hostname     | varies     | Varies       | hostname of manager      |
+| X       | Protocol Identifier | BYTE     | Varies          | The protocol identifier <br/> --"Redfish over IP" = 04h      |
+| X+1   | Length     | BYTE     | varies       | length of protocol specific data for Redfish Over IP protocol      |
+| X+2   | Protocol specific record data | p Bytes | Varies   | Defined by protocol. <br/> See Table-5 below for "Redfish over IP" protocol |
+
+### Table-5:  "Redfish Over IP" Protocol-specific Record Data
+The following table defines the protocol-specific data for the "Redfish Over IP" protocol:
+
+| Offset  | Name     | Length   | Value    | Description     |
+| ---     | ---      | ---      | ---      | ---             |
+| X+0     | Service UUID     | 16BYTEs     | Varies       | same as Redfish Service UUID in Redfish Service Root resource    |
+| X+16     | Host IP Assignment Type     | BYTE     | Enum       | Unknown=00h, <br/>    Static=01h, <br/>  DHCP=02h, <br/>    AutoConfigure=03h, <br/>  HostSelected=04h, <br/> other values reserved     |
+| X+17     | Host IP Address Format     | BYTE     | Enum       | Unknown=00h,   <br/> Ipv4=01h,    <br/> Ipv6=02h, <br/> other values reserved      |
+| X+18     | Host IP Address     |  16BYTE     | Varies       | Used for Static and AutoConfigure.  <br/> For IPV4, use the first 4 Bytes and zero fill the remaining bytes.      |
+| X+34     | Host IP Mask     | 16BYTE     | Varies       | Used for Static and AutoConfigure.  <br/> For IPV4, use the first 4 Bytes and zero fill the remaining bytes.      |
+| X+50     | Host IP Port     | WORD     | Varies       | Used for Static and AutoConfigure      |
+| X+54     | Host VLAN ID     | DWORD     | Varies       | Used for Static and AutoConfigure      |
+| X+62     | Manager IP Discovery Type     | BYTE     | Enum       | Unknown=00h,    <br/> Static=01h,   <br/> DHCP=02h,     <br/> AutoConfigure=03h,   <br/> HostSelected=04h, <br/> other values reserved      |
+| X+63     | Manager IP Address Format     | BYTE     | Enum       | Unknown=00h,   <br/> Ipv4=01h,    <br/> Ipv6=02h, <br/> other values reserved      |
+| X+64     | Manager IP Address     | 16BYTE     | Varies       | Used for Static and AutoConfigure.  <br/> For IPV4, use the first 4 Bytes and zero fill the remaining bytes.      |
+| X+80     | Manager IP Mask     | 16BYTE    | Varies       | Used for Static and AutoConfigure.  <br/> For IPV4, use the first 4 Bytes and zero fill the remaining bytes.      |
+| X+96     | Manager IP Port     | WORD     | Varies       | Used for Static and AutoConfigure.      |
+| X+100     | Manager VLAN ID     | DWORD     | Varies       | Used for Static and AutoConfigure.      |
+| X+108     | Manager Hostname Length     | BYTE     | Varies       | length of the following hostname string      |
+| X+109     | Manager Hostname     | varies     | Varies       | hostname of manager      |
 
 
 
