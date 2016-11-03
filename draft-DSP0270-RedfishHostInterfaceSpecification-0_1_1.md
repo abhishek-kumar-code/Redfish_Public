@@ -189,8 +189,8 @@ Offset 00h-04h is the Type 42 Header.  Starting at Offset 05h is the Interface-s
 | 04h     | Interface Type   | BYTE     | Varies      | Management Controller Interface Type. <br/> --Network Host Interface = 20h     |
 | 05h     | Interface Specific Data Length (n) | BYTE | Varies | Interface-specific Data as specified by the Interface type. <br/> if 0, there is no Interface specific data |
 | 06h     | Interface Specific data        | n BYTEs | Varies | Defined by Interface Type.  See Table-2 below. |
-| 06h + n | Protocol count  | BYTE   |  Varies     | number of protocols defined for the host interface (typically 1) |
-| 07h + n | Protocol Records  | m Bytes | Varies     | Include a Protocol Record for each protocol supported. See Table-4 below record format |
+| 06h+n | Protocol count  | BYTE   |  Varies     | number of protocols defined for the host interface (typically 1) |
+| 07h+n | Protocol Records  | m Bytes | Varies     | Include a Protocol Record for each protocol supported. See Table-4 below record format |
 
 ### Table-2: Interface Specific Data
 Interface Specific Data starts at offset 05h of the SMBIOS Type 42 struct. 
@@ -208,18 +208,18 @@ The following table defines the specific Device Descriptor data (referenced in T
 | DeviceType enum value  | Device Type Name      | Length   | Value    |  Description    |
 | ---                    | ---                   | ---      | ---      | ---             |
 | 00h                    | Unknown               |  Varies  |  Varies  | unknown data format    |
-| 02h                    | USB Network Interface |  Varies  |  Varies  | Device Descriptors for USB Device Type: <br/>idVendor(2-bytes),  <br/> idProduct(2-bytes), <br/> iSerialNumber: <br/>  -- bLength(1-Byte), <br/> -- bDescriptorType(1-Byte), <br/> -- bString(Varies) )      |
-| 03h                    | PCI/PCIe Network Interface   |  8-Bytes     |  Varies      | Device Descriptors for PCI/PCIe Device Type: <br/>  VendorID(2-Bytes), <br/>  DeviceID(2-Bytes), <br/>  Subsystem_Vendor_ID(2-bytes), <br/>  Subsystem_ID(2-bytes)      |
-| 80h-FFh                | OEM                   |  Varies   |  Varies | Device Descriptors for OEM  Device Type: <br/>   vendor_IANA(4-bytes),  <br/>   OEM defined data      |
+| 02h                    | USB Network Interface |  Varies  |  Varies  | Device Descriptors for USB Device Type: <br/> -idVendor(2-bytes),  <br/> -idProduct(2-bytes), <br/> -iSerialNumber: <br/>  --- bLength(1-Byte), <br/> --- bDescriptorType(1-Byte), <br/> --- bString(Varies) )      |
+| 03h                    | PCI/PCIe Network Interface   |  8-Bytes     |  Varies      | Device Descriptors for PCI/PCIe Device Type: <br/>  -VendorID(2-Bytes), <br/>  -DeviceID(2-Bytes), <br/>  -Subsystem_Vendor_ID(2-bytes), <br/>  -Subsystem_ID(2-bytes)      |
+| 80h-FFh                | OEM                   |  Varies   |  Varies | Device Descriptors for OEM  Device Type: <br/>   -vendor_IANA(4-bytes),  <br/>   -OEM defined data      |
 
 ### Table-4:  Protocol Records Data format:
 The following table defines the general Protocol Record layout specific data for Redfish Over IP protocol follows:
 
 | Offset  | Name     | Length   | Value    | Description     |
 | ---     | ---      | ---      | ---      | ---             |
-| X       | Protocol Identifier | BYTE     | Varies          | The protocol identifier <br/> "Redfish over IP" = 20h      |
-| X + 1   | Length     | BYTE     | varies       | length of protocol specific data for Redfish Over IP protocol      |
-| X + 2   | Protocol specific record data | p Bytes | Varies   | Defined by protocol. <br/> See Table-5 below for "Redfish over IP" protocol |
+| X       | Protocol Identifier | BYTE     | Varies          | The protocol identifier <br/> --"Redfish over IP" = 20h      |
+| X+1   | Length     | BYTE     | varies       | length of protocol specific data for Redfish Over IP protocol      |
+| X+2   | Protocol specific record data | p Bytes | Varies   | Defined by protocol. <br/> See Table-5 below for "Redfish over IP" protocol |
 
 ### Table-5:  "Redfish Over IP" Protocol-specific Record Data
 The following table defines the protocol-specific data for the "Redfish Over IP" protocol:
