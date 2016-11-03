@@ -206,7 +206,7 @@ There are 3 types of Device Descriptor data defined, however only 1 may be used 
 The following table defines the specific Device Descriptor data (referenced in Table-2) for each defined Device Type:
 
 | Device Type enum value  | Device Type Name      | Length   | Value    |  Description    |
-| --- | ---  | --- | ---  | ---  |
+| --- | ---------------  | --- | ---  | ----------------------------------------  |
 | 00h                    | Unknown               |  Varies  |  Varies  | unknown data format    |
 | 02h                    | USB Network Interface |  Varies  |  Varies  | Device Descriptors for USB Device Type: <br/> -idVendor(2-bytes),  <br/> -idProduct(2-bytes), <br/> -iSerialNumber: <br/>  --- bLength(1-Byte), <br/> --- bDescriptorType(1-Byte), <br/> --- bString(Varies) )      |
 | 03h                    | PCI/PCIe Network Interface   |  8-Bytes     |  Varies      | Device Descriptors for PCI/PCIe Device Type: <br/>  -VendorID(2-Bytes), <br/>  -DeviceID(2-Bytes), <br/>  -Subsystem_Vendor_ID(2-bytes), <br/>  -Subsystem_ID(2-bytes)      |
