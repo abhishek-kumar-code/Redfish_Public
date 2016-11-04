@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  AttributeRegistry  v1.0.0-->
+<!--# Redfish Schema:  AttributeRegistry  v1.0.1-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -74,10 +74,12 @@
           <Annotation Term="Redfish.Required"/>
         </Property>
         <Property Name="SupportedSystems" Type="Collection(AttributeRegistry.v1_0_0.SupportedSystems)" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Array of systems supported by this attribute registry."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array containing a list of systems supported by this attribute registry."/>
         </Property>
         <Property Name="RegistryEntries" Type="AttributeRegistry.v1_0_0.RegistryEntries" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="List of all attributes and their metadata for this component."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall a list of all attributes for this component, along with their possible values, dependencies, and other metadata."/>
         </Property>
@@ -502,5 +504,10 @@
 
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AttributeRegistry.v1_0_1">
+      <Annotation Term="OData.Description" String="This version was created to add explicit Permissions annotations to all properties for clarity."/>
+      <EntityType Name="AttributeRegistry" BaseType="AttributeRegistry.v1_0_1.AttributeRegistry"/>
+    </Schema>
+	
   </edmx:DataServices>
 </edmx:Edmx>
