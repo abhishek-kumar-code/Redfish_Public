@@ -138,7 +138,7 @@
           <Annotation Term="Redfish.Required"/>
         </Property>
         <Property Name="Oem" Type="Resource.Oem" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Oem extension object."/>
           <Annotation Term="OData.LongDescription" String="This object represents the Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
         </Property>
