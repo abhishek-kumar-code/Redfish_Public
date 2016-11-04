@@ -189,17 +189,17 @@
           <Annotation Term="OData.LongDescription" String="This property shall contain the firwmare version as defined by the manufacturer for the associated manager."/>
         </Property>
         <Property Name="SerialConsole" Type="Manager.v1_0_0.SerialConsole" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Information about the Serial Console service provided by this manager."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain information about the Serial Console service of this manager."/>
         </Property>
         <Property Name="CommandShell" Type="Manager.v1_0_0.CommandShell" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Information about the Command Shell service provided by this manager."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain information about the Command Shell service of this manager."/>
         </Property>
         <Property Name="GraphicalConsole" Type="Manager.v1_0_0.GraphicalConsole" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The value of this property shall contain the information about the Graphical Console (KVM-IP) service of this manager."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the information about the Graphical Console (KVM-IP) service of this manager."/>
         </Property>
