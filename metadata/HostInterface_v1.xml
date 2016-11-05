@@ -74,6 +74,7 @@
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent Host Interface resources as part of the Redfish specification."/>
         <Property Name="Status" Type="Resource.Status"/>
         <Property Name="InterfaceEnabled" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="This indicates whether this interface is enabled."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this interface is enabled."/>
         </Property>
@@ -83,14 +84,17 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this interface is accessible by external (non-host) entities."/>
         </Property>
         <Property Name="AuthenticationModes" Type="Collection(HostInterface.v1_0_0.AuthenticationMode)" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="This indicates the authentication modes available on this interface."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array consisting of the authentication modes allowed on this interface."/>
         </Property>
         <Property Name="KernelAuthRoleId" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="This property contains the Role for kernel authentication on this interface."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the ID of the Role resource that is configured for kernel authentication on this interface."/>
         </Property>
         <Property Name="KernelAuthEnabled" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="This indicates whether this kernel authentication is enabled for this interface."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether kernel authentication for this interface is enabled."/>
         </Property>
