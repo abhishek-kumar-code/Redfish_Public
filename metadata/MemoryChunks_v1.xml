@@ -38,22 +38,22 @@
 
       <EntityType Name="MemoryChunks" BaseType="MemoryChunks.MemoryChunks">
         <Property Name="MemoryChunkSizeMiB" Type="Edm.Int64">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Size of the memory chunk in MiB"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the size of the memory chunk in MiB."/>
         </Property>
         <Property Name="AddressRangeType" Type="MemoryChunks.v1_0_0.AddressRangeType">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Memory type of this memory chunk"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the type of memory chunk."/>
         </Property>
         <Property Name="IsMirrorEnabled" Type="Edm.Boolean" DefaultValue="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Mirror Enabled status"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate if memory mirroring is enabled for this MemoryChunk."/>
         </Property>
         <Property Name="IsSpare" Type="Edm.Boolean" DefaultValue="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Spare enabled status"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate if sparing is enabled for this MemoryChunk."/>
         </Property>
@@ -73,22 +73,22 @@
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
         <Property Name="RegionId" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="DIMM region identifier"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the DIMM region identifier."/>
         </Property>
         <Property Name="OffsetMiB" Type="Edm.Int64">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Offset within the DIMM that corresponds to the start of this memory region, with units in MiB"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the offset within the DIMM that corresponds to the start of this memory region, with units in MiB."/>
         </Property>
         <Property Name="SizeMiB" Type="Edm.Int64">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Size of this memory region in MiB"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the size of this memory region, with units in MiB."/>
         </Property>
         <Property Name="MemoryLevel" Type="Edm.Int64" DefaultValue="1">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Level of the interleave set for multi-level tiered memory."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the level of this interleave set for multi-level tiered memory."/>
         </Property>

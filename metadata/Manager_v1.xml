@@ -352,7 +352,7 @@
       <EntityType Name="Manager" BaseType="Manager.v1_0_2.Manager"/>
       <ComplexType Name="Links" BaseType="Manager.v1_0_0.Links">
         <NavigationProperty Name="ManagerInChassis" Type="Chassis.Chassis" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This property is a reference to the chassis that this manager is located in."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain a reference to the chassis that this manager is located in."/>
           <Annotation Term="OData.AutoExpandReferences"/>

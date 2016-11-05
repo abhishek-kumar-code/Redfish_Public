@@ -44,17 +44,17 @@
       <EntityType Name="MemoryDomain" BaseType="MemoryDomain.MemoryDomain">
 
         <Property Name="AllowsMemoryChunkCreation" Type="Edm.Boolean" DefaultValue="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Indicates if this Memory Domain supports the creation of Memory Chunks."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate if this Memory Domain supports the creation of Memory Chunks."/>
         </Property>
         <Property Name="AllowsBlockProvisioning" Type="Edm.Boolean" DefaultValue="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Indicates if this Memory Domain supports the provisioning of blocks of memory."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate if this Memory Domain supports the creation of Blocks of memory."/>
         </Property>
         <NavigationProperty Name="MemoryChunks" Type="MemoryChunksCollection.MemoryChunksCollection" ContainsTarget="true">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A reference to the collection of Memory Chunks associated with this Memory Domain."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type MemoryChunkCollection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
