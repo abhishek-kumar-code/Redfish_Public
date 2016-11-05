@@ -216,7 +216,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the maximum power budgets supported by the Memory in milli Watts."/>
         </Property>
         <Property Name="SecurityCapabilities" Type="Memory.v1_0_0.SecurityCapabilities" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This object contains security capabilities of the Memory."/>
           <Annotation Term="OData.LongDescription" String="This object shall contain properties which describe the security capabilities of the Memory."/>
         </Property>
@@ -236,7 +236,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be location of the Memory in the platform, typically marked in the silk screen."/>
         </Property>
         <Property Name="MemoryLocation" Type="Memory.v1_0_0.MemoryLocation" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Memory connection information to sockets and memory controllers."/>
           <Annotation Term="OData.LongDescription" String="This object shall contain properties which describe the Memory connection information to sockets and memory controllers."/>
         </Property>
@@ -271,7 +271,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the memory modes supported by the Memory."/>
         </Property>
         <Property Name="PowerManagementPolicy" Type="Memory.v1_0_0.PowerManagementPolicy" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Power management policy information."/>
           <Annotation Term="OData.LongDescription" String="This object shall contain properties which describe the power management policy for the current resource."/>
         </Property>
@@ -286,7 +286,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be true if a rank spare is enabled for this Memory."/>
         </Property>
         <NavigationProperty Name="Metrics" Type="MemoryMetrics.MemoryMetrics" ContainsTarget="true" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A reference to the Metrics associated with this Memory"/>
           <Annotation Term="OData.LongDescription" String="A reference to the Metrics associated with this Memory."/>
           <Annotation Term="OData.AutoExpandReferences"/>
