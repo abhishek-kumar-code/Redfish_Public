@@ -35,13 +35,13 @@
     "Links": {
         "ResourceBlocks": [
             {
-                "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock1
+                "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock1"
             },
             {
-                "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock3
+                "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock3"
             },
             {
-                "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock4
+                "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock4"
             }
         ]
     }
