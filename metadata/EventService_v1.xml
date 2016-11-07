@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  EventService  v1.0.2-->
+<!--# Redfish Schema:  EventService  v1.0.3-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -102,7 +102,8 @@
 
       <EntityType Name="EventService" BaseType="EventService.EventService">
         <Property Name="ServiceEnabled" Type="Edm.Boolean">
-          <Annotation Term="OData.Description" String="This indicates whether this service is enabled."/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+  		  <Annotation Term="OData.Description" String="This indicates whether this service is enabled."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this service is enabled."/>
         </Property>
         <Property Name="DeliveryRetryAttempts" Type="Edm.Int64" Nullable="false">
@@ -149,6 +150,11 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventService.v1_0_2">
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="EventService" BaseType="EventService.v1_0_0.EventService"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventService.v1_0_3">
+      <Annotation Term="OData.Description" String="This version was created to add explicit Permissions annotations to all properties for clarity."/>
+      <EntityType Name="EventService" BaseType="EventService.v1_0_2.EventService"/>
     </Schema>
 
   </edmx:DataServices>
