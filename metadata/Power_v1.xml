@@ -133,6 +133,7 @@
           <Annotation Term="Measures.Unit" String="W"/>
         </Property>
         <Property Name="PowerMetrics" Type="Power.v1_0_0.PowerMetric" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Power readings for this chassis."/>
           <Annotation Term="OData.LongDescription" String="This object shall contain power metrics for power readings (interval, min/max/ave power consumption) for the chassis."/>
         </Property>
@@ -142,6 +143,7 @@
         </Property>
         <Property Name="Status" Type="Resource.Status" Nullable="false"/>
         <NavigationProperty Name="RelatedItem" Type="Collection(Resource.Item)" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The ID(s) of the resources associated with this Power Limit."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of IDs containing pointers consistent with JSON pointer syntax to the resource that is being limited."/>
           <Annotation Term="OData.AutoExpandReferences"/>
@@ -184,16 +186,19 @@
         <Annotation Term="OData.Description" String="This object contains power limit status and configuration information for the chassis."/>
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="LimitInWatts" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The Power limit in watts. Set to null to disable power capping."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the power cap limit in watts for the resource.  If set to null, power capping shall be disabled."/>
           <Annotation Term="Measures.Unit" String="W"/>
           <Annotation Term="Validation.Minimum" Int="0"/>
         </Property>
         <Property Name="LimitException" Type="Power.v1_0_0.PowerLimitException">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The action that is taken if the power cannot be maintained below the LimitInWatts."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the action to be taken if the resource power consumption can not be limited below the specified limit after several correction time periods."/>
         </Property>
         <Property Name="CorrectionInMs" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The time required for the limiting process to reduce power consumption to below the limit."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the time interval in ms required for the limiting process to react and reduce the power consumption below the limit."/>
           <Annotation Term="Measures.Unit" String="ms"/>
