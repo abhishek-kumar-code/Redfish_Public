@@ -113,7 +113,7 @@
         <Annotation Term="Redfish.DynamicPropertyPatterns">
           <Collection>
             <Record>
-              <PropertyValue Property="Pattern" String="[A-Za-z0-9]+"/>
+              <PropertyValue Property="Pattern" String="^[A-Za-z][A-Za-z0-9_]+$"/>
               <PropertyValue Property="Type" String="Edm.Primitive"/>
             </Record>
           </Collection>
@@ -121,6 +121,6 @@
       </ComplexType>
 
     </Schema>
-
+    
   </edmx:DataServices>
 </edmx:Edmx>
