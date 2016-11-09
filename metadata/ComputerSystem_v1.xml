@@ -126,7 +126,6 @@
           <Annotation Term="OData.LongDescription" String="An enumeration that indicates the kind of system that this resource represents."/>
         </Property>
         <Property Name="Links" Type="ComputerSystem.v1_0_0.Links" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
           <Annotation Term="OData.LongDescription" String="The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
         </Property>
@@ -198,7 +197,6 @@
           <Annotation Term="OData.LongDescription" String="This object shall contain properties which describe the central memory for the current resource."/>
         </Property>
         <Property Name="Actions" Type="ComputerSystem.v1_0_0.Actions" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
@@ -446,7 +444,6 @@
 
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_0_2.ComputerSystem">
         <Property Name="TrustedModules" Type="Collection(ComputerSystem.v1_1_0.TrustedModules)" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This object describes the array of Trusted Modules in the system."/>
           <Annotation Term="OData.LongDescription" String="This object shall contain an array of objects with properties which describe the truted modules for the current resource."/>
         </Property>

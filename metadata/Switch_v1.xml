@@ -67,6 +67,7 @@
 
       <EntityType Name="Switch" BaseType="Switch.Switch">
         <Property Name="SwitchType" Type="Storage.v1_0_0.Protocol">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The protocol being sent over this switch."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the type of switch being represented by this simple switch."/>
         </Property>
@@ -138,7 +139,6 @@
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
         <Property Name="Links" Type="Switch.v1_0_0.Links" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
           <Annotation Term="OData.LongDescription" String="The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
         </Property>
@@ -149,7 +149,6 @@
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
         <Property Name="Actions" Type="Switch.v1_0_0.Actions" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>

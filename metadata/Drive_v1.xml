@@ -143,12 +143,10 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an identifying string used to track the drive for inventory purposes."/>
         </Property>
         <Property Name="Identifiers" Type="Collection(Resource.v1_1_0.Identifier)" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The Durable names for the drive"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain a list of all known durable names for the associated drive."/>
         </Property>
         <Property Name="Location" Type="Collection(Resource.v1_1_0.Location)" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The Location of the drive"/>
           <Annotation Term="OData.LongDescription" String="This property shall contain location information of the associated drive."/>
         </Property>
@@ -197,12 +195,10 @@
           <Annotation Term="OData.LongDescription" String="This property shall contain an indicator of the percentage of life remaining in the Drive's media."/>
         </Property>
         <Property Name="Links" Type="Drive.v1_0_0.Links" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
           <Annotation Term="OData.LongDescription" String="The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
         </Property>
         <Property Name="Actions" Type="Drive.v1_0_0.Actions" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
