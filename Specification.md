@@ -28,7 +28,7 @@ The DMTF acknowledges the following individuals for their contributions to this 
 * Chris Davenport - Hewlett Packard Enterprise
 * Gamma Dean - Emerson Network Power
 * Daniel Dufresne - EMC
-* Samer El-Haj-Mahmoud - Hewlett Packard Enterprise
+* Samer El-Haj-Mahmoud - Lenovo, Hewlett Packard Enterprise
 * George Ericson - EMC
 * Wassim Fayed - Microsoft Corporation
 * Mike Garrett - Hewlett Packard Enterprise
