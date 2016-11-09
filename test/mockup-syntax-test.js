@@ -69,7 +69,7 @@ glob.sync(path.join('mockups', '*/')).forEach(function(mockup) {
             const link = url.parse(this.node);
             let refd = fileToJSON[linkToFile[link.pathname]];
 
-            const errorMsg = 'invalid link in JSON at property /' + this.path.join('/') + ' with value ' + this.node + '. No such file exists in mockup at path.';
+            let errorMsg = 'invalid link in JSON at property /' + this.path.join('/') + ' with value ' + this.node + '. No such file exists in mockup at path.';
 
             if (!refd) {
               const invalidPath = this.node.replace('/redfish/v1/', mockup).split('/');
