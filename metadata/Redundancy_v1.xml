@@ -115,6 +115,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Redundancy.v1_1_0">
       <EntityType Name="Redundancy" BaseType="Redundancy.v1_0_2.Redundancy">
         <Property Name="RedundancyEnabled" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="This indicates whether redundancy is enabled."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether the redundancy is enabled."/>
         </Property>
