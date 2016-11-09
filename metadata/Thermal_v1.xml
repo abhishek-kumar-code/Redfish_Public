@@ -223,6 +223,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the highest possible value for Reading. The units shall be the same units as the related Reading property."/>
         </Property>
         <NavigationProperty Name="RelatedItem" Type="Collection(Resource.Item)" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>          
           <Annotation Term="OData.Description" String="The ID(s) of the resources serviced with this fan"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of IDs containing pointers consistent with JSON pointer syntax to the resource that are being serviced by this fan."/>
           <Annotation Term="OData.AutoExpandReferences"/>
