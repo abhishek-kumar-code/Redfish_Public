@@ -122,7 +122,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The unique name of the attribute."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the name of this attribute that is unique in this registry."/>
-          <Annotation Term="Validation.Pattern" String="^[A-Z][A-Za-z0-9]+$"/>
+          <Annotation Term="Validation.Pattern" String="^[A-Za-z][A-Za-z0-9_]+$"/>
         </Property>
         <Property Name="Type" Type="AttributeRegistry.v1_0_0.AttributeType" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -289,7 +289,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The value name of the attribute."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a string representing the value name of the attribute. ValueName is a unique string within the list of possible values in the 'Value' array of a given attribute."/>
-          <Annotation Term="Validation.Pattern" String="^[A-Za-z0-9]+$"/>
+          <Annotation Term="Validation.Pattern" String="^[A-Za-z][A-Za-z0-9_]+$"/>
         </Property>
         <Property Name="ValueDisplayName" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
