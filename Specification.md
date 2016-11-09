@@ -2156,6 +2156,7 @@ References to RFCs -
 #### Certificates
 Redfish implementations shall support replacement of the default certificate if one is provided. 
 
+Redfish implementations shall use certificates that are compliant with X.509 v3 certificate format, as defined in [RFC5280](#RFC5280).
 
 
 ### Authentication
