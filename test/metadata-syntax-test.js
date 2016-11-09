@@ -12,6 +12,8 @@ const syntaxBatch = {}, schemaBatch = {};
 let ucum = null;
 let ucumError = false;
 const unitsWhiteList = ['RPM'];
+const complexTypeWhitelist = ['Resource.Status', 'Resource.Oem', 'Resource.v1_1_0.Location',
+                              'Storage.v1_0_0.Protocol', 'VLanNetworkInterface.v1_0_0.VLAN'];
 
 function getUcumXML(callback, context, end)
 {
@@ -109,6 +111,10 @@ files.forEach(function(file) {
       }
     },
     'has permission annotations': function(err, txt) {
+      if(this.context.name.includes('RedfishExtensions_v1.xml'))
+      {
+        return;
+      }
       let doc = xmljs.parseXml(txt);
       let properties = doc.find('//*[local-name()="Property"]');
       if(properties.length === 0)
@@ -118,11 +124,26 @@ files.forEach(function(file) {
       for(let i = 0; i < properties.length; i++)
       {
           var property = properties[i];
-          var permissions = property.find('//*[local-name()="Annotation"][@Term="OData.Permissions"]');
+          var permissions = property.find('*[local-name()="Annotation"][@Term="OData.Permissions"]');
           if(permissions.length === 0)
           {
               var propName = property.attr('Name').value();
-              throw new Error('Property '+propName+' lacks permission!');
+              var propType = property.attr('Type').value(); 
+              if(complexTypeWhitelist.indexOf(propType) !== -1)
+              {
+                continue;
+              }
+              if(propType.startsWith('Collection('))
+              {
+                propType = propType.substring(11, propType.length-1);
+              }
+              var propArray = propType.split('.');
+              var elemName = propArray[propArray.length - 1];
+              let complexTypes = doc.find('//*[local-name()="ComplexType"][@Name="'+elemName+'"]');
+              if(complexTypes.length === 0)
+              {
+                throw new Error('Property '+propName+' of '+propType+' lacks permission!');
+              }
           }
       }
     },
