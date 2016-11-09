@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?><!-- Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.-->
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
 
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+
   <edmx:DataServices>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chipwise">
 
       <!--Used for Chipwise-specific extensions to ComputerSystem-->
       <ComplexType Name="ComputerSystem">
-        <Property Name="Style" Type="Chipwise.Style"/>
+        <Property Name="Style" Type="Chipwise.Style">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+        </Property>
       </ComplexType>
 
       <EnumType Name="Style">

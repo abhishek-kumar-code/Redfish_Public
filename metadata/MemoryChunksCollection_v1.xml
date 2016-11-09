@@ -26,7 +26,7 @@
 
       <EntityType Name="MemoryChunksCollection" BaseType="Resource.v1_0_0.ResourceCollection">
         <NavigationProperty Name="Members" Type="Collection(MemoryChunks.MemoryChunks)">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the members of this collection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
