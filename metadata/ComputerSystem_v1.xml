@@ -591,7 +591,7 @@
       <ComplexType Name="HostedServices">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <NavigationProperty Name="StorageServices" Type="HostedStorageServices.HostedStorageServices" ContainsTarget="true" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A reference to a collection of storage services supported by this computer system"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type HostedStorageServices."/>
           <Annotation Term="OData.AutoExpandReferences"/>
