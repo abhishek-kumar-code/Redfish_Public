@@ -28,7 +28,7 @@ The DMTF acknowledges the following individuals for their contributions to this 
 * Chris Davenport - Hewlett Packard Enterprise
 * Gamma Dean - Emerson Network Power
 * Daniel Dufresne - EMC
-* Samer El-Haj-Mahmoud - Hewlett Packard Enterprise
+* Samer El-Haj-Mahmoud - Lenovo, Hewlett Packard Enterprise
 * George Ericson - EMC
 * Wassim Fayed - Microsoft Corporation
 * Mike Garrett - Hewlett Packard Enterprise
@@ -2054,7 +2054,7 @@ The client may cancel the operation by performing a DELETE on the Task Monitor U
 
 The client may also cancel the operation by performing a DELETE on the Task resource. Deleting the Task resource object may invalidate the associated Task Monitor and subsequent GET on the Task Monitor URL returns either 410 (Gone) or 404 (Not Found).
 
-Once the operation has completed, the Task Monitor shall return a status code of OK (200) and include the headers and response body of the initial operation, as if it had completed synchronously. If the initial operation resulted in an error, the body of the response shall contain an [Error Response](#error-responses).
+Once the operation has completed, the Task Monitor shall return a the appropriate status code ( OK (200) for most operations, Created (201) for POST to create a resource) and include the headers and response body of the initial operation, as if it had completed synchronously. If the initial operation resulted in an error, the body of the response shall contain an [Error Response](#error-responses).
 
 The service may return a status code of 410 (Gone) or 404 (Not Found) if the operation has completed and the service has already deleted the task. This can occur if the client waits too long to read the Task Monitor.
 
