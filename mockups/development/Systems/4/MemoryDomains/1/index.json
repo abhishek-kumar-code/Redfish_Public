@@ -10,6 +10,8 @@
     },
     "AllowsMemoryRegionCreation": false,
     "AllowsBlockProvisioning": false,
+    "AllowsMirroring" : false,
+    "AllowsSparing" : false,
     "InterleavableMemorySets": [
         {
             "MemorySet" : [
