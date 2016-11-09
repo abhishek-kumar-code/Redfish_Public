@@ -49,7 +49,7 @@
         {"@odata.id": "/redfish/v1/Systems/437XR1138R2/Storage/1/Drives/3D58ECBC375FD9F2"}
     ],
     "Volumes": {
-        {"@odata.id": "/redfish/v1/Systems/437XR1138R2/Storage/1/Volumes"}
+        "@odata.id": "/redfish/v1/Systems/437XR1138R2/Storage/1/Volumes"
     },
     "Links": {
     },
