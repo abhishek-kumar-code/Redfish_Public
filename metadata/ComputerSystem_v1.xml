@@ -561,6 +561,7 @@
 
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_1_1.ComputerSystem">
         <Property Name="HostingRoles" Type="Collection(ComputerSystem.v1_2_0.HostingRole)" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The hosing roles that this computer system supports."/>
           <Annotation Term="OData.LongDescription" String="The values of this collection shall be the hosting roles supported by this computer system."/>
         </Property>

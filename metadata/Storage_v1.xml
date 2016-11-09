@@ -183,6 +183,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a part number assigned by the organization that is responsible for producing or manufacturing the storage controller."/>
         </Property>
         <Property Name="AssetTag" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The user assigned asset tag for this storage controller."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an identifying string used to track the storage controller for inventory purposes."/>
         </Property>

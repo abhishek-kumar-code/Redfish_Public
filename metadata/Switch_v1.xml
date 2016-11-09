@@ -97,6 +97,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a part number assigned by the organization that is responsible for producing or manufacturing the switch."/>
         </Property>
         <Property Name="AssetTag" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The user assigned asset tag for this switch."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an identifying string used to track the drive for inventory purposes."/>
         </Property>
@@ -106,6 +107,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall have a scope of uniqueness within the fabric of which the switch is a member."/>
         </Property>
         <Property Name="IsManaged" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="This indicates whether the switch is in a managed or unmanaged state."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this switch is in a managed or unmanaged state."/>
         </Property>
@@ -115,6 +117,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the number of physical transport lanes, phys, or other physical transport links that this switch contains. For PCIe, this shall be lane count."/>
         </Property>
         <Property Name="IndicatorLED" Type="Resource.v1_1_0.IndicatorLED">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The state of the indicator LED, used to identify the switch."/>
           <Annotation Term="OData.LongDescription" String="This value of this property shall contain the indicator light state for the indicator light associated with this switch."/>
         </Property>

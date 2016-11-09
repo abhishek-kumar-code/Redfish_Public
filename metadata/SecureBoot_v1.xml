@@ -70,6 +70,7 @@
 
       <EntityType Name="SecureBoot" BaseType="SecureBoot.SecureBoot">
         <Property Name="SecureBootEnable" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Enable or disable UEFI Secure Boot (takes effect on next boot)."/>
           <Annotation Term="OData.LongDescription" String="Setting this property to true enables UEFI Secure Boot, and setting it to false disables it. This property can be enabled only in UEFI boot mode."/>
         </Property>
