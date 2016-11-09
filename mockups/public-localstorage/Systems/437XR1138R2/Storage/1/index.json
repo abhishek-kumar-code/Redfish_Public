@@ -48,11 +48,9 @@
         {"@odata.id": "/redfish/v1/Systems/437XR1138R2/Storage/1/Drives/32ADF365C6C1B7BD"},
         {"@odata.id": "/redfish/v1/Systems/437XR1138R2/Storage/1/Drives/3D58ECBC375FD9F2"}
     ],
-    "Volumes": [
-        {"@odata.id": "/redfish/v1/Systems/437XR1138R2/Storage/1/Volumes/1"},
-        {"@odata.id": "/redfish/v1/Systems/437XR1138R2/Storage/1/Volumes/2"},
-        {"@odata.id": "/redfish/v1/Systems/437XR1138R2/Storage/1/Volumes/3"}
-    ],
+    "Volumes": {
+        {"@odata.id": "/redfish/v1/Systems/437XR1138R2/Storage/1/Volumes"}
+    },
     "Links": {
     },
     "Actions": {
