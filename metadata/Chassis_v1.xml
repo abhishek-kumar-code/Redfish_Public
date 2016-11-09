@@ -331,7 +331,6 @@
 
       <EntityType Name="Chassis" BaseType="Chassis.v1_0_2.Chassis">
         <Property Name="PhysicalSecurity" Type="Chassis.v1_1_0.PhysicalSecurity" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The state of the physical security sensor."/>
           <Annotation Term="OData.LongDescription" String="This value of this property shall contain the sensor state of the physical security."/>
         </Property>
