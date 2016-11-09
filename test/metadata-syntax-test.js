@@ -12,6 +12,7 @@ const syntaxBatch = {}, schemaBatch = {};
 let ucum = null;
 let ucumError = false;
 const unitsWhiteList = ['RPM'];
+//This does not contain a full CSDL parser. This whitelist lists complex types that are utilized across files
 const complexTypeWhitelist = ['Resource.Status', 'Resource.Oem', 'Resource.v1_1_0.Location',
                               'Storage.v1_0_0.Protocol', 'VLanNetworkInterface.v1_0_0.VLAN'];
 
@@ -113,13 +114,15 @@ files.forEach(function(file) {
     'has permission annotations': function(err, txt) {
       if(this.context.name.includes('RedfishExtensions_v1.xml'))
       {
+        //Ignore the RedfishExtensions file. It's just about annotations
         return;
       }
       let doc = xmljs.parseXml(txt);
       let properties = doc.find('//*[local-name()="Property"]');
       if(properties.length === 0)
       {
-          return;
+        //No properties are perfectly acceptable
+        return;
       }
       for(let i = 0; i < properties.length; i++)
       {
