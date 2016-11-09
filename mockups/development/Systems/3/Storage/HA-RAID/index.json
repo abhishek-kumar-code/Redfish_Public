@@ -113,10 +113,9 @@
             {"@odata.id": "/redfish/v1/Chassis/StorageEnclosure2/Drives/Disk.Bay.10"},
             {"@odata.id": "/redfish/v1/Chassis/StorageEnclosure2/Drives/Disk.Bay.11"}
     ],
-    "Volumes": [
-        {"@odata.id": "/redfish/v1/Systems/3/Storage/HA-RAID/Volumes/1"},
-        {"@odata.id": "/redfish/v1/Systems/3/Storage/HA-RAID/Volumes/2"}
-    ],
+    "Volumes": {
+        "@odata.id": "/redfish/v1/Systems/3/Storage/HA-RAID/Volumes"
+    },
     "Links": {
         "Enclosures": [
             {"@odata.id": "/redfish/v1/Chassis/StorageEnclosure1"},
