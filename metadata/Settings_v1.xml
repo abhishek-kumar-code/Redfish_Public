@@ -42,6 +42,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the ETag of the resource to which the settings were applied, after the application.  This is here so that the client can check it against the ETag of the current resource to see if any other changes have also happened to the resource."/>
         </Property>
         <NavigationProperty Name="SettingsObject" Type="Resource.Item" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Reference to the resource the client may PUT/PATCH to in order to change this resource."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the URI of the resource to which a client must do a PUT or PATCh in order to modify this resource."/>
           <Annotation Term="OData.AutoExpandReferences"/>
