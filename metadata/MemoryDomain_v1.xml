@@ -83,7 +83,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MemoryDomain.v1_1_0">
-      <EntityType Name="MemoryDomain" BaseType="MemoryDomain.v1_0_1.MemoryDomain">   
+      <EntityType Name="MemoryDomain" BaseType="MemoryDomain.v1_0_1.MemoryDomain">
         <Property Name="AllowsMirroring" Type="Edm.Boolean" DefaultValue="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Indicates if this Memory Domain supports the creation of Memory Chunks with mirroring enabled."/>
@@ -93,9 +93,9 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Indicates if this Memory Domain supports the creation of Memory Chunks with sparing enabled."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate if this Memory Domain supports the creation of Memory Chunks with sparing enabled."/>
-        </Property>    
+        </Property>
       </EntityType>
-    </Schema>    
+    </Schema>
 
   </edmx:DataServices>
 </edmx:Edmx>
