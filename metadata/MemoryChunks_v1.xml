@@ -58,7 +58,6 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate if sparing is enabled for this MemoryChunk."/>
         </Property>
         <Property Name="InterleaveSets" Type="Collection(MemoryChunks.v1_0_0.InterleaveSet)">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the interleave sets for the memory chunk."/>
           <Annotation Term="OData.LongDescription" String="These properties shall represent the interleave sets for the memory chunk."/>
         </Property>
