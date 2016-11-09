@@ -1,0 +1,31 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+	"@odata.context": "/redfish/v1/$metadata#Endpoint.Endpoint",
+	"@odata.id": "/redfish/v1/Fabrics/SAS/Endpoints/Drive4",
+	"@odata.type": "#Endpoint.v1_0_0.Endpoint",
+	"Id": "Drive4",
+	"Name": "SAS Tape Drive",
+	"Description": "A SAS Tape Drive",
+    "EndpointProtocol": "SAS",
+    "ConnectedEntities": [
+        {
+            "EntityRole": "Target",
+            "Identifiers": [
+                {
+                    "DurableNameFormat": "NAA",
+                    "DurableName": "32ADF365C6C1B7C4"
+                }
+            ],
+            "Oem": {}
+        }
+    ],
+    "Links": {
+        "Ports": [
+            {"@odata.id": "/redfish/v1/Fabrics/SAS/Switches/Switch1/Ports/8"},
+            {"@odata.id": "/redfish/v1/Fabrics/SAS/Switches/Switch2/Ports/8"}
+        ],
+        "Oem": {}
+    },
+	"Oem": {}
+}
+

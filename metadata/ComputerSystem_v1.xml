@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  ComputerSystem  v1.2.1-->
+<!--# Redfish Schema:  ComputerSystem  v1.3.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -73,7 +73,7 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Endpoint_v1.xml">
     <edmx:Include Namespace="Endpoint"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/SNIA/v1/HostedStorageServices_v1.xml">
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/swordfish/v1/HostedStorageServices_v1.xml">
     <edmx:Include Namespace="HostedStorageServices"/>
   </edmx:Reference>
 
@@ -126,7 +126,6 @@
           <Annotation Term="OData.LongDescription" String="An enumeration that indicates the kind of system that this resource represents."/>
         </Property>
         <Property Name="Links" Type="ComputerSystem.v1_0_0.Links" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
           <Annotation Term="OData.LongDescription" String="The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
         </Property>
@@ -166,6 +165,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be used to contain a universal unique identifier number for the system. RFC4122 describes methods that can be used to create the value. The value should be considered to be opaque. Client software should only treat the overall value as a universally unique identifier and should not interpret any sub-fields within the UUID. If the system supports SMBIOS, the value of the property should be formed by following the SMBIOS 2.6+ recommendation for converting the SMBIOS 16-byte UUID structure into the redfish canonical xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx string format so that the property value matches the byte order presented by current OS APIs such as WMI and dmidecode."/>
         </Property>
         <Property Name="HostName" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The DNS Host Name, without any domain information"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the host name for this system, as reported by the operating system or hypervisor.  This value is typically provided to the Manager by a service running in the host operating system."/>
         </Property>
@@ -184,6 +184,7 @@
           <Annotation Term="OData.LongDescription" String="This object shall contain properties which describe boot information for the current resource. Changes to this object do not alter the BIOS persistent boot order configuration."/>
         </Property>
         <Property Name="BiosVersion" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The version of the system BIOS or primary system firmware."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the version string of the currently installed and running BIOS (for x86 systems).  For other systems, the value may contain a version string representing the primary system firmware."/>
         </Property>
@@ -196,7 +197,6 @@
           <Annotation Term="OData.LongDescription" String="This object shall contain properties which describe the central memory for the current resource."/>
         </Property>
         <Property Name="Actions" Type="ComputerSystem.v1_0_0.Actions" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
@@ -421,18 +421,22 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_0_1">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_0_0.ComputerSystem"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_0_2">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_0_1.ComputerSystem"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_0_3">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_0_2.ComputerSystem"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_0_4">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_0_3.ComputerSystem"/>
     </Schema>
 
@@ -456,7 +460,7 @@
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
         <NavigationProperty Name="Memory" Type="MemoryCollection.MemoryCollection" ContainsTarget="true" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A reference to the collection of Memory associated with this system"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type MemoryCollection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
@@ -541,10 +545,12 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_1_1">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_1_0.ComputerSystem"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_1_2">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_1_1.ComputerSystem"/>
     </Schema>
 
@@ -552,6 +558,7 @@
 
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_1_1.ComputerSystem">
         <Property Name="HostingRoles" Type="Collection(ComputerSystem.v1_2_0.HostingRole)" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The hosing roles that this computer system supports."/>
           <Annotation Term="OData.LongDescription" String="The values of this collection shall be the hosting roles supported by this computer system."/>
         </Property>
@@ -572,7 +579,7 @@
           <Annotation Term="OData.LongDescription" String="The values of this collection shall describe services supported by this computer system."/>
         </Property>
         <NavigationProperty Name="MemoryDomains" Type="MemoryDomainCollection.MemoryDomainCollection" ContainsTarget="true">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A reference to the collection of Memory Domains associated with this system."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type MemoryDomainCollection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
@@ -582,7 +589,7 @@
       <ComplexType Name="HostedServices">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <NavigationProperty Name="StorageServices" Type="HostedStorageServices.HostedStorageServices" ContainsTarget="true" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A reference to a collection of storage services supported by this computer system"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type HostedStorageServices."/>
           <Annotation Term="OData.AutoExpandReferences"/>
@@ -613,9 +620,50 @@
         </NavigationProperty>
       </ComplexType>
     </Schema>
-
+	
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_2_1">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_2_0.ComputerSystem"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_3_0">
+      <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_2_1.ComputerSystem">
+        <Property Name="TrustedModules" Type="Collection(ComputerSystem.v1_3_0.TrustedModules)" Nullable="false">
+          <Annotation Term="OData.Description" String="This object describes the array of Trusted Modules in the system."/>
+          <Annotation Term="OData.LongDescription" String="This object shall contain an array of objects with properties which describe the trusted modules for the current resource."/>
+        </Property>
+      </EntityType>      
+
+      <ComplexType Name="TrustedModules" BaseType="ComputerSystem.v1_1_0.TrustedModules">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Property Name="FirmwareVersion2" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The 2nd firmware version of this Trusted Module, if applicable."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the 2nd firmware version, if applicable, as defined by the manufacturer for the Trusted Module."/>
+        </Property>
+        <Property Name="InterfaceTypeSelection" Type="ComputerSystem.v1_3_0.InterfaceTypeSelection">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The Interface Type selection supported by this Trusted Module."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the Interface Type Selection method (for example to switch between TPM1_2 and TPM2_0) that is supported by this TrustedModule."/>
+        </Property>     
+      </ComplexType>
+
+      <EnumType Name="InterfaceTypeSelection">
+       <Annotation Term="OData.Description" String="The enumerations of InterfaceTypeSelection specify the method for switching the TrustedModule InterfaceType, for instance between TPM1_2 and TPM2_0, if supported."/>
+       <Member Name="None">
+          <Annotation Term="OData.Description" String="The TrustedModule does not support switching the InterfaceType."/>
+        </Member>
+        <Member Name="FirmwareUpdate">
+          <Annotation Term="OData.Description" String="The TrustedModule supports switching InterfaceType via a firmware update."/>
+        </Member>
+        <Member Name="BiosSetting">
+          <Annotation Term="OData.Description" String="The TrustedModule supports switching InterfaceType via platform software, such as a BIOS configuration Attribute."/>
+        </Member>
+        <Member Name="OemMethod">
+          <Annotation Term="OData.Description" String="The TrustedModule supports switching InterfaceType via an OEM proprietary mechanism."/>
+        </Member>      
+      </EnumType>
+    
     </Schema>
 
   </edmx:DataServices>

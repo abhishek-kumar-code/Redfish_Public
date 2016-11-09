@@ -15,3 +15,7 @@ branches:
   only:
     - master
     - /^TF-.*/
+cache:
+  bundler: true
+  directories:
+  - node_modules # NPM packages
