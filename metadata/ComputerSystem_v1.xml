@@ -620,7 +620,7 @@
         </NavigationProperty>
       </ComplexType>
     </Schema>
-	
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_2_1">
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_2_0.ComputerSystem"/>
@@ -632,7 +632,7 @@
           <Annotation Term="OData.Description" String="This object describes the array of Trusted Modules in the system."/>
           <Annotation Term="OData.LongDescription" String="This object shall contain an array of objects with properties which describe the trusted modules for the current resource."/>
         </Property>
-      </EntityType>      
+      </EntityType>
 
       <ComplexType Name="TrustedModules" BaseType="ComputerSystem.v1_1_0.TrustedModules">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
@@ -645,7 +645,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The Interface Type selection supported by this Trusted Module."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the Interface Type Selection method (for example to switch between TPM1_2 and TPM2_0) that is supported by this TrustedModule."/>
-        </Property>     
+        </Property>
       </ComplexType>
 
       <EnumType Name="InterfaceTypeSelection">
@@ -661,9 +661,9 @@
         </Member>
         <Member Name="OemMethod">
           <Annotation Term="OData.Description" String="The TrustedModule supports switching InterfaceType via an OEM proprietary mechanism."/>
-        </Member>      
+        </Member>
       </EnumType>
-    
+
     </Schema>
 
   </edmx:DataServices>

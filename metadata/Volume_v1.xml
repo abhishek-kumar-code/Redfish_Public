@@ -220,6 +220,6 @@
       <Annotation Term="OData.Description" String="This version was created to add explicit Permissions annotations to all properties for clarity."/>
       <EntityType Name="Volume" BaseType="Volume.v1_0_1.Volume"/>
     </Schema>
-	
+
   </edmx:DataServices>
 </edmx:Edmx>
