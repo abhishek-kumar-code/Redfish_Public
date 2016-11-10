@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  PrivilegeMapping  v1.0.0 -->
+<!--# Redfish Schema:  PrivilegeRegistry  v1.0.0 -->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -101,7 +101,7 @@
           <Annotation Term="OData.Description" String="Indicates the URI or Entity e.g.,/redfish/v1/Systems/1,  Manager."/>
           <Annotation Term="OData.LongDescription" String="Indicates the set of URI(s) or Entity(s) or property(s). e.g.,/redfish/v1/Systems/1, Manager, Password. When targets property is not mentioned, then there is no override."/>
         </Property>
-        <Property Name="OperationMap" Type="OperationToPrivilegeMap" >
+        <Property Name="OperationMap" Type="PrivilegeMapping.v1_0_0.OperationMap" >
           <Annotation Term="OData.Description" String="list mapping between HTTP method and privilege"/>
           <Annotation Term="OData.LongDescription" String="list mapping between HTTP method and privilege"/>
         </Property>
