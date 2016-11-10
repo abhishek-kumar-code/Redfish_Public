@@ -115,7 +115,6 @@
         </Property>
         <Property Name="Status" Type="Resource.Status" Nullable="false"/>
         <NavigationProperty Name="Redundancy" Type="Collection(Redundancy.Redundancy)" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Redundancy information for the storage subsystem"/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
