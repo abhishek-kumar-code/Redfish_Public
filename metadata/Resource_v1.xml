@@ -205,6 +205,7 @@
           <PropertyRef Name="MemberId"/>
         </Key>
         <Property Name="MemberId" Nullable="false" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the identifier for the member within the collection."/>
           <Annotation Term="OData.LongDescription" String="The value of this string shall uniquely identify the member within the collection."/>
         </Property>
@@ -216,10 +217,14 @@
           <PropertyRef Name="Id"/>
         </Key>
         <Property Name="Id" Type="Resource.Id" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="Redfish.Required"/>
         </Property>
-        <Property Name="Description" Type="Resource.Description"/>
+        <Property Name="Description" Type="Resource.Description">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+        </Property>
         <Property Name="Name" Type="Resource.Name" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="Redfish.Required"/>
         </Property>
       </EntityType>
@@ -230,8 +235,12 @@
         <Key>
           <PropertyRef Name="Name"/>
         </Key>
-        <Property Name="Description" Type="Resource.Description"/>
-        <Property Name="Name" Type="Resource.Name" Nullable="false"/>
+        <Property Name="Description" Type="Resource.Description">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+        </Property>
+        <Property Name="Name" Type="Resource.Name" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+        </Property>
         <Property Name="Oem" Type="Resource.Oem" Nullable="false">
           <Annotation Term="OData.Description" String="This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections."/>
           <Annotation Term="OData.LongDescription" String="The value of this string shall be of the format for the reserved word *Oem*."/>
@@ -405,7 +414,7 @@
           <Annotation Term="OData.Description" String="Avenue, Platz, Street, Circle."/>
           <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the STS field as defined in RFC5139.  It is used to name a  street suffix."/>
         </Property>
-        <Property Name="House Number" Type="Edm.Int64">
+        <Property Name="HouseNumber" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Numeric portion of house number."/>
           <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the HNO field as defined in RFC5139.  It is the numeric portion of the house number."/>
@@ -546,12 +555,10 @@
         <Annotation Term="OData.Description" String="The location of a resource."/>
         <Annotation Term="OData.LongDescription" String="Instances shall describe a location for a resource. For more information see RFC5139. Depending on use, the instance may represent a past, current, or future location."/>
         <Property Name="PostalAddress" Type="Resource.v1_3_0.PostalAddress">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Postal address of the addressed resource.."/>
           <Annotation Term="OData.LongDescription" String="The value shall be a postal address of the resource."/>
         </Property>
         <Property Name="Placement" Type="Resource.v1_3_0.Placement">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="A place within the addressed location."/>
           <Annotation Term="OData.LongDescription" String="The value shall be a place within the addressed location."/>
         </Property>
