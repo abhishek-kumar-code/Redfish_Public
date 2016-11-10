@@ -1,0 +1,12 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "Name": "Network Port Collection",
+    "@odata.type": "#NetworkPortCollection.1.0.0.NetworkPortCollection",
+    "Members@odata.count": "1",
+    "Members": 
+    [
+        {
+            "@odata.id": "/redfish/v1/Chassis/1/NetworkAdaptors/9fd725a1/NetworkPorts/1"
+        }
+    ]
+}
