@@ -2345,7 +2345,7 @@ The Authorization subsystem uses Roles and Privileges to control which users hav
 
 
 ## Redfish Host Interface
-The Redfish Host Interface Specification defines how software executing on a host computer system can interface with a Redfish service that manages the host.  See DSP0270 for details [http://www.dmtf.org/sites/default/files/standards/documents/DSP0270_1.0.pdf](#DMTFDSP0270) 
+The Redfish Host Interface Specification defines how software executing on a host computer system can interface with a Redfish service that manages the host.  See DSP0270 for details [DMTFDSP0270](#DMTFDSP0270) 
 
 
 ## ANNEX A (informative)
