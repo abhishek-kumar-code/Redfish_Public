@@ -1,0 +1,12 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "Name": "Logical Adapter Collection",
+    "@odata.type": "#LogicalAdapterCollection.1.0.0.LogicalAdapterCollection",
+    "Members@odata.count": "1",
+    "Members": 
+    [
+        {
+            "@odata.id": "/redfish/v1/Systems/1/LogicalAdapters/9fd725a1"
+        }
+    ]
+}
