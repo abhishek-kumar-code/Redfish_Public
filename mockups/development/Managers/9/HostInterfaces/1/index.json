@@ -21,6 +21,8 @@
     ],
     "KernelAuthRoleId": "Administrator",
     "KernelAuthEnabled": true,
+    "FirmwareAuthRoleId": "Administrator",
+    "FirmwareAuthEnabled": true,
     "HostEthernetInterfaces": {
         "@odata.id": "/redfish/v1/Managers/9/HostInterfaces/1/HostEthernetInterfaces"
     },
@@ -37,6 +39,9 @@
             }
         ],
         "KernelAuthRole": {
+            "@odata.id": "/redfish/v1/AccountService/Roles/Admin"
+        },
+        "FirmwareAuthRole": {
             "@odata.id": "/redfish/v1/AccountService/Roles/Admin"
         }
     },
