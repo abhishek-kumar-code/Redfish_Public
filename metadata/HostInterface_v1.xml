@@ -72,6 +72,11 @@
       <EntityType Name="HostInterface" BaseType="HostInterface.HostInterface">
         <Annotation Term="OData.Description" String="This schema defines a Host Interface resource."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent Host Interface resources as part of the Redfish specification."/>
+        <Property Name="Type" Type="HostInterface.v1_0_0.HostInterfaceType">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This indicates the Host Interface type for this interface."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an enumeration describing type of the interface."/>
+        </Property>
         <Property Name="Status" Type="Resource.Status"/>
         <Property Name="InterfaceEnabled" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
@@ -123,6 +128,12 @@
           <Annotation Term="OData.LongDescription" String="The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
         </Property>
       </EntityType>
+
+      <EnumType Name="HostInterfaceType">
+        <Member Name="NetworkHostInterface">
+          <Annotation Term="OData.Description" String="This interface is a Network Host Interface."/>
+        </Member>
+      </EnumType>
 
       <EnumType Name="AuthenticationMode">
         <Member Name="AuthNone">
