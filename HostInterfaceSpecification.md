@@ -47,7 +47,6 @@ The following referenced documents are indispensable for the application of this
 * <a id="UEFISPEC">UEFI</a> Unified Extensible Firmware Interface Specification (UEFI), Version 2.6, [http://www.uefi.org/sites/default/files/resources/UEFI Spec 2_6.pdf](http://www.uefi.org/sites/default/files/resources/UEFI%20Spec%202_6.pdf "http://www.uefi.org/sites/default/files/resources/UEFI%20Spec%202_6.pdf")
 * <a id="DMTFDSP0239">DMTF DSP0239</a> Management Component Transport Protocol (MCTP) IDs and Codes, Version 1.4, [http://www.dmtf.org/sites/default/files/standards/documents/DSP0239_1.4.pdf](http://www.dmtf.org/sites/default/files/standards/documents/DSP0239_1.4.pdf "http://www.dmtf.org/sites/default/files/standards/documents/DSP0239_1.4.pdf")
 * <a id="DMTFDSP0266">DMTF DSP0266</a> Redfish Scalable Platforms Management API Specification, [http://www.dmtf.org/sites/default/files/standards/documents/DSP0266_1.0.pdf](http://www.dmtf.org/sites/default/files/standards/documents/DSP0266_1.0.pdf "http://www.dmtf.org/sites/default/files/standards/documents/DSP0266_1.0.pdf")
-* <a id="DMTFDSP8010">DMTF DSP8010</a> Redfish API Schema, [http://www.dmtf.org/standards/redfish](http://www.dmtf.org/standards/redfish "http://www.dmtf.org/standards/redfish")
 * <a id="ISODIR">ISO/IEC Directives, Part 2</a> Rules for the structure and drafting of International Standards, [http://isotc.iso.org/livelink/livelink.exe?func=ll&objId=4230456&objAction=browse&sort=subtype](http://isotc.iso.org/livelink/livelink.exe?func=ll&objId=4230456&objAction=browse&sort=subtype "http://isotc.iso.org/livelink/livelink.exe?func=ll&objId=4230456&objAction=browse&sort=subtype")
 
 
@@ -141,7 +140,7 @@ Implementations that support the "Network Host Interface" protocol shall impleme
 
 * Authentication, and privilege authorization equivalent to the out-of-band Redfish API as specified in DSP0266 shall be supported by the implementation when enabled from the manager configuration.
   * Authentication credentials that are valid on the normal out-of-band Redfish network interface shall also be valid on the HI.
-  * Implementations may optionally support a configurable AuthNone authentication mode (no authentication required) that can be configured on the manager for use on HI.   If implemented, enablement of AuthNone shall be configurable, and the RoleId assumed by AuthNone requests shall be configurable.
+  * Implementations may optionally support a configurable AuthNone authentication mode (no authentication required) that can be configured on the manager for use on Host Interface.   If implemented, enablement of AuthNone shall be configurable, and the RoleId assumed by AuthNone requests shall be configurable as described by the Redfish schema.
   * In addition to standard credentials, implementations may optionally support auto-generation and delivery of HI-only credentials that may be used by the Firmware or OS to authenticate.
   * If supported, auto-generated host credentials shall be delivered using UEFI-based mechanism described in a later section of this document.
   * The permissions granted to any auto-generated credentials shall be configurable with a defined RoleId assigned.
@@ -154,8 +153,8 @@ Implementations that support the "Network Host Interface" protocol shall impleme
 * Implementations that support SMBIOS shall provide an SMBIOS Type 42 structure that describes each host interface as defined by the [SMBIOS](#DMTFDSP0134) standard and the [SMBIOS Support](#smbios-support) clause of this document.
 
 * Implementations that support automatically generating and sending credentials to the host OS kernel and/or firmware using UEFI runtime variables shall be implemented as defined within the [Kernel Authentication](#delivery-of-kernel-authentication-information-via-uefi-runtime-variables) clause of this document..  
-  * If the Kernel Authentication Interface is implemented, Redfish services shall implement a configuration option that allows customers to disable the Kernel Authentication
-  * If the Kernel Authentication Interface is implemented, Redfish service shall implement a configurable privileges for this kernel interface shall be configurable.
+  * If the Kernel Authentication Interface is implemented, the Redfish services shall implement a configuration option that allows customers to disable the Kernel Authentication as described by the Redfish schema.
+  * If the Kernel Authentication Interface is implemented, the Redfish service shall implement a configurable role for the Kernel Authentication Interface as described by the Redfish schema.
 
 ## SMBIOS Support
 When Redfish Host Interface is available, the host shall support an SMBIOS Type 42 structure that defines the attributes of the Redfish Host Interfaces that are supported for the system. Identification of host interface parameters on systems that do not implement SMBIOS is not covered in this document and therefore OEM-specific methods shall be used.
@@ -259,7 +258,7 @@ To provide for situations of this type, systems supporting the Redfish service m
 
 * The credentials shall be auto-generated by the Redfish Service and provided to firmware and OS using the UEFI variable interface variables described herein at the initiation of each system boot.  
 * The generation of both Firmware and OS credentials shall be user-configurable with the option to disable or enable generation of the credentials separately for both Firmware and OS kernel.
-* The permissions of the resulting session shall be configurable through Manager configuration.
+* The permissions of the resulting session shall be configurable through Manager configuration as described by the Redfish schema.
 * The supplied credentials shall be in the form of a user id and password -- both auto-generated by the Redfish Service.
 * Only one session using these auto-generated credentials shall be allowed at a time.   
 * The session associated with the auto-generated credentials shall not timeout or expire.
