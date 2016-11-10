@@ -67,13 +67,13 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Lists the set of OEM Priviliges used in building this mappings."/>
         </Property>
-        <Property Name="Mappings" Type="Collection(PrivilegeMapping.v1_0_0.Mapping)" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+        <Property Name="Mappings" Type="Collection(PrivilegeMapping.v1_0_0.Mapping)" Nullable="false"> 
         </Property>
       </EntityType>
 
       <ComplexType Name="Mapping">
         <Property Name="Entity" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Indicates entity name. e.g., Manager."/>
           <Annotation Term="OData.LongDescription" String="Indicates entity name. e.g., Manager."/>
         </Property>
@@ -97,6 +97,7 @@
 
       <ComplexType Name="Target_PrivilegeMap">
         <Property Name="Targets" Type="Collection(Edm.String)" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Indicates the URI or Entity e.g.,/redfish/v1/Systems/1,  Manager."/>
           <Annotation Term="OData.LongDescription" String="Indicates the set of URI(s) or Entity(s) or property(s). e.g.,/redfish/v1/Systems/1, Manager, Password. When targets property is not mentioned, then there is no override."/>
         </Property>
@@ -138,6 +139,7 @@
       <ComplexType Name="OperationPrivilege">
         <Annotation Term="OData.Description" String="Used for describing the specific privileges for a given type of HTTP operation"/>
         <Property Name="Privilege" Type="Collection(Edm.String)" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Lists the privileges that are allowed to perform the given type of HTTP operation on the entity type."/>
           <Annotation Term="OData.LongDescription" String="This array shall contain a set of strings that match 0 or more of the strings found in the PrivilegesUsed and OEMPrivilegesUsed properties."/>
         </Property>
