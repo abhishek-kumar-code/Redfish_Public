@@ -103,6 +103,16 @@
           <Annotation Term="OData.Description" String="This indicates whether this kernel authentication is enabled for this interface."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether kernel authentication for this interface is enabled."/>
         </Property>
+        <Property Name="FirmwareAuthRoleId" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="This property contains the Role for firmware authentication on this interface."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the ID of the Role resource that is configured for firmware authentication on this interface."/>
+        </Property>
+        <Property Name="FirmwareAuthEnabled" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="This indicates whether this firmware authentication is enabled for this interface."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether firmware authentication for this interface is enabled."/>
+        </Property>
 
         <NavigationProperty Name="HostEthernetInterfaces" Type="EthernetInterfaceCollection.EthernetInterfaceCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -161,6 +171,12 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A reference to the Role object defining Privileges for this Host Interface when using kernel authentication."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a Role object instance, and should reference the object identified by property KernelAuthRoleId."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        <NavigationProperty Name="FirmwareAuthRole" Type="Role.Role" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A reference to the Role object defining Privileges for this Host Interface when using firmware authentication."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a Role object instance, and should reference the object identified by property FirmwareAuthRoleId."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </ComplexType>
