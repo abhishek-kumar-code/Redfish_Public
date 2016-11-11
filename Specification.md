@@ -103,10 +103,11 @@ The following additional terms are used in this document.
 | Term                            | Definition                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | ---                             | ---                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | Baseboard Management Controller | An embedded device or service, typically an independent microprocessor or System-on-Chip with associated firmware, within a Computer System used to perform systems monitoring and management-related tasks, which are commonly performed out-of-band.                                                                                                                                                                                                                                   |
-| Collection                      | A Collection is a resource that acts as a container of other Resources. The members of a collection usually have similar characteristics. The container processes messages sent to the container. The members of the container process messages sent only to that member without affecting other members of the container.                                                                                                                                                                |
+| Collection                      | See Resource Collection.                                                 |
 | CRUD                            | Basic intrinsic operations used by any interface: Create, Read, Update and Delete.                                                                                                                                                                                                                                                                                                                                                                                                             |
 | Event                           | A record that corresponds to an individual alert.                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | Managed System                  | In the context of this specification, a managed system is a system that provides information or status, or is controllable, via a Redfish-defined interface.                                                                                                                                                                                                                                                                                                                                   |
+| Member                         | A Member is a single Resource instance contained in a Resource Collection |
 | Message                         | A complete request or response, formatted in HTTP/HTTPS.  The protocol, based on REST, is a request/response protocol where every Request should result in a Response.                                                                                                                                                                                                                                                                                                                         |
 | Operation                       | The HTTP request methods that map generic CRUD operations.  These are POST, GET, PUT/PATCH, HEAD and DELETE.                                                                                                                                                                                                                                                                                                                                                                                  |
 | OData                           | The Open Data Protocol, as defined in [OData-Protocol](#OData-Protocol).                                                                                                                                                                                                                                                                                                                                                                                                                       |
@@ -115,10 +116,11 @@ The following additional terms are used in this document.
 | Redfish Client                  | Name for the functionality that communicates with a Redfish Service and accesses one or more resources or functions of the Service.                                                                                                                                                                                                                                                                                                                                                            |
 | Redfish Protocol                | The set of protocols that are used to discover, connect to, and inter-communicate with a Redfish Service.                                                                                                                                                                                                                                                                                                                                                                                      |
 | Redfish Schema                  | The Schema definitions for Redfish resources.  It is defined according to OData Schema representation that can be directly translated to a JSON Schema representation.                                                                                                                                                                                                                                                                                                                         |
-| Redfish Service                 | Also referred to as the "Service". The collection of functionality that implements the protocols, resources, and functions that deliver the interface defined by this specification and its associated behaviors for one or more managed systems.                                                                                                                                                                                                                               |
+| Redfish Service                 | Also referred to as the "Service". The set of functionality that implements the protocols, resources, and functions that deliver the interface defined by this specification and its associated behaviors for one or more managed systems.                                                                                                                                                                                                                               |
 | Redfish Service Entry Point     | Also referred to as "Service Entry Point". The interface through which a particular instance of a Redfish Service is accessed. A Redfish Service may have more than one Service Entry Point.                                                                                                                                                                                                                                                                                              |
 | Request                         | A message from a Client to a Server.  It consists of a request line (which includes the Operation), request headers, an empty line and an optional message body.                                                                                                                                                                                                                                                                                                                               |
 | Resource                        | A Resource is addressable by a URI and is able to receive and process messages. A Resource can be either an individual entity, or a collection that acts as a container for several other entities.                                                                                                                                                                                                                                                                                   |
+| Resource Collection             | A Resource Collection is a resource that acts as a container of other Resources. The Members of a Resource Collection usually have similar characteristics. The container processes messages sent to the container. The Members of the container process messages sent only to that Member without affecting other Members of the container.                                                                                                                                                                |
 | Resource Tree                   | A Resource Tree is a tree structure of JSON encoded resources accessible via a well-known starting URI.  A client may discover the resources available on a Redfish Service by following the resource links from the base of the tree. <br>**NOTE** for Redfish client implementation:  Although the resources are a tree, the references between resources may result in graph instead of a tree.  Clients traversing the resource tree must contain logic to avoid infinite loops. |
 | Response                        | A message from a Server to a Client in response to a request message.  It consists of a status line, response headers, an empty line and an optional message body.                                                                                                                                                                                                                                                                                                                             |
 | Service Root                    | The term Service Root is used to refer to a particular resource that is directly accessed via the service entry point. This resource serves as the starting point for locating and accessing the other resources and associated metadata that together make up an instance of a Redfish Service.                                                                                                                                                                                         |
@@ -346,11 +348,11 @@ An attractive feature of the RESTful interface is the very limited number of ope
 | HTTP Method | Interface Semantic                     | Required |
 | ---         | ---                                    | ---      |
 | POST        | Object create, Object action, Eventing | Yes      |
-| GET         | Object or Collection retrieval         | Yes      |
+| GET         | Object retrieval                       | Yes      |
 | PUT         | Object replace                         | No       |
 | PATCH       | Object update                          | Yes      |
 | DELETE      | Object delete                          | Yes      |
-| HEAD        | Object or Collection header retrieval  | No       |
+| HEAD        | Object header retrieval                | No       |
 | OPTIONS     | Header retrieval, CORs preflight       | No       |
 
 Other HTTP methods are not allowed and shall receive a [405](#status-405) response.
@@ -489,7 +491,7 @@ HTTP defines headers that can be used in request messages. The following table d
 
 #### Read requests (GET)
 
-The GET method is used to retrieve a representation of a resource.  That representation can either be a single resource or a collection. The service will return the representation using one of the media types specified in the Accept header, subject to requirements in the Media Types clause [Media Types](#media-types). If the Accept header is not present, the service will return the resources representations as application/json.
+The GET method is used to retrieve a representation of a resource. The service will return the representation using one of the media types specified in the Accept header, subject to requirements in the Media Types clause [Media Types](#media-types). If the Accept header is not present, the service will return the resources representations as application/json.
 
 * The HTTP GET method shall be used to retrieve a resource without causing any side effects.
 * The service shall ignore the content of the body on a GET.
@@ -499,13 +501,13 @@ The GET method is used to retrieve a representation of a resource.  That represe
 
 The root URL for Redfish version 1 services shall be "/redfish/v1/".
 
-The root URL for the service returns a ServiceRoot resource as defined by this specification.
+The root URL for the Service returns a ServiceRoot resource as defined by this specification.
 
 Services shall not require authentication in order to retrieve the service root and "/redfish" documents.
 
 ##### Metadata document request
 
-Redfish Services shall expose a [metadata document](#service-metadata) describing the service at the "/redfish/v1/$metadata" resource. This metadata document describes the resources and collections available at the root, and references additional metadata documents describing the full set of resource types exposed by the service.
+Redfish Services shall expose a [metadata document](#service-metadata) describing the service at the "/redfish/v1/$metadata" resource. This metadata document describes the resources available at the root, and references additional metadata documents describing the full set of resource types exposed by the service.
 
 Services shall not require authentication in order to retrieve the metadata document.
 
@@ -517,30 +519,30 @@ Services shall not require authentication in order to retrieve the service docum
 
 ##### Resource retrieval requests
 
-Clients request resources by issuing GET requests to the URI for the individual resource or resource collection. The URI for a resource or resource collection may be obtained from a [resource identifier property](#resource-identifier-property) returned in a previous request (for example, within the [links](#links-property) clause of a previously returned resource). Services may, but are not required to, support the convention of retrieving individual properties of a resource by appending a segment containing the property name to the URI of the resource.
+Clients request resources by issuing GET requests to the URI for the individual Resource. The URI for a Resource may be obtained from a [resource identifier property](#resource-identifier-property) returned in a previous request (for example, within the [links](#links-property) clause of a previously returned resource). Services may, but are not required to, support the convention of retrieving individual properties of a Resource by appending a segment containing the property name to the URI of the resource.
 
 ###### Query parameters
 
-When the resource addressed is a collection, the client can use the following paging query options to specify that a subset of the members be returned. These paging query options apply to the Members property of a collection resource.
+When the Resource addressed is a Resource Collection, the client may use the following paging query options to specify that a subset of the Members of that Resource Collection be returned. These paging query options apply to the Members property array of a Resource Collection.
 
 | Attribute | Description                                                                                                                                                                | Example                   |
 | ---       | ---                                                                                                                                                                        | ---                       |
-| $skip     | Integer indicating the number of resources in the collection to skip before retrieving the first resource.                                                                 | `http://collection?$skip=5` |
-| $top      | Integer indicating the number of collection members to include in the response. The minimum value for this parameter is 1.  The default behavior is to return all members. | `http://collection?$top=30` |
+| $skip     | Integer indicating the number of Members in the Resource Collection to skip before retrieving the first resource.                                                                 | `http://collection?$skip=5` |
+| $top      | Integer indicating the number of Members to include in the response. The minimum value for this parameter is 1.  The default behavior is to return all Members. | `http://collection?$top=30` |
 
 * Services should support the $top and $skip query parameters.
 * Implementation shall return the 501, Not Implemented, status code for any query parameters starting with "$" that are not supported, and should return an [extended error](#error-responses) indicating the requested query parameter(s) not supported for this resource.
 * Implementations shall ignore unknown or unsupported query parameters that do not begin with "$".
 
-###### Retrieving collections
+###### Retrieving Resource Collections
 
-Retrieving a collection is done by sending the HTTP GET method to the URI for the collection. The response includes attributes of the collection as well as the list of the members of the collection. A subset of the members can be returned using [client paging query parameters](#query-parameters).
+Retrieving a Resource Collection is done by sending the HTTP GET method to the URI for that Resource. The response includes properties of the Resource Collection including the array of its Members. A subset of the Members can be returned using [client paging query parameters](#query-parameters).
 
-No requirements are placed on implementations to return a consistent set of members when a series of requests using paging query parameters are made over time to obtain the entire set of members. It is possible that this could result in missed or duplicate elements being retrieved if multiple GETs are used to retrieve a collection using paging.
+No requirements are placed on implementations to return a consistent set of Members when a series of requests using paging query parameters are made over time to obtain the entire set of members. It is possible that this could result in missed or duplicate elements being retrieved if multiple GETs are used to retrieve the Members array instances using paging.
 
-* Clients shall not make assumptions about the URIs for the resource members of a collection.
-* Retrieved collections shall always include the [count](#resource-count-property) property to specify the total number of members in the collection.
-* If only a portion of the collection is returned due to client-specified paging query parameters or services returning [partial results](#partial-results), then the total number of resources across all pages shall be returned in the count property.
+* Clients shall not make assumptions about the URIs for the Members of a Resource Collection.
+* Retrieved Resource Collections shall always include the [count](#resource-count-property) property to specify the total number of entries in its Members array.
+* If only a portion of the Resource Collection is returned due to client-specified paging query parameters or services returning [partial results](#partial-results), then the total number of resources across all pages shall be returned in the count property.
 
 #### HEAD
 
@@ -576,14 +578,14 @@ The PUT method is used to completely replace a resource.  Properties omitted fro
 
 * Services may support the PUT method to replace a resource in whole.  If a service does not implement this method, status code [405](#status-405) shall be returned.
 * Services may return a representation of the resource after any server-side transformations in the body of the response.
-* Services should return status code [405](#status-405) if the client specifies a PUT request against a collection.
+* Services should return status code [405](#status-405) if the client specifies a PUT request against a Resource Collection.
 * The PUT operation should be idempotent in the absence of outside changes to the resource, with the possible exception that ETAG values may change as the result of this operation.
 
 ##### Create (POST)
 
-The POST method is used to create a new resource. The POST request is submitted to the resource collection in which the new resource is to belong.
+The POST method is used to create a new resource. The POST request is submitted to the Resource Collection in which the new resource is to belong.
 
-Submitting a POST request to a resource representing a collection is equivalent to submitting the same request to the Members property of that resource. Services that support adding members to a collection shall support both forms.
+Submitting a POST request to a Resource Collection is equivalent to submitting the same request to the Members property of that Resource Collection. Services that support adding Members to a Resource Collection shall support both forms.
 
 * Services shall support the POST method for creating resources. If the resource does not offer anything to be created, a status code [405](#status-405) shall be returned.
 * Services shall only support POST operations for URIs representing either a ResourceCollection entity or an Action (see [Actions (POST)](#actions-post-)).
@@ -597,7 +599,7 @@ The DELETE method is used to remove a resource.
 
 * Services shall support the DELETE method for resources that can be deleted. If the resource can never be deleted, status code [405](#status-405) shall be returned.
 * Services may return a representation of the just deleted resource in the response body.
-* Services should return status code [405](#status-405) if the client specifies a DELETE request against a collection.
+* Services should return status code [405](#status-405) if the client specifies a DELETE request against a Resource Collection.
 
 Services may return status code [404](#status-404) or a success code if the resource has already been deleted.
 
@@ -804,7 +806,7 @@ The service metadata shall include the namespaces for each of the Redfish resour
 </edmx:Reference>
 ~~~
 
-The service metadata shall include an entity container that defines the top level resource and collections. This entity container shall extend the ServiceContainer defined in the ServiceRoot.v1_0_0 schema and may include additional resources or collections.
+The service metadata shall include an entity container that defines the top level Resources and Resource Collections. This entity container shall extend the ServiceContainer defined in the ServiceRoot.v1_0_0 schema and may include additional Resources.
 
 ~~~xml
 <edmx:DataServices>
@@ -815,7 +817,7 @@ The service metadata shall include an entity container that defines the top leve
 ~~~
 
 ###### Referencing OEM extensions
-The metadata document may reference additional schema documents describing OEM-specific extensions used by the service, for example custom types for additional collections.
+The metadata document may reference additional schema documents describing OEM-specific extensions used by the service, for example custom types for additional Resource Collections.
 
 ~~~xml
 <edmx:Reference Uri="http://contoso.org/Schema/CustomTypes">
@@ -883,7 +885,7 @@ The JSON object shall contain a context property named "@odata.context" with a v
 
 The JSON object shall include a property named "value" whose value is a JSON array containing an entry for the [service root](#service-root-request) and each resource that is a direct child of the service root.
 
-Each entry shall be represented as a JSON object and shall include a "name" property whose value is a user-friendly name of the resource, a "kind" property whose value is "Singleton" for individual resources (including collection resources) or "EntitySet" for top-level resource collections, and a "url" property whose value is the relative URL for the top-level resource.
+Each entry shall be represented as a JSON object and shall include a "name" property whose value is a user-friendly name of the resource, a "kind" property whose value is "Singleton" for individual Resources (including Resource Collections) or "EntitySet" for top-level Resource Collections, and a "url" property whose value is the relative URL for the top-level Resource.
 
 #### Resource responses
 
@@ -971,9 +973,9 @@ DateTime values shall be returned as JSON strings according to the ISO 8601 "ext
 
 Structured properties, defined as [complex types](#resource-type-definitions) or [expanded](#expanded-resources) [resource types](#resource-type-definitions), are returned as JSON objects. The type of the JSON object is specified in the Redfish Schema definition of the property containing the structured value.
 
-##### Collection properties
+##### Resource Collection properties
 
-Collection-valued properties are returned as JSON arrays, where each element of the array is a JSON object whose type is specified in the Redfish Schema document describing the containing type.
+Resource Collection-valued properties are returned as a JSON array property, where each element of the array is a JSON object whose type is specified in the Redfish Schema document describing the containing type.
 
 Collection-valued properties may contain a subset of the members of the full collection. In this case, the collection-valued property shall be annotated with a next link property. The property representing the next link shall be a peer of the collection-valued property, with the name of the collection-valued property suffixed with "@odata.nextLink". The value of the next link property shall be an opaque URL that the client can use to retrieve the next set of collection members. The next link property shall only be present if the number of resources requested is greater than the number of resources returned.
 
@@ -1175,30 +1177,30 @@ where
 
 The client can get the definition of the annotation from the [service metadata](#service-metadata), or may ignore the annotation entirely, but should not fail reading the resource due to unrecognized annotations, including new annotations defined within the Redfish namespace.
 
-#### Collection resource response
+#### Resource Collection response
 
-Collection resources are returned as a JSON object. The JSON object shall include a [context](#context-property), [resource count](#resource-count-property), and array of [members](#resource-members-property), and may include a [next link](#partial-results) for partial results.
+Resource Collections are returned as a JSON object. The JSON object shall include a [context](#context-property), [resource count](#resource-count-property), and array of [Members](#resource-members-property), and may include a [next link](#partial-results) for partial results.
 
 #####	Context property
-Responses that represent a collection resource shall contain a context property named "@odata.context" describing the source of the payload. The value of the context property shall be the context URL that describes the collection resource according to [OData-Protocol](#OData-Protocol).
+Responses shall contain a context property named "@odata.context" describing the source of the payload. The value of the context property shall be the context URL that describes the Resource Collection according to [OData-Protocol](#OData-Protocol).
 
-The context URL for a collection resource is of one of the following two forms:
+The context URL for a Resource Collection is of one of the following two forms:
 
  *MetadataUrl*.#*CollectionResourceType*
  *MetadataUrl*.#*CollectionResourcePath*
 
 where
 * *MetadataUrl* = the metadata url of the service (/redfish/v1/$metadata)
-* *CollectionResourceType* = the fully qualified name of the unversioned type of resources within the collection.
-* *CollectionResourcePath* = the path from the service root to the collection resource
+* *CollectionResourceType* = the fully qualified name of the unversioned type of resources within the Resource Collection.
+* *CollectionResourcePath* = the path from the service root to the Resource Collection.
 
-##### Resource count property
+##### Count property
 
-The total number of resources available in the collection is represented through the count property. The count property shall be named "Members@odata.count" and its value shall be an integer representing the total number of records in the result. This count is not affected by the $top or $skip [query parameters](#query-parameters).
+The total number of resources available in the Resource Collection is represented through the count property. The count property shall be named "Members@odata.count" and its value shall be an integer representing the total number of records in the result. This count is not affected by the $top or $skip [query parameters](#query-parameters).
 
-##### Resource members property
+##### Members property
 
-The members of the collection of resources are returned as a JSON array. The name of the property representing the members of the collection shall be "Members".
+The Members of the Resource Collection of resources are returned as a JSON array. The name of the property representing the members of the collection shall be "Members".
 
 ##### Partial results
 Responses representing a single resource shall not be broken into multiple results.
