@@ -377,7 +377,7 @@
         <Property Name="District" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="A county, parish, gun (JP), or  district (IN)."/>
-          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the A2 field as defined in RFC5139.  It is used to name a county, parish, gun (JP), or  district (IN). "/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the A2 field as defined in RFC5139.  It is used to name a county, parish, gun (JP), or  district (IN)."/>
         </Property>
         <Property Name="City" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
