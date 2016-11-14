@@ -95,6 +95,16 @@
           <Annotation Term="OData.Description" String="The set of network controllers ASICs that make up this NetworkAdapter."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the set of network controllers ASICs that make up this NetworkAdapter."/>
         </Property>
+        <NavigationProperty Name="NetworkPorts" Type="NetworkPortCollection.NetworkPortCollection" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        <NavigationProperty Name="NetworkDeviceFunctions" Type="NetworkDeviceFunctionCollection.NetworkDeviceFunctionCollection" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
         <Property Name="Actions" Type="NetworkAdapter.v1_0_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
@@ -116,28 +126,28 @@
           <Annotation Term="OData.Description" String="The version of the user-facing firmware package."/>
           <Annotation Term="OData.LongDescription" String="The value of this property sahll be the version number of the user-facing firmware package."/>
         </Property>
-        <Property Name="Links" Type="NetworkAdapter.v1_0_0.ControllerLinks">
-          <Annotation Term="OData.Description" String="Links"/>
-          <Annotation Term="OData.LongDescription" String="Links for this controller."/>
-        </Property>
         <Property Name="ControllerCapabilities" Type="NetworkAdapter.v1_0_0.ControllerCapabilities">
           <Annotation Term="OData.Description" String="The capabilities of this controller."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the capabilities of this controller."/>
         </Property>
+        <Property Name="Links" Type="NetworkAdapter.v1_0_0.ControllerLinks">
+          <Annotation Term="OData.Description" String="Links"/>
+          <Annotation Term="OData.LongDescription" String="Links for this controller."/>
+        </Property>
+      </ComplexType>
+
+      <ComplexType Name="ControllerLinks">
+        <NavigationProperty Name="PCIeDevices" Type="Collection(PCIeDevice.PCIeDevice)" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
         <NavigationProperty Name="NetworkPorts" Type="Collection(NetworkPort.NetworkPort)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the members of this collection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
         <NavigationProperty Name="NetworkDeviceFunctions" Type="Collection(NetworkDeviceFunction.NetworkDeviceFunction)" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>
-      </ComplexType>
-
-      <ComplexType Name="ControllerLinks">
-        <NavigationProperty Name="PCIeDevices" Type="Collection(PCIeDevice.PCIeDevice)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the members of this collection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
