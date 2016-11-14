@@ -189,6 +189,38 @@ files.forEach(function(file) {
         }
       }
     },
+    'descriptions have trailing periods': function(err, txt) {
+      let doc = xmljs.parseXml(txt);
+      let descriptions = doc.find('//*[local-name()="Annotation"][@Term="OData.Description"]/@String');
+      if(descriptions.length === 0)
+      {
+        // No descriptions are perfectly acceptable
+        return;
+      }
+      for(let i = 0; i < descriptions.length; i++)
+      {
+        if(i.slice(-1) === '.')
+        {
+          throw new Error('\"' + i + '\" does not end in a period!');
+        }
+      }
+    },
+    'long descriptions have trailing periods': function(err, txt) {
+      let doc = xmljs.parseXml(txt);
+      let descriptions = doc.find('//*[local-name()="Annotation"][@Term="OData.LongDescription"]/@String');
+      if(descriptions.length === 0)
+      {
+        // No descriptions are perfectly acceptable
+        return;
+      }
+      for(let i = 0; i < descriptions.length; i++)
+      {
+        if(i.slice(-1) === '.')
+        {
+          throw new Error('\"' + i + '\" does not end in a period!');
+        }
+      }
+    },
     'no empty Schema tags': function(err, txt) {
       let doc = xmljs.parseXml(txt);
       let schemas = doc.find('//*[local-name()="Schema"]');
