@@ -541,7 +541,7 @@ Retrieving a Resource Collection is done by sending the HTTP GET method to the U
 No requirements are placed on implementations to return a consistent set of Members when a series of requests using paging query parameters are made over time to obtain the entire set of members. It is possible that this could result in missed or duplicate elements being retrieved if multiple GETs are used to retrieve the Members array instances using paging.
 
 * Clients shall not make assumptions about the URIs for the Members of a Resource Collection.
-* Retrieved Resource Collections shall always include the [count](#resource-count-property) property to specify the total number of entries in its Members array.
+* Retrieved Resource Collections shall always include the [count](#count-property) property to specify the total number of entries in its Members array.
 * If only a portion of the Resource Collection is returned due to client-specified paging query parameters or services returning [partial results](#partial-results), then the total number of resources across all pages shall be returned in the count property.
 
 #### HEAD
