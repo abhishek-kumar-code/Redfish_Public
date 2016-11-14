@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  LogicalAdapter  v1.0.0-->
+<!--# Redfish Schema:  NetworkDevice  v1.0.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -31,11 +31,11 @@
 
   <edmx:DataServices>
 
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogicalAdapter">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkDevice">
 
-      <EntityType Name="LogicalAdapter" BaseType="Resource.v1_0_0.Resource" Abstract="true">
-        <Annotation Term="OData.Description" String="A Logical Adapter provides linkages between NetworkAdapter, NetworkPort, and NetworkDeviceFunction instances."/>
-        <Annotation Term="OData.LongDescription" String="A Logical Adapter provides linkages between NetworkAdapter, NetworkPort, and NetworkDeviceFunction instances."/>
+      <EntityType Name="NetworkDevice" BaseType="Resource.v1_0_0.Resource" Abstract="true">
+        <Annotation Term="OData.Description" String="A Network Device provides linkages between NetworkAdapter, NetworkPort, and NetworkDeviceFunction instances."/>
+        <Annotation Term="OData.LongDescription" String="A Network Device provides linkages between NetworkAdapter, NetworkPort, and NetworkDeviceFunction instances."/>
         <Annotation Term="Capabilities.InsertRestrictions">
           <Record>
             <PropertyValue Property="Insertable" Bool="false"/>
@@ -55,11 +55,11 @@
 
     </Schema>
 
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogicalAdapter.v1_0_0">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkDevice.v1_0_0">
 
-      <EntityType Name="LogicalAdapter" BaseType="LogicalAdapter.LogicalAdapter">
-        <Annotation Term="OData.Description" String="A Logical Adapter provides linkages between NetworkAdapter, NetworkPort, and NetworkDeviceFunction instances."/>
-        <Annotation Term="OData.LongDescription" String="A Logical Adapter provides linkages between NetworkAdapter, NetworkPort, and NetworkDeviceFunction instances."/>
+      <EntityType Name="NetworkDevice" BaseType="NetworkDevice.NetworkDevice">
+        <Annotation Term="OData.Description" String="A Network Device provides linkages between NetworkAdapter, NetworkPort, and NetworkDeviceFunction instances."/>
+        <Annotation Term="OData.LongDescription" String="A Network Device provides linkages between NetworkAdapter, NetworkPort, and NetworkDeviceFunction instances."/>
         <NavigationProperty Name="NetworkAdapter" Type="NetworkAdapter.NetworkAdapter" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the members of this collection."/>
