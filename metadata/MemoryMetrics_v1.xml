@@ -170,7 +170,7 @@
         <Property Name="AddressParityError" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Address parity error detected status."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be true if an Address Parity Error was detected which could not be corrected by retry"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be true if an Address Parity Error was detected which could not be corrected by retry."/>
         </Property>
       </ComplexType>
 

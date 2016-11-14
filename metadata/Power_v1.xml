@@ -81,7 +81,7 @@
         <NavigationProperty Name="PowerSupplies" Type="Collection(Power.v1_0_0.PowerSupply)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Details of the power supplies associated with this system or device."/>
-          <Annotation Term="OData.LongDescription" String="This object shall contain details of the power supplies associated with this system or device"/>
+          <Annotation Term="OData.LongDescription" String="This object shall contain details of the power supplies associated with this system or device."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
         <NavigationProperty Name="Redundancy" Type="Collection(Redundancy.Redundancy)" Nullable="false">

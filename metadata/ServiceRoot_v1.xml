@@ -119,7 +119,7 @@
         <Property Name="RedfishVersion" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The version of the Redfish service."/>
-          <Annotation Term="OData.LongDescription" String="The value of this string shall represent the version of the Redfish service.  The format of this string shall be of the format majorversion.minorversion.errata in compliance with Protocol Version section of the Redfish specification. "/>
+          <Annotation Term="OData.LongDescription" String="The value of this string shall represent the version of the Redfish service.  The format of this string shall be of the format majorversion.minorversion.errata in compliance with Protocol Version section of the Redfish specification."/>
           <Annotation Term="Validation.Pattern" String="^\d+\.\d+\.\d+$"/>
         </Property>
         <Property Name="UUID" Type="Resource.UUID">

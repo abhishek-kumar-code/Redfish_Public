@@ -261,7 +261,7 @@
         <Property Name="DurableName" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This indicates the world wide, persistent name of the resource."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain the world wide unique identifier for the resource. The string shall be in the format described by the value of the Identifier.DurableNameFormat property"/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the world wide unique identifier for the resource. The string shall be in the format described by the value of the Identifier.DurableNameFormat property."/>
         </Property>
         <Property Name="DurableNameFormat" Type="Resource.v1_1_0.DurableNameFormat">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>

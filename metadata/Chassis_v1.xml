@@ -339,7 +339,7 @@
         <Property Name="IntrusionSensorNumber" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A numerical identifier to represent the physical security sensor."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a numerical identifier for this physical security sensor that is unique within this resource. "/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a numerical identifier for this physical security sensor that is unique within this resource."/>
         </Property>
         <Property Name="IntrusionSensor" Type="Chassis.v1_1_0.IntrusionSensor">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>

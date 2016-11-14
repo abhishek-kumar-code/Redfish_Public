@@ -53,7 +53,7 @@
         <Property Name="ImageName" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The current image name."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the name of the image. "/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the name of the image."/>
         </Property>
         <Property Name="Image" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>

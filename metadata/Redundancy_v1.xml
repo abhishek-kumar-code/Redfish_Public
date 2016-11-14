@@ -31,7 +31,7 @@
 
       <EntityType Name="Redundancy" BaseType="Resource.v1_0_0.ReferenceableMember">
         <Annotation Term="OData.Description" String="This is the common redundancy definition and structure used in other Redfish schemas."/>
-        <Annotation Term="OData.LongDescription" String="This object represents the Redundancy element property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification.  The value of this string shall be of the format for the reserved word *Redundancy*"/>
+        <Annotation Term="OData.LongDescription" String="This object represents the Redundancy element property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification.  The value of this string shall be of the format for the reserved word *Redundancy*."/>
       </EntityType>
 
     </Schema>
@@ -40,7 +40,7 @@
 
       <EntityType Name="Redundancy" BaseType="Redundancy.Redundancy">
         <Annotation Term="OData.Description" String="This is the redundancy definition to be used in other resource schemas."/>
-        <Annotation Term="OData.LongDescription" String="This object represents the Redundancy element property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification.  The value of this string shall be of the format for the reserved word *Redundancy*"/>
+        <Annotation Term="OData.LongDescription" String="This object represents the Redundancy element property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification.  The value of this string shall be of the format for the reserved word *Redundancy*."/>
         <Property Name="Name" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description"  String="The name of the resource or array element."/>
