@@ -1,44 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  NetworkAdapterCollection  v1.0.0-->
+<!--# Redfish Schema:  NetworkAdapterCollection-->
+<!--#                                                                                      -->
+<!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
+<!--# available at http://www.dmtf.org/standards/redfish                                   -->
+<!--# Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF).                  -->
+<!--# For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright -->
 <!--################################################################################       -->
 <!---->
-
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
-    <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/NetworkAdapter_v1.xml">
+    <edmx:Include Namespace="NetworkAdapter"/>
   </edmx:Reference>
 
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkAdapterCollection">
-      <EntityType Name="NetworkAdapterCollection" BaseType="Resource.v1_0_0.Resource" Abstract="true">
-        <Annotation Term="OData.Description" String="A Network Adapter Collection provides linkages to individual NetworkAdapter instances for a chassis."/>
-        <Annotation Term="OData.LongDescription" String="A Network Adapter Collection provides linkages to individual NetworkAdapter instances for a chassis."/>
+
+      <EntityType Name="NetworkAdapterCollection" BaseType="Resource.v1_0_0.ResourceCollection">
+        <Annotation Term="OData.Description" String="A Collection of NetworkAdapter resource instances."/>
+        <Annotation Term="Capabilities.InsertRestrictions">
+          <Record>
+            <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.UpdateRestrictions">
+          <Record>
+            <PropertyValue Property="Updatable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.DeleteRestrictions">
+          <Record>
+            <PropertyValue Property="Deletable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <NavigationProperty Name="Members" Type="Collection(NetworkAdapter.NetworkAdapter)" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
       </EntityType>
+
     </Schema>
 
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkAdapterCollection.v1_0_0">
-
-      <EntityType Name="NetworkAdapterCollection" BaseType="NetworkAdapterCollection.NetworkAdapterCollection">
-        <Annotation Term="OData.Description" String="A Network Adapter Collection provides linkages to individual NetworkAdapter instances for a chassis."/>
-        <Annotation Term="OData.LongDescription" String="A Network Adapter Collection provides linkages to individual NetworkAdapter instances for a chassis."/>
-        <Property Name="Members" Type="Collection(NetworkAdapterCollection.v1_0_0.MembersType)">
-        </Property>
-      </EntityType>
-
-      <ComplexType Name="MembersType">
-        <Property Name="@odata.id" Type="Edm.String">
-          <Annotation Term="OData.Description" String="Network adapter"/>
-          <Annotation Term="OData.LongDescription" String="A NetworkAdapter associated with this NetworkAdapterCollection instance."/>
-        </Property>
-      </ComplexType>
-
-    </Schema>
   </edmx:DataServices>
 </edmx:Edmx>

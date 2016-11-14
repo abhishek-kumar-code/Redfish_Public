@@ -2,25 +2,55 @@
 <!---->
 <!--################################################################################       -->
 <!--# Redfish Schema:  NetworkDeviceFunction  v1.0.0-->
+<!--#                                                                                      -->
+<!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
+<!--# available at http://www.dmtf.org/standards/redfish                                   -->
+<!--# Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF).                  -->
+<!--# For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright -->
 <!--################################################################################       -->
 <!---->
-
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
-    <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/NetworkPort_v1.xml">
+    <edmx:Include Namespace="NetworkPort"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/PCIeFunction_v1.xml">
+    <edmx:Include Namespace="PCIeFunction"/>
   </edmx:Reference>
 
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkDeviceFunction">
+
       <EntityType Name="NetworkDeviceFunction" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="A Network Device Function represents a logical interface exposed by the network adapter."/>
         <Annotation Term="OData.LongDescription" String="A Network Device Function represents a logical interface exposed by the network adapter."/>
+        <Annotation Term="Capabilities.InsertRestrictions">
+          <Record>
+            <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.UpdateRestrictions">
+          <Record>
+            <PropertyValue Property="Updatable" Bool="true"/>
+            <Annotation Term="OData.Description" String="A Network Device Function can be updated to change properties such as WWN and MAC address information for this device."/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.DeleteRestrictions">
+          <Record>
+            <PropertyValue Property="Deletable" Bool="false"/>
+          </Record>
+        </Annotation>
       </EntityType>
+
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NetworkDeviceFunction.v1_0_0">
@@ -28,7 +58,7 @@
       <EntityType Name="NetworkDeviceFunction" BaseType="NetworkDeviceFunction.NetworkDeviceFunction">
         <Annotation Term="OData.Description" String="A Network Device Function represents a logical interface exposed by the network adapter."/>
         <Annotation Term="OData.LongDescription" String="A Network Device Function represents a logical interface exposed by the network adapter."/>
-        <Property Name="NetworkDeviceFunctionType" Type="NetworkDeviceFunction.v1_0_0.NetworkDeviceFunctionType">
+        <Property Name="NetworkDeviceFunctionType" Type="NetworkDeviceFunction.v1_0_0.DeviceType">
           <Annotation Term="OData.Description" String="The configured capability of this network device function."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the configured capability of this network device function."/>
         </Property>
@@ -36,7 +66,7 @@
           <Annotation Term="OData.Description" String="Whether the network device function is enabled."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether whether the network device function is enabled.  Disabled network device functions shall not be enumerated or seen by the operating system."/>
         </Property>
-        <Property Name="NetworkDeviceFunctionCapabilities" Type="Collection(NetworkDeviceFunction.v1_0_0.NetworkDeviceFunctionCapabilitiesType)">
+        <Property Name="NetworkDeviceFunctionCapabilities" Type="Collection(NetworkDeviceFunction.v1_0_0.DeviceCapabilities)">
           <Annotation Term="OData.Description" String="Capabilities of this network device function."/>
           <Annotation Term="OData.LongDescription" String="This object shall contain an array of capabilities of this network device function."/>
         </Property>
@@ -52,16 +82,16 @@
           <Annotation Term="OData.Description" String="Fibre Channel"/>
           <Annotation Term="OData.LongDescription" String="This object shall contain Fibre Channel capabilities, status, and configuration values for this network device function."/>
         </Property>
-        <Property Name="AssignablePhysicalPorts" Type="Collection(NetworkDeviceFunction.v1_0_0.AssignablePhysicalPortsType)">
-        </Property>
-        <Property Name="PhysicalPortAssignment" Type="NetworkDeviceFunction.v1_0_0.PhysicalPortAssignment">
-          <Annotation Term="OData.Description" String="The physical port that this network device function is currently assigned to."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the physical port that this network device function is currently assigned to.  This value shall be one of the AssignablePhysicalPorts array members."/>
-        </Property>
-        <Property Name="@Redfish.Settings" Type="NetworkDeviceFunction.v1_0_0.@Redfish.Settings">
-          <Annotation Term="OData.Description" String=""/>
-          <Annotation Term="OData.LongDescription" String=""/>
-        </Property>
+        <NavigationProperty Name="AssignablePhysicalPorts" Type="Collection(NetworkPort.NetworkPort)" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        <NavigationProperty Name="PhysicalPortAssignment" Type="NetworkPort.NetworkPort" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
         <Property Name="BootMode" Type="NetworkDeviceFunction.v1_0_0.BootMode">
           <Annotation Term="OData.Description" String="The boot mode configured for this network device function."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the boot mode configured for this network device function.  If the value is not quot;Disabled&quot;, this network device function shall be configured for boot using the specified technology."/>
@@ -113,13 +143,13 @@
           <Annotation Term="OData.Description" String="The active FCoE VLAN ID."/>
           <Annotation Term="OData.LongDescription" String="For FCoE connections, the value of this property shall be null or a VLAN ID currently being used for FCoE traffic.  When the FCoE link is down this value shall be null.  When the FCoE link is up this value shall be either the FCoELocalVLANId property or a VLAN discovered via the FIP protocol."/>
         </Property>
-        <Property Name="BootTargets" Type="Collection(NetworkDeviceFunction.v1_0_0.BootTargetsType)">
+        <Property Name="BootTargets" Type="Collection(NetworkDeviceFunction.v1_0_0.BootTarget)">
           <Annotation Term="OData.Description" String="An array of Fibre Channel boot targets configured for this network device function."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of Fibre Channel boot targets configured for this network device function."/>
         </Property>
       </ComplexType>
 
-      <ComplexType Name="BootTargetsType">
+      <ComplexType Name="BootTarget">
         <Property Name="WWPN" Type="Edm.String">
           <Annotation Term="OData.Description" String="The World-Wide Port Name to boot from."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be World-Wide Port Name (WWPN) to boot from."/>
@@ -149,31 +179,12 @@
         </Property>
       </ComplexType>
 
-      <ComplexType Name="AssignablePhysicalPortsType">
-        <Property Name="odata.id" Type="Edm.String">
-          <Annotation Term="OData.Description" String=""/>
-          <Annotation Term="OData.LongDescription" String=""/>
-        </Property>
-      </ComplexType>
-
-      <ComplexType Name="@Redfish.Settings">
-        <Property Name="@odata.type" Type="Edm.String">
-          <Annotation Term="OData.Description" String=""/>
-          <Annotation Term="OData.LongDescription" String=""/>
-        </Property>
-        <Property Name="SettingsObject" Type="NetworkDeviceFunction.v1_0_0.SettingsObject">
-          <Annotation Term="OData.Description" String=""/>
-          <Annotation Term="OData.LongDescription" String=""/>
-        </Property>
-        <Property Name="ETag" Type="Edm.String">
-        </Property>
-      </ComplexType>
-
       <ComplexType Name="Links">
-        <Property Name="PCIeFunction" Type="NetworkDeviceFunction.v1_0_0.PCIeFunction">
-          <Annotation Term="OData.Description" String="The PCIe Function associated with this network device function"/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall contain a reference to the PCIe Function associated with this network device function."/>
-        </Property>
+        <NavigationProperty Name="PCIeFunction" Type="PCIeFunction.PCIeFunction" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
       </ComplexType>
 
       <ComplexType Name="iSCSIBoot">
@@ -287,28 +298,7 @@
         </Property>
       </ComplexType>
 
-      <ComplexType Name="PhysicalPortAssignment">
-        <Property Name="odata.id" Type="Edm.String">
-          <Annotation Term="OData.Description" String=""/>
-          <Annotation Term="OData.LongDescription" String=""/>
-        </Property>
-      </ComplexType>
-
-      <ComplexType Name="SettingsObject">
-        <Property Name="odata.id" Type="Edm.String">
-          <Annotation Term="OData.Description" String=""/>
-          <Annotation Term="OData.LongDescription" String=""/>
-        </Property>
-      </ComplexType>
-
-      <ComplexType Name="PCIeFunction">
-        <Property Name="@odata.id" Type="Edm.String">
-          <Annotation Term="OData.Description" String=""/>
-          <Annotation Term="OData.LongDescription" String=""/>
-        </Property>
-      </ComplexType>
-
-      <EnumType Name="NetworkDeviceFunctionType">
+      <EnumType Name="DeviceType">
         <Member Name="Disabled">
           <Annotation Term="OData.Description" String="Neither enumerated nor visible to the operating system." />
         </Member>
@@ -326,7 +316,7 @@
         </Member>
       </EnumType>
 
-      <EnumType Name="NetworkDeviceFunctionCapabilitiesType">
+      <EnumType Name="DeviceCapabilities">
         <Member Name="Disabled">
           <Annotation Term="OData.Description" String="Neither enumerated nor visible to the operating system." />
         </Member>
@@ -393,5 +383,6 @@
       </EnumType>
 
     </Schema>
+
   </edmx:DataServices>
 </edmx:Edmx>
