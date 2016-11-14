@@ -3,7 +3,7 @@
     "@odata.context": "/redfish/v1/$metadata#NetworkDeviceFunction.NetworkDeviceFunction",
     "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/9fd725a1/NetworkDeviceFunctions/111111111100",
     "@odata.type": "#NetworkDeviceFunction.v1_0_0.NetworkDeviceFunction",
-    "Id": "111111111100"
+    "Id": "111111111100",
     "Name": "Network Device Function View",
     "NetworkDeviceFunctionType": "Ethernet",
     "DeviceEnabled": true,
