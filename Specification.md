@@ -1179,7 +1179,7 @@ The client can get the definition of the annotation from the [service metadata](
 
 #### Resource Collection response
 
-Resource Collections are returned as a JSON object. The JSON object shall include a [context](#context-property), [resource count](#resource-count-property), and array of [Members](#resource-members-property), and may include a [next link](#partial-results) for partial results.
+Resource Collections are returned as a JSON object. The JSON object shall include a [context](#context-property), [resource count](#count-property), and array of [Members](#members-property), and may include a [next link](#partial-results) for partial results.
 
 #####	Context property
 Responses shall contain a context property named "@odata.context" describing the source of the payload. The value of the context property shall be the context URL that describes the Resource Collection according to [OData-Protocol](#OData-Protocol).
@@ -1207,7 +1207,7 @@ Responses representing a single resource shall not be broken into multiple resul
 
 Collections of resources, or resource ids, may be returned in multiple partial responses. For partial collections the service includes a next link property named "Members@odata.nextLink". The value of the next link property shall be an opaque URL that the client can use to retrieve the next set of resources. The next link shall only be returned if the number of resources requested is greater than the number of resources returned.
 
-The value of the [count property](#resource-count-property) represents the total number of resources available if the client enumerates all pages of the Resource Collection.
+The value of the [count property](#count-property) represents the total number of resources available if the client enumerates all pages of the Resource Collection.
 
 ##### Additional annotations
 
