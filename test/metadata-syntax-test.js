@@ -191,7 +191,7 @@ files.forEach(function(file) {
     },
     'descriptions have trailing periods': function(err, txt) {
       let doc = xmljs.parseXml(txt);
-      let descriptions = doc.find('//*[local-name()="Annotation"][@Term="OData.Description"]/@String');
+      let descriptions = doc.find('//*[local-name()="Annotation"][@Term="OData.Description"]');
       if(descriptions.length !== 0)
       {
         for(let i = 0; i < descriptions.length; i++)
@@ -203,7 +203,7 @@ files.forEach(function(file) {
           }
         }
       }
-      let descriptions = doc.find('//*[local-name()="Annotation"][@Term="OData.LongDescription"]/@String');
+      let descriptions = doc.find('//*[local-name()="Annotation"][@Term="OData.LongDescription"]');
       if(descriptions.length !== 0)
       {
         for(let i = 0; i < descriptions.length; i++)
