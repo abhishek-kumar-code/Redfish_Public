@@ -147,7 +147,7 @@
           <Annotation Term="OData.LongDescription" String="This property shall contain a list of all known durable names for the associated drive."/>
         </Property>
         <Property Name="Location" Type="Collection(Resource.v1_1_0.Location)" Nullable="false">
-          <Annotation Term="OData.Description" String="The Location of the drive"/>
+          <Annotation Term="OData.Description" String="The Location of the drive."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain location information of the associated drive."/>
         </Property>
         <Property Name="HotspareType" Type="Drive.v1_0_0.HotspareType">

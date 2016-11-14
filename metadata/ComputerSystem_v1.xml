@@ -321,7 +321,7 @@
         </Property>
         <Property Name="BootSourceOverrideEnabled" Type="ComputerSystem.v1_0_0.BootSourceOverrideEnabled">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="Describes the state of the Boot Source Override feature"/>
+          <Annotation Term="OData.Description" String="Describes the state of the Boot Source Override feature."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be Once if this is a one time boot override and Continuous if this selection should remain active until cancelled. If the property value is set to Once, the value will be reset back to Disabled after the BootSourceOverrideTarget actions have been completed."/>
         </Property>
         <Property Name="UefiTargetBootSourceOverride" Type="Edm.String">

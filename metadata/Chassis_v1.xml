@@ -253,7 +253,7 @@
           <Annotation Term="OData.Description" String="An enclosed or semi-enclosed, system chassis which must be plugged into a multi-system chassis to function normally similar to a blade type chassis."/>
         </Member>
         <Member Name="Shelf">
-          <Annotation Term="OData.Description" String="An enclosed or semi-enclosed, typically horizontally-oriented, system chassis which must be plugged into a multi-system chassis to function normally"/>
+          <Annotation Term="OData.Description" String="An enclosed or semi-enclosed, typically horizontally-oriented, system chassis which must be plugged into a multi-system chassis to function normally."/>
         </Member>
         <Member Name="Drawer">
           <Annotation Term="OData.Description" String="An enclosed or semi-enclosed, typically horizontally-oriented, system chassis which may be slid into a multi-system chassis."/>
