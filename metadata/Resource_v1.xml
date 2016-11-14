@@ -512,12 +512,12 @@
         <Property Name="RoadPreModifier" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Road pre-modifier."/>
-          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the PRM field as defined in RFC5139.  (Old, New)"/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the PRM field as defined in RFC5139.  (Old, New)."/>
         </Property>
         <Property Name="RoadPostModifier" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Road post-modifier."/>
-          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the POM field as defined in RFC5139.  (Extended)"/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the POM field as defined in RFC5139.  (Extended)."/>
         </Property>
         <Property Name="GPSCoords" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>

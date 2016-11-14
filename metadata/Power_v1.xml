@@ -313,7 +313,7 @@
         <Property Name="LineInputVoltageType" Type="Power.v1_0_0.LineInputVoltageType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The line voltage type supported as an input to this Power Supply."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain the type of input line voltage supported by the associated power supply"/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the type of input line voltage supported by the associated power supply."/>
         </Property>
         <Property Name="LineInputVoltage" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
