@@ -66,19 +66,19 @@
 
       <EnumType Name="EventType">
         <Member Name="StatusChange">
-          <Annotation Term="OData.Description" String="The status of this resource has changed"/>
+          <Annotation Term="OData.Description" String="The status of this resource has changed."/>
         </Member>
         <Member Name="ResourceUpdated">
-          <Annotation Term="OData.Description" String="The value of this resource has been updated"/>
+          <Annotation Term="OData.Description" String="The value of this resource has been updated."/>
         </Member>
         <Member Name="ResourceAdded">
-          <Annotation Term="OData.Description" String="A resource has been added"/>
+          <Annotation Term="OData.Description" String="A resource has been added."/>
         </Member>
         <Member Name="ResourceRemoved">
-          <Annotation Term="OData.Description" String="A resource has been removed"/>
+          <Annotation Term="OData.Description" String="A resource has been removed."/>
         </Member>
         <Member Name="Alert">
-          <Annotation Term="OData.Description" String="A condition exists which requires attention"/>
+          <Annotation Term="OData.Description" String="A condition exists which requires attention."/>
         </Member>
       </EnumType>
 

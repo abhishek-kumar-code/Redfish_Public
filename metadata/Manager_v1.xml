@@ -158,17 +158,17 @@
         </NavigationProperty>
         <Property Name="ServiceEntryPointUUID" Type="Resource.UUID" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The UUID of the Redfish Service provided by this manager"/>
+          <Annotation Term="OData.Description" String="The UUID of the Redfish Service provided by this manager."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the UUID of the Redfish Service provided by this manager.  Each Manager providing an Entry Point to the same Redfish Service shall report the same UUID value (even though the name of the property may imply otherwise).  This property shall not be present if this manager does not provide a Redfish Service Entry Point."/>
         </Property>
         <Property Name="UUID" Type="Resource.UUID">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The Universal Unique Identifier (UUID) for this Manager"/>
+          <Annotation Term="OData.Description" String="The Universal Unique Identifier (UUID) for this Manager."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the universal unique identifier number for the manager."/>
         </Property>
         <Property Name="Model" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The model information of this Manager as defined by the manufacturer"/>
+          <Annotation Term="OData.Description" String="The model information of this Manager as defined by the manufacturer."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the information about how the manufacturer references this manager."/>
         </Property>
         <Property Name="DateTime" Type="Edm.DateTimeOffset">
@@ -184,7 +184,7 @@
         </Property>
         <Property Name="FirmwareVersion" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The firmware version of this Manager"/>
+          <Annotation Term="OData.Description" String="The firmware version of this Manager."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the firwmare version as defined by the manufacturer for the associated manager."/>
         </Property>
         <Property Name="SerialConsole" Type="Manager.v1_0_0.SerialConsole" Nullable="false">
@@ -206,7 +206,7 @@
         <Property Name="Status" Type="Resource.Status" Nullable="false"/>
         <NavigationProperty Name="Redundancy" Type="Collection(Redundancy.Redundancy)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Redundancy information for the managers of this system"/>
+          <Annotation Term="OData.Description" String="Redundancy information for the managers of this system."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
       </EntityType>
@@ -254,7 +254,7 @@
       </EnumType>
 
       <ComplexType Name="ManagerService" Abstract="true">
-        <Annotation Term="OData.Description" String="Used for describing services like Serial Console, Command Shell or Graphical Console"/>
+        <Annotation Term="OData.Description" String="Used for describing services like Serial Console, Command Shell or Graphical Console."/>
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="ServiceEnabled" Type="Edm.Boolean" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>

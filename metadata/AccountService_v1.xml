@@ -104,20 +104,20 @@
         </Property>
         <Property Name="AccountLockoutCounterResetAfter" Type="Edm.Int32" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="The interval of time in seconds since the last failed login attempt at which point the lockout threshold counter for the account is reset to zero. Must be less than or equal to AccountLockoutDuration"/>
+          <Annotation Term="OData.Description" String="The interval of time in seconds since the last failed login attempt at which point the lockout threshold counter for the account is reset to zero. Must be less than or equal to AccountLockoutDuration."/>
           <Annotation Term="OData.LongDescription" String="This property shall reference the threshold of time in seconds from the last failed login attempt at which point the AccountLockoutThreshold counter (that counts number of failed login attempts) is reset back to zero (at which point AccountLockoutThreshold failures would be required before the account is locked).  This value shall be less than or equal to AccountLockoutDuration. The threshold counter also resets to zero after each successful login."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
           <Annotation Term="Measures.Unit" String="s"/>
         </Property>
         <NavigationProperty Name="Accounts" Type="ManagerAccountCollection.ManagerAccountCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Link to a collection of Manager Accounts"/>
+          <Annotation Term="OData.Description" String="Link to a collection of Manager Accounts."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the link to a collection of type ManagerAccountCollection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
         <NavigationProperty Name="Roles" Type="RoleCollection.RoleCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Link to a collection of Roles"/>
+          <Annotation Term="OData.Description" String="Link to a collection of Roles."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the link to a collection of type RoleCollection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>

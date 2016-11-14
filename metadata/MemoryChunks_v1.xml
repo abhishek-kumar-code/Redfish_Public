@@ -67,7 +67,7 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <NavigationProperty Name="Memory" Type="Resource.Item" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Describes a memory device of the interleave set. "/>
+          <Annotation Term="OData.Description" String="Describes a memory device of the interleave set."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the memory device to which these settings apply."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
