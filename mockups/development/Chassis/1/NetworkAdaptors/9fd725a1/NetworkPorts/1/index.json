@@ -43,8 +43,8 @@
     "EEEEnabled": true,
     "WakeOnLANEnabled": true,
     "PortMaximumMTU": 1500,
-    "802.3xFlowControlStatus": "None",
-    "802.3xFlowControlConfiguration": "None",
+    "FlowControlStatus": "None",
+    "FlowControlConfiguration": "None",
     "SignalDetected": true,
     "@Redfish.Settings": 
     {
