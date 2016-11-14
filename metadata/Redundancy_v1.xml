@@ -82,19 +82,19 @@
           <Collection>
             <Record>
               <PropertyValue Property="Member" String="Failover"/>
-              <Annotation Term="OData.Description" String="Failure of one unit will automatically cause its functions to be taken over by a standby or offline unit in the redundancy set"/>
+              <Annotation Term="OData.Description" String="Failure of one unit will automatically cause its functions to be taken over by a standby or offline unit in the redundancy set."/>
             </Record>
             <Record>
               <PropertyValue Property="Member" String="N+m"/>
-              <Annotation Term="OData.Description" String="Multiple units are available and active such that normal operation will continue if one or more units fail"/>
+              <Annotation Term="OData.Description" String="Multiple units are available and active such that normal operation will continue if one or more units fail."/>
             </Record>
             <Record>
               <PropertyValue Property="Member" String="Sharing"/>
-              <Annotation Term="OData.Description" String="Multiple units contribute or share such that operation will continue, but at a reduced capacity, if one or more units fail"/>
+              <Annotation Term="OData.Description" String="Multiple units contribute or share such that operation will continue, but at a reduced capacity, if one or more units fail."/>
             </Record>
             <Record>
               <PropertyValue Property="Member" String="Sparing"/>
-              <Annotation Term="OData.Description" String="One or more spare units are available to take over the function of a failed unit, but takeover is not automatic"/>
+              <Annotation Term="OData.Description" String="One or more spare units are available to take over the function of a failed unit, but takeover is not automatic."/>
             </Record>
           </Collection>
         </Annotation>

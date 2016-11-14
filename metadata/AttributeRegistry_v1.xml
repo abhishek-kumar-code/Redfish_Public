@@ -267,9 +267,9 @@
       </ComplexType>
 
       <ComplexType Name="Dependencies">
-        <Property Name="Dependency" Type="AttributeRegistry.v1_0_0.Dependency"  Nullable="false">
-          <Annotation Term="OData.Description" String=""/>
-          <Annotation Term="OData.LongDescription" String=""/>
+        <Property Name="Dependency" Type="AttributeRegistry.v1_0_0.Dependency" Nullable="false">
+          <Annotation Term="OData.Description" String="."/>
+          <Annotation Term="OData.LongDescription" String="."/>
         </Property>
         <Property Name="DependencyFor" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>

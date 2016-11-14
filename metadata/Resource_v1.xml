@@ -118,28 +118,28 @@
       <!--This indicates the known state of the resource, such as if it is enabled.-->
       <EnumType Name="State">
         <Member Name="Enabled">
-          <Annotation Term="OData.Description" String="This function or resource has been enabled"/>
+          <Annotation Term="OData.Description" String="This function or resource has been enabled."/>
         </Member>
         <Member Name="Disabled">
-          <Annotation Term="OData.Description" String="This function or resource has been disabled"/>
+          <Annotation Term="OData.Description" String="This function or resource has been disabled."/>
         </Member>
         <Member Name="StandbyOffline">
-          <Annotation Term="OData.Description" String="This function or resource is enabled, but awaiting an external action to activate it"/>
+          <Annotation Term="OData.Description" String="This function or resource is enabled, but awaiting an external action to activate it."/>
         </Member>
         <Member Name="StandbySpare">
           <Annotation Term="OData.Description" String="This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it."/>
         </Member>
         <Member Name="InTest">
-          <Annotation Term="OData.Description" String="This function or resource is undergoing testing"/>
+          <Annotation Term="OData.Description" String="This function or resource is undergoing testing."/>
         </Member>
         <Member Name="Starting">
-          <Annotation Term="OData.Description" String="This function or resource is starting"/>
+          <Annotation Term="OData.Description" String="This function or resource is starting."/>
         </Member>
         <Member Name="Absent">
-          <Annotation Term="OData.Description" String="This function or resource is not present or not detected"/>
+          <Annotation Term="OData.Description" String="This function or resource is not present or not detected."/>
         </Member>
         <Member Name="UnavailableOffline">
-          <Annotation Term="OData.Description" String="This function or resource is present but cannot be used"/>
+          <Annotation Term="OData.Description" String="This function or resource is present but cannot be used."/>
         </Member>
         <Member Name="Deferring">
           <Annotation Term="OData.Description" String="The element will not process any commands but will queue new requests."/>
@@ -155,41 +155,41 @@
       <!--This represents the state of the health of a resource.-->
       <EnumType Name="Health">
         <Member Name="OK">
-          <Annotation Term="OData.Description" String="Normal"/>
+          <Annotation Term="OData.Description" String="Normal."/>
         </Member>
         <Member Name="Warning">
-          <Annotation Term="OData.Description" String="A condition exists that requires attention"/>
+          <Annotation Term="OData.Description" String="A condition exists that requires attention."/>
         </Member>
         <Member Name="Critical">
-          <Annotation Term="OData.Description" String="A critical condition exists that requires immediate attention"/>
+          <Annotation Term="OData.Description" String="A critical condition exists that requires immediate attention."/>
         </Member>
       </EnumType>
 
       <!--Common RestType parameter values for Reset Action-->
       <EnumType Name="ResetType">
         <Member Name="On">
-          <Annotation Term="OData.Description" String="Turn the system on"/>
+          <Annotation Term="OData.Description" String="Turn the system on."/>
         </Member>
         <Member Name="ForceOff">
-          <Annotation Term="OData.Description" String="Turn the system off immediately (non-graceful) shutdown"/>
+          <Annotation Term="OData.Description" String="Turn the system off immediately (non-graceful) shutdown."/>
         </Member>
         <Member Name="GracefulShutdown">
-          <Annotation Term="OData.Description" String="Perform a graceful system shutdown and power off"/>
+          <Annotation Term="OData.Description" String="Perform a graceful system shutdown and power off."/>
         </Member>
         <Member Name="GracefulRestart">
-          <Annotation Term="OData.Description" String="Perform a graceful system shutdown followed by a restart of the system"/>
+          <Annotation Term="OData.Description" String="Perform a graceful system shutdown followed by a restart of the system."/>
         </Member>
         <Member Name="ForceRestart">
-          <Annotation Term="OData.Description" String="Perform an immediate (non-graceful) shutdown, followed by a restart of the system"/>
+          <Annotation Term="OData.Description" String="Perform an immediate (non-graceful) shutdown, followed by a restart of the system."/>
         </Member>
         <Member Name="Nmi">
           <Annotation Term="OData.Description" String="Generate a Diagnostic Interrupt (usually an NMI on x86 systems) to cease normal operations, perform diagnostic actions and typically halt the system."/>
         </Member>
         <Member Name="ForceOn">
-          <Annotation Term="OData.Description" String="Turn the system on immediately"/>
+          <Annotation Term="OData.Description" String="Turn the system on immediately."/>
         </Member>
         <Member Name="PushPowerButton">
-          <Annotation Term="OData.Description" String="Simulate the pressing of the physical power button on this system"/>
+          <Annotation Term="OData.Description" String="Simulate the pressing of the physical power button on this system."/>
         </Member>
       </EnumType>
 
@@ -288,23 +288,23 @@
 
       <EnumType Name="DurableNameFormat">
         <Member Name="NAA">
-          <Annotation Term="OData.Description" String="Name Address Authority Format"/>
+          <Annotation Term="OData.Description" String="Name Address Authority Format."/>
           <Annotation Term="OData.LongDescription" String="This durable name shall be a hexadecimal representation of the Name Address Authority structure as defined in the T11 Fibre Channel - Framing and Signaling - 3 (FC-FS-3) specification."/>
         </Member>
         <Member Name="iQN">
-          <Annotation Term="OData.Description" String="iSCSI Qualified Name"/>
+          <Annotation Term="OData.Description" String="iSCSI Qualified Name."/>
           <Annotation Term="OData.LongDescription" String="This durable name shall be in the iSCSI Qualified Name format as defined in RFC 3720 and RFC 3721."/>
         </Member>
         <Member Name="FC_WWN">
-          <Annotation Term="OData.Description" String="Fibre Channel World Wide Name"/>
+          <Annotation Term="OData.Description" String="Fibre Channel World Wide Name."/>
           <Annotation Term="OData.LongDescription" String="This durable name shall be a hexadecimal representation of the World Wide Name format as defined in the T11 Fibre Channel Physical and Signaling Interface Specification."/>
         </Member>
         <Member Name="UUID">
-          <Annotation Term="OData.Description" String="Universally Unique Identifier"/>
+          <Annotation Term="OData.Description" String="Universally Unique Identifier."/>
           <Annotation Term="OData.LongDescription" String="This durable name shall be the hexadecimal representation of the Universal Unique Identifier as defined in the Internation Telecom Union's OSI networking and system aspects - Naming, Addressing and Registration Specification."/>
         </Member>
         <Member Name="EUI">
-          <Annotation Term="OData.Description" String="IEEE-defined 64-bit Extended Unique Identifier"/>
+          <Annotation Term="OData.Description" String="IEEE-defined 64-bit Extended Unique Identifier."/>
           <Annotation Term="OData.LongDescription" String="This durable name shall be the hexadecimal representation of the IEEE-defined 64-bit Extended Unique Identifier as defined in the IEEE's Guidelines for 64-bit Global Identifier (EUI-64) Specification."/>
         </Member>
       </EnumType>
@@ -366,7 +366,7 @@
         <Annotation Term="OData.LongDescription" String="Instances shall describe a postal address for a resource. For more information see RFC5139. Depending on use, the instance may represent a past, current, or future location."/>
         <Property Name="Country" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="Country"/>
+          <Annotation Term="OData.Description" String="Country."/>
           <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the Country field as defined in RFC5139."/>
         </Property>
         <Property Name="Territory" Type="Edm.String">
@@ -376,7 +376,7 @@
         </Property>
         <Property Name="District" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="A county, parish, gun (JP), or  district (IN)"/>
+          <Annotation Term="OData.Description" String="A county, parish, gun (JP), or  district (IN)."/>
           <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the A2 field as defined in RFC5139.  It is used to name a county, parish, gun (JP), or  district (IN). "/>
         </Property>
         <Property Name="City" Type="Edm.String">
@@ -426,7 +426,7 @@
         </Property>
         <Property Name="Landmark" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="Landmark"/>
+          <Annotation Term="OData.Description" String="Landmark."/>
           <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the LMK field as defined in RFC5139.  It is used to identify a landmark or vanity address."/>
         </Property>
         <Property Name="Location" Type="Edm.String">
@@ -441,7 +441,7 @@
         </Property>
         <Property Name="Name" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="Name"/>
+          <Annotation Term="OData.Description" String="Name."/>
           <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the NAM field as defined in RFC5139.  It is used to name the occupant."/>
         </Property>
         <Property Name="PostalCode" Type="Edm.String">
@@ -466,7 +466,7 @@
         </Property>
         <Property Name="Seat" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="Seat (desk, cubicle, workstation)"/>
+          <Annotation Term="OData.Description" String="Seat (desk, cubicle, workstation)."/>
           <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the SEAT field as defined in RFC5139.  The value shall be a name or number of a Seat (desk, cubicle, workstation)."/>
         </Property>
         <Property Name="PlaceType" Type="Edm.String">
@@ -501,12 +501,12 @@
         </Property>
         <Property Name="RoadBranch" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="Road branch)."/>
+          <Annotation Term="OData.Description" String="Road branch."/>
           <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the RDBR field as defined in RFC5139.  The value shall be a Post office box (P.O. box)road branch."/>
         </Property>
         <Property Name="RoadSubBranch" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="Road sub branch"/>
+          <Annotation Term="OData.Description" String="Road sub branch."/>
           <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the RDSUBBR field as defined in RFC5139."/>
         </Property>
         <Property Name="RoadPreModifier" Type="Edm.String">
@@ -555,7 +555,7 @@
         <Annotation Term="OData.Description" String="The location of a resource."/>
         <Annotation Term="OData.LongDescription" String="Instances shall describe a location for a resource. For more information see RFC5139. Depending on use, the instance may represent a past, current, or future location."/>
         <Property Name="PostalAddress" Type="Resource.v1_3_0.PostalAddress">
-          <Annotation Term="OData.Description" String="Postal address of the addressed resource.."/>
+          <Annotation Term="OData.Description" String="Postal address of the addressed resource."/>
           <Annotation Term="OData.LongDescription" String="The value shall be a postal address of the resource."/>
         </Property>
         <Property Name="Placement" Type="Resource.v1_3_0.Placement">

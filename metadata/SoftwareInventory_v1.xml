@@ -86,7 +86,7 @@
         </Property>
         <NavigationProperty Name="RelatedItem" Type="Collection(Resource.Item)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The ID(s) of the resources associated with this software inventory item"/>
+          <Annotation Term="OData.Description" String="The ID(s) of the resources associated with this software inventory item."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of IDs containing pointers consistent with JSON pointer syntax to the resource that is associated with this software inventory item."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>

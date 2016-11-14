@@ -54,7 +54,7 @@
       <Action Name="Reset" IsBound="true">
         <Parameter Name="Switch" Type="Switch.v1_0_0.Actions"/>
         <Parameter Name="ResetType" Type="Resource.ResetType">
-          <Annotation Term="OData.Description" String="The type of reset to be performed"/>
+          <Annotation Term="OData.Description" String="The type of reset to be performed."/>
           <Annotation Term="OData.LongDescription" String="This defines the property name for the action."/>
         </Parameter>
         <Annotation Term="OData.Description" String="This action is used to reset this switch."/>

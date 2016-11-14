@@ -75,7 +75,7 @@
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent NIC resources as part of the Redfish specification."/>
         <Property Name="UefiDevicePath" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The UEFI device path for this interface"/>
+          <Annotation Term="OData.Description" String="The UEFI device path for this interface."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the UEFI device path to the device which implements this interface (port)."/>
         </Property>
         <Property Name="Status" Type="Resource.Status"/>

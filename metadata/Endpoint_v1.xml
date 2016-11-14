@@ -71,7 +71,7 @@
           <Annotation Term="OData.LongDescription" String="This value of this property shall contain all the entities which this endpoint allows access to."/>
         </Property>
         <Property Name="Identifiers" Type="Collection(Resource.v1_1_0.Identifier)">
-          <Annotation Term="OData.Description" String="Identifiers for this endpoint"/>
+          <Annotation Term="OData.Description" String="Identifiers for this endpoint."/>
           <Annotation Term="OData.LongDescription" String="Identifiers for this endpoint shall be unique in the context of other endpoints that can reached over the connected network."/>
         </Property>
 

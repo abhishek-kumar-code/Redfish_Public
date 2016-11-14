@@ -87,37 +87,37 @@
 
       <EnumType Name="TaskState">
         <Member Name="New">
-          <Annotation Term="OData.Description" String="A new task"/>
+          <Annotation Term="OData.Description" String="A new task."/>
         </Member>
         <Member Name="Starting">
-          <Annotation Term="OData.Description" String="Task is starting"/>
+          <Annotation Term="OData.Description" String="Task is starting."/>
         </Member>
         <Member Name="Running">
-          <Annotation Term="OData.Description" String="Task is running normally"/>
+          <Annotation Term="OData.Description" String="Task is running normally."/>
         </Member>
         <Member Name="Suspended">
-          <Annotation Term="OData.Description" String="Task has been suspended"/>
+          <Annotation Term="OData.Description" String="Task has been suspended."/>
         </Member>
         <Member Name="Interrupted">
-          <Annotation Term="OData.Description" String="Task has been interrupted"/>
+          <Annotation Term="OData.Description" String="Task has been interrupted."/>
         </Member>
         <Member Name="Pending">
-          <Annotation Term="OData.Description" String="Task is pending and has not started"/>
+          <Annotation Term="OData.Description" String="Task is pending and has not started."/>
         </Member>
         <Member Name="Stopping">
-          <Annotation Term="OData.Description" String="Task is in the process of stopping"/>
+          <Annotation Term="OData.Description" String="Task is in the process of stopping."/>
         </Member>
         <Member Name="Completed">
-          <Annotation Term="OData.Description" String="Task has completed"/>
+          <Annotation Term="OData.Description" String="Task has completed."/>
         </Member>
         <Member Name="Killed">
-          <Annotation Term="OData.Description" String="Task was terminated"/>
+          <Annotation Term="OData.Description" String="Task was terminated."/>
         </Member>
         <Member Name="Exception">
-          <Annotation Term="OData.Description" String="Task has stopped due to an exception condition"/>
+          <Annotation Term="OData.Description" String="Task has stopped due to an exception condition."/>
         </Member>
         <Member Name="Service">
-          <Annotation Term="OData.Description" String="Task is running as a service"/>
+          <Annotation Term="OData.Description" String="Task is running as a service."/>
         </Member>
       </EnumType>
 

@@ -56,7 +56,7 @@
 
       <EntityType Name="ActionInfo" BaseType="ActionInfo.ActionInfo">
         <Property Name="Parameters" Type="Collection(ActionInfo.v1_0_0.Parameters)" Nullable="false">
-          <Annotation Term="OData.Description" String="The parameters associated with the specified Redfish Action"/>
+          <Annotation Term="OData.Description" String="The parameters associated with the specified Redfish Action."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain a list of parameters associated with a Redfish Action associated with this resource."/>
         </Property>
       </EntityType>

@@ -90,7 +90,7 @@
       </Action>
 
       <Action Name="ForceFailover" IsBound="true">
-        <Annotation Term="OData.Description" String="The ForceFailover action forces a failover of this manager to the manager used in the parameter"/>
+        <Annotation Term="OData.Description" String="The ForceFailover action forces a failover of this manager to the manager used in the parameter."/>
         <Annotation Term="OData.LongDescription" String="This defines the name of the custom action supported when used in conjunction with a POST operation to this resource. When issued, this operation will perform a forced failover of the manager's redundancy to the manager supplied as a parameter."/>
         <Parameter Name="Manager" Type="Manager.v1_0_0.Actions"/>
         <Parameter Name="NewManager" Type="Manager.Manager" Nullable="false">
@@ -237,19 +237,19 @@
 
       <EnumType Name="ManagerType">
         <Member Name="ManagementController">
-          <Annotation Term="OData.Description" String="A controller used primarily to monitor or manage the operation of a device or system"/>
+          <Annotation Term="OData.Description" String="A controller used primarily to monitor or manage the operation of a device or system."/>
         </Member>
         <Member Name="EnclosureManager">
-          <Annotation Term="OData.Description" String="A controller which provides management functions for a chassis or group of devices or systems"/>
+          <Annotation Term="OData.Description" String="A controller which provides management functions for a chassis or group of devices or systems."/>
         </Member>
         <Member Name="BMC">
-          <Annotation Term="OData.Description" String="A controller which provides management functions for a single computer system"/>
+          <Annotation Term="OData.Description" String="A controller which provides management functions for a single computer system."/>
         </Member>
         <Member Name="RackManager">
-          <Annotation Term="OData.Description" String="A controller which provides management functions for a whole or part of a rack"/>
+          <Annotation Term="OData.Description" String="A controller which provides management functions for a whole or part of a rack."/>
         </Member>
         <Member Name="AuxiliaryController">
-          <Annotation Term="OData.Description" String="A controller which provides management functions for a particular subsystem or group of devices"/>
+          <Annotation Term="OData.Description" String="A controller which provides management functions for a particular subsystem or group of devices."/>
         </Member>
       </EnumType>
 
@@ -271,40 +271,40 @@
 
       <EnumType Name="SerialConnectTypesSupported">
         <Member Name="SSH">
-          <Annotation Term="OData.Description" String="The controller supports a Serial Console connection using the SSH protocol"/>
+          <Annotation Term="OData.Description" String="The controller supports a Serial Console connection using the SSH protocol."/>
         </Member>
         <Member Name="Telnet">
-          <Annotation Term="OData.Description" String="The controller supports a Serial Console connection using the Telnet protocol"/>
+          <Annotation Term="OData.Description" String="The controller supports a Serial Console connection using the Telnet protocol."/>
         </Member>
         <Member Name="IPMI">
-          <Annotation Term="OData.Description" String="The controller supports a Serial Console connection using the IPMI Serial-over-LAN (SOL) protocol"/>
+          <Annotation Term="OData.Description" String="The controller supports a Serial Console connection using the IPMI Serial-over-LAN (SOL) protocol."/>
         </Member>
         <Member Name="Oem">
-          <Annotation Term="OData.Description" String="The controller supports a Serial Console connection using an OEM-specific protocol"/>
+          <Annotation Term="OData.Description" String="The controller supports a Serial Console connection using an OEM-specific protocol."/>
         </Member>
       </EnumType>
 
       <EnumType Name="CommandConnectTypesSupported">
         <Member Name="SSH">
-          <Annotation Term="OData.Description" String="The controller supports a Command Shell connection using the SSH protocol"/>
+          <Annotation Term="OData.Description" String="The controller supports a Command Shell connection using the SSH protocol."/>
         </Member>
         <Member Name="Telnet">
-          <Annotation Term="OData.Description" String="The controller supports a Command Shell connection using the SSH protocol"/>
+          <Annotation Term="OData.Description" String="The controller supports a Command Shell connection using the SSH protocol."/>
         </Member>
         <Member Name="IPMI">
-          <Annotation Term="OData.Description" String="The controller supports a Command Shell connection using the SSH protocol"/>
+          <Annotation Term="OData.Description" String="The controller supports a Command Shell connection using the SSH protocol."/>
         </Member>
         <Member Name="Oem">
-          <Annotation Term="OData.Description" String="The controller supports a Command Shell connection using an OEM-specific protocol"/>
+          <Annotation Term="OData.Description" String="The controller supports a Command Shell connection using an OEM-specific protocol."/>
         </Member>
       </EnumType>
 
       <EnumType Name="GraphicalConnectTypesSupported">
         <Member Name="KVMIP">
-          <Annotation Term="OData.Description" String="The controller supports a Graphical Console connection using a KVM-IP (redirection of Keyboard, Video, Mouse over IP) protocol"/>
+          <Annotation Term="OData.Description" String="The controller supports a Graphical Console connection using a KVM-IP (redirection of Keyboard, Video, Mouse over IP) protocol."/>
         </Member>
         <Member Name="Oem">
-          <Annotation Term="OData.Description" String="The controller supports a Graphical Console connection using an OEM-specific protocol"/>
+          <Annotation Term="OData.Description" String="The controller supports a Graphical Console connection using an OEM-specific protocol."/>
         </Member>
       </EnumType>
 
