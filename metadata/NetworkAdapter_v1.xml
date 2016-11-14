@@ -73,6 +73,7 @@
       <EntityType Name="NetworkAdapter" BaseType="NetworkAdapter.NetworkAdapter">
         <Annotation Term="OData.Description" String="A Network Adapter represents a general purpose network adapter capable of connecting to a remote computer network."/>
         <Annotation Term="OData.LongDescription" String="A Network Adapter represents a general purpose network adapter capable of connecting to a remote computer network.  Examples include but are not limited to Ethernet, Fibre Channel, and converged network adapters."/>
+        <Property Name="Status" Type="Resource.Status"/>
         <Property Name="Manufacturer" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The manufacturer or OEM of this network adapter."/>

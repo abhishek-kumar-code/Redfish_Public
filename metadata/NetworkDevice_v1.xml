@@ -61,6 +61,7 @@
       <EntityType Name="NetworkDevice" BaseType="NetworkDevice.NetworkDevice">
         <Annotation Term="OData.Description" String="A Network Device provides linkages between NetworkAdapter, NetworkPort, and NetworkDeviceFunction instances."/>
         <Annotation Term="OData.LongDescription" String="A Network Device provides linkages between NetworkAdapter, NetworkPort, and NetworkDeviceFunction instances."/>
+        <Property Name="Status" Type="Resource.Status"/>
         <Property Name="Links" Type="NetworkDevice.v1_0_0.Links" Nullable="false">
           <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
           <Annotation Term="OData.LongDescription" String="The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>

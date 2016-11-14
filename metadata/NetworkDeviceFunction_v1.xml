@@ -59,12 +59,13 @@
       <EntityType Name="NetworkDeviceFunction" BaseType="NetworkDeviceFunction.NetworkDeviceFunction">
         <Annotation Term="OData.Description" String="A Network Device Function represents a logical interface exposed by the network adapter."/>
         <Annotation Term="OData.LongDescription" String="A Network Device Function represents a logical interface exposed by the network adapter."/>
+        <Property Name="Status" Type="Resource.Status"/>
         <Property Name="NetworkDeviceFunctionType" Type="NetworkDeviceFunction.v1_0_0.DeviceType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The configured capability of this network device function."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the configured capability of this network device function."/>
         </Property>
-        <Property Name="Enabled" Type="Edm.Boolean">
+        <Property Name="DeviceEnabled" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Whether the network device function is enabled."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether whether the network device function is enabled.  Disabled network device functions shall not be enumerated or seen by the operating system."/>
