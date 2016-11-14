@@ -1711,7 +1711,7 @@ The `AutoExpandReferences` annotation term is defined in https://tools.oasis-ope
 
 ##### Expanded resources
 
-This term can be applied to a [reference property](#reference-properties) in order to specify that the default behavior for the service is to expand the related [resource](#structured-properties) or [collection of resources](#collection-properties) in responses.
+This term can be applied to a [reference property](#reference-properties) in order to specify that the default behavior for the service is to expand the related [resource](#structured-properties) or Resource Collection in responses.
 
 ~~~xml
 		<Annotation Term="OData.AutoExpand"/>
