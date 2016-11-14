@@ -208,7 +208,7 @@ files.forEach(function(file) {
       {
         for(let i = 0; i < long_descriptions.length; i++)
         {
-          let long_description = descriptions[i].value();
+          let long_description = long_descriptions[i].value();
           if(long_description.slice(-1) !== '.')
           {
             throw new Error('\"' + long_description + '\" does not end in a period!');
