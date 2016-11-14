@@ -1,64 +1,56 @@
 {
-    "Name": "Network Adapter View",
-    "@odata.type": "#NetworkAdapter.1.0.0.NetworkAdapter",
     "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#NetworkAdapter.NetworkAdapter",
+    "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/9fd725a1",
+    "@odata.type": "#NetworkAdapter.v1_0_0.NetworkAdapter",
+    "Id": "9fa725a1",
+    "Name": "Network Adapter View",
     "Manufacturer": "Globex",
     "Model": "599TPS-T",
     "SKU": "Globex TPS-Net 2-Port Base-T",
     "SerialNumber": "003BFLRT00023234",
     "PartNumber": "975421-B20",
-    "Controllers": 
-    [
+    "Controllers": [
         {
             "FirmwarePackageVersion": "7.4.10",
-            "Links": 
-            {
-                "PCIeDevices": 
-                [
+            "Links":  {
+                "PCIeDevices": [
                     {
                         "@odata.id": "/redfish/v1/Fabrics/ComplexPCIe/EndPoints/1/PCIeDevices/1"
                     }
+                ],
+                "NetworkPorts": [
+                    {
+                        "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/9fd725a1/NetworkPorts/1"
+                    }
+                ],
+                "NetworkDeviceFunctions": [
+                    {
+                        "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/9fd725a1/NetworkDeviceFunctions/111111111100"
+                    }
                 ]
             },
-            "ControllerCapabilities": 
-            {
+            "ControllerCapabilities": {
                 "NetworkPortCount": 2,
                 "NetworkDeviceFunctionCount": 8,
-                "DataCenterBridging": 
-                {
+                "DataCenterBridging": {
                     "Capable": true
                 },
-                "VirtualizationOffload": 
-                {
-                    "VirtualFunction": 
-                    {
+                "VirtualizationOffload": {
+                    "VirtualFunction": {
                         "DeviceMaximumCount": 256,
                         "NetworkPortMaximumCount": 128,
                         "MinimumAssignmentGroupSize": 4
                     },
-                    "SRIOV": 
-                    {
+                    "SRIOV": {
                         "SRIOVVEPACapable": true
                     }
                 },
-                "NPIV": 
-                {
+                "NPIV": {
                     "MaximumDeviceLogins": 4,
                     "MaximumPortLogins": 2
                 }
-            },
-            "NetworkPorts": 
-            [
-                {
-                    "@odata.id": "/redfish/v1/Chassis/1/NetworkAdaptors/9fd725a1/NetworkPorts/1"
-                }
-            ],
-            "NetworkDeviceFunctions": 
-            [
-                {
-/                    "@odata.id": "/redfish/v1/Chassis/1/NetworkAdaptors/9fd725a1/NetworkDeviceFunctions/111111111100"
-                }
-            ]
+            }
         }
     ]
 }

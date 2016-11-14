@@ -47,10 +47,10 @@
     "Power": {
         "@odata.id": "/redfish/v1/Chassis/1/Power"
     },
-    "NetworkAdaptors": {
-        "@odata.id": "/redfish/v1/Chassis/1/NetworkAdaptors"
+    "NetworkAdapters": {
+        "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters"
     },
-	"Links": {
+    "Links": {
         "ComputerSystems": [
             {
                 "@odata.id": "/redfish/v1/Systems/1"
