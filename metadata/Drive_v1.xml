@@ -275,7 +275,7 @@
           <Annotation Term="OData.Description" String="The drive is currently encrypted, the data is not accessible to the user, and the system requires user intervention to expose the data."/>
         </Member>
         <Member Name="Unencrypted">
-          <Annotation Term="OData.Description" String="The drive is not currently encrypted"/>
+          <Annotation Term="OData.Description" String="The drive is not currently encrypted."/>
         </Member>
       </EnumType>
 
@@ -320,7 +320,7 @@
       <EntityType Name="Drive" BaseType="Drive.v1_0_1.Drive">
         <Property Name="Operations" Type="Collection(Volume.v1_0_0.Operations)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The operations currently running on the Drive"/>
+          <Annotation Term="OData.Description" String="The operations currently running on the Drive."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain a list of all operations currently running on the Drive."/>
         </Property>
       </EntityType>
