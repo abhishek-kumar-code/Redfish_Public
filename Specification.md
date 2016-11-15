@@ -2345,7 +2345,7 @@ The Authorization subsystem uses Roles and Privileges to control which users hav
 #### Redfish Service Operation to Privilege Mapping
 
 For every request made by a Redfish client to a Redfish service, the Redfish service shall determine that 
-the authenticated identity of the requestor has the authorization to perform the requested operation on the URI specified in the request.
+the authenticated identity of the requestor has the authorization to perform the requested operation on the resource specified in the request.
 Using the role and privileges authorization model, where an authenticated identity context is assigned a role and a role is a set of privileges, the service will typically check a HTTP request
 against a mapping of the authenticated requesting identity role/privileges and determine whether the identity privileges are sufficient to perform the operation specified in the request.
 
