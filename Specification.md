@@ -523,7 +523,7 @@ Clients request resources by issuing GET requests to the URI for the individual 
 
 ###### Query parameters
 
-When the resource addressed is a Resource Collection, the client may use the following paging query options to specify that a subset of the Members of that Resource Collection be returned. These paging query options apply to the "Members" array property within a Resource Collection.
+When the resource addressed is a Resource Collection, the client may use the following paging query options to specify that a subset of the Members of that Resource Collection be returned. These paging query options apply specifically to the "Members" array property within a Resource Collection.
 
 | Attribute | Description                                                                                                                                                                | Example                   |
 | ---       | ---                                                                                                                                                                        | ---                       |
