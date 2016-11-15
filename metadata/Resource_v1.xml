@@ -23,19 +23,16 @@
 
       <!--Type Definitions-->
       <TypeDefinition Name="Id" UnderlyingType="Edm.String">
-        <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
         <Annotation Term="OData.Description" String="Uniquely identifies the resource within the collection of like resources."/>
         <Annotation Term="OData.LongDescription" String="This property represents an identifier for the resource.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
       </TypeDefinition>
 
       <TypeDefinition Name="Description" UnderlyingType="Edm.String">
-        <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
         <Annotation Term="OData.Description" String="Provides a description of this resource and is used for commonality  in the schema definitions."/>
         <Annotation Term="OData.LongDescription" String="This object represents the Description property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
       </TypeDefinition>
 
       <TypeDefinition Name="Name" UnderlyingType="Edm.String">
-        <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
         <Annotation Term="OData.Description"  String="The name of the resource or array element."/>
         <Annotation Term="OData.LongDescription" String="This object represents the Name property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification. The value of this string shall be of the format for the reserved word *Name*."/>
       </TypeDefinition>
@@ -253,6 +250,10 @@
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_0_3">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_1_0">
 
       <ComplexType Name="Identifier">
@@ -327,6 +328,10 @@
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_1_2">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_2_0">
 
       <EnumType Name="PowerState">
@@ -344,6 +349,10 @@
         </Member>
       </EnumType>
 
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_2_1">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_3_0">
