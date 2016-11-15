@@ -120,12 +120,12 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventDestination.v1_1_0">
       <EntityType Name="EventDestination" BaseType="EventDestination.v1_0_2.EventDestination">
         <NavigationProperty Name="OriginResources" Type="Collection(Resource.Item)">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="A list of resources for which the service will only send related events."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall specify an array of Referenceable Members that are the only allowable values for the OriginOfCondition property within an EventRecord sent to the subscriber.  Events originating from Referenceable Members not contained in this array shall not be sent to the subscriber."/>
         </NavigationProperty>
         <Property Name="MessageIds" Type="Collection(Edm.String)">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="A list of MessageIds that the service will only send."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall specify an array of MessageIds that are the only allowable values for the MessageId property within an EventRecord sent to the subscriber.  Events with MessageIds not contained in this array shall not be sent to the subscriber."/>
         </Property>
