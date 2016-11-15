@@ -268,8 +268,8 @@
 
       <ComplexType Name="Dependencies">
         <Property Name="Dependency" Type="AttributeRegistry.v1_0_0.Dependency" Nullable="false">
-          <Annotation Term="OData.Description" String="."/>
-          <Annotation Term="OData.LongDescription" String="."/>
+          <Annotation Term="OData.Description" String="The dependency expression for one or more Attributes in this Attribute Registry."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the dependency expression for one or more Attributes in this Attribute Registry."/>
         </Property>
         <Property Name="DependencyFor" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
