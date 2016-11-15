@@ -1992,9 +1992,7 @@ Life cycle events happen when resources are created, modified or destroyed.  Not
 
 Alert events happen when a resource needs to indicate an event of some significance.  This may be either directly or indirectly pertaining to the resource.  This style of event usually adopts a message registry approach similar to extended error handling in that a MessageId will be included.  Examples of this kind of event are when a chassis is opened, button is pushed, cable is unplugged or threshold exceeded.  These events usually do not correspond well to life cycle type events hence they have their own category.
 
-Events originate from a specific resource. Not all resources are able to generate events. Those resources capable of generating events might not generate any events unless a subscription has been created to listen for the event.
-
-NOTE: Refer to the [Security](#security) clause for security implications of Eventing
+NOTE: Refer to the [Security](#security) clause for security implications of Eventing.
 
 #### Event message subscription
 
