@@ -90,8 +90,8 @@
           <Annotation Term="OData.LongDescription" String="Indicates privilege overrides of property or element. e.g., password property."/>
         </Property>
         <Property Name="OperationMap" Type="PrivilegeRegistry.v1_0_0.OperationMap" Nullable="false">
-          <Annotation Term="OData.Description" String="list mapping between HTTP method and privilege required for entity."/>
-          <Annotation Term="OData.LongDescription" String="list mapping between HTTP method and privilege required for entity."/>
+          <Annotation Term="OData.Description" String="List mapping between HTTP method and privilege required for entity."/>
+          <Annotation Term="OData.LongDescription" String="List mapping between HTTP method and privilege required for entity."/>
         </Property>
       </ComplexType>
 
@@ -102,13 +102,13 @@
           <Annotation Term="OData.LongDescription" String="Indicates the set of URI(s) or Entity(s) or property(s). e.g./redfish/v1/Systems/1, Manager, Password. When targets property is not mentioned, then there is no override."/>
         </Property>
         <Property Name="OperationMap" Type="PrivilegeRegistry.v1_0_0.OperationMap" >
-          <Annotation Term="OData.Description" String="list mapping between HTTP operation and privilege needed to perform operation."/>
-          <Annotation Term="OData.LongDescription" String="list mapping between HTTP operation and privilege needed to perform operation."/>
+          <Annotation Term="OData.Description" String="List mapping between HTTP operation and privilege needed to perform operation."/>
+          <Annotation Term="OData.LongDescription" String="List mapping between HTTP operation and privilege needed to perform operation."/>
         </Property>
       </ComplexType>
 
       <ComplexType Name="OperationMap">
-        <Annotation Term="OData.Description" String="Used for describing services like Serial Console, Command Shell or Graphical Console"/>
+        <Annotation Term="OData.Description" String="Used for describing the specific privileges for a set of HTTP operations."/>
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="GET" Type="Collection(PrivilegeRegistry.v1_0_0.OperationPrivilege)" Nullable="false">
           <Annotation Term="OData.Description" String="Indicates privilege required for HTTP GET operation."/>
@@ -137,7 +137,7 @@
       </ComplexType>
 
       <ComplexType Name="OperationPrivilege">
-        <Annotation Term="OData.Description" String="Used for describing the specific privileges for a given type of HTTP operation"/>
+        <Annotation Term="OData.Description" String="Used for describing the specific privileges for a given type of HTTP operation."/>
         <Property Name="Privilege" Type="Collection(Edm.String)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Lists the privileges that are allowed to perform the given type of HTTP operation on the entity type."/>
