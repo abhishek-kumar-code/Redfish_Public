@@ -14,7 +14,8 @@ let ucumError = false;
 const unitsWhiteList = ['RPM'];
 //This does not contain a full CSDL parser. This whitelist lists complex types that are utilized across files
 const complexTypeWhitelist = ['Resource.Status', 'Resource.Oem', 'Resource.v1_1_0.Location',
-                              'Resource.v1_1_0.Identifier', 'VLanNetworkInterface.v1_0_0.VLAN'];
+                              'Resource.v1_1_0.Identifier', 'VLanNetworkInterface.v1_0_0.VLAN',
+                              'Message.Message'];
 
 function getUcumXML(callback, context, end)
 {
@@ -185,6 +186,33 @@ files.forEach(function(file) {
           if(complexTypes.length !== 0)
           {
             throw new Error('Property '+propName+' of '+propType+' has permission!');
+          }
+        }
+      }
+    },
+    'descriptions have trailing periods': function(err, txt) {
+      let doc = xmljs.parseXml(txt);
+      let descriptions = doc.find('//*[local-name()="Annotation"][@Term="OData.Description"]/@String');
+      if(descriptions.length !== 0)
+      {
+        for(let i = 0; i < descriptions.length; i++)
+        {
+          let description = descriptions[i].value();
+          if(description.slice(-1) !== '.')
+          {
+            throw new Error('\"' + description + '\" does not end in a period!');
+          }
+        }
+      }
+      let long_descriptions = doc.find('//*[local-name()="Annotation"][@Term="OData.LongDescription"]/@String');
+      if(long_descriptions.length !== 0)
+      {
+        for(let i = 0; i < long_descriptions.length; i++)
+        {
+          let long_description = long_descriptions[i].value();
+          if(long_description.slice(-1) !== '.')
+          {
+            throw new Error('\"' + long_description + '\" does not end in a period!');
           }
         }
       }
