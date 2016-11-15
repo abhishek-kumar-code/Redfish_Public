@@ -589,7 +589,7 @@ Submitting a POST request to a Resource Collection is equivalent to submitting t
 
 * Services shall support the POST method for creating resources. If the resource does not offer anything to be created, a status code [405](#status-405) shall be returned.
 * Services shall support POST operations on a URL that references a Resource Collection instance.
-* Services shall support POST operations on a URL that rererences an Action (see [Actions (POST)](#actions-post-)).
+* Services shall support POST operations on a URL that references an Action (see [Actions (POST)](#actions-post-)).
 * The POST operation shall not be idempotent.
 
 The body of the create request contains a representation of the object to be created. The service may ignore any service controlled attributes (e.g., id), forcing those attributes to be overridden by the service. The service shall set the Location header to the URI of the newly created resource. The response to a successful create request should be 201 (Created) and may include a response body containing a representation of the newly created resource conforming to the schema of the created resource.
@@ -892,6 +892,8 @@ Each entry shall be represented as a JSON object and shall include a "name" prop
 
 Resources are returned as JSON payloads, using the MIME type `application/json`.  Resource property names match the case specified in the [Schema](#resource-properties).
 
+See also [Resource Collection responses](#resource-collection-responses). 
+
 ##### Context property
 
 Responses that represent a single resource shall contain a context property named "@odata.context" describing the source of the payload. The value of the context property shall be the context URL that describes the resource according to [OData-Protocol](#OData-Protocol).
@@ -1173,7 +1175,7 @@ where
 
 The client can get the definition of the annotation from the [service metadata](#service-metadata), or may ignore the annotation entirely, but should not fail reading the resource due to unrecognized annotations, including new annotations defined within the Redfish namespace.
 
-#### Resource Collection response
+#### Resource Collection responses
 
 Resource Collections are returned as a JSON object. The JSON object shall include a [context](#context-property), [resource count](#count-property), and array of [Members](#members-property), and may include a [next link](#partial-results) for partial results.
 
