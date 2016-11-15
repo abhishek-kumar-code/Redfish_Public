@@ -1998,11 +1998,11 @@ NOTE: Refer to the [Security](#security) clause for security implications of Eve
 
 #### Event message subscription
 
-The client locates the eventing service through traversing the Redfish Service interface.  When the eventing service has been discovered, clients subscribe to messages by sending a HTTP POST to the URL of the collection for subscriptions in the Eventing Service for which they are requesting events. This should be found off of the root service as described in the Redfish Schema for that service.
+The client locates the Event Service by traversing the Redfish Service interface.  When the service has been discovered, clients subscribe to messages by sending a HTTP POST to the URL of the Resource Collection for "Subscriptions" in the Event Service. The Event Service is found off of the Service Root as described in the Redfish Schema for that service.
 
-The specific syntax of the subscription body is found in the Redfish Schema.
+The specific syntax of the subscription body is found in the Redfish Schema definition for "EventDestination".
 
-On success, the "subscribe" action shall return with HTTP status 201 (CREATED) and the Location header in the response shall contain a URI giving the location of the newly created "subscription" resource. The body of the response, if any, shall contain a representation of the subscription resource conforming to the EventDestination schema. Sending an HTTP GET to the subscription resource shall return the configuration of the subscription.
+On success, the Event Service shall return an HTTP status 201 (CREATED) and the Location header in the response shall contain a URI giving the location of the newly created subscription resource. The body of the response, if any, shall contain a representation of the subscription resource conforming to the "EventDestination" schema. Sending an HTTP GET to the subscription resource shall return the configuration of the subscription.
 
 Clients begin receiving events once a subscription has been registered with the service and do not receive events retroactively. Historical events are not retained by the service.
 
@@ -2027,7 +2027,7 @@ where
 
 To unsubscribe from the messages associated with this subscription, the client or administrator simply sends an HTTP DELETE request to the subscription resource URI.
 
-These are some configurable properties that are global settings that define the behavior for all event subscriptions. See the properties defined in the EventService Redfish Schema for details of the parameters available to configure the service’s behavior.
+These are some configurable properties that are global settings that define the behavior for all event subscriptions. See the properties defined in the "EventService" Redfish Schema for details of the parameters available to configure the service’s behavior.
 
 ### Asynchronous operations
 
