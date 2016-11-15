@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Event  v1.1.1-->
+<!--# Redfish Schema:  Event  v1.1.2-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -31,7 +31,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Event">
 
       <EntityType Name="Event" BaseType="Resource.v1_0_0.Resource" Abstract="true">
-        <Annotation Term="OData.Description" String="The Event schema describes the JSON payload received by an Event Destination (which has subscribed to event notification) when events occurs.  This resource contains data about event(s), including descriptions, severity and MessageId reference to a Message Registry that can be accessed for further information. "/>
+        <Annotation Term="OData.Description" String="The Event schema describes the JSON payload received by an Event Destination (which has subscribed to event notification) when events occurs.  This resource contains data about event(s), including descriptions, severity and MessageId reference to a Message Registry that can be accessed for further information."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent an event for a Redfish implementation."/>
         <Annotation Term="Capabilities.InsertRestrictions">
           <Record>
@@ -56,7 +56,6 @@
 
       <EntityType Name="Event" BaseType="Event.Event">
         <NavigationProperty Name="Events" Type="Collection(Event.v1_0_0.EventRecord)" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Each event in this array has a set of properties that describe the event.  Since this is an array, more than one event can be sent simultaneously."/>
           <Annotation Term="OData.LongDescription" String="The value of this resource shall be an array of Event objects used to represent the occurrence of one or more events."/>
           <Annotation Term="Redfish.Required"/>
@@ -66,19 +65,19 @@
 
       <EnumType Name="EventType">
         <Member Name="StatusChange">
-          <Annotation Term="OData.Description" String="The status of this resource has changed"/>
+          <Annotation Term="OData.Description" String="The status of this resource has changed."/>
         </Member>
         <Member Name="ResourceUpdated">
-          <Annotation Term="OData.Description" String="The value of this resource has been updated"/>
+          <Annotation Term="OData.Description" String="The value of this resource has been updated."/>
         </Member>
         <Member Name="ResourceAdded">
-          <Annotation Term="OData.Description" String="A resource has been added"/>
+          <Annotation Term="OData.Description" String="A resource has been added."/>
         </Member>
         <Member Name="ResourceRemoved">
-          <Annotation Term="OData.Description" String="A resource has been removed"/>
+          <Annotation Term="OData.Description" String="A resource has been removed."/>
         </Member>
         <Member Name="Alert">
-          <Annotation Term="OData.Description" String="A condition exists which requires attention"/>
+          <Annotation Term="OData.Description" String="A condition exists which requires attention."/>
         </Member>
       </EnumType>
 
@@ -146,6 +145,11 @@
       <EntityType Name="Event" BaseType="Event.v1_0_2.Event"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Event.v1_0_4">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
+      <EntityType Name="Event" BaseType="Event.v1_0_3.Event"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Event.v1_1_0">
       <EntityType Name="Event" BaseType="Event.v1_0_2.Event">
         <Property Name="Context" Type="Edm.String" Nullable="false">
@@ -159,6 +163,11 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Event.v1_1_1">
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="Event" BaseType="Event.v1_1_0.Event"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Event.v1_1_2">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
+      <EntityType Name="Event" BaseType="Event.v1_1_1.Event"/>
     </Schema>
 
   </edmx:DataServices>
