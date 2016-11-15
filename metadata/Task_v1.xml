@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Task  v1.0.2-->
+<!--# Redfish Schema:  Task  v1.0.3-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -79,7 +79,6 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the completion status of the task, as defined in the Status section of the Redfish specification and shall not be set until the task has completed."/>
         </Property>
         <Property Name="Messages" Type="Collection(Message.Message)" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is an array of messages associated with the task."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of messages associated with the task."/>
         </Property>
@@ -126,6 +125,11 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Task.v1_0_2">
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="Task" BaseType="Task.v1_0_0.Task"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Task.v1_0_3">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
+      <EntityType Name="Task" BaseType="Task.v1_0_2.Task"/>
     </Schema>
 
   </edmx:DataServices>

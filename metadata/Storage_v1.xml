@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Storage  v1.1.0-->
+<!--# Redfish Schema:  Storage  v1.1.1-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -115,7 +115,6 @@
         </Property>
         <Property Name="Status" Type="Resource.Status" Nullable="false"/>
         <NavigationProperty Name="Redundancy" Type="Collection(Redundancy.Redundancy)" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Redundancy information for the storage subsystem."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
@@ -282,6 +281,11 @@
       <EntityType Name="Storage" BaseType="Storage.v1_0_0.Storage"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Storage.v1_0_2">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
+      <EntityType Name="Storage" BaseType="Storage.v1_0_1.Storage"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Storage.v1_1_0">
       <EntityType Name="Storage" BaseType="Storage.v1_0_1.Storage"/>
       <EntityType Name="StorageController" BaseType="Storage.v1_0_0.StorageController">
@@ -298,6 +302,11 @@
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </ComplexType>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Storage.v1_1_1">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
+      <EntityType Name="Storage" BaseType="Storage.v1_1_0.Storage"/>
     </Schema>
 
   </edmx:DataServices>
