@@ -2,8 +2,8 @@
 DocTitle: Redfish API Schema Readme
 DocNumber: '8010'
 DocClass: Normative
-DocVersion: '2016.2'
-modified: '2016-08-28'
+DocVersion: '2016.3'
+modified: '2016-12-07'
 status: published
 released: True
 copyright: '2015-2016'
@@ -22,6 +22,10 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 
 | Schema File | Version | Date      | Description     |
 | ---         | ---     | ---       | ---             |
+| (all files) | various | 2016-12-07 | Errata release.  Added explicit permissions annotations to all properties to clearly show which properties are read-write vs. read-only.  Corrected all property descriptions to always end with a period. |
+| Chassis | 1.4.0  | 2016-12-07 | Added "RackGroup" to "ChassiType" enumeration.  Added "HeightMm", "WidthMm", "DepthMm", and "WeightKg" properties. Added Link to "PCIeDevices". |
+| ComputerSystem | various  | 2016-12-07 | Errata release.  Corrected CSDL Type of "TotalSystemMemoryGiB" from 'Int64' to 'Decimal'. |
+
 | (all files) | various | 2016-8-12 | Corrected Reference URI links to OData v4 (errata 3) and added Capabilities annotations to CSDL files. |
 | ActionInfo | 1.0.0 | 2016-8-12 | Initial release.  ActionInfo describes the parameters and other information necessary to perform a Redfish Action to a particular Action target.  |
 | Endpoint | 1.0.0 | 2016-8-12 | Initial release.  An Endpoint is an entity that sends or receives protocol defined messages over a transport. |
