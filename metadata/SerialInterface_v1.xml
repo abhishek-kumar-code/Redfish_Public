@@ -184,13 +184,13 @@
 
       <EnumType Name="FlowControl">
         <Member Name="None">
-          <Annotation Term="OData.Description" String="No flow control imposed"/>
+          <Annotation Term="OData.Description" String="No flow control imposed."/>
         </Member>
         <Member Name="Software">
-          <Annotation Term="OData.Description" String="XON/XOFF in-band flow control imposed"/>
+          <Annotation Term="OData.Description" String="XON/XOFF in-band flow control imposed."/>
         </Member>
         <Member Name="Hardware">
-          <Annotation Term="OData.Description" String="Out of band flow control imposed"/>
+          <Annotation Term="OData.Description" String="Out of band flow control imposed."/>
         </Member>
       </EnumType>
 
@@ -204,31 +204,31 @@
         <Annotation Term="Redfish.Enumeration">
           <Collection>
             <Record>
-              <PropertyValue Property="Member" String="RJ45"/>
+              <PropertyValue Property="Member" String="RJ45."/>
             </Record>
             <Record>
-              <PropertyValue Property="Member" String="RJ11"/>
+              <PropertyValue Property="Member" String="RJ11."/>
             </Record>
             <Record>
-              <PropertyValue Property="Member" String="DB9 Female"/>
+              <PropertyValue Property="Member" String="DB9 Female."/>
             </Record>
             <Record>
-              <PropertyValue Property="Member" String="DB9 Male"/>
+              <PropertyValue Property="Member" String="DB9 Male."/>
             </Record>
             <Record>
-              <PropertyValue Property="Member" String="DB25 Female"/>
+              <PropertyValue Property="Member" String="DB25 Female."/>
             </Record>
             <Record>
-              <PropertyValue Property="Member" String="DB25 Male"/>
+              <PropertyValue Property="Member" String="DB25 Male."/>
             </Record>
             <Record>
-              <PropertyValue Property="Member" String="USB"/>
+              <PropertyValue Property="Member" String="USB."/>
             </Record>
             <Record>
-              <PropertyValue Property="Member" String="mUSB"/>
+              <PropertyValue Property="Member" String="mUSB."/>
             </Record>
             <Record>
-              <PropertyValue Property="Member" String="uUSB"/>
+              <PropertyValue Property="Member" String="uUSB."/>
             </Record>
           </Collection>
         </Annotation>

@@ -110,28 +110,28 @@
 
       <EnumType Name="TransferProtocolType">
         <Member Name="CIFS">
-          <Annotation Term="OData.Description" String="Common Internet File System protocol"/>
+          <Annotation Term="OData.Description" String="Common Internet File System protocol."/>
         </Member>
         <Member Name="FTP">
-          <Annotation Term="OData.Description" String="File Transfer Protocol"/>
+          <Annotation Term="OData.Description" String="File Transfer Protocol."/>
         </Member>
         <Member Name="SFTP">
-          <Annotation Term="OData.Description" String="Secure File Transfer Protocol"/>
+          <Annotation Term="OData.Description" String="Secure File Transfer Protocol."/>
         </Member>
         <Member Name="HTTP">
-          <Annotation Term="OData.Description" String="Hypertext Transfer Protocol"/>
+          <Annotation Term="OData.Description" String="Hypertext Transfer Protocol."/>
         </Member>
         <Member Name="HTTPS">
-          <Annotation Term="OData.Description" String="HTTP Secure protocol"/>
+          <Annotation Term="OData.Description" String="HTTP Secure protocol."/>
         </Member>
         <Member Name="NSF">
-          <Annotation Term="OData.Description" String="Network File System protocol"/>
+          <Annotation Term="OData.Description" String="Network File System protocol."/>
         </Member>
         <Member Name="SCP">
-          <Annotation Term="OData.Description" String="Secure File Copy protocol"/>
+          <Annotation Term="OData.Description" String="Secure File Copy protocol."/>
         </Member>
         <Member Name="TFTP">
-          <Annotation Term="OData.Description" String="Trivial File Transfer Protocol"/>
+          <Annotation Term="OData.Description" String="Trivial File Transfer Protocol."/>
         </Member>
         <Member Name="OEM">
           <Annotation Term="OData.Description" String="A protocol defined by the manufacturer."/>

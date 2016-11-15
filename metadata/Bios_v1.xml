@@ -64,7 +64,7 @@
       <Action Name="ChangePassword" IsBound="true">
         <Parameter Name="Bios" Type="Bios.v1_0_0.Actions"/>
         <Parameter Name="PasswordName" Type="Edm.String" Nullable="false">
-          <Annotation Term="OData.Description" String="The name of the BIOS password to change"/>
+          <Annotation Term="OData.Description" String="The name of the BIOS password to change."/>
           <Annotation Term="OData.LongDescription" String="This defines the BIOS password name to change. For instance, this could be the AdminPassword or UserPassword."/>
         </Parameter>
         <Parameter Name="OldPassword" Type="Edm.String" Nullable="false">

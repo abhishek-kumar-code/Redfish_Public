@@ -31,7 +31,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Event">
 
       <EntityType Name="Event" BaseType="Resource.v1_0_0.Resource" Abstract="true">
-        <Annotation Term="OData.Description" String="The Event schema describes the JSON payload received by an Event Destination (which has subscribed to event notification) when events occurs.  This resource contains data about event(s), including descriptions, severity and MessageId reference to a Message Registry that can be accessed for further information. "/>
+        <Annotation Term="OData.Description" String="The Event schema describes the JSON payload received by an Event Destination (which has subscribed to event notification) when events occurs.  This resource contains data about event(s), including descriptions, severity and MessageId reference to a Message Registry that can be accessed for further information."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent an event for a Redfish implementation."/>
         <Annotation Term="Capabilities.InsertRestrictions">
           <Record>
@@ -65,19 +65,19 @@
 
       <EnumType Name="EventType">
         <Member Name="StatusChange">
-          <Annotation Term="OData.Description" String="The status of this resource has changed"/>
+          <Annotation Term="OData.Description" String="The status of this resource has changed."/>
         </Member>
         <Member Name="ResourceUpdated">
-          <Annotation Term="OData.Description" String="The value of this resource has been updated"/>
+          <Annotation Term="OData.Description" String="The value of this resource has been updated."/>
         </Member>
         <Member Name="ResourceAdded">
-          <Annotation Term="OData.Description" String="A resource has been added"/>
+          <Annotation Term="OData.Description" String="A resource has been added."/>
         </Member>
         <Member Name="ResourceRemoved">
-          <Annotation Term="OData.Description" String="A resource has been removed"/>
+          <Annotation Term="OData.Description" String="A resource has been removed."/>
         </Member>
         <Member Name="Alert">
-          <Annotation Term="OData.Description" String="A condition exists which requires attention"/>
+          <Annotation Term="OData.Description" String="A condition exists which requires attention."/>
         </Member>
       </EnumType>
 
