@@ -71,7 +71,7 @@
           <Annotation Term="OData.LongDescription" String="This value of this property shall contain all the entities which this endpoint allows access to."/>
         </Property>
         <Property Name="Identifiers" Type="Collection(Resource.v1_1_0.Identifier)">
-          <Annotation Term="OData.Description" String="Identifiers for this endpoint"/>
+          <Annotation Term="OData.Description" String="Identifiers for this endpoint."/>
           <Annotation Term="OData.LongDescription" String="Identifiers for this endpoint shall be unique in the context of other endpoints that can reached over the connected network."/>
         </Property>
 
@@ -80,8 +80,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the PCI ID of the endpoint."/>
         </Property>
         <NavigationProperty Name="Redundancy" Type="Collection(Redundancy.Redundancy)" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Redundancy information for the lower level endpoints supporting this endpoint"/>
+          <Annotation Term="OData.Description" String="Redundancy information for the lower level endpoints supporting this endpoint."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
         <Property Name="HostReservationMemoryBytes" Type="Edm.Int64">
@@ -166,19 +165,19 @@
 
       <EnumType Name="EntityType">
         <Member Name="StorageInitiator">
-          <Annotation Term="OData.Description" String="The entity is a storage initator. The EntityLink property (if present) should be a Storage.StorageController entity"/>
+          <Annotation Term="OData.Description" String="The entity is a storage initator. The EntityLink property (if present) should be a Storage.StorageController entity."/>
         </Member>
         <Member Name="RootComplex">
-          <Annotation Term="OData.Description" String="The entity is a PCI(e) root complex. The EntityLink property (if present) should be a ComputerSystem.ComputerSystem entity"/>
+          <Annotation Term="OData.Description" String="The entity is a PCI(e) root complex. The EntityLink property (if present) should be a ComputerSystem.ComputerSystem entity."/>
         </Member>
         <Member Name="NetworkController">
-          <Annotation Term="OData.Description" String="The entity is a network controller. The EntityLink property (if present) should be an EthernetInterface.EthernetInterface entity"/>
+          <Annotation Term="OData.Description" String="The entity is a network controller. The EntityLink property (if present) should be an EthernetInterface.EthernetInterface entity."/>
         </Member>
         <Member Name="Drive">
-          <Annotation Term="OData.Description" String="The entity is a disk drive. The EntityLink property (if present) should be a Drive.Drive entity"/>
+          <Annotation Term="OData.Description" String="The entity is a disk drive. The EntityLink property (if present) should be a Drive.Drive entity."/>
         </Member>
         <Member Name="StorageExpander">
-          <Annotation Term="OData.Description" String="The entity is a storage expander. The EntityLink property (if present) should be a Chassis.Chassis entity"/>
+          <Annotation Term="OData.Description" String="The entity is a storage expander. The EntityLink property (if present) should be a Chassis.Chassis entity."/>
         </Member>
         <Member Name="DisplayController">
           <Annotation Term="OData.Description" String="The entity is a display controller."/>
@@ -193,13 +192,13 @@
 
       <EnumType Name="EntityRole">
         <Member Name="Initiator">
-          <Annotation Term="OData.Description" String="The entity is acting as an initiator"/>
+          <Annotation Term="OData.Description" String="The entity is acting as an initiator."/>
         </Member>
         <Member Name="Target">
-          <Annotation Term="OData.Description" String="The entity is acting as a target"/>
+          <Annotation Term="OData.Description" String="The entity is acting as a target."/>
         </Member>
         <Member Name="Both">
-          <Annotation Term="OData.Description" String="The entity is acting as both an initiator and a target"/>
+          <Annotation Term="OData.Description" String="The entity is acting as both an initiator and a target."/>
         </Member>
       </EnumType>
 
@@ -236,6 +235,6 @@
       <Annotation Term="OData.Description" String="This version was created to add explicit Permissions annotations to all properties for clarity."/>
       <EntityType Name="Endpoint" BaseType="Endpoint.v1_0_0.Endpoint"/>
     </Schema>
-	
+
   </edmx:DataServices>
 </edmx:Edmx>

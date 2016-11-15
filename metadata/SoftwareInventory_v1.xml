@@ -67,8 +67,13 @@
 
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SoftwareInventory.v1_0_1">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
+      <EntityType Name="SoftwareInventory" BaseType="SoftwareInventory.v1_0_0.SoftwareInventory"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SoftwareInventory.v1_1_0">
-      <EntityType Name="SoftwareInventory" BaseType="SoftwareInventory.v1_0_0.SoftwareInventory">
+      <EntityType Name="SoftwareInventory" BaseType="SoftwareInventory.v1_0_1.SoftwareInventory">
         <Property Name="SoftwareId" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A string representing the implementation-specific ID for identifying this software."/>
@@ -77,7 +82,7 @@
         <Property Name="LowestSupportedVersion" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A string representing the lowest supported version of this software."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a string representing the lowest supported version of this software. This string is formatted using the same format used for the Version property"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a string representing the lowest supported version of this software. This string is formatted using the same format used for the Version property."/>
         </Property>
         <Property Name="UefiDevicePaths" Type="Collection(Edm.String)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -86,12 +91,11 @@
         </Property>
         <NavigationProperty Name="RelatedItem" Type="Collection(Resource.Item)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The ID(s) of the resources associated with this software inventory item"/>
+          <Annotation Term="OData.Description" String="The ID(s) of the resources associated with this software inventory item."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of IDs containing pointers consistent with JSON pointer syntax to the resource that is associated with this software inventory item."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </EntityType>
-      
     </Schema>
 
   </edmx:DataServices>
