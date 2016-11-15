@@ -1177,7 +1177,7 @@ The client can get the definition of the annotation from the [service metadata](
 
 #### Resource Collection responses
 
-Resource Collections are returned as a JSON object. The JSON object shall include a [context](#context-property), [resource count](#count-property), and array of [Members](#members-property), and may include a [next link](#partial-results) for partial results.
+Resource Collections are returned as a JSON object. The JSON object shall include a [context](#context-property), [resource count](#count-property), and array of [Members](#members-property), and may include a [next link](#nextlink-property-and-partial-results) for partial results.
 
 
 ##### Context property
@@ -1201,10 +1201,9 @@ The total number of resources (members) available in the Resource Collection is 
 
 The Members of the Resource Collection of resources are returned as a JSON array, where each element of the array is a JSON object whose type is specified in the Redfish Schema document describing the containing type. The name of the property representing the members of the collection shall be "Members". The Members property shall not be null. Empty collections shall be returned in JSON as an empty array.
 
-##### Partial results
-Responses representing a single resource shall not be broken into multiple results.
+##### NextLink property and partial results
 
-Reponses may contain a subset of the members of the full Resource Collection. For partial Resource Collections the response includes a next link property named "Members@odata.nextLink". The value of the next link property shall be an opaque URL that the client can use to retrieve the next set of members of the Resource Collection. The next link property shall only be present if the number of resources requested is greater than the number of resources returned.
+Responses may contain a subset of the members of the full Resource Collection. For partial Resource Collections the response includes a next link property named "Members@odata.nextLink". The value of the next link property shall be an opaque URL to a resource, with the same @odata.type, containing the next set of partial members. The next link property shall only be present if the number of Members in the Resource Collection is greater than the number of members returned.
 
 The value of the [count property](#count-property) represents the total number of resources available if the client enumerates all pages of the Resource Collection.
 
