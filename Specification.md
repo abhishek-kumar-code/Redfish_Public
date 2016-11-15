@@ -542,7 +542,7 @@ No requirements are placed on implementations to return a consistent set of Memb
 
 * Clients shall not make assumptions about the URIs for the Members of a Resource Collection.
 * Retrieved Resource Collections shall always include the [count](#count-property) property to specify the total number of entries in its "Members" array.
-* Regardless of paging, see [partial results](#partial-results), the total number of resources referenced by the Members array shall be returned in the [count](#count-property) property.
+* Regardless of paging, see [partial results](#nextlink-property-and-partial-results), the total number of resources referenced by the Members array shall be returned in the [count](#count-property) property.
 
 #### HEAD
 
