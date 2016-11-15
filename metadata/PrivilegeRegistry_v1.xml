@@ -59,7 +59,7 @@
       <EntityType Name="PrivilegeRegistry" BaseType="PrivilegeRegistry.PrivilegeRegistry">
         <Annotation Term="OData.Description" String="This is the schema definition for Operation to Privilege mapping."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent operation to privilege mappings."/>
-        <Property Name="PrivilegesUsed" Type="Collection(Privileges.1.0.0.PrivilegeType)" Nullable="false">
+        <Property Name="PrivilegesUsed" Type="Collection(Privileges.v1_0_0.PrivilegeType)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Lists the set of Redfish standard priviliges used in building this mapping."/>
         </Property>
