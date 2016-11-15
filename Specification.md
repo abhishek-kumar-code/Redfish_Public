@@ -2344,8 +2344,8 @@ The Authorization subsystem uses Roles and Privileges to control which users hav
 
 #### Redfish Service Operation to Privilege Mapping
 
-For every request made by a Redfish client to a Redfish service, the Redfish service implementation shall determine that 
-the authenticated identity has the authorization to perform the requested operation on the URI specified in the request.
+For every request made by a Redfish client to a Redfish service, the Redfish service shall determine that 
+the authenticated identity of the requestor has the authorization to perform the requested operation on the URI specified in the request.
 Using the role and privileges authorization model, where an authenticated identity context is assigned a role and a role is a set of privileges, the service will typically check a HTTP request
 against a mapping of the authenticated requesting identity role/privileges and determine whether the identity privileges are sufficient to perform the operation specified in the request.
 
@@ -2368,7 +2368,8 @@ implements for the applicable schema.  There are several situations where specif
 operation to privilege mappings than the entity mappings and the entity level mappings have to be overridden.  The methodology for specifying
 entity level operation to privilege mappings and related overrides are defined in the PrivilegeRegistry schema.
 
-The SPMF Redfish Privilege Mapping Registry Should be used by Redfish Service implementations as a base privilege requirements mapping in order to promote interoperability for Redfish clients.
+If a Redfish service provides a Privilege Registry document, the service shall use the SPMF Redfish Privilege Mapping Registry definition
+as a base operation to privilege mapping definition for operations that the service supports in order to promote interoperability for Redfish clients.
 
 ##### OperationMap Syntax
 
