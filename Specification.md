@@ -677,7 +677,7 @@ OData-Version: 4.0
 Redfish defines four types of responses:
 * [Metadata Responses](#metadata-responses) - Describe the resources and types exposed by the service to generic clients.
 * [Resource Responses](#resource-responses) - JSON representation of an individual resource.
-* [Resource Collection Responses](#resource-collection-response) - JSON representation of a resource that represents a Resource Collection.
+* [Resource Collection Responses](#resource-collection-responses) - JSON representation of a resource that represents a Resource Collection.
 * [Error Responses](#error-responses) - Top level JSON response providing additional information in the case of an HTTP error.
 
 #### Response headers
