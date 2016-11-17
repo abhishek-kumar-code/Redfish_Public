@@ -2348,7 +2348,7 @@ The Authorization subsystem uses Roles and Privileges to control which users hav
 | ---     | ---      | ---             |
 | 1.0.5   | 2016-12-9| Errata release.  Various typographical errors. |
 |         |          | Corrected terminology usage of "Collection", "Resource Collection" and "Members" throughout. |
-|         |          | Added glossary entries for Resource Collection and Members. |
+|         |          | Added glossary entries for "Resource Collection" and "Members". |
 |         |          | Corrected Certificate requirements to reference definitions and requirements in RFC 5280 and added a normative reference to RFC 5280. |
 |         |          | Clarified usage of HTTP POST and PATCH operations. |
 |         |          | Clarified usage of HTTP Status codes and Error responses. |
