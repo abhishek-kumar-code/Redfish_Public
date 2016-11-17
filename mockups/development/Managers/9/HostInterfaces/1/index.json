@@ -1,0 +1,49 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#HostInterface.HostInterface",
+    "@odata.id": "/redfish/v1/Managers/9/HostInterfaces/1",
+    "@odata.type": "#HostInterface.v1_0_0.HostInterface",
+    "Id": "1",
+    "Name": "Host Interface",
+    "Description": "Management Host Interface",
+    "HostInterfaceType": "NetworkHostInterface",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "InterfaceEnabled": true,
+    "ExternallyAccessible": false,
+    "AuthenticationModes": [
+        "AuthNone",
+        "BasicAuth",
+        "RedfishSessionAuth",
+        "OemAuth"
+    ],
+    "KernelAuthRoleId": "Administrator",
+    "KernelAuthEnabled": true,
+    "FirmwareAuthRoleId": "Administrator",
+    "FirmwareAuthEnabled": true,
+    "HostEthernetInterfaces": {
+        "@odata.id": "/redfish/v1/Managers/9/HostInterfaces/1/HostEthernetInterfaces"
+    },
+    "ManagerEthernetInterface": {
+        "@odata.id": "/redfish/v1/Managers/9/EthernetInterfaces/ToHost"
+    },
+    "NetworkProtocol": {
+        "@odata.id": "/redfish/v1/Managers/9/NetworkProtocol"
+    },
+    "Links": {
+        "ComputerSystems": [
+            {
+                "@odata.id": "/redfish/v1/Systems/5"
+            }
+        ],
+        "KernelAuthRole": {
+            "@odata.id": "/redfish/v1/AccountService/Roles/Admin"
+        },
+        "FirmwareAuthRole": {
+            "@odata.id": "/redfish/v1/AccountService/Roles/Admin"
+        }
+    },
+    "Oem": {}
+}
