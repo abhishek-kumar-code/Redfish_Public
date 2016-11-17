@@ -229,17 +229,18 @@ The following table defines the protocol-specific data for the "Redfish Over IP"
 | Offset  | Name     | Length   | Value    | Description     |
 | ---     | ---      | ---      | ---      | ---             |
 | X+0     | Service UUID     | 16BYTEs     | Varies       | same as Redfish Service UUID in Redfish Service Root resource    |
-| X+16     | Redfish Service IP Discovery Type     | BYTE     | Enum       | Unknown=00h,    <br/> Static=01h,   <br/> DHCP=02h,     <br/> AutoConfigure=03h,   <br/> HostSelected=04h, <br/> other values reserved      |
-| X+17     | Redfish Service IP Address Format     | BYTE     | Enum       | Unknown=00h,   <br/> Ipv4=01h,    <br/> Ipv6=02h, <br/> other values reserved      |
-| X+18     | Redfish Service IP Address     | 16BYTE     | Varies       | Used for Static and AutoConfigure.  <br/> For IPV4, use the first 4 Bytes and zero fill the remaining bytes.      |
-| X+34     | Redfish Service IP Mask     | 16BYTE    | Varies       | Used for Static and AutoConfigure.  <br/> For IPV4, use the first 4 Bytes and zero fill the remaining bytes.      |
-| X+50     | Redfish Service IP Port     | WORD     | Varies       | Used for Static and AutoConfigure.      |
-| X+54     | Redfish Service VLAN ID     | DWORD     | Varies       | Used for Static and AutoConfigure.      |
-| X+62     | Redfish Service Hostname Length     | BYTE     | Varies       | length of the following hostname string      |
-| X+63     | Redfish Service Hostname     | varies     | Varies       | hostname of Redfish Service      |
-
-
-
+| X+16     | Host IP Assignment Type     | BYTE     | Enum       | Unknown=00h, <br/>    Static=01h, <br/>  DHCP=02h, <br/>    AutoConfigure=03h, <br/>  HostSelected=04h, <br/> other values reserved     |
+| X+17     | Host IP Address Format     | BYTE     | Enum       | Unknown=00h,   <br/> Ipv4=01h,    <br/> Ipv6=02h, <br/> other values reserved      |
+| X+18     | Host IP Address     |  16BYTE     | Varies       | Used for Static and AutoConfigure.  <br/> For IPV4, use the first 4 Bytes and zero fill the remaining bytes.      |
+| X+34     | Host IP Mask     | 16BYTE     | Varies       | Used for Static and AutoConfigure.  <br/> For IPV4, use the first 4 Bytes and zero fill the remaining bytes.      |
+| X+50     | Manager IP Discovery Type     | BYTE     | Enum       | Unknown=00h,    <br/> Static=01h,   <br/> DHCP=02h,     <br/> AutoConfigure=03h,   <br/> HostSelected=04h, <br/> other values reserved      |
+| X+51     | Manager IP Address Format     | BYTE     | Enum       | Unknown=00h,   <br/> Ipv4=01h,    <br/> Ipv6=02h, <br/> other values reserved      |
+| X+52     | Manager IP Address     | 16BYTE     | Varies       | Used for Static and AutoConfigure.  <br/> For IPV4, use the first 4 Bytes and zero fill the remaining bytes.      |
+| X+68     | Manager IP Mask     | 16BYTE    | Varies       | Used for Static and AutoConfigure.  <br/> For IPV4, use the first 4 Bytes and zero fill the remaining bytes.      |
+| X+84     | Manager IP Port     | WORD     | Varies       | Used for Static and AutoConfigure.      |
+| X+86     | Manager VLAN ID     | DWORD     | Varies       | Used for Static and AutoConfigure.      |
+| X+90     | Manager Hostname Length     | BYTE     | Varies       | length of the following hostname string      |
+| X+91     | Manager Hostname     | varies     | Varies       | hostname of manager      |
 
 
 ## Delivery of Kernel Authentication Information via UEFI Runtime Variables
