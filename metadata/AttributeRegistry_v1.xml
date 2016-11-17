@@ -58,7 +58,7 @@
         <Property Name="Language" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the RFC 5646 compliant language code for the registry."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a string consisting of an RFC 5646 language code"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a string consisting of an RFC 5646 language code."/>
           <Annotation Term="Redfish.Required"/>
         </Property>
         <Property Name="RegistryVersion" Type="Edm.String" Nullable="false">
@@ -267,9 +267,9 @@
       </ComplexType>
 
       <ComplexType Name="Dependencies">
-        <Property Name="Dependency" Type="AttributeRegistry.v1_0_0.Dependency"  Nullable="false">
-          <Annotation Term="OData.Description" String=""/>
-          <Annotation Term="OData.LongDescription" String=""/>
+        <Property Name="Dependency" Type="AttributeRegistry.v1_0_0.Dependency" Nullable="false">
+          <Annotation Term="OData.Description" String="The dependency expression for one or more Attributes in this Attribute Registry."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the dependency expression for one or more Attributes in this Attribute Registry."/>
         </Property>
         <Property Name="DependencyFor" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -345,7 +345,7 @@
         </Property>
         <Property Name="MapTerms" Type="AttributeRegistry.v1_0_0.MapTerms" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The logical term used to combine two or more MapFrom conditions in this dependency expression. "/>
+          <Annotation Term="OData.Description" String="The logical term used to combine two or more MapFrom conditions in this dependency expression."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the logical term used to combine two or more MapFrom conditions in this dependency expression. For example, 'AND' for logical AND, or 'OR' for logical OR of the conditions."/>
         </Property>
       </ComplexType>
