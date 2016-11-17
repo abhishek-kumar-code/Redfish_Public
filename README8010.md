@@ -27,7 +27,7 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | HostInterfaceCollection | 1.0.0 | 2016-12-07 | Initial release. Collection of Redfish Host Interfaces. |
 | NetworkAdapter | 1.0.0 | 2016-12-07 | Intial release. Describes general-purpose network adapters. |
 | NetworkAdapterCollection | 1.0.0 | 2016-12-07 | Intial release. Collection of Network Adapters. |
-| NetworkInteface | 1.0.0 | 2016-12-07 | Intial release. Provides linkages between NetworkAdapter, NetworkPort, and NetworkDeviceFunction instances. |
+| NetworkInterface | 1.0.0 | 2016-12-07 | Intial release. Provides linkages between NetworkAdapter, NetworkPort, and NetworkDeviceFunction instances. |
 | NetworkInterfaceCollection | 1.0.0 | 2016-12-07 | Intial release. Collection of Network Interfaces. |
 | NetworkDeviceFunction | 1.0.0 | 2016-12-07 | Intial release. Describes a logical interface exposed by a Network Adapter. |
 | NetworkDeviceFunctionCollection | 1.0.0 | 2016-12-07 | Intial release. Collection of Network Device Functions. |
