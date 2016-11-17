@@ -1,8 +1,8 @@
 {
     "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#NetworkDevice.NetworkDevice",
-    "@odata.id": "/redfish/v1/Systems/1/NetworkDevices/9fd725a1",
-    "@odata.type": "#NetworkDevice.v1_0_0.NetworkDevice",
+    "@odata.context": "/redfish/v1/$metadata#NetworkInterface.NetworkInterface",
+    "@odata.id": "/redfish/v1/Systems/1/NetworkInterfaces/9fd725a1",
+    "@odata.type": "#NetworkInterface.v1_0_0.NetworkInterface",
     "Id": "9fa725a1",
     "Name": "Network Device View",
     "NetworkPorts": {

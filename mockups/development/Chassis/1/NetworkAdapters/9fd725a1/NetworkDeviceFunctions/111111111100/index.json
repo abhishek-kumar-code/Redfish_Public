@@ -5,9 +5,9 @@
     "@odata.type": "#NetworkDeviceFunction.v1_0_0.NetworkDeviceFunction",
     "Id": "111111111100",
     "Name": "Network Device Function View",
-    "NetworkDeviceFunctionType": "Ethernet",
+    "NetDevFuncType": "Ethernet",
     "DeviceEnabled": true,
-    "NetworkDeviceFunctionCapabilities": [
+    "NetDevFuncCapabilities": [
         "Ethernet","FibreChannel"
     ],
     "Ethernet": {
@@ -70,8 +70,8 @@
         "odata.id": "/redfish/v1/Chassis/1/NetworkAdapter/9fd725a1/NetworkPorts/1"
     },
     "BootMode": "Disabled",
-    "SRIOVVirtualFunctionsEnabled": true,
-    "SRIOVVirtualFunctionCount": 16,
+    "VirtualFunctionsEnabled": true,
+    "MaxVirtualFunctions": 16,
     "Links": {
         "PCIeFunction": {
             "@odata.id": "/redfish/v1/Fabrics/ComplexPCIe/1/PCIeFunction/1"

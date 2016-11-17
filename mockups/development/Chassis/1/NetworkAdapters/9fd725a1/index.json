@@ -52,5 +52,11 @@
                 }
             }
         }
-    ]
+    ],
+    "Actions": {
+        "#NetworkAdapter.ResetSettingsToDefault": {
+            "target": "/redfish/v1/Chassis/1/NetworkAdapters/9fd725a1/Actions/NetworkAdapter.ResetSettingsToDefault"
+        },
+        "Oem": {}
+    }
 }

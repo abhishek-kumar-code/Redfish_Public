@@ -7,30 +7,30 @@
     "Name": "Network Port View",
     "PhysicalPortNumber": "1",
     "LinkStatus": "Up",
-    "NetworkPortSupportedLinkCapabilities": [
+    "SupportedLinkCapabilities": [
         {
             "LinkNetworkTechnology": "Ethernet",
             "LinkSpeedMbps": 10000
         }
     ],
-    "NetworkPortActiveLinkTechnology": "Ethernet",
+    "ActiveLinkTechnology": "Ethernet",
     "SupportedEthernetCapabilities":  [
         "WakeOnLAN", "LLDP", "PoE", "EEE"
     ],
-    "NetworkDeviceFunctionsMinimumBandwidthAllocationPercentage": [
+    "NetDevFuncMinBWAlloc": [
         {
             "NetworkDeviceFunction": {
                 "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/9fd725a1/NetworkDeviceFunctions/111111111100"
             },
-            "MinimumBandwidthAllocationPercentage": 25
+            "MinBWAllocPercent": 25
         }
     ],
-    "NetworkDeviceFunctionsMaximumBandwidthAllocationPercentage": [
+    "NetDevFuncMaxBWAlloc": [
         {
             "NetworkDeviceFunction": {
                 "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/9fd725a1/NetworkDeviceFunctions/111111111100"
             },
-            "MaximumBandwidthAllocationPercentage": 100
+            "MaxBWAllocPercent": 100
         }
     ],
     "AssociatedNetworkAddresses": [
