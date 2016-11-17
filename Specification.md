@@ -306,7 +306,7 @@ HTTP is ideally suited to a RESTful interface. This clause describes how HTTP is
 
 A URI is used to identify a resource, including the base service and all Redfish resources.
 
-* Each unique instance of a resource shall be identified by a URI; thus a URI cannot reference multiple resources though it may reference a single Resource Collection.
+* Each unique instance of a resource shall be identified by a URI.
 * A URI shall be treated by the client as opaque, and thus should not be attempted to be understood or deconstructed by the client outside of applying standard reference resolution rules as defined in clause 5, Reference Resolution, of [RFC3986](#RFC3986).
 
 To begin operations, a client must know a URI for a resource.
@@ -521,12 +521,12 @@ Clients request resources by issuing GET requests to the URI for the individual 
 
 ###### Query parameters
 
-When the resource addressed is a Resource Collection, the client may use the following paging query options to specify that a subset of the Members of that Resource Collection be returned. These paging query options apply to the Members property array of a Resource Collection.
+When the resource addressed is a Resource Collection, the client may use the following paging query options to specify that a subset of the Members of that Resource Collection be returned. These paging query options apply specifically to the "Members" array property within a Resource Collection.
 
 | Attribute | Description                                                                                                                                                                | Example                   |
 | ---       | ---                                                                                                                                                                        | ---                       |
-| $skip     | Integer indicating the number of Members in the Resource Collection to skip before retrieving the first resource.                                                                 | `http://collection?$skip=5` |
-| $top      | Integer indicating the number of Members to include in the response. The minimum value for this parameter is 1.  The default behavior is to return all Members. | `http://collection?$top=30` |
+| $skip     | Integer indicating the number of Members in the Resource Collection to skip before retrieving the first resource.                                                                 | `http://resourcecollection?$skip=5` |
+| $top      | Integer indicating the number of Members to include in the response. The minimum value for this parameter is 1.  The default behavior is to return all Members. | `http://resourcecollection?$top=30` |
 
 * Services should support the $top and $skip query parameters.
 * Implementation shall return the 501, Not Implemented, status code for any query parameters starting with "$" that are not supported, and should return an [extended error](#error-responses) indicating the requested query parameter(s) not supported for this resource.
@@ -534,13 +534,13 @@ When the resource addressed is a Resource Collection, the client may use the fol
 
 ###### Retrieving Resource Collections
 
-Retrieving a Resource Collection is done by sending the HTTP GET method to the URI for that resource. The response includes properties of the Resource Collection including the array of its Members. A subset of the Members can be returned using [client paging query parameters](#query-parameters).
+Retrieving a Resource Collection is done by sending the HTTP GET method to the URI for that resource. The response includes properties of the Resource Collection including an array of its Members. A subset of the Members can be returned using [client paging query parameters](#query-parameters).
 
 No requirements are placed on implementations to return a consistent set of Members when a series of requests using paging query parameters are made over time to obtain the entire set of members. It is possible that this could result in missed or duplicate elements being retrieved if multiple GETs are used to retrieve the Members array instances using paging.
 
 * Clients shall not make assumptions about the URIs for the Members of a Resource Collection.
-* Retrieved Resource Collections shall always include the [count](#count-property) property to specify the total number of entries in its Members array.
-* If only a portion of the Resource Collection is returned due to client-specified paging query parameters or services returning [partial results](#partial-results), then the total number of resources across all pages shall be returned in the count property.
+* Retrieved Resource Collections shall always include the [count](#count-property) property to specify the total number of entries in its "Members" array.
+* Regardless of paging, see [partial results](#nextlink-property-and-partial-results), the total number of resources referenced by the Members array shall be returned in the [count](#count-property) property.
 
 #### HEAD
 
@@ -586,7 +586,8 @@ The POST method is used to create a new resource. The POST request is submitted 
 Submitting a POST request to a Resource Collection is equivalent to submitting the same request to the Members property of that Resource Collection. Services that support adding Members to a Resource Collection shall support both forms.
 
 * Services shall support the POST method for creating resources. If the resource does not offer anything to be created, a status code [405](#status-405) shall be returned.
-* Services shall only support POST operations for URIs representing either a Resource Collection or an Action (see [Actions (POST)](#actions-post-)).
+* Services shall support POST operations on a URL that references a Resource Collection instance.
+* Services shall support POST operations on a URL that references an Action (see [Actions (POST)](#actions-post-)).
 * The POST operation shall not be idempotent.
 
 The body of the create request contains a representation of the object to be created. The service may ignore any service controlled attributes (e.g., id), forcing those attributes to be overridden by the service. The service shall set the Location header to the URI of the newly created resource. The response to a successful create request should be 201 (Created) and may include a response body containing a representation of the newly created resource conforming to the schema of the created resource.
@@ -674,7 +675,7 @@ OData-Version: 4.0
 Redfish defines four types of responses:
 * [Metadata Responses](#metadata-responses) - Describe the resources and types exposed by the service to generic clients.
 * [Resource Responses](#resource-responses) - JSON representation of an individual resource.
-* [Resource Collection Responses](#resource-collection-response) - JSON representation of a resource that represents a Resource Collection.
+* [Resource Collection Responses](#resource-collection-responses) - JSON representation of a resource that represents a Resource Collection.
 * [Error Responses](#error-responses) - Top level JSON response providing additional information in the case of an HTTP error.
 
 #### Response headers
@@ -804,7 +805,7 @@ The service metadata shall include the namespaces for each of the Redfish resour
 </edmx:Reference>
 ~~~
 
-The service metadata shall include an entity container that defines the top level resources and Resource Collections. This entity container shall extend the ServiceContainer defined in the ServiceRoot.v1_0_0 schema and may include additional Resources.
+The service metadata shall include an entity container that defines the top level resources and Resource Collections. An implementation may extend the ServiceContainer defined in the ServiceRoot.v1_0_0 schema and may include additional resources.
 
 ~~~xml
 <edmx:DataServices>
@@ -889,6 +890,8 @@ Each entry shall be represented as a JSON object and shall include a "name" prop
 
 Resources are returned as JSON payloads, using the MIME type `application/json`.  Resource property names match the case specified in the [Schema](#resource-properties).
 
+See also [Resource Collection responses](#resource-collection-responses). 
+
 ##### Context property
 
 Responses that represent a single resource shall contain a context property named "@odata.context" describing the source of the payload. The value of the context property shall be the context URL that describes the resource according to [OData-Protocol](#OData-Protocol).
@@ -901,8 +904,9 @@ The context URL for a resource is of one of the following two forms:
 where
 * *MetadataUrl* = the metadata url of the service (/redfish/v1/$metadata)
 * *ResourceType* = the fully qualified name of the unversioned resource type
-* *ResourcePath* = the path from the service root to the singleton or collection containing the resource
+* *ResourcePath* = the path from the service root to the singleton or Resource Collection containing the resource
 * *Selectlist* = comma-separated [list of properties](#select-list) included in the response if the response includes a subset of properties defined for the represented resources.
+* *$entity* = a designator that the response is a single resource from either an entity set or specified by a navigation property.
 
 ###### Select list
 
@@ -971,16 +975,6 @@ DateTime values shall be returned as JSON strings according to the ISO 8601 "ext
 
 Structured properties, defined as [complex types](#resource-type-definitions) or [expanded](#expanded-resources) [resource types](#resource-type-definitions), are returned as JSON objects. The type of the JSON object is specified in the Redfish Schema definition of the property containing the structured value.
 
-##### Resource Collection properties
-
-Resource Collection-valued properties are returned as a JSON array property, where each element of the array is a JSON object whose type is specified in the Redfish Schema document describing the containing type.
-
-Collection-valued properties may contain a subset of the members of the full collection. In this case, the collection-valued property shall be annotated with a next link property. The property representing the next link shall be a peer of the collection-valued property, with the name of the collection-valued property suffixed with "@odata.nextLink". The value of the next link property shall be an opaque URL that the client can use to retrieve the next set of collection members. The next link property shall only be present if the number of resources requested is greater than the number of resources returned.
-
-Collection-valued properties shall be annotated with a count. The property representing the count is a peer of the collection-valued property, with the name of the collection-valued property suffixed with "@odata.count". The value of the count is the total number of members available in the collection.
-
-Collection-valued properties shall not be null. Empty collections shall be returned in JSON as an empty array.
-
 ##### Actions property
 
 Available actions for a resource are represented as individual properties nested under a single structured property on the resource named "Actions".
@@ -1041,7 +1035,7 @@ The set of allowable values is specified by including a property whose name is t
 
 The links property shall be named "Links" and shall contain a property for each [non-contained](#contained-resources) [reference property](#reference-properties) defined in the Redfish Schema for that type. For single-valued reference properties, the value of the property shall be the [single related resource id](#reference-to-a-single-related-resource). For collection-valued reference properties, the value of the property shall be the [array of related resource ids](#array-of-references-to-related-resources).
 
-The links property shall also include an [Oem property](#oem-property) for navigating vendor-specific links.
+The links property shall also include an [OEM property](#oem-property) for navigating vendor-specific links.
 
 ###### Reference to a single related resource
 
@@ -1079,6 +1073,10 @@ A reference to a set of zero or more related resources is returned as an array o
 ##### OEM property
 
 OEM-specific properties are nested under an [OEM property](#oem-property).
+
+##### Partial resource results
+
+Responses representing a single resource shall not be broken into multiple results.
 
 ##### Extended information
 
@@ -1175,11 +1173,12 @@ where
 
 The client can get the definition of the annotation from the [service metadata](#service-metadata), or may ignore the annotation entirely, but should not fail reading the resource due to unrecognized annotations, including new annotations defined within the Redfish namespace.
 
-#### Resource Collection response
+#### Resource Collection responses
 
-Resource Collections are returned as a JSON object. The JSON object shall include a [context](#context-property), [resource count](#count-property), and array of [Members](#members-property), and may include a [next link](#partial-results) for partial results.
+Resource Collections are returned as a JSON object. The JSON object shall include a [context](#context-property), [resource count](#count-property), and array of [Members](#members-property), and may include a [next link](#nextlink-property-and-partial-results) for partial results.
 
-#####	Context property
+
+##### Context property
 Responses shall contain a context property named "@odata.context" describing the source of the payload. The value of the context property shall be the context URL that describes the Resource Collection according to [OData-Protocol](#OData-Protocol).
 
 The context URL for a Resource Collection is of one of the following two forms:
@@ -1194,16 +1193,15 @@ where
 
 ##### Count property
 
-The total number of resources available in the Resource Collection is represented through the count property. The count property shall be named "Members@odata.count" and its value shall be an integer representing the total number of records in the result. This count is not affected by the $top or $skip [query parameters](#query-parameters).
+The total number of resources (members) available in the Resource Collection is represented through the count property. The count property shall be named "Members@odata.count" and its value shall be the total number of members available in the Resource Collection. This count is not affected by the $top or $skip [query parameters](#query-parameters).
 
 ##### Members property
 
-The Members of the Resource Collection of resources are returned as a JSON array. The name of the property representing the members of the collection shall be "Members".
+The Members of the Resource Collection of resources are returned as a JSON array, where each element of the array is a JSON object whose type is specified in the Redfish Schema document describing the containing type. The name of the property representing the members of the collection shall be "Members". The Members property shall not be null. Empty collections shall be returned in JSON as an empty array.
 
-##### Partial results
-Responses representing a single resource shall not be broken into multiple results.
+##### NextLink property and partial results
 
-Collections of resources, or resource ids, may be returned in multiple partial responses. For partial collections the service includes a next link property named "Members@odata.nextLink". The value of the next link property shall be an opaque URL that the client can use to retrieve the next set of resources. The next link shall only be returned if the number of resources requested is greater than the number of resources returned.
+Responses may contain a subset of the members of the full Resource Collection. For partial Resource Collections the response includes a next link property named "Members@odata.nextLink". The value of the next link property shall be an opaque URL to a resource, with the same @odata.type, containing the next set of partial members. The next link property shall only be present if the number of Members in the Resource Collection is greater than the number of members returned.
 
 The value of the [count property](#count-property) represents the total number of resources available if the client enumerates all pages of the Resource Collection.
 
@@ -1756,7 +1754,7 @@ While the information and semantics of these extensions are outside of the stand
 
 ##### Oem property
 
-In the context of this clause, the term "OEM" refers to any company, manufacturer, or organization that is providing or defining an extension to the DMTF-published schema and functionality for Redfish. The base schema for Redfish-specified resources include an empty complex type property called "Oem" whose value can be used to encapsulate one or more OEM-specified complex properties. The Oem property in the standard Redfish schema is thus a predefined placeholder that is available for OEM-specific property definitions.
+In the context of this clause, the term OEM refers to any company, manufacturer, or organization that is providing or defining an extension to the DMTF-published schema and functionality for Redfish. The base schema for Redfish-specified resources include an empty complex type property called "Oem" whose value can be used to encapsulate one or more OEM-specified complex properties. The Oem property in the standard Redfish schema is thus a predefined placeholder that is available for OEM-specific property definitions.
 
 Correct use of the Oem property requires defining the metadata for an OEM-specified complex type that can be referenced within the Oem property. The following fragment is an example of an XML schema that defines a pair of OEM-specific properties under the complex type "AnvilType1". (Other schema elements that would typically be present, such as XML and OData schema description identifiers, are not shown in order to simplify the example).
 
@@ -1882,7 +1880,7 @@ Common properties are defined in the base "Resource" Redfish Schema.  For OData 
 
 #### Id
 
-The Id property of a resource identifies the resource within a Resource Collection.  The value of Id shall be unique across a Resource Collection.
+The Id property of a resource uniquely identifies the resource within the Resource Collection that contains it.  The value of Id shall be unique across a Resource Collection.
 
 #### Name
 
@@ -1900,22 +1898,22 @@ The value of the status property is a common status object type as defined by th
 
 #### Links
 
-The [Links property](#links-property) represents the links associated with the resource, as defined by that resources schema definition. All associated reference properties defined for a resource shall be nested under the links property.  All directly (subordinate) referenced properties defined for a resource shall be in the root of the resource.
+The [Links](#links-property) property represents the links associated with the resource, as defined by that resources schema definition. All associated reference properties defined for a resource shall be nested under the links property.  All directly (subordinate) referenced properties defined for a resource shall be in the root of the resource.
 
 #### Members
 
-The Members property of a Resource Collection identifies the members of the collection.
+The [Members](#members-property) property of a Resource Collection identifies the members of the collection.
 
 #### RelatedItem
-The [RelatedItem property](#relateditem) represents links to a resource (or part of a resource) as defined by that resources schema definition. This is not intended to be a strong linking methodology like other references.  Instead it is used to show a relationship between elements or sub-elements in disparate parts of the service.  For example, since Fans may be in one area of the implementation and processors in another, RelatedItem can be used to inform the client that one is related to the other (in this case, the Fan is cooling the processor).
+The [RelatedItem](#relateditem) property represents links to a resource (or part of a resource) as defined by that resources schema definition. This is not intended to be a strong linking methodology like other references.  Instead it is used to show a relationship between elements or sub-elements in disparate parts of the service.  For example, since Fans may be in one area of the implementation and processors in another, RelatedItem can be used to inform the client that one is related to the other (in this case, the Fan is cooling the processor).
 
 #### Actions
 
-The [Actions property](#actions-property) contains the actions supported by a resource.
+The [Actions](#actions-property) property contains the actions supported by a resource.
 
 #### OEM
 
-The [OEM property](#oem-property) is used for OEM extensions as defined in [Schema Extensibility](#resource-extensibility).
+The [OEM](#oem-property) property is used for OEM extensions as defined in [Schema Extensibility](#resource-extensibility).
 
 ### Redfish resources
 
