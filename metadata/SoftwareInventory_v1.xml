@@ -82,7 +82,7 @@
         <Property Name="LowestSupportedVersion" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A string representing the lowest supported version of this software."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a string representing the lowest supported version of this software. This string is formatted using the same format used for the Version property"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a string representing the lowest supported version of this software. This string is formatted using the same format used for the Version property."/>
         </Property>
         <Property Name="UefiDevicePaths" Type="Collection(Edm.String)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -91,7 +91,7 @@
         </Property>
         <NavigationProperty Name="RelatedItem" Type="Collection(Resource.Item)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The ID(s) of the resources associated with this software inventory item"/>
+          <Annotation Term="OData.Description" String="The ID(s) of the resources associated with this software inventory item."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of IDs containing pointers consistent with JSON pointer syntax to the resource that is associated with this software inventory item."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>

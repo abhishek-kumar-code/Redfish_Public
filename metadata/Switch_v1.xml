@@ -54,7 +54,7 @@
       <Action Name="Reset" IsBound="true">
         <Parameter Name="Switch" Type="Switch.v1_0_0.Actions"/>
         <Parameter Name="ResetType" Type="Resource.ResetType">
-          <Annotation Term="OData.Description" String="The type of reset to be performed"/>
+          <Annotation Term="OData.Description" String="The type of reset to be performed."/>
           <Annotation Term="OData.LongDescription" String="This defines the property name for the action."/>
         </Parameter>
         <Annotation Term="OData.Description" String="This action is used to reset this switch."/>
@@ -134,7 +134,7 @@
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
         <NavigationProperty Name="Redundancy" Type="Collection(Redundancy.Redundancy)" Nullable="false">
-          <Annotation Term="OData.Description" String="Redundancy information for the switches"/>
+          <Annotation Term="OData.Description" String="Redundancy information for the switches."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
         <Property Name="Links" Type="Switch.v1_0_0.Links" Nullable="false">
@@ -143,7 +143,7 @@
         </Property>
         <NavigationProperty Name="LogServices" Type="LogServiceCollection.LogServiceCollection" ContainsTarget="true">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="A reference to the collection of Log Services associated with this system"/>
+          <Annotation Term="OData.Description" String="A reference to the collection of Log Services associated with this system."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type LogServiceCollection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
