@@ -35,22 +35,25 @@
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Id": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
+                    "readonly": true
                 },
                 "Description": {
                     "anyOf": [
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
                         {"type": "null"}
-                    ]
+                    ],
+                    "readonly": true
                 },
                 "Name": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+                    "readonly": true
                 },
                 "Language": {
                     "type": "string",
                     "readonly": true,
                     "description": "This is the RFC 5646 compliant language code for the registry.",
-                    "longDescription": "The value of this property shall be a string consisting of an RFC 5646 language code"
+                    "longDescription": "The value of this property shall be a string consisting of an RFC 5646 language code."
                 },
                 "RegistryVersion": {
                     "type": "string",
@@ -127,7 +130,7 @@
                         "string",
                         "null"
                     ],
-                    "pattern": "^[A-Za-z0-9]+$",
+                    "pattern": "^[A-Za-z][A-Za-z0-9_]+$",
                     "readonly": true,
                     "description": "The value name of the attribute.",
                     "longDescription": "The value of this property shall be a string representing the value name of the attribute. ValueName is a unique string within the list of possible values in the 'Value' array of a given attribute."
@@ -162,7 +165,7 @@
             "properties": {
                 "AttributeName": {
                     "type": "string",
-                    "pattern": "^[A-Z][A-Za-z0-9]+$",
+                    "pattern": "^[A-Za-z][A-Za-z0-9_]+$",
                     "readonly": true,
                     "description": "The unique name of the attribute.",
                     "longDescription": "The value of this property shall be the name of this attribute that is unique in this registry."
@@ -178,7 +181,6 @@
                     "items": {
                         "$ref": "#/definitions/AttributeValue"
                     },
-                    "readonly": true,
                     "description": "The array containing possible values for attributes of type 'Enumeration'.",
                     "longDescription": "The value of this property shall be an array containing the possible values of an attribute of type 'Enumeration'."
                 },
@@ -379,9 +381,8 @@
             "properties": {
                 "Dependency": {
                     "$ref": "#/definitions/Dependency",
-                    "readonly": true,
-                    "description": "",
-                    "longDescription": ""
+                    "description": "The dependency expression for one or more Attributes in this Attribute Registry.",
+                    "longDescription": "The value of this property shall be the dependency expression for one or more Attributes in this Attribute Registry."
                 },
                 "DependencyFor": {
                     "type": "string",
@@ -420,7 +421,6 @@
                     "items": {
                         "$ref": "#/definitions/MapFrom"
                     },
-                    "readonly": true,
                     "description": "Array of the map-from conditions for mapping dependency.",
                     "longDescription": "The value of this property shall be an array containing the map-from conditions for a dependency of Type 'Map'."
                 },
@@ -509,7 +509,7 @@
                 "MapTerms": {
                     "$ref": "#/definitions/MapTerms",
                     "readonly": true,
-                    "description": "The logical term used to combine two or more MapFrom conditions in this dependency expression. ",
+                    "description": "The logical term used to combine two or more MapFrom conditions in this dependency expression.",
                     "longDescription": "The value of this property shall be the logical term used to combine two or more MapFrom conditions in this dependency expression. For example, 'AND' for logical AND, or 'OR' for logical OR of the conditions."
                 }
             }
@@ -708,7 +708,6 @@
                     "items": {
                         "$ref": "#/definitions/Attributes"
                     },
-                    "readonly": true,
                     "description": "The array containing the attributes and their possible values.",
                     "longDescription": "The value of this property shall be an array containing the attributes and their possible values and other metadata."
                 },
@@ -717,7 +716,6 @@
                     "items": {
                         "$ref": "#/definitions/Menus"
                     },
-                    "readonly": true,
                     "description": "The array containing the attributes menus and their hierarchy.",
                     "longDescription": "The value of this property shall be an array containing the attributes menus and their hierarchy."
                 },
@@ -726,7 +724,6 @@
                     "items": {
                         "$ref": "#/definitions/Dependencies"
                     },
-                    "readonly": true,
                     "description": "The array containing a list of dependencies of attributes on this component.",
                     "longDescription": "The value of this property shall be an array containing a list of dependencies of attributes on this component."
                 }

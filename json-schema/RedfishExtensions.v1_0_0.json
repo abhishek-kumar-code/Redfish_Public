@@ -50,14 +50,14 @@
                         "string",
                         "null"
                     ],
-                    "description": "The pattern that the property name shall match"
+                    "description": "The pattern that the property name shall match."
                 },
                 "Type": {
                     "type": [
                         "string",
                         "null"
                     ],
-                    "description": "The type that the name shall have"
+                    "description": "The type that the name shall have."
                 }
             }
         }

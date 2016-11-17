@@ -43,12 +43,12 @@
                     "items": {
                         "$ref": "http://redfish.dmtf.org/schemas/v1/Message.json#/definitions/Message"
                     },
-                    "readonly": true,
                     "description": "This is an array of messages associated with the task.",
                     "longDescription": "The value of this property shall be an array of messages associated with the task."
                 },
                 "SettingsObject": {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef",
+                    "readonly": true,
                     "description": "Reference to the resource the client may PUT/PATCH to in order to change this resource.",
                     "longDescription": "The value of this property shall be the URI of the resource to which a client must do a PUT or PATCh in order to modify this resource."
                 }

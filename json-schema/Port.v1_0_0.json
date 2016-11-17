@@ -65,16 +65,19 @@
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Id": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
+                    "readonly": true
                 },
                 "Description": {
                     "anyOf": [
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
                         {"type": "null"}
-                    ]
+                    ],
+                    "readonly": true
                 },
                 "Name": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+                    "readonly": true
                 },
                 "Status": {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
@@ -93,6 +96,7 @@
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/Storage.v1_0_0.json#/definitions/Protocol"},
                         {"type": "null"}
                     ],
+                    "readonly": true,
                     "description": "The protocol being sent over this port.",
                     "longDescription": "The value of this property shall contain the protocol being sent over this port."
                 },
@@ -205,7 +209,6 @@
                             "longDescription": "The value of this property shall be a reference to the resources that this port is associated with and shall reference a resource of type Port."
                         }
                     },
-                    "readonly": true,
                     "description": "Contains references to other resources that are related to this resource.",
                     "longDescription": "The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."
                 },
@@ -248,7 +251,6 @@
                             "$ref": "#/definitions/Reset"
                         }
                     },
-                    "readonly": true,
                     "description": "The available actions for this resource.",
                     "longDescription": "The Actions property shall contain the available actions for this resource."
                 }
@@ -271,11 +273,11 @@
                 "UnconfiguredPort"
             ],
             "enumDescriptions": {
-                "UpstreamPort": "This port connects to a host device",
-                "DownstreamPort": "This port connects to a target device",
-                "InterswitchPort": "This port connects to another switch",
-                "ManagementPort": "This port connects to a switch manager",
-                "BidirectionalPort": "This port connects to any type of device",
+                "UpstreamPort": "This port connects to a host device.",
+                "DownstreamPort": "This port connects to a target device.",
+                "InterswitchPort": "This port connects to another switch.",
+                "ManagementPort": "This port connects to a switch manager.",
+                "BidirectionalPort": "This port connects to any type of device.",
                 "UnconfiguredPort": "This port has not yet been configured."
             }
         }
