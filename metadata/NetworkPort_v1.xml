@@ -10,7 +10,7 @@
 <!--################################################################################       -->
 <!---->
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
-  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
@@ -67,31 +67,31 @@
           <Annotation Term="OData.Description" String="The status of the link between this port and its link partner"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the link status between this port and its link partner."/>
         </Property>
-        <Property Name="NetworkPortSupportedLinkCapabilities" Type="Collection(NetworkPort.v1_0_0.LinkCapabilities)">
+        <Property Name="SupportedLinkCapabilities" Type="Collection(NetworkPort.v1_0_0.SupportedLinkCapabilities)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The self-described link capabilities of this port"/>
           <Annotation Term="OData.LongDescription" String="This object shall describe the static capabilities of the port, irrespective of transient conditions such as cabling, interface module presence, or remote link parter status or configuration."/>
         </Property>
-        <Property Name="NetworkPortActiveLinkTechnology" Type="NetworkPort.v1_0_0.NetworkTechnology">
+        <Property Name="ActiveLinkTechnology" Type="NetworkPort.v1_0_0.LinkNetworkTechnology">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Network Port Active Link Technology"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the configured link technology of this port."/>
         </Property>
-        <Property Name="SupportedEthernetCapabilities" Type="Collection(NetworkPort.v1_0_0.EthernetCapabilities)">
+        <Property Name="SupportedEthernetCapabilities" Type="Collection(NetworkPort.v1_0_0.SupportedEthernetCapabilities)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The set of Ethernet capabilities that this port supports."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of zero or more Ethernet capabilities supported by this port."/>
         </Property>
-        <Property Name="NetworkDeviceFunctionsMinimumBandwidthAllocationPercentage" Type="Collection(NetworkPort.v1_0_0.MinimumBandwidthAllocation)">
+        <Property Name="NetDevFuncMinBWAlloc" Type="Collection(NetworkPort.v1_0_0.NetDevFuncMinBWAlloc)">
           <Annotation Term="OData.Description" String="The array of minimum bandwidth allocation percentages for the Network Device Functions associated with this port."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of minimum bandwidth percentage allocations for each of the network device functions associated with this port."/>
         </Property>
-        <Property Name="NetworkDeviceFunctionsMaximumBandwidthAllocationPercentage" Type="Collection(NetworkPort.v1_0_0.MaximumBandwidthAllocation)">
+        <Property Name="NetDevFuncMaxBWAlloc" Type="Collection(NetworkPort.v1_0_0.NetDevFuncMaxBWAlloc)">
           <Annotation Term="OData.Description" String="The array of maximum bandwidth allocation percentages for the Network Device Functions associated with this port."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of maximum bandwidth allocation percentages for the Network Device Functions associated with this port."/>
         </Property>
         <Property Name="AssociatedNetworkAddresses" Type="Collection(Edm.String)">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The array of configured network addresses (MAC or WWN) that are associated with this Network Port, including the programmed address of the lowest numbered Network Device Function, the configured but not active address if applicable, the address for hardware port teaming, or other network addresses."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of configured network addresses that are associated with this network port, including the programmed address of the lowest numbered network device function, the configured but not active address if applicable, the address for hardware port teaming, or other network addresses."/>
         </Property>
@@ -106,7 +106,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether Wake on LAN (WoL) is enabled for this network port."/>
         </Property>
         <Property Name="PortMaximumMTU" Type="Edm.Int64">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The largest maximum transmission unit (MTU) that can be configured for this network port."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the largest maximum transmission unit (MTU) that can be configured for this network port."/>
         </Property>
@@ -127,34 +127,8 @@
         </Property>
       </EntityType>
 
-      <ComplexType Name="MaximumBandwidthAllocation">
-        <NavigationProperty Name="NetworkDeviceFunction" Type="NetworkDeviceFunction.NetworkDeviceFunction" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>
-        <Property Name="MaximumBandwidthAllocationPercentage" Type="Edm.Int64">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="The maximum bandwidth allocation percentage allocated to the corresponding network device function instance."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the maximum bandwidth percentage allocation for the associated network device function."/>
-        </Property>
-      </ComplexType>
-
-      <ComplexType Name="MinimumBandwidthAllocation">
-        <NavigationProperty Name="NetworkDeviceFunction" Type="NetworkDeviceFunction.NetworkDeviceFunction" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>
-        <Property Name="MinimumBandwidthAllocationPercentage" Type="Edm.Int64">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="The minimum bandwidth allocation percentage allocated to the corresponding network device function instance."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the minimum bandwidth percentage allocation for the associated network device function.  The sum total of all minimum percentages shall not exceed 100."/>
-        </Property>
-      </ComplexType>
-
-      <ComplexType Name="LinkCapabilities">
-        <Property Name="LinkNetworkTechnology" Type="NetworkPort.v1_0_0.NetworkTechnology">
+      <ComplexType Name="SupportedLinkCapabilities">
+        <Property Name="LinkNetworkTechnology" Type="NetworkPort.v1_0_0.LinkNetworkTechnology">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The self-described link network technology capabilities of this port"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a network technology capability of this port."/>
@@ -163,6 +137,32 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The speed of the link in Mbps when this link network technology is active"/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the speed of the link in megabits per second (Mbps) for this port when this link network technology is active."/>
+        </Property>
+      </ComplexType>
+
+      <ComplexType Name="NetDevFuncMinBWAlloc">
+        <NavigationProperty Name="NetworkDeviceFunction" Type="NetworkDeviceFunction.NetworkDeviceFunction" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        <Property Name="MinBWAllocPercent" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The minimum bandwidth allocation percentage allocated to the corresponding network device function instance."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the minimum bandwidth percentage allocation for the associated network device function.  The sum total of all minimum percentages shall not exceed 100."/>
+        </Property>
+      </ComplexType>
+
+      <ComplexType Name="NetDevFuncMaxBWAlloc">
+        <NavigationProperty Name="NetworkDeviceFunction" Type="NetworkDeviceFunction.NetworkDeviceFunction" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Contains the members of this collection."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        <Property Name="MaxBWAllocPercent" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The maximum bandwidth allocation percentage allocated to the corresponding network device function instance."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the maximum bandwidth percentage allocation for the associated network device function."/>
         </Property>
       </ComplexType>
 
@@ -175,7 +175,7 @@
         </Member>
       </EnumType>
 
-      <EnumType Name="NetworkTechnology">
+      <EnumType Name="LinkNetworkTechnology">
         <Member Name="Ethernet">
           <Annotation Term="OData.Description" String="The port is capable of connecting to an Ethernet network." />
         </Member>
@@ -187,7 +187,7 @@
         </Member>
       </EnumType>
 
-      <EnumType Name="EthernetCapabilities">
+      <EnumType Name="SupportedEthernetCapabilities">
         <Member Name="WakeOnLAN">
           <Annotation Term="OData.Description" String="Wake on LAN (WoL) is supported on this port." />
         </Member>
