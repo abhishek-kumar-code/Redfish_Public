@@ -6,7 +6,7 @@
     "Id": "1",
     "Name": "Host Interface",
     "Description": "Management Host Interface",
-    "Type": "NetworkHostInterface",
+    "HostInterfaceType": "NetworkHostInterface",
     "Status": {
         "State": "Enabled",
         "Health": "OK"
