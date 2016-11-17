@@ -142,7 +142,7 @@
         <Property Name="WWNSource" Type="NetworkDeviceFunction.v1_0_0.WWNSource">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The configuration source of the WWNs for this connection (WWPN and WWNN)."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the configuration source of the World-Wide Names (WWNs) for this connection (WWPN and WWNN)"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the configuration source of the World-Wide Names (WWNs) for this connection (WWPN and WWNN)."/>
         </Property>
         <Property Name="FCoELocalVLANId" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
@@ -343,7 +343,7 @@
         <Property Name="BootPriority" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The relative priority for this entry in the boot targets array."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the relative priority for this entry in the boot targets array.  Lower numbers shall represent higher priority, with zero being the highest priority.  The BootPriority shall be unique for all entries of the BootTargets array"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the relative priority for this entry in the boot targets array.  Lower numbers shall represent higher priority, with zero being the highest priority.  The BootPriority shall be unique for all entries of the BootTargets array."/>
         </Property>
       </ComplexType>
 
