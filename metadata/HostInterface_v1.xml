@@ -72,7 +72,7 @@
       <EntityType Name="HostInterface" BaseType="HostInterface.HostInterface">
         <Annotation Term="OData.Description" String="This schema defines a Host Interface resource."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent Host Interface resources as part of the Redfish specification."/>
-        <Property Name="Type" Type="HostInterface.v1_0_0.HostInterfaceType">
+        <Property Name="HostInterfaceType" Type="HostInterface.v1_0_0.HostInterfaceType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This indicates the Host Interface type for this interface."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an enumeration describing type of the interface."/>
