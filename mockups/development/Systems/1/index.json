@@ -82,9 +82,9 @@
     "EthernetInterfaces": {
         "@odata.id": "/redfish/v1/Systems/1/EthernetInterfaces"
     },
-    "LogicalAdaptors": {
-        "@odata.id": "/redfish/v1/Systems/1/LogicalAdaptors"
-    },	
+    "NetworkInterfaces": {
+        "@odata.id": "/redfish/v1/Systems/1/NetworkInterfaces"
+    },
     "SimpleStorage": {
         "@odata.id": "/redfish/v1/Systems/1/SimpleStorage"
     },

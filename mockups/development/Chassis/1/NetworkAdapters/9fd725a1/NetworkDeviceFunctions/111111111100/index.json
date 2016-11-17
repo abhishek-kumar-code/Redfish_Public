@@ -1,21 +1,21 @@
 {
-    "Name": "Network Device Function View",
-    "@odata.type": "#NetworkDeviceFunction.1.0.0.NetworkDeviceFunction",
     "Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "NetworkDeviceFunctionType": "Ethernet",
-    "Enabled": true,
-    "NetworkDeviceFunctionCapabilities": 
-    [
+    "@odata.context": "/redfish/v1/$metadata#NetworkDeviceFunction.NetworkDeviceFunction",
+    "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/9fd725a1/NetworkDeviceFunctions/111111111100",
+    "@odata.type": "#NetworkDeviceFunction.v1_0_0.NetworkDeviceFunction",
+    "Id": "111111111100",
+    "Name": "Network Device Function View",
+    "NetDevFuncType": "Ethernet",
+    "DeviceEnabled": true,
+    "NetDevFuncCapabilities": [
         "Ethernet","FibreChannel"
     ],
-    "Ethernet": 
-    {
+    "Ethernet": {
         "PermanentMACAddress": "00:0C:29:9A:98:ED",
         "MACAddress": "00:0C:29:9A:98:ED",
         "MTUSize": 1500
     },
-    "iSCSIBoot": 
-    {
+    "iSCSIBoot": {
         "IPAddressType": "IPv4",
         "InitiatorIPAddress": "16.0.11.6",
         "InitiatorName": "iqn.2005-03.com.acme:database-server",
@@ -44,8 +44,7 @@
         "MutualCHAPUsername": "yosemite",
         "MutualCHAPSecret": "usrpasswd"
     },
-    "FibreChannel": 
-    {
+    "FibreChannel": {
         "PermanentWWPN": "10:00:B0:5A:DD:BB:74:E0",
         "PermanentWWNN": "10:00:B0:5A:DD:BB:A1:B3",
         "WWPN": "10:00:B0:5A:DD:BB:74:E0",
@@ -54,8 +53,7 @@
         "FCoELocalVLANId": 1001,
         "AllowFIPVLANDiscovery": true,
         "FCoEActiveVLANId": 2001,
-        "BootTargets": 
-        [
+        "BootTargets": [
             {
                 "WWPN": "10:00:B0:5A:DD:BB:74:FA",
                 "LUNID": "3",
@@ -63,32 +61,19 @@
             }
         ]
     },
-    "AssignablePhysicalPorts": 
-    [
+    "AssignablePhysicalPorts": [
         {
-            "odata.id": "/redfish/v1/CHassis/1/NetworkAdaptor/9fd725a1/NetworkPorts/1"
+            "odata.id": "/redfish/v1/Chassis/1/NetworkAdapter/9fd725a1/NetworkPorts/1"
         }
     ],
-    "PhysicalPortAssignment": 
-    {
-        "odata.id": "/redfish/v1/CHassis/1/NetworkAdaptor/9fd725a1/NetworkPorts/1"
-    },
-    "@Redfish.Settings": 
-    {
-        "@odata.type": "#Settings.1.0.0.Settings",
-        "SettingsObject": 
-        {
-            "odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/9fd725a1/NetworkDeviceFunctions/111111111100/SD"
-        },
-        "ETag": ""
+    "PhysicalPortAssignment": {
+        "odata.id": "/redfish/v1/Chassis/1/NetworkAdapter/9fd725a1/NetworkPorts/1"
     },
     "BootMode": "Disabled",
-    "SRIOVVirtualFunctionsEnabled": true,
-    "SRIOVVirtualFunctionCount": 16,
-    "Links": 
-    {
-        "PCIeFunction": 
-        {
+    "VirtualFunctionsEnabled": true,
+    "MaxVirtualFunctions": 16,
+    "Links": {
+        "PCIeFunction": {
             "@odata.id": "/redfish/v1/Fabrics/ComplexPCIe/1/PCIeFunction/1"
         }
     }
