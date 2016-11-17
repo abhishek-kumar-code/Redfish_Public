@@ -25,10 +25,18 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | ---         | ---     | ---       | ---             |
 | HostInterface | 1.0.0 | 2016-12-07 | Intial release. Contains properties for describing and configuring a Redfish Host Interface. |
 | HostInterfaceCollection | 1.0.0 | 2016-12-07 | Initial release. Collection of Redfish Host Interfaces. |
+| NetworkAdapter | 1.0.0 | 2016-12-07 | Intial release. Describes general-purpose network adapters. |
+| NetworkAdapterCollection | 1.0.0 | 2016-12-07 | Intial release. Collection of Network Adapters. |
+| NetworkDevice | 1.0.0 | 2016-12-07 | Intial release. Provides linkages between NetworkAdapter, NetworkPort, and NetworkDeviceFunction instances. |
+| NetworkDeviceCollection | 1.0.0 | 2016-12-07 | Intial release. Collection of Network Devices. |
+| NetworkDeviceFunction | 1.0.0 | 2016-12-07 | Intial release. Describes a logical interface exposed by a Network Adapter. |
+| NetworkDeviceFunctionCollection | 1.0.0 | 2016-12-07 | Intial release. Collection of Network Device Functions. |
+| NetworkPort | 1.0.0 | 2016-12-07 | Intial release. Describes a discrete physical port capable of connecting to a network. |
+| NetworkPortCollection | 1.0.0 | 2016-12-07 | Intial release. Collection of Network Ports. |
 | PrivilegeRegistry | 1.0.0 | 2016-12-07 | Initial release. Schema for definition of HTTP Operation to Privilege mapping. |
 | AccountService | 1.1.0 | 2016-12-07 | Added link to "PrivilegeMap". |
-| Chassis | 1.4.0  | 2016-12-07 | Added "RackGroup" to "ChassiType" enumeration.  Added "HeightMm", "WidthMm", "DepthMm", and "WeightKg" properties. Added Link to "PCIeDevices". |
-| ComputerSystem | 1.3.0  | 2016-12-07 | Added "FirmwareVersion2" and "InterfaceTypeSelection" to "TrustedModules" object. |
+| Chassis | 1.4.0  | 2016-12-07 | Added "RackGroup" to "ChassisType" enumeration.  Added link to "NetworkAdapters" resource collection. Added "HeightMm", "WidthMm", "DepthMm", and "WeightKg" properties. Added Link to "PCIeDevices". |
+| ComputerSystem | 1.3.0  | 2016-12-07 | Added link to "NetworkDevices" resource collection. Added "FirmwareVersion2" and "InterfaceTypeSelection" to "TrustedModules" object. |
 | EthernetInterface | 1.2.0 | 2016-12-07 | Added link to "HostInterface" to support Redfish Host Interface specification. |
 | Manager | 1.3.0 | 2016-12-07 | Added link to "HostInterfaces" resource collection. |
 | ManagerNetworkProtocol | 1.1.0 | 2016-12-07 | Added "DHCP" protocol object. |
