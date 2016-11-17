@@ -164,17 +164,20 @@ Information in the SMBIOS structure shall allow host software to discover the Re
 For Network Host interfaces, the mechanism that clients should use to discover/obtain the Redfish Service Entry Point IP address shall also be described in the structure.
 
 ### SMBIOS Type 42 Struct General Layout
- `------------------------`
- ` Type 42 Header         `
- `------------------------`
- ` Interface Specific Data          `
- `   - Device Description `
- `   - (1 of 3 types)`
- `------------------------`
- ` Protocol Record Header`
- `------------------------`
- ` - Protocol Specific Data`
- `------------------------`
+ 
+```
+ --------------------------
+ Type 42 Header         
+ --------------------------
+ Interface Specific Data
+   - Device Description 
+   - (1 of 3 types)
+ --------------------------
+   Protocol Record Header
+ --------------------------
+   - Protocol Specific Data
+ --------------------------
+```
 
 ### Table-1:  SMBIOS Type 42 Struct Definition for Redfish Host Interfaces
 The following describes the SMBIOS Management Controller Host Interface (Type 42) structure.
