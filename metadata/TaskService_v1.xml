@@ -63,7 +63,7 @@
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a task service for a Redfish implementation."/>
         <Property Name="CompletedTaskOverWritePolicy" Type="TaskService.v1_0_0.OverWritePolicy" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Overwrite policy of completed tasks"/>
+          <Annotation Term="OData.Description" String="Overwrite policy of completed tasks."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate how completed tasks are handled should the task service need to track more tasks."/>
         </Property>
         <Property Name="DateTime" Type="Edm.DateTimeOffset">
@@ -92,10 +92,10 @@
 
       <EnumType Name="OverWritePolicy">
         <Member Name="Manual">
-          <Annotation Term="OData.Description" String="Completed tasks are not automatically overwritten"/>
+          <Annotation Term="OData.Description" String="Completed tasks are not automatically overwritten."/>
         </Member>
         <Member Name="Oldest">
-          <Annotation Term="OData.Description" String="Oldest completed tasks are overwritten"/>
+          <Annotation Term="OData.Description" String="Oldest completed tasks are overwritten."/>
         </Member>
       </EnumType>
 
