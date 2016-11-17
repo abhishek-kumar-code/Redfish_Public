@@ -159,22 +159,22 @@ Implementations that support the "Network Host Interface" protocol shall impleme
 ## SMBIOS Support
 When Redfish Host Interface is available, the host shall support an SMBIOS Type 42 structure that defines the attributes of the Redfish Host Interfaces that are supported for the system. Identification of host interface parameters on systems that do not implement SMBIOS is not covered in this document and therefore OEM-specific methods shall be used.
 
-Information in the SMBIOS structure shall allow host software to discover the Redfish Manager interfaces supported and to initialize the host-side driver stack.  
+Information in the SMBIOS structure shall allow host software to discover the Redfish Service Entry Point supported and to initialize the host-side driver stack.  
 
-* For Network Host interfaces, the mechanism that clients should use to discover/obtain the manager IP address shall also be described in the structure
+For Network Host interfaces, the mechanism that clients should use to discover/obtain the Redfish Service Entry Point IP address shall also be described in the structure.
 
 ### SMBIOS Type 42 Struct General Layout
-*  `------------------------`
-*  ` Type 42 Header         `
-*  `------------------------`
-*  ` Interface Specific Data          `
-*  `   - Device Description `
-*  `   - (1 of 3 types)`
-*  `------------------------`
-*  ` Protocol Record Header`
-*  `------------------------`
-*  ` - Protocol Specific Data`
-*  `------------------------`
+ `------------------------`
+ ` Type 42 Header         `
+ `------------------------`
+ ` Interface Specific Data          `
+ `   - Device Description `
+ `   - (1 of 3 types)`
+ `------------------------`
+ ` Protocol Record Header`
+ `------------------------`
+ ` - Protocol Specific Data`
+ `------------------------`
 
 ### Table-1:  SMBIOS Type 42 Struct Definition for Redfish Host Interfaces
 The following describes the SMBIOS Management Controller Host Interface (Type 42) structure.
@@ -226,20 +226,14 @@ The following table defines the protocol-specific data for the "Redfish Over IP"
 | Offset  | Name     | Length   | Value    | Description     |
 | ---     | ---      | ---      | ---      | ---             |
 | X+0     | Service UUID     | 16BYTEs     | Varies       | same as Redfish Service UUID in Redfish Service Root resource    |
-| X+16     | Host IP Assignment Type     | BYTE     | Enum       | Unknown=00h, <br/>    Static=01h, <br/>  DHCP=02h, <br/>    AutoConfigure=03h, <br/>  HostSelected=04h, <br/> other values reserved     |
-| X+17     | Host IP Address Format     | BYTE     | Enum       | Unknown=00h,   <br/> Ipv4=01h,    <br/> Ipv6=02h, <br/> other values reserved      |
-| X+18     | Host IP Address     |  16BYTE     | Varies       | Used for Static and AutoConfigure.  <br/> For IPV4, use the first 4 Bytes and zero fill the remaining bytes.      |
-| X+34     | Host IP Mask     | 16BYTE     | Varies       | Used for Static and AutoConfigure.  <br/> For IPV4, use the first 4 Bytes and zero fill the remaining bytes.      |
-| X+50     | Host IP Port     | WORD     | Varies       | Used for Static and AutoConfigure      |
-| X+54     | Host VLAN ID     | DWORD     | Varies       | Used for Static and AutoConfigure      |
-| X+62     | Manager IP Discovery Type     | BYTE     | Enum       | Unknown=00h,    <br/> Static=01h,   <br/> DHCP=02h,     <br/> AutoConfigure=03h,   <br/> HostSelected=04h, <br/> other values reserved      |
-| X+63     | Manager IP Address Format     | BYTE     | Enum       | Unknown=00h,   <br/> Ipv4=01h,    <br/> Ipv6=02h, <br/> other values reserved      |
-| X+64     | Manager IP Address     | 16BYTE     | Varies       | Used for Static and AutoConfigure.  <br/> For IPV4, use the first 4 Bytes and zero fill the remaining bytes.      |
-| X+80     | Manager IP Mask     | 16BYTE    | Varies       | Used for Static and AutoConfigure.  <br/> For IPV4, use the first 4 Bytes and zero fill the remaining bytes.      |
-| X+96     | Manager IP Port     | WORD     | Varies       | Used for Static and AutoConfigure.      |
-| X+100     | Manager VLAN ID     | DWORD     | Varies       | Used for Static and AutoConfigure.      |
-| X+108     | Manager Hostname Length     | BYTE     | Varies       | length of the following hostname string      |
-| X+109     | Manager Hostname     | varies     | Varies       | hostname of manager      |
+| X+16     | Redfish Service IP Discovery Type     | BYTE     | Enum       | Unknown=00h,    <br/> Static=01h,   <br/> DHCP=02h,     <br/> AutoConfigure=03h,   <br/> HostSelected=04h, <br/> other values reserved      |
+| X+17     | Redfish Service IP Address Format     | BYTE     | Enum       | Unknown=00h,   <br/> Ipv4=01h,    <br/> Ipv6=02h, <br/> other values reserved      |
+| X+18     | Redfish Service IP Address     | 16BYTE     | Varies       | Used for Static and AutoConfigure.  <br/> For IPV4, use the first 4 Bytes and zero fill the remaining bytes.      |
+| X+34     | Redfish Service IP Mask     | 16BYTE    | Varies       | Used for Static and AutoConfigure.  <br/> For IPV4, use the first 4 Bytes and zero fill the remaining bytes.      |
+| X+50     | Redfish Service IP Port     | WORD     | Varies       | Used for Static and AutoConfigure.      |
+| X+54     | Redfish Service VLAN ID     | DWORD     | Varies       | Used for Static and AutoConfigure.      |
+| X+62     | Redfish Service Hostname Length     | BYTE     | Varies       | length of the following hostname string      |
+| X+63     | Redfish Service Hostname     | varies     | Varies       | hostname of Redfish Service      |
 
 
 
