@@ -306,7 +306,7 @@ HTTP is ideally suited to a RESTful interface. This clause describes how HTTP is
 
 A URI is used to identify a resource, including the base service and all Redfish resources.
 
-* Each unique instance of a resource shall be identified by a URI; thus a URI cannot reference multiple resources though it may reference a single Resource Collection.
+* Each unique instance of a resource shall be identified by a URI.
 * A URI shall be treated by the client as opaque, and thus should not be attempted to be understood or deconstructed by the client outside of applying standard reference resolution rules as defined in clause 5, Reference Resolution, of [RFC3986](#RFC3986).
 
 To begin operations, a client must know a URI for a resource.
@@ -521,12 +521,12 @@ Clients request resources by issuing GET requests to the URI for the individual 
 
 ###### Query parameters
 
-When the resource addressed is a Resource Collection, the client may use the following paging query options to specify that a subset of the Members of that Resource Collection be returned. These paging query options apply to the Members property array of a Resource Collection.
+When the resource addressed is a Resource Collection, the client may use the following paging query options to specify that a subset of the Members of that Resource Collection be returned. These paging query options apply specifically to the "Members" array property within a Resource Collection.
 
 | Attribute | Description                                                                                                                                                                | Example                   |
 | ---       | ---                                                                                                                                                                        | ---                       |
-| $skip     | Integer indicating the number of Members in the Resource Collection to skip before retrieving the first resource.                                                                 | `http://collection?$skip=5` |
-| $top      | Integer indicating the number of Members to include in the response. The minimum value for this parameter is 1.  The default behavior is to return all Members. | `http://collection?$top=30` |
+| $skip     | Integer indicating the number of Members in the Resource Collection to skip before retrieving the first resource.                                                                 | `http://resourcecollection?$skip=5` |
+| $top      | Integer indicating the number of Members to include in the response. The minimum value for this parameter is 1.  The default behavior is to return all Members. | `http://resourcecollection?$top=30` |
 
 * Services should support the $top and $skip query parameters.
 * Implementation shall return the 501, Not Implemented, status code for any query parameters starting with "$" that are not supported, and should return an [extended error](#error-responses) indicating the requested query parameter(s) not supported for this resource.
@@ -534,13 +534,13 @@ When the resource addressed is a Resource Collection, the client may use the fol
 
 ###### Retrieving Resource Collections
 
-Retrieving a Resource Collection is done by sending the HTTP GET method to the URI for that resource. The response includes properties of the Resource Collection including the array of its Members. A subset of the Members can be returned using [client paging query parameters](#query-parameters).
+Retrieving a Resource Collection is done by sending the HTTP GET method to the URI for that resource. The response includes properties of the Resource Collection including an array of its Members. A subset of the Members can be returned using [client paging query parameters](#query-parameters).
 
 No requirements are placed on implementations to return a consistent set of Members when a series of requests using paging query parameters are made over time to obtain the entire set of members. It is possible that this could result in missed or duplicate elements being retrieved if multiple GETs are used to retrieve the Members array instances using paging.
 
 * Clients shall not make assumptions about the URIs for the Members of a Resource Collection.
-* Retrieved Resource Collections shall always include the [count](#count-property) property to specify the total number of entries in its Members array.
-* If only a portion of the Resource Collection is returned due to client-specified paging query parameters or services returning [partial results](#partial-results), then the total number of resources across all pages shall be returned in the count property.
+* Retrieved Resource Collections shall always include the [count](#count-property) property to specify the total number of entries in its "Members" array.
+* Regardless of paging, see [partial results](#nextlink-property-and-partial-results), the total number of resources referenced by the Members array shall be returned in the [count](#count-property) property.
 
 #### HEAD
 
@@ -586,7 +586,8 @@ The POST method is used to create a new resource. The POST request is submitted 
 Submitting a POST request to a Resource Collection is equivalent to submitting the same request to the Members property of that Resource Collection. Services that support adding Members to a Resource Collection shall support both forms.
 
 * Services shall support the POST method for creating resources. If the resource does not offer anything to be created, a status code [405](#status-405) shall be returned.
-* Services shall only support POST operations for URIs representing either a Resource Collection or an Action (see [Actions (POST)](#actions-post-)).
+* Services shall support POST operations on a URL that references a Resource Collection instance.
+* Services shall support POST operations on a URL that references an Action (see [Actions (POST)](#actions-post-)).
 * The POST operation shall not be idempotent.
 
 The body of the create request contains a representation of the object to be created. The service may ignore any service controlled attributes (e.g., id), forcing those attributes to be overridden by the service. The service shall set the Location header to the URI of the newly created resource. The response to a successful create request should be 201 (Created) and may include a response body containing a representation of the newly created resource conforming to the schema of the created resource.
@@ -674,7 +675,7 @@ OData-Version: 4.0
 Redfish defines four types of responses:
 * [Metadata Responses](#metadata-responses) - Describe the resources and types exposed by the service to generic clients.
 * [Resource Responses](#resource-responses) - JSON representation of an individual resource.
-* [Resource Collection Responses](#resource-collection-response) - JSON representation of a resource that represents a Resource Collection.
+* [Resource Collection Responses](#resource-collection-responses) - JSON representation of a resource that represents a Resource Collection.
 * [Error Responses](#error-responses) - Top level JSON response providing additional information in the case of an HTTP error.
 
 #### Response headers
@@ -804,7 +805,7 @@ The service metadata shall include the namespaces for each of the Redfish resour
 </edmx:Reference>
 ~~~
 
-The service metadata shall include an entity container that defines the top level resources and Resource Collections. This entity container shall extend the ServiceContainer defined in the ServiceRoot.v1_0_0 schema and may include additional Resources.
+The service metadata shall include an entity container that defines the top level resources and Resource Collections. An implementation may extend the ServiceContainer defined in the ServiceRoot.v1_0_0 schema and may include additional resources.
 
 ~~~xml
 <edmx:DataServices>
@@ -889,6 +890,8 @@ Each entry shall be represented as a JSON object and shall include a "name" prop
 
 Resources are returned as JSON payloads, using the MIME type `application/json`.  Resource property names match the case specified in the [Schema](#resource-properties).
 
+See also [Resource Collection responses](#resource-collection-responses). 
+
 ##### Context property
 
 Responses that represent a single resource shall contain a context property named "@odata.context" describing the source of the payload. The value of the context property shall be the context URL that describes the resource according to [OData-Protocol](#OData-Protocol).
@@ -901,8 +904,9 @@ The context URL for a resource is of one of the following two forms:
 where
 * *MetadataUrl* = the metadata url of the service (/redfish/v1/$metadata)
 * *ResourceType* = the fully qualified name of the unversioned resource type
-* *ResourcePath* = the path from the service root to the singleton or collection containing the resource
+* *ResourcePath* = the path from the service root to the singleton or Resource Collection containing the resource
 * *Selectlist* = comma-separated [list of properties](#select-list) included in the response if the response includes a subset of properties defined for the represented resources.
+* *$entity* = a designator that the response is a single resource from either an entity set or specified by a navigation property.
 
 ###### Select list
 
@@ -971,16 +975,6 @@ DateTime values shall be returned as JSON strings according to the ISO 8601 "ext
 
 Structured properties, defined as [complex types](#resource-type-definitions) or [expanded](#expanded-resources) [resource types](#resource-type-definitions), are returned as JSON objects. The type of the JSON object is specified in the Redfish Schema definition of the property containing the structured value.
 
-##### Resource Collection properties
-
-Resource Collection-valued properties are returned as a JSON array property, where each element of the array is a JSON object whose type is specified in the Redfish Schema document describing the containing type.
-
-Collection-valued properties may contain a subset of the members of the full collection. In this case, the collection-valued property shall be annotated with a next link property. The property representing the next link shall be a peer of the collection-valued property, with the name of the collection-valued property suffixed with "@odata.nextLink". The value of the next link property shall be an opaque URL that the client can use to retrieve the next set of collection members. The next link property shall only be present if the number of resources requested is greater than the number of resources returned.
-
-Collection-valued properties shall be annotated with a count. The property representing the count is a peer of the collection-valued property, with the name of the collection-valued property suffixed with "@odata.count". The value of the count is the total number of members available in the collection.
-
-Collection-valued properties shall not be null. Empty collections shall be returned in JSON as an empty array.
-
 ##### Actions property
 
 Available actions for a resource are represented as individual properties nested under a single structured property on the resource named "Actions".
@@ -1041,7 +1035,7 @@ The set of allowable values is specified by including a property whose name is t
 
 The links property shall be named "Links" and shall contain a property for each [non-contained](#contained-resources) [reference property](#reference-properties) defined in the Redfish Schema for that type. For single-valued reference properties, the value of the property shall be the [single related resource id](#reference-to-a-single-related-resource). For collection-valued reference properties, the value of the property shall be the [array of related resource ids](#array-of-references-to-related-resources).
 
-The links property shall also include an [Oem property](#oem-property) for navigating vendor-specific links.
+The links property shall also include an [OEM property](#oem-property) for navigating vendor-specific links.
 
 ###### Reference to a single related resource
 
@@ -1079,6 +1073,10 @@ A reference to a set of zero or more related resources is returned as an array o
 ##### OEM property
 
 OEM-specific properties are nested under an [OEM property](#oem-property).
+
+##### Partial resource results
+
+Responses representing a single resource shall not be broken into multiple results.
 
 ##### Extended information
 
@@ -1175,11 +1173,12 @@ where
 
 The client can get the definition of the annotation from the [service metadata](#service-metadata), or may ignore the annotation entirely, but should not fail reading the resource due to unrecognized annotations, including new annotations defined within the Redfish namespace.
 
-#### Resource Collection response
+#### Resource Collection responses
 
-Resource Collections are returned as a JSON object. The JSON object shall include a [context](#context-property), [resource count](#count-property), and array of [Members](#members-property), and may include a [next link](#partial-results) for partial results.
+Resource Collections are returned as a JSON object. The JSON object shall include a [context](#context-property), [resource count](#count-property), and array of [Members](#members-property), and may include a [next link](#nextlink-property-and-partial-results) for partial results.
 
-#####	Context property
+
+##### Context property
 Responses shall contain a context property named "@odata.context" describing the source of the payload. The value of the context property shall be the context URL that describes the Resource Collection according to [OData-Protocol](#OData-Protocol).
 
 The context URL for a Resource Collection is of one of the following two forms:
@@ -1194,16 +1193,15 @@ where
 
 ##### Count property
 
-The total number of resources available in the Resource Collection is represented through the count property. The count property shall be named "Members@odata.count" and its value shall be an integer representing the total number of records in the result. This count is not affected by the $top or $skip [query parameters](#query-parameters).
+The total number of resources (members) available in the Resource Collection is represented through the count property. The count property shall be named "Members@odata.count" and its value shall be the total number of members available in the Resource Collection. This count is not affected by the $top or $skip [query parameters](#query-parameters).
 
 ##### Members property
 
-The Members of the Resource Collection of resources are returned as a JSON array. The name of the property representing the members of the collection shall be "Members".
+The Members of the Resource Collection of resources are returned as a JSON array, where each element of the array is a JSON object whose type is specified in the Redfish Schema document describing the containing type. The name of the property representing the members of the collection shall be "Members". The Members property shall not be null. Empty collections shall be returned in JSON as an empty array.
 
-##### Partial results
-Responses representing a single resource shall not be broken into multiple results.
+##### NextLink property and partial results
 
-Collections of resources, or resource ids, may be returned in multiple partial responses. For partial collections the service includes a next link property named "Members@odata.nextLink". The value of the next link property shall be an opaque URL that the client can use to retrieve the next set of resources. The next link shall only be returned if the number of resources requested is greater than the number of resources returned.
+Responses may contain a subset of the members of the full Resource Collection. For partial Resource Collections the response includes a next link property named "Members@odata.nextLink". The value of the next link property shall be an opaque URL to a resource, with the same @odata.type, containing the next set of partial members. The next link property shall only be present if the number of Members in the Resource Collection is greater than the number of members returned.
 
 The value of the [count property](#count-property) represents the total number of resources available if the client enumerates all pages of the Resource Collection.
 
@@ -1756,7 +1754,7 @@ While the information and semantics of these extensions are outside of the stand
 
 ##### Oem property
 
-In the context of this clause, the term "OEM" refers to any company, manufacturer, or organization that is providing or defining an extension to the DMTF-published schema and functionality for Redfish. The base schema for Redfish-specified resources include an empty complex type property called "Oem" whose value can be used to encapsulate one or more OEM-specified complex properties. The Oem property in the standard Redfish schema is thus a predefined placeholder that is available for OEM-specific property definitions.
+In the context of this clause, the term OEM refers to any company, manufacturer, or organization that is providing or defining an extension to the DMTF-published schema and functionality for Redfish. The base schema for Redfish-specified resources include an empty complex type property called "Oem" whose value can be used to encapsulate one or more OEM-specified complex properties. The Oem property in the standard Redfish schema is thus a predefined placeholder that is available for OEM-specific property definitions.
 
 Correct use of the Oem property requires defining the metadata for an OEM-specified complex type that can be referenced within the Oem property. The following fragment is an example of an XML schema that defines a pair of OEM-specific properties under the complex type "AnvilType1". (Other schema elements that would typically be present, such as XML and OData schema description identifiers, are not shown in order to simplify the example).
 
@@ -1882,7 +1880,7 @@ Common properties are defined in the base "Resource" Redfish Schema.  For OData 
 
 #### Id
 
-The Id property of a resource identifies the resource within a Resource Collection.  The value of Id shall be unique across a Resource Collection.
+The Id property of a resource uniquely identifies the resource within the Resource Collection that contains it.  The value of Id shall be unique across a Resource Collection.
 
 #### Name
 
@@ -1900,22 +1898,22 @@ The value of the status property is a common status object type as defined by th
 
 #### Links
 
-The [Links property](#links-property) represents the links associated with the resource, as defined by that resources schema definition. All associated reference properties defined for a resource shall be nested under the links property.  All directly (subordinate) referenced properties defined for a resource shall be in the root of the resource.
+The [Links](#links-property) property represents the links associated with the resource, as defined by that resources schema definition. All associated reference properties defined for a resource shall be nested under the links property.  All directly (subordinate) referenced properties defined for a resource shall be in the root of the resource.
 
 #### Members
 
-The Members property of a Resource Collection identifies the members of the collection.
+The [Members](#members-property) property of a Resource Collection identifies the members of the collection.
 
 #### RelatedItem
-The [RelatedItem property](#relateditem) represents links to a resource (or part of a resource) as defined by that resources schema definition. This is not intended to be a strong linking methodology like other references.  Instead it is used to show a relationship between elements or sub-elements in disparate parts of the service.  For example, since Fans may be in one area of the implementation and processors in another, RelatedItem can be used to inform the client that one is related to the other (in this case, the Fan is cooling the processor).
+The [RelatedItem](#relateditem) property represents links to a resource (or part of a resource) as defined by that resources schema definition. This is not intended to be a strong linking methodology like other references.  Instead it is used to show a relationship between elements or sub-elements in disparate parts of the service.  For example, since Fans may be in one area of the implementation and processors in another, RelatedItem can be used to inform the client that one is related to the other (in this case, the Fan is cooling the processor).
 
 #### Actions
 
-The [Actions property](#actions-property) contains the actions supported by a resource.
+The [Actions](#actions-property) property contains the actions supported by a resource.
 
 #### OEM
 
-The [OEM property](#oem-property) is used for OEM extensions as defined in [Schema Extensibility](#resource-extensibility).
+The [OEM](#oem-property) property is used for OEM extensions as defined in [Schema Extensibility](#resource-extensibility).
 
 ### Redfish resources
 
@@ -2341,6 +2339,232 @@ The Authorization subsystem uses Roles and Privileges to control which users hav
 * ETag Handling:
   - Implementations shall enforce the same privilege model for ETag related activity as is enforced for the data being represented by the ETag.
   - For example, when activity requiring privileged access to read data item represented by ETag requires the same privileged access to read the ETag.
+
+#### Redfish Service Operation to Privilege Mapping
+
+For every request made by a Redfish client to a Redfish service, the Redfish service shall determine that 
+the authenticated identity of the requestor has the authorization to perform the requested operation on the resource specified in the request.
+Using the role and privileges authorization model, where an authenticated identity context is assigned a role and a role is a set of privileges, the service will typically check a HTTP request
+against a mapping of the authenticated requesting identity role/privileges and determine whether the identity privileges are sufficient to perform the operation specified in the request.
+
+##### Why specify Operation to Privilege Mapping
+
+Initial versions of the Redfish specifications specified several Role to Privilege mappings for standardized Roles and normatively identified
+several Prvilege labels but did not normatively define what these privileges meant in detail or how privilege to operations mappings could 
+be specified or represented in a normative fashion. The lack of a methdology to define what privilege(s) are required to perform a specific
+requested operation against the URI specified in the request puts at risk the interoperability between Redfsh service implementations that
+Redfish clients may encounter due to variances in privilege requirements between implementations.  Also, a lack of methodology for specififying 
+and representing the operation to privilege mapping prevents the SPMF or other governing organization to normatively define privilege requirements for a service.
+
+##### Representing Operation to Privilege Mappings
+
+A Redfish service should provide a Privilege Registry file in the service Registry Collection. The Privilege Registry file represents the 
+Privilege(s) required to perform an operation against a URI specified in a HTTP request to the service. The Privilege Registry is a single 
+JSON document that contains a Mappings array of PrivilegeMapping entity elements where there is an individual element for every schema entity 
+supported by the service.  The operation to privilege mapping is defined for every entity schema and applies to every resource the service 
+implements for the applicable schema.  There are several situations where specific resources or elements of resources may have differing 
+operation to privilege mappings than the entity mappings and the entity level mappings have to be overridden.  The methodology for specifying
+entity level operation to privilege mappings and related overrides are defined in the PrivilegeRegistry schema.
+
+If a Redfish service provides a Privilege Registry document, the service shall use the SPMF Redfish Privilege Mapping Registry definition
+as a base operation to privilege mapping definition for operations that the service supports in order to promote interoperability for Redfish clients.
+
+##### OperationMap Syntax
+
+An operation map defines the set of privileges required to perform a specific operation on an entity, entity element, or resource.
+The operations mapped are GET, PUT, PATCH, POST, DELETE and HEAD. Privilege mapping are defined for each operation irrespective 
+of whether the service or the API data model support the specific operation on the entity, entity element or resource. Privilege labels used may be the Redfish standardized labels defined in the Privilege.PrivilegeType enumeration and they may be OEM defined prvilege labels. The 
+privileges required for an operation can be specified with logical AND and OR behavior as required (see Privilege AND and OR Syntax section for more information).  The following example defines
+the privileges required for various operations on Manager entity.  Unless mapping overrides to the OperationMap array are defined (syntax explained in next section), the specified operation to 
+privilege mapping would represent behavior for all Manager resources in a service implementation.
+~~~json
+{
+		"Entity": "Manager",
+		"OperationMap": {
+			"GET": [{
+				"Privilege": ["Login"]
+			}],
+			"HEAD": [{ 
+				"Privilege": ["Login"]
+			}],
+			"PATCH": [{
+				"Privilege": ["ConfigureManager"]
+			}],
+			"POST": [{
+				"Privilege": ["ConfigureManager"]
+			}],
+			"PUT": [{
+				"Privilege": ["ConfigureManager"]
+			}],
+			"DELETE": [{
+				"Privilege": ["ConfigureManager"]
+			}]
+		}
+	}
+~~~
+
+##### Mapping Overrides Syntax
+
+Several situations occur where operation to privilege mapping varies from what might be specified at an entity schema level.
+These situations are:
+* Property Override - Where a property has different privilege requirements that the resource (document) it is in.  For example, the Password 
+property on the ManagerAccountresource requires the "ConfigureSelf" or the "ConfigureUser" privilege to change in contrast 
+to the "ConfigureUser" privilege required for the rest of the properties on ManagerAccount resources.
+* Subordinate Override - Where an entity is used in context of another entity and the contextual privileges need to govern.  For example, the 
+privileges for PATCH operations on EthernetInterface resources depends on whether the resource is subordinate to Manager
+(ConfigureManager is required) or ComputerSystem (ConfigureComponentis required) resources.
+* Resource URI Override - Where a specific resource instance has different privilege requirements for operation that those defined for the entity schema.
+The overrides are defined in the context of the operation to privilege mapping for an entity.
+
+##### Property Override Example
+
+In the following example, the Password property on the ManagerAccount
+resource requires the "ConfigureSelf" or the "ConfigureUser" privilege to change in contrast to the "ConfigureUser" privilege 
+required for the rest of the properties on ManagerAccount resources.
+~~~json
+{
+		"Entity": "ManagerAccount",
+		"OperationMap": {
+			"GET": [{
+				"Privilege": ["ConfigureManager"]
+			}, {
+				"Privilege": ["ConfigureUser"]
+			}, {
+				"Privilege": ["ConfigureSelf"]
+			}],
+			"HEAD": [{ 
+				"Privilege": ["Login"]
+			}],
+			"PATCH": [{
+				"Privilege": ["ConfigureUser"]
+			}],
+			"POST": [{
+				"Privilege": ["ConfigureUser"]
+			}],
+			"PUT": [{
+				"Privilege": ["ConfigureUser"]
+			}],
+			"DELETE": [{
+				"Privilege": ["ConfigureUser"]
+			}]
+		},
+		"PropertyOverrides": [{
+			"Targets": ["Password"],
+			"OperationMap": {
+				"GET": [{
+					"Privilege": "ConfigureManager"
+				}],
+				"PATCH": [{
+					"Privilege": ["ConfigureManager"]
+				}, {
+					"Privilege": ["ConfigureSelf"]
+				}]
+			}
+		}]
+	}
+~~~
+
+##### Subordinate Override
+
+In the following example, the privileges for PATCH operations 
+on EthernetInterface resources depends on whether the resource is subordinate to Manager (ConfigureManager is required) or ComputerSystem (ConfigureComponent
+is required, this is the default unless overridden) resources.
+~~~json
+{
+		"Entity": "EthernetInterface",
+		"OperationMap": {
+			"GET": [{
+				"Privilege": ["Login"]
+			}],
+			"HEAD": [{ 
+				"Privilege": ["Login"]
+			}],
+			"PATCH": [{
+				"Privilege": ["ConfigureComponent"]
+			}],
+			"POST": [{
+				"Privilege": ["ConfigureComponent"]
+			}],
+			"PUT": [{
+				"Privilege": ["ConfigureComponent"]
+			}],
+			"DELETE": [{
+				"Privilege": ["ConfigureComponent"]
+			}],
+			"SubordinateOverrides": [{
+				"Targets": [
+					["Manager", "EthernetInterfaceCollection"],
+					"Manager"
+				],
+				"OperationMap": {
+					"GET": [{
+						"Privilege": ["Login"]
+					}],
+					"PATCH": [{
+						"Privilege": ["ConfigureManager"]
+					}]
+				}
+			}]
+		}
+	}
+~~~
+
+##### ResourceURI Override
+
+In the following example use of the ResourceURI Override syntax for representing operation privilege variations for specific resource URIs is demonstrated.  The example specifies both ConfigureComponents and OEMAdminPriv privileges are required in order to perform a PATCH operation on the 2 resource URIs listed as Targets. 
+~~~json
+{
+	"Entity": "ComputerSystem",
+	"OperationMap": {
+		"GET": [{
+			"Privilege": ["Login"]
+		}],
+		"HEAD": [{ 
+			"Privilege": ["Login"]
+		}],
+		"PATCH": [{
+			"Privilege": ["ConfigureComponent"]
+		}],
+		"POST": [{
+			"Privilege": ["ConfigureComponent"]
+		}],
+		"PUT": [{
+			"Privilege": ["ConfigureComponent"]
+		}],
+		"DELETE": [{
+			"Privilege": ["ConfigureComponent"]
+		}],
+		"ResourceURIOverrides": [{
+			"Targets": [
+				"/redfish/v1/Systems/VM6",
+				"/redfish/v1/Systems/Sys1"
+			],
+			"OperationMap": {
+				"GET": [{
+					"Privilege": ["Login"]
+				}],
+				"PATCH": [{
+					"Privilege": ["ConfigureComponents","OEMSysAdminPriv"] 
+				}]
+			}
+		}]
+	}
+}
+~~~		
+##### Privilege AND and OR Syntax
+
+Logical combinations of privileges required to perform an operation on an entity, entity element or resource are defined by the array placement of the privilege labels in the OperationMap GET, HEAD, PATCH, POST, PUT, DELETE operation element arrays.  For OR logicial combinations, the privilege label is placed in the operation element array as individual elements.  In the following example, either Login or OEMPrivilege1 privileges are required to perform a GET operation.
+~~~json
+{
+	"GET": [{"Privilege": ["Login"]}, {"Privilege": ["OEMPrivilege1"]}]
+}
+~~~
+For logical AND combinations, the privilege label is placed in the Privilege property array within the operation element.  In the following example, both ConfigureComponents and OEMSysAdminPriv are required to perform a PATCH operation.
+~~~json
+{
+	"PATCH": [{"Privilege": ["ConfigureComponents","OEMSysAdminPriv"]}]
+}
+~~~
 
 ## ANNEX A (informative)
 
