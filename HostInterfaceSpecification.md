@@ -105,9 +105,11 @@ The specification also defines certain supporting elements in the host, such as 
 
 The specification does not seek to place specific hardware implementation requirements; however, it does in some cases specify how hardware-specific interfaces are identified for host software (e.g. SMBIOS structures).
 
+The specification defines connectivity between a Redfish Service and a host.  Any network routing or other connectivity beyond the Redfish Service or other networks is out of scope.
+
 
 ### Goals
-The following goals where established for the Redfish Host Interface:
+The following are the goals for the Redfish Host Interface:
 
 * Implementable with existing management controller technology
 * Easily integrated into products
