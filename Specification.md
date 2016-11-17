@@ -2,9 +2,9 @@
 DocTitle: Redfish Scalable Platforms Management API Specification
 DocNumber: '0266'
 DocClass: Normative
-DocVersion: '1.0.5'
+DocVersion: '1.1.0'
 modified: '2016-12-07'
-SupersedesVersion: '1.0.4'
+SupersedesVersion: '1.0.5'
 status: published
 released: true
 copyright: '2014-2016'
@@ -2346,6 +2346,8 @@ The Authorization subsystem uses Roles and Privileges to control which users hav
 
 | Version | Date     | Description     |
 | ---     | ---      | ---             |
+| 1.1.0   | 2016-12-9| Added Redfish Service Operation to Privilege Mapping clause. This functionality allows a Service to present a resource or even property-level mapping of HTTP operations to account Roles and Privileges. |
+|         |          | Added references to the Redfish Host Interface Specification (DSP0270). |
 | 1.0.5   | 2016-12-9| Errata release.  Various typographical errors. |
 |         |          | Corrected terminology usage of collection, "Resource Collection" and "Members" throughout. |
 |         |          | Added glossary entries for Resource Collection and Members. |
