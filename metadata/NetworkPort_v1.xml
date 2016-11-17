@@ -59,22 +59,21 @@
         <Property Name="Status" Type="Resource.Status"/>
         <Property Name="PhysicalPortNumber" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The physical port number label for this port"/>
+          <Annotation Term="OData.Description" String="The physical port number label for this port."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the physical port number on the network adapter hardware that this Network Port corresponds to.  This value should match a value visible on the hardware.  When HostPortEnabled and ManagementPortEnabled are both &quot;false&quot;, the port shall not establish physical link."/>
         </Property>
         <Property Name="LinkStatus" Type="NetworkPort.v1_0_0.LinkStatus">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The status of the link between this port and its link partner"/>
+          <Annotation Term="OData.Description" String="The status of the link between this port and its link partner."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the link status between this port and its link partner."/>
         </Property>
         <Property Name="SupportedLinkCapabilities" Type="Collection(NetworkPort.v1_0_0.SupportedLinkCapabilities)">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The self-described link capabilities of this port"/>
+          <Annotation Term="OData.Description" String="The self-described link capabilities of this port."/>
           <Annotation Term="OData.LongDescription" String="This object shall describe the static capabilities of the port, irrespective of transient conditions such as cabling, interface module presence, or remote link parter status or configuration."/>
         </Property>
         <Property Name="ActiveLinkTechnology" Type="NetworkPort.v1_0_0.LinkNetworkTechnology">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="Network Port Active Link Technology"/>
+          <Annotation Term="OData.Description" String="Network Port Active Link Technology."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the configured link technology of this port."/>
         </Property>
         <Property Name="SupportedEthernetCapabilities" Type="Collection(NetworkPort.v1_0_0.SupportedEthernetCapabilities)">
@@ -112,12 +111,12 @@
         </Property>
         <Property Name="FlowControlStatus" Type="NetworkPort.v1_0_0.FlowControl">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The 802.3x flow control behavior negotiated with the link partner for this network port (Ethernet-only)"/>
+          <Annotation Term="OData.Description" String="The 802.3x flow control behavior negotiated with the link partner for this network port (Ethernet-only)."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the 802.3x flow control behavior negotiated with the link partner for this network port (Ethernet-only)."/>
         </Property>
         <Property Name="FlowControlConfiguration" Type="NetworkPort.v1_0_0.FlowControl">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="The locally configured 802.3x flow control setting for this network port"/>
+          <Annotation Term="OData.Description" String="The locally configured 802.3x flow control setting for this network port."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the locally configured 802.3x flow control setting for this network port."/>
         </Property>
         <Property Name="SignalDetected" Type="Edm.Boolean">
@@ -130,12 +129,12 @@
       <ComplexType Name="SupportedLinkCapabilities">
         <Property Name="LinkNetworkTechnology" Type="NetworkPort.v1_0_0.LinkNetworkTechnology">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The self-described link network technology capabilities of this port"/>
+          <Annotation Term="OData.Description" String="The self-described link network technology capabilities of this port."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a network technology capability of this port."/>
         </Property>
         <Property Name="LinkSpeedMbps" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The speed of the link in Mbps when this link network technology is active"/>
+          <Annotation Term="OData.Description" String="The speed of the link in Mbps when this link network technology is active."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the speed of the link in megabits per second (Mbps) for this port when this link network technology is active."/>
         </Property>
       </ComplexType>

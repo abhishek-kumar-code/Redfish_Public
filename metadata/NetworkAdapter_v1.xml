@@ -135,7 +135,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the version number of the user-facing firmware package."/>
         </Property>
         <Property Name="Links" Type="NetworkAdapter.v1_0_0.ControllerLinks" Nullable="false">
-          <Annotation Term="OData.Description" String="Links"/>
+          <Annotation Term="OData.Description" String="Links."/>
           <Annotation Term="OData.LongDescription" String="Links for this controller."/>
         </Property>
         <Property Name="ControllerCapabilities" Type="NetworkAdapter.v1_0_0.ControllerCapabilities">
@@ -156,11 +156,11 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the number of physical functions available on this controller."/>
         </Property>
         <Property Name="DataCenterBridging" Type="NetworkAdapter.v1_0_0.DataCenterBridging">
-          <Annotation Term="OData.Description" String="Data Center Bridging (DCB) for this controller"/>
+          <Annotation Term="OData.Description" String="Data Center Bridging (DCB) for this controller."/>
           <Annotation Term="OData.LongDescription" String="This object shall contain capability, status, and configuration values related to Data Center Bridging (DCB) for this controller."/>
         </Property>
         <Property Name="VirtualizationOffload" Type="NetworkAdapter.v1_0_0.VirtualizationOffload">
-          <Annotation Term="OData.Description" String="Virtualization offload for this controller"/>
+          <Annotation Term="OData.Description" String="Virtualization offload for this controller."/>
           <Annotation Term="OData.LongDescription" String="This object shall contain capability, status, and configuration values related to virtualization offload for this controller."/>
         </Property>
         <Property Name="NPIV" Type="NetworkAdapter.v1_0_0.NPIV">
@@ -172,7 +172,7 @@
       <ComplexType Name="DataCenterBridging">
         <Property Name="Capable" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Whether this controller is capable of Data Center Bridging (DCB)"/>
+          <Annotation Term="OData.Description" String="Whether this controller is capable of Data Center Bridging (DCB)."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this controller is capable of Data Center Bridging (DCB)."/>
         </Property>
       </ComplexType>

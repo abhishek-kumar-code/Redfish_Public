@@ -633,7 +633,7 @@
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_2_1.ComputerSystem">
         <NavigationProperty Name="NetworkInterfaces" Type="NetworkInterfaceCollection.NetworkInterfaceCollection" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="A reference to the collection of Network Interfaces associated with this system"/>
+          <Annotation Term="OData.Description" String="A reference to the collection of Network Interfaces associated with this system."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type NetworkInterfaceCollection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>

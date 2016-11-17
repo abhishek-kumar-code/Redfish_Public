@@ -63,7 +63,7 @@
         <Annotation Term="OData.LongDescription" String="A NetworkInterface contains references linking NetworkAdapter, NetworkPort, and NetworkDeviceFunction resources and represents the functionality available to the containing system."/>
         <Property Name="Status" Type="Resource.Status"/>
         <Property Name="Links" Type="NetworkInterface.v1_0_0.Links" Nullable="false">
-          <Annotation Term="OData.Description" String="Links"/>
+          <Annotation Term="OData.Description" String="Links."/>
           <Annotation Term="OData.LongDescription" String="Links for this controller."/>
         </Property>
         <NavigationProperty Name="NetworkPorts" Type="NetworkPortCollection.NetworkPortCollection" Nullable="false">
