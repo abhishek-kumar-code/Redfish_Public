@@ -36,12 +36,14 @@
             "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock1/Memory/DIMM3"
         }
     ],
-    "Drives": [],
+    "Storage": [],
+    "SimpleStorage": [],
     "EthernetInterfaces": [
         {
             "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock1/EthernetInterfaces/OnboardNIC"
         }
     ],
+    "ComputerSystems": [],
     "Links": {
         "ComputerSystems": [
             {
@@ -58,5 +60,6 @@
                 "@odata.id": "/redfish/v1/CompositionService/ResourceZones/1"
             }
         ]
-    }
+    },
+    "Oem": {}
 }
