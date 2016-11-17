@@ -10,6 +10,12 @@
     "SKU": "Globex TPS-Net 2-Port Base-T",
     "SerialNumber": "003BFLRT00023234",
     "PartNumber": "975421-B20",
+    "NetworkPorts": {
+        "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/9fd725a1/NetworkPorts"
+    },
+    "NetworkDeviceFunctions": {
+        "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/9fd725a1/NetworkDeviceFunctions"
+    },
     "Controllers": [
         {
             "FirmwarePackageVersion": "7.4.10",
