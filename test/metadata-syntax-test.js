@@ -15,7 +15,8 @@ const unitsWhiteList = ['RPM'];
 //This does not contain a full CSDL parser. This whitelist lists complex types that are utilized across files
 const complexTypeWhitelist = ['Resource.Status', 'Resource.Oem', 'Resource.v1_1_0.Location',
                               'Resource.v1_1_0.Identifier', 'VLanNetworkInterface.v1_0_0.VLAN',
-                              'Message.Message'];
+                              'Message.Message', 'Volume.v1_0_0.Operations', 'IPAddresses.v1_0_0.IPv4Address', 
+			      'IPAddresses.v1_0_0.IPv6Address', 'IPAddresses.v1_0_0.IPv6StaticAddress'];
 
 function getUcumXML(callback, context, end)
 {
