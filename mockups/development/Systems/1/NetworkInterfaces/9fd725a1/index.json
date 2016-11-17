@@ -6,10 +6,10 @@
     "Id": "9fa725a1",
     "Name": "Network Device View",
     "NetworkPorts": {
-        "@odata.id": "/redfish/v1/Systems/1/NetworkAdapters/9fd725a1/NetworkPorts"
+        "@odata.id": "/redfish/v1/Systems/1/NetworkInterfaces/9fd725a1/NetworkPorts"
     },
     "NetworkDeviceFunctions": {
-        "@odata.id": "/redfish/v1/Systems/1/NetworkAdapters/9fd725a1/NetworkDeviceFunctions"
+        "@odata.id": "/redfish/v1/Systems/1/NetworkInterfaces/9fd725a1/NetworkDeviceFunctions"
     },
     "Links": {
         "NetworkAdapter": {

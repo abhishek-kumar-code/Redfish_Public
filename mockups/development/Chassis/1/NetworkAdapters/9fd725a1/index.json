@@ -22,7 +22,7 @@
             "Links":  {
                 "PCIeDevices": [
                     {
-                        "@odata.id": "/redfish/v1/Fabrics/ComplexPCIe/EndPoints/1/PCIeDevices/1"
+                        "@odata.id": "/redfish/v1/Chassis/1/PCIeDevices/NIC"
                     }
                 ],
                 "NetworkPorts": [
