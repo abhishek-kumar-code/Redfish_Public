@@ -138,7 +138,6 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the VLAN for this interface.  If this interface supports more than one VLAN, the VLAN property shall not be present and the VLANS collection link shall be present instead."/>
         </Property>
         <Property Name="IPv4Addresses" Type="Collection(IPAddresses.v1_0_0.IPv4Address)" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The IPv4 addresses assigned to this interface."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of objects used to represent the IPv4 connection characteristics for this interface."/>
         </Property>
@@ -147,12 +146,10 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of objects used to represent the Address Selection Policy Table as defined in RFC 6724."/>
         </Property>
         <Property Name="IPv6Addresses" Type="Collection(IPAddresses.v1_0_0.IPv6Address)" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This array of objects enumerates all of the currently assigned IPv6 addresses on this interface."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of objects used to represent the IPv6 connection characteristics for this interface."/>
         </Property>
         <Property Name="IPv6StaticAddresses" Type="Collection(IPAddresses.v1_0_0.IPv6StaticAddress)" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This array of objects represents all of the IPv6 static addresses to be assigned on this interface."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of objects used to represent the IPv6 static connection characteristics for this interface."/>
         </Property>
