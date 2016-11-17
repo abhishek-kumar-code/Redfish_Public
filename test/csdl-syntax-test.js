@@ -4,7 +4,7 @@ const path = require('path');
 const xmljs = require('libxmljs-mt');
 const assert = require('assert');
 const request = require('request');
-const CSDL = require('CSDLParser/index');
+const CSDL = require('CSDLParser');
 
 const files = glob.sync(path.join('{metadata,mockups}', '**', '*.xml'))
 const syntaxBatch = {};
