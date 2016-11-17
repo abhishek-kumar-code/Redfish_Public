@@ -88,6 +88,7 @@ The following referenced documents are indispensable for the application of this
 * <a id="UCUM">The Unified Code for Units of Measure</a>.  [http://www.unitsofmeasure.org/ucum.html](http://www.unitsofmeasure.org/ucum.html "http://www.unitsofmeasure.org/ucum.html")
 * <a id="W3C-CORS">W3C Recommendation of Cross-Origin Resource Sharing</a>. 16 January 2014. [http://www.w3.org/TR/cors/](http://www.w3.org/TR/cors "http://www.w3.org/TR/cors/")
 * <a id="SNIA-TLS">SNIA TLS Specification for Storage Systems</a>. 20 November 2014. [http://www.snia.org/tls/](http://www.snia.org/tls/ "http://www.snia.org/tls/")
+* <a id="DSP0270">DMTF DSP0270</a> Redfish Host Interface Specification, [http://www.dmtf.org/sites/default/files/standards/documents/DSP0270_1.0.pdf] (http://www.dmtf.org/sites/default/files/standards/documents/DSP0270_1.0.pdf "http://www.dmtf.org/sites/default/files/standards/documents/DSP0270_1.0.pdf")
 
 ## Terms and definitions
 In this document, some terms have a specific meaning beyond the normal English meaning. Those terms are defined in this clause.
@@ -2565,6 +2566,9 @@ For logical AND combinations, the privilege label is placed in the Privilege pro
 	"PATCH": [{"Privilege": ["ConfigureComponents","OEMSysAdminPriv"]}]
 }
 ~~~
+
+## Redfish Host Interface
+The Redfish Host Interface Specification defines how software executing on a host computer system can interface with a Redfish service that manages the host.  See [DSP0270](#DSP0270) for details.
 
 ## ANNEX A (informative)
 
