@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  ManagerNetworkProtocol  v1.0.3-->
+<!--# Redfish Schema:  ManagerNetworkProtocol  v1.1.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -167,6 +167,15 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ManagerNetworkProtocol.v1_0_3">
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="ManagerNetworkProtocol" BaseType="ManagerNetworkProtocol.v1_0_2.ManagerNetworkProtocol"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ManagerNetworkProtocol.v1_1_0">
+      <EntityType Name="ManagerNetworkProtocol" BaseType="ManagerNetworkProtocol.v1_0_3.ManagerNetworkProtocol">
+        <Property Name="DHCP" Type="ManagerNetworkProtocol.v1_0_0.Protocol" Nullable="false">
+          <Annotation Term="OData.Description" String="Settings for this Manager's DHCP protocol support."/>
+          <Annotation Term="OData.LongDescription" String="This object shall contain information for the DHCP protocol settings for the manager."/>
+        </Property>
+      </EntityType>
     </Schema>
 
   </edmx:DataServices>
