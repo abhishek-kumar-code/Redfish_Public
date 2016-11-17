@@ -46,7 +46,7 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | SoftwareInventory | 1.1.0 | 2016-12-07 | Added "SoftwareId", "LowestSupportedVersion", "UefiDevicePaths" and "RelatedItem" properties. |
 | Thermal | 1.2.0 | 2016-12-07 | Added "Manufacture", "Model", "SerialNumber", "PartNumber", "SparePartNumber" and "IndicatorLED" to "Fan" object. |
 | UpdateService | 1.1.0 | 2016-12-07 | Added "HttpPushUri" property. |
-| (all files) | various | 2016-12-07 | Errata release.  Added explicit permissions annotations to all properties to clearly show which properties are read-write vs. read-only. Corrected Permission annotation with invalid enumeration references. Corrected all property descriptions to always end with a period. |
+| (all files) | various | 2016-12-07 | Errata release.  Added explicit permissions annotations to all properties to clearly show which properties are read-write vs. read-only. Corrected Permission annotation with invalid enumeration references. Removed permissions annotation from embedded objects (permissions now on every property).  Removed permission annotations from CSDL Type definitions to avoid conflicts with property definitions. Corrected all property descriptions to always end with a period. |
 | ComputerSystem | 1.0.4  | 2016-12-07 | Errata release.  Corrected CSDL Type of "TotalSystemMemoryGiB" from 'Int64' to 'Decimal'. |
 | ComputerSystem | 1.1.2  | 2016-12-07 | Errata release.  Corrected CSDL Type of "TotalSystemMemoryGiB" from 'Int64' to 'Decimal'. |
 | ComputerSystem | 1.2.1  | 2016-12-07 | Errata release.  Corrected CSDL Type of "TotalSystemMemoryGiB" from 'Int64' to 'Decimal'. |
