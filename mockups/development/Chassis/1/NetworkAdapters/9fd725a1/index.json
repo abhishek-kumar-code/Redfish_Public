@@ -38,17 +38,17 @@
                 },
                 "VirtualizationOffload": {
                     "VirtualFunction": {
-                        "DeviceMaximumCount": 256,
-                        "NetworkPortMaximumCount": 128,
-                        "MinimumAssignmentGroupSize": 4
+                        "DeviceMaxCount": 256,
+                        "NetworkPortMaxCount": 128,
+                        "MinAssignmentGroupSize": 4
                     },
                     "SRIOV": {
                         "SRIOVVEPACapable": true
                     }
                 },
                 "NPIV": {
-                    "MaximumDeviceLogins": 4,
-                    "MaximumPortLogins": 2
+                    "MaxDeviceLogins": 4,
+                    "MaxPortLogins": 2
                 }
             }
         }

@@ -178,17 +178,17 @@
       </ComplexType>
 
       <ComplexType Name="VirtualFunction">
-        <Property Name="DeviceMaximumCount" Type="Edm.Int64">
+        <Property Name="DeviceMaxCount" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The maximum number of Virtual Functions (VFs) supported by this controller."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the maximum number of Virtual Functions (VFs) supported by this controller."/>
         </Property>
-        <Property Name="NetworkPortMaximumCount" Type="Edm.Int64">
+        <Property Name="NetworkPortMaxCount" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The maximum number of Virtual Functions (VFs) supported per network port for this controller."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the maximum number of Virtual Functions (VFs) supported per network port for this controller."/>
         </Property>
-        <Property Name="MinimumAssignmentGroupSize" Type="Edm.Int64">
+        <Property Name="MinAssignmentGroupSize" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The minimum number of Virtual Functions (VFs) that can be allocated or moved between physical functions for this controller."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the minimum number of Virtual Functions (VFs) that can be allocated or moved between physical functions for this controller."/>
@@ -231,12 +231,12 @@
       </ComplexType>
 
       <ComplexType Name="NPIV">
-        <Property Name="MaximumDeviceLogins" Type="Edm.Int64">
+        <Property Name="MaxDeviceLogins" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The maximum number of N_Port ID Virtualization (NPIV) logins allowed simultaneously from all ports on this controller."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the maximum number of N_Port ID Virtualization (NPIV) logins allowed simultaneously from all ports on this controller."/>
         </Property>
-        <Property Name="MaximumPortLogins" Type="Edm.Int64">
+        <Property Name="MaxPortLogins" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The maximum number of N_Port ID Virtualization (NPIV) logins allowed per physical port on this controller."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the maximum number of N_Port ID Virtualization (NPIV) logins allowed per physical port on this controller."/>
