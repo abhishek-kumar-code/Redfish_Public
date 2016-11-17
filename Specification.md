@@ -2341,11 +2341,6 @@ The Authorization subsystem uses Roles and Privileges to control which users hav
   - Implementations shall enforce the same privilege model for ETag related activity as is enforced for the data being represented by the ETag.
   - For example, when activity requiring privileged access to read data item represented by ETag requires the same privileged access to read the ETag.
 
-
-## Redfish Host Interface
-The Redfish Host Interface Specification defines how software executing on a host computer system can interface with a Redfish service that manages the host.  See [DSP0270](#DSP0270) for details.
-
-
 #### Redfish Service Operation to Privilege Mapping
 
 For every request made by a Redfish client to a Redfish service, the Redfish service shall determine that 
@@ -2571,6 +2566,9 @@ For logical AND combinations, the privilege label is placed in the Privilege pro
 	"PATCH": [{"Privilege": ["ConfigureComponents","OEMSysAdminPriv"]}]
 }
 ~~~
+
+## Redfish Host Interface
+The Redfish Host Interface Specification defines how software executing on a host computer system can interface with a Redfish service that manages the host.  See [DSP0270](#DSP0270) for details.
 
 ## ANNEX A (informative)
 
