@@ -2,9 +2,9 @@
 DocTitle: Redfish Scalable Platforms Management API Specification
 DocNumber: '0266'
 DocClass: Normative
-DocVersion: '1.0.4'
-modified: '2016-08-28'
-SupersedesVersion: '1.0.3'
+DocVersion: '1.0.5'
+modified: '2016-12-07'
+SupersedesVersion: '1.0.4'
 status: published
 released: true
 copyright: '2014-2016'
@@ -2346,6 +2346,12 @@ The Authorization subsystem uses Roles and Privileges to control which users hav
 
 | Version | Date     | Description     |
 | ---     | ---      | ---             |
+| 1.0.5   | 2016-12-9| Errata release.  Various typographical errors. |
+|         |          | Corrected terminology usage of "Collection", "Resource Collection" and "Members" throughout. |
+|         |          | Added glossary entries for "Resource Collection" and "Members". |
+|         |          | Corrected Certificate requirements to reference definitions and requirements in RFC 5280 and added a normative reference to RFC 5280. |
+|         |          | Clarified usage of HTTP POST and PATCH operations. |
+|         |          | Clarified usage of HTTP Status codes and Error responses. |
 | 1.0.4   | 2016-8-28| Errata release.  Various typographical errors. |
 |         |          | Added example of an HTTP Link Header and clarified usage and content. |
 |         |          | Added Schema Modification clause describing allowed usage of the Schema files. |
