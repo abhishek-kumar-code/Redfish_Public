@@ -47,10 +47,12 @@ function constructTest(file) {
       assert.notEqual(csdl, null);
     },
     'units are valid': validUnitsTest,
+    /* The next two tests have a side effect of ensure all explict types are present*/
     'has permission annotations': permissionsCheck,
     'complex types should not have permissions': complexTypesPermissions,
     'descriptions have trailing periods': descriptionPeriodCheck,
-    'no empty Schema tags': checkForEmptySchemas
+    'no empty Schema tags': checkForEmptySchemas,
+    'BaseTypes are valid': checkBaseTypes
   }
 }
 
@@ -257,6 +259,31 @@ function trivialNamespaceCheck(schema) {
   }
   if(schema.Annotations['OData.Description'] === undefined) {
     throw new Error('Schema '+schema._Name+' lacks OData.Description!');
+  }
+}
+
+function checkBaseTypes(err, csdl) {
+  if(err) {
+    return;
+  }
+  let entityTypes =  CSDL.search(csdl, 'EntityType');
+  for(let i = 0; i < entityTypes.length; i++) {
+    verifyBaseType(entityTypes[i], csdl);
+  }
+  let complexTypes =  CSDL.search(csdl, 'ComplexType');
+  for(let i = 0; i < complexTypes.length; i++) {
+    verifyBaseType(complexTypes[i], csdl);
+  }
+}
+
+function verifyBaseType(entityType, csdl) {
+  if(entityType.BaseType === undefined) {
+    /*No base type. This is valid.*/
+    return;
+  }
+  let baseType = CSDL.findByType(csdl, entityType.BaseType);
+  if(baseType === null) {
+    throw new Error('Unable to locate type "'+entityType.BaseType+'"');
   }
 }
 
