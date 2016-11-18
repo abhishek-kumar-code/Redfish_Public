@@ -18,10 +18,16 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Event.v1_0_3.json#/definitions/Event"
                 },
                 {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Event.v1_0_4.json#/definitions/Event"
+                },
+                {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Event.v1_1_0.json#/definitions/Event"
                 },
                 {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Event.v1_1_1.json#/definitions/Event"
+                },
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Event.v1_1_2.json#/definitions/Event"
                 }
             ]
         }

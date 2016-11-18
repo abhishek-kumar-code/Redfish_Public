@@ -21,6 +21,7 @@
             "properties": {
                 "MessageId": {
                     "type": "string",
+                    "readonly": true,
                     "description": "This is the key for this message which can be used to look up the message in a message registry.",
                     "longDescription": "This property shall be a key into message registry as described in the Redfish specification."
                 },
@@ -29,6 +30,7 @@
                         "string",
                         "null"
                     ],
+                    "readonly": true,
                     "description": "This is the human readable message, if provided.",
                     "longDescription": "This property shall contain an optional human readable message."
                 },
@@ -37,6 +39,7 @@
                     "items": {
                         "type": "string"
                     },
+                    "readonly": true,
                     "description": "This is an array of properties described by the message.",
                     "longDescription": "This property shall contain an array of JSON Pointers indicating the properties described by the message, if appropriate for the message."
                 },
@@ -45,6 +48,7 @@
                     "items": {
                         "type": "string"
                     },
+                    "readonly": true,
                     "description": "This array of message arguments are substituted for the arguments in the message when looked up in the message registry.",
                     "longDescription": "This property shall contain the message substitution arguments for the specific message referenced by the MessageId and shall only be included if the MessageId is present."
                 },
@@ -53,6 +57,7 @@
                         "string",
                         "null"
                     ],
+                    "readonly": true,
                     "description": "This is the severity of the errors.",
                     "longDescription": "The value of this property shall be the severity of the error, as defined in the Status section of the Redfish specificaiton."
                 },
@@ -61,6 +66,7 @@
                         "string",
                         "null"
                     ],
+                    "readonly": true,
                     "description": "Used to provide suggestions on how to resolve the situation that caused the error.",
                     "longDescription": "This property shall contain an override of the Resolution of the message in message registry, if present."
                 },

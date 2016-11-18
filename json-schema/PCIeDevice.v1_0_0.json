@@ -11,9 +11,9 @@
                 "Simulated"
             ],
             "enumDescriptions": {
-                "SingleFunction": "A single-function PCIe device",
-                "MultiFunction": "A multi-function PCIe device",
-                "Simulated": "A PCIe device which is not currently physically present, but is being simulated by the PCIe infrastructure"
+                "SingleFunction": "A single-function PCIe device.",
+                "MultiFunction": "A multi-function PCIe device.",
+                "Simulated": "A PCIe device which is not currently physically present, but is being simulated by the PCIe infrastructure."
             }
         },
         "PCIeDevice": {
@@ -48,16 +48,19 @@
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Id": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
+                    "readonly": true
                 },
                 "Description": {
                     "anyOf": [
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
                         {"type": "null"}
-                    ]
+                    ],
+                    "readonly": true
                 },
                 "Name": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+                    "readonly": true
                 },
                 "Manufacturer": {
                     "type": [
@@ -109,6 +112,7 @@
                         "string",
                         "null"
                     ],
+                    "readonly": false,
                     "description": "The user assigned asset tag for this PCIe device.",
                     "longDescription": "The value of this property shall be an identifying string used to track the PCIe device for inventory purposes."
                 },
@@ -168,7 +172,7 @@
                                 "$ref": "http://redfish.dmtf.org/schemas/v1/Chassis.json#/definitions/Chassis"
                             },
                             "readonly": true,
-                            "description": "An array of references to the chassis in which the PCIe device is contained",
+                            "description": "An array of references to the chassis in which the PCIe device is contained.",
                             "longDescription": "The value of this property shall reference a resource of type Chassis that represents the physical container associated with this resource."
                         },
                         "PCIeFunctions@odata.count": {
@@ -188,7 +192,6 @@
                             "longDescription": "The value of this property shall be a reference to the resources that this device exposes and shall reference a resource of type PCIeFunction."
                         }
                     },
-                    "readonly": true,
                     "description": "The links object contains the links to other resources that are related to this resource."
                 }
             },

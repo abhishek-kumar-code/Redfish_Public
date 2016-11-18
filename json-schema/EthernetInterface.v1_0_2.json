@@ -25,7 +25,8 @@
                         "string",
                         "null"
                     ],
-                    "description": "The IPv6 Address Prefix (as defined in RFC 6724 section 2.1)",
+                    "readonly": false,
+                    "description": "The IPv6 Address Prefix (as defined in RFC 6724 section 2.1).",
                     "longDescription": "This property shall contain the IPv6 Address Prefix for this table entry as defined in RFC 6724 section 2.1."
                 },
                 "Precedence": {
@@ -35,7 +36,8 @@
                     ],
                     "minimum": 1,
                     "maximum": 100,
-                    "description": "The IPv6 Precedence (as defined in RFC 6724 section 2.1",
+                    "readonly": false,
+                    "description": "The IPv6 Precedence (as defined in RFC 6724 section 2.1.",
                     "longDescription": "This property shall contain the IPv6 Precedence value for this table entry as defined in RFC 6724 section 2.1."
                 },
                 "Label": {
@@ -45,7 +47,8 @@
                     ],
                     "minimum": 0,
                     "maximum": 100,
-                    "description": "The IPv6 Label (as defined in RFC 6724 section 2.1)",
+                    "readonly": false,
+                    "description": "The IPv6 Label (as defined in RFC 6724 section 2.1).",
                     "longDescription": "This property shall contain the IPv6 Label value for this table entry as defined in RFC 6724 section 2.1."
                 }
             }
@@ -86,16 +89,19 @@
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Id": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
+                    "readonly": true
                 },
                 "Description": {
                     "anyOf": [
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
                         {"type": "null"}
-                    ]
+                    ],
+                    "readonly": true
                 },
                 "Name": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+                    "readonly": true
                 },
                 "UefiDevicePath": {
                     "type": [
@@ -103,7 +109,7 @@
                         "null"
                     ],
                     "readonly": true,
-                    "description": "The UEFI device path for this interface",
+                    "description": "The UEFI device path for this interface.",
                     "longDescription": "The value of this property shall be the UEFI device path to the device which implements this interface (port)."
                 },
                 "Status": {
@@ -117,6 +123,7 @@
                         "boolean",
                         "null"
                     ],
+                    "readonly": false,
                     "description": "This indicates whether this interface is enabled.",
                     "longDescription": "The value of this property shall be a boolean indicating whether this interface is enabled."
                 },
@@ -126,7 +133,7 @@
                         {"type": "null"}
                     ],
                     "readonly": true,
-                    "description": "This is the permanent MAC address assigned to this interface (port)",
+                    "description": "This is the permanent MAC address assigned to this interface (port).",
                     "longDescription": "The value of this property shall be the Permanent MAC Address of this interface (port). This value is typically programmed during the manufacturing time. This address is not assignable."
                 },
                 "MACAddress": {
@@ -134,6 +141,7 @@
                         {"$ref": "#/definitions/MACAddress"},
                         {"type": "null"}
                     ],
+                    "readonly": false,
                     "description": "This is the currently configured MAC address of the (logical port) interface.",
                     "longDescription": "The value of this property shall be the effective current MAC Address of this interface. If an assignable MAC address is not supported, this is a read only alias of the PermanentMACAddress."
                 },
@@ -143,6 +151,7 @@
                         "null"
                     ],
                     "units": "Mbit/s",
+                    "readonly": false,
                     "description": "This is the current speed in Mbps of this interface.",
                     "longDescription": "The value of this property shall be the link speed of the interface in Mbps."
                 },
@@ -151,6 +160,7 @@
                         "boolean",
                         "null"
                     ],
+                    "readonly": false,
                     "description": "This indicates if the speed and duplex are automatically negotiated and configured on this interface.",
                     "longDescription": "The value of this property shall be true if auto negotiation of speed and duplex is enabled on this interface and false if it is disabled."
                 },
@@ -159,6 +169,7 @@
                         "boolean",
                         "null"
                     ],
+                    "readonly": false,
                     "description": "This indicates if the interface is in Full Duplex mode or not.",
                     "longDescription": "The value of this property shall represent the duplex status of the Ethernet connection on this interface."
                 },
@@ -167,6 +178,7 @@
                         "number",
                         "null"
                     ],
+                    "readonly": false,
                     "description": "This is the currently configured Maximum Transmission Unit (MTU) in bytes on this interface.",
                     "longDescription": "The value of this property shall be the size in bytes of largest Protocol Data Unit (PDU) that can be passed in an Ethernet (MAC) frame on this interface."
                 },
@@ -175,7 +187,8 @@
                         "string",
                         "null"
                     ],
-                    "description": "The DNS Host Name, without any domain information",
+                    "readonly": false,
+                    "description": "The DNS Host Name, without any domain information.",
                     "longDescription": "The value of this property shall be host name for this interface."
                 },
                 "FQDN": {
@@ -183,6 +196,7 @@
                         "string",
                         "null"
                     ],
+                    "readonly": false,
                     "description": "This is the complete, fully qualified domain name obtained by DNS for this interface.",
                     "longDescription": "The value of this property shall be the fully qualified domain name for this interface."
                 },
@@ -208,8 +222,7 @@
                     "items": {
                         "$ref": "http://redfish.dmtf.org/schemas/v1/IPAddresses.v1_0_0.json#/definitions/IPv4Address"
                     },
-                    "readonly": true,
-                    "description": "The IPv4 addresses assigned to this interface",
+                    "description": "The IPv4 addresses assigned to this interface.",
                     "longDescription": "The value of this property shall be an array of objects used to represent the IPv4 connection characteristics for this interface."
                 },
                 "IPv6AddressPolicyTable": {
@@ -225,7 +238,6 @@
                     "items": {
                         "$ref": "http://redfish.dmtf.org/schemas/v1/IPAddresses.v1_0_0.json#/definitions/IPv6Address"
                     },
-                    "readonly": true,
                     "description": "This array of objects enumerates all of the currently assigned IPv6 addresses on this interface.",
                     "longDescription": "The value of this property shall be an array of objects used to represent the IPv6 connection characteristics for this interface."
                 },
@@ -234,7 +246,6 @@
                     "items": {
                         "$ref": "http://redfish.dmtf.org/schemas/v1/IPAddresses.v1_0_0.json#/definitions/IPv6StaticAddress"
                     },
-                    "readonly": true,
                     "description": "This array of objects represents all of the IPv6 static addresses to be assigned on this interface.",
                     "longDescription": "The value of this property shall be an array of objects used to represent the IPv6 static connection characteristics for this interface."
                 },
