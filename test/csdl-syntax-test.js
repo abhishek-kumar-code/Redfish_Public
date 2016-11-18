@@ -52,7 +52,9 @@ function constructTest(file) {
     'complex types should not have permissions': complexTypesPermissions,
     'descriptions have trailing periods': descriptionPeriodCheck,
     'no empty Schema tags': checkForEmptySchemas,
-    'BaseTypes are valid': checkBaseTypes
+    'BaseTypes are valid': checkBaseTypes,
+    'All Annotation Terms are valid': checkAnnotationTerms,
+    'Enum Members are valid names': checkEnumMembers
   }
 }
 
@@ -284,6 +286,41 @@ function verifyBaseType(entityType, csdl) {
   let baseType = CSDL.findByType(csdl, entityType.BaseType);
   if(baseType === null) {
     throw new Error('Unable to locate type "'+entityType.BaseType+'"');
+  }
+}
+
+function checkAnnotationTerms(err, csdl) {
+  if(err) {
+    return;
+  }
+  let annotations = CSDL.search(csdl, 'Annotation');
+  for(let i = 0; i < annotations.length; i++) {
+    let type = CSDL.findByType(csdl, annotations[i].Name);
+    if(type === null) {
+      throw new Error('Unable to locate annotation term "'+annotations[i].Name+'"');
+    }
+  }
+}
+
+function checkEnumMembers(err, csdl) {
+  if(err) {
+    return;
+  }
+  let enums = CSDL.search(csdl, 'EnumType');
+  for(let i = 0; i < enums.length; i++) {
+    let keys = Object.keys(enums[i].Members);
+    for(let j = 0; j < keys.length; j++) {
+      if(keys[j].indexOf(' ') !== -1 ||
+         keys[j].indexOf('.') !== -1 ||
+         keys[j].indexOf('-') !== -1 ||
+         keys[j].indexOf('+') !== -1 ||
+         keys[j].indexOf(':') !== -1 ||
+         keys[j].indexOf('/') !== -1 ||
+         keys[j].indexOf('\\') !== -1 ||
+         !isNaN(keys[j].charAt(0))) {
+        throw new Error('Enum member "'+keys[j]+'" of EnumType '+enums[i].Name+' is invalid!');
+      }
+    }
   }
 }
 
