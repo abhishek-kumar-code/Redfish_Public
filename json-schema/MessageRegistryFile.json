@@ -13,6 +13,9 @@
                 },
                 {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/MessageRegistryFile.v1_0_2.json#/definitions/MessageRegistryFile"
+                },
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/MessageRegistryFile.v1_0_3.json#/definitions/MessageRegistryFile"
                 }
             ]
         }

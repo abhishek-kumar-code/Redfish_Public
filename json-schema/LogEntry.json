@@ -15,7 +15,13 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/LogEntry.v1_0_2.json#/definitions/LogEntry"
                 },
                 {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/LogEntry.v1_0_3.json#/definitions/LogEntry"
+                },
+                {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/LogEntry.v1_1_0.json#/definitions/LogEntry"
+                },
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/LogEntry.v1_1_1.json#/definitions/LogEntry"
                 }
             ]
         }

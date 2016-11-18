@@ -40,8 +40,8 @@
                 "Slow"
             ],
             "enumDescriptions": {
-                "Fast": "The volume is prepared for use quickly, typically by erasing just the begining and end of the space so that partitioning can be performed",
-                "Slow": "The volume is prepared for use slowly, typically by completely erasing the volume"
+                "Fast": "The volume is prepared for use quickly, typically by erasing just the begining and end of the space so that partitioning can be performed.",
+                "Slow": "The volume is prepared for use slowly, typically by completely erasing the volume."
             }
         },
         "Volume": {
@@ -54,6 +54,9 @@
                 },
                 {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Volume.v1_0_1.json#/definitions/Volume"
+                },
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Volume.v1_0_2.json#/definitions/Volume"
                 }
             ]
         }

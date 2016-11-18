@@ -10,6 +10,9 @@
                 },
                 {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/AttributeRegistry.v1_0_0.json#/definitions/AttributeRegistry"
+                },
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/AttributeRegistry.v1_0_1.json#/definitions/AttributeRegistry"
                 }
             ]
         }

@@ -38,10 +38,12 @@
                             "anyOf": [
                                 {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
                                 {"type": "null"}
-                            ]
+                            ],
+                            "readonly": true
                         },
                         "Name": {
-                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+                            "readonly": true
                         },
                         "Oem": {
                             "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",

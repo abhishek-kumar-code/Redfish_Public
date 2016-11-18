@@ -13,6 +13,9 @@
                 },
                 {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Processor.v1_0_2.json#/definitions/Processor"
+                },
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Processor.v1_0_3.json#/definitions/Processor"
                 }
             ]
         }
