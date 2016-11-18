@@ -11,9 +11,9 @@
                 "Block"
             ],
             "enumDescriptions": {
-                "Volatile": "Volatile memory",
-                "PMEM": "Byte accessible persistent memory",
-                "Block": "Block accesible memory"
+                "Volatile": "Volatile memory.",
+                "PMEM": "Byte accessible persistent memory.",
+                "Block": "Block accesible memory."
             }
         },
         "InterleaveSet": {
@@ -39,7 +39,7 @@
                         "null"
                     ],
                     "readonly": true,
-                    "description": "DIMM region identifier",
+                    "description": "DIMM region identifier.",
                     "longDescription": "The value of this property shall be the DIMM region identifier."
                 },
                 "OffsetMiB": {
@@ -48,7 +48,7 @@
                         "null"
                     ],
                     "readonly": true,
-                    "description": "Offset within the DIMM that corresponds to the start of this memory region, with units in MiB",
+                    "description": "Offset within the DIMM that corresponds to the start of this memory region, with units in MiB.",
                     "longDescription": "The value of this property shall be the offset within the DIMM that corresponds to the start of this memory region, with units in MiB."
                 },
                 "SizeMiB": {
@@ -57,7 +57,7 @@
                         "null"
                     ],
                     "readonly": true,
-                    "description": "Size of this memory region in MiB",
+                    "description": "Size of this memory region in MiB.",
                     "longDescription": "The value of this property shall be the size of this memory region, with units in MiB."
                 },
                 "MemoryLevel": {
@@ -72,7 +72,7 @@
                 "Memory": {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef",
                     "readonly": true,
-                    "description": "Describes a memory device of the interleave set. ",
+                    "description": "Describes a memory device of the interleave set.",
                     "longDescription": "The value of this property shall be the memory device to which these settings apply."
                 }
             }
@@ -109,16 +109,19 @@
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Id": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
+                    "readonly": true
                 },
                 "Description": {
                     "anyOf": [
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
                         {"type": "null"}
-                    ]
+                    ],
+                    "readonly": true
                 },
                 "Name": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+                    "readonly": true
                 },
                 "MemoryChunkSizeMiB": {
                     "type": [
@@ -126,7 +129,7 @@
                         "null"
                     ],
                     "readonly": true,
-                    "description": "Size of the memory chunk in MiB",
+                    "description": "Size of the memory chunk in MiB.",
                     "longDescription": "The value of this property shall be the size of the memory chunk in MiB."
                 },
                 "AddressRangeType": {
@@ -135,7 +138,7 @@
                         {"type": "null"}
                     ],
                     "readonly": true,
-                    "description": "Memory type of this memory chunk",
+                    "description": "Memory type of this memory chunk.",
                     "longDescription": "The value of this property shall be the type of memory chunk."
                 },
                 "IsMirrorEnabled": {
@@ -144,7 +147,7 @@
                         "null"
                     ],
                     "readonly": true,
-                    "description": "Mirror Enabled status",
+                    "description": "Mirror Enabled status.",
                     "longDescription": "The value of this property shall indicate if memory mirroring is enabled for this MemoryChunk."
                 },
                 "IsSpare": {
@@ -153,7 +156,7 @@
                         "null"
                     ],
                     "readonly": true,
-                    "description": "Spare enabled status",
+                    "description": "Spare enabled status.",
                     "longDescription": "The value of this property shall indicate if sparing is enabled for this MemoryChunk."
                 },
                 "InterleaveSets": {
@@ -164,7 +167,6 @@
                             {"type": "null"}
                         ]
                     },
-                    "readonly": true,
                     "description": "This is the interleave sets for the memory chunk.",
                     "longDescription": "These properties shall represent the interleave sets for the memory chunk."
                 }
