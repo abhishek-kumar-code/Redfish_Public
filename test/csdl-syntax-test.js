@@ -6,6 +6,8 @@ const assert = require('assert');
 const request = require('request');
 const CSDL = require('CSDLParser');
 
+const PascalRegex = new RegExp('^([A-Z][a-z0-9]*)+$', 'm');
+
 const files = glob.sync(path.join('{metadata,mockups}', '**', '*.xml'))
 const syntaxBatch = {};
 var options = {useLocal: [path.normalize(__dirname+'/../metadata'), path.normalize(__dirname+'/fixtures')], useNetwork: true};
@@ -15,7 +17,19 @@ options.cache = new CSDL.cache(options.useLocal, options.useNetwork);
 
 let ucum = null;
 let ucumError = false;
+
+/***************** White lists ******************************/
+//Units that don't exist in UCUM
 const unitsWhiteList = ['RPM'];
+//Enumeration Member names that are non-Pascal Cased
+const NonPascalCaseEnumWhiteList = ['iSCSI', 'iQN', 'FC_WWN', 'TX_RX', 'EIA_310', 'string', 'number', 'NVDIMM_N', 
+                                    'NVDIMM_F', 'NVDIMM_P', 'DDR4_SDRAM', 'DDR4E_SDRAM', 'LPDDR4_SDRAM', 'DDR3_SDRAM',
+                                    'LPDDR3_SDRAM', 'DDR2_SDRAM', 'DDR2_SDRAM_FB_DIMM', 'DDR2_SDRAM_FB_DIMM_PROBE', 
+                                    'DDR_SGRAM', 'DDR_SDRAM', 'SO_DIMM', 'Mini_RDIMM', 'Mini_UDIMM', 'SO_RDIMM_72b',
+                                    'SO_UDIMM_72b', 'SO_DIMM_16b', 'SO_DIMM_32b', 'TPM1_2', 'TPM2_0', 'TCM1_0'];
+//Properties names that are non-Pascal Cased
+const NonPascalCasePropertyWhiteList = ['iSCSIBoot'];
+/************************************************************/
 
 const setupBatch = {
   'get UCUM file': {
@@ -54,7 +68,8 @@ function constructTest(file) {
     'no empty Schema tags': checkForEmptySchemas,
     'BaseTypes are valid': checkBaseTypes,
     'All Annotation Terms are valid': checkAnnotationTerms,
-    'Enum Members are valid names': checkEnumMembers
+    'Enum Members are valid names': checkEnumMembers,
+    'Properties are Pascal-cased': checkPropertiesPascalCased
   }
 }
 
@@ -310,16 +325,27 @@ function checkEnumMembers(err, csdl) {
   for(let i = 0; i < enums.length; i++) {
     let keys = Object.keys(enums[i].Members);
     for(let j = 0; j < keys.length; j++) {
-      if(keys[j].indexOf(' ') !== -1 ||
-         keys[j].indexOf('.') !== -1 ||
-         keys[j].indexOf('-') !== -1 ||
-         keys[j].indexOf('+') !== -1 ||
-         keys[j].indexOf(':') !== -1 ||
-         keys[j].indexOf('/') !== -1 ||
-         keys[j].indexOf('\\') !== -1 ||
-         !isNaN(keys[j].charAt(0))) {
+      if(keys[j].match(PascalRegex) === null && NonPascalCaseEnumWhiteList.indexOf(keys[j]) === -1) {
         throw new Error('Enum member "'+keys[j]+'" of EnumType '+enums[i].Name+' is invalid!');
       }
+    }
+  }
+}
+
+function checkPropertiesPascalCased(err, csdl) {
+  if(err) {
+    return;
+  }
+  let properties = CSDL.search(csdl, 'Property');
+  for(let i = 0; i < properties.length; i++) {
+    if(properties[i].Name.match(PascalRegex) === null && NonPascalCasePropertyWhiteList.indexOf(properties[i].Name) === -1) {
+      throw new Error('Property Name "'+properties[i].Name+'" is not Pascal-cased');
+    }
+  }
+  let navproperties = CSDL.search(csdl, 'NavigationProperty');
+  for(let i = 0; i < navproperties.length; i++) {
+    if(navproperties[i].Name.match(PascalRegex) === null) {
+      throw new Error('Property Name "'+navproperties[i].Name+'" is not Pascal-cased');
     }
   }
 }
