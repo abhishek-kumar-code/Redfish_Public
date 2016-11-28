@@ -419,6 +419,24 @@ function validCSDLTypeInMockup(err, json) {
       if(CSDLProperty === undefined) {
         throw new Error('Unknown property "'+propName+'" in type '+type);
       }
+      if(CSDLProperty.Type.startsWith('Collection(')) {
+        if(!Array.isArray(json[propName])) {
+          throw new Error('Property "'+propName+'" is a collection, but the value in the mockup is not a valid JSON array.');
+        }
+      }
+      else {
+        let propType = CSDL.findByType({_options: options}, CSDLProperty.Type);
+        let propValue = json[propName];
+        if(typeof propType === 'string') {
+          switch(propType) {
+            case 'Edm.String':
+              if(typeof propValue !== 'string' && propValue !== null) {
+                throw new Error('Property "'+propName+'" is an Edm.String, but the value in the mockup is not a valid JSON string.');
+              }
+              break;
+          }
+        }
+      }
     }
   }
 }
