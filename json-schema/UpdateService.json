@@ -10,6 +10,12 @@
                 },
                 {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/UpdateService.v1_0_0.json#/definitions/UpdateService"
+                },
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/UpdateService.v1_0_1.json#/definitions/UpdateService"
+                },
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/UpdateService.v1_1_0.json#/definitions/UpdateService"
                 }
             ]
         }

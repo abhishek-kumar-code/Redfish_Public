@@ -27,6 +27,7 @@
                 },
                 "MemberId": {
                     "type": "string",
+                    "readonly": true,
                     "description": "This is the identifier for the member within the collection.",
                     "longDescription": "The value of this string shall uniquely identify the member within the collection."
                 },
@@ -108,11 +109,11 @@
                 "Alert"
             ],
             "enumDescriptions": {
-                "StatusChange": "The status of this resource has changed",
-                "ResourceUpdated": "The value of this resource has been updated",
-                "ResourceAdded": "A resource has been added",
-                "ResourceRemoved": "A resource has been removed",
-                "Alert": "A condition exists which requires attention"
+                "StatusChange": "The status of this resource has changed.",
+                "ResourceUpdated": "The value of this resource has been updated.",
+                "ResourceAdded": "A resource has been added.",
+                "ResourceRemoved": "A resource has been removed.",
+                "Alert": "A condition exists which requires attention."
             }
         },
         "Event": {
@@ -147,16 +148,19 @@
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Id": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
+                    "readonly": true
                 },
                 "Description": {
                     "anyOf": [
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
                         {"type": "null"}
-                    ]
+                    ],
+                    "readonly": true
                 },
                 "Name": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+                    "readonly": true
                 },
                 "Events@odata.count": {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/count"
@@ -185,7 +189,7 @@
                 "Name",
                 "Events"
             ],
-            "description": "The Event schema describes the JSON payload received by an Event Destination (which has subscribed to event notification) when events occurs.  This resource contains data about event(s), including descriptions, severity and MessageId reference to a Message Registry that can be accessed for further information. ",
+            "description": "The Event schema describes the JSON payload received by an Event Destination (which has subscribed to event notification) when events occurs.  This resource contains data about event(s), including descriptions, severity and MessageId reference to a Message Registry that can be accessed for further information.",
             "longDescription": "This resource shall be used to represent an event for a Redfish implementation."
         }
     },

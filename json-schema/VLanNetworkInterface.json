@@ -16,6 +16,9 @@
                 },
                 {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/VLanNetworkInterface.v1_0_2.json#/definitions/VLanNetworkInterface"
+                },
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/VLanNetworkInterface.v1_0_3.json#/definitions/VLanNetworkInterface"
                 }
             ]
         }

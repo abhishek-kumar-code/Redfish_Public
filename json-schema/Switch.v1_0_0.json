@@ -65,22 +65,26 @@
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Id": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
+                    "readonly": true
                 },
                 "Description": {
                     "anyOf": [
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
                         {"type": "null"}
-                    ]
+                    ],
+                    "readonly": true
                 },
                 "Name": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+                    "readonly": true
                 },
                 "SwitchType": {
                     "anyOf": [
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/Storage.v1_0_0.json#/definitions/Protocol"},
                         {"type": "null"}
                     ],
+                    "readonly": true,
                     "description": "The protocol being sent over this switch.",
                     "longDescription": "The value of this property shall contain the type of switch being represented by this simple switch."
                 },
@@ -137,6 +141,7 @@
                         "string",
                         "null"
                     ],
+                    "readonly": false,
                     "description": "The user assigned asset tag for this switch.",
                     "longDescription": "The value of this property shall be an identifying string used to track the drive for inventory purposes."
                 },
@@ -154,6 +159,7 @@
                         "boolean",
                         "null"
                     ],
+                    "readonly": false,
                     "description": "This indicates whether the switch is in a managed or unmanaged state.",
                     "longDescription": "The value of this property shall be a boolean indicating whether this switch is in a managed or unmanaged state."
                 },
@@ -171,6 +177,7 @@
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.v1_1_0.json#/definitions/IndicatorLED"},
                         {"type": "null"}
                     ],
+                    "readonly": false,
                     "description": "The state of the indicator LED, used to identify the switch.",
                     "longDescription": "This value of this property shall contain the indicator light state for the indicator light associated with this switch."
                 },
@@ -228,7 +235,6 @@
                             "longDescription": "The value of this property shall be a reference to the resources that this switch is associated with and shall reference a resource of type Manager."
                         }
                     },
-                    "readonly": true,
                     "description": "Contains references to other resources that are related to this resource.",
                     "longDescription": "The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."
                 },
@@ -271,7 +277,6 @@
                             "$ref": "#/definitions/Reset"
                         }
                     },
-                    "readonly": true,
                     "description": "The available actions for this resource.",
                     "longDescription": "The Actions property shall contain the available actions for this resource."
                 },
@@ -293,8 +298,7 @@
                     "items": {
                         "$ref": "http://redfish.dmtf.org/schemas/v1/Redundancy.json#/definitions/Redundancy"
                     },
-                    "readonly": true,
-                    "description": "Redundancy information for the switches"
+                    "description": "Redundancy information for the switches."
                 },
                 "LogServices": {
                     "anyOf": [
@@ -302,7 +306,7 @@
                         {"type": "null"}
                     ],
                     "readonly": true,
-                    "description": "A reference to the collection of Log Services associated with this system",
+                    "description": "A reference to the collection of Log Services associated with this system.",
                     "longDescription": "The value of this property shall be a link to a collection of type LogServiceCollection."
                 }
             },

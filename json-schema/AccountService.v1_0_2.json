@@ -35,16 +35,19 @@
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Id": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
+                    "readonly": true
                 },
                 "Description": {
                     "anyOf": [
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
                         {"type": "null"}
-                    ]
+                    ],
+                    "readonly": true
                 },
                 "Name": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+                    "readonly": true
                 },
                 "Status": {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
@@ -54,6 +57,7 @@
                         "boolean",
                         "null"
                     ],
+                    "readonly": false,
                     "description": "This indicates whether this service is enabled.",
                     "longDescription": "The value of this property shall be a boolean indicating whether this service is enabled."
                 },
@@ -85,7 +89,7 @@
                     ],
                     "minimum": 0,
                     "readonly": false,
-                    "description": "The number of failed login attempts before a user account is locked for a specified duration. (0=never locked)",
+                    "description": "The number of failed login attempts before a user account is locked for a specified duration (0=never locked).",
                     "longDescription": "This property shall reference the threshold of failed login attempts at which point the user's account is locked.  If set to 0, no lockout shall ever occur."
                 },
                 "AccountLockoutDuration": {
@@ -104,19 +108,19 @@
                     "minimum": 0,
                     "units": "s",
                     "readonly": false,
-                    "description": "The interval of time in seconds since the last failed login attempt at which point the lockout threshold counter for the account is reset to zero. Must be less than or equal to AccountLockoutDuration",
+                    "description": "The interval of time in seconds since the last failed login attempt at which point the lockout threshold counter for the account is reset to zero. Must be less than or equal to AccountLockoutDuration.",
                     "longDescription": "This property shall reference the threshold of time in seconds from the last failed login attempt at which point the AccountLockoutThreshold counter (that counts number of failed login attempts) is reset back to zero (at which point AccountLockoutThreshold failures would be required before the account is locked).  This value shall be less than or equal to AccountLockoutDuration. The threshold counter also resets to zero after each successful login."
                 },
                 "Accounts": {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/ManagerAccountCollection.json#/definitions/ManagerAccountCollection",
                     "readonly": true,
-                    "description": "Link to a collection of Manager Accounts",
+                    "description": "Link to a collection of Manager Accounts.",
                     "longDescription": "This property shall contain the link to a collection of type ManagerAccountCollection."
                 },
                 "Roles": {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/RoleCollection.json#/definitions/RoleCollection",
                     "readonly": true,
-                    "description": "Link to a collection of Roles",
+                    "description": "Link to a collection of Roles.",
                     "longDescription": "This property shall contain the link to a collection of type RoleCollection."
                 }
             },
