@@ -5,11 +5,18 @@ const xmljs = require('libxmljs-mt');
 const assert = require('assert');
 const request = require('request');
 const CSDL = require('CSDLParser');
+const fs = require('fs');
+const jsonlint = require('jsonlint');
 
 const PascalRegex = new RegExp('^([A-Z][a-z0-9]*)+$', 'm');
 
-const files = glob.sync(path.join('{metadata,mockups}', '**', '*.xml'))
+const files = glob.sync(path.join('{metadata,mockups}', '**', '*.xml'));
+var mockupFiles = [];
+if(process.env.TRAVIS === undefined || process.env.TRAVIS_BRANCH === 'master') {
+  mockupFiles = glob.sync(path.join('mockups', '**', 'index.json'));
+}
 const syntaxBatch = {};
+const mockupsCSDL = {};
 var options = {useLocal: [path.normalize(__dirname+'/../metadata'), path.normalize(__dirname+'/fixtures')], useNetwork: true};
 
 //Setup a global cache for speed
@@ -71,6 +78,32 @@ function constructTest(file) {
     'Enum Members are valid names': checkEnumMembers,
     'Properties are Pascal-cased': checkPropertiesPascalCased
   }
+}
+
+mockupFiles.forEach(constructMockupTest);
+
+function constructMockupTest(file) {
+  mockupsCSDL[file] = {
+    topic: function() {
+      var txt = fs.readFileSync(file);
+      try {
+        var json = jsonlint.parse(txt.toString());
+        this.callback(null, json);
+      }
+      catch(e) {
+        this.callback(e, null);
+      }
+    },
+    'is Valid JSON': function(err, json) {
+      if(err) {
+        throw err;
+      }
+      if(json === null || json === undefined) {
+        throw new Error('Unable to parse JSON!');
+      }
+    },
+    'is Valid Type': validCSDLTypeInMockup
+  };
 }
 
 function validUnitsTest(err, csdl) {
@@ -350,9 +383,68 @@ function checkPropertiesPascalCased(err, csdl) {
   }
 }
 
+function validCSDLTypeInMockup(err, json) {
+  if(err) {
+    return;
+  }
+  if(this.context.name.includes('$ref') || this.context.name.includes('/ExtErrorResp')) {
+    //Ignore the paging file and the external error example
+    return;
+  }
+  if(json['@odata.type'] === undefined) {
+    if(json['v1'] !== undefined) {
+      /*This is probably a root json, ignore it*/
+      return;
+    }
+    if(json['@odata.context'] === '/redfish/v1/$metadata') {
+      /*This is an Odata service doc, ignrore it*/
+      return;
+    }
+    throw new Error('No Type defined!');
+  }
+  let type = json['@odata.type'].substring(1);
+  let CSDLType = CSDL.findByType({_options: options}, type);
+  if(CSDLType === null) {
+    throw new Error('Could not locate type '+type);
+  }
+  for(let propName in json) {
+    if(propName[0] === '@' || propName === 'Members@odata.count' || propName === 'Members@odata.nextLink') {
+      continue;
+    }
+    let CSDLProperty = CSDLType.Properties[propName];
+    if(CSDLProperty === undefined) {
+      if(CSDLType.BaseType !== undefined) {
+        CSDLProperty = searchInParentTypes(CSDLType, propName);
+      }
+      if(CSDLProperty === undefined) {
+        throw new Error('Unknown property "'+propName+'" in type '+type);
+      }
+    }
+  }
+}
+
+function searchInParentTypes(type, propName) {
+  /* We do resource a little oddly in that we reference the Abstrct type everywhere that \
+   * doesn't have Id, Name, or Description*/
+  if(propName === 'Id' || propName === 'Name' || propName === 'Description') {
+    type = CSDL.findByType({_options: options}, 'Resource.v1_0_0.Resource');
+    return type.Properties[propName];
+  }
+  //console.log('Searching for "'+propName+'" in ');
+  //console.log(type.Properties);
+  let parentType = CSDL.findByType({_options: options}, type.BaseType);
+  if(parentType.Properties[propName] !== undefined) {
+    return parentType.Properties[propName];
+  }
+  if(parentType.BaseType !== undefined) {
+    return searchInParentTypes(parentType, propName);
+  }
+  return undefined;
+}
+
 process.on('unhandledRejection', (reason, promise) => {
   console.log(reason);
 });
 
-vows.describe('CSDL').addBatch(setupBatch).addBatch(syntaxBatch).export(module);
+vows.describe('CSDL').addBatch(setupBatch).addBatch(syntaxBatch).addBatch(mockupsCSDL).export(module);
 /* vim: set tabstop=2 shiftwidth=2 expandtab: */
