@@ -2,8 +2,8 @@
 DocTitle: Redfish API Schema Readme
 DocNumber: '8010'
 DocClass: Normative
-DocVersion: '2016.2'
-modified: '2016-08-28'
+DocVersion: '2016.3'
+modified: '2016-12-07'
 status: published
 released: True
 copyright: '2015-2016'
@@ -13,6 +13,7 @@ copyright: '2015-2016'
 The following files are part of the Redfish Scalable Platforms Management API ("Redfish") development effort:
 
 * DSP0226 - Redfish Specification - This file is the main Redfish Scalable Platforms Management API Specification.
+* DSP0270 - Redfish Host Interface Specification - This document specifies the "in-band" or "OS-based" Redfish Host Interface. 
 * DSP2044 - Redfish Whitepaper - This is intended to be a non-normative document helping those new to Redfish understand how to interact with the Redfish Service and understand common functions and tasks.
 * DSP2043 - Redfish Mockup - This is a mockup that can be used as sample of output from GETs from a Redfish Service.  Informative in nature, it was used to develop the schema.  A person can set up an NGINX or similar server and configure it to output JSON format and then use this directory for demonstration purposes.
 * DSP8010 - Redfish Schema - This contains the Redfish Schema definitions.  These files are normative in nature and are normatively referenced by the Redfish Specification.  There are two Schema formats - CSDL (OData Common Schema Definition Language format, which is in XML) and JSON Schema.  These Schema definitions should be functionally equivalent, thus specifying the schema in two different languages.
@@ -22,6 +23,38 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 
 | Schema File | Version | Date      | Description     |
 | ---         | ---     | ---       | ---             |
+| HostInterface | 1.0.0 | 2016-12-07 | Intial release. Contains properties for describing and configuring a Redfish Host Interface. |
+| HostInterfaceCollection | 1.0.0 | 2016-12-07 | Initial release. Collection of Redfish Host Interfaces. |
+| NetworkAdapter | 1.0.0 | 2016-12-07 | Intial release. Describes general-purpose network adapters. |
+| NetworkAdapterCollection | 1.0.0 | 2016-12-07 | Intial release. Collection of Network Adapters. |
+| NetworkInterface | 1.0.0 | 2016-12-07 | Intial release. Provides linkages between NetworkAdapter, NetworkPort, and NetworkDeviceFunction instances. |
+| NetworkInterfaceCollection | 1.0.0 | 2016-12-07 | Intial release. Collection of Network Interfaces. |
+| NetworkDeviceFunction | 1.0.0 | 2016-12-07 | Intial release. Describes a logical interface exposed by a Network Adapter. |
+| NetworkDeviceFunctionCollection | 1.0.0 | 2016-12-07 | Intial release. Collection of Network Device Functions. |
+| NetworkPort | 1.0.0 | 2016-12-07 | Intial release. Describes a discrete physical port capable of connecting to a network. |
+| NetworkPortCollection | 1.0.0 | 2016-12-07 | Intial release. Collection of Network Ports. |
+| PrivilegeRegistry | 1.0.0 | 2016-12-07 | Initial release. Schema for definition of HTTP Operation to Privilege mapping. |
+| AccountService | 1.1.0 | 2016-12-07 | Added link to "PrivilegeMap". |
+| Chassis | 1.4.0  | 2016-12-07 | Added "RackGroup" to "ChassisType" enumeration.  Added link to "NetworkAdapters" resource collection. Added "HeightMm", "WidthMm", "DepthMm", and "WeightKg" properties. Added Link to "PCIeDevices". |
+| ComputerSystem | 1.3.0  | 2016-12-07 | Added link to "NetworkDevices" resource collection. Added "FirmwareVersion2" and "InterfaceTypeSelection" to "TrustedModules" object. |
+| EthernetInterface | 1.2.0 | 2016-12-07 | Added link to "HostInterface" to support Redfish Host Interface specification. |
+| Manager | 1.3.0 | 2016-12-07 | Added link to "HostInterfaces" resource collection. |
+| ManagerNetworkProtocol | 1.1.0 | 2016-12-07 | Added "DHCP" protocol object. |
+| Memory     | 1.1.0 | 2016-12-07 | Added "Status" object.  |
+| MemoryDomain   | 1.1.0 | 2016-12-07 | Added "AllowsMirroring" and "AllowsSparing" properties.  |
+| Resource | 1.3.0 | 2016-12-07 | Added "PostalAddress" and "Placement" objects to "Location", each contaning numerous properties for detailed location information. |
+| SoftwareInventory | 1.1.0 | 2016-12-07 | Added "SoftwareId", "LowestSupportedVersion", "UefiDevicePaths" and "RelatedItem" properties. |
+| Thermal | 1.2.0 | 2016-12-07 | Added "Manufacture", "Model", "SerialNumber", "PartNumber", "SparePartNumber" and "IndicatorLED" to "Fan" object. |
+| UpdateService | 1.1.0 | 2016-12-07 | Added "HttpPushUri" property. |
+| (all files) | various | 2016-12-07 | Errata release.  Added explicit permissions annotations to all properties to clearly show which properties are read-write vs. read-only. Corrected Permission annotation with invalid enumeration references. Removed permissions annotation from embedded objects (permissions now on every property).  Removed permission annotations from CSDL Type definitions to avoid conflicts with property definitions. Corrected all property descriptions to always end with a period. |
+| ComputerSystem | 1.0.4  | 2016-12-07 | Errata release.  Corrected CSDL Type of "TotalSystemMemoryGiB" from 'Int64' to 'Decimal'. |
+| ComputerSystem | 1.1.2  | 2016-12-07 | Errata release.  Corrected CSDL Type of "TotalSystemMemoryGiB" from 'Int64' to 'Decimal'. |
+| ComputerSystem | 1.2.1  | 2016-12-07 | Errata release.  Corrected CSDL Type of "TotalSystemMemoryGiB" from 'Int64' to 'Decimal'. |
+| Port | 1.0.1 | 2016-12-07 | Corrected CSDL Type of "CurrentSpeedGbps" and "MaxSpeedGbps" from 'Int64' to 'Decimal'. |
+| Power | 1.2.1 | 2016-12-07 | Corrected descriptions for voltage-related properties and changed sensor descriptions to avoid use of term 'current', instead referring to 'present value'. |
+| Power | 1.1.1 | 2016-12-07 | Corrected descriptions for voltage-related properties and changed sensor descriptions to avoid use of term 'current', instead referring to 'present value'. |
+| Power | 1.0.3 | 2016-12-07 | Corrected descriptions for voltage-related properties and changed sensor descriptions to avoid use of term 'current', instead referring to 'present value'. |
+| ServiceRoot | 1.1.1 | 2016-12-07 | Added missing EntityContainer for "ServiceContainer" in CSDL schema. |
 | (all files) | various | 2016-8-12 | Corrected Reference URI links to OData v4 (errata 3) and added Capabilities annotations to CSDL files. |
 | ActionInfo | 1.0.0 | 2016-8-12 | Initial release.  ActionInfo describes the parameters and other information necessary to perform a Redfish Action to a particular Action target.  |
 | Endpoint | 1.0.0 | 2016-8-12 | Initial release.  An Endpoint is an entity that sends or receives protocol defined messages over a transport. |

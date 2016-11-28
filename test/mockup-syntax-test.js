@@ -102,7 +102,9 @@ glob.sync(path.join('mockups', '*/')).forEach(function(mockup) {
 mockupSuite.export(module);
 
 function path2Redfish(p, removeIndex) {
-  const link = p.split(path.sep).slice(2, removeIndex ? -1 : void 0);
+  let myP = path.normalize(p);
+  const link = myP.split(path.sep).slice(2, removeIndex ? -1 : void 0);
   link.unshift('', 'redfish', 'v1', '');
-  return path.normalize(link.join('/'));
+  //Need unix style pathing...
+  return path.posix.normalize(link.join('/'));
 }

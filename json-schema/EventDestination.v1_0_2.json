@@ -63,16 +63,19 @@
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Id": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
+                    "readonly": true
                 },
                 "Description": {
                     "anyOf": [
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
                         {"type": "null"}
-                    ]
+                    ],
+                    "readonly": true
                 },
                 "Name": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+                    "readonly": true
                 },
                 "Destination": {
                     "type": "string",
@@ -91,6 +94,7 @@
                 },
                 "Context": {
                     "type": "string",
+                    "readonly": false,
                     "description": "A client-supplied string that is stored with the event destination subscription.",
                     "longDescription": "This property shall contain a client supplied context that will remain with the connection through the connections lifetime."
                 },
