@@ -2,7 +2,7 @@
     "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#Chassis/Members/$entity",
     "@odata.id": "/redfish/v1/Chassis/PCIeSwitch2",
-    "@odata.type": "#Chassis.v1_0_0.Chassis",
+    "@odata.type": "#Chassis.v1_0_1.Chassis",
     "Id": "PCIeSwitchChassis",
     "Name": "PCIe Switch 2",
     "ChassisType": "Card",

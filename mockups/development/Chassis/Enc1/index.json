@@ -2,7 +2,7 @@
     "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#Chassis.Chassis",
     "@odata.id": "/redfish/v1/Chassis/Enc1",
-    "@odata.type": "#Chassis.v1_0_0.Chassis",
+    "@odata.type": "#Chassis.v1_0_1.Chassis",
     "Id": "Enc1",
     "Name": "Enclosure 1",
     "Description": "Enclosure With Blades Example - This enclosure is in a rack and this enclosure has one blade.  It also is managed by a redundant pair of managers which also manage the blade.",

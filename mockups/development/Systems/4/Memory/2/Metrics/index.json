@@ -5,12 +5,12 @@
     "@odata.type": "#MemoryMetrics.1.1.0.MemoryMetrics",
     "Name": "Memory Metrics",
     "Id": "Metrics",
-    "BlockSizeB": 4096,
+    "BlockSizeBytes": 4096,
     "CurrentPeriod": {
         "BlocksRead": 0,
         "BlocksWritten": 0
     },
-    "Lifetime": {
+    "LifeTime": {
         "BlocksRead": 0,
         "BlocksWritten": 0
     },
