@@ -4,7 +4,6 @@
     "Name": "Log Entry 1",
     "EntryType": "SEL",
     "OemRecordFormat": "CompanyX",
-    "RecordId": 1,
     "Severity": "Critical",
     "Created": "2012-03-07T14:44",
     "EntryCode": "Assert",
