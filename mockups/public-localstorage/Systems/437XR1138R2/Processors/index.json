@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#ProcssorCollection.ProcessorCollection",
+    "@odata.type": "#ProcessorCollection.ProcessorCollection",
     "Name": "Processors Collection",
     "Members@odata.count": 2,
     "Members": [

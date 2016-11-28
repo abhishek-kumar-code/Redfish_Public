@@ -1,8 +1,8 @@
 {
     "@Redfish.Copyright": "Copyright  2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#StorageVoluemCollection",
+    "@odata.context": "/redfish/v1/$metadata#VoluemCollection",
     "@odata.id": "/redfish/v1/Systems/437XR1138R2/Storage/1/Volumes",
-    "@odata.type": "#StorageVolumeCollection.StorageVolumeCollection",
+    "@odata.type": "#VolumeCollection.VolumeCollection",
     "Name": "Storage Volume Collection",
     "Description": "Storage Volume Collection",
     "Members@odata.count": 3,

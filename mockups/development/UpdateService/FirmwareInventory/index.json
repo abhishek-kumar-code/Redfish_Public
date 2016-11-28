@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#SoftwareInventoryCollection.v1_0_0.SoftwareInventoryCollection",
+    "@odata.type": "#SoftwareInventoryCollection.SoftwareInventoryCollection",
     "Name": "Firmware Inventory Collection",
     "Members@odata.count": 3,
     "Members": [
