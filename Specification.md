@@ -935,7 +935,7 @@ The resource identifier is the canonical URL for the resource and can be used to
 
 All resources in a response shall include a type property named "@odata.type". The value of the type property shall be a URL fragment that specifies the type of the resource as defined within, or referenced by, the [metadata document](#service-metadata) and shall be of the form:
 
- * *#**Namespace*.*TypeName*
+ #*Namespace*.*TypeName*
 
 where
 * *Namespace* = The full namespace name of the Redfish Schema in which the type is defined. For Redfish resources this will be the versioned namespace name.
@@ -984,7 +984,7 @@ Available actions for a resource are represented as individual properties nested
 
 Actions are represented by a property nested under "Actions" whose name is the unique URI that identifies the action. This URI shall be of the form:
 
-  **#*Namespace*.*ActionName*
+ #*Namespace*.*ActionName*
 
 where
 * *Namespace* = The namespace used in the reference to the Redfish Schema in which the action is defined. For Redfish resources this shall be the version-independent namespace.
@@ -1331,7 +1331,7 @@ Programs may access the Schema Repository using the redfish.dmtf.org/schemas/v1 
 
 Types are identified by a *Type URI*. The URI for a type is of the form:
 
- **#*Namespace*.*TypeName*
+#*Namespace*.*TypeName*
 
 where
 
