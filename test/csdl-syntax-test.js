@@ -428,16 +428,78 @@ function validCSDLTypeInMockup(err, json) {
         let propType = CSDL.findByType({_options: options}, CSDLProperty.Type);
         let propValue = json[propName];
         if(typeof propType === 'string') {
-          switch(propType) {
-            case 'Edm.String':
-              if(typeof propValue !== 'string' && propValue !== null) {
-                throw new Error('Property "'+propName+'" is an Edm.String, but the value in the mockup is not a valid JSON string.');
-              }
-              break;
+          simpleTypeCheck(propType, propValue, CSDLProperty, propName);
+        }
+        else {
+          if(propType.constructor.name === 'EnumType') {
+            if(typeof propValue !== 'string' && propValue !== null) {
+              throw new Error('Property "'+propName+'" is an EnumType, but the value in the mockup is not a valid JSON string.');
+            }
+            if(propType.Members[propValue] === undefined) {
+              throw new Error('Property "'+propName+'" is an EnumType, but the value in the mockup "'+propValue+'" is not a valid member of the enum.');
+            }
+          }
+          else if(propType.constructor.name === 'TypeDefinition') {
+            simpleTypeCheck(propType.UnderlyingType, propValue, CSDLProperty, propName)
           }
         }
       }
     }
+  }
+}
+
+function simpleTypeCheck(propType, propValue, CSDLProperty, propName) {
+  switch(propType) {
+    case 'Edm.Boolean':
+      if(typeof propValue !== 'boolean' && propValue !== null) {
+        throw new Error('Property "'+propName+'" is an Edm.Boolean, but the value in the mockup is not a valid JSON boolean.');
+      }
+      break;
+    case 'Edm.DateTimeOffset':
+      if(typeof propValue !== 'string' && propValue !== null) {
+        throw new Error('Property "'+propName+'" is an Edm.DateTimeOffset, but the value in the mockup is not a valid JSON string.');
+      }
+      if(propValue.match('[0-9]{4}-[0-1][0-9]-[0-3][0-9]T[0-2][0-9]:[0-5][0-9]') === null) {
+        throw new Error('Property "'+propName+'" is an Edm.DateTimeOffset, but the value in the mockup does not conform to the correct syntax.');
+      }
+      break;
+    case 'Edm.Decimal':
+    case 'Edm.Double':
+      if(typeof propValue !== 'number' && propValue !== null) {
+        throw new Error('Property "'+propName+'" is an floating point type, but the value in the mockup is not a valid JSON number.');
+      }
+      break;
+    case 'Edm.Guid':
+      if(typeof propValue !== 'string' && propValue !== null) {
+        throw new Error('Property "'+propName+'" is an Edm.Guid, but the value in the mockup is not a valid JSON string.');
+      }
+      if(propValue.match('([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})') === null) {
+        throw new Error('Property "'+propName+'" is an Edm.Guid, but the value in the mockup does not conform to the correct syntax.');
+      }
+      break;
+    case 'Edm.Int16':
+    case 'Edm.Int32':
+      /*Not currently in the Redfish Spec... should be added because it's shipping*/
+    case 'Edm.Int64':
+      if(typeof propValue !== 'number' && propValue !== null) {
+        throw new Error('Property "'+propName+'" is an Edm.Int64, but the value in the mockup is not a valid JSON number.');
+      }
+      if(!Number.isInteger(propValue)) {
+        throw new Error('Property "'+propName+'" is an Edm.Int64, but the value in the mockup is not an integer.');
+      }
+      break;
+    case 'Edm.String':
+      if(typeof propValue !== 'string' && propValue !== null) {
+        throw new Error('Property "'+propName+'" is an Edm.String, but the value in the mockup is not a valid JSON string.');
+      }
+      if(CSDLProperty.Annotations['Validation.Pattern']) {
+        if(propValue.match(CSDLProperty.Annotations['Validation.Pattern'].String) === null) {
+          throw new Error('Property "'+propName+'" is an Edm.String, but the value in the mockup does not match the pattern.');
+        }
+      }
+      break;
+    default:
+      throw new Error('Property "'+propName+'" is type "'+propType+'" which is not allowed by the Redfish spec.');
   }
 }
 
