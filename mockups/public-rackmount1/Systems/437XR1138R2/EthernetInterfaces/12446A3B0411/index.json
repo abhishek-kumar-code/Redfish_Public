@@ -7,8 +7,8 @@
         "State": "Enabled",
         "Health": "OK"
     },
-    "FactoryMacAddress": "12:44:6A:3B:04:11",
-    "MacAddress": "12:44:6A:3B:04:11",
+    "PermanentMACAddress": "12:44:6A:3B:04:11",
+    "MACAddress": "12:44:6A:3B:04:11",
     "SpeedMbps": 1000,
     "FullDuplex": true,
     "HostName": "web483",
