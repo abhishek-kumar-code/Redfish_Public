@@ -6,10 +6,6 @@
     "Id": "1",
     "Name": "VLAN Network Interface",
     "Description": "System NIC 1 V",
-    "Status": {
-        "State": "Enabled",
-        "Health": "OK"
-    },
     "VLANEnable": true,
     "VLANId": 101
 }

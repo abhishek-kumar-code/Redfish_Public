@@ -10,10 +10,6 @@
     "AddressRangeType": "Volatile",
     "IsMirrorEnabled": false,
     "IsSpare": false,
-    "Status": {
-        "State": "Enabled",
-        "Health": "OK"
-    },
     "InterleaveSets": [
         {"Memory" : {
             "@odata.id": "/redfish/v1/Systems/2/Memory/1"

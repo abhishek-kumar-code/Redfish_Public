@@ -12,7 +12,9 @@
     "VolumeType": "Mirrored",
     "CapacityBytes": 104857600,
     "Encrypted": true,
-    "EncryptionType": "NativeDriveEncryption",
+    "EncryptionTypes": [
+        "NativeDriveEncryption"
+    ],
     "Identifiers": [
         {
             "DurableNameFormat": "VPD83type3",
