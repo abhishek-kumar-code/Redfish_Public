@@ -1339,7 +1339,7 @@ where
 
 The namespace for types defined by this specification is of the form:
 
-  *ResourceTypeName*.v*MajorVersion* _*MinorVersion* _*Errata*
+  *ResourceTypeName*.v*MajorVersion*_*MinorVersion*_*Errata*
 
 where
 
