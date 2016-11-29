@@ -8,8 +8,6 @@
         "Health": "OK",
         "HealthRollUp": "OK"
     },
-    "EncryptionType": "LKM",
-    "EncryptionKeySet": true,
     "StorageControllers": [
         {
             "@odata.id": "/redfish/v1/Systems/437XR1138R2/Storage/1#/StorageControllers/0",
