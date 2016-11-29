@@ -1,7 +1,7 @@
 {
     "@odata.context": "/redfish/v1/$metadata#Systems/Links/Members/2/Links/Memory/#entity",
     "@odata.id": "/redfish/v1/Systems/2/Memory",
-    "@odata.type": "#DIMMCollection.DIMMCollection",
+    "@odata.type": "#MemoryCollection.MemoryCollection",
     "Name": "Memory DIMM Collection",
     "Members@odata.count": 4,
     "Members": [

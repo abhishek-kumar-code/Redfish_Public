@@ -12,7 +12,7 @@
 	"PortId": "8",
     "PortProtocol": "PCIe",
 	"PortType": "UpstreamPort",
-	"SpeedGbps": 16,
+	"CurrentSpeedGbps": 16,
 	"Width": 4,
 	"MaxSpeedGbps": 32,
 	"Actions": {

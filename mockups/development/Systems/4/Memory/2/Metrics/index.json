@@ -2,15 +2,15 @@
     "@Redfish.Copyright":"Copyright (c) 2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",    
     "@odata.context": "/redfish/v1/$metadata#MemoryMetrics.MemoryMetrics",
     "@odata.id": "/redfish/v1/Systems/4/Memory/2/Metrics",
-    "@odata.type": "#MemoryMetrics.1.1.0.MemoryMetrics",
+    "@odata.type": "#MemoryMetrics.v1_1_0.MemoryMetrics",
     "Name": "Memory Metrics",
     "Id": "Metrics",
-    "BlockSizeB": 4096,
+    "BlockSizeBytes": 4096,
     "CurrentPeriod": {
         "BlocksRead": 0,
         "BlocksWritten": 0
     },
-    "Lifetime": {
+    "LifeTime": {
         "BlocksRead": 0,
         "BlocksWritten": 0
     },

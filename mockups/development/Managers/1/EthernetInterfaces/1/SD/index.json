@@ -7,7 +7,7 @@
     "Name": "Manager Ethernet Interface",
     "Description": "Management Network Interface",
     "PermanentMACAddress": "AA:BB:CC:DD:EE:FF",
-    "MacAddress": "AA:BB:CC:DD:EE:FF",
+    "MACAddress": "AA:BB:CC:DD:EE:FF",
     "SpeedMbps": 100,
     "AutoNeg": true,
     "FullDuplex": true,
