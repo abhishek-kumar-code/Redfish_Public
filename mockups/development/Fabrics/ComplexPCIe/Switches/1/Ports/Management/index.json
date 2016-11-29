@@ -12,7 +12,7 @@
 	"PortId": "15",
     "PortProtocol": "PCIe",
 	"PortType": "ManagementPort",
-	"SpeedGbps": 8,
+	"CurrentSpeedGbps": 8,
 	"Width": 1,
 	"MaxSpeedGbps": 16,
 	"Actions": {

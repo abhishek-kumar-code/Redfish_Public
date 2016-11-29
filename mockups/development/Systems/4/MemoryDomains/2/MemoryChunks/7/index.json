@@ -7,10 +7,6 @@
     "Id": "7",
     "MemoryChunkSizeMiB": 8192,
     "AddressRangeType": "Block",
-    "Status": {
-        "State": "Enabled",
-        "Health": "OK"
-    },
     "InterleaveSets": [
         {
             "Memory": { "@odata.id": "/redfish/v1/Systems/4/Memory/6" },

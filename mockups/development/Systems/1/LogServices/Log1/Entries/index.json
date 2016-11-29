@@ -5,8 +5,8 @@
     "@odata.type": "#LogEntryCollection.LogEntryCollection",
     "Name": "Log Service Collection",
     "Description": "Collection of Logs for this System",
-    "members@odata.count": 2,
-    "members": [
+    "Members@odata.count": 2,
+    "Members": [
         {
             "@odata.id": "/redfish/v1/Systems/1/LogServices/Log1/Entries/1",
             "@odata.type": "#LogEntry.v1_0_0.LogEntry",

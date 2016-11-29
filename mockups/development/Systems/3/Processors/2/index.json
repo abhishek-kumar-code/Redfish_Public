@@ -10,7 +10,7 @@
   "InstructionSet": "x86-64",
   "Manufacturer": "Intel(R) Corporation",
   "Model": "Multi-Core Intel(R) Xeon(R) processor 7xxx Series",
-  "ProcessorID": {
+  "ProcessorId": {
     "VendorID": "GenuineIntel",
     "IdentificationRegisters": "0x34AC34DC890127BB",
     "EffectiveFamily": "0x42",

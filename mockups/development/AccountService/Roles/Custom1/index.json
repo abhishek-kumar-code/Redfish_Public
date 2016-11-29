@@ -13,7 +13,7 @@
 	"ConfigureManager",
 	"ConfigureComponents"
     ],
-    "OEMPrivileges": [
+    "OemPrivileges": [
         "OemClearLog",
         "OemPowerControl"
     ]
