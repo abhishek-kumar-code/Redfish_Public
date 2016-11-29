@@ -1331,7 +1331,7 @@ Programs may access the Schema Repository using the redfish.dmtf.org/schemas/v1 
 
 Types are identified by a *Type URI*. The URI for a type is of the form:
 
-#*Namespace*.*TypeName*
+  #*Namespace*.*TypeName*
 
 where
 
