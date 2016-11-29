@@ -1,7 +1,7 @@
 {
     "@odata.context": "/redfish/v1/$metadata#Chassis/Links/Members/entity",
     "@odata.id": "/redfish/v1/Chassis/Blade1",
-    "@odata.type": "#Chassis.0.95.0.Chassis",
+    "@odata.type": "#Chassis.v1_0_0.Chassis",
     "Id": "Blade1",
     "Name": "Blade 1",
     "ChassisType": "Blade",
@@ -10,7 +10,6 @@
     "Model": "BladeModelNumber",
     "SKU": "",
     "SerialNumber": "USE135ES65",
-    "Version": "",
     "PartNumber": "",
     "AssetTag": "CustomerWritableThingy",
     "Status": {

@@ -3,7 +3,7 @@
     "Id": "1",
     "Name": "Log Entry 1",
     "EntryType": "SEL",
-    "OEMRecordFormat": "Contoso",
+    "OemRecordFormat": "Contoso",
     "Severity": "Critical",
     "Created": "2012-03-07T14:44",
     "EntryCode": "Assert",

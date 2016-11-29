@@ -3,7 +3,7 @@
     "Id": "TaskService",
     "Name": "Tasks Service",
     "DateTime": "2016-01-13T12:48:12+06:00",
-    "OverWritePolicy": "Never",
+    "CompletedTaskOverWritePolicy": "Never",
     "LifeCycleEventOnTaskStateChange": true,
     "Status": {
         "State": "Enabled",

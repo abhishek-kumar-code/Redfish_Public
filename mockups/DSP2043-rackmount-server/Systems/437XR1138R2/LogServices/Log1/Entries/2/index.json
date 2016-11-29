@@ -3,15 +3,14 @@
     "Id": "2",
     "Name": "Log Entry 2",
     "EntryType": "SEL",
-    "OEMRecordFormat": "Contoso",
-    "RecordId": 2,
+    "OemRecordFormat": "Contoso",
     "Severity": "Critical",
     "Created": "2012-03-07T14:45",
     "EntryCode": "Assert",
     "SensorType": "Temperature",
     "SensorNumber": 2,
     "Message": "Temperature threshold exceeded",
-    "MessageID": "Contoso.1.0.TempAssert",
+    "MessageId": "Contoso.1.0.TempAssert",
     "MessageArgs": [
         "46"
     ],

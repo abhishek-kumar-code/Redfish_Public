@@ -3,7 +3,7 @@
     "Id": "1",
     "Name": "Simple Storage Controller",
     "Description": "System SATA",
-    "UEFIDevicePath": "Acpi(PNP0A03,0)/Pci(1F|1)/Ata(Primary,Master)/HD(Part3, Sig00110011)",
+    "UefiDevicePath": "Acpi(PNP0A03,0)/Pci(1F|1)/Ata(Primary,Master)/HD(Part3, Sig00110011)",
     "Status": {
         "State": "Enabled",
         "Health": "OK",

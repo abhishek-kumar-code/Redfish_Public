@@ -14,7 +14,7 @@
 	"ConfigureSelf",
 	"ConfigureComponents"
     ],
-    "OEMPrivileges": [
+    "OemPrivileges": [
         "OemClearLog",
         "OemPowerControl"
     ]
