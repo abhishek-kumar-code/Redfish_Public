@@ -11,7 +11,7 @@
     "Status": {
         "State": "Enabled",
         "Health": "OK",
-        "HealthRollUp": "OK"
+        "HealthRollup": "OK"
     },
     "IndicatorLED": "Off",
     "PowerState": "On",
@@ -31,11 +31,11 @@
     "BiosVersion": "P86 v1.58 (10/15/2015)",
     "ProcessorSummary": {
         "Count": 1,
-        "ProcessorFamily": "Multi-Core Intel(R) Xeon(R) processor E5-16xx Series",
+        "Model": "Multi-Core Intel(R) Xeon(R) processor E5-16xx Series",
         "Status": {
             "State": "Enabled",
             "Health": "OK",
-            "HealthRollUp": "OK"
+            "HealthRollup": "OK"
         }
     },
     "MemorySummary": {
@@ -43,7 +43,7 @@
         "Status": {
             "State": "Enabled",
             "Health": "OK",
-            "HealthRollUp": "OK"
+            "HealthRollup": "OK"
         }
     },
     "Processors": {
