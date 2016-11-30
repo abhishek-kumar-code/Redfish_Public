@@ -10,7 +10,7 @@
     "Status": {
         "State": "Enabled",
         "Health": "OK",
-        "HealthRollup": "Degraded"
+        "HealthRollup": "Warning"
     },
     "Devices": [
         {
@@ -28,7 +28,7 @@
             "Model": "Drive Model string",
             "Status": {
                 "State": "Enabled",
-                "Health": "Degraded"
+                "Health": "Warning"
             }
         },
         {

@@ -17,18 +17,14 @@
 	"PowerState": "On",
 	"Status": {
 		"State": "Enabled",
-		"Health": "Ok",
-		"HealthRollup": "Ok"
+		"Health": "OK",
+		"HealthRollup": "OK"
 	},
 	"Ports": {
 		"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/1/Ports"
 	},
 	"Links": {
-		"Chassis": [
-            {"@odata.id": "/redfish/v1/Chassis/PCIeSwitch1"},
-            {"@odata.id": "/redfish/v1/Chassis/PCIeSwitchRackMount"}, 
-			{"@odata.id": "/redfish/v1/Chassis/PCIeSwitchMgrHW"}	
-		],
+		"Chassis": {"@odata.id": "/redfish/v1/Chassis/PCIeSwitch1"},
 		"ManagedBy": [
 			{"@odata.id": "/redfish/v1/Managers/PCIeSwitchManager"}
 		],

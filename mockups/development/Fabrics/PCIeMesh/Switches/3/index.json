@@ -16,19 +16,15 @@
 	"TotalSwitchWidth": 97,
 	"Status": {
 		"State": "Enabled",
-		"Health": "Ok",
-		"HealthRollup": "Ok"
+		"Health": "OK",
+		"HealthRollup": "OK"
 	},
 	"PowerState": "On",
 	"Ports": {
 		"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/3/Ports"
 	},
 	"Links": {
-		"Chassis": [
-            {"@odata.id": "/redfish/v1/Chassis/PCIeSwitch3"},
-            {"@odata.id": "/redfish/v1/Chassis/PCIeSwitchRackMount"}, 
-			{"@odata.id": "/redfish/v1/Chassis/PCIeSwitchMgrHW"}	
-		],
+		"Chassis": {"@odata.id": "/redfish/v1/Chassis/PCIeSwitch3"},
 		"ManagedBy": [
 			{"@odata.id": "/redfish/v1/Managers/PCIeSwitchManager"}
 		],
