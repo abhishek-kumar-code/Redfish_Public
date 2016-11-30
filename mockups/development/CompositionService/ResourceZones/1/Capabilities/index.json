@@ -10,6 +10,7 @@
     "Name@Redfish.SetOnlyOnCreate": true,
     "Name": "Capabilities for the Zone",
     "Description@Redfish.RequiredOnCreate": true,
+    "Description@Redfish.SetOnlyOnCreate": true,
     "UUID@Redfish.AvailableInResource": true,
     "HostName@Redfish.AvailableInResource": true,
     "PowerState@Redfish.AvailableInResource": true,
