@@ -11,7 +11,7 @@
     "SKU": "97LANEPCI",
     "SerialNumber": "MYSERIALNUMBER2",
     "PartNumber": "1776-1883",
-	"DomainID": "43458",
+	"DomainID": 43458,
 	"IsManaged": true,
 	"Status": {
 		"State": "Enabled",
