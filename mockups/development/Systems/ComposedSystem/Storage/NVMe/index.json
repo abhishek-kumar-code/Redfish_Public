@@ -16,5 +16,5 @@
         {
             "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock4/Storage/NVMe/Drives/Slot1"
         }
-    ] 
+    ]
 }
