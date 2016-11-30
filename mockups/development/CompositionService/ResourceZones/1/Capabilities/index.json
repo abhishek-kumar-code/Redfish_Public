@@ -3,8 +3,6 @@
     "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
     "@odata.type": "#ComputerSystem.v1_2_0.ComputerSystem",
     "@odata.id": "/redfish/v1/CompositionService/ResourceZones/1/Capabilities",
-    "Id@Redfish.RequiredOnCreate": true,
-    "Id@Redfish.SetOnlyOnCreate": true,
     "Id": "Capabilities",
     "Name@Redfish.RequiredOnCreate": true,
     "Name@Redfish.SetOnlyOnCreate": true,
