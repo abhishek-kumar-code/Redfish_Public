@@ -7,7 +7,7 @@
     "Status": {
         "State": "Enabled",
         "Health": "OK",
-        "HealthRollup": "Degraded"
+        "HealthRollup": "Warning"
     },
     "Devices": [
         {
