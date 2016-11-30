@@ -11,7 +11,7 @@
     },
     "Drives": [
         {
-            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock5/Drives/Slot2"
+            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock5/Storage/NVMe/Drives/Slot2"
         }
     ]
 }
