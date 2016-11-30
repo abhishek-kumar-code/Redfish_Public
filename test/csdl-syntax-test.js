@@ -411,41 +411,111 @@ function validCSDLTypeInMockup(err, json) {
     if(propName[0] === '@' || propName === 'Members@odata.count' || propName === 'Members@odata.nextLink') {
       continue;
     }
-    let CSDLProperty = CSDLType.Properties[propName];
+    let CSDLProperty = getCSDLProperty(propName, CSDLType);
     if(CSDLProperty === undefined) {
-      if(CSDLType.BaseType !== undefined) {
-        CSDLProperty = searchInParentTypes(CSDLType, propName);
+      throw new Error('Unknown property "'+propName+'" in type '+type);
+    }
+    if(CSDLProperty.Type.startsWith('Collection(')) {
+      if(!Array.isArray(json[propName])) {
+        throw new Error('Property "'+propName+'" is a collection, but the value in the mockup is not a valid JSON array.');
       }
-      if(CSDLProperty === undefined) {
-        throw new Error('Unknown property "'+propName+'" in type '+type);
-      }
-      if(CSDLProperty.Type.startsWith('Collection(')) {
-        if(!Array.isArray(json[propName])) {
-          throw new Error('Property "'+propName+'" is a collection, but the value in the mockup is not a valid JSON array.');
-        }
+    }
+    else {
+      let propType = CSDL.findByType({_options: options}, CSDLProperty.Type);
+      let propValue = json[propName];
+      if(typeof propType === 'string') {
+        simpleTypeCheck(propType, propValue, CSDLProperty, propName);
       }
       else {
-        let propType = CSDL.findByType({_options: options}, CSDLProperty.Type);
-        let propValue = json[propName];
-        if(typeof propType === 'string') {
-          simpleTypeCheck(propType, propValue, CSDLProperty, propName);
+        if(propType.constructor.name === 'EnumType') {
+          enumTypeCheck(propType, propValue, CSDLProperty, propName);
         }
-        else {
-          if(propType.constructor.name === 'EnumType') {
-            if(typeof propValue !== 'string' && propValue !== null) {
-              throw new Error('Property "'+propName+'" is an EnumType, but the value in the mockup is not a valid JSON string.');
-            }
-            if(propType.Members[propValue] === undefined) {
-              throw new Error('Property "'+propName+'" is an EnumType, but the value in the mockup "'+propValue+'" is not a valid member of the enum.');
-            }
+        else if(propType.constructor.name === 'TypeDefinition') {
+          simpleTypeCheck(propType.UnderlyingType, propValue, CSDLProperty, propName)
+        }
+        else if(propType.constructor.name === 'ComplexType') {
+          if(typeof propValue !== 'object') {
+            throw new Error('Property "'+propName+'" is a ComplexType, but the value in the mockup is not a valid JSON object.');
           }
-          else if(propType.constructor.name === 'TypeDefinition') {
-            simpleTypeCheck(propType.UnderlyingType, propValue, CSDLProperty, propName)
+          //Ignore Oem and Actions types...
+          if(propType.Name !== 'Oem' && propType.Name !== 'Actions') {
+            complexTypeCheck(propType, propValue, propName, type);
+          }
+        }
+        else if(propType.constructor.name === 'EntityType') {
+          if(typeof propValue !== 'object') {
+            throw new Error('Property "'+propName+'" is an EntityType, but the value in the mockup is not a valid JSON object.');
+          }
+          //This should be a NavigationProperty pointing to an EntityType, make sure it is a link...
+          if(propValue['@odata.id'] === undefined) {
+            throw new Error('Property "'+propName+'" is an EntityType, but the value does not contain an @odata.id!');
           }
         }
       }
     }
   }
+}
+
+function complexTypeCheck(propType, propValue, propName, type) {
+  let realType = propType;
+  if(propValue['@odata.type'] === undefined) {
+    //Need to calculate the odata.type value...
+    realType = constructODataType(propType, type);
+  }
+  else {
+    realType = CSDL.findByType({_options: options}, propValue['@odata.type']);
+  }
+  for(let childPropName in propValue) {
+    if(childPropName[0] === '@') {
+      continue;
+    }
+    if(childPropName.indexOf('@Redfish.AllowableValues') !== -1) {
+      //TODO Make sure all AllowableValues are valid
+    }
+    else {
+      checkProperty(childPropName, realType, propValue[childPropName], type, propName);
+    }
+  }
+}
+
+function getNextLowerVersion(version) {
+  let versionParts = version.split('_');
+  if(versionParts[2] === '0') {
+    if(versionParts[1] === '0') {
+      return 'v1_0_0';
+    }
+    else {
+      versionParts[1] = ((versionParts[1]*1)-1)+'';
+    }
+  }
+  else {
+    versionParts[2] = ((versionParts[2]*1)-1)+'';
+  }
+  return versionParts.join('_');
+}
+
+function constructODataType(propType, type) {
+  let index = type.lastIndexOf('.');
+  if(index === -1) {
+    throw new Error('');
+  }
+  let parentNamespace = type.substring(0, index);
+  if(parentNamespace === '') {
+    throw new Error('');
+  }
+  //console.log('Searching for '+parentNamespace+'.'+propType.Name);
+  let testType = CSDL.findByType({_options: options}, parentNamespace+'.'+propType.Name);
+  if(testType !== null && testType !== undefined) {
+    return testType;
+  }
+  index = parentNamespace.lastIndexOf('.');
+  let version = parentNamespace.substring(index+1);
+  if(version === 'v1_0_0') {
+    return propType;
+  }
+  parentNamespace = parentNamespace.substring(0, index);
+  //console.log('About to search in '+parentNamespace+'.'+getNextLowerVersion(version));
+  return constructODataType(propType, parentNamespace+'.'+getNextLowerVersion(version)+'.');
 }
 
 function simpleTypeCheck(propType, propValue, CSDLProperty, propName) {
@@ -484,7 +554,7 @@ function simpleTypeCheck(propType, propValue, CSDLProperty, propName) {
       if(typeof propValue !== 'number' && propValue !== null) {
         throw new Error('Property "'+propName+'" is an Edm.Int64, but the value in the mockup is not a valid JSON number.');
       }
-      if(!Number.isInteger(propValue)) {
+      if(!Number.isInteger(propValue) && propValue !== null) {
         throw new Error('Property "'+propName+'" is an Edm.Int64, but the value in the mockup is not an integer.');
       }
       break;
@@ -493,13 +563,26 @@ function simpleTypeCheck(propType, propValue, CSDLProperty, propName) {
         throw new Error('Property "'+propName+'" is an Edm.String, but the value in the mockup is not a valid JSON string.');
       }
       if(CSDLProperty.Annotations['Validation.Pattern']) {
-        if(propValue.match(CSDLProperty.Annotations['Validation.Pattern'].String) === null) {
+        let regex = CSDLProperty.Annotations['Validation.Pattern'].String;
+        if(regex[0] === '/') {
+          regex = regex.substring(1);
+        }
+        if(propValue.match(regex) === null) {
           throw new Error('Property "'+propName+'" is an Edm.String, but the value in the mockup does not match the pattern.');
         }
       }
       break;
     default:
       throw new Error('Property "'+propName+'" is type "'+propType+'" which is not allowed by the Redfish spec.');
+  }
+}
+
+function enumTypeCheck(propType, propValue, CSDLProperty, propName) {
+  if(typeof propValue !== 'string' && propValue !== null) {
+    throw new Error('Property "'+propName+'" is an EnumType, but the value in the mockup is not a valid JSON string.');
+  }
+  if(propValue !== null && propType.Members[propValue] === undefined) {
+    throw new Error('Property "'+propName+'" is an EnumType, but the value in the mockup "'+propValue+'" is not a valid member of the enum.');
   }
 }
 
@@ -520,6 +603,69 @@ function searchInParentTypes(type, propName) {
     return searchInParentTypes(parentType, propName);
   }
   return undefined;
+}
+
+function getCSDLProperty(propName, CSDLType) {
+  let CSDLProperty = CSDLType.Properties[propName];
+  if(CSDLProperty === undefined) {
+    if(CSDLType.BaseType !== undefined) {
+      CSDLProperty = searchInParentTypes(CSDLType, propName);
+    }
+  }
+  return CSDLProperty;
+}
+
+function checkProperty(propName, CSDLType, propValue, parentType, parentPropName) {
+  let CSDLProperty = getCSDLProperty(propName, CSDLType);
+  if(CSDLProperty === undefined) {
+    if((CSDLType.Annotations['OData.AdditionalProperties'] !== undefined && CSDLType.Annotations['OData.AdditionalProperties'].Bool === true) ||
+        CSDLType.Annotations['Redfish.DynamicPropertyPatterns'] !== undefined) {
+      return;
+    }
+    else {
+      let string = 'Unknown property "'+propName+'" in type '+CSDLType.Name;
+      if(parentPropName) {
+        string+=' under parent property "'+parentPropName+'"';
+      }
+      throw new Error(string);
+    }
+  }
+  if(CSDLProperty.Type.startsWith('Collection(')) {
+    if(!Array.isArray(propValue)) {
+      throw new Error('Property "'+propName+'" is a collection, but the value in the mockup is not a valid JSON array.');
+    }
+    //TODO do a check for each entry in the array...
+  }
+  else {
+    let propType = CSDL.findByType({_options: options}, CSDLProperty.Type);
+    if(typeof propType === 'string') {
+      simpleTypeCheck(propType, propValue, CSDLProperty, propName);
+    }
+    else if(propType.constructor.name === 'EnumType') {
+      enumTypeCheck(propType, propValue, CSDLProperty, propName);
+    }
+    else if(propType.constructor.name === 'TypeDefinition') {
+      simpleTypeCheck(propType.UnderlyingType, propValue, CSDLProperty, propName)
+    }
+    else if(propType.constructor.name === 'ComplexType') {
+      if(typeof propValue !== 'object') {
+        throw new Error('Property "'+propName+'" is a ComplexType, but the value in the mockup is not a valid JSON object.');
+      }
+      //Ignore Oem and Actions types...
+      if(propType.Name !== 'Oem' && propType.Name !== 'Actions') {
+        complexTypeCheck(propType, propValue, propName, parentType);
+      }
+    }
+    else if(propType.constructor.name === 'EntityType') {
+      if(Array.isArray(propValue) || typeof propValue !== 'object') {
+        throw new Error('Property "'+propName+'" is an EntityType, but the value in the mockup is not a valid JSON object.');
+      }
+      //This should be a NavigationProperty pointing to an EntityType, make sure it is a link...
+      if(propValue['@odata.id'] === undefined && Object.keys(propValue).length > 0) {
+        throw new Error('Property "'+propName+'" is an EntityType, but the value does not contain an @odata.id!');
+      }
+    }
+  }
 }
 
 process.on('unhandledRejection', (reason, promise) => {
