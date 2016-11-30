@@ -12,6 +12,11 @@ const syntaxBatch = {}, schemaBatch = {};
 let ucum = null;
 let ucumError = false;
 const unitsWhiteList = ['RPM'];
+//This does not contain a full CSDL parser. This whitelist lists complex types that are utilized across files
+const complexTypeWhitelist = ['Resource.Status', 'Resource.Oem', 'Resource.v1_1_0.Location',
+                              'Resource.v1_1_0.Identifier', 'VLanNetworkInterface.v1_0_0.VLAN',
+                              'Message.Message', 'Volume.v1_0_0.Operations', 'IPAddresses.v1_0_0.IPv4Address', 
+			      'IPAddresses.v1_0_0.IPv6Address', 'IPAddresses.v1_0_0.IPv6StaticAddress'];
 
 function getUcumXML(callback, context, end)
 {
@@ -106,6 +111,140 @@ files.forEach(function(file) {
                   throw new Error('Unit name '+unitName+' is not a valid UCUM measure');
               }
           }
+      }
+    },
+    'has permission annotations': function(err, txt) {
+      if(this.context.name.includes('RedfishExtensions_v1.xml'))
+      {
+        //Ignore the RedfishExtensions file. It's just about annotations
+        return;
+      }
+      let doc = xmljs.parseXml(txt);
+      let properties = doc.find('//*[local-name()="Property"]');
+      if(properties.length === 0)
+      {
+        //No properties are perfectly acceptable
+        return;
+      }
+      for(let i = 0; i < properties.length; i++)
+      {
+          var property = properties[i];
+          var permissions = property.find('*[local-name()="Annotation"][@Term="OData.Permissions"]');
+          if(permissions.length === 0)
+          {
+              var propName = property.attr('Name').value();
+              var propType = property.attr('Type').value(); 
+              if(propType.startsWith('Collection('))
+              {
+                propType = propType.substring(11, propType.length-1);
+              }
+              if(complexTypeWhitelist.indexOf(propType) !== -1)
+              {
+                continue;
+              }
+              var propArray = propType.split('.');
+              var elemName = propArray[propArray.length - 1];
+              let complexTypes = doc.find('//*[local-name()="ComplexType"][@Name="'+elemName+'"]');
+              if(complexTypes.length === 0)
+              {
+                throw new Error('Property '+propName+' of '+propType+' lacks permission!');
+              }
+          }
+      }
+    },
+    'complex types should not have permissions':  function(err, txt) {
+      if(this.context.name.includes('RedfishExtensions_v1.xml'))
+      {
+        //Ignore the RedfishExtensions file. It's just about annotations
+        return;
+      }
+      let doc = xmljs.parseXml(txt);
+      let properties = doc.find('//*[local-name()="Property"]');
+      if(properties.length === 0)
+      {
+        //No properties are perfectly acceptable
+        return;
+      }
+      for(let i = 0; i < properties.length; i++)
+      {
+        var property = properties[i];
+        var permissions = property.find('*[local-name()="Annotation"][@Term="OData.Permissions"]');
+        if(permissions.length !== 0)
+        {
+          var propName = property.attr('Name').value();
+          var propType = property.attr('Type').value();
+          if(propType.startsWith('Collection('))
+          {
+            propType = propType.substring(11, propType.length-1);
+          }
+          if(complexTypeWhitelist.indexOf(propType) !== -1)
+          {
+            throw new Error('Property '+propName+' of '+propType+' has permission!');
+          }
+          var propArray = propType.split('.');
+          var elemName = propArray[propArray.length - 1];
+          let complexTypes = doc.find('//*[local-name()="ComplexType"][@Name="'+elemName+'"]');
+          if(complexTypes.length !== 0)
+          {
+            throw new Error('Property '+propName+' of '+propType+' has permission!');
+          }
+        }
+      }
+    },
+    'descriptions have trailing periods': function(err, txt) {
+      let doc = xmljs.parseXml(txt);
+      let descriptions = doc.find('//*[local-name()="Annotation"][@Term="OData.Description"]/@String');
+      if(descriptions.length !== 0)
+      {
+        for(let i = 0; i < descriptions.length; i++)
+        {
+          let description = descriptions[i].value();
+          if(description.slice(-1) !== '.')
+          {
+            throw new Error('\"' + description + '\" does not end in a period!');
+          }
+        }
+      }
+      let long_descriptions = doc.find('//*[local-name()="Annotation"][@Term="OData.LongDescription"]/@String');
+      if(long_descriptions.length !== 0)
+      {
+        for(let i = 0; i < long_descriptions.length; i++)
+        {
+          let long_description = long_descriptions[i].value();
+          if(long_description.slice(-1) !== '.')
+          {
+            throw new Error('\"' + long_description + '\" does not end in a period!');
+          }
+        }
+      }
+    },
+    'no empty Schema tags': function(err, txt) {
+      let doc = xmljs.parseXml(txt);
+      let schemas = doc.find('//*[local-name()="Schema"]');
+      if(schemas.length === 0)
+      {
+          //No Schema tags... that's fine
+          return;
+      }
+      for(let i = 0; i < schemas.length; i++)
+      {
+        let children = schemas[i].childNodes();
+        if(children.length === 0)
+        {
+          var schemaName = schemas[i].attr('Namespace').value();
+          throw new Error('Schema '+schemaName+' is empty!');
+        }
+        children = schemas[i].find('//*[local-name()="Annotation"]');
+        if(children.length === 0)
+        {
+          //$metadata docs don't require this. Let's just skip those.
+          if(this.context.name.includes('mockups'))
+          {
+            continue;
+          }
+          var schemaName = schemas[i].attr('Namespace').value();
+          throw new Error('Schema '+schemaName+' has no Annotations!');
+        }
       }
     }
   }

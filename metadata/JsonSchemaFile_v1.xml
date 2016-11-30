@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  JSONSchemaFile  v1.0.2-->
+<!--# Redfish Schema:  JSONSchemaFile  v1.0.3-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -68,7 +68,6 @@
           <Annotation Term="Redfish.Required"/>
         </Property>
         <Property Name="Location" Type="Collection(JsonSchemaFile.v1_0_0.Location)" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Location information for this schema file."/>
           <Annotation Term="Redfish.Required"/>
         </Property>
@@ -109,7 +108,13 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="JsonSchemaFile.v1_0_2">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="JsonSchemaFile" BaseType="JsonSchemaFile.v1_0_0.JsonSchemaFile"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="JsonSchemaFile.v1_0_3">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
+      <EntityType Name="JsonSchemaFile" BaseType="JsonSchemaFile.v1_0_2.JsonSchemaFile"/>
     </Schema>
 
   </edmx:DataServices>

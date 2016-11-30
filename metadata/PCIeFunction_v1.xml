@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  PCIeFunction  v1.0.0-->
+<!--# Redfish Schema:  PCIeFunction  v1.0.1-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -63,31 +63,37 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the device class of the PCIe device function such as Storage, Network, Memory etc."/>
         </Property>
         <Property Name="DeviceId" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The Device ID of this PCIe function."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the PCI Device ID of the PCIe device function."/>
           <Annotation Term="Validation.Pattern" String="/0[xX](([a-fA-F]|[0-9]){2}){2}"/>
         </Property>
         <Property Name="VendorId" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The Vendor ID of this PCIe function."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the PCI Vendor ID of the PCIe device function."/>
           <Annotation Term="Validation.Pattern" String="/0[xX](([a-fA-F]|[0-9]){2}){2}"/>
         </Property>
         <Property Name="ClassCode" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The Class Code of this PCIe function."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the PCI Class Code of the PCIe device function."/>
           <Annotation Term="Validation.Pattern" String="/0[xX](([a-fA-F]|[0-9]){2}){3}"/>
         </Property>
         <Property Name="RevisionId" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The Revision ID of this PCIe function."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the PCI Revision ID of the PCIe device function."/>
           <Annotation Term="Validation.Pattern" String="/0[xX](([a-fA-F]|[0-9]){2}){1}"/>
         </Property>
         <Property Name="SubsystemId" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The Subsystem ID of this PCIe function."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the PCI Subsystem ID of the PCIe device function."/>
           <Annotation Term="Validation.Pattern" String="/0[xX](([a-fA-F]|[0-9]){2}){2}"/>
         </Property>
         <Property Name="SubsystemVendorId" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The Subsystem Vendor ID of this PCIe function."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the PCI Subsystem Vendor ID of the PCIe device function."/>
           <Annotation Term="Validation.Pattern" String="/0[xX](([a-fA-F]|[0-9]){2}){2}"/>
@@ -96,7 +102,6 @@
         <Property Name="Status" Type="Resource.Status"/>
 
         <Property Name="Links" Type="PCIeFunction.v1_0_0.Links" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The links object contains the links to other resources that are related to this resource."/>
         </Property>
       </EntityType>
@@ -104,19 +109,19 @@
       <ComplexType Name="Links" BaseType="Resource.Links">
         <NavigationProperty Name="EthernetInterfaces" Type="Collection(EthernetInterface.EthernetInterface)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="An array of references to the ethernet interfaces which the PCIe device produces"/>
+          <Annotation Term="OData.Description" String="An array of references to the ethernet interfaces which the PCIe device produces."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall reference a resource of type EthernetInterface that represents the network interfaces associated with this resource."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
         <NavigationProperty Name="Drives" Type="Collection(Drive.Drive)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="An array of references to the drives which the PCIe device produces"/>
+          <Annotation Term="OData.Description" String="An array of references to the drives which the PCIe device produces."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall reference a resource of type Drive that represents the storage drives associated with this resource."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
         <NavigationProperty Name="StorageControllers" Type="Collection(Storage.v1_0_0.StorageController)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="An array of references to the storage controllers which the PCIe device produces"/>
+          <Annotation Term="OData.Description" String="An array of references to the storage controllers which the PCIe device produces."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall reference a resource of type StorageController that represents the storage controllers associated with this resource."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
@@ -130,86 +135,91 @@
 
       <EnumType Name="DeviceClass">
         <Member Name="UnclassifiedDevice">
-          <Annotation Term="OData.Description" String="An unclassified device"/>
+          <Annotation Term="OData.Description" String="An unclassified device."/>
         </Member>
         <Member Name="MassStorageController">
-          <Annotation Term="OData.Description" String="A mass storage controller"/>
+          <Annotation Term="OData.Description" String="A mass storage controller."/>
         </Member>
         <Member Name="NetworkController">
-          <Annotation Term="OData.Description" String="A network controller"/>
+          <Annotation Term="OData.Description" String="A network controller."/>
         </Member>
         <Member Name="DisplayController">
-          <Annotation Term="OData.Description" String="A display controller"/>
+          <Annotation Term="OData.Description" String="A display controller."/>
         </Member>
         <Member Name="MultimediaController">
-          <Annotation Term="OData.Description" String="A multimedia controller"/>
+          <Annotation Term="OData.Description" String="A multimedia controller."/>
         </Member>
         <Member Name="MemoryController">
-          <Annotation Term="OData.Description" String="A memory controller"/>
+          <Annotation Term="OData.Description" String="A memory controller."/>
         </Member>
         <Member Name="Bridge">
-          <Annotation Term="OData.Description" String="A bridge"/>
+          <Annotation Term="OData.Description" String="A bridge."/>
         </Member>
         <Member Name="CommunicationController">
-          <Annotation Term="OData.Description" String="A communication controller"/>
+          <Annotation Term="OData.Description" String="A communication controller."/>
         </Member>
         <Member Name="GenericSystemPeripheral">
-          <Annotation Term="OData.Description" String="A generic system peripheral"/>
+          <Annotation Term="OData.Description" String="A generic system peripheral."/>
         </Member>
         <Member Name="InputDeviceController">
-          <Annotation Term="OData.Description" String="An input device controller"/>
+          <Annotation Term="OData.Description" String="An input device controller."/>
         </Member>
         <Member Name="DockingStation">
-          <Annotation Term="OData.Description" String="A docking station"/>
+          <Annotation Term="OData.Description" String="A docking station."/>
         </Member>
         <Member Name="Processor">
-          <Annotation Term="OData.Description" String="A processor"/>
+          <Annotation Term="OData.Description" String="A processor."/>
         </Member>
         <Member Name="SerialBusController">
-          <Annotation Term="OData.Description" String="A serial bus controller"/>
+          <Annotation Term="OData.Description" String="A serial bus controller."/>
         </Member>
         <Member Name="WirelessController">
-          <Annotation Term="OData.Description" String="A wireless controller"/>
+          <Annotation Term="OData.Description" String="A wireless controller."/>
         </Member>
         <Member Name="IntelligentController">
-          <Annotation Term="OData.Description" String="An intelligent controller"/>
+          <Annotation Term="OData.Description" String="An intelligent controller."/>
         </Member>
         <Member Name="SatelliteCommunicationsController">
-          <Annotation Term="OData.Description" String="A satellite communications controller"/>
+          <Annotation Term="OData.Description" String="A satellite communications controller."/>
         </Member>
         <Member Name="EncryptionController">
-          <Annotation Term="OData.Description" String="An encryption controller"/>
+          <Annotation Term="OData.Description" String="An encryption controller."/>
         </Member>
         <Member Name="SignalProcessingController">
-          <Annotation Term="OData.Description" String="A signal processing controller"/>
+          <Annotation Term="OData.Description" String="A signal processing controller."/>
         </Member>
         <Member Name="ProcessingAccelerators">
-          <Annotation Term="OData.Description" String="A processing accelerators"/>
+          <Annotation Term="OData.Description" String="A processing accelerators."/>
         </Member>
         <Member Name="NonEssentialInstrumentation">
-          <Annotation Term="OData.Description" String="A non-essential instrumentation"/>
+          <Annotation Term="OData.Description" String="A non-essential instrumentation."/>
         </Member>
         <Member Name="Coprocessor">
-          <Annotation Term="OData.Description" String="A coprocessor"/>
+          <Annotation Term="OData.Description" String="A coprocessor."/>
         </Member>
         <Member Name="UnassignedClass">
-          <Annotation Term="OData.Description" String="An unassigned class"/>
+          <Annotation Term="OData.Description" String="An unassigned class."/>
         </Member>
         <Member Name="Other">
-          <Annotation Term="OData.Description" String="A other class. The function Device Class Id needs to be verified"/>
+          <Annotation Term="OData.Description" String="A other class. The function Device Class Id needs to be verified."/>
         </Member>
       </EnumType>
 
       <EnumType Name="FunctionType">
         <Member Name="Physical">
-          <Annotation Term="OData.Description" String="A physical PCie function"/>
+          <Annotation Term="OData.Description" String="A physical PCie function."/>
         </Member>
         <Member Name="Virtual">
-          <Annotation Term="OData.Description" String="A virtual PCIe function"/>
+          <Annotation Term="OData.Description" String="A virtual PCIe function."/>
         </Member>
       </EnumType>
 
     </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="PCIeFunction.v1_0_1">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
+      <EntityType Name="PCIeFunction" BaseType="PCIeFunction.v1_0_0.PCIeFunction"/>
+    </Schema>
+
   </edmx:DataServices>
 </edmx:Edmx>
-

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  VLanNetworkInterface  v1.0.2  -->
+<!--# Redfish Schema:  VLanNetworkInterface  v1.0.3  -->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -57,11 +57,13 @@
       <EntityType Name="VLanNetworkInterface" BaseType="VLanNetworkInterface.VLanNetworkInterface">
         <Property Name="VLANEnable" Type="Edm.Boolean">
           <Annotation Term="Redfish.RequiredOnCreate"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="This indicates if this VLAN is enabled."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be used to indicate if this VLAN is enabled for this interface."/>
         </Property>
         <Property Name="VLANId" Type="VLanNetworkInterface.v1_0_0.VLANId">
           <Annotation Term="Redfish.RequiredOnCreate"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="This indicates the VLAN identifier for this VLAN."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be used to indicate the VLAN identifier for this VLAN."/>
         </Property>
@@ -71,11 +73,13 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="VLANEnable" Type="Edm.Boolean">
           <Annotation Term="Redfish.RequiredOnCreate"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="This indicates if this VLAN is enabled."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be used to indicate if this VLAN is enabled for this interface."/>
         </Property>
         <Property Name="VLANId" Type="VLanNetworkInterface.v1_0_0.VLANId">
           <Annotation Term="Redfish.RequiredOnCreate"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="This indicates the VLAN identifier for this VLAN."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be used to indicate the VLAN identifier for this VLAN."/>
         </Property>
@@ -89,11 +93,18 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="VLanNetworkInterface.v1_0_1">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="VLanNetworkInterface" BaseType="VLanNetworkInterface.v1_0_0.VLanNetworkInterface"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="VLanNetworkInterface.v1_0_2">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="VLanNetworkInterface" BaseType="VLanNetworkInterface.v1_0_1.VLanNetworkInterface"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="VLanNetworkInterface.v1_0_3">
+      <Annotation Term="OData.Description" String="This version was created to add explicit Permissions annotations to all properties for clarity."/>
+      <EntityType Name="VLanNetworkInterface" BaseType="VLanNetworkInterface.v1_0_2.VLanNetworkInterface"/>
     </Schema>
 
   </edmx:DataServices>

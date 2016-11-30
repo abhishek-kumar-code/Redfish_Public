@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  AttributeRegistry  v1.0.0-->
+<!--# Redfish Schema:  AttributeRegistry  v1.0.1-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -58,7 +58,7 @@
         <Property Name="Language" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the RFC 5646 compliant language code for the registry."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a string consisting of an RFC 5646 language code"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a string consisting of an RFC 5646 language code."/>
           <Annotation Term="Redfish.Required"/>
         </Property>
         <Property Name="RegistryVersion" Type="Edm.String" Nullable="false">
@@ -104,17 +104,14 @@
 
       <ComplexType Name="RegistryEntries">
         <Property Name="Attributes" Type="Collection(AttributeRegistry.v1_0_0.Attributes)" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The array containing the attributes and their possible values."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array containing the attributes and their possible values and other metadata."/>
         </Property>
         <Property Name="Menus" Type="Collection(AttributeRegistry.v1_0_0.Menus)" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The array containing the attributes menus and their hierarchy."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array containing the attributes menus and their hierarchy."/>
         </Property>
         <Property Name="Dependencies" Type="Collection(AttributeRegistry.v1_0_0.Dependencies)" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The array containing a list of dependencies of attributes on this component."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array containing a list of dependencies of attributes on this component."/>
         </Property>
@@ -125,7 +122,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The unique name of the attribute."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the name of this attribute that is unique in this registry."/>
-          <Annotation Term="Validation.Pattern" String="^[A-Z][A-Za-z0-9]+$"/>
+          <Annotation Term="Validation.Pattern" String="^[A-Za-z][A-Za-z0-9_]+$"/>
         </Property>
         <Property Name="Type" Type="AttributeRegistry.v1_0_0.AttributeType" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -133,7 +130,6 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an enumeration describing type of the attribute."/>
         </Property>
         <Property Name="Value" Type="Collection(AttributeRegistry.v1_0_0.AttributeValue)" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The array containing possible values for attributes of type 'Enumeration'."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array containing the possible values of an attribute of type 'Enumeration'."/>
         </Property>
@@ -271,10 +267,9 @@
       </ComplexType>
 
       <ComplexType Name="Dependencies">
-        <Property Name="Dependency" Type="AttributeRegistry.v1_0_0.Dependency"  Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String=""/>
-          <Annotation Term="OData.LongDescription" String=""/>
+        <Property Name="Dependency" Type="AttributeRegistry.v1_0_0.Dependency" Nullable="false">
+          <Annotation Term="OData.Description" String="The dependency expression for one or more Attributes in this Attribute Registry."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the dependency expression for one or more Attributes in this Attribute Registry."/>
         </Property>
         <Property Name="DependencyFor" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -294,7 +289,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The value name of the attribute."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a string representing the value name of the attribute. ValueName is a unique string within the list of possible values in the 'Value' array of a given attribute."/>
-          <Annotation Term="Validation.Pattern" String="^[A-Za-z0-9]+$"/>
+          <Annotation Term="Validation.Pattern" String="^[A-Za-z][A-Za-z0-9_]+$"/>
         </Property>
         <Property Name="ValueDisplayName" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -305,7 +300,6 @@
 
       <ComplexType Name="Dependency">
         <Property Name="MapFrom" Type="Collection(AttributeRegistry.v1_0_0.MapFrom)" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Array of the map-from conditions for mapping dependency."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array containing the map-from conditions for a dependency of Type 'Map'."/>
         </Property>
@@ -351,7 +345,7 @@
         </Property>
         <Property Name="MapTerms" Type="AttributeRegistry.v1_0_0.MapTerms" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The logical term used to combine two or more MapFrom conditions in this dependency expression. "/>
+          <Annotation Term="OData.Description" String="The logical term used to combine two or more MapFrom conditions in this dependency expression."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the logical term used to combine two or more MapFrom conditions in this dependency expression. For example, 'AND' for logical AND, or 'OR' for logical OR of the conditions."/>
         </Property>
       </ComplexType>
@@ -500,6 +494,11 @@
         </Member>
       </EnumType>
 
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AttributeRegistry.v1_0_1">
+      <Annotation Term="OData.Description" String="This version was created to add explicit Permissions annotations to all properties for clarity."/>
+      <EntityType Name="AttributeRegistry" BaseType="AttributeRegistry.v1_0_0.AttributeRegistry"/>
     </Schema>
 
   </edmx:DataServices>

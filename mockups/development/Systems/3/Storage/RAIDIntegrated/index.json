@@ -11,8 +11,6 @@
         "Health": "OK",
         "HealthRollUp": "OK"
     },
-    "EncryptionType": "LKM",
-    "EncryptionKeySet": true,
     "StorageControllers": [
         {
             "@odata.id": "/redfish/v1/Systems/3/Storage/RAIDIntegrated#/StorageControllers/0",
@@ -53,10 +51,9 @@
         {"@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.7"},
         {"@odata.id": "/redfish/v1/Chassis/StorageBackplane/Drives/Disk.Bay.8"}
     ],
-    "Volumes": [
-        {"@odata.id": "/redfish/v1/Systems/3/Storage/RAIDIntegrated/Volumes/1"},
-        {"@odata.id": "/redfish/v1/Systems/3/Storage/RAIDIntegrated/Volumes/2"}
-    ],
+    "Volumes": {
+        "@odata.id": "/redfish/v1/Systems/3/Storage/RAIDIntegrated/Volumes"
+    },
     "Links": {
         "Enclosures": [
             {"@odata.id": "/redfish/v1/Chassis/StorageBackplane"}

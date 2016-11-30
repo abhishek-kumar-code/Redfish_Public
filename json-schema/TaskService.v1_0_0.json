@@ -10,8 +10,8 @@
                 "Oldest"
             ],
             "enumDescriptions": {
-                "Manual": "Completed tasks are not automatically overwritten",
-                "Oldest": "Oldest completed tasks are overwritten"
+                "Manual": "Completed tasks are not automatically overwritten.",
+                "Oldest": "Oldest completed tasks are overwritten."
             }
         },
         "TaskService": {
@@ -46,21 +46,24 @@
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Id": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
+                    "readonly": true
                 },
                 "Description": {
                     "anyOf": [
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
                         {"type": "null"}
-                    ]
+                    ],
+                    "readonly": true
                 },
                 "Name": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+                    "readonly": true
                 },
                 "CompletedTaskOverWritePolicy": {
                     "$ref": "#/definitions/OverWritePolicy",
                     "readonly": true,
-                    "description": "Overwrite policy of completed tasks",
+                    "description": "Overwrite policy of completed tasks.",
                     "longDescription": "The value of this property shall indicate how completed tasks are handled should the task service need to track more tasks."
                 },
                 "DateTime": {
@@ -84,6 +87,7 @@
                         "boolean",
                         "null"
                     ],
+                    "readonly": false,
                     "description": "This indicates whether this service is enabled.",
                     "longDescription": "The value of this property shall be a boolean indicating whether this service is enabled."
                 },

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  LogService  v1.0.2-->
+<!--# Redfish Schema:  LogService  v1.0.3-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -66,6 +66,7 @@
         <Annotation Term="OData.Description" String="This resource represents the log service for the resource or service to which it is associated."/>
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a log service for a Redfish implementation."/>
         <Property Name="ServiceEnabled" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="This indicates whether this service is enabled."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this service is enabled."/>
         </Property>
@@ -98,7 +99,6 @@
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
         <Property Name="Actions" Type="LogService.v1_0_0.Actions" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
@@ -116,20 +116,26 @@
 
       <EnumType Name="OverWritePolicy">
         <Member Name="Unknown">
-          <Annotation Term="OData.Description" String="The overwrite policy is not known or is undefined"/>
+          <Annotation Term="OData.Description" String="The overwrite policy is not known or is undefined."/>
         </Member>
         <Member Name="WrapsWhenFull">
-          <Annotation Term="OData.Description" String="When full, new entries to the Log will overwrite previous entries"/>
+          <Annotation Term="OData.Description" String="When full, new entries to the Log will overwrite previous entries."/>
         </Member>
         <Member Name="NeverOverWrites">
-          <Annotation Term="OData.Description" String="When full, new entries to the Log will be discarded"/>
+          <Annotation Term="OData.Description" String="When full, new entries to the Log will be discarded."/>
         </Member>
       </EnumType>
 
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogService.v1_0_2">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="LogService" BaseType="LogService.v1_0_0.LogService"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LogService.v1_0_3">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
+      <EntityType Name="LogService" BaseType="LogService.v1_0_2.LogService"/>
     </Schema>
 
   </edmx:DataServices>

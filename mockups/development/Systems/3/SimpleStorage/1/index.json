@@ -6,7 +6,7 @@
     "Id": "1",
     "Name": "Simple Storage Controller",
     "Description": "System SATA",
-    "UEFIDevicePath": "UEFI Device Path",
+    "UefiDevicePath": "UEFI Device Path",
     "Status": {
         "State": "Enabled",
         "Health": "OK",

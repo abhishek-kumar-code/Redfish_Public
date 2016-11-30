@@ -2,7 +2,7 @@
     "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
     "@odata.id": "/redfish/v1/Systems/1",
-    "@odata.type": "#ComputerSystem.v1_1_0.ComputerSystem",
+    "@odata.type": "#ComputerSystem.v1_3_0.ComputerSystem",
     "Id": "1",
     "Name": "My Computer System",
     "SystemType": "Physical",
@@ -68,7 +68,9 @@
             "Health": "OK"
            },
            "ModuleType":"TPM2_0",
-           "FirmwareVersion":"3.1"
+           "FirmwareVersion": "3.1",
+           "FirmwareVersion2": "1",
+           "InterfaceTypeSelection": "None"
         }
     ],
     "Processors": {
@@ -79,6 +81,9 @@
     },	
     "EthernetInterfaces": {
         "@odata.id": "/redfish/v1/Systems/1/EthernetInterfaces"
+    },
+    "NetworkInterfaces": {
+        "@odata.id": "/redfish/v1/Systems/1/NetworkInterfaces"
     },
     "SimpleStorage": {
         "@odata.id": "/redfish/v1/Systems/1/SimpleStorage"

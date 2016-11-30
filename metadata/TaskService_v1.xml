@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  TaskService  v1.0.2-->
+<!--# Redfish Schema:  TaskService  v1.0.3-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -63,7 +63,7 @@
         <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a task service for a Redfish implementation."/>
         <Property Name="CompletedTaskOverWritePolicy" Type="TaskService.v1_0_0.OverWritePolicy" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Overwrite policy of completed tasks"/>
+          <Annotation Term="OData.Description" String="Overwrite policy of completed tasks."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall indicate how completed tasks are handled should the task service need to track more tasks."/>
         </Property>
         <Property Name="DateTime" Type="Edm.DateTimeOffset">
@@ -77,6 +77,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property, if set to true, shall indicate that the service shall send a LifeCycle event to ListenerDestinations registered for such events upon change of task state."/>
         </Property>
         <Property Name="ServiceEnabled" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="This indicates whether this service is enabled."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this service is enabled."/>
         </Property>
@@ -91,17 +92,23 @@
 
       <EnumType Name="OverWritePolicy">
         <Member Name="Manual">
-          <Annotation Term="OData.Description" String="Completed tasks are not automatically overwritten"/>
+          <Annotation Term="OData.Description" String="Completed tasks are not automatically overwritten."/>
         </Member>
         <Member Name="Oldest">
-          <Annotation Term="OData.Description" String="Oldest completed tasks are overwritten"/>
+          <Annotation Term="OData.Description" String="Oldest completed tasks are overwritten."/>
         </Member>
       </EnumType>
 
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="TaskService.v1_0_2">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="TaskService" BaseType="TaskService.v1_0_0.TaskService"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="TaskService.v1_0_3">
+      <Annotation Term="OData.Description" String="This version was created to add explicit Permissions annotations to all properties for clarity."/>
+      <EntityType Name="TaskService" BaseType="TaskService.v1_0_2.TaskService"/>
     </Schema>
 
   </edmx:DataServices>

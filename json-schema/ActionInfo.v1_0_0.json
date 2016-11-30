@@ -35,24 +35,26 @@
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Id": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
+                    "readonly": true
                 },
                 "Description": {
                     "anyOf": [
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
                         {"type": "null"}
-                    ]
+                    ],
+                    "readonly": true
                 },
                 "Name": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+                    "readonly": true
                 },
                 "Parameters": {
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/Parameters"
                     },
-                    "readonly": true,
-                    "description": "The parameters associated with the specified Redfish Action",
+                    "description": "The parameters associated with the specified Redfish Action.",
                     "longDescription": "This property shall contain a list of parameters associated with a Redfish Action associated with this resource."
                 }
             },
@@ -75,13 +77,13 @@
                 "ObjectArray"
             ],
             "enumDescriptions": {
-                "Boolean": "A boolean (true or false)",
-                "Number": "A number",
-                "NumberArray": "An array of numbers",
-                "String": "A string",
-                "StringArray": "An array of strings",
-                "Object": "An embedded JSON object",
-                "ObjectArray": "An array of JSON objects"
+                "Boolean": "A boolean (true or false).",
+                "Number": "A number.",
+                "NumberArray": "An array of numbers.",
+                "String": "A string.",
+                "StringArray": "An array of strings.",
+                "Object": "An embedded JSON object.",
+                "ObjectArray": "An array of JSON objects."
             }
         },
         "Parameters": {
@@ -105,7 +107,7 @@
                     "type": "string",
                     "readonly": true,
                     "description": "The name of the parameter for this Action.",
-                    "longDescription": "This property shall contain the name of the parameter used by the associated Redfish Action"
+                    "longDescription": "This property shall contain the name of the parameter used by the associated Redfish Action."
                 },
                 "Required": {
                     "type": "boolean",
@@ -119,7 +121,7 @@
                         {"type": "null"}
                     ],
                     "readonly": true,
-                    "description": "The JSON property type used for this parameter",
+                    "description": "The JSON property type used for this parameter.",
                     "longDescription": "This property shall indicate the JSON property type of the parameter."
                 },
                 "ObjectDataType": {
@@ -128,7 +130,7 @@
                         "null"
                     ],
                     "readonly": true,
-                    "description": "The OData Type of an object-based parameter",
+                    "description": "The OData Type of an object-based parameter.",
                     "longDescription": "This property shall describe the entity type definition (in @odata.type format) for the parameter.  This property shall be required for parameters with a DataType of Object or ObjectArray, and shall not be present for parameters with other DataType(s)."
                 },
                 "AllowableValues": {
@@ -140,7 +142,7 @@
                         ]
                     },
                     "readonly": true,
-                    "description": "A list of values for this parameter supported by this Action target",
+                    "description": "A list of values for this parameter supported by this Action target.",
                     "longDescription": "This property shall indicate the allowable values for this parameter as applied to this Action target."
                 }
             },

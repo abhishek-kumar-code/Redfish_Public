@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Bios  v1.0.0 -->
+<!--# Redfish Schema:  Bios  v1.0.1 -->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -64,7 +64,7 @@
       <Action Name="ChangePassword" IsBound="true">
         <Parameter Name="Bios" Type="Bios.v1_0_0.Actions"/>
         <Parameter Name="PasswordName" Type="Edm.String" Nullable="false">
-          <Annotation Term="OData.Description" String="The name of the BIOS password to change"/>
+          <Annotation Term="OData.Description" String="The name of the BIOS password to change."/>
           <Annotation Term="OData.LongDescription" String="This defines the BIOS password name to change. For instance, this could be the AdminPassword or UserPassword."/>
         </Parameter>
         <Parameter Name="OldPassword" Type="Edm.String" Nullable="false">
@@ -85,11 +85,11 @@
 
       <EntityType Name="Bios" BaseType="Bios.Bios">
         <Property Name="AttributeRegistry" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The Resource ID of the Attribute Registry for the BIOS Attributes resource."/>
           <Annotation Term="OData.LongDescription" String="The reference to the Attribute Registry that lists the metadata describing the BIOS attribute settings in this resource."/>
         </Property>
         <Property Name="Actions" Type="Bios.v1_0_0.Actions" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
@@ -113,13 +113,18 @@
         <Annotation Term="Redfish.DynamicPropertyPatterns">
           <Collection>
             <Record>
-              <PropertyValue Property="Pattern" String="[A-Za-z0-9]+"/>
+              <PropertyValue Property="Pattern" String="^[A-Za-z][A-Za-z0-9_]+$"/>
               <PropertyValue Property="Type" String="Edm.Primitive"/>
             </Record>
           </Collection>
         </Annotation>
       </ComplexType>
 
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Bios.v1_0_1">
+      <Annotation Term="OData.Description" String="This version was created to add explicit Permissions annotations to all properties for clarity."/>
+      <EntityType Name="Bios" BaseType="Bios.v1_0_0.Bios"/>
     </Schema>
 
   </edmx:DataServices>

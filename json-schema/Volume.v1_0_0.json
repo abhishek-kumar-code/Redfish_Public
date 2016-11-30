@@ -41,9 +41,9 @@
                 "SoftwareAssisted"
             ],
             "enumDescriptions": {
-                "NativeDriveEncryption": "The volume is utilizing the native drive encryption capabilities of the drive hardware",
-                "ControllerAssisted": "The volume is being encrypted by the storage controller entity",
-                "SoftwareAssisted": "The volume is being encrypted by software running on the system or the operating system"
+                "NativeDriveEncryption": "The volume is utilizing the native drive encryption capabilities of the drive hardware.",
+                "ControllerAssisted": "The volume is being encrypted by the storage controller entity.",
+                "SoftwareAssisted": "The volume is being encrypted by software running on the system or the operating system."
             }
         },
         "Operations": {
@@ -118,16 +118,19 @@
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Id": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
+                    "readonly": true
                 },
                 "Description": {
                     "anyOf": [
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
                         {"type": "null"}
-                    ]
+                    ],
+                    "readonly": true
                 },
                 "Name": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+                    "readonly": true
                 },
                 "Status": {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
@@ -139,7 +142,7 @@
                     ],
                     "units": "By",
                     "readonly": true,
-                    "description": "The size in bytes of this Volume",
+                    "description": "The size in bytes of this Volume.",
                     "longDescription": "This property shall contain the size in bytes of the associated volume."
                 },
                 "VolumeType": {
@@ -148,7 +151,7 @@
                         {"type": "null"}
                     ],
                     "readonly": true,
-                    "description": "The type of this volume",
+                    "description": "The type of this volume.",
                     "longDescription": "This property shall contain the type of the associated Volume."
                 },
                 "Encrypted": {
@@ -156,7 +159,8 @@
                         "boolean",
                         "null"
                     ],
-                    "description": "Is this Volume encrypted",
+                    "readonly": false,
+                    "description": "Is this Volume encrypted.",
                     "longDescription": "This property shall contain a boolean indicator if the Volume is currently utilizing encryption or not."
                 },
                 "EncryptionTypes": {
@@ -164,7 +168,8 @@
                     "items": {
                         "$ref": "#/definitions/EncryptionTypes"
                     },
-                    "description": "The types of encryption used by this Volume",
+                    "readonly": false,
+                    "description": "The types of encryption used by this Volume.",
                     "longDescription": "This property shall contain the types of encryption used by this Volume."
                 },
                 "Identifiers": {
@@ -172,8 +177,7 @@
                     "items": {
                         "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.v1_1_0.json#/definitions/Identifier"
                     },
-                    "readonly": true,
-                    "description": "The Durable names for the volume",
+                    "description": "The Durable names for the volume.",
                     "longDescription": "This property shall contain a list of all known durable names for the associated volume."
                 },
                 "BlockSizeBytes": {
@@ -183,7 +187,7 @@
                     ],
                     "units": "By",
                     "readonly": true,
-                    "description": "The size of the smallest addressible unit (Block) of this volume in bytes",
+                    "description": "The size of the smallest addressible unit (Block) of this volume in bytes.",
                     "longDescription": "This property shall contain size of the smallest addressible unit of the associated volume."
                 },
                 "Operations": {
@@ -191,8 +195,7 @@
                     "items": {
                         "$ref": "#/definitions/Operations"
                     },
-                    "readonly": true,
-                    "description": "The operations currently running on the Volume",
+                    "description": "The operations currently running on the Volume.",
                     "longDescription": "This property shall contain a list of all currently running on the Volume."
                 },
                 "OptimumIOSizeBytes": {
@@ -244,7 +247,6 @@
                             "longDescription": "The value of this property shall be a reference to the resources that this volume is associated with and shall reference resources of type Drive. This property shall only contain references to Drive entities which are currently members of the Volume, not hot spare Drives which are not currently a member of the volume."
                         }
                     },
-                    "readonly": true,
                     "description": "Contains references to other resources that are related to this resource.",
                     "longDescription": "The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."
                 },
@@ -287,7 +289,6 @@
                             "$ref": "#/definitions/Initialize"
                         }
                     },
-                    "readonly": true,
                     "description": "The available actions for this resource.",
                     "longDescription": "The Actions property shall contain the available actions for this resource."
                 }
@@ -310,12 +311,12 @@
                 "SpannedStripesWithParity"
             ],
             "enumDescriptions": {
-                "RawDevice": "The volume is a raw physical device without any RAID or other virtualization applied",
-                "NonRedundant": "The volume is a non-redundant storage device",
-                "Mirrored": "The volume is a mirrored device",
-                "StripedWithParity": "The volume is a device which uses parity to retain redundant information",
-                "SpannedMirrors": "The volume is a spanned set of mirrored devices",
-                "SpannedStripesWithParity": "The volume is a spanned set of devices which uses parity to retain redundant information"
+                "RawDevice": "The volume is a raw physical device without any RAID or other virtualization applied.",
+                "NonRedundant": "The volume is a non-redundant storage device.",
+                "Mirrored": "The volume is a mirrored device.",
+                "StripedWithParity": "The volume is a device which uses parity to retain redundant information.",
+                "SpannedMirrors": "The volume is a spanned set of mirrored devices.",
+                "SpannedStripesWithParity": "The volume is a spanned set of devices which uses parity to retain redundant information."
             }
         }
     },

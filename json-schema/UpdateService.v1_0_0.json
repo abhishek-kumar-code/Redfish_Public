@@ -38,6 +38,7 @@
             "enum": [
                 "CIFS",
                 "FTP",
+                "SFTP",
                 "HTTP",
                 "HTTPS",
                 "NSF",
@@ -46,13 +47,14 @@
                 "OEM"
             ],
             "enumDescriptions": {
-                "CIFS": "Common Internet File System protocol",
-                "FTP": "File Transfer Protocol",
-                "HTTP": "Hypertext Transfer Protocol",
-                "HTTPS": "HTTP Secure protocol",
-                "NSF": "Network File System protocol",
-                "SCP": "Secure File Copy protocol",
-                "TFTP": "Trivial File Transfer Protocol",
+                "CIFS": "Common Internet File System protocol.",
+                "FTP": "File Transfer Protocol.",
+                "SFTP": "Secure File Transfer Protocol.",
+                "HTTP": "Hypertext Transfer Protocol.",
+                "HTTPS": "HTTP Secure protocol.",
+                "NSF": "Network File System protocol.",
+                "SCP": "Secure File Copy protocol.",
+                "TFTP": "Trivial File Transfer Protocol.",
                 "OEM": "A protocol defined by the manufacturer."
             }
         },
@@ -88,16 +90,19 @@
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Id": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
+                    "readonly": true
                 },
                 "Description": {
                     "anyOf": [
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
                         {"type": "null"}
-                    ]
+                    ],
+                    "readonly": true
                 },
                 "Name": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+                    "readonly": true
                 },
                 "Status": {
                     "anyOf": [
@@ -153,7 +158,6 @@
                             "$ref": "#/definitions/SimpleUpdate"
                         }
                     },
-                    "readonly": true,
                     "description": "The Actions object contains the available custom actions on this resource."
                 },
                 "FirmwareInventory": {

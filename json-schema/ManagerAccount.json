@@ -13,6 +13,9 @@
                 },
                 {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/ManagerAccount.v1_0_2.json#/definitions/ManagerAccount"
+                },
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/ManagerAccount.v1_0_3.json#/definitions/ManagerAccount"
                 }
             ]
         }

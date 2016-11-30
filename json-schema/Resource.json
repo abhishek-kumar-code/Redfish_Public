@@ -4,7 +4,6 @@
     "definitions": {
         "Description": {
             "type": "string",
-            "readonly": true,
             "description": "Provides a description of this resource and is used for commonality  in the schema definitions.",
             "longDescription": "This object represents the Description property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
         },
@@ -16,14 +15,13 @@
                 "Critical"
             ],
             "enumDescriptions": {
-                "OK": "Normal",
-                "Warning": "A condition exists that requires attention",
-                "Critical": "A critical condition exists that requires immediate attention"
+                "OK": "Normal.",
+                "Warning": "A condition exists that requires attention.",
+                "Critical": "A critical condition exists that requires immediate attention."
             }
         },
         "Id": {
             "type": "string",
-            "readonly": true,
             "description": "Uniquely identifies the resource within the collection of like resources.",
             "longDescription": "This property represents an identifier for the resource.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
         },
@@ -87,7 +85,6 @@
         },
         "Name": {
             "type": "string",
-            "readonly": true,
             "description": "The name of the resource or array element.",
             "longDescription": "This object represents the Name property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification. The value of this string shall be of the format for the reserved word *Name*."
         },
@@ -181,14 +178,14 @@
                 "PushPowerButton"
             ],
             "enumDescriptions": {
-                "On": "Turn the system on",
-                "ForceOff": "Turn the system off immediately (non-graceful) shutdown",
-                "GracefulShutdown": "Perform a graceful system shutdown and power off",
-                "GracefulRestart": "Perform a graceful system shutdown followed by a restart of the system",
-                "ForceRestart": "Perform an immediate (non-graceful) shutdown, followed by a restart of the system",
+                "On": "Turn the system on.",
+                "ForceOff": "Turn the system off immediately (non-graceful) shutdown.",
+                "GracefulShutdown": "Perform a graceful system shutdown and power off.",
+                "GracefulRestart": "Perform a graceful system shutdown followed by a restart of the system.",
+                "ForceRestart": "Perform an immediate (non-graceful) shutdown, followed by a restart of the system.",
                 "Nmi": "Generate a Diagnostic Interrupt (usually an NMI on x86 systems) to cease normal operations, perform diagnostic actions and typically halt the system.",
-                "ForceOn": "Turn the system on immediately",
-                "PushPowerButton": "Simulate the pressing of the physical power button on this system"
+                "ForceOn": "Turn the system on immediately.",
+                "PushPowerButton": "Simulate the pressing of the physical power button on this system."
             }
         },
         "Resource": {
@@ -269,14 +266,14 @@
                 "Updating"
             ],
             "enumDescriptions": {
-                "Enabled": "This function or resource has been enabled",
-                "Disabled": "This function or resource has been disabled",
-                "StandbyOffline": "This function or resource is enabled, but awaiting an external action to activate it",
+                "Enabled": "This function or resource has been enabled.",
+                "Disabled": "This function or resource has been disabled.",
+                "StandbyOffline": "This function or resource is enabled, but awaiting an external action to activate it.",
                 "StandbySpare": "This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it.",
-                "InTest": "This function or resource is undergoing testing",
-                "Starting": "This function or resource is starting",
-                "Absent": "This function or resource is not present or not detected",
-                "UnavailableOffline": "This function or resource is present but cannot be used",
+                "InTest": "This function or resource is undergoing testing.",
+                "Starting": "This function or resource is starting.",
+                "Absent": "This function or resource is not present or not detected.",
+                "UnavailableOffline": "This function or resource is present but cannot be used.",
                 "Deferring": "The element will not process any commands but will queue new requests.",
                 "Quiesced": "The element is enabled but only processes a restricted set of commands.",
                 "Updating": "The element is updating and may be unavailable or degraded."

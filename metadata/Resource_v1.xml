@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Resource  v1.2.0-->
+<!--# Redfish Schema:  Resource  v1.3.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -23,19 +23,16 @@
 
       <!--Type Definitions-->
       <TypeDefinition Name="Id" UnderlyingType="Edm.String">
-        <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
         <Annotation Term="OData.Description" String="Uniquely identifies the resource within the collection of like resources."/>
         <Annotation Term="OData.LongDescription" String="This property represents an identifier for the resource.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
       </TypeDefinition>
 
       <TypeDefinition Name="Description" UnderlyingType="Edm.String">
-        <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
         <Annotation Term="OData.Description" String="Provides a description of this resource and is used for commonality  in the schema definitions."/>
         <Annotation Term="OData.LongDescription" String="This object represents the Description property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."/>
       </TypeDefinition>
 
       <TypeDefinition Name="Name" UnderlyingType="Edm.String">
-        <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
         <Annotation Term="OData.Description"  String="The name of the resource or array element."/>
         <Annotation Term="OData.LongDescription" String="This object represents the Name property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification. The value of this string shall be of the format for the reserved word *Name*."/>
       </TypeDefinition>
@@ -118,28 +115,28 @@
       <!--This indicates the known state of the resource, such as if it is enabled.-->
       <EnumType Name="State">
         <Member Name="Enabled">
-          <Annotation Term="OData.Description" String="This function or resource has been enabled"/>
+          <Annotation Term="OData.Description" String="This function or resource has been enabled."/>
         </Member>
         <Member Name="Disabled">
-          <Annotation Term="OData.Description" String="This function or resource has been disabled"/>
+          <Annotation Term="OData.Description" String="This function or resource has been disabled."/>
         </Member>
         <Member Name="StandbyOffline">
-          <Annotation Term="OData.Description" String="This function or resource is enabled, but awaiting an external action to activate it"/>
+          <Annotation Term="OData.Description" String="This function or resource is enabled, but awaiting an external action to activate it."/>
         </Member>
         <Member Name="StandbySpare">
           <Annotation Term="OData.Description" String="This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it."/>
         </Member>
         <Member Name="InTest">
-          <Annotation Term="OData.Description" String="This function or resource is undergoing testing"/>
+          <Annotation Term="OData.Description" String="This function or resource is undergoing testing."/>
         </Member>
         <Member Name="Starting">
-          <Annotation Term="OData.Description" String="This function or resource is starting"/>
+          <Annotation Term="OData.Description" String="This function or resource is starting."/>
         </Member>
         <Member Name="Absent">
-          <Annotation Term="OData.Description" String="This function or resource is not present or not detected"/>
+          <Annotation Term="OData.Description" String="This function or resource is not present or not detected."/>
         </Member>
         <Member Name="UnavailableOffline">
-          <Annotation Term="OData.Description" String="This function or resource is present but cannot be used"/>
+          <Annotation Term="OData.Description" String="This function or resource is present but cannot be used."/>
         </Member>
         <Member Name="Deferring">
           <Annotation Term="OData.Description" String="The element will not process any commands but will queue new requests."/>
@@ -155,41 +152,41 @@
       <!--This represents the state of the health of a resource.-->
       <EnumType Name="Health">
         <Member Name="OK">
-          <Annotation Term="OData.Description" String="Normal"/>
+          <Annotation Term="OData.Description" String="Normal."/>
         </Member>
         <Member Name="Warning">
-          <Annotation Term="OData.Description" String="A condition exists that requires attention"/>
+          <Annotation Term="OData.Description" String="A condition exists that requires attention."/>
         </Member>
         <Member Name="Critical">
-          <Annotation Term="OData.Description" String="A critical condition exists that requires immediate attention"/>
+          <Annotation Term="OData.Description" String="A critical condition exists that requires immediate attention."/>
         </Member>
       </EnumType>
 
       <!--Common RestType parameter values for Reset Action-->
       <EnumType Name="ResetType">
         <Member Name="On">
-          <Annotation Term="OData.Description" String="Turn the system on"/>
+          <Annotation Term="OData.Description" String="Turn the system on."/>
         </Member>
         <Member Name="ForceOff">
-          <Annotation Term="OData.Description" String="Turn the system off immediately (non-graceful) shutdown"/>
+          <Annotation Term="OData.Description" String="Turn the system off immediately (non-graceful) shutdown."/>
         </Member>
         <Member Name="GracefulShutdown">
-          <Annotation Term="OData.Description" String="Perform a graceful system shutdown and power off"/>
+          <Annotation Term="OData.Description" String="Perform a graceful system shutdown and power off."/>
         </Member>
         <Member Name="GracefulRestart">
-          <Annotation Term="OData.Description" String="Perform a graceful system shutdown followed by a restart of the system"/>
+          <Annotation Term="OData.Description" String="Perform a graceful system shutdown followed by a restart of the system."/>
         </Member>
         <Member Name="ForceRestart">
-          <Annotation Term="OData.Description" String="Perform an immediate (non-graceful) shutdown, followed by a restart of the system"/>
+          <Annotation Term="OData.Description" String="Perform an immediate (non-graceful) shutdown, followed by a restart of the system."/>
         </Member>
         <Member Name="Nmi">
           <Annotation Term="OData.Description" String="Generate a Diagnostic Interrupt (usually an NMI on x86 systems) to cease normal operations, perform diagnostic actions and typically halt the system."/>
         </Member>
         <Member Name="ForceOn">
-          <Annotation Term="OData.Description" String="Turn the system on immediately"/>
+          <Annotation Term="OData.Description" String="Turn the system on immediately."/>
         </Member>
         <Member Name="PushPowerButton">
-          <Annotation Term="OData.Description" String="Simulate the pressing of the physical power button on this system"/>
+          <Annotation Term="OData.Description" String="Simulate the pressing of the physical power button on this system."/>
         </Member>
       </EnumType>
 
@@ -205,6 +202,7 @@
           <PropertyRef Name="MemberId"/>
         </Key>
         <Property Name="MemberId" Nullable="false" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the identifier for the member within the collection."/>
           <Annotation Term="OData.LongDescription" String="The value of this string shall uniquely identify the member within the collection."/>
         </Property>
@@ -216,10 +214,14 @@
           <PropertyRef Name="Id"/>
         </Key>
         <Property Name="Id" Type="Resource.Id" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="Redfish.Required"/>
         </Property>
-        <Property Name="Description" Type="Resource.Description"/>
+        <Property Name="Description" Type="Resource.Description">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+        </Property>
         <Property Name="Name" Type="Resource.Name" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="Redfish.Required"/>
         </Property>
       </EntityType>
@@ -230,8 +232,12 @@
         <Key>
           <PropertyRef Name="Name"/>
         </Key>
-        <Property Name="Description" Type="Resource.Description"/>
-        <Property Name="Name" Type="Resource.Name" Nullable="false"/>
+        <Property Name="Description" Type="Resource.Description">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+        </Property>
+        <Property Name="Name" Type="Resource.Name" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+        </Property>
         <Property Name="Oem" Type="Resource.Oem" Nullable="false">
           <Annotation Term="OData.Description" String="This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections."/>
           <Annotation Term="OData.LongDescription" String="The value of this string shall be of the format for the reserved word *Oem*."/>
@@ -240,7 +246,13 @@
 
     </Schema>
 
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_0_2"/>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_0_2">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_0_3">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
+    </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_1_0">
 
@@ -250,7 +262,7 @@
         <Property Name="DurableName" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This indicates the world wide, persistent name of the resource."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain the world wide unique identifier for the resource. The string shall be in the format described by the value of the Identifier.DurableNameFormat property"/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the world wide unique identifier for the resource. The string shall be in the format described by the value of the Identifier.DurableNameFormat property."/>
         </Property>
         <Property Name="DurableNameFormat" Type="Resource.v1_1_0.DurableNameFormat">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -277,23 +289,23 @@
 
       <EnumType Name="DurableNameFormat">
         <Member Name="NAA">
-          <Annotation Term="OData.Description" String="Name Address Authority Format"/>
+          <Annotation Term="OData.Description" String="Name Address Authority Format."/>
           <Annotation Term="OData.LongDescription" String="This durable name shall be a hexadecimal representation of the Name Address Authority structure as defined in the T11 Fibre Channel - Framing and Signaling - 3 (FC-FS-3) specification."/>
         </Member>
         <Member Name="iQN">
-          <Annotation Term="OData.Description" String="iSCSI Qualified Name"/>
+          <Annotation Term="OData.Description" String="iSCSI Qualified Name."/>
           <Annotation Term="OData.LongDescription" String="This durable name shall be in the iSCSI Qualified Name format as defined in RFC 3720 and RFC 3721."/>
         </Member>
         <Member Name="FC_WWN">
-          <Annotation Term="OData.Description" String="Fibre Channel World Wide Name"/>
+          <Annotation Term="OData.Description" String="Fibre Channel World Wide Name."/>
           <Annotation Term="OData.LongDescription" String="This durable name shall be a hexadecimal representation of the World Wide Name format as defined in the T11 Fibre Channel Physical and Signaling Interface Specification."/>
         </Member>
         <Member Name="UUID">
-          <Annotation Term="OData.Description" String="Universally Unique Identifier"/>
+          <Annotation Term="OData.Description" String="Universally Unique Identifier."/>
           <Annotation Term="OData.LongDescription" String="This durable name shall be the hexadecimal representation of the Universal Unique Identifier as defined in the Internation Telecom Union's OSI networking and system aspects - Naming, Addressing and Registration Specification."/>
         </Member>
         <Member Name="EUI">
-          <Annotation Term="OData.Description" String="IEEE-defined 64-bit Extended Unique Identifier"/>
+          <Annotation Term="OData.Description" String="IEEE-defined 64-bit Extended Unique Identifier."/>
           <Annotation Term="OData.LongDescription" String="This durable name shall be the hexadecimal representation of the IEEE-defined 64-bit Extended Unique Identifier as defined in the IEEE's Guidelines for 64-bit Global Identifier (EUI-64) Specification."/>
         </Member>
       </EnumType>
@@ -310,6 +322,14 @@
         </Member>
       </EnumType>
 
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_1_1">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_1_2">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_2_0">
@@ -331,7 +351,229 @@
 
     </Schema>
 
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_1_1"/>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_2_1">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_3_0">
+
+      <EnumType Name="RackUnits">
+        <Annotation Term="OData.Description" String="Defines a rack unit."/>
+        <Annotation Term="OData.LongDescription" String="Enumeration literals shall name the type of rack units in use."/>
+        <Member Name="OpenU">
+          <Annotation Term="OData.Description" String="Defines a rack unit as being equal to 48 mm (1.89 in)."/>
+          <Annotation Term="OData.LongDescription" String="Rack units shall be specifie3d in terms of the Open Compute Open Rack specification."/>
+        </Member>
+        <Member Name="EIA_310">
+          <Annotation Term="OData.Description" String="Defines a rack unit as being equal to 1.75 in (44.45 mm)."/>
+          <Annotation Term="OData.LongDescription" String="Rack units shall be specified as defined by the EIA-310 standard."/>
+        </Member>
+      </EnumType>
+
+      <ComplexType Name="PostalAddress">
+        <Annotation Term="OData.Description" String="The PostalAddress for a resource."/>
+        <Annotation Term="OData.LongDescription" String="Instances shall describe a postal address for a resource. For more information see RFC5139. Depending on use, the instance may represent a past, current, or future location."/>
+        <Property Name="Country" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Country."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the Country field as defined in RFC5139."/>
+        </Property>
+        <Property Name="Territory" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="A top-level subdivision within a country."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the A1 field as defined in RFC5139 when used to name a territory, state, region, province, or prefecture within a country."/>
+        </Property>
+        <Property Name="District" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="A county, parish, gun (JP), or  district (IN)."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the A2 field as defined in RFC5139.  It is used to name a county, parish, gun (JP), or  district (IN)."/>
+        </Property>
+        <Property Name="City" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="City, township, or shi (JP)."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the A3 field as defined in RFC5139.  It is used to name a city, township, or shi (JP)."/>
+        </Property>
+        <Property Name="Division" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="City division, borough, dity district, ward, chou (JP)."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the A4 field as defined in RFC5139.  It is used to name a city division, borough, dity district, ward, chou (JP)."/>
+        </Property>
+        <Property Name="Neighborhood" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Neighborhood or block."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the A5 field as defined in RFC5139.  It is used to name a neighborhood or block."/>
+        </Property>
+        <Property Name="LeadingStreetDirection" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="A leading street direction."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the PRD field as defined in RFC5139.  It is used to name a leading street direction, (N, W, SE)."/>
+        </Property>
+        <Property Name="Street" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Street name."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the A6 field as defined in RFC5139.  It is used to name a street."/>
+        </Property>
+        <Property Name="TrailingStreetSuffix" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="A trailing street suffix."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the POD field as defined in RFC5139.  It is used to name a trailing street suffix."/>
+        </Property>
+        <Property Name="StreetSuffix" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Avenue, Platz, Street, Circle."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the STS field as defined in RFC5139.  It is used to name a  street suffix."/>
+        </Property>
+        <Property Name="HouseNumber" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Numeric portion of house number."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the HNO field as defined in RFC5139.  It is the numeric portion of the house number."/>
+        </Property>
+        <Property Name="HouseNumberSuffix" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="House number suffix."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the HNS field as defined in RFC5139.  It is used to provide a suffix to a house number, (F, B, 1/2)."/>
+        </Property>
+        <Property Name="Landmark" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Landmark."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the LMK field as defined in RFC5139.  It is used to identify a landmark or vanity address."/>
+        </Property>
+        <Property Name="Location" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Room designation or other additional info."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the LOC field as defined in RFC5139.  It is used to provide additional information."/>
+        </Property>
+        <Property Name="Floor" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Floor."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the FLR field as defined in RFC5139.  It is used to provide a floor designation."/>
+        </Property>
+        <Property Name="Name" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Name."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the NAM field as defined in RFC5139.  It is used to name the occupant."/>
+        </Property>
+        <Property Name="PostalCode" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Postal code (or zip code)."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the PC field as defined in RFC5139. The value shall be a Postal code (or zip code)."/>
+        </Property>
+        <Property Name="Building" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Name of the building."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the BLD field as defined in RFC5139.  The value shall be name a building used to locate the resource."/>
+        </Property>
+        <Property Name="Unit" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Name or number of the unit (apartment, suite)."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the UNIT field as defined in RFC5139.  The value shall be a name or number of a unit (apartment, suite) used to locate the resource."/>
+        </Property>
+        <Property Name="Room" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Name or number of the room."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the ROOM field as defined in RFC5139.  The value shall be a name or number of a room used to locate the resource within the unit."/>
+        </Property>
+        <Property Name="Seat" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Seat (desk, cubicle, workstation)."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the SEAT field as defined in RFC5139.  The value shall be a name or number of a Seat (desk, cubicle, workstation)."/>
+        </Property>
+        <Property Name="PlaceType" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="A description of the type of place that is addressed."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the PLC field as defined in RFC5139.  Examples include: office, residence,...)."/>
+        </Property>
+        <Property Name="Community" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Postal community name."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the PCN field as defined in RFC5139.  The value shall be a postal community name."/>
+        </Property>
+        <Property Name="POBox" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Post office box (P.O. box)."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the POBOX field as defined in RFC5139.  The value shall be a Post office box (P.O. box)."/>
+        </Property>
+        <Property Name="AdditionalCode" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Additional code."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the ADDCODE field as defined in RFC5139."/>
+        </Property>
+        <Property Name="Road" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="A primary road or street."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the RD field as defined in RFC5139.  The value designates a primary road or street."/>
+        </Property>
+        <Property Name="RoadSection" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Road Section."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the RDSEC field as defined in RFC5139.  The value shall be a road section."/>
+        </Property>
+        <Property Name="RoadBranch" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Road branch."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the RDBR field as defined in RFC5139.  The value shall be a Post office box (P.O. box)road branch."/>
+        </Property>
+        <Property Name="RoadSubBranch" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Road sub branch."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the RDSUBBR field as defined in RFC5139."/>
+        </Property>
+        <Property Name="RoadPreModifier" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Road pre-modifier."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the PRM field as defined in RFC5139.  (Old, New)."/>
+        </Property>
+        <Property Name="RoadPostModifier" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Road post-modifier."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the POM field as defined in RFC5139.  (Extended)."/>
+        </Property>
+        <Property Name="GPSCoords" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The GPS coordinates of the part."/>
+          <Annotation Term="OData.LongDescription" String="The value shall conform the requirements of the ADDCODE field as defined in RFC5139. The value shall be the GPS coordinates of the location. If furnished, this shall be expressed in the format '[-][nn]n.nnnnnn, [-][nn]n.nnnnn', i.e. two numbers, either positive or negative, with six decimal places of precision, comma-separated."/>
+        </Property>
+      </ComplexType>
+
+      <ComplexType Name="Placement">
+        <Annotation Term="OData.Description" String="The placement within the addressed location."/>
+        <Annotation Term="OData.LongDescription" String="The value shall describe a location within a resource.  Examples include a shelf in a rack."/>
+        <Property Name="Row" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Name of row."/>
+          <Annotation Term="OData.LongDescription" String="The value shall be the name of the row."/>
+        </Property>
+        <Property Name="Rack" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Name of a rack location within a row."/>
+          <Annotation Term="OData.LongDescription" String="The value shall be the name of the rack within a row."/>
+        </Property>
+        <Property Name="RackOffsetUnits" Type="Resource.v1_3_0.RackUnits">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The type of Rack Units in use."/>
+          <Annotation Term="OData.LongDescription" String="The value shall be a RackUnit enumeration literal indicating the type of rack units in use."/>
+        </Property>
+        <Property Name="RackOffset" Type="Edm.Int64" DefaultValue="0">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Vertical location of the item in terms of RackOffsetUnits."/>
+          <Annotation Term="OData.LongDescription" String="Vertical location of the item in the rack. Rack offset units shall be measured from bottom to top starting with 0."/>
+        </Property>
+      </ComplexType>
+
+      <ComplexType Name="Location" BaseType="Resource.v1_1_0.Location">
+        <Annotation Term="OData.Description" String="The location of a resource."/>
+        <Annotation Term="OData.LongDescription" String="Instances shall describe a location for a resource. For more information see RFC5139. Depending on use, the instance may represent a past, current, or future location."/>
+        <Property Name="PostalAddress" Type="Resource.v1_3_0.PostalAddress">
+          <Annotation Term="OData.Description" String="Postal address of the addressed resource."/>
+          <Annotation Term="OData.LongDescription" String="The value shall be a postal address of the resource."/>
+        </Property>
+        <Property Name="Placement" Type="Resource.v1_3_0.Placement">
+          <Annotation Term="OData.Description" String="A place within the addressed location."/>
+          <Annotation Term="OData.LongDescription" String="The value shall be a place within the addressed location."/>
+        </Property>
+      </ComplexType>
+
+    </Schema>
 
   </edmx:DataServices>
 </edmx:Edmx>

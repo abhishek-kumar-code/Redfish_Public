@@ -35,16 +35,19 @@
                     "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
                 },
                 "Id": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
+                    "readonly": true
                 },
                 "Description": {
                     "anyOf": [
                         {"$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"},
                         {"type": "null"}
-                    ]
+                    ],
+                    "readonly": true
                 },
                 "Name": {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+                    "readonly": true
                 },
                 "Status": {
                     "anyOf": [
@@ -58,8 +61,8 @@
                         "null"
                     ],
                     "readonly": true,
-                    "description": "A string representing the version of this firmware.",
-                    "longDescription": "The value of this property shall be a string representing the version of this firmware."
+                    "description": "A string representing the version of this software.",
+                    "longDescription": "The value of this property shall be a string representing the version of this software."
                 },
                 "Updateable": {
                     "type": [
@@ -67,8 +70,8 @@
                         "null"
                     ],
                     "readonly": true,
-                    "description": "Indicates whether this firmware can be updated by the update service.",
-                    "longDescription": "The value of this property shall be a boolean indicating whether this firmware can be updated by the update service. If false, this firmware is for reporting purpose only."
+                    "description": "Indicates whether this software can be updated by the update service.",
+                    "longDescription": "The value of this property shall be a boolean indicating whether this software can be updated by the update service. If false, this software is for reporting purpose only."
                 },
                 "Actions": {
                     "type": "object",
@@ -106,7 +109,6 @@
                             "properties": {}
                         }
                     },
-                    "readonly": true,
                     "description": "The Actions object contains the available custom actions on this resource."
                 }
             },

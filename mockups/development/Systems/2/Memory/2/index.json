@@ -1,7 +1,7 @@
 {
 	"@odata.context": "/redfish/v1/$metadata#Memory.Memory",
 	"@odata.id": "/redfish/v1/Systems/2/Memory/2",
-	"@odata.type": "#Memory.v1_0_0.Memory",
+	"@odata.type": "#Memory.v1_1_0.Memory",
 	"Name": "Regular Memory",
 	"Id": "2",
 	"RankCount": 2,

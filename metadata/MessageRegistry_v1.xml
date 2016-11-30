@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  MessageRegistry  v1.0.2-->
+<!--# Redfish Schema:  MessageRegistry  v1.0.3-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -58,7 +58,7 @@
         <Property Name="Language" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the RFC 5646 compliant language code for the registry."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a string consisting of an RFC 5646 language code"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a string consisting of an RFC 5646 language code."/>
           <Annotation Term="Redfish.Required"/>
         </Property>
         <Property Name="RegistryPrefix" Type="Edm.String" Nullable="false">
@@ -70,7 +70,7 @@
         <Property Name="RegistryVersion" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the message registry version which is used in the middle portion of a messageID."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the version of this message registry.   The format of this string shall be of the format majorversion.minorversion.errata in compliance with Protocol Version section of the Redfish specification"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the version of this message registry.   The format of this string shall be of the format majorversion.minorversion.errata in compliance with Protocol Version section of the Redfish specification."/>
           <Annotation Term="Redfish.Required"/>
         </Property>
         <Property Name="OwningEntity" Type="Edm.String" Nullable="false">
@@ -80,7 +80,6 @@
           <Annotation Term="Redfish.Required"/>
         </Property>
         <Property Name="Messages" Type="MessageRegistry.v1_0_0.MessageProperty" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The pattern property indicates that a free-form string is the unique identifier for the message within the registry."/>
           <Annotation Term="OData.LongDescription" String="The pattern property shall represent the suffix to be used in the MessageId and shall be unique within this message registry."/>
           <Annotation Term="Redfish.Required"/>
@@ -151,7 +150,13 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MessageRegistry.v1_0_2">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="MessageRegistry" BaseType="MessageRegistry.v1_0_0.MessageRegistry"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MessageRegistry.v1_0_3">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
+      <EntityType Name="MessageRegistry" BaseType="MessageRegistry.v1_0_2.MessageRegistry"/>
     </Schema>
 
   </edmx:DataServices>
