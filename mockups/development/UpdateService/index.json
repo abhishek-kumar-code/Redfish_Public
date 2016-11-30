@@ -5,7 +5,7 @@
     "Status": {
         "State": "Enabled",
         "Health": "OK",
-        "HealthRollUp": "OK"
+        "HealthRollup": "OK"
     },
     "ServiceEnabled": true,
     "HttpPushUri": "/update",
