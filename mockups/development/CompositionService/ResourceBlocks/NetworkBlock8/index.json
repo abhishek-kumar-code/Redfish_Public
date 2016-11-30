@@ -12,7 +12,8 @@
     "Available": false,
     "Processors": [],
     "Memory": [],
-    "Drives": [],
+    "Storage": [],
+    "SimpleStorage": [],
     "EthernetInterfaces": [
         {
             "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/NetworkBlock8/EthernetInterfaces/Port0"

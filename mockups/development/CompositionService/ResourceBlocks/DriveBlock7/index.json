@@ -12,18 +12,10 @@
     "Available": true,
     "Processors": [],
     "Memory": [],
-    "Drives": [
+    "Storage": [],
+    "SimpleStorage": [
         {
-            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock7/Drives/Slot0"
-        },
-        {
-            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock7/Drives/Slot1"
-        },
-        {
-            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock7/Drives/Slot2"
-        },
-        {
-            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock7/Drives/Slot3"
+            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/SimpleStorage/SASTray"
         }
     ],
     "Links": {

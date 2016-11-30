@@ -16,7 +16,8 @@
         }
     ],
     "Memory": [],
-    "Drives": [],
+    "Storage": [],
+    "SimpleStorage": [],
     "EthernetInterfaces": [],
     "Links": {
         "ComputerSystems": [],

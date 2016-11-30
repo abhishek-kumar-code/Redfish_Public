@@ -12,9 +12,9 @@
     "Available": true,
     "Processors": [],
     "Memory": [],
-    "Drives": [
+    "Storage": [
         {
-            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock5/Drives/Slot2"
+            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock5/Storage/NVMe"
         }
     ],
     "Links": {

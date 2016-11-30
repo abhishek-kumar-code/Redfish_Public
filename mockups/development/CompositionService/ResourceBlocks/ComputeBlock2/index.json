@@ -32,7 +32,8 @@
             "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock2/Memory/DIMM3"
         }
     ],
-    "Drives": [],
+    "Storage": [],
+    "SimpleStorage": [],
     "Links": {
         "ComputerSystems": [],
         "Chassis": [
