@@ -10,12 +10,17 @@
     "Description@Redfish.RequiredOnCreate": true,
     "Description@Redfish.SetOnlyOnCreate": true,
     "UUID@Redfish.AvailableInResource": true,
+    "UUID@Redfish.UpdatableAfterCreate": true,
     "HostName@Redfish.AvailableInResource": true,
+    "HostName@Redfish.UpdatableAfterCreate": true,
     "PowerState@Redfish.AvailableInResource": true,
+    "PowerState@Redfish.UpdatableAfterCreate": true,
     "Boot@Redfish.AvailableInResource": true,
     "Boot": {
         "BootSourceOverrideEnabled@Redfish.AvailableInResource": true,
+        "BootSourceOverrideEnabled@Redfish.UpdatableAfterCreate": true,
         "BootSourceOverrideTarget@Redfish.AvailableInResource": true,
+        "BootSourceOverrideTarget@Redfish.UpdatableAfterCreate": true,
         "BootSourceOverrideTarget@Redfish.AllowableValues": [
             "None",
             "Pxe",
@@ -25,6 +30,7 @@
     },
     "Links@Redfish.RequiredOnCreate": true,
     "Links": {
-        "ResourceBlocks@Redfish.RequiredOnCreate": true
+        "ResourceBlocks@Redfish.RequiredOnCreate": true,
+        "ResourceBlocks@Redfish.UpdatableAfterCreate": true,
     }
 }
