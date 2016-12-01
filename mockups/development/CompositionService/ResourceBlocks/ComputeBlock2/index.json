@@ -10,7 +10,10 @@
         "State": "Enabled",
         "Health": "OK"
     },
-    "Available": true,
+    "CompositionStatus": {
+        "Reserved": false,
+        "CompositionState": "Unused"
+    },
     "Processors": [
         {
             "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock2/Processors/CPU0"

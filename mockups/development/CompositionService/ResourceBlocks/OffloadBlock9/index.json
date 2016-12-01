@@ -10,7 +10,10 @@
         "State": "Enabled",
         "Health": "OK"
     },
-    "Available": false,
+    "CompositionStatus": {
+        "Reserved": false,
+        "CompositionState": "Unused"
+    },
     "Processors": [
         {
             "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/OffloadBlock9/Processors/GPU"

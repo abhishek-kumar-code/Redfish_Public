@@ -10,7 +10,10 @@
         "State": "Enabled",
         "Health": "OK"
     },
-    "Available": true,
+    "CompositionStatus": {
+        "Reserved": false,
+        "CompositionState": "Unused"
+    },
     "Processors": [],
     "Memory": [],
     "Storage": [],
