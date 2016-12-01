@@ -31,6 +31,6 @@
     "Links@Redfish.RequiredOnCreate": true,
     "Links": {
         "ResourceBlocks@Redfish.RequiredOnCreate": true,
-        "ResourceBlocksRedfish.UpdatableAfterCreate": true,
+        "ResourceBlocks@Redfish.UpdatableAfterCreate": true,
     }
 }
