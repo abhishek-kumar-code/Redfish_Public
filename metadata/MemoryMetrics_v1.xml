@@ -94,7 +94,7 @@
           <Annotation Term="OData.Description" String="Number of blocks read since reset."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be number of blocks read since reset."/>
         </Property>
-        <Property Name="BlocksWritten" Type="Edm.String">
+        <Property Name="BlocksWritten" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Number of blocks written since reset."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be mumber of blocks written since reset."/>
@@ -109,7 +109,7 @@
           <Annotation Term="OData.Description" String="Number of blocks read for the lifetime of the Memory."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be number of blocks read for the lifetime of the Memory."/>
         </Property>
-        <Property Name="BlocksWritten" Type="Edm.String">
+        <Property Name="BlocksWritten" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Number of blocks written for the lifetime of the Memory."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be number of blocks written for the lifetime of the Memory."/>
@@ -189,6 +189,13 @@
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="MemoryMetrics" BaseType="MemoryMetrics.v1_0_0.MemoryMetrics"/>
     </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MemoryMetrics.v1_0_2">
+      <Annotation Term="OData.Description" String="This version was created to show types in previous namespaces were updated."/>
+      <EntityType Name="MemoryMetrics" BaseType="MemoryMetrics.v1_0_1.MemoryMetrics"/>
+      <ComplexType Name="CurrentPeriod" BaseType="MemoryMetrics.v1_0_0.CurrentPeriod"/>
+      <ComplexType Name="LifeTime" BaseType="MemoryMetrics.v1_0_0.LifeTime"/>
+    </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MemoryMetrics.v1_1_0">
       <EntityType Name="MemoryMetrics" BaseType="MemoryMetrics.v1_0_0.MemoryMetrics"/>
@@ -205,6 +212,13 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MemoryMetrics.v1_1_1">
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="MemoryMetrics" BaseType="MemoryMetrics.v1_1_0.MemoryMetrics"/>
+    </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MemoryMetrics.v1_1_2">
+      <Annotation Term="OData.Description" String="This version was created to show types in previous namespaces were updated."/>
+      <EntityType Name="MemoryMetrics" BaseType="MemoryMetrics.v1_1_1.MemoryMetrics"/>
+      <ComplexType Name="CurrentPeriod" BaseType="MemoryMetrics.v1_0_0.CurrentPeriod"/>
+      <ComplexType Name="LifeTime" BaseType="MemoryMetrics.v1_0_0.LifeTime"/>
     </Schema>
 
   </edmx:DataServices>
