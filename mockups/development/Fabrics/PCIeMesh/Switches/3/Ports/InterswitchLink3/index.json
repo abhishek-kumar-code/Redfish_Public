@@ -12,7 +12,7 @@
 	"PortId": "20",
     "PortProtocol": "PCIe",
 	"PortType": "InterswitchPort",
-	"SpeedGbps": 128,
+	"CurrentSpeedGbps": 128,
 	"Width": 16,
 	"MaxSpeedGbps": 128,
 	"Actions": {

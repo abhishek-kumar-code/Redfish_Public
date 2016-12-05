@@ -8,7 +8,7 @@
     "MemoryChunks": {
         "@odata.id": "/redfish/v1/Systems/4/MemoryDomains/1/MemoryChunks"
     },
-    "AllowsMemoryRegionCreation": false,
+    "AllowsMemoryChunkCreation": false,
     "AllowsBlockProvisioning": false,
     "InterleavableMemorySets": [
         {
