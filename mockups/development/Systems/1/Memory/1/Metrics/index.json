@@ -22,8 +22,8 @@
         "AlarmTrips": {
             "Temperature": true,
             "SpareBlock": false,
-            "UncorrectableError": false,
-            "CorrectedError": false
+            "UncorrectableECCError": false,
+            "CorrectableECCError": false
         }
     },
     "Actions": {
