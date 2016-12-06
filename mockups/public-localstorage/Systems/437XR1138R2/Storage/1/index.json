@@ -6,7 +6,7 @@
     "Status": {
         "State": "Enabled",
         "Health": "OK",
-        "HealthRollUp": "OK"
+        "HealthRollup": "OK"
     },
     "StorageControllers": [
         {

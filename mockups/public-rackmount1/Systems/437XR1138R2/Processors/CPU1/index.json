@@ -8,7 +8,7 @@
     "Manufacturer": "Intel(R) Corporation",
     "Model": "Multi-Core Intel(R) Xeon(R) processor 7xxx Series",
     "ProcessorId": {
-        "VendorID": "GenuineIntel",
+        "VendorId": "GenuineIntel",
         "IdentificationRegisters": "0x34AC34DC8901274A",
         "EffectiveFamily": "0x42",
         "EffectiveModel": "0x61",
