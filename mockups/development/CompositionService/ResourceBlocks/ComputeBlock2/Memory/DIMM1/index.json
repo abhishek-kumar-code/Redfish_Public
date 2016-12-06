@@ -3,7 +3,7 @@
     "@odata.context": "/redfish/v1/$metadata#Memory.Memory",
     "@odata.type": "#Memory.v1_0_0.Memory",
     "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock2/Memory/DIMM1",
-    "Id": "DIMM1",
+    "Id": "Block2DIMM1",
     "Name": "DIMM Slot 1",
     "Status": {
         "State": "Enabled",

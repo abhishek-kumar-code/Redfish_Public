@@ -3,7 +3,7 @@
     "@odata.context": "/redfish/v1/$metadata#EthernetInterface.EthernetInterface",
     "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/NetworkBlock8/EthernetInterfaces/Port1",
     "@odata.type": "#EthernetInterface.v1_0_0.EthernetInterface",
-    "Id": "Port1",
+    "Id": "Block8Port1",
     "Name": "Ethernet Interface Port 1",
     "Status": {
         "State": "Enabled",

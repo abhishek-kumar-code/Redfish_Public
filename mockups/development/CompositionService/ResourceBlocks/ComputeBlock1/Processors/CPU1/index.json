@@ -3,7 +3,7 @@
     "@odata.context": "/redfish/v1/$metadata#Processor.Processor",
     "@odata.type": "#Processor.v1_0_2.Processor",
     "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock1/Processors/CPU1",
-    "Id": "CPU1",
+    "Id": "Block1CPU1",
     "Name": "Processor",
     "Status": {
         "State": "Enabled",

@@ -3,7 +3,7 @@
     "@odata.context": "/redfish/v1/$metadata#SimpleStorage.SimpleStorage",
     "@odata.type": "#SimpleStorage.v1_1_1.SimpleStorage",
     "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock7/SimpleStorage/SASTray",
-    "Id": "SASTray",
+    "Id": "Block7SASTray",
     "Name": "SAS Simple Storage",
     "Status": {
         "State": "Enabled",
