@@ -36,11 +36,9 @@
         }
     ],
     "Links": {
-        "Chassis": [
-            {
+        "Chassis": {
                 "@odata.id": "/redfish/v1/Chassis/Switch2"
-            }
-        ],
+        },
         "ManagedBy": [
             {
                 "@odata.id": "/redfish/v1/Managers/Switch1"
