@@ -12,5 +12,5 @@
         "ConfigureSelf",
 	"ConfigureComponents"
     ],
-    "OEMPrivileges": [ ]
+    "OemPrivileges": [ ]
 }

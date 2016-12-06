@@ -1,5 +1,5 @@
 {
-    "Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#NetworkDeviceFunction.NetworkDeviceFunction",
     "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/9fd725a1/NetworkDeviceFunctions/111111111100",
     "@odata.type": "#NetworkDeviceFunction.v1_0_0.NetworkDeviceFunction",
@@ -63,11 +63,11 @@
     },
     "AssignablePhysicalPorts": [
         {
-            "odata.id": "/redfish/v1/Chassis/1/NetworkAdapter/9fd725a1/NetworkPorts/1"
+            "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/9fd725a1/NetworkPorts/1"
         }
     ],
     "PhysicalPortAssignment": {
-        "odata.id": "/redfish/v1/Chassis/1/NetworkAdapter/9fd725a1/NetworkPorts/1"
+        "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/9fd725a1/NetworkPorts/1"
     },
     "BootMode": "Disabled",
     "VirtualFunctionsEnabled": true,

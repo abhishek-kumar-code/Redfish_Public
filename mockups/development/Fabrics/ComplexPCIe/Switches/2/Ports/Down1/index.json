@@ -12,7 +12,7 @@
 	"PortId": "7",
     "PortProtocol": "PCIe",
 	"PortType": "DownstreamPort",
-	"SpeedGbps": 32,
+	"CurrentSpeedGbps": 32,
 	"Width": 4,
 	"MaxSpeedGbps": 64,
 	"Actions": {

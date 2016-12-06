@@ -10,14 +10,14 @@
     "DeviceClass": "NetworkController",
     "DeviceId": "0xABCD",
     "VendorId": "0xABCD",
-    "ClassCode": "0x10802",
+    "ClassCode": "0x010802",
     "RevisionId": "0x00",
     "SubsystemId": "0xABCD",
     "SubsystemVendorId": "0xABCD",
     "Status": {
         "State": "Enabled",
         "Health": "OK",
-        "HealthRollUp": "OK"
+        "HealthRollup": "OK"
     },
     "Links": {
         "EthernetInterfaces": [

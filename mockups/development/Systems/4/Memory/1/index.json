@@ -2,10 +2,9 @@
     "@Redfish.Copyright":"Copyright (c) 2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",    
     "@odata.context": "/redfish/v1/$metadata#Memory.Memory",
     "@odata.id": "/redfish/v1/Systems/4/Memory/1",
-    "@odata.type": "#Memory.v1_0_0.Memory",
+    "@odata.type": "#Memory.v1_1_0.Memory",
     "Name": "NVDIMM",
     "Id": "1",
-    "MemoryUID": 1,
     "MemoryType": "NVDIMM_N",
     "MemoryDeviceType": "DDR4",
     "BaseModuleType": "LRDIMM",
@@ -19,7 +18,7 @@
     "Manufacturer": "Contoso",
     "SerialNumber": "1A2B3B",
     "PartNumber": "1A2B3D",
-    "AllowedSpeedsMhz": [
+    "AllowedSpeedsMHz": [
         2133,
         2400,
         2667
@@ -41,7 +40,7 @@
     ],
     "SecurityCapabilities": {
         "PassphraseCapable": true,
-        "MaxPassphraseRegionCount": 4,
+        "MaxPassphraseCount": 4,
         "SecurityStates": [
             "enabled",
             "unlocked"

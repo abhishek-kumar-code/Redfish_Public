@@ -11,12 +11,6 @@
     "SKU": "67B",
     "SerialNumber": "2M220100SL",
     "PartNumber": "76-88883",
-    "Identifiers": [
-        {
-            "DurableNameFormat": "NAA",
-            "DurableName": "5000039401010200"
-        }
-    ],
 	"Ports": {
 		"@odata.id": "/redfish/v1/Fabrics/SAS/Switches/2/Ports"
 	},
@@ -42,7 +36,7 @@
         }
     ],
 	"Links": {
-		"Chassis": [],
+		"Chassis": {},
 		"ManagedBy": [],
 		"Oem": {}
 	},

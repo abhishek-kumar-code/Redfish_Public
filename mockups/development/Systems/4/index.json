@@ -1,12 +1,12 @@
 {
-    "@odata.type": "#ComputerSystem.v1_1_0.ComputerSystem",
+    "@odata.type": "#ComputerSystem.v1_2_0.ComputerSystem",
     "Name": "Memory Subsystem Example",
     "SystemType": "Physical",
     "UUID": "00000000-0000-0000-0000-000000000000",
     "Status": {
         "State": "Enabled",
         "Health": "OK",
-        "HealthRollUp": "OK"
+        "HealthRollup": "OK"
     },
     "PowerState": "On",	
     "Memory": {

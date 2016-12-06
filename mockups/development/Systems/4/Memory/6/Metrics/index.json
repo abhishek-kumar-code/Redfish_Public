@@ -5,26 +5,26 @@
     "@odata.type": "#MemoryMetrics.v1_1_0.MemoryMetrics",
     "Name": "Memory Metrics",
     "Id": "Metrics",
-    "BlockSizeB": 4096,
+    "BlockSizeBytes": 4096,
     "CurrentPeriod": {
         "BlocksRead": 0,
         "BlocksWritten": 0
     },
-    "Lifetime": {
+    "LifeTime": {
         "BlocksRead": 0,
         "BlocksWritten": 0
     },
     "HealthData": {
         "RemainingSpareBlockPercentage": 50,
         "PredictedMediaLifeLeftPercent": 75,
-        "IsLastShutdownSuccess": true,
+        "LastShutdownSuccess": true,
         "DataLossDetected": false,
         "PerformanceDegraded": false,
         "AlarmTrips": {
             "Temperature": true,
             "SpareBlock": false,
-            "UncorrectableError": false,
-            "CorrectedError": false
+            "UncorrectableECCError": false,
+            "CorrectableECCError": false
         }
     },
     "Actions": {

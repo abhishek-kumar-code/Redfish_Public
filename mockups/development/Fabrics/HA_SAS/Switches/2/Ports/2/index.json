@@ -12,7 +12,7 @@
 	"PortId": "2",
     "PortProtocol": "SAS",
 	"PortType": "BidirectionalPort",
-	"SpeedGbps": 24,
+	"CurrentSpeedGbps": 24,
 	"Width": 4,
 	"MaxSpeedGbps": 48,
 	"Actions": {

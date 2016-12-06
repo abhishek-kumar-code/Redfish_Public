@@ -9,10 +9,8 @@
     "Status": {
         "State": "Enabled",
         "Health": "OK",
-        "HealthRollUp": "OK"
+        "HealthRollup": "OK"
     },
-    "EncryptionType": "LKM",
-    "EncryptionKeySet": true,
     "StorageControllers": [
         {
             "@odata.id": "/redfish/v1/Systems/3/Storage/RAIDIntegrated#/StorageControllers/0",

@@ -15,7 +15,7 @@
 		"@odata.id": "/redfish/v1/Fabrics/PCIe/Switches/1/Ports"
 	},
 	"Links": {
-		"Chassis": [],
+		"Chassis": {},
 		"ManagedBy": [],
 		"Oem": {}
 	},
