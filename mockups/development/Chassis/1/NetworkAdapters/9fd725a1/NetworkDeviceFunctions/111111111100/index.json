@@ -63,11 +63,11 @@
     },
     "AssignablePhysicalPorts": [
         {
-            "odata.id": "/redfish/v1/Chassis/1/NetworkAdapter/9fd725a1/NetworkPorts/1"
+            "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/9fd725a1/NetworkPorts/1"
         }
     ],
     "PhysicalPortAssignment": {
-        "odata.id": "/redfish/v1/Chassis/1/NetworkAdapter/9fd725a1/NetworkPorts/1"
+        "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/9fd725a1/NetworkPorts/1"
     },
     "BootMode": "Disabled",
     "VirtualFunctionsEnabled": true,

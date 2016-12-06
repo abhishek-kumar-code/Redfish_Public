@@ -8,7 +8,7 @@
     "SKU":"Backplane",
     "Manufacturer":"Manufacturer Name",
     "Model":"Backplane with 8 slots",
-    "ChassisType":"StorageEnclosure",
+    "ChassisType":"Enclosure",
     "Status":{
         "State":"Enabled",
         "Health":"OK"
