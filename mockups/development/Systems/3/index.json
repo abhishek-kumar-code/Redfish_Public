@@ -18,7 +18,7 @@
     "Status": {
         "State": "Enabled",
         "Health": "OK",
-        "HealthRollUp": "OK"
+        "HealthRollup": "OK"
     },
     "IndicatorLED": "Off",
     "PowerState": "On",
@@ -49,7 +49,7 @@
         "Status": {
             "State": "Enabled",
             "Health": "OK",
-            "HealthRollUp": "OK"
+            "HealthRollup": "OK"
         }
     },
     "MemorySummary": {
@@ -57,7 +57,7 @@
         "Status": {
             "State": "Enabled",
             "Health": "OK",
-            "HealthRollUp": "OK"
+            "HealthRollup": "OK"
         }
     },
     "TrustedModules": [

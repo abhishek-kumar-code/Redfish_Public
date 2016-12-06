@@ -5,7 +5,7 @@
     "IndicatorLED": "Lit",
     "StatusIndicator": "Fail",
     "Model": "Drive Model string",
-    "Status": { "State": "Enabled", "Health": "Degraded" },
+    "Status": { "State": "Enabled", "Health": "Warning" },
     "CapacityBytes": 899527000000,
     "Protocol": "SATA",
     "MediaType": "SSD",

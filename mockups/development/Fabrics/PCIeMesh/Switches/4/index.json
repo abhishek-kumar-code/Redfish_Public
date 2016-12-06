@@ -11,12 +11,12 @@
     "SKU": "97LANEPCI",
     "SerialNumber": "MYSERIALNUMBER4",
     "PartNumber": "1776-1883",
-	"DomainID": "43458",
+	"DomainID": 43458,
 	"IsManaged": true,
 	"TotalSwitchWidth": 97,
 	"Status": {
 		"State": "Enabled",
-		"Health": "Ok",
+		"Health": "OK",
 		"HealthRollup": "Warning"
 	},
 	"PowerState": "On",
@@ -24,11 +24,7 @@
 		"@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/4/Ports"
 	},
 	"Links": {
-		"Chassis": [
-            {"@odata.id": "/redfish/v1/Chassis/PCIeSwitch4"},
-            {"@odata.id": "/redfish/v1/Chassis/PCIeSwitchRackMount"}, 
-			{"@odata.id": "/redfish/v1/Chassis/PCIeSwitchMgrHW"}	
-		],
+		"Chassis": {"@odata.id": "/redfish/v1/Chassis/PCIeSwitch4"},
 		"ManagedBy": [
 			{"@odata.id": "/redfish/v1/Managers/PCIeSwitchManager"}
 		],

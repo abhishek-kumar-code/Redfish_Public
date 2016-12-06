@@ -9,7 +9,7 @@
     "Manufacturer":"Manufacturer Name",
     "AssetTag":"External Enclosure",
     "Model":"External Enclosure",
-    "ChassisType":"Rackmount",
+    "ChassisType":"RackMount",
     "IndicatorLED":"Lit",
     "Status":{
         "State":"Enabled",
