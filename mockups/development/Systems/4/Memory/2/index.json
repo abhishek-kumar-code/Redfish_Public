@@ -40,7 +40,7 @@
     ],
     "SecurityCapabilities": {
         "PassphraseCapable": true,
-        "MaxPassphraseRegionCount": 4,
+        "MaxPassphraseCount": 4,
         "SecurityStates": [
             "enabled",
             "unlocked"

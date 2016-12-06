@@ -10,7 +10,7 @@
     "Status": {
         "State": "Enabled",
         "Health": "OK",
-        "HealthRollUp": "Degraded"
+        "HealthRollup": "Warning"
     },
     "Devices": [
         {
@@ -32,7 +32,7 @@
 	    "CapacityBytes": 68719476736,
             "Status": {
                 "State": "Enabled",
-                "Health": "Degraded"
+                "Health": "Warning"
             }
         },
         {

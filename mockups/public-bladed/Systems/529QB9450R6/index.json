@@ -11,7 +11,7 @@
     "Status": {
         "State": "Enabled",
         "Health": "OK",
-        "HealthRollUp": "OK"
+        "HealthRollup": "OK"
     },
     "IndicatorLED": "Off",
     "PowerState": "On",
@@ -31,11 +31,11 @@
     "BiosVersion": "P86 v1.58 (10/15/2015)",
     "ProcessorSummary": {
         "Count": 1,
-        "ProcessorFamily": "Multi-Core Intel(R) Xeon(R) processor E5-16xx Series",
+        "Model": "Multi-Core Intel(R) Xeon(R) processor E5-16xx Series",
         "Status": {
             "State": "Enabled",
             "Health": "OK",
-            "HealthRollUp": "OK"
+            "HealthRollup": "OK"
         }
     },
     "MemorySummary": {
@@ -43,7 +43,7 @@
         "Status": {
             "State": "Enabled",
             "Health": "OK",
-            "HealthRollUp": "OK"
+            "HealthRollup": "OK"
         }
     },
     "Processors": {
@@ -79,7 +79,7 @@
             ]
         }
     },
-    "@odata.context": "/redfish/v1/$metadata#Systems/Members/$entity",
+    "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
     "@odata.id": "/redfish/v1/Systems/529QB9450R6",
     "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

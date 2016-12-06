@@ -6,7 +6,7 @@
     "Model": "ST9146802SS",
     "Revision": "S20A",
     "Status": { "State": "Enabled", "Health": "OK" },
-    "CapacityBytes": "899527000000",
+    "CapacityBytes": 899527000000,
     "FailurePredicted": false,
     "Protocol": "SAS",
     "MediaType": "HDD",

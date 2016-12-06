@@ -1228,7 +1228,7 @@ returned with a <code>rel=describedby</code>.  URLs of the JSON Schema for an an
 <p>The resource identifier is the canonical URL for the resource and can be used to retrieve or edit the resource, as appropriate.</p>
 <h5 id="type-property">6.5.4.3. Type property</h5>
 <p>All resources in a response shall include a type property named "@odata.type". The value of the type property shall be a URL fragment that specifies the type of the resource as defined within, or referenced by, the <a href="#service-metadata">metadata document</a> and shall be of the form:</p>
-<p> <em>*#</em>Namespace<em>.</em>TypeName*</p>
+<p> #<em>Namespace</em>.<em>TypeName</em></p>
 <p>where</p>
 <ul>
 <li><em>Namespace</em> = The full namespace name of the Redfish Schema in which the type is defined. For Redfish resources this will be the versioned namespace name.</li>
@@ -1291,7 +1291,7 @@ returned with a <code>rel=describedby</code>.  URLs of the JSON Schema for an an
 <p>Available actions for a resource are represented as individual properties nested under a single structured property on the resource named "Actions".</p>
 <h6 id="action-representation">6.5.4.7.1. Action representation</h6>
 <p>Actions are represented by a property nested under "Actions" whose name is the unique URI that identifies the action. This URI shall be of the form:</p>
-<p>  <em>*#</em>Namespace<em>.</em>ActionName*</p>
+<p> #<em>Namespace</em>.<em>ActionName</em></p>
 <p>where</p>
 <ul>
 <li><em>Namespace</em> = The namespace used in the reference to the Redfish Schema in which the action is defined. For Redfish resources this shall be the version-independent namespace.</li>
@@ -1610,14 +1610,14 @@ returned with a <code>rel=describedby</code>.  URLs of the JSON Schema for an an
 <p>Programs may access the Schema Repository using the redfish.dmtf.org/schemas/v1 durable URL, as this folder will contain each released version of each schema.  Programs incorporating schema usage should implement a local schema cache to reduce latency, program requirements for Internet access and undue traffic burden on the DMTF website.</p>
 <h3 id="type-identifiers">7.2. Type identifiers</h3>
 <p>Types are identified by a <em>Type URI</em>. The URI for a type is of the form:</p>
-<p> <em>*#</em>Namespace<em>.</em>TypeName*</p>
+<p>  #<em>Namespace</em>.<em>TypeName</em></p>
 <p>where</p>
 <ul>
 <li><em>Namespace</em> = the name of the namespace in which the type is defined</li>
 <li><em>TypeName</em> = the name of the type</li>
 </ul>
 <p>The namespace for types defined by this specification is of the form:</p>
-<p> <em>ResourceTypeName</em>.v<em>MajorVersion</em><em><em>MinorVersion</em></em><em>Errata</em></p>
+<p>  <em>ResourceTypeName</em>.v<em>MajorVersion</em>_<em>MinorVersion</em>_<em>Errata</em></p>
 <p>where</p>
 <ul>
 <li><em>ResourceTypeName</em> = the name of the resource type. For <a href="#structured-types">structured (complex) types</a>, <a href="#enums">enumerations</a>, and <a href="#resource-actions">actions</a>, this is generally the name of the containing resource type.</li>

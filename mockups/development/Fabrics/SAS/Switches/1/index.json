@@ -36,7 +36,7 @@
         }
     ],
 	"Links": {
-		"Chassis": [],
+		"Chassis": {},
 		"ManagedBy": [],
 		"Oem": {}
 	},
