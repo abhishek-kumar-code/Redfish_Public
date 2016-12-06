@@ -2,24 +2,23 @@
 DocTitle: Scalable Platforms Management API Mockup Readme
 DocNumber: '2043'
 DocClass: Informative
-DocVersion: '1.0.0'
-modified: '2016-06-28'
+DocVersion: '1.1.0'
+modified: '2016-12-16'
 status: released
 released: true
 copyright: '2015-2016'
 ---
 # Foreword
 
-The following files are part of the Redfish Scalable Platforms Management API ("Redfish") development effort
+The following files are part of the Redfish Scalable Platforms Management API ("Redfish") development effort:
 
-* Specification.md - this file is the main Redfish Scalable Platforms Management API Specification
-* Whitepaper.md - this is intended to be a non-normative document helping those new to Redfish understand how to interact with the Redfish service and understand common functions and tasks.
-* Readme2043.md - this document.
-* Readme8010.md - Schema Readme
+* DSP0226 - Redfish Specification - This file is the main Redfish Scalable Platforms Management API Specification.
+* DSP0270 - Redfish Host Interface Specification - This document specifies the "in-band" or "OS-based" Redfish Host Interface. 
+* DSP2044 - Redfish Whitepaper - This is intended to be a non-normative document helping those new to Redfish understand how to interact with the Redfish Service and understand common functions and tasks.
 
 These other components are part of the Redfish Scalable Platforms Management API development effort
-* Mockup (DSP2043) - this is a mockup that can be used as sample of output from GETs from A Redfish service.  Informative in nature, it was used to develop the schema.  A person can set up an NGINX or similar server and configure it to output JSON format and then use this directory for demonstration purposes.
-* Schema - this contains the Redfish Schema definitions.  These files are normative in nature and are normatively reference by the Redfish Specification.  There are two Schema formats - CSDL (OData Common Schema Definition Language format which is in XML) and JSON Schema.  These Schema defintions should be functionally equivalent, thus specifying the schema in two different languages.
+* DSP2043 - Redfish Mockup - this is set of mockups that can be used as sample of output from GETs from A Redfish service.  Informative in nature, it was used to develop the schema.  A person can set up an NGINX or similar server and configure it to output JSON format and then use this directory for demonstration purposes.
+* DSP8010 - Redfish Schema - This contains the Redfish Schema definitions.  These files are normative in nature and are normatively referenced by the Redfish Specification.  There are two Schema formats - CSDL (OData Common Schema Definition Language format, which is in XML) and JSON Schema.  These Schema definitions should be functionally equivalent, thus specifying the schema in two different languages.
 
 # Redfish Mockups
 
@@ -38,6 +37,14 @@ This illustration of a Redfish service implementation shows a typical rack-mount
 ## Bladed Server (public-bladed)
 
 This example represents an enclosure of “blade servers” that share infrastructure components, such as power supplies and fans. Depicting an enclosure containing four blade servers (a total of five “Chassis”), this mockup demonstrates the modeling of multiple chassis and systems managed from a single Redfish service.
+
+## Local Storage (public-localstorage)
+
+This example shows a server with an implementation of the Redfish storage schemas, showing an integrated RAID controller with four attached drives.
+
+## SAS Fabric (public-sasfabric)
+
+This example shows a more complex storage implementation using a pair of SAS switches (fabric), storage enclosures and multiple storage devices.
 
 ## Proposed OCP Redfish Profile (proposed-ocp-profile)
 
