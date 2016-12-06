@@ -191,10 +191,8 @@
     </Schema>
     
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MemoryMetrics.v1_0_2">
-      <Annotation Term="OData.Description" String="This version was created to show types in previous namespaces were updated."/>
+      <Annotation Term="OData.Description" String="This version was created to show BlocksWritten in CurrentPeriod and LifeTime ComplexTypes in previous namespaces were updated."/>
       <EntityType Name="MemoryMetrics" BaseType="MemoryMetrics.v1_0_1.MemoryMetrics"/>
-      <ComplexType Name="CurrentPeriod" BaseType="MemoryMetrics.v1_0_0.CurrentPeriod"/>
-      <ComplexType Name="LifeTime" BaseType="MemoryMetrics.v1_0_0.LifeTime"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MemoryMetrics.v1_1_0">
@@ -215,10 +213,8 @@
     </Schema>
     
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MemoryMetrics.v1_1_2">
-      <Annotation Term="OData.Description" String="This version was created to show types in previous namespaces were updated."/>
+      <Annotation Term="OData.Description" String="This version was created to show BlocksWritten in CurrentPeriod and LifeTime ComplexTypes in previous namespaces were updated."/>
       <EntityType Name="MemoryMetrics" BaseType="MemoryMetrics.v1_1_1.MemoryMetrics"/>
-      <ComplexType Name="CurrentPeriod" BaseType="MemoryMetrics.v1_0_0.CurrentPeriod"/>
-      <ComplexType Name="LifeTime" BaseType="MemoryMetrics.v1_0_0.LifeTime"/>
     </Schema>
 
   </edmx:DataServices>
