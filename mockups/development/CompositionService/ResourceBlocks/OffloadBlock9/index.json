@@ -16,7 +16,7 @@
     },
     "Processors": [
         {
-            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/OffloadBlock9/Processors/GPU"
+            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/OffloadBlock9/Processors/Block9GPU"
         }
     ],
     "Memory": [],

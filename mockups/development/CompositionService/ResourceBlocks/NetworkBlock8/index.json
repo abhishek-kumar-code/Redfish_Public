@@ -20,10 +20,10 @@
     "SimpleStorage": [],
     "EthernetInterfaces": [
         {
-            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/NetworkBlock8/EthernetInterfaces/Port0"
+            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/NetworkBlock8/EthernetInterfaces/Block8Port0"
         },
         {
-            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/NetworkBlock8/EthernetInterfaces/Port1"
+            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/NetworkBlock8/EthernetInterfaces/Block8Port1"
         }
     ],
     "Links": {

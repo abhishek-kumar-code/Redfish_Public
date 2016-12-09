@@ -16,24 +16,24 @@
     },
     "Processors": [
         {
-            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock2/Processors/CPU0"
+            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock2/Processors/Block2CPU0"
         },
         {
-            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock2/Processors/CPU1"
+            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock2/Processors/Block2CPU1"
         }
     ],
     "Memory": [
         {
-            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock2/Memory/DIMM0"
+            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock2/Memory/Block2DIMM0"
         },
         {
-            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock2/Memory/DIMM1"
+            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock2/Memory/Block2DIMM1"
         },
         {
-            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock2/Memory/DIMM2"
+            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock2/Memory/Block2DIMM2"
         },
         {
-            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock2/Memory/DIMM3"
+            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock2/Memory/Block2DIMM3"
         }
     ],
     "Storage": [],

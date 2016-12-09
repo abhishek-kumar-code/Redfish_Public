@@ -7,10 +7,10 @@
     "Members@odata.count": 2,
     "Members": [
         {
-            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock3/Storage/NVMe"
+            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock3/Storage/Block3NVMe"
         },
         {
-            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock4/Storage/NVMe"
+            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock4/Storage/Block4NVMe"
         }
      ]
 }

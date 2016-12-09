@@ -19,7 +19,7 @@
     "Storage": [],
     "SimpleStorage": [
         {
-            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock7/SimpleStorage/SASTray"
+            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock7/SimpleStorage/Block7SASTray"
         }
     ],
     "Links": {

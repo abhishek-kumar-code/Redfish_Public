@@ -18,7 +18,7 @@
     "Memory": [],
     "Storage": [
         {
-            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock4/Storage/NVMe"
+            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock4/Storage/Block4NVMe"
         }
     ],
     "Links": {
