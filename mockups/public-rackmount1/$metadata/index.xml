@@ -55,13 +55,6 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/LogEntryCollection_v1.xml">
     <edmx:Include Namespace="LogEntryCollection"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Role_v1.xml">
-    <edmx:Include Namespace="Role"/>
-    <edmx:Include Namespace="Role.v1_0_2"/>
-  </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RoleCollection_v1.xml">
-    <edmx:Include Namespace="RoleCollection"/>
-  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/LogService_v1.xml">
     <edmx:Include Namespace="LogService"/>
     <edmx:Include Namespace="LogService.v1_0_2"/>
@@ -101,6 +94,13 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Power_v1.xml">
     <edmx:Include Namespace="Power"/>
     <edmx:Include Namespace="Power.v1_1_0"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Role_v1.xml">
+    <edmx:Include Namespace="Role"/>
+    <edmx:Include Namespace="Role.v1_0_2"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RoleCollection_v1.xml">
+    <edmx:Include Namespace="RoleCollection"/>
   </edmx:Reference>
   <edmx:Reference Url="http://redfish.dmtf.org/schemas/v1/SerialInterface_v1.xml">
     <edmx:Include Namespace="SerialInterface"/>
