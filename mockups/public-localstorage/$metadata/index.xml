@@ -148,7 +148,7 @@
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Thermal_v1.xml">
     <edmx:Include Namespace="Thermal"/>
-    <edmx:Include Namespace="Thermal.v1_1_0"/>
+    <edmx:Include Namespace="Thermal.v1_0_2"/>
   </edmx:Reference>
   <edmx:Reference Url="http://redfish.dmtf.org/schemas/v1/VirtualMedia_v1.xml">
     <edmx:Include Namespace="VirtualMedia"/>

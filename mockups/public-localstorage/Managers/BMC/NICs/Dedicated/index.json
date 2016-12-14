@@ -57,7 +57,7 @@
         "names.dmtf.org"
     ],
     "@Redfish.Settings": {
-        "@odata.type": "#Settings.v1_0_2.Settings",
+        "@odata.type": "#Settings.v1_0_0.Settings",
         "SettingsObject": {
             "@odata.id": "/redfish/v1/Managers/BMC/NICs/Dedicated/SD"
         },
