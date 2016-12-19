@@ -9,6 +9,7 @@
         "State": "Enabled",
         "Health": "OK"
     },
+    "ServiceEnabled": true,
     "ResourceBlocks": [
         {
             "Blocks": {
