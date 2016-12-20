@@ -84,7 +84,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The Revision ID of this PCIe function."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the PCI Revision ID of the PCIe device function."/>
-          <Annotation Term="Validation.Pattern" String="^0[xX](([a-fA-F]|[0-9]){2}){1}"/>
+          <Annotation Term="Validation.Pattern" String="^0[xX](([a-fA-F]|[0-9]){2}){1}$"/>
         </Property>
         <Property Name="SubsystemId" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
