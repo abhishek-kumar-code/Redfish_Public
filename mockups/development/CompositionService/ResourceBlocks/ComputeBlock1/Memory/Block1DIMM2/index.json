@@ -1,7 +1,7 @@
 {
     "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.",
     "@odata.context": "/redfish/v1/$metadata#Memory.Memory",
-    "@odata.type": "#Memory.v1_0_0.Memory",
+    "@odata.type": "#Memory.v1_2_0.Memory",
     "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock1/Memory/Block1DIMM2",
     "Id": "Block1DIMM2",
     "Name": "DIMM Slot 2",

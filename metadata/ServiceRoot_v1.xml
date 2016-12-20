@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  ServiceRoot  v1.1.1-->
+<!--# Redfish Schema:  ServiceRoot  v1.2.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -69,6 +69,9 @@
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/UpdateService_v1.xml">
     <edmx:Include Namespace="UpdateService"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/CompositionService_v1.xml">
+    <edmx:Include Namespace="CompositionService"/>
   </edmx:Reference>
 
   <edmx:DataServices>
@@ -250,6 +253,23 @@
       </EntityContainer>
 
       <EntityType Name="ServiceRoot" BaseType="ServiceRoot.v1_1_0.ServiceRoot"/>
+
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ServiceRoot.v1_2_0">
+
+      <EntityContainer Name="ServiceContainer" Extends="ServiceRoot.v1_1_1.ServiceContainer">
+        <Singleton Name="CompositionService" Type="CompositionService.CompositionService"/>
+      </EntityContainer>
+
+      <EntityType Name="ServiceRoot" BaseType="ServiceRoot.v1_1_1.ServiceRoot">
+        <NavigationProperty Name="CompositionService" Type="CompositionService.CompositionService" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This is a link to the CompositionService."/>
+          <Annotation Term="OData.LongDescription" String="The classes structure shall only contain a reference to a resource that complies to the CompositionService schema."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+      </EntityType>
 
     </Schema>
 

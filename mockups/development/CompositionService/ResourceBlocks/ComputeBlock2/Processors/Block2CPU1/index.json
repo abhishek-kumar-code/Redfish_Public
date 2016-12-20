@@ -1,7 +1,7 @@
 {
     "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.",
     "@odata.context": "/redfish/v1/$metadata#Processor.Processor",
-    "@odata.type": "#Processor.v1_0_2.Processor",
+    "@odata.type": "#Processor.v1_1_0.Processor",
     "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock2/Processors/Block2CPU1",
     "Id": "Block2CPU1",
     "Name": "Processor",
