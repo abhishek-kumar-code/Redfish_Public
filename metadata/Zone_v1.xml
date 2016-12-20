@@ -72,7 +72,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Zone.v1_1_0">
-      <EntityType Name="Zone" BaseType="Zone.v1_0_1.Zone">
+      <EntityType Name="Zone" BaseType="Zone.v1_0_1.Zone"/>
 
       <ComplexType Name="Links" BaseType="Zone.v1_0_0.Links">
         <NavigationProperty Name="ResourceBlocks" Type="Collection(ResourceBlock.ResourceBlock)" Nullable="false">

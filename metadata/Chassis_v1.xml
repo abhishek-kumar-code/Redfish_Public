@@ -490,7 +490,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_5_0">
-      <EntityType Name="Chassis" BaseType="Chassis.v1_4_0.Chassis">
+      <EntityType Name="Chassis" BaseType="Chassis.v1_4_0.Chassis"/>
 
       <ComplexType Name="Links" BaseType="Chassis.v1_4_0.Links">
         <NavigationProperty Name="ResourceBlocks" Type="Collection(ResourceBlock.ResourceBlock)" Nullable="false">
