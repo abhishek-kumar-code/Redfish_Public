@@ -1,0 +1,22 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+	"@odata.context": "/redfish/v1/$metadata#NetworkDevices/Members/$entity",
+   	"@odata.type": "#NetworkDevice.v1_0_0.NetworkDevice",
+  	"@odata.id": "/redfish/v1/NetworkDevices/ESwitch_01",
+  	"Id": "ESwitch_01",
+
+	"NetworkDeviceType": "BaselineEthernetSwitch",
+  	"Name": "Ethernet Switch",
+  	"Manufacturer": "Manufacturer Name",
+  	"Model": "Model Name",
+  	"SKU": "67B",
+  	"SerialNumber": "2M220100SL",
+   	"PartNumber": "76-88883",
+
+   	"Services": [
+		{ "ietf_ntp":  { "@odata.id": "/redfish/v1/NetworkDevices/ESwitch_01/ietf_ntp" }
+	],
+
+	"ietf_interfaces": { "@odata.id": "/redfish/v1/NetworkDevices/ESwitch_01/ietf_interfaces" },  	
+	"ietf_system": { "@odata.id": "/redfish/v1/NetworkDevices/ESwitch_01/ietf_system" },
+}
