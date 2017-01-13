@@ -7,7 +7,7 @@
     "Name": "Capabilities for the Zone",
     "Name@Redfish.RequiredOnCreate": true,
     "Name@Redfish.SetOnlyOnCreate": true,
-    "Description@Redfish.RequiredOnCreate": true,
+    "Description@Redfish.OptionalOnCreate": true,
     "Description@Redfish.SetOnlyOnCreate": true,
     "UUID@Redfish.OptionalOnCreate": true,
     "UUID@Redfish.UpdatableAfterCreate": true,
