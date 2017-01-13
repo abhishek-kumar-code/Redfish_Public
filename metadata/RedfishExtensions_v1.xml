@@ -17,8 +17,8 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Settings_v1.xml">
     <edmx:Include Namespace="Settings"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Capabilities_v1.xml">
-    <edmx:Include Namespace="Capabilities"/>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/CollectionCapabilities_v1.xml">
+    <edmx:Include Namespace="CollectionCapabilities"/>
   </edmx:Reference>
 
   <edmx:DataServices>
@@ -67,7 +67,7 @@
       <Term Name="UpdatableAfterCreate" Type="Edm.Boolean" DefaultValue="true">
         <Annotation Term="OData.Description" String="The term specifies that a property may be set by a client using PATCH after creating a new instance of a resource via POST."/>
       </Term>
-      <Term Name="Capabilities" Type="Capabilities.Capabilities">
+      <Term Name="CollectionCapabilities" Type="CollectionCapabilities.CollectionCapabilities">
         <Annotation Term="OData.Description" String="Reference to the resource that represents the POST capabilities of a given collection."/>
       </Term>
 

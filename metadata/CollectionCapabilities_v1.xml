@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Capabilities  v1.0.0-->
+<!--# Redfish Schema:  CollectionCapabilities  v1.0.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -20,13 +20,13 @@
 
   <edmx:DataServices>
 
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Capabilities">
-      <ComplexType Name="Capabilities" Abstract="true"/>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="CollectionCapabilities">
+      <ComplexType Name="CollectionCapabilities" Abstract="true"/>
     </Schema>
 
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Capabilities.v1_0_0">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="CollectionCapabilities.v1_0_0">
 
-      <ComplexType Name="Capabilities" BaseType="Capabilities.Capabilities">
+      <ComplexType Name="CollectionCapabilities" BaseType="CollectionCapabilities.CollectionCapabilities">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <NavigationProperty Name="TargetCollection" Type="Resource.ResourceCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
