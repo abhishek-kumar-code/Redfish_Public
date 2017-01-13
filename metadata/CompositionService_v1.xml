@@ -64,33 +64,19 @@
           <Annotation Term="OData.Description" String="This indicates whether this service is enabled."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this service is enabled."/>
         </Property>
-        <Property Name="ResourceBlocks" Type="Collection(CompositionService.v1_0_0.ResourceBlocks)" Nullable="false">
-          <Annotation Term="OData.Description" String="The sets of resource blocks available on the service."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall contain an array of ResourceBlocks available to this service."/>
-        </Property>
-        <Property Name="ResourceZones" Type="Collection(CompositionService.v1_0_0.ResourceZones)" Nullable="false">
-          <Annotation Term="OData.Description" String="The sets of resource zones available on the service."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall contain an array of ResourceZones available to this service."/>
-        </Property>
-      </EntityType>
-
-      <ComplexType Name="ResourceBlocks">
-        <NavigationProperty Name="Blocks" Type="ResourceBlockCollection.ResourceBlockCollection" Nullable="false">
+        <NavigationProperty Name="ResourceBlocks" Type="ResourceBlockCollection.ResourceBlockCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Link to a collection of Resource Blocks."/>
+          <Annotation Term="OData.Description" String="The resource blocks available on the service."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the link to a collection of type ResourceBlockCollection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-      </ComplexType>
-
-      <ComplexType Name="ResourceZones">
-        <NavigationProperty Name="Zones" Type="ZoneCollection.ZoneCollection" Nullable="false">
+        <NavigationProperty Name="ResourceZones" Type="ZoneCollection.ZoneCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Link to a collection of Zones."/>
+          <Annotation Term="OData.Description" String="The resource zones available on the service."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the link to a collection of type ZoneCollection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-      </ComplexType>
+      </EntityType>
 
     </Schema>
 

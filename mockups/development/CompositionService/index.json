@@ -10,18 +10,10 @@
         "Health": "OK"
     },
     "ServiceEnabled": true,
-    "ResourceBlocks": [
-        {
-            "Blocks": {
-                "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks"
-            }
-        }
-    ],
-    "ResourceZones": [
-        {
-            "Zones": {
-                "@odata.id": "/redfish/v1/CompositionService/ResourceZones"
-            }
-        }
-    ]
+    "ResourceBlocks": {
+        "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks"
+    },
+    "ResourceZones": {
+        "@odata.id": "/redfish/v1/CompositionService/ResourceZones"
+    }
 }
