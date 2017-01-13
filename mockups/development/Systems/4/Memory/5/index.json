@@ -45,6 +45,10 @@
     },
     "OperatingSpeedMhz": 2400,
     "VolatileRegionSizeLimitMiB": 8192,
+    "VolatileRegionNumberLimit" : 1,
+    "VolatileRegionSizeMaxMiB" : 8192,
+    "AllocationIncrementMiB": 1,
+    "AllocationAlignmentMiB": 1,    
     "Regions": [
         {
             "RegionId": "1",
