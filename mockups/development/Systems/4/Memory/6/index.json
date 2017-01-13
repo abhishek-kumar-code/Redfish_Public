@@ -59,6 +59,10 @@
     },
     "OperatingSpeedMhz": 2400,
     "PersistentRegionSizeLimitMiB": 8192,
+    "PersistentRegionNumberLimit" : 16,
+    "PersistentRegionSizeMaxMiB" : 8192,
+    "AllocationIncrementMiB": 1,
+    "AllocationAlignmentMiB": 8,
     "Regions": [
         {
             "RegionId": "1",
