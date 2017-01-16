@@ -37,5 +37,6 @@
                 "@odata.id": "/redfish/v1/CompositionService/ResourceZones/2"
             }
         ]
-    }
+    },
+    "Oem": {}
 }
