@@ -2,7 +2,7 @@
     "@Redfish.Copyright":"Copyright (c) 2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",    
     "@odata.context": "/redfish/v1/$metadata#Memory.Memory",
     "@odata.id": "/redfish/v1/Systems/4/Memory/5",
-    "@odata.type": "#Memory.v1_1_0.Memory",
+    "@odata.type": "#Memory.v1_2_0.Memory",
     "Name": "DRAM Memory",
     "Id": "5",
     "MemoryType": "DRAM",
@@ -45,6 +45,10 @@
     },
     "OperatingSpeedMhz": 2400,
     "VolatileRegionSizeLimitMiB": 8192,
+    "VolatileRegionNumberLimit" : 1,
+    "VolatileRegionSizeMaxMiB" : 8192,
+    "AllocationIncrementMiB": 1,
+    "AllocationAlignmentMiB": 1,    
     "Regions": [
         {
             "RegionId": "1",
