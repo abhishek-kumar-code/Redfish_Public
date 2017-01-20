@@ -681,7 +681,7 @@
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_3_0.ComputerSystem"/>
 
       <ComplexType Name="Links" BaseType="ComputerSystem.v1_2_0.Links">
-        <NavigationProperty Name="ResourceBlocks" Type="Collection(ResourceBlock.ResourceBlock)" Nullable="false">
+        <NavigationProperty Name="ResourceBlocks" Type="Collection(ResourceBlock.ResourceBlock)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="An array of references to the Resource Blocks that are used in this Computer System."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of references of type ResourceBlock that show the Resource Blocks that are used in this Computer System."/>
