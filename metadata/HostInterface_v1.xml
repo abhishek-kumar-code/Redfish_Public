@@ -161,7 +161,7 @@
       </EnumType>
 
       <ComplexType Name="Links" BaseType="Resource.Links">
-        <NavigationProperty Name="ComputerSystems" Type="Collection(ComputerSystem.ComputerSystem)" Nullable="false">
+        <NavigationProperty Name="ComputerSystems" Type="Collection(ComputerSystem.ComputerSystem)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the Computer Systems connected to this Host Interface."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of references to resources of type ComputerSystem that are connected to this HostInterface."/>

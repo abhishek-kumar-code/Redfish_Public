@@ -133,7 +133,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resources that this switch contains and shall reference a resource of type Port."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="Redundancy" Type="Collection(Redundancy.Redundancy)" Nullable="false">
+        <NavigationProperty Name="Redundancy" Type="Collection(Redundancy.Redundancy)">
           <Annotation Term="OData.Description" String="Redundancy information for the switches."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
@@ -160,7 +160,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resources that this switch is associated with and shall reference a resource of type Chassis."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="ManagedBy" Type="Collection(Manager.Manager)" Nullable="false">
+        <NavigationProperty Name="ManagedBy" Type="Collection(Manager.Manager)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the managers that manage this switch."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resources that this switch is associated with and shall reference a resource of type Manager."/>

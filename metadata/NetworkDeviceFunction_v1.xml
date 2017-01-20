@@ -87,7 +87,7 @@
           <Annotation Term="OData.Description" String="Fibre Channel."/>
           <Annotation Term="OData.LongDescription" String="This object shall contain Fibre Channel capabilities, status, and configuration values for this network device function."/>
         </Property>
-        <NavigationProperty Name="AssignablePhysicalPorts" Type="Collection(NetworkPort.NetworkPort)" Nullable="false">
+        <NavigationProperty Name="AssignablePhysicalPorts" Type="Collection(NetworkPort.NetworkPort)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the members of this collection."/>
           <Annotation Term="OData.AutoExpandReferences"/>

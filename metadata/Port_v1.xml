@@ -103,19 +103,19 @@
       </EntityType>
 
       <ComplexType Name="Links" BaseType="Resource.Links">
-        <NavigationProperty Name="AssociatedEndpoints" Type="Collection(Endpoint.Endpoint)" Nullable="false">
+        <NavigationProperty Name="AssociatedEndpoints" Type="Collection(Endpoint.Endpoint)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the endpoints that connect to the switch through this port."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resources that this port is associated with and shall reference a resource of type Endpoint."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="ConnectedSwitches" Type="Collection(Switch.Switch)" Nullable="false">
+        <NavigationProperty Name="ConnectedSwitches" Type="Collection(Switch.Switch)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the switches that connect to the switch through this port."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resources that this port is associated with and shall reference a resource of type Switch."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="ConnectedSwitchPorts" Type="Collection(Port.Port)" Nullable="false">
+        <NavigationProperty Name="ConnectedSwitchPorts" Type="Collection(Port.Port)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the ports that connect to the switch through this port."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resources that this port is associated with and shall reference a resource of type Port."/>

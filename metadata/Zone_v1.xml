@@ -51,13 +51,13 @@
       </EntityType>
 
       <ComplexType Name="Links" BaseType="Resource.Links">
-        <NavigationProperty Name="Endpoints" Type="Collection(Endpoint.Endpoint)" Nullable="false">
+        <NavigationProperty Name="Endpoints" Type="Collection(Endpoint.Endpoint)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the endpoints that are contained in this zone."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resources that this zone is associated with and shall reference a resource of type Endpoint."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="InvolvedSwitches" Type="Collection(Switch.Switch)" Nullable="false">
+        <NavigationProperty Name="InvolvedSwitches" Type="Collection(Switch.Switch)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the switchs that are utilized in this zone."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resources that this zone is associated with and shall reference a resource of type Switch."/>
