@@ -48,7 +48,7 @@
             "Address": "fe80::1ec1:deff:fe6f:1e24",
             "PrefixLength": 64,
             "AddressOrigin": "SLAAC",
-            "AddressState": "Preferred",
+            "AddressState": "Preferred"
         }
     ],
     "NameServers": [
