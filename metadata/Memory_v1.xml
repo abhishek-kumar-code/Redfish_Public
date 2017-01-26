@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Memory  v1.1.0-->
+<!--# Redfish Schema:  Memory  v1.2.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -295,19 +295,19 @@
 
       <EnumType Name="MemoryType">
         <Member Name="DRAM">
-	  <Annotation Term="OData.Description" String="The memory module is composed of volatile memory."/>
-	  <Annotation Term="OData.LongDescription" String="The memory module is composed of volatile DRAM."/>
+          <Annotation Term="OData.Description" String="The memory module is composed of volatile memory."/>
+          <Annotation Term="OData.LongDescription" String="The memory module is composed of volatile DRAM."/>
         </Member>
-	<Member Name="NVDIMM_N">
-	  <Annotation Term="OData.Description" String="The memory module is composed of volatile memory backed by non-volatile memory."/>
+        <Member Name="NVDIMM_N">
+          <Annotation Term="OData.Description" String="The memory module is composed of volatile memory backed by non-volatile memory."/>
           <Annotation Term="OData.LongDescription" String="NVDIMM_N as defined by JEDEC."/>
         </Member>
-	<Member Name="NVDIMM_F">
-	  <Annotation Term="OData.Description" String="The memory module is composed of non-volatile memory."/>
+        <Member Name="NVDIMM_F">
+          <Annotation Term="OData.Description" String="The memory module is composed of non-volatile memory."/>
           <Annotation Term="OData.LongDescription" String="NVDIMM_F as defined by JEDEC."/>
         </Member>
-	<Member Name="NVDIMM_P">
-	  <Annotation Term="OData.Description" String="The memory module is composed of a combination of non-volatile and volatile memory."/>
+        <Member Name="NVDIMM_P">
+          <Annotation Term="OData.Description" String="The memory module is composed of a combination of non-volatile and volatile memory."/>
           <Annotation Term="OData.Description" String="NVDIMM_P as defined by JEDEC."/>
         </Member>
       </EnumType>
@@ -597,10 +597,20 @@
       <EntityType Name="Memory" BaseType="Memory.v1_0_0.Memory"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Memory.v1_0_2">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
+      <EntityType Name="Memory" BaseType="Memory.v1_0_1.Memory"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Memory.v1_1_0">
       <EntityType Name="Memory" BaseType="Memory.v1_0_1.Memory">
         <Property Name="Status" Type="Resource.Status" Nullable="false"/>
       </EntityType>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Memory.v1_1_1">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
+      <EntityType Name="Memory" BaseType="Memory.v1_1_0.Memory"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Memory.v1_2_0">
