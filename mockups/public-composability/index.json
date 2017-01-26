@@ -19,6 +19,9 @@
     "AccountService": {
         "@odata.id": "/redfish/v1/AccountService"
     },
+    "CompositionService": {
+        "@odata.id": "/redfish/v1/CompositionService"
+    },
     "Links": {
         "Sessions": {
             "@odata.id": "/redfish/v1/SessionService/Sessions"
