@@ -78,7 +78,7 @@
       <EntityType Name="Zone" BaseType="Zone.v1_0_1.Zone"/>
 
       <ComplexType Name="Links" BaseType="Zone.v1_0_0.Links">
-        <NavigationProperty Name="ResourceBlocks" Type="Collection(ResourceBlock.ResourceBlock)" Nullable="false">
+        <NavigationProperty Name="ResourceBlocks" Type="Collection(ResourceBlock.ResourceBlock)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the Resource Blocks that are used in this Zone."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of references of type ResourceBlock that are associated with this Zone."/>

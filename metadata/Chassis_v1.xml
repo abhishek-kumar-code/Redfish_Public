@@ -493,7 +493,7 @@
       <EntityType Name="Chassis" BaseType="Chassis.v1_4_0.Chassis"/>
 
       <ComplexType Name="Links" BaseType="Chassis.v1_4_0.Links">
-        <NavigationProperty Name="ResourceBlocks" Type="Collection(ResourceBlock.ResourceBlock)" Nullable="false">
+        <NavigationProperty Name="ResourceBlocks" Type="Collection(ResourceBlock.ResourceBlock)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the Resource Blocks located in this Chassis."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of references of type ResourceBlock that are contained in this Chassis."/>

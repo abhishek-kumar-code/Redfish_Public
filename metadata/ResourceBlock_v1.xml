@@ -95,43 +95,43 @@
           <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
           <Annotation Term="OData.LongDescription" String="The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
         </Property>
-        <NavigationProperty Name="Processors" Type="Collection(Processor.Processor)" Nullable="false">
+        <NavigationProperty Name="Processors" Type="Collection(Processor.Processor)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the Processors available in this Resource Block."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of references of type Processor that are in this Resource Block."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="Memory" Type="Collection(Memory.Memory)" Nullable="false">
+        <NavigationProperty Name="Memory" Type="Collection(Memory.Memory)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the Memory available in this Resource Block."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of references of type Memory that are in this Resource Block."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="Storage" Type="Collection(Storage.Storage)" Nullable="false">
+        <NavigationProperty Name="Storage" Type="Collection(Storage.Storage)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the Storage available in this Resource Block."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of references of type Storage that are in this Resource Block."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="SimpleStorage" Type="Collection(SimpleStorage.SimpleStorage)" Nullable="false">
+        <NavigationProperty Name="SimpleStorage" Type="Collection(SimpleStorage.SimpleStorage)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the Simple Storage available in this Resource Block."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of references of type SimpleStorage that are in this Resource Block."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="EthernetInterfaces" Type="Collection(EthernetInterface.EthernetInterface)" Nullable="false">
+        <NavigationProperty Name="EthernetInterfaces" Type="Collection(EthernetInterface.EthernetInterface)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the Ethernet Interfaces available in this Resource Block."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of references of type EthernetInterface that are in this Resource Block."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="NetworkInterfaces" Type="Collection(NetworkInterface.NetworkInterface)" Nullable="false">
+        <NavigationProperty Name="NetworkInterfaces" Type="Collection(NetworkInterface.NetworkInterface)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the Network Interfaces available in this Resource Block."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of references of type NetworkInterface that are in this Resource Block."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="ComputerSystems" Type="Collection(ComputerSystem.ComputerSystem)" Nullable="false">
+        <NavigationProperty Name="ComputerSystems" Type="Collection(ComputerSystem.ComputerSystem)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the Computer Systems available in this Resource Block."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of references of type ComputerSystem that are in this Resource Block."/>
@@ -140,19 +140,19 @@
       </EntityType>
 
       <ComplexType Name="Links" BaseType="Resource.Links">
-        <NavigationProperty Name="ComputerSystems" Type="Collection(ComputerSystem.ComputerSystem)" Nullable="false">
+        <NavigationProperty Name="ComputerSystems" Type="Collection(ComputerSystem.ComputerSystem)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the Computer Systems that are composed from this Resource Block."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of references of type ComputerSystem that represent the Computer Systems composed from this Resource Block."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="Chassis" Type="Collection(Chassis.Chassis)" Nullable="false">
+        <NavigationProperty Name="Chassis" Type="Collection(Chassis.Chassis)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the Chassis in which this Resource Block is contained."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of references of type Chassis that represent the physical container associated with this Resource Block."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="Zones" Type="Collection(Zone.Zone)" Nullable="false">
+        <NavigationProperty Name="Zones" Type="Collection(Zone.Zone)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the Zones in which this Resource Block is bound."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of references of type Zone that represent the binding constraints associated with this Resource Block."/>
