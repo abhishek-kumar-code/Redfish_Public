@@ -308,7 +308,7 @@
         </Member>
         <Member Name="NVDIMM_P">
           <Annotation Term="OData.Description" String="The memory module is composed of a combination of non-volatile and volatile memory."/>
-          <Annotation Term="OData.Description" String="NVDIMM_P as defined by JEDEC."/>
+          <Annotation Term="OData.LongDescription" String="NVDIMM_P as defined by JEDEC."/>
         </Member>
       </EnumType>
 
