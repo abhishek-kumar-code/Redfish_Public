@@ -296,19 +296,19 @@
       <EnumType Name="MemoryType">
         <Member Name="DRAM">
           <Annotation Term="OData.Description" String="The memory module is composed of volatile memory."/>
-          <Annotation Term="OData.LongDescription" String="The memory module is composed of volatile DRAM."/>
+          <Annotation Term="OData.LongDescription" String="This memory type shall represent volatile DRAM."/>
         </Member>
         <Member Name="NVDIMM_N">
           <Annotation Term="OData.Description" String="The memory module is composed of volatile memory backed by non-volatile memory."/>
-          <Annotation Term="OData.LongDescription" String="NVDIMM_N as defined by JEDEC."/>
+          <Annotation Term="OData.LongDescription" String="This memory type shall represent NVDIMM_N as defined by JEDEC."/>
         </Member>
         <Member Name="NVDIMM_F">
           <Annotation Term="OData.Description" String="The memory module is composed of non-volatile memory."/>
-          <Annotation Term="OData.LongDescription" String="NVDIMM_F as defined by JEDEC."/>
+          <Annotation Term="OData.LongDescription" String="This memory type shall represent NVDIMM_F as defined by JEDEC."/>
         </Member>
         <Member Name="NVDIMM_P">
           <Annotation Term="OData.Description" String="The memory module is composed of a combination of non-volatile and volatile memory."/>
-          <Annotation Term="OData.LongDescription" String="NVDIMM_P as defined by JEDEC."/>
+          <Annotation Term="OData.LongDescription" String="This memory type shall represent NVDIMM_P as defined by JEDEC."/>
         </Member>
       </EnumType>
 
