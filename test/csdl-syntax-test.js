@@ -411,7 +411,7 @@ function validCSDLTypeInMockup(err, json) {
     if(propName[0] === '@' || propName === 'Members@odata.count' || propName === 'Members@odata.nextLink') {
       continue;
     }
-    else if(PropName.indexOf('@Redfish.') !== -1) {
+    else if(propName.indexOf('@Redfish.') !== -1) {
       //TODO Check other annotations; for now, just let them pass
       continue;
     }
