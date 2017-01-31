@@ -547,9 +547,6 @@ function simpleTypeCheck(propType, propValue, CSDLProperty, propName) {
         throw new Error('Property "'+propName+'" is an Edm.Guid, but the value in the mockup does not conform to the correct syntax.');
       }
       break;
-    case 'Edm.Int16':
-    case 'Edm.Int32':
-      /*Not currently in the Redfish Spec... should be added because it's shipping*/
     case 'Edm.Int64':
       if(typeof propValue !== 'number' && propValue !== null) {
         throw new Error('Property "'+propName+'" is an Edm.Int64, but the value in the mockup is not a valid JSON number.');
