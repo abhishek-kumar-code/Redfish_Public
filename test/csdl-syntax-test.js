@@ -410,7 +410,6 @@ function checkReferenceUris(err, csdl) {
         if(directory === '') {
             throw new Error('Reference "'+references[i].Uri+'" has an empty directory');
         }
-        throw new Error('Test Error Directory "'+directory+'" File "'+file_name+'"');
 
         // Check the directory against what it should be
         if(directory ==! 'http://redfish.dmtf.org/schemas/v1') {
