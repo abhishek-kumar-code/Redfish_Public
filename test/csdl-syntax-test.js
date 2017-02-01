@@ -390,7 +390,7 @@ function checkReferenceUris(err, csdl) {
     }
 
     // Find all external schema references
-    let references = CSDL.search(csdl, 'edmx:Reference', 'Uri');
+    let references = CSDL.search(csdl, 'Reference');
     if(references.length === 0) {
         throw new Error('No references');
     }
@@ -398,25 +398,25 @@ function checkReferenceUris(err, csdl) {
     // Go through each reference
     for(let i = 0; i < references.length; i++) {
         // Find the last / character to break apart the file name from its directory
-        let uri_index = references[i].lastIndexOf('/');
+        let uri_index = references[i].Uri.lastIndexOf('/');
         if(uri_index === -1) {
             // Should never happen; all URIs need to have some / characters
-            throw new Error('Reference "'+references[i]+'" does not contain any / characters');
+            throw new Error('Reference "'+references[i].Uri+'" does not contain any / characters');
         }
 
         // Break the string apart
-        let file_name = references[i].substring(uri_index+1);
+        let file_name = references[i].Uri.substring(uri_index+1);
         if(file_name === '') {
-            throw new Error('Reference "'+references[i]+'" has an empty file name');
+            throw new Error('Reference "'+references[i].Uri+'" has an empty file name');
         }
-        let directory = references[i].Name.substring(0, uri_index);
+        let directory = references[i].Uri.substring(0, uri_index);
         if(directory === '') {
-            throw new Error('Reference "'+references[i]+'" has an empty directory');
+            throw new Error('Reference "'+references[i].Uri+'" has an empty directory');
         }
 
         // Check the directory against what it should be
         if(directory ==! 'http://redfish.dmtf.org/schemas/v1') {
-            throw new Error('Reference "'+references[i]+'" does not point to DMTF schema directory');
+            throw new Error('Reference "'+references[i].Uri+'" does not point to DMTF schema directory');
         }
     }
 }
