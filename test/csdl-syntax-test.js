@@ -36,6 +36,9 @@ const NonPascalCaseEnumWhiteList = ['iSCSI', 'iQN', 'FC_WWN', 'TX_RX', 'EIA_310'
                                     'SO_UDIMM_72b', 'SO_DIMM_16b', 'SO_DIMM_32b', 'TPM1_2', 'TPM2_0', 'TCM1_0'];
 //Properties names that are non-Pascal Cased
 const NonPascalCasePropertyWhiteList = ['iSCSIBoot'];
+
+const ODataSchemaFileList = [ 'Org.OData.Core.V1.xml', 'Org.OData.Capabilities.V1.xml', 'Org.OData.Measures.V1.xml' ]
+const SwordfishSchemaFileList = [ 'HostedStorageServices_v1.xml','StorageServiceCollection_v1.xml', 'StorageSystemCollection_v1.xml' ]
 /************************************************************/
 
 const setupBatch = {
@@ -412,12 +415,12 @@ function checkReferenceUris(err, csdl) {
         }
 
         // Check the directory against what it should be
-        if(file_name === 'Org.OData.Core.V1.xml' || file_name === 'Org.OData.Capabilities.V1.xml' || file_name === 'Org.OData.Measures.V1.xml' ) {
+        if(ODataSchemaFileList.indexOf(file_name) !== -1) {
             if(directory !== 'http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies') {
                 throw new Error('Reference "'+references[i].Uri+'" does not point to OData schema directory');
             }
         }
-        else if(file_name === 'HostedStorageServices_v1.xml' || file_name === 'StorageServiceCollection_v1.xml' || file_name === 'StorageSystemCollection_v1.xml' ) {
+        else if(SwordfishSchemaFileList.indexOf(file_name) !== -1) {
             if(directory !== 'http://redfish.dmtf.org/schemas/swordfish/v1') {
                 throw new Error('Reference "'+references[i].Uri+'" does not point to Swordfish schema directory');
             }
