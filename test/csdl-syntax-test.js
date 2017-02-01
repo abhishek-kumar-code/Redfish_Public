@@ -412,20 +412,20 @@ function checkReferenceUris(err, csdl) {
         }
 
         // Check the directory against what it should be
-        if(file_name === 'Org.OData.Core.V1.xml' || file_name === 'Org.OData.Capabilities.V1.xml' || file_name === 'Org.OData.Measures.V1.xml' )
-        {
+        if(file_name === 'Org.OData.Core.V1.xml' || file_name === 'Org.OData.Capabilities.V1.xml' || file_name === 'Org.OData.Measures.V1.xml' ) {
             if(directory !== 'http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies') {
                 throw new Error('Reference "'+references[i].Uri+'" does not point to OData schema directory');
+            }
         }
-        else if(file_name === 'HostedStorageServices_v1.xml' || file_name === 'StorageServiceCollection_v1.xml' || file_name === 'StorageSystemCollection_v1.xml' )
-        {
+        else if(file_name === 'HostedStorageServices_v1.xml' || file_name === 'StorageServiceCollection_v1.xml' || file_name === 'StorageSystemCollection_v1.xml' ) {
             if(directory !== 'http://redfish.dmtf.org/schemas/swordfish/v1') {
                 throw new Error('Reference "'+references[i].Uri+'" does not point to Swordfish schema directory');
+            }
         }
-        else
-        {
+        else {
             if(directory !== 'http://redfish.dmtf.org/schemas/v1') {
                 throw new Error('Reference "'+references[i].Uri+'" does not point to DMTF schema directory');
+            }
         }
     }
 }
