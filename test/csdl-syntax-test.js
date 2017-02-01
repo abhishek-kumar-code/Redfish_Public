@@ -390,7 +390,7 @@ function checkReferenceUris(err, csdl) {
     }
 
     // Find all external schema references
-    let references = CSDL.search(csdl, 'Reference');
+    let references = CSDL.search(csdl, 'Reference', undefined, true);
     if(references.length === 0) {
         throw new Error('No references');
     }
