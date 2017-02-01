@@ -76,7 +76,8 @@ function constructTest(file) {
     'BaseTypes are valid': checkBaseTypes,
     'All Annotation Terms are valid': checkAnnotationTerms,
     'Enum Members are valid names': checkEnumMembers,
-    'Properties are Pascal-cased': checkPropertiesPascalCased
+    'Properties are Pascal-cased': checkPropertiesPascalCased,
+    'Reference URIs are valid': checkReferenceUris
   }
 }
 
@@ -381,6 +382,40 @@ function checkPropertiesPascalCased(err, csdl) {
       throw new Error('Property Name "'+navproperties[i].Name+'" is not Pascal-cased');
     }
   }
+}
+
+function checkReferenceUris(err, csdl) {
+    if(err) {
+        return;
+    }
+
+    // Find all external schema references
+    let references = CSDL.search(csdl, 'edmx:Reference');
+
+    // Go through each reference
+    for(let i = 0; i < references.length; i++) {
+        // Find the last / character to break apart the file name from its directory
+        let uri_index = references[i].Name.lastIndexOf('/');
+        if(uri_index === -1) {
+            // Should never happen; all URIs need to have some / characters
+            throw new Error('Reference "'+references[i].Name+'" does not contain any / characters');
+        }
+
+        // Break the string apart
+        let file_name = references[i].Name.substring(uri_index+1);
+        if(file_name === '') {
+            throw new Error('Reference "'+references[i].Name+'" has an empty file name');
+        }
+        let directory = references[i].Name.substring(0, uri_index);
+        if(directory === '') {
+            throw new Error('Reference "'+references[i].Name+'" has an empty directory');
+        }
+
+        // Check the directory against what it should be
+        if(directory ==! 'http://redfish.dmtf.org/schemas/v1') {
+            throw new Error('Reference "'+references[i].Name+'" does not point to DMTF schema directory');
+        }
+    }
 }
 
 function validCSDLTypeInMockup(err, json) {
