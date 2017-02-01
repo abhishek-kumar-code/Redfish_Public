@@ -412,7 +412,7 @@ function checkReferenceUris(err, csdl) {
         }
 
         // Check the directory against what it should be
-        if(directory ==! 'http://redfish.dmtf.org/schemas/v1') {
+        if(directory !== 'http://redfish.dmtf.org/schemas/v1') {
             throw new Error('Reference "'+references[i].Uri+'" does not point to DMTF schema directory');
         }
     }
