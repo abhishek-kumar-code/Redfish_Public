@@ -394,6 +394,7 @@ function checkReferenceUris(err, csdl) {
 
     // Go through each reference
     for(let i = 0; i < references.length; i++) {
+        throw new Error('Test Error Uri "'+references[i].Uri+'"');
         // Find the last / character to break apart the file name from its directory
         let uri_index = references[i].Uri.lastIndexOf('/');
         if(uri_index === -1) {
@@ -412,8 +413,7 @@ function checkReferenceUris(err, csdl) {
         }
 
         // Check the directory against what it should be
-        //if(directory ==! 'http://redfish.dmtf.org/schemas/v1') {
-        if(directory ==! 'test dir') {
+        if(directory ==! 'http://redfish.dmtf.org/schemas/v1') {
             throw new Error('Reference "'+references[i].Uri+'" does not point to DMTF schema directory');
         }
     }
