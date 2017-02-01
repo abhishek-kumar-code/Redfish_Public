@@ -394,7 +394,6 @@ function checkReferenceUris(err, csdl) {
 
     // Go through each reference
     for(let i = 0; i < references.length; i++) {
-        throw new Error('Test Error Uri "'+references[i].Uri+'"');
         // Find the last / character to break apart the file name from its directory
         let uri_index = references[i].Uri.lastIndexOf('/');
         if(uri_index === -1) {
@@ -411,6 +410,7 @@ function checkReferenceUris(err, csdl) {
         if(directory === '') {
             throw new Error('Reference "'+references[i].Uri+'" has an empty directory');
         }
+        throw new Error('Test Error Directory "'+directory+'" File "'+file_name+'"');
 
         // Check the directory against what it should be
         if(directory ==! 'http://redfish.dmtf.org/schemas/v1') {
