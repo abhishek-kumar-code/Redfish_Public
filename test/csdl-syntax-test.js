@@ -391,9 +391,6 @@ function checkReferenceUris(err, csdl) {
 
     // Find all external schema references
     let references = CSDL.search(csdl, 'Reference', undefined, true);
-    if(references.length === 0) {
-        throw new Error('No references');
-    }
 
     // Go through each reference
     for(let i = 0; i < references.length; i++) {
@@ -415,7 +412,8 @@ function checkReferenceUris(err, csdl) {
         }
 
         // Check the directory against what it should be
-        if(directory ==! 'http://redfish.dmtf.org/schemas/v1') {
+        //if(directory ==! 'http://redfish.dmtf.org/schemas/v1') {
+        if(directory ==! 'test dir') {
             throw new Error('Reference "'+references[i].Uri+'" does not point to DMTF schema directory');
         }
     }
