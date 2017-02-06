@@ -36,7 +36,7 @@
                 "TargetCollection": {
                     "@odata.id": "/redfish/v1/Systems"
                 },
-                "RelatedItems": [
+                "RelatedItem": [
                     {
                         "@odata.id": "/redfish/v1/CompositionService/ResourceZones/1"
                     },
