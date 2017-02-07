@@ -61,7 +61,7 @@
     },
     "Actions": {
         "#Storage.SetEncryptionKey": {
-            "Target": "/redfish/v1/Systems/3/Storage/RAIDIntegrated/Actions/Storage.SetEncryptionKey"
+            "target": "/redfish/v1/Systems/3/Storage/RAIDIntegrated/Actions/Storage.SetEncryptionKey"
         }
     }
 }

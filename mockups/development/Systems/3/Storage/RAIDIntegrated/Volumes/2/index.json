@@ -33,10 +33,10 @@
     },
     "Actions": {
         "#Volume.CheckConsistency": {
-            "Target": "/redfish/v1/Systems/Storage/RAIDIntegrated/Volumes/2/Actions/Volume.CheckConsistency"
+            "target": "/redfish/v1/Systems/Storage/RAIDIntegrated/Volumes/2/Actions/Volume.CheckConsistency"
         },
         "#Volume.Initialize": {
-            "Target": "/redfish/v1/Systems/Storage/RAIDIntegrated/Volumes/2/Actions/Volume.Initialize",
+            "target": "/redfish/v1/Systems/Storage/RAIDIntegrated/Volumes/2/Actions/Volume.Initialize",
             "InitializeType@Redfish.AllowableValues": [
                 "Fast",
                 "Slow"
