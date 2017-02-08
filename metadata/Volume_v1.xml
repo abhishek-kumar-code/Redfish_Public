@@ -117,7 +117,7 @@
           <Annotation Term="OData.Description" String="The Durable names for the volume."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain a list of all known durable names for the associated volume."/>
         </Property>
-        <Property Name="BlockSizeBytes" Type="Edm.Int32">
+        <Property Name="BlockSizeBytes" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The size of the smallest addressible unit (Block) of this volume in bytes."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain size of the smallest addressible unit of the associated volume."/>
@@ -127,7 +127,7 @@
           <Annotation Term="OData.Description" String="The operations currently running on the Volume."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain a list of all currently running on the Volume."/>
         </Property>
-        <Property Name="OptimumIOSizeBytes" Type="Edm.Int32">
+        <Property Name="OptimumIOSizeBytes" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The size in bytes of this Volume's optimum IO size."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the optimum IO size to use when performing IO on this volume. For logical disks, this is the stripe size. For physical disks, this describes the physical sector size."/>
@@ -166,7 +166,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The name of the operation."/>
         </Property>
-        <Property Name="PercentageComplete" Type="Edm.Int32">
+        <Property Name="PercentageComplete" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The percentage of the operation that has been completed."/>
         </Property>
@@ -219,6 +219,11 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Volume.v1_0_2">
       <Annotation Term="OData.Description" String="This version was created to add explicit Permissions annotations to all properties for clarity."/>
       <EntityType Name="Volume" BaseType="Volume.v1_0_1.Volume"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Volume.v1_0_3">
+      <Annotation Term="OData.Description" String="This version was created to fix supported types."/>
+      <EntityType Name="Volume" BaseType="Volume.v1_0_2.Volume"/>
     </Schema>
 
   </edmx:DataServices>
