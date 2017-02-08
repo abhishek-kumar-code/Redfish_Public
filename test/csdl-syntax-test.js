@@ -36,6 +36,9 @@ const NonPascalCaseEnumWhiteList = ['iSCSI', 'iQN', 'FC_WWN', 'TX_RX', 'EIA_310'
                                     'SO_UDIMM_72b', 'SO_DIMM_16b', 'SO_DIMM_32b', 'TPM1_2', 'TPM2_0', 'TCM1_0'];
 //Properties names that are non-Pascal Cased
 const NonPascalCasePropertyWhiteList = ['iSCSIBoot'];
+
+const ODataSchemaFileList = [ 'Org.OData.Core.V1.xml', 'Org.OData.Capabilities.V1.xml', 'Org.OData.Measures.V1.xml' ]
+const SwordfishSchemaFileList = [ 'HostedStorageServices_v1.xml','StorageServiceCollection_v1.xml', 'StorageSystemCollection_v1.xml' ]
 /************************************************************/
 
 const setupBatch = {
@@ -76,7 +79,8 @@ function constructTest(file) {
     'BaseTypes are valid': checkBaseTypes,
     'All Annotation Terms are valid': checkAnnotationTerms,
     'Enum Members are valid names': checkEnumMembers,
-    'Properties are Pascal-cased': checkPropertiesPascalCased
+    'Properties are Pascal-cased': checkPropertiesPascalCased,
+    'Reference URIs are valid': checkReferenceUris
   }
 }
 
@@ -383,6 +387,52 @@ function checkPropertiesPascalCased(err, csdl) {
   }
 }
 
+function checkReferenceUris(err, csdl) {
+    if(err) {
+        return;
+    }
+
+    // Find all external schema references
+    let references = CSDL.search(csdl, 'Reference', undefined, true);
+
+    // Go through each reference
+    for(let i = 0; i < references.length; i++) {
+        // Find the last / character to break apart the file name from its directory
+        let uri_index = references[i].Uri.lastIndexOf('/');
+        if(uri_index === -1) {
+            // Should never happen; all URIs need to have some / characters
+            throw new Error('Reference "'+references[i].Uri+'" does not contain any / characters');
+        }
+
+        // Break the string apart
+        let file_name = references[i].Uri.substring(uri_index+1);
+        if(file_name === '') {
+            throw new Error('Reference "'+references[i].Uri+'" has an empty file name');
+        }
+        let directory = references[i].Uri.substring(0, uri_index);
+        if(directory === '') {
+            throw new Error('Reference "'+references[i].Uri+'" has an empty directory');
+        }
+
+        // Check the directory against what it should be
+        if(ODataSchemaFileList.indexOf(file_name) !== -1) {
+            if(directory !== 'http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies') {
+                throw new Error('Reference "'+references[i].Uri+'" does not point to OData schema directory');
+            }
+        }
+        else if(SwordfishSchemaFileList.indexOf(file_name) !== -1) {
+            if(directory !== 'http://redfish.dmtf.org/schemas/swordfish/v1') {
+                throw new Error('Reference "'+references[i].Uri+'" does not point to Swordfish schema directory');
+            }
+        }
+        else {
+            if(directory !== 'http://redfish.dmtf.org/schemas/v1') {
+                throw new Error('Reference "'+references[i].Uri+'" does not point to DMTF schema directory');
+            }
+        }
+    }
+}
+
 function validCSDLTypeInMockup(err, json) {
   if(err) {
     return;
@@ -547,9 +597,6 @@ function simpleTypeCheck(propType, propValue, CSDLProperty, propName) {
         throw new Error('Property "'+propName+'" is an Edm.Guid, but the value in the mockup does not conform to the correct syntax.');
       }
       break;
-    case 'Edm.Int16':
-    case 'Edm.Int32':
-      /*Not currently in the Redfish Spec... should be added because it's shipping*/
     case 'Edm.Int64':
       if(typeof propValue !== 'number' && propValue !== null) {
         throw new Error('Property "'+propName+'" is an Edm.Int64, but the value in the mockup is not a valid JSON number.');
