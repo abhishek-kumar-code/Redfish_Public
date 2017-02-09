@@ -32,7 +32,8 @@
         <Annotation Term="OData.Description" String="A Collection of ComputerSystem resource instances."/>
         <Annotation Term="Capabilities.InsertRestrictions">
           <Record>
-            <PropertyValue Property="Insertable" Bool="false"/>
+            <PropertyValue Property="Insertable" Bool="true"/>
+            <Annotation Term="OData.Description" String="Composed and virtual Computer Systems are created by posting to the Computer System Collection."/>
           </Record>
         </Annotation>
         <Annotation Term="Capabilities.UpdateRestrictions">

@@ -39,11 +39,16 @@
     },
     "@Redfish.CollectionCapabilities": {
         "@odata.type": "#CollectionCapabilities.v1_0_0.CollectionCapabilities",
-        "CapabilitiesObject": {
-            "@odata.id": "/redfish/v1/CompositionService/ResourceZones/2/Capabilities"
-        },
-        "TargetCollection": {
-            "@odata.id": "/redfish/v1/Systems"
-        }
+        "Capabilities": [
+            {
+                "CapabilitiesObject": {
+                    "@odata.id": "/redfish/v1/Systems/Capabilities"
+                },
+                "UseCase": "ComputerSystemComposition",
+                "TargetCollection": {
+                    "@odata.id": "/redfish/v1/Systems"
+                }
+            }
+        ]
     }
 }

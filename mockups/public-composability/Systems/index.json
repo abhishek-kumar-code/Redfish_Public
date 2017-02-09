@@ -9,5 +9,27 @@
         {
             "@odata.id": "/redfish/v1/Systems/ComposedSystem"
         }
-    ]
+    ],
+    "@Redfish.CollectionCapabilities": {
+        "@odata.type": "#CollectionCapabilities.v1_0_0.CollectionCapabilities",
+        "Capabilities": [
+            {
+                "CapabilitiesObject": {
+                    "@odata.id": "/redfish/v1/Systems/Capabilities"
+                },
+                "UseCase": "ComputerSystemComposition",
+                "TargetCollection": {
+                    "@odata.id": "/redfish/v1/Systems"
+                },
+                "RelatedItem": [
+                    {
+                        "@odata.id": "/redfish/v1/CompositionService/ResourceZones/1"
+                    },
+                    {
+                        "@odata.id": "/redfish/v1/CompositionService/ResourceZones/2"
+                    }
+                ]
+            }
+        ]
+    }
 }

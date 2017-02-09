@@ -2,7 +2,7 @@
     "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.",
     "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
     "@odata.type": "#ComputerSystem.v1_4_0.ComputerSystem",
-    "@odata.id": "/redfish/v1/CompositionService/ResourceZones/2/Capabilities",
+    "@odata.id": "/redfish/v1/Systems/Capabilities",
     "Id": "Capabilities",
     "Name": "Capabilities for the Zone",
     "Name@Redfish.RequiredOnCreate": true,
