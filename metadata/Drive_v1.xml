@@ -174,7 +174,7 @@
           <Annotation Term="OData.LongDescription" String="This property shall contain rotation speed of the associated drive."/>
           <Annotation Term="Measures.Unit" String="RPM"/>
         </Property>
-        <Property Name="BlockSizeBytes" Type="Edm.Int32">
+        <Property Name="BlockSizeBytes" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The size of the smallest addressible unit (Block) of this drive in bytes."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain size of the smallest addressible unit of the associated drive."/>
@@ -318,6 +318,11 @@
       <EntityType Name="Drive" BaseType="Drive.v1_0_1.Drive"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.v1_0_3">
+      <Annotation Term="OData.Description" String="This version was created to fix supported types."/>
+      <EntityType Name="Drive" BaseType="Drive.v1_0_2.Drive"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.v1_1_0">
 
       <EntityType Name="Drive" BaseType="Drive.v1_0_1.Drive">
@@ -342,8 +347,13 @@
       <EntityType Name="Drive" BaseType="Drive.v1_1_0.Drive"/>
     </Schema>
 
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.v1_2_0">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.v1_1_2">
+      <Annotation Term="OData.Description" String="This version was created to fix supported types."/>
       <EntityType Name="Drive" BaseType="Drive.v1_1_1.Drive"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.v1_2_0">
+      <EntityType Name="Drive" BaseType="Drive.v1_1_2.Drive"/>
 
       <ComplexType Name="Links" BaseType="Drive.v1_1_0.Links">
         <NavigationProperty Name="Chassis" Type="Chassis.Chassis" Nullable="false">
