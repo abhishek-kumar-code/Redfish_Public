@@ -27,6 +27,7 @@
     "request": "^2.69",
     "traverse": "^0.6.6",
     "vows": "^0.8.1",
-    "CSDLParser": "^0.1.5"
+    "CSDLParser": "^0.1.5",
+    "jsonschema": "^1.1.1"
   }
 }

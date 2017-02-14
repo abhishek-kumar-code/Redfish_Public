@@ -12,15 +12,12 @@
   <div class="preamble">
     <div class="logo"></div>
     <p>Document Identifier: <span class="dsp">DSP0266</span></p>
-    <p>Date: 2016-12-07</p>
+    <p>Date: 2016-12-30</p>
     <p>Version: <span class="version">1.1.0</span></p>
     
   </div>
   <h1 class="title">Redfish Scalable Platforms Management API Specification</h1>
   <div class="wip">
-    <strong>Information for Work-in-Progress version:</strong>
-    <p><strong>IMPORTANT:</strong> This document is not a standard. It does not necessarily reflect the views of the DMTF or its members. Because this document is a Work in Progress, this document may still change, perhaps profoundly and without notice. This document is available for public review and comment until superseded.</p>
-    <p><strong>Provide any comments through the DMTF Feedback Portal:</strong> <a href="http://www.dmtf.org/standards/feedback">http://www.dmtf.org/standards/feedback</a></p>
   </div>
   <div class="document">
     
@@ -86,6 +83,7 @@
 <h2 id="normative-references">2. Normative references</h2>
 <p>The following referenced documents are indispensable for the application of this document. For dated or versioned references, only the edition cited (including any corrigenda or DMTF update versions) applies. For references without a date or version, the latest published edition of the referenced document (including any corrigenda or DMTF update versions) applies.</p>
 <ul>
+<li><a id="DSP0270">DMTF DSP0270</a> Redfish Host Interface Specification,<a href="http://www.dmtf.org/sites/default/files/standards/documents/DSP0270_1.0.0.pdf">http://www.dmtf.org/sites/default/files/standards/documents/DSP0270_1.0.pdf</a></li>
 <li><a id="RFC3986">IETF RFC 3986</a>  T. Berners-Lee et al, Uniform Resource Identifier (URI): Generic Syntax, <a href="http://www.ietf.org/rfc/rfc3986.txt" title="http://www.ietf.org/rfc/rfc3986.txt">http://www.ietf.org/rfc/rfc3986.txt</a></li>
 <li><a id="RFC4627">IETF RFC 4627</a>, D. Crockford, The application/json Media Type for JavaScript Object Notation (JSON), <a href="http://www.ietf.org/rfc/rfc4627.txt" title="http://www.ietf.org/rfc/rfc4627.txt">http://www.ietf.org/rfc/rfc4627.txt</a></li>
 <li><a id="RFC5789">IETF RFC 5789</a>, L. Dusseault et al, PATCH method for HTTP, <a href="http://www.ietf.org/rfc/rfc5789.txt" title="http://www.ietf.org/rfc/rfc5789.txt">http://www.ietf.org/rfc/rfc5789.txt</a></li>
@@ -110,10 +108,9 @@
 <li><a id="OData-JSON">OData Version 4.0 JSON Format</a>. 24 February 2014. <a href="http://docs.oasis-open.org/odata/odata-json-format/v4.0/os/odata-json-format-v4.0-os.html" title="http://docs.oasis-open.org/odata/odata-json-format/v4.0/os/odata-json-format-v4.0-os.html">http://docs.oasis-open.org/odata/odata-json-format/v4.0/os/odata-json-format-v4.0-os.html</a></li>
 <li><a id="OData-UnitsOfMeasure">OData Version 4.0: Units of Measure Vocabulary</a>. 24 February 2014. <a href="http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml" title="http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml">http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml</a></li>
 <li><a id="SSDP">Simple Service Discovery Protocol/1.0</a>. 28 October 1999. <a href="http://tools.ietf.org/html/draft-cai-ssdp-v1-03" title="http://tools.ietf.org/html/draft-cai-ssdp-v1-03">http://tools.ietf.org/html/draft-cai-ssdp-v1-03</a></li>
+<li><a id="SNIA-TLS">SNIA TLS Specification for Storage Systems</a>. 20 November 2014. <a href="http://www.snia.org/tls/" title="http://www.snia.org/tls/">http://www.snia.org/tls/</a></li>
 <li><a id="UCUM">The Unified Code for Units of Measure</a>.  <a href="http://www.unitsofmeasure.org/ucum.html" title="http://www.unitsofmeasure.org/ucum.html">http://www.unitsofmeasure.org/ucum.html</a></li>
 <li><a id="W3C-CORS">W3C Recommendation of Cross-Origin Resource Sharing</a>. 16 January 2014. <a href="http://www.w3.org/TR/cors" title="http://www.w3.org/TR/cors/">http://www.w3.org/TR/cors/</a></li>
-<li><a id="SNIA-TLS">SNIA TLS Specification for Storage Systems</a>. 20 November 2014. <a href="http://www.snia.org/tls/" title="http://www.snia.org/tls/">http://www.snia.org/tls/</a></li>
-<li><a id="DSP0270">DMTF DSP0270</a> Redfish Host Interface Specification, [<a href="http://www.dmtf.org/sites/default/files/standards/documents/DSP0270_1.0.pdf">http://www.dmtf.org/sites/default/files/standards/documents/DSP0270_1.0.pdf</a>] (<a href="http://www.dmtf.org/sites/default/files/standards/documents/DSP0270_1.0.pdf">http://www.dmtf.org/sites/default/files/standards/documents/DSP0270_1.0.pdf</a> "<a href="http://www.dmtf.org/sites/default/files/standards/documents/DSP0270_1.0.pdf">http://www.dmtf.org/sites/default/files/standards/documents/DSP0270_1.0.pdf</a>")</li>
 </ul>
 <h2 id="terms-and-definitions">3. Terms and definitions</h2>
 <p>In this document, some terms have a specific meaning beyond the normal English meaning. Those terms are defined in this clause.</p>
@@ -2585,7 +2582,7 @@ is required, this is the default unless overridden) resources.</p>
 <tbody>
 <tr>
 <td>1.1.0</td>
-<td>2016-12-9</td>
+<td>2016-12-30</td>
 <td>Added Redfish Service Operation to Privilege Mapping clause. This functionality allows a Service to present a resource or even property-level mapping of HTTP operations to account Roles and Privileges.</td>
 </tr>
 <tr>
