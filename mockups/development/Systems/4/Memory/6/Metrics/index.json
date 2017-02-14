@@ -28,7 +28,7 @@
         }
     },
     "Actions": {
-        "#Memory.ClearCurrentPeriod": {
+        "#MemoryMetrics.ClearCurrentPeriod": {
             "target": "/redfish/v1/Systems/4/Memory/6/Actions/Memory.ClearCurrentPeriod"
         }
     }
