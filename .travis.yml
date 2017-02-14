@@ -21,5 +21,5 @@ cache:
   directories:
   - node_modules # NPM packages
 script:
-  xmllint --noout metadata/*.xml
-  npm test
+  - xmllint --noout metadata/*.xml
+  - npm test
