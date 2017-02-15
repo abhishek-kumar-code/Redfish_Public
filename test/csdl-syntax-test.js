@@ -17,7 +17,10 @@ if(process.env.TRAVIS === undefined || process.env.TRAVIS_BRANCH === 'master') {
 }
 const syntaxBatch = {};
 const mockupsCSDL = {};
-var options = {useLocal: [path.normalize(__dirname+'/../metadata'), path.normalize(__dirname+'/fixtures')], useNetwork: true};
+var options = {useLocal: [path.normalize(__dirname+'/../metadata'), path.normalize(__dirname+'/fixtures'),
+                          path.normalize(__dirname+'/../mockups/oem-service-container/Contoso.com/ContosoExtensions_v1'),
+                          path.normalize(__dirname+'/../mockups/oem-service-container/Contoso.com/TurboencabulatorService_v1')],
+               useNetwork: true};
 
 //Setup a global cache for speed
 options.cache = new CSDL.cache(options.useLocal, options.useNetwork);
