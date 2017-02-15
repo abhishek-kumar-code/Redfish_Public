@@ -18,8 +18,7 @@ if(process.env.TRAVIS === undefined || process.env.TRAVIS_BRANCH === 'master') {
 const syntaxBatch = {};
 const mockupsCSDL = {};
 var options = {useLocal: [path.normalize(__dirname+'/../metadata'), path.normalize(__dirname+'/fixtures'),
-                          path.normalize(__dirname+'/../mockups/oem-service-container/Contoso.com/ContosoExtensions_v1'),
-                          path.normalize(__dirname+'/../mockups/oem-service-container/Contoso.com/TurboencabulatorService_v1')],
+                          path.normalize(__dirname+'/../mockups/oem-service-container/Contoso.com')],
                useNetwork: true};
 
 //Setup a global cache for speed
@@ -42,6 +41,7 @@ const NonPascalCasePropertyWhiteList = ['iSCSIBoot'];
 
 const ODataSchemaFileList = [ 'Org.OData.Core.V1.xml', 'Org.OData.Capabilities.V1.xml', 'Org.OData.Measures.V1.xml' ]
 const SwordfishSchemaFileList = [ 'HostedStorageServices_v1.xml','StorageServiceCollection_v1.xml', 'StorageSystemCollection_v1.xml' ]
+const ContosoSchemaFileList = [ 'ContosoExtensions_v1.xml', 'TurboencabulatorService_v1.xml' ]
 /************************************************************/
 
 const setupBatch = {
@@ -427,6 +427,9 @@ function checkReferenceUris(err, csdl) {
             if(directory !== 'http://redfish.dmtf.org/schemas/swordfish/v1') {
                 throw new Error('Reference "'+references[i].Uri+'" does not point to Swordfish schema directory');
             }
+        }
+        else if(ContosoSchemaFileList.indexOf(file_name) !== -1) {
+            // These files are for OEM examples and don't need to resolve to anything; they are never published
         }
         else {
             if(directory !== 'http://redfish.dmtf.org/schemas/v1') {
