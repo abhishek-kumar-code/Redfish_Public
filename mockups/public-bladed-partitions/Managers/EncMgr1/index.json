@@ -5,8 +5,6 @@
     "Id": "EncMgr1",
     "ManagerType": "EnclosureManager",
     "Model": "Contoso Enclosure Manager",
-    "PartNumber": "AH389-60001",
-    "SerialNumber": "OA0BBK0057",
     "ServiceEntryPointUUID": "0965e849-c110-4b85-8989-9102b950a5a5",
     "UUID": "02OA0BBK0057",
     "FirmwareVersion": "8.1.54",

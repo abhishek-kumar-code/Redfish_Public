@@ -2,7 +2,6 @@
     "@odata.type": "#Power.v1_2_0.Power",
     "Name": "MultiBladeEnclosure Power",
     "Id": "MultiBladeEnclosurePower",
-    "Redundancy@odata.count": 1,
     "Redundancy": [
         {
             "@odata.id": "/redfish/v1/Chassis/Enclosure/Power#/Redundancy/0",

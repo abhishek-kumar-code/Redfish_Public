@@ -5,8 +5,6 @@
     "Id": "EncMgr2",
     "ManagerType": "EnclosureManager",
     "Model": "Contoso Enclosure Manager",
-    "PartNumber": "AH389-60001",
-    "SerialNumber": "OA0BBK0057",
     "ServiceEntryPointUUID": "0965e849-c110-4b85-8989-9102b950a5a5",
     "UUID": "02OA0BBK0057",
     "FirmwareVersion": "8.1.54",
@@ -24,44 +22,37 @@
     "VirtualMedia": {
         "@odata.id": "/redfish/v1/Managers/EncMgr2/VM/CDDVD"
     },
-    "Redundancy": [
-        {
-            "@odata.id": "/redfish/v1/Managers/EncMgr2#/Redundancy",
-            "MemberId": "Redundancy",
-            "Mode": "Failover",
-            "MaxNumSupported": 2,
-            "MinNumNeeded": 1,
-            "Status": {
-                "State": "StandbySpare",
-                "Health": "OK"
+    "Redundancy": [{
+        "@odata.id": "/redfish/v1/Managers/EncMgr2#/Redundancy",
+        "MemberId": "Redundancy",
+        "Mode": "Failover",
+        "MaxNumSupported": 2,
+        "MinNumNeeded": 1,
+        "Status": {
+            "State": "StandbySpare",
+            "Health": "OK"
+        },
+        "RedundancySet": [{
+                "@odata.id": "/redfish/v1/Managers/EncMgr1"
             },
-            "RedundancySet": [
-                {
-                    "@odata.id": "/redfish/v1/Managers/EncMgr1"
-                },
-                {
-                    "@odata.id": "/redfish/v1/Managers/EncMgr2"
-                }
-            ]
-        }
-    ],
-    "Links": {
-        "ManagerForServers": [
             {
+                "@odata.id": "/redfish/v1/Managers/EncMgr2"
+            }
+        ]
+    }],
+    "Links": {
+        "ManagerForServers": [{
                 "@odata.id": "/redfish/v1/Systems/Partition1"
             },
             {
                 "@odata.id": "/redfish/v1/Systems/Partition2"
             }
         ],
-        "ManagerInChassis": [
-            {
-                "@odata.id": "/redfish/v1/Chassis/Enclosure"
-            }
-        ],
+        "ManagerInChassis": [{
+            "@odata.id": "/redfish/v1/Chassis/Enclosure"
+        }],
         "ManagerForChassis@odata.count": 7,
-        "ManagerForChassis": [
-            {
+        "ManagerForChassis": [{
                 "@odata.id": "/redfish/v1/Chassis/Enclosure"
             },
             {

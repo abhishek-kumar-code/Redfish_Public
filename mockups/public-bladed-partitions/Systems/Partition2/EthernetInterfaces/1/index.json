@@ -2,7 +2,6 @@
     "@odata.type": "#EthernetInterface.v1_0_0.EthernetInterface",
     "Id": "1",
     "Name": "network.1",
-    "Model": "FlexFabric 20Gb 2-port 650FLB Adapter",
     "Description": "PartitionedServer NIC",
     "Status": {
         "State": "Enabled",

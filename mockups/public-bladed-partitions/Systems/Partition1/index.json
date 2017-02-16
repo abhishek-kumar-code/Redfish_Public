@@ -20,7 +20,7 @@
             "State": "Enabled"
         },
         "Count": 2,
-        "ProcessorFamily": "Intel(R) Xeon(R) "
+        "Model": "Intel(R) Xeon(R) "
     },
     "MemorySummary": {
         "Status": {

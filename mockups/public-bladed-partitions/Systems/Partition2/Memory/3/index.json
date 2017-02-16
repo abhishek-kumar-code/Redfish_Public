@@ -1,5 +1,5 @@
 {
-	"@odata.type": "#Memory.v1_0_0.Memory",
+	"@odata.type": "#Memory.v1_1_0.Memory",
 	"Name": "PartitionedServer Memory",
 	"Id": "3",
 	"MemoryDeviceType": "DDR4",
@@ -16,5 +16,5 @@
 		"Health": "OK"
 	},
 	"@odata.context": "/redfish/v1/$metadata#Memory.Memory",
-	"@odata.id": "/redfish/v1/Systems/Partition1/Memory/3"
+	"@odata.id": "/redfish/v1/Systems/Partition2/Memory/3"
 }

@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#TasksCollection.TaskCollection",
+    "@odata.type": "#TaskCollection.TaskCollection",
     "Name": "Task Collection",
     "Members@odata.count": 0,
     "Members": [],

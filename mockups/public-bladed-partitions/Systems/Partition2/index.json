@@ -9,7 +9,7 @@
     "HostName": "localhost2",
     "PowerState": "On",
     "BiosVersion": "5.2.3",
-    "UUID": "0965e849bb8e5a1591869102b950a5a5",
+    "UUID": "92384634-2938-2342-8820-489239905423",
     "Status": {
         "Health": "OK",
         "State": "Enabled"
@@ -20,7 +20,7 @@
             "State": "Enabled"
         },
         "Count": 6,
-        "ProcessorFamily": "Intel(R) Xeon(R) "
+        "Model": "Intel(R) Xeon(R) "
     },
     "MemorySummary": {
         "Status": {

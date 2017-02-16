@@ -1,15 +1,13 @@
 {
-    "@odata.type": "#Chassis.v1_2_0.Chassis",
-    "Id": "MultiBladeEnclosure",
-    "Name": "Multi-Blade Enclosure",
-    "Description": "Enclosure with 6 Blades and 2 Managers",
-    "ChassisType": "Enclosure",
-    "Manufacturer": "Contoso",
-    "Model": "Contoso Standard 18U Rack",
-    "SerialNumber": "528QB1654R1",
-    "PartNumber": "166472-S44",
-    "IndicatorLED": "Off",
-    "AssetTag": "Writable",
+    "@odata.context": "/redfish/v1/$metadata#SerialInterfaceCollection.SerialInterfaceCollection",
+    "@odata.id": "/redfish/v1/Managers/EncMgr1/SerialInterfaces",
+    "@odata.type": "#SerialInterfaceCollection.SerialInterfaceCollection",
+    "Name": "Serial Interface Collection",
+    "Description": "Collection of Serial Interfaces for this System",
+    "Members@odata.count": 1,
+    "Members": [{
+        "@odata.id": "/redfish/v1/Managers/EncMgr1/SerialInterfaces/1"
+    }],
     "PowerState": "On",
     "Status": {
         "Health": "OK",
@@ -25,9 +23,7 @@
         "@odata.id": "/redfish/v1/Chassis/Enclosure/Thermal"
     },
     "Links": {
-        "Contains@odata.count": 6,
-        "Contains": [
-            {
+        "Contains": [{
                 "@odata.id": "/redfish/v1/Chassis/Blade1"
             },
             {
@@ -46,8 +42,7 @@
                 "@odata.id": "/redfish/v1/Chassis/Blade6"
             }
         ],
-        "ManagedBy": [
-            {
+        "ManagedBy": [{
                 "@odata.id": "/redfish/v1/Managers/EncMgr1"
             },
             {
@@ -59,8 +54,7 @@
         "Contoso": {
             "@odata.type": "http://Contoso.com/Schema#Contoso.Chassis",
             "NodeControllers@odata.count": 2,
-            "NodeControllers": [
-                {
+            "NodeControllers": [{
                     "Name": "NodeController 0",
                     "Vendor": "Contoso",
                     "PartNumber": "AH341-60401",
