@@ -70,9 +70,9 @@
                 "@odata.id": "/redfish/v1/Systems/Partition2"
             }
         ],
-        "ManagerInChassis": [{
+        "ManagerInChassis": {
             "@odata.id": "/redfish/v1/Chassis/Enclosure"
-        }],
+        },
         "ManagerForChassis@odata.count": 7,
         "ManagerForChassis": [{
                 "@odata.id": "/redfish/v1/Chassis/Enclosure"

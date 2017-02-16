@@ -13,27 +13,24 @@
         "Health": "OK",
         "State": "Enabled"
     },
-    "Redundancy": [
-        {
-            "@odata.id": "/redfish/v1/Managers/EncMgr1#/Redundancy",
-            "MemberId": "Redundancy",
-            "Mode": "Failover",
-            "MaxNumSupported": 2,
-            "MinNumNeeded": 1,
-            "Status": {
-                "State": "Enabled",
-                "Health": "OK"
+    "Redundancy": [{
+        "@odata.id": "/redfish/v1/Managers/EncMgr1#/Redundancy",
+        "MemberId": "Redundancy",
+        "Mode": "Failover",
+        "MaxNumSupported": 2,
+        "MinNumNeeded": 1,
+        "Status": {
+            "State": "Enabled",
+            "Health": "OK"
+        },
+        "RedundancySet": [{
+                "@odata.id": "/redfish/v1/Managers/EncMgr1"
             },
-            "RedundancySet": [
-                {
-                    "@odata.id": "/redfish/v1/Managers/EncMgr1"
-                },
-                {
-                    "@odata.id": "/redfish/v1/Managers/EncMgr2"
-                }
-            ]
-        }
-    ],
+            {
+                "@odata.id": "/redfish/v1/Managers/EncMgr2"
+            }
+        ]
+    }],
     "GraphicalConsole": {
         "ServiceEnabled": true,
         "ConnectTypesSupported": [
@@ -66,22 +63,18 @@
         "@odata.id": "/redfish/v1/Managers/EncMgr1/VM/CDDVD"
     },
     "Links": {
-        "ManagerForServers": [
-            {
+        "ManagerForServers": [{
                 "@odata.id": "/redfish/v1/Systems/Partition1"
             },
             {
                 "@odata.id": "/redfish/v1/Systems/Partition2"
             }
         ],
-        "ManagerInChassis": [
-            {
-                "@odata.id": "/redfish/v1/Chassis/Enclosure"
-            }
-        ],
+        "ManagerInChassis": {
+            "@odata.id": "/redfish/v1/Chassis/Enclosure"
+        },
         "ManagerForChassis@odata.count": 7,
-        "ManagerForChassis": [
-            {
+        "ManagerForChassis": [{
                 "@odata.id": "/redfish/v1/Chassis/Enclosure"
             },
             {
