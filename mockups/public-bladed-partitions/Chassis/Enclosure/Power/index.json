@@ -24,7 +24,6 @@
             "MaxNumSupported": 12
         }
     ],
-    "PowerSupplies@odata.count": 2,
     "PowerSupplies": [
         {
             "@odata.id": "/redfish/v1/Chassis/Enclosure/Power#/PowerSupplies/0",

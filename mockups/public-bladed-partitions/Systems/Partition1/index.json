@@ -72,7 +72,6 @@
             "target": "/redfish/v1/Systems/Partition1/Actions/ComputerSystem.Reset"
         }
     },
-    "Bios": {},
     "@odata.context": "/redfish/v1/$metadata#Systems/Members/$entity",
     "@odata.id": "/redfish/v1/Systems/Partition1"
 }

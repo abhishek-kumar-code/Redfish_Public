@@ -7,7 +7,6 @@
         "State": "Enabled",
         "Health": "OK"
     },
-    "FactoryMACAddress": "AA:BB:CC:DD:EE:FF",
     "MACAddress": "AA:BB:CC:DD:EE:FF",
     "SpeedMbps": 1000,
     "FullDuplex": true,

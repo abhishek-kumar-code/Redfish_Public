@@ -4,10 +4,6 @@
     "@odata.type": "#SerialInterfaceCollection.SerialInterfaceCollection",
     "Name": "Serial Interface Collection",
     "Description": "Collection of Serial Interfaces for this System",
-    "Members@odata.count": 1,
-    "Members": [{
-        "@odata.id": "/redfish/v1/Managers/EncMgr1/SerialInterfaces/1"
-    }],
     "PowerState": "On",
     "Status": {
         "Health": "OK",

@@ -25,7 +25,6 @@
             "MaxNumSupported": 15
         }
     ],
-    "Fans@odata.count": 2,
     "Fans": [
         {
             "@odata.id": "/redfish/v1/Chassis/Enclosure/Thermal#/Fans/0",

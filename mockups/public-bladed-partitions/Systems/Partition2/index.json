@@ -45,7 +45,6 @@
         "UefiTargetBootSourceOverride": "/0x31/0x33/0x01/0x01"
     },
     "Links": {
-        "Chassis@odata.count": 3,
         "Chassis": [
             {
                 "@odata.id": "/redfish/v1/Chassis/Blade2"
@@ -81,7 +80,6 @@
             "target": "/redfish/v1/Systems/Partition2/Actions/ComputerSystem.Reset"
         }
     },
-    "Bios": {},
     "@odata.context": "/redfish/v1/$metadata#Systems/Members/$entity",
     "@odata.id": "/redfish/v1/Systems/Partition2"
 }
