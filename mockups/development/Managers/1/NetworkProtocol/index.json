@@ -55,10 +55,9 @@
 	"ProtocolEnabled": true,
 	"NTPServers": [
             "0.pool.ntp.org",
-	    "1.pool.ntp.org",
-	    "time-a.nist.gov"
-        ],
-	"DateTimeLocalOffset": "+06:00"
+            "1.pool.ntp.org",
+            "time-a.nist.gov"
+        ]
     },
     "Oem": {}
 }
