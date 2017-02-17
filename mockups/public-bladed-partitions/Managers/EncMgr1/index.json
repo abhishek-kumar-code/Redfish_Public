@@ -73,7 +73,6 @@
         "ManagerInChassis": {
             "@odata.id": "/redfish/v1/Chassis/Enclosure"
         },
-        "ManagerForChassis@odata.count": 7,
         "ManagerForChassis": [{
                 "@odata.id": "/redfish/v1/Chassis/Enclosure"
             },

@@ -1,8 +1,8 @@
 {
     "@odata.type": "#Manager.v1_1_0.Manager",
-    "Name": "Enclosure Manager - Active",
+    "Name": "Enclosure Manager - StandBy",
     "Description": "Onboard Multi-Blade Enclosure Management Controller",
-    "Id": "EncMgr1",
+    "Id": "EncMgr2",
     "ManagerType": "EnclosureManager",
     "Model": "Contoso Enclosure Manager",
     "ServiceEntryPointUUID": "0965e849-c110-4b85-8989-9102b950a5a5",
@@ -73,7 +73,6 @@
         "ManagerInChassis": {
             "@odata.id": "/redfish/v1/Chassis/Enclosure"
         },
-        "ManagerForChassis@odata.count": 7,
         "ManagerForChassis": [{
                 "@odata.id": "/redfish/v1/Chassis/Enclosure"
             },

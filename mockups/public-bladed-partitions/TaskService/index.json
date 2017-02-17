@@ -1,114 +1,18 @@
 {
-    "@odata.type": "#Manager.v1_1_0.Manager",
-    "Name": "Enclosure Manager - Active",
-    "Description": "Onboard Multi-Blade Enclosure Management Controller",
-    "Id": "EncMgr1",
-    "ManagerType": "EnclosureManager",
-    "Model": "Contoso Enclosure Manager",
-    "ServiceEntryPointUUID": "0965e849-c110-4b85-8989-9102b950a5a5",
-    "UUID": "58893887-8974-2487-2389-841168418919",
-    "FirmwareVersion": "8.1.54",
+    "@odata.type": "#TaskService.v1_0_2.TaskService",
+    "Id": "TaskService",
+    "Name": "Tasks Service",
     "DateTime": "2016-12-30T04:14:33+06:00",
+    "CompletedTaskOverWritePolicy": "Manual",
     "Status": {
-        "Health": "OK",
-        "State": "Enabled"
+        "State": "Enabled",
+        "Health": "OK"
     },
-    "Redundancy": [{
-        "@odata.id": "/redfish/v1/Managers/EncMgr1#/Redundancy",
-        "MemberId": "Redundancy",
-        "Mode": "Failover",
-        "MaxNumSupported": 2,
-        "MinNumNeeded": 1,
-        "Status": {
-            "State": "Enabled",
-            "Health": "OK"
-        },
-        "RedundancySet": [{
-                "@odata.id": "/redfish/v1/Managers/EncMgr1"
-            },
-            {
-                "@odata.id": "/redfish/v1/Managers/EncMgr2"
-            }
-        ]
-    }],
-    "GraphicalConsole": {
-        "ServiceEnabled": true,
-        "ConnectTypesSupported": [
-            "KVMIP"
-        ]
+    "ServiceEnabled": true,
+    "Tasks": {
+        "@odata.id": "/redfish/v1/TaskService/Tasks"
     },
-    "SerialConsole": {
-        "ServiceEnabled": true,
-        "MaxConcurrentSessions": 1,
-        "ConnectTypesSupported": [
-            "SSH",
-            "IPMI"
-        ]
-    },
-    "CommandShell": {
-        "ServiceEnabled": true,
-        "MaxConcurrentSessions": 4,
-        "ConnectTypesSupported": [
-            "SSH",
-            "Oem"
-        ]
-    },
-    "NetworkProtocol": {
-        "@odata.id": "/redfish/v1/Managers/EncMgr1/NetworkProtocol"
-    },
-    "EthernetInterfaces": {
-        "@odata.id": "/redfish/v1/Managers/EncMgr1/EthernetInterfaces"
-    },
-    "VirtualMedia": {
-        "@odata.id": "/redfish/v1/Managers/EncMgr1/VM/CDDVD"
-    },
-    "Links": {
-        "ManagerForServers": [{
-                "@odata.id": "/redfish/v1/Systems/Partition1"
-            },
-            {
-                "@odata.id": "/redfish/v1/Systems/Partition2"
-            }
-        ],
-        "ManagerInChassis": {
-            "@odata.id": "/redfish/v1/Chassis/Enclosure"
-        },
-        "ManagerForChassis@odata.count": 7,
-        "ManagerForChassis": [{
-                "@odata.id": "/redfish/v1/Chassis/Enclosure"
-            },
-            {
-                "@odata.id": "/redfish/v1/Chassis/Blade1"
-            },
-            {
-                "@odata.id": "/redfish/v1/Chassis/Blade2"
-            },
-            {
-                "@odata.id": "/redfish/v1/Chassis/Blade3"
-            },
-            {
-                "@odata.id": "/redfish/v1/Chassis/Blade4"
-            },
-            {
-                "@odata.id": "/redfish/v1/Chassis/Blade5"
-            },
-            {
-                "@odata.id": "/redfish/v1/Chassis/Blade6"
-            }
-        ]
-    },
-    "Actions": {
-        "#Manager.Reset": {
-            "target": "/redfish/v1/Managers/EncMgr1/Actions/Manager.Reset",
-            "ResetType@Redfish.AllowableValues": [
-                "ForceRestart",
-                "GracefulRestart"
-            ]
-        },
-        "#Manager.ForceFailover": {
-            "target": "/redfish/v1/Managers/EncMgr1/Actions/Manager.ForceFailover"
-        }
-    },
-    "@odata.context": "/redfish/v1/$metadata#Managers/Members/$entity",
-    "@odata.id": "/redfish/v1/Managers/EncMgr1"
+    "@odata.context": "/redfish/v1/$metadata/TaskService",
+    "@odata.id": "/redfish/v1/TaskService",
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }
