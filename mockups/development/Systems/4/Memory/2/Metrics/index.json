@@ -28,9 +28,8 @@
         }
     },
     "Actions": {
-        "#Memory.ClearMetrics": {
-            ".comment4": "This action is used to clear CurrentPeriod metrics",
-            "target": "/redfish/v1/Systems/4/Memory/2/Actions/Memory.ClearMetrics"
+        "#MemoryMetrics.ClearCurrentPeriod": {
+            "target": "/redfish/v1/Systems/4/Memory/2/Actions/MemoryMetrics.ClearCurrentPeriod"
         },
         "Oem": {}
     },

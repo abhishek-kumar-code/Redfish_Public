@@ -492,7 +492,10 @@ function validCSDLTypeInMockup(err, json) {
             throw new Error('Property "'+propName+'" is a ComplexType, but the value in the mockup is not a valid JSON object.');
           }
           //Ignore Oem and Actions types...
-          if(propType.Name !== 'Oem' && propType.Name !== 'Actions') {
+          if(propType.Name === 'Actions') {
+            validateActions(propValue);
+          }
+          else if(propType.Name !== 'Oem') {
             complexTypeCheck(propType, propValue, propName, type);
           }
         }
@@ -720,6 +723,25 @@ function checkProperty(propName, CSDLType, propValue, parentType, parentPropName
       }
     }
   }
+}
+
+function validateActions(actions) {
+ for(let propName in actions) {
+   if(propName === 'Oem') {
+     continue;
+   }
+   let actionType = CSDL.findByType({_options: options}, propName.substring(1));
+   if(actionType === undefined || actionType === null) {
+     throw new Error('Action "'+propName+'" is not present in the CSDL');
+   }
+   if(actionType.constructor.name !== 'Action') {
+     throw new Error('Action "'+propName+'" is not an action in the CSDL');
+   }
+   let action = actions[propName];
+   if(action['Target'] !== undefined) {
+     throw new Error('Action "'+propName+'" has invalid property "Target"');
+   }
+ } 
 }
 
 process.on('unhandledRejection', (reason, promise) => {
