@@ -671,6 +671,7 @@
 
     </Schema>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_4_0">
+      <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_3_0.ComputerSystem"/>
       <ComplexType Name="MemorySummary" BaseType="ComputerSystem.v1_1_0.MemorySummary">
         <Property Name="TotalSystemPersistentMemoryGiB" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
