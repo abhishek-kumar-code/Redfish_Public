@@ -15,6 +15,16 @@
     "MemoryDomains": {
         "@odata.id": "/redfish/v1/Systems/4/MemoryDomains"
     },
+    "MemorySummary": {
+        "TotalSystemMemoryGiB": 24,
+        "TotalSystemPersistentMemoryGiB": 40,
+        "MemoryMirroring" : "Hybrid",		
+        "Status": {
+            "State": "Enabled",
+            "Health": "OK",
+            "HealthRollup": "OK"
+        }
+    },    
     "Oem": {},
     "Id": "4",
     "@odata.context": "/redfish/v1/$metadata#Systems/Members/$entity",
