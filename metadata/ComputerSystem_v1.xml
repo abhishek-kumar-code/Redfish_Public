@@ -670,8 +670,8 @@
       </EnumType>
 
     </Schema>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_3_0">
-      <ComplexType Name="MemorySummary" BaseType="ComputerSystem.v1_1_0.MemorySummary">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_4_0">
+      <ComplexType Name="MemorySummary" BaseType="ComputerSystem.v1_3_0.MemorySummary">
         <Property Name="TotalSystemPersistentMemoryGiB" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The total installed, system-accessible persistent memory, measured in GiB."/>
