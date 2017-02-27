@@ -80,7 +80,8 @@ function constructTest(file) {
     'All Annotation Terms are valid': checkAnnotationTerms,
     'Enum Members are valid names': checkEnumMembers,
     'Properties are Pascal-cased': checkPropertiesPascalCased,
-    'Reference URIs are valid': checkReferenceUris
+    'Reference URIs are valid': checkReferenceUris,
+    'All EntityType defintions have Actions': entityTypesHaveActions
   }
 }
 
@@ -430,6 +431,25 @@ function checkReferenceUris(err, csdl) {
                 throw new Error('Reference "'+references[i].Uri+'" does not point to DMTF schema directory');
             }
         }
+    }
+}
+
+function entityTypesHaveActions(err, csdl) {
+    if(err) {
+        return;
+    }
+
+    let entityTypes = CSDL.search(csdl, 'EntityType');
+    for(let i = 0; i < entityTypes.length; i++) {
+      let entityType = entityTypes[i];
+      if(entityType.Properties['Actions'] !== undefined) {
+        continue;
+      }
+      //Exclude collction types...
+      if(entityType.BaseType === 'Resource.v1_0_0.ResourceCollection') {
+        continue;
+      }
+      throw new Error('Entity Type "'+entityType.Name+'" does not contain an Action');
     }
 }
 
