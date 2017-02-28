@@ -413,8 +413,8 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="TotalSystemMemoryGiB" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The total installed, operating system-accessible memory (RAM), measured in GiB."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain the amount of system general purpose volatile (RAM) memory as measured in gibibytes."/>
+          <Annotation Term="OData.Description" String="The total configured operating system-accessible memory (RAM), measured in GiB."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the amount of configured system general purpose volatile (RAM) memory as measured in gibibytes."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
         </Property>
         <Property Name="Status" Type="Resource.Status"  Nullable="false"/>
@@ -443,6 +443,11 @@
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_0_3.ComputerSystem"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_0_5">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
+      <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_0_3.ComputerSystem"/>
+    </Schema>    
+    
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_1_0">
 
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_0_2.ComputerSystem">
@@ -628,6 +633,11 @@
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_2_0.ComputerSystem"/>
     </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_2_2">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
+      <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_2_1.ComputerSystem"/>
+    </Schema>    
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_3_0">
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_2_1.ComputerSystem">
@@ -669,14 +679,19 @@
         </Member>
       </EnumType>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_3_1">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
+      <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_3_0.ComputerSystem"/>
+    </Schema>      
+      
     </Schema>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_4_0">
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_3_0.ComputerSystem"/>
       <ComplexType Name="MemorySummary" BaseType="ComputerSystem.v1_1_0.MemorySummary">
         <Property Name="TotalSystemPersistentMemoryGiB" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The total installed, system-accessible persistent memory, measured in GiB."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain the amount of persistent memory available to the system as measured in gibibytes."/>
+          <Annotation Term="OData.Description" String="The total configured, system-accessible persistent memory, measured in GiB."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the total amount of configured persistent memory available to the system as measured in gibibytes."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
         </Property>
       </ComplexType>
