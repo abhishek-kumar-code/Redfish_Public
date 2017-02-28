@@ -449,6 +449,19 @@ function entityTypesHaveActions(err, csdl) {
       if(entityType.BaseType === 'Resource.v1_0_0.ResourceCollection') {
         continue;
       }
+      let sameNames = CSDL.search(csdl, 'EntityType', entityType.Name);
+      if(sameNames.length > 1) {
+        let found = false;
+        for(let j = 0; j < sameNames.length; j++) {
+          if(sameNames[j].Properties['Actions'] !== undefined) {
+            found = true;
+            break;
+          }
+        }
+        if(found) {
+          continue;
+        }
+      }
       throw new Error('Entity Type "'+entityType.Name+'" does not contain an Action');
     }
 }
