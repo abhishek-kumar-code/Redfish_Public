@@ -242,12 +242,12 @@
           <Annotation Term="OData.LongDescription" String="This value shall mean that this device conforms to the T11 FC-BB-5 Specification."/>
         </Member>
         <Member Name="FCP">
-          <Annotation Term="OData.Description" String="FC4 SCSI Protocol"/>
-          <Annotation Term="OData.LongDescription" String="This enumeration literal shall indicate the Fibre Channel SCSI Protocol."/>
+          <Annotation Term="OData.Description" String="Fibre Channel Protocol for SCSI."/>
+          <Annotation Term="OData.LongDescription" String="This enumeration literal shall indicate the INCITS 481: Information technology - Fibre Channel Protocol for SCSI.  The Fibre Channel SCSI Protocol."/>
         </Member>
         <Member Name="FICON">
-          <Annotation Term="OData.Description" String="FICON"/>
-          <Annotation Term="OData.LongDescription" String="This enumeration literal shall indicate the FICON protocol."/>
+          <Annotation Term="OData.Description" String="The FIbre CONnection (FICON) protocol."/>
+          <Annotation Term="OData.LongDescription" String="This enumeration literal shall indicate the (ANSI FC-SB-3 Single-Byte Command Code Sets-3 Mapping Protocol for the Fibre Channel(FC) protocol.  FICON (FIbre CONnection) is the IBM proprietary name for this protocol. "/>
         </Member>
         <Member Name="NVMeOverFabrics">
           <Annotation Term="OData.Description" String="NVMe over Fabrics."/>
