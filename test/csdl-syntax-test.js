@@ -37,8 +37,9 @@ const NonPascalCaseEnumWhiteList = ['iSCSI', 'iQN', 'FC_WWN', 'TX_RX', 'EIA_310'
 //Properties names that are non-Pascal Cased
 const NonPascalCasePropertyWhiteList = ['iSCSIBoot'];
 
-const ODataSchemaFileList = [ 'Org.OData.Core.V1.xml', 'Org.OData.Capabilities.V1.xml', 'Org.OData.Measures.V1.xml' ]
-const SwordfishSchemaFileList = [ 'HostedStorageServices_v1.xml','StorageServiceCollection_v1.xml', 'StorageSystemCollection_v1.xml' ]
+const ODataSchemaFileList = [ 'Org.OData.Core.V1.xml', 'Org.OData.Capabilities.V1.xml', 'Org.OData.Measures.V1.xml' ];
+const SwordfishSchemaFileList = [ 'HostedStorageServices_v1.xml','StorageServiceCollection_v1.xml', 'StorageSystemCollection_v1.xml' ];
+const EntityTypesWithNoActions = [ 'ServiceRoot', 'Item', 'ReferenceableMember', 'Resource', 'ResourceCollection' ];
 /************************************************************/
 
 const setupBatch = {
@@ -447,6 +448,9 @@ function entityTypesHaveActions(err, csdl) {
       }
       //Exclude collction types...
       if(entityType.BaseType === 'Resource.v1_0_0.ResourceCollection') {
+        continue;
+      }
+      if(EntityTypesWithNoActions.indexOf(entityType.Name) !== -1) {
         continue;
       }
       let sameNames = CSDL.search(csdl, 'EntityType', entityType.Name);
