@@ -2570,6 +2570,21 @@ For logical AND combinations, the privilege label is placed in the Privilege pro
 ## Redfish Host Interface
 The Redfish Host Interface Specification defines how software executing on a host computer system can interface with a Redfish service that manages the host.  See [DSP0270](#DSP0270) for details.
 
+## Redfish Composability
+
+A service may implement the CompositionService resource off of ServiceRoot to support the management of disaggregated hardware.  Disaggregated hardware allows for independent components, such as processors, memory, I/O controllers, and drives, to be bound together to create logical constructs that operate together.  This allows for a client to dynamically assign hardware resources for a given application.
+
+### Composition Requests
+
+A service that implements the CompositionService shall support one or more of the following types of composition requests:
+* [Specific Composition](#specific-composition)
+
+#### Specific Composition
+
+A specific composition is when a client has identified an exact set of components in which to build a logical entity.  A service that supports specific composition requests shall implement the ResourceBlock resource and the Zone resource for the CompositionService.  ResourceBlocks provide an inventory of components available to the client for building compositions.  ResourceZones describe the binding restrictions of the ResourceBlocks managed by the service; ResourceZones have an underlying schema type of Zone.
+
+The Zone resource within the CompositionService shall include the CollectionCapabilities annotation in the response.  The CollectionCapabilities annotation allows a client to discover which collections in the service support compositions, and how the POST request for the collection is formatted.  A service that supports specific compositions shall support a POST request that contains an array of links to ResourceBlocks.  The specific location of the array in the POST request can vary based on the type of resource being composed.  A service may require other properties as part of the POST request.
+
 ## ANNEX A (informative)
 
 ### Change log
