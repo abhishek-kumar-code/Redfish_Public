@@ -17,6 +17,9 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
     <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
@@ -85,11 +88,13 @@
         <Property Name="CompositionStatus" Type="ResourceBlock.v1_0_0.CompositionStatus" Nullable="false">
           <Annotation Term="OData.Description" String="This property describes the composition status details for this Resource Block."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain composition status information about this Resource Block."/>
+          <Annotation Term="Redfish.Required"/>
         </Property>
         <Property Name="ResourceBlockType" Type="Collection(ResourceBlock.v1_0_0.ResourceBlockType)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This property represents the types of resources available on this Resource Block."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of enumerated values describing type of resources available."/>
+          <Annotation Term="Redfish.Required"/>
         </Property>
         <Property Name="Links" Type="ResourceBlock.v1_0_0.Links" Nullable="false">
           <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
@@ -191,6 +196,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This property represents the current state of the Resource Block from a composition perspective."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an enumerated value describing composition state of the Resource Block."/>
+          <Annotation Term="Redfish.Required"/>
         </Property>
       </ComplexType>
 
