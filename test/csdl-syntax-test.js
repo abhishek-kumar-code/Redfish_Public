@@ -39,7 +39,7 @@ const NonPascalCasePropertyWhiteList = ['iSCSIBoot'];
 
 const ODataSchemaFileList = [ 'Org.OData.Core.V1.xml', 'Org.OData.Capabilities.V1.xml', 'Org.OData.Measures.V1.xml' ];
 const SwordfishSchemaFileList = [ 'HostedStorageServices_v1.xml','StorageServiceCollection_v1.xml', 'StorageSystemCollection_v1.xml' ];
-const EntityTypesWithNoActions = [ 'ServiceRoot', 'Item', 'ReferenceableMember', 'Resource', 'ResourceCollection' ];
+const EntityTypesWithNoActions = [ 'ServiceRoot', 'Item', 'ReferenceableMember', 'Resource', 'ResourceCollection', 'ActionInfo' ];
 /************************************************************/
 
 const setupBatch = {
