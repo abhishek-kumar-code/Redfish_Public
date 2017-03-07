@@ -246,7 +246,7 @@
           <Annotation Term="OData.LongDescription" String="This enumeration literal shall indicate the INCITS 481: Information technology - Fibre Channel Protocol for SCSI.  The Fibre Channel SCSI Protocol."/>
         </Member>
         <Member Name="FICON">
-          <Annotation Term="OData.Description" String="The FIbre CONnection (FICON) protocol."/>
+          <Annotation Term="OData.Description" String="FIbre CONnection (FICON)."/>
           <Annotation Term="OData.LongDescription" String="This enumeration literal shall indicate the (ANSI FC-SB-3 Single-Byte Command Code Sets-3 Mapping Protocol for the Fibre Channel(FC) protocol.  FICON (FIbre CONnection) is the IBM proprietary name for this protocol. "/>
         </Member>
         <Member Name="NVMeOverFabrics">
