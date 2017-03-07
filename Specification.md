@@ -1620,7 +1620,7 @@ The `Permissions` annotation term is defined in http://docs.oasis-open.org/odata
 
 ##### Required properties
 
-The Required annotation or Nullable attribute is used to specify that a property is required to be supported by services. Required properties shall be annotated with the Required annotation, or annotated with a Nullable attribute with a value of `"false"`. All other properties are optional.
+The Required annotation is used to specify that a property is required to be supported by services. Required properties shall be annotated with the Required annotation. All other properties are optional.
 
 If an implementation supports a property, it shall always provide a value for that property.  If a value is unknown, then null is an acceptable values in most cases. Properties not returned from a GET operation shall indicate that the property is not currently supported by the implementation.
 
