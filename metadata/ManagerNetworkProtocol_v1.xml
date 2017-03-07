@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  ManagerNetworkProtocol  v1.1.0-->
+<!--# Redfish Schema:  ManagerNetworkProtocol  v1.2.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -176,6 +176,37 @@
           <Annotation Term="OData.LongDescription" String="This object shall contain information for the DHCP protocol settings for the manager."/>
         </Property>
       </EntityType>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ManagerNetworkProtocol.v1_2_0">
+      <EntityType Name="ManagerNetworkProtocol" BaseType="ManagerNetworkProtocol.v1_1_0.ManagerNetworkProtocol">
+        <Property Name="NTP" Type="ManagerNetworkProtocol.v1_2_0.NTPProtocol" Nullable="false">
+          <Annotation Term="OData.Description" String="Settings for this Manager's NTP protocol support."/>
+          <Annotation Term="OData.LongDescription" String="This object shall contain information for the NTP protocol settings for the manager."/>
+        </Property>
+        <Property Name="Actions" Type="ManagerNetworkProtocol.v1_2_0.Actions" Nullable="false">
+          <Annotation Term="OData.Description" String="The available actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
+        </Property>
+      </EntityType>
+
+      <ComplexType Name="NTPProtocol" BaseType="ManagerNetworkProtocol.v1_0_0.Protocol">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Property Name="NTPServers" Type="Collection(Edm.String)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Indicates to which NTP servers this manager is subscribed."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain all the NTP servers for which this manager is using to obtain time."/>
+        </Property>
+      </ComplexType>
+
+      <ComplexType Name="Actions">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Property Name="Oem" Type="ManagerNetworkProtocol.v1_2_0.OemActions" Nullable="false"/>
+      </ComplexType>
+
+      <ComplexType Name="OemActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+      </ComplexType>
     </Schema>
 
   </edmx:DataServices>

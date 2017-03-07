@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  ComputerSystem  v1.3.1-->
+<!--# Redfish Schema:  ComputerSystem  v1.4.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -413,8 +413,8 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="TotalSystemMemoryGiB" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The total installed, operating system-accessible memory (RAM), measured in GiB."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain the amount of system general purpose volatile (RAM) memory as measured in gibibytes."/>
+          <Annotation Term="OData.Description" String="The total configured operating system-accessible memory (RAM), measured in GiB."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the amount of configured system general purpose volatile (RAM) memory as measured in gibibytes."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
         </Property>
         <Property Name="Status" Type="Resource.Status"  Nullable="false"/>
@@ -444,7 +444,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_0_5">
-      <Annotation Term="OData.Description" String="This version was created to remove the Nullable facet on NavigationProperties of type Collection."/>
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated and to remove the Nullable facet on NavigationProperties of type Collection."/>
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_0_4.ComputerSystem"/>
     </Schema>
 
@@ -640,7 +640,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_2_2">
-      <Annotation Term="OData.Description" String="This version was created to remove the Nullable facet on NavigationProperties of type Collection."/>
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated and to remove the Nullable facet on NavigationProperties of type Collection."/>
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_2_1.ComputerSystem"/>
     </Schema>
 
@@ -686,8 +686,20 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_3_1">
-      <Annotation Term="OData.Description" String="This version was created to remove the Nullable facet on NavigationProperties of type Collection."/>
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated and to remove the Nullable facet on NavigationProperties of type Collection."/>
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_3_0.ComputerSystem"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_4_0">
+      <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_3_1.ComputerSystem"/>
+      <ComplexType Name="MemorySummary" BaseType="ComputerSystem.v1_1_0.MemorySummary">
+        <Property Name="TotalSystemPersistentMemoryGiB" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The total configured, system-accessible persistent memory, measured in GiB."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the total amount of configured persistent memory available to the system as measured in gibibytes."/>
+          <Annotation Term="Validation.Minimum" Int="0"/>
+        </Property>
+      </ComplexType>
     </Schema>
 
   </edmx:DataServices>
