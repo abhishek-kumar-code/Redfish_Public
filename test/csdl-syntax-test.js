@@ -545,9 +545,9 @@ function checkVersionInPublishedList(version, publishedList, schemaName) {
     return;
   }
   let minor = major[parts[1]];
-  if(minor[parts[2]] === undefined) {
+  if(minor.indexOf(parts[2]) === -1) {
     let prevMaint = ((parts[2]*1)-1)+'';
-    if(minor[prevMaint] === undefined) {
+    if(minor.indexOf(prevMaint) === -1) {
       throw new Error('Schema version '+parts[0]+'_'+parts[1]+'_'+parts[2]+' is not published and neither is '+parts[0]+'_'+parts[1]+'_'+prevMaint+' in '+schemaName);
     }
   }
