@@ -806,7 +806,7 @@ The service metadata shall include the namespaces for each of the Redfish resour
 </edmx:Reference>
 ~~~
 
-The service's [Metadata Document](#metadata-document-request) shall include an EntityContainer that defines the top level resources and Resource Collections. An implementation may extend the ServiceContainer defined in the ServiceRoot schema to define OEM Singletons for the implementation's [OData Service Document](#odata-service-document-request).
+The service's [Metadata Document](#metadata-document-request) shall include an EntityContainer that defines the top level resources and Resource Collections. An implementation may extend the ServiceContainer defined in the ServiceRoot schema for the implementation's [OData Service Document](#odata-service-document-request).
 
 ~~~xml
 <edmx:DataServices>
