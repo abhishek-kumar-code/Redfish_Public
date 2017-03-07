@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Redundancy  v1.1.1-->
+<!--# Redfish Schema:  Redundancy  v1.1.2-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -68,7 +68,7 @@
         <Property Name="Status" Type="Resource.Status" Nullable="false">
           <Annotation Term="Redfish.Required"/>
         </Property>
-        <NavigationProperty Name="RedundancySet" Type="Collection(Resource.Item)" Nullable="false">
+        <NavigationProperty Name="RedundancySet" Type="Collection(Resource.Item)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains any ids that represent components of this redundancy set."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the ids of components that are part of this redundancy set. The id values may or may not be dereferenceable."/>
@@ -117,6 +117,11 @@
       <EntityType Name="Redundancy" BaseType="Redundancy.v1_0_2.Redundancy"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Redundancy.v1_0_4">
+      <Annotation Term="OData.Description" String="This version was created to remove the Nullable facet on NavigationProperties of type Collection."/>
+      <EntityType Name="Redundancy" BaseType="Redundancy.v1_0_3.Redundancy"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Redundancy.v1_1_0">
       <EntityType Name="Redundancy" BaseType="Redundancy.v1_0_2.Redundancy">
         <Property Name="RedundancyEnabled" Type="Edm.Boolean">
@@ -132,8 +137,13 @@
       <EntityType Name="Redundancy" BaseType="Redundancy.v1_1_0.Redundancy"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Redundancy.v1_1_2">
+      <Annotation Term="OData.Description" String="This version was created to remove the Nullable facet on NavigationProperties of type Collection."/>
+      <EntityType Name="Redundancy" BaseType="Redundancy.v1_1_1.Redundancy"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Redundancy.v1_2_0">
-      <EntityType Name="Redundancy" BaseType="Redundancy.v1_1_1.Redundancy">
+      <EntityType Name="Redundancy" BaseType="Redundancy.v1_1_2.Redundancy">
         <Property Name="Actions" Type="Redundancy.v1_2_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>

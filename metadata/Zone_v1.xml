@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Zone  v1.0.1-->
+<!--# Redfish Schema:  Zone  v1.0.2-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -51,13 +51,13 @@
       </EntityType>
 
       <ComplexType Name="Links" BaseType="Resource.Links">
-        <NavigationProperty Name="Endpoints" Type="Collection(Endpoint.Endpoint)" Nullable="false">
+        <NavigationProperty Name="Endpoints" Type="Collection(Endpoint.Endpoint)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the endpoints that are contained in this zone."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resources that this zone is associated with and shall reference a resource of type Endpoint."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="InvolvedSwitches" Type="Collection(Switch.Switch)" Nullable="false">
+        <NavigationProperty Name="InvolvedSwitches" Type="Collection(Switch.Switch)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the switchs that are utilized in this zone."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resources that this zone is associated with and shall reference a resource of type Switch."/>
@@ -71,8 +71,13 @@
       <EntityType Name="Zone" BaseType="Zone.v1_0_0.Zone"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Zone.v1_0_2">
+      <Annotation Term="OData.Description" String="This version was created to remove the Nullable facet on NavigationProperties of type Collection."/>
+      <EntityType Name="Zone" BaseType="Zone.v1_0_1.Zone"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Zone.v1_1_0">
-      <EntityType Name="Zone" BaseType="Zone.v1_0_1.Zone">
+      <EntityType Name="Zone" BaseType="Zone.v1_0_2.Zone">
         <Property Name="Actions" Type="Zone.v1_1_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
