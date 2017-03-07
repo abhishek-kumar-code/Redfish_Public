@@ -37,8 +37,9 @@ const NonPascalCaseEnumWhiteList = ['iSCSI', 'iQN', 'FC_WWN', 'TX_RX', 'EIA_310'
 //Properties names that are non-Pascal Cased
 const NonPascalCasePropertyWhiteList = ['iSCSIBoot'];
 
-const ODataSchemaFileList = [ 'Org.OData.Core.V1.xml', 'Org.OData.Capabilities.V1.xml', 'Org.OData.Measures.V1.xml' ]
-const SwordfishSchemaFileList = [ 'HostedStorageServices_v1.xml','StorageServiceCollection_v1.xml', 'StorageSystemCollection_v1.xml' ]
+const ODataSchemaFileList = [ 'Org.OData.Core.V1.xml', 'Org.OData.Capabilities.V1.xml', 'Org.OData.Measures.V1.xml' ];
+const SwordfishSchemaFileList = [ 'HostedStorageServices_v1.xml','StorageServiceCollection_v1.xml', 'StorageSystemCollection_v1.xml' ];
+const EntityTypesWithNoActions = [ 'ServiceRoot', 'Item', 'ReferenceableMember', 'Resource', 'ResourceCollection', 'ActionInfo' ];
 /************************************************************/
 
 const setupBatch = {
@@ -80,7 +81,8 @@ function constructTest(file) {
     'All Annotation Terms are valid': checkAnnotationTerms,
     'Enum Members are valid names': checkEnumMembers,
     'Properties are Pascal-cased': checkPropertiesPascalCased,
-    'Reference URIs are valid': checkReferenceUris
+    'Reference URIs are valid': checkReferenceUris,
+    'All EntityType defintions have Actions': entityTypesHaveActions
   }
 }
 
@@ -430,6 +432,41 @@ function checkReferenceUris(err, csdl) {
                 throw new Error('Reference "'+references[i].Uri+'" does not point to DMTF schema directory');
             }
         }
+    }
+}
+
+function entityTypesHaveActions(err, csdl) {
+    if(err) {
+        return;
+    }
+
+    let entityTypes = CSDL.search(csdl, 'EntityType');
+    for(let i = 0; i < entityTypes.length; i++) {
+      let entityType = entityTypes[i];
+      if(entityType.Properties['Actions'] !== undefined) {
+        continue;
+      }
+      //Exclude collction types...
+      if(entityType.BaseType === 'Resource.v1_0_0.ResourceCollection') {
+        continue;
+      }
+      if(EntityTypesWithNoActions.indexOf(entityType.Name) !== -1) {
+        continue;
+      }
+      let sameNames = CSDL.search(csdl, 'EntityType', entityType.Name);
+      if(sameNames.length > 1) {
+        let found = false;
+        for(let j = 0; j < sameNames.length; j++) {
+          if(sameNames[j].Properties['Actions'] !== undefined) {
+            found = true;
+            break;
+          }
+        }
+        if(found) {
+          continue;
+        }
+      }
+      throw new Error('Entity Type "'+entityType.Name+'" does not contain an Action');
     }
 }
 

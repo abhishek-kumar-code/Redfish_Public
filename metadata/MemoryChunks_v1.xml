@@ -112,5 +112,23 @@
       <EntityType Name="MemoryChunks" BaseType="MemoryChunks.v1_0_0.MemoryChunks"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MemoryChunks.v1_1_0">
+      <EntityType Name="MemoryChunks" BaseType="MemoryChunks.v1_0_1.MemoryChunks">
+        <Property Name="Actions" Type="MemoryChunks.v1_1_0.Actions" Nullable="false">
+          <Annotation Term="OData.Description" String="The available actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
+        </Property>
+      </EntityType>
+
+      <ComplexType Name="Actions">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Property Name="Oem" Type="MemoryChunks.v1_1_0.OemActions" Nullable="false"/>
+      </ComplexType>
+
+      <ComplexType Name="OemActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+      </ComplexType>
+    </Schema>
+
   </edmx:DataServices>
 </edmx:Edmx>
