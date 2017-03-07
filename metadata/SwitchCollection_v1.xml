@@ -26,7 +26,7 @@
 
       <EntityType Name="SwitchCollection" BaseType="Resource.v1_0_0.ResourceCollection">
         <Annotation Term="OData.Description" String="A Collection of Switch resource instances."/>
-        <NavigationProperty Name="Members" Type="Collection(Switch.Switch)" Nullable="false">
+        <NavigationProperty Name="Members" Type="Collection(Switch.Switch)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Contains the members of this collection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
