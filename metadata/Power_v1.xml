@@ -533,5 +533,71 @@
       <EntityType Name="Power" BaseType="Power.v1_2_0.Power"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.v1_3_0">
+      <EntityType Name="Power" BaseType="Power.v1_2_1.Power">
+        <Property Name="Actions" Type="Power.v1_3_0.Actions" Nullable="false">
+          <Annotation Term="OData.Description" String="The available actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
+        </Property>
+      </EntityType>
+
+      <EntityType Name="PowerControl" BaseType="Power.v1_0_0.PowerControl">
+        <Property Name="Actions" Type="Power.v1_3_0.PowerControlActions" Nullable="false">
+          <Annotation Term="OData.Description" String="The available actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
+        </Property>
+      </EntityType>
+
+      <EntityType Name="Voltage" BaseType="Power.v1_0_0.Voltage">
+        <Property Name="Actions" Type="Power.v1_3_0.VoltageActions" Nullable="false">
+          <Annotation Term="OData.Description" String="The available actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
+        </Property>
+      </EntityType>
+
+      <EntityType Name="PowerSupply" BaseType="Power.v1_2_0.PowerSupply">
+        <Property Name="Actions" Type="Power.v1_3_0.PowerSupplyActions" Nullable="false">
+          <Annotation Term="OData.Description" String="The available actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
+        </Property>
+      </EntityType>
+
+      <ComplexType Name="Actions">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Property Name="Oem" Type="Power.v1_3_0.OemActions" Nullable="false"/>
+      </ComplexType>
+
+      <ComplexType Name="OemActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+      </ComplexType>
+
+      <ComplexType Name="PowerControlActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Property Name="Oem" Type="Power.v1_3_0.PowerControlOemActions" Nullable="false"/>
+      </ComplexType>
+
+      <ComplexType Name="PowerControlOemActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+      </ComplexType>
+
+      <ComplexType Name="VoltageActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Property Name="Oem" Type="Power.v1_3_0.VoltageOemActions" Nullable="false"/>
+      </ComplexType>
+
+      <ComplexType Name="VoltageOemActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+      </ComplexType>
+
+      <ComplexType Name="PowerSupplyActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Property Name="Oem" Type="Power.v1_3_0.PowerSupplyOemActions" Nullable="false"/>
+      </ComplexType>
+
+      <ComplexType Name="PowerSupplyOemActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+      </ComplexType>
+    </Schema>
+
   </edmx:DataServices>
 </edmx:Edmx>
