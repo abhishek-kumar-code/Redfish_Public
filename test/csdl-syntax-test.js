@@ -82,7 +82,8 @@ function constructTest(file) {
     'Enum Members are valid names': checkEnumMembers,
     'Properties are Pascal-cased': checkPropertiesPascalCased,
     'Reference URIs are valid': checkReferenceUris,
-    'All EntityType defintions have Actions': entityTypesHaveActions
+    'All EntityType defintions have Actions': entityTypesHaveActions,
+    'NavigationProperties for Collections cannot be Nullable': navigationPropNullCheck
   }
 }
 
@@ -467,6 +468,20 @@ function entityTypesHaveActions(err, csdl) {
         }
       }
       throw new Error('Entity Type "'+entityType.Name+'" does not contain an Action');
+    }
+}
+
+function navigationPropNullCheck(err, csdl) {
+    if(err) {
+        return;
+    }
+
+    let navProps = CSDL.search(csdl, 'NavigationProperty');
+    for(let i = 0; i < navProps.length; i++) {
+      let navProp = navProps[i];
+      if(navProp.Type.startsWith('Collection(') && navProp.Nullable !== undefined) {
+        throw new Error('NavigationProperty "'+navProp.Name+'" is Nullable and should not be!');
+      }
     }
 }
 
