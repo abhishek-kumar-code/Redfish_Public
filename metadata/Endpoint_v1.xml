@@ -79,7 +79,7 @@
           <Annotation Term="OData.Description" String="The PCI ID of the endpoint."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the PCI ID of the endpoint."/>
         </Property>
-        <NavigationProperty Name="Redundancy" Type="Collection(Redundancy.Redundancy)" Nullable="false">
+        <NavigationProperty Name="Redundancy" Type="Collection(Redundancy.Redundancy)">
           <Annotation Term="OData.Description" String="Redundancy information for the lower level endpoints supporting this endpoint."/>
           <Annotation Term="OData.AutoExpand"/>
         </NavigationProperty>
@@ -237,7 +237,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Endpoint.v1_0_2">
-      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated and to remove the Nullable facet on NavigationProperties of type Collection."/>
       <EntityType Name="Endpoint" BaseType="Endpoint.v1_0_1.Endpoint"/>
     </Schema>
 

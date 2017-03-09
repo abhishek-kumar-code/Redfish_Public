@@ -1,0 +1,16 @@
+{
+    "@odata.type": "#ComputerSystemCollection.ComputerSystemCollection",
+    "Name": "MultiBladePartitioned System Collection (Hard Partitions)",
+    "Description": "Total 6 Blades in MultiBlade Enclosure - Partition1 w/ 1 Blade(part1Blade1) and Partition2 w/ 3 Blades (part2B2B3B5)",
+    "Members@odata.count": 2,
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/Systems/Partition1"
+        },
+        {
+            "@odata.id": "/redfish/v1/Systems/Partition2"
+        }
+    ],
+    "@odata.context": "/redfish/v1/$metadata#Systems",
+    "@odata.id": "/redfish/v1/Systems"
+}

@@ -208,7 +208,7 @@
       </EntityType>
 
       <ComplexType Name="Links" BaseType="Resource.Links">
-        <NavigationProperty Name="Volumes" Type="Collection(Volume.Volume)" Nullable="false">
+        <NavigationProperty Name="Volumes" Type="Collection(Volume.Volume)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the volumes contained in this drive. This will reference Volumes that are either wholly or only partly contained by this drive."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resources that this drive is associated with and shall reference a resource of type Volume. This shall include all Volume resources of which this Drive is a member and all Volumes for which this Drive is acting as a spare if the HotspareType is Dedicated."/>
@@ -319,7 +319,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.v1_0_3">
-      <Annotation Term="OData.Description" String="This version was created to fix supported types."/>
+      <Annotation Term="OData.Description" String="This version was created to fix supported types and to remove the Nullable facet on NavigationProperties of type Collection."/>
       <EntityType Name="Drive" BaseType="Drive.v1_0_2.Drive"/>
     </Schema>
 
@@ -333,7 +333,7 @@
       </EntityType>
 
       <ComplexType Name="Links" BaseType="Drive.v1_0_0.Links">
-        <NavigationProperty Name="Endpoints" Type="Collection(Endpoint.Endpoint)" Nullable="false">
+        <NavigationProperty Name="Endpoints" Type="Collection(Endpoint.Endpoint)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the endpoints that connect to this drive."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resources that this drive is associated with and shall reference a resource of type Endpoint."/>
@@ -348,7 +348,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Drive.v1_1_2">
-      <Annotation Term="OData.Description" String="This version was created to fix supported types."/>
+      <Annotation Term="OData.Description" String="This version was created to fix supported types to remove the Nullable facet on NavigationProperties of type Collection."/>
       <EntityType Name="Drive" BaseType="Drive.v1_1_1.Drive"/>
     </Schema>
 
