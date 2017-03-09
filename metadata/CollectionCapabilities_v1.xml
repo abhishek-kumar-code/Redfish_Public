@@ -65,9 +65,6 @@
         <Member Name="ComputerSystemComposition">
           <Annotation Term="OData.Description" String="This capability describes a client creating a new ComputerSystem instance from a set of disaggregated hardware."/>
         </Member>
-        <Member Name="VirtualMachineCreation">
-          <Annotation Term="OData.Description" String="This capability describes a client creating a new ComputerSystem instance from an existing ComputerSystem."/>
-        </Member>
         <Member Name="VolumeCreation">
           <Annotation Term="OData.Description" String="This capability describes a client creating a new Volume instance as part of an existing storage subsystem."/>
         </Member>
