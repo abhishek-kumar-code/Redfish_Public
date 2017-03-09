@@ -64,6 +64,10 @@
           <Annotation Term="OData.Description" String="This indicates whether this service is enabled."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this service is enabled."/>
         </Property>
+        <Property Name="Actions" Type="CompositionService.v1_0_0.Actions" Nullable="false">
+          <Annotation Term="OData.Description" String="The available actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
+        </Property>
         <NavigationProperty Name="ResourceBlocks" Type="ResourceBlockCollection.ResourceBlockCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The resource blocks available on the service."/>
@@ -77,6 +81,15 @@
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </EntityType>
+
+      <ComplexType Name="Actions">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Property Name="Oem" Type="CompositionService.v1_0_0.OemActions" Nullable="false"/>
+      </ComplexType>
+
+      <ComplexType Name="OemActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+      </ComplexType>
 
     </Schema>
 
