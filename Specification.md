@@ -2576,7 +2576,7 @@ A service may implement the CompositionService resource off of ServiceRoot to su
 
 ### Composition Requests
 
-A service that implements the CompositionService (as defiend by the CompositionService schema) shall support one or more of the following types of composition requests:
+A service that implements the CompositionService (as defined by the CompositionService schema) shall support one or more of the following types of composition requests:
 * [Specific Composition](#specific-composition)
 
 A service that supports removing a composed resource shall support the DELETE method on the composed resource.
