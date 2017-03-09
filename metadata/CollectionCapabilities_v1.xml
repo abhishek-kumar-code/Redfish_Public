@@ -14,6 +14,9 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
   </edmx:Reference>
@@ -41,24 +44,19 @@
           <Annotation Term="OData.Description" String="Reference to the resource the client may GET to in order to understand how to form a POST request for a given collection."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to a Resource that matches the type for the given collection and shall contain annotations that describe the properties allowed in the POST request."/>
           <Annotation Term="OData.AutoExpandReferences"/>
+          <Annotation Term="Redfish.Required"/>
         </NavigationProperty>
         <Property Name="UseCase" Type="CollectionCapabilities.v1_0_0.UseCase" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This property represents the use case in which a client may issue a POST request to the collection."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an enumerated value describing the use case for this capability instance."/>
+          <Annotation Term="Redfish.Required"/>
         </Property>
-        <NavigationProperty Name="TargetCollection" Type="Resource.ResourceCollection" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Reference to the collection that this capabilities structure is describing."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to a Resource Collection that this structure is describing.  This structure may be used by a client in order to understand how to form the POST request for the given collection."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>
-        <NavigationProperty Name="RelatedItem" Type="Collection(Resource.Item)" Nullable="false">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The ID(s) of the resources associated with this capability."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of IDs containing pointers consistent with JSON pointer syntax to the resource that is related to this capability."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>
+        <Property Name="Links" Type="CollectionCapabilities.v1_0_0.Links" Nullable="false">
+          <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
+          <Annotation Term="OData.LongDescription" String="The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
+          <Annotation Term="Redfish.Required"/>
+        </Property>
       </ComplexType>
 
       <EnumType Name="UseCase">
@@ -69,6 +67,22 @@
           <Annotation Term="OData.Description" String="This capability describes a client creating a new Volume instance as part of an existing storage subsystem."/>
         </Member>
       </EnumType>
+
+      <ComplexType Name="Links" BaseType="Resource.Links">
+        <NavigationProperty Name="TargetCollection" Type="Resource.ResourceCollection" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Reference to the collection that this capabilities structure is describing."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to a Resource Collection that this structure is describing.  This structure may be used by a client in order to understand how to form the POST request for the given collection."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+          <Annotation Term="Redfish.Required"/>
+        </NavigationProperty>
+        <NavigationProperty Name="RelatedItem" Type="Collection(Resource.Item)" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The ID(s) of the resources associated with this capability."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of IDs containing pointers consistent with JSON pointer syntax to the resource that is related to this capability."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+      </ComplexType>
 
     </Schema>
 
