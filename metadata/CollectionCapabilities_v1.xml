@@ -52,6 +52,26 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an enumerated value describing the use case for this capability instance."/>
           <Annotation Term="Redfish.Required"/>
         </Property>
+        <Property Name="Links" Type="CollectionCapabilities.v1_0_0.Links" Nullable="false">
+          <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
+          <Annotation Term="OData.LongDescription" String="The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
+          <Annotation Term="Redfish.Required"/>
+        </Property>
+      </ComplexType>
+
+      <EnumType Name="UseCase">
+        <Member Name="ComputerSystemComposition">
+          <Annotation Term="OData.Description" String="This capability describes a client creating a new ComputerSystem instance from a set of disaggregated hardware."/>
+        </Member>
+        <Member Name="VirtualMachineCreation">
+          <Annotation Term="OData.Description" String="This capability describes a client creating a new ComputerSystem instance from an existing ComputerSystem."/>
+        </Member>
+        <Member Name="VolumeCreation">
+          <Annotation Term="OData.Description" String="This capability describes a client creating a new Volume instance as part of an existing storage subsystem."/>
+        </Member>
+      </EnumType>
+
+      <ComplexType Name="Links" BaseType="Resource.Links">
         <NavigationProperty Name="TargetCollection" Type="Resource.ResourceCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Reference to the collection that this capabilities structure is describing."/>
@@ -66,18 +86,6 @@
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </ComplexType>
-
-      <EnumType Name="UseCase">
-        <Member Name="ComputerSystemComposition">
-          <Annotation Term="OData.Description" String="This capability describes a client creating a new ComputerSystem instance from a set of disaggregated hardware."/>
-        </Member>
-        <Member Name="VirtualMachineCreation">
-          <Annotation Term="OData.Description" String="This capability describes a client creating a new ComputerSystem instance from an existing ComputerSystem."/>
-        </Member>
-        <Member Name="VolumeCreation">
-          <Annotation Term="OData.Description" String="This capability describes a client creating a new Volume instance as part of an existing storage subsystem."/>
-        </Member>
-      </EnumType>
 
     </Schema>
 

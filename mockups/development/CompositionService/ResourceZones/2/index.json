@@ -45,8 +45,10 @@
                     "@odata.id": "/redfish/v1/Systems/Capabilities"
                 },
                 "UseCase": "ComputerSystemComposition",
-                "TargetCollection": {
-                    "@odata.id": "/redfish/v1/Systems"
+                "Links": {
+                    "TargetCollection": {
+                        "@odata.id": "/redfish/v1/Systems"
+                    }
                 }
             }
         ]
