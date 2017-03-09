@@ -2579,11 +2579,15 @@ A service may implement the CompositionService resource off of ServiceRoot to su
 A service that implements the CompositionService (as defiend by the CompositionService schema) shall support one or more of the following types of composition requests:
 * [Specific Composition](#specific-composition)
 
+A service that supports removing a composed resource shall support the DELETE method on the composed resource.
+
 #### Specific Composition
 
 A Specific Composition is when a client has identified an exact set of resources in which to build a logical entity.  A service that supports Specific Composition requests shall implement the ResourceBlock resource (ResourceBlock schema) and the ResourceZone resource (Zone schema) for the CompositionService.  ResourceBlocks provide an inventory of components available to the client for building compositions.  ResourceZones describe the binding restrictions of the ResourceBlocks managed by the service.
 
 The ResourceZone resource within the CompositionService shall include the CollectionCapabilities annotation in the response.  The CollectionCapabilities annotation allows a client to discover which collections in the service support compositions, and how the POST request for the collection is formatted, as well as what properties are required.  A service that supports specific compositions shall support a POST request that contains an array of links to ResourceBlocks.  The specific nesting of the ResourceBlock array is defined by the schema for the resource being composed.
+
+A service that supports updating a composed resource shall also support the PUT and/or PATCH methods on the composed resource with a modified list of ResourceBlocks.
 
 Example Specific Composition of a ComputerSystem:
 ~~~
