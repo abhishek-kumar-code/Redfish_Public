@@ -157,7 +157,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="UpdateService.v1_2_0">
       <EntityType Name="UpdateService" BaseType="UpdateService.v1_1_0.UpdateService">
-        <Property Name="HttpPushUriTargets" Type="Collction(Edm.String)">
+        <Property Name="HttpPushUriTargets" Type="Collection(Edm.String)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The array of URIs indicating the target for applying the update image."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain zero or more URIs indicating the targets for applying the update image."/>
