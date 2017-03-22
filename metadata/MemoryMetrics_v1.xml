@@ -137,7 +137,7 @@
         <Property Name="PerformanceDegraded" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Performance degraded mode status."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be verformance degraded mode status, with true indicating perfomance degraded."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be performance degraded mode status, with true indicating perfomance degraded."/>
         </Property>
         <Property Name="AlarmTrips" Type="MemoryMetrics.v1_0_0.AlarmTrips" Nullable="false">
           <Annotation Term="OData.Description" String="Alarm trip information about the memory."/>
