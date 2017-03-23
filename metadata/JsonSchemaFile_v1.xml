@@ -75,6 +75,8 @@
 
       <ComplexType Name="Location">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="Location information for a schema file."/>
+        <Annotation Term="OData.LongDescription" String="This type shall describe location information for a schema file."/>
         <Property Name="Language" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The language code for the file the schema is in."/>
