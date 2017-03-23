@@ -86,7 +86,8 @@ function constructTest(file) {
     'Properties are Pascal-cased': checkPropertiesPascalCased,
     'Reference URIs are valid': checkReferenceUris,
     'All EntityType defintions have Actions': entityTypesHaveActions,
-    'NavigationProperties for Collections cannot be Nullable': navigationPropNullCheck
+    'NavigationProperties for Collections cannot be Nullable': navigationPropNullCheck,
+    'Structured types shall include Description and LongDescription annotations': complexTypesHaveAnnotations
   }
 }
 
@@ -489,6 +490,29 @@ function navigationPropNullCheck(err, csdl) {
         throw new Error('NavigationProperty "'+navProp.Name+'" is Nullable and should not be!');
       }
     }
+}
+
+function complexTypesHaveAnnotations(err, csdl) {
+  if(err) {
+    return;
+  }
+
+  let fileName = this.context.name.substring(this.context.name.lastIndexOf('/')+1);
+  if(ContosoSchemaFileList.indexOf(fileName) !== -1 || fileName === 'index.xml') {
+    //Ignore OEM extensions and metadata files
+    return;
+  }
+
+  let complexTypes = CSDL.search(csdl, 'ComplexType');
+  for(let i = 0; i < complexTypes.length; i++) {
+    let complexType = complexTypes[i];
+    if(complexType.Annotations['OData.Description'] === undefined) {
+      throw new Error('ComplexType "'+complexType.Name+'" lacks an OData.Description Annotation!');
+    }
+    if(complexType.Annotations['OData.LongDescription'] === undefined) {
+      throw new Error('ComplexType "'+complexType.Name+'" lacks an OData.LongDescription Annotation!');
+    }
+  }
 }
 
 function validCSDLTypeInMockup(err, json) {
