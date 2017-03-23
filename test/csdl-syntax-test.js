@@ -506,11 +506,19 @@ function complexTypesHaveAnnotations(err, csdl) {
   let complexTypes = CSDL.search(csdl, 'ComplexType');
   for(let i = 0; i < complexTypes.length; i++) {
     let complexType = complexTypes[i];
-    if(complexType.Annotations['OData.Description'] === undefined) {
-      throw new Error('ComplexType "'+complexType.Name+'" lacks an OData.Description Annotation!');
-    }
-    if(complexType.Annotations['OData.LongDescription'] === undefined) {
-      throw new Error('ComplexType "'+complexType.Name+'" lacks an OData.LongDescription Annotation!');
+
+    typeOrBaseTypesHaveAnnotations(complexType, ['OData.Description', 'OData.LongDescription'], complexType.Name, 'ComplexType');
+  }
+}
+
+function typeOrBaseTypesHaveAnnotations(type, annotations, typeName, typeType) {
+  for(let i = 0; i < annotations.length; i++) {
+    if(type.Annotations[annotations[i]] === undefined) {
+      if(type.BaseType === undefined) {
+        throw new Error(typeType+' "'+typeName+'" lacks an '+annotations[i]+' Annotation!');
+      }
+      let baseType = CSDL.findByType({_options: options}, type.BaseType);
+      typeOrBaseTypesHaveAnnotations(baseType, annotations, typeName, typeType);
     }
   }
 }
