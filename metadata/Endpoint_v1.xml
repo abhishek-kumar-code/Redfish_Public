@@ -130,6 +130,7 @@
 
       <ComplexType Name="ConnectedEntity">
         <Annotation Term="OData.Description" String="Represents a remote resource that is connected to the network accessible to this endpoint."/>
+        <Annotation Term="OData.LongDescription" String="This type shall represent a remote resource that is connected to a network accessible to an endpoint."/>
         <Property Name="EntityType" Type="Endpoint.v1_0_0.EntityType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The type of the connected entity."/>
@@ -209,6 +210,8 @@
       </EnumType>
 
       <ComplexType Name="PciId">
+        <Annotation Term="OData.Description" String="A PCI ID."/>
+        <Annotation Term="OData.LongDescription" String="This type shall describe a PCI ID."/>
         <Property Name="DeviceId" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The Device ID of this PCIe function."/>
