@@ -161,6 +161,8 @@
       </EnumType>
 
       <ComplexType Name="Links" BaseType="Resource.Links">
+        <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
         <NavigationProperty Name="ComputerSystems" Type="Collection(ComputerSystem.ComputerSystem)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the Computer Systems connected to this Host Interface."/>

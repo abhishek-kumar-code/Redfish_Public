@@ -506,6 +506,9 @@ function complexTypesHaveAnnotations(err, csdl) {
   let complexTypes = CSDL.search(csdl, 'ComplexType');
   for(let i = 0; i < complexTypes.length; i++) {
     let complexType = complexTypes[i];
+    if(complexType.Abstract === true) {
+      continue;
+    }
 
     typeOrBaseTypesHaveAnnotations(complexType, ['OData.Description', 'OData.LongDescription'], complexType.Name, 'ComplexType');
   }

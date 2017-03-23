@@ -94,6 +94,8 @@
       </EntityType>
 
       <ComplexType Name="Links" BaseType="Resource.Links">
+        <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
         <NavigationProperty Name="Role" Type="Role.Role" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A reference to the Role object defining Privileges for this account--returned when the resource is read. The ID of the role is the same as property RoleId."/>
