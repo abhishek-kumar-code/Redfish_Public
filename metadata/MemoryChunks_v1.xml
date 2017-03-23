@@ -65,6 +65,8 @@
 
       <ComplexType Name="InterleaveSet">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This an interleave set for a memory chunk."/>
+        <Annotation Term="OData.LongDescription" String="This type shall describe an interleave set of which the memory chunk is a part."/>
         <NavigationProperty Name="Memory" Type="Resource.Item" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Describes a memory device of the interleave set."/>
