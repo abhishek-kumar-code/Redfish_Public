@@ -66,6 +66,8 @@
       </EntityType>
 
       <ComplexType Name="MemorySet">
+        <Annotation Term="OData.Description" String="This is the interleave sets for a memory chunk."/>
+        <Annotation Term="OData.LongDescription" String="This type shall represent the interleave sets for a memory chunk."/>
         <NavigationProperty Name="MemorySet" Type="Collection(Memory.Memory)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the collection of memory for a particular interleave set."/>
