@@ -72,6 +72,8 @@
 
       <ComplexType Name="Device">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="A storage device such as a disk drive or optical media device."/>
+        <Annotation Term="OData.LongDescription" String="This type shall describe a storage device visible to SimpleStorage."/>
         <Property Name="Oem" Type="Resource.Oem" Nullable="false"/>
         <Property Name="Name" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>

@@ -315,6 +315,8 @@
       </EntityType>
 
       <ComplexType Name="StorageControllerLinks" BaseType="Resource.Links">
+        <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
         <NavigationProperty Name="Endpoints" Type="Collection(Endpoint.Endpoint)">
           <Annotation Term="OData.Description" String="An array of references to the endpoints that connect to this controller."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resources that this controller is associated with and shall reference a resource of type Endpoint."/>

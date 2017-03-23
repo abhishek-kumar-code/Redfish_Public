@@ -94,6 +94,8 @@
       <ComplexType Name="Status">
         <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This type describes the status and health of a resource and its children."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain any status or health properties of a resource."/>
         <Property Name="State" Type="Resource.State">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This indicates the known state of the resource, such as if it is enabled."/>
@@ -258,6 +260,8 @@
 
       <ComplexType Name="Identifier">
         <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+        <Annotation Term="OData.Description" String="This type describes any additional identifiers for a resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain any additional identifiers of a resource."/>
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="DurableName" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -274,6 +278,8 @@
       <ComplexType Name="Location">
         <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This type describes the location of a resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall describe the location of a resource."/>
         <Property Name="Info" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This indicates the location of the resource."/>

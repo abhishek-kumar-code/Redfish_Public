@@ -110,6 +110,8 @@
 
       <ComplexType Name="ProcessorId">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This type describes the Identification information for a processor."/>
+          <Annotation Term="OData.LongDescription" String="This type shall contain identification information for a processor."/>
         <Property Name="VendorId" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The Vendor Identification for this processor."/>
