@@ -32,6 +32,8 @@
 
       <ComplexType Name="Message">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This type describes a Message returned by the Redfish service."/>
+        <Annotation Term="OData.LongDescription" String="This type shall define a Message as described in the Redfish specification."/>
       </ComplexType>
 
     </Schema>
@@ -87,6 +89,10 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Message.v1_0_4">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
+    </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Message.v1_0_5">
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
     </Schema>
 
