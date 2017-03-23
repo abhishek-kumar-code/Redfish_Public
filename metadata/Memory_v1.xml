@@ -419,6 +419,8 @@
 
       <ComplexType Name="SecurityCapabilities">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This type contains security capabilities of a Memory entity."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain properties which describe the security capabilities of a Memory entity."/>
         <Property Name="PassphraseCapable" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Memory passphrase set capability."/>
@@ -459,6 +461,8 @@
 
       <ComplexType Name="MemoryLocation">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="Memory connection information to sockets and memory controllers."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain properties which describe the Memory connection information to sockets and memory controllers."/>
         <Property Name="Socket" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Socket number in which Memory is connected."/>
@@ -499,6 +503,8 @@
 
       <ComplexType Name="RegionSet">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="Memory regions information within a Memory entity."/>
+        <Annotation Term="OData.LongDescription" String="This type shall describe the memory region information within a Memory entity."/>
         <Property Name="RegionId" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Unique region ID representing a specific region within the Memory."/>
@@ -555,6 +561,8 @@
 
       <ComplexType Name="PowerManagementPolicy">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="Power management policy information."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain properties which describe the power management policy for the current resource."/>
         <Property Name="PolicyEnabled" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Power management policy enabled status."/>
