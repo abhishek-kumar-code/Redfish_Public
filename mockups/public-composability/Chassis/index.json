@@ -1,0 +1,31 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#ChassisCollection.ChassisCollection",
+    "@odata.id": "/redfish/v1/Chassis",
+    "@odata.type": "#ChassisCollection.ChassisCollection",
+    "Name": "Chassis Collection",
+    "Members@odata.count": 7,
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/Chassis/ComposableEnclosure"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/ComposableModule1"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/ComposableModule2"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/ComposableModule3"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/ComposableModule4"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/ComposableModule5"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/ComposableModule6"
+        }
+    ]
+}
