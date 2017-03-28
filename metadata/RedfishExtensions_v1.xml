@@ -17,6 +17,9 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Settings_v1.xml">
     <edmx:Include Namespace="Settings"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/CollectionCapabilities_v1.xml">
+    <edmx:Include Namespace="CollectionCapabilities"/>
+  </edmx:Reference>
 
   <edmx:DataServices>
 
@@ -55,6 +58,18 @@
         <Annotation Term="OData.IsURL"/>
       </Term>
       <Term Name="DynamicPropertyPatterns" Type="Collection(RedfishExtensions.v1_0_0.PropertyPattern)" Nullable="false"/>
+      <Term Name="SetOnlyOnCreate" Type="Edm.Boolean" DefaultValue="true">
+        <Annotation Term="OData.Description" String="The term specifies that a property can only be set when a client is creating a new instance of a resource via POST."/>
+      </Term>
+      <Term Name="OptionalOnCreate" Type="Edm.Boolean" DefaultValue="true">
+        <Annotation Term="OData.Description" String="The term specifies that a property may be set when a client is creating a new instance of a resource via POST."/>
+      </Term>
+      <Term Name="UpdatableAfterCreate" Type="Edm.Boolean" DefaultValue="true">
+        <Annotation Term="OData.Description" String="The term specifies that a property may be set by a client using PATCH after creating a new instance of a resource via POST."/>
+      </Term>
+      <Term Name="CollectionCapabilities" Type="CollectionCapabilities.CollectionCapabilities">
+        <Annotation Term="OData.Description" String="Reference to the resource that represents the POST capabilities of a given collection."/>
+      </Term>
 
       <ComplexType Name="PropertyPattern">
         <Property Name="Pattern" Type="Edm.String">
