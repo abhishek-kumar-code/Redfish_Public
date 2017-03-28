@@ -97,6 +97,7 @@ function constructTest(file) {
     'Enum Members are valid names': checkEnumMembers,
     'Properties are Pascal-cased': checkPropertiesPascalCased,
     'Reference URIs are valid': checkReferenceUris,
+    'All References Used': checkReferencesUsed,
     'All EntityType defintions have Actions': entityTypesHaveActions,
     'NavigationProperties for Collections cannot be Nullable': navigationPropNullCheck,
     'All new schemas are one version off published': schemaVersionCheck
@@ -455,6 +456,181 @@ function checkReferenceUris(err, csdl) {
     }
 }
 
+function checkReferencesUsed(err, csdl) {
+    if(err) {
+        return;
+    }
+
+    if(this.context.name.includes('$metadata')) {
+      //Skip $metadata docs. They should include everything...
+      return;
+    }
+
+    let schemas = CSDL.search(csdl, 'Schema');
+
+    let nameSpaceAliases = [];
+
+    // Find all external schema references
+    let references = CSDL.search(csdl, 'Reference', undefined, true);
+    for(let i = 0; i < references.length; i++) {
+        nameSpaceAliases = nameSpaceAliases.concat(Object.keys(references[i].Includes));
+    }
+    nameSpaceAliases.sort(function (a,b) {
+        if(a.length > b.length) {
+            return -1;
+        }
+        else if(b.length > a.length) {
+            return 1;
+        }
+        return a.localeCompare(b);
+    });
+
+    for(let i = 0; i < schemas.length; i++) {
+        if(nameSpaceAliases.length === 0) {
+            break;
+        }
+        for(let propName in schemas[i]) {
+            if(propName === '_Name') {
+                continue;
+            }
+            else if(propName === 'Annotations') {
+                nameSpaceAliases = annotationsHaveNamespace(schemas[i].Annotations, nameSpaceAliases);
+            }
+            else if(propName === 'Service') {
+                for(let j = 0; j < nameSpaceAliases.length; j++) {
+                    if(schemas[i].Service.Extends.startsWith(nameSpaceAliases[j])) {
+                        nameSpaceAliases.splice(j, 1);
+                        break;
+                    }
+                }
+            }
+            else {
+                let entity = schemas[i][propName];
+                switch(entity.constructor.name) {
+                    case 'EntityType':
+                        nameSpaceAliases = entityTypeHasNamespace(entity, nameSpaceAliases);
+                        break;
+                    case 'EntityContainer':
+                        if(entity.Extends !== undefined) {
+                          for(let j = 0; j < nameSpaceAliases.length; j++) {
+                            if(entity.Extends.startsWith(nameSpaceAliases[j])) {
+                              nameSpaceAliases.splice(j, 1);
+                              break;
+                            }
+                          }
+                        }
+                        break;
+                    case 'EnumType':
+                        nameSpaceAliases = annotationsHaveNamespace(entity.Annotations, nameSpaceAliases);
+                        break;
+                    case 'ComplexType':
+                        nameSpaceAliases = complexTypeHasNamespace(entity, nameSpaceAliases);
+                        break;
+                    case 'TypeDefinition':
+                        nameSpaceAliases = annotationsHaveNamespace(entity.Annotations, nameSpaceAliases);
+                        if(entity.UnderlyingType !== undefined) {
+                          for(let j = 0; j < nameSpaceAliases.length; j++) {
+                            if(entity.UnderlyingType.startsWith(nameSpaceAliases[j])) {
+                              nameSpaceAliases.splice(j, 1);
+                              break;
+                            }
+                          }
+                        }
+                        break;
+                    case 'Action':
+                        nameSpaceAliases = annotationsHaveNamespace(entity.Annotations, nameSpaceAliases);
+                        nameSpaceAliases = propertiesHaveNamespace(entity.Parameters, nameSpaceAliases);
+                        if(entity.ReturnType !== null) {
+                          for(let j = 0; j < nameSpaceAliases.length; j++) {
+                            if(entity.ReturnType.startsWith(nameSpaceAliases[j])) {
+                              nameSpaceAliases.splice(j, 1);
+                              break;
+                            }
+                          }
+                        }
+                        break;
+                    case 'Term':
+                        nameSpaceAliases = annotationsHaveNamespace(entity.Annotations, nameSpaceAliases);
+                        if(entity.Type !== null) {
+                          for(let j = 0; j < nameSpaceAliases.length; j++) {
+                            if(entity.Type.startsWith(nameSpaceAliases[j])) {
+                              nameSpaceAliases.splice(j, 1);
+                              break;
+                            }
+                          }
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+    }
+
+    if(nameSpaceAliases.length > 0) {
+        throw new Error('Namespaces '+nameSpaceAliases.toString()+' are unused!');
+    }
+}
+
+function entityTypeHasNamespace(entityType, nameSpaceAliases) {
+    if(entityType.BaseType !== undefined) {
+        for(let i = 0; i < nameSpaceAliases.length; i++) {
+            if(entityType.BaseType.startsWith(nameSpaceAliases[i])) {
+                nameSpaceAliases.splice(i, 1);
+                break;
+            }
+        }
+    }
+    nameSpaceAliases = annotationsHaveNamespace(entityType.Annotations, nameSpaceAliases);
+    nameSpaceAliases = propertiesHaveNamespace(entityType.Properties, nameSpaceAliases);
+    return nameSpaceAliases;
+}
+
+function complexTypeHasNamespace(complexType, nameSpaceAliases) {
+    if(complexType.BaseType !== undefined) {
+        for(let i = 0; i < nameSpaceAliases.length; i++) {
+            if(complexType.BaseType.startsWith(nameSpaceAliases[i])) {
+                nameSpaceAliases.splice(i, 1);
+                break;
+            }
+        }
+    }
+    nameSpaceAliases = annotationsHaveNamespace(complexType.Annotations, nameSpaceAliases);
+    nameSpaceAliases = propertiesHaveNamespace(complexType.Properties, nameSpaceAliases);
+    return nameSpaceAliases;
+}
+
+function annotationsHaveNamespace(annotations, nameSpaceAliases) {
+  if(annotations.length === 0) {
+    return nameSpaceAliases;
+  }
+  let annotationIDs = Object.keys(annotations);
+  for(let j = 0; j < annotationIDs.length; j++) {
+    for(let k = 0; k < nameSpaceAliases.length; k++) {
+      if(annotationIDs[j].startsWith(nameSpaceAliases[k])) {
+        nameSpaceAliases.splice(k, 1);
+        break;
+      }
+    }
+  }
+  return nameSpaceAliases;
+}
+
+function propertiesHaveNamespace(props, nameSpaceAliases) {
+  let propKeys = Object.keys(props);
+  for(let i = 0; i < propKeys.length; i++) {
+    let prop = props[propKeys[i]];
+    nameSpaceAliases = annotationsHaveNamespace(prop.Annotations, nameSpaceAliases);
+    for(let k = 0; k < nameSpaceAliases.length; k++) {
+      if(prop.Type.startsWith(nameSpaceAliases[k]) || prop.Type.startsWith('Collection('+nameSpaceAliases[k])) {
+        nameSpaceAliases.splice(k, 1);
+        break;
+      }
+    }
+  }
+  return nameSpaceAliases;
+}
+
 function entityTypesHaveActions(err, csdl) {
     if(err) {
         return;
@@ -683,7 +859,6 @@ function constructODataType(propType, type) {
   if(parentNamespace === '') {
     throw new Error('');
   }
-  //console.log('Searching for '+parentNamespace+'.'+propType.Name);
   let testType = CSDL.findByType({_options: options}, parentNamespace+'.'+propType.Name);
   if(testType !== null && testType !== undefined) {
     return testType;
@@ -694,7 +869,6 @@ function constructODataType(propType, type) {
     return propType;
   }
   parentNamespace = parentNamespace.substring(0, index);
-  //console.log('About to search in '+parentNamespace+'.'+getNextLowerVersion(version));
   return constructODataType(propType, parentNamespace+'.'+getNextLowerVersion(version)+'.');
 }
 
@@ -770,8 +944,6 @@ function searchInParentTypes(type, propName) {
     type = CSDL.findByType({_options: options}, 'Resource.v1_0_0.Resource');
     return type.Properties[propName];
   }
-  //console.log('Searching for "'+propName+'" in ');
-  //console.log(type.Properties);
   let parentType = CSDL.findByType({_options: options}, type.BaseType);
   if(parentType.Properties[propName] !== undefined) {
     return parentType.Properties[propName];
@@ -865,7 +1037,6 @@ function validateActions(actions) {
 }
 
 process.on('unhandledRejection', (reason, promise) => {
-  console.log(reason);
 });
 
 vows.describe('CSDL').addBatch(setupBatch).addBatch(syntaxBatch).addBatch(mockupsCSDL).export(module);
