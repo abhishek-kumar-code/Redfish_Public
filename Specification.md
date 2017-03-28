@@ -933,7 +933,7 @@ The resource identifier is the canonical URL for the resource and can be used to
 
 ##### Type property
 
-All resources in a response shall include a type property named "@odata.type". The value of the type property shall be a URL fragment that specifies the type of the resource as defined within, or referenced by, the [metadata document](#service-metadata) and shall be of the form:
+All resources in a response shall include a type property named "@odata.type". All embedded objects in a response should include a type property named "@odata.type." The value of the type property shall be a URL fragment that specifies the type of the resource as defined within, or referenced by, the [metadata document](#service-metadata) and shall be of the form:
 
   #*Namespace*.*TypeName*
 
@@ -2569,6 +2569,40 @@ For logical AND combinations, the privilege label is placed in the Privilege pro
 
 ## Redfish Host Interface
 The Redfish Host Interface Specification defines how software executing on a host computer system can interface with a Redfish service that manages the host.  See [DSP0270](#DSP0270) for details.
+
+## Redfish Composability
+
+A service may implement the CompositionService resource off of ServiceRoot to support the binding of resources together.  One example is disaggregated hardware, which allows for independent components, such as processors, memory, I/O controllers, and drives, to be bound together to create logical constructs that operate together.  This allows for a client to dynamically assign resources for a given application.
+
+### Composition Requests
+
+A service that implements the CompositionService (as defined by the CompositionService schema) shall support one or more of the following types of composition requests:
+* [Specific Composition](#specific-composition)
+
+A service that supports removing a composed resource shall support the DELETE method on the composed resource.
+
+#### Specific Composition
+
+A Specific Composition is when a client has identified an exact set of resources in which to build a logical entity.  A service that supports Specific Composition requests shall implement the ResourceBlock resource (ResourceBlock schema) and the ResourceZone resource (Zone schema) for the CompositionService.  ResourceBlocks provide an inventory of components available to the client for building compositions.  ResourceZones describe the binding restrictions of the ResourceBlocks managed by the service.
+
+The ResourceZone resource within the CompositionService shall include the CollectionCapabilities annotation in the response.  The CollectionCapabilities annotation allows a client to discover which collections in the service support compositions, and how the POST request for the collection is formatted, as well as what properties are required.  A service that supports specific compositions shall support a POST request that contains an array of links to ResourceBlocks.  The specific nesting of the ResourceBlock array is defined by the schema for the resource being composed.
+
+A service that supports updating a composed resource shall also support the PUT and/or PATCH methods on the composed resource with a modified list of ResourceBlocks.
+
+Example Specific Composition of a ComputerSystem:
+~~~
+POST /redfish/v1/Systems HTTP/1.1
+{
+    "Name": "Sample Composed System",
+    "Links": {
+        "ResourceBlocks": [
+            { "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock0" },
+            { "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock2" } ,
+            { "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/NetBlock4" }
+        ]
+    }
+}
+~~~
 
 ## ANNEX A (informative)
 

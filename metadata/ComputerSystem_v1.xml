@@ -17,11 +17,7 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
     <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
-    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
-  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
-    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
     <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
@@ -39,9 +35,6 @@
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/SimpleStorageCollection_v1.xml">
     <edmx:Include Namespace="SimpleStorageCollection"/>
-  </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ManagerAccount_v1.xml">
-    <edmx:Include Namespace="ManagerAccount"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ProcessorCollection_v1.xml">
     <edmx:Include Namespace="ProcessorCollection"/>
@@ -78,6 +71,9 @@
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/NetworkInterfaceCollection_v1.xml">
     <edmx:Include Namespace="NetworkInterfaceCollection"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ResourceBlock_v1.xml">
+    <edmx:Include Namespace="ResourceBlock"/>
   </edmx:Reference>
 
   <edmx:DataServices>
@@ -281,6 +277,9 @@
         </Member>
         <Member Name="VirtuallyPartitioned">
           <Annotation Term="OData.Description" String="A virtual or software-based partition of a computer system."/>
+        </Member>
+        <Member Name="Composed">
+          <Annotation Term="OData.Description" String="A computer system that has been created by binding resource blocks together."/>
         </Member>
       </EnumType>
 
@@ -692,6 +691,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_4_0">
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_3_1.ComputerSystem"/>
+
       <ComplexType Name="MemorySummary" BaseType="ComputerSystem.v1_1_0.MemorySummary">
         <Property Name="TotalSystemPersistentMemoryGiB" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -699,6 +699,15 @@
           <Annotation Term="OData.LongDescription" String="This property shall contain the total amount of configured persistent memory available to the system as measured in gibibytes."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
         </Property>
+      </ComplexType>
+
+      <ComplexType Name="Links" BaseType="ComputerSystem.v1_2_0.Links">
+        <NavigationProperty Name="ResourceBlocks" Type="Collection(ResourceBlock.ResourceBlock)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="An array of references to the Resource Blocks that are used in this Computer System."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of references of type ResourceBlock that show the Resource Blocks that are used in this Computer System."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
       </ComplexType>
     </Schema>
 
