@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  UpdateService  v1.1.0-->
+<!--# Redfish Schema:  UpdateService  v1.2.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -26,7 +26,6 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
-    <edmx:Include Namespace="Resource.v1_1_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/SoftwareInventoryCollection_v1.xml">
     <edmx:Include Namespace="SoftwareInventoryCollection"/>
@@ -159,7 +158,23 @@
           <Annotation Term="OData.IsURL"/>
         </Property>
       </EntityType>
-
     </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="UpdateService.v1_2_0">
+      <EntityType Name="UpdateService" BaseType="UpdateService.v1_1_0.UpdateService">
+        <Property Name="HttpPushUriTargets" Type="Collection(Edm.String)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The array of URIs indicating the target for applying the update image."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain zero or more URIs indicating the targets for applying the update image when using HttpPushUri to push a software image.  If this property is not present, the Service shall determine where to apply the software image."/>
+          <Annotation Term="OData.IsURL"/>
+        </Property>
+        <Property Name="HttpPushUriTargetsBusy" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="This represents if the HttpPushUriTargets property is reserved by any client."/>
+          <Annotation Term="OData.LongDescription" String="This property shall be a boolean that is set by client when the HttpPushUriTargets property is being used by a client for firmware updates.  It shall provide multiple clients a way to negotiate its ownership.  This will help clients to know if a firmware update using HttpPushUriTargets is used by another client."/>
+        </Property>
+      </EntityType>
+    </Schema>
+
   </edmx:DataServices>
 </edmx:Edmx>
