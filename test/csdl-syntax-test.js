@@ -695,6 +695,10 @@ function validCSDLTypeInMockup(err, json) {
     if(propName[0] === '@' || propName === 'Members@odata.count' || propName === 'Members@odata.nextLink') {
       continue;
     }
+    else if(propName.indexOf('@Redfish.') !== -1) {
+      //TODO Check other annotations; for now, just let them pass
+      continue;
+    }
     let CSDLProperty = getCSDLProperty(propName, CSDLType);
     if(CSDLProperty === undefined) {
       throw new Error('Unknown property "'+propName+'" in type '+type);
@@ -758,6 +762,9 @@ function complexTypeCheck(propType, propValue, propName, type) {
     }
     if(childPropName.indexOf('@Redfish.AllowableValues') !== -1) {
       //TODO Make sure all AllowableValues are valid
+    }
+    else if(childPropName.indexOf('@Redfish.') !== -1) {
+      //TODO Check other annotations; for now, just let them pass
     }
     else {
       checkProperty(childPropName, realType, propValue[childPropName], type, propName);
