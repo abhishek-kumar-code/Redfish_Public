@@ -68,6 +68,11 @@
           <Annotation Term="OData.Description" String="The network protocol used by the Update Service to retrieve the software image file located at the URI provided in ImageURI, if the URI does not contain a scheme."/>
           <Annotation Term="OData.LongDescription" String="This parameter shall contain the network protocol that the Update Service shall use to retreive the software image located at the ImageURI.  If this parameter is not provided (or supported), and a transfer protocol is not specified by a scheme contained within ImageURI, the Update Service shall use HTTP to retrieve the image."/>
         </Parameter>
+        <Parameter Name="Targets" Type="Collection(Edm.String)">
+          <Annotation Term="OData.Description" String="The array of URIs indicating where the update image is to be applied."/>
+          <Annotation Term="OData.LongDescription" String="This array property shall contain zero or more URIs indicating where the update image is to be applied."/>
+          <Annotation Term="OData.IsURL"/>
+        </Parameter>
       </Action>
     </Schema>
 
