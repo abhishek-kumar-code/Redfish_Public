@@ -7,6 +7,7 @@ const request = require('request');
 const CSDL = require('CSDLParser');
 const fs = require('fs');
 const jsonlint = require('jsonlint');
+const published = require('./published_schema');
 
 const PascalRegex = new RegExp('^([A-Z][a-z0-9]*)+$', 'm');
 
@@ -26,6 +27,7 @@ options.cache = new CSDL.cache(options.useLocal, options.useNetwork);
 
 let ucum = null;
 let ucumError = false;
+let publishedSchemas = {};
 
 /***************** White lists ******************************/
 //Units that don't exist in UCUM
@@ -58,6 +60,16 @@ const setupBatch = {
         ucumError = true;
       }
     }
+  },
+  'get Published Schemas': {
+    topic: function() {
+      published.getPublishedSchemaVersionList('http://redfish.dmtf.org/schemas/v1/', this.callback);
+    },
+    'store Data': function(err, list) {
+      if(list !== null) {
+        publishedSchemas = list;
+      }
+    }
   }
 }
 
@@ -87,7 +99,8 @@ function constructTest(file) {
     'Reference URIs are valid': checkReferenceUris,
     'All References Used': checkReferencesUsed,
     'All EntityType defintions have Actions': entityTypesHaveActions,
-    'NavigationProperties for Collections cannot be Nullable': navigationPropNullCheck
+    'NavigationProperties for Collections cannot be Nullable': navigationPropNullCheck,
+    'All new schemas are one version off published': schemaVersionCheck
   }
 }
 
@@ -665,6 +678,55 @@ function navigationPropNullCheck(err, csdl) {
         throw new Error('NavigationProperty "'+navProp.Name+'" is Nullable and should not be!');
       }
     }
+}
+
+function schemaVersionCheck(err, csdl) {
+  if(err) {
+    return;
+  }
+
+  let schemas = CSDL.search(csdl, 'Schema');
+  for(let i = 0; i < schemas.length; i++) {
+    let schema = schemas[i];
+    if(schema._Name.indexOf('.v') === -1) {
+      //Unversioned schema skip...
+      continue;
+    }
+    let parts = schema._Name.split('.');
+    let publishedEntry = publishedSchemas[parts[0]];
+    if(publishedEntry === undefined) {
+      //No published schemas of this namespace... Skip...
+      continue;
+    }
+    checkVersionInPublishedList(parts[1], publishedEntry, schema._Name);
+  }
+}
+
+function checkVersionInPublishedList(version, publishedList, schemaName) {
+  let parts = version.split('_');
+  if(publishedList[parts[0]] === undefined) {
+    //Major version not present... TODO
+    throw new Error('Test does not currently handle major version change detected in Schema '+schemaName);
+  }
+  let major = publishedList[parts[0]];
+  if(major[parts[1]] === undefined) {
+    //Minor version not present...
+    if(parts[2] !== '0') {
+      throw new Error('Schema version '+parts[0]+'_'+parts[1]+' is not published, but minor version other than 0 exists in '+schemaName);
+    }
+    let prevMinor = ((parts[1]*1)-1)+'';
+    if(major[prevMinor] === undefined) {
+      throw new Error('Schema version '+parts[0]+'_'+parts[1]+' is not published and neither is '+parts[0]+'_'+prevMinor+' in '+schemaName);
+    }
+    return;
+  }
+  let minor = major[parts[1]];
+  if(minor.indexOf(parts[2]) === -1) {
+    let prevMaint = ((parts[2]*1)-1)+'';
+    if(minor.indexOf(prevMaint) === -1) {
+      throw new Error('Schema version '+parts[0]+'_'+parts[1]+'_'+parts[2]+' is not published and neither is '+parts[0]+'_'+parts[1]+'_'+prevMaint+' in '+schemaName);
+    }
+  }
 }
 
 function validCSDLTypeInMockup(err, json) {
