@@ -1,0 +1,55 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.",
+    "@odata.context": "/redfish/v1/$metadata#ResourceBlock.ResourceBlock",
+    "@odata.type": "#ResourceBlock.v1_0_0.ResourceBlock",
+    "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock2",
+    "Id": "ComputeBlock2",
+    "Name": "Compute Block 2",
+    "ResourceBlockType": [ "Compute" ],
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "CompositionStatus": {
+        "Reserved": false,
+        "CompositionState": "Unused"
+    },
+    "Processors": [
+        {
+            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock2/Processors/Block2CPU0"
+        },
+        {
+            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock2/Processors/Block2CPU1"
+        }
+    ],
+    "Memory": [
+        {
+            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock2/Memory/Block2DIMM0"
+        },
+        {
+            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock2/Memory/Block2DIMM1"
+        },
+        {
+            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock2/Memory/Block2DIMM2"
+        },
+        {
+            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock2/Memory/Block2DIMM3"
+        }
+    ],
+    "Storage": [],
+    "SimpleStorage": [],
+    "Links": {
+        "ComputerSystems": [],
+        "Chassis": [
+            {
+                "@odata.id": "/redfish/v1/Chassis/ComposableModule2"
+            }
+        ],
+        "Zones": [
+            {
+                "@odata.id": "/redfish/v1/CompositionService/ResourceZones/2"
+            }
+        ]
+    },
+    "Oem": {}
+}
