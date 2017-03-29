@@ -640,7 +640,6 @@ And a computer system resource contains an [Actions](#actions-property) property
 
 ~~~json
 {
-    ...
     "Actions": {
         "#ComputerSystem.Reset": {
             "target":"/redfish/v1/Systems/1/Actions/ComputerSystem.Reset",
@@ -655,7 +654,7 @@ And a computer system resource contains an [Actions](#actions-property) property
                 "PushPowerButton"
             ]
         }
-    }
+    },
     ...
 }
 ~~~
@@ -921,7 +920,6 @@ For example, the following context URL specifies that the result contains a sing
 
 ~~~json
 {
-    ...
     "@odata.context":"/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
     ...
 }
@@ -1004,7 +1002,6 @@ For example, the following property represents the Reset action, defined in the 
 
 ~~~json
 {
-    ...
     "#ComputerSystem.Reset": {
         "target":"/redfish/v1/Systems/1/Actions/ComputerSystem.Reset",
         "ResetType@Redfish.AllowableValues": [
@@ -1017,7 +1014,7 @@ For example, the following property represents the Reset action, defined in the 
             "ForceOn",
             "PushPowerButton"
         ]
-    }
+    },
     ...
 }
 ~~~
@@ -1780,14 +1777,13 @@ The next fragment shows an example of how the previous schema and the "AnvilType
 
 ~~~json
 {
-    ...
     "Oem": {
         "Contoso": {
             "@odata.type": "http://Contoso.com/schemas/extensions.v1_2_0#contoso.AnvilType1",
             "slogan": "Contoso anvils never fail",
             "disclaimer": "* Most of the time"
         }
-    }
+    },
     ...
 }
 ~~~
@@ -1816,7 +1812,6 @@ The following fragment presents some examples of naming and use of the Oem prope
 
 ~~~json
 {
-    ...
     "Oem": {
         "Contoso": {
             "@odata.type": "http://contoso.com/schemas/extensions.v1_2_1#contoso.AnvilTypes1",
@@ -1841,7 +1836,7 @@ The following fragment presents some examples of naming and use of the Oem prope
             "powerSetting" : "eliminate",
             "targetSetting" : "rabbit"
         }
-    }
+    },
     ...
 }
 ~~~
@@ -1860,14 +1855,13 @@ Such bound actions appear in the JSON payload as properties of the Oem type, nes
 
 ~~~json
 {
-    ...
     "Actions": {
         "OEM": {
             "Contoso.vx_x_x#Contoso.Ping": {
                 "target":"/redfish/v1/Systems/1/Actions/OEM/Contoso.Ping"
             }
         }
-    }
+    },
     ...
 }
 ~~~
@@ -2221,7 +2215,6 @@ For functionality requiring multiple Redfish operations, or for security reasons
 
 ~~~json
 {
-    ...
     "SessionService": {
         "@odata.id": "/redfish/v1/SessionService"
     },
@@ -2229,7 +2222,7 @@ For functionality requiring multiple Redfish operations, or for security reasons
         "Sessions": {
             "@odata.id": "/redfish/v1/SessionService/Sessions"
         }
-    }
+    },
     ...
 }
 ~~~
