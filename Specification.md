@@ -1019,6 +1019,7 @@ For example, the following property represents the Reset action, defined in the 
         ]
     }
     ...
+}
 ~~~
 
 Given this, the client could invoke a POST request to /redfish/v1/Systems/1/Actions/ComputerSystem.Reset with the following body:
