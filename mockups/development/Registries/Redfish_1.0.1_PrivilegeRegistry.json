@@ -382,7 +382,9 @@
                     "OperationMap": {
                         "GET": [
                             {
-                                "Privilege": "ConfigureManager"
+                                "Privilege": [
+                                    "ConfigureManager"
+                                ]
                             }
                         ],
                         "PATCH": [
