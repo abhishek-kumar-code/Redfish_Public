@@ -10,9 +10,7 @@
         "ComfigureComponents",
         "ConfigureSelf"
     ],
-    "OEMPrivilegesUsed": [
-
-    ],
+    "OEMPrivilegesUsed": [],
     "Mappings": [
         {
             "Entity": "Manager",
