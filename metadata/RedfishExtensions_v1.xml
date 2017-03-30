@@ -51,7 +51,7 @@
         <Annotation Term="OData.Description" String="The term is applied to Redfish payload samples in order to specify copyright information. It would not generally be used in production payloads."/>
       </Term>
       <Term Name="Deprecated" Type="Edm.String">
-        <Annotation Term="OData.Description" String="The term shall be applied to a property in order to specify that the property is deprecated.  The value of the string should explain the deprecation, including new property or properties to be used. The property can be supported in new and existing implementations, but usage in new implementations is discouraged.  Deprecated properties are likely to be removed in a future major version of the schema."/>
+        <Annotation Term="OData.Description" String="The term shall be applied to a property or value in order to specify that the property or value is deprecated.  The value of the string should explain the deprecation, including new property or properties or value to be used.  The property or value can be supported in new and existing implementations, but usage in new implementations is discouraged.  Deprecated properties and values are likely to be removed in a future major version of the schema."/>
       </Term>
       <Term Name="ActionInfo" Type="Edm.String">
         <Annotation Term="OData.Description" String="The term can be applied to an Action to specify a URI to an ActionInfo resource which describes the parameters supported by this instance of the Action."/>
