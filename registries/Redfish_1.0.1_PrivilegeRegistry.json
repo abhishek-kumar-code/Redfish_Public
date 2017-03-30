@@ -650,7 +650,57 @@
                     {
                         "Targets": [
                             "ComputerSystem",
-                            "Chassis"
+                            "LogServiceCollection"
+                        ],
+                        "OperationMap": {
+                            "GET": [
+                                {
+                                    "Privilege": [
+                                        "Login"
+                                    ]
+                                }
+                            ],
+                            "HEAD": [
+                                {
+                                    "Privilege": [
+                                        "Login"
+                                    ]
+                                }
+                            ],
+                            "PATCH": [
+                                {
+                                    "Privilege": [
+                                        "ConfigureComponent"
+                                    ]
+                                }
+                            ],
+                            "PUT": [
+                                {
+                                    "Privilege": [
+                                        "ConfigureComponent"
+                                    ]
+                                }
+                            ],
+                            "DELETE": [
+                                {
+                                    "Privilege": [
+                                        "ConfigureComponent"
+                                    ]
+                                }
+                            ],
+                            "POST": [
+                                {
+                                    "Privilege": [
+                                        "ConfigureComponent"
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "Targets": [
+                            "Chassis",
+                            "LogServiceCollection"
                         ],
                         "OperationMap": {
                             "GET": [
@@ -748,7 +798,55 @@
                 "SubordinateOverrides": [
                     {
                         "Targets": [
-                            "ComputerSystem",
+                            "ComputerSystem"
+                        ],
+                        "OperationMap": {
+                            "GET": [
+                                {
+                                    "Privilege": [
+                                        "Login"
+                                    ]
+                                }
+                            ],
+                            "HEAD": [
+                                {
+                                    "Privilege": [
+                                        "Login"
+                                    ]
+                                }
+                            ],
+                            "PATCH": [
+                                {
+                                    "Privilege": [
+                                        "ConfigureComponent"
+                                    ]
+                                }
+                            ],
+                            "PUT": [
+                                {
+                                    "Privilege": [
+                                        "ConfigureComponent"
+                                    ]
+                                }
+                            ],
+                            "DELETE": [
+                                {
+                                    "Privilege": [
+                                        "ConfigureComponent"
+                                    ]
+                                }
+                            ],
+                            "POST": [
+                                {
+                                    "Privilege": [
+                                        "ConfigureComponent"
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "Targets": [
                             "Chassis"
                         ],
                         "OperationMap": {
@@ -848,7 +946,61 @@
                     {
                         "Targets": [
                             "ComputerSystem",
-                            "Chassis"
+                            "LogServiceCollection",
+                            "LogService",
+                            "LogEntryCollection"
+                        ],
+                        "OperationMap": {
+                            "GET": [
+                                {
+                                    "Privilege": [
+                                        "Login"
+                                    ]
+                                }
+                            ],
+                            "HEAD": [
+                                {
+                                    "Privilege": [
+                                        "Login"
+                                    ]
+                                }
+                            ],
+                            "PATCH": [
+                                {
+                                    "Privilege": [
+                                        "ConfigureComponent"
+                                    ]
+                                }
+                            ],
+                            "PUT": [
+                                {
+                                    "Privilege": [
+                                        "ConfigureComponent"
+                                    ]
+                                }
+                            ],
+                            "DELETE": [
+                                {
+                                    "Privilege": [
+                                        "ConfigureComponent"
+                                    ]
+                                }
+                            ],
+                            "POST": [
+                                {
+                                    "Privilege": [
+                                        "ConfigureComponent"
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "Targets": [
+                            "Chassis",
+                            "LogServiceCollection",
+                            "LogService",
+                            "LogEntryCollection"
                         ],
                         "OperationMap": {
                             "GET": [
@@ -947,7 +1099,59 @@
                     {
                         "Targets": [
                             "ComputerSystem",
-                            "Chassis"
+                            "LogServiceCollection",
+                            "LogService"
+                        ],
+                        "OperationMap": {
+                            "GET": [
+                                {
+                                    "Privilege": [
+                                        "Login"
+                                    ]
+                                }
+                            ],
+                            "HEAD": [
+                                {
+                                    "Privilege": [
+                                        "Login"
+                                    ]
+                                }
+                            ],
+                            "PATCH": [
+                                {
+                                    "Privilege": [
+                                        "ConfigureComponent"
+                                    ]
+                                }
+                            ],
+                            "PUT": [
+                                {
+                                    "Privilege": [
+                                        "ConfigureComponent"
+                                    ]
+                                }
+                            ],
+                            "DELETE": [
+                                {
+                                    "Privilege": [
+                                        "ConfigureComponent"
+                                    ]
+                                }
+                            ],
+                            "POST": [
+                                {
+                                    "Privilege": [
+                                        "ConfigureComponent"
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "Targets": [
+                            "Chassis",
+                            "LogServiceCollection",
+                            "LogService"
                         ],
                         "OperationMap": {
                             "GET": [
