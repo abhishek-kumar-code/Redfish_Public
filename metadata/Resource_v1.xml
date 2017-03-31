@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Resource  v1.3.0-->
+<!--# Redfish Schema:  Resource  v1.4.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -188,9 +188,9 @@
         <Member Name="PushPowerButton">
           <Annotation Term="OData.Description" String="Simulate the pressing of the physical power button on this unit."/>
         </Member>
-		<Member Name="PowerCycle">
-		  <Annotation Term="OData.Description" String="Perform a power cycle of the unit."/>
-		</Member>
+        <Member Name="PowerCycle">
+          <Annotation Term="OData.Description" String="Perform a power cycle of the unit."/>
+        </Member>
       </EnumType>
 
     </Schema>
@@ -578,9 +578,9 @@
 
     </Schema>
 
-	<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_4_0">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_4_0">
       <Annotation Term="OData.Description" String="This version was created to add PowerCycle enumeration to ResetType."/>
     </Schema>
-	
+
   </edmx:DataServices>
 </edmx:Edmx>
