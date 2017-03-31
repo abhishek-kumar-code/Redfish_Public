@@ -119,6 +119,11 @@
       <EntityType Name="EventDestination" BaseType="EventDestination.v1_0_2.EventDestination"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventDestination.v1_0_4">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
+      <EntityType Name="EventDestination" BaseType="EventDestination.v1_0_3.EventDestination"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventDestination.v1_1_0">
       <EntityType Name="EventDestination" BaseType="EventDestination.v1_0_2.EventDestination">
         <NavigationProperty Name="OriginResources" Type="Collection(Resource.Item)">
@@ -139,8 +144,13 @@
       <EntityType Name="EventDestination" BaseType="EventDestination.v1_1_0.EventDestination"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventDestination.v1_1_2">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
+      <EntityType Name="EventDestination" BaseType="EventDestination.v1_1_1.EventDestination"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="EventDestination.v1_2_0">
-      <EntityType Name="EventDestination" BaseType="EventDestination.v1_1_1.EventDestination">
+      <EntityType Name="EventDestination" BaseType="EventDestination.v1_1_2.EventDestination">
         <Property Name="Actions" Type="EventDestination.v1_2_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>

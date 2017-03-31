@@ -171,6 +171,11 @@
       <EntityType Name="ManagerNetworkProtocol" BaseType="ManagerNetworkProtocol.v1_0_2.ManagerNetworkProtocol"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ManagerNetworkProtocol.v1_0_4">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
+      <EntityType Name="ManagerNetworkProtocol" BaseType="ManagerNetworkProtocol.v1_0_3.ManagerNetworkProtocol"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ManagerNetworkProtocol.v1_1_0">
       <EntityType Name="ManagerNetworkProtocol" BaseType="ManagerNetworkProtocol.v1_0_3.ManagerNetworkProtocol">
         <Property Name="DHCP" Type="ManagerNetworkProtocol.v1_0_0.Protocol" Nullable="false">
@@ -180,8 +185,13 @@
       </EntityType>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ManagerNetworkProtocol.v1_1_1">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
+      <EntityType Name="ManagerNetworkProtocol" BaseType="ManagerNetworkProtocol.v1_1_0.ManagerNetworkProtocol"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ManagerNetworkProtocol.v1_2_0">
-      <EntityType Name="ManagerNetworkProtocol" BaseType="ManagerNetworkProtocol.v1_1_0.ManagerNetworkProtocol">
+      <EntityType Name="ManagerNetworkProtocol" BaseType="ManagerNetworkProtocol.v1_1_1.ManagerNetworkProtocol">
         <Property Name="NTP" Type="ManagerNetworkProtocol.v1_2_0.NTPProtocol" Nullable="false">
           <Annotation Term="OData.Description" String="Settings for this Manager's NTP protocol support."/>
           <Annotation Term="OData.LongDescription" String="This object shall contain information for the NTP protocol settings for the manager."/>

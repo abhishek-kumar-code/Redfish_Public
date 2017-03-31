@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  MemoryMetrics  v1.1.1-->
+<!--# Redfish Schema:  MemoryMetrics  v1.1.2-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -152,7 +152,7 @@
       <ComplexType Name="AlarmTrips">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="Alarm trip information about the memory."/>
-          <Annotation Term="OData.LongDescription" String="This type shall contain properties describing the types of alarms that have been raised by the memory."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain properties describing the types of alarms that have been raised by the memory."/>
         <Property Name="Temperature" Type="Edm.Boolean">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Temperature threshold crossing alarm trip detected status."/>
@@ -199,15 +199,10 @@
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="MemoryMetrics" BaseType="MemoryMetrics.v1_0_0.MemoryMetrics"/>
     </Schema>
-    
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MemoryMetrics.v1_0_2">
-      <Annotation Term="OData.Description" String="This version was created to show BlocksWritten in CurrentPeriod and LifeTime ComplexTypes in previous namespaces were updated."/>
+      <Annotation Term="OData.Description" String="This version was created to show BlocksWritten in CurrentPeriod and LifeTime ComplexTypes, and annotations in previous namespaces were updated."/>
       <EntityType Name="MemoryMetrics" BaseType="MemoryMetrics.v1_0_1.MemoryMetrics"/>
-    </Schema>
-    
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MemoryMetrics.v1_0_3">
-      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
-      <EntityType Name="MemoryMetrics" BaseType="MemoryMetrics.v1_0_2.MemoryMetrics"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MemoryMetrics.v1_1_0">
@@ -226,15 +221,10 @@
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="MemoryMetrics" BaseType="MemoryMetrics.v1_1_0.MemoryMetrics"/>
     </Schema>
-    
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MemoryMetrics.v1_1_2">
-      <Annotation Term="OData.Description" String="This version was created to show BlocksWritten in CurrentPeriod and LifeTime ComplexTypes in previous namespaces were updated."/>
+      <Annotation Term="OData.Description" String="This version was created to show BlocksWritten in CurrentPeriod and LifeTime ComplexTypes, and annotations in previous namespaces were updated."/>
       <EntityType Name="MemoryMetrics" BaseType="MemoryMetrics.v1_1_1.MemoryMetrics"/>
-    </Schema>
-    
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MemoryMetrics.v1_1_3">
-      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
-      <EntityType Name="MemoryMetrics" BaseType="MemoryMetrics.v1_1_2.MemoryMetrics"/>
     </Schema>
 
   </edmx:DataServices>

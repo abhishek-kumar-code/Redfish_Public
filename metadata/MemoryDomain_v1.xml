@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  MemoryDomain  v1.1.0-->
+<!--# Redfish Schema:  MemoryDomain  v1.2.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -83,6 +83,11 @@
       <EntityType Name="MemoryDomain" BaseType="MemoryDomain.v1_0_0.MemoryDomain"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MemoryDomain.v1_0_2">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
+      <EntityType Name="MemoryDomain" BaseType="MemoryDomain.v1_0_1.MemoryDomain"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MemoryDomain.v1_1_0">
       <EntityType Name="MemoryDomain" BaseType="MemoryDomain.v1_0_1.MemoryDomain">
         <Property Name="AllowsMirroring" Type="Edm.Boolean" DefaultValue="false">
@@ -98,8 +103,13 @@
       </EntityType>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MemoryDomain.v1_1_1">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
+      <EntityType Name="MemoryDomain" BaseType="MemoryDomain.v1_1_0.MemoryDomain"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MemoryDomain.v1_2_0">
-      <EntityType Name="MemoryDomain" BaseType="MemoryDomain.v1_1_0.MemoryDomain">
+      <EntityType Name="MemoryDomain" BaseType="MemoryDomain.v1_1_1.MemoryDomain">
         <Property Name="Actions" Type="MemoryDomain.v1_2_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>

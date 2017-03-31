@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  MemoryChunks  v1.0.1-->
+<!--# Redfish Schema:  MemoryChunks  v1.1.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -114,8 +114,13 @@
       <EntityType Name="MemoryChunks" BaseType="MemoryChunks.v1_0_0.MemoryChunks"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MemoryChunks.v1_0_2">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
+      <EntityType Name="MemoryChunks" BaseType="MemoryChunks.v1_0_1.MemoryChunks"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MemoryChunks.v1_1_0">
-      <EntityType Name="MemoryChunks" BaseType="MemoryChunks.v1_0_1.MemoryChunks">
+      <EntityType Name="MemoryChunks" BaseType="MemoryChunks.v1_0_2.MemoryChunks">
         <Property Name="Actions" Type="MemoryChunks.v1_1_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>

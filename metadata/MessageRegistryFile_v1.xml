@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  MessageRegistryFile  v1.0.3-->
+<!--# Redfish Schema:  MessageRegistryFile  v1.1.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -119,8 +119,13 @@
       <EntityType Name="MessageRegistryFile" BaseType="MessageRegistryFile.v1_0_2.MessageRegistryFile"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MessageRegistryFile.v1_0_4">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
+      <EntityType Name="MessageRegistryFile" BaseType="MessageRegistryFile.v1_0_3.MessageRegistryFile"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MessageRegistryFile.v1_1_0">
-      <EntityType Name="MessageRegistryFile" BaseType="MessageRegistryFile.v1_0_3.MessageRegistryFile">
+      <EntityType Name="MessageRegistryFile" BaseType="MessageRegistryFile.v1_0_4.MessageRegistryFile">
         <Property Name="Actions" Type="MessageRegistryFile.v1_1_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>

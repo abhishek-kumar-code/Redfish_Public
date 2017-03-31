@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  AttributeRegistry  v1.0.1-->
+<!--# Redfish Schema:  AttributeRegistry  v1.1.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -296,7 +296,7 @@
 
       <ComplexType Name="AttributeValue">
         <Annotation Term="OData.Description" String="A possible value for attributes of type 'Enumeration'."/>
-          <Annotation Term="OData.LongDescription" String="This type shall describe a possible value of an attribute of type 'Enumeration'."/>
+        <Annotation Term="OData.LongDescription" String="This type shall describe a possible value of an attribute of type 'Enumeration'."/>
         <Property Name="ValueName" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The value name of the attribute."/>
@@ -517,8 +517,13 @@
       <EntityType Name="AttributeRegistry" BaseType="AttributeRegistry.v1_0_0.AttributeRegistry"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AttributeRegistry.v1_0_2">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
+      <EntityType Name="AttributeRegistry" BaseType="AttributeRegistry.v1_0_1.AttributeRegistry"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AttributeRegistry.v1_1_0">
-      <EntityType Name="AttributeRegistry" BaseType="AttributeRegistry.v1_0_1.AttributeRegistry">
+      <EntityType Name="AttributeRegistry" BaseType="AttributeRegistry.v1_0_2.AttributeRegistry">
         <Property Name="Actions" Type="AttributeRegistry.v1_1_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>

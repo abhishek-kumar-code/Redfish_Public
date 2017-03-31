@@ -111,8 +111,13 @@
       <EntityType Name="VLanNetworkInterface" BaseType="VLanNetworkInterface.v1_0_2.VLanNetworkInterface"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="VLanNetworkInterface.v1_0_4">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
+      <EntityType Name="VLanNetworkInterface" BaseType="VLanNetworkInterface.v1_0_3.VLanNetworkInterface"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="VLanNetworkInterface.v1_1_0">
-      <EntityType Name="VLanNetworkInterface" BaseType="VLanNetworkInterface.v1_0_2.VLanNetworkInterface">
+      <EntityType Name="VLanNetworkInterface" BaseType="VLanNetworkInterface.v1_0_4.VLanNetworkInterface">
         <Property Name="Actions" Type="VLanNetworkInterface.v1_1_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
