@@ -2492,7 +2492,7 @@ The Targets property within SubordinateOverrides lists a hierarchical representa
 			}],
 			"SubordinateOverrides": [{
 				"Targets": [
-					"Manager", "EthernetInterfaceCollection",
+					"Manager", "EthernetInterfaceCollection"
 				],
 				"OperationMap": {
 					"GET": [{
