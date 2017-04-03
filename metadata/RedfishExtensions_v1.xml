@@ -70,7 +70,31 @@
       <Term Name="CollectionCapabilities" Type="CollectionCapabilities.CollectionCapabilities">
         <Annotation Term="OData.Description" String="Reference to the resource that represents the POST capabilities of a given collection."/>
       </Term>
-
+	  <Term Name="Confidential" Type="Edm.String">
+	    <Annotation Term="OData.Description" String="The term specifies that a schema or property is un-released and is therefore confidential material not for public disclosure.">
+	  </Term>
+	  <Term Name="ReleaseStatus" Type="RedfishExtensions.v1_0_0.ReleaseStatusType">
+	     <Annotation Term="OData.Description" String="The term specifies the public release status of a property or schema.">
+      </Term>
+	  
+	  <EnumType Name="ReleaseStatusType">
+		<Member Name="Standard">
+          <Annotation Term="OData.Description" String="Released as normative standard or specification."/>
+		</Member>
+		<Member Name="Informational">
+          <Annotation Term="OData.Description" String="Released as an informational, non-normative document."/>
+		</Member>
+        <Member Name="WorkInProgress">
+          <Annotation Term="OData.Description" String="Released as Work In Progress and is subject to change."/>
+		</Member>
+        <Member Name="InDevelopment">
+          <Annotation Term="OData.Description" String="Un-released work product currently under development or review."/>
+		</Member>
+		<Member Name="TechnologySubmission">
+          <Annotation Term="OData.Description" String="Work received as a Technology Submission and under consideration for future work."/>
+		</Member>
+	  </EnumType>
+		
       <ComplexType Name="PropertyPattern">
         <Property Name="Pattern" Type="Edm.String">
           <Annotation Term="OData.Description" String="The pattern that the property name shall match."/>
