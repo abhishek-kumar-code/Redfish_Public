@@ -211,14 +211,20 @@
 
       <ComplexType Name="Actions">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The available actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
         <Property Name="Oem" Type="Manager.v1_0_0.OemActions" Nullable="false"/>
       </ComplexType>
 
       <ComplexType Name="OemActions">
         <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
       </ComplexType>
 
       <ComplexType Name="Links" BaseType="Resource.Links">
+        <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
         <NavigationProperty Name="ManagerForServers" Type="Collection(ComputerSystem.ComputerSystem)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This property is an array of references to the systems that this manager has control over."/>
@@ -308,6 +314,8 @@
 
       <ComplexType Name="SerialConsole" BaseType="Manager.v1_0_0.ManagerService">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="Information about a Serial Console service provided by a manager."/>
+        <Annotation Term="OData.LongDescription" String="This type shall describe a Serial Console service of a manager."/>
         <Property Name="ConnectTypesSupported" Type="Collection(Manager.v1_0_0.SerialConnectTypesSupported)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This object is used to enumerate the Serial Console connection types allowed by the implementation."/>
@@ -317,6 +325,8 @@
 
       <ComplexType Name="CommandShell" BaseType="Manager.v1_0_0.ManagerService">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="Information about a Command Shell service provided by a manager."/>
+        <Annotation Term="OData.LongDescription" String="This type shall describe a Command Shell service of a manager."/>
         <Property Name="ConnectTypesSupported" Type="Collection(Manager.v1_0_0.CommandConnectTypesSupported)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This object is used to enumerate the Command Shell connection types allowed by the implementation."/>
@@ -326,6 +336,8 @@
 
       <ComplexType Name="GraphicalConsole" BaseType="Manager.v1_0_0.ManagerService">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="Information about a Graphical Console service provided by a manager."/>
+        <Annotation Term="OData.LongDescription" String="This type shall describe a Graphical Console service of a manager."/>
         <Property Name="ConnectTypesSupported" Type="Collection(Manager.v1_0_0.GraphicalConnectTypesSupported)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This object is used to enumerate the Graphical Console connection types allowed by the implementation."/>
