@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  PrivilegeRegistry  v1.0.0 -->
+<!--# Redfish Schema:  PrivilegeRegistry  v1.1.0 -->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -69,6 +69,8 @@
       </EntityType>
 
       <ComplexType Name="Mapping">
+        <Annotation Term="OData.Description" String="This type describes a mapping between an entity and the relevant privileges used to access it."/>
+        <Annotation Term="OData.LongDescription" String="This type shall describe a mapping between an entity and the relevant privileges used to access it."/>
         <Property Name="Entity" Type="Edm.String" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Indicates entity name. e.g., Manager."/>
@@ -93,6 +95,8 @@
       </ComplexType>
 
       <ComplexType Name="Target_PrivilegeMap">
+        <Annotation Term="OData.Description" String="This type describes a mapping between one or more targets and the HTTP operations associated with them."/>
+        <Annotation Term="OData.LongDescription" String="This type shall describe a mapping between one or more targets and the HTTP operations associated with them."/>
         <Property Name="Targets" Type="Collection(Edm.String)" Nullable="true">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Indicates the URI or Entity."/>
@@ -106,6 +110,7 @@
 
       <ComplexType Name="OperationMap">
         <Annotation Term="OData.Description" String="Used for describing the specific privileges for a set of HTTP operations."/>
+        <Annotation Term="OData.LongDescription" String="This type shall describe the specific privileges required for a set of HTTP operations."/>
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="GET" Type="Collection(PrivilegeRegistry.v1_0_0.OperationPrivilege)" Nullable="false">
           <Annotation Term="OData.Description" String="Indicates privilege required for HTTP GET operation."/>
@@ -135,6 +140,7 @@
 
       <ComplexType Name="OperationPrivilege">
         <Annotation Term="OData.Description" String="Used for describing the specific privileges for a given type of HTTP operation."/>
+        <Annotation Term="OData.LongDescription" String="This type shall describe the specific privileges required for a given type of HTTP operation."/>
         <Property Name="Privilege" Type="Collection(Edm.String)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
           <Annotation Term="OData.Description" String="Lists the privileges that are allowed to perform the given type of HTTP operation on the entity type."/>
@@ -144,8 +150,13 @@
 
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="PrivilegeRegistry.v1_0_1">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
+      <EntityType Name="PrivilegeRegistry" BaseType="PrivilegeRegistry.v1_0_0.PrivilegeRegistry"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="PrivilegeRegistry.v1_1_0">
-      <EntityType Name="PrivilegeRegistry" BaseType="PrivilegeRegistry.v1_0_0.PrivilegeRegistry">
+      <EntityType Name="PrivilegeRegistry" BaseType="PrivilegeRegistry.v1_0_1.PrivilegeRegistry">
         <Property Name="Actions" Type="PrivilegeRegistry.v1_1_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
@@ -154,11 +165,15 @@
 
       <ComplexType Name="Actions">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The available actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
         <Property Name="Oem" Type="PrivilegeRegistry.v1_1_0.OemActions" Nullable="false"/>
       </ComplexType>
 
       <ComplexType Name="OemActions">
         <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
       </ComplexType>
     </Schema>
 
