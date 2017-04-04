@@ -1,7 +1,7 @@
 {
-    "id": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0",
+    "id": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0",
     "type": "object",
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0",
     "title": "Redfish Schema Extension",
     "description": "The properties defined in this schema shall adhere to the requirements of the Redfish Specification and the semantics of the descriptions in this file.",
     "allOf": [
@@ -40,6 +40,10 @@
         "enumLongDescriptions": {
             "type": "object",
             "description": "This attribute shall contain normative language relating to the enumeration values of the property."
+        },
+        "enumDeprecated": {
+            "type": "object",
+            "description": "The term shall be applied to a value in order to specify that the value is deprecated.  The value of the string should explain the deprecation, including new value to be used.  The value can be supported in new and existing implementations, but usage in new implementations is discouraged.  Deprecated values are likely to be removed in a future major version of the schema."
         },
         "units": {
             "type": "string",

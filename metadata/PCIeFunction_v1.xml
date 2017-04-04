@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  PCIeFunction  v1.0.2-->
+<!--# Redfish Schema:  PCIeFunction  v1.1.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -107,6 +107,8 @@
       </EntityType>
 
       <ComplexType Name="Links" BaseType="Resource.Links">
+        <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
         <NavigationProperty Name="EthernetInterfaces" Type="Collection(EthernetInterface.EthernetInterface)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the ethernet interfaces which the PCIe device produces."/>
@@ -225,7 +227,7 @@
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="PCIeFunction" BaseType="PCIeFunction.v1_0_1.PCIeFunction"/>
     </Schema>
-    
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="PCIeFunction.v1_1_0">
       <EntityType Name="PCIeFunction" BaseType="PCIeFunction.v1_0_2.PCIeFunction">
         <Property Name="Actions" Type="PCIeFunction.v1_1_0.Actions" Nullable="false">
@@ -236,11 +238,15 @@
 
       <ComplexType Name="Actions">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The available actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
         <Property Name="Oem" Type="PCIeFunction.v1_1_0.OemActions" Nullable="false"/>
       </ComplexType>
 
       <ComplexType Name="OemActions">
         <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
       </ComplexType>
     </Schema>
 

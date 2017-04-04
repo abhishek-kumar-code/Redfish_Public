@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  MemoryDomain  v1.1.0-->
+<!--# Redfish Schema:  MemoryDomain  v1.2.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -63,6 +63,8 @@
       </EntityType>
 
       <ComplexType Name="MemorySet">
+        <Annotation Term="OData.Description" String="This is the interleave sets for a memory chunk."/>
+        <Annotation Term="OData.LongDescription" String="This type shall represent the interleave sets for a memory chunk."/>
         <NavigationProperty Name="MemorySet" Type="Collection(Memory.Memory)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the collection of memory for a particular interleave set."/>
@@ -76,6 +78,11 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MemoryDomain.v1_0_1">
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="MemoryDomain" BaseType="MemoryDomain.v1_0_0.MemoryDomain"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MemoryDomain.v1_0_2">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
+      <EntityType Name="MemoryDomain" BaseType="MemoryDomain.v1_0_1.MemoryDomain"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MemoryDomain.v1_1_0">
@@ -93,8 +100,13 @@
       </EntityType>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MemoryDomain.v1_1_1">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
+      <EntityType Name="MemoryDomain" BaseType="MemoryDomain.v1_1_0.MemoryDomain"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="MemoryDomain.v1_2_0">
-      <EntityType Name="MemoryDomain" BaseType="MemoryDomain.v1_1_0.MemoryDomain">
+      <EntityType Name="MemoryDomain" BaseType="MemoryDomain.v1_1_1.MemoryDomain">
         <Property Name="Actions" Type="MemoryDomain.v1_2_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
@@ -103,11 +115,15 @@
 
       <ComplexType Name="Actions">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The available actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
         <Property Name="Oem" Type="MemoryDomain.v1_2_0.OemActions" Nullable="false"/>
       </ComplexType>
 
       <ComplexType Name="OemActions">
         <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
       </ComplexType>
     </Schema>
 

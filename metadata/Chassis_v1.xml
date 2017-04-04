@@ -171,6 +171,8 @@
       </EntityType>
 
       <ComplexType Name="Links" BaseType="Resource.Links">
+        <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
         <NavigationProperty Name="ComputerSystems" Type="Collection(ComputerSystem.ComputerSystem)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the computer systems contained in this chassis.  This will only reference ComputerSystems that are directly and wholly contained in this chassis."/>
@@ -211,11 +213,15 @@
 
       <ComplexType Name="Actions">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The available actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
         <Property Name="Oem" Type="Chassis.v1_0_0.OemActions" Nullable="false"/>
       </ComplexType>
 
       <ComplexType Name="OemActions">
         <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
       </ComplexType>
 
       <EnumType Name="ChassisType">
@@ -284,7 +290,8 @@
       <!-- These are all supported LED statuses. -->
       <EnumType Name="IndicatorLED">
         <Member Name="Unknown">
-          <Annotation Term="OData.Description" String="The state of the Indicator LED cannot be determined. Deprecated: Return null if state is unknown."/>
+          <Annotation Term="OData.Description" String="The state of the Indicator LED cannot be determined."/>
+          <Annotation Term="Redfish.Deprecated" String="This value has been Deprecated in favor of returning null if the state is unknown."/>
         </Member>
         <Member Name="Lit">
           <Annotation Term="OData.Description" String="The Indicator LED is lit."/>
@@ -337,7 +344,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_0_4">
-      <Annotation Term="OData.Description" String="This version was created to remove the Nullable facet on NavigationProperties of type Collection."/>
+      <Annotation Term="OData.Description" String="This version was created to remove the Nullable facet on NavigationProperties of type Collection and to use Redfish.Deprecated on certain enum values."/>
       <EntityType Name="Chassis" BaseType="Chassis.v1_0_3.Chassis"/>
     </Schema>
 
@@ -352,6 +359,8 @@
 
       <ComplexType Name="PhysicalSecurity">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The state of the physical security sensor."/>
+        <Annotation Term="OData.LongDescription" String="This type shall describe the sensor state of the physical security."/>
         <Property Name="IntrusionSensorNumber" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A numerical identifier to represent the physical security sensor."/>
@@ -402,7 +411,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_1_4">
-      <Annotation Term="OData.Description" String="This version was created to remove the Nullable facet on NavigationProperties of type Collection."/>
+      <Annotation Term="OData.Description" String="This version was created to remove the Nullable facet on NavigationProperties of type Collection and to use Redfish.Deprecated on certain enum values."/>
       <EntityType Name="Chassis" BaseType="Chassis.v1_1_3.Chassis"/>
     </Schema>
 
@@ -439,7 +448,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_2_2">
-      <Annotation Term="OData.Description" String="This version was created to remove the Nullable facet on NavigationProperties of type Collection."/>
+      <Annotation Term="OData.Description" String="This version was created to remove the Nullable facet on NavigationProperties of type Collection and to use Redfish.Deprecated on certain enum values."/>
       <EntityType Name="Chassis" BaseType="Chassis.v1_2_1.Chassis"/>
     </Schema>
 
@@ -454,7 +463,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_3_2">
-      <Annotation Term="OData.Description" String="This version was created to remove the Nullable facet on NavigationProperties of type Collection."/>
+      <Annotation Term="OData.Description" String="This version was created to remove the Nullable facet on NavigationProperties of type Collection and to use Redfish.Deprecated on certain enum values."/>
       <EntityType Name="Chassis" BaseType="Chassis.v1_3_1.Chassis"/>
     </Schema>
 
@@ -507,7 +516,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Chassis.v1_4_1">
-      <Annotation Term="OData.Description" String="This version was created to remove the Nullable facet on NavigationProperties of type Collection."/>
+      <Annotation Term="OData.Description" String="This version was created to remove the Nullable facet on NavigationProperties of type Collection and to use Redfish.Deprecated on certain enum values."/>
       <EntityType Name="Chassis" BaseType="Chassis.v1_4_0.Chassis"/>
     </Schema>
 
