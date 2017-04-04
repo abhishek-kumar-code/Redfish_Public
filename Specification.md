@@ -2590,8 +2590,12 @@ The ResourceZone resource within the CompositionService shall include the Collec
 A service that supports updating a composed resource shall also support the PUT and/or PATCH methods on the composed resource with a modified list of ResourceBlocks.
 
 Example Specific Composition of a ComputerSystem:
-~~~
+~~~http
 POST /redfish/v1/Systems HTTP/1.1
+Content-Type: application/json;charset=utf-8
+Content-Length: <computed length>
+OData-Version: 4.0
+
 {
     "Name": "Sample Composed System",
     "Links": {
