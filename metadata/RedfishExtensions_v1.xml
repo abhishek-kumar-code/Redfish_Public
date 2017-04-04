@@ -85,13 +85,10 @@
           <Annotation Term="OData.Description" String="Released as an informational, non-normative document."/>
         </Member>
         <Member Name="WorkInProgress">
-          <Annotation Term="OData.Description" String="Released as Work In Progress and is subject to change."/>
+          <Annotation Term="OData.Description" String="Released as Work In Progress, subject to change perhaps profoundly and without notice."/>
         </Member>
         <Member Name="InDevelopment">
           <Annotation Term="OData.Description" String="Un-released work product currently under development or review."/>
-        </Member>
-        <Member Name="TechnologySubmission">
-          <Annotation Term="OData.Description" String="Work received as a Technology Submission and under consideration for future work."/>
         </Member>
       </EnumType>
 
