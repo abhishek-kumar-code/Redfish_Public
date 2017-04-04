@@ -2504,9 +2504,7 @@ required for the rest of the properties on ManagerAccount resources.
 
 ##### Subordinate Override
 
-In the following example, the privileges for PATCH operations 
-on EthernetInterface resources depends on whether the resource is subordinate to Manager (ConfigureManager is required) or ComputerSystem (ConfigureComponent
-is required, this is the default unless overridden) resources.
+The Targets property within SubordinateOverrides lists a hierarchical representation for when to apply the override.  In the following example, the override for an EthernetInterface entity is applied when it is subordinate to an EthernetInterfaceCollection entity, which is in turn subordinate to a Manager entity.  If a client were to PATCH an EthernetInterface entity that matches this override condition, it would require the "ConfigureManager" privilege; otherwise the client would require the "ConfigureComponent" privilege.
 ~~~json
 {
     "Entity": "EthernetInterface",
@@ -2544,8 +2542,8 @@ is required, this is the default unless overridden) resources.
         "SubordinateOverrides": [
             {
                 "Targets": [
-                    [ "Manager", "EthernetInterfaceCollection" ],
-                    "Manager"
+                    "Manager",
+                    "EthernetInterfaceCollection"
                 ],
                 "OperationMap": {
                     "GET": [
