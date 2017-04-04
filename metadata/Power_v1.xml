@@ -391,13 +391,16 @@
           <Annotation Term="OData.Description" String="The power supply line input voltage type cannot be determined."/>
         </Member>
         <Member Name="ACLowLine">
-          <Annotation Term="OData.Description" String="100-127V AC input. Deprecated: Use AC120V."/>
+          <Annotation Term="OData.Description" String="100-127V AC input."/>
+          <Annotation Term="Redfish.Deprecated" String="This value has been Deprecated in favor of AC120V."/>
         </Member>
         <Member Name="ACMidLine">
-          <Annotation Term="OData.Description" String="200-240V AC input. Deprecated: Use AC240V."/>
+          <Annotation Term="OData.Description" String="200-240V AC input."/>
+          <Annotation Term="Redfish.Deprecated" String="This value has been Deprecated in favor of AC240V."/>
         </Member>
         <Member Name="ACHighLine">
-          <Annotation Term="OData.Description" String="277V AC input. Deprecated: Use AC277V."/>
+          <Annotation Term="OData.Description" String="277V AC input."/>
+          <Annotation Term="Redfish.Deprecated" String="This value has been Deprecated in favor of AC277V."/>
         </Member>
         <Member Name="DCNeg48V">
           <Annotation Term="OData.Description" String="-48V DC input."/>
@@ -443,7 +446,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.v1_0_4">
-      <Annotation Term="OData.Description" String="This version was created to remove the Nullable facet on NavigationProperties of type Collection."/>
+      <Annotation Term="OData.Description" String="This version was created to remove the Nullable facet on NavigationProperties of type Collection and to use Redfish.Deprecated on certain enum values."/>
       <EntityType Name="Power" BaseType="Power.v1_0_3.Power"/>
     </Schema>
 
@@ -524,7 +527,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.v1_1_2">
-      <Annotation Term="OData.Description" String="This version was created to remove the Nullable facet on NavigationProperties of type Collection."/>
+      <Annotation Term="OData.Description" String="This version was created to remove the Nullable facet on NavigationProperties of type Collection and to use Redfish.Deprecated on certain enum values."/>
       <EntityType Name="Power" BaseType="Power.v1_1_1.Power"/>
     </Schema>
 
@@ -548,7 +551,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.v1_2_2">
-      <Annotation Term="OData.Description" String="This version was created to remove the Nullable facet on NavigationProperties of type Collection."/>
+      <Annotation Term="OData.Description" String="This version was created to remove the Nullable facet on NavigationProperties of type Collection and to use Redfish.Deprecated on certain enum values."/>
       <EntityType Name="Power" BaseType="Power.v1_2_1.Power"/>
     </Schema>
 
