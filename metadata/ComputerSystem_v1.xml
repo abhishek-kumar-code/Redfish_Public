@@ -413,7 +413,7 @@
         <Property Name="Model" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The processor model for the primary or majority of processors in this system."/>
-          <Annotation Term="OData.LongDescription" String="This property shall contain the processor model for the central processors in the system, per the description in Table 22 of the SMBIOS Specification DSP0134 2.8 or later."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the processor model for the central processors in the system, per the description in the Processor Information - Processor Family section of the SMBIOS Specification DSP0134 2.8 or later."/>
         </Property>
         <Property Name="Status" Type="Resource.Status"  Nullable="false"/>
         <Annotation Term="OData.Description" String="This object describes the central processors of the system in general detail."/>
