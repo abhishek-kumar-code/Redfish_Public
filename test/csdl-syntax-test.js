@@ -100,7 +100,8 @@ function constructTest(file) {
     'All References Used': checkReferencesUsed,
     'All EntityType defintions have Actions': entityTypesHaveActions,
     'NavigationProperties for Collections cannot be Nullable': navigationPropNullCheck,
-    'All new schemas are one version off published': schemaVersionCheck
+    'All new schemas are one version off published': schemaVersionCheck,
+    'Structured types shall include Description and LongDescription annotations': complexTypesHaveAnnotations
   }
 }
 
@@ -725,6 +726,40 @@ function checkVersionInPublishedList(version, publishedList, schemaName) {
     let prevMaint = ((parts[2]*1)-1)+'';
     if(minor.indexOf(prevMaint) === -1) {
       throw new Error('Schema version '+parts[0]+'_'+parts[1]+'_'+parts[2]+' is not published and neither is '+parts[0]+'_'+parts[1]+'_'+prevMaint+' in '+schemaName);
+    }
+  }
+}
+
+function complexTypesHaveAnnotations(err, csdl) {
+  if(err) {
+    return;
+  }
+
+  let fileName = this.context.name.substring(this.context.name.lastIndexOf('/')+1);
+  if(ContosoSchemaFileList.indexOf(fileName) !== -1 || fileName === 'index.xml') {
+    //Ignore OEM extensions and metadata files
+    return;
+  }
+
+  let complexTypes = CSDL.search(csdl, 'ComplexType');
+  for(let i = 0; i < complexTypes.length; i++) {
+    let complexType = complexTypes[i];
+    if(complexType.Abstract === true) {
+      continue;
+    }
+
+    typeOrBaseTypesHaveAnnotations(complexType, ['OData.Description', 'OData.LongDescription'], complexType.Name, 'ComplexType');
+  }
+}
+
+function typeOrBaseTypesHaveAnnotations(type, annotations, typeName, typeType) {
+  for(let i = 0; i < annotations.length; i++) {
+    if(type.Annotations[annotations[i]] === undefined) {
+      if(type.BaseType === undefined) {
+        throw new Error(typeType+' "'+typeName+'" lacks an '+annotations[i]+' Annotation!');
+      }
+      let baseType = CSDL.findByType({_options: options}, type.BaseType);
+      typeOrBaseTypesHaveAnnotations(baseType, annotations, typeName, typeType);
     }
   }
 }
