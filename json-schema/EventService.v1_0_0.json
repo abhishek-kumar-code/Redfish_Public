@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
     "title": "#EventService.v1_0_0.EventService",
     "$ref": "#/definitions/EventService",
     "definitions": {
@@ -143,7 +143,9 @@
                                 }
                             },
                             "additionalProperties": true,
-                            "properties": {}
+                            "properties": {},
+                            "description": "The available OEM specific actions for this resource.",
+                            "longDescription": "This type shall contain any additional OEM actions for this resource."
                         },
                         "#EventService.SubmitTestEvent": {
                             "$ref": "#/definitions/SubmitTestEvent"

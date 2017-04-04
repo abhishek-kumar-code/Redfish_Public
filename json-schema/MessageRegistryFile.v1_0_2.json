@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
     "title": "#MessageRegistryFile.v1_0_2.MessageRegistryFile",
     "$ref": "#/definitions/MessageRegistryFile",
     "definitions": {
@@ -53,7 +53,9 @@
                     "description": "If the schema is hosted on the service in an archive file, this is the name of the file within the archive.",
                     "longDescription": "The value of this property shall be the file name of the individual schema file within the archive file specified by the ArchiveUri property. The file name shall conform to the syntax specified in the Redfish specification."
                 }
-            }
+            },
+            "description": "Location information for a schema file.",
+            "longDescription": "This type shall define Location information for a schema file."
         },
         "MessageRegistryFile": {
             "type": "object",

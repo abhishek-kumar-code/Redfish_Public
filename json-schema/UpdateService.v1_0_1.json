@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
     "title": "#UpdateService.v1_0_1.UpdateService",
     "$ref": "#/definitions/UpdateService",
     "definitions": {
@@ -152,12 +152,15 @@
                                 }
                             },
                             "additionalProperties": true,
-                            "properties": {}
+                            "properties": {},
+                            "description": "The available OEM specific actions for this resource.",
+                            "longDescription": "This type shall contain any additional OEM actions for this resource."
                         },
                         "#UpdateService.SimpleUpdate": {
                             "$ref": "#/definitions/SimpleUpdate"
                         }
                     },
+                    "longDescription": "This type shall contain the available actions for this resource.",
                     "description": "The Actions object contains the available custom actions on this resource."
                 },
                 "FirmwareInventory": {

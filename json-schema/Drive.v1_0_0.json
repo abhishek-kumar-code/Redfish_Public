@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
     "title": "#Drive.v1_0_0.Drive",
     "$ref": "#/definitions/Drive",
     "definitions": {
@@ -367,7 +367,9 @@
                                 }
                             },
                             "additionalProperties": true,
-                            "properties": {}
+                            "properties": {},
+                            "description": "The available OEM specific actions for this resource.",
+                            "longDescription": "This type shall contain any additional OEM actions for this resource."
                         },
                         "#Drive.SecureErase": {
                             "$ref": "#/definitions/SecureErase"
@@ -407,11 +409,14 @@
                 "Unencrypted"
             ],
             "enumDescriptions": {
-                "Unecrypted": "The drive is not currently encrypted. Deprecated: Use Unencrypted.",
+                "Unecrypted": "The drive is not currently encrypted.",
                 "Unlocked": "The drive is currently encrypted but the data is accessible to the user unencrypted.",
                 "Locked": "The drive is currently encrypted and the data is not accessible to the user, however the system has the ability to unlock the drive automatically.",
                 "Foreign": "The drive is currently encrypted, the data is not accessible to the user, and the system requires user intervention to expose the data.",
                 "Unencrypted": "The drive is not currently encrypted."
+            },
+            "enumDeprecated": {
+                "Unecrypted": "This value has been Deprecated in favor of Unencrypted."
             }
         },
         "HotspareType": {

@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
     "title": "#SimpleStorage.v1_0_3.SimpleStorage",
     "$ref": "#/definitions/SimpleStorage",
     "definitions": {
@@ -53,7 +53,9 @@
             },
             "required": [
                 "Name"
-            ]
+            ],
+            "description": "A storage device such as a disk drive or optical media device.",
+            "longDescription": "This type shall describe a storage device visible to SimpleStorage."
         },
         "SimpleStorage": {
             "type": "object",
