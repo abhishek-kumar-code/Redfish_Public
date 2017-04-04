@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Power  v1.2.2-->
+<!--# Redfish Schema:  Power  v1.3.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -145,6 +145,8 @@
       </EntityType>
 
       <ComplexType Name="PowerMetric">
+        <Annotation Term="OData.Description" String="This type describe the power metrics for a resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain power metrics for power readings (interval, min/max/ave power consumption) for a resource."/>
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="IntervalInMin" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -178,6 +180,7 @@
 
       <ComplexType Name="PowerLimit">
         <Annotation Term="OData.Description" String="This object contains power limit status and configuration information for the chassis."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain power limit status and configuration information for this chassis."/>
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="LimitInWatts" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
@@ -388,13 +391,16 @@
           <Annotation Term="OData.Description" String="The power supply line input voltage type cannot be determined."/>
         </Member>
         <Member Name="ACLowLine">
-          <Annotation Term="OData.Description" String="100-127V AC input. Deprecated: Use AC120V."/>
+          <Annotation Term="OData.Description" String="100-127V AC input."/>
+          <Annotation Term="Redfish.Deprecated" String="This value has been Deprecated in favor of AC120V."/>
         </Member>
         <Member Name="ACMidLine">
-          <Annotation Term="OData.Description" String="200-240V AC input. Deprecated: Use AC240V."/>
+          <Annotation Term="OData.Description" String="200-240V AC input."/>
+          <Annotation Term="Redfish.Deprecated" String="This value has been Deprecated in favor of AC240V."/>
         </Member>
         <Member Name="ACHighLine">
-          <Annotation Term="OData.Description" String="277V AC input. Deprecated: Use AC277V."/>
+          <Annotation Term="OData.Description" String="277V AC input."/>
+          <Annotation Term="Redfish.Deprecated" String="This value has been Deprecated in favor of AC277V."/>
         </Member>
         <Member Name="DCNeg48V">
           <Annotation Term="OData.Description" String="-48V DC input."/>
@@ -440,7 +446,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.v1_0_4">
-      <Annotation Term="OData.Description" String="This version was created to remove the Nullable facet on NavigationProperties of type Collection."/>
+      <Annotation Term="OData.Description" String="This version was created to remove the Nullable facet on NavigationProperties of type Collection and to use Redfish.Deprecated on certain enum values."/>
       <EntityType Name="Power" BaseType="Power.v1_0_3.Power"/>
     </Schema>
 
@@ -461,6 +467,8 @@
 
       <ComplexType Name="InputRange">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This type describes an input range for a power supply."/>
+        <Annotation Term="OData.LongDescription" String="This type shall describe an input range that the associated power supply is able to utilize."/>
         <Property Name="InputType" Type="Power.v1_1_0.InputType">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The Input type (AC or DC)."/>
@@ -519,7 +527,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.v1_1_2">
-      <Annotation Term="OData.Description" String="This version was created to remove the Nullable facet on NavigationProperties of type Collection."/>
+      <Annotation Term="OData.Description" String="This version was created to remove the Nullable facet on NavigationProperties of type Collection and to use Redfish.Deprecated on certain enum values."/>
       <EntityType Name="Power" BaseType="Power.v1_1_1.Power"/>
     </Schema>
 
@@ -543,7 +551,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Power.v1_2_2">
-      <Annotation Term="OData.Description" String="This version was created to remove the Nullable facet on NavigationProperties of type Collection."/>
+      <Annotation Term="OData.Description" String="This version was created to remove the Nullable facet on NavigationProperties of type Collection and to use Redfish.Deprecated on certain enum values."/>
       <EntityType Name="Power" BaseType="Power.v1_2_1.Power"/>
     </Schema>
 
@@ -578,38 +586,54 @@
 
       <ComplexType Name="Actions">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The available actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
         <Property Name="Oem" Type="Power.v1_3_0.OemActions" Nullable="false"/>
       </ComplexType>
 
       <ComplexType Name="OemActions">
         <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
       </ComplexType>
 
       <ComplexType Name="PowerControlActions">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The available actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
         <Property Name="Oem" Type="Power.v1_3_0.PowerControlOemActions" Nullable="false"/>
       </ComplexType>
 
       <ComplexType Name="PowerControlOemActions">
         <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
       </ComplexType>
 
       <ComplexType Name="VoltageActions">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The available actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
         <Property Name="Oem" Type="Power.v1_3_0.VoltageOemActions" Nullable="false"/>
       </ComplexType>
 
       <ComplexType Name="VoltageOemActions">
         <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
       </ComplexType>
 
       <ComplexType Name="PowerSupplyActions">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The available actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
         <Property Name="Oem" Type="Power.v1_3_0.PowerSupplyOemActions" Nullable="false"/>
       </ComplexType>
 
       <ComplexType Name="PowerSupplyOemActions">
         <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
       </ComplexType>
     </Schema>
 
