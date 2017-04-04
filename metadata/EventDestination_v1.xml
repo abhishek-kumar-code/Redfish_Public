@@ -69,8 +69,8 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This property shall contain the types of events that shall be sent to the desination."/>
         </Property>
-        <Property Name="Context" Type="Edm.String" Nullable="false">
-          <Annotation Term="Redfish.RequiredOnCreate"/>
+        <Property Name="Context" Type="Edm.String">
+          <Annotation Term="Redfish.Required"/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="A client-supplied string that is stored with the event destination subscription."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain a client supplied context that will remain with the connection through the connections lifetime."/>
