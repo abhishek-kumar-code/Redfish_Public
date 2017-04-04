@@ -227,6 +227,8 @@
       </EntityType>
 
       <ComplexType Name="Links" BaseType="Resource.Links">
+        <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
         <NavigationProperty Name="Chassis" Type="Collection(Chassis.Chassis)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the chassis in which this system is contained."/>
@@ -255,11 +257,15 @@
 
       <ComplexType Name="Actions">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The available actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
         <Property Name="Oem" Type="ComputerSystem.v1_0_0.OemActions" Nullable="false"/>
       </ComplexType>
 
       <ComplexType Name="OemActions">
         <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
       </ComplexType>
 
       <EnumType Name="SystemType">
@@ -316,6 +322,8 @@
 
       <ComplexType Name="Boot">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="Information about the boot settings for a system."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain properties which describe boot information for a system."/>
         <Property Name="BootSourceOverrideTarget" Type="ComputerSystem.v1_0_0.BootSource">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The current boot source to be used at next boot instead of the normal boot device, if BootSourceOverrideEnabled is true."/>
@@ -393,6 +401,8 @@
 
       <ComplexType Name="ProcessorSummary">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This type describes the central processors of a system in general detail."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain properties which describe the central processors for a system."/>
         <Property Name="Count" Type="Edm.Int64">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The number of processors in the system."/>
@@ -410,6 +420,8 @@
 
       <ComplexType Name="MemorySummary">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This type describes the central memory of a system in general detail."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain properties which describe the central memory for a system."/>
         <Property Name="TotalSystemMemoryGiB" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The total configured operating system-accessible memory (RAM), measured in GiB."/>
@@ -522,6 +534,8 @@
 
       <ComplexType Name="TrustedModules">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This type describes the a Trusted Module in a system."/>
+        <Annotation Term="OData.LongDescription" String="This type shall describe a truted module for a system."/>
         <Property Name="FirmwareVersion" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The firmware version of this Trusted Module."/>
@@ -600,6 +614,8 @@
 
       <ComplexType Name="HostedServices">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The services that a computer system supports."/>
+        <Annotation Term="OData.LongDescription" String="The values of this collection shall describe services supported by a computer system."/>
         <NavigationProperty Name="StorageServices" Type="HostedStorageServices.HostedStorageServices" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A reference to a collection of storage services supported by this computer system."/>
