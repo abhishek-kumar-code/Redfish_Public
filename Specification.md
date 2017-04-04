@@ -2544,8 +2544,8 @@ is required, this is the default unless overridden) resources.
         "SubordinateOverrides": [
             {
                 "Targets": [
-                    "Manager",
-                    "EthernetInterfaceCollection"
+                    [ "Manager", "EthernetInterfaceCollection" ],
+                    "Manager"
                 ],
                 "OperationMap": {
                     "GET": [
