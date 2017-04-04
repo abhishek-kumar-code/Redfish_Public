@@ -71,10 +71,10 @@
         <Annotation Term="OData.Description" String="Reference to the resource that represents the POST capabilities of a given collection."/>
       </Term>
       <Term Name="Confidential" Type="Edm.String">
-        <Annotation Term="OData.Description" String="The term specifies that a schema or property is un-released and is therefore confidential material not for public disclosure.">
+        <Annotation Term="OData.Description" String="The term specifies that a schema or property is un-released and is therefore confidential material not for public disclosure."/>
       </Term>
       <Term Name="ReleaseStatus" Type="RedfishExtensions.v1_0_0.ReleaseStatusType">
-        <Annotation Term="OData.Description" String="The term specifies the public release status of a property or schema.">
+        <Annotation Term="OData.Description" String="The term specifies the public release status of a property or schema."/>
       </Term>
 
       <EnumType Name="ReleaseStatusType">
