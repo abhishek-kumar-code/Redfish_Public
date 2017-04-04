@@ -165,31 +165,31 @@
       <!--Common RestType parameter values for Reset Action-->
       <EnumType Name="ResetType">
         <Member Name="On">
-          <Annotation Term="OData.Description" String="Turn the system on."/>
+          <Annotation Term="OData.Description" String="Turn the unit on."/>
         </Member>
         <Member Name="ForceOff">
-          <Annotation Term="OData.Description" String="Turn the system off immediately (non-graceful) shutdown."/>
+          <Annotation Term="OData.Description" String="Turn the unit off immediately (non-graceful shutdown)."/>
         </Member>
         <Member Name="GracefulShutdown">
-          <Annotation Term="OData.Description" String="Perform a graceful system shutdown and power off."/>
+          <Annotation Term="OData.Description" String="Perform a graceful shutdown and power off."/>
         </Member>
         <Member Name="GracefulRestart">
-          <Annotation Term="OData.Description" String="Perform a graceful system shutdown followed by a restart of the system."/>
+          <Annotation Term="OData.Description" String="Perform a graceful shutdown followed by a restart of the system."/>
         </Member>
         <Member Name="ForceRestart">
-          <Annotation Term="OData.Description" String="Perform an immediate (non-graceful) shutdown, followed by a restart of the system."/>
+          <Annotation Term="OData.Description" String="Perform an immediate (non-graceful) shutdown, followed by a restart."/>
         </Member>
         <Member Name="Nmi">
           <Annotation Term="OData.Description" String="Generate a Diagnostic Interrupt (usually an NMI on x86 systems) to cease normal operations, perform diagnostic actions and typically halt the system."/>
         </Member>
         <Member Name="ForceOn">
-          <Annotation Term="OData.Description" String="Turn the system on immediately."/>
+          <Annotation Term="OData.Description" String="Turn the unit on immediately."/>
         </Member>
         <Member Name="PushPowerButton">
-          <Annotation Term="OData.Description" String="Simulate the pressing of the physical power button on this system."/>
+          <Annotation Term="OData.Description" String="Simulate the pressing of the physical power button on this unit."/>
         </Member>
         <Member Name="PowerCycle">
-          <Annotation Term="OData.Description" String="Perform a power cycle of the unit or system."/>
+          <Annotation Term="OData.Description" String="Perform a power cycle of the unit."/>
         </Member>
       </EnumType>
 
