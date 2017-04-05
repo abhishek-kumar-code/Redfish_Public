@@ -39,8 +39,8 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | Storage | 1.2.0 | 2017-04-14 | Added "FCP" and "FICON" as enumeration values for "Protocol". |
 | UpdateService | 1.2.0 | 2017-04-14 | Added "HttpPushUriTargets" and "HttpPushUriTargetsBusy" properties and "Targets" optional parameter (for "SimpleUpdate") to allow selection of a particular target device or devices. |
 | Chassis | 1.4.1 | 2017-04-14 | Errata release.  Deprecated the "Unknown" enumeration for "IndicatorLED". |
-|Endpoint | 1.0.2 | Errata release.  Corrected validation pattern on PCI ID-related properties.  Removed unnecessary schema reference inclusions from CSDL schema. |  
-|PCIeFunction | 1.0.2 | Errata release.  Corrected validation pattern on PCI ID-related properties. | 
+|Endpoint | 1.0.2 | 2017-04-14 | Errata release.  Corrected validation pattern on PCI ID-related properties.  Removed unnecessary schema reference inclusions from CSDL schema. |  
+|PCIeFunction | 1.0.2 | 2017-04-14 | Errata release.  Corrected validation pattern on PCI ID-related properties. | 
 | (many) | various | 2017-04-14 | Minor release.  Added Actions and OemActions objects to allow for OEM extensions. |
 | (many) | various | 2017-04-14 | Errata release.  Corrected integer type properties in CSDL schemas to Int64 (from Int16 or Int32) for consistency.  Added missing descriptions in Complex Type definitions.  Added Actions and OemActions objects to allow for OEM extensions. Corrected Links and "Members" properties (Collection schemas) in all schemas to be non-nullable. |
 | HostInterface | 1.0.0 | 2016-12-07 | Intial release. Contains properties for describing and configuring a Redfish Host Interface. |
