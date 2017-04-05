@@ -31,15 +31,14 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | ComputerSystem | 1.4.0 | 2017-04-14 | Added "TotalSystemPersistentMemoryGiB" to "MemorySummary".  Added link to ResourceBlocks. |
 | Drive | 1.2.0 | 2017-04-14 | Added link to Chassis. |
 | EthernetInterface | 1.3.0 | 2017-04-14 | Added link to Chassis. |
-| EventDestination | 1.2.0 | 2017-04-14 | Marked "Context" property as Required instead of RequiredOnCreate.  Service is required to provide the "Context" (may be NULL), but clients are not required to specify a context when creating a new Event Destination. |
 | Memory | 1.2.0 | 2017-04-14 | Added properties for describing and allocating memory regions. |
 | PhysicalContext | 1.1.0 | 2017-04-14 | Added "Memory" as an enumeration value. |
 | Resource | 1.4.0 | 2017-04-14 | Added "PowerCycle" as an enumeration value for "ResetType". Modified descriptions of "ResetType" to remove system-centric text. |
 | ServiceRoot | 1.2.0 | 2017-04-14 | Added link to CompositionService. |
 | Storage | 1.2.0 | 2017-04-14 | Added "FCP" and "FICON" as enumeration values for "Protocol". |
 | UpdateService | 1.2.0 | 2017-04-14 | Added "HttpPushUriTargets" and "HttpPushUriTargetsBusy" properties and "Targets" optional parameter (for "SimpleUpdate") to allow selection of a particular target device or devices. |
-| Chassis | 1.4.1 | 2017-04-14 | Errata release.  Deprecated the "Unknown" enumeration for "IndicatorLED". |
-|Endpoint | 1.0.2 | 2017-04-14 | Errata release.  Corrected validation pattern on PCI ID-related properties.  Removed unnecessary schema reference inclusions from CSDL schema. |  
+|Endpoint | 1.0.2 | 2017-04-14 | Errata release.  Corrected validation pattern on PCI ID-related properties.  Removed unnecessary schema reference inclusions from CSDL schema. |
+| EventDestination | 1.1.3, 1.0.4 | 2017-04-14 | Marked "Context" property as Required instead of RequiredOnCreate.  Service is required to provide the "Context" (may be NULL), but clients are not required to specify a context when creating a new Event Destination. |
 |PCIeFunction | 1.0.2 | 2017-04-14 | Errata release.  Corrected validation pattern on PCI ID-related properties. | 
 | (many) | various | 2017-04-14 | Minor release.  Added Actions and OemActions objects to allow for OEM extensions. |
 | (many) | various | 2017-04-14 | Errata release.  Corrected integer type properties in CSDL schemas to Int64 (from Int16 or Int32) for consistency.  Added missing descriptions in Complex Type definitions.  Added Actions and OemActions objects to allow for OEM extensions. Corrected Links and "Members" properties (Collection schemas) in all schemas to be non-nullable. |
