@@ -2,11 +2,11 @@
 DocTitle: Redfish API Schema Readme
 DocNumber: '8010'
 DocClass: Normative
-DocVersion: '2016.3'
-modified: '2016-12-07'
+DocVersion: '2017.1'
+modified: '2017-04-14'
 status: published
 released: True
-copyright: '2015-2016'
+copyright: '2015-2017'
 ---
 # Foreword
 
@@ -28,7 +28,7 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | ResourceBlock | 1.0.0 | 2017-04-14 | Initial release. Represents a Resource Block, its components, and any affinity to a composed device. |
 | ResourceBlockCollection | 1.0.0 | 2017-04-14 | Initial release. A collection of Resource Blocks. |
 | Chassis | 1.5.0 | 2017-04-14 | Added link to ResourceBlocks. |
-| ComputerSystem | 1.4.0 | Added "TotalSystemPersistentMemoryGiB" to "MemorySummary".  Added link to ResourceBlocks. |
+| ComputerSystem | 1.4.0 | 2017-04-14 | Added "TotalSystemPersistentMemoryGiB" to "MemorySummary".  Added link to ResourceBlocks. |
 | Drive | 1.2.0 | 2017-04-14 | Added link to Chassis. |
 | EthernetInterface | 1.3.0 | 2017-04-14 | Added link to Chassis. |
 | EventDestination | 1.2.0 | 2017-04-14 | Marked "Context" property as Required instead of RequiredOnCreate.  Service is required to provide the "Context" (may be NULL), but clients are not required to specify a context when creating a new Event Destination. |
