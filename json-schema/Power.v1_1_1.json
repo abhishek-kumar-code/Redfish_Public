@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
     "title": "#Power.v1_1_1.Power",
     "$ref": "#/definitions/Power",
     "definitions": {
@@ -21,9 +21,9 @@
             ],
             "enumDescriptions": {
                 "Unknown": "The power supply line input voltage type cannot be determined.",
-                "ACLowLine": "100-127V AC input. Deprecated: Use AC120V.",
-                "ACMidLine": "200-240V AC input. Deprecated: Use AC240V.",
-                "ACHighLine": "277V AC input. Deprecated: Use AC277V.",
+                "ACLowLine": "100-127V AC input.",
+                "ACMidLine": "200-240V AC input.",
+                "ACHighLine": "277V AC input.",
                 "DCNeg48V": "-48V DC input.",
                 "DC380V": "High Voltage DC input (380V).",
                 "AC120V": "AC 120V nominal input.",
@@ -32,6 +32,11 @@
                 "ACandDCWideRange": "Wide range AC or DC input.",
                 "ACWideRange": "Wide range AC input.",
                 "DC240V": "DC 240V nominal input."
+            },
+            "enumDeprecated": {
+                "ACLowLine": "This value has been Deprecated in favor of AC120V.",
+                "ACMidLine": "This value has been Deprecated in favor of AC240V.",
+                "ACHighLine": "This value has been Deprecated in favor of AC277V."
             }
         },
         "PowerControl": {
@@ -207,7 +212,8 @@
                     "longDescription": "The value of this property shall represent the time interval in ms required for the limiting process to react and reduce the power consumption below the limit."
                 }
             },
-            "description": "This object contains power limit status and configuration information for the chassis."
+            "description": "This object contains power limit status and configuration information for the chassis.",
+            "longDescription": "This type shall contain power limit status and configuration information for this chassis."
         },
         "PowerLimitException": {
             "type": "string",
@@ -285,7 +291,9 @@
                     "description": "The average power level over the measurement window (the last IntervalInMin minutes).",
                     "longDescription": "The value of this property shall represent the average power level that occured averaged over the last IntervalInMin minutes."
                 }
-            }
+            },
+            "description": "This type describe the power metrics for a resource.",
+            "longDescription": "This type shall contain power metrics for power readings (interval, min/max/ave power consumption) for a resource."
         },
         "PowerSupplyType": {
             "type": "string",
@@ -549,7 +557,9 @@
                 "Oem": {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem"
                 }
-            }
+            },
+            "description": "This type describes an input range for a power supply.",
+            "longDescription": "This type shall describe an input range that the associated power supply is able to utilize."
         },
         "InputType": {
             "type": "string",

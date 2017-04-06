@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
     "title": "#Bios.v1_0_1.Bios",
     "$ref": "#/definitions/Bios",
     "definitions": {
@@ -87,7 +87,9 @@
                 }
             },
             "additionalProperties": false,
-            "properties": {}
+            "properties": {},
+            "description": "The manufacturer/provider specific list of BIOS attributes.",
+            "longDescription": "This type shall describe BIOS Attribute settings as additional properties in this object, and can be looked up in the Attribute Registry by their AttributeName."
         },
         "Bios": {
             "type": "object",
@@ -177,7 +179,9 @@
                                 }
                             },
                             "additionalProperties": true,
-                            "properties": {}
+                            "properties": {},
+                            "description": "The available OEM specific actions for this resource.",
+                            "longDescription": "This type shall contain any additional OEM actions for this resource."
                         },
                         "#Bios.ChangePassword": {
                             "$ref": "#/definitions/ChangePassword"

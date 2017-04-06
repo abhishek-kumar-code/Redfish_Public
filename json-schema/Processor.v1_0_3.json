@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
     "title": "#Processor.v1_0_3.Processor",
     "$ref": "#/definitions/Processor",
     "definitions": {
@@ -114,7 +114,9 @@
                     "description": "The Microcode Information for this processor.",
                     "longDescription": "This property shall indicate the Microcode Information as provided by the manufacturer of this processor."
                 }
-            }
+            },
+            "description": "This type describes the Identification information for a processor.",
+            "longDescription": "This type shall contain identification information for a processor."
         },
         "ProcessorType": {
             "type": "string",

@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
     "title": "#Redundancy",
     "definitions": {
         "Redundancy": {
@@ -20,10 +20,19 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Redundancy.v1_0_3.json#/definitions/Redundancy"
                 },
                 {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Redundancy.v1_0_4.json#/definitions/Redundancy"
+                },
+                {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Redundancy.v1_1_0.json#/definitions/Redundancy"
                 },
                 {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Redundancy.v1_1_1.json#/definitions/Redundancy"
+                },
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Redundancy.v1_1_2.json#/definitions/Redundancy"
+                },
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Redundancy.v1_2_0.json#/definitions/Redundancy"
                 }
             ]
         }

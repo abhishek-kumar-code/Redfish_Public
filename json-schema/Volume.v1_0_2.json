@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
     "title": "#Volume.v1_0_2.Volume",
     "$ref": "#/definitions/Volume",
     "definitions": {
@@ -84,7 +84,9 @@
                     "readonly": true,
                     "description": "A reference to the task associated with the operation if any."
                 }
-            }
+            },
+            "description": "An operation currently running on this resource.",
+            "longDescription": "This type shall describe a currently running operation on the resource."
         },
         "VolumeType": {
             "type": "string",
@@ -302,7 +304,9 @@
                                 }
                             },
                             "additionalProperties": true,
-                            "properties": {}
+                            "properties": {},
+                            "description": "The available OEM specific actions for this resource.",
+                            "longDescription": "This type shall contain any additional OEM actions for this resource."
                         },
                         "#Volume.Initialize": {
                             "$ref": "#/definitions/Initialize"

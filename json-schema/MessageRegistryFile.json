@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
     "title": "#MessageRegistryFile.MessageRegistryFile",
     "$ref": "#/definitions/MessageRegistryFile",
     "definitions": {
@@ -16,6 +16,12 @@
                 },
                 {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/MessageRegistryFile.v1_0_3.json#/definitions/MessageRegistryFile"
+                },
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/MessageRegistryFile.v1_0_4.json#/definitions/MessageRegistryFile"
+                },
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/MessageRegistryFile.v1_1_0.json#/definitions/MessageRegistryFile"
                 }
             ]
         }
