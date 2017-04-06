@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
     "title": "#Manager.v1_0_3.Manager",
     "$ref": "#/definitions/Manager",
     "definitions": {
@@ -148,7 +148,8 @@
                     "longDescription": "The value of ConnectTypesSupported shall be an array of the enumerations provided here.  SSH shall be included if the Secure Shell (SSH) protocol is supported.  Telnet shall be included if the Telnet protocol is supported.  IPMI shall be included if the IPMI (Serial-over-LAN) protocol is supported."
                 }
             },
-            "description": "Used for describing services like Serial Console, Command Shell or Graphical Console."
+            "description": "Information about a Command Shell service provided by a manager.",
+            "longDescription": "This type shall describe a Command Shell service of a manager."
         },
         "GraphicalConnectTypesSupported": {
             "type": "string",
@@ -201,10 +202,11 @@
                     "longDescription": "The value of ConnectTypesSupported shall be an array of the enumerations provided here.  RDP shall be included if the Remote Desktop (RDP) protocol is supported.  KVMIP shall be included if a vendor-define KVM-IP protocol is supported."
                 }
             },
-            "description": "Used for describing services like Serial Console, Command Shell or Graphical Console."
+            "description": "Information about a Graphical Console service provided by a manager.",
+            "longDescription": "This type shall describe a Graphical Console service of a manager."
         },
         "ManagerService": {
-
+                "$ref": "http://redfish.dmtf.org/schemas/v1/HostedStorageServices.json#/definitions/HostedStorageServices"
         },
         "ManagerType": {
             "type": "string",
@@ -278,7 +280,8 @@
                     "longDescription": "The value of ConnectTypesSupported shall be an array of the enumerations provided here.  SSH shall be included if the Secure Shell (SSH) protocol is supported.  Telnet shall be included if the Telnet protocol is supported.  IPMI shall be included if the IPMI (Serial-over-LAN) protocol is supported."
                 }
             },
-            "description": "Used for describing services like Serial Console, Command Shell or Graphical Console."
+            "description": "Information about a Serial Console service provided by a manager.",
+            "longDescription": "This type shall describe a Serial Console service of a manager."
         },
         "Manager": {
             "type": "object",
@@ -491,7 +494,9 @@
                                 }
                             },
                             "additionalProperties": true,
-                            "properties": {}
+                            "properties": {},
+                            "description": "The available OEM specific actions for this resource.",
+                            "longDescription": "This type shall contain any additional OEM actions for this resource."
                         },
                         "#Manager.ForceFailover": {
                             "$ref": "#/definitions/ForceFailover"

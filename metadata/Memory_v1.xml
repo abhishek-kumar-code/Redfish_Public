@@ -483,7 +483,6 @@
           <Annotation Term="OData.Description" String="Slot number in which Memory is connected."/>
           <Annotation Term="OData.LongDescription" String="Slot number in which Memory is connected."/>
         </Property>
-        <Annotation Term="OData.Description" String="."/>
       </ComplexType>
 
       <EnumType Name="ErrorCorrection">
@@ -503,7 +502,7 @@
 
       <ComplexType Name="RegionSet">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Annotation Term="OData.Description" String="Memory regions information within a Memory entity."/>
+        <Annotation Term="OData.Description" String="Memory region information within a Memory entity."/>
         <Annotation Term="OData.LongDescription" String="This type shall describe the memory region information within a Memory entity."/>
         <Property Name="RegionId" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -532,7 +531,6 @@
           <Annotation Term="OData.Description" String="State of the passphrase for this region."/>
           <Annotation Term="OData.LongDescription" String="State of the passphrase for this region."/>
         </Property>
-        <Annotation Term="OData.Description" String="Memory region information."/>
       </ComplexType>
 
       <EnumType Name="MemoryClassification">
@@ -586,7 +584,6 @@
           <Annotation Term="OData.LongDescription" String="Average power budget in milli watts."/>
           <Annotation Term="Measures.Unit" String="mW"/>
         </Property>
-        <Annotation Term="OData.Description" String="."/>
       </ComplexType>
 
       <ComplexType Name="Actions">

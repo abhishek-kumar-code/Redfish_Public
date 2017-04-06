@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
     "title": "#Storage.v1_0_0.Storage",
     "$ref": "#/definitions/Storage",
     "definitions": {
@@ -46,6 +46,8 @@
                 "FC",
                 "iSCSI",
                 "FCoE",
+                "FCP",
+                "FICON",
                 "NVMeOverFabrics",
                 "SMB",
                 "NFSv3",
@@ -66,6 +68,8 @@
                 "FC": "Fibre Channel.",
                 "iSCSI": "Internet SCSI.",
                 "FCoE": "Fibre Channel over Ethernet.",
+                "FCP": "Fibre Channel Protocol for SCSI.",
+                "FICON": "FIbre CONnection (FICON).",
                 "NVMeOverFabrics": "NVMe over Fabrics.",
                 "SMB": "Server Message Block (aka CIFS Common Internet File System).",
                 "NFSv3": "Network File System version 3.",
@@ -86,6 +90,8 @@
                 "FC": "This value shall mean that this device conforms to the T11 Fibre Channel Physical and Signaling Interface Specification.",
                 "iSCSI": "This value shall mean that this device conforms to the IETF Internet Small Computer Systems Interface (iSCSI) Specification.",
                 "FCoE": "This value shall mean that this device conforms to the T11 FC-BB-5 Specification.",
+                "FCP": "This enumeration literal shall indicate the INCITS 481: Information technology - Fibre Channel Protocol for SCSI.  The Fibre Channel SCSI Protocol.",
+                "FICON": "This enumeration literal shall indicate the (ANSI FC-SB-3 Single-Byte Command Code Sets-3 Mapping Protocol for the Fibre Channel(FC) protocol.  FICON (FIbre CONnection) is the IBM proprietary name for this protocol. ",
                 "NVMeOverFabrics": "This value shall mean that this device conforms to the NVM Express over Fabrics Specification.",
                 "SMB": "This value shall mean that this device conforms to the Microsoft Server Message Block Protocol.",
                 "NFSv3": "This value shall mean that this device conforms to the Network File System protocol as defined by RFC 1813.",
@@ -217,7 +223,9 @@
                                 }
                             },
                             "additionalProperties": true,
-                            "properties": {}
+                            "properties": {},
+                            "description": "The available OEM specific actions for this resource.",
+                            "longDescription": "This type shall contain any additional OEM actions for this resource."
                         },
                         "#Storage.SetEncryptionKey": {
                             "$ref": "#/definitions/SetEncryptionKey"

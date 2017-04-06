@@ -569,7 +569,11 @@ function checkReferencesUsed(err, csdl) {
     }
 
     if(nameSpaceAliases.length > 0) {
-        throw new Error('Namespaces '+nameSpaceAliases.toString()+' are unused!');
+        // TODO: This is a workaround until we process annotations on members
+        // within enums (some use Redfish.Deprecated)
+        if(nameSpaceAliases.toString() !== 'Redfish') {
+            throw new Error('Namespaces '+nameSpaceAliases.toString()+' are unused!');
+        }
     }
 }
 

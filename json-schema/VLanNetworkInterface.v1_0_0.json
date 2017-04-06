@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
     "title": "#VLanNetworkInterface.v1_0_0.VLanNetworkInterface",
     "$ref": "#/definitions/VLanNetworkInterface",
     "definitions": {
@@ -42,7 +42,9 @@
             "requiredOnCreate": [
                 "VLANEnable",
                 "VLANId"
-            ]
+            ],
+            "description": "This type describes the attributes of a Virtual LAN.",
+            "longDescription": "This type shall contain any attributes of a Virtual LAN."
         },
         "VLANId": {
             "type": "number",
@@ -122,7 +124,8 @@
                 "VLANEnable",
                 "VLANId"
             ],
-            "description": "This resource contains information for a Virtual LAN (VLAN) network instance available on a manager, system or other device."
+            "description": "This resource describes the attributes of a Virtual LAN.",
+            "longDescription": "This resource shall contain any attributes of a Virtual LAN."
         }
     },
     "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
