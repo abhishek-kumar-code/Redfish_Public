@@ -2,12 +2,12 @@
 DocTitle: Redfish Scalable Platforms Management API Specification
 DocNumber: '0266'
 DocClass: Normative
-DocVersion: '1.1.0'
-modified: '2016-12-07'
-SupersedesVersion: '1.0.5'
+DocVersion: '1.2.0'
+modified: '2017-4-14'
+SupersedesVersion: '1.1.0'
 status: published
 released: true
-copyright: '2014-2016'
+copyright: '2014-2017'
 ---
 
 # Foreword
@@ -2696,6 +2696,12 @@ OData-Version: 4.0
 
 | Version | Date     | Description     |
 | ---     | ---      | ---             |
+| 1.2.0   | 2017-4-14| Added support for the Redfish Composability Service. |
+|         |          | Clarified Service handling of the Accept-Encoding header in a request. |
+|         |          | Improved consistency and formatting of example requests and responses throughout. |
+|         |          | Corrected usage of the "@odata.type" property in response examples. |
+|         |          | Clarified usage of the "Required" schema annotation. |
+|         |          | Clarified usage of SubordinateOverrides in the Privilege Registry. |
 | 1.1.0   | 2016-12-9| Added Redfish Service Operation to Privilege Mapping clause. This functionality allows a Service to present a resource or even property-level mapping of HTTP operations to account Roles and Privileges. |
 |         |          | Added references to the Redfish Host Interface Specification (DSP0270). |
 | 1.0.5   | 2016-12-9| Errata release.  Various typographical errors. |
