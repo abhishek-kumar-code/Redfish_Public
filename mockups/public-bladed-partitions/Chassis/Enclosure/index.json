@@ -54,7 +54,7 @@
     },
     "Oem": {
         "Contoso": {
-            "@odata.type": "http://Contoso.com/Schema#Contoso.Chassis",
+            "@odata.type": "#Contoso.Chassis",
             "NodeControllers@odata.count": 2,
             "NodeControllers": [{
                     "Name": "NodeController 0",
