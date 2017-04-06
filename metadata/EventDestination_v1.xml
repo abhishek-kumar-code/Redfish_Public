@@ -93,7 +93,7 @@
 
       <ComplexType Name="HttpHeaderProperty">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Annotation Term="OData.Description" String="An HTTP Header to send to an EventDesination."/>
+        <Annotation Term="OData.Description" String="The value of the HTTP header is the property value.  The header name is the property name."/>
         <Annotation Term="OData.LongDescription" String="This type shall a names and value of an HTTP header to be included with every event POST to the Event Destination."/>
         <Annotation Term="Redfish.DynamicPropertyPatterns">
           <Collection>
@@ -103,7 +103,6 @@
             </Record>
           </Collection>
         </Annotation>
-        <Annotation Term="OData.Description" String="The value of the HTTP header is the property value.  The header name is the property name."/>
       </ComplexType>
 
     </Schema>

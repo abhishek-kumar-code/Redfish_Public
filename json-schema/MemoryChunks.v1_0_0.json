@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
     "title": "#MemoryChunks.v1_0_0.MemoryChunks",
     "$ref": "#/definitions/MemoryChunks",
     "definitions": {
@@ -75,7 +75,9 @@
                     "description": "Describes a memory device of the interleave set.",
                     "longDescription": "The value of this property shall be the memory device to which these settings apply."
                 }
-            }
+            },
+            "description": "This an interleave set for a memory chunk.",
+            "longDescription": "This type shall describe an interleave set of which the memory chunk is a part."
         },
         "MemoryChunks": {
             "type": "object",

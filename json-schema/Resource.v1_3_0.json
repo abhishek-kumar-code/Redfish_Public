@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
     "title": "#Resource.v1_3_0",
     "definitions": {
         "ReferenceableMember": {
@@ -200,7 +200,9 @@
                     "longDescription": "This property shall represent the format of the DurableName property."
                 }
             },
-            "readonly": true
+            "readonly": true,
+            "description": "This type describes any additional identifiers for a resource.",
+            "longDescription": "This type shall contain any additional identifiers of a resource."
         },
         "IndicatorLED": {
             "type": "string",

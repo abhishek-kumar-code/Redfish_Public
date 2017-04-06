@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
     "title": "#PCIeFunction.v1_0_1.PCIeFunction",
     "$ref": "#/definitions/PCIeFunction",
     "definitions": {
@@ -139,7 +139,7 @@
                         "string",
                         "null"
                     ],
-                    "pattern": "/0[xX](([a-fA-F]|[0-9]){2}){2}",
+                    "pattern": "^0[xX](([a-fA-F]|[0-9]){2}){2}$",
                     "readonly": true,
                     "description": "The Device ID of this PCIe function.",
                     "longDescription": "The value of this property shall be the PCI Device ID of the PCIe device function."
@@ -149,7 +149,7 @@
                         "string",
                         "null"
                     ],
-                    "pattern": "/0[xX](([a-fA-F]|[0-9]){2}){2}",
+                    "pattern": "^0[xX](([a-fA-F]|[0-9]){2}){2}$",
                     "readonly": true,
                     "description": "The Vendor ID of this PCIe function.",
                     "longDescription": "The value of this property shall be the PCI Vendor ID of the PCIe device function."
@@ -159,7 +159,7 @@
                         "string",
                         "null"
                     ],
-                    "pattern": "/0[xX](([a-fA-F]|[0-9]){2}){3}",
+                    "pattern": "^0[xX](([a-fA-F]|[0-9]){2}){3}$",
                     "readonly": true,
                     "description": "The Class Code of this PCIe function.",
                     "longDescription": "The value of this property shall be the PCI Class Code of the PCIe device function."
@@ -169,7 +169,7 @@
                         "string",
                         "null"
                     ],
-                    "pattern": "/0[xX](([a-fA-F]|[0-9]){2}){1}",
+                    "pattern": "^0[xX](([a-fA-F]|[0-9]){2}){1}$",
                     "readonly": true,
                     "description": "The Revision ID of this PCIe function.",
                     "longDescription": "The value of this property shall be the PCI Revision ID of the PCIe device function."
@@ -179,7 +179,7 @@
                         "string",
                         "null"
                     ],
-                    "pattern": "/0[xX](([a-fA-F]|[0-9]){2}){2}",
+                    "pattern": "^0[xX](([a-fA-F]|[0-9]){2}){2}$",
                     "readonly": true,
                     "description": "The Subsystem ID of this PCIe function.",
                     "longDescription": "The value of this property shall be the PCI Subsystem ID of the PCIe device function."
@@ -189,7 +189,7 @@
                         "string",
                         "null"
                     ],
-                    "pattern": "/0[xX](([a-fA-F]|[0-9]){2}){2}",
+                    "pattern": "^0[xX](([a-fA-F]|[0-9]){2}){2}$",
                     "readonly": true,
                     "description": "The Subsystem Vendor ID of this PCIe function.",
                     "longDescription": "The value of this property shall be the PCI Subsystem Vendor ID of the PCIe device function."
@@ -280,6 +280,7 @@
                             "longDescription": "The value of this property shall be a reference to the resource that this function is a part of and shall reference a resource of type PCIeDevice."
                         }
                     },
+                    "longDescription": "This type, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource.",
                     "description": "The links object contains the links to other resources that are related to this resource."
                 }
             },
