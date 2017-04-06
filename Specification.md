@@ -1242,7 +1242,7 @@ Error responses are defined by an extended error resource, represented as a sing
         "message": "A general error has occurred. See ExtendedInfo for more information.",
         "@Message.ExtendedInfo": [
             {
-                "@odata.type" : "/redfish/v1/$metadata#Message.v1_0_0.Message",
+                "@odata.type" : "#Message.v1_0_0.Message",
                 "MessageId": "Base.1.0.PropertyValueNotInList",
                 "RelatedProperties": [
                     "#/IndicatorLED"
@@ -1256,7 +1256,7 @@ Error responses are defined by an extended error resource, represented as a sing
                 "Resolution": "Remove the property from the request body and resubmit the request if the operation failed"
             },
             {
-                "@odata.type" : "/redfish/v1/$metadata#Message.v1_0_0.Message",
+                "@odata.type" : "#Message.v1_0_0.Message",
                 "MessageId": "Base.1.0.PropertyNotWriteable",
                 "RelatedProperties": [
                     "#/SKU"
@@ -1778,7 +1778,7 @@ The next fragment shows an example of how the previous schema and the "AnvilType
 {
     "Oem": {
         "Contoso": {
-            "@odata.type": "http://Contoso.com/schemas/extensions.v1_2_0#contoso.AnvilType1",
+            "@odata.type": "#Contoso.v1_2_0.AnvilType1",
             "slogan": "Contoso anvils never fail",
             "disclaimer": "* Most of the time"
         }
@@ -1813,23 +1813,23 @@ The following fragment presents some examples of naming and use of the Oem prope
 {
     "Oem": {
         "Contoso": {
-            "@odata.type": "http://contoso.com/schemas/extensions.v1_2_1#contoso.AnvilTypes1",
+            "@odata.type": "#Contoso.v1_2_1.AnvilTypes1",
             "slogan": "Contoso anvils never fail",
             "disclaimer": "* Most of the time"
         },
         "Contoso_biz": {
-            "@odata.type": "http://contoso.biz/schemas/extension1_1#RelatedSpeed",
+            "@odata.type": "#ContosoBiz.v1_1.RelatedSpeed",
             "speed" : "ludicrous"
         },
         "EID_412_ASB_123": {
-            "@odata.type": "http://AnotherStandardsBody/schemas.v1_0_1#powerInfoExt",
+            "@odata.type": "#OtherSchema.v1_0_1.powerInfoExt",
             "readingInfo": {
                 "readingAccuracy": "5",
                 "readingInterval": "20"
             }
         },
         "Contoso_customers_customerA": {
-            "@odata.type" : "http://slingShots.customerA.com/catExt.2015#slingPower",
+            "@odata.type" : "#ContosoCustomer.v2015.slingPower",
             "AvailableTargets" : [ "rabbit", "duck", "runner" ],
             "launchPowerOptions" : [ "low", "medium", "eliminate" ],
             "powerSetting" : "eliminate",
