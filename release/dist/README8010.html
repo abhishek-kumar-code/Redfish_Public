@@ -12,8 +12,8 @@
   <div class="preamble">
     <div class="logo"></div>
     <p>Document Identifier: <span class="dsp">DSP8010</span></p>
-    <p>Date: 2016-12-07</p>
-    <p>Version: <span class="version">2016.3</span></p>
+    <p>Date: 2017-04-14</p>
+    <p>Version: <span class="version">2017.1</span></p>
     
   </div>
   <h1 class="title">Redfish API Schema Readme</h1>
@@ -31,7 +31,7 @@
   </div>
   <div class="copyright">
     <p>Copyright Notice</p>
-    <p>Copyright &copy; 2015-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.
+    <p>Copyright &copy; 2015-2017 Distributed Management Task Force, Inc. (DMTF). All rights reserved.
   </div>
   <p>DMTF is a not-for-profit association of industry members dedicated to promoting enterprise and systems management and interoperability. Members and non-members may reproduce DMTF specifications and documents, provided that correct attribution is given. As DMTF specifications may be revised from time to time, the particular version and release date should always be noted.</p>
   <p>Implementation of certain elements of this standard or proposed standard may be subject to third party patent rights, including provisional patent rights (herein "patent rights"). DMTF makes no representations to users of the standard as to the existence of such rights, and is not responsible to recognize, disclose, or identify any or all such third party patent right, owners or claimants, nor for any incomplete or inaccurate identification or disclosure of such rights, owners or claimants. DMTF shall have no liability to any party, in any manner or circumstance, under any legal theory whatsoever, for failure to recognize, disclose, or identify any such third party patent rights, or for such party’s reliance on the standard or incorporation thereof in its product, protocols or testing procedures. DMTF shall have no liability to any party implementing such standard, whether such implementation is foreseeable or not, nor to any patent owner or claimant, and shall have no liability or responsibility for costs or losses incurred if a standard is withdrawn or modified after publication, and shall be indemnified and held harmless by any party implementing the standard from any and all claims of infringement by a patent owner for such implementations.</p>
@@ -59,6 +59,120 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>CollectionCapabilities</td>
+<td>1.0.0</td>
+<td>2017-04-14</td>
+<td>Initial release. Describes the capabilities of a collection in terms of how a client is able to create new resources within the collection.</td>
+</tr>
+<tr>
+<td>CompositionService</td>
+<td>1.0.0</td>
+<td>2017-04-14</td>
+<td>Initial release. Describes a Composition Service used to create systems from available resources or Resource Blocks.  It includes the properties of the Service as well as links to the actual resources available for composition.</td>
+</tr>
+<tr>
+<td>ResourceBlock</td>
+<td>1.0.0</td>
+<td>2017-04-14</td>
+<td>Initial release. Represents a Resource Block, its components, and any affinity to a composed device.</td>
+</tr>
+<tr>
+<td>ResourceBlockCollection</td>
+<td>1.0.0</td>
+<td>2017-04-14</td>
+<td>Initial release. A collection of Resource Blocks.</td>
+</tr>
+<tr>
+<td>Chassis</td>
+<td>1.5.0</td>
+<td>2017-04-14</td>
+<td>Added link to ResourceBlocks.</td>
+</tr>
+<tr>
+<td>ComputerSystem</td>
+<td>1.4.0</td>
+<td>2017-04-14</td>
+<td>Added "TotalSystemPersistentMemoryGiB" to "MemorySummary".  Added link to ResourceBlocks.</td>
+</tr>
+<tr>
+<td>Drive</td>
+<td>1.2.0</td>
+<td>2017-04-14</td>
+<td>Added link to Chassis.</td>
+</tr>
+<tr>
+<td>EthernetInterface</td>
+<td>1.3.0</td>
+<td>2017-04-14</td>
+<td>Added link to Chassis.</td>
+</tr>
+<tr>
+<td>Memory</td>
+<td>1.2.0</td>
+<td>2017-04-14</td>
+<td>Added properties for describing and allocating memory regions.</td>
+</tr>
+<tr>
+<td>PhysicalContext</td>
+<td>1.1.0</td>
+<td>2017-04-14</td>
+<td>Added "Memory" as an enumeration value.</td>
+</tr>
+<tr>
+<td>Resource</td>
+<td>1.4.0</td>
+<td>2017-04-14</td>
+<td>Added "PowerCycle" as an enumeration value for "ResetType". Modified descriptions of "ResetType" to remove system-centric text.</td>
+</tr>
+<tr>
+<td>ServiceRoot</td>
+<td>1.2.0</td>
+<td>2017-04-14</td>
+<td>Added link to CompositionService.</td>
+</tr>
+<tr>
+<td>Storage</td>
+<td>1.2.0</td>
+<td>2017-04-14</td>
+<td>Added "FCP" and "FICON" as enumeration values for "Protocol".</td>
+</tr>
+<tr>
+<td>UpdateService</td>
+<td>1.2.0</td>
+<td>2017-04-14</td>
+<td>Added "HttpPushUriTargets" and "HttpPushUriTargetsBusy" properties and "Targets" optional parameter (for "SimpleUpdate") to allow selection of a particular target device or devices.</td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td>1.0.2</td>
+<td>2017-04-14</td>
+<td>Errata release.  Corrected validation pattern on PCI ID-related properties.  Removed unnecessary schema reference inclusions from CSDL schema.</td>
+</tr>
+<tr>
+<td>EventDestination</td>
+<td>1.1.3, 1.0.4</td>
+<td>2017-04-14</td>
+<td>Marked "Context" property as Required instead of RequiredOnCreate.  Service is required to provide the "Context" (may be NULL), but clients are not required to specify a context when creating a new Event Destination.</td>
+</tr>
+<tr>
+<td>PCIeFunction</td>
+<td>1.0.2</td>
+<td>2017-04-14</td>
+<td>Errata release.  Corrected validation pattern on PCI ID-related properties.</td>
+</tr>
+<tr>
+<td>(many)</td>
+<td>various</td>
+<td>2017-04-14</td>
+<td>Minor release.  Added Actions and OemActions objects to allow for OEM extensions.</td>
+</tr>
+<tr>
+<td>(many)</td>
+<td>various</td>
+<td>2017-04-14</td>
+<td>Errata release.  Corrected integer type properties in CSDL schemas to Int64 (from Int16 or Int32) for consistency.  Added missing descriptions in Complex Type definitions.  Added Actions and OemActions objects to allow for OEM extensions. Corrected Links and "Members" properties (Collection schemas) in all schemas to be non-nullable.</td>
+</tr>
 <tr>
 <td>HostInterface</td>
 <td>1.0.0</td>
