@@ -96,7 +96,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the system ID that identifies the computer system model that this registry applies to."/>
           <Annotation Term="Validation.Pattern" String="^[A-Za-z0-9]+$"/>
         </Property>
-        <Property Name="ProductName" Type="Edm.String">
+        <Property Name="FirmwareVersion" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Firmware version."/>
           <Annotation Term="OData.LongDescription" String="The version of the component firmware image that this registry applies to."/>
