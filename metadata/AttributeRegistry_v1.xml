@@ -521,7 +521,7 @@
         <Property Name="Actions" Type="AttributeRegistry.v1_1_0.Actions" Nullable="false">
           <Annotation Term="OData.Description" String="The available actions for this resource."/>
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
-        </Property>        
+        </Property>
       </EntityType>
 
       <ComplexType Name="Actions">
