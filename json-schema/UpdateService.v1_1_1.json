@@ -197,5 +197,5 @@
             "longDescription": "This resource shall be used to represent an Update Service for a Redfish implementation. It represents the properties that affect the service itself."
         }
     },
-    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
+    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }
