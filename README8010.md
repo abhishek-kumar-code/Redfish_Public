@@ -33,7 +33,7 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | EthernetInterface | 1.3.0 | 2017-04-14 | Added link to Chassis. |
 | Memory | 1.2.0 | 2017-04-14 | Added properties for describing and allocating memory regions. |
 | PhysicalContext | 1.1.0 | 2017-04-14 | Added "Memory" as an enumeration value. |
-| Resource | 1.4.0 | 2017-04-14 | Added "PowerCycle" as an enumeration value for "ResetType". Modified descriptions of "ResetType" to remove system-centric text. |
+| Resource | 1.4.0 | 2017-04-14 | Added "PowerCycle" as an enumeration value for "ResetType". Modified descriptions of "ResetType" to remove system-centric text. Corrected the validation pattern for properties using the UUID format (only JSON Schema versions). |
 | ServiceRoot | 1.2.0 | 2017-04-14 | Added link to CompositionService. |
 | Storage | 1.2.0 | 2017-04-14 | Added "FCP" and "FICON" as enumeration values for "Protocol". |
 | UpdateService | 1.2.0 | 2017-04-14 | Added "HttpPushUriTargets" and "HttpPushUriTargetsBusy" properties and "Targets" optional parameter (for "SimpleUpdate") to allow selection of a particular target device or devices. |
