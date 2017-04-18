@@ -21,5 +21,8 @@
     },
     "Roles": {
         "@odata.id": "/redfish/v1/AccountService/Roles"
+    },
+    "ExternalAccountProviders": {
+        "@odata.id": "/redfish/v1/AccountService/ExternalAccountProviders"
     }
 }
