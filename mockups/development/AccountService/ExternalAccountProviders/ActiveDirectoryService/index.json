@@ -1,0 +1,38 @@
+{
+    "@Redfish.Copyright":"Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#ExternalAccountProvider.ExternalAccountProvider",
+    "@odata.id": "/redfish/v1/AccountService/ExternalAccountProviders/ExternalRedfishService",
+    "@odata.type": "#ExternalAccountProvider.v1_0_0.ExternalAccountProvider",
+    "Id": "ActiveDirectoryService",
+    "Name": "Remote Active Directory Service",
+    "Description": "Remote AD Service providing additional Accounts to this Redfish Service",
+    "Type": "ActiveDirectoryService",
+    "ServiceAddresses": [
+        "ad1.example.org",
+        "ad2.example.org",
+        null,
+        null
+    ],
+    "Authentication": {
+        "AuthenticationType": "Certificate",
+        "Certificate": null
+    },
+    "RemoteRoleMapping": [
+        {
+            "RemoteGroup": "Administrators",
+            "LocalRole": "Admin"
+        },
+        {
+            "RemoteUser": "DOMAIN\Bob",
+            "LocalRole": "Operator"
+        },
+        {
+            "RemoteGroup": "PowerUsers",
+            "LocalRole": "Operator"
+        },
+        {
+            "RemoteGroup": "Everybody",
+            "LocalRole": "ReadOnlyUser"
+        }
+    ]
+}

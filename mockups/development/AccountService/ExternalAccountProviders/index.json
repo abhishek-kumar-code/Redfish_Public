@@ -1,0 +1,19 @@
+{
+    "@Redfish.Copyright": "Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#ExternalAccountProviderCollection.ExternalAccountProviderCollection",
+    "@odata.type": "#ExternalAccountProviderCollection.ExternalAccountProviderCollection",
+    "@odata.id": "/redfish/v1/AccountService/ExternalAccountProviders",
+    "Name": "External Account Provider Collection",
+    "Members@odata.count": 3,
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/AccountService/ExternalAccountProviders/ExternalRedfishService"
+        },
+        {
+            "@odata.id": "/redfish/v1/AccountService/ExternalAccountProviders/LDAPService"
+        },
+        {
+            "@odata.id": "/redfish/v1/AccountService/ExternalAccountProviders/ActiveDirectoryService"
+        }}
+    ]
+}
