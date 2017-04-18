@@ -23,7 +23,7 @@
             "LocalRole": "Admin"
         },
         {
-            "RemoteUser": "DOMAIN\Bob",
+            "RemoteUser": "DOMAIN\\Bob",
             "LocalRole": "Operator"
         },
         {

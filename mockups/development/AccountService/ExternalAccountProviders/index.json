@@ -14,6 +14,6 @@
         },
         {
             "@odata.id": "/redfish/v1/AccountService/ExternalAccountProviders/ActiveDirectoryService"
-        }}
+        }
     ]
 }
