@@ -185,10 +185,11 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AccountService.v1_3_0">
       <EntityType Name="AccountService" BaseType="AccountService.v1_2_0.AccountService">
-        <Property Name="ExternalAccountProviders" Type="ExternalAccountProviderCollection.ExternalAccountProviderCollection" Nullable="false">
+        <NavigationProperty Name="ExternalAccountProviders" Type="ExternalAccountProviderCollection.ExternalAccountProviderCollection" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The external account providers this AccountService is using."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the external account providers this AccountService is using."/>
-        </Property>
+        </NavigationProperty>
       </EntityType>
     </Schema>
 
