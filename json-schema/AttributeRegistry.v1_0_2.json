@@ -690,15 +690,6 @@
                     "readonly": true,
                     "description": "The system ID of the system.",
                     "longDescription": "The value of this property shall be the system ID that identifies the computer system model that this registry applies to."
-                },
-                "ProductName": {
-                    "type": [
-                        "string",
-                        "null"
-                    ],
-                    "readonly": true,
-                    "description": "Firmware version.",
-                    "longDescription": "The version of the component firmware image that this registry applies to."
                 }
             },
             "description": "A system supported by this attribute registry.",
@@ -793,5 +784,5 @@
             "longDescription": "This resource shall be used to represent an Attribute registry for a Redfish implementation."
         }
     },
-    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
+    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }
