@@ -193,6 +193,55 @@ _So this is all supported, but there are some naming conventions that need to be
 
 This section documents properties that are either common throughout the Redfish Schema, or are defined in the Resource.1.x.x or odata.4.x.x schema files.
 
+## Status
+
+The `Status` property is common to all Redfish schema. 
+
+|     |     |     |
+| --- | --- | --- |
+| **Health** | string<br><br>*read-only* | This represents the health state of this resource in the absence of its dependent resources. *See Property Details, below, for more information about this property.* |
+| **HealthRollup** | string<br><br>*read-only* | This represents the overall health state from the view of this resource. *See Property Details, below, for more information about this property.* |
+| **Oem** {} | object<br><br>*read-write* | Oem extension object. |
+| **State** | string<br><br>*read-only* | This indicates the known state of the resource, such as if it is enabled. *See Property Details, below, for more information about this property.* |
+
+#include_fragment example_fragments/Status.json
+
+### Property Details
+
+#### Health:
+
+| string | Description |
+| --- | --- |
+| Critical | A critical condition exists that requires immediate attention. |
+| OK | Normal. |
+| Warning | A condition exists that requires attention. |
+
+#### HealthRollup:
+
+| string | Description |
+| --- | --- |
+| Critical | A critical condition exists that requires immediate attention. |
+| OK | Normal. |
+| Warning | A condition exists that requires attention. |
+
+#### State:
+
+| string | Description |
+| --- | --- |
+| Absent | This function or resource is not present or not detected. |
+| Deferring | The element will not process any commands but will queue new requests. |
+| Disabled | This function or resource has been disabled. |
+| Enabled | This function or resource has been enabled. |
+| InTest | This function or resource is undergoing testing. |
+| Quiesced | The element is enabled but only processes a restricted set of commands. |
+| StandbyOffline | This function or resource is enabled, but awaiting an external action to activate it. |
+| StandbySpare | This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it. |
+| Starting | This function or resource is starting. |
+| UnavailableOffline | This function or resource is present but cannot be used. |
+| Updating | The element is updating and may be unavailable or degraded. |
+
+
+
 ## @odata.context
 
 
