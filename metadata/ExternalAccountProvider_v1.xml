@@ -151,6 +151,12 @@
         <Member Name="UsernameAndCertificate">
           <Annotation Term="OData.Description" String="Username and certificate or cyrptographic key combination."/>
         </Member>
+        <Member Name="UsernamePasswordAndCertificate">
+          <Annotation Term="OData.Description" String="Username, password, and certificate or cyrptographic key combination."/>
+        </Member>
+        <Member Name="TokenAndCertificate">
+          <Annotation Term="OData.Description" String="An opaque authentication token and certificate or cyrptographic key combination."/>
+        </Member>
         <Member Name="Oem">
           <Annotation Term="OData.Description" String="An OEM specific authentication mechanism."/>
         </Member>
