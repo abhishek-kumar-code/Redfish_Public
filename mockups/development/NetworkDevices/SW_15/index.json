@@ -33,8 +33,11 @@
     },
    	"Services": [
 		{
-            "ietf_ntp":  {
-                "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_ntp"
+            "ntp":  {
+                "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_system/system/ntp"
+            },
+            "dns_resolver":  {
+                "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_system/system/dns_resolver"
             }
         }
 	],
