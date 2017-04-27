@@ -77,7 +77,54 @@ This document includes the following sections:
 <!---
 [//]: #OUTLINE:-  Purpose of the document
 --->
-This document is useful to people who want to understand how to take advantage of the Redfish API. This includes application developers who want to create client-side software to communicate with a Redfish service.
+This document is useful to people who want to understand how to use the Redfish API. This includes application developers who want to create client-side software to communicate with a Redfish service, and other consumers of the API.
+
+## Why REST, JSON and OData?
+
+One of the goals of the Redfish standard is to define an API that is equally usable by applications, client libraries and scripts. Another goal is to define data objects that are schema-backed but human-readable. The use of RESTful APIs, and JSON and OData formats support these goals.
+
+JSON is a widely-used data format for transporting data that is compatible with RESTful applications. It is inherently human readable, more concise than XML, and supported by many modern programming languages.
+
+Using JSON also carries an advantage in embedded manageability environments because most Baseboard Management Controllers (BMCs) already support a web server and managing a server through a browser (typically through a Javascript-driven interface). By using JSON, the data from a Redfish service is viewed directly in the browser, ensuring the data and the programmatic interface is uniform in semantics and value.
+
+Similarly, while JSON provides an easy-to read representation, semantics of common properties such as id, type, links, etc., are imposed through naming conventions that can vary from service to service.
+
+OData defines a set of common RESTful conventions, which provides for interoperability between APIs. Redfish adopts common OData conventions for describing schema, URL conventions, and naming, as well as the structure of common properties in a JSON payload. This not only encapsulates best practices for RESTful APIs which can be used in traditional and scalable environments, but further enables Redfish services to be consumed by a growing ecosystem of generic client libraries, applications, and tools.
+
+**Example**
+
+For example, the following code snippet code could be used to retrieve the serial number from a server:
+
+```Python
+rawData = urllib.urlopen('https://192.168.1.135/redfish/v1/Systems/1')
+jsonData = json.loads(rawData)
+print ('Serial Number: ' + jsonData['SerialNumber'])
+```
+
+A successful request that uses the code snippet above could produce output similar to the following:
+
+```bash
+Serial Number: 1A87CA442K
+```
+
+  * (This example uses a Redfish ComputerSystem resource, Authentication not shown.)
+
+## Examples Of Common Tasks
+
+The following examples show API calls that you could use to perform some common tasks.
+
+### Reboot/Power cycle the server
+
+### Change boot order/device
+
+### Set power thresholds
+
+### Retrieve “IPMI class” data
+
+The following example shows the retrieval of the health state of a server.
+
+• Basic server identification and asset info
+• Health state
 
 
 ### Where can I find more information?
@@ -99,7 +146,26 @@ SPMF (the working group that maintains the Redfish standard)
 
 # Common Redfish Properties
 
-This section describes the properties (data fields) common to most Redfish schema. Most responses returned by a Redfish service will contain these properties.
+This section describes the properties (schema elements or data fields) common to all Redfish schema. Response payloads returned by a Redfish service will contain these properties.
+
+## Id
+
+The `Id` property is common to all Redfish schema.
+
+The Id property of a resource uniquely identifies the resource within the Resource Collection that contains it. The value of Id shall be unique across a Resource Collection.
+
+## Name
+
+The `Name` property is common to all Redfish schema.
+
+The Name property is used to convey a human readable moniker for a resource. The type of the Name property shall be string. The value of Name is NOT required to be unique across resource instances within a Resource Collection.
+
+## Description
+
+The `Description` property is common to all Redfish schema.
+
+The Description property is used to convey a human readable description of the resource. The type of the Description property is string.
+
 
 ## Status
 
@@ -148,18 +214,38 @@ The `Status` property is common to all Redfish schema.
 | UnavailableOffline | This function or resource is present but cannot be used. |
 | Updating | The element is updating and may be unavailable or degraded. |
 
-## ID
 
+## Links
+
+The Links property represents the links associated with the resource, as defined by that resources schema definition. All associated reference properties defined for a resource shall be nested under the links property. All directly (subordinate) referenced properties defined for a resource shall be in the root of the resource.
+
+
+## Members
+
+The Members property of a Resource Collection identifies the members of the collection.
+
+## RelatedItem
+
+The RelatedItem property represents links to a resource (or part of a resource) as defined by that resources schema definition. This is not intended to be a strong linking methodology like other references. Instead it is used to show a relationship between elements or sub-elements in disparate parts of the service. For example, `Fans` may be in one area of the implementation and processors in another, RelatedItem can be used to inform the client that one is related to the other (in this case, the Fan is cooling the processor).
+
+
+## Actions
+
+The Actions property contains the actions supported by a resource.
+
+## OEM
+
+The OEM property is used for OEM extensions as defined in Schema Extensibility.
 
 
 ## @odata.context
 
 
 
-The @odata.context is used for a few different things:
+The @odata.context is used to:
 
-  -	First and foremost, it provides the location of the metadata that describes the payload.
-  -	It provides a root URL for resolving relative references
+  -	provide the location of the metadata that describes the payload
+  -	provide a root URL for resolving relative references
 
 The structure of the @odata.context is the url to a metadata document with a fragment describing the data (typically rooted at the top-level singleton or collection).
 
@@ -176,6 +262,105 @@ Initially we tried only to reference the ServiceRoot metadata in the root $metad
 ## Status
  - Full details and enum table for the common status block
  - State, Health, HealthRollUp
+
+
+
+# Working With Resource Collections
+
+In the Redfish protocol a URI can represent a collection of similar resources. A Resource Collection can represent a group of Systems, Chassis, Managers, or a group of other kinds of resources. For example:
+
+ - /redfish/v1/Systems
+ - /redfish/v1/Chassis
+ - /redfish/v1/Managers
+ - etc.
+
+The Members of a Resource Collection are returned as a JSON array, where each element of the array is a JSON object. The name of the property representing the members of the collection is `Members`.
+
+
+## Operations Related To Resource Collections
+
+The following are some of the common operations associated with collections:
+
+### GET a Resource Collection
+
+To read the contents of a Resource Collection, send an HTTP GET request to the URI of the Collection. You can obtain the URI for a collection from a resource identifier property returned in a previous request.  For example, the `Links` property of a previously returned resource can contain a URI that points to a collection.
+
+The response includes properties of the Resource Collection including an array of its Members. If the Resource Collection is empty, the returned JSON object is an empty array (not null).
+
+To request a subset of members of the Resource Collection, use the paging query options:
+
+- `$top`
+- `$skip`
+
+These paging query options apply specifically to the `Members` array property within a Resource Collection.
+
+When a response represents only a part of a Resource Collections, the response includes a next link property named `Members@odata.nextLink`. The value of the `@odata.nextlink` property is a URL to a resource with the same @odata.type, that  contains the next set of partial members. The `@odata.nextlink` property is only present if the number of Members in the Resource Collection is greater than the number of members returned.
+
+### The response
+
+A Redfish service returns a Resource Collection as a JSON object in an HTTP response. The JSON object can include the following properties:
+
+| Property  | Description   |
+| -- | -- |
+| @odata.context | Describes the source of the payload. |
+| @odata.count  |  The total number of Members in the Resource Collection |
+|  
+  - context
+  - resource count
+  - array of Members
+  - a "next link" for partial results
+
+
+### Iterating through the members of a collection
+
+A Resource Collection includes a count of the total number of entries in its "Members" array.
+
+The total number of resources (members) available in a Resource Collection is represented in the count property. The count property is named `Members@odata.count`. The value of odata.count represents the total number of members available in the Resource Collection. This count is not affected by the ``$top` or `$skip` query parameters.
+
+ - enum individual members
+ - oData.count
+
+### Additional Notations
+
+A JSON object representing a Resource Collection may include additional annotations represented as properties whose name is of the form:
+
+@Namespace.TermName where
+
+  - Namespace = the name of the namespace where the annotation term is defined. This namespace shall be referenced by the metadata document specified in the context url of the request.
+  - TermName = the name of the annotation term being applied to the Resource Collection.
+
+The client can get the definition of the annotation from the service metadata, or may ignore the annotation entirely, but should not fail reading the response due to unrecognized annotations, including new annotations defined within the Redfish namespace.
+
+### The order of Members
+
+Collections are arrays of oData objects. The oData objects contain IDs of resources.
+
+The order in which Members exist in a collection is deterministic, but the members are not sorted. In other words, if you request a collection, assuming that the members have not changed since your last request, the order will be the same. However, the order of the members are not sorted by any specific criteria.
+
+
+### Examples of Commonly Used Collections
+
+#### Collection of Systems
+
+A System represents the logical view of a computer system, a logical view as seen from the operating system (OS) level.
+
+Any subsystem accessible from the host CPU is represented in a System resource. Each instance of a System includes CPUs, memory and other components. Each computer System can be contained as a member of a Systems collection.
+
+#### Collection of Chassis
+
+The Chassis collection contains resources that represent the physical aspects of the infrastructure. You can think of this as the properties you might need to locate the unit with your hands, or to identify, install or service a “computer”.
+
+A Chassis is roughly defined as a physical view of a computer system as seen by a human. A single Chassis resource can house sensors, fans and other components. Racks, enclosures and blades are examples of Chassis resources included in the Chassis collection.
+
+The Redfish protocol allows the representation of a Chassis contained within another Chassis.
+
+#### Collection of Managers
+
+A Managers collection contains BMCs, Enclosure Managers or any other component managing the infrastructure. Managers handle various management services and can also have their own components (such as NICs).
+
+
+
+
 
 # Redfish Schema Details
 
