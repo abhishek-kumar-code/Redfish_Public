@@ -1,11 +1,11 @@
 ---
-DocTitle: Supplmental Material for the Redfish Resource and Schema Guide
+DocTitle: Supplemental Material for the Redfish Resource and Schema Guide
 DocClass: DMTF Informational
 DocVersion: '0.9.0'
-modified: '2016-8-5'
+modified: '2017-04-27'
 status: work in progress
 released: false
-copyright: '2016'
+copyright: '2017'
 ---
 
 # Redfish Schemas - User Documentation
@@ -51,7 +51,11 @@ A "JSONPayload" section can contain a JSON payload example for this schema.  Thi
 
 # Introduction
 
-The Redfish Scalable Platforms Management ("Redfish") protocol is a standard for out-of-band systems management. It is based on a set of specifications maintained by the Distributed Management Task Force (DMTF). The Redfish protocol defines RESTful interfaces that provide access to data and operations associated with the management of systems and networks. One of the strengths of the Redfish protocol is that it works with a wide range of servers: from stand-alone servers to rack-mount and bladed environments to large-scale data centers and cloud environments.
+Cloud-based and web-based data center infrastructures require scalability. This is often achieved through large quantities of simple servers. This hyperscale usage model requires a new approach to systems management. The Redfish Scalable Platforms Management ("Redfish") protocol addresses these needs by providing a standard for out-of-band systems management.
+
+The Redfish standard comprises a set of specifications maintained by the Distributed Management Task Force (DMTF). The Redfish standard defines a protocol that uses RESTful interfaces to provide access to data and operations associated with the management of systems and networks. One of the strengths of the Redfish protocol is that it works with a wide range of servers: from stand-alone servers to rack-mount and bladed environments to large-scale data centers and cloud environments.
+
+The Redfish protocol was designed as an open industry standard to meet scalability requirements in multi-vendor deployments. It easily integrates with commonly used tools, using RESTful interfaces to perform operations and JSON and OData formats for data payloads.
 
 ## About this document?
 
@@ -73,81 +77,12 @@ This document includes the following sections:
 <!---
 [//]: #OUTLINE:-  Purpose of the document
 --->
+This document is useful to people who want to understand how to take advantage of the Redfish API. This includes application developers who want to create client-side software to communicate with a Redfish service.
 
 
-## The Market Of Standards
+### Where can I find more information?
 
-There are several out-of-band systems management standards available in the industry. In general, available standards address typical remote management system operations such as remote reboot, shutdown, powering on, and hardware monitoring (fan speed, power voltages, chassis intrusion, etc.).
-
-Some of these standards were designed for specific stop-gap solutions. Others for proprietary concerns. In all cases, the available standards either vary widely in implementation, were developed for single server embedded environments or have their roots in antiquated software modeling constructs. There has not been a single industry standard that is:
-
-- simple to use,
-- based on emerging programming standards,
-- embedded-friendly, and
-- capable of meeting large scale data center and cloud needs.
-
-The DMTF defined the Redfish protocol to meet these needs and to serve as industry standard.
-
-<!---
-[//]: #DRAFT: MAC: QUESTION for Jeff A.: Do we want to name existing standards that this might replace or connect to? Intelligent Platform Management Interface (IPMI)? Intel's AMT? Dell Remote Access Controller (DRAC)? Is this section even useful to include here being that it is at a high-level of vagueness?
---->
-
-### UEFI
-
-The UEFI (Unified Extensible Firmware Interface) specification defines an interface that helps hand off control of a system in the pre-boot environment. That is, it defines the handoff to an operating system after a system has powered on, but before the operating system (such as Windows* or Linux) has started.
-
-
-## What is Redfish and what does it do?
-
-<!---
-[//]: #DRAFT: MAC: I created a rough draft in the following section based on bullet points from powerpoint slides and other info already published on the dmtf site. QUESTION for Jeff A.: Does the outline (heading 3) below cover the right stuff?
---->
-
-
-
-### Completes the converged infrastructure management API story
-
-- Switches have platform components in common with servers and storage
-- Rapid expansion of open Network Operating System (NOS) solutions
-- Network Functions Virtualization (NFV) will need common manageability for compute and networking
-
-### Designed for orchestration systems
-
-<!---
-[//]: #DRAFT: MAC: QUESTION for Jeff A.: What would be better heading title?
---->
-
-Redfish enables common inventory and control for orchestration systems
-
-### Model-driven
-
-Redfish provides a prescriptive model for the management of system-level, platform-level, and device-level aspects of a network.
-
-Support YANG model with a mapping specification for YANG-to-CSDL.
-
-Results in JSON messages and schema.
-
-
-### Allows partnership with IETF
-
-- Specify a prescriptive baseline of YANG models for networking
-- Reduce overlap and clarify manageability domains
-
-
-
-## FAQ
-
-<!---
-[//]: #OUTLINE:- Other sources of information
---->
-
-### Q: Where can I find the version history of the schema specification?
-
-
-
-### Q: Where can I find more information?
-
-#### A: The following web sites provide more documentation.
+The following web sites provide more information about the Redfish standard.
 
 Redfish Standards
 -  Schemas, Specs, Mockups, White Papers, FAQ, Educational Material & more:
@@ -157,45 +92,18 @@ Redfish Developer Portal
 -  Redfish Interactive Explorer, Hosted Schema at Namespace & other links:
   http://redfish.dmtf.org
 
-SPMF (Working Group that defines Redfish)
+SPMF (the working group that maintains the Redfish standard)
 -  Companies involved, Upcoming Schedules & Future work, Charter, Information on joining:
   http://www.dmtf.org/standards/spmf
 
 
-### Q: Does Redfish support Unicode in strings?
-
-For example, when building an AttributeRegistry, could the value of the properties `DisplayName`, `HelpText`, and other similar properties of type `string` contain Unicode characters?
-
-UEFI of course is heavily Unicode-based but UEFI does not live inside the Internet Odata world.
-
-#### A: Redfish supports Unicode. JSON strings, by definition, are compatible with the Unicode standard.
-
-### Q: What happens if a property does not have a pattern attribute?
-
-#### A:  The Redfish Registry schema has a “Language” property at the root level of the Registry.  That "Language" property sets the criteria of the language of the strings included.  
-
-Based on that root-level definition, multiple copies of the particular registry (each with a different language and associated translated strings) can be produced.
-
-When the Registry is identified in the `MessageRegistryFilecollection`, the `MessageRegistryFile` schema has a “Languages” array showing what languages are supplied in the file(s), which are then listed in the “Location[]” array (again with the “Language” property).
-
-<!---
-[//]: #DRAFT: On 04-11-17 Jeff A. wrote:
-_So this is all supported, but there are some naming conventions that need to be documented for this to work in an interoperable fashion._
---->
-
-### Q: What is the relationship between Redfish and the DMTF's Management Component Transport Protocol (MSTP)?
-
-<!---
-[//]: #DRAFT: MAC: QUESTION for Jeff A.: Do we want to mention MSTP?
---->
-
 # Common Redfish Properties
 
-This section documents properties that are either common throughout the Redfish Schema, or are defined in the Resource.1.x.x or odata.4.x.x schema files.
+This section describes the properties (data fields) common to most Redfish schema. Most responses returned by a Redfish service will contain these properties.
 
 ## Status
 
-The `Status` property is common to all Redfish schema. 
+The `Status` property is common to all Redfish schema.
 
 |     |     |     |
 | --- | --- | --- |
@@ -240,14 +148,18 @@ The `Status` property is common to all Redfish schema.
 | UnavailableOffline | This function or resource is present but cannot be used. |
 | Updating | The element is updating and may be unavailable or degraded. |
 
+## ID
+
 
 
 ## @odata.context
 
 
+
 The @odata.context is used for a few different things:
-1)	First and foremost, it provides the location of the metadata that describes the payload.
-2)	It provides a root URL for resolving relative references
+
+  -	First and foremost, it provides the location of the metadata that describes the payload.
+  -	It provides a root URL for resolving relative references
 
 The structure of the @odata.context is the url to a metadata document with a fragment describing the data (typically rooted at the top-level singleton or collection).
 
