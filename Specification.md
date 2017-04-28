@@ -39,6 +39,7 @@ The DMTF acknowledges the following individuals for their contributions to this 
 * Chris Hoffman - Emerson Network Power
 * Steven Krig - Intel Corporation
 * John Leung - Intel Corporation
+* Jagan Molleti - Dell Inc.
 * Milena Natanov - Microsoft Corporation
 * Michael Pizzo - Microsoft Corporation
 * Chris Poblete - Dell Inc.

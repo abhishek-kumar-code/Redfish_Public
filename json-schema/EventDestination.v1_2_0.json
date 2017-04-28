@@ -199,5 +199,5 @@
             "description": "An Event Destination desribes the target of an event subscription, including the types of events subscribed and context to provide to the target in the Event payload."
         }
     },
-    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
+    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }
