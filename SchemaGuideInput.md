@@ -2,7 +2,7 @@
 DocTitle: Supplemental Material for the Redfish Resource and Schema Guide
 DocClass: DMTF Informational
 DocVersion: '0.9.0'
-modified: '2017-04-27'
+modified: '2017-04-28'
 status: work in progress
 released: false
 copyright: '2017'
@@ -57,11 +57,8 @@ The Redfish standard comprises a set of specifications maintained by the Distrib
 
 The Redfish protocol was designed as an open industry standard to meet scalability requirements in multi-vendor deployments. It easily integrates with commonly used tools, using RESTful interfaces to perform operations and JSON and OData formats for data payloads.
 
-## About this document?
+## About this document
 
-<!---
-[//]: #OUTLINE:-  Structure and usage
---->
 This document explains how to use and understand the schemas of the Redfish protocol.
 
 This document includes the following sections:
@@ -93,25 +90,43 @@ OData defines a set of common RESTful conventions, which provides for interopera
 
 **Example**
 
-For example, the following code snippet code could be used to retrieve the serial number from a server:
+The following code fragment shows an example of a request that retrieves the serial number from a Redfish service:
 
 ```Python
+#code fragment in Python
 rawData = urllib.urlopen('https://192.168.1.135/redfish/v1/Systems/1')
 jsonData = json.loads(rawData)
-print ('Serial Number: ' + jsonData['SerialNumber'])
+print ('SN: ' + jsonData['SerialNumber'])
 ```
 
 A successful request that uses the code snippet above could produce output similar to the following:
 
 ```bash
-Serial Number: 1A87CA442K
+SN: 1A87CA442K
 ```
 
   * (This example uses a Redfish ComputerSystem resource, Authentication not shown.)
 
+## Schema vs resources
+
+A schema is a data model.
+
+A resource is an actual object or component. In the terminology of RESTful APIs, a URI or URL is a pointer (or end point) that represents the resource.
+
+## Locating a Redfish service
+
+
 ## Examples Of Common Tasks
 
 The following examples show API calls that you could use to perform some common tasks.
+
+### Reading the service root
+
+#### Without authentication
+
+#### With authentication
+
+### Creating a session
 
 ### Reboot/Power cycle the server
 
@@ -127,7 +142,7 @@ The following example shows the retrieval of the health state of a server.
 • Health state
 
 
-### Where can I find more information?
+## Where can I find more information?
 
 The following web sites provide more information about the Redfish standard.
 
@@ -144,7 +159,7 @@ SPMF (the working group that maintains the Redfish standard)
   http://www.dmtf.org/standards/spmf
 
 
-# Common Redfish Properties
+# Common Properties
 
 This section describes the properties (schema elements or data fields) common to all Redfish schema. Response payloads returned by a Redfish service will contain these properties.
 
@@ -226,7 +241,7 @@ The Members property of a Resource Collection identifies the members of the coll
 
 ## RelatedItem
 
-The RelatedItem property represents links to a resource (or part of a resource) as defined by that resources schema definition. This is not intended to be a strong linking methodology like other references. Instead it is used to show a relationship between elements or sub-elements in disparate parts of the service. For example, `Fans` may be in one area of the implementation and processors in another, RelatedItem can be used to inform the client that one is related to the other (in this case, the Fan is cooling the processor).
+The `RelatedItem` property represents as set of links to a resource (or part of a resource) as defined by that resources schema definition. This is not intended to be a strong linking methodology like other references. Instead it is used to show a relationship between elements or sub-elements in disparate parts of the service. For example, `Fans` may be in one area of the implementation and processors in another, RelatedItem can be used to inform the client that one is related to the other (in this case, the Fan is cooling the processor).
 
 
 ## Actions
@@ -238,8 +253,7 @@ The Actions property contains the actions supported by a resource.
 The OEM property is used for OEM extensions as defined in Schema Extensibility.
 
 
-## @odata.context
-
+## \*@odata.context
 
 
 The @odata.context is used to:
@@ -247,21 +261,23 @@ The @odata.context is used to:
   -	provide the location of the metadata that describes the payload
   -	provide a root URL for resolving relative references
 
-The structure of the @odata.context is the url to a metadata document with a fragment describing the data (typically rooted at the top-level singleton or collection).
+## @odata.context
 
-Technically the metadata document only has to define, or reference, any of the types it directly uses, and different payloads could reference different metadata documents. However, since the @odata.context provides a root URL for resolving relative references (such as @odata.id's) we have to return the "canonical" metadata document.  Further, because our "@odata.type" annotations are written as fragments, rather than full URLs, those fragments must be defined in, or referenced by, that metadata document. Also, because we qualify actions with the versionless namespace aliases, those aliases must also be defined through <references> in the referenced metadata document.
+The @odata.context property is a url to a metadata document with a fragment describing the data (typically rooted at the top-level singleton or collection).
 
-Initially we tried only to reference the ServiceRoot metadata in the root $metadata document, but this required us to use relative URLs for all of our @odata.type annotations for types that were hosted on-box, or absolute URLs for off-box metadata, and the client having to parse the URL to match just the fragment. Having the types defined or referenced from the service's $metadata allows us to just put a canonical fragment in the payload and decide in the service $metadata whether the reference is hosted on-box or off-box.  So it turned out that putting the <References> for any used types in the metadata document allows all of our payloads to be shorter and more consistent by using fragments, as well as using versionless aliases for actions.
+Technically the metadata document only has to define, or reference, any of the types it directly uses, and different payloads could reference different metadata documents. However, since the @odata.context provides a root URL for resolving relative references (such as @odata.id's), we return the canonical metadata document.  
+
 
 ## @odata.type
- - Description of @odata.type
+
+Description of @odata.type
+
+Because our "@odata.type" annotations are written as fragments, rather than full URLs, those fragments must be defined in, or referenced by, that metadata document. Also, because we qualify actions with the versionless namespace aliases, those aliases must also be defined through <references> in the referenced metadata document.
 
 ## @odata.id
- - Description of @odada.id
 
-## Status
- - Full details and enum table for the common status block
- - State, Health, HealthRollUp
+Description of @odada.id
+
 
 
 
@@ -315,16 +331,18 @@ A Redfish service returns a Resource Collection as a JSON object in an HTTP resp
 
 A Resource Collection includes a count of the total number of entries in its "Members" array.
 
-The total number of resources (members) available in a Resource Collection is represented in the count property. The count property is named `Members@odata.count`. The value of odata.count represents the total number of members available in the Resource Collection. This count is not affected by the ``$top` or `$skip` query parameters.
+The total number of resources (members) available in a Resource Collection is represented in the count property. The count property is named `Members@odata.count`. The value of odata.count represents the total number of members available in the Resource Collection. This count is not affected by the `$top` or `$skip` query parameters.
 
  - enum individual members
  - oData.count
 
-### Additional Notations
+### Additional notations
 
 A JSON object representing a Resource Collection may include additional annotations represented as properties whose name is of the form:
 
-@Namespace.TermName where
+@Namespace.TermName
+
+where
 
   - Namespace = the name of the namespace where the annotation term is defined. This namespace shall be referenced by the metadata document specified in the context url of the request.
   - TermName = the name of the annotation term being applied to the Resource Collection.
@@ -346,6 +364,11 @@ A System represents the logical view of a computer system, a logical view as see
 
 Any subsystem accessible from the host CPU is represented in a System resource. Each instance of a System includes CPUs, memory and other components. Each computer System can be contained as a member of a Systems collection.
 
+<!---
+[//]: #PLACEHOLDER:-  include fragment for Systems Collection here
+--->
+
+
 #### Collection of Chassis
 
 The Chassis collection contains resources that represent the physical aspects of the infrastructure. You can think of this as the properties you might need to locate the unit with your hands, or to identify, install or service a “computer”.
@@ -354,10 +377,81 @@ A Chassis is roughly defined as a physical view of a computer system as seen by 
 
 The Redfish protocol allows the representation of a Chassis contained within another Chassis.
 
+<!---
+[//]: #PLACEHOLDER:-  include fragment for Chassis Collection here
+--->
+
 #### Collection of Managers
 
 A Managers collection contains BMCs, Enclosure Managers or any other component managing the infrastructure. Managers handle various management services and can also have their own components (such as NICs).
 
+<!---
+[//]: #PLACEHOLDER:-  include fragment for Managers Collection here
+--->
+
+# Working with Settings
+
+
+The state of a resource represents the current state. By contrast, the settings resource represents the future intended state of the resource. This property is always associated with a resource through the Redfish.Settings annotation.
+
+The state of a resource can be changed directly by sending a POST of an action or PUT request to the service.
+
+The state of a resource can be changed indirectly by an event such as when a user reboots a machine outside of the Redfish Service.
+
+# Annotations
+
+
+
+
+# PATCH semantics
+
+## Using PATCH in arrays
+
+## Allowable values annotation
+
+
+# Error messages
+
+## HTTP response codes
+
+## Error responses
+
+HTTP response status codes alone often do not provide enough information to enable deterministic error semantics. For example, if a client attempts a PATCH operation and some of the properties do not match while others are not supported, simply returning an HTTP status code of 400 does not indicate to the client which values were in error.
+
+Error responses provide more meaningful and deterministic error information.
+
+A Redfish Service may provide multiple error responses in the HTTP response in order to provide the client with as much information about the error situation as it can. Additionally, the service may provide Redfish standardized errors, OEM defined errors or both depending on the implementation's ability to convey the most useful information about the underlying error.
+
+Error responses are defined by an extended error resource, represented as a single JSON object with a property named "error" with the following properties.
+
+### Example error response
+
+The following snippet shows a fragment of an error response.
+
+```JSON
+
+ {
+   "error": {
+        "code": "Base.1.0.GeneralError",
+        "message": "A general error has occurred. See ExtendedInfo for more information.",
+        "@Message.ExtendedInfo": [
+            {
+                "@odata.type" : "/redfish/v1/$metadata#Message.v1_0_0.Message",
+                "MessageId": "Base.1.0.PropertyValueNotInList",
+                "RelatedProperties": [
+                    "#/IndicatorLED"
+                ],
+                "Message": "The value Red for the property IndicatorLED is not in the list of acceptable values",
+                "MessageArgs": [
+                    "RED",
+                    "IndicatorLED"
+                ],
+                "Severity": "Warning",
+            }
+ ...
+}
+
+```
 
 
 
