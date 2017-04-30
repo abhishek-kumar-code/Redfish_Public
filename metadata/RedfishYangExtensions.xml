@@ -97,7 +97,7 @@
 			<Annotation Term="OData.Description" String="The minimum number of elements in a list or leaf-list node"/>
 		</Term>	
 
-		<Term Name="ordered_by" Type='OrderedBy" >
+		<Term Name="ordered_by" Type="OrderedBy" >
 			<Annotation Term="Core.Description" String="Yang ordered-by for list and leaf-list nodes"/>
 		</Term>
 		<EnumType Name="OrderedBy">
@@ -157,7 +157,7 @@
 
 		<Term Name="empty" Type="Edm.String">
 			<Annotation Term="OData.Description" String="The leafname of the empty leaf"/>
-			<Annotation Term="OData.Permissions" EnumType="OData.Permission/read">
+			<Annotation Term="OData.Permissions" EnumType="OData.Permission/read"/>
 		</Term>	
 			
 		<Term Name="when" Type="Edm.String">
