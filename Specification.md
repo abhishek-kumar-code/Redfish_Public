@@ -566,6 +566,7 @@ The PATCH method is the preferred method used to perform updates on pre-existing
 * If a property in the request can never be updated, such as when a property is read only, a status code of [200](#status-200) shall be returned along with a representation of the resource containing an [annotation](#extended-information) specifying the non-updatable property. In this success case, other properties may be updated in the resource.
 * Services should return status code [405](#status-405) if the client specifies a PATCH request against a Resource Collection.
 * The PATCH operation should be idempotent in the absence of outside changes to the resource, though the original ETag value may no longer match.
+* Services may accept a PATCH with an empty JSON object.  An empty JSON object in this context means no changes to the resource are being requested.
 
 Services may have null entries for properties that are JSON arrays to show the number of entries a client is allowed to use in a PATCH request. Within a PATCH request, unchanged members within a JSON array may be specified as empty JSON objects, and clearing members within a JSON array may be specified with null.
 
