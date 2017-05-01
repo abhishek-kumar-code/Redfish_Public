@@ -1,0 +1,170 @@
+{
+	"@odata.type": "RedfishProfile.v1_0_0.RedfishProfile",
+	"ProfileName": "Anchovy",
+	"Version": "1.0.2",
+	"Author": "Pizza Box Project",
+	"Purpose": "This is a sample Redfish Interoperability profile.",
+	"ContactInfo": "pizza@contoso.com",
+	"RequiredProfiles": {
+		"DMTFBasic": {
+			"MinVersion": "1.0.0",
+			"MaxVersion": "1.99.0"
+		},
+		"ContosoPizza": {
+			"OwningEntity": "Other",
+			"OwningEntityName": "Contoso",
+			"Source": "contoso.com/profiles",
+			"MinVersion": "1.0.0"
+		}
+	},
+	"Protocol": {
+		"RedfishVersionMinimum": "1.2",
+		"DiscoveryRequired": true
+	},
+	"Resources": {
+		"ChassisCollection": {
+			"Members": {
+				"MinCount": 1
+			}
+		},
+		"ComputerSystemCollection": {
+			"Members": {
+				"MinCount": 1
+			}
+		},
+		"ComputerSystem": {
+			"MinVersion": "1.1.0",
+			"PropertyRequirements": {
+				"SerialNumber": {
+					"Requirement": "Always"
+				},
+				"Manufacturer": {},
+				"Model": {
+					"Requirement": "Recommended"
+				},
+				"IndicatorLED": {
+					"Requirement": "Recommended",
+					"Conditions": [{
+						"Purpose": "Physical and composed Systems must have a writable Indicator LED",
+						"Requirement": "Always",
+						"KeyCondition": "AnyOf",
+						"KeyProperty": "SystemType",
+						"KeyValues": ["Physical", "Composed"],
+						"Writeable": true
+					}]
+				}
+			},
+			"ActionRequirements": {
+				"Reset": {
+					"Requirement": "Always",
+					"Parameters": {
+						"ResetType": {
+							"EnumRequirements": ["ForceOff", "PowerCycle"]
+						}
+					}
+				}
+			}
+		},
+		"EthernetInterface": {
+			"MinVersion": "1.2.0",
+			"Requirement": "Recommended",
+			"Conditions": [{
+				"SubordinateToResource": ["Manager"],
+				"Requirement": "Always"
+			}],
+			"PropertyRequirements": {
+				"MACAddress": {},
+				"Status": {
+					"PropertyRequirements": {
+						"Health": {},
+						"State": {}
+					}
+				},
+				"HostName": {
+					"Requirement": "Recommended",
+					"Conditions": [{
+						"SubordinateToResource": ["ComputerSystem"],
+						"Requirement": "Always"
+					}]
+				},
+				"IPv4Addresses": {
+					"Requirement": "Always",
+					"MinCount": 1,
+					"Conditions": [{
+						"SubordinateToResource": ["ComputerSystem"],
+						"Requirement": "Always",
+						"MinCount": 2
+					}]
+				}
+			}
+		},
+		"ManagerCollection": {
+			"Members": {
+				"MinCount": 1
+			}
+		},
+		"Thermal": {
+			"MinVersion": "1.1.0",
+			"PropertyRequirements": {
+				"Fans": {
+					"Requirement": "IfImplemented",
+					"PropertyRequirements": {
+						"Reading": {},
+						"ReadingUnits": {},
+						"Status": {},
+						"PhysicalContext": {}
+					}
+				},
+				"Temperatures": {
+					"Requirement": "Always",
+					"MinCount": 2,
+					"PropertyRequirements": {
+						"ReadingCelsius": {},
+						"PhysicalContext": {
+							"Enum": ["CPU", "Ambient"],
+							"EnumRequirement": "Always"
+						},
+						"UpperThresholdFatal": {
+							"Requirement": "Recommended"
+						},
+						"UpperThresholdCritical": {},
+						"UpperThresholdNonCritical": {}
+					}
+				}
+			}
+		},
+		"ContosoTimeMachine": {
+			"OwningEntity": "Other",
+			"OwningEntityName": "Contoso",
+			"Source": "www.contoso.com/schemas",
+			"PropertyRequirements": {
+				"CurrentTime": {},
+				"DestinationTime": {},
+				"IsGrandfatherAlive": {
+					"Requirement": "Recommended"
+					},
+				"ParadoxDetected": {
+					"Requirement": "IfImplemented"
+					}
+			}
+		}
+	},
+	"Registries": {
+		"Base": {
+			"MinVersion": "1.0.0",
+			"Source": "redfish.dmtf.org/registries",
+			"Messages": {
+				"Success": {},
+				"GeneralError": {},
+				"Created": {},
+				"PropertyDuplicate": {}
+			}
+		}.
+		"ContosoPizzaMessages": {
+			"OwningEntity": "Other",
+			"OwningEntityName": "Contoso",
+			"Source": "contoso.com/registries",
+			"Requirement": "Always"
+		}
+	}
+}
