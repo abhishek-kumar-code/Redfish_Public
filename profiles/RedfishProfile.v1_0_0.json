@@ -29,23 +29,23 @@
 			"type": "object",
 			"description": "A set of Redfish Profiles which serve as a basis for this Profile.  The requirements set forth in these Profiles are included in this Profile.",
 			"additionalProperties": {
-					"Source": {
-						"$ref": "#/definitions/Source"
-					},
-					"OwningEntity": {
-						"$ref": "#/definitions/OwningEntity"
-					},
-					"OwningEntityName": {
-						"$ref": "#/definitions/OwningEntityName"
-					},
-					"MinVersion": {
-						"$ref": "#/definitions/MinVersion"
-					},
-					"MaxVersion": {
-						"type": "string",
-						"description": "The maximum supported version of the included Profile.  Functionality provided by versions higher than the stated maximum are not required for this Profile.  If this property is absent, all versions which share the same major version number as the MinVersion property are supported."
-					}
-				
+				"Source": {
+					"$ref": "#/definitions/Source"
+				},
+				"OwningEntity": {
+					"$ref": "#/definitions/OwningEntity"
+				},
+				"OwningEntityName": {
+					"$ref": "#/definitions/OwningEntityName"
+				},
+				"MinVersion": {
+					"$ref": "#/definitions/MinVersion"
+				},
+				"MaxVersion": {
+					"type": "string",
+					"description": "The maximum supported version of the included Profile.  Functionality provided by versions higher than the stated maximum are not required for this Profile.  If this property is absent, all versions which share the same major version number as the MinVersion property are supported."
+				}
+
 			}
 		},
 		"Protocol": {
@@ -176,12 +176,15 @@
 				"Parameters": {
 					"type": "object",
 					"additionalProperties": {
-						"EnumRequirements": {
+						"EnumValues": {
 							"type": "array",
 							"description": "The enumerations required to be supported for this Action.",
 							"items": {
 								"type": "string"
 							}
+						},
+						"EnumRequirement": {
+							"$ref": "#/definitions/EnumRequirement"
 						}
 					}
 				}
