@@ -446,9 +446,9 @@ The following snippet shows a fragment of an error response.
                     "RED",
                     "IndicatorLED"
                 ],
-                "Severity": "Warning",
-            }
- ...
+                "Severity": "Warning"
+            }]
+   }
 }
 
 ```
