@@ -59,7 +59,8 @@
 					"Requirement": "Always",
 					"Parameters": {
 						"ResetType": {
-							"EnumRequirements": ["ForceOff", "PowerCycle"]
+							"EnumValues": ["ForceOff", "PowerCycle"],
+							"EnumRequirement": "Allowable"
 						}
 					}
 				}
@@ -121,7 +122,7 @@
 					"PropertyRequirements": {
 						"ReadingCelsius": {},
 						"PhysicalContext": {
-							"Enum": ["CPU", "Ambient"],
+							"EnumValues": ["CPU", "Ambient"],
 							"EnumRequirement": "Always"
 						},
 						"UpperThresholdFatal": {
