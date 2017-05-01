@@ -29,7 +29,6 @@
 			"type": "object",
 			"description": "A set of Redfish Profiles which serve as a basis for this Profile.  The requirements set forth in these Profiles are included in this Profile.",
 			"additionalProperties": {
-				"properties": {
 					"Source": {
 						"$ref": "#/definitions/Source"
 					},
@@ -46,7 +45,7 @@
 						"type": "string",
 						"description": "The maximum supported version of the included Profile.  Functionality provided by versions higher than the stated maximum are not required for this Profile.  If this property is absent, all versions which share the same major version number as the MinVersion property are supported."
 					}
-				}
+				
 			}
 		},
 		"Protocol": {
@@ -201,6 +200,9 @@
 				},
 				"OwningEntity": {
 					"$ref": "#/definitions/OwningEntity"
+				},
+				"OwningEntityName": {
+					"$ref": "#/definitions/OwningEntityName"
 				},
 				"Source": {
 					"$ref": "#/definitions/Source"
