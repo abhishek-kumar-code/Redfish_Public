@@ -131,9 +131,12 @@
 				"MinCount": {
 					"$ref": "#/definitions/MinCount"
 				},
-				"EnumRequirement": {
-					"$ref": "#/definitions/EnumRequirement"
+				"AllowableValues": {
+					"$ref": "#/definitions/AllowableValues"
 				},
+				"EnumValues": {
+					"$ref": "#/definitions/EnumValues"
+				},				
 				"Conditions": {
 					"type": "array",
 					"items": {
@@ -153,8 +156,11 @@
 						"MinCount": {
 							"$ref": "#/definitions/MinCount"
 						},
-						"EnumRequirement": {
-							"$ref": "#/definitions/EnumRequirement"
+						"AllowableValues": {
+							"$ref": "#/definitions/AllowableValues"
+						},
+						"EnumValues": {
+							"$ref": "#/definitions/EnumValues"
 						},
 						"Conditions": {
 							"type": "array",
@@ -176,15 +182,11 @@
 				"Parameters": {
 					"type": "object",
 					"additionalProperties": {
-						"EnumValues": {
-							"type": "array",
-							"description": "The enumerations required to be supported for this Action.",
-							"items": {
-								"type": "string"
-							}
+						"Requirement": {
+							"$ref": "#/definitions/Requirement"
 						},
-						"EnumRequirement": {
-							"$ref": "#/definitions/EnumRequirement"
+						"AllowableValues": {
+							"$ref": "#/definitions/AllowableValues"
 						}
 					}
 				}
@@ -235,13 +237,15 @@
 			"description": "The Profile requirement details for this Property.  If no 'Requirement' is present, the Property is simply required with no further details needed. For properties of type 'object', requirements of the embedded properties will apply only if the object is present.",
 			"enum": [
 				"Always",
+				"AnyOf",
 				"Recommended",
 				"IfImplemented",
 				"Conditional",
 				"None"
 			],
 			"enumDescriptions": {
-				"Always": "This property is required in all instances of this resource. For properties of type 'array', the property is required in all non-NULL array items.",
+				"Always": "This property is required in all instances of this resource. For properties of type 'array', the property is required in all non-NULL array items. If 'EnumValues' are listed, at least one instance of each enumeration value is required among instance(s) of this property.",
+				"AnyOf": "This property is required and at least one of the values listed in 'EnumValues' must be present in an instances of this property.  One of the enumerations listed must be present in one or more instances of this property in this resource.",
 				"Recommended": "It is recommended, but not required, that this property be supported.",
 				"IfImplemented": "This property is required if the underlying functionality is implemented. For properties of type 'object', requirements on embedded properties within the object will only apply if the object is present.",
 				"Conditional": "This property is required if the 'Condition' applies to this instance of the resource.",
@@ -291,21 +295,12 @@
 			"type": "boolean",
 			"description": "True if the property is required to be writeable by the user.  False or not present if the property may be read-only."
 		},
-		"EnumRequirement": {
-			"type": "string",
-			"descrption": "The enumeration value requirement for this property. If this property is not present, all of the EnumValues are required.",
-			"enum": [
-				"AnyOf",
-				"Required",
-				"Recommended",
-				"Allowable"
-			],
-			"enumDescriptions": {
-				"Required": "The enumeration value listed in EnumValues is required for this property.  For array type properties, multiple enumeration values listed in EnumValues are required to be present in at least one instance of the property in this resource.",
-				"AnyOf": "One of the enumerations listed must be present in one or more instances of this property in this resource.",
-				"Allowable": "For writeable properties, the values listed in EnumValues must be supported for PATCH operations on this property. These values may be compared to the @Redfish.AllowableValues annotation, if present in the resource.",
-				"Recommended": "The enumeration values listed in EnumValues are recommended to be supported for this property."
-			}
+		"AllowableValues": {
+			"type": "array",
+			"items": {
+				"type": "string"
+			},
+			"description": "The minimum set of enumerations that must be supported for this writeable property."
 		},
 		"EnumValues": {
 			"type": "array",
