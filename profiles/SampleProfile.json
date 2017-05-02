@@ -13,7 +13,7 @@
 		"ContosoPizza": {
 			"OwningEntity": "Other",
 			"OwningEntityName": "Contoso",
-			"Source": "contoso.com/profiles",
+			"Repository": "contoso.com/profiles",
 			"MinVersion": "1.0.0"
 		}
 	},
@@ -136,7 +136,6 @@
 		"ContosoTimeMachine": {
 			"OwningEntity": "Other",
 			"OwningEntityName": "Contoso",
-			"Source": "www.contoso.com/schemas/ContosoTimeMachinev1",
 			"PropertyRequirements": {
 				"CurrentTime": {},
 				"DestinationTime": {},
@@ -152,7 +151,7 @@
 	"Registries": {
 		"Base": {
 			"MinVersion": "1.0.0",
-			"Source": "redfish.dmtf.org/registries",
+			"Repository": "redfish.dmtf.org/registries",
 			"Messages": {
 				"Success": {},
 				"GeneralError": {},
@@ -163,7 +162,7 @@
 		"ContosoPizzaMessages": {
 			"OwningEntity": "Other",
 			"OwningEntityName": "Contoso",
-			"Source": "contoso.com/registries",
+			"Repository": "contoso.com/registries",
 			"Requirement": "Always"
 		}
 	}

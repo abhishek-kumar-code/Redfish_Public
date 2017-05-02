@@ -327,7 +327,7 @@
 			"type": "string",
 			"description": "Name of the owning entity, when used with 'Other', follows 'Oem Property Naming' in the Redfish Specification"
 		},
-		"Source": {
+		"Repository": {
 			"type": "string",
 			"description": "A URI providing the location of the repository which contains the file(s) to be included.  If absent, the location shall be the Redfish Schema Repository at redfish.dmtf.org ."
 		}
