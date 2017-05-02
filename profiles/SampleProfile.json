@@ -136,6 +136,7 @@
 		"ContosoTimeMachine": {
 			"OwningEntity": "Other",
 			"OwningEntityName": "Contoso",
+			"Repository": "www.contoso.com/schemas",
 			"PropertyRequirements": {
 				"CurrentTime": {},
 				"DestinationTime": {},
