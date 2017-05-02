@@ -22,7 +22,7 @@
                 "CorrectionInMs": 2000
             },
             "RelatedItem": [
-                { "@odata.id": "/redfish/v1/Chassis/Enc1"}
+                { "@odata.id": "/redfish/v1/Chassis/Enc1" }
             ],
             "Status": {
                 "State": "Enabled",
