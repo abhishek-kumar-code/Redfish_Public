@@ -70,7 +70,7 @@
 			"MinVersion": "1.2.0",
 			"Requirement": "Recommended",
 			"Conditions": [{
-				"SubordinateToResource": ["Manager"],
+				"SubordinateToResource": ["Manager", "EthernetInterfaceCollection"],
 				"Requirement": "Always"
 			}],
 			"PropertyRequirements": {
@@ -84,7 +84,7 @@
 				"HostName": {
 					"Requirement": "Recommended",
 					"Conditions": [{
-						"SubordinateToResource": ["ComputerSystem"],
+						"SubordinateToResource": ["ComputerSystem", "EthernetInterfaceCollection"],
 						"Requirement": "Always"
 					}]
 				},
@@ -92,7 +92,7 @@
 					"Requirement": "Always",
 					"MinCount": 1,
 					"Conditions": [{
-						"SubordinateToResource": ["ComputerSystem"],
+						"SubordinateToResource": ["ComputerSystem", "EthernetInterfaceCollection"],
 						"Requirement": "Always",
 						"MinCount": 2
 					}]
@@ -136,7 +136,7 @@
 		"ContosoTimeMachine": {
 			"OwningEntity": "Other",
 			"OwningEntityName": "Contoso",
-			"Source": "www.contoso.com/schemas",
+			"Source": "www.contoso.com/schemas/ContosoTimeMachinev1",
 			"PropertyRequirements": {
 				"CurrentTime": {},
 				"DestinationTime": {},
