@@ -3,8 +3,7 @@
     "Name": "PartitionedServer Blade2 Thermal",
     "Id": "PartitionedServerBlade2Thermal",
     "Description": "Fans will be absent within blades, but sensor Info is relevent in Multiblade enclosure",
-    "Temperatures": [
-        {
+    "Temperatures": [{
             "@odata.id": "/redfish/v1/Chassis/Blade2/Thermal#/Temperatures/0",
             "MemberId": "0",
             "Name": "Blade Temp",
@@ -22,8 +21,7 @@
             "MinReadingRange": 0,
             "MaxReadingRange": 120,
             "PhysicalContext": "ComputeBay",
-            "RelatedItem": [
-                {
+            "RelatedItem": [{
                     "@odata.id": "/redfish/v1/Systems/ComposedPartition2"
                 },
                 {
@@ -50,11 +48,9 @@
             "MinReadingRange": 0,
             "MaxReadingRange": 200,
             "PhysicalContext": "CPU",
-            "RelatedItem": [
-                {
-                    "@odata.id": "/redfish/v1/Systems/ComposedPartition2/Processors/CPU1"
-                }
-            ]
+            "RelatedItem": [{
+                "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock2/RBSystem/CPU1"
+            }]
         },
         {
             "@odata.id": "/redfish/v1/Chassis/Blade2/Thermal#/Temperatures/2",
@@ -75,11 +71,9 @@
             "MinReadingRange": 0,
             "MaxReadingRange": 200,
             "PhysicalContext": "Intake",
-            "RelatedItem": [
-                {
-                    "@odata.id": "/redfish/v1/Chassis/Blade2"
-                }
-            ]
+            "RelatedItem": [{
+                "@odata.id": "/redfish/v1/Chassis/Blade2"
+            }]
         }
     ],
     "@odata.context": "/redfish/v1/$metadata#Chassis/Members/Blade2/Thermal/$entity",
