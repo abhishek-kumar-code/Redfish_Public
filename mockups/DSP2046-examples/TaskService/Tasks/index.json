@@ -6,7 +6,7 @@
         {
             "@odata.id": "/redfish/v1/TaskService/Tasks/545"
         }
-    ]
+    ],
     "@odata.context": "/redfish/v1/$metadata#TaskCollection.TaskCollection",
     "@odata.id": "/redfish/v1/TaskService/Tasks"
 }
