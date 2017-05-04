@@ -644,8 +644,8 @@
       <EntityType Name="PowerControl" BaseType="Power.v1_3_0.PowerControl">
         <Property Name="PhysicalContext" Type="PhysicalContext.v1_0_0.PhysicalContext" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="Describes the area or device to which this power control applies."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a description of the affected device or region within the chassis to which this power control applies."/>
+          <Annotation Term="OData.Description" String="Describes the area, device, or set of devices to which this power control applies."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a description of the affected device(s) or region within the chassis to which this power control applies."/>
         </Property>
       </EntityType>
     </Schema>
