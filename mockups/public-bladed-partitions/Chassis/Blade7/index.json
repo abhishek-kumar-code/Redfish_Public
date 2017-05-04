@@ -1,0 +1,42 @@
+{
+    "@odata.type": "#Chassis.v1_2_0.Chassis",
+    "Id": "Blade7",
+    "Name": "Blade 7",
+    "ChassisType": "Blade",
+    "SerialNumber": "RYM056",
+    "PartNumber": "166480-S30",
+    "Manufacturer": "Contoso",
+    "Model": "Constoto-2S-B",
+    "IndicatorLED": "Off",
+    "PowerState": "On",
+    "Status": {
+        "Health": "OK",
+        "State": "Enabled"
+    },
+    "Location": {
+        "Info": "DCTexas-Row10-Rack1-20U-Bay7"
+    },
+    "Thermal": {
+        "@odata.id": "/redfish/v1/Chassis/Blade7/Thermal"
+    },
+    "Links": {
+        "ContainedBy": {
+            "@odata.id": "/redfish/v1/Chassis/Enclosure"
+        },
+        "CooledBy": [{
+            "@odata.id": "/redfish/v1/Chassis/Enclosure/Thermal#/Fans"
+        }],
+        "ManagedBy": [{
+                "@odata.id": "/redfish/v1/Managers/EncMgr1"
+            },
+            {
+                "@odata.id": "/redfish/v1/Managers/EncMgr2"
+            }
+        ],
+        "PoweredBy": [{
+            "@odata.id": "/redfish/v1/Chassis/Enclosure/Power#/PowerSupplies"
+        }]
+    },
+    "@odata.context": "/redfish/v1/$metadata#Chassis/Members/$entity",
+    "@odata.id": "/redfish/v1/Chassis/Blade7"
+}

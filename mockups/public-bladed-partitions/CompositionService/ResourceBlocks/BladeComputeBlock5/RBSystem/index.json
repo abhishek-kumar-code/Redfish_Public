@@ -1,0 +1,32 @@
+{
+    "@odata.type": "#ComputerSystem.v1_4_0.ComputerSystem",
+    "Name": "RB System5",
+    "Id": "RBSystem5",
+    "SystemType": "PhysicallyPartitioned",
+    "Model": "Constoto-2S-B Server Partition",
+    "Manufacturer": "Contoso",
+    "Description": "This represents PhysicallyPartitionedSystem ResourceBlock, from which System can be Composed",
+    "HostName": "composedhost3",
+    "PowerState": "On",
+    "UUID": "17690008-3175-05f4-0010-debfc4ec1881",
+    "Status": {
+        "Health": "OK",
+        "State": "Enabled"
+    },
+    "Processors": {
+        "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock5/RBSystem/Processors"
+    },
+    "Memory": {
+        "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock5/RBSystem/Memory"
+    },
+    "EthernetInterfaces": {
+        "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock5/RBSystem/EthernetInterfaces"
+    },
+    "Links": {
+        "Chassis": [{
+            "@odata.id": "/redfish/v1/Chassis/Blade5"
+        }]
+    },
+    "@odata.context": "/redfish/v1/$metadata#Systems/Members/$entity",
+    "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock5/RBSystem"
+}

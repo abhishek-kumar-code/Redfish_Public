@@ -2,7 +2,7 @@
     "@odata.type": "#Chassis.v1_2_0.Chassis",
     "Id": "MultiBladeEnclosure",
     "Name": "Multi-Blade Enclosure",
-    "Description": "Enclosure with 6 Blades and 2 Managers",
+    "Description": "Enclosure with 8 Blades and 2 Managers",
     "ChassisType": "Enclosure",
     "Manufacturer": "Contoso",
     "Model": "Contoso Standard 18U Rack",
@@ -42,6 +42,22 @@
             },
             {
                 "@odata.id": "/redfish/v1/Chassis/Blade6"
+            },
+            {
+                "@odata.id": "/redfish/v1/Chassis/Blade7"
+            },
+            {
+                "@odata.id": "/redfish/v1/Chassis/Blade8"
+            }
+        ],
+        "ComputerSystems": [{
+                "@odata.id": "/redfish/v1/Systems/ComposedPartition1"
+            },
+            {
+                "@odata.id": "/redfish/v1/Systems/ComposedPartition2"
+            },
+            {
+                "@odata.id": "/redfish/v1/Systems/ComposedPartition3"
             }
         ],
         "ManagedBy": [{
@@ -54,7 +70,7 @@
     },
     "Oem": {
         "Contoso": {
-            "@odata.type": "#Contoso.Chassis",
+            "@odata.type": "http://Contoso.com/Schema#Contoso.Chassis",
             "NodeControllers@odata.count": 2,
             "NodeControllers": [{
                     "Name": "NodeController 0",

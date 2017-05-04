@@ -1,0 +1,11 @@
+{
+    "@odata.type": "#EthernetInterfaceCollection.EthernetInterfaceCollection",
+    "Name": "Ethernet  Interface Collection",
+    "Description": "PartitionedServer Network Collection",
+    "Members@odata.count": 1,
+    "Members": [{
+        "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock1/RBSystem/EthernetInterfaces/1"
+    }],
+    "@odata.context": "/redfish/v1/$metadata#EthernetInterfaceCollection.EthernetInterfaceCollection",
+    "@odata.id": "/redfish/v1/Systems/ComposedPartition1/EthernetInterfaces"
+}

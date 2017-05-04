@@ -1,0 +1,30 @@
+{
+    "@odata.type": "#Thermal.v1_2_0.Thermal",
+    "Name": "PartitionedServer Blade6 Thermal",
+    "Id": "PartitionedServerBlade6Thermal",
+    "Temperatures": [{
+        "@odata.id": "/redfish/v1/Chassis/Blade7/Thermal#/Temperatures/0",
+        "MemberId": "1",
+        "Name": "Blade Intake Temp",
+        "SensorNumber": 44,
+        "Status": {
+            "State": "Enabled",
+            "Health": "OK"
+        },
+        "ReadingCelsius": 25,
+        "UpperThresholdNonCritical": 30,
+        "UpperThresholdCritical": 40,
+        "UpperThresholdFatal": 50,
+        "LowerThresholdNonCritical": 10,
+        "LowerThresholdCritical": 5,
+        "LowerThresholdFatal": 0,
+        "MinReadingRange": 0,
+        "MaxReadingRange": 200,
+        "PhysicalContext": "Intake",
+        "RelatedItem": [{
+            "@odata.id": "/redfish/v1/Chassis/Blade7"
+        }]
+    }],
+    "@odata.context": "/redfish/v1/$metadata#Chassis/Members/Blade7/Thermal/$entity",
+    "@odata.id": "/redfish/v1/Chassis/Blade7/Thermal"
+}

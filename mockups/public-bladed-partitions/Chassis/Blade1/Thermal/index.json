@@ -24,7 +24,7 @@
             "PhysicalContext": "ComputeBay",
             "RelatedItem": [
                 {
-                    "@odata.id": "/redfish/v1/Systems/Partition1"
+                    "@odata.id": "/redfish/v1/Systems/ComposedPartition1"
                 },
                 {
                     "@odata.id": "/redfish/v1/Chassis/Blade1"
@@ -52,7 +52,7 @@
             "PhysicalContext": "CPU",
             "RelatedItem": [
                 {
-                    "@odata.id": "/redfish/v1/Systems/Partition1/Processors/CPU1"
+                    "@odata.id": "/redfish/v1/Systems/ComposedPartition1/Processors/CPU1"
                 }
             ]
         },

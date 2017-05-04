@@ -25,7 +25,7 @@
         },
         "ComputerSystems": [
             {
-                "@odata.id": "/redfish/v1/Systems/Partition1"
+                "@odata.id": "/redfish/v1/Systems/ComposedPartition1"
             }
         ],
         "CooledBy": [

@@ -1,8 +1,15 @@
 # Multi-Blade Partition Enclosure Mockup:
 
-This service reports physically partitioned Systems within a MultiBlade Enclosure. 
+## These mocks use Redfish Composability. 
 
-Enclosure has 6 Blades and 2 Managers in redundant pair.
-There are 2 “Hard Partitions”, managed by EnclosureManager
-1.	Partition1 w/ 1 Blade(part1-B1)
-2.	Partition2 w/ 3 Blades(part2-B2B3B5) 
+This service reports physically partitioned Systems within a MultiBlade Enclosure.  Paritionable resources are reported and managed using redfish CompositionService.
+Individual blades are reported as ResourceBlocks. 
+
+Enclosure has 8 Blades and 2 Managers in redundant pair. 
+7 Blades are reported as "Compute" ResourceBlocks and 1 Storage Blade is reported as "Storage" ResourceBlock.
+There are 3 “Hard Partitions”, managed by EnclosureManager and created through CompositionService defintions. 
+The mocks also report 2 Unused Blades and associated ResourceBlocks:
+
+1.	ComposedPartition1 - Composed Partition with 1 BladeComputeBlock
+2.	ComposedPartition2 - Composed Partition with 3 BladeComputeBlocks
+3.  ComposedPartition3 - Composed Partition with 1 BladeComputeBlock and 1 BladeStorageBlock

@@ -64,10 +64,13 @@
     },
     "Links": {
         "ManagerForServers": [{
-                "@odata.id": "/redfish/v1/Systems/Partition1"
+                "@odata.id": "/redfish/v1/Systems/ComposedPartition1"
             },
             {
-                "@odata.id": "/redfish/v1/Systems/Partition2"
+                "@odata.id": "/redfish/v1/Systems/ComposedPartition2"
+            },
+            {
+                "@odata.id": "/redfish/v1/Systems/ComposedPartition3"
             }
         ],
         "ManagerInChassis": {
