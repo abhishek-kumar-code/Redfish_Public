@@ -2,7 +2,7 @@
 
 ## These mocks use Redfish Composability. 
 
-This service reports physically partitioned Systems within a MultiBlade Enclosure.  Paritionable resources are reported and managed using redfish CompositionService.
+This service reports physically partitioned Systems within a MultiBlade Enclosure.  Partitionable resources are reported and managed using redfish CompositionService.
 Individual blades are reported as ResourceBlocks. 
 
 Enclosure has 8 Blades and 2 Managers in redundant pair. 
