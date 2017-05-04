@@ -48,7 +48,7 @@
             "MaxReadingRange": 200,
             "PhysicalContext": "CPU",
             "RelatedItem": [{
-                "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock3/RBSystem/CPU1"
+                "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock3/RBSystem/Processors/CPU1"
             }]
         },
         {

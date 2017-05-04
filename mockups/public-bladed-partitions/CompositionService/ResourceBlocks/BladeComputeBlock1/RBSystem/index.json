@@ -7,7 +7,7 @@
     "Manufacturer": "Contoso",
     "Description": "This represents PhysicallyPartitionedSystem ResourceBlock, from which System can be Composed",
     "PowerState": "On",
-    "UUID": null,
+    "UUID": "00000000-0000-0000-0000-000000000000",
     "Status": {
         "Health": "OK",
         "State": "Enabled"

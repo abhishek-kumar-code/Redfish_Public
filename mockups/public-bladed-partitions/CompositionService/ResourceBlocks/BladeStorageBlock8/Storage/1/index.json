@@ -13,7 +13,7 @@
         { "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeStorageBlock8/Storage/1/Drives/Drive2" }
     ],
     "Links": {
-        "Chassis": {
+        "Enclosures": {
             "@odata.id": "/redfish/v1/Chassis/Blade8"
         }
     },
