@@ -21,6 +21,5 @@
         "@odata.id": "/redfish/v1/Systems/437XR1138R2/LogServices/Log1/Entries"
     },
     "@odata.context": "/redfish/v1/$metadata#LogService.LogService",
-    "@odata.id": "/redfish/v1/Systems/437XR1138R2/LogServices/Log1",
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+    "@odata.id": "/redfish/v1/Systems/437XR1138R2/LogServices/Log1"
 }
