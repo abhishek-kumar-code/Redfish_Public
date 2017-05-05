@@ -10,18 +10,18 @@ copyright: '2017'
 
 # Redfish Schemas - User Documentation
 
-This document contains details about specific properties contained within Schemas defined by the Redfish Specification.  This information is used by a documentation generator to create the Redfish Resource and Schema Guide (DSP2046).  Proper use of section headers allows for the Generator to incorporate the additional information automatically.  
+This document contains details about specific properties contained within Schemas defined by the Redfish Specification. This information is used by a documentation generator to create the Redfish Resource and Schema Guide (DSP2046). Proper use of section headers allows for the generator to incorporate the additional information automatically.  
 
-The Redfish Documentation Generator uses this file to create the Redfish Schema Guide.  The tool uses Markdown section headers to locate and integrate text into the various portions of the document as follows:
+The Redfish Documentation Generator uses this file to create the Redfish <!---User --->Schema Guide. The tool uses Markdown section headers to locate and integrate text into the various portions of the document as follows:
 
  - Introduction - All text in the Introduction section until the next major header is included as the head of the document.
 - Postscript - All text in the Postscript section until the next major header is appended to the end of the document.
- - Schema Supplement: This section contains all the schema-specific information, property details and sample payloads.  
+ - Schema Supplement: This section contains all the schema-specific information, property details, and sample payloads.  
 	 - Second-level headers in this section indicate the name of the Schema.  The section must be named "Schema_<major version>" for integration, for example "Processor_1".
 
 ### Property descriptions
 
-Individual property documentation can be added using a third-level header in this section.  The header must match the property name within a schema.  This includes properties in embedded objects within a resource.
+Individual property documentation can be added by using a third-level header in this section.  The header must match the property name within a schema.  This includes properties in embedded objects within a resource.
 
 ### Replacement Description
 
@@ -40,7 +40,7 @@ A "JSONPayload" section can contain a JSON payload example for this schema.  Thi
   <img src="http://redfish.dmtf.org/sites/all/themes/dmtf2015/images/dmtf-redfish-logo.png" alt="DMTF Redfish" width=180>
 </p>
 
-# Redfish Schema Guide
+# Redfish Schema <!-- User? --> Guide
 
 <!---
  -  Introduction to Redfish goes here.
@@ -55,19 +55,19 @@ Cloud-based and web-based data center infrastructures require scalability. This 
 
 The Redfish standard comprises a set of specifications maintained by the Distributed Management Task Force (DMTF). The Redfish standard defines a protocol that uses RESTful interfaces to provide access to data and operations associated with the management of systems and networks. One of the strengths of the Redfish protocol is that it works with a wide range of servers: from stand-alone servers to rack-mount and bladed environments to large-scale data centers and cloud environments.
 
-The Redfish protocol was designed as an open industry standard to meet scalability requirements in multi-vendor deployments. It easily integrates with commonly used tools, using RESTful interfaces to perform operations and JSON and OData formats for data payloads.
+The Redfish protocol was designed as an open industry standard to meet scalability requirements in multivendor deployments. It easily integrates with commonly used tools, using RESTful interfaces to perform operations and JSON and OData formats for data payloads.
 
 ## About this document
 
 This document explains how to use and understand the schemas of the Redfish protocol.
 
-This document includes the following sections:
+This document includes the following sections:<!-- will these be in an unordered list?-->
 - Introduction: Overview of the Redfish protocol
 - Common Redfish Properties: Explanation of properties used across schemas
 - Redfish Schema Details: Definitions of schema elements
 - Excluded Properties: List of properties not included in the details section
 - Excluded Schema: List of schema not covered by this document
-- Schema Supplement: Describes schema details and shows sample payloads.
+- Schema Supplement: Schema details and sample payloads.<!--removed verb to make parallel-->
 
 ## Who should read this document?
 
@@ -78,15 +78,15 @@ This document is useful to people who want to understand how to use the Redfish 
 
 ## Why REST, JSON and OData?
 
-One of the goals of the Redfish standard is to define an API that is equally usable by applications, client libraries and scripts. Another goal is to define data objects that are schema-backed but human-readable. The use of RESTful APIs, and JSON and OData formats support these goals.
+One of the goals of the Redfish standard is to define an API that is equally usable by applications, client libraries, and scripts. Another goal is to define data objects that are schema-backed but human readable. The use of RESTful APIs, and JSON and OData formats supports these goals.
 
-JSON is a widely-used data format for transporting data that is compatible with RESTful applications. It is inherently human readable, more concise than XML, and supported by many modern programming languages.
+JSON is a widely used data format for transporting data that is compatible with RESTful applications. It is inherently human readable, more concise than XML, and supported by many modern programming languages.
 
-Using JSON also carries an advantage in embedded manageability environments because most Baseboard Management Controllers (BMCs) already support a web server and managing a server through a browser (typically through a Javascript-driven interface). By using JSON, the data from a Redfish service is viewed directly in the browser, ensuring the data and the programmatic interface is uniform in semantics and value.
+Using JSON also carries an advantage in embedded manageability environments because most Baseboard Management Controllers (BMCs) already support a web server and the management of a server through a browser (typically through a Javascript-driven interface). By using JSON, the data from a Redfish service is viewed directly in the browser, ensuring the data and the programmatic interface are <!--?--> uniform in semantics and value.
 
-Similarly, while JSON provides an easy-to read representation, semantics of common properties such as id, type, links, etc., are imposed through naming conventions that can vary from service to service.
+Similarly, while JSON provides an easy-to read representation, the semantics of common properties, such as id, type, links, etc., are imposed through naming conventions that can vary from service to service.
 
-OData defines a set of common RESTful conventions, which provides for interoperability between APIs. Redfish adopts common OData conventions for describing schema, URL conventions, and naming, as well as the structure of common properties in a JSON payload. This not only encapsulates best practices for RESTful APIs which can be used in traditional and scalable environments, but further enables Redfish services to be consumed by a growing ecosystem of generic client libraries, applications, and tools.
+OData defines a set of common RESTful conventions, which provides for interoperability between APIs. Redfish adopts common OData conventions for describing schema, URL conventions, and naming, as well as the structure of common properties in a JSON payload. This uniformity not only encapsulates best practices for RESTful APIs that can be used in traditional and scalable environments, but also enables Redfish services to be consumed by a growing ecosystem of generic client libraries, applications, and tools.
 
 **Example**
 
@@ -99,15 +99,15 @@ jsonData = json.loads(rawData)
 print ('SN: ' + jsonData['SerialNumber'])
 ```
 
-A successful request that uses the code snippet above could produce output similar to the following:
+A successful request that uses the code snippet above could produce output similar to the following example:
 
 ```bash
 SN: 1A87CA442K
 ```
 
-  * (This example uses a Redfish ComputerSystem resource, Authentication not shown.)
+  * (This example uses a Redfish ComputerSystem resource; authentication is not shown.)
 
-## Schema vs resources
+## Schema versus resources
 
 A schema is a data model.
 
@@ -116,7 +116,7 @@ A resource is an actual object or component. In the terminology of RESTful APIs,
 ## Locating a Redfish service
 
 
-## Examples Of Common Tasks
+## Examples of common tasks
 
 The following examples show API calls that you could use to perform some common tasks.
 
@@ -128,7 +128,7 @@ The following examples show API calls that you could use to perform some common 
 
 ### Creating a session
 
-### Reboot/Power cycle the server
+### Reboot/power cycle the server
 
 ### Change boot order/device
 
@@ -144,22 +144,22 @@ The following example shows the retrieval of the health state of a server.
 
 ## Where can I find more information?
 
-The following web sites provide more information about the Redfish standard.
+The following web sites provide more information about the Redfish standard:
 
 Redfish Standards
--  Schemas, Specs, Mockups, White Papers, FAQ, Educational Material & more:
+-  Schemas, specs, mockups, white papers, FAQ, educational material and more:
   http://www.dmtf.org/standards/redfish
 
-Redfish Developer Portal
--  Redfish Interactive Explorer, Hosted Schema at Namespace & other links:
+Redfish Developer Hub
+-  Redfish interactive explorer, hosted schema at namespace<!--?--> and other links:
   http://redfish.dmtf.org
 
-SPMF (the working group that maintains the Redfish standard)
--  Companies involved, Upcoming Schedules & Future work, Charter, Information on joining:
+SPMF (Working group that maintains the Redfish standard)
+-  Companies involved, upcoming schedules & future work, charter, and information about joining:
   http://www.dmtf.org/standards/spmf
 
 
-# Common Properties
+# Common properties
 
 This section describes the properties (schema elements or data fields) common to all Redfish schema. Response payloads returned by a Redfish service will contain these properties.
 
@@ -173,13 +173,13 @@ The Id property of a resource uniquely identifies the resource within the Resour
 
 The `Name` property is common to all Redfish schema.
 
-The Name property is used to convey a human readable moniker for a resource. The type of the Name property shall be string. The value of Name is NOT required to be unique across resource instances within a Resource Collection.
+The Name property is used to convey a human-readable moniker for a resource. The type of the Name property shall be string. The value of Name is NOT required to be unique across resource instances within a Resource Collection.
 
 ## Description
 
 The `Description` property is common to all Redfish schema.
 
-The Description property is used to convey a human readable description of the resource. The type of the Description property is string.
+The Description property is used to convey a human-readable description of the resource. The type of the Description property is string.
 
 
 ## Status
@@ -188,14 +188,14 @@ The `Status` property is common to all Redfish schema.
 
 |     |     |     |
 | --- | --- | --- |
-| **Health** | string<br><br>*read-only* | This represents the health state of this resource in the absence of its dependent resources. *See Property Details, below, for more information about this property.* |
-| **HealthRollup** | string<br><br>*read-only* | This represents the overall health state from the view of this resource. *See Property Details, below, for more information about this property.* |
-| **Oem** {} | object<br><br>*read-write* | Oem extension object. |
-| **State** | string<br><br>*read-only* | This indicates the known state of the resource, such as if it is enabled. *See Property Details, below, for more information about this property.* |
+| **Health** | string<br><br>*read-only* | This <!--part? status? -->represents the health state of this resource in the absence of its dependent resources. *See <a href= "###Property details"> Property details</a> for more information about this property.* |
+| **HealthRollup** | string<br><br>*read-only* | This <!--part? status? -->represents the overall health state from the view of this resource. *See <a href= "###Property details"> Property details</a> for more information about this property.* |
+| **Oem** {} | object<br><br>*read-write* | Oem extension object. | <!--Cathi: Should Oem be OEM?-->
+| **State** | string<br><br>*read-only* | This <!--part? status? -->indicates the known state of the resource, such as if it is enabled. *See <a href= "###Property details"> Property details</a> for more information about this property.*|
 
 #include_fragment example_fragments/Status.json
 
-### Property Details
+### Property details
 
 #### Health:
 
@@ -232,7 +232,7 @@ The `Status` property is common to all Redfish schema.
 
 ## Links
 
-The Links property represents the links associated with the resource, as defined by that resources schema definition. All associated reference properties defined for a resource shall be nested under the links property. All directly (subordinate) referenced properties defined for a resource shall be in the root of the resource.
+The Links property represents the links associated with the resource, as defined by that resource's schema definition. All associated reference properties defined for a resource shall be nested under the Links property. All directly referenced (subordinate) properties defined for a resource shall be in the root of the resource.
 
 
 ## Members
@@ -241,7 +241,7 @@ The Members property of a Resource Collection identifies the members of the coll
 
 ## RelatedItem
 
-The `RelatedItem` property represents as set of links to a resource (or part of a resource) as defined by that resources schema definition. This is not intended to be a strong linking methodology like other references. Instead it is used to show a relationship between elements or sub-elements in disparate parts of the service. For example, `Fans` may be in one area of the implementation and processors in another, RelatedItem can be used to inform the client that one is related to the other (in this case, the Fan is cooling the processor).
+The `RelatedItem` property is represented as set of links to a resource (or part of a resource) as defined by that resource's schema definition. This <!--representation-->is not intended to be a strong linking methodology like other references. Instead it is used to show a relationship between elements or sub-elements in disparate parts of the service. For example, `Fans` may be in one area of the implementation and <!--in?-->processors in another. RelatedItem can be used to inform the client that one is related to the other (in this case, the Fan is cooling the processor).
 
 
 ## Actions
@@ -261,41 +261,41 @@ The @odata.context is used to:
   -	provide the location of the metadata that describes the payload
   -	provide a root URL for resolving relative references
 
-## @odata.context
+## @odata.context property
 
-The @odata.context property is a url to a metadata document with a fragment describing the data (typically rooted at the top-level singleton or collection).
+The @odata.context property is a URL to a metadata document with a fragment describing the data (typically rooted at the top-level singleton or collection).
 
-Technically the metadata document only has to define, or reference, any of the types it directly uses, and different payloads could reference different metadata documents. However, since the @odata.context provides a root URL for resolving relative references (such as @odata.id's), we return the canonical metadata document.  
+Technically the metadata document only has to define, or reference, any of the types that it directly uses, and different payloads could reference different metadata documents. However, since the @odata.context provides a root URL for resolving relative references (such as @odata.id's), we return the canonical metadata document.  
 
 
 ## @odata.type
 
 Description of @odata.type
 
-Because our "@odata.type" annotations are written as fragments, rather than full URLs, those fragments must be defined in, or referenced by, that metadata document. Also, because we qualify actions with the versionless namespace aliases, those aliases must also be defined through <references> in the referenced metadata document.
+Because our "@odata.type" annotations are written as fragments, rather than full URLs, those fragments must be defined in, or referenced by, that metadata document. Also, because we qualify actions with versionless namespace aliases, those aliases must also be defined through <references> in the referenced metadata document.
 
 ## @odata.id
 
-Description of @odada.id
+Description of @odata.id
 
 
 
 
-# Working With Resource Collections
+# Working with Resource Collections
 
 In the Redfish protocol a URI can represent a collection of similar resources. A Resource Collection can represent a group of Systems, Chassis, Managers, or a group of other kinds of resources. For example:
 
  - /redfish/v1/Systems
  - /redfish/v1/Chassis
  - /redfish/v1/Managers
- - etc.
+ - etc. <!--necessary?-->
 
 The Members of a Resource Collection are returned as a JSON array, where each element of the array is a JSON object. The name of the property representing the members of the collection is `Members`.
 
 
-## Operations Related To Resource Collections
+## Operations Related to Resource Collections
 
-The following are some of the common operations associated with collections:
+Some of the common operations associated with collections are as follows:
 
 ### GET a Resource Collection
 
@@ -303,23 +303,23 @@ To read the contents of a Resource Collection, send an HTTP GET request to the U
 
 The response includes properties of the Resource Collection including an array of its Members. If the Resource Collection is empty, the returned JSON object is an empty array (not null).
 
-To request a subset of members of the Resource Collection, use the paging query options:
+To request a subset of Members of the Resource Collection, use the paging query options:
 
 - `$top`
 - `$skip`
 
 These paging query options apply specifically to the `Members` array property within a Resource Collection.
 
-When a response represents only a part of a Resource Collections, the response includes a next link property named `Members@odata.nextLink`. The value of the `@odata.nextlink` property is a URL to a resource with the same @odata.type, that  contains the next set of partial members. The `@odata.nextlink` property is only present if the number of Members in the Resource Collection is greater than the number of members returned.
+When a response represents only a part of a Resource Collections, the response includes a next link property named `Members@odata.nextLink`. The value of the `@odata.nextlink` property is a URL to a resource with the same @odata.type that  contains the next set of partial members. The `@odata.nextlink` property is only present if the number of Members in the Resource Collection is greater than the number of members returned.
 
-### The response
+#### The response <!--I tried to make this heading subordinate to the previous one. We might want to add a few clarifying words: Response to a GET request or something like that. -->
 
 A Redfish service returns a Resource Collection as a JSON object in an HTTP response. The JSON object can include the following properties:
 
 | Property  | Description   |
 | -- | -- |
 | @odata.context | Describes the source of the payload. |
-| @odata.count  |  The total number of Members in the Resource Collection |
+| @odata.count  |  Displays the total number of Members in the Resource Collection |
 |  
   - context
   - resource count
@@ -331,7 +331,7 @@ A Redfish service returns a Resource Collection as a JSON object in an HTTP resp
 
 A Resource Collection includes a count of the total number of entries in its "Members" array.
 
-The total number of resources (members) available in a Resource Collection is represented in the count property. The count property is named `Members@odata.count`. The value of odata.count represents the total number of members available in the Resource Collection. This count is not affected by the `$top` or `$skip` query parameters.
+The total number of resources (Members) available in a Resource Collection is represented in the count property. The count property is named `Members@odata.count`. The value of odata.count represents the total number of members available in the Resource Collection. This count is not affected by the `$top` or `$skip` query parameters.
 
  - enum individual members
  - oData.count
@@ -344,25 +344,25 @@ A JSON object representing a Resource Collection may include additional annotati
 
 where
 
-  - Namespace = the name of the namespace where the annotation term is defined. This namespace shall be referenced by the metadata document specified in the context url of the request.
+  - Namespace = the name of the namespace where the annotation term is defined. This namespace shall be referenced by the metadata document specified in the context URL of the request.
   - TermName = the name of the annotation term being applied to the Resource Collection.
 
 The client can get the definition of the annotation from the service metadata, or may ignore the annotation entirely, but should not fail reading the response due to unrecognized annotations, including new annotations defined within the Redfish namespace.
 
-### The order of Members
+### Order of Members
 
 Collections are arrays of oData objects. The oData objects contain IDs of resources.
 
-The order in which Members exist in a collection is deterministic, but the members are not sorted. In other words, if you request a collection, assuming that the members have not changed since your last request, the order will be the same. However, the order of the members are not sorted by any specific criteria.
+The order in which Members exist in a collection is deterministic, but the members are not sorted. In other words, if you request a collection, assuming that the members have not changed since your last request, the order will be the same. However, the order of the members is not sorted by any specific criteria.
 
 
-### Examples of Commonly Used Collections
+### Examples of commonly used collections
 
 #### Collection of Systems
 
-A System represents the logical view of a computer system, a logical view as seen from the operating system (OS) level.
+A System represents the logical view of a computer system as seen from the operating system (OS) level.
 
-Any subsystem accessible from the host CPU is represented in a System resource. Each instance of a System includes CPUs, memory and other components. Each computer System can be contained as a member of a Systems collection.
+Any subsystem accessible from the host CPU is represented in a System resource. Each instance of a System includes CPUs, memory, and other components. Each computer System can be contained as a member of a Systems collection.
 
 <!---
 [//]: #PLACEHOLDER:-  include fragment for Systems Collection here
@@ -371,9 +371,9 @@ Any subsystem accessible from the host CPU is represented in a System resource. 
 
 #### Collection of Chassis
 
-The Chassis collection contains resources that represent the physical aspects of the infrastructure. You can think of this as the properties you might need to locate the unit with your hands, or to identify, install or service a “computer”.
+The Chassis collection contains resources that represent the physical aspects of the infrastructure. You can think of this collection as the properties you might need to locate the unit with your hands, or to identify, install or service a “computer”.
 
-A Chassis is roughly defined as a physical view of a computer system as seen by a human. A single Chassis resource can house sensors, fans and other components. Racks, enclosures and blades are examples of Chassis resources included in the Chassis collection.
+A Chassis is roughly defined as a physical view of a computer system as seen by a human. A single Chassis resource can house sensors, fans, and other components. Racks, enclosures, and blades are examples of Chassis resources included in the Chassis collection.
 
 The Redfish protocol allows the representation of a Chassis contained within another Chassis.
 
@@ -392,11 +392,11 @@ A Managers collection contains BMCs, Enclosure Managers or any other component m
 # Working with Settings
 
 
-The state of a resource represents the current state. By contrast, the settings resource represents the future intended state of the resource. This property is always associated with a resource through the Redfish.Settings annotation.
+The state of a resource represents the current state <!--status or condition? Use a synonym?-->. By contrast, the settings resource represents the future intended state of the resource. This property <!--which property? Settings? Is it ok to interchange resource and property or is it the Settings resource property?-->is always associated with a resource through the Redfish.Settings annotation.
 
-The state of a resource can be changed directly by sending a POST of an action or PUT request to the service.
+The state of a resource can be changed directly by sending a POST of an action or a PUT request to the service.
 
-The state of a resource can be changed indirectly by an event such as when a user reboots a machine outside of the Redfish Service.
+The state of a resource can be changed indirectly by an event such as when a user reboots a machine outside of the Redfish service.
 
 # Annotations
 
@@ -420,7 +420,7 @@ HTTP response status codes alone often do not provide enough information to enab
 
 Error responses provide more meaningful and deterministic error information.
 
-A Redfish Service may provide multiple error responses in the HTTP response in order to provide the client with as much information about the error situation as it can. Additionally, the service may provide Redfish standardized errors, OEM defined errors or both depending on the implementation's ability to convey the most useful information about the underlying error.
+A Redfish service may provide multiple error responses in the HTTP response in order to provide the client with as much information about the error situation as possible. Additionally, the service may provide Redfish-standardized errors, OEM-defined errors, or both, depending on the implementation's ability to convey the most useful information about the underlying error.
 
 Error responses are defined by an extended error resource, represented as a single JSON object with a property named "error" with the following properties.
 
@@ -456,11 +456,11 @@ The following snippet shows a fragment of an error response.
 
 
 
-# Redfish Schema Details
+# Redfish Schema details
 
 # Excluded Properties
 
-The Excluded Properties section removes properties from any schema section.  If they require documentation, it should be included in the Introduction section of this document
+The Excluded Properties section removes properties from any schema section.  If the excluded properties require documentation, include it in the Introduction section of this document.
 
 ## @odata.context
 ## @odata.type
@@ -482,19 +482,19 @@ Collections ...
 ## ComputerSystem
 
 
-### Property Details
+### Property Details <!--We have a heading with this name already. Do we need to differentiate?-->
 
 #### UUID
 
-The value of this property contains a universal unique identifier number for the system.  Clients should consider the value of the property to be opaque and should not interpret any sub-fields within the UUID, but comparisons between UUID representations should always be case-insensitive.
+The value of this property contains a universal unique identifier number for the system.  Clients should consider the value of the property to be opaque and should not interpret any subfields within the UUID, but comparisons between UUID representations should always be case-insensitive.
 The format of the string follows the 35-character string format specified in RFC4122 of form "xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" where each x represents a hex value 0-1,a-f.
 
-If the computer system supports SMBIOS, then the string should be formed from the raw binary 16-byte SMBIOS UUID structure.  This allows out-of-band clients to correlate the UUID that in-band agents are reading from SMBIOS with the UUID represented out-of-band via the Redfish API.
+If the computer system supports SMBIOS,  the string should be formed from the raw binary 16-byte SMBIOS UUID structure.  This <!--configuration-->allows out-of-band clients to correlate the UUID that in-band agents are reading from SMBIOS with the UUID represented out-of-band via the Redfish API.
 
 The SMBIOS 2.6+ specification specifies the proper algorithm for converting the raw binary SMBIOS 16-byte structure into the canonical  string format of form "xxxxxx-xxxx-xxxx-xxxx-xxxxxx").  Redfish services should follow the SMBIOS 2.6+ specification for implementing this conversion.
 WMI and Linux dmidecode also follow the SMBIOS guidelines.
 
-Specifically, since RFC4122 defines that the canonical string value should follow network byte ordering, and since SMBIOS represents the UUID as five fields shown below:
+Specifically, because RFC4122 defines that the canonical string value should follow network byte ordering, and because SMBIOS represents the UUID as five fields shown below:
 
     {
      DWORD    time_low,
@@ -523,16 +523,16 @@ and the C-code to convert the raw SMBIOS UUID struct in a little-endian system t
         raw_smbios_uuid[10],raw_smbios_uuid[11],raw_smbios_uuid[12],raw_smbios_uuid[13],raw_smbios_uuid[14],raw_smbios_uuid[15]
         );
 
-This will create the same canonical formated string as WMI and dmidecode for little-endian X86 systems.
-In the case that the computer architecture is not little-endian, then the conversion and canonical representation should be the same as the OS APIs such as WMI and dmidecode.
+This <!--noun-->will create the same canonical formatted string as WMI and dmidecode for little-endian X86 systems.
+In the case that the computer architecture is not little-endian,  the conversion and canonical representation should be the same as the OS APIs such as WMI and dmidecode.
 
-Note that as specified in RFC4122, the fields in the string should be zero-filled hex values as shown in the conversion code above so that the overall string length and format is of the form xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx.
+Note that as specified in RFC4122, the fields in the string should be zero-filled hex values, as shown in the conversion code above, so that the overall string length and format is of the form xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx.
 
-Regarding the case of the hex values:  RFC4122 specifies that on output the hex values should be lower-case, but that clients should use case-insensitive comparison on input.  Most modern scripting languages typically also represent hex values in lower-case following the RFC.
-However, dmidecode, WMI and some Redfish implementations currently use upper-case for UUID on output.
+Regarding the case of the hex values:  RFC4122 specifies that on output, the hex values should be lowercase characters, but that clients should use case-insensitive comparison on input.  Most modern scripting languages typically also represent hex values in lowercase characters following the RFC.
+However, dmidecode, WMI and some Redfish implementations currently use uppercase characters for UUID on output.
 
-Therefore, for new Redfish implementations, the recommendation is to follow RFC4122 and output using lower-case hex values when converting from the SMBIOS raw binary data as shown in the code example above.
-However, Redfish implementations and OS APIs MAY also output in uppercase and clients MUST therefore compare UUIDs using a case-insensitive compares (as recommended by RFC4122).
+Therefore, for new Redfish implementations, the recommendation is to follow RFC4122 and output using lowercase hex values when converting from the SMBIOS raw binary data as shown in the code example above.
+However, Redfish implementations and OS APIs MAY also output in uppercase and clients MUST therefore compare UUIDs using a case-insensitive comparisons (as recommended by RFC4122).
 
 ## Processor
 
@@ -542,9 +542,9 @@ However, Redfish implementations and OS APIs MAY also output in uppercase and cl
 
 This object's properties shall contain values dependent on the value of the ProcessorArchitecture property, as listed in the sections below:
 
-#### VendorId
+#### VendorId<!--Capital D ID?-->
 
-This property shall contain a 12 byte, little-endian ASCII string derived from register values resulting from the execution of the CPUID instruction.  The value shall be constructed using the following algorithm:
+This property shall contain a 12-byte, little-endian ASCII string derived from register values resulting from the execution of the CPUID instruction.  The value shall be constructed by using the following algorithm:
 
 ~~~
 k=0;
@@ -556,25 +556,25 @@ foreach reg (cpuid.0.ebx, cpuid.0.edx, cpuid.0.ecx){ ##NB: order must be ebx, ed
 
 #### IdentificationRegisters
 
-This property shall contain the register contents resulting from the exeuction of the CPUID instruction.
+This property shall contain the register contents resulting from the execution of the CPUID instruction.
 
 #### EffectiveFamily
 
-This property shall contain a value derived from register values resulting from the execution of the CPUID instruction.  The value shall use the following forumula:
+This property shall contain a value derived from register values resulting from the execution of the CPUID instruction.  The value shall use the following formula:
 ~~~
 ((cpuid.1.eax & 0x0ff00000) >> 20) + ((cpuid.1.eax & 0x00000f00) >> 8)  
 ~~~
 
 #### EffectiveModel
 
-This property shall contain a value derived from register values resulting from the execution of the CPUID instruction.  The value shall use the following forumula:
+This property shall contain a value derived from register values resulting from the execution of the CPUID instruction.  The value shall use the following formula:
 ~~~
 ((cpuid.1.eax & 0x000f0000) >> 12) + ((cpuid.1.eax & 0x000000f0) >> 4)
 ~~~
 
 #### Step
 
-This property shall contain a value derived from register values resulting from the execution of the CPUID instruction.  The value shall use the following forumula:
+This property shall contain a value derived from register values resulting from the execution of the CPUID instruction.  The value shall use the following formula:
 ~~~
 (cpuid->eax & 0xf)
 ~~~
