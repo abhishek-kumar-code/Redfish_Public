@@ -91,7 +91,6 @@ OData defines a set of common RESTful conventions, which provides for interopera
 The following code fragment shows an example of a request that retrieves the serial number from a Redfish service:
 
 ```Python
-#code fragment in Python
 rawData = urllib.urlopen('https://192.168.1.135/redfish/v1/Systems/1')
 jsonData = json.loads(rawData)
 print ('SN: ' + jsonData['SerialNumber'])
@@ -169,50 +168,9 @@ The Description property is used to convey a human-readable description of the r
 
 ## Status
 
-The `Status` property is common to all Redfish schema.
+The `Status` property is common to many Redfish schema.
 
-|     |     |     |
-| --- | --- | --- |
-| **Health** | string<br><br>*read-only* | This <!--part? status? -->represents the health state of this resource in the absence of its dependent resources. *See <a href= "###Property details"> Property details</a> for more information about this property.* |
-| **HealthRollup** | string<br><br>*read-only* | This <!--part? status? -->represents the overall health state from the view of this resource. *See <a href= "###Property details"> Property details</a> for more information about this property.* |
-| **Oem** {} | object<br><br>*read-write* | Oem extension object. | <!--Cathi: Should Oem be OEM?-->
-| **State** | string<br><br>*read-only* | This <!--part? status? -->indicates the known state of the resource, such as if it is enabled. *See <a href= "###Property details"> Property details</a> for more information about this property.*|
-
-#include_fragment example_fragments/Status.json
-
-### Property details
-
-#### Health:
-
-| string | Description |
-| --- | --- |
-| Critical | A critical condition exists that requires immediate attention. |
-| OK | Normal. |
-| Warning | A condition exists that requires attention. |
-
-#### HealthRollup:
-
-| string | Description |
-| --- | --- |
-| Critical | A critical condition exists that requires immediate attention. |
-| OK | Normal. |
-| Warning | A condition exists that requires attention. |
-
-#### State:
-
-| string | Description |
-| --- | --- |
-| Absent | This function or resource is not present or not detected. |
-| Deferring | The element will not process any commands but will queue new requests. |
-| Disabled | This function or resource has been disabled. |
-| Enabled | This function or resource has been enabled. |
-| InTest | This function or resource is undergoing testing. |
-| Quiesced | The element is enabled but only processes a restricted set of commands. |
-| StandbyOffline | This function or resource is enabled, but awaiting an external action to activate it. |
-| StandbySpare | This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it. |
-| Starting | This function or resource is starting. |
-| UnavailableOffline | This function or resource is present but cannot be used. |
-| Updating | The element is updating and may be unavailable or degraded. |
+#include_fragment http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status
 
 
 ## Links
