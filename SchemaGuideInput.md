@@ -2,7 +2,7 @@
 DocTitle: Supplemental Material for the Redfish Resource and Schema Guide
 DocClass: DMTF Informational
 DocVersion: '0.9.0'
-modified: '2017-04-28'
+modified: '2017-05-07'
 status: work in progress
 released: false
 copyright: '2017'
@@ -40,7 +40,7 @@ A "JSONPayload" section can contain a JSON payload example for this schema.  Thi
   <img src="http://redfish.dmtf.org/sites/all/themes/dmtf2015/images/dmtf-redfish-logo.png" alt="DMTF Redfish" width=180>
 </p>
 
-# Redfish Schema <!-- User? --> Guide
+# Redfish Schema User Guide
 
 <!---
  -  Introduction to Redfish goes here.
@@ -49,31 +49,29 @@ A "JSONPayload" section can contain a JSON payload example for this schema.  Thi
  -  Other sources of information
  --->
 
-# Introduction
+The Redfish standard provides a solution for managing cloud-based and web-based data center infrastructures. This user guide explains how to use the Redfish schema to communicate with a Redfish service.
 
-Cloud-based and web-based data center infrastructures require scalability. This is often achieved through large quantities of simple servers. This hyperscale usage model requires a new approach to systems management. The Redfish Scalable Platforms Management ("Redfish") protocol addresses these needs by providing a standard for out-of-band systems management.
+# Overview
 
-The Redfish standard comprises a set of specifications maintained by the Distributed Management Task Force (DMTF). The Redfish standard defines a protocol that uses RESTful interfaces to provide access to data and operations associated with the management of systems and networks. One of the strengths of the Redfish protocol is that it works with a wide range of servers: from stand-alone servers to rack-mount and bladed environments to large-scale data centers and cloud environments.
+The Redfish standard comprises a set of specifications maintained by the Distributed Management Task Force (DMTF). The standard defines a protocol that uses RESTful interfaces to provide access to data and operations associated with the management of systems and networks. One of the strengths of the Redfish protocol is that it works with a wide range of servers: from stand-alone servers to rack-mount and bladed environments to large-scale data centers and cloud environments.
 
-The Redfish protocol was designed as an open industry standard to meet scalability requirements in multivendor deployments. It easily integrates with commonly used tools, using RESTful interfaces to perform operations and JSON and OData formats for data payloads.
+The Redfish standard addresses several key issues for infrastructures that require scalability. Large infrastructures often consist of many simple servers of different makes and types. This hyperscale usage model requires a new approach to systems management. The Redfish Scalable Platforms Management ("Redfish") protocol addresses these needs by providing a standard protocol based on out-of-band systems management.
+
+With the above goals in mind, the Redfish protocol was designed as an open industry standard to meet scalability requirements in multivendor deployments. It easily integrates with commonly used tools, using RESTful interfaces to perform operations and using JSON and OData formats for data payloads.
 
 ## About this document
 
 This document explains how to use and understand the schemas of the Redfish protocol.
 
-This document includes the following sections:<!-- will these be in an unordered list?-->
-- Introduction: Overview of the Redfish protocol
-- Common Redfish Properties: Explanation of properties used across schemas
-- Redfish Schema Details: Definitions of schema elements
-- Excluded Properties: List of properties not included in the details section
-- Excluded Schema: List of schema not covered by this document
-- Schema Supplement: Schema details and sample payloads.<!--removed verb to make parallel-->
+This document includes the following sections:<!-- will these be in an unordered list? MAC:-->
+- Overview: High level explanation of the Redfish protocol and this document
+- Common Properties: Explanation of properties found in most schema
+- Working with 
+- Redfish Schema Details: Definitions of schema and their properties and elements
+- Schema Supplement: Schema details and sample payloads.
 
 ## Who should read this document?
 
-<!---
-[//]: #OUTLINE:-  Purpose of the document
---->
 This document is useful to people who want to understand how to use the Redfish API. This includes application developers who want to create client-side software to communicate with a Redfish service, and other consumers of the API.
 
 ## Why REST, JSON and OData?
@@ -107,39 +105,26 @@ SN: 1A87CA442K
 
   * (This example uses a Redfish ComputerSystem resource; authentication is not shown.)
 
-## Schema versus resources
+## Schema versus resources versus services
 
-A schema is a data model.
+A schema is a data model.  Redfish uses the JSON format to define each schema. The model defines the relationship between objects in the system, and defines which objects can contain or be contained by other objects. Think of the schema as the data definitions.
 
-A resource is an actual object or component. In the terminology of RESTful APIs, a URI or URL is a pointer (or end point) that represents the resource.
+A resource is an actual object or component. In the terminology of RESTful APIs, a URI or URL is a pointer (or end point) that represents the resource. Think of the resource as an object in a system, whose values and rules for each of its properties are  contained in a specific Redfish JSON payload.
+
+A payload is the packet of data that contains the values associated with a specific resource. Redfish also defines OData 'annotations' that can be thought of as metadata delivered in a payload.
+
+A Redfish service is any product that implements the Redfish specification. It is the software or firmware that implements the specification, and serves up responses.  When a Refish service receives a properly formatted HTTP request, it returns an HTTP response that contains information about the requested resource.
+
 
 ## Locating a Redfish service
 
+Every Redfish service contains a base URI or URL that indicates the root of all resources.
 
-## Examples of common tasks
+To locate the root, you need:
 
-The following examples show API calls that you could use to perform some common tasks.
+- the IP address or name of the server 
+- the path to the Redfish root
 
-### Reading the service root
-
-#### Without authentication
-
-#### With authentication
-
-### Creating a session
-
-### Reboot/power cycle the server
-
-### Change boot order/device
-
-### Set power thresholds
-
-### Retrieve “IPMI class” data
-
-The following example shows the retrieval of the health state of a server.
-
-• Basic server identification and asset info
-• Health state
 
 
 ## Where can I find more information?
@@ -155,7 +140,7 @@ Redfish Developer Hub
   http://redfish.dmtf.org
 
 SPMF (Working group that maintains the Redfish standard)
--  Companies involved, upcoming schedules & future work, charter, and information about joining:
+-  Companies involved, upcoming schedules and future work, charter, and information about joining:
   http://www.dmtf.org/standards/spmf
 
 
@@ -241,7 +226,9 @@ The Members property of a Resource Collection identifies the members of the coll
 
 ## RelatedItem
 
-The `RelatedItem` property is represented as set of links to a resource (or part of a resource) as defined by that resource's schema definition. This <!--representation-->is not intended to be a strong linking methodology like other references. Instead it is used to show a relationship between elements or sub-elements in disparate parts of the service. For example, `Fans` may be in one area of the implementation and <!--in?-->processors in another. RelatedItem can be used to inform the client that one is related to the other (in this case, the Fan is cooling the processor).
+The `RelatedItem` property is represented as a set of links. The links point to a resource, or part of a resource, as defined by that resource's schema definition. 
+
+This representation is not intended to be a strong linking methodology like other references. Instead it is used to show a relationship between elements or sub-elements in disparate parts of the service. For example, `Fans` may be in one area of the system and `Processors` in another area of the system. It could be that the relationship between the two is not obvious. The `RelatedItem` property can be used to show that one is related to the other. In this example, it might indicate that a specific fan is cooling a specific processor.
 
 
 ## Actions
@@ -279,8 +266,6 @@ Because our "@odata.type" annotations are written as fragments, rather than full
 Description of @odata.id
 
 
-
-
 # Working with Resource Collections
 
 In the Redfish protocol a URI can represent a collection of similar resources. A Resource Collection can represent a group of Systems, Chassis, Managers, or a group of other kinds of resources. For example:
@@ -288,7 +273,6 @@ In the Redfish protocol a URI can represent a collection of similar resources. A
  - /redfish/v1/Systems
  - /redfish/v1/Chassis
  - /redfish/v1/Managers
- - etc. <!--necessary?-->
 
 The Members of a Resource Collection are returned as a JSON array, where each element of the array is a JSON object. The name of the property representing the members of the collection is `Members`.
 
@@ -297,7 +281,7 @@ The Members of a Resource Collection are returned as a JSON array, where each el
 
 Some of the common operations associated with collections are as follows:
 
-### GET a Resource Collection
+### A GET request for a Resource Collection
 
 To read the contents of a Resource Collection, send an HTTP GET request to the URI of the Collection. You can obtain the URI for a collection from a resource identifier property returned in a previous request.  For example, the `Links` property of a previously returned resource can contain a URI that points to a collection.
 
@@ -310,22 +294,18 @@ To request a subset of Members of the Resource Collection, use the paging query 
 
 These paging query options apply specifically to the `Members` array property within a Resource Collection.
 
-When a response represents only a part of a Resource Collections, the response includes a next link property named `Members@odata.nextLink`. The value of the `@odata.nextlink` property is a URL to a resource with the same @odata.type that  contains the next set of partial members. The `@odata.nextlink` property is only present if the number of Members in the Resource Collection is greater than the number of members returned.
-
-#### The response <!--I tried to make this heading subordinate to the previous one. We might want to add a few clarifying words: Response to a GET request or something like that. -->
+### The response to a GET request for a Resource Collection
 
 A Redfish service returns a Resource Collection as a JSON object in an HTTP response. The JSON object can include the following properties:
 
 | Property  | Description   |
 | -- | -- |
-| @odata.context | Describes the source of the payload. |
-| @odata.count  |  Displays the total number of Members in the Resource Collection |
-|  
-  - context
-  - resource count
-  - array of Members
-  - a "next link" for partial results
+| @odata.context  | Describes the source of the payload. |
+| @odata.count    | Displays the total number of Members in the Resource Collection |
+| @odata.members  | The array of the members in the collection    |
+| @odata.nextLink | Indicates the "nextLink" when the payload contains partial results |
 
+When a response represents only a part of a Resource Collection, the response includes a next link property named `Members@odata.nextLink`. The value of the `@odata.nextlink` property is a URL to a resource with the same @odata.type that  contains the next set of partial members. The `@odata.nextlink` property is only present if the number of Members in the Resource Collection is greater than the number of members returned.
 
 ### Iterating through the members of a collection
 
@@ -333,8 +313,6 @@ A Resource Collection includes a count of the total number of entries in its "Me
 
 The total number of resources (Members) available in a Resource Collection is represented in the count property. The count property is named `Members@odata.count`. The value of odata.count represents the total number of members available in the Resource Collection. This count is not affected by the `$top` or `$skip` query parameters.
 
- - enum individual members
- - oData.count
 
 ### Additional notations
 
@@ -389,40 +367,32 @@ A Managers collection contains BMCs, Enclosure Managers or any other component m
 [//]: #PLACEHOLDER:-  include fragment for Managers Collection here
 --->
 
-# Working with Settings
-
-
-The state of a resource represents the current state <!--status or condition? Use a synonym?-->. By contrast, the settings resource represents the future intended state of the resource. This property <!--which property? Settings? Is it ok to interchange resource and property or is it the Settings resource property?-->is always associated with a resource through the Redfish.Settings annotation.
-
-The state of a resource can be changed directly by sending a POST of an action or a PUT request to the service.
-
-The state of a resource can be changed indirectly by an event such as when a user reboots a machine outside of the Redfish service.
-
-# Annotations
-
-
-
-
-# PATCH semantics
-
-## Using PATCH in arrays
-
-## Allowable values annotation
-
-
 # Error messages
+
+A Redfish service typically returns two types of error messages:  
+
+- HTTP response codes 
+- Error responses
 
 ## HTTP response codes
 
-## Error responses
+The HTTP reponse codes are the standard codes returned by all HTTP servers. 
 
-HTTP response status codes alone often do not provide enough information to enable deterministic error semantics. For example, if a client attempts a PATCH operation and some of the properties do not match while others are not supported, simply returning an HTTP status code of 400 does not indicate to the client which values were in error.
+These include familiar HTTP codes such as HTTP response code `200 OK`, which means that the HTTP request succeeded.
 
-Error responses provide more meaningful and deterministic error information.
+For more information about the meaning of these codes when returned from a Redfish service, see the latest Redfish specification at:
 
-A Redfish service may provide multiple error responses in the HTTP response in order to provide the client with as much information about the error situation as possible. Additionally, the service may provide Redfish-standardized errors, OEM-defined errors, or both, depending on the implementation's ability to convey the most useful information about the underlying error.
+  - http://www.dmtf.org/standards/redfish
 
-Error responses are defined by an extended error resource, represented as a single JSON object with a property named "error" with the following properties.
+## Redfish error responses
+
+HTTP response status codes alone often do not provide enough information to determine the nature of an error. For example, if you send a PATCH request and some of the properties do not match while others are not supported, simply returning an HTTP status code of 400 does not clearly indicate which values were in error.
+
+Redfish error responses provide more meaningful and deterministic error information.
+
+A Redfish service can provide multiple error responses in an HTTP response in order to provide as much information about the error situation as possible. Additionally, a Redfish service can provide Redfish-standardized errors, OEM-defined errors, or both, depending on what is available from a perticular service.
+
+Error responses are defined by an extended error resource, represented as a single JSON object.  The JSON object is part of a property named "error".
 
 ### Example error response
 
@@ -453,7 +423,7 @@ The following snippet shows a fragment of an error response.
 
 ```
 
-
+The above snippet shows a JSON payload with error information. In this example, the `code` property shows that the error is of a type `Base.1.0.GeneralError`.  The property annotation `@Message.ExtendedInfo` provides more details about the nature of the error.
 
 
 # Redfish Schema details
