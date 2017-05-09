@@ -21,7 +21,7 @@ The Redfish Interoperability Profile is a JSON document which contains Schema-le
 
 All profile entries (at the Profile, Resource, or Property level) are "additive".  That is, each requirement can only apply more rigid requirements which override less rigid requirements.
 
-Profile requirements do not allow for exclusions of data.  Implementations are always able to provide more data in their resources than required by a profile, as an implementation likely addresses multiple use cases or Profiles.
+Profile requirements do not allow for exclusions of data.  Implementations are able to provide more data in their resources than required by a profile, as an implementation likely addresses multiple use cases or Profiles.  This include both standard properties and OEM extensions.
    
 ## Profile features
 

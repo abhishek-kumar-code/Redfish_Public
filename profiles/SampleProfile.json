@@ -7,8 +7,7 @@
 	"ContactInfo": "pizza@contoso.com",
 	"RequiredProfiles": {
 		"DMTFBasic": {
-			"MinVersion": "1.0.0",
-			"MaxVersion": "1.99.0"
+			"MinVersion": "1.0.0"
 		},
 		"ContosoPizza": {
 			"OwningEntity": "Other",
@@ -36,7 +35,7 @@
 			"MinVersion": "1.1.0",
 			"PropertyRequirements": {
 				"SerialNumber": {
-					"Requirement": "Always"
+					"Requirement": "Mandatory"
 				},
 				"Manufacturer": {},
 				"Model": {
@@ -46,7 +45,7 @@
 					"Requirement": "Recommended",
 					"Conditions": [{
 						"Purpose": "Physical and composed Systems must have a writable Indicator LED",
-						"Requirement": "Always",
+						"Requirement": "Mandatory",
 						"KeyCondition": "AnyOf",
 						"KeyProperty": "SystemType",
 						"KeyValues": ["Physical", "Composed"],
@@ -56,11 +55,11 @@
 			},
 			"ActionRequirements": {
 				"Reset": {
-					"Requirement": "Always",
+					"Requirement": "Mandatory",
 					"Parameters": {
 						"ResetType": {
 							"AllowableValues": ["ForceOff", "PowerCycle"],
-							"Requirement": "Always"
+							"Requirement": "Mandatory"
 						}
 					}
 				}
@@ -71,7 +70,7 @@
 			"Requirement": "Recommended",
 			"Conditions": [{
 				"SubordinateToResource": ["Manager", "EthernetInterfaceCollection"],
-				"Requirement": "Always"
+				"Requirement": "Mandatory"
 			}],
 			"PropertyRequirements": {
 				"MACAddress": {},
@@ -85,15 +84,15 @@
 					"Requirement": "Recommended",
 					"Conditions": [{
 						"SubordinateToResource": ["ComputerSystem", "EthernetInterfaceCollection"],
-						"Requirement": "Always"
+						"Requirement": "Mandatory"
 					}]
 				},
 				"IPv4Addresses": {
-					"Requirement": "Always",
+					"Requirement": "Mandatory",
 					"MinCount": 1,
 					"Conditions": [{
 						"SubordinateToResource": ["ComputerSystem", "EthernetInterfaceCollection"],
-						"Requirement": "Always",
+						"Requirement": "Mandatory",
 						"MinCount": 2
 					}]
 				}
@@ -117,7 +116,7 @@
 					}
 				},
 				"Temperatures": {
-					"Requirement": "Always",
+					"Requirement": "Mandatory",
 					"MinCount": 2,
 					"PropertyRequirements": {
 						"ReadingCelsius": {},
@@ -164,7 +163,7 @@
 			"OwningEntity": "Other",
 			"OwningEntityName": "Contoso",
 			"Repository": "contoso.com/registries",
-			"Requirement": "Always"
+			"Requirement": "Mandatory"
 		}
 	}
 }
