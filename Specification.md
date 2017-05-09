@@ -1946,7 +1946,7 @@ Current Configuration resources represent the service's knowledge of the current
 
 #### Settings
 
-Setting resources represent the future state and configuration of the resource.  This property is always associated with a resource through the Redfish.Settings annotation.  Where the resource represents the current state, the settings resource represents the future intended state.  The state of the resource is changed either directly, such as with a POST of an action or PUT request or indirectly, such as when a user reboots a machine outside of the Redfish Service.
+Setting resources represent the future state and configuration of the resource. For resources that support a future state and configuration, the response shall contain a property with the "@Redfish.Settings" annotation. Where the resource represents the current state, the settings resource represents the future intended state. The state of the resource is changed either directly, such as with a POST of an action or PUT request or indirectly, such as when a user reboots a machine outside of the Redfish Service. A client can also indicate its preference of when to apply future configuration for a given Settings resource. See properties defined in the "Settings" Redfish Schema for details of when the service actually applies the future state and configuration. 
 
 #### Services
 
