@@ -309,9 +309,20 @@ A System represents the logical view of a computer system as seen from the opera
 
 Any subsystem accessible from the host CPU is represented in a System resource. Each instance of a System includes CPUs, memory, and other components. Each computer System can be contained as a member of a Systems collection.
 
-<!---
-[//]: #PLACEHOLDER:-  include fragment for Systems Collection here
---->
+~~~json
+{
+    "@odata.type": "#ComputerSystemCollection.ComputerSystemCollection",
+    "Name": "Computer System Collection",
+    "Members@odata.count": 1,
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/Systems/437XR1138R2"
+        }
+    ],
+    "@odata.context": "/redfish/v1/$metadata#ComputerSystemCollection.ComputerSystemCollection",
+    "@odata.id": "/redfish/v1/Systems"
+}
+~~~
 
 
 #### Collection of Chassis
@@ -322,17 +333,57 @@ A Chassis is roughly defined as a physical view of a computer system as seen by 
 
 The Redfish protocol allows the representation of a Chassis contained within another Chassis.
 
-<!---
-[//]: #PLACEHOLDER:-  include fragment for Chassis Collection here
---->
+~~~json
+{
+    "@odata.type": "#ChassisCollection.ChassisCollection",
+    "Name": "Chassis Collection",
+    "Members@odata.count": 5,
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/Chassis/MultiBladeEnclosure"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/Blade1"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/Blade2"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/Blade3"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/Blade4"
+        }
+    ],
+    "@odata.context": "/redfish/v1/$metadata#ChassisCollection.ChassisCollection",
+    "@odata.id": "/redfish/v1/Chassis"
+}
+~~~
 
 #### Collection of Managers
 
 A Managers collection contains BMCs, Enclosure Managers or any other component managing the infrastructure. Managers handle various management services and can also have their own components (such as NICs).
 
-<!---
-[//]: #PLACEHOLDER:-  include fragment for Managers Collection here
---->
+~~~json
+{
+    "@odata.type": "#ManagerCollection.ManagerCollection",
+    "Name": "Manager Collection",
+    "Members@odata.count": 3,
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/Managers/EnclosureManager"
+        },
+        {
+            "@odata.id": "/redfish/v1/Managers/Blade1BMC"
+        },
+        {
+            "@odata.id": "/redfish/v1/Managers/Blade2BMC"
+        }
+    ],
+    "@odata.context": "/redfish/v1/$metadata#ManagerCollection.ManagerCollection",
+    "@odata.id": "/redfish/v1/Managers"
+}
+~~~
 
 # Error messages
 

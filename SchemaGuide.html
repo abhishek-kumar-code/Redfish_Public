@@ -363,23 +363,74 @@ pre.code{
 <h4>Collection of Systems</h4>
 <p>A System represents the logical view of a computer system as seen from the operating system (OS) level.</p>
 <p>Any subsystem accessible from the host CPU is represented in a System resource. Each instance of a System includes CPUs, memory, and other components. Each computer System can be contained as a member of a Systems collection.</p>
-<!---
-[//]: #PLACEHOLDER:-  include fragment for Systems Collection here
---->
+<div class="codehilite"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#ComputerSystemCollection.ComputerSystemCollection&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Computer System Collection&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Members@odata.count&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nt">&quot;Members&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/437XR1138R2&quot;</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#ComputerSystemCollection.ComputerSystemCollection&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems&quot;</span>
+<span class="p">}</span>
+</pre></div>
+
 
 <h4>Collection of Chassis</h4>
 <p>The Chassis collection contains resources that represent the physical aspects of the infrastructure. You can think of this collection as the properties you might need to locate the unit with your hands, or to identify, install or service a “computer”.</p>
 <p>A Chassis is roughly defined as a physical view of a computer system as seen by a human. A single Chassis resource can house sensors, fans, and other components. Racks, enclosures, and blades are examples of Chassis resources included in the Chassis collection.</p>
 <p>The Redfish protocol allows the representation of a Chassis contained within another Chassis.</p>
-<!---
-[//]: #PLACEHOLDER:-  include fragment for Chassis Collection here
---->
+<div class="codehilite"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#ChassisCollection.ChassisCollection&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Chassis Collection&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Members@odata.count&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="nt">&quot;Members&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/MultiBladeEnclosure&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/Blade1&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/Blade2&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/Blade3&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/Blade4&quot;</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#ChassisCollection.ChassisCollection&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis&quot;</span>
+<span class="p">}</span>
+</pre></div>
+
 
 <h4>Collection of Managers</h4>
 <p>A Managers collection contains BMCs, Enclosure Managers or any other component managing the infrastructure. Managers handle various management services and can also have their own components (such as NICs).</p>
-<!---
-[//]: #PLACEHOLDER:-  include fragment for Managers Collection here
---->
+<div class="codehilite"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#ManagerCollection.ManagerCollection&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Manager Collection&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;Members@odata.count&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="nt">&quot;Members&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Managers/EnclosureManager&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Managers/Blade1BMC&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Managers/Blade2BMC&quot;</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#ManagerCollection.ManagerCollection&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Managers&quot;</span>
+<span class="p">}</span>
+</pre></div>
+
 
 <h1>Error messages</h1>
 <p>A Redfish service typically returns two types of error messages:  </p>
