@@ -1,10 +1,11 @@
 ---
-DocTitle: Supplemental Material for the Redfish Resource and Schema Guide
-DocClass: DMTF Informational
-DocVersion: '0.9.0'
-modified: '2017-05-07'
-status: work in progress
-released: false
+DocTitle: Redfish Resource and Schema Guide
+DocNumber: '2046'
+DocClass: Informative
+DocVersion: '2017.1.0'
+modified: '2017-05-11'
+status: published
+released: true
 copyright: '2017'
 ---
 
@@ -36,21 +37,29 @@ A "JSONPayload" section can contain a JSON payload example for this schema.  Thi
 
 # Introduction
 
-<p align="center">
+<p align="right">
   <img src="http://redfish.dmtf.org/sites/all/themes/dmtf2015/images/dmtf-redfish-logo.png" alt="DMTF Redfish" width=180>
 </p>
+<p align="right">Document Identifier: <span class="dsp">DSP2046</span></p>
+<p align="right">Date: 2017-05-11</p>
+<p align="right">Version: <span class="version">2017.1.0</span></p>
+<br><br><br>
+<h1 class="title">Redfish Resource and Schema Guide</h1>
+<br><br><br><br><br>
 
-# Redfish Schema User Guide
-
-<!---
- -  Introduction to Redfish goes here.
- -  Purpose of the document
- -  Structure and usage
- -  Other sources of information
- --->
-
-The Redfish standard provides a solution for managing cloud-based and web-based data center infrastructures. This user guide explains how to use the Redfish schema to communicate with a Redfish service.
-
+<b><p>Document Class: Informative</p>
+<p>Document Status: <span class="status">Published</span></p>
+<p>Document Language: en-US</p></b>
+<br>
+   <p>Copyright Notice</p>
+    <p>Copyright &copy; 2016-2017 Distributed Management Task Force, Inc. (DMTF). All rights reserved.
+<br><br>
+  <p>DMTF is a not-for-profit association of industry members dedicated to promoting enterprise and systems management and interoperability. Members and non-members may reproduce DMTF specifications and documents, provided that correct attribution is given. As DMTF specifications may be revised from time to time, the particular version and release date should always be noted.</p>
+  <p>Implementation of certain elements of this standard or proposed standard may be subject to third party patent rights, including provisional patent rights (herein "patent rights"). DMTF makes no representations to users of the standard as to the existence of such rights, and is not responsible to recognize, disclose, or identify any or all such third party patent right, owners or claimants, nor for any incomplete or inaccurate identification or disclosure of such rights, owners or claimants. DMTF shall have no liability to any party, in any manner or circumstance, under any legal theory whatsoever, for failure to recognize, disclose, or identify any such third party patent rights, or for such party's reliance on the standard or incorporation thereof in its product, protocols or testing procedures. DMTF shall have no liability to any party implementing such standard, whether such implementation is foreseeable or not, nor to any patent owner or claimant, and shall have no liability or responsibility for costs or losses incurred if a standard is withdrawn or modified after publication, and shall be indemnified and held harmless by any party implementing the standard from any and all claims of infringement by a patent owner for such implementations.</p>
+  <p>For information about patents held by third-parties which have notified the DMTF that, in their opinion, such patent may relate to or impact implementations of DMTF standards, visit <a href="http://www.dmtf.org/about/policies/disclosures.php">http://www.dmtf.org/about/policies/disclosures.php</a>.</p>
+  <p>This document's normative language is English. Translation into other languages is permitted.</p>
+  <br>
+  
 # Overview
 
 The Redfish standard comprises a set of specifications maintained by the Distributed Management Task Force (DMTF). The standard defines a protocol that uses RESTful interfaces to provide access to data and operations associated with the management of systems and networks. One of the strengths of the Redfish protocol is that it works with a wide range of servers: from stand-alone servers to rack-mount and bladed environments to large-scale data centers and cloud environments.
@@ -300,9 +309,20 @@ A System represents the logical view of a computer system as seen from the opera
 
 Any subsystem accessible from the host CPU is represented in a System resource. Each instance of a System includes CPUs, memory, and other components. Each computer System can be contained as a member of a Systems collection.
 
-<!---
-[//]: #PLACEHOLDER:-  include fragment for Systems Collection here
---->
+~~~json
+{
+    "@odata.type": "#ComputerSystemCollection.ComputerSystemCollection",
+    "Name": "Computer System Collection",
+    "Members@odata.count": 1,
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/Systems/437XR1138R2"
+        }
+    ],
+    "@odata.context": "/redfish/v1/$metadata#ComputerSystemCollection.ComputerSystemCollection",
+    "@odata.id": "/redfish/v1/Systems"
+}
+~~~
 
 
 #### Collection of Chassis
@@ -313,17 +333,57 @@ A Chassis is roughly defined as a physical view of a computer system as seen by 
 
 The Redfish protocol allows the representation of a Chassis contained within another Chassis.
 
-<!---
-[//]: #PLACEHOLDER:-  include fragment for Chassis Collection here
---->
+~~~json
+{
+    "@odata.type": "#ChassisCollection.ChassisCollection",
+    "Name": "Chassis Collection",
+    "Members@odata.count": 5,
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/Chassis/MultiBladeEnclosure"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/Blade1"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/Blade2"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/Blade3"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/Blade4"
+        }
+    ],
+    "@odata.context": "/redfish/v1/$metadata#ChassisCollection.ChassisCollection",
+    "@odata.id": "/redfish/v1/Chassis"
+}
+~~~
 
 #### Collection of Managers
 
 A Managers collection contains BMCs, Enclosure Managers or any other component managing the infrastructure. Managers handle various management services and can also have their own components (such as NICs).
 
-<!---
-[//]: #PLACEHOLDER:-  include fragment for Managers Collection here
---->
+~~~json
+{
+    "@odata.type": "#ManagerCollection.ManagerCollection",
+    "Name": "Manager Collection",
+    "Members@odata.count": 3,
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/Managers/EnclosureManager"
+        },
+        {
+            "@odata.id": "/redfish/v1/Managers/Blade1BMC"
+        },
+        {
+            "@odata.id": "/redfish/v1/Managers/Blade2BMC"
+        }
+    ],
+    "@odata.context": "/redfish/v1/$metadata#ManagerCollection.ManagerCollection",
+    "@odata.id": "/redfish/v1/Managers"
+}
+~~~
 
 # Error messages
 
@@ -388,27 +448,50 @@ The above snippet shows a JSON payload with error information. In this example, 
 
 # Excluded Properties
 
-The Excluded Properties section removes properties from any schema section.  If the excluded properties require documentation, include it in the Introduction section of this document.
+The Excluded Properties section removes properties from the root level of any schema section.  Instances of the property within embedded objects are retained.  If the excluded properties require documentation, include it in the Introduction section of this document.
 
 ## @odata.context
 ## @odata.type
 ## @odata.id
+
+
+# Excluded Annotations
+
+These annotations are removed from the schema details in all cases.  If the excluded annotations require documentation, include it in the Introduction section of this document.
+
 ## *@odata.count
 ## *@odata.navigationLink
 
 # Excluded Schemas
 
-Some schemas are not enumerated here...
+Some schemas are excluded from the documentation for clarity.  Since all Redfish collections are based on the same structure, this is documented in the Introduction section to reduce repetition in the document.
 
 ## *Collection
 
-Collections ...
+
 
 
 # Schema Supplement
 
+## AccountService
+
+### Mockup
+mockups/DSP2046-examples/AccountService/index.json
+
+## Bios
+
+### Mockup
+mockups/DSP2046-examples/Systems/437XR1138R2/BIOS/index.json
+
+## Chassis
+
+### Mockup
+mockups/DSP2046-examples/Chassis/1U/index.json
+
 ## ComputerSystem
 
+### Mockup
+mockups/DSP2046-examples/Systems/437XR1138R2/index.json
 
 ### Property Details <!--We have a heading with this name already. Do we need to differentiate?-->
 
@@ -462,7 +545,60 @@ However, dmidecode, WMI and some Redfish implementations currently use uppercase
 Therefore, for new Redfish implementations, the recommendation is to follow RFC4122 and output using lowercase hex values when converting from the SMBIOS raw binary data as shown in the code example above.
 However, Redfish implementations and OS APIs MAY also output in uppercase and clients MUST therefore compare UUIDs using a case-insensitive comparisons (as recommended by RFC4122).
 
+## EthernetInterface
+
+### Mockup
+mockups/DSP2046-examples/Systems/437XR1138R2/EthernetInterfaces/12446A3B0411/index.json
+
+## EventService
+
+### Mockup
+mockups/DSP2046-examples/EventService/index.json
+
+## EventDestination
+
+### Mockup
+mockups/DSP2046-examples/EventService/Subscriptions/1/index.json
+
+## LogEntry
+
+### Mockup
+mockups/DSP2046-examples/Managers/BMC/LogServices/Log/Entries/1/index.json
+
+## LogService
+
+### Mockup
+mockups/DSP2046-examples/Managers/BMC/LogServices/Log/index.json
+
+## Manager
+
+### Mockup
+mockups/DSP2046-examples/Managers/BMC/index.json
+
+## ManagerAccount
+
+### Mockup
+mockups/DSP2046-examples/AccountService/Accounts/1/index.json
+
+## ManagerNetworkProtocol
+
+### Mockup
+mockups/DSP2046-examples/Managers/BMC/NetworkProtocol/index.json
+
+## Memory
+
+### Mockup
+mockups/DSP2046-examples/Systems/437XR1138R2/Memory/DIMM1/index.json
+
+## Power
+
+### Mockup
+mockups/DSP2046-examples/Chassis/1U/Power/index.json
+
 ## Processor
+
+### Mockup
+mockups/DSP2046-examples/Systems/437XR1138R2/Processors/CPU1/index.json
 
 ### Property Details
 
@@ -511,6 +647,59 @@ This property shall contain a value derived from register values resulting from 
 
 This property shall contain the 64-bit value contained in MSR 0x8B.
 
+
+## Role
+
+### Mockup
+mockups/DSP2046-examples/AccountService/Roles/Admin/index.json
+
+## ServiceRoot
+
+### Mockup
+mockups/DSP2046-examples/index.json
+
+## SessionService
+
+### Mockup
+mockups/DSP2046-examples/SessionService/index.json
+
+## Sessions
+
+### Mockup
+mockups/DSP2046-examples/SessionService/Sessions/1234567890ABCDEF/index.json
+
+## SessionService
+
+### Mockup
+mockups/DSP2046-examples/SessionService/index.json
+
+## SimpleStorage
+
+### Mockup
+mockups/DSP2046-examples/Systems/437XR1138R2/SimpleStorage/1/index.json
+
+## Thermal
+
+### Mockup
+mockups/DSP2046-examples/Chassis/1U/Thermal/index.json
+
+## VLanNetworkInterface
+
+### Mockup
+mockups/DSP2046-examples/Systems/437XR1138R2/EthernetInterfaces/12446A3B0411/VLANs/1/index.json
+
+## VirtualMedia
+
+### Mockup
+mockups/DSP2046-examples/Managers/BMC/VirtualMedia/CD1/index.json
+
 # Postscript
 
-This is the text that goes at the end of the file...
+## ANNEX A
+
+### Change log
+
+| Version  | Date     | Description     |
+| ---      | ---      | ---             |
+| 2017.1.0 | 2017-5-11| Initial release. |
+
