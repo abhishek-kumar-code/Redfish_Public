@@ -53,6 +53,30 @@ The RequiredProfiles object contains properties (of type object) that are named 
 | OwningEntityName | string | Name of the owning entity, when used with 'Other', follows 'Oem Property Naming' in the Redfish Specification |
 | MinVersion | string | The minimum version required by this Redfish Profile. If this property is absent, the minimum value shall be '1.0.0'.|
 
+### Example
+
+The following is an example of the top-level properties in a Profile, with two Required profiles included.
+
+~~~
+	"@odata.type": "RedfishProfile.v1_0_0.RedfishProfile",
+	"ProfileName": "Anchovy",
+	"Version": "1.0.2",
+	"Author": "Pizza Box Project",
+	"Purpose": "This is a sample Redfish Interoperability profile.",
+	"ContactInfo": "pizza@contoso.com",
+	"RequiredProfiles": {
+		"DMTFBasic": {
+			"MinVersion": "1.0.0"
+		},
+		"ContosoPizza": {
+			"OwningEntity": "Other",
+			"OwningEntityName": "Contoso",
+			"Repository": "contoso.com/profiles",
+			"MinVersion": "1.0.0"
+		}
+	}
+~~~
+
 ### Protocol requirements
 
 An object named 'Protocol' contains properties which describe Redfish protocol functionality that is not related to the supported schemas or properties.  Therefore, these functions cannot be validated by comparing retreived JSON payloads.
@@ -62,20 +86,86 @@ An object named 'Protocol' contains properties which describe Redfish protocol f
 | RedfishMinVersion | string |  The minimum version of the Redfish Specification protocol support required by this Profile. This version shall be reported by the Redfish Service in the ServiceRoot property 'RedfishVersion'.  If this property is absent, the minimum value shall be '1.0.0'. |
 | DiscoveryRequired | boolean | Indicates that support of the Redfish SSDP Discovery protocol is required for this Profile. If this property is absent, the value shall be false. |
 
+### Example 
+
+~~~
+	"Protocol": {
+		"RedfishMinVersion": "1.2",
+		"DiscoveryRequired": true
+	}
+~~~
 
 ## Resource (Schema) requirements
 
-- Min version of schema def
-- Allow for standard or OEM schema
-- Locate schema definition from web
+The primary content in a Redfish Profile is the set of supported property requirements.  As Redfish is organized and defined by schema-backed JSON resources, these requirements are also organized by schema.
 
-## Property Level requirements
+For each schema, an object is created in the JSON document, named to match the schema's name.  Within this object, properties describe the location of the schema file, and schema-level requirements.  Within each schema-level object is a "PropertyRequirements" object that describes the property-level requirements for that schema.  The definition of both the schema/resource-level and property-level requirements are accomplished using the same mechanisms, which are described in the next section.  
+
+The structure of the resource and property requirements is:
+~~~
+{
+    <Schema Name>: {
+       "MinVersion": "<version>"
+	   "PropertyRequirements": {
+		   <Property Name>: { 
+		      <Requirements for this property>
+		   },
+		   <Property Name>: {
+		   }
+		},
+		"ActionRequirements": {
+		   <Action Name>: {
+		      <Requirements for this action>
+		   }
+		}
+    },
+	<Additional Schemas...>
+~~~
+
+### Schema level functions
+
+The following options are available at the schema level:
+
+|     |     |     |
+| --- | --- | --- |
+| Repository | string | A URI providing the location of the repository which contains the file(s) to be included.  If absent, the location shall be the Redfish Schema Repository at redfish.dmtf.org |
+| OwningEntity | string | Indicates whether this resource is defined by schema published by a standards body or an OEM. If this property is absent, the value shall be 'DMTF'.The author(s) of this Redfish Profile. |
+| OwningEntityName | string | Name of the owning entity, when used with 'Other', follows 'Oem Property Naming' in the Redfish Specification |
+| MinVersion | string | The minimum version required by this Redfish Profile. If this property is absent, the minimum value shall be '1.0.0'.|
+| Requirement | object | Resource-level requirement for this schema, see Requirement section below. |
+| Conditions | object | Resource-level conditional requirements that apply to instances of this schema, see Conditions section below. |
+
+#### Example
+
+This example shows a simple required schema 
+~~~
+	"ComputerSystem": {
+		"MinVersion": "1.2.0",
+		"PropertyRequirements": {
+			"SerialNumber": {},
+			"Manufacturer": {},
+			"Model": {
+				"Requirement": "Recommended"
+			},
+~~~
+
+### Requirement
+
+Property Level requirements
 - All requirements based on property name
 - Support for one level of embedded object 
 - Conditional requirement for subordinates
 - Support for array instances
     - Min count
-
-## Registry requirements
-
 	
+### Condition
+
+#### Parent and Subordinate resources
+#### Keys and Values
+
+### Action Requirements
+#### Parameters
+
+## Registry level functions
+
+# Change Log
