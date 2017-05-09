@@ -206,7 +206,7 @@
             "longDescription": "This type shall describe a Graphical Console service of a manager."
         },
         "ManagerService": {
-                "$ref": "http://redfish.dmtf.org/schemas/v1/HostedStorageServices.json#/definitions/HostedStorageServices"
+
         },
         "ManagerType": {
             "type": "string",
