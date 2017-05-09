@@ -17,7 +17,7 @@
 		}
 	},
 	"Protocol": {
-		"RedfishVersionMinimum": "1.2",
+		"RedfishMinVersion": "1.2",
 		"DiscoveryRequired": true
 	},
 	"Resources": {

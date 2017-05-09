@@ -47,7 +47,7 @@
 			"type": "object",
 			"description": "Profile requirements related to the Redfish protocol outside of the JSON resources.",
 			"properties": {
-				"RedfishVersionMinimum": {
+				"RedfishMinVersion": {
 					"type": "string",
 					"description": "The minimum version of the Redfish Specification protocol support required by this Profile. This version shall be reported by the Redfish Service in the ServiceRoot property 'RedfishVersion'.  If this property is absent, the minimum value shall be '1.0.0'."
 				},
