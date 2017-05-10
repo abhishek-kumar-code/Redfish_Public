@@ -26,7 +26,7 @@
     },
     "Oem": {
         "Contoso": {
-            "@odata.type": "http://Contoso.com/Schema#Contoso.ComputeRB",
+            "@odata.type": "#Contoso.ComputeRB",
             "ProcessorSummary": {
                 "Count": 2,
                 "Model": "Intel(R) Xeon(R) processor"

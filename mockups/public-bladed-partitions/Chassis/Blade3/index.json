@@ -23,30 +23,23 @@
         "ContainedBy": {
             "@odata.id": "/redfish/v1/Chassis/Enclosure"
         },
-        "ComputerSystems": [
-            {
-                "@odata.id": "/redfish/v1/Systems/ComposedPartition2"
-            }
-        ],
-        "CooledBy": [
-            {
-                "@odata.id": "/redfish/v1/Chassis/Enclosure/Thermal#/Fans"
-            }
-        ],
-        "ManagedBy": [
-            {
+        "ComputerSystems": [{
+            "@odata.id": "/redfish/v1/Systems/ComposedPartition2"
+        }],
+        "CooledBy": [{
+            "@odata.id": "/redfish/v1/Chassis/Enclosure/Thermal#/Fans"
+        }],
+        "ManagedBy": [{
                 "@odata.id": "/redfish/v1/Managers/EncMgr1"
             },
             {
                 "@odata.id": "/redfish/v1/Managers/EncMgr2"
             }
         ],
-        "PoweredBy": [
-            {
-                "@odata.id": "/redfish/v1/Chassis/Enclosure/Power#/PowerSupplies"
-            }
-        ]
+        "PoweredBy": [{
+            "@odata.id": "/redfish/v1/Chassis/Enclosure/Power#/PowerSupplies"
+        }]
     },
-    "@odata.context": "/redfish/v1/$metadata#Chassis/Members/$entity",
+    "@odata.context": "/redfish/v1/$metadata#Chassis.Chassis",
     "@odata.id": "/redfish/v1/Chassis/Blade3"
 }

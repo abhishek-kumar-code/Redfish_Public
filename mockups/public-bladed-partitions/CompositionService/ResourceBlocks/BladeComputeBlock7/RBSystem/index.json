@@ -26,6 +26,6 @@
             "@odata.id": "/redfish/v1/Chassis/Blade7"
         }]
     },
-    "@odata.context": "/redfish/v1/$metadata#Systems/Members/$entity",
+    "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
     "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock7/RBSystem"
 }

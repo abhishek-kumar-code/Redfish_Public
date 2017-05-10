@@ -25,6 +25,6 @@
             "@odata.id": "/redfish/v1/Chassis/Blade8"
         }]
     }],
-    "@odata.context": "/redfish/v1/$metadata#Chassis/Members/Blade8/Thermal/$entity",
+    "@odata.context": "/redfish/v1/$metadata#Thermal.Thermal",
     "@odata.id": "/redfish/v1/Chassis/Blade8/Thermal"
 }

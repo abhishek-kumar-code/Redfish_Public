@@ -48,6 +48,6 @@
             }]
         }
     ],
-    "@odata.context": "/redfish/v1/$metadata#Chassis/Members/Blade5/Thermal/$entity",
+    "@odata.context": "/redfish/v1/$metadata#Thermal.Thermal",
     "@odata.id": "/redfish/v1/Chassis/Blade5/Thermal"
 }

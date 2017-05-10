@@ -30,6 +30,6 @@
             }
         }]
     },
-    "@odata.context": "/redfish/v1/$metadata#Systems",
+    "@odata.context": "/redfish/v1/$metadata#ComputerSystemCollection.ComputerSystemCollection",
     "@odata.id": "/redfish/v1/Systems"
 }

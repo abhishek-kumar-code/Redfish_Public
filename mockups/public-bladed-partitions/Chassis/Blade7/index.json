@@ -37,6 +37,6 @@
             "@odata.id": "/redfish/v1/Chassis/Enclosure/Power#/PowerSupplies"
         }]
     },
-    "@odata.context": "/redfish/v1/$metadata#Chassis/Members/$entity",
+    "@odata.context": "/redfish/v1/$metadata#Chassis.Chassis",
     "@odata.id": "/redfish/v1/Chassis/Blade7"
 }
