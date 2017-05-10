@@ -45,10 +45,10 @@
 					"Requirement": "Recommended",
 					"Conditions": [{
 						"Purpose": "Physical and composed Systems must have a writable Indicator LED",
+						"CompareToProperty": "SystemType",
+						"Comparison": "AnyOf",
+						"Values": ["Physical", "Composed"],
 						"Requirement": "Mandatory",
-						"KeyCondition": "AnyOf",
-						"KeyProperty": "SystemType",
-						"KeyValues": ["Physical", "Composed"],
 						"Writeable": true
 					}]
 				}
@@ -120,7 +120,8 @@
 					"PropertyRequirements": {
 						"ReadingCelsius": {},
 						"PhysicalContext": {
-							"EnumValues": ["CPU", "Ambient"]
+							"Comparison": "AllOf",
+							"Values": ["CPU", "Ambient"]
 						},
 						"UpperThresholdFatal": {
 							"Requirement": "Recommended"

@@ -129,8 +129,11 @@
 				"AllowableValues": {
 					"$ref": "#/definitions/AllowableValues"
 				},
-				"EnumValues": {
-					"$ref": "#/definitions/EnumValues"
+				"Comparison": {
+					"$ref": "#/definitions/Comparison"
+				},
+				"Values": {
+					"$ref": "#/definitions/Values"
 				},				
 				"Conditions": {
 					"type": "array",
@@ -154,8 +157,11 @@
 						"AllowableValues": {
 							"$ref": "#/definitions/AllowableValues"
 						},
-						"EnumValues": {
-							"$ref": "#/definitions/EnumValues"
+						"Comparison": {
+							"$ref": "#/definitions/Comparison"
+						},
+						"Values": {
+							"$ref": "#/definitions/Values"
 						},
 						"Conditions": {
 							"type": "array",
@@ -232,15 +238,13 @@
 			"description": "The Profile requirement details for this Property.  The default value, or if no 'Requirement' is present, is 'Mandatory'. For properties of type 'object', requirements of the embedded properties will apply only if the object is present.",
 			"enum": [
 				"Mandatory",
-				"AnyOf",
 				"Recommended",
 				"IfImplemented",
 				"Conditional",
 				"None"
 			],
 			"enumDescriptions": {
-				"Mandatory": "This property is required in all instances of this resource. For properties of type 'array', the property is required in all non-NULL array items. If 'EnumValues' are listed, at least one instance of each enumeration value is required among instance(s) of this property.",
-				"AnyOf": "This property is required and at least one of the values listed in 'EnumValues' must be present in an instances of this property.  One of the enumerations listed must be present in one or more instances of this property in this resource.",
+				"Mandatory": "This property is required in all instances of this resource. For properties of type 'array', the property is required in all non-NULL array items. If 'Values' are listed, at least one instance of each enumeration value is required among instance(s) of this property.",
 				"Recommended": "It is recommended, but not required, that this property be supported.",
 				"IfImplemented": "This property is required if the underlying functionality is implemented. For properties of type 'object', requirements on embedded properties within the object will only apply if the object is present.",
 				"Conditional": "This property is only required if one or more 'Condition' items apply to this instance of the resource.",
@@ -262,37 +266,16 @@
 					"type": "array",
 					"description": "An ordered list (from top of heirarchy to bottom) of resources where this resource is linked as as subordinate resource.  The conditional requirements listed for the resource apply only to instances which are subordinate to the listed parent resource list."
 				},
-				"KeyCondition": {
-					"type": "string",
-					"description": "The condition used to compare the value of the property named by 'KeyProperty' to the value of 'KeyValues'.  If the comparison is true, then this conditional requirement applies.",
-					"enum": [
-						"AnyOf",
-						"AllOf",
-						"Equal",
-						"NotEqual",
-						"GreaterThan",
-						"GreaterThanEqual",
-						"LessThan",
-						"LessThanEqual"
-					],
-					"enumDescriptions": {
-						"AnyOf": "An instance of the KeyProperty in this resource must be equal to one of the values listed.",
-						"AllOf": "At least one instance of the KeyProperty in this resource must be equal to each of the values listed.",
-						"Equal": "The value of the KeyProperty must be equal to the KeyValue.",
-						"NotEqual": "The value of the KeyProperty must not be equal to the KeyValue.",
-						"GreaterThan": "The value of the KeyProperty must be greater than the KeyValue.",
-						"GreaterThanEqual": "The value of the KeyProperty must be greater than or equal to the KeyValue.",
-						"LessThan": "The value of the KeyProperty must be less than to the KeyValue.",
-						"LessThanEqual": "The value of the KeyProperty must be less than or equal to the KeyValue."
-					}
+				"Comparison": {
+					"$ref": "#/definitions/Comparison"
 				},
-				"KeyProperty": {
+				"CompareToProperty": {
 					"type": "string",
 					"description": "The name of the property in this resource whose value is used to test this condition. The property name will be evaluated at the current object level within the resource.  If the property name is not found at the current level, upper levels will be searched until the root level is reached."
 				},
-				"KeyValues": {
-					"type": "array",
-					"description": "Values of the KeyProperty used to test this condition."
+				"Values": {
+					"description": "The values of the 'CompareToProperty' used to test the 'Comparison' for this conditional requirement.",
+					"$ref": "#/definitions/Values"
 				},
 				"Writeable": {
 					"$ref": "#/definitions/Writeable"
@@ -310,12 +293,36 @@
 			},
 			"description": "The minimum set of enumerations that must be supported for this writeable property."
 		},
-		"EnumValues": {
+		"Comparison": {
+			"type": "string",
+			"description": "The condition used to compare the value of the property to 'Values'.",
+			"enum": [
+				"AnyOf",
+				"AllOf",
+				"Equal",
+				"NotEqual",
+				"GreaterThan",
+				"GreaterThanEqual",
+				"LessThan",
+				"LessThanEqual"
+			],
+			"enumDescriptions": {
+				"AnyOf": "An instance of the property in this resource must be equal to one of the Values listed.",
+				"AllOf": "At least one instance of the property in this resource must be equal to each of the values listed.",
+				"Equal": "The value of the property must be equal to the Values.",
+				"NotEqual": "The value of the property must not be equal to the Values.",
+				"GreaterThan": "The value of the property must be greater than the Values.",
+				"GreaterThanEqual": "The value of the property must be greater than or equal to the Values.",
+				"LessThan": "The value of the property must be less than to the Values.",
+				"LessThanEqual": "The value of the property must be less than or equal to the Values."
+			}
+		},
+		"Values": {
 			"type": "array",
 			"items": {
 				"type": "string"
 			},
-			"description": "The minimum set of enumerations which must be supported for this property."
+			"description": "The value(s) required for this property based on the 'Comparison'. If no 'Comparison' is present, the property must be equal to one of the values listed."
 		},
 		"OwningEntity": {
 			"type": "string",

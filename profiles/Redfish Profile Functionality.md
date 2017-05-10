@@ -162,7 +162,8 @@ The following options are available at the property level:
 | Writeable | boolean | True if the property is required to be writeable by the user.  False or not present if the property may be read-only. |
 | MinCount | integer | For array type properties, the minimum number of non-NULL instances within the array. |
 | AllowableValues |  array | The minimum set of enumerations that must be supported for this writeable property. |
-| EnumValues | array | The minimum set of enumerations which must be supported for this property. |
+| Comparison | string | The condition used to compare the value of the property to 'Values'. See Condition section below. |
+| Values | array | The value(s) required for this property based on the 'Comparison'. If no 'Comparison' is present, the property must be equal to one of the values listed. |
 | PropertyRequirements | object | For Redfish properties of type 'object', this object contains requirements for the properties contained within the specified object. This specification allows for only one level of nested objects and requirements.|
 
 #### Example
@@ -179,7 +180,7 @@ This example shows property-level requirements, including one of type 'object' c
 					"Status": {},
 					"PowerSupplyType": {
 						"Requirement": "AnyOf",
-						"EnumValues": [ "AC", "DC" ]
+						"Values": [ "AC", "DC" ]
 					},
 					"LineinputVoltage": {},
 					"PowerCapacityWatts": {},
@@ -192,23 +193,37 @@ This example shows property-level requirements, including one of type 'object' c
 		}
 	},
 ~~~		
-		
 
-### Requirement
+#### Comparison
+
+The Comparison function uses the following enumerations to represent the arithmetic comparisons available:
+
+| value | description |
+| --- | --- |
+| AnyOf | An instance of the property in this resource must be equal to one of the values listed. |
+| AllOf | At least one instance of the property in this resource must be equal to each of the values listed. |
+| Equal | The value must be equal to the KeyValue. |
+| NotEqual | The value of the property must not be equal to the value(s) listed. |
+| GreaterThan | The value of the property must be greater than the Values. |
+| GreaterThanEqual | The value of the property must be greater than or equal to the Values. |
+| LessThan | The value of the property must be less than to the Values. |
+| LessThanEqual | The value of the property must be less than or equal to the Values. |
+
+
+#### Requirement
 
 This function specifies the level of requirement applied to the resource or property.  
 
 | value | description |
 | --- | --- |
-| Mandatory |  This property is required in all instances of this resource. For properties of type 'array', the property is required in all non-NULL array items. If 'EnumValues' are listed, at least one instance of each enumeration value is required among instance(s) of this property.|
-| AnyOf | This property is required and at least one of the values listed in 'EnumValues' must be present in an instances of this property.  One of the enumerations listed must be present in one or more instances of this property in this resource. |
+| Mandatory |  This property is required in all instances of this resource. For properties of type 'array', the property is required in all non-NULL array items. If 'Values' are listed, at least one instance of each enumeration value is required among instance(s) of this property.|
 | Recommended | It is recommended, but not required, that this property be supported. |
 | IfImplemented | This property is required if the underlying functionality is implemented. For properties of type 'object', requirements on embedded properties within the object will only apply if the object is present. |
 | Conditional | This property is only required if one or more 'Condition' items apply to this instance of the resource. |
 | None | This property is not required by this profile.  It is listed here for clarity. |
 
 
-### Condition
+#### Condition
 
 The most flexible aspect of the Redfish Profile definition is the ability to make resource or property-level requirements that are dependent on one or more conditions within the resource and the parent resource(s) in the resource tree.
 
@@ -227,13 +242,13 @@ The following options are available for each conditional requirement:
 | KeyValues | array | Values of the KeyProperty used to test this condition. See the Key and Values section below.|
 
 
-#### Parent and subordinate resources
+##### Parent and subordinate resources
 
 As there can be several instances of a particular Redfish schema in the resource tree, the requirements placed on those resources may vary depending on their usage.  Since the Profile is schema-centric, the 'SubordinateToResource' function allows a Profile to specify requirements based a resource instance's placement in the resource tree.
 
 'SubordinateToResource' allows specifying the schema (resource) path from parent resources to the resource to which the requirements apply.  This property contains an array of schema names, in the top-down order that they appear in the path to the required resource.
 
-##### Example
+###### Example
 
 For the property 'HostName' in the 'EthernetInterface' schema, the example shows it as 'Recommended' property.  But if an instance of 'EthernetInterface' is linked from a 'ComputerSystem' resource, through the 'EthernetInterfaceCollection', then the 'Condition' is met, which changes the 'HostName' property requirement to 'Mandatory'.
 
@@ -261,7 +276,7 @@ In the second part of the example, the 'IPv6Addresses' array property is require
 	}
 ~~~
 
-#### Keys and Values
+##### CompareToProperty
 
 A typical need for a conditional requirement is a dependency on the value of another property within the resource.  This type of dependency can be used when several different product variations share a common schema definition.  In that case, Redfish schemas normally define a type-specifying property with enumerations (for a variety of product categories) that can be used to differentiate Profile requirements by product category.
 
@@ -269,12 +284,12 @@ To accomplish this, there are three Profile properties related to this function:
 
 | property | type | description | 
 | --- | --- | --- |
-| KeyProperty| string | The name of the property in this resource whose value is used to test this condition. The property name will be evaluated at the current object level within the resource.  If the property name is not found at the current level, upper levels will be searched until the root level is reached.|
-| KeyCondition | string |The condition used to compare the value of the property named by 'KeyProperty' to the value of 'KeyValues'.  If the comparison is true, then this conditional requirement applies.|
-| KeyValues | array | Values of the KeyProperty used to test this condition. |
+| CompareToProperty | string | The name of the property in this resource whose value is used to test this condition. The property name will be evaluated at the current object level within the resource.  If the property name is not found at the current level, upper levels will be searched until the root level is reached.|
+| Comparison | string |The condition used to compare the value of the property named by 'CompareToProperty' to the value of 'KeyValues'.  If the comparison is true, then this conditional requirement applies.|
+| Values | array | Values of the CompareToProperty used to test this condition. |
 
 
-#### Example
+##### Example
 
 This example shows a Key Property condition applied to a single property.  
 
@@ -283,10 +298,10 @@ This example shows a Key Property condition applied to a single property.
 		"Requirement": "Recommended",
 		"Conditions": [{
 			"Purpose": "Physical and composed Systems must have a writable Indicator LED",
+			"CompareToProperty": "SystemType",
+			"Comparison": "AnyOf",
+			"Values": ["Physical", "Composed"],
 			"Requirement": "Mandatory",
-			"KeyCondition": "AnyOf",
-			"KeyProperty": "SystemType",
-			"KeyValues": ["Physical", "Composed"],
 			"Writeable": true
 		}]
 	},
