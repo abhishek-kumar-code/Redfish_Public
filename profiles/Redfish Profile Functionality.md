@@ -33,6 +33,7 @@ Profile requirements do not allow for exclusions of data.  Implementations are a
 
 At the top level of the JSON document are the basic properties which describe the profile, including authorship and contact information, versioning, and other profiles to include in order to build upon previous work.
 
+| property | type | description | 
 | --- | --- | --- |
 | ProfileName | string | The name of this Redfish Profile. |
 | Author | string | The author(s) of this Redfish Profile. |
@@ -45,7 +46,7 @@ At the top level of the JSON document are the basic properties which describe th
 
 The RequiredProfiles object contains properties (of type object) that are named to match the name of the profile to be included.  Each of these sub-objects contains the properties listed below.
 
-
+| property | type | description | 
 | --- | --- | --- |
 | Repository | string | A URI providing the location of the repository which contains the file(s) to be included.  If absent, the location shall be the Redfish Schema Repository at redfish.dmtf.org |
 | OwningEntity | string | Indicates whether this resource is defined by schema published by a standards body or an OEM. If this property is absent, the value shall be 'DMTF'.The author(s) of this Redfish Profile. |
@@ -80,7 +81,7 @@ The following is an example of the top-level properties in a Profile, with two R
 
 An object named 'Protocol' contains properties which describe Redfish protocol functionality that is not related to the supported schemas or properties.  Therefore, these functions cannot be validated by comparing retreived JSON payloads.
 
-
+| property | type | description | 
 | --- | --- | --- |
 | RedfishMinVersion | string |  The minimum version of the Redfish Specification protocol support required by this Profile. This version shall be reported by the Redfish Service in the ServiceRoot property 'RedfishVersion'.  If this property is absent, the minimum value shall be '1.0.0'. |
 | DiscoveryRequired | boolean | Indicates that support of the Redfish SSDP Discovery protocol is required for this Profile. If this property is absent, the value shall be false. |
@@ -125,6 +126,7 @@ The structure of the resource and property requirements is:
 
 The following options are available at the schema level:
 
+| property | type | description | 
 | --- | --- | --- |
 | Repository | string | A URI providing the location of the repository which contains the file(s) to be included.  If absent, the location shall be the Redfish Schema Repository at redfish.dmtf.org |
 | OwningEntity | string | Indicates whether this resource is defined by schema published by a standards body or an OEM. If this property is absent, the value shall be 'DMTF'.The author(s) of this Redfish Profile. |
@@ -153,6 +155,7 @@ Within the 'PropertyRequirements' object are additional objects which are named 
 
 The following options are available at the property level:
 
+| property | type | description | 
 | --- | --- | --- |
 | Requirement | string | Property-level requirement for this property, see Requirement section below. |
 | Conditions | object | Property-level conditional requirements that apply to instances of this property, see Conditions section below. |
@@ -195,6 +198,7 @@ This example shows property-level requirements, including one of type 'object' c
 
 This function specifies the level of requirement applied to the resource or property.  
 
+| value | description |
 | --- | --- |
 | Mandatory |  This property is required in all instances of this resource. For properties of type 'array', the property is required in all non-NULL array items. If 'EnumValues' are listed, at least one instance of each enumeration value is required among instance(s) of this property.|
 | AnyOf | This property is required and at least one of the values listed in 'EnumValues' must be present in an instances of this property.  One of the enumerations listed must be present in one or more instances of this property in this resource. |
@@ -212,6 +216,7 @@ The 'Condition' array function specifies these conditional requirements, which a
 
 The following options are available for each conditional requirement:
 
+| property | type | description | 
 | --- | --- | --- |
 | Requirement | string | The requirement to apply to the resource or property if the condition is met.|
 | Purpose | string | Text describing the purpose of this conditional requirement. |
@@ -270,5 +275,6 @@ This example shows a Key Property condition applied to a single property.
 
 # Change Log
 
+| version | date | changes |
 | --- | --- | --- |
 | v0.9 | 5-14-17 | Work In Progress release. |
