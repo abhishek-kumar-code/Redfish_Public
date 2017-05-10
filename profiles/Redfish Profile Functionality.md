@@ -229,26 +229,50 @@ The following options are available for each conditional requirement:
 
 #### Parent and subordinate resources
 
+As there can be several instances of a particular Redfish schema in the resource tree, the requirements placed on those resources may vary depending on their usage.  Since the Profile is schema-centric, the 'SubordinateToResource' function allows a Profile to specify requirements based a resource instance's placement in the resource tree.
+
+'SubordinateToResource' allows specifying the schema (resource) path from parent resources to the resource to which the requirements apply.  This property contains an array of schema names, in the top-down order that they appear in the path to the required resource.
+
 ##### Example
 
+For the property 'HostName' in the 'EthernetInterface' schema, the example shows it as 'Recommended' property.  But if an instance of 'EthernetInterface' is linked from a 'ComputerSystem' resource, through the 'EthernetInterfaceCollection', then the 'Condition' is met, which changes the 'HostName' property requirement to 'Mandatory'.
+
+In the second part of the example, the 'IPv6Addresses' array property is required to have at least one item ('MinCount') in the array.  But if, as above, the instance is subordinate to a 'ComputerSystem' (and 'EthernetInterfaceCollection') resource, then at least two items are required in the array.
+
 ~~~
-	"HostName": {
-		"Requirement": "Recommended",
-		"Conditions": [{
-			"SubordinateToResource": ["ComputerSystem", "EthernetInterfaceCollection"],
-			"Requirement": "Mandatory"
-		}]
-	},
-	"IPv6Addresses": {
-		"Requirement": "Mandatory",
-		"MinCount": 1,
-		"Conditions": [{
-			"SubordinateToResource": ["ComputerSystem", "EthernetInterfaceCollection"],
-			"MinCount": 2
-		}]
-	},
+	"EthernetInterface": {
+		"PropertyRequirements": {
+			"HostName": {
+				"Requirement": "Recommended",
+				"Conditions": [{
+					"SubordinateToResource": ["ComputerSystem", "EthernetInterfaceCollection"],
+					"Requirement": "Mandatory"
+				}]
+			},
+			"IPv6Addresses": {
+				"Requirement": "Mandatory",
+				"MinCount": 1,
+				"Conditions": [{
+					"SubordinateToResource": ["ComputerSystem", "EthernetInterfaceCollection"],
+					"MinCount": 2
+				}]
+			}
+		}
+	}
 ~~~
+
 #### Keys and Values
+
+A typical need for a conditional requirement is a dependency on the value of another property within the resource.  This type of dependency can be used when several different product variations share a common schema definition.  In that case, Redfish schemas normally define a type-specifying property with enumerations (for a variety of product categories) that can be used to differentiate Profile requirements by product category.
+
+To accomplish this, there are three Profile properties related to this function:
+
+| property | type | description | 
+| --- | --- | --- |
+| KeyProperty| string | The name of the property in this resource whose value is used to test this condition. The property name will be evaluated at the current object level within the resource.  If the property name is not found at the current level, upper levels will be searched until the root level is reached.|
+| KeyCondition | string |The condition used to compare the value of the property named by 'KeyProperty' to the value of 'KeyValues'.  If the comparison is true, then this conditional requirement applies.|
+| KeyValues | array | Values of the KeyProperty used to test this condition. |
+
 
 #### Example
 
