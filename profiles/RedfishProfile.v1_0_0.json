@@ -225,7 +225,7 @@
 		},
 		"MinCount": {
 			"type": "integer",
-			"description": "For array type properties, the minimum number of non-NULL instances within the array."
+			"description": "For array type properties, the minimum number of non-NULL instances within the array. If this property is absent, the minimum count shall be 1."
 		},
 		"Requirement": {
 			"type": "string",
@@ -243,7 +243,7 @@
 				"AnyOf": "This property is required and at least one of the values listed in 'EnumValues' must be present in an instances of this property.  One of the enumerations listed must be present in one or more instances of this property in this resource.",
 				"Recommended": "It is recommended, but not required, that this property be supported.",
 				"IfImplemented": "This property is required if the underlying functionality is implemented. For properties of type 'object', requirements on embedded properties within the object will only apply if the object is present.",
-				"Conditional": "This property is required if one or more 'Condition' items apply to this instance of the resource.",
+				"Conditional": "This property is only required if one or more 'Condition' items apply to this instance of the resource.",
 				"None": "This property is not required by this profile.  It is listed here for clarity."
 			}
 		},
@@ -264,6 +264,7 @@
 				},
 				"KeyCondition": {
 					"type": "string",
+					"description": "The condition used to compare the value of the property named by 'KeyProperty' to the value of 'KeyValues'.  If the comparison is true, then this conditional requirement applies.",
 					"enum": [
 						"AnyOf",
 						"AllOf",

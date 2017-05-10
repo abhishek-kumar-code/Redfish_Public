@@ -87,12 +87,11 @@
 						"Requirement": "Mandatory"
 					}]
 				},
-				"IPv4Addresses": {
+				"IPv6Addresses": {
 					"Requirement": "Mandatory",
 					"MinCount": 1,
 					"Conditions": [{
 						"SubordinateToResource": ["ComputerSystem", "EthernetInterfaceCollection"],
-						"Requirement": "Mandatory",
 						"MinCount": 2
 					}]
 				}
