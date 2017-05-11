@@ -178,7 +178,7 @@ pre.code{
 <li>(This example uses a Redfish ComputerSystem resource; authentication is not shown.)</li>
 </ul>
 <h2>Schema versus resources versus services</h2>
-<p>A schema is a data model.  Redfish uses the JSON format to define each schema. The model defines the relationship between objects in the system, and defines which objects can contain or be contained by other objects. Think of the schema as the data definitions.</p>
+<p>A schema is a data model.  Redfish uses both the json-schema and OData CSDL formats to publish each schema. The model defines the relationship between objects in the system, and defines which objects can contain or be contained by other objects. Think of the schema as the data definitions.</p>
 <p>A resource is an actual object or component. In the terminology of RESTful APIs, a URI or URL is a pointer (or end point) that represents the resource. Think of the resource as an object in a system, whose values and rules for each of its properties are  contained in a specific Redfish JSON payload.</p>
 <p>A payload is the packet of data that contains the values associated with a specific resource. Redfish also defines OData 'annotations' that can be thought of as metadata delivered in a payload.</p>
 <p>A Redfish service is any product that implements the Redfish specification. It is the software or firmware that implements the specification, and serves up responses.  When a Refish service receives a properly formatted HTTP request, it returns an HTTP response that contains information about the requested resource.</p>
