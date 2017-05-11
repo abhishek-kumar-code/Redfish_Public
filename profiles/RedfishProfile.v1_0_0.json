@@ -215,7 +215,7 @@
 				},
 				"Messages": {
 					"type": "object",
-					"description": "The Messages in this Registry which have support requirements for this Redfish Profile.",
+					"description": "The Messages in this Registry which have support requirements for this Redfish Profile. If this property is absent, all Messages in this Registry follow the registry-level 'Requirement'.",
 					"additionalProperties": {
 						"Requirement": {
 							"$ref": "#/definitions/Requirement"

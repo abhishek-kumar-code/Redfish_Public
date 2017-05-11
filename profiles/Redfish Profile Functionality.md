@@ -132,7 +132,7 @@ The following options are available at the schema level:
 | OwningEntity | string | Indicates whether this resource is defined by schema published by a standards body or an OEM. If this property is absent, the value shall be 'DMTF'.The author(s) of this Redfish Profile. |
 | OwningEntityName | string | Name of the owning entity, when used with 'Other', follows 'Oem Property Naming' in the Redfish Specification |
 | MinVersion | string | The minimum version required by this Redfish Profile. If this property is absent, the minimum value shall be '1.0.0'.|
-| Requirement | object | Resource-level requirement for this schema, see Requirement section below. |
+| Requirement | string | Resource-level requirement for this schema, see Requirement section below. |
 | ConditionalRequirements | object | Resource-level conditional requirements that apply to instances of this schema, see ConditionalRequirements section below. |
 
 #### Example
@@ -223,11 +223,11 @@ This function specifies the level of requirement applied to the resource or prop
 | None | This property is not required by this profile.  It is listed here for clarity. |
 
 
-#### Condition
+#### Conditional Requirements
 
 The most flexible aspect of the Redfish Profile definition is the ability to make resource or property-level requirements that are dependent on one or more ConditionalRequirements within the resource and the parent resource(s) in the resource tree.
 
-The 'Condition' array function specifies these conditional requirements, which add to any requirements also defined for the resource or property.  Note that a condition cannot override or weaken a requirement already specified.  For example, if a property requirement is marked as 'Mandatory', no conditional requirement could mark the property as 'None'.  Instead, the property would be specified with a 'None' requirement, and with one or more ConditionalRequirements that would specify when the property requirement becomes 'Mandatory'.
+The 'ConditionalRequirements' array function specifies these conditional requirements, which add to any requirements also defined for the resource or property.  Note that a condition cannot override or weaken a requirement already specified.  For example, if a property requirement is marked as 'Mandatory', no conditional requirement could mark the property as 'None'.  Instead, the property would be specified with a 'None' requirement, and with one or more ConditionalRequirements that would specify when the property requirement becomes 'Mandatory'.
 
 The following options are available for each conditional requirement:
 
@@ -237,9 +237,9 @@ The following options are available for each conditional requirement:
 | Purpose | string | Text describing the purpose of this conditional requirement. |
 | Writeable | boolean | Condition applies if the property is writeable. |
 | SubordinateToResource | array | An ordered list (from top of heirarchy to bottom) of resources where this resource is linked as as subordinate resource.  The conditional requirements listed for the resource apply only to instances which are subordinate to the listed parent resource list.  See Parent and subordinate resources section below. |
-| KeyProperty | string | The name of the property in this resource whose value is used to test this condition. The property name will be evaluated at the current object level within the resource.  If the property name is not found at the current level, upper levels will be searched until the root level is reached. See the Key and Values section below.|
-| KeyCondition | string | The condition used to compare the value of the property named by 'KeyProperty' to the value of 'KeyValues'.  If the comparison is true, then this conditional requirement applies. See the Key and Values section below. |
-| KeyValues | array | Values of the KeyProperty used to test this condition. See the Key and Values section below.|
+| CompareProperty | string | The name of the property in this resource whose value is used to test this condition. The property name will be evaluated at the current object level within the resource.  If the property name is not found at the current level, upper levels will be searched until the root level is reached. See the Key and Values section below.|
+| Comparison | string | The condition used to compare the value of the property named by 'CompareProperty' to the value of 'Values'.  If the comparison is true, then this conditional requirement applies. See the Key and Values section below. |
+| Values | array | Values of the CompareProperty used to test this condition. See the Key and Values section below.|
 
 
 ##### Parent and subordinate resources
@@ -291,7 +291,7 @@ To accomplish this, there are three Profile properties related to this function:
 
 ##### Example
 
-This example shows a Key Property condition applied to a single property.  
+This example shows a CompareProperty condition applied to the 'IndicatorLED' property, which has a base 'Recommended' requirement, but becomes 'Mandatory' if the 'SystemType' property has a value of 'Physical' or 'Composed'.
 
 ~~~
 	"IndicatorLED": {
@@ -308,10 +308,95 @@ This example shows a Key Property condition applied to a single property.
 ~~~
 
 ### Action Requirements
+
+As several critical functions of a Redfish Service are implemented as 'Actions', the Profile may place requirements for support of these Actions.  The requirements can which Parameters must be supported, and may specify Allowable Values for those parameters.
+
+The following functions are available to specify requirements for an Action within a Resource requirement:
+
+| property | type | description | 
+| --- | --- | --- |
+| Requirement | string | The requirement to apply to this Action.|
+| Parameters | object | Requirements for any parameter available for this Action. |
+
 #### Parameters
 
-## Registry level functions
+The following functions are available to specify requirements for a parameter on a particular Action:
 
+| property | type | description | 
+| --- | --- | --- |
+| Requirement | string | The requirement to apply to this parameter.|
+| AllowableValues | array | The minimum set of enumerations that must be supported for this parameter. |
+
+#### Example
+
+This exampls shows the 'Reset' action as required for this resource, along with the required parameter 'ResetType', which must support the values of 'ForceOff' and 'PowerCycle'.
+
+~~~
+	"ActionRequirements": {
+		"Reset": {
+			"Requirement": "Mandatory",
+			"Parameters": {
+				"ResetType": {
+					"AllowableValues": ["ForceOff", "PowerCycle"],
+					"Requirement": "Mandatory"
+				}
+			}
+		}
+	}
+~~~			
+			
+## Registry level requirements
+
+While not normally part of the JSON resources, the Redfish-defined Message Registries are important for interoperability, as they indicate what functionality has been implemented for Events, and are also a useful method for setting expections on the use of Extended Info error messages when interacting with a Redfish Service implementation.
+
+The following functions are available to specify Registry-level requiremenets:
+
+| property | type | description | 
+| --- | --- | --- |
+| Repository | string | A URI providing the location of the repository which contains the file(s) to be included.  If absent, the location shall be the Redfish Schema Repository at redfish.dmtf.org |
+| OwningEntity | string | Indicates whether this resource is defined by schema published by a standards body or an OEM. If this property is absent, the value shall be 'DMTF'.The author(s) of this Redfish Profile. |
+| OwningEntityName | string | Name of the owning entity, when used with 'Other', follows 'Oem Property Naming' in the Redfish Specification |
+| MinVersion | string | The minimum version required by this Redfish Profile. If this property is absent, the minimum value shall be '1.0.0'.|
+| Requirement | string | Resource-level requirement for this Registry, see Requirement section. |
+| Messages | object | The Messages in this Registry which have support requirements for this Redfish Profile. If this property is absent, all Messages in this Registry follow the registry-level 'Requirement'. |
+
+### Messages
+
+Within the Registry object are additional objects which are named to match the Message name in the Registry definition.  This object then contains the message-level requirements.
+
+The following options are available at the property level:
+
+| property | type | description | 
+| --- | --- | --- |
+| Requirement | string | Message-level requirement for this Message, see Requirement section. |
+
+
+### Example
+
+This example shows requirements for two Message Registries, including one OEM-defined registry.  The 'Base' Registry is a DMTF standard Registry (by default since no 'OwningEntity' is listed) and therefor can be retreieved by default from the DMTF Repository. The 'Base' Registry lists only four Messages that are required. 
+
+In the case of the OEM-defined Registry 'ContosoPizzaMessages', the 'Mandatory' requirement set at the Registry level specifies that all Messages defined in that Registry are required.
+
+~~~
+	"Registries": {
+		"Base": {
+			"MinVersion": "1.1.0",
+			"Messages": {
+				"Success": {},
+				"GeneralError": {},
+				"Created": {},
+				"PropertyDuplicate": {}
+			}
+		},
+		"ContosoPizzaMessages": {
+			"OwningEntity": "Other",
+			"OwningEntityName": "Contoso",
+			"Repository": "contoso.com/registries",
+			"Requirement": "Mandatory"
+		}
+	}
+~~~
+	
 # Change Log
 
 | version | date | changes |
