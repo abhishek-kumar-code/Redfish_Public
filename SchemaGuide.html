@@ -124,15 +124,21 @@ pre.code{
 
 <p align="right">Document Identifier: <span class="dsp">DSP2046</span></p>
 
-<p align="right">Date: 2017-05-11</p>
+<p align="right">Date: 2017-05-19</p>
 
-<p align="right">Version: <span class="version">2017.1.0</span></p>
+<p align="right">Version: <span class="version">2017.0a</span></p>
 
 <p><br><br><br>
 <h1 class="title">Redfish Resource and Schema Guide</h1>
-<br><br><br><br><br></p>
-<p><b><p>Document Class: Informative</p>
-<p>Document Status: <span class="status">Published</span></p>
+<br><br><br><br><br>
+<b><p>Information for Work-in-Progress version:</p></b>
+<b>IMPORTANT: </b>This document is not a standard. It does not necessarily reflect the views of the DMTF or its members. Because this document is a Work in Progress, this document may still change, perhaps profoundly and without notice. This document is available for public review and comment until superseded.
+<br>
+<br><br>
+<p>Provide any comments through the DMTF Feedback Portal: <a href="http://www.dmtf.org/standards/feedback">http://www.dmtf.org/standards/feedback</a></p>
+<br><br>
+<b><p>Document Class: Informative</p>
+<p>Document Status: <span class="status">Work in Progress</span></p>
 <p>Document Language: en-US</p></b>
 <br>
    <p>Copyright Notice</p>
@@ -147,20 +153,12 @@ pre.code{
 <p>The Redfish standard comprises a set of specifications maintained by the Distributed Management Task Force (DMTF). The standard defines a protocol that uses RESTful interfaces to provide access to data and operations associated with the management of systems and networks. One of the strengths of the Redfish protocol is that it works with a wide range of servers: from stand-alone servers to rack-mount and bladed environments to large-scale data centers and cloud environments.</p>
 <p>The Redfish standard addresses several key issues for infrastructures that require scalability. Large infrastructures often consist of many simple servers of different makes and types. This hyperscale usage model requires a new approach to systems management. The Redfish Scalable Platforms Management ("Redfish") protocol addresses these needs by providing a standard protocol based on out-of-band systems management.</p>
 <p>With the above goals in mind, the Redfish protocol was designed as an open industry standard to meet scalability requirements in multivendor deployments. It easily integrates with commonly used tools, using RESTful interfaces to perform operations and using JSON and OData formats for data payloads.</p>
-<h2>About this document</h2>
-<p>This document explains how to use and understand the schemas of the Redfish protocol.</p>
-<p>This document includes the following sections:<!-- will these be in an unordered list? MAC:-->
-- Overview: High level explanation of the Redfish protocol and this document
-- Common Properties: Explanation of properties found in most schema
-- Working with 
-- Redfish Schema Details: Definitions of schema and their properties and elements
-- Schema Supplement: Schema details and sample payloads.</p>
 <h2>Who should read this document?</h2>
 <p>This document is useful to people who want to understand how to use the Redfish API. This includes application developers who want to create client-side software to communicate with a Redfish service, and other consumers of the API.</p>
 <h2>Why REST, JSON and OData?</h2>
 <p>One of the goals of the Redfish standard is to define an API that is equally usable by applications, client libraries, and scripts. Another goal is to define data objects that are schema-backed but human readable. The use of RESTful APIs, and JSON and OData formats supports these goals.</p>
 <p>JSON is a widely used data format for transporting data that is compatible with RESTful applications. It is inherently human readable, more concise than XML, and supported by many modern programming languages.</p>
-<p>Using JSON also carries an advantage in embedded manageability environments because most Baseboard Management Controllers (BMCs) already support a web server and the management of a server through a browser (typically through a Javascript-driven interface). By using JSON, the data from a Redfish service is viewed directly in the browser, ensuring the data and the programmatic interface are <!--?--> uniform in semantics and value.</p>
+<p>Using JSON also carries an advantage in embedded manageability environments because most Baseboard Management Controllers (BMCs) already support a web server and the management of a server through a browser (typically through a Javascript-driven interface). By using JSON, the data from a Redfish service is viewed directly in the browser.</p>
 <p>Similarly, while JSON provides an easy-to read representation, the semantics of common properties, such as id, type, links, etc., are imposed through naming conventions that can vary from service to service.</p>
 <p>OData defines a set of common RESTful conventions, which provides for interoperability between APIs. Redfish adopts common OData conventions for describing schema, URL conventions, and naming, as well as the structure of common properties in a JSON payload. This uniformity not only encapsulates best practices for RESTful APIs that can be used in traditional and scalable environments, but also enables Redfish services to be consumed by a growing ecosystem of generic client libraries, applications, and tools.</p>
 <p><strong>Example</strong></p>
@@ -186,11 +184,16 @@ pre.code{
 <p>A Redfish service is any product that implements the Redfish specification. It is the software or firmware that implements the specification, and serves up responses.  When a Refish service receives a properly formatted HTTP request, it returns an HTTP response that contains information about the requested resource.</p>
 <h2>Locating a Redfish service</h2>
 <p>Every Redfish service contains a base URI or URL that indicates the root of all resources.</p>
-<p>To locate the root, you need:</p>
+<p>The root is the concatenation of: </p>
 <ul>
-<li>the IP address or name of the server </li>
-<li>the path to the Redfish root</li>
+<li>the IP address or server name of the Redfish service (For example: https://mgmt.vendor.com)</li>
+<li>the path to the Redfish root (/redfish/v1/)</li>
 </ul>
+<p>For example:</p>
+<div class="codehilite"><pre><span></span>https://mgmt.vendor.com/redfish/v1
+</pre></div>
+
+
 <h2>Where can I find more information?</h2>
 <p>The following web sites provide more information about the Redfish standard:</p>
 <p>Redfish Standards
@@ -307,7 +310,7 @@ pre.code{
 <h2>Operations Related to Resource Collections</h2>
 <p>Some of the common operations associated with collections are as follows:</p>
 <h3>A GET request for a Resource Collection</h3>
-<p>To read the contents of a Resource Collection, send an HTTP GET request to the URI of the Collection. You can obtain the URI for a collection from a resource identifier property returned in a previous request.  For example, the <code>Links</code> property of a previously returned resource can contain a URI that points to a collection.</p>
+<p>To read the contents of a Resource Collection, a client application sends an HTTP GET request to the URI of the collection. A client application typically discovers the URI of the collection by parsing the resource identifier from a previous request.  For example, the <code>Links</code> property of a previously returned resource can contain a URI that points to a collection. A client application could parse the information in the <code>Links</code> property to obtain the URI of the collection.</p>
 <p>The response includes properties of the Resource Collection including an array of its Members. If the Resource Collection is empty, the returned JSON object is an empty array (not null).</p>
 <p>To request a subset of Members of the Resource Collection, use the paging query options:</p>
 <ul>
@@ -358,7 +361,7 @@ pre.code{
 <p>The client can get the definition of the annotation from the service metadata, or may ignore the annotation entirely, but should not fail reading the response due to unrecognized annotations, including new annotations defined within the Redfish namespace.</p>
 <h3>Order of Members</h3>
 <p>Collections are arrays of oData objects. The oData objects contain IDs of resources.</p>
-<p>The order in which Members exist in a collection is deterministic, but the members are not sorted. In other words, if you request a collection, assuming that the members have not changed since your last request, the order will be the same. However, the order of the members is not sorted by any specific criteria.</p>
+<p>The order in which Members exist in a collection is deterministic, but the members are not sorted. In other words, assuming that the members have not changed since the last request, the order in which memebrs are returned will be unchanged. The order of the members will not be sorted by any specific criteria.</p>
 <h3>Examples of commonly used collections</h3>
 <h4>Collection of Systems</h4>
 <p>A System represents the logical view of a computer system as seen from the operating system (OS) level.</p>
@@ -379,7 +382,7 @@ pre.code{
 
 
 <h4>Collection of Chassis</h4>
-<p>The Chassis collection contains resources that represent the physical aspects of the infrastructure. You can think of this collection as the properties you might need to locate the unit with your hands, or to identify, install or service a “computer”.</p>
+<p>The Chassis collection contains resources that represent the physical aspects of the infrastructure. Think of this collection as the properties needed to locate a physical unit, or to identify a physical unit, or to install or service a physical computer.</p>
 <p>A Chassis is roughly defined as a physical view of a computer system as seen by a human. A single Chassis resource can house sensors, fans, and other components. Racks, enclosures, and blades are examples of Chassis resources included in the Chassis collection.</p>
 <p>The Redfish protocol allows the representation of a Chassis contained within another Chassis.</p>
 <div class="codehilite"><pre><span></span><span class="p">{</span>
@@ -446,7 +449,7 @@ pre.code{
 <li>http://www.dmtf.org/standards/redfish</li>
 </ul>
 <h2>Redfish error responses</h2>
-<p>HTTP response status codes alone often do not provide enough information to determine the nature of an error. For example, if you send a PATCH request and some of the properties do not match while others are not supported, simply returning an HTTP status code of 400 does not clearly indicate which values were in error.</p>
+<p>HTTP response status codes alone often do not provide enough information to determine the nature of an error. For example, if a client application sends a PATCH request and some of the properties do not match while others are not supported, simply returning an HTTP status code of 400 does not clearly indicate which values were in error.</p>
 <p>Redfish error responses provide more meaningful and deterministic error information.</p>
 <p>A Redfish service can provide multiple error responses in an HTTP response in order to provide as much information about the error situation as possible. Additionally, a Redfish service can provide Redfish-standardized errors, OEM-defined errors, or both, depending on what is available from a perticular service.</p>
 <p>Error responses are defined by an extended error resource, represented as a single JSON object.  The JSON object is part of a property named "error".</p>
@@ -5614,7 +5617,7 @@ pre.code{
 <h3>Property Details</h3>
 <div class="property-details-content">
 <h4>EffectiveFamily:</h4>
-<p>This property shall contain a value derived from register values resulting from the execution of the CPUID instruction.  The value shall use the following formula:</p>
+<p>This property contains a value derived from register values resulting from the execution of the CPUID instruction.  The value shall use the following formula:</p>
 <div class="codehilite"><pre><span></span>((cpuid.1.eax &amp; 0x0ff00000) &gt;&gt; 20) + ((cpuid.1.eax &amp; 0x00000f00) &gt;&gt; 8)  
 </pre></div>
 
@@ -5646,7 +5649,7 @@ pre.code{
 </tbody></table>
 
 <h4>IdentificationRegisters:</h4>
-<p>This property shall contain the register contents resulting from the execution of the CPUID instruction.</p>
+<p>This property contains the register contents resulting from the execution of the CPUID instruction.</p>
 
 <h4>InstructionSet:</h4>
 <table class="enum enum-details">
