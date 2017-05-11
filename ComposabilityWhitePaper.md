@@ -405,8 +405,8 @@ The client needs to understand the composition model reported by the [Compositio
         "@odata.id": "/redfish/v1/CompositionService/ResourceZones/1",
         "Id": "1",
         "Name": "Resource Zone 1",
-        "Status": { ... },
-        "Links": { ... },
+        "Status": {},
+        "Links": {},
         "@Redfish.CollectionCapabilities": {
             "@odata.type": "#CollectionCapabilities.v1_0_0.CollectionCapabilities",
             "Capabilities": [
