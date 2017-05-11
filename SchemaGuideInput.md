@@ -2,10 +2,10 @@
 DocTitle: Redfish Resource and Schema Guide
 DocNumber: '2046'
 DocClass: Informative
-DocVersion: '2017.0a'
+DocVersion: '2017.1.0'
 modified: '2017-05-11'
-status: work in progress
-released: false
+status: published
+released: true
 copyright: '2017'
 ---
 
@@ -13,7 +13,7 @@ copyright: '2017'
 
 This document contains details about specific properties contained within Schemas defined by the Redfish Specification. This information is used by a documentation generator to create the Redfish Resource and Schema Guide (DSP2046). Proper use of section headers allows for the generator to incorporate the additional information automatically.  
 
-The Redfish Documentation Generator uses this file to create the Redfish <!---User --->Schema Guide. The tool uses Markdown section headers to locate and integrate text into the various portions of the document as follows:
+The Redfish Documentation Generator uses this file to create the Redfish Resource and Schema Guide. The tool uses Markdown section headers to locate and integrate text into the various portions of the document as follows:
 
  - Introduction - All text in the Introduction section until the next major header is included as the head of the document.
 - Postscript - All text in the Postscript section until the next major header is appended to the end of the document.
@@ -41,19 +41,14 @@ A "JSONPayload" section can contain a JSON payload example for this schema.  Thi
   <img src="http://redfish.dmtf.org/sites/all/themes/dmtf2015/images/dmtf-redfish-logo.png" alt="DMTF Redfish" width=180>
 </p>
 <p align="right">Document Identifier: <span class="dsp">DSP2046</span></p>
-<p align="right">Date: 2017-05-19</p>
-<p align="right">Version: <span class="version">2017.0a</span></p>
+<p align="right">Date: 2017-05-11</p>
+<p align="right">Version: <span class="version">2017.1.0</span></p>
 <br><br><br>
 <h1 class="title">Redfish Resource and Schema Guide</h1>
 <br><br><br><br><br>
-<b><p>Information for Work-in-Progress version:</p></b>
-<b>IMPORTANT: </b>This document is not a standard. It does not necessarily reflect the views of the DMTF or its members. Because this document is a Work in Progress, this document may still change, perhaps profoundly and without notice. This document is available for public review and comment until superseded.
-<br>
-<br><br>
-<p>Provide any comments through the DMTF Feedback Portal: <a href="http://www.dmtf.org/standards/feedback">http://www.dmtf.org/standards/feedback</a></p>
-<br><br>
+
 <b><p>Document Class: Informative</p>
-<p>Document Status: <span class="status">Work in Progress</span></p>
+<p>Document Status: <span class="status">Published</span></p>
 <p>Document Language: en-US</p></b>
 <br>
    <p>Copyright Notice</p>
@@ -143,7 +138,7 @@ Redfish Standards
   http://www.dmtf.org/standards/redfish
 
 Redfish Developer Hub
--  Redfish interactive explorer, hosted schema at namespace<!--?--> and other links:
+-  Redfish interactive explorer, hosted schema and other links:
   http://redfish.dmtf.org
 
 SPMF (Working group that maintains the Redfish standard)
@@ -159,17 +154,17 @@ This section describes the properties (schema elements or data fields) common to
 
 The `Id` property is common to all Redfish schema.
 
-The Id property of a resource uniquely identifies the resource within the Resource Collection that contains it. The value of Id shall be unique across a Resource Collection.
+The Id property of a resource uniquely identifies the resource within the Resource Collection that contains it. The value of Id is unique within a Resource Collection.
 
 ## Name
 
-The `Name` property is common to all Redfish schema.
+The `Name` property exists in all Redfish schema.
 
-The Name property is used to convey a human-readable moniker for a resource. The type of the Name property shall be string. The value of Name is NOT required to be unique across resource instances within a Resource Collection.
+The Name property is used to convey a human-readable moniker for a resource. The type of the Name property is a string. The value of Name is NOT necessarily unique across resource instances within a Resource Collection.
 
 ## Description
 
-The `Description` property is common to all Redfish schema.
+The `Description` property exists in all Redfish schema.
 
 The Description property is used to convey a human-readable description of the resource. The type of the Description property is string.
 
@@ -183,7 +178,7 @@ The `Status` property is common to many Redfish schema.
 
 ## Links
 
-The Links property represents the links associated with the resource, as defined by that resource's schema definition. All associated reference properties defined for a resource shall be nested under the Links property. All directly referenced (subordinate) properties defined for a resource shall be in the root of the resource.
+The Links property represents the links associated with the resource, as defined by that resource's schema definition. All associated reference properties defined for a resource are nested under the Links property. All directly referenced (subordinate) properties defined for a resource can be found from the root of the resource.
 
 
 ## Members
@@ -288,7 +283,7 @@ A JSON object representing a Resource Collection may include additional annotati
 
 where
 
-  - Namespace = the name of the namespace where the annotation term is defined. This namespace shall be referenced by the metadata document specified in the context URL of the request.
+  - Namespace = the name of the namespace where the annotation term is defined. This namespace is referenced by the metadata document specified in the context URL of the request.
   - TermName = the name of the annotation term being applied to the Resource Collection.
 
 The client can get the definition of the annotation from the service metadata, or may ignore the annotation entirely, but should not fail reading the response due to unrecognized annotations, including new annotations defined within the Redfish namespace.
@@ -492,7 +487,7 @@ mockups/DSP2046-examples/Chassis/1U/index.json
 ### Mockup
 mockups/DSP2046-examples/Systems/437XR1138R2/index.json
 
-### Property Details <!--We have a heading with this name already. Do we need to differentiate?-->
+### Property Details
 
 #### UUID
 
@@ -607,9 +602,9 @@ mockups/DSP2046-examples/Systems/437XR1138R2/Processors/CPU1/index.json
 
 #### ProcessorId
 
-This object's properties shall contain values dependent on the value of the ProcessorArchitecture property, as listed in the sections below:
+This object's properties contain values that depend on the value of the ProcessorArchitecture property, as listed in the sections below:
 
-#### VendorId<!--Capital D ID?-->
+#### VendorId
 
 This property contains a 12-byte, little-endian ASCII string derived from register values resulting from the execution of the CPUID instruction.
 
@@ -619,28 +614,25 @@ This property contains the register contents resulting from the execution of the
 
 #### EffectiveFamily
 
-This property contains a value derived from register values resulting from the execution of the CPUID instruction.  The value shall use the following formula:
-~~~
-((cpuid.1.eax & 0x0ff00000) >> 20) + ((cpuid.1.eax & 0x00000f00) >> 8)  
-~~~
+This property contains a value derived from register values resulting from the execution of the CPUID instruction.  
 
 #### EffectiveModel
 
-This property shall contain a value derived from register values resulting from the execution of the CPUID instruction.  The value shall use the following formula:
+This property contains a value derived from register values resulting from the execution of the CPUID instruction.  The value is based on the following formula:
 ~~~
 ((cpuid.1.eax & 0x000f0000) >> 12) + ((cpuid.1.eax & 0x000000f0) >> 4)
 ~~~
 
 #### Step
 
-This property shall contain a value derived from register values resulting from the execution of the CPUID instruction.  The value shall use the following formula:
+This property contains a value derived from register values resulting from the execution of the CPUID instruction.  The value is based on the following formula:
 ~~~
 (cpuid->eax & 0xf)
 ~~~
 
 #### MicrocodeInfo
 
-This property shall contain the 64-bit value contained in MSR 0x8B.
+This property contains the 64-bit value contained in MSR 0x8B.
 
 
 ## Role
