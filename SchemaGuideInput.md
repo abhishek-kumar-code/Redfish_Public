@@ -68,17 +68,6 @@ The Redfish standard addresses several key issues for infrastructures that requi
 
 With the above goals in mind, the Redfish protocol was designed as an open industry standard to meet scalability requirements in multivendor deployments. It easily integrates with commonly used tools, using RESTful interfaces to perform operations and using JSON and OData formats for data payloads.
 
-## About this document
-
-This document explains how to use and understand the schemas of the Redfish protocol.
-
-This document includes the following sections:<!-- will these be in an unordered list? MAC:-->
-- Overview: High level explanation of the Redfish protocol and this document
-- Common Properties: Explanation of properties found in most schema
-- Working with 
-- Redfish Schema Details: Definitions of schema and their properties and elements
-- Schema Supplement: Schema details and sample payloads.
-
 ## Who should read this document?
 
 This document is useful to people who want to understand how to use the Redfish API. This includes application developers who want to create client-side software to communicate with a Redfish service, and other consumers of the API.
