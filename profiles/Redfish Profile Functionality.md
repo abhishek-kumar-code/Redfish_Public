@@ -15,7 +15,7 @@ copyright: '2017'
 
 Because the Redfish Schemas are designed to provide signifcant flexibility, and allow conforming implementations on a wide variety of products, very few properties within the Schemas are required by the Specification.  But consumers and software developers need a more rigidly defined set of required properties (features) in order to accomplish management tasks.  This set allows users to compare implementations, specify needs to vendors, and allows software to rely on the availability of data.  To provide that "common ground", a Redfish Interoperabilty Profile allows the definition of a set of schemas and property requirements, which meet the needs of a particluar class of product or service.
 
-The Redfish Interoperability Profile is a JSON document which contains Schema-level, Property-level, and Registry-level requirements.  At the property level, these requirements can include a variety of conditions under which the requirement applies. 
+The Redfish Interoperability Profile is a JSON document which contains Schema-level, Property-level, and Registry-level requirements.  At the property level, these requirements can include a variety of ConditionalRequirements under which the requirement applies. 
 
 ## Design Tenets
 
@@ -133,7 +133,7 @@ The following options are available at the schema level:
 | OwningEntityName | string | Name of the owning entity, when used with 'Other', follows 'Oem Property Naming' in the Redfish Specification |
 | MinVersion | string | The minimum version required by this Redfish Profile. If this property is absent, the minimum value shall be '1.0.0'.|
 | Requirement | object | Resource-level requirement for this schema, see Requirement section below. |
-| Conditions | object | Resource-level conditional requirements that apply to instances of this schema, see Conditions section below. |
+| ConditionalRequirements | object | Resource-level conditional requirements that apply to instances of this schema, see ConditionalRequirements section below. |
 
 #### Example
 
@@ -158,7 +158,7 @@ The following options are available at the property level:
 | property | type | description | 
 | --- | --- | --- |
 | Requirement | string | Property-level requirement for this property, see Requirement section below. |
-| Conditions | object | Property-level conditional requirements that apply to instances of this property, see Conditions section below. |
+| ConditionalRequirements | object | Property-level conditional requirements that apply to instances of this property, see ConditionalRequirements section below. |
 | Writeable | boolean | True if the property is required to be writeable by the user.  False or not present if the property may be read-only. |
 | MinCount | integer | For array type properties, the minimum number of non-NULL instances within the array. |
 | AllowableValues |  array | The minimum set of enumerations that must be supported for this writeable property. |
@@ -225,9 +225,9 @@ This function specifies the level of requirement applied to the resource or prop
 
 #### Condition
 
-The most flexible aspect of the Redfish Profile definition is the ability to make resource or property-level requirements that are dependent on one or more conditions within the resource and the parent resource(s) in the resource tree.
+The most flexible aspect of the Redfish Profile definition is the ability to make resource or property-level requirements that are dependent on one or more ConditionalRequirements within the resource and the parent resource(s) in the resource tree.
 
-The 'Condition' array function specifies these conditional requirements, which add to any requirements also defined for the resource or property.  Note that a condition cannot override or weaken a requirement already specified.  For example, if a property requirement is marked as 'Mandatory', no conditional requirement could mark the property as 'None'.  Instead, the property would be specified with a 'None' requirement, and with one or more conditions that would specify when the property requirement becomes 'Mandatory'.
+The 'Condition' array function specifies these conditional requirements, which add to any requirements also defined for the resource or property.  Note that a condition cannot override or weaken a requirement already specified.  For example, if a property requirement is marked as 'Mandatory', no conditional requirement could mark the property as 'None'.  Instead, the property would be specified with a 'None' requirement, and with one or more ConditionalRequirements that would specify when the property requirement becomes 'Mandatory'.
 
 The following options are available for each conditional requirement:
 
@@ -259,7 +259,7 @@ In the second part of the example, the 'IPv6Addresses' array property is require
 		"PropertyRequirements": {
 			"HostName": {
 				"Requirement": "Recommended",
-				"Conditions": [{
+				"ConditionalRequirements": [{
 					"SubordinateToResource": ["ComputerSystem", "EthernetInterfaceCollection"],
 					"Requirement": "Mandatory"
 				}]
@@ -267,7 +267,7 @@ In the second part of the example, the 'IPv6Addresses' array property is require
 			"IPv6Addresses": {
 				"Requirement": "Mandatory",
 				"MinCount": 1,
-				"Conditions": [{
+				"ConditionalRequirements": [{
 					"SubordinateToResource": ["ComputerSystem", "EthernetInterfaceCollection"],
 					"MinCount": 2
 				}]
@@ -276,7 +276,7 @@ In the second part of the example, the 'IPv6Addresses' array property is require
 	}
 ~~~
 
-##### CompareToProperty
+##### CompareProperty
 
 A typical need for a conditional requirement is a dependency on the value of another property within the resource.  This type of dependency can be used when several different product variations share a common schema definition.  In that case, Redfish schemas normally define a type-specifying property with enumerations (for a variety of product categories) that can be used to differentiate Profile requirements by product category.
 
@@ -284,9 +284,9 @@ To accomplish this, there are three Profile properties related to this function:
 
 | property | type | description | 
 | --- | --- | --- |
-| CompareToProperty | string | The name of the property in this resource whose value is used to test this condition. The property name will be evaluated at the current object level within the resource.  If the property name is not found at the current level, upper levels will be searched until the root level is reached.|
-| Comparison | string |The condition used to compare the value of the property named by 'CompareToProperty' to the value of 'KeyValues'.  If the comparison is true, then this conditional requirement applies.|
-| Values | array | Values of the CompareToProperty used to test this condition. |
+| CompareProperty | string | The name of the property in this resource whose value is used to test this condition. The property name will be evaluated at the current object level within the resource.  If the property name is not found at the current level, upper levels will be searched until the root level is reached.|
+| Comparison | string |The condition used to compare the value of the property named by 'CompareProperty' to the value of 'Values'.  If the comparison is true, then this conditional requirement applies.|
+| Values | array | Values of the CompareProperty used to test this condition. |
 
 
 ##### Example
@@ -296,9 +296,9 @@ This example shows a Key Property condition applied to a single property.
 ~~~
 	"IndicatorLED": {
 		"Requirement": "Recommended",
-		"Conditions": [{
+		"ConditionalRequirements": [{
 			"Purpose": "Physical and composed Systems must have a writable Indicator LED",
-			"CompareToProperty": "SystemType",
+			"CompareProperty": "SystemType",
 			"Comparison": "AnyOf",
 			"Values": ["Physical", "Composed"],
 			"Requirement": "Mandatory",

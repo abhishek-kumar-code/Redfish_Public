@@ -43,9 +43,9 @@
 				},
 				"IndicatorLED": {
 					"Requirement": "Recommended",
-					"Conditions": [{
+					"ConditionalRequirements": [{
 						"Purpose": "Physical and composed Systems must have a writable Indicator LED",
-						"CompareToProperty": "SystemType",
+						"CompareProperty": "SystemType",
 						"Comparison": "AnyOf",
 						"Values": ["Physical", "Composed"],
 						"Requirement": "Mandatory",
@@ -68,7 +68,7 @@
 		"EthernetInterface": {
 			"MinVersion": "1.2.0",
 			"Requirement": "Recommended",
-			"Conditions": [{
+			"ConditionalRequirementss": [{
 				"SubordinateToResource": ["Manager", "EthernetInterfaceCollection"],
 				"Requirement": "Mandatory"
 			}],
@@ -82,7 +82,7 @@
 				},
 				"HostName": {
 					"Requirement": "Recommended",
-					"Conditions": [{
+					"ConditionalRequirementss": [{
 						"SubordinateToResource": ["ComputerSystem", "EthernetInterfaceCollection"],
 						"Requirement": "Mandatory"
 					}]
@@ -90,7 +90,7 @@
 				"IPv6Addresses": {
 					"Requirement": "Mandatory",
 					"MinCount": 1,
-					"Conditions": [{
+					"ConditionalRequirementss": [{
 						"SubordinateToResource": ["ComputerSystem", "EthernetInterfaceCollection"],
 						"MinCount": 2
 					}]
