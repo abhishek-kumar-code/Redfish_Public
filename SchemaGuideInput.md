@@ -78,7 +78,7 @@ One of the goals of the Redfish standard is to define an API that is equally usa
 
 JSON is a widely used data format for transporting data that is compatible with RESTful applications. It is inherently human readable, more concise than XML, and supported by many modern programming languages.
 
-Using JSON also carries an advantage in embedded manageability environments because most Baseboard Management Controllers (BMCs) already support a web server and the management of a server through a browser (typically through a Javascript-driven interface). By using JSON, the data from a Redfish service is viewed directly in the browser, ensuring the data and the programmatic interface are <!--?--> uniform in semantics and value.
+Using JSON also carries an advantage in embedded manageability environments because most Baseboard Management Controllers (BMCs) already support a web server and the management of a server through a browser (typically through a Javascript-driven interface). By using JSON, the data from a Redfish service is viewed directly in the browser.
 
 Similarly, while JSON provides an easy-to read representation, the semantics of common properties, such as id, type, links, etc., are imposed through naming conventions that can vary from service to service.
 
@@ -117,11 +117,16 @@ A Redfish service is any product that implements the Redfish specification. It i
 
 Every Redfish service contains a base URI or URL that indicates the root of all resources.
 
-To locate the root, you need:
+The root is the concatenation of: 
 
-- the IP address or name of the server 
-- the path to the Redfish root
+- the IP address or server name of the Redfish service (For example: https://mgmt.vendor.com)
+- the path to the Redfish root (/redfish/v1/)
 
+For example:
+
+```shell
+https://mgmt.vendor.com/redfish/v1
+```
 
 
 ## Where can I find more information?
@@ -239,7 +244,7 @@ Some of the common operations associated with collections are as follows:
 
 ### A GET request for a Resource Collection
 
-To read the contents of a Resource Collection, send an HTTP GET request to the URI of the Collection. You can obtain the URI for a collection from a resource identifier property returned in a previous request.  For example, the `Links` property of a previously returned resource can contain a URI that points to a collection.
+To read the contents of a Resource Collection, a client application sends an HTTP GET request to the URI of the collection. A client application typically discovers the URI of the collection by parsing the resource identifier from a previous request.  For example, the `Links` property of a previously returned resource can contain a URI that points to a collection. A client application could parse the information in the `Links` property to obtain the URI of the collection.
 
 The response includes properties of the Resource Collection including an array of its Members. If the Resource Collection is empty, the returned JSON object is an empty array (not null).
 
@@ -287,7 +292,7 @@ The client can get the definition of the annotation from the service metadata, o
 
 Collections are arrays of oData objects. The oData objects contain IDs of resources.
 
-The order in which Members exist in a collection is deterministic, but the members are not sorted. In other words, if you request a collection, assuming that the members have not changed since your last request, the order will be the same. However, the order of the members is not sorted by any specific criteria.
+The order in which Members exist in a collection is deterministic, but the members are not sorted. In other words, assuming that the members have not changed since the last request, the order in which memebrs are returned will be unchanged. The order of the members will not be sorted by any specific criteria.
 
 
 ### Examples of commonly used collections
@@ -316,7 +321,7 @@ Any subsystem accessible from the host CPU is represented in a System resource. 
 
 #### Collection of Chassis
 
-The Chassis collection contains resources that represent the physical aspects of the infrastructure. You can think of this collection as the properties you might need to locate the unit with your hands, or to identify, install or service a “computer”.
+The Chassis collection contains resources that represent the physical aspects of the infrastructure. Think of this collection as the properties needed to locate a physical unit, or to identify a physical unit, or to install or service a physical computer.
 
 A Chassis is roughly defined as a physical view of a computer system as seen by a human. A single Chassis resource can house sensors, fans, and other components. Racks, enclosures, and blades are examples of Chassis resources included in the Chassis collection.
 
@@ -393,7 +398,7 @@ For more information about the meaning of these codes when returned from a Redfi
 
 ## Redfish error responses
 
-HTTP response status codes alone often do not provide enough information to determine the nature of an error. For example, if you send a PATCH request and some of the properties do not match while others are not supported, simply returning an HTTP status code of 400 does not clearly indicate which values were in error.
+HTTP response status codes alone often do not provide enough information to determine the nature of an error. For example, if a client application sends a PATCH request and some of the properties do not match while others are not supported, simply returning an HTTP status code of 400 does not clearly indicate which values were in error.
 
 Redfish error responses provide more meaningful and deterministic error information.
 
@@ -487,14 +492,15 @@ mockups/DSP2046-examples/Systems/437XR1138R2/index.json
 #### UUID
 
 The value of this property contains a universal unique identifier number for the system.  Clients should consider the value of the property to be opaque and should not interpret any subfields within the UUID, but comparisons between UUID representations should always be case-insensitive.
+
 The format of the string follows the 35-character string format specified in RFC4122 of form "xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" where each x represents a hex value 0-1,a-f.
 
-If the computer system supports SMBIOS,  the string should be formed from the raw binary 16-byte SMBIOS UUID structure.  This <!--configuration-->allows out-of-band clients to correlate the UUID that in-band agents are reading from SMBIOS with the UUID represented out-of-band via the Redfish API.
+If the computer system supports SMBIOS,  the string should be formed from the raw binary 16-byte SMBIOS UUID structure.  This configuration allows out-of-band clients to correlate the UUID that in-band agents are reading from SMBIOS with the UUID represented out-of-band via the Redfish API.
 
 The SMBIOS 2.6+ specification specifies the proper algorithm for converting the raw binary SMBIOS 16-byte structure into the canonical  string format of form "xxxxxx-xxxx-xxxx-xxxx-xxxxxx").  Redfish services should follow the SMBIOS 2.6+ specification for implementing this conversion.
 WMI and Linux dmidecode also follow the SMBIOS guidelines.
 
-Specifically, because RFC4122 defines that the canonical string value should follow network byte ordering, and because SMBIOS represents the UUID as five fields shown below:
+The RFC4122 specification specifies that the canonical string value should follow network byte ordering. SMBIOS represents the UUID as five fields shown below:
 
     {
      DWORD    time_low,
@@ -504,15 +510,18 @@ Specifically, because RFC4122 defines that the canonical string value should fol
      BYTE     clock_seq_low,
      BYTE[6]  node
     }
-then for little-endian systems (including x86 systems), there is a little-endian to network-byte-order conversion required for the first three fields to convert the SMBIOS binary UUID to network byte order.
+    
+For the above reasons, for little-endian systems (including x86 systems), there is a little-endian to network-byte-order conversion required for the first three fields to convert the SMBIOS binary UUID to network byte order.
 
-Therefore, as specified in the SMBIOS 2.6+ specification, if the canonical UUID string is:
+As specified in the SMBIOS 2.6+ specification, if the canonical UUID string is:
 
     "00112233-4455-6677-8899-aabbccddeeff"
+
 then the corresponding raw representation in the SMBIOS UUID structure would be:
 
     raw_smbios_uuid={ 0x33, 0x22, 0x11, 0x00,    0x55, 0x44,     0x77, 0x66,     0x88, 0x99,     0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF }
-and the C-code to convert the raw SMBIOS UUID struct in a little-endian system to the canonical string would be:
+
+The C code to convert the raw SMBIOS UUID struct in a little-endian system to the canonical string would be:
 
     /* routine to convert raw little-endian smbios structure to canonical string */
     sprintf(redfishUUID,"%02x%02x%02x%02x-%02x%02x-%02x%02x-%02x%02x-%02x%02x%02x%02x%02x%02x")
@@ -520,19 +529,19 @@ and the C-code to convert the raw SMBIOS UUID struct in a little-endian system t
         raw_smbios_uuid[5],raw_smbios_uuid[4],
         raw_smbios_uuid[7],raw_smbios_uuid[6],
         raw_smbios_uuid[8],raw_smbios_uuid[9],
-        raw_smbios_uuid[10],raw_smbios_uuid[11],raw_smbios_uuid[12],raw_smbios_uuid[13],raw_smbios_uuid[14],raw_smbios_uuid[15]
+       raw_smbios_uuid[10],raw_smbios_uuid[11],raw_smbios_uuid[12],raw_smbios_uuid[13],raw_smbios_uuid[14],raw_smbios_uuid[15]
         );
 
-This <!--noun-->will create the same canonical formatted string as WMI and dmidecode for little-endian X86 systems.
-In the case that the computer architecture is not little-endian,  the conversion and canonical representation should be the same as the OS APIs such as WMI and dmidecode.
+This code snippet creates the same canonical formatted string as WMI and dmidecode for little-endian X86 systems.
+In the case that the computer architecture is not little-endian, the conversion and canonical representation should be the same as the OS APIs such as WMI and dmidecode.
 
 Note that as specified in RFC4122, the fields in the string should be zero-filled hex values, as shown in the conversion code above, so that the overall string length and format is of the form xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx.
 
 Regarding the case of the hex values:  RFC4122 specifies that on output, the hex values should be lowercase characters, but that clients should use case-insensitive comparison on input.  Most modern scripting languages typically also represent hex values in lowercase characters following the RFC.
+
 However, dmidecode, WMI and some Redfish implementations currently use uppercase characters for UUID on output.
 
-Therefore, for new Redfish implementations, the recommendation is to follow RFC4122 and output using lowercase hex values when converting from the SMBIOS raw binary data as shown in the code example above.
-However, Redfish implementations and OS APIs MAY also output in uppercase and clients MUST therefore compare UUIDs using a case-insensitive comparisons (as recommended by RFC4122).
+Therefore, for new Redfish implementations, the recommendation is to follow RFC4122 and output using lowercase hex values when converting from the SMBIOS raw binary data as shown in the code example above. However, Redfish implementations and OS APIs MAY also output in uppercase and clients MUST therefore compare UUIDs using a case-insensitive comparisons (as recommended by RFC4122).
 
 ## EthernetInterface
 
@@ -597,23 +606,15 @@ This object's properties shall contain values dependent on the value of the Proc
 
 #### VendorId<!--Capital D ID?-->
 
-This property shall contain a 12-byte, little-endian ASCII string derived from register values resulting from the execution of the CPUID instruction.  The value shall be constructed by using the following algorithm:
-
-~~~
-k=0;
-foreach reg (cpuid.0.ebx, cpuid.0.edx, cpuid.0.ecx){ ##NB: order must be ebx, edx, ecx
-  for (i=0; i<=3; i++) { vendorID[ byte(k*4 + i) ] = reg[byte(i)]; }
-  k++;
-  }
-~~~
+This property contains a 12-byte, little-endian ASCII string derived from register values resulting from the execution of the CPUID instruction.
 
 #### IdentificationRegisters
 
-This property shall contain the register contents resulting from the execution of the CPUID instruction.
+This property contains the register contents resulting from the execution of the CPUID instruction.
 
 #### EffectiveFamily
 
-This property shall contain a value derived from register values resulting from the execution of the CPUID instruction.  The value shall use the following formula:
+This property contains a value derived from register values resulting from the execution of the CPUID instruction.  The value shall use the following formula:
 ~~~
 ((cpuid.1.eax & 0x0ff00000) >> 20) + ((cpuid.1.eax & 0x00000f00) >> 8)  
 ~~~
