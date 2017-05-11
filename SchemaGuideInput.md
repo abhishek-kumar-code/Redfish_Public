@@ -201,15 +201,7 @@ The Actions property contains the actions supported by a resource.
 The OEM property is used for OEM extensions as defined in Schema Extensibility.
 
 
-## \*@odata.context
-
-
-The @odata.context is used to:
-
-  -	provide the location of the metadata that describes the payload
-  -	provide a root URL for resolving relative references
-
-## @odata.context property
+## @odata.context
 
 The @odata.context property is a URL to a metadata document with a fragment describing the data (typically rooted at the top-level singleton or collection).
 
@@ -290,7 +282,7 @@ The client can get the definition of the annotation from the service metadata, o
 
 ### Order of Members
 
-Collections are arrays of oData objects. The oData objects contain IDs of resources.
+Collections are arrays of OData objects. The OData objects contain IDs of resources.
 
 The order in which Members exist in a collection is deterministic, but the members are not sorted. In other words, assuming that the members have not changed since the last request, the order in which memebrs are returned will be unchanged. The order of the members will not be sorted by any specific criteria.
 

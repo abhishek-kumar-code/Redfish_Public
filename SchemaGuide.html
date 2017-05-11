@@ -124,21 +124,15 @@ pre.code{
 
 <p align="right">Document Identifier: <span class="dsp">DSP2046</span></p>
 
-<p align="right">Date: 2017-05-19</p>
+<p align="right">Date: 2017-05-11</p>
 
-<p align="right">Version: <span class="version">2017.0a</span></p>
+<p align="right">Version: <span class="version">2017.1.0</span></p>
 
 <p><br><br><br>
 <h1 class="title">Redfish Resource and Schema Guide</h1>
-<br><br><br><br><br>
-<b><p>Information for Work-in-Progress version:</p></b>
-<b>IMPORTANT: </b>This document is not a standard. It does not necessarily reflect the views of the DMTF or its members. Because this document is a Work in Progress, this document may still change, perhaps profoundly and without notice. This document is available for public review and comment until superseded.
-<br>
-<br><br>
-<p>Provide any comments through the DMTF Feedback Portal: <a href="http://www.dmtf.org/standards/feedback">http://www.dmtf.org/standards/feedback</a></p>
-<br><br>
-<b><p>Document Class: Informative</p>
-<p>Document Status: <span class="status">Work in Progress</span></p>
+<br><br><br><br><br></p>
+<p><b><p>Document Class: Informative</p>
+<p>Document Status: <span class="status">Published</span></p>
 <p>Document Language: en-US</p></b>
 <br>
    <p>Copyright Notice</p>
@@ -200,7 +194,7 @@ pre.code{
 -  Schemas, specs, mockups, white papers, FAQ, educational material and more:
   http://www.dmtf.org/standards/redfish</p>
 <p>Redfish Developer Hub
--  Redfish interactive explorer, hosted schema at namespace<!--?--> and other links:
+-  Redfish interactive explorer, hosted schema and other links:
   http://redfish.dmtf.org</p>
 <p>SPMF (Working group that maintains the Redfish standard)
 -  Companies involved, upcoming schedules and future work, charter, and information about joining:
@@ -209,12 +203,12 @@ pre.code{
 <p>This section describes the properties (schema elements or data fields) common to all Redfish schema. Response payloads returned by a Redfish service will contain these properties.</p>
 <h2>Id</h2>
 <p>The <code>Id</code> property is common to all Redfish schema.</p>
-<p>The Id property of a resource uniquely identifies the resource within the Resource Collection that contains it. The value of Id shall be unique across a Resource Collection.</p>
+<p>The Id property of a resource uniquely identifies the resource within the Resource Collection that contains it. The value of Id is unique within a Resource Collection.</p>
 <h2>Name</h2>
-<p>The <code>Name</code> property is common to all Redfish schema.</p>
-<p>The Name property is used to convey a human-readable moniker for a resource. The type of the Name property shall be string. The value of Name is NOT required to be unique across resource instances within a Resource Collection.</p>
+<p>The <code>Name</code> property exists in all Redfish schema.</p>
+<p>The Name property is used to convey a human-readable moniker for a resource. The type of the Name property is a string. The value of Name is NOT necessarily unique across resource instances within a Resource Collection.</p>
 <h2>Description</h2>
-<p>The <code>Description</code> property is common to all Redfish schema.</p>
+<p>The <code>Description</code> property exists in all Redfish schema.</p>
 <p>The Description property is used to convey a human-readable description of the resource. The type of the Description property is string.</p>
 <h2>Status</h2>
 <p>The <code>Status</code> property is common to many Redfish schema.</p>
@@ -275,7 +269,7 @@ pre.code{
 </div>
 </div>
 <h2>Links</h2>
-<p>The Links property represents the links associated with the resource, as defined by that resource's schema definition. All associated reference properties defined for a resource shall be nested under the Links property. All directly referenced (subordinate) properties defined for a resource shall be in the root of the resource.</p>
+<p>The Links property represents the links associated with the resource, as defined by that resource's schema definition. All associated reference properties defined for a resource are nested under the Links property. All directly referenced (subordinate) properties defined for a resource can be found from the root of the resource.</p>
 <h2>Members</h2>
 <p>The Members property of a Resource Collection identifies the members of the collection.</p>
 <h2>RelatedItem</h2>
@@ -285,13 +279,7 @@ pre.code{
 <p>The Actions property contains the actions supported by a resource.</p>
 <h2>OEM</h2>
 <p>The OEM property is used for OEM extensions as defined in Schema Extensibility.</p>
-<h2>*@odata.context</h2>
-<p>The @odata.context is used to:</p>
-<ul>
-<li>provide the location of the metadata that describes the payload</li>
-<li>provide a root URL for resolving relative references</li>
-</ul>
-<h2>@odata.context property</h2>
+<h2>@odata.context</h2>
 <p>The @odata.context property is a URL to a metadata document with a fragment describing the data (typically rooted at the top-level singleton or collection).</p>
 <p>Technically the metadata document only has to define, or reference, any of the types that it directly uses, and different payloads could reference different metadata documents. However, since the @odata.context provides a root URL for resolving relative references (such as @odata.id's), we return the canonical metadata document.  </p>
 <h2>@odata.type</h2>
@@ -355,12 +343,12 @@ pre.code{
 <p>@Namespace.TermName</p>
 <p>where</p>
 <ul>
-<li>Namespace = the name of the namespace where the annotation term is defined. This namespace shall be referenced by the metadata document specified in the context URL of the request.</li>
+<li>Namespace = the name of the namespace where the annotation term is defined. This namespace is referenced by the metadata document specified in the context URL of the request.</li>
 <li>TermName = the name of the annotation term being applied to the Resource Collection.</li>
 </ul>
 <p>The client can get the definition of the annotation from the service metadata, or may ignore the annotation entirely, but should not fail reading the response due to unrecognized annotations, including new annotations defined within the Redfish namespace.</p>
 <h3>Order of Members</h3>
-<p>Collections are arrays of oData objects. The oData objects contain IDs of resources.</p>
+<p>Collections are arrays of OData objects. The OData objects contain IDs of resources.</p>
 <p>The order in which Members exist in a collection is deterministic, but the members are not sorted. In other words, assuming that the members have not changed since the last request, the order in which memebrs are returned will be unchanged. The order of the members will not be sorted by any specific criteria.</p>
 <h3>Examples of commonly used collections</h3>
 <h4>Collection of Systems</h4>
@@ -1308,7 +1296,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>State</b></td><td>string</td><td>read-only</td><td>This indicates the known state of the resource, such as if it is enabled.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</td><td></td><td></td><td></td></tr>
 <tr><td>} ]</td><td></td><td></td><td></td></tr>
-<tr><td><b>UUID</b></td><td>string</td><td>read-only</td><td>The universal unique identifier (UUID) for this system.</td></tr>
+<tr><td><b>UUID</b></td><td>string</td><td>read-only</td><td>The universal unique identifier (UUID) for this system.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
 </tbody></table>
 <div class="property-details">
 <h3>Property Details</h3>
@@ -1480,6 +1468,54 @@ pre.code{
 <tr><td>Virtual</td><td>A virtual machine instance running on this system.</td></tr>
 <tr><td>VirtuallyPartitioned</td><td>A virtual or software-based partition of a computer system.</td></tr>
 </tbody></table>
+
+<h4>UUID:</h4>
+<p>The value of this property contains a universal unique identifier number for the system.  Clients should consider the value of the property to be opaque and should not interpret any subfields within the UUID, but comparisons between UUID representations should always be case-insensitive.</p>
+<p>The format of the string follows the 35-character string format specified in RFC4122 of form "xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" where each x represents a hex value 0-1,a-f.</p>
+<p>If the computer system supports SMBIOS,  the string should be formed from the raw binary 16-byte SMBIOS UUID structure.  This configuration allows out-of-band clients to correlate the UUID that in-band agents are reading from SMBIOS with the UUID represented out-of-band via the Redfish API.</p>
+<p>The SMBIOS 2.6+ specification specifies the proper algorithm for converting the raw binary SMBIOS 16-byte structure into the canonical  string format of form "xxxxxx-xxxx-xxxx-xxxx-xxxxxx").  Redfish services should follow the SMBIOS 2.6+ specification for implementing this conversion.
+WMI and Linux dmidecode also follow the SMBIOS guidelines.</p>
+<p>The RFC4122 specification specifies that the canonical string value should follow network byte ordering. SMBIOS represents the UUID as five fields shown below:</p>
+<div class="codehilite"><pre><span></span>{
+ DWORD    time_low,
+ WORD     time_mid,
+ WORD     time_hi_and_version,
+ BYTE     clock_seq_hi_and_reserved,
+ BYTE     clock_seq_low,
+ BYTE[6]  node
+}
+</pre></div>
+
+
+<p>For the above reasons, for little-endian systems (including x86 systems), there is a little-endian to network-byte-order conversion required for the first three fields to convert the SMBIOS binary UUID to network byte order.</p>
+<p>As specified in the SMBIOS 2.6+ specification, if the canonical UUID string is:</p>
+<div class="codehilite"><pre><span></span>&quot;00112233-4455-6677-8899-aabbccddeeff&quot;
+</pre></div>
+
+
+<p>then the corresponding raw representation in the SMBIOS UUID structure would be:</p>
+<div class="codehilite"><pre><span></span>raw_smbios_uuid={ 0x33, 0x22, 0x11, 0x00,    0x55, 0x44,     0x77, 0x66,     0x88, 0x99,     0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF }
+</pre></div>
+
+
+<p>The C code to convert the raw SMBIOS UUID struct in a little-endian system to the canonical string would be:</p>
+<div class="codehilite"><pre><span></span><span class="cm">/* routine to convert raw little-endian smbios structure to canonical string */</span><span class="w"></span>
+sprintf<span class="o">(</span>redfishUUID<span class="o">,</span><span class="s">&quot;%02x%02x%02x%02x-%02x%02x-%02x%02x-%02x%02x-%02x%02x%02x%02x%02x%02x&quot;</span><span class="o">)</span><span class="w"></span>
+<span class="w">    </span>raw_smbios_uuid<span class="err">[</span><span class="m">3</span><span class="err">]</span><span class="o">,</span><span class="w"> </span>raw_smbios_uuid<span class="err">[</span><span class="m">2</span><span class="err">]</span><span class="o">,</span><span class="w"> </span>raw_smbios_uuid<span class="err">[</span><span class="m">1</span><span class="err">]</span><span class="o">,</span>raw_smbios_uuid<span class="err">[</span><span class="m">0</span><span class="err">]</span><span class="o">,</span><span class="w"></span>
+<span class="w">    </span>raw_smbios_uuid<span class="err">[</span><span class="m">5</span><span class="err">]</span><span class="o">,</span>raw_smbios_uuid<span class="err">[</span><span class="m">4</span><span class="err">]</span><span class="o">,</span><span class="w"></span>
+<span class="w">    </span>raw_smbios_uuid<span class="err">[</span><span class="m">7</span><span class="err">]</span><span class="o">,</span>raw_smbios_uuid<span class="err">[</span><span class="m">6</span><span class="err">]</span><span class="o">,</span><span class="w"></span>
+<span class="w">    </span>raw_smbios_uuid<span class="err">[</span><span class="m">8</span><span class="err">]</span><span class="o">,</span>raw_smbios_uuid<span class="err">[</span><span class="m">9</span><span class="err">]</span><span class="o">,</span><span class="w"></span>
+<span class="w">   </span>raw_smbios_uuid<span class="err">[</span><span class="m">10</span><span class="err">]</span><span class="o">,</span>raw_smbios_uuid<span class="err">[</span><span class="m">11</span><span class="err">]</span><span class="o">,</span>raw_smbios_uuid<span class="err">[</span><span class="m">12</span><span class="err">]</span><span class="o">,</span>raw_smbios_uuid<span class="err">[</span><span class="m">13</span><span class="err">]</span><span class="o">,</span>raw_smbios_uuid<span class="err">[</span><span class="m">14</span><span class="err">]</span><span class="o">,</span>raw_smbios_uuid<span class="err">[</span><span class="m">15</span><span class="err">]</span><span class="w"></span>
+<span class="w">    </span><span class="o">)</span><span class="err">;</span><span class="w"></span>
+</pre></div>
+
+
+<p>This code snippet creates the same canonical formatted string as WMI and dmidecode for little-endian X86 systems.
+In the case that the computer architecture is not little-endian, the conversion and canonical representation should be the same as the OS APIs such as WMI and dmidecode.</p>
+<p>Note that as specified in RFC4122, the fields in the string should be zero-filled hex values, as shown in the conversion code above, so that the overall string length and format is of the form xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx.</p>
+<p>Regarding the case of the hex values:  RFC4122 specifies that on output, the hex values should be lowercase characters, but that clients should use case-insensitive comparison on input.  Most modern scripting languages typically also represent hex values in lowercase characters following the RFC.</p>
+<p>However, dmidecode, WMI and some Redfish implementations currently use uppercase characters for UUID on output.</p>
+<p>Therefore, for new Redfish implementations, the recommendation is to follow RFC4122 and output using lowercase hex values when converting from the SMBIOS raw binary data as shown in the code example above. However, Redfish implementations and OS APIs MAY also output in uppercase and clients MUST therefore compare UUIDs using a case-insensitive comparisons (as recommended by RFC4122).</p>
 
 </div>
 </div>
@@ -5600,7 +5636,7 @@ pre.code{
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>IdentificationRegisters</b></td><td>string, null</td><td>read-only</td><td>The contents of the Identification Registers (CPUID) for this processor.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>MicrocodeInfo</b></td><td>string, null</td><td>read-only</td><td>The Microcode Information for this processor.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Step</b></td><td>string, null</td><td>read-only</td><td>The Step value for this processor.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>VendorId</b></td><td>string, null</td><td>read-only</td><td>The Vendor Identification for this processor.</td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>VendorId</b></td><td>string, null</td><td>read-only</td><td>The Vendor Identification for this processor.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
 <tr><td>}</td><td></td><td></td><td></td></tr>
 <tr><td><b>ProcessorType</b></td><td>string</td><td>read-only</td><td>The type of processor.<br><i>See Property Details, below, for more information about this property.</i></td></tr>
 <tr><td><b>Socket</b></td><td>string, null</td><td>read-only</td><td>The socket or location of the processor.</td></tr>
@@ -5617,12 +5653,10 @@ pre.code{
 <h3>Property Details</h3>
 <div class="property-details-content">
 <h4>EffectiveFamily:</h4>
-<p>This property contains a value derived from register values resulting from the execution of the CPUID instruction.  The value shall use the following formula:</p>
-<div class="codehilite"><pre><span></span>((cpuid.1.eax &amp; 0x0ff00000) &gt;&gt; 20) + ((cpuid.1.eax &amp; 0x00000f00) &gt;&gt; 8)  
-</pre></div>
+<p>This property contains a value derived from register values resulting from the execution of the CPUID instruction.  </p>
 
 <h4>EffectiveModel:</h4>
-<p>This property shall contain a value derived from register values resulting from the execution of the CPUID instruction.  The value shall use the following formula:</p>
+<p>This property contains a value derived from register values resulting from the execution of the CPUID instruction.  The value is based on the following formula:</p>
 <div class="codehilite"><pre><span></span>((cpuid.1.eax &amp; 0x000f0000) &gt;&gt; 12) + ((cpuid.1.eax &amp; 0x000000f0) &gt;&gt; 4)
 </pre></div>
 
@@ -5668,7 +5702,7 @@ pre.code{
 </tbody></table>
 
 <h4>MicrocodeInfo:</h4>
-<p>This property shall contain the 64-bit value contained in MSR 0x8B.</p>
+<p>This property contains the 64-bit value contained in MSR 0x8B.</p>
 
 <h4>ProcessorArchitecture:</h4>
 <table class="enum enum-details">
@@ -5684,7 +5718,7 @@ pre.code{
 </tbody></table>
 
 <h4>ProcessorId:</h4>
-<p>This object's properties shall contain values dependent on the value of the ProcessorArchitecture property, as listed in the sections below:</p>
+<p>This object's properties contain values that depend on the value of the ProcessorArchitecture property, as listed in the sections below:</p>
 
 <h4>ProcessorType:</h4>
 <table class="enum enum-details">
@@ -5720,9 +5754,12 @@ pre.code{
 </tbody></table>
 
 <h4>Step:</h4>
-<p>This property shall contain a value derived from register values resulting from the execution of the CPUID instruction.  The value shall use the following formula:</p>
+<p>This property contains a value derived from register values resulting from the execution of the CPUID instruction.  The value is based on the following formula:</p>
 <div class="codehilite"><pre><span></span>(cpuid-&gt;eax &amp; 0xf)
 </pre></div>
+
+<h4>VendorId:</h4>
+<p>This property contains a 12-byte, little-endian ASCII string derived from register values resulting from the execution of the CPUID instruction.</p>
 
 </div>
 </div>
