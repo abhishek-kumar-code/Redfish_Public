@@ -15,7 +15,7 @@ copyright: '2017'
 
 Because the Redfish Schemas are designed to provide signifcant flexibility, and allow conforming implementations on a wide variety of products, very few properties within the Schemas are required by the Specification.  But consumers and software developers need a more rigidly defined set of required properties (features) in order to accomplish management tasks.  This set allows users to compare implementations, specify needs to vendors, and allows software to rely on the availability of data.  To provide that "common ground", a Redfish Interoperabilty Profile allows the definition of a set of schemas and property requirements, which meet the needs of a particluar class of product or service.
 
-The Redfish Interoperability Profile is a JSON document which contains Schema-level, Property-level, and Registry-level requirements.  At the property level, these requirements can include a variety of ConditionalRequirements under which the requirement applies. 
+The Redfish Interoperability Profile is a JSON document which contains Schema-level, Property-level, and Registry-level requirements.  At the property level, these requirements can include a variety of ConditionalRequirements under which the requirement applies.
 
 ## Design Tenets
 
@@ -28,6 +28,8 @@ The JSON document structure is intended to align easily with JSON payloads retre
 Profile requirements do not allow for exclusions of data.  Implementations are able to provide more data in their resources than required by a profile, as an implementation likely addresses multiple use cases or Profiles.  This include both standard properties and OEM extensions.
    
 ## Profile Definition
+
+A Redfish Interoperability Profile is specified in a JSON document.  The JSON objects and properties contained in the document are described in this specification, and are also available in a json-schema form (RedfishProfile.v1_x_x.json) from the DMTF's Redfish Schema repository at http://redfish.dmtf.org/schemas for download.  The json-schema can be used to validate a Profile document to ensure compatibility with automated conformance tools or utilities.
 
 ### Basic functions
 
@@ -132,8 +134,8 @@ The following options are available at the schema level:
 | OwningEntity | string | Indicates whether this resource is defined by schema published by a standards body or an OEM. If this property is absent, the value shall be 'DMTF'.The author(s) of this Redfish Profile. |
 | OwningEntityName | string | Name of the owning entity, when used with 'Other', follows 'Oem Property Naming' in the Redfish Specification |
 | MinVersion | string | The minimum version required by this Redfish Profile. If this property is absent, the minimum value shall be '1.0.0'.|
-| Requirement | string | Resource-level requirement for this schema, see Requirement section below. |
-| ConditionalRequirements | object | Resource-level conditional requirements that apply to instances of this schema, see ConditionalRequirements section below. |
+| Requirement | string | Resource-level requirement for this schema, see [Requirement](#Requirement) section. |
+| ConditionalRequirements | object | Resource-level conditional requirements that apply to instances of this schema, see [Conditional Requirements](ConditionalRequirements) section. |
 
 #### Example
 
@@ -157,12 +159,12 @@ The following options are available at the property level:
 
 | property | type | description | 
 | --- | --- | --- |
-| Requirement | string | Property-level requirement for this property, see Requirement section below. |
-| ConditionalRequirements | object | Property-level conditional requirements that apply to instances of this property, see ConditionalRequirements section below. |
+| Requirement | string | Property-level requirement for this property, see [Requirement](#requirement) section. |
+| ConditionalRequirements | object | Property-level conditional requirements that apply to instances of this property, see [Conditional Requirements](#conditional-requirements) section. |
 | Writeable | boolean | True if the property is required to be writeable by the user.  False or not present if the property may be read-only. |
 | MinCount | integer | For array type properties, the minimum number of non-NULL instances within the array. |
 | AllowableValues |  array | The minimum set of enumerations that must be supported for this writeable property. |
-| Comparison | string | The condition used to compare the value of the property to 'Values'. See Condition section below. |
+| Comparison | string | The condition used to compare the value of the property to 'Values'. See the [Comparison](#comparison) section. |
 | Values | array | The value(s) required for this property based on the 'Comparison'. If no 'Comparison' is present, the property must be equal to one of the values listed. |
 | PropertyRequirements | object | For Redfish properties of type 'object', this object contains requirements for the properties contained within the specified object. This specification allows for only one level of nested objects and requirements.|
 
@@ -219,7 +221,7 @@ This function specifies the level of requirement applied to the resource or prop
 | Mandatory |  This property is required in all instances of this resource. For properties of type 'array', the property is required in all non-NULL array items. If 'Values' are listed, at least one instance of each enumeration value is required among instance(s) of this property.|
 | Recommended | It is recommended, but not required, that this property be supported. |
 | IfImplemented | This property is required if the underlying functionality is implemented. For properties of type 'object', requirements on embedded properties within the object will only apply if the object is present. |
-| Conditional | This property is only required if one or more 'Condition' items apply to this instance of the resource. |
+| Conditional | This property is only required if 'ConditionalRequirements' items apply to this instance of the resource. |
 | None | This property is not required by this profile.  It is listed here for clarity. |
 
 
@@ -236,10 +238,10 @@ The following options are available for each conditional requirement:
 | Requirement | string | The requirement to apply to the resource or property if the condition is met.|
 | Purpose | string | Text describing the purpose of this conditional requirement. |
 | Writeable | boolean | Condition applies if the property is writeable. |
-| SubordinateToResource | array | An ordered list (from top of heirarchy to bottom) of resources where this resource is linked as as subordinate resource.  The conditional requirements listed for the resource apply only to instances which are subordinate to the listed parent resource list.  See Parent and subordinate resources section below. |
+| SubordinateToResource | array | An ordered list (from top of heirarchy to bottom) of resources where this resource is linked as as subordinate resource.  The conditional requirements listed for the resource apply only to instances which are subordinate to the listed parent resource list.  See [Parent and subordinate resources](#parent-and-subordinate-resources) section. |
 | CompareProperty | string | The name of the property in this resource whose value is used to test this condition. The property name will be evaluated at the current object level within the resource.  If the property name is not found at the current level, upper levels will be searched until the root level is reached. See the Key and Values section below.|
-| Comparison | string | The condition used to compare the value of the property named by 'CompareProperty' to the value of 'Values'.  If the comparison is true, then this conditional requirement applies. See the Key and Values section below. |
-| Values | array | Values of the CompareProperty used to test this condition. See the Key and Values section below.|
+| Comparison | string | The condition used to compare the value of the property named by 'CompareProperty' to the value of 'Values'.  If the comparison is true, then this conditional requirement applies. See the [Compare Property](#compare-property) section. |
+| Values | array | Values of the CompareProperty used to test this condition. See the [Compare Property](#compare-property) section|
 
 
 ##### Parent and subordinate resources
@@ -357,7 +359,7 @@ The following functions are available to specify Registry-level requiremenets:
 | OwningEntity | string | Indicates whether this resource is defined by schema published by a standards body or an OEM. If this property is absent, the value shall be 'DMTF'.The author(s) of this Redfish Profile. |
 | OwningEntityName | string | Name of the owning entity, when used with 'Other', follows 'Oem Property Naming' in the Redfish Specification |
 | MinVersion | string | The minimum version required by this Redfish Profile. If this property is absent, the minimum value shall be '1.0.0'.|
-| Requirement | string | Resource-level requirement for this Registry, see Requirement section. |
+| Requirement | string | Resource-level requirement for this Registry, see [Requirement](#requirement) section. |
 | Messages | object | The Messages in this Registry which have support requirements for this Redfish Profile. If this property is absent, all Messages in this Registry follow the registry-level 'Requirement'. |
 
 ### Messages
@@ -368,7 +370,7 @@ The following options are available at the property level:
 
 | property | type | description | 
 | --- | --- | --- |
-| Requirement | string | Message-level requirement for this Message, see Requirement section. |
+| Requirement | string | Message-level requirement for this Message, see [Requirement](#requirement) section. |
 
 
 ### Example
