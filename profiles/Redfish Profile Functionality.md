@@ -134,8 +134,8 @@ The following options are available at the schema level:
 | OwningEntity | string | Indicates whether this resource is defined by schema published by a standards body or an OEM. If this property is absent, the value shall be 'DMTF'.The author(s) of this Redfish Profile. |
 | OwningEntityName | string | Name of the owning entity, when used with 'Other', follows 'Oem Property Naming' in the Redfish Specification |
 | MinVersion | string | The minimum version required by this Redfish Profile. If this property is absent, the minimum value shall be '1.0.0'.|
-| Requirement | string | Resource-level requirement for this schema, see [Requirement](#Requirement) section. |
-| ConditionalRequirements | object | Resource-level conditional requirements that apply to instances of this schema, see [Conditional Requirements](ConditionalRequirements) section. |
+| Requirement | string | Resource-level requirement for this schema, see [Requirement](#requirement) section. |
+| ConditionalRequirements | object | Resource-level conditional requirements that apply to instances of this schema, see [Conditional Requirements](#conditional-requirements) section. |
 
 #### Example
 
@@ -239,9 +239,9 @@ The following options are available for each conditional requirement:
 | Purpose | string | Text describing the purpose of this conditional requirement. |
 | Writeable | boolean | Condition applies if the property is writeable. |
 | SubordinateToResource | array | An ordered list (from top of heirarchy to bottom) of resources where this resource is linked as as subordinate resource.  The conditional requirements listed for the resource apply only to instances which are subordinate to the listed parent resource list.  See [Parent and subordinate resources](#parent-and-subordinate-resources) section. |
-| CompareProperty | string | The name of the property in this resource whose value is used to test this condition. The property name will be evaluated at the current object level within the resource.  If the property name is not found at the current level, upper levels will be searched until the root level is reached. See the Key and Values section below.|
+| CompareProperty | string | The name of the property in this resource whose value is used to test this condition. The property name will be evaluated at the current object level within the resource.  If the property name is not found at the current level, upper levels will be searched until the root level is reached. See the [Compare Property](#compare-property) section.|
 | Comparison | string | The condition used to compare the value of the property named by 'CompareProperty' to the value of 'Values'.  If the comparison is true, then this conditional requirement applies. See the [Compare Property](#compare-property) section. |
-| Values | array | Values of the CompareProperty used to test this condition. See the [Compare Property](#compare-property) section|
+| Values | array | Values of the CompareProperty used to test this condition. See the [Compare Property](#compare-property) section. |
 
 
 ##### Parent and subordinate resources
@@ -278,7 +278,7 @@ In the second part of the example, the 'IPv6Addresses' array property is require
 	}
 ~~~
 
-##### CompareProperty
+##### Compare Property
 
 A typical need for a conditional requirement is a dependency on the value of another property within the resource.  This type of dependency can be used when several different product variations share a common schema definition.  In that case, Redfish schemas normally define a type-specifying property with enumerations (for a variety of product categories) that can be used to differentiate Profile requirements by product category.
 
