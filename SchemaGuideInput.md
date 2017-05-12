@@ -2,10 +2,10 @@
 DocTitle: Redfish Resource and Schema Guide
 DocNumber: '2046'
 DocClass: Informative
-DocVersion: '2017.1.0'
-modified: '2017-05-11'
-status: published
-released: true
+DocVersion: '2017.0a'
+modified: '2017-05-19'
+status: work in progress
+released: false
 copyright: '2017'
 ---
 
@@ -41,14 +41,19 @@ A "JSONPayload" section can contain a JSON payload example for this schema.  Thi
   <img src="http://redfish.dmtf.org/sites/all/themes/dmtf2015/images/dmtf-redfish-logo.png" alt="DMTF Redfish" width=180>
 </p>
 <p align="right">Document Identifier: <span class="dsp">DSP2046</span></p>
-<p align="right">Date: 2017-05-11</p>
-<p align="right">Version: <span class="version">2017.1.0</span></p>
+<p align="right">Date: 2017-05-19</p>
+<p align="right">Version: <span class="version">2017.0a</span></p>
 <br><br><br>
 <h1 class="title">Redfish Resource and Schema Guide</h1>
 <br><br><br><br><br>
-
+<b><p>Information for Work-in-Progress version:</p></b>
+<b>IMPORTANT: </b>This document is not a standard. It does not necessarily reflect the views of the DMTF or its members. Because this document is a Work in Progress, this document may still change, perhaps profoundly and without notice. This document is available for public review and comment until superseded.
+<br>
+<br><br>
+<p>Provide any comments through the DMTF Feedback Portal: <a href="http://www.dmtf.org/standards/feedback">http://www.dmtf.org/standards/feedback</a></p>
+<br><br>
 <b><p>Document Class: Informative</p>
-<p>Document Status: <span class="status">Published</span></p>
+<p>Document Status: <span class="status">Work in Progress</span></p>
 <p>Document Language: en-US</p></b>
 <br>
    <p>Copyright Notice</p>

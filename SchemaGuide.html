@@ -124,15 +124,21 @@ pre.code{
 
 <p align="right">Document Identifier: <span class="dsp">DSP2046</span></p>
 
-<p align="right">Date: 2017-05-11</p>
+<p align="right">Date: 2017-05-19</p>
 
-<p align="right">Version: <span class="version">2017.1.0</span></p>
+<p align="right">Version: <span class="version">2017.0a</span></p>
 
 <p><br><br><br>
 <h1 class="title">Redfish Resource and Schema Guide</h1>
-<br><br><br><br><br></p>
-<p><b><p>Document Class: Informative</p>
-<p>Document Status: <span class="status">Published</span></p>
+<br><br><br><br><br>
+<b><p>Information for Work-in-Progress version:</p></b>
+<b>IMPORTANT: </b>This document is not a standard. It does not necessarily reflect the views of the DMTF or its members. Because this document is a Work in Progress, this document may still change, perhaps profoundly and without notice. This document is available for public review and comment until superseded.
+<br>
+<br><br>
+<p>Provide any comments through the DMTF Feedback Portal: <a href="http://www.dmtf.org/standards/feedback">http://www.dmtf.org/standards/feedback</a></p>
+<br><br>
+<b><p>Document Class: Informative</p>
+<p>Document Status: <span class="status">Work in Progress</span></p>
 <p>Document Language: en-US</p></b>
 <br>
    <p>Copyright Notice</p>
@@ -157,15 +163,13 @@ pre.code{
 <p>OData defines a set of common RESTful conventions, which provides for interoperability between APIs. Redfish adopts common OData conventions for describing schema, URL conventions, and naming, as well as the structure of common properties in a JSON payload. This uniformity not only encapsulates best practices for RESTful APIs that can be used in traditional and scalable environments, but also enables Redfish services to be consumed by a growing ecosystem of generic client libraries, applications, and tools.</p>
 <p><strong>Example</strong></p>
 <p>The following code fragment shows an example of a request that retrieves the serial number from a Redfish service:</p>
-<div class="codehilite"><pre><span></span><span class="n">rawData</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s1">&#39;https://192.168.1.135/redfish/v1/Systems/1&#39;</span><span class="p">)</span>
-<span class="n">jsonData</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">rawData</span><span class="p">)</span>
-<span class="k">print</span> <span class="p">(</span><span class="s1">&#39;SN: &#39;</span> <span class="o">+</span> <span class="n">jsonData</span><span class="p">[</span><span class="s1">&#39;SerialNumber&#39;</span><span class="p">])</span>
-</pre></div>
+<pre class="codehilite"><code class="language-Python">rawData = urllib.urlopen('https://192.168.1.135/redfish/v1/Systems/1')
+jsonData = json.loads(rawData)
+print ('SN: ' + jsonData['SerialNumber'])</code></pre>
 
 
 <p>A successful request that uses the code snippet above could produce output similar to the following example:</p>
-<div class="codehilite"><pre><span></span>SN: 1A87CA442K
-</pre></div>
+<pre class="codehilite"><code class="language-bash">SN: 1A87CA442K</code></pre>
 
 
 <ul>
@@ -184,8 +188,7 @@ pre.code{
 <li>the path to the Redfish root (/redfish/v1/)</li>
 </ul>
 <p>For example:</p>
-<div class="codehilite"><pre><span></span>https://mgmt.vendor.com/redfish/v1
-</pre></div>
+<pre class="codehilite"><code class="language-shell">https://mgmt.vendor.com/redfish/v1</code></pre>
 
 
 <h2>Where can I find more information?</h2>
@@ -354,73 +357,70 @@ pre.code{
 <h4>Collection of Systems</h4>
 <p>A System represents the logical view of a computer system as seen from the operating system (OS) level.</p>
 <p>Any subsystem accessible from the host CPU is represented in a System resource. Each instance of a System includes CPUs, memory, and other components. Each computer System can be contained as a member of a Systems collection.</p>
-<div class="codehilite"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#ComputerSystemCollection.ComputerSystemCollection&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Computer System Collection&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Members@odata.count&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-    <span class="nt">&quot;Members&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/437XR1138R2&quot;</span>
-        <span class="p">}</span>
-    <span class="p">],</span>
-    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#ComputerSystemCollection.ComputerSystemCollection&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems&quot;</span>
-<span class="p">}</span>
-</pre></div>
+<pre class="codehilite"><code class="language-json">{
+    &quot;@odata.type&quot;: &quot;#ComputerSystemCollection.ComputerSystemCollection&quot;,
+    &quot;Name&quot;: &quot;Computer System Collection&quot;,
+    &quot;Members@odata.count&quot;: 1,
+    &quot;Members&quot;: [
+        {
+            &quot;@odata.id&quot;: &quot;/redfish/v1/Systems/437XR1138R2&quot;
+        }
+    ],
+    &quot;@odata.context&quot;: &quot;/redfish/v1/$metadata#ComputerSystemCollection.ComputerSystemCollection&quot;,
+    &quot;@odata.id&quot;: &quot;/redfish/v1/Systems&quot;
+}</code></pre>
 
 
 <h4>Collection of Chassis</h4>
 <p>The Chassis collection contains resources that represent the physical aspects of the infrastructure. Think of this collection as the properties needed to locate a physical unit, or to identify a physical unit, or to install or service a physical computer.</p>
 <p>A Chassis is roughly defined as a physical view of a computer system as seen by a human. A single Chassis resource can house sensors, fans, and other components. Racks, enclosures, and blades are examples of Chassis resources included in the Chassis collection.</p>
 <p>The Redfish protocol allows the representation of a Chassis contained within another Chassis.</p>
-<div class="codehilite"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#ChassisCollection.ChassisCollection&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Chassis Collection&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Members@odata.count&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-    <span class="nt">&quot;Members&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/MultiBladeEnclosure&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/Blade1&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/Blade2&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/Blade3&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/Blade4&quot;</span>
-        <span class="p">}</span>
-    <span class="p">],</span>
-    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#ChassisCollection.ChassisCollection&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis&quot;</span>
-<span class="p">}</span>
-</pre></div>
+<pre class="codehilite"><code class="language-json">{
+    &quot;@odata.type&quot;: &quot;#ChassisCollection.ChassisCollection&quot;,
+    &quot;Name&quot;: &quot;Chassis Collection&quot;,
+    &quot;Members@odata.count&quot;: 5,
+    &quot;Members&quot;: [
+        {
+            &quot;@odata.id&quot;: &quot;/redfish/v1/Chassis/MultiBladeEnclosure&quot;
+        },
+        {
+            &quot;@odata.id&quot;: &quot;/redfish/v1/Chassis/Blade1&quot;
+        },
+        {
+            &quot;@odata.id&quot;: &quot;/redfish/v1/Chassis/Blade2&quot;
+        },
+        {
+            &quot;@odata.id&quot;: &quot;/redfish/v1/Chassis/Blade3&quot;
+        },
+        {
+            &quot;@odata.id&quot;: &quot;/redfish/v1/Chassis/Blade4&quot;
+        }
+    ],
+    &quot;@odata.context&quot;: &quot;/redfish/v1/$metadata#ChassisCollection.ChassisCollection&quot;,
+    &quot;@odata.id&quot;: &quot;/redfish/v1/Chassis&quot;
+}</code></pre>
 
 
 <h4>Collection of Managers</h4>
 <p>A Managers collection contains BMCs, Enclosure Managers or any other component managing the infrastructure. Managers handle various management services and can also have their own components (such as NICs).</p>
-<div class="codehilite"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#ManagerCollection.ManagerCollection&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Manager Collection&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Members@odata.count&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-    <span class="nt">&quot;Members&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Managers/EnclosureManager&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Managers/Blade1BMC&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Managers/Blade2BMC&quot;</span>
-        <span class="p">}</span>
-    <span class="p">],</span>
-    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#ManagerCollection.ManagerCollection&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Managers&quot;</span>
-<span class="p">}</span>
-</pre></div>
+<pre class="codehilite"><code class="language-json">{
+    &quot;@odata.type&quot;: &quot;#ManagerCollection.ManagerCollection&quot;,
+    &quot;Name&quot;: &quot;Manager Collection&quot;,
+    &quot;Members@odata.count&quot;: 3,
+    &quot;Members&quot;: [
+        {
+            &quot;@odata.id&quot;: &quot;/redfish/v1/Managers/EnclosureManager&quot;
+        },
+        {
+            &quot;@odata.id&quot;: &quot;/redfish/v1/Managers/Blade1BMC&quot;
+        },
+        {
+            &quot;@odata.id&quot;: &quot;/redfish/v1/Managers/Blade2BMC&quot;
+        }
+    ],
+    &quot;@odata.context&quot;: &quot;/redfish/v1/$metadata#ManagerCollection.ManagerCollection&quot;,
+    &quot;@odata.id&quot;: &quot;/redfish/v1/Managers&quot;
+}</code></pre>
 
 
 <h1>Error messages</h1>
@@ -443,27 +443,26 @@ pre.code{
 <p>Error responses are defined by an extended error resource, represented as a single JSON object.  The JSON object is part of a property named "error".</p>
 <h3>Example error response</h3>
 <p>The following snippet shows a fragment of an error response.</p>
-<div class="codehilite"><pre><span></span> <span class="p">{</span>
-   <span class="nt">&quot;error&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="s2">&quot;Base.1.0.GeneralError&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;A general error has occurred. See ExtendedInfo for more information.&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;@Message.ExtendedInfo&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="p">{</span>
-                <span class="nt">&quot;@odata.type&quot;</span> <span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#Message.v1_0_0.Message&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;MessageId&quot;</span><span class="p">:</span> <span class="s2">&quot;Base.1.0.PropertyValueNotInList&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;RelatedProperties&quot;</span><span class="p">:</span> <span class="p">[</span>
-                    <span class="s2">&quot;#/IndicatorLED&quot;</span>
-                <span class="p">],</span>
-                <span class="nt">&quot;Message&quot;</span><span class="p">:</span> <span class="s2">&quot;The value Red for the property IndicatorLED is not in the list of acceptable values&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;MessageArgs&quot;</span><span class="p">:</span> <span class="p">[</span>
-                    <span class="s2">&quot;RED&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;IndicatorLED&quot;</span>
-                <span class="p">],</span>
-                <span class="nt">&quot;Severity&quot;</span><span class="p">:</span> <span class="s2">&quot;Warning&quot;</span>
-            <span class="p">}]</span>
-   <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
+<pre class="codehilite"><code class="language-JSON"> {
+   &quot;error&quot;: {
+        &quot;code&quot;: &quot;Base.1.0.GeneralError&quot;,
+        &quot;message&quot;: &quot;A general error has occurred. See ExtendedInfo for more information.&quot;,
+        &quot;@Message.ExtendedInfo&quot;: [
+            {
+                &quot;@odata.type&quot; : &quot;/redfish/v1/$metadata#Message.v1_0_0.Message&quot;,
+                &quot;MessageId&quot;: &quot;Base.1.0.PropertyValueNotInList&quot;,
+                &quot;RelatedProperties&quot;: [
+                    &quot;#/IndicatorLED&quot;
+                ],
+                &quot;Message&quot;: &quot;The value Red for the property IndicatorLED is not in the list of acceptable values&quot;,
+                &quot;MessageArgs&quot;: [
+                    &quot;RED&quot;,
+                    &quot;IndicatorLED&quot;
+                ],
+                &quot;Severity&quot;: &quot;Warning&quot;
+            }]
+   }
+}</code></pre>
 
 
 <p>The above snippet shows a JSON payload with error information. In this example, the <code>code</code> property shows that the error is of a type <code>Base.1.0.GeneralError</code>.  The property annotation <code>@Message.ExtendedInfo</code> provides more details about the nature of the error.</p>
@@ -548,31 +547,30 @@ pre.code{
 </div>
 </div>
 <h3>Example Response</h3>
-<div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#AccountService.v1_0_2.AccountService&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;AccountService&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Account Service&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Description&quot;</span><span class="p">:</span> <span class="s2">&quot;Account Service&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Status&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;State&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Health&quot;</span><span class="p">:</span> <span class="s2">&quot;OK&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;ServiceEnabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="nt">&quot;AuthFailureLoggingThreshold&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-    <span class="nt">&quot;MinPasswordLength&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
-    <span class="nt">&quot;AccountLockoutThreshold&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-    <span class="nt">&quot;AccountLockoutDuration&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
-    <span class="nt">&quot;AccountLockoutCounterResetAfter&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
-    <span class="nt">&quot;Accounts&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/AccountService/Accounts&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;Roles&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/AccountService/Roles&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#AccountService.AccountService&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/AccountService&quot;</span>
-<span class="p">}</span>
-</pre></div></div>
+<div class="json-payload"><pre class="codehilite"><code class="language-json">{
+    &quot;@odata.type&quot;: &quot;#AccountService.v1_0_2.AccountService&quot;,
+    &quot;Id&quot;: &quot;AccountService&quot;,
+    &quot;Name&quot;: &quot;Account Service&quot;,
+    &quot;Description&quot;: &quot;Account Service&quot;,
+    &quot;Status&quot;: {
+        &quot;State&quot;: &quot;Enabled&quot;,
+        &quot;Health&quot;: &quot;OK&quot;
+    },
+    &quot;ServiceEnabled&quot;: true,
+    &quot;AuthFailureLoggingThreshold&quot;: 3,
+    &quot;MinPasswordLength&quot;: 8,
+    &quot;AccountLockoutThreshold&quot;: 5,
+    &quot;AccountLockoutDuration&quot;: 30,
+    &quot;AccountLockoutCounterResetAfter&quot;: 30,
+    &quot;Accounts&quot;: {
+        &quot;@odata.id&quot;: &quot;/redfish/v1/AccountService/Accounts&quot;
+    },
+    &quot;Roles&quot;: {
+        &quot;@odata.id&quot;: &quot;/redfish/v1/AccountService/Roles&quot;
+    },
+    &quot;@odata.context&quot;: &quot;/redfish/v1/$metadata#AccountService.AccountService&quot;,
+    &quot;@odata.id&quot;: &quot;/redfish/v1/AccountService&quot;
+}</code></pre></div>
 <h2><a name="ActionInfo"></a>ActionInfo 1.0.2</h2>
 <p>ActionInfo describes the parameters and other information necessary to perform a Redfish Action to a particular Action target.  As parameter support may differ between implementations and even among instances of a resource, this data can be used to ensure Action requests from applications contain supported parameters.</p>
 <table class="properties">
@@ -789,49 +787,48 @@ pre.code{
 <tr><td><b>Oem</b> { }</td><td>object</td><td>read-write</td><td>This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.</td></tr>
 </tbody></table>
 <h3>Example Response</h3>
-<div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#Bios.v1_0_0.Bios&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;BIOS&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;BIOS Configuration Current Settings&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;AttributeRegistry&quot;</span><span class="p">:</span> <span class="s2">&quot;BiosAttributeRegistryP89.v1_0_0&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Attributes&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;AdminPhone&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;BootMode&quot;</span><span class="p">:</span> <span class="s2">&quot;Uefi&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;EmbeddedSata&quot;</span><span class="p">:</span> <span class="s2">&quot;Raid&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;NicBoot1&quot;</span><span class="p">:</span> <span class="s2">&quot;NetworkBoot&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;NicBoot2&quot;</span><span class="p">:</span> <span class="s2">&quot;Disabled&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;PowerProfile&quot;</span><span class="p">:</span> <span class="s2">&quot;MaxPerf&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;ProcCoreDisable&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-        <span class="nt">&quot;ProcHyperthreading&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;ProcTurboMode&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;UsbControl&quot;</span><span class="p">:</span> <span class="s2">&quot;UsbEnabled&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;@Redfish.Settings&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#Settings.v1_0_0.Settings&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;ETag&quot;</span><span class="p">:</span> <span class="s2">&quot;9234ac83b9700123cc32&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Messages&quot;</span><span class="p">:</span> <span class="p">[{</span>
-            <span class="nt">&quot;MessageId&quot;</span><span class="p">:</span> <span class="s2">&quot;Base.1.0.SettingsFailed&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;RelatedProperties&quot;</span><span class="p">:</span> <span class="p">[</span>
-                <span class="s2">&quot;#/Attributes/ProcTurboMode&quot;</span>
-            <span class="p">]</span>
-        <span class="p">}],</span>
-        <span class="nt">&quot;SettingsObject&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/437XR1138R2/BIOS/Settings&quot;</span>
-        <span class="p">},</span>
-        <span class="nt">&quot;Time&quot;</span><span class="p">:</span> <span class="s2">&quot;2016-03-07T14:44.30-05:00&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;Actions&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;#Bios.ResetBios&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;target&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/437XR1138R2/BIOS/Actions/Bios.ResetBios&quot;</span>
-        <span class="p">},</span>
-        <span class="nt">&quot;#Bios.ChangePassword&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;target&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/437XR1138R2/BIOS/Actions/Bios.ChangePassword&quot;</span>
-        <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#Bios.Bios&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/437XR1138R2/BIOS&quot;</span>
-<span class="p">}</span>
-</pre></div></div>
+<div class="json-payload"><pre class="codehilite"><code class="language-json">{
+    &quot;@odata.type&quot;: &quot;#Bios.v1_0_0.Bios&quot;,
+    &quot;Id&quot;: &quot;BIOS&quot;,
+    &quot;Name&quot;: &quot;BIOS Configuration Current Settings&quot;,
+    &quot;AttributeRegistry&quot;: &quot;BiosAttributeRegistryP89.v1_0_0&quot;,
+    &quot;Attributes&quot;: {
+        &quot;AdminPhone&quot;: &quot;&quot;,
+        &quot;BootMode&quot;: &quot;Uefi&quot;,
+        &quot;EmbeddedSata&quot;: &quot;Raid&quot;,
+        &quot;NicBoot1&quot;: &quot;NetworkBoot&quot;,
+        &quot;NicBoot2&quot;: &quot;Disabled&quot;,
+        &quot;PowerProfile&quot;: &quot;MaxPerf&quot;,
+        &quot;ProcCoreDisable&quot;: 0,
+        &quot;ProcHyperthreading&quot;: &quot;Enabled&quot;,
+        &quot;ProcTurboMode&quot;: &quot;Enabled&quot;,
+        &quot;UsbControl&quot;: &quot;UsbEnabled&quot;
+    },
+    &quot;@Redfish.Settings&quot;: {
+        &quot;@odata.type&quot;: &quot;#Settings.v1_0_0.Settings&quot;,
+        &quot;ETag&quot;: &quot;9234ac83b9700123cc32&quot;,
+        &quot;Messages&quot;: [{
+            &quot;MessageId&quot;: &quot;Base.1.0.SettingsFailed&quot;,
+            &quot;RelatedProperties&quot;: [
+                &quot;#/Attributes/ProcTurboMode&quot;
+            ]
+        }],
+        &quot;SettingsObject&quot;: {
+            &quot;@odata.id&quot;: &quot;/redfish/v1/Systems/437XR1138R2/BIOS/Settings&quot;
+        },
+        &quot;Time&quot;: &quot;2016-03-07T14:44.30-05:00&quot;
+    },
+    &quot;Actions&quot;: {
+        &quot;#Bios.ResetBios&quot;: {
+            &quot;target&quot;: &quot;/redfish/v1/Systems/437XR1138R2/BIOS/Actions/Bios.ResetBios&quot;
+        },
+        &quot;#Bios.ChangePassword&quot;: {
+            &quot;target&quot;: &quot;/redfish/v1/Systems/437XR1138R2/BIOS/Actions/Bios.ChangePassword&quot;
+        }
+    },
+    &quot;@odata.context&quot;: &quot;/redfish/v1/$metadata#Bios.Bios&quot;,
+    &quot;@odata.id&quot;: &quot;/redfish/v1/Systems/437XR1138R2/BIOS&quot;
+}</code></pre></div>
 <h2><a name="Chassis"></a>Chassis 1.5.0</h2>
 <p>A Chassis represents the physical components for any system.  This resource represents the sheet-metal confined spaces and logical zones like racks, enclosures, chassis and all other containers. Subsystems (like sensors), which operate outside of a system's data plane (meaning the resources are not accessible to software running on the system) are linked either directly or indirectly through this resource.</p>
 <table class="properties">
@@ -1045,50 +1042,49 @@ pre.code{
 </div>
 </div>
 <h3>Example Response</h3>
-<div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#Chassis.v1_2_0.Chassis&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;1U&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Computer System Chassis&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;ChassisType&quot;</span><span class="p">:</span> <span class="s2">&quot;RackMount&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;AssetTag&quot;</span><span class="p">:</span> <span class="s2">&quot;Chicago-45Z-2381&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Manufacturer&quot;</span><span class="p">:</span> <span class="s2">&quot;Contoso&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Model&quot;</span><span class="p">:</span> <span class="s2">&quot;3500RX&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;SKU&quot;</span><span class="p">:</span> <span class="s2">&quot;8675309&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;SerialNumber&quot;</span><span class="p">:</span> <span class="s2">&quot;437XR1138R2&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;PartNumber&quot;</span><span class="p">:</span> <span class="s2">&quot;224071-J23&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;PowerState&quot;</span><span class="p">:</span> <span class="s2">&quot;On&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;IndicatorLED&quot;</span><span class="p">:</span> <span class="s2">&quot;Lit&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Status&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;State&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Health&quot;</span><span class="p">:</span> <span class="s2">&quot;OK&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;Thermal&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/1U/Thermal&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;Power&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/1U/Power&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;Links&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;ComputerSystems&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="p">{</span>
-                <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/437XR1138R2&quot;</span>
-            <span class="p">}</span>
-        <span class="p">],</span>
-        <span class="nt">&quot;ManagedBy&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="p">{</span>
-                <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Managers/BMC&quot;</span>
-            <span class="p">}</span>
-        <span class="p">],</span>
-        <span class="nt">&quot;ManagersInChassis&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="p">{</span>
-                <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Managers/BMC&quot;</span>
-            <span class="p">}</span>
-        <span class="p">]</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#Chassis.Chassis&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/1U&quot;</span>
-<span class="p">}</span>
-</pre></div></div>
+<div class="json-payload"><pre class="codehilite"><code class="language-json">{
+    &quot;@odata.type&quot;: &quot;#Chassis.v1_2_0.Chassis&quot;,
+    &quot;Id&quot;: &quot;1U&quot;,
+    &quot;Name&quot;: &quot;Computer System Chassis&quot;,
+    &quot;ChassisType&quot;: &quot;RackMount&quot;,
+    &quot;AssetTag&quot;: &quot;Chicago-45Z-2381&quot;,
+    &quot;Manufacturer&quot;: &quot;Contoso&quot;,
+    &quot;Model&quot;: &quot;3500RX&quot;,
+    &quot;SKU&quot;: &quot;8675309&quot;,
+    &quot;SerialNumber&quot;: &quot;437XR1138R2&quot;,
+    &quot;PartNumber&quot;: &quot;224071-J23&quot;,
+    &quot;PowerState&quot;: &quot;On&quot;,
+    &quot;IndicatorLED&quot;: &quot;Lit&quot;,
+    &quot;Status&quot;: {
+        &quot;State&quot;: &quot;Enabled&quot;,
+        &quot;Health&quot;: &quot;OK&quot;
+    },
+    &quot;Thermal&quot;: {
+        &quot;@odata.id&quot;: &quot;/redfish/v1/Chassis/1U/Thermal&quot;
+    },
+    &quot;Power&quot;: {
+        &quot;@odata.id&quot;: &quot;/redfish/v1/Chassis/1U/Power&quot;
+    },
+    &quot;Links&quot;: {
+        &quot;ComputerSystems&quot;: [
+            {
+                &quot;@odata.id&quot;: &quot;/redfish/v1/Systems/437XR1138R2&quot;
+            }
+        ],
+        &quot;ManagedBy&quot;: [
+            {
+                &quot;@odata.id&quot;: &quot;/redfish/v1/Managers/BMC&quot;
+            }
+        ],
+        &quot;ManagersInChassis&quot;: [
+            {
+                &quot;@odata.id&quot;: &quot;/redfish/v1/Managers/BMC&quot;
+            }
+        ]
+    },
+    &quot;@odata.context&quot;: &quot;/redfish/v1/$metadata#Chassis.Chassis&quot;,
+    &quot;@odata.id&quot;: &quot;/redfish/v1/Chassis/1U&quot;
+}</code></pre></div>
 <h2><a name="CompositionService"></a>CompositionService 1.0.0</h2>
 <p>This is the schema definition for the Composition Service.  It represents the properties for the service itself and has links to the actual list of resources available for composition.</p>
 <table class="properties">
@@ -1476,38 +1472,34 @@ pre.code{
 <p>The SMBIOS 2.6+ specification specifies the proper algorithm for converting the raw binary SMBIOS 16-byte structure into the canonical  string format of form "xxxxxx-xxxx-xxxx-xxxx-xxxxxx").  Redfish services should follow the SMBIOS 2.6+ specification for implementing this conversion.
 WMI and Linux dmidecode also follow the SMBIOS guidelines.</p>
 <p>The RFC4122 specification specifies that the canonical string value should follow network byte ordering. SMBIOS represents the UUID as five fields shown below:</p>
-<div class="codehilite"><pre><span></span>{
+<pre class="codehilite"><code>{
  DWORD    time_low,
  WORD     time_mid,
  WORD     time_hi_and_version,
  BYTE     clock_seq_hi_and_reserved,
  BYTE     clock_seq_low,
  BYTE[6]  node
-}
-</pre></div>
+}</code></pre>
 
 
 <p>For the above reasons, for little-endian systems (including x86 systems), there is a little-endian to network-byte-order conversion required for the first three fields to convert the SMBIOS binary UUID to network byte order.</p>
 <p>As specified in the SMBIOS 2.6+ specification, if the canonical UUID string is:</p>
-<div class="codehilite"><pre><span></span>&quot;00112233-4455-6677-8899-aabbccddeeff&quot;
-</pre></div>
+<pre class="codehilite"><code>&quot;00112233-4455-6677-8899-aabbccddeeff&quot;</code></pre>
 
 
 <p>then the corresponding raw representation in the SMBIOS UUID structure would be:</p>
-<div class="codehilite"><pre><span></span>raw_smbios_uuid={ 0x33, 0x22, 0x11, 0x00,    0x55, 0x44,     0x77, 0x66,     0x88, 0x99,     0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF }
-</pre></div>
+<pre class="codehilite"><code>raw_smbios_uuid={ 0x33, 0x22, 0x11, 0x00,    0x55, 0x44,     0x77, 0x66,     0x88, 0x99,     0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF }</code></pre>
 
 
 <p>The C code to convert the raw SMBIOS UUID struct in a little-endian system to the canonical string would be:</p>
-<div class="codehilite"><pre><span></span><span class="cm">/* routine to convert raw little-endian smbios structure to canonical string */</span><span class="w"></span>
-sprintf<span class="o">(</span>redfishUUID<span class="o">,</span><span class="s">&quot;%02x%02x%02x%02x-%02x%02x-%02x%02x-%02x%02x-%02x%02x%02x%02x%02x%02x&quot;</span><span class="o">)</span><span class="w"></span>
-<span class="w">    </span>raw_smbios_uuid<span class="err">[</span><span class="m">3</span><span class="err">]</span><span class="o">,</span><span class="w"> </span>raw_smbios_uuid<span class="err">[</span><span class="m">2</span><span class="err">]</span><span class="o">,</span><span class="w"> </span>raw_smbios_uuid<span class="err">[</span><span class="m">1</span><span class="err">]</span><span class="o">,</span>raw_smbios_uuid<span class="err">[</span><span class="m">0</span><span class="err">]</span><span class="o">,</span><span class="w"></span>
-<span class="w">    </span>raw_smbios_uuid<span class="err">[</span><span class="m">5</span><span class="err">]</span><span class="o">,</span>raw_smbios_uuid<span class="err">[</span><span class="m">4</span><span class="err">]</span><span class="o">,</span><span class="w"></span>
-<span class="w">    </span>raw_smbios_uuid<span class="err">[</span><span class="m">7</span><span class="err">]</span><span class="o">,</span>raw_smbios_uuid<span class="err">[</span><span class="m">6</span><span class="err">]</span><span class="o">,</span><span class="w"></span>
-<span class="w">    </span>raw_smbios_uuid<span class="err">[</span><span class="m">8</span><span class="err">]</span><span class="o">,</span>raw_smbios_uuid<span class="err">[</span><span class="m">9</span><span class="err">]</span><span class="o">,</span><span class="w"></span>
-<span class="w">   </span>raw_smbios_uuid<span class="err">[</span><span class="m">10</span><span class="err">]</span><span class="o">,</span>raw_smbios_uuid<span class="err">[</span><span class="m">11</span><span class="err">]</span><span class="o">,</span>raw_smbios_uuid<span class="err">[</span><span class="m">12</span><span class="err">]</span><span class="o">,</span>raw_smbios_uuid<span class="err">[</span><span class="m">13</span><span class="err">]</span><span class="o">,</span>raw_smbios_uuid<span class="err">[</span><span class="m">14</span><span class="err">]</span><span class="o">,</span>raw_smbios_uuid<span class="err">[</span><span class="m">15</span><span class="err">]</span><span class="w"></span>
-<span class="w">    </span><span class="o">)</span><span class="err">;</span><span class="w"></span>
-</pre></div>
+<pre class="codehilite"><code>/* routine to convert raw little-endian smbios structure to canonical string */
+sprintf(redfishUUID,&quot;%02x%02x%02x%02x-%02x%02x-%02x%02x-%02x%02x-%02x%02x%02x%02x%02x%02x&quot;)
+    raw_smbios_uuid[3], raw_smbios_uuid[2], raw_smbios_uuid[1],raw_smbios_uuid[0],
+    raw_smbios_uuid[5],raw_smbios_uuid[4],
+    raw_smbios_uuid[7],raw_smbios_uuid[6],
+    raw_smbios_uuid[8],raw_smbios_uuid[9],
+   raw_smbios_uuid[10],raw_smbios_uuid[11],raw_smbios_uuid[12],raw_smbios_uuid[13],raw_smbios_uuid[14],raw_smbios_uuid[15]
+    );</code></pre>
 
 
 <p>This code snippet creates the same canonical formatted string as WMI and dmidecode for little-endian X86 systems.
@@ -1520,140 +1512,139 @@ In the case that the computer architecture is not little-endian, the conversion 
 </div>
 </div>
 <h3>Example Response</h3>
-<div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#ComputerSystem.v1_1_0.ComputerSystem&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;437XR1138R2&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;WebFrontEnd483&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;SystemType&quot;</span><span class="p">:</span> <span class="s2">&quot;Physical&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;AssetTag&quot;</span><span class="p">:</span> <span class="s2">&quot;Chicago-45Z-2381&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Manufacturer&quot;</span><span class="p">:</span> <span class="s2">&quot;Contoso&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Model&quot;</span><span class="p">:</span> <span class="s2">&quot;3500RX&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;SKU&quot;</span><span class="p">:</span> <span class="s2">&quot;8675309&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;SerialNumber&quot;</span><span class="p">:</span> <span class="s2">&quot;437XR1138R2&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;PartNumber&quot;</span><span class="p">:</span> <span class="s2">&quot;224071-J23&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Description&quot;</span><span class="p">:</span> <span class="s2">&quot;Web Front End node&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;UUID&quot;</span><span class="p">:</span> <span class="s2">&quot;38947555-7742-3448-3784-823347823834&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;HostName&quot;</span><span class="p">:</span> <span class="s2">&quot;web483&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Status&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;State&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Health&quot;</span><span class="p">:</span> <span class="s2">&quot;OK&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;HealthRollup&quot;</span><span class="p">:</span> <span class="s2">&quot;OK&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;IndicatorLED&quot;</span><span class="p">:</span> <span class="s2">&quot;Off&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;PowerState&quot;</span><span class="p">:</span> <span class="s2">&quot;On&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Boot&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;BootSourceOverrideEnabled&quot;</span><span class="p">:</span> <span class="s2">&quot;Once&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;BootSourceOverrideTarget&quot;</span><span class="p">:</span> <span class="s2">&quot;Pxe&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;BootSourceOverrideTarget@Redfish.AllowableValues&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="s2">&quot;None&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;Pxe&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;Cd&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;Usb&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;Hdd&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;BiosSetup&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;Utilities&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;Diags&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;SDCard&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;UefiTarget&quot;</span>
-        <span class="p">],</span>
-        <span class="nt">&quot;BootSourceOverrideMode&quot;</span><span class="p">:</span> <span class="s2">&quot;UEFI&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;UefiTargetBootSourceOverride&quot;</span><span class="p">:</span> <span class="s2">&quot;/0x31/0x33/0x01/0x01&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;TrustedModules&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;FirmwareVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;1.13b&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;InterfaceType&quot;</span><span class="p">:</span> <span class="s2">&quot;TPM1_2&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;Status&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="nt">&quot;State&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;Health&quot;</span><span class="p">:</span> <span class="s2">&quot;OK&quot;</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">],</span>
-    <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;Contoso&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#Contoso.ComputerSystem&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;ProductionLocation&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="nt">&quot;FacilityName&quot;</span><span class="p">:</span> <span class="s2">&quot;PacWest Production Facility&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;Country&quot;</span><span class="p">:</span> <span class="s2">&quot;USA&quot;</span>
-            <span class="p">}</span>
-        <span class="p">},</span>
-        <span class="nt">&quot;Chipwise&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#Chipwise.ComputerSystem&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;Style&quot;</span><span class="p">:</span> <span class="s2">&quot;Executive&quot;</span>
-        <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;BiosVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;P79 v1.33 (02/28/2015)&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;ProcessorSummary&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;Count&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-        <span class="nt">&quot;Model&quot;</span><span class="p">:</span> <span class="s2">&quot;Multi-Core Intel(R) Xeon(R) processor 7xxx Series&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Status&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;State&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;Health&quot;</span><span class="p">:</span> <span class="s2">&quot;OK&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;HealthRollup&quot;</span><span class="p">:</span> <span class="s2">&quot;OK&quot;</span>
-        <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;MemorySummary&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;TotalSystemMemoryGiB&quot;</span><span class="p">:</span> <span class="mi">96</span><span class="p">,</span>
-        <span class="nt">&quot;Status&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;State&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;Health&quot;</span><span class="p">:</span> <span class="s2">&quot;OK&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;HealthRollup&quot;</span><span class="p">:</span> <span class="s2">&quot;OK&quot;</span>
-        <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;Bios&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/437XR1138R2/BIOS&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;Processors&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/437XR1138R2/Processors&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;Memory&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/437XR1138R2/Memory&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;EthernetInterfaces&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/437XR1138R2/EthernetInterfaces&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;SimpleStorage&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/437XR1138R2/SimpleStorage&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;LogServices&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/437XR1138R2/LogServices&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;Links&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;Chassis&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="p">{</span>
-                <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/1U&quot;</span>
-            <span class="p">}</span>
-        <span class="p">],</span>
-        <span class="nt">&quot;ManagedBy&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="p">{</span>
-                <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Managers/BMC&quot;</span>
-            <span class="p">}</span>
-        <span class="p">]</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;Actions&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;#ComputerSystem.Reset&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;target&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/437XR1138R2/Actions/ComputerSystem.Reset&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;ResetType@Redfish.AllowableValues&quot;</span><span class="p">:</span> <span class="p">[</span>
-                <span class="s2">&quot;On&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;ForceOff&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;GracefulShutdown&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;GracefulRestart&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;ForceRestart&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;Nmi&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;ForceOn&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;PushPowerButton&quot;</span>
-            <span class="p">]</span>
-        <span class="p">},</span>
-        <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;#Contoso.Reset&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="nt">&quot;target&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/437XR1138R2/Oem/Contoso/Actions/Contoso.Reset&quot;</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#ComputerSystem.ComputerSystem&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/437XR1138R2&quot;</span>
-<span class="p">}</span>
-</pre></div></div>
+<div class="json-payload"><pre class="codehilite"><code class="language-json">{
+    &quot;@odata.type&quot;: &quot;#ComputerSystem.v1_1_0.ComputerSystem&quot;,
+    &quot;Id&quot;: &quot;437XR1138R2&quot;,
+    &quot;Name&quot;: &quot;WebFrontEnd483&quot;,
+    &quot;SystemType&quot;: &quot;Physical&quot;,
+    &quot;AssetTag&quot;: &quot;Chicago-45Z-2381&quot;,
+    &quot;Manufacturer&quot;: &quot;Contoso&quot;,
+    &quot;Model&quot;: &quot;3500RX&quot;,
+    &quot;SKU&quot;: &quot;8675309&quot;,
+    &quot;SerialNumber&quot;: &quot;437XR1138R2&quot;,
+    &quot;PartNumber&quot;: &quot;224071-J23&quot;,
+    &quot;Description&quot;: &quot;Web Front End node&quot;,
+    &quot;UUID&quot;: &quot;38947555-7742-3448-3784-823347823834&quot;,
+    &quot;HostName&quot;: &quot;web483&quot;,
+    &quot;Status&quot;: {
+        &quot;State&quot;: &quot;Enabled&quot;,
+        &quot;Health&quot;: &quot;OK&quot;,
+        &quot;HealthRollup&quot;: &quot;OK&quot;
+    },
+    &quot;IndicatorLED&quot;: &quot;Off&quot;,
+    &quot;PowerState&quot;: &quot;On&quot;,
+    &quot;Boot&quot;: {
+        &quot;BootSourceOverrideEnabled&quot;: &quot;Once&quot;,
+        &quot;BootSourceOverrideTarget&quot;: &quot;Pxe&quot;,
+        &quot;BootSourceOverrideTarget@Redfish.AllowableValues&quot;: [
+            &quot;None&quot;,
+            &quot;Pxe&quot;,
+            &quot;Cd&quot;,
+            &quot;Usb&quot;,
+            &quot;Hdd&quot;,
+            &quot;BiosSetup&quot;,
+            &quot;Utilities&quot;,
+            &quot;Diags&quot;,
+            &quot;SDCard&quot;,
+            &quot;UefiTarget&quot;
+        ],
+        &quot;BootSourceOverrideMode&quot;: &quot;UEFI&quot;,
+        &quot;UefiTargetBootSourceOverride&quot;: &quot;/0x31/0x33/0x01/0x01&quot;
+    },
+    &quot;TrustedModules&quot;: [
+        {
+            &quot;FirmwareVersion&quot;: &quot;1.13b&quot;,
+            &quot;InterfaceType&quot;: &quot;TPM1_2&quot;,
+            &quot;Status&quot;: {
+                &quot;State&quot;: &quot;Enabled&quot;,
+                &quot;Health&quot;: &quot;OK&quot;
+            }
+        }
+    ],
+    &quot;Oem&quot;: {
+        &quot;Contoso&quot;: {
+            &quot;@odata.type&quot;: &quot;#Contoso.ComputerSystem&quot;,
+            &quot;ProductionLocation&quot;: {
+                &quot;FacilityName&quot;: &quot;PacWest Production Facility&quot;,
+                &quot;Country&quot;: &quot;USA&quot;
+            }
+        },
+        &quot;Chipwise&quot;: {
+            &quot;@odata.type&quot;: &quot;#Chipwise.ComputerSystem&quot;,
+            &quot;Style&quot;: &quot;Executive&quot;
+        }
+    },
+    &quot;BiosVersion&quot;: &quot;P79 v1.33 (02/28/2015)&quot;,
+    &quot;ProcessorSummary&quot;: {
+        &quot;Count&quot;: 2,
+        &quot;Model&quot;: &quot;Multi-Core Intel(R) Xeon(R) processor 7xxx Series&quot;,
+        &quot;Status&quot;: {
+            &quot;State&quot;: &quot;Enabled&quot;,
+            &quot;Health&quot;: &quot;OK&quot;,
+            &quot;HealthRollup&quot;: &quot;OK&quot;
+        }
+    },
+    &quot;MemorySummary&quot;: {
+        &quot;TotalSystemMemoryGiB&quot;: 96,
+        &quot;Status&quot;: {
+            &quot;State&quot;: &quot;Enabled&quot;,
+            &quot;Health&quot;: &quot;OK&quot;,
+            &quot;HealthRollup&quot;: &quot;OK&quot;
+        }
+    },
+    &quot;Bios&quot;: {
+        &quot;@odata.id&quot;: &quot;/redfish/v1/Systems/437XR1138R2/BIOS&quot;
+    },
+    &quot;Processors&quot;: {
+        &quot;@odata.id&quot;: &quot;/redfish/v1/Systems/437XR1138R2/Processors&quot;
+    },
+    &quot;Memory&quot;: {
+        &quot;@odata.id&quot;: &quot;/redfish/v1/Systems/437XR1138R2/Memory&quot;
+    },
+    &quot;EthernetInterfaces&quot;: {
+        &quot;@odata.id&quot;: &quot;/redfish/v1/Systems/437XR1138R2/EthernetInterfaces&quot;
+    },
+    &quot;SimpleStorage&quot;: {
+        &quot;@odata.id&quot;: &quot;/redfish/v1/Systems/437XR1138R2/SimpleStorage&quot;
+    },
+    &quot;LogServices&quot;: {
+        &quot;@odata.id&quot;: &quot;/redfish/v1/Systems/437XR1138R2/LogServices&quot;
+    },
+    &quot;Links&quot;: {
+        &quot;Chassis&quot;: [
+            {
+                &quot;@odata.id&quot;: &quot;/redfish/v1/Chassis/1U&quot;
+            }
+        ],
+        &quot;ManagedBy&quot;: [
+            {
+                &quot;@odata.id&quot;: &quot;/redfish/v1/Managers/BMC&quot;
+            }
+        ]
+    },
+    &quot;Actions&quot;: {
+        &quot;#ComputerSystem.Reset&quot;: {
+            &quot;target&quot;: &quot;/redfish/v1/Systems/437XR1138R2/Actions/ComputerSystem.Reset&quot;,
+            &quot;ResetType@Redfish.AllowableValues&quot;: [
+                &quot;On&quot;,
+                &quot;ForceOff&quot;,
+                &quot;GracefulShutdown&quot;,
+                &quot;GracefulRestart&quot;,
+                &quot;ForceRestart&quot;,
+                &quot;Nmi&quot;,
+                &quot;ForceOn&quot;,
+                &quot;PushPowerButton&quot;
+            ]
+        },
+        &quot;Oem&quot;: {
+            &quot;#Contoso.Reset&quot;: {
+                &quot;target&quot;: &quot;/redfish/v1/Systems/437XR1138R2/Oem/Contoso/Actions/Contoso.Reset&quot;
+            }
+        }
+    },
+    &quot;@odata.context&quot;: &quot;/redfish/v1/$metadata#ComputerSystem.ComputerSystem&quot;,
+    &quot;@odata.id&quot;: &quot;/redfish/v1/Systems/437XR1138R2&quot;
+}</code></pre></div>
 <h2><a name="Drive"></a>Drive 1.2.0</h2>
 <p>Drive contains properties describing a single physical disk drive for any system, along with links to associated Volumes.</p>
 <table class="properties">
@@ -2226,48 +2217,47 @@ In the case that the computer architecture is not little-endian, the conversion 
 </div>
 </div>
 <h3>Example Response</h3>
-<div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#EthernetInterface.v1_0_2.EthernetInterface&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Ethernet Interface&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Description&quot;</span><span class="p">:</span> <span class="s2">&quot;System NIC 1&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Status&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;State&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Health&quot;</span><span class="p">:</span> <span class="s2">&quot;OK&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;PermanentMACAddress&quot;</span><span class="p">:</span> <span class="s2">&quot;12:44:6A:3B:04:11&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;MACAddress&quot;</span><span class="p">:</span> <span class="s2">&quot;12:44:6A:3B:04:11&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;SpeedMbps&quot;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
-    <span class="nt">&quot;FullDuplex&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="nt">&quot;HostName&quot;</span><span class="p">:</span> <span class="s2">&quot;web483&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;FQDN&quot;</span><span class="p">:</span> <span class="s2">&quot;web483.contoso.com&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;IPv6DefaultGateway&quot;</span><span class="p">:</span> <span class="s2">&quot;fe80::3ed9:2bff:fe34:600&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;NameServers&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s2">&quot;names.contoso.com&quot;</span>
-    <span class="p">],</span>
-    <span class="nt">&quot;IPv4Addresses&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;Address&quot;</span><span class="p">:</span> <span class="s2">&quot;192.168.0.10&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;SubnetMask&quot;</span><span class="p">:</span> <span class="s2">&quot;255.255.252.0&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;AddressOrigin&quot;</span><span class="p">:</span> <span class="s2">&quot;Static&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;Gateway&quot;</span><span class="p">:</span> <span class="s2">&quot;192.168.0.1&quot;</span>
-        <span class="p">}</span>
-    <span class="p">],</span>
-    <span class="nt">&quot;IPv6Addresses&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;Address&quot;</span><span class="p">:</span> <span class="s2">&quot;fe80::1ec1:deff:fe6f:1e24&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;PrefixLength&quot;</span><span class="p">:</span> <span class="mi">64</span><span class="p">,</span>
-            <span class="nt">&quot;AddressOrigin&quot;</span><span class="p">:</span> <span class="s2">&quot;Static&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;AddressState&quot;</span><span class="p">:</span> <span class="s2">&quot;Preferred&quot;</span>
-        <span class="p">}</span>
-    <span class="p">],</span>
-    <span class="nt">&quot;VLANs&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/437XR1138R2/EthernetInterfaces/12446A3B0411/VLANs&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#EthernetInterface.EthernetInterface&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/437XR1138R2/EthernetInterfaces/12446A3B0411&quot;</span>
-<span class="p">}</span>
-</pre></div></div>
+<div class="json-payload"><pre class="codehilite"><code class="language-json">{
+    &quot;@odata.type&quot;: &quot;#EthernetInterface.v1_0_2.EthernetInterface&quot;,
+    &quot;Id&quot;: &quot;1&quot;,
+    &quot;Name&quot;: &quot;Ethernet Interface&quot;,
+    &quot;Description&quot;: &quot;System NIC 1&quot;,
+    &quot;Status&quot;: {
+        &quot;State&quot;: &quot;Enabled&quot;,
+        &quot;Health&quot;: &quot;OK&quot;
+    },
+    &quot;PermanentMACAddress&quot;: &quot;12:44:6A:3B:04:11&quot;,
+    &quot;MACAddress&quot;: &quot;12:44:6A:3B:04:11&quot;,
+    &quot;SpeedMbps&quot;: 1000,
+    &quot;FullDuplex&quot;: true,
+    &quot;HostName&quot;: &quot;web483&quot;,
+    &quot;FQDN&quot;: &quot;web483.contoso.com&quot;,
+    &quot;IPv6DefaultGateway&quot;: &quot;fe80::3ed9:2bff:fe34:600&quot;,
+    &quot;NameServers&quot;: [
+        &quot;names.contoso.com&quot;
+    ],
+    &quot;IPv4Addresses&quot;: [
+        {
+            &quot;Address&quot;: &quot;192.168.0.10&quot;,
+            &quot;SubnetMask&quot;: &quot;255.255.252.0&quot;,
+            &quot;AddressOrigin&quot;: &quot;Static&quot;,
+            &quot;Gateway&quot;: &quot;192.168.0.1&quot;
+        }
+    ],
+    &quot;IPv6Addresses&quot;: [
+        {
+            &quot;Address&quot;: &quot;fe80::1ec1:deff:fe6f:1e24&quot;,
+            &quot;PrefixLength&quot;: 64,
+            &quot;AddressOrigin&quot;: &quot;Static&quot;,
+            &quot;AddressState&quot;: &quot;Preferred&quot;
+        }
+    ],
+    &quot;VLANs&quot;: {
+        &quot;@odata.id&quot;: &quot;/redfish/v1/Systems/437XR1138R2/EthernetInterfaces/12446A3B0411/VLANs&quot;
+    },
+    &quot;@odata.context&quot;: &quot;/redfish/v1/$metadata#EthernetInterface.EthernetInterface&quot;,
+    &quot;@odata.id&quot;: &quot;/redfish/v1/Systems/437XR1138R2/EthernetInterfaces/12446A3B0411&quot;
+}</code></pre></div>
 <h2><a name="Event"></a>Event 1.2.0</h2>
 <p>The Event schema describes the JSON payload received by an Event Destination (which has subscribed to event notification) when events occurs.  This resource contains data about event(s), including descriptions, severity and MessageId reference to a Message Registry that can be accessed for further information.</p>
 <table class="properties">
@@ -2372,20 +2362,19 @@ In the case that the computer architecture is not little-endian, the conversion 
 </div>
 </div>
 <h3>Example Response</h3>
-<div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#EventDestination.v1_0_2.EventDestination&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;EventSubscription 1&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Destination&quot;</span><span class="p">:</span> <span class="s2">&quot;http://www.dnsname.com/Destination1&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;EventTypes&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s2">&quot;Alert&quot;</span>
-    <span class="p">],</span>
-    <span class="nt">&quot;Context&quot;</span><span class="p">:</span> <span class="s2">&quot;WebUser3&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Protocol&quot;</span><span class="p">:</span> <span class="s2">&quot;Redfish&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#EventDestination.EventDestination&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/EventService/Subscriptions/1&quot;</span>
-<span class="p">}</span>
-</pre></div></div>
+<div class="json-payload"><pre class="codehilite"><code class="language-json">{
+    &quot;@odata.type&quot;: &quot;#EventDestination.v1_0_2.EventDestination&quot;,
+    &quot;Id&quot;: &quot;1&quot;,
+    &quot;Name&quot;: &quot;EventSubscription 1&quot;,
+    &quot;Destination&quot;: &quot;http://www.dnsname.com/Destination1&quot;,
+    &quot;EventTypes&quot;: [
+        &quot;Alert&quot;
+    ],
+    &quot;Context&quot;: &quot;WebUser3&quot;,
+    &quot;Protocol&quot;: &quot;Redfish&quot;,
+    &quot;@odata.context&quot;: &quot;/redfish/v1/$metadata#EventDestination.EventDestination&quot;,
+    &quot;@odata.id&quot;: &quot;/redfish/v1/EventService/Subscriptions/1&quot;
+}</code></pre></div>
 <h2><a name="EventService"></a>EventService 1.0.4</h2>
 <p>The Event Service resource contains properties for managing event subcriptions and generates the events sent to subscribers.  The resource has links to the actual collection of subscriptions (called Event Destinations).</p>
 <table class="properties">
@@ -2477,45 +2466,44 @@ In the case that the computer architecture is not little-endian, the conversion 
 </div>
 </div>
 <h3>Example Response</h3>
-<div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#EventService.v1_0_2.EventService&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;EventService&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Event Service&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Status&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;State&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Health&quot;</span><span class="p">:</span> <span class="s2">&quot;OK&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;ServiceEnabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="nt">&quot;DeliveryRetryAttempts&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-    <span class="nt">&quot;DeliveryRetryIntervalSeconds&quot;</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
-    <span class="nt">&quot;EventTypesForSubscription&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s2">&quot;StatusChange&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;ResourceUpdated&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;ResourceAdded&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;ResourceRemoved&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;Alert&quot;</span>
-    <span class="p">],</span>
-    <span class="nt">&quot;Subscriptions&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/EventService/Subscriptions&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;Actions&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;#EventService.SubmitTestEvent&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;target&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/EventService/Actions/EventService.SubmitTestEvent&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;EventType@Redfish.AllowableValues&quot;</span><span class="p">:</span> <span class="p">[</span>
-                <span class="s2">&quot;StatusChange&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;ResourceUpdated&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;ResourceAdded&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;ResourceRemoved&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;Alert&quot;</span>
-            <span class="p">]</span>
-        <span class="p">},</span>
-        <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{}</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{},</span>
-    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#EventService.EventService&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/EventService&quot;</span>
-<span class="p">}</span>
-</pre></div></div>
+<div class="json-payload"><pre class="codehilite"><code class="language-json">{
+    &quot;@odata.type&quot;: &quot;#EventService.v1_0_2.EventService&quot;,
+    &quot;Id&quot;: &quot;EventService&quot;,
+    &quot;Name&quot;: &quot;Event Service&quot;,
+    &quot;Status&quot;: {
+        &quot;State&quot;: &quot;Enabled&quot;,
+        &quot;Health&quot;: &quot;OK&quot;
+    },
+    &quot;ServiceEnabled&quot;: true,
+    &quot;DeliveryRetryAttempts&quot;: 3,
+    &quot;DeliveryRetryIntervalSeconds&quot;: 60,
+    &quot;EventTypesForSubscription&quot;: [
+        &quot;StatusChange&quot;,
+        &quot;ResourceUpdated&quot;,
+        &quot;ResourceAdded&quot;,
+        &quot;ResourceRemoved&quot;,
+        &quot;Alert&quot;
+    ],
+    &quot;Subscriptions&quot;: {
+        &quot;@odata.id&quot;: &quot;/redfish/v1/EventService/Subscriptions&quot;
+    },
+    &quot;Actions&quot;: {
+        &quot;#EventService.SubmitTestEvent&quot;: {
+            &quot;target&quot;: &quot;/redfish/v1/EventService/Actions/EventService.SubmitTestEvent&quot;,
+            &quot;EventType@Redfish.AllowableValues&quot;: [
+                &quot;StatusChange&quot;,
+                &quot;ResourceUpdated&quot;,
+                &quot;ResourceAdded&quot;,
+                &quot;ResourceRemoved&quot;,
+                &quot;Alert&quot;
+            ]
+        },
+        &quot;Oem&quot;: {}
+    },
+    &quot;Oem&quot;: {},
+    &quot;@odata.context&quot;: &quot;/redfish/v1/$metadata#EventService.EventService&quot;,
+    &quot;@odata.id&quot;: &quot;/redfish/v1/EventService&quot;
+}</code></pre></div>
 <h2><a name="Fabric"></a>Fabric 1.0.2</h2>
 <p>Fabric contains properties describing a simple fabric consisting of one or more switches, zero or more endpoints, and zero or more zones.</p>
 <table class="properties">
@@ -2953,33 +2941,32 @@ In the case that the computer architecture is not little-endian, the conversion 
 </div>
 </div>
 <h3>Example Response</h3>
-<div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#LogEntry.v1_0_2.LogEntry&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Log Entry 1&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;EntryType&quot;</span><span class="p">:</span> <span class="s2">&quot;SEL&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;OemRecordFormat&quot;</span><span class="p">:</span> <span class="s2">&quot;Contoso&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Severity&quot;</span><span class="p">:</span> <span class="s2">&quot;Critical&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Created&quot;</span><span class="p">:</span> <span class="s2">&quot;2012-03-07T14:44&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;EntryCode&quot;</span><span class="p">:</span> <span class="s2">&quot;Assert&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;SensorType&quot;</span><span class="p">:</span> <span class="s2">&quot;Temperature&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;SensorNumber&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-    <span class="nt">&quot;Message&quot;</span><span class="p">:</span> <span class="s2">&quot;System May be Melting&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;MessageId&quot;</span><span class="p">:</span> <span class="s2">&quot;Event.1.0.TempWayTooHot&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;MessageArgs&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s2">&quot;88&quot;</span>
-    <span class="p">],</span>
-    <span class="nt">&quot;Links&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;OriginOfCondition&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/1U/Thermal&quot;</span>
-        <span class="p">},</span>
-        <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{}</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{},</span>
-    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#LogEntry.LogEntry&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Managers/BMC/LogServices/Log/Entries/1&quot;</span>
-<span class="p">}</span>
-</pre></div></div>
+<div class="json-payload"><pre class="codehilite"><code class="language-json">{
+    &quot;@odata.type&quot;: &quot;#LogEntry.v1_0_2.LogEntry&quot;,
+    &quot;Id&quot;: &quot;1&quot;,
+    &quot;Name&quot;: &quot;Log Entry 1&quot;,
+    &quot;EntryType&quot;: &quot;SEL&quot;,
+    &quot;OemRecordFormat&quot;: &quot;Contoso&quot;,
+    &quot;Severity&quot;: &quot;Critical&quot;,
+    &quot;Created&quot;: &quot;2012-03-07T14:44&quot;,
+    &quot;EntryCode&quot;: &quot;Assert&quot;,
+    &quot;SensorType&quot;: &quot;Temperature&quot;,
+    &quot;SensorNumber&quot;: 1,
+    &quot;Message&quot;: &quot;System May be Melting&quot;,
+    &quot;MessageId&quot;: &quot;Event.1.0.TempWayTooHot&quot;,
+    &quot;MessageArgs&quot;: [
+        &quot;88&quot;
+    ],
+    &quot;Links&quot;: {
+        &quot;OriginOfCondition&quot;: {
+            &quot;@odata.id&quot;: &quot;/redfish/v1/Chassis/1U/Thermal&quot;
+        },
+        &quot;Oem&quot;: {}
+    },
+    &quot;Oem&quot;: {},
+    &quot;@odata.context&quot;: &quot;/redfish/v1/$metadata#LogEntry.LogEntry&quot;,
+    &quot;@odata.id&quot;: &quot;/redfish/v1/Managers/BMC/LogServices/Log/Entries/1&quot;
+}</code></pre></div>
 <h2><a name="LogService"></a>LogService 1.0.4</h2>
 <p>This resource represents the log service for the resource or service to which it is associated.</p>
 <table class="properties">
@@ -3068,33 +3055,32 @@ In the case that the computer architecture is not little-endian, the conversion 
 </div>
 </div>
 <h3>Example Response</h3>
-<div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#LogService.v1_0_2.LogService&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;Log&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;System Log Service&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;MaxNumberOfRecords&quot;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
-    <span class="nt">&quot;OverWritePolicy&quot;</span><span class="p">:</span> <span class="s2">&quot;WrapsWhenFull&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;DateTime&quot;</span><span class="p">:</span> <span class="s2">&quot;2015-03-13T04:14:33+06:00&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;DateTimeLocalOffset&quot;</span><span class="p">:</span> <span class="s2">&quot;+06:00&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;ServiceEnabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="nt">&quot;Status&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;State&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Health&quot;</span><span class="p">:</span> <span class="s2">&quot;OK&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{},</span>
-    <span class="nt">&quot;Actions&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;#LogService.ClearLog&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;target&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Managers/BMC/LogServices/Log/Actions/LogService.Reset&quot;</span>
-        <span class="p">},</span>
-        <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{}</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;Entries&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Managers/BMC/LogServices/Log/Entries&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#LogService.LogService&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Managers/BMC/LogServices/Log&quot;</span>
-<span class="p">}</span>
-</pre></div></div>
+<div class="json-payload"><pre class="codehilite"><code class="language-json">{
+    &quot;@odata.type&quot;: &quot;#LogService.v1_0_2.LogService&quot;,
+    &quot;Id&quot;: &quot;Log&quot;,
+    &quot;Name&quot;: &quot;System Log Service&quot;,
+    &quot;MaxNumberOfRecords&quot;: 1000,
+    &quot;OverWritePolicy&quot;: &quot;WrapsWhenFull&quot;,
+    &quot;DateTime&quot;: &quot;2015-03-13T04:14:33+06:00&quot;,
+    &quot;DateTimeLocalOffset&quot;: &quot;+06:00&quot;,
+    &quot;ServiceEnabled&quot;: true,
+    &quot;Status&quot;: {
+        &quot;State&quot;: &quot;Enabled&quot;,
+        &quot;Health&quot;: &quot;OK&quot;
+    },
+    &quot;Oem&quot;: {},
+    &quot;Actions&quot;: {
+        &quot;#LogService.ClearLog&quot;: {
+            &quot;target&quot;: &quot;/redfish/v1/Managers/BMC/LogServices/Log/Actions/LogService.Reset&quot;
+        },
+        &quot;Oem&quot;: {}
+    },
+    &quot;Entries&quot;: {
+        &quot;@odata.id&quot;: &quot;/redfish/v1/Managers/BMC/LogServices/Log/Entries&quot;
+    },
+    &quot;@odata.context&quot;: &quot;/redfish/v1/$metadata#LogService.LogService&quot;,
+    &quot;@odata.id&quot;: &quot;/redfish/v1/Managers/BMC/LogServices/Log&quot;
+}</code></pre></div>
 <h2><a name="Manager"></a>Manager 1.3.1</h2>
 <p>This is the schema definition for a Manager.  Examples of managers are BMCs, Enclosure Managers, Management Controllers and other subsystems assigned managability functions.</p>
 <table class="properties">
@@ -3293,92 +3279,91 @@ In the case that the computer architecture is not little-endian, the conversion 
 </div>
 </div>
 <h3>Example Response</h3>
-<div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#Manager.v1_1_0.Manager&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;BMC&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Manager&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;ManagerType&quot;</span><span class="p">:</span> <span class="s2">&quot;BMC&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Description&quot;</span><span class="p">:</span> <span class="s2">&quot;Contoso BMC&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;ServiceEntryPointUUID&quot;</span><span class="p">:</span> <span class="s2">&quot;92384634-2938-2342-8820-489239905423&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;UUID&quot;</span><span class="p">:</span> <span class="s2">&quot;58893887-8974-2487-2389-841168418919&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Model&quot;</span><span class="p">:</span> <span class="s2">&quot;Joo Janta 200&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;DateTime&quot;</span><span class="p">:</span> <span class="s2">&quot;2015-03-13T04:14:33+06:00&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;DateTimeLocalOffset&quot;</span><span class="p">:</span> <span class="s2">&quot;+06:00&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Status&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;State&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Health&quot;</span><span class="p">:</span> <span class="s2">&quot;OK&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;GraphicalConsole&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;ServiceEnabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nt">&quot;MaxConcurrentSessions&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-        <span class="nt">&quot;ConnectTypesSupported&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="s2">&quot;KVMIP&quot;</span>
-        <span class="p">]</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;SerialConsole&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;ServiceEnabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nt">&quot;MaxConcurrentSessions&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="nt">&quot;ConnectTypesSupported&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="s2">&quot;Telnet&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;SSH&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;IPMI&quot;</span>
-        <span class="p">]</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;CommandShell&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;ServiceEnabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nt">&quot;MaxConcurrentSessions&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
-        <span class="nt">&quot;ConnectTypesSupported&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="s2">&quot;Telnet&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;SSH&quot;</span>
-        <span class="p">]</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;FirmwareVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;1.00&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;NetworkProtocol&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Managers/BMC/NetworkProtocol&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;EthernetInterfaces&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Managers/BMC/NICs&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;SerialInterfaces&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Managers/BMC/SerialInterfaces&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;LogServices&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Managers/BMC/LogServices&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;VirtualMedia&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Managers/BMC/VirtualMedia&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;Links&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;ManagerForServers&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="p">{</span>
-                <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/437XR1138R2&quot;</span>
-            <span class="p">}</span>
-        <span class="p">],</span>
-        <span class="nt">&quot;ManagerForChassis&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="p">{</span>
-                <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/1U&quot;</span>
-            <span class="p">}</span>
-        <span class="p">],</span>
-        <span class="nt">&quot;ManagerInChassis&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/1U&quot;</span>
-        <span class="p">},</span>  
-        <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{}</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;Actions&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;#Manager.Reset&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;target&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Managers/BMC/Actions/Manager.Reset&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;ResetType@Redfish.AllowableValues&quot;</span><span class="p">:</span> <span class="p">[</span>
-                <span class="s2">&quot;ForceRestart&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;GracefulRestart&quot;</span>
-            <span class="p">]</span>
-        <span class="p">},</span>
-        <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{}</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{},</span>
-    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#Manager.Manager&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Managers/BMC&quot;</span>
-<span class="p">}</span>
-</pre></div></div>
+<div class="json-payload"><pre class="codehilite"><code class="language-json">{
+    &quot;@odata.type&quot;: &quot;#Manager.v1_1_0.Manager&quot;,
+    &quot;Id&quot;: &quot;BMC&quot;,
+    &quot;Name&quot;: &quot;Manager&quot;,
+    &quot;ManagerType&quot;: &quot;BMC&quot;,
+    &quot;Description&quot;: &quot;Contoso BMC&quot;,
+    &quot;ServiceEntryPointUUID&quot;: &quot;92384634-2938-2342-8820-489239905423&quot;,
+    &quot;UUID&quot;: &quot;58893887-8974-2487-2389-841168418919&quot;,
+    &quot;Model&quot;: &quot;Joo Janta 200&quot;,
+    &quot;DateTime&quot;: &quot;2015-03-13T04:14:33+06:00&quot;,
+    &quot;DateTimeLocalOffset&quot;: &quot;+06:00&quot;,
+    &quot;Status&quot;: {
+        &quot;State&quot;: &quot;Enabled&quot;,
+        &quot;Health&quot;: &quot;OK&quot;
+    },
+    &quot;GraphicalConsole&quot;: {
+        &quot;ServiceEnabled&quot;: true,
+        &quot;MaxConcurrentSessions&quot;: 2,
+        &quot;ConnectTypesSupported&quot;: [
+            &quot;KVMIP&quot;
+        ]
+    },
+    &quot;SerialConsole&quot;: {
+        &quot;ServiceEnabled&quot;: true,
+        &quot;MaxConcurrentSessions&quot;: 1,
+        &quot;ConnectTypesSupported&quot;: [
+            &quot;Telnet&quot;,
+            &quot;SSH&quot;,
+            &quot;IPMI&quot;
+        ]
+    },
+    &quot;CommandShell&quot;: {
+        &quot;ServiceEnabled&quot;: true,
+        &quot;MaxConcurrentSessions&quot;: 4,
+        &quot;ConnectTypesSupported&quot;: [
+            &quot;Telnet&quot;,
+            &quot;SSH&quot;
+        ]
+    },
+    &quot;FirmwareVersion&quot;: &quot;1.00&quot;,
+    &quot;NetworkProtocol&quot;: {
+        &quot;@odata.id&quot;: &quot;/redfish/v1/Managers/BMC/NetworkProtocol&quot;
+    },
+    &quot;EthernetInterfaces&quot;: {
+        &quot;@odata.id&quot;: &quot;/redfish/v1/Managers/BMC/NICs&quot;
+    },
+    &quot;SerialInterfaces&quot;: {
+        &quot;@odata.id&quot;: &quot;/redfish/v1/Managers/BMC/SerialInterfaces&quot;
+    },
+    &quot;LogServices&quot;: {
+        &quot;@odata.id&quot;: &quot;/redfish/v1/Managers/BMC/LogServices&quot;
+    },
+    &quot;VirtualMedia&quot;: {
+        &quot;@odata.id&quot;: &quot;/redfish/v1/Managers/BMC/VirtualMedia&quot;
+    },
+    &quot;Links&quot;: {
+        &quot;ManagerForServers&quot;: [
+            {
+                &quot;@odata.id&quot;: &quot;/redfish/v1/Systems/437XR1138R2&quot;
+            }
+        ],
+        &quot;ManagerForChassis&quot;: [
+            {
+                &quot;@odata.id&quot;: &quot;/redfish/v1/Chassis/1U&quot;
+            }
+        ],
+        &quot;ManagerInChassis&quot;: {
+            &quot;@odata.id&quot;: &quot;/redfish/v1/Chassis/1U&quot;
+        },  
+        &quot;Oem&quot;: {}
+    },
+    &quot;Actions&quot;: {
+        &quot;#Manager.Reset&quot;: {
+            &quot;target&quot;: &quot;/redfish/v1/Managers/BMC/Actions/Manager.Reset&quot;,
+            &quot;ResetType@Redfish.AllowableValues&quot;: [
+                &quot;ForceRestart&quot;,
+                &quot;GracefulRestart&quot;
+            ]
+        },
+        &quot;Oem&quot;: {}
+    },
+    &quot;Oem&quot;: {},
+    &quot;@odata.context&quot;: &quot;/redfish/v1/$metadata#Manager.Manager&quot;,
+    &quot;@odata.id&quot;: &quot;/redfish/v1/Managers/BMC&quot;
+}</code></pre></div>
 <h2><a name="ManagerAccount"></a>ManagerAccount 1.1.0</h2>
 <p>The user accounts, owned by a Manager, are defined in this resource.  Changes to a Manager Account may affect the current Redfish service connection if this manager is responsible for the Redfish service.</p>
 <table class="properties">
@@ -3403,25 +3388,24 @@ In the case that the computer architecture is not little-endian, the conversion 
 <tr><td><b>UserName</b></td><td>string</td><td>read-write</td><td>This property contains the user name for the account.</td></tr>
 </tbody></table>
 <h3>Example Response</h3>
-<div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#ManagerAccount.v1_0_2.ManagerAccount&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;User Account&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Description&quot;</span><span class="p">:</span> <span class="s2">&quot;User Account&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Enabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="nt">&quot;Password&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
-    <span class="nt">&quot;UserName&quot;</span><span class="p">:</span> <span class="s2">&quot;Administrator&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;RoleId&quot;</span><span class="p">:</span> <span class="s2">&quot;Administrator&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Locked&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-    <span class="nt">&quot;Links&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;Role&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/AccountService/Roles/Admin&quot;</span>
-        <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#ManagerAccount.ManagerAccount&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/AccountService/Accounts/1&quot;</span>
-<span class="p">}</span>
-</pre></div></div>
+<div class="json-payload"><pre class="codehilite"><code class="language-json">{
+    &quot;@odata.type&quot;: &quot;#ManagerAccount.v1_0_2.ManagerAccount&quot;,
+    &quot;Id&quot;: &quot;1&quot;,
+    &quot;Name&quot;: &quot;User Account&quot;,
+    &quot;Description&quot;: &quot;User Account&quot;,
+    &quot;Enabled&quot;: true,
+    &quot;Password&quot;: null,
+    &quot;UserName&quot;: &quot;Administrator&quot;,
+    &quot;RoleId&quot;: &quot;Administrator&quot;,
+    &quot;Locked&quot;: false,
+    &quot;Links&quot;: {
+        &quot;Role&quot;: {
+            &quot;@odata.id&quot;: &quot;/redfish/v1/AccountService/Roles/Admin&quot;
+        }
+    },
+    &quot;@odata.context&quot;: &quot;/redfish/v1/$metadata#ManagerAccount.ManagerAccount&quot;,
+    &quot;@odata.id&quot;: &quot;/redfish/v1/AccountService/Accounts/1&quot;
+}</code></pre></div>
 <h2><a name="ManagerNetworkProtocol"></a>ManagerNetworkProtocol 1.2.0</h2>
 <p>This resource is used to obtain or modify the network services managed by a given manager.</p>
 <table class="properties">
@@ -3550,61 +3534,60 @@ In the case that the computer architecture is not little-endian, the conversion 
 </div>
 </div>
 <h3>Example Response</h3>
-<div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#ManagerNetworkProtocol.v1_0_2.ManagerNetworkProtocol&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;NetworkProtocol&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Manager Network Protocol&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Description&quot;</span><span class="p">:</span> <span class="s2">&quot;Manager Network Service&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Status&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;State&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Health&quot;</span><span class="p">:</span> <span class="s2">&quot;OK&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;HostName&quot;</span><span class="p">:</span> <span class="s2">&quot;web483-bmc&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;FQDN&quot;</span><span class="p">:</span> <span class="s2">&quot;web483-bmc.dmtf.org&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;HTTP&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;ProtocolEnabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nt">&quot;Port&quot;</span><span class="p">:</span> <span class="mi">80</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;HTTPS&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;ProtocolEnabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nt">&quot;Port&quot;</span><span class="p">:</span> <span class="mi">443</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;IPMI&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;ProtocolEnabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nt">&quot;Port&quot;</span><span class="p">:</span> <span class="mi">623</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;SSH&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;ProtocolEnabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nt">&quot;Port&quot;</span><span class="p">:</span> <span class="mi">22</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;SNMP&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;ProtocolEnabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nt">&quot;Port&quot;</span><span class="p">:</span> <span class="mi">161</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;VirtualMedia&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;ProtocolEnabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nt">&quot;Port&quot;</span><span class="p">:</span> <span class="mi">17988</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;SSDP&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;ProtocolEnabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nt">&quot;Port&quot;</span><span class="p">:</span> <span class="mi">1900</span><span class="p">,</span>
-        <span class="nt">&quot;NotifyMulticastIntervalSeconds&quot;</span><span class="p">:</span> <span class="mi">600</span><span class="p">,</span>
-        <span class="nt">&quot;NotifyTTL&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-        <span class="nt">&quot;NotifyIPv6Scope&quot;</span><span class="p">:</span> <span class="s2">&quot;Site&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;Telnet&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;ProtocolEnabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nt">&quot;Port&quot;</span><span class="p">:</span> <span class="mi">23</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;KVMIP&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;ProtocolEnabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nt">&quot;Port&quot;</span><span class="p">:</span> <span class="mi">5288</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{},</span>
-    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#ManagerNetworkProtocol.ManagerNetworkProtocol&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Managers/BMC/NetworkProtocol&quot;</span>
-<span class="p">}</span>
-</pre></div></div>
+<div class="json-payload"><pre class="codehilite"><code class="language-json">{
+    &quot;@odata.type&quot;: &quot;#ManagerNetworkProtocol.v1_0_2.ManagerNetworkProtocol&quot;,
+    &quot;Id&quot;: &quot;NetworkProtocol&quot;,
+    &quot;Name&quot;: &quot;Manager Network Protocol&quot;,
+    &quot;Description&quot;: &quot;Manager Network Service&quot;,
+    &quot;Status&quot;: {
+        &quot;State&quot;: &quot;Enabled&quot;,
+        &quot;Health&quot;: &quot;OK&quot;
+    },
+    &quot;HostName&quot;: &quot;web483-bmc&quot;,
+    &quot;FQDN&quot;: &quot;web483-bmc.dmtf.org&quot;,
+    &quot;HTTP&quot;: {
+        &quot;ProtocolEnabled&quot;: true,
+        &quot;Port&quot;: 80
+    },
+    &quot;HTTPS&quot;: {
+        &quot;ProtocolEnabled&quot;: true,
+        &quot;Port&quot;: 443
+    },
+    &quot;IPMI&quot;: {
+        &quot;ProtocolEnabled&quot;: true,
+        &quot;Port&quot;: 623
+    },
+    &quot;SSH&quot;: {
+        &quot;ProtocolEnabled&quot;: true,
+        &quot;Port&quot;: 22
+    },
+    &quot;SNMP&quot;: {
+        &quot;ProtocolEnabled&quot;: true,
+        &quot;Port&quot;: 161
+    },
+    &quot;VirtualMedia&quot;: {
+        &quot;ProtocolEnabled&quot;: true,
+        &quot;Port&quot;: 17988
+    },
+    &quot;SSDP&quot;: {
+        &quot;ProtocolEnabled&quot;: true,
+        &quot;Port&quot;: 1900,
+        &quot;NotifyMulticastIntervalSeconds&quot;: 600,
+        &quot;NotifyTTL&quot;: 5,
+        &quot;NotifyIPv6Scope&quot;: &quot;Site&quot;
+    },
+    &quot;Telnet&quot;: {
+        &quot;ProtocolEnabled&quot;: true,
+        &quot;Port&quot;: 23
+    },
+    &quot;KVMIP&quot;: {
+        &quot;ProtocolEnabled&quot;: true,
+        &quot;Port&quot;: 5288
+    },
+    &quot;Oem&quot;: {},
+    &quot;@odata.context&quot;: &quot;/redfish/v1/$metadata#ManagerNetworkProtocol.ManagerNetworkProtocol&quot;,
+    &quot;@odata.id&quot;: &quot;/redfish/v1/Managers/BMC/NetworkProtocol&quot;
+}</code></pre></div>
 <h2><a name="Memory"></a>Memory 1.2.0</h2>
 <p>This is the schema definition for definition of a Memory and its configuration.</p>
 <table class="properties">
@@ -3882,36 +3865,35 @@ In the case that the computer architecture is not little-endian, the conversion 
 </div>
 </div>
 <h3>Example Response</h3>
-<div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#Memory.v1_1_0.Memory&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;DIMM Slot 1&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;DIMM1&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;RankCount&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-    <span class="nt">&quot;MaxTDPMilliWatts&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">12000</span><span class="p">],</span>
-    <span class="nt">&quot;CapacityMiB&quot;</span><span class="p">:</span> <span class="mi">32768</span><span class="p">,</span>
-    <span class="nt">&quot;DataWidthBits&quot;</span><span class="p">:</span> <span class="mi">64</span><span class="p">,</span>
-    <span class="nt">&quot;BusWidthBits&quot;</span><span class="p">:</span> <span class="mi">72</span><span class="p">,</span>
-    <span class="nt">&quot;ErrorCorrection&quot;</span><span class="p">:</span> <span class="s2">&quot;MultiBitECC&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;MemoryLocation&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;Socket&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="nt">&quot;MemoryController&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="nt">&quot;Channel&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="nt">&quot;Slot&quot;</span><span class="p">:</span> <span class="mi">1</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;MemoryType&quot;</span><span class="p">:</span> <span class="s2">&quot;DRAM&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;MemoryDeviceType&quot;</span><span class="p">:</span> <span class="s2">&quot;DDR4&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;BaseModuleType&quot;</span><span class="p">:</span> <span class="s2">&quot;RDIMM&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;MemoryMedia&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s2">&quot;DRAM&quot;</span>
-    <span class="p">],</span>
-    <span class="nt">&quot;Status&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;State&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Health&quot;</span><span class="p">:</span> <span class="s2">&quot;OK&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#Memory.Memory&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/437XR1138R2/Memory/DIMM1&quot;</span>
-<span class="p">}</span>
-</pre></div></div>
+<div class="json-payload"><pre class="codehilite"><code class="language-json">{
+    &quot;@odata.type&quot;: &quot;#Memory.v1_1_0.Memory&quot;,
+    &quot;Name&quot;: &quot;DIMM Slot 1&quot;,
+    &quot;Id&quot;: &quot;DIMM1&quot;,
+    &quot;RankCount&quot;: 2,
+    &quot;MaxTDPMilliWatts&quot;: [12000],
+    &quot;CapacityMiB&quot;: 32768,
+    &quot;DataWidthBits&quot;: 64,
+    &quot;BusWidthBits&quot;: 72,
+    &quot;ErrorCorrection&quot;: &quot;MultiBitECC&quot;,
+    &quot;MemoryLocation&quot;: {
+        &quot;Socket&quot;: 1,
+        &quot;MemoryController&quot;: 1,
+        &quot;Channel&quot;: 1,
+        &quot;Slot&quot;: 1
+    },
+    &quot;MemoryType&quot;: &quot;DRAM&quot;,
+    &quot;MemoryDeviceType&quot;: &quot;DDR4&quot;,
+    &quot;BaseModuleType&quot;: &quot;RDIMM&quot;,
+    &quot;MemoryMedia&quot;: [
+        &quot;DRAM&quot;
+    ],
+    &quot;Status&quot;: {
+        &quot;State&quot;: &quot;Enabled&quot;,
+        &quot;Health&quot;: &quot;OK&quot;
+    },
+    &quot;@odata.context&quot;: &quot;/redfish/v1/$metadata#Memory.Memory&quot;,
+    &quot;@odata.id&quot;: &quot;/redfish/v1/Systems/437XR1138R2/Memory/DIMM1&quot;
+}</code></pre></div>
 <h2><a name="MemoryChunks"></a>MemoryChunks 1.1.0</h2>
 <p>This is the schema definition of a Memory Chunk and its configuration.</p>
 <table class="properties">
@@ -5283,149 +5265,148 @@ In the case that the computer architecture is not little-endian, the conversion 
 </div>
 </div>
 <h3>Example Response</h3>
-<div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#Power.v1_1_0.Power&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;Power&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Power&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;PowerControl&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/1U/Power#/PowerControl/0&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;MemberId&quot;</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Server Power Control&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;PowerConsumedWatts&quot;</span><span class="p">:</span> <span class="mi">344</span><span class="p">,</span>
-            <span class="nt">&quot;PowerRequestedWatts&quot;</span><span class="p">:</span> <span class="mi">800</span><span class="p">,</span>
-            <span class="nt">&quot;PowerAvailableWatts&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-            <span class="nt">&quot;PowerCapacityWatts&quot;</span><span class="p">:</span> <span class="mi">800</span><span class="p">,</span>
-            <span class="nt">&quot;PowerAllocatedWatts&quot;</span><span class="p">:</span> <span class="mi">800</span><span class="p">,</span>
-            <span class="nt">&quot;PowerMetrics&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="nt">&quot;IntervalInMin&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
-                <span class="nt">&quot;MinConsumedWatts&quot;</span><span class="p">:</span> <span class="mi">271</span><span class="p">,</span>
-                <span class="nt">&quot;MaxConsumedWatts&quot;</span><span class="p">:</span> <span class="mi">489</span><span class="p">,</span>
-                <span class="nt">&quot;AverageConsumedWatts&quot;</span><span class="p">:</span> <span class="mi">319</span>
-            <span class="p">},</span>
-            <span class="nt">&quot;PowerLimit&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="nt">&quot;LimitInWatts&quot;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
-                <span class="nt">&quot;LimitException&quot;</span><span class="p">:</span> <span class="s2">&quot;LogEventOnly&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;CorrectionInMs&quot;</span><span class="p">:</span> <span class="mi">50</span>
-            <span class="p">},</span>
-            <span class="nt">&quot;RelatedItem&quot;</span><span class="p">:</span> <span class="p">[</span>
-                <span class="p">{</span>
-                    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/437XR1138R2&quot;</span>
-                <span class="p">},</span>
-                <span class="p">{</span>
-                    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/1U&quot;</span>
-                <span class="p">}</span>
-            <span class="p">],</span>
-            <span class="nt">&quot;Status&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="nt">&quot;State&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;Health&quot;</span><span class="p">:</span> <span class="s2">&quot;OK&quot;</span>
-            <span class="p">},</span>
-            <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{}</span>
-        <span class="p">}</span>
-    <span class="p">],</span>
-    <span class="nt">&quot;Voltages&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/1U/Power#/Voltages/0&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;MemberId&quot;</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;VRM1 Voltage&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;SensorNumber&quot;</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span>
-            <span class="nt">&quot;Status&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="nt">&quot;State&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;Health&quot;</span><span class="p">:</span> <span class="s2">&quot;OK&quot;</span>
-            <span class="p">},</span>
-            <span class="nt">&quot;ReadingVolts&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
-            <span class="nt">&quot;UpperThresholdNonCritical&quot;</span><span class="p">:</span> <span class="mf">12.5</span><span class="p">,</span>
-            <span class="nt">&quot;UpperThresholdCritical&quot;</span><span class="p">:</span> <span class="mi">13</span><span class="p">,</span>
-            <span class="nt">&quot;UpperThresholdFatal&quot;</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span>
-            <span class="nt">&quot;LowerThresholdNonCritical&quot;</span><span class="p">:</span> <span class="mf">11.5</span><span class="p">,</span>
-            <span class="nt">&quot;LowerThresholdCritical&quot;</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span>
-            <span class="nt">&quot;LowerThresholdFatal&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
-            <span class="nt">&quot;MinReadingRange&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-            <span class="nt">&quot;MaxReadingRange&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
-            <span class="nt">&quot;PhysicalContext&quot;</span><span class="p">:</span> <span class="s2">&quot;VoltageRegulator&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;RelatedItem&quot;</span><span class="p">:</span> <span class="p">[</span>
-                <span class="p">{</span>
-                    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/437XR1138R2&quot;</span>
-                <span class="p">},</span>
-                <span class="p">{</span>
-                    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/1U&quot;</span>
-                <span class="p">}</span>
-            <span class="p">]</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/1U/Power#/Voltages/1&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;MemberId&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;VRM2 Voltage&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;SensorNumber&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
-            <span class="nt">&quot;Status&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="nt">&quot;State&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;Health&quot;</span><span class="p">:</span> <span class="s2">&quot;OK&quot;</span>
-            <span class="p">},</span>
-            <span class="nt">&quot;ReadingVolts&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-            <span class="nt">&quot;UpperThresholdNonCritical&quot;</span><span class="p">:</span> <span class="mf">5.5</span><span class="p">,</span>
-            <span class="nt">&quot;UpperThresholdCritical&quot;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
-            <span class="nt">&quot;LowerThresholdNonCritical&quot;</span><span class="p">:</span> <span class="mf">4.75</span><span class="p">,</span>
-            <span class="nt">&quot;LowerThresholdCritical&quot;</span><span class="p">:</span> <span class="mf">4.5</span><span class="p">,</span>
-            <span class="nt">&quot;MinReadingRange&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-            <span class="nt">&quot;MaxReadingRange&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
-            <span class="nt">&quot;PhysicalContext&quot;</span><span class="p">:</span> <span class="s2">&quot;VoltageRegulator&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;RelatedItem&quot;</span><span class="p">:</span> <span class="p">[</span>
-                <span class="p">{</span>
-                    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/437XR1138R2&quot;</span>
-                <span class="p">},</span>
-                <span class="p">{</span>
-                    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/1U&quot;</span>
-                <span class="p">}</span>
-            <span class="p">]</span>
-        <span class="p">}</span>
-    <span class="p">],</span>
-    <span class="nt">&quot;PowerSupplies&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/1U/Power#/PowerSupplies/0&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;MemberId&quot;</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Power Supply Bay&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;Status&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="nt">&quot;State&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;Health&quot;</span><span class="p">:</span> <span class="s2">&quot;Warning&quot;</span>
-            <span class="p">},</span>
-            <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{},</span>
-            <span class="nt">&quot;PowerSupplyType&quot;</span><span class="p">:</span> <span class="s2">&quot;AC&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;LineInputVoltageType&quot;</span><span class="p">:</span> <span class="s2">&quot;ACWideRange&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;LineInputVoltage&quot;</span><span class="p">:</span> <span class="mi">120</span><span class="p">,</span>
-            <span class="nt">&quot;PowerCapacityWatts&quot;</span><span class="p">:</span> <span class="mi">800</span><span class="p">,</span>
-            <span class="nt">&quot;LastPowerOutputWatts&quot;</span><span class="p">:</span> <span class="mi">325</span><span class="p">,</span>
-            <span class="nt">&quot;Model&quot;</span><span class="p">:</span> <span class="s2">&quot;499253-B21&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;Manufacturer&quot;</span><span class="p">:</span> <span class="s2">&quot;ManufacturerName&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;FirmwareVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;1.00&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;SerialNumber&quot;</span><span class="p">:</span> <span class="s2">&quot;1Z0000001&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;PartNumber&quot;</span><span class="p">:</span> <span class="s2">&quot;0000001A3A&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;SparePartNumber&quot;</span><span class="p">:</span> <span class="s2">&quot;0000001A3A&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;InputRanges&quot;</span><span class="p">:</span> <span class="p">[</span>
-                <span class="p">{</span>
-                    <span class="nt">&quot;InputType&quot;</span><span class="p">:</span> <span class="s2">&quot;AC&quot;</span><span class="p">,</span>
-                    <span class="nt">&quot;MinimumVoltage&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
-                    <span class="nt">&quot;MaximumVoltage&quot;</span><span class="p">:</span> <span class="mi">120</span><span class="p">,</span>
-                    <span class="nt">&quot;OutputWattage&quot;</span><span class="p">:</span> <span class="mi">800</span>
-                <span class="p">},</span>
-                <span class="p">{</span>
-                    <span class="nt">&quot;InputType&quot;</span><span class="p">:</span> <span class="s2">&quot;AC&quot;</span><span class="p">,</span>
-                    <span class="nt">&quot;MinimumVoltage&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
-                    <span class="nt">&quot;MaximumVoltage&quot;</span><span class="p">:</span> <span class="mi">240</span><span class="p">,</span>
-                    <span class="nt">&quot;OutputWattage&quot;</span><span class="p">:</span> <span class="mi">1300</span>
-                <span class="p">}</span>
-            <span class="p">],</span>
-            <span class="nt">&quot;RelatedItem&quot;</span><span class="p">:</span> <span class="p">[</span>
-                <span class="p">{</span>
-                    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/1U&quot;</span>
-                <span class="p">}</span>
-            <span class="p">]</span>
-        <span class="p">}</span>
-    <span class="p">],</span>
-    <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{},</span>
-    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#Power.Power&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/1U/Power&quot;</span>
-<span class="p">}</span>
-</pre></div></div>
+<div class="json-payload"><pre class="codehilite"><code class="language-json">{
+    &quot;@odata.type&quot;: &quot;#Power.v1_1_0.Power&quot;,
+    &quot;Id&quot;: &quot;Power&quot;,
+    &quot;Name&quot;: &quot;Power&quot;,
+    &quot;PowerControl&quot;: [
+        {
+            &quot;@odata.id&quot;: &quot;/redfish/v1/Chassis/1U/Power#/PowerControl/0&quot;,
+            &quot;MemberId&quot;: &quot;0&quot;,
+            &quot;Name&quot;: &quot;Server Power Control&quot;,
+            &quot;PowerConsumedWatts&quot;: 344,
+            &quot;PowerRequestedWatts&quot;: 800,
+            &quot;PowerAvailableWatts&quot;: 0,
+            &quot;PowerCapacityWatts&quot;: 800,
+            &quot;PowerAllocatedWatts&quot;: 800,
+            &quot;PowerMetrics&quot;: {
+                &quot;IntervalInMin&quot;: 30,
+                &quot;MinConsumedWatts&quot;: 271,
+                &quot;MaxConsumedWatts&quot;: 489,
+                &quot;AverageConsumedWatts&quot;: 319
+            },
+            &quot;PowerLimit&quot;: {
+                &quot;LimitInWatts&quot;: 500,
+                &quot;LimitException&quot;: &quot;LogEventOnly&quot;,
+                &quot;CorrectionInMs&quot;: 50
+            },
+            &quot;RelatedItem&quot;: [
+                {
+                    &quot;@odata.id&quot;: &quot;/redfish/v1/Systems/437XR1138R2&quot;
+                },
+                {
+                    &quot;@odata.id&quot;: &quot;/redfish/v1/Chassis/1U&quot;
+                }
+            ],
+            &quot;Status&quot;: {
+                &quot;State&quot;: &quot;Enabled&quot;,
+                &quot;Health&quot;: &quot;OK&quot;
+            },
+            &quot;Oem&quot;: {}
+        }
+    ],
+    &quot;Voltages&quot;: [
+        {
+            &quot;@odata.id&quot;: &quot;/redfish/v1/Chassis/1U/Power#/Voltages/0&quot;,
+            &quot;MemberId&quot;: &quot;0&quot;,
+            &quot;Name&quot;: &quot;VRM1 Voltage&quot;,
+            &quot;SensorNumber&quot;: 11,
+            &quot;Status&quot;: {
+                &quot;State&quot;: &quot;Enabled&quot;,
+                &quot;Health&quot;: &quot;OK&quot;
+            },
+            &quot;ReadingVolts&quot;: 12,
+            &quot;UpperThresholdNonCritical&quot;: 12.5,
+            &quot;UpperThresholdCritical&quot;: 13,
+            &quot;UpperThresholdFatal&quot;: 15,
+            &quot;LowerThresholdNonCritical&quot;: 11.5,
+            &quot;LowerThresholdCritical&quot;: 11,
+            &quot;LowerThresholdFatal&quot;: 10,
+            &quot;MinReadingRange&quot;: 0,
+            &quot;MaxReadingRange&quot;: 20,
+            &quot;PhysicalContext&quot;: &quot;VoltageRegulator&quot;,
+            &quot;RelatedItem&quot;: [
+                {
+                    &quot;@odata.id&quot;: &quot;/redfish/v1/Systems/437XR1138R2&quot;
+                },
+                {
+                    &quot;@odata.id&quot;: &quot;/redfish/v1/Chassis/1U&quot;
+                }
+            ]
+        },
+        {
+            &quot;@odata.id&quot;: &quot;/redfish/v1/Chassis/1U/Power#/Voltages/1&quot;,
+            &quot;MemberId&quot;: &quot;1&quot;,
+            &quot;Name&quot;: &quot;VRM2 Voltage&quot;,
+            &quot;SensorNumber&quot;: 12,
+            &quot;Status&quot;: {
+                &quot;State&quot;: &quot;Enabled&quot;,
+                &quot;Health&quot;: &quot;OK&quot;
+            },
+            &quot;ReadingVolts&quot;: 5,
+            &quot;UpperThresholdNonCritical&quot;: 5.5,
+            &quot;UpperThresholdCritical&quot;: 7,
+            &quot;LowerThresholdNonCritical&quot;: 4.75,
+            &quot;LowerThresholdCritical&quot;: 4.5,
+            &quot;MinReadingRange&quot;: 0,
+            &quot;MaxReadingRange&quot;: 20,
+            &quot;PhysicalContext&quot;: &quot;VoltageRegulator&quot;,
+            &quot;RelatedItem&quot;: [
+                {
+                    &quot;@odata.id&quot;: &quot;/redfish/v1/Systems/437XR1138R2&quot;
+                },
+                {
+                    &quot;@odata.id&quot;: &quot;/redfish/v1/Chassis/1U&quot;
+                }
+            ]
+        }
+    ],
+    &quot;PowerSupplies&quot;: [
+        {
+            &quot;@odata.id&quot;: &quot;/redfish/v1/Chassis/1U/Power#/PowerSupplies/0&quot;,
+            &quot;MemberId&quot;: &quot;0&quot;,
+            &quot;Name&quot;: &quot;Power Supply Bay&quot;,
+            &quot;Status&quot;: {
+                &quot;State&quot;: &quot;Enabled&quot;,
+                &quot;Health&quot;: &quot;Warning&quot;
+            },
+            &quot;Oem&quot;: {},
+            &quot;PowerSupplyType&quot;: &quot;AC&quot;,
+            &quot;LineInputVoltageType&quot;: &quot;ACWideRange&quot;,
+            &quot;LineInputVoltage&quot;: 120,
+            &quot;PowerCapacityWatts&quot;: 800,
+            &quot;LastPowerOutputWatts&quot;: 325,
+            &quot;Model&quot;: &quot;499253-B21&quot;,
+            &quot;Manufacturer&quot;: &quot;ManufacturerName&quot;,
+            &quot;FirmwareVersion&quot;: &quot;1.00&quot;,
+            &quot;SerialNumber&quot;: &quot;1Z0000001&quot;,
+            &quot;PartNumber&quot;: &quot;0000001A3A&quot;,
+            &quot;SparePartNumber&quot;: &quot;0000001A3A&quot;,
+            &quot;InputRanges&quot;: [
+                {
+                    &quot;InputType&quot;: &quot;AC&quot;,
+                    &quot;MinimumVoltage&quot;: 100,
+                    &quot;MaximumVoltage&quot;: 120,
+                    &quot;OutputWattage&quot;: 800
+                },
+                {
+                    &quot;InputType&quot;: &quot;AC&quot;,
+                    &quot;MinimumVoltage&quot;: 200,
+                    &quot;MaximumVoltage&quot;: 240,
+                    &quot;OutputWattage&quot;: 1300
+                }
+            ],
+            &quot;RelatedItem&quot;: [
+                {
+                    &quot;@odata.id&quot;: &quot;/redfish/v1/Chassis/1U&quot;
+                }
+            ]
+        }
+    ],
+    &quot;Oem&quot;: {},
+    &quot;@odata.context&quot;: &quot;/redfish/v1/$metadata#Power.Power&quot;,
+    &quot;@odata.id&quot;: &quot;/redfish/v1/Chassis/1U/Power&quot;
+}</code></pre></div>
 <h2><a name="PrivilegeRegistry"></a>PrivilegeRegistry 1.1.0</h2>
 <p>This is the schema definition for Operation to Privilege mapping.</p>
 <table class="properties">
@@ -5657,8 +5638,7 @@ In the case that the computer architecture is not little-endian, the conversion 
 
 <h4>EffectiveModel:</h4>
 <p>This property contains a value derived from register values resulting from the execution of the CPUID instruction.  The value is based on the following formula:</p>
-<div class="codehilite"><pre><span></span>((cpuid.1.eax &amp; 0x000f0000) &gt;&gt; 12) + ((cpuid.1.eax &amp; 0x000000f0) &gt;&gt; 4)
-</pre></div>
+<pre class="codehilite"><code>((cpuid.1.eax &amp; 0x000f0000) &gt;&gt; 12) + ((cpuid.1.eax &amp; 0x000000f0) &gt;&gt; 4)</code></pre>
 
 <h4>Health:</h4>
 <table class="enum enum-details">
@@ -5755,8 +5735,7 @@ In the case that the computer architecture is not little-endian, the conversion 
 
 <h4>Step:</h4>
 <p>This property contains a value derived from register values resulting from the execution of the CPUID instruction.  The value is based on the following formula:</p>
-<div class="codehilite"><pre><span></span>(cpuid-&gt;eax &amp; 0xf)
-</pre></div>
+<pre class="codehilite"><code>(cpuid-&gt;eax &amp; 0xf)</code></pre>
 
 <h4>VendorId:</h4>
 <p>This property contains a 12-byte, little-endian ASCII string derived from register values resulting from the execution of the CPUID instruction.</p>
@@ -5764,34 +5743,33 @@ In the case that the computer architecture is not little-endian, the conversion 
 </div>
 </div>
 <h3>Example Response</h3>
-<div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#Processor.v1_0_2.Processor&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;CPU1&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Socket&quot;</span><span class="p">:</span> <span class="s2">&quot;CPU 1&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;ProcessorType&quot;</span><span class="p">:</span> <span class="s2">&quot;CPU&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;ProcessorArchitecture&quot;</span><span class="p">:</span> <span class="s2">&quot;x86&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;InstructionSet&quot;</span><span class="p">:</span> <span class="s2">&quot;x86-64&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Manufacturer&quot;</span><span class="p">:</span> <span class="s2">&quot;Intel(R) Corporation&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Model&quot;</span><span class="p">:</span> <span class="s2">&quot;Multi-Core Intel(R) Xeon(R) processor 7xxx Series&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;ProcessorId&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;VendorId&quot;</span><span class="p">:</span> <span class="s2">&quot;GenuineIntel&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;IdentificationRegisters&quot;</span><span class="p">:</span> <span class="s2">&quot;0x34AC34DC8901274A&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;EffectiveFamily&quot;</span><span class="p">:</span> <span class="s2">&quot;0x42&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;EffectiveModel&quot;</span><span class="p">:</span> <span class="s2">&quot;0x61&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Step&quot;</span><span class="p">:</span> <span class="s2">&quot;0x1&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;MicrocodeInfo&quot;</span><span class="p">:</span> <span class="s2">&quot;0x429943&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;MaxSpeedMHz&quot;</span><span class="p">:</span> <span class="mi">3700</span><span class="p">,</span>
-    <span class="nt">&quot;TotalCores&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
-    <span class="nt">&quot;TotalThreads&quot;</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span>
-    <span class="nt">&quot;Status&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;State&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Health&quot;</span><span class="p">:</span> <span class="s2">&quot;OK&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#Processor.Processor&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/437XR1138R2/Processors/CPU1&quot;</span>
-<span class="p">}</span>
-</pre></div></div>
+<div class="json-payload"><pre class="codehilite"><code class="language-json">{
+    &quot;@odata.type&quot;: &quot;#Processor.v1_0_2.Processor&quot;,
+    &quot;Id&quot;: &quot;CPU1&quot;,
+    &quot;Socket&quot;: &quot;CPU 1&quot;,
+    &quot;ProcessorType&quot;: &quot;CPU&quot;,
+    &quot;ProcessorArchitecture&quot;: &quot;x86&quot;,
+    &quot;InstructionSet&quot;: &quot;x86-64&quot;,
+    &quot;Manufacturer&quot;: &quot;Intel(R) Corporation&quot;,
+    &quot;Model&quot;: &quot;Multi-Core Intel(R) Xeon(R) processor 7xxx Series&quot;,
+    &quot;ProcessorId&quot;: {
+        &quot;VendorId&quot;: &quot;GenuineIntel&quot;,
+        &quot;IdentificationRegisters&quot;: &quot;0x34AC34DC8901274A&quot;,
+        &quot;EffectiveFamily&quot;: &quot;0x42&quot;,
+        &quot;EffectiveModel&quot;: &quot;0x61&quot;,
+        &quot;Step&quot;: &quot;0x1&quot;,
+        &quot;MicrocodeInfo&quot;: &quot;0x429943&quot;
+    },
+    &quot;MaxSpeedMHz&quot;: 3700,
+    &quot;TotalCores&quot;: 8,
+    &quot;TotalThreads&quot;: 16,
+    &quot;Status&quot;: {
+        &quot;State&quot;: &quot;Enabled&quot;,
+        &quot;Health&quot;: &quot;OK&quot;
+    },
+    &quot;@odata.context&quot;: &quot;/redfish/v1/$metadata#Processor.Processor&quot;,
+    &quot;@odata.id&quot;: &quot;/redfish/v1/Systems/437XR1138R2/Processors/CPU1&quot;
+}</code></pre></div>
 <h2><a name="ResourceBlock"></a>ResourceBlock 1.0.0</h2>
 <p>This schema defines a Resource Block resource.</p>
 <table class="properties">
@@ -5960,27 +5938,26 @@ In the case that the computer architecture is not little-endian, the conversion 
 </div>
 </div>
 <h3>Example Response</h3>
-<div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#Role.v1_0_2.Role&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;Admin&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;User Role&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Description&quot;</span><span class="p">:</span> <span class="s2">&quot;Admin User Role&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;IsPredefined&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="nt">&quot;AssignedPrivileges&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s2">&quot;Login&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;ConfigureManager&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;ConfigureUsers&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;ConfigureSelf&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;ConfigureComponents&quot;</span>
-    <span class="p">],</span>
-    <span class="nt">&quot;OemPrivileges&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s2">&quot;OemClearLog&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;OemPowerControl&quot;</span>
-    <span class="p">],</span>
-    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#Role.Role&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/AccountService/Roles/Admin&quot;</span>
-<span class="p">}</span>
-</pre></div></div>
+<div class="json-payload"><pre class="codehilite"><code class="language-json">{
+    &quot;@odata.type&quot;: &quot;#Role.v1_0_2.Role&quot;,
+    &quot;Id&quot;: &quot;Admin&quot;,
+    &quot;Name&quot;: &quot;User Role&quot;,
+    &quot;Description&quot;: &quot;Admin User Role&quot;,
+    &quot;IsPredefined&quot;: true,
+    &quot;AssignedPrivileges&quot;: [
+        &quot;Login&quot;,
+        &quot;ConfigureManager&quot;,
+        &quot;ConfigureUsers&quot;,
+        &quot;ConfigureSelf&quot;,
+        &quot;ConfigureComponents&quot;
+    ],
+    &quot;OemPrivileges&quot;: [
+        &quot;OemClearLog&quot;,
+        &quot;OemPowerControl&quot;
+    ],
+    &quot;@odata.context&quot;: &quot;/redfish/v1/$metadata#Role.Role&quot;,
+    &quot;@odata.id&quot;: &quot;/redfish/v1/AccountService/Roles/Admin&quot;
+}</code></pre></div>
 <h2><a name="SecureBoot"></a>SecureBoot 1.0.2</h2>
 <p>This resource contains UEFI Secure Boot information. It represents properties for managing the UEFI Secure Boot functionality of a system.</p>
 <table class="properties">
@@ -6210,43 +6187,42 @@ In the case that the computer architecture is not little-endian, the conversion 
 <tr><td>}</td><td></td><td></td><td></td></tr>
 </tbody></table>
 <h3>Example Response</h3>
-<div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#ServiceRoot.v1_0_2.ServiceRoot&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;RootService&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Root Service&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;RedfishVersion&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0.2&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;UUID&quot;</span><span class="p">:</span> <span class="s2">&quot;92384634-2938-2342-8820-489239905423&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Systems&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;Chassis&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;Managers&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Managers&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;Tasks&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/TaskService&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;SessionService&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/SessionService&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;AccountService&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/AccountService&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;EventService&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/EventService&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;Links&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;Sessions&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/SessionService/Sessions&quot;</span>
-        <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;Oem&quot;</span><span class="p">:</span> <span class="p">{},</span>
-    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#ServiceRoot.ServiceRoot&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/&quot;</span>
-<span class="p">}</span>
-</pre></div></div>
+<div class="json-payload"><pre class="codehilite"><code class="language-json">{
+    &quot;@odata.type&quot;: &quot;#ServiceRoot.v1_0_2.ServiceRoot&quot;,
+    &quot;Id&quot;: &quot;RootService&quot;,
+    &quot;Name&quot;: &quot;Root Service&quot;,
+    &quot;RedfishVersion&quot;: &quot;1.0.2&quot;,
+    &quot;UUID&quot;: &quot;92384634-2938-2342-8820-489239905423&quot;,
+    &quot;Systems&quot;: {
+        &quot;@odata.id&quot;: &quot;/redfish/v1/Systems&quot;
+    },
+    &quot;Chassis&quot;: {
+        &quot;@odata.id&quot;: &quot;/redfish/v1/Chassis&quot;
+    },
+    &quot;Managers&quot;: {
+        &quot;@odata.id&quot;: &quot;/redfish/v1/Managers&quot;
+    },
+    &quot;Tasks&quot;: {
+        &quot;@odata.id&quot;: &quot;/redfish/v1/TaskService&quot;
+    },
+    &quot;SessionService&quot;: {
+        &quot;@odata.id&quot;: &quot;/redfish/v1/SessionService&quot;
+    },
+    &quot;AccountService&quot;: {
+        &quot;@odata.id&quot;: &quot;/redfish/v1/AccountService&quot;
+    },
+    &quot;EventService&quot;: {
+        &quot;@odata.id&quot;: &quot;/redfish/v1/EventService&quot;
+    },
+    &quot;Links&quot;: {
+        &quot;Sessions&quot;: {
+            &quot;@odata.id&quot;: &quot;/redfish/v1/SessionService/Sessions&quot;
+        }
+    },
+    &quot;Oem&quot;: {},
+    &quot;@odata.context&quot;: &quot;/redfish/v1/$metadata#ServiceRoot.ServiceRoot&quot;,
+    &quot;@odata.id&quot;: &quot;/redfish/v1/&quot;
+}</code></pre></div>
 <h2><a name="Session"></a>Session 1.1.0</h2>
 <p>The Session resource describes a single connection (session) between a client and a Redfish service instance.</p>
 <table class="properties">
@@ -6331,24 +6307,23 @@ In the case that the computer architecture is not little-endian, the conversion 
 </div>
 </div>
 <h3>Example Response</h3>
-<div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#SessionService.v1_0_2.SessionService&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;SessionService&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Session Service&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Description&quot;</span><span class="p">:</span> <span class="s2">&quot;Session Service&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Status&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;State&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Health&quot;</span><span class="p">:</span> <span class="s2">&quot;OK&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;ServiceEnabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="nt">&quot;SessionTimeout&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
-    <span class="nt">&quot;Sessions&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/SessionService/Sessions&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#SessionService.SessionService&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/SessionService&quot;</span>
-<span class="p">}</span>
-</pre></div></div>
+<div class="json-payload"><pre class="codehilite"><code class="language-json">{
+    &quot;@odata.type&quot;: &quot;#SessionService.v1_0_2.SessionService&quot;,
+    &quot;Id&quot;: &quot;SessionService&quot;,
+    &quot;Name&quot;: &quot;Session Service&quot;,
+    &quot;Description&quot;: &quot;Session Service&quot;,
+    &quot;Status&quot;: {
+        &quot;State&quot;: &quot;Enabled&quot;,
+        &quot;Health&quot;: &quot;OK&quot;
+    },
+    &quot;ServiceEnabled&quot;: true,
+    &quot;SessionTimeout&quot;: 30,
+    &quot;Sessions&quot;: {
+        &quot;@odata.id&quot;: &quot;/redfish/v1/SessionService/Sessions&quot;
+    },
+    &quot;@odata.context&quot;: &quot;/redfish/v1/$metadata#SessionService.SessionService&quot;,
+    &quot;@odata.id&quot;: &quot;/redfish/v1/SessionService&quot;
+}</code></pre></div>
 <h2><a name="SimpleStorage"></a>SimpleStorage 1.2.0</h2>
 <p>This is the schema definition for the Simple Storage resource.  It represents the properties of a storage controller and its directly-attached devices.</p>
 <table class="properties">
@@ -6434,55 +6409,54 @@ In the case that the computer architecture is not little-endian, the conversion 
 </div>
 </div>
 <h3>Example Response</h3>
-<div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#SimpleStorage.v1_0_2.SimpleStorage&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Simple Storage Controller&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Description&quot;</span><span class="p">:</span> <span class="s2">&quot;System SATA&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;UefiDevicePath&quot;</span><span class="p">:</span> <span class="s2">&quot;Acpi(PNP0A03,0)/Pci(1F|1)/Ata(Primary,Master)/HD(Part3, Sig00110011)&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Status&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;State&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;Health&quot;</span><span class="p">:</span> <span class="s2">&quot;OK&quot;</span><span class="p">,</span>
-        <span class="nt">&quot;HealthRollup&quot;</span><span class="p">:</span> <span class="s2">&quot;Warning&quot;</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;Devices&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;SATA Bay 1&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;Manufacturer&quot;</span><span class="p">:</span> <span class="s2">&quot;Contoso&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;Model&quot;</span><span class="p">:</span> <span class="s2">&quot;3000GT8&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;CapacityBytes&quot;</span><span class="p">:</span> <span class="mi">8000000000000</span><span class="p">,</span>
-            <span class="nt">&quot;Status&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="nt">&quot;State&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;Health&quot;</span><span class="p">:</span> <span class="s2">&quot;OK&quot;</span>
-            <span class="p">}</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;SATA Bay 2&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;Manufacturer&quot;</span><span class="p">:</span> <span class="s2">&quot;Contoso&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;Model&quot;</span><span class="p">:</span> <span class="s2">&quot;3000GT7&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;CapacityBytes&quot;</span><span class="p">:</span> <span class="mi">4000000000000</span><span class="p">,</span>
-            <span class="nt">&quot;Status&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="nt">&quot;State&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;Health&quot;</span><span class="p">:</span> <span class="s2">&quot;Degraded&quot;</span>
-            <span class="p">}</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;SATA Bay 3&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;Status&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="nt">&quot;State&quot;</span><span class="p">:</span> <span class="s2">&quot;Absent&quot;</span>
-            <span class="p">}</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;SATA Bay 4&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;Status&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="nt">&quot;State&quot;</span><span class="p">:</span> <span class="s2">&quot;Absent&quot;</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">],</span>
-    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#SimpleStorage.SimpleStorage&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/437XR1138R2/SimpleStorage/1&quot;</span>
-<span class="p">}</span>
-</pre></div></div>
+<div class="json-payload"><pre class="codehilite"><code class="language-json">{
+    &quot;@odata.type&quot;: &quot;#SimpleStorage.v1_0_2.SimpleStorage&quot;,
+    &quot;Id&quot;: &quot;1&quot;,
+    &quot;Name&quot;: &quot;Simple Storage Controller&quot;,
+    &quot;Description&quot;: &quot;System SATA&quot;,
+    &quot;UefiDevicePath&quot;: &quot;Acpi(PNP0A03,0)/Pci(1F|1)/Ata(Primary,Master)/HD(Part3, Sig00110011)&quot;,
+    &quot;Status&quot;: {
+        &quot;State&quot;: &quot;Enabled&quot;,
+        &quot;Health&quot;: &quot;OK&quot;,
+        &quot;HealthRollup&quot;: &quot;Warning&quot;
+    },
+    &quot;Devices&quot;: [
+        {
+            &quot;Name&quot;: &quot;SATA Bay 1&quot;,
+            &quot;Manufacturer&quot;: &quot;Contoso&quot;,
+            &quot;Model&quot;: &quot;3000GT8&quot;,
+            &quot;CapacityBytes&quot;: 8000000000000,
+            &quot;Status&quot;: {
+                &quot;State&quot;: &quot;Enabled&quot;,
+                &quot;Health&quot;: &quot;OK&quot;
+            }
+        },
+        {
+            &quot;Name&quot;: &quot;SATA Bay 2&quot;,
+            &quot;Manufacturer&quot;: &quot;Contoso&quot;,
+            &quot;Model&quot;: &quot;3000GT7&quot;,
+            &quot;CapacityBytes&quot;: 4000000000000,
+            &quot;Status&quot;: {
+                &quot;State&quot;: &quot;Enabled&quot;,
+                &quot;Health&quot;: &quot;Degraded&quot;
+            }
+        },
+        {
+            &quot;Name&quot;: &quot;SATA Bay 3&quot;,
+            &quot;Status&quot;: {
+                &quot;State&quot;: &quot;Absent&quot;
+            }
+        },
+        {
+            &quot;Name&quot;: &quot;SATA Bay 4&quot;,
+            &quot;Status&quot;: {
+                &quot;State&quot;: &quot;Absent&quot;
+            }
+        }
+    ],
+    &quot;@odata.context&quot;: &quot;/redfish/v1/$metadata#SimpleStorage.SimpleStorage&quot;,
+    &quot;@odata.id&quot;: &quot;/redfish/v1/Systems/437XR1138R2/SimpleStorage/1&quot;
+}</code></pre></div>
 <h2><a name="SoftwareInventory"></a>SoftwareInventory 1.1.1</h2>
 <p>This schema defines an inventory of software components.</p>
 <table class="properties">
@@ -7184,166 +7158,165 @@ In the case that the computer architecture is not little-endian, the conversion 
 </div>
 </div>
 <h3>Example Response</h3>
-<div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#Thermal.v1_0_2.Thermal&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;Thermal&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Thermal&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Temperatures&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/1U/Thermal#/Temperatures/0&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;MemberId&quot;</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;CPU1 Temp&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;SensorNumber&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-            <span class="nt">&quot;Status&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="nt">&quot;State&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;Health&quot;</span><span class="p">:</span> <span class="s2">&quot;OK&quot;</span>
-            <span class="p">},</span>
-            <span class="nt">&quot;ReadingCelsius&quot;</span><span class="p">:</span> <span class="mi">41</span><span class="p">,</span>
-            <span class="nt">&quot;UpperThresholdNonCritical&quot;</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span>
-            <span class="nt">&quot;UpperThresholdCritical&quot;</span><span class="p">:</span> <span class="mi">45</span><span class="p">,</span>
-            <span class="nt">&quot;UpperThresholdFatal&quot;</span><span class="p">:</span> <span class="mi">48</span><span class="p">,</span>
-            <span class="nt">&quot;MinReadingRange&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-            <span class="nt">&quot;MaxReadingRange&quot;</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
-            <span class="nt">&quot;PhysicalContext&quot;</span><span class="p">:</span> <span class="s2">&quot;CPU&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;RelatedItem&quot;</span><span class="p">:</span> <span class="p">[</span>
-                <span class="p">{</span>
-                    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/437XR1138R2/Processors/CPU1&quot;</span>
-                <span class="p">}</span>
-            <span class="p">]</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/1U/Thermal#/Temperatures/1&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;MemberId&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;CPU2 Temp&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;SensorNumber&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
-            <span class="nt">&quot;Status&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="nt">&quot;State&quot;</span><span class="p">:</span> <span class="s2">&quot;Disabled&quot;</span>
-            <span class="p">},</span>
-            <span class="nt">&quot;UpperThresholdNonCritical&quot;</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span>
-            <span class="nt">&quot;UpperThresholdCritical&quot;</span><span class="p">:</span> <span class="mi">45</span><span class="p">,</span>
-            <span class="nt">&quot;UpperThresholdFatal&quot;</span><span class="p">:</span> <span class="mi">48</span><span class="p">,</span>
-            <span class="nt">&quot;MinReadingRange&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-            <span class="nt">&quot;MaxReadingRange&quot;</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
-            <span class="nt">&quot;PhysicalContext&quot;</span><span class="p">:</span> <span class="s2">&quot;CPU&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;RelatedItem&quot;</span><span class="p">:</span> <span class="p">[</span>
-                <span class="p">{</span>
-                    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/437XR1138R2/Processors/CPU2&quot;</span>
-                <span class="p">}</span>
-            <span class="p">]</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/1U/Thermal#/Temperatures/2&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;MemberId&quot;</span><span class="p">:</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Chassis Intake Temp&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;SensorNumber&quot;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span>
-            <span class="nt">&quot;Status&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="nt">&quot;State&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;Health&quot;</span><span class="p">:</span> <span class="s2">&quot;OK&quot;</span>
-            <span class="p">},</span>
-            <span class="nt">&quot;ReadingCelsius&quot;</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span>
-            <span class="nt">&quot;UpperThresholdNonCritical&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
-            <span class="nt">&quot;UpperThresholdCritical&quot;</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span>
-            <span class="nt">&quot;UpperThresholdFatal&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
-            <span class="nt">&quot;LowerThresholdNonCritical&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
-            <span class="nt">&quot;LowerThresholdCritical&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-            <span class="nt">&quot;LowerThresholdFatal&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-            <span class="nt">&quot;MinReadingRange&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-            <span class="nt">&quot;MaxReadingRange&quot;</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
-            <span class="nt">&quot;PhysicalContext&quot;</span><span class="p">:</span> <span class="s2">&quot;Intake&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;RelatedItem&quot;</span><span class="p">:</span> <span class="p">[</span>
-                <span class="p">{</span>
-                    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/1U&quot;</span>
-                <span class="p">},</span>
-                <span class="p">{</span>
-                    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/437XR1138R2&quot;</span>
-                <span class="p">}</span>
-            <span class="p">]</span>
-        <span class="p">}</span>
-    <span class="p">],</span>
-    <span class="nt">&quot;Fans&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/1U/Thermal#/Fans/0&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;MemberId&quot;</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;BaseBoard System Fan&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;PhysicalContext&quot;</span><span class="p">:</span> <span class="s2">&quot;Backplane&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;Status&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="nt">&quot;State&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;Health&quot;</span><span class="p">:</span> <span class="s2">&quot;OK&quot;</span>
-            <span class="p">},</span>
-            <span class="nt">&quot;Reading&quot;</span><span class="p">:</span> <span class="mi">2100</span><span class="p">,</span>
-            <span class="nt">&quot;ReadingUnits&quot;</span><span class="p">:</span> <span class="s2">&quot;RPM&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;LowerThresholdFatal&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-            <span class="nt">&quot;MinReadingRange&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-            <span class="nt">&quot;MaxReadingRange&quot;</span><span class="p">:</span> <span class="mi">5000</span><span class="p">,</span>
-            <span class="nt">&quot;Redundancy&quot;</span><span class="p">:</span> <span class="p">[</span>
-                <span class="p">{</span>
-                    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/1U/Thermal#/Redundancy/0&quot;</span>
-                <span class="p">}</span>
-            <span class="p">],</span>
-            <span class="nt">&quot;RelatedItem&quot;</span><span class="p">:</span> <span class="p">[</span>
-                <span class="p">{</span>
-                    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/437XR1138R2&quot;</span>
-                <span class="p">},</span>
-                <span class="p">{</span>
-                    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/1U&quot;</span>
-                <span class="p">}</span>
-            <span class="p">]</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/1U/Thermal#/Fans/1&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;MemberId&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;BaseBoard System Fan Backup&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;PhysicalContext&quot;</span><span class="p">:</span> <span class="s2">&quot;Backplane&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;Status&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="nt">&quot;State&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;Health&quot;</span><span class="p">:</span> <span class="s2">&quot;OK&quot;</span>
-            <span class="p">},</span>
-            <span class="nt">&quot;Reading&quot;</span><span class="p">:</span> <span class="mi">2050</span><span class="p">,</span>
-            <span class="nt">&quot;ReadingUnits&quot;</span><span class="p">:</span> <span class="s2">&quot;RPM&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;LowerThresholdFatal&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-            <span class="nt">&quot;MinReadingRange&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-            <span class="nt">&quot;MaxReadingRange&quot;</span><span class="p">:</span> <span class="mi">5000</span><span class="p">,</span>
-            <span class="nt">&quot;Redundancy&quot;</span><span class="p">:</span> <span class="p">[</span>
-                <span class="p">{</span>
-                    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/1U/Thermal#/Redundancy/0&quot;</span>
-                <span class="p">}</span>
-            <span class="p">],</span>
-            <span class="nt">&quot;RelatedItem&quot;</span><span class="p">:</span> <span class="p">[</span>
-                <span class="p">{</span>
-                    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/437XR1138R2&quot;</span>
-                <span class="p">},</span>
-                <span class="p">{</span>
-                    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/1U&quot;</span>
-                <span class="p">}</span>
-            <span class="p">]</span>
-        <span class="p">}</span>
-    <span class="p">],</span>
-    <span class="nt">&quot;Redundancy&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/1U/Thermal#/Redundancy/0&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;MemberId&quot;</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;BaseBoard System Fans&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;RedundancySet&quot;</span><span class="p">:</span> <span class="p">[</span>
-                <span class="p">{</span>
-                    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/1U/Thermal#/Fans/0&quot;</span>
-                <span class="p">},</span>
-                <span class="p">{</span>
-                    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/1U/Thermal#/Fans/1&quot;</span>
-                <span class="p">}</span>
-            <span class="p">],</span>
-            <span class="nt">&quot;Mode&quot;</span><span class="p">:</span> <span class="s2">&quot;N+m&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;Status&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="nt">&quot;State&quot;</span><span class="p">:</span> <span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
-                <span class="nt">&quot;Health&quot;</span><span class="p">:</span> <span class="s2">&quot;OK&quot;</span>
-            <span class="p">},</span>
-            <span class="nt">&quot;MinNumNeeded&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-            <span class="nt">&quot;MaxNumSupported&quot;</span><span class="p">:</span> <span class="mi">2</span>
-        <span class="p">}</span>
-    <span class="p">],</span>
-    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#Thermal.Thermal&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Chassis/1U/Thermal&quot;</span>
-<span class="p">}</span>
-</pre></div></div>
+<div class="json-payload"><pre class="codehilite"><code class="language-json">{
+    &quot;@odata.type&quot;: &quot;#Thermal.v1_0_2.Thermal&quot;,
+    &quot;Id&quot;: &quot;Thermal&quot;,
+    &quot;Name&quot;: &quot;Thermal&quot;,
+    &quot;Temperatures&quot;: [
+        {
+            &quot;@odata.id&quot;: &quot;/redfish/v1/Chassis/1U/Thermal#/Temperatures/0&quot;,
+            &quot;MemberId&quot;: &quot;0&quot;,
+            &quot;Name&quot;: &quot;CPU1 Temp&quot;,
+            &quot;SensorNumber&quot;: 5,
+            &quot;Status&quot;: {
+                &quot;State&quot;: &quot;Enabled&quot;,
+                &quot;Health&quot;: &quot;OK&quot;
+            },
+            &quot;ReadingCelsius&quot;: 41,
+            &quot;UpperThresholdNonCritical&quot;: 42,
+            &quot;UpperThresholdCritical&quot;: 45,
+            &quot;UpperThresholdFatal&quot;: 48,
+            &quot;MinReadingRange&quot;: 0,
+            &quot;MaxReadingRange&quot;: 60,
+            &quot;PhysicalContext&quot;: &quot;CPU&quot;,
+            &quot;RelatedItem&quot;: [
+                {
+                    &quot;@odata.id&quot;: &quot;/redfish/v1/Systems/437XR1138R2/Processors/CPU1&quot;
+                }
+            ]
+        },
+        {
+            &quot;@odata.id&quot;: &quot;/redfish/v1/Chassis/1U/Thermal#/Temperatures/1&quot;,
+            &quot;MemberId&quot;: &quot;1&quot;,
+            &quot;Name&quot;: &quot;CPU2 Temp&quot;,
+            &quot;SensorNumber&quot;: 6,
+            &quot;Status&quot;: {
+                &quot;State&quot;: &quot;Disabled&quot;
+            },
+            &quot;UpperThresholdNonCritical&quot;: 42,
+            &quot;UpperThresholdCritical&quot;: 45,
+            &quot;UpperThresholdFatal&quot;: 48,
+            &quot;MinReadingRange&quot;: 0,
+            &quot;MaxReadingRange&quot;: 60,
+            &quot;PhysicalContext&quot;: &quot;CPU&quot;,
+            &quot;RelatedItem&quot;: [
+                {
+                    &quot;@odata.id&quot;: &quot;/redfish/v1/Systems/437XR1138R2/Processors/CPU2&quot;
+                }
+            ]
+        },
+        {
+            &quot;@odata.id&quot;: &quot;/redfish/v1/Chassis/1U/Thermal#/Temperatures/2&quot;,
+            &quot;MemberId&quot;: &quot;2&quot;,
+            &quot;Name&quot;: &quot;Chassis Intake Temp&quot;,
+            &quot;SensorNumber&quot;: 9,
+            &quot;Status&quot;: {
+                &quot;State&quot;: &quot;Enabled&quot;,
+                &quot;Health&quot;: &quot;OK&quot;
+            },
+            &quot;ReadingCelsius&quot;: 25,
+            &quot;UpperThresholdNonCritical&quot;: 30,
+            &quot;UpperThresholdCritical&quot;: 40,
+            &quot;UpperThresholdFatal&quot;: 50,
+            &quot;LowerThresholdNonCritical&quot;: 10,
+            &quot;LowerThresholdCritical&quot;: 5,
+            &quot;LowerThresholdFatal&quot;: 0,
+            &quot;MinReadingRange&quot;: 0,
+            &quot;MaxReadingRange&quot;: 60,
+            &quot;PhysicalContext&quot;: &quot;Intake&quot;,
+            &quot;RelatedItem&quot;: [
+                {
+                    &quot;@odata.id&quot;: &quot;/redfish/v1/Chassis/1U&quot;
+                },
+                {
+                    &quot;@odata.id&quot;: &quot;/redfish/v1/Systems/437XR1138R2&quot;
+                }
+            ]
+        }
+    ],
+    &quot;Fans&quot;: [
+        {
+            &quot;@odata.id&quot;: &quot;/redfish/v1/Chassis/1U/Thermal#/Fans/0&quot;,
+            &quot;MemberId&quot;: &quot;0&quot;,
+            &quot;Name&quot;: &quot;BaseBoard System Fan&quot;,
+            &quot;PhysicalContext&quot;: &quot;Backplane&quot;,
+            &quot;Status&quot;: {
+                &quot;State&quot;: &quot;Enabled&quot;,
+                &quot;Health&quot;: &quot;OK&quot;
+            },
+            &quot;Reading&quot;: 2100,
+            &quot;ReadingUnits&quot;: &quot;RPM&quot;,
+            &quot;LowerThresholdFatal&quot;: 0,
+            &quot;MinReadingRange&quot;: 0,
+            &quot;MaxReadingRange&quot;: 5000,
+            &quot;Redundancy&quot;: [
+                {
+                    &quot;@odata.id&quot;: &quot;/redfish/v1/Chassis/1U/Thermal#/Redundancy/0&quot;
+                }
+            ],
+            &quot;RelatedItem&quot;: [
+                {
+                    &quot;@odata.id&quot;: &quot;/redfish/v1/Systems/437XR1138R2&quot;
+                },
+                {
+                    &quot;@odata.id&quot;: &quot;/redfish/v1/Chassis/1U&quot;
+                }
+            ]
+        },
+        {
+            &quot;@odata.id&quot;: &quot;/redfish/v1/Chassis/1U/Thermal#/Fans/1&quot;,
+            &quot;MemberId&quot;: &quot;1&quot;,
+            &quot;Name&quot;: &quot;BaseBoard System Fan Backup&quot;,
+            &quot;PhysicalContext&quot;: &quot;Backplane&quot;,
+            &quot;Status&quot;: {
+                &quot;State&quot;: &quot;Enabled&quot;,
+                &quot;Health&quot;: &quot;OK&quot;
+            },
+            &quot;Reading&quot;: 2050,
+            &quot;ReadingUnits&quot;: &quot;RPM&quot;,
+            &quot;LowerThresholdFatal&quot;: 0,
+            &quot;MinReadingRange&quot;: 0,
+            &quot;MaxReadingRange&quot;: 5000,
+            &quot;Redundancy&quot;: [
+                {
+                    &quot;@odata.id&quot;: &quot;/redfish/v1/Chassis/1U/Thermal#/Redundancy/0&quot;
+                }
+            ],
+            &quot;RelatedItem&quot;: [
+                {
+                    &quot;@odata.id&quot;: &quot;/redfish/v1/Systems/437XR1138R2&quot;
+                },
+                {
+                    &quot;@odata.id&quot;: &quot;/redfish/v1/Chassis/1U&quot;
+                }
+            ]
+        }
+    ],
+    &quot;Redundancy&quot;: [
+        {
+            &quot;@odata.id&quot;: &quot;/redfish/v1/Chassis/1U/Thermal#/Redundancy/0&quot;,
+            &quot;MemberId&quot;: &quot;0&quot;,
+            &quot;Name&quot;: &quot;BaseBoard System Fans&quot;,
+            &quot;RedundancySet&quot;: [
+                {
+                    &quot;@odata.id&quot;: &quot;/redfish/v1/Chassis/1U/Thermal#/Fans/0&quot;
+                },
+                {
+                    &quot;@odata.id&quot;: &quot;/redfish/v1/Chassis/1U/Thermal#/Fans/1&quot;
+                }
+            ],
+            &quot;Mode&quot;: &quot;N+m&quot;,
+            &quot;Status&quot;: {
+                &quot;State&quot;: &quot;Enabled&quot;,
+                &quot;Health&quot;: &quot;OK&quot;
+            },
+            &quot;MinNumNeeded&quot;: 1,
+            &quot;MaxNumSupported&quot;: 2
+        }
+    ],
+    &quot;@odata.context&quot;: &quot;/redfish/v1/$metadata#Thermal.Thermal&quot;,
+    &quot;@odata.id&quot;: &quot;/redfish/v1/Chassis/1U/Thermal&quot;
+}</code></pre></div>
 <h2><a name="UpdateService"></a>UpdateService 1.2.0</h2>
 <p>This is the schema definition for the Update Service. It represents the properties for the service itself and has links to collections of firmware and software inventory.</p>
 <table class="properties">
@@ -7439,17 +7412,16 @@ In the case that the computer architecture is not little-endian, the conversion 
 <tr><td><b>VLANId</b></td><td>number</td><td>read-write</td><td>This indicates the VLAN identifier for this VLAN.</td></tr>
 </tbody></table>
 <h3>Example Response</h3>
-<div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#VLanNetworkInterface.v1_0_2.VLanNetworkInterface&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;VLAN Network Interface&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Description&quot;</span><span class="p">:</span> <span class="s2">&quot;System NIC 1 VLAN&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;VLANEnable&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="nt">&quot;VLANId&quot;</span><span class="p">:</span> <span class="mi">101</span><span class="p">,</span>
-    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#VLanNetworkInterface.VLanNetworkInterface&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Systems/437XR1138R2/EthernetInterfaces/12446A3B0411/VLANs/1&quot;</span>
-<span class="p">}</span>
-</pre></div></div>
+<div class="json-payload"><pre class="codehilite"><code class="language-json">{
+    &quot;@odata.type&quot;: &quot;#VLanNetworkInterface.v1_0_2.VLanNetworkInterface&quot;,
+    &quot;Id&quot;: &quot;1&quot;,
+    &quot;Name&quot;: &quot;VLAN Network Interface&quot;,
+    &quot;Description&quot;: &quot;System NIC 1 VLAN&quot;,
+    &quot;VLANEnable&quot;: true,
+    &quot;VLANId&quot;: 101,
+    &quot;@odata.context&quot;: &quot;/redfish/v1/$metadata#VLanNetworkInterface.VLanNetworkInterface&quot;,
+    &quot;@odata.id&quot;: &quot;/redfish/v1/Systems/437XR1138R2/EthernetInterfaces/12446A3B0411/VLANs/1&quot;
+}</code></pre></div>
 <h2><a name="VirtualMedia"></a>VirtualMedia 1.1.0</h2>
 <p>This resource allows monitoring and control of an instance of virtual media (e.g. a remote CD, DVD, or USB device) functionality provided by a Manager for a system or device.</p>
 <table class="properties">
@@ -7500,23 +7472,22 @@ In the case that the computer architecture is not little-endian, the conversion 
 </div>
 </div>
 <h3>Example Response</h3>
-<div class="json-payload"><div class="codehilite"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;@odata.type&quot;</span><span class="p">:</span> <span class="s2">&quot;#VirtualMedia.v1_0_2.VirtualMedia&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Id&quot;</span><span class="p">:</span> <span class="s2">&quot;CD1&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Virtual CD&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;MediaTypes&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s2">&quot;CD&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;DVD&quot;</span>
-    <span class="p">],</span>
-    <span class="nt">&quot;Image&quot;</span><span class="p">:</span> <span class="s2">&quot;redfish.dmtf.org/freeImages/freeOS.1.1.iso&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;ImageName&quot;</span><span class="p">:</span> <span class="s2">&quot;mymedia-read-only&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;ConnectedVia&quot;</span><span class="p">:</span> <span class="s2">&quot;Applet&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;Inserted&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="nt">&quot;WriteProtected&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-    <span class="nt">&quot;@odata.context&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/$metadata#VirtualMedia.VirtualMedia&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;@odata.id&quot;</span><span class="p">:</span> <span class="s2">&quot;/redfish/v1/Managers/BMC/VirtualMedia/CD1&quot;</span>
-<span class="p">}</span>
-</pre></div></div>
+<div class="json-payload"><pre class="codehilite"><code class="language-json">{
+    &quot;@odata.type&quot;: &quot;#VirtualMedia.v1_0_2.VirtualMedia&quot;,
+    &quot;Id&quot;: &quot;CD1&quot;,
+    &quot;Name&quot;: &quot;Virtual CD&quot;,
+    &quot;MediaTypes&quot;: [
+        &quot;CD&quot;,
+        &quot;DVD&quot;
+    ],
+    &quot;Image&quot;: &quot;redfish.dmtf.org/freeImages/freeOS.1.1.iso&quot;,
+    &quot;ImageName&quot;: &quot;mymedia-read-only&quot;,
+    &quot;ConnectedVia&quot;: &quot;Applet&quot;,
+    &quot;Inserted&quot;: true,
+    &quot;WriteProtected&quot;: false,
+    &quot;@odata.context&quot;: &quot;/redfish/v1/$metadata#VirtualMedia.VirtualMedia&quot;,
+    &quot;@odata.id&quot;: &quot;/redfish/v1/Managers/BMC/VirtualMedia/CD1&quot;
+}</code></pre></div>
 <h2><a name="Volume"></a>Volume 1.0.3</h2>
 <p>Volume contains properties used to describe a volume, virtual disk, LUN, or other logical storage entity for any system.</p>
 <table class="properties">
