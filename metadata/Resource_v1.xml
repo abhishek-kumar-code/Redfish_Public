@@ -610,7 +610,7 @@
     
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Resource.v1_5_0">
       <EntityType Name="Resource" BaseType="Resource.v1_0_0.Resource">
-        <Property Name="ApplyTimePreference" Type="Settings.v1_1_0.PreferredApplyTime" Nullable="false">
+        <Property Name="ApplyTimePreference" Type="Resource.v1_5_0.PreferredApplyTime" Nullable="false">
           <Annotation Term="OData.Description" String="This property indicates when the future configuration (i.e. Settings resource) should be applied."/>
           <Annotation Term="OData.LongDescription" String="This property shall be specified by client in a request to indicate it's preference on when to apply a settings resource. This property shall be null for GET requests."/>
         </Property>
