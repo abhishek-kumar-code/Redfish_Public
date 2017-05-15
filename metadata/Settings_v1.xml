@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  Settings  v1.0.4-->
+<!--# Redfish Schema:  Settings  v1.1.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -16,7 +16,7 @@
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
-	<edmx:Include Namespace="Resource.v1_5_0"/>
+    <edmx:Include Namespace="Resource.v1_5_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Message_v1.xml">
     <edmx:Include Namespace="Message"/>
@@ -71,14 +71,13 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Settings.v1_1_0">
-      <EntityType Name="Settings" BaseType="Settings.v1_0_4.Settings">
+      <ComplexType Name="Settings" BaseType="Settings.v1_0_0.Settings">
         <Property Name="SupportedApplyTimes" Type="Collection(Resource.v1_5_0.ApplyTime)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This property indicates when a Settings resource can be applied."/>
           <Annotation Term="OData.LongDescription" String="A service shall advertise its applytime capabilities using this property as to when a Setting resource can be applied."/>
         </Property>
-      </EntityType>
-		
+      </ComplexType>
     </Schema>
 
   </edmx:DataServices>
