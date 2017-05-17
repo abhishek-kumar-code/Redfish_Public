@@ -685,5 +685,5 @@ mockups/DSP2046-examples/Managers/BMC/VirtualMedia/CD1/index.json
 
 | Version  | Date     | Description     |
 | ---      | ---      | ---             |
-| 2017.1.0 | 2017-5-11| Initial release. |
+| 2017.0a | 2017-5-19| Work in progress release to gather feedback on content and format. |
 
