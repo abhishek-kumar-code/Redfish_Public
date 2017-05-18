@@ -32,19 +32,19 @@ The DMTF acknowledges the following individuals for their contributions to this 
 
 # Introduction
 
-As the world is transitioning to a software defined paradigm, there is a need for hardware management capabilities to evolve for addressing that shift in the data center.  In the context of disaggregated hardware, management software needs the ability to conjoin the independent pieces of hardware, such as trays, modules, silicon, etc., together to create a composed logical systems.  These logical systems function just like traditional industry standard rackmount systems.  This allows users to dynamically configure their hardware to meet the needs of their workloads.  In addition, users are able to manage the life cycle of their systems, such as adding more compute to their logical system, without having to physically move any equipment.
+As the world is transitioning to a software defined paradigm, there is a need for hardware management capabilities to evolve to address that shift in the data center.  In the context of disaggregated hardware, management software needs the ability to conjoin the independent pieces of hardware, such as trays, modules, silicon, etc., together to create a composed logical system.  These logical systems function just like traditional industry standard rackmount systems.  This allows users to dynamically configure their hardware to meet the needs of their workloads.  In addition, users are able to manage the life cycle of their systems, such as adding more compute to their logical system, without having to physically move any equipment.
 
 Redfish is an evolving hardware management standard that is designed to be flexible, extensible, and interoperable.  Redfish contains a data model that is used to describe composable hardware, as well as an interface for clients to manage their compositions.  This document helps implementers and clients understand the Redfish Composability data model as well as how composition requests are expected to be formed.
 
 
 # Modeling for Composability
 
-If a Redfish service supports Composability, it will be exposed via the `CompositionService` property found in the Service Root resource.  Within the [Composition Service](#composition-service), a client will find the inventory of all components that are able to be composed into new things, descriptors containing the binding restrictions of the different components, and annotations informing the client as to how to from composition requests.  The following sections detail how these things are reported by a Redfish service.
+If a Redfish service supports Composability, the Service Root resource will contain the `CompositionService` property.  Within the [Composition Service](#composition-service), a client will find the inventory of all components that can be composed into new things, descriptors containing the binding restrictions of the different components, and annotations informing the client as to how to from composition requests.  The following sections detail how these things are reported by a Redfish service.
 
 
 ## Composition Service
 
-The Composition Service is the top level resource for all things related to Composability.  It contains high level status and control indicator properties such as `Status` and `ServiceEnabled`.  These are common properties that are typical to find on the different service instances that Redfish supports.  It also contains links to its collections of Resource Blocks and Resource Zones through the properties `ResourceBlocks` and `ResourceZones` respectively.  Resource Blocks are described in the [Resource Blocks](#resource-blocks) section, and Resource Zones are described in the [Resource Zones](#resource-zones) section.
+The Composition Service is the top level resource for all things related to Composability.  It contains high level status and control indicator properties such as `Status` and `ServiceEnabled`.  These are common properties found on various Redfish service instances.  It also contains links to its collections of Resource Blocks and Resource Zones through the properties `ResourceBlocks` and `ResourceZones` respectively.  Resource Blocks are described in the [Resource Blocks](#resource-blocks) section, and Resource Zones are described in the [Resource Zones](#resource-zones) section.
 
 Example Composition Service Resource:
 ```json
@@ -71,11 +71,11 @@ Example Composition Service Resource:
 
 ## Resource Blocks
 
-Resource Blocks are the lowest level building blocks for composition requests.  Resource Blocks contain high level status and control information about the Resource Block instance.  They also contain the list of components found within the Resource Block instance.  For example, if a Resource Block contains 1 Processor and 4 DIMMs, then all of those components will be part of the same composition request, even if any one of them is needed.  In a completely disaggregated system, a client would likely find one component instance within each Resource Block.
+Resource Blocks are the lowest level building blocks for composition requests.  Resource Blocks contain high level status and control information about the Resource Block instance.  They also contain the list of components found within the Resource Block instance.  For example, if a Resource Block contains 1 Processor and 4 DIMMs, then all of those components will be part of the same composition request, even if only one of them is needed.  In a completely disaggregated system, a client would likely find one component instance within each Resource Block.
 
 The property `ResourceBlockType` contains classification information about the types of components found on the Resource Block that can be used to help clients quickly identify a Resource Block from a high level.  Each ResourceBlockType is associated with specific schema elements which will be contained within that Resource Block.  For example, if the value `Storage` was found in this property, then a client would know that this particular Resource Block contains storage related devices, such as storage controllers or drives, without having to drill into the individual component resources.  The value `Compute` has special meaning; this is used to describe Resource Blocks that have bound processor and memory components that operate together as a compute subsystem.
 
-The property `CompositionStatus` is an object that contains two properties: `CompositionState` and `Reserved`.  `CompositionState` is used to inform the client the high level state of how this Resource Block is used in a composition.  `Reserved` is a writeable flag that clients are able to use to help convey that this Resource Block has been identified by a client, and that client will be using it for a composition.  If a second client that is attempting to identify resources for a composition sees the `Reserved` flag set to true, it should move on to the next Resource Block for further processing.  The Redfish service does not provide any sort of protection with the `Reserved` flag; any client can change its state and it's up to clients to behave fairly.
+The property `CompositionStatus` is an object that contains two properties: `CompositionState` and `Reserved`.  `CompositionState` is used to inform the client of the high level state of this Resource Block regarding its use in a composition.  `Reserved` is a writeable flag that clients can use to help convey that this Resource Block has been identified by a client, and that the client will be using it for a composition.  If a second client that is attempting to identify resources for a composition sees the `Reserved` flag set to true, it should move on to the next Resource Block for further processing.  The Redfish service does not provide any sort of protection with the `Reserved` flag; any client can change its state and it's up to clients to behave fairly.
 
 There are several arrays of links to various component types, such as the `Processors`, `Memory`, and `Storage` arrays.  These links ultimately go to the individual components that are within the Resource Block.  These components are made available to the new composition after a request is made.
 
@@ -202,7 +202,7 @@ Within the Collection Capabilities annotation, there is a single property called
 
 The property `CapabilitiesObject` contains a URI to the underlying object instance that describes the payload format.  This is described further in the [next section](#collection-capabilities-object).
 
-The property `UseCase` is used as an indicator to let the client know a particular capability is to be used.  The table below shows the different values for `UseCase` as used by Composability.  Each value corresponds with a specific type of resource being composed in addition to a [type of composition](#types-of-compositions) for the request.
+The property `UseCase` is used as an indicator to let the client know what a particular capability is to be used.  The table below shows the different values for `UseCase` as used by Composability.  Each value corresponds with a specific type of resource being composed in addition to a [type of composition](#types-of-compositions) for the request.
 
 | `UseCase` Value             | Composed Resource | Type of Composition               |
 | --------------------------- | ----------------- | --------------------------------- |
@@ -233,14 +233,14 @@ Example Collection Capabilities Annotation:
 }
 ```
 
-The above annotation contains a single capability.  From the `UseCase`, this capability describes how to form a POST request to create a new Computer System from a set of specific Resource Blocks.  In addition, this request can be made to the Resource Collection `/redfish/v1/Systems`.
+The above annotation contains a single capability.  From the `UseCase`, this capability describes how to form a POST request to create a new Computer System from a set of specific Resource Blocks.  In addition, this request is made to the Resource Collection `/redfish/v1/Systems`.
 
 
 ### Collection Capabilities Object
 
 The Collection Capabilities Object follows the schema of the resource it's describing.  For example, if the object is describing how to form a request to create a new Computer System instance, then the object's type will be some version of `ComputerSystem`.
 
-The object itself contains annotated properties the client is allowed to use in the body of the POST operation.  It also lists out optional properties, and any restrictions properties may have after the new resource is created.  The table below describes the different annotations used on the properties within the Collection Capabilities Object.
+The object itself contains annotated properties the client can use in the body of the POST operation.  It also lists out optional properties, and any restrictions properties may have after the new resource is created.  The table below describes the different annotations used on the properties within the Collection Capabilities Object.
 
 | Property Annotation            | Description                                                                                                                                                                                   |
 | ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
