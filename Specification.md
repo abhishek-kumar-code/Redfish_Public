@@ -1942,7 +1942,7 @@ Redfish Resources are one of several general kinds:
 
 #### Current configuration
 
-Current Configuration resources represent the service's knowledge of the current state and configuration of the resource.  This may be directly updatable with a PATCH or it may be read-only by the client and the client must PATCH to a separate Setting resource. For resources that can be modified immediately, the Allow header shall contain PATCH in the GET response. When a resource is read-only, the Allow header shall contain GET as the only allowable HTTP method.
+Current Configuration resources represent the service's knowledge of the current state and configuration of the resource.  This may be directly updatable with a PATCH or it may be read-only by the client and the client must PATCH to a separate Setting resource. For resources that can be modified immediately, the Allow header shall contain PATCH and/or PUT in the GET response. When a resource is read-only, the Allow header shall not contain PATCH or PUT in the GET response.
 
 #### Settings
 
