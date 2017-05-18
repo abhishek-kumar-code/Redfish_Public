@@ -101,7 +101,21 @@
 					"type": "object",
 					"description": "The property-level requirements for this Redfish Profile.  These requirements apply to every instance of this resource.  If a property defined in the associated schema is not present, there is no requirement for that property to be supported.",
 					"additionalProperties": {
-						"$ref": "#/definitions/PropertyProfile"
+						"$ref": "#/definitions/PropertyProfile",
+						"PropertyRequirements": {
+							"type": "object",
+							"description": "Properties defined within an embedded JSON object which have requirements defined by this Profile.",
+							"additionalProperties": {
+								"$ref": "#/definitions/PropertyProfile",
+								"PropertyRequirements": {
+									"type": "object",
+									"description": "Properties defined within an embedded JSON object which have requirements defined by this Profile.",
+									"additionalProperties": {							
+										"$ref": "#/definitions/PropertyProfile"
+									}
+								}
+							}
+						}
 					}
 				},
 				"ActionRequirements": {
@@ -139,36 +153,6 @@
 					"type": "array",
 					"items": {
 						"$ref": "#/definitions/Condition"
-					}
-				},
-				"PropertyRequirements": {
-					"type": "object",
-					"description": "Properties defined within an embedded JSON object which have requirements defined by this Profile.",
-					"additionalProperties": {
-						"Requirement": {
-							"$ref": "#/definitions/Requirement"
-						},
-						"Writeable": {
-							"$ref": "#/definitions/Writeable"
-						},
-						"MinCount": {
-							"$ref": "#/definitions/MinCount"
-						},
-						"AllowableValues": {
-							"$ref": "#/definitions/AllowableValues"
-						},
-						"Comparison": {
-							"$ref": "#/definitions/Comparison"
-						},
-						"Values": {
-							"$ref": "#/definitions/Values"
-						},
-						"ConditionalRequirements": {
-							"type": "array",
-							"items": {
-								"$ref": "#/definitions/Condition"
-							}
-						}
 					}
 				}
 			}
