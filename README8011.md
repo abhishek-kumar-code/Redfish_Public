@@ -25,5 +25,5 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | Schema File | Version | Date      | Description     |
 | ---         | ---     | ---       | ---             |
 | Base | 1.1.0 | 2017-05-19 | Added 'ResourceInStandby' message. |
-| Redfish Privilege Registry | 1.0.1 | 2017-05-19 | Initial release. }
+| Redfish Privilege Registry | 1.0.1 | 2017-05-19 | Initial release. |
 | Base | 1.0.0 | 2015-11-25 | Initial release. |
