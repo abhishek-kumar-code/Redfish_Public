@@ -26,6 +26,7 @@ The DMTF acknowledges the following individuals for their contributions to this 
 * Jeff Hilland - Hewlett Packard Enterprise
 * Rafiq Kattangere - Hewlett Packard Enterprise
 * John Leung - Intel Corporation
+* Steve Lyle - Hewlett Packard Enterprise
 * Michael Raineri - Dell Inc.
 * Paul von Behren - Intel Corporation
 
