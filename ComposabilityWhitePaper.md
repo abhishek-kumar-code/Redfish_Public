@@ -235,7 +235,7 @@ Example Collection Capabilities Annotation:
 }
 ```
 
-The above annotation contains a single capability.  From the `UseCase`, this capability describes how to form a create (POST) request to create a new Computer System from a set of specific Resource Blocks.  In addition, the `TargetCollection` property indicates that a client can make the request to the Resource Collection `/redfish/v1/Systems`; new instances of the resource made by the client will be found in that collection.
+The above annotation contains a single capability.  From the `UseCase`, this capability describes how to form a create (POST) request to create a new Computer System from a set of specific Resource Blocks.  In addition, the `TargetCollection` property indicates that a client can make the request to the Resource Collection `/redfish/v1/Systems`; new instances of the resource created by the client will be found in that collection.
 
 
 ### Collection Capabilities Object
