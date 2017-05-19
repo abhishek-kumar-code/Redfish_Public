@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
-    <Include Alias="Odata" Namespace="Org.OData.Core.V1"/>
+    <edmx:Include Alias="Odata" Namespace="Org.OData.Core.V1"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Capabilities.V1.xml">
-    <Include Alias="Odata" Namespace="Org.OData.Capabilities.V1"/>
-  </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ietf-yang-types.xml">
-    <Include Alias="yang" Namespace="ietf-yang-types.v1_0_0"/>
+    <edmx:Include Alias="Odata" Namespace="Org.OData.Capabilities.V1"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
     <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
@@ -17,40 +14,109 @@
     <edmx:Include Namespace="RedfishYangExtensions.v1_0_0" Alias="Redfish.Yang"/>
     <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/rfc7277/ietf_ip.ipv4_v1.xml">
+    <edmx:Include Namespace="ietf_ip.ipv4"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/rfc7277/ietf_ip.ipv6_v1.xml">
+    <edmx:Include Namespace="ietf_ip.ipv6"/>
+  </edmx:Reference>
 
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ietf_interfaces">
-      <Annotation String="IETF NETMOD (NETCONF Data Modeling Language) Working Group" Term="Redfish.Yang.organization"/>
-      <Annotation String="WG Web: &lt;http://tools.ietf.org/wg/netmod/&gt; WG List: &lt;mailto:netmod@ietf.org&gt; WG Chair: Thomas Nadeau &lt;mailto:tnadeau@lucidvision.com&gt; WG Chair: Juergen Schoenwaelder &lt;mailto:j.schoenwaelder@jacobs-university.de&gt; Editor: Martin Bjorklund &lt;mailto:mbj@tail-f.com&gt;" Term="Redfish.Yang.contact"/>
-      <Annotation String="This module contains a collection of YANG definitions for managing network interfaces. Copyright (c) 2014 IETF Trust and the persons identified as authors of the code. All rights reserved. Redistribution and use in source and binary forms, with or without modification, is permitted pursuant to, and subject to the license terms contained in, the Simplified BSD License set forth in Section 4.c of the IETF Trust's Legal Provisions Relating to IETF Documents (http://trustee.ietf.org/license-info). This version of this YANG module is part of RFC 7223; see the RFC itself for full legal notices." Term="OData.Description"/>
-      <Annotation String="2014-05-08" Term="Redfish.Yang.revision"/>
-      <TypeDefinition Name="interface_ref" UnderlyingType="leafref">
-        <Annotation String="This type is used by data models that need to reference configured interfaces." Term="OData.Description"/>
-      </TypeDefinition>
-      <TypeDefinition Name="interface_state_ref" UnderlyingType="leafref">
-        <Annotation String="This type is used by data models that need to reference the operationally present interfaces." Term="OData.Description"/>
-      </TypeDefinition>
-      <ComplexType>
-        <Annotation String="interface-type" Term="Redfish.Yang.identity"/>
-        <Annotation String="Base identity from which specific interface types are derived." Term="Redfish.Yang.description"/>
-      </ComplexType>
-      <Annotation String="arbitrary-names" Term="Redfish.Yang.feature"/>
-      <Annotation String="pre-provisioning" Term="Redfish.Yang.feature"/>
-      <Annotation String="if-mib" Term="Redfish.Yang.feature"/>
 
-      <NavigationProperty ContainsTarget="true" Name="interfaces" Type="ietf_interfaces.interfacesCollection.interfacesCollection">
-        <Annotation EnumMember="OData.Permissions/Read/" Term="OData.Permissions"/>
-        <Annotation String="DESCRIPTION" Term="OData.Description"/>
-        <Annotation String="LONG_DESCRIPTION" Term="OData.LongDescription"/>
-        <Annotation Term="AutoExpandReferences"/>
-      </NavigationProperty>
-      <NavigationProperty ContainsTarget="true" Name="interfaces_state" Type="ietf_interfaces.interfaces_stateCollection.interfaces_stateCollection">
-        <Annotation EnumMember="OData.Permissions/Read/" Term="OData.Permissions"/>
-        <Annotation String="DESCRIPTION" Term="OData.Description"/>
-        <Annotation String="LONG_DESCRIPTION" Term="OData.LongDescription"/>
-        <Annotation Term="AutoExpandReferences"/>
-      </NavigationProperty>
+      <EntityType Name="ietf_interfaces" BaseType="Resource.v1_0_0.Resource" Abstract="true">
+        <Annotation Term="OData.Description" String="This module contains a collection of YANG definitions for
+       configuring IP implementations.
+
+       Copyright (c) 2014 IETF Trust and the persons identified as
+       authors of the code.  All rights reserved.
+
+       Redistribution and use in source and binary forms, with or
+       without modification, is permitted pursuant to, and subject
+       to the license terms contained in, the Simplified BSD License
+       set forth in Section 4.c of the IETF Trust's Legal Provisions
+       Relating to IETF Documents
+       (http://trustee.ietf.org/license-info).
+
+       This version of this YANG module is part of RFC 7277; see
+       the RFC itself for full legal notices."/>
+        <Annotation Term="OData.LongDescription" String="LONG_DESCRIPTION."/>
+        <Annotation Term="Capabilities.InsertRestrictions">
+          <Record>
+            <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.UpdateRestrictions">
+          <Record>
+            <PropertyValue Property="Updatable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.DeleteRestrictions">
+          <Record>
+            <PropertyValue Property="Deletable" Bool="false"/>
+          </Record>
+        </Annotation>
+      </EntityType>
+
     </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ietf_interfaces.v1_0_0">
+
+      <EntityType Name="ietf_interfaces" BaseType="ietf_interfaces.ietf_interfaces" >
+        <Annotation Term="Redfish.Yang.organization" String="IETF NETMOD (NETCONF Data Modeling Language) Working Group" />
+        <Annotation Term="Redfish.Yang.contact" String="WG Web: &lt;http://tools.ietf.org/wg/netmod/&gt; WG List: &lt;mailto:netmod@ietf.org&gt; WG Chair: Thomas Nadeau &lt;mailto:tnadeau@lucidvision.com&gt; WG Chair: Juergen Schoenwaelder &lt;mailto:j.schoenwaelder@jacobs-university.de&gt; Editor: Martin Bjorklund &lt;mailto:mbj@tail-f.com&gt;" />
+        <Annotation Term="Redfish.Yang.revision" String="2014-05-08" />
+        <Annotation Term="Redfish.Yang.feature" String="arbitrary-names" />
+        <Annotation Term="Redfish.Yang.feature" String="pre-provisioning" />
+        <Annotation Term="Redfish.Yang.feature" String="if-mib" />
+        <Annotation Term="OData.Description" String="This module contains a collection of YANG definitions for
+       configuring IP implementations.
+
+       Copyright (c) 2014 IETF Trust and the persons identified as
+       authors of the code.  All rights reserved.
+
+       Redistribution and use in source and binary forms, with or
+       without modification, is permitted pursuant to, and subject
+       to the license terms contained in, the Simplified BSD License
+       set forth in Section 4.c of the IETF Trust's Legal Provisions
+       Relating to IETF Documents
+       (http://trustee.ietf.org/license-info).
+
+       This version of this YANG module is part of RFC 7277; see
+       the RFC itself for full legal notices."/>
+        <Property Name="interface_ref" Type="Edm.String">
+            <Annotation Term="OData.Description" String="This type is used by data models that need to reference configured interfaces." />
+            <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+		    <Annotation Term="Redfish.Yang.YangType" String="leafref"/>
+			<Annotation Term="Redfish.Yang.path" String="if:interfaces/if:interface/if:name "/>
+         </Property>
+        <Property Name="interface_state_ref" Type="Edm.String">
+            <Annotation Term="OData.Description" String="This type is used by data models that need to reference the operationally present interfaces." />
+            <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+		    <Annotation Term="Redfish.Yang.YangType" String="leafref"/>
+			<Annotation Term="Redfish.Yang.path" String="if:interfaces/if:interface/if:name "/>
+        </Property>
+        <Annotation Term="Redfish.Yang.feature" String="arbitrary-names" />
+        <Annotation Term="Redfish.Yang.feature" String="pre-provisioning" />
+        <Annotation Term="Redfish.Yang.feature" String="if-mib" />
+        <NavigationProperty Name="interfaces" Type="ietf_interfaces.interfacesCollection.interfacesCollection" ContainsTarget="true">
+            <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read/" />
+            <Annotation Term="OData.Description" String="Reference to collection." />
+            <Annotation Term="OData.LongDescription" String="Reference to collection." />
+            <Annotation Term="AutoExpandReferences"/>
+        </NavigationProperty>
+        <NavigationProperty Name="interfaces_state" Type="ietf_interfaces.interfaces_stateCollection.interfaces_stateCollection" ContainsTarget="true">
+            <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read/" />
+            <Annotation Term="OData.Description" String="Reference to collection." />
+            <Annotation Term="AutoExpandReferences"/>
+        </NavigationProperty>
+      </EntityType>
+        <ComplexType Name="interface_type">
+            <Annotation Term="Redfish.Yang.identity" String="interface-type" />
+            <Annotation Term="Redfish.Yang.description" String="Base identity from which specific interface types are derived." />
+        </ComplexType>
+    </Schema>
+
   </edmx:DataServices>
 </edmx:Edmx>

@@ -23,7 +23,7 @@
     },
 
     "LogServices": {
-        "@odata.id": "/redfish/v1/NetworkDevies/SW_15/LogServices"
+        "@odata.id": "/redfish/v1/NetworkDevices/SW_15/LogServices"
     },
 	"ietf_interfaces": {
         "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_interfaces"
@@ -31,16 +31,6 @@
 	"ietf_system": {
         "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_system"
     },
-   	"Services": [
-		{
-            "ntp":  {
-                "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_system/system/ntp"
-            },
-            "dns_resolver":  {
-                "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_system/system/dns_resolver"
-            }
-        }
-	],
 
 	"Links": {
         "Chassis": [
@@ -57,7 +47,7 @@
             {
                 "@odata.id": "/redfish/v1/Systems/CS_15"
             }
-        ],
+        ]
 	},
 
     "Actions": {

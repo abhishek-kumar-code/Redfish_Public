@@ -2,7 +2,7 @@
     "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
 
     "@odata.context": "/redfish/v1/$metadata#RFC7317/ietf_system.system.ntp",
-    "@odata.type": "#ntp.1.0.0.ntp",
+    "@odata.type": "#ietf_system.system.ntp.v1_0_0.ntp",
     "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_system/system/ntp",
 
     "Id": "ntp",
@@ -15,7 +15,7 @@
             "transport": "udp",
             "udp": {
                 "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_system/system/ntp/udp"
-            }
+            },
             "association_type": "server",
             "iburst": true,
             "prefer": true

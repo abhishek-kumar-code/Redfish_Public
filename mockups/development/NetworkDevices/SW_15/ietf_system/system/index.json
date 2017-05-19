@@ -2,7 +2,7 @@
     "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
 
     "@odata.context": "/redfish/v1/$metadata#RFC7317/ietf_system.ietf_system",
-    "@odata.type": "#ietf_system.1.0.0.ietf_system",
+    "@odata.type": "#ietf_system.v1_0_0.ietf_system",
     "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_system",
 
     "Id": "ietf_system",
@@ -23,8 +23,5 @@
     },
     "ntp": {
         "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_system/system/ntp"
-    },
-    "radius": {
-        "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_system/system/radius"
     }
 }

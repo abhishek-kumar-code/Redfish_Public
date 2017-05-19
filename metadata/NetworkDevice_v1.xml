@@ -182,7 +182,7 @@
           <Annotation Term="OData.LongDescription" String="This property shall specify a reference to the ietf_system YANG module, specified in IETF RFC7317."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="ietf_interfacess" Type="rfc7223.ietf_interfaces.ietf_interfaces" ContainsTarget="true" Nullable="false">
+        <NavigationProperty Name="ietf_interfaces" Type="rfc7223.ietf_interfaces.ietf_interfaces" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A reference to the ietf_interfaces YANG module."/>
           <Annotation Term="OData.LongDescription" String="This property shall specify a reference to the ietf_interfaces YANG module, specified in IETF RFC7223."/>
@@ -230,7 +230,7 @@
       </ComplexType>
 
       <EnumType Name="NetworkDeviceType">
-        <Member Name="BaselineEthernetSwich">
+        <Member Name="BaselineEthernetSwitch">
           <Annotation Term="OData.Description" String="A Ethernet switch which supports RFC7223, RFC7227, RFC7277 and RFC7317."/>
         </Member>
       </EnumType>
