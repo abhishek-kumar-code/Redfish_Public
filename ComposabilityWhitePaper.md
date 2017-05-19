@@ -21,10 +21,10 @@ DMTF is a not-for-profit association of industry members dedicated to promoting 
 
 The DMTF acknowledges the following individuals for their contributions to this document:
 
+* Rafiq Ahamed K - Hewlett Packard Enterprise
 * Jeff Autor - Hewlett Packard Enterprise
 * Michael Du - Lenovo
 * Jeff Hilland - Hewlett Packard Enterprise
-* Rafiq Kattangere - Hewlett Packard Enterprise
 * John Leung - Intel Corporation
 * Steve Lyle - Hewlett Packard Enterprise
 * Michael Raineri - Dell Inc.
@@ -40,12 +40,12 @@ Redfish is an evolving hardware management standard that is designed to be flexi
 
 # Modeling for Composability
 
-If a Redfish service supports Composability, the Service Root resource will contain the `CompositionService` property.  Within the [Composition Service](#composition-service), a client will find the inventory of all components that can be composed into new things, descriptors containing the binding restrictions of the different components, and annotations informing the client as to how to from composition requests.  The following sections detail how these things are reported by a Redfish service.
+If a Redfish service supports Composability, the Service Root resource will contain the `CompositionService` property.  Within the [Composition Service](#composition-service), a client will find the inventory of all components that can be composed into new things ([Resource Blocks](#resource-blocks)), descriptors containing the binding restrictions of the different components ([Resource Zones](#resource-zones)), and annotations informing the client as to how to form composition requests ([Collection Capabilities](#collection-capabilities)).  The following sections detail how these things are reported by a Redfish service.
 
 
 ## Composition Service
 
-The Composition Service is the top level resource for all things related to Composability.  It contains high level status and control indicator properties such as `Status` and `ServiceEnabled`.  These are common properties found on various Redfish service instances.  It also contains links to its collections of Resource Blocks and Resource Zones through the properties `ResourceBlocks` and `ResourceZones` respectively.  Resource Blocks are described in the [Resource Blocks](#resource-blocks) section, and Resource Zones are described in the [Resource Zones](#resource-zones) section.
+The Composition Service is the top level resource for all things related to Composability.  It contains status and control indicator properties such as `Status` and `ServiceEnabled`.  These are common properties found on various Redfish service instances.  It also contains links to its collections of Resource Blocks and Resource Zones through the properties `ResourceBlocks` and `ResourceZones` respectively.  Resource Blocks are described in the [Resource Blocks](#resource-blocks) section, and Resource Zones are described in the [Resource Zones](#resource-zones) section.
 
 Example Composition Service Resource:
 ```json
@@ -72,15 +72,16 @@ Example Composition Service Resource:
 
 ## Resource Blocks
 
-Resource Blocks are the lowest level building blocks for composition requests.  Resource Blocks contain high level status and control information about the Resource Block instance.  They also contain the list of components found within the Resource Block instance.  For example, if a Resource Block contains 1 Processor and 4 DIMMs, then all of those components will be part of the same composition request, even if only one of them is needed.  In a completely disaggregated system, a client would likely find one component instance within each Resource Block.
+Resource Blocks are the lowest level building blocks for composition requests.  Resource Blocks contain status and control information about the Resource Block instance.  They also contain the list of components found within the Resource Block instance.  For example, if a Resource Block contains 1 Processor and 4 DIMMs, then all of those components will be part of the same composition request, even if only one of them is needed.  In a completely disaggregated system, a client would likely find one component instance within each Resource Block.  Resource Blocks, and their components, are not usable by clients until they belong in a composition.
 
-The property `ResourceBlockType` contains classification information about the types of components found on the Resource Block that can be used to help clients quickly identify a Resource Block from a high level.  Each ResourceBlockType is associated with specific schema elements which will be contained within that Resource Block.  For example, if the value `Storage` was found in this property, then a client would know that this particular Resource Block contains storage related devices, such as storage controllers or drives, without having to drill into the individual component resources.  The value `Compute` has special meaning; this is used to describe Resource Blocks that have bound processor and memory components that operate together as a compute subsystem.
+The property `ResourceBlockType` contains classification information about the types of components found on the Resource Block that can be used to help clients quickly identify a Resource Block.  Each ResourceBlockType is associated with specific schema elements which will be contained within that Resource Block.  For example, if the value `Storage` was found in this property, then a client would know that this particular Resource Block contains storage related devices, such as storage controllers or drives, without having to drill into the individual component resources.  The value `Compute` has special meaning; this is used to describe Resource Blocks that have bound processor and memory components that operate together as a compute subsystem.
 
-The property `CompositionStatus` is an object that contains two properties: `CompositionState` and `Reserved`.  `CompositionState` is used to inform the client of the high level state of this Resource Block regarding its use in a composition.  `Reserved` is a writeable flag that clients can use to help convey that this Resource Block has been identified by a client, and that the client will be using it for a composition.  If a second client that is attempting to identify resources for a composition sees the `Reserved` flag set to true, it should move on to the next Resource Block for further processing.  The Redfish service does not provide any sort of protection with the `Reserved` flag; any client can change its state and it's up to clients to behave fairly.
+The property `CompositionStatus` is an object that contains two properties: `CompositionState` and `Reserved`.  `CompositionState` is used to inform the client of the state of this Resource Block regarding its use in a composition.  `Reserved` is a writeable flag that clients can use to help convey that this Resource Block has been identified by a client, and that the client will be using it for a composition.  If a second client that is attempting to identify resources for a composition sees the `Reserved` flag set to true, it should move on to the next Resource Block for further processing.  The Redfish service does not provide any sort of protection with the `Reserved` flag; any client can change its state and it's up to clients to behave fairly.
 
-There are several arrays of links to various component types, such as the `Processors`, `Memory`, and `Storage` arrays.  These links ultimately go to the individual components that are within the Resource Block.  These components are made available to the new composition after a request is made.
+There are several arrays of links to various component types, such as the `Processors`, `Memory`, and `Storage` arrays.  These links ultimately go to the individual components that are within the Resource Block.  These components are made available to the new composition after a composition request is made.  The `ComputerSystems` array is used when a Resource Block contains one or more whole Computer Systems.  This gives the client the ablity to create a single composed Computer System from a set of smaller Computer Systems.
 
-The `Links` property contains references to the Chassis instances that contain the resources within the Resource Block via the `Chassis` array.  It also contains an array of links to the composed Computer System instances that are consuming the given Resource Block via the `ComputerSystems` array.  The `Zones` array contains links to the [Resource Zones](#resource-zones) that contain the Resource Block.
+The `Links` property contains references to related resources.  The `Chassis` array contains the Chassis instances that contain the resources within the Resource Block.  The `ComputerSystem` array contains the Computer System instances that are consuming the Resource Block as part of a composition.  The `Zones` array contains links to the [Resource Zones](#resource-zones) that contain the Resource Block.
+
 
 Example Resource Block Resource:
 ```json
@@ -194,7 +195,7 @@ In the above example, the Resource Blocks `ComputeBlock1`, `DriveBlock3`, `Drive
 
 ## Collection Capabilities
 
-Collection Capabilities will be found on [Resource Zones](#resource-zones) and on Resource Collections themselves.  This is because Collection Capabilities can be applied to things outside of the context of Composability.  Collection Capabilities can be identified by the `@Redfish.CollectionCapabilities` annotation in the response body.  This annotation is used to inform the client how to form the request body for a POST to a given collection based on a specified Use Case.
+Collection Capabilities will be found on [Resource Zones](#resource-zones) and on the Resource Collections themselves.  This is because Collection Capabilities can be applied to things outside of the context of Composability.  Collection Capabilities can be identified by the `@Redfish.CollectionCapabilities` annotation in the response body.  This annotation is used to inform the client how to form the request body for a create (POST) operation to a given collection based on a specified Use Case, which will result in a new member being added to the given collection.
 
 
 ### Collection Capabilities Annotation
@@ -203,13 +204,13 @@ Within the Collection Capabilities annotation, there is a single property called
 
 The property `CapabilitiesObject` contains a URI to the underlying object instance that describes the payload format.  This is described further in the [next section](#collection-capabilities-object).
 
-The property `UseCase` is used as an indicator to let the client know what a particular capability is to be used.  The table below shows the different values for `UseCase` as used by Composability.  Each value corresponds with a specific type of resource being composed in addition to a [type of composition](#types-of-compositions) for the request.
+The property `UseCase` is used to inform the client of the context of a particular create (POST) operation.  The table below shows the different values for `UseCase` as used by Composability.  Each value corresponds with a specific type of resource being composed in addition to a [type of composition](#types-of-compositions) for the request.
 
 | `UseCase` Value             | Composed Resource | Type of Composition               |
 | --------------------------- | ----------------- | --------------------------------- |
 | `ComputerSystemComposition` | `ComputerSystem`  | [Specific](#specific-composition) |
 
-The property `TargetCollection` inside the `Links` object contains the URI of the Resource Collection that accepts the given capability.  A client will be able to perform a POST operation against this URI as described by the contents of the `CapabilitiesObject`.
+The property `TargetCollection` inside the `Links` object contains the URI of the Resource Collection that accepts the given capability.  A client will be able to perform a create (POST) operation against this URI as described by the contents of the `CapabilitiesObject`.
 
 Example Collection Capabilities Annotation:
 ```json
@@ -234,22 +235,22 @@ Example Collection Capabilities Annotation:
 }
 ```
 
-The above annotation contains a single capability.  From the `UseCase`, this capability describes how to form a POST request to create a new Computer System from a set of specific Resource Blocks.  In addition, this request is made to the Resource Collection `/redfish/v1/Systems`.
+The above annotation contains a single capability.  From the `UseCase`, this capability describes how to form a create (POST) request to create a new Computer System from a set of specific Resource Blocks.  In addition, the `TargetCollection` property indicates that a client can make the request to the Resource Collection `/redfish/v1/Systems`; new instances of the resource made by the client will be found in that collection.
 
 
 ### Collection Capabilities Object
 
-The Collection Capabilities Object follows the schema of the resource it's describing.  For example, if the object is describing how to form a request to create a new Computer System instance, then the object's type will be some version of `ComputerSystem`.
+The Collection Capabilities Object follows the schema of the new resource a client is able to create.  For example, if the object is describing how to form a request to create a new Computer System instance, then the object's type will be `ComputerSystem.vX_Y_Z.ComputerSystem`, where `vX_Y_Z` is the version of `ComputerSystem` supported by the service.
 
-The object itself contains annotated properties the client can use in the body of the POST operation.  It also lists out optional properties, and any restrictions properties may have after the new resource is created.  The table below describes the different annotations used on the properties within the Collection Capabilities Object.
+The object itself contains annotated properties the client can use in the body of the create (POST) operation.  It also lists out optional properties, and any restrictions properties may have after the new resource is created.  The table below describes the different annotations used on the properties within the Collection Capabilities Object.
 
-| Property Annotation            | Description                                                                                                                                                                                   |
-| ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Redfish.RequiredOnCreate`     | The client must provide the given property in the body of the POST request                                                                                                                    |
-| `Redfish.OptionalOnCreate`     | The client does not need to provide the property in the body of the POST request                                                                                                              |
-| `Redfish.SetOnlyOnCreate`      | If the client has a specific value needed for the property, it must be provided in the body of the POST request; this property is likely a "Read Only" property after the resource's creation |
-| `Redfish.UpdatableAfterCreate` | The client is allowed to update the property after the resource is created                                                                                                                    |
-| `Redfish.AllowableValues`      | The client is allowed to use any of the specified values in the body of the POST request for the given property                                                                               |
+| Property Annotation            | Description                                                                                                                                                                                            |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `Redfish.RequiredOnCreate`     | The client must provide the given property in the body of the create (POST) request                                                                                                                    |
+| `Redfish.OptionalOnCreate`     | The client may provide the property in the body of the create (POST) request                                                                                                                           |
+| `Redfish.SetOnlyOnCreate`      | If the client has a specific value needed for the property, it must be provided in the body of the create (POST) request; this property is likely a "Read Only" property after the resource's creation |
+| `Redfish.UpdatableAfterCreate` | The client is allowed to update the property after the resource is created                                                                                                                             |
+| `Redfish.AllowableValues`      | The client is allowed to use any of the specified values in the body of the create (POST) request for the given property                                                                               |
 
 Example Collection Capabilities Object:
 ```json
@@ -286,7 +287,7 @@ Example Collection Capabilities Object:
 }
 ```
 
-In the above example, three properties are marked with the `Redfish.RequiredOnCreate` annotation: `Name`, `Links`, and `ResourceBlocks` inside of `Links`.  All other properties are annotated with `Redfish.OptionalOnCreate`.  However, both `Name` and `Description` are annotated with `SetOnlyOnCreate`, meaning they cannot be modified after the new resource is created.
+In the above example, three properties are marked with the `Redfish.RequiredOnCreate` annotation: `Name`, `Links`, and `ResourceBlocks` inside of `Links`.  All other properties are annotated with `Redfish.OptionalOnCreate`.  However, both `Name` and `Description` are annotated with `Redfish.SetOnlyOnCreate`, meaning they cannot be modified after the new resource is created.
 
 
 # Types of Compositions
@@ -298,11 +299,11 @@ The Redfish Composability data model provides flexibility for service implemente
 
 The Specific Composition allows clients to create and manage the life cycle of composed resources through pre-defined [Resource Blocks](#resource-blocks) and [Resource Zones](#resource-zones).  Since Resource Blocks are self contained entities within a Resource Zone, clients are able to pick and choose specific Resource Blocks for their composition request.
 
-An example of choosing a Resource Block according to the binding rules and providing details of specific Resource Blocks in the a POST request can be found in the [Create a Composed Resource](#create-a-composed-resource) section.
+An example of choosing a Resource Block according to the binding rules and providing details of specific Resource Blocks in the a create (POST) request can be found in the [Create a Composed Resource](#create-a-composed-resource) section.
 
-Another industry standard server design which fits into the example of Specific Composition is defined in the (public-bladed-partitions mockup)[#references].  In this example, a Multi-Blade Enclosure having disaggregated hardware chassis can be bound together electrically to create what is called a [server hard partitions](http://www.computerworld.com/article/2593387/server-partitioning.html).  These hard partitions can be composed using the Specific Composition.  The Redfish service implements each blade within the enclosure as a Resource Block with `ResourceBlockType` set to either `Compute` or `Storage`, and allows the clients to combine multiple Resource Blocks to create a composed Computer System, which is an electrically isolated partition.
+Another industry standard server design which fits into the example of Specific Composition is defined in the [public-bladed-partitions mockup](#references).  In this example, a Multi-Blade Enclosure having disaggregated hardware chassis can be bound together electrically to create what are called [partitioned servers](http://www.computerworld.com/article/2593387/server-partitioning.html).  These partitions can be composed using the Specific Composition.  The Redfish service implements each blade within the enclosure as a Resource Block with `ResourceBlockType` set to either `Compute` or `Storage`, and allows the clients to combine multiple Resource Blocks to create a composed Computer System, which is an electrically isolated partition.
 
-Example POST Body for a Specific Composition:
+Example Create (POST) Body for a Specific Composition:
 ```json
 {
     "Name": "Sample Composed System",
@@ -479,8 +480,8 @@ For building a composition request, the client can take the following steps for 
     4. Mark down all of the properties annotated with `RequiredOnCreate`
         * These are the properties which needs to be passed as part of the composition request
     5. Mark down the `TargetCollection` URI
-        * This is the where the POST request for the new composition is made
-3. Using all the properties that were `RequiredOnCreate`, build a POST request body that will be a sent to the `TargetCollection` URI
+        * This is the where the create (POST) request for the new composition is made
+3. Using all the properties that were `RequiredOnCreate`, build a create (POST) request body that will be a sent to the `TargetCollection` URI
     * In step 4 of [the above example](#read-the-list-of-resources-available-for-composition), only `Name` and `ResourceBlocks` found in `Links` are required
     * The Redfish service may accept other properties as part of the request so they do not need to be updated later
 4. The `Location` HTTP header in the service response contains the URI of the composed resource
