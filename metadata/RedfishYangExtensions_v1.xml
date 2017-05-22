@@ -280,7 +280,7 @@
 		</Term>	
 
 		<Term Name="deviate" Type="DeviateType" >
-			<Annotation Term="Core.Description" String="Yang Node model element status."/>
+			<Annotation Term="OData.Description" String="Yang Node model element status."/>
 		</Term>
 		<EnumType Name="DeviateType">
 			<Member Name="not_supported"    />

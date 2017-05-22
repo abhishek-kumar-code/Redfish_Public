@@ -1,36 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
-  <Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
-    <Include Alias="Odata" Namespace="Org.OData.Core.V1"/>
-  </Reference>
-  <Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Capabilities.V1.xml">
-    <Include Alias="Odata" Namespace="Org.OData.Capabilities.V1"/>
-  </Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Alias="Odata" Namespace="Org.OData.Core.V1"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Alias="Odata" Namespace="Org.OData.Capabilities.V1"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishYangExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishYangExtensions.v1_0_0" Alias="Redfish.Yang"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
+
   <DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ietf_system.system.ntp">
-      <EntityType BaseType="Resource.v1_0_0.Resource" Name="ietf_system.system.ntp">
-        <Annotation String="" Term="OData.Description"/>
-        <Annotation Bool="false" Term="OData.AdditionalProperties"/>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ietf_system.system.clock">
+      <EntityType Name="clock" BaseType="Resource.v1_0_0.Resource" Abstract="true">
+        <Annotation Term="OData.Description" String="Configuration of the system date and time properties."/>
+        <Annotation Term="Capabilities.InsertRestrictions">
+          <Record>
+            <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.UpdateRestrictions">
+          <Record>
+            <PropertyValue Property="Updatable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.DeleteRestrictions">
+          <Record>
+            <PropertyValue Property="Deletable" Bool="false"/>
+          </Record>
+        </Annotation>
       </EntityType>
     </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ietf_system.system.ntp.v1_0_0">
-      <EntityType BaseType="ntp.ntp" Name="ietf_system.system.ntp">
-        <Annotation EnumMember="Redfish.Yang.NodeTypes/container" Term="RedfishYang.NodeType"/>
-        <Annotation String="ntp" Term="Redfish.Yang.if_feature"/>
-        <Annotation String="Enables the NTP client unless the 'enabled' leaf&#10;         (which defaults to 'true') is set to 'false'" Term="Redfish.Yang.presence"/>
-        <Annotation String="Configuration of the NTP client." Term="OData.Description"/>
-        <Property DefaultValue="true" Name="enabled" Type="Edm:Boolean">
-          <Annotation EnumMember="Redfish.Yang.NodeTypes/leaf" Term="RedfishYang.NodeType"/>
-          <Annotation String="boolean" Term="Redfish.Yang.YangType"/>
-          <Annotation String="Indicates that the system should attempt to synchronize the system clock with an NTP server from the 'ntp/server' list." Term="OData.Description"/>
+      <EntityType Name="ntp" BaseType="ietf_system.system.ntp.ntp">
+        <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/container" />
+        <Annotation Term="Redfish.Yang.if_feature" String="ntp"/>
+        <Annotation Term="Redfish.Yang.presence" String="Enables the NTP client unless the 'enabled' leaf&#10;         (which defaults to 'true') is set to 'false'" />
+        <Annotation Term="OData.AdditionalProperties" Bool="false" />
+        <Annotation Term="OData.Description" String="Configuration of the NTP client." />
+        <Property Name="enabled" Type="Edm.Boolean" DefaultValue="true">
+          <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf" />
+          <Annotation Term="Redfish.Yang.YangType" String="boolean" />
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read/" />
+          <Annotation Term="OData.Description" String="Indicates that the system should attempt to synchronize the system clock with an NTP server from the 'ntp/server' list." />
         </Property>
-        <NavigationProperty Name="Members" Type="Collection(ietf_system.system.ntp.server)">
-          <Annotation EnumMember="OData.Permissions/Read/" Term="OData.Permissions"/>
-          <Annotation String="" Term="OData.Description"/>
-          <Annotation String="" Term="OData.LongDescription"/>
+        <NavigationProperty Name="server" Type="ietf_system.system.ntp.serverCollection">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read/" />
+          <Annotation Term="OData.Description" String="Reference to collection."/>
           <Annotation Term="AutoExpandReferences"/>
         </NavigationProperty>
       </EntityType>
     </Schema>
+
   </DataServices>
 </edmx:Edmx>

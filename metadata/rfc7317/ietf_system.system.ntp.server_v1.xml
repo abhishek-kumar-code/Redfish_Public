@@ -1,54 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
-  <Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
-    <Include Alias="Odata" Namespace="Org.OData.Core.V1"/>
-  </Reference>
-  <Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Capabilities.V1.xml">
-    <Include Alias="Odata" Namespace="Org.OData.Capabilities.V1"/>
-  </Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Alias="Odata" Namespace="Org.OData.Core.V1"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Alias="Odata" Namespace="Org.OData.Capabilities.V1"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishYangExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishYangExtensions.v1_0_0" Alias="Redfish.Yang"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
+
   <DataServices>
-    <Schema Namespace="ietf_system.system.ntp.serverCollection">
-      <EntityType BaseType="Resource.v1_0_0.ResourceCollection" Name="ietf_system.system.ntp.serverCollection">
-        <Annotation EnumMember="Redfish.Yang.NodeTypes/list" Term="RedfishYang.NodeType"/>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="server">
+      <EntityType Name="server" BaseType="Resource.v1_0_0.Resource" Abstract="true">
+        <Annotation Term="OData.Description" String="ntp server."/>
+        <Annotation Term="Capabilities.InsertRestrictions">
+          <Record>
+            <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.UpdateRestrictions">
+          <Record>
+            <PropertyValue Property="Updatable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.DeleteRestrictions">
+          <Record>
+            <PropertyValue Property="Deletable" Bool="false"/>
+          </Record>
+        </Annotation>
+      </EntityType>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="server.v1_0_0">
+      <EntityType Name="server" BaseType="server.server">
+
+        <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/list" />
         <Key>
           <PropertyRef Name="name"/>
         </Key>
-        <Annotation String="List of NTP servers to use for system clock synchronization. If '/system/ntp/enabled' is 'true', then the system will attempt to contact and utilize the specified NTP servers." Term="OData.Description"/>
-        <Property Name="name" Type="Edm:String">
-          <Annotation EnumMember="Redfish.Yang.NodeTypes/leaf" Term="RedfishYang.NodeType"/>
-          <Annotation String="string" Term="Redfish.Yang.YangType"/>
-          <Annotation String="An arbitrary name for the NTP server." Term="OData.Description"/>
+        <Annotation Term="OData.Description" String="List of NTP servers to use for system clock synchronization. If '/system/ntp/enabled' is 'true', then the system will attempt to contact and utilize the specified NTP servers." />
+        <Property Name="name" Type="Edm.String">
+          <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf" />
+          <Annotation Term="Redfish.Yang.YangType" String="string" />
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="An arbitrary name for the NTP server." />
         </Property>
-        <Property DefaultValue="server" Name="association_type" Type="Edm:Enumeration">
-          <Annotation EnumMember="Redfish.Yang.NodeTypes/leaf" Term="RedfishYang.NodeType"/>
-          <Annotation String="enumeration" Term="Redfish.Yang.YangType"/>
-          <EnumType Name="association_typeEnumeration">
-            <Member Name="server" Value="0">
-              <Annotation String="server" Term="Redfish.Yang.enum"/>
-            </Member>
-            <Member Name="peer" Value="1">
-              <Annotation String="peer" Term="Redfish.Yang.enum"/>
-            </Member>
-            <Member Name="pool" Value="2">
-              <Annotation String="pool" Term="Redfish.Yang.enum"/>
-            </Member>
-          </EnumType>
-          <Annotation String="The desired association type for this NTP server." Term="OData.Description"/>
+        <Property Name="association_type" Type="association_typeType" DefaultValue="server" >
+          <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf" />
+          <Annotation Term="Redfish.Yang.YangType" String="enumeration" />
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The desired association type for this NTP server." />
         </Property>
-        <Property DefaultValue="false" Name="iburst" Type="Edm:Boolean">
-          <Annotation EnumMember="Redfish.Yang.NodeTypes/leaf" Term="RedfishYang.NodeType"/>
-          <Annotation String="boolean" Term="Redfish.Yang.YangType"/>
-          <Annotation String="Indicates whether this server should enable burst synchronization or not." Term="OData.Description"/>
+        <Property Name="iburst" Type="Edm.Boolean" DefaultValue="false" >
+          <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf" />
+          <Annotation Term="Redfish.Yang.YangType" String="boolean" />
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Indicates whether this server should enable burst synchronization or not." />
         </Property>
-        <Property DefaultValue="false" Name="prefer" Type="Edm:Boolean">
-          <Annotation EnumMember="Redfish.Yang.NodeTypes/leaf" Term="RedfishYang.NodeType"/>
-          <Annotation String="boolean" Term="Redfish.Yang.YangType"/>
-          <Annotation String="Indicates whether this server should be preferred or not." Term="OData.Description"/>
+        <Property Name="prefer" Type="Edm.Boolean" DefaultValue="false" >
+          <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf" />
+          <Annotation Term="Redfish.Yang.YangType" String="boolean" />
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Indicates whether this server should be preferred or not." />
         </Property>
       </EntityType>
+
+      <EnumType Name="association_typeTye">
+        <Member Name="server" Value="0">
+          <Annotation Term="Redfish.Yang.enum" String="server"/>
+        </Member>
+        <Member Name="peer" Value="1">
+          <Annotation Term="Redfish.Yang.enum" String="peer"/>
+        </Member>
+        <Member Name="pool" Value="2">
+          <Annotation Term="Redfish.Yang.enum" String="pool"/>
+        </Member>
+      </EnumType>
     </Schema>
+
   </DataServices>
-  <Reference Namespace="ietf_system.system.ntp.server.xml" Uri="http://redfish.dmtf.org/schemas/v1/">
-    <Include Namespace="ietf_system.system.ntp.server"/>
-  </Reference>
 </edmx:Edmx>

@@ -1,41 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
-  <Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
-    <Include Alias="Odata" Namespace="Org.OData.Core.V1"/>
-  </Reference>
-  <Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Capabilities.V1.xml">
-    <Include Alias="Odata" Namespace="Org.OData.Capabilities.V1"/>
-  </Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Alias="Odata" Namespace="Org.OData.Core.V1"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Alias="Odata" Namespace="Org.OData.Capabilities.V1"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishYangExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishYangExtensions.v1_0_0" Alias="Redfish.Yang"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/rfc7317/ietf_system.system.dns_resolver.options_v1.xml">
+    <edmx:Include Namespace="options"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/rfc7317/ietf_system.system.dns_resolver.serverCollection_v1.xml">
+    <edmx:Include Namespace="serverCollection"/>
+  </edmx:Reference>
+
   <DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ietf_system.system.dns_resolver">
-      <EntityType BaseType="Resource.v1_0_0.Resource" Name="ietf_system.system.dns_resolver">
-        <Annotation String="" Term="OData.Description"/>
-        <Annotation Bool="false" Term="OData.AdditionalProperties"/>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="dns_resolver">
+      <EntityType Name="dns_resolver" BaseType="Resource.v1_0_0.Resource" Abstract="true">
+        <Annotation Term="OData.Description" String="Configuration of the system date and time properties."/>
+        <Annotation Term="Capabilities.InsertRestrictions">
+          <Record>
+            <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.UpdateRestrictions">
+          <Record>
+            <PropertyValue Property="Updatable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.DeleteRestrictions">
+          <Record>
+            <PropertyValue Property="Deletable" Bool="false"/>
+          </Record>
+        </Annotation>
       </EntityType>
     </Schema>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ietf_system.system.dns_resolver.v1_0_0">
-      <EntityType BaseType="dns-resolver.dns-resolver" Name="ietf_system.system.dns_resolver">
-        <Annotation EnumMember="Redfish.Yang.NodeTypes/container" Term="RedfishYang.NodeType"/>
-        <Annotation String="Configuration of the DNS resolver." Term="OData.Description"/>
-        <Property Name="search" Type="Collection(Yang.inet:domain-name)">
-          <Annotation EnumMember="Redfish.Yang.NodeTypes/leaf_list" Term="RedfishYang.NodeType"/>
-          <Annotation String="inet:domain-name" Term="Redfish.Yang.YangType"/>
-          <Annotation EnumMember="Redfish.Yang.Ordered_by/user" Term="Redfish.Yang.ordered_by"/>
-          <Annotation String="An ordered list of domains to search when resolving a host name." Term="OData.Description"/>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="dns_resolver.v1_0_0">
+      <EntityType Name="dns_resolver" BaseType="dns_resolver.dns_resolver">
+        <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/container" />
+        <Annotation Term="OData.Description" String="Configuration of the DNS resolver." />
+        <Property Name="search" Type="Collection(searchType)">
+          <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf_list" />
+          <Annotation Term="Redfish.Yang.YangType" String="inet:domain-name" />
+          <Annotation Term="Redfish.Yang.ordered_by" EnumMember="Redfish.Yang.Ordered_by/user" />
+          <Annotation Term="OData.Description" String="An ordered list of domains to search when resolving a host name." />
         </Property>
-        <NavigationProperty Name="Members" Type="Collection(ietf_system.system.dns_resolver.server)">
-          <Annotation EnumMember="OData.Permissions/Read/" Term="OData.Permissions"/>
-          <Annotation String="" Term="OData.Description"/>
-          <Annotation String="" Term="OData.LongDescription"/>
+        <NavigationProperty Name="options" Type="options.options" ContainsTarget="true" >
+           <Annotation Term="OData.Description" String="Resolver options. The set of available options has been
+limited to those that are generally available across
+different resolver implementations and generally useful." />
           <Annotation Term="AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty ContainsTarget="true" Name="ietf_system.system.dns_resolver.options" Type="ietf_system.system.dns_resolver.optionsCollection.ietf_system.system.dns_resolver.optionsCollection">
-          <Annotation EnumMember="OData.Permissions/Read/" Term="OData.Permissions"/>
-          <Annotation String="" Term="OData.Description"/>
-          <Annotation String="" Term="OData.LongDescription"/>
+        <NavigationProperty Name="server" Type="serverCollection.serverCollection">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read/" />
+          <Annotation Term="OData.Description" String="List of the DNS servers that the resolver should query. When the resolver is invoked by a calling application, it sends the query to the first name server in this list. If no response has been received within timeout seconds, the resolver continues with the next server in the list. If no response is received from any server, the resolver continues with the first server again. When the resolver has traversed the list attempts times without receiving any response, it gives up and returns an error to the calling application. Implementations MAY limit the number of entries in this list." />
           <Annotation Term="AutoExpandReferences"/>
         </NavigationProperty>
       </EntityType>
+
+      <ComplexType Name="searchType">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Property Name="domain-name" Type="Edm.String">
+          <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf"/>
+          <Annotation Term="Redfish.Yang.YangType" String="Yang.inet:domain-name" />
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="domain-name."/>
+        </Property>
+      </ComplexType>
     </Schema>
   </DataServices>
 </edmx:Edmx>

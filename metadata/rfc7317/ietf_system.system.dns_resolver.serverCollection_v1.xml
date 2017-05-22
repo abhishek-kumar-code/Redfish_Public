@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
-  <Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
     <Include Alias="Odata" Namespace="Org.OData.Core.V1"/>
-  </Reference>
-  <Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Capabilities.V1.xml">
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Capabilities.V1.xml">
     <Include Alias="Odata" Namespace="Org.OData.Capabilities.V1"/>
-  </Reference>
-  <Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <Include Namespace="Resource.v1_0_0"/>
-  </Reference>
-  <Reference Uri="http://redfish.dmtf.org/schemas/v1/ietf_system.system.dns_resolver.server_v1.xml">
-    <Include Namespace="ietf_system.system.dns_resolver.server"/>
-  </Reference>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/rfc7317/ietf_system.system.dns_resolver.server_v1.xml">
+    <Include Namespace="server"/>
+  </edmx:Reference>
+
   <DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ietf_system.system.dns_resolver.serverCollection">
-      <EntityType BaseType="Resource.v1_0_0.ResourceCollection" Name="ietf_system.system.dns_resolver.serverCollection">
-        <Annotation String="A Collection of ietf_system.system.dns_resolver.server resource instances." Term="OData.Description"/>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="serverCollection">
+      <EntityType Name="serverCollection" BaseType="Resource.v1_0_0.ResourceCollection">
+        <Annotation Term="OData.Description" String="List of the DNS servers that the resolver should query. When the resolver is invoked by a calling application, it sends the query to the first name server in this list. If no response has been received within 'timeout' seconds, the resolver continues with the next server in the list. If no response is received from any server, the resolver continues with the first server again. When the resolver has traversed the list attempts times without receiving any response, it gives up and returns an error to the calling application. Implementations MAY limit the number of entries in this list."/>
         <Annotation Term="Capabilities.InsertRestrictions">
           <Record>
             <PropertyValue Bool="false" Property="Insertable"/>
@@ -31,12 +32,13 @@
             <PropertyValue Bool="false" Property="Deletable"/>
           </Record>
         </Annotation>
-        <NavigationProperty Name="Members" Nullable="false" Type="Collection(ietf_system.system.dns_resolver.server.server)">
-          <Annotation EnumMember="OData.Permissions/Read" Term="OData.Permissions"/>
-          <Annotation String="Contains members of this collection" Term="OData.Description"/>
+        <NavigationProperty Name="Members" Nullable="false" Type="Collection(server.server)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="Contains members of this collection." />
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </EntityType>
     </Schema>
+
   </DataServices>
 </edmx:Edmx>
