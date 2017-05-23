@@ -61,9 +61,6 @@
                 },
                 {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Chassis.v1_5_0.json#/definitions/Chassis"
-                },
-                {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/HostedStorageServices.json#/definitions/HostedStorageServices"
                 }
             ]
         }

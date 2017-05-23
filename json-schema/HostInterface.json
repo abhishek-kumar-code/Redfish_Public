@@ -16,9 +16,6 @@
                 },
                 {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/HostInterface.v1_1_0.json#/definitions/HostInterface"
-                },
-                {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/HostedStorageServices.json#/definitions/HostedStorageServices"
                 }
             ]
         }

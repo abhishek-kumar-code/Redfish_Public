@@ -37,9 +37,6 @@
                 },
                 {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/EthernetInterface.v1_3_0.json#/definitions/EthernetInterface"
-                },
-                {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/HostedStorageServices.json#/definitions/HostedStorageServices"
                 }
             ]
         }
