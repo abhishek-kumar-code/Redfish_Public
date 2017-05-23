@@ -1081,7 +1081,7 @@ OEM-specific properties are nested under an [OEM property](#oem-property).
 
 ##### Partial resource results
 
-Responses representing a single resource shall not be broken into multiple results.
+Responses representing a single resource shall not be broken into multiple results. See [partial results](#nextlink-property-and-partial-results) for details about the format of these responses.
 
 ##### Extended information
 
