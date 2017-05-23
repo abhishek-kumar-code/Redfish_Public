@@ -9,9 +9,6 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/idRef"
                 },
                 {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/HostedStorageServices.json#/definitions/HostedStorageServices"
-                },
-                {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/ServiceRoot.v1_0_0.json#/definitions/ServiceRoot"
                 },
                 {
@@ -37,12 +34,6 @@
                 },
                 {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/ServiceRoot.v1_2_0.json#/definitions/ServiceRoot"
-                },
-                {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/StorageServiceCollection.json#/definitions/StorageServiceCollection"
-                },
-                {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/StorageSystemCollection.json#/definitions/StorageSystemCollection"
                 }
             ]
         }
