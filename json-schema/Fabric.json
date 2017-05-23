@@ -16,9 +16,6 @@
                 },
                 {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Fabric.v1_0_2.json#/definitions/Fabric"
-                },
-                {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/HostedStorageServices.json#/definitions/HostedStorageServices"
                 }
             ]
         }

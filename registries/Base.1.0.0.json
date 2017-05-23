@@ -1,12 +1,12 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2015, 2017 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.type": "#MessageRegistry.v1_0_0.MessageRegistry",
-    "Id": "Base.1.1.0",
+    "@Redfish.Copyright": "Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.type": "#MessageRegistry.1.0.0.MessageRegistry",
+    "Id": "Base.1.0.0",
     "Name": "Base Message Registry",
     "Language": "en",
     "Description": "This registry defines the base messages for Redfish",
     "RegistryPrefix": "Base",
-    "RegistryVersion":  "1.1.0",
+    "RegistryVersion":  "1.0.0",
     "OwningEntity": "DMTF",
     "Messages": {
         "Success": {
@@ -144,7 +144,7 @@
         },
         "ActionParameterUnknown": {
             "Description": "Indicates that an action was submitted but a parameter supplied did not match any of the known parameters.",
-            "Message": "The action %1 was submitted with the invalid parameter %2.",
+            "Message": "The action %1 was submitted with with the invalid parameter %2.",
             "Severity": "Warning",
             "NumberOfArgs": 2,
             "ParamTypes": [
@@ -318,7 +318,7 @@
         },
         "AccountModified": {
             "Description": "Indicates that the account was successfully modified.",
-            "Message": "The account was successfully modified.",
+            "Message": "The account was successfully modifed.",
             "Severity": "OK",
             "NumberOfArgs": 0,
             "Resolution": "No resolution is required."
@@ -376,7 +376,7 @@
             "ParamTypes": [
                 "string"
             ],
-            "Resolution": "Place a valid resource at the URI or correct the URI and resubmit the request."
+            "Resolution": "Place a valid resource at thr URI or correct the URI and resubmit the request."
         },
         "ResourceAtUriInUnknownFormat": {
             "Description": "Indicates that the URI was valid but the resource or image at that URI was in a format not supported by the service.",
@@ -421,8 +421,8 @@
             "Resolution": "Change protocols or URIs. "
         },
         "AccessDenied": {
-            "Description": "Indicates that while attempting to access, connect to or transfer to/from another resource, the service denied access.",
-            "Message": "While attempting to establish a connection to %1, the service denied access.",
+            "Description": "Indicates that while attempting to access, connect to or transfer to/from another resource, the service was denied access.",
+            "Message": "While attempting to establish a connection to %1, the service was denied access.",
             "Severity": "Critical",
             "NumberOfArgs": 1,
             "ParamTypes": [
@@ -460,13 +460,6 @@
                 "string"
             ],
             "Resolution": "No resolution is required."
-        },
-        "ResourceInStandby": {
-            "Description": "Indicates that the request could not be performed because the resource is in standby.",
-            "Message": "The request could not be performed because the resource is in standby.",
-            "Severity": "Critical",
-            "NumberOfArgs": 0,
-            "Resolution": "Ensure that the resource is in the correct power state and resubmit the request."
-        }      
+        }
     }
 }

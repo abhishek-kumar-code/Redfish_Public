@@ -491,9 +491,6 @@
         "ManagerService": {
             "anyOf": [
                 {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/HostedStorageServices.json#/definitions/HostedStorageServices"
-                },
-                {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Manager.v1_0_0.json#/definitions/CommandShell"
                 },
                 {

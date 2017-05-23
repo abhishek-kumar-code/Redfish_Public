@@ -566,6 +566,7 @@ The PATCH method is the preferred method used to perform updates on pre-existing
 * If a property in the request can never be updated, such as when a property is read only, a status code of [200](#status-200) shall be returned along with a representation of the resource containing an [annotation](#extended-information) specifying the non-updatable property. In this success case, other properties may be updated in the resource.
 * Services should return status code [405](#status-405) if the client specifies a PATCH request against a Resource Collection.
 * The PATCH operation should be idempotent in the absence of outside changes to the resource, though the original ETag value may no longer match.
+* Services may accept a PATCH with an empty JSON object.  An empty JSON object in this context means no changes to the resource are being requested.
 
 Services may have null entries for properties that are JSON arrays to show the number of entries a client is allowed to use in a PATCH request. Within a PATCH request, unchanged members within a JSON array may be specified as empty JSON objects, and clearing members within a JSON array may be specified with null.
 
@@ -769,7 +770,7 @@ The following table lists some of the common HTTP status codes. Other codes may 
 | <a id="status-415"></a>415 Unsupported Media Type | The request specifies a Content-Type for the body that is not supported.                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | <a id="status-500"></a>500 Internal Server Error  | The server encountered an unexpected condition that prevented it from fulfilling the request. An extended error shall be returned in the response body, as defined in clause [Error Responses](#error-responses).                                                                                                                                                                                                                                                                   |
 | <a id="status-501"></a>501 Not Implemented        | The server does not (currently) support the functionality required to fulfill the request.  This is the appropriate response when the server does not recognize the request method and is not capable of supporting the method for any resource.                                                                                                                                                                                                                                           |
-| <a id="status-503"></a>503 Service Unavailable    | The server is currently unable to handle the request due to temporary overloading or maintenance of the server.                                                                                                                                                                                                                                                                                                                                                                                     |
+| <a id="status-503"></a>503 Service Unavailable    | The server is currently unable to handle the request due to temporary overloading or maintenance of the server.  A service may use this response to indicate that the request URI is valid, but the service is performing initialization or other maintenance on the resource.                                                                                                                                                                                                                      |
 
 #### Metadata responses
 Metadata describes resources, Resource Collections, capabilities and service-dependent behavior to generic consumers, including OData client tools and applications with no specific understanding of this specification. Clients are not required to request metadata if they already have sufficient understanding of the target service; for example, to request and interpret a JSON representation of a resource defined in this specification.
@@ -1080,7 +1081,7 @@ OEM-specific properties are nested under an [OEM property](#oem-property).
 
 ##### Partial resource results
 
-Responses representing a single resource shall not be broken into multiple results.
+Responses representing a single resource shall not be broken into multiple results. See [partial results](#nextlink-property-and-partial-results) for details about the format of these responses.
 
 ##### Extended information
 
