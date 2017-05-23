@@ -2,14 +2,15 @@
     "@Redfish.Copyright":"Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#Power.Power",
     "@odata.id": "/redfish/v1/Chassis/Enc1/Power",
-    "@odata.type": "#Power.v1_1_0.Power",
+    "@odata.type": "#Power.v1_4_0.Power",
     "Id": "Power",
     "Name": "Power",
     "PowerControl": [
         {
             "@odata.id": "/redfish/v1/Chassis/Enc1/Power#/PowerControl/0",
             "MemberId": "0",
-	        "Name": "Chassis Power Control",
+            "Name": "Chassis Power Control",
+            "PhysicalContext": "Chassis",
             "PowerConsumedWatts": 8000,
             "PowerRequestedWatts": 8500,
             "PowerAvailableWatts": 1500,
@@ -19,15 +20,15 @@
                 "LimitInWatts": 9000,
                 "LimitException": "NoAction",
                 "CorrectionInMs": 2000
-	    },
+            },
             "RelatedItem": [
-                 {"@odata.id": "/redfish/v1/Chassis/Enc1"}
+                { "@odata.id": "/redfish/v1/Chassis/Enc1" }
             ],
-	    "Status": {
-	        "State": "Enabled",
-	        "Health": "OK"
-	    },
-	    "Oem": {}
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK"
+            },
+            "Oem": {}
         }
     ],
     "PowerSupplies": [
@@ -39,7 +40,7 @@
                 "State": "Disabled",
                 "Health": "Warning"
             },
-	        "Oem": {},
+            "Oem": {},
             "PowerSupplyType": "AC",
             "LineInputVoltage": 48,
             "PowerCapacityWatts": 400,
@@ -51,10 +52,10 @@
             "PartNumber": "1z0000001A3a",
             "SparePartNumber": "0000001A3a",
             "RelatedItem": [
-              { "@odata.id": "/redfish/v1/Chassis/Enc1" }
+                { "@odata.id": "/redfish/v1/Chassis/Enc1" }
             ],
             "Redundancy": [
-              { "@odata.id": "/redfish/v1/Chassis/Enc1/Power#/Redundancy/0" }
+                { "@odata.id": "/redfish/v1/Chassis/Enc1/Power#/Redundancy/0" }
             ]
         },
         {
@@ -65,7 +66,7 @@
                 "State": "Disabled",
                 "Health": "Warning"
             },
-	        "Oem": {},
+            "Oem": {},
             "PowerSupplyType": "AC",
             "LineInputVoltage": 48,
             "PowerCapacityWatts": 400,
