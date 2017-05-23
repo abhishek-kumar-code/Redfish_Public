@@ -55,9 +55,6 @@
                 },
                 {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/ComputerSystem.v1_4_0.json#/definitions/ComputerSystem"
-                },
-                {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/HostedStorageServices.json#/definitions/HostedStorageServices"
                 }
             ]
         }
