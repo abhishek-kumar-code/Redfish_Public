@@ -10,9 +10,6 @@
                 },
                 {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/CompositionService.v1_0_0.json#/definitions/CompositionService"
-                },
-                {
-                    "$ref": "http://redfish.dmtf.org/schemas/v1/HostedStorageServices.json#/definitions/HostedStorageServices"
                 }
             ]
         }
