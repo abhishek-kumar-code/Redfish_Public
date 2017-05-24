@@ -9,12 +9,8 @@
     "Name@Redfish.SetOnlyOnCreate": true,
     "Description@Redfish.OptionalOnCreate": true,
     "Description@Redfish.SetOnlyOnCreate": true,
-    "UUID@Redfish.OptionalOnCreate": true,
-    "UUID@Redfish.UpdatableAfterCreate": true,
     "HostName@Redfish.OptionalOnCreate": true,
     "HostName@Redfish.UpdatableAfterCreate": true,
-    "PowerState@Redfish.OptionalOnCreate": true,
-    "PowerState@Redfish.UpdatableAfterCreate": true,
     "Boot@Redfish.OptionalOnCreate": true,
     "Boot": {
         "BootSourceOverrideEnabled@Redfish.OptionalOnCreate": true,
