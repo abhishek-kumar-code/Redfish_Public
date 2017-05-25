@@ -68,7 +68,7 @@
 		"EthernetInterface": {
 			"MinVersion": "1.2.0",
 			"Requirement": "Recommended",
-			"ConditionalRequirementss": [{
+			"ConditionalRequirements": [{
 				"SubordinateToResource": ["Manager", "EthernetInterfaceCollection"],
 				"Requirement": "Mandatory"
 			}],
@@ -82,7 +82,7 @@
 				},
 				"HostName": {
 					"Requirement": "Recommended",
-					"ConditionalRequirementss": [{
+					"ConditionalRequirements": [{
 						"SubordinateToResource": ["ComputerSystem", "EthernetInterfaceCollection"],
 						"Requirement": "Mandatory"
 					}]
@@ -90,7 +90,7 @@
 				"IPv6Addresses": {
 					"Requirement": "Mandatory",
 					"MinCount": 1,
-					"ConditionalRequirementss": [{
+					"ConditionalRequirements": [{
 						"SubordinateToResource": ["ComputerSystem", "EthernetInterfaceCollection"],
 						"MinCount": 2
 					}]
