@@ -47,7 +47,10 @@
         ],
         "CooledBy": [
             {
-                "@odata.id": "/redfish/v1/Chassis/Enc1/Thermal#/Fans"
+                "@odata.id": "/redfish/v1/Chassis/Enc1/Thermal#/Fans/0"
+            },
+            {
+                "@odata.id": "/redfish/v1/Chassis/Enc1/Thermal#/Fans/1"
             }
         ],
         "Oem": {}
