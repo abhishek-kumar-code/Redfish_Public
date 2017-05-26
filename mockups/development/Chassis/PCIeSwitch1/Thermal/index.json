@@ -49,7 +49,7 @@
             }
         },
         {
-            "@odata.id": "/redfish/v1/Chassis/PCIeSwitch1/Thermal#/Temperatures/2",
+            "@odata.id": "/redfish/v1/Chassis/PCIeSwitch1/Thermal#/Temperatures/3",
             "MemberId": "3",
             "Name": "Backplane Thermal Sensor 2",
             "ReadingCelcius": "24",
