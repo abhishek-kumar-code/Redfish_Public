@@ -1,6 +1,6 @@
 {
     "@odata.type": "#Processor.v1_1_0.Processor",
-    "Id": "CPU1",
+    "Id": "CPU3",
     "ProcessorType": "CPU",
     "ProcessorArchitecture": "x86",
     "InstructionSet": "x86-64",

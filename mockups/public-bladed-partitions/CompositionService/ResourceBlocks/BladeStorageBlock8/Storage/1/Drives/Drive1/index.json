@@ -1,5 +1,7 @@
 {
     "@odata.type": "#Drive.v1_2_0.Drive",
+    "Id": "Slot0",
+    "Name": "Drive 1",
     "IndicatorLED": "Lit",
     "Model": "C123",
     "Revision": "100A",

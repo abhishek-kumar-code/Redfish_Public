@@ -1,7 +1,7 @@
 {
     "@odata.type": "#Memory.v1_2_0.Memory",
     "Name": "PartitionedServer Memory",
-    "Id": "1",
+    "Id": "3",
     "MemoryDeviceType": "DDR4",
     "MemoryType": "DRAM",
     "PartNumber": "M393A4K40BB0-CPB",

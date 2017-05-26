@@ -1,7 +1,7 @@
 {
     "@odata.type": "#Thermal.v1_2_0.Thermal",
-    "Name": "PartitionedServer Blade6 Thermal",
-    "Id": "PartitionedServerBlade6Thermal",
+    "Name": "PartitionedServer Blade7 Thermal",
+    "Id": "PartitionedServerBlade7Thermal",
     "Temperatures": [{
         "@odata.id": "/redfish/v1/Chassis/Blade7/Thermal#/Temperatures/0",
         "MemberId": "1",

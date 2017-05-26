@@ -24,8 +24,12 @@
             "@odata.id": "/redfish/v1/Chassis/Enclosure"
         },
         "CooledBy": [{
-            "@odata.id": "/redfish/v1/Chassis/Enclosure/Thermal#/Fans"
-        }],
+                "@odata.id": "/redfish/v1/Chassis/Enclosure/Thermal#/Fans/0"
+            },
+            {
+                "@odata.id": "/redfish/v1/Chassis/Enclosure/Thermal#/Fans/1"
+            }
+        ],
         "ManagedBy": [{
                 "@odata.id": "/redfish/v1/Managers/EncMgr1"
             },
@@ -34,8 +38,12 @@
             }
         ],
         "PoweredBy": [{
-            "@odata.id": "/redfish/v1/Chassis/Enclosure/Power#/PowerSupplies"
-        }]
+                "@odata.id": "/redfish/v1/Chassis/Enclosure/Power#/PowerSupplies/0"
+            },
+            {
+                "@odata.id": "/redfish/v1/Chassis/Enclosure/Power#/PowerSupplies/1"
+            }
+        ]
     },
     "@odata.context": "/redfish/v1/$metadata#Chassis.Chassis",
     "@odata.id": "/redfish/v1/Chassis/Blade6"
