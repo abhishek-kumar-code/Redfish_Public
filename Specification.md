@@ -341,7 +341,7 @@ Assuming the client is connecting through an appliance named "mgmt.vendor.com", 
 
 URIs, as described in [RFC3986](#RFC3986), may also contain a query (?query) and a frag (#frag) components.  Queries are addressed in the clause [Query Parameters](#query-parameters).  Fragments (frag) shall be ignored by the server when used as the URI for submitting an operation.
 
-If a response includes the ["@odata.id" property](#resource-identifier-property) and its value contains a fragment to refer to an object within a response, it shall conform to the URI fragment identifier representation as specified in [RFC6901](#RFC6901).
+If a response includes the ["@odata.id" property](#resource-identifier-property) and its value contains a fragment to refer to an object within a resource, it shall conform to the URI fragment identifier representation as specified in [RFC6901](#RFC6901).
 
 #### HTTP methods
 
