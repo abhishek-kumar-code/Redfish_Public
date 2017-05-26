@@ -94,7 +94,7 @@
             <Annotation Term="OData.Description" String="The value of this property as specified by client to indicate the start time of a mainternance window."/>
             <Annotation Term="OData.LongDescription" String="A client shall specify this property to indicate timestamp as to when to start applying the future configuration. This property is mandatory if ApplyTime property is specified as ApplyAtMaintenanceWindowStart or ApplyInMaintenanceWindowOnReset."/>
           </Property>
-          <Property Name="MaintenanceWindowDuration" Type="Edm.Int32" Nullable="false">
+          <Property Name="MaintenanceWindowDurationInSeconds" Type="Edm.Int32" Nullable="false">
             <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
             <Annotation Term="OData.Description" String="The value of this property as specified by client indicates the expiry time of mainternance window(in seconds)."/>
             <Annotation Term="OData.LongDescription" String="A client shall specify this property to indicate expiry time of a future configuration task. This property is mandatory if ApplyTime property is specified as ApplyAtMaintenanceWindowStart or ApplyInMaintenanceWindowOnReset."/>
