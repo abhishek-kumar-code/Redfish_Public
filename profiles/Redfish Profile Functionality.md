@@ -3,7 +3,7 @@ DocTitle: Redfish Interoperability Profiles
 DocNumber: '0xxx'
 DocClass: Normative
 DocVersion: '0.9.0'
-modified: '2017-4-28'
+modified: '2017-5-30'
 status: work in progress
 released: false
 copyright: '2017'
@@ -163,7 +163,7 @@ The following options are available at the property level:
 | ConditionalRequirements | object | Property-level conditional requirements that apply to instances of this property, see [Conditional Requirements](#conditional-requirements) section. |
 | Writeable | boolean | True if the property is required to be writeable by the user.  False or not present if the property may be read-only. |
 | MinCount | integer | For array type properties, the minimum number of non-NULL instances within the array. |
-| AllowableValues |  array | The minimum set of enumerations that must be supported for this writeable property. |
+| MinSupportValues |  array | The minimum set of enumerations that must be supported for this writeable property. |
 | Comparison | string | The condition used to compare the value of the property to 'Values'. See the [Comparison](#comparison) section. |
 | Values | array | The value(s) required for this property based on the 'Comparison'. If no 'Comparison' is present, the property must be equal to one of the values listed. |
 | PropertyRequirements | object | For Redfish properties of type 'object', this object contains requirements for the properties contained within the specified object. This specification allows for only one level of nested objects and requirements.|
@@ -240,8 +240,8 @@ The following options are available for each conditional requirement:
 | Writeable | boolean | Condition applies if the property is writeable. |
 | SubordinateToResource | array | An ordered list (from top of heirarchy to bottom) of resources where this resource is linked as as subordinate resource.  The conditional requirements listed for the resource apply only to instances which are subordinate to the listed parent resource list.  See [Parent and subordinate resources](#parent-and-subordinate-resources) section. |
 | CompareProperty | string | The name of the property in this resource whose value is used to test this condition. The property name will be evaluated at the current object level within the resource.  If the property name is not found at the current level, upper levels will be searched until the root level is reached. See the [Compare Property](#compare-property) section.|
-| Comparison | string | The condition used to compare the value of the property named by 'CompareProperty' to the value of 'Values'.  If the comparison is true, then this conditional requirement applies. See the [Compare Property](#compare-property) section. |
-| Values | array | Values of the CompareProperty used to test this condition. See the [Compare Property](#compare-property) section. |
+| CompareValues | array | Values of the CompareProperty used to test this condition. See the [Compare Property](#compare-property) section. |
+| Comparison | string | The condition used to compare the value of the property named by 'CompareProperty' to the value of 'CompareValues'.  If the comparison is true, then this conditional requirement applies. See the [Compare Property](#compare-property) section. |
 
 
 ##### Parent and subordinate resources
@@ -288,7 +288,7 @@ To accomplish this, there are three Profile properties related to this function:
 | --- | --- | --- |
 | CompareProperty | string | The name of the property in this resource whose value is used to test this condition. The property name will be evaluated at the current object level within the resource.  If the property name is not found at the current level, upper levels will be searched until the root level is reached.|
 | Comparison | string |The condition used to compare the value of the property named by 'CompareProperty' to the value of 'Values'.  If the comparison is true, then this conditional requirement applies.|
-| Values | array | Values of the CompareProperty used to test this condition. |
+| CompareValues | array | Values of the CompareProperty used to test this condition. |
 
 
 ##### Example
@@ -302,7 +302,7 @@ This example shows a CompareProperty condition applied to the 'IndicatorLED' pro
 			"Purpose": "Physical and composed Systems must have a writable Indicator LED",
 			"CompareProperty": "SystemType",
 			"Comparison": "AnyOf",
-			"Values": ["Physical", "Composed"],
+			"CompareValues": ["Physical", "Composed"],
 			"Requirement": "Mandatory",
 			"Writeable": true
 		}]
@@ -327,7 +327,7 @@ The following functions are available to specify requirements for a parameter on
 | property | type | description | 
 | --- | --- | --- |
 | Requirement | string | The requirement to apply to this parameter.|
-| AllowableValues | array | The minimum set of enumerations that must be supported for this parameter. |
+| MinSupportValues | array | The minimum set of enumerations that must be supported for this parameter. |
 
 #### Example
 
@@ -339,7 +339,7 @@ This exampls shows the 'Reset' action as required for this resource, along with 
 			"Requirement": "Mandatory",
 			"Parameters": {
 				"ResetType": {
-					"AllowableValues": ["ForceOff", "PowerCycle"],
+					"MinSupportValues": ["ForceOff", "PowerCycle"],
 					"Requirement": "Mandatory"
 				}
 			}

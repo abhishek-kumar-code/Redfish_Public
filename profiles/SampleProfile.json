@@ -58,7 +58,7 @@
 					"Requirement": "Mandatory",
 					"Parameters": {
 						"ResetType": {
-							"AllowableValues": ["ForceOff", "PowerCycle"],
+							"MinSupportValues": ["ForceOff", "PowerCycle"],
 							"Requirement": "Mandatory"
 						}
 					}

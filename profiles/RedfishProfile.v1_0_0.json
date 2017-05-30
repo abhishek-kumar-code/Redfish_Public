@@ -140,8 +140,8 @@
 				"MinCount": {
 					"$ref": "#/definitions/MinCount"
 				},
-				"AllowableValues": {
-					"$ref": "#/definitions/AllowableValues"
+				"MinSupportValues": {
+					"$ref": "#/definitions/MinSupportValues"
 				},
 				"Comparison": {
 					"$ref": "#/definitions/Comparison"
@@ -170,8 +170,8 @@
 						"Requirement": {
 							"$ref": "#/definitions/Requirement"
 						},
-						"AllowableValues": {
-							"$ref": "#/definitions/AllowableValues"
+						"MinSupportValues": {
+							"$ref": "#/definitions/MinSupportValues"
 						}
 					}
 				}
@@ -257,9 +257,12 @@
 					"type": "string",
 					"description": "The name of the property in this resource whose value is used to test this condition. The property name will be evaluated at the current object level within the resource.  If the property name is not found at the current level, upper levels will be searched until the root level is reached."
 				},
-				"Values": {
+				"CompareValues": {
 					"description": "The values of the 'CompareProperty' used to test the 'Comparison' for this conditional requirement.",
-					"$ref": "#/definitions/Values"
+					"type": "array",
+					"items": {
+						"type": "string"
+					}
 				},
 				"Writeable": {
 					"$ref": "#/definitions/Writeable"
@@ -270,7 +273,7 @@
 			"type": "boolean",
 			"description": "True if the property is required to be writeable by the user.  False or not present if the property may be read-only."
 		},
-		"AllowableValues": {
+		"MinSupportValues": {
 			"type": "array",
 			"items": {
 				"type": "string"
