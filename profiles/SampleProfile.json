@@ -47,7 +47,7 @@
 						"Purpose": "Physical and composed Systems must have a writable Indicator LED",
 						"CompareProperty": "SystemType",
 						"Comparison": "AnyOf",
-						"Values": ["Physical", "Composed"],
+						"CompareValues": ["Physical", "Composed"],
 						"Requirement": "Mandatory",
 						"Writeable": true
 					}]
