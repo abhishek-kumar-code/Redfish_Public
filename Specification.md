@@ -332,8 +332,8 @@ For example, in the following URL:
 The scheme and authority part of the URI shall not be considered part of the unique _identifier_ of the resource.  This is due to redirection capabilities and local operations which may result in the variability of the connection portion.  The remainder of the URI (the service and resource paths) is what _uniquely identifies_ the resource within a given Redfish service.
 
 * The unique identifier part of a URI shall be unique within the implementation.
-* An implementation may use a [relative URI](#redfish-defined-uris-and-relative-uri-rules) in the payload to identify a resource within the implementation.
-* An implementation may use an absolute URI in the payload to identify a resource within a different implementation.  See [RFC3986](#RFC3986) for the absolute URI definition.
+* An implementation may use a [relative URI](#redfish-defined-uris-and-relative-uri-rules) in the payload (body and/or HTTP headers) to identify a resource within the implementation.
+* An implementation may use an absolute URI in the payload (body and/or HTTP headers) to identify a resource within a different implementation.  See [RFC3986](#RFC3986) for the absolute URI definition.
 
 For example, a POST may return the following URI in the Location header of the response (indicating the new resource created by the POST):
 
