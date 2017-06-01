@@ -72,11 +72,11 @@ Example Composition Service Resource:
 
 ## Resource Blocks
 
-Resource Blocks are the lowest level building blocks for composition requests.  Resource Blocks contain status and control information about the Resource Block instance.  They also contain the list of components found within the Resource Block instance.  For example, if a Resource Block contains 1 Processor and 4 DIMMs, then all of those components will be part of the same composition request, even if only one of them is needed.  In a completely disaggregated system, a client would likely find one component instance within each Resource Block.  Resource Blocks, and their components, are not usable by clients until they belong in a composition.
+Resource Blocks are the lowest level building blocks for composition requests.  Resource Blocks contain status and control information about the Resource Block instance.  They also contain the list of components found within the Resource Block instance.  For example, if a Resource Block contains 1 Processor and 4 DIMMs, then all of those components will be part of the same composition request, even if only one of them is needed.  In a completely disaggregated system, a client would likely find one component instance within each Resource Block.  Resource Blocks, and their components, are not in a state where system software is able to use them until they belong in a composition.  For example, if a Resource Block contains a Drive instance, the Drive will not belong to any given Computer System until a composition request is made that makes use of its Resource Block.
 
-The property `ResourceBlockType` contains classification information about the types of components found on the Resource Block that can be used to help clients quickly identify a Resource Block.  Each ResourceBlockType is associated with specific schema elements which will be contained within that Resource Block.  For example, if the value `Storage` was found in this property, then a client would know that this particular Resource Block contains storage related devices, such as storage controllers or drives, without having to drill into the individual component resources.  The value `Compute` has special meaning; this is used to describe Resource Blocks that have bound processor and memory components that operate together as a compute subsystem.
+The property `ResourceBlockType` contains classification information about the types of components found on the Resource Block that can be used to help clients quickly identify a Resource Block.  Each `ResourceBlockType` is associated with specific schema elements which will be contained within that Resource Block.  For example, if the value `Storage` was found in this property, then a client would know that this particular Resource Block contains storage related devices, such as storage controllers or drives, without having to drill into the individual component resources.  The value `Compute` has special meaning; this is used to describe Resource Blocks that have bound processor and memory components that operate together as a compute subsystem.
 
-The property `CompositionStatus` is an object that contains two properties: `CompositionState` and `Reserved`.  `CompositionState` is used to inform the client of the state of this Resource Block regarding its use in a composition.  `Reserved` is a writeable flag that clients can use to help convey that this Resource Block has been identified by a client, and that the client will be using it for a composition.  If a second client that is attempting to identify resources for a composition sees the `Reserved` flag set to true, it should move on to the next Resource Block for further processing.  The Redfish service does not provide any sort of protection with the `Reserved` flag; any client can change its state and it's up to clients to behave fairly.
+The property `CompositionStatus` is an object that contains two properties: `CompositionState` and `Reserved`.  `CompositionState` is used to inform the client of the state of this Resource Block regarding its use in a composition.  `Reserved` is a writeable flag that clients can use to help convey that this Resource Block has been identified by a client, and that the client will be using it for a composition.  If a second client that is attempting to identify resources for a composition sees the `Reserved` flag set to true, the second client should consider it allocated and not use it; the second client should move on to the next Resource Block for further processing.  The Redfish service does not provide any sort of protection with the `Reserved` flag; any client can change its state and it's up to clients to behave fairly.
 
 There are several arrays of links to various component types, such as the `Processors`, `Memory`, and `Storage` arrays.  These links ultimately go to the individual components that are within the Resource Block.  These components are made available to the new composition after a composition request is made.  The `ComputerSystems` array is used when a Resource Block contains one or more whole Computer Systems.  This gives the client the ablity to create a single composed Computer System from a set of smaller Computer Systems.
 
@@ -301,7 +301,7 @@ The Specific Composition allows clients to create and manage the life cycle of c
 
 An example of choosing a Resource Block according to the binding rules and providing details of specific Resource Blocks in the a create (POST) request can be found in the [Create a Composed Resource](#create-a-composed-resource) section.
 
-Another industry standard server design which fits into the example of Specific Composition is defined in the [public-bladed-partitions mockup](#references).  In this example, a Multi-Blade Enclosure having disaggregated hardware chassis can be bound together electrically to create what are called [partitioned servers](http://www.computerworld.com/article/2593387/server-partitioning.html).  These partitions can be composed using the Specific Composition.  The Redfish service implements each blade within the enclosure as a Resource Block with `ResourceBlockType` set to either `Compute` or `Storage`, and allows the clients to combine multiple Resource Blocks to create a composed Computer System, which is an electrically isolated partition.
+Another industry standard server design which fits into the example of Specific Composition is defined in the [public-bladed-partitions mockup](#references).  In this example, a Multi-Blade Enclosure having disaggregated hardware chassis can be bound together to create what are called [partitioned servers](http://www.computerworld.com/article/2593387/server-partitioning.html).  These partitions can be composed using the Specific Composition.  The Redfish service implements each blade within the enclosure as a Resource Block with `ResourceBlockType` set to either `Compute` or `Storage`, and allows the clients to combine multiple Resource Blocks to create a composed Computer System, which is a partitioned server.
 
 Example Create (POST) Body for a Specific Composition:
 ```json
@@ -344,7 +344,7 @@ Application code should always start at the root: `/redfish/v1/`
 
 ### Read the List of Resources Available for Composition
 
-The client needs to understand the composition model reported by the [Composition Service](#composition-service) by reading the [Resource Blocks](#resource-blocks) and [Resource Zones](#resource-zones) collections.  This relationship will be used to execute the reported `UseCase` supported by the Redfish service in later the [Create a Composed Resource](#create-a-composed-resource) section.
+The client needs to understand the composition model reported by the [Composition Service](#composition-service) by reading the [Resource Blocks](#resource-blocks) and [Resource Zones](#resource-zones) collections.  This relationship will be used to execute the reported `UseCase` supported by the Redfish service described later in the [Create a Composed Resource](#create-a-composed-resource) section.
 
 1. Read the [Resource Blocks](#resource-blocks)
     1. Perform a GET on the Composition Service URI
@@ -472,19 +472,22 @@ For building a composition request, the client can take the following steps for 
 1. List all [Resource Blocks](#resource-blocks) that belong to a particular [Resource Zone](#resource-zones) by doing a GET on their collection URIs as described in [the above example](#read-the-list-of-resources-available-for-composition)
     * When reading the Resource Blocks, take note of the `CompositionStatus` property
     * Depending on what's contained in the `CompositionStatus` property, a given Resource Block may not be currently available for composition
-2. Identify the needs of a specific composition `UseCase`
+2. (Optional) Reserve each Resource Block that has been identified for the composition request
+    * Perform a PATCH on each Resource Block with `Reserved` set to true
+    * This step should be done in scenarios where multiple clients may be making composition requests
+3. Identify the needs of a specific composition `UseCase`
     1. Perform a GET on the desired Resource Zone
     2. Find the matching `UseCase` value in the `@Redfish.CollectionCapabilities` annotation
         * For example, look for the value `ComputerSystemComposition` if trying to compose a new Computer System from a specific list of Resource Blocks
     3. Perform a GET on the URI found in the property `CapabilitiesObject`
     4. Mark down all of the properties annotated with `RequiredOnCreate`
-        * These are the properties which needs to be passed as part of the composition request
+        * These are the properties which need to be passed as part of the composition request
     5. Mark down the `TargetCollection` URI
         * This is the where the create (POST) request for the new composition is made
-3. Using all the properties that were `RequiredOnCreate`, build a create (POST) request body that will be a sent to the `TargetCollection` URI
+4. Using all the properties that were `RequiredOnCreate`, build a create (POST) request body that will be sent to the `TargetCollection` URI
     * In step 4 of [the above example](#read-the-list-of-resources-available-for-composition), only `Name` and `ResourceBlocks` found in `Links` are required
     * The Redfish service may accept other properties as part of the request so they do not need to be updated later
-4. The `Location` HTTP header in the service response contains the URI of the composed resource
+5. The `Location` HTTP header in the service response contains the URI of the composed resource
 
 General Flow Diagram:
 ```
@@ -502,7 +505,10 @@ Client  |                                                                     | 
         |           ( << Identify which Resource Blocks to use >> )           |
         |                                                                     |
         |-> GET /redfish/v1/CompositionService/ResourceBlocks/ComputeBlock2 ->|
-        |<--- { ..., "CompositionState": "Unused", ... } <--------------------|
+        |<--- { ..., "CompositionState": "Unused", "Reserved": false ... } <--|
+        |                                                                     |
+        |-> PATCH /redfish/v1/CompositionService/ResourceBlocks/ComputeBlock2 |
+        |   { "CompositionStatus": { "Reserved": true } } ------------------->|
 ```
 
 Client Request Example:
@@ -535,7 +541,7 @@ The above Client Request Example shows a composition request by the client being
 
 ### Update a Composed Resource
 
-If the Redfish service supports updating an existing composition, the client can update an already created composition through PUT/PATCH.  This can be done by updating the `ResourceBlocks` array found in the composed resource.  When using PATCH, the same array semantics applies as described in the Redfish Specification.
+If the Redfish service supports updating an existing composition, the client can update an already created composition through PUT/PATCH.  This can be done by updating the `ResourceBlocks` array found in the composed resource.  When using PATCH, the same array semantics apply as described in the Redfish Specification.
 
 Client Request Example:
 ```http
@@ -566,7 +572,7 @@ Client Request Example:
 DELETE /redfish/v1/Systems/NewSystem HTTP/1.1
 ```
 
-The above example will request that the composed system called `NewSystem` be retired.  When this happens, this will free the Resource Blocks being used by the system so that they can be used in future compositions.
+The above example will request that the composed system called `NewSystem` be retired.  When this happens, this will free the Resource Blocks being used by the system so that they can be used in future compositions.  However, the `Reserved` flag found in the `CompositionStatus` for each Resource Block will remain in the same state; if a client is done using the Resource Blocks, it should set the `Reserved` flag to false.
 
 
 ## References
