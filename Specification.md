@@ -1955,13 +1955,11 @@ The values in the Settings resource are applied to the resource either directly,
 
 ~~~json
 {
-	"@Redfish.SettingsApplyTime": {
-		"PreferredApplyTime": {
-			"ApplyTime": "ApplyOnReset",   
-			"MaintenanceWindowStartTime": "2017-05-03T23:12:37-05:00",
-			"MaintenanceWindowDurationInSeconds": 600,
-		}
-	  },
+    "@Redfish.SettingsApplyTime": {
+        "ApplyTime": "ApplyOnReset",   
+        "MaintenanceWindowStartTime": "2017-05-03T23:12:37-05:00",
+        "MaintenanceWindowDurationInSeconds": 600
+    },
     ...
 }
 ~~~
