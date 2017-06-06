@@ -76,7 +76,7 @@
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Settings.v1_1_0">
-      <ComplexType Name="Settings" BaseType="Settings.v1_0_4.Settings">
+      <ComplexType Name="Settings" BaseType="Settings.v1_0_0.Settings">
         <Property Name="SupportedApplyTimes" Type="Collection(Settings.v1_1_0.ApplyTime)" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This property indicates when a Settings resource can be applied."/>
