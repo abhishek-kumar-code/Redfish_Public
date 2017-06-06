@@ -1958,7 +1958,7 @@ The values in the Settings resource are applied to the resource either directly,
 	"@Redfish.SettingsApplyTime": {
 		"PreferredApplyTime": {
 			"ApplyTime": "ApplyOnReset",   
-			“MaintenanceWindowStartTime”: "2017-05-03T23:12:37-05:00",
+			"MaintenanceWindowStartTime": "2017-05-03T23:12:37-05:00",
 			"MaintenanceWindowDuration": 600,
 		}
 	  },
