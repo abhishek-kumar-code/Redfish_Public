@@ -37,10 +37,22 @@
             "Utilities",
             "Diags",
             "UefiTarget",
-            "SDCard",            
-            "UefiHttp"
+            "SDCard",
+            "UefiHttp",
+            "UefiBootNext"
         ],
-        "UefiTargetBootSourceOverride": "uefi device path"
+      "UefiTargetBootSourceOverride": "uefi device path",
+      "BootOrderInfo": {
+        "@odata.id": "/redfish/v1/Systems/1/Boot"
+      },
+      "BootNext": "Boot0003",
+      "BootOrder": [
+        "Boot0001",
+        "Boot0000",
+        "Boot0002",
+        "Boot0004",
+        "Boot0003"
+      ]
     },
     "BiosVersion": "P79 v1.00 (09/20/2013)",
     "ProcessorSummary": {
@@ -96,9 +108,6 @@
     },
     "Bios": {
         "@odata.id": "/redfish/v1/Systems/1/Bios"
-    },
-    "BootOrder": {
-        "@odata.id": "/redfish/v1/Systems/1/Boot"
     },
     "PCIeDevices": [
         {"@odata.id": "/redfish/v1/Chassis/1/PCIeDevices/NIC"}

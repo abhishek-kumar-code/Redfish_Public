@@ -4,21 +4,8 @@
   "@odata.id": "/redfish/v1/Systems/1/Boot",
   "@odata.type": "#BootOrder.v1_0_0.BootOrder",
   "Id": "Boot",
-  "Name": "Boor Order Current Settings",
-  "Description": "UEFI Boot Order Configuration (Current Settings)",
-  "@Redfish.Settings": {
-    "@odata.type": "#Settings.v1_0_0.Settings",
-    "ETag": "someetag",
-    "Messages": [
-      {
-        "MessageId": "Base.1.0.Success"
-      }
-    ],
-    "SettingsObject": {
-      "@odata.id": "/redfish/v1/Systems/1/Boot/SD"
-    },
-    "Time": "2017-05-15T14:44.30-05:00"
-  },
+  "Name": "Boor Order Info",
+  "Description": "UEFI Boot Order Information",  
   "Actions": {
     "#BootOrder.ResetDefault": {
       "target": "/redfish/v1/Systems/1/Boot/Actions/BootOrder.ResetDefault"
@@ -28,38 +15,46 @@
     {
       "BootId": "Boot0000",
       "Description": "Windows Boot Manager",
-      "UefiDevicePath": "PciRoot(0x0)/Pci(0x1,0x0)/Pci(0x0,0x0)/Scsi(0x0,0x0)/HD(2,GPT,B02BF459-8975-4222-A1C4-17915C29E5E5,0x96800,0x31800)/\\EFI\\Microsoft\\Boot\\bootmgfw.efi"
+      "UefiDevicePath": "PciRoot(0x0)/Pci(0x1,0x0)/Pci(0x0,0x0)/Scsi(0x0,0x0)/HD(2,GPT,B02BF459-8975-4222-A1C4-17915C29E5E5,0x96800,0x31800)/\\EFI\\Microsoft\\Boot\\bootmgfw.efi",
+      "Alias": "Hdd",
+      "RelatedItem": [
+        { "@odata.id": "/redfish/v1/Systems/1/Storage/RAIDIntegrated/Volumes/1" }
+      ]
     },
     {
       "BootId": "Boot0001",
       "Description": "Generic USB Boot",
-      "UefiDevicePath": "UsbClass(0xFFFF,0xFFFF,0xFF,0xFF,0xFF)"
+      "UefiDevicePath": "UsbClass(0xFFFF,0xFFFF,0xFF,0xFF,0xFF)",
+      "Alias": "Usb"
     },
     {
       "BootId": "Boot0002",
       "Description": "iSCSI IPv4 Boot LUN 0",
-      "UefiDevicePath": "PciRoot(0x0)/Pci(0x1C,0x4)/Pci(0x0,0x0)/MAC(0002B3AFE1D8,0x0)/IPv4(192.168.0.100,TCP,Static,192.168.0.1)/iSCSI(iqn.1991-05.com.microsoft:iscsitarget-iscsidisktarget,0x1,0x0,None,None,None,TCP)/HD(1,GPT,15E39A00-1DD2-1000-8D7F-00A0C92408FC,0x22,0x2710000)"
+      "UefiDevicePath": "PciRoot(0x0)/Pci(0x1C,0x4)/Pci(0x0,0x0)/MAC(0002B3AFE1D8,0x0)/IPv4(192.168.0.100,TCP,Static,192.168.0.1)/iSCSI(iqn.1991-05.com.microsoft:iscsitarget-iscsidisktarget,0x1,0x0,None,None,None,TCP)/HD(1,GPT,15E39A00-1DD2-1000-8D7F-00A0C92408FC,0x22,0x2710000)",
+      "Alias": "Hdd",
+      "RelatedItem": [
+        { "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/9fd725a1/" }
+      ]
     },
     {
       "BootId": "Boot0003",
       "UefiDevicePath": "PciRoot(0x0)/Pci(0x1C,0x4)/Pci(0x0,0x0)/MAC(0002B3AFE1D8,0x0)/IPv4(0.0.0.0)",
-      "Description": "NIC 1 PXE Boot - IPv4"
+      "Description": "NIC 1 PXE Boot - IPv4",
+      "Alias": "Pxe",
+      "RelatedItem": [
+        { "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/9fd725a1/" }
+      ]
     },
     {
       "BootId": "Boot0004",
       "Description": "NIC 1 PXE Boot - IPv6",
-      "UefiDevicePath": "PciRoot(0x0)/Pci(0x1C,0x4)/Pci(0x0,0x0)/MAC(0002B3AFE1D8,0x0)/IPv6(0000:0000:0000:0000:0000:0000:0000:0000)"
+      "UefiDevicePath": "PciRoot(0x0)/Pci(0x1C,0x4)/Pci(0x0,0x0)/MAC(0002B3AFE1D8,0x0)/IPv6(0000:0000:0000:0000:0000:0000:0000:0000)",
+      "Alias": "Pxe",
+      "RelatedItem": [
+        { "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/9fd725a1/" }
+      ]
     }
   ],
-    "BootOrder": [
-      "Boot0000",
-      "Boot0001",
-      "Boot0002",
-      "Boot0003",
-      "Boot0004"
-  ],
-
-  "BootNext": "",
 
   "Oem": { }
 }
