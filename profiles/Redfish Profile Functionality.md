@@ -1,6 +1,6 @@
 ---
 DocTitle: Redfish Interoperability Profiles
-DocNumber: '0xxx'
+DocNumber: '0272'
 DocClass: Normative
 DocVersion: '0.9.0'
 modified: '2017-5-30'
