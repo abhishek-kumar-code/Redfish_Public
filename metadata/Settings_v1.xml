@@ -31,6 +31,7 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Settings">
       <ComplexType Name="Settings" Abstract="true"/>
+      <ComplexType Name="PreferredApplyTime" Abstract="true"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Settings.v1_0_0">
@@ -84,7 +85,7 @@
         </Property>
       </ComplexType>
 
-      <ComplexType Name="PreferredApplyTime">
+      <ComplexType Name="PreferredApplyTime" BaseType="Settings.PreferredApplyTime">
         <Annotation Term="OData.Description" String="This object indicates when the future configuration (i.e. Settings resource) should be applied."/>
         <Annotation Term="OData.LongDescription" String="This object shall be specified by client in a request to indicate it's preference on when to apply a settings resource."/>
         <Property Name="ApplyTime" Type="Settings.v1_1_0.ApplyTime" Nullable="false">
