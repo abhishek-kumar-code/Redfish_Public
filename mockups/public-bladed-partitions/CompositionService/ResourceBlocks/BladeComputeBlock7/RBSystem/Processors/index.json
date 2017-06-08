@@ -1,0 +1,14 @@
+{
+    "@odata.type": "#ProcessorCollection.ProcessorCollection",
+    "Name": "PartitionedServer Processor Collection",
+    "Members@odata.count": 2,
+    "Members": [{
+            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock7/RBSystem/Processors/CPU1"
+        },
+        {
+            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock7/RBSystem/Processors/CPU2"
+        }
+    ],
+    "@odata.context": "/redfish/v1/$metadata#ProcessorCollection.ProcessorCollection",
+    "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock7/RBSystem/Processors"
+}
