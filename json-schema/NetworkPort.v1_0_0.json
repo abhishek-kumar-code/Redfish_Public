@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
     "title": "#NetworkPort.v1_0_0.NetworkPort",
     "$ref": "#/definitions/NetworkPort",
     "definitions": {
@@ -73,7 +73,9 @@
                     "readonly": true,
                     "description": "Contains the members of this collection."
                 }
-            }
+            },
+            "description": "A maximum bandwidth allocation percentage for a Network Device Functions associated a port.",
+            "longDescription": "This type shall describe a maximum bandwidth percentage allocation for a network device function associated with a port."
         },
         "NetDevFuncMinBWAlloc": {
             "type": "object",
@@ -106,7 +108,9 @@
                     "readonly": true,
                     "description": "Contains the members of this collection."
                 }
-            }
+            },
+            "description": "A minimum bandwidth allocation percentage for a Network Device Functions associated a port.",
+            "longDescription": "This type shall describe a minimum bandwidth percentage allocation for a network device function associated with a port."
         },
         "NetworkPort": {
             "type": "object",
@@ -352,8 +356,10 @@
                     "description": "The speed of the link in Mbps when this link network technology is active.",
                     "longDescription": "The value of this property shall be the speed of the link in megabits per second (Mbps) for this port when this link network technology is active."
                 }
-            }
+            },
+            "description": "The self-described link capabilities of an assocaited port.",
+            "longDescription": "This type shall describe the static capabilities of an associated port, irrespective of transient conditions such as cabling, interface module presence, or remote link parter status or configuration."
         }
     },
-    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
+    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }

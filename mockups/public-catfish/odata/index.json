@@ -31,21 +31,6 @@
             "url": "/redfish/v1/SessionService"
         },
         {
-            "name": "EventService",
-            "kind": "Singleton",
-            "url": "/redfish/v1/EventService"
-        },
-        {
-            "name": "JsonSchemas",
-            "kind": "Singleton",
-            "url": "/redfish/v1/JsonSchemas"
-        },
-        {
-            "name": "Registries",
-            "kind": "Singleton",
-            "url": "/redfish/v1/Registries"
-        },
-        {
             "name": "Sessions",
             "kind": "Singleton",
             "url": "/redfish/v1/SessionService/Sessions"

@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
     "title": "#Memory.v1_0_0.Memory",
     "$ref": "#/definitions/Memory",
     "definitions": {
@@ -529,7 +529,9 @@
                                 }
                             },
                             "additionalProperties": true,
-                            "properties": {}
+                            "properties": {},
+                            "description": "The available OEM specific actions for this resource.",
+                            "longDescription": "This type shall contain any additional OEM actions for this resource."
                         },
                         "#Memory.DisablePassphrase": {
                             "$ref": "#/definitions/DisablePassphrase"
@@ -673,7 +675,8 @@
                     "longDescription": "Slot number in which Memory is connected."
                 }
             },
-            "description": "."
+            "description": "Memory connection information to sockets and memory controllers.",
+            "longDescription": "This type shall contain properties which describe the Memory connection information to sockets and memory controllers."
         },
         "MemoryMedia": {
             "type": "string",
@@ -697,10 +700,16 @@
                 "NVDIMM_P"
             ],
             "enumDescriptions": {
-                "DRAM": "DRAM.",
-                "NVDIMM_N": "NVDIMM_N as defined by JEDEC.",
-                "NVDIMM_F": "NVDIMM_F as defined by JEDEC.",
-                "NVDIMM_P": "NVDIMM_P as defined by JEDEC."
+                "DRAM": "The memory module is composed of volatile memory.",
+                "NVDIMM_N": "The memory module is composed of volatile memory backed by non-volatile memory.",
+                "NVDIMM_F": "The memory module is composed of non-volatile memory.",
+                "NVDIMM_P": "The memory module is composed of a combination of non-volatile and volatile memory."
+            },
+            "enumLongDescriptions": {
+                "DRAM": "This memory type shall represent volatile DRAM.",
+                "NVDIMM_N": "This memory type shall represent NVDIMM_N as defined by JEDEC.",
+                "NVDIMM_F": "This memory type shall represent NVDIMM_F as defined by JEDEC.",
+                "NVDIMM_P": "This memory type shall represent NVDIMM_P as defined by JEDEC."
             }
         },
         "OperatingMemoryModes": {
@@ -773,7 +782,8 @@
                     "longDescription": "Average power budget in milli watts."
                 }
             },
-            "description": "."
+            "description": "Power management policy information.",
+            "longDescription": "This type shall contain properties which describe the power management policy for the current resource."
         },
         "RegionSet": {
             "type": "object",
@@ -840,7 +850,8 @@
                     "longDescription": "State of the passphrase for this region."
                 }
             },
-            "description": "Memory region information."
+            "description": "Memory region information within a Memory entity.",
+            "longDescription": "This type shall describe the memory region information within a Memory entity."
         },
         "SecurityCapabilities": {
             "type": "object",
@@ -886,7 +897,9 @@
                     "description": "Security states supported by the Memory.",
                     "longDescription": "Security states supported by the Memory."
                 }
-            }
+            },
+            "description": "This type contains security capabilities of a Memory entity.",
+            "longDescription": "This type shall contain properties which describe the security capabilities of a Memory entity."
         },
         "SecurityStates": {
             "type": "string",
@@ -908,5 +921,5 @@
             }
         }
     },
-    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
+    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }

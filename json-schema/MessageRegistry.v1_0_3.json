@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
     "title": "#MessageRegistry.v1_0_3.MessageRegistry",
     "$ref": "#/definitions/MessageRegistry",
     "definitions": {
@@ -72,7 +72,9 @@
                 "Severity",
                 "NumberOfArgs",
                 "Resolution"
-            ]
+            ],
+            "description": "This type shall reprensent how a message is defined within the registry.",
+            "longDescription": "The type shall represent how a message is defined within within a message registry."
         },
         "MessageProperty": {
             "type": "object",
@@ -93,7 +95,9 @@
                 }
             },
             "additionalProperties": false,
-            "properties": {}
+            "properties": {},
+            "description": "The pattern type indicates that a free-form string is the unique identifier for the message within the registry.",
+            "longDescription": "The pattern type shall represent the suffix to be used in the MessageId and shall be unique within this message registry."
         },
         "ParamType": {
             "type": "string",
@@ -191,5 +195,5 @@
             "longDescription": "This resource shall be used to represent a message registry for a Redfish implementation."
         }
     },
-    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
+    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }

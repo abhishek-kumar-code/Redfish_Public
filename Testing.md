@@ -39,3 +39,10 @@ NOTE: If your username contains a \ as in a Windows Domain replace the '\' with 
 #Running the tests
 Once you have completed everything above, you shouldn't have to do it again. 
 1. Run `npm test`
+
+#FAQ
+## I get an error "Failed to locate: CL.exe ..." during `npm install` ##
+Make sure the Visual Studio C++ compiler is installed. ("File -> New Project -> Visual C++ -> Install Visual C++ components" from Visual Studio or "Programing Languages->Visual C++" during the installation.)
+
+## I get an error "The Windows SDK version 8.1 was not found." during `npm install` ##
+Download and install the Windows 8.1 SDK from https://developer.microsoft.com/en-us/windows/downloads/windows-8-1-sdk

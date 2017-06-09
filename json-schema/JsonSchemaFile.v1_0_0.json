@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
     "title": "#JsonSchemaFile.v1_0_0.JsonSchemaFile",
     "$ref": "#/definitions/JsonSchemaFile",
     "definitions": {
@@ -132,8 +132,10 @@
                     "description": "If the schema is hosted on the service in an archive file, this is the name of the file within the archive.",
                     "longDescription": "The value of this property shall be the file name of the individual schema file within the archive file specified by the ArchiveUri property.  The file name shall conform to the format [SchemaType].[MajorVersion].[MinorVersion].json and be in conformance with the Redfish specification."
                 }
-            }
+            },
+            "description": "Location information for a schema file.",
+            "longDescription": "This type shall describe location information for a schema file."
         }
     },
-    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
+    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }

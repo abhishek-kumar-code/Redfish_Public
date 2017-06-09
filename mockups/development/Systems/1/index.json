@@ -136,14 +136,14 @@
     },
     "Oem": {
         "Contoso": {
-            "@odata.type": "http://Contoso.com/Schema#Contoso.ComputerSystem",
+            "@odata.type": "#Contoso.ComputerSystem",
             "ProductionLocation": {
                 "FacilityName": "PacWest Production Facility",
                 "Country": "USA"
             }
         },
         "Chipwise": {
-            "@odata.type": "http://Chipwise.com/Schema#Chipwise.ComputerSystem",
+            "@odata.type": "#Chipwise.ComputerSystem",
             "Style": "Executive"
         }
     }

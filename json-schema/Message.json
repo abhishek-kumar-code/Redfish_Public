@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
     "title": "#Message",
     "definitions": {
         "Message": {
@@ -18,8 +18,10 @@
                 }
             },
             "additionalProperties": false,
-            "properties": {}
+            "properties": {},
+            "description": "This type describes a Message returned by the Redfish service.",
+            "longDescription": "This type shall define a Message as described in the Redfish specification."
         }
     },
-    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
+    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }

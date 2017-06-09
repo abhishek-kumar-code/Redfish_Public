@@ -2,7 +2,7 @@
     "@Redfish.Copyright":"Copyright (c) 2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",    
     "@odata.context": "/redfish/v1/$metadata#Memory.Memory",
     "@odata.id": "/redfish/v1/Systems/4/Memory/2",
-    "@odata.type": "#Memory.v1_1_0.Memory",
+    "@odata.type": "#Memory.v1_2_0.Memory",
     "Name": "NVDIMM",
     "Id": "2",
     "MemoryType": "NVDIMM_N",
@@ -63,6 +63,12 @@
     "OperatingSpeedMhz": 2400,
     "VolatileRegionSizeLimitMiB": 8192,
     "PersistentRegionSizeLimitMiB": 8192,
+    "VolatileRegionNumberLimit" : 16,
+    "PersistentRegionNumberLimit" : 16,
+    "VolatileRegionSizeMaxMiB" : 16384,
+    "PersistentRegionSizeMaxMiB" : 16384,
+    "AllocationIncrementMiB": 1,
+    "AllocationAlignmentMiB": 8,
     "Regions": [
         {
             "RegionId": "1",

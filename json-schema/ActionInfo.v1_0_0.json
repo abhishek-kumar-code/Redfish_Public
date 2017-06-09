@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
     "title": "#ActionInfo.v1_0_0.ActionInfo",
     "$ref": "#/definitions/ActionInfo",
     "definitions": {
@@ -148,8 +148,10 @@
             },
             "required": [
                 "Name"
-            ]
+            ],
+            "description": "A parameter associated with the specified Redfish Action.",
+            "longDescription": "This property shall contain information about a specific parameter associated with a Redfish Action associated with this resource."
         }
     },
-    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
+    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }

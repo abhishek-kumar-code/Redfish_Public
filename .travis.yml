@@ -8,6 +8,7 @@ addons:
       - ubuntu-toolchain-r-test
     packages:
       - g++-4.8
+      - libxml2-utils
 sudo: false
 node_js:
   - "6.3"
@@ -19,3 +20,6 @@ cache:
   bundler: true
   directories:
   - node_modules # NPM packages
+script:
+  - xmllint --noout metadata/*.xml
+  - npm test

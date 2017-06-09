@@ -18,7 +18,7 @@
     },
     "Redundancy": [
         {
-            "@odata.id": "/redfish/v1/Managers/2#/Redundancy",
+            "@odata.id": "/redfish/v1/Managers/2#/Redundancy/0",
             "MemberId": "Redundancy",
             "Mode": "Failover",
             "MaxNumSupported": 2,
@@ -58,10 +58,10 @@
                 "GracefulRestart"
             ]
         },
-        "#Manager.v1_0_0.ForceFailover": {
+        "#Manager.ForceFailover": {
             "target": "/redfish/v1/Managers/2/Actions/Manager.ForceFailover"
         },
-        "#Manager.v1_0_0.ModifyRedundancySet": {
+        "#Manager.ModifyRedundancySet": {
             "target": "/redfish/v1/Managers/2/Actions/Manager.ModifyRedundancySet"
         },
         "Oem": {}

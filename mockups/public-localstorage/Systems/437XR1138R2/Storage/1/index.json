@@ -53,7 +53,7 @@
     },
     "Actions": {
         "#Storage.SetEncryptionKey": {
-            "Target": "/redfish/v1/Systems/437XR1138R2/Storage/1/Actions/Storage.SetEncryptionKey"
+            "target": "/redfish/v1/Systems/437XR1138R2/Storage/1/Actions/Storage.SetEncryptionKey"
         }
     },
     "@odata.context": "/redfish/v1/$metadata#Storage.Storage",

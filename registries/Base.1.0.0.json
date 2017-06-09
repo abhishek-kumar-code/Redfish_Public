@@ -144,7 +144,7 @@
         },
         "ActionParameterUnknown": {
             "Description": "Indicates that an action was submitted but a parameter supplied did not match any of the known parameters.",
-            "Message": "The action %1 was submitted with the invalid parameter %2.",
+            "Message": "The action %1 was submitted with with the invalid parameter %2.",
             "Severity": "Warning",
             "NumberOfArgs": 2,
             "ParamTypes": [
@@ -318,7 +318,7 @@
         },
         "AccountModified": {
             "Description": "Indicates that the account was successfully modified.",
-            "Message": "The account was successfully modified.",
+            "Message": "The account was successfully modifed.",
             "Severity": "OK",
             "NumberOfArgs": 0,
             "Resolution": "No resolution is required."
@@ -376,7 +376,7 @@
             "ParamTypes": [
                 "string"
             ],
-            "Resolution": "Place a valid resource at the URI or correct the URI and resubmit the request."
+            "Resolution": "Place a valid resource at thr URI or correct the URI and resubmit the request."
         },
         "ResourceAtUriInUnknownFormat": {
             "Description": "Indicates that the URI was valid but the resource or image at that URI was in a format not supported by the service.",
@@ -421,8 +421,8 @@
             "Resolution": "Change protocols or URIs. "
         },
         "AccessDenied": {
-            "Description": "Indicates that while attempting to access, connect to or transfer to/from another resource, the service denied access.",
-            "Message": "While attempting to establish a connection to %1, the service denied access.",
+            "Description": "Indicates that while attempting to access, connect to or transfer to/from another resource, the service was denied access.",
+            "Message": "While attempting to establish a connection to %1, the service was denied access.",
             "Severity": "Critical",
             "NumberOfArgs": 1,
             "ParamTypes": [

@@ -27,7 +27,7 @@
     },
     "Actions": {
         "#Volume.Initialize": {
-            "Target": "/redfish/v1/Systems/3/Storage/RAIDIntegrated/Volumes/1/Actions/Volume.Initialize",
+            "target": "/redfish/v1/Systems/3/Storage/RAIDIntegrated/Volumes/1/Actions/Volume.Initialize",
             "InitializeType@Redfish.AllowableValues": [
                 "Fast",
                 "Slow"

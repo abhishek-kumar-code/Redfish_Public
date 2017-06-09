@@ -1,0 +1,53 @@
+{
+    "@odata.type": "#Thermal.v1_2_0.Thermal",
+    "Name": "PartitionedServer Blade4 Thermal",
+    "Id": "PartitionedServerBlade4Thermal",
+    "Temperatures": [{
+            "@odata.id": "/redfish/v1/Chassis/Blade4/Thermal#/Temperatures/0",
+            "MemberId": "0",
+            "Name": "Blade Temp",
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK"
+            },
+            "ReadingCelsius": 62,
+            "UpperThresholdNonCritical": 75,
+            "UpperThresholdCritical": 90,
+            "UpperThresholdFatal": 95,
+            "LowerThresholdNonCritical": 42,
+            "LowerThresholdCritical": 5,
+            "LowerThresholdFatal": 42,
+            "MinReadingRange": 0,
+            "MaxReadingRange": 120,
+            "PhysicalContext": "ComputeBay",
+            "RelatedItem": [{
+                "@odata.id": "/redfish/v1/Chassis/Blade4"
+            }]
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/Blade4/Thermal#/Temperatures/1",
+            "MemberId": "2",
+            "Name": "Blade Intake Temp",
+            "SensorNumber": 44,
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK"
+            },
+            "ReadingCelsius": 25,
+            "UpperThresholdNonCritical": 30,
+            "UpperThresholdCritical": 40,
+            "UpperThresholdFatal": 50,
+            "LowerThresholdNonCritical": 10,
+            "LowerThresholdCritical": 5,
+            "LowerThresholdFatal": 0,
+            "MinReadingRange": 0,
+            "MaxReadingRange": 200,
+            "PhysicalContext": "Intake",
+            "RelatedItem": [{
+                "@odata.id": "/redfish/v1/Chassis/Blade4"
+            }]
+        }
+    ],
+    "@odata.context": "/redfish/v1/$metadata#Thermal.Thermal",
+    "@odata.id": "/redfish/v1/Chassis/Blade4/Thermal"
+}

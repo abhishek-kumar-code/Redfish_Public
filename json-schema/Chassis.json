@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
     "title": "#Chassis.Chassis",
     "$ref": "#/definitions/Chassis",
     "definitions": {
@@ -21,6 +21,9 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Chassis.v1_0_3.json#/definitions/Chassis"
                 },
                 {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Chassis.v1_0_4.json#/definitions/Chassis"
+                },
+                {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Chassis.v1_1_0.json#/definitions/Chassis"
                 },
                 {
@@ -30,10 +33,16 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Chassis.v1_1_3.json#/definitions/Chassis"
                 },
                 {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Chassis.v1_1_4.json#/definitions/Chassis"
+                },
+                {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Chassis.v1_2_0.json#/definitions/Chassis"
                 },
                 {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Chassis.v1_2_1.json#/definitions/Chassis"
+                },
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Chassis.v1_2_2.json#/definitions/Chassis"
                 },
                 {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Chassis.v1_3_0.json#/definitions/Chassis"
@@ -42,10 +51,19 @@
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Chassis.v1_3_1.json#/definitions/Chassis"
                 },
                 {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Chassis.v1_3_2.json#/definitions/Chassis"
+                },
+                {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Chassis.v1_4_0.json#/definitions/Chassis"
+                },
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Chassis.v1_4_1.json#/definitions/Chassis"
+                },
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Chassis.v1_5_0.json#/definitions/Chassis"
                 }
             ]
         }
     },
-    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
+    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }

@@ -1,0 +1,10 @@
+{
+    "@odata.context": "/redfish/v1/$metadata#StorageCollection.StorageCollection",
+    "@odata.id": "/redfish/v1/Systems/ComposedPartition3/Storage",
+    "@odata.type": "#StorageCollection.StorageCollection",
+    "Name": "Blade Storage Collection",
+    "Members@odata.count": 1,
+    "Members": [{
+        "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeStorageBlock8/Storage/1"
+    }]
+}

@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
     "title": "#SimpleStorage.v1_0_0.SimpleStorage",
     "$ref": "#/definitions/SimpleStorage",
     "definitions": {
@@ -53,7 +53,9 @@
             },
             "required": [
                 "Name"
-            ]
+            ],
+            "description": "A storage device such as a disk drive or optical media device.",
+            "longDescription": "This type shall describe a storage device visible to SimpleStorage."
         },
         "SimpleStorage": {
             "type": "object",
@@ -129,5 +131,5 @@
             "description": "This is the schema definition for the Simple Storage resource.  It represents the properties of a storage controller and its directly-attached devices."
         }
     },
-    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
+    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }

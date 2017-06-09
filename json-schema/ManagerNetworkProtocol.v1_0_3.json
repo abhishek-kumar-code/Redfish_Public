@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
     "title": "#ManagerNetworkProtocol.v1_0_3.ManagerNetworkProtocol",
     "$ref": "#/definitions/ManagerNetworkProtocol",
     "definitions": {
@@ -52,7 +52,9 @@
                     "description": "Indicates the protocol port.",
                     "longDescription": "The value of this property shall contain the port assigned for the protocol."
                 }
-            }
+            },
+            "description": "Settings for a network protocol associated with a manager.",
+            "longDescription": "This type shall describe information about a protocol setting for a manager."
         },
         "SSDProtocol": {
             "type": "object",
@@ -120,7 +122,9 @@
                     "description": "Indicates the scope for the IPv6 Notify messages for SSDP.",
                     "longDescription": "The value of this property shall contain the IPv6 scope used for multicast NOTIFY messages.  The valid enumerations are a subset of the available IPv6 Scope types."
                 }
-            }
+            },
+            "description": "Settings for a network protocol associated with a manager.",
+            "longDescription": "This type shall describe information about a protocol setting for a manager."
         },
         "ManagerNetworkProtocol": {
             "type": "object",
@@ -243,5 +247,5 @@
             "longDescription": "This object shall be used to represent the network service settings for the manager."
         }
     },
-    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
+    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }

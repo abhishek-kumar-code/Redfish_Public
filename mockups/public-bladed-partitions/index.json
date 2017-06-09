@@ -1,0 +1,38 @@
+{
+    "@odata.type": "#ServiceRoot.v1_2_0.ServiceRoot",
+    "@odata.context": "/redfish/v1/$metadata#ServiceRoot.ServiceRoot",
+    "@odata.id": "/redfish/v1/",
+    "Id": "MultiBladePartitionedServer-Root",
+    "Name": "Multiblade Enclosure Root Service",
+    "Description": "This service reports physically partitioned Systems within a MultiBlade Enclosure",
+    "RedfishVersion": "1.0.2",
+    "UUID": "0965e849-c110-4b85-8989-9102b950a5a5",
+    "Chassis": {
+        "@odata.id": "/redfish/v1/Chassis"
+    },
+    "Systems": {
+        "@odata.id": "/redfish/v1/Systems"
+    },
+    "Managers": {
+        "@odata.id": "/redfish/v1/Managers"
+    },
+    "Tasks": {
+        "@odata.id": "/redfish/v1/TaskService"
+    },
+    "SessionService": {
+        "@odata.id": "/redfish/v1/SessionService"
+    },
+    "AccountService": {
+        "@odata.id": "/redfish/v1/AccountService"
+    },
+    "EventService": {
+        "@odata.id": "/redfish/v1/EventService"
+    },
+    "Links": {
+        "Sessions": {
+            "@odata.id": "/redfish/v1/SessionService/Sessions"
+        }
+    },
+    "Oem": {},
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). All rights reserved."
+}

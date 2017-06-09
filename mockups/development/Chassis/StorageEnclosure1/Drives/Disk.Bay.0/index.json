@@ -29,7 +29,7 @@
     },
     "Actions": {
         "#Drive.SecureErase": {
-            "Target": "/redfish/v1/Chassis/StorageEnclosure1/Disk.Bay.0/Actions/Drive.SecureErase"
+            "target": "/redfish/v1/Chassis/StorageEnclosure1/Disk.Bay.0/Actions/Drive.SecureErase"
         }
     }
 }

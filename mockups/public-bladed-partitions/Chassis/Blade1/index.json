@@ -1,0 +1,53 @@
+{
+    "@odata.type": "#Chassis.v1_2_0.Chassis",
+    "Id": "Blade1",
+    "Name": "Blade 1",
+    "ChassisType": "Blade",
+    "SerialNumber": "RYM052",
+    "PartNumber": "166480-S23",
+    "Manufacturer": "Contoso",
+    "Model": "Constoto-2S-B",
+    "IndicatorLED": "Off",
+    "PowerState": "On",
+    "Status": {
+        "Health": "OK",
+        "State": "Enabled"
+    },
+    "Location": {
+        "Info": "DCTexas-Row10-Rack1-20U-Bay1"
+    },
+    "Thermal": {
+        "@odata.id": "/redfish/v1/Chassis/Blade1/Thermal"
+    },
+    "Links": {
+        "ContainedBy": {
+            "@odata.id": "/redfish/v1/Chassis/Enclosure"
+        },
+        "ComputerSystems": [{
+            "@odata.id": "/redfish/v1/Systems/ComposedPartition1"
+        }],
+        "CooledBy": [{
+                "@odata.id": "/redfish/v1/Chassis/Enclosure/Thermal#/Fans/0"
+            },
+            {
+                "@odata.id": "/redfish/v1/Chassis/Enclosure/Thermal#/Fans/1"
+            }
+        ],
+        "ManagedBy": [{
+                "@odata.id": "/redfish/v1/Managers/EncMgr1"
+            },
+            {
+                "@odata.id": "/redfish/v1/Managers/EncMgr2"
+            }
+        ],
+        "PoweredBy": [{
+                "@odata.id": "/redfish/v1/Chassis/Enclosure/Power#/PowerSupplies/0"
+            },
+            {
+                "@odata.id": "/redfish/v1/Chassis/Enclosure/Power#/PowerSupplies/1"
+            }
+        ]
+    },
+    "@odata.context": "/redfish/v1/$metadata#Chassis.Chassis",
+    "@odata.id": "/redfish/v1/Chassis/Blade1"
+}

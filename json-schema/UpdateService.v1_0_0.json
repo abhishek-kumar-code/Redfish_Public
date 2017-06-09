@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
     "title": "#UpdateService.v1_0_0.UpdateService",
     "$ref": "#/definitions/UpdateService",
     "definitions": {
@@ -152,12 +152,15 @@
                                 }
                             },
                             "additionalProperties": true,
-                            "properties": {}
+                            "properties": {},
+                            "description": "The available OEM specific actions for this resource.",
+                            "longDescription": "This type shall contain any additional OEM actions for this resource."
                         },
                         "#UpdateService.SimpleUpdate": {
                             "$ref": "#/definitions/SimpleUpdate"
                         }
                     },
+                    "longDescription": "This type shall contain the available actions for this resource.",
                     "description": "The Actions object contains the available custom actions on this resource."
                 },
                 "FirmwareInventory": {
@@ -187,5 +190,5 @@
             "longDescription": "This resource shall be used to represent an Update Service for a Redfish implementation. It represents the properties that affect the service itself."
         }
     },
-    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
+    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }

@@ -12,8 +12,8 @@
   <div class="preamble">
     <div class="logo"></div>
     <p>Document Identifier: <span class="dsp">DSP0266</span></p>
-    <p>Date: 2016-12-07</p>
-    <p>Version: <span class="version">1.1.0</span></p>
+    <p>Date: 2017-4-14</p>
+    <p>Version: <span class="version">1.2.0</span></p>
     
   </div>
   <h1 class="title">Redfish Scalable Platforms Management API Specification</h1>
@@ -24,7 +24,7 @@
   </div>
   <div class="document">
     
-    <p>Supersedes: 1.0.5</p>
+    <p>Supersedes: 1.1.0</p>
     
     <p>Document Class: Normative</p>
     <p>Document Status: <span class="status">Published</span></p>
@@ -33,7 +33,7 @@
   </div>
   <div class="copyright">
     <p>Copyright Notice</p>
-    <p>Copyright &copy; 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.
+    <p>Copyright &copy; 2014-2017 Distributed Management Task Force, Inc. (DMTF). All rights reserved.
   </div>
   <p>DMTF is a not-for-profit association of industry members dedicated to promoting enterprise and systems management and interoperability. Members and non-members may reproduce DMTF specifications and documents, provided that correct attribution is given. As DMTF specifications may be revised from time to time, the particular version and release date should always be noted.</p>
   <p>Implementation of certain elements of this standard or proposed standard may be subject to third party patent rights, including provisional patent rights (herein "patent rights"). DMTF makes no representations to users of the standard as to the existence of such rights, and is not responsible to recognize, disclose, or identify any or all such third party patent right, owners or claimants, nor for any incomplete or inaccurate identification or disclosure of such rights, owners or claimants. DMTF shall have no liability to any party, in any manner or circumstance, under any legal theory whatsoever, for failure to recognize, disclose, or identify any such third party patent rights, or for such party’s reliance on the standard or incorporation thereof in its product, protocols or testing procedures. DMTF shall have no liability to any party implementing such standard, whether such implementation is foreseeable or not, nor to any patent owner or claimant, and shall have no liability or responsibility for costs or losses incurred if a standard is withdrawn or modified after publication, and shall be indemnified and held harmless by any party implementing the standard from any and all claims of infringement by a patent owner for such implementations.</p>
@@ -41,7 +41,7 @@
   <p>This document’s normative language is English. Translation into other languages is permitted.</p>
 </div>
 <p id="toc-header">CONTENTS</p>
-<ul id="toc"><li><a href="#abstract">1. Abstract</a></li><li><a href="#normative-references">2. Normative references</a></li><li><a href="#terms-and-definitions">3. Terms and definitions</a></li><li><a href="#symbols-and-abbreviated-terms">4. Symbols and abbreviated terms</a></li><li><a href="#overview">5. Overview</a></li><ul><li><a href="#scope">5.1. Scope</a></li><li><a href="#goals">5.2. Goals</a></li><li><a href="#design-tenets">5.3. Design tenets</a></li><li><a href="#limitations">5.4. Limitations</a></li><li><a href="#additional-design-background-and-rationale">5.5. Additional design background and rationale</a></li><ul><li><a href="#rest-based">5.5.1. REST-based</a></li><li><a href="#follow-odata-conventions">5.5.2. Follow OData conventions</a></li><li><a href="#model-oriented">5.5.3. Model-oriented</a></li><li><a href="#separation-of-protocol-from-data-model">5.5.4. Separation of protocol from data model</a></li><li><a href="#hypermedia-api-service-endpoint">5.5.5. Hypermedia API service endpoint</a></li></ul><li><a href="#service-elements">5.6. Service elements</a></li><ul><li><a href="#synchronous-and-asynchronous-operation-support">5.6.1. Synchronous and asynchronous operation support</a></li><li><a href="#eventing-mechanism">5.6.2. Eventing mechanism</a></li><li><a href="#actions">5.6.3. Actions</a></li><li><a href="#service-entry-point-discovery">5.6.4. Service entry point discovery</a></li><li><a href="#remote-access-support">5.6.5. Remote access support</a></li></ul><li><a href="#security">5.7. Security</a></li></ul><li><a href="#protocol-details">6. Protocol details</a></li><ul><li><a href="#use-of-http">6.1. Use of HTTP</a></li><ul><li><a href="#uris">6.1.1. URIs</a></li><li><a href="#http-methods">6.1.2. HTTP methods</a></li><li><a href="#http-redirect">6.1.3. HTTP redirect</a></li><li><a href="#media-types">6.1.4. Media types</a></li><li><a href="#etags">6.1.5. ETags</a></li></ul><li><a href="#protocol-version">6.2. Protocol version</a></li><li><a href="#redfish-defined-uris-and-relative-uri-rules">6.3. Redfish-defined URIs and relative URI rules</a></li><li><a href="#requests">6.4. Requests</a></li><ul><li><a href="#request-headers">6.4.1. Request headers</a></li><li><a href="#read-requests-get-">6.4.2. Read requests (GET)</a></li><ul><li><a href="#service-root-request">6.4.2.1. Service root request</a></li><li><a href="#metadata-document-request">6.4.2.2. Metadata document request</a></li><li><a href="#odata-service-document-request">6.4.2.3. OData service document request</a></li><li><a href="#resource-retrieval-requests">6.4.2.4. Resource retrieval requests</a></li><ul><li><a href="#query-parameters">6.4.2.4.1. Query parameters</a></li><li><a href="#retrieving-resource-collections">6.4.2.4.2. Retrieving Resource Collections</a></li></ul></ul><li><a href="#head">6.4.3. HEAD</a></li><li><a href="#data-modification-requests">6.4.4. Data modification requests</a></li><ul><li><a href="#update-patch-">6.4.4.1. Update (PATCH)</a></li><li><a href="#replace-put-">6.4.4.2. Replace (PUT)</a></li><li><a href="#create-post-">6.4.4.3. Create (POST)</a></li><li><a href="#delete-delete-">6.4.4.4. Delete (DELETE)</a></li><li><a href="#actions-post-">6.4.4.5. Actions (POST)</a></li></ul></ul><li><a href="#responses">6.5. Responses</a></li><ul><li><a href="#response-headers">6.5.1. Response headers</a></li><ul><li><a href="#link-header">6.5.1.1. Link header</a></li></ul><li><a href="#status-codes">6.5.2. Status codes</a></li><li><a href="#metadata-responses">6.5.3. Metadata responses</a></li><ul><li><a href="#service-metadata">6.5.3.1. Service metadata</a></li><ul><li><a href="#referencing-other-schemas">6.5.3.1.1. Referencing other schemas</a></li><li><a href="#referencing-oem-extensions">6.5.3.1.2. Referencing OEM extensions</a></li><li><a href="#annotations">6.5.3.1.3. Annotations</a></li></ul><li><a href="#odata-service-document">6.5.3.2. OData Service Document</a></li></ul><li><a href="#resource-responses">6.5.4. Resource responses</a></li><ul><li><a href="#context-property">6.5.4.1. Context property</a></li><ul><li><a href="#select-list">6.5.4.1.1. Select list</a></li></ul><li><a href="#resource-identifier-property">6.5.4.2. Resource identifier property</a></li><li><a href="#type-property">6.5.4.3. Type property</a></li><li><a href="#etag-property">6.5.4.4. ETag property</a></li><li><a href="#primitive-properties">6.5.4.5. Primitive properties</a></li><ul><li><a href="#datetime-values">6.5.4.5.1. DateTime values</a></li></ul><li><a href="#structured-properties">6.5.4.6. Structured properties</a></li><li><a href="#actions-property">6.5.4.7. Actions property</a></li><ul><li><a href="#action-representation">6.5.4.7.1. Action representation</a></li><li><a href="#allowable-values">6.5.4.7.2. Allowable values</a></li></ul><li><a href="#links-property">6.5.4.8. Links property</a></li><ul><li><a href="#reference-to-a-single-related-resource">6.5.4.8.1. Reference to a single related resource</a></li><li><a href="#array-of-references-to-related-resources">6.5.4.8.2. Array of references to related resources</a></li></ul><li><a href="#oem-property">6.5.4.9. OEM property</a></li><li><a href="#partial-resource-results">6.5.4.10. Partial resource results</a></li><li><a href="#extended-information">6.5.4.11. Extended information</a></li><ul><li><a href="#extended-object-information">6.5.4.11.1. Extended object information</a></li><li><a href="#extended-property-information">6.5.4.11.2. Extended property information</a></li></ul><li><a href="#additional-annotations">6.5.4.12. Additional annotations</a></li></ul><li><a href="#resource-collection-responses">6.5.5. Resource Collection responses</a></li><ul><li><a href="#context-property">6.5.5.1. Context property</a></li><li><a href="#count-property">6.5.5.2. Count property</a></li><li><a href="#members-property">6.5.5.3. Members property</a></li><li><a href="#nextlink-property-and-partial-results">6.5.5.4. NextLink property and partial results</a></li><li><a href="#additional-annotations">6.5.5.5. Additional annotations</a></li></ul><li><a href="#error-responses">6.5.6. Error responses</a></li><ul><li><a href="#message-object">6.5.6.1. Message object</a></li></ul></ul></ul><li><a href="#data-model-and-schema">7. Data model and Schema</a></li><ul><li><a href="#schema-repository">7.1. Schema repository</a></li><ul><li><a href="#programmatic-access-to-schema-files">7.1.1. Programmatic access to schema files</a></li></ul><li><a href="#type-identifiers">7.2. Type identifiers</a></li><ul><li><a href="#type-identifiers-in-json">7.2.1. Type identifiers in JSON</a></li></ul><li><a href="#common-naming-conventions">7.3. Common naming conventions</a></li><li><a href="#localization-considerations">7.4. Localization considerations</a></li><li><a href="#schema-definition">7.5. Schema definition</a></li><ul><li><a href="#common-annotations">7.5.1. Common annotations</a></li><ul><li><a href="#description">7.5.1.1. Description</a></li><li><a href="#long-description">7.5.1.2. Long description</a></li></ul><li><a href="#schema-documents">7.5.2. Schema documents</a></li><ul><li><a href="#schema-modification-rules">7.5.2.1. Schema Modification Rules</a></li><li><a href="#schema-version-requirements">7.5.2.2. Schema Version Requirements</a></li><li><a href="#referencing-other-schemas">7.5.2.3. Referencing other schemas</a></li><li><a href="#namespace-definitions">7.5.2.4. Namespace definitions</a></li></ul><li><a href="#resource-type-definitions">7.5.3. Resource type definitions</a></li><li><a href="#resource-properties">7.5.4. Resource properties</a></li><ul><li><a href="#property-types">7.5.4.1. Property types</a></li><ul><li><a href="#primitive-types">7.5.4.1.1. Primitive types</a></li><li><a href="#structured-types">7.5.4.1.2. Structured types</a></li><li><a href="#enums">7.5.4.1.3. Enums</a></li><li><a href="#collections">7.5.4.1.4. Collections</a></li></ul><li><a href="#additional-properties">7.5.4.2. Additional properties</a></li><li><a href="#non-nullable-properties">7.5.4.3. Non-nullable properties</a></li><li><a href="#read-only-properties">7.5.4.4. Read-only properties</a></li><li><a href="#required-properties">7.5.4.5. Required properties</a></li><li><a href="#required-properties-on-create">7.5.4.6. Required properties on create</a></li><li><a href="#units-of-measure">7.5.4.7. Units of measure</a></li></ul><li><a href="#reference-properties">7.5.5. Reference properties</a></li><ul><li><a href="#contained-resources">7.5.5.1. Contained resources</a></li><li><a href="#expanded-references">7.5.5.2. Expanded references</a></li><li><a href="#expanded-resources">7.5.5.3. Expanded resources</a></li></ul><li><a href="#resource-actions">7.5.6. Resource actions</a></li><li><a href="#resource-extensibility">7.5.7. Resource extensibility</a></li><ul><li><a href="#oem-property">7.5.7.1. Oem property</a></li><li><a href="#oem-property-format-and-content">7.5.7.2. Oem property format and content</a></li><li><a href="#oem-property-naming">7.5.7.3. Oem property naming</a></li></ul><li><a href="#oem-property-examples">7.5.8. Oem property examples</a></li><ul><li><a href="#custom-actions">7.5.8.1. Custom actions</a></li><li><a href="#custom-annotations">7.5.8.2. Custom annotations</a></li></ul></ul><li><a href="#common-redfish-resource-properties">7.6. Common Redfish resource properties</a></li><ul><li><a href="#id">7.6.1. Id</a></li><li><a href="#name">7.6.2. Name</a></li><li><a href="#description">7.6.3. Description</a></li><li><a href="#status">7.6.4. Status</a></li><li><a href="#links">7.6.5. Links</a></li><li><a href="#members">7.6.6. Members</a></li><li><a href="#relateditem">7.6.7. RelatedItem</a></li><li><a href="#actions">7.6.8. Actions</a></li><li><a href="#oem">7.6.9. OEM</a></li></ul><li><a href="#redfish-resources">7.7. Redfish resources</a></li><ul><li><a href="#current-configuration">7.7.1. Current configuration</a></li><li><a href="#settings">7.7.2. Settings</a></li><li><a href="#services">7.7.3. Services</a></li><li><a href="#registry">7.7.4. Registry</a></li></ul><li><a href="#special-resource-situations">7.8. Special resource situations</a></li><ul><li><a href="#absent-resources">7.8.1. Absent resources</a></li><li><a href="#schema-variations">7.8.2. Schema variations</a></li></ul></ul><li><a href="#service-details">8. Service details</a></li><ul><li><a href="#eventing">8.1. Eventing</a></li><ul><li><a href="#event-message-subscription">8.1.1. Event message subscription</a></li><li><a href="#event-message-objects">8.1.2. Event message objects</a></li><li><a href="#subscription-cleanup">8.1.3. Subscription cleanup</a></li></ul><li><a href="#asynchronous-operations">8.2. Asynchronous operations</a></li><li><a href="#resource-tree-stability">8.3. Resource tree stability</a></li><li><a href="#discovery">8.4. Discovery</a></li><ul><li><a href="#upnp-compatibility">8.4.1. UPnP compatibility</a></li><li><a href="#usn-format">8.4.2. USN format</a></li><li><a href="#m-search-response">8.4.3. M-SEARCH response</a></li><li><a href="#notify-alive-and-shutdown-messages">8.4.4. Notify, alive, and shutdown messages</a></li></ul></ul><li><a href="#security">9. Security</a></li><ul><li><a href="#protocols">9.1. Protocols</a></li><ul><li><a href="#tls">9.1.1. TLS</a></li><li><a href="#cipher-suites">9.1.2. Cipher suites</a></li><li><a href="#certificates">9.1.3. Certificates</a></li></ul><li><a href="#authentication">9.2. Authentication</a></li><ul><li><a href="#http-header-security">9.2.1. HTTP header security</a></li><ul><li><a href="#http-redirect">9.2.1.1. HTTP redirect</a></li></ul><li><a href="#extended-error-handling">9.2.2. Extended error handling</a></li><li><a href="#http-header-authentication">9.2.3. HTTP header authentication</a></li><ul><li><a href="#basic-authentication">9.2.3.1. BASIC authentication</a></li><li><a href="#request-message-level-authentication">9.2.3.2. Request/Message level authentication</a></li></ul><li><a href="#session-management">9.2.4. Session Management</a></li><ul><li><a href="#session-lifecycle-management">9.2.4.1. Session lifecycle management</a></li><li><a href="#redfish-login-sessions">9.2.4.2. Redfish login sessions</a></li><li><a href="#session-login">9.2.4.3. Session login</a></li><li><a href="#x-auth-token-http-header">9.2.4.4. X-Auth-Token HTTP header</a></li><li><a href="#session-lifetime">9.2.4.5. Session lifetime</a></li><li><a href="#session-termination-or-logout">9.2.4.6. Session termination or logout</a></li></ul><li><a href="#accountservice">9.2.5. AccountService</a></li><li><a href="#async-tasks">9.2.6. Async tasks</a></li><li><a href="#event-subscriptions">9.2.7. Event subscriptions</a></li><li><a href="#privilege-model-authorization">9.2.8. Privilege model/Authorization</a></li><li><a href="#redfish-service-operation-to-privilege-mapping">9.2.9. Redfish Service Operation to Privilege Mapping</a></li><ul><li><a href="#why-specify-operation-to-privilege-mapping">9.2.9.1. Why specify Operation to Privilege Mapping</a></li><li><a href="#representing-operation-to-privilege-mappings">9.2.9.2. Representing Operation to Privilege Mappings</a></li><li><a href="#operationmap-syntax">9.2.9.3. OperationMap Syntax</a></li><li><a href="#mapping-overrides-syntax">9.2.9.4. Mapping Overrides Syntax</a></li><li><a href="#property-override-example">9.2.9.5. Property Override Example</a></li><li><a href="#subordinate-override">9.2.9.6. Subordinate Override</a></li><li><a href="#resourceuri-override">9.2.9.7. ResourceURI Override</a></li><li><a href="#privilege-and-and-or-syntax">9.2.9.8. Privilege AND and OR Syntax</a></li></ul></ul></ul><li><a href="#redfish-host-interface">10. Redfish Host Interface</a></li><li><a href="#annex-a-informative-">11. ANNEX A (informative)</a></li><ul><li><a href="#change-log">11.1. Change log</a></li></ul></ul><style scoped="">.hljs{display:block;overflow-x:auto;padding:.5em;color:#333;background:#f8f8f8}.hljs-comment,.hljs-quote{color:#998;font-style:italic}.hljs-keyword,.hljs-selector-tag,.hljs-subst{color:#333;font-weight:700}.hljs-literal,.hljs-number,.hljs-tag .hljs-attr,.hljs-template-variable,.hljs-variable{color:teal}.hljs-doctag,.hljs-string{color:#d14}.hljs-section,.hljs-selector-id,.hljs-title{color:#900;font-weight:700}.hljs-subst{font-weight:400}.hljs-class .hljs-title,.hljs-type{color:#458;font-weight:700}.hljs-attribute,.hljs-name,.hljs-tag{color:navy;font-weight:400}.hljs-link,.hljs-regexp{color:#009926}.hljs-bullet,.hljs-symbol{color:#990073}.hljs-built_in,.hljs-builtin-name{color:#0086b3}.hljs-meta{color:#999;font-weight:700}.hljs-deletion{background:#fdd}.hljs-addition{background:#dfd}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:700}</style><h1 id="foreword">Foreword</h1>
+<ul id="toc"><li><a href="#abstract">1. Abstract</a></li><li><a href="#normative-references">2. Normative references</a></li><li><a href="#terms-and-definitions">3. Terms and definitions</a></li><li><a href="#symbols-and-abbreviated-terms">4. Symbols and abbreviated terms</a></li><li><a href="#overview">5. Overview</a></li><ul><li><a href="#scope">5.1. Scope</a></li><li><a href="#goals">5.2. Goals</a></li><li><a href="#design-tenets">5.3. Design tenets</a></li><li><a href="#limitations">5.4. Limitations</a></li><li><a href="#additional-design-background-and-rationale">5.5. Additional design background and rationale</a></li><ul><li><a href="#rest-based">5.5.1. REST-based</a></li><li><a href="#follow-odata-conventions">5.5.2. Follow OData conventions</a></li><li><a href="#model-oriented">5.5.3. Model-oriented</a></li><li><a href="#separation-of-protocol-from-data-model">5.5.4. Separation of protocol from data model</a></li><li><a href="#hypermedia-api-service-endpoint">5.5.5. Hypermedia API service endpoint</a></li></ul><li><a href="#service-elements">5.6. Service elements</a></li><ul><li><a href="#synchronous-and-asynchronous-operation-support">5.6.1. Synchronous and asynchronous operation support</a></li><li><a href="#eventing-mechanism">5.6.2. Eventing mechanism</a></li><li><a href="#actions">5.6.3. Actions</a></li><li><a href="#service-entry-point-discovery">5.6.4. Service entry point discovery</a></li><li><a href="#remote-access-support">5.6.5. Remote access support</a></li></ul><li><a href="#security">5.7. Security</a></li></ul><li><a href="#protocol-details">6. Protocol details</a></li><ul><li><a href="#use-of-http">6.1. Use of HTTP</a></li><ul><li><a href="#uris">6.1.1. URIs</a></li><li><a href="#http-methods">6.1.2. HTTP methods</a></li><li><a href="#http-redirect">6.1.3. HTTP redirect</a></li><li><a href="#media-types">6.1.4. Media types</a></li><li><a href="#etags">6.1.5. ETags</a></li></ul><li><a href="#protocol-version">6.2. Protocol version</a></li><li><a href="#redfish-defined-uris-and-relative-uri-rules">6.3. Redfish-defined URIs and relative URI rules</a></li><li><a href="#requests">6.4. Requests</a></li><ul><li><a href="#request-headers">6.4.1. Request headers</a></li><li><a href="#read-requests-get-">6.4.2. Read requests (GET)</a></li><ul><li><a href="#service-root-request">6.4.2.1. Service root request</a></li><li><a href="#metadata-document-request">6.4.2.2. Metadata document request</a></li><li><a href="#odata-service-document-request">6.4.2.3. OData service document request</a></li><li><a href="#resource-retrieval-requests">6.4.2.4. Resource retrieval requests</a></li><ul><li><a href="#query-parameters">6.4.2.4.1. Query parameters</a></li><li><a href="#retrieving-resource-collections">6.4.2.4.2. Retrieving Resource Collections</a></li></ul></ul><li><a href="#head">6.4.3. HEAD</a></li><li><a href="#data-modification-requests">6.4.4. Data modification requests</a></li><ul><li><a href="#update-patch-">6.4.4.1. Update (PATCH)</a></li><li><a href="#replace-put-">6.4.4.2. Replace (PUT)</a></li><li><a href="#create-post-">6.4.4.3. Create (POST)</a></li><li><a href="#delete-delete-">6.4.4.4. Delete (DELETE)</a></li><li><a href="#actions-post-">6.4.4.5. Actions (POST)</a></li></ul></ul><li><a href="#responses">6.5. Responses</a></li><ul><li><a href="#response-headers">6.5.1. Response headers</a></li><ul><li><a href="#link-header">6.5.1.1. Link header</a></li></ul><li><a href="#status-codes">6.5.2. Status codes</a></li><li><a href="#metadata-responses">6.5.3. Metadata responses</a></li><ul><li><a href="#service-metadata">6.5.3.1. Service metadata</a></li><ul><li><a href="#referencing-other-schemas">6.5.3.1.1. Referencing other schemas</a></li><li><a href="#referencing-oem-extensions">6.5.3.1.2. Referencing OEM extensions</a></li><li><a href="#annotations">6.5.3.1.3. Annotations</a></li></ul><li><a href="#odata-service-document">6.5.3.2. OData Service Document</a></li></ul><li><a href="#resource-responses">6.5.4. Resource responses</a></li><ul><li><a href="#context-property">6.5.4.1. Context property</a></li><ul><li><a href="#select-list">6.5.4.1.1. Select list</a></li></ul><li><a href="#resource-identifier-property">6.5.4.2. Resource identifier property</a></li><li><a href="#type-property">6.5.4.3. Type property</a></li><li><a href="#etag-property">6.5.4.4. ETag property</a></li><li><a href="#primitive-properties">6.5.4.5. Primitive properties</a></li><ul><li><a href="#datetime-values">6.5.4.5.1. DateTime values</a></li></ul><li><a href="#structured-properties">6.5.4.6. Structured properties</a></li><li><a href="#actions-property">6.5.4.7. Actions property</a></li><ul><li><a href="#action-representation">6.5.4.7.1. Action representation</a></li><li><a href="#allowable-values">6.5.4.7.2. Allowable values</a></li></ul><li><a href="#links-property">6.5.4.8. Links property</a></li><ul><li><a href="#reference-to-a-single-related-resource">6.5.4.8.1. Reference to a single related resource</a></li><li><a href="#array-of-references-to-related-resources">6.5.4.8.2. Array of references to related resources</a></li></ul><li><a href="#oem-property">6.5.4.9. OEM property</a></li><li><a href="#partial-resource-results">6.5.4.10. Partial resource results</a></li><li><a href="#extended-information">6.5.4.11. Extended information</a></li><ul><li><a href="#extended-object-information">6.5.4.11.1. Extended object information</a></li><li><a href="#extended-property-information">6.5.4.11.2. Extended property information</a></li></ul><li><a href="#additional-annotations">6.5.4.12. Additional annotations</a></li></ul><li><a href="#resource-collection-responses">6.5.5. Resource Collection responses</a></li><ul><li><a href="#context-property">6.5.5.1. Context property</a></li><li><a href="#count-property">6.5.5.2. Count property</a></li><li><a href="#members-property">6.5.5.3. Members property</a></li><li><a href="#nextlink-property-and-partial-results">6.5.5.4. NextLink property and partial results</a></li><li><a href="#additional-annotations">6.5.5.5. Additional annotations</a></li></ul><li><a href="#error-responses">6.5.6. Error responses</a></li><ul><li><a href="#message-object">6.5.6.1. Message object</a></li></ul></ul></ul><li><a href="#data-model-and-schema">7. Data model and Schema</a></li><ul><li><a href="#schema-repository">7.1. Schema repository</a></li><ul><li><a href="#programmatic-access-to-schema-files">7.1.1. Programmatic access to schema files</a></li></ul><li><a href="#type-identifiers">7.2. Type identifiers</a></li><ul><li><a href="#type-identifiers-in-json">7.2.1. Type identifiers in JSON</a></li></ul><li><a href="#common-naming-conventions">7.3. Common naming conventions</a></li><li><a href="#localization-considerations">7.4. Localization considerations</a></li><li><a href="#schema-definition">7.5. Schema definition</a></li><ul><li><a href="#common-annotations">7.5.1. Common annotations</a></li><ul><li><a href="#description">7.5.1.1. Description</a></li><li><a href="#long-description">7.5.1.2. Long description</a></li></ul><li><a href="#schema-documents">7.5.2. Schema documents</a></li><ul><li><a href="#schema-modification-rules">7.5.2.1. Schema Modification Rules</a></li><li><a href="#schema-version-requirements">7.5.2.2. Schema Version Requirements</a></li><li><a href="#referencing-other-schemas">7.5.2.3. Referencing other schemas</a></li><li><a href="#namespace-definitions">7.5.2.4. Namespace definitions</a></li></ul><li><a href="#resource-type-definitions">7.5.3. Resource type definitions</a></li><li><a href="#resource-properties">7.5.4. Resource properties</a></li><ul><li><a href="#property-types">7.5.4.1. Property types</a></li><ul><li><a href="#primitive-types">7.5.4.1.1. Primitive types</a></li><li><a href="#structured-types">7.5.4.1.2. Structured types</a></li><li><a href="#enums">7.5.4.1.3. Enums</a></li><li><a href="#collections">7.5.4.1.4. Collections</a></li></ul><li><a href="#additional-properties">7.5.4.2. Additional properties</a></li><li><a href="#non-nullable-properties">7.5.4.3. Non-nullable properties</a></li><li><a href="#read-only-properties">7.5.4.4. Read-only properties</a></li><li><a href="#required-properties">7.5.4.5. Required properties</a></li><li><a href="#required-properties-on-create">7.5.4.6. Required properties on create</a></li><li><a href="#units-of-measure">7.5.4.7. Units of measure</a></li></ul><li><a href="#reference-properties">7.5.5. Reference properties</a></li><ul><li><a href="#contained-resources">7.5.5.1. Contained resources</a></li><li><a href="#expanded-references">7.5.5.2. Expanded references</a></li><li><a href="#expanded-resources">7.5.5.3. Expanded resources</a></li></ul><li><a href="#resource-actions">7.5.6. Resource actions</a></li><li><a href="#resource-extensibility">7.5.7. Resource extensibility</a></li><ul><li><a href="#oem-property">7.5.7.1. Oem property</a></li><li><a href="#oem-property-format-and-content">7.5.7.2. Oem property format and content</a></li><li><a href="#oem-property-naming">7.5.7.3. Oem property naming</a></li></ul><li><a href="#oem-property-examples">7.5.8. Oem property examples</a></li><ul><li><a href="#custom-actions">7.5.8.1. Custom actions</a></li><li><a href="#custom-annotations">7.5.8.2. Custom annotations</a></li></ul></ul><li><a href="#common-redfish-resource-properties">7.6. Common Redfish resource properties</a></li><ul><li><a href="#id">7.6.1. Id</a></li><li><a href="#name">7.6.2. Name</a></li><li><a href="#description">7.6.3. Description</a></li><li><a href="#status">7.6.4. Status</a></li><li><a href="#links">7.6.5. Links</a></li><li><a href="#members">7.6.6. Members</a></li><li><a href="#relateditem">7.6.7. RelatedItem</a></li><li><a href="#actions">7.6.8. Actions</a></li><li><a href="#oem">7.6.9. OEM</a></li></ul><li><a href="#redfish-resources">7.7. Redfish resources</a></li><ul><li><a href="#current-configuration">7.7.1. Current configuration</a></li><li><a href="#settings">7.7.2. Settings</a></li><li><a href="#services">7.7.3. Services</a></li><li><a href="#registry">7.7.4. Registry</a></li></ul><li><a href="#special-resource-situations">7.8. Special resource situations</a></li><ul><li><a href="#absent-resources">7.8.1. Absent resources</a></li><li><a href="#schema-variations">7.8.2. Schema variations</a></li></ul></ul><li><a href="#service-details">8. Service details</a></li><ul><li><a href="#eventing">8.1. Eventing</a></li><ul><li><a href="#event-message-subscription">8.1.1. Event message subscription</a></li><li><a href="#event-message-objects">8.1.2. Event message objects</a></li><li><a href="#subscription-cleanup">8.1.3. Subscription cleanup</a></li></ul><li><a href="#asynchronous-operations">8.2. Asynchronous operations</a></li><li><a href="#resource-tree-stability">8.3. Resource tree stability</a></li><li><a href="#discovery">8.4. Discovery</a></li><ul><li><a href="#upnp-compatibility">8.4.1. UPnP compatibility</a></li><li><a href="#usn-format">8.4.2. USN format</a></li><li><a href="#m-search-response">8.4.3. M-SEARCH response</a></li><li><a href="#notify-alive-and-shutdown-messages">8.4.4. Notify, alive, and shutdown messages</a></li></ul></ul><li><a href="#security">9. Security</a></li><ul><li><a href="#protocols">9.1. Protocols</a></li><ul><li><a href="#tls">9.1.1. TLS</a></li><li><a href="#cipher-suites">9.1.2. Cipher suites</a></li><li><a href="#certificates">9.1.3. Certificates</a></li></ul><li><a href="#authentication">9.2. Authentication</a></li><ul><li><a href="#http-header-security">9.2.1. HTTP header security</a></li><ul><li><a href="#http-redirect">9.2.1.1. HTTP redirect</a></li></ul><li><a href="#extended-error-handling">9.2.2. Extended error handling</a></li><li><a href="#http-header-authentication">9.2.3. HTTP header authentication</a></li><ul><li><a href="#basic-authentication">9.2.3.1. BASIC authentication</a></li><li><a href="#request-message-level-authentication">9.2.3.2. Request/Message level authentication</a></li></ul><li><a href="#session-management">9.2.4. Session Management</a></li><ul><li><a href="#session-lifecycle-management">9.2.4.1. Session lifecycle management</a></li><li><a href="#redfish-login-sessions">9.2.4.2. Redfish login sessions</a></li><li><a href="#session-login">9.2.4.3. Session login</a></li><li><a href="#x-auth-token-http-header">9.2.4.4. X-Auth-Token HTTP header</a></li><li><a href="#session-lifetime">9.2.4.5. Session lifetime</a></li><li><a href="#session-termination-or-logout">9.2.4.6. Session termination or logout</a></li></ul><li><a href="#accountservice">9.2.5. AccountService</a></li><li><a href="#async-tasks">9.2.6. Async tasks</a></li><li><a href="#event-subscriptions">9.2.7. Event subscriptions</a></li><li><a href="#privilege-model-authorization">9.2.8. Privilege model/Authorization</a></li><li><a href="#redfish-service-operation-to-privilege-mapping">9.2.9. Redfish Service Operation to Privilege Mapping</a></li><ul><li><a href="#why-specify-operation-to-privilege-mapping">9.2.9.1. Why specify Operation to Privilege Mapping</a></li><li><a href="#representing-operation-to-privilege-mappings">9.2.9.2. Representing Operation to Privilege Mappings</a></li><li><a href="#operationmap-syntax">9.2.9.3. OperationMap Syntax</a></li><li><a href="#mapping-overrides-syntax">9.2.9.4. Mapping Overrides Syntax</a></li><li><a href="#property-override-example">9.2.9.5. Property Override Example</a></li><li><a href="#subordinate-override">9.2.9.6. Subordinate Override</a></li><li><a href="#resourceuri-override">9.2.9.7. ResourceURI Override</a></li><li><a href="#privilege-and-and-or-syntax">9.2.9.8. Privilege AND and OR Syntax</a></li></ul></ul></ul><li><a href="#redfish-host-interface">10. Redfish Host Interface</a></li><li><a href="#redfish-composability">11. Redfish Composability</a></li><ul><li><a href="#composition-requests">11.1. Composition Requests</a></li><ul><li><a href="#specific-composition">11.1.1. Specific Composition</a></li></ul></ul><li><a href="#annex-a-informative-">12. ANNEX A (informative)</a></li><ul><li><a href="#change-log">12.1. Change log</a></li></ul></ul><style scoped="">.hljs{display:block;overflow-x:auto;padding:.5em;color:#333;background:#f8f8f8}.hljs-comment,.hljs-quote{color:#998;font-style:italic}.hljs-keyword,.hljs-selector-tag,.hljs-subst{color:#333;font-weight:700}.hljs-literal,.hljs-number,.hljs-tag .hljs-attr,.hljs-template-variable,.hljs-variable{color:teal}.hljs-doctag,.hljs-string{color:#d14}.hljs-section,.hljs-selector-id,.hljs-title{color:#900;font-weight:700}.hljs-subst{font-weight:400}.hljs-class .hljs-title,.hljs-type{color:#458;font-weight:700}.hljs-attribute,.hljs-name,.hljs-tag{color:navy;font-weight:400}.hljs-link,.hljs-regexp{color:#009926}.hljs-bullet,.hljs-symbol{color:#990073}.hljs-built_in,.hljs-builtin-name{color:#0086b3}.hljs-meta{color:#999;font-weight:700}.hljs-deletion{background:#fdd}.hljs-addition{background:#dfd}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:700}</style><h1 id="foreword">Foreword</h1>
 <p>The Redfish Scalable Platforms Management API ("Redfish") was prepared by the Scalable Platforms Management Forum of the DMTF.</p>
 <p>DMTF is a not-for-profit association of industry members dedicated to promoting enterprise and systems management and interoperability. For information about the DMTF, see <a href="http://www.dmtf.org">http://www.dmtf.org</a>.</p>
 <h1 id="acknowledgments">Acknowledgments</h1>
@@ -67,6 +67,7 @@
 <li>Chris Hoffman - Emerson Network Power</li>
 <li>Steven Krig - Intel Corporation</li>
 <li>John Leung - Intel Corporation</li>
+<li>Jagan Molleti - Dell Inc.</li>
 <li>Milena Natanov - Microsoft Corporation</li>
 <li>Michael Pizzo - Microsoft Corporation</li>
 <li>Chris Poblete - Dell Inc.</li>
@@ -113,7 +114,7 @@
 <li><a id="UCUM">The Unified Code for Units of Measure</a>.  <a href="http://www.unitsofmeasure.org/ucum.html" title="http://www.unitsofmeasure.org/ucum.html">http://www.unitsofmeasure.org/ucum.html</a></li>
 <li><a id="W3C-CORS">W3C Recommendation of Cross-Origin Resource Sharing</a>. 16 January 2014. <a href="http://www.w3.org/TR/cors" title="http://www.w3.org/TR/cors/">http://www.w3.org/TR/cors/</a></li>
 <li><a id="SNIA-TLS">SNIA TLS Specification for Storage Systems</a>. 20 November 2014. <a href="http://www.snia.org/tls/" title="http://www.snia.org/tls/">http://www.snia.org/tls/</a></li>
-<li><a id="DSP0270">DMTF DSP0270</a> Redfish Host Interface Specification, [<a href="http://www.dmtf.org/sites/default/files/standards/documents/DSP0270_1.0.pdf">http://www.dmtf.org/sites/default/files/standards/documents/DSP0270_1.0.pdf</a>] (<a href="http://www.dmtf.org/sites/default/files/standards/documents/DSP0270_1.0.pdf">http://www.dmtf.org/sites/default/files/standards/documents/DSP0270_1.0.pdf</a> "<a href="http://www.dmtf.org/sites/default/files/standards/documents/DSP0270_1.0.pdf">http://www.dmtf.org/sites/default/files/standards/documents/DSP0270_1.0.pdf</a>")</li>
+<li><a id="DSP0270">DMTF DSP0270</a> Redfish Host Interface Specification, <a href="http://www.dmtf.org/sites/default/files/standards/documents/DSP0270_1.0.pdf" title="http://www.dmtf.org/sites/default/files/standards/documents/DSP0270_1.0.pdf">http://www.dmtf.org/sites/default/files/standards/documents/DSP0270_1.0.pdf</a></li>
 </ul>
 <h2 id="terms-and-definitions">3. Terms and definitions</h2>
 <p>In this document, some terms have a specific meaning beyond the normal English meaning. Those terms are defined in this clause.</p>
@@ -484,7 +485,6 @@
 </ul>
 <p>Clients may request compression by specifying an <a href="#request-headers">Accept-Encoding header</a> in the request.</p>
 <ul>
-<li>Responses to GET requests shall only be compressed if requested by the client.</li>
 <li>Services should support gzip compression when requested by the client.</li>
 </ul>
 <h4 id="etags">6.1.5. ETags</h4>
@@ -822,33 +822,35 @@
 <p>The first parameter of a bound function is the resource on which the action is being invoked. The remaining parameters are represented as name/value pairs in the body of the request.</p>
 <p>Clients can query a resource directly to determine the <a href="#actions-property">actions</a> that are available as well as <a href="#allowable-values">valid parameter values</a> for those actions.  Some parameter information may require the client to examine the Redfish Schema corresponding to the resource.</p>
 <p>For instance, if a Redfish Schema document <code>http://redfish.dmtf.org/schemas/v1/ComputerSystem_v1.xml</code> defines a Reset action in the <code>ComputerSystem</code> namespace, bound to the <code>ComputerSystem.v1_0_0.Actions</code> type, such as this example:</p>
-<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">Schema</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"ComputerSystem"</span>&gt;</span>
-  ...
-  <span class="hljs-tag">&lt;<span class="hljs-name">Action</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"Reset"</span> <span class="hljs-attr">IsBound</span>=<span class="hljs-string">"true"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">Parameter</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"Resource"</span> <span class="hljs-attr">Type</span>=<span class="hljs-string">"ComputerSystem.v1_0_0.Actions"</span>/&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">Parameter</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"ResetType"</span> <span class="hljs-attr">Type</span>=<span class="hljs-string">"Resource.ResetType"</span>/&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">Action</span>&gt;</span>
-  ...
-<span class="hljs-tag">&lt;/<span class="hljs-name">Schema</span>&gt;</span>
+<pre><code class="lang-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">Schema</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"ComputerSystem"</span>&gt;</span>
+    ...
+    <span class="hljs-tag">&lt;<span class="hljs-name">Action</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"Reset"</span> <span class="hljs-attr">IsBound</span>=<span class="hljs-string">"true"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">Parameter</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"Resource"</span> <span class="hljs-attr">Type</span>=<span class="hljs-string">"ComputerSystem.v1_0_0.Actions"</span>/&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">Parameter</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"ResetType"</span> <span class="hljs-attr">Type</span>=<span class="hljs-string">"Resource.ResetType"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">Action</span>&gt;</span>
+    ...
+  <span class="hljs-tag">&lt;/<span class="hljs-name">Schema</span>&gt;</span>
 </code></pre>
 <p>And a computer system resource contains an <a href="#actions-property">Actions</a> property such as this:</p>
-<pre><code class="lang-json">...
-<span class="hljs-attr">"Actions"</span>: {
-    <span class="hljs-attr">"#ComputerSystem.Reset"</span>: {
-        <span class="hljs-attr">"target"</span>:<span class="hljs-string">"/redfish/v1/Systems/1/Actions/ComputerSystem.Reset"</span>,
-        <span class="hljs-attr">"ResetType@Redfish.AllowableValues"</span>: [
-            <span class="hljs-string">"On"</span>,
-            <span class="hljs-string">"ForceOff"</span>,
-            <span class="hljs-string">"GracefulRestart"</span>,
-            <span class="hljs-string">"GracefulShutdown"</span>,
-            <span class="hljs-string">"ForceRestart"</span>,
-            <span class="hljs-string">"Nmi"</span>,
-            <span class="hljs-string">"ForceOn"</span>,
-            <span class="hljs-string">"PushPowerButton"</span>
-        ]
-    }
+<pre><code class="lang-json">{
+    "Actions": {
+        "#ComputerSystem.Reset": {
+            "target":"/redfish/v1/Systems/1/Actions/ComputerSystem.Reset",
+            "ResetType@Redfish.AllowableValues": [
+                "On",
+                "ForceOff",
+                "GracefulRestart",
+                "GracefulShutdown",
+                "ForceRestart",
+                "Nmi",
+                "ForceOn",
+                "PushPowerButton"
+            ]
+        }
+    },
+    ...
 }
-...</code></pre>
+</code></pre>
 <p>Then the following would represent a possible request for the Action:</p>
 <pre><code class="lang-http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/redfish/v1/Systems/1/Actions/ComputerSystem.Reset</span> HTTP/1.1
 <span class="hljs-attribute">Content-Type</span>: application/json;charset=utf-8
@@ -995,7 +997,7 @@ returned with a <code>rel=describedby</code>.  URLs of the JSON Schema for an an
 <li>Note that the URL can reference an unversioned JSON Schema (since the @odata.type in the resource will indicate the appropriate version) or reference the versioned JSON Schema (which according to previous normative statements would need to match the version specified in the @odata.type property of the resource).</li>
 </ul>
 <pre><code class="lang-http"><span class="hljs-attribute">Link</span>: &lt;/redfish/v1/AccountService/Roles/Administrator&gt;; path=/Links/Role
-<span class="hljs-attribute">Link</span>: &lt;http://redfish.dmtf.org/schemas/Settings.json&gt;   
+<span class="hljs-attribute">Link</span>: &lt;http://redfish.dmtf.org/schemas/Settings.json&gt;
 <span class="hljs-attribute">Link</span>: &lt;/redfish/v1/JsonSchemas/ManagerAccount.v1_0_2.json&gt;; rel=describedby
 </code></pre>
 <p>Link header(s) shall be returned on HEAD and a Link header satisfying
@@ -1113,59 +1115,59 @@ returned with a <code>rel=describedby</code>.  URLs of the JSON Schema for an an
 <p>Metadata describes resources, Resource Collections, capabilities and service-dependent behavior to generic consumers, including OData client tools and applications with no specific understanding of this specification. Clients are not required to request metadata if they already have sufficient understanding of the target service; for example, to request and interpret a JSON representation of a resource defined in this specification.</p>
 <h5 id="service-metadata">6.5.3.1. Service metadata</h5>
 <p>The service metadata describes top-level resources and resource types of the service according to <a href="#OData-CSDL">OData-Schema</a>. The Redfish Service Metadata is represented as an XML document with a root element named "Edmx", defined in the <a href="http://docs.oasis-open.org/odata/ns/edmx">http://docs.oasis-open.org/odata/ns/edmx</a>" namespace, and with an OData Version attribute equal to "4.0".</p>
-<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">edmx:Edmx</span> <span class="hljs-attr">xmlns:edmx</span>=<span class="hljs-string">"http://docs.oasis-open.org/odata/ns/edmx"</span> <span class="hljs-attr">Version</span>=<span class="hljs-string">"4.0"</span>&gt;</span>
- <span class="hljs-comment">&lt;!-- edmx:Reference and edmx:Schema elements go here --&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">edmx:Edmx</span>&gt;</span>
+<pre><code class="lang-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">edmx:Edmx</span> <span class="hljs-attr">xmlns:edmx</span>=<span class="hljs-string">"http://docs.oasis-open.org/odata/ns/edmx"</span> <span class="hljs-attr">Version</span>=<span class="hljs-string">"4.0"</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- edmx:Reference and edmx:Schema elements go here --&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">edmx:Edmx</span>&gt;</span>
 </code></pre>
 <h6 id="referencing-other-schemas">6.5.3.1.1. Referencing other schemas</h6>
 <p>The service metadata shall include the namespaces for each of the Redfish resource types, along with the "RedfishExtensions.v1_0_0" namespace. These references may use the standard URI for the hosted Redfish Schema definitions (i.e., on <a href="http://redfish.dmtf.org/schemas">http://redfish.dmtf.org/schemas</a>) or a URI to a local version of the Redfish Schema that shall be identical to the hosted version.</p>
-<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">edmx:Reference</span> <span class="hljs-attr">Uri</span>=<span class="hljs-string">"http://redfish.dmtf.org/schemas/v1/AccountService_v1.xml"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">edmx:Include</span> <span class="hljs-attr">Namespace</span>=<span class="hljs-string">"AccountService"</span>/&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">edmx:Include</span> <span class="hljs-attr">Namespace</span>=<span class="hljs-string">"AccountService.v1_0_0"</span>/&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">edmx:Reference</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">edmx:Reference</span> <span class="hljs-attr">Uri</span>=<span class="hljs-string">"http://redfish.dmtf.org/schemas/v1/ServiceRoot_v1.xml"</span>&gt;</span>
+<pre><code class="lang-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">edmx:Reference</span> <span class="hljs-attr">Uri</span>=<span class="hljs-string">"http://redfish.dmtf.org/schemas/v1/AccountService_v1.xml"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">edmx:Include</span> <span class="hljs-attr">Namespace</span>=<span class="hljs-string">"AccountService"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">edmx:Include</span> <span class="hljs-attr">Namespace</span>=<span class="hljs-string">"AccountService.v1_0_0"</span>/&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">edmx:Reference</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">edmx:Reference</span> <span class="hljs-attr">Uri</span>=<span class="hljs-string">"http://redfish.dmtf.org/schemas/v1/ServiceRoot_v1.xml"</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">edmx:Include</span> <span class="hljs-attr">Namespace</span>=<span class="hljs-string">"ServiceRoot"</span>/&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">edmx:Include</span> <span class="hljs-attr">Namespace</span>=<span class="hljs-string">"ServiceRoot.v1_0_0"</span>/&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">edmx:Reference</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">edmx:Reference</span>&gt;</span>
 
-...
+  ...
 
-<span class="hljs-tag">&lt;<span class="hljs-name">edmx:Reference</span> <span class="hljs-attr">Uri</span>=<span class="hljs-string">"http://redfish.dmtf.org/schemas/v1/VirtualMedia_v1.xml"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">edmx:Include</span> <span class="hljs-attr">Namespace</span>=<span class="hljs-string">"VirtualMedia"</span>/&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">edmx:Include</span> <span class="hljs-attr">Namespace</span>=<span class="hljs-string">"VirtualMedia.v1_0_0"</span>/&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">edmx:Reference</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">edmx:Reference</span> <span class="hljs-attr">Uri</span>=<span class="hljs-string">"http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">edmx:Reference</span> <span class="hljs-attr">Uri</span>=<span class="hljs-string">"http://redfish.dmtf.org/schemas/v1/VirtualMedia_v1.xml"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">edmx:Include</span> <span class="hljs-attr">Namespace</span>=<span class="hljs-string">"VirtualMedia"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">edmx:Include</span> <span class="hljs-attr">Namespace</span>=<span class="hljs-string">"VirtualMedia.v1_0_0"</span>/&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">edmx:Reference</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">edmx:Reference</span> <span class="hljs-attr">Uri</span>=<span class="hljs-string">"http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml"</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">edmx:Include</span> <span class="hljs-attr">Namespace</span>=<span class="hljs-string">"RedfishExtensions.v1_0_0"</span> <span class="hljs-attr">Alias</span>=<span class="hljs-string">"Redfish"</span>/&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">edmx:Reference</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">edmx:Reference</span>&gt;</span>
 </code></pre>
-<p>The service metadata shall include an entity container that defines the top level resources and Resource Collections. An implementation may extend the ServiceContainer defined in the ServiceRoot.v1_0_0 schema and may include additional resources.</p>
-<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">edmx:DataServices</span>&gt;</span>
+<p>The service's <a href="#metadata-document-request">Metadata Document</a> shall include an EntityContainer that defines the top level resources and Resource Collections. An implementation may extend the ServiceContainer defined in the ServiceRoot schema for the implementation's <a href="#odata-service-document-request">OData Service Document</a>.</p>
+<pre><code class="lang-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">edmx:DataServices</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">Schema</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://docs.oasis-open.org/odata/ns/edm"</span> <span class="hljs-attr">Namespace</span>=<span class="hljs-string">"Service"</span>&gt;</span>
       <span class="hljs-tag">&lt;<span class="hljs-name">EntityContainer</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"Service"</span> <span class="hljs-attr">Extends</span>=<span class="hljs-string">"ServiceRoot.v1_0_0.ServiceContainer"</span>/&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">Schema</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">edmx:DataServices</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">edmx:DataServices</span>&gt;</span>
 </code></pre>
 <h6 id="referencing-oem-extensions">6.5.3.1.2. Referencing OEM extensions</h6>
 <p>The metadata document may reference additional schema documents describing OEM-specific extensions used by the service, for example custom types for additional Resource Collections.</p>
-<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">edmx:Reference</span> <span class="hljs-attr">Uri</span>=<span class="hljs-string">"http://contoso.org/Schema/CustomTypes"</span>&gt;</span>
+<pre><code class="lang-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">edmx:Reference</span> <span class="hljs-attr">Uri</span>=<span class="hljs-string">"http://contoso.org/Schema/CustomTypes"</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">edmx:Include</span> <span class="hljs-attr">Namespace</span>=<span class="hljs-string">"CustomTypes"</span>/&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">edmx:Reference</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">edmx:Reference</span>&gt;</span>
 </code></pre>
 <h6 id="annotations">6.5.3.1.3. Annotations</h6>
 <p>The service can annotate sets, types, actions and parameters with Redfish-defined or custom annotation terms. These annotations are typically in a separate Annotations file referenced from the service metadata document using the IncludeAnnotations directive.</p>
-<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">edmx:Reference</span> <span class="hljs-attr">Uri</span>=<span class="hljs-string">"http://service/metadata/Service.Annotations"</span>&gt;</span>
+<pre><code class="lang-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">edmx:Reference</span> <span class="hljs-attr">Uri</span>=<span class="hljs-string">"http://service/metadata/Service.Annotations"</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">edmx:IncludeAnnotations</span> <span class="hljs-attr">TermNamespace</span>=<span class="hljs-string">"Annotations.v1_0_0"</span>/&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">edmx:Reference</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">edmx:Reference</span>&gt;</span>
 </code></pre>
 <p>The annotation file itself specifies the Target Redfish Schema element being annotated, the Term being applied, and the value of the term:</p>
-<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">Annotations</span> <span class="hljs-attr">Target</span>=<span class="hljs-string">"ComputerSystem.Reset/ResetType"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"Annotation.AdditionalValues"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">Collection</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">String</span>&gt;</span>Update and Restart<span class="hljs-tag">&lt;/<span class="hljs-name">String</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">String</span>&gt;</span>Update and PowerOff<span class="hljs-tag">&lt;/<span class="hljs-name">String</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">Collection</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">Annotation</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">Annotations</span>&gt;</span>
+<pre><code class="lang-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">Annotations</span> <span class="hljs-attr">Target</span>=<span class="hljs-string">"ComputerSystem.Reset/ResetType"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"Annotation.AdditionalValues"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">Collection</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">String</span>&gt;</span>Update and Restart<span class="hljs-tag">&lt;/<span class="hljs-name">String</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">String</span>&gt;</span>Update and PowerOff<span class="hljs-tag">&lt;/<span class="hljs-name">String</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">Collection</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">Annotation</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">Annotations</span>&gt;</span>
 </code></pre>
 <h5 id="odata-service-document">6.5.3.2. OData Service Document</h5>
 <p>The OData Service Document serves as a top-level entry point for generic OData clients.</p>
@@ -1220,15 +1222,17 @@ returned with a <code>rel=describedby</code>.  URLs of the JSON Schema for an an
 <p>If a response contains a subset of the properties defined in the Redfish Schema for a type, then the context URL shall specify the subset of properties included. An asterix (*) can be used to specify "all structural properties" for a given resource.</p>
 <p>Expanded <a href="#reference-properties">reference properties</a> shall be included in the select list if the result includes a subset of the properties defined for the expanded resource.</p>
 <p>For example, the following context URL specifies that the result contains a single ComputerSystem resource:</p>
-<pre><code class="lang-json">...
-<span class="hljs-attr">"@odata.context"</span>:<span class="hljs-string">"/redfish/v1/$metadata#ComputerSystem.ComputerSystem"</span>
-...</code></pre>
+<pre><code class="lang-json">{
+    "@odata.context":"/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
+    ...
+}
+</code></pre>
 <h5 id="resource-identifier-property">6.5.4.2. Resource identifier property</h5>
 <p>Resources in a response shall include a unique identifier property named "@odata.id". The value of the identifier property shall be the <a href="#uris">unique identifier</a> for the resource.</p>
 <p>Resources identifiers shall be represented in JSON payloads as strings that conform to the rules for URI paths as defined in Section 3.3, Path of <a href="#RFC3986">RFC3986</a>. Resources within the same authority as the request URI shall be represented according to the rules of path-absolute defined by that specification. That is, they shall always start with a single forward slash ("/"). Resources within a different authority as the request URI shall start with a double-slash ("//") followed by the authority and path to the resource.</p>
 <p>The resource identifier is the canonical URL for the resource and can be used to retrieve or edit the resource, as appropriate.</p>
 <h5 id="type-property">6.5.4.3. Type property</h5>
-<p>All resources in a response shall include a type property named "@odata.type". The value of the type property shall be a URL fragment that specifies the type of the resource as defined within, or referenced by, the <a href="#service-metadata">metadata document</a> and shall be of the form:</p>
+<p>All resources in a response shall include a type property named "@odata.type". All embedded objects in a response should include a type property named "@odata.type." The value of the type property shall be a URL fragment that specifies the type of the resource as defined within, or referenced by, the <a href="#service-metadata">metadata document</a> and shall be of the form:</p>
 <p>  #<em>Namespace</em>.<em>TypeName</em></p>
 <p>where</p>
 <ul>
@@ -1302,21 +1306,23 @@ returned with a <code>rel=describedby</code>.  URLs of the JSON Schema for an an
 <p>The value of the property is a JSON object containing a property named "target" whose value is a relative or absolute URL used to invoke the action.</p>
 <p>The property representing the available action may be annotated with the <a href="#allowable-values">AllowableValues</a> annotation in order to specify the list of allowable values for a particular parameter.</p>
 <p>For example, the following property represents the Reset action, defined in the ComputerSystem namespace:</p>
-<pre><code class="lang-json">...
-<span class="hljs-attr">"#ComputerSystem.Reset"</span>: {
-   <span class="hljs-attr">"target"</span>:<span class="hljs-string">"/redfish/v1/Systems/1/Actions/ComputerSystem.Reset"</span>,
-   <span class="hljs-attr">"ResetType@Redfish.AllowableValues"</span>: [
-       <span class="hljs-string">"On"</span>,
-       <span class="hljs-string">"ForceOff"</span>,
-       <span class="hljs-string">"GracefulRestart"</span>,
-       <span class="hljs-string">"GracefulShutdown"</span>,
-       <span class="hljs-string">"ForceRestart"</span>,
-       <span class="hljs-string">"Nmi"</span>,
-       <span class="hljs-string">"ForceOn"</span>,
-       <span class="hljs-string">"PushPowerButton"</span>
-       ]
-   }
-...</code></pre>
+<pre><code class="lang-json">{
+    "#ComputerSystem.Reset": {
+        "target":"/redfish/v1/Systems/1/Actions/ComputerSystem.Reset",
+        "ResetType@Redfish.AllowableValues": [
+            "On",
+            "ForceOff",
+            "GracefulRestart",
+            "GracefulShutdown",
+            "ForceRestart",
+            "Nmi",
+            "ForceOn",
+            "PushPowerButton"
+        ]
+    },
+    ...
+}
+</code></pre>
 <p>Given this, the client could invoke a POST request to /redfish/v1/Systems/1/Actions/ComputerSystem.Reset with the following body:</p>
 <pre><code class="lang-json">{
     <span class="hljs-attr">"ResetType"</span>: <span class="hljs-string">"On"</span>
@@ -1332,26 +1338,26 @@ returned with a <code>rel=describedby</code>.  URLs of the JSON Schema for an an
 <h6 id="reference-to-a-single-related-resource">6.5.4.8.1. Reference to a single related resource</h6>
 <p>A reference to a single resource is returned as a JSON object containing a single <a href="#resource-identifier-property">resource-identifier-property</a> whose name is the name of the relationship and whose value is the uri of the referenced resource.</p>
 <pre><code class="lang-json">{
-  <span class="hljs-attr">"Links"</span> : {
-    <span class="hljs-attr">"ManagedBy"</span>: {
-      <span class="hljs-attr">"@odata.id"</span>:<span class="hljs-string">"/redfish/v1/Chassis/Encl1"</span>
+    <span class="hljs-attr">"Links"</span> : {
+        <span class="hljs-attr">"ManagedBy"</span>: {
+            <span class="hljs-attr">"@odata.id"</span>:<span class="hljs-string">"/redfish/v1/Chassis/Encl1"</span>
+        }
     }
-  }
 }
 </code></pre>
 <h6 id="array-of-references-to-related-resources">6.5.4.8.2. Array of references to related resources</h6>
 <p>A reference to a set of zero or more related resources is returned as an array of JSON objects whose name is the name of the relationship. Each member of the array is a JSON object containing a single <a href="#resource-identifier-property">resource-identifier-property</a> whose value is the uri of the referenced resource.</p>
 <pre><code class="lang-json">{
-  <span class="hljs-attr">"Links"</span> : {
-    <span class="hljs-attr">"Contains"</span> : [
-    {
-      <span class="hljs-attr">"@odata.id"</span>:<span class="hljs-string">"/redfish/v1/Chassis/1"</span>
-    },
-    {
-      <span class="hljs-attr">"@odata.id"</span>:<span class="hljs-string">"/redfish/v1/Chassis/Encl1"</span>
+    <span class="hljs-attr">"Links"</span> : {
+        <span class="hljs-attr">"Contains"</span> : [
+            {
+                <span class="hljs-attr">"@odata.id"</span>:<span class="hljs-string">"/redfish/v1/Chassis/1"</span>
+            },
+            {
+                <span class="hljs-attr">"@odata.id"</span>:<span class="hljs-string">"/redfish/v1/Chassis/Encl1"</span>
+            }
+        ]
     }
-    ]
-  }
 }
 </code></pre>
 <h5 id="oem-property">6.5.4.9. OEM property</h5>
@@ -1418,12 +1424,12 @@ returned with a <code>rel=describedby</code>.  URLs of the JSON Schema for an an
     <span class="hljs-attr">"PinOut"</span>: <span class="hljs-string">"Cyclades"</span>,
     <span class="hljs-attr">"PinOut@Message.ExtendedInfo"</span> : [
         {
-           <span class="hljs-attr">"MessageId"</span>: <span class="hljs-string">"Base.1.0.PropertyValueNotInList"</span>,
-           <span class="hljs-attr">"Message"</span>: <span class="hljs-string">"The value Contoso for the property PinOut is not in the list of acceptable values."</span>,
-           <span class="hljs-attr">"Severity"</span>: <span class="hljs-string">"Warning"</span>,
-           <span class="hljs-attr">"Resolution"</span>: <span class="hljs-string">"Choose a value from the enumeration list that the implementation can support and resubmit the request if the operation failed."</span>
-         }
-     ]
+            <span class="hljs-attr">"MessageId"</span>: <span class="hljs-string">"Base.1.0.PropertyValueNotInList"</span>,
+            <span class="hljs-attr">"Message"</span>: <span class="hljs-string">"The value Contoso for the property PinOut is not in the list of acceptable values."</span>,
+            <span class="hljs-attr">"Severity"</span>: <span class="hljs-string">"Warning"</span>,
+            <span class="hljs-attr">"Resolution"</span>: <span class="hljs-string">"Choose a value from the enumeration list that the implementation can support and resubmit the request if the operation failed."</span>
+        }
+    ]
 }
 </code></pre>
 <p>The value of the property is an array of <a href="#message-object">message objects</a>.</p>
@@ -1498,7 +1504,7 @@ returned with a <code>rel=describedby</code>.  URLs of the JSON Schema for an an
         <span class="hljs-attr">"message"</span>: <span class="hljs-string">"A general error has occurred. See ExtendedInfo for more information."</span>,
         <span class="hljs-attr">"@Message.ExtendedInfo"</span>: [
             {
-                <span class="hljs-attr">"@odata.type"</span> : <span class="hljs-string">"/redfish/v1/$metadata#Message.v1_0_0.Message"</span>,
+                <span class="hljs-attr">"@odata.type"</span> : <span class="hljs-string">"#Message.v1_0_0.Message"</span>,
                 <span class="hljs-attr">"MessageId"</span>: <span class="hljs-string">"Base.1.0.PropertyValueNotInList"</span>,
                 <span class="hljs-attr">"RelatedProperties"</span>: [
                     <span class="hljs-string">"#/IndicatorLED"</span>
@@ -1512,7 +1518,7 @@ returned with a <code>rel=describedby</code>.  URLs of the JSON Schema for an an
                 <span class="hljs-attr">"Resolution"</span>: <span class="hljs-string">"Remove the property from the request body and resubmit the request if the operation failed"</span>
             },
             {
-                <span class="hljs-attr">"@odata.type"</span> : <span class="hljs-string">"/redfish/v1/$metadata#Message.v1_0_0.Message"</span>,
+                <span class="hljs-attr">"@odata.type"</span> : <span class="hljs-string">"#Message.v1_0_0.Message"</span>,
                 <span class="hljs-attr">"MessageId"</span>: <span class="hljs-string">"Base.1.0.PropertyNotWriteable"</span>,
                 <span class="hljs-attr">"RelatedProperties"</span>: [
                     <span class="hljs-string">"#/SKU"</span>
@@ -1680,9 +1686,9 @@ Property names are never localized.</p>
 </ul>
 <h5 id="schema-version-requirements">7.5.2.2. Schema Version Requirements</h5>
 <p>The outer element of the OData Schema representation document shall be the <code>Edmx</code> element, and shall have a <code>Version</code> attribute with a value of "4.0".</p>
-<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">edmx:Edmx</span> <span class="hljs-attr">xmlns:edmx</span>=<span class="hljs-string">"http://docs.oasis-open.org/odata/ns/edmx"</span> <span class="hljs-attr">Version</span>=<span class="hljs-string">"4.0"</span>&gt;</span>
- <span class="hljs-comment">&lt;!-- edmx:Reference and edmx:DataService elements go here --&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">edmx:Edmx</span>&gt;</span>
+<pre><code class="lang-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">edmx:Edmx</span> <span class="hljs-attr">xmlns:edmx</span>=<span class="hljs-string">"http://docs.oasis-open.org/odata/ns/edmx"</span> <span class="hljs-attr">Version</span>=<span class="hljs-string">"4.0"</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- edmx:Reference and edmx:DataService elements go here --&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">edmx:Edmx</span>&gt;</span>
 </code></pre>
 <h5 id="referencing-other-schemas">7.5.2.3. Referencing other schemas</h5>
 <p>Redfish Schemas may reference types defined in other schema documents.  In the OData Schema representation, this is done by including a <code>Reference</code> element. In the JSON Schema representation, this is done with a $ref property.</p>
@@ -1718,26 +1724,26 @@ Property names are never localized.</p>
 <p>Resource types are defined within a <a href="#namespace-definitions">namespace</a> using <code>EntityType</code> elements. The <code>Name</code> attribute specifies the name of the resource and the <code>BaseType</code> specifies the base type, if any.</p>
 <p>Redfish resources derive from a common resource base type named "Resource" in the Resource.v1_0_0 namespace.</p>
 <p>The EntityType contains the <a href="#resource-properties">property</a> and <a href="#reference-properties">reference property</a> elements that define the resource, as well as annotations describing the resource.</p>
-<pre><code class="lang-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">EntityType</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"TypeA"</span> <span class="hljs-attr">BaseType</span>=<span class="hljs-string">"Resource.v1_0_0.Resource"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"OData.Description"</span> <span class="hljs-attr">String</span>=<span class="hljs-string">"This is the description of TypeA."</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"OData.LongDescription"</span> <span class="hljs-attr">String</span>=<span class="hljs-string">"This is the specification of TypeA."</span>/&gt;</span>
+<pre><code class="lang-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">EntityType</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"TypeA"</span> <span class="hljs-attr">BaseType</span>=<span class="hljs-string">"Resource.v1_0_0.Resource"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"OData.Description"</span> <span class="hljs-attr">String</span>=<span class="hljs-string">"This is the description of TypeA."</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"OData.LongDescription"</span> <span class="hljs-attr">String</span>=<span class="hljs-string">"This is the specification of TypeA."</span>/&gt;</span>
 
-        <span class="hljs-comment">&lt;!-- Property and Reference Property definitions go here --&gt;</span>
+    <span class="hljs-comment">&lt;!-- Property and Reference Property definitions go here --&gt;</span>
 
-      <span class="hljs-tag">&lt;/<span class="hljs-name">EntityType</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">EntityType</span>&gt;</span>
 </code></pre>
 <p>All resources shall include <a href="#description">Description</a> and <a href="#long-description">LongDescription</a> annotations.</p>
 <h4 id="resource-properties">7.5.4. Resource properties</h4>
 <p>Structural properties of the resource are defined using the <code>Property</code> element. The <code>Name</code> attribute specifies the name of the property, and the <a href="#property-types"><code>Type</code></a> its type.</p>
 <p>Property names in the Request and Response JSON Payload shall match the casing of the value of the <code>Name</code> attribute.</p>
 <p>Properties that must have a non-nullable value include the <a href="#non-nullable-properties">nullable attribute</a> with a value of "false".</p>
-<pre><code class="lang-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">Property</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"Property1"</span> <span class="hljs-attr">Type</span>=<span class="hljs-string">"Edm.String"</span> <span class="hljs-attr">Nullable</span>=<span class="hljs-string">"false"</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"OData.Description"</span> <span class="hljs-attr">String</span>=<span class="hljs-string">"This is a property of TypeA."</span>/&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"OData.LongDescription"</span> <span class="hljs-attr">String</span>=<span class="hljs-string">"This is the specification of Property1."</span>/&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"OData.Permissions"</span> <span class="hljs-attr">EnumMember</span>=<span class="hljs-string">"OData.Permission/Read"</span>/&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"Redfish.Required"</span>/&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"Measures.Unit"</span> <span class="hljs-attr">String</span>=<span class="hljs-string">"Watts"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">Property</span>&gt;</span>
+<pre><code class="lang-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">Property</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"Property1"</span> <span class="hljs-attr">Type</span>=<span class="hljs-string">"Edm.String"</span> <span class="hljs-attr">Nullable</span>=<span class="hljs-string">"false"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"OData.Description"</span> <span class="hljs-attr">String</span>=<span class="hljs-string">"This is a property of TypeA."</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"OData.LongDescription"</span> <span class="hljs-attr">String</span>=<span class="hljs-string">"This is the specification of Property1."</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"OData.Permissions"</span> <span class="hljs-attr">EnumMember</span>=<span class="hljs-string">"OData.Permission/Read"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"Redfish.Required"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"Measures.Unit"</span> <span class="hljs-attr">String</span>=<span class="hljs-string">"Watts"</span>/&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">Property</span>&gt;</span>
 </code></pre>
 <p>All properties shall include <a href="#description">Description</a> and <a href="#long-description">LongDescription</a> annotations.</p>
 <p>Properties that are read-only are annotated with the <a href="#read-only-properties">Permissions annotation</a> with a value of <code>ODataPermission/Read</code>.</p>
@@ -1789,13 +1795,13 @@ Property names are never localized.</p>
 <h6 id="structured-types">7.5.4.1.2. Structured types</h6>
 <p>Structured types are defined within a <a href="#namespace-definitions">namespace</a> using <code>ComplexType</code> elements. The <code>Name</code> attribute of the complex type specifies the name of the structured type. Complex types can include a <code>BaseType</code> attribute to specifies the base type, if any.</p>
 <p>Structured types may be reused across different properties of different resource types.</p>
-<pre><code class="lang-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">ComplexType</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"PropertyTypeA"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"OData.Description"</span> <span class="hljs-attr">String</span>=<span class="hljs-string">"This is type used to describe a structured property."</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"OData.LongDescription"</span> <span class="hljs-attr">String</span>=<span class="hljs-string">"This is the specification of the type."</span>/&gt;</span>
+<pre><code class="lang-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">ComplexType</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"PropertyTypeA"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"OData.Description"</span> <span class="hljs-attr">String</span>=<span class="hljs-string">"This is type used to describe a structured property."</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"OData.LongDescription"</span> <span class="hljs-attr">String</span>=<span class="hljs-string">"This is the specification of the type."</span>/&gt;</span>
 
-        <span class="hljs-comment">&lt;!-- Property and Reference Property definitions go here --&gt;</span>
+    <span class="hljs-comment">&lt;!-- Property and Reference Property definitions go here --&gt;</span>
 
-      <span class="hljs-tag">&lt;/<span class="hljs-name">ComplexType</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">ComplexType</span>&gt;</span>
 </code></pre>
 <p>Structured types can contain <a href="#resource-properties">properties</a>, <a href="#reference-properties">reference properties</a> and annotations.</p>
 <p>Structured types shall include <a href="#description">Description</a> and <a href="#long-description">LongDescription</a> annotations.</p>
@@ -1803,16 +1809,16 @@ Property names are never localized.</p>
 <p>Enumeration types are defined within a <a href="#namespace-definitions">namespace</a> using <code>EnumType</code> elements. The <code>Name</code> attribute of the enumeration type specifies the name of the enumeration type.</p>
 <p>Enumeration types may be reused across different properties of different resource types.</p>
 <p>EnumType elements contain <code>Member</code> elements that define the members of the enumeration. The Member elements contain a <code>Name</code> attribute that specifies the string value of the member name.</p>
-<pre><code class="lang-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">EnumType</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"EnumTypeA"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"OData.Description"</span> <span class="hljs-attr">String</span>=<span class="hljs-string">"This is the EnumTypeA enumeration."</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"OData.LongDescription"</span> <span class="hljs-attr">String</span>=<span class="hljs-string">"This is used to describe the EnumTypeA enumeration."</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">Member</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"MemberA"</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"OData.Description"</span> <span class="hljs-attr">String</span>=<span class="hljs-string">"Description of MemberA"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">Member</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">Member</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"MemberB"</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"OData.Description"</span> <span class="hljs-attr">String</span>=<span class="hljs-string">"Description of MemberB"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">Member</span>&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">EnumType</span>&gt;</span>
+<pre><code class="lang-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">EnumType</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"EnumTypeA"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"OData.Description"</span> <span class="hljs-attr">String</span>=<span class="hljs-string">"This is the EnumTypeA enumeration."</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"OData.LongDescription"</span> <span class="hljs-attr">String</span>=<span class="hljs-string">"This is used to describe the EnumTypeA enumeration."</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">Member</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"MemberA"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"OData.Description"</span> <span class="hljs-attr">String</span>=<span class="hljs-string">"Description of MemberA"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">Member</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">Member</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"MemberB"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"OData.Description"</span> <span class="hljs-attr">String</span>=<span class="hljs-string">"Description of MemberB"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">Member</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">EnumType</span>&gt;</span>
 </code></pre>
 <p>Enumeration Types shall include <a href="#description">Description</a> and <a href="#long-description">LongDescription</a> annotations.</p>
 <p>Enumeration Members shall include <a href="#description">Description</a> annotations.</p>
@@ -1823,76 +1829,76 @@ Property names are never localized.</p>
 <p>where <em>NamespaceQualifiedTypeName</em> is the namespace qualified name of the primitive, structured, or enumeration type.</p>
 <h5 id="additional-properties">7.5.4.2. Additional properties</h5>
 <p>The AdditionalProperties annotation term is used to specify whether a type can contain additional properties outside of those defined. Types annotated with the AdditionalProperties annotation with a value of <code>"False"</code>, shall not contain additional properties.</p>
-<pre><code class="lang-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"OData.AdditionalProperties"</span>/&gt;</span>
+<pre><code class="lang-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"OData.AdditionalProperties"</span>/&gt;</span>
 </code></pre>
 <p>The <code>AdditionalProperties</code> annotation term is defined in <a href="https://tools.oasis-open.org/version-control/browse/wsvn/odata/trunk/spec/vocabularies/Org.OData.Core.V1.xml">https://tools.oasis-open.org/version-control/browse/wsvn/odata/trunk/spec/vocabularies/Org.OData.Core.V1.xml</a>.</p>
 <h5 id="non-nullable-properties">7.5.4.3. Non-nullable properties</h5>
 <p>Properties may include the Nullable attribute with a value of false to specify that the property cannot contain null values. A property with a nullable attribute with a value of <code>"true"</code>, or no nullable attribute, can accept null values.</p>
-<pre><code class="lang-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">Property</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"Property1"</span> <span class="hljs-attr">Type</span>=<span class="hljs-string">"Edm.String"</span> <span class="hljs-attr">Nullable</span>=<span class="hljs-string">"false"</span>&gt;</span>
+<pre><code class="lang-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">Property</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"Property1"</span> <span class="hljs-attr">Type</span>=<span class="hljs-string">"Edm.String"</span> <span class="hljs-attr">Nullable</span>=<span class="hljs-string">"false"</span>&gt;</span>
 </code></pre>
 <h5 id="read-only-properties">7.5.4.4. Read-only properties</h5>
 <p>The Permissions annotation term can be applied to a property with the value of <code>OData.Permission/Read</code> in order to specify that it is read-only.</p>
-<pre><code class="lang-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"OData.Permissions"</span> <span class="hljs-attr">EnumMember</span>=<span class="hljs-string">"OData.Permission/Read"</span>/&gt;</span>
+<pre><code class="lang-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"OData.Permissions"</span> <span class="hljs-attr">EnumMember</span>=<span class="hljs-string">"OData.Permission/Read"</span>/&gt;</span>
 </code></pre>
 <p>The <code>Permissions</code> annotation term is defined in <a href="http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Core.V1.xml">http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Core.V1.xml</a>.</p>
 <h5 id="required-properties">7.5.4.5. Required properties</h5>
-<p>The Required annotation or Nullable attribute is used to specify that a property is required to be supported by services. Required properties shall be annotated with the Required annotation, or annotated with a Nullable attribute with a value of <code>"false"</code>. All other properties are optional.</p>
+<p>The Required annotation is used to specify that a property is required to be supported by services. Required properties shall be annotated with the Required annotation. All other properties are optional.</p>
 <p>If an implementation supports a property, it shall always provide a value for that property.  If a value is unknown, then null is an acceptable values in most cases. Properties not returned from a GET operation shall indicate that the property is not currently supported by the implementation.</p>
-<pre><code class="lang-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"Redfish.Required"</span>/&gt;</span>
+<pre><code class="lang-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"Redfish.Required"</span>/&gt;</span>
 </code></pre>
 <p>The <code>Required</code> annotation term is defined in <a href="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml</a>.</p>
 <h5 id="required-properties-on-create">7.5.4.6. Required properties on create</h5>
 <p>The RequiredOnCreate annotation term is used to specify that a property is required to be specified on creation of the resource. Properties not annotated with the RequiredOnCreate annotation, or annotated with a <code>Boolean</code> attribute with a value of <code>"false"</code>, are not required on create.</p>
-<pre><code class="lang-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"Redfish.RequiredOnCreate"</span>/&gt;</span>
+<pre><code class="lang-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"Redfish.RequiredOnCreate"</span>/&gt;</span>
 </code></pre>
 <p>The <code>RequiredOnCreate</code> annotation term is defined in <a href="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml</a>.</p>
 <h5 id="units-of-measure">7.5.4.7. Units of measure</h5>
 <p>In addition to following <a href="#common-naming-conventions">naming conventions</a>, properties representing units of measure shall be annotated with the Units annotation term in order to specify the units of measurement for the property.</p>
 <p>The value of the annotation should be a string which contains the case-sensitive "(c/s)" symbol of the unit of measure as listed in the <a href="#UCUM">Unified Code for Units of Measure (UCUM)</a>, unless the symbolic representation does not reflect common usage (e.g., "RPM" is commonly used to report fan speeds in revolutions-per-minute, but has no simple UCUM representation).  For units with prefixes (e.g., Mebibyte (1024^2 bytes), which has the UCUM prefix "Mi" and symbol "By"), the case-sensitive "(c/s)" symbol for the prefix as listed in UCUM should be prepended to the unit symbol.  For values which also include rate information (e.g., megabits per second), the rate unit's symbol should be appended and use a "/" slash character as a separator (e.g., "Mbit/s").</p>
-<pre><code class="lang-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"Measures.Unit"</span> <span class="hljs-attr">String</span>=<span class="hljs-string">"MiBy"</span>/&gt;</span>
+<pre><code class="lang-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"Measures.Unit"</span> <span class="hljs-attr">String</span>=<span class="hljs-string">"MiBy"</span>/&gt;</span>
 </code></pre>
 <p>The <code>Unit</code> annotation term is defined in <a href="http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml">http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml</a>.</p>
 <h4 id="reference-properties">7.5.5. Reference properties</h4>
 <p>Properties that reference other resources are represented as reference properties using the <code>NavigationProperty</code> element. The <code>NavigationProperty</code> element specifies the <code>Name</code> and namespace qualified <a href="#property-types"><code>Type</code></a> of the related resource(s).</p>
 <p>If the property references a single type, the value of the type attribute is the namespace qualified name of the related resource type.</p>
-<pre><code class="lang-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">NavigationProperty</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"RelatedType"</span> <span class="hljs-attr">Type</span>=<span class="hljs-string">"MyTypes.TypeB"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"OData.Description"</span> <span class="hljs-attr">String</span>=<span class="hljs-string">"This property references a related resource."</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"OData.LongDescription"</span> <span class="hljs-attr">String</span>=<span class="hljs-string">"This is the specification of the related property."</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"OData.AutoExpandReferences"</span>/&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">NavigationProperty</span>&gt;</span>
+<pre><code class="lang-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">NavigationProperty</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"RelatedType"</span> <span class="hljs-attr">Type</span>=<span class="hljs-string">"MyTypes.TypeB"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"OData.Description"</span> <span class="hljs-attr">String</span>=<span class="hljs-string">"This property references a related resource."</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"OData.LongDescription"</span> <span class="hljs-attr">String</span>=<span class="hljs-string">"This is the specification of the related property."</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"OData.AutoExpandReferences"</span>/&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">NavigationProperty</span>&gt;</span>
 </code></pre>
 <p>If the property references a collection of resources, the value of the type attribute is of the form:</p>
 <p> Collection(NamespaceQualifiedTypeName)</p>
 <p>where NamespaceQualifiedTypeName is the namespace qualified name of the type of related resources.</p>
-<pre><code class="lang-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">NavigationProperty</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"RelatedTypes"</span> <span class="hljs-attr">Type</span>=<span class="hljs-string">"Collection(MyTypes.TypeB)"</span> <span class="hljs-attr">Nullable</span>=<span class="hljs-string">"false"</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"OData.Description"</span> <span class="hljs-attr">String</span>=<span class="hljs-string">"This property represents a collection of related resources."</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"OData.LongDescription"</span> <span class="hljs-attr">String</span>=<span class="hljs-string">"This is the specification of the related property."</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"OData.AutoExpandReferences"</span>/&gt;</span>
-      <span class="hljs-tag">&lt;/<span class="hljs-name">NavigationProperty</span>&gt;</span>
+<pre><code class="lang-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">NavigationProperty</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"RelatedTypes"</span> <span class="hljs-attr">Type</span>=<span class="hljs-string">"Collection(MyTypes.TypeB)"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"OData.Description"</span> <span class="hljs-attr">String</span>=<span class="hljs-string">"This property represents a collection of related resources."</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"OData.LongDescription"</span> <span class="hljs-attr">String</span>=<span class="hljs-string">"This is the specification of the related property."</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"OData.AutoExpandReferences"</span>/&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">NavigationProperty</span>&gt;</span>
 </code></pre>
 <p>All reference properties shall include <a href="#description">Description</a> and <a href="#long-description">LongDescription</a> annotations.</p>
 <h5 id="contained-resources">7.5.5.1. Contained resources</h5>
 <p>Reference properties whose members are contained by the referencing resource are specified with the <code>ContainsTarget</code> attribute with a value of <code>true</code>.</p>
 <p>For example, to specify that a Chassis resource contains a Power resource, you would specify <code>ContainsTarget=true</code> on the resource property representing the Power Resource within the Chassis type definition.</p>
-<pre><code class="lang-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">NavigationProperty</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"Power"</span> <span class="hljs-attr">Type</span>=<span class="hljs-string">"Power.Power"</span> <span class="hljs-attr">ContainsTarget</span>=<span class="hljs-string">"true"</span>&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"OData.Description"</span> <span class="hljs-attr">String</span>=<span class="hljs-string">"A reference to the power properties (power supplies, power policies, sensors) for this chassis."</span>/&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"OData.LongDescription"</span> <span class="hljs-attr">String</span>=<span class="hljs-string">"The value of this property shall be a reference to the resource that represents the power characteristics of this chassis and shall be of type Power."</span>/&gt;</span>
-          <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"OData.AutoExpandReferences"</span>/&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">NavigationProperty</span>&gt;</span>
+<pre><code class="lang-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">NavigationProperty</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"Power"</span> <span class="hljs-attr">Type</span>=<span class="hljs-string">"Power.Power"</span> <span class="hljs-attr">ContainsTarget</span>=<span class="hljs-string">"true"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"OData.Description"</span> <span class="hljs-attr">String</span>=<span class="hljs-string">"A reference to the power properties (power supplies, power policies, sensors) for this chassis."</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"OData.LongDescription"</span> <span class="hljs-attr">String</span>=<span class="hljs-string">"The value of this property shall be a reference to the resource that represents the power characteristics of this chassis and shall be of type Power."</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"OData.AutoExpandReferences"</span>/&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">NavigationProperty</span>&gt;</span>
 </code></pre>
 <h5 id="expanded-references">7.5.5.2. Expanded references</h5>
 <p>Reference properties in a Redfish JSON payload are expanded to include the <a href="#reference-to-a-single-related-resource">related resource id</a> or <a href="#array-of-references-to-related-resources">collection of related resource ids</a>. This behavior is expressed using the AutoExpandReferences annotation.</p>
-<pre><code class="lang-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"OData.AutoExpandReferences"</span>/&gt;</span>
+<pre><code class="lang-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"OData.AutoExpandReferences"</span>/&gt;</span>
 </code></pre>
 <p>The <code>AutoExpandReferences</code> annotation term is defined in <a href="https://tools.oasis-open.org/version-control/browse/wsvn/odata/trunk/spec/vocabularies/Org.OData.Core.V1.xml">https://tools.oasis-open.org/version-control/browse/wsvn/odata/trunk/spec/vocabularies/Org.OData.Core.V1.xml</a>.</p>
 <h5 id="expanded-resources">7.5.5.3. Expanded resources</h5>
 <p>This term can be applied to a <a href="#reference-properties">reference property</a> in order to specify that the default behavior for the service is to expand the related <a href="#structured-properties">resource</a> or Resource Collection in responses.</p>
-<pre><code class="lang-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"OData.AutoExpand"</span>/&gt;</span>
+<pre><code class="lang-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">Annotation</span> <span class="hljs-attr">Term</span>=<span class="hljs-string">"OData.AutoExpand"</span>/&gt;</span>
 </code></pre>
 <p>The <code>AutoExpand</code> annotation term is defined in <a href="https://tools.oasis-open.org/version-control/browse/wsvn/odata/trunk/spec/vocabularies/Org.OData.Core.V1.xml">https://tools.oasis-open.org/version-control/browse/wsvn/odata/trunk/spec/vocabularies/Org.OData.Core.V1.xml</a>.</p>
 <h4 id="resource-actions">7.5.6. Resource actions</h4>
 <p>Actions are grouped under a property named "Actions".</p>
-<pre><code class="lang-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">Property</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"Actions"</span> <span class="hljs-attr">Type</span>=<span class="hljs-string">"MyType.Actions"</span>&gt;</span>
+<pre><code class="lang-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">Property</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"Actions"</span> <span class="hljs-attr">Type</span>=<span class="hljs-string">"MyType.Actions"</span>&gt;</span>
 </code></pre>
 <p>The type of the Actions property is a <a href="#structured-types">structured type</a> with a single OEM property whose type is a structured type with no defined properties.</p>
 <pre><code class="lang-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">ComplexType</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"Actions"</span>&gt;</span>
@@ -1915,25 +1921,27 @@ Property names are never localized.</p>
 <h5 id="oem-property">7.5.7.1. Oem property</h5>
 <p>In the context of this clause, the term OEM refers to any company, manufacturer, or organization that is providing or defining an extension to the DMTF-published schema and functionality for Redfish. The base schema for Redfish-specified resources include an empty complex type property called "Oem" whose value can be used to encapsulate one or more OEM-specified complex properties. The Oem property in the standard Redfish schema is thus a predefined placeholder that is available for OEM-specific property definitions.</p>
 <p>Correct use of the Oem property requires defining the metadata for an OEM-specified complex type that can be referenced within the Oem property. The following fragment is an example of an XML schema that defines a pair of OEM-specific properties under the complex type "AnvilType1". (Other schema elements that would typically be present, such as XML and OData schema description identifiers, are not shown in order to simplify the example).</p>
-<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-name">Schema</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"Contoso.v1_2_0"</span>&gt;</span>
-  ...
-  <span class="hljs-tag">&lt;<span class="hljs-name">ComplexType</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"AnvilType1"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">Property</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"slogan"</span> <span class="hljs-attr">Type</span>=<span class="hljs-string">"Edm.String"</span>/&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">Property</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"disclaimer"</span> <span class="hljs-attr">Type</span>=<span class="hljs-string">"Edm.String"</span>/&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">ComplexType</span>&gt;</span>
-  ...
-<span class="hljs-tag">&lt;/<span class="hljs-name">Schema</span>&gt;</span>
+<pre><code class="lang-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">Schema</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"Contoso.v1_2_0"</span>&gt;</span>
+    ...
+    <span class="hljs-tag">&lt;<span class="hljs-name">ComplexType</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"AnvilType1"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">Property</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"slogan"</span> <span class="hljs-attr">Type</span>=<span class="hljs-string">"Edm.String"</span>/&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">Property</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"disclaimer"</span> <span class="hljs-attr">Type</span>=<span class="hljs-string">"Edm.String"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ComplexType</span>&gt;</span>
+    ...
+  <span class="hljs-tag">&lt;/<span class="hljs-name">Schema</span>&gt;</span>
 </code></pre>
 <p>The next fragment shows an example of how the previous schema and the "AnvilType1" property type might appear in the instantiation of an Oem property as the result of a GET on a resource. The example shows two required elements in the use of the Oem property: A name for the object and a type property for the object. Detailed requirements for these elements are provided in the following clauses.</p>
-<pre><code class="lang-json">...
-  <span class="hljs-attr">"Oem"</span>: {
-    <span class="hljs-attr">"Contoso"</span>: {
-      <span class="hljs-attr">"@odata.type"</span>: <span class="hljs-string">"http://Contoso.com/schemas/extensions.v1_2_0#contoso.AnvilType1"</span>,
-      <span class="hljs-attr">"slogan"</span>: <span class="hljs-string">"Contoso anvils never fail"</span>,
-      <span class="hljs-attr">"disclaimer"</span>: <span class="hljs-string">"* Most of the time"</span>
-    }
-  }
-...</code></pre>
+<pre><code class="lang-json">{
+    "Oem": {
+        "Contoso": {
+            "@odata.type": "#Contoso.v1_2_0.AnvilType1",
+            "slogan": "Contoso anvils never fail",
+            "disclaimer": "* Most of the time"
+        }
+    },
+    ...
+}
+</code></pre>
 <h5 id="oem-property-format-and-content">7.5.7.2. Oem property format and content</h5>
 <p>OEM-specified objects that are contained within the <a href="#oem-property">Oem property</a> shall be valid JSON objects that follow the format of a Redfish <a href="#resource-type-definitions">complex type</a>. The name of the object (property) shall uniquely identify the OEM or organization that manages the top of the namespace under which the property is defined. This is described in more detail in the following clause. The OEM-specified property shall also include a <a href="#type-property">type property</a> that provides the location of the schema and the type definition for the property within that schema. The Oem property can simultaneously hold multiple OEM-specified objects, including objects for more than one company or organization.</p>
 <p>The definition of any other properties that are contained within the OEM-specific complex type, along with the functional specifications, validation, or other requirements for that content is OEM-specific and outside the scope of this specification. While there are no Redfish-specified limits on the size or complexity of the OEM-specified elements within an OEM-specified JSON object, it is intended that OEM properties will typically only be used for a small number of simple properties that augment the Redfish resource. If a large number of objects or a large quantity of data (compared to the size of the Redfish resource) is to be supported, the OEM should consider having the OEM-specified object point to a separate resource for their extensions.</p>
@@ -1946,52 +1954,53 @@ DEPRECATED: The identifier shall be either an ICANN-recognized domain name (incl
 <p>The OEM identifier portion of the name will typically identify the company or organization that created and maintains the schema for the property. However, this is not a requirement. The identifier is only required to uniquely identify the party that is the top-level manager of a namespace to prevent collisions between OEM property definitions from different vendors or organizations. Consequently, the organization for the top of the namespace may be different than the organization that provides the definition of the OEM-specified property. For example, Contoso may allow one of their customers, e.g., "CustomerA", to extend a Contoso product with certain CustomerA proprietary properties. In this case, although Contoso allocated the name "Contoso_customers_CustomerA" it could be CustomerA that defines the content and functionality under that namespace. In all cases, OEM identifiers should not be used except with permission or as specified by the identified company or organization.</p>
 <h4 id="oem-property-examples">7.5.8. Oem property examples</h4>
 <p>The following fragment presents some examples of naming and use of the Oem property as it might appear when accessing a resource. The example shows that the OEM identifiers can be of different forms, that OEM-specified content can be simple or complex, and that the format and usage of extensions of the OEM identifier is OEM-specific.</p>
-<pre><code class="lang-json">...
-  <span class="hljs-attr">"Oem"</span>: {
-    <span class="hljs-attr">"Contoso"</span>: {
-      <span class="hljs-attr">"@odata.type"</span>: <span class="hljs-string">"http://contoso.com/schemas/extensions.v1_2_1#contoso.AnvilTypes1"</span>,
-      <span class="hljs-attr">"slogan"</span>: <span class="hljs-string">"Contoso anvils never fail"</span>,
-      <span class="hljs-attr">"disclaimer"</span>: <span class="hljs-string">"* Most of the time"</span>
+<pre><code class="lang-json">{
+    "Oem": {
+        "Contoso": {
+            "@odata.type": "#Contoso.v1_2_1.AnvilTypes1",
+            "slogan": "Contoso anvils never fail",
+            "disclaimer": "* Most of the time"
+        },
+        "Contoso_biz": {
+            "@odata.type": "#ContosoBiz.v1_1.RelatedSpeed",
+            "speed" : "ludicrous"
+        },
+        "EID_412_ASB_123": {
+            "@odata.type": "#OtherSchema.v1_0_1.powerInfoExt",
+            "readingInfo": {
+                "readingAccuracy": "5",
+                "readingInterval": "20"
+            }
+        },
+        "Contoso_customers_customerA": {
+            "@odata.type" : "#ContosoCustomer.v2015.slingPower",
+            "AvailableTargets" : [ "rabbit", "duck", "runner" ],
+            "launchPowerOptions" : [ "low", "medium", "eliminate" ],
+            "powerSetting" : "eliminate",
+            "targetSetting" : "rabbit"
+        }
     },
-    <span class="hljs-attr">"Contoso_biz"</span>: {
-      <span class="hljs-attr">"@odata.type"</span>: <span class="hljs-string">"http://contoso.biz/schemas/extension1_1#RelatedSpeed"</span>,
-      <span class="hljs-attr">"speed"</span> : <span class="hljs-string">"ludicrous"</span>
-    },
-    <span class="hljs-attr">"EID_412_ASB_123"</span>: {
-      <span class="hljs-attr">"@odata.type"</span>: <span class="hljs-string">"http://AnotherStandardsBody/schemas.v1_0_1#powerInfoExt"</span>,
-      <span class="hljs-attr">"readingInfo"</span>: {
-        <span class="hljs-attr">"readingAccuracy"</span>: <span class="hljs-string">"5"</span>,
-        <span class="hljs-attr">"readingInterval"</span>: <span class="hljs-string">"20"</span>
-      }
-    },
-    <span class="hljs-attr">"Contoso_customers_customerA"</span>: {
-      <span class="hljs-attr">"@odata.type"</span> : <span class="hljs-string">"http://slingShots.customerA.com/catExt.2015#slingPower"</span>,
-      <span class="hljs-attr">"AvailableTargets"</span> : [ <span class="hljs-string">"rabbit"</span>, <span class="hljs-string">"duck"</span>, <span class="hljs-string">"runner"</span> ],
-      <span class="hljs-attr">"launchPowerOptions"</span> : [ <span class="hljs-string">"low"</span>, <span class="hljs-string">"medium"</span>, <span class="hljs-string">"eliminate"</span> ],
-      <span class="hljs-attr">"powerSetting"</span> : <span class="hljs-string">"eliminate"</span>,
-      <span class="hljs-attr">"targetSetting"</span> : <span class="hljs-string">"rabbit"</span>
-    }
-  }
-...</code></pre>
+    ...
+}
+</code></pre>
 <h5 id="custom-actions">7.5.8.1. Custom actions</h5>
 <p>OEM-specific actions can be defined by defining actions bound to the OEM property of the <a href="#resource-actions">resource's Actions</a> property type.</p>
-<pre><code class="lang-xml">
-  <span class="hljs-tag">&lt;<span class="hljs-name">Action</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"Ping"</span> <span class="hljs-attr">IsBound</span>=<span class="hljs-string">"true"</span>&gt;</span>
+<pre><code class="lang-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">Action</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"Ping"</span> <span class="hljs-attr">IsBound</span>=<span class="hljs-string">"true"</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">Parameter</span> <span class="hljs-attr">Name</span>=<span class="hljs-string">"ContosoType"</span> <span class="hljs-attr">Type</span>=<span class="hljs-string">"MyType.OEMActions"</span>/&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">Action</span>&gt;</span>
-
-<span class="hljs-tag">&lt;/<span class="hljs-name">Schema</span>&gt;</span>
 </code></pre>
 <p>Such bound actions appear in the JSON payload as properties of the Oem type, nested under an <a href="#actions-property">Actions property</a>.</p>
-<pre><code class="lang-json">...
-<span class="hljs-attr">"Actions"</span>: {
-    <span class="hljs-attr">"OEM"</span>: {
-        <span class="hljs-attr">"Contoso.vx_x_x#Contoso.Ping"</span>: {
-                <span class="hljs-attr">"target"</span>:<span class="hljs-string">"/redfish/v1/Systems/1/Actions/OEM/Contoso.Ping"</span>
+<pre><code class="lang-json">{
+    "Actions": {
+        "OEM": {
+            "Contoso.vx_x_x#Contoso.Ping": {
+                "target":"/redfish/v1/Systems/1/Actions/OEM/Contoso.Ping"
             }
         }
-    }
-...</code></pre>
+    },
+    ...
+}
+</code></pre>
 <h5 id="custom-annotations">7.5.8.2. Custom annotations</h5>
 <p>This specification defines a set of common annotations for extending the definition of resource types used by Redfish. In addition, services may define custom annotations.</p>
 <p>Services may apply annotations to resources in order to provide service-specific information about the type, such as whether the service supports modifications of particular properties.</p>
@@ -2237,16 +2246,18 @@ includes orphaned session timeout and number of simultaneous open sessions.</p>
 </ul>
 <h5 id="redfish-login-sessions">9.2.4.2. Redfish login sessions</h5>
 <p>For functionality requiring multiple Redfish operations, or for security reasons, a client may create a Redfish Login Session via the session management interface.  The URI used for session management is specified in the Session Service.  The URI for establishing a session can be found in the SessionService's Session property or in the Service Root's Links Section under the Sessions property.  Both URIs shall be the same.</p>
-<pre><code class="lang-json">...
-    <span class="hljs-attr">"SessionService"</span>: {
-        <span class="hljs-attr">"@odata.id"</span>: <span class="hljs-string">"/redfish/v1/SessionService"</span>
+<pre><code class="lang-json">{
+    "SessionService": {
+        "@odata.id": "/redfish/v1/SessionService"
     },
-    <span class="hljs-attr">"Links"</span>: {
-        <span class="hljs-attr">"Sessions"</span>: {
-            <span class="hljs-attr">"@odata.id"</span>: <span class="hljs-string">"/redfish/v1/SessionService/Sessions"</span>
+    "Links": {
+        "Sessions": {
+            "@odata.id": "/redfish/v1/SessionService/Sessions"
         }
-    }
-...</code></pre>
+    },
+    ...
+}
+</code></pre>
 <h5 id="session-login">9.2.4.3. Session login</h5>
 <p>A Redfish session is created, without requiring an authentication header, by an HTTP POST to the SessionService' Sessions Resource Collection, including the following POST body:</p>
 <pre><code class="lang-http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/redfish/v1/SessionService/Sessions</span> HTTP/1.1
@@ -2396,28 +2407,40 @@ privileges required for an operation can be specified with logical AND and OR be
 the privileges required for various operations on Manager entity.  Unless mapping overrides to the OperationMap array are defined (syntax explained in next section), the specified operation to 
 privilege mapping would represent behavior for all Manager resources in a service implementation.</p>
 <pre><code class="lang-json">{
-        <span class="hljs-attr">"Entity"</span>: <span class="hljs-string">"Manager"</span>,
-        <span class="hljs-attr">"OperationMap"</span>: {
-            <span class="hljs-attr">"GET"</span>: [{
-                <span class="hljs-attr">"Privilege"</span>: [<span class="hljs-string">"Login"</span>]
-            }],
-            <span class="hljs-attr">"HEAD"</span>: [{ 
-                <span class="hljs-attr">"Privilege"</span>: [<span class="hljs-string">"Login"</span>]
-            }],
-            <span class="hljs-attr">"PATCH"</span>: [{
-                <span class="hljs-attr">"Privilege"</span>: [<span class="hljs-string">"ConfigureManager"</span>]
-            }],
-            <span class="hljs-attr">"POST"</span>: [{
-                <span class="hljs-attr">"Privilege"</span>: [<span class="hljs-string">"ConfigureManager"</span>]
-            }],
-            <span class="hljs-attr">"PUT"</span>: [{
-                <span class="hljs-attr">"Privilege"</span>: [<span class="hljs-string">"ConfigureManager"</span>]
-            }],
-            <span class="hljs-attr">"DELETE"</span>: [{
-                <span class="hljs-attr">"Privilege"</span>: [<span class="hljs-string">"ConfigureManager"</span>]
-            }]
-        }
+    <span class="hljs-attr">"Entity"</span>: <span class="hljs-string">"Manager"</span>,
+    <span class="hljs-attr">"OperationMap"</span>: {
+        <span class="hljs-attr">"GET"</span>: [
+            {
+                <span class="hljs-attr">"Privilege"</span>: [ <span class="hljs-string">"Login"</span> ]
+            }
+        ],
+        <span class="hljs-attr">"HEAD"</span>: [
+            {
+                <span class="hljs-attr">"Privilege"</span>: [ <span class="hljs-string">"Login"</span> ]
+            }
+        ],
+        <span class="hljs-attr">"PATCH"</span>: [
+            {
+                <span class="hljs-attr">"Privilege"</span>: [ <span class="hljs-string">"ConfigureManager"</span> ]
+            }
+        ],
+        <span class="hljs-attr">"POST"</span>: [
+            {
+                <span class="hljs-attr">"Privilege"</span>: [ <span class="hljs-string">"ConfigureManager"</span> ]
+            }
+        ],
+        <span class="hljs-attr">"PUT"</span>: [
+            {
+                <span class="hljs-attr">"Privilege"</span>: [ <span class="hljs-string">"ConfigureManager"</span> ]
+            }
+        ],
+        <span class="hljs-attr">"DELETE"</span>: [
+            {
+                <span class="hljs-attr">"Privilege"</span>: [ <span class="hljs-string">"ConfigureManager"</span> ]
+            }
+        ]
     }
+}
 </code></pre>
 <h5 id="mapping-overrides-syntax">9.2.9.4. Mapping Overrides Syntax</h5>
 <p>Several situations occur where operation to privilege mapping varies from what might be specified at an entity schema level.
@@ -2437,143 +2460,238 @@ The overrides are defined in the context of the operation to privilege mapping f
 resource requires the "ConfigureSelf" or the "ConfigureUser" privilege to change in contrast to the "ConfigureUser" privilege 
 required for the rest of the properties on ManagerAccount resources.</p>
 <pre><code class="lang-json">{
-        <span class="hljs-attr">"Entity"</span>: <span class="hljs-string">"ManagerAccount"</span>,
-        <span class="hljs-attr">"OperationMap"</span>: {
-            <span class="hljs-attr">"GET"</span>: [{
-                <span class="hljs-attr">"Privilege"</span>: [<span class="hljs-string">"ConfigureManager"</span>]
-            }, {
-                <span class="hljs-attr">"Privilege"</span>: [<span class="hljs-string">"ConfigureUser"</span>]
-            }, {
-                <span class="hljs-attr">"Privilege"</span>: [<span class="hljs-string">"ConfigureSelf"</span>]
-            }],
-            <span class="hljs-attr">"HEAD"</span>: [{ 
-                <span class="hljs-attr">"Privilege"</span>: [<span class="hljs-string">"Login"</span>]
-            }],
-            <span class="hljs-attr">"PATCH"</span>: [{
-                <span class="hljs-attr">"Privilege"</span>: [<span class="hljs-string">"ConfigureUser"</span>]
-            }],
-            <span class="hljs-attr">"POST"</span>: [{
-                <span class="hljs-attr">"Privilege"</span>: [<span class="hljs-string">"ConfigureUser"</span>]
-            }],
-            <span class="hljs-attr">"PUT"</span>: [{
-                <span class="hljs-attr">"Privilege"</span>: [<span class="hljs-string">"ConfigureUser"</span>]
-            }],
-            <span class="hljs-attr">"DELETE"</span>: [{
-                <span class="hljs-attr">"Privilege"</span>: [<span class="hljs-string">"ConfigureUser"</span>]
-            }]
-        },
-        <span class="hljs-attr">"PropertyOverrides"</span>: [{
-            <span class="hljs-attr">"Targets"</span>: [<span class="hljs-string">"Password"</span>],
-            <span class="hljs-attr">"OperationMap"</span>: {
-                <span class="hljs-attr">"GET"</span>: [{
-                    <span class="hljs-attr">"Privilege"</span>: <span class="hljs-string">"ConfigureManager"</span>
-                }],
-                <span class="hljs-attr">"PATCH"</span>: [{
-                    <span class="hljs-attr">"Privilege"</span>: [<span class="hljs-string">"ConfigureManager"</span>]
-                }, {
-                    <span class="hljs-attr">"Privilege"</span>: [<span class="hljs-string">"ConfigureSelf"</span>]
-                }]
+    <span class="hljs-attr">"Entity"</span>: <span class="hljs-string">"ManagerAccount"</span>,
+    <span class="hljs-attr">"OperationMap"</span>: {
+        <span class="hljs-attr">"GET"</span>: [
+            {
+                <span class="hljs-attr">"Privilege"</span>: [ <span class="hljs-string">"ConfigureManager"</span> ]
+            },
+            {
+                <span class="hljs-attr">"Privilege"</span>: [ <span class="hljs-string">"ConfigureUser"</span> ]
+            },
+            {
+                <span class="hljs-attr">"Privilege"</span>: [ <span class="hljs-string">"ConfigureSelf"</span> ]
             }
-        }]
-    }
+        ],
+        <span class="hljs-attr">"HEAD"</span>: [
+            {
+                <span class="hljs-attr">"Privilege"</span>: [ <span class="hljs-string">"Login"</span> ]
+            }
+        ],
+        <span class="hljs-attr">"PATCH"</span>: [
+            {
+                <span class="hljs-attr">"Privilege"</span>: [ <span class="hljs-string">"ConfigureUser"</span> ]
+            }
+        ],
+        <span class="hljs-attr">"POST"</span>: [
+            {
+                <span class="hljs-attr">"Privilege"</span>: [ <span class="hljs-string">"ConfigureUser"</span> ]
+            }
+        ],
+        <span class="hljs-attr">"PUT"</span>: [
+            {
+                <span class="hljs-attr">"Privilege"</span>: [ <span class="hljs-string">"ConfigureUser"</span> ]
+            }
+        ],
+        <span class="hljs-attr">"DELETE"</span>: [
+            {
+                <span class="hljs-attr">"Privilege"</span>: [ <span class="hljs-string">"ConfigureUser"</span> ]
+            }
+        ]
+    },
+    <span class="hljs-attr">"PropertyOverrides"</span>: [
+        {
+            <span class="hljs-attr">"Targets"</span>: [ <span class="hljs-string">"Password"</span> ],
+            <span class="hljs-attr">"OperationMap"</span>: {
+                <span class="hljs-attr">"GET"</span>: [
+                    {
+                        <span class="hljs-attr">"Privilege"</span>: [ <span class="hljs-string">"ConfigureManager"</span> ]
+                    }
+                ],
+                <span class="hljs-attr">"PATCH"</span>: [
+                    {
+                        <span class="hljs-attr">"Privilege"</span>: [ <span class="hljs-string">"ConfigureManager"</span> ]
+                    },
+                    {
+                        <span class="hljs-attr">"Privilege"</span>: [ <span class="hljs-string">"ConfigureSelf"</span> ]
+                    }
+                ]
+            }
+        }
+    ]
+}
 </code></pre>
 <h5 id="subordinate-override">9.2.9.6. Subordinate Override</h5>
-<p>In the following example, the privileges for PATCH operations 
-on EthernetInterface resources depends on whether the resource is subordinate to Manager (ConfigureManager is required) or ComputerSystem (ConfigureComponent
-is required, this is the default unless overridden) resources.</p>
+<p>The Targets property within SubordinateOverrides lists a hierarchical representation for when to apply the override.  In the following example, the override for an EthernetInterface entity is applied when it is subordinate to an EthernetInterfaceCollection entity, which is in turn subordinate to a Manager entity.  If a client were to PATCH an EthernetInterface entity that matches this override condition, it would require the "ConfigureManager" privilege; otherwise the client would require the "ConfigureComponent" privilege.</p>
 <pre><code class="lang-json">{
-        <span class="hljs-attr">"Entity"</span>: <span class="hljs-string">"EthernetInterface"</span>,
-        <span class="hljs-attr">"OperationMap"</span>: {
-            <span class="hljs-attr">"GET"</span>: [{
-                <span class="hljs-attr">"Privilege"</span>: [<span class="hljs-string">"Login"</span>]
-            }],
-            <span class="hljs-attr">"HEAD"</span>: [{ 
-                <span class="hljs-attr">"Privilege"</span>: [<span class="hljs-string">"Login"</span>]
-            }],
-            <span class="hljs-attr">"PATCH"</span>: [{
-                <span class="hljs-attr">"Privilege"</span>: [<span class="hljs-string">"ConfigureComponent"</span>]
-            }],
-            <span class="hljs-attr">"POST"</span>: [{
-                <span class="hljs-attr">"Privilege"</span>: [<span class="hljs-string">"ConfigureComponent"</span>]
-            }],
-            <span class="hljs-attr">"PUT"</span>: [{
-                <span class="hljs-attr">"Privilege"</span>: [<span class="hljs-string">"ConfigureComponent"</span>]
-            }],
-            <span class="hljs-attr">"DELETE"</span>: [{
-                <span class="hljs-attr">"Privilege"</span>: [<span class="hljs-string">"ConfigureComponent"</span>]
-            }],
-            <span class="hljs-attr">"SubordinateOverrides"</span>: [{
+    <span class="hljs-attr">"Entity"</span>: <span class="hljs-string">"EthernetInterface"</span>,
+    <span class="hljs-attr">"OperationMap"</span>: {
+        <span class="hljs-attr">"GET"</span>: [
+            {
+                <span class="hljs-attr">"Privilege"</span>: [ <span class="hljs-string">"Login"</span> ]
+            }
+        ],
+        <span class="hljs-attr">"HEAD"</span>: [
+            {
+                <span class="hljs-attr">"Privilege"</span>: [ <span class="hljs-string">"Login"</span> ]
+            }
+        ],
+        <span class="hljs-attr">"PATCH"</span>: [
+            {
+                <span class="hljs-attr">"Privilege"</span>: [ <span class="hljs-string">"ConfigureComponent"</span> ]
+            }
+        ],
+        <span class="hljs-attr">"POST"</span>: [
+            {
+                <span class="hljs-attr">"Privilege"</span>: [ <span class="hljs-string">"ConfigureComponent"</span> ]
+            }
+        ],
+        <span class="hljs-attr">"PUT"</span>: [
+            {
+                <span class="hljs-attr">"Privilege"</span>: [ <span class="hljs-string">"ConfigureComponent"</span> ]
+            }
+        ],
+        <span class="hljs-attr">"DELETE"</span>: [
+            {
+                <span class="hljs-attr">"Privilege"</span>: [ <span class="hljs-string">"ConfigureComponent"</span> ]
+            }
+        ],
+        <span class="hljs-attr">"SubordinateOverrides"</span>: [
+            {
                 <span class="hljs-attr">"Targets"</span>: [
-                    [<span class="hljs-string">"Manager"</span>, <span class="hljs-string">"EthernetInterfaceCollection"</span>],
-                    <span class="hljs-string">"Manager"</span>
+                    <span class="hljs-string">"Manager"</span>,
+                    <span class="hljs-string">"EthernetInterfaceCollection"</span>
                 ],
                 <span class="hljs-attr">"OperationMap"</span>: {
-                    <span class="hljs-attr">"GET"</span>: [{
-                        <span class="hljs-attr">"Privilege"</span>: [<span class="hljs-string">"Login"</span>]
-                    }],
-                    <span class="hljs-attr">"PATCH"</span>: [{
-                        <span class="hljs-attr">"Privilege"</span>: [<span class="hljs-string">"ConfigureManager"</span>]
-                    }]
+                    <span class="hljs-attr">"GET"</span>: [
+                        {
+                            <span class="hljs-attr">"Privilege"</span>: [ <span class="hljs-string">"Login"</span> ]
+                        }
+                    ],
+                    <span class="hljs-attr">"PATCH"</span>: [
+                        {
+                            <span class="hljs-attr">"Privilege"</span>: [ <span class="hljs-string">"ConfigureManager"</span> ]
+                        }
+                    ]
                 }
-            }]
-        }
+            }
+        ]
     }
+}
 </code></pre>
 <h5 id="resourceuri-override">9.2.9.7. ResourceURI Override</h5>
 <p>In the following example use of the ResourceURI Override syntax for representing operation privilege variations for specific resource URIs is demonstrated.  The example specifies both ConfigureComponents and OEMAdminPriv privileges are required in order to perform a PATCH operation on the 2 resource URIs listed as Targets. </p>
 <pre><code class="lang-json">{
     <span class="hljs-attr">"Entity"</span>: <span class="hljs-string">"ComputerSystem"</span>,
     <span class="hljs-attr">"OperationMap"</span>: {
-        <span class="hljs-attr">"GET"</span>: [{
-            <span class="hljs-attr">"Privilege"</span>: [<span class="hljs-string">"Login"</span>]
-        }],
-        <span class="hljs-attr">"HEAD"</span>: [{ 
-            <span class="hljs-attr">"Privilege"</span>: [<span class="hljs-string">"Login"</span>]
-        }],
-        <span class="hljs-attr">"PATCH"</span>: [{
-            <span class="hljs-attr">"Privilege"</span>: [<span class="hljs-string">"ConfigureComponent"</span>]
-        }],
-        <span class="hljs-attr">"POST"</span>: [{
-            <span class="hljs-attr">"Privilege"</span>: [<span class="hljs-string">"ConfigureComponent"</span>]
-        }],
-        <span class="hljs-attr">"PUT"</span>: [{
-            <span class="hljs-attr">"Privilege"</span>: [<span class="hljs-string">"ConfigureComponent"</span>]
-        }],
-        <span class="hljs-attr">"DELETE"</span>: [{
-            <span class="hljs-attr">"Privilege"</span>: [<span class="hljs-string">"ConfigureComponent"</span>]
-        }],
-        <span class="hljs-attr">"ResourceURIOverrides"</span>: [{
-            <span class="hljs-attr">"Targets"</span>: [
-                <span class="hljs-string">"/redfish/v1/Systems/VM6"</span>,
-                <span class="hljs-string">"/redfish/v1/Systems/Sys1"</span>
-            ],
-            <span class="hljs-attr">"OperationMap"</span>: {
-                <span class="hljs-attr">"GET"</span>: [{
-                    <span class="hljs-attr">"Privilege"</span>: [<span class="hljs-string">"Login"</span>]
-                }],
-                <span class="hljs-attr">"PATCH"</span>: [{
-                    <span class="hljs-attr">"Privilege"</span>: [<span class="hljs-string">"ConfigureComponents"</span>,<span class="hljs-string">"OEMSysAdminPriv"</span>] 
-                }]
+        <span class="hljs-attr">"GET"</span>: [
+            {
+                <span class="hljs-attr">"Privilege"</span>: [ <span class="hljs-string">"Login"</span> ]
             }
-        }]
+        ],
+        <span class="hljs-attr">"HEAD"</span>: [
+            { 
+                <span class="hljs-attr">"Privilege"</span>: [ <span class="hljs-string">"Login"</span> ]
+            }
+        ],
+        <span class="hljs-attr">"PATCH"</span>: [
+            {
+                <span class="hljs-attr">"Privilege"</span>: [ <span class="hljs-string">"ConfigureComponent"</span> ]
+            }
+        ],
+        <span class="hljs-attr">"POST"</span>: [
+            {
+                <span class="hljs-attr">"Privilege"</span>: [ <span class="hljs-string">"ConfigureComponent"</span> ]
+            }
+        ],
+        <span class="hljs-attr">"PUT"</span>: [
+            {
+                <span class="hljs-attr">"Privilege"</span>: [ <span class="hljs-string">"ConfigureComponent"</span> ]
+            }
+        ],
+        <span class="hljs-attr">"DELETE"</span>: [
+            {
+                <span class="hljs-attr">"Privilege"</span>: [ <span class="hljs-string">"ConfigureComponent"</span> ]
+            }
+        ],
+        <span class="hljs-attr">"ResourceURIOverrides"</span>: [
+            {
+                <span class="hljs-attr">"Targets"</span>: [
+                    <span class="hljs-string">"/redfish/v1/Systems/VM6"</span>,
+                    <span class="hljs-string">"/redfish/v1/Systems/Sys1"</span>
+                ],
+                <span class="hljs-attr">"OperationMap"</span>: {
+                    <span class="hljs-attr">"GET"</span>: [
+                        {
+                            <span class="hljs-attr">"Privilege"</span>: [ <span class="hljs-string">"Login"</span> ]
+                        }
+                    ],
+                    <span class="hljs-attr">"PATCH"</span>: [
+                        {
+                            <span class="hljs-attr">"Privilege"</span>: [ <span class="hljs-string">"ConfigureComponents"</span>,<span class="hljs-string">"OEMSysAdminPriv"</span> ]
+                        }
+                    ]
+                }
+            }
+        ]
     }
 }
 </code></pre>
 <h5 id="privilege-and-and-or-syntax">9.2.9.8. Privilege AND and OR Syntax</h5>
 <p>Logical combinations of privileges required to perform an operation on an entity, entity element or resource are defined by the array placement of the privilege labels in the OperationMap GET, HEAD, PATCH, POST, PUT, DELETE operation element arrays.  For OR logicial combinations, the privilege label is placed in the operation element array as individual elements.  In the following example, either Login or OEMPrivilege1 privileges are required to perform a GET operation.</p>
 <pre><code class="lang-json">{
-    <span class="hljs-attr">"GET"</span>: [{<span class="hljs-attr">"Privilege"</span>: [<span class="hljs-string">"Login"</span>]}, {<span class="hljs-attr">"Privilege"</span>: [<span class="hljs-string">"OEMPrivilege1"</span>]}]
+    <span class="hljs-attr">"GET"</span>: [
+        {
+            <span class="hljs-attr">"Privilege"</span>: [ <span class="hljs-string">"Login"</span> ]
+        },
+        {
+            <span class="hljs-attr">"Privilege"</span>: [ <span class="hljs-string">"OEMPrivilege1"</span> ]
+        }
+    ]
 }
 </code></pre>
 <p>For logical AND combinations, the privilege label is placed in the Privilege property array within the operation element.  In the following example, both ConfigureComponents and OEMSysAdminPriv are required to perform a PATCH operation.</p>
 <pre><code class="lang-json">{
-    <span class="hljs-attr">"PATCH"</span>: [{<span class="hljs-attr">"Privilege"</span>: [<span class="hljs-string">"ConfigureComponents"</span>,<span class="hljs-string">"OEMSysAdminPriv"</span>]}]
+    <span class="hljs-attr">"PATCH"</span>: [
+        {
+            <span class="hljs-attr">"Privilege"</span>: [ <span class="hljs-string">"ConfigureComponents"</span>,<span class="hljs-string">"OEMSysAdminPriv"</span> ]
+        }
+    ]
 }
 </code></pre>
 <h2 id="redfish-host-interface">10. Redfish Host Interface</h2>
 <p>The Redfish Host Interface Specification defines how software executing on a host computer system can interface with a Redfish service that manages the host.  See <a href="#DSP0270">DSP0270</a> for details.</p>
-<h2 id="annex-a-informative-">11. ANNEX A (informative)</h2>
-<h3 id="change-log">11.1. Change log</h3>
+<h2 id="redfish-composability">11. Redfish Composability</h2>
+<p>A service may implement the CompositionService resource off of ServiceRoot to support the binding of resources together.  One example is disaggregated hardware, which allows for independent components, such as processors, memory, I/O controllers, and drives, to be bound together to create logical constructs that operate together.  This allows for a client to dynamically assign resources for a given application.</p>
+<h3 id="composition-requests">11.1. Composition Requests</h3>
+<p>A service that implements the CompositionService (as defined by the CompositionService schema) shall support one or more of the following types of composition requests:</p>
+<ul>
+<li><a href="#specific-composition">Specific Composition</a></li>
+</ul>
+<p>A service that supports removing a composed resource shall support the DELETE method on the composed resource.</p>
+<h4 id="specific-composition">11.1.1. Specific Composition</h4>
+<p>A Specific Composition is when a client has identified an exact set of resources in which to build a logical entity.  A service that supports Specific Composition requests shall implement the ResourceBlock resource (ResourceBlock schema) and the ResourceZone resource (Zone schema) for the CompositionService.  ResourceBlocks provide an inventory of components available to the client for building compositions.  ResourceZones describe the binding restrictions of the ResourceBlocks managed by the service.</p>
+<p>The ResourceZone resource within the CompositionService shall include the CollectionCapabilities annotation in the response.  The CollectionCapabilities annotation allows a client to discover which collections in the service support compositions, and how the POST request for the collection is formatted, as well as what properties are required.  A service that supports specific compositions shall support a POST request that contains an array of links to ResourceBlocks.  The specific nesting of the ResourceBlock array is defined by the schema for the resource being composed.</p>
+<p>A service that supports updating a composed resource shall also support the PUT and/or PATCH methods on the composed resource with a modified list of ResourceBlocks.</p>
+<p>Example Specific Composition of a ComputerSystem:</p>
+<pre><code class="lang-http"><span class="hljs-keyword">POST</span> <span class="hljs-string">/redfish/v1/Systems</span> HTTP/1.1
+<span class="hljs-attribute">Content-Type</span>: application/json;charset=utf-8
+<span class="hljs-attribute">Content-Length</span>: &lt;computed length&gt;
+<span class="hljs-attribute">OData-Version</span>: 4.0
+
+<span class="json">{
+    <span class="hljs-attr">"Name"</span>: <span class="hljs-string">"Sample Composed System"</span>,
+    <span class="hljs-attr">"Links"</span>: {
+        <span class="hljs-attr">"ResourceBlocks"</span>: [
+            { <span class="hljs-attr">"@odata.id"</span>: <span class="hljs-string">"/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock0"</span> },
+            { <span class="hljs-attr">"@odata.id"</span>: <span class="hljs-string">"/redfish/v1/CompositionService/ResourceBlocks/DriveBlock2"</span> } ,
+            { <span class="hljs-attr">"@odata.id"</span>: <span class="hljs-string">"/redfish/v1/CompositionService/ResourceBlocks/NetBlock4"</span> }
+        ]
+    }
+}
+</span></code></pre>
+<h2 id="annex-a-informative-">12. ANNEX A (informative)</h2>
+<h3 id="change-log">12.1. Change log</h3>
 <table>
 <thead>
 <tr>
@@ -2583,6 +2701,36 @@ is required, this is the default unless overridden) resources.</p>
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>1.2.0</td>
+<td>2017-4-14</td>
+<td>Added support for the Redfish Composability Service.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Clarified Service handling of the Accept-Encoding header in a request.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Improved consistency and formatting of example requests and responses throughout.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Corrected usage of the "@odata.type" property in response examples.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Clarified usage of the "Required" schema annotation.</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Clarified usage of SubordinateOverrides in the Privilege Registry.</td>
+</tr>
 <tr>
 <td>1.1.0</td>
 <td>2016-12-9</td>

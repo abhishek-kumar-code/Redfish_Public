@@ -1,0 +1,13 @@
+{
+    "@odata.context": "/redfish/v1/$metadata#SerialInterfaceCollection.SerialInterfaceCollection",
+    "@odata.id": "/redfish/v1/Managers/EncMgr2/SerialInterfaces",
+    "@odata.type": "#SerialInterfaceCollection.SerialInterfaceCollection",
+    "Name": "Serial Interface Collection",
+    "Description": "Collection of Serial Interfaces for this System",
+    "Members@odata.count": 1,
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/Managers/EncMgr2/SerialInterfaces/1"
+        }
+    ]
+}

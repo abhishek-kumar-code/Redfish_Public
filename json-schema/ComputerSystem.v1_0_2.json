@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
     "title": "#ComputerSystem.v1_0_2.ComputerSystem",
     "$ref": "#/definitions/ComputerSystem",
     "definitions": {
@@ -78,7 +78,8 @@
                     "longDescription": "The value of this property shall be the UEFI device path of the override boot target. The valid values for this property are specified through the Redfish.AllowableValues annotation. BootSourceOverrideEnabled = Continuous is not supported for UEFI Boot Source Override as this setting is defined in UEFI as a one time boot only."
                 }
             },
-            "description": "This object contains the boot information for the current resource."
+            "description": "This object contains the boot information for the current resource.",
+            "longDescription": "This type shall contain properties which describe boot information for a system."
         },
         "BootSource": {
             "type": "string",
@@ -137,10 +138,13 @@
                 "Off"
             ],
             "enumDescriptions": {
-                "Unknown": "The state of the Indicator LED cannot be determined. Deprecated: Return null if state is unknown.",
+                "Unknown": "The state of the Indicator LED cannot be determined.",
                 "Lit": "The Indicator LED is lit.",
                 "Blinking": "The Indicator LED is blinking.",
                 "Off": "The Indicator LED is off."
+            },
+            "enumDeprecated": {
+                "Unknown": "This value has been Deprecated in favor of returning null if the state is unknown."
             }
         },
         "MemorySummary": {
@@ -167,14 +171,15 @@
                     ],
                     "minimum": 0,
                     "readonly": true,
-                    "description": "The total installed, operating system-accessible memory (RAM), measured in GiB.",
-                    "longDescription": "This property shall contain the amount of system general purpose volatile (RAM) memory as measured in gibibytes."
+                    "description": "The total configured operating system-accessible memory (RAM), measured in GiB.",
+                    "longDescription": "This property shall contain the amount of configured system general purpose volatile (RAM) memory as measured in gibibytes."
                 },
                 "Status": {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
                 }
             },
-            "description": "This object describes the memory of the system in general detail."
+            "description": "This object describes the memory of the system in general detail.",
+            "longDescription": "This type shall contain properties which describe the central memory for a system."
         },
         "PowerState": {
             "type": "string",
@@ -225,13 +230,14 @@
                     ],
                     "readonly": true,
                     "description": "The processor model for the primary or majority of processors in this system.",
-                    "longDescription": "This property shall contain the processor model for the central processors in the system, per the description in Table 22 of the SMBIOS Specification DSP0134 2.8 or later."
+                    "longDescription": "This property shall contain the processor model for the central processors in the system, per the description in the Processor Information - Processor Family section of the SMBIOS Specification DSP0134 2.8 or later."
                 },
                 "Status": {
                     "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
                 }
             },
-            "description": "This object describes the central processors of the system in general detail."
+            "description": "This object describes the central processors of the system in general detail.",
+            "longDescription": "This type shall contain properties which describe the central processors for a system."
         },
         "SystemType": {
             "type": "string",
@@ -240,14 +246,16 @@
                 "Virtual",
                 "OS",
                 "PhysicallyPartitioned",
-                "VirtuallyPartitioned"
+                "VirtuallyPartitioned",
+                "Composed"
             ],
             "enumDescriptions": {
                 "Physical": "A computer system.",
                 "Virtual": "A virtual machine instance running on this system.",
                 "OS": "An operating system instance.",
                 "PhysicallyPartitioned": "A hardware-based partition of a computer system.",
-                "VirtuallyPartitioned": "A virtual or software-based partition of a computer system."
+                "VirtuallyPartitioned": "A virtual or software-based partition of a computer system.",
+                "Composed": "A computer system that has been created by binding resource blocks together."
             }
         },
         "ComputerSystem": {
@@ -539,7 +547,9 @@
                                 }
                             },
                             "additionalProperties": true,
-                            "properties": {}
+                            "properties": {},
+                            "description": "The available OEM specific actions for this resource.",
+                            "longDescription": "This type shall contain any additional OEM actions for this resource."
                         },
                         "#ComputerSystem.Reset": {
                             "$ref": "#/definitions/Reset"
@@ -584,5 +594,5 @@
             "longDescription": "This resource shall be used to represent resources that represent a computing system in the Redfish specification."
         }
     },
-    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
+    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }

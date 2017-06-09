@@ -2,12 +2,12 @@
 DocTitle: Redfish Scalable Platforms Management API Specification
 DocNumber: '0266'
 DocClass: Normative
-DocVersion: '1.1.0'
-modified: '2016-12-07'
-SupersedesVersion: '1.0.5'
+DocVersion: '1.2.0'
+modified: '2017-4-14'
+SupersedesVersion: '1.1.0'
 status: published
 released: true
-copyright: '2014-2016'
+copyright: '2014-2017'
 ---
 
 # Foreword
@@ -39,6 +39,7 @@ The DMTF acknowledges the following individuals for their contributions to this 
 * Chris Hoffman - Emerson Network Power
 * Steven Krig - Intel Corporation
 * John Leung - Intel Corporation
+* Jagan Molleti - Dell Inc.
 * Milena Natanov - Microsoft Corporation
 * Michael Pizzo - Microsoft Corporation
 * Chris Poblete - Dell Inc.
@@ -88,7 +89,7 @@ The following referenced documents are indispensable for the application of this
 * <a id="UCUM">The Unified Code for Units of Measure</a>.  [http://www.unitsofmeasure.org/ucum.html](http://www.unitsofmeasure.org/ucum.html "http://www.unitsofmeasure.org/ucum.html")
 * <a id="W3C-CORS">W3C Recommendation of Cross-Origin Resource Sharing</a>. 16 January 2014. [http://www.w3.org/TR/cors/](http://www.w3.org/TR/cors "http://www.w3.org/TR/cors/")
 * <a id="SNIA-TLS">SNIA TLS Specification for Storage Systems</a>. 20 November 2014. [http://www.snia.org/tls/](http://www.snia.org/tls/ "http://www.snia.org/tls/")
-* <a id="DSP0270">DMTF DSP0270</a> Redfish Host Interface Specification, [http://www.dmtf.org/sites/default/files/standards/documents/DSP0270_1.0.pdf] (http://www.dmtf.org/sites/default/files/standards/documents/DSP0270_1.0.pdf "http://www.dmtf.org/sites/default/files/standards/documents/DSP0270_1.0.pdf")
+* <a id="DSP0270">DMTF DSP0270</a> Redfish Host Interface Specification, [http://www.dmtf.org/sites/default/files/standards/documents/DSP0270_1.0.pdf](http://www.dmtf.org/sites/default/files/standards/documents/DSP0270_1.0.pdf "http://www.dmtf.org/sites/default/files/standards/documents/DSP0270_1.0.pdf")
 
 ## Terms and definitions
 In this document, some terms have a specific meaning beyond the normal English meaning. Those terms are defined in this clause.
@@ -328,9 +329,11 @@ For example, in the following URL:
 * The second part is the root service and version (`/redfish/v1/`).
 * The third part is the unique resource path (`Systems/1`).
 
-The scheme and authority part of the URI shall not be considered part of the unique _identifier_ of the resource. This is due to redirection capabilities and local operations which may result in the variability of the connection portion.  The remainder of the URI (the service and resource paths) is what _uniquely identifies_ the resource, and this is what is returned in all Redfish payloads.
+The scheme and authority part of the URI shall not be considered part of the unique _identifier_ of the resource.  This is due to redirection capabilities and local operations which may result in the variability of the connection portion.  The remainder of the URI (the service and resource paths) is what _uniquely identifies_ the resource within a given Redfish service.
 
 * The unique identifier part of a URI shall be unique within the implementation.
+* An implementation may use a [relative URI](#redfish-defined-uris-and-relative-uri-rules) in the payload (body and/or HTTP headers) to identify a resource within the implementation.
+* An implementation may use an absolute URI in the payload (body and/or HTTP headers) to identify a resource within a different implementation.  See [RFC3986](#RFC3986) for the absolute URI definition.
 
 For example, a POST may return the following URI in the Location header of the response (indicating the new resource created by the POST):
 
@@ -339,6 +342,8 @@ For example, a POST may return the following URI in the Location header of the r
 Assuming the client is connecting through an appliance named "mgmt.vendor.com", the full URI needed to access this new resource is `https://mgmt.vendor.com/redfish/v1/Systems/2`.
 
 URIs, as described in [RFC3986](#RFC3986), may also contain a query (?query) and a frag (#frag) components.  Queries are addressed in the clause [Query Parameters](#query-parameters).  Fragments (frag) shall be ignored by the server when used as the URI for submitting an operation.
+
+If a property in a response includes a value that contains a fragment to reference a property within a resource, it shall conform to the URI fragment identifier representation as specified in [RFC6901](#RFC6901).  If the property is defined as a [reference property](#reference-properties) within the schema, the fragment shall reference a valid [resource identifier](#resource-identifier-property).
 
 #### HTTP methods
 
@@ -375,7 +380,6 @@ In HTTP messages the media type is specified in the Content-Type header. A clien
 * Redfish Services shall make every resource available in a representation based on JSON, as specified in [RFC4627](#RFC4627). Receivers shall not reject a message because it is encoded in JSON, and shall offer at least one response representation based on JSON. An implementation may offer additional representations using non-JSON media types.
 
 Clients may request compression by specifying an [Accept-Encoding header](#request-headers) in the request.
-* Responses to GET requests shall only be compressed if requested by the client.
 * Services should support gzip compression when requested by the client.
 
 #### ETags
@@ -428,7 +432,7 @@ A GET on the resource "/redfish" shall return the following body:
 
 ~~~json
 {
-	"v1": "/redfish/v1/"
+    "v1": "/redfish/v1/"
 }
 ~~~
 
@@ -466,7 +470,7 @@ HTTP defines headers that can be used in request messages. The following table d
 | Header           | Required    | Supported Values                      | Description                                                                                                                                                                                                                                                                                                                     |
 | --------         | ---         | -----------------                     | ------------                                                                                                                                                                                                                                                                                                                    |
 | Accept           | Yes         | [RFC 7231](#RFC7231)   | Indicates to the server what media type(s) this client is prepared to accept. Services shall support requests for resources with an Accept header including `application/json` or `application/json;charset=utf-8`. Services shall support requests for metadata with an Accept header including `application/xml` or `application/xml;charset=utf-8`. |
-| Accept-Encoding  | No | [RFC 7231](#RFC7231)   | Indicates if gzip encoding can be handled by the client. If an Accept-Encoding header is present in a request and the service cannot send a response which is acceptable according to the Accept-Encoding header, then the service should respond with status code [406](#status-406). Services should not return responses gzip encoded if the Accept-Encoding header is not present in the request.                                                                                                                                      |
+| Accept-Encoding  | No | [RFC 7231](#RFC7231)   | Indicates if gzip encoding can be handled by the client. If an Accept-Encoding header is present in a request and the service cannot send a response which is acceptable according to the Accept-Encoding header, then the service should respond with status code [406](#status-406). Services should not return responses gzip encoded if the Accept-Encoding header is not present in the request.                                                                                                                                        |
 | Accept-Language  | No          | [RFC 7231](#RFC7231)   | This header is used to indicate the language(s) requested in the response. If this header is not specified, the appliance default locale will be used.                                                                                                                                                                          |
 | Content-Type     | Conditional | [RFC 7231](#RFC7231) | Describes the type of representation used in the message body. Content-Type shall be required in requests that include a request body. Services shall accept Content-Type values of `application/json` or `application/json;charset=utf-8`.                                                                                     |
 | Content-Length   | No          | [RFC 7231](#RFC7231) | Describes the size of the message body. An optional means of indicating size of the body uses Transfer-Encoding: chunked, which does not use the Content-Length header. If a service does not support Transfer-Encoding and needs Content-Length instead, the service will respond with status code [411](#status-411). |
@@ -566,6 +570,7 @@ The PATCH method is the preferred method used to perform updates on pre-existing
 * If a property in the request can never be updated, such as when a property is read only, a status code of [200](#status-200) shall be returned along with a representation of the resource containing an [annotation](#extended-information) specifying the non-updatable property. In this success case, other properties may be updated in the resource.
 * Services should return status code [405](#status-405) if the client specifies a PATCH request against a Resource Collection.
 * The PATCH operation should be idempotent in the absence of outside changes to the resource, though the original ETag value may no longer match.
+* Services may accept a PATCH with an empty JSON object.  An empty JSON object in this context means no changes to the resource are being requested.
 
 Services may have null entries for properties that are JSON arrays to show the number of entries a client is allowed to use in a PATCH request. Within a PATCH request, unchanged members within a JSON array may be specified as empty JSON objects, and clearing members within a JSON array may be specified with null.
 
@@ -626,36 +631,37 @@ Clients can query a resource directly to determine the [actions](#actions-proper
 For instance, if a Redfish Schema document `http://redfish.dmtf.org/schemas/v1/ComputerSystem_v1.xml` defines a Reset action in the `ComputerSystem` namespace, bound to the `ComputerSystem.v1_0_0.Actions` type, such as this example:
 
 ~~~xml
-<Schema Name="ComputerSystem">
-  ...
-  <Action Name="Reset" IsBound="true">
-    <Parameter Name="Resource" Type="ComputerSystem.v1_0_0.Actions"/>
-    <Parameter Name="ResetType" Type="Resource.ResetType"/>
-  </Action>
-  ...
-</Schema>
+  <Schema Name="ComputerSystem">
+    ...
+    <Action Name="Reset" IsBound="true">
+      <Parameter Name="Resource" Type="ComputerSystem.v1_0_0.Actions"/>
+      <Parameter Name="ResetType" Type="Resource.ResetType"/>
+    </Action>
+    ...
+  </Schema>
 ~~~
 
 And a computer system resource contains an [Actions](#actions-property) property such as this:
 
 ~~~json
-...
-"Actions": {
-    "#ComputerSystem.Reset": {
-        "target":"/redfish/v1/Systems/1/Actions/ComputerSystem.Reset",
-        "ResetType@Redfish.AllowableValues": [
-            "On",
-            "ForceOff",
-            "GracefulRestart",
-            "GracefulShutdown",
-            "ForceRestart",
-            "Nmi",
-            "ForceOn",
-            "PushPowerButton"
-        ]
-    }
+{
+    "Actions": {
+        "#ComputerSystem.Reset": {
+            "target":"/redfish/v1/Systems/1/Actions/ComputerSystem.Reset",
+            "ResetType@Redfish.AllowableValues": [
+                "On",
+                "ForceOff",
+                "GracefulRestart",
+                "GracefulShutdown",
+                "ForceRestart",
+                "Nmi",
+                "ForceOn",
+                "PushPowerButton"
+            ]
+        }
+    },
+    ...
 }
-...
 ~~~
 
 Then the following would represent a possible request for the Action:
@@ -722,7 +728,7 @@ Below is an example of the link headers of a ManagerAccount with a role of Admin
 
 ~~~http
 Link: </redfish/v1/AccountService/Roles/Administrator>; path=/Links/Role
-Link: <http://redfish.dmtf.org/schemas/Settings.json>   
+Link: <http://redfish.dmtf.org/schemas/Settings.json>
 Link: </redfish/v1/JsonSchemas/ManagerAccount.v1_0_2.json>; rel=describedby
 ~~~
 
@@ -768,7 +774,7 @@ The following table lists some of the common HTTP status codes. Other codes may 
 | <a id="status-415"></a>415 Unsupported Media Type | The request specifies a Content-Type for the body that is not supported.                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | <a id="status-500"></a>500 Internal Server Error  | The server encountered an unexpected condition that prevented it from fulfilling the request. An extended error shall be returned in the response body, as defined in clause [Error Responses](#error-responses).                                                                                                                                                                                                                                                                   |
 | <a id="status-501"></a>501 Not Implemented        | The server does not (currently) support the functionality required to fulfill the request.  This is the appropriate response when the server does not recognize the request method and is not capable of supporting the method for any resource.                                                                                                                                                                                                                                           |
-| <a id="status-503"></a>503 Service Unavailable    | The server is currently unable to handle the request due to temporary overloading or maintenance of the server.                                                                                                                                                                                                                                                                                                                                                                                     |
+| <a id="status-503"></a>503 Service Unavailable    | The server is currently unable to handle the request due to temporary overloading or maintenance of the server.  A service may use this response to indicate that the request URI is valid, but the service is performing initialization or other maintenance on the resource.                                                                                                                                                                                                                      |
 
 #### Metadata responses
 Metadata describes resources, Resource Collections, capabilities and service-dependent behavior to generic consumers, including OData client tools and applications with no specific understanding of this specification. Clients are not required to request metadata if they already have sufficient understanding of the target service; for example, to request and interpret a JSON representation of a resource defined in this specification.
@@ -777,74 +783,74 @@ Metadata describes resources, Resource Collections, capabilities and service-dep
 The service metadata describes top-level resources and resource types of the service according to [OData-Schema](#OData-CSDL). The Redfish Service Metadata is represented as an XML document with a root element named "Edmx", defined in the http://docs.oasis-open.org/odata/ns/edmx" namespace, and with an OData Version attribute equal to "4.0".
 
 ~~~xml
-<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
- <!-- edmx:Reference and edmx:Schema elements go here -->
-</edmx:Edmx>
+  <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <!-- edmx:Reference and edmx:Schema elements go here -->
+  </edmx:Edmx>
 ~~~
 
 ###### Referencing other schemas
 The service metadata shall include the namespaces for each of the Redfish resource types, along with the "RedfishExtensions.v1_0_0" namespace. These references may use the standard URI for the hosted Redfish Schema definitions (i.e., on http://redfish.dmtf.org/schemas) or a URI to a local version of the Redfish Schema that shall be identical to the hosted version.
 
 ~~~xml
-<edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/AccountService_v1.xml">
-  <edmx:Include Namespace="AccountService"/>
-  <edmx:Include Namespace="AccountService.v1_0_0"/>
-</edmx:Reference>
-<edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ServiceRoot_v1.xml">
-	<edmx:Include Namespace="ServiceRoot"/>
-	<edmx:Include Namespace="ServiceRoot.v1_0_0"/>
-</edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/AccountService_v1.xml">
+    <edmx:Include Namespace="AccountService"/>
+    <edmx:Include Namespace="AccountService.v1_0_0"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ServiceRoot_v1.xml">
+    <edmx:Include Namespace="ServiceRoot"/>
+    <edmx:Include Namespace="ServiceRoot.v1_0_0"/>
+  </edmx:Reference>
 
-...
+  ...
 
-<edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/VirtualMedia_v1.xml">
-  <edmx:Include Namespace="VirtualMedia"/>
-  <edmx:Include Namespace="VirtualMedia.v1_0_0"/>
-</edmx:Reference>
-<edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
-	<edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
-</edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/VirtualMedia_v1.xml">
+    <edmx:Include Namespace="VirtualMedia"/>
+    <edmx:Include Namespace="VirtualMedia.v1_0_0"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+  </edmx:Reference>
 ~~~
 
-The service metadata shall include an entity container that defines the top level resources and Resource Collections. An implementation may extend the ServiceContainer defined in the ServiceRoot.v1_0_0 schema and may include additional resources.
+The service's [Metadata Document](#metadata-document-request) shall include an EntityContainer that defines the top level resources and Resource Collections. An implementation may extend the ServiceContainer defined in the ServiceRoot schema for the implementation's [OData Service Document](#odata-service-document-request).
 
 ~~~xml
-<edmx:DataServices>
+  <edmx:DataServices>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Service">
       <EntityContainer Name="Service" Extends="ServiceRoot.v1_0_0.ServiceContainer"/>
     </Schema>
-</edmx:DataServices>
+  </edmx:DataServices>
 ~~~
 
 ###### Referencing OEM extensions
 The metadata document may reference additional schema documents describing OEM-specific extensions used by the service, for example custom types for additional Resource Collections.
 
 ~~~xml
-<edmx:Reference Uri="http://contoso.org/Schema/CustomTypes">
-	<edmx:Include Namespace="CustomTypes"/>
-</edmx:Reference>
+  <edmx:Reference Uri="http://contoso.org/Schema/CustomTypes">
+    <edmx:Include Namespace="CustomTypes"/>
+  </edmx:Reference>
 ~~~
 
 ###### Annotations
 The service can annotate sets, types, actions and parameters with Redfish-defined or custom annotation terms. These annotations are typically in a separate Annotations file referenced from the service metadata document using the IncludeAnnotations directive.
 
 ~~~xml
-<edmx:Reference Uri="http://service/metadata/Service.Annotations">
-	<edmx:IncludeAnnotations TermNamespace="Annotations.v1_0_0"/>
-</edmx:Reference>
+  <edmx:Reference Uri="http://service/metadata/Service.Annotations">
+    <edmx:IncludeAnnotations TermNamespace="Annotations.v1_0_0"/>
+  </edmx:Reference>
 ~~~
 
 The annotation file itself specifies the Target Redfish Schema element being annotated, the Term being applied, and the value of the term:
 
 ~~~xml
-<Annotations Target="ComputerSystem.Reset/ResetType">
-  <Annotation Term="Annotation.AdditionalValues">
-    <Collection>
-      <String>Update and Restart</String>
-      <String>Update and PowerOff</String>
-    </Collection>
-  </Annotation>
-</Annotations>
+  <Annotations Target="ComputerSystem.Reset/ResetType">
+    <Annotation Term="Annotation.AdditionalValues">
+      <Collection>
+        <String>Update and Restart</String>
+        <String>Update and PowerOff</String>
+      </Collection>
+    </Annotation>
+  </Annotations>
 ~~~
 
 ##### OData Service Document
@@ -918,9 +924,10 @@ Expanded [reference properties](#reference-properties) shall be included in the 
 For example, the following context URL specifies that the result contains a single ComputerSystem resource:
 
 ~~~json
-...
-"@odata.context":"/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
-...
+{
+    "@odata.context":"/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
+    ...
+}
 ~~~
 
 ##### Resource identifier property
@@ -933,7 +940,7 @@ The resource identifier is the canonical URL for the resource and can be used to
 
 ##### Type property
 
-All resources in a response shall include a type property named "@odata.type". The value of the type property shall be a URL fragment that specifies the type of the resource as defined within, or referenced by, the [metadata document](#service-metadata) and shall be of the form:
+All resources in a response shall include a type property named "@odata.type". All embedded objects in a response should include a type property named "@odata.type." The value of the type property shall be a URL fragment that specifies the type of the resource as defined within, or referenced by, the [metadata document](#service-metadata) and shall be of the form:
 
   #*Namespace*.*TypeName*
 
@@ -999,21 +1006,22 @@ The property representing the available action may be annotated with the [Allowa
 For example, the following property represents the Reset action, defined in the ComputerSystem namespace:
 
 ~~~json
-...
-"#ComputerSystem.Reset": {
-   "target":"/redfish/v1/Systems/1/Actions/ComputerSystem.Reset",
-   "ResetType@Redfish.AllowableValues": [
-       "On",
-       "ForceOff",
-       "GracefulRestart",
-       "GracefulShutdown",
-       "ForceRestart",
-       "Nmi",
-       "ForceOn",
-       "PushPowerButton"
-       ]
-   }
-...
+{
+    "#ComputerSystem.Reset": {
+        "target":"/redfish/v1/Systems/1/Actions/ComputerSystem.Reset",
+        "ResetType@Redfish.AllowableValues": [
+            "On",
+            "ForceOff",
+            "GracefulRestart",
+            "GracefulShutdown",
+            "ForceRestart",
+            "Nmi",
+            "ForceOn",
+            "PushPowerButton"
+        ]
+    },
+    ...
+}
 ~~~
 
 Given this, the client could invoke a POST request to /redfish/v1/Systems/1/Actions/ComputerSystem.Reset with the following body:
@@ -1044,11 +1052,11 @@ A reference to a single resource is returned as a JSON object containing a singl
 
 ~~~json
 {
-  "Links" : {
-    "ManagedBy": {
-      "@odata.id":"/redfish/v1/Chassis/Encl1"
+    "Links" : {
+        "ManagedBy": {
+            "@odata.id":"/redfish/v1/Chassis/Encl1"
+        }
     }
-  }
 }
 ~~~
 
@@ -1058,16 +1066,16 @@ A reference to a set of zero or more related resources is returned as an array o
 
 ~~~json
 {
-  "Links" : {
-    "Contains" : [
-    {
-      "@odata.id":"/redfish/v1/Chassis/1"
-    },
-    {
-      "@odata.id":"/redfish/v1/Chassis/Encl1"
+    "Links" : {
+        "Contains" : [
+            {
+                "@odata.id":"/redfish/v1/Chassis/1"
+            },
+            {
+                "@odata.id":"/redfish/v1/Chassis/Encl1"
+            }
+        ]
     }
-    ]
-  }
 }
 ~~~
 
@@ -1077,7 +1085,7 @@ OEM-specific properties are nested under an [OEM property](#oem-property).
 
 ##### Partial resource results
 
-Responses representing a single resource shall not be broken into multiple results.
+Responses representing a single resource shall not be broken into multiple results. See [partial results](#nextlink-property-and-partial-results) for details about the format of these responses.
 
 ##### Extended information
 
@@ -1148,13 +1156,13 @@ An individual property within a JSON object can be annotated with extended infor
     "ConnectorType": "RJ45",
     "PinOut": "Cyclades",
     "PinOut@Message.ExtendedInfo" : [
-		{
-           "MessageId": "Base.1.0.PropertyValueNotInList",
-           "Message": "The value Contoso for the property PinOut is not in the list of acceptable values.",
-           "Severity": "Warning",
-           "Resolution": "Choose a value from the enumeration list that the implementation can support and resubmit the request if the operation failed."
-         }
-     ]
+        {
+            "MessageId": "Base.1.0.PropertyValueNotInList",
+            "Message": "The value Contoso for the property PinOut is not in the list of acceptable values.",
+            "Severity": "Warning",
+            "Resolution": "Choose a value from the enumeration list that the implementation can support and resubmit the request if the operation failed."
+        }
+    ]
 }
 ~~~
 
@@ -1240,11 +1248,11 @@ Error responses are defined by an extended error resource, represented as a sing
         "message": "A general error has occurred. See ExtendedInfo for more information.",
         "@Message.ExtendedInfo": [
             {
-                "@odata.type" : "/redfish/v1/$metadata#Message.v1_0_0.Message",
+                "@odata.type" : "#Message.v1_0_0.Message",
                 "MessageId": "Base.1.0.PropertyValueNotInList",
                 "RelatedProperties": [
-					"#/IndicatorLED"
-				],
+                    "#/IndicatorLED"
+                ],
                 "Message": "The value Red for the property IndicatorLED is not in the list of acceptable values",
                 "MessageArgs": [
                     "RED",
@@ -1254,11 +1262,11 @@ Error responses are defined by an extended error resource, represented as a sing
                 "Resolution": "Remove the property from the request body and resubmit the request if the operation failed"
             },
             {
-                "@odata.type" : "/redfish/v1/$metadata#Message.v1_0_0.Message",
+                "@odata.type" : "#Message.v1_0_0.Message",
                 "MessageId": "Base.1.0.PropertyNotWriteable",
                 "RelatedProperties": [
-					"#/SKU"
-				],
+                    "#/SKU"
+                ],
                 "Message": "The property SKU is a read only property and cannot be assigned a value",
                 "MessageArgs": [
                     "SKU"
@@ -1422,9 +1430,9 @@ Schema referenced from the implementation, either from the OData Service Documen
 The outer element of the OData Schema representation document shall be the `Edmx` element, and shall have a `Version` attribute with a value of "4.0".
 
 ~~~xml
-<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
- <!-- edmx:Reference and edmx:DataService elements go here -->
-</edmx:Edmx>
+  <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <!-- edmx:Reference and edmx:DataService elements go here -->
+  </edmx:Edmx>
 ~~~
 
 ##### Referencing other schemas
@@ -1444,7 +1452,7 @@ Type definitions generally reference the OData and Redfish namespaces for common
     <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
-	<edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
@@ -1477,13 +1485,13 @@ Redfish resources derive from a common resource base type named "Resource" in th
 The EntityType contains the [property](#resource-properties) and [reference property](#reference-properties) elements that define the resource, as well as annotations describing the resource.
 
 ~~~xml
-      <EntityType Name="TypeA" BaseType="Resource.v1_0_0.Resource">
-        <Annotation Term="OData.Description" String="This is the description of TypeA."/>
-        <Annotation Term="OData.LongDescription" String="This is the specification of TypeA."/>
+  <EntityType Name="TypeA" BaseType="Resource.v1_0_0.Resource">
+    <Annotation Term="OData.Description" String="This is the description of TypeA."/>
+    <Annotation Term="OData.LongDescription" String="This is the specification of TypeA."/>
 
-		<!-- Property and Reference Property definitions go here -->
+    <!-- Property and Reference Property definitions go here -->
 
-      </EntityType>
+  </EntityType>
 ~~~
 
 All resources shall include [Description](#description) and [LongDescription](#long-description) annotations.
@@ -1497,13 +1505,13 @@ Property names in the Request and Response JSON Payload shall match the casing o
 Properties that must have a non-nullable value include the [nullable attribute](#non-nullable-properties) with a value of "false".
 
 ~~~xml
-        <Property Name="Property1" Type="Edm.String" Nullable="false">
-          <Annotation Term="OData.Description" String="This is a property of TypeA."/>
-          <Annotation Term="OData.LongDescription" String="This is the specification of Property1."/>
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="Redfish.Required"/>
-          <Annotation Term="Measures.Unit" String="Watts"/>
-        </Property>
+  <Property Name="Property1" Type="Edm.String" Nullable="false">
+    <Annotation Term="OData.Description" String="This is a property of TypeA."/>
+    <Annotation Term="OData.LongDescription" String="This is the specification of Property1."/>
+    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+    <Annotation Term="Redfish.Required"/>
+    <Annotation Term="Measures.Unit" String="Watts"/>
+  </Property>
 ~~~
 
 All properties shall include [Description](#description) and [LongDescription](#long-description) annotations.
@@ -1541,13 +1549,13 @@ Structured types are defined within a [namespace](#namespace-definitions) using 
 Structured types may be reused across different properties of different resource types.
 
 ~~~xml
-      <ComplexType Name="PropertyTypeA">
-        <Annotation Term="OData.Description" String="This is type used to describe a structured property."/>
-        <Annotation Term="OData.LongDescription" String="This is the specification of the type."/>
+  <ComplexType Name="PropertyTypeA">
+    <Annotation Term="OData.Description" String="This is type used to describe a structured property."/>
+    <Annotation Term="OData.LongDescription" String="This is the specification of the type."/>
 
-		<!-- Property and Reference Property definitions go here -->
+    <!-- Property and Reference Property definitions go here -->
 
-      </ComplexType>
+  </ComplexType>
 ~~~
 
 Structured types can contain [properties](#resource-properties), [reference properties](#reference-properties) and annotations.
@@ -1564,16 +1572,16 @@ EnumType elements contain `Member` elements that define the members of the enume
 
 
 ~~~xml
-      <EnumType Name="EnumTypeA">
-        <Annotation Term="OData.Description" String="This is the EnumTypeA enumeration."/>
-        <Annotation Term="OData.LongDescription" String="This is used to describe the EnumTypeA enumeration."/>
-        <Member Name="MemberA">
-          <Annotation Term="OData.Description" String="Description of MemberA"/>
-        </Member>
-        <Member Name="MemberB">
-          <Annotation Term="OData.Description" String="Description of MemberB"/>
-        </Member>
-      </EnumType>
+  <EnumType Name="EnumTypeA">
+    <Annotation Term="OData.Description" String="This is the EnumTypeA enumeration."/>
+    <Annotation Term="OData.LongDescription" String="This is used to describe the EnumTypeA enumeration."/>
+    <Member Name="MemberA">
+      <Annotation Term="OData.Description" String="Description of MemberA"/>
+    </Member>
+    <Member Name="MemberB">
+      <Annotation Term="OData.Description" String="Description of MemberB"/>
+    </Member>
+  </EnumType>
 ~~~
 
 Enumeration Types shall include [Description](#description) and [LongDescription](#long-description) annotations.
@@ -1595,7 +1603,7 @@ where *NamespaceQualifiedTypeName* is the namespace qualified name of the primit
 The AdditionalProperties annotation term is used to specify whether a type can contain additional properties outside of those defined. Types annotated with the AdditionalProperties annotation with a value of `"False"`, shall not contain additional properties.
 
 ~~~xml
-		<Annotation Term="OData.AdditionalProperties"/>
+  <Annotation Term="OData.AdditionalProperties"/>
 ~~~
 
 The `AdditionalProperties` annotation term is defined in https://tools.oasis-open.org/version-control/browse/wsvn/odata/trunk/spec/vocabularies/Org.OData.Core.V1.xml.
@@ -1605,7 +1613,7 @@ The `AdditionalProperties` annotation term is defined in https://tools.oasis-ope
 Properties may include the Nullable attribute with a value of false to specify that the property cannot contain null values. A property with a nullable attribute with a value of `"true"`, or no nullable attribute, can accept null values.
 
 ~~~xml
-      <Property Name="Property1" Type="Edm.String" Nullable="false">
+  <Property Name="Property1" Type="Edm.String" Nullable="false">
 ~~~
 
 ##### Read-only properties
@@ -1613,19 +1621,19 @@ Properties may include the Nullable attribute with a value of false to specify t
 The Permissions annotation term can be applied to a property with the value of `OData.Permission/Read` in order to specify that it is read-only.
 
 ~~~xml
-	    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+  <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
 ~~~
 
 The `Permissions` annotation term is defined in http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Core.V1.xml.
 
 ##### Required properties
 
-The Required annotation or Nullable attribute is used to specify that a property is required to be supported by services. Required properties shall be annotated with the Required annotation, or annotated with a Nullable attribute with a value of `"false"`. All other properties are optional.
+The Required annotation is used to specify that a property is required to be supported by services. Required properties shall be annotated with the Required annotation. All other properties are optional.
 
 If an implementation supports a property, it shall always provide a value for that property.  If a value is unknown, then null is an acceptable values in most cases. Properties not returned from a GET operation shall indicate that the property is not currently supported by the implementation.
 
 ~~~xml
-		<Annotation Term="Redfish.Required"/>
+  <Annotation Term="Redfish.Required"/>
 ~~~
 
 The `Required` annotation term is defined in http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml.
@@ -1635,7 +1643,7 @@ The `Required` annotation term is defined in http://redfish.dmtf.org/schemas/v1/
 The RequiredOnCreate annotation term is used to specify that a property is required to be specified on creation of the resource. Properties not annotated with the RequiredOnCreate annotation, or annotated with a `Boolean` attribute with a value of `"false"`, are not required on create.
 
 ~~~xml
-		<Annotation Term="Redfish.RequiredOnCreate"/>
+  <Annotation Term="Redfish.RequiredOnCreate"/>
 ~~~
 
 The `RequiredOnCreate` annotation term is defined in http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml.
@@ -1647,7 +1655,7 @@ In addition to following [naming conventions](#common-naming-conventions), prope
 The value of the annotation should be a string which contains the case-sensitive "(c/s)" symbol of the unit of measure as listed in the [Unified Code for Units of Measure (UCUM)](#UCUM), unless the symbolic representation does not reflect common usage (e.g., "RPM" is commonly used to report fan speeds in revolutions-per-minute, but has no simple UCUM representation).  For units with prefixes (e.g., Mebibyte (1024^2 bytes), which has the UCUM prefix "Mi" and symbol "By"), the case-sensitive "(c/s)" symbol for the prefix as listed in UCUM should be prepended to the unit symbol.  For values which also include rate information (e.g., megabits per second), the rate unit's symbol should be appended and use a "/" slash character as a separator (e.g., "Mbit/s").
 
 ~~~xml
-	    <Annotation Term="Measures.Unit" String="MiBy"/>
+  <Annotation Term="Measures.Unit" String="MiBy"/>
 ~~~
 
 The `Unit` annotation term is defined in http://docs.oasis-open.org/odata/odata/v4.0/os/vocabularies/Org.OData.Measures.V1.xml.
@@ -1659,11 +1667,11 @@ Properties that reference other resources are represented as reference propertie
 If the property references a single type, the value of the type attribute is the namespace qualified name of the related resource type.
 
 ~~~xml
-      <NavigationProperty Name="RelatedType" Type="MyTypes.TypeB">
-        <Annotation Term="OData.Description" String="This property references a related resource."/>
-        <Annotation Term="OData.LongDescription" String="This is the specification of the related property."/>
-		<Annotation Term="OData.AutoExpandReferences"/>
-      </NavigationProperty>
+  <NavigationProperty Name="RelatedType" Type="MyTypes.TypeB">
+    <Annotation Term="OData.Description" String="This property references a related resource."/>
+    <Annotation Term="OData.LongDescription" String="This is the specification of the related property."/>
+    <Annotation Term="OData.AutoExpandReferences"/>
+  </NavigationProperty>
 ~~~
 
 If the property references a collection of resources, the value of the type attribute is of the form:
@@ -1673,11 +1681,11 @@ If the property references a collection of resources, the value of the type attr
 where NamespaceQualifiedTypeName is the namespace qualified name of the type of related resources.
 
 ~~~xml
-      <NavigationProperty Name="RelatedTypes" Type="Collection(MyTypes.TypeB)" Nullable="false">
-        <Annotation Term="OData.Description" String="This property represents a collection of related resources."/>
-        <Annotation Term="OData.LongDescription" String="This is the specification of the related property."/>
-		<Annotation Term="OData.AutoExpandReferences"/>
-      </NavigationProperty>
+  <NavigationProperty Name="RelatedTypes" Type="Collection(MyTypes.TypeB)">
+    <Annotation Term="OData.Description" String="This property represents a collection of related resources."/>
+    <Annotation Term="OData.LongDescription" String="This is the specification of the related property."/>
+    <Annotation Term="OData.AutoExpandReferences"/>
+  </NavigationProperty>
 ~~~
 
 All reference properties shall include [Description](#description) and [LongDescription](#long-description) annotations.
@@ -1688,20 +1696,20 @@ Reference properties whose members are contained by the referencing resource are
 
 For example, to specify that a Chassis resource contains a Power resource, you would specify `ContainsTarget=true` on the resource property representing the Power Resource within the Chassis type definition.
 
-~~~~xml
-        <NavigationProperty Name="Power" Type="Power.Power" ContainsTarget="true">
-          <Annotation Term="OData.Description" String="A reference to the power properties (power supplies, power policies, sensors) for this chassis."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resource that represents the power characteristics of this chassis and shall be of type Power."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>
-~~~~
+~~~xml
+  <NavigationProperty Name="Power" Type="Power.Power" ContainsTarget="true">
+    <Annotation Term="OData.Description" String="A reference to the power properties (power supplies, power policies, sensors) for this chassis."/>
+    <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resource that represents the power characteristics of this chassis and shall be of type Power."/>
+    <Annotation Term="OData.AutoExpandReferences"/>
+  </NavigationProperty>
+~~~
 
 ##### Expanded references
 
 Reference properties in a Redfish JSON payload are expanded to include the [related resource id](#reference-to-a-single-related-resource) or [collection of related resource ids](#array-of-references-to-related-resources). This behavior is expressed using the AutoExpandReferences annotation.
 
 ~~~xml
-		<Annotation Term="OData.AutoExpandReferences"/>
+  <Annotation Term="OData.AutoExpandReferences"/>
 ~~~
 
 The `AutoExpandReferences` annotation term is defined in https://tools.oasis-open.org/version-control/browse/wsvn/odata/trunk/spec/vocabularies/Org.OData.Core.V1.xml.
@@ -1711,7 +1719,7 @@ The `AutoExpandReferences` annotation term is defined in https://tools.oasis-ope
 This term can be applied to a [reference property](#reference-properties) in order to specify that the default behavior for the service is to expand the related [resource](#structured-properties) or Resource Collection in responses.
 
 ~~~xml
-		<Annotation Term="OData.AutoExpand"/>
+  <Annotation Term="OData.AutoExpand"/>
 ~~~
 
 The `AutoExpand` annotation term is defined in https://tools.oasis-open.org/version-control/browse/wsvn/odata/trunk/spec/vocabularies/Org.OData.Core.V1.xml.
@@ -1721,14 +1729,14 @@ The `AutoExpand` annotation term is defined in https://tools.oasis-open.org/vers
 Actions are grouped under a property named "Actions".
 
 ~~~xml
-	  <Property Name="Actions" Type="MyType.Actions">
+  <Property Name="Actions" Type="MyType.Actions">
 ~~~
 
 The type of the Actions property is a [structured type](#structured-types) with a single OEM property whose type is a structured type with no defined properties.
 
 ~~~xml
   <ComplexType Name="Actions">
-	<Property Name="OEM" Type="MyType.OEMActions"/>
+    <Property Name="OEM" Type="MyType.OEMActions"/>
   </ComplexType>
 
   <ComplexType Name="OEMActions"/>
@@ -1760,33 +1768,34 @@ In the context of this clause, the term OEM refers to any company, manufacturer,
 Correct use of the Oem property requires defining the metadata for an OEM-specified complex type that can be referenced within the Oem property. The following fragment is an example of an XML schema that defines a pair of OEM-specific properties under the complex type "AnvilType1". (Other schema elements that would typically be present, such as XML and OData schema description identifiers, are not shown in order to simplify the example).
 
 ~~~xml
-<Schema Name="Contoso.v1_2_0">
-  ...
-  <ComplexType Name="AnvilType1">
-    <Property Name="slogan" Type="Edm.String"/>
-    <Property Name="disclaimer" Type="Edm.String"/>
-  </ComplexType>
-  ...
-</Schema>
+  <Schema Name="Contoso.v1_2_0">
+    ...
+    <ComplexType Name="AnvilType1">
+      <Property Name="slogan" Type="Edm.String"/>
+      <Property Name="disclaimer" Type="Edm.String"/>
+    </ComplexType>
+    ...
+  </Schema>
 ~~~
 
 The next fragment shows an example of how the previous schema and the "AnvilType1" property type might appear in the instantiation of an Oem property as the result of a GET on a resource. The example shows two required elements in the use of the Oem property: A name for the object and a type property for the object. Detailed requirements for these elements are provided in the following clauses.
 
-```json
-...
-  "Oem": {
-    "Contoso": {
-      "@odata.type": "http://Contoso.com/schemas/extensions.v1_2_0#contoso.AnvilType1",
-      "slogan": "Contoso anvils never fail",
-      "disclaimer": "* Most of the time"
-    }
-  }
-...
-```
+~~~json
+{
+    "Oem": {
+        "Contoso": {
+            "@odata.type": "#Contoso.v1_2_0.AnvilType1",
+            "slogan": "Contoso anvils never fail",
+            "disclaimer": "* Most of the time"
+        }
+    },
+    ...
+}
+~~~
 
 ##### Oem property format and content
 
-OEM-specified objects that are contained within the [Oem property](#oem-property) shall be valid JSON objects that follow the format of a Redfish [complex type](#resource-type-definitions). The name of the object (property) shall uniquely identify the OEM or organization that manages the top of the namespace under which the property is defined. This is described in more detail in the following clause. The OEM-specified property shall also include a [type property](#type-property) that provides the location of the schema and the type definition for the property within that schema. The Oem property can simultaneously hold multiple OEM-specified objects, including objects for more than one company or organization.
+Each property contained within the [Oem property](#oem-property) shall be a JSON object.  The name of the object (property) shall uniquely identify the OEM or organization that defines the properties contained by that object.  This is described in more detail in the following clause.  The OEM-specified object shall also include a [type property](#type-property) that provides the location of the schema and the type definition for the property within that schema.  The Oem property can simultaneously hold multiple OEM-specified objects, including objects for more than one company or organization.
 
 The definition of any other properties that are contained within the OEM-specific complex type, along with the functional specifications, validation, or other requirements for that content is OEM-specific and outside the scope of this specification. While there are no Redfish-specified limits on the size or complexity of the OEM-specified elements within an OEM-specified JSON object, it is intended that OEM properties will typically only be used for a small number of simple properties that augment the Redfish resource. If a large number of objects or a large quantity of data (compared to the size of the Redfish resource) is to be supported, the OEM should consider having the OEM-specified object point to a separate resource for their extensions.
 
@@ -1806,63 +1815,62 @@ The OEM identifier portion of the name will typically identify the company or or
 #### Oem property examples
 The following fragment presents some examples of naming and use of the Oem property as it might appear when accessing a resource. The example shows that the OEM identifiers can be of different forms, that OEM-specified content can be simple or complex, and that the format and usage of extensions of the OEM identifier is OEM-specific.
 
-
-```json
-...
-  "Oem": {
-    "Contoso": {
-      "@odata.type": "http://contoso.com/schemas/extensions.v1_2_1#contoso.AnvilTypes1",
-      "slogan": "Contoso anvils never fail",
-      "disclaimer": "* Most of the time"
+~~~json
+{
+    "Oem": {
+        "Contoso": {
+            "@odata.type": "#Contoso.v1_2_1.AnvilTypes1",
+            "slogan": "Contoso anvils never fail",
+            "disclaimer": "* Most of the time"
+        },
+        "Contoso_biz": {
+            "@odata.type": "#ContosoBiz.v1_1.RelatedSpeed",
+            "speed" : "ludicrous"
+        },
+        "EID_412_ASB_123": {
+            "@odata.type": "#OtherSchema.v1_0_1.powerInfoExt",
+            "readingInfo": {
+                "readingAccuracy": "5",
+                "readingInterval": "20"
+            }
+        },
+        "Contoso_customers_customerA": {
+            "@odata.type" : "#ContosoCustomer.v2015.slingPower",
+            "AvailableTargets" : [ "rabbit", "duck", "runner" ],
+            "launchPowerOptions" : [ "low", "medium", "eliminate" ],
+            "powerSetting" : "eliminate",
+            "targetSetting" : "rabbit"
+        }
     },
-    "Contoso_biz": {
-      "@odata.type": "http://contoso.biz/schemas/extension1_1#RelatedSpeed",
-      "speed" : "ludicrous"
-    },
-    "EID_412_ASB_123": {
-      "@odata.type": "http://AnotherStandardsBody/schemas.v1_0_1#powerInfoExt",
-      "readingInfo": {
-        "readingAccuracy": "5",
-        "readingInterval": "20"
-      }
-    },
-    "Contoso_customers_customerA": {
-      "@odata.type" : "http://slingShots.customerA.com/catExt.2015#slingPower",
-      "AvailableTargets" : [ "rabbit", "duck", "runner" ],
-      "launchPowerOptions" : [ "low", "medium", "eliminate" ],
-      "powerSetting" : "eliminate",
-      "targetSetting" : "rabbit"
-    }
-  }
-...
-```
+    ...
+}
+~~~
 
 ##### Custom actions
 
 OEM-specific actions can be defined by defining actions bound to the OEM property of the [resource's Actions](#resource-actions) property type.
 
 ~~~xml
-
   <Action Name="Ping" IsBound="true">
     <Parameter Name="ContosoType" Type="MyType.OEMActions"/>
   </Action>
-
-</Schema>
 ~~~
 
 Such bound actions appear in the JSON payload as properties of the Oem type, nested under an [Actions property](#actions-property).
 
-```json
-...
-"Actions": {
-	"OEM": {
-		"Contoso.vx_x_x#Contoso.Ping": {
-			    "target":"/redfish/v1/Systems/1/Actions/OEM/Contoso.Ping"
-		    }
-		}
-	}
-...
-```
+~~~json
+{
+    "Actions": {
+        "OEM": {
+            "Contoso.vx_x_x#Contoso.Ping": {
+                "target":"/redfish/v1/Systems/1/Actions/OEM/Contoso.Ping"
+            }
+        }
+    },
+    ...
+}
+~~~
+
 ##### Custom annotations
 
 This specification defines a set of common annotations for extending the definition of resource types used by Redfish. In addition, services may define custom annotations.
@@ -2106,14 +2114,14 @@ For UPnP compatibility, the managed device should provide clients with the LOCAT
 
 An example response to an M-SEARCH multicast or unicast query shall follow the format shown below.  Fields in brackets are placeholders for device-specific values.
 
-```http
+~~~http
 HTTP/1.1 200 OK
 CACHE-CONTROL:max-age=<seconds, at least 1800>
 ST:urn:dmtf-org:service:redfish-rest:1
 USN:uuid:<UUID of Manager>::urn:dmtf-org:service:redfish-rest:1
 AL:<URL of Redfish service root>
 EXT:
-```
+~~~
 
 #### Notify, alive, and shutdown messages
 
@@ -2210,8 +2218,8 @@ includes orphaned session timeout and number of simultaneous open sessions.
 
 For functionality requiring multiple Redfish operations, or for security reasons, a client may create a Redfish Login Session via the session management interface.  The URI used for session management is specified in the Session Service.  The URI for establishing a session can be found in the SessionService's Session property or in the Service Root's Links Section under the Sessions property.  Both URIs shall be the same.
 
-```json
-...
+~~~json
+{
     "SessionService": {
         "@odata.id": "/redfish/v1/SessionService"
     },
@@ -2219,15 +2227,16 @@ For functionality requiring multiple Redfish operations, or for security reasons
         "Sessions": {
             "@odata.id": "/redfish/v1/SessionService/Sessions"
         }
-    }
-...
-```
+    },
+    ...
+}
+~~~
 
 ##### Session login
 
 A Redfish session is created, without requiring an authentication header, by an HTTP POST to the SessionService' Sessions Resource Collection, including the following POST body:
 
-```http
+~~~http
 POST /redfish/v1/SessionService/Sessions HTTP/1.1
 Host: <host-path>
 Content-Type: application/json;charset=utf-8
@@ -2239,7 +2248,7 @@ OData-Version: 4.0
     "UserName": "<username>",
     "Password": "<password>"
 }
-```
+~~~
 
 The Origin header should be saved in reference to this session creation and compared to subsequent requests using this session to verify the request has been initiated from an authorized client domain.
 
@@ -2249,7 +2258,7 @@ The response to the POST request to create a session includes:
 *  a "Location header that contains a link to the newly created session resource.
 *  The JSON response body that contains a full representation of the newly created session object:
 
-```http
+~~~http
 Location: /redfish/v1/SessionService/Sessions/1
 X-Auth-Token: <session-auth-token>
 
@@ -2262,7 +2271,7 @@ X-Auth-Token: <session-auth-token>
     "Description": "User Session",
     "UserName": "<username>"
 }
-```
+~~~
 
 The client sending the session login request should save the "Session Auth Token" and the link returned in the Location header.
 The "Session Auth Token" is used to authentication subsequent requests by setting the Request Header "X-Auth-Token with the "Session Auth Token" received from the login POST.
@@ -2380,28 +2389,40 @@ the privileges required for various operations on Manager entity.  Unless mappin
 privilege mapping would represent behavior for all Manager resources in a service implementation.
 ~~~json
 {
-		"Entity": "Manager",
-		"OperationMap": {
-			"GET": [{
-				"Privilege": ["Login"]
-			}],
-			"HEAD": [{ 
-				"Privilege": ["Login"]
-			}],
-			"PATCH": [{
-				"Privilege": ["ConfigureManager"]
-			}],
-			"POST": [{
-				"Privilege": ["ConfigureManager"]
-			}],
-			"PUT": [{
-				"Privilege": ["ConfigureManager"]
-			}],
-			"DELETE": [{
-				"Privilege": ["ConfigureManager"]
-			}]
-		}
-	}
+    "Entity": "Manager",
+    "OperationMap": {
+        "GET": [
+            {
+                "Privilege": [ "Login" ]
+            }
+        ],
+        "HEAD": [
+            {
+                "Privilege": [ "Login" ]
+            }
+        ],
+        "PATCH": [
+            {
+                "Privilege": [ "ConfigureManager" ]
+            }
+        ],
+        "POST": [
+            {
+                "Privilege": [ "ConfigureManager" ]
+            }
+        ],
+        "PUT": [
+            {
+                "Privilege": [ "ConfigureManager" ]
+            }
+        ],
+        "DELETE": [
+            {
+                "Privilege": [ "ConfigureManager" ]
+            }
+        ]
+    }
+}
 ~~~
 
 ##### Mapping Overrides Syntax
@@ -2424,90 +2445,127 @@ resource requires the "ConfigureSelf" or the "ConfigureUser" privilege to change
 required for the rest of the properties on ManagerAccount resources.
 ~~~json
 {
-		"Entity": "ManagerAccount",
-		"OperationMap": {
-			"GET": [{
-				"Privilege": ["ConfigureManager"]
-			}, {
-				"Privilege": ["ConfigureUser"]
-			}, {
-				"Privilege": ["ConfigureSelf"]
-			}],
-			"HEAD": [{ 
-				"Privilege": ["Login"]
-			}],
-			"PATCH": [{
-				"Privilege": ["ConfigureUser"]
-			}],
-			"POST": [{
-				"Privilege": ["ConfigureUser"]
-			}],
-			"PUT": [{
-				"Privilege": ["ConfigureUser"]
-			}],
-			"DELETE": [{
-				"Privilege": ["ConfigureUser"]
-			}]
-		},
-		"PropertyOverrides": [{
-			"Targets": ["Password"],
-			"OperationMap": {
-				"GET": [{
-					"Privilege": "ConfigureManager"
-				}],
-				"PATCH": [{
-					"Privilege": ["ConfigureManager"]
-				}, {
-					"Privilege": ["ConfigureSelf"]
-				}]
-			}
-		}]
-	}
+    "Entity": "ManagerAccount",
+    "OperationMap": {
+        "GET": [
+            {
+                "Privilege": [ "ConfigureManager" ]
+            },
+            {
+                "Privilege": [ "ConfigureUser" ]
+            },
+            {
+                "Privilege": [ "ConfigureSelf" ]
+            }
+        ],
+        "HEAD": [
+            {
+                "Privilege": [ "Login" ]
+            }
+        ],
+        "PATCH": [
+            {
+                "Privilege": [ "ConfigureUser" ]
+            }
+        ],
+        "POST": [
+            {
+                "Privilege": [ "ConfigureUser" ]
+            }
+        ],
+        "PUT": [
+            {
+                "Privilege": [ "ConfigureUser" ]
+            }
+        ],
+        "DELETE": [
+            {
+                "Privilege": [ "ConfigureUser" ]
+            }
+        ]
+    },
+    "PropertyOverrides": [
+        {
+            "Targets": [ "Password" ],
+            "OperationMap": {
+                "GET": [
+                    {
+                        "Privilege": [ "ConfigureManager" ]
+                    }
+                ],
+                "PATCH": [
+                    {
+                        "Privilege": [ "ConfigureManager" ]
+                    },
+                    {
+                        "Privilege": [ "ConfigureSelf" ]
+                    }
+                ]
+            }
+        }
+    ]
+}
 ~~~
 
 ##### Subordinate Override
 
-In the following example, the privileges for PATCH operations 
-on EthernetInterface resources depends on whether the resource is subordinate to Manager (ConfigureManager is required) or ComputerSystem (ConfigureComponent
-is required, this is the default unless overridden) resources.
+The Targets property within SubordinateOverrides lists a hierarchical representation for when to apply the override.  In the following example, the override for an EthernetInterface entity is applied when it is subordinate to an EthernetInterfaceCollection entity, which is in turn subordinate to a Manager entity.  If a client were to PATCH an EthernetInterface entity that matches this override condition, it would require the "ConfigureManager" privilege; otherwise the client would require the "ConfigureComponent" privilege.
 ~~~json
 {
-		"Entity": "EthernetInterface",
-		"OperationMap": {
-			"GET": [{
-				"Privilege": ["Login"]
-			}],
-			"HEAD": [{ 
-				"Privilege": ["Login"]
-			}],
-			"PATCH": [{
-				"Privilege": ["ConfigureComponent"]
-			}],
-			"POST": [{
-				"Privilege": ["ConfigureComponent"]
-			}],
-			"PUT": [{
-				"Privilege": ["ConfigureComponent"]
-			}],
-			"DELETE": [{
-				"Privilege": ["ConfigureComponent"]
-			}],
-			"SubordinateOverrides": [{
-				"Targets": [
-					["Manager", "EthernetInterfaceCollection"],
-					"Manager"
-				],
-				"OperationMap": {
-					"GET": [{
-						"Privilege": ["Login"]
-					}],
-					"PATCH": [{
-						"Privilege": ["ConfigureManager"]
-					}]
-				}
-			}]
-		}
-	}
+    "Entity": "EthernetInterface",
+    "OperationMap": {
+        "GET": [
+            {
+                "Privilege": [ "Login" ]
+            }
+        ],
+        "HEAD": [
+            {
+                "Privilege": [ "Login" ]
+            }
+        ],
+        "PATCH": [
+            {
+                "Privilege": [ "ConfigureComponent" ]
+            }
+        ],
+        "POST": [
+            {
+                "Privilege": [ "ConfigureComponent" ]
+            }
+        ],
+        "PUT": [
+            {
+                "Privilege": [ "ConfigureComponent" ]
+            }
+        ],
+        "DELETE": [
+            {
+                "Privilege": [ "ConfigureComponent" ]
+            }
+        ],
+        "SubordinateOverrides": [
+            {
+                "Targets": [
+                    "Manager",
+                    "EthernetInterfaceCollection"
+                ],
+                "OperationMap": {
+                    "GET": [
+                        {
+                            "Privilege": [ "Login" ]
+                        }
+                    ],
+                    "PATCH": [
+                        {
+                            "Privilege": [ "ConfigureManager" ]
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}
 ~~~
 
 ##### ResourceURI Override
@@ -2515,60 +2573,128 @@ is required, this is the default unless overridden) resources.
 In the following example use of the ResourceURI Override syntax for representing operation privilege variations for specific resource URIs is demonstrated.  The example specifies both ConfigureComponents and OEMAdminPriv privileges are required in order to perform a PATCH operation on the 2 resource URIs listed as Targets. 
 ~~~json
 {
-	"Entity": "ComputerSystem",
-	"OperationMap": {
-		"GET": [{
-			"Privilege": ["Login"]
-		}],
-		"HEAD": [{ 
-			"Privilege": ["Login"]
-		}],
-		"PATCH": [{
-			"Privilege": ["ConfigureComponent"]
-		}],
-		"POST": [{
-			"Privilege": ["ConfigureComponent"]
-		}],
-		"PUT": [{
-			"Privilege": ["ConfigureComponent"]
-		}],
-		"DELETE": [{
-			"Privilege": ["ConfigureComponent"]
-		}],
-		"ResourceURIOverrides": [{
-			"Targets": [
-				"/redfish/v1/Systems/VM6",
-				"/redfish/v1/Systems/Sys1"
-			],
-			"OperationMap": {
-				"GET": [{
-					"Privilege": ["Login"]
-				}],
-				"PATCH": [{
-					"Privilege": ["ConfigureComponents","OEMSysAdminPriv"] 
-				}]
-			}
-		}]
-	}
+    "Entity": "ComputerSystem",
+    "OperationMap": {
+        "GET": [
+            {
+                "Privilege": [ "Login" ]
+            }
+        ],
+        "HEAD": [
+            { 
+                "Privilege": [ "Login" ]
+            }
+        ],
+        "PATCH": [
+            {
+                "Privilege": [ "ConfigureComponent" ]
+            }
+        ],
+        "POST": [
+            {
+                "Privilege": [ "ConfigureComponent" ]
+            }
+        ],
+        "PUT": [
+            {
+                "Privilege": [ "ConfigureComponent" ]
+            }
+        ],
+        "DELETE": [
+            {
+                "Privilege": [ "ConfigureComponent" ]
+            }
+        ],
+        "ResourceURIOverrides": [
+            {
+                "Targets": [
+                    "/redfish/v1/Systems/VM6",
+                    "/redfish/v1/Systems/Sys1"
+                ],
+                "OperationMap": {
+                    "GET": [
+                        {
+                            "Privilege": [ "Login" ]
+                        }
+                    ],
+                    "PATCH": [
+                        {
+                            "Privilege": [ "ConfigureComponents","OEMSysAdminPriv" ]
+                        }
+                    ]
+                }
+            }
+        ]
+    }
 }
-~~~		
+~~~
+
 ##### Privilege AND and OR Syntax
 
 Logical combinations of privileges required to perform an operation on an entity, entity element or resource are defined by the array placement of the privilege labels in the OperationMap GET, HEAD, PATCH, POST, PUT, DELETE operation element arrays.  For OR logicial combinations, the privilege label is placed in the operation element array as individual elements.  In the following example, either Login or OEMPrivilege1 privileges are required to perform a GET operation.
 ~~~json
 {
-	"GET": [{"Privilege": ["Login"]}, {"Privilege": ["OEMPrivilege1"]}]
+    "GET": [
+        {
+            "Privilege": [ "Login" ]
+        },
+        {
+            "Privilege": [ "OEMPrivilege1" ]
+        }
+    ]
 }
 ~~~
 For logical AND combinations, the privilege label is placed in the Privilege property array within the operation element.  In the following example, both ConfigureComponents and OEMSysAdminPriv are required to perform a PATCH operation.
 ~~~json
 {
-	"PATCH": [{"Privilege": ["ConfigureComponents","OEMSysAdminPriv"]}]
+    "PATCH": [
+        {
+            "Privilege": [ "ConfigureComponents","OEMSysAdminPriv" ]
+        }
+    ]
 }
 ~~~
 
 ## Redfish Host Interface
 The Redfish Host Interface Specification defines how software executing on a host computer system can interface with a Redfish service that manages the host.  See [DSP0270](#DSP0270) for details.
+
+## Redfish Composability
+
+A service may implement the CompositionService resource off of ServiceRoot to support the binding of resources together.  One example is disaggregated hardware, which allows for independent components, such as processors, memory, I/O controllers, and drives, to be bound together to create logical constructs that operate together.  This allows for a client to dynamically assign resources for a given application.
+
+### Composition Requests
+
+A service that implements the CompositionService (as defined by the CompositionService schema) shall support one or more of the following types of composition requests:
+* [Specific Composition](#specific-composition)
+
+A service that supports removing a composed resource shall support the DELETE method on the composed resource.
+
+#### Specific Composition
+
+A Specific Composition is when a client has identified an exact set of resources in which to build a logical entity.  A service that supports Specific Composition requests shall implement the ResourceBlock resource (ResourceBlock schema) and the ResourceZone resource (Zone schema) for the CompositionService.  ResourceBlocks provide an inventory of components available to the client for building compositions.  ResourceZones describe the binding restrictions of the ResourceBlocks managed by the service.
+
+The ResourceZone resource within the CompositionService shall include the CollectionCapabilities annotation in the response.  The CollectionCapabilities annotation allows a client to discover which collections in the service support compositions, and how the POST request for the collection is formatted, as well as what properties are required.  A service that supports specific compositions shall support a POST request that contains an array of links to ResourceBlocks.  The specific nesting of the ResourceBlock array is defined by the schema for the resource being composed.
+
+A service that supports updating a composed resource shall also support the PUT and/or PATCH methods on the composed resource with a modified list of ResourceBlocks.
+
+Example Specific Composition of a ComputerSystem:
+~~~http
+POST /redfish/v1/Systems HTTP/1.1
+Content-Type: application/json;charset=utf-8
+Content-Length: <computed length>
+OData-Version: 4.0
+
+{
+    "Name": "Sample Composed System",
+    "Links": {
+        "ResourceBlocks": [
+            { "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock0" },
+            { "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock2" } ,
+            { "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/NetBlock4" }
+        ]
+    }
+}
+~~~
 
 ## ANNEX A (informative)
 
@@ -2576,6 +2702,12 @@ The Redfish Host Interface Specification defines how software executing on a hos
 
 | Version | Date     | Description     |
 | ---     | ---      | ---             |
+| 1.2.0   | 2017-4-14| Added support for the Redfish Composability Service. |
+|         |          | Clarified Service handling of the Accept-Encoding header in a request. |
+|         |          | Improved consistency and formatting of example requests and responses throughout. |
+|         |          | Corrected usage of the "@odata.type" property in response examples. |
+|         |          | Clarified usage of the "Required" schema annotation. |
+|         |          | Clarified usage of SubordinateOverrides in the Privilege Registry. |
 | 1.1.0   | 2016-12-9| Added Redfish Service Operation to Privilege Mapping clause. This functionality allows a Service to present a resource or even property-level mapping of HTTP operations to account Roles and Privileges. |
 |         |          | Added references to the Redfish Host Interface Specification (DSP0270). |
 | 1.0.5   | 2016-12-9| Errata release.  Various typographical errors. |

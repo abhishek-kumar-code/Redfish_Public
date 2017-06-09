@@ -63,6 +63,11 @@
             "url": "/redfish/v1/UpdateService"
         },
         {
+            "name": "CompositionService",
+            "kind": "Singleton",
+            "url": "/redfish/v1/CompositionService"
+        },
+        {
             "name": "Sessions",
             "kind": "Singleton",
             "url": "/redfish/v1/SessionService/Sessions"

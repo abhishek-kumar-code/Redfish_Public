@@ -1,0 +1,46 @@
+{
+    "@Redfish.Copyright":"Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata",
+    "value": [
+        {
+            "name": "Service",
+            "kind": "Singleton",
+            "url": "/redfish/v1/"
+        },
+        {
+            "name": "Systems",
+            "kind": "Singleton",
+            "url": "/redfish/v1/Systems"
+        },
+        {
+            "name": "Chassis",
+            "kind": "Singleton",
+            "url": "/redfish/v1/Chassis"
+        },
+        {
+            "name": "Managers",
+            "kind": "Singleton",
+            "url": "/redfish/v1/Managers"
+        },
+        {
+            "name": "AccountService",
+            "kind": "Singleton",
+            "url": "/redfish/v1/AccountService"
+        },
+        {
+            "name": "SessionService",
+            "kind": "Singleton",
+            "url": "/redfish/v1/SessionService"
+        },
+        {
+            "name": "CompositionService",
+            "kind": "Singleton",
+            "url": "/redfish/v1/CompositionService"
+        },
+        {
+            "name": "Sessions",
+            "kind": "Singleton",
+            "url": "/redfish/v1/SessionService/Sessions"
+        }
+    ]
+}

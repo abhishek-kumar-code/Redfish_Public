@@ -4,7 +4,7 @@
     "@odata.id": "/redfish/v1/Systems",
     "@odata.type": "#ComputerSystemCollection.ComputerSystemCollection",
     "Name": "Computer System Collection",
-    "Members@odata.count": 5,
+    "Members@odata.count": 6,
     "Members": [
         {
             "@odata.id": "/redfish/v1/Systems/1"
@@ -20,6 +20,33 @@
         },
         {
             "@odata.id": "/redfish/v1/Systems/5"
-        }		
-    ]
+        },
+        {
+            "@odata.id": "/redfish/v1/Systems/ComposedSystem"
+        }
+    ],
+    "@Redfish.CollectionCapabilities": {
+        "@odata.type": "#CollectionCapabilities.v1_0_0.CollectionCapabilities",
+        "Capabilities": [
+            {
+                "CapabilitiesObject": {
+                    "@odata.id": "/redfish/v1/Systems/Capabilities"
+                },
+                "UseCase": "ComputerSystemComposition",
+                "Links": {
+                    "TargetCollection": {
+                        "@odata.id": "/redfish/v1/Systems"
+                    },
+                    "RelatedItem": [
+                        {
+                            "@odata.id": "/redfish/v1/CompositionService/ResourceZones/1"
+                        },
+                        {
+                            "@odata.id": "/redfish/v1/CompositionService/ResourceZones/2"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
 }

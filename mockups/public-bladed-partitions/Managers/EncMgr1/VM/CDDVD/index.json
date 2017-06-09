@@ -1,0 +1,17 @@
+{
+    "@odata.context": "/redfish/v1/$metadata#VirtualMedia.VirtualMedia",
+    "@odata.id": "/redfish/v1/Managers/EncMgr1/VM/CDDVD",
+    "@odata.type": "#VirtualMedia.v1_0_0.VirtualMedia",
+    "Id": "CDDVD",
+    "Name": "Virtual Media",
+    "MediaTypes": [
+        "CD",
+        "DVD",
+        "USB"
+    ],
+    "Image": "http://contoso.com/images/myimage.iso>",
+    "ImageName": "myimage.iso",
+    "ConnectedVia": "Applet",
+    "Inserted": true,
+    "WriteProtected": false
+}

@@ -4,7 +4,7 @@
     "@odata.id": "/redfish/v1/Chassis",
     "@odata.type": "#ChassisCollection.ChassisCollection",
     "Name": "Chassis Collection",
-    "Members@odata.count": 15,
+    "Members@odata.count": 22,
     "Members": [
         {
             "@odata.id": "/redfish/v1/Chassis/1"
@@ -35,19 +35,40 @@
         },
         {
             "@odata.id": "/redfish/v1/Chassis/PCIeSwitch2"
-        },		
+        },
         {
             "@odata.id": "/redfish/v1/Chassis/PCIeSwitch3"
         },
         {
             "@odata.id": "/redfish/v1/Chassis/PCIeSwitch4"
-        },		
+        },
         {
             "@odata.id": "/redfish/v1/Chassis/PCIeSwitchMgrHW"
         },
         {
             "@odata.id": "/redfish/v1/Chassis/PCIeSwitchRackMount"
-        }		
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/ComposableEnclosure"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/ComposableModule1"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/ComposableModule2"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/ComposableModule3"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/ComposableModule4"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/ComposableModule5"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/ComposableModule6"
+        }
     ],
     "Members@odata.nextLink": "/redfish/v1/Chassis/Page2/$ref"
 }

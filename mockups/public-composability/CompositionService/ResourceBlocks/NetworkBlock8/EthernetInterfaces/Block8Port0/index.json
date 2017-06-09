@@ -1,0 +1,32 @@
+{
+    "@Redfish.Copyright":"Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#EthernetInterface.EthernetInterface",
+    "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/NetworkBlock8/EthernetInterfaces/Block8Port0",
+    "@odata.type": "#EthernetInterface.v1_3_0.EthernetInterface",
+    "Id": "Block8Port0",
+    "Name": "Ethernet Interface Port 0",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "InterfaceEnabled": true,
+    "PermanentMACAddress": "AA:BB:CC:DD:EE:FF",
+    "MACAddress": "AA:BB:CC:DD:EE:FF",
+    "SpeedMbps": 100,
+    "AutoNeg": true,
+    "FullDuplex": true,
+    "MTUSize": 1500,
+    "IPv4Addresses": [
+        {
+            "Address": null,
+            "SubnetMask": null,
+            "AddressOrigin": "DHCP",
+            "Gateway": null
+        }
+    ],
+    "Links": {
+        "Chassis": {
+            "@odata.id": "/redfish/v1/Chassis/ComposableModule5"
+        }
+    }
+}

@@ -1,5 +1,5 @@
 {
-    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
     "title": "#EventDestination.v1_1_0.EventDestination",
     "$ref": "#/definitions/EventDestination",
     "definitions": {
@@ -29,7 +29,8 @@
             },
             "additionalProperties": false,
             "properties": {},
-            "description": "The value of the HTTP header is the property value.  The header name is the property name."
+            "description": "The value of the HTTP header is the property value.  The header name is the property name.",
+            "longDescription": "This type shall a names and value of an HTTP header to be included with every event POST to the Event Destination."
         },
         "EventDestination": {
             "type": "object",
@@ -93,7 +94,10 @@
                     "description": "This property shall contain the types of events that shall be sent to the desination."
                 },
                 "Context": {
-                    "type": "string",
+                    "type": [
+                        "string",
+                        "null"
+                    ],
                     "readonly": false,
                     "description": "A client-supplied string that is stored with the event destination subscription.",
                     "longDescription": "This property shall contain a client supplied context that will remain with the connection through the connections lifetime."
@@ -143,16 +147,16 @@
             },
             "required": [
                 "Id",
-                "Name"
+                "Name",
+                "Context"
             ],
             "requiredOnCreate": [
                 "Destination",
                 "EventTypes",
-                "Context",
                 "Protocol"
             ],
             "description": "An Event Destination desribes the target of an event subscription, including the types of events subscribed and context to provide to the target in the Event payload."
         }
     },
-    "copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
+    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright"
 }

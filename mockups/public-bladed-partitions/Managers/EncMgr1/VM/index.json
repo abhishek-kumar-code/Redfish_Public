@@ -1,0 +1,13 @@
+{
+    "@odata.context": "/redfish/v1/$metadata#VirtualMediaCollection.VirtualMediaCollection",
+    "@odata.id": "/redfish/v1/Managers/EncMgr1/VM",
+    "@odata.type": "#VirtualMediaCollection.VirtualMediaCollection",
+    "Name": "Virtual Media Services",
+    "Description": "Redfish Manager Virtual Media Services Settings",
+    "Members@odata.count": 1,
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/Managers/EncMgr1/VM/CDDVD"
+        }
+    ]
+}

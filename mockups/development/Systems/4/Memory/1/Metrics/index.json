@@ -28,8 +28,8 @@
         }
     },
     "Actions": {
-        "#Memory.ClearCurrentPeriod": {
-            "target": "/redfish/v1/Systems/4/Memory/1/Actions/Memory.ClearCurrentPeriod"
+        "#MemoryMetrics.ClearCurrentPeriod": {
+            "target": "/redfish/v1/Systems/4/Memory/1/Actions/MemoryMetrics.ClearCurrentPeriod"
         },
         "Oem": {}
     },

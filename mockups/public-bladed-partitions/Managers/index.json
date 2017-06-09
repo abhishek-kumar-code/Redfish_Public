@@ -1,0 +1,15 @@
+{
+    "@odata.type": "#ManagerCollection.ManagerCollection",
+    "Name": "Multi-Blade Partitionable Enclosure Manager Collection",
+    "Description": "Collection of Enclosure Managers - For Managing Partitionable Multi-Blade environment - Acrive/Standby Configuration",
+    "Members@odata.count": 2,
+    "Members": [{
+            "@odata.id": "/redfish/v1/Managers/EncMgr1"
+        },
+        {
+            "@odata.id": "/redfish/v1/Managers/EncMgr2"
+        }
+    ],
+    "@odata.context": "/redfish/v1/$metadata#ManagerCollection.ManagerCollection",
+    "@odata.id": "/redfish/v1/Managers"
+}
