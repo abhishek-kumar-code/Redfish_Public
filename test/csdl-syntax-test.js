@@ -19,6 +19,8 @@ if(process.env.TRAVIS === undefined || process.env.TRAVIS_BRANCH === 'master') {
 const syntaxBatch = {};
 const mockupsCSDL = {};
 var options = {useLocal: [path.normalize(__dirname+'/../metadata'), path.normalize(__dirname+'/fixtures'),
+                          path.normalize(__dirname+'/../metadata/rfc7223'), path.normalize(__dirname+'/../metadata/rfc7224'),
+                          path.normalize(__dirname+'/../metadata/rfc7277'), path.normalize(__dirname+'/../metadata/rfc7317'),
                           path.normalize(__dirname+'/../mockups/oem-service-container/Contoso.com')],
                useNetwork: true};
 
