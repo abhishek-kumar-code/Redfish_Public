@@ -1,0 +1,22 @@
+{
+    "@odata.type": "#ComputerSystem.v1_4_0.ComputerSystem",
+    "Name": "RB System4",
+    "Id": "RBSystem4",
+    "SystemType": "PhysicallyPartitioned",
+    "Model": "Constoto-2S-B Server Partition",
+    "Manufacturer": "Contoso",
+    "Description": "This represents PhysicallyPartitionedSystem ResourceBlock, from which System can be Composed",
+    "PowerState": "On",
+    "UUID": "17690008-3175-05f4-0010-debfc4ec1886",
+    "Status": {
+        "Health": "OK",
+        "State": "UnavailableOffline"
+    },
+    "Links": {
+        "Chassis": [{
+            "@odata.id": "/redfish/v1/Chassis/Blade4"
+        }]
+    },
+    "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
+    "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock4/RBSystem"
+}

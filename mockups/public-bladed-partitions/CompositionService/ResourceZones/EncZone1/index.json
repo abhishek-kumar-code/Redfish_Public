@@ -1,0 +1,52 @@
+{
+    "@odata.context": "/redfish/v1/$metadata#Zone.Zone",
+    "@odata.type": "#Zone.v1_1_0.Zone",
+    "@odata.id": "/redfish/v1/CompositionService/ResourceZones/EncZone1",
+    "Id": "1",
+    "Name": "MultiBlade Enclosure Resource Zone",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "Links": {
+        "ResourceBlocks": [{
+                "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock1"
+            },
+            {
+                "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock2"
+            },
+            {
+                "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock3"
+            },
+            {
+                "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock4"
+            },
+            {
+                "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock5"
+            },
+            {
+                "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock6"
+            },
+            {
+                "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock7"
+            },
+            {
+                "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeStorageBlock8"
+            }
+        ]
+    },
+    "@Redfish.CollectionCapabilities": {
+        "@odata.type": "#CollectionCapabilities.v1_0_0.CollectionCapabilities",
+        "Capabilities": [{
+            "CapabilitiesObject": {
+                "@odata.id": "/redfish/v1/Systems/Capabilities"
+            },
+            "UseCase": "ComputerSystemComposition",
+            "Links": {
+                "TargetCollection": {
+                    "@odata.id": "/redfish/v1/Systems"
+                }
+            }
+        }]
+    }
+}

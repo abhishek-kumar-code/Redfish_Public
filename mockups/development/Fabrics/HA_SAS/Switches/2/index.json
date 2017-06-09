@@ -16,7 +16,7 @@
 	},
     "Redundancy": [
         {
-            "@odata.id": "/redfish/v1/Fabrics/HA_SAS/Switches/1#/Redundancy",
+            "@odata.id": "/redfish/v1/Fabrics/HA_SAS/Switches/1#/Redundancy/0",
             "MemberId": "Redundancy",
             "Mode": "Sharing",
             "MaxNumSupported": 2,
