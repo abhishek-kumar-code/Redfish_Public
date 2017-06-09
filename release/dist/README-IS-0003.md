@@ -14,7 +14,7 @@ IMPORTANT: These documents are not final. They do not necessarily reflect the vi
 
 The following files are part of the Redfish Interoperability Profile development effort:
 
-* DSP027x.pdf - Redfish Interoperability Profile Specification (Work in Progress release)
+* DSP0272.pdf - Redfish Interoperability Profile Specification (Work in Progress release)
 * RedfishProfiles.pdf - Presentation describing the Redfish Interoperability Profile functionality 
 * SampleProfile.json - A mockup of a Profile showing usage of the various features.
 
