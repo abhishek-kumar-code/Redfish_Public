@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
-  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
-    <edmx:Include Alias="Odata" Namespace="Org.OData.Core.V1"/>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Alias="OData" Namespace="Org.OData.Core.V1"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Capabilities.V1.xml">
-    <edmx:Include Alias="Odata" Namespace="Org.OData.Capabilities.V1"/>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
     <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
-    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishYangExtensions_v1.xml">
     <edmx:Include Namespace="RedfishYangExtensions.v1_0_0" Alias="Redfish.Yang"/>
-    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
   </edmx:Reference>
 
-  <DataServices>
+  <edmx:DataServices>
 
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="options">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ietf_system.system.dns_resolver.options">
       <EntityType Name="options" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="Resolver options. The set of available options has been limited to those that are generally available across different resolver implementations and generally useful."/>
         <Annotation Term="Capabilities.InsertRestrictions">
@@ -38,13 +36,13 @@
       </EntityType>
     </Schema>
 
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="options.v1_0_0">
-      <EntityType Name="options" BaseType="options.options">
-        <Annotation EnumMember="Redfish.Yang.NodeTypes/container" Term="RedfishYang.NodeType"/>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ietf_system.system.dns_resolver.options.v1_0_0">
+      <EntityType Name="options" BaseType="ietf_system.system.dns_resolver.options.options">
+        <Annotation EnumMember="Redfish.Yang.NodeTypes/container" Term="Redfish.Yang.NodeType"/>
         <Annotation String="Resolver options. The set of available options has been limited to those that are generally available across different resolver implementations and generally useful." Term="OData.Description"/>
         <Property DefaultValue="5" Name="timeout" Type="Edm.Byte">
           <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf"/>
-          <Annotation Term="Redfish.Yang.YangType" String="uint8" />
+          <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/uint8" />
           <Annotation Term="Redfish.Yang.range" String="1..max" />
           <Annotation Term="Redfish.Yang.units" String="seconds" />
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
@@ -52,7 +50,7 @@
         </Property>
         <Property DefaultValue="2" Name="attempts" Type="Edm.Byte">
           <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf" />
-          <Annotation Term="Redfish.Yang.YangType" String="uint8" />
+          <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/uint8" />
           <Annotation Term="Redfish.Yang.range" String="1..max" />
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The number of times the resolver will send a query to all of its name servers before giving up and returning an error to the calling application." />
@@ -60,5 +58,5 @@
       </EntityType>
     </Schema>
 
-  </DataServices>
+  </edmx:DataServices>
 </edmx:Edmx>

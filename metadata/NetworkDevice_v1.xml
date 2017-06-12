@@ -17,67 +17,31 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
     <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
-    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
-  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
     <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
-    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
+    <edmx:Include Namespace="Resource.v1_1_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Chassis_v1.xml">
     <edmx:Include Namespace="Chassis"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ComputerSystem_v1.xml">
+    <edmx:Include Namespace="ComputerSystem"/>
+  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/LogServiceCollection_v1.xml">
     <edmx:Include Namespace="LogServiceCollection"/>
-  </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/EthernetInterfaceCollection_v1.xml">
-    <edmx:Include Namespace="EthernetInterfaceCollection"/>
-  </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/SimpleStorageCollection_v1.xml">
-    <edmx:Include Namespace="SimpleStorageCollection"/>
-  </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ManagerAccount_v1.xml">
-    <edmx:Include Namespace="ManagerAccount"/>
-  </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ProcessorCollection_v1.xml">
-    <edmx:Include Namespace="ProcessorCollection"/>
-  </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/SecureBoot_v1.xml">
-    <edmx:Include Namespace="SecureBoot"/>
-  </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Bios_v1.xml">
-    <edmx:Include Namespace="Bios"/>
-  </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/MemoryCollection_v1.xml">
-    <edmx:Include Namespace="MemoryCollection"/>
-  </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/MemoryDomainCollection_v1.xml">
-    <edmx:Include Namespace="MemoryDomainCollection"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Manager_v1.xml">
     <edmx:Include Namespace="Manager"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/StorageCollection_v1.xml">
-    <edmx:Include Namespace="StorageCollection"/>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/rfc7223/ietf_interfaces_v1.xml">
+    <edmx:Include Namespace="ietf_interfaces"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/PCIeDevice_v1.xml">
-    <edmx:Include Namespace="PCIeDevice"/>
-  </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/PCIeFunction_v1.xml">
-    <edmx:Include Namespace="PCIeFunction"/>
-  </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Endpoint_v1.xml">
-    <edmx:Include Namespace="Endpoint"/>
-  </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/swordfish/v1/HostedStorageServices_v1.xml">
-    <edmx:Include Namespace="HostedStorageServices"/>
-  </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/swordfish/v1/NetworkInterfaceCollection_v1.xml">
-    <edmx:Include Namespace="NetworkInterfaceCollection"/>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/rfc7317/ietf_system_v1.xml">
+    <edmx:Include Namespace="ietf_system"/>
   </edmx:Reference>
 
   <edmx:DataServices>
@@ -96,7 +60,7 @@
         <Annotation Term="Capabilities.UpdateRestrictions">
           <Record>
             <PropertyValue Property="Updatable" Bool="true"/>
-            <Annotation Term="OData.Description" String="A network device can be updated to change properties such as the AssetTag, IndicatorLED and some Boot parameters."/>
+            <Annotation Term="OData.Description" String="A network device can be updated to change properties such as the AssetTag and IndicatorLED."/>
           </Record>
         </Annotation>
         <Annotation Term="Capabilities.DeleteRestrictions">
@@ -158,7 +122,7 @@
           <Annotation Term="OData.Description" String="The part number for this system."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the part number for the system as defined by the manufacturer."/>
         </Property>
-        <Property Name="IndicatorLED" Type="NetworkDevice.v1_0_0.IndicatorLED">
+        <Property Name="IndicatorLED" Type="Resource.v1_1_0.IndicatorLED">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The state of the indicator LED, used to identify the system."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the indicator light state for the indicator light associated with this system."/>
@@ -176,13 +140,13 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type LogServiceCollection."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="ietf_system" Type="rfc7317.ietf_system.ietf_system" ContainsTarget="true" Nullable="false">
+        <NavigationProperty Name="IetfSystem" Type="ietf_system.ietf_system" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A reference to the ietf_system YANG module."/>
           <Annotation Term="OData.LongDescription" String="This property shall specify a reference to the ietf_system YANG module, specified in IETF RFC7317."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="ietf_interfaces" Type="rfc7223.ietf_interfaces.ietf_interfaces" ContainsTarget="true" Nullable="false">
+        <NavigationProperty Name="IetfInterfaces" Type="ietf_interfaces.ietf_interfaces" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A reference to the ietf_interfaces YANG module."/>
           <Annotation Term="OData.LongDescription" String="This property shall specify a reference to the ietf_interfaces YANG module, specified in IETF RFC7223."/>
@@ -200,19 +164,21 @@
       </EntityType>
 
       <ComplexType Name="Links" BaseType="Resource.Links">
-        <NavigationProperty Name="Chassis" Type="Collection(Chassis.Chassis)" Nullable="false">
+        <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
+        <NavigationProperty Name="Chassis" Type="Collection(Chassis.Chassis)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the chassis which contains this network device."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall reference a resource of type Chassis that represents the physical container associated with this resource."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="ManagedBy" Type="Collection(Manager.Manager)" Nullable="false">
+        <NavigationProperty Name="ManagedBy" Type="Collection(Manager.Manager)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the Managers responsible for this network device."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall reference a resource of type manager that represents the resource with management responsibility for this resource."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="ComputerSystems" Type="Collection(ComputerSystem.ComputerSystem)" Nullable="false">
+        <NavigationProperty Name="ComputerSystems" Type="Collection(ComputerSystem.ComputerSystem)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An array of references to the computer systems which hosts this network device."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the computer system which hosts this network device."/>
@@ -222,32 +188,20 @@
 
       <ComplexType Name="Actions">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The available actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
         <Property Name="Oem" Type="NetworkDevice.v1_0_0.OemActions" Nullable="false"/>
       </ComplexType>
 
       <ComplexType Name="OemActions">
         <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
       </ComplexType>
 
       <EnumType Name="NetworkDeviceType">
         <Member Name="BaselineEthernetSwitch">
           <Annotation Term="OData.Description" String="A Ethernet switch which supports RFC7223, RFC7227, RFC7277 and RFC7317."/>
-        </Member>
-      </EnumType>
-
-      <!-- These are all supported LED statuses. -->
-      <EnumType Name="IndicatorLED">
-        <Member Name="Unknown">
-          <Annotation Term="OData.Description" String="The state of the Indicator LED cannot be determined. Deprecated: Return null if state is unknown."/>
-        </Member>
-        <Member Name="Lit">
-          <Annotation Term="OData.Description" String="The Indicator LED is lit."/>
-        </Member>
-        <Member Name="Blinking">
-          <Annotation Term="OData.Description" String="The Indicator LED is blinking."/>
-        </Member>
-        <Member Name="Off">
-          <Annotation Term="OData.Description" String="The Indicator LED is off."/>
         </Member>
       </EnumType>
 

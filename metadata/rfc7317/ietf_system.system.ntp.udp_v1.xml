@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
-  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
-    <edmx:Include Alias="Odata" Namespace="Org.OData.Core.V1"/>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Alias="OData" Namespace="Org.OData.Core.V1"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Capabilities.V1.xml">
-    <edmx:Include Alias="Odata" Namespace="Org.OData.Capabilities.V1"/>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
     <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
-    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishYangExtensions_v1.xml">
     <edmx:Include Namespace="RedfishYangExtensions.v1_0_0" Alias="Redfish.Yang"/>
-    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
   </edmx:Reference>
 
-  <DataServices>
+  <edmx:DataServices>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ietf_system.system.ntp.udp">
       <EntityType Name="udp" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="Contains UDP-specific configuration parameters for NTP."/>
@@ -44,14 +42,14 @@
         <Annotation Term="OData.Description" String="Contains UDP-specific configuration parameters for NTP." />
         <Property Name="address" Type="Edm.String">
           <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf" />
-          <Annotation Term="Redfish.Yang.YangType" String="inet:domain-name" />
+          <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/inet:domain-name" />
           <Annotation Term="Redfish.Yang.mandatory" EnumMember="Redfish.Yang.Mandatory/true"/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read/" />
           <Annotation Term="OData.Description" String="The address of the NTP server." />
         </Property>
         <Property Name="port" Type="Yang.inet:port-number" DefaultValue="123">
           <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf" />
-          <Annotation Term="Redfish.Yang.YangType" String="inet:domain-name" />
+          <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/inet:domain-name" />
           <Annotation Term="Redfish.Yang.if_feature" String="ntp-udp-port" />
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read/" />
           <Annotation Term="OData.Description" String="The port number of the NTP server." />
@@ -59,5 +57,5 @@
       </EntityType>
     </Schema>
 
-  </DataServices>
+  </edmx:DataServices>
 </edmx:Edmx>

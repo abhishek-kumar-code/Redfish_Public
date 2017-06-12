@@ -1,32 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
-  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
-    <edmx:Include Alias="Odata" Namespace="Org.OData.Core.V1"/>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Alias="OData" Namespace="Org.OData.Core.V1"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Capabilities.V1.xml">
-    <edmx:Include Alias="Odata" Namespace="Org.OData.Capabilities.V1"/>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
     <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
-    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishYangExtensions_v1.xml">
     <edmx:Include Namespace="RedfishYangExtensions.v1_0_0" Alias="Redfish.Yang"/>
-    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/rfc7317/ietf_system.system.clock_v1.xml">
-    <edmx:Include Namespace="clock"/>
+    <edmx:Include Namespace="ietf_system.system.clock"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/rfc7317/ietf_system.system.dns_resolver_v1.xml">
-    <edmx:Include Namespace="dns_resolver"/>
+    <edmx:Include Namespace="ietf_system.system.dns_resolver"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/rfc7317/ietf_system.system.ntp_v1.xml">
-    <edmx:Include Namespace="ntp"/>
+    <edmx:Include Namespace="ietf_system.system.ntp"/>
   </edmx:Reference>
 
-  <DataServices>
+  <edmx:DataServices>
 
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="system">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ietf_system.system">
       <EntityType Name="system" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="Redfish.Yang.contact"  String="WG Web: &lt;http://tools.ietf.org/wg/netmod/&gt; WG List: &lt;mailto:netmod@ietf.org&gt; WG Chair: Thomas Nadeau &lt;mailto:tnadeau@lucidvision.com&gt; WG Chair: Juergen Schoenwaelder &lt;mailto:j.schoenwaelder@jacobs-university.de&gt; Editor: Andy Bierman &lt;mailto:andy@yumaworks.com&gt; Editor: Martin Bjorklund &lt;mailto:mbj@tail-f.com&gt;" />
         <Annotation Term="OData.Description" String="The administrator contact information for the system. A server implementation MAY map this leaf to the sysContact MIB object. Such an implementation needs to use some mechanism to handle the differences in size and characters allowed between this leaf and sysContact. The definition of such a mechanism is outside the scope of this document."/>
@@ -49,20 +47,20 @@
       </EntityType>
     </Schema>
 
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="system.v1_0_0">
-      <EntityType Name="system" BaseType="system.system">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ietf_system.system.v1_0_0">
+      <EntityType Name="system" BaseType="ietf_system.system.system">
         <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/container" />
         <Annotation Term="OData.Description" String="System group configuration." />
         <Property Name="contact" Type="Edm.String">
           <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf" />
-          <Annotation Term="Redfish.Yang.YangType" String="string" />
+          <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/string" />
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The administrator contact information for the system. A server implementation MAY map this leaf to the sysContact MIB object. Such an implementation needs to use some mechanism to handle the differences in size and characters allowed between this leaf and sysContact. The definition of such a mechanism is outside the scope of this document." />
           <Annotation Term="Redfish.Yang.reference" String="RFC 3418: Management Information Base (MIB) for the&#10;             Simple Network Management Protocol (SNMP)&#10;             SNMPv2-MIB.sysContact" />
         </Property>
         <Property Name="hostname" Type="Yang.inet:domain-name">
           <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf"/>
-          <Annotation Term="Redfish.Yang.YangType" String="inet:domain-name" />
+          <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/inet:domain-name" />
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The name of the host. This name can be a single domain label or the fully qualified domain name of the host." />
         </Property>
@@ -74,23 +72,23 @@
           <Annotation Term="Redfish.Yang.reference" String="RFC 3418: Management Information Base (MIB) for the&#10;             Simple Network Management Protocol (SNMP)&#10;             SNMPv2-MIB.sysLocation" />
         </Property>
 
-        <NavigationProperty Name="clock" Type="clock.clock" ContainsTarget="true">
+        <NavigationProperty Name="clock" Type="ietf_system.system.clock.clock" ContainsTarget="true">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read/" />
           <Annotation Term="OData.Description" String="Reference to clock resource."/>
-          <Annotation Term="AutoExpandReferences"/>
+          <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="ntp" Type="ntp.ntp" ContainsTarget="true" >
+        <NavigationProperty Name="ntp" Type="ietf_system.system.ntp.ntp" ContainsTarget="true" >
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read/" />
           <Annotation Term="OData.Description" String="Reference to ntp resource."/>
-          <Annotation Term="AutoExpandReferences"/>
+          <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty Name="dns_resolver" Type="dns_resolver.dns_resolver" ContainsTarget="true" >
+        <NavigationProperty Name="dns_resolver" Type="ietf_system.system.dns_resolver.dns_resolver" ContainsTarget="true" >
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read/" />
           <Annotation Term="OData.Description" String="Reference to dns-resolver resource."/>
-          <Annotation Term="AutoExpandReferences"/>
+          <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </EntityType>
     </Schema>
 
-  </DataServices>
+  </edmx:DataServices>
 </edmx:Edmx>
