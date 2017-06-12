@@ -47,6 +47,7 @@ const ODataSchemaFileList = [ 'Org.OData.Core.V1.xml', 'Org.OData.Capabilities.V
 const SwordfishSchemaFileList = [ 'HostedStorageServices_v1.xml','StorageServiceCollection_v1.xml', 'StorageSystemCollection_v1.xml' ];
 const ContosoSchemaFileList = [ 'ContosoExtensions_v1.xml', 'TurboencabulatorService_v1.xml' ];
 const EntityTypesWithNoActions = [ 'ServiceRoot', 'Item', 'ReferenceableMember', 'Resource', 'ResourceCollection', 'ActionInfo', 'TurboencabulatorService' ];
+const IETFSchemaFolders = [ 'metadata/rfc7223/', 'metadata/rfc7224/', 'metadata/rfc7277/', 'metadata/rfc7317/' ]
 /************************************************************/
 
 const setupBatch = {
@@ -131,6 +132,16 @@ function constructMockupTest(file) {
     },
     'is Valid Type': validCSDLTypeInMockup
   };
+}
+
+function isIETFSchema( file ) {
+    for(let i = 0; i < IETFSchemaFolders.length; i++) {
+        if( file.startsWith( IETFSchemaFolders[i] ) ) {
+            return true;
+        }
+    }
+
+    return false;
 }
 
 function validUnitsTest(err, csdl) {
@@ -381,6 +392,15 @@ function checkEnumMembers(err, csdl) {
   if(err) {
     return;
   }
+  if( isIETFSchema( this.context.name ) ) {
+    // Enum members in the IETF schema files need to match the Yang definitions
+    return;
+  }
+  if( this.context.name === 'metadata/RedfishYangExtensions_v1.xml' ) {
+    // Enum members in the RedfishYangExtensions file need to match the Yang definitions
+    return;
+  }
+
   let enums = CSDL.search(csdl, 'EnumType');
   for(let i = 0; i < enums.length; i++) {
     let keys = Object.keys(enums[i].Members);
@@ -396,6 +416,11 @@ function checkPropertiesPascalCased(err, csdl) {
   if(err) {
     return;
   }
+  if( isIETFSchema( this.context.name ) ) {
+    // Properties in the IETF schema files need to match the Yang definitions
+    return;
+  }
+
   let properties = CSDL.search(csdl, 'Property');
   for(let i = 0; i < properties.length; i++) {
     if(properties[i].Name.match(PascalRegex) === null && NonPascalCasePropertyWhiteList.indexOf(properties[i].Name) === -1) {
@@ -452,8 +477,30 @@ function checkReferenceUris(err, csdl) {
             // These files are for OEM examples and don't need to resolve to anything; they are never published
         }
         else {
-            if(directory !== 'http://redfish.dmtf.org/schemas/v1') {
-                throw new Error('Reference "'+references[i].Uri+'" does not point to DMTF schema directory');
+            if(file_name.indexOf('ietf_interfaces') > -1) {
+                if(directory !== 'http://redfish.dmtf.org/schemas/v1/rfc7223') {
+                    throw new Error('Reference "'+references[i].Uri+'" does not point to RFC7223 schema directory');
+                }
+            }
+            else if(file_name.indexOf('iana_if_type') > -1) {
+                if(directory !== 'http://redfish.dmtf.org/schemas/v1/rfc7224') {
+                    throw new Error('Reference "'+references[i].Uri+'" does not point to RFC7224 schema directory');
+                }
+            }
+            else if(file_name.indexOf('ietf_ip') > -1) {
+                if(directory !== 'http://redfish.dmtf.org/schemas/v1/rfc7277') {
+                    throw new Error('Reference "'+references[i].Uri+'" does not point to RFC7277 schema directory');
+                }
+            }
+            else if(file_name.indexOf('ietf_system') > -1) {
+                if(directory !== 'http://redfish.dmtf.org/schemas/v1/rfc7317') {
+                    throw new Error('Reference "'+references[i].Uri+'" does not point to RFC7317 schema directory');
+                }
+            }
+            else {
+                if(directory !== 'http://redfish.dmtf.org/schemas/v1') {
+                    throw new Error('Reference "'+references[i].Uri+'" does not point to DMTF schema directory');
+                }
             }
         }
     }
@@ -641,6 +688,10 @@ function propertiesHaveNamespace(props, nameSpaceAliases) {
 function entityTypesHaveActions(err, csdl) {
     if(err) {
         return;
+    }
+    if( isIETFSchema( this.context.name ) ) {
+      // Yang converted schemas do not contain actions
+      return;
     }
 
     let entityTypes = CSDL.search(csdl, 'EntityType');
