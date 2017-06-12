@@ -48,7 +48,7 @@
         <Property Name="search" Type="Collection(ietf_system.system.dns_resolver.v1_0_0.searchType)">
           <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf_list" />
           <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/inet:domain-name" />
-          <Annotation Term="Redfish.Yang.ordered_by" EnumMember="Redfish.Yang.Ordered_by/user" />
+          <Annotation Term="Redfish.Yang.ordered_by" EnumMember="Redfish.Yang.OrderedBy/user" />
           <Annotation Term="OData.Description" String="An ordered list of domains to search when resolving a host name." />
         </Property>
         <NavigationProperty Name="options" Type="ietf_system.system.dns_resolver.options.options" ContainsTarget="true" >

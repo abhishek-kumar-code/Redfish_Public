@@ -246,10 +246,6 @@
         <Annotation Term="OData.Description" String="The yang unique statement."/>
       </Term>
 
-      <Term Name="base" Type="Edm.String">
-        <Annotation Term="OData.Description" String="The yang base statement."/>
-      </Term>
-
       <Term Name="identity" Type="Edm.String">
         <Annotation Term="OData.Description" String="The yang identity statement."/>
       </Term>

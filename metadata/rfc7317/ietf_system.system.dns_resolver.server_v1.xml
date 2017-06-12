@@ -42,7 +42,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ietf_system.system.dns_resolver.server.v1_0_0">
       <EntityType Name="server" BaseType="ietf_system.system.dns_resolver.server.server">
         <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/list" />
-        <Annotation Term="Redfish.Yang.ordered_by" EnumMember="Redfish.Yang.Ordered_by/user" />
+        <Annotation Term="Redfish.Yang.ordered_by" EnumMember="Redfish.Yang.OrderedBy/user" />
         <Annotation Term="OData.Description" String="ietf_system.system.dns_resolver.server." />
         <Property Name="name" Type="Edm.String">
           <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf" />
