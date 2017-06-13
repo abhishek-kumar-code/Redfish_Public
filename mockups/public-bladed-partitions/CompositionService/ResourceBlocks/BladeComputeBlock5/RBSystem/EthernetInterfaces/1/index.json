@@ -1,0 +1,17 @@
+{
+    "@odata.type": "#EthernetInterface.v1_3_0.EthernetInterface",
+    "Id": "5",
+    "Name": "network.5",
+    "Description": "PartitionedServer NIC",
+    "Status": {
+        "State": "Absent",
+        "Health": "OK"
+    },
+    "Links": {
+        "Chassis": {
+            "@odata.id": "/redfish/v1/Chassis/Blade5"
+        }
+    },
+    "@odata.context": "/redfish/v1/$metadata#EthernetInterface.EthernetInterface",
+    "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock5/RBSystem/EthernetInterfaces/1"
+}
