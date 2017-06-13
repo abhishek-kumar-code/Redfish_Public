@@ -1961,8 +1961,7 @@ Below is an example body for a resource resource that supports a Settings resour
             "@odata.id": "/redfish/v1/Managers/1/EthernetInterfaces/1/SD"
         },
         "Time": "2017-05-03T23:12:37-05:00",
-        "ETag": "someetag",
-        "Messages": []
+        "ETag": "someetag"
     },
     ...
 }
