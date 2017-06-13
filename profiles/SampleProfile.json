@@ -33,6 +33,7 @@
 		},
 		"ComputerSystem": {
 			"MinVersion": "1.1.0",
+			"Purpose": "Every implementation must have the logical view of the System.",
 			"PropertyRequirements": {
 				"SerialNumber": {
 					"Requirement": "Mandatory"
@@ -56,6 +57,7 @@
 			"ActionRequirements": {
 				"Reset": {
 					"Requirement": "Mandatory",
+					"Purpose": "Ability to reset the system is a core requirement of most users.",
 					"Parameters": {
 						"ResetType": {
 							"MinSupportValues": ["ForceOff", "PowerCycle"],
@@ -73,7 +75,9 @@
 				"Requirement": "Mandatory"
 			}],
 			"PropertyRequirements": {
-				"MACAddress": {},
+				"MACAddress": {
+					"Purpose": "MAC address is frequently used to identify systems via DHCP tables or other network sources."
+				},
 				"Status": {
 					"PropertyRequirements": {
 						"Health": {},

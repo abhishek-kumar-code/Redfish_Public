@@ -135,6 +135,7 @@ The following options are available at the schema level:
 | OwningEntityName | string | Name of the owning entity, when used with 'Other', follows 'Oem Property Naming' in the Redfish Specification |
 | MinVersion | string | The minimum version required by this Redfish Profile. If this property is absent, the minimum value shall be '1.0.0'.|
 | Requirement | string | Resource-level requirement for this schema, see [Requirement](#requirement) section. |
+| Purpose | string | A description of the purpose of this requirement.  This text can provide justification or reasoning behind the requirement for use in the profile documentation. |
 | ConditionalRequirements | object | Resource-level conditional requirements that apply to instances of this schema, see [Conditional Requirements](#conditional-requirements) section. |
 
 #### Example
@@ -143,6 +144,7 @@ This example shows a simple required schema
 ~~~
 	"ComputerSystem": {
 		"MinVersion": "1.2.0",
+		"Purpose": "Every instance must have a logical-view ComputerSystem resource.",
 		"PropertyRequirements": {
 			"SerialNumber": {},
 			"Manufacturer": {},
@@ -165,6 +167,7 @@ The following options are available at the property level:
 | MinCount | integer | For array type properties, the minimum number of non-NULL instances within the array. |
 | MinSupportValues |  array | The minimum set of enumerations that must be supported for this writeable property. |
 | Comparison | string | The condition used to compare the value of the property to 'Values'. See the [Comparison](#comparison) section. |
+| Purpose | string | A description of the purpose of this requirement.  This text can provide justification or reasoning behind the requirement for use in the profile documentation. |
 | Values | array | The value(s) required for this property based on the 'Comparison'. If no 'Comparison' is present, the property must be equal to one of the values listed. |
 | PropertyRequirements | object | For Redfish properties of type 'object', this object contains requirements for the properties contained within the specified object. This specification allows for only one level of nested objects and requirements.|
 
@@ -182,6 +185,7 @@ This example shows property-level requirements, including one of type 'object' c
 					"Status": {},
 					"PowerSupplyType": {
 						"Requirement": "AnyOf",
+						"Purpose": "Need to know AC vs. DC supplies to match input readings to expected values.",
 						"Values": [ "AC", "DC" ]
 					},
 					"LineinputVoltage": {},
@@ -263,7 +267,8 @@ In the second part of the example, the 'IPv6Addresses' array property is require
 				"Requirement": "Recommended",
 				"ConditionalRequirements": [{
 					"SubordinateToResource": ["ComputerSystem", "EthernetInterfaceCollection"],
-					"Requirement": "Mandatory"
+					"Requirement": "Mandatory",
+					"Purpose": "Host Name is used to match this instance to other data sources.",
 				}]
 			},
 			"IPv6Addresses": {
@@ -319,6 +324,7 @@ The following functions are available to specify requirements for an Action with
 | --- | --- | --- |
 | Requirement | string | The requirement to apply to this Action.|
 | Parameters | object | Requirements for any parameter available for this Action. |
+| Purpose | string | A description of the purpose of this requirement.  This text can provide justification or reasoning behind the requirement for use in the profile documentation. |
 
 #### Parameters
 
@@ -337,6 +343,7 @@ This exampls shows the 'Reset' action as required for this resource, along with 
 	"ActionRequirements": {
 		"Reset": {
 			"Requirement": "Mandatory",
+			"Purpose": "Ability to reset the unit is a core requirement of most users.",
 			"Parameters": {
 				"ResetType": {
 					"MinSupportValues": ["ForceOff", "PowerCycle"],
@@ -360,6 +367,7 @@ The following functions are available to specify Registry-level requiremenets:
 | OwningEntityName | string | Name of the owning entity, when used with 'Other', follows 'Oem Property Naming' in the Redfish Specification |
 | MinVersion | string | The minimum version required by this Redfish Profile. If this property is absent, the minimum value shall be '1.0.0'.|
 | Requirement | string | Resource-level requirement for this Registry, see [Requirement](#requirement) section. |
+| Purpose | string | A description of the purpose of this requirement.  This text can provide justification or reasoning behind the requirement for use in the profile documentation. |
 | Messages | object | The Messages in this Registry which have support requirements for this Redfish Profile. If this property is absent, all Messages in this Registry follow the registry-level 'Requirement'. |
 
 ### Messages
