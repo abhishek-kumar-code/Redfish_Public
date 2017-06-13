@@ -1961,10 +1961,12 @@ Below is an example body for a resource resource that supports a Settings resour
             "@odata.id": "/redfish/v1/Managers/1/EthernetInterfaces/1/SD"
         },
         "Time": "2017-05-03T23:12:37-05:00",
-        "ETag": "someetag"
+        "ETag": "someetag",
+        "Messages": []
     },
     ...
 }
+~~~
 
 The values in the Settings resource are applied to the resource either directly, such as with a POST of an action (such as Reset) or a PUT/PATCH request, or indirectly, such as when a user reboots a machine outside of the Redfish Service.  A client may indicate its preference on when to apply the future configuration by including the "@Redfish.SettingsApplyTime" annotation in the request body when configuring the Settings resource.  If a service supports configuring for when to apply the future settings, the response of the Settings resource shall contain a property with the "@Redfish.SettingsApplyTime" annotation.  See properties defined in the "Settings" Redfish Schema for details.
 
