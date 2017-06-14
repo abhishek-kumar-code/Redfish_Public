@@ -2,30 +2,26 @@
     "@odata.type": "#Power.v1_2_0.Power",
     "Name": "MultiBladeEnclosure Power",
     "Id": "MultiBladeEnclosurePower",
-    "Redundancy": [
-        {
-            "@odata.id": "/redfish/v1/Chassis/Enclosure/Power#/Redundancy/0",
-            "MemberId": "0",
-            "Name": "Power Supply Redundancy",
-            "Mode": "N+m",
-            "Status": {
-                "State": "Enabled",
-                "Health": "OK"
+    "Redundancy": [{
+        "@odata.id": "/redfish/v1/Chassis/Enclosure/Power#/Redundancy/0",
+        "MemberId": "0",
+        "Name": "Power Supply Redundancy",
+        "Mode": "N+m",
+        "Status": {
+            "State": "Enabled",
+            "Health": "OK"
+        },
+        "RedundancySet": [{
+                "@odata.id": "/redfish/v1/Chassis/Enclosure/Power#/PowerSupplies/0"
             },
-            "RedundancySet": [
-                {
-                    "@odata.id": "/redfish/v1/Chassis/Enclosure/Power#/PowerSupplies/0"
-                },
-                {
-                    "@odata.id": "/redfish/v1/Chassis/Enclosure/Power#/PowerSupplies/1"
-                }
-            ],
-            "MinNumNeeded": 6,
-            "MaxNumSupported": 12
-        }
-    ],
-    "PowerSupplies": [
-        {
+            {
+                "@odata.id": "/redfish/v1/Chassis/Enclosure/Power#/PowerSupplies/1"
+            }
+        ],
+        "MinNumNeeded": 6,
+        "MaxNumSupported": 12
+    }],
+    "PowerSupplies": [{
             "@odata.id": "/redfish/v1/Chassis/Enclosure/Power#/PowerSupplies/0",
             "MemberId": "0",
             "Name": "Power Supply 0",
@@ -40,16 +36,12 @@
             "PowerSupplyType": "AC",
             "LineInputVoltageType": "AC240V",
             "PhysicalContext": "Back",
-            "Redundancy": [
-                {
-                    "@odata.id": "/redfish/v1/Chassis/Enclosure/Power#/Redundancy/0"
-                }
-            ],
-            "RelatedItem": [
-                {
-                    "@odata.id": "/redfish/v1/Chassis/Enclosure"
-                }
-            ]
+            "Redundancy": [{
+                "@odata.id": "/redfish/v1/Chassis/Enclosure/Power#/Redundancy/0"
+            }],
+            "RelatedItem": [{
+                "@odata.id": "/redfish/v1/Chassis/Enclosure"
+            }]
         },
         {
             "@odata.id": "/redfish/v1/Chassis/Enclosure/Power#/PowerSupplies/1",
@@ -66,18 +58,14 @@
             "PowerSupplyType": "AC",
             "LineInputVoltageType": "AC240V",
             "PhysicalContext": "Back",
-            "Redundancy": [
-                {
-                    "@odata.id": "/redfish/v1/Chassis/Enclosure/Power#/Redundancy/0"
-                }
-            ],
-            "RelatedItem": [
-                {
-                    "@odata.id": "/redfish/v1/Chassis/Enclosure"
-                }
-            ]
+            "Redundancy": [{
+                "@odata.id": "/redfish/v1/Chassis/Enclosure/Power#/Redundancy/0"
+            }],
+            "RelatedItem": [{
+                "@odata.id": "/redfish/v1/Chassis/Enclosure"
+            }]
         }
     ],
-    "@odata.context": "/redfish/v1/$metadata#Chassis/Members/Enclosure/Power/$entity",
+    "@odata.context": "/redfish/v1/$metadata#Power.Power",
     "@odata.id": "/redfish/v1/Chassis/Enclosure/Power"
 }

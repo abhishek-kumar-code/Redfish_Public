@@ -14,7 +14,7 @@
         "State": "Enabled"
     },
     "Redundancy": [{
-        "@odata.id": "/redfish/v1/Managers/EncMgr1#/Redundancy",
+        "@odata.id": "/redfish/v1/Managers/EncMgr1#/Redundancy/0",
         "MemberId": "Redundancy",
         "Mode": "Failover",
         "MaxNumSupported": 2,
@@ -64,10 +64,13 @@
     },
     "Links": {
         "ManagerForServers": [{
-                "@odata.id": "/redfish/v1/Systems/Partition1"
+                "@odata.id": "/redfish/v1/Systems/ComposedPartition1"
             },
             {
-                "@odata.id": "/redfish/v1/Systems/Partition2"
+                "@odata.id": "/redfish/v1/Systems/ComposedPartition2"
+            },
+            {
+                "@odata.id": "/redfish/v1/Systems/ComposedPartition3"
             }
         ],
         "ManagerInChassis": {
@@ -108,6 +111,6 @@
             "target": "/redfish/v1/Managers/EncMgr1/Actions/Manager.ForceFailover"
         }
     },
-    "@odata.context": "/redfish/v1/$metadata#Managers/Members/$entity",
+    "@odata.context": "/redfish/v1/$metadata#Manager.Manager",
     "@odata.id": "/redfish/v1/Managers/EncMgr1"
 }
