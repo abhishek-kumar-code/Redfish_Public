@@ -1977,7 +1977,7 @@ Below is an example request body that shows a client configuring when the values
 ~~~json
 {
     "@Redfish.SettingsApplyTime": {
-        "ApplyTime": "ApplyOnReset",   
+        "ApplyTime": "OnReset",   
         "MaintenanceWindowStartTime": "2017-05-03T23:12:37-05:00",
         "MaintenanceWindowDurationInSeconds": 600
     },
