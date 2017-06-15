@@ -1,0 +1,26 @@
+{
+    "@odata.type": "#MemoryCollection.MemoryCollection",
+    "Name": "PartitionedServer Memory Module Collection",
+    "Members@odata.count": 6,
+    "Members": [{
+            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock2/RBSystem/Memory/1"
+        },
+        {
+            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock2/RBSystem/Memory/2"
+        },
+        {
+            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock3/RBSystem/Memory/1"
+        },
+        {
+            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock3/RBSystem/Memory/2"
+        },
+        {
+            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock5/RBSystem/Memory/1"
+        },
+        {
+            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock5/RBSystem/Memory/2"
+        }
+    ],
+    "@odata.context": "/redfish/v1/$metadata#MemoryCollection.MemoryCollection",
+    "@odata.id": "/redfish/v1/Systems/ComposedPartition2/Memory"
+}

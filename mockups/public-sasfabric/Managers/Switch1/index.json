@@ -33,7 +33,7 @@
     },
     "Redundancy": [
         {
-            "@odata.id": "/redfish/v1/Managers/Switch1#/Redundancy",
+            "@odata.id": "/redfish/v1/Managers/Switch1#/Redundancy/0",
             "MemberId": "Redundancy",
             "Mode": "Failover",
             "MaxNumSupported": 2,

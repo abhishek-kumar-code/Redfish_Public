@@ -1,0 +1,39 @@
+{
+    "@odata.context": "/redfish/v1/$metadata#ResourceBlock.ResourceBlock",
+    "@odata.type": "#ResourceBlock.v1_0_0.ResourceBlock",
+    "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock1",
+    "Id": "BladeComputeBlock1",
+    "Name": "BladeCompute Block 1",
+    "ResourceBlockType": ["Compute"],
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "CompositionStatus": {
+        "Reserved": true,
+        "CompositionState": "Composed"
+    },
+    "ComputerSystems": [{
+        "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock1/RBSystem"
+    }],
+    "Links": {
+        "ComputerSystems": [{
+            "@odata.id": "/redfish/v1/Systems/ComposedPartition1"
+        }],
+        "Zones": [{
+            "@odata.id": "/redfish/v1/CompositionService/ResourceZones/EncZone1"
+        }]
+    },
+    "Oem": {
+        "Contoso": {
+            "@odata.type": "#Contoso.ComputeRB",
+            "ProcessorSummary": {
+                "Count": 2,
+                "Model": "Intel(R) Xeon(R) processor"
+            },
+            "MemorySummary": {
+                "TotalSystemMemoryGiB": 128
+            }
+        }
+    }
+}
