@@ -578,3 +578,7 @@ The above example will request that the composed system called `NewSystem` be re
 ## References
 
 * Provide links to public-composability and public-bladed-partitions on the DMTF site
+* Composition Service Schema: [http://redfish.dmtf.org/schemas/v1/CompositionService_v1.xml](http://redfish.dmtf.org/schemas/v1/CompositionService_v1.xml)
+* Resource Block Schema: [http://redfish.dmtf.org/schemas/v1/ResourceBlock_v1.xml](http://redfish.dmtf.org/schemas/v1/ResourceBlock_v1.xml)
+* Resource Zone Schema: [http://redfish.dmtf.org/schemas/v1/Zone_v1.xml](http://redfish.dmtf.org/schemas/v1/Zone_v1.xml)
+* Collection Capabilities Schema: [http://redfish.dmtf.org/schemas/v1/CollectionCapabilities_v1.xml](http://redfish.dmtf.org/schemas/v1/CollectionCapabilities_v1.xml)
