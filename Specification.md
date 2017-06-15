@@ -1953,7 +1953,7 @@ Current Configuration resources represent the service's knowledge of the current
 
 A Settings resource represents the future state and configuration of the resource.  For resources that support a future state and configuration, the response shall contain a property with the "@Redfish.Settings" annotation.  While the resource represents the current state, the Settings resource represents the future intended state.
 
-Below is an example body for a resource resource that supports a Settings resource.  A client is able to locate the URI of the Settings resource using the "SettingsObject" property.
+Below is an example body for a resource that supports a Settings resource.  A client is able to locate the URI of the Settings resource using the "SettingsObject" property.
 
 ~~~json
 {
