@@ -6,7 +6,7 @@ DocVersion: '1.0.2'
 modified: '2016-06-15'
 status: published
 released: true
-copyright: '2014-2016'
+copyright: '2014-2017'
 ---
 
 # What is the Redfish API?
