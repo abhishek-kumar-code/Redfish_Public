@@ -6,18 +6,9 @@ DocVersion: '1.0.2'
 modified: '2016-06-15'
 status: published
 released: true
-copyright: '2014-2016'
+copyright: '2014-2017'
 ---
 
-DMTF is a not-for-profit association of industry members dedicated to promoting enterprise and systems management and interoperability. Members and non-members may reproduce DMTF specifications and documents, provided that correct attribution is given. As DMTF specifications may be revised from time to time, the particular version and release date should always be noted.
-
-Implementation of certain elements of this standard or proposed standard may be subject to third party patent rights, including provisional patent rights (herein "patent rights"). DMTF makes no representations to users of the standard as to the existence of such rights, and is not responsible to recognize, disclose, or identify any or all such third party patent right, owners or claimants, nor for any incomplete or inaccurate identification or disclosure of such rights, owners or claimants. DMTF shall have no liability to any party, in any manner or circumstance, under any legal theory whatsoever, for failure to recognize, disclose, or identify any such third party patent rights, or for such party's reliance on the standard or incorporation thereof in its product, protocols or testing procedures. DMTF shall have no liability to any party implementing such standard, whether such implementation is foreseeable or not, nor to any patent owner or claimant, and shall have no liability or responsibility for costs or losses incurred if a standard is withdrawn or modified after publication, and shall be indemnified and held harmless by any party implementing the standard from any and all claims of infringement by a patent owner for such implementations.
-
-For information about patents held by third-parties which have notified the DMTF that, in their opinion, such patent may relate to or impact implementations of DMTF standards, visit [http://www.dmtf.org/about/policies/disclosures.php](http://www.dmtf.org/about/policies/disclosures.php).
-
-This document's normative language is English. Translation into other languages is permitted.
-
----
 # What is the Redfish API?
 
 Redfish is a management standard using a data model representation inside of a hypermedia RESTful interface.  The model is expressed in terms of standard, machine-readable Schema, with the payload of the messages being expressed in JSON.  The protocol itself leverages OData v4.  Since it is a hypermedia API, it is capable of representing a variety of implementations via a consistent interface.  It has mechanisms for managing data center resources, handling events, long lived tasks and discovery as well.
