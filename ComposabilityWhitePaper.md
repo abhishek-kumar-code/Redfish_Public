@@ -467,7 +467,7 @@ The client needs to understand the composition model reported by the [Compositio
 
 ### Create a Composed Resource
 
-For building a composition request, the client can take the following steps for building a new composition.
+For building a composition request, the client can take the following steps.
 
 1. List all [Resource Blocks](#resource-blocks) that belong to a particular [Resource Zone](#resource-zones) by doing a GET on their collection URIs as described in [the above example](#read-the-list-of-resources-available-for-composition)
     * When reading the Resource Blocks, take note of the `CompositionStatus` property
