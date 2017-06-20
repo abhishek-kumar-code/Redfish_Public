@@ -139,8 +139,8 @@
 				"Purpose": {
 					"$ref": "#/definitions/Purpose"
 				},
-				"Writeable": {
-					"$ref": "#/definitions/Writeable"
+				"Writable": {
+					"$ref": "#/definitions/Writable"
 				},
 				"MinCount": {
 					"$ref": "#/definitions/MinCount"
@@ -278,21 +278,21 @@
 						"type": "string"
 					}
 				},
-				"Writeable": {
-					"$ref": "#/definitions/Writeable"
+				"Writable": {
+					"$ref": "#/definitions/Writable"
 				}
 			}
 		},
-		"Writeable": {
+		"Writable": {
 			"type": "boolean",
-			"description": "True if the property is required to be writeable by the user.  False or not present if the property may be read-only."
+			"description": "True if the property is required to be writable by the user.  False or not present if the property may be read-only."
 		},
 		"MinSupportValues": {
 			"type": "array",
 			"items": {
 				"type": "string"
 			},
-			"description": "The minimum set of enumerations that must be supported for this writeable property."
+			"description": "The minimum set of enumerations that must be supported for this Writable property."
 		},
 		"Comparison": {
 			"type": "string",

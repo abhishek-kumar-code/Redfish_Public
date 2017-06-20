@@ -50,7 +50,7 @@
 						"Comparison": "AnyOf",
 						"CompareValues": ["Physical", "Composed"],
 						"Requirement": "Mandatory",
-						"Writeable": true
+						"Writable": true
 					}]
 				}
 			},

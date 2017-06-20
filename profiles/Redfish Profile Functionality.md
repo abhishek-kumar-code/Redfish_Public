@@ -163,9 +163,9 @@ The following options are available at the property level:
 | --- | --- | --- |
 | Requirement | string | Property-level requirement for this property, see [Requirement](#requirement) section. |
 | ConditionalRequirements | object | Property-level conditional requirements that apply to instances of this property, see [Conditional Requirements](#conditional-requirements) section. |
-| Writeable | boolean | True if the property is required to be writeable by the user.  False or not present if the property may be read-only. |
+| Writable | boolean | True if the property is required to be writable by the user.  False or not present if the property may be read-only. |
 | MinCount | integer | For array type properties, the minimum number of non-NULL instances within the array. |
-| MinSupportValues |  array | The minimum set of enumerations that must be supported for this writeable property. |
+| MinSupportValues |  array | The minimum set of enumerations that must be supported for this writable property. |
 | Comparison | string | The condition used to compare the value of the property to 'Values'. See the [Comparison](#comparison) section. |
 | Purpose | string | A description of the purpose of this requirement.  This text can provide justification or reasoning behind the requirement for use in the profile documentation. |
 | Values | array | The value(s) required for this property based on the 'Comparison'. If no 'Comparison' is present, the property must be equal to one of the values listed. |
@@ -241,7 +241,7 @@ The following options are available for each conditional requirement:
 | --- | --- | --- |
 | Requirement | string | The requirement to apply to the resource or property if the condition is met.|
 | Purpose | string | Text describing the purpose of this conditional requirement. |
-| Writeable | boolean | Condition applies if the property is writeable. |
+| Writable | boolean | Condition applies if the property is writable. |
 | SubordinateToResource | array | An ordered list (from top of heirarchy to bottom) of resources where this resource is linked as as subordinate resource.  The conditional requirements listed for the resource apply only to instances which are subordinate to the listed parent resource list.  See [Parent and subordinate resources](#parent-and-subordinate-resources) section. |
 | CompareProperty | string | The name of the property in this resource whose value is used to test this condition. The property name will be evaluated at the current object level within the resource.  If the property name is not found at the current level, upper levels will be searched until the root level is reached. See the [Compare Property](#compare-property) section.|
 | CompareValues | array | Values of the CompareProperty used to test this condition. See the [Compare Property](#compare-property) section. |
@@ -309,7 +309,7 @@ This example shows a CompareProperty condition applied to the 'IndicatorLED' pro
 			"Comparison": "AnyOf",
 			"CompareValues": ["Physical", "Composed"],
 			"Requirement": "Mandatory",
-			"Writeable": true
+			"Writable": true
 		}]
 	},
 ~~~
