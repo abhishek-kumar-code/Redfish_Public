@@ -523,6 +523,12 @@ function checkReferencesUsed(err, csdl) {
                         break;
                     case 'EnumType':
                         nameSpaceAliases = annotationsHaveNamespace(entity.Annotations, nameSpaceAliases);
+                        for(let memberName in entity.Members) {
+                           let member = entity.Members[memberName];
+                           if(member.Annotations !== undefined) {
+                             nameSpaceAliases = annotationsHaveNamespace(member.Annotations, nameSpaceAliases);
+                           }
+                        }
                         break;
                     case 'ComplexType':
                         nameSpaceAliases = complexTypeHasNamespace(entity, nameSpaceAliases);
@@ -812,7 +818,10 @@ function validCSDLTypeInMockup(err, json) {
     else {
       let propType = CSDL.findByType({_options: options}, CSDLProperty.Type);
       let propValue = json[propName];
-      if(typeof propType === 'string') {
+      if(propType === null || propType === undefined) {
+        throw new Error('Cannot locate property type '+CSDLProperty.Type+'.');
+      }
+      else if(typeof propType === 'string') {
         simpleTypeCheck(propType, propValue, CSDLProperty, propName);
       }
       else {
