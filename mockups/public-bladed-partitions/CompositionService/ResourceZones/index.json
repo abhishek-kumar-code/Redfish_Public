@@ -1,0 +1,10 @@
+{
+    "@odata.context": "/redfish/v1/$metadata#ZoneCollection.ZoneCollection",
+    "@odata.type": "#ZoneCollection.ZoneCollection",
+    "@odata.id": "/redfish/v1/CompositionService/ResourceZones",
+    "Name": "MultiBlade Partitioning Resource Zone Collection",
+    "Members@odata.count": 1,
+    "Members": [{
+        "@odata.id": "/redfish/v1/CompositionService/ResourceZones/EncZone1"
+    }]
+}

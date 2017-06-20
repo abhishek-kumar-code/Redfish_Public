@@ -1,0 +1,28 @@
+{
+    "@odata.context": "/redfish/v1/$metadata#ResourceBlock.ResourceBlock",
+    "@odata.type": "#ResourceBlock.v1_0_0.ResourceBlock",
+    "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock4",
+    "Id": "BladeComputeBlock4",
+    "Name": "BladeCompute Block 4",
+    "ResourceBlockType": [
+        "Compute"
+    ],
+    "Status": {
+        "State": "UnavailableOffline",
+        "Health": "OK"
+    },
+    "CompositionStatus": {
+        "Reserved": false,
+        "CompositionState": "Unused"
+    },
+    "ComputerSystems": [{
+        "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock4/RBSystem"
+    }],
+    "Links": {
+        "ComputerSystems": [],
+        "Zones": [{
+            "@odata.id": "/redfish/v1/CompositionService/ResourceZones/EncZone1"
+        }]
+    },
+    "Oem": {}
+}

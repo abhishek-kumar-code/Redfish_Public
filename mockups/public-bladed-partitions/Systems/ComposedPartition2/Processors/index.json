@@ -1,0 +1,26 @@
+{
+    "@odata.type": "#ProcessorCollection.ProcessorCollection",
+    "Name": "PartitionedServer Processor Collection",
+    "Members@odata.count": 6,
+    "Members": [{
+            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock2/RBSystem/Processors/CPU1"
+        },
+        {
+            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock2/RBSystem/Processors/CPU2"
+        },
+        {
+            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock3/RBSystem/Processors/CPU1"
+        },
+        {
+            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock3/RBSystem/Processors/CPU2"
+        },
+        {
+            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock5/RBSystem/Processors/CPU1"
+        },
+        {
+            "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock5/RBSystem/Processors/CPU2"
+        }
+    ],
+    "@odata.context": "/redfish/v1/$metadata#ProcessorCollection.ProcessorCollection",
+    "@odata.id": "/redfish/v1/Systems/ComposedPartition2/Processors"
+}

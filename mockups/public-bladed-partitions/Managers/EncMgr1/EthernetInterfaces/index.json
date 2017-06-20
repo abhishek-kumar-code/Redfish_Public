@@ -2,11 +2,9 @@
     "@odata.type": "#EthernetInterfaceCollection.EthernetInterfaceCollection",
     "Name": "Ethernet Network Interface Collection",
     "Members@odata.count": 1,
-    "Members": [
-        {
-            "@odata.id": "/redfish/v1/Managers/EncMgr1/EthernetInterfaces/1"
-        }
-    ],
-    "@odata.context": "/redfish/v1/$metadata#Managers/Members/EncMgr1/EthernetInterfaces/$entity",
+    "Members": [{
+        "@odata.id": "/redfish/v1/Managers/EncMgr1/EthernetInterfaces/1"
+    }],
+    "@odata.context": "/redfish/v1/$metadata#EthernetInterfaceCollection.EthernetInterfaceCollection",
     "@odata.id": "/redfish/v1/Managers/EncMgr1/EthernetInterfaces"
 }
