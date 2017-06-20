@@ -484,7 +484,7 @@ For building a composition request, the client can take the following steps.
         * These are the properties which need to be passed as part of the composition request
     5. Mark down the `TargetCollection` URI
         * This is the where the create (POST) request for the new composition is made
-4. Using all the properties that were `RequiredOnCreate`, build a create (POST) request body that will be sent to the `TargetCollection` URI
+4. Using all the properties that were annotated with `RequiredOnCreate`, build a create (POST) request body that will be sent to the `TargetCollection` URI
     * In step 4 of [the above example](#read-the-list-of-resources-available-for-composition), only `Name` and `ResourceBlocks` found in `Links` are required
     * The Redfish service may accept other properties as part of the request so they do not need to be updated later
 5. The `Location` HTTP header in the service response contains the URI of the composed resource
