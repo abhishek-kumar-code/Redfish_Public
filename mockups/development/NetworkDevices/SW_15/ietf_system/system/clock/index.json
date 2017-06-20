@@ -5,6 +5,5 @@
     "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_system/system/clock",
     "Id": "clock",
     "Name": "system clock",
-    "timezone": "timezone_name",
     "timezone_name": "PDT"
 }

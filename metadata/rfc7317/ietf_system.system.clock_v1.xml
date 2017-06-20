@@ -40,14 +40,14 @@
         <Annotation Term="OData.Description" String="Configuration of the system date and time properties."/>
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="Redfish.Yang.choice" String="timezone"/>
-        <Property Name="timezone-name" Type="Edm.String">
+        <Property Name="timezone_name" Type="Edm.String">
           <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf"/>
           <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/timezone-name" />
           <Annotation Term="Redfish.Yang.if_feature" String="timezone-name"/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The TZ database name to use for the system, such as Europe/Stockholm."/>
         </Property>
-        <Property Name="timezone-utc-offset" Type="Edm.String">
+        <Property Name="timezone_utc_offset" Type="Edm.String">
           <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf"/>
           <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/int16" />
           <Annotation Term="Redfish.Yang.range" String="-1500 .. 1500"/>

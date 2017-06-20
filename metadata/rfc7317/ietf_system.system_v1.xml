@@ -58,9 +58,9 @@
           <Annotation Term="OData.Description" String="The administrator contact information for the system. A server implementation MAY map this leaf to the sysContact MIB object. Such an implementation needs to use some mechanism to handle the differences in size and characters allowed between this leaf and sysContact. The definition of such a mechanism is outside the scope of this document." />
           <Annotation Term="Redfish.Yang.reference" String="RFC 3418: Management Information Base (MIB) for the&#10;             Simple Network Management Protocol (SNMP)&#10;             SNMPv2-MIB.sysContact" />
         </Property>
-        <Property Name="hostname" Type="Yang.inet:domain-name">
+        <Property Name="hostname" Type="Redfish.Yang.domain-name">
           <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf"/>
-          <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/inet:domain-name" />
+          <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/domain-name" />
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The name of the host. This name can be a single domain label or the fully qualified domain name of the host." />
         </Property>

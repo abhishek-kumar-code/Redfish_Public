@@ -5,10 +5,10 @@
     "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_system",
     "Id": "ietf_system",
     "Name": "system",
-    "interfaces": {
+    "system": {
         "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_system/system"
     },
-    "interfaces_state": {
+    "system_state": {
         "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_system/system_state"
     }
 }

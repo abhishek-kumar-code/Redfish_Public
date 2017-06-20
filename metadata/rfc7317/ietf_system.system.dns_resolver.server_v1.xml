@@ -12,9 +12,6 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishYangExtensions_v1.xml">
     <edmx:Include Namespace="RedfishYangExtensions.v1_0_0" Alias="Redfish.Yang"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/rfc7317/ietf_system.system.dns_resolver.server.udp_and_tcp_v1.xml">
-    <edmx:Include Namespace="ietf_system.system.dns_resolver.server.udp_and_tcp"/>
-  </edmx:Reference>
 
   <edmx:DataServices>
 
@@ -51,12 +48,27 @@
           <Annotation Term="OData.Description" String="An arbitrary name for the DNS server." />
         </Property>
         <Annotation String="transport" Term="Redfish.Yang.choice"/>
-        <NavigationProperty Name="udp_and_tcp" Type="ietf_system.system.dns_resolver.server.udp_and_tcp.udp_and_tcp" ContainsTarget="true" >
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
-          <Annotation Term="OData.Description" String="Reference to udp_and_tcp." />
-          <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>
+        <Property Name="udp_and_tcp" Type="ietf_system.system.dns_resolver.server.v1_0_0.udp_and_tcpType">
+          <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/container" />
+          <Annotation Term="OData.Description" String="Contains UDP- and TCP-specific configuration parameters for DNS."/>
+        </Property>
       </EntityType>
+
+     <ComplexType Name="udp_and_tcpType">
+        <Annotation Term="OData.Description" String="Contains UDP- and TCP-specific configuration parameters for DNS."/>
+        <Annotation Term="OData.LongDescription" String="Shall contain UDP- and TCP-specific configuration parameters for DNS."/>
+        <Property Name="address" Type="Edm.String">
+          <Annotation Term="Redfish.Yang.YangType" String="date-and-time"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The address of the DNS server." />
+        </Property>
+        <Property Name="port" Type="Edm.String">
+          <Annotation Term="Redfish.Yang.YangType" String="port-number"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The UDP and TCP port number of the DNS server." />
+        </Property>
+      </ComplexType>
+
     </Schema>
   </edmx:DataServices>
 </edmx:Edmx>

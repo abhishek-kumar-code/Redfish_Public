@@ -42,14 +42,14 @@
         <Annotation Term="OData.Description" String="Contains UDP-specific configuration parameters for NTP." />
         <Property Name="address" Type="Edm.String">
           <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf" />
-          <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/inet:domain-name" />
+          <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/ip-address" />
           <Annotation Term="Redfish.Yang.mandatory" EnumMember="Redfish.Yang.Mandatory/true"/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read/" />
           <Annotation Term="OData.Description" String="The address of the NTP server." />
         </Property>
-        <Property Name="port" Type="Yang.inet:port-number" DefaultValue="123">
+        <Property Name="port" Type="Redfish.Yang.port-number" DefaultValue="123">
           <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf" />
-          <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/inet:domain-name" />
+          <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/port-number" />
           <Annotation Term="Redfish.Yang.if_feature" String="ntp-udp-port" />
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read/" />
           <Annotation Term="OData.Description" String="The port number of the NTP server." />

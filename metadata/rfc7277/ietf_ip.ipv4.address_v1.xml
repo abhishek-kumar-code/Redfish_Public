@@ -42,9 +42,9 @@
         <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/list"/>
         <Annotation Term="Redfish.Yang.choice" String="subnet"/>
         <Annotation Term="OData.Description" String="The list of configured IPv4 addresses on the interface."/>
-        <Property Name="ip" Type="Yang.inet:ipv4-address-no-zone">
+        <Property Name="ip" Type="Redfish.Yang.ipv4-address-no-zone">
           <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf"/>
-          <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/inet:ipv4-address-no-zone"/>
+          <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/ipv4-address-no-zone"/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The IPv4 address on the interface."/>
         </Property>

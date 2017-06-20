@@ -79,9 +79,9 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The current operational state of the interface. This leaf has the same semantics as ifOperStatus."/>
         </Property>
-        <Property Name="last_change" Type="Redfish.Yang.yang:date-and-time">
+        <Property Name="last_change" Type="Redfish.Yang.date_and_time">
           <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf"/>
-          <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/yang:date-and-time"/>
+          <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/date_and_time"/>
           <Annotation Term="Redfish.Yang.reference" String="RFC 2863: The Interfaces Group MIB - ifLastChange"/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The time the interface entered its current operational state. If the current state was entered prior to the last re-initialization of the local network management subsystem, then this node is not present."/>
@@ -96,9 +96,9 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The ifIndex value for the ifEntry represented by this interface."/>
         </Property>
-        <Property Name="phys_address" Type="Redfish.Yang.yang:phys-address">
+        <Property Name="phys_address" Type="Redfish.Yang.phys_address">
           <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf"/>
-          <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/yang:phys-address"/>
+          <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/phys_address"/>
           <Annotation Term="Redfish.Yang.reference" String="RFC 2863: The Interfaces Group MIB - ifPhysAddress"/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The interface's address at its protocol sub-layer. For example, for an 802.x interface, this object normally contains a Media Access Control (MAC) address. The interface's media-specific modules must define the bit and byte ordering and the format of the value of this object. For interfaces that do not have such an address (e.g., a serial line), this node is not present."/>
@@ -115,9 +115,9 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A list of references to interfaces layered underneath this interface."/>
         </Property>
-        <Property Name="speed" Type="Redfish.Yang.yang:gauge64">
+        <Property Name="speed" Type="Redfish.Yang.gauge64">
           <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf" />
-          <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/yang:gauge64" />
+          <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/gauge64" />
           <Annotation Term="Redfish.Yang.units" String="bits/second" />
           <Annotation Term="Redfish.Yang.reference" String="RFC 2863: The Interfaces Group MIB -&#10;                        ifSpeed, ifHighSpeed" />
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>

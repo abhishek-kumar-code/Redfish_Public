@@ -67,13 +67,30 @@
         <Member Name="uint32"/>
         <Member Name="uint64"/>
         <Member Name="string"/>
+        <Member Name="counter32"/>
+        <Member Name="counter64"/>
+        <Member Name="date_and_time"/>
+        <Member Name="date-and-time"/>
+        <Member Name="domain-name"/>
+        <Member Name="empty"/>
+        <Member Name="enumeration"/>
+        <Member Name="gauge64"/>
         <Member Name="identityref"/>
         <Member Name="instance_identifier"/>
-        <Member Name="empty"/>
+        <Member Name="interface-state-ref"/>
+        <Member Name="ip-address"/>
+        <Member Name="ipv4-address-no-zone"/>
+        <Member Name="ipv6-address-no-zone"/>
         <Member Name="leafref"/>
-        <Member Name="enumeration"/>
+        <Member Name="phys_address"/>
+        <Member Name="phys-address"/>
+        <Member Name="port-number"/>
         <Member Name="union"/>
       </EnumType>
+
+      <Term Name="uint8" Type="Edm.String">
+        <Annotation Term="OData.Description" String="The yang namespace."/>
+      </Term>
 
       <Term Name="namespace" Type="Edm.String">
         <Annotation Term="OData.Description" String="The yang namespace."/>
@@ -279,6 +296,49 @@
       <Term Name="statement" Type="Edm.String">
         <Annotation Term="OData.Description" String="Text from the yang statement."/>
       </Term>
+
+      <Term Name="counter32" Type="Edm.String">
+        <Annotation Term="OData.Description" String="The yang enum member string."/>
+      </Term>
+      <Term Name="counter64" Type="Edm.String">
+        <Annotation Term="OData.Description" String="The yang enum member string."/>
+      </Term>
+      <Term Name="gauge64" Type="Edm.String">
+        <Annotation Term="OData.Description" String="The yang enum member string."/>
+      </Term>
+      <Term Name="date_and_time" Type="Edm.String">
+        <Annotation Term="OData.Description" String="The yang enum member string."/>
+      </Term>
+      <Term Name="date-and-time" Type="Edm.String">
+        <Annotation Term="OData.Description" String="The yang enum member string."/>
+      </Term>
+
+      <Term Name="phys_address" Type="Edm.String">
+        <Annotation Term="OData.Description" String="The yang enum member string."/>
+      </Term>
+      <Term Name="phys-address" Type="Edm.String">
+        <Annotation Term="OData.Description" String="The yang enum member string."/>
+      </Term>
+      <Term Name="interface-state-ref" Type="Edm.String">
+        <Annotation Term="OData.Description" String="The yang enum member string."/>
+      </Term>
+      <Term Name="domain-name" Type="Edm.String">
+        <Annotation Term="OData.Description" String="The yang enum member string."/>
+      </Term>
+
+      <Term Name="ip-address" Type="Edm.String">
+        <Annotation Term="OData.Description" String="The yang enum member string."/>
+      </Term>
+      <Term Name="ipv4-address-no-zone" Type="Edm.String">
+        <Annotation Term="OData.Description" String="The yang enum member string."/>
+      </Term>
+      <Term Name="ipv6-address-no-zone" Type="Edm.String">
+        <Annotation Term="OData.Description" String="The yang enum member string."/>
+      </Term>
+      <Term Name="port-number" Type="Edm.String">
+        <Annotation Term="OData.Description" String="The yang enum member string."/>
+      </Term>
+
 
     </Schema>
 

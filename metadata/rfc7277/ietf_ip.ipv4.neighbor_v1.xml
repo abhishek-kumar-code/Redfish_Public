@@ -43,15 +43,15 @@
         <Annotation Term="Redfish.Yang.reference" String="RFC 826: An Ethernet Address Resolution Protocol" />
         <Annotation Term="OData.Description" String="The IPv4 address of the neighbor node."/>
         <Annotation Term="OData.LongDescription" String="Shall be the IPv4 address of the neighbor node."/>
-        <Property Name="ip" Type="Yang.inet:ipv4-address-no-zone">
+        <Property Name="ip" Type="Redfish.Yang.ipv4-address-no-zone">
           <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf"/>
-          <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/inet:ipv4-address-no-zone"/>
+          <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/ipv4-address-no-zone"/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The IPv4 address of the neighbor node."/>
         </Property>
-        <Property Name="link_layer_address" Type="Yang.yang:phys-address">
+        <Property Name="link_layer_address" Type="Redfish.Yang.phys-address">
           <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf" />
-          <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/yang:phys-address"/>
+          <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/phys-address"/>
           <Annotation Term="Redfish.Yang.mandatory" EnumMember="Redfish.Yang.Mandatory/true"/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The link-layer address of the neighbor node."/>
