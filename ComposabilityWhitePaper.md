@@ -301,7 +301,7 @@ The Specific Composition allows clients to create and manage the life cycle of c
 
 An example of choosing a Resource Block according to the binding rules and providing details of specific Resource Blocks in the a create (POST) request can be found in the [Create a Composed Resource](#create-a-composed-resource) section.
 
-Another industry standard server design which fits into the example of Specific Composition is defined in the [Bladed Partition Mockup](#references).  In this example, a Multi-Blade Enclosure consisting of a disaggregated hardware chassis can be bound together to create what are called [partitioned servers](http://www.computerworld.com/article/2593387/server-partitioning.html).  These partitions can be composed using the Specific Composition.  The Redfish service implements each blade within the enclosure as a Resource Block with `ResourceBlockType` set to either `Compute` or `Storage`, and allows the clients to combine multiple Resource Blocks to create a composed Computer System, which is a partitioned server.
+Another industry standard server design which fits into the example of Specific Composition is defined in the [Bladed Partitions Mockup](#references).  In this example, a Multi-Blade Enclosure consisting of a disaggregated hardware chassis can be bound together to create what are called [partitioned servers](http://www.computerworld.com/article/2593387/server-partitioning.html).  These partitions can be composed using the Specific Composition.  The Redfish service implements each blade within the enclosure as a Resource Block with `ResourceBlockType` set to either `Compute` or `Storage`, and allows the clients to combine multiple Resource Blocks to create a composed Computer System, which is a partitioned server.
 
 Example Create (POST) Body for a Specific Composition:
 ```json
@@ -577,7 +577,7 @@ The above example will request that the composed system called `NewSystem` be re
 
 ## References
 
-* "Composable System" and "Bladed Partition" Mockups: [http://redfish.dmtf.org/redfish/v1](http://redfish.dmtf.org/redfish/v1)
+* "Composable System" and "Bladed Partitions" Mockups: [http://redfish.dmtf.org/redfish/v1](http://redfish.dmtf.org/redfish/v1)
 * Composition Service Schema: [http://redfish.dmtf.org/schemas/v1/CompositionService_v1.xml](http://redfish.dmtf.org/schemas/v1/CompositionService_v1.xml)
 * Resource Block Schema: [http://redfish.dmtf.org/schemas/v1/ResourceBlock_v1.xml](http://redfish.dmtf.org/schemas/v1/ResourceBlock_v1.xml)
 * Resource Zone Schema: [http://redfish.dmtf.org/schemas/v1/Zone_v1.xml](http://redfish.dmtf.org/schemas/v1/Zone_v1.xml)
