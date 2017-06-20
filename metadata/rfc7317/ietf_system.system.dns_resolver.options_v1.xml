@@ -40,7 +40,7 @@
       <EntityType Name="options" BaseType="ietf_system.system.dns_resolver.options.options">
         <Annotation EnumMember="Redfish.Yang.NodeTypes/container" Term="Redfish.Yang.NodeType"/>
         <Annotation String="Resolver options. The set of available options has been limited to those that are generally available across different resolver implementations and generally useful." Term="OData.Description"/>
-        <Property DefaultValue="5" Name="timeout" Type="Edm.Byte">
+        <Property DefaultValue="5" Name="timeout" Type="Redfish.Yang.uint8">
           <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf"/>
           <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/uint8" />
           <Annotation Term="Redfish.Yang.range" String="1..max" />
@@ -48,7 +48,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The amount of time the resolver will wait for a response from each remote name server before retrying the query via a different name server." />
         </Property>
-        <Property DefaultValue="2" Name="attempts" Type="Edm.Byte">
+        <Property DefaultValue="2" Name="attempts" Type="Redfish.Yang.uint8">
           <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf" />
           <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/uint8" />
           <Annotation Term="Redfish.Yang.range" String="1..max" />

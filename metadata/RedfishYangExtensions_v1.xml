@@ -303,6 +303,9 @@
       <Term Name="counter64" Type="Edm.String">
         <Annotation Term="OData.Description" String="The yang enum member string."/>
       </Term>
+      <Term Name="uint8" Type="Edm.String">
+        <Annotation Term="OData.Description" String="The yang enum member string."/>
+      </Term>
       <Term Name="gauge64" Type="Edm.String">
         <Annotation Term="OData.Description" String="The yang enum member string."/>
       </Term>

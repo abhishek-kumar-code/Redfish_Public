@@ -51,13 +51,13 @@
         <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/container"/>
         <Annotation Term="Redfish.Yang.presence" String="Enables IPv6 unless the 'enabled' leaf&#10;           (which defaults to 'true') is set to 'false'" />
         <Annotation Term="OData.Description" String="Parameters for the IPv6 address family." />
-        <Property DefaultValue="true" Name="enabled" Type="Edm:Boolean">
+        <Property DefaultValue="true" Name="enabled" Type="Edm.Boolean">
           <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf" />
           <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/boolean" />
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Controls whether IPv6 is enabled or disabled on this interface. When IPv6 is enabled, this interface is connected to an IPv6 stack, and the interface can send and receive IPv6 packets." />
         </Property>
-        <Property DefaultValue="false" Name="forwarding" Type="Edm:Boolean">
+        <Property DefaultValue="false" Name="forwarding" Type="Edm.Boolean">
           <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf"/>
           <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/boolean" />
           <Annotation Term="Redfish.Yang.reference" String="RFC 4861: Neighbor Discovery for IP version 6 (IPv6)&#10;                       Section 6.2.1, IsRouter" />
