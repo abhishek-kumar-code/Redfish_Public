@@ -10,12 +10,12 @@
     <edmx:Include Namespace="Resource.v1_0_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/rfc7317/ietf_system.system.ntp.server_v1.xml">
-    <edmx:Include Namespace="ietf_system.system.ntp.server"/>
+    <edmx:Include Namespace="server"/>
   </edmx:Reference>
 
   <edmx:DataServices>
 
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ietf_system.system.ntp.serverCollection">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="serverCollection">
       <EntityType Name="serverCollection" BaseType="Resource.v1_0_0.ResourceCollection">
         <Annotation Term="OData.Description" String="A Collection of ietf_system.system.ntp.server resource instances."/>
         <Annotation Term="Capabilities.InsertRestrictions">
@@ -33,7 +33,7 @@
             <PropertyValue Bool="false" Property="Deletable"/>
           </Record>
         </Annotation>
-        <NavigationProperty Name="Members" Type="Collection(ietf_system.system.ntp.server.server)">
+        <NavigationProperty Name="Members" Type="Collection(server.server)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
           <Annotation Term="OData.Description" String="Contains members of this collection." />
           <Annotation Term="OData.AutoExpandReferences"/>

@@ -10,11 +10,11 @@
     <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishYangExtensions_v1.xml">
-    <edmx:Include Namespace="RedfishYangExtensions.v1_0_0" Alias="Redfish.Yang"/>
+    <edmx:Include Namespace="Redfish.Yang"/>
   </edmx:Reference>
 
   <edmx:DataServices>
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ietf_system.system.ntp.udp">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="udp">
       <EntityType Name="udp" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="OData.Description" String="Contains UDP-specific configuration parameters for NTP."/>
         <Annotation Term="Capabilities.InsertRestrictions">
@@ -35,8 +35,8 @@
       </EntityType>
     </Schema>
 
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ietf_system.system.ntp.udp.v1_0_0">
-      <EntityType Name="udp" BaseType="ietf_system.system.ntp.udp.udp">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="udp.v1_0_0">
+      <EntityType Name="udp" BaseType="udp.udp">
         <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/container" />
         <Annotation Term="OData.AdditionalProperties" Bool="false" />
         <Annotation Term="OData.Description" String="Contains UDP-specific configuration parameters for NTP." />
@@ -47,9 +47,9 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read/" />
           <Annotation Term="OData.Description" String="The address of the NTP server." />
         </Property>
-        <Property Name="port" Type="Redfish.Yang.port-number" DefaultValue="123">
+        <Property Name="port" Type="Redfish.Yang.port_number" DefaultValue="123">
           <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf" />
-          <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/port-number" />
+          <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/port_number" />
           <Annotation Term="Redfish.Yang.if_feature" String="ntp-udp-port" />
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read/" />
           <Annotation Term="OData.Description" String="The port number of the NTP server." />

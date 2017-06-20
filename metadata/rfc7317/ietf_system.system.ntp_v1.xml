@@ -12,6 +12,13 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishYangExtensions_v1.xml">
     <edmx:Include Namespace="RedfishYangExtensions.v1_0_0" Alias="Redfish.Yang"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/rfc7317/ietf_system.system.ntp.serverCollection_v1.xml">
+    <edmx:Include Namespace="serverCollection"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/rfc7317/ietf_system.system.ntp.udp_v1.xml">
+    <edmx:Include Namespace="udp"/>
+  </edmx:Reference>
+
 
   <edmx:DataServices>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ietf_system.system.ntp">
@@ -48,7 +55,12 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read/" />
           <Annotation Term="OData.Description" String="Indicates that the system should attempt to synchronize the system clock with an NTP server from the 'ntp/server' list." />
         </Property>
-        <NavigationProperty Name="server" Type="ietf_system.system.ntp.serverCollection">
+        <NavigationProperty Name="server" Type="serverCollection.serverCollection">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read/" />
+          <Annotation Term="OData.Description" String="Reference to collection."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        <NavigationProperty Name="udp" Type="udp.udp">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read/" />
           <Annotation Term="OData.Description" String="Reference to collection."/>
           <Annotation Term="OData.AutoExpandReferences"/>

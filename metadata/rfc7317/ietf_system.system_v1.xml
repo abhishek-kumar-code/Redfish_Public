@@ -24,7 +24,7 @@
 
   <edmx:DataServices>
 
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ietf_system.system">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="system">
       <EntityType Name="system" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="Redfish.Yang.contact"  String="WG Web: &lt;http://tools.ietf.org/wg/netmod/&gt; WG List: &lt;mailto:netmod@ietf.org&gt; WG Chair: Thomas Nadeau &lt;mailto:tnadeau@lucidvision.com&gt; WG Chair: Juergen Schoenwaelder &lt;mailto:j.schoenwaelder@jacobs-university.de&gt; Editor: Andy Bierman &lt;mailto:andy@yumaworks.com&gt; Editor: Martin Bjorklund &lt;mailto:mbj@tail-f.com&gt;" />
         <Annotation Term="OData.Description" String="The administrator contact information for the system. A server implementation MAY map this leaf to the sysContact MIB object. Such an implementation needs to use some mechanism to handle the differences in size and characters allowed between this leaf and sysContact. The definition of such a mechanism is outside the scope of this document."/>
@@ -47,8 +47,8 @@
       </EntityType>
     </Schema>
 
-    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ietf_system.system.v1_0_0">
-      <EntityType Name="system" BaseType="ietf_system.system.system">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="system.v1_0_0">
+      <EntityType Name="system" BaseType="system.system">
         <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/container" />
         <Annotation Term="OData.Description" String="System group configuration." />
         <Property Name="contact" Type="Edm.String">
@@ -58,7 +58,7 @@
           <Annotation Term="OData.Description" String="The administrator contact information for the system. A server implementation MAY map this leaf to the sysContact MIB object. Such an implementation needs to use some mechanism to handle the differences in size and characters allowed between this leaf and sysContact. The definition of such a mechanism is outside the scope of this document." />
           <Annotation Term="Redfish.Yang.reference" String="RFC 3418: Management Information Base (MIB) for the&#10;             Simple Network Management Protocol (SNMP)&#10;             SNMPv2-MIB.sysContact" />
         </Property>
-        <Property Name="hostname" Type="Redfish.Yang.domain-name">
+        <Property Name="hostname" Type="Redfish.Yang.domain_name">
           <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf"/>
           <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/domain-name" />
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>

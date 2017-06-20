@@ -13,10 +13,10 @@
     <edmx:Include Namespace="RedfishYangExtensions.v1_0_0" Alias="Redfish.Yang"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/rfc7277/ietf_ip.ipv4_v1.xml">
-    <edmx:Include Namespace="ipv4"/>
+    <edmx:Include Namespace="ietf_ip.ipv4"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/rfc7277/ietf_ip.ipv6_v1.xml">
-    <edmx:Include Namespace="ipv6"/>
+    <edmx:Include Namespace="ietf_ip.ipv6"/>
   </edmx:Reference>
 
 
@@ -88,12 +88,12 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Controls whether linkUp/linkDown SNMP notifications should be generated for this interface. If this node is not configured, the value 'enabled' is operationally used by the server for interfaces that do not operate on top of any other interface (i.e., there are no 'lower-layer-if' entries), and 'disabled' otherwise." />
         </Property>
-        <NavigationProperty ContainsTarget="true" Name="ipv4" Type="ipv4.ipv4">
+        <NavigationProperty ContainsTarget="true" Name="ipv4" Type="ietf_ip.ipv4.ipv4">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read/" />
           <Annotation Term="OData.Description" String="Reference to ipv4." />
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
-        <NavigationProperty ContainsTarget="true" Name="ipv6" Type="ipv6.ipv6">
+        <NavigationProperty ContainsTarget="true" Name="ipv6" Type="ietf_ip.ipv6.ipv6">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read/" />
           <Annotation Term="OData.Description" String="Reference to ipv4." />
           <Annotation Term="OData.AutoExpandReferences"/>

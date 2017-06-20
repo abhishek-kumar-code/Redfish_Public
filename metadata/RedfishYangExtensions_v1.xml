@@ -26,7 +26,8 @@
       <TypeDefinition Name="uint32" UnderlyingType="Edm.Int64"/>
       <TypeDefinition Name="uint64" UnderlyingType="Edm.Decimal"/>
       <TypeDefinition Name="XmlBlock" UnderlyingType="Edm.String"/>
-
+      <TypeDefinition Name="port_number" UnderlyingType="Edm.Int64"/>
+    
       <Term Name="NodeType" Type="RedfishYangExtensions.v1_0_0.NodeTypes">
         <Annotation Term="OData.Description" String="Yang NodeTypes."/>
       </Term>
@@ -71,6 +72,7 @@
         <Member Name="counter64"/>
         <Member Name="date_and_time"/>
         <Member Name="date-and-time"/>
+        <Member Name="domain_name"/>
         <Member Name="domain-name"/>
         <Member Name="empty"/>
         <Member Name="enumeration"/>
@@ -84,10 +86,11 @@
         <Member Name="leafref"/>
         <Member Name="phys_address"/>
         <Member Name="phys-address"/>
-        <Member Name="port-number"/>
+        <Member Name="port_number"/>
         <Member Name="union"/>
       </EnumType>
 
+ 
       <Term Name="uint8" Type="Edm.String">
         <Annotation Term="OData.Description" String="The yang namespace."/>
       </Term>
@@ -284,7 +287,9 @@
       </Term>
       <EnumType Name="DeviateType">
         <Member Name="not_supported"/>
-        <Member Name="add"/>
+        <Member Name="add"/>  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/rfc7317/ietf_system.system.ntp.udp_v1.xml">
+    <edmx:Include Namespace="udp"/>
+  </edmx:Reference>
         <Member Name="replace"/>
         <Member Name="delete"/>
       </EnumType>
@@ -328,6 +333,9 @@
       <Term Name="domain-name" Type="Edm.String">
         <Annotation Term="OData.Description" String="The yang enum member string."/>
       </Term>
+      <Term Name="domain_name" Type="Edm.String">
+        <Annotation Term="OData.Description" String="The yang enum member string."/>
+      </Term>
 
       <Term Name="ip-address" Type="Edm.String">
         <Annotation Term="OData.Description" String="The yang enum member string."/>
@@ -338,7 +346,7 @@
       <Term Name="ipv6-address-no-zone" Type="Edm.String">
         <Annotation Term="OData.Description" String="The yang enum member string."/>
       </Term>
-      <Term Name="port-number" Type="Edm.String">
+      <Term Name="port_number" Type="Edm.Int64">
         <Annotation Term="OData.Description" String="The yang enum member string."/>
       </Term>
 

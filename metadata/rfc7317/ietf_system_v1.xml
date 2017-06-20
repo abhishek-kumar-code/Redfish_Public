@@ -16,7 +16,7 @@
     <edmx:Include Namespace="Resource.v1_0_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/rfc7317/ietf_system.system_state_v1.xml">
-    <edmx:Include Namespace="system_state"/>
+    <edmx:Include Namespace="ietf_system.system_state"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/rfc7317/ietf_system.system_v1.xml">
     <edmx:Include Namespace="system"/>
@@ -26,7 +26,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ietf_system">
       <EntityType Name="ietf_system" BaseType="Resource.v1_0_0.Resource" Abstract="true">
         <Annotation Term="Redfish.Yang.contact" String="WG Web: &lt;http://tools.ietf.org/wg/netmod/&gt; WG List: &lt;mailto:netmod@ietf.org&gt; WG Chair: Thomas Nadeau &lt;mailto:tnadeau@lucidvision.com&gt; WG Chair: Juergen Schoenwaelder &lt;mailto:j.schoenwaelder@jacobs-university.de&gt; Editor: Andy Bierman &lt;mailto:andy@yumaworks.com&gt; Editor: Martin Bjorklund &lt;mailto:mbj@tail-f.com&gt;"/>
-      <Annotation Term="OData.Description" String="This module contains a collection of YANG definitions for the configuration and identification of some common system properties within a device containing a NETCONF server. This includes data node definitions for system identification, time-of-day management, user management, DNS resolver configuration, and some protocol operations for system management. Copyright (c) 2014 IETF Trust and the persons identified as authors of the code. All rights reserved. Redistribution and use in source and binary forms, with or without modification, is permitted pursuant to, and subject to the license terms contained in, the Simplified BSD License set forth in Section 4.c of the IETF Trust's Legal Provisions Relating to IETF Documents (http://trustee.ietf.org/license-info). This version of this YANG module is part of RFC 7317; see the RFC itself for full legal notices."/>
+        <Annotation Term="OData.Description" String="This module contains a collection of YANG definitions for the configuration and identification of some common system properties within a device containing a NETCONF server. This includes data node definitions for system identification, time-of-day management, user management, DNS resolver configuration, and some protocol operations for system management. Copyright (c) 2014 IETF Trust and the persons identified as authors of the code. All rights reserved. Redistribution and use in source and binary forms, with or without modification, is permitted pursuant to, and subject to the license terms contained in, the Simplified BSD License set forth in Section 4.c of the IETF Trust's Legal Provisions Relating to IETF Documents (http://trustee.ietf.org/license-info). This version of this YANG module is part of RFC 7317; see the RFC itself for full legal notices."/>
         <Annotation Term="Capabilities.InsertRestrictions">
           <Record>
             <PropertyValue Property="Insertable" Bool="false"/>
@@ -42,7 +42,20 @@
             <PropertyValue Property="Deletable" Bool="false"/>
           </Record>
         </Annotation>
+
       </EntityType>
+
+      <Action Name="system_restart">
+        <Annotation Term="Redfish.Yang.NodeType" String="Redfish.Yang.NodeTypes/rpc"/>
+        <Annotation Term="Redfish.Yang.statement" String="nacm:default-deny-all"/>
+        <Annotation Term="OData.Description" String="Request that the entire system be restarted immediately. A server SHOULD send an rpc reply to the client before restarting the system."/>
+      </Action>
+
+      <Action Name="system_shutdown">
+        <Annotation Term="Redfish.Yang.NodeType" String="Redfish.Yang.NodeTypes/rpc"/>
+        <Annotation Term="Redfish.Yang.statement" String="nacm:default-deny-all"/>
+        <Annotation Term="OData.Description" String="Request that the entire system be shut down immediately. A server SHOULD send an rpc reply to the client before shutting down the system."/>
+      </Action>
 
     </Schema>
 
@@ -59,13 +72,13 @@
       <Annotation Term="Redfish.Yang.feature" String="timezone-name" />
       <Annotation Term="Redfish.Yang.feature" String="dns-udp-tcp-port" />
 
-      <NavigationProperty ContainsTarget="true" Name="system" Type="system.system">
-        <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read/" />
+      <NavigationProperty Name="system" Type="system.system" ContainsTarget="true">
+        <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
         <Annotation Term="OData.Description" String="Reference to system." />
          <Annotation Term="OData.AutoExpandReferences"/>
       </NavigationProperty>
-      <NavigationProperty ContainsTarget="true" Name="system_state" Type="system_state.system_state">
-        <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read/" />
+      <NavigationProperty Name="system_state" Type="ietf_system.system_state.system_state" ContainsTarget="true">
+        <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
         <Annotation Term="OData.Description" String="Reference to system_state." />
         <Annotation Term="OData.AutoExpandReferences"/>
       </NavigationProperty>
@@ -74,13 +87,13 @@
       <Action Name="set_current_datetime">
         <Annotation Term="Redfish.Yang.NodeType" String="Redfish.Yang.NodeTypes/rpc" />
         <Annotation Term="Redfish.Yang.statement" String="nacm:default-deny-all" />
-        <Annotation String="Set the /system-state/clock/current-datetime leaf to the specified value. If the system is using NTP (i.e., /system/ntp/enabled is set to 'true'), then this operation will fail with error-tag 'operation-failed' and error-app-tag value of 'ntp-active'." Term="Redfish.Yang.description"/>
+        <Annotation Term="Redfish.Yang.description" String="Set the /system-state/clock/current-datetime leaf to the specified value. If the system is using NTP (i.e., /system/ntp/enabled is set to 'true'), then this operation will fail with error-tag 'operation-failed' and error-app-tag value of 'ntp-active'."/>
         <Parameter Name="set_current_datetimeInput" Type="ietf_system.v1_0_0.set_current_datetimeInputType">
           <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/input" />
         </Parameter>
       </Action>
       <ComplexType Name="set_current_datetimeInputType">
-        <Annotation String="yang:date-and-time" Term="Redfish.Yang.YangType"/>
+        <Annotation Term="Redfish.Yang.YangType" String="date_and_time" />
         <Annotation Term="OData.Description" String="set_current_datetimeInputType." />
         <Annotation Term="OData.LongDescription" String="set_current_datetimeInputType." />
         <Property Name="current-datetime" Type="Edm.String">
@@ -90,20 +103,9 @@
         </Property>
       </ComplexType>
 
-      <Action Name="system_restart">
-        <Annotation String="Redfish.Yang.NodeTypes/rpc" Term="Redfish.Yang.NodeType"/>
-        <Annotation String="nacm:default-deny-all" Term="Redfish.Yang.statement"/>
-        <Annotation String="Request that the entire system be restarted immediately. A server SHOULD send an rpc reply to the client before restarting the system." Term="Redfish.Yang.description"/>
-      </Action>
 
-      <Action Name="system_shutdown">
-        <Annotation String="Redfish.Yang.NodeTypes/rpc" Term="Redfish.Yang.NodeType"/>
-        <Annotation String="nacm:default-deny-all" Term="Redfish.Yang.statement"/>
-        <Annotation String="Request that the entire system be shut down immediately. A server SHOULD send an rpc reply to the client before shutting down the system." Term="Redfish.Yang.description"/>
-      </Action>
-
-      <TypeDefinition Name="timezone_name" UnderlyingType="string">
-        <Annotation String="A time zone name as used by the Time Zone Database, sometimes referred to as the 'Olson Database'. The exact set of valid values is an implementation-specific matter. Client discovery of the exact set of time zone names for a particular server is out of scope." Term="OData.Description"/>
+      <TypeDefinition Name="timezone_name" UnderlyingType="Edm.String">
+        <Annotation Term="OData.Description" String="A time zone name as used by the Time Zone Database, sometimes referred to as the 'Olson Database'. The exact set of valid values is an implementation-specific matter. Client discovery of the exact set of time zone names for a particular server is out of scope."/>
       </TypeDefinition>
 
     </Schema>

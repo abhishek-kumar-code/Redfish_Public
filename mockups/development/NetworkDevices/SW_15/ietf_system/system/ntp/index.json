@@ -6,16 +6,8 @@
     "Id": "ntp",
     "Name": "system ntp",
     "enabled": true,
-    "server": [
-        {
-            "name": "",
-            "transport": "udp",
-            "udp": {
-                "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_system/system/ntp/udp"
-            },
-            "association_type": "server",
-            "iburst": true,
-            "prefer": true
-        }
-    ]
+    "server": {
+        "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_system/system/ntp/server"
+    }
+
 }
