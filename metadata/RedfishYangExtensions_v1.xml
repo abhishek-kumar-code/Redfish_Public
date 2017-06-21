@@ -287,9 +287,7 @@
       </Term>
       <EnumType Name="DeviateType">
         <Member Name="not_supported"/>
-        <Member Name="add"/>  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/rfc7317/ietf_system.system.ntp.udp_v1.xml">
-    <edmx:Include Namespace="udp"/>
-  </edmx:Reference>
+        <Member Name="add"/>
         <Member Name="replace"/>
         <Member Name="delete"/>
       </EnumType>
