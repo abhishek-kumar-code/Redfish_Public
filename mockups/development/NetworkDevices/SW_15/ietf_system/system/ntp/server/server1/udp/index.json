@@ -6,5 +6,5 @@
     "Id": "udp",
     "Name": "system ntp udp",
     "address": "192.168.4.10",
-    "port": "123"
+    "port": 123
 }

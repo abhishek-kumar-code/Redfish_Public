@@ -43,9 +43,9 @@
         <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container"/>
         <Annotation Term="OData.Description" String="A collection of interface-related statistics objects."/>
         <Annotation Term="OData.LongDescription" String="A collection of interface-related statistics objects."/>
-        <Property Name="discontinuity_time" Type="RedfishYang.date-and-time">
+        <Property Name="discontinuity_time" Type="RedfishYang.date_and_time">
           <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
-          <Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/date-and-time"/>
+          <Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/date_and_time"/>
           <Annotation Term="RedfishYang.mandatory" EnumMember="RedfishYang.Mandatory/true"/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The time on the most recent occasion at which any one or more of this interface's counters suffered a discontinuity. If no such discontinuities have occurred since the last re-initialization of the local management subsystem, then this node contains the time the local management subsystem re-initialized itself."/>

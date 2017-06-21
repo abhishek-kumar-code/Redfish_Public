@@ -40,15 +40,15 @@
       <EntityType Name="clock" BaseType="ietf_system.system_state.clock.clock">
         <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container" />
         <Annotation Term="OData.Description" String="Monitoring of the system date and time properties." />
-        <Property Name="current_datetime" Type="RedfishYang.date-and-time">
+        <Property Name="current_datetime" Type="RedfishYang.date_and_time">
           <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf" />
-          <Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/date-and-time" />
+          <Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/date_and_time" />
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The current system date and time." />
         </Property>
-        <Property Name="boot_datetime" Type="RedfishYang.date-and-time">
+        <Property Name="boot_datetime" Type="RedfishYang.date_and_time">
           <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf" />
-          <Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/date-and-time" />
+          <Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/date_and_time" />
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The system date and time when the system last restarted." />
         </Property>

@@ -27,7 +27,8 @@
       <TypeDefinition Name="uint64" UnderlyingType="Edm.Decimal"/>
       <TypeDefinition Name="XmlBlock" UnderlyingType="Edm.String"/>
       <TypeDefinition Name="port_number" UnderlyingType="Edm.Int64"/>
-    
+      <TypeDefinition Name="date_and_time" UnderlyingType="Edm.String"/>
+  
       <Term Name="NodeType" Type="RedfishYangExtensions.v1_0_0.NodeTypes">
         <Annotation Term="OData.Description" String="Yang NodeTypes."/>
       </Term>
@@ -71,21 +72,18 @@
         <Member Name="counter32"/>
         <Member Name="counter64"/>
         <Member Name="date_and_time"/>
-        <Member Name="date-and-time"/>
         <Member Name="domain_name"/>
-        <Member Name="domain-name"/>
         <Member Name="empty"/>
         <Member Name="enumeration"/>
         <Member Name="gauge64"/>
         <Member Name="identityref"/>
         <Member Name="instance_identifier"/>
-        <Member Name="interface-state-ref"/>
-        <Member Name="ip-address"/>
-        <Member Name="ipv4-address-no-zone"/>
-        <Member Name="ipv6-address-no-zone"/>
+        <Member Name="interface_state_ref"/>
+        <Member Name="ip_address"/>
+        <Member Name="ipv4_address_no_zone"/>
+        <Member Name="ipv6_address_no_zone"/>
         <Member Name="leafref"/>
         <Member Name="phys_address"/>
-        <Member Name="phys-address"/>
         <Member Name="port_number"/>
         <Member Name="union"/>
       </EnumType>
@@ -300,6 +298,8 @@
         <Annotation Term="OData.Description" String="Text from the yang statement."/>
       </Term>
 
+<!--# For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright -->
+
       <Term Name="counter32" Type="Edm.String">
         <Annotation Term="OData.Description" String="The yang enum member string."/>
       </Term>
@@ -309,36 +309,30 @@
       <Term Name="uint8" Type="Edm.String">
         <Annotation Term="OData.Description" String="The yang enum member string."/>
       </Term>
+      <Term Name="uint16" Type="Edm.String">
+        <Annotation Term="OData.Description" String="The yang enum member string."/>
+      </Term>
       <Term Name="gauge64" Type="Edm.String">
         <Annotation Term="OData.Description" String="The yang enum member string."/>
       </Term>
       <Term Name="date_and_time" Type="Edm.String">
         <Annotation Term="OData.Description" String="The yang enum member string."/>
       </Term>
-      <Term Name="date-and-time" Type="Edm.String">
-        <Annotation Term="OData.Description" String="The yang enum member string."/>
-      </Term>
 
       <Term Name="phys_address" Type="Edm.String">
         <Annotation Term="OData.Description" String="The yang enum member string."/>
       </Term>
-      <Term Name="phys-address" Type="Edm.String">
-        <Annotation Term="OData.Description" String="The yang enum member string."/>
-      </Term>
       <Term Name="interface-state-ref" Type="Edm.String">
-        <Annotation Term="OData.Description" String="The yang enum member string."/>
-      </Term>
-      <Term Name="domain-name" Type="Edm.String">
         <Annotation Term="OData.Description" String="The yang enum member string."/>
       </Term>
       <Term Name="domain_name" Type="Edm.String">
         <Annotation Term="OData.Description" String="The yang enum member string."/>
       </Term>
 
-      <Term Name="ip-address" Type="Edm.String">
+      <Term Name="ip_address" Type="Edm.String">
         <Annotation Term="OData.Description" String="The yang enum member string."/>
       </Term>
-      <Term Name="ipv4-address-no-zone" Type="Edm.String">
+      <Term Name="ipv4_address_no_zone" Type="Edm.String">
         <Annotation Term="OData.Description" String="The yang enum member string."/>
       </Term>
       <Term Name="ipv6-address-no-zone" Type="Edm.String">
