@@ -1,6 +1,6 @@
 {
     "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#ietf_system.system.ntp.udp.udp",
+    "@odata.context": "/redfish/v1/$metadata#ietf_system.system.ntp.server.udp.udp",
     "@odata.type": "#udp.v1_0_0.udp",
     "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_system/system/ntp/server/server1/udp",
     "Id": "udp",

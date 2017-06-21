@@ -13,7 +13,7 @@
     <edmx:Include Namespace="Resource.v1_0_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishYangExtensions_v1.xml">
-    <edmx:Include Namespace="Redfish.Yang" Alias="Redfish.Yang"/>
+    <edmx:Include Namespace="RedfishYangExtensions.v1_0_0" Alias="Redfish.Yang"/>
   </edmx:Reference>
 
   <edmx:DataServices>
