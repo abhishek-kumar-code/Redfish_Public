@@ -13,7 +13,7 @@
     <edmx:Include Namespace="Resource.v1_0_0"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishYangExtensions_v1.xml">
-    <edmx:Include Namespace="RedfishYangExtensions.v1_0_0" Alias="Redfish.Yang"/>
+    <edmx:Include Namespace="RedfishYangExtensions.v1_0_0" Alias="RedfishYang"/>
   </edmx:Reference>
 
   <edmx:DataServices>
@@ -41,20 +41,20 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="udp_and_tcp.v1_0_0">
       <EntityType Name="udp_and_tcp" BaseType="udp_and_tcp.udp_and_tcp">
-        <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/container" />
+        <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container" />
         <Annotation Term="OData.Description" String="Contains UDP- and TCP-specific configuration parameters for DNS." />
-        <Annotation Term="Redfish.Yang.reference" String="RFC 1035: Domain Names - Implementation and&#10;                   Specification&#10;                 RFC 5966: DNS Transport over TCP - Implementation&#10;                   Requirements" />
-        <Property Name="address" Type="Redfish.Yang.ip-address">
-          <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf" />
-          <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/ip-address" />
-          <Annotation Term="Redfish.Yang.mandatory" EnumMember="Redfish.Yang.Mandatory/true" />
+        <Annotation Term="RedfishYang.reference" String="RFC 1035: Domain Names - Implementation and&#10;                   Specification&#10;                 RFC 5966: DNS Transport over TCP - Implementation&#10;                   Requirements" />
+        <Property Name="address" Type="RedfishYang.ip-address">
+          <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf" />
+          <Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/ip-address" />
+          <Annotation Term="RedfishYang.mandatory" EnumMember="RedfishYang.Mandatory/true" />
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The address of the DNS server." />
         </Property>
-        <Property Name="port" Type="Redfish.Yang.port_number" DefaultValue="53">
-          <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf" />
-          <Annotation Term="Redfish.Yang.if_feature" String="dns-udp-tcp-port" />
-          <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/port_number" />
+        <Property Name="port" Type="RedfishYang.port_number" DefaultValue="53">
+          <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf" />
+          <Annotation Term="RedfishYang.if_feature" String="dns-udp-tcp-port" />
+          <Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/port_number" />
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The UDP and TCP port number of the DNS server." />
         </Property>

@@ -10,7 +10,7 @@
     <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishYangExtensions_v1.xml">
-    <edmx:Include Namespace="RedfishYangExtensions.v1_0_0" Alias="Redfish.Yang"/>
+    <edmx:Include Namespace="RedfishYangExtensions.v1_0_0" Alias="RedfishYang"/>
   </edmx:Reference>
 
   <edmx:DataServices>
@@ -39,12 +39,12 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ietf_ip.ipv4.address.v1_0_0">
       <EntityType Name="address" BaseType="ietf_ip.ipv4.address.address">
-        <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/list"/>
-        <Annotation Term="Redfish.Yang.choice" String="subnet"/>
+        <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/list"/>
+        <Annotation Term="RedfishYang.choice" String="subnet"/>
         <Annotation Term="OData.Description" String="The list of configured IPv4 addresses on the interface."/>
-        <Property Name="ip" Type="Redfish.Yang.ipv4-address-no-zone">
-          <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf"/>
-          <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/ipv4-address-no-zone"/>
+        <Property Name="ip" Type="RedfishYang.ipv4-address-no-zone">
+          <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+          <Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/ipv4-address-no-zone"/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The IPv4 address on the interface."/>
         </Property>

@@ -10,7 +10,7 @@
     <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishYangExtensions_v1.xml">
-    <edmx:Include Namespace="RedfishYangExtensions.v1_0_0" Alias="Redfish.Yang"/>
+    <edmx:Include Namespace="RedfishYangExtensions.v1_0_0" Alias="RedfishYang"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/rfc7317/ietf_system.system.dns_resolver.options_v1.xml">
     <edmx:Include Namespace="ietf_system.system.dns_resolver.options"/>
@@ -43,12 +43,12 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ietf_system.system.dns_resolver.v1_0_0">
       <EntityType Name="dns_resolver" BaseType="ietf_system.system.dns_resolver.dns_resolver">
-        <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/container" />
+        <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container" />
         <Annotation Term="OData.Description" String="Configuration of the DNS resolver." />
         <Property Name="search" Type="Collection(ietf_system.system.dns_resolver.v1_0_0.searchType)">
-          <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf_list" />
-          <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/inet:domain-name" />
-          <Annotation Term="Redfish.Yang.ordered_by" EnumMember="Redfish.Yang.OrderedBy/user" />
+          <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf_list" />
+          <Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/inet:domain-name" />
+          <Annotation Term="RedfishYang.ordered_by" EnumMember="RedfishYang.OrderedBy/user" />
           <Annotation Term="OData.Description" String="An ordered list of domains to search when resolving a host name." />
         </Property>
         <NavigationProperty Name="options" Type="ietf_system.system.dns_resolver.options.options" ContainsTarget="true" >
@@ -69,8 +69,8 @@ different resolver implementations and generally useful." />
         <Annotation Term="OData.Description" String="An ordered list of domains to search when resolving a host name." />
         <Annotation Term="OData.LongDescription" String="An ordered list of domains to search when resolving a host name." />
         <Property Name="domain-name" Type="Edm.String">
-          <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf"/>
-          <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/Yang.inet:domain-name" />
+          <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+          <Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/Yang.inet:domain-name" />
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="domain-name."/>
           <Annotation Term="OData.LongDescription" String="domain-name."/>

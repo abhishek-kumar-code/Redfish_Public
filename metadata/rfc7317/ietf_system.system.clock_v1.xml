@@ -10,7 +10,7 @@
     <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishYangExtensions_v1.xml">
-    <edmx:Include Namespace="RedfishYangExtensions.v1_0_0" Alias="Redfish.Yang"/>
+    <edmx:Include Namespace="RedfishYangExtensions.v1_0_0" Alias="RedfishYang"/>
   </edmx:Reference>
 
   <edmx:DataServices>
@@ -39,19 +39,19 @@
       <EntityType Name="clock" BaseType="ietf_system.system.clock.clock">
         <Annotation Term="OData.Description" String="Configuration of the system date and time properties."/>
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
-        <Annotation Term="Redfish.Yang.choice" String="timezone"/>
+        <Annotation Term="RedfishYang.choice" String="timezone"/>
         <Property Name="timezone_name" Type="Edm.String">
-          <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf"/>
-          <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/timezone-name" />
-          <Annotation Term="Redfish.Yang.if_feature" String="timezone-name"/>
+          <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+          <Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/timezone-name" />
+          <Annotation Term="RedfishYang.if_feature" String="timezone-name"/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The TZ database name to use for the system, such as Europe/Stockholm."/>
         </Property>
         <Property Name="timezone_utc_offset" Type="Edm.String">
-          <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf"/>
-          <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/int16" />
-          <Annotation Term="Redfish.Yang.range" String="-1500 .. 1500"/>
-          <Annotation Term="Redfish.Yang.units" String="minutes" />
+          <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+          <Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/int16" />
+          <Annotation Term="RedfishYang.range" String="-1500 .. 1500"/>
+          <Annotation Term="RedfishYang.units" String="minutes" />
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The number of minutes to add to UTC time to identify the time zone for this system. For example,
 UTC - 8:00 hours would be represented as -480. Note that automatic daylight saving time adjustment is not provided if this object is used."/>

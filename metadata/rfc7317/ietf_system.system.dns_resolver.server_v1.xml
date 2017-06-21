@@ -10,7 +10,7 @@
     <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishYangExtensions_v1.xml">
-    <edmx:Include Namespace="RedfishYangExtensions.v1_0_0" Alias="Redfish.Yang"/>
+    <edmx:Include Namespace="RedfishYangExtensions.v1_0_0" Alias="RedfishYang"/>
   </edmx:Reference>
 
   <edmx:DataServices>
@@ -38,18 +38,18 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ietf_system.system.dns_resolver.server.v1_0_0">
       <EntityType Name="server" BaseType="ietf_system.system.dns_resolver.server.server">
-        <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/list" />
-        <Annotation Term="Redfish.Yang.ordered_by" EnumMember="Redfish.Yang.OrderedBy/user" />
+        <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/list" />
+        <Annotation Term="RedfishYang.ordered_by" EnumMember="RedfishYang.OrderedBy/user" />
         <Annotation Term="OData.Description" String="ietf_system.system.dns_resolver.server." />
         <Property Name="name" Type="Edm.String">
-          <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf" />
-          <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/string" />
+          <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf" />
+          <Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/string" />
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="An arbitrary name for the DNS server." />
         </Property>
-        <Annotation String="transport" Term="Redfish.Yang.choice"/>
+        <Annotation String="transport" Term="RedfishYang.choice"/>
         <Property Name="udp_and_tcp" Type="ietf_system.system.dns_resolver.server.v1_0_0.udp_and_tcpType">
-          <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/container" />
+          <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container" />
           <Annotation Term="OData.Description" String="Contains UDP- and TCP-specific configuration parameters for DNS."/>
         </Property>
       </EntityType>
@@ -58,12 +58,12 @@
         <Annotation Term="OData.Description" String="Contains UDP- and TCP-specific configuration parameters for DNS."/>
         <Annotation Term="OData.LongDescription" String="Shall contain UDP- and TCP-specific configuration parameters for DNS."/>
         <Property Name="address" Type="Edm.String">
-          <Annotation Term="Redfish.Yang.YangType" String="date-and-time"/>
+          <Annotation Term="RedfishYang.YangType" String="date-and-time"/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The address of the DNS server." />
         </Property>
         <Property Name="port" Type="Edm.String">
-          <Annotation Term="Redfish.Yang.YangType" String="port-number"/>
+          <Annotation Term="RedfishYang.YangType" String="port-number"/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The UDP and TCP port number of the DNS server." />
         </Property>

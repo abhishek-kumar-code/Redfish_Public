@@ -10,7 +10,7 @@
     <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishYangExtensions_v1.xml">
-    <edmx:Include Namespace="RedfishYangExtensions.v1_0_0" Alias="Redfish.Yang"/>
+    <edmx:Include Namespace="RedfishYangExtensions.v1_0_0" Alias="RedfishYang"/>
   </edmx:Reference>
  
  <edmx:DataServices>
@@ -41,20 +41,20 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ietf_ip.ipv6.address.v1_0_0">
       <EntityType Name="address" BaseType="ietf_ip.ipv6.address.address">
 
-        <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/list"/>
-        <Annotation Term="Redfish.Yang.choice" String="subnet"/>
+        <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/list"/>
+        <Annotation Term="RedfishYang.choice" String="subnet"/>
         <Annotation Term="OData.Description" String="The list of configured ipv6 addresses on the interface."/>
-        <Property Name="ip" Type="Redfish.Yang.ipv6-address-no-zone">
-          <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf"/>
-          <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/ipv6-address-no-zone"/>
+        <Property Name="ip" Type="RedfishYang.ipv6-address-no-zone">
+          <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+          <Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/ipv6-address-no-zone"/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The IPv6 address on the interface."/>
         </Property>
-        <Property Name="ip" Type="Redfish.Yang.uint8">
-          <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf"/>
-          <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/uint8"/>
-          <Annotation Term="Redfish.Yang.mandatory" EnumMember="Redfish.Yang.Mandatory/true"/>
-          <Annotation Term="Redfish.Yang.range" String="0..128"/>
+        <Property Name="ip" Type="RedfishYang.uint8">
+          <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+          <Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/uint8"/>
+          <Annotation Term="RedfishYang.mandatory" EnumMember="RedfishYang.Mandatory/true"/>
+          <Annotation Term="RedfishYang.range" String="0..128"/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The length of the subnet prefix."/>
         </Property>

@@ -15,7 +15,7 @@
     <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishYangExtensions_v1.xml">
-    <edmx:Include Namespace="RedfishYangExtensions.v1_0_0" Alias="Redfish.Yang"/>
+    <edmx:Include Namespace="RedfishYangExtensions.v1_0_0" Alias="RedfishYang"/>
   </edmx:Reference>
 
   <edmx:DataServices>
@@ -24,275 +24,275 @@
 
       <EnumType Name="iana_if_type">
         <Member Name="iana_if_type:iana_interface_type">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
           <Annotation Term="OData.Description" String="This identity is used as a base for all interface types
 defined in the ’ifType definitions’ registry."/>
         </Member>
         <Member Name="iana_if_type:regular1822">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
         </Member>
         <Member Name="iana_if_type:hdh1822">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
         </Member>
         <Member Name="iana_if_type:ddnX25">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
         </Member>
         <Member Name="iana_if_type:rfc877X25">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
-          <Annotation Term="Redfish.Yang.reference" String="RFC 1382 - SNMP MIB Extension for the X.25 Packet Layer"/>
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.reference" String="RFC 1382 - SNMP MIB Extension for the X.25 Packet Layer"/>
         </Member>
         <Member Name="iana_if_type:ethernetCsmacd">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
-          <Annotation Term="Redfish.Yang.reference" String="RFC 3635 - Definitions of Managed Objects for the
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.reference" String="RFC 3635 - Definitions of Managed Objects for the
 Ethernet-like Interface Types"/>
           <Annotation Term="OData.Description" String="For all Ethernet-like interfaces, regardless of speed,
 as per RFC 3635."/>
         </Member>
         <Member Name="iana_if_type:iso88023Csmacd">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
-          <Annotation Term="Redfish.Yang.reference" String="RFC 3635 - Definitions of Managed Objects for the
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.reference" String="RFC 3635 - Definitions of Managed Objects for the
 Ethernet-like Interface Types"/>
-          <Annotation Term="Redfish.Yang.status" String="Redfish.Yang.NodeStatus/deprecated"/>
+          <Annotation Term="RedfishYang.status" String="RedfishYang.NodeStatus/deprecated"/>
           <Annotation Term="OData.Description" String="Deprecated via RFC 3635. Use ethernetCsmacd(6) instead."/>
         </Member>
         <Member Name="iana_if_type:iso88024TokenBus">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
         </Member>
         <Member Name="iana_if_type:iso88025TokenRing">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
         </Member>
         <Member Name="iana_if_type:iso88026Man">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
         </Member>
         <Member Name="iana_if_type:starLan">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
-          <Annotation Term="Redfish.Yang.reference" String="RFC 3635 - Definitions of Managed Objects for the
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.reference" String="RFC 3635 - Definitions of Managed Objects for the
 Ethernet-like Interface Types"/>
-          <Annotation Term="Redfish.Yang.status" String="Redfish.Yang.NodeStatus/deprecated"/>
+          <Annotation Term="RedfishYang.status" String="RedfishYang.NodeStatus/deprecated"/>
           <Annotation Term="OData.Description" String="Deprecated via RFC 3635. Use ethernetCsmacd(6) instead."/>
         </Member>
         <Member Name="iana_if_type:proteon10Mbit">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
         </Member>
         <Member Name="iana_if_type:proteon80Mbit">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
         </Member>
         <Member Name="iana_if_type:hyperchannel">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
         </Member>
         <Member Name="iana_if_type:fddi">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
-          <Annotation Term="Redfish.Yang.reference" String="RFC 1512 - FDDI Management Information Base"/>
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.reference" String="RFC 1512 - FDDI Management Information Base"/>
         </Member>
         <Member Name="iana_if_type:lapb">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
-          <Annotation Term="Redfish.Yang.reference" String="RFC 1381 - SNMP MIB Extension for X.25 LAPB"/>
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.reference" String="RFC 1381 - SNMP MIB Extension for X.25 LAPB"/>
         </Member>
         <Member Name="iana_if_type:sdlc">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
         </Member>
         <Member Name="iana_if_type:ds1">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
-          <Annotation Term="Redfish.Yang.reference" String="RFC 4805 - Definitions of Managed Objects for the
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.reference" String="RFC 4805 - Definitions of Managed Objects for the
 DS1, J1, E1, DS2, and E2 Interface Types"/>
           <Annotation Term="OData.Description" String="DS1-MIB."/>
         </Member>
         <Member Name="iana_if_type:e1">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
-          <Annotation Term="Redfish.Yang.reference" String="RFC 4805 - Definitions of Managed Objects for the
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.reference" String="RFC 4805 - Definitions of Managed Objects for the
 DS1, J1, E1, DS2, and E2 Interface Types"/>
-          <Annotation Term="Redfish.Yang.status" String="Redfish.Yang.NodeStatus/obsolete"/>
+          <Annotation Term="RedfishYang.status" String="RedfishYang.NodeStatus/obsolete"/>
           <Annotation Term="OData.Description" String="Obsolete; see DS1-MIB."/>
         </Member>
         <Member Name="iana_if_type:basicISDN">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
           <Annotation Term="OData.Description" String="No longer used. See also RFC 2127."/>
         </Member>
         <Member Name="iana_if_type:primaryISDN">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
           <Annotation Term="OData.Description" String="No longer used. See also RFC 2127."/>
         </Member>
         <Member Name="iana_if_type:propPointToPointSerial">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
           <Annotation Term="OData.Description" String="Proprietary serial."/>
         </Member>
         <Member Name="iana_if_type:ppp">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
         </Member>
         <Member Name="iana_if_type:softwareLoopback">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
         </Member>
         <Member Name="iana_if_type:eon">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
           <Annotation Term="OData.Description" String="CLNP over IP."/>
         </Member>
         <Member Name="iana_if_type:ethernet3Mbit">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
         </Member>
         <Member Name="iana_if_type:nsip">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
           <Annotation Term="OData.Description" String="XNS over IP."/>
         </Member>
         <Member Name="iana_if_type:slip">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
           <Annotation Term="OData.Description" String="Generic SLIP."/>
         </Member>
         <Member Name="iana_if_type:ultra">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
           <Annotation Term="OData.Description" String="Ultra Technologies."/>
         </Member>
         <Member Name="iana_if_type:ds3">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
-          <Annotation Term="Redfish.Yang.reference" String="RFC 3896 - Definitions of Managed Objects for the
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.reference" String="RFC 3896 - Definitions of Managed Objects for the
 DS3/E3 Interface Type"/>
           <Annotation Term="OData.Description" String="DS3-MIB."/>
         </Member>
         <Member Name="iana_if_type:sip">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
-          <Annotation Term="Redfish.Yang.reference" String="RFC 1694 - Definitions of Managed Objects for SMDS
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.reference" String="RFC 1694 - Definitions of Managed Objects for SMDS
 Interfaces using SMIv2"/>
           <Annotation Term="OData.Description" String="SMDS, coffee."/>
         </Member>
         <Member Name="iana_if_type:frameRelay">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
-          <Annotation Term="Redfish.Yang.reference" String="RFC 2115 - Management Information Base for Frame Relay
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.reference" String="RFC 2115 - Management Information Base for Frame Relay
 DTEs Using SMIv2"/>
           <Annotation Term="OData.Description" String="DTE only."/>
         </Member>
         <Member Name="iana_if_type:rs232">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
-          <Annotation Term="Redfish.Yang.reference" String="RFC 1659 - Definitions of Managed Objects for RS-232-like
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.reference" String="RFC 1659 - Definitions of Managed Objects for RS-232-like
 Hardware Devices using SMIv2"/>
         </Member>
         <Member Name="iana_if_type:para">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
-          <Annotation Term="Redfish.Yang.reference" String="RFC 1660 - Definitions of Managed Objects for
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.reference" String="RFC 1660 - Definitions of Managed Objects for
 Parallel-printer-like Hardware Devices using SMIv2"/>
           <Annotation Term="OData.Description" String="Parallel-port."/>
         </Member>
         <Member Name="iana_if_type:arcnet">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
           <Annotation Term="OData.Description" String="ARCnet."/>
         </Member>
         <Member Name="iana_if_type:arcnetPlus">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
           <Annotation Term="OData.Description" String="ARCnet Plus."/>
         </Member>
         <Member Name="iana_if_type:atm">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
           <Annotation Term="OData.Description" String="ATM cells."/>
         </Member>
         <Member Name="iana_if_type:miox25">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
-          <Annotation Term="Redfish.Yang.reference" String="RFC 1461 - SNMP MIB extension for Multiprotocol
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.reference" String="RFC 1461 - SNMP MIB extension for Multiprotocol
 Interconnect over X.25"/>
         </Member>
         <Member Name="iana_if_type:sonet">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
           <Annotation Term="OData.Description" String="SONET or SDH."/>
         </Member>
         <Member Name="iana_if_type:x25ple">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
-          <Annotation Term="Redfish.Yang.reference" String="RFC 2127 - ISDN Management Information Base using SMIv2"/>
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.reference" String="RFC 2127 - ISDN Management Information Base using SMIv2"/>
         </Member>
         <Member Name="iana_if_type:iso8802211c">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
         </Member>
         <Member Name="iana_if_type:localTalk">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
         </Member>
         <Member Name="iana_if_type:smdsDxi">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
         </Member>
         <Member Name="iana_if_type:frameRelayService">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
-          <Annotation Term="Redfish.Yang.reference" String="RFC 2954 - Definitions of Managed Objects for Frame
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.reference" String="RFC 2954 - Definitions of Managed Objects for Frame
 Relay Service"/>
           <Annotation Term="OData.Description" String="FRNETSERV-MIB."/>
         </Member>
         <Member Name="iana_if_type:v35">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
         </Member>
         <Member Name="iana_if_type:hssi">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
         </Member>
         <Member Name="iana_if_type:hppi">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
         </Member>
         <Member Name="iana_if_type:modem">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
           <Annotation Term="OData.Description" String="Generic modem."/>
         </Member>
         <Member Name="iana_if_type:aa15">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
           <Annotation Term="OData.Description" String="AAL5 over ATM."/>
         </Member>
         <Member Name="iana_if_type:sonetPath">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
         </Member>
         <Member Name="iana_if_type:sonetVT">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
         </Member>
         <Member Name="iana_if_type:smdsIcip">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
           <Annotation Term="OData.Description" String="SMDS InterCarrier Interface."/>
         </Member>
         <Member Name="iana_if_type:propVirtual">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
-          <Annotation Term="Redfish.Yang.reference" String="RFC 2863 - The Interfaces Group MIB"/>
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.reference" String="RFC 2863 - The Interfaces Group MIB"/>
           <Annotation Term="OData.Description" String="Proprietary virtual/internal."/>
         </Member>
         <Member Name="iana_if_type:propMultiplexor">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
-          <Annotation Term="Redfish.Yang.reference" String="RFC 2863 - The Interfaces Group MIB"/>
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.reference" String="RFC 2863 - The Interfaces Group MIB"/>
           <Annotation Term="OData.Description" String="Proprietary multiplexing."/>
         </Member>
         <Member Name="iana_if_type:ieee80212">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
           <Annotation Term="OData.Description" String="100BaseVG."/>
         </Member>
         <Member Name="iana_if_type:fibreChannel">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
           <Annotation Term="OData.Description" String="Fibre Channel."/>
         </Member>
         <Member Name="iana_if_type:hippiInterface">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
           <Annotation Term="OData.Description" String="HIPPI interfaces."/>
         </Member>
         <Member Name="iana_if_type:frameRelayInterconnect">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
-          <Annotation Term="Redfish.Yang.status" String="Redfish.Yang.NodeStatus/obsolete"/>
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.status" String="RedfishYang.NodeStatus/obsolete"/>
           <Annotation Term="OData.Description" String="Obsolete; use either frameRelay(32) or frameRelayService(44)."/>
         </Member>
         <Member Name="iana_if_type:aflane8023">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
           <Annotation Term="OData.Description" String="ATM Emulated LAN for 802.3."/>
         </Member>
         <Member Name="iana_if_type:aflane8025">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
           <Annotation Term="OData.Description" String="ATM Emulated LAN for 802.5."/>
         </Member>
         <Member Name="iana_if_type:cttEmul">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
           <Annotation Term="OData.Description" String="ATM Emulated circuit."/>
         </Member>
         <Member Name="iana_if_type:fastEther">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
-          <Annotation Term="Redfish.Yang.status" String="Redfish.Yang.NodeStatus/deprecated"/>
-          <Annotation Term="Redfish.Yang.reference" String="RFC 3635 - Definitions of Managed Objects for the
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.status" String="RedfishYang.NodeStatus/deprecated"/>
+          <Annotation Term="RedfishYang.reference" String="RFC 3635 - Definitions of Managed Objects for the
 Ethernet-like Interface Types"/>
           <Annotation Term="OData.Description" String="Obsoleted via RFC 3635. ethernetCsmacd(6) should be used instead."/>
         </Member>
         <Member Name="iana_if_type:isdn">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
-          <Annotation Term="Redfish.Yang.reference" String="RFC 1356 - Multiprotocol Interconnect on X.25 and ISDN
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.reference" String="RFC 1356 - Multiprotocol Interconnect on X.25 and ISDN
 in the Packet Mode"/>
           <Annotation Term="OData.Description" String="ISDN and X.25."/>
         </Member>
 
 
         <Member Name="iana_if_type:other">
-          <Annotation Term="Redfish.Yang.base" String="if:interface-type"/>
+          <Annotation Term="RedfishYang.base" String="if:interface-type"/>
         </Member>
       </EnumType>
 

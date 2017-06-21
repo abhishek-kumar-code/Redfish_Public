@@ -10,7 +10,7 @@
     <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishYangExtensions_v1.xml">
-    <edmx:Include Namespace="RedfishYangExtensions.v1_0_0" Alias="Redfish.Yang"/>
+    <edmx:Include Namespace="RedfishYangExtensions.v1_0_0" Alias="RedfishYang"/>
   </edmx:Reference>
 
   <edmx:DataServices>
@@ -39,36 +39,36 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ietf_system.system_state.platform.v1_0_0">
       <EntityType Name="platform" BaseType="ietf_system.system_state.platform.platform">
 
-        <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/container" />
+        <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container" />
         <Annotation Term="OData.Description" String="Contains vendor-specific information for identifying the system platform and operating system." />
-        <Annotation Term="Redfish.Yang.reference" String="IEEE Std 1003.1-2008 - sys/utsname.h" />
+        <Annotation Term="RedfishYang.reference" String="IEEE Std 1003.1-2008 - sys/utsname.h" />
         <Property Name="os_name" Type="Edm.String">
-          <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf" />
-          <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/string" />
-          <Annotation Term="Redfish.Yang.reference" String="IEEE Std 1003.1-2008 - utsname.sysname" />
+          <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf" />
+          <Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/string" />
+          <Annotation Term="RedfishYang.reference" String="IEEE Std 1003.1-2008 - utsname.sysname" />
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The name of the operating system in use - for example, 'Linux'." />
         </Property>
         <Property Name="os_release" Type="Edm.String">
-          <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf" />
-          <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/string" />
-          <Annotation Term="Redfish.Yang.reference" String="IEEE Std 1003.1-2008 - utsname.release" />
+          <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf" />
+          <Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/string" />
+          <Annotation Term="RedfishYang.reference" String="IEEE Std 1003.1-2008 - utsname.release" />
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The current release level of the operating system in use. This string MAY indicate the OS source code revision." />
         </Property>
         <Property Name="os_version" Type="Edm.String">
-          <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf" />
-          <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/string" />
-          <Annotation Term="Redfish.Yang.reference" String="IEEE Std 1003.1-2008 - utsname.version" />
+          <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf" />
+          <Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/string" />
+          <Annotation Term="RedfishYang.reference" String="IEEE Std 1003.1-2008 - utsname.version" />
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The current version level of the operating system in use. This string MAY indicate the specific OS build date and target variant information." />
          </Property>
         <Property Name="machine" Type="Edm.String">
-          <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf" />
-          <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/string" />
+          <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf" />
+          <Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/string" />
           <Annotation Term="OData.Description" String="A vendor-specific identifier string representing the hardware in use." />
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="Redfish.Yang.reference" String="IEEE Std 1003.1-2008 - utsname.machine" />
+          <Annotation Term="RedfishYang.reference" String="IEEE Std 1003.1-2008 - utsname.machine" />
         </Property>
       </EntityType>
     </Schema>

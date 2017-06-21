@@ -10,7 +10,7 @@
     <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishYangExtensions_v1.xml">
-    <edmx:Include Namespace="RedfishYangExtensions.v1_0_0" Alias="Redfish.Yang"/>
+    <edmx:Include Namespace="RedfishYangExtensions.v1_0_0" Alias="RedfishYang"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/rfc7317/ietf_system.system.ntp.server.udp_v1.xml">
     <edmx:Include Namespace="udp"/>
@@ -41,29 +41,29 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ietf_system.system.ntp.server.v1_0_0">
       <EntityType Name="server" BaseType="ietf_system.system.ntp.server.server">
 
-        <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/list" />
+        <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/list" />
         <Annotation Term="OData.Description" String="List of NTP servers to use for system clock synchronization. If '/system/ntp/enabled' is 'true', then the system will attempt to contact and utilize the specified NTP servers." />
         <Property Name="name" Type="Edm.String">
-          <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf" />
-          <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/string" />
+          <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf" />
+          <Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/string" />
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="An arbitrary name for the NTP server." />
         </Property>
         <Property Name="association_type" Type="ietf_system.system.ntp.server.v1_0_0.association_typeType" DefaultValue="server" >
-          <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf" />
-          <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/enumeration" />
+          <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf" />
+          <Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/enumeration" />
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="The desired association type for this NTP server." />
         </Property>
         <Property Name="iburst" Type="Edm.Boolean" DefaultValue="false" >
-          <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf" />
-          <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/boolean" />
+          <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf" />
+          <Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/boolean" />
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Indicates whether this server should enable burst synchronization or not." />
         </Property>
         <Property Name="prefer" Type="Edm.Boolean" DefaultValue="false" >
-          <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf" />
-          <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/boolean" />
+          <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf" />
+          <Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/boolean" />
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="Indicates whether this server should be preferred or not." />
         </Property>
@@ -76,13 +76,13 @@
 
       <EnumType Name="association_typeType">
         <Member Name="server" Value="0">
-          <Annotation Term="Redfish.Yang.enum" String="server"/>
+          <Annotation Term="RedfishYang.enum" String="server"/>
         </Member>
         <Member Name="peer" Value="1">
-          <Annotation Term="Redfish.Yang.enum" String="peer"/>
+          <Annotation Term="RedfishYang.enum" String="peer"/>
         </Member>
         <Member Name="pool" Value="2">
-          <Annotation Term="Redfish.Yang.enum" String="pool"/>
+          <Annotation Term="RedfishYang.enum" String="pool"/>
         </Member>
       </EnumType>
     </Schema>

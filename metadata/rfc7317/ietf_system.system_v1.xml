@@ -10,7 +10,7 @@
     <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishYangExtensions_v1.xml">
-    <edmx:Include Namespace="RedfishYangExtensions.v1_0_0" Alias="Redfish.Yang"/>
+    <edmx:Include Namespace="RedfishYangExtensions.v1_0_0" Alias="RedfishYang"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/rfc7317/ietf_system.system.clock_v1.xml">
     <edmx:Include Namespace="ietf_system.system.clock"/>
@@ -26,9 +26,9 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="system">
       <EntityType Name="system" BaseType="Resource.v1_0_0.Resource" Abstract="true">
-        <Annotation Term="Redfish.Yang.contact"  String="WG Web: &lt;http://tools.ietf.org/wg/netmod/&gt; WG List: &lt;mailto:netmod@ietf.org&gt; WG Chair: Thomas Nadeau &lt;mailto:tnadeau@lucidvision.com&gt; WG Chair: Juergen Schoenwaelder &lt;mailto:j.schoenwaelder@jacobs-university.de&gt; Editor: Andy Bierman &lt;mailto:andy@yumaworks.com&gt; Editor: Martin Bjorklund &lt;mailto:mbj@tail-f.com&gt;" />
+        <Annotation Term="RedfishYang.contact"  String="WG Web: &lt;http://tools.ietf.org/wg/netmod/&gt; WG List: &lt;mailto:netmod@ietf.org&gt; WG Chair: Thomas Nadeau &lt;mailto:tnadeau@lucidvision.com&gt; WG Chair: Juergen Schoenwaelder &lt;mailto:j.schoenwaelder@jacobs-university.de&gt; Editor: Andy Bierman &lt;mailto:andy@yumaworks.com&gt; Editor: Martin Bjorklund &lt;mailto:mbj@tail-f.com&gt;" />
         <Annotation Term="OData.Description" String="The administrator contact information for the system. A server implementation MAY map this leaf to the sysContact MIB object. Such an implementation needs to use some mechanism to handle the differences in size and characters allowed between this leaf and sysContact. The definition of such a mechanism is outside the scope of this document."/>
-          <Annotation Term="Redfish.Yang.reference" String="RFC 3418: Management Information Base (MIB) for the&#10;             Simple Network Management Protocol (SNMP)&#10;             SNMPv2-MIB.sysContact" />
+          <Annotation Term="RedfishYang.reference" String="RFC 3418: Management Information Base (MIB) for the&#10;             Simple Network Management Protocol (SNMP)&#10;             SNMPv2-MIB.sysContact" />
         <Annotation Term="Capabilities.InsertRestrictions">
           <Record>
             <PropertyValue Property="Insertable" Bool="false"/>
@@ -49,27 +49,27 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="system.v1_0_0">
       <EntityType Name="system" BaseType="system.system">
-        <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/container" />
+        <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container" />
         <Annotation Term="OData.Description" String="System group configuration." />
         <Property Name="contact" Type="Edm.String">
-          <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf" />
-          <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/string" />
+          <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf" />
+          <Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/string" />
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The administrator contact information for the system. A server implementation MAY map this leaf to the sysContact MIB object. Such an implementation needs to use some mechanism to handle the differences in size and characters allowed between this leaf and sysContact. The definition of such a mechanism is outside the scope of this document." />
-          <Annotation Term="Redfish.Yang.reference" String="RFC 3418: Management Information Base (MIB) for the&#10;             Simple Network Management Protocol (SNMP)&#10;             SNMPv2-MIB.sysContact" />
+          <Annotation Term="RedfishYang.reference" String="RFC 3418: Management Information Base (MIB) for the&#10;             Simple Network Management Protocol (SNMP)&#10;             SNMPv2-MIB.sysContact" />
         </Property>
-        <Property Name="hostname" Type="Redfish.Yang.domain_name">
-          <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf"/>
-          <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/domain-name" />
+        <Property Name="hostname" Type="RedfishYang.domain_name">
+          <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+          <Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/domain-name" />
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The name of the host. This name can be a single domain label or the fully qualified domain name of the host." />
         </Property>
         <Property Name="location" Type="Edm.String">
-          <Annotation Term="Redfish.Yang.NodeType"  EnumMember="Redfish.Yang.NodeTypes/leaf" />
-          <Annotation Term="Redfish.Yang.YangType"  String="string" />
+          <Annotation Term="RedfishYang.NodeType"  EnumMember="RedfishYang.NodeTypes/leaf" />
+          <Annotation Term="RedfishYang.YangType"  String="string" />
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The system location. A server implementation MAY map this leaf to the sysLocation MIB object. Such an implementation needs to use some mechanism to handle the differences in size and characters allowed between this leaf and sysLocation. The definition of such a mechanism is outside the scope of this document." />
-          <Annotation Term="Redfish.Yang.reference" String="RFC 3418: Management Information Base (MIB) for the&#10;             Simple Network Management Protocol (SNMP)&#10;             SNMPv2-MIB.sysLocation" />
+          <Annotation Term="RedfishYang.reference" String="RFC 3418: Management Information Base (MIB) for the&#10;             Simple Network Management Protocol (SNMP)&#10;             SNMPv2-MIB.sysLocation" />
         </Property>
 
         <NavigationProperty Name="clock" Type="ietf_system.system.clock.clock" ContainsTarget="true">

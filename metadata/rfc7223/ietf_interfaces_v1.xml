@@ -10,7 +10,7 @@
     <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishYangExtensions_v1.xml">
-    <edmx:Include Namespace="RedfishYangExtensions.v1_0_0" Alias="Redfish.Yang"/>
+    <edmx:Include Namespace="RedfishYangExtensions.v1_0_0" Alias="RedfishYang"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/rfc7223/ietf_interfaces.interfacesCollection_v1.xml">
     <edmx:Include Namespace="ietf_interfaces.interfacesCollection"/>
@@ -62,12 +62,12 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ietf_interfaces.v1_0_0">
 
       <EntityType Name="ietf_interfaces" BaseType="ietf_interfaces.ietf_interfaces" >
-        <Annotation Term="Redfish.Yang.organization" String="IETF NETMOD (NETCONF Data Modeling Language) Working Group" />
-        <Annotation Term="Redfish.Yang.contact" String="WG Web: &lt;http://tools.ietf.org/wg/netmod/&gt; WG List: &lt;mailto:netmod@ietf.org&gt; WG Chair: Thomas Nadeau &lt;mailto:tnadeau@lucidvision.com&gt; WG Chair: Juergen Schoenwaelder &lt;mailto:j.schoenwaelder@jacobs-university.de&gt; Editor: Martin Bjorklund &lt;mailto:mbj@tail-f.com&gt;" />
-        <Annotation Term="Redfish.Yang.revision" String="2014-05-08" />
-        <Annotation Term="Redfish.Yang.feature" String="arbitrary-names" />
-        <Annotation Term="Redfish.Yang.feature" String="pre-provisioning" />
-        <Annotation Term="Redfish.Yang.feature" String="if-mib" />
+        <Annotation Term="RedfishYang.organization" String="IETF NETMOD (NETCONF Data Modeling Language) Working Group" />
+        <Annotation Term="RedfishYang.contact" String="WG Web: &lt;http://tools.ietf.org/wg/netmod/&gt; WG List: &lt;mailto:netmod@ietf.org&gt; WG Chair: Thomas Nadeau &lt;mailto:tnadeau@lucidvision.com&gt; WG Chair: Juergen Schoenwaelder &lt;mailto:j.schoenwaelder@jacobs-university.de&gt; Editor: Martin Bjorklund &lt;mailto:mbj@tail-f.com&gt;" />
+        <Annotation Term="RedfishYang.revision" String="2014-05-08" />
+        <Annotation Term="RedfishYang.feature" String="arbitrary-names" />
+        <Annotation Term="RedfishYang.feature" String="pre-provisioning" />
+        <Annotation Term="RedfishYang.feature" String="if-mib" />
         <Annotation Term="OData.Description" String="This module contains a collection of YANG definitions for
        configuring IP implementations.
 
@@ -86,18 +86,18 @@
         <Property Name="interface_ref" Type="Edm.String">
             <Annotation Term="OData.Description" String="This type is used by data models that need to reference configured interfaces." />
             <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-		    <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/leafref"/>
-			<Annotation Term="Redfish.Yang.path" String="if:interfaces/if:interface/if:name "/>
+		    <Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/leafref"/>
+			<Annotation Term="RedfishYang.path" String="if:interfaces/if:interface/if:name "/>
         </Property>
         <Property Name="interface_state_ref" Type="Edm.String">
             <Annotation Term="OData.Description" String="This type is used by data models that need to reference the operationally present interfaces." />
             <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
-		    <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/leafref"/>
-			<Annotation Term="Redfish.Yang.path" String="if:interfaces/if:interface/if:name "/>
+		    <Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/leafref"/>
+			<Annotation Term="RedfishYang.path" String="if:interfaces/if:interface/if:name "/>
         </Property>
-        <Annotation Term="Redfish.Yang.feature" String="arbitrary-names" />
-        <Annotation Term="Redfish.Yang.feature" String="pre-provisioning" />
-        <Annotation Term="Redfish.Yang.feature" String="if-mib" />
+        <Annotation Term="RedfishYang.feature" String="arbitrary-names" />
+        <Annotation Term="RedfishYang.feature" String="pre-provisioning" />
+        <Annotation Term="RedfishYang.feature" String="if-mib" />
         <NavigationProperty Name="interfaces" Type="ietf_interfaces.interfacesCollection.interfacesCollection" ContainsTarget="true">
             <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read/" />
             <Annotation Term="OData.Description" String="Reference to collection." />
@@ -113,8 +113,8 @@
         <ComplexType Name="interface_type">
             <Annotation Term="OData.Description" String="interface-type." />
             <Annotation Term="OData.LongDescription" String="interface-type." />
-            <Annotation Term="Redfish.Yang.identity" String="interface-type" />
-            <Annotation Term="Redfish.Yang.description" String="Base identity from which specific interface types are derived." />
+            <Annotation Term="RedfishYang.identity" String="interface-type" />
+            <Annotation Term="RedfishYang.description" String="Base identity from which specific interface types are derived." />
         </ComplexType>
     </Schema>
 

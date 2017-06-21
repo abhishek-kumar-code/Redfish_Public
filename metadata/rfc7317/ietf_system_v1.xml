@@ -10,7 +10,7 @@
     <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishYangExtensions_v1.xml">
-    <edmx:Include Namespace="RedfishYangExtensions.v1_0_0" Alias="Redfish.Yang"/>
+    <edmx:Include Namespace="RedfishYangExtensions.v1_0_0" Alias="RedfishYang"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource.v1_0_0"/>
@@ -25,7 +25,7 @@
   <edmx:DataServices>
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ietf_system">
       <EntityType Name="ietf_system" BaseType="Resource.v1_0_0.Resource" Abstract="true">
-        <Annotation Term="Redfish.Yang.contact" String="WG Web: &lt;http://tools.ietf.org/wg/netmod/&gt; WG List: &lt;mailto:netmod@ietf.org&gt; WG Chair: Thomas Nadeau &lt;mailto:tnadeau@lucidvision.com&gt; WG Chair: Juergen Schoenwaelder &lt;mailto:j.schoenwaelder@jacobs-university.de&gt; Editor: Andy Bierman &lt;mailto:andy@yumaworks.com&gt; Editor: Martin Bjorklund &lt;mailto:mbj@tail-f.com&gt;"/>
+        <Annotation Term="RedfishYang.contact" String="WG Web: &lt;http://tools.ietf.org/wg/netmod/&gt; WG List: &lt;mailto:netmod@ietf.org&gt; WG Chair: Thomas Nadeau &lt;mailto:tnadeau@lucidvision.com&gt; WG Chair: Juergen Schoenwaelder &lt;mailto:j.schoenwaelder@jacobs-university.de&gt; Editor: Andy Bierman &lt;mailto:andy@yumaworks.com&gt; Editor: Martin Bjorklund &lt;mailto:mbj@tail-f.com&gt;"/>
         <Annotation Term="OData.Description" String="This module contains a collection of YANG definitions for the configuration and identification of some common system properties within a device containing a NETCONF server. This includes data node definitions for system identification, time-of-day management, user management, DNS resolver configuration, and some protocol operations for system management. Copyright (c) 2014 IETF Trust and the persons identified as authors of the code. All rights reserved. Redistribution and use in source and binary forms, with or without modification, is permitted pursuant to, and subject to the license terms contained in, the Simplified BSD License set forth in Section 4.c of the IETF Trust's Legal Provisions Relating to IETF Documents (http://trustee.ietf.org/license-info). This version of this YANG module is part of RFC 7317; see the RFC itself for full legal notices."/>
         <Annotation Term="Capabilities.InsertRestrictions">
           <Record>
@@ -46,14 +46,14 @@
       </EntityType>
 
       <Action Name="system_restart">
-        <Annotation Term="Redfish.Yang.NodeType" String="Redfish.Yang.NodeTypes/rpc"/>
-        <Annotation Term="Redfish.Yang.statement" String="nacm:default-deny-all"/>
+        <Annotation Term="RedfishYang.NodeType" String="RedfishYang.NodeTypes/rpc"/>
+        <Annotation Term="RedfishYang.statement" String="nacm:default-deny-all"/>
         <Annotation Term="OData.Description" String="Request that the entire system be restarted immediately. A server SHOULD send an rpc reply to the client before restarting the system."/>
       </Action>
 
       <Action Name="system_shutdown">
-        <Annotation Term="Redfish.Yang.NodeType" String="Redfish.Yang.NodeTypes/rpc"/>
-        <Annotation Term="Redfish.Yang.statement" String="nacm:default-deny-all"/>
+        <Annotation Term="RedfishYang.NodeType" String="RedfishYang.NodeTypes/rpc"/>
+        <Annotation Term="RedfishYang.statement" String="nacm:default-deny-all"/>
         <Annotation Term="OData.Description" String="Request that the entire system be shut down immediately. A server SHOULD send an rpc reply to the client before shutting down the system."/>
       </Action>
 
@@ -62,15 +62,15 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ietf_system.v1_0_0">
       <EntityType Name="ietf_system" BaseType="ietf_system.ietf_system" >
 
-      <Annotation Term="Redfish.Yang.yang_version" String="1"/>
-      <Annotation Term="Redfish.Yang.organization" String="IETF NETMOD (NETCONF Data Modeling Language) Working Group"/>
-      <Annotation Term="Redfish.Yang.revision" String="2014-08-06"/>
-      <Annotation Term="Redfish.Yang.contact" String="WG Web: &lt;http://tools.ietf.org/wg/netmod/&gt; WG List: &lt;mailto:netmod@ietf.org&gt; WG Chair: Thomas Nadeau &lt;mailto:tnadeau@lucidvision.com&gt; WG Chair: Juergen Schoenwaelder &lt;mailto:j.schoenwaelder@jacobs-university.de&gt; Editor: Andy Bierman &lt;mailto:andy@yumaworks.com&gt; Editor: Martin Bjorklund &lt;mailto:mbj@tail-f.com&gt;" />
+      <Annotation Term="RedfishYang.yang_version" String="1"/>
+      <Annotation Term="RedfishYang.organization" String="IETF NETMOD (NETCONF Data Modeling Language) Working Group"/>
+      <Annotation Term="RedfishYang.revision" String="2014-08-06"/>
+      <Annotation Term="RedfishYang.contact" String="WG Web: &lt;http://tools.ietf.org/wg/netmod/&gt; WG List: &lt;mailto:netmod@ietf.org&gt; WG Chair: Thomas Nadeau &lt;mailto:tnadeau@lucidvision.com&gt; WG Chair: Juergen Schoenwaelder &lt;mailto:j.schoenwaelder@jacobs-university.de&gt; Editor: Andy Bierman &lt;mailto:andy@yumaworks.com&gt; Editor: Martin Bjorklund &lt;mailto:mbj@tail-f.com&gt;" />
       <Annotation Term="OData.Description" String="This module contains a collection of YANG definitions for the configuration and identification of some common system properties within a device containing a NETCONF server. This includes data node definitions for system identification, time-of-day management, user management, DNS resolver configuration, and some protocol operations for system management. Copyright (c) 2014 IETF Trust and the persons identified as authors of the code. All rights reserved. Redistribution and use in source and binary forms, with or without modification, is permitted pursuant to, and subject to the license terms contained in, the Simplified BSD License set forth in Section 4.c of the IETF Trust's Legal Provisions Relating to IETF Documents (http://trustee.ietf.org/license-info). This version of this YANG module is part of RFC 7317; see the RFC itself for full legal notices."/>
-      <Annotation Term="Redfish.Yang.feature" String="ntp" />
-      <Annotation Term="Redfish.Yang.feature" String="ntp-udp-port" />
-      <Annotation Term="Redfish.Yang.feature" String="timezone-name" />
-      <Annotation Term="Redfish.Yang.feature" String="dns-udp-tcp-port" />
+      <Annotation Term="RedfishYang.feature" String="ntp" />
+      <Annotation Term="RedfishYang.feature" String="ntp-udp-port" />
+      <Annotation Term="RedfishYang.feature" String="timezone-name" />
+      <Annotation Term="RedfishYang.feature" String="dns-udp-tcp-port" />
 
       <NavigationProperty Name="system" Type="system.system" ContainsTarget="true">
         <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
@@ -85,15 +85,15 @@
       </EntityType>
 
       <Action Name="set_current_datetime">
-        <Annotation Term="Redfish.Yang.NodeType" String="Redfish.Yang.NodeTypes/rpc" />
-        <Annotation Term="Redfish.Yang.statement" String="nacm:default-deny-all" />
-        <Annotation Term="Redfish.Yang.description" String="Set the /system-state/clock/current-datetime leaf to the specified value. If the system is using NTP (i.e., /system/ntp/enabled is set to 'true'), then this operation will fail with error-tag 'operation-failed' and error-app-tag value of 'ntp-active'."/>
+        <Annotation Term="RedfishYang.NodeType" String="RedfishYang.NodeTypes/rpc" />
+        <Annotation Term="RedfishYang.statement" String="nacm:default-deny-all" />
+        <Annotation Term="RedfishYang.description" String="Set the /system-state/clock/current-datetime leaf to the specified value. If the system is using NTP (i.e., /system/ntp/enabled is set to 'true'), then this operation will fail with error-tag 'operation-failed' and error-app-tag value of 'ntp-active'."/>
         <Parameter Name="set_current_datetimeInput" Type="ietf_system.v1_0_0.set_current_datetimeInputType">
-          <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/input" />
+          <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/input" />
         </Parameter>
       </Action>
       <ComplexType Name="set_current_datetimeInputType">
-        <Annotation Term="Redfish.Yang.YangType" String="date_and_time" />
+        <Annotation Term="RedfishYang.YangType" String="date_and_time" />
         <Annotation Term="OData.Description" String="set_current_datetimeInputType." />
         <Annotation Term="OData.LongDescription" String="set_current_datetimeInputType." />
         <Property Name="current-datetime" Type="Edm.String">

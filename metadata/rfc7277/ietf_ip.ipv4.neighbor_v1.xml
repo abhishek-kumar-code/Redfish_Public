@@ -10,7 +10,7 @@
     <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
   </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishYangExtensions_v1.xml">
-    <edmx:Include Namespace="RedfishYangExtensions.v1_0_0" Alias="Redfish.Yang"/>
+    <edmx:Include Namespace="RedfishYangExtensions.v1_0_0" Alias="RedfishYang"/>
   </edmx:Reference>
 
   <edmx:DataServices>
@@ -39,20 +39,20 @@
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ietf_ip.ipv4.neighbor.v1_0_0.neighbor">
       <EntityType Name="neighbor" BaseType="ietf_ip.ipv4.neighbor.neighbor">
-        <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/list"/>
-        <Annotation Term="Redfish.Yang.reference" String="RFC 826: An Ethernet Address Resolution Protocol" />
+        <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/list"/>
+        <Annotation Term="RedfishYang.reference" String="RFC 826: An Ethernet Address Resolution Protocol" />
         <Annotation Term="OData.Description" String="The IPv4 address of the neighbor node."/>
         <Annotation Term="OData.LongDescription" String="Shall be the IPv4 address of the neighbor node."/>
-        <Property Name="ip" Type="Redfish.Yang.ipv4-address-no-zone">
-          <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf"/>
-          <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/ipv4-address-no-zone"/>
+        <Property Name="ip" Type="RedfishYang.ipv4-address-no-zone">
+          <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+          <Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/ipv4-address-no-zone"/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The IPv4 address of the neighbor node."/>
         </Property>
-        <Property Name="link_layer_address" Type="Redfish.Yang.phys-address">
-          <Annotation Term="Redfish.Yang.NodeType" EnumMember="Redfish.Yang.NodeTypes/leaf" />
-          <Annotation Term="Redfish.Yang.YangType" EnumMember="Redfish.Yang.YangTypes/phys-address"/>
-          <Annotation Term="Redfish.Yang.mandatory" EnumMember="Redfish.Yang.Mandatory/true"/>
+        <Property Name="link_layer_address" Type="RedfishYang.phys-address">
+          <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf" />
+          <Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/phys-address"/>
+          <Annotation Term="RedfishYang.mandatory" EnumMember="RedfishYang.Mandatory/true"/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The link-layer address of the neighbor node."/>
         </Property>
