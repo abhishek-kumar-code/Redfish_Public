@@ -26,8 +26,6 @@
       <TypeDefinition Name="uint32" UnderlyingType="Edm.Int64"/>
       <TypeDefinition Name="uint64" UnderlyingType="Edm.Decimal"/>
       <TypeDefinition Name="XmlBlock" UnderlyingType="Edm.String"/>
-      <TypeDefinition Name="port_number" UnderlyingType="Edm.Int64"/>
-      <TypeDefinition Name="date_and_time" UnderlyingType="Edm.String"/>
   
       <Term Name="NodeType" Type="RedfishYangExtensions.v1_0_0.NodeTypes">
         <Annotation Term="OData.Description" String="Yang NodeTypes."/>
@@ -73,6 +71,7 @@
         <Member Name="counter64"/>
         <Member Name="date_and_time"/>
         <Member Name="domain_name"/>
+        <Member Name="dotted_quad"/>
         <Member Name="empty"/>
         <Member Name="enumeration"/>
         <Member Name="gauge64"/>
@@ -80,6 +79,7 @@
         <Member Name="instance_identifier"/>
         <Member Name="interface_state_ref"/>
         <Member Name="ip_address"/>
+        <Member Name="ip_address_origin"/>
         <Member Name="ipv4_address_no_zone"/>
         <Member Name="ipv6_address_no_zone"/>
         <Member Name="leafref"/>
@@ -215,14 +215,18 @@
         <Annotation Term="OData.Description" String="The yang statement reference string."/>
       </Term>
 
-      <Term Name="status" Type="RedfishYangExtensions.v1_0_0.NodeStatus">
+      <Term Name="status" Type="RedfishYangExtensions.v1_0_0.NodeStatusEnum">
         <Annotation Term="OData.Description" String="Yang Node model element status."/>
       </Term>
-      <EnumType Name="NodeStatus">
+      <EnumType Name="NodeStatusEnum">
         <Member Name="current"/>
         <Member Name="deprecated"/>
         <Member Name="obsolete"/>
       </EnumType>
+
+      <Term Name="choice" Type="Edm.String">
+        <Annotation Term="OData.Description" String="The yang statement choice string."/>
+      </Term>
 
       <Term Name="length" Type="Edm.String">
         <Annotation Term="OData.Description" String="The yang statement range string."/>
@@ -298,8 +302,6 @@
         <Annotation Term="OData.Description" String="Text from the yang statement."/>
       </Term>
 
-<!--# For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright -->
-
       <Term Name="counter32" Type="Edm.String">
         <Annotation Term="OData.Description" String="The yang enum member string."/>
       </Term>
@@ -318,27 +320,31 @@
       <Term Name="date_and_time" Type="Edm.String">
         <Annotation Term="OData.Description" String="The yang enum member string."/>
       </Term>
-
+      <Term Name="dotted_quad" Type="Edm.String">
+        <Annotation Term="OData.Description" String="The yang enum member string."/>
+      </Term>
+      <Term Name="domain_name" Type="Edm.String">
+        <Annotation Term="OData.Description" String="The yang enum member string."/>
+      </Term>
       <Term Name="phys_address" Type="Edm.String">
         <Annotation Term="OData.Description" String="The yang enum member string."/>
       </Term>
       <Term Name="interface-state-ref" Type="Edm.String">
         <Annotation Term="OData.Description" String="The yang enum member string."/>
       </Term>
-      <Term Name="domain_name" Type="Edm.String">
+      <Term Name="port_number" Type="Edm.String">
         <Annotation Term="OData.Description" String="The yang enum member string."/>
       </Term>
-
       <Term Name="ip_address" Type="Edm.String">
+        <Annotation Term="OData.Description" String="The yang enum member string."/>
+      </Term>
+      <Term Name="ip_address_origin" Type="Edm.String">
         <Annotation Term="OData.Description" String="The yang enum member string."/>
       </Term>
       <Term Name="ipv4_address_no_zone" Type="Edm.String">
         <Annotation Term="OData.Description" String="The yang enum member string."/>
       </Term>
-      <Term Name="ipv6-address-no-zone" Type="Edm.String">
-        <Annotation Term="OData.Description" String="The yang enum member string."/>
-      </Term>
-      <Term Name="port_number" Type="Edm.Int64">
+      <Term Name="ipv6_address_no_zone" Type="Edm.String">
         <Annotation Term="OData.Description" String="The yang enum member string."/>
       </Term>
 

@@ -44,13 +44,13 @@
         <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/list"/>
         <Annotation Term="RedfishYang.choice" String="subnet"/>
         <Annotation Term="OData.Description" String="The list of configured ipv6 addresses on the interface."/>
-        <Property Name="ip" Type="RedfishYang.ipv6-address-no-zone">
+        <Property Name="ip" Type="RedfishYangExtensions.v1_0_0.ipv6_address_no_zone">
           <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
-          <Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/ipv6-address-no-zone"/>
+          <Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/ipv6_address_no_zone"/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The IPv6 address on the interface."/>
         </Property>
-        <Property Name="ip" Type="RedfishYang.uint8">
+        <Property Name="prefix_length" Type="RedfishYangExtensions.v1_0_0.uint8">
           <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
           <Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/uint8"/>
           <Annotation Term="RedfishYang.mandatory" EnumMember="RedfishYang.Mandatory/true"/>
@@ -58,7 +58,48 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The length of the subnet prefix."/>
         </Property>
+        <Property Name="origin" Type="RedfishYangExtensions.v1_0_0.ip_address_origin">
+          <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+          <Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/ip_address_origin"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The origin of this address."/>
+        </Property>
+        <Property Name="status" Type="ietf_ip.ipv6.address.v1_0_0.statusEnum">
+          <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+          <Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/ip_address_origin"/>
+          <Annotation Term="RedfishYang.reference" String="RFC 4293: Management Information Base for the Internet Protocol (IP) - IpAddressStatusTC
+RFC 4862: IPv6 Stateless Address Autoconfiguration"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The status of an address. Most of the states correspond to states from the IPv6 Stateless Address Autoconfiguration protocol."/>
+        </Property>
       </EntityType>
+
+      <EnumType Name="statusEnum">
+        <Member Name="preferred">
+          <Annotation Term="OData.Description" String="This is a valid address that can appear as the destination or source address of a packet."/>
+        </Member>
+        <Member Name="deprecated">
+          <Annotation Term="OData.Description" String="This is a valid but deprecated address that should no longer be used as a source address in new communications, but packets addressed to such an address are processed as expected."/>
+        </Member>
+        <Member Name="invalid">
+          <Annotation Term="OData.Description" String="This isn’t a valid address, and it shouldn’t appear as the destination or source address of a packet."/>
+        </Member>
+        <Member Name="inaccessible">
+          <Annotation Term="OData.Description" String="The address is not accessible because the interface to which this address is assigned is not operational."/>
+        </Member>
+        <Member Name="unknown">
+          <Annotation Term="OData.Description" String="The status cannot be determined for some reason."/>
+        </Member>
+        <Member Name="tentative">
+          <Annotation Term="OData.Description" String="The uniqueness of the address on the link is being verified. Addresses in this state should not be used for general communication and should only be used to determine the uniqueness of the address."/>
+        </Member>
+        <Member Name="duplicate">
+          <Annotation Term="OData.Description" String="The address has been determined to be non-unique on the link and so must not be used."/>
+        </Member>
+        <Member Name="optimistic">
+          <Annotation Term="OData.Description" String="The address is available for use, subject to restrictions, while its uniqueness on a link is being verified."/>
+        </Member>
+      </EnumType>
     </Schema>
 
   </edmx:DataServices>

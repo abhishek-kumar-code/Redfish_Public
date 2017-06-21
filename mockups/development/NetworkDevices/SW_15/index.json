@@ -31,17 +31,12 @@
     "Links": {
         "Chassis": [
             {
-                "@odata.id": "/redfish/v1/Chassis/SwitchChassis_15"
+                "@odata.id": "/redfish/v1/Chassis/EthernetSwitch_15"
             }
         ],
         "ManagedBy": [
             {
-                "@odata.id": "/redfish/v1/Managers/SWMgr_1"
-            }
-        ],
-        "ComputerSystems": [
-            {
-                "@odata.id": "/redfish/v1/Systems/CS_15"
+                "@odata.id": "/redfish/v1/Managers/EthernetSwitchManager"
             }
         ]
     },

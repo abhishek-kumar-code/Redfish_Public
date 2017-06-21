@@ -42,13 +42,13 @@
         <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/list"/>
         <Annotation Term="RedfishYang.reference" String="RFC 4861: Neighbor Discovery for IP version 6 (IPv6)"/>
         <Annotation Term="OData.Description" String="A list of mappings from IPv6 addresses to link-layer addresses. Entries in this list are used as static entries in the Neighbor Cache."/>
-        <Property Name="ip" Type="RedfishYang.ipv6-address-no-zone">
+        <Property Name="ip" Type="RedfishYang.ipv6_address_no_zone">
           <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
-          <Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/ipv6-address-no-zone"/>
+          <Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/ipv6_address_no_zone"/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The IPv6 address of the neighbor node."/>
         </Property>
-        <Property Name="link_layer_address" Type="RedfishYang.phys-address">
+        <Property Name="link_layer_address" Type="RedfishYang.phys_address">
           <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
           <Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/phys-address" />
           <Annotation Term="RedfishYang.mandatory" EnumMember="RedfishYang.Mandatory/true" />

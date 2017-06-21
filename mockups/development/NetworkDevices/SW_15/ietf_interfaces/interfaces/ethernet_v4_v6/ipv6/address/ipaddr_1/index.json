@@ -6,7 +6,7 @@
     "Id": "ipaddr_1",
     "Name": "ipaddr_1",
     "ip": "2002:4559:1FE2:0000:0000:0000:4559:1FE2",
-    "prefix-length": 16,
+    "prefix_length": 16,
     "origin": "https://mydomain.com",
     "status": "preferred"
 }

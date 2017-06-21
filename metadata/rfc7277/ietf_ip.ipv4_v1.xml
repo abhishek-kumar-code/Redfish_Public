@@ -61,7 +61,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Controls IPv4 packet forwarding of datagrams received by, but not addressed to, this interface. IPv4 routers forward datagrams. IPv4 hosts do not (except those source-routed via the host)."/>
         </Property>
-        <Property Name="mtu" Type="RedfishYang.uint16">
+        <Property Name="mtu" Type="RedfishYangExtensions.v1_0_0.uint16">
           <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
           <Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/uint16"/>
           <Annotation Term="RedfishYang.range" String="68..max"/>

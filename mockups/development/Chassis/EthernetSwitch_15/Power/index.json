@@ -1,0 +1,75 @@
+{
+    "@Redfish.Copyright": "Copyright © 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.id": "/redfish/v1/Chassis/EthernetSwitch_15/Power",
+    "@odata.context": "/redfish/v1/$metadata#Power.Power",
+    "@odata.type": "#Power.v1_0_0.Power",
+    "Id": "Power",
+    "Name": "Power",
+	"PowerControl": [
+        {
+            "@odata.id": "/redfish/v1/Chassis/EthernetSwitch_15/Power#/PowerControl/0",
+            "MemberId": "0",
+            "Name": "PCIe Switch 2 Power Control",
+            "PowerConsumedWatts": 1,
+            "PowerRequestedWatts": 3,
+            "PowerAvailableWatts": 0,
+            "PowerCapacityWatts": 3,
+            "PowerAllocatedWatts": 3,
+            "PowerMetrics": {
+                "IntervalInMin": 30,
+                "MinConsumedWatts": 1,
+                "MaxConsumedWatts": 2,
+                "AverageConsumedWatts": 1
+            },
+            "PowerLimit": {
+                "LimitInWatts": 5,
+                "LimitException": "LogEventOnly",
+                "CorrectionInMs": 50
+            },
+            "RelatedItem": [
+                {
+                    "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/1"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Chassis/EthernetSwitch_15"
+                }
+            ],
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK"
+            },
+            "Oem": {}
+        }
+    ],
+    "Voltages": [
+        {
+            "@odata.id": "/redfish/v1/Chassis/EthernetSwitch_15/Power#/Voltages/0",
+            "MemberId": "0",
+            "Name": "VRM1 Voltage",
+            "SensorNumber": 11,
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK"
+            },
+            "ReadingVolts": 12,
+            "UpperThresholdNonCritical": 12.5,
+            "UpperThresholdCritical": 13,
+            "UpperThresholdFatal": 15,
+            "LowerThresholdNonCritical": 11.5,
+            "LowerThresholdCritical": 11,
+            "LowerThresholdFatal": 10,
+            "MinReadingRange": 0,
+            "MaxReadingRange": 20,
+            "PhysicalContext": "VoltageRegulator",
+            "RelatedItem": [
+                {
+                    "@odata.id": "/redfish/v1/Fabrics/PCIeMesh/Switches/1"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Chassis/EthernetSwitch_15"
+                }
+            ]
+        }
+	],
+    "Oem": {}
+}

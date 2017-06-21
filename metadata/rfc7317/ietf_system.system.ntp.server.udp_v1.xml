@@ -50,7 +50,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read" />
           <Annotation Term="OData.Description" String="The address of the NTP server." />
         </Property>
-        <Property Name="port" Type="RedfishYang.port_number" DefaultValue="123">
+        <Property Name="port" Type="RedfishYangExtensions.v1_0_0.port_number" DefaultValue="123">
           <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf" />
           <Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/port_number" />
           <Annotation Term="RedfishYang.if_feature" String="ntp-udp-port" />

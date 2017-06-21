@@ -44,7 +44,7 @@
         <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container" />
         <Annotation Term="OData.Description" String="Contains UDP- and TCP-specific configuration parameters for DNS." />
         <Annotation Term="RedfishYang.reference" String="RFC 1035: Domain Names - Implementation and&#10;                   Specification&#10;                 RFC 5966: DNS Transport over TCP - Implementation&#10;                   Requirements" />
-        <Property Name="address" Type="RedfishYang.ip-address">
+        <Property Name="address" Type="RedfishYang.ip_address">
           <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf" />
           <Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/ip-address" />
           <Annotation Term="RedfishYang.mandatory" EnumMember="RedfishYang.Mandatory/true" />

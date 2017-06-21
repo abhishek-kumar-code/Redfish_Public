@@ -40,13 +40,13 @@
       <EntityType Name="clock" BaseType="ietf_system.system_state.clock.clock">
         <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/container" />
         <Annotation Term="OData.Description" String="Monitoring of the system date and time properties." />
-        <Property Name="current_datetime" Type="RedfishYang.date_and_time">
+        <Property Name="current_datetime" Type="RedfishYangExtensions.v1_0_0.date_and_time">
           <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf" />
           <Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/date_and_time" />
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The current system date and time." />
         </Property>
-        <Property Name="boot_datetime" Type="RedfishYang.date_and_time">
+        <Property Name="boot_datetime" Type="RedfishYangExtensions.v1_0_0.date_and_time">
           <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf" />
           <Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/date_and_time" />
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>

@@ -1,0 +1,38 @@
+﻿{
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#Chassis/Members/$entity",
+    "@odata.id": "/redfish/v1/Chassis/EthernetSwitch_15",
+    "@odata.type": "#Chassis.v1_0_1.Chassis",
+    "Id": "EthernetSwitch_15",
+    "Name": "Ethernet Switch 15",
+    "ChassisType": "Drawer",
+    "Manufacturer": "Ethernet R Us",
+    "Model": "The Best Switch",
+    "SKU": "776",
+    "SerialNumber": "SN1-ABC-DEFG",
+    "PartNumber": "",
+    "AssetTag": "CustomerWritableThingy",
+	"PowerState": "On",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+	"Thermal": {
+        "@odata.id":"/redfish/v1/Chassis/EthernetSwitch_15/Thermal"
+    },
+    "Power": {
+        "@odata.id":"/redfish/v1/Chassis/EthernetSwitch_15/Power"
+    }, 
+    "Links": {
+        "ContainedBy": {
+            "@odata.id": "/redfish/v1/Chassis/PCIeSwitchRackMount"
+        },
+        "ManagedBy": [
+            {
+                "@odata.id": "/redfish/v1/Managers/PCIeSwitchManager"
+            }
+        ],
+        "Oem": {}
+    },
+    "Oem": {}
+}

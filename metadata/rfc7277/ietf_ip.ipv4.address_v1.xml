@@ -42,11 +42,30 @@
         <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/list"/>
         <Annotation Term="RedfishYang.choice" String="subnet"/>
         <Annotation Term="OData.Description" String="The list of configured IPv4 addresses on the interface."/>
-        <Property Name="ip" Type="RedfishYang.ipv4_address_no_zone">
+        <Property Name="ip" Type="RedfishYangExtensions.v1_0_0.ipv4_address_no_zone">
           <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
           <Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/ipv4_address_no_zone"/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The IPv4 address on the interface."/>
+        </Property>
+        <Property Name="netmask" Type="RedfishYangExtensions.v1_0_0.dotted_quad">
+          <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+          <Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/dotted_quad"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The subnet specified as a netmask."/>
+        </Property>
+        <Property Name="prefix_length" Type="RedfishYangExtensions.v1_0_0.uint8">
+          <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+          <Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/uint8"/>
+           <Annotation Term="RedfishYang.range" String="0..32"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The length of the subnet prefix."/>
+        </Property>
+        <Property Name="origin" Type="RedfishYangExtensions.v1_0_0.ip_address_origin">
+          <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf"/>
+          <Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/ip_address_origin"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The origin of this address."/>
         </Property>
       </EntityType>
     </Schema>
