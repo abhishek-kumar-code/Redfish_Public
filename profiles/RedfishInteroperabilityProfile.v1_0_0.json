@@ -1,32 +1,32 @@
 {
 	"$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
-	"title": "#RedfishProfile.v1_0_0.RedfishProfile",
+	"title": "#RedfishInteroperabilityProfile.v1_0_0.RedfishInteroperabilityProfile",
 	"copyright": "Copyright 2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
 	"type": "object",
 	"additionalProperties": false,
 	"properties": {
 		"ProfileName": {
 			"type": "string",
-			"description": "The name of this Redfish Profile."
+			"description": "The name of this Redfish Interoperability Profile."
 		},
 		"Version": {
 			"type": "string",
-			"description": "The version of this Redfish Profile."
+			"description": "The version of this Redfish Interoperability Profile."
 		},
 		"Author": {
 			"type": "string",
-			"description": "The author(s) of this Redfish Profile."
+			"description": "The author(s) of this Redfish Interoperability Profile."
 		},
 		"Purpose": {
 			"$ref": "#/definitions/Purpose"
 		},
 		"ContactInfo": {
 			"type": "string",
-			"description": "An email address or URL that can be used to provide feedback about this Redfish Profile."
+			"description": "An email address or URL that can be used to provide feedback about this Redfish Interoperability Profile."
 		},
 		"RequiredProfiles": {
 			"type": "object",
-			"description": "A set of Redfish Profiles which serve as a basis for this Profile.  The requirements set forth in these Profiles are included in this Profile.",
+			"description": "A set of Redfish Interoperability Profiles which serve as a basis for this Profile.  The requirements set forth in those Profiles are included in this Profile.",
 			"additionalProperties": {
 				"Repository": {
 					"$ref": "#/definitions/Repository"
@@ -44,7 +44,7 @@
 		},
 		"Protocol": {
 			"type": "object",
-			"description": "Profile requirements related to the Redfish protocol outside of the JSON resources.",
+			"description": "Interoperability Profile requirements related to the Redfish protocol outside of the JSON resources.",
 			"properties": {
 				"MinVersion": {
 					"$ref": "#/definitions/MinVersion",
@@ -58,14 +58,14 @@
 		},
 		"Resources": {
 			"type": "object",
-			"description": "The JSON resource requirements for this Redfish Profile.",
+			"description": "The JSON resource requirements for this Redfish Interoperability Profile.",
 			"additionalProperties": {
 				"$ref": "#/definitions/ResourceProfile"
 			}
 		},
 		"Registries": {
 			"type": "object",
-			"description": "The Message Registry requirements for this Redfish Profile.",
+			"description": "The Message Registry requirements for this Redfish Interoperability Profile.",
 			"additionalProperties": {
 				"$ref": "#/definitions/RegistryProfile"
 			}
@@ -101,7 +101,7 @@
 				},
 				"PropertyRequirements": {
 					"type": "object",
-					"description": "The property-level requirements for this Redfish Profile.  These requirements apply to every instance of this resource.  If a property defined in the associated schema is not present, there is no requirement for that property to be supported.",
+					"description": "The property-level requirements for this Redfish Interoperability Profile.  These requirements apply to every instance of this resource.  If a property defined in the associated schema is not present, there is no requirement for that property to be supported.",
 					"additionalProperties": {
 						"$ref": "#/definitions/PropertyProfile",
 						"PropertyRequirements": {
@@ -122,7 +122,7 @@
 				},
 				"ActionRequirements": {
 					"type": "object",
-					"description": "The action requirements for this Redfish Profile.",
+					"description": "The action requirements for this Redfish Interoperability Profile.",
 					"additionalPropeties": {
 						"$ref": "#/definitions/ActionProfile"
 					}
@@ -164,7 +164,7 @@
 		},
 		"ActionProfile": {
 			"type": "object",
-			"description": "Actions defined for a Resource which have requirements defined by this Redfish Profile.",
+			"description": "Actions defined for a Resource which have requirements defined by this Redfish Interoperability Profile.",
 			"properties": {
 				"ReadRequirement": {
 					"$ref": "#/definitions/ReadRequirement"
@@ -188,7 +188,7 @@
 		},
 		"RegistryProfile": {
 			"type": "object",
-			"description": "Requirements for support of a Message Registry by this Redfish Profile.",
+			"description": "Requirements for support of a Message Registry by this Redfish Interoperability Profile.",
 			"properties": {
 				"ReadRequirement": {
 					"$ref": "#/definitions/ReadRequirement"
@@ -210,7 +210,7 @@
 				},
 				"Messages": {
 					"type": "object",
-					"description": "The Messages in this Registry which have support requirements for this Redfish Profile. If this property is absent, all Messages in this Registry follow the registry-level 'ReadRequirement'.",
+					"description": "The Messages in this Registry which have support requirements for this Redfish Interoperability Profile. If this property is absent, all Messages in this Registry follow the registry-level 'ReadRequirement'.",
 					"additionalProperties": {
 						"ReadRequirement": {
 							"$ref": "#/definitions/ReadRequirement"
@@ -222,7 +222,7 @@
 		},
 		"MinVersion": {
 			"type": "string",
-			"description": "The minimum version required by this Redfish Profile. If this property is absent, the minimum value shall be '1.0.0'."
+			"description": "The minimum version required by this Redfish Interoperability Profile. If this property is absent, the minimum value shall be '1.0.0'."
 		},
 		"MinCount": {
 			"type": "integer",

@@ -1,5 +1,5 @@
 {
-	"@odata.type": "RedfishProfile.v1_0_0.RedfishProfile",
+	"@odata.type": "RedfishInteroperabilityProfile.v1_0_0.RedfishInteroperabilityProfile",
 	"ProfileName": "Anchovy",
 	"Version": "1.0.2",
 	"Author": "Pizza Box Project",
