@@ -1,6 +1,6 @@
 {
     "name": "Bladed Partitions",
-    "description": "This example hows Redfish Composability can be used to create composed Computer System instances from smaller sets of Computer Systems.  A top level enclosure called \"Enclosure\" contains a set of blades, which are used to create the composed Computer Systems.",
+    "description": "This example shows how Redfish Composability can be used to create composed Computer System instances from smaller sets of Computer Systems.  A top level enclosure called \"Enclosure\" contains a set of blades, which are used to create the composed Computer Systems.",
     "navlinks": [
         {
             "text": "Main",
