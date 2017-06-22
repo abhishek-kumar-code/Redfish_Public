@@ -22,13 +22,17 @@
 	},
 	"Resources": {
 		"ChassisCollection": {
-			"Members": {
-				"MinCount": 1
+			"PropertyRequirements": {
+				"Members": {
+					"MinCount": 1
+				}
 			}
 		},
 		"ComputerSystemCollection": {
-			"Members": {
-				"MinCount": 1
+			"PropertyRequirements": {
+				"Members": {
+					"MinCount": 1
+				}
 			}
 		},
 		"ComputerSystem": {
@@ -42,15 +46,32 @@
 				"Model": {
 					"Requirement": "Recommended"
 				},
-				"IndicatorLED": {
+				"SKU": {
 					"Requirement": "Recommended",
+					"ConditionalRequirements": [{
+						"Purpose": "Either PartNumber or SKU must be supported.",
+						"CompareProperty": "PartNumber",
+						"Comparison": "Absent",
+						"Requirement": "Mandatory"
+					}]
+				},
+				"PartNumber": {
+					"Requirement": "Recommended",
+					"ConditionalRequirements": [{
+						"Purpose": "Either PartNumber or SKU must be supported.",
+						"CompareProperty": "SKU",
+						"Comparison": "Absent",
+						"Requirement": "Mandatory"
+					}]
+				},
+				"IndicatorLED": {
+					"Requirement": "RecommendedWritable",
 					"ConditionalRequirements": [{
 						"Purpose": "Physical and composed Systems must have a writable Indicator LED",
 						"CompareProperty": "SystemType",
 						"Comparison": "AnyOf",
 						"CompareValues": ["Physical", "Composed"],
-						"Requirement": "Mandatory",
-						"Writable": true
+						"Requirement": "MandatoryWritable"
 					}]
 				}
 			},

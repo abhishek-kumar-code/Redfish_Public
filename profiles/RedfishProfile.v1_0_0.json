@@ -139,9 +139,6 @@
 				"Purpose": {
 					"$ref": "#/definitions/Purpose"
 				},
-				"Writable": {
-					"$ref": "#/definitions/Writable"
-				},
 				"MinCount": {
 					"$ref": "#/definitions/MinCount"
 				},
@@ -237,14 +234,20 @@
 			"description": "The Profile requirement details for this Property.  The default value, or if no 'Requirement' is present, is 'Mandatory'. For properties of type 'object', requirements of the embedded properties will apply only if the object is present.",
 			"enum": [
 				"Mandatory",
+				"MandatoryWritable",
+				"MandatoryReadRecommendWritable",
 				"Recommended",
+				"RecommendedWritable",
 				"IfImplemented",
 				"Conditional",
 				"None"
 			],
 			"enumDescriptions": {
 				"Mandatory": "This property is required in all instances of this resource. For properties of type 'array', the property is required in all non-NULL array items. If 'Values' are listed, at least one instance of each enumeration value is required among instance(s) of this property.",
+				"MandatoryWritable": "This property is required in all instances of this resource, and must be writable by the user.",
+				"MandatoryReadRecommendWritable": "This property is required in all instance of this resource, and it is recommended (but not required) that the property be writable by the user.",
 				"Recommended": "It is recommended, but not required, that this property be supported.",
+				"RecommendedWritable": "It is recommended, but not required, that this property be supported and writable by the user.",
 				"IfImplemented": "This property is required if the underlying functionality is implemented. For properties of type 'object', requirements on embedded properties within the object will only apply if the object is present.",
 				"Conditional": "This property is only required if one or more 'ConditionalRequirements' items apply to this instance of the resource.",
 				"None": "This property is not required by this profile.  It is listed here for clarity."
@@ -277,27 +280,21 @@
 					"items": {
 						"type": "string"
 					}
-				},
-				"Writable": {
-					"$ref": "#/definitions/Writable"
 				}
 			}
-		},
-		"Writable": {
-			"type": "boolean",
-			"description": "True if the property is required to be writable by the user.  False or not present if the property may be read-only."
 		},
 		"MinSupportValues": {
 			"type": "array",
 			"items": {
 				"type": "string"
 			},
-			"description": "The minimum set of enumerations that must be supported for this Writable property."
+			"description": "The minimum set of enumerations that must be supported for this writable property."
 		},
 		"Comparison": {
 			"type": "string",
-			"description": "The condition used to compare the value of the property to 'Values'.",
+			"description": "The condition used to check support of the property or compare the value of the property to 'Values'.",
 			"enum": [
+				"Absent",
 				"AnyOf",
 				"AllOf",
 				"Equal",
@@ -305,9 +302,11 @@
 				"GreaterThan",
 				"GreaterThanEqual",
 				"LessThan",
-				"LessThanEqual"
+				"LessThanEqual",
+				"Present"
 			],
 			"enumDescriptions": {
+				"Absent": "The property is not present in this resource.",
 				"AnyOf": "An instance of the property in this resource must be equal to one of the Values listed.",
 				"AllOf": "At least one instance of the property in this resource must be equal to each of the values listed.",
 				"Equal": "The value of the property must be equal to the Values.",
@@ -315,7 +314,8 @@
 				"GreaterThan": "The value of the property must be greater than the Values.",
 				"GreaterThanEqual": "The value of the property must be greater than or equal to the Values.",
 				"LessThan": "The value of the property must be less than to the Values.",
-				"LessThanEqual": "The value of the property must be less than or equal to the Values."
+				"LessThanEqual": "The value of the property must be less than or equal to the Values.",
+				"Present": "The property is present in this resource."
 			}
 		},
 		"Values": {
