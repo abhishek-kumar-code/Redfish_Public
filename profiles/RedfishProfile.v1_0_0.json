@@ -87,8 +87,8 @@
 				"Repository": {
 					"$ref": "#/definitions/Repository"
 				},
-				"Requirement": {
-					"$ref": "#/definitions/Requirement"
+				"ReadRequirement": {
+					"$ref": "#/definitions/ReadRequirement"
 				},
 				"Purpose": {
 					"$ref": "#/definitions/Purpose"
@@ -133,8 +133,11 @@
 			"type": "object",
 			"description": "Properties defined for a Resource which have requirements defined by this Profile.  A Property listed with no further details should be assumed to be a Required property.  Properties not listed have no support requirements associated with this Profile.",
 			"properties": {
-				"Requirement": {
-					"$ref": "#/definitions/Requirement"
+				"ReadRequirement": {
+					"$ref": "#/definitions/ReadRequirement"
+				},
+				"WriteRequirement": {
+					"$ref": "#/definitions/WriteRequirement"
 				},
 				"Purpose": {
 					"$ref": "#/definitions/Purpose"
@@ -163,8 +166,8 @@
 			"type": "object",
 			"description": "Actions defined for a Resource which have requirements defined by this Redfish Profile.",
 			"properties": {
-				"Requirement": {
-					"$ref": "#/definitions/Requirement"
+				"ReadRequirement": {
+					"$ref": "#/definitions/ReadRequirement"
 				},
 				"Purpose": {
 					"$ref": "#/definitions/Purpose"
@@ -172,8 +175,8 @@
 				"Parameters": {
 					"type": "object",
 					"additionalProperties": {
-						"Requirement": {
-							"$ref": "#/definitions/Requirement"
+						"ReadRequirement": {
+							"$ref": "#/definitions/ReadRequirement"
 						},
 						"MinSupportValues": {
 							"$ref": "#/definitions/MinSupportValues"
@@ -187,8 +190,8 @@
 			"type": "object",
 			"description": "Requirements for support of a Message Registry by this Redfish Profile.",
 			"properties": {
-				"Requirement": {
-					"$ref": "#/definitions/Requirement"
+				"ReadRequirement": {
+					"$ref": "#/definitions/ReadRequirement"
 				},
 				"Purpose": {
 					"$ref": "#/definitions/Purpose"
@@ -207,10 +210,10 @@
 				},
 				"Messages": {
 					"type": "object",
-					"description": "The Messages in this Registry which have support requirements for this Redfish Profile. If this property is absent, all Messages in this Registry follow the registry-level 'Requirement'.",
+					"description": "The Messages in this Registry which have support requirements for this Redfish Profile. If this property is absent, all Messages in this Registry follow the registry-level 'ReadRequirement'.",
 					"additionalProperties": {
-						"Requirement": {
-							"$ref": "#/definitions/Requirement"
+						"ReadRequirement": {
+							"$ref": "#/definitions/ReadRequirement"
 						}
 					}
 				}
@@ -229,36 +232,47 @@
 			"type": "string",
 			"description": "A description of the purpose of this requirement, to provide justification or explanation in the profile documentation."
 		},
-		"Requirement": {
+		"ReadRequirement": {
 			"type": "string",
-			"description": "The Profile requirement details for this Property.  The default value, or if no 'Requirement' is present, is 'Mandatory'. For properties of type 'object', requirements of the embedded properties will apply only if the object is present.",
+			"description": "The read (HTTP GET) requirements for this property.  The default value, or if no 'ReadRequirement' is present, is 'Mandatory'. For properties of type 'object', requirements of the embedded properties will apply only if the object is present.",
 			"enum": [
 				"Mandatory",
-				"MandatoryWritable",
-				"MandatoryReadRecommendWritable",
 				"Recommended",
-				"RecommendedWritable",
 				"IfImplemented",
 				"Conditional",
 				"None"
 			],
 			"enumDescriptions": {
 				"Mandatory": "This property is required in all instances of this resource. For properties of type 'array', the property is required in all non-NULL array items. If 'Values' are listed, at least one instance of each enumeration value is required among instance(s) of this property.",
-				"MandatoryWritable": "This property is required in all instances of this resource, and must be writable by the user.",
-				"MandatoryReadRecommendWritable": "This property is required in all instance of this resource, and it is recommended (but not required) that the property be writable by the user.",
 				"Recommended": "It is recommended, but not required, that this property be supported.",
-				"RecommendedWritable": "It is recommended, but not required, that this property be supported and writable by the user.",
 				"IfImplemented": "This property is required if the underlying functionality is implemented. For properties of type 'object', requirements on embedded properties within the object will only apply if the object is present.",
 				"Conditional": "This property is only required if one or more 'ConditionalRequirements' items apply to this instance of the resource.",
 				"None": "This property is not required by this profile.  It is listed here for clarity."
+			}
+		},
+		"WriteRequirement": {
+			"type": "string",
+			"description": "The writable (HTTP PATCH or PUT) requirements for this property.  The default value, or if no 'WriteRequirement' is present, is 'None' - that is, the propery may be read-only.",
+			"enum": [
+				"Mandatory",
+				"Recommended",
+				"None"
+			],
+			"enumDescriptions": {
+				"Mandatory": "This property is required to be writable in all instances of this resource.",
+				"Recommended": "It is recommended, but not required, that this property be writable.",
+				"None": "This property is not required to be writable by this profile.  It is listed here for clarity, and is the default value used if 'WriteRequirement' is not present."
 			}
 		},
 		"Condition": {
 			"type": "object",
 			"description": "Conditions that if met, apply additional Profile requirements for this resource.",
 			"properties": {
-				"Requirement": {
-					"$ref": "#/definitions/Requirement"
+				"ReadRequirement": {
+					"$ref": "#/definitions/ReadRequirement"
+				},
+				"WriteRequirement": {
+					"$ref": "#/definitions/WriteRequirement"
 				},
 				"Purpose": {
 					"$ref": "#/definitions/Purpose"

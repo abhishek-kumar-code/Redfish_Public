@@ -40,49 +40,50 @@
 			"Purpose": "Every implementation must have the logical view of the System.",
 			"PropertyRequirements": {
 				"SerialNumber": {
-					"Requirement": "Mandatory"
+					"ReadRequirement": "Mandatory"
 				},
 				"Manufacturer": {},
 				"Model": {
-					"Requirement": "Recommended"
+					"ReadRequirement": "Recommended"
 				},
 				"SKU": {
-					"Requirement": "Recommended",
+					"ReadRequirement": "Recommended",
 					"ConditionalRequirements": [{
 						"Purpose": "Either PartNumber or SKU must be supported.",
 						"CompareProperty": "PartNumber",
 						"Comparison": "Absent",
-						"Requirement": "Mandatory"
+						"ReadRequirement": "Mandatory"
 					}]
 				},
 				"PartNumber": {
-					"Requirement": "Recommended",
+					"ReadRequirement": "Recommended",
 					"ConditionalRequirements": [{
 						"Purpose": "Either PartNumber or SKU must be supported.",
 						"CompareProperty": "SKU",
 						"Comparison": "Absent",
-						"Requirement": "Mandatory"
+						"ReadRequirement": "Mandatory"
 					}]
 				},
 				"IndicatorLED": {
-					"Requirement": "RecommendedWritable",
+					"ReadRequirement": "Recommended",
 					"ConditionalRequirements": [{
 						"Purpose": "Physical and composed Systems must have a writable Indicator LED",
 						"CompareProperty": "SystemType",
 						"Comparison": "AnyOf",
 						"CompareValues": ["Physical", "Composed"],
-						"Requirement": "MandatoryWritable"
+						"ReadRequirement": "Mandatory",
+						"WriteRequirement": "Mandatory"
 					}]
 				}
 			},
 			"ActionRequirements": {
 				"Reset": {
-					"Requirement": "Mandatory",
+					"ReadRequirement": "Mandatory",
 					"Purpose": "Ability to reset the system is a core requirement of most users.",
 					"Parameters": {
 						"ResetType": {
 							"MinSupportValues": ["ForceOff", "PowerCycle"],
-							"Requirement": "Mandatory"
+							"ReadRequirement": "Mandatory"
 						}
 					}
 				}
@@ -90,10 +91,10 @@
 		},
 		"EthernetInterface": {
 			"MinVersion": "1.2.0",
-			"Requirement": "Recommended",
+			"ReadRequirement": "Recommended",
 			"ConditionalRequirements": [{
 				"SubordinateToResource": ["Manager", "EthernetInterfaceCollection"],
-				"Requirement": "Mandatory"
+				"ReadRequirement": "Mandatory"
 			}],
 			"PropertyRequirements": {
 				"MACAddress": {
@@ -106,14 +107,14 @@
 					}
 				},
 				"HostName": {
-					"Requirement": "Recommended",
+					"ReadRequirement": "Recommended",
 					"ConditionalRequirements": [{
 						"SubordinateToResource": ["ComputerSystem", "EthernetInterfaceCollection"],
-						"Requirement": "Mandatory"
+						"ReadRequirement": "Mandatory"
 					}]
 				},
 				"IPv6Addresses": {
-					"Requirement": "Mandatory",
+					"ReadRequirement": "Mandatory",
 					"MinCount": 1,
 					"ConditionalRequirements": [{
 						"SubordinateToResource": ["ComputerSystem", "EthernetInterfaceCollection"],
@@ -131,7 +132,7 @@
 			"MinVersion": "1.1.0",
 			"PropertyRequirements": {
 				"Fans": {
-					"Requirement": "IfImplemented",
+					"ReadRequirement": "IfImplemented",
 					"PropertyRequirements": {
 						"Reading": {},
 						"ReadingUnits": {},
@@ -140,7 +141,7 @@
 					}
 				},
 				"Temperatures": {
-					"Requirement": "Mandatory",
+					"ReadRequirement": "Mandatory",
 					"MinCount": 2,
 					"PropertyRequirements": {
 						"ReadingCelsius": {},
@@ -149,7 +150,7 @@
 							"Values": ["CPU", "Ambient"]
 						},
 						"UpperThresholdFatal": {
-							"Requirement": "Recommended"
+							"ReadRequirement": "Recommended"
 						},
 						"UpperThresholdCritical": {},
 						"UpperThresholdNonCritical": {}
@@ -165,10 +166,10 @@
 				"CurrentTime": {},
 				"DestinationTime": {},
 				"IsGrandfatherAlive": {
-					"Requirement": "Recommended"
+					"ReadRequirement": "Recommended"
 					},
 				"ParadoxDetected": {
-					"Requirement": "IfImplemented"
+					"ReadRequirement": "IfImplemented"
 					}
 			}
 		}
@@ -188,7 +189,7 @@
 			"OwningEntity": "Other",
 			"OwningEntityName": "Contoso",
 			"Repository": "contoso.com/registries",
-			"Requirement": "Mandatory"
+			"ReadRequirement": "Mandatory"
 		}
 	}
 }

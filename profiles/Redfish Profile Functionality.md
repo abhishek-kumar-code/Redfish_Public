@@ -2,8 +2,8 @@
 DocTitle: Redfish Interoperability Profiles
 DocNumber: '0272'
 DocClass: Normative
-DocVersion: '0.9.0'
-modified: '2017-5-30'
+DocVersion: '0.95.0'
+modified: '2017-6-30'
 status: work in progress
 released: false
 copyright: '2017'
@@ -134,7 +134,7 @@ The following options are available at the schema level:
 | OwningEntity | string | Indicates whether this resource is defined by schema published by a standards body or an OEM. If this property is absent, the value shall be 'DMTF'.The author(s) of this Redfish Profile. |
 | OwningEntityName | string | Name of the owning entity, when used with 'Other', follows 'Oem Property Naming' in the Redfish Specification |
 | MinVersion | string | The minimum version required by this Redfish Profile. If this property is absent, the minimum value shall be '1.0.0'.|
-| Requirement | string | Resource-level requirement for this schema, see [Requirement](#requirement) section. |
+| ReadRequirement | string | Resource-level requirement for this schema, see [ReadRequirement](#readrequirement) section. |
 | Purpose | string | A description of the purpose of this requirement.  This text can provide justification or reasoning behind the requirement for use in the profile documentation. |
 | ConditionalRequirements | object | Resource-level conditional requirements that apply to instances of this schema, see [Conditional Requirements](#conditional-requirements) section. |
 
@@ -149,7 +149,7 @@ This example shows a simple required schema
 			"SerialNumber": {},
 			"Manufacturer": {},
 			"Model": {
-				"Requirement": "Recommended"
+				"ReadRequirement": "Recommended"
 			},
 ~~~
 
@@ -161,7 +161,8 @@ The following options are available at the property level:
 
 | property | type | description | 
 | --- | --- | --- |
-| Requirement | string | Property-level requirement for this property, see [Requirement](#requirement) section. |
+| ReadRequirement | string | Property-level requirement for this property, see [ReadRequirement](#readrequirement) section. |
+| WriteRequirement | string | Property-level write (HTTP PATCH or PUT) requirement for this property, see [WriteRequirement] (#writerequirement) section. |
 | ConditionalRequirements | object | Property-level conditional requirements that apply to instances of this property, see [Conditional Requirements](#conditional-requirements) section. |
 | MinCount | integer | For array type properties, the minimum number of non-NULL instances within the array. |
 | MinSupportValues |  array | The minimum set of enumerations that must be supported for this writable property. |
@@ -178,19 +179,19 @@ This example shows property-level requirements, including one of type 'object' c
 	"Power": {
 		"PropertyRequirements": {
 			"PowerSupplies": {
-				"Requirement": "Mandatory",
+				"ReadRequirement": "Mandatory",
 				"MinCount": 2,
 				"PropertyRequirements": {
 					"Status": {},
 					"PowerSupplyType": {
-						"Requirement": "AnyOf",
+						"ReadRequirement": "AnyOf",
 						"Purpose": "Need to know AC vs. DC supplies to match input readings to expected values.",
 						"Values": [ "AC", "DC" ]
 					},
 					"LineinputVoltage": {},
 					"PowerCapacityWatts": {},
 					"InputRanges": {
-						"Requirement": "Recommended"
+						"ReadRequirement": "Recommended"
 					}
 				}
 			},
@@ -217,20 +218,27 @@ The Comparison function uses the following enumerations to represent the arithme
 | Present | The property is present in this resource. |
 
 
-#### Requirement
+#### ReadRequirement
 
-This function specifies the level of requirement applied to the resource or property.  
+This function specifies the level of basic read (HTTP GET) requirement applied to the resource or property.  The default value, or if no 'ReadRequirement' is present, is 'Mandatory'. For properties of type 'object', requirements of the embedded properties will apply only if the object is present.
 
 | value | description |
 | --- | --- |
 | Mandatory |  This property is required in all instances of this resource. For properties of type 'array', the property is required in all non-NULL array items. If 'Values' are listed, at least one instance of each enumeration value is required among instance(s) of this property.|
-| MandatoryReadRecommendWritable | This property is required in all instance of this resource, and it is recommended (but not required) that the property be writable by the user. |
-| MandatoryWritable | This property is required in all instances of this resource, and must be writable by the user. |
 | Recommended | It is recommended, but not required, that this property be supported. |
-| RecommendedWritable | It is recommended, but not required, that this property be supported and writable by the user. |
 | IfImplemented | This property is required if the underlying functionality is implemented. For properties of type 'object', requirements on embedded properties within the object will only apply if the object is present. |
 | Conditional | This property is only required if 'ConditionalRequirements' items apply to this instance of the resource. |
 | None | This property is not required by this profile.  It is listed here for clarity. |
+
+#### WriteRequirement
+
+This function specifies the level of write support (HTTP PATCH or PUT) applied to a property.  The default value, or if no 'WriteRequirement' is present, is 'None'.  
+
+| value | description |
+| --- | --- |
+| Mandatory |  This property is required to be writable in all instances of this resource. |
+| Recommended | It is recommended, but not required, that this property be writable. |
+| None | This property is not required to be writable by this profile.  It is listed here for clarity, and is the default value used if 'WriteRequirement' is not present. |
 
 
 #### Conditional Requirements
@@ -243,7 +251,8 @@ The following options are available for each conditional requirement:
 
 | property | type | description | 
 | --- | --- | --- |
-| Requirement | string | The requirement to apply to the resource or property if the condition is met.|
+| ReadRequirement | string | The requirement to apply to the resource or property if the condition is met.|
+| WriteRequirement | string | Property-level write (HTTP PATCH or PUT) requirement for this property, see [WriteRequirement] (#writerequirement) section. |
 | Purpose | string | Text describing the purpose of this conditional requirement. |
 | SubordinateToResource | array | An ordered list (from top of heirarchy to bottom) of resources where this resource is linked as as subordinate resource.  The conditional requirements listed for the resource apply only to instances which are subordinate to the listed parent resource list.  See [Parent and subordinate resources](#parent-and-subordinate-resources) section. |
 | CompareProperty | string | The name of the property in this resource whose value is used to test this condition. The property name will be evaluated at the current object level within the resource.  If the property name is not found at the current level, upper levels will be searched until the root level is reached. See the [Compare Property](#compare-property) section.|
@@ -267,15 +276,16 @@ In the second part of the example, the 'IPv6Addresses' array property is require
 	"EthernetInterface": {
 		"PropertyRequirements": {
 			"HostName": {
-				"Requirement": "Recommended",
+				"ReadRequirement": "Recommended",
+				"WriteRequirement": "Recommended",
 				"ConditionalRequirements": [{
 					"SubordinateToResource": ["ComputerSystem", "EthernetInterfaceCollection"],
-					"Requirement": "Mandatory",
+					"ReadRequirement": "Mandatory",
 					"Purpose": "Host Name is used to match this instance to other data sources.",
 				}]
 			},
 			"IPv6Addresses": {
-				"Requirement": "Mandatory",
+				"ReadRequirement": "Mandatory",
 				"MinCount": 1,
 				"ConditionalRequirements": [{
 					"SubordinateToResource": ["ComputerSystem", "EthernetInterfaceCollection"],
@@ -305,13 +315,14 @@ This example shows a CompareProperty condition applied to the 'IndicatorLED' pro
 
 ~~~
 	"IndicatorLED": {
-		"Requirement": "Recommended",
+		"ReadRequirement": "Recommended",
 		"ConditionalRequirements": [{
 			"Purpose": "Physical and composed Systems must have a writable Indicator LED",
 			"CompareProperty": "SystemType",
 			"Comparison": "AnyOf",
 			"CompareValues": ["Physical", "Composed"],
-			"Requirement": "MandatoryWritable"
+			"ReadRequirement": "Mandatory",
+			"WriteRequirement": "Mandatory"
 		}]
 	},
 ~~~
@@ -324,7 +335,7 @@ The following functions are available to specify requirements for an Action with
 
 | property | type | description | 
 | --- | --- | --- |
-| Requirement | string | The requirement to apply to this Action.|
+| ReadRequirement | string | The requirement to apply to this Action.|
 | Parameters | object | Requirements for any parameter available for this Action. |
 | Purpose | string | A description of the purpose of this requirement.  This text can provide justification or reasoning behind the requirement for use in the profile documentation. |
 
@@ -334,7 +345,7 @@ The following functions are available to specify requirements for a parameter on
 
 | property | type | description | 
 | --- | --- | --- |
-| Requirement | string | The requirement to apply to this parameter.|
+| ReadRequirement | string | The requirement to apply to this parameter.|
 | MinSupportValues | array | The minimum set of enumerations that must be supported for this parameter. |
 
 #### Example
@@ -344,12 +355,12 @@ This exampls shows the 'Reset' action as required for this resource, along with 
 ~~~
 	"ActionRequirements": {
 		"Reset": {
-			"Requirement": "Mandatory",
+			"ReadRequirement": "Mandatory",
 			"Purpose": "Ability to reset the unit is a core requirement of most users.",
 			"Parameters": {
 				"ResetType": {
 					"MinSupportValues": ["ForceOff", "PowerCycle"],
-					"Requirement": "Mandatory"
+					"ReadRequirement": "Mandatory"
 				}
 			}
 		}
@@ -368,9 +379,9 @@ The following functions are available to specify Registry-level requiremenets:
 | OwningEntity | string | Indicates whether this resource is defined by schema published by a standards body or an OEM. If this property is absent, the value shall be 'DMTF'.The author(s) of this Redfish Profile. |
 | OwningEntityName | string | Name of the owning entity, when used with 'Other', follows 'Oem Property Naming' in the Redfish Specification |
 | MinVersion | string | The minimum version required by this Redfish Profile. If this property is absent, the minimum value shall be '1.0.0'.|
-| Requirement | string | Resource-level requirement for this Registry, see [Requirement](#requirement) section. |
+| ReadRequirement | string | Resource-level requirement for this Registry, see [ReadRequirement](#readrequirement) section. |
 | Purpose | string | A description of the purpose of this requirement.  This text can provide justification or reasoning behind the requirement for use in the profile documentation. |
-| Messages | object | The Messages in this Registry which have support requirements for this Redfish Profile. If this property is absent, all Messages in this Registry follow the registry-level 'Requirement'. |
+| Messages | object | The Messages in this Registry which have support requirements for this Redfish Profile. If this property is absent, all Messages in this Registry follow the registry-level 'ReadRequirement'. |
 
 ### Messages
 
@@ -380,7 +391,7 @@ The following options are available at the property level:
 
 | property | type | description | 
 | --- | --- | --- |
-| Requirement | string | Message-level requirement for this Message, see [Requirement](#requirement) section. |
+| ReadRequirement | string | Message-level requirement for this Message, see [ReadRequirement](#readrequirement) section. |
 
 
 ### Example
@@ -404,7 +415,7 @@ In the case of the OEM-defined Registry 'ContosoPizzaMessages', the 'Mandatory' 
 			"OwningEntity": "Other",
 			"OwningEntityName": "Contoso",
 			"Repository": "contoso.com/registries",
-			"Requirement": "Mandatory"
+			"ReadRequirement": "Mandatory"
 		}
 	}
 ~~~
