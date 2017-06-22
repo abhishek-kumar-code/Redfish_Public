@@ -163,7 +163,6 @@ The following options are available at the property level:
 | --- | --- | --- |
 | Requirement | string | Property-level requirement for this property, see [Requirement](#requirement) section. |
 | ConditionalRequirements | object | Property-level conditional requirements that apply to instances of this property, see [Conditional Requirements](#conditional-requirements) section. |
-| Writable | boolean | True if the property is required to be writable by the user.  False or not present if the property may be read-only. |
 | MinCount | integer | For array type properties, the minimum number of non-NULL instances within the array. |
 | MinSupportValues |  array | The minimum set of enumerations that must be supported for this writable property. |
 | Comparison | string | The condition used to compare the value of the property to 'Values'. See the [Comparison](#comparison) section. |
@@ -206,6 +205,7 @@ The Comparison function uses the following enumerations to represent the arithme
 
 | value | description |
 | --- | --- |
+| Absent | The property is not present in this resource. |
 | AnyOf | An instance of the property in this resource must be equal to one of the values listed. |
 | AllOf | At least one instance of the property in this resource must be equal to each of the values listed. |
 | Equal | The value must be equal to the KeyValue. |
@@ -214,6 +214,7 @@ The Comparison function uses the following enumerations to represent the arithme
 | GreaterThanEqual | The value of the property must be greater than or equal to the Values. |
 | LessThan | The value of the property must be less than to the Values. |
 | LessThanEqual | The value of the property must be less than or equal to the Values. |
+| Present | The property is present in this resource. |
 
 
 #### Requirement
@@ -223,7 +224,10 @@ This function specifies the level of requirement applied to the resource or prop
 | value | description |
 | --- | --- |
 | Mandatory |  This property is required in all instances of this resource. For properties of type 'array', the property is required in all non-NULL array items. If 'Values' are listed, at least one instance of each enumeration value is required among instance(s) of this property.|
+| MandatoryReadRecommendWritable | This property is required in all instance of this resource, and it is recommended (but not required) that the property be writable by the user. |
+| MandatoryWritable | This property is required in all instances of this resource, and must be writable by the user. |
 | Recommended | It is recommended, but not required, that this property be supported. |
+| RecommendedWritable | It is recommended, but not required, that this property be supported and writable by the user. |
 | IfImplemented | This property is required if the underlying functionality is implemented. For properties of type 'object', requirements on embedded properties within the object will only apply if the object is present. |
 | Conditional | This property is only required if 'ConditionalRequirements' items apply to this instance of the resource. |
 | None | This property is not required by this profile.  It is listed here for clarity. |
@@ -241,7 +245,6 @@ The following options are available for each conditional requirement:
 | --- | --- | --- |
 | Requirement | string | The requirement to apply to the resource or property if the condition is met.|
 | Purpose | string | Text describing the purpose of this conditional requirement. |
-| Writable | boolean | Condition applies if the property is writable. |
 | SubordinateToResource | array | An ordered list (from top of heirarchy to bottom) of resources where this resource is linked as as subordinate resource.  The conditional requirements listed for the resource apply only to instances which are subordinate to the listed parent resource list.  See [Parent and subordinate resources](#parent-and-subordinate-resources) section. |
 | CompareProperty | string | The name of the property in this resource whose value is used to test this condition. The property name will be evaluated at the current object level within the resource.  If the property name is not found at the current level, upper levels will be searched until the root level is reached. See the [Compare Property](#compare-property) section.|
 | CompareValues | array | Values of the CompareProperty used to test this condition. See the [Compare Property](#compare-property) section. |
@@ -308,8 +311,7 @@ This example shows a CompareProperty condition applied to the 'IndicatorLED' pro
 			"CompareProperty": "SystemType",
 			"Comparison": "AnyOf",
 			"CompareValues": ["Physical", "Composed"],
-			"Requirement": "Mandatory",
-			"Writable": true
+			"Requirement": "MandatoryWritable"
 		}]
 	},
 ~~~
