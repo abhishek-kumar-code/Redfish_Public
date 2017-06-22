@@ -1,6 +1,6 @@
 {
     "name": "Composable System",
-    "description": "This example hows a service with various sets of disaggregated hardware as resources.  It provides an example composed system utilizing some of the disaggregated hardware.  It also shows how Resource Zones can provide information about binding restrictions.",
+    "description": "This example shows a service with various sets of disaggregated hardware as resources.  It provides an example composed system utilizing some of the disaggregated hardware.  It also shows how Resource Zones can provide information about binding restrictions.",
     "navlinks": [
         {
             "text": "Main",
