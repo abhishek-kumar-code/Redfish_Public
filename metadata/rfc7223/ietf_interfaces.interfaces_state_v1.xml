@@ -103,13 +103,13 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The interface's address at its protocol sub-layer. For example, for an 802.x interface, this object normally contains a Media Access Control (MAC) address. The interface's media-specific modules must define the bit and byte ordering and the format of the value of this object. For interfaces that do not have such an address (e.g., a serial line), this node is not present."/>
         </Property>
-        <Property Name="higher_layer_if" Type="Collection(RedfishYang.interface-state-ref)">
+        <Property Name="higher_layer_if" Type="Collection(RedfishYang.interface_state_ref)">
           <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf_list"/>
           <Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/interface-state-ref"/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A list of references to interfaces layered on top of this interface."/>
         </Property>
-        <Property Name="lower_layer_if" Type="Collection(RedfishYang.interface-state-ref)">
+        <Property Name="lower_layer_if" Type="Collection(RedfishYang.interface_state_ref)">
           <Annotation Term="RedfishYang.NodeType" EnumMember="RedfishYang.NodeTypes/leaf_list"/>
           <Annotation Term="RedfishYang.YangType" EnumMember="RedfishYang.YangTypes/interface-state-ref"/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
