@@ -673,6 +673,18 @@
       </ComplexType>
 
     </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="Memory.v1_3_0">
 
+      <EntityType Name="Memory" BaseType="Memory.v1_2_0.Memory">
+        <Property Name="CacheSizeMiB" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Total size of any cache memory in MiB."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the total size of any cache memory in MiB."/>
+        </Property>
+      </EntityType>
+
+    </Schema>
+    
   </edmx:DataServices>
 </edmx:Edmx>
