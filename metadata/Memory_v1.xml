@@ -370,6 +370,9 @@
         <Member Name="PipelinedNibble">
           <Annotation Term="OData.Description" String="Pipelined Nibble."/>
         </Member>
+        <Member Name="Logical">
+          <Annotation Term="OData.Description" String="Logical Non-volatile device."/>
+        </Member>
       </EnumType>
 
       <EnumType Name="BaseModuleType">
