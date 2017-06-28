@@ -1970,7 +1970,7 @@ Below is an example body for a resource that supports a Settings resource.  A cl
 }
 ~~~
 
-The values in the Settings resource are applied to the resource either directly, such as with a POST of an action (such as Reset) or a PUT/PATCH request, or indirectly, such as when a user reboots a machine outside of the Redfish Service.  A client may indicate its preference on when to apply the future configuration by including the "@Redfish.SettingsApplyTime" annotation in the request body when configuring the Settings resource.  If a service supports configuring when to apply the future settings, the response of the Settings resource shall contain a property with the "@Redfish.SettingsApplyTime" annotation.  See properties defined in the "Settings" Redfish Schema for details.
+The values in the Settings resource are applied to the resource either directly, such as with a POST of an action (such as Reset) or a PUT/PATCH request, or indirectly, such as when a user reboots a machine outside of the Redfish Service.  A client may indicate its preference on when to apply the future configuration by including the "@Redfish.SettingsApplyTime" annotation in the request body when configuring the Settings resource.  If a service supports configuring when to apply the future settings, the response body that represents the Settings resource shall contain a property with the "@Redfish.SettingsApplyTime" annotation.  See properties defined in the "Settings" Redfish Schema for details.
 
 Below is an example request body that shows a client configuring when the values in the Settings resource are to be applied:
 
