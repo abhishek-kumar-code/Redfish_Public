@@ -11,7 +11,7 @@
   "BootDescription": "NIC 1 PXE Boot - IPv4",
   "Alias": "Pxe",
   "RelatedItem": [
-    { "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/9fd725a1/" }
+    { "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/9fd725a1/NetworkPorts/1" }
   ],
   "Oem": { }
 }
