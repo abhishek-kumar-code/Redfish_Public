@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  ComputerSystem  v1.4.0-->
+<!--# Redfish Schema:  ComputerSystem  v1.5.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -76,7 +76,9 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ResourceBlock_v1.xml">
     <edmx:Include Namespace="ResourceBlock"/>
   </edmx:Reference>
-
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/BootOptionCollection_v1.xml">
+    <edmx:Include Namespace="BootOptionCollection"/>
+  </edmx:Reference>
   <edmx:DataServices>
 
     <!-- This schema defines a computer system and its respective properties.-->
@@ -722,6 +724,40 @@
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </ComplexType>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_5_0">
+      <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_4_0.ComputerSystem"/>
+
+      <ComplexType Name="Boot" BaseType="ComputerSystem.v1_0_0.Boot">
+        <NavigationProperty Name="BootOptions" Type="BootOptionCollection.BootOptionCollection">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A reference to the collection of the UEFI Boot Options associated with this Computer System."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type BootOptionCollection."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        <Property Name="BootNext" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="This property is the BootId of the Boot Option for one time boot."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the BootId of the UEFI Boot Option used for one time boot, as defined by the UEFI Specification. The valid values for this property are specified in the BootOrder array."/>
+        </Property>
+        <Property Name="BootOrder" Type="Collection(Edm.String)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Ordered array of BootId strings representing the UEFI Boot Order associated with this computer system."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an ordered array of BootId strings representing the UEFI Boot Order of this computer system, as defined by the UEFI Specification."/>
+        </Property>
+      </ComplexType>
+
+      <Action Name="ResetBootOrder" IsBound="true">
+        <Parameter Name="ComputerSystem" Type="ComputerSystem.v1_0_0.Actions"/>
+        <Parameter Name="ResetType" Type="Resource.ResetType">
+          <Annotation Term="OData.Description" String="The type of Boot Order reset to be performed."/>
+          <Annotation Term="OData.LongDescription" String="This defines the property name for the action."/>
+        </Parameter>
+        <Annotation Term="OData.Description" String="This action is used to reset the UEFI Boot Order to default settings."/>
+        <Annotation Term="OData.LongDescription" String="This action shall perform a reset of the UEFI BootOrder to default values."/>
+      </Action>
+
     </Schema>
 
   </edmx:DataServices>
