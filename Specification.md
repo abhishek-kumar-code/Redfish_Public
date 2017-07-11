@@ -2543,28 +2543,28 @@ The Targets property within SubordinateOverrides lists a hierarchical representa
             {
                 "Privilege": [ "ConfigureComponent" ]
             }
-        ],
-        "SubordinateOverrides": [
-            {
-                "Targets": [
-                    "Manager",
-                    "EthernetInterfaceCollection"
-                ],
-                "OperationMap": {
-                    "GET": [
-                        {
-                            "Privilege": [ "Login" ]
-                        }
-                    ],
-                    "PATCH": [
-                        {
-                            "Privilege": [ "ConfigureManager" ]
-                        }
-                    ]
-                }
-            }
         ]
-    }
+    },
+    "SubordinateOverrides": [
+        {
+            "Targets": [
+                "Manager",
+                "EthernetInterfaceCollection"
+            ],
+            "OperationMap": {
+                "GET": [
+                    {
+                        "Privilege": [ "Login" ]
+                    }
+                ],
+                "PATCH": [
+                    {
+                        "Privilege": [ "ConfigureManager" ]
+                    }
+                ]
+            }
+        }
+    ]
 }
 ~~~
 
@@ -2604,28 +2604,28 @@ In the following example use of the ResourceURI Override syntax for representing
             {
                 "Privilege": [ "ConfigureComponent" ]
             }
-        ],
-        "ResourceURIOverrides": [
-            {
-                "Targets": [
-                    "/redfish/v1/Systems/VM6",
-                    "/redfish/v1/Systems/Sys1"
-                ],
-                "OperationMap": {
-                    "GET": [
-                        {
-                            "Privilege": [ "Login" ]
-                        }
-                    ],
-                    "PATCH": [
-                        {
-                            "Privilege": [ "ConfigureComponents","OEMSysAdminPriv" ]
-                        }
-                    ]
-                }
-            }
         ]
-    }
+    },
+    "ResourceURIOverrides": [
+        {
+            "Targets": [
+                "/redfish/v1/Systems/VM6",
+                "/redfish/v1/Systems/Sys1"
+            ],
+            "OperationMap": {
+                "GET": [
+                    {
+                        "Privilege": [ "Login" ]
+                    }
+                ],
+                "PATCH": [
+                    {
+                        "Privilege": [ "ConfigureComponents","OEMSysAdminPriv" ]
+                    }
+                ]
+            }
+        }
+    ]
 }
 ~~~
 
