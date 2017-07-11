@@ -62,8 +62,8 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="BootId" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="TBD"/>
-          <Annotation Term="OData.LongDescription" String="TBD"/>
+          <Annotation Term="OData.Description" String="TBD."/>
+          <Annotation Term="OData.LongDescription" String="TBD."/>
         </Property>
         <Property Name="BootDescription" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -77,17 +77,34 @@
         </Property>
         <Property Name="Alias" Type="ComputerSystem.v1_0_0.BootSource">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="TBD"/>
-          <Annotation Term="OData.LongDescription" String="TBD"/>
+          <Annotation Term="OData.Description" String="TBD."/>
+          <Annotation Term="OData.LongDescription" String="TBD."/>
         </Property>
         <NavigationProperty Name="RelatedItem" Type="Collection(Resource.Item)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The ID(s) of the resources associated with this Boot Option."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of IDs containing pointers consistent with JSON pointer syntax to the resource that is being used for this Boot Option."/>
           <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>        
+        </NavigationProperty>
+        <Property Name="Actions" Type="BootOption.v1_0_0.Actions" Nullable="false">
+          <Annotation Term="OData.Description" String="The available actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
+        </Property>        
       </EntityType>
- 
+
+      <ComplexType Name="Actions">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The available actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
+        <Property Name="Oem" Type="BootOption.v1_0_0.OemActions" Nullable="false"/>
+      </ComplexType>
+
+      <ComplexType Name="OemActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
+      </ComplexType>
+      
     </Schema>
 
   </edmx:DataServices>
