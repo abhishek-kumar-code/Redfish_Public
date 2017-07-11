@@ -1,9 +1,8 @@
 {
     "@odata.type": "#ChassisCollection.ChassisCollection",
     "Name": "MultiBlade Enclosure Chassis Collection",
-    "Members@odata.count": 7,
-    "Members": [
-        {
+    "Members@odata.count": 9,
+    "Members": [{
             "@odata.id": "/redfish/v1/Chassis/Enclosure"
         },
         {
@@ -23,8 +22,14 @@
         },
         {
             "@odata.id": "/redfish/v1/Chassis/Blade6"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/Blade7"
+        },
+        {
+            "@odata.id": "/redfish/v1/Chassis/Blade8"
         }
     ],
-    "@odata.context": "/redfish/v1/$metadata#Chassis",
+    "@odata.context": "/redfish/v1/$metadata#ChassisCollection.ChassisCollection",
     "@odata.id": "/redfish/v1/Chassis"
 }

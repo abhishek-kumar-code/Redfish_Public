@@ -1,0 +1,50 @@
+{
+    "@odata.type": "#Chassis.v1_2_0.Chassis",
+    "Id": "Blade8",
+    "Name": "Blade 8",
+    "ChassisType": "Expansion",
+    "SerialNumber": "RYM056",
+    "PartNumber": "166480-S30",
+    "Manufacturer": "Contoso",
+    "Model": "Constoto-2S-B",
+    "IndicatorLED": "Off",
+    "PowerState": "On",
+    "Status": {
+        "Health": "OK",
+        "State": "Enabled"
+    },
+    "Location": {
+        "Info": "DCTexas-Row10-Rack1-20U-Bay8"
+    },
+    "Thermal": {
+        "@odata.id": "/redfish/v1/Chassis/Blade8/Thermal"
+    },
+    "Links": {
+        "ContainedBy": {
+            "@odata.id": "/redfish/v1/Chassis/Enclosure"
+        },
+        "CooledBy": [{
+                "@odata.id": "/redfish/v1/Chassis/Enclosure/Thermal#/Fans/0"
+            },
+            {
+                "@odata.id": "/redfish/v1/Chassis/Enclosure/Thermal#/Fans/1"
+            }
+        ],
+        "ManagedBy": [{
+                "@odata.id": "/redfish/v1/Managers/EncMgr1"
+            },
+            {
+                "@odata.id": "/redfish/v1/Managers/EncMgr2"
+            }
+        ],
+        "PoweredBy": [{
+                "@odata.id": "/redfish/v1/Chassis/Enclosure/Power#/PowerSupplies/0"
+            },
+            {
+                "@odata.id": "/redfish/v1/Chassis/Enclosure/Power#/PowerSupplies/1"
+            }
+        ]
+    },
+    "@odata.context": "/redfish/v1/$metadata#Chassis.Chassis",
+    "@odata.id": "/redfish/v1/Chassis/Blade8"
+}

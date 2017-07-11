@@ -1,6 +1,6 @@
 {
-    "@odata.type": "#ServiceRoot.v1_0_2.ServiceRoot",
-    "@odata.context": "/redfish/v1/$metadata#ServiceRoot",
+    "@odata.type": "#ServiceRoot.v1_2_0.ServiceRoot",
+    "@odata.context": "/redfish/v1/$metadata#ServiceRoot.ServiceRoot",
     "@odata.id": "/redfish/v1/",
     "Id": "MultiBladePartitionedServer-Root",
     "Name": "Multiblade Enclosure Root Service",
@@ -15,6 +15,9 @@
     },
     "Managers": {
         "@odata.id": "/redfish/v1/Managers"
+    },
+    "CompositionService": {
+        "@odata.id": "/redfish/v1/CompositionService"
     },
     "Tasks": {
         "@odata.id": "/redfish/v1/TaskService"
