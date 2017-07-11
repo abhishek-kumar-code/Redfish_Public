@@ -139,9 +139,9 @@
             "target": "/redfish/v1/Systems/1/Actions/ComputerSystem.Reset",
             "@Redfish.ActionInfo": "/redfish/v1/Systems/1/ResetActionInfo"
         },
-        "#ComputerSystem.ResetBootOrder": {
-            "target": "/redfish/v1/Systems/1/Actions/ComputerSystem.ResetBootOrder",
-            "@Redfish.ActionInfo": "/redfish/v1/Systems/1/ResetBootOrderActionInfo"
+        "#ComputerSystem.SetDefaultBootOrder": {
+            "target": "/redfish/v1/Systems/1/Actions/ComputerSystem.SetDefaultBootOrder",
+            "@Redfish.ActionInfo": "/redfish/v1/Systems/1/RSetDefaultBootOrderActionInfo"
         },
         "Oem": {
             "#Contoso.Reset": {
