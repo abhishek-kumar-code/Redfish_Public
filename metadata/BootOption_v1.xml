@@ -47,7 +47,7 @@
         </Annotation>
         <Annotation Term="Capabilities.DeleteRestrictions">
           <Record>
-            <PropertyValue Property="Deletable" Bool="true/>
+            <PropertyValue Property="Deletable" Bool="true"/>
             <Annotation Term="OData.Description" String="Some implementations may allow the deletion of individual UEFI Boot Option Entries."/>                           
           </Record>
         </Annotation>
