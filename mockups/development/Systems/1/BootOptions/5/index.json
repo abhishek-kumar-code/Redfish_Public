@@ -1,17 +1,19 @@
 {
-  "@Redfish.Copyright": "Copyright 2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-  "@odata.context": "/redfish/v1/$metadata#Systems/Members/1/BootOptions/Members/$entity",
-  "@odata.id": "/redfish/v1/Systems/1/BootOptions/5",
-  "@odata.type": "#BootOption.v1_0_0.BootOption",
-  "Name": "Boot Option",
-  "Id": "5",
-  "Description": "UEFI Boot Option",  
-  "BootId": "Boot0004",
-  "BootDescription": "NIC 1 PXE Boot - IPv6",
-  "UefiDevicePath": "PciRoot(0x0)/Pci(0x1C,0x4)/Pci(0x0,0x0)/MAC(0002B3AFE1D8,0x0)/IPv6(0000:0000:0000:0000:0000:0000:0000:0000)",
-  "Alias": "Pxe",
-  "RelatedItem": [
-    { "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/9fd725a1/NetworkPorts/1" }
-  ],
-  "Oem": { }
+    "@Redfish.Copyright": "Copyright 2017 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#Systems/Members/1/BootOptions/Members/$entity",
+    "@odata.id": "/redfish/v1/Systems/1/BootOptions/5",
+    "@odata.type": "#BootOption.v1_0_0.BootOption",
+    "Id": "5",
+    "Name": "Boot Option",
+    "Description": "UEFI Boot Option",  
+    "BootId": "Boot0004",
+    "BootDescription": "NIC 1 PXE Boot - IPv6",
+    "UefiDevicePath": "PciRoot(0x0)/Pci(0x1C,0x4)/Pci(0x0,0x0)/MAC(0002B3AFE1D8,0x0)/IPv6(0000:0000:0000:0000:0000:0000:0000:0000)",
+    "Alias": "Pxe",
+    "RelatedItem": [
+        {
+            "@odata.id": "/redfish/v1/Chassis/1/NetworkAdapters/9fd725a1/NetworkPorts/1"
+        }
+    ],
+    "Oem": { }
 }
