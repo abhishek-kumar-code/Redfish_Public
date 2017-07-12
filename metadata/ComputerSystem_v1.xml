@@ -79,6 +79,7 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/BootOptionCollection_v1.xml">
     <edmx:Include Namespace="BootOptionCollection"/>
   </edmx:Reference>
+
   <edmx:DataServices>
 
     <!-- This schema defines a computer system and its respective properties.-->
@@ -113,6 +114,12 @@
         </Parameter>
         <Annotation Term="OData.Description" String="This action is used to reset the system."/>
         <Annotation Term="OData.LongDescription" String="This action shall perform a reset of the ComputerSystem.  For systems which implement APCI Power Button functionality, the PushPowerButton value shall perform or emulate an ACPI Power Button push.  The ForceOff value shall remove power from the system or perform an ACPI Power Button Override (commonly known as a 4-second hold of the Power Button).  The ForceRestart value shall perform a ForceOff action followed by a On action."/>
+      </Action>
+
+      <Action Name="SetDefaultBootOrder" IsBound="true">
+        <Parameter Name="ComputerSystem" Type="ComputerSystem.v1_0_0.Actions"/>
+        <Annotation Term="OData.Description" String="This action is used to set the UEFI Boot Order to the default settings."/>
+        <Annotation Term="OData.LongDescription" String="This action shall perform a set the UEFI BootOrder to the default values."/>
       </Action>
 
     </Schema>
@@ -732,7 +739,7 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_5_0">
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_4_0.ComputerSystem"/>
 
-      <ComplexType Name="Boot" BaseType="ComputerSystem.v1_0_0.Boot">
+      <ComplexType Name="Boot" BaseType="ComputerSystem.v1_1_0.Boot">
         <NavigationProperty Name="BootOptions" Type="BootOptionCollection.BootOptionCollection" ContainsTarget="true" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="A reference to the collection of the UEFI Boot Options associated with this Computer System."/>
@@ -743,7 +750,6 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
           <Annotation Term="OData.Description" String="This property is the BootId of the Boot Option to perform a one time boot from when BootSourceOverrideTarget is UefiBootNext."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the BootId of the UEFI Boot Option for one time boot, as defined by the UEFI Specification. The valid values for this property are specified in the values of the BootOrder array. BootSourceOverrideEnabled = Continuous is not supported for UEFI BootNext as this setting is defined in UEFI as a one time boot only."/>
-
         </Property>
         <Property Name="BootOrder" Type="Collection(Edm.String)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
@@ -751,13 +757,6 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be an ordered array of BootId strings representing the persistent UEFI Boot Order of this computer system, as defined by the UEFI Specification."/>
         </Property>
       </ComplexType>
-
-      <Action Name="SetDefaultBootOrder" IsBound="true">
-        <Parameter Name="ComputerSystem" Type="ComputerSystem.v1_0_0.Actions"/>
-        <Annotation Term="OData.Description" String="This action is used to set the UEFI Boot Order to the default settings."/>
-        <Annotation Term="OData.LongDescription" String="This action shall perform a set the UEFI BootOrder to the default values."/>
-      </Action>
-
     </Schema>
 
   </edmx:DataServices>
