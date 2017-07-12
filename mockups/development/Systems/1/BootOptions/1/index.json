@@ -1,6 +1,6 @@
 {
     "@Redfish.Copyright": "Copyright 2017 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#Systems/Members/1/BootOptions/Members/$entity",
+    "@odata.context": "/redfish/v1/$metadata#BootOption.BootOption",
     "@odata.id": "/redfish/v1/Systems/1/BootOptions/1",
     "@odata.type": "#BootOption.v1_0_0.BootOption",
     "Id": "1",
