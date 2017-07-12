@@ -1,14 +1,14 @@
 {
-  "@Redfish.Copyright": "Copyright 2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-  "@odata.context": "/redfish/v1/$metadata#Systems/Members/1/BootOptions/Members/$entity",
-  "@odata.id": "/redfish/v1/Systems/1/BootOptions/2",
-  "@odata.type": "#BootOption.v1_0_0.BootOption",
-  "Name": "Boot Option",
-  "Id": "2",
-  "Description": "UEFI Boot Option",  
-  "BootId": "Boot0001",
-  "BootDescription": "Generic USB Boot",
-  "UefiDevicePath": "UsbClass(0xFFFF,0xFFFF,0xFF,0xFF,0xFF)",
-  "Alias": "Usb",
-  "Oem": { }
+    "@Redfish.Copyright": "Copyright 2017 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#Systems/Members/1/BootOptions/Members/$entity",
+    "@odata.id": "/redfish/v1/Systems/1/BootOptions/2",
+    "@odata.type": "#BootOption.v1_0_0.BootOption",
+    "Id": "2",
+    "Name": "Boot Option",
+    "Description": "UEFI Boot Option",  
+    "BootId": "Boot0001",
+    "BootDescription": "Generic USB Boot",
+    "UefiDevicePath": "UsbClass(0xFFFF,0xFFFF,0xFF,0xFF,0xFF)",
+    "Alias": "Usb",
+    "Oem": {}
 }
