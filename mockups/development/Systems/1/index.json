@@ -41,18 +41,18 @@
             "UefiHttp",
             "UefiBootNext"
         ],
-      "UefiTargetBootSourceOverride": "",
-      "BootOptions": {
-        "@odata.id": "/redfish/v1/Systems/1/BootOptions"
-      },
-      "BootNext": "Boot0003",
-      "BootOrder": [
-        "Boot0001",
-        "Boot0000",
-        "Boot0002",
-        "Boot0004",
-        "Boot0003"
-      ]
+        "UefiTargetBootSourceOverride": "",
+        "BootOptions": {
+            "@odata.id": "/redfish/v1/Systems/1/BootOptions"
+        },
+        "BootNext": "Boot0003",
+        "BootOrder": [
+            "Boot0001",
+            "Boot0000",
+            "Boot0002",
+            "Boot0004",
+            "Boot0003"
+        ]
     },
     "BiosVersion": "P79 v1.00 (09/20/2013)",
     "ProcessorSummary": {
