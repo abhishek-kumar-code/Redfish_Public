@@ -1,8 +1,5 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.",
-    "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
     "@odata.type": "#ComputerSystem.v1_4_0.ComputerSystem",
-    "@odata.id": "/redfish/v1/Systems/ComposedSystem",
     "Id": "ComposedSystem",
     "Name": "Sample Composed System",
     "SystemType": "Composed",
@@ -11,6 +8,7 @@
     "HostName": "composed-system",
     "PowerState": "On",
     "Boot": {
+        "@odata.type": "#ComputerSystem.v1_1_0.Boot",
         "BootSourceOverrideEnabled": "Once",
         "BootSourceOverrideTarget": "Pxe",
         "BootSourceOverrideTarget@Redfish.AllowableValues": [
@@ -33,6 +31,7 @@
         "@odata.id" : "/redfish/v1/Systems/ComposedSystem/Storage"
     },
     "Links": {
+        "@odata.type": "#ComputerSystem.v1_4_0.Links",
         "ResourceBlocks": [
             {
                 "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock1"
@@ -44,5 +43,8 @@
                 "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock4"
             }
         ]
-    }
+    },
+    "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
+    "@odata.id": "/redfish/v1/Systems/ComposedSystem",
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

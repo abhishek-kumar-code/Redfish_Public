@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#Chassis.v1_2_0.Chassis",
+    "@odata.type": "#Chassis.v1_5_0.Chassis",
     "Id": "MultiBladeEnclosure",
     "Name": "Multi-Blade Enclosure",
     "Description": "Enclosure with 8 Blades and 2 Managers",
@@ -12,6 +12,7 @@
     "AssetTag": "Writable",
     "PowerState": "On",
     "Status": {
+        "@odata.type": "#Resource.Status",
         "Health": "OK",
         "State": "Enabled"
     },
@@ -25,7 +26,9 @@
         "@odata.id": "/redfish/v1/Chassis/Enclosure/Thermal"
     },
     "Links": {
-        "Contains": [{
+        "@odata.type": "#Chassis.v1_5_0.Links",
+        "Contains": [
+            {
                 "@odata.id": "/redfish/v1/Chassis/Blade1"
             },
             {
@@ -50,7 +53,8 @@
                 "@odata.id": "/redfish/v1/Chassis/Blade8"
             }
         ],
-        "ComputerSystems": [{
+        "ComputerSystems": [
+            {
                 "@odata.id": "/redfish/v1/Systems/ComposedPartition1"
             },
             {
@@ -60,7 +64,8 @@
                 "@odata.id": "/redfish/v1/Systems/ComposedPartition3"
             }
         ],
-        "ManagedBy": [{
+        "ManagedBy": [
+            {
                 "@odata.id": "/redfish/v1/Managers/EncMgr1"
             },
             {
@@ -72,12 +77,14 @@
         "Contoso": {
             "@odata.type": "#Contoso.Chassis",
             "NodeControllers@odata.count": 2,
-            "NodeControllers": [{
+            "NodeControllers": [
+                {
                     "Name": "NodeController 0",
                     "Vendor": "Contoso",
                     "PartNumber": "AH341-60401",
                     "SerialNumber": "MYJ2190789",
                     "Status": {
+                        "@odata.type": "#Resource.Status",
                         "Health": "OK",
                         "State": "Enabled"
                     }
@@ -88,6 +95,7 @@
                     "PartNumber": "AH341-60401",
                     "SerialNumber": "MYJ219079Y",
                     "Status": {
+                        "@odata.type": "#Resource.Status",
                         "Health": "OK",
                         "State": "Enabled"
                     }
@@ -96,5 +104,6 @@
         }
     },
     "@odata.context": "/redfish/v1/$metadata#Chassis.Chassis",
-    "@odata.id": "/redfish/v1/Chassis/Enclosure"
+    "@odata.id": "/redfish/v1/Chassis/Enclosure",
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#Chassis.v1_2_0.Chassis",
+    "@odata.type": "#Chassis.v1_5_0.Chassis",
     "Id": "Blade2",
     "Name": "Blade 2",
     "ChassisType": "Blade",
@@ -10,6 +10,7 @@
     "IndicatorLED": "Off",
     "PowerState": "On",
     "Status": {
+        "@odata.type": "#Resource.Status",
         "Health": "OK",
         "State": "Enabled"
     },
@@ -20,34 +21,46 @@
         "@odata.id": "/redfish/v1/Chassis/Blade2/Thermal"
     },
     "Links": {
+        "@odata.type": "#Chassis.v1_5_0.Links",
         "ContainedBy": {
             "@odata.id": "/redfish/v1/Chassis/Enclosure"
         },
-        "ComputerSystems": [{
-            "@odata.id": "/redfish/v1/Systems/ComposedPartition2"
-        }],
-        "CooledBy": [{
+        "ComputerSystems": [
+            {
+                "@odata.id": "/redfish/v1/Systems/ComposedPartition2"
+            }
+        ],
+        "CooledBy": [
+            {
                 "@odata.id": "/redfish/v1/Chassis/Enclosure/Thermal#/Fans/0"
             },
             {
                 "@odata.id": "/redfish/v1/Chassis/Enclosure/Thermal#/Fans/1"
             }
         ],
-        "ManagedBy": [{
+        "ManagedBy": [
+            {
                 "@odata.id": "/redfish/v1/Managers/EncMgr1"
             },
             {
                 "@odata.id": "/redfish/v1/Managers/EncMgr2"
             }
         ],
-        "PoweredBy": [{
+        "PoweredBy": [
+            {
                 "@odata.id": "/redfish/v1/Chassis/Enclosure/Power#/PowerSupplies/0"
             },
             {
                 "@odata.id": "/redfish/v1/Chassis/Enclosure/Power#/PowerSupplies/1"
             }
+        ],
+        "ResourceBlocks": [
+            {
+                "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock2"
+            }
         ]
     },
     "@odata.context": "/redfish/v1/$metadata#Chassis.Chassis",
-    "@odata.id": "/redfish/v1/Chassis/Blade2"
+    "@odata.id": "/redfish/v1/Chassis/Blade2",
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

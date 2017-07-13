@@ -1,13 +1,15 @@
 {
-    "@odata.type": "#Thermal.v1_1_0.Thermal",
+    "@odata.type": "#Thermal.v1_3_0.Thermal",
     "Id": "Thermal",
     "Name": "Blade Thermal",
     "Temperatures": [
         {
             "@odata.id": "/redfish/v1/Chassis/Blade2/Thermal#/Temperatures/0",
+            "@odata.type": "#Thermal.v1_3_0.Temperature",
             "MemberId": "0",
             "Name": "CPU Temp",
             "Status": {
+                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             },
@@ -28,10 +30,12 @@
     "Fans": [
         {
             "@odata.id": "/redfish/v1/Chassis/Blade2/Thermal#/Fans/0",
+            "@odata.type": "#Thermal.v1_3_0.Fan",
             "MemberId": "0",
             "Name": "CPU Fan",
             "PhysicalContext": "CPU",
             "Status": {
+                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             },
@@ -49,5 +53,5 @@
     ],
     "@odata.context": "/redfish/v1/$metadata#Thermal.Thermal",
     "@odata.id": "/redfish/v1/Chassis/Blade2/Thermal",
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#ComputerSystem.v1_1_0.ComputerSystem",
+    "@odata.type": "#ComputerSystem.v1_4_0.ComputerSystem",
     "Id": "529QB9451R6",
     "Name": "Bladed System",
     "SystemType": "Physical",
@@ -9,6 +9,7 @@
     "SerialNumber": "529QB9451R6",
     "PartNumber": "166480-S23",
     "Status": {
+        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK",
         "HealthRollup": "OK"
@@ -16,6 +17,7 @@
     "IndicatorLED": "Off",
     "PowerState": "On",
     "Boot": {
+        "@odata.type": "#ComputerSystem.v1_1_0.Boot",
         "BootSourceOverrideEnabled": "Disabled",
         "BootSourceOverrideTarget": "None",
         "BootSourceOverrideTarget@Redfish.AllowableValues": [
@@ -30,17 +32,21 @@
     },
     "BiosVersion": "P86 v1.58 (10/15/2015)",
     "ProcessorSummary": {
+        "@odata.type": "#ComputerSystem.v1_0_0.ProcessorSummary",
         "Count": 1,
         "Model": "Multi-Core Intel(R) Xeon(R) processor E5-16xx Series",
         "Status": {
+            "@odata.type": "#Resource.Status",
             "State": "Enabled",
             "Health": "OK",
             "HealthRollup": "OK"
         }
     },
     "MemorySummary": {
+        "@odata.type": "#ComputerSystem.v1_4_0.MemorySummary",
         "TotalSystemMemoryGiB": 64,
         "Status": {
+            "@odata.type": "#Resource.Status",
             "State": "Enabled",
             "Health": "OK",
             "HealthRollup": "OK"
@@ -53,6 +59,7 @@
         "@odata.id": "/redfish/v1/Systems/529QB9451R6/SimpleStorage"
     },
     "Links": {
+        "@odata.type": "#ComputerSystem.v1_4_0.Links",
         "Chassis": [
             {
                 "@odata.id": "/redfish/v1/Chassis/Blade2"
@@ -65,6 +72,7 @@
         ]
     },
     "Actions": {
+        "@odata.type": "#ComputerSystem.v1_0_0.Actions",
         "#ComputerSystem.Reset": {
             "target": "/redfish/v1/Systems/529QB9451R6/Actions/ComputerSystem.Reset",
             "ResetType@Redfish.AllowableValues": [
@@ -81,5 +89,5 @@
     },
     "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
     "@odata.id": "/redfish/v1/Systems/529QB9451R6",
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }
