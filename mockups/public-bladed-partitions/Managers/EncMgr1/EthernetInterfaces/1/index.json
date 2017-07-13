@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#EthernetInterface.v1_0_2.EthernetInterface",
+    "@odata.type": "#EthernetInterface.v1_3_0.EthernetInterface",
     "Id": "1",
     "Name": "EncMgr1.network.1",
     "Status": {
