@@ -15,19 +15,17 @@
     "WidthMm": 431.8,
     "DepthMm": 711,
     "WeightKg": 15.31,
-    "Location" : {
+    "Location": {
         "@odata.type": "#Resource.v1_3_0.Location",
         "PostalAddress": {
             "@odata.type": "#Resource.v1_3_0.PostalAddress",
             "Country": "US",
-            "Territory": "TX",
-            "District": "Harris",
-            "City": "Houston",
-            "Street": "TX-249",
-            "HouseNumber": 19550,
-            "Floor": "1",
-            "Name": "Excellent dining establishment",
-            "PostalCode": "77070-3002"
+            "Territory": "OR",
+            "City": "Portland",
+            "Street": "1001 SW 5th Avenue",
+            "HouseNumber": 1100,
+            "Name": "Distributed Management Task Force, Inc.",
+            "PostalCode": "97204"
         },
         "Placement": {
             "@odata.type": "#Resource.v1_3_0.Placement",

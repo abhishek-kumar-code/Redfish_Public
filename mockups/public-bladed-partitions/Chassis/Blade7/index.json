@@ -15,6 +15,7 @@
         "State": "Enabled"
     },
     "Location": {
+        "@odata.type": "#Resource.v1_3_0.Location",
         "Info": "DCTexas-Row10-Rack1-20U-Bay7"
     },
     "Thermal": {
