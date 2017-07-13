@@ -17,8 +17,8 @@
             "UpperThresholdNonCritical": 35,
             "UpperThresholdCritical": 42,
             "UpperThresholdFatal": 50,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 60,
+            "MinReadingRangeTemp": 0,
+            "MaxReadingRangeTemp": 60,
             "PhysicalContext": "Intake",
             "RelatedItem": [
                 {

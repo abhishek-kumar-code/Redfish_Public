@@ -17,8 +17,8 @@
             "UpperThresholdNonCritical": 75,
             "UpperThresholdCritical": 90,
             "UpperThresholdFatal": 95,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 120,
+            "MinReadingRangeTemp": 0,
+            "MaxReadingRangeTemp": 120,
             "PhysicalContext": "CPU",
             "RelatedItem": [
                 {

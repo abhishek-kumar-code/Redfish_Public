@@ -18,8 +18,8 @@
             "UpperThresholdNonCritical": 42,
             "UpperThresholdCritical": 45,
             "UpperThresholdFatal": 48,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 60,
+            "MinReadingRangeTemp": 0,
+            "MaxReadingRangeTemp": 60,
             "PhysicalContext": "CPU",
             "RelatedItem": [
                 {
@@ -42,8 +42,8 @@
             "UpperThresholdNonCritical": 42,
             "UpperThresholdCritical": 45,
             "UpperThresholdFatal": 48,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 60,
+            "MinReadingRangeTemp": 0,
+            "MaxReadingRangeTemp": 60,
             "PhysicalContext": "CPU",
             "RelatedItem": [
                 {
@@ -69,8 +69,8 @@
             "LowerThresholdNonCritical": 10,
             "LowerThresholdCritical": 5,
             "LowerThresholdFatal": 0,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 60,
+            "MinReadingRangeTemp": 0,
+            "MaxReadingRangeTemp": 60,
             "PhysicalContext": "Intake",
             "RelatedItem": [
                 {

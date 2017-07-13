@@ -21,8 +21,8 @@
             "LowerThresholdNonCritical": 10,
             "LowerThresholdCritical": 5,
             "LowerThresholdFatal": 0,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 200,
+            "MinReadingRangeTemp": 0,
+            "MaxReadingRangeTemp": 200,
             "PhysicalContext": "Intake",
             "RelatedItem": [
                 {

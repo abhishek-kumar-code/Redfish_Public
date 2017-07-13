@@ -20,8 +20,8 @@
             "LowerThresholdNonCritical": 42,
             "LowerThresholdCritical": 5,
             "LowerThresholdFatal": 42,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 120,
+            "MinReadingRangeTemp": 0,
+            "MaxReadingRangeTemp": 120,
             "PhysicalContext": "ComputeBay",
             "RelatedItem": [
                 {
@@ -47,8 +47,8 @@
             "LowerThresholdNonCritical": 10,
             "LowerThresholdCritical": 5,
             "LowerThresholdFatal": 0,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 200,
+            "MinReadingRangeTemp": 0,
+            "MaxReadingRangeTemp": 200,
             "PhysicalContext": "Intake",
             "RelatedItem": [
                 {
