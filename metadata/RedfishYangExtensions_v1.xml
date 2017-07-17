@@ -26,7 +26,7 @@
       <TypeDefinition Name="uint32" UnderlyingType="Edm.Int64"/>
       <TypeDefinition Name="uint64" UnderlyingType="Edm.Decimal"/>
       <TypeDefinition Name="XmlBlock" UnderlyingType="Edm.String"/>
-  
+
       <Term Name="NodeType" Type="RedfishYangExtensions.v1_0_0.NodeTypes">
         <Annotation Term="OData.Description" String="Yang NodeTypes."/>
       </Term>
@@ -49,6 +49,8 @@
       <Term Name="NodeName" Type="Edm.String">
         <Annotation Term="OData.Description" String="The yang node name for use in choice/case."/>
       </Term>
+
+<!-- Declarations to resolve the value of TYPE attribute in CSDL Property tags -->
 
       <Term Name="YangType" Type="RedfishYangExtensions.v1_0_0.YangTypes">
         <Annotation Term="OData.Description" String="The yang type."/>
@@ -302,6 +304,8 @@
         <Annotation Term="OData.Description" String="Text from the yang statement."/>
       </Term>
 
+<!-- Declarations to resolve the value of TYPE attribute in CSDL Property tags -->
+
       <Term Name="counter32" Type="Edm.String">
         <Annotation Term="OData.Description" String="The yang enum member string."/>
       </Term>
@@ -329,7 +333,7 @@
       <Term Name="phys_address" Type="Edm.String">
         <Annotation Term="OData.Description" String="The yang enum member string."/>
       </Term>
-      <Term Name="interface-state-ref" Type="Edm.String">
+      <Term Name="interface_state_ref" Type="Edm.String">
         <Annotation Term="OData.Description" String="The yang enum member string."/>
       </Term>
       <Term Name="port_number" Type="Edm.String">
