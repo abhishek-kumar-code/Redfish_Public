@@ -295,7 +295,7 @@
         <NavigationProperty Name="NetworkDevices" Type="NetworkDeviceCollection.NetworkDeviceCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is a link to the NetworkDevices."/>
-          <Annotation Term="OData.LongDescription" String="The classes structure shall only contain a reference to a resource that complies to the CompositionService schema."/>
+          <Annotation Term="OData.LongDescription" String="This object shall only contain a reference to a collection of resources that comply to the NetworkDevice schema."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
       </EntityType>

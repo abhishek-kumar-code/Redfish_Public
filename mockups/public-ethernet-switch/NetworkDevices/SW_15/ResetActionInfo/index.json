@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#ActionInfo.v1_0_0.ActionInfo",
+    "@odata.type": "#ActionInfo.v1_0_2.ActionInfo",
     "Id": "ResetActionInfo",
     "Name": "ResetActionInfo",
     "Parameters": [
@@ -7,7 +7,13 @@
             "Name": "ResetType",
             "Required": false,
             "DataType": "String",
-            "AllowableValues": [ "On", "ForceOff", "ForceRestart", "ForceOn", "PowerCycle" ]
+            "AllowableValues": [
+                "On",
+                "ForceOff",
+                "ForceRestart",
+                "ForceOn",
+                "PowerCycle"
+            ]
         }
     ],
     "Oem": {},

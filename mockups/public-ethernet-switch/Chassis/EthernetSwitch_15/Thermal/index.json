@@ -1,13 +1,11 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.id": "/redfish/v1/Chassis/EthernetSwitch_15/Thermal",
-    "@odata.context": "/redfish/v1/$metadata#Thermal.Thermal",
-    "@odata.type": "#Thermal.v1_1_0.Thermal",
+    "@odata.type": "#Thermal.v1_3_0.Thermal",
     "Id": "Thermals",
     "Name": "Thermals",
     "Temperatures": [
         {
             "@odata.id": "/redfish/v1/Chassis/EthernetSwitch_15/Thermal#/Temperatures/0",
+            "@odata.type": "#Thermal.v1_3_0.Temperature",
             "MemberId": "0",
             "Name": "EMM 0 Thermal Sensor",
             "ReadingCelcius": "27",
@@ -16,12 +14,14 @@
             "LowerThresholdNonCritical": "-2",
             "LowerThresholdCritical": "-2",
             "Status": {
+                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             }
         },
         {
             "@odata.id": "/redfish/v1/Chassis/EthernetSwitch_15/Thermal#/Temperatures/1",
+            "@odata.type": "#Thermal.v1_3_0.Temperature",
             "MemberId": "1",
             "Name": "EMM 1 Thermal Sensor",
             "ReadingCelcius": "31",
@@ -30,12 +30,14 @@
             "LowerThresholdNonCritical": "-2",
             "LowerThresholdCritical": "-2",
             "Status": {
+                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             }
         },
         {
             "@odata.id": "/redfish/v1/Chassis/EthernetSwitch_15/Thermal#/Temperatures/2",
+            "@odata.type": "#Thermal.v1_3_0.Temperature",
             "MemberId": "2",
             "Name": "Backplane Thermal Sensor 1",
             "ReadingCelcius": "25",
@@ -44,12 +46,14 @@
             "LowerThresholdNonCritical": "8",
             "LowerThresholdCritical": "3",
             "Status": {
+                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             }
         },
         {
             "@odata.id": "/redfish/v1/Chassis/EthernetSwitch_15/Thermal#/Temperatures/3",
+            "@odata.type": "#Thermal.v1_3_0.Temperature",
             "MemberId": "3",
             "Name": "Backplane Thermal Sensor 2",
             "ReadingCelcius": "24",
@@ -58,9 +62,13 @@
             "LowerThresholdNonCritical": "8",
             "LowerThresholdCritical": "3",
             "Status": {
+                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             }
         }
-    ]
+    ],
+    "@odata.context": "/redfish/v1/$metadata#Thermal.Thermal",
+    "@odata.id": "/redfish/v1/Chassis/EthernetSwitch_15/Thermal",
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

@@ -1,9 +1,5 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#Manager.Manager",
-    "@odata.type": "#Manager.v1_0_1.Manager",
-    "@odata.id": "/redfish/v1/Managers/EthernetSwitchManager",
-
+    "@odata.type": "#Manager.v1_3_1.Manager",
     "Id": "EthernetSwitchManager",
     "Name": "Ethernet Switch Manager",
     "ManagerType": "ManagementController",
@@ -15,13 +11,13 @@
     "DateTimeLocalOffset": "+06:00",
     "FirmwareVersion": "v1.234.44",
     "Status": {
+        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK",
-		"HealthRollup": "Warning"
+        "HealthRollup": "Warning"
     },
-
-
     "CommandShell": {
+        "@odata.type": "#Manager.v1_0_0.CommandShell",
         "ServiceEnabled": true,
         "MaxConcurrentSessions": 4,
         "ConnectTypesSupported": [
@@ -35,13 +31,16 @@
     "EthernetInterfaces": {
         "@odata.id": "/redfish/v1/Managers/EthernetSwitchManager/EthernetInterfaces"
     },
-
     "Links": {
+        "@odata.type": "#Manager.v1_1_0.Links",
         "ManagerForChassis": [
             {
                 "@odata.id": "/redfish/v1/Chassis/EthernetSwitch_15"
             }
         ],
         "Oem": {}
-    }
+    },
+    "@odata.context": "/redfish/v1/$metadata#Manager.Manager",
+    "@odata.id": "/redfish/v1/Managers/EthernetSwitchManager",
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }
