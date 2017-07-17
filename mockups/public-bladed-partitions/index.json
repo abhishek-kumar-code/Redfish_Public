@@ -16,6 +16,9 @@
     "Managers": {
         "@odata.id": "/redfish/v1/Managers"
     },
+    "CompositionService": {
+        "@odata.id": "/redfish/v1/CompositionService"
+    },
     "Tasks": {
         "@odata.id": "/redfish/v1/TaskService"
     },
