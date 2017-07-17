@@ -96,6 +96,11 @@
       <EntityType Name="SessionService" BaseType="SessionService.v1_0_2.SessionService"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SessionService.v1_0_4">
+      <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated.  In this case, ServiceEnabled descrtiption was updated."/>
+      <EntityType Name="SessionService" BaseType="SessionService.v1_0_3.SessionService"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SessionService.v1_1_0">
       <EntityType Name="SessionService" BaseType="SessionService.v1_0_2.SessionService">
         <Property Name="Actions" Type="SessionService.v1_1_0.Actions" Nullable="false">
@@ -127,10 +132,10 @@
       <EntityType Name="SessionService" BaseType="SessionService.v1_1_1.SessionService"/>
     </Schema>
 
-   <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SessionService.v1_1_3">
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="SessionService.v1_1_3">
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated.  In this case, ServiceEnabled descrtiption was updated."/>
       <EntityType Name="SessionService" BaseType="SessionService.v1_1_2.SessionService"/>
     </Schema>
-    
+
   </edmx:DataServices>
 </edmx:Edmx>
