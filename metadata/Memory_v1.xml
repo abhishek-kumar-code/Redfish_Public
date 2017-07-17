@@ -186,6 +186,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the version of API supported by the firmware."/>
         </Property>
         <Property Name="FunctionClasses" Type="Collection(Edm.String)" Nullable="false">
+          <Annotation Term="Redfish.Deprecated" String="This property has been Deprecated in favor of Memory.v1_0_0.Memory.OperatingMemoryModes or Memory.v1_0_0.Memory.RegionSet.MemoryClassification."/>
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="Function Classes by the Memory."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the function classes by the Memory."/>
