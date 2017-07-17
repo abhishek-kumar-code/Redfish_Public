@@ -142,6 +142,11 @@
       <EntityType Name="AccountService" BaseType="AccountService.v1_0_3.AccountService"/>
     </Schema>
 
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AccountService.v1_0_5">
+      <Annotation Term="OData.Description" String="This version was created to fix supported types.  In this case, fixed description and long description for ServiceEnabled."/>
+      <EntityType Name="AccountService" BaseType="AccountService.v1_0_4.AccountService"/>
+    </Schema>
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AccountService.v1_1_0">
       <EntityType Name="AccountService" BaseType="AccountService.v1_0_3.AccountService">
         <NavigationProperty Name="PrivilegeMap" Type="PrivilegeRegistry.PrivilegeRegistry" Nullable="false">
@@ -156,6 +161,11 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AccountService.v1_1_1">
       <Annotation Term="OData.Description" String="This version was created to fix supported types."/>
       <EntityType Name="AccountService" BaseType="AccountService.v1_1_0.AccountService"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AccountService.v1_1_2">
+      <Annotation Term="OData.Description" String="This version was created to fix supported types.  In this case, fixed description and long description for ServiceEnabled."/>
+      <EntityType Name="AccountService" BaseType="AccountService.v1_1_1.AccountService"/>
     </Schema>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AccountService.v1_2_0">
@@ -179,10 +189,11 @@
         <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
       </ComplexType>
     </Schema>
-    
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AccountService.v1_2_1">
       <Annotation Term="OData.Description" String="This version was created to fix supported types.  In this case, fixed description and long description for ServiceEnabled."/>
       <EntityType Name="AccountService" BaseType="AccountService.v1_2_0.AccountService"/>
     </Schema>
+
   </edmx:DataServices>
 </edmx:Edmx>
