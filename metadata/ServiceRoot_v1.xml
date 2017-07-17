@@ -70,8 +70,8 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/CompositionService_v1.xml">
     <edmx:Include Namespace="CompositionService"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/NetworkDevices_v1.xml">
-    <edmx:Include Namespace="NetworkDevices"/>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/NetworkDeviceCollection_v1.xml">
+    <edmx:Include Namespace="NetworkDeviceCollection"/>
   </edmx:Reference>
 
   <edmx:DataServices>
