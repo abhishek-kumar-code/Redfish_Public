@@ -1,8 +1,5 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#LogService.LogService",
-    "@odata.id": "/redfish/v1/NetworkDevices/SW_15/LogServices/Log1",
-    "@odata.type": "#LogService.v1_0_0.LogService",
+    "@odata.type": "#LogService.v1_0_4.LogService",
     "Id": "Log1",
     "Name": "System Log Service",
     "MaxNumberOfRecords": 1000,
@@ -11,11 +8,13 @@
     "DateTimeLocalOffset": "+06:00",
     "ServiceEnabled": true,
     "Status": {
+        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK"
     },
     "Oem": {},
     "Actions": {
+        "@odata.type": "#LogService.v1_0_0.Actions",
         "#LogService.ClearLog": {
             "target": "/redfish/v1/NetworkDevices/SW_15/LogServices/Log1/Actions/LogService.Reset"
         },
@@ -23,5 +22,8 @@
     },
     "Entries": {
         "@odata.id": "/redfish/v1/NetworkDevices/SW_15/LogServices/Log1/Entries"
-    }
+    },
+    "@odata.context": "/redfish/v1/$metadata#LogService.LogService",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_15/LogServices/Log1",
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

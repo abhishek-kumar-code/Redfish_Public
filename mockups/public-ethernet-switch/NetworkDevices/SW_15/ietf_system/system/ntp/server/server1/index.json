@@ -1,8 +1,5 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#ietf_system.system.ntp.server.server",
     "@odata.type": "#ietf_system.system.ntp.server.v1_0_0.server",
-    "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_system/system/ntp/server/server1",
     "Id": "ntp",
     "Name": "ntp server",
     "name": "ntp server",
@@ -11,5 +8,8 @@
     },
     "association_type": "server",
     "iburst": true,
-    "prefer": true
+    "prefer": true,
+    "@odata.context": "/redfish/v1/$metadata#ietf_system.system.ntp.server.server",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_system/system/ntp/server/server1",
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }
