@@ -1,0 +1,13 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#ietf_system.system.ntp.serverCollection.serverCollection",
+    "@odata.type": "#serverCollection.serverCollection",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_system/system/ntp/server",
+    "Name": "Server Collection",
+    "Members@odata.count": 1,
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_system/system/ntp/server/server1"
+        }
+    ]
+}

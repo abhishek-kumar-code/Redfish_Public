@@ -1,0 +1,10 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.context": "/redfish/v1/$metadata#ietf_system.system.dns_resolver.options.options",
+    "@odata.type": "#ietf_system.system.dns_resolver.options.v1_0_0.options",
+    "@odata.id": "/redfish/v1/NetworkDevices/SW_15/ietf_system/system/dns_resolver/options",
+    "Id": "options",
+    "Name": "system dns_resolver options",
+    "timeout": 4,
+    "attempts": 3
+}

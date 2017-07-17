@@ -70,6 +70,9 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/CompositionService_v1.xml">
     <edmx:Include Namespace="CompositionService"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/NetworkDevices_v1.xml">
+    <edmx:Include Namespace="NetworkDevices"/>
+  </edmx:Reference>
 
   <edmx:DataServices>
 
@@ -275,6 +278,23 @@
         <NavigationProperty Name="CompositionService" Type="CompositionService.CompositionService" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is a link to the CompositionService."/>
+          <Annotation Term="OData.LongDescription" String="The classes structure shall only contain a reference to a resource that complies to the CompositionService schema."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+      </EntityType>
+
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ServiceRoot.v1_3_0">
+
+      <EntityContainer Name="ServiceContainer" Extends="ServiceRoot.v1_2_0.ServiceContainer">
+        <Singleton Name="NetworkDevices" Type="NetworkDeviceCollection.NetworkDeviceCollection"/>
+      </EntityContainer>
+
+      <EntityType Name="ServiceRoot" BaseType="ServiceRoot.v1_3_0.ServiceRoot">
+        <NavigationProperty Name="NetworkDevices" Type="NetworkDeviceCollection.NetworkDeviceCollection" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This is a link to the NetworkDevices."/>
           <Annotation Term="OData.LongDescription" String="The classes structure shall only contain a reference to a resource that complies to the CompositionService schema."/>
           <Annotation Term="OData.AutoExpandReferences"/>
         </NavigationProperty>
