@@ -62,8 +62,8 @@
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="BootId" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="TBD."/>
-          <Annotation Term="OData.LongDescription" String="The value of this propery shall be ."/>
+          <Annotation Term="OData.Description" String="The boot option ID that is referenced in the BootOrder."/>
+          <Annotation Term="OData.LongDescription" String="The value of this propery shall contain a string that corresponds to the UEFI Boot Option variable name (e.g. Boot####). This ID is referenced in the ComputerSystem BootOrder array."/>
         </Property>
         <Property Name="BootDescription" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
