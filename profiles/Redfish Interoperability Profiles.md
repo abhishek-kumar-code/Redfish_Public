@@ -29,7 +29,7 @@ Profile requirements do not allow for exclusions of data.  Implementations are a
    
 ## Profile Definition
 
-A Redfish Interoperability Profile is specified in a JSON document.  The JSON objects and properties contained in the document are described in this specification, and are also available in a json-schema form (RedfishProfile.v1_x_x.json) from the DMTF's Redfish Schema repository at http://redfish.dmtf.org/schemas for download.  The json-schema can be used to validate a Profile document to ensure compatibility with automated conformance tools or utilities.
+A Redfish Interoperability Profile is specified in a JSON document.  The JSON objects and properties contained in the document are described in this specification, and are also available in a json-schema form (RedfishInteroperabilityProfile.v1_x_x.json) from the DMTF's Redfish Schema repository at http://redfish.dmtf.org/profiles for download.  The json-schema can be used to validate a Profile document to ensure compatibility with automated conformance tools or utilities.
 
 ### Basic functions
 
@@ -37,9 +37,10 @@ At the top level of the JSON document are the basic properties which describe th
 
 | property | type | description | 
 | --- | --- | --- |
+| SchemaDefinition | string | The JSON schema which defines this Redfish Interoperability Profile document and can be used to validate its contents. |
 | ProfileName | string | The name of this Redfish Profile. |
 | Author | string | The author(s) of this Redfish Profile. |
-| Version | string | The version of this Redfish Profile. |
+| ProfileVersion | string | The version of this Redfish Profile. |
 | Purpose | string | A description of the purpose of this Redfish Profile, such as its intended target audience, product segments, etc.|
 | ContactInfo | string | An email address that can be used to provide feedback about this Redfish Profile. |
 | RequiredProfiles | object | A set of Redfish Profiles which serve as a basis for this Profile.  The requirements set forth in these Profiles are included in this Profile. |
