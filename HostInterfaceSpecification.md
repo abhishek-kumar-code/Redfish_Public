@@ -226,21 +226,25 @@ The following table defines the general Protocol Record layout specific data for
 ### Table-5:  "Redfish Over IP" Protocol-specific Record Data
 The following table defines the protocol-specific data for the "Redfish Over IP" protocol:
 
-| Offset  | Name     | Length   | Value    | Description     |
-| ---     | ---      | ---      | ---      | ---             |
-| X+0     | Service UUID     | 16BYTEs     | Varies       | same as Redfish Service UUID in Redfish Service Root resource    |
-| X+16     | Host IP Assignment Type     | BYTE     | Enum       | Unknown=00h, <br/>    Static=01h, <br/>  DHCP=02h, <br/>    AutoConfigure=03h, <br/>  HostSelected=04h, <br/> other values reserved     |
-| X+17     | Host IP Address Format     | BYTE     | Enum       | Unknown=00h,   <br/> Ipv4=01h,    <br/> Ipv6=02h, <br/> other values reserved      |
-| X+18     | Host IP Address     |  16BYTE     | Varies       | Used for Static and AutoConfigure.  <br/> For IPV4, use the first 4 Bytes and zero fill the remaining bytes.      |
-| X+34     | Host IP Mask     | 16BYTE     | Varies       | Used for Static and AutoConfigure.  <br/> For IPV4, use the first 4 Bytes and zero fill the remaining bytes.      |
-| X+50     | Redfish Service IP Discovery Type     | BYTE     | Enum       | Unknown=00h,    <br/> Static=01h,   <br/> DHCP=02h,     <br/> AutoConfigure=03h,   <br/> HostSelected=04h, <br/> other values reserved      |
-| X+51     | Redfish Service IP Address Format     | BYTE     | Enum       | Unknown=00h,   <br/> Ipv4=01h,    <br/> Ipv6=02h, <br/> other values reserved      |
-| X+52     | Redfish Service IP Address     | 16BYTE     | Varies       | Used for Static and AutoConfigure.  <br/> For IPV4, use the first 4 Bytes and zero fill the remaining bytes.      |
-| X+68     | Redfish Service IP Mask     | 16BYTE    | Varies       | Used for Static and AutoConfigure.  <br/> For IPV4, use the first 4 Bytes and zero fill the remaining bytes.      |
-| X+84     | Redfish Service IP Port     | WORD     | Varies       | Used for Static and AutoConfigure.      |
-| X+86     | Redfish Service VLAN ID     | DWORD     | Varies       | Used for Static and AutoConfigure.      |
-| X+90     | Redfish Service Hostname Length     | BYTE     | Varies       | length of the following hostname string      |
-| X+91     | Redfish Service Hostname     | varies     | Varies       | hostname of Redfish Service      |
+| Offset | Name                              | Length  | Value  | Description                                                                                                                 |
+| ---    | ---                               | ---     | ---    | ---                                                                                                                         |
+| X+0    | Service UUID                      | 16BYTEs | Varies | The same as Redfish Service UUID in Redfish Service Root resource                                                           |
+| X+16   | Host IP Assignment Type           | BYTE    | Enum   | Unknown=00h, <br/> Static=01h, <br/> DHCP=02h, <br/> AutoConfigure=03h, <br/> HostSelected=04h, <br/> other values reserved |
+| X+17   | Host IP Address Format            | BYTE    | Enum   | Unknown=00h, <br/> IPv4=01h, <br/> IPv6=02h, <br/> other values reserved                                                    |
+| X+18   | Host IP Address                   | 16BYTEs | Varies | Used for Static and AutoConfigure. <br/> For IPv4, use the first 4 Bytes and zero fill the remaining bytes.                 |
+| X+34   | Host IP Mask                      | 16BYTEs | Varies | Used for Static and AutoConfigure. <br/> For IPv4, use the first 4 Bytes and zero fill the remaining bytes.                 |
+| X+50   | Redfish Service IP Discovery Type | BYTE    | Enum   | Unknown=00h, <br/> Static=01h, <br/> DHCP=02h, <br/> AutoConfigure=03h, <br/> HostSelected=04h, <br/> other values reserved |
+| X+51   | Redfish Service IP Address Format | BYTE    | Enum   | Unknown=00h, <br/> IPv4=01h, <br/> IPv6=02h, <br/> other values reserved                                                    |
+| X+52   | Redfish Service IP Address        | 16BYTEs | Varies | Used for Static and AutoConfigure. <br/> For IPv4, use the first 4 Bytes and zero fill the remaining bytes.                 |
+| X+68   | Redfish Service IP Mask           | 16BYTEs | Varies | Used for Static and AutoConfigure. <br/> For IPv4, use the first 4 Bytes and zero fill the remaining bytes.                 |
+| X+84   | Redfish Service IP Port           | WORD    | Varies | Used for Static and AutoConfigure.                                                                                          |
+| X+86   | Redfish Service VLAN ID           | DWORD   | Varies | Used for Static and AutoConfigure.                                                                                          |
+| X+90   | Redfish Service Hostname Length   | BYTE    | Varies | The length of the following hostname string                                                                                 |
+| X+91   | Redfish Service Hostname          | varies  | Varies | The hostname of Redfish Service                                                                                             |
+
+In the above table, the fields "Host IP Address", "Host IP Mask", "Redfish Service IP Address", and "Redfish Service IP Mask" shall be stored in network byte order.
+* IPv4 Example: 10.12.110.57 will be stored, from lowest offset first, as `0x0A 0x0C 0x6E 0x39 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00`
+* IPv6 Example: 2001:db8:63b3:1::3490 will be stored, from lowest offset first, as `0x20 0x01 0x0D 0xB8 0x63 0xB3 0x00 0x01 0x00 0x00 0x00 0x00 0x00 0x00 0x34 0x90`
 
 
 ## Delivery of Kernel Authentication Information via UEFI Runtime Variables
