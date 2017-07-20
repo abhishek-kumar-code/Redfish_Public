@@ -1,7 +1,7 @@
 {
-	"@odata.type": "RedfishInteroperabilityProfile.v1_0_0.RedfishInteroperabilityProfile",
+	"SchemaDefinition": "RedfishInteroperabilityProfile.v1_0_0",
 	"ProfileName": "Anchovy",
-	"Version": "1.0.2",
+	"ProfileVersion": "1.0.2",
 	"Author": "Pizza Box Project",
 	"Purpose": "This is a sample Redfish Interoperability profile.",
 	"ContactInfo": "pizza@contoso.com",
