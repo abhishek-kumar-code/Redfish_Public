@@ -197,9 +197,9 @@
       <Annotation Term="OData.Description" String="This version was created to fix supported types.  In this case, fixed description and long description for ServiceEnabled."/>
       <EntityType Name="AccountService" BaseType="AccountService.v1_2_0.AccountService"/>
     </Schema>
-  
+
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AccountService.v1_3_0">
-      <EntityType Name="AccountService" BaseType="AccountService.v1_2_0.AccountService">
+      <EntityType Name="AccountService" BaseType="AccountService.v1_2_1.AccountService">
         <NavigationProperty Name="ExternalAccountProviders" Type="ExternalAccountProviderCollection.ExternalAccountProviderCollection" Nullable="false">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The external account providers this AccountService is using."/>
