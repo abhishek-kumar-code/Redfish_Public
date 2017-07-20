@@ -14,8 +14,8 @@
         null
     ],
     "Authentication": {
-        "AuthenticationType": "Certificate",
-        "Certificate": null
+        "AuthenticationType": "KerberosKeytab",
+        "KerberosKeytab": null
     },
     "RemoteRoleMapping": [
         {

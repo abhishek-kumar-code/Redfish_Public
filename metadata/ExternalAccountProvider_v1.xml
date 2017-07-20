@@ -130,10 +130,10 @@
           <Annotation Term="OData.Description" String="This property is used with a PATCH or PUT to write the token for the account.  This property is null on a GET."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be the token for this account service.  The value shall be null for GET requests."/>
         </Property>
-        <Property Name="Certificate" Type="Edm.String">
+        <Property Name="KerberosKeytab" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="This property is used with a PATCH or PUT to write a base64 encoded version of the certificate or cryptographic key for the account.  This property is null on a GET."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a base64 encoded version of the certificate for this account service.  The value shall be null for GET requests."/>
+          <Annotation Term="OData.Description" String="This property is used with a PATCH or PUT to write a base64 encoded version of the kerberos keytab for the account.  This property is null on a GET."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a base64 encoded version of the kerberos keytab for this account service.  The value shall be null for GET requests."/>
         </Property>
         <Property Name="Oem" Type="ExternalAccountProvider.v1_0_0.OemAuth" Nullable="false"/>
       </ComplexType>
@@ -142,20 +142,11 @@
         <Member Name="Token">
           <Annotation Term="OData.Description" String="An opaque authentication token."/>
         </Member>
-        <Member Name="Certificate">
-          <Annotation Term="OData.Description" String="A certificate or crytographic key."/>
+        <Member Name="KerberosKeytab">
+          <Annotation Term="OData.Description" String="A kerberos keytab."/>
         </Member>
         <Member Name="UsernameAndPassword">
           <Annotation Term="OData.Description" String="Username and password combination."/>
-        </Member>
-        <Member Name="UsernameAndCertificate">
-          <Annotation Term="OData.Description" String="Username and certificate or cyrptographic key combination."/>
-        </Member>
-        <Member Name="UsernamePasswordAndCertificate">
-          <Annotation Term="OData.Description" String="Username, password, and certificate or cyrptographic key combination."/>
-        </Member>
-        <Member Name="TokenAndCertificate">
-          <Annotation Term="OData.Description" String="An opaque authentication token and certificate or cyrptographic key combination."/>
         </Member>
         <Member Name="Oem">
           <Annotation Term="OData.Description" String="An OEM specific authentication mechanism."/>
@@ -175,10 +166,10 @@
       <ComplexType Name="LDAPSearchSettings">
         <Annotation Term="OData.Description" String="Contains settings for searching a generic LDAP service."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain all the required settings for searching a generic LDAP service."/>
-        <Property Name="BaseDistinguisedName" Type="Edm.String">
+        <Property Name="BaseDistinguisedNames" Type="Collection(Edm.String)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-          <Annotation Term="OData.Description" String="The base distinguished name to use when searching the LDAP service."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be the base distinguished name to use when searching the LDAP service."/>
+          <Annotation Term="OData.Description" String="The base distinguished names to use when searching the LDAP service."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a collection of base distinguished names to use when searching the LDAP service."/>
         </Property>
         <Property Name="UsernameAttribute" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
@@ -215,6 +206,7 @@
           <Annotation Term="OData.Description" String="The name of the local role to map the remote user or group to."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall contain the the local role to map the remote user or group to."/>
         </Property>
+        <Property Name="Oem" Type="ExternalAccountProvider.v1_0_0.OemRoleMapping" Nullable="false"/>
       </ComplexType>
 
       <ComplexType Name="Links" BaseType="Resource.Links">
@@ -246,6 +238,12 @@
         <Annotation Term="OData.AdditionalProperties" Bool="true"/>
         <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
+      </ComplexType>
+
+      <ComplexType Name="OemRoleMapping">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="The available OEM specific Role Mapping options for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM Role Mapping options for this resource."/>
       </ComplexType>
     </Schema>
 

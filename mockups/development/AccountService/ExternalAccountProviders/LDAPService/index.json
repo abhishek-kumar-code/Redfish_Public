@@ -17,7 +17,9 @@
     },
     "LDAPService": {
         "SearchSettings": {
-            "BaseDistinguisedName": "dc=example,dc=org",
+            "BaseDistinguisedNames": [
+                "dc=example,dc=org"
+            ],
             "UsernameAttribute": "uid",
             "GroupsAttribute": "memberof"
         }
