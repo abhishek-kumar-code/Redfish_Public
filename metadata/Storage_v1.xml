@@ -252,7 +252,7 @@
         </Member>
         <Member Name="FICON">
           <Annotation Term="OData.Description" String="FIbre CONnection (FICON)."/>
-          <Annotation Term="OData.LongDescription" String="This enumeration literal shall indicate the (ANSI FC-SB-3 Single-Byte Command Code Sets-3 Mapping Protocol for the Fibre Channel(FC) protocol.  FICON (FIbre CONnection) is the IBM proprietary name for this protocol. "/>
+          <Annotation Term="OData.LongDescription" String="This enumeration literal shall indicate the (ANSI FC-SB-3 Single-Byte Command Code Sets-3 Mapping Protocol for the Fibre Channel(FC) protocol.  FICON (FIbre CONnection) is the IBM proprietary name for this protocol."/>
         </Member>
         <Member Name="NVMeOverFabrics">
           <Annotation Term="OData.Description" String="NVMe over Fabrics."/>
