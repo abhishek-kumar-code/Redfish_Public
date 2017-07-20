@@ -109,7 +109,7 @@
       <EntityType Name="Role" BaseType="Role.v1_1_0.Role">
         <Property Name="RoleId" Type="Edm.String" Nullable="false">
           <Annotation Term="Redfish.RequiredOnCreate"/>
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This property contains the name of the Role."/>
           <Annotation Term="OData.LongDescription" String="This property shall contain the string name of the Role.  This property shall contain the same value as the Id property."/>
         </Property>
