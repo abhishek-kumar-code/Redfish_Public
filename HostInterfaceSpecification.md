@@ -173,12 +173,14 @@ For Network Host Interfaces, the mechanism that clients should use to discover/o
 
 ### SMBIOS Type 42 Struct General Layout
 
+The SMBIOS Type 42 structure is used to describe a Management Controller Host Interface.  It consists of standard SMBIOS entry information, followed by interface descriptors (which detail the physical interface to the Redfish Service), and protocol descriptors (which describe the supported payload encoding between the Host and Redfish Service).  The following table shows the general format of the SMBIOS Type 42 structure:
+
 ```
  --------------------------
- Type 42 Header         
+ Type 42 Header
  --------------------------
  Interface Specific Data
-   - Device Description 
+   - Device Description
    - (1 of 3 types)
  --------------------------
    Protocol Record Header
@@ -186,6 +188,10 @@ For Network Host Interfaces, the mechanism that clients should use to discover/o
    - Protocol Specific Data
  --------------------------
 ```
+
+Further details about the SMBIOS Type 42 structure can be found in the [SMBIOS Specification](#DMTFDSP0134).
+
+The remaining sections document how the SMBIOS Type 42 structure is defined for use by the Redfish Host Interface.
 
 
 ### Table-1: SMBIOS Type 42 Struct Definition for Redfish Host Interfaces
@@ -263,7 +269,7 @@ In the above table, the fields "Host IP Address", "Host IP Mask", "Redfish Servi
 
 ## Delivery of Kernel Authentication Information via UEFI Runtime Variables
 
-This section defines an optional mechanism for automatically generating and sending credentials to the Host OS kernel and/or firmware using UEFI runtime variables. Services that implement the kernel authentication mechanism shall comply with the following sub-sections:
+This section defines an optional mechanism for automatically generating and sending credentials to the Host OS kernel and/or firmware using UEFI runtime variables.  Services that implement the kernel authentication mechanism shall comply with the following sub-sections:
 
 
 ### Credential Generation and Management for Use by Firmware and OS kernel
@@ -286,15 +292,14 @@ To provide for situations of this type, systems supporting the Redfish Service m
 
 ### Security Considerations for Protecting Auto-generated Credentials
 
-It is recommended that system designers protect the credentials from unauthorized access.  The use of UEFI Secure Boot to protect access to credentials is recommended.
-Because of the difficulty of defining a security procedure for Legacy-booting OS, delivery of credentials to Legacy OS is not described by this specification and any Legacy OS support for this feature is OEM specific.
+It is recommended that system designers protect the credentials from unauthorized access.  The use of UEFI Secure Boot to protect access to credentials is recommended.  Because of the difficulty of defining a security procedure for Legacy-booting OS, delivery of credentials to Legacy OS is not described by this specification and any Legacy OS support for this feature is OEM specific.
 
 The system OS is provided with a method of disabling further retrieval of the credentials after initial authorized retrieval.  System designers are encouraged to implement such a scheme of retrieve, store, and disable to avoid unauthorized reading of the credential variables
 
 
 ### UEFI Implementation
 
-Implementations that present Host Interface for use by system firmware and OS shall use the UEFI Variables defined in this section to deliver credentials for the Host Interface.
+Implementations that present a Redfish Host Interface for use by system firmware and OS shall use the UEFI Variables defined in this section to deliver credentials for the Redfish Host Interface.
 
 The design of this delivery mechanism is compatible with any UEFI version starting with 2.3.1.  Please refer to the specifications available at www.uefi.org for details on using the UEFI variable calls described here
 
@@ -303,19 +308,19 @@ The design of this delivery mechanism is compatible with any UEFI version starti
 
     #define EFI_REDFISH_INFORMATION_GUID \
         {0x16faa37e, 0x4b6a, 0x4891, {0x90, 0x28, 0x24, 0x2d, 0xe6, 0x5a, 0x3b, 0x70 }}
-    #define EFI_REDFISH_INFORMATION_INDICATIONS 	L"RedfishIndications"
-    #define EFI_REDFISH_INFORMATION_FW_CREDENTIALS 	L"RedfishFWCredentials"
-    #define EFI_REDFISH_INFORMATION_OS_CREDENTIALS	L"RedfishOSCredentials"
+    #define EFI_REDFISH_INFORMATION_INDICATIONS         L"RedfishIndications"
+    #define EFI_REDFISH_INFORMATION_FW_CREDENTIALS      L"RedfishFWCredentials"
+    #define EFI_REDFISH_INFORMATION_OS_CREDENTIALS      L"RedfishOSCredentials"
 
 
 #### Related Definitions
-    #define EFI_REDFISH_INDICATIONS_FW_CREDENTIALS 	0x00000001
-    #define EFI_REDFISH_INDICATIONS_OS_CREDENTIALS 	0x00000002
+    #define EFI_REDFISH_INDICATIONS_FW_CREDENTIALS      0x00000001
+    #define EFI_REDFISH_INDICATIONS_OS_CREDENTIALS      0x00000002
 
 
 #### Description
 
-This GUID and these variable names are used when calling the UEFI Runtime Service `GetVariable()`.  See UEFI specification for details on use of this interface.  As described below, the `SetVariable()` interface can be used to disable further access to the credential information.
+This GUID and these variable names are used when calling the UEFI Runtime Service `GetVariable()`.  See the [UEFI Specification](#UEFISPEC) for details on use of this interface.  As described below, the `SetVariable()` interface can be used to disable further access to the credential information.
 
 The variables defined in this section have the following attributes:
 
@@ -325,8 +330,8 @@ The variables defined in this section have the following attributes:
 The variable `EFI_REDFISH_INFORMATION_INDICATIONS` shall return a 32-bit value, and provides information if any credentials are provided for the Host Software use.  The bits defined with this variable shall be interpreted as follows:
 
 * If `EFI_REDFISH_ INDICATIONS_FW_CREDENTIALS` bit is 1, the Redfish Host Interface is configured to provide credentials for use by system firmware.
-* `If EFI_REDFISH_ INDICATIONS_OS_CREDENTIALS` bit is 1, the Redfish Host Interface is configured to provide a credentials for use by system OS.
-* All other bits in `EFI_REDFISH_ INDICATIONS_HOST_IF` are reserved.
+* If `EFI_REDFISH_ INDICATIONS_OS_CREDENTIALS` bit is 1, the Redfish Host Interface is configured to provide a credentials for use by system OS.
+* All other bits in `EFI_REDFISH_INDICATIONS_HOST_IF` are reserved.
 
 When the Redfish implementation provides credentials for firmware use, the variable `EFI_REDFISH_INFORMATION_FW_CREDENTIALS` shall contain a UTF-8 character array formatted as described in the next section.  If this session is not available as defined by current system policy, this variable shall return `EFI_NOT_FOUND`.
 
