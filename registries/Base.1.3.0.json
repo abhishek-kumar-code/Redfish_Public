@@ -280,7 +280,7 @@
                 "string",
                 "string"
             ],
-            "Resolution": "Do not repeat the create operation as the resource of type %1 named %2 has already been created."
+            "Resolution": "Do not repeat the create operation as the resource has already been created."
         },
         "ResourceNotFound": {
             "Description": "Indicates that the operation expected a resource identifier that corresponds to an existing resource but one was not found.",
@@ -491,8 +491,8 @@
             "Resolution": "Ensure that the resource is in the correct power state and resubmit the request."
         },
         "ResourceExhaustion": {
-            "Description": "Indicates that a resource could not satify the request due to some unavailability of resources.  An example is that available capacity has been allocated.",
-            "Message": "The resource %1 was unable to satify the request due to unavailability of resources.",
+            "Description": "Indicates that a resource could not satisfy the request due to some unavailability of resources.  An example is that available capacity has been allocated.",
+            "Message": "The resource %1 was unable to satisfy the request due to unavailability of resources.",
             "Severity": "Critical",
             "NumberOfArgs": 1,
             "ParamTypes": [
@@ -507,7 +507,7 @@
             "NumberOfArgs": 2,
             "ParamTypes": [
                 "string",
-                "string"
+                "number"
             ],
             "Resolution": "Resubmit the request with an appropriate string length."
         }
