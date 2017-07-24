@@ -5,11 +5,15 @@
 	"type": "object",
 	"additionalProperties": false,
 	"properties": {
+		"SchemaDefinition": {
+			"type": "string",
+			"description": "The JSON schema which defines this Redfish Interoperability Profile document and can be used to validate its contents."
+		},
 		"ProfileName": {
 			"type": "string",
 			"description": "The name of this Redfish Interoperability Profile."
 		},
-		"Version": {
+		"ProfileVersion": {
 			"type": "string",
 			"description": "The version of this Redfish Interoperability Profile."
 		},
