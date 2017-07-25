@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#Task.v1_0_2.Task",
+    "@odata.type": "#Task.v1_1_0.Task",
     "Id": "545",
     "Name": "Task 545",
     "TaskState": "Completed",
@@ -8,6 +8,7 @@
     "TaskStatus": "OK",
     "Messages": [
         {
+            "@odata.type": "#Message.v1_0_0.Message",
             "MessageId": "Base.1.0.PropertyNotWriteable",
             "RelatedProperties": [
                 "SKU"
@@ -20,5 +21,6 @@
         }
     ],
     "@odata.context": "/redfish/v1/$metadata#Task.Task",
-    "@odata.id": "/redfish/v1/TaskService/Tasks/545"
+    "@odata.id": "/redfish/v1/TaskService/Tasks/545",
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

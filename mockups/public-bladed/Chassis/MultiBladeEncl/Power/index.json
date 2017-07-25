@@ -1,13 +1,15 @@
 {
-    "@odata.type": "#Power.v1_1_0.Power",
+    "@odata.type": "#Power.v1_3_0.Power",
     "Id": "Power",
     "Name": "Quad Blade Chassis Power",
     "PowerSupplies": [
         {
             "@odata.id": "/redfish/v1/Chassis/MultiBladeEncl/Power#/PowerSupplies/0",
+            "@odata.type": "#Power.v1_3_0.PowerSupply",
             "MemberId": "0",
             "Name": "Power Supply 0",
             "Status": {
+                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             },
@@ -17,6 +19,7 @@
             "PowerCapacityWatts": 1450,
             "InputRanges": [
                 {
+                    "@odata.type": "#Power.v1_1_0.InputRange",
                     "InputType": "AC",
                     "MinimumVoltage": 185,
                     "MaximumVoltage": 250,
@@ -69,9 +72,11 @@
         },
         {
             "@odata.id": "/redfish/v1/Chassis/MultiBladeEncl/Power#/PowerSupplies/1",
+            "@odata.type": "#Power.v1_3_0.PowerSupply",
             "MemberId": "1",
             "Name": "Power Supply 1",
             "Status": {
+                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             },
@@ -81,6 +86,7 @@
             "PowerCapacityWatts": 1450,
             "InputRanges": [
                 {
+                    "@odata.type": "#Power.v1_1_0.InputRange",
                     "InputType": "AC",
                     "MinimumVoltage": 185,
                     "MaximumVoltage": 250,
@@ -135,6 +141,7 @@
     "Redundancy": [
         {
             "@odata.id": "/redfish/v1/Chassis/MultiBladeEncl/Power#/Redundancy/0",
+            "@odata.type": "#Redundancy.v1_2_0.Redundancy",
             "MemberId": "0",
             "Name": "Power Supply Redundancy",
             "RedundancySet": [
@@ -147,6 +154,7 @@
             ],
             "Mode": "N+m",
             "Status": {
+                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             },
@@ -156,5 +164,5 @@
     ],
     "@odata.context": "/redfish/v1/$metadata#Power.Power",
     "@odata.id": "/redfish/v1/Chassis/MultiBladeEncl/Power",
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

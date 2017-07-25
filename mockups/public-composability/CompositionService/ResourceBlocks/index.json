@@ -1,8 +1,5 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.",
-    "@odata.context": "/redfish/v1/$metadata#ResourceBlockCollection.ResourceBlockCollection",
     "@odata.type": "#ResourceBlockCollection.ResourceBlockCollection",
-    "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks",
     "Name": "Resource Block Collection",
     "Members@odata.count": 9,
     "Members": [
@@ -33,5 +30,8 @@
         {
             "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/OffloadBlock9"
         }
-    ]
+    ],
+    "@odata.context": "/redfish/v1/$metadata#ResourceBlockCollection.ResourceBlockCollection",
+    "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks",
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }
