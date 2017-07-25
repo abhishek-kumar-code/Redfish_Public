@@ -109,7 +109,7 @@ The specification also defines certain supporting elements in the Host, such as 
 
 The specification does not seek to place specific hardware implementation requirements; however, it does in some cases specify how hardware-specific interfaces are identified for Host Software (e.g. SMBIOS structures).
 
-The specification defines connectivity between a Redfish Service and a Gost.  Any network routing or other connectivity beyond the Redfish Service or other networks is out of scope.
+The specification defines connectivity between a Redfish Service and a Host.  Any network routing or other connectivity beyond the Redfish Service or other networks is out of scope.
 
 
 ### Goals
