@@ -864,7 +864,7 @@ function complexTypeCheck(propType, propValue, propName, type) {
     realType = constructODataType(propType, type);
   }
   else {
-    realType = CSDL.findByType({_options: options}, propValue['@odata.type']);
+    realType = CSDL.findByType({_options: options}, propValue['@odata.type'].substring(1));
   }
   for(let childPropName in propValue) {
     if(childPropName[0] === '@') {
@@ -1068,6 +1068,9 @@ function checkProperty(propName, CSDLType, propValue, parentType, parentPropName
 function validateActions(actions) {
  for(let propName in actions) {
    if(propName === 'Oem') {
+     continue;
+   }
+   if(propName === '@odata.type') {
      continue;
    }
    let actionType = CSDL.findByType({_options: options}, propName.substring(1));

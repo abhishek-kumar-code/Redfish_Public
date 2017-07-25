@@ -1,11 +1,11 @@
 {
-    "@odata.type": "#LogEntry.v1_0_2.LogEntry",
+    "@odata.type": "#LogEntry.v1_2_0.LogEntry",
     "Id": "1",
     "Name": "Log Entry 1",
     "EntryType": "SEL",
     "OemRecordFormat": "Contoso",
     "Severity": "Critical",
-    "Created": "2012-03-07T14:44",
+    "Created": "2012-03-07T14:44:00Z",
     "EntryCode": "Assert",
     "SensorType": "Temperature",
     "SensorNumber": 1,
@@ -15,6 +15,7 @@
         "88"
     ],
     "Links": {
+        "@odata.type": "#LogEntry.v1_0_0.Links",
         "OriginOfCondition": {
             "@odata.id": "/redfish/v1/Chassis/1U/Thermal"
         },
@@ -23,5 +24,5 @@
     "Oem": {},
     "@odata.context": "/redfish/v1/$metadata#LogEntry.LogEntry",
     "@odata.id": "/redfish/v1/Managers/BMC/LogServices/Log/Entries/1",
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#Manager.v1_1_0.Manager",
+    "@odata.type": "#Manager.v1_3_1.Manager",
     "Id": "bmc",
     "Name": "Manager",
     "ManagerType": "BMC",
@@ -10,6 +10,7 @@
     "DateTime": "2015-03-13T04:14:33+06:00",
     "DateTimeLocalOffset": "+06:00",
     "Status": {
+        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK"
     },
@@ -21,6 +22,7 @@
         "@odata.id": "/redfish/v1/Managers/bmc/EthernetInterfaces"
     },
     "Links": {
+        "@odata.type": "#Manager.v1_1_0.Links",
         "ManagerForServers": [
             {
                 "@odata.id": "/redfish/v1/Systems/1"
@@ -37,6 +39,7 @@
         "Oem": {}
     },
     "Actions": {
+        "@odata.type": "#Manager.v1_0_0.Actions",
         "#Manager.Reset": {
             "target": "/redfish/v1/Managers/bmc/Actions/Manager.Reset",
             "ResetType@Redfish.AllowableValues": [
@@ -49,5 +52,5 @@
     "Oem": {},
     "@odata.context": "/redfish/v1/$metadata#Manager.Manager",
     "@odata.id": "/redfish/v1/Managers/bmc",
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }
