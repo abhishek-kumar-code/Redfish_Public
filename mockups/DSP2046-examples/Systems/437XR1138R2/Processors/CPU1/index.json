@@ -1,6 +1,7 @@
 {
-    "@odata.type": "#Processor.v1_0_2.Processor",
+    "@odata.type": "#Processor.v1_1_0.Processor",
     "Id": "CPU1",
+    "Name": "Processor",
     "Socket": "CPU 1",
     "ProcessorType": "CPU",
     "ProcessorArchitecture": "x86",
@@ -8,6 +9,7 @@
     "Manufacturer": "Intel(R) Corporation",
     "Model": "Multi-Core Intel(R) Xeon(R) processor 7xxx Series",
     "ProcessorId": {
+        "@odata.type": "#Processor.v1_0_0.ProcessorId",
         "VendorId": "GenuineIntel",
         "IdentificationRegisters": "0x34AC34DC8901274A",
         "EffectiveFamily": "0x42",
@@ -19,9 +21,11 @@
     "TotalCores": 8,
     "TotalThreads": 16,
     "Status": {
+        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK"
     },
     "@odata.context": "/redfish/v1/$metadata#Processor.Processor",
-    "@odata.id": "/redfish/v1/Systems/437XR1138R2/Processors/CPU1"
+    "@odata.id": "/redfish/v1/Systems/437XR1138R2/Processors/CPU1",
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#Manager.v1_1_0.Manager",
+    "@odata.type": "#Manager.v1_3_1.Manager",
     "Id": "1",
     "Name": "Manager",
     "ManagerType": "EnclosureManager",
@@ -10,6 +10,7 @@
     "DateTime": "2015-03-13T04:14:33+06:00",
     "DateTimeLocalOffset": "+06:00",
     "Status": {
+        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK"
     },
@@ -21,6 +22,7 @@
         "@odata.id": "/redfish/v1/Managers/1/LogServices"
     },
     "Links": {
+        "@odata.type": "#Manager.v1_1_0.Links",
         "ManagerForChassis": [
             {
                 "@odata.id": "/redfish/v1/Chassis/ComposableEnclosure"
@@ -49,6 +51,7 @@
         }	
     },
     "Actions": {
+        "@odata.type": "#Manager.v1_0_0.Actions",
         "#Manager.Reset": {
             "target": "/redfish/v1/Managers/1/Actions/Manager.Reset",
             "ResetType@Redfish.AllowableValues": [
@@ -59,5 +62,5 @@
     },
     "@odata.context": "/redfish/v1/$metadata#Manager.Manager",
     "@odata.id": "/redfish/v1/Managers/1",
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

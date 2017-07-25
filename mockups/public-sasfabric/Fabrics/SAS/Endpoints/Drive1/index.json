@@ -1,18 +1,17 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-	"@odata.context": "/redfish/v1/$metadata#Endpoint.Endpoint",
-	"@odata.id": "/redfish/v1/Fabrics/SAS/Endpoints/Drive1",
-	"@odata.type": "#Endpoint.v1_0_0.Endpoint",
-	"Id": "Drive1",
-	"Name": "SAS Drive",
-	"Description": "The SAS Drive in Enclosure 2 Bay 0",
+    "@odata.type": "#Endpoint.v1_0_2.Endpoint",
+    "Id": "Drive1",
+    "Name": "SAS Drive",
+    "Description": "The SAS Drive in Enclosure 2 Bay 0",
     "EndpointProtocol": "SAS",
     "ConnectedEntities": [
         {
+            "@odata.type": "Endpoint.v1_0_0.ConnectedEntity",
             "EntityType": "Drive",
             "EntityRole": "Target",
             "Identifiers": [
                 {
+                    "@odata.type": "#Resource.v1_1_0.Identifier",
                     "DurableNameFormat": "NAA",
                     "DurableName": "32ADF365C6C1B7C3"
                 }
@@ -21,15 +20,24 @@
         }
     ],
     "Links": {
+        "@odata.type": "#Endpoint.v1_0_0.Links",
         "MutuallyExclusiveEndpoints": [
-            {"@odata.id": "/redfish/v1/Fabrics/SAS/Endpoints/Enclosure2"}
+            {
+                "@odata.id": "/redfish/v1/Fabrics/SAS/Endpoints/Enclosure2"
+            }
         ],
         "Ports": [
-            {"@odata.id": "/redfish/v1/Fabrics/SAS/Switches/Switch1/Ports/8"},
-            {"@odata.id": "/redfish/v1/Fabrics/SAS/Switches/Switch2/Ports/8"}
+            {
+                "@odata.id": "/redfish/v1/Fabrics/SAS/Switches/Switch1/Ports/8"
+            },
+            {
+                "@odata.id": "/redfish/v1/Fabrics/SAS/Switches/Switch2/Ports/8"
+            }
         ],
         "Oem": {}
     },
-	"Oem": {}
+    "Oem": {},
+    "@odata.context": "/redfish/v1/$metadata#Endpoint.Endpoint",
+    "@odata.id": "/redfish/v1/Fabrics/SAS/Endpoints/Drive1",
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }
-
