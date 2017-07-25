@@ -1,13 +1,11 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#Fabric.Fabric",
-    "@odata.id": "/redfish/v1/Fabrics/SAS",
-    "@odata.type": "#Fabric.v1_0_0.Fabric",
+    "@odata.type": "#Fabric.v1_0_2.Fabric",
     "Id": "SAS",
     "Name": "SAS Fabric",
     "FabricType": "SAS",
     "Description": "A SAS Fabric with redundant switches connected to two initiators",
     "Status": {
+        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK"
     },
@@ -21,10 +19,15 @@
         "@odata.id": "/redfish/v1/Fabrics/SAS/Switches"
     },
     "Links": {
+        "@odata.type": "#Fabric.v1_0_0.Links",
         "Oem": {}
     },
     "Actions": {
+        "@odata.type": "#Fabric.v1_0_0.Actions",
         "Oem": {}
     },
-    "Oem": {}
+    "Oem": {},
+    "@odata.context": "/redfish/v1/$metadata#Fabric.Fabric",
+    "@odata.id": "/redfish/v1/Fabrics/SAS",
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

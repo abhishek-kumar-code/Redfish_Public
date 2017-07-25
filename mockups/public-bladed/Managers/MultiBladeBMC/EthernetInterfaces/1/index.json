@@ -1,8 +1,9 @@
 {
-    "@odata.type": "#EthernetInterface.v1_0_2.EthernetInterface",
+    "@odata.type": "#EthernetInterface.v1_3_0.EthernetInterface",
     "Id": "1",
     "Name": "Manager Ethernet Interface",
     "Status": {
+        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK"
     },
@@ -10,6 +11,7 @@
     "PermanentMACAddress": "23:11:8A:38:C0:10",
     "IPv4Addresses": [
         {
+            "@odata.type": "#IPAddresses.v1_0_0.IPv4Address",
             "Address": "192.168.56.100",
             "SubnetMask": "255.255.255.0",
             "AddressOrigin": "DHCP",
@@ -18,5 +20,5 @@
     ],
     "@odata.context": "/redfish/v1/$metadata#EthernetInterface.EthernetInterface",
     "@odata.id": "/redfish/v1/Managers/MultiBladeBMC/EthernetInterfaces/1",
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }
