@@ -1,6 +1,4 @@
 {
-    "@odata.context": "/redfish/v1/$metadata#VirtualMediaCollection.VirtualMediaCollection",
-    "@odata.id": "/redfish/v1/Managers/EncMgr2/VM",
     "@odata.type": "#VirtualMediaCollection.VirtualMediaCollection",
     "Name": "Virtual Media Services",
     "Description": "Redfish Manager Virtual Media Services Settings",
@@ -9,5 +7,8 @@
         {
             "@odata.id": "/redfish/v1/Managers/EncMgr2/VM/CDDVD"
         }
-    ]
+    ],
+    "@odata.context": "/redfish/v1/$metadata#VirtualMediaCollection.VirtualMediaCollection",
+    "@odata.id": "/redfish/v1/Managers/EncMgr2/VM",
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

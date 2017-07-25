@@ -1,7 +1,7 @@
 {
     "@odata.type": "#Memory.v1_2_0.Memory",
-    "Name": "PartitionedServer Memory",
     "Id": "10",
+    "Name": "PartitionedServer Memory",
     "MemoryDeviceType": "DDR4",
     "MemoryType": "DRAM",
     "PartNumber": "M393A4K40BB0-CPB",
@@ -12,14 +12,17 @@
     "OperatingSpeedMhz": 1600,
     "ErrorCorrection": "MultiBitECC",
     "Status": {
+        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK"
     },
     "Links": {
+        "@odata.type": "#Memory.v1_2_0.Links",
         "Chassis": {
             "@odata.id": "/redfish/v1/Chassis/Blade6"
         }
     },
     "@odata.context": "/redfish/v1/$metadata#Memory.Memory",
-    "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock6/RBSystem/Memory/2"
+    "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock6/RBSystem/Memory/2",
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

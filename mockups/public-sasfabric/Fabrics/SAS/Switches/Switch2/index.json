@@ -1,8 +1,5 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#Switch.Switch",
-    "@odata.id": "/redfish/v1/Fabrics/SAS/Switches/Switch2",
-    "@odata.type": "#Switch.v1_0_0.Switch",
+    "@odata.type": "#Switch.v1_0_2.Switch",
     "Id": "Switch2",
     "Name": "SAS Switch",
     "SwitchType": "SAS",
@@ -17,11 +14,13 @@
     "Redundancy": [
         {
             "@odata.id": "/redfish/v1/Fabrics/SAS/Switches/Switch2#/Redundancy/0",
+            "@odata.type": "#Redundancy.v1_2_0.Redundancy",
             "MemberId": "Redundancy",
             "Mode": "Sharing",
             "MaxNumSupported": 2,
             "MinNumNeeded": 1,
             "Status": {
+                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             },
@@ -36,8 +35,9 @@
         }
     ],
     "Links": {
+        "@odata.type": "#Switch.v1_0_0.Links",
         "Chassis": {
-                "@odata.id": "/redfish/v1/Chassis/Switch2"
+            "@odata.id": "/redfish/v1/Chassis/Switch2"
         },
         "ManagedBy": [
             {
@@ -50,6 +50,7 @@
         "Oem": {}
     },
     "Actions": {
+        "@odata.type": "#Switch.v1_0_0.Actions",
         "#Switch.Reset": {
             "target": "/redfish/v1/Fabrics/SAS/Switches/Switch2/Actions/Switch.Reset",
             "ResetType@Redfish.AllowableValues": [
@@ -59,6 +60,8 @@
         },
         "Oem": {}
     },
-    "Oem": {}
+    "Oem": {},
+    "@odata.context": "/redfish/v1/$metadata#Switch.Switch",
+    "@odata.id": "/redfish/v1/Fabrics/SAS/Switches/Switch2",
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }
-
