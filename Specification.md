@@ -21,22 +21,22 @@ DMTF is a not-for-profit association of industry members dedicated to promoting 
 The DMTF acknowledges the following individuals for their contributions to this document:
 * Jeff Autor - Hewlett Packard Enterprise
 * Patrick Boyd - Dell Inc.
-* David Brockhaus - Vertiv Co.
+* David Brockhaus - Vertiv
 * Richard Brunner - VMware Inc.
 * Lee Calcote - Seagate Technology
 * P Chandrasekhar - Dell Inc.
 * Chris Davenport - Hewlett Packard Enterprise
-* Gamma Dean - Vertiv Co.
+* Gamma Dean - Vertiv
 * Daniel Dufresne - Dell Inc.
 * Samer El-Haj-Mahmoud - Lenovo, Hewlett Packard Enterprise
 * George Ericson - Dell Inc.
 * Wassim Fayed - Microsoft Corporation
 * Mike Garrett - Hewlett Packard Enterprise
-* Steve Geffin - Vertiv Co.
+* Steve Geffin - Vertiv
 * Joe Handzik - Hewlett Packard Enterprise
 * Jon Hass - Dell Inc.
 * Jeff Hilland - Hewlett Packard Enterprise
-* Chris Hoffman - Vertiv Co.
+* Chris Hoffman - Vertiv
 * Steven Krig - Intel Corporation
 * John Leung - Intel Corporation
 * Jagan Molleti - Dell Inc.
@@ -46,9 +46,9 @@ The DMTF acknowledges the following individuals for their contributions to this 
 * Michael Raineri - Dell Inc.
 * Irina Salvan - Microsoft Corporation
 * Hemal Shah - Broadcom Limited
-* Jim Shelton - Vertiv Co.
+* Jim Shelton - Vertiv
 * Tom Slaight - Intel Corporation
-* Donnie Sturgeon - Vertiv Co.
+* Donnie Sturgeon - Vertiv
 * Pawel Szymanski - Intel Corporation
 * Paul Vancil - Dell Inc.
 * Linda Wu - Super Micro Computer, Inc.
