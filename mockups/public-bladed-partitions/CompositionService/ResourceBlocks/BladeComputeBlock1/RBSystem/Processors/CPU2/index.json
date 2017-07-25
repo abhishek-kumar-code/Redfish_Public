@@ -1,6 +1,7 @@
 {
     "@odata.type": "#Processor.v1_1_0.Processor",
     "Id": "CPU2",
+    "Name": "Processor",
     "ProcessorType": "CPU",
     "ProcessorArchitecture": "x86",
     "InstructionSet": "x86-64",
@@ -10,14 +11,17 @@
     "TotalCores": 18,
     "TotalThreads": 36,
     "Status": {
+        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK"
     },
     "Links": {
+        "@odata.type": "#Processor.v1_1_0.Links",
         "Chassis": {
             "@odata.id": "/redfish/v1/Chassis/Blade1"
         }
     },
     "@odata.context": "/redfish/v1/$metadata#Processor.Processor",
-    "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock1/RBSystem/Processors/CPU2"
+    "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock1/RBSystem/Processors/CPU2",
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

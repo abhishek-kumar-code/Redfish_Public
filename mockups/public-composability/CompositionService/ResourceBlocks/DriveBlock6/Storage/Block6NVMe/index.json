@@ -1,11 +1,9 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.",
-    "@odata.context": "/redfish/v1/$metadata#Storage.Storage",
-    "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock6/Storage/Block6NVMe",
-    "@odata.type": "#Storage.v1_1_1.Storage",
+    "@odata.type": "#Storage.v1_3_0.Storage",
     "Id": "Block6NVMe",
     "Name": "NMVe Storage",
     "Status": {
+        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK"
     },
@@ -13,5 +11,8 @@
         {
             "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock6/Storage/Block6NVMe/Drives/Slot3"
         }
-    ]
+    ],
+    "@odata.context": "/redfish/v1/$metadata#Storage.Storage",
+    "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock6/Storage/Block6NVMe",
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

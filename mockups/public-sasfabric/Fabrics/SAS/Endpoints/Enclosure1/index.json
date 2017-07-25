@@ -1,18 +1,17 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-	"@odata.context": "/redfish/v1/$metadata#Endpoint.Endpoint",
-	"@odata.id": "/redfish/v1/Fabrics/SAS/Endpoints/Enclosure1",
-	"@odata.type": "#Endpoint.v1_0_0.Endpoint",
-	"Id": "Enclosure1",
-	"Name": "SAS Enclosure",
-	"Description": "A non-zoning capable SAS Enclosure",
+    "@odata.type": "#Endpoint.v1_0_2.Endpoint",
+    "Id": "Enclosure1",
+    "Name": "SAS Enclosure",
+    "Description": "A non-zoning capable SAS Enclosure",
     "EndpointProtocol": "SAS",
     "ConnectedEntities": [
         {
-            "EntityType": "Expander",
+            "@odata.type": "Endpoint.v1_0_0.ConnectedEntity",
+            "EntityType": "StorageExpander",
             "EntityRole": null,
             "Identifiers": [
                 {
+                    "@odata.type": "#Resource.v1_1_0.Identifier",
                     "DurableNameFormat": "NAA",
                     "DurableName": "32ADF365C6C1B7BF"
                 }
@@ -20,10 +19,12 @@
             "Oem": {}
         },
         {
+            "@odata.type": "Endpoint.v1_0_0.ConnectedEntity",
             "EntityType": "Drive",
             "EntityRole": "Target",
             "Identifiers": [
                 {
+                    "@odata.type": "#Resource.v1_1_0.Identifier",
                     "DurableNameFormat": "NAA",
                     "DurableName": "32ADF365C6C1B7C0"
                 }
@@ -31,10 +32,12 @@
             "Oem": {}
         },
         {
+            "@odata.type": "Endpoint.v1_0_0.ConnectedEntity",
             "EntityType": "Drive",
             "EntityRole": "Target",
             "Identifiers": [
                 {
+                    "@odata.type": "#Resource.v1_1_0.Identifier",
                     "DurableNameFormat": "NAA",
                     "DurableName": "32ADF365C6C1B7C1"
                 }
@@ -42,26 +45,33 @@
             "Oem": {}
         },
         {
+            "@odata.type": "Endpoint.v1_0_0.ConnectedEntity",
             "EntityType": "Drive",
             "EntityRole": "Target",
-            "Identifiers": [
-            ],
+            "Identifiers": [],
             "Oem": {}
         },
         {
+            "@odata.type": "Endpoint.v1_0_0.ConnectedEntity",
             "EntityType": "Drive",
             "EntityRole": "Target",
-            "Identifiers": [
-            ],
+            "Identifiers": [],
             "Oem": {}
         }
     ],
     "Links": {
+        "@odata.type": "#Endpoint.v1_0_0.Links",
         "Ports": [
-            {"@odata.id": "/redfish/v1/Fabrics/SAS/Switches/Switch1/Ports/7"},
-            {"@odata.id": "/redfish/v1/Fabrics/SAS/Switches/Switch2/Ports/7"}
+            {
+                "@odata.id": "/redfish/v1/Fabrics/SAS/Switches/Switch1/Ports/7"
+            },
+            {
+                "@odata.id": "/redfish/v1/Fabrics/SAS/Switches/Switch2/Ports/7"
+            }
         ]
     },
-	"Oem": {}
+    "Oem": {},
+    "@odata.context": "/redfish/v1/$metadata#Endpoint.Endpoint",
+    "@odata.id": "/redfish/v1/Fabrics/SAS/Endpoints/Enclosure1",
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }
-

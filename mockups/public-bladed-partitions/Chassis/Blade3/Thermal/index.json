@@ -1,12 +1,15 @@
 {
-    "@odata.type": "#Thermal.v1_2_0.Thermal",
+    "@odata.type": "#Thermal.v1_3_0.Thermal",
     "Name": "PartitionedServer Blade3 Thermal",
     "Id": "PartitionedServerBlade3Thermal",
-    "Temperatures": [{
+    "Temperatures": [
+        {
             "@odata.id": "/redfish/v1/Chassis/Blade3/Thermal#/Temperatures/0",
+            "@odata.type": "#Thermal.v1_3_0.Temperature",
             "MemberId": "0",
             "Name": "Blade Temp",
             "Status": {
+                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "Warning"
             },
@@ -17,10 +20,11 @@
             "LowerThresholdNonCritical": 42,
             "LowerThresholdCritical": 5,
             "LowerThresholdFatal": 42,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 120,
+            "MinReadingRangeTemp": 0,
+            "MaxReadingRangeTemp": 120,
             "PhysicalContext": "ComputeBay",
-            "RelatedItem": [{
+            "RelatedItem": [
+                {
                     "@odata.id": "/redfish/v1/Systems/ComposedPartition2"
                 },
                 {
@@ -30,10 +34,12 @@
         },
         {
             "@odata.id": "/redfish/v1/Chassis/Blade3/Thermal#/Temperatures/1",
+            "@odata.type": "#Thermal.v1_3_0.Temperature",
             "MemberId": "1",
             "Name": "CPU1 Temp",
             "SensorNumber": 42,
             "Status": {
+                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             },
@@ -44,19 +50,23 @@
             "LowerThresholdNonCritical": 42,
             "LowerThresholdCritical": 5,
             "LowerThresholdFatal": 42,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 200,
+            "MinReadingRangeTemp": 0,
+            "MaxReadingRangeTemp": 200,
             "PhysicalContext": "CPU",
-            "RelatedItem": [{
-                "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock3/RBSystem/Processors/CPU1"
-            }]
+            "RelatedItem": [
+                {
+                    "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock3/RBSystem/Processors/CPU1"
+                }
+            ]
         },
         {
             "@odata.id": "/redfish/v1/Chassis/Blade3/Thermal#/Temperatures/2",
+            "@odata.type": "#Thermal.v1_3_0.Temperature",
             "MemberId": "2",
             "Name": "Blade Intake Temp",
             "SensorNumber": 44,
             "Status": {
+                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             },
@@ -67,14 +77,17 @@
             "LowerThresholdNonCritical": 10,
             "LowerThresholdCritical": 5,
             "LowerThresholdFatal": 0,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 200,
+            "MinReadingRangeTemp": 0,
+            "MaxReadingRangeTemp": 200,
             "PhysicalContext": "Intake",
-            "RelatedItem": [{
-                "@odata.id": "/redfish/v1/Chassis/Blade3"
-            }]
+            "RelatedItem": [
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Blade3"
+                }
+            ]
         }
     ],
     "@odata.context": "/redfish/v1/$metadata#Thermal.Thermal",
-    "@odata.id": "/redfish/v1/Chassis/Blade3/Thermal"
+    "@odata.id": "/redfish/v1/Chassis/Blade3/Thermal",
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }
