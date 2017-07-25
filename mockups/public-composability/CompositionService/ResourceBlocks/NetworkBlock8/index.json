@@ -1,16 +1,17 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.",
-    "@odata.context": "/redfish/v1/$metadata#ResourceBlock.ResourceBlock",
     "@odata.type": "#ResourceBlock.v1_0_0.ResourceBlock",
-    "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/NetworkBlock8",
     "Id": "NetworkBlock8",
     "Name": "Network Block 8",
-    "ResourceBlockType": [ "Network" ],
+    "ResourceBlockType": [
+        "Network"
+    ],
     "Status": {
+        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK"
     },
     "CompositionStatus": {
+        "@odata.type": "#ResourceBlock.v1_0_0.CompositionStatus",
         "Reserved": false,
         "CompositionState": "Unused"
     },
@@ -27,6 +28,7 @@
         }
     ],
     "Links": {
+        "@odata.type": "#ResourceBlock.v1_0_0.Links",
         "ComputerSystems": [],
         "Chassis": [
             {
@@ -39,5 +41,8 @@
             }
         ]
     },
-    "Oem": {}
+    "Oem": {},
+    "@odata.context": "/redfish/v1/$metadata#ResourceBlock.ResourceBlock",
+    "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/NetworkBlock8",
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

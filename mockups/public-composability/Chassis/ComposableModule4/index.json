@@ -1,7 +1,4 @@
 {
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright.",
-    "@odata.context": "/redfish/v1/$metadata#Chassis.Chassis",
-    "@odata.id": "/redfish/v1/Chassis/ComposableModule4",
     "@odata.type": "#Chassis.v1_5_0.Chassis",
     "Id": "ComposableModule4",
     "Name": "Composable Drive Module",
@@ -15,10 +12,12 @@
     "PowerState": "On",
     "IndicatorLED": "Off",
     "Status": {
+        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK"
     },
     "Links": {
+        "@odata.type": "#Chassis.v1_5_0.Links",
         "ComputerSystems": [],
         "ManagedBy": [
             {
@@ -33,5 +32,8 @@
                 "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/DriveBlock7"
             }
         ]
-    }
+    },
+    "@odata.context": "/redfish/v1/$metadata#Chassis.Chassis",
+    "@odata.id": "/redfish/v1/Chassis/ComposableModule4",
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

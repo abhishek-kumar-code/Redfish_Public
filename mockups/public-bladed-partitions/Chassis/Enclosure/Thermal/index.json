@@ -1,68 +1,87 @@
 {
-    "@odata.type": "#Thermal.v1_2_0.Thermal",
+    "@odata.type": "#Thermal.v1_3_0.Thermal",
     "Name": "MultiBladeEnclosure Thermal",
     "Id": "MultiBladeEnclosureThermal",
-    "Redundancy": [{
-        "@odata.id": "/redfish/v1/Chassis/Enclosure/Thermal#/Redundancy/0",
-        "MemberId": "0",
-        "Name": "Enclosure Fans Redundancy",
-        "RedundancyEnabled": true,
-        "RedundancySet": [{
-                "@odata.id": "/redfish/v1/Chassis/Enclosure/Thermal#/Fans/0"
+    "Redundancy": [
+        {
+            "@odata.id": "/redfish/v1/Chassis/Enclosure/Thermal#/Redundancy/0",
+            "@odata.type": "#Redundancy.v1_2_0.Redundancy",
+            "MemberId": "0",
+            "Name": "Enclosure Fans Redundancy",
+            "RedundancyEnabled": true,
+            "RedundancySet": [
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Enclosure/Thermal#/Fans/0"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Enclosure/Thermal#/Fans/1"
+                }
+            ],
+            "Mode": "N+m",
+            "Status": {
+                "@odata.type": "#Resource.Status",
+                "State": "Enabled",
+                "Health": "OK"
             },
-            {
-                "@odata.id": "/redfish/v1/Chassis/Enclosure/Thermal#/Fans/1"
-            }
-        ],
-        "Mode": "N+m",
-        "Status": {
-            "State": "Enabled",
-            "Health": "OK"
-        },
-        "MinNumNeeded": 6,
-        "MaxNumSupported": 15
-    }],
-    "Fans": [{
+            "MinNumNeeded": 6,
+            "MaxNumSupported": 15
+        }
+    ],
+    "Fans": [
+        {
             "@odata.id": "/redfish/v1/Chassis/Enclosure/Thermal#/Fans/0",
+            "@odata.type": "#Thermal.v1_3_0.Fan",
             "MemberId": "0",
             "Name": "Enclosure Fan0",
             "PartNumber": "412140-B21",
             "Model": "Active Cool 200 Fan",
             "PhysicalContext": "Back",
             "Status": {
+                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             },
             "Reading": 60,
             "ReadingUnits": "Percent",
-            "Redundancy": [{
-                "@odata.id": "/redfish/v1/Chassis/Enclosure/Thermal#/Redundancy/0"
-            }],
-            "RelatedItem": [{
-                "@odata.id": "/redfish/v1/Chassis/Enclosure"
-            }]
+            "Redundancy": [
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Enclosure/Thermal#/Redundancy/0"
+                }
+            ],
+            "RelatedItem": [
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Enclosure"
+                }
+            ]
         },
         {
             "@odata.id": "/redfish/v1/Chassis/Enclosure/Thermal#/Fans/1",
+            "@odata.type": "#Thermal.v1_3_0.Fan",
             "MemberId": "1",
             "Name": "Enclosure Fan1",
             "PartNumber": "412140-B21",
             "Model": "Active Cool 200 Fan",
             "PhysicalContext": "Back",
             "Status": {
+                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             },
             "Reading": 40,
             "ReadingUnits": "Percent",
-            "Redundancy": [{
-                "@odata.id": "/redfish/v1/Chassis/Enclosure/Thermal#/Redundancy/0"
-            }],
-            "RelatedItem": [{
-                "@odata.id": "/redfish/v1/Chassis/Enclosure"
-            }]
+            "Redundancy": [
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Enclosure/Thermal#/Redundancy/0"
+                }
+            ],
+            "RelatedItem": [
+                {
+                    "@odata.id": "/redfish/v1/Chassis/Enclosure"
+                }
+            ]
         }
     ],
     "@odata.context": "/redfish/v1/$metadata#Thermal.Thermal",
-    "@odata.id": "/redfish/v1/Chassis/Enclosure/Thermal"
+    "@odata.id": "/redfish/v1/Chassis/Enclosure/Thermal",
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }
