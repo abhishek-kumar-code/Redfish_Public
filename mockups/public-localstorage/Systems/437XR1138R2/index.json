@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#ComputerSystem.v1_1_0.ComputerSystem",
+    "@odata.type": "#ComputerSystem.v1_4_0.ComputerSystem",
     "Id": "437XR1138R2",
     "Name": "WebFrontEnd483",
     "SystemType": "Physical",
@@ -13,13 +13,18 @@
     "UUID": "38947555-7742-3448-3784-823347823834",
     "HostName": "web483",
     "Status": {
+        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK",
         "HealthRollup": "OK"
     },
+    "HostingRoles": [
+        "ApplicationServer"
+    ],
     "IndicatorLED": "Off",
     "PowerState": "On",
     "Boot": {
+        "@odata.type": "#ComputerSystem.v1_1_0.Boot",
         "BootSourceOverrideEnabled": "Once",
         "BootSourceOverrideTarget": "Pxe",
         "BootSourceOverrideTarget@Redfish.AllowableValues": [
@@ -39,9 +44,11 @@
     },
     "TrustedModules": [
         {
+            "@odata.type": "#ComputerSystem.v1_3_0.TrustedModules",
             "FirmwareVersion": "1.13b",
             "InterfaceType": "TPM1_2",
             "Status": {
+                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             }
@@ -51,6 +58,7 @@
         "Contoso": {
             "@odata.type": "#Contoso.ComputerSystem",
             "ProductionLocation": {
+                "@odata.type": "#Contoso.ProductionLocation",
                 "FacilityName": "PacWest Production Facility",
                 "Country": "USA"
             }
@@ -62,17 +70,23 @@
     },
     "BiosVersion": "P79 v1.33 (02/28/2015)",
     "ProcessorSummary": {
+        "@odata.type": "#ComputerSystem.v1_0_0.ProcessorSummary",
         "Count": 2,
         "Model": "Multi-Core Intel(R) Xeon(R) processor 7xxx Series",
         "Status": {
+            "@odata.type": "#Resource.Status",
             "State": "Enabled",
             "Health": "OK",
             "HealthRollup": "OK"
         }
     },
     "MemorySummary": {
+        "@odata.type": "#ComputerSystem.v1_4_0.MemorySummary",
         "TotalSystemMemoryGiB": 96,
+        "TotalSystemPersistentMemoryGiB": 0,
+        "MemoryMirroring": "None",
         "Status": {
+            "@odata.type": "#Resource.Status",
             "State": "Enabled",
             "Health": "OK",
             "HealthRollup": "OK"
@@ -97,6 +111,7 @@
         "@odata.id": "/redfish/v1/Systems/437XR1138R2/LogServices"
     },
     "Links": {
+        "@odata.type": "#ComputerSystem.v1_4_0.Links",
         "Chassis": [
             {
                 "@odata.id": "/redfish/v1/Chassis/1U"
@@ -109,6 +124,7 @@
         ]
     },
     "Actions": {
+        "@odata.type": "#ComputerSystem.v1_0_0.Actions",
         "#ComputerSystem.Reset": {
             "target": "/redfish/v1/Systems/437XR1138R2/Actions/ComputerSystem.Reset",
             "ResetType@Redfish.AllowableValues": [
@@ -130,5 +146,5 @@
     },
     "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
     "@odata.id": "/redfish/v1/Systems/437XR1138R2",
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

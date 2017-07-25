@@ -21,34 +21,34 @@ DMTF is a not-for-profit association of industry members dedicated to promoting 
 The DMTF acknowledges the following individuals for their contributions to this document:
 * Jeff Autor - Hewlett Packard Enterprise
 * Patrick Boyd - Dell Inc.
-* David Brockhaus - Emerson Network Power
+* David Brockhaus - Vertiv
 * Richard Brunner - VMware Inc.
 * Lee Calcote - Seagate Technology
 * P Chandrasekhar - Dell Inc.
 * Chris Davenport - Hewlett Packard Enterprise
-* Gamma Dean - Emerson Network Power
-* Daniel Dufresne - EMC
+* Gamma Dean - Vertiv
+* Daniel Dufresne - Dell Inc.
 * Samer El-Haj-Mahmoud - Lenovo, Hewlett Packard Enterprise
-* George Ericson - EMC
+* George Ericson - Dell Inc.
 * Wassim Fayed - Microsoft Corporation
 * Mike Garrett - Hewlett Packard Enterprise
-* Steve Geffin - Emerson Network Power
+* Steve Geffin - Vertiv
 * Joe Handzik - Hewlett Packard Enterprise
 * Jon Hass - Dell Inc.
 * Jeff Hilland - Hewlett Packard Enterprise
-* Chris Hoffman - Emerson Network Power
+* Chris Hoffman - Vertiv
 * Steven Krig - Intel Corporation
 * John Leung - Intel Corporation
 * Jagan Molleti - Dell Inc.
 * Milena Natanov - Microsoft Corporation
 * Michael Pizzo - Microsoft Corporation
 * Chris Poblete - Dell Inc.
-* Michael Raineri - EMC
+* Michael Raineri - Dell Inc.
 * Irina Salvan - Microsoft Corporation
 * Hemal Shah - Broadcom Limited
-* Jim Shelton - Emerson Network Power
+* Jim Shelton - Vertiv
 * Tom Slaight - Intel Corporation
-* Donnie Sturgeon - Emerson Network Power
+* Donnie Sturgeon - Vertiv
 * Pawel Szymanski - Intel Corporation
 * Paul Vancil - Dell Inc.
 * Linda Wu - Super Micro Computer, Inc.
@@ -343,7 +343,12 @@ Assuming the client is connecting through an appliance named "mgmt.vendor.com", 
 
 URIs, as described in [RFC3986](#RFC3986), may also contain a query (?query) and a frag (#frag) components.  Queries are addressed in the clause [Query Parameters](#query-parameters).  Fragments (frag) shall be ignored by the server when used as the URI for submitting an operation.
 
-If a property in a response includes a value that contains a fragment to reference a property within a resource, it shall conform to the URI fragment identifier representation as specified in [RFC6901](#RFC6901).  If the property is defined as a [reference property](#reference-properties) within the schema, the fragment shall reference a valid [resource identifier](#resource-identifier-property).
+If a property in a response is a reference to another property within a resource, the "URI Fragment Identifier Representation" format as specified in [RFC6901](#RFC6901) shall be used.  If the property is defined as a [reference property](#reference-properties) within the schema, the fragment shall reference a valid [resource identifier](#resource-identifier-property).  For example, the following fragment identifies a property at index 0 of the Fans array within the resource /redfish/v1/Chassis/MultiBladeEncl/Thermal:
+~~~json
+{
+    "@odata.id": "/redfish/v1/Chassis/MultiBladeEncl/Thermal#/Fans/0"
+}
+~~~
 
 #### HTTP methods
 
@@ -2539,28 +2544,28 @@ The Targets property within SubordinateOverrides lists a hierarchical representa
             {
                 "Privilege": [ "ConfigureComponent" ]
             }
-        ],
-        "SubordinateOverrides": [
-            {
-                "Targets": [
-                    "Manager",
-                    "EthernetInterfaceCollection"
-                ],
-                "OperationMap": {
-                    "GET": [
-                        {
-                            "Privilege": [ "Login" ]
-                        }
-                    ],
-                    "PATCH": [
-                        {
-                            "Privilege": [ "ConfigureManager" ]
-                        }
-                    ]
-                }
-            }
         ]
-    }
+    },
+    "SubordinateOverrides": [
+        {
+            "Targets": [
+                "Manager",
+                "EthernetInterfaceCollection"
+            ],
+            "OperationMap": {
+                "GET": [
+                    {
+                        "Privilege": [ "Login" ]
+                    }
+                ],
+                "PATCH": [
+                    {
+                        "Privilege": [ "ConfigureManager" ]
+                    }
+                ]
+            }
+        }
+    ]
 }
 ~~~
 
@@ -2600,28 +2605,28 @@ In the following example use of the ResourceURI Override syntax for representing
             {
                 "Privilege": [ "ConfigureComponent" ]
             }
-        ],
-        "ResourceURIOverrides": [
-            {
-                "Targets": [
-                    "/redfish/v1/Systems/VM6",
-                    "/redfish/v1/Systems/Sys1"
-                ],
-                "OperationMap": {
-                    "GET": [
-                        {
-                            "Privilege": [ "Login" ]
-                        }
-                    ],
-                    "PATCH": [
-                        {
-                            "Privilege": [ "ConfigureComponents","OEMSysAdminPriv" ]
-                        }
-                    ]
-                }
-            }
         ]
-    }
+    },
+    "ResourceURIOverrides": [
+        {
+            "Targets": [
+                "/redfish/v1/Systems/VM6",
+                "/redfish/v1/Systems/Sys1"
+            ],
+            "OperationMap": {
+                "GET": [
+                    {
+                        "Privilege": [ "Login" ]
+                    }
+                ],
+                "PATCH": [
+                    {
+                        "Privilege": [ "ConfigureComponents","OEMSysAdminPriv" ]
+                    }
+                ]
+            }
+        }
+    ]
 }
 ~~~
 
