@@ -2,11 +2,11 @@
 DocTitle: Redfish Host Interface Specification
 DocNumber: '0270'
 DocClass: Normative
-DocVersion: '1.0.0'
-modified: '2016-12-07'
+DocVersion: '1.0.1'
+modified: '2017-8-04'
 status: published
 released: true
-copyright: '2014-2016'
+copyright: '2014-2017'
 ---
 
 # Foreword
@@ -360,4 +360,5 @@ For convenience when identifying the auto-generated credentials when active and 
 
 | Version | Date     | Description     |
 | ---     | ---      | ---             |
+| 1.0.1   | 2017-8-4 | Errata release. Numerous terminology clarifications and typographical corrections. Terminology for 'host', 'manager' and 'service' were edited for consistency. |
 | 1.0.0   | 2015-8-4 | Initial release |
