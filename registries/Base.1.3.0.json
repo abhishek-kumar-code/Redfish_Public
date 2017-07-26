@@ -273,10 +273,11 @@
         },
         "ResourceAlreadyExists": {
             "Description": "Indicates that a resource change or creation was attempted but that the operation cannot proceed because the resource already exists.",
-            "Message": "The requested resource of type %1 named %2 already exists.",
+            "Message": "The requested resource of type %1 with the property %2 with the value %3 already exists.",
             "Severity": "Critical",
-            "NumberOfArgs": 2,
+            "NumberOfArgs": 3,
             "ParamTypes": [
+                "string",
                 "string",
                 "string"
             ],
