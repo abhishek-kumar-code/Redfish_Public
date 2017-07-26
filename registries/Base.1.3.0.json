@@ -62,7 +62,7 @@
             "Resolution": "Correct the value for the property in the request body and resubmit the request if the operation failed."
         },
         "PropertyValueFormatError": {
-            "Description": "Indicates that a property was given the correct value type but the value of that property was not supported.  This includes value size/length exceeded.",
+            "Description": "Indicates that a property was given the correct value type but the value of that property was not supported.",
             "Message": "The value %1 for the property %2 is of a different format than the property can accept.",
             "Severity": "Warning",
             "NumberOfArgs": 2,
