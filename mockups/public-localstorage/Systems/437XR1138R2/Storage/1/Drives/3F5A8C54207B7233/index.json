@@ -1,9 +1,12 @@
 {
-    "@odata.type": "#Drive.v1_1_0.Drive",
+    "@odata.type": "#Drive.v1_2_0.Drive",
+    "Id": "3F5A8C54207B7233",
+    "Name": "Drive Sample",
     "IndicatorLED": "Lit",
     "Model": "C123",
     "Revision": "100A",
     "Status": {
+        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK"
     },
@@ -16,6 +19,7 @@
     "PartNumber": "C123-1111",
     "Identifiers": [
         {
+            "@odata.type": "#Resource.v1_1_0.Identifier",
             "DurableNameFormat": "NAA",
             "DurableName": "3F5A8C54207B7233"
         }
@@ -28,16 +32,20 @@
     "CapableSpeedGbs": 12,
     "NegotiatedSpeedGbs": 12,
     "Links": {
+        "@odata.type": "#Drive.v1_2_0.Links",
         "Volumes": [
-            {"@odata.id": "/redfish/v1/Systems/437XR1138R2/Storage/1/Volumes/1"}
+            {
+                "@odata.id": "/redfish/v1/Systems/437XR1138R2/Storage/1/Volumes/1"
+            }
         ]
     },
     "Actions": {
+        "@odata.type": "#Drive.v1_0_0.Actions",
         "#Drive.SecureErase": {
             "target": "/redfish/v1/Systems/437XR1138R2/Storage/1/Drives/3F5A8C54207B7233/Actions/Drive.SecureErase"
         }
     },
     "@odata.context": "/redfish/v1/$metadata#Drive.Drive",
     "@odata.id": "/redfish/v1/Systems/437XR1138R2/Storage/1/Drives/3F5A8C54207B7233",
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

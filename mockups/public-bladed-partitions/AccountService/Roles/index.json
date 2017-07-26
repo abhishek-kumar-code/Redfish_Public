@@ -2,7 +2,8 @@
     "@odata.type": "#RoleCollection.RoleCollection",
     "Name": "Roles Collection",
     "Members@odata.count": 3,
-    "Members": [{
+    "Members": [
+        {
             "@odata.id": "/redfish/v1/AccountService/Roles/Admin"
         },
         {

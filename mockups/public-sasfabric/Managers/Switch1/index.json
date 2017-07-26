@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#Manager.v1_1_0.Manager",
+    "@odata.type": "#Manager.v1_3_1.Manager",
     "Id": "Switch1",
     "Name": "Manager",
     "ManagerType": "ManagementController",
@@ -10,10 +10,12 @@
     "DateTime": "2015-03-13T04:14:33+06:00",
     "DateTimeLocalOffset": "+06:00",
     "Status": {
+        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK"
     },
     "CommandShell": {
+        "@odata.type": "#Manager.v1_0_0.CommandShell",
         "ServiceEnabled": true,
         "MaxConcurrentSessions": 4,
         "ConnectTypesSupported": [
@@ -34,11 +36,14 @@
     "Redundancy": [
         {
             "@odata.id": "/redfish/v1/Managers/Switch1#/Redundancy/0",
+            "@odata.type": "#Redundancy.v1_2_0.Redundancy",
             "MemberId": "Redundancy",
+            "Name": "Manager Redundancy",
             "Mode": "Failover",
             "MaxNumSupported": 2,
             "MinNumNeeded": 1,
             "Status": {
+                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             },
@@ -53,6 +58,7 @@
         }
     ],    
     "Links": {
+        "@odata.type": "#Manager.v1_1_0.Links",
         "ManagerForChassis": [
             {
                 "@odata.id": "/redfish/v1/Chassis/Switch1"
@@ -67,6 +73,7 @@
         "Oem": {}
     },
     "Actions": {
+        "@odata.type": "#Manager.v1_0_0.Actions",
         "#Manager.Reset": {
             "target": "/redfish/v1/Managers/Switch1/Actions/Manager.Reset",
             "ResetType@Redfish.AllowableValues": [
@@ -79,5 +86,5 @@
     "Oem": {},
     "@odata.context": "/redfish/v1/$metadata#Manager.Manager",
     "@odata.id": "/redfish/v1/Managers/Switch1",
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

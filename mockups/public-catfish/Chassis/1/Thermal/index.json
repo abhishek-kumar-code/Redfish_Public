@@ -1,14 +1,16 @@
 {
-    "@odata.type": "#Thermal.v1_1_0.Thermal",
+    "@odata.type": "#Thermal.v1_3_0.Thermal",
     "Id": "Thermal",
     "Name": "Thermal",
     "Temperatures": [
         {
             "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Temperatures/0",
+            "@odata.type": "#Thermal.v1_3_0.Temperature",
             "MemberId": "0",
             "Name": "Inlet Temp",
             "SensorNumber": 42,
             "Status": {
+                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             },
@@ -16,16 +18,18 @@
             "UpperThresholdNonCritical": 35,
             "UpperThresholdCritical": 40,
             "UpperThresholdFatal": 50,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 200,
+            "MinReadingRangeTemp": 0,
+            "MaxReadingRangeTemp": 200,
             "PhysicalContext": "Intake"
         },
         {
             "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Temperatures/1",
+            "@odata.type": "#Thermal.v1_3_0.Temperature",
             "MemberId": "1",
             "Name": "Board Temp",
             "SensorNumber": 43,
             "Status": {
+                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             },
@@ -33,50 +37,56 @@
             "UpperThresholdNonCritical": 30,
             "UpperThresholdCritical": 40,
             "UpperThresholdFatal": 50,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 200,
+            "MinReadingRangeTemp": 0,
+            "MaxReadingRangeTemp": 200,
             "PhysicalContext": "SystemBoard"
         },
         {
             "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Temperatures/2",
+            "@odata.type": "#Thermal.v1_3_0.Temperature",
             "MemberId": "2",
             "Name": "CPU1 Temp",
             "SensorNumber": 44,
             "Status": {
+                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             },
             "ReadingCelsius": 45,
             "UpperThresholdNonCritical": 60,
             "UpperThresholdCritical": 82,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 200,
+            "MinReadingRangeTemp": 0,
+            "MaxReadingRangeTemp": 200,
             "PhysicalContext": "CPU"
         },
         {
             "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Temperatures/3",
+            "@odata.type": "#Thermal.v1_3_0.Temperature",
             "MemberId": "3",
             "Name": "CPU2 Temp",
             "SensorNumber": 45,
             "Status": {
+                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             },
             "ReadingCelsius": 46,
             "UpperThresholdNonCritical": 60,
             "UpperThresholdCritical": 82,
-            "MinReadingRange": 0,
-            "MaxReadingRange": 200,
+            "MinReadingRangeTemp": 0,
+            "MaxReadingRangeTemp": 200,
             "PhysicalContext": "CPU"
         }
     ],
     "Fans": [
         {
             "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Fans/0",
+            "@odata.type": "#Thermal.v1_3_0.Fan",
             "MemberId": "0",
             "Name": "BaseBoard System Fan 1",
             "PhysicalContext": "Backplane",
             "Status": {
+                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             },
@@ -98,10 +108,12 @@
         },
         {
             "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Fans/1",
+            "@odata.type": "#Thermal.v1_3_0.Fan",
             "MemberId": "1",
             "Name": "BaseBoard System Fan 2",
             "PhysicalContext": "Backplane",
             "Status": {
+                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             },
@@ -125,6 +137,7 @@
     "Redundancy": [
         {
             "@odata.id": "/redfish/v1/Chassis/1/Thermal#/Redundancy/0",
+            "@odata.type": "#Redundancy.v1_2_0.Redundancy",
             "MemberId": "0",
             "Name": "BaseBoard System Fans",
             "RedundancySet": [
@@ -137,6 +150,7 @@
             ],
             "Mode": "N+m",
             "Status": {
+                "@odata.type": "#Resource.Status",
                 "State": "Enabled",
                 "Health": "OK"
             },
@@ -146,5 +160,5 @@
     ],
     "@odata.context": "/redfish/v1/$metadata#Thermal.Thermal",
     "@odata.id": "/redfish/v1/Chassis/1/Thermal",
-    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }
