@@ -681,17 +681,17 @@
           <Annotation Term="OData.LongDescription" String="This value shall be used to specify the ordering for LocationOrdinalValue is bottom to top."/>
         </Member>
         <Member Name="LeftToRight">
-          <Annotation Term="OData.Description" String="Defines the ordering for the LocationOrdinalValue is front to back."/>
-          <Annotation Term="OData.LongDescription" String="This value shall be used to specify the ordering for LocationOrdinalValue is front to back."/>
+          <Annotation Term="OData.Description" String="Defines the ordering for the LocationOrdinalValue is left to right."/>
+          <Annotation Term="OData.LongDescription" String="This value shall be used to specify the ordering for LocationOrdinalValue is left to right."/>
         </Member>
         <Member Name="RightToLeft">
-          <Annotation Term="OData.Description" String="Defines the ordering for the LocationOrdinalValue is front to back."/>
-          <Annotation Term="OData.LongDescription" String="This value shall be used to specify the ordering for LocationOrdinalValue is front to back."/>
+          <Annotation Term="OData.Description" String="Defines the ordering for the LocationOrdinalValue is right to left."/>
+          <Annotation Term="OData.LongDescription" String="This value shall be used to specify the ordering for LocationOrdinalValue is right to left."/>
         </Member>       
       </EnumType>
       
       <ComplexType Name="PartLocation">
-        <Annotation Term="OData.Description" String="The part location within the placement ."/>
+        <Annotation Term="OData.Description" String="The part location within the placement."/>
         <Annotation Term="OData.LongDescription" String="The value shall describe a location within a resource.  This representation shall be used to indicate the location within the Placement."/>
         <Property Name="ServiceLabel" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -705,8 +705,8 @@
         </Property>
         <Property Name="LocationOrdinalValue" Type="Edm.Int64" DefaultValue="0">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The number of the location type the part is in.  If LocationType is slot and this unit is in slot 2 then the LocationOrdinalValue will be 2."/>
-          <Annotation Term="OData.LongDescription" String="The value shall be the ordinal value the LocationType of the part. LocationOrdinalValue be measured based on the Orientation value starting with 0."/>
+          <Annotation Term="OData.Description" String="The number that represents the location of the part.  If LocationType is slot and this unit is in slot 2 then the LocationOrdinalValue will be 2."/>
+          <Annotation Term="OData.LongDescription" String="The value shall be the number that represents the location of the part based on the LocationType.  LocationOrdinalValue shall be measured based on the Orientation value starting with 0."/>
         </Property>
         <Property Name="Reference" Type="Resource.v1_5_0.Reference">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -719,15 +719,15 @@
           <Annotation Term="OData.LongDescription" String="The value shall be a Orientation enumeration literal indicating the orientation for the ordering used by the LocationOrdinalValue property."/>
         </Property>        
       </ComplexType>      
-   
+
       <ComplexType Name="Location" BaseType="Resource.v1_3_0.Location">
         <Property Name="PartLocation" Type="Resource.v1_5_0.PartLocation">
           <Annotation Term="OData.Description" String="Postal address of the addressed resource."/>
           <Annotation Term="OData.LongDescription" String="The value shall be a postal address of the resource."/>
         </Property>
       </ComplexType>
-      
+
     </Schema>    
-    
+
   </edmx:DataServices>
 </edmx:Edmx>
