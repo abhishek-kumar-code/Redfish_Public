@@ -1371,7 +1371,7 @@ where
 * *Namespace* = the name of the namespace in which the type is defined
 * *TypeName* = the name of the type
 
-The Namespace for types defined by this specification is of the form:
+The namespace for types defined by this specification is of the form:
 
   *ResourceTypeName*.v*MajorVersion*\_*MinorVersion*\_*Errata*
 
