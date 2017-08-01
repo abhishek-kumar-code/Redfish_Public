@@ -101,7 +101,8 @@
         </Annotation>
         <Annotation Term="Capabilities.DeleteRestrictions">
           <Record>
-            <PropertyValue Property="Deletable" Bool="false"/>
+            <PropertyValue Property="Deletable" Bool="true"/>
+            <Annotation Term="OData.Description" String="A Composed Computer System can be deleted when a client would like to retire it."/>
           </Record>
         </Annotation>
       </EntityType>

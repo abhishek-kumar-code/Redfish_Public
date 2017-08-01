@@ -15,7 +15,7 @@
     "IndicatorLED": "Lit",
     "PowerState": "On",
     "Location" : {
-        "@odata.type": "Resource.v1_3_0.Location",
+        "@odata.type": "#Resource.v1_3_0.Location",
         "PostalAddress": {
             "Country": "US",
             "Territory": "TX",

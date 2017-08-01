@@ -1,7 +1,5 @@
 {
-    "@odata.context": "/redfish/v1/$metadata#VirtualMedia.VirtualMedia",
-    "@odata.id": "/redfish/v1/Managers/EncMgr2/VM/CDDVD",
-    "@odata.type": "#VirtualMedia.v1_0_0.VirtualMedia",
+    "@odata.type": "#VirtualMedia.v1_1_0.VirtualMedia",
     "Id": "CDDVD",
     "Name": "Virtual Media",
     "MediaTypes": [
@@ -12,5 +10,8 @@
     "ImageName": "myimage.iso",
     "ConnectedVia": "Applet",
     "Inserted": true,
-    "WriteProtected": false
+    "WriteProtected": false,
+    "@odata.context": "/redfish/v1/$metadata#VirtualMedia.VirtualMedia",
+    "@odata.id": "/redfish/v1/Managers/EncMgr2/VM/CDDVD",
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }
