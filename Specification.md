@@ -2280,7 +2280,7 @@ The Origin header should be saved in reference to this session creation and comp
 The response to the POST request to create a session shall include the following:
 
 * An X-Auth-Token header that contains a "session auth token" that the client can use an subsequent requests
-* A "Location header that contains a hyperlink to the newly created session resource
+* A Location header that contains a hyperlink to the newly created session resource
 * The JSON response body that contains a full representation of the newly created session object (example below)
 
 ~~~http
