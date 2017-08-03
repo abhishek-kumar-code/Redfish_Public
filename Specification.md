@@ -2259,7 +2259,7 @@ For functionality requiring multiple Redfish operations, or for security reasons
 
 ##### Session login
 
-A Redfish session is created, without requiring an authentication header, by an HTTP POST to the SessionService' Sessions Resource Collection, including the following POST body:
+A Redfish session is created, without requiring an authentication header, by an HTTP POST to the SessionService's Sessions Resource Collection, including the following POST body:
 
 ~~~http
 POST /redfish/v1/SessionService/Sessions HTTP/1.1
@@ -2277,11 +2277,11 @@ OData-Version: 4.0
 
 The Origin header should be saved in reference to this session creation and compared to subsequent requests using this session to verify the request has been initiated from an authorized client domain.
 
-The response to the POST request to create a session includes:
+The response to the POST request to create a session shall include the following:
 
-*  an X-Auth-Token header that contains a "session auth token" that the client can use an subsequent requests, and
-*  a "Location header that contains a hyperlink to the newly created session resource.
-*  The JSON response body that contains a full representation of the newly created session object:
+* An X-Auth-Token header that contains a "session auth token" that the client can use an subsequent requests
+* A Location header that contains a hyperlink to the newly created session resource
+* The JSON response body that contains a full representation of the newly created session object (example below)
 
 ~~~http
 Location: /redfish/v1/SessionService/Sessions/1
