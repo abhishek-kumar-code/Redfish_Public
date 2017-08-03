@@ -38,12 +38,6 @@
       <Term Name="Settings" Type="Settings.Settings">
         <Annotation Term="OData.Description" String="Reference to the resource that represents the settings to be applied to this object."/>
       </Term>
-      <Term Name="AutoExpandReferences" Type="Edm.Boolean" DefaultValue="true">
-        <Annotation Term="OData.Description" String="The term can be applied to a navigation property in order to specify that the default behavior for the service is to expand the references for the related resource or collection of resources in responses."/>
-      </Term>
-      <Term Name="AutoExpand" Type="Edm.Boolean" DefaultValue="true">
-        <Annotation Term="OData.Description" String="The term can be applied to a navigation property in order to specify that the default behavior for the service is to expand the related resource or collection of resources in responses."/>
-      </Term>
       <Term Name="IPv6Format" Type="Edm.Boolean" DefaultValue="true">
         <Annotation Term="OData.Description" String="The term can be applied to a property or parameter in order to specify that IPv6 addressing rules apply to that property or parameter."/>
       </Term>
