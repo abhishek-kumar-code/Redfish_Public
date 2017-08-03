@@ -906,8 +906,8 @@ Responses that represent a single resource shall contain a context property name
 
 The context URL for a resource is of one of the following two forms:
 
- *MetadataUrl*#*ResourceType*
- or
+ *MetadataUrl*#*ResourceType*  
+ or  
  *MetadataUrl*#*ResourcePath*/$entity
 
 where
