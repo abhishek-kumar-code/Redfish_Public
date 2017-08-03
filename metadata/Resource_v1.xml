@@ -289,11 +289,13 @@
         <Annotation Term="OData.LongDescription" String="This type shall describe the location of a resource."/>
         <Property Name="Info" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="Redfish.Deprecated" String="This property has been Deprecated in favor of new properties defined in Resource.v1_3_0.Location and Resource.v1_5_0.Location."/>
           <Annotation Term="OData.Description" String="This indicates the location of the resource."/>
           <Annotation Term="OData.LongDescription" String="This property shall represent the location of the resource."/>
         </Property>
         <Property Name="InfoFormat" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="Redfish.Deprecated" String="This property has been Deprecated in favor of new properties defined in Resource.v1_3_0.Location and Resource.v1_5_0.Location."/>
           <Annotation Term="OData.Description" String="This represents the format of the Info property."/>
           <Annotation Term="OData.LongDescription" String="This property shall represent the format of the Info property."/>
         </Property>
