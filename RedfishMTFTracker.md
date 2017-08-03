@@ -30,10 +30,26 @@ This document is used by the Marketing Task Force to coordinate outbound messagi
 
 ## Educational Material
 
-(videos, white papers, presentations, mockups)
+### Redfish School
+|  Subject  |  Presenter   |
+|  Composability |    Mike R  |
+|  Storage   | Mike R  |
+|  Case for Redfish  |   Jeff H  |
+|  Memory  |  Jeff H |
+|  Fabric |    |
+|  
+### White Papers
 
-### New materials
-### Upcoming revisions
+|  Title  |  Subject   | New/Modified |  Date   |
+
+### Presentations
+
+|  Title  |  Subject   | New/Modified |  Date   |
+
+
+### Mockup Changes
+
+|  Title  |  Subject   | New/Modified |  Date   |
 
 ## Outreach
 
