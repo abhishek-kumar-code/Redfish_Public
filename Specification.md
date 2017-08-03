@@ -1330,6 +1330,30 @@ All Redfish schemas produced, approved and published by the SPMF are available f
 | redfish.dmtf.org/schemas/v1 |  All v1.xx schema files.  Every v1.xx minor or errata release of each schema file. |
 | redfish.dmtf.org/schemas/archive | Sub-folders contain schema files specific to a particular version release. |
 
+#### Schema file naming conventions
+
+Standard Redfish schema files published in the repository, or those created by others and re-published, shall follow a set of naming conventions.  These conventions are intended to ensure consistent naming and eliminate naming collisions.
+
+##### CSDL (XML) schema file naming
+
+Redfish CSDL schema files shall be named using the [TypeName](#type-identifiers) value, followed by "_v" and the major version of the schema.  As a single CSDL schema file contains all minor revisions of the schema, only the major version is used in the file name.  The file name shall be formatted as:
+   
+  *TypeName*_*vMajorVersion*.*xml*
+
+For example, version 1.3.0 of the Chassis schema would be named "Chassis_v1.xml". 
+
+##### JSON schema file naming
+
+Redfish JSON schema files shall be named using the [Type identfiers](#type-identifiers), following the format:
+
+  *ResourceTypeName.vMajorVersion_MinorVersion_Errata.json*
+  
+For example, version 1.3.0 of the Chassis schema would be named "Chassis.v1_3_0.json".
+
+##### OEM schema file naming
+
+To avoid namespace collisions with current or future standard Redfish schema files, 3rd parties defining Redfish schemas should prepend an organization name to the Namespace as the file name.  For example, "ContosoDisk_v1.xml" or "ContosoDisk.v1.0.4.json".
+ 
 #### Programmatic access to schema files
 
 Programs may access the Schema Repository using the redfish.dmtf.org/schemas/v1 durable URL, as this folder will contain each released version of each schema.  Programs incorporating schema usage should implement a local schema cache to reduce latency, program requirements for Internet access and undue traffic burden on the DMTF website.
