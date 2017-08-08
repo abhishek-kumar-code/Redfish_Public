@@ -583,7 +583,7 @@ OData markup ([resource identifiers](#resource-identifier-property), [type](#typ
 
 ##### Replace (PUT)
 
-The PUT method is used to completely replace a resource.  Properties omitted from the request body are reset to their default value.
+The PUT method is used to completely replace a resource.  Properties omitted from the request body, required by the resource definition, or normally supplied by the Service may be added by the Service to the resulting resource.
 
 * Services may support the PUT method to replace a resource in whole.  If a service does not implement this method, status code [405](#status-405) shall be returned.
 * Services may return a representation of the resource after any server-side transformations in the body of the response.
