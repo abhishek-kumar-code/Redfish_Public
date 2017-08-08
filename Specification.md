@@ -2455,8 +2455,8 @@ privilege mapping would represent behavior for all Manager resources in a servic
 Several situations occur where operation to privilege mapping varies from what might be specified at an entity schema level.
 These situations are:
 * Property Override - Where a property has different privilege requirements that the resource (document) it is in.  For example, the Password 
-property on the ManagerAccountresource requires the "ConfigureSelf" or the "ConfigureUser" privilege to change in contrast 
-to the "ConfigureUser" privilege required for the rest of the properties on ManagerAccount resources.
+property on the ManagerAccountresource requires the "ConfigureSelf" or the "ConfigureUsers" privilege to change in contrast 
+to the "ConfigureUsers" privilege required for the rest of the properties on ManagerAccount resources.
 * Subordinate Override - Where an entity is used in context of another entity and the contextual privileges need to govern.  For example, the 
 privileges for PATCH operations on EthernetInterface resources depends on whether the resource is subordinate to Manager
 (ConfigureManager is required) or ComputerSystem (ConfigureComponentis required) resources.
@@ -2466,7 +2466,7 @@ The overrides are defined in the context of the operation to privilege mapping f
 ##### Property Override Example
 
 In the following example, the Password property on the ManagerAccount
-resource requires the "ConfigureSelf" or the "ConfigureUser" privilege to change in contrast to the "ConfigureUser" privilege 
+resource requires the "ConfigureSelf" or the "ConfigureUsers" privilege to change in contrast to the "ConfigureUsers" privilege 
 required for the rest of the properties on ManagerAccount resources.
 ~~~json
 {
@@ -2477,7 +2477,7 @@ required for the rest of the properties on ManagerAccount resources.
                 "Privilege": [ "ConfigureManager" ]
             },
             {
-                "Privilege": [ "ConfigureUser" ]
+                "Privilege": [ "ConfigureUsers" ]
             },
             {
                 "Privilege": [ "ConfigureSelf" ]
@@ -2490,22 +2490,22 @@ required for the rest of the properties on ManagerAccount resources.
         ],
         "PATCH": [
             {
-                "Privilege": [ "ConfigureUser" ]
+                "Privilege": [ "ConfigureUsers" ]
             }
         ],
         "POST": [
             {
-                "Privilege": [ "ConfigureUser" ]
+                "Privilege": [ "ConfigureUsers" ]
             }
         ],
         "PUT": [
             {
-                "Privilege": [ "ConfigureUser" ]
+                "Privilege": [ "ConfigureUsers" ]
             }
         ],
         "DELETE": [
             {
-                "Privilege": [ "ConfigureUser" ]
+                "Privilege": [ "ConfigureUsers" ]
             }
         ]
     },
