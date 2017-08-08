@@ -72,8 +72,10 @@
 
       <!--Unversioned Base Types-->
 
+      <EntityType Name="ItemOrCollection" Abstract="true"/>
+
       <!--Base type for Resources and ReferenceableMembers-->
-      <EntityType Name="Item" Abstract="true">
+      <EntityType Name="Item" BaseType="Resource.ItemOrCollection" Abstract="true">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="This is the base type for resources and referenceable members."/>
         <Property Name="Oem" Type="Resource.Oem" Nullable="false">
@@ -86,7 +88,7 @@
 
       <EntityType Name="Resource" BaseType="Resource.Item" Abstract="true"/>
 
-      <EntityType Name="ResourceCollection" Abstract="true"/>
+      <EntityType Name="ResourceCollection" BaseType="Resource.ItemOrCollection" Abstract="true"/>
 
       <!--Shared types-->
 
