@@ -587,6 +587,7 @@ The PUT method is used to completely replace a resource.  Properties omitted fro
 
 * Services may support the PUT method to replace a resource in whole.  If a service does not implement this method, status code [405](#status-405) shall be returned.
 * Services may return a representation of the resource after any server-side transformations in the body of the response.
+* Services may reject requests which do not include properties required by the resource definition (schema).
 * Services should return status code [405](#status-405) if the client specifies a PUT request against a Resource Collection.
 * The PUT operation should be idempotent in the absence of outside changes to the resource, with the possible exception that ETAG values may change as the result of this operation.
 
