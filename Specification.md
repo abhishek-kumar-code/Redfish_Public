@@ -583,10 +583,11 @@ OData markup ([resource identifiers](#resource-identifier-property), [type](#typ
 
 ##### Replace (PUT)
 
-The PUT method is used to completely replace a resource.  Properties omitted from the request body are reset to their default value.
+The PUT method is used to completely replace a resource.  Properties omitted from the request body, required by the resource definition, or normally supplied by the Service may be added by the Service to the resulting resource.
 
 * Services may support the PUT method to replace a resource in whole.  If a service does not implement this method, status code [405](#status-405) shall be returned.
 * Services may return a representation of the resource after any server-side transformations in the body of the response.
+* Services may reject requests which do not include properties required by the resource definition (schema).
 * Services should return status code [405](#status-405) if the client specifies a PUT request against a Resource Collection.
 * The PUT operation should be idempotent in the absence of outside changes to the resource, with the possible exception that ETAG values may change as the result of this operation.
 
@@ -906,21 +907,15 @@ Responses that represent a single resource shall contain a context property name
 
 The context URL for a resource is of one of the following two forms:
 
- *MetadataUrl*#*ResourceType*[(*Selectlist*)]
- *MetadataUrl*#*ResourcePath*[(*Selectlist*)]/$entity
+ *MetadataUrl*#*ResourceType*  
+ or  
+ *MetadataUrl*#*ResourcePath*/$entity
 
 where
 * *MetadataUrl* = the metadata url of the service (/redfish/v1/$metadata)
 * *ResourceType* = the fully qualified name of the unversioned resource type
 * *ResourcePath* = the path from the service root to the singleton or Resource Collection containing the resource
-* *Selectlist* = comma-separated [list of properties](#select-list) included in the response if the response includes a subset of properties defined for the represented resources.
 * *$entity* = a designator that the response is a single resource from either an entity set or specified by a navigation property.
-
-###### Select list
-
-If a response contains a subset of the properties defined in the Redfish Schema for a type, then the context URL shall specify the subset of properties included. An asterix (*) can be used to specify "all structural properties" for a given resource.
-
-Expanded [reference properties](#reference-properties) shall be included in the select list if the result includes a subset of the properties defined for the expanded resource.
 
 For example, the following context URL specifies that the result contains a single ComputerSystem resource:
 
