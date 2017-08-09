@@ -2,9 +2,9 @@
 DocTitle: Redfish Scalable Platforms Management API Specification
 DocNumber: '0266'
 DocClass: Normative
-DocVersion: '1.2.0'
-modified: '2017-4-14'
-SupersedesVersion: '1.1.0'
+DocVersion: '1.2.1'
+modified: '2017-8-10'
+SupersedesVersion: '1.2.0'
 status: published
 released: true
 copyright: '2014-2017'
@@ -2722,6 +2722,21 @@ OData-Version: 4.0
 
 | Version | Date     | Description     |
 | ---     | ---      | ---             |
+| 1.2.1   | 2017-8-10| Clarified wording of the "Oem" object definition. |
+|         |          | Clarified wording of the "Partial resource results" section. |
+|         |          | Clarified behavior of a Service when receiving a PATCH with an empty JSON object. |
+|         |          | Added statement about other uses of the HTTP 503 response code. |
+|         |          | Clarified format of URI fragments to conform to RFC6901. |
+|         |          | Clarified use of absolute and relative URIs. |
+|         |          | Clarified definition of the "target" property as originating from OData. |
+|         |          | Clarified distinction between "hyperlinks" and the "Links Property". |
+|         |          | Corrected the JSON example of the privilege map. |
+|         |          | Clarified format of the "@odata.context" property. |
+|         |          | Added clauses about the schema file naming conventions. |
+|         |          | Clarified behavior of a Service when receiving a PUT with missing properties. |
+|         |          | Clarified valid values in the "Accept" header to include wildcards per RFC7231. |
+|         |          | Corrected "ConfigureUser" privilege to be spelled "ConfigureUsers". |
+|         |          | Corrected Session Login section to include normative language. |
 | 1.2.0   | 2017-4-14| Added support for the Redfish Composability Service. |
 |         |          | Clarified Service handling of the Accept-Encoding header in a request. |
 |         |          | Improved consistency and formatting of example requests and responses throughout. |
