@@ -30,7 +30,16 @@
                         }
                     ]
                 }
-            }
+            },
+	    {
+                "CapabilitiesObject": { "@odata.id": "/redfish/v1/Systems/CapabilitiesEN" },
+                "UseCase": "ComputerSystemEnumeratedComposition",
+                "Links": {
+                    "TargetCollection": {
+			"@odata.id": "/redfish/v1/Systems"
+		    }
+		}
+            }    
         ]
     },
     "@odata.context": "/redfish/v1/$metadata#ComputerSystemCollection.ComputerSystemCollection",

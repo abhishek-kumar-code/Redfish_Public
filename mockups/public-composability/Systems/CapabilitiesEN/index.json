@@ -1,0 +1,61 @@
+{
+    "@odata.type": "#ComputerSystem.v1_4_0.ComputerSystem",
+    "Id": "Capabilities",
+    "Name": "Capabilities for the Zone",
+    "Name@Redfish.RequiredOnCreate": true,
+    "Name@Redfish.SetOnlyOnCreate": true,
+    "Description@Redfish.OptionalOnCreate": true,
+    "Description@Redfish.SetOnlyOnCreate": true,
+    "HostName@Redfish.OptionalOnCreate": true,
+    "HostName@Redfish.UpdatableAfterCreate": true,
+    "Boot@Redfish.OptionalOnCreate": true,
+    "Boot": {
+        "@odata.type": "#ComputerSystem.v1_1_0.Boot",
+        "BootSourceOverrideEnabled@Redfish.OptionalOnCreate": true,
+        "BootSourceOverrideEnabled@Redfish.UpdatableAfterCreate": true,
+        "BootSourceOverrideTarget@Redfish.OptionalOnCreate": true,
+        "BootSourceOverrideTarget@Redfish.UpdatableAfterCreate": true,
+        "BootSourceOverrideTarget@Redfish.AllowableValues": [
+            "None",
+            "Pxe",
+            "Usb",
+            "Hdd"
+        ]
+    },
+    "Processors": {
+        "@odata.type": "#ComputerSystem.v1_1_0.Processor",
+        "TotalCores@Redfish.RequiredOnCreate": true,
+	"Model@Redfish.OptionalOnCreate": true,
+        "InstructionSet@Redfish.OptionalOnCreate": true,
+        "AchieveableSpeedMHz@Redfish.OptionalOnCreate": true
+    },
+    "Memory": {
+        "@odata.type": "#ComputerSystem.v1_1_0.Memory",
+        "CapacityMiB@Redfish.RequiredOnCreate": true,
+	"DimmDeviceType@Redfish.OptionalOnCreate": true,
+        "SpeedMHz@Redfish.OptionalOnCreate": true,
+        "DataWidthBits@Redfish.OptionalOnCreate": true
+    },
+    "RemoteDrives": {
+        "@odata.type": "#ComputerSystem.v1_1_0.Drives",
+        "CapacityGiB@Redfish.RequiredOnCreate": true,
+	"iSCSIAddress@Redfish.OptionalOnCreate": true
+    },
+    "LocalDrives": {
+        "@odata.type": "#ComputerSystem.v1_1_0.Drives",
+        "CapacityGiB@Redfish.RequiredOnCreate": true,
+	"Type@Redfish.OptionalOnCreate": true,
+	"MinRPM@Redfish.OptionalOnCreate": true,
+	"Interface@Redfish.OptionalOnCreate": true
+    },
+    "NetworkInterfaces": {
+        "@odata.type": "#ComputerSystem.v1_1_0.EthernetInterface",
+        "SpeedMbps@Redfish.RequiredOnCreate": true,
+	"PVID@Redfish.OptionalOnCreate": true,
+	"VLANs@Redfish.OptionalOnCreate": true
+    },
+
+    "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
+    "@odata.id": "/redfish/v1/Systems/CapabilitiesEN",
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}
