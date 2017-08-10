@@ -1,11 +1,9 @@
 {
-    "@Redfish.Copyright":"Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
-    "@odata.context": "/redfish/v1/$metadata#EthernetInterface.EthernetInterface",
-    "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock1/EthernetInterfaces/Block1OnboardNIC",
     "@odata.type": "#EthernetInterface.v1_3_0.EthernetInterface",
     "Id": "Block1OnboardNIC",
     "Name": "Integrated Ethernet Interface",
     "Status": {
+        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK"
     },
@@ -18,6 +16,7 @@
     "MTUSize": 1500,
     "IPv4Addresses": [
         {
+            "@odata.type": "#IPAddresses.v1_0_0.IPv4Address",
             "Address": "192.168.70.80",
             "SubnetMask": "255.255.255.0",
             "AddressOrigin": "DHCP",
@@ -25,8 +24,12 @@
         }
     ],
     "Links": {
+        "@odata.type": "#EthernetInterface.v1_3_0.Links",
         "Chassis": {
             "@odata.id": "/redfish/v1/Chassis/ComposableModule1"
         }
-    }
+    },
+    "@odata.context": "/redfish/v1/$metadata#EthernetInterface.EthernetInterface",
+    "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/ComputeBlock1/EthernetInterfaces/Block1OnboardNIC",
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }

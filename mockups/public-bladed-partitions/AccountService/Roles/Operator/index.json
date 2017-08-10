@@ -1,5 +1,5 @@
 {
-    "@odata.type": "#Role.v1_0_2.Role",
+    "@odata.type": "#Role.v1_1_0.Role",
     "Id": "Operator",
     "Name": "User Role",
     "Description": "Operator User Role",

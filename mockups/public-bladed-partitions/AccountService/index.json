@@ -1,9 +1,10 @@
 {
-    "@odata.type": "#AccountService.v1_0_2.AccountService",
+    "@odata.type": "#AccountService.v1_2_0.AccountService",
     "Id": "AccountService",
     "Name": "Account Service",
     "Description": "Account Service",
     "Status": {
+        "@odata.type": "#Resource.Status",
         "State": "Enabled",
         "Health": "OK"
     },
