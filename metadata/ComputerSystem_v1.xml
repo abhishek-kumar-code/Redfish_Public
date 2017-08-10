@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!---->
 <!--################################################################################       -->
-<!--# Redfish Schema:  ComputerSystem  v1.4.1-->
+<!--# Redfish Schema:  ComputerSystem  v1.5.0-->
 <!--#                                                                                      -->
 <!--# For a detailed change log, see the README file contained in the DSP8010 bundle,      -->
 <!--# available at http://www.dmtf.org/standards/redfish                                   -->
@@ -751,48 +751,36 @@
         </NavigationProperty>
       </ComplexType>
     </Schema>
-	
-	<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_4_1">
-	
-      <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_4_0.ComputerSystem">
-	  
-		<NavigationProperty Name="ClientComputerSystems" 
-			Type="ComputerSystemCollection.ComputerSystemCollection" ContainsTarget="true">
-			<Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-			<Annotation Term="OData.Description" 
-				String="A reference to the collection of ComputerSystems that are realized, in whole or in part, from this ComputerSystem."/>
-			<Annotation Term="OData.LongDescription" 
-				String="The value shall reference a collection of ComputerSystems that are realized, in whole or in part, from this ComputerSystem."/>
-			<Annotation Term="OData.AutoExpandReferences"/>
-		</NavigationProperty>	
-				
-		<NavigationProperty Name="SupplyingComputerSystems" 
-			Type="ComputerSystemCollection.ComputerSystemCollection" ContainsTarget="true">
-			<Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
-			<Annotation Term="OData.Description" 
-				String="A reference to the collection of ComputerSystems that contribute, in whole or in part, to the implementation of this ComputerSystem."/>
-			<Annotation Term="OData.LongDescription" 
-				String="The value shall reference a collection of ComputerSystems that contribute, in whole or in part, to the implementation of this ComputerSystem."/>
-			<Annotation Term="OData.AutoExpandReferences"/>
-		</NavigationProperty>
-		
-		<NavigationProperty Name="Redundancy" Type="Collection(Redundancy.Redundancy)" ContainsTarget="true">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="A reference to a collection of Redundancy entities that each name a set of computer systems that provide redundancy for this ComputerSystem."/>
-          <Annotation Term="OData.LongDescription" String="If present, each entry shall reference a redundancy entity that specifies a kind and level of redundancy and a collection (RedundancySet) of other computer systems that provide the specified redundancy to this ComputerSystem."/>
-          <Annotation Term="OData.AutoExpandReferences"/>
-        </NavigationProperty>
-	  </EntityType>
-	  
-    </Schema>
-	
-	
-	
-	
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_4_1">
       <Annotation Term="OData.Description" String="This version was created to show annotations in previous namespaces were updated."/>
       <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_4_0.ComputerSystem"/>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="ComputerSystem.v1_5_0">
+      <EntityType Name="ComputerSystem" BaseType="ComputerSystem.v1_4_1.ComputerSystem">
+        <NavigationProperty Name="Redundancy" Type="Collection(Redundancy.Redundancy)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A reference to a collection of Redundancy entities that each name a set of computer systems that provide redundancy for this ComputerSystem."/>
+          <Annotation Term="OData.LongDescription" String="If present, each entry shall reference a redundancy entity that specifies a kind and level of redundancy and a collection (RedundancySet) of other ComputerSystems that provide the specified redundancy to this ComputerSystem."/>
+          <Annotation Term="OData.AutoExpand"/>
+        </NavigationProperty>
+      </EntityType>
+
+      <ComplexType Name="Links" BaseType="ComputerSystem.v1_4_0.Links">
+        <NavigationProperty Name="ClientComputerSystems" Type="Collection(ComputerSystem.ComputerSystem)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="An array of references to ComputerSystems that are realized, in whole or in part, from this ComputerSystem."/>
+          <Annotation Term="OData.LongDescription" String="The value shall be an array of references to ComputerSystems that are realized, in whole or in part, from this ComputerSystem."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        <NavigationProperty Name="SupplyingComputerSystems" Type="Collection(ComputerSystem.ComputerSystem)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="An array of references to ComputerSystems that contribute, in whole or in part, to the implementation of this ComputerSystem."/>
+          <Annotation Term="OData.LongDescription" String="The value shall be an array of references to ComputerSystems that contribute, in whole or in part, to the implementation of this ComputerSystem."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+      </ComplexType>
     </Schema>
 
   </edmx:DataServices>

@@ -2,28 +2,18 @@
     "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
     "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
     "@odata.id": "/redfish/v1/Systems/Cluster",
-    "@odata.type": "#ComputerSystem.v1_4_1.ComputerSystem",
+    "@odata.type": "#ComputerSystem.v1_5_0.ComputerSystem",
     "Id": "Cluster",
     "Name": "A ComputerSystem Cluster",
-	"SupplyingComputerSystems": {"@odata.id": "/redfish/v1/Systems/Cluster/SupplyingComputerSystems"},
-    "Redundancy": [
-		{
-			"@odata.id": "/redfish/v1/Systems/Cluster#/Redundancy/0",
-			"@odata.type": "#Redundancy.v1_2_0.Redundancy",
-			"MemberId": "0",
-			"Name": "A ComputerSystem Cluster",
-			"Mode": "Sharing",
-			"MinNumNeeded": 2,
-			"Status": {
-				"State": "Enabled",
-				"Health": "OK"
-			},
-			"RedundancySet": [
-						{"@odata.id": "/redfish/v1/Systems/Node3"},
-						{"@odata.id": "/redfish/v1/Systems/Node4"} 
-			],
-			"RedundancyEnabled": true
-		} 
-	],
-    "Links": {}
+    "SystemType": "VirtuallyPartitioned",
+    "Links": {
+        "SupplyingComputerSystems": [
+            {
+                "@odata.id": "/redfish/v1/Systems/Node3"
+            },
+            {
+                "@odata.id": "/redfish/v1/Systems/Node4"
+            }
+        ]
+    }
 }
