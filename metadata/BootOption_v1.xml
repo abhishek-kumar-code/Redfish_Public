@@ -70,6 +70,11 @@
           <Annotation Term="OData.Description" String="A description of this Boot Option."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall be a user readable string that describes this Boot Option."/>
         </Property>
+        <Property Name="BootOptionEnabled" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="A flag that shows if the Boot Option is enabled."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate if the Boot Option is enabled.  If this property is set to false, the Boot Option referenced in the Boot Order array found on the Computer System shall be skipped.  In the UEFI context, this property shall influence the Load Option Active flag for the Boot Option."/>
+        </Property>
         <Property Name="UefiDevicePath" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The UEFI device path used to access this UEFI Boot Option."/>
