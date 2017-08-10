@@ -58,17 +58,17 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="BootOption.v1_0_0">
 
       <EntityType Name="BootOption" BaseType="BootOption.BootOption">
-        <Annotation Term="OData.Description" String="This is the schema definition for the BootOption resource. It represents the properties of a UEFI BootOption available in the System."/>
+        <Annotation Term="OData.Description" String="This is the schema definition for the BootOption resource. It represents the properties of a bootable device available in the System."/>
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Property Name="BootId" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The boot option ID that is referenced in the BootOrder."/>
-          <Annotation Term="OData.LongDescription" String="The value of this propery shall contain a string that corresponds to the UEFI Boot Option variable name (e.g. Boot####). This ID is referenced in the ComputerSystem BootOrder array."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain a string that corresponds to the bootable option or device. For UEFI systems, this string shall match the UEFI Boot Option variable name (e.g. Boot####). This ID is referenced by the ComputerSystem BootOrder array."/>
         </Property>
         <Property Name="BootDescription" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="String that describes the UEFI Boot Option."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall be a user readable string that describes the UEFI Boot Option."/>
+          <Annotation Term="OData.Description" String="A description of this Boot Option."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a user readable string that describes this Boot Option."/>
         </Property>
         <Property Name="UefiDevicePath" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -78,7 +78,7 @@
         <Property Name="Alias" Type="ComputerSystem.v1_0_0.BootSource">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The alias of this Boot Source when described in the BootSourceOverrideTarget property in the Computersystem resource."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall contain an alias to the Boot Source that describes this Boot Option in the BootSourceOverrideTarget property in the ComputerSystem resource. The possible values of this property are specified through the Redfish.AllowableValues annotation on BootSourceOverrideTarget in the ComputerSystem resource. Pxe indicates to PXE boot; Floppy, Cd, Usb, Hdd indicates to boot from their devices respectively. BiosSetup indicates to boot into the native BIOS screen setup. Utilities and Diags indicate to boot from the local utilities or diags partitions."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain an alias to the Boot Source that describes this Boot Option in the BootSourceOverrideTarget property in the ComputerSystem resource. The possible values of this property are specified through the Redfish.AllowableValues annotation on BootSourceOverrideTarget in the ComputerSystem resource."/>
         </Property>
         <NavigationProperty Name="RelatedItem" Type="Collection(Resource.Item)">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
