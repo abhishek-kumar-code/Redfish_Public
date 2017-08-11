@@ -13,7 +13,7 @@
             "MemberId": "0",
             "Name": "A ComputerSystem Cluster",
             "Mode": "Sharing",
-            "MinNumNeeded": 2,
+            "MinNumNeeded": 1,
             "Status": {
                 "State": "Enabled",
                 "Health": "OK"

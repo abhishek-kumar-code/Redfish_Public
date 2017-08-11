@@ -6,6 +6,29 @@
     "Id": "Cluster",
     "Name": "A ComputerSystem Cluster",
     "SystemType": "VirtuallyPartitioned",
+    "Redundancy": [
+        {
+            "@odata.id": "/redfish/v1/Systems/Cluster#/Redundancy/0",
+            "@odata.type": "#Redundancy.v1_2_0.Redundancy",
+            "MemberId": "0",
+            "Name": "A ComputerSystem Cluster",
+            "Mode": "Sharing",
+            "MinNumNeeded": 1,
+            "Status": {
+                "State": "Enabled",
+                "Health": "OK"
+            },
+            "RedundancySet": [
+                {
+                    "@odata.id": "/redfish/v1/Systems/Node3"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Systems/Node4"
+                }
+            ],
+            "RedundancyEnabled": true
+        }
+    ],
     "Links": {
         "SupplyingComputerSystems": [
             {
