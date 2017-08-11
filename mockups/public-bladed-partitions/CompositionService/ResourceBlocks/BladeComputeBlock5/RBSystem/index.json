@@ -6,10 +6,10 @@
     "Model": "Constoto-2S-B Server Partition",
     "Manufacturer": "Contoso",
     "Description": "This represents PhysicallyPartitionedSystem ResourceBlock, from which System can be Composed",
-    "HostName": "composedhost3",
     "PowerState": "On",
     "UUID": "17690008-3175-05f4-0010-debfc4ec1881",
     "Status": {
+        "@odata.type": "#Resource.Status",
         "Health": "OK",
         "State": "Enabled"
     },
@@ -23,10 +23,14 @@
         "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock5/RBSystem/EthernetInterfaces"
     },
     "Links": {
-        "Chassis": [{
-            "@odata.id": "/redfish/v1/Chassis/Blade5"
-        }]
+        "@odata.type": "#ComputerSystem.v1_4_0.Links",
+        "Chassis": [
+            {
+                "@odata.id": "/redfish/v1/Chassis/Blade5"
+            }
+        ]
     },
     "@odata.context": "/redfish/v1/$metadata#ComputerSystem.ComputerSystem",
-    "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock5/RBSystem"
+    "@odata.id": "/redfish/v1/CompositionService/ResourceBlocks/BladeComputeBlock5/RBSystem",
+    "@Redfish.Copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
 }
