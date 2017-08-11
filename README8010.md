@@ -2,8 +2,8 @@
 DocTitle: Redfish API Schema Readme
 DocNumber: '8010'
 DocClass: Normative
-DocVersion: '2017.1'
-modified: '2017-04-14'
+DocVersion: '2017.2'
+modified: '2017-08-11'
 status: published
 released: True
 copyright: '2015-2017'
@@ -23,6 +23,25 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 
 | Schema File | Version | Date      | Description     |
 | ---         | ---     | ---       | ---             |
+| Memory | 1.3.0 | 2017-08-11 | Deprecated "FunctionClasses".  Added memory module-centric identification properties "ModuleManufacturerID", "ModuleProductID", "MemorySubsystemControllerManufacturerID", and "MemorySubsystemControllerProductID".  Deprecated the PCIe-centric identification properties "VendorID", "DeviceID", "SubsystemVendorID", and "SubsystemDeviceID". |
+| PhysicalContext | 1.2.0 | 2017-08-11 | Added "Chassis" and "Fan" as enumerations to "PhysicalContext". |
+| Power | 1.4.0 | 2017-08-11 | Added "PhysicalContext" to the "PowerControl" object. |
+| Resource | 1.5.0 | 2017-08-11 | Added several objects and properties to "Location" to enable reporting of physical locations at the building, room and intra-chassis levels.  Deprecated "Info" and "InfoFormat" in favor of the new, structured Location properties. |
+| Role | 1.2.0 | 2017-08-11 | Added "RoleId" property to enable references from ManagerAccount resources. |
+| Settings | 1.1.0 | 2017-08-11 | Added "SupportedApplyTimes" to allow control over the application of Settings to a resource. This includes support for specifying maintenance windows. |
+| Storage | 1.3.0 | 2017-08-11 | Added common "Name" property to "StorageController" object. |
+| AccountService | 1.x.x | 2017-08-11 | Errata release.  Added clarifications to "ServiceEnabled" usage. |
+| Chassis | 1.x.x | 2017-08-11 | Errata release.  Added clarifications to "IndicatorLED" usage. |
+| ComputerSystem | 1.x.x | 2017-08-11 | Errata release.  Added clarifications to "IndicatorLED" usage. |
+| EventDestination | 1.x.x | 2017-08-11 | Errata release. Added clarifications to "OriginResources" and "MessageId" usage. |
+| EventService | 1.x.x | 2017-08-11 | Errata release. Added clarifications to "DeliveryRetryAttempts" usage. |
+| Manager | 1.x.x | 2017-08-11 | Errata release. Corrected enumeration descriptions for "CommandShell". |
+| ManagerAccount | 1.x.x | 2017-08-11 | Errata release.  Added clarifications to "RoleId" usage. |
+| Power | 1.x.x | 2017-08-11 | Errata release.  Removed the errant auto-expand annotation within "Redundancy". |
+| Resource | 1.x.x | 2017-08-11 | Errata release.  Added clarifications to "IndicatorLED" usage. |
+| SerialInterface | 1.x.x | 2017-08-11 | Errata release.  Removed errant periods in enumeration strings. |
+| SessionService | 1.x.x | 2017-08-11 | Errata release.  Added clarifications to "ServiceEnabled" usage. |
+| Thermal | 1.x.x | 2017-08-11 | Errata release.  Removed the errant auto-expand annotation within "Redundancy". |
 | CollectionCapabilities | 1.0.0 | 2017-04-14 | Initial release. Describes the capabilities of a collection in terms of how a client is able to create new resources within the collection. |
 | CompositionService | 1.0.0 | 2017-04-14 | Initial release. Describes a Composition Service used to create systems from available resources or Resource Blocks.  It includes the properties of the Service as well as links to the actual resources available for composition. |
 | ResourceBlock | 1.0.0 | 2017-04-14 | Initial release. Represents a Resource Block, its components, and any affinity to a composed device. |
