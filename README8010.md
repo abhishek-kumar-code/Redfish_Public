@@ -29,7 +29,7 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | Resource | 1.5.0 | 2017-08-11 | Added several objects and properties to "Location" to enable reporting of physical locations at the building, room and intra-chassis levels.  Deprecated "Info" and "InfoFormat" in favor of the new, structured Location properties. |
 | Role | 1.2.0 | 2017-08-11 | Added "RoleId" property to enable references from ManagerAccount resources. |
 | Settings | 1.1.0 | 2017-08-11 | Added "SupportedApplyTimes" to allow control over the application of Settings to a resource. This includes support for specifying maintenance windows. |
-| Storage | 1.2.0 | 2017-08-11 | Added common "Name" property to "StorageController" object. |
+| Storage | 1.3.0 | 2017-08-11 | Added common "Name" property to "StorageController" object. |
 | AccountService | 1.x.x | 2017-08-11 | Errata release.  Added clarifications to "ServiceEnabled" usage. |
 | Chassis | 1.x.x | 2017-08-11 | Errata release.  Added clarifications to "IndicatorLED" usage. |
 | ComputerSystem | 1.x.x | 2017-08-11 | Errata release.  Added clarifications to "IndicatorLED" usage. |
