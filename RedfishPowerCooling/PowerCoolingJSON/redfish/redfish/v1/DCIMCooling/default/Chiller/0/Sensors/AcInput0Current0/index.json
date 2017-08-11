@@ -1,0 +1,24 @@
+{
+    "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/AcInput0Current0",
+    "@odata.type": "Sensor.v1_0_0.Sensor",
+    "@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
+    "MemberId": "23",
+    "SensorType": "Current",
+    "Name": "AC Input - RMS Current Sensor",
+    "SensorNumber": 23,
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "SensorReading": 12,
+    "UpperThresholdNonCritical": 12.5,
+    "UpperThresholdCritical": 13,
+    "UpperThresholdFatal": 15,
+    "LowerThresholdNonCritical": 11.5,
+    "LowerThresholdCritical": 11,
+    "LowerThresholdFatal": 10,
+    "MinReadingRange": 0,
+    "MaxReadingRange": 20,
+    "PhysicalContext": "System",
+    "Oem": {}
+}

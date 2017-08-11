@@ -1,0 +1,159 @@
+{
+    "@odata.context": "/redfish/v1/$metadata#CoolingTower.CoolingTower",
+    "@odata.id": "/redfish/v1/DCIMCooling/default/CoolingTower/0",
+    "@odata.type": "#CoolingTower.v1_0_0.CoolingTower",
+
+    "ID": "CoolingTower0",
+    "Name": "CoolingTower0",
+    "FirmwareRevision": "1.0.0",
+    "DateOfManufacture": "01012017",
+    "Manufacturer": "Manufacturer",
+    "Model": "Model",
+    "SerialNumber": "SerialNum",
+    "PartNumber": "PartNum",
+    "AssetTag": "AssetTag",
+    "PhysicalLocation": "Location",
+
+    "OperatingLevelSwitch": "A",
+
+    "ColdWaterFlowSetPoint": 40,
+    "FanVFDModulation": 50,
+
+    "CoolingTowerEnabled": "True",
+    "FanStarted": "True",
+    "LeadLagPosition": "A",
+    "VibrationSwitchSetpoint": 0,
+    "FanHighSpeedSetting": 60,
+    "FanLowSpeedSetting": 40,
+
+    "CoolingTowerLeadLagPosition": "A",
+    "CoolingTowerAvailable": "True",
+    "RequestSignal": "A",
+
+    "UnitPoweredOn": "True",
+    "HighFanSpeedStatus": "True",
+    "FanPoweredOn": "True",
+    "LowFanSpeedStatus": "False",
+    "AlarmResetPoweredOn": "True",
+    "DrainValveProof": "A",
+
+    "FanFaultAlarmOn": "False",
+    "ColdWaterValveFailOpenAlarmOn": "False",
+    "ColdWaterValveFailCloseAlarmOn": "False",
+    "CoolingWaterValveFailOpenAlarmOn": "False",
+	"CoolingWaterValveFailCloseAlarmOn": "False",
+    "FanFailureToRunAlarmOn": "False",
+    "FanHighSpeedAlarmOn": "False",
+    "FanLowSpeedAlarmOn": "False",
+    "LowFanGearOilLevelAlarmOn": "False",
+    "SumpTankLowLevelAlarm": "False",
+	"SumpTankHighLevelAlarmOn": "False",
+    "VibrationSwitchAlarmOn": "False",
+
+    "Oem": {},
+
+	"Sensors": {
+        "@odata.id": "/redfish/v1/DCIMCooling/default/CoolingTower/0/Sensors",
+        "@odata.type": "SensorCollection.SensorCollection",
+        "@odata.context": "/redfish/v1/$metadata#SensorCollection.SensorCollection",
+		"Name": "SensorCollection",
+		"Members": [
+            {
+				"@odata.id": "/redfish/v1/DCIMCooling/default/CoolingTower/0/Sensors/SystemTemperature0",
+				"@odata.type": "Sensor.v1_0_0.Sensor",
+				"@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
+				"MemberId": "0",
+				"SensorType": "Temperature",
+				"Name": "Cold Water Supply Temperature Sensor",
+				"SensorNumber": 0,
+				"Status": {
+					"State": "Enabled",
+					"Health": "OK"
+				},
+				"SensorReading": 12,
+				"UpperThresholdNonCritical": 12.5,
+				"UpperThresholdCritical": 13,
+				"UpperThresholdFatal": 15,
+				"LowerThresholdNonCritical": 11.5,
+				"LowerThresholdCritical": 11,
+				"LowerThresholdFatal": 10,
+				"MinReadingRange": 0,
+				"MaxReadingRange": 20,
+				"PhysicalContext": "System",
+				"Oem": {}
+			},
+            {
+				"@odata.id": "/redfish/v1/DCIMCooling/default/CoolingTower/0/Sensors/SystemTemperature1",
+				"@odata.type": "Sensor.v1_0_0.Sensor",
+				"@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
+				"MemberId": "1",
+				"SensorType": "Temperature",
+				"Name": "Cooling Tower Sump Temperature Sensor",
+				"SensorNumber": 1,
+				"Status": {
+					"State": "Enabled",
+					"Health": "OK"
+				},
+				"SensorReading": 12,
+				"UpperThresholdNonCritical": 12.5,
+				"UpperThresholdCritical": 13,
+				"UpperThresholdFatal": 15,
+				"LowerThresholdNonCritical": 11.5,
+				"LowerThresholdCritical": 11,
+				"LowerThresholdFatal": 10,
+				"MinReadingRange": 0,
+				"MaxReadingRange": 20,
+				"PhysicalContext": "System",
+				"Oem": {}
+			},
+            {
+				"@odata.id": "/redfish/v1/DCIMCooling/default/CoolingTower/0/Sensors/SystemTemperature2",
+				"@odata.type": "Sensor.v1_0_0.Sensor",
+				"@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
+				"MemberId": "2",
+				"SensorType": "Humidity",
+				"Name": "Outside Air Relative Humidity Sensor",
+				"SensorNumber": 2,
+				"Status": {
+					"State": "Enabled",
+					"Health": "OK"
+				},
+				"SensorReading": 12,
+				"UpperThresholdNonCritical": 12.5,
+				"UpperThresholdCritical": 13,
+				"UpperThresholdFatal": 15,
+				"LowerThresholdNonCritical": 11.5,
+				"LowerThresholdCritical": 11,
+				"LowerThresholdFatal": 10,
+				"MinReadingRange": 0,
+				"MaxReadingRange": 20,
+				"PhysicalContext": "System",
+				"Oem": {}
+			},
+            {
+				"@odata.id": "/redfish/v1/DCIMCooling/default/CoolingTower/0/Sensors/SystemTemperature3",
+				"@odata.type": "Sensor.v1_0_0.Sensor",
+				"@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
+				"MemberId": "3",
+				"SensorType": "Temperature",
+				"Name": "Outside Air Temperature Sensor",
+				"SensorNumber": 3,
+				"Status": {
+					"State": "Enabled",
+					"Health": "OK"
+				},
+				"SensorReading": 12,
+				"UpperThresholdNonCritical": 12.5,
+				"UpperThresholdCritical": 13,
+				"UpperThresholdFatal": 15,
+				"LowerThresholdNonCritical": 11.5,
+				"LowerThresholdCritical": 11,
+				"LowerThresholdFatal": 10,
+				"MinReadingRange": 0,
+				"MaxReadingRange": 20,
+				"PhysicalContext": "System",
+				"Oem": {}
+			}
+        ]
+    }
+}

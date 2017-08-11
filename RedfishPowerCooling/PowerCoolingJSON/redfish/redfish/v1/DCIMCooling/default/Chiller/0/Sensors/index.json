@@ -1,0 +1,88 @@
+{
+    "@odata.type": "#SensorCollection.SensorCollection",
+    "Name": "Chiller 0 Sensor Collection",
+    "Members@odata.count": 25,
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/AcInput0Current0"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/AcInput0Voltage0"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemTemperature0"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemTemperature1"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemTemperature2"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemTemperature3"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemTemperature4"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemPressure0"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemPressure1"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemTemperature5"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemTemperature6"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemTemperature7"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemTemperature7"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemTemperature8"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemPressure2"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemTemperature9"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemPressure3"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemTemperature10"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemTemperature11"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemPressure4"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemVoltage0"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemVoltage1"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemVoltage2"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemCurrent0"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemCurrent1"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/SystemCurrent2"
+        }
+    ],
+    "@odata.context": "/redfish/v1/$metadata#DCIMCoolingCollection",
+    "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors",
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}

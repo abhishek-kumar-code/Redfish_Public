@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Redfish Schema:  DCIM Power Zone  v0.1.0                                               -->
+<!--#                                                                                      -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0"/>
+    <edmx:Include Namespace="Resource.v1_1_0"/>
+  </edmx:Reference>
+ 
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Chassis_v1.xml">
+    <edmx:Include Namespace="Chassis"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ComputerSystem_v1.xml">
+    <edmx:Include Namespace="ComputerSystem"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Manager_v1.xml">
+    <edmx:Include Namespace="Manager"/>
+  </edmx:Reference>
+  
+  <edmx:DataServices>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DCIMPower">
+
+      <EntityType Name="DCIMPower" BaseType="Resource.v1_0_0.Resource" Abstract="true">
+        <Annotation Term="OData.Description" String="This is the schema definition for the DCIM Power Zone Metrics."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a DCIM Power Zone metrics resource for a Redfish implementation."/>
+        <Annotation Term="Capabilities.InsertRestrictions">
+          <Record>
+            <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.UpdateRestrictions">
+          <Record>
+            <PropertyValue Property="Updatable" Bool="true"/>
+            <Annotation Term="OData.Description" String="Power properties can be updated to change limits, exceptions and other writable properties."/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.DeleteRestrictions">
+          <Record>
+            <PropertyValue Property="Deletable" Bool="false"/>
+          </Record>
+        </Annotation>
+      </EntityType>
+
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DCIMPower.v0_1_0">
+
+      <EntityType Name="DCIMPower" BaseType="DCIMPower.DCIMPower">
+      	 
+        <!-- General Information -->   
+        <Property Name="ID" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The actual ID of DCIMPower."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual ID of DCIMPower."/>
+        </Property>
+
+        <Property Name="Name" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The actual Name of DCIMPower."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Name of DCIMPower."/>
+        </Property>
+
+        <Property Name="DCIMPowerType" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The actual DCIM Power Type of DCIMPower."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual DCIM Power Type of DCIMPower."/>
+        </Property>
+
+        <Property Name="Status" Type="Resource.Status"></Property>
+
+        <NavigationProperty Name="Generator" Type="GeneratorCollection.GeneratorCollection">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This is the definition for a Generator collection."/>
+          <Annotation Term="OData.LongDescription" String="These properties shall be the definition for a Generator collection for a Redfish implementation."/>
+        </NavigationProperty>
+
+        <NavigationProperty Name="PDU" Type="PDUCollection.PDUCollection">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This is the definition for a PDU collection."/>
+          <Annotation Term="OData.LongDescription" String="These properties shall be the definition for a PDU collection for a Redfish implementation."/>
+        </NavigationProperty>
+
+        <NavigationProperty Name="RackPDU" Type="RackPDUCollection.RackPDUCollection">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This is the definition for a RackPDU collection."/>
+          <Annotation Term="OData.LongDescription" String="These properties shall be the definition for a RackPDU collection for a Redfish implementation."/>
+        </NavigationProperty>
+
+        <NavigationProperty Name="Rectifier" Type="RectifierCollection.RectifierCollection">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This is the definition for a Rectifier collection."/>
+          <Annotation Term="OData.LongDescription" String="These properties shall be the definition for a Rectifier collection for a Redfish implementation."/>
+        </NavigationProperty>
+
+        <NavigationProperty Name="Switchgear" Type="SwitchgearCollection.SwitchgearCollection">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This is the definition for a Switchgear collection."/>
+          <Annotation Term="OData.LongDescription" String="These properties shall be the definition for a Switchgear collection for a Redfish implementation."/>
+        </NavigationProperty>
+
+        <NavigationProperty Name="TransferSwitch" Type="TransferSwitchCollection.TransferSwitchCollection">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This is the definition for a TransferSwitch collection."/>
+          <Annotation Term="OData.LongDescription" String="These properties shall be the definition for a TransferSwitch collection for a Redfish implementation."/>
+        </NavigationProperty>
+
+        <NavigationProperty Name="Transformer" Type="TransformerCollection.TransformerCollection">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This is the definition for a Transformer collection."/>
+          <Annotation Term="OData.LongDescription" String="These properties shall be the definition for a Transformer collection for a Redfish implementation."/>
+        </NavigationProperty>
+
+        <NavigationProperty Name="UPS" Type="UPSCollection.UPSCollection">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This is the definition for a UPS collection."/>
+          <Annotation Term="OData.LongDescription" String="These properties shall be the definition for a UPS collection for a Redfish implementation."/>
+        </NavigationProperty>
+
+        <NavigationProperty Name="VFD" Type="VFDCollection.VFDCollection">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This is the definition for a VFD collection."/>
+          <Annotation Term="OData.LongDescription" String="These properties shall be the definition for a VFD collection for a Redfish implementation."/>
+        </NavigationProperty>
+
+        <ComplexType Name="Links" BaseType="Resource.Links">
+          <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
+          <Annotation Term="OData.LongDescription" String="This type, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
+            
+          <NavigationProperty Name="Chassis" Type="Collection(Chassis.Chassis)">
+            <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+            <Annotation Term="OData.Description" String="An array of references to the chassis associated with this power zone."/>
+            <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resource that this power zone is associated with and shall reference a resource of type Chassis."/>
+            <Annotation Term="OData.AutoExpandReferences"/>
+          </NavigationProperty>
+
+          <NavigationProperty Name="ManagedBy" Type="Collection(Manager.Manager)">
+            <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+            <Annotation Term="OData.Description" String="An array of references to the Managers responsible for managing this power zone."/>
+            <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resource that manages this power zone and shall reference a resource of type Manager."/>
+            <Annotation Term="OData.AutoExpandReferences"/>
+          </NavigationProperty>
+
+          <NavigationProperty Name="RelatedSystems" Type="Collection(ComputerSystem.ComputerSystem)">
+            <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+            <Annotation Term="OData.Description" String="An array of references to the computer systems associated with this power zone."/>
+            <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resource that this power zone is associated with and shall reference a resource of type ComputerSystem."/>
+            <Annotation Term="OData.AutoExpandReferences"/>
+          </NavigationProperty>
+          
+        </ComplexType>
+   
+    </EntityType>   
+	   
+  </Schema>
+		
+  
+</edmx:DataServices>
+</edmx:Edmx>

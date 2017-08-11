@@ -1,0 +1,105 @@
+{
+    "@odata.context": "/redfish/v1/$metadata#Switchgear.Switchgear",
+    "@odata.id": "/redfish/v1/DCIMPower/default/Switchgear",
+    "@odata.type": "#Switchgear.v1_0_0.Switchgear",
+
+    "ID": "Switchgear0",
+    "Name": "Switchgear0",
+    "FirmwareRevision": "1.0.0",
+    "DateOfManufacture": "01012017",
+    "Manufacturer": "Manufacturer",
+    "Model": "Model",
+    "SerialNumber": "SerialNum",
+    "PartNumber": "PartNum",
+    "AssetTag": "AssetTag",
+    "PhysicalLocation": "Location",
+
+    "HighVoltageSwitchOpenASide": "True",
+    "HighVoltageSwitchOpenBSide": "False",
+    "HighVoltageSwitchClosedASide": "False",
+    "HighVoltageSwitchClosedBSide": "True",
+    "SurgeArrestorFailure": "False",
+    "TransformerFanFailure": "False",
+    "TransformerHighTemp": 100,
+    "UPSSubstationCircuitBreakerOpen": "True",
+    "UPSSubstationCircuitBreakerClosed": "False",
+    "UPSSubstationCircuitBreakerTripped": "False",
+    "SubstationXCircuitBreakerOpen": "False",
+    "SubstationXCircuitBreakerClosed": "True",
+    "SubstationXCircuitBreakerTripped": "False",
+    "GroundFault": "False",
+    "SubstationSummaryAlarmOn": "False",
+    "PLCFailure": "False",
+    "Metering": "Amps",
+
+    "PrimaryUtilityBreakerClosed": "False",
+    "PrimaryUtilityBreakerOpen": "True",
+    "AlternateUtilityBreakerClosed": "False",
+    "AlternateUtilityBreakerOpen": "True",
+    "MasterControlInAutoMode": "False",
+    "MasterControlInManualMode": "True",
+    "OpenTransitionModeSelected": "True",
+    "ClosedTransitionModeSelected": "False",
+    "PeakShavingModeInProgress": "True",
+    "PeakShavingModeNotInProgress": "False",
+    "AutoRetransferInAuto": "True",
+    "AutoRetransferInManual": "False",
+    "LoadDemandOn": "True",
+    "LoadAddShedControlLevelX": "A",
+    "ZeroPowerTransfer": "A",
+    "ReturnToUtility": "A",
+    "ImportMode": "A",
+    "ExportMode": "A",
+    "TransferFailed": "False",
+    "SummaryAlarmOn": "False",
+    "PrimaryUtilitySourceFailureMode": "A",
+    "PrimaryUtilitySourceAndGeneratorFailureMode": "A",
+    "TransferImminent": "False",
+    "LoadControlBypass": "A",
+    "NormalMode": "On",
+    "GeneratorXOnLine": "True",
+    "HoldMechanicalPlantStable": "True",
+
+    "PrimaryUtilityReclosureOpen": "True",
+    "AlternateUtilityReclosureOpen": "False",
+
+    "CriticalBoards": [
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/Switchgear/0/#CriticalBoards/0",
+            "MainBreakerOpen": "False",
+            "MainBreakerClosed": "True",
+            "MainBreakerTripped": "False",
+            "LoadBankBreakerOpen": "False",
+            "LoadBankBreakerClosed": "True",
+            "LoadBankBreakerTripped": "False",
+            "Metering": "Volts"
+        }
+    ],
+
+    "Switchgear2": [
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/Switchgear/0/#Switchgear2/0",
+            "CircuitBreakerOpen": "True",
+            "CircuitBreakerClosed": "False",
+            "CircuitBreakerTripped": "False",
+            "PLCFailure": "False",
+            "InLocalMode": "False",
+            "SummaryAlarm": "Off",
+            "Metering": "kW"
+        }
+    ],
+
+    "GeneratorParallelingSwitchgear": [
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/Switchgear/0/#GeneratorParallelingSwitchgear/0",
+            "CircuitBreakerOpen": "True",
+            "CircuitBreakerClosed": "False",
+            "CircuitBreakerTripped": "False",
+            "InLocalMode": "True",
+            "SummaryAlarm": "Off",
+            "Metering": "Amps"
+        }
+    ],
+
+    "Oem": {}
+}

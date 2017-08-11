@@ -1,0 +1,26 @@
+{
+    "@odata.context": "/redfish/v1/$metadata#TransferSwitch.TransferSwitch",
+    "@odata.id": "/redfish/v1/DCIMPower/default/TransferSwitch",
+    "@odata.type": "#TransferSwitch.v1_0_0.TransferSwitch",
+
+    "ID": "TransferSwitch0",
+    "Name": "TransferSwitch0",
+    "FirmwareRevision": "1.0.0",
+    "DateOfManufacture": "01012017",
+    "Manufacturer": "Manufacturer",
+    "Model": "Model",
+    "SerialNumber": "SerialNum",
+    "PartNumber": "PartNum",
+    "AssetTag": "AssetTag",
+    "PhysicalLocation": "Location",
+
+    "TransferSwitchType": "Automatic",
+    "TransferSwitchMode": "Automatic",
+
+    "SourceBAvailable": "True",
+    "ConnectedToSourceA": "True",
+    "ConnectedToSourceB": "True",
+    "SummaryAlarmOn": "False",
+
+    "Oem": {}
+}

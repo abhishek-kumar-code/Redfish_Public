@@ -1,0 +1,24 @@
+{
+    "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcOutput0Current0",
+    "@odata.type": "Sensor.v1_0_0.Sensor",
+    "@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
+    "MemberId": "20",
+    "SensorType": "Current",
+    "Name": "AC Output - RMS Current Sensor",
+    "SensorNumber": 20,
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "SensorReading": 12,
+    "UpperThresholdNonCritical": 12.5,
+    "UpperThresholdCritical": 13,
+    "UpperThresholdFatal": 15,
+    "LowerThresholdNonCritical": 11.5,
+    "LowerThresholdCritical": 11,
+    "LowerThresholdFatal": 10,
+    "MinReadingRange": 0,
+    "MaxReadingRange": 20,
+    "PhysicalContext": "AC Output",
+    "Oem": {}
+}

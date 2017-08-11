@@ -1,0 +1,28 @@
+{
+    "@odata.type": "#DeviceSensorCollection.DeviceSensorCollection",
+    "Name": "Generator 0 Sensor Collection",
+    "Members@odata.count": 6,
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Sensors/AcOutput0Frequency0"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Sensors/AcOutput0Voltage0"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Sensors/AcOutput0Voltage1"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Sensors/AcOutput0Current0"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Sensors/AcOutput0Current1"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Sensors/AcOutput0Voltage2"
+        }
+    ],
+    "@odata.context": "/redfish/v1/$metadata#DeviceSensorCollection",
+    "@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Sensors",
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}

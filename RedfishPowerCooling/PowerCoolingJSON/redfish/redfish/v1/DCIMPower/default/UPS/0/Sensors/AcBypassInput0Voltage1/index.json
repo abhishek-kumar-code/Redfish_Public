@@ -1,0 +1,22 @@
+{
+    "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcBypassInput0Voltage1",
+    "MemberId": "8",
+    "SensorType": "Voltage",
+    "Name": "AC Static Bypass Input - RMS Voltage (L-L) Sensor",
+    "SensorNumber": 8,
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "SensorReading": 12,
+    "UpperThresholdNonCritical": 12.5,
+    "UpperThresholdCritical": 13,
+    "UpperThresholdFatal": 15,
+    "LowerThresholdNonCritical": 11.5,
+    "LowerThresholdCritical": 11,
+    "LowerThresholdFatal": 10,
+    "MinReadingRange": 0,
+    "MaxReadingRange": 20,
+    "PhysicalContext": "AC Static Bypass Input",
+    "Oem": {}
+}

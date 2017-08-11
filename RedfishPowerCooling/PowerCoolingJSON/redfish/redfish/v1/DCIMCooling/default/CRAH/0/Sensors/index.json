@@ -1,0 +1,30 @@
+{
+    "@odata.type": "#SensorCollection.SensorCollection",
+    "Name": "CRAH 0 Sensor Collection",
+    "Members@odata.count": 2,
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/DCIMCooling/default/CRAH/0/Sensors/SystemTemperature0"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMCooling/default/CRAH/0/Sensors/SystemTemperature1"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMCooling/default/CRAH/0/Sensors/SystemHumidity0"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMCooling/default/CRAH/0/Sensors/SystemTemperature2"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMCooling/default/CRAH/0/Sensors/SystemTemperature3"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMCooling/default/CRAH/0/Sensors/SystemPressure0"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMCooling/default/CRAH/0/Sensors/SystemTemperature4"
+        }
+    ],
+    "@odata.context": "/redfish/v1/$metadata#DCIMCoolingCollection",
+    "@odata.id": "/redfish/v1/DCIMCooling/default/CRAH/0/Sensors"
+}

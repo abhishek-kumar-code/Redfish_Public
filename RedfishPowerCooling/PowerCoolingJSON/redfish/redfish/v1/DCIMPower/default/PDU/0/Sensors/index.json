@@ -1,0 +1,40 @@
+{
+    "@odata.type": "#DeviceSensorCollection.DeviceSensorCollection",
+    "Name": "PDU 0 Sensor Collection",
+    "Members@odata.count": 20,
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/PDU/0/Sensors/AcInput0Voltage0"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/PDU/0/Sensors/AcInput0Current0"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/PDU/0/Sensors/AcInput0Frequency0"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/PDU/0/Sensors/AcInput1Voltage0"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/PDU/0/Sensors/AcInput1Current0"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/PDU/0/Sensors/AcInput1Frequency0"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/PDU/0/Sensors/AcOutput0Voltage0"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/PDU/0/Sensors/AcOutput0Current0"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/PDU/0/Sensors/AcOutput0Frequency0"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/PDU/0/Sensors/SystemTemperature0"
+        }
+    ],
+    "@odata.context": "/redfish/v1/$metadata#DeviceSensorCollection",
+    "@odata.id": "/redfish/v1/DCIMPower/default/PDU/0/Sensors",
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}

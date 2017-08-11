@@ -1,0 +1,76 @@
+{
+    "@odata.type": "#DeviceSensorCollection.DeviceSensorCollection",
+    "Name": "UPS 0 Sensor Collection",
+    "Members@odata.count": 22,
+    "Members": [
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcUtilityInput0Voltage0"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcUtilityInput0Voltage1"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcUtilityInput0Voltage2"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcUtilityInput0Current0"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcUtilityInput0Frequency0"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcUtilityInput0Temperature0"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcUtilityInput0Humidity0"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcBypassInput0Voltage0"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcBypassInput0Voltage1"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcBypassInput0Current0"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcBypassInput0Frequency0"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcBypassInput1Voltage0"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcBypassInput1Voltage1"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcBypassInput1Current0"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcBypassInput1Frequency0"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/DcBus0Voltage0"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/DcBus0Current0"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/DcBus0Temperature0"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcOutput0Voltage0"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcOutput0Voltage1"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcOutput0Current0"
+        },
+        {
+            "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcOutput0Frequency0"
+        }
+    ],
+    "@odata.context": "/redfish/v1/$metadata#DeviceSensorCollection",
+    "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors",
+    "@Redfish.Copyright": "Copyright 2014-2016 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright."
+}
