@@ -2,9 +2,9 @@
 DocTitle: Redfish Scalable Platforms Management API Specification
 DocNumber: '0266'
 DocClass: Normative
-DocVersion: '1.2.1'
-modified: '2017-8-10'
-SupersedesVersion: '1.2.0'
+DocVersion: '1.3.0'
+modified: '2017-8-11'
+SupersedesVersion: '1.2.1'
 status: published
 released: true
 copyright: '2014-2017'
@@ -2756,6 +2756,8 @@ OData-Version: 4.0
 
 | Version | Date     | Description     |
 | ---     | ---      | ---             |
+| 1.3.0   | 2017-8-11| Added support for a Service to optionally reject a PATCH or PUT operation if the If-Match or If-Match-None HTTP header is required by returning the HTTP 428 response code. |
+|         |          | Added support for a Service to describe when the values in the Settings object for a resource are applied via the @Redfish.SettingsApplyTime annotation. |
 | 1.2.1   | 2017-8-10| Clarified wording of the "Oem" object definition. |
 |         |          | Clarified wording of the "Partial resource results" section. |
 |         |          | Clarified behavior of a Service when receiving a PATCH with an empty JSON object. |
