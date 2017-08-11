@@ -33,8 +33,8 @@ The following files are part of the Redfish Scalable Platforms Management API ("
 | AccountService | 1.x.x | 2017-08-11 | Errata release.  Added clarifications to "ServiceEnabled" usage. |
 | Chassis | 1.x.x | 2017-08-11 | Errata release.  Added clarifications to "IndicatorLED" usage. |
 | ComputerSystem | 1.x.x | 2017-08-11 | Errata release.  Added clarifications to "IndicatorLED" usage. |
-| EventDestination | 1.x.x | 2017-08-11 | Errata release. Added clariications to "OriginResources" and "MessageId" usage. |
-| EventService | 1.x.x | 2017-08-11 | Errata release. Added clariications to "DeliveryRetryAttempts" usage. |
+| EventDestination | 1.x.x | 2017-08-11 | Errata release. Added clarifications to "OriginResources" and "MessageId" usage. |
+| EventService | 1.x.x | 2017-08-11 | Errata release. Added clarifications to "DeliveryRetryAttempts" usage. |
 | Manager | 1.x.x | 2017-08-11 | Errata release. Corrected enumeration descriptions for "CommandShell". |
 | ManagerAccount | 1.x.x | 2017-08-11 | Errata release.  Added clarifications to "RoleId" usage. |
 | Power | 1.x.x | 2017-08-11 | Errata release.  Removed the errant auto-expand annotation within "Redundancy". |
