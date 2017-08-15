@@ -2,8 +2,8 @@
 DocTitle: Redfish White Paper
 DocNumber: '2044'
 DocClass: Informative
-DocVersion: '1.0.2'
-modified: '2016-06-15'
+DocVersion: '1.0.3'
+modified: '2017-08-04'
 status: published
 released: true
 copyright: '2014-2017'
@@ -17,9 +17,9 @@ Redfish is a management standard using a data model representation inside of a h
 
 A variety of influences have resulted in the need for a new standard management interface.
 
-First, the market is shifting from traditional data center environments to scale-out solutions.  Scale-out solutions & hyper-scale have adopted the use of massive quantities of simple servers brought together to perform a set of tasks in a distributed fashion (as opposed to centrally located).  Reliability in these environments is achieved through software that is either proprietary or open source.  As a result, the usage model different than traditional Enterprise environments.  One analogy is that servers are treated as “cattle”, not “pets”.  This set of customers demand a standards-based interface that is consistent in heterogeneous, multi-vendor environments.
+First, the market is shifting from traditional data center environments to scale-out solutions.  Scale-out solutions & hyper-scale have adopted the use of massive quantities of simple servers brought together to perform a set of tasks in a distributed fashion (as opposed to centrally located).  Reliability in these environments is achieved through software that is either proprietary or open source.  As a result, the usage model different than traditional Enterprise environments.  One analogy is that servers are treated as "cattle", not "pets".  This set of customers demand a standards-based interface that is consistent in heterogeneous, multi-vendor environments.
 
-Functionality and homogeneous interfaces are lacking in scale-out management.  For instance, the IPMI feature use is limited to a “least common denominator” set of commands (e.g. Power On/Off/Reboot, temperature value, text console).  As a result, these customers, while desiring out of band functionality, have been forced to use a reduced set of functionality because vendor extensions are not common across all platforms.  This set of new customers are increasingly developing their own tools for tight integration, sometimes relying on in-band software for management since they are able to develop a common set of manageability in that environment.  Increasing fragmentation of platform management specifications as OEM extensions proliferate result in features that do not satisfy scale-out customer needs since they are fragmented.  And by referencing specific security and encryption requirements, existing management solutions no longer meets customer security requirements.
+Functionality and homogeneous interfaces are lacking in scale-out management.  For instance, the IPMI feature use is limited to a "least common denominator" set of commands (e.g. Power On/Off/Reboot, temperature value, text console).  As a result, these customers, while desiring out of band functionality, have been forced to use a reduced set of functionality because vendor extensions are not common across all platforms.  This set of new customers are increasingly developing their own tools for tight integration, sometimes relying on in-band software for management since they are able to develop a common set of manageability in that environment.  Increasing fragmentation of platform management specifications as OEM extensions proliferate result in features that do not satisfy scale-out customer needs since they are fragmented.  And by referencing specific security and encryption requirements, existing management solutions no longer meets customer security requirements.
 
 Other standards, such as SMASH, have not met the ubiquity that was hoped for.  This is due to it's complexity.  The CLP ended up being implemented in most hardware but not with a consistent output format thus parsing resulting data was implementation dependent.  WS Management was only implemented in a limited number of out of band environments.  It is a complex, layered protocol that works best in homogeneous environments and thus never fulfilled the heterogeneity requirements.  Additionally, the complexity of the combination of understanding the protocol, generic operations, schema and the profiles themselves ended in a solution that took years to develop, years to change and add new functionality.  It takes months for customers to understand as well as significant resource commitments and expertise in order to become proficient in its use.  It also requires a significant number of operations to perform even the simplest tasks.  Thus, while it can represent scalable systems the interface itself has an IO pattern that is not scalable.
 
@@ -62,10 +62,11 @@ Because it is based on REST and JSON, all you need is a browser to be able to st
 
 ## Accessing an Implementation
 
-You can view the markup either directly or through a web server.  All you need is access to an implementation.  There are a few ways to do that:
+You can view the mockup either directly or through a web server.  All you need is access to an implementation.  There are a few ways to do that:
 
-* Access the public mock-up.  There is a web server running JSON at redfish.dmtf.com.  You can point your browser to it and access the data.  This will let you explore the mockup and the schema.
-* Copy the data to your web server.  You can access the Redfish Mockup and copy all of the files under the Mock-up directory to your local hard drive and place them under the /redfish/v1 directory that your server uses for serving up HTML pages.  And example of this would be downloading nginx, setting it up to return JSON format and then loading the mock-up files in the html directory.
+* Public mockups can be viewed in the [Mockup Explorer](http://redfish.dmtf.org/redfish/v1) on the DMTF website.  This site allows a user to view sample payloads for various resources.
+* Copy the data to your web server.  The DSP2043 bundle found on the [Redfish API](https://www.dmtf.org/standards/redfish) page of the DMTF website is a zip file that contains various sets of mockups.  You can copy a particular mockup directory into the "/redfish/v1" folder of your local web server.
+* Copy the data to the [Redfish Mockup Server](https://github.com/DMTF/Redfish-Mockup-Server).  The Redfish Mockup Server allows you to start up a local web server and point it to a set of mockup files.
 
 ## Root
 
@@ -129,15 +130,15 @@ Collections may be paginated; collections with a property named "@odata.nextLink
 ## Common Properties
 As you go through the model, you keep seeing some of the same properties.  You'll find "Name" & "Id" and in every resource.  "Name" and "Id" are required.  You'll also see "Status" as an embedded object that has the same definition across all usages.  All of these are actually in a common part of the Schema and used by other Schema by reference.  Common properties are referenced by each resource's schema via an odata "Reference" element within the schema so that the same definition is used everywhere.  Examples of these properties are:
 
-- "Actions", which informs clients which actions can be invoked.  (more on this in the [Actions](#actions) section)
+- "Actions", which informs clients which actions can be invoked.  More on this in the [Actions](#actions) section.
 - "Oem", which has vendor specific extensions to the standard definition of the resource.  More on this in the [Oem](#oem) section.
 
 ## Common Annotations
-There are also properties that are annotations.  These start with "@" or have "@" in them.  There are two kinds of annotation properties allowed: Odata and DMTF annotations.  OData annotations have "@odata." or have "@odata." in them.  Examples of these properties are
+There are also properties that are annotations.  Properties that begin with "@" are annotations for the entire object, while properties with "@" in the middle of the property name are used to annotate an individual property.  There are two kinds of annotation properties allowed: OData and DMTF annotations.  OData annotations have "@odata." in them.  Examples of these properties are
 
 - "@odata.type", which is used to find the schema that defines this resource.
 - "@odata.id", which has the URL to this resource.  This is an href, but since Redish is based on OData this property is called "@odata.id" and not "href".
-- "Members@odata.count", which defines the number of resources in a collection.
+- "Members@odata.count", which defines the number of entries in the "Members" array.
 
 DMTF annotations have "@Redfish." in them.  Examples of these properies are:
 
@@ -148,11 +149,11 @@ One other common annotation is "@odata.context". This is really meant for generi
 1. It provides the location of the metadata that describes the payload.
 1. It provides a root URL for resolving relative references
 
-The structure of the @odata.context is the url to a metadata document with a fragment describing the data (typically rooted at the top-level singleton or collection).
+The structure of the @odata.context is the url to a metadata document with a fragment describing the data.
 
-Technically the metadata document only has to define, or reference, any of the types it directly uses, and different payloads could reference different metadata documents. However, since the @odata.context provides a root URL for resolving relative references (such as @odata.id's) we have to return the "canonical" metadata document.  Further, because our "@odata.type" annotations are written as fragments, rather than full URLs, those fragments must be defined in, or referenced by, that metadata document. Also, because we qualify actions with the versionless namespace aliases, those aliases must also be defined through references in the referenced metadata document.
+Technically the metadata document only has to define, or reference, any of the types it directly uses, and different payloads could reference different metadata documents.  However, since the @odata.context provides a root URL for resolving relative references (such as @odata.id's) we have to return the "canonical" metadata document.  Further, because our "@odata.type" annotations are written as fragments, rather than full URLs, those fragments must be defined in, or referenced by, that metadata document.  Also, because we qualify actions with the versionless namespace aliases, those aliases must also be defined through references in the referenced metadata document.
 
-For example, in the resource /redfish/v1/Systems/1, you will see the property "@odata.context" with the value of "/redfish/v1/$metadata#Systems/Links/Members/$entity".  This tells the generic OData v4 client to find the Systems definition in the $metadata and look in the Links property definition and within it is a Members property definition which has a reference to the definition for this entity.
+For example, in the resource /redfish/v1/Systems/1, you will see the property "@odata.context" with the value of "/redfish/v1/$metadata#ComputerSystem.ComputerSystem".  This tells the generic OData v4 client to find the ComputerSystem definition in the $metadata, which has a reference to the definition for this entity.
 
 You will also see an annotation called "@Redfish.Copyright".  Implementations will not return this property.  It is only here as a copyright statement for the static example responses used in the mockups. 
 
@@ -356,19 +357,15 @@ completely configurable via idempotent PATCH operations is ideal.
 Redfish defines three basic interaction patterns using the basic REST
 operations.
 
-### Idempotent Modify:  GET/PUT/PATCH
+### Idempotent Modify: GET/PUT/PATCH
 
-PATCHing to a resource replaces the content of the resource with new
-values for the supplied properties.  This is used in cases where a
-service can simply consume desired configuration and produce resulting state.
-Presumably, a client would likely GET a resource, modify property
-values, and then PATCH to commit changes.
+PATCHing to a resource replaces the content of the resource with new values for the supplied properties.  This is used in cases where a service can simply consume desired configuration and produce resulting state. Presumably, a client would likely GET a resource, modify property values, and then PATCH to commit changes.
 
-PUTing to a resource replaces the content of the resource with new
-values. This is used in cases with a client can simply set a resource
-to desired state.
+PUTing to a resource replaces the content of the resource with new values. This is used in cases with a client can simply set a resource to desired state.
 
-### Create, Use, Delete:  POST/GET/DELETE (non-idempotent)
+Since multiple clients can access a resource, then a read-modify-write cycle may cause race conditions.  Clients can avoid this by using the ETag header on the resource, and supplying the ETag value in the If-Match or If-None-Match header in the subsequent PATCH or PUT request.  When an update is applied, the service will update the ETag as well.  This gives the service the ability to reject overlapping PATCH or PUT requests when a second client attempts to modify a resource with an old ETag value.
+
+### Create, Use, Delete: POST/GET/DELETE (non-idempotent)
 
 POSTing to a resource creates a new instance of a child resource.  This
 is typically used for data models where items must be created and deleted.
@@ -451,8 +448,12 @@ Application code should always start at the root: /redfish/v1/
 ---
 # Revision History
 
-| Version | Date      | Description                                                            |
-| ---     | ---       | ---                                                                    |
-| 1.0.0   | 2015-8    | Initial release                                                        |
-| 1.0.1   | 2015-8    | Corrected @DMTF to @Redfish                                            |
-| 1.0.2   | 2016-4    | Added Statement about Copyright Annotation in Mockups                  |
+| Version | Date   | Description                                                                                     |
+| ---     | ---    | ---                                                                                             |
+| 1.0.0   | 2015-8 | Initial release                                                                                 |
+| 1.0.1   | 2015-8 | Corrected @DMTF to @Redfish                                                                     |
+| 1.0.2   | 2016-4 | Added Statement about Copyright Annotation in Mockups                                           |
+| 1.0.3   | 2017-8 | Updated the Accessing an Implementation section with correct information                        |
+|         |        | Fixed annotation documentation in the Common Annotations section                                |
+|         |        | Updated @odata.context documentation in the Common Annotations section to use the simple format |
+|         |        | Updated the Idempotent Modify section to mention about client race conditions                   |

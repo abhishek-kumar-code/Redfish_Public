@@ -2,9 +2,9 @@
 DocTitle: Redfish Scalable Platforms Management API Specification
 DocNumber: '0266'
 DocClass: Normative
-DocVersion: '1.2.0'
-modified: '2017-4-14'
-SupersedesVersion: '1.1.0'
+DocVersion: '1.3.0'
+modified: '2017-8-11'
+SupersedesVersion: '1.2.1'
 status: published
 released: true
 copyright: '2014-2017'
@@ -67,6 +67,7 @@ The following referenced documents are indispensable for the application of this
 * <a id="RFC5789">IETF RFC 5789</a>, L. Dusseault et al, PATCH method for HTTP, [http://www.ietf.org/rfc/rfc5789.txt](http://www.ietf.org/rfc/rfc5789.txt "http://www.ietf.org/rfc/rfc5789.txt")
 * <a id="RFC5280">IETF RFC 5280</a>, D. Cooper et al, Web linking, [http://www.ietf.org/rfc/rfc5280.txt](http://www.ietf.org/rfc/rfc5280.txt "http://www.ietf.org/rfc/rfc5280.txt")
 * <a id="RFC5988">IETF RFC 5988</a>, M. Nottingham, Web linking, [http://www.ietf.org/rfc/rfc5988.txt](http://www.ietf.org/rfc/rfc5988.txt "http://www.ietf.org/rfc/rfc5988.txt")
+* <a id="RFC6585">IETF RFC 6585</a>, M. Nottingham, et al, Additional HTTP Status Codes, [http://www.ietf.org/rfc/rfc6585.txt](http://www.ietf.org/rfc/rfc6585.txt "http://www.ietf.org/rfc/rfc6585.txt")
 * <a id="RFC6901">IETF RFC 6901</a>, P. Bryan, Ed. et al, JavaScript Object Notation (JSON) Pointer, [http://www.ietf.org/rfc/rfc6901.txt](http://www.ietf.org/rfc/rfc6901.txt "http://www.ietf.org/rfc/rfc6901.txt")
 * <a id="RFC6909">IETF RFC 6906</a>, E. Wilde, The 'profile' Link Relation Type, [http://www.ietf.org/rfc/rfc6906.txt](http://www.ietf.org/rfc/rfc6906.txt "http://www.ietf.org/rfc/rfc6906.txt")
 * <a id="RFC7230">IETF RFC 7230</a>, R. Fielding et al., Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing, [http://www.ietf.org/rfc/rfc7230.txt](http://www.ietf.org/rfc/rfc7230.txt "http://www.ietf.org/rfc/rfc7230.txt")
@@ -402,7 +403,7 @@ The ETag is generated and provided as part of the resource payload because the s
 
 This specification does not mandate a particular algorithm for creating the ETag, but ETags should be highly collision-free.  An ETag could be a hash, a generation ID, a time stamp or some other value that changes when the underlying object changes.
 
-If a client [PUTs](#replace-put-) or [PATCHes](#update-patch-) a resource, it should include an ETag in the HTTP If-Match/If-None-Match header from a previous GET.
+If a client [PUTs](#replace-put-) or [PATCHes](#update-patch-) a resource, it should include an ETag in the HTTP If-Match/If-None-Match header from a previous GET.  If a service supports returning the ETag header on a resource, the service may respond with status code [428](#status-428) if the If-Match/If-None-Match header is missing from the PUT/PATCH request for the same resource, as specified in [RFC6585](#RFC6585).
 
 In addition to returning the ETag property on each resource,
 
@@ -472,23 +473,23 @@ HTTP defines headers that can be used in request messages. The following table d
 * Redfish Services shall understand and be able to process the headers in the following table as defined by the HTTP 1.1 specification if the value in the Required column is set to "Conditional" under the conditions noted in the description.
 * Redfish Services should understand and be able to process the headers in the following tables as defined by the HTTP 1.1 specification if the value in the Required column is set to "No".
 
-| Header           | Required    | Supported Values                      | Description                                                                                                                                                                                                                                                                                                                     |
-| --------         | ---         | -----------------                     | ------------                                                                                                                                                                                                                                                                                                                    |
-| Accept           | Yes         | [RFC 7231](#RFC7231)   | Indicates to the server what media type(s) this client is prepared to accept. Services shall support requests for resources with an Accept header including `application/json` or `application/json;charset=utf-8`. Services shall support requests for metadata with an Accept header including `application/xml` or `application/xml;charset=utf-8`. |
-| Accept-Encoding  | No | [RFC 7231](#RFC7231)   | Indicates if gzip encoding can be handled by the client. If an Accept-Encoding header is present in a request and the service cannot send a response which is acceptable according to the Accept-Encoding header, then the service should respond with status code [406](#status-406). Services should not return responses gzip encoded if the Accept-Encoding header is not present in the request.                                                                                                                                        |
-| Accept-Language  | No          | [RFC 7231](#RFC7231)   | This header is used to indicate the language(s) requested in the response. If this header is not specified, the appliance default locale will be used.                                                                                                                                                                          |
-| Content-Type     | Conditional | [RFC 7231](#RFC7231) | Describes the type of representation used in the message body. Content-Type shall be required in requests that include a request body. Services shall accept Content-Type values of `application/json` or `application/json;charset=utf-8`.                                                                                     |
-| Content-Length   | No          | [RFC 7231](#RFC7231) | Describes the size of the message body. An optional means of indicating size of the body uses Transfer-Encoding: chunked, which does not use the Content-Length header. If a service does not support Transfer-Encoding and needs Content-Length instead, the service will respond with status code [411](#status-411). |
-| OData-MaxVersion | No          | 4.0                                   | Indicates the maximum version of OData that an odata-aware client understands                                                                                                                                                                                                                                                   |
-| OData-Version    | Yes         | 4.0                                   | Services shall reject requests which specify an unsupported OData version.  If a service encounters a version that it does not support, the service should reject the request with status code [412] (#status-412).  If client does not specify an Odata-Version header, the client is outside the boundaries of this specification.                                                                                                                         |
-| Authorization    | Conditional | [RFC 7235](#RFC7235), Section 4.2  | Required for [Basic Authentication](#basic-authentication)                                                                                                                                                                                                                                                                       |
-| User-Agent       | Yes         | [RFC 7231](#RFC7231) | Required for tracing product tokens and their version.  Multiple product tokens may be listed.                                                                                                                                                                                                                                  |
-| Host             | Yes         | [RFC 7230](#RFC7230) | Required to allow support of multiple origin hosts at a single IP address.                                                                                                                                                                                                                                                      |
-| Origin           | Yes         | [W3C CORS](#W3C-CORS), Section 5.7     | Used to allow web applications to consume Redfish Service while preventing CSRF attacks.                                                                                                                                                                                                                                        |
-| Via              | No          | [RFC 7230](#RFC7230) | Indicates network hierarchy and recognizes message loops. Each pass inserts its own VIA.                                                                                                                                                                                                                                        |
-| Max-Forwards     | No          | [RFC 7231](#RFC7231) | Limits gateway and proxy hops. Prevents messages from remaining in the network indefinitely.                                                                                                                                                                                                                                    |
-| If-Match         | Conditional | [RFC 7232](#RFC7232) | If-Match shall be supported on PUT and PATCH requests for resources for which the service returns ETags, to ensure clients are updating the resource from a known state.                                                                                                                                     |
-| If-None-Match    | No          | [RFC 7232](#RFC7232) | If this HTTP header is present, the service will only return the requested resource if the current ETag of that resource does not match the ETag sent in this header.  If the ETag specified in this header matches the resource's current ETag, the status code returned from the GET will be [304](#status-304).       |
+| Header           | Required    | Supported Values                   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| --------         | ---         | -----------------                  | ------------                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| Accept           | Yes         | [RFC 7231](#RFC7231)               | Indicates to the server what media type(s) this client is prepared to accept.  Services shall support requests for resources with an Accept header including `application/json` or `application/json;charset=utf-8`.  Services shall support requests for metadata with an Accept header including `application/xml` or `application/xml;charset=utf-8`.  Services shall support requests for all resources with an Accept header including `application/*`, `application/*;charset=utf-8`, `*/*`, or `*/*;charset=utf-8`. |
+| Accept-Encoding  | No          | [RFC 7231](#RFC7231)               | Indicates if gzip encoding can be handled by the client. If an Accept-Encoding header is present in a request and the service cannot send a response which is acceptable according to the Accept-Encoding header, then the service should respond with status code [406](#status-406). Services should not return responses gzip encoded if the Accept-Encoding header is not present in the request.                                                                                                                      |
+| Accept-Language  | No          | [RFC 7231](#RFC7231)               | This header is used to indicate the language(s) requested in the response. If this header is not specified, the appliance default locale will be used.                                                                                                                                                                                                                                                                                                                                                                     |
+| Content-Type     | Conditional | [RFC 7231](#RFC7231)               | Describes the type of representation used in the message body. Content-Type shall be required in requests that include a request body. Services shall accept Content-Type values of `application/json` or `application/json;charset=utf-8`.                                                                                                                                                                                                                                                                                |
+| Content-Length   | No          | [RFC 7231](#RFC7231)               | Describes the size of the message body. An optional means of indicating size of the body uses Transfer-Encoding: chunked, which does not use the Content-Length header. If a service does not support Transfer-Encoding and needs Content-Length instead, the service will respond with status code [411](#status-411).                                                                                                                                                                                                    |
+| OData-MaxVersion | No          | 4.0                                | Indicates the maximum version of OData that an odata-aware client understands                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| OData-Version    | Yes         | 4.0                                | Services shall reject requests which specify an unsupported OData version.  If a service encounters a version that it does not support, the service should reject the request with status code [412] (#status-412).  If client does not specify an OData-Version header, the client is outside the boundaries of this specification.                                                                                                                                                                                       |
+| Authorization    | Conditional | [RFC 7235](#RFC7235), Section 4.2  | Required for [Basic Authentication](#basic-authentication)                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| User-Agent       | Yes         | [RFC 7231](#RFC7231)               | Required for tracing product tokens and their version.  Multiple product tokens may be listed.                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| Host             | Yes         | [RFC 7230](#RFC7230)               | Required to allow support of multiple origin hosts at a single IP address.                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| Origin           | Yes         | [W3C CORS](#W3C-CORS), Section 5.7 | Used to allow web applications to consume Redfish Service while preventing CSRF attacks.                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| Via              | No          | [RFC 7230](#RFC7230)               | Indicates network hierarchy and recognizes message loops. Each pass inserts its own VIA.                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| Max-Forwards     | No          | [RFC 7231](#RFC7231)               | Limits gateway and proxy hops. Prevents messages from remaining in the network indefinitely.                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| If-Match         | Conditional | [RFC 7232](#RFC7232)               | If-Match shall be supported on PUT and PATCH requests for resources for which the service returns ETags, to ensure clients are updating the resource from a known state.                                                                                                                                                                                                                                                                                                                                                   |
+| If-None-Match    | No          | [RFC 7232](#RFC7232)               | If this HTTP header is present, the service will only return the requested resource if the current ETag of that resource does not match the ETag sent in this header.  If the ETag specified in this header matches the resource's current ETag, the status code returned from the GET will be [304](#status-304).                                                                                                                                                                                                         |
 
 * Redfish Services shall understand and be able to process the headers in the following table as defined by this specification if the value in the Required column is set to "yes" .
 
@@ -583,10 +584,11 @@ OData markup ([resource identifiers](#resource-identifier-property), [type](#typ
 
 ##### Replace (PUT)
 
-The PUT method is used to completely replace a resource.  Properties omitted from the request body are reset to their default value.
+The PUT method is used to completely replace a resource.  Properties omitted from the request body, required by the resource definition, or normally supplied by the Service may be added by the Service to the resulting resource.
 
 * Services may support the PUT method to replace a resource in whole.  If a service does not implement this method, status code [405](#status-405) shall be returned.
 * Services may return a representation of the resource after any server-side transformations in the body of the response.
+* Services may reject requests which do not include properties required by the resource definition (schema).
 * Services should return status code [405](#status-405) if the client specifies a PUT request against a Resource Collection.
 * The PUT operation should be idempotent in the absence of outside changes to the resource, with the possible exception that ETAG values may change as the result of this operation.
 
@@ -753,29 +755,30 @@ The following table lists some of the common HTTP status codes. Other codes may 
 * Exceptions from operations shall be mapped to HTTP status codes.
 * Redfish Services should not return the status code 100. Using the HTTP protocol for a multi-pass data transfer should be avoided, except upload of extremely large data.
 
-| HTTP Status Code                                  | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| ---                                               | ---                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| <a id="status-200"></a>200 OK                     | The request was successfully completed and includes a representation in its body.                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| <a id="status-201"></a>201 Created                | A request that created a new resource completed successfully. The Location header shall be set to the canonical URI for the newly created resource. A representation of the newly created resource may be included in the response body.                                                                                                                                                                                                                                                         |
-| <a id="status-202"></a>202 Accepted               | The request has been accepted for processing, but the processing has not been completed. The Location header shall be set to the URI of a Task resource that can later be queried to determine the status of the operation. A representation of the Task resource may be included in the response body.                                                                                                                                                                                          |
-| <a id="status-204"></a>204 No Content             | The request succeeded, but no content is being returned in the body of the response.                                                                                                                                                                                                                                                                                                                                                                                                                |
-| <a id="status-301"></a>301 Moved Permanently      | The requested resource resides under a different URI                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| <a id="status-302"></a>302 Found                  | The requested resource resides temporarily under a different URI.                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| <a id="status-304"></a>304 Not Modified           | The service has performed a conditional GET request where access is allowed, but the resource content has not changed. Conditional requests are initiated using the headers If-Modified-Since and/or If-None-Match (see HTTP 1.1, sections 14.25 and 14.26) to save network bandwidth if there is no change.                                                                                                                                                                                  |
-| <a id="status-400"></a>400 Bad Request            | The request could not be processed because it contains missing or invalid information (such as validation error on an input field, a missing required value, and so on). An extended error shall be returned in the response body, as defined in clause [Error Responses](#error-responses).                                                                                                                                                                                      |
-| <a id="status-401"></a>401 Unauthorized           | The authentication credentials included with this request are missing or invalid.                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| <a id="status-403"></a>403 Forbidden              | The server recognized the credentials in the request, but those credentials do not possess authorization to perform this request.                                                                                                                                                                                                                                                                                                                                                                   |
-| <a id="status-404"></a>404 Not Found              | The request specified a URI of a resource that does not exist.                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| <a id="status-405"></a>405 Method Not Allowed     | The HTTP verb specified in the request (e.g., DELETE, GET, HEAD, POST, PUT, PATCH) is not supported for this request URI. The response shall include an Allow header which provides a list of methods that are supported by the resource identified by the Request-URI.                                                                                                                                                                                                                   |
+| HTTP Status Code                                  | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| ---                                               | ---                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| <a id="status-200"></a>200 OK                     | The request was successfully completed and includes a representation in its body.                                                                                                                                                                                                                                                                                                                                                                                                               |
+| <a id="status-201"></a>201 Created                | A request that created a new resource completed successfully.  The Location header shall be set to the canonical URI for the newly created resource.  A representation of the newly created resource may be included in the response body.                                                                                                                                                                                                                                                      |
+| <a id="status-202"></a>202 Accepted               | The request has been accepted for processing, but the processing has not been completed.  The Location header shall be set to the URI of a Task resource that can later be queried to determine the status of the operation.  A representation of the Task resource may be included in the response body.                                                                                                                                                                                       |
+| <a id="status-204"></a>204 No Content             | The request succeeded, but no content is being returned in the body of the response.                                                                                                                                                                                                                                                                                                                                                                                                            |
+| <a id="status-301"></a>301 Moved Permanently      | The requested resource resides under a different URI.                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| <a id="status-302"></a>302 Found                  | The requested resource resides temporarily under a different URI.                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| <a id="status-304"></a>304 Not Modified           | The service has performed a conditional GET request where access is allowed, but the resource content has not changed.  Conditional requests are initiated using the headers If-Modified-Since and/or If-None-Match (see HTTP 1.1, sections 14.25 and 14.26) to save network bandwidth if there is no change.                                                                                                                                                                                   |
+| <a id="status-400"></a>400 Bad Request            | The request could not be processed because it contains missing or invalid information (such as validation error on an input field, a missing required value, and so on).  An extended error shall be returned in the response body, as defined in clause [Error Responses](#error-responses).                                                                                                                                                                                                   |
+| <a id="status-401"></a>401 Unauthorized           | The authentication credentials included with this request are missing or invalid.                                                                                                                                                                                                                                                                                                                                                                                                               |
+| <a id="status-403"></a>403 Forbidden              | The server recognized the credentials in the request, but those credentials do not possess authorization to perform this request.                                                                                                                                                                                                                                                                                                                                                               |
+| <a id="status-404"></a>404 Not Found              | The request specified a URI of a resource that does not exist.                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| <a id="status-405"></a>405 Method Not Allowed     | The HTTP verb specified in the request (e.g., DELETE, GET, HEAD, POST, PUT, PATCH) is not supported for this request URI.  The response shall include an Allow header which provides a list of methods that are supported by the resource identified by the Request-URI.                                                                                                                                                                                                                        |
 | <a id="status-406"></a>406 Not Acceptable         | The Accept header was specified in the request and the resource identified by this request is not capable of generating a representation corresponding to one of the media types in the Accept header.                                                                                                                                                                                                                                                                                          |
-| <a id="status-409"></a>409 Conflict               | A creation or update request could not be completed, because it would cause a conflict in the current state of the resources supported by the platform (for example, an attempt to set multiple attributes that work in a linked manner using incompatible values).                                                                                                                                                                                                                            |
-| <a id="status-410"></a>410 Gone                   | The requested resource is no longer available at the server and no forwarding address is known. This condition is expected to be considered permanent. Clients with hyperlink editing capabilities SHOULD delete references to the Request-URI after user approval. If the server does not know, or has no facility to determine, whether or not the condition is permanent, the status code 404 (Not Found) SHOULD be used instead. This response is cacheable unless indicated otherwise. |
-| <a id="status-411"></a>411 Length Required        | The request did not specify the length of its content using the Content-Length header (perhaps Transfer-Encoding: chunked was used instead). The addressed resource requires the Content-Length header.                                                                                                                                                                                                                                                                                         |
-| <a id="status-412"></a>412 Precondition Failed    | Precondition (such as OData-Version, If Match or If Not Modified headers) check failed.                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| <a id="status-415"></a>415 Unsupported Media Type | The request specifies a Content-Type for the body that is not supported.                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| <a id="status-500"></a>500 Internal Server Error  | The server encountered an unexpected condition that prevented it from fulfilling the request. An extended error shall be returned in the response body, as defined in clause [Error Responses](#error-responses).                                                                                                                                                                                                                                                                   |
-| <a id="status-501"></a>501 Not Implemented        | The server does not (currently) support the functionality required to fulfill the request.  This is the appropriate response when the server does not recognize the request method and is not capable of supporting the method for any resource.                                                                                                                                                                                                                                           |
-| <a id="status-503"></a>503 Service Unavailable    | The server is currently unable to handle the request due to temporary overloading or maintenance of the server.  A service may use this response to indicate that the request URI is valid, but the service is performing initialization or other maintenance on the resource.                                                                                                                                                                                                                      |
+| <a id="status-409"></a>409 Conflict               | A creation or update request could not be completed, because it would cause a conflict in the current state of the resources supported by the platform (for example, an attempt to set multiple attributes that work in a linked manner using incompatible values).                                                                                                                                                                                                                             |
+| <a id="status-410"></a>410 Gone                   | The requested resource is no longer available at the server and no forwarding address is known.  This condition is expected to be considered permanent.  Clients with hyperlink editing capabilities SHOULD delete references to the Request-URI after user approval.  If the server does not know, or has no facility to determine, whether or not the condition is permanent, the status code 404 (Not Found) SHOULD be used instead.  This response is cacheable unless indicated otherwise. |
+| <a id="status-411"></a>411 Length Required        | The request did not specify the length of its content using the Content-Length header (perhaps Transfer-Encoding: chunked was used instead).  The addressed resource requires the Content-Length header.                                                                                                                                                                                                                                                                                        |
+| <a id="status-412"></a>412 Precondition Failed    | Precondition (such as OData-Version, If-Match or If-Not-Modified headers) check failed.                                                                                                                                                                                                                                                                                                                                                                                                         |
+| <a id="status-415"></a>415 Unsupported Media Type | The request specifies a Content-Type for the body that is not supported.                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| <a id="status-428"></a>428 Precondition Required  | The request did not provide the required precondition, such as an If-Match or If-None-Match header.                                                                                                                                                                                                                                                                                                                                                                                             |
+| <a id="status-500"></a>500 Internal Server Error  | The server encountered an unexpected condition that prevented it from fulfilling the request.  An extended error shall be returned in the response body, as defined in clause [Error Responses](#error-responses).                                                                                                                                                                                                                                                                              |
+| <a id="status-501"></a>501 Not Implemented        | The server does not (currently) support the functionality required to fulfill the request.  This is the appropriate response when the server does not recognize the request method and is not capable of supporting the method for any resource.                                                                                                                                                                                                                                                |
+| <a id="status-503"></a>503 Service Unavailable    | The server is currently unable to handle the request due to temporary overloading or maintenance of the server.  A service may use this response to indicate that the request URI is valid, but the service is performing initialization or other maintenance on the resource.                                                                                                                                                                                                                  |
 
 #### Metadata responses
 Metadata describes resources, Resource Collections, capabilities and service-dependent behavior to generic consumers, including OData client tools and applications with no specific understanding of this specification. Clients are not required to request metadata if they already have sufficient understanding of the target service; for example, to request and interpret a JSON representation of a resource defined in this specification.
@@ -906,21 +909,15 @@ Responses that represent a single resource shall contain a context property name
 
 The context URL for a resource is of one of the following two forms:
 
- *MetadataUrl*#*ResourceType*[(*Selectlist*)]
- *MetadataUrl*#*ResourcePath*[(*Selectlist*)]/$entity
+ *MetadataUrl*#*ResourceType*  
+ or  
+ *MetadataUrl*#*ResourcePath*/$entity
 
 where
 * *MetadataUrl* = the metadata url of the service (/redfish/v1/$metadata)
 * *ResourceType* = the fully qualified name of the unversioned resource type
 * *ResourcePath* = the path from the service root to the singleton or Resource Collection containing the resource
-* *Selectlist* = comma-separated [list of properties](#select-list) included in the response if the response includes a subset of properties defined for the represented resources.
 * *$entity* = a designator that the response is a single resource from either an entity set or specified by a navigation property.
-
-###### Select list
-
-If a response contains a subset of the properties defined in the Redfish Schema for a type, then the context URL shall specify the subset of properties included. An asterix (*) can be used to specify "all structural properties" for a given resource.
-
-Expanded [reference properties](#reference-properties) shall be included in the select list if the result includes a subset of the properties defined for the expanded resource.
 
 For example, the following context URL specifies that the result contains a single ComputerSystem resource:
 
@@ -1330,6 +1327,30 @@ All Redfish schemas produced, approved and published by the SPMF are available f
 | redfish.dmtf.org/schemas/v1 |  All v1.xx schema files.  Every v1.xx minor or errata release of each schema file. |
 | redfish.dmtf.org/schemas/archive | Sub-folders contain schema files specific to a particular version release. |
 
+#### Schema file naming conventions
+
+Standard Redfish schema files published in the repository, or those created by others and re-published, shall follow a set of naming conventions.  These conventions are intended to ensure consistent naming and eliminate naming collisions.
+
+##### CSDL (XML) schema file naming
+
+Redfish CSDL schema files shall be named using the [TypeName](#type-identifiers) value, followed by "_v" and the major version of the schema.  As a single CSDL schema file contains all minor revisions of the schema, only the major version is used in the file name.  The file name shall be formatted as:
+   
+  *TypeName*_*vMajorVersion*.*xml*
+
+For example, version 1.3.0 of the Chassis schema would be named "Chassis_v1.xml". 
+
+##### JSON schema file naming
+
+Redfish JSON schema files shall be named using the [Type identfiers](#type-identifiers), following the format:
+
+  *ResourceTypeName.vMajorVersion_MinorVersion_Errata.json*
+  
+For example, version 1.3.0 of the Chassis schema would be named "Chassis.v1_3_0.json".
+
+##### OEM schema file naming
+
+To avoid namespace collisions with current or future standard Redfish schema files, 3rd parties defining Redfish schemas should prepend an organization name to the Namespace as the file name.  For example, "ContosoDisk_v1.xml" or "ContosoDisk.v1.0.4.json".
+ 
 #### Programmatic access to schema files
 
 Programs may access the Schema Repository using the redfish.dmtf.org/schemas/v1 durable URL, as this folder will contain each released version of each schema.  Programs incorporating schema usage should implement a local schema cache to reduce latency, program requirements for Internet access and undue traffic burden on the DMTF website.
@@ -1948,11 +1969,43 @@ Redfish Resources are one of several general kinds:
 
 #### Current configuration
 
-Current Configuration resources represent the service's knowledge of the current state and configuration of the resource.  This may be directly updatable with a PATCH or it may be read-only by the client and the client must PATCH to a separate Setting resource.
+Current Configuration resources represent the service's knowledge of the current state and configuration of the resource.  This may be directly updatable with a PATCH or it may be read-only by the client and the client must PATCH and/or PUT to a separate [Settings resource](#settings).  For resources that can be modified immediately, the Allow header shall contain PATCH and/or PUT in the GET response.  When a resource is read-only, the Allow header shall not contain PATCH or PUT in the GET response.
 
 #### Settings
 
-Setting resources represent the future state and configuration of the resource.  This property is always associated with a resource through the Redfish.Settings annotation.  Where the resource represents the current state, the settings resource represents the future intended state.  The state of the resource is changed either directly, such as with a POST of an action or PUT request or indirectly, such as when a user reboots a machine outside of the Redfish Service.
+A Settings resource represents the future state and configuration of the resource.  For resources that support a future state and configuration, the response shall contain a property with the "@Redfish.Settings" annotation.  While the resource represents the current state, the Settings resource represents the future intended state.
+
+Below is an example body for a resource that supports a Settings resource.  A client is able to locate the URI of the Settings resource using the "SettingsObject" property.
+
+~~~json
+{
+    "@Redfish.Settings": {
+        "@odata.type": "#Settings.v1_0_0.Settings",
+        "SettingsObject": {
+            "@odata.id": "/redfish/v1/Managers/1/EthernetInterfaces/1/SD"
+        },
+        "Time": "2017-05-03T23:12:37-05:00",
+        "ETag": "someetag",
+        "Messages": []
+    },
+    ...
+}
+~~~
+
+The values in the Settings resource are applied to the resource either directly, such as with a POST of an action (such as Reset) or a PUT/PATCH request, or indirectly, such as when a user reboots a machine outside of the Redfish Service.  A client may indicate its preference on when to apply the future configuration by including the "@Redfish.SettingsApplyTime" annotation in the request body when configuring the Settings resource.  If a service supports configuring when to apply the future settings, the response body that represents the Settings resource shall contain a property with the "@Redfish.SettingsApplyTime" annotation.  See properties defined in the "Settings" Redfish Schema for details.
+
+Below is an example request body that shows a client configuring when the values in the Settings resource are to be applied:
+
+~~~json
+{
+    "@Redfish.SettingsApplyTime": {
+        "ApplyTime": "OnReset",   
+        "MaintenanceWindowStartTime": "2017-05-03T23:12:37-05:00",
+        "MaintenanceWindowDurationInSeconds": 600
+    },
+    ...
+}
+~~~
 
 #### Services
 
@@ -2235,7 +2288,7 @@ For functionality requiring multiple Redfish operations, or for security reasons
 
 ##### Session login
 
-A Redfish session is created, without requiring an authentication header, by an HTTP POST to the SessionService' Sessions Resource Collection, including the following POST body:
+A Redfish session is created, without requiring an authentication header, by an HTTP POST to the SessionService's Sessions Resource Collection, including the following POST body:
 
 ~~~http
 POST /redfish/v1/SessionService/Sessions HTTP/1.1
@@ -2253,11 +2306,11 @@ OData-Version: 4.0
 
 The Origin header should be saved in reference to this session creation and compared to subsequent requests using this session to verify the request has been initiated from an authorized client domain.
 
-The response to the POST request to create a session includes:
+The response to the POST request to create a session shall include the following:
 
-*  an X-Auth-Token header that contains a "session auth token" that the client can use an subsequent requests, and
-*  a "Location header that contains a hyperlink to the newly created session resource.
-*  The JSON response body that contains a full representation of the newly created session object:
+* An X-Auth-Token header that contains a "session auth token" that the client can use an subsequent requests
+* A Location header that contains a hyperlink to the newly created session resource
+* The JSON response body that contains a full representation of the newly created session object (example below)
 
 ~~~http
 Location: /redfish/v1/SessionService/Sessions/1
@@ -2431,8 +2484,8 @@ privilege mapping would represent behavior for all Manager resources in a servic
 Several situations occur where operation to privilege mapping varies from what might be specified at an entity schema level.
 These situations are:
 * Property Override - Where a property has different privilege requirements that the resource (document) it is in.  For example, the Password 
-property on the ManagerAccountresource requires the "ConfigureSelf" or the "ConfigureUser" privilege to change in contrast 
-to the "ConfigureUser" privilege required for the rest of the properties on ManagerAccount resources.
+property on the ManagerAccountresource requires the "ConfigureSelf" or the "ConfigureUsers" privilege to change in contrast 
+to the "ConfigureUsers" privilege required for the rest of the properties on ManagerAccount resources.
 * Subordinate Override - Where an entity is used in context of another entity and the contextual privileges need to govern.  For example, the 
 privileges for PATCH operations on EthernetInterface resources depends on whether the resource is subordinate to Manager
 (ConfigureManager is required) or ComputerSystem (ConfigureComponentis required) resources.
@@ -2442,7 +2495,7 @@ The overrides are defined in the context of the operation to privilege mapping f
 ##### Property Override Example
 
 In the following example, the Password property on the ManagerAccount
-resource requires the "ConfigureSelf" or the "ConfigureUser" privilege to change in contrast to the "ConfigureUser" privilege 
+resource requires the "ConfigureSelf" or the "ConfigureUsers" privilege to change in contrast to the "ConfigureUsers" privilege 
 required for the rest of the properties on ManagerAccount resources.
 ~~~json
 {
@@ -2453,7 +2506,7 @@ required for the rest of the properties on ManagerAccount resources.
                 "Privilege": [ "ConfigureManager" ]
             },
             {
-                "Privilege": [ "ConfigureUser" ]
+                "Privilege": [ "ConfigureUsers" ]
             },
             {
                 "Privilege": [ "ConfigureSelf" ]
@@ -2466,22 +2519,22 @@ required for the rest of the properties on ManagerAccount resources.
         ],
         "PATCH": [
             {
-                "Privilege": [ "ConfigureUser" ]
+                "Privilege": [ "ConfigureUsers" ]
             }
         ],
         "POST": [
             {
-                "Privilege": [ "ConfigureUser" ]
+                "Privilege": [ "ConfigureUsers" ]
             }
         ],
         "PUT": [
             {
-                "Privilege": [ "ConfigureUser" ]
+                "Privilege": [ "ConfigureUsers" ]
             }
         ],
         "DELETE": [
             {
-                "Privilege": [ "ConfigureUser" ]
+                "Privilege": [ "ConfigureUsers" ]
             }
         ]
     },
@@ -2703,6 +2756,23 @@ OData-Version: 4.0
 
 | Version | Date     | Description     |
 | ---     | ---      | ---             |
+| 1.3.0   | 2017-8-11| Added support for a Service to optionally reject a PATCH or PUT operation if the If-Match or If-Match-None HTTP header is required by returning the HTTP 428 response code. |
+|         |          | Added support for a Service to describe when the values in the Settings object for a resource are applied via the "@Redfish.SettingsApplyTime" annotation. |
+| 1.2.1   | 2017-8-10| Clarified wording of the "Oem" object definition. |
+|         |          | Clarified wording of the "Partial resource results" section. |
+|         |          | Clarified behavior of a Service when receiving a PATCH with an empty JSON object. |
+|         |          | Added statement about other uses of the HTTP 503 response code. |
+|         |          | Clarified format of URI fragments to conform to RFC6901. |
+|         |          | Clarified use of absolute and relative URIs. |
+|         |          | Clarified definition of the "target" property as originating from OData. |
+|         |          | Clarified distinction between "hyperlinks" and the "Links Property". |
+|         |          | Corrected the JSON example of the privilege map. |
+|         |          | Clarified format of the "@odata.context" property. |
+|         |          | Added clauses about the schema file naming conventions. |
+|         |          | Clarified behavior of a Service when receiving a PUT with missing properties. |
+|         |          | Clarified valid values in the "Accept" header to include wildcards per RFC7231. |
+|         |          | Corrected "ConfigureUser" privilege to be spelled "ConfigureUsers". |
+|         |          | Corrected Session Login section to include normative language. |
 | 1.2.0   | 2017-4-14| Added support for the Redfish Composability Service. |
 |         |          | Clarified Service handling of the Accept-Encoding header in a request. |
 |         |          | Improved consistency and formatting of example requests and responses throughout. |
