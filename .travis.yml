@@ -16,6 +16,7 @@ branches:
   only:
     - master
     - /^TF-.*/
+    - /^TF_.*/
 cache:
   bundler: true
   directories:
