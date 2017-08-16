@@ -3,7 +3,7 @@
     "@odata.id": "/redfish/v1/DCIMPower/default/Generator",
     "@odata.type": "#Generator.v1_0_0.Generator",
 
-    "ID": "Generator1",
+    "Id": "Generator1",
     "Name": "Generator1",
     "FirmwareRevision": "1.0.0",
     "DateOfManufacture": "01012017",

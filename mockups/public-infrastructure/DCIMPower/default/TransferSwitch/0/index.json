@@ -3,7 +3,7 @@
     "@odata.id": "/redfish/v1/DCIMPower/default/TransferSwitch",
     "@odata.type": "#TransferSwitch.v1_0_0.TransferSwitch",
 
-    "ID": "TransferSwitch0",
+    "Id": "TransferSwitch0",
     "Name": "TransferSwitch0",
     "FirmwareRevision": "1.0.0",
     "DateOfManufacture": "01012017",

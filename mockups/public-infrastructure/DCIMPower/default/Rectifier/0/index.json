@@ -3,7 +3,7 @@
     "@odata.id": "/redfish/v1/DCIMPower/default/Rectifier",
     "@odata.type": "#Rectifier.v1_0_0.Rectifier",
 
-    "ID": "Rectifier0",
+    "Id": "Rectifier0",
     "Name": "Rectifier0",
     "FirmwareRevision": "1.0.0",
     "DateOfManufacture": "01012017",

@@ -3,7 +3,7 @@
     "@odata.id": "/redfish/v1/DCIMCooling/default/CRAH/0",
     "@odata.type": "#CRAH.v1_0_0.CRAH",
 
-    "ID": "CRAH0",
+    "Id": "CRAH0",
     "Name": "CRAH0",
     "FirmwareRevision": "1.0.0",
     "DateOfManufacture": "01012017",

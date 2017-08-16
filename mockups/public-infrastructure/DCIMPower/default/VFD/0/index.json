@@ -3,7 +3,7 @@
     "@odata.id": "/redfish/v1/DCIMPower/default/VFD/0",
     "@odata.type": "#VFD.v1_0_0.VFD",
 
-    "ID": "VFD0",
+    "Id": "VFD0",
     "Name": "VFD0",
     "FirmwareRevision": "1.0.0",
     "DateOfManufacture": "01012017",

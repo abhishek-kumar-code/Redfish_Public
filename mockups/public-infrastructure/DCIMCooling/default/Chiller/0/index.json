@@ -3,7 +3,7 @@
     "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0",
     "@odata.type": "#Chiller.v1_0_0.Chiller",
 
-    "ID": "Chiller0",
+    "Id": "Chiller0",
     "Name": "Chiller0",
     "FirmwareRevision": "1.0.0",
     "DateOfManufacture": "01012017",

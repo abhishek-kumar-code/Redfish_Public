@@ -3,7 +3,7 @@
     "@odata.id": "/redfish/v1/DCIMCooling/default/CoolingTower/0",
     "@odata.type": "#CoolingTower.v1_0_0.CoolingTower",
 
-    "ID": "CoolingTower0",
+    "Id": "CoolingTower0",
     "Name": "CoolingTower0",
     "FirmwareRevision": "1.0.0",
     "DateOfManufacture": "01012017",

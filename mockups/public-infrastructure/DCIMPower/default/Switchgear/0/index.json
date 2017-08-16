@@ -3,7 +3,7 @@
     "@odata.id": "/redfish/v1/DCIMPower/default/Switchgear",
     "@odata.type": "#Switchgear.v1_0_0.Switchgear",
 
-    "ID": "Switchgear0",
+    "Id": "Switchgear0",
     "Name": "Switchgear0",
     "FirmwareRevision": "1.0.0",
     "DateOfManufacture": "01012017",

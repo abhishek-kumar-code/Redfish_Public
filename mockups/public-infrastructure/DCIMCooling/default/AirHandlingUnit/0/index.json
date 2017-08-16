@@ -3,7 +3,7 @@
     "@odata.id": "/redfish/v1/DCIMCooling/default/AirHandlingUnit/0",
     "@odata.type": "#AirHandlingUnit.v1_0_0.AirHandlingUnit",
 
-    "ID": "AirHandlingUnit0",
+    "Id": "AirHandlingUnit0",
     "Name": "AirHandlingUnit0",
     "FirmwareRevision": "1.0.0",
     "DateOfManufacture": "01012017",

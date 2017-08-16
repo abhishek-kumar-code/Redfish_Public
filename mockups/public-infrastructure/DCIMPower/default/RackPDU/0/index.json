@@ -3,7 +3,7 @@
     "@odata.id": "/redfish/v1/DCIMPower/default/RackPDU/0",
     "@odata.type": "#RackPDU.v1_0_0.RackPDU",
 
-    "ID": "RackPDU0",
+    "Id": "RackPDU0",
     "Name": "RackPDU0",
     "FirmwareRevision": "1.0.0",
     "DateOfManufacture": "01012017",
