@@ -21,6 +21,21 @@
     <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/AirHandlingUnitCollection_v1.xml">
+    <edmx:Include Namespace="AirHandlingUnitCollection"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ChillerCollection_v1.xml">
+    <edmx:Include Namespace="ChillerCollection"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/CoolingTowerCollection_v1.xml">
+    <edmx:Include Namespace="CoolingTowerCollection"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/CRACCollection_v1.xml">
+    <edmx:Include Namespace="CRACCollection"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/CRAHCollection_v1.xml">
+    <edmx:Include Namespace="CRAHCollection"/>
+  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Chassis_v1.xml">
     <edmx:Include Namespace="Chassis"/>
   </edmx:Reference>

@@ -21,6 +21,33 @@
     <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
   </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/GeneratorCollection_v1.xml">
+    <edmx:Include Namespace="GeneratorCollection"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/PDUCollection_v1.xml">
+    <edmx:Include Namespace="PDUCollection"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RackPDUCollection_v1.xml">
+    <edmx:Include Namespace="RackPDUCollection"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RectifierCollection_v1.xml">
+    <edmx:Include Namespace="RectifierCollection"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/SwitchgearCollection_v1.xml">
+    <edmx:Include Namespace="SwitchgearCollection"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/TransferSwitchCollection_v1.xml">
+    <edmx:Include Namespace="TransferSwitchCollection"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/TransformerCollection_v1.xml">
+    <edmx:Include Namespace="TransformerCollection"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/UPSCollection_v1.xml">
+    <edmx:Include Namespace="UPSCollection"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/VFDCollection_v1.xml">
+    <edmx:Include Namespace="VFDCollection"/>
+  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Chassis_v1.xml">
     <edmx:Include Namespace="Chassis"/>
   </edmx:Reference>
