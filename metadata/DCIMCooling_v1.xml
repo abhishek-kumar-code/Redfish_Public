@@ -20,16 +20,10 @@
   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
     <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
   </edmx:Reference>
-  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
-    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
-    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
-  </edmx:Reference>
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
     <edmx:Include Namespace="Resource"/>
     <edmx:Include Namespace="Resource.v1_0_0"/>
-    <edmx:Include Namespace="Resource.v1_1_0"/>
   </edmx:Reference>
- 
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Chassis_v1.xml">
     <edmx:Include Namespace="Chassis"/>
   </edmx:Reference>
@@ -39,7 +33,7 @@
   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Manager_v1.xml">
     <edmx:Include Namespace="Manager"/>
   </edmx:Reference>
-  
+
   <edmx:DataServices>
 
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DCIMCooling">
@@ -70,19 +64,6 @@
     <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DCIMCooling.v0_1_0">
 
       <EntityType Name="DCIMCooling" BaseType="DCIMCooling.DCIMCooling">
-      	 
-        <!-- General Information -->   
-        <Property Name="ID" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual ID of DCIMCooling."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual ID of DCIMCooling."/>
-        </Property>
-
-        <Property Name="Name" Type="Edm.String">
-          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-          <Annotation Term="OData.Description" String="The actual Name of DCIMCooling."/>
-          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Name of DCIMCooling."/>
-        </Property>
 
         <Property Name="DCIMPowerType" Type="Edm.String">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
@@ -90,8 +71,8 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual DCIM Power Type of DCIMCooling."/>
         </Property>
 
-        <Property Name="Status" Type="Resource.Status"></Property>
-		 
+        <Property Name="Status" Type="Resource.Status"/>
+
         <NavigationProperty Name="AirHandlingUnit" Type="AirHandlingUnitCollection.AirHandlingUnitCollection">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="This is the definition for a AirHandlingUnit collection."/>
@@ -122,37 +103,54 @@
           <Annotation Term="OData.LongDescription" String="These properties shall be the definition for a CRAH collection for a Redfish implementation."/>
         </NavigationProperty>
 
-        <ComplexType Name="Links" BaseType="Resource.Links">
-          <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
-          <Annotation Term="OData.LongDescription" String="This type, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
+        <Property Name="Actions" Type="DCIMCooling.v0_1_0.Actions" Nullable="false">
+          <Annotation Term="OData.Description" String="The available actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
+        </Property>
 
-          <NavigationProperty Name="Chassis" Type="Collection(Chassis.Chassis)">
-            <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-            <Annotation Term="OData.Description" String="An array of references to the chassis associated with this cooling zone."/>
-            <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resource that this cooling zone is associated with and shall reference a resource of type Chassis."/>
-            <Annotation Term="OData.AutoExpandReferences"/>
-          </NavigationProperty>
+      </EntityType>
 
-          <NavigationProperty Name="ManagedBy" Type="Collection(Manager.Manager)">
-            <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-            <Annotation Term="OData.Description" String="An array of references to the Managers responsible for managing this cooling zone."/>
-            <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resource that manages this cooling zone and shall reference a resource of type Manager."/>
-            <Annotation Term="OData.AutoExpandReferences"/>
-          </NavigationProperty>
+      <ComplexType Name="Links" BaseType="Resource.Links">
+        <Annotation Term="OData.Description" String="Contains references to other resources that are related to this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."/>
 
-          <NavigationProperty Name="RelatedSystems" Type="Collection(ComputerSystem.ComputerSystem)">
-            <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
-            <Annotation Term="OData.Description" String="An array of references to the computer systems associated with this cooling zone."/>
-            <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resource that this cooling zone is associated with and shall reference a resource of type ComputerSystem."/>
-            <Annotation Term="OData.AutoExpandReferences"/>
-          </NavigationProperty>
+        <NavigationProperty Name="Chassis" Type="Collection(Chassis.Chassis)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="An array of references to the chassis associated with this cooling zone."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resource that this cooling zone is associated with and shall reference a resource of type Chassis."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
 
-        </ComplexType>
-   
-    </EntityType>   
-	   
-  </Schema>
-		
-  
-</edmx:DataServices>
+        <NavigationProperty Name="ManagedBy" Type="Collection(Manager.Manager)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="An array of references to the Managers responsible for managing this cooling zone."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resource that manages this cooling zone and shall reference a resource of type Manager."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+
+        <NavigationProperty Name="RelatedSystems" Type="Collection(ComputerSystem.ComputerSystem)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="An array of references to the computer systems associated with this cooling zone."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the resource that this cooling zone is associated with and shall reference a resource of type ComputerSystem."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+
+      </ComplexType>
+
+      <ComplexType Name="Actions">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The available actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
+        <Property Name="Oem" Type="DCIMCooling.v0_1_0.OemActions" Nullable="false"/>
+      </ComplexType>
+
+      <ComplexType Name="OemActions">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
+      </ComplexType>
+
+    </Schema>
+
+  </edmx:DataServices>
 </edmx:Edmx>
