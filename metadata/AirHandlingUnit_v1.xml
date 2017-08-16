@@ -641,6 +641,8 @@
           <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
         </Property>
 
+      </EntityType>
+
       <ComplexType Name="Actions">
         <Annotation Term="OData.AdditionalProperties" Bool="false"/>
         <Annotation Term="OData.Description" String="The available actions for this resource."/>
@@ -653,8 +655,6 @@
         <Annotation Term="OData.Description" String="The available OEM specific actions for this resource."/>
         <Annotation Term="OData.LongDescription" String="This type shall contain any additional OEM actions for this resource."/>
       </ComplexType>
-
-      </EntityType>
 
     </Schema>
 
