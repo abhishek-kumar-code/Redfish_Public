@@ -127,7 +127,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Relative Humidity Set Point percentage value of CRAH."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Relative Humidity Set Point percentage value of CRAH."/>
-          <Annotation Term="Validation.Minimum" Int="0"/> 
+          <Annotation Term="Validation.Minimum" Int="0"/>
           <Annotation Term="Validation.Maximum" Int="100"/>
         </Property>
 

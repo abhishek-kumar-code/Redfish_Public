@@ -132,7 +132,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Relative Humidity Set Point percentage value of CRAC."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Relative Humidity Set Point percentage value of CRAC."/>
-          <Annotation Term="Validation.Minimum" Int="0"/> 
+          <Annotation Term="Validation.Minimum" Int="0"/>
           <Annotation Term="Validation.Maximum" Int="100"/>
         </Property>
 
@@ -142,7 +142,7 @@
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Fan Speed Set Point percentage value of CRAC."/>
           <Annotation Term="Validation.Minimum" Int="0"/>
           <Annotation Term="Validation.Maximum" Int="100"/>
-        </Property> 
+        </Property>
 
         <!-- Settings -->
         <Property Name="MinimumFanSpeed" Type="Edm.Decimal">
@@ -290,7 +290,7 @@
           <Annotation Term="Validation.Maximum" Int="100"/>
         </Property>
 
-        <Property Name="Heating Output" Type="Edm.Decimal">
+        <Property Name="HeatingOutput" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Heating Output percentage value of CRAC."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Heating Output percentage value of CRAC."/>
@@ -298,7 +298,7 @@
           <Annotation Term="Validation.Maximum" Int="100"/>
         </Property>
 
-        <Property Name="Cooling Output" Type="Edm.Decimal">
+        <Property Name="CoolingOutput" Type="Edm.Decimal">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Cooling Output percentage value of CRAC."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Cooling Output percentage value of CRAC."/>
@@ -307,43 +307,43 @@
         </Property>
 
         <!-- Status - most status values in schemas are booleans, but these were specified in spreadsheet as ON/OFF -Joe -->
-        <Property Name="UnitStatus" Type="CRAC.v1_0_0.OnOff">
+        <Property Name="UnitStatus" Type="CRAC.v0_1_0.OnOff">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Unit Status [ON/OFF] of CRAC."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Unit Status [ON/OFF] of CRAC."/>
         </Property>
 
-        <Property Name="UnitOperationStatus" Type="CRAC.v1_0_0.OnOff">
+        <Property Name="UnitOperationStatus" Type="CRAC.v0_1_0.OnOff">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Unit Operation Status [ON/OFF] of CRAC."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Unit Operation Status [ON/OFF] of CRAC."/>
         </Property>
 
-        <Property Name="FanStatus" Type="CRAC.v1_0_0.OnOff">
+        <Property Name="FanStatus" Type="CRAC.v0_1_0.OnOff">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Fan Status [ON/OFF] of CRAC."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Fan Status [ON/OFF] of CRAC."/>
         </Property>
 
-        <Property Name="DehumidifyingStatus" Type="CRAC.v1_0_0.OnOff">
+        <Property Name="DehumidifyingStatus" Type="CRAC.v0_1_0.OnOff">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Dehumidification Status [ON/OFF] of CRAC."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Dehumidification Status [ON/OFF] of CRAC."/>
         </Property>
 
-        <Property Name="HumidifyingStatus" Type="CRAC.v1_0_0.OnOff">
+        <Property Name="HumidifyingStatus" Type="CRAC.v0_1_0.OnOff">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Humidification Status [ON/OFF] of CRAC."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Humidification Status [ON/OFF] of CRAC."/>
         </Property>
 
-        <Property Name="UnitCoolingStatus" Type="CRAC.v1_0_0.OnOff">
+        <Property Name="UnitCoolingStatus" Type="CRAC.v0_1_0.OnOff">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Unit Cooling Status [ON/OFF] of CRAC."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Unit Cooling Status [ON/OFF] of CRAC."/>
         </Property>
 
-        <Property Name="UnitHeatingStatus" Type="CRAC.v1_0_0.OnOff">
+        <Property Name="UnitHeatingStatus" Type="CRAC.v0_1_0.OnOff">
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Unit Heating Status [ON/OFF] of CRAC."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Unit Heating Status [ON/OFF] of CRAC."/>

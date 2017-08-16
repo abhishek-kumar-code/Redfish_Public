@@ -345,7 +345,7 @@
           <Annotation Term="OData.Description" String="The actual Fan Run Time of AirHandlingUnit."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Fan Run Time of AirHandlingUnit."/>
           <Annotation Term="Measures.Unit" String="h"/>
-          <Annotation Term="Validation.Minimum" Int="0"/> 
+          <Annotation Term="Validation.Minimum" Int="0"/>
         </Property>
 
         <Property Name="CoolingCapacity" Type="Edm.Decimal">
