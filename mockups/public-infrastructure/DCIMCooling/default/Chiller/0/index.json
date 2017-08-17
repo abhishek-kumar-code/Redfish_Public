@@ -68,7 +68,7 @@
             "MemberId": "0",
             "PercentCurrent": 50,
             "Sensors": {
-                "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/#AcInput/0/Sensors",
+                "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors",
                 "@odata.type": "SensorCollection.SensorCollection",
                 "Name": "SensorCollection",
                 "Members": [

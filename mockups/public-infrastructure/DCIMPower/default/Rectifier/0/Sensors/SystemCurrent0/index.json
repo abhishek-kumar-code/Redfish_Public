@@ -1,6 +1,6 @@
 {
     "@odata.id": "/redfish/v1/DCIMPower/default/Rectifier/0/Sensors/SystemCurrent0",
-    "@odata.type": "Sensor.v1_0_0.Sensor",
+    "@odata.type": "Sensor.v0_1_0.Sensor",
     "@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
     "MemberId": "4",
     "SensorType": "Current",

@@ -62,7 +62,7 @@
 				"Members": [
 					{
 						"@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Sensors/AcOutput0Frequency0",
-						"@odata.type": "Sensor.v1_0_0.Sensor",
+						"@odata.type": "Sensor.v0_1_0.Sensor",
 						"@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
 						"MemberId": "0",
 						"SensorType": "Frequency",
@@ -86,7 +86,7 @@
 					},
 					{
 						"@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Sensors/AcOutput0Voltage0",
-						"@odata.type": "Sensor.v1_0_0.Sensor",
+						"@odata.type": "Sensor.v0_1_0.Sensor",
 						"@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
 						"MemberId": "1",
 						"SensorType": "Voltage",
@@ -110,7 +110,7 @@
 					},
 					{
 						"@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Sensors/AcOutput0Voltage1",
-						"@odata.type": "Sensor.v1_0_0.Sensor",
+						"@odata.type": "Sensor.v0_1_0.Sensor",
 						"@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
 						"MemberId": "2",
 						"SensorType": "Voltage",
@@ -134,7 +134,7 @@
 					},
 					{
 						"@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Sensors/AcOutput0Current0",
-						"@odata.type": "Sensor.v1_0_0.Sensor",
+						"@odata.type": "Sensor.v0_1_0.Sensor",
 						"@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
 						"MemberId": "3",
 						"SensorType": "Current",
@@ -158,7 +158,7 @@
 					},
 					{
 						"@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Sensors/AcOutput0Current1",
-						"@odata.type": "Sensor.v1_0_0.Sensor",
+						"@odata.type": "Sensor.v0_1_0.Sensor",
 						"@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
 						"MemberId": "4",
 						"SensorType": "Current",
@@ -182,7 +182,7 @@
 					},
 					{
 						"@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Sensors/AcOutput0Voltage2",
-						"@odata.type": "Sensor.v1_0_0.Sensor",
+						"@odata.type": "Sensor.v0_1_0.Sensor",
 						"@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
 						"MemberId": "5",
 						"SensorType": "Voltage",
@@ -219,7 +219,7 @@
 		"Members": [
 			{
 				"@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Sensors/AcOutput0Frequency0",
-				"@odata.type": "Sensor.v1_0_0.Sensor",
+				"@odata.type": "Sensor.v0_1_0.Sensor",
 				"@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
 				"MemberId": "0",
 				"SensorType": "Frequency",
@@ -243,7 +243,7 @@
 			},
 			{
 				"@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Sensors/AcOutput0Voltage0",
-				"@odata.type": "Sensor.v1_0_0.Sensor",
+				"@odata.type": "Sensor.v0_1_0.Sensor",
 				"@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
 				"MemberId": "1",
 				"SensorType": "Voltage",
@@ -267,7 +267,7 @@
 			},
 			{
 				"@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Sensors/AcOutput0Voltage1",
-				"@odata.type": "Sensor.v1_0_0.Sensor",
+				"@odata.type": "Sensor.v0_1_0.Sensor",
 				"@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
 				"MemberId": "2",
 				"SensorType": "Voltage",
@@ -291,7 +291,7 @@
 			},
 			{
 				"@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Sensors/AcOutput0Current0",
-				"@odata.type": "Sensor.v1_0_0.Sensor",
+				"@odata.type": "Sensor.v0_1_0.Sensor",
 				"@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
 				"MemberId": "3",
 				"SensorType": "Current",
@@ -315,7 +315,7 @@
 			},
 			{
 				"@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Sensors/AcOutput0Current1",
-				"@odata.type": "Sensor.v1_0_0.Sensor",
+				"@odata.type": "Sensor.v0_1_0.Sensor",
 				"@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
 				"MemberId": "4",
 				"SensorType": "Current",
@@ -339,7 +339,7 @@
 			},
 			{
 				"@odata.id": "/redfish/v1/DCIMPower/default/Generator/0/Sensors/AcOutput0Voltage2",
-				"@odata.type": "Sensor.v1_0_0.Sensor",
+				"@odata.type": "Sensor.v0_1_0.Sensor",
 				"@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
 				"MemberId": "5",
 				"SensorType": "Voltage",

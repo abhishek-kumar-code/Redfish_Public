@@ -1,6 +1,6 @@
 {
     "@odata.id": "/redfish/v1/DCIMPower/default/UPS/0/Sensors/AcUtilityInput0Voltage1",
-    "@odata.type": "Sensor.v1_0_0.Sensor",
+    "@odata.type": "Sensor.v0_1_0.Sensor",
     "@odata.context": "/redfish/v1/$metadata#Sensor.Sensor",
     "MemberId": "1",
     "SensorType": "Voltage",
