@@ -66,60 +66,7 @@
             "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/#AcInput/0",
             "@odata.type": "#Chiller.v0_1_0.AcInput",
             "MemberId": "0",
-            "PercentCurrent": 50,
-            "Sensors": {
-                "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/#AcInput/0/Sensors",
-                "@odata.type": "SensorCollection.SensorCollection",
-                "Name": "SensorCollection",
-                "Members": [
-                    {
-                        "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/AcInput0Current0",
-                        "@odata.type": "Sensor.v0_1_0.Sensor",
-                        "Id": "23",
-                        "Name": "AC Input - RMS Current Sensor",
-                        "SensorType": "Current",
-                        "SensorNumber": 23,
-                        "Status": {
-                            "State": "Enabled",
-                            "Health": "OK"
-                        },
-                        "SensorReading": 12,
-                        "UpperThresholdNonCritical": 12.5,
-                        "UpperThresholdCritical": 13,
-                        "UpperThresholdFatal": 15,
-                        "LowerThresholdNonCritical": 11.5,
-                        "LowerThresholdCritical": 11,
-                        "LowerThresholdFatal": 10,
-                        "MinReadingRange": 0,
-                        "MaxReadingRange": 20,
-                        "PhysicalContext": "AC Input",
-                        "Oem": {}
-                    },
-                    {
-                        "@odata.id": "/redfish/v1/DCIMCooling/default/Chiller/0/Sensors/AcInput0Voltage0",
-                        "@odata.type": "Sensor.v0_1_0.Sensor",
-                        "Id": "24",
-                        "Name": "AC Input - RMS Voltage (L-L) Sensor",
-                        "SensorType": "Voltage",
-                        "SensorNumber": 24,
-                        "Status": {
-                            "State": "Enabled",
-                            "Health": "OK"
-                        },
-                        "SensorReading": 12,
-                        "UpperThresholdNonCritical": 12.5,
-                        "UpperThresholdCritical": 13,
-                        "UpperThresholdFatal": 15,
-                        "LowerThresholdNonCritical": 11.5,
-                        "LowerThresholdCritical": 11,
-                        "LowerThresholdFatal": 10,
-                        "MinReadingRange": 0,
-                        "MaxReadingRange": 20,
-                        "PhysicalContext": "AC Input",
-                        "Oem": {}
-                    }
-                ]
-            }
+            "PercentCurrent": 50
         }
     ],
     "Oem": {},
