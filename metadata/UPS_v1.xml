@@ -234,7 +234,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The Energy for this AC Utility Input."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the Energy information of this AC Utility Input."/>
-          <Annotation Term="Measures.Unit" String="kW h"/>
+          <Annotation Term="Measures.Unit" String="kWh"/>
         </Property>
 
         <Property Name="RmsUnderOverVoltage" Type="Edm.Decimal">
@@ -271,7 +271,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The Energy for this AC Bypass Input."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the Energy information of this AC Bypass Input."/>
-          <Annotation Term="Measures.Unit" String="kW h"/>
+          <Annotation Term="Measures.Unit" String="kWh"/>
         </Property>
 
         <Property Name="RmsUnderOverVoltage" Type="Edm.Decimal">
@@ -345,7 +345,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The Energy for this AC Output."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the Energy information of this AC Output."/>
-          <Annotation Term="Measures.Unit" String="kW h"/>
+          <Annotation Term="Measures.Unit" String="kWh"/>
         </Property>
 
         <Property Name="RmsUnderOverVoltage" Type="Edm.Decimal">

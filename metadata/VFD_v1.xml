@@ -134,7 +134,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The actual Kilowatt-Hours of VFD."/>
           <Annotation Term="OData.LongDescription" String="The value of this property shall represent the actual Kilowatt-Hours of this VFD."/>
-          <Annotation Term="Measures.Unit" String="kW h"/>
+          <Annotation Term="Measures.Unit" String="kWh"/>
         </Property>
 
         <Property Name="LastFault" Type="Edm.String">
@@ -313,7 +313,7 @@
           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
           <Annotation Term="OData.Description" String="The Kilowatt-Hours for this AC Output."/>
           <Annotation Term="OData.LongDescription" String="This property shall indicate the Kilowatt-Hours of this AC Output."/>
-          <Annotation Term="Measures.Unit" String="kW h"/>
+          <Annotation Term="Measures.Unit" String="kWh"/>
         </Property>
 
         <NavigationProperty Name="Sensors" Type="SensorCollection.SensorCollection" Nullable="false">
