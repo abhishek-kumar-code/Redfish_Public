@@ -1,28 +1,28 @@
 {
-    "name" : "Simple Rack-mounted Server",
-    "description" : "A typical 1U or 2U server intended for scale-out deployments.",
+    "name" : "Infrastructure Sample",
+    "description" : "Sample representation of DCIM equipment.",
     "navlinks" : [
         {
             "text" : "Main",
             "target" : "main"
         },
         {
-            "text" : "Systems",
-            "target" : "Systems",
+            "text" : "DCIMPower",
+            "target" : "DCIMPower",
             "navlinks" : [
                 {
-                    "text" : "437XR1138R2",
-                    "target" : "437XR1138R2"
+                    "text" : "default",
+                    "target" : "default"
                 }
             ]
         },
         {
-            "text" : "Chassis",
-            "target": "Chassis",
+            "text" : "DCIMCooling",
+            "target": "DCIMCooling",
             "navlinks" : [
                 {
-                    "text" : "1U",
-                    "target" : "1U"
+                    "text" : "default",
+                    "target" : "default"
                 }
             ]
         },
